@@ -80,16 +80,16 @@
 		user.balloon_alert(user, "not on the ground!")
 		return FALSE
 	if (!door.IsReachableBy(user))
-		user.balloon_alert(user, "can't reach!")
+		user.balloon_alert(user, "não alcança!")
 		return FALSE
 	if (HAS_TRAIT(user, TRAIT_INCAPACITATED))
-		user.balloon_alert(user, "incapacitated!")
+		user.balloon_alert(user, "incapacitado!")
 		return FALSE
 	if (!(door.pass_flags_self & PASSDOORS))
 		door.balloon_alert(user, "impassable!")
 		return FALSE
 	if (!door.density)
-		door.balloon_alert(user, "already open!")
+		door.balloon_alert(user, "já aberto!")
 		return FALSE
 	return TRUE
 

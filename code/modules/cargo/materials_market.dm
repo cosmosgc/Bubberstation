@@ -46,7 +46,7 @@
 		return NONE
 
 	if(!is_operational)
-		balloon_alert(user, "no power!")
+		balloon_alert(user, "sem energia!")
 		return ITEM_INTERACT_FAILURE
 
 	var/list/datum/material/materials = exportable.custom_materials

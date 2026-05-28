@@ -59,7 +59,7 @@
 		return
 
 	set_anchored(!anchored)
-	balloon_alert_to_viewers(anchored ? "secured" : "unsecured")
+	balloon_alert_to_viewers(anchored ? "fixado" : "solto")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/large_mortar/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
@@ -74,7 +74,7 @@
 
 	if(istype(tool, /obj/item/storage/bag))
 		if(length(contents) >= maximum_contained_items)
-			balloon_alert(user, "already full!")
+			balloon_alert(user, "já cheio!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!length(tool.contents))
@@ -98,7 +98,7 @@
 
 	if(istype(tool, /obj/item/pestle))
 		if(!anchored)
-			balloon_alert(user, "not secured!")
+			balloon_alert(user, "não fixado!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!length(contents) && reagents.total_volume == 0)
@@ -177,7 +177,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if(length(contents) >= maximum_contained_items)
-		balloon_alert(user, "already full!")
+		balloon_alert(user, "já cheio!")
 		return ITEM_INTERACT_BLOCKING
 
 	tool.forceMove(src)

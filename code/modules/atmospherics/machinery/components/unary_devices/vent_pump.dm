@@ -115,7 +115,7 @@
 		repair_damage(max_integrity)
 
 	else
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/atmospherics/components/unary/vent_pump/atom_fix()

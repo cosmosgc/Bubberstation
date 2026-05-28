@@ -66,7 +66,7 @@
 			return
 		playsound(src, 'sound/vehicles/mecha/hydraulic.ogg', 25, TRUE)
 		if(!do_after(mod.wearer, load_time, target = target))
-			balloon_alert(mod.wearer, "interrupted!")
+			balloon_alert(mod.wearer, "interrompido!")
 			return
 		if(!check_crate_pickup(picked_crate))
 			return
@@ -80,7 +80,7 @@
 			return
 		playsound(src, 'sound/vehicles/mecha/hydraulic.ogg', 25, TRUE)
 		if(!do_after(mod.wearer, load_time, target = target))
-			balloon_alert(mod.wearer, "interrupted!")
+			balloon_alert(mod.wearer, "interrompido!")
 			return
 		if(target_turf.is_blocked_turf())
 			return
@@ -89,7 +89,7 @@
 		balloon_alert(mod.wearer, "dropped [dropped_crate]")
 		drain_power(use_energy_cost)
 	else
-		balloon_alert(mod.wearer, "invalid target!")
+		balloon_alert(mod.wearer, "alvo inválido!")
 
 /obj/item/mod/module/clamp/on_part_deactivation(deleting = FALSE)
 	if(deleting)
@@ -414,7 +414,7 @@
 		locker.throw_at(target, range = 7, speed = 4, thrower = mod.wearer)
 		return
 	if(!istype(target, /obj/structure/closet) || !(target in view(mod.wearer)))
-		balloon_alert(mod.wearer, "invalid target!")
+		balloon_alert(mod.wearer, "alvo inválido!")
 		return
 	var/obj/structure/closet/locker = target
 	if(locker.anchored || locker.move_resist >= MOVE_FORCE_OVERPOWERING)

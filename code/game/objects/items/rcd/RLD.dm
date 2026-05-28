@@ -169,7 +169,7 @@
 						winner = C
 						winning_dist = contender
 				if(!winner)
-					balloon_alert(user, "no valid target!")
+					balloon_alert(user, "sem alvo válido!")
 					return ITEM_INTERACT_BLOCKING
 				var/obj/machinery/light/L = new /obj/machinery/light(get_turf(winner))
 				L.setDir(get_dir(winner, interacting_with))

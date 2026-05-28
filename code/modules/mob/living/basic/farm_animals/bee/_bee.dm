@@ -351,7 +351,7 @@
 /obj/item/trash/bee/proc/use_lazarus(datum/source, obj/item/lazarus_injector/injector, mob/user)
 	SIGNAL_HANDLER
 	if(injector.revive_type != SENTIENCE_ORGANIC)
-		balloon_alert(user, "invalid creature!")
+		balloon_alert(user, "criatura inválida!")
 		return
 	var/mob/living/basic/bee/revived_bee = new bee_type (drop_location())
 	if(beegent)

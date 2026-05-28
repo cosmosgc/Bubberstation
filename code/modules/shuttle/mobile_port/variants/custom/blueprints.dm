@@ -202,7 +202,7 @@
 	new_name = apply_text_macros(new_name)
 	var/obj/item/hitting_implement = (locate(/obj/item/reagent_containers/cup/glass/bottle) in user.held_items) || user.get_item_for_held_index(hand)
 	if(!attacked.IsReachableBy(user, hitting_implement.reach))
-		user.balloon_alert(user, "out of range!")
+		user.balloon_alert(user, "fora do alcance!")
 		return
 	var/obj/item/reagent_containers/cup/glass/bottle/bottle = hitting_implement
 	bottle = istype(bottle) && bottle.isGlass && bottle
@@ -452,7 +452,7 @@
 			return
 		balloon_alert(user, "copying blueprints...")
 		if(!do_after(user, 5 SECONDS, other_blueprints))
-			balloon_alert(user, "interrupted!")
+			balloon_alert(user, "interrompido!")
 			return ITEM_INTERACT_FAILURE
 		other_blueprints.link_to_shuttle(shuttle)
 		balloon_alert(user, "copied")
@@ -524,7 +524,7 @@
 			return TRUE
 		if("tryLinkShuttle")
 			if(shuttle_ref?.resolve())
-				balloon_alert(usr, "already linked!")
+				balloon_alert(usr, "já vinculado!")
 				return TRUE
 			var/obj/docking_port/mobile/custom/shuttle = SSshuttle.get_containing_shuttle(usr)
 			if(!shuttle)
@@ -542,7 +542,7 @@
 		if("promoteToMaster")
 			var/obj/docking_port/mobile/custom/shuttle = shuttle_ref?.resolve()
 			if(!shuttle)
-				balloon_alert(usr, "not linked!")
+				balloon_alert(usr, "não vinculado!")
 				return TRUE
 			var/obj/item/shuttle_blueprints/master = shuttle.master_blueprint?.resolve()
 			if(master)
@@ -553,7 +553,7 @@
 		if("createNewArea")
 			var/obj/docking_port/mobile/custom/shuttle = shuttle_ref?.resolve()
 			if(!shuttle)
-				balloon_alert(usr, "not linked!")
+				balloon_alert(usr, "não vinculado!")
 				return TRUE
 			var/area_name = params["name"]
 			if(!area_name)
@@ -581,7 +581,7 @@
 		if("releaseArea")
 			var/obj/docking_port/mobile/custom/shuttle = shuttle_ref?.resolve()
 			if(!shuttle)
-				balloon_alert(usr, "not linked!")
+				balloon_alert(usr, "não vinculado!")
 				return TRUE
 			var/area/current_area = get_area(usr)
 			if(!shuttle.shuttle_areas[current_area])
@@ -606,7 +606,7 @@
 		if("mergeIntoArea")
 			var/obj/docking_port/mobile/custom/shuttle = shuttle_ref?.resolve()
 			if(!shuttle)
-				balloon_alert(usr, "not linked!")
+				balloon_alert(usr, "não vinculado!")
 				return TRUE
 			var/area/current_area = get_area(usr)
 			var/area/default_area = shuttle.default_area
@@ -638,7 +638,7 @@
 		if("renameArea")
 			var/obj/docking_port/mobile/custom/shuttle = shuttle_ref?.resolve()
 			if(!shuttle)
-				balloon_alert(usr, "not linked!")
+				balloon_alert(usr, "não vinculado!")
 				return TRUE
 			var/area/current_area = get_area(usr)
 			if(!shuttle.shuttle_areas[current_area])
@@ -657,7 +657,7 @@
 		if("expandWithFrame")
 			var/obj/docking_port/mobile/custom/shuttle = shuttle_ref?.resolve()
 			if(!shuttle)
-				balloon_alert(usr, "not linked!")
+				balloon_alert(usr, "não vinculado!")
 				return TRUE
 			var/list/turfs = list()
 			var/list/areas = list()
@@ -686,7 +686,7 @@
 		if("cleanupEmptyTurfs")
 			var/obj/docking_port/mobile/custom/shuttle = shuttle_ref?.resolve()
 			if(!shuttle)
-				balloon_alert(usr, "not linked!")
+				balloon_alert(usr, "não vinculado!")
 				return TRUE
 			var/obj/item/shuttle_blueprints/master = shuttle.master_blueprint?.resolve()
 			if(master && master != src)

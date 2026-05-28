@@ -135,7 +135,7 @@
 		return FALSE
 
 	if (!owner.Adjacent(target))
-		owner.balloon_alert(clicker, "too far!")
+		owner.balloon_alert(clicker, "longe demais!")
 		return FALSE
 
 	// Do the slap

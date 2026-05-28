@@ -410,21 +410,21 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	if(to_insert.w_class > max_specific_storage)
 		if(!is_type_in_typecache(to_insert, exception_hold))
 			if(messages && user)
-				user.balloon_alert(user, "too big!")
+				user.balloon_alert(user, "grande demais!")
 			return FALSE
 		if(exception_max <= get_exception_count())
 			if(messages && user)
-				user.balloon_alert(user, "no room!")
+				user.balloon_alert(user, "sem espaço!")
 			return FALSE
 
 	if(real_location.contents.len >= max_slots)
 		if(messages && user && !silent_for_user)
-			user.balloon_alert(user, "no room!")
+			user.balloon_alert(user, "sem espaço!")
 		return FALSE
 
 	if(to_insert.w_class + get_total_weight() > max_total_storage)
 		if(messages && user && !silent_for_user)
-			user.balloon_alert(user, "no room!")
+			user.balloon_alert(user, "sem espaço!")
 		return FALSE
 
 	var/can_hold_it = isnull(can_hold) || is_type_in_typecache(to_insert, can_hold) || is_type_in_typecache(to_insert, exception_hold)
@@ -452,7 +452,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		var/datum/storage/smaller_fish = to_insert.atom_storage
 		if(smaller_fish && !allow_big_nesting && to_insert.w_class >= item_parent.w_class)
 			if(messages && user)
-				user.balloon_alert(user, "too big!")
+				user.balloon_alert(user, "grande demais!")
 			return FALSE
 
 	return TRUE

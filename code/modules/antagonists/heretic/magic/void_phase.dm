@@ -28,7 +28,7 @@
 		return
 
 	if(owner && get_dist(get_turf(owner), get_turf(cast_on)) < min_cast_range)
-		cast_on.balloon_alert(owner, "too close!")
+		cast_on.balloon_alert(owner, "perto demais!")
 		return . | SPELL_CANCEL_CAST
 
 /datum/action/cooldown/spell/pointed/void_phase/cast(atom/cast_on)

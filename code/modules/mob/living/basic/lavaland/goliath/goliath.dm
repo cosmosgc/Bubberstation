@@ -105,7 +105,7 @@
 	if (!istype(attacking_item, /obj/item/goliath_saddle))
 		return ..()
 	if (!tameable)
-		balloon_alert(user, "doesn't fit!")
+		balloon_alert(user, "não cabe!")
 		return
 	if (saddled)
 		balloon_alert(user, "already saddled!")

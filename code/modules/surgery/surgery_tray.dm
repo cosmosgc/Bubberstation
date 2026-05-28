@@ -137,7 +137,7 @@
 	if(!user.can_perform_action(src, NEED_HANDS))
 		return ..()
 	if(!length(contents))
-		balloon_alert(user, "empty!")
+		balloon_alert(user, "vazio!")
 	else
 		var/obj/item/grabbies = pick(contents)
 		if(atom_storage.remove_single(user, grabbies, drop_location()))

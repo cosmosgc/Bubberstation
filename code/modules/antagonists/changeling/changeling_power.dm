@@ -70,7 +70,7 @@ the same goes for Remove(). if you override Remove(), call parent or else your p
 	if(!can_sting(user, target))
 		return FALSE
 	if(disabled_by_fire && user.fire_stacks && user.on_fire)
-		user.balloon_alert(user, "on fire!")
+		user.balloon_alert(user, "pegando fogo!")
 		return FALSE
 	var/datum/antagonist/changeling/changeling = IS_CHANGELING(user)
 	if(sting_action(user, target))
@@ -103,7 +103,7 @@ the same goes for Remove(). if you override Remove(), call parent or else your p
 		user.balloon_alert(user, "needs [req_absorbs] absorption\s!")
 		return FALSE
 	if(req_stat < user.stat)
-		user.balloon_alert(user, "incapacitated!")
+		user.balloon_alert(user, "incapacitado!")
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_DEATHCOMA) && !ignores_fakedeath)
 		user.balloon_alert(user, "playing dead!")

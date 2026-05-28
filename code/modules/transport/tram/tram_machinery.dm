@@ -20,7 +20,7 @@
 		return
 
 	if(get_dist(change_platform, src) > 15)
-		balloon_alert(user, "out of range!")
+		balloon_alert(user, "fora do alcance!")
 		return
 
 	id = change_platform.platform_code

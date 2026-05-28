@@ -256,7 +256,7 @@
 	if(!machine_stat)
 		var/shown_contents_length = visible_items()
 		if(shown_contents_length >= max_n_of_items)
-			balloon_alert(user, "no space!")
+			balloon_alert(user, "sem espaço!")
 			return FALSE
 
 		if(!(weapon.item_flags & ABSTRACT) && \

@@ -49,18 +49,18 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 		user.balloon_alert(user, "can't place it here!")
 		return ITEM_INTERACT_BLOCKING
 	if(build_on.is_blocked_turf())
-		user.balloon_alert(user, "something is blocking the tile!")
+		user.balloon_alert(user, "algo está bloqueando o tile!")
 		return ITEM_INTERACT_BLOCKING
 	if(get_amount() < 1)
-		user.balloon_alert(user, "not enough material!")
+		user.balloon_alert(user, "material insuficiente!")
 		return ITEM_INTERACT_BLOCKING
 	if(!do_after(user, 3 SECONDS, build_on))
 		return ITEM_INTERACT_BLOCKING
 	if(build_on.is_blocked_turf())
-		user.balloon_alert(user, "something is blocking the tile!")
+		user.balloon_alert(user, "algo está bloqueando o tile!")
 		return ITEM_INTERACT_BLOCKING
 	if(!use(1))
-		user.balloon_alert(user, "not enough material!")
+		user.balloon_alert(user, "material insuficiente!")
 		return ITEM_INTERACT_BLOCKING
 	build_on.place_on_top(walltype, flags = CHANGETURF_INHERIT_AIR)
 	return ITEM_INTERACT_SUCCESS

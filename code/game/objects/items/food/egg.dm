@@ -126,7 +126,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 	var/obj/machinery/griddle/hit_griddle = interacting_with
 	if(length(hit_griddle.griddled_objects) >= hit_griddle.max_items)
-		interacting_with.balloon_alert(user, "no room!")
+		interacting_with.balloon_alert(user, "sem espaço!")
 		return ITEM_INTERACT_BLOCKING
 	var/atom/broken_egg = new /obj/item/food/rawegg(interacting_with.loc)
 	if(LAZYACCESS(modifiers, ICON_X))
@@ -375,7 +375,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 	var/obj/machinery/griddle/hit_griddle = interacting_with
 	if(length(hit_griddle.griddled_objects) >= hit_griddle.max_items)
-		interacting_with.balloon_alert(user, "no room!")
+		interacting_with.balloon_alert(user, "sem espaço!")
 		return ITEM_INTERACT_BLOCKING
 	var/atom/broken_egg = new /obj/item/food/rawegg/spore(interacting_with.loc)
 	if(LAZYACCESS(modifiers, ICON_X))

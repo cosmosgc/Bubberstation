@@ -140,7 +140,7 @@
 		balloon_alert(user, "isn't broken!")
 		return ITEM_INTERACT_BLOCKING
 	if(!tool.tool_start_check(user, amount = 1))
-		balloon_alert(user, "not enough fuel!")
+		balloon_alert(user, "combustível insuficiente!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!tool.use_tool(src, user, 40, volume = 50))
@@ -148,7 +148,7 @@
 
 	set_machine_stat(machine_stat & ~BROKEN)
 	atom_integrity = max_integrity
-	balloon_alert(user, "repaired")
+	balloon_alert(user, "consertado")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/pdapainter/item_interaction(mob/living/user, obj/item/tool, list/modifiers)

@@ -67,7 +67,7 @@
 		balloon_alert(user, "must be anchored!")
 		return UI_CLOSE
 	if(!allowed(user))
-		balloon_alert(user, "access denied!")
+		balloon_alert(user, "acesso negado!")
 		user.playsound_local(src, 'sound/machines/compiler/compiler-failure.ogg', 20, TRUE)
 		return UI_CLOSE
 	if(!length(music_player.songs))

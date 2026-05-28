@@ -222,8 +222,8 @@
 	environ = environ ? APC_CHANNEL_OFF : APC_CHANNEL_ON
 	if (user)
 		add_hiddenprint(user)
-		var/enabled_or_disabled = environ ? "enabled" : "disabled"
-		balloon_alert(user, "environment power [enabled_or_disabled]")
+		var/enabled_or_disabled = environ ? "ativada" : "desativada"
+		balloon_alert(user, "energia do ambiente [enabled_or_disabled]")
 		user.log_message("[enabled_or_disabled] the [src] environment settings", LOG_GAME)
 	update_appearance()
 	update()
@@ -238,9 +238,9 @@
 
 	lighting = lighting ? APC_CHANNEL_OFF : APC_CHANNEL_ON
 	if (user)
-		var/enabled_or_disabled = lighting ? "enabled" : "disabled"
+		var/enabled_or_disabled = lighting ? "ativada" : "desativada"
 		add_hiddenprint(user)
-		balloon_alert(user, "lighting power toggled [enabled_or_disabled]")
+		balloon_alert(user, "energia da iluminação [enabled_or_disabled]")
 		user.log_message("turned [enabled_or_disabled] the [src] lighting settings", LOG_GAME)
 	update_appearance()
 	update()
@@ -256,8 +256,8 @@
 
 	equipment = equipment ? APC_CHANNEL_OFF : APC_CHANNEL_ON
 	if (user)
-		var/enabled_or_disabled = equipment ? "enabled" : "disabled"
-		balloon_alert(user, "equipment power toggled [enabled_or_disabled]")
+		var/enabled_or_disabled = equipment ? "ativada" : "desativada"
+		balloon_alert(user, "energia dos equipamentos [enabled_or_disabled]")
 		add_hiddenprint(user)
 		user.log_message("turned [enabled_or_disabled] the [src] equipment settings", LOG_GAME)
 	update_appearance()
@@ -284,7 +284,7 @@
 /* Holopads */
 /obj/machinery/holopad/ai_click_alt(mob/living/silicon/ai/user)
 	if (user)
-		balloon_alert(user, "disrupted all active calls")
+		balloon_alert(user, "todas as chamadas ativas foram interrompidas")
 		add_hiddenprint(user)
 	hangup_all_calls()
 	return CLICK_ACTION_SUCCESS

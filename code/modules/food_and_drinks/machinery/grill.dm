@@ -132,7 +132,7 @@
 		if(!QDELETED(grilled_item))
 			return NONE
 		if(!anchored)
-			balloon_alert(user, "anchor it first!")
+			balloon_alert(user, "ancore primeiro!")
 			return ITEM_INTERACT_BLOCKING
 
 		//required for amount subtypes
@@ -149,7 +149,7 @@
 			if(!istype(stored, target_type))
 				continue
 			if(stored.amount == MAX_STACK_SIZE)
-				balloon_alert(user, "no space!")
+				balloon_alert(user, "sem espaço!")
 				return ITEM_INTERACT_BLOCKING
 			target.merge(stored)
 			merged = TRUE
@@ -168,7 +168,7 @@
 		if(!QDELETED(grilled_item))
 			return NONE
 		if(!anchored)
-			balloon_alert(user, "anchor it first!")
+			balloon_alert(user, "ancore primeiro!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/transfered_amount = weapon.reagents.trans_to(src, container.amount_per_transfer_from_this)
@@ -210,7 +210,7 @@
 	if(IS_EDIBLE(weapon))
 		//sanity checks
 		if(!anchored)
-			balloon_alert(user, "anchor first!")
+			balloon_alert(user, "ancore primeiro!")
 			return ITEM_INTERACT_BLOCKING
 		if(HAS_TRAIT(weapon, TRAIT_NODROP))
 			return ..()
@@ -218,7 +218,7 @@
 			balloon_alert(user, "remove item first!")
 			return ITEM_INTERACT_BLOCKING
 		if(grill_fuel <= 0)
-			balloon_alert(user, "no fuel!")
+			balloon_alert(user, "sem combustível!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(weapon, src))
 			balloon_alert(user, "[weapon] is stuck in your hand!")
@@ -244,7 +244,7 @@
 
 /obj/machinery/grill/crowbar_act(mob/living/user, obj/item/tool)
 	if(anchored)
-		balloon_alert(user, "unanchor first!")
+		balloon_alert(user, "desancore primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_crowbar(user, tool)

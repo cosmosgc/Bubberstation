@@ -350,7 +350,7 @@ effective or pretty fucking useless.
 /obj/item/jammer/attack_self(mob/user, modifiers)
 	. = ..()
 	if (!COOLDOWN_FINISHED(src, jam_cooldown))
-		user.balloon_alert(user, "on cooldown!")
+		user.balloon_alert(user, "em recarga!")
 		return
 
 	user.balloon_alert(user, "disruptor wave released!")
@@ -450,7 +450,7 @@ effective or pretty fucking useless.
 		return
 
 	if(user.combat_mode)
-		balloon_alert(user, "deconstructing...")
+		balloon_alert(user, "desconstruindo...")
 		if(!attacking_item.use_tool(src, user, 5 SECONDS, volume = 20))
 			return
 
@@ -463,7 +463,7 @@ effective or pretty fucking useless.
 			balloon_alert(user, "already repaired!")
 			return
 
-		balloon_alert(user, "repairing...")
+		balloon_alert(user, "consertando...")
 		while(atom_integrity != max_integrity)
 			if(!attacking_item.use_tool(src, user, 2 SECONDS, volume = 20))
 				return

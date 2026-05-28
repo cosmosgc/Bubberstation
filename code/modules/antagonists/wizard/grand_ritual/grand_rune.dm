@@ -125,7 +125,7 @@
 
 	if(!do_after(user, invoke_time, src))
 		remove_channel_effect(user)
-		user.balloon_alert(user, "interrupted!")
+		user.balloon_alert(user, "interrompido!")
 		is_in_use = FALSE
 		return
 

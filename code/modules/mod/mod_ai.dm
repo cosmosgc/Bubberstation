@@ -16,7 +16,7 @@
 				return
 			balloon_alert(user, "transferring to card...")
 			if(!do_after(user, 5 SECONDS, target = src))
-				balloon_alert(user, "interrupted!")
+				balloon_alert(user, "interrompido!")
 				return
 			if(!ai_assistant)
 				balloon_alert(user, "no ai in unit!")
@@ -39,7 +39,7 @@
 				return
 			balloon_alert(user, "transferring to unit...")
 			if(!do_after(user, 5 SECONDS, target = src))
-				balloon_alert(user, "interrupted!")
+				balloon_alert(user, "interrompido!")
 				return
 			if(ai_assistant)
 				return
@@ -80,7 +80,7 @@
 		return FALSE
 	balloon_alert(user, "transferring to unit...")
 	if (!do_after(user, 5 SECONDS, target = src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return FALSE
 	if (!user.transferItemToLoc(card, src))
 		balloon_alert(user, "transfer failed!")
@@ -111,7 +111,7 @@
 			return FALSE
 		balloon_alert(user, "uninstalling card...")
 		if (!do_after(user, 5 SECONDS, target = src))
-			balloon_alert(user, "interrupted!")
+			balloon_alert(user, "interrompido!")
 			return FALSE
 
 	balloon_alert(user, "pAI removed")
@@ -216,7 +216,7 @@
 		return
 	balloon_alert(user, "transferring to card...")
 	if(!do_after(user, 5 SECONDS, target = src) || !ai)
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return
 	icon_state = "minicard"
 	ai.forceMove(card)

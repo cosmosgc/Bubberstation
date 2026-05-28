@@ -99,7 +99,7 @@
 	if(!proximity_flag)
 		return
 	if(pole_in_use)
-		balloon_alert(user, "already in use!")
+		balloon_alert(user, "já em uso!")
 		return
 	pole_in_use = TRUE
 	dancer = user
@@ -151,7 +151,7 @@
 
 /obj/structure/stripper_pole/click_ctrl_shift(mob/user)
 	add_fingerprint(user)
-	balloon_alert(user, "disassembling...")
+	balloon_alert(user, "desmontando...")
 	if(!do_after(user, 8 SECONDS, src))
 		balloon_alert(user, "disassembly interrupted!")
 		return

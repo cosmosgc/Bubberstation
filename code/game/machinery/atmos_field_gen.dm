@@ -108,22 +108,22 @@
 
 /obj/machinery/atmos_shield_gen/screwdriver_act(mob/user, obj/item/tool)
 	if(!panel_open && locked)
-		balloon_alert(user, "locked!")
+		balloon_alert(user, "trancado!")
 		return ITEM_INTERACT_FAILURE
 	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/atmos_shield_gen/crowbar_act(mob/user, obj/item/tool)
 	if(on)
-		balloon_alert(user, "turn off first!")
+		balloon_alert(user, "desligue primeiro!")
 		return ITEM_INTERACT_FAILURE
 	return default_deconstruction_crowbar(user, tool)
 
 /obj/machinery/atmos_shield_gen/wrench_act(mob/living/user, obj/item/tool)
 	if(on)
-		balloon_alert(user, "turn off first!")
+		balloon_alert(user, "desligue primeiro!")
 		return ITEM_INTERACT_FAILURE
 	if(locked)
-		balloon_alert(user, "unlock first!")
+		balloon_alert(user, "destranque primeiro!")
 		return ITEM_INTERACT_FAILURE
 	if(default_unfasten_wrench(user, tool) && !anchored)
 		turn_off()
@@ -132,10 +132,10 @@
 /obj/machinery/atmos_shield_gen/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(!anchored)
-		balloon_alert(user, "not anchored!")
+		balloon_alert(user, "não ancorado!")
 		return
 	if(locked && !issilicon(user))
-		balloon_alert(user, "locked!")
+		balloon_alert(user, "trancado!")
 		return
 	toggle(user)
 
@@ -147,7 +147,7 @@
 		locked = !locked
 		balloon_alert(user, "[locked ? "" : "un"]locked!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	balloon_alert(user, "no access!")
+	balloon_alert(user, "sem acesso!")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/atmos_shield_gen/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -219,7 +219,7 @@
 	if(!on)
 		return
 	if(power_failure)
-		balloon_alert_to_viewers("no power!")
+		balloon_alert_to_viewers("sem energia!")
 		playsound(src, 'sound/machines/cryo_warning.ogg', 65)
 	on = power_failure ? GENERATOR_WANTPOWER : GENERATOR_INACTIVE
 	master?.turn_off(power_failure)

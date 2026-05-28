@@ -112,7 +112,7 @@
 		return ITEM_INTERACT_BLOCKING
 	set_anchored(!anchored)
 	power_change()
-	to_chat(user, span_notice("You [anchored ? "attached" : "detached"] [src]."))
+	to_chat(user, span_notice("You [anchored ? "fixado" : "detached"] [src]."))
 	tool.play_tool_sound(src)
 	return ITEM_INTERACT_SUCCESS
 

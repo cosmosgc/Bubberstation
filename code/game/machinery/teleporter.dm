@@ -167,7 +167,7 @@
 
 	if(panel_open)
 		tool.set_buffer(src)
-		balloon_alert(user, "saved to multitool buffer")
+		balloon_alert(user, "salvo no buffer da multitool")
 		return ITEM_INTERACT_SUCCESS
 
 	if(!istype(tool.buffer, /obj/machinery/teleport/station) || tool.buffer == src)

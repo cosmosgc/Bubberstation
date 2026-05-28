@@ -86,7 +86,7 @@
 	if(!is_operational)
 		return CLICK_ACTION_BLOCKING
 	if(panel_open)
-		balloon_alert(user, "close panel!")
+		balloon_alert(user, "feche o painel!")
 		return CLICK_ACTION_BLOCKING
 	set_on(!on)
 	balloon_alert(user, "turned [on ? "on" : "off"]")

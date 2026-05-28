@@ -9,7 +9,7 @@
 
 	if(stat != CONSCIOUS)
 		if(!silent)
-			balloon_alert(src, "unconscious!")
+			balloon_alert(src, "inconsciente!")
 		return FALSE
 
 	if(hunger_disabled)
@@ -25,7 +25,7 @@
 
 	if(!(mobility_flags & MOBILITY_MOVE))
 		if(!silent)
-			balloon_alert(src, "can't move!")
+			balloon_alert(src, "não pode mover!")
 		return FALSE
 
 	if(meal.stat == DEAD)

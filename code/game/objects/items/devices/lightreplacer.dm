@@ -79,7 +79,7 @@
 /obj/item/lightreplacer/attackby(obj/item/insert, mob/user, list/modifiers, list/attack_modifiers)
 	. = ..()
 	if(uses >= max_uses)
-		user.balloon_alert(user, "already full!")
+		user.balloon_alert(user, "já cheio!")
 		return TRUE
 
 	if(istype(insert, /obj/item/stack/sheet/glass))
@@ -154,7 +154,7 @@
 
 		if(!replaced_something)
 			if(uses == max_uses)
-				user.balloon_alert(user, "already full!")
+				user.balloon_alert(user, "já cheio!")
 			else
 				user.balloon_alert(user, "nothing usable in [storage_to_empty]!")
 			return TRUE
@@ -341,7 +341,7 @@
 
 /obj/item/lightreplacer/blue/ui_action_click(mob/user, actiontype)
 	if(!COOLDOWN_FINISHED(src, lightreplacer_spot_cooldown))
-		balloon_alert(user, "on cooldown!")
+		balloon_alert(user, "em recarga!")
 		return
 	COOLDOWN_START(src, lightreplacer_spot_cooldown, BLIGHTREPLACER_SPOT_COOLDOWN)
 	lightreplacer_scan()

@@ -326,7 +326,7 @@
 				balloon_alert(user, "secured assembly in the way!")
 				return
 			if((stuff_in_the_way.density) && !(stuff_in_the_way.flags_1 & ON_BORDER_1))
-				balloon_alert(user, "something in the way!")
+				balloon_alert(user, "algo no caminho!")
 				return
 		set_anchored(!anchored)
 		user.visible_message(
@@ -346,7 +346,7 @@
 
 		//prevent construction if something dense's on our tile
 		if(solarturf.is_blocked_turf(exclude_mobs = TRUE, source_atom = src))
-			balloon_alert(user, "something in the way!")
+			balloon_alert(user, "algo no caminho!")
 			return
 		if(!istype(item_used, /obj/item/stack/sheet/glass))
 			to_chat(user, span_warning("The tracker only accepts standard, un-reinforced glass."))
@@ -388,7 +388,7 @@
 
 	//prevent construction if something dense's on our tile
 	if(solarturf.is_blocked_turf(exclude_mobs = TRUE, source_atom = src))
-		balloon_alert(user, "something in the way!")
+		balloon_alert(user, "algo no caminho!")
 		return
 
 	if(is_glass_sheet(item_used))

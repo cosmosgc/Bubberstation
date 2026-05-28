@@ -289,7 +289,7 @@
 							return TRUE
 						deconstruction_state = PLATE_INTACT
 						update_appearance(UPDATE_ICON)
-						balloon_alert(user, "secured")
+						balloon_alert(user, "fixado")
 					return TRUE
 			return FALSE
 

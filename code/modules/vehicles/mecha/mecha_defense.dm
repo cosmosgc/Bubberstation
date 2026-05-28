@@ -255,7 +255,7 @@
 	if(tool.GetID())
 		if(!allowed(user))
 			if(mecha_flags & ID_LOCK_ON)
-				balloon_alert(user, "access denied!")
+				balloon_alert(user, "acesso negado!")
 			else
 				balloon_alert(user, "unable to set id lock!")
 			return ITEM_INTERACT_BLOCKING
@@ -281,12 +281,12 @@
 /// Try to insert a stock part into the mech
 /obj/vehicle/sealed/mecha/proc/try_insert_part(obj/item/stock_parts/tool, mob/living/user)
 	if(!(mecha_flags & PANEL_OPEN))
-		balloon_alert(user, "open the panel first!")
+		balloon_alert(user, "abra o painel primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(tool, /obj/item/stock_parts/power_store/cell))
 		if(cell)
-			balloon_alert(user, "already installed!")
+			balloon_alert(user, "já instalado!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.transferItemToLoc(tool, src, silent = FALSE))
@@ -301,7 +301,7 @@
 
 	if(istype(tool, /obj/item/stock_parts/scanning_module))
 		if(scanmod)
-			balloon_alert(user, "already installed!")
+			balloon_alert(user, "já instalado!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.transferItemToLoc(tool, src, silent = FALSE))
@@ -316,7 +316,7 @@
 
 	if(istype(tool, /obj/item/stock_parts/capacitor))
 		if(capacitor)
-			balloon_alert(user, "already installed!")
+			balloon_alert(user, "já instalado!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.transferItemToLoc(tool, src, silent = FALSE))
@@ -331,7 +331,7 @@
 
 	if(istype(tool, /obj/item/stock_parts/servo))
 		if(servo)
-			balloon_alert(user, "already installed!")
+			balloon_alert(user, "já instalado!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.transferItemToLoc(tool, src, silent = FALSE))
@@ -399,7 +399,7 @@
 		remover.empty_mech(src, user)
 		return
 	if(!(mecha_flags & PANEL_OPEN))
-		balloon_alert(user, "open the panel first!")
+		balloon_alert(user, "abra o painel primeiro!")
 		return
 	if(dna_lock && user.has_dna())
 		var/mob/living/carbon/user_carbon = user
@@ -407,7 +407,7 @@
 			balloon_alert(user, "access with this DNA denied!")
 			return
 	if((mecha_flags & ID_LOCK_ON) && !allowed(user))
-		balloon_alert(user, "access denied!")
+		balloon_alert(user, "acesso negado!")
 		return
 
 	var/list/stock_parts = list()
@@ -439,7 +439,7 @@
 		balloon_alert(user, "you're already repairing this!")
 		return
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "it's not damaged!")
+		balloon_alert(user, "não está danificado!")
 		return
 	if(!W.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return

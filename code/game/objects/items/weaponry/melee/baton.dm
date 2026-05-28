@@ -629,9 +629,9 @@
 		if(!cell)
 			balloon_alert(user, "no power source!")
 		else if(cell?.charge < cell_hit_cost)
-			balloon_alert(user, "out of charge!")
+			balloon_alert(user, "sem carga!")
 		else
-			balloon_alert(user, "turned off")
+			balloon_alert(user, "desligado")
 	add_fingerprint(user)
 
 /// Toggles the stun baton's light

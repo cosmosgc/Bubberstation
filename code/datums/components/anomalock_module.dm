@@ -48,7 +48,7 @@
 /datum/component/anomaly_locked_module/proc/on_module_triggered(obj/item/mod/module/source, mob/living/wearer)
 	SIGNAL_HANDLER
 	if(!core)
-		source.balloon_alert(wearer, "no core!")
+		source.balloon_alert(wearer, "sem núcleo!")
 		return MOD_ABORT_USE
 
 /datum/component/anomaly_locked_module/proc/on_item_interact(obj/item/mod/module/source, mob/living/user, obj/item/tool, list/modifiers)
@@ -87,7 +87,7 @@
 /datum/component/anomaly_locked_module/proc/on_screwdriver_act(obj/item/mod/module/source, mob/living/user, obj/item/tool)
 	SIGNAL_HANDLER
 	if(!core)
-		source.balloon_alert(user, "no core!")
+		source.balloon_alert(user, "sem núcleo!")
 		return ITEM_INTERACT_FAILURE
 	if(!core_removable)
 		source.balloon_alert(user, "cannot remove core!")
@@ -96,7 +96,7 @@
 
 /datum/component/anomaly_locked_module/proc/try_remove_core(obj/item/mod/module/source, mob/living/user, obj/item/tool)
 	if(!do_after(user, 3 SECONDS, source))
-		source.balloon_alert(user, "interrupted!")
+		source.balloon_alert(user, "interrompido!")
 		return
 	source.balloon_alert(user, "core removed")
 	core.forceMove(source.drop_location())

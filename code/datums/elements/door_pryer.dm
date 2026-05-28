@@ -32,7 +32,7 @@
 		return NONE // It's already open numbnuts
 
 	if(DOING_INTERACTION_WITH_TARGET(attacker, target) || (!isnull(interaction_key) && DOING_INTERACTION(attacker, interaction_key)))
-		attacker.balloon_alert(attacker, "busy!")
+		attacker.balloon_alert(attacker, "ocupado!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if (attacker.combat_mode)
@@ -67,7 +67,7 @@
 	playsound(airlock_target, 'sound/machines/airlock/airlock_alien_prying.ogg', 100, TRUE)
 	airlock_target.balloon_alert(attacker, "prying...")
 	if(!do_after(attacker, pry_time, airlock_target))
-		airlock_target.balloon_alert(attacker, "interrupted!")
+		airlock_target.balloon_alert(attacker, "interrompido!")
 		attacker.log_message("Tried and failed to pry open [src], located at [loc_name(src)], due to getting interrupted.", LOG_GAME)
 		return
 	if(airlock_target.locked)

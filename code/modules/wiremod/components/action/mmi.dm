@@ -144,7 +144,7 @@
 		return
 	var/datum/component/shell/shell_comp = shell.GetComponent(/datum/component/shell)
 	if(shell_comp.locked)
-		shell.balloon_alert(user, "locked!")
+		shell.balloon_alert(user, "trancado!")
 		return ITEM_INTERACT_FAILURE
 	if(brain || boris)
 		shell.balloon_alert(user, "already has brain!")

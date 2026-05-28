@@ -228,7 +228,7 @@
 		if(QDELETED(living_target) || living_target.stat == DEAD)
 			return
 
-		living_target.balloon_alert(living_target, "you hear a voice")
+		living_target.balloon_alert(living_target, "você ouve uma voz")
 		to_chat(living_target, span_hear("You hear a voice in your head saying: [span_abductor(message)]"))
 		to_chat(user, span_notice("You send the message to your target."))
 		log_directed_talk(user, living_target, message, LOG_SAY, "abductor whisper")

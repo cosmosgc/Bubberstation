@@ -173,7 +173,7 @@
 		return ITEM_INTERACT_FAILURE
 
 	if(!our_cell.charge)
-		balloon_alert(user, "no charge!")
+		balloon_alert(user, "sem carga!")
 		return ITEM_INTERACT_FAILURE
 
 	var/obj/item/stock_parts/power_store/target_cell = interacting_with.get_cell(src, user)

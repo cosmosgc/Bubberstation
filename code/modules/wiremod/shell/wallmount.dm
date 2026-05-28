@@ -15,7 +15,7 @@
 /obj/structure/wallmount_circuit/wrench_act(mob/living/user, obj/item/tool)
 	var/datum/component/shell/shell_comp = GetComponent(/datum/component/shell)
 	if(shell_comp.locked)
-		balloon_alert(user, "locked!")
+		balloon_alert(user, "trancado!")
 		return ITEM_INTERACT_FAILURE
 	to_chat(user, span_notice("You start unsecuring the circuit box..."))
 	if(tool.use_tool(src, user, 40, volume=50))

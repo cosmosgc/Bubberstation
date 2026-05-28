@@ -156,7 +156,7 @@
 		return ITEM_INTERACT_SKIP_TO_ATTACK
 
 	if (length(contents) >= MAX_FLAT_PACKS)
-		balloon_alert(user, "full!")
+		balloon_alert(user, "cheio!")
 		return ITEM_INTERACT_BLOCKING
 	if (!user.transferItemToLoc(attacking_item, src))
 		return ITEM_INTERACT_BLOCKING

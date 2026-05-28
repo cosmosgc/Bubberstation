@@ -12,7 +12,7 @@
 /obj/item/wallframe/light_fixture/try_build(atom/support, mob/user)
 	var/area/A = get_area(user)
 	if(A.always_unpowered)
-		balloon_alert(user, "cannot place in this area!")
+		balloon_alert(user, "não pode ser colocado aqui!")
 		return FALSE
 	return ..()
 
@@ -38,7 +38,7 @@
 		balloon_alert(user, "cannot place here!")
 		return
 	if(local_area.always_unpowered || !local_area.static_lighting)
-		balloon_alert(user, "cannot place in this area!")
+		balloon_alert(user, "não pode ser colocado aqui!")
 		return
 	for(var/obj/object in local_turf)
 		if(object.density && !(object.obj_flags & IGNORE_DENSITY) || object.obj_flags & BLOCKS_CONSTRUCTION)

@@ -198,7 +198,7 @@
 		return
 
 	if(!use_energy(active_power_usage * 1.5, force = FALSE))
-		say("Not enough energy!")
+		say("energia insuficiente!")
 		return
 
 	maim_golem(rockman)
@@ -301,10 +301,10 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN || panel_open)
 		return
 	if(!anchored)
-		balloon_alert(user, "anchor it first!")
+		balloon_alert(user, "ancore primeiro!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(panel_open)
-		balloon_alert(user, "close panel!")
+		balloon_alert(user, "feche o painel!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	var/obj/item/boulder/boulder = locate(/obj/item/boulder) in src
@@ -333,7 +333,7 @@
 	if(chosen_boulder.loc != src)
 		return
 	if(!use_energy(active_power_usage, force = FALSE))
-		say("Not enough energy!")
+		say("energia insuficiente!")
 		return
 
 	//if boulders are kept inside because there is no space to eject them, then they could be reprocessed, lets avoid that

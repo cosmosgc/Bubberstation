@@ -158,7 +158,7 @@
 	// A tider can fix it if they want to soak a bunch of rads and inhale noxious fumes,
 	// but only an equipped engineer should be able to handle it painlessly.
 	if(!tool.use_tool(source, user, 30 SECONDS, amount = (tool.tool_behaviour == TOOL_WELDER ? 2 : 0), volume = 50))
-		source.balloon_alert(user, "interrupted!")
+		source.balloon_alert(user, "interrompido!")
 		return
 
 	source.balloon_alert(user, "leak repaired")

@@ -96,7 +96,7 @@
 		return
 
 	if(!length(contents))
-		balloon_alert(user, "it's empty!")
+		balloon_alert(user, "está vazio!")
 		return
 
 	var/choice = show_radial_menu(user, src, radial_options, require_near = !issilicon(user))

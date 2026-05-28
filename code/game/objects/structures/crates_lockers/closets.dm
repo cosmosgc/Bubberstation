@@ -280,7 +280,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		return
 	//Overlay is similar enough for both that we can use the same mask for both
 	. += emissive_appearance(icon, "locked", src, alpha = src.alpha)
-	. += locked ? "locked" : "unlocked"
+	. += locked ? "trancado" : "destrancado"
 
 /obj/structure/closet/vv_edit_var(vname, vval)
 	if(vname == NAMEOF(src, opened))
@@ -681,7 +681,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 	if(!secure || !card_reader_installed || broken || locked || opened)
 		return
 	access_locked = !access_locked
-	balloon_alert(user, "access panel [access_locked ? "locked" : "unlocked"]")
+	balloon_alert(user, "access panel [access_locked ? "trancado" : "destrancado"]")
 	return TRUE
 
 /// sets the access for the closets from the swiped ID card
@@ -716,7 +716,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		return FALSE
 
 	if(locked)
-		balloon_alert(user, "unlock first!")
+		balloon_alert(user, "destranque primeiro!")
 		return FALSE
 
 	return TRUE
@@ -729,7 +729,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		balloon_alert(user, "attached to reader!")
 		return FALSE
 	if(locked)
-		balloon_alert(user, "unlock first!")
+		balloon_alert(user, "destranque primeiro!")
 		return FALSE
 
 	return TRUE
@@ -748,7 +748,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		return FALSE
 
 	if(locked)
-		balloon_alert(user, "unlock first!")
+		balloon_alert(user, "destranque primeiro!")
 		return FALSE
 
 	return TRUE
@@ -759,7 +759,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		return FALSE
 
 	if(locked)
-		balloon_alert(user, "unlock first!")
+		balloon_alert(user, "destranque primeiro!")
 		return FALSE
 
 	return TRUE
@@ -1160,7 +1160,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 	play_closet_lock_sound()
 	user.visible_message(
 		span_notice("[user] [locked ? "locks" : "unlocks"] [src]."),
-		span_notice("You [locked ? "locked" : "unlocked"] [src]."),
+		span_notice("You [locked ? "trancado" : "destrancado"] [src]."),
 	)
 	update_appearance()
 	return TRUE
@@ -1276,7 +1276,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 /obj/structure/closet/rename_checks(mob/living/user)
 	. = TRUE
 	if(locked)
-		src.balloon_alert(user, "unlock first!")
+		src.balloon_alert(user, "destranque primeiro!")
 		return FALSE
 
 	if(isnull(id_card) && secure)

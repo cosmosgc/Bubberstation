@@ -72,7 +72,7 @@
 
 /obj/structure/punching_bag/wrench_act_secondary(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
-	balloon_alert(user, anchored ? "unsecured" : "secured")
+	balloon_alert(user, anchored ? "solto" : "fixado")
 	anchored = !anchored
 	return TRUE
 
@@ -81,7 +81,7 @@
 		balloon_alert(user, "still secured!")
 		return FALSE
 	tool.play_tool_sound(src)
-	balloon_alert(user, "deconstructing...")
+	balloon_alert(user, "desconstruindo...")
 	if (!do_after(user, 10 SECONDS, target = src))
 		return FALSE
 	new /obj/item/stack/sheet/iron(get_turf(src), 2)

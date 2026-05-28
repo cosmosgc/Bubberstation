@@ -112,11 +112,11 @@
 		return ITEM_INTERACT_SKIP_TO_ATTACK
 	if(atom_integrity >= max_integrity || (machine_stat & BROKEN) || !tool.tool_start_check(user, amount = 1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "repairing...")
+	balloon_alert(user, "consertando...")
 	while(tool.use_tool(src, user, 2.5 SECONDS, volume=40))
 		atom_integrity = min(atom_integrity + 25, max_integrity)
 		if(atom_integrity >= max_integrity)
-			balloon_alert(user, "repaired")
+			balloon_alert(user, "consertado")
 			return ITEM_INTERACT_SUCCESS
 		balloon_alert(user, "partially repaired...")
 

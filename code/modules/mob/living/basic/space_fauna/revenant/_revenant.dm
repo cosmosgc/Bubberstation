@@ -356,7 +356,7 @@
 /mob/living/basic/revenant/proc/on_move(datum/source, atom/entering_loc)
 	SIGNAL_HANDLER
 	if(HAS_TRAIT(src, TRAIT_NO_TRANSFORM)) // just in case it occurs, need to provide some feedback
-		balloon_alert(src, "can't move!")
+		balloon_alert(src, "não pode mover!")
 		return
 
 	if(isnull(orbiting) || incorporeal_move_check(entering_loc))

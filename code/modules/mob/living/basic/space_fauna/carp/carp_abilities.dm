@@ -57,7 +57,7 @@
 
 /datum/action/cooldown/mob_cooldown/lesser_carp_rift/proc/make_rift(atom/target_atom)
 	if (owner.Adjacent(target_atom))
-		owner.balloon_alert(owner, "too close!")
+		owner.balloon_alert(owner, "perto demais!")
 		return FALSE
 
 	var/turf/owner_turf = get_turf(owner)

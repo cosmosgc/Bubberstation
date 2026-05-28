@@ -248,7 +248,7 @@
 		balloon_alert(user, "[src] is anchored!")
 		return TRUE
 	else if(!panel_open)
-		balloon_alert(user, "open the panel first!")
+		balloon_alert(user, "abra o painel primeiro!")
 		return TRUE
 	else
 		default_deconstruction_crowbar(I)

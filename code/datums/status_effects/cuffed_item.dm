@@ -119,7 +119,7 @@
 	owner.balloon_alert(user, "removing cuffs...")
 	playsound(owner, cuffs.cuffsound, 30, TRUE, -2)
 	if(!do_after(user, cuffs.get_handcuff_time(user) * 1.5, owner, interaction_key = interaction_key) || QDELETED(src))
-		owner.balloon_alert(user, "interrupted!")
+		owner.balloon_alert(user, "interrompido!")
 		return FALSE
 
 	if(user != owner)

@@ -65,7 +65,7 @@
 			owner.balloon_alert(owner, "already feeding!")
 			return FALSE
 	if(user.is_mouth_covered() && !isplasmaman(user))
-		owner.balloon_alert(owner, "mouth covered!")
+		owner.balloon_alert(owner, "boca coberta!")
 		return FALSE
 	//Find target, it will alert what the problem is, if any.
 	if(!find_target())
@@ -390,7 +390,7 @@
 	var/mob/living/carbon/human/target_user = target
 	if(!(target_user.dna?.species) || !(target_user.mob_biotypes & MOB_ORGANIC) || HAS_TRAIT(target_user, TRAIT_NOBLOOD))
 		if(give_warnings)
-			owner.balloon_alert(owner, "no blood!")
+			owner.balloon_alert(owner, "sem sangue!")
 		return FALSE
 	if(!target_user.can_inject(owner, BODY_ZONE_HEAD, penetration))
 		if(give_warnings)

@@ -45,7 +45,7 @@
 		user.balloon_alert(user, "gun mechanism won't work here!")
 		return ITEM_INTERACT_BLOCKING
 	if(get_dist(user, target) > 9)
-		user.balloon_alert(user, "too far away!")
+		user.balloon_alert(user, "longe demais!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/turf/attacked_atom = get_turf(target)

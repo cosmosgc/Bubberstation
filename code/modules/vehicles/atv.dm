@@ -77,10 +77,10 @@
 		return
 	. = TRUE
 	if(DOING_INTERACTION(user, src))
-		balloon_alert(user, "you're already repairing it!")
+		balloon_alert(user, "você já está consertando isso!")
 		return
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "it's not damaged!")
+		balloon_alert(user, "não está danificado!")
 		return
 	if(!W.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return

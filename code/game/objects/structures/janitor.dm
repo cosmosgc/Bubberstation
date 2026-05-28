@@ -41,7 +41,7 @@
 			balloon_alert(user, "already soaked!")
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 		if(!CART_HAS_MINIMUM_REAGENT_VOLUME)
-			balloon_alert(user, "empty!")
+			balloon_alert(user, "vazio!")
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 		reagents.trans_to(weapon, weapon.reagents.maximum_volume, transferred_by = user)
 		balloon_alert(user, "doused mop")

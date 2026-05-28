@@ -88,9 +88,9 @@
 		var/obj/item/card/id/id_card = tool
 		if((ACCESS_SECURITY in id_card.GetAccess()))
 			locked = !locked
-			balloon_alert(user, "beacon [locked ? "locked" : "unlocked"]")
+			balloon_alert(user, "beacon [locked ? "trancado" : "destrancado"]")
 		else
-			balloon_alert(user, "no access!")
+			balloon_alert(user, "sem acesso!")
 
 /obj/item/dragnet_beacon/wrench_act(mob/living/user, obj/item/tool)
 	if(user.is_holding(src))

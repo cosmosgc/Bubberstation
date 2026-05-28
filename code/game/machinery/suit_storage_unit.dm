@@ -329,7 +329,7 @@
 			return FALSE
 
 	if(!allowed(user))
-		balloon_alert(user, "access denied!")
+		balloon_alert(user, "acesso negado!")
 		return FALSE
 
 	return TRUE
@@ -612,11 +612,11 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if(locked)
-		balloon_alert(user, "unlock first!")
+		balloon_alert(user, "destranque primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	access_locked = !access_locked
-	balloon_alert(user, "access panel [access_locked ? "locked" : "unlocked"]")
+	balloon_alert(user, "access panel [access_locked ? "trancado" : "destrancado"]")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/suit_storage_unit/proc/can_install_card_reader(mob/user)
@@ -624,7 +624,7 @@
 		return FALSE
 
 	if(locked)
-		balloon_alert(user, "unlock first!")
+		balloon_alert(user, "destranque primeiro!")
 		return FALSE
 
 	return TRUE
@@ -647,10 +647,10 @@
 	var/obj/item/card/id/id = null
 	if(!state_open && is_operational && card_reader_installed && !isnull((id = tool.GetID())))
 		if(panel_open)
-			balloon_alert(user, "close panel!")
+			balloon_alert(user, "feche o painel!")
 			return ITEM_INTERACT_BLOCKING
 		if(locked)
-			balloon_alert(user, "unlock first!")
+			balloon_alert(user, "destranque primeiro!")
 			return ITEM_INTERACT_BLOCKING
 		if(access_locked)
 			balloon_alert(user, "access panel locked!")
@@ -761,7 +761,7 @@
 /obj/machinery/suit_storage_unit/rename_checks(mob/living/user)
 	. = TRUE
 	if(locked)
-		balloon_alert(user, "unlock first!")
+		balloon_alert(user, "destranque primeiro!")
 		return FALSE
 	if(!access_check(user))
 		balloon_alert(user, "not yours to rename!")

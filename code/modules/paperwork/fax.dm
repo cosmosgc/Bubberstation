@@ -141,7 +141,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
  */
 /obj/machinery/fax/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if (!panel_open && !allow_exotic_faxes)
-		balloon_alert(user, "open panel first!")
+		balloon_alert(user, "abra o painel primeiro!")
 		return FALSE
 	if (!(obj_flags & EMAGGED))
 		obj_flags |= EMAGGED

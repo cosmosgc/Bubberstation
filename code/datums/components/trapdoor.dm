@@ -416,7 +416,7 @@
 	if(!istype(assembly))
 		return NONE
 	if(internals)
-		balloon_alert(user, "doesn't fit!")
+		balloon_alert(user, "não cabe!")
 		return ITEM_INTERACT_BLOCKING
 	balloon_alert(user, "added")
 	internals = assembly
@@ -443,7 +443,7 @@
 		return TRUE
 
 	if(!COOLDOWN_FINISHED(src, trapdoor_cooldown))
-		user.balloon_alert(user, "on cooldown!")
+		user.balloon_alert(user, "em recarga!")
 		return TRUE
 
 	user.balloon_alert(user, "trapdoor triggered")

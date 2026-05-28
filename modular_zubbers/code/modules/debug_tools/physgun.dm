@@ -60,10 +60,10 @@
 			playsound(user, 'modular_zubbers/sound/phystools/physgun_cant_grab.ogg', 100, TRUE)
 			return
 		if(!COOLDOWN_FINISHED(src, grab_cooldown) && !handled_atom)
-			user.balloon_alert(user, "on cooldown!")
+			user.balloon_alert(user, "em recarga!")
 			return
 		if(!range_check(target, user) && !handled_atom)
-			user.balloon_alert(user, "too far!")
+			user.balloon_alert(user, "longe demais!")
 			return
 		catch_atom(target, user)
 		COOLDOWN_START(src, grab_cooldown, use_cooldown)
@@ -171,7 +171,7 @@
 	. = COMSIG_MOB_CANCEL_CLICKON
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(!advanced)
-			physgun_user.balloon_alert(physgun_user, "not enough power!")
+			physgun_user.balloon_alert(physgun_user, "energia insuficiente!")
 			return
 		pause_atom(handled_atom)
 		return

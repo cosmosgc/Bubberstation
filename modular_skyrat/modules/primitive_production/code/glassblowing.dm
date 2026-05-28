@@ -451,7 +451,7 @@
 		return FALSE
 
 	if(HAS_TRAIT(used_tool, TRAIT_CURRENTLY_GLASSBLOWING))
-		balloon_alert(user, "already in use!")
+		balloon_alert(user, "já em uso!")
 		return FALSE
 
 	ADD_TRAIT(used_tool, TRAIT_CURRENTLY_GLASSBLOWING, TRAIT_GLASSBLOWING)

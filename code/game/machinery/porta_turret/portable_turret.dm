@@ -331,7 +331,7 @@ DEFINE_BITFIELD(turret_flags, list(
 		return
 
 	tool.set_buffer(src)
-	balloon_alert(user, "saved to multitool buffer")
+	balloon_alert(user, "salvo no buffer da multitool")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/porta_turret/crowbar_act(mob/living/user, obj/item/tool)
@@ -387,7 +387,7 @@ DEFINE_BITFIELD(turret_flags, list(
 		to_chat(user, span_alert("Access denied."))
 		return ITEM_INTERACT_BLOCKING
 	locked = !locked
-	to_chat(user, span_notice("Controls are now [locked ? "locked" : "unlocked"]."))
+	to_chat(user, span_notice("Controls are now [locked ? "trancado" : "destrancado"]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/porta_turret/emag_act(mob/user, obj/item/card/emag/emag_card)

@@ -224,7 +224,7 @@
 
 	if(istype(attacking_item, /obj/item/circuitboard/machine))
 		if(busy)
-			balloon_alert(user, "busy!")
+			balloon_alert(user, "ocupado!")
 			return ITEM_INTERACT_BLOCKING
 		if (!user.transferItemToLoc(attacking_item, src))
 			return ITEM_INTERACT_BLOCKING

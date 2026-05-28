@@ -17,7 +17,7 @@
 		return FALSE
 
 	if(!cain_and_abel.check_wield(owner))
-		owner.balloon_alert(owner, "offhand busy!")
+		owner.balloon_alert(owner, "mão secundária ocupada!")
 		return TRUE
 
 	living_owner.apply_status_effect(/datum/status_effect/dagger_swinging)

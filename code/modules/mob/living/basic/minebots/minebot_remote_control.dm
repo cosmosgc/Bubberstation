@@ -31,7 +31,7 @@
 		return .
 
 	if(!COOLDOWN_FINISHED(src, bomb_timer))
-		balloon_alert(user, "on cooldown!")
+		balloon_alert(user, "em recarga!")
 		return TRUE
 
 	prime_bomb(user)
@@ -54,7 +54,7 @@
 		return ITEM_INTERACT_BLOCKING
 	var/turf/target_turf = get_turf(interacting_with)
 	if(isnull(target_turf) || isclosedturf(target_turf) || isgroundlessturf(target_turf))
-		user.balloon_alert(user, "invalid target!")
+		user.balloon_alert(user, "alvo inválido!")
 		return ITEM_INTERACT_BLOCKING
 	playsound(src, 'sound/machines/beep/beep.ogg', 30)
 	clear_priming()

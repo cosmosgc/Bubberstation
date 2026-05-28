@@ -80,7 +80,7 @@
 /obj/item/detective_scanner/proc/safe_scan(mob/user, atom/atom_to_scan)
 	set waitfor = FALSE
 	if(scanner_busy)
-		balloon_alert(user, "scanner busy!")
+		balloon_alert(user, "escâner ocupado!")
 		return
 	if(!scan(user, atom_to_scan)) // this should only return FALSE if a runtime occurs during the scan proc, so ideally never
 		balloon_alert(user, "scanner error!") // but in case it does, we 'error' instead of just bricking the scanner
@@ -232,7 +232,7 @@
 			if(!log_data[index])
 				return
 			if(scanner_busy)
-				balloon_alert(ui.user, "scanner busy!")
+				balloon_alert(ui.user, "escâner ocupado!")
 				return
 			log_data.Cut(index, index + 1)
 			balloon_alert(ui.user, "log deleted")
@@ -242,7 +242,7 @@
 				balloon_alert(ui.user, "no logs!")
 				return
 			if(scanner_busy)
-				balloon_alert(ui.user, "scanner busy!")
+				balloon_alert(ui.user, "escâner ocupado!")
 				return
 			scanner_busy = TRUE
 			playsound(src, 'sound/machines/printer.ogg', 50)
@@ -254,7 +254,7 @@
 		balloon_alert(user, "no logs!")
 		return CLICK_ACTION_BLOCKING
 	if(scanner_busy)
-		balloon_alert(user, "scanner busy!")
+		balloon_alert(user, "escâner ocupado!")
 		return CLICK_ACTION_BLOCKING
 	balloon_alert(user, "logs cleared")
 	log_data = list()

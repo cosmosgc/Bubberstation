@@ -45,7 +45,7 @@
 	playsound(user, 'sound/items/handling/surgery/organ2.ogg', vol = 80, vary = TRUE, ignore_walls = FALSE)
 
 	if (!do_after(user, insertion_time, extra_checks = CALLBACK(src, PROC_REF(can_insert_organ), user, organ)))
-		user.balloon_alert(user, "interrupted!")
+		user.balloon_alert(user, "interrompido!")
 		return
 
 	zone_name = user.parse_zone_with_bodypart(organ.zone)

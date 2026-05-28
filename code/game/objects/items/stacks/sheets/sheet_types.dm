@@ -259,7 +259,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 		user.balloon_alert(user, "can't place it here!")
 		return ITEM_INTERACT_BLOCKING
 	if(build_on.is_blocked_turf())
-		user.balloon_alert(user, "something is blocking the tile!")
+		user.balloon_alert(user, "algo está bloqueando o tile!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/frame_path = null
@@ -283,10 +283,10 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	if(!do_after(user, time * skill_modifier, build_on))
 		return ITEM_INTERACT_BLOCKING
 	if(build_on.is_blocked_turf())
-		user.balloon_alert(user, "something is blocking the tile!")
+		user.balloon_alert(user, "algo está bloqueando o tile!")
 		return ITEM_INTERACT_BLOCKING
 	if(!use(cost))
-		user.balloon_alert(user, "not enough material!")
+		user.balloon_alert(user, "material insuficiente!")
 		return ITEM_INTERACT_BLOCKING
 	if(frame_path)
 		var/obj/structure/frame/constructed_frame = new frame_path(build_on)

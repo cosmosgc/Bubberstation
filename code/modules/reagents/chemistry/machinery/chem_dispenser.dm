@@ -199,7 +199,7 @@
 
 /obj/machinery/chem_dispenser/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "already emagged!")
+		balloon_alert(user, "já emagado!")
 		return FALSE
 	balloon_alert(user, "safeties shorted out")
 	dispensable_reagents |= emagged_reagents//add the emagged reagents to the dispensable ones

@@ -53,7 +53,7 @@
 
 /obj/structure/sauna_oven/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
-	balloon_alert(user, "deconstructing...")
+	balloon_alert(user, "desconstruindo...")
 	if(tool.use_tool(src, user, 60, volume = 50))
 		balloon_alert(user, "deconstructed")
 		new /obj/item/stack/sheet/mineral/wood(get_turf(src), 30)
@@ -80,7 +80,7 @@
 	else if(istype(tool, /obj/item/stack/sheet/mineral/wood))
 		var/obj/item/stack/sheet/mineral/wood/wood = tool
 		if(fuel_amount > SAUNA_MAXIMUM_FUEL)
-			balloon_alert(user, "it's full!")
+			balloon_alert(user, "está cheio!")
 			return ITEM_INTERACT_BLOCKING
 		fuel_amount += SAUNA_LOG_FUEL * wood.amount
 		wood.use(wood.amount)

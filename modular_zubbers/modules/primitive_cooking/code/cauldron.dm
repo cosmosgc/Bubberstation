@@ -166,7 +166,7 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/cauldron/crowbar_act(mob/living/user, obj/item/tool)
-	user.balloon_alert_to_viewers("disassembling...")
+	user.balloon_alert_to_viewers("desmontando...")
 	if(!tool.use_tool(src, user, 2 SECONDS, volume = 100))
 		return
 	new /obj/item/stack/sheet/mineral/stone(drop_location(), 5) // Made with stone instead of iron so that it doesn't outbalance microwaves on station
@@ -182,16 +182,16 @@
 
 	if(!anchored)
 		if(IS_EDIBLE(item))
-			balloon_alert(user, "not secured!")
+			balloon_alert(user, "não fixado!")
 			return ITEM_INTERACT_BLOCKING
 		return NONE
 
 	if(item.w_class <= WEIGHT_CLASS_NORMAL && !user.combat_mode && isnull(item.atom_storage))
 		if(ingredients.len >= max_n_of_items)
-			balloon_alert(user, "it's full!")
+			balloon_alert(user, "está cheio!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(item, src))
-			balloon_alert(user, "it's stuck to your hand!")
+			balloon_alert(user, "está preso na sua mão!")
 			return ITEM_INTERACT_BLOCKING
 
 		ingredients += item
@@ -221,7 +221,7 @@
 		if(!IS_EDIBLE(tray_item))
 			continue
 		if(ingredients.len >= max_n_of_items)
-			balloon_alert(user, "it's full!")
+			balloon_alert(user, "está cheio!")
 			return TRUE
 		if(tool.atom_storage.attempt_remove(tray_item, src))
 			loaded++
@@ -243,7 +243,7 @@
 		return
 	if(user.can_perform_action(src))
 		if(!length(ingredients))
-			balloon_alert(user, "it's empty!")
+			balloon_alert(user, "está vazio!")
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 		cook(user)
@@ -254,7 +254,7 @@
 	. = ..()
 
 	if(!anchored)
-		balloon_alert(user, "not secured!")
+		balloon_alert(user, "não fixado!")
 		return
 	if(operating || !user.can_perform_action(src))
 		return
@@ -263,14 +263,14 @@
 		if(isAI(user))
 			examine(user)
 		else
-			balloon_alert(user, "it's empty!")
+			balloon_alert(user, "está vazio!")
 		return
 
 	var/choice = show_radial_menu(user, src, radial_options, require_near = TRUE)
 
 	// post choice verification
 	if(!anchored)
-		balloon_alert(user, "not secured!")
+		balloon_alert(user, "não fixado!")
 		return
 	if(operating || !user.can_perform_action(src))
 		return

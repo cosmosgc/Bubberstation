@@ -69,7 +69,7 @@
 // Fix the clapper
 /obj/structure/desk_bell/screwdriver_act(mob/living/user, obj/item/tool)
 	if(broken_ringer)
-		balloon_alert(user, "repairing...")
+		balloon_alert(user, "consertando...")
 		tool.play_tool_sound(src)
 		if(tool.use_tool(src, user, 5 SECONDS))
 			balloon_alert_to_viewers("repaired")

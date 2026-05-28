@@ -309,9 +309,9 @@
 	mode = HEATER_MODE_STANDBY
 	if(!isnull(user))
 		if(QDELETED(cell))
-			balloon_alert(user, "no cell!")
+			balloon_alert(user, "sem célula!")
 		else if(!cell.charge())
-			balloon_alert(user, "no charge!")
+			balloon_alert(user, "sem carga!")
 		else if(!is_operational)
 			balloon_alert(user, "not operational!")
 		else

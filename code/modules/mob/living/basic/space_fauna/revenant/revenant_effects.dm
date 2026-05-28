@@ -63,7 +63,7 @@
 	owner.orbiting?.end_orbit(src)
 
 	ADD_TRAIT(owner, TRAIT_NO_TRANSFORM, TRAIT_STATUS_EFFECT(id))
-	owner.balloon_alert(owner, "can't move!")
+	owner.balloon_alert(owner, "não pode mover!")
 	owner.update_mob_action_buttons()
 	owner.update_appearance(UPDATE_ICON)
 

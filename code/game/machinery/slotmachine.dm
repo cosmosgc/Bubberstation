@@ -326,7 +326,7 @@
 		return
 
 	if(!use_energy(active_power_usage, force = FALSE))
-		say("Not enough energy!")
+		say("energia insuficiente!")
 		return
 
 	var/the_name
@@ -372,7 +372,7 @@
 /// Check if the machine can be spun
 /obj/machinery/computer/slot_machine/proc/can_spin(mob/user)
 	if(machine_stat & NOPOWER)
-		balloon_alert(user, "no power!")
+		balloon_alert(user, "sem energia!")
 		return FALSE
 	if(machine_stat & BROKEN)
 		balloon_alert(user, "machine broken!")

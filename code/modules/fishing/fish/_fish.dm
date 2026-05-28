@@ -1107,7 +1107,7 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 /obj/item/fish/proc/use_lazarus(datum/source, obj/item/lazarus_injector/injector, mob/user)
 	SIGNAL_HANDLER
 	if(injector.revive_type != SENTIENCE_ORGANIC)
-		balloon_alert(user, "invalid creature!")
+		balloon_alert(user, "criatura inválida!")
 		return
 	if(status != FISH_DEAD)
 		balloon_alert(user, "[p_theyre(TRUE)] not dead!")

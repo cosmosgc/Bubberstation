@@ -77,7 +77,7 @@
 
 /obj/item/gun/syringe/attack_self(mob/living/user, list/modifiers)
 	if (!syringes.len)
-		balloon_alert(user, "it's empty!")
+		balloon_alert(user, "está vazio!")
 		return FALSE
 
 	var/obj/item/reagent_containers/syringe/syringe = syringes[syringes.len]
@@ -115,7 +115,7 @@
 		return NONE
 
 	if(syringes.len >= max_syringes)
-		balloon_alert(user, "it's full!")
+		balloon_alert(user, "está cheio!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(tool, src))

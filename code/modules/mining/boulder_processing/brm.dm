@@ -123,9 +123,9 @@
 
 	var/result = pre_collect_boulder()
 	if(result == TURF_BLOCKED_BY_BOULDER)
-		balloon_alert(user, "no space!")
+		balloon_alert(user, "sem espaço!")
 	else if(result)
-		balloon_alert(user, "teleporting...")
+		balloon_alert(user, "teleportando...")
 	COOLDOWN_START(src, manual_teleport_cooldown, TELEPORTATION_TIME)
 
 	return TRUE
@@ -143,7 +143,7 @@
 	if(!COOLDOWN_FINISHED(src, manual_teleport_cooldown))
 		return FALSE
 	if(panel_open)
-		balloon_alert(user, "close panel first!")
+		balloon_alert(user, "feche o painel primeiro!")
 		return FALSE
 	if(batch_processing)
 		balloon_alert(user, "batch still processing!")
@@ -160,9 +160,9 @@
 
 	var/result = pre_collect_boulder()
 	if(result == TURF_BLOCKED_BY_BOULDER)
-		balloon_alert(user, "no space!")
+		balloon_alert(user, "sem espaço!")
 	else if(result)
-		balloon_alert(user, "teleporting...")
+		balloon_alert(user, "teleportando...")
 
 	COOLDOWN_START(src, manual_teleport_cooldown, TELEPORTATION_TIME)
 
@@ -177,9 +177,9 @@
 
 	var/result = pre_collect_boulder()
 	if(result == TURF_BLOCKED_BY_BOULDER)
-		balloon_alert(user, "no space!")
+		balloon_alert(user, "sem espaço!")
 	else if(result)
-		balloon_alert(user, "teleporting...")
+		balloon_alert(user, "teleportando...")
 
 	COOLDOWN_START(src, manual_teleport_cooldown, TELEPORTATION_TIME)
 
@@ -190,7 +190,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN || panel_open)
 		return
 	if(!anchored)
-		balloon_alert(user, "anchor it first!")
+		balloon_alert(user, "ancore primeiro!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	toggle_auto_on(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -206,10 +206,10 @@
 	PRIVATE_PROC(TRUE)
 
 	if(panel_open)
-		balloon_alert(user, "close panel first!")
+		balloon_alert(user, "feche o painel primeiro!")
 		return
 	if(!anchored)
-		balloon_alert(user, "anchor it first!")
+		balloon_alert(user, "ancore primeiro!")
 		return
 	if(!is_operational || machine_stat & (BROKEN | NOPOWER))
 		return

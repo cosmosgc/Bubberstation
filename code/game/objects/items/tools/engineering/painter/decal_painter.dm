@@ -154,7 +154,7 @@
 	if(cyborg.cell && cyborg.cell.charge > 0)
 		cyborg.cell.use(0.025 * STANDARD_CELL_CHARGE)
 	else if(cyborg.cell.charge <= 0)
-		balloon_alert(user, "not enough energy!")
+		balloon_alert(user, "energia insuficiente!")
 		return
 
 /obj/item/airlock_painter/decal/cyborg/click_alt(mob/user)

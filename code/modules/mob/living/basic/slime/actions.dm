@@ -42,7 +42,7 @@
 	var/mob/living/basic/slime/slime_owner = owner
 
 	if(slime_owner.stat)
-		slime_owner.balloon_alert(slime_owner, "unconscious!")
+		slime_owner.balloon_alert(slime_owner, "inconsciente!")
 		return
 	if(slime_owner.life_stage == SLIME_LIFE_STAGE_ADULT)
 		slime_owner.balloon_alert(slime_owner, "already adult!")

@@ -71,7 +71,7 @@
 		return NONE
 
 	if (!affecting.brute_dam)
-		balloon_alert(user, "limb not damaged")
+		balloon_alert(user, "membro não danificado")
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [affecting.name]."),

@@ -110,7 +110,7 @@ GLOBAL_DATUM_INIT(closet_teleport_controller, /datum/closet_teleport_controller,
 		thing_to_send.forceMove(eigen_target)
 	else
 		if(!subtle)
-			object_sent_from.balloon_alert(thing_to_send, "nothing happens!")
+			object_sent_from.balloon_alert(thing_to_send, "nada acontece!")
 		return FALSE
 	//Create ONE set of sparks for ALL times in iteration
 	if(!subtle && spark_time != world.time)

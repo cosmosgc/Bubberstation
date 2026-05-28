@@ -34,7 +34,7 @@
 
 	if (worm.get_worm_health() - health_cost < minimum_health)
 		if (feedback)
-			owner.balloon_alert(owner, "out of blood!")
+			owner.balloon_alert(owner, "sem sangue!")
 		return FALSE
 
 	return ..()

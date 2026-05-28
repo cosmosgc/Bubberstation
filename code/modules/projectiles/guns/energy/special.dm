@@ -151,7 +151,7 @@
 	// Then it'll drain 125 at first and 25 periodically, but fail if charge dips below 125 even though it still can finish action
 	// Alternately it'll need to drain amount*charge_weld every period, which is either obscene or makes it free for other uses
 	if(amount ? cell.charge < PLASMA_CUTTER_CHARGE_WELD * amount : cell.charge < PLASMA_CUTTER_CHARGE_WELD)
-		balloon_alert(user, "not enough charge!")
+		balloon_alert(user, "carga insuficiente!")
 		return FALSE
 	if(heat < heat_required)
 		to_chat(user, span_warning("[src] is not hot enough to complete this task!"))

@@ -209,5 +209,5 @@
 	if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH|SILENT_ADJACENCY) || !iscarbon(target))
 		return
 	if(close_machine(target))
-		log_combat(user, target, "inserted", null, "into [src].")
+		log_combat(user, target, "inserido", null, "into [src].")
 	add_fingerprint(user)

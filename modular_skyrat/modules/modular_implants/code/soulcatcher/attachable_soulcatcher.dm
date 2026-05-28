@@ -82,7 +82,7 @@
 
 /obj/item/attachable_soulcatcher/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isitem(interacting_with) || is_type_in_list(interacting_with, blacklisted_items))
-		balloon_alert(user, "incompatible!")
+		balloon_alert(user, "incompatível!")
 		return NONE
 
 	if(interacting_with.GetComponent(/datum/component/carrier/soulcatcher))

@@ -41,10 +41,10 @@
 	if (!ismovable(target))
 		return FALSE
 	if (!owner.Adjacent(target))
-		target.balloon_alert(owner, "too far away!")
+		target.balloon_alert(owner, "longe demais!")
 		return FALSE
 	if (!target.IsReachableBy(owner))
-		target.balloon_alert(owner, "can't reach!")
+		target.balloon_alert(owner, "não alcança!")
 		return FALSE
 
 	// If you fail after this point, it's because your attempt got interrupted or because the victim is invalid.
@@ -143,7 +143,7 @@
 
 /datum/action/cooldown/mob_cooldown/blood_worm/leech/proc/leech_living_start_check(mob/living/basic/blood_worm/leech, mob/living/target)
 	if (target.get_blood_volume() <= 0)
-		target.balloon_alert(leech, "no blood!")
+		target.balloon_alert(leech, "sem sangue!")
 		return FALSE
 	if (HAS_TRAIT(target, TRAIT_BLOOD_WORM_HOST))
 		target.balloon_alert(leech, "occupied by our kin!")
@@ -235,7 +235,7 @@
 /datum/action/cooldown/mob_cooldown/blood_worm/leech/proc/leech_container_start_check(mob/living/basic/blood_worm/leech, obj/item/reagent_containers/target, feedback = FALSE)
 	if (!length(get_blood_in_container(target)))
 		if (feedback)
-			target.balloon_alert(leech, "no blood!")
+			target.balloon_alert(leech, "sem sangue!")
 		return FALSE
 	return TRUE
 

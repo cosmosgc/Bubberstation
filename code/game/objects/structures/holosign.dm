@@ -139,7 +139,7 @@
 		return
 
 	if(!COOLDOWN_FINISHED(src, cooldown_open))
-		balloon_alert(user, "on cooldown!")
+		balloon_alert(user, "em recarga!")
 		return
 
 	if(!opened)

@@ -44,7 +44,7 @@
 		user.balloon_alert(user, "secure it first!")
 		return
 	if (!LAZYLEN(contents))
-		user.balloon_alert(user, "it's empty!")
+		user.balloon_alert(user, "está vazio!")
 		return
 	user.visible_message(span_boldnotice("[user] takes a huge drag on the [src]."))
 	if (!do_after(user, 2 SECONDS, target = src))

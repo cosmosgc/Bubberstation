@@ -49,7 +49,7 @@
 	if(istype(tool, /obj/item/disk/computer))
 		eject_disk(user)
 		if(!user.transferItemToLoc(tool, src))
-			balloon_alert(user, "it's stuck to your hand!")
+			balloon_alert(user, "está preso na sua mão!")
 			return ITEM_INTERACT_BLOCKING
 		inserted_disk = tool
 		return ITEM_INTERACT_SUCCESS
@@ -63,7 +63,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(tool, src))
-		balloon_alert(user, "it's stuck to your hand!")
+		balloon_alert(user, "está preso na sua mão!")
 		return ITEM_INTERACT_BLOCKING
 
 	inserted_tank = tool

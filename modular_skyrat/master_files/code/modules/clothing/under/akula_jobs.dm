@@ -208,7 +208,7 @@
 		return
 	var/obj/item/clothing/hitting_hat = hitting_item
 	if(hitting_hat.clothing_flags & STACKABLE_HELMET_EXEMPT)
-		balloon_alert(user, "doesn't fit!")
+		balloon_alert(user, "não cabe!")
 		return
 	if(attached_hat)
 		balloon_alert(user, "already something inside!")

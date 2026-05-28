@@ -91,7 +91,7 @@
 
 	var/fully_loaded = shots_in_gun >= max_shots_per_fire
 	if(fully_loaded)
-		balloon_alert(user, "already loaded!")
+		balloon_alert(user, "já carregado!")
 		return ITEM_INTERACT_BLOCKING
 
 	if (load_delay > 0)
@@ -377,7 +377,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if(loaded_spear)
-		balloon_alert(user, "already loaded!")
+		balloon_alert(user, "já carregado!")
 		return ITEM_INTERACT_BLOCKING
 
 	playsound(src, 'sound/items/weapons/draw_bow.ogg', 50, FALSE, 5)

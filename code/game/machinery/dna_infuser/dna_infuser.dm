@@ -148,7 +148,7 @@
 /obj/machinery/dna_infuser/proc/toggle_open(mob/user)
 	if(panel_open)
 		if(user)
-			balloon_alert(user, "close panel first!")
+			balloon_alert(user, "feche o painel primeiro!")
 		return
 	if(state_open)
 		close_machine()

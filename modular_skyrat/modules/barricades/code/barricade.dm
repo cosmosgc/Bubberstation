@@ -526,7 +526,7 @@
 		return TRUE
 
 	if(!welding_tool.use(2))
-		to_chat(user, span_warning("Not enough fuel!"))
+		to_chat(user, span_warning("combustível insuficiente!"))
 		return TRUE
 
 	user.visible_message(span_notice("[user] welds the damage on [src]."),

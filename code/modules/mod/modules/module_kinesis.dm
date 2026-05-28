@@ -55,7 +55,7 @@
 		launch(launched_object)
 		return
 	if(!range_check(target))
-		balloon_alert(mod.wearer, "too far!")
+		balloon_alert(mod.wearer, "longe demais!")
 		return
 	if(!can_grab(target))
 		balloon_alert(mod.wearer, "can't grab!")
@@ -71,7 +71,7 @@
 		clear_grab()
 		return
 	if(!range_check(grabbed_atom))
-		balloon_alert(mod.wearer, "out of range!")
+		balloon_alert(mod.wearer, "fora do alcance!")
 		clear_grab()
 		return
 	drain_power(use_energy_cost/10)

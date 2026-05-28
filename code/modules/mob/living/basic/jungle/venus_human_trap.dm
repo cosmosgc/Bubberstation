@@ -223,7 +223,7 @@
 		owner.balloon_alert(owner, "can't pull!")
 		return
 	if(get_dist(owner, target_atom) > vine_grab_distance)
-		owner.balloon_alert(owner, "too far!")
+		owner.balloon_alert(owner, "longe demais!")
 		return
 	var/list/target_turfs = get_line(owner, target_atom) - list(get_turf(owner), get_turf(target_atom))
 	for(var/turf/blockage in target_turfs)

@@ -70,7 +70,7 @@
 	if(!tool.tool_start_check(user, amount = (tool.tool_behaviour == TOOL_WELDER ? 1 : 0)))
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "disassembling...")
+	balloon_alert(user, "desmontando...")
 	user.visible_message(
 		span_warning("[user] begins disassembling [src]."),
 		span_notice("You start to disassemble [src]..."),

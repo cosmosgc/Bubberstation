@@ -23,7 +23,7 @@
 		return
 
 	if(!resolve_parent.IsReachableBy(user))
-		resolve_parent.balloon_alert(user, "can't reach!")
+		resolve_parent.balloon_alert(user, "não alcança!")
 		return FALSE
 
 	if(!isliving(user) || user.incapacitated)

@@ -153,14 +153,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 		return FALSE
 
 	if(atom_integrity >= max_integrity && !(machine_stat & BROKEN))
-		balloon_alert(user, "it doesn't need repairs!")
+		balloon_alert(user, "não precisa de reparos!")
 		return TRUE
 
 	balloon_alert(user, "repairing display...")
 	if(!tool.use_tool(src, user, 4 SECONDS, amount = 0, volume = 50))
 		return TRUE
 
-	balloon_alert(user, "repaired")
+	balloon_alert(user, "consertado")
 	atom_integrity = max_integrity
 	set_machine_stat(machine_stat & ~BROKEN)
 	update_appearance()

@@ -52,7 +52,7 @@
 	cast_message(cast_on)
 	if (!do_after(cast_on, cast_time, cast_on))
 		casting = FALSE
-		cast_on.balloon_alert(cast_on, "interrupted!")
+		cast_on.balloon_alert(cast_on, "interrompido!")
 		StartCooldown(2 SECONDS) // Prevents chat spam
 		return . | SPELL_CANCEL_CAST
 	casting = FALSE

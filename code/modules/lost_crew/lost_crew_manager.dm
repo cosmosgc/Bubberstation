@@ -144,7 +144,7 @@ GLOBAL_DATUM_INIT(lost_crew_manager, /datum/lost_crew_manager, new)
 	if (user.mind == mind)
 		return TRUE
 	if (!silent)
-		balloon_alert(user, "access denied!")
+		balloon_alert(user, "acesso negado!")
 	return FALSE
 
 /obj/item/storage/lockbox/mind/toggle_locked(mob/living/user)
@@ -152,7 +152,7 @@ GLOBAL_DATUM_INIT(lost_crew_manager, /datum/lost_crew_manager, new)
 		return
 
 	atom_storage.set_locked(STORAGE_NOT_LOCKED)
-	balloon_alert(user, "unlocked")
+	balloon_alert(user, "destrancado")
 
 /obj/item/storage/lockbox/mind/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	if(broken || user.mind != mind)

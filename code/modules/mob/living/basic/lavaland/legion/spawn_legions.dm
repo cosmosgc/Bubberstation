@@ -22,7 +22,7 @@
 	if (!.)
 		return
 	if (!isturf(owner.loc))
-		owner.balloon_alert(owner, "no room!")
+		owner.balloon_alert(owner, "sem espaço!")
 		return FALSE
 	return TRUE
 
@@ -40,7 +40,7 @@
 		if (length(near_turfs))
 			target_turf = pick(near_turfs)
 		else if(target_turf.is_blocked_turf(exclude_mobs = TRUE))
-			owner.balloon_alert(owner, "no room!")
+			owner.balloon_alert(owner, "sem espaço!")
 			StartCooldown(0.5 SECONDS)
 			return
 

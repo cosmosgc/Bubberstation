@@ -45,7 +45,7 @@
 		return FALSE
 	if (worm.get_worm_health() - health_cost < minimum_health)
 		if (feedback)
-			owner.balloon_alert(owner, "out of blood!")
+			owner.balloon_alert(owner, "sem sangue!")
 		return FALSE
 
 	return ..()
@@ -103,7 +103,7 @@
 
 	var/mob/living/basic/blood_worm/worm = src.target
 	if (worm.get_worm_health() - health_cost * burst_count < minimum_health)
-		owner.balloon_alert(owner, "out of blood!")
+		owner.balloon_alert(owner, "sem sangue!")
 		return
 
 	owner.visible_message(

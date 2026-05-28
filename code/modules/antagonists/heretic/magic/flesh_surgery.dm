@@ -158,7 +158,7 @@
 		return FALSE
 	to_heal.balloon_alert(caster, "healing organ...")
 	if(!do_after(caster, 1 SECONDS, to_heal, extra_checks = CALLBACK(src, PROC_REF(heal_checks), hand, to_heal, caster)))
-		to_heal.balloon_alert(caster, "interrupted!")
+		to_heal.balloon_alert(caster, "interrompido!")
 		return FALSE
 
 	var/organ_hp_to_heal = to_heal.maxHealth * organ_percent_healing
@@ -179,7 +179,7 @@
 	var/what_are_we = ishuman(to_heal) ? "minion" : "summon"
 	to_heal.balloon_alert(caster, "healing [what_are_we]...")
 	if(!do_after(caster, 1 SECONDS, to_heal, extra_checks = CALLBACK(src, PROC_REF(heal_checks), hand, to_heal, caster)))
-		to_heal.balloon_alert(caster, "interrupted!")
+		to_heal.balloon_alert(caster, "interrompido!")
 		return FALSE
 
 	// Keep in mind that, for simplemobs(summons), this will just flat heal the combined value of both brute and burn healing,
@@ -252,7 +252,7 @@
 	playsound(victim, 'sound/items/weapons/slice.ogg', 50, TRUE)
 	carbon_victim.add_atom_colour(COLOR_DARK_RED, TEMPORARY_COLOUR_PRIORITY)
 	if(!do_after(caster, time_it_takes, carbon_victim, extra_checks = CALLBACK(src, PROC_REF(extraction_checks), picked_organ, hand, victim, caster)))
-		carbon_victim.balloon_alert(caster, "interrupted!")
+		carbon_victim.balloon_alert(caster, "interrompido!")
 		carbon_victim.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, COLOR_DARK_RED)
 		return FALSE
 
@@ -336,7 +336,7 @@
 	playsound(victim, 'sound/items/weapons/slice.ogg', 50, TRUE)
 	victim.add_atom_colour(COLOR_DARK_RED, TEMPORARY_COLOUR_PRIORITY)
 	if(!do_after(caster, time_it_takes, victim, extra_checks = CALLBACK(src, PROC_REF(insertion_checks), inserted_organ, hand, victim, caster)))
-		victim.balloon_alert(caster, "interrupted!")
+		victim.balloon_alert(caster, "interrompido!")
 		victim.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, COLOR_DARK_RED)
 		return FALSE
 

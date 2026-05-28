@@ -131,7 +131,7 @@
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if (DOING_INTERACTION(healer, interaction_key))
-		healer.balloon_alert(healer, "busy!")
+		healer.balloon_alert(healer, "ocupado!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	switch (self_targeting)
@@ -188,7 +188,7 @@
 		healer.visible_message(span_notice("[format_string(action_text, healer, target)]"))
 
 	if (heal_time && !do_after(healer, heal_time, target = target, interaction_key = interaction_key))
-		healer.balloon_alert(healer, "interrupted!")
+		healer.balloon_alert(healer, "interrompido!")
 		return
 
 	if (complete_text)

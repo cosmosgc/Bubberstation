@@ -21,7 +21,7 @@
 		return TRUE
 
 	if(!COOLDOWN_FINISHED(src, summon_cooldown))
-		user.balloon_alert(user, "recharging!")
+		user.balloon_alert(user, "recarregando!")
 		return TRUE
 
 	COOLDOWN_START(src, summon_cooldown, 30 SECONDS)

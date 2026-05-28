@@ -427,7 +427,7 @@
 			return TRUE
 		if("panel")
 			panel_locked = !panel_locked
-			log_silicon("[key_name(user)] has [panel_locked ? "locked" : "unlocked"] the panel on a cyborg shell at [loc_name(user)]")
+			log_silicon("[key_name(user)] has [panel_locked ? "trancado" : "destrancado"] the panel on a cyborg shell at [loc_name(user)]")
 			return TRUE
 		if("aisync")
 			aisync = !aisync

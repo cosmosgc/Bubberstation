@@ -34,7 +34,7 @@
 	if(check_flags & AB_CHECK_CONSCIOUS)
 		if(owner.stat)
 			if (feedback)
-				owner.balloon_alert(owner, "unconscious!")
+				owner.balloon_alert(owner, "inconsciente!")
 			return FALSE
 	return TRUE
 

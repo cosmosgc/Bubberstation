@@ -62,7 +62,7 @@
 		if(allowed(user))
 			start_taking_pictures()
 		else
-			balloon_alert(user, "access denied!")
+			balloon_alert(user, "acesso negado!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	return ..()
 
@@ -78,7 +78,7 @@
 
 /obj/machinery/photobooth/close_machine(mob/user, density_to_set = TRUE)
 	if(panel_open)
-		balloon_alert(user, "close panel first!")
+		balloon_alert(user, "feche o painel primeiro!")
 		return
 	playsound(src, 'sound/effects/curtain.ogg', 50, TRUE)
 	return ..()

@@ -138,10 +138,10 @@
 
 /obj/machinery/satellite/meteor_shield/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "already emagged!")
+		balloon_alert(user, "já emagado!")
 		return FALSE
 	if(!COOLDOWN_FINISHED(src, shared_emag_cooldown))
-		balloon_alert(user, "on cooldown!")
+		balloon_alert(user, "em recarga!")
 		to_chat(user, span_warning("The last satellite emagged needs [DisplayTimeText(COOLDOWN_TIMELEFT(src, shared_emag_cooldown))] to recalibrate first. Emagging another so soon could damage the satellite network."))
 		return FALSE
 	var/cooldown_applied = METEOR_SHIELD_EMAG_COOLDOWN

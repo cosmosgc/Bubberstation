@@ -166,7 +166,7 @@
 			var/mob/living/user = usr
 			var/new_ringtone = tgui_input_text(user, "Enter a new ringtone", "Ringtone", ringtone, max_length = MAX_MESSAGE_LEN, encode = FALSE)
 			if(!computer.can_interact(user))
-				computer.balloon_alert(user, "can't reach!")
+				computer.balloon_alert(user, "não alcança!")
 				return FALSE
 			return set_ringtone(new_ringtone, user)
 

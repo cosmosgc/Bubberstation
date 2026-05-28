@@ -659,7 +659,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 		return NONE
 
 	if (!affecting.burn_dam)
-		balloon_alert(user, "limb not damaged")
+		balloon_alert(user, "membro não danificado")
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(span_notice("[user] starts to fix some of the wires in [attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [affecting.name]."),

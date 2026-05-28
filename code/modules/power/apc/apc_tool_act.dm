@@ -117,7 +117,7 @@
 		terminal_cable_layer = GLOB.cable_name_to_layer[choice]
 
 	user.visible_message(span_notice("[user.name] starts addding cables to the APC frame."))
-	balloon_alert(user, "adding cables...")
+	balloon_alert(user, "adicionando cabos...")
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 
 	if(!do_after(user, 2 SECONDS, target = src))
@@ -317,7 +317,7 @@
 
 	if(cell)
 		user.visible_message(span_notice("[user] removes \the [cell] from [src]!"))
-		balloon_alert(user, "cell removed")
+		balloon_alert(user, "célula removida")
 		var/turf/user_turf = get_turf(user)
 		cell.forceMove(user_turf)
 		cell = null
@@ -360,10 +360,10 @@
 			return
 		if(!welder.tool_start_check(user, amount=1))
 			return
-		balloon_alert(user, "repairing...")
+		balloon_alert(user, "consertando...")
 		if(welder.use_tool(src, user, 4 SECONDS, volume = 50))
 			update_integrity(min(atom_integrity += 50,max_integrity))
-			balloon_alert(user, "repaired")
+			balloon_alert(user, "consertado")
 		return ITEM_INTERACT_SUCCESS
 
 	//disassembling the frame
@@ -444,7 +444,7 @@
 		balloon_alert(user, "close the panel first!")
 		return FALSE
 	else if(machine_stat & (BROKEN|MAINT))
-		balloon_alert(user, "nothing happens!")
+		balloon_alert(user, "nada acontece!")
 		return FALSE
 	else
 		flick("apc-spark", src)
@@ -481,11 +481,11 @@
 	else if(panel_open)
 		balloon_alert(user, "close the panel first!")
 	else if(machine_stat & (BROKEN|MAINT))
-		balloon_alert(user, "nothing happens!")
+		balloon_alert(user, "nada acontece!")
 	else
 		if(allowed(usr) && !wires.is_cut(WIRE_IDSCAN) && ((!malfhack && !remote_control_user) || (malfhack && (malfai == user || (user in malfai.connected_robots)))))
 			locked = !locked
-			balloon_alert(user, locked ? "locked" : "unlocked")
+			balloon_alert(user, locked ? "trancado" : "destrancado")
 			update_appearance()
 		else
-			balloon_alert(user, "access denied!")
+			balloon_alert(user, "acesso negado!")

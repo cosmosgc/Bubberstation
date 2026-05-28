@@ -304,7 +304,7 @@
 	COOLDOWN_START(src, use_cooldown, create_delay + 1)
 
 	if(!do_after(user, create_delay, target_turf))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		COOLDOWN_RESET(src, use_cooldown)
 		qdel(lava_visual)
 		return ITEM_INTERACT_FAILURE

@@ -870,7 +870,7 @@
 	if(cover_locked)
 		var/obj/item/card/id/id_card = user.get_idcard(TRUE)
 		if(isnull(id_card))
-			balloon_alert(user, "access denied!")
+			balloon_alert(user, "acesso negado!")
 			return
 
 		try_toggle_lock(user, id_card)
@@ -886,7 +886,7 @@
 	if(!cover_open)
 		var/obj/item/card/id/id_card = user.get_idcard(TRUE)
 		if(isnull(id_card))
-			balloon_alert(user, "access denied!")
+			balloon_alert(user, "acesso negado!")
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 		try_toggle_lock(user, id_card)
@@ -912,11 +912,11 @@
 
 	if(check_access(id_card))
 		cover_locked = !cover_locked
-		balloon_alert(user, "controls [cover_locked ? "locked" : "unlocked"]")
+		balloon_alert(user, "controls [cover_locked ? "trancado" : "destrancado"]")
 		update_appearance()
 		return TRUE
 
-	balloon_alert(user, "access denied!")
+	balloon_alert(user, "acesso negado!")
 	return FALSE
 
 /obj/machinery/transport/tram_controller/wrench_act_secondary(mob/living/user, obj/item/tool)
@@ -930,7 +930,7 @@
 		if(!tool.use_tool(src, user, 6 SECONDS))
 			return
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, vary = TRUE)
-		balloon_alert(user, "unsecured")
+		balloon_alert(user, "solto")
 		deconstruct(TRUE)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
@@ -1052,7 +1052,7 @@
 	obj_flags |= EMAGGED
 	cover_locked = FALSE
 	playsound(src, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	balloon_alert(user, "access controller shorted")
+	balloon_alert(user, "controlador de acesso em curto")
 	return TRUE
 
 /obj/machinery/transport/tram_controller/ui_status(mob/user, datum/ui_state/state)

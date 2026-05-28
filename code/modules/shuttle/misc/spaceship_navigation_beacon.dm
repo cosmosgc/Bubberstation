@@ -70,7 +70,7 @@
 
 	locked = !locked
 
-	balloon_alert_to_viewers("[!locked ? "unlocked" : "locked"]")
+	balloon_alert_to_viewers("[!locked ? "destrancado" : "trancado"]")
 	update_icon_state()
 
 	return TRUE

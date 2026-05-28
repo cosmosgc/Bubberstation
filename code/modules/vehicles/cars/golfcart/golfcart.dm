@@ -297,7 +297,7 @@
 			balloon_alert(user, "already repairing it!")
 			return
 		if(atom_integrity >= max_integrity)
-			balloon_alert(user, "it's not damaged!")
+			balloon_alert(user, "não está danificado!")
 			return
 		// takes 10 seconds to repair from full
 		balloon_alert(user, "started repairing")
@@ -305,7 +305,7 @@
 			balloon_alert(user, "repair interrupted!")
 			return
 		repair_damage(max_integrity - atom_integrity)
-		balloon_alert(user, "repaired")
+		balloon_alert(user, "consertado")
 	return
 
 /obj/vehicle/ridden/golfcart/proc/toggle_hood()

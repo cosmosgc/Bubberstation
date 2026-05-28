@@ -296,7 +296,7 @@
 
 		// Check if the upgrade's already present
 		if(rpd_disk.upgrade_flags & upgrade_flags)
-			balloon_alert(user, "already installed!")
+			balloon_alert(user, "já instalado!")
 			return ITEM_INTERACT_BLOCKING
 
 		// Adds the upgrade from the disk and then deletes the disk
@@ -429,7 +429,7 @@
 				var/obj/structure/disposalconstruct/new_disposals_segment = new (attack_target, queued_pipe_type, queued_pipe_dir, queued_pipe_flipped)
 
 				if(!new_disposals_segment.can_place())
-					balloon_alert(user, "not enough room!")
+					balloon_alert(user, "espaço insuficiente!")
 					qdel(new_disposals_segment)
 					return ITEM_INTERACT_FAILURE
 
@@ -446,12 +446,12 @@
 					return ITEM_INTERACT_FAILURE
 				attack_target = get_turf(attack_target)
 				if(isclosedturf(attack_target))
-					balloon_alert(user, "something in the way!")
+					balloon_alert(user, "algo no caminho!")
 					return ITEM_INTERACT_FAILURE
 
 				var/turf/target_turf = get_turf(attack_target)
 				if(target_turf.is_blocked_turf(exclude_mobs = TRUE))
-					balloon_alert(user, "something in the way!")
+					balloon_alert(user, "algo no caminho!")
 					return ITEM_INTERACT_FAILURE
 
 				playsound(get_turf(src), SFX_TOOL_SWITCH, 20, TRUE)

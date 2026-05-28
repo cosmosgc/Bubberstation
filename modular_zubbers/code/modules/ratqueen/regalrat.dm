@@ -77,7 +77,7 @@
 	owner.balloon_alert_to_viewers("shudders...")
 
 	if (!do_after(owner, 3 SECONDS, target = origin))
-		owner.balloon_alert(owner, "interrupted!")
+		owner.balloon_alert(owner, "interrompido!")
 		return
 
 	rat_owner.current_look = chosen

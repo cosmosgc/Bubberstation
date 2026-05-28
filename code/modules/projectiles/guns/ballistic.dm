@@ -524,7 +524,7 @@
 			eject_magazine(user, FALSE, tool)
 			return ITEM_INTERACT_SUCCESS
 
-		balloon_alert(user, "already loaded!")
+		balloon_alert(user, "já carregado!")
 		return ITEM_INTERACT_FAILURE
 
 	if (isammocasing(tool) || istype(tool, /obj/item/ammo_box))
@@ -693,7 +693,7 @@
 
 	if (!num_unloaded)
 		if (!forced)
-			balloon_alert(user, "it's empty!")
+			balloon_alert(user, "está vazio!")
 		return
 
 	if (!forced)

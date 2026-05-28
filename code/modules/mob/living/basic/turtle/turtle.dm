@@ -195,7 +195,7 @@
 		return NONE
 
 	if(isnull(used_item.reagents))
-		balloon_alert(user, "empty!")
+		balloon_alert(user, "vazio!")
 		return ITEM_INTERACT_SUCCESS
 
 	if(stat == DEAD)

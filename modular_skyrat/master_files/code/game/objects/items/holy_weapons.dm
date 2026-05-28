@@ -169,7 +169,7 @@
 	if(user.combat_mode)
 		return ..()
 	if(praying)
-		balloon_alert(user, "already in use!")
+		balloon_alert(user, "já em uso!")
 		return
 
 	user.visible_message(span_info("[user] kneels[target == user ? null : " next to [target]"] and begins to utter a prayer to [deity_name]."), \
@@ -185,7 +185,7 @@
 		target.adjust_fire_loss(-5)
 		praying = FALSE
 	else
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		praying = FALSE
 
 /obj/item/nullrod/scythe/sickle

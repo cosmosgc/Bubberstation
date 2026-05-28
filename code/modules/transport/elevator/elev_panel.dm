@@ -129,7 +129,7 @@
 	balloon_alert(user, "resetting panel...")
 	playsound(src, 'sound/machines/locktoggle.ogg', 50, TRUE)
 	if(!do_after(user, 6 SECONDS, src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return TRUE
 
 	if(QDELETED(lift) || !length(lift.transport_modules))

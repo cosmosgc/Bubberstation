@@ -372,7 +372,7 @@
 /obj/item/food/deadmouse/proc/use_lazarus(datum/source, obj/item/lazarus_injector/injector, mob/user)
 	SIGNAL_HANDLER
 	if(injector.revive_type != SENTIENCE_ORGANIC)
-		balloon_alert(user, "invalid creature!")
+		balloon_alert(user, "criatura inválida!")
 		return
 	var/mob/living/basic/mouse/revived_critter = new critter_type (drop_location(), FALSE, body_color)
 	revived_critter.name = name
@@ -390,7 +390,7 @@
 
 		balloon_alert(user, "butchering...")
 		if(!do_after(user, 0.75 SECONDS, src))
-			balloon_alert(user, "interrupted!")
+			balloon_alert(user, "interrompido!")
 			return
 
 		loc.balloon_alert(user, "butchered")

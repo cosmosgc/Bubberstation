@@ -162,7 +162,7 @@
 		balloon_alert(user, "machine unpowered!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(!COOLDOWN_FINISHED(src, recharge_cooldown))
-		balloon_alert(user, "on cooldown!")
+		balloon_alert(user, "em recarga!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	ui_interact(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN

@@ -136,7 +136,7 @@
 		if(!can_add_ingredient(tray_item))
 			continue
 		if(LAZYLEN(added_ingredients) >= max_ingredients)
-			balloon_alert(user, "it's full!")
+			balloon_alert(user, "está cheio!")
 			return TRUE
 		if(tray.atom_storage.attempt_remove(tray_item, src))
 			loaded++

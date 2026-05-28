@@ -52,7 +52,7 @@
 				return FALSE
 			// Don't let people off station futz with the station network.
 			if(!is_station_level(z))
-				balloon_alert(user, "out of range!")
+				balloon_alert(user, "fora do alcance!")
 				return TRUE
 
 			expunge_record_info(target)
@@ -77,7 +77,7 @@
 		if("purge_records")
 			// Don't let people off station futz with the station network.
 			if(!is_station_level(z))
-				balloon_alert(user, "out of range!")
+				balloon_alert(user, "fora do alcance!")
 				return TRUE
 
 			ui.close()
@@ -92,7 +92,7 @@
 				playsound(src, 'sound/machines/terminal/terminal_off.ogg', 70, TRUE)
 				investigate_log("[key_name(user)] purged all records.", INVESTIGATE_RECORDS)
 			else
-				balloon_alert(user, "interrupted!")
+				balloon_alert(user, "interrompido!")
 
 			return TRUE
 
@@ -139,7 +139,7 @@
 		return FALSE
 
 	if(!authenticated && !allowed(user))
-		balloon_alert(user, "access denied")
+		balloon_alert(user, "acesso negado")
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 70, TRUE)
 		return FALSE
 
@@ -168,7 +168,7 @@
 		return FALSE
 
 	if(!allowed(user))
-		balloon_alert(user, "access denied")
+		balloon_alert(user, "acesso negado")
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 70, TRUE)
 		return FALSE
 

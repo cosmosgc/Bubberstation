@@ -32,7 +32,7 @@
 		return NONE
 	var/obj/item/multitool/multitool = tool
 	multitool.set_buffer(src)
-	balloon_alert(user, "saved to multitool buffer")
+	balloon_alert(user, "salvo no buffer da multitool")
 	return ITEM_INTERACT_SUCCESS
 
 // Checks the turf for a bot and launches it if it's the only mob on the pad.
@@ -49,7 +49,7 @@
 		possible_bot = robot  // We don't change the launched_bot var here because we are not sure if there is another bot on the pad.
 
 	if(!use_energy(active_power_usage, force = FALSE))
-		balloon_alert(user, "not enough energy!")
+		balloon_alert(user, "energia insuficiente!")
 		return
 	launched_bot = WEAKREF(possible_bot)
 	podspawn(list(

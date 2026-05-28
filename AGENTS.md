@@ -92,7 +92,35 @@ bun tgui:lint     # biome check --write --unsafe tgui (auto-fix)
 - **DM**: tab indentation (`.editorconfig`), space indentation is an error
 - **TGUI/JS/TS**: single quotes, space indentation (Biome config), organize imports on save
 - No `var/` in proc arguments, no `global vars` without helper, no `.proc/` syntax
-- `balloon_alert` messages: lowercase start, no spans
+- `balloon_alert` messages: lowercase start, no spans. Common strings to translate: `"locked"`, `"unlocked"`, `"secured"`, `"unsecured"`
 - `to_chat()` requires content argument
 - Trait sources must be string keys (`REF(src)`), not datum references
 - `forceMove(x, y)` is wrong (caller.method, not static method)
+
+## Translation notes
+
+All balloon_alert messages in DM code should use translated strings. Common Portuguese (BR) translations applied:
+- `"locked"` → `"trancado"`
+- `"unlocked"` → `"destrancado"`
+- `"secured"` → `"fixado"`
+- `"unsecured"` → `"solto"`
+- `"access denied!"` → `"acesso negado!"`
+- `"already installed!"` → `"já instalado!"`
+- `"panel open"` → `"painel aberto"`
+- `"panel closed"` → `"painel fechado"`
+- `"scanning..."` → `"escaneando..."`
+- `"scanned"` → `"escaneado"`
+- `"repairing..."` → `"consertando..."`
+- `"repaired"` → `"consertado"`
+- `"empty!"` → `"vazio!"`
+- `"full!"` → `"cheio!"`
+- `"interrupted!"` → `"interrompido!"`
+- `"already active!"` → `"já ativo!"`
+- `"no room!"` → `"sem espaço!"`
+- `"busy!"` → `"ocupado!"`
+- `"still processing!"` → `"ainda processando!"`
+
+Alert level strings (game_options.dm + game_options.txt):
+- ALERT_GREEN, ALERT_BLUE_UPTO, ALERT_BLUE_DOWNTO, ALERT_RED_UPTO, ALERT_RED_DOWNTO, ALERT_DELTA — all translated to PT-BR
+
+Use `bun tgui:lint` to auto-format TGUI files with Biome. See `.github/guides/STYLE.md` for full style guide.

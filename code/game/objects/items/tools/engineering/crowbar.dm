@@ -385,7 +385,7 @@
 		return
 	var/obj/item/mecha_parts/mecha_equipment/sleeper/mech_sleeper = locate() in mech
 	if((!LAZYLEN(mech.occupants) || (LAZYLEN(mech.occupants) == 1 && mech.mecha_flags & SILICON_PILOT)) && (!mech_sleeper || !mech_sleeper.patient)) //if no occupants, or only an ai
-		mech.balloon_alert(user, "it's empty!")
+		mech.balloon_alert(user, "está vazio!")
 		return
 	var/list/log_list_before = LAZYCOPY(mech.occupants)
 	if(mech_sleeper?.patient)
@@ -395,7 +395,7 @@
 	mech.balloon_alert(user, "prying open...")
 	playsound(mech, 'sound/machines/airlock/airlock_alien_prying.ogg', 100, TRUE)
 	if(!use_tool(mech, user, (mech.mecha_flags & IS_ENCLOSED) ? 5 SECONDS : 3 SECONDS, volume = 0, extra_checks = CALLBACK(src, PROC_REF(extra_checks), mech, mech_dir, mech_sleeper)))
-		mech.balloon_alert(user, "interrupted!")
+		mech.balloon_alert(user, "interrompido!")
 		return
 	var/list/log_list_after = LAZYCOPY(mech.occupants)
 	if(mech_sleeper?.patient)

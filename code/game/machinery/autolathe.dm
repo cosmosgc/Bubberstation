@@ -484,7 +484,7 @@
 	if(!do_after(user, 1.5 SECONDS, target = src))
 		busy = FALSE
 		update_static_data_for_all_viewers()
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/disk/design_disk/disky = tool

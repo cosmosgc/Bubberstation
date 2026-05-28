@@ -30,7 +30,7 @@
 		return FALSE
 	if(DOING_INTERACTION(owner, DOAFTER_SOURCE_SPIDER))
 		if (feedback)
-			owner.balloon_alert(owner, "busy!")
+			owner.balloon_alert(owner, "ocupado!")
 		return FALSE
 	var/obj/structure/spider/eggcluster/eggs = locate() in get_turf(owner)
 	if(eggs)
@@ -43,7 +43,7 @@
 	owner.balloon_alert_to_viewers("laying eggs...")
 	StartCooldown(360 SECONDS, 360 SECONDS)
 	if(!do_after(owner, egg_lay_time, target = get_turf(owner), interaction_key = DOAFTER_SOURCE_SPIDER))
-		owner.balloon_alert(owner, "interrupted!")
+		owner.balloon_alert(owner, "interrompido!")
 		StartCooldown(0 SECONDS)
 		return
 	var/obj/structure/spider/eggcluster/eggs = locate() in get_turf(owner)

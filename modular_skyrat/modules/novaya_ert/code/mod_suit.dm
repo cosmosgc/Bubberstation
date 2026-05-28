@@ -282,7 +282,7 @@
 		return FALSE
 
 	if(!check_power(use_energy_cost))
-		balloon_alert(mod.wearer, "not enough charge!")
+		balloon_alert(mod.wearer, "carga insuficiente!")
 		SEND_SIGNAL(src, COMSIG_MODULE_DEACTIVATED)
 		return FALSE
 
@@ -342,7 +342,7 @@
 		return FALSE
 /// And if it's already full (:flushed:)
 	if(reagents.has_reagent(reagent_required, reagent_max_amount))
-		balloon_alert(mod.wearer, "already full!")
+		balloon_alert(mod.wearer, "já cheio!")
 		return FALSE
 /// And if the reagent's wrong.
 	if(!attacking_item.reagents.trans_to(src, reagent_required_amount, target_id = reagent_required))

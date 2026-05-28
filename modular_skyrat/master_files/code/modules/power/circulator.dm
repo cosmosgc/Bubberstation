@@ -141,7 +141,7 @@
 /obj/machinery/atmospherics/components/binary/circulator/wrench_act(mob/living/user, obj/item/I)
 
 	if(!panel_open)
-		balloon_alert(user, "open the panel first!")
+		balloon_alert(user, "abra o painel primeiro!")
 		return TRUE
 
 	if(generator)

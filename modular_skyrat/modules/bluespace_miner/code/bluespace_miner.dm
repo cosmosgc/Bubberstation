@@ -213,7 +213,7 @@
 
 /obj/machinery/bluespace_miner/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "already emagged!")
+		balloon_alert(user, "já emagado!")
 		return FALSE
 	ore_chance += list(/obj/item/stack/sheet/mineral/bananium = 1)
 	obj_flags |= EMAGGED

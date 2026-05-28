@@ -682,7 +682,7 @@ LINEN BINS
 	if(user.combat_mode)
 		return NONE
 	if(tool.w_class >= WEIGHT_CLASS_BULKY)
-		balloon_alert(user, "too big!")
+		balloon_alert(user, "grande demais!")
 		return ITEM_INTERACT_BLOCKING
 	if(!amount)
 		balloon_alert(user, "nothing to hide under!")

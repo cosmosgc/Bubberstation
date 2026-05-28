@@ -22,7 +22,7 @@
 		return
 	set_anchored(!anchored)
 	tool.play_tool_sound(src)
-	balloon_alert(user, anchored ? "secured" : "unsecured")
+	balloon_alert(user, anchored ? "fixado" : "solto")
 	return TRUE
 
 /obj/structure/scanner_gate_shell/proc/on_entered(datum/source, atom/movable/AM)

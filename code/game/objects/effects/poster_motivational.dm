@@ -22,7 +22,7 @@
 		return ..()
 	balloon_alert(user, "converting poster...")
 	if(!do_after(user, 5 SECONDS, user))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return
 	var/obj/item/poster/traitor/quirkspawn = new(get_turf(src))
 	user.put_in_hands(quirkspawn)

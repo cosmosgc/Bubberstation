@@ -175,7 +175,7 @@
 		return FALSE
 	if(requires_blood && bloodsucker_blood_volume < level_cost)
 		if(!silent)
-			user.balloon_alert(user, "not enough blood!")
+			user.balloon_alert(user, "sangue insuficiente!")
 		return FALSE
 	return TRUE
 

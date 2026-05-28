@@ -93,7 +93,7 @@
 		viewer.client?.images -= reticle
 
 	if(!.)
-		user.balloon_alert(user, "interrupted!")
+		user.balloon_alert(user, "interrompido!")
 
 	return .
 

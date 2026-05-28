@@ -105,7 +105,7 @@
 		balloon_alert(user, "apc is full!")
 		return
 	if(stomach_cell.charge() <= 0)
-		balloon_alert(user, "out of charge!")
+		balloon_alert(user, "sem carga!")
 		return
 
 
@@ -118,7 +118,7 @@
 	if(opened && (!issilicon(user)))
 		if(cell)
 			user.visible_message(span_notice("[user] removes \the [cell] from [src]!"))
-			balloon_alert(user, "cell removed")
+			balloon_alert(user, "célula removida")
 			user.put_in_hands(cell)
 		return
 	if((machine_stat & MAINT) && !opened) //no board; no interface

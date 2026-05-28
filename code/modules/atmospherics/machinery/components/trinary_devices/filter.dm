@@ -176,7 +176,7 @@
 /obj/machinery/atmospherics/components/trinary/filter/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		balloon_alert(user, "turn off!")
+		balloon_alert(user, "desligue!")
 		return FALSE
 
 // mapping

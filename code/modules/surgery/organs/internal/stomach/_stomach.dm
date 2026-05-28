@@ -438,7 +438,7 @@
 		balloon_alert(user, "cutting open...")
 		playsound(user, 'sound/items/handling/surgery/scalpel1.ogg', 75)
 		if (!do_after(user, 3 SECONDS, src))
-			balloon_alert(user, "interrupted!")
+			balloon_alert(user, "interrompido!")
 			apply_organ_damage(tool.force)
 			return ITEM_INTERACT_FAILURE
 
@@ -460,7 +460,7 @@
 	playsound(user, 'sound/items/handling/surgery/cautery1.ogg', 75)
 	balloon_alert(user, "mending the incision...")
 	if (!do_after(user, 3 SECONDS, src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		apply_organ_damage(tool.force)
 		return ITEM_INTERACT_FAILURE
 

@@ -30,7 +30,7 @@
 		return FALSE
 	if(DOING_INTERACTION(owner, DOAFTER_SOURCE_SPIDER))
 		if (feedback)
-			owner.balloon_alert(owner, "busy!")
+			owner.balloon_alert(owner, "ocupado!")
 		return FALSE
 	return TRUE
 
@@ -55,7 +55,7 @@
 
 /datum/action/cooldown/mob_cooldown/wrap/Activate(atom/to_wrap)
 	if(!owner.Adjacent(to_wrap))
-		owner.balloon_alert(owner, "must be closer!")
+		owner.balloon_alert(owner, "precisa estar mais perto!")
 		return FALSE
 
 	if(!ismovable(to_wrap) || to_wrap == owner)
@@ -89,7 +89,7 @@
 	if(do_after(owner, wrap_time, target = to_wrap, interaction_key = DOAFTER_SOURCE_SPIDER))
 		wrap_target(to_wrap)
 	else
-		owner.balloon_alert(owner, "interrupted!")
+		owner.balloon_alert(owner, "interrompido!")
 
 /datum/action/cooldown/mob_cooldown/wrap/proc/wrap_target(mob/living/to_wrap)
 	var/obj/structure/spider/cocoon/casing = new(to_wrap.loc)

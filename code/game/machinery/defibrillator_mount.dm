@@ -244,7 +244,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 		to_chat(user, span_warning("The mount can't be deconstructed while a defibrillator unit is loaded!"))
 		..()
 		return TRUE
-	balloon_alert(user, "deconstructing...")
+	balloon_alert(user, "desconstruindo...")
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 5 SECONDS))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, vary = TRUE)

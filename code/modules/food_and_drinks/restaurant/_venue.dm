@@ -232,7 +232,7 @@
 		return NONE
 
 	if(!allowed(user))
-		balloon_alert(user, "insufficient access!")
+		balloon_alert(user, "acesso insuficiente!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/list/radial_items = list()
@@ -275,7 +275,7 @@
 
 /obj/machinery/restaurant_portal/wrench_act(mob/living/user, obj/item/tool)
 	if(!panel_open)
-		balloon_alert(user, "open the panel first!")
+		balloon_alert(user, "abra o painel primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	if (default_unfasten_wrench(user, tool))

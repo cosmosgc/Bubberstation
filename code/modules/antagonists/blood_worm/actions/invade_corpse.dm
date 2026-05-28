@@ -40,10 +40,10 @@
 	var/mob/living/carbon/human/victim = target
 
 	if (!worm.Adjacent(victim))
-		victim.balloon_alert(worm, "too far away!")
+		victim.balloon_alert(worm, "longe demais!")
 		return FALSE
 	if (!victim.IsReachableBy(worm))
-		victim.balloon_alert(worm, "can't reach!")
+		victim.balloon_alert(worm, "não alcança!")
 		return FALSE
 
 	unset_click_ability(worm, refund_cooldown = FALSE) // If you fail after this point, it's because your attempt got interrupted or because the victim is invalid.
@@ -76,7 +76,7 @@
 		return FALSE
 	if (!CAN_HAVE_BLOOD(victim))
 		if (feedback)
-			victim.balloon_alert(worm, "no blood!")
+			victim.balloon_alert(worm, "sem sangue!")
 		return FALSE
 	if (victim.get_blood_volume() + worm.health * BLOOD_WORM_HEALTH_TO_BLOOD <= worm.get_eject_volume_threshold())
 		if (feedback)

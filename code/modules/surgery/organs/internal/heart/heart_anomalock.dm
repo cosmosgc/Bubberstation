@@ -163,14 +163,14 @@
 /obj/item/organ/heart/cybernetic/anomalock/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(!core)
-		balloon_alert(user, "no core!")
+		balloon_alert(user, "sem núcleo!")
 		return
 	if(!core_removable)
 		balloon_alert(user, "can't remove core!")
 		return
 	balloon_alert(user, "removing core...")
 	if(!do_after(user, 3 SECONDS, target = src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return
 	balloon_alert(user, "core removed")
 	core.forceMove(drop_location())

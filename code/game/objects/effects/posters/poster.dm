@@ -90,11 +90,11 @@
 	var/stuff_on_wall = 0
 	for(var/obj/contained_object in wall_structure.contents) //Let's see if it already has a poster on it or too much stuff
 		if(istype(contained_object, /obj/structure/sign/poster))
-			balloon_alert(user, "no room!")
+			balloon_alert(user, "sem espaço!")
 			return ITEM_INTERACT_FAILURE
 		stuff_on_wall++
 		if(stuff_on_wall == 3)
-			balloon_alert(user, "no room!")
+			balloon_alert(user, "sem espaço!")
 			return ITEM_INTERACT_FAILURE
 
 	balloon_alert(user, "hanging poster...")

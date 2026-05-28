@@ -320,7 +320,7 @@
 
 /obj/item/mod/module/chameleon/used(mob/activator)
 	if(mod.active || mod.activating)
-		balloon_alert(activator, "unit active!")
+		balloon_alert(activator, "unidade ativa!")
 		return FALSE
 	return ..()
 

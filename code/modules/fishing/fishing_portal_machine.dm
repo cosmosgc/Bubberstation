@@ -66,7 +66,7 @@
 
 /obj/machinery/fishing_portal_generator/multitool_act(mob/living/user, obj/item/multitool/tool)
 	if(machine_stat & NOPOWER)
-		balloon_alert(user, "no power!")
+		balloon_alert(user, "sem energia!")
 		return ITEM_INTERACT_BLOCKING
 	var/unlink = tool.buffer == src
 	tool.set_buffer(unlink ? null : src)
@@ -79,7 +79,7 @@
 
 /obj/machinery/fishing_portal_generator/multitool_act_secondary(mob/living/user, obj/item/tool)
 	if(machine_stat & NOPOWER)
-		balloon_alert(user, "no power!")
+		balloon_alert(user, "sem energia!")
 		return ITEM_INTERACT_BLOCKING
 	if(!length(linked_fishing_spots))
 		balloon_alert(user, "nothing to unlink!")
@@ -127,7 +127,7 @@
 	for(var/other_spot in linked_fishing_spots)
 		var/datum/fish_source/stored = linked_fishing_spots[other_spot]
 		if(stored == source)
-			spot.balloon_alert(user, "already linked!")
+			spot.balloon_alert(user, "já vinculado!")
 			playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 15, FALSE, extrarange = SHORT_RANGE_SOUND_EXTRARANGE)
 			return ITEM_INTERACT_BLOCKING
 	if(HAS_TRAIT(spot, TRAIT_UNLINKABLE_FISHING_SPOT))
@@ -201,7 +201,7 @@
 	if(QDELETED(selected_source))
 		return
 	if(machine_stat & NOPOWER)
-		balloon_alert(user, "no power!")
+		balloon_alert(user, "sem energia!")
 		return ITEM_INTERACT_BLOCKING
 	if(!all_destinations && !istype(selected_source, /datum/fish_source/portal)) //likely from a linked fishing spot
 		var/abort = TRUE

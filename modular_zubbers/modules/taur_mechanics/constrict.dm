@@ -80,7 +80,7 @@
 /datum/action/innate/constrict/proc/can_coil_target(mob/living/target, silent = FALSE)
 	if (!owner.Adjacent(target))
 		if (!silent)
-			owner.balloon_alert(owner, "too far!")
+			owner.balloon_alert(owner, "longe demais!")
 		return FALSE
 
 	if (target.buckled)

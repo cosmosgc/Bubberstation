@@ -34,7 +34,7 @@
 		return FALSE
 
 	if (get_dist(living_target, owner) > cast_range)
-		owner.balloon_alert(owner, "too far away!")
+		owner.balloon_alert(owner, "longe demais!")
 		return FALSE
 
 	return TRUE

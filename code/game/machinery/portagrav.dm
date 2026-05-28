@@ -121,7 +121,7 @@
 /obj/machinery/power/portagrav/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(on)
-		balloon_alert(user, "turn off first!")
+		balloon_alert(user, "desligue primeiro!")
 		return
 	default_unfasten_wrench(user, tool)
 	if(anchored && wire_mode)
@@ -167,11 +167,11 @@
 /obj/machinery/power/portagrav/proc/turn_on(mob/user)
 	if(!anchored)
 		if(!isnull(user))
-			balloon_alert(user, "not anchored!")
+			balloon_alert(user, "não ancorado!")
 		return FALSE
 	if((!wire_mode && cell?.charge < draw_per_range * range) || (wire_mode && surplus() < draw_per_range * range))
 		if(!isnull(user))
-			balloon_alert(user, "not enough power!")
+			balloon_alert(user, "energia insuficiente!")
 		return FALSE
 	if(!isnull(user))
 		balloon_alert(user, "turned on")
@@ -183,7 +183,7 @@
 /obj/machinery/power/portagrav/proc/turn_off(mob/user)
 	on = FALSE
 	if(!isnull(user))
-		balloon_alert(user, "turned off")
+		balloon_alert(user, "desligado")
 	STOP_PROCESSING(SSmachines, src)
 	QDEL_NULL(gravity_field)
 	update_appearance()

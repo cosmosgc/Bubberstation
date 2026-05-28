@@ -54,11 +54,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet, 32)
 		if(atom_integrity < max_integrity)
 			if(!attacking_item.tool_start_check(user, amount = 2))
 				return
-			balloon_alert(user, "repairing...")
+			balloon_alert(user, "consertando...")
 			if(attacking_item.use_tool(src, user, 4 SECONDS, volume= 50, amount = 2))
 				repair_damage(max_integrity - get_integrity())
 				update_appearance()
-				balloon_alert(user, "repaired")
+				balloon_alert(user, "consertado")
 		else
 			balloon_alert(user, "already repaired!")
 		return
@@ -190,7 +190,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet, 32)
 			if(80 to INFINITY)
 				. += "glass"
 
-	. += locked ? "locked" : "unlocked"
+	. += locked ? "trancado" : "destrancado"
 
 /obj/structure/fireaxecabinet/proc/toggle_lock(mob/user)
 	to_chat(user, span_notice("Resetting circuitry..."))

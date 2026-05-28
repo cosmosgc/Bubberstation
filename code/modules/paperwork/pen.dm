@@ -582,7 +582,7 @@
 //Code from the medical penlight
 /obj/item/pen/red/security/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!COOLDOWN_FINISHED(src, holosign_cooldown))
-		balloon_alert(user, "not ready!")
+		balloon_alert(user, "não pronto!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/turf/target_turf = get_turf(interacting_with)

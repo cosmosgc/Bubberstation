@@ -186,7 +186,7 @@
 	if(cost_rank && bloodsuckerdatum.GetUnspentRank() <= 0)
 		return FALSE
 	if(blood_cost && bloodsuckerdatum.GetBloodVolume() < blood_cost)
-		human_user.balloon_alert(human_user, "not enough blood!")
+		human_user.balloon_alert(human_user, "sangue insuficiente!")
 		to_chat(human_user, span_notice("You need at the very least [blood_cost] blood to thicken your blood."))
 		return FALSE
 	// Prevent Bloodsuckers from purchasing a power while outside of their Coffin.

@@ -127,7 +127,7 @@
 		balloon_alert(user, "already has a wand!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
-		balloon_alert(user, "stuck to your hand!")
+		balloon_alert(user, "preso na sua mão!")
 		return ITEM_INTERACT_BLOCKING
 	user.visible_message(span_notice("[user] snaps [tool] onto [src]!"))
 	balloon_alert(user, "wand returned")

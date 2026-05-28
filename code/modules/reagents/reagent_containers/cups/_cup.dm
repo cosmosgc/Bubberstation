@@ -584,7 +584,7 @@
 /obj/item/reagent_containers/cup/bucket/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/mop))
 		if(reagents.total_volume < 1)
-			user.balloon_alert(user, "empty!")
+			user.balloon_alert(user, "vazio!")
 			return ITEM_INTERACT_BLOCKING
 		reagents.trans_to(tool, 5, transferred_by = user)
 		user.balloon_alert(user, "doused [tool]")

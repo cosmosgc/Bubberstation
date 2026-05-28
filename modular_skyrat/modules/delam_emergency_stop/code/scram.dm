@@ -282,7 +282,7 @@
 		return
 
 	if(!COOLDOWN_FINISHED(src, scram_button))
-		balloon_alert(user, "on cooldown!")
+		balloon_alert(user, "em recarga!")
 		return
 
 	if(!validate_suppression_status())

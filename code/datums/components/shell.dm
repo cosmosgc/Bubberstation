@@ -136,7 +136,7 @@
 		return
 
 	examine_text += span_notice("There is an integrated circuit attached. Use a multitool to access the wiring. Use a screwdriver to remove it from [source].")
-	examine_text += span_notice("The cover panel to the integrated circuit is [locked? "locked" : "unlocked"].")
+	examine_text += span_notice("The cover panel to the integrated circuit is [locked? "trancado" : "destrancado"].")
 	var/obj/item/stock_parts/power_store/cell = attached_circuit.cell
 	examine_text += span_notice("The charge meter reads [cell ? round(cell.percent(), 1) : 0]%.")
 
@@ -179,7 +179,7 @@
 	if(attached_circuit)
 		if(attached_circuit.owner_id && item == attached_circuit.owner_id.resolve())
 			set_locked(!locked)
-			source.balloon_alert(user, "[locked ? "locked" : "unlocked"] [source]")
+			source.balloon_alert(user, "[locked ? "trancado" : "destrancado"] [source]")
 			return ITEM_INTERACT_SUCCESS
 
 		if(!attached_circuit.owner_id && isidcard(item))
@@ -228,7 +228,7 @@
 	if(locked)
 		if(shell_flags & SHELL_FLAG_ALLOW_FAILURE_ACTION)
 			return
-		source.balloon_alert(user, "it's locked!")
+		source.balloon_alert(user, "está trancado!")
 		return ITEM_INTERACT_BLOCKING
 
 	attached_circuit.interact(user)
@@ -248,7 +248,7 @@
 	if(locked)
 		if(shell_flags & SHELL_FLAG_ALLOW_FAILURE_ACTION)
 			return
-		source.balloon_alert(user, "it's locked!")
+		source.balloon_alert(user, "está trancado!")
 		return ITEM_INTERACT_BLOCKING
 
 	tool.play_tool_sound(parent)
@@ -274,7 +274,7 @@
 /datum/component/shell/proc/on_circuit_add_component_manually(atom/source, obj/item/circuit_component/added_comp, mob/living/user)
 	SIGNAL_HANDLER
 	if(locked)
-		source.balloon_alert(user, "it's locked!")
+		source.balloon_alert(user, "está trancado!")
 		return COMPONENT_CANCEL_ADD_COMPONENT
 
 	if(attached_circuit.current_size + added_comp.circuit_size > capacity)

@@ -466,7 +466,7 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 			balloon_alert(user, "already has a tagger!")
 			return
 		if(HAS_TRAIT(new_tagger, TRAIT_NODROP) || !user.transferItemToLoc(new_tagger, src))
-			balloon_alert(user, "stuck to your hand!")
+			balloon_alert(user, "preso na sua mão!")
 			return
 		new_tagger.moveToNullspace()
 		user.visible_message(span_notice("[user] snaps \the [new_tagger] onto [src]!"))

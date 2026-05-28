@@ -168,7 +168,7 @@
 /obj/item/gravity_harness/proc/get_status_tab_item(mob/living/source, list/items)
 	SIGNAL_HANDLER
 	items += "Personal Gravitational Field: [mode]"
-	items += "Cell Charge: [current_cell ? "[round(current_cell.percent(), 0.1)]%" : "No Cell!"]"
+	items += "Cell Charge: [current_cell ? "[round(current_cell.percent(), 0.1)]%" : "sem célula!"]"
 
 /obj/item/gravity_harness/process(seconds_per_tick)
 	var/mob/living/carbon/human/user = loc
@@ -217,7 +217,7 @@
 	screwdriver.play_tool_sound(src, 100)
 
 	if(!screwdriver.use_tool(src, user, 1 SECONDS))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return FALSE
 
 	screwdriver.play_tool_sound(src, 100)
@@ -230,16 +230,16 @@
 		return ..()
 
 	if(!current_cell)
-		balloon_alert(user, "no cell!")
+		balloon_alert(user, "sem célula!")
 		return
 
 	balloon_alert(user, "removing cell...")
 	if(!do_after(user, 1.5 SECONDS, target = src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return
 
 	change_mode(MODE_GRAVOFF)
-	balloon_alert(user, "cell removed")
+	balloon_alert(user, "célula removida")
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 	if(!user.put_in_hands(current_cell))
 		current_cell.forceMove(drop_location())

@@ -365,7 +365,7 @@
 			"shownColor" = colorblind ? default_possible_colors[color] : color,
 			"wire" = (((reveal_wires || always_reveal_wire(color)) && !is_dud_color(color)) ? get_wire(color) : null),
 			"cut" = is_color_cut(color),
-			"attached" = is_attached(color)
+			"fixado" = is_attached(color)
 		)))
 	data["wires"] = payload
 	data["status"] = get_status()

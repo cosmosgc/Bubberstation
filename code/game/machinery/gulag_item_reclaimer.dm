@@ -100,7 +100,7 @@
 	if(!stored_items[user])
 		return
 	if(!use_energy(active_power_usage, force = FALSE))
-		balloon_alert(user, "not enough energy!")
+		balloon_alert(user, "energia insuficiente!")
 		return
 	var/drop_location = drop_location()
 	for(var/i in stored_items[user])

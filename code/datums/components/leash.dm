@@ -98,7 +98,7 @@
 		return NONE
 
 	if (ismob(source))
-		source.balloon_alert(source, "too far!")
+		source.balloon_alert(source, "longe demais!")
 
 	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 

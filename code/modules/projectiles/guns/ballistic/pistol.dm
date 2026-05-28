@@ -254,7 +254,7 @@
 	balloon_alert(user, "unscrewing the barrel...")
 	playsound(user, 'sound/items/tools/screwdriver_operating.ogg', 75, FALSE, MEDIUM_RANGE_SOUND_EXTRARANGE)
 	if (!do_after(user, 2 SECONDS, src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return
 	. = ..()
 
@@ -268,7 +268,7 @@
 	if (do_after(user, 2 SECONDS, src))
 		return TRUE
 
-	balloon_alert(user, "interrupted!")
+	balloon_alert(user, "interrompido!")
 	unload_ammo(user, forced = TRUE)
 	return FALSE
 

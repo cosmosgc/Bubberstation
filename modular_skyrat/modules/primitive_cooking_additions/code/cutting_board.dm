@@ -84,7 +84,7 @@
 		return
 
 	set_anchored(!anchored)
-	balloon_alert_to_viewers(anchored ? "secured" : "unsecured")
+	balloon_alert_to_viewers(anchored ? "fixado" : "solto")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 ///Takes the given obj (processed thing) and gets its results from the recipe list, spawning the results and deleting the original obj

@@ -53,7 +53,7 @@
 	if(!do_after(user, 3 SECONDS, airlock))
 		return FALSE
 	if(!department_access || !airlock.check_access_list(SSid_access.accesses_by_region[department_access]))
-		airlock.balloon_alert(user, "no access!")
+		airlock.balloon_alert(user, "sem acesso!")
 		return FALSE
 	return airlock.try_to_activate_door(user, access_bypass = TRUE)
 

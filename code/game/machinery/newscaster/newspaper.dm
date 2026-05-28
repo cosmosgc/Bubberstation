@@ -94,7 +94,7 @@
 
 		balloon_alert(user, "[used_verb] peekholes...")
 		if (!do_after(user, 3 SECONDS, src))
-			balloon_alert(user, "interrupted!")
+			balloon_alert(user, "interrompido!")
 			return ITEM_INTERACT_BLOCKING
 
 		playsound(src, 'sound/items/duct_tape/duct_tape_rip.ogg', 50, TRUE)
@@ -121,7 +121,7 @@
 	user.balloon_alert(user, "scribbling...")
 	playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
 	if (!do_after(user, 2 SECONDS, src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return ITEM_INTERACT_BLOCKING
 
 	user.balloon_alert(user, "scribbled!")

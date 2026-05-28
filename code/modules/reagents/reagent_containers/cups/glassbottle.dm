@@ -87,7 +87,7 @@
 	if(user.combat_mode || !HAS_TRAIT(target, TRAIT_MESSAGE_IN_A_BOTTLE_LOCATION))
 		return ..()
 	if(!user.temporarilyRemoveItemFromInventory(src))
-		balloon_alert(user, "it's stuck to your hand!")
+		balloon_alert(user, "está preso na sua mão!")
 		return ITEM_INTERACT_BLOCKING
 	user.visible_message(span_notice("[user] tosses [src] in [target]"), span_notice("You toss [src] in [target]"), span_notice("you hear a splash."))
 	SSpersistence.save_message_bottle(message_in_a_bottle, type)
@@ -104,7 +104,7 @@
 		balloon_alert(user, "has a message already!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(item, src))
-		balloon_alert(user, "it's stuck to your hand!")
+		balloon_alert(user, "está preso na sua mão!")
 		return ITEM_INTERACT_BLOCKING
 	balloon_alert(user, "message inserted")
 	message_in_a_bottle = item

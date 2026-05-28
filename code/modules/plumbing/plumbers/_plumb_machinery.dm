@@ -86,7 +86,7 @@
 		return NONE
 
 	if(anchored)
-		balloon_alert(user, "unanchor first!")
+		balloon_alert(user, "desancore primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(I.tool_start_check(user, amount = 1))

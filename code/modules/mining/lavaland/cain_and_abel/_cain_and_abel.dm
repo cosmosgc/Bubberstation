@@ -88,7 +88,7 @@
 		return NONE
 
 	if(!check_wield(user))
-		user.balloon_alert(user, "offhand busy!")
+		user.balloon_alert(user, "mão secundária ocupada!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!length(current_wisps))
@@ -104,7 +104,7 @@
 	if (.)
 		return
 	if(!check_wield(user))
-		user.balloon_alert(user, "offhand busy!")
+		user.balloon_alert(user, "mão secundária ocupada!")
 		return TRUE
 
 /obj/item/cain_and_abel/attack(mob/living/target, mob/living/carbon/human/user)

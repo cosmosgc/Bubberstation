@@ -312,7 +312,7 @@
 		if(!isturf(interacting_with))
 			return NONE
 		if(!Adj)
-			balloon_alert(user, "too far!")
+			balloon_alert(user, "longe demais!")
 			return ITEM_INTERACT_BLOCKING
 		for(var/thing in interacting_with)
 			if(istype(thing, /obj/effect/particle_effect/fluid/foam/metal/resin) || istype(thing, /obj/structure/foamedmetal/resin))

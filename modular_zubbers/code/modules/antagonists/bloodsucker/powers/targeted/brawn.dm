@@ -160,7 +160,7 @@
 		var/obj/structure/closet/target_closet = target
 		user.balloon_alert(user, "you prepare to bash [target_closet] open...")
 		if(!do_after(user, 2.5 SECONDS, target_closet))
-			user.balloon_alert(user, "interrupted!")
+			user.balloon_alert(user, "interrompido!")
 			return FALSE
 		target_closet.visible_message(span_danger("[target_closet] breaks open as [user] bashes it!"))
 		addtimer(CALLBACK(src, PROC_REF(break_closet), user, target_closet), 1)
@@ -174,7 +174,7 @@
 		playsound(get_turf(user), 'sound/machines/airlock/airlock_alien_prying.ogg', 40, TRUE, -1)
 		owner.balloon_alert(owner, "you prepare to tear open [target_airlock]...")
 		if(!do_after(user, 2.5 SECONDS, target_airlock))
-			user.balloon_alert(user, "interrupted!")
+			user.balloon_alert(user, "interrompido!")
 			return FALSE
 		if(target_airlock.Adjacent(user))
 			target_airlock.visible_message(span_danger("[target_airlock] breaks open as [user] bashes it!"))

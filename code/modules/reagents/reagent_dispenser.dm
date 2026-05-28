@@ -521,7 +521,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 	eject_jug(user, our_jug)
 	our_jug = new_jug
 	our_jug.reagents.trans_to(reagents, tank_volume)
-	balloon_alert(user, "attached")
+	balloon_alert(user, "fixado")
 	user.log_message("attached a [new_jug] to [src] at [AREACOORD(src)] containing ([new_jug.reagents.get_reagent_log_string()])", LOG_ATTACK)
 	add_fingerprint(user)
 	refresh_appearance()

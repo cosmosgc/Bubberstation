@@ -71,7 +71,7 @@
 		return
 
 	if (flashed.stat != CONSCIOUS)
-		flashed.balloon_alert(source, "unconscious!")
+		flashed.balloon_alert(source, "inconsciente!")
 		return
 
 #ifdef TESTING

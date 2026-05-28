@@ -115,7 +115,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 	if(.)
 		return
 	if(!allowed(user))
-		balloon_alert(user, "access denied!")
+		balloon_alert(user, "acesso negado!")
 		return
 	if(machine_stat & (NOPOWER|BROKEN|EMPED))
 		balloon_alert(user, "controls are unresponsive!")
@@ -130,7 +130,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 		set_sign(new /datum/barsign/hiddensigns/signoff)
 		return ITEM_INTERACT_SUCCESS
 
-	balloon_alert(user, "panel closed")
+	balloon_alert(user, "painel fechado")
 
 	if(machine_stat & (NOPOWER|BROKEN) || !chosen_sign)
 		set_sign(new /datum/barsign/hiddensigns/signoff)
@@ -141,7 +141,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 
 /obj/machinery/barsign/wrench_act(mob/living/user, obj/item/tool)
 	if(!panel_open)
-		balloon_alert(user, "open the panel first!")
+		balloon_alert(user, "abra o painel primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	tool.play_tool_sound(src)
@@ -156,7 +156,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 
 	if(istype(attacking_item, /obj/item/blueprints) && !change_area_name)
 		if(!panel_open)
-			balloon_alert(user, "open the panel first!")
+			balloon_alert(user, "abra o painel primeiro!")
 			return TRUE
 
 		change_area_name = TRUE
@@ -174,7 +174,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 			balloon_alert(user, "need two cables!")
 			return TRUE
 
-		balloon_alert(user, "repaired")
+		balloon_alert(user, "consertado")
 		atom_integrity = max_integrity
 		set_machine_stat(machine_stat & ~BROKEN)
 		update_appearance()

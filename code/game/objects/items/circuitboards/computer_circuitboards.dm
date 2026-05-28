@@ -486,7 +486,7 @@
 	. = ..()
 	. += span_info("The board is configured to [silence_announcements ? "silence" : "announce"] researched nodes on radio.")
 	. += span_notice("The board mode can be changed with a [EXAMINE_HINT("multitool")].")
-	. += span_notice("The board is [locked ? "locked" : "unlocked"], and can be [locked ? "unlocked" : "locked"] with an ID that has research access.")
+	. += span_notice("The board is [locked ? "trancado" : "destrancado"], and can be [locked ? "unlocked" : "locked"] with an ID that has research access.")
 
 /obj/item/circuitboard/computer/rdconsole/multitool_act(mob/living/user)
 	. = ..()
@@ -514,14 +514,14 @@
 		return ..()
 	if (check_access(attacking_item))
 		locked = !locked
-		balloon_alert(user, locked ? "locked" : "unlocked")
+		balloon_alert(user, locked ? "trancado" : "destrancado")
 		user.visible_message(
 			message = span_notice("\The [user] unlock[user.p_s()] \the [src] with \the [attacking_item]."),
 			self_message = span_notice("You unlock \the [src] with \the [attacking_item]."),
 			blind_message = span_hear("You hear a soft beep."),
 		)
 	else
-		balloon_alert(user, "no access!")
+		balloon_alert(user, "sem acesso!")
 
 /obj/item/circuitboard/computer/rdservercontrol
 	name = "R&D Server Control"

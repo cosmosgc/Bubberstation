@@ -461,19 +461,19 @@
 		return
 
 	if(isitem(loc)) // we are in a storage item
-		balloon_alert(user, "can't reach!")
+		balloon_alert(user, "não alcança!")
 		return
 
 	if((src in user.get_equipped_items(INCLUDE_POCKETS | INCLUDE_ACCESSORIES)) && !user.canUnEquip(src))
-		balloon_alert(user, "it's stuck!")
+		balloon_alert(user, "está preso!")
 		return
 
 	if(!user.canUnEquip(assembly))
-		balloon_alert(user, "it's stuck!")
+		balloon_alert(user, "está preso!")
 		return
 
 	if(!user.transferItemToLoc(assembly, src))
-		balloon_alert(user, "it's stuck!")
+		balloon_alert(user, "está preso!")
 		return
 
 	tank_assembly = assembly //Tell the tank about its assembly part

@@ -128,12 +128,12 @@
 		if(!panel_open)
 			if (allowed(user))
 				controls_locked = !controls_locked
-				balloon_alert(user, "controls [controls_locked ? "locked" : "unlocked"]")
+				balloon_alert(user, "controls [controls_locked ? "trancado" : "destrancado"]")
 				SStgui.update_uis(src)
 			else
-				balloon_alert(user, "access denied")
+				balloon_alert(user, "acesso negado")
 		else
-			balloon_alert(user, "panel open!")
+			balloon_alert(user, "painel aberto!")
 		return
 
 	return ..()

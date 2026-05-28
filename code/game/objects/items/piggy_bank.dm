@@ -132,7 +132,7 @@
 	var/dosh_amount = calculate_dosh_amount()
 
 	if(dosh_amount >= maximum_value)
-		balloon_alert(user, "it's full!")
+		balloon_alert(user, "está cheio!")
 	else if(dosh_amount + creds_value > maximum_value)
 		balloon_alert(user, "too much cash!")
 	else if(!user.transferItemToLoc(item, src))

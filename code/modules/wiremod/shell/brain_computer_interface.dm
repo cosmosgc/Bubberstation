@@ -327,7 +327,7 @@
 		return
 
 	if (locked)
-		balloon_alert(user, "it's locked!")
+		balloon_alert(user, "está trancado!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	if (isnull(bci_to_implant))
@@ -455,7 +455,7 @@
 		close_machine(null, user)
 		return
 	else if (locked)
-		balloon_alert(user, "it's locked!")
+		balloon_alert(user, "está trancado!")
 		return
 
 	open_machine()

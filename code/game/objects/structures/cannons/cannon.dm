@@ -62,7 +62,7 @@
 
 	if(istype(used_item, /obj/item/stack/cannonball))
 		if(loaded_cannonball)
-			balloon_alert(user, "already loaded!")
+			balloon_alert(user, "já carregado!")
 		else
 			var/obj/item/stack/cannonball/cannoneers_balls = used_item
 			loaded_cannonball = new cannoneers_balls.type(src, 1)

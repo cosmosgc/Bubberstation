@@ -169,7 +169,7 @@
 	if(open)
 		icon_state = "[base_icon_state]_open"
 		return ..()
-	icon_state = "[base_icon_state]_[!occupants.len ? "closed" : "occupied"]_[locked ? "locked" : "unlocked"]"
+	icon_state = "[base_icon_state]_[!occupants.len ? "closed" : "occupied"]_[locked ? "trancado" : "destrancado"]"
 	return ..()
 
 /obj/item/pet_carrier/mouse_drop_dragged(atom/over_atom, mob/user, src_location, over_location, params)

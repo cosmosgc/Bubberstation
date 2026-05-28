@@ -164,7 +164,7 @@
 	add_fingerprint(user)
 	if(istype(I, /obj/item/stock_parts/power_store/cell))
 		if(!panel_open)
-			balloon_alert(user, "open panel!")
+			balloon_alert(user, "abra o painel!")
 			return
 		if(cell)
 			balloon_alert(user, "cell inside!")
@@ -181,7 +181,7 @@
 
 /obj/machinery/electrolyzer/click_alt(mob/user)
 	if(panel_open)
-		balloon_alert(user, "close panel!")
+		balloon_alert(user, "feche o painel!")
 		return CLICK_ACTION_BLOCKING
 	toggle_power(user)
 	return CLICK_ACTION_SUCCESS

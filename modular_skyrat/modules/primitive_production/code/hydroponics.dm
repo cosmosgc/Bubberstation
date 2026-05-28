@@ -23,7 +23,7 @@
 	category = CAT_MISC
 
 /obj/machinery/hydroponics/soil/soilbin/crowbar_act(mob/living/user, obj/item/tool)
-	user.balloon_alert_to_viewers("disassembling...")
+	user.balloon_alert_to_viewers("desmontando...")
 	if(!tool.use_tool(src, user, 10 SECONDS, volume = 100))
 		return
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
@@ -66,7 +66,7 @@
 	category = CAT_MISC
 
 /obj/machinery/hydroponics/soil/soilbin/gaia/crowbar_act(mob/living/user, obj/item/tool)
-	user.balloon_alert_to_viewers("disassembling...")
+	user.balloon_alert_to_viewers("desmontando...")
 	if(!tool.use_tool(src, user, 10 SECONDS, volume = 100))
 		return
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
@@ -258,7 +258,7 @@
 	return
 
 /obj/machinery/compostbin/crowbar_act(mob/living/user, obj/item/tool)
-	user.balloon_alert_to_viewers("disassembling...")
+	user.balloon_alert_to_viewers("desmontando...")
 	if(!tool.use_tool(src, user, 10 SECONDS, volume = 100))
 		return
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)

@@ -1575,7 +1575,7 @@
 /obj/item/card/id/advanced/prisoner/proc/set_sentence_time(mob/living/user, obj/item/card/id/our_card)
 	var/list/id_access = our_card.GetAccess()
 	if(!(ACCESS_BRIG in id_access))
-		balloon_alert(user, "access denied!")
+		balloon_alert(user, "acesso negado!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.is_holding(src))
 		to_chat(user, span_warning("You must be holding the ID to continue!"))
@@ -1765,7 +1765,7 @@
 		interacting_with.balloon_alert(user, "scanning ID card...")
 
 		if(!do_after(user, 2 SECONDS, interacting_with, hidden = TRUE))
-			interacting_with.balloon_alert(user, "interrupted!")
+			interacting_with.balloon_alert(user, "interrompido!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/mob/living/carbon/human/human_target = interacting_with

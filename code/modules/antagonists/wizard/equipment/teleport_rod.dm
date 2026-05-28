@@ -60,11 +60,11 @@
 	var/turf/start_turf = get_turf(user)
 	var/turf/target_turf = get_turf(interacting_with)
 	if(get_dist(start_turf, target_turf) > max_tp_range)
-		user.balloon_alert(user, "too far!")
+		user.balloon_alert(user, "longe demais!")
 		return .
 
 	if(!(target_turf in view(user, user.client?.view || world.view)))
-		user.balloon_alert(user, "out of view!")
+		user.balloon_alert(user, "fora da visão!")
 		return .
 
 	if(target_turf.is_blocked_turf(exclude_mobs = TRUE, source_atom = user))

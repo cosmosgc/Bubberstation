@@ -38,7 +38,7 @@
 /datum/element/wall_tearer/proc/on_attacked_wall(mob/living/tearer, atom/target, proximity_flag)
 	SIGNAL_HANDLER
 	if (DOING_INTERACTION_WITH_TARGET(tearer, target) || (!isnull(do_after_key) && DOING_INTERACTION(tearer, do_after_key)))
-		tearer.balloon_alert(tearer, "busy!")
+		tearer.balloon_alert(tearer, "ocupado!")
 		return COMPONENT_HOSTILE_NO_ATTACK
 	var/is_valid = validate_target(target, tearer)
 	if (is_valid != WALL_TEAR_ALLOWED)
@@ -54,7 +54,7 @@
 		playsound(tearer, 'sound/machines/airlock/airlock_alien_prying.ogg', vol = 100, vary = TRUE)
 		target.balloon_alert(tearer, "tearing...")
 		if (!do_after(tearer, delay = rip_time, target = target, interaction_key = do_after_key))
-			tearer.balloon_alert(tearer, "interrupted!")
+			tearer.balloon_alert(tearer, "interrompido!")
 			return
 	// Might have been replaced, removed, or reinforced during our do_after
 	var/is_valid = validate_target(target, tearer)

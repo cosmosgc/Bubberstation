@@ -103,7 +103,7 @@
 
 /obj/item/clothing/neck/human_petcollar/locked/examine(mob/user)
 	. = ..()
-	. += "It seems to be [locked ? "locked" : "unlocked"]."
+	. += "It seems to be [locked ? "trancado" : "destrancado"]."
 
 /obj/item/clothing/neck/human_petcollar/locked/bell
 	name = "bell collar"

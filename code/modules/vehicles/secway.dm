@@ -37,11 +37,11 @@
 		return NONE
 
 	if(DOING_INTERACTION(user, src))
-		balloon_alert(user, "you're already repairing it!")
+		balloon_alert(user, "você já está consertando isso!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "it's not damaged!")
+		balloon_alert(user, "não está danificado!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!tool.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))

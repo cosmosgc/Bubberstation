@@ -408,13 +408,13 @@
 			update_appearance()
 			return ITEM_INTERACT_BLOCKING
 		cell = item
-		balloon_alert(user, "[swapped ? "swapped" : "inserted"] cell")
+		balloon_alert(user, "[swapped ? "swapped" : "inserido"] cell")
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
 	if(!anchored)
 		if(IS_EDIBLE(item))
-			balloon_alert(user, "not secured!")
+			balloon_alert(user, "não fixado!")
 			return ITEM_INTERACT_BLOCKING
 		return NONE
 
@@ -424,10 +424,10 @@
 
 	if(item.w_class <= WEIGHT_CLASS_NORMAL && !user.combat_mode && isnull(item.atom_storage))
 		if(ingredients.len >= max_n_of_items)
-			balloon_alert(user, "it's full!")
+			balloon_alert(user, "está cheio!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(item, src))
-			balloon_alert(user, "it's stuck to your hand!")
+			balloon_alert(user, "está preso na sua mão!")
 			return ITEM_INTERACT_BLOCKING
 
 		ingredients += item
@@ -457,7 +457,7 @@
 		if(!IS_EDIBLE(tray_item))
 			continue
 		if(ingredients.len >= max_n_of_items)
-			balloon_alert(user, "it's full!")
+			balloon_alert(user, "está cheio!")
 			return
 		if(tool.atom_storage.attempt_remove(tray_item, src))
 			loaded++
@@ -476,7 +476,7 @@
 /obj/machinery/microwave/attack_hand_secondary(mob/user, list/modifiers)
 	if(user.can_perform_action(src, ALLOW_SILICON_REACH))
 		if(!length(ingredients))
-			balloon_alert(user, "it's empty!")
+			balloon_alert(user, "está vazio!")
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 		start_cycle(user)
@@ -511,7 +511,7 @@
 	. = ..()
 
 	if(!anchored)
-		balloon_alert(user, "not secured!")
+		balloon_alert(user, "não fixado!")
 		return
 	if(operating || panel_open || !user.can_perform_action(src, ALLOW_SILICON_REACH))
 		return
@@ -522,7 +522,7 @@
 		if(HAS_AI_ACCESS(user))
 			user.examinate(src)
 		else
-			balloon_alert(user, "it's empty!")
+			balloon_alert(user, "está vazio!")
 		return
 
 	var/choice = show_radial_menu(user, src, HAS_AI_ACCESS(user) ? ai_radial_options : radial_options, require_near = !HAS_SILICON_ACCESS(user))

@@ -261,7 +261,7 @@
 				return ITEM_INTERACT_BLOCKING
 			terminal_cable_layer = GLOB.cable_name_to_layer[choice]
 		user.visible_message(span_notice("[user.name] starts adding cables to [src]."))
-		balloon_alert(user, "adding cables...")
+		balloon_alert(user, "adicionando cabos...")
 		playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 
 		//use cable
@@ -332,7 +332,7 @@
 
 /obj/machinery/power/smes/cable_layer_act(mob/living/user, obj/item/tool)
 	if(!panel_open)
-		balloon_alert(user, "open panel first!")
+		balloon_alert(user, "abra o painel primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	return ..()
 

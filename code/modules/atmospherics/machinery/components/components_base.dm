@@ -253,7 +253,7 @@
  */
 /obj/machinery/atmospherics/components/proc/crowbar_deconstruction_act(mob/living/user, obj/item/tool, internal_pressure = 0)
 	if(!panel_open)
-		balloon_alert(user, "open panel!")
+		balloon_alert(user, "abra o painel!")
 		return ITEM_INTERACT_SUCCESS
 
 	var/unsafe_wrenching = FALSE

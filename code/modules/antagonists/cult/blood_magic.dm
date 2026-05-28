@@ -764,7 +764,7 @@
 		return
 	var/mob/living/carbon/human/human_bloodbag = target
 	if(!CAN_HAVE_BLOOD(human_bloodbag))
-		human_bloodbag.balloon_alert(user, "no blood!")
+		human_bloodbag.balloon_alert(user, "sem sangue!")
 		return
 	if(human_bloodbag.stat == DEAD)
 		human_bloodbag.balloon_alert(user, "dead!")
@@ -789,7 +789,7 @@
 		to_chat(user,span_cult("That cultist doesn't require healing!"))
 		return FALSE
 	if(uses <= 0)
-		construct_thing.balloon_alert(user, "out of blood!")
+		construct_thing.balloon_alert(user, "sem sangue!")
 		return FALSE
 	if(uses > missing_health)
 		construct_thing.adjust_health(-missing_health)
@@ -811,7 +811,7 @@
  */
 /obj/item/melee/blood_magic/manipulator/proc/heal_cultist(mob/living/carbon/human/human_bloodbag, mob/living/carbon/human/user)
 	if(uses <= 0)
-		human_bloodbag.balloon_alert(user, "out of blood!")
+		human_bloodbag.balloon_alert(user, "sem sangue!")
 		return FALSE
 
 	/// used to ensure the proc returns TRUE if we completely restore an undamaged persons blood

@@ -90,7 +90,7 @@
 		return
 
 	if(owner && get_dist(get_turf(owner), get_turf(cast_on)) > cast_range)
-		cast_on.balloon_alert(owner, "too far away!")
+		cast_on.balloon_alert(owner, "longe demais!")
 		return . | SPELL_CANCEL_CAST
 
 /**

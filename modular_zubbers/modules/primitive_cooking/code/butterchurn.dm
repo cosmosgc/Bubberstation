@@ -48,14 +48,14 @@
 
 /obj/structure/butterchurn/crowbar_act(mob/living/user, obj/item/tool)
 	. = ..()
-	balloon_alert_to_viewers("disassembling...")
+	balloon_alert_to_viewers("desmontando...")
 	if(!do_after(user, 2 SECONDS, src))
 		return
 	deconstruct(TRUE)
 
 /obj/structure/butterchurn/click_ctrl_shift(mob/user)
 	set_anchored(!anchored)
-	balloon_alert(user, "[anchored ? "secured" : "unsecured"]")
+	balloon_alert(user, "[anchored ? "fixado" : "solto"]")
 
 /obj/structure/butterchurn/attack_hand(mob/living/carbon/user, list/modifiers)
 	if(!can_interact(user))

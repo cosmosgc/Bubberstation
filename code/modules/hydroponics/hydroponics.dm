@@ -632,7 +632,7 @@
 	if(myseed)
 		. += span_info("It has [span_name("[myseed.plantname]")] planted.")
 		if (plant_status == HYDROTRAY_PLANT_DEAD)
-			. += span_warning("It's dead!")
+			. += span_warning("está morto!")
 		else if (plant_status == HYDROTRAY_PLANT_HARVESTABLE)
 			. += span_info("It's ready to harvest.")
 		else if (plant_health <= (myseed.endurance / 2))

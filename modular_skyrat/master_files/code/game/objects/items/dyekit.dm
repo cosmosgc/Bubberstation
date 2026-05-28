@@ -13,7 +13,7 @@
 		return
 
 	if(!uses) // Can be set to -1 for infinite uses, basically.
-		balloon_alert(user, "it's empty!")
+		balloon_alert(user, "está vazio!")
 		return
 
 	var/mob/living/carbon/human/human_target = target

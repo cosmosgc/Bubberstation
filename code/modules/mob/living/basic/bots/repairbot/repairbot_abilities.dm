@@ -26,7 +26,7 @@
 	var/obj/item/stack/rods/our_rods = locate() in owner
 	var/turf/turf_target = target
 	if(turf_target.is_blocked_turf())
-		owner.balloon_alert(owner, "blocked!")
+		owner.balloon_alert(owner, "bloqueado!")
 		return TRUE
 	var/obj/effect/constructing_effect/effect = new(turf_target, 3 SECONDS)
 

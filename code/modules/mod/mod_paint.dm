@@ -154,7 +154,7 @@
 		return NONE
 	var/obj/item/mod/control/mod = attacked_atom
 	if(mod.active || mod.activating)
-		balloon_alert(user, "unit active!")
+		balloon_alert(user, "unidade ativa!")
 		return ITEM_INTERACT_BLOCKING
 	if(!(skin in mod.theme.variants))
 		balloon_alert(user, "wrong theme for skin!")

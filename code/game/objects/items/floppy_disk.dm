@@ -301,7 +301,7 @@
 	diskstack.update_appearance(UPDATE_OVERLAYS)
 
 	if(!amount_counter)
-		balloon_alert(user, "no space!")
+		balloon_alert(user, "sem espaço!")
 		return ITEM_INTERACT_BLOCKING
 
 	update_appearance(UPDATE_OVERLAYS)

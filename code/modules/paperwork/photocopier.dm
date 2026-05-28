@@ -683,7 +683,7 @@ GLOBAL_LIST_INIT(paper_blanks, init_paper_blanks())
 		return ITEM_INTERACT_FAILURE
 
 	if(istype(tool, /obj/item/paper/paperslip))
-		balloon_alert(user, "too small!")
+		balloon_alert(user, "pequeno demais!")
 		return ITEM_INTERACT_FAILURE
 
 	if(istype(tool, /obj/item/blueprints))

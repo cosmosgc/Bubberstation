@@ -145,7 +145,7 @@
 		try_put_in_hand(current_potion, user)
 		balloon_alert(user, "swapped")
 	else
-		balloon_alert(user, "inserted")
+		balloon_alert(user, "inserido")
 
 	current_potion = used_potion
 	var/atom/movable/screen/xenobio_console/xeno_hud = user.hud_used?.screen_objects[HUD_XENOBIO_CONSOLE]

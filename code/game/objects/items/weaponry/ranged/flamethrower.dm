@@ -117,7 +117,7 @@
 	if(igniter && !lit)
 		tool.play_tool_sound(src)
 		status = !status
-		to_chat(user, span_notice("[igniter] is now [status ? "secured" : "unsecured"]!"))
+		to_chat(user, span_notice("[igniter] is now [status ? "fixado" : "solto"]!"))
 		update_appearance()
 		return TRUE
 
@@ -132,7 +132,7 @@
 			return ITEM_INTERACT_BLOCKING
 		igniter = inserting_igniter
 		update_appearance()
-		balloon_alert(user, "attached")
+		balloon_alert(user, "fixado")
 		return ITEM_INTERACT_SUCCESS
 	if(istype(tool, /obj/item/tank/internals/plasma))
 		if(ptank)

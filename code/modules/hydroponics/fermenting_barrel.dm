@@ -101,7 +101,7 @@
 		return .
 
 	if(!length(contents))
-		balloon_alert(user, "empty!")
+		balloon_alert(user, "vazio!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	dump_contents()
@@ -150,7 +150,7 @@
 /// Adds the fruit to the barrel to queue the fermentation
 /obj/structure/fermenting_barrel/proc/insert_fruit(mob/user, obj/item/food/grown/fruit, obj/item/storage/bag/plants/bag = null)
 	if(reagents.total_volume + potential_volume > reagents.maximum_volume)
-		balloon_alert(user, "it's full!")
+		balloon_alert(user, "está cheio!")
 		return FALSE
 	if(!fruit.can_distill)
 		balloon_alert(user, "can't ferment this!")

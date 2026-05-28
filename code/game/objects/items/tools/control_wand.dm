@@ -206,7 +206,7 @@
 
 		if (WAND_BOLT)
 			if (!istype(airlock))
-				interacting_with.balloon_alert(user, "only airlocks!")
+				interacting_with.balloon_alert(user, "apenas portas!")
 				return ITEM_INTERACT_BLOCKING
 
 			if (airlock.locked)
@@ -218,7 +218,7 @@
 
 		if (WAND_EMERGENCY)
 			if (!istype(airlock))
-				interacting_with.balloon_alert(user, "only airlocks!")
+				interacting_with.balloon_alert(user, "apenas portas!")
 				return ITEM_INTERACT_BLOCKING
 
 			airlock.emergency = !airlock.emergency
@@ -226,7 +226,7 @@
 
 		if (WAND_SHOCK)
 			if (!istype(airlock))
-				interacting_with.balloon_alert(user, "only airlocks!")
+				interacting_with.balloon_alert(user, "apenas portas!")
 				return ITEM_INTERACT_BLOCKING
 			if (!COOLDOWN_FINISHED(src, shock_cooldown))
 				interacting_with.balloon_alert(user, "shock pulse resetting!")
@@ -239,7 +239,7 @@
 
 		if (WAND_DEPOWER)
 			if (!istype(airlock))
-				interacting_with.balloon_alert(user, "only airlocks!")
+				interacting_with.balloon_alert(user, "apenas portas!")
 				return ITEM_INTERACT_BLOCKING
 			// First hit disrupts main power, backup comes back in ten seconds, if you stick around you can hit backup for 60 more seconds of downtime.
 			if (!airlock.main_power_timer)

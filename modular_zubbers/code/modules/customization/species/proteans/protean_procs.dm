@@ -12,7 +12,7 @@
 	var/datum/species/protean/species = dna.species
 	var/obj/item/mod/control/pre_equipped/protean/suit = species.species_modsuit
 	if(incapacitated && loc != suit)
-		balloon_alert(src, "incapacitated!")
+		balloon_alert(src, "incapacitado!")
 		return
 
 	brain.replace_limbs()
@@ -40,7 +40,7 @@
 		if(!incapacitated)
 			brain.go_into_suit(forced)
 		else
-			balloon_alert(src, "incapacitated!")
+			balloon_alert(src, "incapacitado!")
 
 /mob/living/carbon/proc/low_power()
 	var/datum/species/protean/species = dna.species

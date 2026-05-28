@@ -54,7 +54,7 @@
 
 /mob/living/basic/cortical_borer/proc/try_leave_host()
 	if(host_sugar())
-		balloon_alert(src, "cannot function with sugar in host")
+		balloon_alert(src, "não funciona com açúcar no hospedeiro")
 		return TRUE // We force a cooldown over sugar
 	balloon_alert(src, "left host")
 	if(!(upgrade_flags & BORER_STEALTH_MODE))

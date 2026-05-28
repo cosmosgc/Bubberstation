@@ -55,7 +55,7 @@
 /obj/machinery/quantumpad/multitool_act(mob/living/user, obj/item/multitool/multi_tool)
 	if(panel_open)
 		multi_tool.set_buffer(src)
-		balloon_alert(user, "saved to multitool buffer")
+		balloon_alert(user, "salvo no buffer da multitool")
 		to_chat(user, span_notice("You save the data in [multi_tool] buffer. It can now be saved to pads with closed panels."))
 		return ITEM_INTERACT_SUCCESS
 

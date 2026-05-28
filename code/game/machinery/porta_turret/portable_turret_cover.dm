@@ -42,7 +42,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	multi_tool.set_buffer(parent_turret)
-	balloon_alert(user, "saved to multitool buffer")
+	balloon_alert(user, "salvo no buffer da multitool")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/porta_turret_cover/wrench_act(mob/living/user, obj/item/tool)
@@ -70,7 +70,7 @@
 		to_chat(user, span_notice("Access denied."))
 		return ITEM_INTERACT_BLOCKING
 	parent_turret.locked = !parent_turret.locked
-	to_chat(user, span_notice("Controls are now [parent_turret.locked ? "locked" : "unlocked"]."))
+	to_chat(user, span_notice("Controls are now [parent_turret.locked ? "trancado" : "destrancado"]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/porta_turret_cover/attacked_by(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)

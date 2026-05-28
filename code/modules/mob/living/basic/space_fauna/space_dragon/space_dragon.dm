@@ -190,7 +190,7 @@
 	if (target == src)
 		return COMPONENT_HOSTILE_NO_ATTACK // Easy to misclick yourself, let's not
 	if (DOING_INTERACTION(source, DOAFTER_SOURCE_SPACE_DRAGON_INTERACTION))
-		balloon_alert(source, "busy!")
+		balloon_alert(source, "ocupado!")
 		return COMPONENT_HOSTILE_NO_ATTACK
 	if(isfish(target))
 		INVOKE_ASYNC(src, PROC_REF(try_eat), target)

@@ -112,7 +112,7 @@
 /obj/item/udder/proc/handle_consumption(atom/movable/food, mob/user)
 	if(locate(food.type) in src)
 		if(user)
-			user.balloon_alert(user, "already full!")
+			user.balloon_alert(user, "já cheio!")
 		return
 	playsound(udder_mob.loc,'sound/items/eatfood.ogg', 50, TRUE)
 	udder_mob.visible_message(span_notice("[udder_mob] gobbles up [food]!"), span_notice("You gobble up [food]!"))

@@ -771,10 +771,10 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 		balloon_alert(user, "already sentient!")
 		return ITEM_INTERACT_BLOCKING
 	if(dumb_mob.stat)
-		balloon_alert(user, "it's dead!")
+		balloon_alert(user, "está morto!")
 		return ITEM_INTERACT_BLOCKING
 	if(!dumb_mob.compare_sentience_type(sentience_type)) // Will also return false if not a basic or simple mob, which are the only two we want anyway
-		balloon_alert(user, "invalid creature!")
+		balloon_alert(user, "criatura inválida!")
 		return ITEM_INTERACT_BLOCKING
 	balloon_alert(user, "offering...")
 	being_used = TRUE
@@ -848,10 +848,10 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 		balloon_alert(user, "already sentient!")
 		return ITEM_INTERACT_BLOCKING
 	if(switchy_mob.stat)
-		balloon_alert(user, "it's dead!")
+		balloon_alert(user, "está morto!")
 		return ITEM_INTERACT_BLOCKING
 	if(!switchy_mob.compare_sentience_type(animal_type))
-		balloon_alert(user, "invalid creature!")
+		balloon_alert(user, "criatura inválida!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/job_banned = is_banned_from(user.ckey, ROLE_MIND_TRANSFER)

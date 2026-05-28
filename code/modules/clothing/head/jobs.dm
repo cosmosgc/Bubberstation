@@ -320,10 +320,10 @@
 	. = ..()
 
 	if(LAZYLEN(contents) >= max_items)
-		balloon_alert(user, "full!")
+		balloon_alert(user, "cheio!")
 		return
 	if(item.w_class > max_weight)
-		balloon_alert(user, "too big!")
+		balloon_alert(user, "grande demais!")
 		return
 
 	var/desired_phrase = tgui_input_text(user, "What is the activation phrase?", "Activation phrase", "gadget", max_length = 26)

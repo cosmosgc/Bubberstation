@@ -371,7 +371,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 	if(user.combat_mode)
 		return NONE
 	if (!state_open)
-		to_chat(user, span_warning("Open the door first!"))
+		to_chat(user, span_warning("abra a porta primeiro!"))
 		return ITEM_INTERACT_BLOCKING
 	if(bloody_mess)
 		to_chat(user, span_warning("[src] must be cleaned up first!"))

@@ -219,7 +219,7 @@
 	else if(istype(used_item, /obj/item/food/pizza))
 		if(open)
 			if(pizza)
-				balloon_alert(user, "it's full!")
+				balloon_alert(user, "está cheio!")
 				return ITEM_INTERACT_FAILURE
 			if(!user.transferItemToLoc(used_item, src))
 				return ITEM_INTERACT_FAILURE

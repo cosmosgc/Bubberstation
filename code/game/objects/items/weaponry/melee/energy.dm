@@ -497,13 +497,13 @@
 		return SECONDARY_ATTACK_CALL_NORMAL
 
 	if(DOING_INTERACTION(user, DOAFTER_SOURCE_CHARGING_ESWORD))
-		user.balloon_alert(user, "busy!")
+		user.balloon_alert(user, "ocupado!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	if(charge <= max_charge)
 		user.balloon_alert(user, "attempting recharge...")
 		if(!do_after(user, charge_time, target = src, extra_checks = CALLBACK(src, PROC_REF(do_jiggle), user), interaction_key = DOAFTER_SOURCE_CHARGING_ESWORD, iconstate = "beat_the_heat"))
-			user.balloon_alert(user, "interrupted!")
+			user.balloon_alert(user, "interrompido!")
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	charge = max_charge
 	user.balloon_alert(user, "recharge successful")
@@ -536,14 +536,14 @@
 
 	charge--
 	if(charge <= 0)
-		user.balloon_alert(user, "out of charge!")
+		user.balloon_alert(user, "sem carga!")
 		attack_self(user)
 
 /obj/item/melee/energy/sword/surplus/proc/check_power(obj/item/source, mob/user, active)
 	SIGNAL_HANDLER
 
 	if(charge <= 0 && !HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
-		balloon_alert(user, "no charge!")
+		balloon_alert(user, "sem carga!")
 		return COMPONENT_BLOCK_TRANSFORM
 
 /obj/item/melee/energy/sword/surplus/proc/do_jiggle(mob/user)

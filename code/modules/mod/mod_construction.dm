@@ -46,9 +46,9 @@
 
 /obj/item/mod/construction/broken_core/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
-	balloon_alert(user, "repairing...")
+	balloon_alert(user, "consertando...")
 	if(!tool.use_tool(src, user, 5 SECONDS, volume = 30))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return
 	new /obj/item/mod/core/standard(drop_location())
 	qdel(src)
@@ -74,7 +74,7 @@
 		return
 	balloon_alert(user, "installing wires...")
 	if(!weapon.use_tool(src, user, 5 SECONDS, amount = 2, volume = 30))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return
 	new /obj/item/mod/core/plasma/lavaland(drop_location())
 	qdel(src)
@@ -165,7 +165,7 @@
 			if(!istype(part, /obj/item/mod/core))
 				return
 			if(!user.transferItemToLoc(part, src))
-				balloon_alert(user, "it's stuck!")
+				balloon_alert(user, "está preso!")
 				return
 			playsound(src, 'sound/machines/click.ogg', 30, TRUE)
 			balloon_alert(user, "core inserted")
@@ -184,7 +184,7 @@
 		if(SCREWED_CORE_STEP)
 			if(istype(part, /obj/item/mod/construction/helmet)) //Construct
 				if(!user.transferItemToLoc(part, src))
-					balloon_alert(user, "it's stuck!")
+					balloon_alert(user, "está preso!")
 					return
 				playsound(src, 'sound/machines/click.ogg', 30, TRUE)
 				balloon_alert(user, "helmet added")
@@ -197,7 +197,7 @@
 		if(HELMET_STEP)
 			if(istype(part, /obj/item/mod/construction/chestplate)) //Construct
 				if(!user.transferItemToLoc(part, src))
-					balloon_alert(user, "it's stuck!")
+					balloon_alert(user, "está preso!")
 					return
 				playsound(src, 'sound/machines/click.ogg', 30, TRUE)
 				balloon_alert(user, "chestplate added")
@@ -212,7 +212,7 @@
 		if(CHESTPLATE_STEP)
 			if(istype(part, /obj/item/mod/construction/gauntlets)) //Construct
 				if(!user.transferItemToLoc(part, src))
-					balloon_alert(user, "it's stuck!")
+					balloon_alert(user, "está preso!")
 					return
 				playsound(src, 'sound/machines/click.ogg', 30, TRUE)
 				balloon_alert(user, "gauntlets added")
@@ -227,7 +227,7 @@
 		if(GAUNTLETS_STEP)
 			if(istype(part, /obj/item/mod/construction/boots)) //Construct
 				if(!user.transferItemToLoc(part, src))
-					balloon_alert(user, "it's stuck!")
+					balloon_alert(user, "está preso!")
 					return
 				playsound(src, 'sound/machines/click.ogg', 30, TRUE)
 				balloon_alert(user, "boots added")
@@ -263,7 +263,7 @@
 			if(istype(part, /obj/item/mod/construction/plating)) //Construct
 				var/obj/item/mod/construction/plating/external_plating = part
 				if(!user.transferItemToLoc(part, src))
-					balloon_alert(user, "it's stuck!")
+					balloon_alert(user, "está preso!")
 					return
 				playsound(src, 'sound/machines/click.ogg', 30, TRUE)
 				var/obj/item/mod = new /obj/item/mod/control(drop_location(), external_plating.theme, null, core)

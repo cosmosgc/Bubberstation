@@ -272,7 +272,7 @@
 	if(isnull(user?.client)) // the monkey incident of 2564
 		return
 	if(!COOLDOWN_FINISHED(src, static_scan_cd))
-		balloon_alert(user, "recharging!")
+		balloon_alert(user, "recarregando!")
 		return
 	cleanup_static()
 	var/turf/our_turf = get_turf(src)

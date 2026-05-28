@@ -249,7 +249,7 @@
 		host_mob.balloon_alert(host_mob, "already infected!")
 		return
 	if(!living.Adjacent(host_mob))
-		host_mob.balloon_alert(host_mob, "can't reach!")
+		host_mob.balloon_alert(host_mob, "não alcança!")
 		return
 	var/chances = 100 - living.run_armor_check(host_mob.zone_selected, BIO, silent = TRUE)
 	var/success = prob(chances)

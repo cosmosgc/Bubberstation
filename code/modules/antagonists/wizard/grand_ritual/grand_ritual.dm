@@ -167,7 +167,7 @@
 		draw_effect_typepath = /obj/effect/temp_visual/wizard_rune/drawing/cheese
 	var/obj/effect/temp_visual/wizard_rune/drawing/draw_effect = new draw_effect_typepath(target_turf)
 	if(!do_after(owner, 4 SECONDS, target_turf))
-		target_turf.balloon_alert(owner, "interrupted!")
+		target_turf.balloon_alert(owner, "interrompido!")
 		drawing_rune = FALSE
 		qdel(draw_effect)
 		var/fail_effect_typepath = /obj/effect/temp_visual/wizard_rune/failed

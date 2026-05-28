@@ -85,17 +85,17 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 
 	if(istype(tool, /obj/item/defibrillator) && !user.combat_mode)
 		if(!opened)
-			balloon_alert(user, "chassis cover is closed!")
+			balloon_alert(user, "tampa do chassi está fechada!")
 			return ITEM_INTERACT_BLOCKING
 		if(!istype(model, /obj/item/robot_model/medical))
 			balloon_alert(user, "wrong cyborg model!")
 			return ITEM_INTERACT_BLOCKING
 		if(stat == DEAD)
-			balloon_alert(user, "it's dead!")
+			balloon_alert(user, "está morto!")
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/defibrillator/defib = tool
 		if(!(defib.slot_flags & ITEM_SLOT_BACK)) //belt defibs need not apply
-			balloon_alert(user, "doesn't fit!")
+			balloon_alert(user, "não cabe!")
 			return ITEM_INTERACT_BLOCKING
 		if(defib.get_cell())
 			balloon_alert(user, "remove [tool]'s cell first!")
@@ -112,7 +112,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	if(istype(tool, /obj/item/storage/part_replacer))
 		var/obj/item/storage/part_replacer/replacer = tool
 		if(!opened)
-			balloon_alert(user, "chassis cover is closed!")
+			balloon_alert(user, "tampa do chassi está fechada!")
 			return ITEM_INTERACT_BLOCKING
 		if(!istype(model, /obj/item/robot_model/engineering))
 			balloon_alert(user, "wrong cyborg model!")
@@ -129,7 +129,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 
 	if(istype(tool, /obj/item/ai_module))
 		if(!opened)
-			balloon_alert(user, "chassis cover is closed!")
+			balloon_alert(user, "tampa do chassi está fechada!")
 			return ITEM_INTERACT_BLOCKING
 		if(wiresexposed)
 			balloon_alert(user, "unexpose the wires first!")
@@ -165,7 +165,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 
 	if(istype(tool, /obj/item/borg/upgrade))
 		if(!opened)
-			balloon_alert(user, "chassis cover is closed!")
+			balloon_alert(user, "tampa do chassi está fechada!")
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/borg/upgrade/upgrade = tool
 		if(!model && upgrade.require_model)
@@ -223,11 +223,11 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 		balloon_alert(user, "close the chassis cover first!")
 		return ITEM_INTERACT_BLOCKING
 	if(!allowed(user))
-		balloon_alert(user, "access denied!")
+		balloon_alert(user, "acesso negado!")
 		return ITEM_INTERACT_BLOCKING
 	locked = !locked
 	update_icons()
-	balloon_alert(user, "chassis cover [emagged ? "lock glitches" : "[locked ? "locked" : "unlocked"]"]")
+	balloon_alert(user, "chassis cover [emagged ? "lock glitches" : "[locked ? "trancado" : "destrancado"]"]")
 	logevent("[emagged ? "ChÃ¥vÃis" : "Chassis"] cover lock has been [locked ? "engaged" : "released"]")
 	return ITEM_INTERACT_SUCCESS
 
@@ -298,7 +298,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 		if(!cell)
 			return
 		cell.add_fingerprint(user)
-		balloon_alert(user, "cell removed")
+		balloon_alert(user, "célula removida")
 		user.put_in_active_hand(cell)
 		update_icons()
 		diag_hud_set_borgcell()
@@ -387,7 +387,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 		to_chat(user, span_warning("[src]'s bolts spark! Maybe you should lock them down first!"))
 		spark_system.start()
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "deconstructing...")
+	balloon_alert(user, "desconstruindo...")
 	if(!tool.use_tool(src, user, 5 SECONDS, volume = 50) && !cell)
 		return ITEM_INTERACT_BLOCKING
 	loc.balloon_alert(user, "deconstructed")
@@ -548,7 +548,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	if(!shield)
 		return ..()
 	if(borg.cell.charge <= 0.4 * STANDARD_CELL_CHARGE)
-		balloon_alert(borg, "not enough energy!")
+		balloon_alert(borg, "energia insuficiente!")
 		if(shield.active)
 			shield.active = FALSE
 			playsound(src, 'sound/vehicles/mecha/mech_shield_drop.ogg', 50, FALSE)

@@ -275,7 +275,7 @@
 		if(istype(nearby_turf, /turf/open/floor))
 			continue
 
-		owner.balloon_alert(owner, "not enough room!")
+		owner.balloon_alert(owner, "espaço insuficiente!")
 		return
 
 	if(researching)

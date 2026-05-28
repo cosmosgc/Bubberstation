@@ -85,7 +85,7 @@
 	var/list/data = list()
 	data["stored"] = record_size
 	data["interval"] = record_interval / 10
-	data["attached"] = connected_powernet ? TRUE : FALSE
+	data["fixado"] = connected_powernet ? TRUE : FALSE
 	data["history"] = history
 	data["areas"] = list()
 

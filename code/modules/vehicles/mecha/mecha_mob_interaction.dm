@@ -68,7 +68,7 @@
 		return FALSE
 	var/mob/living/brain/brain_mob = brain_obj.brainmob
 	if(LAZYLEN(occupants) >= max_occupants)
-		to_chat(user, span_warning("It's full!"))
+		to_chat(user, span_warning("está cheio!"))
 		return FALSE
 	if(dna_lock && (!brain_mob.stored_dna || (dna_lock != brain_mob.stored_dna.unique_enzymes)))
 		to_chat(user, span_warning("Access denied. [name] is secured with a DNA lock."))

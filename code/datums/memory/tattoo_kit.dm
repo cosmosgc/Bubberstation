@@ -35,7 +35,7 @@
 		balloon_alert(user, "none left!")
 		return ITEM_INTERACT_BLOCKING
 	if(uses >= max_uses)
-		balloon_alert(user, "already full!")
+		balloon_alert(user, "já cheio!")
 		return ITEM_INTERACT_BLOCKING
 
 	added_amount = min(uses + added_amount, max_uses)

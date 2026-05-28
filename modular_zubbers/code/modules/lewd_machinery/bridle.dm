@@ -234,7 +234,7 @@
 	if(wearer.get_item_by_slot(ITEM_SLOT_MASK) != src)
 		return
 	if(!stripper.Adjacent(wearer))
-		wearer.balloon_alert(stripper, "can't reach!")
+		wearer.balloon_alert(stripper, "não alcança!")
 		return
 	if(!do_after(stripper, strip_adjust_delay, wearer))
 		return

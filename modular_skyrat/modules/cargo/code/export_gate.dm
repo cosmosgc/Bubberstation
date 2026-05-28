@@ -294,7 +294,7 @@
 			set_payment_mode(user, id_card)
 			return ITEM_INTERACT_SUCCESS
 		else
-			user.balloon_alert(user, "insufficient access!")
+			user.balloon_alert(user, "acesso insuficiente!")
 			return ITEM_INTERACT_BLOCKING
 
 /datum/controller/subsystem/economy/issue_paydays()

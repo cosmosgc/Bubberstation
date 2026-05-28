@@ -94,7 +94,7 @@
 
 /obj/item/clothing/suit/armor/nerd/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "already emagged!")
+		balloon_alert(user, "já emagado!")
 		return FALSE
 	if(owner)
 		balloon_alert(user, "take it off first!")

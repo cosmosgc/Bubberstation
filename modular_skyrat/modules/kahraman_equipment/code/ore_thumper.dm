@@ -110,7 +110,7 @@
 		if(avail(active_power_usage))
 			add_load(active_power_usage)
 		else
-			balloon_alert_to_viewers("not enough power!")
+			balloon_alert_to_viewers("energia insuficiente!")
 			cut_that_out()
 
 /// Checks the turf we are on to make sure we are outdoors and on a misc turf

@@ -432,7 +432,7 @@
 			adjusted_time = recipe.time
 		var/skill_modifier = builder.mind.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER) //SKYRAT EDIT: Construction Skill
 		if(!do_after(builder, adjusted_time * skill_modifier, target = builder))
-			builder.balloon_alert(builder, "interrupted!")
+			builder.balloon_alert(builder, "interrompido!")
 			return
 		if(!building_checks(builder, recipe, multiplier))
 			return
@@ -515,7 +515,7 @@
 /// Checks if we can build here, validly.
 /obj/item/stack/proc/building_checks(mob/builder, datum/stack_recipe/recipe, multiplier)
 	if (get_amount() < recipe.req_amount * multiplier)
-		builder.balloon_alert(builder, "not enough material!")
+		builder.balloon_alert(builder, "material insuficiente!")
 		return FALSE
 	var/turf/dest_turf = get_turf(builder)
 
@@ -590,7 +590,7 @@
 /obj/item/stack/tool_use_check(mob/living/user, amount, heat_required)
 	if(get_amount() < amount)
 		// general balloon alert that says they don't have enough
-		user.balloon_alert(user, "not enough material!")
+		user.balloon_alert(user, "material insuficiente!")
 		// then a more specific message about how much they need and what they need specifically
 		if(singular_name)
 			if(amount > 1)

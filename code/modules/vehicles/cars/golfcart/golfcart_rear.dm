@@ -172,19 +172,19 @@
 /obj/golfcart_rear/mouse_drop_receive(atom/dropped, mob/user, params)
 	if (!can_load(dropped))
 		if (!isliving(dropped) || (has_buckled_mobs() && buckled_mobs.len >= max_buckled_mobs))
-			balloon_alert_to_viewers("blocked!")
+			balloon_alert_to_viewers("bloqueado!")
 			return
 		//Allow either 2 standing mobs or 1 lying down mob
 		//If a mob is already lying down it's obviously blocked.
 		if (has_buckled_mobs())
 			for (var/mob/living/carbon/carbon_sitter in buckled_mobs)
 				if (carbon_sitter.body_position == LYING_DOWN)
-					balloon_alert_to_viewers("blocked!")
+					balloon_alert_to_viewers("bloqueado!")
 					return
 		var/mob/living/dropped_liver = dropped
 		if (dropped_liver.has_buckled_mobs())
 			//This sucks
-			balloon_alert_to_viewers("blocked!")
+			balloon_alert_to_viewers("bloqueado!")
 			return
 		if (iscarbon(dropped_liver))
 			var/mob/living/carbon/dropped_carbon = dropped_liver
@@ -353,7 +353,7 @@
 /obj/golfcart_rear/is_buckle_possible(mob/living/target, force, check_loc)
 	// these are to_viewers because you can buckle someone on their behalf
 	if (cargo)
-		balloon_alert_to_viewers("blocked!")
+		balloon_alert_to_viewers("bloqueado!")
 		return FALSE
 	if (target.body_position != STANDING_UP)
 		if (has_buckled_mobs())
@@ -362,11 +362,11 @@
 		return ..()
 	for (var/mob/blocker in buckled_mobs)
 		if (!isliving(blocker))
-			balloon_alert_to_viewers("blocked!")
+			balloon_alert_to_viewers("bloqueado!")
 			return FALSE
 		var/mob/living/living_blocker = blocker
 		if (living_blocker.body_position != STANDING_UP)
-			balloon_alert_to_viewers("blocked!")
+			balloon_alert_to_viewers("bloqueado!")
 			return FALSE
 	return ..()
 

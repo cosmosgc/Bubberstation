@@ -13,7 +13,7 @@
 		return NONE
 	var/obj/item/organ/monster_core/target_core = interacting_with
 	if (!istype(target_core))
-		balloon_alert(user, "invalid target!")
+		balloon_alert(user, "alvo inválido!")
 		return ITEM_INTERACT_BLOCKING
 
 	if (!target_core.preserve())
@@ -170,7 +170,7 @@
  */
 /obj/item/organ/monster_core/proc/try_apply(atom/target, mob/user)
 	if (!isliving(target))
-		balloon_alert(user, "invalid target!")
+		balloon_alert(user, "alvo inválido!")
 		return
 	if (inert)
 		balloon_alert(user, "organ decayed!")

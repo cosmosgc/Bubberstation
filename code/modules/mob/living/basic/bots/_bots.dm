@@ -212,7 +212,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	add_traits(on_toggle_traits, POWER_LACK_TRAIT)
 	set_light_on(bot_mode_flags & BOT_MODE_ON ? TRUE : FALSE)
 	bot_reset() //Resets an AI's call, should it exist.
-	balloon_alert(src, "turned off")
+	balloon_alert(src, "desligado")
 	update_appearance()
 
 /mob/living/basic/bot/Destroy()
@@ -355,7 +355,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	. += span_info("You can use a <b>screwdriver</b> to [bot_access_flags & BOT_COVER_MAINTS_OPEN ? "close" : "open"] [p_them()].")
 
 	if(bot_access_flags & BOT_COVER_MAINTS_OPEN)
-		. += span_notice("[p_Their()] control panel is [bot_access_flags & BOT_COVER_LOCKED ? "locked" : "unlocked"].")
+		. += span_notice("[p_Their()] control panel is [bot_access_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"].")
 		if(!(bot_access_flags & BOT_COVER_EMAGGED) && (issilicon(user) || user.Adjacent(src)))
 			. += span_info("Alt-click [issilicon(user) ? "" : "or use your ID on "][p_them()] to [bot_access_flags & BOT_COVER_LOCKED ? "un" : ""]lock [p_their()] control panel.")
 	if(isnull(paicard))
@@ -407,7 +407,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 		balloon_alert(user, "no access")
 		return
 	bot_access_flags ^= BOT_COVER_LOCKED
-	to_chat(user, span_notice("Controls are now [bot_access_flags & BOT_COVER_LOCKED ? "locked" : "unlocked"]."))
+	to_chat(user, span_notice("Controls are now [bot_access_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"]."))
 	return TRUE
 
 /mob/living/basic/bot/screwdriver_act(mob/living/user, obj/item/tool)

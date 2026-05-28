@@ -104,10 +104,10 @@
 		return
 	var/turf/open/target_turf = get_turf(target)
 	if(get_dist(target_turf, mod.wearer) > max_range)
-		balloon_alert(mod.wearer, "too far!")
+		balloon_alert(mod.wearer, "longe demais!")
 		return
 	if(!istype(target_turf))
-		balloon_alert(mod.wearer, "invalid target!")
+		balloon_alert(mod.wearer, "alvo inválido!")
 		return
 	if(target_turf.is_blocked_turf_ignore_climbable() || !los_check(mod.wearer, target, pass_args = PASSTABLE|PASSGLASS|PASSGRILLE|PASSMOB|PASSMACHINE|PASSSTRUCTURE|PASSFLAPS|PASSWINDOW))
 		balloon_alert(mod.wearer, "blocked destination!")
@@ -116,14 +116,14 @@
 	if(!check_teleport_valid(mod.wearer, target_turf, channel = TELEPORT_CHANNEL_BLUESPACE, original_destination = target_turf))
 		balloon_alert(mod.wearer, "something holds you back!")
 		return
-	balloon_alert(mod.wearer, "teleporting...")
+	balloon_alert(mod.wearer, "teleportando...")
 	var/matrix/pre_matrix = matrix()
 	pre_matrix.Scale(4, 0.25)
 	var/matrix/post_matrix = matrix()
 	post_matrix.Scale(0.25, 4)
 	animate(mod.wearer, teleport_time, color = COLOR_CYAN, transform = pre_matrix.Multiply(mod.wearer.transform), easing = SINE_EASING|EASE_OUT)
 	if(!do_after(mod.wearer, teleport_time, target = mod))
-		balloon_alert(mod.wearer, "interrupted!")
+		balloon_alert(mod.wearer, "interrompido!")
 		animate(mod.wearer, teleport_time*0.1, color = null, transform = post_matrix.Multiply(mod.wearer.transform), easing = SINE_EASING|EASE_IN)
 		return
 	animate(mod.wearer, teleport_time*0.1, color = null, transform = post_matrix.Multiply(mod.wearer.transform), easing = SINE_EASING|EASE_IN)

@@ -20,7 +20,7 @@
 	return NONE
 
 /obj/structure/rack/wooden/crowbar_act(mob/living/user, obj/item/tool)
-	user.balloon_alert_to_viewers("disassembling...")
+	user.balloon_alert_to_viewers("desmontando...")
 	if(!tool.use_tool(src, user, 2 SECONDS, volume = 100))
 		return
 	deconstruct(TRUE)
@@ -74,7 +74,7 @@
 	return NONE
 
 /obj/machinery/smartfridge/wooden/crowbar_act(mob/living/user, obj/item/tool)
-	user.balloon_alert_to_viewers("disassembling...")
+	user.balloon_alert_to_viewers("desmontando...")
 	if(!tool.use_tool(src, user, 2 SECONDS, volume = 100))
 		return
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)

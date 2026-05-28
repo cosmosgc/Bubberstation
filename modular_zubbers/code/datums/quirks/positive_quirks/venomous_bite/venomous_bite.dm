@@ -39,11 +39,11 @@
 		return FALSE
 
 	if (astype(owner, /mob/living/carbon)?.is_mouth_covered())
-		owner.balloon_alert(owner, "mouth covered!")
+		owner.balloon_alert(owner, "boca coberta!")
 		return FALSE
 
 	if (!owner.Adjacent(target_atom))
-		owner.balloon_alert(owner, "too far!")
+		owner.balloon_alert(owner, "longe demais!")
 		return FALSE
 
 	if (target_atom == owner)

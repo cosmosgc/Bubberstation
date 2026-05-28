@@ -17,7 +17,7 @@
 	if(isnull(preferred_limb) || !IS_ROBOTIC_LIMB(preferred_limb))
 		return NONE
 	if(!(preferred_limb.burn_dam > 0))
-		balloon_alert(user, "limb not damaged")
+		balloon_alert(user, "membro não danificado")
 		return ITEM_INTERACT_BLOCKING
 	var/list/damaged_limbs = list()
 	for(var/obj/item/bodypart/limb as anything in carbon_patient.bodyparts)

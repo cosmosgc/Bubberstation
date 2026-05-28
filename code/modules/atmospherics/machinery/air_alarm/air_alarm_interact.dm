@@ -182,6 +182,6 @@
 /obj/item/wallframe/airalarm/try_build(atom/support, mob/user)
 	var/area/A = get_area(user)
 	if(A.always_unpowered)
-		balloon_alert(user, "cannot place in this area!")
+		balloon_alert(user, "não pode ser colocado aqui!")
 		return FALSE
 	return ..()

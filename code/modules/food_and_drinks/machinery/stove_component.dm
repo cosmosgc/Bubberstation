@@ -123,7 +123,7 @@
 		turn_off()
 
 	else if(real_parent.machine_stat & (BROKEN|NOPOWER))
-		real_parent.balloon_alert_to_viewers("no power!")
+		real_parent.balloon_alert_to_viewers("sem energia!")
 		return
 
 	else

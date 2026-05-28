@@ -262,7 +262,7 @@
 
 /obj/structure/displaycase_chassis/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
-	balloon_alert(user, "disassembling...")
+	balloon_alert(user, "desmontando...")
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 3 SECONDS))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)

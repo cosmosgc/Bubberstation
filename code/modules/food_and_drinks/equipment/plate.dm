@@ -31,7 +31,7 @@
 	if(!IS_EDIBLE(tool))
 		return NONE
 	if(tool.w_class > biggest_w_class)
-		balloon_alert(user, "too big!")
+		balloon_alert(user, "grande demais!")
 		return ITEM_INTERACT_BLOCKING
 	if(contents.len >= max_items)
 		balloon_alert(user, "can't fit!")

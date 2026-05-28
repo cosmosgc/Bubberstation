@@ -68,7 +68,7 @@
 				return ITEM_INTERACT_BLOCKING
 
 			if(!anchored)
-				balloon_alert(user, "anchor it first!")
+				balloon_alert(user, "ancore primeiro!")
 				return ITEM_INTERACT_BLOCKING
 
 			balloon_alert(user, "connecting neural network...")

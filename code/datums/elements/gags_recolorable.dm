@@ -22,7 +22,7 @@
 		user.balloon_alert(user, "take the cap off first!")
 		return ITEM_INTERACT_BLOCKING
 	if(item.check_empty())
-		user.balloon_alert(user, "empty!")
+		user.balloon_alert(user, "vazio!")
 		return ITEM_INTERACT_BLOCKING
 
 	INVOKE_ASYNC(src, PROC_REF(open_ui), user, item, source)

@@ -126,7 +126,7 @@
 			continue
 		blood_samples += usable_reagent.data["blood_DNA"]
 	if(isnull(blood_samples))
-		user.balloon_alert(user, "no blood!")
+		user.balloon_alert(user, "sem sangue!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/curse_type = curse_list[selected_curse]

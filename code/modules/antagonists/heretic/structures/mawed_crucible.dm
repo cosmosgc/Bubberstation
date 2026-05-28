@@ -306,7 +306,7 @@
 
 /obj/item/eldritch_potion/crucible_soul/attack_self(mob/user)
 	if(user.has_status_effect(/datum/status_effect/crucible_soul_cooldown))
-		balloon_alert(user, "on cooldown!")
+		balloon_alert(user, "em recarga!")
 		return TRUE
 	return ..()
 

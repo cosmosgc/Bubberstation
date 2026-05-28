@@ -718,7 +718,7 @@
 	var/distance = get_dist(mod.wearer, linked_weapon)
 	var/in_view = (linked_weapon in view(mod.wearer)) && !(linked_weapon in get_turf(mod.wearer))
 	if(!in_view && !drain_power(use_energy_cost * distance))
-		balloon_alert(mod.wearer, "not enough charge!")
+		balloon_alert(mod.wearer, "carga insuficiente!")
 		return
 	linked_weapon.forceMove(linked_weapon.drop_location())
 	if(in_view)
@@ -974,7 +974,7 @@
 
 /obj/item/mod/module/adrenaline_boost/used()
 	if(!reagents.has_reagent(reagent_required, reagent_required_amount))
-		balloon_alert(mod.wearer, "no charge!")
+		balloon_alert(mod.wearer, "sem carga!")
 		return FALSE
 	return ..()
 

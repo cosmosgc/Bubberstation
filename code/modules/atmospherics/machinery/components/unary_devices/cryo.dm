@@ -249,7 +249,7 @@
 /obj/machinery/cryo_cell/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ITEM_INTERACT_BLOCKING
 	if(on)
-		balloon_alert(user, "turn off!")
+		balloon_alert(user, "desligue!")
 		return ITEM_INTERACT_BLOCKING
 	if(occupant)
 		balloon_alert(user, "occupant inside!")
@@ -259,7 +259,7 @@
 
 /obj/machinery/cryo_cell/crowbar_act(mob/living/user, obj/item/tool)
 	if(on)
-		balloon_alert(user, "turn off!")
+		balloon_alert(user, "desligue!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/can_crowbar = FALSE
@@ -305,7 +305,7 @@
 /obj/machinery/cryo_cell/wrench_act(mob/living/user, obj/item/tool)
 	. = ITEM_INTERACT_BLOCKING
 	if(on)
-		balloon_alert(user, "turn off!")
+		balloon_alert(user, "desligue!")
 		return
 	if(occupant)
 		balloon_alert(user, "occupant inside!")

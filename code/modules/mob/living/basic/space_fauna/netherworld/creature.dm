@@ -92,7 +92,7 @@
 	if (!owner)
 		return SPELL_CANCEL_CAST
 	if (!do_after(owner, 6 SECONDS, target = owner.loc))
-		owner.balloon_alert(owner, "interrupted!")
+		owner.balloon_alert(owner, "interrompido!")
 		return SPELL_CANCEL_CAST
 	return ..()
 

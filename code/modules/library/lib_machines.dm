@@ -804,7 +804,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	if(isidcard(hitby))
 		var/obj/item/card/id/idcard = hitby
 		scanned_name = idcard.registered_name
-		balloon_alert(user, "scanned")
+		balloon_alert(user, "escaneado")
 		return TRUE
 
 	return ..()

@@ -46,11 +46,11 @@
 		user.balloon_alert(user, "select atom first!")
 		return FALSE
 	if(!isopenturf(target))
-		user.balloon_alert(user, "blocked!")
+		user.balloon_alert(user, "bloqueado!")
 		return FALSE
 	var/turf/T = target
 	if(T.is_blocked_turf())
-		user.balloon_alert(user, "blocked!")
+		user.balloon_alert(user, "bloqueado!")
 		return FALSE
 	if(!isturf(selected_atom))
 		T.place_on_top(selected_atom)

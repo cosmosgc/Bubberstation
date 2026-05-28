@@ -315,7 +315,7 @@
 	if(!.)
 		return
 	if(!mod.wearer.Adjacent(target) || !iscarbon(target) || target == mod.wearer)
-		balloon_alert(mod.wearer, "invalid target!")
+		balloon_alert(mod.wearer, "alvo inválido!")
 		return
 	var/mob/living/carbon/carbon_target = target
 	if(length(ripped_clothing))
@@ -324,7 +324,7 @@
 	balloon_alert(mod.wearer, "ripping clothing...")
 	playsound(src, 'sound/items/zip/zip.ogg', 25, TRUE, frequency = -1)
 	if(!do_after(mod.wearer, 1.5 SECONDS, target = carbon_target))
-		balloon_alert(mod.wearer, "interrupted!")
+		balloon_alert(mod.wearer, "interrompido!")
 		return
 	var/target_zones = body_zone2cover_flags(mod.wearer.zone_selected)
 	for(var/obj/item/clothing as anything in carbon_target.get_equipped_items())

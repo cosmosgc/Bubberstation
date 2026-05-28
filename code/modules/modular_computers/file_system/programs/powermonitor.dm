@@ -82,7 +82,7 @@
 	var/datum/powernet/connected_powernet = get_powernet()
 	data["stored"] = record_size
 	data["interval"] = record_interval / 10
-	data["attached"] = connected_powernet ? TRUE : FALSE
+	data["fixado"] = connected_powernet ? TRUE : FALSE
 	if(connected_powernet)
 		data["supply"] = display_power(connected_powernet.avail)
 		data["demand"] = display_power(connected_powernet.load)

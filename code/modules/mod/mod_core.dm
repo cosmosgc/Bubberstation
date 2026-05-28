@@ -236,13 +236,13 @@
 
 /obj/item/mod/core/standard/proc/mod_uninstall_cell(mob/living/user)
 	if(!cell)
-		mod.balloon_alert(user, "no cell!")
+		mod.balloon_alert(user, "sem célula!")
 		return
 	mod.balloon_alert(user, "removing cell...")
 	if(!do_after(user, 1.5 SECONDS, target = mod))
-		mod.balloon_alert(user, "interrupted!")
+		mod.balloon_alert(user, "interrompido!")
 		return
-	mod.balloon_alert(user, "cell removed")
+	mod.balloon_alert(user, "célula removida")
 	playsound(mod, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 	var/obj/item/cell_to_move = cell
 	cell_to_move.forceMove(drop_location())
@@ -260,7 +260,7 @@
 	if(!istype(attacking_item, /obj/item/stock_parts/power_store/cell))
 		return FALSE
 	if(!mod.open)
-		mod.balloon_alert(user, "cover closed!")
+		mod.balloon_alert(user, "cobertura fechada!")
 		playsound(mod, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 	if(cell)

@@ -126,7 +126,7 @@
 			balloon_alert(mod.wearer, "nothing to holster!")
 			return
 		if(!istype(holding) || holding.w_class > WEIGHT_CLASS_BULKY)
-			balloon_alert(mod.wearer, "doesn't fit!")
+			balloon_alert(mod.wearer, "não cabe!")
 			return
 		if(mod.wearer.transferItemToLoc(holding, src, force = FALSE, silent = TRUE))
 			holstered = holding
@@ -225,7 +225,7 @@
 	if(target == linked_bodybag)
 		playsound(src, 'sound/machines/ding.ogg', 25, TRUE)
 		if(!do_after(mod.wearer, packup_time, target = target))
-			balloon_alert(mod.wearer, "interrupted!")
+			balloon_alert(mod.wearer, "interrompido!")
 		packup()
 		return
 	if(linked_bodybag)
@@ -235,7 +235,7 @@
 		return
 	playsound(src, 'sound/machines/ding.ogg', 25, TRUE)
 	if(!do_after(mod.wearer, capture_time, target = target))
-		balloon_alert(mod.wearer, "interrupted!")
+		balloon_alert(mod.wearer, "interrompido!")
 		return
 	if(linked_bodybag)
 		return
@@ -489,7 +489,7 @@
 	if(new_mode == selected_mode || !mod.active)
 		return
 	if(new_mode != SHOOTING_ASSISTANT_OFF && !mod.get_charge())
-		balloon_alert(mod.wearer, "no charge!")
+		balloon_alert(mod.wearer, "sem carga!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
 

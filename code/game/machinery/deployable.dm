@@ -44,7 +44,7 @@
 	if(!tool.use_tool(src, user, 4 SECONDS, amount = 10, volume=50))
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "repaired")
+	balloon_alert(user, "consertado")
 	repair_damage(20)
 	return ITEM_INTERACT_SUCCESS
 

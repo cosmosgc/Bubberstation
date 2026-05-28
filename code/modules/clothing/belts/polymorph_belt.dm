@@ -47,7 +47,7 @@
 	balloon_alert(user, "inserting...")
 
 	if (!do_after(user, delay = 3 SECONDS, target = src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return ITEM_INTERACT_BLOCKING
 
 	if (active)
@@ -71,7 +71,7 @@
 		balloon_alert(user, "target too complex!")
 		return TRUE
 	if (target_mob.mob_biotypes & (MOB_HUMANOID|MOB_ROBOTIC|MOB_SPECIAL|MOB_SPIRIT|MOB_UNDEAD))
-		balloon_alert(user, "incompatible!")
+		balloon_alert(user, "incompatível!")
 		return TRUE
 	if (!target_mob.compare_sentience_type(SENTIENCE_ORGANIC))
 		balloon_alert(user, "target too intelligent!")
@@ -80,9 +80,9 @@
 		balloon_alert(user, "already scanned!")
 		return TRUE
 	if (DOING_INTERACTION_WITH_TARGET(user, target_mob))
-		balloon_alert(user, "busy!")
+		balloon_alert(user, "ocupado!")
 		return TRUE
-	balloon_alert(user, "scanning...")
+	balloon_alert(user, "escaneando...")
 	visible_message(span_notice("[user] begins scanning [target_mob] with [src]."))
 	if (!do_after(user, delay = 5 SECONDS, target = target_mob))
 		return TRUE

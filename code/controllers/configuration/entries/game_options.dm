@@ -167,22 +167,22 @@
 /datum/config_entry/flag/arrivals_shuttle_require_safe_latejoin //Require the arrivals shuttle to be operational in order for latejoiners to join
 
 /datum/config_entry/string/alert_green
-	default = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
+	default = "Todas as ameaças à estação passaram. A segurança não pode portar armas visíveis, as leis de privacidade estão novamente em pleno vigor."
 
 /datum/config_entry/string/alert_blue_upto
-	default = "The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted."
+	default = "A estação recebeu informações confiáveis sobre possível atividade hostil na estação. Os funcionários de segurança podem estar com armas visíveis, e buscas aleatórias são permitidas."
 
 /datum/config_entry/string/alert_blue_downto
-	default = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
+	default = "A ameaça imediata passou. A segurança não precisa mais manter armas sacadas o tempo todo, mas pode continuar com elas visíveis. Buscas aleatórias ainda são permitidas."
 
 /datum/config_entry/string/alert_red_upto
-	default = "There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised."
+	default = "Há uma ameaça séria e imediata à estação. A segurança pode manter armas fora do coldre o tempo todo. Buscas aleatórias são permitidas e aconselhadas."
 
 /datum/config_entry/string/alert_red_downto
-	default = "The station's destruction has been averted. There is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
+	default = "A destruição da estação foi evitada. No entanto, ainda há uma ameaça séria e imediata à estação. A segurança pode manter armas fora do coldre o tempo todo, buscas aleatórias são permitidas e aconselhadas."
 
 /datum/config_entry/string/alert_delta
-	default = "Destruction of the station is imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
+	default = "A destruição da estação é iminente. Toda a tripulação deve obedecer a todas as instruções dos chefes de departamento. Qualquer violação destas ordens pode ser punida com a morte. Isto não é um exercício."
 
 /datum/config_entry/flag/roundstart_blue_alert
 	default = TRUE

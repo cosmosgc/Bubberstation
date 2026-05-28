@@ -66,7 +66,7 @@
 	if(target_turf.is_blocked_turf_ignore_climbable())
 		return FALSE
 	if(level_current < AUSPEX_ANYWHERE_LEVEL && !(target_turf in view(owner.client.view, owner.client)))
-		owner.balloon_alert(owner, "out of view!")
+		owner.balloon_alert(owner, "fora da visão!")
 		return FALSE
 	return TRUE
 
@@ -92,7 +92,7 @@
 /datum/action/cooldown/bloodsucker/targeted/tremere/auspex/proc/auspex_blink(mob/living/user, turf/targeted_turf)
 	var/blood_cost = AUSPEX_BLOOD_COST_PER_TILE * get_dist(user, targeted_turf)
 	if(!can_pay_blood(blood_cost))
-		owner.balloon_alert(owner, "not enough blood!")
+		owner.balloon_alert(owner, "sangue insuficiente!")
 		return
 	playsound(user, 'sound/effects/magic/summon_karp.ogg', 60)
 	playsound(targeted_turf, 'sound/effects/magic/summon_karp.ogg', 60)

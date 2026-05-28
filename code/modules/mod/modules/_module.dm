@@ -118,7 +118,7 @@
 		balloon_alert(activator, "not equipped!")
 		return
 	if(((!mod.active || mod.activating) && !(allow_flags & (MODULE_ALLOW_INACTIVE | MODULE_ALLOW_UNWORN))) || module_type == MODULE_PASSIVE) // not active
-		balloon_alert(activator, "not active!")
+		balloon_alert(activator, "não ativo!")
 		return
 	if(!has_required_parts(mod.mod_parts, need_active = TRUE) && !(allow_flags & MODULE_ALLOW_UNWORN)) // Doesn't have parts
 		balloon_alert(activator, "required parts inactive!")
@@ -223,7 +223,7 @@
 		balloon_alert(activator, "on cooldown!")
 		return FALSE
 	if(!check_power(use_energy_cost))
-		balloon_alert(activator, "not enough charge!")
+		balloon_alert(activator, "carga insuficiente!")
 		return FALSE
 	if(!(allow_flags & MODULE_ALLOW_PHASEOUT) && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
 		//specifically a to_chat because the user is phased out.

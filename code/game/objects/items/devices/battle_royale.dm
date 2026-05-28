@@ -46,7 +46,7 @@ GLOBAL_LIST_INIT(battle_royale_regions, list(
 		balloon_alert(user, "no linked remote!")
 		return ITEM_INTERACT_BLOCKING
 	if (DOING_INTERACTION_WITH_TARGET(user, interacting_with))
-		balloon_alert(user, "busy!")
+		balloon_alert(user, "ocupado!")
 		return ITEM_INTERACT_BLOCKING
 	var/mob/living/potential_winner = interacting_with
 	if (potential_winner.stat != CONSCIOUS)
@@ -57,7 +57,7 @@ GLOBAL_LIST_INIT(battle_royale_regions, list(
 		return ITEM_INTERACT_BLOCKING
 	log_combat(user, potential_winner, "tried to implant a battle royale implant into")
 	if (!do_after(user, 1.5 SECONDS, potential_winner))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/implant/explosive/battle_royale/encouragement_implant = new
@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(battle_royale_regions, list(
 /obj/item/royale_remote/proc/link_implanter(obj/item/royale_implanter/implanter, mob/user)
 	if (implanter in linked_implanters)
 		if (user)
-			balloon_alert(user, "already linked!")
+			balloon_alert(user, "já vinculado!")
 		return
 
 	if (user)

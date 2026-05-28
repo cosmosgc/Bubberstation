@@ -135,7 +135,7 @@
 
 /obj/item/mod/module/tether/used()
 	if(HAS_TRAIT_FROM(mod.wearer, TRAIT_TETHER_ATTACHED, REF(src)))
-		balloon_alert(mod.wearer, "already tethered!")
+		balloon_alert(mod.wearer, "já amarrado!")
 		playsound(src, 'sound/items/weapons/gun/general/dry_fire.ogg', 25, TRUE)
 		return FALSE
 	return ..()
@@ -290,11 +290,11 @@
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	if(HAS_TRAIT_FROM(user, TRAIT_TETHER_ATTACHED, REF(src)))
-		balloon_alert(user, "already tethered!")
+		balloon_alert(user, "já amarrado!")
 		return
 
 	if (parent_module && HAS_TRAIT_FROM(user, TRAIT_TETHER_ATTACHED, REF(parent_module)))
-		balloon_alert(user, "already tethered!")
+		balloon_alert(user, "já amarrado!")
 		return
 
 	balloon_alert(user, "attached tether")
@@ -316,11 +316,11 @@
 		return
 
 	if(HAS_TRAIT_FROM(target, TRAIT_TETHER_ATTACHED, REF(src)))
-		balloon_alert(user, "already tethered!")
+		balloon_alert(user, "já amarrado!")
 		return
 
 	if (parent_module && HAS_TRAIT_FROM(user, TRAIT_TETHER_ATTACHED, REF(parent_module)))
-		balloon_alert(user, "already tethered!")
+		balloon_alert(user, "já amarrado!")
 		return
 
 	if (target == user)
@@ -334,11 +334,11 @@
 		return
 
 	if(HAS_TRAIT_FROM(target, TRAIT_TETHER_ATTACHED, REF(src)))
-		balloon_alert(user, "already tethered!")
+		balloon_alert(user, "já amarrado!")
 		return
 
 	if (parent_module && HAS_TRAIT_FROM(user, TRAIT_TETHER_ATTACHED, REF(parent_module)))
-		balloon_alert(user, "already tethered!")
+		balloon_alert(user, "já amarrado!")
 		return
 
 	balloon_alert(user, "attached tether")

@@ -863,7 +863,7 @@
 		return
 
 	if(robot_user.cell.charge < charge_cost)
-		to_chat(user, span_warning("Not enough charge!"))
+		to_chat(user, span_warning("carga insuficiente!"))
 		return
 
 	var/turf/src_turf = get_turf(src)

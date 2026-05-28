@@ -29,7 +29,7 @@
 
 /obj/item/permanent_portal_creator/attack_self(mob/user, modifiers)
 	if(!linked_anchor)
-		balloon_alert(user, "not linked!")
+		balloon_alert(user, "não vinculado!")
 		return
 
 	if(!isweakref(linked_anchor))

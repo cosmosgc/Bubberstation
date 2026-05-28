@@ -118,7 +118,7 @@
 /// Installs an upgrade into the RCD checking if it is already installed, or if it is a banned upgrade
 /obj/item/construction/proc/install_upgrade(obj/item/rcd_upgrade/design_disk, mob/user)
 	if(design_disk.upgrade & construction_upgrades)
-		balloon_alert(user, "already installed!")
+		balloon_alert(user, "já instalado!")
 		return FALSE
 	if(design_disk.upgrade & banned_upgrades)
 		balloon_alert(user, "cannot install upgrade!")
@@ -270,7 +270,7 @@
 	if(target.z != user.z)
 		return
 	if(!(target in dview(7, get_turf(user))))
-		balloon_alert(user, "out of range!")
+		balloon_alert(user, "fora do alcance!")
 		flick("[icon_state]_empty", src)
 		return FALSE
 	else

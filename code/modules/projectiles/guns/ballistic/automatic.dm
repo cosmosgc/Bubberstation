@@ -458,7 +458,7 @@
 
 /obj/item/gun/ballistic/automatic/battle_rifle/multitool_act(mob/living/user, obj/item/tool)
 	if(!tool.use_tool(src, user, 20 SECONDS, volume = 50))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return ITEM_INTERACT_BLOCKING
 
 	emp_malfunction = FALSE

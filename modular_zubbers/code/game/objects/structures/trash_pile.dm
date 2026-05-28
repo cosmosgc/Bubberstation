@@ -140,7 +140,7 @@
 		return ..()
 
 	if(length(contents) >= 10)
-		balloon_alert(user, "it's full!")
+		balloon_alert(user, "está cheio!")
 		return
 
 	balloon_alert(user, "hiding item...")

@@ -144,7 +144,7 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/click_alt(mob/living/user)
 	if(panel_open)
-		balloon_alert(user, "close panel!")
+		balloon_alert(user, "feche o painel!")
 		return CLICK_ACTION_BLOCKING
 
 	if(target_temperature == T20C)
@@ -197,7 +197,7 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/screwdriver_act(mob/living/user, obj/item/tool)
 	if(on)
-		balloon_alert(user, "turn off!")
+		balloon_alert(user, "desligue!")
 		return ITEM_INTERACT_SUCCESS
 	if(!anchored)
 		balloon_alert(user, "anchor!")
@@ -213,7 +213,7 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/multitool_act(mob/living/user, obj/item/multitool/multitool)
 	if(!panel_open)
-		balloon_alert(user, "open panel!")
+		balloon_alert(user, "abra o painel!")
 		return ITEM_INTERACT_SUCCESS
 	piping_layer = (piping_layer >= PIPING_LAYER_MAX) ? PIPING_LAYER_MIN : (piping_layer + 1)
 	to_chat(user, span_notice("You change the circuitboard to layer [piping_layer]."))
@@ -224,7 +224,7 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/multitool_act_secondary(mob/living/user, obj/item/tool)
 	if(!panel_open)
-		balloon_alert(user, "open panel!")
+		balloon_alert(user, "abra o painel!")
 		return ITEM_INTERACT_SUCCESS
 	color_index = (color_index >= GLOB.pipe_paint_colors.len) ? (color_index = 1) : (color_index = 1 + color_index)
 	set_pipe_color(GLOB.pipe_paint_colors[GLOB.pipe_paint_colors[color_index]])
@@ -245,7 +245,7 @@
 
 /obj/machinery/atmospherics/components/unary/thermomachine/wrench_act_secondary(mob/living/user, obj/item/tool)
 	if(!panel_open)
-		balloon_alert(user, "open panel!")
+		balloon_alert(user, "abra o painel!")
 		return ITEM_INTERACT_SUCCESS
 	if(!anchored && check_pipe_on_turf())
 		visible_message(span_warning("A pipe is hogging the port. Remove the obstruction or change the machine piping layer."))
@@ -316,7 +316,7 @@
 	if(!anchored)
 		return NONE
 	if(panel_open)
-		balloon_alert(user, "close panel!")
+		balloon_alert(user, "feche o painel!")
 		return CLICK_ACTION_BLOCKING
 	if(!is_operational)
 		return CLICK_ACTION_BLOCKING

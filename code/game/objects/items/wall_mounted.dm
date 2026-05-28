@@ -105,7 +105,7 @@
 		return FALSE
 	var/area/A = get_area(T)
 	if(A.always_unpowered && !bypass_unpowered) //BUBBER EDIT - allows for wallmounts in unpowered areas
-		balloon_alert(user, "cannot place in this area!")
+		balloon_alert(user, "não pode ser colocado aqui!")
 		return
 	if(check_wall_item(T, floor_to_support, wall_external))
 		balloon_alert(user, "already something here!")

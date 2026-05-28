@@ -100,7 +100,7 @@
 		if(coil.get_amount() < amount_needed)
 			balloon_alert(user, "not enough cable!")
 			return ITEM_INTERACT_SUCCESS
-		balloon_alert(user, "adding cables...")
+		balloon_alert(user, "adicionando cabos...")
 		if(!do_after(user, 5 SECONDS, src))
 			return ITEM_INTERACT_SUCCESS
 		coil.use(amount_needed)
@@ -119,10 +119,10 @@
 
 	if(deconstruction == BLASTDOOR_FINISHED && istype(tool, /obj/item/assembly/control))
 		if(density)
-			balloon_alert(user, "open the door first!")
+			balloon_alert(user, "abra a porta primeiro!")
 			return ITEM_INTERACT_BLOCKING
 		if(!panel_open)
-			balloon_alert(user, "open the panel first!")
+			balloon_alert(user, "abra o painel primeiro!")
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/assembly/control/controller_item = tool
 		if(controller_item.id == -1)
@@ -147,7 +147,7 @@
 
 /obj/machinery/door/poddoor/screwdriver_act(mob/living/user, obj/item/tool)
 	if (density)
-		balloon_alert(user, "open the door first!")
+		balloon_alert(user, "abra a porta primeiro!")
 		return ITEM_INTERACT_SUCCESS
 
 	return default_deconstruction_screwdriver(user, tool)
@@ -157,10 +157,10 @@
 		open(TRUE)
 		return ITEM_INTERACT_SUCCESS
 	if (density)
-		balloon_alert(user, "open the door first!")
+		balloon_alert(user, "abra a porta primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	if (!panel_open)
-		balloon_alert(user, "open the panel first!")
+		balloon_alert(user, "abra o painel primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	if (deconstruction != BLASTDOOR_FINISHED)
 		return ITEM_INTERACT_BLOCKING
@@ -175,10 +175,10 @@
 
 /obj/machinery/door/poddoor/wirecutter_act(mob/living/user, obj/item/tool)
 	if (density)
-		balloon_alert(user, "open the door first!")
+		balloon_alert(user, "abra a porta primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	if (!panel_open)
-		balloon_alert(user, "open the panel first!")
+		balloon_alert(user, "abra o painel primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	if (deconstruction != BLASTDOOR_NEEDS_ELECTRONICS)
 		return ITEM_INTERACT_BLOCKING
@@ -194,10 +194,10 @@
 /obj/machinery/door/poddoor/welder_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if (density)
-		balloon_alert(user, "open the door first!")
+		balloon_alert(user, "abra a porta primeiro!")
 		return ITEM_INTERACT_SUCCESS
 	if (!panel_open)
-		balloon_alert(user, "open the panel first!")
+		balloon_alert(user, "abra o painel primeiro!")
 		return ITEM_INTERACT_SUCCESS
 	if (deconstruction != BLASTDOOR_NEEDS_WIRES)
 		return

@@ -160,7 +160,7 @@
 
 	playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	visible_message(span_warning("Sparks fly out of [src]!"))
-	balloon_alert(user, "safeties disabled")
+	balloon_alert(user, "travas desativadas")
 	obj_flags |= EMAGGED
 	return TRUE
 
@@ -178,7 +178,7 @@
 	if(.)
 		return .
 	if(!isliving(user) || !ishuman(dropped))
-		balloon_alert(user, "incompatible!")
+		balloon_alert(user, "incompatível!")
 		return FALSE
 	var/mob/living/who_put_user_in = user
 	var/mob/living/new_user = dropped
@@ -195,7 +195,7 @@
 	if(.)
 		return .
 	if(!ishuman(user))
-		balloon_alert(user, "incompatible!")
+		balloon_alert(user, "incompatível!")
 		return FALSE
 	if(!loc_check(user))
 		balloon_alert(user, "get closer!")

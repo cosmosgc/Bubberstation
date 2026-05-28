@@ -119,7 +119,7 @@
 
 	. = ITEM_INTERACT_BLOCKING
 	if(held_mob.stat == DEAD)
-		user.balloon_alert(user, "it's dead!")
+		user.balloon_alert(user, "está morto!")
 		return
 
 	if(locate(type) in interacting_with)

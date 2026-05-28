@@ -47,7 +47,7 @@
 		return
 
 	if(!update_power() && !enabled)
-		balloon_alert(user, "not enough power!")
+		balloon_alert(user, "energia insuficiente!")
 		return
 
 	enabled = !enabled

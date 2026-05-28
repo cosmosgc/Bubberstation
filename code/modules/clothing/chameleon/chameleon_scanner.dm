@@ -90,7 +90,7 @@
 		balloon_alert(scanner, "not ready yet!")
 		return
 	if(get_dist(scanner, mob_copying) > scan_range)
-		balloon_alert(scanner, "too far away!")
+		balloon_alert(scanner, "longe demais!")
 		return
 	// Very short scan timer, keep you on your toes
 	if(!do_after(scanner, 0.5 SECONDS, scanned, hidden = TRUE))

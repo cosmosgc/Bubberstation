@@ -42,9 +42,9 @@
 		return FALSE
 	if(user.combat_mode)
 		return FALSE
-	balloon_alert(user, "repairing...")
+	balloon_alert(user, "consertando...")
 	if(tool.use_tool(src, user, 10 SECONDS, volume=30))
-		balloon_alert(user, "repaired")
+		balloon_alert(user, "consertado")
 		cracked = FALSE
 		update_appearance(UPDATE_ICON)
 

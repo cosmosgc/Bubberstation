@@ -157,7 +157,7 @@
 	if(shot_cooldown > world.time)
 		return
 	if(!can_pay_blood(THAUMATURGY_BLOOD_COST_PER_CHARGE))
-		owner.balloon_alert(owner, "not enough blood!")
+		owner.balloon_alert(owner, "sangue insuficiente!")
 		DeactivatePower()
 		return
 	shot_cooldown = world.time + get_shot_cooldown()

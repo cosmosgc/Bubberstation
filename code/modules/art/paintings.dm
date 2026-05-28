@@ -236,7 +236,7 @@ GLOBAL_LIST_INIT(canvas_dimensions, init_canvas_dimensions())
 	if(finalized || painting_metadata.loaded_from_json)
 		return
 	if(!in_range(src, user))
-		user.balloon_alert(user, "too far away!")
+		user.balloon_alert(user, "longe demais!")
 		return
 	if(!try_rename(user))
 		return

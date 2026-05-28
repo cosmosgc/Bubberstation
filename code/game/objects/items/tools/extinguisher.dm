@@ -252,7 +252,7 @@
 /obj/item/extinguisher/proc/AttemptRefill(atom/target, mob/user)
 	if(is_type_in_list(target, tanktypes) && target.Adjacent(user))
 		if(reagents.total_volume == reagents.maximum_volume)
-			balloon_alert(user, "already full!")
+			balloon_alert(user, "já cheio!")
 			return TRUE
 		// Make sure we're refilling with the proper chem.
 		if(!(target.reagents.has_reagent(chem, check_subtypes = TRUE)))
@@ -288,7 +288,7 @@
 		return NONE
 
 	if (src.reagents.total_volume < 1)
-		balloon_alert(user, "it's empty!")
+		balloon_alert(user, "está vazio!")
 		return .
 
 	if (world.time < src.last_use + 12)

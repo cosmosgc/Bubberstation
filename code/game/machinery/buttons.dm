@@ -178,7 +178,7 @@
 	if(panel_open || allowed(user))
 		return default_deconstruction_screwdriver(user, tool)
 
-	balloon_alert(user, "access denied")
+	balloon_alert(user, "acesso negado")
 	flick_overlay_view("[base_icon_state]-overlay-error", 1 SECONDS)
 	return ITEM_INTERACT_BLOCKING
 
@@ -299,7 +299,7 @@
 		return FALSE
 
 	if(!allowed(user))
-		balloon_alert(user, "access denied")
+		balloon_alert(user, "acesso negado")
 		flick_overlay_view("[base_icon_state]-overlay-error", 1 SECONDS)
 		return FALSE
 

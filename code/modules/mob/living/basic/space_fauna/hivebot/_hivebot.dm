@@ -115,7 +115,7 @@
 		to_chat(src, span_warning("Diagnostics indicate that this machine is at peak integrity."))
 		return
 	if(!COOLDOWN_FINISHED(src, repair_cooldown))
-		balloon_alert(src, "recharging!")
+		balloon_alert(src, "recarregando!")
 		return
 	fixable.repair_damage(fixable.max_integrity - fixable.get_integrity())
 	do_sparks(number = 3, cardinal_only = TRUE, source = fixable)
@@ -127,7 +127,7 @@
 		to_chat(src, span_warning("Diagnostics indicate that this unit is at peak integrity."))
 		return
 	if(!COOLDOWN_FINISHED(src, repair_cooldown))
-		balloon_alert(src, "recharging!")
+		balloon_alert(src, "recarregando!")
 		return
 	bot_target.revive(HEAL_ALL)
 	do_sparks(number = 3, cardinal_only = TRUE, source = bot_target)

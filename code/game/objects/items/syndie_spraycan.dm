@@ -86,7 +86,7 @@
 		wait_time *= 0.5
 
 	if(!do_after(user, wait_time, target, hidden = TRUE, extra_checks = CALLBACK(src, PROC_REF(adjacency_check), user, target)))
-		user.balloon_alert(user, "interrupted!")
+		user.balloon_alert(user, "interrompido!")
 		drawing_rune = FALSE
 		return FALSE
 

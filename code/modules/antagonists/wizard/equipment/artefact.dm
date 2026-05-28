@@ -438,7 +438,7 @@
 
 /obj/item/runic_vendor_scepter/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(scepter_is_busy_recharging)
-		user.balloon_alert(user, "busy!")
+		user.balloon_alert(user, "ocupado!")
 		return ITEM_INTERACT_BLOCKING
 	if(!check_allowed_items(interacting_with, not_inside = TRUE))
 		return NONE
@@ -452,19 +452,19 @@
 		vendor_on_turf.runic_explosion()
 		return  ITEM_INTERACT_SUCCESS
 	if(!summon_vendor_charges)
-		user.balloon_alert(user, "no charges!")
+		user.balloon_alert(user, "sem cargas!")
 		return ITEM_INTERACT_BLOCKING
 	if(get_dist(afterattack_turf,src) > max_summon_range)
-		user.balloon_alert(user, "too far!")
+		user.balloon_alert(user, "longe demais!")
 		return ITEM_INTERACT_BLOCKING
 	if(get_turf(src) == afterattack_turf)
-		user.balloon_alert(user, "too close!")
+		user.balloon_alert(user, "perto demais!")
 		return ITEM_INTERACT_BLOCKING
 	if(scepter_is_busy_summoning)
 		user.balloon_alert(user, "already summoning!")
 		return ITEM_INTERACT_BLOCKING
 	if(afterattack_turf.is_blocked_turf(TRUE))
-		user.balloon_alert(user, "blocked!")
+		user.balloon_alert(user, "bloqueado!")
 		return ITEM_INTERACT_BLOCKING
 	if(summoning_time)
 		scepter_is_busy_summoning = TRUE

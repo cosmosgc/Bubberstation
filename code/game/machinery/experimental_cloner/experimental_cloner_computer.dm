@@ -144,7 +144,7 @@
 				playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, TRUE)
 				return TRUE
 			if (input.scanning)
-				balloon_alert(ui.user, "scanner busy!")
+				balloon_alert(ui.user, "escâner ocupado!")
 				playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, TRUE)
 				return TRUE
 

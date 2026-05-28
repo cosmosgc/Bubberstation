@@ -97,7 +97,7 @@
 
 /obj/item/hierophant_club/ui_action_click(mob/user, action)
 	if (teleporting)
-		balloon_alert(user, "already in use!")
+		balloon_alert(user, "já em uso!")
 		return
 
 	if (!user.is_holding(src))
@@ -130,14 +130,14 @@
 	var/obj/effect/temp_visual/hierophant/telegraph/edge/beacon_telegraph = new /obj/effect/temp_visual/hierophant/telegraph/edge(beacon_turf)
 	if (!do_after(user, 4 SECONDS, user))
 		if (user)
-			balloon_alert(user, "interrupted!")
+			balloon_alert(user, "interrompido!")
 		stop_teleport(user)
 		qdel(user_telegraph)
 		qdel(beacon_telegraph)
 		return
 
 	if (!beacon)
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		stop_teleport(user)
 		return
 
@@ -196,7 +196,7 @@
 	user.visible_message(span_hierophant_warning("[user] starts fiddling with [src]'s pommel..."), span_notice("You start detaching the hierophant beacon..."))
 	balloon_alert(user, "detaching the beacon...")
 	if (!do_after(user, 5 SECONDS, user))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return
 
 	// Already dropped one

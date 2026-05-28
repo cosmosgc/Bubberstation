@@ -35,7 +35,7 @@
 	var/meats_choice = show_radial_menu(user, object_we_attack, radial_meat_options, require_near = TRUE)
 
 	if(!meats_choice)
-		object_we_attack.balloon_alert(user, "no selection made")
+		object_we_attack.balloon_alert(user, "nenhuma seleção feita")
 		forceMove(drop_location(object_we_attack))
 		playsound(object_we_attack, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 		return
@@ -67,7 +67,7 @@
 	var/produce_choice = show_radial_menu(user, object_we_attack, radial_produce_options, require_near = TRUE)
 
 	if(!produce_choice)
-		object_we_attack.balloon_alert(user, "no selection made")
+		object_we_attack.balloon_alert(user, "nenhuma seleção feita")
 		// Reset the list if we fail
 		items_we_deliver = list()
 		forceMove(drop_location(object_we_attack))
@@ -98,7 +98,7 @@
 	var/flour_choice = show_radial_menu(user, object_we_attack, radial_flour_options, require_near = TRUE)
 
 	if(!flour_choice)
-		object_we_attack.balloon_alert(user, "no selection made")
+		object_we_attack.balloon_alert(user, "nenhuma seleção feita")
 		// Reset the list if we fail
 		items_we_deliver = list()
 		forceMove(drop_location(object_we_attack))
@@ -194,7 +194,7 @@
 	var/alcohol_choice = show_radial_menu(user, object_we_attack, radial_alcohol_options, require_near = TRUE)
 
 	if(!alcohol_choice)
-		object_we_attack.balloon_alert(user, "no selection made")
+		object_we_attack.balloon_alert(user, "nenhuma seleção feita")
 		forceMove(drop_location(object_we_attack))
 		return
 
@@ -229,7 +229,7 @@
 	var/consumables_choice = show_radial_menu(user, object_we_attack, radial_consumables_options, require_near = TRUE)
 
 	if(!consumables_choice)
-		object_we_attack.balloon_alert(user, "no selection made")
+		object_we_attack.balloon_alert(user, "nenhuma seleção feita")
 		// Reset the list if we fail
 		items_we_deliver = list()
 		forceMove(drop_location(object_we_attack))

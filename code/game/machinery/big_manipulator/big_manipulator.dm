@@ -450,14 +450,14 @@
 
 	if(!id_lock)
 		id_lock = WEAKREF(clicked_by_this_id)
-		balloon_alert(user, "successfully locked")
+		balloon_alert(user, "trancado com sucesso")
 		return
 	var/obj/item/card/id/resolve_id = id_lock.resolve()
 	if(clicked_by_this_id != resolve_id)
 		balloon_alert(user, "locked by another id")
 		return
 	id_lock = null
-	balloon_alert(user, "successfully unlocked")
+	balloon_alert(user, "destrancado com sucesso")
 
 /// Attaching the arm effect to the core.
 /obj/machinery/big_manipulator/proc/create_manipulator_arm()
@@ -476,11 +476,11 @@
 
 	if(newly_on)
 		if(!powered())
-			balloon_alert(user, "no power!")
+			balloon_alert(user, "sem energia!")
 			return
 
 		if(!anchored)
-			balloon_alert(user, "anchor first!")
+			balloon_alert(user, "ancore primeiro!")
 			return
 
 		validate_all_points()

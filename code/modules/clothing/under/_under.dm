@@ -498,7 +498,7 @@ BUBBERSTATION CHANGE END */
 	if(!can_use(toggler) || toggler.stat == DEAD) //make sure they didn't hold the window open.
 		return FALSE
 	if(get_dist(toggler, src) > 1)
-		balloon_alert(toggler, "too far!")
+		balloon_alert(toggler, "longe demais!")
 		return FALSE
 
 	switch(has_sensor)

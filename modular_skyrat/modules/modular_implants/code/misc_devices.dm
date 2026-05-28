@@ -141,7 +141,7 @@
 /obj/item/nif_hud_adapter/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	var/obj/item/clothing/glasses/target_glasses = interacting_with
 	if(!istype(target_glasses) || !is_type_in_list(target_glasses, glasses_whitelist))
-		balloon_alert(user, "incompatible!")
+		balloon_alert(user, "incompatível!")
 		return NONE
 
 	if(HAS_TRAIT(target_glasses, TRAIT_NIFSOFT_HUD_GRANTER))

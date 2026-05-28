@@ -26,7 +26,7 @@
 
 /obj/machinery/power/manufacturing/storagebox/screwdriver_act(mob/living/user, obj/item/tool)
 	. = NONE
-	balloon_alert(user, "disassembling...")
+	balloon_alert(user, "desmontando...")
 	if(!do_after(user, 5 SECONDS, src))
 		return ITEM_INTERACT_FAILURE
 	atom_destruction()

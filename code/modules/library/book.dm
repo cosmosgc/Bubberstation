@@ -239,7 +239,7 @@
 
 	balloon_alert(user, "carving out...")
 	if(!do_after(user, 3 SECONDS, target = src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return ITEM_INTERACT_BLOCKING
 
 	balloon_alert(user, "carved out")

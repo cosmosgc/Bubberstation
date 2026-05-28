@@ -112,19 +112,19 @@
 		var/obj/item/stack/our_sheet = locate(content) in src
 		if(isnull(our_sheet))
 			if(!user.transferItemToLoc(potential_stack, src))
-				user.balloon_alert(user, "stuck to your hand!")
+				user.balloon_alert(user, "preso na sua mão!")
 				return
-			balloon_alert(user, "inserted")
+			balloon_alert(user, "inserido")
 			return
 		if(our_sheet.amount >= our_sheet.max_amount)
-			user?.balloon_alert(user, "full!")
+			user?.balloon_alert(user, "cheio!")
 			return
 		if(!our_sheet.can_merge(potential_stack))
 			user?.balloon_alert(user, "not suitable!")
 			return
 		var/atom/movable/to_move = potential_stack.split_stack(min(our_sheet.max_amount - our_sheet.amount, potential_stack.amount))
 		to_move.forceMove(src)
-		balloon_alert(user, "inserted")
+		balloon_alert(user, "inserido")
 		return
 
 /mob/living/basic/bot/repairbot/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)

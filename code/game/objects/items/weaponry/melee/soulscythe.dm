@@ -141,7 +141,7 @@
 /obj/item/soulscythe/proc/use_blood(amount = 0, message = TRUE)
 	if(amount > soul.get_blood_volume())
 		if(message)
-			to_chat(soul, span_warning("Not enough blood!"))
+			to_chat(soul, span_warning("sangue insuficiente!"))
 		return FALSE
 	soul.adjust_blood_volume(-amount)
 	return TRUE
@@ -161,7 +161,7 @@
 		return
 	balloon_alert(soul, "you resist...")
 	if(!do_after(soul, 5 SECONDS, target = src, timed_action_flags = IGNORE_TARGET_LOC_CHANGE))
-		balloon_alert(soul, "interrupted!")
+		balloon_alert(soul, "interrompido!")
 		return
 	balloon_alert(soul, "you break out")
 	if(ismob(loc))
@@ -231,7 +231,7 @@
 	visible_message(span_danger("[src] starts charging..."))
 	balloon_alert(soul, "you start charging...")
 	if(!do_after(soul, 2 SECONDS, target = src, timed_action_flags = IGNORE_TARGET_LOC_CHANGE))
-		balloon_alert(soul, "interrupted!")
+		balloon_alert(soul, "interrompido!")
 		return
 	visible_message(span_danger("[src] charges at [attacked_atom]!"), span_notice("You charge at [attacked_atom]!"))
 	new /obj/effect/temp_visual/mook_dust(get_turf(src))

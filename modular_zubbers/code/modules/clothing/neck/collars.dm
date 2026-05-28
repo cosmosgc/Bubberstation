@@ -49,7 +49,7 @@
 ///Calls toggletracking
 /obj/item/clothing/neck/kink_collar/locked/gps/click_alt(mob/user)
 	if(locked)
-		balloon_alert(user, "it's locked!")
+		balloon_alert(user, "está trancado!")
 		playsound(src, 'sound/items/click.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 	else
 		toggletracking(user)

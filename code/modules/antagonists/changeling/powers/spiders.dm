@@ -14,7 +14,7 @@
 /datum/action/changeling/spiders/can_be_used_by(mob/living/user)
 	if (!isopenturf(user.loc))
 		var/turf/user_turf = get_turf(user)
-		user_turf.balloon_alert(user, "not enough space!")
+		user_turf.balloon_alert(user, "espaço insuficiente!")
 		return FALSE
 	return ..()
 

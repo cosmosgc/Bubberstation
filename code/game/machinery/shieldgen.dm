@@ -228,11 +228,11 @@
 		return
 	if(!anchored && !isinspace())
 		tool.play_tool_sound(src, 100)
-		balloon_alert(user, "secured")
+		balloon_alert(user, "fixado")
 		set_anchored(TRUE)
 	else if(anchored)
 		tool.play_tool_sound(src, 100)
-		balloon_alert(user, "unsecured")
+		balloon_alert(user, "solto")
 		if(active)
 			to_chat(user, span_notice("\The [src] shuts off!"))
 			shields_down()
@@ -274,7 +274,7 @@
 	obj_flags |= EMAGGED
 	locked = FALSE
 	playsound(src, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	balloon_alert(user, "access controller shorted")
+	balloon_alert(user, "controlador de acesso em curto")
 	return TRUE
 
 /obj/machinery/shieldgen/update_icon_state()
@@ -453,7 +453,7 @@
 
 /obj/machinery/power/shieldwallgen/screwdriver_act(mob/user, obj/item/tool)
 	if(!panel_open && locked)
-		balloon_alert(user, "unlock first!")
+		balloon_alert(user, "destranque primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_screwdriver(user, tool)
@@ -473,7 +473,7 @@
 		else if(obj_flags & EMAGGED)
 			balloon_alert(user, "malfunctioning!")
 		else
-			balloon_alert(user, "no access!")
+			balloon_alert(user, "sem acesso!")
 		return
 
 	add_fingerprint(user)
@@ -487,16 +487,16 @@
 	if(.)
 		return
 	if(!anchored)
-		balloon_alert(user, "not secured!")
+		balloon_alert(user, "não fixado!")
 		return
 	if(locked && !HAS_SILICON_ACCESS(user))
-		balloon_alert(user, "locked!")
+		balloon_alert(user, "trancado!")
 		return
 	if(!powernet)
 		balloon_alert(user, "needs to be powered by wire!")
 		return
 	if(panel_open)
-		balloon_alert(user, "panel open!")
+		balloon_alert(user, "painel aberto!")
 		return
 
 	if(active)
@@ -520,7 +520,7 @@
 	obj_flags |= EMAGGED
 	locked = FALSE
 	playsound(src, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	balloon_alert(user, "access controller shorted")
+	balloon_alert(user, "controlador de acesso em curto")
 	return TRUE
 
 /// Turn the machine on with side effects

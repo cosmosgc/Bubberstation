@@ -129,7 +129,7 @@
 	set name = "Eject Tape"
 
 	if(!can_use(usr))
-		balloon_alert(usr, "can't use!")
+		balloon_alert(usr, "não pode usar!")
 		return
 	if(!mytape)
 		balloon_alert(usr, "no tape!")
@@ -164,7 +164,7 @@
 	set name = "Start Recording"
 
 	if(!can_use(usr))
-		balloon_alert(usr, "can't use!")
+		balloon_alert(usr, "não pode usar!")
 		return
 	if(!mytape || mytape.unspooled)
 		balloon_alert(usr, "no spooled tape!")
@@ -206,7 +206,7 @@
 	set name = "Stop"
 
 	if(!can_use(usr))
-		balloon_alert(usr, "can't use!")
+		balloon_alert(usr, "não pode usar!")
 		return
 
 	if(recording)
@@ -226,7 +226,7 @@
 	set name = "Play Tape"
 
 	if(!can_use(usr))
-		balloon_alert(usr, "can't use!")
+		balloon_alert(usr, "não pode usar!")
 		return
 	if(!mytape || mytape.unspooled)
 		balloon_alert(usr, "no spooled tape!")
@@ -274,7 +274,7 @@
 
 /obj/item/taperecorder/attack_self(mob/user)
 	if(!mytape)
-		balloon_alert(user, "it's empty!")
+		balloon_alert(user, "está vazio!")
 		return
 
 	update_available_icons()
@@ -305,7 +305,7 @@
 		balloon_alert(usr, "can't print that fast!")
 		return
 	if(!can_use(usr))
-		balloon_alert(usr, "can't use!")
+		balloon_alert(usr, "não pode usar!")
 		return
 	if(!mytape || mytape.unspooled)
 		balloon_alert(usr, "no spooled tape!")

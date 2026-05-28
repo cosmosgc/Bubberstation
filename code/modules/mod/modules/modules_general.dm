@@ -193,7 +193,7 @@
 
 /obj/item/mod/module/jump_jet/on_use(mob/activator)
 	if (DOING_INTERACTION(mod.wearer, mod.wearer))
-		balloon_alert(activator, "busy!")
+		balloon_alert(activator, "ocupado!")
 		return
 	balloon_alert(mod.wearer, "launching...")
 	mod.wearer.Shake(duration = 1 SECONDS)
@@ -505,7 +505,7 @@
 
 /obj/item/mod/module/dispenser/on_use(mob/activator)
 	if(dispense_time && !do_after(mod.wearer, dispense_time, target = mod))
-		balloon_alert(mod.wearer, "interrupted!")
+		balloon_alert(mod.wearer, "interrompido!")
 		return FALSE
 	var/obj/item/dispensed = new dispense_type(mod.wearer.loc)
 	mod.wearer.put_in_hands(dispensed)
@@ -974,7 +974,7 @@
 	if(equipped)
 		balloon_alert(user, "already has rod!")
 	if(!user.transferItemToLoc(tool, src))
-		user.balloon_alert(user, "it's stuck!")
+		user.balloon_alert(user, "está preso!")
 	equipped = tool
 	balloon_alert(user, "rod inserted")
 	playsound(src, 'sound/items/click.ogg', 50, TRUE)

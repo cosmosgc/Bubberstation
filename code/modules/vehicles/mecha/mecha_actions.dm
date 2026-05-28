@@ -143,7 +143,7 @@
 	chassis.balloon_alert(owner, "moving to other seat...")
 	chassis.is_currently_ejecting = TRUE
 	if(!do_after(owner, chassis.has_gravity() ? chassis.exit_delay : 0 , target = chassis))
-		chassis.balloon_alert(owner, "interrupted!")
+		chassis.balloon_alert(owner, "interrompido!")
 		chassis.is_currently_ejecting = FALSE
 		return
 	chassis.is_currently_ejecting = FALSE

@@ -93,5 +93,5 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 	. = ..()
 	if(istype(I))
 		I.set_buffer(src)
-		balloon_alert(user, "saved to multitool buffer")
+		balloon_alert(user, "salvo no buffer da multitool")
 		return TRUE

@@ -272,7 +272,7 @@
 		to_chat(target_mob, span_userdanger("[target_mob.is_blind() ? "Someone" : "[user]"] forces a spoon into your face!"))
 		target_mob.balloon_alert(user, "feeding spoonful...")
 		if(!do_after(user, 3 SECONDS, target_mob))
-			target_mob.balloon_alert(user, "interrupted!")
+			target_mob.balloon_alert(user, "interrompido!")
 			return TRUE
 
 		to_chat(target_mob, span_userdanger("[target_mob.is_blind() ? "You are forced to" : "[user] forces you to"] swallow a spoonful of something!"))
@@ -302,7 +302,7 @@
 	else if(amount_given > 0)
 		attacked_atom.balloon_alert(user, "spoon partially emptied")
 	else
-		attacked_atom.balloon_alert(user, "it's full!")
+		attacked_atom.balloon_alert(user, "está cheio!")
 	return TRUE
 
 /obj/item/kitchen/spoon/pre_attack_secondary(atom/attacked_atom, mob/living/user, list/modifiers, list/attack_modifiers)

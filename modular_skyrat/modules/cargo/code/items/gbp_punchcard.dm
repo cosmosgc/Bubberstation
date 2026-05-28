@@ -29,7 +29,7 @@
 		var/obj/item/modular_computer/pda/pda = attacking_item
 		is_valid_item = check_access(pda.stored_id)
 		if (!is_valid_item)
-			balloon_alert(user, "no access!")
+			balloon_alert(user, "sem acesso!")
 
 	if(is_valid_item)
 		if(!COOLDOWN_FINISHED(src, gbp_punch_cooldown))
@@ -45,7 +45,7 @@
 				playsound(src, 'sound/items/party_horn.ogg', 100)
 				say("Congratulations, you have finished your punchcard!")
 		else
-			balloon_alert(user, "no room!")
+			balloon_alert(user, "sem espaço!")
 
 /obj/item/gbp_puncher
 	name = "Good Assistant Points puncher"

@@ -340,7 +340,7 @@ Doesn't work on other aliens/AI.*/
 	)
 	//SKYRAT EDIT START - Roundstart xenohybrid organs
 	if(build_duration && !do_after(owner, build_duration))
-		owner.balloon_alert(owner, "interrupted!")
+		owner.balloon_alert(owner, "interrompido!")
 		return
 	//SKYRAT EDIT END
 	new choice_path(owner.loc)

@@ -478,7 +478,7 @@
 		return
 
 	if(abs(x_pos.value) > attached_launchpad.range || abs(y_pos.value) > attached_launchpad.range)
-		why_fail.set_output("Out of range!")
+		why_fail.set_output("fora do alcance!")
 		on_fail.set_output(COMPONENT_SIGNAL)
 		return
 

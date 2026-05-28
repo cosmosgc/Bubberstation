@@ -43,7 +43,7 @@
 		balloon_alert(user, "cant get there!")
 		return ITEM_INTERACT_BLOCKING
 	if(get_dist(interacting_with, trans_vertical) > reach - 1) //is our rope long enough?
-		balloon_alert(user, "too far!")
+		balloon_alert(user, "longe demais!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/away_dir = get_dir(trans_vertical, interacting_with)

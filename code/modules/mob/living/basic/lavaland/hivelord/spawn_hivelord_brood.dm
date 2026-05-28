@@ -65,7 +65,7 @@
 
 	if (!length(target_turfs))
 		if (feedback)
-			owner.balloon_alert(owner, "no room!")
+			owner.balloon_alert(owner, "sem espaço!")
 		StartCooldown(0.5 SECONDS)
 		return FALSE
 

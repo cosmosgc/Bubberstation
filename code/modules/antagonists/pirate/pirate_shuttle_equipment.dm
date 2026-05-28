@@ -185,7 +185,7 @@
 	. = ..()
 	if (istype(I))
 		I.set_buffer(src)
-		balloon_alert(user, "saved to multitool buffer")
+		balloon_alert(user, "salvo no buffer da multitool")
 		return TRUE
 
 /obj/machinery/piratepad/screwdriver_act(mob/living/user, obj/item/tool)

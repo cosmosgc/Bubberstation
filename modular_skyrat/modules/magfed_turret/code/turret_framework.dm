@@ -826,7 +826,7 @@
 
 	if(istype(attacking_item, /obj/item/card/id))
 		if(!in_faction(user))
-			balloon_alert(user, "access denied!")
+			balloon_alert(user, "acesso negado!")
 			return
 
 	if(in_faction(user))
@@ -857,7 +857,7 @@
 			return
 
 		if(!claptrap_moment)
-			balloon_alert(user, "repairing...")
+			balloon_alert(user, "consertando...")
 		while(atom_integrity != max_integrity)
 			if(!attacking_item.use_tool(src, user, 2 SECONDS, volume = 20))
 				return
@@ -890,7 +890,7 @@
 		return SECONDARY_ATTACK_CALL_NORMAL
 
 	if(!claptrap_moment)
-		balloon_alert(user, "deconstructing...")
+		balloon_alert(user, "desconstruindo...")
 	if(!attacking_item.use_tool(src, user, 5 SECONDS, volume = 20))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 

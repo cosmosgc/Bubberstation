@@ -26,7 +26,7 @@
 		return FALSE
 
 	if(!broken && !force && !created_items)
-		balloon_alert(user, "locked!")
+		balloon_alert(user, "trancado!")
 		return FALSE
 
 	return TRUE
@@ -63,7 +63,7 @@
 	locked = !locked
 	user.visible_message(
 		span_notice("[user] [locked ? "locks" : "unlocks"] [src]."),
-		span_notice("You [locked ? "locked" : "unlocked"] [src]."),
+		span_notice("You [locked ? "trancado" : "destrancado"] [src]."),
 	)
 	update_appearance()
 

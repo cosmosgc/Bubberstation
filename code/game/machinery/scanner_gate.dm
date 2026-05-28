@@ -167,14 +167,14 @@
 
 		locked = FALSE
 		req_access = list()
-		balloon_alert(user, "unlocked")
+		balloon_alert(user, "destrancado")
 		return ITEM_INTERACT_SUCCESS
 
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "nothing happens!")
+		balloon_alert(user, "nada acontece!")
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "locked")
+	balloon_alert(user, "trancado")
 	req_access = tool.GetAccess() // returns a copy so this is chill
 	locked = TRUE
 	return ITEM_INTERACT_SUCCESS

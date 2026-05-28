@@ -653,7 +653,7 @@
 			balloon_alert(source, "too strong!")
 			return
 		if(secmech.cargo_hold.contents.len >= secmech.cargo_hold.cargo_capacity)
-			balloon_alert(source, "no room!")
+			balloon_alert(source, "sem espaço!")
 			return
 
 		playsound(chassis, clampsound, 50, FALSE, -6)

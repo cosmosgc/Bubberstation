@@ -198,7 +198,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	reagent_container = tool
-	balloon_alert(user, "attached")
+	balloon_alert(user, "fixado")
 	user.log_message("attached a [tool] to [src] at [AREACOORD(src)] containing ([reagent_container.reagents.get_reagent_log_string()])", LOG_ATTACK)
 	add_fingerprint(user)
 	update_appearance(UPDATE_ICON)
@@ -294,7 +294,7 @@
 		mode = IV_INJECTING
 	usr.visible_message(span_warning("[usr] attaches [src] to [target]."), span_notice("You attach [src] to [target]."))
 	var/datum/reagents/container = get_reagents()
-	log_combat(usr, target, "attached", src, "containing: ([container.get_reagent_log_string()])")
+	log_combat(usr, target, "fixado", src, "containing: ([container.get_reagent_log_string()])")
 	add_fingerprint(usr)
 	if(isliving(target))
 		var/mob/living/target_mob = target

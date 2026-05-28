@@ -214,7 +214,7 @@
 /proc/tkMaxRangeCheck(mob/user, atom/target)
 	var/d = get_dist(user, target)
 	if(d > TK_MAXRANGE)
-		user.balloon_alert(user, "can't TK, too far!")
+		user.balloon_alert(user, "TK impossível, muito longe!")
 		return
 	return TRUE
 

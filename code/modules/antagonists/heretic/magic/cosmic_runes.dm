@@ -90,7 +90,7 @@
 		fail_invoke()
 		return
 	if(!(user in get_turf(src)))
-		balloon_alert(user, "not close enough!")
+		balloon_alert(user, "não está perto o suficiente!")
 		fail_invoke()
 		return
 	if(user.has_status_effect(/datum/status_effect/star_mark))

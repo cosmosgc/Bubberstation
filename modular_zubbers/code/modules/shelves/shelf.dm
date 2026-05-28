@@ -103,7 +103,7 @@
 	if(!unload_turf)
 		unload_turf = get_turf(user) // If a turf somehow isn't passed into the proc, put it at the user's feet.
 	if(!unload_turf.Enter(crate)) // If moving the crate from the shelf to the desired turf would bump, don't do it! Thanks Kapu1178 for the help here. - Generic DM
-		unload_turf.balloon_alert(user, "no room!")
+		unload_turf.balloon_alert(user, "sem espaço!")
 		return FALSE
 	if(do_after(user, use_delay, target = crate))
 		if(!shelf_contents.Find(crate))

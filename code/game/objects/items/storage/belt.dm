@@ -615,7 +615,7 @@
 
 /obj/item/storage/belt/sheath/click_alt(mob/user)
 	if(!length(contents))
-		balloon_alert(user, "it's empty!")
+		balloon_alert(user, "está vazio!")
 		return CLICK_ACTION_BLOCKING
 	var/obj/item/stored_item = contents[1]
 	user.visible_message(span_notice("[user] takes [stored_item] out of [src]."), span_notice("You take [stored_item] out of [src]."))

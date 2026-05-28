@@ -25,7 +25,7 @@
 	if(!istype(given_item, /obj/item/stack/sheet/hot_ice))
 		return ..()
 	var/obj/item/stack/sheet/hot_ice/ice = given_item
-	balloon_alert(user, "inserted")
+	balloon_alert(user, "inserido")
 	to_chat(user, span_warning("You give a piece of hot ice to the firebot. He seems rather happy! His foam will now bring air temperature toward 20C."))
 	var/atom/movable/to_move = ice.split_stack(1)
 	to_move.forceMove(src)

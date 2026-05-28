@@ -28,7 +28,7 @@
 	req_access = list()
 	req_one_access = list()
 	playsound(src, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	balloon_alert(user, "access controller shorted")
+	balloon_alert(user, "controlador de acesso em curto")
 	return TRUE
 
 /obj/machinery/door_buttons/access_button

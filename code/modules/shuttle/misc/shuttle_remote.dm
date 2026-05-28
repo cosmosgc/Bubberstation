@@ -43,7 +43,7 @@
 	if(!istype(interacting_with, /obj/machinery/computer/shuttle))
 		return NONE
 	if(our_computer || our_port)
-		balloon_alert(user, "already linked!")
+		balloon_alert(user, "já vinculado!")
 		return ITEM_INTERACT_BLOCKING
 	var/obj/machinery/computer/shuttle/new_computer = interacting_with
 	if(new_computer.remote_ref || !new_computer.may_be_remote_controlled)

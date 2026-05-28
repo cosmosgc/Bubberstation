@@ -51,7 +51,7 @@
 		return
 	balloon_alert(user, "you hold the staff up...")
 	if(!do_after(user, 3 SECONDS, target = src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return
 	user.visible_message(span_warning("[user] holds [src] skywards as an orange beam travels into the sky!"), \
 	span_notice("You hold [src] skyward, dispelling the storm!"))

@@ -70,7 +70,7 @@
 		return
 	loc.balloon_alert_to_viewers("weaving...")
 	if(!do_after(user, 2 SECONDS))
-		loc.balloon_alert(user, "interrupted!")
+		loc.balloon_alert(user, "interrompido!")
 		return
 	qdel(src)
 	var/obj/item/stack/sheet/cloth/woven_cloth = new /obj/item/stack/sheet/cloth

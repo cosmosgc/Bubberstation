@@ -40,11 +40,11 @@
 		return
 
 	set_anchored(!anchored)
-	balloon_alert_to_viewers(anchored ? "secured" : "unsecured")
+	balloon_alert_to_viewers(anchored ? "fixado" : "solto")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/reagent_anvil/wrench_act(mob/living/user, obj/item/tool)
-	balloon_alert_to_viewers("deconstructing...")
+	balloon_alert_to_viewers("desconstruindo...")
 
 	if(!do_after(user, 2 SECONDS, src))
 		balloon_alert_to_viewers("stopped deconstructing")

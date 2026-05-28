@@ -204,7 +204,7 @@
 /mob/living/basic/bot/cleanbot/emag_effects(mob/user)
 	if(weapon)
 		weapon.force = initial(weapon.force)
-	balloon_alert(user, "safeties disabled")
+	balloon_alert(user, "travas desativadas")
 	audible_message(span_danger("[src] buzzes oddly!"))
 
 /mob/living/basic/bot/cleanbot/explode()
@@ -274,7 +274,7 @@
 	if(!in_range(src, user) || !user.transferItemToLoc(knife, src))
 		balloon_alert(user, "couldn't attach!")
 		return FALSE
-	balloon_alert(user, "attached")
+	balloon_alert(user, "fixado")
 	if(!(bot_access_flags & BOT_COVER_EMAGGED))
 		weapon.force *= 0.5
 	var/static/list/loc_connections = list(

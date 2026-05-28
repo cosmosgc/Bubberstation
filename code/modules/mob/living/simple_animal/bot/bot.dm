@@ -160,7 +160,7 @@
 	add_traits(list(TRAIT_INCAPACITATED, TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), POWER_LACK_TRAIT)
 	set_light_on(bot_mode_flags & BOT_MODE_ON ? TRUE : FALSE)
 	bot_reset() //Resets an AI's call, should it exist.
-	balloon_alert(src, "turned off")
+	balloon_alert(src, "desligado")
 	update_appearance()
 
 /mob/living/simple_animal/bot/proc/get_bot_flag(checked_mode, checked_flag)
@@ -350,7 +350,7 @@
 	. += span_notice("[p_Their()] maintenance panel is [bot_cover_flags & BOT_COVER_MAINTS_OPEN ? "open" : "closed"].")
 	. += span_info("You can use a <b>screwdriver</b> to [bot_cover_flags & BOT_COVER_MAINTS_OPEN ? "close" : "open"] it.")
 	if(bot_cover_flags & BOT_COVER_MAINTS_OPEN)
-		. += span_notice("[p_Their()] control panel is [bot_cover_flags & BOT_COVER_LOCKED ? "locked" : "unlocked"].")
+		. += span_notice("[p_Their()] control panel is [bot_cover_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"].")
 		var/is_sillycone = HAS_SILICON_ACCESS(user)
 		if(!(bot_cover_flags & BOT_COVER_EMAGGED) && (is_sillycone || user.Adjacent(src)))
 			. += span_info("Alt-click [is_sillycone ? "" : "or use your ID on "]it to [bot_cover_flags & BOT_COVER_LOCKED ? "un" : ""]lock [p_their()] control panel.")
@@ -441,7 +441,7 @@
 		to_chat(user, span_warning("Access denied."))
 		return
 	bot_cover_flags ^= BOT_COVER_LOCKED
-	to_chat(user, span_notice("Controls are now [bot_cover_flags & BOT_COVER_LOCKED ? "locked" : "unlocked"]."))
+	to_chat(user, span_notice("Controls are now [bot_cover_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"]."))
 	return TRUE
 
 /mob/living/simple_animal/bot/screwdriver_act(mob/living/user, obj/item/tool)

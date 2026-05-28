@@ -50,12 +50,12 @@
 	if(check_access(id_card))
 		return TRUE
 	if(!silent)
-		balloon_alert(user, "access denied!")
+		balloon_alert(user, "acesso negado!")
 	return FALSE
 
 /obj/item/storage/lockbox/proc/toggle_locked(mob/living/user)
 	atom_storage.set_locked(atom_storage.locked ? STORAGE_NOT_LOCKED : STORAGE_FULLY_LOCKED)
-	balloon_alert(user, atom_storage.locked ? "locked" : "unlocked")
+	balloon_alert(user, atom_storage.locked ? "trancado" : "destrancado")
 
 /obj/item/storage/lockbox/update_icon_state()
 	. = ..()

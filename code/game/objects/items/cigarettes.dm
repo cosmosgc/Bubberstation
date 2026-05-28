@@ -1128,7 +1128,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return FALSE
 
 	if (obj_flags & EMAGGED)
-		balloon_alert(user, "already emagged!")
+		balloon_alert(user, "já emagado!")
 		return FALSE
 
 	obj_flags |= EMAGGED

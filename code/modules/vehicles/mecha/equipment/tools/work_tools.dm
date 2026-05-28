@@ -302,7 +302,7 @@
 	if (!(target in view(RCD_RANGE, get_turf(chassis))))
 		return
 	if(get_dist(chassis, target) > RCD_RANGE)
-		balloon_alert(source, "out of range!")
+		balloon_alert(source, "fora do alcance!")
 		return
 	initial_location = chassis.loc
 

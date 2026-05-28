@@ -110,7 +110,7 @@
 	if(user.combat_mode)
 		return
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "it doesn't need repairs!")
+		balloon_alert(user, "não precisa de reparos!")
 		return TRUE
 	balloon_alert_to_viewers("repairing...")
 	if(!tool.use_tool(src, user, 4 SECONDS, amount = REPAIR_WELDER_COST, volume = 100))
@@ -184,7 +184,7 @@
 	if(!can_interact(user))
 		return
 	if(!cover_open)
-		balloon_alert(user, "cover closed!")
+		balloon_alert(user, "cobertura fechada!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(!ammo_box)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -196,7 +196,7 @@
 	if(!istype(weapon, ammo_box_type))
 		return
 	if(ammo_box)
-		balloon_alert(user, "already loaded!")
+		balloon_alert(user, "já carregado!")
 		return
 	ammo_box = weapon
 	weapon.forceMove(src)

@@ -54,7 +54,7 @@
 	balloon_alert(user, "carefully starting launch process...")
 	INVOKE_ASYNC(src, PROC_REF(random_beeps), user, MECH_LAUNCH_TIME, 0.5 SECONDS, 1.5 SECONDS)
 	if(!do_after(user, MECH_LAUNCH_TIME, src, extra_checks = CALLBACK(src, PROC_REF(do_after_checks), mecha_attacker, mech_dir)))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return
 	var/obj/machinery/mechpad/current_pad = mechpads[selected_id]
 	try_launch(user, current_pad)

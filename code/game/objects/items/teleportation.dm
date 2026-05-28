@@ -392,7 +392,7 @@
  **/
 /obj/item/syndicate_teleporter/proc/attempt_teleport(mob/user, triggered_by_emp = FALSE, not_holding_tele = FALSE)
 	if(!charges && !triggered_by_emp)
-		balloon_alert(user, "recharging!")
+		balloon_alert(user, "recarregando!")
 		return
 
 	var/turf/current_location = get_turf(user)

@@ -150,7 +150,7 @@
 		if(!shuttle_console)
 			return
 		shuttle_console.admin_controlled = !shuttle_console.admin_controlled
-		to_chat(usr, "[shuttle_console] was [shuttle_console.admin_controlled ? "locked" : "unlocked"].", confidential = TRUE)
+		to_chat(usr, "[shuttle_console] was [shuttle_console.admin_controlled ? "trancado" : "destrancado"].", confidential = TRUE)
 
 	else if(href_list["delay_round_end"])
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/delay_round_end)

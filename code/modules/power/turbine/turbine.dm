@@ -170,7 +170,7 @@
 		balloon_alert(user, "turn it off!")
 		return
 	if(!anchored)
-		balloon_alert(user, "anchor first!")
+		balloon_alert(user, "ancore primeiro!")
 		return
 
 	tool.play_tool_sound(src, 50)
@@ -449,7 +449,7 @@
 
 /obj/machinery/power/turbine/core_rotor/cable_layer_act(mob/living/user, obj/item/tool)
 	if(!panel_open)
-		balloon_alert(user, "open panel first!")
+		balloon_alert(user, "abra o painel primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	return ..()
 

@@ -412,7 +412,7 @@ SKYRAT EDIT REMOVAL END */
 		balloon_alert(user, "not enough [selected_reagent.name]!")
 		return ITEM_INTERACT_BLOCKING
 	if(interacting_with.reagents.total_volume >= interacting_with.reagents.maximum_volume)
-		balloon_alert(user, "it's full!")
+		balloon_alert(user, "está cheio!")
 		return ITEM_INTERACT_BLOCKING
 
 	// This is the in-between where we're storing the reagent we're going to pour into the container
@@ -472,7 +472,7 @@ SKYRAT EDIT REMOVAL END */
 		balloon_alert(user, "not enough [selected_reagent.name]!")
 		return ITEM_INTERACT_BLOCKING
 	if(interacting_with.reagents.total_volume >= interacting_with.reagents.maximum_volume)
-		balloon_alert(user, "it's full!")
+		balloon_alert(user, "está cheio!")
 		return ITEM_INTERACT_BLOCKING
 	// This is the in-between where we're storing the reagent we're going to pour into the container
 	// because we cannot specify a singular reagent to transfer in trans_to

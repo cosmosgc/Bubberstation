@@ -67,10 +67,10 @@
 	SIGNAL_HANDLER
 
 	if(spinning)
-		user.balloon_alert(user, "already active!")
+		user.balloon_alert(user, "já ativo!")
 		return
 	if(!COOLDOWN_FINISHED(src, spin_cooldown))
-		user.balloon_alert(user, "on cooldown!")
+		user.balloon_alert(user, "em recarga!")
 		return
 
 	start_spinning(user)

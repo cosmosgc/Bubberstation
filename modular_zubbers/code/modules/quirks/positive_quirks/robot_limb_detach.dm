@@ -78,7 +78,7 @@
 	amputee.visible_message(span_notice("[amputee] shuffles [amputee.p_their()] [targeted_limb.name] forward, actuators hissing and whirring as [amputee.p_they()] disengage[amputee.p_s()] the limb from its mount..."))
 
 	if(!do_after(amputee, 10 SECONDS))
-		amputee.balloon_alert(amputee, "interrupted!")
+		amputee.balloon_alert(amputee, "interrompido!")
 		return
 	if(amputee.handcuffed) //Prevents removing your arms if you get handcuffed part way through
 		return

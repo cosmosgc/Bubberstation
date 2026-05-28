@@ -249,7 +249,7 @@
 		source.balloon_alert(user, "aquarium is broken!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(item, source))
-		user.balloon_alert(user, "stuck to your hand!")
+		user.balloon_alert(user, "preso na sua mão!")
 		return ITEM_INTERACT_BLOCKING
 	source.balloon_alert(user, "added to aquarium")
 	source.update_appearance()
@@ -286,7 +286,7 @@
 /datum/component/aquarium/proc/on_plunger_act(atom/movable/source, obj/item/plunger/plunger, mob/living/user, reinforced)
 	SIGNAL_HANDLER
 	if(!HAS_TRAIT(source, TRAIT_AQUARIUM_PANEL_OPEN))
-		source.balloon_alert(user, "open panel first!")
+		source.balloon_alert(user, "abra o painel primeiro!")
 		return
 	INVOKE_ASYNC(src, PROC_REF(do_plunging), source, user)
 	return COMPONENT_NO_AFTERATTACK

@@ -34,7 +34,7 @@
 	if(.)
 		return TRUE
 	if(!activated && current_herb_fuel <= 0)
-		user.balloon_alert(user, "no fuel!")
+		user.balloon_alert(user, "sem combustível!")
 		return TRUE
 	alter_state()
 	user.balloon_alert(user, "[activated ? "activated" : "deactivated"]")
@@ -50,7 +50,7 @@
 		return .
 
 	if(current_herb_fuel < single_use_cost)
-		user.balloon_alert(user, "not enough fuel!")
+		user.balloon_alert(user, "combustível insuficiente!")
 		return .
 
 	current_herb_fuel -= single_use_cost

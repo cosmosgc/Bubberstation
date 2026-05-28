@@ -441,7 +441,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	internal_cell.forceMove(drop_location())
-	balloon_alert(user, "cell removed")
+	balloon_alert(user, "célula removida")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/portable_atmospherics/canister/welder_act_secondary(mob/living/user, obj/item/I)

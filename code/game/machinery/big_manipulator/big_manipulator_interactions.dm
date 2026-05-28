@@ -54,7 +54,7 @@
 
 	if(!use_energy(active_power_usage, force = FALSE))
 		on = FALSE
-		balloon_alert_to_viewers("not enough power!")
+		balloon_alert_to_viewers("energia insuficiente!")
 		return FALSE
 
 	next_cycle_scheduled = FALSE

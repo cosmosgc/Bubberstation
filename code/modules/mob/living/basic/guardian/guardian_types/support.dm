@@ -78,7 +78,7 @@
 /datum/action/cooldown/mob_cooldown/guardian_bluespace_beacon/Activate(atom/movable/target)
 	var/turf/beacon_loc = owner.loc
 	if(!isfloorturf(beacon_loc))
-		owner.balloon_alert(owner, "no room!")
+		owner.balloon_alert(owner, "sem espaço!")
 		return FALSE
 
 	if (!isnull(beacon))
@@ -121,7 +121,7 @@
 			source.balloon_alert(source, "manifest yourself!")
 			return FALSE
 	if (!source.can_perform_action(target))
-		target.balloon_alert(source, "too far!")
+		target.balloon_alert(source, "longe demais!")
 		return FALSE
 	if (target.anchored)
 		target.balloon_alert(source, "it won't budge!")
@@ -135,7 +135,7 @@
 /datum/action/cooldown/mob_cooldown/guardian_bluespace_beacon/proc/perform_teleport(mob/living/source, atom/target)
 	source.do_attack_animation(target)
 	playsound(target, 'sound/items/weapons/punch1.ogg', 50, TRUE, TRUE, frequency = -1)
-	source.balloon_alert(source, "teleporting...")
+	source.balloon_alert(source, "teleportando...")
 	target.visible_message(
 		span_danger("[target] starts to glow faintly!"), \
 		span_userdanger("You start to faintly glow, and you feel strangely weightless!"))

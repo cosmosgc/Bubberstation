@@ -247,7 +247,7 @@
 
 	if(!do_after(user, drain_speed, src, hidden = TRUE))
 		being_drained = FALSE
-		loc.balloon_alert(user, "interrupted!")
+		loc.balloon_alert(user, "interrompido!")
 		user.cut_overlay(draining_overlay)
 		return
 

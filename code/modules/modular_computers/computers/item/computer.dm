@@ -418,7 +418,7 @@
 		balloon_alert(user, "turn it on first!")
 		return FALSE
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "already emagged!")
+		balloon_alert(user, "já emagado!")
 		if (emag_card)
 			to_chat(user, span_notice("You swipe \the [src] with [emag_card]. A console window fills the screen, but it quickly closes itself after only a few lines are written to it."))
 		return FALSE
@@ -864,12 +864,12 @@
 /obj/item/modular_computer/screwdriver_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
 	if(internal_cell)
-		user.balloon_alert(user, "cell removed")
+		user.balloon_alert(user, "célula removida")
 		internal_cell.forceMove(drop_location())
 		internal_cell = null
 		return ITEM_INTERACT_SUCCESS
 	else
-		user.balloon_alert(user, "no cell!")
+		user.balloon_alert(user, "sem célula!")
 
 /obj/item/modular_computer/wrench_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
@@ -971,7 +971,7 @@
 	var/datum/picture/source_picture = scanned_photo.picture
 	var/datum/computer_file/image/image_file = new /datum/computer_file/image(source_picture.picture_image, display_name = source_picture.picture_name, source_photo_or_painting = source_picture)
 	if(!store_file(image_file, user))
-		balloon_alert(user, "no space!")
+		balloon_alert(user, "sem espaço!")
 		return ITEM_INTERACT_BLOCKING
 	balloon_alert(user, "photo scanned")
 	return ITEM_INTERACT_SUCCESS

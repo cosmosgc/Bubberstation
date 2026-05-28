@@ -40,7 +40,7 @@
 		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/structure/table_frame/wrench_act(mob/living/user, obj/item/tool)
-	balloon_alert(user, "deconstructing...")
+	balloon_alert(user, "desconstruindo...")
 	tool.play_tool_sound(src)
 	if(!tool.use_tool(src, user, 3 SECONDS))
 		return ITEM_INTERACT_BLOCKING

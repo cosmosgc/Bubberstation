@@ -62,7 +62,7 @@
 
 /obj/structure/millstone/click_ctrl_shift(mob/user)
 	set_anchored(!anchored)
-	balloon_alert(user, "[anchored ? "secured" : "unsecured"]")
+	balloon_alert(user, "[anchored ? "fixado" : "solto"]")
 
 /// Drops all contents at the mortar
 /obj/structure/millstone/proc/drop_everything_contained()
@@ -85,7 +85,7 @@
 
 /obj/structure/millstone/crowbar_act(mob/living/user, obj/item/tool)
 	. = ..()
-	balloon_alert_to_viewers("disassembling...")
+	balloon_alert_to_viewers("desmontando...")
 	if(!do_after(user, 2 SECONDS, src))
 		return
 	deconstruct(TRUE)

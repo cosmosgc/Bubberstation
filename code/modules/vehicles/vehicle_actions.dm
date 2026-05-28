@@ -458,7 +458,7 @@
 		return FALSE
 	var/obj/vehicle/sealed/car/vim/vim_mecha = vehicle_entered_target
 	if(!COOLDOWN_FINISHED(vim_mecha, sound_cooldown))
-		vim_mecha.balloon_alert(owner, "on cooldown!")
+		vim_mecha.balloon_alert(owner, "em recarga!")
 		return FALSE
 	COOLDOWN_START(vim_mecha, sound_cooldown, VIM_SOUND_COOLDOWN)
 	vehicle_entered_target.visible_message(span_notice("[vehicle_entered_target] [sound_message]"))

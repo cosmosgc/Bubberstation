@@ -283,7 +283,7 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 	SIGNAL_HANDLER
 
 	if(!location.IsReachableBy(user))
-		user.balloon_alert(user, "too far!")
+		user.balloon_alert(user, "longe demais!")
 		interrupt()
 
 /datum/fishing_challenge/proc/on_hands_blocked(datum/source)
@@ -297,7 +297,7 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 	SIGNAL_HANDLER
 	if(completed) //we already won/lost
 		return
-	user.balloon_alert(user, "interrupted!")
+	user.balloon_alert(user, "interrompido!")
 	interrupt()
 
 /datum/fishing_challenge/proc/handle_click(mob/living/source, atom/target, modifiers)

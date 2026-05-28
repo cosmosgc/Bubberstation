@@ -477,7 +477,7 @@
 		if(DOING_INTERACTION_WITH_TARGET(user, src))
 			balloon_alert(user, "already scanning!")
 			return
-		balloon_alert(user, "scanning...")
+		balloon_alert(user, "escaneando...")
 		playsound(src, 'sound/items/timer.ogg', 30, TRUE)
 		if(!do_after(user, 4 SECONDS, src))
 			return

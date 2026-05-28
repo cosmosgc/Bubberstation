@@ -206,7 +206,7 @@
 		return
 	user.manual_emote("presses [user.p_their()] palms together...")
 	if(!do_after(user, 5 SECONDS, src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return
 	user.say("#Oh great [GLOB.deity], give me the ammunition I need!", forced = "ammo prayer")
 	magazine.top_off()

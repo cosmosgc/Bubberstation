@@ -142,7 +142,7 @@
 		return
 
 	if (locked)
-		balloon_alert(user, "it's locked!")
+		balloon_alert(user, "está trancado!")
 		return
 
 	open_machine()

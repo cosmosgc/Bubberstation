@@ -226,7 +226,7 @@
 		return ..()
 
 	if(active)
-		balloon_alert(wearer, "unit active!")
+		balloon_alert(wearer, "unidade ativa!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 
@@ -243,12 +243,12 @@
 		return ITEM_INTERACT_BLOCKING
 	if(open)
 		if(!core)
-			balloon_alert(user, "no core!")
+			balloon_alert(user, "sem núcleo!")
 			return ITEM_INTERACT_BLOCKING
 		balloon_alert(user, "removing core...")
 		wrench.play_tool_sound(src, 100)
 		if(!wrench.use_tool(src, user, 3 SECONDS) || !open)
-			balloon_alert(user, "interrupted!")
+			balloon_alert(user, "interrompido!")
 			return ITEM_INTERACT_BLOCKING
 		wrench.play_tool_sound(src, 100)
 		balloon_alert(user, "core removed")
@@ -258,29 +258,29 @@
 
 /obj/item/mod/control/screwdriver_act(mob/living/user, obj/item/screwdriver)
 	if(active || activating || ai_controller)
-		balloon_alert(user, "unit active!")
+		balloon_alert(user, "unidade ativa!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return ITEM_INTERACT_BLOCKING
 	balloon_alert(user, "[open ? "closing" : "opening"] cover...")
 	screwdriver.play_tool_sound(src, 100)
 	if(screwdriver.use_tool(src, user, 1 SECONDS))
 		if(active || activating)
-			balloon_alert(user, "unit active!")
+			balloon_alert(user, "unidade ativa!")
 			return ITEM_INTERACT_SUCCESS
 		screwdriver.play_tool_sound(src, 100)
 		balloon_alert(user, "cover [open ? "closed" : "opened"]")
 		open = !open
 	else
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/mod/control/crowbar_act(mob/living/user, obj/item/crowbar)
 	if(!open)
-		balloon_alert(user, "cover closed!")
+		balloon_alert(user, "cobertura fechada!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return ITEM_INTERACT_BLOCKING
 	if(!allowed(user))
-		balloon_alert(user, "insufficient access!")
+		balloon_alert(user, "acesso insuficiente!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return ITEM_INTERACT_BLOCKING
 	if(SEND_SIGNAL(src, COMSIG_MOD_MODULE_REMOVAL, user) & MOD_CANCEL_REMOVAL)
@@ -313,14 +313,14 @@
 			return NONE
 		// Bubber Edit End
 		if(!open)
-			balloon_alert(user, "cover closed!")
+			balloon_alert(user, "cobertura fechada!")
 			return NONE // shoves the card in the storage anyways
 		insert_pai(user, tool)
 		return ITEM_INTERACT_SUCCESS
 	if(istype(tool, /obj/item/mod/paint))
 		var/obj/item/mod/paint/paint_kit = tool
 		if(active || activating)
-			balloon_alert(user, "unit active!")
+			balloon_alert(user, "unidade ativa!")
 			return ITEM_INTERACT_BLOCKING
 		if(LAZYACCESS(modifiers, RIGHT_CLICK)) // Right click
 			if(paint_kit.editing_mod == src)
@@ -338,7 +338,7 @@
 			return ITEM_INTERACT_SUCCESS
 	if(istype(tool, /obj/item/mod/module))
 		if(!open)
-			balloon_alert(user, "cover closed!")
+			balloon_alert(user, "cobertura fechada!")
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return ITEM_INTERACT_BLOCKING
 		install(tool, user)
@@ -346,7 +346,7 @@
 		return ITEM_INTERACT_SUCCESS
 	if(istype(tool, /obj/item/mod/core))
 		if(!open)
-			balloon_alert(user, "cover closed!")
+			balloon_alert(user, "cobertura fechada!")
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return ITEM_INTERACT_BLOCKING
 		if(core)
@@ -382,7 +382,7 @@
 
 /obj/item/mod/control/emag_act(mob/user, obj/item/card/emag/emag_card)
 	locked = !locked
-	balloon_alert(user, "access [locked ? "locked" : "unlocked"]")
+	balloon_alert(user, "access [locked ? "trancado" : "destrancado"]")
 	return TRUE
 
 /obj/item/mod/control/emp_act(severity)
@@ -689,7 +689,7 @@
 
 /obj/item/mod/control/proc/update_access(mob/user, obj/item/card/id/card)
 	if(!allowed(user))
-		balloon_alert(user, "insufficient access!")
+		balloon_alert(user, "acesso insuficiente!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
 	req_access = card.access.Copy()
@@ -759,7 +759,7 @@
 	wearer?.update_equipment_speed_mods()
 
 /obj/item/mod/control/proc/power_off()
-	balloon_alert(wearer, "no power!")
+	balloon_alert(wearer, "sem energia!")
 	toggle_activate(wearer, force_deactivate = TRUE)
 
 /obj/item/mod/control/proc/set_mod_color(new_color)

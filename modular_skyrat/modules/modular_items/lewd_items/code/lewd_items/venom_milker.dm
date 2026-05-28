@@ -70,7 +70,7 @@
 		var/mob/living/carbon/carbon_target = target
 		if (carbon_target.is_mouth_covered())
 			if (!silent)
-				user.balloon_alert(user, "mouth covered!")
+				user.balloon_alert(user, "boca coberta!")
 			return FALSE
 
 	return TRUE

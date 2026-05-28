@@ -163,7 +163,7 @@
 /obj/structure/bloodsucker/ghoulrack/mouse_drop_receive(atom/movable/movable_atom, mob/user, params)
 	var/mob/living/living_target = movable_atom
 	if(!anchored && IS_BLOODSUCKER(user))
-		user.balloon_alert(user, "not secured!")
+		user.balloon_alert(user, "não fixado!")
 		to_chat(user, span_danger("Until this rack is secured in place, it cannot serve its purpose."))
 		to_chat(user, span_announce("* Bloodsucker Tip: Examine the Persuasion Rack to understand how it functions!"))
 		return
@@ -333,7 +333,7 @@
 
 	user.balloon_alert_to_viewers("smears blood...", "painting bloody marks...")
 	if(!do_after(user, 5 SECONDS, target))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return
 	// Convert to Ghoul!
 	bloodsuckerdatum.AdjustBloodVolume(-TORTURE_CONVERSION_COST)

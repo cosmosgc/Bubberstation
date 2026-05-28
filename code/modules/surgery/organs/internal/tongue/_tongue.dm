@@ -276,7 +276,7 @@
 
 	owner.balloon_alert(owner, is_statue ? "breaking free..." : "striking a pose...")
 	if(!do_after(owner, (is_statue ? 0.5 SECONDS : 3 SECONDS), target = get_turf(owner)))
-		owner.balloon_alert(owner, "interrupted!")
+		owner.balloon_alert(owner, "interrompido!")
 		return
 
 	StartCooldown()

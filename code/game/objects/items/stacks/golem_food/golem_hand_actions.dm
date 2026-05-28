@@ -78,10 +78,10 @@
 /obj/item/bluespace_finger/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	var/turf/target_turf = get_turf(interacting_with)
 	if (get_dist(target_turf, get_turf(src)) > teleport_range)
-		balloon_alert(user, "too far!")
+		balloon_alert(user, "longe demais!")
 		return ITEM_INTERACT_BLOCKING
 	if (target_turf.is_blocked_turf(exclude_mobs = TRUE))
-		balloon_alert(user, "no room!")
+		balloon_alert(user, "sem espaço!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/effect/temp_visual/teleport_golem/landing_indicator = new(target_turf)

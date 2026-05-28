@@ -118,7 +118,7 @@
 		return
 
 	add_bayonet(attacking_item, attacker)
-	source.balloon_alert(attacker, "attached")
+	source.balloon_alert(attacker, "fixado")
 	return COMPONENT_NO_AFTERATTACK
 
 /datum/component/bayonet_attachable/proc/add_bayonet(obj/item/new_bayonet, mob/attacher)

@@ -330,9 +330,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	if(!I.tool_start_check(user, amount=1))
 		return TRUE
 
-	balloon_alert(user, "repairing...")
+	balloon_alert(user, "consertando...")
 	if(I.use_tool(src, user, 10, volume = 50))
-		balloon_alert(user, "repaired")
+		balloon_alert(user, "consertado")
 		broken = FALSE
 		icon_state = initial(icon_state)
 		desc = initial(desc)

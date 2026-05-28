@@ -308,7 +308,7 @@
 		if(self_contained)
 			qdel(src)
 		else
-			balloon_alert(user, "empty!")
+			balloon_alert(user, "vazio!")
 		return TRUE
 	if(charges_left < amount && requires_full)
 		balloon_alert(user, "not enough left!")
@@ -574,7 +574,7 @@
 					affected_turfs += left
 					affected_turfs += right
 				else
-					balloon_alert(user, "no room!")
+					balloon_alert(user, "sem espaço!")
 					return ITEM_INTERACT_BLOCKING
 		created_art.add_hiddenprint(user)
 		if(istagger)

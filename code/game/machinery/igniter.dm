@@ -46,7 +46,7 @@
 		return
 
 	if(!tool.tool_start_check(user, amount = 2))
-		balloon_alert(user, "not enough fuel!")
+		balloon_alert(user, "combustível insuficiente!")
 		return
 
 	loc.balloon_alert(user, "dismantling [src]")
@@ -191,7 +191,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/sparker, 26)
 
 /obj/machinery/sparker/welder_act(mob/living/user, obj/item/tool)
 	if(!tool.tool_start_check(user, amount = 1))
-		balloon_alert(user, "not enough fuel!")
+		balloon_alert(user, "combustível insuficiente!")
 		return TRUE
 
 	loc.balloon_alert(user, "dismantling [src]")

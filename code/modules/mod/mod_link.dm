@@ -86,7 +86,7 @@
 		. = ITEM_INTERACT_SUCCESS
 	if(!tool_frequency && mod_link.frequency)
 		tool.set_buffer(mod_link)
-		balloon_alert(user, "frequency copied")
+		balloon_alert(user, "frequência copiada")
 		. = ITEM_INTERACT_SUCCESS
 	else if(tool_frequency && !mod_link.frequency)
 		mod_link.frequency = tool_frequency
@@ -98,7 +98,7 @@
 		switch(response)
 			if("Copy")
 				tool.set_buffer(mod_link)
-				balloon_alert(user, "frequency copied")
+				balloon_alert(user, "frequência copiada")
 				. = ITEM_INTERACT_SUCCESS
 			if("Imprint")
 				mod_link.frequency = tool_frequency
@@ -230,7 +230,7 @@
 /obj/item/clothing/neck/link_scryer/attack_hand_secondary(mob/user, list/modifiers)
 	if(!cell)
 		return SECONDARY_ATTACK_CONTINUE_CHAIN
-	balloon_alert(user, "cell removed")
+	balloon_alert(user, "célula removida")
 	user.put_in_hands(cell)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
@@ -245,7 +245,7 @@
 		. = ITEM_INTERACT_SUCCESS
 	if(!tool_frequency && mod_link.frequency)
 		tool.set_buffer(mod_link)
-		balloon_alert(user, "frequency copied")
+		balloon_alert(user, "frequência copiada")
 		. = ITEM_INTERACT_SUCCESS
 	else if(tool_frequency && !mod_link.frequency)
 		mod_link.frequency = tool_frequency
@@ -257,7 +257,7 @@
 		switch(response)
 			if("Copy")
 				tool.set_buffer(mod_link)
-				balloon_alert(user, "frequency copied")
+				balloon_alert(user, "frequência copiada")
 				. = ITEM_INTERACT_SUCCESS
 			if("Imprint")
 				mod_link.frequency = tool_frequency
@@ -275,7 +275,7 @@
 	else if(QDELETED(cell))
 		user.balloon_alert(user, "no cell installed!")
 	else if(!cell.charge)
-		user.balloon_alert(user, "no charge!")
+		user.balloon_alert(user, "sem carga!")
 	else
 		call_link(user, mod_link)
 
@@ -411,7 +411,7 @@
 	if(!frequency)
 		return
 	if(!istype(called))
-		holder.balloon_alert(user, "invalid target!")
+		holder.balloon_alert(user, "alvo inválido!")
 		return
 	var/mob/living/link_user = get_user_callback.Invoke()
 	if(!link_user)
@@ -421,7 +421,7 @@
 		return
 	var/mob/living/link_target = called.get_user_callback.Invoke()
 	if(!link_target)
-		holder.balloon_alert(user, "invalid target!")
+		holder.balloon_alert(user, "alvo inválido!")
 		return
 	if(HAS_TRAIT(link_target, TRAIT_IN_CALL))
 		holder.balloon_alert(user, "target already in call!")

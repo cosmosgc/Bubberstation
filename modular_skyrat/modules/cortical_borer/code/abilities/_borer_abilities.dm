@@ -71,10 +71,10 @@
 		return FALSE
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	if(!cortical_owner.human_host)
-		owner.balloon_alert(owner, "host required")
+		owner.balloon_alert(owner, "hospedeiro necessário")
 		return
 	if(cortical_owner.host_sugar())
-		owner.balloon_alert(owner, "cannot function with sugar in host")
+		owner.balloon_alert(owner, "não funciona com açúcar no hospedeiro")
 		return
 	ui_interact(owner)
 
@@ -119,7 +119,7 @@
 			if(!iscorticalborer(usr) || !COOLDOWN_FINISHED(cortical_owner, injection_cooldown))
 				return
 			if(cortical_owner.host_sugar())
-				owner.balloon_alert(owner, "cannot function with sugar in host")
+				owner.balloon_alert(owner, "não funciona com açúcar no hospedeiro")
 				return
 			var/reagent_name = params["reagent"]
 			var/reagent = GLOB.name2reagent[reagent_name]
@@ -253,10 +253,10 @@
 		return FALSE
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	if(!cortical_owner.inside_human())
-		owner.balloon_alert(owner, "host required")
+		owner.balloon_alert(owner, "hospedeiro necessário")
 		return
 	if(cortical_owner.host_sugar())
-		owner.balloon_alert(owner, "cannot function with sugar in host")
+		owner.balloon_alert(owner, "não funciona com açúcar no hospedeiro")
 		return
 	if(!length(cortical_owner.possible_focuses))
 		owner.balloon_alert(owner, "all focuses already learned")
@@ -292,10 +292,10 @@
 		return FALSE
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	if(!cortical_owner.inside_human())
-		owner.balloon_alert(owner, "host required")
+		owner.balloon_alert(owner, "hospedeiro necessário")
 		return
 	if(cortical_owner.host_sugar())
-		owner.balloon_alert(owner, "cannot function with sugar in host")
+		owner.balloon_alert(owner, "não funciona com açúcar no hospedeiro")
 		return
 	if(length(cortical_owner.human_host.reagents.reagent_list) <= 0)
 		owner.balloon_alert(owner, "no reagents in host")
@@ -339,10 +339,10 @@
 		return FALSE
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	if(!cortical_owner.inside_human())
-		owner.balloon_alert(owner, "host required")
+		owner.balloon_alert(owner, "hospedeiro necessário")
 		return
 	if(cortical_owner.host_sugar())
-		owner.balloon_alert(owner, "cannot function with sugar in host")
+		owner.balloon_alert(owner, "não funciona com açúcar no hospedeiro")
 		return
 	if(!length(cortical_owner.potential_chemicals))
 		owner.balloon_alert(owner, "all chemicals learned")
@@ -375,10 +375,10 @@
 		return FALSE
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	if(!cortical_owner.inside_human())
-		owner.balloon_alert(owner, "host required")
+		owner.balloon_alert(owner, "hospedeiro necessário")
 		return
 	if(cortical_owner.host_sugar())
-		owner.balloon_alert(owner, "cannot function with sugar in host")
+		owner.balloon_alert(owner, "não funciona com açúcar no hospedeiro")
 		return
 	cortical_owner.stat_evolution -= stat_evo_points
 	cortical_owner.maxHealth += cortical_owner.health_per_level
@@ -447,7 +447,7 @@
 		return FALSE
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	if(cortical_owner.host_sugar())
-		owner.balloon_alert(owner, "cannot function with sugar in host")
+		owner.balloon_alert(owner, "não funciona com açúcar no hospedeiro")
 		return FALSE
 	if(cortical_owner.human_host)
 		if(considered_afk(cortical_owner.human_host.mind))
@@ -500,10 +500,10 @@
 		return FALSE
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	if(cortical_owner.host_sugar())
-		owner.balloon_alert(owner, "cannot function with sugar in host")
+		owner.balloon_alert(owner, "não funciona com açúcar no hospedeiro")
 		return
 	if(!cortical_owner.human_host)
-		owner.balloon_alert(owner, "host required")
+		owner.balloon_alert(owner, "hospedeiro necessário")
 		return
 	healthscan(owner, cortical_owner.human_host, advanced = TRUE) // :thinking:
 	chemscan(owner, cortical_owner.human_host)
@@ -523,7 +523,7 @@
 		return FALSE
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	if(cortical_owner.host_sugar())
-		owner.balloon_alert(owner, "cannot function with sugar in host")
+		owner.balloon_alert(owner, "não funciona com açúcar no hospedeiro")
 		return FALSE
 	if(!cortical_owner.inside_human())
 		owner.balloon_alert(owner, "must be in a host")
@@ -570,7 +570,7 @@
 		return FALSE
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	if(!(cortical_owner.upgrade_flags & BORER_ALONE_PRODUCTION) && !cortical_owner.inside_human())
-		owner.balloon_alert(owner, "host required")
+		owner.balloon_alert(owner, "hospedeiro necessário")
 		return
 	cortical_owner.chemical_storage -= chemical_cost
 	if((cortical_owner.upgrade_flags & BORER_ALONE_PRODUCTION) && !cortical_owner.inside_human())
@@ -635,10 +635,10 @@
 		return FALSE
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	if(cortical_owner.host_sugar())
-		owner.balloon_alert(owner, "cannot function with sugar in host")
+		owner.balloon_alert(owner, "não funciona com açúcar no hospedeiro")
 		return
 	if(!cortical_owner.inside_human())
-		owner.balloon_alert(owner, "host required")
+		owner.balloon_alert(owner, "hospedeiro necessário")
 		return
 	if(cortical_owner.human_host.has_quirk(/datum/quirk/dnr))
 		owner.balloon_alert(owner, "host unrevivable")
@@ -679,10 +679,10 @@
 		return FALSE
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	if(!cortical_owner.inside_human())
-		owner.balloon_alert(owner, "host required")
+		owner.balloon_alert(owner, "hospedeiro necessário")
 		return
 	if(cortical_owner.host_sugar())
-		owner.balloon_alert(owner, "cannot function with sugar in host")
+		owner.balloon_alert(owner, "não funciona com açúcar no hospedeiro")
 		return
 	for(var/ckey_check in GLOB.willing_hosts)
 		if(ckey_check == cortical_owner.human_host.ckey)
@@ -718,7 +718,7 @@
 	if(!.)
 		return FALSE
 	if(cortical_owner.host_sugar())
-		owner.balloon_alert(owner, "cannot function with sugar in host")
+		owner.balloon_alert(owner, "não funciona com açúcar no hospedeiro")
 		return
 	owner.balloon_alert(owner, "stealth mode [in_stealth ? "disabled" : "enabled"]")
 	cortical_owner.chemical_storage -= chemical_cost
@@ -743,7 +743,7 @@
 		return FALSE
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	if(!cortical_owner.inside_human())
-		owner.balloon_alert(owner, "host required")
+		owner.balloon_alert(owner, "hospedeiro necessário")
 		return
 	if(cortical_owner.human_host.stat != DEAD)
 		owner.balloon_alert(owner, "host not dead")

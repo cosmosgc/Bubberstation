@@ -61,7 +61,7 @@
 	if(!ishuman(target) || !implant_inside) // Not human, or no implant in module
 		return
 	if(!do_after(user, 1.5 SECONDS, target = target))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "interrompido!")
 		return
 	if(!implant.implant(target, user)) // If implant fails
 		balloon_alert(user, "can't implant!")
@@ -234,7 +234,7 @@
 /datum/action/item_action/mod_recall/do_effect(trigger_flags)
 	var/obj/item/implant/mod/implant = target
 	if(!COOLDOWN_FINISHED(src, recall_cooldown))
-		implant.balloon_alert(owner, "on cooldown!")
+		implant.balloon_alert(owner, "em recarga!")
 		return
 	if(implant.module.recall(owner))
 		implant.balloon_alert(owner, "suit incoming...")

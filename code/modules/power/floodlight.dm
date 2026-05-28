@@ -80,7 +80,7 @@
 	if(state != FLOODLIGHT_NEEDS_WIRES)
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "deconstructing...")
+	balloon_alert(user, "desconstruindo...")
 	if(!tool.use_tool(src, user, 30, volume=50))
 		return ITEM_INTERACT_BLOCKING
 	new /obj/item/stack/sheet/iron(loc, 5)
@@ -257,7 +257,7 @@
 
 /obj/machinery/power/floodlight/cable_layer_act(mob/living/user, obj/item/tool)
 	if(anchored)
-		balloon_alert(user, "unanchor first!")
+		balloon_alert(user, "desancore primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	return ..()
 

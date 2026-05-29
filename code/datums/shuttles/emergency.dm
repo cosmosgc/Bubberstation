@@ -47,8 +47,8 @@
 
 /datum/map_template/shuttle/emergency/construction
 	suffix = "construction"
-	name = "Build your own shuttle kit"
-	description = "For the enterprising shuttle engineer! The chassis will dock upon purchase, but launch will have to be authorized as usual via shuttle call. Comes stocked with construction materials."
+	name = "Kit monte seu próprio ônibus"
+	description = "Para o engenheiro de ônibus empreendedor! O chassi vai acoplar após a compra, mas o lançamento ainda terá de ser autorizado normalmente via chamada do ônibus. Vem abastecido com materiais de construção."
 	admin_notes = "No brig, no medical facilities."
 	credit_cost = CARGO_CRATE_VALUE * 5
 	who_can_purchase = list(ACCESS_CAPTAIN, ACCESS_CE)
@@ -56,8 +56,8 @@
 
 /datum/map_template/shuttle/emergency/constructionbig
 	suffix = "constructionbig"
-	name = "Build your own CRUISER kit"
-	description = "This is the big brother of the construction kit, with more space for your shuttle-building ideas! The chassis will dock upon purchase, but launch will have to be authorized as usual via shuttle call. Comes stocked with construction materials."
+	name = "Kit monte seu próprio CRUZADOR"
+	description = "Este é o irmão maior do kit de construção, com mais espaço para suas ideias de montagem de ônibus! O chassi vai acoplar após a compra, mas o lançamento ainda terá de ser autorizado normalmente via chamada do ônibus. Vem abastecido com materiais de construção."
 	admin_notes = "No brig, no medical facilities."
 	credit_cost = CARGO_CRATE_VALUE * 30
 	who_can_purchase = list(ACCESS_CAPTAIN, ACCESS_CE)
@@ -65,22 +65,22 @@
 
 /datum/map_template/shuttle/emergency/asteroid
 	suffix = "asteroid"
-	name = "Asteroid Station Emergency Shuttle"
-	description = "A respectable mid-sized shuttle that first saw service shuttling Nanotrasen crew to and from their asteroid belt embedded facilities."
+	name = "Ônibus de Emergência da Estação Asteroide"
+	description = "Um ônibus respeitável de tamanho médio que serviu pela primeira vez transportando tripulantes da Nanotrasen para instalações no cinturão de asteroides e de volta."
 	credit_cost = CARGO_CRATE_VALUE * 6
 	occupancy_limit = "50"
 
 /datum/map_template/shuttle/emergency/venture
 	suffix = "venture"
-	name = "Venture Emergency Shuttle"
-	description = "A mid-sized shuttle for those who like a lot of space for their legs."
+	name = "Ônibus de Emergência Venture"
+	description = "Um ônibus de tamanho médio para quem gosta de bastante espaço para as pernas."
 	credit_cost = CARGO_CRATE_VALUE * 10
 	occupancy_limit = "45"
 
 /datum/map_template/shuttle/emergency/humpback
 	suffix = "humpback"
-	name = "Humpback Emergency Shuttle"
-	description = "A repurposed cargo hauling and salvaging ship, for sightseeing and tourism. Has a bar. Complete with a 2 minute vacation plan to carp territory."
+	name = "Ônibus de Emergência Humpback"
+	description = "Uma nave reaproveitada de transporte e salvamento de carga, para passeios e turismo. Tem um bar. Completa com um plano de férias de 2 minutos para território de carpas."
 	credit_cost = CARGO_CRATE_VALUE * 12
 	occupancy_limit = "30"
 	events = list(
@@ -92,8 +92,8 @@
 
 /datum/map_template/shuttle/emergency/bar
 	suffix = "bar"
-	name = "The Emergency Escape Bar"
-	description = "Features include sentient bar staff (a Bardrone and a Barmaid), bathroom, a quality lounge for the heads, and a large gathering table."
+	name = "O Bar de Fuga de Emergência"
+	description = "Os recursos incluem equipe de bar senciente (um Bardrone e uma Barmaid), banheiro, um lounge de qualidade para os chefes e uma grande mesa de reunião."
 	admin_notes = "Bardrone and Barmaid have TRAIT_GODMODE (basically invincibility), will be automatically sentienced by the fun balloon at 60 seconds before arrival. \
 	Has medical facilities."
 	credit_cost = CARGO_CRATE_VALUE * 10
@@ -101,8 +101,8 @@
 
 /datum/map_template/shuttle/emergency/pod
 	suffix = "pod"
-	name = "Emergency Pods"
-	description = "We did not expect an evacuation this quickly. All we have available is two escape pods."
+	name = "Cápsulas de Emergência"
+	description = "Não esperávamos uma evacuação tão rápida. Tudo o que temos disponível são duas cápsulas de fuga."
 	admin_notes = "For player punishment."
 	who_can_purchase = null
 	occupancy_limit = "10"
@@ -117,8 +117,8 @@
 
 /datum/map_template/shuttle/emergency/meteor
 	suffix = "meteor"
-	name = "Asteroid With Engines Strapped To It"
-	description = "A hollowed out asteroid with engines strapped to it, the hollowing procedure makes it very difficult to hijack but is very expensive. Due to its size and difficulty in steering it, this shuttle may damage the docking area."
+	name = "Asteroide com Motores Presos"
+	description = "Um asteroide escavado com motores acoplados; o processo de escavação o torna muito difícil de sequestrar, mas muito caro. Devido ao seu tamanho e dificuldade de manobra, este ônibus pode danificar a área de acoplamento."
 	admin_notes = "This shuttle will likely crush escape, killing anyone there."
 	credit_cost = CARGO_CRATE_VALUE * 30
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 2)
@@ -126,8 +126,8 @@
 
 /datum/map_template/shuttle/emergency/monastery
 	suffix = "monastery"
-	name = "Grand Corporate Monastery"
-	description = "Originally built for a public station, this grand edifice to religion, due to budget cuts, is now available as an escape shuttle for the right... donation. Due to its large size and callous owners, this shuttle may cause collateral damage."
+	name = "Grande Mosteiro Corporativo"
+	description = "Originalmente construído para uma estação pública, este grande edifício religioso, devido a cortes de orçamento, agora está disponível como ônibus de fuga pela... doação certa. Devido ao grande tamanho e aos proprietários insensíveis, este ônibus pode causar danos colaterais."
 	admin_notes = "WARNING: This shuttle WILL destroy a fourth of the station, likely picking up a lot of objects with it."
 	emag_only = TRUE
 	credit_cost = EMAG_LOCKED_SHUTTLE_COST * 1.8
@@ -137,9 +137,9 @@
 
 /datum/map_template/shuttle/emergency/luxury
 	suffix = "luxury"
-	name = "Luxury Shuttle"
-	description = "A luxurious golden shuttle complete with an indoor swimming pool. Each crewmember wishing to board must bring 500 credits, payable in cash and mineral coin."
-	extra_desc = "This shuttle costs 500 credits to board."
+	name = "Ônibus de Luxo"
+	description = "Um luxuoso ônibus dourado completo com piscina interna. Cada tripulante que desejar embarcar deve trazer 500 créditos, pagáveis em dinheiro e moeda mineral."
+	extra_desc = "Este ônibus custa 500 créditos para embarcar."
 	admin_notes = "Due to the limited space for non paying crew, this shuttle may cause a riot."
 	emag_only = TRUE
 	credit_cost = EMAG_LOCKED_SHUTTLE_COST
@@ -147,9 +147,9 @@
 
 /datum/map_template/shuttle/emergency/medisim
 	suffix = "medisim"
-	name = "Medieval Reality Simulation Dome"
-	description = "A state of the art simulation dome, loaded onto your shuttle! Watch and laugh at how petty humanity used to be before it reached the stars. Guaranteed to be at least 40% historically accurate."
-	prerequisites = "A special holodeck simulation must be loaded before this shuttle can be purchased."
+	name = "Domo de Simulação de Realidade Medieval"
+	description = "Um domo de simulação de última geração, carregado no seu ônibus! Assista e ria de como a humanidade era mesquinha antes de alcançar as estrelas. Garantido com pelo menos 40% de precisão histórica."
+	prerequisites = "Uma simulação especial de holodeck precisa ser carregada antes que este ônibus possa ser comprado."
 	admin_notes = "Ghosts can spawn in and fight as knights or archers. The CTF auto restarts, so no admin intervention necessary."
 	credit_cost = 20000
 	occupancy_limit = "30"
@@ -160,7 +160,7 @@
 /datum/map_template/shuttle/emergency/discoinferno
 	suffix = "discoinferno"
 	name = "Disco Inferno"
-	description = "The glorious results of centuries of plasma research done by Nanotrasen employees. This is the reason why you are here. Get on and dance like you're on fire, burn baby burn!"
+	description = "Os resultados gloriosos de séculos de pesquisa com plasma feita por funcionários da Nanotrasen. Este é o motivo de você estar aqui. Entre e dance como se estivesse pegando fogo, burn baby burn!"
 	admin_notes = "Flaming hot. The main area has a dance machine as well as plasma floor tiles that will be ignited by players every single time."
 	emag_only = TRUE
 	credit_cost = EMAG_LOCKED_SHUTTLE_COST
@@ -168,9 +168,9 @@
 
 /datum/map_template/shuttle/emergency/arena
 	suffix = "arena"
-	name = "The Arena"
-	description = "The crew must pass through an otherworldly arena to board this shuttle. Expect massive casualties."
-	prerequisites = "The source of the Bloody Signal must be tracked down and eliminated to unlock this shuttle."
+	name = "A Arena"
+	description = "A tripulação deve passar por uma arena de outro mundo para embarcar neste ônibus. Espere baixas massivas."
+	prerequisites = "A fonte do Sinal Sangrento deve ser rastreada e eliminada para desbloquear este ônibus."
 	admin_notes = "RIP AND TEAR."
 	credit_cost = CARGO_CRATE_VALUE * 20
 	occupancy_limit = "1/2"
@@ -188,7 +188,7 @@
 		arena_template.load_new_z()
 
 /datum/map_template/arena
-	name = "The Arena"
+	name = "A Arena"
 	mappath = "_maps/templates/the_arena.dmm"
 
 /datum/map_template/shuttle/emergency/birdboat
@@ -200,9 +200,9 @@
 
 /datum/map_template/shuttle/emergency/box
 	suffix = "box"
-	name = "Box Station Emergency Shuttle"
+	name = "Ônibus de Emergência da Box Station"
 	credit_cost = CARGO_CRATE_VALUE * 4
-	description = "The gold standard in emergency exfiltration, this tried and true design is equipped with everything the crew needs for a safe flight home."
+	description = "O padrão ouro em extração de emergência, este design testado e comprovado é equipado com tudo que a tripulação precisa para um voo seguro para casa."
 	occupancy_limit = "45"
 
 /datum/map_template/shuttle/emergency/donut

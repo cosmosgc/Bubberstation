@@ -401,7 +401,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	if(locked > force)
 		if(messages && user)
-			user.balloon_alert(user, "closed!")
+			user.balloon_alert(user, "fechado!")
 		return FALSE
 
 	if((to_insert == parent) || (to_insert == real_location))
@@ -432,19 +432,19 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	var/trait_says_no = HAS_TRAIT(to_insert, TRAIT_NO_STORAGE_INSERT)
 	if(!can_hold_it || cant_hold_it || trait_says_no)
 		if(messages && user)
-			user.balloon_alert(user, "can't hold!")
+			user.balloon_alert(user, "não consegue segurar!")
 		return FALSE
 
 	if(HAS_TRAIT(to_insert, TRAIT_NODROP) && (to_insert.item_flags & IN_INVENTORY))
 		if(messages && user)
-			user.balloon_alert(user, "stuck on your hand!")
+			user.balloon_alert(user, "preso na sua mão!")
 		return FALSE
 
 	// this is valid if the container our location is being held in is a storage item
 	var/datum/storage/bigger_fish = parent.loc.atom_storage
 	if(bigger_fish && bigger_fish.max_specific_storage < max_specific_storage)
 		if(messages && user)
-			user.balloon_alert(user, "[LOWER_TEXT(parent.loc.name)] is in the way!")
+			user.balloon_alert(user, "[LOWER_TEXT(parent.loc.name)] está no caminho!")
 		return FALSE
 
 	if(isitem(parent))
@@ -580,11 +580,10 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		playsound(parent, rustle_sound, 50, rustle_vary, -5)
 
 	if(!silent_for_user)
-		to_chat(user, span_notice("You put [thing] [insert_preposition]to [parent]."))
-
+			to_chat(user, span_notice("Você coloca [thing] [insert_preposition]em [parent]."))
 	for(var/mob/viewing in oviewers(user))
 		if(in_range(user, viewing) || (thing?.w_class >= WEIGHT_CLASS_NORMAL))
-			viewing.show_message(span_notice("[user] puts [thing] [insert_preposition]to [parent]."), MSG_VISUAL)
+			viewing.show_message(span_notice("[user] coloca [thing] [insert_preposition]em [parent]."), MSG_VISUAL)
 
 
 /**
@@ -772,7 +771,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	var/amount = length(pick_up)
 	if(!amount)
-		parent.balloon_alert(user, "nothing to pick up!")
+		parent.balloon_alert(user, "nada para pegar!")
 		return
 
 	var/datum/progressbar/progress = new(user, amount, thing.loc)
@@ -786,7 +785,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	var/list/current_contents = holder.contents.Copy()
 	if(length(pick_up | current_contents) == length(current_contents))
 		return
-	parent.balloon_alert(user, "picked up")
+	parent.balloon_alert(user, "pegado")
 
 /// Signal handler for whenever we drag the storage somewhere.
 /datum/storage/proc/on_mousedrop_onto(datum/source, atom/over_object, mob/user)
@@ -849,7 +848,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
  */
 /datum/storage/proc/dump_content_at(atom/dest_object, dump_loc, mob/user)
 	if(locked)
-		user.balloon_alert(user, "closed!")
+		user.balloon_alert(user, "fechado!")
 		return
 	if(!parent.IsReachableBy(user) || !dest_object.IsReachableBy(user))
 		return
@@ -859,7 +858,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	// Storage to storage transfer is instant
 	if(dest_object.atom_storage)
-		to_chat(user, span_notice("You dump the contents of [parent] into [dest_object]."))
+		to_chat(user, span_notice("Você despeja o conteúdo de [parent] em [dest_object]."))
 
 		if(do_rustle && rustle_sound)
 			playsound(parent, rustle_sound, 50, TRUE, -5)
@@ -871,7 +870,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		return
 
 	// Storage to loc transfer requires a do_after
-	to_chat(user, span_notice("You start dumping out the contents of [parent] onto [dest_object]..."))
+	to_chat(user, span_notice("Você começa a despejar o conteúdo de [parent] em [dest_object]..."))
 	if(!do_after(user, 2 SECONDS, target = dest_object))
 		return
 
@@ -974,7 +973,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	if(locked)
 		if(!silent)
-			parent.balloon_alert(to_show, "closed!")
+			parent.balloon_alert(to_show, "fechado!")
 		return FALSE
 
 	// If we're quickdrawing boys
@@ -1009,7 +1008,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 /datum/storage/proc/put_in_hands_async(mob/to_show, obj/item/toremove)
 	if(!to_show.put_in_hands(toremove))
 		if(!silent)
-			toremove.balloon_alert(to_show, "fumbled!")
+			toremove.balloon_alert(to_show, "deixou cair!")
 		return TRUE
 
 /// Signal handler for whenever a mob walks away with us, close if they can't reach us.
@@ -1183,11 +1182,11 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	collection_mode = (collection_mode + 1) % 3
 	switch(collection_mode)
 		if(COLLECT_SAME)
-			parent.balloon_alert(user, "will now only pick up a single type")
+			parent.balloon_alert(user, "agora só pegará um único tipo")
 		if(COLLECT_EVERYTHING)
-			parent.balloon_alert(user, "will now pick up everything")
+			parent.balloon_alert(user, "agora pegará tudo")
 		if(COLLECT_ONE)
-			parent.balloon_alert(user, "will now pick up one at a time")
+			parent.balloon_alert(user, "agora pegará um de cada vez")
 
 /// Gives a spiffy animation to our parent to represent opening and closing.
 /datum/storage/proc/animate_parent()

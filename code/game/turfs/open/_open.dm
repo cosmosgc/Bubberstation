@@ -563,7 +563,7 @@
 
 	if(!(lube & SLIDE_ICE))
 		// Ice slides are intended to be combo'd so don't give the feedback
-		to_chat(slipper, span_notice("You slipped[ slippable ? " on \the [slippable]" : ""]!"))
+		to_chat(slipper, span_notice("Você escorregou[ slippable ? " em \\the [slippable]" : ""]!"))
 		playsound(slipper.loc, 'sound/misc/slip.ogg', 50, TRUE, -3)
 
 	SEND_SIGNAL(slipper, COMSIG_ON_CARBON_SLIP)
@@ -618,26 +618,26 @@
 	var/obj/structure/lattice/catwalk_bait = locate(/obj/structure/lattice, src)
 	var/obj/structure/lattice/catwalk/existing_catwalk = locate(/obj/structure/lattice/catwalk, src)
 	if(existing_catwalk)
-		to_chat(user, span_warning("There is already a catwalk here!"))
+		to_chat(user, span_warning("Já há uma passarela aqui!"))
 		return
 
 	if(catwalk_bait)
 		if(used_rods.use(1))
-			to_chat(user, span_notice("You construct a catwalk."))
+			to_chat(user, span_notice("Você constrói uma passarela."))
 			playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 			catwalk_bait.replace_with_catwalk()
 		else
-			to_chat(user, span_warning("You need two rods to build a catwalk!"))
+			to_chat(user, span_warning("Você precisa de duas barras para construir uma passarela!"))
 		return
 
 	if(used_rods.use(1))
-		to_chat(user, span_notice("You construct a lattice."))
+		to_chat(user, span_notice("Você constrói uma trelis."))
 		playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 		var/obj/structure/lattice/new_lattice = new (src)
 		if(istype(used_rods, /obj/item/stack/rods/shuttle) && !istype(loc, /area/shuttle))
 			new_lattice.AddElement(/datum/element/shuttle_construction_lattice)
 	else
-		to_chat(user, span_warning("You need one rod to build a lattice."))
+		to_chat(user, span_warning("Você precisa de uma barra para construir uma trelis."))
 
 /// Very similar to build_with_rods, this exists to allow consistent behavior between different types in terms of how
 /// Building floors works

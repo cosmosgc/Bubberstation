@@ -29,7 +29,7 @@
 //It's really not recommended to use this proc to give feedback, hence why silent is defaulting to true.
 /mob/living/carbon/proc/KnockToFloor(silent = TRUE, ignore_canknockdown = FALSE, knockdown_amt = 1)
 	if(!silent && body_position != LYING_DOWN)
-		to_chat(src, span_warning("You are knocked to the floor!"))
+		to_chat(src, span_warning("Você é derrubado ao chão!"))
 	Knockdown(knockdown_amt, ignore_canknockdown)
 
 /mob/living/proc/StaminaKnockdown(stamina_damage, disarm, brief_stun, hardstun, ignore_canknockdown = FALSE, paralyze_amount, knockdown_amt = 1)
@@ -177,7 +177,7 @@
 
 	if (!pregen_data.can_be_applied_to(affecting, random_roll = FALSE))
 		if (!(affecting.biological_state & BIO_JOINTED))
-			to_chat(user, span_warning("[target]'s [affecting.plaintext_zone] has no joint to dislocate!"))
+			to_chat(user, span_warning("A [affecting.plaintext_zone] de [target] não tem uma articulação para dislocar!"))
 		return FALSE
 
 	user.changeNext_move(4 SECONDS)

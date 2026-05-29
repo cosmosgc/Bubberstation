@@ -1,8 +1,8 @@
 #define PAPERS_PER_OVERLAY 8
 #define PAPER_OVERLAY_PIXEL_SHIFT 2
 /obj/item/paper_bin
-	name = "paper bin"
-	desc = "Contains all the paper you'll never need."
+	name = "cesto de papéis"
+	desc = "Contém todo o papel que você nunca vai precisar."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "paper_bin0"
 	inhand_icon_state = "sheet-metal"
@@ -103,7 +103,7 @@
 		pen.add_fingerprint(user)
 		pen.forceMove(user.loc)
 		user.put_in_hands(pen)
-		to_chat(user, span_notice("You take [pen] out of [src]."))
+		to_chat(user, span_notice("Você tira [pen] de [src]."))
 		bin_pen = null
 		update_appearance()
 	else if(total_paper > 0)
@@ -112,10 +112,10 @@
 		top_paper.add_fingerprint(user)
 		top_paper.forceMove(user.loc)
 		user.put_in_hands(top_paper)
-		to_chat(user, span_notice("You take [top_paper] out of [src]."))
+		to_chat(user, span_notice("Você tira [top_paper] de [src]."))
 		update_appearance()
 	else
-		to_chat(user, span_warning("[src] is empty!"))
+		to_chat(user, span_warning("[src] está vazio!"))
 	add_fingerprint(user)
 	return ..()
 
@@ -127,7 +127,7 @@
 		var/obj/item/paper/paper = I
 		if(!user.transferItemToLoc(paper, src, silent = FALSE))
 			return
-		to_chat(user, span_notice("You put [paper] in [src]."))
+		to_chat(user, span_notice("Você coloca [paper] em [src]."))
 		paper_stack += paper
 		total_paper += 1
 		update_appearance()
@@ -135,7 +135,7 @@
 		var/obj/item/pen/pen = I
 		if(!user.transferItemToLoc(pen, src, silent = FALSE))
 			return
-		to_chat(user, span_notice("You put [pen] in [src]."))
+		to_chat(user, span_notice("Você coloca [pen] em [src]."))
 		bin_pen = pen
 		update_appearance()
 	else
@@ -153,9 +153,9 @@
 /obj/item/paper_bin/examine(mob/user)
 	. = ..()
 	if(total_paper)
-		. += "It contains [total_paper > 1 ? "[total_paper] papers" : "one paper"]."
+		. += "Contém [total_paper > 1 ? "[total_paper] papéis" : "um papel"]."
 	else
-		. += "It doesn't contain anything."
+		. += "Não contém nada."
 
 /obj/item/paper_bin/update_icon_state()
 	if(total_paper < 1)
@@ -210,13 +210,13 @@
 		. += pen_overlay
 
 /obj/item/paper_bin/construction
-	name = "construction paper bin"
-	desc = "Contains all the paper you'll never need, IN COLOR!"
+	name = "cesto de papel colorido"
+	desc = "Contém todo o papel que você nunca vai precisar, COLORIDO!"
 	papertype = /obj/item/paper/construction
 
 /obj/item/paper_bin/bundlenatural
-	name = "natural paper bundle"
-	desc = "A bundle of paper created using traditional methods."
+	name = "pacote de papel natural"
+	desc = "Um pacote de papel criado usando métodos tradicionais."
 	icon_state = "paper_stack"
 	papertype = /obj/item/paper/natural
 	resistance_flags = FLAMMABLE
@@ -256,18 +256,18 @@
 
 /obj/item/paper_bin/bundlenatural/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/paper/carbon))
-		to_chat(user, span_warning("[W] won't fit into [src]."))
+		to_chat(user, span_warning("[W] não cabe em [src]."))
 		return
 	if(W.get_sharpness())
 		if(W.use_tool(src, user, 1 SECONDS))
-			to_chat(user, span_notice("You slice the cable from [src]."))
+			to_chat(user, span_notice("Você corta o cabo de [src]."))
 			deconstruct(TRUE)
 	else
 		..()
 
 /obj/item/paper_bin/carbon
-	name = "carbon paper bin"
-	desc = "Contains all the paper you'll ever need, in duplicate!"
+	name = "cesto de papel carbono"
+	desc = "Contém todo o papel que você vai precisar, em duplicata!"
 	icon_state = "paper_bin_carbon0"
 	papertype = /obj/item/paper/carbon
 	bin_overlay_string = "paper_bin_carbon_overlay"

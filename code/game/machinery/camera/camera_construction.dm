@@ -20,8 +20,8 @@
 			audible_message(span_hear("You hear welding."))
 			if(!tool.use_tool(src, user, 100, volume=50))
 				return ITEM_INTERACT_BLOCKING
-			user.visible_message(span_warning("[user] unwelds [src], leaving it as just a frame bolted to the wall."),
-				span_warning("You unweld [src], leaving it as just a frame bolted to the wall"))
+			user.visible_message(span_warning("[user] solda [src], deixando apenas um quadro parafusado na parede."),
+				span_warning("Você solda [src], deixando apenas um quadro parafusado na parede"))
 			deconstruct(TRUE)
 			return ITEM_INTERACT_SUCCESS
 	return ..()
@@ -35,7 +35,7 @@
 				return ITEM_INTERACT_BLOCKING
 			var/list/tempnetwork = splittext(input, ",")
 			if(!length(tempnetwork))
-				to_chat(user, span_warning("No network found, please hang up and try your call again!"))
+				to_chat(user, span_warning("Nenhuma rede encontrada, por favor desligue e tente novamente!"))
 				return ITEM_INTERACT_BLOCKING
 			for(var/i in tempnetwork)
 				tempnetwork -= i
@@ -46,7 +46,7 @@
 			return ITEM_INTERACT_SUCCESS
 		if(CAMERA_STATE_FINISHED)
 			toggle_panel_open()
-			to_chat(user, span_notice("You screw the camera's panel [panel_open ? "open" : "closed"]."))
+			to_chat(user, span_notice("Você parafusa o painel da câmera [panel_open ? "aberto" : "fechado"]."))
 			tool.play_tool_sound(src)
 			update_appearance()
 			return ITEM_INTERACT_SUCCESS
@@ -57,7 +57,7 @@
 		if(CAMERA_STATE_WIRED)
 			new /obj/item/stack/cable_coil(drop_location(), 2)
 			tool.play_tool_sound(src)
-			to_chat(user, span_notice("You cut the wires from the circuits."))
+			to_chat(user, span_notice("Você corta os fios dos circuitos."))
 			camera_construction_state = CAMERA_STATE_WELDED
 			return ITEM_INTERACT_SUCCESS
 		if(CAMERA_STATE_FINISHED)
@@ -73,7 +73,7 @@
 /obj/machinery/camera/wrench_act(mob/user, obj/item/tool)
 	if(camera_construction_state == CAMERA_STATE_WRENCHED)
 		tool.play_tool_sound(src)
-		to_chat(user, span_notice("You detach [src] from its place."))
+		to_chat(user, span_notice("Você desconecta [src] de seu lugar."))
 		deconstruct(TRUE)
 		return ITEM_INTERACT_SUCCESS
 	return ..()
@@ -96,7 +96,7 @@
 			return ITEM_INTERACT_BLOCKING
 		if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("You remove [choice] from [src]."))
+		to_chat(user, span_notice("Você remove [choice] de [src]."))
 		if(choice == xray_module)
 			drop_upgrade(xray_module)
 			removeXRay()
@@ -115,7 +115,7 @@
 		if(!panel_open)
 			return ITEM_INTERACT_BLOCKING
 		setViewRange((view_range == initial(view_range)) ? short_range : initial(view_range))
-		to_chat(user, span_notice("You [(view_range == initial(view_range)) ? "restore" : "mess up"] the camera's focus."))
+		to_chat(user, span_notice("Você [(view_range == initial(view_range)) ? "restaura" : "danifica"] o foco da câmera."))
 		return ITEM_INTERACT_SUCCESS
 	return ..()
 

@@ -48,28 +48,28 @@
 	if(istype(C, /obj/item/stack/rods) && attachment_holes)
 		if(broken || burnt)
 			if(!iscyborg(user))
-				to_chat(user, span_warning("Repair the plating first! Use a welding tool to fix the damage."))
+				to_chat(user, span_warning("Conserte a cobertura primeiro! Use uma ferramenta de soldagem para corrigir o dano."))
 			else
-				to_chat(user, span_warning("Repair the plating first! Use a welding tool or a plating repair tool to fix the damage.")) //we don't need to confuse humans by giving them a message about plating repair tools, since only janiborgs should have access to them outside of Christmas presents or admin intervention
+				to_chat(user, span_warning("Conserte a cobertura primeiro! Use uma ferramenta de soldagem ou uma ferramenta de reparo de cobertura para corrigir o dano.")) //we don't need to confuse humans by giving them a message about plating repair tools, since only janiborgs should have access to them outside of Christmas presents or admin intervention
 			return
 		var/obj/item/stack/rods/R = C
 		if (R.get_amount() < 2)
-			to_chat(user, span_warning("You need two rods to make a reinforced floor!"))
+			to_chat(user, span_warning("Você precisa de duas barras para fazer um piso reforçado!"))
 			return
 		else
-			to_chat(user, span_notice("You begin reinforcing the floor..."))
+			to_chat(user, span_notice("Você começa a reforçar o piso..."))
 			if(do_after(user, 3 SECONDS, target = src))
 				if (R.get_amount() >= 2 && !istype(src, /turf/open/floor/engine))
 					place_on_top(/turf/open/floor/engine, flags = CHANGETURF_INHERIT_AIR)
 					playsound(src, 'sound/items/deconstruct.ogg', 80, TRUE)
 					R.use(2)
-					to_chat(user, span_notice("You reinforce the floor."))
+					to_chat(user, span_notice("Você reforça o piso."))
 				return
 	else if(istype(C, /obj/item/stack/tile))
 		if(!broken && !burnt)
 			for(var/obj/O in src)
 				for(var/M in O.buckled_mobs)
-					to_chat(user, span_warning("Someone is buckled to \the [O]! Unbuckle [M] to move \him out of the way."))
+				to_chat(user, span_warning("Alguém está preso a [O]! Solte [M] para tirar da frente."))
 					return
 			var/obj/item/stack/tile/tile = C
 			tile.place_tile(src, user)
@@ -80,7 +80,7 @@
 				balloon_alert(user, "too damaged, use a welding or plating repair tool!")
 	else if(istype(C, /obj/item/cautery/prt)) //plating repair tool
 		if((broken || burnt) && C.use_tool(src, user, 0, volume=80))
-			to_chat(user, span_danger("You fix some dents on the broken plating."))
+			to_chat(user, span_danger("Você corrige alguns amassados na cobertura quebrada."))
 			icon_state = base_icon_state
 			burnt = FALSE
 			broken = FALSE
@@ -122,13 +122,13 @@
 			place_on_top(/turf/open/floor/engine/insulation, flags = CHANGETURF_INHERIT_AIR)
 			playsound(src, 'sound/items/deconstruct.ogg', 80, TRUE)
 			sheet.use(1)
-			to_chat(user, span_notice("You insulate the floor."))
-			balloon_alert(user, "insulated!")
+			to_chat(user, span_notice("Você isola o piso."))
+			balloon_alert(user, "isolado!")
 
 /turf/open/floor/plating/welder_act(mob/living/user, obj/item/I)
 	..()
 	if((broken || burnt) && I.use_tool(src, user, 0, volume=80))
-		to_chat(user, span_danger("You fix some dents on the broken plating."))
+		to_chat(user, span_danger("Você corrige alguns amassados na cobertura quebrada."))
 		icon_state = base_icon_state
 		burnt = FALSE
 		broken = FALSE
@@ -166,7 +166,7 @@
 	var/obj/lattice = locate(/obj/structure/lattice) in src
 	if(lattice)
 		qdel(lattice)
-	to_chat(user, span_notice("You reinforce the foamed plating with tiling."))
+		to_chat(user, span_notice("Você reforça a cobertura espumante com ladrilhos."))
 	playsound(src, 'sound/items/weapons/Genhit.ogg', 50, TRUE)
 	ChangeTurf(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 	return ITEM_INTERACT_SUCCESS
@@ -176,11 +176,11 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.do_attack_animation(src)
 	if(prob(attacking_item.force * 20 - 25))
-		user.visible_message(span_danger("[user] smashes through [src]!"), \
-						span_danger("You smash through [src] with [attacking_item]!"))
+		user.visible_message(span_danger("[user] quebra [src]!"), \
+						span_danger("Você quebra [src] com [attacking_item]!"))
 		ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 	else
-		to_chat(user, span_danger("You hit [src], to no effect!"))
+		to_chat(user, span_danger("Você acerta [src], sem efeito!"))
 
 /turf/open/floor/plating/foam/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	if(the_rcd.mode == RCD_TURF && the_rcd.rcd_design_path == /turf/open/floor/plating/rcd)
@@ -241,7 +241,7 @@
 /turf/open/floor/plating/reinforced/attackby(obj/item/tool_used, mob/user, list/modifiers)
 	user.changeNext_move(CLICK_CD_MELEE)
 	if (!ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("Você não tem destreza para fazer isso!"))
 		return
 
 	//get the user's location

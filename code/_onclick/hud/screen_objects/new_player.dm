@@ -240,9 +240,9 @@
 
 		var/queue_position = SSticker.queued_players.Find(new_player)
 		if(queue_position == 1)
-			to_chat(new_player, span_notice("You are next in line to join the game. You will be notified when a slot opens up."))
+			to_chat(new_player, span_notice("Você é o próximo na fila para entrar no jogo. Você será notificado quando um espaço se abrir."))
 		else if(queue_position)
-			to_chat(new_player, span_notice("There are [queue_position-1] players in front of you in the queue to join the game."))
+			to_chat(new_player, span_notice("Há [queue_position-1] jogadores na sua frente na fila para entrar no jogo."))
 		else
 			SSticker.queued_players += new_player
 			to_chat(new_player, span_notice("You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len]."))

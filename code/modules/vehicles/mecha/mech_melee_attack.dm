@@ -151,8 +151,8 @@
 		apply_damage(damage, mecha_attacker.damtype, def_zone, run_armor_check(
 			def_zone = def_zone,
 			attack_flag = MELEE,
-			absorb_text = span_notice("Your armor has protected your [zone_readable]!"),
-			soften_text = span_warning("Your armor has softened a hit to your [zone_readable]!")
+			absorb_text = span_notice("Sua armadura protegeu seu [zone_readable]!"),
+			soften_text = span_warning("Sua armadura amortizou um golpe no seu [zone_readable]!")
 		))
 
 	visible_message(span_danger("[mecha_attacker.name] [mecha_attacker.attack_verbs[1]] [src]!"), \

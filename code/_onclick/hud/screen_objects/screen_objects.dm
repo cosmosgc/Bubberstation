@@ -160,7 +160,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 		return TRUE
 	var/area/A = get_area(usr)
 	if(!A.outdoors)
-		to_chat(usr, span_warning("There is already a defined structure here."))
+		to_chat(usr, span_warning("Já há uma estrutura definida aqui."))
 		return TRUE
 	create_area(usr)
 

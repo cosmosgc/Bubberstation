@@ -4,7 +4,7 @@
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 5
 	cost = STATION_TRAIT_COST_LOW
-	report_message = "Rumors has it that the clown planet has been sending support packages to clowns in this system."
+	report_message = "Rumores dizem que o planeta palhaço tem enviado pacotes de suporte para os palhac̃os neste sistema."
 	trait_to_give = STATION_TRAIT_BANANIUM_SHIPMENTS
 
 /datum/station_trait/bananium_shipment/get_pulsar_message()
@@ -18,7 +18,7 @@
 	weight = 5
 	cost = STATION_TRAIT_COST_LOW
 	show_in_report = TRUE
-	report_message = "System's local planet has irregular atmospherical properties."
+	report_message = "O planeta local do sistema tem propriedades atmosféricas irregulares."
 	trait_to_give = STATION_TRAIT_UNNATURAL_ATMOSPHERE
 
 	// This station trait modifies the atmosphere, which is too far past the time admins are able to revert it
@@ -28,7 +28,7 @@
 	name = "Spider Infestation"
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 5
-	report_message = "We have introduced a natural countermeasure to reduce the number of rodents on board your station."
+	report_message = "Introduzimos uma contramedida natural para reduzir o número de roedores a bordo de sua estação."
 	trait_to_give = STATION_TRAIT_SPIDER_INFESTATION
 
 /datum/station_trait/unique_ai
@@ -52,7 +52,7 @@
 	weight = 5
 	show_in_report = FALSE
 	cost = STATION_TRAIT_COST_LOW
-	report_message = "Ian has gone exploring somewhere in the station."
+	report_message = "Ian saiu explorando em algum lugar da estação."
 
 /datum/station_trait/ian_adventure/on_round_start()
 	for(var/mob/living/basic/pet/dog/corgi/dog in GLOB.mob_list)
@@ -112,7 +112,7 @@
 	weight = 5
 	show_in_report = TRUE
 	cost = STATION_TRAIT_COST_MINIMAL
-	report_message = "Something seems to be wrong with the PDAs issued to you all this shift. Nothing too bad though."
+	report_message = "Algo parece estar errado com os PDAs emitidos para vocês nesta turno. Nada de grave por enquanto."
 	trait_to_give = STATION_TRAIT_PDA_GLITCHED
 
 /datum/station_trait/announcement_intern
@@ -120,7 +120,7 @@
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 1
 	show_in_report = TRUE
-	report_message = "Please be nice to him."
+	report_message = "Por favor, seja gentil com ele."
 	blacklist = list(/datum/station_trait/announcement_medbot, /datum/station_trait/birthday)
 
 /datum/station_trait/announcement_intern/New()
@@ -137,7 +137,7 @@
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 1
 	show_in_report = TRUE
-	report_message = "Our announcement system is under scheduled maintanance at the moment. Thankfully, we have a backup."
+	report_message = "Nosso sistema de anúncio está sob manutenção programada no momento. Felizmente, temos um backup."
 	blacklist = list(/datum/station_trait/announcement_intern, /datum/station_trait/birthday)
 
 /datum/station_trait/announcement_medbot/New()
@@ -150,7 +150,7 @@
 	weight = 10
 	show_in_report = TRUE
 	cost = STATION_TRAIT_COST_MINIMAL
-	report_message = "Due to a shortage in standard issue jumpsuits, we have provided your assistants with one of our backup supplies."
+	report_message = "Devido à escassez de uniformes padrão, fornecemos aos seus assistentes um de nossos suprimentos de backup."
 	blacklist = list(/datum/station_trait/assistant_gimmicks)
 
 /datum/station_trait/colored_assistants/New()
@@ -164,7 +164,7 @@
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 2
 	show_in_report = TRUE
-	report_message = "We here at Nanotrasen would all like to wish Employee Name a very happy birthday"
+	report_message = "Aqui na Nanotrasen gostaríamos de desejar um muito feliz aniversario para Fulano de Tal"
 	trait_to_give = STATION_TRAIT_BIRTHDAY
 	blacklist = list(/datum/station_trait/announcement_intern, /datum/station_trait/announcement_medbot) //Overiding the annoucer hides the birthday person in the annoucement message.
 	///Variable that stores a reference to the person selected to have their birthday celebrated.

@@ -190,7 +190,7 @@
 	if(.)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-		to_chat(user, span_notice("Você empurra a parede, mas nada acontece!"))
+	to_chat(user, span_notice("Você empurra a parede, mas nada acontece!"))
 	playsound(src, 'sound/items/weapons/genhit.ogg', 25, TRUE)
 	add_fingerprint(user)
 

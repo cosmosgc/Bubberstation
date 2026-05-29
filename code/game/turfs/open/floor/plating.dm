@@ -69,7 +69,7 @@
 		if(!broken && !burnt)
 			for(var/obj/O in src)
 				for(var/M in O.buckled_mobs)
-				to_chat(user, span_warning("Alguém está preso a [O]! Solte [M] para tirar da frente."))
+					to_chat(user, span_warning("Alguém está preso a [O]! Solte [M] para tirar da frente."))
 					return
 			var/obj/item/stack/tile/tile = C
 			tile.place_tile(src, user)

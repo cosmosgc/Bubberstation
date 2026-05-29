@@ -580,7 +580,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		playsound(parent, rustle_sound, 50, rustle_vary, -5)
 
 	if(!silent_for_user)
-			to_chat(user, span_notice("Você coloca [thing] [insert_preposition]em [parent]."))
+		to_chat(user, span_notice("Você coloca [thing] [insert_preposition]em [parent]."))
 	for(var/mob/viewing in oviewers(user))
 		if(in_range(user, viewing) || (thing?.w_class >= WEIGHT_CLASS_NORMAL))
 			viewing.show_message(span_notice("[user] coloca [thing] [insert_preposition]em [parent]."), MSG_VISUAL)

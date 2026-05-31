@@ -67,7 +67,7 @@
 	msg += "</tr></table>"
 
 	msg += "<b>Total Players: [length(Lines)]</b>"
-	to_chat(src, fieldset_block(span_bold("Current Players"), span_infoplain(msg), "boxed_message"), type = MESSAGE_TYPE_INFO)
+	to_chat(src, fieldset_block(span_bold("Jogadores atuais"), span_infoplain(msg), "boxed_message"), type = MESSAGE_TYPE_INFO)
 
 /client/verb/adminwho()
 	set category = "Admin"

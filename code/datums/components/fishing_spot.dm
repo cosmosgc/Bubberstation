@@ -41,7 +41,7 @@
 	if(!HAS_MIND_TRAIT(user, TRAIT_EXAMINE_FISHING_SPOT) || !fish_source.has_known_fishes(source))
 		return
 
-	examine_text += span_tinynoticeital("This is a fishing spot. You can look again to list its fishes...")
+	examine_text += span_tinynoticeital("Este é um ponto de pesca. Você pode olhar novamente para listar seus peixes...")
 
 /datum/component/fishing_spot/proc/on_examined_more(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
@@ -56,7 +56,7 @@
 	if(!istype(rod))
 		return
 	if(GLOB.fishing_challenges_by_user[user] || rod.fishing_line)
-		user.balloon_alert(user, "already fishing")
+		user.balloon_alert(user, "Já está pescando.")
 		return COMPONENT_NO_AFTERATTACK
 	var/denial_reason = fish_source.reason_we_cant_fish(rod, user, parent)
 	if(denial_reason)

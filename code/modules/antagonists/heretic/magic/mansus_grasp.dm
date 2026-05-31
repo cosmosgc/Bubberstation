@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/touch/mansus_grasp
 	name = "Mansus Grasp"
-	desc = "A touch spell that lets you channel the power of the Old Gods through your grip."
+	desc = "Um feitiço de toque que permite canalizar o poder dos deuses antigos através de seu aperto."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -25,8 +25,8 @@
 
 /datum/action/cooldown/spell/touch/mansus_grasp/on_antimagic_triggered(obj/item/melee/touch_attack/hand, atom/victim, mob/living/carbon/caster)
 	victim.visible_message(
-		span_danger("The spell bounces off of [victim]!"),
-		span_danger("The spell bounces off of you!"),
+		span_danger("O feitiço salta de[victim]!"),
+		span_danger("O feitiço sai de você!"),
 	)
 
 /datum/action/cooldown/spell/touch/mansus_grasp/cast_on_hand_hit(obj/item/melee/touch_attack/hand, atom/victim, mob/living/carbon/caster)
@@ -58,8 +58,8 @@
 		carbon_hit.mob_light(range = 1.5, power = 2.5, color = COLOR_CULT_RED, duration = 0.5 SECONDS)
 		playsound(carbon_hit, 'sound/effects/magic/curse.ogg', 50, TRUE)
 
-		to_chat(caster, span_warning("An unholy force intervenes as you grasp [carbon_hit], absorbing most of the effects!"))
-		to_chat(carbon_hit, span_warning("As [caster] grasps you with eldritch forces, your blood magic absorbs most of the effects!"))
+		to_chat(caster, span_warning("Uma força profana intervém como você entende[carbon_hit]Absorvendo a maioria dos atos!"))
+		to_chat(carbon_hit, span_warning("Como[caster]Pega você com forças de eldritch, sua magia de sangue absorve a maioria dos efeitos!"))
 		carbon_hit.balloon_alert_to_viewers("absorbed!")
 		return TRUE
 
@@ -80,20 +80,13 @@
 
 /obj/item/melee/touch_attack/mansus_fist
 	name = "Mansus Grasp"
-	desc = "A sinister looking aura that distorts the flow of reality around it. \
-		Causes knockdown, minor bruises, and major stamina damage. \
-		It gains additional beneficial effects as you expand your knowledge of the Mansus."
+	desc = "Uma aura sinistra que distorce o fluxo da realidade ao seu redor. Causa nocaute, pequenos hematomas e grande dano à resistência. Ele ganha efeitos benéficos adicionais enquanto você expande seu conhecimento do Mansus."
 	icon_state = "mansus"
 	inhand_icon_state = "mansus"
 
 /obj/item/melee/touch_attack/mansus_fist/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/effect_remover, \
-		success_feedback = "You remove %THEEFFECT.", \
-		tip_text = "Clear rune", \
-		on_clear_callback = CALLBACK(src, PROC_REF(after_clear_rune)), \
-		effects_we_clear = list(/obj/effect/heretic_rune), \
-		time_to_remove = 0.4 SECONDS)
+	AddComponent(/datum/component/effect_remover, 		success_feedback = "You remove %THEEFFECT.", 		tip_text = "Clear rune", 		on_clear_callback = CALLBACK(src, PROC_REF(after_clear_rune)), 		effects_we_clear = list(/obj/effect/heretic_rune), 		time_to_remove = 0.4 SECONDS)
 
 /*
  * Callback for effect_remover component.
@@ -106,11 +99,11 @@
 	remove_hand_with_no_refund(user)
 
 /obj/item/melee/touch_attack/mansus_fist/ignition_effect(atom/to_light, mob/user)
-	. = span_rose("[user] effortlessly snaps [user.p_their()] fingers near [to_light], igniting it with eldritch energies. Fucking badass!")
+	. = span_rose("[user]Esforçosamente estala[user.p_their()]Dedos preto[to_light], acendendo-o com energias eldritch. Maldito fodão!")
 	remove_hand_with_no_refund(user)
 
 /obj/item/melee/touch_attack/mansus_fist/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] covers [user.p_their()] face with [user.p_their()] sickly-looking hand! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Capas[user.p_their()]Cara com[user.p_their()]Uma mão doentia! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	var/mob/living/carbon/carbon_user = user //iscarbon already used in spell's parent
 	var/datum/action/cooldown/spell/touch/mansus_grasp/source = spell_which_made_us?.resolve()
 	if(QDELETED(source) || !IS_HERETIC(user))

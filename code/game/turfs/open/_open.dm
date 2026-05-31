@@ -283,7 +283,7 @@
 
 /turf/open/indestructible
 	name = "floor"
-	desc = "The floor you walk on. It looks near-impervious to damage."
+	desc = "O chão em que você anda. Parece quase impermeável a danos."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "floor"
 	footstep = FOOTSTEP_FLOOR
@@ -357,7 +357,7 @@
 
 /turf/open/indestructible/necropolis
 	name = "necropolis floor"
-	desc = "It's regarding you suspiciously."
+	desc = "É sobre você desconfiadamente."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "necro1"
 	baseturfs = /turf/open/indestructible/necropolis
@@ -389,7 +389,7 @@
 
 /turf/open/indestructible/hierophant
 	name = "palestone floor"
-	desc = "A tiled floor made out of an odd pale stone."
+	desc = "Um chão em azulejo feito de uma pedra pálida."
 	icon = 'icons/turf/floors/hierophant_floor.dmi'
 	icon_state = "hierophant_floor-255"
 	base_icon_state = "hierophant_floor"
@@ -412,7 +412,7 @@
 
 /turf/open/indestructible/hierophant/two
 	name = "runic palestone floor"
-	desc = "A tiled floor made out of an odd pale stone, inscribed with odd runes."
+	desc = "Um chão em azulejo feito de uma pedra pálida, inscrita com runas estranhas."
 	icon = 'icons/turf/floors/hierophant_floor_alt.dmi'
 	icon_state = "hierophant_floor_alt-255"
 	base_icon_state = "hierophant_floor_alt"
@@ -423,7 +423,7 @@
 
 /turf/open/indestructible/paper
 	name = "notebook floor"
-	desc = "A floor made of invulnerable notebook paper."
+	desc = "Um chão feito de papel de notebook invulnerável."
 	icon_state = "paperfloor"
 	footstep = null
 	barefootstep = null
@@ -465,7 +465,7 @@
 /turf/open/indestructible/plating
 	name = "plating"
 	icon_state = "plating"
-	desc = "The attachment points are all bent to uselessness, looks nigh-impervious to damage."
+	desc = "Os pontos de fixação estão todos dobrados para a inutilidade, parece quase impermeável ao dano."
 	overfloor_placed = FALSE
 	underfloor_accessibility = UNDERFLOOR_INTERACTABLE
 	footstep = FOOTSTEP_PLATING
@@ -644,10 +644,10 @@
 /turf/open/proc/build_with_floor_tiles(obj/item/stack/tile/iron/used_tiles, user)
 	var/obj/structure/lattice/lattice = locate(/obj/structure/lattice, src)
 	if(!has_valid_support() && !lattice)
-		balloon_alert(user, "needs support, place rods!")
+		balloon_alert(user, "Precisa de apoio, coloque as varias!")
 		return
 	if(!used_tiles.use(1))
-		balloon_alert(user, "need a floor tile to build!")
+		balloon_alert(user, "Precisa de um piso para construção!")
 		return
 
 	playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
@@ -670,10 +670,10 @@
 /turf/open/proc/build_with_transport_tiles(obj/item/stack/thermoplastic/used_tiles, user)
 	var/obj/structure/transport/linear/platform = locate(/obj/structure/transport/linear, src)
 	if(!platform)
-		balloon_alert(user, "no tram base!")
+		balloon_alert(user, "Sem base de bonde!")
 		return
 	if(!used_tiles.use(1))
-		balloon_alert(user, "no tile!")
+		balloon_alert(user, "Sem azulejo!")
 		return
 
 	playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
@@ -692,10 +692,10 @@
 /turf/open/proc/build_with_titanium(obj/item/stack/sheet/mineral/titanium/used_stack, user)
 	var/obj/structure/transport/linear/platform = locate(/obj/structure/transport/linear, src)
 	if(!platform)
-		to_chat(user, span_warning("There is no transport frame to attach the anchor!"))
+		to_chat(user, span_warning("Não há armação de transporte para prender a âncora!"))
 		return
 	if(!used_stack.use(2))
-		balloon_alert(user, "not enough titanium!")
+		balloon_alert(user, "Não há titânio suficiente!")
 		return
 
 	playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)

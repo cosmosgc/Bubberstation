@@ -10,10 +10,7 @@
 
 /datum/buildmode_mode/area_edit/show_help(client/builder)
 	to_chat(builder, span_purple(boxed_message(
-		"[span_bold("Select corner")] -> Left Mouse Button on obj/turf/mob\n\
-		[span_bold("Paint area")] -> Left Mouse Button + Alt on turf/obj/mob\n\
-		[span_bold("Select area to paint")] -> Right Mouse Button on obj/turf/mob\n\
-		[span_bold("Create new area")] -> Right Mouse Button on buildmode button"))
+		"[span_bold("Select corner")] -> Left Mouse Button on obj/turf/mob\n		[span_bold("Paint area")] -> Left Mouse Button + Alt on turf/obj/mob\n		[span_bold("Select area to paint")] -> Right Mouse Button on obj/turf/mob\n		[span_bold("Create new area")] -> Right Mouse Button on buildmode button"))
 	)
 
 /datum/buildmode_mode/area_edit/enter_mode(datum/buildmode/BM)
@@ -30,10 +27,10 @@
 	return ..()
 
 /datum/buildmode_mode/area_edit/change_settings(client/c)
-	var/target_path = input(c, "Enter typepath:", "Typepath", "/area")
+	var/target_path = input(c, "Digite o tipo de caminho:", "Typepath", "/area")
 	var/areatype = text2path(target_path)
 	if(ispath(areatype,/area))
-		var/areaname = input(c, "Enter area name:", "Area name", "Area")
+		var/areaname = input(c, "Digite o nome da área:", "Nome da área", "Area")
 		if(!areaname || !length(areaname))
 			return
 		storedarea = new areatype
@@ -49,7 +46,7 @@
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		if(!storedarea)
-			to_chat(c, span_warning("Configure or select the area you want to paint first!"))
+			to_chat(c, span_warning("Configure ou selecione a área que você quer pintar primeiro!"))
 			return
 		if(LAZYACCESS(modifiers, ALT_CLICK))
 			var/turf/T = get_turf(object)
@@ -67,7 +64,7 @@
 	var/list/modifiers = params2list(params)
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
-		var/choice = alert("Are you sure you want to fill area?", "Area Fill Confirmation", "Yes", "No")
+		var/choice = alert("Tem certeza que quer preencher a área?", "Área de preenchimento Confirmação", "Yes", "No")
 		if(choice != "Yes")
 			return
 		for(var/turf/T in block(get_turf(cornerA),get_turf(cornerB)))

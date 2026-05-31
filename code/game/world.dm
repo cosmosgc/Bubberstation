@@ -319,7 +319,7 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 		if(PRcounts[id] > CONFIG_GET(number/pr_announcements_per_round))
 			return
 
-	var/final_composed = span_announce("PR: [announcement]")
+	var/final_composed = span_announce("PR:[announcement]")
 	for(var/client/C in GLOB.clients)
 		C.AnnouncePR(final_composed)
 
@@ -369,9 +369,9 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 		if (usr)
 			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
 			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
-		to_chat(world, span_boldannounce("Rebooting World immediately due to host request."))
+		to_chat(world, span_boldannounce("Reiniciando o Mundo imediatamente devido ao pedido do anfitrião."))
 	else
-		to_chat(world, span_boldannounce("Rebooting world..."))
+		to_chat(world, span_boldannounce("Reiniciando o mundo..."))
 		Master.Shutdown() //run SS shutdowns
 
 	#ifdef UNIT_TESTS

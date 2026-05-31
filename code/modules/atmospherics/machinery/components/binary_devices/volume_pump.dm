@@ -13,7 +13,7 @@
 /obj/machinery/atmospherics/components/binary/volume_pump
 	icon_state = "volpump_map-3"
 	name = "volumetric gas pump"
-	desc = "A pump that moves gas by volume."
+	desc = "Uma bomba que movimenta gás em volume."
 	can_unwrench = TRUE
 	shift_underlay_only = FALSE
 	construction_type = /obj/item/pipe/directional
@@ -28,17 +28,15 @@
 
 /obj/machinery/atmospherics/components/binary/volume_pump/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/usb_port, \
-		typecacheof(list(
+	AddComponent(/datum/component/usb_port, 		typecacheof(list(
 			/obj/item/circuit_component/atmos_volume_pump,
-		), only_root_path = TRUE) \
-	)
+		), only_root_path = TRUE) 	)
 	register_context()
 
 /obj/machinery/atmospherics/components/binary/volume_pump/click_ctrl(mob/user)
 	if(can_interact(user))
 		set_on(!on)
-		balloon_alert(user, "turned [on ? "on" : "off"]")
+		balloon_alert(user, "Virado.[on ? "on" : "off"]")
 		investigate_log("was turned [on ? "on" : "off"] by [key_name(user)]", INVESTIGATE_ATMOS)
 		return CLICK_ACTION_SUCCESS
 	return CLICK_ACTION_BLOCKING
@@ -49,7 +47,7 @@
 
 	transfer_rate = MAX_TRANSFER_RATE
 	investigate_log("was set to [transfer_rate] L/s by [key_name(user)]", INVESTIGATE_ATMOS)
-	balloon_alert(user, "volume output set to [transfer_rate] L/s")
+	balloon_alert(user, "volume de saída definido para[transfer_rate]L/s")
 	update_appearance(UPDATE_ICON)
 	return CLICK_ACTION_SUCCESS
 
@@ -106,7 +104,7 @@
 
 /obj/machinery/atmospherics/components/binary/volume_pump/examine(mob/user)
 	. = ..()
-	. += span_notice("Its pressure limits could be [overclocked ? "en" : "dis"]abled with a <b>multitool</b>.")
+	. += span_notice("Seus limites de pressão podem ser[overclocked ? "en" : "dis"]Capaz com um<b>Multitool</b>.")
 	if(overclocked)
 		. += "Its warning light is on[on ? " and it's spewing gas!" : "."]"
 
@@ -156,16 +154,16 @@
 /obj/machinery/atmospherics/components/binary/volume_pump/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		to_chat(user, span_warning("Você não pode destrancar[src]Desligue isso primeiro!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/binary/volume_pump/multitool_act(mob/living/user, obj/item/I)
 	if(!overclocked)
 		overclocked = TRUE
-		to_chat(user, "The pump makes a grinding noise and air starts to hiss out as you disable its pressure limits.")
+		to_chat(user, "A bomba faz um barulho de moagem e o ar começa a assobiar enquanto você desativa seus limites de pressão.")
 	else
 		overclocked = FALSE
-		to_chat(user, "The pump quiets down as you turn its limiters back on.")
+		to_chat(user, "A bomba se acalma enquanto você liga os limitadores.")
 	update_appearance(UPDATE_ICON)
 	return TRUE
 
@@ -192,8 +190,8 @@
 	icon_state = "volpump_on_map-4"
 
 /obj/item/circuit_component/atmos_volume_pump
-	display_name = "Atmospheric Volume Pump"
-	desc = "The interface for communicating with a volume pump."
+	display_name = "Bomba de volume atmosférico"
+	desc = "A interface para se comunicar com uma bomba de volume."
 
 	///Set the transfer rate of the pump
 	var/datum/port/input/transfer_rate

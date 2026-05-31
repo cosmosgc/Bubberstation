@@ -34,7 +34,7 @@
 	if (isturf(user.loc) || istype(user.loc, /obj/structure) || active_dummy)
 		toggle(user)
 	else
-		to_chat(user, span_warning("You can't use [src] while inside something!"))
+		to_chat(user, span_warning("Você não pode usar[src]dentro de Alguma Eisa!"))
 
 /obj/item/chameleon/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!can_copy(interacting_with) || SHOULD_SKIP_INTERACTION(interacting_with, src, user))
@@ -69,7 +69,7 @@
 
 /obj/item/chameleon/proc/make_copy(atom/target, mob/user)
 	playsound(get_turf(src), 'sound/items/weapons/flash.ogg', 100, TRUE, -6)
-	to_chat(user, span_notice("Scanned [target]."))
+	to_chat(user, span_notice("Escaneado.[target]."))
 	var/obj/temp = new /obj()
 	temp.appearance = target.appearance
 	temp.layer = initial(target.layer) // scanning things in your inventory
@@ -87,20 +87,20 @@
 		playsound(get_turf(src), 'sound/effects/pop.ogg', 100, TRUE, -6)
 		qdel(active_dummy)
 		active_dummy = null
-		to_chat(user, span_notice("You deactivate \the [src]."))
+		to_chat(user, span_notice("Você desativa.\the [src]."))
 		new /obj/effect/temp_visual/emp/pulse(get_turf(src))
 	else
 		playsound(get_turf(src), 'sound/effects/pop.ogg', 100, TRUE, -6)
 		var/obj/effect/dummy/chameleon/C = new/obj/effect/dummy/chameleon(user.drop_location())
 		C.activate(user, saved_appearance, src)
-		to_chat(user, span_notice("You activate \the [src]."))
+		to_chat(user, span_notice("Você ativa.\the [src]."))
 		new /obj/effect/temp_visual/emp/pulse(get_turf(src))
 	user.cancel_camera()
 
 /obj/item/chameleon/proc/disrupt(delete_dummy = 1)
 	if(active_dummy)
 		for(var/mob/M in active_dummy)
-			to_chat(M, span_danger("Your chameleon projector deactivates."))
+			to_chat(M, span_danger("Seu projetor camaleão desativa."))
 		do_sparks(5, FALSE, src, src)
 		eject_all()
 		if(delete_dummy)

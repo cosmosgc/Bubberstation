@@ -24,25 +24,25 @@ export const Apc = (props) => {
 const powerStatusMap = {
   2: {
     color: 'good',
-    externalPowerText: 'External Power',
-    chargingText: 'Fully Charged',
+    externalPowerText: 'Poder Externo',
+    chargingText: 'Totalmente carregado.',
   },
   1: {
     color: 'average',
-    externalPowerText: 'Low External Power',
+    externalPowerText: 'Baixo Poder Exterior',
     chargingText: 'Charging: ',
   },
   0: {
     color: 'bad',
-    externalPowerText: 'No External Power',
-    chargingText: 'Not Charging',
+    externalPowerText: 'Sem Poder Exterior',
+    chargingText: 'Não está carregando.',
   },
 };
 
 const malfMap = {
   1: {
     icon: 'terminal',
-    content: 'Override Programming',
+    content: 'Sobrepor Programação',
     action: 'hack',
   },
   2: {
@@ -52,7 +52,7 @@ const malfMap = {
   },
   3: {
     icon: 'caret-square-left',
-    content: 'Return to Main Core',
+    content: 'Voltem ao núcleo principal.',
     action: 'deoccupy',
   },
   4: {
@@ -86,8 +86,8 @@ const ApcContent = (props) => {
         <br />
         <Button
           icon="sync"
-          content="Reboot Now"
-          tooltip="Force an interface reset."
+          content="Reiniciar agora"
+          tooltip="Forçar uma reinicialização da interface."
           tooltipPosition="bottom"
           onClick={() => act('reboot')}
         />
@@ -100,10 +100,10 @@ const ApcContent = (props) => {
         siliconUser={data.remoteAccess || data.siliconUser}
         preventLocking={data.remoteAccess}
       />
-      <Section title="Power Status">
+      <Section title="Estado de Poder">
         <LabeledList>
           <LabeledList.Item
-            label="Main Breaker"
+            label="Interruptor Diretor"
             color={externalPowerStatus.color}
             buttons={
               <Button
@@ -117,11 +117,11 @@ const ApcContent = (props) => {
           >
             [ {externalPowerStatus.externalPowerText} ]
           </LabeledList.Item>
-          <LabeledList.Item label="Power Cell">
+          <LabeledList.Item label="Célula de Energia">
             <ProgressBar color="good" value={adjustedCellChange} />
           </LabeledList.Item>
           <LabeledList.Item
-            label="Charge Mode"
+            label="Modo de carga"
             color={chargingStatus.color}
             buttons={
               <Button
@@ -139,7 +139,7 @@ const ApcContent = (props) => {
           </LabeledList.Item>
         </LabeledList>
       </Section>
-      <Section title="Power Channels">
+      <Section title="Canais de Energia">
         <LabeledList>
           {channelArray.map((channel) => {
             const { topicParams } = channel;
@@ -187,7 +187,7 @@ const ApcContent = (props) => {
               </LabeledList.Item>
             );
           })}
-          <LabeledList.Item label="Total Load">
+          <LabeledList.Item label="Carga Total">
             <b>{data.totalLoad}</b>
           </LabeledList.Item>
         </LabeledList>
@@ -216,10 +216,10 @@ const ApcContent = (props) => {
       >
         <LabeledList>
           <LabeledList.Item
-            label="Cover Lock"
+            label="Bloqueio de cobertura"
             buttons={
               <Button
-                tooltip="APC cover can be pried open with a crowbar."
+                tooltip="A capa da APC pode ser aberta com um pé de cabra."
                 icon={data.coverLocked ? 'lock' : 'unlock'}
                 content={data.coverLocked ? 'Engaged' : 'Disengaged'}
                 disabled={locked}
@@ -228,10 +228,10 @@ const ApcContent = (props) => {
             }
           />
           <LabeledList.Item
-            label="Emergency Lighting"
+            label="Iluminação de emergência."
             buttons={
               <Button
-                tooltip="Lights use internal power cell when there is no power available."
+                tooltip="Luzes usam célula de energia interna quando não há energia disponível."
                 icon="lightbulb-o"
                 content={data.emergencyLights ? 'Enabled' : 'Disabled'}
                 disabled={locked}
@@ -240,10 +240,10 @@ const ApcContent = (props) => {
             }
           />
           <LabeledList.Item
-            label="Night Shift Lighting"
+            label="Iluminação de turno noturno"
             buttons={
               <Button
-                tooltip="Dim lights to reduce power consumption."
+                tooltip="Luzes fracas para reduzir o consumo de energia."
                 icon="lightbulb-o"
                 content={data.nightshiftLights ? 'Enabled' : 'Disabled'}
                 disabled={data.disable_nightshift_toggle}

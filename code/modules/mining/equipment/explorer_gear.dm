@@ -1,7 +1,7 @@
 /****************Explorer's Suit and Mask****************/
 /obj/item/clothing/suit/hooded/explorer
 	name = "explorer suit"
-	desc = "An armoured suit for exploring harsh environments."
+	desc = "Um traje cego para explorar ambientes severos."
 	icon_state = "explorer"
 	icon = 'icons/obj/clothing/suits/utility.dmi'
 	worn_icon = 'icons/mob/clothing/suits/utility.dmi'
@@ -31,7 +31,7 @@
 
 /obj/item/clothing/head/hooded/explorer
 	name = "explorer hood"
-	desc = "An armoured hood for exploring harsh environments."
+	desc = "Um capuz cegado para explorar ambientes severos."
 	icon = 'icons/obj/clothing/head/utility.dmi'
 	worn_icon = 'icons/mob/clothing/head/utility.dmi'
 	icon_state = "explorer"
@@ -55,7 +55,7 @@
 
 /obj/item/clothing/mask/gas/explorer
 	name = "explorer gas mask"
-	desc = "A military-grade gas mask that can be connected to an air supply."
+	desc = "Uma máscara de gás militar que pode ser conectada a um suprimento de ar."
 	icon_state = "gas_mining"
 	inhand_icon_state = "explorer_gasmask"
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
@@ -95,7 +95,7 @@
 	. = ..()
 	if(up || w_class == WEIGHT_CLASS_SMALL)
 		return
-	. += span_notice("You could fit this into a box if you adjusted it.")
+	. += span_notice("Você poderia colocar isso em uma caixa se ajustasse.")
 
 /obj/item/clothing/mask/gas/explorer/folded
 	w_class = WEIGHT_CLASS_SMALL
@@ -110,7 +110,7 @@
 
 /obj/item/clothing/suit/hooded/cloak/goliath
 	name = "goliath cloak"
-	desc = "A staunch, practical cape made out of numerous monster materials, it is coveted amongst exiles & hermits."
+	desc = "Uma capa firme e prática feita de inúmeros materiais monstros, é cobiçada entre exilados e eremitas."
 	icon_state = "goliath_cloak"
 	alternate_worn_layer = NECK_LAYER
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
@@ -142,23 +142,23 @@
 		return NONE
 	var/mob/living/carbon/char = user
 	if((char.get_item_by_slot(ITEM_SLOT_NECK) == src) || (char.get_item_by_slot(ITEM_SLOT_OCLOTHING) == src))
-		to_chat(user, span_warning("You can't adjust [src] while wearing it!"))
+		to_chat(user, span_warning("Você não pode se ajustar.[src]Encontre o Usava!"))
 		return CLICK_ACTION_BLOCKING
 	if(!user.is_holding(src))
-		to_chat(user, span_warning("You must be holding [src] in order to adjust it!"))
+		to_chat(user, span_warning("Você deve estar segurando.[src]Para ajustar!"))
 		return CLICK_ACTION_BLOCKING
 	if(slot_flags & ITEM_SLOT_OCLOTHING)
 		slot_flags = ITEM_SLOT_NECK
 		cold_protection = null
 		heat_protection = null
 		set_armor(/datum/armor/none)
-		user.visible_message(span_notice("[user] adjusts their [src] for ceremonial use."), span_notice("You adjust your [src] for ceremonial use."))
+		user.visible_message(span_notice("[user]Ajusta o seu[src]Para usar cerimonial."), span_notice("Você ajusta o seu[src]Para usar cerimonial."))
 	else
 		slot_flags = initial(slot_flags)
 		cold_protection = initial(cold_protection)
 		heat_protection = initial(heat_protection)
 		set_armor(initial(armor_type))
-		user.visible_message(span_notice("[user] adjusts their [src] for defensive use."), span_notice("You adjust your [src] for defensive use."))
+		user.visible_message(span_notice("[user]Ajusta o seu[src]Para usar defensivo."), span_notice("Você ajusta o seu[src]Para usar defensivo."))
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/head/hooded/cloakhood/goliath
@@ -166,7 +166,7 @@
 	icon = 'icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	icon_state = "golhood"
-	desc = "A protective & concealing hood."
+	desc = "Um protetor capuz e oculto."
 	armor_type = /datum/armor/hooded_goliath
 	body_parts_covered = HEAD
 	cold_protection = HEAD
@@ -183,7 +183,7 @@
 
 /obj/item/clothing/suit/armor/bone
 	name = "bone armor"
-	desc = "A tribal armor plate, crafted from animal bone."
+	desc = "Uma arma tribal, feita de osso de animal."
 	icon_state = "bonearmor"
 	inhand_icon_state = null
 	blood_overlay_type = "armor"
@@ -203,7 +203,7 @@
 
 /obj/item/clothing/head/helmet/skull
 	name = "skull helmet"
-	desc = "An intimidating tribal helmet, it doesn't look very comfortable."
+	desc = "Um capacete tribal intimidante, não parece muito confortável."
 	icon_state = "skull"
 	inhand_icon_state = null
 	strip_delay = 10 SECONDS
@@ -223,7 +223,7 @@
 
 /obj/item/clothing/suit/hooded/explorer/syndicate
 	name = "syndicate explorer suit"
-	desc = "An armoured suit for exploring harsh environments, dyed in the sinister red and black of the Syndicate. This one seems better armored than the ones Nanotrasen gives out."
+	desc = "Um traje blindado para explorar ambientes severos, tingido no sinistro vermelho e preto do Sindicato. Este parece melhor blindado do que os que Nanotrasen dá."
 	icon_state = "explorer_syndicate"
 	icon = 'icons/obj/clothing/suits/utility.dmi'
 	worn_icon = 'icons/mob/clothing/suits/utility.dmi'
@@ -242,6 +242,6 @@
 
 /obj/item/clothing/head/hooded/explorer/syndicate
 	name = "syndicate explorer hood"
-	desc = "An armoured hood for exploring harsh environments."
+	desc = "Um capuz cegado para explorar ambientes severos."
 	icon_state = "explorer_syndicate"
 	armor_type = /datum/armor/hooded_explorer_syndicate

@@ -25,7 +25,7 @@
 /datum/antagonist/bloodsucker/proc/life_active()
 	if(HandleHealing())
 		if((COOLDOWN_FINISHED(src, bloodsucker_spam_healing)) && bloodsucker_blood_volume > 0)
-			to_chat(owner.current, span_notice("The power of your blood begins knitting your wounds..."))
+			to_chat(owner.current, span_notice("O poder de seu sangue começa a tricotar suas feridas..."))
 			COOLDOWN_START(src, bloodsucker_spam_healing, BLOODSUCKER_SPAM_HEALING)
 
 /datum/antagonist/bloodsucker/proc/on_death(mob/living/source, gibbed)
@@ -66,14 +66,14 @@
 	if(value + humanity_lost >= HUMANITY_LOST_MAXIMUM)
 		if(has_masq)
 			RemovePowerByPath(MASQUERADE)
-			to_chat(owner.current, span_warning("You hit the maximum amount of lost Humanty, you are far from Human. You've forgotten how to pretend to be like your prey..."))
+			to_chat(owner.current, span_warning("Se atingir o máximo de humanidade perdida, está longe de ser humano. Esqueceu como fingir ser como sua presa..."))
 		else
-			to_chat(owner.current, span_hypnophrase("The Beast, it yearns for Blood..."))
+			to_chat(owner.current, span_hypnophrase("A Besta anseia por sangue..."))
 	else if(!has_masq)
 		BuyPower(MASQUERADE)
-		to_chat(owner.current, span_hypnophrase("You've remembered, yet again, how it feels to live again."))
+		to_chat(owner.current, span_hypnophrase("Você lembrou, mais uma vez, como é viver novamente."))
 	humanity_lost = clamp(value, 0, HUMANITY_LOST_MAXIMUM)
-	to_chat(owner.current, span_warning("You feel as if you [value < 0 ? "gained" : "lost" ] some of your humanity, you will now enter Frenzy at [FRENZY_THRESHOLD_ENTER + (humanity_lost * 10)] Blood."))
+	to_chat(owner.current, span_warning("Você sente como se você[value < 0 ? "gained" : "lost" ]um pouco de sua humanidade, você vai agora entrar Frenzy em[FRENZY_THRESHOLD_ENTER + (humanity_lost * 10)]Sangue."))
 
 #undef MASQUERADE
 
@@ -122,7 +122,7 @@
 		costMult += round(blood_over_cap / 1000, 0.1) // effectively 1 (normal) + 0.1 for every 100 blood you are over cap
 	if(amInCoffin && is_in_torpor())
 		if(HAS_TRAIT(owner.current, TRAIT_MASQUERADE) && (COOLDOWN_FINISHED(src, bloodsucker_spam_healing)))
-			to_chat(user, span_alert("You do not heal while your Masquerade ability is active."))
+			to_chat(user, span_alert("Você não se cura enquanto sua habilidade de mascarar está ativa."))
 			COOLDOWN_START(src, bloodsucker_spam_healing, BLOODSUCKER_SPAM_MASQUERADE)
 			return FALSE
 		fireheal = min(get_fire_loss(), actual_regen)
@@ -175,7 +175,7 @@
 		AdjustBloodVolume(-limb_regen_cost)
 		var/obj/item/bodypart/missing_bodypart = user.get_bodypart(missing_limb) // 2) Limb returns Damaged
 		missing_bodypart.brute_dam = missing_bodypart.max_damage
-		to_chat(user, span_notice("Your flesh knits as it regrows your [missing_bodypart]!"))
+		to_chat(user, span_notice("Sua carne tricota enquanto cresce.[missing_bodypart]!"))
 		playsound(user, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 		return TRUE
 
@@ -200,7 +200,7 @@
 		return
 
 	if(HAS_TRAIT_FROM_ONLY(bloodsuckeruser, TRAIT_HUSK, CHANGELING_DRAIN) || bloodsuckeruser.has_status_effect(/datum/status_effect/gutted))
-		to_chat(bloodsuckeruser, span_danger("Your immortal blood has healed your body from near-irrecoverable damage, but has used nearly all of your blood in doing so!"))
+		to_chat(bloodsuckeruser, span_danger("Seu sangue imortal curou seu corpo de danos quase irrecuperáveis, mas usou quase todo o seu sangue para isso!"))
 		AddHumanityLost(2)
 		SetBloodVolume(min(bloodsucker_blood_volume, frenzy_enter_threshold() * 2))
 		bloodsuckeruser.cure_husk(CHANGELING_DRAIN)
@@ -242,7 +242,7 @@
 		var/obj/item/organ/yucky_organs = tumors
 		if(!istype(yucky_organs))
 			continue
-		to_chat(bloodsuckeruser, span_warning("You feel a little ill for a moment, but it passes. Did you just cough up a tumor?"))
+		to_chat(bloodsuckeruser, span_warning("Você se sente um pouco doente por um momento, mas passa. Você acabou de tossir um tumor?"))
 		yucky_organs.Remove(bloodsuckeruser)
 		yucky_organs.forceMove(get_turf(bloodsuckeruser))
 
@@ -283,7 +283,7 @@
 	var/datum/status_effect/frenzy/status_effect = owner.current.has_status_effect(/datum/status_effect/frenzy)
 	if(bloodsucker_blood_volume >= frenzy_exit_threshold() && frenzied && status_effect?.duration == -1)
 		status_effect.duration = world.time + 10 SECONDS
-		owner.current.balloon_alert(owner.current, "frenzy ends in 10 seconds!")
+		owner.current.balloon_alert(owner.current, "O frenesi termina em 10 segundos!")
 	// BLOOD_VOLUME_BAD: [224] - Jitter
 	if(bloodsucker_blood_volume < BLOOD_VOLUME_BAD && prob(0.5) && !is_in_torpor() && !HAS_TRAIT(owner.current, TRAIT_MASQUERADE))
 		owner.current.set_timed_status_effect(3 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
@@ -344,7 +344,7 @@
 	RegisterSignal(poor_fucker, COMSIG_MOB_SAY, PROC_REF(shake_head_on_talk))
 	poor_fucker.revive()
 	poor_fucker.stat = CONSCIOUS
-	to_chat(poor_fucker, span_warning("Your immortal [pick(list("blood", "curse"))] keeps your head alive! Though... what will you do now?"))
+	to_chat(poor_fucker, span_warning("Seu imortal.[pick(list("blood", "curse"))]Mantenha sua cabeça viva! Embora... o que fará agora?"))
 	// No lungs to speak, let's make it spooky
 	poor_fucker.speech_span = SPAN_PAPYRUS
 
@@ -397,15 +397,15 @@
 	// Elders get dusted, Fledglings get gibbed.
 	if(bloodsucker_level >= 4)
 		user.visible_message(
-			span_warning("[user]'s skin crackles and dries, their skin and bones withering to dust. A hollow cry whips from what is now a sandy pile of remains."),
-			span_userdanger("Your soul escapes your withering body as the abyss welcomes you to your Final Death."),
-			span_hear("You hear a dry, crackling sound."))
+			span_warning("[user]A pele estala e seca, sua pele e ossos murchando até o pó. Um grito oco chicotes do que é agora uma pilha de restos mortais."),
+			span_userdanger("Sua alma escapa de seu corpo murcho como o abismo recebe você para sua morte final."),
+			span_hear("Você ouve um som seco e crepitante."))
 		addtimer(CALLBACK(user, TYPE_PROC_REF(/atom/movable, dust)), 5 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 		return
 	user.visible_message(
-		span_warning("[user]'s skin bursts forth in a spray of gore and detritus. A horrible cry echoes from what is now a wet pile of decaying meat."),
-		span_userdanger("Your soul escapes your withering body as the abyss welcomes you to your Final Death."),
-		span_hear("<span class='italics'>You hear a wet, bursting sound."))
+		span_warning("[user]A pele explode em um spray de sangue e detritos. Um choro horrível ecoa do que agora é uma pilha de carne em decomposição."),
+		span_userdanger("Sua alma escapa de seu corpo murcho como o abismo recebe você para sua morte final."),
+		span_hear("<span class='italics'>Você ouve um som molhado."))
 	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, gib), DROP_ITEMS), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 	user.investigate_log("Died as a bloodsucker from Final Death.", INVESTIGATE_DEATHS)
 

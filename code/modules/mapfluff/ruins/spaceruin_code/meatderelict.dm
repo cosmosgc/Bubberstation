@@ -1,36 +1,36 @@
 /obj/item/keycard/meatderelict/director
 	name = "directors keycard"
-	desc = "A fancy keycard. Likely unlocks the directors office. The name tag is all smudged."
+	desc = "Um cartão chique. Provavelmente abre o escritório dos diretores. O crachá está todo borrado."
 	color = "#990000"
 	puzzle_id = "md_director"
 
 /obj/item/keycard/meatderelict/engpost
 	name = "post keycard"
-	desc = "A fancy keycard. Has the engineering insignia on it."
+	desc = "Um cartão chique. Tem a insígnia de engenharia nele."
 	color = "#f0da12"
 	puzzle_id = "md_engpost"
 
 /obj/item/keycard/meatderelict/armory
 	name = "armory keycard"
-	desc = "A red keycard. Has a really cool image of a gun on it. Fancy."
+	desc = "Um cartão vermelho. Tem uma imagem muito legal de uma arma. Chique."
 	color = "#FF7276"
 	puzzle_id = "md_armory"
 
 /obj/item/paper/crumpled/bloody/fluff/meatderelict/directoroffice
 	name = "directors note"
-	default_raw_text = "<i>The research was going smooth... but the experiment did not go as planned. He convulsed and screamed as he slowly mutated into... that thing. It started to spread everywhere, outside the lab too. There is no way we can cover up that we are not a teleport research outpost, so I locked down the lab, but they already know. They sent a squad to rescue us, but...</i>"
+	default_raw_text = "<i>A pesquisa estava indo bem... mas o experimento não foi como planejado. Ele convulsionou e gritou enquanto lentamente se transformava naquela coisa. Começou a se espalhar por todo lado, fora do laboratório também. Não há como encobrirmos que não somos um posto avançado de pesquisa, então tranquei o laboratório, mas eles já sabem. Mandaram um esquadrão para nos resgatar, mas...</i>"
 
 /obj/item/paper/crumpled/fluff/meatderelict/shieldgens
 	name = "shield gate marketing sketch"
-	default_raw_text = "The <b>QR-109 Shield Gate</b> is a robust hardlight machine capable of producing a strong shield to bar entry. With control panel integration, it can be enabled or disabled from anywhere, such as ship's Bridge, <b>Engineering Bay</b>, or wherever else! <i>The rest is faded...</i>"
+	default_raw_text = "O<b>QR-109 Shield Gate</b>é uma robusta máquina de luz dura capaz de produzir um escudo forte para entrar na barra. Com a integração do painel de controle, pode ser ativado ou desativado de qualquer lugar, como a Ponte da nave,<b>Área de Engenharia</b>Ou em qualquer outro lugar!<i>O resto está desbotado...</i>"
 
 /obj/item/paper/crumpled/fluff/meatderelict
 	name = "engineer note"
-	default_raw_text = "I've overclocked the power generators to add that needed juice to the experiment, though they're a bit unstable."
+	default_raw_text = "Eu overclocked os geradores de energia para adicionar que precisava de suco para o experimento, embora eles são um pouco instável."
 
 /obj/item/paper/crumpled/fluff/meatderelict/fridge
 	name = "engineer complaint"
-	default_raw_text = "Whoever keeps stealing my fucking ice cream from my fridge, I swear I will actually fuck you up. It is not cheap to get this delicious ice cream here, nor is it for you. <b>And don't touch my snacks in the drawer!</b>"
+	default_raw_text = "Quem continuar roubando meu sorvete da minha geladeira, juro que vou acabar com você. Não é barato comprar este delicioso sorvete aqui, nem é para você.<b>E não toque no meu lanche na gaveta!</b>"
 
 /obj/machinery/computer/terminal/meatderelict
 	upperinfo = "COPYRIGHT 2500 NANOSOFT-TM - DO NOT REDISTRIBUTE - Now with audio!" //not that old
@@ -42,7 +42,7 @@
 
 /obj/machinery/door/puzzle/meatderelict
 	name = "lockdown door"
-	desc = "A beaten door, still sturdy. Impervious to conventional methods of destruction, must be a way to open it nearby."
+	desc = "Uma porta batida, ainda resistente. Impermeável aos métodos convencionais de destruição, deve ser uma maneira de abri-lo nas proximidades."
 	icon = 'icons/obj/doors/puzzledoor/danger.dmi'
 	puzzle_id = "md_prevault"
 
@@ -78,17 +78,17 @@
 
 /obj/machinery/puzzle/button/meatderelict
 	name = "lockdown panel"
-	desc = "A panel that controls the lockdown of this outpost."
+	desc = "Um painel que controla o bloqueio deste posto avançado."
 	id = "md_prevault"
 
 /obj/machinery/puzzle/button/meatderelict/on_puzzle_complete()
 	. = ..()
 	playsound(src, 'sound/effects/alert.ogg', 100, TRUE)
-	visible_message(span_warning("[src] lets out an alarm as the lockdown is lifted!"))
+	visible_message(span_warning("[src]Solta um alarme enquanto o confinamento é levantado!"))
 
 /obj/structure/puzzle_blockade/meat
 	name = "mass of meat and teeth"
-	desc = "A horrible mass of meat and teeth. Can it see you? You hope not. Virtually indestructible, must be a way around."
+	desc = "Uma massa horrível de carne e dentes. Pode te ver? Você espera que não. Virtualmente indestrutível, deve ser uma forma de dar a volta."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "meatblockade"
 	opacity = TRUE
@@ -103,7 +103,7 @@
 
 /obj/lightning_thrower
 	name = "overcharged SMES"
-	desc = "An overclocked SMES, bursting with power."
+	desc = "Uma PME overclockada, Cheia de energia."
 	anchored = TRUE
 	density = TRUE
 	icon = 'icons/obj/machines/engine/other.dmi'

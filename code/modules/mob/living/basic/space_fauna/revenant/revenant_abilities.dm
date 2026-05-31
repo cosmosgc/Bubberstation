@@ -31,12 +31,7 @@
 
 /datum/action/cooldown/spell/aoe/revenant/New(Target)
 	. = ..()
-	AddComponent(/datum/component/revenant_ability, \
-		unlock_amount = unlock_amount, \
-		cast_amount = cast_amount, \
-		reveal_duration = reveal_duration, \
-		stun_duration = stun_duration, \
-	)
+	AddComponent(/datum/component/revenant_ability, 		unlock_amount = unlock_amount, 		cast_amount = cast_amount, 		reveal_duration = reveal_duration, 		stun_duration = stun_duration, 	)
 
 /datum/action/cooldown/spell/aoe/revenant/get_things_to_cast_on(atom/center)
 	return RANGE_TURFS(aoe_radius, center)
@@ -56,7 +51,7 @@
 //Overload Light: Breaks a light that's online and sends out lightning bolts to all nearby people.
 /datum/action/cooldown/spell/aoe/revenant/overload
 	name = "Overload Lights"
-	desc = "Directs a large amount of essence into nearby electrical lights, causing lights to shock those nearby."
+	desc = "Dirige uma grande quantidade de essência em luzes elétricas próximas, fazendo com que as luzes choquem as próximas."
 	button_icon_state = "overload_lights"
 	cooldown_time = 20 SECONDS
 
@@ -75,7 +70,7 @@
 		if(!light.on)
 			continue
 
-		light.visible_message(span_boldwarning("[light] suddenly flares brightly and begins to spark!"))
+		light.visible_message(span_boldwarning("[light]de repente se acende e começa a brilhar!"))
 		do_sparks(4, FALSE, light)
 		new /obj/effect/temp_visual/revenant(get_turf(light))
 		addtimer(CALLBACK(src, PROC_REF(overload_shock), light, caster), 2 SECONDS)
@@ -95,7 +90,7 @@
 //Defile: Corrupts nearby stuff, unblesses floor tiles.
 /datum/action/cooldown/spell/aoe/revenant/defile
 	name = "Defile"
-	desc = "Twists and corrupts the nearby area as well as dispelling holy auras on floors."
+	desc = "Torce e corrompe a área próxima, bem como dispersar auras sagradas no chão."
 	button_icon_state = "defile"
 	cooldown_time = 15 SECONDS
 	aoe_radius = 4
@@ -157,7 +152,7 @@
 //Malfunction: Makes bad stuff happen to robots and machines.
 /datum/action/cooldown/spell/aoe/revenant/malfunction
 	name = "Malfunction"
-	desc = "Corrupts and damages nearby machines and mechanical objects."
+	desc = "Corruptos e danos máquinas próximas e objetos mecânicos."
 	button_icon_state = "malfunction"
 	cooldown_time = 20 SECONDS
 
@@ -184,7 +179,7 @@
 			continue
 		if(human.can_block_magic(antimagic_flags))
 			continue
-		to_chat(human, span_revenwarning("You feel [pick("your sense of direction flicker out", "a stabbing pain in your head", "your mind fill with static")]."))
+		to_chat(human, span_revenwarning("Você sente[pick("your sense of direction flicker out", "a stabbing pain in your head", "your mind fill with static")]."))
 		new /obj/effect/temp_visual/revenant(human.loc)
 		human.emp_act(EMP_HEAVY)
 	for(var/obj/thing in victim)
@@ -205,7 +200,7 @@
 //Blight: Infects nearby humans and in general messes living stuff up.
 /datum/action/cooldown/spell/aoe/revenant/blight
 	name = "Blight"
-	desc = "Causes nearby living things to waste away."
+	desc = "Faz com que as coisas vivas próximas desperdicem."
 	button_icon_state = "blight"
 	cooldown_time = 20 SECONDS
 
@@ -218,7 +213,7 @@
 		if(mob == caster)
 			continue
 		if(mob.can_block_magic(antimagic_flags))
-			to_chat(caster, span_warning("The spell had no effect on [mob]!"))
+			to_chat(caster, span_warning("O feitiço não teve efeito sobre[mob]!"))
 			continue
 		new /obj/effect/temp_visual/revenant(mob.loc)
 		if(iscarbon(mob))
@@ -233,7 +228,7 @@
 						blight.stage++
 				if(!blightfound)
 					H.ForceContractDisease(new /datum/disease/revblight(), FALSE, TRUE)
-					to_chat(H, span_revenminor("You feel [pick("suddenly sick", "a surge of nausea", "like your skin is <i>wrong</i>")]."))
+					to_chat(H, span_revenminor("Você sente[pick("suddenly sick", "a surge of nausea", "like your skin is <i>wrong</i>")]."))
 			else
 				if(mob.reagents)
 					mob.reagents.add_reagent(/datum/reagent/toxin/plasma, 5)
@@ -255,8 +250,7 @@
 
 /datum/action/cooldown/spell/aoe/revenant/haunt_object
 	name = "Haunt Object"
-	desc = "Empower nearby objects to you with ghostly energy, causing them to attack nearby mortals. \
-		Items closer to you are more likely to be haunted."
+	desc = "Capacite objetos próximos com energia fantasmagórica, fazendo com que ataquem mortais próximos. Itens mais próximos de você são mais propensos a serem assombrados."
 	button_icon_state = "r_haunt"
 	max_targets = 7
 	aoe_radius = 5
@@ -295,13 +289,7 @@
 
 	new /obj/effect/temp_visual/revenant(get_turf(victim))
 
-	victim.AddComponent(/datum/component/haunted_item, \
-		haunt_color = "#823abb", \
-		haunt_duration = rand(1 MINUTES, 3 MINUTES), \
-		aggro_radius = aoe_radius - 1, \
-		spawn_message = span_revenwarning("[victim] begins to float and twirl into the air as it glows a ghastly purple!"), \
-		despawn_message = span_revenwarning("[victim] falls back to the ground, stationary once more."), \
-	)
+	victim.AddComponent(/datum/component/haunted_item, 		haunt_color = "#823abb", 		haunt_duration = rand(1 MINUTES, 3 MINUTES), 		aggro_radius = aoe_radius - 1, 		spawn_message = span_revenwarning("[victim]Começa a flutuar e girar no ar enquanto brilha um roxo horrível!"), 		despawn_message = span_revenwarning("[victim]Cai de volta ao chão, parada mais uma vez."), 	)
 
 #undef REVENANT_DEFILE_MIN_DAMAGE
 #undef REVENANT_DEFILE_MAX_DAMAGE

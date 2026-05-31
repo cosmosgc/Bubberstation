@@ -1,6 +1,6 @@
 /obj/machinery/chem_mass_spec
 	name = "high-performance liquid chromatography machine"
-	desc = "Allows you to purify reagents & separate out inverse reagents"
+	desc = "Permite purificar reagentes e separar reagentes inversos."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "HPLC"
 	base_icon_state = "HPLC"
@@ -88,23 +88,23 @@
 	. = ..()
 
 	if(!QDELETED(beaker1))
-		. += span_notice("Input beaker of [beaker1.reagents.maximum_volume]u capacity is inserted.")
-		. += span_notice("Its Input beaker Can be ejected with [EXAMINE_HINT("LMB Alt")] click.")
+		. += span_notice("Input béquer de[beaker1.reagents.maximum_volume]U capacidade está inserida.")
+		. += span_notice("Seu copo de entrada pode ser ejetado com[EXAMINE_HINT("LMB Alt")]Clique.")
 	else
-		. += span_warning("Its missing an input beaker. insert with [EXAMINE_HINT("Left Click")].")
+		. += span_warning("Falta um copo de entrada. inserir com[EXAMINE_HINT("Left Click")].")
 	if(!QDELETED(beaker2))
-		. += span_notice("Output beaker of [beaker2.reagents.maximum_volume]u capacity is inserted.")
-		. += span_notice("Its Output beaker can be ejected with [EXAMINE_HINT("RMB Alt")] click.")
+		. += span_notice("béquer de saída de[beaker2.reagents.maximum_volume]U capacidade está inserida.")
+		. += span_notice("Seu copo de saída pode ser ejetado com[EXAMINE_HINT("RMB Alt")]Clique.")
 	else
-		. += span_warning("Its missing an output beaker, insert with [EXAMINE_HINT("Right Click")].")
+		. += span_warning("Falta um copo de saída, insira com[EXAMINE_HINT("Right Click")].")
 
 	if(anchored)
-		. += span_notice("Its [EXAMINE_HINT("anchored")] in place.")
+		. += span_notice("Sua[EXAMINE_HINT("anchored")]No lugar.")
 	else
-		. += span_warning("Needs to be [EXAMINE_HINT("wrenched")] to use.")
-	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
+		. += span_warning("Precisa ser[EXAMINE_HINT("wrenched")]para usar.")
+	. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
 	if(panel_open)
-		. += span_notice("It can be [EXAMINE_HINT("pried")] apart.")
+		. += span_notice("Pode ser.[EXAMINE_HINT("pried")]Separados.")
 
 /obj/machinery/chem_mass_spec/update_overlays()
 	. = ..()
@@ -147,7 +147,7 @@
 
 /obj/machinery/chem_mass_spec/item_interaction(mob/living/user, obj/item/item, list/modifiers)
 	if(processing_reagents)
-		balloon_alert(user, "ainda processando!")
+		balloon_alert(user, "Andda processando!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!item.can_insert_container(user, src))
@@ -157,7 +157,7 @@
 	if(!replace_beaker(user, !is_right_clicking, item))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You add [item] to [is_right_clicking ? "output" : "input"] slot."))
+	to_chat(user, span_notice("Você acrescenta[item]para[is_right_clicking ? "output" : "input"]slot."))
 	update_appearance()
 	ui_interact(user)
 
@@ -166,7 +166,7 @@
 /obj/machinery/chem_mass_spec/wrench_act(mob/living/user, obj/item/tool)
 	. = ITEM_INTERACT_BLOCKING
 	if(processing_reagents)
-		balloon_alert(user, "ainda processando!")
+		balloon_alert(user, "Andda processando!")
 		return .
 
 	if(default_unfasten_wrench(user, tool) == SUCCESSFUL_UNFASTEN)
@@ -174,14 +174,14 @@
 
 /obj/machinery/chem_mass_spec/screwdriver_act(mob/living/user, obj/item/tool)
 	if(processing_reagents)
-		balloon_alert(user, "ainda processando!")
+		balloon_alert(user, "Andda processando!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/chem_mass_spec/crowbar_act(mob/living/user, obj/item/tool)
 	if(processing_reagents)
-		balloon_alert(user, "ainda processando!")
+		balloon_alert(user, "Andda processando!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_crowbar(user, tool)
@@ -447,14 +447,14 @@
 
 /obj/machinery/chem_mass_spec/click_alt(mob/living/user)
 	if(processing_reagents)
-		balloon_alert(user, "ainda processando!")
+		balloon_alert(user, "Andda processando!")
 		return CLICK_ACTION_BLOCKING
 	replace_beaker(user, TRUE)
 	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/chem_mass_spec/click_alt_secondary(mob/living/user)
 	if(processing_reagents)
-		balloon_alert(user, "ainda processando!")
+		balloon_alert(user, "Andda processando!")
 		return
 	replace_beaker(user, FALSE)
 

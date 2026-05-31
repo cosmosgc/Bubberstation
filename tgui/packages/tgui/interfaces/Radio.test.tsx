@@ -21,15 +21,15 @@ store.set(gameDataAtom, {
   radio_noises: 0,
 });
 
-describe('Radio tests', () => {
-  it('loads without failing', () => {
+describe('Testes de rádio', () => {
+  it('cargas sem falhar', () => {
     act(() => render(<Radio />));
 
     // Radio doesn't have a default title
-    expect(screen.getByText('Test UI')).toBeDefined();
+    expect(screen.getByText('Teste de UI.')).toBeDefined();
   });
 
-  it('displays frequency correctly', () => {
+  it('Mostra a frequência corretamente.', () => {
     act(() => render(<Radio />));
 
     expect(screen.getByText('155.3')).toBeDefined();

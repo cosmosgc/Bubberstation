@@ -3,9 +3,7 @@
 
 /obj/item/mod/module/storage/holding
 	name = "MOD storage module of holding"
-	desc = "A prototype storage module utilizing the power of anomalous bluespace phenomena \
-		to store copious amounts of matter. Unfortunately, it suffers from the same drawbacks as its standalone counterpart, \
-		including <b>tearing catastrophic rifts in reality</b> when nested inside bluespace pockets produced through similar means."
+	desc = "Um módulo de armazenamento protótipo utilizando o poder de fenômenos anômalos do espaço azul para armazenar quantidades abundantes de matéria. Infelizmente, sofre das mesmas desvantagens que seu homólogo independente, incluindo<b>rasgando fendas catastróficas na realidade</b>Quando aninhado dentro de bolsos do espaço azul produzido por meios semelhantes."
 	icon_state = "storage_holding"
 	complexity = 4
 	storage_type = null // core-less modules should be safe to insert into bags of holding
@@ -16,14 +14,7 @@
 
 /obj/item/mod/module/storage/holding/Initialize(mapload)
 	. = ..()
-	anomalock = AddComponent(/datum/component/anomaly_locked_module,\
-		list(/obj/item/assembly/signaler/anomaly/bluespace),\
-		prebuilt,\
-		core_removable,\
-		PROC_REF(pre_core_inserted),\
-		PROC_REF(on_core_inserted),\
-		PROC_REF(on_core_removed),\
-	)
+	anomalock = AddComponent(/datum/component/anomaly_locked_module,		list(/obj/item/assembly/signaler/anomaly/bluespace),		prebuilt,		core_removable,		PROC_REF(pre_core_inserted),		PROC_REF(on_core_inserted),		PROC_REF(on_core_removed),	)
 	RegisterSignal(src, COMSIG_MODULE_TRY_INSTALL, PROC_REF(try_install))
 
 /obj/item/mod/module/storage/holding/Destroy()

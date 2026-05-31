@@ -114,14 +114,14 @@ export const ZubbersStorytellerRoundData = (props) => {
             {storyteller_halt ? 'Halted' : 'Running'}
           </Button>
         </LabeledList.Item>
-        <LabeledList.Item label="Active Players">
+        <LabeledList.Item label="Jogadores Ativos">
           {pop_data.active} {'('}Head: {pop_data.head}, Sec: {pop_data.sec},
           Eng: {pop_data.eng}, Med: {pop_data.med}
           {')'}
         </LabeledList.Item>
         <LabeledList.Item
           label="Antag Cap"
-          tooltip="Amount of antags / The antag cap"
+          tooltip="Quantidade de antags / O boné de antag"
         >
           <ProgressBar
             value={antag_count}
@@ -171,7 +171,7 @@ export const ZubbersStorytellerTrackData = (props) => {
             <Table.Row key={track}>
               <Table.Cell>
                 <Button
-                  tooltip="Edit points"
+                  tooltip="Editar pontos"
                   width="100%"
                   textAlign="center"
                   onClick={() =>
@@ -221,7 +221,7 @@ export const ZubbersStorytellerScheduledData = (props) => {
   const { act, data } = useBackend<Storyteller_Data>();
   const { scheduled_data } = data;
   return (
-    <Section title="Scheduled events">
+    <Section title="Eventos agendados">
       <Table>
         <Table.Row bold>
           <Table.Cell>Name</Table.Cell>
@@ -334,7 +334,7 @@ export const ZubbersStorytellerEventPanel = (props) => {
 
   return (
     <Section
-      title="Event Panel"
+      title="Painel de Eventos"
       maxHeight="100%"
       fill
       scrollable

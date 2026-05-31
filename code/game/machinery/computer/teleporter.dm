@@ -3,7 +3,7 @@
 
 /obj/machinery/computer/teleporter
 	name = "teleporter control console"
-	desc = "Used to control a linked teleportation Hub and Station."
+	desc = "Usado para controlar um teletransporte ligado Hub e Estação."
 	icon_screen = "teleport"
 	icon_keyboard = "teleport_key"
 	light_color = LIGHT_COLOR_BLUE
@@ -211,7 +211,7 @@
 		user.log_message("set the teleporter target to [targets[desc]].]", LOG_GAME)
 	else
 		if (!length(targets))
-			to_chat(user, span_alert("No active connected stations located."))
+			to_chat(user, span_alert("Nenhuma estação ativa conectada localizada."))
 			return
 
 		var/desc = tgui_input_list(usr, "Select a station to lock in", "Locking Computer", sort_list(targets))
@@ -240,8 +240,8 @@
 #undef REGIME_GATE
 
 /obj/item/circuit_component/teleporter_control_console
-	display_name = "Teleporter Control Console"
-	desc = "Used to control a linked teleportation Hub and Station."
+	display_name = "Controle de teletransporte Console"
+	desc = "Usado para controlar um teletransporte ligado Hub e Estação."
 	circuit_flags = CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	var/datum/port/input/new_target

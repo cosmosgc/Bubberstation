@@ -46,14 +46,14 @@
 
 /obj/item/clothing/suit/armor/vest
 	name = "armor vest"
-	desc = "A slim Type I armored vest that provides decent protection against most types of damage."
+	desc = "Um colete blindado tipo I magro que fornece proteção decente contra a maioria dos danos."
 	icon_state = "armoralt"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back/armorvest
 
 /obj/item/clothing/suit/armor/vest/alt
-	desc = "A Type I armored vest that provides decent protection against most types of damage."
+	desc = "Um colete blindado tipo I que fornece proteção decente contra a maioria dos danos."
 	icon_state = "armor"
 	inhand_icon_state = "armor"
 
@@ -62,7 +62,7 @@
 
 /obj/item/clothing/suit/armor/vest/press
 	name = "press armor vest"
-	desc = "A blue armor vest used to distinguish <i>non-combatant</i> \"PRESS\" members, like if anyone cares."
+	desc = "Um colete azul usado para distinguir<i>Não combatente</i> \"IMPRENSA\"Membros, como se alguém se importasse."
 	icon_state = "armor_press"
 
 /obj/item/clothing/suit/armor/vest/press/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
@@ -72,7 +72,7 @@
 
 /obj/item/clothing/suit/armor/vest/marine
 	name = "tactical armor vest"
-	desc = "A set of the finest mass produced, stamped plasteel armor plates, containing an environmental protection unit for all-condition door kicking."
+	desc = "Um conjunto da melhor massa produzida, placas de armadura de plasteel carimbadas, contendo uma unidade de proteção ambiental para todas as condições porta chutando."
 	icon_state = "marine_command"
 	inhand_icon_state = "armor"
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL
@@ -118,7 +118,7 @@
 	body_parts_covered = CHEST|GROIN
 
 /obj/item/clothing/suit/armor/vest/marine/pmc
-	desc = "A set of the finest mass produced, stamped plasteel armor plates, for an all-around door-kicking and ass-smashing. Its stellar survivability making up is for its lack of space worthiness"
+	desc = "Um conjunto da melhor massa produzida, placas de armadura de plasteel carimbadas, para um arrombamento de porta e ass-mashing. Sua sobrevivência estelar é por sua falta de dignidade espacial."
 	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
 	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
 	clothing_flags = THICKMATERIAL
@@ -127,21 +127,21 @@
 
 /obj/item/clothing/suit/armor/vest/old
 	name = "degrading armor vest"
-	desc = "Older generation Type 1 armored vest. Due to degradation over time the vest is far less maneuverable to move in."
+	desc = "Colete blindado Tipo 1. Devido à degradação ao longo do tempo o colete é muito menos manobrável para se mover."
 	icon_state = "armor"
 	inhand_icon_state = "armor"
 	slowdown = 1
 
 /obj/item/clothing/suit/armor/vest/blueshirt
 	name = "large armor vest"
-	desc = "A large, yet comfortable piece of armor, protecting you from some threats."
+	desc = "Uma grande, mas confortável peça de armadura, protegendo você de algumas ameaças."
 	icon_state = "blueshift"
 	inhand_icon_state = null
 	custom_premium_price = PAYCHECK_COMMAND
 
 /obj/item/clothing/suit/armor/vest/cuirass
 	name = "cuirass"
-	desc = "A lighter plate armor used to still keep out those pesky arrows, while retaining the ability to move."
+	desc = "Uma arma de plataforma mais leve ainda mantinha para aquelas flores chatas, mantendo a capacidade de se mover."
 	icon_state = "cuirass"
 	inhand_icon_state = "armor"
 	dog_fashion = null
@@ -152,7 +152,7 @@
 
 /obj/item/clothing/suit/armor/hos
 	name = "armored greatcoat"
-	desc = "A greatcoat enhanced with a special alloy for some extra protection and style for those with a commanding presence."
+	desc = "Uma grande capa reforçada com uma liga especial para alguma proteção extra e estilo para aqueles com uma presença dominante."
 	icon_state = "hos"
 	inhand_icon_state = "greatcoat"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
@@ -173,7 +173,7 @@
 
 /obj/item/clothing/suit/armor/hos/trenchcoat
 	name = "armored trenchcoat"
-	desc = "A trenchcoat enhanced with a special lightweight kevlar. The epitome of tactical plainclothes."
+	desc = "Um casaco reforçado com um Kevlar leve especial. O epítome de taticos à paisana."
 	icon_state = "hostrench"
 	inhand_icon_state = "hostrench"
 	flags_inv = 0
@@ -181,13 +181,13 @@
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/winter
 	name = "head of security's winter trenchcoat"
-	desc = "A trenchcoat enhanced with a special lightweight kevlar, padded with wool on the collar and inside. You feel strangely lonely wearing this coat."
+	desc = "Uma capa reforçada com um Kevlar leve especial, acolchoada com lã no colarinho e dentro. Você se sente estranhamente solitário usando este casaco."
 	icon_state = "hoswinter"
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/armor/hos/hos_formal
 	name = "\improper Head of Security's parade jacket"
-	desc = "For when an armoured vest isn't fashionable enough."
+	desc = "Para quando um colete blindado não está na moda o suficiente."
 	icon_state = "hosformal"
 	inhand_icon_state = "hostrench"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -198,7 +198,7 @@
 
 /obj/item/clothing/suit/armor/vest/warden
 	name = "warden's jacket"
-	desc = "A navy-blue armored jacket with blue shoulder designations and '/Warden/' stitched into one of the chest pockets."
+	desc = "Uma jaqueta azul-marinho blindada com designações de ombro azul e '/ Warden/' costurado em um dos bolsos do peito."
 	icon_state = "warden_alt"
 	inhand_icon_state = "armor"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -210,12 +210,12 @@
 
 /obj/item/clothing/suit/armor/vest/warden/alt
 	name = "warden's armored jacket"
-	desc = "A red jacket with silver rank pips and body armor strapped on top."
+	desc = "Uma jaqueta vermelha com pips de prata e armadura amarrada em cima."
 	icon_state = "warden_jacket"
 
 /obj/item/clothing/suit/armor/vest/secjacket
 	name = "security jacket"
-	desc = "A red jacket in red Security colors. It has hi-vis stripes all over it."
+	desc = "Uma jaqueta vermelha em cores de segurança vermelhas. Tem listras hi-vis por toda parte."
 	icon_state = "secjacket"
 	inhand_icon_state = "armor"
 	armor_type = /datum/armor/armor_secjacket
@@ -242,7 +242,7 @@
 
 /obj/item/clothing/suit/armor/vest/leather
 	name = "security overcoat"
-	desc = "Lightly armored leather overcoat meant as casual wear for high-ranking officers. Bears the crest of Nanotrasen Security."
+	desc = "Um casaco de couro levemente blindado significava roupa casual para oficiais de alta patente. Leva o brasão da Segurança Nanotrasen."
 	icon_state = "leathercoat-sec"
 	inhand_icon_state = "hostrench"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
@@ -252,7 +252,7 @@
 
 /obj/item/clothing/suit/armor/vest/capcarapace
 	name = "captain's carapace"
-	desc = "A fireproof armored chestpiece reinforced with ceramic plates and plasteel pauldrons to provide additional protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest, although it does chafe your nipples."
+	desc = "Um peitoral blindado à prova de fogo reforçado com placas de cerâmica e plasteel pauldrons para fornecer proteção adicional enquanto ainda oferece máxima mobilidade e flexibilidade. Emitido apenas para os melhores da estação, embora isso afete seus mamilos."
 	icon_state = "capcarapace"
 	inhand_icon_state = "armor"
 	body_parts_covered = CHEST|GROIN
@@ -272,12 +272,12 @@
 
 /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
 	name = "syndicate captain's vest"
-	desc = "A sinister looking vest of advanced armor worn over a black and red fireproof jacket. The gold collar and shoulders denote that this belongs to a high ranking syndicate officer."
+	desc = "Um colete sinistro de armadura avançada usado sobre uma jaqueta preta e vermelha à prova de fogo. O colar de ouro e ombros denotam que isso pertence a um alto oficial do sindicato."
 	icon_state = "syndievest"
 
 /obj/item/clothing/suit/armor/vest/capcarapace/captains_formal
 	name = "captain's parade coat"
-	desc = "For when an armoured vest isn't fashionable enough."
+	desc = "Para quando um colete blindado não está na moda o suficiente."
 	icon_state = "capformal"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -288,7 +288,7 @@
 
 /obj/item/clothing/suit/armor/riot
 	name = "riot suit"
-	desc = "A suit of semi-flexible polycarbonate body armor with heavy padding to protect against melee attacks. Helps the wearer resist shoving in close quarters."
+	desc = "Uma armadura de policarbonato semi-flexível com revestimento pesado para proteger contra ataques de melee. Ajuda o usuário a resistir a empurrar de perto."
 	icon_state = "riot"
 	inhand_icon_state = "swat_suit"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -318,7 +318,7 @@
 
 /obj/item/clothing/suit/armor/balloon_vest
 	name = "balloon vest"
-	desc = "A vest made entirely from balloons, resistant to any evil forces a mime could throw at you, including electricity and fire. Just a strike with something sharp, though..."
+	desc = "Um colete feito inteiramente de balões, resistente a qualquer força maligna que um mímico possa jogar em você, incluindo eletricidade e fogo. Só um strike com algo afiado."
 	icon_state = "balloon-vest"
 	inhand_icon_state = "balloon_armor"
 	blood_overlay_type = "armor"
@@ -352,7 +352,7 @@
 
 /obj/item/clothing/suit/armor/bulletproof
 	name = "bulletproof armor"
-	desc = "A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
+	desc = "Um colete pesado tipo III que se destaca em proteger o usuário contra armas de projéteis tradicionais e explosivos em menor escala."
 	icon_state = "bulletproof"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
@@ -372,7 +372,7 @@
 
 /obj/item/clothing/suit/armor/laserproof
 	name = "reflector vest"
-	desc = "A vest that excels in protecting the wearer against energy projectiles, as well as occasionally reflecting them."
+	desc = "Um colete que se destaca em proteger o usuário contra projéteis de energia, bem como ocasionalmente reflecti-los."
 	icon_state = "armor_reflec"
 	inhand_icon_state = "armor_reflec"
 	blood_overlay_type = "armor"
@@ -399,7 +399,7 @@
 
 /obj/item/clothing/suit/armor/vest/det_suit
 	name = "detective's flak vest"
-	desc = "An armored vest with a detective's badge on it."
+	desc = "Um colete cego com distintivo de detetivo."
 	icon_state = "detective-armor"
 	resistance_flags = FLAMMABLE
 	dog_fashion = null
@@ -410,8 +410,7 @@
 
 /obj/item/clothing/suit/armor/swat
 	name = "MK.I SWAT Suit"
-	desc = "A tactical suit first developed in a joint effort by the defunct IS-ERI and Nanotrasen in 2321 for military operations. \
-		It has a minor slowdown, but offers decent protection and helps the wearer resist shoving in close quarters."
+	desc = "Um processo tático desenvolvido em um esforço conjunto pelo extinto IS-ERI e Nanotrasen em 2321 para operações militares. Ele tem um pequeno abrandamento, mas oferece proteção decente e ajuda o usuário a resistir a empurrar-se de perto."
 	icon_state = "heavy"
 	inhand_icon_state = "swat_suit"
 	armor_type = /datum/armor/armor_swat
@@ -450,7 +449,7 @@
 
 /obj/item/clothing/suit/armor/heavy
 	name = "heavy armor"
-	desc = "A heavily armored suit that protects against moderate damage."
+	desc = "Um terno forte cego que protege contra danos moderados."
 	icon_state = "heavy"
 	inhand_icon_state = "swat_suit"
 	w_class = WEIGHT_CLASS_BULKY
@@ -490,13 +489,13 @@
 
 /obj/item/clothing/suit/armor/tdome/red
 	name = "thunderdome suit"
-	desc = "Reddish armor."
+	desc = "Armadura vermelha."
 	icon_state = "tdred"
 	inhand_icon_state = "tdred"
 
 /obj/item/clothing/suit/armor/tdome/green
 	name = "thunderdome suit"
-	desc = "Pukish armor." //classy.
+	desc = "Armadura idiota." //classy.
 	icon_state = "tdgreen"
 	inhand_icon_state = "tdgreen"
 
@@ -511,18 +510,18 @@
 	bullet = 10
 
 /obj/item/clothing/suit/armor/tdome/holosuit/red
-	desc = "Reddish armor."
+	desc = "Armadura vermelha."
 	icon_state = "tdred"
 	inhand_icon_state = "tdred"
 
 /obj/item/clothing/suit/armor/tdome/holosuit/green
-	desc = "Pukish armor."
+	desc = "Armadura idiota."
 	icon_state = "tdgreen"
 	inhand_icon_state = "tdgreen"
 
 /obj/item/clothing/suit/armor/riot/knight
 	name = "plate armour"
-	desc = "A classic suit of plate armour, highly effective at stopping melee attacks."
+	desc = "Um traje clássico de armadura, altamente eficaz para parar os ataques."
 	icon_state = "knight_green"
 	inhand_icon_state = null
 	allowed = list(
@@ -549,7 +548,7 @@
 
 /obj/item/clothing/suit/armor/riot/knight/greyscale
 	name = "knight armour"
-	desc = "A classic suit of armour, able to be made from many different materials."
+	desc = "Uma armadura clássica, capaz de ser feita com muitos materiais diferentes."
 	icon_state = "knight_greyscale"
 	inhand_icon_state = null
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS // Can change color and add prefix
@@ -567,7 +566,7 @@
 
 /obj/item/clothing/suit/armor/vest/durathread
 	name = "durathread vest"
-	desc = "A vest made of durathread with strips of leather acting as trauma plates."
+	desc = "Um colete feito de Durathread com tiras de couro atuando como placas de trauma."
 	icon_state = "durathread"
 	inhand_icon_state = null
 	strip_delay = 6 SECONDS
@@ -592,7 +591,7 @@
 
 /obj/item/clothing/suit/armor/vest/russian
 	name = "russian vest"
-	desc = "A bulletproof vest with forest camo. Good thing there's plenty of forests to hide in around here, right?"
+	desc = "Um colete à prova de balas com camuflagem florestal. Ainda bem que há muitas florestas para se esconder por aqui, certo?"
 	icon_state = "rus_armor"
 	inhand_icon_state = null
 	armor_type = /datum/armor/vest_russian
@@ -609,7 +608,7 @@
 
 /obj/item/clothing/suit/armor/vest/russian_coat
 	name = "russian battle coat"
-	desc = "Used in extremely cold fronts, made out of real bears."
+	desc = "Usado em frentes extremamente frias, festas de ursos de verdade."
 	icon_state = "rus_coat"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -631,7 +630,7 @@
 
 /obj/item/clothing/suit/armor/elder_atmosian
 	name = "\improper Elder Atmosian Armor"
-	desc = "A superb armor made with the toughest and rarest materials available to man."
+	desc = "Uma armadura soberba feita com os materiais mais duros e raros disponíveis para o homem."
 	icon_state = "h2armor"
 	inhand_icon_state = null
 	material_flags = MATERIAL_EFFECTS
@@ -659,7 +658,7 @@
 
 /obj/item/clothing/suit/armor/centcom_formal
 	name = "\improper CentCom formal coat"
-	desc = "A stylish coat given to CentCom Commanders. Perfect for sending ERTs to suicide missions with style!"
+	desc = "Um casaco elegante dado aos comandantes da CentCom. Perfeito para enviar ERTs para missões suicidas com estilo!"
 	icon_state = "centcom_formal"
 	inhand_icon_state = "centcom"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -681,7 +680,7 @@
 
 /obj/item/clothing/suit/armor/vest/hop
 	name = "head of personnel's coat"
-	desc = "A stylish coat given to a Head of Personnel."
+	desc = "Um casaco elegante dado a um Chef de Pessoal."
 	icon_state = "hop_coat"
 	inhand_icon_state = "b_suit"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -689,7 +688,7 @@
 
 /obj/item/clothing/suit/armor/militia
 	name = "station defender's coat"
-	desc = "A well worn uniform used by militia across the frontier, its thick padding useful for cushioning blows."
+	desc = "Um uniforme bem usado usado pela milícia do outro lado da fronteira, seu revestimento grosso útil para amortecer golpes."
 	icon_state = "militia"
 	inhand_icon_state = "b_suit"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -709,7 +708,7 @@
 
 /obj/item/clothing/suit/armor/vest/military
 	name = "Crude chestplate"
-	desc = "It may look rough, rusty and battered, but it's also made out of junk and uncomfortable to wear."
+	desc = "Pode parecer áspero, enferrujado e batido, mas também é feito de lixo e desconfortável de vestir."
 	icon_state = "military"
 	inhand_icon_state = "armor"
 	dog_fashion = null
@@ -738,7 +737,7 @@
 
 /obj/item/clothing/suit/armor/riot/knight/warlord
 	name = "golden plate armor"
-	desc = "This bulky set of armor is coated with a shiny layer of gold. It seems to almost reflect all light sources."
+	desc = "Esta armadura volumosa é revestida com uma camada brilhante de ouro. Parece refletir quase todas as fontes de luz."
 	icon_state = "warlord"
 	inhand_icon_state = null
 	armor_type = /datum/armor/armor_warlord
@@ -764,7 +763,7 @@
 
 /obj/item/clothing/suit/armor/durability/watermelon
 	name = "watermelon armor"
-	desc = "An armor, made from watermelons. Probably won't take too many hits, but at least it looks serious... As serious as worn watermelon can be."
+	desc = "Uma armadura feita de melancias. Provavelmente não vai levar muitos golpes, mas pelo menos parece sério... Tão séria quanto a melancia usada pode ser."
 	icon_state = "watermelon"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -798,7 +797,7 @@
 
 /obj/item/clothing/suit/armor/durability/holymelon
 	name = "holymelon armor"
-	desc = "An armor, made from holymelons. Inspires you to go on some sort of crusade... Perhaps spreading spinach to children?"
+	desc = "Uma armadura feita de melancias. Inspira você a ir em algum tipo de cruzada... Talvez espalhando espinafre para crianças?"
 	icon_state = "holymelon"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -816,16 +815,10 @@
 	. = ..()
 
 	AddComponent(
-		/datum/component/anti_magic, \
-		antimagic_flags = MAGIC_RESISTANCE|MAGIC_RESISTANCE_HOLY, \
-		inventory_flags = ITEM_SLOT_OCLOTHING, \
-		charges = 1, \
-		block_magic = CALLBACK(src, PROC_REF(drain_antimagic)), \
-		expiration = CALLBACK(src, PROC_REF(decay)) \
-	)
+		/datum/component/anti_magic, 		antimagic_flags = MAGIC_RESISTANCE|MAGIC_RESISTANCE_HOLY, 		inventory_flags = ITEM_SLOT_OCLOTHING, 		charges = 1, 		block_magic = CALLBACK(src, PROC_REF(drain_antimagic)), 		expiration = CALLBACK(src, PROC_REF(decay)) 	)
 
 /obj/item/clothing/suit/armor/durability/holymelon/proc/drain_antimagic(mob/user)
-	to_chat(user, span_warning("[src] looses a bit of its shimmer and glossiness..."))
+	to_chat(user, span_warning("[src]Perde um pouco de brilho e brilho..."))
 
 /obj/item/clothing/suit/armor/durability/holymelon/proc/decay()
 	take_damage(8, BRUTE, 0, 0)
@@ -833,7 +826,7 @@
 
 /obj/item/clothing/suit/armor/durability/barrelmelon
 	name = "barrelmelon armor"
-	desc = "An armor, made from barrelmelons. Reeks of ale, inspiring to courageous deeds. Or, perhaps, a bar brawl."
+	desc = "Uma armadura feita de melancias. Cheira a cerveja, inspirando ações corajosas. Ou, talvez, uma briga de bar."
 	icon_state = "barrelmelon"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -867,7 +860,7 @@
 
 /obj/item/clothing/suit/armor/dragoon
 	name = "drachen suit"
-	desc = "A chainmail suit with dragon scales attached to the skeleton, with ash-covered mythril plate reinforcement covering it."
+	desc = "Um terno de chainmail com escamas de dragão anexado ao esqueleto, com o reforço de placa de mito coberto de cinzas cobrindo-o."
 	icon_state = "dragoon"
 	inhand_icon_state = "dragoon"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS

@@ -1,7 +1,7 @@
 //cow
 /mob/living/basic/cow
 	name = "cow"
-	desc = "Known for their milk, just don't tip them over."
+	desc = "Conhecido pelo leite, só não os derrube."
 	icon = 'icons/mob/simple/cows.dmi'
 	icon_state = "cow"
 	icon_living = "cow"
@@ -50,11 +50,7 @@
 	sound = 'sound/mobs/non-humanoids/cow/cow.ogg'
 
 /mob/living/basic/cow/Initialize(mapload)
-	AddComponent(/datum/component/tippable, \
-		tip_time = 0.5 SECONDS, \
-		untip_time = 0.5 SECONDS, \
-		self_right_time = rand(25 SECONDS, 50 SECONDS), \
-		post_tipped_callback = CALLBACK(src, PROC_REF(after_cow_tipped)))
+	AddComponent(/datum/component/tippable, 		tip_time = 0.5 SECONDS, 		untip_time = 0.5 SECONDS, 		self_right_time = rand(25 SECONDS, 50 SECONDS), 		post_tipped_callback = CALLBACK(src, PROC_REF(after_cow_tipped)))
 	AddElement(/datum/element/pet_bonus, "moo")
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_COW, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
 	setup_udder()
@@ -80,7 +76,7 @@
 
 /mob/living/basic/cow/tamed(mob/living/tamer, atom/food)
 	. = ..()
-	visible_message("[src] [tame_message] as it seems to bond with [tamer].", "You [self_tame_message], recognizing [tamer] as your new pal.")
+	visible_message("[src] [tame_message]Como parece se relacionar com[tamer].", "Você.[self_tame_message], reconhecendo[tamer]Como seu novo amigo.")
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/cow)
 
 /*

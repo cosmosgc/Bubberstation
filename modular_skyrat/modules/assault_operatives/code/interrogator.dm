@@ -17,7 +17,7 @@
  */
 /obj/machinery/interrogator
 	name = "In-TERROR-gator"
-	desc = "A morraly corrupt piece of machinery used to extract the human mind into a GoldenEye authentication key. The process is said to be one of the most painful experiences someone can endure. Alt+click to start the process."
+	desc = "Uma máquina corrompida usada para extrair a mente humana em uma chave de autenticação GoldenEye. O processo é uma das experiências mais dolorosas que alguém pode suportar. Alt+clique para iniciar o processo."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi'
 	icon_state = "interrogator_open"
 	state_open = FALSE
@@ -126,7 +126,7 @@
 	start_extract()
 
 /obj/machinery/interrogator/proc/start_extract()
-	to_chat(human_occupant, span_userdanger("You feel dread wash over you as you hear the door on [src] lock!"))
+	to_chat(human_occupant, span_userdanger("Você sente medo de se lavar enquanto ouve a porta[src]Trava!"))
 	locked = TRUE
 	processing = TRUE
 	say("Starting DNA data extraction!")
@@ -138,7 +138,7 @@
 		say("Critical error! Aborting.")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 100)
 		return
-	to_chat(human_occupant, span_danger("As [src] whirrs to life you feel some cold metal restraints deploy around you, you can't move!"))
+	to_chat(human_occupant, span_danger("Como[src]Você sente algumas amarras de metal frias ao seu redor, você não pode se mover!"))
 	playsound(loc, 'sound/items/tools/rped.ogg', 60)
 	say("Stage one complete!")
 	minor_announce("SECURITY BREACH DETECTED, NETWORK COMPROMISED! LOCATION UNTRACEABLE.", "GoldenEye Defence Network")
@@ -149,7 +149,7 @@
 		say("Critical error! Aborting.")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 100)
 		return
-	to_chat(human_occupant, span_userdanger("You feel a sharp pain as a drill penetrates your skull, it's unbearable!"))
+	to_chat(human_occupant, span_userdanger("Você sente uma dor aguda como uma broca penetra seu crânio, é insuportável!"))
 	human_occupant.emote("scream")
 	human_occupant.apply_damage(30, BRUTE, BODY_ZONE_HEAD)
 	playsound(src, 'sound/effects/wounds/blood1.ogg', 100)
@@ -162,7 +162,7 @@
 		say("Critical error! Aborting.")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 100)
 		return
-	to_chat(human_occupant, span_userdanger("You feel something penetrating your brain, it feels as though your childhood memories are fading! Please, make it stop! After a moment of silence, you realize you can't remember what happened to you!"))
+	to_chat(human_occupant, span_userdanger("Você sente algo penetrando seu cérebro, parece que suas memórias de infância estão desaparecendo! Por favor, faça parar! Depois de um momento de silêncio, você percebe que não consegue lembrar o que aconteceu com você!"))
 	human_occupant.emote("scream")
 	human_occupant.apply_damage(20, BRUTE, BODY_ZONE_HEAD)
 	human_occupant.set_jitter_if_lower(3 MINUTES)
@@ -198,7 +198,7 @@
 
 	notify_ghosts("GoldenEye key launched!",
 		source = new_key,
-		header = "Something's Interesting!",
+		header = "Algo interessante!",
 	)
 
 /obj/machinery/interrogator/proc/find_drop_turf()

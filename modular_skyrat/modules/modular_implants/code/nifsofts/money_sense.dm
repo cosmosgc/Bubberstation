@@ -4,7 +4,7 @@
 
 /datum/nifsoft/money_sense
 	name = "Automatic Appraisal"
-	program_desc = "Connects the user's brain to a database containing the current monetary values for most items, allowing them to determine their value in realtime"
+	program_desc = "Conecta o cérebro do usuário a um banco de dados contendo os valores monetários atuais para a maioria dos itens, permitindo-lhes determinar seu valor em tempo real."
 	active_mode = TRUE
 	active_cost = 0.5
 	compatible_nifs = list(/obj/item/organ/cyberimp/brain/nif/standard)
@@ -51,8 +51,8 @@
 	for(var/x in export.total_amount)
 		price += export.total_value[x]
 	if(price)
-		export_text = span_noticealien("This item has an export value of: <b>[price] credits.")
+		export_text = span_noticealien("Este item tem um valor de exportação de:<b>[price]Créditos.")
 	else
-		export_text = span_warning("This item has no export value.")
+		export_text = span_warning("Este item não tem valor de exportação.")
 
 	to_chat(parent, export_text)

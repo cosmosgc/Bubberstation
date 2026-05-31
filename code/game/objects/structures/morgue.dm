@@ -5,13 +5,7 @@
 
 /obj/item/paper/guides/jobs/medical/morgue
 	name = "morgue memo"
-	default_raw_text = "<font size='2'>Since this station's medbay never seems to fail to be staffed by the mindless monkeys \
-		meant for genetics experiments, I'm leaving a reminder here for anyone handling the pile of cadavers the quacks are sure \
-		to leave.</font><BR><BR><font size='4'><font color=red>Red lights mean there's a plain ol' dead body inside.</font><BR><BR>\
-		<font color=orange>Yellow lights mean there's non-body objects inside.</font><BR><font size='2'>Probably stuff pried off a \
-		corpse someone grabbed, or if you're lucky it's stashed booze.</font><BR><BR><font color=green>Green lights mean the morgue \
-		system detects the body may be able to be brought back to life.</font></font><BR><font size='2'>I don't know how that works, \
-		but keep it away from the kitchen and go yell at the coroner.</font><BR><BR>- CentCom medical inspector"
+	default_raw_text = "<font size='2'>Uma vez que a enfermaria desta estação parece nunca deixar de ser criada pelos macacos desmiolados destinados a experimentos genéticos, estou deixando um lembrete aqui para quem lidar com a pilha de cadáveres que os charlatães certamente irão embora.</font><BR><BR><font size='4'><font color=red>Luzes vermelhas significam que tem um cadáver dentro.</font><BR><BR>		<font color=orange>Luzes amarelas significam que há objetos não corporais dentro.</font><BR><font size='2'>Provavelmente coisas tiraram de um cadáver que alguém pegou, ou se tiver sorte é bebida escondida.</font><BR><BR><font color=green>Luzes verdes significa que o sistema do necrotério detecta o corpo pode ser capaz de ser trazido de volta à vida.</font></font><BR><font size='2'>Não sei como isso funciona, mas mantenha longe da cozinha e vá gritar com o legista.</font><BR><BR>- Inspetor médico da CentCom"
 
 /* Morgue stuff
  * Contains:
@@ -78,7 +72,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	if(locked)
 		if(COOLDOWN_FINISHED(src, breakout_message_cooldown))
 			COOLDOWN_START(src, breakout_message_cooldown, BREAKOUT_COOLDOWN)
-			to_chat(user, span_warning("[src]'s door won't budge!"))
+			to_chat(user, span_warning("[src]A porta não se mexe!"))
 		return
 	open()
 
@@ -87,10 +81,10 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	if(.)
 		return
 	if(locked)
-		to_chat(user, span_danger("It's locked."))
+		to_chat(user, span_danger("Está trancada."))
 		return
 	if(!connected)
-		to_chat(user, "That doesn't appear to have a tray.")
+		to_chat(user, "Isso não parece ter uma bandeja.")
 		return
 	if(connected.loc == src)
 		open()
@@ -115,16 +109,14 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 		return
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message(null, \
-		span_notice("You lean on the back of [src] and start pushing the tray open... (this will take about [DisplayTimeText(BREAKDOWN_TIME)].)"), \
-		span_hear("You hear a metallic creaking from [src]."))
+	user.visible_message(null, 		span_notice("Você se apoia na parte de trás de[src]E começar a empurrar a bandeja aberta...[DisplayTimeText(BREAKDOWN_TIME)].)"), 		span_hear("Você ouve um metal rangendo de[src]."))
 	if(!do_after(user, BREAKDOWN_TIME, target = src))
 		return
 	if(!user || user.stat != CONSCIOUS || user.loc != src)
 		return
 	user.visible_message(
-		span_warning("[user] successfully broke out of [src]!"),
-		span_notice("You successfully break out of [src]!"),
+		span_warning("[user]Com sucesso, fugiu.[src]!"),
+		span_notice("Você conseguiu escapar.[src]!"),
 	)
 	open()
 
@@ -228,7 +220,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
  */
 /obj/structure/bodycontainer/morgue
 	name = "morgue"
-	desc = "Used to keep bodies in until someone fetches them. Includes a high-tech alert system."
+	desc = "Costumava guardar corpos até que alguém os pegasse. Inclui um sistema de alerta de alta tecnologia."
 	icon_state = "morgue1"
 	base_icon_state = "morgue"
 	dir = EAST
@@ -293,7 +285,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 
 /obj/structure/bodycontainer/morgue/beeper_off
 	name = "secure morgue"
-	desc = "Used to keep bodies in until someone fetches them. Starts with their beeper off."
+	desc = "Costumava guardar corpos até que alguém os pegasse. Começa com o bip desligado."
 	beeper = FALSE
 
 /obj/structure/bodycontainer/morgue/add_context(atom/source, list/context, obj/item/held_item, mob/user)
@@ -367,17 +359,17 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 
 /obj/structure/bodycontainer/morgue/examine(mob/user)
 	. = ..()
-	. += span_notice("The speaker is [beeper ? "enabled" : "disabled"]. Alt-click to toggle it.")
+	. += span_notice("O orador é[beeper ? "enabled" : "disabled"]Alt-clique para comutá-lo.")
 
 /obj/structure/bodycontainer/morgue/click_alt(mob/user)
 	beeper = !beeper
-	to_chat(user, span_notice("You turn the speaker function [beeper ? "on" : "off"]."))
+	to_chat(user, span_notice("Você gira a função do alto-falante.[beeper ? "on" : "off"]."))
 	return CLICK_ACTION_SUCCESS
 
 /obj/structure/bodycontainer/morgue/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return FALSE
-	balloon_alert(user, "alert system overloaded")
+	balloon_alert(user, "Sistema de alerta sobrecarregado.")
 	obj_flags |= EMAGGED
 	update_appearance(UPDATE_ICON)
 	return TRUE
@@ -421,7 +413,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 GLOBAL_LIST_EMPTY(crematoriums)
 /obj/structure/bodycontainer/crematorium
 	name = "crematorium"
-	desc = "A human incinerator. Works well on barbecue nights."
+	desc = "Um incinerador humano. Funciona bem em noites de churrasco."
 	icon = 'icons/obj/machines/crematorium.dmi'
 	icon_state = "crema1"
 	base_icon_state = "crema"
@@ -444,7 +436,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	return ..()
 
 /obj/structure/bodycontainer/crematorium/attack_robot(mob/user) //Borgs can't use crematoriums without help
-	to_chat(user, span_warning("[src] is locked against you."))
+	to_chat(user, span_warning("[src]Está travado contra você."))
 	return
 
 /obj/structure/bodycontainer/crematorium/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
@@ -467,11 +459,11 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	var/list/conts = get_all_contents() - src - connected
 
 	if(!conts.len)
-		audible_message(span_hear("You hear a hollow crackle."))
+		audible_message(span_hear("Você ouve uma crepitação oca."))
 		return
 
 	else
-		audible_message(span_hear("You hear a roar as the crematorium activates."))
+		audible_message(span_hear("Você ouve um rugido enquanto o crematório se ativa."))
 
 		locked = TRUE
 		update_appearance()
@@ -514,7 +506,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 
 /obj/structure/bodycontainer/crematorium/creamatorium
 	name = "creamatorium"
-	desc = "A human incinerator. Works well during ice cream socials."
+	desc = "Um incinerador humano. Funciona bem durante o sorvete social."
 
 /obj/structure/bodycontainer/crematorium/creamatorium/cremate(mob/user)
 	var/list/icecreams = list()
@@ -563,7 +555,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	if (connected)
 		connected.close()
 	else
-		to_chat(user, span_warning("That's not connected to anything!"))
+		to_chat(user, span_warning("Isso não está ligado a nada!"))
 	add_fingerprint(user)
 
 /obj/structure/tray/attackby(obj/P, mob/user, list/modifiers, list/attack_modifiers)
@@ -589,14 +581,14 @@ GLOBAL_LIST_EMPTY(crematoriums)
 			return
 	O.forceMove(src.loc)
 	if (user != O)
-		visible_message(span_warning("[user] stuffs [O] into [src]."))
+		visible_message(span_warning("[user]Coisas.[O]em[src]."))
 
 /*
  * Crematorium tray
  */
 /obj/structure/tray/c_tray
 	name = "crematorium tray"
-	desc = "Apply body before burning."
+	desc = "Aplique o corpo antes de queimar."
 	icon_state = "cremat"
 	layer = /obj/structure/bodycontainer/crematorium::layer - 0.03
 
@@ -605,7 +597,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
  */
 /obj/structure/tray/m_tray
 	name = "morgue tray"
-	desc = "Apply corpse before closing."
+	desc = "Aplique o cadáver antes de fechar."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "morguet"
 	pass_flags_self = PASSTABLE | LETPASSTHROW

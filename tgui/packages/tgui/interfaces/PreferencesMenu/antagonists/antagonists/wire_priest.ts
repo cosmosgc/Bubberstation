@@ -2,7 +2,7 @@ import { type Antagonist, Category } from '../base';
 
 const Wire_Priest: Antagonist = {
   key: 'wirepriest',
-  name: 'Wire Priest',
+  name: 'Padre Fio',
   description: [
     `
       You are part of the fleshmind, this means any fleshmind entities, structures, mobs are your ally. You must not attack them.

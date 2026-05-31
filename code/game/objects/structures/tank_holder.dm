@@ -1,7 +1,7 @@
 ///?
 /obj/structure/tank_holder
 	name = "tank holder"
-	desc = "A metallic frame that can hold tanks and extinguishers."
+	desc = "Um quadro metálico que pode segurar tanques e extintores."
 	icon = 'icons/obj/canisters.dmi'
 	icon_state = "holder"
 
@@ -36,25 +36,25 @@
 /obj/structure/tank_holder/examine(mob/user)
 	. = ..()
 	if(anchored)
-		. += span_notice("It is <b>bolted</b> to the floor.")
+		. += span_notice("É sim.<b>Aparafusado.</b>Para o chão.")
 	else
-		. += span_notice("The <i>bolts</i> on the bottom are unsecured.")
+		. += span_notice("O<i>Parafusos</i>no fundo não estão seguros.")
 	if(tank)
-		. += span_notice("It is holding \a [tank].")
+		. += span_notice("Está segurando.\a [tank].")
 	else
-		. += span_notice("It is empty.")
-	. += span_notice("It is held together by some <b>screws</b>.")
+		. += span_notice("Está vazio.")
+	. += span_notice("É mantido unido por alguns.<b>Parafusos.</b>.")
 
 /obj/structure/tank_holder/attackby(obj/item/W, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(user.combat_mode)
 		return ..()
 	if(W.tool_behaviour == TOOL_WRENCH)
-		to_chat(user, span_notice("You begin to [anchored ? "unwrench" : "wrench"] [src]."))
+		to_chat(user, span_notice("Você começa[anchored ? "unwrench" : "wrench"] [src]."))
 		if(W.use_tool(src, user, 20, volume=50))
-			to_chat(user, span_notice("You successfully [anchored ? "unwrench" : "wrench"] [src]."))
+			to_chat(user, span_notice("Você com sucesso.[anchored ? "unwrench" : "wrench"] [src]."))
 			set_anchored(!anchored)
 	else if(!SEND_SIGNAL(W, COMSIG_CONTAINER_TRY_ATTACH, src, user))
-		to_chat(user, span_warning("[W] does not fit in [src]."))
+		to_chat(user, span_warning("[W]Não se encaixa.[src]."))
 	return
 
 /obj/structure/tank_holder/screwdriver_act(mob/living/user, obj/item/I)
@@ -80,7 +80,7 @@
 		return ..()
 	if(!Adjacent(user) || issilicon(user))
 		return ..()
-	to_chat(user, span_notice("You take [tank] from [src]."))
+	to_chat(user, span_notice("Você pega.[tank]De[src]."))
 	add_fingerprint(user)
 	tank.add_fingerprint(user)
 	user.put_in_hands(tank)

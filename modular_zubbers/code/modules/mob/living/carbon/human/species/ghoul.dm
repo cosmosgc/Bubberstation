@@ -101,20 +101,20 @@
 		return ..()
 
 	if (user.handcuffed)
-		to_chat(user, span_alert("You can't get a good enough grip with your hands bound."))
+		to_chat(user, span_alert("Você não consegue segurar bem as mãos."))
 		return FALSE
 
 	// Robot Arms Fail
 	if (!IS_ORGANIC_LIMB(affecting))
-		to_chat(user, "That thing is on there good. It's not coming off with a gentle tug.")
+		to_chat(user, "Aquela coisa está bem ali. Não está saindo com um rebocador gentil.")
 		return FALSE
 
 	// Pry it off...
-	user.visible_message("[user] grabs onto [p_their()] own [affecting.name] and pulls.", span_notice("You grab hold of your [affecting.name] and yank hard."))
+	user.visible_message("[user]Agarra-se.[p_their()]Mesmo.[affecting.name]e puxa.", span_notice("Segura-se.[affecting.name]e puxe com força."))
 	if (!do_after(user, 3 SECONDS, target))
 		return FALSE
 
-	user.visible_message("[user]'s [affecting.name] comes right off in their hand.", span_notice("Your [affecting.name] pops right off."))
+	user.visible_message("[user]'s[affecting.name]sai na mão deles.", span_notice("Sua[affecting.name]Aparece imediatamente."))
 	playsound(get_turf(user), 'sound/effects/meatslap.ogg', 40, 1) //ill change these sounds later
 
 	// Destroy Limb, Drop Meat, Pick Up
@@ -145,14 +145,14 @@
 	if(!(target_zone in swappable_parts))
 		return NONE
 
-	user.visible_message("[user] begins mashing [tool] into [target]'s torso.", span_notice("You begin mashing [tool] into [target == user ? "your" : "[target]'s"] torso."))
+	user.visible_message("[user]Começa a mastigar[tool]Em[target]É o tronco.", span_notice("Você começa a triturar[tool]Em[target == user ? "your" : "[target]'s"]torso."))
 
 	// Leave Melee Chain (so deleting the meat doesn't throw an error) <--- aka, deleting the meat that called this very proc.
 	ASYNC
 		if(do_after(user, 3 SECONDS, target))
 			// Attach the part!
 			var/obj/item/bodypart/newBP = target.newBodyPart(target_zone, FALSE)
-			target.visible_message("The meat sprouts digits and becomes [target]'s new [newBP.name]!", span_notice("The meat sprouts digits and becomes your new [newBP.name]!"))
+			target.visible_message("A carne brota dígitos e se torna[target]É novo.[newBP.name]!", span_notice("A carne brota dígitos e se torna seu novo[newBP.name]!"))
 			newBP.try_attach_limb(target)
 			qdel(tool)
 			playsound(get_turf(target), 'sound/effects/meatslap.ogg', 50, 1)

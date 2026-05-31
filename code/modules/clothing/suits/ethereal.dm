@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/hooded/ethereal_raincoat
 	name = "ethereal raincoat"
-	desc = " A raincoat commonly worn by travelers or tourists not too fond of Sprout's rainy weather."
+	desc = "Uma capa de chuva comumente usada por viajantes ou turistas não gostam muito do tempo chuvoso de Sprout."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	worn_icon = 'icons/mob/clothing/suits/ethereal.dmi'
 	icon_state = "/obj/item/clothing/suit/hooded/ethereal_raincoat"
@@ -28,7 +28,7 @@
 
 /obj/item/clothing/suit/hooded/ethereal_raincoat/trailwarden
 	name = "trailwarden oilcoat"
-	desc = "A masterfully handcrafted oilslick coat, supposedly makes for excellent camouflage among Sprout's vegetation. You can hear a faint electrical buzz emanating from the luminescent pattern."
+	desc = "Um casaco oleoso feito magistralmente, supostamente faz uma excelente camuflagem entre a vegetação de Sprout. Você pode ouvir um leve zumbido elétrico que emana do padrão luminescente."
 	icon_state = "/obj/item/clothing/suit/hooded/ethereal_raincoat/trailwarden"
 	greyscale_colors = "#32a87d"
 	hoodtype = /obj/item/clothing/head/hooded/ethereal_rainhood/trailwarden
@@ -41,13 +41,13 @@
 	. = ..()
 	if(isethereal(user) && (slot & ITEM_SLOT_OCLOTHING))
 		var/mob/living/carbon/human/ethereal = user
-		to_chat(ethereal, span_notice("[src] gently quivers for a moment as you put it on."))
+		to_chat(ethereal, span_notice("[src]gentilmente treme por um momento enquanto você coloca."))
 		set_greyscale(ethereal.dna.species.fixed_mut_color)
 		ethereal.update_worn_oversuit()
 
 /obj/item/clothing/head/hooded/ethereal_rainhood
 	name = "ethereal rainhood"
-	desc = "Protects against space rain."
+	desc = "Protege contra a chuva espacial."
 	icon = 'icons/obj/clothing/head/ethereal.dmi'
 	icon_state = "eth_rainhood"
 	worn_icon = 'icons/mob/clothing/head/ethereal.dmi'

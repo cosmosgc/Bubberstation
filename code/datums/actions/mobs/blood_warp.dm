@@ -2,7 +2,7 @@
 	name = "Blood Warp"
 	button_icon = 'icons/effects/blood.dmi'
 	button_icon_state = "floor1"
-	desc = "Allows you to teleport to blood at a clicked position."
+	desc = "Permite que você se teletransporte para o sangue em uma posição clicada."
 	cooldown_time = 0 SECONDS
 	/// The range of turfs to try to jaunt to from around the target
 	var/pick_range = 5
@@ -57,11 +57,11 @@
 		shuffle_inplace(pools)
 		found_bloodpool = pick(pools)
 	if(found_bloodpool)
-		owner.visible_message(span_danger("[owner] sinks into the blood..."))
+		owner.visible_message(span_danger("[owner]Afunda no sangue..."))
 		playsound(owner_turf, 'sound/effects/magic/enter_blood.ogg', 100, TRUE, -1)
 		owner.forceMove(get_turf(found_bloodpool))
 		playsound(get_turf(owner), 'sound/effects/magic/exit_blood.ogg', 100, TRUE, -1)
-		owner.visible_message(span_danger("And springs back out!"))
+		owner.visible_message(span_danger("E as molas voltam!"))
 		SEND_SIGNAL(owner, COMSIG_BLOOD_WARP)
 		return TRUE
 	return FALSE

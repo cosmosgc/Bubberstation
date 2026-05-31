@@ -49,7 +49,7 @@ export class Changelog extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: 'Loading changelog data...',
+      data: 'Carregando dados do Changelog...',
       selectedDate: '',
       selectedIndex: 0,
     };
@@ -102,7 +102,7 @@ export class Changelog extends Component {
 
     if (dates) {
       dates.forEach((date) => {
-        this.dateChoices.push(dateformat(date, 'mmmm yyyy', true));
+        this.dateChoices.push(dateformat(date, 'mmmm yayy', true));
       });
       this.setSelectedDate(this.dateChoices[0]);
       this.getData(dates[0]);
@@ -126,7 +126,7 @@ export class Changelog extends Component {
             onClick={() => {
               const index = selectedIndex - 1;
 
-              this.setData('Loading changelog data...');
+              this.setData('Carregando dados do Changelog...');
               this.setSelectedIndex(index);
               this.setSelectedDate(dateChoices[index]);
               window.scrollTo(
@@ -145,7 +145,7 @@ export class Changelog extends Component {
             onSelected={(value) => {
               const index = dateChoices.indexOf(value);
 
-              this.setData('Loading changelog data...');
+              this.setData('Carregando dados do Changelog...');
               this.setSelectedIndex(index);
               this.setSelectedDate(value);
               window.scrollTo(
@@ -167,7 +167,7 @@ export class Changelog extends Component {
             onClick={() => {
               const index = selectedIndex + 1;
 
-              this.setData('Loading changelog data...');
+              this.setData('Carregando dados do Changelog...');
               this.setSelectedIndex(index);
               this.setSelectedDate(dateChoices[index]);
               window.scrollTo(
@@ -194,16 +194,16 @@ export class Changelog extends Component {
           have contributed to the game.
         </p>
         <p>
-          {'Current project maintainers can be found '}
-          <a href="https://github.com/skyrat-ss13?tab=members">here</a>
-          {', recent GitHub contributors can be found '}
+          {'Mantenedores de projeto atuais podem ser encontrados.'}
+          <a href="https://github.com/skyrat-ss13?tab=membros">here</a>
+          {', recentes colaboradores GitHub podem ser encontrados'}
           <a href="https://github.com/Skyrat-SS13/Skyrat-tg/pulse/monthly">
             here
           </a>
           .
         </p>
         <p>
-          {'You can also join our forums '}
+          {'Você também pode se juntar aos nossos fóruns.'}
           <a href="https://forum.skyrat13.tk/">here</a>.
         </p>
         {dateDropdown}
@@ -227,21 +227,21 @@ export class Changelog extends Component {
         <p>
           Traditional Games Space Station 13 is thankful to the GoonStation 13
           Development Team for its work on the game up to the
-          {' r4407 release. The changelog for changes up to r4407 can be seen '}
+          {'R4407 liberação. O changelog para mudanças até R4407 pode ser visto'}
           <a href="https://wiki.ss13.co/Pre-2016_Changelog#April_2010">here</a>.
         </p>
         <p>
-          {'Except where otherwise noted, Goon Station 13 is licensed under a '}
+          {'Exceto onde de outra forma notado, Goon Station 13 está licenciado sob um'}
           <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">
             Creative Commons Attribution-Noncommercial-Share Alike 3.0 License
           </a>
-          {'. Rights are currently extended to '}
+          {'Os direitos estão atualmente estendidos para'}
           <a href="http://forums.somethingawful.com/">SomethingAwful Goons</a>
           {' only.'}
         </p>
         <h3>Traditional Games Space Station 13 License</h3>
         <p>
-          {'All code after '}
+          {'Todos os códigos depois.'}
           <a
             href={
               'https://github.com/tgstation/tgstation/commit/' +
@@ -251,11 +251,11 @@ export class Changelog extends Component {
             commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at
             4:38 PM PST
           </a>
-          {' is licensed under '}
+          {'é licenciado sob'}
           <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU AGPL v3</a>
-          {'. All code before that commit is licensed under '}
+          {'Todo o código antes do commit está licenciado sob'}
           <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU GPL v3</a>
-          {', including tools unless their readme specifies otherwise. See '}
+          {', incluindo ferramentas, a menos que a leitura deles especifique o contrário. Veja.'}
           <a href="https://github.com/tgstation/tgstation/blob/master/LICENSE">
             LICENSE
           </a>
@@ -263,11 +263,11 @@ export class Changelog extends Component {
           <a href="https://github.com/tgstation/tgstation/blob/master/GPLv3.txt">
             GPLv3.txt
           </a>
-          {' for more details.'}
+          {'para mais detalhes.'}
         </p>
         <p>
           The TGS DMAPI API is licensed as a subproject under the MIT license.
-          {' See the footer of '}
+          {'Veja o rodapé de'}
           <a
             href={
               'https://github.com/tgstation/tgstation/blob/master' +
@@ -285,14 +285,14 @@ export class Changelog extends Component {
           >
             code/modules/tgs/LICENSE
           </a>
-          {' for the MIT license.'}
+          {'pela licença do MIT.'}
         </p>
         <p>
-          {'All assets including icons and sound are under a '}
+          {'Todos os recursos, incluindo ícones e som estão sob um'}
           <a href="https://creativecommons.org/licenses/by-sa/3.0/">
             Creative Commons 3.0 BY-SA license
           </a>
-          {' unless otherwise indicated.'}
+          {'salvo indicação em contrário.'}
         </p>
       </Section>
     );
@@ -303,7 +303,7 @@ export class Changelog extends Component {
       Object.entries(data)
         .reverse()
         .map(([date, authors]) => (
-          <Section key={date} title={dateformat(date, 'd mmmm yyyy', true)}>
+          <Section key={date} title={dateformat(date, 'D mmmm yyyy', true)}>
             <Box ml={3}>
               {Object.entries(authors).map(([name, changes]) => (
                 <Fragment key={name}>

@@ -17,7 +17,7 @@ export const CryopodConsole = (props) => {
   const welcomeTitle = `Hello, ${account_name || '[REDACTED]'}!`;
 
   return (
-    <Window title="Cryopod Console" width={400} height={480}>
+    <Window title="Consola Criópode" width={400} height={480}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>

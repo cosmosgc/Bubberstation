@@ -46,7 +46,7 @@ export const NtosSpaceBetting = () => {
   return (
     <NtosWindow width={500} height={620}>
       <NtosWindow.Content scrollable>
-        <Section title="User Information">
+        <Section title="Informação do usuário">
           <Stack>
             <Stack.Item mr={1.5}>
               <Icon
@@ -123,7 +123,7 @@ export const PollsSection = () => {
                               />
                             ) : (
                               <Button.Checkbox
-                                tooltip="Whether this answer won."
+                                tooltip="Se essa resposta venceu."
                                 checked={Winner === option_name}
                                 key={option_name}
                                 onClick={() => set_winner(option_name)}
@@ -140,7 +140,7 @@ export const PollsSection = () => {
                         <Button.Confirm
                           fluid
                           icon="minus"
-                          tooltip="Lock the ability to place/retract bets. This is irreversible!"
+                          tooltip="Bloqueie a habilidade de fazer/retrair apostas. Isso é irreversível!"
                           onClick={() =>
                             act('lock_betting', { bet_selected: name })
                           }
@@ -152,7 +152,7 @@ export const PollsSection = () => {
                       <Button.Confirm
                         fluid
                         icon="plus"
-                        tooltip="Finalize results as the checked answer being the winner."
+                        tooltip="Finalizar os resultados como a resposta verificada sendo o vencedor."
                         onClick={() =>
                           act('select_winner', {
                             bet_selected: name,
@@ -169,7 +169,7 @@ export const PollsSection = () => {
                     fluid
                     icon="minus"
                     disabled={locked}
-                    tooltip="If you have any bets, this will remove them and refund the money."
+                    tooltip="Se tiverem alguma aposta, isso os removerá e devolverá o dinheiro."
                     onClick={() => act('cancel_bet', { bet_selected: name })}
                   >
                     Cancel Bet
@@ -195,7 +195,7 @@ export const BettingCreation = () => {
   const [option4, setOption4] = useState('');
 
   return (
-    <Collapsible title="Bet Creation">
+    <Collapsible title="Aposta na Criação">
       <Stack fill vertical>
         <Stack.Item grow>
           <Input
@@ -219,25 +219,25 @@ export const BettingCreation = () => {
         </Stack.Item>
         <Input
           fluid
-          placeholder="Option 1"
+          placeholder="Opção 1"
           maxLength={max_title_length}
           onChange={setOption1}
         />
         <Input
           fluid
-          placeholder="Option 2"
+          placeholder="Opção 2"
           maxLength={max_title_length}
           onChange={setOption2}
         />
         <Input
           fluid
-          placeholder="Option 3 (Optional)"
+          placeholder="Opção 3 (Opcional)"
           maxLength={max_title_length}
           onChange={setOption3}
         />
         <Input
           fluid
-          placeholder="Option 4 (Optional)"
+          placeholder="Opção 4 (Opcional)"
           maxLength={max_title_length}
           onChange={setOption4}
         />

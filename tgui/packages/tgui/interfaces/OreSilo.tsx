@@ -247,7 +247,7 @@ const RestrictButton = () => {
           right: 0,
         }}
       >
-        {ID_required ? 'Disable ID Requirement' : 'Enable ID Requirement'}
+        {ID_required ? 'Desativar requisito de identificação' : 'Habilitar requisito de identificação'}
       </Button>
     </Box>
   );
@@ -281,14 +281,14 @@ const LogsList = (props: LogsListProps) => {
   return (
     <Stack vertical fill>
       <Stack.Item>
-        <Section title="Action Logs" buttons={<RestrictButton />}>
+        <Section title="Diários de Ação" buttons={<RestrictButton />}>
           <Stack>
             <Stack.Item grow>
               <Input
                 fluid
                 height={1.7}
                 autoFocus
-                placeholder="Search for names, locations and resources..."
+                placeholder="Procure nomes, locais e recursos..."
                 value={query}
                 onChange={(value) => setQuery(value)}
               />
@@ -314,8 +314,8 @@ const LogsList = (props: LogsListProps) => {
           ) : (
             <NoticeBox textAlign="center">
               {query
-                ? 'No logs seem to match your request.'
-                : 'Nothing here...'}
+                ? 'Nenhum registro corresponde ao seu pedido.'
+                : 'Nada aqui...'}
             </NoticeBox>
           )}
         </Section>

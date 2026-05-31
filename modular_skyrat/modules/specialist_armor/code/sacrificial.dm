@@ -11,10 +11,7 @@
 
 /obj/item/clothing/suit/armor/sf_sacrificial
 	name = "'Val' sacrificial ballistic vest"
-	desc = "A hefty vest with a unique pattern of hexes on its outward faces. \
-		As the 'sacrificial' name might imply, this vest has extremely high bullet protection \
-		in exchange for allowing itself to be destroyed by impacts. It'll protect you from hell, \
-		but only for so long."
+	desc = "Um colete robusto com um padrão único de feitiços em seus rostos exteriores. Como o nome 'sacrifício' pode implicar, este colete tem proteção de bala extremamente alta em troca de permitir-se ser destruído por impactos. Vai protegê-lo do inferno, mas só por tanto tempo."
 	icon = 'modular_skyrat/modules/specialist_armor/icons/armor.dmi'
 	icon_state = "hexagon"
 	worn_icon = 'modular_skyrat/modules/specialist_armor/icons/armor_worn.dmi'
@@ -34,20 +31,13 @@
 /obj/item/clothing/suit/armor/sf_sacrificial/examine_more(mob/user)
 	. = ..()
 
-	. += "An extreme solution to an extreme problem. While many galactic armors have some semblance of self-repairing tech \
-		in them to prevent the armor becoming useless after being shot enough, it does have its limits. Those limits tend to be \
-		that the self-repairing, while handy, take the place of what could have simply been more armor. For a small market, \
-		one that doesn't care if their armor lasts more than one gunfight, there exists a niche for armors such as the 'Val'. \
-		Passing up self-repair for nigh-immunity to bullets, the right tool for a certain job, if you can find whatever that job may be."
+	. += "An extreme solution to an extreme problem. While many galactic armors have some semblance of self-repairing tech 		in them to prevent the armor becoming useless after being shot enough, it does have its limits. Those limits tend to be 		that the self-repairing, while handy, take the place of what could have simply been more armor. For a small market, 		one that doesn't care if their armor lasts more than one gunfight, there exists a niche for armors such as the 'Val'. 		Passing up self-repair for nigh-immunity to bullets, the right tool for a certain job, if you can find whatever that job may be."
 
 	return .
 
 /obj/item/clothing/head/helmet/sf_sacrificial
 	name = "'Val' sacrificial ballistic helmet"
-	desc = "A large, almost always ill-fitting helmet painted in a tacticool black. \
-		As the 'sacrificial' name might imply, this helmet has extremely high bullet protection \
-		in exchange for allowing itself to be destroyed by impacts. It'll protect you from hell, \
-		but only for so long."
+	desc = "Um grande, quase sempre mal ajustado capacete pintado em um preto táticaol. Como o nome 'sacrifício' pode implicar, este capacete tem proteção de bala extremamente alta em troca de permitir-se ser destruído por impactos. Vai protegê-lo do inferno, mas só por tanto tempo."
 	icon = 'modular_skyrat/modules/specialist_armor/icons/armor.dmi'
 	icon_state = "bulletproof"
 	worn_icon = 'modular_skyrat/modules/specialist_armor/icons/armor_worn.dmi'
@@ -131,27 +121,22 @@
 /obj/item/clothing/head/helmet/sf_sacrificial/examine(mob/user)
 	. = ..()
 	if(face_shield)
-		. += span_notice("The <b>face shield</b> can be removed with <b>Right-Click</b>.")
+		. += span_notice("O<b>Escodo do rosto</b>pode ser removido com<b>Clique em direito.</b>.")
 	else
-		. += span_notice("A <b>face shield</b> can be attached to it.")
+		. += span_notice("A<b>Escodo do rosto</b>Pode ser ligado a ele.")
 
 	return .
 
 /obj/item/clothing/head/helmet/sf_sacrificial/examine_more(mob/user)
 	. = ..()
 
-	. += "An extreme solution to an extreme problem. While many galactic armors have some semblance of self-repairing tech \
-		in them to prevent the armor becoming useless after being shot enough, it does have its limits. Those limits tend to be \
-		that the self-repairing, while handy, take the place of what could have simply been more armor. For a small market, \
-		one that doesn't care if their armor lasts more than one gunfight, there exists a niche for armors such as the 'Val'. \
-		Passing up self-repair for nigh-immunity to bullets, the right tool for a certain job, if you can find whatever that job may be."
+	. += "An extreme solution to an extreme problem. While many galactic armors have some semblance of self-repairing tech 		in them to prevent the armor becoming useless after being shot enough, it does have its limits. Those limits tend to be 		that the self-repairing, while handy, take the place of what could have simply been more armor. For a small market, 		one that doesn't care if their armor lasts more than one gunfight, there exists a niche for armors such as the 'Val'. 		Passing up self-repair for nigh-immunity to bullets, the right tool for a certain job, if you can find whatever that job may be."
 
 	return .
 
 /obj/item/sacrificial_face_shield
 	name = "'Val' ballistic add-on face plate"
-	desc = "A thick piece of glass with mounting points for slotting onto a 'Val' sacrificial ballistic helmet. \
-		While it does not make the helmet any stronger, it does protect your face much like a riot helmet would."
+	desc = "Um pedaço espesso de vidro com pontos de montagem para colocar em um capacete balístico de sacrifício \"Val.\". Embora não torne o capacete mais forte, protege seu rosto como um capacete de choque."
 	icon = 'modular_skyrat/modules/specialist_armor/icons/armor.dmi'
 	icon_state = "face_shield"
 	w_class = WEIGHT_CLASS_NORMAL

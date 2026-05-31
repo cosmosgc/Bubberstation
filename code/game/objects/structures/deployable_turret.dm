@@ -3,7 +3,7 @@
 
 /obj/machinery/deployable_turret
 	name = "machine gun turret"
-	desc = "While the trigger is held down, this gun will redistribute recoil to allow its user to easily shift targets."
+	desc = "Enquanto o gatilho está preso, esta arma redistribuirá o recuo para permitir que seu usuário facilmente mude de alvo."
 	icon = 'icons/obj/weapons/turrets.dmi'
 	icon_state = "machinegun"
 	can_buckle = TRUE
@@ -213,7 +213,7 @@
 
 /obj/machinery/deployable_turret/hmg
 	name = "heavy machine gun turret"
-	desc = "A heavy caliber machine gun commonly used by Nanotrasen forces, famed for its ability to give people on the receiving end more holes than normal."
+	desc = "Uma metralhadora de calibre pesado comumente usada pelas forças Nanotrasen, famosa por sua capacidade de dar às pessoas na extremidade receptora mais buracos do que o normal."
 	icon_state = "hmg"
 	max_integrity = 250
 	projectile_type = /obj/projectile/bullet/manned_turret/hmg

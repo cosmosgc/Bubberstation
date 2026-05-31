@@ -9,7 +9,7 @@
 
 /datum/symptom/choking
 	name = "Choking"
-	desc = "The virus causes inflammation of the host's air conduits, leading to intermittent choking."
+	desc = "O vírus causa inflamação dos conduítes de ar do hospedeiro, levando a asfixia intermitente."
 	illness = "Pneumatic Tubes"
 	stealth = -1
 	resistance = 0
@@ -53,7 +53,7 @@
 			if(!suppress_warning)
 				to_chat(infected_mob, span_warning("[pick("Your windpipe feels like a straw.", "Your breathing becomes tremendously difficult.")]"))
 			else
-				to_chat(infected_mob, span_warning("You feel very [pick("dizzy","woozy","faint")].")) //fake bloodloss messages
+				to_chat(infected_mob, span_warning("Você se sente muito.[pick("dizzy","woozy","faint")].")) //fake bloodloss messages
 			Choke_stage_3_4(infected_mob, advanced_disease)
 			infected_mob.emote("gasp")
 		else
@@ -88,7 +88,7 @@ Bonus
 
 /datum/symptom/asphyxiation
 	name = "Acute respiratory distress syndrome"
-	desc = "The virus causes shrinking of the host's lungs, causing severe asphyxiation. May also lead to heart attacks."
+	desc = "O vírus causa encolhimento dos pulmões do hospedeiro, causando asfixia severa. Também pode levar a ataques cardíacos."
 	illness = "Iron Lungs"
 	stealth = -2
 	resistance = 0
@@ -133,7 +133,7 @@ Bonus
 			Asphyxiate(M, A)
 			M.emote("gasp")
 			if(M.get_oxy_loss() >= (M.maxHealth / (200/120)))
-				M.visible_message(span_warning("[M] stops breathing, as if their lungs have totally collapsed!"))
+				M.visible_message(span_warning("[M]Pare de respirar, como se seus pulmões tivessem colapsado!"))
 				Asphyxiate_death(M, A)
 	return
 

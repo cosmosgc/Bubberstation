@@ -1,6 +1,6 @@
 /obj/machinery/ammo_workbench
 	name = "ammunitions workbench"
-	desc = "A machine, somewhat akin to a lathe, made specifically for manufacturing ammunition. It has a slot for magazines, ammo boxes, clips... anything that holds ammo."
+	desc = "Uma máquina, parecida com um torno, feita especificamente para fabricar munição. Tem espaço para revistas, caixas de munição, clipes... qualquer coisa que contenha munição."
 	icon = 'modular_zubbers/icons/obj/structures/ammo_workbench.dmi'
 	icon_state = "ammobench"
 	density = TRUE
@@ -67,20 +67,14 @@
 	)
 
 /obj/machinery/ammo_workbench/Initialize(mapload)
-	materials = new( \
-		src, \
-		SSmaterials.get_materials_by_flag(MATERIAL_SILO_STORED), \
-		200000, \
-		MATCONTAINER_EXAMINE, \
-		allowed_items = /obj/item/stack, \
-	)
+	materials = new( 		src, 		SSmaterials.get_materials_by_flag(MATERIAL_SILO_STORED), 		200000, 		MATCONTAINER_EXAMINE, 		allowed_items = /obj/item/stack, 	)
 	. = ..()
 	set_wires(new /datum/wires/ammo_workbench(src))
 
 /obj/machinery/ammo_workbench/examine(mob/user)
 	. += ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Storing up to <b>[materials.max_amount]</b> material units.<br>Material consumption at <b>[creation_efficiency*100]%</b>.")
+		. += span_notice("A exibição de status diz:<b>[materials.max_amount]</b>Unidades materiais.<br>Consumo de material em<b>[creation_efficiency*100]%</b>.")
 
 /obj/machinery/ammo_workbench/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -301,25 +295,25 @@
 		error_type = ""
 
 	if(!(casing_type in possible_ammo_types))
-		error_message = "AMMUNITION MISMATCH"
+		error_message = "AMUNIÇÃO MISMATCH"
 		error_type = "bad"
 		return
 
 	var/obj/item/ammo_casing/our_casing = casing_type
 
 	if(initial(our_casing.harmful) && !allowed_harmful)
-		error_message = "SYSTEM CORRUPTION DETECTED, PLEASE EJECT CONTAINER AND SUBMIT SUPPORT TICKET"
+		error_message = "CORRUPÇÃO DO SISTEMA DETECTADA, POR FAVOR EJECTAR CONTEINER E SUPORTAR LITKET"
 		error_type = "bad"
 		if(!hacked)
 			return
 
 	if(!loaded_magazine)
-		error_message = "NO MAGAZINE INSERTED"
+		error_message = "Nenhuma revista foi registrada."
 		error_type = ""
 		return
 
 	if(loaded_magazine.stored_ammo.len >= loaded_magazine.max_ammo)
-		error_message = "MAGAZINE IS FULL"
+		error_message = "A revista está cheia."
 		error_type = "good"
 		return
 
@@ -350,7 +344,7 @@
 		efficient_materials[material] = required_materials[material] * creation_efficiency
 
 	if(!materials.has_materials(efficient_materials))
-		error_message = "INSUFFICIENT MATERIALS"
+		error_message = "MATERIAIS INSUFICIENTES"
 		error_type = "bad"
 		ammo_fill_finish(FALSE)
 		qdel(new_casing)
@@ -358,7 +352,7 @@
 
 	if(new_casing.type in possible_ammo_types)
 		if(!loaded_magazine.give_round(new_casing))
-			error_message = "AMMUNITION MISMATCH"
+			error_message = "AMUNIÇÃO MISMATCH"
 			error_type = "bad"
 			ammo_fill_finish(FALSE)
 			qdel(new_casing)
@@ -376,7 +370,7 @@
 
 	if(loaded_magazine.stored_ammo.len >= loaded_magazine.max_ammo)
 		ammo_fill_finish()
-		error_message = "CONTAINER IS FULL"
+		error_message = "CONTINGADOR ESTÁ TOTAL"
 		error_type = "good"
 		return
 
@@ -420,7 +414,7 @@
 
 /datum/design/board/ammo_workbench
 	name = "Machine Design (Ammunitions Workbench)"
-	desc = "A machine, somewhat akin to a lathe, made specifically for manufacturing ammunition. It has a slot for ammunition containers, like magazines or stripper clips."
+	desc = "Uma máquina, parecida com um torno, feita especificamente para fabricar munição. Tem espaço para recipientes de munição, como revistas ou clipes de stripper."
 	id = "ammo_workbench"
 	build_path = /obj/item/circuitboard/machine/ammo_workbench
 	category = list(RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_FAB)
@@ -525,7 +519,7 @@
 		if(!user.transferItemToLoc(O, src))
 			return FALSE
 		if(loaded_magazine)
-			to_chat(user, span_notice("You quickly swap [loaded_magazine] for [O]."))
+			to_chat(user, span_notice("Você troca rapidamente.[loaded_magazine]para[O]."))
 			loaded_magazine.forceMove(drop_location())
 			user.put_in_hands(loaded_magazine)
 			loaded_magazine = null
@@ -536,7 +530,7 @@
 				deltimer(timer_id)
 				timer_id = null
 		loaded_magazine = O
-		to_chat(user, span_notice("You insert [O] to into [src]'s reciprocal."))
+		to_chat(user, span_notice("Você insere[O]para entrar em[src]É recíproco."))
 		flick("h_lathe_load", src)
 		update_appearance()
 		update_ammotypes()
@@ -546,7 +540,7 @@
 		if(!user.transferItemToLoc(O, src))
 			return FALSE
 		loaded_datadisk = O
-		to_chat(user, span_notice("You insert [O] to into [src]'s floppydisk port."))
+		to_chat(user, span_notice("Você insere[O]para entrar em[src]A porta do disco flexível."))
 		flick("h_lathe_load", src)
 		update_appearance()
 		playsound(loc, 'sound/machines/terminal/terminal_insert_disc.ogg', 35, 1)
@@ -555,19 +549,19 @@
 
 /obj/machinery/ammo_workbench/proc/is_insertion_ready(mob/user, obj/item/O)
 	if(panel_open)
-		to_chat(user, span_warning("You can't load [src] while it's opened!"))
+		to_chat(user, span_warning("Você não pode carregar[src]Enquanto está aberto!"))
 		return FALSE
 	if(disabled)
-		to_chat(user, span_warning("The insertion belts of [src] won't engage!"))
+		to_chat(user, span_warning("Os cintos de inserção de[src]Não vai atacar!"))
 		return FALSE
 	if(machine_stat & BROKEN)
-		to_chat(user, span_warning("[src] is broken."))
+		to_chat(user, span_warning("[src]Está quebrado."))
 		return FALSE
 	if(machine_stat & NOPOWER)
-		to_chat(user, span_warning("[src] has no power."))
+		to_chat(user, span_warning("[src]não tem poder."))
 		return FALSE
 	if(istype(O, /obj/item/disk/ammo_workbench) && loaded_datadisk)
-		to_chat(user, span_warning("[src] already has a disk inserted."))
+		to_chat(user, span_warning("[src]Já tem um disco inserido."))
 		return FALSE
 	return TRUE
 

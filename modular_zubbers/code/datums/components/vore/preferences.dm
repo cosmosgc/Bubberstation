@@ -116,7 +116,7 @@
 	var/list/choices = generate_slot_choice_list()
 	var/choice = tgui_input_list(usr, "Choose a slot to load", "Belly Slot", choices, get_slot_name())
 	if(choice)
-		if(tgui_alert(usr, "Are you SURE you want to delete all current bellies and replace them with the slot '[choice]'?", "Slot Loading", list("No", "Yes")) != "Yes")
+		if(tgui_alert(usr, "Tem certeza que quer apagar todas as barrigas atuais e substituí-las pela ranhura?[choice]'?", "Slot Loading", list("No", "Yes")) != "Yes")
 			return FALSE
 		belly_layout_slot = choices[choice]
 		return TRUE
@@ -126,7 +126,7 @@
 	var/list/choices = generate_slot_choice_list()
 	var/choice = tgui_input_list(usr, "Choose a slot to copy over", "Belly Slot", choices)
 	if(choice)
-		if(tgui_alert(usr, "Are you SURE you want to overwrite '[choice]' with current bellies?", "Slot Copying", list("No", "Yes")) != "Yes")
+		if(tgui_alert(usr, "Tem certeza que quer sobrescrever?[choice]Com barrigas atuais?", "Slot Copying", list("No", "Yes")) != "Yes")
 			return null
 
 		set_slot_name("[get_slot_name()] (Copy)", choices[choice])
@@ -141,7 +141,7 @@
 		var/data = get_belly_export(slot_index)
 		var/path = "[get_player_save_folder(usr.ckey)]/vore_export.json"
 		rustg_file_write(json_encode(data, JSON_PRETTY_PRINT), path)
-		to_chat(usr, span_notice("Sending you [choice], this may take a moment..."))
+		to_chat(usr, span_notice("Enviando você[choice]Isso pode levar um momento..."))
 		usr << ftp(file(path))
 		fdel(path)
 

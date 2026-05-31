@@ -2,7 +2,7 @@
 
 /obj/machinery/field/containment
 	name = "containment field"
-	desc = "An energy field."
+	desc = "Um campo de energia."
 	icon = 'icons/obj/machines/engine/singularity.dmi'
 	icon_state = "Contain_F"
 	density = FALSE
@@ -72,7 +72,7 @@
 		qdel(src)
 		return
 	if(ismegafauna(user))
-		user.visible_message(span_warning("[user] glows fiercely as the containment field flickers out!"))
+		user.visible_message(span_warning("[user]Brilha ferozmente enquanto o campo de contenção brilha!"))
 		field_gen_1.calc_power(INFINITY) //rip that 'containment' field
 		user.adjustHealth(-user.obj_damage)
 	else
@@ -145,9 +145,7 @@
 		if(prob(20))
 			user.Stun(40)
 		user.take_overall_damage(burn = shock_damage)
-		user.visible_message(span_danger("[user.name] is shocked by \the [src]!"), \
-		span_userdanger("Energy pulse detected, system damaged!"), \
-		span_hear("You hear an electrical crack."))
+		user.visible_message(span_danger("[user.name]está chocado com\the [src]!"), 		span_userdanger("Pulso de energia detectado, sistema danificado!"), 		span_hear("Você ouve uma rachadura elétrica."))
 
 	user.updatehealth()
 	bump_field(user)
@@ -162,7 +160,7 @@
 	do_sparks(5, TRUE, considered_atom.loc)
 	var/atom/target = get_edge_target_turf(considered_atom, get_dir(src, get_step_away(considered_atom, src)))
 	if(isliving(considered_atom))
-		to_chat(considered_atom, span_userdanger("The field repels you with tremendous force!"))
+		to_chat(considered_atom, span_userdanger("O campo repele você com uma força tremenda!"))
 	playsound(src, 'sound/effects/gravhit.ogg', 50, TRUE)
 	considered_atom.throw_at(target, 200, 4)
 	addtimer(CALLBACK(src, PROC_REF(clear_shock)), 0.5 SECONDS)

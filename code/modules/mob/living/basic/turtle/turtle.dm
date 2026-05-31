@@ -120,7 +120,7 @@
 	. = ..()
 
 	if(stat == DEAD)
-		. += span_notice("Its tree seems to be all withered...")
+		. += span_notice("Sua árvore parece estar toda seca...")
 		return
 
 	var/destined_path = retrieve_destined_path()
@@ -195,11 +195,11 @@
 		return NONE
 
 	if(isnull(used_item.reagents))
-		balloon_alert(user, "vazio!")
+		balloon_alert(user, "Vazio!")
 		return ITEM_INTERACT_SUCCESS
 
 	if(stat == DEAD)
-		balloon_alert(user, "its dead!")
+		balloon_alert(user, "Está morto!")
 		return ITEM_INTERACT_SUCCESS
 
 	var/should_transfer = FALSE
@@ -209,14 +209,14 @@
 			break
 
 	if(!should_transfer)
-		balloon_alert(user, "refuses to drink!")
+		balloon_alert(user, "Se recusar um beber!")
 		return ITEM_INTERACT_SUCCESS
 
 	if(!do_after(user, 1.5 SECONDS, target = src))
 		return ITEM_INTERACT_SUCCESS
 
 	used_item.reagents.trans_to(reagents, 5)
-	balloon_alert(user, "drinks happily")
+	balloon_alert(user, "bebidas feliza")
 	playsound(src, 'sound/items/drink.ogg', vol = 25, vary = TRUE)
 	return ITEM_INTERACT_SUCCESS
 

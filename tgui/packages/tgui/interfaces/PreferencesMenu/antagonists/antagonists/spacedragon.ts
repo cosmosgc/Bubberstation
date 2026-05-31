@@ -2,7 +2,7 @@ import { type Antagonist, Category } from '../base';
 
 const SpaceDragon: Antagonist = {
   key: 'spacedragon',
-  name: 'Space Dragon',
+  name: 'Dragão Espacial',
   description: [
     `
       Become a ferocious space dragon. Breathe fire, summon an army of space

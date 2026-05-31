@@ -11,7 +11,7 @@
 
 /mob/living/simple_animal/bot/mulebot
 	name = "\improper MULEbot"
-	desc = "A Multiple Utility Load Effector bot."
+	desc = "Um robô de carga de vários utilitários."
 	icon_state = "mulebot0"
 	light_color = "#ffcc99"
 	light_power = 0.8
@@ -32,7 +32,7 @@
 	radio_channel = RADIO_CHANNEL_SUPPLY
 	bot_type = MULE_BOT
 	path_image_color = "#7F5200"
-	possessed_message = "You are a MULEbot! Do your best to make sure that packages get to their destination!"
+	possessed_message = "Você é um MULEbot! Faça o seu melhor para garantir que os pacotes cheguem ao seu destino!"
 
 	/// unique identifier in case there are multiple mulebots.
 	var/id
@@ -101,12 +101,12 @@
 	. = ..()
 	if(bot_cover_flags & BOT_COVER_MAINTS_OPEN)
 		if(cell)
-			. += span_notice("[p_They()] [p_have()] \a [cell] installed.")
-			. += span_info("You can use a <b>crowbar</b> to remove it.")
+			. += span_notice("[p_They()] [p_have()] \a [cell]Instalado.")
+			. += span_info("Você pode usar um<b>Pé de cabra.</b>para removê-lo.")
 		else
-			. += span_notice("[p_They()] [p_have()] an empty compartment where a <b>power cell</b> can be installed.")
+			. += span_notice("[p_They()] [p_have()]Um compartimento vazio onde<b>Célula de energia</b>Pode ser instalado.")
 	if(load) //observer check is so we don't show the name of the ghost that's sitting on it to prevent metagaming who's ded.
-		. += span_notice("\A [isobserver(load) ? "ghostly figure" : load] is on [p_their()] load platform.")
+		. += span_notice("\A [isobserver(load) ? "ghostly figure" : load]Está ligado.[p_their()]Plataforma de carga.")
 
 
 /mob/living/simple_animal/bot/mulebot/Destroy()
@@ -163,12 +163,12 @@
 	if(!(bot_cover_flags & BOT_COVER_MAINTS_OPEN) || user.combat_mode)
 		return
 	if(!cell)
-		to_chat(user, span_warning("[src] doesn't have a power cell!"))
+		to_chat(user, span_warning("[src]não tem uma célula de energia!"))
 		return ITEM_INTERACT_BLOCKING
 	cell.add_fingerprint(user)
 	user.visible_message(
-		span_notice("[user] crowbars [cell] out from [src]."),
-		span_notice("You pry [cell] out of [src]."),
+		span_notice("[user]Pés de cabra.[cell]Fora de[src]."),
+		span_notice("Você se intromete.[cell]Fora[src]."),
 	)
 	if(Adjacent(user) && !issilicon(user))
 		user.put_in_hands(cell)
@@ -179,15 +179,15 @@
 /mob/living/simple_animal/bot/mulebot/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/stock_parts/power_store/cell) && (bot_cover_flags & BOT_COVER_MAINTS_OPEN))
 		if(cell)
-			to_chat(user, span_warning("[src] already has a power cell!"))
+			to_chat(user, span_warning("[src]Já tem uma célula de energia!"))
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
 		cell = tool
 		diag_hud_set_mulebotcell()
 		user.visible_message(
-			span_notice("[user] inserts \a [cell] into [src]."),
-			span_notice("You insert [cell] into [src]."),
+			span_notice("[user]Inserções\a [cell]Em[src]."),
+			span_notice("Você insere[cell]Em[src]."),
 		)
 		return ITEM_INTERACT_SUCCESS
 	if(is_wire_tool(tool) && (bot_cover_flags & BOT_COVER_MAINTS_OPEN))
@@ -199,8 +199,8 @@
 	. = ..()
 	if(ismob(load) && prob(1 + attacking_item.force * 2))
 		user.visible_message(
-			span_danger("[user] knocks [load] off [src] with \the [attacking_item]!"),
-			span_danger("You knock [load] off [src] with \the [attacking_item]!"),
+			span_danger("[user]Bate.[load]Fora.[src]Com\the [attacking_item]!"),
+			span_danger("Você bate.[load]Fora.[src]Com\the [attacking_item]!"),
 		)
 		unload(0)
 		return TRUE
@@ -210,7 +210,7 @@
 		bot_cover_flags |= BOT_COVER_EMAGGED
 	if(!(bot_cover_flags & BOT_COVER_MAINTS_OPEN))
 		bot_cover_flags ^= BOT_COVER_LOCKED
-	balloon_alert(user, "controls [bot_cover_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"]")
+	balloon_alert(user, "Controles[bot_cover_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"]")
 	flick("[base_icon]-emagged", src)
 	playsound(src, SFX_SPARKS, 100, FALSE, SHORT_RANGE_SOUND_EXTRARANGE)
 	return TRUE
@@ -249,7 +249,7 @@
 		if(prob(50) && !isnull(load))
 			unload(0)
 		if(prob(25))
-			visible_message(span_danger("Something shorts out inside [src]!"))
+			visible_message(span_danger("Algo curto dentro dentro[src]!"))
 			wires.cut_random(source = proj.firer)
 
 /mob/living/simple_animal/bot/mulebot/ui_interact(mob/user, datum/tgui/ui)
@@ -301,11 +301,11 @@
 			if(bot_mode_flags & BOT_MODE_ON)
 				turn_off()
 			else if(bot_cover_flags & BOT_COVER_MAINTS_OPEN)
-				to_chat(user, span_warning("[name]'s maintenance panel is open!"))
+				to_chat(user, span_warning("[name]O painel de manutenção está aberto!"))
 				return
 			else if(cell)
 				if(!turn_on())
-					to_chat(user, span_warning("You can't switch on [src]!"))
+					to_chat(user, span_warning("Você não pode ligar[src]!"))
 					return
 			return TRUE
 		else
@@ -359,16 +359,16 @@
 /mob/living/simple_animal/bot/mulebot/proc/buzz(type)
 	switch(type)
 		if(SIGH)
-			audible_message(span_hear("[src] makes a sighing buzz."))
+			audible_message(span_hear("[src]Faz um zumbido suspirando."))
 			playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
 		if(ANNOYED)
-			audible_message(span_hear("[src] makes an annoyed buzzing sound."))
+			audible_message(span_hear("[src]Faz um zumbido irritado."))
 			playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, FALSE)
 		if(DELIGHT)
-			audible_message(span_hear("[src] makes a delighted ping!"))
+			audible_message(span_hear("[src]Faz um ping encantado!"))
 			playsound(src, 'sound/machines/ping.ogg', 50, FALSE)
 		if(CHIME)
-			audible_message(span_hear("[src] makes a chiming sound!"))
+			audible_message(span_hear("[src]Faz barulho!"))
 			playsound(src, 'sound/machines/chime.ogg', 50, FALSE)
 	flick("[base_icon]1", src)
 
@@ -629,7 +629,7 @@
 		if(pathset) //The AI called us here, so notify it of our arrival.
 			loaddir = dir //The MULE will attempt to load a crate in whatever direction the MULE is "facing".
 			if(calling_ai)
-				to_chat(calling_ai, span_notice("[icon2html(src, calling_ai)] [src] wirelessly plays a chiming sound!"))
+				to_chat(calling_ai, span_notice("[icon2html(src, calling_ai)] [src]Sem fio toca um som chiming!"))
 				calling_ai.playsound_local(calling_ai, 'sound/machines/chime.ogg', 40, FALSE)
 				calling_ai = null
 				radio_channel = RADIO_CHANNEL_AI_PRIVATE //Report on AI Private instead if the AI is controlling us.
@@ -669,24 +669,24 @@
 	var/mob/living/L = M
 	if(wires.is_cut(WIRE_AVOIDANCE)) // usually just bumps, but if the avoidance wire is cut, knocks them over.
 		if(iscyborg(L))
-			visible_message(span_danger("[src] bumps into [L]!"))
+			visible_message(span_danger("[src]Esbarra.[L]!"))
 		else if(L.Knockdown(8 SECONDS))
 			log_combat(src, L, "knocked down")
-			visible_message(span_danger("[src] knocks over [L]!"))
+			visible_message(span_danger("[src]Derruba.[L]!"))
 	return ..()
 
 // when mulebot is in the same loc
 /mob/living/simple_animal/bot/mulebot/proc/run_over(mob/living/carbon/human/crushed)
 	if (!(bot_cover_flags & BOT_COVER_EMAGGED) && !wires.is_cut(WIRE_AVOIDANCE))
 		if (!has_status_effect(/datum/status_effect/careful_driving))
-			crushed.visible_message(span_notice("[src] slows down to avoid crushing [crushed]."))
+			crushed.visible_message(span_notice("[src]Desacelera para evitar imaginário.[crushed]."))
 		apply_status_effect(/datum/status_effect/careful_driving)
 		return // Player mules must be emagged before they can trample
 
 	log_combat(src, crushed, "run over", addition = "(DAMTYPE: [uppertext(BRUTE)])")
 	crushed.visible_message(
-		span_danger("[src] drives over [crushed]!"),
-		span_userdanger("[src] drives over you!"),
+		span_danger("[src]Chega.[crushed]!"),
+		span_userdanger("[src]Passa por cima de você!"),
 	)
 
 	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
@@ -704,11 +704,7 @@
 	var/turf/below_us = get_turf(src)
 	below_us.add_mob_blood(crushed)
 
-	AddComponent(/datum/component/blood_walk, \
-		blood_type = /obj/effect/decal/cleanable/blood/tracks, \
-		target_dir_change = TRUE, \
-		transfer_blood_dna = TRUE, \
-		max_blood = 4)
+	AddComponent(/datum/component/blood_walk, 		blood_type = /obj/effect/decal/cleanable/blood/tracks, 		target_dir_change = TRUE, 		transfer_blood_dna = TRUE, 		max_blood = 4)
 
 // player on mulebot attempted to move
 /mob/living/simple_animal/bot/mulebot/relaymove(mob/living/user, direction)
@@ -795,11 +791,11 @@
 
 /mob/living/simple_animal/bot/mulebot/post_possession()
 	. = ..()
-	visible_message(span_notice("[src]'s safeties are locked on."))
+	visible_message(span_notice("[src]As seguranças estão travadas."))
 
 /mob/living/simple_animal/bot/mulebot/paranormal//allows ghosts only unless hacked to actually be useful
 	name = "\improper GHOULbot"
-	desc = "A rather ghastly looking... Multiple Utility Load Effector bot? It only seems to accept paranormal forces, and for this reason is fucking useless."
+	desc = "Um olhar horrível... Bot de carga de vários utilitários? Só parece aceitar forças paranormais, e por isso é inútil."
 	icon_state = "paranormalmulebot0"
 	base_icon = "paranormalmulebot"
 
@@ -822,7 +818,7 @@
 		return
 
 	if(isobserver(movable_atom))
-		visible_message(span_warning("A ghostly figure appears on [src]!"))
+		visible_message(span_warning("Aparece uma figura fantasmagórica.[src]!"))
 		movable_atom.forceMove(src)
 		RegisterSignal(movable_atom, COMSIG_MOVABLE_MOVED, PROC_REF(ghostmoved))
 
@@ -863,7 +859,7 @@
 
 /mob/living/simple_animal/bot/mulebot/paranormal/proc/ghostmoved()
 	SIGNAL_HANDLER
-	visible_message(span_notice("The ghostly figure vanishes..."))
+	visible_message(span_notice("A figura fantasmagórica desaparece..."))
 	UnregisterSignal(load, COMSIG_MOVABLE_MOVED)
 	unload(0)
 

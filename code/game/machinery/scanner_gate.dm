@@ -10,7 +10,7 @@
 
 /obj/machinery/scanner_gate
 	name = "scanner gate"
-	desc = "A gate able to perform mid-depth scans on any organisms who pass under it."
+	desc = "Um portal capaz de fazer varreduras de profundidade em qualquer organismo que passe por baixo dele."
 	icon = 'icons/obj/machines/scangate.dmi'
 	icon_state = "scangate"
 	base_icon_state = "scangate"
@@ -113,11 +113,11 @@
 /obj/machinery/scanner_gate/examine(mob/user)
 	. = ..()
 
-	. += span_notice("It's set to scan for [span_boldnotice(scangate_mode)].")
+	. += span_notice("Está programado para procurar[span_boldnotice(scangate_mode)].")
 	if(locked)
-		. += span_notice("The control panel is ID-locked. Swipe a valid ID to unlock it.")
+		. += span_notice("O painel de controle está bloqueado. Use uma identidade válida para destravá-la.")
 	else
-		. += span_notice("The control panel is unlocked. Swipe an ID to lock it.")
+		. += span_notice("O painel de controle está destrancado. Faça uma identificação para trancá-la.")
 
 /obj/machinery/scanner_gate/proc/on_entered(datum/source, atom/movable/thing)
 	SIGNAL_HANDLER
@@ -171,7 +171,7 @@
 		return ITEM_INTERACT_SUCCESS
 
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "nada acontece!")
+		balloon_alert(user, "Nada mesmo!")
 		return ITEM_INTERACT_BLOCKING
 
 	balloon_alert(user, "trancado")
@@ -192,7 +192,7 @@
 	locked = FALSE
 	req_access = list()
 	obj_flags |= EMAGGED
-	balloon_alert(user, "id checker disabled")
+	balloon_alert(user, "Verificador de identificação desativado")
 	return TRUE
 
 /obj/machinery/scanner_gate/proc/perform_scan(atom/movable/thing)

@@ -6,5 +6,5 @@
 	if(isnull(transfer_amount))
 		return NONE
 	amount_per_transfer_from_this = transfer_amount
-	to_chat(user, span_notice("[src]'s transfer amount is now [amount_per_transfer_from_this] unit\s."))
+	to_chat(user, span_notice("[src]O valor da transferência é agora.[amount_per_transfer_from_this]Unidade."))
 	return CLICK_ACTION_SUCCESS

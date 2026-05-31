@@ -123,10 +123,10 @@
 		return
 	var/mob/living/carbon/human/wearer = parent_gear.loc
 	if (wearer.is_holding(parent_gear))
-		parent_gear.balloon_alert(wearer, "wear it first!")
+		parent_gear.balloon_alert(wearer, "Use-o primeiro!")
 		return
 	if (wearer.get_item_by_slot(equipped_slot))
-		parent_gear.balloon_alert(wearer, "slot occupied!")
+		parent_gear.balloon_alert(wearer, "Ocupado!")
 		return
 	if (!deployable && !create_deployable())
 		return

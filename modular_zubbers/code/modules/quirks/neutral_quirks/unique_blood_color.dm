@@ -2,10 +2,10 @@
 
 /datum/quirk/item_quirk/unique_blood_color
 	name = "Blood Pigmentation"
-	desc = "Your blood has a different colour than what your species usually has."
-	gain_text = span_purple("Your flesh shifts in hue.")
-	lose_text = span_purple("Your flesh returns to a natural look.")
-	medical_record_text = "Patient has unusual blood pigmentation."
+	desc = "Seu sangue tem uma cor diferente da da sua espécie."
+	gain_text = span_purple("Sua carne muda de tom.")
+	lose_text = span_purple("Sua carne volta a ser natural.")
+	medical_record_text = "O paciente tem pigmentação sanguínea incomum."
 	value = 0
 	icon = FA_ICON_DROPLET
 	//this should only ever be a hex
@@ -53,7 +53,7 @@
 	SIGNAL_HANDLER
 ///Check if new blood type is same as old. Jank, but it should prevent cases of special blood types made from relative normal blood
 	if(quirked.dna.blood_type.get_color() == color_code)
-		to_chat(quirked, span_notice("...but nothing had actually changed."))
+		to_chat(quirked, span_notice("...mas nada tinha realmente mudado."))
 		remove_from_current_holder()
 		WARNING("quirk 'unique_blood_color' automatically removed from [quirked.name]")
 		return

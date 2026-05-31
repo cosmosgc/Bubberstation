@@ -5,17 +5,17 @@ import { RandomSetting } from '../types';
 
 const options = [
   {
-    displayText: 'Do not randomize',
+    displayText: 'Não aleatoriedade',
     value: RandomSetting.Disabled,
   },
 
   {
-    displayText: 'Always randomize',
+    displayText: 'Sempre aleatório.',
     value: RandomSetting.Enabled,
   },
 
   {
-    displayText: 'Randomize when antagonist',
+    displayText: 'Aleatório quando antagonista',
     value: RandomSetting.AntagOnly,
   },
 ];

@@ -13,8 +13,7 @@
 	max_occurrences = 1
 	earliest_start = 0 MINUTES
 	category = EVENT_CATEGORY_HOLIDAY
-	description = "Puts people on dates! They must protect each other. \
-		Some dates will have third wheels, and any odd ones out will be given the role of 'heartbreaker'."
+	description = "Coloca as pessoas em encontros! Eles devem se proteger. Algumas datas terão terceiras rodas, e qualquer estranho será dado o papel de \"quebra corações\"."
 	/// If TRUE, any odd candidate out will be given the role of "heartbreaker" and will be tasked with ruining the dates.
 	var/heartbreaker = TRUE
 	/// Probability that any given pair will be given a third wheel candidate
@@ -96,7 +95,7 @@
 	if(length(candidates_pruned) == 0)
 		return
 	if(length(candidates_pruned) == 1)
-		to_chat(candidates_pruned[1], span_warning("You are the only one who wanted a Valentine..."))
+		to_chat(candidates_pruned[1], span_warning("Você é o único que queria um Valentine..."))
 		return
 
 	while(length(candidates_pruned) >= 2)
@@ -124,20 +123,20 @@
 
 /obj/item/paper/valentine
 	name = "valentine"
-	desc = "A Valentine's card! Wonder what it says..."
+	desc = "Um cartão dos namorados! O que será que diz..."
 	icon = 'icons/obj/toys/playing_cards.dmi'
 	icon_state = "sc_Ace of Hearts_syndicate" // shut up // bye felicia
 	show_written_words = FALSE
 
 /obj/item/paper/valentine/Initialize(mapload)
-	default_raw_text = pick_list(VALENTINE_FILE, "valentines") || "A generic message of love or whatever."
+	default_raw_text = pick_list(VALENTINE_FILE, "valentines") || "Uma mensagem genérica de amor ou algo assim."
 	return ..()
 
 /obj/item/food/candyheart
 	name = "candy heart"
 	icon = 'icons/obj/holiday/holiday_misc.dmi'
 	icon_state = "candyheart"
-	desc = "A heart-shaped candy that reads: "
+	desc = "Um doce em forma de coração que diz:"
 	food_reagents = list(/datum/reagent/consumable/sugar = 2)
 	junkiness = 5
 

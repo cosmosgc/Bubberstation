@@ -21,7 +21,7 @@
 
 /obj/item/clothing/neck/human_petcollar
 	name = "pet collar"
-	desc = "It's for pets. Though you probably could wear it yourself, you'd doubtless be the subject of ridicule."
+	desc = "É para animais de estimação. Embora você pudesse usá-lo você mesmo, sem dúvida seria alvo de ridicularização."
 	icon = 'icons/map_icons/clothing/neck.dmi'
 	icon_state = "/obj/item/clothing/neck/human_petcollar"
 	post_init_icon_state = "pet"
@@ -57,7 +57,7 @@
 
 /obj/item/clothing/neck/human_petcollar/choker
 	name = "choker"
-	desc = "Quite fashionable... if you're somebody who's just read their first BDSM-themed erotica novel."
+	desc = "Bem na moda... se você é alguém que acabou de ler seu primeiro romance erótico com tema BDSM."
 	icon_state = "/obj/item/clothing/neck/human_petcollar/choker"
 	post_init_icon_state = "choker"
 	greyscale_config = /datum/greyscale_config/collar/choker
@@ -66,7 +66,7 @@
 
 /obj/item/clothing/neck/human_petcollar/thinchoker
 	name = "thin choker"
-	desc = "Like the normal one, but thinner!"
+	desc = "Como é normal, mas mais fino!"
 	icon_state = "/obj/item/clothing/neck/human_petcollar/thinchoker"
 	post_init_icon_state = "thinchoker"
 	greyscale_config = /datum/greyscale_config/collar/thinchoker
@@ -75,11 +75,11 @@
 
 /obj/item/key/collar
 	name = "collar key"
-	desc = "A key for a tiny lock on a collar or bag."
+	desc = "Uma chave para uma pequena fechadura em um colarinho ou saco."
 
 /obj/item/clothing/neck/human_petcollar/locked
 	name = "locked collar"
-	desc = "A collar that has a small lock on it to keep it from being removed."
+	desc = "Uma coleira que tem uma pequena fechadura para evitar que seja removida."
 	treat_path = /obj/item/key/collar
 	/// Is the collar currently locked?
 	var/locked = FALSE
@@ -91,13 +91,13 @@
 
 /obj/item/clothing/neck/human_petcollar/locked/proc/try_lock(atom/source, mob/user, obj/item/attacking_item, params)
 	if(istype(attacking_item, /obj/item/key/collar))
-		to_chat(user, span_warning("With a click, the collar [locked ? "unlocks" : "locks"]!"))
+		to_chat(user, span_warning("Com um grupo, o colarinho[locked ? "unlocks" : "locks"]!"))
 		locked = !locked
 	return TRUE
 
 /obj/item/clothing/neck/human_petcollar/locked/attack_hand(mob/user)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK) && locked)
-		to_chat(user, span_warning("The collar is locked! You'll need unlock the collar before you can take it off!"))
+		to_chat(user, span_warning("A coleira está trancada! Você vai precisar destrancar o colar antes de poder tirá-lo!"))
 		return
 	..()
 
@@ -107,7 +107,7 @@
 
 /obj/item/clothing/neck/human_petcollar/locked/bell
 	name = "bell collar"
-	desc = "A loud and annoying collar for your little kitten!"
+	desc = "Um colarinho alto e irritante para seu gatinho!"
 	icon_state = "/obj/item/clothing/neck/human_petcollar/locked/bell"
 	post_init_icon_state = "bell"
 	greyscale_config = /datum/greyscale_config/collar/bell
@@ -116,7 +116,7 @@
 
 /obj/item/clothing/neck/human_petcollar/locked/choker
 	name = "choker"
-	desc = "Quite fashionable... if you're somebody who's just read their first BDSM-themed erotica novel."
+	desc = "Bem na moda... se você é alguém que acabou de ler seu primeiro romance erótico com tema BDSM."
 	icon_state = "/obj/item/clothing/neck/human_petcollar/locked/choker"
 	post_init_icon_state = "choker"
 	greyscale_config = /datum/greyscale_config/collar/choker
@@ -125,7 +125,7 @@
 
 /obj/item/clothing/neck/human_petcollar/locked/cow
 	name = "cowbell collar"
-	desc = "Don't fear the reaper, now your pet doesn't have to."
+	desc = "Não tema o ceifeiro, agora seu animal de estimação não precisa."
 	icon_state = "/obj/item/clothing/neck/human_petcollar/locked/cow"
 	post_init_icon_state = "cow"
 	greyscale_config = /datum/greyscale_config/collar/cow
@@ -134,7 +134,7 @@
 
 /obj/item/clothing/neck/human_petcollar/locked/cross
 	name = "cross collar"
-	desc = "A religious punishment, probably."
+	desc = "Uma punição religiosa, provavelmente."
 	icon_state = "/obj/item/clothing/neck/human_petcollar/locked/cross"
 	post_init_icon_state = "cross"
 	greyscale_config = /datum/greyscale_config/collar/cross
@@ -143,7 +143,7 @@
 
 /obj/item/clothing/neck/human_petcollar/locked/holo
 	name = "holocollar"
-	desc = "A collar with holographic information. Like a microchip, but around the neck."
+	desc = "Uma coleira com informações holográficas. Como um microchip, mas ao redor do pescoço."
 	icon_state = "/obj/item/clothing/neck/human_petcollar/locked/holo"
 	post_init_icon_state = "holo"
 	greyscale_config = /datum/greyscale_config/collar/holo
@@ -160,7 +160,7 @@
 
 /obj/item/clothing/neck/human_petcollar/locked/spike
 	name = "spiked collar"
-	desc = "A collar for a moody pet. Or a pitbull."
+	desc = "Uma coleira para um animal de estimação mal-humorado. Ou um pitbull."
 	icon_state = "/obj/item/clothing/neck/human_petcollar/locked/spike"
 	post_init_icon_state = "spike"
 	greyscale_config = /datum/greyscale_config/collar/spike

@@ -1,6 +1,6 @@
 /obj/machinery/cauldron
 	name = "stone cauldron"
-	desc = "Cooks and boils stuff the old fashioned way."
+	desc = "Cozinha e ferve coisas à moda antiga."
 	icon = 'modular_zubbers/icons/obj/machines/cauldron.dmi'
 	icon_state = "cauldron_back_off"
 	density = TRUE
@@ -49,17 +49,17 @@
 /obj/machinery/cauldron/examine(mob/user)
 	. = ..()
 
-	. += span_notice("It can be taken apart with a <b>crowbar</b>.")
+	. += span_notice("Pode ser desmontado com um<b>Pé de cabra.</b>.")
 
 	if(!in_range(user, src) && !isobserver(user))
-		. += span_warning("You're too far away to examine [src]'s contents!")
+		. += span_warning("Você está muito longe para examinar.[src]O conteúdo!")
 		return
 	if(operating)
-		. += span_notice("\The [src] is boiling.")
+		. += span_notice("\The [src]Está fervendo.")
 		return
 
 	if(length(ingredients))
-		. += span_notice("\The [src] contains:")
+		. += span_notice("\The [src]contém:")
 		var/list/items_counts = new
 		for(var/i in ingredients)
 			if(isstack(i))
@@ -69,9 +69,9 @@
 				var/atom/movable/single_item = i
 				items_counts[single_item.name]++
 		for(var/item in items_counts)
-			. += span_notice("- [items_counts[item]]x [item].")
+			. += span_notice("- [items_counts[item]]x[item].")
 	else
-		. += span_notice("\The [src] is empty.")
+		. += span_notice("\The [src]Está vazio.")
 
 /obj/machinery/cauldron/Exited(atom/movable/gone, direction)
 	if(gone in ingredients)
@@ -196,7 +196,7 @@
 
 		ingredients += item
 		open(autoclose = 0.6 SECONDS)
-		user.visible_message(span_notice("[user] adds \a [item] to \the [src]."), span_notice("You add [item] to \the [src]."))
+		user.visible_message(span_notice("[user]adiciona\a [item]Para\the [src]."), span_notice("Você acrescenta[item]Para\the [src]."))
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
@@ -213,7 +213,7 @@
 	var/loaded = 0
 	if(!istype(tool, /obj/item/storage/bag/tray))
 		// Non-tray dumping requires a do_after
-		to_chat(user, span_notice("You start dumping out the contents of [tool] into [src]..."))
+		to_chat(user, span_notice("Você começa a despejar o conteúdo de[tool]Em[src]..."))
 		if(!do_after(user, 2 SECONDS, target = tool))
 			return
 
@@ -229,7 +229,7 @@
 
 	if(loaded)
 		open(autoclose = 0.6 SECONDS)
-		to_chat(user, span_notice("You insert [loaded] items into \the [src]."))
+		to_chat(user, span_notice("Você insere[loaded]- Sim.\the [src]."))
 		update_appearance()
 
 /obj/machinery/cauldron/mouse_drop_receive(obj/item/tool, mob/user, params)
@@ -310,7 +310,7 @@
  * * cooker - The mob that initiated the cook cycle
  */
 /obj/machinery/cauldron/proc/start(mob/cooker)
-	visible_message(span_notice("\The [src] heats up."), null, span_hear("You hear bubbling as the cauldron ignites."))
+	visible_message(span_notice("\The [src]Aquece."), null, span_hear("Você ouve borbulhando enquanto o caldeirão se inflama."))
 	operating = TRUE
 	update_appearance()
 	cook_loop(cycles = 10, cooker = cooker)

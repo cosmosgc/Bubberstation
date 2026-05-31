@@ -2,7 +2,7 @@
 	filename = "dsarcade"
 	filedesc = "Donksoft Micro Arcade"
 	program_open_overlay = "arcade"
-	extended_desc = "This port of the classic game 'Outbomb Cuban Pete', redesigned to run on tablets, with thrilling graphics and chilling storytelling."
+	extended_desc = "Este porto do clássico jogo \"Pete Cubano Outbomb\", redesenhou para rodar em tablets, com gráficos emocionantes e contos de histórias."
 	downloader_category = PROGRAM_CATEGORY_GAMES
 	size = 6
 	tgui_id = "NtosArcade"
@@ -29,7 +29,7 @@
 	filedesc = "Donksoft Micro Arcade Ez"
 	filetype = "MNT"
 	program_flags = PROGRAM_UNIQUE_COPY
-	extended_desc = "Some sort of fan-made conversion of the classic game 'Outbomb Cuban Pete'. This one has you fight the weaker 'George Melon' instead."
+	extended_desc = "Algum tipo de conversão feita por fãs do clássico jogo \"Pete Cubano Outbomb\"Este te fez luter contra o mais fraco George Melon."
 	boss_hp = 40
 	boss_mp = 10
 	player_hp = 35
@@ -163,17 +163,17 @@
 			return TRUE
 		if("Dispense_Tickets")
 			if(computer.stored_paper <= 0)
-				to_chat(gamer, span_notice("Printer is out of paper."))
+				to_chat(gamer, span_notice("A impressora está sem papel."))
 				return
 			else
-				computer.visible_message(span_notice("\The [computer] prints out paper."))
+				computer.visible_message(span_notice("\The [computer]Imprime papel."))
 				if(ticket_count >= 1)
 					new /obj/item/stack/arcadeticket((get_turf(computer)))
-					to_chat(gamer, span_notice("[computer] dispenses a ticket!"))
+					to_chat(gamer, span_notice("[computer]Distribua um bilhete!"))
 					ticket_count -= 1
 					computer.stored_paper -= 1
 				else
-					to_chat(gamer, span_notice("You don't have any stored tickets!"))
+					to_chat(gamer, span_notice("Você não tem nenhum bilhete guardado!"))
 				return TRUE
 		if("Start_Game")
 			game_active = TRUE

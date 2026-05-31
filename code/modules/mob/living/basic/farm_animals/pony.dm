@@ -1,6 +1,6 @@
 /mob/living/basic/pony
 	name = "pony"
-	desc = "Look at my horse, my horse is amazing!"
+	desc = "Olhe para o meu cavalo, meu cavalo é incrível!"
 	icon_state = "pony"
 	icon_living = "pony"
 	icon_dead = "pony_dead"
@@ -63,7 +63,7 @@
 	. = ..()
 	playsound(src, 'sound/mobs/non-humanoids/pony/snort.ogg', 50)
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/pony)
-	visible_message(span_notice("[src] snorts happily."))
+	visible_message(span_notice("[src]Cheira alegre."))
 	new /obj/effect/temp_visual/heart(loc)
 
 	ai_controller.replace_planning_subtrees(list(
@@ -140,7 +140,7 @@
 /mob/living/basic/pony/syndicate
 	health = 300
 	maxHealth = 300
-	desc = "A special breed of horse engineered by the syndicate to be capable of surviving in the deep reaches of space. A modern outlaw's best friend."
+	desc = "Uma raça especial de cavalos projetado pelo sindicato para ser capaz de sobreviver nas profundezas do espaço. O melhor amigo de um bandido moderno."
 	faction = list(ROLE_SYNDICATE)
 	ponycolors = list("#5d566f", COLOR_RED)
 	pressure_resistance = 200
@@ -172,7 +172,7 @@
 /mob/living/basic/pony/dangerous
 	health = 300
 	maxHealth = 300
-	desc = "A special breed of horse engineered by the syndicate to be capable of surviving in the deep reaches of space. A modern outlaw's best friend."
+	desc = "Uma raça especial de cavalos projetado pelo sindicato para ser capaz de sobreviver nas profundezas do espaço. O melhor amigo de um bandido moderno."
 	faction = list(ROLE_SYNDICATE)
 	ponycolors = list("#666666", COLOR_ORANGE)
 	pressure_resistance = 200

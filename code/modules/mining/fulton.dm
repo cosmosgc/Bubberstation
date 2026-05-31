@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 
 /obj/item/extraction_pack
 	name = "fulton extraction pack"
-	desc = "A balloon that can be used to extract equipment or personnel to a Fulton Recovery Beacon. Anything not bolted down can be moved. Link the pack to a beacon by using the pack in hand."
+	desc = "Um balão que pode ser usado para extrair equipamento ou pessoal para um Fulton Recovery Beacon. Qualquer coisa que não esteja trancada pode ser movida. Conecte o pacote a um farol usando o pacote na mão."
 	icon = 'icons/obj/fulton.dmi'
 	icon_state = "extraction_pack"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -21,16 +21,16 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 
 /obj/item/extraction_pack/examine()
 	. = ..()
-	. += span_infoplain("It has [uses_left] use\s remaining.")
+	. += span_infoplain("Tem.[uses_left]Use o resto.")
 
 	var/obj/structure/extraction_point/beacon = beacon_ref?.resolve()
 
 	if(isnull(beacon))
 		beacon_ref = null
-		. += span_infoplain("It is not linked to a beacon.")
+		. += span_infoplain("Não está ligado a um farol.")
 		return
 
-	. += span_infoplain("It is linked to [beacon.name].")
+	. += span_infoplain("Está ligado a[beacon.name].")
 
 /obj/item/extraction_pack/attack_self(mob/user)
 	var/list/possible_beacons = list()
@@ -43,7 +43,7 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 			possible_beacons += extraction_point
 
 	if(!length(possible_beacons))
-		balloon_alert(user, "no beacons")
+		balloon_alert(user, "Sem faróis.")
 		return
 
 	var/chosen_beacon = tgui_input_list(user, "Beacon to connect to", "Balloon Extraction Pack", sort_names(possible_beacons))
@@ -51,7 +51,7 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 		return
 
 	beacon_ref = WEAKREF(chosen_beacon)
-	balloon_alert(user, "linked!")
+	balloon_alert(user, "Ligado!")
 
 /obj/item/extraction_pack/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!ismovable(interacting_with))
@@ -70,28 +70,28 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 	var/area/area = get_area(thing)
 	if(!can_use_indoors)
 		if(!area.outdoors)
-			balloon_alert(user, "not outdoors!")
+			balloon_alert(user, "Não ao ar livre!")
 			return ITEM_INTERACT_BLOCKING
 	if(area.area_flags & NOTELEPORT)
-		balloon_alert(user, "unable to activate!")
+		balloon_alert(user, "Incapaz de ativar!")
 		return ITEM_INTERACT_BLOCKING
 	var/area/target_area = get_area(beacon)
 	if(area != target_area && ((area.area_flags & LOCAL_TELEPORT) || (target_area.area_flags & LOCAL_TELEPORT)))
-		balloon_alert(user, "unable to activate!")
+		balloon_alert(user, "Incapaz de ativar!")
 		return ITEM_INTERACT_BLOCKING
 	if(!safe_for_living_creatures && check_for_living_mobs(thing))
-		to_chat(user, span_warning("[src] is not safe for use with living creatures, they wouldn't survive the trip back!"))
-		balloon_alert(user, "not safe!")
+		to_chat(user, span_warning("[src]Não é seguro para uso com seres vivos, eles não sobreviveriam à viagem de volta!"))
+		balloon_alert(user, "Não é seguro!")
 		return ITEM_INTERACT_BLOCKING
 	if(thing.move_resist > max_force_fulton)
-		balloon_alert(user, "pesado demais!")
+		balloon_alert(user, "Pesado demais!")
 		return ITEM_INTERACT_BLOCKING
 	balloon_alert_to_viewers("attaching...")
 	playsound(thing, 'sound/items/zip/zip.ogg', vol = 50, vary = TRUE)
 	if(isliving(thing))
 		var/mob/living/creature = thing
 		if(creature.mind)
-			to_chat(thing, span_userdanger("You are being extracted! Stand still to proceed."))
+			to_chat(thing, span_userdanger("Você está sendo extraído! Fique parado para prosseguir."))
 
 	if(!do_after(user, 5 SECONDS, target = thing))
 		return ITEM_INTERACT_BLOCKING
@@ -188,14 +188,14 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 
 /obj/item/fulton_core
 	name = "extraction beacon assembly kit"
-	desc = "When built, emits a signal which fulton recovery devices can lock onto. Activate in hand to unfold into a beacon."
+	desc = "Quando construído, emite um sinal que os dispositivos de recuperação de fulton podem travar. Ativar na mão para se desdobrar em um farol."
 	icon = 'icons/obj/fulton.dmi'
 	icon_state = "folded_extraction"
 
 /obj/item/fulton_core/attack_self(mob/user)
 	var/area/user_area = get_area(user)
 	if(user_area.area_flags & NOTELEPORT)
-		balloon_alert(user, "unable to deploy!")
+		balloon_alert(user, "Incapaz de lançar!")
 		return
 
 	if(!do_after(user, 1.5 SECONDS, target = user) || QDELETED(src))
@@ -207,7 +207,7 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 
 /obj/structure/extraction_point
 	name = "fulton recovery beacon"
-	desc = "A beacon for the fulton recovery system. Activate a pack in your hand to link it to a beacon."
+	desc = "Um sinal para o sistema de recuperação do Fulton. Ative um pacote em sua mão para ligá-lo a um farol."
 	icon = 'icons/obj/fulton.dmi'
 	icon_state = "extraction_point"
 	anchored = TRUE
@@ -236,7 +236,7 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 
 /obj/effect/extraction_holder
 	name = "extraction holder"
-	desc = "you shouldn't see this"
+	desc = "Você não deveria ver isso."
 	var/atom/movable/stored_obj
 
 /obj/item/extraction_pack/proc/check_for_living_mobs(atom/A)

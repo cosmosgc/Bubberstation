@@ -176,7 +176,7 @@ export const ChemDispenser = (props) => {
                       )}
                       <Button
                         icon="cog"
-                        tooltip="Color code the reagents by pH"
+                        tooltip="Código de cor dos reagentes por pH"
                         tooltipPosition="bottom-start"
                         selected={showPhCol}
                         onClick={() => setShowPhCol(!showPhCol)}
@@ -186,8 +186,8 @@ export const ChemDispenser = (props) => {
                         disabled={!beaker}
                         tooltip={
                           beaker
-                            ? 'Look up recipes and reagents!'
-                            : 'Please insert a beaker!'
+                            ? 'Peça receitas e reagentes!'
+                            : 'Introduza um copo!'
                         }
                         tooltipPosition="bottom-start"
                         onClick={() => act('reaction_lookup')}
@@ -218,7 +218,7 @@ export const ChemDispenser = (props) => {
               </Stack.Item>
               <Stack.Item>
                 <Section
-                  title="Custom Recipes"
+                  title="Receitas personalizadas"
                   buttons={
                     <>
                       {!recording && (
@@ -288,7 +288,7 @@ export const ChemDispenser = (props) => {
                 <Button
                   icon="pen"
                   iconPosition = "right"
-                  content="Custom Amount"
+                  content="Quantidade personalizada"
                   onClick={() => act('custom_amount')}
                 />
                 </Stack.Item>
@@ -342,7 +342,7 @@ export const ChemDispenser = (props) => {
                   {beaker || recording ? (
                     <BeakerDisplay
                       beaker={beaker}
-                      title_label={recording && 'Virtual beaker'}
+                      title_label={recording && 'Bico virtual'}
                       replace_contents={recordedContents}
                       showpH={data.showpH}
                     />
@@ -361,7 +361,7 @@ export const ChemDispenser = (props) => {
                         disabled={!hasBeakerInHand}
                         tooltip={
                           !hasBeakerInHand &&
-                          'You need to hold a container in your hand!'
+                          'Você precisa segurar um contêiner na mão!'
                         }
                         tooltipPosition="left-start"
                       >
@@ -381,7 +381,7 @@ export const ChemDispenser = (props) => {
                     <Stack>
                       <Stack.Item grow>
                         <Input
-                          placeholder="Search reactions..."
+                          placeholder="Procure reações..."
                           value={searchTerm}
                           fluid
                           onChange={(value) => setSearchTerm(value)}
@@ -481,7 +481,7 @@ const ReagentDispenseButton = (props: ReagentDispenseButtonProps) => {
       lineHeight={1.75}
       tooltip={mainscreen ? `pH: ${chemical.pH}` : undefined}
       style={{
-        textShadow: '1px 1px 0 black',
+        textShadow: '1px 1px 0 preto',
         textOverflow: 'ellipsis',
         overflow: 'hidden',
       }}
@@ -618,7 +618,7 @@ const ReactionDisplay = (props: ReactionDisplayProps) => {
                 </>
               )}
               <Stack.Item>
-                <HorizontalBarWithText text="Optimal temperature" />
+                <HorizontalBarWithText text="Temperatura ótima." />
               </Stack.Item>
               <Stack.Item fontSize="0.9em">
                 {getTemperatureMessage(
@@ -627,7 +627,7 @@ const ReactionDisplay = (props: ReactionDisplayProps) => {
                 )}
               </Stack.Item>
               <Stack.Item>
-                <HorizontalBarWithText text="Optimal pH range" />
+                <HorizontalBarWithText text="Alcance de pH ideal." />
               </Stack.Item>
               <Stack.Item fontSize="0.9em">
                 {getPHMessage(

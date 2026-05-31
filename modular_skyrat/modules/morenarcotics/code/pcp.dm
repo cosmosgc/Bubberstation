@@ -22,7 +22,7 @@
 
 /datum/reagent/drug/pcp //to an extent this is pretty much just super bath salts
 	name = "PCP"
-	description = "Pure rage put into chemical form."
+	description = "Pura raiva posta em forma química."
 	color = "#ffea2e"
 	overdose_threshold = 10 //really low overdose to keep people from abusing it too much
 	ph = 8
@@ -70,7 +70,7 @@
 		QDEL_NULL(pcp_rage)
 	if(pcp_tenacity)
 		QDEL_NULL(pcp_tenacity)
-	L.visible_message(span_danger("[L] collapses onto the floor!")) //you pretty much pass out
+	L.visible_message(span_danger("[L]Cai no chão!")) //you pretty much pass out
 	L.Paralyze(pcp_lifetime,TRUE)
 	L.drop_all_held_items()
 	..()
@@ -84,7 +84,7 @@
 	if(SPT_PROB(2.5, seconds_per_tick))
 		M.emote(pick("twitch","drool"))
 	if(SPT_PROB(1.5, seconds_per_tick))
-		M.visible_message(span_danger("[M] flails their arms around everywhere!"))
+		M.visible_message(span_danger("[M]Atiram seus braços em todo lugar!"))
 		M.drop_all_held_items()
 	..()
 	. = TRUE
@@ -92,8 +92,8 @@
 //precursor chemical
 /datum/reagent/pcc
 	name = "PCC"
-	description = "A chemical precursor to PCP."
+	description = "Um precursor químico para PCP."
 	color = "#ffea2e" // rgb: 128, 128, 128
-	taste_description = "satiated rage"
+	taste_description = "raiva saciada"
 	ph = 7.3
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED

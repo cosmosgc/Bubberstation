@@ -9,7 +9,7 @@
 
 /datum/design/board/self_actualization_device
 	name = "Machine Design (Self-Actualization Device)"
-	desc = "The circuit board for a Self-Actualization Device by Veymed: A Family Company."
+	desc = "A placa de circuito para um dispositivo de auto-realização de Veymed: uma empresa familiar."
 	id = "self_actualization_device"
 	build_path = /obj/item/circuitboard/machine/self_actualization_device
 	category = list(RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_MEDICAL)
@@ -23,7 +23,7 @@
 
 /obj/machinery/self_actualization_device
 	name = "Self-Actualization Device"
-	desc = "A state of the art medical device that can restore someone's physical appearance to the last known DNA database backup."
+	desc = "Um dispositivo médico de última geração que pode restaurar a aparência física de alguém no último banco de dados de DNA."
 	icon = 'modular_skyrat/modules/self_actualization_device/icons/self_actualization_device.dmi'
 	icon_state = "sad_open"
 	circuit = /obj/item/circuitboard/machine/self_actualization_device
@@ -41,26 +41,14 @@
 	/// Has the player consented to the DNA change
 	var/player_consent = NO_CONSENT
 	/// A list containing advertisements that the machine says while working.
-	var/static/list/advertisements = list(\
-	"Thank you for using the Self-Actualization Device, brought to you by Veymed, because you asked for it.", \
-	"The Self-Actualization device is not to be used by the elderly without direct adult supervision. Veymed is not liable for any and all injuries sustained under unsupervised usage of the Self-Actualization Device.", \
-	"The Self-Actualization Device is not to be used un-cleaned. Thanks to its non-stick coating, cleaning up after a failed rejuvenation is easy as cleaning a microwave. Blood just doesn't stick!", \
-	"Before using the Self-Actualization Device, remove any and all metal devices, or you might make the term 'ironman' a bit too literal!" , \
-	"Remember, this is not cloning! Self-Actualization is a legally distinct, Veymed patent pending procedure. Still have questions? Call your nearest Veymed Representative to requisition more information about the Self-Actualization Device!" , \
-	"Coming soon... Self-Actualization Device: Colony Fabricator Edition! Flat-packed and better in every way, with no medical expertise required! It's so easy, it's like cheating! Contact your nearest Veymed Representative to find out more!" \
-	)
+	var/static/list/advertisements = list(	"Thank you for using the Self-Actualization Device, brought to you by Veymed, because you asked for it.", 	"The Self-Actualization device is not to be used by the elderly without direct adult supervision. Veymed is not liable for any and all injuries sustained under unsupervised usage of the Self-Actualization Device.", 	"The Self-Actualization Device is not to be used un-cleaned. Thanks to its non-stick coating, cleaning up after a failed rejuvenation is easy as cleaning a microwave. Blood just doesn't stick!", 	"Before using the Self-Actualization Device, remove any and all metal devices, or you might make the term 'ironman' a bit too literal!" , 	"Remember, this is not cloning! Self-Actualization is a legally distinct, Veymed patent pending procedure. Still have questions? Call your nearest Veymed Representative to requisition more information about the Self-Actualization Device!" , 	"Coming soon... Self-Actualization Device: Colony Fabricator Edition! Flat-packed and better in every way, with no medical expertise required! It's so easy, it's like cheating! Contact your nearest Veymed Representative to find out more!" 	)
 	COOLDOWN_DECLARE(advert_time)
 	COOLDOWN_DECLARE(sad_processing_time)
 
 /obj/machinery/self_actualization_device/examine_more(mob/user)
 	. = ..()
 
-	. += "With the power of modern neurological scanning and synthflesh cosmetic surgery, the Veymed Corporation \
-		has teamed up with Nanotrasen Human Resources (and elsewise)  to bring you the Self-Actualization Device! \
-		Ever revived a patient and had them file a malpractice lawsuit because their head got attached to the wrong body? \
-		Just slap 'em in the SAD and turn it on! Their frown will turn upside down as they're reconstituted as their ideal self \
-		via the magic technology of brain scanning! Within a few short moments, they'll be popped out as their ideal self, \
-		ready to continue on with their day lawsuit-free!"
+	. += "With the power of modern neurological scanning and synthflesh cosmetic surgery, the Veymed Corporation 		has teamed up with Nanotrasen Human Resources (and elsewise)  to bring you the Self-Actualization Device! 		Ever revived a patient and had them file a malpractice lawsuit because their head got attached to the wrong body? 		Just slap 'em in the SAD and turn it on! Their frown will turn upside down as they're reconstituted as their ideal self 		via the magic technology of brain scanning! Within a few short moments, they'll be popped out as their ideal self, 		ready to continue on with their day lawsuit-free!"
 
 	return .
 
@@ -96,20 +84,20 @@
 		occupant.forceMove(drop_location())
 		set_occupant(null)
 		return FALSE
-	to_chat(occupant, span_notice("You enter [src]."))
+	to_chat(occupant, span_notice("Você entra[src]."))
 	addtimer(CALLBACK(src, PROC_REF(get_consent)), 4 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 	update_appearance()
 
 /obj/machinery/self_actualization_device/examine(mob/user)
 	. = ..()
-	. += span_info("Laser power <b>[display_power(active_power_usage)]</b> at average cycle time of <b>[DisplayTimeText(processing_time)]</b>.")
+	. += span_info("Poder laser.<b>[display_power(active_power_usage)]</b>no tempo médio de ciclo de<b>[DisplayTimeText(processing_time)]</b>.")
 
 	if(processing)
-		. += span_notice("The status display indicates <b>[DisplayTimeText(COOLDOWN_TIMELEFT(src, sad_processing_time), 2)]</b> remaining on the current cycle.")
+		. += span_notice("A exibição de status indica<b>[DisplayTimeText(COOLDOWN_TIMELEFT(src, sad_processing_time), 2)]</b>permanecendo no ciclo atual.")
 	else
-		. += span_notice("Left-click to <b>[state_open ? "close" : "open"]</b>.")
+		. += span_notice("Botão esquerdo para<b>[state_open ? "close" : "open"]</b>.")
 		if(!isnull(occupant) && !state_open)
-			. += span_notice("<b>Alt-click</b> to turn on.")
+			. += span_notice("<b>Alt-click</b>para ligar.")
 
 /obj/machinery/self_actualization_device/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	if(!processing)
@@ -132,7 +120,7 @@
 	if(!powered() || !occupant || state_open || processing)
 		return CLICK_ACTION_BLOCKING
 
-	user.visible_message(span_notice("[user] presses the start button of the [src]."), span_notice("You press the start button of the [src]."))
+	user.visible_message(span_notice("[user]Pressiona o botão inicial do[src]."), span_notice("Você aperta o botão de início do[src]."))
 	get_consent()
 	return CLICK_ACTION_SUCCESS
 
@@ -186,10 +174,10 @@
 	update_appearance()
 
 	// defaults to rejecting it unless specified otherwise
-	if(tgui_alert(occupant, "The SAD you are within is about to rejuvenate you, resetting your body to its default state (in character preferences). Do you consent?", "Rejuvenate", list("Yes", "No"), timeout = 10 SECONDS) == "Yes")
+	if(tgui_alert(occupant, "O SAD que você está dentro está prestes a rejuvenescê-lo, redefinindo seu corpo para seu estado padrão (em preferências de caráter). Você concorda?", "Rejuvenate", list("Yes", "No"), timeout = 10 SECONDS) == "Yes")
 		player_consent = CONSENT_GRANTED
 		say("Starting procedure! Baking for a cycle time of [DisplayTimeText(processing_time)] at laser power [display_power(active_power_usage)].")
-		to_chat(occupant, span_warning("This will take [DisplayTimeText(processing_time)] to complete. To cancel the procedure, hit the RESIST button or hotkey."))
+		to_chat(occupant, span_warning("Isso vai levar[DisplayTimeText(processing_time)]para completar. Para cancelar o procedimento, aperte o botão RESIST ou tecla de atalho."))
 		set_light(l_range = 1.5, l_power = 1.2, l_on = TRUE)
 		sound_loop.start()
 		COOLDOWN_START(src, sad_processing_time, processing_time)
@@ -219,8 +207,7 @@
 	patient.updateappearance()
 	patient.wash(CLEAN_SCRUB)
 	if(patient.dna.real_name != original_name)
-		log_game("[key_name(patient)] has used the Self-Actualization Device at [loc_name(src)], changed the name of their character. \
-		Original Name: [original_name], New Name: [patient.dna.real_name].")
+		log_game("[key_name(patient)] has used the Self-Actualization Device at [loc_name(src)], changed the name of their character. 		Original Name: [original_name], New Name: [patient.dna.real_name].")
 	else
 		log_game("[key_name(patient)] has used the Self-Actualization Device at [loc_name(src)].")
 
@@ -249,7 +236,7 @@
 		victim_living.apply_damage(0.10 * damage, BURN, BODY_ZONE_R_LEG, wound_bonus = 14)
 		victim_living.apply_damage(0.10 * damage, BURN, BODY_ZONE_L_ARM, wound_bonus = 14)
 		victim_living.apply_damage(0.10 * damage, BURN, BODY_ZONE_R_ARM, wound_bonus = 14)
-		victim_living.visible_message(span_warning("[src] shuts down, forcefully ejecting [victim_living]!"), span_danger("The [src] shuts down mid-procedure! That can't be good..."))
+		victim_living.visible_message(span_warning("[src]Desliga, ejetando com força.[victim_living]!"), span_danger("O[src]Fecha no meio do processo! Isso não pode ser bom..."))
 
 	open_machine()
 
@@ -259,22 +246,19 @@
 		return
 
 	if(COOLDOWN_TIMELEFT(src, sad_processing_time) < BREAKOUT_TIME)
-		to_chat(user, span_warning("The emergency release is not responding! You start pushing against the door, but you feel your body changing... It's too late!"))
+		to_chat(user, span_warning("A liberação de emergência não está respondendo! Você começa a empurrar contra a porta, mas sente seu corpo mudando... É tarde demais!"))
 		return
 
-	to_chat(user, span_notice("The emergency release is not responding! You start pushing against the door!"))
+	to_chat(user, span_notice("A liberação de emergência não está respondendo! Você começa a empurrar contra a porta!"))
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message(span_notice("You see [user] kicking against the door of [src]!"), \
-		span_notice("You lean on the back of [src] and start pushing the door open... (this will take about [DisplayTimeText(BREAKOUT_TIME)].)"), \
-		span_hear("You hear a metallic creaking from [src]."))
+	user.visible_message(span_notice("Viu?[user]Chutando contra a porta de[src]!"), 		span_notice("Você se apoia na parte de trás de[src]E começar a empurrar a porta aberta...[DisplayTimeText(BREAKOUT_TIME)].)"), 		span_hear("Você ouve um metal rangendo de[src]."))
 	user.emote("scream")
 
 	if(do_after(user, BREAKOUT_TIME, target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || state_open)
 			return
-		user.visible_message(span_warning("[user] successfully broke out of [src]!"), \
-			span_notice("You successfully break out of [src]!"))
+		user.visible_message(span_warning("[user]Com sucesso, fugiu.[src]!"), 			span_notice("Você conseguiu escapar.[src]!"))
 		eject_old_you(damaged_goods = TRUE)
 
 /obj/machinery/self_actualization_device/screwdriver_act(mob/living/user, obj/item/used_item)
@@ -283,7 +267,7 @@
 		return
 
 	if(occupant)
-		to_chat(user, span_warning("[src] is currently occupied!"))
+		to_chat(user, span_warning("[src]Está ocupado no momento!"))
 		return
 
 	if(default_deconstruction_screwdriver(user, icon_state, icon_state, used_item))
@@ -294,7 +278,7 @@
 
 /obj/machinery/self_actualization_device/crowbar_act(mob/living/user, obj/item/used_item)
 	if(occupant)
-		to_chat(user, span_warning("[src] is currently occupied!"))
+		to_chat(user, span_warning("[src]Está ocupado no momento!"))
 		return
 
 	if(default_deconstruction_crowbar(used_item))

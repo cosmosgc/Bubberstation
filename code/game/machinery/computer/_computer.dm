@@ -88,7 +88,7 @@
 	if(..())
 		return TRUE
 	if(circuit)
-		balloon_alert(user, "disconnecting monitor...")
+		balloon_alert(user, "Desligando o monitor...")
 		if(I.use_tool(src, user, time_to_unscrew, volume=50))
 			deconstruct(TRUE)
 	return TRUE

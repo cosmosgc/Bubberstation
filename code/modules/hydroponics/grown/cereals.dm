@@ -1,7 +1,7 @@
 // Wheat
 /obj/item/seeds/wheat
 	name = "wheat seed pack"
-	desc = "These may, or may not, grow into wheat."
+	desc = "Estes podem, ou não, crescer em trigo."
 	icon_state = "seed-wheat"
 	species = "wheat"
 	plantname = "Wheat Stalks"
@@ -17,7 +17,7 @@
 /obj/item/food/grown/wheat
 	seed = /obj/item/seeds/wheat
 	name = "wheat"
-	desc = "Sigh... wheat... a-grain?"
+	desc = "Suspira... trigo... grão?"
 	gender = PLURAL
 	icon_state = "wheat"
 	bite_consumption_mod = 0.5 // Chewing on wheat grains?
@@ -33,7 +33,7 @@
 // Oat
 /obj/item/seeds/wheat/oat
 	name = "oat seed pack"
-	desc = "These may, or may not, grow into oat."
+	desc = "Estes podem, ou não, crescer em aveia."
 	icon_state = "seed-oat"
 	species = "oat"
 	plantname = "Oat Stalks"
@@ -43,7 +43,7 @@
 /obj/item/food/grown/oat
 	seed = /obj/item/seeds/wheat/oat
 	name = "oat"
-	desc = "Eat oats, do squats."
+	desc = "Coma aveia, faça agachamento."
 	gender = PLURAL
 	icon_state = "oat"
 	bite_consumption_mod = 0.5
@@ -57,7 +57,7 @@
 // Rice
 /obj/item/seeds/wheat/rice
 	name = "rice seed pack"
-	desc = "These may, or may not, grow into rice."
+	desc = "Estes podem, ou não, crescer em arroz."
 	icon_state = "seed-rice"
 	species = "rice"
 	plantname = "Rice Stalks"
@@ -71,7 +71,7 @@
 /obj/item/food/grown/rice
 	seed = /obj/item/seeds/wheat/rice
 	name = "rice"
-	desc = "Rice to meet you."
+	desc = "Rice para conhecê-lo."
 	gender = PLURAL
 	icon_state = "rice"
 	bite_consumption_mod = 0.5
@@ -85,7 +85,7 @@
 //Meatwheat - grows into synthetic meat
 /obj/item/seeds/wheat/meat
 	name = "meatwheat seed pack"
-	desc = "If you ever wanted to drive a vegetarian to insanity, here's how."
+	desc = "Se quiser levar um vegetariano à loucura, é assim."
 	icon_state = "seed-meatwheat"
 	species = "meatwheat"
 	plantname = "Meatwheat"
@@ -94,7 +94,7 @@
 
 /obj/item/food/grown/meatwheat
 	name = "meatwheat"
-	desc = "Some blood-drenched wheat stalks. You can crush them into what passes for meat if you squint hard enough."
+	desc = "Alguns talos de trigo ensopados em sangue. Você pode esmagá-los no que passa por carne se você apertar forte o suficiente."
 	icon_state = "meatwheat"
 	gender = PLURAL
 	bite_consumption_mod = 0.5
@@ -109,7 +109,7 @@
 	return list(/datum/reagent/consumable/flour = 0, /datum/reagent/blood = 0)
 
 /obj/item/food/grown/meatwheat/attack_self(mob/living/user)
-	user.visible_message(span_notice("[user] crushes [src] into meat."), span_notice("You crush [src] into something that resembles meat."))
+	user.visible_message(span_notice("[user]Quedas[src]em carne."), span_notice("Você esmaga[src]em algo que se parece com carne."))
 	playsound(user, 'sound/effects/blob/blobattack.ogg', 50, TRUE)
 	var/obj/item/food/meat/slab/meatwheat/meaties = new(null)
 	meaties.reagents.set_all_reagents_purity(seed.get_reagent_purity())

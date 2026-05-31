@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/rust_construction
 	name = "Rust Formation"
-	desc = "Transforms a rusted floor into a full wall of rust. Creating a wall underneath a mob will harm it."
+	desc = "Transforma um chão enferrujado em uma parede cheia de ferrugem. Criar uma parede debaixo de uma multidão vai prejudicá-la."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon_state = "shield"
@@ -13,7 +13,7 @@
 
 	// Both of these are changed in before_cast
 	invocation = "Someone raises a wall of rust."
-	invocation_self_message = "You raise a wall of rust."
+	invocation_self_message = "Você levanta uma parede de ferrugem."
 	invocation_type = INVOCATION_EMOTE
 	spell_requirements = NONE
 
@@ -30,12 +30,12 @@
 
 /datum/action/cooldown/spell/pointed/rust_construction/is_valid_target(atom/cast_on)
 	if(!isturf(cast_on))
-		cast_on.balloon_alert(owner, "not a wall or floor!")
+		cast_on.balloon_alert(owner, "Não uma parede ou chão!")
 		return FALSE
 
 	if(!HAS_TRAIT(cast_on, TRAIT_RUSTY))
 		if(owner)
-			cast_on.balloon_alert(owner, "not rusted!")
+			cast_on.balloon_alert(owner, "Não enferrujado!")
 		return FALSE
 
 	return TRUE
@@ -47,7 +47,7 @@
 
 	var/mob/living/living_owner = owner
 	invocation = span_danger("<b>[owner]</b> drags [owner.p_their()] hand[living_owner.usable_hands == 1 ? "":"s"] upwards as a wall of rust rises out of [cast_on]!")
-	invocation_self_message = span_notice("You drag [living_owner.usable_hands == 1 ? "a hand":"your hands"] upwards as a wall of rust rises out of [cast_on].")
+	invocation_self_message = span_notice("Você arrasta[living_owner.usable_hands == 1 ? "a hand":"your hands"]Para cima como uma parede de ferrugem sobe para fora[cast_on].")
 
 /datum/action/cooldown/spell/pointed/rust_construction/cast(turf/cast_on)
 	. = ..()
@@ -55,7 +55,7 @@
 
 	// If we casted at a wall we'll try to rust it. In the case of an enchanted wall it'll deconstruct it
 	if(isclosedturf(cast_on))
-		cast_on.visible_message(span_warning("\The [cast_on] quakes as the rust causes it to crumble!"))
+		cast_on.visible_message(span_warning("\The [cast_on]Os tremores fazem com que a ferrugem se desmorone!"))
 		var/mob/living/living_owner = owner
 		living_owner?.do_rust_heretic_act(cast_on)
 		// ref transfers to floor
@@ -89,13 +89,13 @@
 		message_shown = TRUE
 		if(IS_HERETIC_OR_MONSTER(living_mob) || living_mob == owner)
 			living_mob.visible_message(
-				span_warning("\A [new_wall] [rises_message] and pushes along [living_mob]!"),
-				span_notice("\A [new_wall] [rises_message] beneath your feet and pushes you along!"),
+				span_warning("\A [new_wall] [rises_message]E empurra junto[living_mob]!"),
+				span_notice("\A [new_wall] [rises_message]sob seus pés e empurra você junto!"),
 			)
 		else
 			living_mob.visible_message(
-				span_warning("\A [new_wall] [rises_message] and slams into [living_mob]!"),
-				span_userdanger("\A [new_wall] [rises_message] beneath your feet and slams into you!"),
+				span_warning("\A [new_wall] [rises_message]E bater em[living_mob]!"),
+				span_userdanger("\A [new_wall] [rises_message]sob seus pés e bate em você!"),
 			)
 			living_mob.apply_damage(10, BRUTE, wound_bonus = 10)
 			living_mob.Knockdown(5 SECONDS)

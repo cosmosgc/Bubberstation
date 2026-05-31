@@ -1,6 +1,6 @@
 /obj/machinery/power/manufacturing/storagebox
 	name = "manufacturing storage unit"
-	desc = "Its basically a box. Receives resources (if anchored). Needs a machine to take stuff out of without dumping everything out."
+	desc = "É basicamente uma caixa. Recebe recursos (se ancorados). Precisa de uma máquina para tirar as coisas sem jogar tudo fora."
 	icon_state = "box"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10)
 	/// how much can we hold

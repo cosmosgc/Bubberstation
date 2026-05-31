@@ -10,4 +10,4 @@
 	for(var/obj/item/food/meat/slab/drakebait in view(src, 1.5)) //Checks if the bait is on, or is next to the Ashdrake
 		qdel(drakebait)// bait is kil
 		new /obj/item/stack/sheet/animalhide/ashdrake(get_turf(src))
-		visible_message(span_notice("[src] accepts your offering."), span_notice("The drake consumes the meat."))
+		visible_message(span_notice("[src]aceita sua oferta."), span_notice("O Drake consome a carne."))

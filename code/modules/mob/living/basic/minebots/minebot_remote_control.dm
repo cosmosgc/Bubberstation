@@ -1,7 +1,7 @@
 #define BOMB_COOLDOWN 20 SECONDS
 /obj/item/minebot_remote_control
 	name = "Remote Control"
-	desc = "Requesting stratagem!"
+	desc = "Solicitando estratagema!"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "minebot_bomb_control"
 	item_flags = NOBLUDGEON
@@ -31,7 +31,7 @@
 		return .
 
 	if(!COOLDOWN_FINISHED(src, bomb_timer))
-		balloon_alert(user, "em recarga!")
+		balloon_alert(user, "Em recarga!")
 		return TRUE
 
 	prime_bomb(user)
@@ -50,7 +50,7 @@
 
 /obj/item/minebot_remote_control/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!primed)
-		user.balloon_alert(user, "not primed!")
+		user.balloon_alert(user, "Não preparado!")
 		return ITEM_INTERACT_BLOCKING
 	var/turf/target_turf = get_turf(interacting_with)
 	if(isnull(target_turf) || isclosedturf(target_turf) || isgroundlessturf(target_turf))

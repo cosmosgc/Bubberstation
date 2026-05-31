@@ -24,9 +24,9 @@
 
 	target.wash(CLEAN_SCRUB)
 	if(istype(target, /obj/effect/decal/cleanable))
-		visible_message(span_notice("[src] cleans up \the [target]."))
+		visible_message(span_notice("[src]Limpa.\the [target]."))
 	else
-		visible_message(span_notice("[src] polishes \the [target]."))
+		visible_message(span_notice("[src]Polidos\the [target]."))
 	return FALSE
 
 /**
@@ -36,7 +36,7 @@
 /mob/living/basic/alien/maid/barmaid
 	gold_core_spawnable = NO_SPAWN
 	name = "Barmaid"
-	desc = "A barmaid, a maiden found in a bar."
+	desc = "Uma garçonete, uma donzela encontrada em um bar."
 	pass_flags = PASSTABLE
 	unique_name = FALSE
 	initial_language_holder = /datum/language_holder/universal

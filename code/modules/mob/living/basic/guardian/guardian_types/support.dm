@@ -7,26 +7,14 @@
 	melee_damage_upper = 15
 	playstyle_string = span_holoparasite("As a <b>support</b> type, you may right-click to heal targets. In addition, alt-clicking on an adjacent object or mob will warp them to your bluespace beacon after a short delay.")
 	creator_name = "Support"
-	creator_desc = "Does medium damage, but can heal its targets and create beacons to teleport people and things to."
+	creator_desc = "Faz danos médios, mas pode curar seus alvos e criar faróis para teletransportar pessoas e coisas."
 	creator_icon = "support"
 	/// Amount of each damage type to heal per hit
 	var/healing_amount = 5
 
 /mob/living/basic/guardian/support/Initialize(mapload, datum/guardian_fluff/theme)
 	. = ..()
-	AddComponent(\
-		/datum/component/healing_touch,\
-		heal_brute = healing_amount,\
-		heal_burn = healing_amount,\
-		heal_tox = healing_amount,\
-		heal_oxy = healing_amount,\
-		heal_time = 0,\
-		action_text = "",\
-		complete_text = "",\
-		required_modifier = RIGHT_CLICK,\
-		extra_checks = CALLBACK(src, PROC_REF(is_deployed)),\
-		after_healed = CALLBACK(src, PROC_REF(after_healed)),\
-	)
+	AddComponent(		/datum/component/healing_touch,		heal_brute = healing_amount,		heal_burn = healing_amount,		heal_tox = healing_amount,		heal_oxy = healing_amount,		heal_time = 0,		action_text = "",		complete_text = "",		required_modifier = RIGHT_CLICK,		extra_checks = CALLBACK(src, PROC_REF(is_deployed)),		after_healed = CALLBACK(src, PROC_REF(after_healed)),	)
 
 	ADD_TRAIT(src, TRAIT_MEDICAL_HUD, INNATE_TRAIT)
 
@@ -42,18 +30,18 @@
 	do_attack_animation(healed, ATTACK_EFFECT_PUNCH)
 	healed.visible_message(
 		message = span_notice("[src] heals [healed]!"),
-		self_message = span_userdanger("[src] heals you!"),
+		self_message = span_userdanger("[src]Cura você!"),
 		vision_distance = COMBAT_MESSAGE_RANGE,
 		ignored_mobs = src,
 	)
-	to_chat(src, span_notice("You heal [healed]!"))
+	to_chat(src, span_notice("Você se cura.[healed]!"))
 	playsound(healed, attack_sound, 50, TRUE, TRUE, frequency = -1) // play punch sound in REVERSE
 
 
 /// Place a beacon and then listen for clicks to teleport people to it
 /datum/action/cooldown/mob_cooldown/guardian_bluespace_beacon
 	name = "Place Bluespace Beacon"
-	desc = "Mark the ground under your feet as a teleportation point. Alt-click things to teleport them to your beacon."
+	desc = "Marque o chão sob seus pés como um ponto de teletransporte. Alt-click coisas para teletransportá-los para o seu farol."
 	button_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "the_freezer"
 	background_icon = 'icons/hud/guardian.dmi'
@@ -82,7 +70,7 @@
 		return FALSE
 
 	if (!isnull(beacon))
-		beacon.visible_message("[beacon] vanishes!")
+		beacon.visible_message("[beacon]Desapareça!")
 		new /obj/effect/temp_visual/guardian/phase/out(beacon.loc)
 		qdel(beacon)
 
@@ -91,7 +79,7 @@
 		var/mob/living/basic/guardian/guardian_owner = owner
 		beacon.add_atom_colour(guardian_owner.guardian_colour, FIXED_COLOUR_PRIORITY)
 	RegisterSignal(beacon, COMSIG_QDELETING, PROC_REF(on_beacon_deleted))
-	to_chat(src, span_bolddanger("Beacon placed! You may now warp targets and objects to it, including your user, via Alt+Click."))
+	to_chat(src, span_bolddanger("Beacon colocado! Você pode agora dobrar alvos e objetos para ele, incluindo seu usuário, via Alt+. Clique."))
 	StartCooldown()
 	return TRUE
 
@@ -113,21 +101,21 @@
 /// Validate whether we can teleport this object
 /datum/action/cooldown/mob_cooldown/guardian_bluespace_beacon/proc/can_teleport(mob/living/source, atom/movable/target)
 	if (isnull(beacon))
-		source.balloon_alert(source, "no beacon!")
+		source.balloon_alert(source, "Sem sinal!")
 		return FALSE
 	if (isguardian(source))
 		var/mob/living/basic/guardian/guardian_mob = source
 		if (!guardian_mob.is_deployed())
-			source.balloon_alert(source, "manifest yourself!")
+			source.balloon_alert(source, "Manifeste-se!")
 			return FALSE
 	if (!source.can_perform_action(target))
-		target.balloon_alert(source, "longe demais!")
+		target.balloon_alert(source, "Longe demais!")
 		return FALSE
 	if (target.anchored)
-		target.balloon_alert(source, "it won't budge!")
+		target.balloon_alert(source, "Não se mexe!")
 		return FALSE
 	if(beacon.z != target.z)
-		target.balloon_alert(source, "too far from beacon!")
+		target.balloon_alert(source, "Muito longe do farol!")
 		return FALSE
 	return TRUE
 
@@ -137,8 +125,7 @@
 	playsound(target, 'sound/items/weapons/punch1.ogg', 50, TRUE, TRUE, frequency = -1)
 	source.balloon_alert(source, "teleportando...")
 	target.visible_message(
-		span_danger("[target] starts to glow faintly!"), \
-		span_userdanger("You start to faintly glow, and you feel strangely weightless!"))
+		span_danger("[target]começa a brilhar fracamente!"), 		span_userdanger("Você começa a brilhar fracamente, e você se sente estranhamente sem peso!"))
 	if(!do_after(source, teleport_time, target))
 		return
 	new /obj/effect/temp_visual/guardian/phase/out(target.loc)
@@ -146,9 +133,7 @@
 		var/mob/living/living_target = target
 		living_target.flash_act()
 	target.visible_message(
-		span_danger("[target] disappears in a flash of light!"), \
-		span_userdanger("Your vision is obscured by a flash of light!"), \
-	)
+		span_danger("[target]Desaparece em um clarão de luz!"), 		span_userdanger("Sua visão é obscurecida por um clarão de luz!"), 	)
 	do_teleport(target, beacon, precision = 0, channel = TELEPORT_CHANNEL_BLUESPACE)
 	new /obj/effect/temp_visual/guardian/phase(get_turf(target))
 
@@ -157,7 +142,7 @@
 /obj/structure/guardian_beacon
 	name = "guardian beacon"
 	icon = 'icons/turf/floors.dmi'
-	desc = "A glowing zone which acts as a beacon for teleportation."
+	desc = "Uma zona brilhante que age como um farol para teletransporte."
 	icon_state = "light_on-8"
 	light_range = MINIMUM_USEFUL_LIGHT_RANGE
 	density = FALSE

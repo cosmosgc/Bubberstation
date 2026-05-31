@@ -6,10 +6,10 @@
 
 /datum/brain_trauma/special/bluespace_prophet/phobetor
 	name = "Sleepless Dreamer"
-	desc = "The patient, after undergoing untold psychological hardship, believes they can travel between the dreamscapes of this dimension."
-	scan_desc = "awoken sleeper"
-	gain_text = "<span class='notice'>Your mind snaps, and you wake up. You <i>really</i> wake up."
-	lose_text = "<span class='warning'>You succumb once more to the sleepless dream of the unwoken."
+	desc = "O paciente, depois de sofrer inúmeras dificuldades psicológicas, acredita que pode viajar entre as paisagens dos sonhos desta dimensão."
+	scan_desc = "Acordado adormecido."
+	gain_text = "<span class='notice'>Sua mente estala e você acorda. Você.<i>Realmente.</i>Acorde."
+	lose_text = "<span class='warning'>Você sucumbiu mais uma vez ao sonho sem dormir dos não acordados."
 
 	///Created tears, only checking the FIRST one, not the one it's created to link to.
 	var/list/created_firsts = list()
@@ -106,7 +106,7 @@
 
 /obj/effect/client_image_holder/phobetor
 	name = "phobetor tear"
-	desc = "A subdimensional rip in reality, which gives extra-spacial passage to those who have woken from the sleepless dream."
+	desc = "Um rasgo subdimensional na realidade, que dá passagem extra-espacial para aqueles que acordaram do sonho sem dormir."
 	image_icon = 'modular_zubbers/icons/effects/phobetor_tear.dmi'
 	image_state = "phobetor_tear"
 	// Place this above shadows so it always glows.
@@ -152,18 +152,18 @@
 	if(user != seer || !linked_to)
 		return
 	if(user.loc != src.loc)
-		to_chat(user, "Step into the Tear before using it.")
+		to_chat(user, "Entre na Lágrima antes de usá-la.")
 		return
 	for(var/obj/item/implant/tracking/imp in user.implants)
-		to_chat(user, span_warning("[imp] gives you the sense that you're being watched."))
+		to_chat(user, span_warning("[imp]dá a sensação de que está sendo observado."))
 		return
 	// Is this, or linked, stream being watched?
 	if(check_location_seen(user, get_turf(user)))
-		to_chat(user, span_warning("Not while you're being watched."))
+		to_chat(user, span_warning("Não enquanto estiver sendo vigiado."))
 		return
 	if(check_location_seen(user, get_turf(linked_to)))
-		to_chat(user, span_warning("Your destination is being watched."))
+		to_chat(user, span_warning("Seu destino está sendo vigiado."))
 		return
-	to_chat(user, span_notice("You slip unseen through [src]."))
+	to_chat(user, span_notice("Você desliza invisível[src]."))
 	user.playsound_local(null, 'sound/effects/magic/wand_teleport.ogg', 30, FALSE, pressure_affected = FALSE)
 	user.forceMove(get_turf(linked_to))

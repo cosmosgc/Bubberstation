@@ -1,6 +1,6 @@
 /obj/structure/sign/flag
 	name = "blank flag"
-	desc = "The flag of nothing. It has nothing on it. Magnificient."
+	desc = "A bandeira de nada. Não tem nada nele. Magnífico."
 	icon = 'modular_skyrat/modules/aesthetics/flag/icons/flags.dmi'
 	icon_state = "flag_coder"
 	buildable_sign = FALSE
@@ -19,7 +19,7 @@
 			return
 		if(!user.can_perform_action(src, NEED_DEXTERITY))
 			return
-		user.visible_message(span_notice("[user] grabs and folds \the [src.name]."), span_notice("You grab and fold \the [src.name]."))
+		user.visible_message(span_notice("[user]Pega e dobra\the [src.name]."), span_notice("Você agarra e dobra\the [src.name]."))
 		var/obj/item/flag_item = new item_flag(loc)
 		TransferComponents(flag_item)
 		user.put_in_hands(flag_item)
@@ -27,43 +27,43 @@
 
 /obj/structure/sign/flag/ssc
 	name = "flag of the Akula Democratic Union"
-	desc = "The flag of the Akula Democratic Union. A flag flown by a proud people, representing the oceans they came from, and will return to."
+	desc = "A bandeira da União Democrática de Akula. Uma bandeira voada por um povo orgulhoso, representando os oceanos de onde vieram, e voltará."
 	icon_state = "flag_agurk"
 	item_flag = /obj/item/sign/flag/ssc
 
 /obj/structure/sign/flag/nanotrasen
 	name = "flag of Nanotrasen"
-	desc = "The official corporate flag of Nanotrasen. Mostly flown as a ceremonial piece, or to mark land on a new frontier."
+	desc = "A bandeira corporativa oficial de Nanotrasen. A maioria voou como uma peça cerimonial, ou para marcar a terra em uma nova fronteira."
 	icon_state = "flag_nt"
 	item_flag = /obj/item/sign/flag/nanotrasen
 
 /obj/structure/sign/flag/tizira
 	name = "flag of the Republic of Northern Moghes"
-	desc = "The flag of the Great Republic of Northern Moghes. Depending on who you ask, it represents strength or being an ant in the hive."
+	desc = "A bandeira da Grande República de Moghes do Norte. Dependendo de quem perguntar, representa força ou ser uma formiga na colméia."
 	icon_state = "flag_tizira"
 	item_flag = /obj/item/sign/flag/tizira
 
 /obj/structure/sign/flag/mothic
 	name = "flag of the Grand Nomad Fleet"
-	desc = "The flag of the Mothic Grand Nomad Fleet. A classic naval ensign, its use has superceded the old national flag which can be seen in its canton."
+	desc = "A bandeira da frota Mothic Grand Nomad. Um clássico alferes naval, seu uso superou a velha bandeira nacional que pode ser vista em seu cantão."
 	icon_state = "flag_mothic"
 	item_flag = /obj/item/sign/flag/mothic
 
 /obj/structure/sign/flag/mars
 	name = "flag of the Teshari League for Self-Determination"
-	desc = "The flag of the Teshari League for Self-Determination. Originally a revolutionary flag during the time of the Republic of the Golden Feather, it has since been adopted as the official flag of the planet, as a reminder of how Teshari fought for representation and independence."
+	desc = "A bandeira da Liga Teshari para a Auto-Determinação. Originalmente uma bandeira revolucionária durante o tempo da República da Pena de Ouro, desde então tem sido adotada como a bandeira oficial do planeta, como um lembrete de como Teshari lutou por representação e independência."
 	icon_state = "flag_mars"
 	item_flag = /obj/item/sign/flag/mars
 
 /obj/structure/sign/flag/terragov
 	name = "flag of Terran Government"
-	desc = "The flag of Terran Government. It's a symbol of humanity no matter where they go, or how much they wish it wasn't."
+	desc = "A bandeira do Governo Terrano. É um símbolo da humanidade, não importa aonde vão, ou o quanto gostariam que não fosse."
 	icon_state = "flag_terragov"
 	item_flag = /obj/item/sign/flag/terragov
 
 /obj/structure/sign/flag/nri
 	name = "flag of the Pan-Slavic Commonwealth"
-	desc = "The flag of the Pan-Slavic Commonwealth. The Pan-Slavic colours, blue, white, and red, as defined all the way back in 1848 on Terra."
+	desc = "A bandeira da Comunidade Pan-eslava. Como núcleos pan-eslavas, azul, branco e vermelho, como definido em 1848 na Terra."
 	icon_state = "flag_nri"
 	item_flag = /obj/item/sign/flag/nri
 
@@ -71,7 +71,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/nri, 32)
 
 /obj/structure/sign/flag/azulea
 	name = "banner of the Akula Democratic Union"
-	desc = "A banner often hung proudly by Akula with a great love of their people. Often hung in pairs in places of command."
+	desc = "Um cartaz muitas vezes pendurado orgulhosamente por Akula com um grande amor de seu povo. Muitas vezes pendurado em pares em locais de comando."
 	icon_state = "flag_azulea"
 	item_flag = /obj/item/sign/flag/azulea
 
@@ -80,7 +80,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/azulea, 32)
 /// Please, for the love of God, use this in Black Mesa ONLY. NOWHERE ELSE. It's the only reason it was allowed in the game.
 /obj/structure/sign/flag/usa
 	name = "flag of the United States of America"
-	desc = "'Stars and Stripes', the flag of the United States of America. Its red color represents endurance and valor; blue one shows diligence, vigilance and justice, and the white one signs at pureness. Its thirteen red-and-white stripes show the initial thirteen founding colonies, and fifty stars designate the current fifty states."
+	desc = "\"Estrelas e Listras\", a bandeira dos Estados Unidos da América. Sua cor vermelha representa resistência e valor, azul mostra diligência, vigilância e justiça, e o branco mostra pureza. Suas treze listras vermelhas e brancas mostram as primeiras treze colônias fundadoras, e cinquenta estrelas designam os atuais cinquenta estados."
 	icon_state = "flag_usa"
 	item_flag = /obj/item/sign/flag/usa
 
@@ -88,7 +88,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/usa, 32)
 
 /obj/structure/sign/flag/syndicate
 	name = "flag of the Syndicate"
-	desc = "The flag of the Sothran Syndicate. Previously used by the Sothran people as a way of declaring opposition against the Nanotrasen, now it became an intergalactic symbol of the same, yet way more skewed purpose, as more groups of interest have joined the rebellion's side for their own gain."
+	desc = "A bandeira do Sindicato Sothran. Anteriormente usado pelo povo Sothran como uma forma de declarar oposição contra os Nanotrasen, agora tornou-se um símbolo intergaláctico do mesmo, ainda mais distorcido propósito, como mais grupos de interesse se juntaram ao lado da rebelião para seu próprio ganho."
 	icon_state = "flag_syndi"
 	item_flag = /obj/item/sign/flag/syndicate
 
@@ -96,7 +96,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 
 /obj/item/sign/flag
 	name = "folded blank flag"
-	desc = "The folded flag of nothing. It has nothing on it. Beautiful."
+	desc = "A bandeira dobrada de nada. Não tem nada nele. Lindo."
 	icon = 'modular_skyrat/modules/aesthetics/flag/icons/flags.dmi'
 	icon_state = "folded_coder"
 	sign_path = /obj/structure/sign/flag
@@ -116,61 +116,61 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 
 /obj/item/sign/flag/nanotrasen
 	name = "folded flag of the Nanotrasen"
-	desc = "The folded flag of the Nanotrasen."
+	desc = "A bandeira dobrada do Nanotrasen."
 	icon_state = "folded_nt"
 	sign_path = /obj/structure/sign/flag/nanotrasen
 
 /obj/item/sign/flag/ssc
 	name = "folded flag of the Akula Democratic Union"
-	desc = "The folded flag of the Akula Democratic Union."
+	desc = "A bandeira dobrada da União Democrática de Akula."
 	icon_state = "folded_agurk"
 	sign_path = /obj/structure/sign/flag/ssc
 
 /obj/item/sign/flag/terragov
 	name = "folded flag of the Terran Government"
-	desc = "The folded flag of Terran Government."
+	desc = "A bandeira dobrada do Governo Terrano."
 	icon_state = "folded_terragov"
 	sign_path = /obj/structure/sign/flag/terragov
 
 /obj/item/sign/flag/tizira
 	name = "folded flag of the Republic of Northern Moghes"
-	desc = "The folded flag of the Republic of Northern Moghes."
+	desc = "A bandeira dobrada da República de Moghes do Norte."
 	icon_state = "folded_tizira"
 	sign_path = /obj/structure/sign/flag/tizira
 
 /obj/item/sign/flag/mothic
 	name = "folded flag of the Grand Nomad Fleet"
-	desc = "The folded flag of the Grand Nomad Fleet."
+	desc = "A bandeira dobrada da espuma Grand Nomad."
 	icon_state = "folded_mothic"
 	sign_path = /obj/structure/sign/flag/mothic
 
 /obj/item/sign/flag/mars
 	name = "folded flag of the Teshari League for Self-Determination"
-	desc = "The folded flag of the Teshari League for Self-Determination."
+	desc = "A bandeira dobrada da Liga Teshari para Auto-Determinação."
 	icon_state = "folded_mars"
 	sign_path = /obj/structure/sign/flag/mars
 
 /obj/item/sign/flag/nri
 	name = "folded flag of the Pan-Slavic Commonwealth"
-	desc = "The folded flag of the Pan-Slavic Commonwealth."
+	desc = "A bandeira dobrada da Comunidade Pan-eslava."
 	icon_state = "folded_nri"
 	sign_path = /obj/structure/sign/flag/nri
 
 /obj/item/sign/flag/azulea
 	name = "folded banner of the Akula Democratic Union"
-	desc = "The folded banner of the Akula Democratic Union."
+	desc = "A bandeira dobrada da União Democrática de Akula."
 	icon_state = "folded_azulea"
 	sign_path = /obj/structure/sign/flag/azulea
 
 /// Please, for the love of God, use this in Black Mesa ONLY. NOWHERE ELSE. It's the only reason it was allowed in the game.
 /obj/item/sign/flag/usa
 	name = "folded flag of the United States of America"
-	desc = "The folded flag of the United States of America."
+	desc = "A bandeira dobrada dos EUA."
 	icon_state = "folded_usa"
 	sign_path = /obj/structure/sign/flag/usa
 
 /obj/item/sign/flag/syndicate
 	name = "folded flag of the Syndicate"
-	desc = "The folded flag of the Sothran Syndicate."
+	desc = "A bandeira dobrada do Sindicato Sothran."
 	icon_state = "folded_syndi"
 	sign_path = /obj/structure/sign/flag/syndicate

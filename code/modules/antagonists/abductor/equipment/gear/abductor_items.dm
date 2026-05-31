@@ -8,7 +8,7 @@
 	if (HAS_MIND_TRAIT(user, TRAIT_ABDUCTOR_TRAINING))
 		return TRUE
 
-	balloon_alert(user, "no idea how this works!")
+	balloon_alert(user, "Não sei como isso funciona!")
 	return FALSE
 
 /obj/item/abductor/proc/ScientistCheck(mob/user)
@@ -16,17 +16,17 @@
 	var/sci_training = HAS_MIND_TRAIT(user, TRAIT_ABDUCTOR_SCIENTIST_TRAINING)
 
 	if(training && !sci_training)
-		to_chat(user, span_warning("You're not trained to use this!"))
+		to_chat(user, span_warning("Você não é treinado para usar isso!"))
 		. = FALSE
 	else if(!training && !sci_training)
-		to_chat(user, span_warning("You can't figure how this works!"))
+		to_chat(user, span_warning("Não imagina como isso funciona!"))
 		. = FALSE
 	else
 		. = TRUE
 
 /obj/item/abductor/gizmo
 	name = "science tool"
-	desc = "A dual-mode tool for retrieving specimens and scanning appearances. Scanning can be done through cameras."
+	desc = "Uma ferramenta de modo duplo para recuperar espécimes e escanear aparências. A varredura pode ser feita através de câmeras."
 	icon_state = "gizmo_scan"
 	inhand_icon_state = "silencer"
 	icon_angle = -45
@@ -38,7 +38,7 @@
 	if(!ScientistCheck(user))
 		return
 	if(!console)
-		to_chat(user, span_warning("The device is not linked to console!"))
+		to_chat(user, span_warning("O dispositivo não está ligado ao console!"))
 		return
 
 	if(mode == GIZMO_SCAN)
@@ -47,13 +47,13 @@
 	else
 		mode = GIZMO_SCAN
 		icon_state = "gizmo_scan"
-	to_chat(user, span_notice("You switch the device to [mode == GIZMO_SCAN? "SCAN": "MARK"] MODE"))
+	to_chat(user, span_notice("Você muda o dispositivo para[mode == GIZMO_SCAN? "SCAN": "MARK"]MODELO"))
 
 /obj/item/abductor/gizmo/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!ScientistCheck(user))
 		return ITEM_INTERACT_SKIP_TO_ATTACK // So you slap them with it
 	if(!console)
-		to_chat(user, span_warning("The device is not linked to console!"))
+		to_chat(user, span_warning("O dispositivo não está ligado ao console!"))
 		return ITEM_INTERACT_BLOCKING
 
 	switch(mode)
@@ -72,27 +72,27 @@
 /obj/item/abductor/gizmo/proc/scan(atom/target, mob/living/user)
 	if(ishuman(target))
 		console.AddSnapshot(target)
-		to_chat(user, span_notice("You scan [target] and add [target.p_them()] to the database."))
+		to_chat(user, span_notice("Você verifica.[target]e adicionar[target.p_them()]Para o banco de dados."))
 
 /obj/item/abductor/gizmo/proc/mark(atom/target, mob/living/user)
 	var/mob/living/marked = marked_target_weakref?.resolve()
 	if(marked == target)
-		to_chat(user, span_warning("This specimen is already marked!"))
+		to_chat(user, span_warning("Este espécime já está marcado!"))
 		return
 	if(isabductor(target) || iscow(target))
 		marked_target_weakref = WEAKREF(target)
-		to_chat(user, span_notice("You mark [target] for future retrieval."))
+		to_chat(user, span_notice("Você marca.[target]para recuperação futura."))
 	else
 		prepare(target,user)
 
 /obj/item/abductor/gizmo/proc/prepare(atom/target, mob/living/user)
 	if(get_dist(target,user)>1)
-		to_chat(user, span_warning("You need to be next to the specimen to prepare it for transport!"))
+		to_chat(user, span_warning("Você precisa estar ao lado do espécime para prepará-lo para transporte!"))
 		return
-	to_chat(user, span_notice("You begin preparing [target] for transport..."))
+	to_chat(user, span_notice("Você começa a se preparar.[target]Para transportar..."))
 	if(do_after(user, 10 SECONDS, target = target))
 		marked_target_weakref = WEAKREF(target)
-		to_chat(user, span_notice("You finish preparing [target] for transport."))
+		to_chat(user, span_notice("Você termina de se preparar.[target]Para transporte."))
 
 /obj/item/abductor/gizmo/Destroy()
 	if(console)
@@ -103,7 +103,7 @@
 
 /obj/item/abductor/silencer
 	name = "abductor silencer"
-	desc = "A compact device used to shut down communications equipment."
+	desc = "Um dispositivo compacto usado para desligar equipamentos de comunicação."
 	icon_state = "silencer"
 	inhand_icon_state = "gizmo"
 	icon_angle = -45
@@ -130,7 +130,7 @@
 	for(human_target in view(2,targloc))
 		if(human_target == user)
 			continue
-		to_chat(user, span_notice("You silence [human_target]'s radio devices."))
+		to_chat(user, span_notice("Silêncio![human_target]Dispositivos de rádio."))
 		radio_off_mob(human_target)
 
 /obj/item/abductor/silencer/proc/radio_off_mob(mob/living/carbon/human/target)
@@ -143,8 +143,7 @@
 
 /obj/item/abductor/mind_device
 	name = "mental interface device"
-	desc = "A dual-mode tool for directly communicating with sentient brains. It can be used to send a direct message to a target, \
-			or to send a command to a test subject with a charged gland."
+	desc = "Uma ferramenta de modo duplo para se comunicar diretamente com cérebros sencientes. Pode ser usado para enviar uma mensagem direta para um alvo, ou para enviar um comando para um sujeito de teste com uma glândula carregada."
 	icon_state = "mind_device_message"
 	inhand_icon_state = "silencer"
 	icon_angle = -45
@@ -160,7 +159,7 @@
 	else
 		mode = MIND_DEVICE_MESSAGE
 		icon_state = "mind_device_message"
-	to_chat(user, span_notice("You switch the device to [mode == MIND_DEVICE_MESSAGE? "TRANSMISSION": "COMMAND"] MODE"))
+	to_chat(user, span_notice("Você muda o dispositivo para[mode == MIND_DEVICE_MESSAGE? "TRANSMISSION": "COMMAND"]MODELO"))
 
 /obj/item/abductor/mind_device/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!ismob(interacting_with))
@@ -183,13 +182,13 @@
 		var/mob/living/carbon/carbon_target = target
 		var/obj/item/organ/heart/gland/target_gland = carbon_target.get_organ_slot("heart")
 		if(!istype(target_gland))
-			to_chat(user, span_warning("Your target does not have an experimental gland!"))
+			to_chat(user, span_warning("Seu alvo não tem uma glândula experimental!"))
 			return
 		if(!target_gland.mind_control_uses)
-			to_chat(user, span_warning("Your target's gland is spent!"))
+			to_chat(user, span_warning("A glândula do seu alvo está gasta!"))
 			return
 		if(target_gland.active_mind_control)
-			to_chat(user, span_warning("Your target is already under a mind-controlling influence!"))
+			to_chat(user, span_warning("Seu alvo já está sob uma influência controladora da mente!"))
 			return
 
 		var/command = tgui_input_text(
@@ -209,18 +208,18 @@
 			return
 
 		if(carbon_target.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0))
-			user.balloon_alert(user, "foiled!")
-			to_chat(user, span_warning("Your target seems to have some sort of mental blockage, preventing the message from being sent! It seems you've been foiled."))
+			user.balloon_alert(user, "Destruído!")
+			to_chat(user, span_warning("Seu alvo parece ter algum tipo de bloqueio mental, impedindo que a mensagem seja enviada! Parece que você foi frustrado."))
 			return
 
 		target_gland.mind_control(command, user)
-		to_chat(user, span_notice("You send the command to your target."))
+		to_chat(user, span_notice("Você envia o comando para o seu alvo."))
 
 /obj/item/abductor/mind_device/proc/mind_message(atom/target, mob/living/user)
 	if(isliving(target))
 		var/mob/living/living_target = target
 		if(living_target.stat == DEAD)
-			to_chat(user, span_warning("Your target is dead!"))
+			to_chat(user, span_warning("Seu alvo está morto!"))
 			return
 		var/message = tgui_input_text(user, "Message to send to your target's brain", "Enter message", max_length = MAX_MESSAGE_LEN)
 		if(!message)
@@ -229,23 +228,23 @@
 			return
 
 		living_target.balloon_alert(living_target, "você ouve uma voz")
-		to_chat(living_target, span_hear("You hear a voice in your head saying: [span_abductor(message)]"))
-		to_chat(user, span_notice("You send the message to your target."))
+		to_chat(living_target, span_hear("Você ouve uma voz na sua cabeça dizendo:[span_abductor(message)]"))
+		to_chat(user, span_notice("Você envia a mensagem para o seu alvo."))
 		log_directed_talk(user, living_target, message, LOG_SAY, "abductor whisper")
 
 
 /obj/item/firing_pin/abductor
 	name = "alien firing pin"
 	icon_state = "firing_pin_ayy"
-	desc = "This firing pin is slimy and warm; you can swear you feel it constantly trying to mentally probe you."
-	fail_message = span_abductor("Firing error, please contact Command.")
+	desc = "Este alfinete é viscoso e quente, pode jurar que sente constantemente tentando sondar mentalmente."
+	fail_message = span_abductor("Erro de diferença, por favor, conte o Comando.")
 
 /obj/item/firing_pin/abductor/pin_auth(mob/living/user)
 	. = isabductor(user)
 
 /obj/item/gun/energy/alien
 	name = "alien pistol"
-	desc = "A complicated gun that fires bursts of high-intensity radiation."
+	desc = "Uma arma complicada que dispara explosões de radiação de alta intensidade."
 	ammo_type = list(/obj/item/ammo_casing/energy/radiation)
 	pin = /obj/item/firing_pin/abductor
 	icon_state = "alienpistol"
@@ -254,8 +253,7 @@
 
 /obj/item/gun/energy/shrink_ray
 	name = "shrink ray blaster"
-	desc = "This is a piece of frightening alien tech that enhances the magnetic pull of atoms in a localized space to temporarily make an object shrink. \
-			That or it's just space magic. Either way, it shrinks stuff."
+	desc = "Este é um pedaço de tecnologia alienígena assustadora que aumenta a atração magnética de átomos em um espaço localizado para temporariamente fazer um objeto encolher. Isso ou é apenas magia espacial. De qualquer forma, encolhe coisas."
 	ammo_type = list(/obj/item/ammo_casing/energy/shrink)
 	pin = /obj/item/firing_pin/abductor
 	inhand_icon_state = "shrink_ray"
@@ -267,7 +265,7 @@
 
 /obj/item/gun/energy/shrink_ray/suicide_act(mob/living/user)
 	. = ..()
-	user.visible_message(span_suicide("[user] points [src] at [user.p_their()] head, it looks like [user.p_theyre()] going to commit suicide!"))
+	user.visible_message(span_suicide("[user]Ponto[src]Em[user.p_their()]Cabeça, parece que...[user.p_theyre()]Vai cometer suicídio!"))
 	// we want an animation, so lets manually handle suicide.
 	addtimer(CALLBACK(src, PROC_REF(shrink_death), user), 0)
 	return MANUAL_SUICIDE
@@ -319,7 +317,7 @@ Return to step 11 of normal process."}
 
 /obj/item/melee/baton/abductor
 	name = "advanced baton"
-	desc = "A quad-mode baton used for incapacitation and restraining of specimens."
+	desc = "Um bastão de quatro modos usado para incapacitação e restrição de espécimes."
 
 	icon = 'icons/obj/antags/abductor.dmi'
 	lefthand_file = 'icons/mob/inhands/antag/abductor_lefthand.dmi'
@@ -371,7 +369,7 @@ Return to step 11 of normal process."}
 	log_stun_attack = is_stun_mode // other modes have their own log entries.
 	on_stun_sound = is_stun_or_sleep ? 'sound/items/weapons/egloves.ogg' : null
 
-	to_chat(usr, span_notice("You switch the baton to [txt] mode."))
+	to_chat(usr, span_notice("Você muda o bastão para[txt]Modo."))
 	update_appearance()
 
 /obj/item/melee/baton/abductor/update_icon_state()
@@ -396,8 +394,8 @@ Return to step 11 of normal process."}
 /obj/item/melee/baton/abductor/baton_effect(mob/living/target, mob/living/user, modifiers, stun_override, clumsy)
 	switch (mode)
 		if(BATON_STUN)
-			target.visible_message(span_danger("[user] stuns [target] with [src]!"),
-				span_userdanger("[user] stuns you with [src]!"), visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE)
+			target.visible_message(span_danger("[user]ATORDOAMENTOS[target]Com[src]!"),
+				span_userdanger("[user]Te atordoa com[src]!"), visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE)
 			target.set_jitter_if_lower(40 SECONDS)
 			target.set_confusion_if_lower(10 SECONDS)
 			target.set_stutter_if_lower(16 SECONDS)
@@ -424,25 +422,21 @@ Return to step 11 of normal process."}
 	playsound(src, on_stun_sound, 50, TRUE, -1)
 	if(INCAPACITATED_IGNORING(target, INCAPABLE_RESTRAINTS|INCAPABLE_GRAB))
 		if(target.can_block_magic(MAGIC_RESISTANCE_MIND))
-			to_chat(user, span_warning("The specimen has some kind of mental protection that is interfering with the sleep inducement! It seems you've been foiled."))
-			target.visible_message(span_danger("[user] tried to induced sleep in [target] with [src], but is unsuccessful!"), \
-			span_userdanger("You feel a strange wave of heavy drowsiness wash over you!"))
+			to_chat(user, span_warning("O espécime tem algum tipo de proteção mental que está interferindo na indução do sono! Parece que você foi frustrado."))
+			target.visible_message(span_danger("[user]Tentar entender o sono em[target]Com[src], mas não tem sucesso!"), 			span_userdanger("Você sente uma estranha onda de sonolência pesada."))
 			target.adjust_drowsiness(4 SECONDS)
 			return
-		target.visible_message(span_danger("[user] induces sleep in [target] with [src]!"), \
-		span_userdanger("You suddenly feel very drowsy!"))
+		target.visible_message(span_danger("[user]Induz o sono.[target]Com[src]!"), 		span_userdanger("Você de repente se sente muito sonolento!"))
 		target.Sleeping(sleep_time)
 		log_combat(user, target, "put to sleep")
 	else
 		if(target.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0))
-			to_chat(user, span_warning("The specimen has some kind of mental protection that is completely blocking our sleep inducement methods! It seems you've been foiled."))
-			target.visible_message(span_danger("[user] tried to induce sleep in [target] with [src], but is unsuccessful!"), \
-			span_userdanger("Any sense of drowsiness is quickly diminished!"))
+			to_chat(user, span_warning("O espécime tem algum tipo de proteção mental que está bloqueando completamente nossos métodos de indução do sono! Parece que você foi frustrado."))
+			target.visible_message(span_danger("[user]Tentei imuzir o sono.[target]Com[src], mas não tem sucesso!"), 			span_userdanger("Qualquer sensação de sonolência é rapidamente diminuída!"))
 			return
 		target.adjust_drowsiness(2 SECONDS)
-		to_chat(user, span_warning("Sleep inducement works fully only on stunned specimens! "))
-		target.visible_message(span_danger("[user] tried to induce sleep in [target] with [src]!"), \
-							span_userdanger("You suddenly feel drowsy!"))
+		to_chat(user, span_warning("A indução do sono só funciona em espécimes atordoados!"))
+		target.visible_message(span_danger("[user]Tentei imuzir o sono.[target]Com[src]!"), 							span_userdanger("De repente você está sonolento!"))
 
 /obj/item/melee/baton/abductor/proc/CuffAttack(mob/living/victim, mob/living/user)
 	if(!iscarbon(victim))
@@ -451,24 +445,22 @@ Return to step 11 of normal process."}
 	if(!carbon_victim.handcuffed)
 		if(carbon_victim.canBeHandcuffed())
 			playsound(src, 'sound/items/weapons/cablecuff.ogg', 30, TRUE, -2)
-			carbon_victim.visible_message(span_danger("[user] begins restraining [carbon_victim] with [src]!"), \
-									span_userdanger("[user] begins shaping an energy field around your hands!"))
+			carbon_victim.visible_message(span_danger("[user]Começa a restrição.[carbon_victim]Com[src]!"), 									span_userdanger("[user]começa a moldar um campo de energia em torno de suas mãos!"))
 			if(do_after(user, time_to_cuff, carbon_victim) && carbon_victim.canBeHandcuffed())
 				if(!carbon_victim.handcuffed)
 					carbon_victim.set_handcuffed(new /obj/item/restraints/handcuffs/energy(carbon_victim))
-					to_chat(user, span_notice("You restrain [carbon_victim]."))
+					to_chat(user, span_notice("Você se retém.[carbon_victim]."))
 					log_combat(user, carbon_victim, "handcuffed")
 			else
-				to_chat(user, span_warning("You fail to restrain [carbon_victim]."))
+				to_chat(user, span_warning("Você não consegue conter[carbon_victim]."))
 		else
-			to_chat(user, span_warning("[carbon_victim] doesn't have two hands..."))
+			to_chat(user, span_warning("[carbon_victim]não tem duas mãos..."))
 
 /obj/item/melee/baton/abductor/proc/ProbeAttack(mob/living/victim, mob/living/user)
-	victim.visible_message(span_danger("[user] probes [victim] with [src]!"), \
-						span_userdanger("[user] probes you!"))
+	victim.visible_message(span_danger("[user]Sondas.[victim]Com[src]!"), 						span_userdanger("[user]sonda você!"))
 
-	var/species = span_warning("Unknown species")
-	var/helptext = span_warning("Species unsuitable for experiments.")
+	var/species = span_warning("Espécie desconhecida")
+	var/helptext = span_warning("Espécie inadequada para experimentos.")
 
 	if(ishuman(victim))
 		var/mob/living/carbon/human/human_victim = victim
@@ -489,14 +481,14 @@ Return to step 11 of normal process."}
 
 /obj/item/restraints/handcuffs/energy
 	name = "hard-light energy field"
-	desc = "A hard-light field restraining the hands."
+	desc = "Um campo de luz dura, segurando as mãos."
 	icon_state = "cuff" // Needs sprite
 	breakouttime = 45 SECONDS
 	flags_1 = NONE
 
 /obj/item/restraints/handcuffs/energy/on_uncuffed(datum/source, mob/living/wearer)
 	. = ..()
-	wearer.visible_message(span_danger("[wearer]'s [name] breaks in a discharge of energy!"), span_userdanger("[wearer]'s [name] breaks in a discharge of energy!"))
+	wearer.visible_message(span_danger("[wearer]'s[name]Quebra uma descarga de energia!"), span_userdanger("[wearer]'s[name]Quebra uma descarga de energia!"))
 	do_sparks(4, FALSE, wearer.loc)
 	qdel(src)
 
@@ -505,17 +497,17 @@ Return to step 11 of normal process."}
 	if(AbductorCheck(user))
 		switch(mode)
 			if(BATON_STUN)
-				. += span_warning("The baton is in stun mode.")
+				. += span_warning("O bastão está em modo de choque.")
 			if(BATON_SLEEP)
-				. += span_warning("The baton is in sleep inducement mode.")
+				. += span_warning("O bastão está no modo de indução do sono.")
 			if(BATON_CUFF)
-				. += span_warning("The baton is in restraining mode.")
+				. += span_warning("O bastão está em modo de restrição.")
 			if(BATON_PROBE)
-				. += span_warning("The baton is in probing mode.")
+				. += span_warning("O bastão está em modo de sondagem.")
 
 /obj/item/radio/headset/abductor
 	name = "alien headset"
-	desc = "An advanced alien headset designed to monitor communications of human space stations. Why does it have a microphone? No one knows."
+	desc = "Um fone alienígena avançado projetado para monitorar comunicações de estações espaciais humanas. Por que tem um microfone? Ninguém sabe."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "abductor_headset"
 	keyslot2 = /obj/item/encryptionkey/heads/captain
@@ -531,7 +523,7 @@ Return to step 11 of normal process."}
 
 /obj/item/abductor_machine_beacon
 	name = "machine beacon"
-	desc = "A beacon designed to instantly tele-construct abductor machinery."
+	desc = "Um farol projetado para tele-construir máquinas de sequestro."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "beacon"
 	w_class = WEIGHT_CLASS_TINY
@@ -539,7 +531,7 @@ Return to step 11 of normal process."}
 
 /obj/item/abductor_machine_beacon/attack_self(mob/user)
 	..()
-	user.visible_message(span_notice("[user] places down [src] and activates it."), span_notice("You place down [src] and activate it."))
+	user.visible_message(span_notice("[user]Para baixo.[src]E ativa."), span_notice("Você coloca para baixo[src]Etive-o."))
 	user.dropItemToGround(src)
 	playsound(src, 'sound/machines/terminal/terminal_alert.ogg', 50)
 	addtimer(CALLBACK(src, PROC_REF(try_spawn_machine)), 3 SECONDS)
@@ -555,7 +547,7 @@ Return to step 11 of normal process."}
 	if(viable)
 		playsound(src, 'sound/effects/phasein.ogg', 50, TRUE)
 		var/new_machine = new spawned_machine(loc)
-		visible_message(span_notice("[new_machine] warps on top of the beacon!"))
+		visible_message(span_notice("[new_machine]Dobras em cima do farol!"))
 		qdel(src)
 	else
 		playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50)
@@ -566,7 +558,7 @@ Return to step 11 of normal process."}
 
 /obj/item/scalpel/alien
 	name = "alien scalpel"
-	desc = "It's a gleaming sharp knife made out of silvery-green metal."
+	desc = "É uma faca afiada brilhante feita de metal verde prateado."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_angle = 180
 	surgical_tray_overlay = "scalpel_alien"
@@ -574,7 +566,7 @@ Return to step 11 of normal process."}
 
 /obj/item/hemostat/alien
 	name = "alien hemostat"
-	desc = "You've never seen this before."
+	desc = "Você nunca viu isso antes."
 	icon = 'icons/obj/antags/abductor.dmi'
 	surgical_tray_overlay = "hemostat_alien"
 	icon_angle = 180
@@ -582,7 +574,7 @@ Return to step 11 of normal process."}
 
 /obj/item/retractor/alien
 	name = "alien retractor"
-	desc = "You're not sure if you want the veil pulled back."
+	desc = "Não tem certeza se quer o véu retirado."
 	icon = 'icons/obj/antags/abductor.dmi'
 	surgical_tray_overlay = "retractor_alien"
 	icon_angle = 180
@@ -590,7 +582,7 @@ Return to step 11 of normal process."}
 
 /obj/item/circular_saw/alien
 	name = "alien saw"
-	desc = "Do the aliens also lose this, and need to find an alien hatchet?"
+	desc = "Os alienígenas também perdem isso, e precisam achar um machado alienígena?"
 	icon = 'icons/obj/antags/abductor.dmi'
 	surgical_tray_overlay = "saw_alien"
 	icon_angle = 180
@@ -598,7 +590,7 @@ Return to step 11 of normal process."}
 
 /obj/item/surgicaldrill/alien
 	name = "alien drill"
-	desc = "Maybe alien surgeons have finally found a use for the drill."
+	desc = "Talvez os cirurgiões alienígenas finalmente encontraram um uso para a broca."
 	icon = 'icons/obj/antags/abductor.dmi'
 	surgical_tray_overlay = "drill_alien"
 	icon_angle = 180
@@ -606,8 +598,7 @@ Return to step 11 of normal process."}
 
 /obj/item/cautery/alien
 	name = "alien cautery"
-	desc = "Why would bloodless aliens have a tool to stop bleeding? \
-		Unless..."
+	desc = "Por que alienígenas sem sangue teriam uma ferramenta para parar de sangrar? A menos que..."
 	icon = 'icons/obj/antags/abductor.dmi'
 	surgical_tray_overlay = "cautery_alien"
 	icon_angle = 180
@@ -615,7 +606,7 @@ Return to step 11 of normal process."}
 
 /obj/item/clothing/head/helmet/abductor
 	name = "agent headgear"
-	desc = "Abduct with style - spiky style. Prevents digital tracking."
+	desc = "Raptar com estilo, estilo picante. Evita rastreamento digital."
 	icon_state = "alienhelmet"
 	inhand_icon_state = null
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
@@ -642,7 +633,7 @@ Return to step 11 of normal process."}
 
 /obj/item/abductor/alien_omnitool
 	name = "quizzandric interfacer"
-	desc = "Effectively just a Space Swiss Army Knife. Contains a multitude of integrated tools. Right-click it to switch which toolset is active."
+	desc = "Efetivamente apenas uma faca do Exército Suíço Espacial. Contém uma infinidade de ferramentas integradas. Clique com o botão direito para mudar qual conjunto de ferramentas está ativo."
 	icon_state = "omnitool"
 	inhand_icon_state = "silencer"
 	icon_angle = -45
@@ -745,7 +736,7 @@ Return to step 11 of normal process."}
 		)
 		active_toolset = TOOLSET_HACKING
 		if(user)
-			balloon_alert(user, "hacking toolset selected")
+			balloon_alert(user, "hacking toolset selecionado")
 	else
 		tool_list = list(
 			"Retractor" = image(icon = 'icons/obj/antags/abductor.dmi', icon_state = "retractor"),
@@ -759,4 +750,4 @@ Return to step 11 of normal process."}
 		)
 		active_toolset = TOOLSET_MEDICAL
 		if(user)
-			balloon_alert(user, "medical toolset selected")
+			balloon_alert(user, "Conjunto de ferramentas médicas selecionado.")

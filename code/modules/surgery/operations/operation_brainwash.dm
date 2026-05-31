@@ -2,10 +2,9 @@
 
 /datum/surgery_operation/organ/brainwash
 	name = "brainwash"
-	desc = "Implant a directive into the patient's brain, making it their absolute priority."
+	desc = "Implantar uma diretiva no cérebro do paciente, tornando-a prioridade absoluta."
 	rnd_name = "Neural Brainwashing (Brainwash)"
-	rnd_desc = "A surgical procedure which directly implants a directive into the patient's brain, \
-		making it their absolute priority. It can be cleared using a mindshield implant."
+	rnd_desc = "Um procedimento cirúrgico que coloca diretamente uma diretriz no cérebro do paciente, tornando-a sua prioridade absoluta. Pode ser limpo usando um implante de escudo mental."
 	implements = list(
 		TOOL_HEMOSTAT = 1.15,
 		TOOL_WIRECUTTER = 2,
@@ -32,32 +31,32 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You begin to brainwash [organ.owner]..."),
-		span_notice("[surgeon] begins to fix [organ.owner]'s brain."),
-		span_notice("[surgeon] begins to perform surgery on [organ.owner]'s brain."),
+		span_notice("Você começa a lavagem cerebral[organ.owner]..."),
+		span_notice("[surgeon]Começa a consertar.[organ.owner]É o cérebro."),
+		span_notice("[surgeon]Começa a operar em[organ.owner]É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head pounds with unimaginable pain!") // Same message as other brain surgeries
 
 /datum/surgery_operation/organ/brainwash/on_success(obj/item/organ/brain/organ, mob/living/surgeon, obj/item/tool, list/operation_args)
 	if(!organ.owner.mind)
-		to_chat(surgeon, span_warning("[organ.owner] doesn't respond to the brainwashing, as if [organ.owner.p_they()] lacked a mind..."))
+		to_chat(surgeon, span_warning("[organ.owner]não responde à lavagem cerebral, como se[organ.owner.p_they()]Faltava uma mente..."))
 		return ..()
 	if(HAS_MIND_TRAIT(organ.owner, TRAIT_UNCONVERTABLE))
-		to_chat(surgeon, span_warning("[organ.owner] seems resistant to the brainwashing..."))
+		to_chat(surgeon, span_warning("[organ.owner]Parece resistente à lavagem cerebral..."))
 		return ..()
 
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You successfully brainwash [organ.owner]!"),
-		span_notice("[surgeon] successfully brainwashes [organ.owner]!"),
-		span_notice("[surgeon] finishes performing surgery on [organ.owner]'s brain."),
+		span_notice("Você fez lavagem cerebral com sucesso.[organ.owner]!"),
+		span_notice("[surgeon]Lavagens cerebrais bem sucedidas[organ.owner]!"),
+		span_notice("[surgeon]Termina a cirurgia em[organ.owner]É o cérebro."),
 	)
 	on_brainwash(organ.owner, surgeon, tool, operation_args)
 
 /datum/surgery_operation/organ/brainwash/proc/on_brainwash(mob/living/carbon/brainwashed, mob/living/surgeon, obj/item/tool, list/operation_args)
 	var/objective = operation_args[OPERATION_OBJECTIVE] || "Oooo no objective set somehow report this to an admin"
-	to_chat(brainwashed, span_notice("A new thought forms in your mind: '[objective]'"))
+	to_chat(brainwashed, span_notice("Um novo pensamento se forma em sua mente:[objective]'"))
 	brainwash(brainwashed, objective)
 	message_admins("[ADMIN_LOOKUPFLW(surgeon)] surgically brainwashed [ADMIN_LOOKUPFLW(brainwashed)] with the objective '[objective]'.")
 	surgeon.log_message("has brainwashed [key_name(brainwashed)] with the objective '[objective]' using brainwashing surgery.", LOG_ATTACK)
@@ -68,9 +67,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You screw up, bruising the brain's tissue!"),
-		span_notice("[surgeon] screws up, causing brain damage!"),
-		span_notice("[surgeon] completes the surgery on [organ.owner]'s brain."),
+		span_notice("Você estraga tudo, machuca o tecido cerebral!"),
+		span_notice("[surgeon]Estraga tudo, causando danos cerebrais!"),
+		span_notice("[surgeon]Completa a cirurgia em[organ.owner]É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head throbs with horrible pain!")
 	organ.apply_organ_damage(40)
@@ -78,8 +77,7 @@
 /datum/surgery_operation/organ/brainwash/mechanic
 	name = "reprogram"
 	rnd_name = "Neural Reprogramming (Brainwash)"
-	rnd_desc = "Install malware which directly implants a directive into the robotic patient's operating system, \
-		making it their absolute priority. It can be cleared using a mindshield implant."
+	rnd_desc = "Instale malware que implante diretamente uma diretiva no sistema operacional do paciente robótico, tornando-se sua prioridade absoluta. Pode ser limpo usando um implante de escudo mental."
 	implements = list(
 		TOOL_MULTITOOL = 1.15,
 		TOOL_HEMOSTAT = 2,
@@ -122,9 +120,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You begin to brainwash [organ.owner]..."),
-		span_notice("[surgeon] begins to fix [organ.owner]'s brain."),
-		span_notice("[surgeon] begins to perform surgery on [organ.owner]'s brain."),
+		span_notice("Você começa a lavagem cerebral[organ.owner]..."),
+		span_notice("[surgeon]Começa a consertar.[organ.owner]É o cérebro."),
+		span_notice("[surgeon]Começa a operar em[organ.owner]É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head pounds with unimaginable pain!") // Same message as other brain surgeries
 

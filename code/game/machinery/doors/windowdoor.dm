@@ -1,6 +1,6 @@
 /obj/machinery/door/window
 	name = "interior door"
-	desc = "A strong door."
+	desc = "Uma porta forte."
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "left"
 	layer = ABOVE_WINDOW_LAYER
@@ -383,7 +383,7 @@
 /obj/machinery/door/window/examine(mob/user)
 	. = ..()
 	if(obj_flags & EMAGGED)
-		. += span_warning("Its access panel is smoking slightly.")
+		. += span_warning("Seu painel de acesso está fumando um pouco.")
 	if(!density)
 		if(panel_open)
 			. += span_notice("The [span_boldnotice("airlock electronics")] could be [span_boldnotice("levered")] out.")
@@ -392,12 +392,12 @@
 /obj/machinery/door/window/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(density || operating)
-		to_chat(user, span_warning("You need to open the door to access the maintenance panel!"))
+		to_chat(user, span_warning("Você precisa abrir a porta para acessar o painel de manutenção!"))
 		return
 	add_fingerprint(user)
 	tool.play_tool_sound(src)
 	toggle_panel_open()
-	to_chat(user, span_notice("You [panel_open ? "open" : "close"] the maintenance panel."))
+	to_chat(user, span_notice("Você.[panel_open ? "open" : "close"]O painel de manutenção."))
 	return TRUE
 
 /obj/machinery/door/window/crowbar_act(mob/living/user, obj/item/tool)
@@ -405,8 +405,7 @@
 	if(!panel_open || density || operating)
 		return
 	add_fingerprint(user)
-	user.visible_message(span_notice("[user] removes the electronics from \the [src]."), \
-	span_notice("You start to remove electronics from \the [src]..."))
+	user.visible_message(span_notice("[user]Remove os eletrônicos de\the [src]."), 	span_notice("Você começa a remover eletrônicos de\the [src]..."))
 	if(!tool.use_tool(src, user, 40, volume=50))
 		return
 	if(!panel_open || density || operating || !loc)
@@ -429,10 +428,10 @@
 	windoor_assembly.update_appearance()
 	windoor_assembly.created_name = name
 	if(obj_flags & EMAGGED)
-		to_chat(user, span_warning("You discard the damaged electronics."))
+		to_chat(user, span_warning("Você descarta os eletrônicos danificados."))
 		qdel(src)
 		return
-	to_chat(user, span_notice("You remove the airlock electronics."))
+	to_chat(user, span_notice("Você remove os eletrônicos da câmara de ar."))
 	var/obj/item/electronics/airlock/dropped_electronics
 	if(!electronics)
 		dropped_electronics = new/obj/item/electronics/airlock(drop_location())
@@ -466,7 +465,7 @@
 		var/obj/item/crowbar/power/power_tool = I
 		if(power_tool.limit_jaws_access && forced)
 			playsound(src.loc, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
-			user.balloon_alert(user, "cannot pry open!")
+			user.balloon_alert(user, "Não pode abrir!")
 			return
 
 	if(!hasPower() || forced)
@@ -475,7 +474,7 @@
 		else
 			close(BYPASS_DOOR_CHECKS)
 	else
-		to_chat(user, span_warning("The door's motors resist your efforts to force it!"))
+		to_chat(user, span_warning("Os motores da porta resistem aos seus esforços para forçá-lo!"))
 
 /obj/machinery/door/window/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	switch(the_rcd.mode)
@@ -500,7 +499,7 @@
 
 /obj/machinery/door/window/brigdoor/security/cell
 	name = "cell door"
-	desc = "For keeping in criminal scum."
+	desc = "Por manter a escória criminosa."
 	req_access = list(ACCESS_BRIG)
 
 /obj/machinery/door/window/brigdoor/security/holding

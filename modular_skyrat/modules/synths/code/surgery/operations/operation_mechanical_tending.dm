@@ -8,7 +8,7 @@
 /datum/surgery_operation/basic/repair_synth
 	name = "structural repairs"
 	rnd_name = "Structural Repairs (Tend Wounds)"
-	desc = "Perform superficial repairs that focuses on fixing the patients chassis and physical frame."
+	desc = "Realizar reparos superficiais que se concentram em consertar o chassis dos pacientes e quadro físico."
 	implements = list(
 		TOOL_WELDER = 1,
 		/obj/item/stack/cable_coil = 1,
@@ -120,9 +120,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You attempt to patch some of [patient]'s [woundtype]."),
-		span_notice("[surgeon] attempts to patch some of [patient]'s [woundtype]."),
-		span_notice("[surgeon] attempts to patch some of [patient]'s [woundtype]."),
+		span_notice("Você tenta consertar um pouco de[patient]'s[woundtype]."),
+		span_notice("[surgeon]Tenta remendar alguns dos[patient]'s[woundtype]."),
+		span_notice("[surgeon]Tenta remendar alguns dos[patient]'s[woundtype]."),
 	)
 	display_pain(patient, "Your [woundtype] sting like hell!")
 
@@ -204,9 +204,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_warning("You screwed up!"),
-		span_warning("[surgeon] screws up!"),
-		span_notice("[surgeon] repairs some of [patient]'s wounds."),
+		span_warning("Você estragou tudo!"),
+		span_warning("[surgeon]Estraga tudo!"),
+		span_notice("[surgeon]Conserta alguns de[patient]São feridas."),
 		target_detailed = TRUE,
 	)
 	var/brute_dealt = operation_args[OPERATION_BRUTE_HEAL] * 0.8

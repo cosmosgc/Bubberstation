@@ -1,9 +1,8 @@
 /datum/surgery_operation/basic/viral_bonding
 	name = "viral bonding"
 	rnd_name = "Viroplasty (Viral Bonding)"
-	desc = "Force a symbiotic relationship between a patient and a virus it is infected with."
-	rnd_desc = "A surgical procedure that forces a symbiotic relationship between a virus and its host. \
-		The patient will be completely immune to the effects of the virus, but will carry and spread it to others."
+	desc = "Forçar uma relação simbiótica entre um paciente e um vírus que está infectado."
+	rnd_desc = "Um procedimento cirúrgico que força uma relação simbiótica entre um vírus e seu hospedeiro. O paciente será imune aos efeitos do vírus, mas o carregará e espalhará para outros."
 	implements = list(
 		TOOL_CAUTERY = 1,
 		TOOL_WELDER = 2,
@@ -48,9 +47,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You start heating [patient]'s bone marrow with [tool]..."),
-		span_notice("[surgeon] starts heating [patient]'s bone marrow with [tool]..."),
-		span_notice("[surgeon] starts heating something in [patient]'s chest with [tool]..."),
+		span_notice("Você começa a aquecer.[patient]É medula óssea com[tool]..."),
+		span_notice("[surgeon]Começa o aquecimento.[patient]É medula óssea com[tool]..."),
+		span_notice("[surgeon]Começa a aquecer alguma coisa.[patient]'s peito com[tool]..."),
 	)
 	display_pain(patient, "You feel a searing heat spread through your chest!")
 
@@ -58,9 +57,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("[patient]'s bone marrow begins pulsing slowly. The viral bonding is complete."),
-		span_notice("[patient]'s bone marrow begins pulsing slowly."),
-		span_notice("[surgeon] finishes the operation."),
+		span_notice("[patient]A medula óssea começa a pulsar lentamente. A ligação viral está completa."),
+		span_notice("[patient]A medula óssea começa a pulsar lentamente."),
+		span_notice("[surgeon]Termina a operação."),
 	)
 	display_pain(patient, "You feel a faint throbbing in your chest.")
 	for(var/datum/disease/infected_disease as anything in patient.diseases)

@@ -3,7 +3,7 @@
 /// The cheesiest, most crowned rat of them all. Regent superior of all rats in maintenance... at least until someone else tries to encroach on their claim.
 /mob/living/basic/regal_rat
 	name = "feral regal rat"
-	desc = "An evolved rat, created through some strange science. They lead nearby rats with deadly efficiency to protect their kingdom."
+	desc = "Um rato evoluído, criado através de alguma ciência estranha. Eles lideram ratos próximos com eficiência mortal para proteger seu reino."
 	icon_state = "regalrat"
 	icon_living = "regalrat"
 	icon_dead = "regalrat_dead"
@@ -56,15 +56,7 @@
 	AddElement(/datum/element/ai_retaliate)
 	AddElement(/datum/element/door_pryer, pry_time = 5 SECONDS, interaction_key = REGALRAT_INTERACTION)
 	AddElement(/datum/element/poster_tearer, interaction_key = REGALRAT_INTERACTION)
-	AddComponent(\
-		/datum/component/ghost_direct_control,\
-		poll_candidates = poll_ghosts,\
-		role_name = "the Regal Rat, cheesy be their crown",\
-		poll_ignore_key = POLL_IGNORE_REGAL_RAT,\
-		assumed_control_message = "You are an independent, invasive force on the station! Hoard coins, trash, cheese, and the like from the safety of darkness!",\
-		after_assumed_control = CALLBACK(src, PROC_REF(became_player_controlled)),\
-		poll_chat_border_icon = /obj/item/food/cheese/wedge,\
-	)
+	AddComponent(		/datum/component/ghost_direct_control,		poll_candidates = poll_ghosts,		role_name = "the Regal Rat, cheesy be their crown",		poll_ignore_key = POLL_IGNORE_REGAL_RAT,		assumed_control_message = "You are an independent, invasive force on the station! Hoard coins, trash, cheese, and the like from the safety of darkness!",		after_assumed_control = CALLBACK(src, PROC_REF(became_player_controlled)),		poll_chat_border_icon = /obj/item/food/cheese/wedge,	)
 
 	var/static/list/innate_actions = list(
 		/datum/action/cooldown/mob_cooldown/domain = BB_DOMAIN_ABILITY,
@@ -85,14 +77,14 @@
 		return
 
 	if(isregalrat(user))
-		. += span_warning("Who is this foolish false king? This will not stand!")
+		. += span_warning("Quem é esse tolo falso rei? Isso não vai aguentar!")
 		return
 
 	if(ismouse(user))
 		if(user.faction_check_atom(src, exact_match = TRUE))
-			. += span_notice("This is your king. Long live [p_their()] majesty!")
+			. += span_notice("Este é o seu rei. Vida longa[p_their()]Majestade!")
 		else
-			. += span_warning("This is a false king! Strike [p_them()] down!")
+			. += span_warning("Este é um falso rei! Strike.[p_them()]Abaixe-se!")
 		return
 
 	. += special_moniker
@@ -110,7 +102,7 @@
 	notify_ghosts(
 		"All rise for [name], ascendant to the throne in \the [get_area(src)].",
 		source = src,
-		header = "Sentient Rat Created",
+		header = "Rato Senciente Criado",
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
 	)
 
@@ -198,11 +190,11 @@
 
 	var/mob/living/living_target = the_target
 	if(HAS_TRAIT_NOT_FROM(living_target, TRAIT_FAKEDEATH, SPECIES_TRAIT) || living_target.stat == DEAD)
-		balloon_alert(src, "already dead!")
+		balloon_alert(src, "Já está morto!")
 		return FALSE
 
 	if(living_target.faction_check_atom(src, exact_match = TRUE))
-		balloon_alert(src, "one of your soldiers!")
+		balloon_alert(src, "Um de seus soldados!")
 		return FALSE
 
 	return TRUE
@@ -220,9 +212,9 @@
 		return FALSE
 
 	visible_message(
-		span_warning("[src] starts licking [target] passionately!"),
-		span_notice("You start licking [target]..."),
-		span_warning("You hear a disgusting slurping sound..."),
+		span_warning("[src]Começa a lamber[target]Com paixão!"),
+		span_notice("Você começa a lamber[target]..."),
+		span_warning("Você ouve um som nojento..."),
 	)
 
 	if (!do_after(src, 2 SECONDS, target, interaction_key = REGALRAT_INTERACTION))
@@ -242,7 +234,7 @@
  */
 /mob/living/basic/regal_rat/proc/cheese_heal(obj/item/target, amount, message)
 	if(health >= maxHealth)
-		balloon_alert(src, "you feel full!")
+		balloon_alert(src, "Você se sente cheio!")
 		return
 
 	to_chat(src, message)

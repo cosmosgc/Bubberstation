@@ -48,7 +48,7 @@ export function MessageModal(props: Props) {
             icon={icon}
             color="good"
             disabled={!longEnough}
-            tooltip={!longEnough ? 'You need a longer reason.' : ''}
+            tooltip={!longEnough ? 'Você precisa de uma razão mais longa.' : ''}
             tooltipPosition="right"
             onClick={() => {
               if (longEnough) {

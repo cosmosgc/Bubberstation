@@ -86,9 +86,9 @@
 		for(var/slot in required_slots)
 			var/list/slot_list = parse_slot_flags(slot)
 			slot_strings += (length(slot_list) == 1 ? "" : "one of ") + english_list(slot_list, and_text = " or ")
-		. += span_notice("Requires the MOD unit to have the following slots: [english_list(slot_strings)]")
+		. += span_notice("Requer que a unidade MOD tenha os seguintes slots:[english_list(slot_strings)]")
 	if(HAS_TRAIT(user, TRAIT_DIAGNOSTIC_HUD))
-		. += span_notice("Complexity level: [complexity]")
+		. += span_notice("Nível de complexidade:[complexity]")
 
 /// Looks through the MODsuit's parts to see if it has the parts required to support this module
 /obj/item/mod/module/proc/has_required_parts(list/parts, need_active = FALSE)
@@ -115,18 +115,18 @@
 /// Called when the module is selected from the TGUI, radial or the action button
 /obj/item/mod/module/proc/on_select(mob/activator)
 	if(!mod.wearer && !(allow_flags & MODULE_ALLOW_UNWORN)) //No wearer and cannot be used unworn
-		balloon_alert(activator, "not equipped!")
+		balloon_alert(activator, "Não está equipado!")
 		return
 	if(((!mod.active || mod.activating) && !(allow_flags & (MODULE_ALLOW_INACTIVE | MODULE_ALLOW_UNWORN))) || module_type == MODULE_PASSIVE) // not active
 		balloon_alert(activator, "não ativo!")
 		return
 	if(!has_required_parts(mod.mod_parts, need_active = TRUE) && !(allow_flags & MODULE_ALLOW_UNWORN)) // Doesn't have parts
-		balloon_alert(activator, "required parts inactive!")
+		balloon_alert(activator, "peças necessárias inativas!")
 		var/list/slot_strings = list()
 		for(var/slot in required_slots)
 			var/list/slot_list = parse_slot_flags(slot)
 			slot_strings += (length(slot_list) == 1 ? "" : "one of ") + english_list(slot_list, and_text = " or ")
-		to_chat(activator, span_warning("[src] requires these slots to be deployed: [english_list(slot_strings)]"))
+		to_chat(activator, span_warning("[src]requer que esses slots sejam implantados:[english_list(slot_strings)]"))
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
 	if(module_type != MODULE_USABLE)
@@ -148,14 +148,14 @@
 /// Called when the module is activated
 /obj/item/mod/module/proc/activate(mob/activator)
 	if(!COOLDOWN_FINISHED(src, cooldown_timer))
-		balloon_alert(activator, "on cooldown!")
+		balloon_alert(activator, "Na refrigeração!")
 		return FALSE
 	if(((!mod.active || mod.activating) && !(allow_flags & MODULE_ALLOW_INACTIVE)) || !mod.get_charge()) // SKYRAT EDIT ADDITION: INACTIVE USE
-		balloon_alert(activator, "unpowered!")
+		balloon_alert(activator, "Sem poder!")
 		return FALSE
 	if(!(allow_flags & MODULE_ALLOW_PHASEOUT) && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
 		//specifically a to_chat because the user is phased out.
-		to_chat(activator, span_warning("You cannot activate this right now."))
+		to_chat(activator, span_warning("Você não pode ativar isso agora."))
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_MODULE_TRIGGERED, mod.wearer) & MOD_ABORT_USE)
 		return FALSE
@@ -165,17 +165,17 @@
 		mod.selected_module = src
 		if(device)
 			if(mod.wearer.put_in_hands(device))
-				balloon_alert(activator, "[device] extended")
+				balloon_alert(activator, "[device]estendido")
 				RegisterSignal(mod.wearer, COMSIG_ATOM_EXITED, PROC_REF(on_exit))
 				RegisterSignal(mod.wearer, COMSIG_KB_MOB_DROPITEM_DOWN, PROC_REF(dropkey))
 			else
-				balloon_alert(activator, "can't extend [device]!")
+				balloon_alert(activator, "Não posso estender[device]!")
 				mod.wearer.transferItemToLoc(device, src, force = TRUE)
 				return FALSE
 		else
 			var/used_button = mod.wearer.client?.prefs.read_preference(/datum/preference/choiced/mod_select) || MIDDLE_CLICK
 			update_signal(used_button)
-			balloon_alert(mod.wearer, "[src] activated, [used_button]-click to use") // As of now, only wearers can "use" mods
+			balloon_alert(mod.wearer, "[src]ativado,[used_button]-clique para usar") // As of now, only wearers can "use" mods
 	active = TRUE
 	SEND_SIGNAL(src, COMSIG_MODULE_ACTIVATED)
 	SEND_SIGNAL(mod, COMSIG_MOD_MODULE_ACTIVATED, src)
@@ -189,7 +189,7 @@
 	if(module_type == MODULE_ACTIVE)
 		mod.selected_module = null
 		if(display_message)
-			balloon_alert(mod.wearer, device ? "[device] retracted" : "[src] deactivated")
+			balloon_alert(mod.wearer, device ? "[device]Retraído" : "[src]Desativado.")
 		if(device)
 			mod.wearer.transferItemToLoc(device, src, force = TRUE)
 			UnregisterSignal(mod.wearer, COMSIG_ATOM_EXITED)
@@ -220,14 +220,14 @@
 /// Called when the module is used
 /obj/item/mod/module/proc/used(mob/activator)
 	if(!COOLDOWN_FINISHED(src, cooldown_timer))
-		balloon_alert(activator, "on cooldown!")
+		balloon_alert(activator, "Na refrigeração!")
 		return FALSE
 	if(!check_power(use_energy_cost))
-		balloon_alert(activator, "carga insuficiente!")
+		balloon_alert(activator, "Insuficiência de carga!")
 		return FALSE
 	if(!(allow_flags & MODULE_ALLOW_PHASEOUT) && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
 		//specifically a to_chat because the user is phased out.
-		to_chat(activator, span_warning("You cannot activate this right now."))
+		to_chat(activator, span_warning("Você não pode ativar isso agora."))
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_MODULE_TRIGGERED, mod.wearer) & MOD_ABORT_USE)
 		return FALSE
@@ -470,7 +470,7 @@
 ///Anomaly Locked - Mostly just a wrapper for modules that don't need to descend from any other module but need the anomaly_locked_module component
 /obj/item/mod/module/anomaly_locked
 	name = "MOD anomaly locked module"
-	desc = "A form of a module, locked behind an anomalous core to function."
+	desc = "Uma forma de módulo, trancado atrás de um núcleo anômalo para funcionar."
 	/// Accepted types of anomaly cores.
 	var/list/accepted_anomalies = list(/obj/item/assembly/signaler/anomaly)
 	/// If this one starts with a core in.

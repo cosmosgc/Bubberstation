@@ -5,7 +5,7 @@
 
 /obj/machinery/biogenerator
 	name = "biogenerator"
-	desc = "Converts plants into biomass, which can be used to construct useful items."
+	desc = "Transforma plantas em biomassa, que pode ser usada para construir itens úteis."
 	icon = 'icons/obj/machines/biogenerator.dmi'
 	icon_state = "biogenerator"
 	density = TRUE
@@ -58,7 +58,7 @@
 
 /obj/machinery/biogenerator/can_be_unfasten_wrench(mob/user, silent)
 	if(welded_down)
-		to_chat(user, span_warning("[src] is welded to the floor!"))
+		to_chat(user, span_warning("[src]Está soldada ao chão!"))
 		return FAILED_UNFASTEN
 	return ..()
 
@@ -73,30 +73,30 @@
 		if(!tool.tool_start_check(user, amount=2))
 			return TRUE
 		user.visible_message(
-			span_notice("[user.name] starts to cut \the [src] free from the floor."),
-			span_notice("You start to cut [src] free from the floor..."),
-			span_hear("You hear welding."),
+			span_notice("[user.name]Começa a cortar\the [src]Livre do chão."),
+			span_notice("Você começa a cortar[src]Livre do chão..."),
+			span_hear("Você ouve solda."),
 		)
 		if(!tool.use_tool(src, user, 10 SECONDS, volume=100))
 			return FALSE
 		welded_down = FALSE
-		to_chat(user, span_notice("You cut [src] free from the floor."))
+		to_chat(user, span_notice("Você cortou.[src]Livre do chão."))
 		return TRUE
 	if(!anchored)
-		to_chat(user, span_warning("[src] needs to be wrenched to the floor!"))
+		to_chat(user, span_warning("[src]Precisa ser puxado para o chão!"))
 		return TRUE
 	if(!tool.tool_start_check(user, amount=2))
 		return TRUE
 	user.visible_message(
-		span_notice("[user.name] starts to weld \the [src] to the floor."),
-		span_notice("You start to weld [src] to the floor..."),
-		span_hear("You hear welding."),
+		span_notice("[user.name]começa a soldar\the [src]Para o chão."),
+		span_notice("Você começa a soldar[src]Para o chão..."),
+		span_hear("Você ouve solda."),
 	)
 	if(!tool.use_tool(src, user, 10 SECONDS, volume=100))
-		balloon_alert(user, "cancelled!")
+		balloon_alert(user, "Cancelado!")
 		return FALSE
 	welded_down = TRUE
-	to_chat(user, span_notice("You weld [src] to the floor."))
+	to_chat(user, span_notice("Você solda[src]Para o chão."))
 	return TRUE
 
 /obj/machinery/biogenerator/Destroy()
@@ -151,14 +151,14 @@
 	. = ..()
 
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads:")
-		. += span_notice(" - Productivity at <b>[productivity * 100]%</b>.")
-		. += span_notice(" - Converting <b>[processed_items_per_cycle]</b> pieces of food per cycle.")
-		. += span_notice(" - Matter consumption at <b>[1 / efficiency * 100]</b>%.")
-		. += span_notice(" - Internal biomass converter capacity at <b>[max_items]</b> pieces of food, and currently holding <b>[get_content_count()] piece\s</b>.")
+		. += span_notice("A exibição de status diz:")
+		. += span_notice("- Produtividade em<b>[productivity * 100]%</b>.")
+		. += span_notice("- Convertendo.<b>[processed_items_per_cycle]</b>pedaços de comida por ciclo.")
+		. += span_notice("- Consumo de matéria em<b>[1 / efficiency * 100]</b>%.")
+		. += span_notice("- Capacidade interna de conversor de biomassa em<b>[max_items]</b>pedaços de comida, e atualmente segurando<b>[get_content_count()]peça</b>.")
 
 	if(welded_down)
-		. += span_info("It's moored firmly to the floor. You can unsecure its moorings with a <b>welder</b>.")
+		. += span_info("Está ancorado firmemente no chão. Você pode não proteger suas amarras com um<b>soldador</b>.")
 
 /obj/machinery/biogenerator/update_appearance()
 	. = ..()
@@ -218,7 +218,7 @@
 		return ITEM_INTERACT_BLOCKING
 	var/turf/drop_location = drop_location()
 	if(biomass > 0)
-		drop_location.visible_message(span_warning("Biomass spills from \the [src]'s biomass tank!"))
+		drop_location.visible_message(span_warning("Biomassa derrama de\the [src]O tanque de biomassa!"))
 		playsound(drop_location, 'sound/effects/slosh.ogg', 25, vary = TRUE)
 		new /obj/effect/decal/cleanable/greenglow(drop_location)
 	return ITEM_INTERACT_SUCCESS
@@ -229,7 +229,7 @@
 
 	if(istype(tool, /obj/item/reagent_containers/cup))
 		if(panel_open)
-			to_chat(user, span_warning("Close the maintenance panel first!"))
+			to_chat(user, span_warning("Feche o painel de manutenção primeiro!"))
 			return ITEM_INTERACT_BLOCKING
 
 		insert_beaker(user, tool)
@@ -238,7 +238,7 @@
 	var/content_count = get_content_count()
 	if(istype(tool, /obj/item/storage/bag))
 		if(content_count >= max_items)
-			to_chat(user, span_warning("\The [src] is already full! Activate it to free up some space."))
+			to_chat(user, span_warning("\The [src]Já está cheio! Ative-o para liberar espaço."))
 			return ITEM_INTERACT_FAILURE
 
 		var/obj/item/storage/bag/bag = tool
@@ -249,24 +249,24 @@
 
 		content_count = get_content_count() // Refresh the cache for UI
 		if(bag.contents.len == 0)
-			to_chat(user, span_info("You empty \the [bag] into \the [src]."))
+			to_chat(user, span_info("Você está vazio.\the [bag]em\the [src]."))
 		else if (content_count >= max_items)
-			to_chat(user, span_info("You fill \the [src] from \the [bag] to its capacity."))
+			to_chat(user, span_info("Você enche.\the [src]De\the [bag]à sua capacidade."))
 		else
-			to_chat(user, span_info("You fill \the [src] from \the [bag]."))
+			to_chat(user, span_info("Você enche.\the [src]De\the [bag]."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/food))
 		if(content_count >= max_items)
-			to_chat(user, span_warning("\The [src] is already full! Activate it to free up some space."))
+			to_chat(user, span_warning("\The [src]Já está cheio! Ative-o para liberar espaço."))
 			return ITEM_INTERACT_FAILURE
 
 		if(user.transferItemToLoc(tool, src))
-			to_chat(user, span_info("You insert \the [tool] in \the [src]"))
+			to_chat(user, span_info("Você insere\the [tool]em\the [src]"))
 			get_content_count() // Refresh the cache for UI
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_warning("You cannot put \the [tool] in \the [src]!"))
+	to_chat(user, span_warning("Você não pode colocar\the [tool]em\the [src]!"))
 	return ITEM_INTERACT_BLOCKING
 
 /obj/machinery/biogenerator/click_alt(mob/living/user)
@@ -413,11 +413,11 @@
 		return
 
 	if(beaker)
-		to_chat(user, span_notice("You swap out [beaker] in [src] for [inserted_beaker]."))
+		to_chat(user, span_notice("Você troca.[beaker]em[src]para[inserted_beaker]."))
 		eject_beaker(user, silent = TRUE)
 
 	else
-		to_chat(user, span_notice("You add [inserted_beaker] to [src]."))
+		to_chat(user, span_notice("Você acrescenta[inserted_beaker]para[src]."))
 
 	beaker = inserted_beaker
 	update_appearance(UPDATE_ICON)
@@ -440,11 +440,11 @@
 
 	if(user.put_in_hands(beaker))
 		if(!silent)
-			to_chat(user, span_notice("You eject [ejected_beaker] from [src]."))
+			to_chat(user, span_notice("Você ejeta.[ejected_beaker]De[src]."))
 
 	else
 		if(!silent)
-			to_chat(user, span_notice("You eject [ejected_beaker] from [src] onto the ground."))
+			to_chat(user, span_notice("Você ejeta.[ejected_beaker]De[src]No chão."))
 
 		ejected_beaker.forceMove(drop_location())
 

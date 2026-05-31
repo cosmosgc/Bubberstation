@@ -290,9 +290,9 @@
 	var/special_role_text = LOWER_TEXT(name)
 
 	if(traitor_won)
-		result += span_greentext("The [special_role_text] was successful!")
+		result += span_greentext("O[special_role_text]foi bem sucedido!")
 	else
-		result += span_redtext("The [special_role_text] has failed!")
+		result += span_redtext("O[special_role_text]Falhou!")
 		SEND_SOUND(owner.current, 'sound/ambience/misc/ambifailure.ogg')
 
 	return result.Join("<br>")
@@ -309,7 +309,7 @@
 	var/plural_check = "contract"
 	if (completed_contracts > 1)
 		plural_check = "contracts"
-	var/sent_data = "Completed [span_greentext("[completed_contracts]")] [plural_check] for a total of [span_greentext("[tc_total] TC")]!<br>"
+	var/sent_data = "Concluído.[span_greentext("[completed_contracts]")] [plural_check]para um total de[span_greentext("[tc_total] TC")]!<br>"
 	if(contractor_support_unit)
 		sent_data += "<b>[contractor_support_unit.owner.key]</b> played <b>[contractor_support_unit.owner.current.name]</b>, their contractor support unit.<br>"
 	return sent_data
@@ -318,8 +318,7 @@
 	var/phrases = jointext(GLOB.syndicate_code_phrase, ", ")
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 
-	var/message = "<br><b>The code phrases were:</b> <span class='bluetext'>[phrases]</span><br>\
-					<b>The code responses were:</b> [span_redtext("[responses]")]<br>"
+	var/message = "<br><b>As frases eram:</b> <span class='bluetext'>[phrases]</span><br>					<b>As respostas do código foram:</b> [span_redtext("[responses]")]<br>"
 
 	return message
 

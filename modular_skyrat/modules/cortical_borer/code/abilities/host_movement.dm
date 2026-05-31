@@ -6,10 +6,10 @@
 
 /datum/action/cooldown/mob_cooldown/borer/choosing_host/Activate(atom/target)
 	if(!owner.Adjacent(target))
-		owner.balloon_alert(owner, "too far")
+		owner.balloon_alert(owner, "Muito longe.")
 		return FALSE
 	if(!ishuman(target))
-		owner.balloon_alert(owner, "not human")
+		owner.balloon_alert(owner, "Não é humano.")
 		return FALSE
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	cortical_owner.face_atom(target)

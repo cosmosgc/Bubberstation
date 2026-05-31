@@ -11,7 +11,7 @@ export const ProbingConsole = (props) => {
       <Window.Content>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="Machine Report">
+            <LabeledList.Item label="Relatório da máquina">
               {feedback}
             </LabeledList.Item>
           </LabeledList>

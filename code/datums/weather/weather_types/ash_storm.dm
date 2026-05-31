@@ -1,18 +1,18 @@
 //Ash storms happen frequently on lavaland. They heavily obscure vision, and cause high fire damage to anyone caught outside.
 /datum/weather/ash_storm
 	name = "ash storm"
-	desc = "An intense atmospheric storm lifts ash off of the planet's surface and billows it down across the area, dealing intense fire damage to the unprotected."
+	desc = "Uma intensa tempestade atmosférica levanta cinzas da superfície do planeta e a espalha pela área, causando intensos danos ao fogo aos desprotegidos."
 
-	telegraph_message = span_boldwarning("An eerie moan rises on the wind. Sheets of burning ash blacken the horizon. Seek shelter.")
+	telegraph_message = span_boldwarning("Um gemido assustador sobe no vento. Folhas de cinzas queimando escurecem o horizonte. Procurem abrigo.")
 	telegraph_duration = 30 SECONDS
 	telegraph_overlay = "light_ash"
 
-	weather_message = span_userdanger("<i>Smoldering clouds of scorching ash billow down around you! Get inside!</i>")
+	weather_message = span_userdanger("<i>Nuvens fumegantes de cinzas escaldantes em volta de você! Entre!</i>")
 	weather_duration_lower = 1 MINUTES
 	weather_duration_upper = 2 MINUTES
 	weather_overlay = "ash_storm"
 
-	end_message = span_bolddanger("The shrieking wind whips away the last of the ash and falls to its usual murmur. It should be safe to go outside now.")
+	end_message = span_bolddanger("O vento gritante tira o último das cinzas e cai em seu murmúrio habitual. Deve ser seguro sair agora.")
 	end_duration = 30 SECONDS
 	end_overlay = "light_ash"
 
@@ -82,12 +82,12 @@
 //Emberfalls are the result of an ash storm passing by close to the playable area of lavaland. They have a 10% chance to trigger in place of an ash storm.
 /datum/weather/ash_storm/emberfall
 	name = "emberfall"
-	desc = "A passing ash storm blankets the area in harmless embers."
+	desc = "Uma tempestade de cinzas que passa cobre a área em brasas inofensivas."
 
-	weather_message = span_notice("Gentle embers waft down around you like grotesque snow. The storm seems to have passed you by...")
+	weather_message = span_notice("As brasas suaves descem ao seu redor como neve grotesca. A tempestade parece ter passado por você...")
 	weather_overlay = "light_ash"
 
-	end_message = span_notice("The emberfall slows, stops. Another layer of hardened soot to the basalt beneath your feet.")
+	end_message = span_notice("A queda de brasa diminui, pára. Outra camada de fuligem endurecida para o basalto sob seus pés.")
 	end_sound = null
 
 	weather_flags = parent_type::weather_flags & ~(WEATHER_MOBS|WEATHER_THUNDER)

@@ -3,7 +3,7 @@
 
 /obj/machinery/power/rtg
 	name = "radioisotope thermoelectric generator"
-	desc = "A simple nuclear power generator, used in small outposts to reliably provide power for decades."
+	desc = "Um simples gerador de energia nuclear, usado em pequenos postos avançados para fornecer energia por décadas."
 	icon = 'icons/obj/machines/engine/other.dmi'
 	icon_state = "rtg"
 	base_icon_state = "rtg"
@@ -50,7 +50,7 @@
 /obj/machinery/power/rtg/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Power generation at <b>[display_power(power_gen, convert = FALSE)]</b>.")
+		. += span_notice("A exibição de status diz:<b>[display_power(power_gen, convert = FALSE)]</b>.")
 
 /obj/machinery/power/rtg/update_icon_state()
 	. = ..()
@@ -68,7 +68,7 @@
 		RefreshParts()
 
 /obj/machinery/power/rtg/advanced
-	desc = "An advanced RTG capable of moderating isotope decay, increasing power output but reducing lifetime. It uses plasma-fueled radiation collectors to increase output even further."
+	desc = "Um RTG avançado capaz de moderar o decaimento de isótopos, aumentando a potência mas reduzindo a vida útil. Usa coletores de radiação a plasma para aumentar ainda mais a saída."
 	power_gen = 1.25 KILO WATTS
 	circuit = /obj/item/circuitboard/machine/rtg/advanced
 
@@ -80,7 +80,7 @@
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "core"
 	base_icon_state = "core"
-	desc = "An alien power source that produces energy seemingly out of nowhere."
+	desc = "Uma fonte de energia alienígena que produz energia aparentemente do nada."
 	circuit = /obj/item/circuitboard/machine/abductor/core
 	power_gen = 20 KILO WATTS
 	can_buckle = FALSE
@@ -94,7 +94,7 @@
 	going_kaboom = TRUE
 	visible_message(
 		message = span_danger("[src] lets out a shower of sparks as it starts to lose stability!"),
-		blind_message = span_hear("You hear a loud electrical crack!"),
+		blind_message = span_hear("Você ouve um barulho elétrico alto!"),
 	)
 	playsound(src, 'sound/effects/magic/lightningshock.ogg', 100, TRUE, extrarange = 5)
 	tesla_zap(source = src, zap_range = 5, power = power_gen * 20)
@@ -127,14 +127,14 @@
 
 /obj/machinery/power/rtg/debug
 	name = "debug " + parent_type::name
-	desc = "You really shouldn't be seeing this if you're not a coder or jannie."
+	desc = "Não deveria ver isso se não é programador ou Jannie."
 	power_gen = 20 KILO WATTS
 	circuit = null
 	affected_by_parts = FALSE
 
 /obj/machinery/power/rtg/lavaland
 	name = "lava powered " + parent_type::name
-	desc = "A power generator that uses the heat and atmosphere of Lavaland to generate power. Won't generate squat anywhere else."
+	desc = "Um gerador de energia que usa o calor e atmosfera de Lavaland para gerar energia. Não vai gerar nada em nenhum outro lugar."
 	circuit = null
 	power_gen = 20 KILO WATTS
 	anchored = TRUE
@@ -152,7 +152,7 @@
 
 /obj/machinery/power/rtg/old_station
 	name = "old " + parent_type::name
-	desc = "A very old " + parent_type::name + ". It seems on the verge of being destroyed."
+	desc = "Um muito velho." + parent_type::name + "Parece à beira de ser destruído."
 	circuit = null
 	power_gen = 0.75 KILO WATTS
 	anchored = TRUE
@@ -160,14 +160,14 @@
 /obj/machinery/power/rtg/old_station/default_deconstruction_screwdriver(mob/user, obj/item/screwdriver)
 	. = ..()
 	if(. & ITEM_INTERACT_SUCCESS)
-		to_chat(user, span_warning("You feel [src] crumbling under your hands!"))
+		to_chat(user, span_warning("Você sente[src]Desfazendo-se sob suas mãos!"))
 
 /obj/machinery/power/rtg/old_station/default_deconstruction_crowbar(mob/living/user, obj/item/crowbar, ignore_panel, custom_deconstruct)
-	to_chat(user, span_warning("As you pry, [src] starts to fall apart!"))
+	to_chat(user, span_warning("Como você se intromete,[src]Começa a desmoronar!"))
 	if(!crowbar.use_tool(src, user, 3 SECONDS, volume = 50))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_warning("You feel like you made a mistake."))
+	to_chat(user, span_warning("Você sente que cometeu um erro."))
 	new /obj/effect/decal/cleanable/ash/large(drop_location())
 	deconstruct(FALSE)
 	return ITEM_INTERACT_SUCCESS

@@ -1,6 +1,6 @@
 /obj/item/autopsy_scanner
 	name = "autopsy scanner"
-	desc = "Used in surgery to extract information from a cadaver. Can also scan the health of cadavers like an advanced health analyzer!"
+	desc = "Usado na cirurgia para extrair informações de um cadáver. Também pode escanear a saúde de cadáveres como um analisador de saúde avançado!"
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "autopsy_scanner"
 	inhand_icon_state = "autopsy_scanner"
@@ -26,23 +26,19 @@
 	var/mob/living/scanned = interacting_with
 
 	if(scanned.stat != DEAD && !HAS_TRAIT(scanned, TRAIT_FAKEDEATH)) // good job, you found a loophole
-		to_chat(user, span_deadsay("[icon2html(src, user)] ERROR! CANNOT SCAN LIVE CADAVERS. PROCURE HEALTH ANALYZER OR TERMINATE PATIENT."))
+		to_chat(user, span_deadsay("[icon2html(src, user)]ERRO! Não posso escanear cadáveres vivos. Analisador de saúde ou paciente final."))
 		return ITEM_INTERACT_BLOCKING
 
 	. = ITEM_INTERACT_SUCCESS
 
 	// Clumsiness/brain damage check
 	if ((HAS_TRAIT(user, TRAIT_CLUMSY) || HAS_TRAIT(user, TRAIT_DUMB)) && prob(50))
-		user.visible_message(span_warning("[user] analyzes the floor's vitals!"), \
-							span_notice("You stupidly try to analyze the floor's vitals!"))
-		to_chat(user, "[span_info("Analyzing results for The floor:\n\tOverall status: <b>Healthy</b>")]\
-				\n[span_info("Key: <font color='#00cccc'>Suffocation</font>/<font color='#00cc66'>Toxin</font>/<font color='#ffcc33'>Burn</font>/<font color='#ff3333'>Brute</font>")]\
-				\n[span_info("\tDamage specifics: <font color='#66cccc'>0</font>-<font color='#00cc66'>0</font>-<font color='#ff9933'>0</font>-<font color='#ff3333'>0</font>")]\
-				\n[span_info("Body temperature: ???")]")
+		user.visible_message(span_warning("[user]analisa os sinais vitais do chão!"), 							span_notice("Você estúpidamente tenta analisar os sinais vitais do chão!"))
+		to_chat(user, "[span_info("Analyzing results for The floor:\n\tOverall status: <b>Healthy</b>")]				\n[span_info("Key: <font color='#00cccc'>Suffocation</font>/<font color='#00cc66'>Toxin</font>/<font color='#ffcc33'>Burn</font>/<font color='#ff3333'>Brute</font>")]				\n[span_info("\tDamage specifics: <font color='#66cccc'>0</font>-<font color='#00cc66'>0</font>-<font color='#ff9933'>0</font>-<font color='#ff3333'>0</font>")]				\n[span_info("Body temperature: ???")]")
 		return
 
-	user.visible_message(span_notice("[user] scans [scanned]'s cadaver."))
-	to_chat(user, span_deadsay("[icon2html(src, user)] ANALYZING CADAVER."))
+	user.visible_message(span_notice("[user]scans[scanned]É um cadáver."))
+	to_chat(user, span_deadsay("[icon2html(src, user)]Analisando CADAVER."))
 
 	healthscan(user, scanned, advanced = TRUE)
 
@@ -72,15 +68,7 @@
 	var/fire_loss = scanned.get_fire_loss()
 	var/brute_loss = scanned.get_brute_loss()
 	/// "Body Data" portion of the autopsy - damage, wounds, and limbs
-	var/dmgreport = "<u><b>Body Data:</b></u>\
-					<table class='ml-2'>\
-					<tr>\
-					<td style='width:7em;'><b>Damage:</b></td>\
-					<td style='width:5em;'><b>Brute</b></td>\
-					<td style='width:4em;'><b>Burn</b></td>\
-					<td style='width:4em;'><b>Toxin</b></td>\
-					<td style='width:8em;'><b>Suffocation</b></td>\
-					</tr>"
+	var/dmgreport = "<u><b>Body Data:</b></u>					<table class='ml-2'>					<tr>					<td style='width:7em;'><b>Damage:</b></td>					<td style='width:5em;'><b>Brute</b></td>					<td style='width:4em;'><b>Burn</b></td>					<td style='width:4em;'><b>Toxin</b></td>					<td style='width:8em;'><b>Suffocation</b></td>					</tr>"
 	for(var/zone in scanned.get_all_limbs()) //Same order every time for consistency across all humans
 		var/obj/item/bodypart/limb = scanned.get_bodypart(zone)
 		if(isnull(limb))
@@ -115,13 +103,7 @@
 			for(var/datum/wound/wound as anything in limb.wounds)
 				dmgreport += "<tr><td colspan=6><i>&rdsh; Physical trauma: [wound.name] ([wound.severity_text()]) - Caused by <u>[wound.wound_source].</u></i></td></tr>"
 
-	dmgreport += "<tr>\
-		<td><b>Overall:</b></td>\
-		<td><b>[ceil(brute_loss)] Brute</b></td>\
-		<td><b>[ceil(fire_loss)] Burn</b></td>\
-		<td><b>[ceil(tox_loss)] Toxin</b></td>\
-		<td><b>[ceil(oxy_loss)] Suffocation</b></td>\
-		</tr>"
+	dmgreport += "<tr>		<td><b>Overall:</b></td>		<td><b>[ceil(brute_loss)] Brute</b></td>		<td><b>[ceil(fire_loss)] Burn</b></td>		<td><b>[ceil(tox_loss)] Toxin</b></td>		<td><b>[ceil(oxy_loss)] Suffocation</b></td>		</tr>"
 	dmgreport += "</table><hr>"
 	autopsy_information += dmgreport
 
@@ -129,32 +111,20 @@
 	if(ishuman(scanned))
 		var/mob/living/carbon/human/humantarget = scanned
 		/// "Organ Data" portion of the autopsy - damage, functional status (or if it's missing), and implants
-		var/organreport = "<u><b>Organ Data:</b></u>\
-				<table class='ml-2'>\
-				<tr>\
-				<td style='width:10em;'><b>Organ:</b></td>\
-				<td style='width:6em;'><b>Dmg</b></td>\
-				<td style='width:30em;'><b>Status</b></td>\
-				</tr>"
+		var/organreport = "<u><b>Organ Data:</b></u>				<table class='ml-2'>				<tr>				<td style='width:10em;'><b>Organ:</b></td>				<td style='width:6em;'><b>Dmg</b></td>				<td style='width:30em;'><b>Status</b></td>				</tr>"
 
 		var/list/missing_organs = humantarget.get_missing_organs()
 		for(var/sorted_slot in GLOB.organ_process_order) //Same order every time for consistency across all humans
 			var/obj/item/organ/organ = humantarget.get_organ_slot(sorted_slot)
 			if(isnull(organ))
 				if(missing_organs[sorted_slot])
-					organreport += "<tr><td><b>[missing_organs[sorted_slot]]:</b></td>\
-						<td>-</td>\
-						<td><u>Missing</u></td></tr>"
+					organreport += "<tr><td><b>[missing_organs[sorted_slot]]:</b></td>						<td>-</td>						<td><u>Missing</u></td></tr>"
 				continue
 			var/status = organ.get_status_text(advanced = TRUE, add_tooltips = FALSE, colored = FALSE)
 			var/appendix = organ.get_status_appendix(advanced = TRUE, add_tooltips = FALSE)
 			if(!status)
 				status ||= "OK" // otherwise flawless organs have no status reported by default
-			organreport += "<tr>\
-				<td><b>[capitalize(organ.name)]:</b></td>\
-				<td>[organ.damage > 0 ? ceil(organ.damage) : "0"]</td>\
-				<td>[status]</td>\
-				</tr>"
+			organreport += "<tr>				<td><b>[capitalize(organ.name)]:</b></td>				<td>[organ.damage > 0 ? ceil(organ.damage) : "0"]</td>				<td>[status]</td>				</tr>"
 			if(appendix)
 				organreport += "<tr><td colspan=4><i>&rdsh; [appendix]</i></td></tr>"
 		organreport += "</table>" //<hr> comes after Cybernetics below
@@ -243,5 +213,5 @@
 	autopsy_report.add_raw_text(final_report_text)
 	autopsy_report.update_appearance()
 	user.put_in_hands(autopsy_report)
-	user.balloon_alert(user, "report printed")
+	user.balloon_alert(user, "Relatório impresso")
 	return TRUE

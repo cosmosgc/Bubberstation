@@ -61,8 +61,8 @@
 	if(!dropItemToGround(changed, force = TRUE))
 		return
 	visible_message(
-		span_warning("[changed] falls out of [src]'s pockets!"),
-		span_warning("[changed] falls out of your pockets!"),
+		span_warning("[changed]Cai fora.[src]Os bolsos!"),
+		span_warning("[changed]Cai dos seus bolsos!"),
 		vision_distance = COMBAT_MESSAGE_RANGE,
 	)
 	playsound(src, SFX_RUSTLE, 50, TRUE, -5, frequency = 0.8)

@@ -1,97 +1,15 @@
 /// All of the default reagent lists for each hypospray (+ hacked variants)
-#define BASE_MEDICAL_REAGENTS list(\
-		/datum/reagent/medicine/c2/aiuri,\
-		/datum/reagent/medicine/c2/convermol,\
-		/datum/reagent/medicine/epinephrine,\
-		/datum/reagent/medicine/c2/libital,\
-		/datum/reagent/medicine/lidocaine, /* BUBBER EDIT ADD */ \
-		/datum/reagent/medicine/c2/multiver,\
-		/datum/reagent/medicine/salglu_solution,\
-		/datum/reagent/medicine/spaceacillin,\
-	)
-#define EXPANDED_MEDICAL_REAGENTS list(\
-		/datum/reagent/medicine/inacusiate,\
-		/datum/reagent/medicine/mannitol,\
-		/datum/reagent/medicine/mutadone,\
-		/datum/reagent/medicine/oculine,\
-		/datum/reagent/medicine/oxandrolone,\
-		/datum/reagent/medicine/pen_acid,\
-		/datum/reagent/medicine/rezadone,\
-		/datum/reagent/medicine/sal_acid,\
-	)
-#define HACKED_MEDICAL_REAGENTS list(\
-		/datum/reagent/toxin/cyanide,\
-		/datum/reagent/toxin/acid/fluacid,\
-		/datum/reagent/toxin/heparin,\
-		/datum/reagent/toxin/lexorin,\
-		/datum/reagent/toxin/mutetoxin,\
-		/datum/reagent/toxin/sodium_thiopental,\
-	)
-#define BASE_PEACE_REAGENTS list(\
-		/datum/reagent/peaceborg/confuse,\
-		/datum/reagent/pax/peaceborg,\
-		/datum/reagent/peaceborg/tire,\
-	)
-#define HACKED_PEACE_REAGENTS list(\
-		/datum/reagent/toxin/cyanide,\
-		/datum/reagent/toxin/fentanyl,\
-		/datum/reagent/toxin/sodium_thiopental,\
-		/datum/reagent/toxin/staminatoxin,\
-		/datum/reagent/toxin/sulfonal,\
-	)
-#define BASE_CLOWN_REAGENTS list(\
-		/datum/reagent/consumable/laughter,\
-	)
-#define HACKED_CLOWN_REAGENTS list(\
-		/datum/reagent/consumable/superlaughter,\
-	)
-#define BASE_SYNDICATE_REAGENTS list(\
-		/datum/reagent/medicine/inacusiate,\
-		/datum/reagent/medicine/morphine,\
-		/datum/reagent/medicine/potass_iodide,\
-		/datum/reagent/medicine/syndicate_nanites,\
-	)
-#define BASE_SERVICE_REAGENTS list(/datum/reagent/consumable/applejuice, /datum/reagent/consumable/banana,\
-		/datum/reagent/consumable/berryjuice, /datum/reagent/consumable/cherryjelly, /datum/reagent/consumable/coffee,\
-		/datum/reagent/consumable/cream, /datum/reagent/consumable/dr_gibb, /datum/reagent/consumable/grenadine,\
-		/datum/reagent/consumable/ice, /datum/reagent/consumable/lemon_lime, /datum/reagent/consumable/limejuice,\
-		/datum/reagent/consumable/lemonjuice, /datum/reagent/consumable/melon_soda, /datum/reagent/consumable/menthol,\
-		/datum/reagent/consumable/milk, /datum/reagent/consumable/nothing, /datum/reagent/consumable/orangejuice,\
-		/datum/reagent/consumable/peachjuice, /datum/reagent/consumable/pineapplejuice, /datum/reagent/consumable/pwr_game,\
-		/datum/reagent/consumable/shamblers, /datum/reagent/consumable/sodawater, /datum/reagent/consumable/sol_dry,\
-		/datum/reagent/consumable/soymilk, /datum/reagent/consumable/space_cola, /datum/reagent/consumable/spacemountainwind,\
-		/datum/reagent/consumable/space_up, /datum/reagent/consumable/tea, /datum/reagent/consumable/tomatojuice,\
-		/datum/reagent/consumable/tonic, /datum/reagent/consumable/vinegar, /datum/reagent/water,\
-		/datum/reagent/consumable/ethanol/absinthe, /datum/reagent/consumable/ethanol/ale, /datum/reagent/consumable/ethanol/applejack,\
-		/datum/reagent/consumable/ethanol/beer, /datum/reagent/consumable/ethanol/champagne, /datum/reagent/consumable/ethanol/coconut_rum,\
-		/datum/reagent/consumable/ethanol/cognac, /datum/reagent/consumable/ethanol/creme_de_coconut, /datum/reagent/consumable/ethanol/creme_de_cacao,\
-		/datum/reagent/consumable/ethanol/creme_de_menthe, /datum/reagent/consumable/ethanol/curacao, /datum/reagent/consumable/ethanol/gin,\
-		/datum/reagent/consumable/ethanol/hcider, /datum/reagent/consumable/ethanol/kahlua, /datum/reagent/consumable/ethanol/beer/maltliquor,\
-		/datum/reagent/consumable/ethanol/navy_rum, /datum/reagent/consumable/ethanol/rice_beer, /datum/reagent/consumable/ethanol/rum,\
-		/datum/reagent/consumable/ethanol/sake, /datum/reagent/consumable/ethanol/tequila, /datum/reagent/consumable/ethanol/triple_sec,\
-		/datum/reagent/consumable/ethanol/vermouth, /datum/reagent/consumable/ethanol/vodka, /datum/reagent/consumable/ethanol/whiskey,\
-		/datum/reagent/consumable/ethanol/wine, /datum/reagent/consumable/ethanol/yuyake,\
-	)
-#define EXPANDED_SERVICE_REAGENTS list(\
-	/datum/reagent/consumable/blackpepper,\
-	/datum/reagent/consumable/coco,\
-	/datum/reagent/consumable/cornmeal,\
-	/datum/reagent/consumable/nutriment/fat/oil,\
-	/datum/reagent/consumable/corn_starch,\
-	/datum/reagent/consumable/eggwhite,\
-	/datum/reagent/consumable/eggyolk,\
-	/datum/reagent/consumable/flour,\
-	/datum/reagent/consumable/rice,\
-	/datum/reagent/consumable/sugar,\
-	/datum/reagent/consumable/salt,\
-	/datum/reagent/consumable/vanilla,\
-)
-#define HACKED_SERVICE_REAGENTS list(\
-		/datum/reagent/blood,\
-		/datum/reagent/toxin/carpotoxin,\
-		/datum/reagent/toxin/fakebeer,\
-		/datum/reagent/consumable/ethanol/fernet,\
-)
+#define BASE_MEDICAL_REAGENTS list(		/datum/reagent/medicine/c2/aiuri,		/datum/reagent/medicine/c2/convermol,		/datum/reagent/medicine/epinephrine,		/datum/reagent/medicine/c2/libital,		/datum/reagent/medicine/lidocaine, /* BUBBER EDIT ADD */ 		/datum/reagent/medicine/c2/multiver,		/datum/reagent/medicine/salglu_solution,		/datum/reagent/medicine/spaceacillin,	)
+#define EXPANDED_MEDICAL_REAGENTS list(		/datum/reagent/medicine/inacusiate,		/datum/reagent/medicine/mannitol,		/datum/reagent/medicine/mutadone,		/datum/reagent/medicine/oculine,		/datum/reagent/medicine/oxandrolone,		/datum/reagent/medicine/pen_acid,		/datum/reagent/medicine/rezadone,		/datum/reagent/medicine/sal_acid,	)
+#define HACKED_MEDICAL_REAGENTS list(		/datum/reagent/toxin/cyanide,		/datum/reagent/toxin/acid/fluacid,		/datum/reagent/toxin/heparin,		/datum/reagent/toxin/lexorin,		/datum/reagent/toxin/mutetoxin,		/datum/reagent/toxin/sodium_thiopental,	)
+#define BASE_PEACE_REAGENTS list(		/datum/reagent/peaceborg/confuse,		/datum/reagent/pax/peaceborg,		/datum/reagent/peaceborg/tire,	)
+#define HACKED_PEACE_REAGENTS list(		/datum/reagent/toxin/cyanide,		/datum/reagent/toxin/fentanyl,		/datum/reagent/toxin/sodium_thiopental,		/datum/reagent/toxin/staminatoxin,		/datum/reagent/toxin/sulfonal,	)
+#define BASE_CLOWN_REAGENTS list(		/datum/reagent/consumable/laughter,	)
+#define HACKED_CLOWN_REAGENTS list(		/datum/reagent/consumable/superlaughter,	)
+#define BASE_SYNDICATE_REAGENTS list(		/datum/reagent/medicine/inacusiate,		/datum/reagent/medicine/morphine,		/datum/reagent/medicine/potass_iodide,		/datum/reagent/medicine/syndicate_nanites,	)
+#define BASE_SERVICE_REAGENTS list(/datum/reagent/consumable/applejuice, /datum/reagent/consumable/banana,		/datum/reagent/consumable/berryjuice, /datum/reagent/consumable/cherryjelly, /datum/reagent/consumable/coffee,		/datum/reagent/consumable/cream, /datum/reagent/consumable/dr_gibb, /datum/reagent/consumable/grenadine,		/datum/reagent/consumable/ice, /datum/reagent/consumable/lemon_lime, /datum/reagent/consumable/limejuice,		/datum/reagent/consumable/lemonjuice, /datum/reagent/consumable/melon_soda, /datum/reagent/consumable/menthol,		/datum/reagent/consumable/milk, /datum/reagent/consumable/nothing, /datum/reagent/consumable/orangejuice,		/datum/reagent/consumable/peachjuice, /datum/reagent/consumable/pineapplejuice, /datum/reagent/consumable/pwr_game,		/datum/reagent/consumable/shamblers, /datum/reagent/consumable/sodawater, /datum/reagent/consumable/sol_dry,		/datum/reagent/consumable/soymilk, /datum/reagent/consumable/space_cola, /datum/reagent/consumable/spacemountainwind,		/datum/reagent/consumable/space_up, /datum/reagent/consumable/tea, /datum/reagent/consumable/tomatojuice,		/datum/reagent/consumable/tonic, /datum/reagent/consumable/vinegar, /datum/reagent/water,		/datum/reagent/consumable/ethanol/absinthe, /datum/reagent/consumable/ethanol/ale, /datum/reagent/consumable/ethanol/applejack,		/datum/reagent/consumable/ethanol/beer, /datum/reagent/consumable/ethanol/champagne, /datum/reagent/consumable/ethanol/coconut_rum,		/datum/reagent/consumable/ethanol/cognac, /datum/reagent/consumable/ethanol/creme_de_coconut, /datum/reagent/consumable/ethanol/creme_de_cacao,		/datum/reagent/consumable/ethanol/creme_de_menthe, /datum/reagent/consumable/ethanol/curacao, /datum/reagent/consumable/ethanol/gin,		/datum/reagent/consumable/ethanol/hcider, /datum/reagent/consumable/ethanol/kahlua, /datum/reagent/consumable/ethanol/beer/maltliquor,		/datum/reagent/consumable/ethanol/navy_rum, /datum/reagent/consumable/ethanol/rice_beer, /datum/reagent/consumable/ethanol/rum,		/datum/reagent/consumable/ethanol/sake, /datum/reagent/consumable/ethanol/tequila, /datum/reagent/consumable/ethanol/triple_sec,		/datum/reagent/consumable/ethanol/vermouth, /datum/reagent/consumable/ethanol/vodka, /datum/reagent/consumable/ethanol/whiskey,		/datum/reagent/consumable/ethanol/wine, /datum/reagent/consumable/ethanol/yuyake,	)
+#define EXPANDED_SERVICE_REAGENTS list(	/datum/reagent/consumable/blackpepper,	/datum/reagent/consumable/coco,	/datum/reagent/consumable/cornmeal,	/datum/reagent/consumable/nutriment/fat/oil,	/datum/reagent/consumable/corn_starch,	/datum/reagent/consumable/eggwhite,	/datum/reagent/consumable/eggyolk,	/datum/reagent/consumable/flour,	/datum/reagent/consumable/rice,	/datum/reagent/consumable/sugar,	/datum/reagent/consumable/salt,	/datum/reagent/consumable/vanilla,)
+#define HACKED_SERVICE_REAGENTS list(		/datum/reagent/blood,		/datum/reagent/toxin/carpotoxin,		/datum/reagent/toxin/fakebeer,		/datum/reagent/consumable/ethanol/fernet,)
 
 #define REAGENT_CONTAINER_INTERNAL "internal_beaker"
 #define REAGENT_CONTAINER_BEVAPPARATUS "beverage_apparatus"
@@ -99,7 +17,7 @@
 ///Borg Hypospray
 /obj/item/reagent_containers/borghypo
 	name = "cyborg hypospray"
-	desc = "An advanced chemical synthesizer and injection system, designed for heavy-duty medical equipment."
+	desc = "Um avançado sintetizador químico e sistema de injeção, projetado para equipamentos médicos pesados."
 	icon = 'icons/obj/medical/syringe.dmi'
 	inhand_icon_state = "hypo"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
@@ -183,26 +101,26 @@
 
 	var/mob/living/carbon/injectee = interacting_with
 	if(!selected_reagent)
-		balloon_alert(user, "no reagent selected!")
+		balloon_alert(user, "Reagente negativo selecionado!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!stored_reagents.has_reagent(selected_reagent.type, amount_per_transfer_from_this))
-		balloon_alert(user, "not enough [selected_reagent.name]!")
+		balloon_alert(user, "Não é o suficiente.[selected_reagent.name]!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!injectee.try_inject(user, user.zone_selected, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE | (bypass_protection ? INJECT_CHECK_PENETRATE_THICK : 0)))
-		balloon_alert(user, "[injectee.parse_zone_with_bodypart(user.zone_selected)] is blocked!")
+		balloon_alert(user, "[injectee.parse_zone_with_bodypart(user.zone_selected)]Está bloqueado!")
 		return ITEM_INTERACT_BLOCKING
 
 	if (!injectee.reagents)
-		balloon_alert(user, "unable to inject!")
+		balloon_alert(user, "Não posso injetar!")
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(injectee, span_warning("You feel a tiny prick!"))
-	to_chat(user, span_notice("You inject [injectee] with the injector ([selected_reagent.name])."))
+	to_chat(injectee, span_warning("Você sente um pinto minúsculo!"))
+	to_chat(user, span_notice("Você injeta.[injectee]como injetor ([selected_reagent.name])."))
 	user.changeNext_move(CLICK_CD_MELEE)
 	stored_reagents.trans_to(injectee, amount_per_transfer_from_this, target_id = selected_reagent.type, transferred_by = user, methods = INJECT)
-	balloon_alert(user, "[amount_per_transfer_from_this] unit\s injected")
+	balloon_alert(user, "[amount_per_transfer_from_this]Unidade injetada.")
 	log_combat(user, injectee, "injected", src, "(CHEMICALS: [selected_reagent])")
 	return ITEM_INTERACT_SUCCESS
 
@@ -245,13 +163,13 @@
 				var/obj/item/robot_model/container_model = loc
 				cyborg = container_model.robot
 			playsound(cyborg, 'sound/effects/pop.ogg', 50, FALSE)
-			balloon_alert(cyborg, "dispensing [selected_reagent.name]")
+			balloon_alert(cyborg, "Dispensando[selected_reagent.name]")
 			break
 
 /obj/item/reagent_containers/borghypo/examine(mob/user)
 	. = ..()
 	. += "Currently loaded: [selected_reagent ? "[selected_reagent]. [selected_reagent.description]" : "nothing."]"
-	. += span_notice("<i>Alt+Click</i> to change transfer amount. Currently set to [amount_per_transfer_from_this]u.")
+	. += span_notice("<i>Alt+. Clique.</i>para mudar a quantidade de transferência. Atualmente definido para[amount_per_transfer_from_this]U.")
 
 /* SKYRAT EDIT REMOVAL START - SEE master_files/code/modules/reagents/reagent_containers.dm
 /obj/item/reagent_containers/borghypo/click_alt(mob/living/user)
@@ -295,7 +213,7 @@ SKYRAT EDIT REMOVAL END */
 	default_reagent_types = BASE_PEACE_REAGENTS
 
 /obj/item/reagent_containers/borghypo/peace/hacked
-	desc = "Everything's peaceful in death!"
+	desc = "Tudo é pacífico na morte!"
 	icon_state = "borghypo_s"
 	tgui_theme = "syndicate"
 	default_reagent_types = HACKED_PEACE_REAGENTS
@@ -303,11 +221,11 @@ SKYRAT EDIT REMOVAL END */
 /// Clownborg hypospray
 /obj/item/reagent_containers/borghypo/clown
 	name = "laughter injector"
-	desc = "Keeps the crew happy and productive!"
+	desc = "Mantém a tripulação feliz e produtiva!"
 	default_reagent_types = BASE_CLOWN_REAGENTS
 
 /obj/item/reagent_containers/borghypo/clown/hacked
-	desc = "Keeps the crew so happy they don't work!"
+	desc = "Mantém a equipe tão feliz que não funcionam!"
 	icon_state = "borghypo_s"
 	tgui_theme = "syndicate"
 	default_reagent_types = HACKED_CLOWN_REAGENTS
@@ -315,8 +233,7 @@ SKYRAT EDIT REMOVAL END */
 /// Syndicate medborg hypospray
 /obj/item/reagent_containers/borghypo/syndicate
 	name = "syndicate cyborg hypospray"
-	desc = "An experimental piece of Syndicate technology used to produce powerful restorative nanites used to very quickly restore injuries of all types. \
-		Also metabolizes potassium iodide for radiation poisoning, inacusiate for ear damage and morphine for offense."
+	desc = "Uma peça experimental da tecnologia Syndicate usada para produzir nanites restauradores poderosos usados para restaurar rapidamente lesões de todos os tipos. Também metaboliza iodeto de potássio para envenenamento por radiação, inacusia para danos na orelha e morfina para ofensa."
 	icon_state = "borghypo_s"
 	tgui_theme = "syndicate"
 	charge_cost = 0.02 * STANDARD_CELL_CHARGE
@@ -327,7 +244,7 @@ SKYRAT EDIT REMOVAL END */
 /// Borg Shaker for the serviceborgs
 /obj/item/reagent_containers/borghypo/borgshaker
 	name = "cyborg shaker"
-	desc = "An advanced drink synthesizer and mixer."
+	desc = "Um sintetizador de bebidas avançado e misturador."
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "shaker"
 	possible_transfer_amounts = list(5,10,20,1)
@@ -396,7 +313,7 @@ SKYRAT EDIT REMOVAL END */
 		var/obj/item/borg/apparatus/beaker/service/beverage_apparatus = (locate() in cyborg.model.modules) || (locate() in cyborg.held_items)
 
 		if (isnull(beverage_apparatus))
-			to_chat(user, span_warning("This unit has no beverage apparatus. This shouldn't be possible. Delete yourself, NOW!"))
+			to_chat(user, span_warning("Esta unidade não tem aparelhos para bebidas. Isso não deveria ser possível. Apague-se, agora!"))
 			data["apparatusHasItem"] = FALSE
 		else
 			data["apparatusHasItem"] = !isnull(beverage_apparatus.stored)
@@ -406,10 +323,10 @@ SKYRAT EDIT REMOVAL END */
 	if(!interacting_with.is_refillable())
 		return NONE
 	if(!selected_reagent)
-		balloon_alert(user, "no reagent selected!")
+		balloon_alert(user, "Reagente negativo selecionado!")
 		return ITEM_INTERACT_BLOCKING
 	if(!stored_reagents.has_reagent(selected_reagent.type, amount_per_transfer_from_this))
-		balloon_alert(user, "not enough [selected_reagent.name]!")
+		balloon_alert(user, "Não é o suficiente.[selected_reagent.name]!")
 		return ITEM_INTERACT_BLOCKING
 	if(interacting_with.reagents.total_volume >= interacting_with.reagents.maximum_volume)
 		balloon_alert(user, "está cheio!")
@@ -422,13 +339,13 @@ SKYRAT EDIT REMOVAL END */
 	shaker.add_reagent(selected_reagent.type, amount_per_transfer_from_this, reagtemp = dispensed_temperature, no_react = TRUE)
 
 	shaker.trans_to(interacting_with, amount_per_transfer_from_this, transferred_by = user)
-	balloon_alert(user, "[amount_per_transfer_from_this] unit\s poured")
+	balloon_alert(user, "[amount_per_transfer_from_this]A unidade está derramada.")
 	return ITEM_INTERACT_SUCCESS
 
 
 /obj/item/reagent_containers/borghypo/condiment_synthesizer // Solids! Condiments! The borger uprising!
 	name = "Condiment Synthesizer"
-	desc = "An advanced condiment synthesizer"
+	desc = "Um sintetizador avançado de condimentos."
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "flour"
 	possible_transfer_amounts = list(5,10,20,1)
@@ -466,10 +383,10 @@ SKYRAT EDIT REMOVAL END */
 	if(!interacting_with.is_refillable())
 		return NONE
 	if(!selected_reagent)
-		balloon_alert(user, "no reagent selected!")
+		balloon_alert(user, "Reagente negativo selecionado!")
 		return ITEM_INTERACT_BLOCKING
 	if(!stored_reagents.has_reagent(selected_reagent.type, amount_per_transfer_from_this))
-		balloon_alert(user, "not enough [selected_reagent.name]!")
+		balloon_alert(user, "Não é o suficiente.[selected_reagent.name]!")
 		return ITEM_INTERACT_BLOCKING
 	if(interacting_with.reagents.total_volume >= interacting_with.reagents.maximum_volume)
 		balloon_alert(user, "está cheio!")
@@ -480,12 +397,12 @@ SKYRAT EDIT REMOVAL END */
 	stored_reagents.remove_reagent(selected_reagent.type, amount_per_transfer_from_this)
 	shaker.add_reagent(selected_reagent.type, amount_per_transfer_from_this, reagtemp = dispensed_temperature, no_react = TRUE)
 	shaker.trans_to(interacting_with, amount_per_transfer_from_this, transferred_by = user)
-	balloon_alert(user, "[amount_per_transfer_from_this] unit\s poured")
+	balloon_alert(user, "[amount_per_transfer_from_this]A unidade está derramada.")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/reagent_containers/borghypo/borgshaker/hacked
 	name = "cyborg shaker"
-	desc = "Will mix drinks that knock them dead."
+	desc = "Vai misturar bebidas que os matarão."
 	icon_state = "threemileislandglass"
 	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	tgui_theme = "syndicate"

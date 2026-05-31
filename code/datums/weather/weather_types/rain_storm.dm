@@ -1,15 +1,15 @@
 /datum/weather/rain_storm
 	name = "rain"
-	desc = "Heavy thunderstorms rain down below, drenching anyone caught in it."
+	desc = "Tempestades fortes caem embaixo, encharcando qualquer um."
 
-	telegraph_message = span_danger("Thunder rumbles far above. You hear droplets drumming against the canopy.")
+	telegraph_message = span_danger("Trovão ruge muito acima. Você ouve gotículas batendo contra o dossel.")
 	telegraph_overlay = "rain_low"
 	telegraph_duration = 30 SECONDS
 
-	weather_message = span_userdanger("<i>Rain pours down around you!</i>")
+	weather_message = span_userdanger("<i>A chuva cai ao seu retorno!</i>")
 	weather_overlay = "rain_high"
 
-	end_message = span_bolddanger("The downpour gradually slows to a light shower.")
+	end_message = span_bolddanger("O aguaceiro gradualmente diminui para um banho leve.")
 	end_overlay = "rain_low"
 	end_duration = 30 SECONDS
 
@@ -38,7 +38,7 @@
 	// change the message for if rain is triggered inside the station (no canopy of course)
 	for(var/z in impacted_z_levels)
 		if(is_station_level(z))
-			telegraph_message = span_warning("Thunder rumbles from above. You hear droplets hitting the floor around you.")
+			telegraph_message = span_warning("Trovão ruge de cima. Você ouve gotículas batendo no chão ao seu redor.")
 			break
 
 	return ..()
@@ -76,18 +76,18 @@
 	probability = 0 // admeme event
 
 /datum/weather/rain_storm/acid
-	desc = "The planet's thunderstorms are by nature acidic, and will incinerate anyone standing beneath them without protection."
+	desc = "As tempestades do planeta são, por natureza, ácidas, e incinerarão qualquer um sem proteção."
 
 	telegraph_duration = 40 SECONDS
-	telegraph_message = span_warning("Thunder rumbles far above. You hear acidic droplets hissing against the canopy. Seek shelter!")
+	telegraph_message = span_warning("Trovão ruge muito acima. Você ouve gotículas ácidas assobiando contra o dossel. Procurem abrigo!")
 	telegraph_sound = 'sound/effects/siren.ogg'
 
-	weather_message = span_userdanger("<i>Acidic rain pours down around you! Get inside!</i>")
+	weather_message = span_userdanger("<i>A chuva ácida cai ao seu redor! Entre!</i>")
 	weather_duration_lower = 1 MINUTES
 	weather_duration_upper = 2 MINUTES
 
 	end_duration = 10 SECONDS
-	end_message = span_bolddanger("The downpour gradually slows to a light shower. It should be safe outside now.")
+	end_message = span_bolddanger("O aguaceiro gradualmente diminui para um banho leve. Deve estar seguro lá fora agora.")
 
 	// these are weighted by acidpwr which causes more damage the higher it is
 	whitelist_weather_reagents = list(
@@ -99,9 +99,9 @@
 
 /datum/weather/rain_storm/wizard
 	name = "magical rain"
-	desc = "A magical thunderstorm rains down below, drenching anyone caught in it with mysterious rain."
+	desc = "Uma tempestade mágica chove abaixo, encharcando qualquer um com chuva misteriosa."
 
-	telegraph_message = span_danger("A magical rain cloud appears above. You hear droplets falling down.")
+	telegraph_message = span_danger("Uma nuvem de chuva mágica aparece acima. Você ouve gotículas caindo.")
 	protected_areas = /datum/weather/rad_storm::protected_areas
 
 	// same time durations as floor_is_lava event

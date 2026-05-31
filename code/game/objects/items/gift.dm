@@ -6,7 +6,7 @@
 /// Gifts to give to players, will contain a nice toy or other fun item for them to play with.
 /obj/item/gift
 	name = "gift"
-	desc = "PRESENTS!!!! eek!"
+	desc = "APRESENTA!!! Eek!"
 	icon = 'icons/obj/storage/wrapping.dmi'
 	icon_state = "giftdeliverypackage3"
 	inhand_icon_state = "gift"
@@ -25,17 +25,17 @@
 		contains_type = get_gift_type()
 
 /obj/item/gift/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] peeks inside [src] and cries [user.p_them()]self to death! It looks like [user.p_they()] [user.p_were()] on the naughty list..."))
+	user.visible_message(span_suicide("[user]Olha para dentro.[src]e cora[user.p_them()]Me mate! Parece que...[user.p_they()] [user.p_were()]Na lista de travestis..."))
 	return BRUTELOSS
 
 /obj/item/gift/examine(mob/user)
 	. = ..()
 	if(HAS_MIND_TRAIT(user, TRAIT_PRESENT_VISION) || isobserver(user))
-		. += span_notice("It contains \a [initial(contains_type.name)].")
+		. += span_notice("Ele contém\a [initial(contains_type.name)].")
 
 /obj/item/gift/attack_self(mob/user)
 	if(HAS_MIND_TRAIT(user, TRAIT_CANNOT_OPEN_PRESENTS))
-		to_chat(user, span_warning("You're supposed to be spreading gifts, not opening them yourself!"))
+		to_chat(user, span_warning("Você deveria estar espalhando presentes, não abrindo você mesmo!"))
 		return
 
 	moveToNullspace()
@@ -43,9 +43,9 @@
 	var/obj/item/thing = new contains_type(get_turf(user))
 
 	if (QDELETED(thing)) //might contain something like metal rods that might merge with a stack on the ground
-		user.visible_message(span_danger("Oh no! The present that [user] opened had nothing inside it!"))
+		user.visible_message(span_danger("Oh não! O presente que[user]aberto não tinha nada dentro!"))
 	else
-		user.visible_message(span_notice("[user] unwraps \the [src], finding \a [thing] inside!"))
+		user.visible_message(span_notice("[user]Desembrulha\the [src], encontro\a [thing]Para dentro!"))
 		user.investigate_log("has unwrapped a present containing [thing.type].", INVESTIGATE_PRESENTS)
 		user.put_in_hands(thing)
 		thing.add_fingerprint(user)
@@ -106,7 +106,7 @@
 /// Gifts that typically only very OP stuff or admins or Santa Claus himself should be giving out, as they contain ANY valid subtype of `/obj/item`, including stuff like instagib rifles. Wow!
 /obj/item/gift/anything
 	name = "christmas gift"
-	desc = "It could be anything!"
+	desc = "Pode ser qualquer coisa!"
 	/// Weak reference to who this gift is for and who can open it, if that's nobody then anyone can
 	var/datum/weakref/recipient_ref = null
 
@@ -125,7 +125,7 @@
 
 	var/datum/mind/recipient = recipient_ref.resolve()
 	if(recipient && recipient != user?.mind)
-		to_chat(user, span_notice("This gift isn't for you, and you don't want to get on Santa's bad side!"))
+		to_chat(user, span_notice("Este presente não é para você, e você não quer ficar no lado ruim do Papai Noel!"))
 		return FALSE
 	return ..()
 

@@ -167,13 +167,13 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 			var/mob/latest_mob = get_mob_by_ckey(ckey)
 
 			if(!latest_mob)
-				to_chat(admin_client, span_warning("That ckey is not controlling a mob."))
+				to_chat(admin_client, span_warning("Aquele idiota não está controlando uma multidão."))
 				return FALSE
 
 			if(target_mob == latest_mob)
 				return FALSE
 
-			to_chat(admin_client, span_notice("New mob found for player: [target_mob.ckey] ([latest_mob])."))
+			to_chat(admin_client, span_notice("Nova multidão encontrada para o jogador:[target_mob.ckey] ([latest_mob])."))
 			SSadmin_verbs.dynamic_invoke_verb(admin_client, /datum/admin_verb/show_player_panel, latest_mob)
 			return TRUE
 
@@ -218,24 +218,24 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 			if (!sender)
 				return FALSE
 
-			var/msg = input("Contents of the message", text("Subtle PM to [target_mob.key]")) as text
+			var/msg = input("Conteúdo da mensagem", text("Sútil PM para[target_mob.key]")) as text
 			if (!msg)
 				return FALSE
 
 			if (sender == "Voice in head")
-				to_chat(target_mob, "<i>You hear a voice in your head... <b>[msg]</i></b>")
+				to_chat(target_mob, "<i>Você ouve uma voz em sua cabeça...<b>[msg]</i></b>")
 			else
 				var/mob/living/carbon/human/selected_mob = target_mob
 
 				if(!istype(selected_mob))
-					to_chat(admin_client, "The person you are trying to contact is not human. Unsent message: [msg]")
+					to_chat(admin_client, "A pessoa que está tentando contatar não é humana. Mensagem não enviada:[msg]")
 					return FALSE
 
 				if(!istype(selected_mob.ears, /obj/item/radio/headset))
-					to_chat(admin_client, "The person you are trying to contact is not wearing a headset. Unsent message: [msg]")
+					to_chat(admin_client, "A pessoa que está tentando contatar não está usando fone de ouvido. Mensagem não enviada:[msg]")
 					return FALSE
 
-				to_chat(selected_mob, "You hear something crackle in your ears for a moment before a voice speaks.  \"Please stand by for a message from [sender == RADIO_CHANNEL_SYNDICATE ? "your benefactor" : "Central Command"].  Message as follows[sender == RADIO_CHANNEL_SYNDICATE ? ", agent." : ":"] <span class='bold'>[msg].</span> Message ends.\"")
+				to_chat(selected_mob, "Você ouve algo estalar em seus ouvidos por um momento antes de uma voz falar.\"Por favor, aguarde por uma mensagem de[sender == RADIO_CHANNEL_SYNDICATE ? "your benefactor" : "Central Command"]Mensagem como:[sender == RADIO_CHANNEL_SYNDICATE ? ", agent." : ":"] <span class='bold'>[msg].</span>Fim da mensagem.\"")
 
 
 			log_admin("SubtlePM ([sender]): [key_name(admin_client)] -> [key_name(target_mob)] : [msg]")
@@ -259,7 +259,7 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 			if(target_mob.client)
 				log_admin("[key_name(admin_client)] ejected [key_name(target_mob)] from their body.")
 				message_admins("[key_name_admin(admin_client)] ejected [key_name_admin(target_mob)] from their body.")
-				to_chat(target_mob, span_danger("An admin has ejected you from your body."))
+				to_chat(target_mob, span_danger("Um administrador te expulsou do seu corpo."))
 				target_mob.ghostize(FALSE)
 				return TRUE
 			return FALSE
@@ -329,11 +329,11 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 		/// Yeets target client to the lobby (only works on ghosts)
 		if ("lobby")
 			if(!isobserver(target_mob))
-				to_chat(admin_client, span_notice("You can only send ghost players back to the Lobby."))
+				to_chat(admin_client, span_notice("Você só pode mandar jogadores fantasmas de volta para o lobby."))
 				return FALSE
 
 			if(!target_mob.client)
-				to_chat(admin_client, span_warning("[target_mob] doesn't seem to have an active client."))
+				to_chat(admin_client, span_warning("[target_mob]Não parece ter um cliente ativo."))
 				return FALSE
 
 			log_admin("[key_name(admin_client)] has sent [key_name(target_mob)] back to the Lobby.")
@@ -375,11 +375,11 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 		/// Sends the offender to SUPERJAIL known as SPACE PRISON (admin prison)
 		if ("prison")
 			if(isAI(target_mob))
-				to_chat(admin_client, "This cannot be used on instances of type /mob/living/silicon/ai.")
+				to_chat(admin_client, "Isso não pode ser usado em casos do tipo Mob/Viver/Silicon/ai.")
 				return FALSE
 
 			target_mob.forceMove(pick(GLOB.prisonwarp))
-			to_chat(target_mob, span_userdanger("You have been sent to Prison!"))
+			to_chat(target_mob, span_userdanger("Você foi enviado para a prisão!"))
 
 			log_admin("[key_name(admin_client)] has sent [key_name(target_mob)] to Prison!")
 			message_admins("[key_name_admin(admin_client)] has sent [key_name_admin(target_mob)] to Prison!")
@@ -388,17 +388,17 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 		/// Boots the offending client from the server
 		if ("kick")
 			if(!check_if_greater_rights_than(target_client))
-				to_chat(admin_client, span_danger("Error: They have more rights than you do."), confidential = TRUE)
+				to_chat(admin_client, span_danger("Eles têm mais direitos do que você."), confidential = TRUE)
 				return FALSE
-			if(tgui_alert(admin_mob, "Kick [key_name(target_mob)]?", "Confirm", list("Yes", "No")) != "Yes")
+			if(tgui_alert(admin_mob, "Chute.[key_name(target_mob)]?", "Confirm", list("Yes", "No")) != "Yes")
 				return FALSE
 			if(!target_mob)
-				to_chat(admin_client, span_danger("Error: [target_mob] no longer exists!"), confidential = TRUE)
+				to_chat(admin_client, span_danger("Erro:[target_mob]Não existe mais!"), confidential = TRUE)
 				return FALSE
 			if(!target_client)
-				to_chat(admin_client, span_danger("Error: [target_mob] no longer has a client!"), confidential = TRUE)
+				to_chat(admin_client, span_danger("Erro:[target_mob]Não tem mais um cliente!"), confidential = TRUE)
 				return FALSE
-			to_chat(target_mob, span_danger("You have been kicked from the server by [admin_client.holder.fakekey ? "an Administrator" : "[admin_client.key]"]."), confidential = TRUE)
+			to_chat(target_mob, span_danger("Você foi chutado do servidor por[admin_client.holder.fakekey ? "an Administrator" : "[admin_client.key]"]."), confidential = TRUE)
 			log_admin("[key_name(admin_client)] kicked [key_name(target_mob)].")
 			message_admins(span_adminnotice("[key_name_admin(admin_client)] kicked [key_name_admin(target_mob)]."))
 			qdel(target_client)
@@ -410,7 +410,7 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 			var/player_ip = target_mob.client?.address
 			var/player_cid = target_mob.client?.computer_id
 			if(!target_ckey)
-				to_chat(admin_client, span_warning("No ckey found for this mob."))
+				to_chat(admin_client, span_warning("Nenhum ckey encontrado para esta multidão."))
 				return FALSE
 			admin_client.holder.ban_panel(target_ckey, player_ip, player_cid)
 			return TRUE
@@ -420,7 +420,7 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 			var/list/ban_settings = list()
 			var/target_ckey = get_target_ckey()
 			if(!target_ckey)
-				to_chat(admin_client, span_warning("No ckey found for this mob."))
+				to_chat(admin_client, span_warning("Nenhum ckey encontrado para esta multidão."))
 				return FALSE
 			ban_settings["ckey"] = target_ckey
 			admin_client.holder.stickyban("add", ban_settings)
@@ -430,7 +430,7 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 		if ("notes")
 			var/target_ckey = get_target_ckey()
 			if(!target_ckey)
-				to_chat(admin_client, span_warning("No ckey found for this mob."))
+				to_chat(admin_client, span_warning("Nenhum ckey encontrado para esta multidão."))
 				return FALSE
 			browse_messages(target_ckey = target_ckey)
 			return TRUE
@@ -614,7 +614,7 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 		/// Opens the selected player/client's borg panel
 		if ("borg_panel")
 			if(!iscyborg(target_mob))
-				to_chat(admin_client, span_warning("This can only be used on cyborgs."))
+				to_chat(admin_client, span_warning("Isso só pode ser usado em ciborgues."))
 				return FALSE
 			SSadmin_verbs.dynamic_invoke_verb(admin_client, /datum/admin_verb/borg_panel, target_mob)
 			return TRUE
@@ -627,10 +627,10 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 		/// Forces a commendation to selected client/player
 		if ("commend")
 			if(!target_mob.ckey)
-				to_chat(admin_client, span_warning("This mob either no longer exists or no longer is being controlled by someone!"))
+				to_chat(admin_client, span_warning("Esta multidão ou não existe mais ou não está sendo controlada por alguém!"))
 				return FALSE
 
-			switch(tgui_alert(admin_mob, "Would you like the effects to apply immediately or at the end of the round? Applying them now will make it clear it was an admin commendation.", "<3?", list("Apply now", "Apply at round end", "Cancel")))
+			switch(tgui_alert(admin_mob, "Gostaria que os efeitos se aplicassem imediatamente ou no final da rodada? Aplicá-los agora deixará claro que foi um elogio administrativo.", "<3?", list("Apply now", "Apply at round end", "Cancel")))
 				if("Apply now")
 					target_mob.receive_heart(admin_mob, instant = TRUE)
 				if("Apply at round end")
@@ -639,7 +639,7 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 
 		/// Plays a selected sound to target client
 		if ("play_sound_to")
-			var/sound_file = input("", "Select a sound file",) as null|sound
+			var/sound_file = input("", "Selecione um arquivo de som",) as null|sound
 
 			if(sound_file && target_mob)
 				SSadmin_verbs.dynamic_invoke_verb(admin_client, /datum/admin_verb/play_direct_mob_sound, sound_file, target_mob)
@@ -650,10 +650,10 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 		if ("apply_client_quirks")
 			var/mob/living/carbon/human/specified_humanoid = target_mob
 			if(!istype(specified_humanoid))
-				to_chat(admin_client, "this can only be used on instances of type /mob/living/carbon/human.", confidential = TRUE)
+				to_chat(admin_client, "isso só pode ser usado em casos de tipo /mob / vivo / carbono / humano.", confidential = TRUE)
 				return FALSE
 			if(!specified_humanoid.client)
-				to_chat(admin_client, "[specified_humanoid] has no client!", confidential = TRUE)
+				to_chat(admin_client, "[specified_humanoid]Não tem cliente!", confidential = TRUE)
 				return FALSE
 			SSquirks.AssignQuirks(specified_humanoid, specified_humanoid.client)
 			log_admin("[key_name(admin_client)] applied client quirks to [key_name(specified_humanoid)].")
@@ -715,10 +715,10 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 		if ("load_preferences")
 			var/mob/living/carbon/human/human_mob = target_mob
 			if(!istype(human_mob))
-				to_chat(admin_client, "This can only be used on humans.", confidential = TRUE)
+				to_chat(admin_client, "Isso só pode ser usado em humanos.", confidential = TRUE)
 				return FALSE
 			if(!human_mob.client)
-				to_chat(admin_client, "[human_mob] has no client!", confidential = TRUE)
+				to_chat(admin_client, "[human_mob]Não tem cliente!", confidential = TRUE)
 				return FALSE
 
 			human_mob.client.prefs.apply_prefs_to(human_mob)

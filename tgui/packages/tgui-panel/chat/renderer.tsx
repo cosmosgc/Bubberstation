@@ -390,7 +390,7 @@ class ChatRenderer {
         else if (message.html) {
           node.innerHTML = message.html;
         } else {
-          logger.error('Error: message is missing text payload', message);
+          logger.error('Erro: falta a mensagem.', message);
         }
         // Get all nodes in this message that want to be rendered like jsx
         const nodes = node.querySelectorAll('[data-component]');
@@ -405,9 +405,9 @@ class ChatRenderer {
             let working_value = attribute.nodeValue;
             // We can't do the "if it has no value it's truthy" trick
             // Because getAttribute returns "", not null. Hate IE
-            if (working_value === '$true') {
+            if (working_value === 'Verdade.') {
               working_value = true;
-            } else if (working_value === '$false') {
+            } else if (working_value === 'Falso.') {
               working_value = false;
             } else if (!Number.isNaN(working_value)) {
               const parsed_float = parseFloat(working_value);
@@ -511,7 +511,7 @@ class ChatRenderer {
     // Delay pruning because user is currently interacting
     // with chat history
     if (!this.scrollTracking) {
-      logger.debug('pruning delayed');
+      logger.debug('Poda atrasada.');
       return;
     }
     // Visible messages
@@ -607,7 +607,7 @@ class ChatRenderer {
         }
       }
     }
-    cssText += 'body, html { background-color: #141414 }\n';
+    cssText += 'corpo, html{ background-color: #141414 }\n';
     // Compile chat log as HTML text
     let messagesHtml = '';
     for (const message of this.visibleMessages) {
@@ -621,7 +621,7 @@ class ChatRenderer {
       '<!doctype html>\n' +
       '<html>\n' +
       '<head>\n' +
-      '<title>SS13 Chat Log</title>\n' +
+      '<title>Log de bate-papo SS13</title>\n' +
       '<style>\n' +
       cssText +
       '</style>\n' +

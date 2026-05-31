@@ -4,7 +4,7 @@
 
 /obj/item/robot_suit
 	name = "cyborg endoskeleton"
-	desc = "A complex metal backbone with standard limb sockets and pseudomuscle anchors."
+	desc = "Uma espinha dorsal metálica complexa com encaixes padrão e âncoras pseudomusculares."
 	icon = 'icons/mob/augmentation/augments.dmi'
 	icon_state = "robo_suit"
 	/// Left arm part of the endoskeleton
@@ -106,9 +106,9 @@
 	if(l_leg || r_leg || chest || l_arm || r_arm || head)
 		if(I.use_tool(src, user, 5, volume=50))
 			drop_all_parts(T)
-			to_chat(user, span_notice("You disassemble the cyborg shell."))
+			to_chat(user, span_notice("Você desmonta a concha ciborgue."))
 	else
-		to_chat(user, span_warning("There is nothing to remove from the endoskeleton!"))
+		to_chat(user, span_warning("Não há nada para remover do endoesqueleto!"))
 	update_appearance()
 
 /// Drops all included parts to the passed location
@@ -139,7 +139,7 @@
 		return TRUE
 
 	if(!chest) //can't remove a cell if there's no chest to remove it from.
-		to_chat(user, span_warning("[src] has no attached torso!"))
+		to_chat(user, span_warning("[src]Não tem torso preso!"))
 		return
 
 	var/obj/item/stock_parts/power_store/cell/temp_cell = user.is_holding_item_of_type(/obj/item/stock_parts/power_store/cell)
@@ -148,20 +148,20 @@
 		swap_failed = TRUE
 	else if(!user.transferItemToLoc(temp_cell, chest))
 		swap_failed = TRUE
-		to_chat(user, span_warning("[temp_cell] is stuck to your hand, you can't put it in [src]!"))
+		to_chat(user, span_warning("[temp_cell]está preso em sua mão, você não pode colocá-lo em[src]!"))
 
 	if(chest.cell) //drop the chest's current cell no matter what.
 		put_in_hand_or_drop(user, chest.cell)
 
 	if(swap_failed) //we didn't transfer any new items.
 		if(chest.cell) //old cell ejected, nothing inserted.
-			to_chat(user, span_notice("You remove [chest.cell] from [src]."))
+			to_chat(user, span_notice("Você tira.[chest.cell]De[src]."))
 			chest.cell = null
 		else
-			to_chat(user, span_warning("The power cell slot in [src]'s torso is empty!"))
+			to_chat(user, span_warning("A abertura da célula de energia[src]O tronco está vazio!"))
 		return
 
-	to_chat(user, span_notice("You [chest.cell ? "replace [src]'s [chest.cell.name] with [temp_cell]" : "insert [temp_cell] into [src]"]."))
+	to_chat(user, span_notice("Você.[chest.cell ? "replace [src]'s [chest.cell.name] with [temp_cell]" : "insert [temp_cell] into [src]"]."))
 	chest.cell = temp_cell
 	return TRUE
 
@@ -171,10 +171,10 @@
 		var/obj/item/stack/sheet/iron/M = W
 		if(!l_arm && !r_arm && !l_leg && !r_leg && !chest && !head)
 			if (!M.use(1))
-				to_chat(user, span_warning("You need one sheet of iron to start building ED-209!"))
+				to_chat(user, span_warning("Você precisa de uma folha de ferro para começar a construir ED-209!"))
 				return
 			var/obj/item/bot_assembly/ed209/assembly = new(drop_location())
-			to_chat(user, span_notice("You arm the robot frame."))
+			to_chat(user, span_notice("Você arma a armação do robô."))
 			var/held_index = user.is_holding(src)
 			qdel(src)
 			if (held_index)
@@ -232,14 +232,14 @@
 			chest = CH
 			update_appearance()
 		else if(!CH.wired)
-			to_chat(user, span_warning("You need to attach wires to it first!"))
+			to_chat(user, span_warning("Você precisa prender os fios primeiro!"))
 		else
-			to_chat(user, span_warning("You need to attach a cell to it first!"))
+			to_chat(user, span_warning("Você precisa colocar uma cela nela primeiro!"))
 
 	else if(istype(W, /obj/item/bodypart/head/robot))
 		var/obj/item/bodypart/head/robot/HD = W
 		if(locate(/obj/item/organ) in HD)
-			to_chat(user, span_warning("There are organs inside [HD]!"))
+			to_chat(user, span_warning("Há órgãos dentro.[HD]!"))
 			return
 		if(head)
 			return
@@ -251,22 +251,22 @@
 			head = HD
 			update_appearance()
 		else
-			to_chat(user, span_warning("You need to attach a flash to it first!"))
+			to_chat(user, span_warning("Você precisa colocar um flash nele primeiro!"))
 
 	else if (W.tool_behaviour == TOOL_MULTITOOL)
 		if(check_completion())
 			ui_interact(user)
 		else
-			to_chat(user, span_warning("The endoskeleton must be assembled before debugging can begin!"))
+			to_chat(user, span_warning("O endoesqueleto deve ser montado antes que a depuração comece!"))
 
 	else if(istype(W, /obj/item/mmi))
 		var/obj/item/mmi/M = W
 		if(check_completion())
 			if(!chest.cell)
-				to_chat(user, span_warning("The endoskeleton still needs a power cell!"))
+				to_chat(user, span_warning("O endoesqueleto ainda precisa de uma célula de energia!"))
 				return
 			if(!isturf(loc))
-				to_chat(user, span_warning("You can't put [M] in, the frame has to be standing on the ground to be perfectly precise!"))
+				to_chat(user, span_warning("Você não pode colocar[M]dentro, o quadro tem que estar no chão para ser perfeitamente preciso!"))
 				return
 			if(!M.brain_check(user))
 				return
@@ -274,7 +274,7 @@
 			var/mob/living/brain/brainmob = M.brainmob
 			if(is_banned_from(brainmob.ckey, JOB_CYBORG) || QDELETED(src) || QDELETED(brainmob) || QDELETED(user) || QDELETED(M) || !Adjacent(user))
 				if(!QDELETED(M))
-					to_chat(user, span_warning("This [M.name] does not seem to fit!"))
+					to_chat(user, span_warning("Isto.[M.name]Parece não caber!"))
 				return
 			if(!user.temporarilyRemoveItemFromInventory(W))
 				return
@@ -321,8 +321,8 @@
 			playsound(O.loc, 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE)
 
 			if(O.is_antag())
-				to_chat(O, span_userdanger("You have been robotized!"))
-				to_chat(O, span_danger("You must obey your silicon laws and master AI above all else. Your objectives will consider you to be dead."))
+				to_chat(O, span_userdanger("Você foi robotizado!"))
+				to_chat(O, span_danger("Você deve obedecer suas leis de silício e dominar a IA acima de tudo. Seus objetivos o considerarão morto."))
 
 			SSblackbox.record_feedback("amount", "cyborg_birth", 1)
 			forceMove(O)
@@ -333,19 +333,19 @@
 
 			if(!locomotion)
 				O.set_lockcharge(TRUE)
-				to_chat(O, span_warning("Error: Servo motors unresponsive."))
+				to_chat(O, span_warning("Erro: os motores servo não respondem."))
 
 		else
-			to_chat(user, span_warning("The MMI must go in after everything else!"))
+			to_chat(user, span_warning("O MMI deve ir atrás de tudo!"))
 
 	else if(istype(W, /obj/item/borg/upgrade/ai))
 		var/obj/item/borg/upgrade/ai/M = W
 		if(check_completion())
 			if(!isturf(loc))
-				to_chat(user, span_warning("You cannot install [M], the frame has to be standing on the ground to be perfectly precise!"))
+				to_chat(user, span_warning("Você não pode instalar.[M], o quadro tem que estar no chão para ser perfeitamente preciso!"))
 				return
 			if(!user.temporarilyRemoveItemFromInventory(M))
-				to_chat(user, span_warning("[M] is stuck to your hand!"))
+				to_chat(user, span_warning("[M]está preso em sua mão!"))
 				return
 			qdel(M)
 			var/mob/living/silicon/robot/O = new /mob/living/silicon/robot/shell(get_turf(src))
@@ -373,7 +373,7 @@
 				O.set_lockcharge(TRUE)
 
 	else if(IS_WRITING_UTENSIL(W))
-		to_chat(user, span_warning("You need to use a multitool to name [src]!"))
+		to_chat(user, span_warning("Você precisa usar uma multitool para nomear[src]!"))
 	else
 		return ..()
 
@@ -383,7 +383,7 @@
 	var/obj/item/held_item = user.get_active_held_item()
 	if(held_item?.tool_behaviour == TOOL_MULTITOOL)
 		return ..()
-	to_chat(user, span_warning("You need a multitool to access debug settings!"))
+	to_chat(user, span_warning("Você precisa de uma multitool para acessar configurações de depuração!"))
 	return UI_CLOSE
 
 /obj/item/robot_suit/ui_state(mob/user)
@@ -435,7 +435,7 @@
 			return TRUE
 		if("set_ai")
 			if(length(active_ais(check_mind = FALSE, z = z)) <= 0)
-				to_chat(user, span_alert("No active AIs detected."))
+				to_chat(user, span_alert("Nenhuma IA ativa detectada."))
 				return
 
 			var/selected_ai = select_active_ai(user, z) // this one runs input()
@@ -446,11 +446,11 @@
 				return TRUE
 			if(forced_ai == selected_ai) // same AI = clear
 				clear_forced_ai()
-				to_chat(user, span_notice("You reset [src]'s AI setting."))
+				to_chat(user, span_notice("Você reset[src]É a configuração da IA."))
 				return TRUE
 
 			set_forced_ai(selected_ai, user)
-			to_chat(user, span_notice("You set [src]'s AI setting to [forced_ai_name]."))
+			to_chat(user, span_notice("Você está pronto.[src]AI está se preparando para[forced_ai_name]."))
 			log_silicon("[key_name(user)] set the default AI for a cyborg shell to [key_name(selected_ai)] at [loc_name(user)]")
 			return TRUE
 

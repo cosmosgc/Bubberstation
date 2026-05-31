@@ -3,9 +3,7 @@
 
 /obj/machinery/computer/cargo/express
 	name = "express supply console"
-	desc = "This console allows the user to purchase a package \
-		with 1/40th of the delivery time: made possible by Nanotrasen's new \"1500mm Orbital Railgun\".\
-		All sales are near instantaneous - please choose carefully"
+	desc = "Este console permite ao usuário comprar um pacote com 1/40 do tempo de entrega: tornado possível pelo novo Nanotrasen\"1500mm orbital railgun\"Todas as vendas são quase instantâneas."
 	icon_screen = "supply_express"
 	circuit = /obj/item/circuitboard/computer/cargo/express
 	blockade_warning = "Bluespace instability detected. Delivery impossible."
@@ -49,17 +47,17 @@
 /obj/machinery/computer/cargo/express/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if (tool.GetID() && allowed(user))
 		locked = !locked
-		to_chat(user, span_notice("You [locked ? "lock" : "unlock"] the interface."))
+		to_chat(user, span_notice("Você.[locked ? "lock" : "unlock"]Uma interface."))
 		return ITEM_INTERACT_SUCCESS
 
 	if (istype(tool, /obj/item/disk/cargo/bluespace_pod))
 		if (pod_type == /obj/structure/closet/supplypod/bluespacepod)
-			balloon_alert(user, "already upgraded!")
+			balloon_alert(user, "Já está atualizado!")
 			return ITEM_INTERACT_FAILURE
 		if(!user.temporarilyRemoveItemFromInventory(tool))
 			return ITEM_INTERACT_FAILURE
 		pod_type = /obj/structure/closet/supplypod/bluespacepod // doesnt affect our circuit board, making reversal possible
-		to_chat(user, span_notice("You insert the disk into [src], allowing for advanced supply delivery vehicles."))
+		to_chat(user, span_notice("Você insere o disco em[src], permitindo veículos avançados de entrega de suprimentos."))
 		tool.forceMove(src)
 		return ITEM_INTERACT_SUCCESS
 
@@ -69,7 +67,7 @@
 			beacon.link_console(src, user)
 			return ITEM_INTERACT_SUCCESS
 
-		to_chat(user, span_alert("[src] is already linked to [beacon]."))
+		to_chat(user, span_alert("[src]já está ligado a[beacon]."))
 		return ITEM_INTERACT_FAILURE
 
 	return NONE
@@ -79,8 +77,8 @@
 		return FALSE
 	if(user)
 		if (emag_card)
-			user.visible_message(span_warning("[user] swipes [emag_card] through [src]!"))
-		to_chat(user, span_notice("You change the routing protocols, allowing the Supply Pod to land anywhere on the station."))
+			user.visible_message(span_warning("[user]Deslize[emag_card]através[src]!"))
+		to_chat(user, span_notice("Você muda os protocolos de roteamento, permitindo que o módulo de suprimentos aterrisse em qualquer lugar na estação."))
 	obj_flags |= EMAGGED
 	contraband = TRUE
 	// This also sets this on the circuit board

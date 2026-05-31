@@ -198,7 +198,7 @@
 
 	Launch(TRUE)
 
-	to_chat(user, span_notice("Calling your shuttle. One moment..."))
+	to_chat(user, span_notice("Chamando sua nave auxiliar. Um momento..."))
 	while(mode != SHUTTLE_CALL && !damaged)
 		stoplag()
 

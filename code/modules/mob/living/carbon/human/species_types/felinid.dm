@@ -87,7 +87,7 @@
 			kitty_tail.Insert(soon_to_be_felinid, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 
 	if(!silent)
-		to_chat(soon_to_be_felinid, span_boldnotice("Something is nya~t right."))
+		to_chat(soon_to_be_felinid, span_boldnotice("Algo está errado."))
 		playsound(get_turf(soon_to_be_felinid), 'sound/effects/meow1.ogg', 50, TRUE, -1)
 
 /proc/purrbation_remove(mob/living/carbon/human/purrbated_human, silent = FALSE)
@@ -121,7 +121,7 @@
 			var/obj/item/organ/new_ears = new target_species.mutantears()
 			new_ears.Insert(purrbated_human, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 	if(!silent)
-		to_chat(purrbated_human, span_boldnotice("You are no longer a cat."))
+		to_chat(purrbated_human, span_boldnotice("Você não é mais um gato."))
 
 /datum/species/human/felinid/prepare_human_for_preview(mob/living/carbon/human/human_for_preview)
 	human_for_preview.set_haircolor("#ffcccc", update = FALSE) // pink
@@ -141,26 +141,18 @@
 	// BUBBER EDIT CHANGE END
 
 /datum/species/human/felinid/get_physical_attributes()
-	return "Felinids are very similar to humans in almost all respects, with their biggest differences being the ability to lick their wounds, \
-		and an increased sensitivity to noise, which is often detrimental. They are also rather fond of eating oranges."
+	return "Felinids are very similar to humans in almost all respects, with their biggest differences being the ability to lick their wounds, 		and an increased sensitivity to noise, which is often detrimental. They are also rather fond of eating oranges."
 
 /datum/species/human/felinid/get_species_description()
-	return "Felinids are one of the many types of bespoke genetic \
-		modifications to come of humanity's mastery of genetic science, and are \
-		also one of the most common. Meow?"
+	return "Felinids are one of the many types of bespoke genetic 		modifications to come of humanity's mastery of genetic science, and are 		also one of the most common. Meow?"
 
 /datum/species/human/felinid/get_species_lore()
 	return list(
-		"Bio-engineering at its felinest, Felinids are the peak example of humanity's mastery of genetic code. \
-			One of many \"Animalid\" variants, Felinids are the most popular and common, as well as one of the \
-			biggest points of contention in genetic-modification.",
+		"Bio-engineering at its felinest, Felinids are the peak example of humanity's mastery of genetic code. 			One of many \"Animalid\" variants, Felinids are the most popular and common, as well as one of the 			biggest points of contention in genetic-modification.",
 
-		"Body modders were eager to splice human and feline DNA in search of the holy trifecta: ears, eyes, and tail. \
-			These traits were in high demand, with the corresponding side effects of vocal and neurochemical changes being seen as a minor inconvenience.",
+		"Body modders were eager to splice human and feline DNA in search of the holy trifecta: ears, eyes, and tail. 			These traits were in high demand, with the corresponding side effects of vocal and neurochemical changes being seen as a minor inconvenience.",
 
-		"Sadly for the Felinids, they were not minor inconveniences. Shunned as subhuman and monstrous by many, Felinids (and other Animalids) \
-			sought their greener pastures out in the colonies, cloistering in communities of their own kind. \
-			As a result, outer Human space has a high Animalid population.",
+		"Sadly for the Felinids, they were not minor inconveniences. Shunned as subhuman and monstrous by many, Felinids (and other Animalids) 			sought their greener pastures out in the colonies, cloistering in communities of their own kind. 			As a result, outer Human space has a high Animalid population.",
 	)
 
 // Felinids are subtypes of humans.
@@ -173,41 +165,38 @@
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "grin-tongue",
 			SPECIES_PERK_NAME = "Grooming",
-			SPECIES_PERK_DESC = "Felinids can lick wounds to reduce bleeding.",
+			SPECIES_PERK_DESC = "Felinidas podem lamber feridas para refazer o sangramento.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 			SPECIES_PERK_ICON = FA_ICON_PERSON_FALLING,
 			SPECIES_PERK_NAME = "Catlike Grace",
-			SPECIES_PERK_DESC = "Felinids have catlike instincts allowing them to land upright on their feet.  \
-				Instead of being knocked down from falling, you only receive a short slowdown. \
-				However, they do not have catlike legs, and the fall will deal additional damage.",
+			SPECIES_PERK_DESC = "Felinidas têm instintos de gato que lhes permitem pousar de pé. Ao invés de ser derrubado por cair, você só recebe um curto abrandamento. No entanto, eles não têm pernas de gato, e a queda causará danos adicionais.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "assistive-listening-systems",
 			SPECIES_PERK_NAME = "Sensitive Hearing",
-			SPECIES_PERK_DESC = "Felinids are more sensitive to loud sounds, such as flashbangs.",
+			SPECIES_PERK_DESC = "Felinidas são mais sensíveis a sons altos, como flashbangs.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "shower",
 			SPECIES_PERK_NAME = "Hydrophobia",
-			SPECIES_PERK_DESC = "Felinids don't like getting soaked with water.",
+			SPECIES_PERK_DESC = "Felinids não gostam de ficar encharcados com água.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = FA_ICON_ANGRY,
 			SPECIES_PERK_NAME = "'Fight or Flight' Defense Response",
-			SPECIES_PERK_DESC = "Felinids who become mentally unstable (and deprived of food) exhibit an \
-				extreme 'fight or flight' response against aggressors. They sometimes bite people. Violently.",
+			SPECIES_PERK_DESC = "Felinídeos que se tornam mentalmente instáveis (e privados de comida) exibem uma extrema resposta de \"Luta ou fuga\" contra agressores. Às vezes mordem pessoas. Violentamente.",
 		),
 // SKYRAT EDIT ADDITION START
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "paw",
 			SPECIES_PERK_NAME = "Soft Landing",
-			SPECIES_PERK_DESC = "Felinids are unhurt by high falls, and land on their feet.",
+			SPECIES_PERK_DESC = "Os felinídeos não são feridos por quedas altas, e caem de pé.",
 		),
 // SKYRAT EDIT ADDITION END
 	)

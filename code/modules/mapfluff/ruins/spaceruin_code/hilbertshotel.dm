@@ -3,7 +3,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 
 /obj/item/hilbertshotel
 	name = "Hilbert's Hotel"
-	desc = "A sphere of what appears to be an intricate network of bluespace. Observing it in detail seems to give you a headache as you try to comprehend the infinite amount of infinitesimally distinct points on its surface."
+	desc = "Uma esfera do que parece ser uma intrincada rede de espaço azul. Observar isso em detalhes parece dar uma dor de cabeça enquanto você tenta compreender a quantidade infinita de pontos infinitamente distintos em sua superfície."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "hilbertshotel"
 	w_class = WEIGHT_CLASS_SMALL
@@ -36,17 +36,17 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 
 /obj/item/hilbertshotel/attack(mob/living/M, mob/living/user)
 	if(M.mind)
-		to_chat(user, span_notice("You invite [M] to the hotel."))
+		to_chat(user, span_notice("Você convida.[M]Para o hotel."))
 		promptAndCheckIn(user, M)
 	else
-		to_chat(user, span_warning("[M] is not intelligent enough to understand how to use this device!"))
+		to_chat(user, span_warning("[M]Não é inteligente o suficiente para entender como usar este dispositivo!"))
 
 /obj/item/hilbertshotel/attack_self(mob/user)
 	. = ..()
 	promptAndCheckIn(user, user)
 
 /obj/item/hilbertshotel/attack_tk(mob/user)
-	to_chat(user, span_notice("\The [src] actively rejects your mind as the bluespace energies surrounding it disrupt your telekinesis."))
+	to_chat(user, span_notice("\The [src]Ativamente rejeita sua mente como as energias do espaço azul que a rodeiam perturbam sua telecinese."))
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /obj/item/hilbertshotel/proc/promptAndCheckIn(mob/user, mob/target)
@@ -61,26 +61,26 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	if(!chosenRoomNumber)
 		return
 	if(chosenRoomNumber > SHORT_REAL_LIMIT)
-		to_chat(target, span_warning("You have to check out the first [SHORT_REAL_LIMIT] rooms before you can go to a higher numbered one!"))
+		to_chat(target, span_warning("Você tem que verificar o primeiro[SHORT_REAL_LIMIT]quartos antes de você pode ir para um maior número um!"))
 		return
 	if((chosenRoomNumber < 1) || (chosenRoomNumber != round(chosenRoomNumber)))
-		to_chat(target, span_warning("That is not a valid room number!"))
+		to_chat(target, span_warning("Esse não é um número de quarto válido!"))
 		return
 
 	// Orb is not adjacent to the target. No teleporties.
 	if(!src.Adjacent(target))
-		to_chat(target, span_warning("You too far away from \the [src] to enter it!"))
+		to_chat(target, span_warning("Você está muito longe\the [src]Para entrar!"))
 
 	// If the target is incapacitated after selecting a room, they're not allowed to teleport.
 	if(target.incapacitated)
-		to_chat(target, span_warning("You aren't able to activate \the [src] anymore!"))
+		to_chat(target, span_warning("Você não é capaz de ativar\the [src]Mais!"))
 
 	// Has the user thrown it away or otherwise disposed of it such that it's no longer in their hands or in some storage connected to them?
 	if(get_atom_on_turf(src, /mob) != user)
 		if(user == target)
-			to_chat(user, span_warning("\The [src] is no longer in your possession!"))
+			to_chat(user, span_warning("\The [src]Não está mais em sua posse!"))
 		else
-			to_chat(target, span_warning("\The [src] is no longer in the possession of [user]!"))
+			to_chat(target, span_warning("\The [src]Não está mais na posse de[user]!"))
 		return
 
 	// If the player is using it on themselves, we've got some logic to deal with.
@@ -89,10 +89,10 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 		// The item should be on the user or in the user's inventory somewhere.
 		// However, if they're not holding it, it may be in a pocket? In a backpack? Who knows! Still, they can't just drop it to the floor anymore...
 		if(!user.get_held_index_of_item(src))
-			to_chat(user, span_warning("You try to drop \the [src], but it's too late! It's no longer in your hands! Prepare for unforeseen consequences..."))
+			to_chat(user, span_warning("Você tenta cair\the [src]Mas é tarde demais! Não está mais em suas mãos! Prepare-se para consequências imprevistas..."))
 		// Okay, so they HAVE to be holding it here, because it's in their hand from the above check. Try to drop the item and if it fails, oh dear...
 		else if(!user.dropItemToGround(src))
-			to_chat(user, span_warning("You can't seem to drop \the [src]! It must be stuck to your hand somehow! Prepare for unforeseen consequences..."))
+			to_chat(user, span_warning("Você não consegue cair.\the [src]! Deve estar preso à sua mão de alguma forma! Prepare-se para consequências imprevistas..."))
 
 	if(!storageTurf) //Blame subsystems for not allowing this to be in Initialize
 		if(!GLOB.hhStorageTurf)
@@ -182,11 +182,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 
 	for(var/turf/closed/indestructible/hoteldoor/door in currentReservation.reserved_turfs)
 		door.parentSphere = src
-		door.desc = "The door to this hotel room. \
-			The placard reads 'Room [currentRoomnumber]'. \
-			Strangely, this door doesn't even seem openable. \
-			The doorknob, however, seems to buzz with unusual energy...<br/>\
-			[span_info("Alt-Click to look through the peephole.")]"
+		door.desc = "The door to this hotel room. 			The placard reads 'Room [currentRoomnumber]'. 			Strangely, this door doesn't even seem openable. 			The doorknob, however, seems to buzz with unusual energy...<br/>			[span_info("Alt-Click to look through the peephole.")]"
 	for(var/turf/open/space/bluespace/BSturf in currentReservation.reserved_turfs)
 		BSturf.parentSphere = src
 
@@ -201,7 +197,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 						if(ismob(A))
 							var/mob/M = A
 							if(M.mind)
-								to_chat(M, span_warning("As the sphere breaks apart, you're suddenly ejected into the depths of space!"))
+								to_chat(M, span_warning("À medida que a esfera se rompe, você de repente é ejetado para as profundezas do espaço!"))
 						var/max = world.maxx-TRANSITIONEDGE
 						var/min = 1+TRANSITIONEDGE
 						var/list/possible_transtitons = list()
@@ -256,20 +252,20 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 //Turfs and Areas
 /turf/closed/indestructible/hotelwall
 	name = "hotel wall"
-	desc = "A wall designed to protect the security of the hotel's guests."
+	desc = "Um muro projetado para proteger a segurança dos hóspedes do hotel."
 	icon_state = "hotelwall"
 	smoothing_groups = SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_HOTEL_WALLS
 	canSmoothWith = SMOOTH_GROUP_HOTEL_WALLS
 	explosive_resistance = INFINITY
 
 /turf/open/indestructible/hotelwood
-	desc = "Stylish dark wood with extra reinforcement. Secured firmly to the floor to prevent tampering."
+	desc = "Madeira escura elegante com reforço extra. Segurado firmemente no chão para evitar adulteração."
 	icon_state = "wood"
 	footstep = FOOTSTEP_WOOD
 	tiled_turf = FALSE
 
 /turf/open/indestructible/hoteltile
-	desc = "Smooth tile with extra reinforcement. Secured firmly to the floor to prevent tampering."
+	desc = "Tile suave com reforço extra. Segurado firmemente no chão para evitar adulteração."
 	icon_state = "showroomfloor"
 	footstep = FOOTSTEP_FLOOR
 	tiled_turf = FALSE
@@ -302,9 +298,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	explosive_resistance = INFINITY
 	var/obj/item/hilbertshotel/parentSphere
 	// BUBBER EDIT ADDITION START - Condos
-	var/leave_message = "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings \
-		you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. \
-		With that in mind, are you ready to leave?"
+	var/leave_message = "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings 		you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. 		With that in mind, are you ready to leave?"
 	// BUBBER EDIT ADDITION END
 
 /turf/closed/indestructible/hoteldoor/Initialize(mapload)
@@ -322,11 +316,11 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	if(!user.mind)
 		return
 	if(!parentSphere)
-		to_chat(user, span_warning("The door seems to be malfunctioning and refuses to operate!"))
+		to_chat(user, span_warning("A porta parece estar com defeito e se recusa a operar!"))
 		return
 	/// BUBBER EDIT CHANGE START - Condos
 	/* Original:
-	if(tgui_alert(user, "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. With that in mind, are you ready to leave?", "Exit", list("Leave", "Stay")) == "Leave")
+	if(tgui_alert(user, "Hilbert's Hotel gostaria de lembrá-lo que, enquanto vamos fazer tudo o que pudermos para proteger os pertences que você deixa para trás, não fazemos garantias de sua segurança enquanto você estiver fora, especialmente a da saúde de qualquer criatura viva. Com isso em mente, está pronto para partir?", "Exit", list("Leave", "Stay")) == "Leave")
 	*/
 	if(tgui_alert(user, leave_message, "Exit", list("Leave", "Stay")) == "Leave") // BUBBER EDIT CHANGE - Moved blurb to leave_message variable
 	/// BUBBER EDIT CHANGE END
@@ -365,10 +359,10 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 
 /turf/closed/indestructible/hoteldoor/click_alt(mob/user)
 	if(user.is_blind())
-		to_chat(user, span_warning("Drats! Your vision is too poor to use this!"))
+		to_chat(user, span_warning("Droga! Sua visão é muito pobre para usar isso!"))
 		return CLICK_ACTION_BLOCKING
 
-	to_chat(user, span_notice("You peek through the door's bluespace peephole..."))
+	to_chat(user, span_notice("Você espia pelo buraco azul da porta..."))
 	user.reset_perspective(parentSphere)
 	var/datum/action/peephole_cancel/PHC = new
 	user.overlay_fullscreen("remote_view", /atom/movable/screen/fullscreen/impaired, 1)
@@ -385,14 +379,14 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 
 /datum/action/peephole_cancel
 	name = "Cancel View"
-	desc = "Stop looking through the bluespace peephole."
+	desc = "Pare de olhar pelo olho mágico do espaço azul."
 	button_icon_state = "cancel_peephole"
 
 /datum/action/peephole_cancel/Trigger(mob/clicker, trigger_flags)
 	. = ..()
 	if(!.)
 		return
-	to_chat(owner, span_warning("You move away from the peephole."))
+	to_chat(owner, span_warning("Afaste-se do olho mágico."))
 	owner.reset_perspective()
 	owner.clear_fullscreen("remote_view", 0)
 	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
@@ -434,7 +428,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	// Turns out giving anyone who grabs a Hilbert's Hotel a free, complementary warp whistle is probably bad.
 	// Let's gib the last person to have selected a room number in it.
 	if(unforeseen_consequences)
-		to_chat(unforeseen_consequences, span_warning("\The [H] starts to resonate. Forcing it to enter itself induces a bluespace paradox, violently tearing your body apart."))
+		to_chat(unforeseen_consequences, span_warning("\The [H]Começa a ressoar. Forçá-lo a entrar em si mesmo induz um paradoxo do espaço azul, violentamente destruindo seu corpo."))
 		unforeseen_consequences.investigate_log("has been gibbed by using [H] while inside of it.", INVESTIGATE_DEATHS)
 		unforeseen_consequences.gib(DROP_ALL_REMAINS)
 
@@ -447,7 +441,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 
 	log_game("[H] entered itself. Moving it to [loc_name(targetturf)].")
 	message_admins("[H] entered itself. Moving it to [ADMIN_VERBOSEJMP(targetturf)].")
-	H.visible_message(span_danger("[H] almost implodes in upon itself, but quickly rebounds, shooting off into a random point in space!"))
+	H.visible_message(span_danger("[H]quase implode sobre si mesmo, mas rapidamente se recupera, atirando em um ponto aleatório no espaço!"))
 	H.forceMove(targetturf)
 
 /area/misc/hilbertshotel/Exited(atom/movable/gone, direction)
@@ -467,9 +461,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 /area/misc/hilbertshotel/proc/storeRoom()
 	var/turf/room_bottom_left = reservation.bottom_left_turfs[1]
 	var/turf/room_top_right = reservation.top_right_turfs[1]
-	var/roomSize = \
-		((room_top_right.x - room_bottom_left.x) + 1) * \
-		((room_top_right.y - room_bottom_left.y) + 1)
+	var/roomSize = 		((room_top_right.x - room_bottom_left.x) + 1) * 		((room_top_right.y - room_bottom_left.y) + 1)
 	var/storage[roomSize]
 	var/turfNumber = 1
 	var/obj/item/abstracthotelstorage/storageObj = new(storageTurf)
@@ -534,7 +526,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 
 /obj/item/analyzer/hilbertsanalyzer
 	name = "custom rigged analyzer"
-	desc = "A hand-held environmental scanner which reports current gas levels. This one seems custom rigged to additionally be able to analyze some sort of bluespace device."
+	desc = "Um scanner ambiental portátil que relata níveis de gás atuais. Este parece pronto para analisar um dispositivo de espaço azul."
 	icon_state = "hilbertsanalyzer"
 	worn_icon_state = "analyzer"
 
@@ -542,21 +534,21 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	if(!istype(interacting_with, /obj/item/hilbertshotel))
 		return ..()
 	if(!interacting_with.IsReachableBy(user))
-		to_chat(user, span_warning("It's to far away to scan!"))
+		to_chat(user, span_warning("É muito longe para escanear!"))
 		return ITEM_INTERACT_BLOCKING
 	var/obj/item/hilbertshotel/sphere = interacting_with
 	if(sphere.activeRooms.len)
-		to_chat(user, "Currently Occupied Rooms:")
+		to_chat(user, "Quartos Ocupados:")
 		for(var/roomnumber in sphere.activeRooms)
 			to_chat(user, roomnumber)
 	else
-		to_chat(user, "No currenty occupied rooms.")
+		to_chat(user, "Nenhuma sala ocupada.")
 	if(sphere.storedRooms.len)
-		to_chat(user, "Vacated Rooms:")
+		to_chat(user, "Quartos Vacados:")
 		for(var/roomnumber in sphere.storedRooms)
 			to_chat(user, roomnumber)
 	else
-		to_chat(user, "No vacated rooms.")
+		to_chat(user, "Sem quartos vagos.")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/effect/landmark/transport/transport_id/hilbert
@@ -586,7 +578,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 
 /obj/item/keycard/hilbert
 	name = "Hilbert's office keycard"
-	desc = "A keycard with an engraving on it. The engraving reads: \"Hilbert\"."
+	desc = "Um cartão com uma gravura. A gravura diz:\"Hilbert.\"."
 	color = "#aa00cc"
 	puzzle_id = "hilbert_office"
 
@@ -667,53 +659,16 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 /obj/machinery/computer/terminal/hilbert
 	upperinfo = "EMAIL READOUT - 14/05/2558"
 	content = list(
-		"<b>New Job</b><br> \
-		<i>Sent to: natalya_petroyenko@kosmokomm.net</i><br> \
-		Hello sis! Figured I should update you on what's going on with the career change.<br> \
-		First day on the new job. It's a pretty boring position, but hey- it's not like I was finding anything in New Vladimir. I'm just glad to have something to pay the bills.<br> \
-		Suppose I should say what's involved: I'm essentially playing housekeeper for some scientist and his cohort of student assistants. Far above my pay grade to understand what they do, but they seem excited enough. Talking about \"pockets\", for whatever reason. Maybe they're designing the next innovation in clothes?<br> \
-		Anyway, that's pretty much it. I'm living on their station for pretty much the duration, so I'm not sure if I'll be able to make it to Mama's birthday. Sorry about that- I'll do my best to make it up to her (and you) when I get some leave.<br> \
-		Hope to see you soon,<br> \
-		Little Brother Roman",
-		"<b>Visitors</b><br> \
-		<i>Sent to: david_hilbert@physics.mit.edu</i><br> \
-		Morning Doctor. Sorry to email you when you're on holiday, but you did tell me to update you on anything suspicious.<br> \
-		There's been a ship that's been hanging around the facility for a few days. Figured that was odd enough, given how far from anything important we are, but it got stranger when one of them finally came over to talk.<br> \
-		I know I'm not a native speaker, but I couldn't make out his accent. Wasn't like anything I've heard before, anyway.<br> \
-		He kept asking where you were, and if he could come in to speak to you. Of course, I turned him away- even if you had been around I'd have been hesitant to let him in.<br> \
-		As an aside, the postdocs told me to pass on a message. Apparently they've made a breakthrough, which sounds good and all.<br> \
-		Regards,<br> \
-		Roman<br>",
-		"<b>Weird Times</b><br> \
-		<i>Sent to: natalya_petroyenko@kosmokomm.net</i><br> \
-		Hi sis! How was Christmas? Are Mama and Papa doing well? I'm really sorry I couldn't be there, but I've been working my fingers to the bone at work.<br> \
-		I figure I should tell you a bit about how it's been going here. I know, I know, you keep calling me a workaholic, but it's really... strange, I guess?<br> \
-		I keep getting little glimpses into the research that's happening. They're messing around with bluespace- you know, the tech that makes FTL engines work? I'm not sure what exactly they're doing with it, but they're talking more and more about pockets every day now.<br> \
-		Not only that, but I'm starting to hear strange noises from the labs I'm not allowed into. Nothing super terrifying, you know, we're not talking xenomorphs, but more like industrial sounds. Crashes, bangs, occasional high-pitched whining, you know the sort. Like a broken vacuum cleaner.<br> \
-		I know it's not the instruments or I'd have heard it before, so it must be something new they've been working on. Exciting, I suppose, but I'm starting to wonder if I'm in over my head working here. Maybe I should start looking for a new job, somewhere closer to home.<br> \
-		Hope to see you at Papa's birthday. I've requested leave for it, and I'm just waiting on the Doc's response.<br> \
-		See you soon,<br> \
-		Little Brother Roman<br>",
-		"<b>End of Leave</b><br> \
-		<i>Sent to: david_hilbert@physics.mit.edu</i><br> \
-		Morning Doctor. Where is everyone? I got back from leave and the station was empty. Have you all went on holiday without telling me?<br> \
-		And what the hell happened to the ordnance lab? I couldn't even open the door to get in, it was fused shut!<br> \
-		Look, I don't feel safe staying on the station with it in this state, so I'm calling an engineer and heading home until I hear back from you.<br> \
-		Regards,<br> \
-		Roman<br>",
-		"<b>Looking for a New Job</b><br> \
-		<i>Sent to: natalya_petroyenko@kosmokomm.net</i><br> \
-		Hi sis. First things first, sorry for missing your engagement party. There's been a... situation at work.<br> \
-		In fact, that's most of why I'm writing this. I have absolutely no idea what happened, but the Doctor and the students are gone. Just up and left. The facility's abandoned.<br> \
-		But like, it's clear they left in a hurry. Hell, there's still coffee in the cups. I'd question it further, but they were always kinda... odd, I guess? The whole thing gives me chills and I don't think I want to dig any deeper.<br> \
-		I dropped his university an email and called in the authorities. All that's left now, I guess, is to find a new job. Would your boss happen to be hiring?<br> \
-		See you soon,<br> \
-		Little Brother Roman",
+		"<b>New Job</b><br> 		<i>Sent to: natalya_petroyenko@kosmokomm.net</i><br> 		Hello sis! Figured I should update you on what's going on with the career change.<br> 		First day on the new job. It's a pretty boring position, but hey- it's not like I was finding anything in New Vladimir. I'm just glad to have something to pay the bills.<br> 		Suppose I should say what's involved: I'm essentially playing housekeeper for some scientist and his cohort of student assistants. Far above my pay grade to understand what they do, but they seem excited enough. Talking about \"pockets\", for whatever reason. Maybe they're designing the next innovation in clothes?<br> 		Anyway, that's pretty much it. I'm living on their station for pretty much the duration, so I'm not sure if I'll be able to make it to Mama's birthday. Sorry about that- I'll do my best to make it up to her (and you) when I get some leave.<br> 		Hope to see you soon,<br> 		Little Brother Roman",
+		"<b>Visitors</b><br> 		<i>Sent to: david_hilbert@physics.mit.edu</i><br> 		Morning Doctor. Sorry to email you when you're on holiday, but you did tell me to update you on anything suspicious.<br> 		There's been a ship that's been hanging around the facility for a few days. Figured that was odd enough, given how far from anything important we are, but it got stranger when one of them finally came over to talk.<br> 		I know I'm not a native speaker, but I couldn't make out his accent. Wasn't like anything I've heard before, anyway.<br> 		He kept asking where you were, and if he could come in to speak to you. Of course, I turned him away- even if you had been around I'd have been hesitant to let him in.<br> 		As an aside, the postdocs told me to pass on a message. Apparently they've made a breakthrough, which sounds good and all.<br> 		Regards,<br> 		Roman<br>",
+		"<b>Weird Times</b><br> 		<i>Sent to: natalya_petroyenko@kosmokomm.net</i><br> 		Hi sis! How was Christmas? Are Mama and Papa doing well? I'm really sorry I couldn't be there, but I've been working my fingers to the bone at work.<br> 		I figure I should tell you a bit about how it's been going here. I know, I know, you keep calling me a workaholic, but it's really... strange, I guess?<br> 		I keep getting little glimpses into the research that's happening. They're messing around with bluespace- you know, the tech that makes FTL engines work? I'm not sure what exactly they're doing with it, but they're talking more and more about pockets every day now.<br> 		Not only that, but I'm starting to hear strange noises from the labs I'm not allowed into. Nothing super terrifying, you know, we're not talking xenomorphs, but more like industrial sounds. Crashes, bangs, occasional high-pitched whining, you know the sort. Like a broken vacuum cleaner.<br> 		I know it's not the instruments or I'd have heard it before, so it must be something new they've been working on. Exciting, I suppose, but I'm starting to wonder if I'm in over my head working here. Maybe I should start looking for a new job, somewhere closer to home.<br> 		Hope to see you at Papa's birthday. I've requested leave for it, and I'm just waiting on the Doc's response.<br> 		See you soon,<br> 		Little Brother Roman<br>",
+		"<b>End of Leave</b><br> 		<i>Sent to: david_hilbert@physics.mit.edu</i><br> 		Morning Doctor. Where is everyone? I got back from leave and the station was empty. Have you all went on holiday without telling me?<br> 		And what the hell happened to the ordnance lab? I couldn't even open the door to get in, it was fused shut!<br> 		Look, I don't feel safe staying on the station with it in this state, so I'm calling an engineer and heading home until I hear back from you.<br> 		Regards,<br> 		Roman<br>",
+		"<b>Looking for a New Job</b><br> 		<i>Sent to: natalya_petroyenko@kosmokomm.net</i><br> 		Hi sis. First things first, sorry for missing your engagement party. There's been a... situation at work.<br> 		In fact, that's most of why I'm writing this. I have absolutely no idea what happened, but the Doctor and the students are gone. Just up and left. The facility's abandoned.<br> 		But like, it's clear they left in a hurry. Hell, there's still coffee in the cups. I'd question it further, but they were always kinda... odd, I guess? The whole thing gives me chills and I don't think I want to dig any deeper.<br> 		I dropped his university an email and called in the authorities. All that's left now, I guess, is to find a new job. Would your boss happen to be hiring?<br> 		See you soon,<br> 		Little Brother Roman",
 	)
 
 /obj/structure/showcase/machinery/tv/broken
 	name = "broken tv"
-	desc = "Nothing plays."
+	desc = "Nada toca."
 
 /obj/structure/showcase/machinery/tv/broken/Initialize(mapload)
 	. = ..()
@@ -721,7 +676,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 
 /obj/machinery/porta_turret/syndicate/teleport
 	name = "displacement turret"
-	desc = "A ballistic machine gun auto-turret that fires bluespace bullets."
+	desc = "Uma metralhadora balística que dispara balas no espaço azul."
 	lethal_projectile = /obj/projectile/magic/teleport/bluespace
 	stun_projectile = /obj/projectile/magic/teleport/bluespace
 	faction = list(FACTION_TURRET)

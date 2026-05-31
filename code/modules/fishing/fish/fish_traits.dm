@@ -429,7 +429,7 @@ GLOBAL_LIST_INIT(spontaneous_fish_traits, populate_spontaneous_fish_traits())
 	if(QDELETED(source) || source.status != FISH_DEAD || !(type in source.fish_traits))
 		return
 	source.set_status(FISH_ALIVE)
-	var/message = span_nicegreen("[source] twitches. It's alive!")
+	var/message = span_nicegreen("[source]Tremendo. Está vivo!")
 	if(source.loc && HAS_TRAIT(source.loc, TRAIT_IS_AQUARIUM))
 		source.loc.visible_message(message)
 	else
@@ -568,7 +568,7 @@ GLOBAL_LIST_INIT(spontaneous_fish_traits, populate_spontaneous_fish_traits())
 	for(var/obj/item/fish/victim as anything in source.get_aquarium_fishes(TRUE, source))
 		if(victim.status != FISH_ALIVE)
 			continue
-		source.loc.visible_message(span_warning("[source] violently [pick("whips", "bites", "attacks", "slams")] [victim]"))
+		source.loc.visible_message(span_warning("[source]violentamente[pick("whips", "bites", "attacks", "slams")] [victim]"))
 		var/damage = round(rand(4, 20) * (source.size / victim.size)) //smaller fishes take extra damage.
 		victim.damage_fish(damage)
 		return
@@ -676,7 +676,7 @@ GLOBAL_LIST_INIT(spontaneous_fish_traits, populate_spontaneous_fish_traits())
 		return
 	for(var/obj/item/fish/other_fish in fish.loc.contents)
 		if(fish_tolerance <= 0)
-			fish.loc.visible_message(span_warning("[fish] seems to freak out for a moment, then it stops moving..."))
+			fish.loc.visible_message(span_warning("[fish]Parece surtar por um momento, então pára de se mover..."))
 			fish.set_status(FISH_DEAD)
 			return
 		fish_tolerance -= 1
@@ -856,12 +856,8 @@ GLOBAL_LIST_INIT(spontaneous_fish_traits, populate_spontaneous_fish_traits())
 	if(!iscarbon(target) || target.get_bodypart(BODY_ZONE_HEAD))
 		target.adjust_temp_blindness_up_to(4 SECONDS, 8 SECONDS)
 		target.adjust_confusion_up_to(1.5 SECONDS, 4 SECONDS)
-		target.AddComponent(/datum/component/face_decal/splat, \
-			color = COLOR_NEARLY_ALL_BLACK, \
-			memory_type = /datum/memory/witnessed_inking, \
-			mood_event_type = /datum/mood_event/inked, \
-		)
-	target.visible_message(span_warning("[target] is inked by [source]!"), span_userdanger("You've been inked by [source]!"))
+		target.AddComponent(/datum/component/face_decal/splat, 			color = COLOR_NEARLY_ALL_BLACK, 			memory_type = /datum/memory/witnessed_inking, 			mood_event_type = /datum/mood_event/inked, 		)
+	target.visible_message(span_warning("[target]é pintado por[source]!"), span_userdanger("Você foi pintado por[source]!"))
 	playsound(target, SFX_DESECRATION, 50, TRUE)
 	ADD_TRAIT(source, TRAIT_FISH_INK_ON_COOLDOWN, FISH_TRAIT_DATUM)
 	addtimer(TRAIT_CALLBACK_REMOVE(source, TRAIT_FISH_INK_ON_COOLDOWN, FISH_TRAIT_DATUM), 9 SECONDS)

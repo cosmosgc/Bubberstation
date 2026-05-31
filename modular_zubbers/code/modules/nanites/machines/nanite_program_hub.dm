@@ -1,6 +1,6 @@
 /obj/machinery/nanite_program_hub
 	name = "nanite program hub"
-	desc = "Compiles nanite programs from the techweb servers and downloads them into disks."
+	desc = "Compila programas nanites dos servidores techweb e os baixa em discotecas."
 	icon = 'modular_zubbers/icons/obj/machines/nanite_machines.dmi'
 	icon_state = "nanite_program_hub"
 	use_power = IDLE_POWER_USE
@@ -30,7 +30,7 @@
 
 /obj/machinery/nanite_program_hub/examine(mob/user)
 	. = ..()
-	. += span_notice("Use with a linked multitool to link to a techweb server.")
+	. += span_notice("Use com uma multitool ligada para ligar a um servidor techweb.")
 
 /obj/machinery/nanite_program_hub/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -57,7 +57,7 @@
 	var/obj/item/disk/nanite_program/new_disk = tool
 	if(!user.transferItemToLoc(new_disk, src))
 		return NONE
-	to_chat(user, span_notice("You insert [new_disk] into [src]"))
+	to_chat(user, span_notice("Você insere[new_disk]Em[src]"))
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 	if(disk)
 		eject(user)
@@ -67,7 +67,7 @@
 /obj/machinery/nanite_program_hub/multitool_act(mob/living/user, obj/item/multitool/tool)
 	if(!QDELETED(tool.buffer) && istype(tool.buffer, /datum/techweb))
 		linked_techweb = tool.buffer
-		balloon_alert(user, "linked!")
+		balloon_alert(user, "Ligado!")
 		update_static_data_for_all_viewers()
 	return TRUE
 
@@ -95,7 +95,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	if(disk && user.can_perform_action(src, !issilicon(user)))
-		to_chat(user, span_notice("You take out [disk] from [src]."))
+		to_chat(user, span_notice("Você tira.[disk]De[src]."))
 		eject(user)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 

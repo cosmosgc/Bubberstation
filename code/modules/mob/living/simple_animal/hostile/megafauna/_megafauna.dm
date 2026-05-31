@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/megafauna
 	name = "boss of this gym"
-	desc = "Attack the weak point for massive damage."
+	desc = "Atacar o ponto fraco por danos maciços."
 	abstract_type = /mob/living/simple_animal/hostile/megafauna
 	health = 1000
 	maxHealth = 1000
@@ -62,11 +62,7 @@
 
 /mob/living/simple_animal/hostile/megafauna/Initialize(mapload)
 	. = ..()
-	AddComponent(\
-		/datum/component/basic_mob_attack_telegraph,\
-		display_telegraph_overlay = FALSE,\
-		telegraph_duration = attack_delay,\
-	)
+	AddComponent(		/datum/component/basic_mob_attack_telegraph,		display_telegraph_overlay = FALSE,		telegraph_duration = attack_delay,	)
 	AddComponent(/datum/component/seethrough_mob)
 	AddElement(/datum/element/simple_flying)
 	if (achievement_type || score_achievement_type)
@@ -81,13 +77,7 @@
 	if(crusher_loot)
 		if (islist(crusher_loot))
 			crusher_loot = string_list(crusher_loot)
-		AddElement(\
-			/datum/element/crusher_loot,\
-			trophy_type = crusher_loot,\
-			guaranteed_drop = 0.6,\
-			replace_all = replace_crusher_drop,\
-			drop_immediately = del_on_death,\
-		)
+		AddElement(			/datum/element/crusher_loot,			trophy_type = crusher_loot,			guaranteed_drop = 0.6,			replace_all = replace_crusher_drop,			drop_immediately = del_on_death,		)
 	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
 	add_traits(list(TRAIT_NO_TELEPORT), MEGAFAUNA_TRAIT)
 	grant_actions_by_list(attack_action_types)
@@ -155,8 +145,8 @@
 
 /mob/living/simple_animal/hostile/megafauna/proc/celebrate_kill(mob/living/L)
 	visible_message(
-		span_danger("[src] disembowels [L]!"),
-		span_userdanger("You feast on [L]'s organs, restoring your health!"))
+		span_danger("[src]Desembochas[L]!"),
+		span_userdanger("Você se banqueteia[L]Os órgãos, restaurando sua saúde!"))
 
 /mob/living/simple_animal/hostile/megafauna/CanAttack(atom/the_target)
 	. = ..()

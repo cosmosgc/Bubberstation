@@ -215,22 +215,22 @@
 	var/atom/atom_parent = parent
 	if(HAS_TRAIT(user, TRAIT_NO_TWOHANDING))
 		if(HAS_TRAIT(parent, TRAIT_NEEDS_TWO_HANDS))
-			atom_parent.balloon_alert(user, "can't wield!")
+			atom_parent.balloon_alert(user, "Não posso empunhar!")
 			user.dropItemToGround(parent, force = TRUE)
 		else
-			atom_parent.balloon_alert(user, "can't wield with both hands!")
+			atom_parent.balloon_alert(user, "Não posso empunhar com as duas mãos!")
 		return COMPONENT_EQUIPPED_FAILED
 	if(user.get_inactive_held_item())
 		if(HAS_TRAIT(parent, TRAIT_NEEDS_TWO_HANDS))
-			atom_parent.balloon_alert(user, "can't carry in one hand!")
+			atom_parent.balloon_alert(user, "Não posso carregar em uma mão!")
 			user.dropItemToGround(parent, force = TRUE)
 		else
-			atom_parent.balloon_alert(user, "holding something in other hand!")
+			atom_parent.balloon_alert(user, "Segurando algo na outra mão!")
 		return COMPONENT_EQUIPPED_FAILED
 	if(user.usable_hands < 2)
 		if(HAS_TRAIT(parent, TRAIT_NEEDS_TWO_HANDS))
 			user.dropItemToGround(parent, force = TRUE)
-		atom_parent.balloon_alert(user, "not enough hands!")
+		atom_parent.balloon_alert(user, "Não há mãos suficientes!")
 		return COMPONENT_EQUIPPED_FAILED
 
 	// wield update status
@@ -255,9 +255,9 @@
 	parent_item.update_appearance()
 
 	if(iscyborg(user))
-		to_chat(user, span_notice("You dedicate your module to [parent]."))
+		to_chat(user, span_notice("Você dedica seu módulo a[parent]."))
 	else
-		to_chat(user, span_notice("You grab [parent] with both hands."))
+		to_chat(user, span_notice("Você agarra[parent]com as duas mãos."))
 
 	// Play sound if one is set
 	if(wieldsound)
@@ -323,11 +323,11 @@
 		// Show message if requested
 		if(show_message)
 			if(iscyborg(user))
-				to_chat(user, span_notice("You free up your module."))
+				to_chat(user, span_notice("Liberte seu módulo."))
 			else if(HAS_TRAIT(parent, TRAIT_NEEDS_TWO_HANDS))
-				to_chat(user, span_notice("You drop [parent]."))
+				to_chat(user, span_notice("Você caiu.[parent]."))
 			else
-				to_chat(user, span_notice("You are now carrying [parent] with one hand."))
+				to_chat(user, span_notice("Agora você está carregando[parent]com uma mão."))
 
 	// Play sound if set
 	if(unwieldsound)

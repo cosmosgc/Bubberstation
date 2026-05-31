@@ -1,7 +1,7 @@
 
 /mob/living/basic/snake
 	name = "snake"
-	desc = "A slithery snake. These legless reptiles are the bane of mice and adventurers alike."
+	desc = "Uma cobra escorregadia. Esses répteis sem pernas são a ruína de ratos e aventureiros."
 	icon_state = "snake"
 	icon_living = "snake"
 	icon_dead = "snake_dead"
@@ -54,12 +54,7 @@
 	AddElement(/datum/element/basic_eating, heal_amt = 2, food_types = edibles)
 	ai_controller.set_blackboard_key(BB_BASIC_FOODS, typecacheof(edibles))
 
-	AddComponent(\
-		/datum/component/tameable,\
-		food_types = list(/obj/item/food/deadmouse),\
-		tame_chance = 75,\
-		bonus_tame_chance = 10,\
-	) // snakes are really fond of food, especially in the cold darkness of space :)
+	AddComponent(		/datum/component/tameable,		food_types = list(/obj/item/food/deadmouse),		tame_chance = 75,		bonus_tame_chance = 10,	) // snakes are really fond of food, especially in the cold darkness of space :)
 
 	if(isnull(special_reagent))
 		special_reagent = /datum/reagent/toxin
@@ -70,7 +65,7 @@
 	. = ..()
 	if(!.)
 		return
-	visible_message("[src] hisses happily as it seems to bond with [new_friend].")
+	visible_message("[src]Assobia feliz como parece se relacionar com[new_friend].")
 
 /// Snakes are primarily concerned with getting those tasty, tasty mice, but aren't afraid to strike back at those who attack them
 /datum/ai_controller/basic_controller/snake

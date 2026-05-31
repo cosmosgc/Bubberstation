@@ -2,8 +2,7 @@
 /// Mechanical equivalent of cutting skin
 /datum/surgery_operation/limb/mechanical_incision
 	name = "unscrew shell"
-	desc = "Unscrew the shell of a mechanical patient to access its internals. \
-		Causes \"cut skin\" surgical state."
+	desc = "Desenrosque a concha de um paciente mecânico para acessar seus internos. Causas\"Pele Cortada\"estado cirúrgico."
 	implements = list(
 		TOOL_SCREWDRIVER = 1,
 		TOOL_SCALPEL = 1.33,
@@ -32,9 +31,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to unscrew the shell of [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to unscrew the shell of [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to unscrew the shell of [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a desparafusar a concha de[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]Começa a desparafusar a casca de[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Começa a desparafusar a casca de[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel your [limb.plaintext_zone] grow numb as the shell is unscrewed.", TRUE)
 
@@ -45,8 +44,7 @@
 /// Mechanical equivalent of opening skin and clamping vessels
 /datum/surgery_operation/limb/mechanical_open
 	name = "open hatch"
-	desc = "Open the hatch of a mechanical patient to access its internals. \
-		Causes \"skin open\" and \"vessels clamped\" surgical states."
+	desc = "Abra a escotilha de um paciente mecânico para acessar seus internos. Causas\"PELE ABERTA\"E\"Vasos presos.\"estados cirúrgicos."
 	required_bodytype = BODYTYPE_ROBOTIC | BODYTYPE_NANO // BUBBER EDIT CHANGE - NANO FLAGS  -Original: required_bodytype = BODYTYPE_ROBOTIC
 	implements = list(
 		IMPLEMENT_HAND = 1,
@@ -66,9 +64,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to open the hatch holders in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to open the hatch holders in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to open the hatch holders in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a abrir os porta- escotilhas[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]começa a abrir as escotilhas[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]começa a abrir as escotilhas[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "The last faint pricks of tactile sensation fade from your [limb.plaintext_zone] as the hatch is opened.", TRUE)
 
@@ -81,8 +79,7 @@
 /// Mechanical equivalent of cauterizing / closing skin
 /datum/surgery_operation/limb/mechanical_close
 	name = "screw shell"
-	desc = "Screw the shell of a mechanical patient back into place. \
-		Clears most surgical states."
+	desc = "Dane-se a concha de um paciente mecânico de volta ao lugar. Limpa a maioria dos estados cirúrgicos."
 	required_bodytype = BODYTYPE_ROBOTIC | BODYTYPE_NANO // BUBBER EDIT CHANGE - NANO FLAGS  -Original: required_bodytype = BODYTYPE_ROBOTIC
 	implements = list(
 		TOOL_SCREWDRIVER = 1,
@@ -114,9 +111,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to screw the shell of [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to screw the shell of [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to screw the shell of [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a ferrar a casca de[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]Começa a ferrar a casca de[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Começa a ferrar a casca de[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel the faint pricks of sensation return as your [limb.plaintext_zone]'s shell is screwed in.", TRUE)
 
@@ -127,8 +124,7 @@
 // Mechanical equivalent of cutting vessels and organs
 /datum/surgery_operation/limb/prepare_electronics
 	name = "prepare electronics"
-	desc = "Prepare the internal electronics of a mechanical patient for surgery. \
-		Causes \"organs cut\" surgical state."
+	desc = "Prepare a eletrônica interna de um paciente mecânico para cirurgia. Causas\"órgãos cortados\"estado cirúrgico."
 	required_bodytype = BODYTYPE_ROBOTIC | BODYTYPE_NANO // BUBBER EDIT CHANGE - NANO FLAGS  -Original: required_bodytype = BODYTYPE_ROBOTIC
 	implements = list(
 		TOOL_MULTITOOL = 1,
@@ -149,9 +145,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to prepare electronics in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to prepare electronics in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to prepare electronics in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a preparar eletrônicos em[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]Começa a preparar eletrônicos em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Começa a preparar eletrônicos em[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You can feel a faint buzz in your [limb.plaintext_zone] as the electronics reboot.", TRUE)
 
@@ -162,8 +158,7 @@
 // Mechanical equivalent of sawing bone
 /datum/surgery_operation/limb/mechanic_unwrench
 	name = "unwrench endoskeleton"
-	desc = "Unwrench a mechanical patient's endoskeleton to access its internals. \
-		Clears \"bone sawed\" surgical state."
+	desc = "Solte o endoesqueleto de um paciente mecânico para acessar seus internos. Limpa.\"Osso serrado\"estado cirúrgico."
 	required_bodytype = BODYTYPE_ROBOTIC | BODYTYPE_NANO // BUBBER EDIT CHANGE - NANO FLAGS  -Original: required_bodytype = BODYTYPE_ROBOTIC
 	implements = list(
 		TOOL_WRENCH = 1,
@@ -183,9 +178,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to unwrench some bolts in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to unwrench some bolts in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to unwrench some bolts in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a abrir alguns parafusos[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]Começa a abrir alguns parafusos.[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Começa a abrir alguns parafusos.[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a jostle in your [limb.plaintext_zone] as the bolts begin to loosen.", TRUE)
 
@@ -196,8 +191,7 @@
 // Mechanical equivalent of unsawing bone
 /datum/surgery_operation/limb/mechanic_wrench
 	name = "wrench endoskeleton"
-	desc = "Wrench a mechanical patient's endoskeleton back into place. \
-		Clears \"bone sawed\" surgical state."
+	desc = "Coloque o endoesqueleto de um paciente mecânico no lugar. Limpa.\"Osso serrado\"estado cirúrgico."
 	required_bodytype = BODYTYPE_ROBOTIC | BODYTYPE_NANO // BUBBER EDIT CHANGE - NANO FLAGS  -Original: required_bodytype = BODYTYPE_ROBOTIC
 	implements = list(
 		TOOL_WRENCH = 1,
@@ -222,9 +216,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to wrench some bolts in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to wrench some bolts in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to wrench some bolts in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a puxar alguns parafusos[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]Começa a quebrar alguns parafusos[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Começa a quebrar alguns parafusos[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a jostle in your [limb.plaintext_zone] as the bolts begin to tighten.", TRUE)
 

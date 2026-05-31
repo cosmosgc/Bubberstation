@@ -3,7 +3,7 @@
 
 /datum/phystool_mode/spawn_mode
 	name = "Spawn mode"
-	desc = "Use LMB to spawn, use in hands to choose spawn type."
+	desc = "Use LMB para desova, use em mãos para escolher o tipo de desova."
 	var/atom/selected_object
 
 	var/list/atom/black_list = list(
@@ -21,7 +21,7 @@
 	. = ..()
 	var/text_path = tgui_input_text(user, "Enter object path:", "Spawn tool", "none", 256, FALSE)
 	if(!text_path)
-		user.balloon_alert(user, "enter path!")
+		user.balloon_alert(user, "Entre no caminho!")
 		return FALSE
 	selected_object = text2path(text_path)
 	if(!ispath(selected_object))
@@ -29,20 +29,20 @@
 	for(var/black_list_item in black_list)
 		if(ispath(selected_object, black_list_item))
 			selected_object = null
-			user.balloon_alert(user, "spawn blocked!")
+			user.balloon_alert(user, "Desova bloqueada!")
 			return FALSE
-	user.balloon_alert(user, "selected!")
-	to_chat(user, span_notice("Current spawn type [selected_object]."))
+	user.balloon_alert(user, "Selecionado!")
+	to_chat(user, span_notice("Tipo de desova atual[selected_object]."))
 
 /datum/phystool_mode/spawn_mode/main_act(atom/target, mob/user)
 	. = ..()
 
 	if(!selected_object)
-		user.balloon_alert(user, "select type first!")
+		user.balloon_alert(user, "Selecione o tipo primeiro!")
 		return FALSE
 
 	if(!COOLDOWN_FINISHED(src, spawn_cooldown))
-		user.balloon_alert(user, "wait!")
+		user.balloon_alert(user, "Espere!")
 		return FALSE
 	var/target_cooldown
 	if(ispath(selected_object, /mob/living/simple_animal/hostile/megafauna))

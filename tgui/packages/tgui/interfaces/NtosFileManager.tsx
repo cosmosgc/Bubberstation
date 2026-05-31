@@ -156,7 +156,7 @@ const PrintDialog = (props: PrintDialogProps) => {
               </Stack.Item>
               <Stack.Item>
                 <LabeledList>
-                  <LabeledList.Item label="X Offset">
+                  <LabeledList.Item label="Deslocamento X">
                     <Slider
                       tickWhileDragging
                       minValue={image_width > width ? -maxOffsetX : minOffsetX}
@@ -167,7 +167,7 @@ const PrintDialog = (props: PrintDialogProps) => {
                       }
                     />
                   </LabeledList.Item>
-                  <LabeledList.Item label="Y Offset">
+                  <LabeledList.Item label="Deslocamento Y">
                     <Slider
                       tickWhileDragging
                       minValue={
@@ -257,7 +257,7 @@ export const NtosFileManager = (props) => {
           />
         </Section>
         {usbconnected && (
-          <Section title="Data Disk">
+          <Section title="Disco de Dados">
             <FileTable
               usbmode
               files={usbfiles}
@@ -333,7 +333,7 @@ const FileTable = (props: FileTableProps) => {
               <Button
                 icon={file.alert_silenced ? 'bell-slash' : 'bell'}
                 color={file.alert_silenced ? 'red' : 'default'}
-                tooltip={file.alert_silenced ? 'Unmute Alerts' : 'Mute Alerts'}
+                tooltip={file.alert_silenced ? 'Alertas desenfreados' : 'Alertas mudos'}
                 onClick={() => onToggleSilence!(file.name)}
               />
             )}

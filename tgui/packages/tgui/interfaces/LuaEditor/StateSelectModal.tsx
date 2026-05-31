@@ -47,7 +47,7 @@ export const StateSelectModal = (props: StateSelectModalProps) => {
           <Stack.Item grow>
             <Input
               fluid
-              placeholder="New State"
+              placeholder="Novo Estado"
               value={input}
               onChange={setInput}
             />

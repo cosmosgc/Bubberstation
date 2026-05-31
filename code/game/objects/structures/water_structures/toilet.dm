@@ -1,6 +1,6 @@
 /obj/structure/toilet
 	name = "toilet"
-	desc = "The HT-451, a torque rotation-based, waste disposal unit for small matter. This one seems remarkably clean."
+	desc = "O HT-451, uma unidade de descarte de lixo baseado em torque. Este parece muito limpo."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "toilet00" //The first number represents if the toilet lid is up, the second is if the cistern is open.
 	base_icon_state = "toilet"
@@ -79,17 +79,17 @@
 	. = ..()
 	if(cover_open)
 		if(LAZYLEN(fishes))
-			. += span_notice("You can see fish in the toilet, you can probably take one out.")
+			. += span_notice("Você pode ver peixe no banheiro, você pode provavelmente tirar um.")
 		if(stuck_item)
-			. += span_notice("There seems to be something small in [src]'s bowl...")
+			. += span_notice("Parece haver algo pequeno em[src]A tigela...")
 	if(cistern_open && has_water_reclaimer)
-		. += span_notice("A water recycler is installed. Its attached by a pair of screws.")
-		. += span_notice("Its display states: [reagents.total_volume]/[reagents.maximum_volume] liquids remaining.")
+		. += span_notice("Um reciclador de água está instalado. Está preso por um par de parafusos.")
+		. += span_notice("Sua exibição diz:[reagents.total_volume]/[reagents.maximum_volume]Líquidos restantes.")
 
 /obj/structure/toilet/examine_more(mob/user)
 	. = ..()
 	if(cistern_open && LAZYLEN(cistern_items))
-		. += span_notice("You can see [cistern_items.len] items inside of the cistern.")
+		. += span_notice("Você pode ver[cistern_items.len]itens dentro da cisterna.")
 
 /obj/structure/toilet/Destroy(force)
 	. = ..()
@@ -118,7 +118,7 @@
 	if(swirlie)
 		user.changeNext_move(CLICK_CD_MELEE)
 		playsound(src.loc, SFX_SWING_HIT, 25, TRUE)
-		swirlie.visible_message(span_danger("[user] slams the toilet seat onto [swirlie]'s head!"), span_userdanger("[user] slams the toilet seat onto your head!"), span_hear("You hear reverberating porcelain."))
+		swirlie.visible_message(span_danger("[user]Bate o assento do vaso sanitário em[swirlie]A cabeça!"), span_userdanger("[user]Bate o assento do banheiro na sua cabeça!"), span_hear("Você ouve porcelana reverberante."))
 		log_combat(user, swirlie, "swirlied (brute)")
 		swirlie.adjust_brute_loss(5)
 		return
@@ -127,27 +127,27 @@
 		user.changeNext_move(CLICK_CD_MELEE)
 		var/mob/living/grabbed_mob = user.pulling
 		if(user.grab_state < GRAB_AGGRESSIVE)
-			to_chat(user, span_warning("You need a tighter grip!"))
+			to_chat(user, span_warning("Você precisa de um aperto mais apertado!"))
 			return
 		if(grabbed_mob.loc != get_turf(src))
-			to_chat(user, span_warning("[grabbed_mob] needs to be on [src]!"))
+			to_chat(user, span_warning("[grabbed_mob]Precisa estar ligado.[src]!"))
 			return
 		if(swirlie)
 			return
 		if(cover_open)
 			if(!reagents.total_volume)
-				to_chat(user, span_notice("\The [src] is dry!"))
+				to_chat(user, span_notice("\The [src]Está seco!"))
 				return
-			grabbed_mob.visible_message(span_danger("[user] starts to give [grabbed_mob] a swirlie!"), span_userdanger("[user] starts to give you a swirlie..."))
+			grabbed_mob.visible_message(span_danger("[user]começa a dar[grabbed_mob]Um redemoinho!"), span_userdanger("[user]Começa a dar-lhe um giro..."))
 			swirlie = grabbed_mob
 			var/was_alive = (swirlie.stat != DEAD)
 			if(!do_after(user, 3 SECONDS, target = src, timed_action_flags = IGNORE_HELD_ITEM))
 				swirlie = null
 				return
 			if(!reagents.total_volume)
-				to_chat(user, span_notice("\The [src] is dry!"))
+				to_chat(user, span_notice("\The [src]Está seco!"))
 				return
-			grabbed_mob.visible_message(span_danger("[user] gives [grabbed_mob] a swirlie!"), span_userdanger("[user] gives you a swirlie!"), span_hear("You hear a toilet flushing."))
+			grabbed_mob.visible_message(span_danger("[user]dá[grabbed_mob]Um redemoinho!"), span_userdanger("[user]te dá um redemoinho!"), span_hear("Você ouve uma descarga."))
 			if(iscarbon(grabbed_mob))
 				var/mob/living/carbon/carbon_grabbed = grabbed_mob
 				if(!carbon_grabbed.internal)
@@ -161,21 +161,21 @@
 			swirlie = null
 		else
 			playsound(src.loc, 'sound/effects/bang.ogg', 25, TRUE)
-			grabbed_mob.visible_message(span_danger("[user] slams [grabbed_mob.name] into [src]!"), span_userdanger("[user] slams you into [src]!"))
+			grabbed_mob.visible_message(span_danger("[user]Slams[grabbed_mob.name]em[src]!"), span_userdanger("[user]Bate em você[src]!"))
 			log_combat(user, grabbed_mob, "toilet slammed")
 			grabbed_mob.adjust_brute_loss(5)
 		return
 
 	if(cistern_open && !cover_open && IsReachableBy(user))
 		if(!LAZYLEN(cistern_items))
-			to_chat(user, span_notice("The cistern is empty."))
+			to_chat(user, span_notice("A cisterna está vazia."))
 			return
 		var/obj/item/random_cistern_item = pick(cistern_items)
 		if(ishuman(user))
 			user.put_in_hands(random_cistern_item)
 		else
 			random_cistern_item.forceMove(drop_location())
-		to_chat(user, span_notice("You find [random_cistern_item] in the cistern."))
+		to_chat(user, span_notice("Você encontra[random_cistern_item]na cisterna."))
 		return
 
 	if(!flushing && LAZYLEN(fishes) && cover_open)
@@ -184,7 +184,7 @@
 			user.put_in_hands(random_fish)
 		else
 			random_fish.forceMove(drop_location())
-		to_chat(user, span_notice("You take [random_fish] out of the toilet, poor thing."))
+		to_chat(user, span_notice("Você pega.[random_fish]Fora do banheiro, coitadinha."))
 
 /obj/structure/toilet/click_alt(mob/living/user)
 	if(flushing)
@@ -199,7 +199,7 @@
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	if(reagents.total_volume <= 50)
-		to_chat(user, span_notice("You press the flush lever, but nothing happens."))
+		to_chat(user, span_notice("Você aperta a alavanca, mas nada acontece."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	flushing = TRUE
@@ -211,7 +211,7 @@
 				break
 
 	if(something_stuck)
-		reagents.create_foam(/datum/effect_system/fluid_spread/foam, 10, notification = span_danger("[src] overflows, spilling its cistern's contents everywhere!"), log = TRUE)
+		reagents.create_foam(/datum/effect_system/fluid_spread/foam, 10, notification = span_danger("[src]transborda, derramando o conteúdo da cisterna por toda parte!"), log = TRUE)
 	else
 		reagents.remove_all(50)
 
@@ -250,23 +250,23 @@
 	add_fingerprint(user)
 	if(cover_open && istype(tool, /obj/item/fish))
 		if(LAZYLEN(fishes) >= 3)
-			to_chat(user, span_warning("There's too many fishes, flush them down first."))
+			to_chat(user, span_warning("Há muitos peixes, descarregue-os primeiro."))
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
-			to_chat(user, span_warning("\The [tool] is stuck to your hand!"))
+			to_chat(user, span_warning("\The [tool]está preso em sua mão!"))
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/fish/the_fish = tool
 		if(the_fish.status == FISH_DEAD)
-			to_chat(user, span_warning("You place [tool] into [src], may it rest in peace."))
+			to_chat(user, span_warning("Seu lugar.[tool]em[src]Que descanse em paz."))
 		else
-			to_chat(user, span_notice("You place [tool] into [src], hopefully no one will miss it!"))
+			to_chat(user, span_notice("Seu lugar.[tool]em[src]Espero que ninguém sinta falta!"))
 		LAZYADD(fishes, tool)
 		return ITEM_INTERACT_SUCCESS
 
 	if(cistern_open)
 		if(istype(tool, /obj/item/stock_parts/water_recycler))
 			if(has_water_reclaimer)
-				to_chat(user, span_warning("[src] already has a water recycler installed."))
+				to_chat(user, span_warning("[src]Já tem um reciclador de água instalado."))
 				return ITEM_INTERACT_BLOCKING
 
 			playsound(src, 'sound/machines/click.ogg', 20, TRUE)
@@ -276,16 +276,16 @@
 			return ITEM_INTERACT_SUCCESS
 
 		if(tool.w_class > WEIGHT_CLASS_NORMAL)
-			to_chat(user, span_warning("[tool] does not fit!"))
+			to_chat(user, span_warning("[tool]Não cabe!"))
 			return ITEM_INTERACT_BLOCKING
 		if(w_items + tool.w_class > WEIGHT_CLASS_HUGE)
-			to_chat(user, span_warning("The cistern is full!"))
+			to_chat(user, span_warning("A cisterna está cheia!"))
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
-			to_chat(user, span_warning("\The [tool] is stuck to your hand, you cannot put it in the cistern!"))
+			to_chat(user, span_warning("\The [tool]está preso em sua mão, você não pode colocá-lo na cisterna!"))
 			return ITEM_INTERACT_BLOCKING
 		add_cistern_item(tool)
-		to_chat(user, span_notice("You carefully place [tool] into the cistern."))
+		to_chat(user, span_notice("Você cuidadosamente colocar[tool]na cisterna."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!cover_open)
@@ -296,19 +296,19 @@
 			return NONE
 
 		if(stuck_item)
-			to_chat(user, span_warning("There's already something blocking [src]'s drain pipe!"))
+			to_chat(user, span_warning("Já tem algo bloqueando.[src]É o cano de drenagem!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.transferItemToLoc(tool, src))
-			to_chat(user, span_warning("\The [tool] is stuck to your hand!"))
+			to_chat(user, span_warning("\The [tool]está preso em sua mão!"))
 			return ITEM_INTERACT_BLOCKING
 
 		stuck_item = tool
-		to_chat(user, span_notice("You drop [tool] into [src]'s bowl."))
+		to_chat(user, span_notice("Você caiu.[tool]em[src]É a tigela."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(reagents.total_volume <= 0)
-		to_chat(user, span_notice("\The [src] is dry."))
+		to_chat(user, span_notice("\The [src]está seco."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(tool, /obj/item/food/monkeycube))
@@ -321,12 +321,12 @@
 		return NONE
 
 	if(container.reagents.holder_full())
-		to_chat(user, span_notice("\The [container] is full."))
+		to_chat(user, span_notice("\The [container]Está cheio."))
 		return ITEM_INTERACT_BLOCKING
 
 	reagents.trans_to(container, container.amount_per_transfer_from_this, transferred_by = user)
 	begin_reclamation()
-	to_chat(user, span_notice("You fill [container] from [src]. Gross."))
+	to_chat(user, span_notice("Você enche.[container]De[src]Nojento."))
 	return ITEM_INTERACT_SUCCESS
 
 /// Hides an item inside the toilet for later retrievalk
@@ -336,30 +336,30 @@
 	LAZYADD(cistern_items, thing)
 
 /obj/structure/toilet/crowbar_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("You start to [cistern_open ? "replace the lid on" : "lift the lid off"] the cistern..."))
+	to_chat(user, span_notice("Você começa a[cistern_open ? "replace the lid on" : "lift the lid off"]A cisterna..."))
 	playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 50, TRUE)
 	if(tool.use_tool(src, user, 30))
 		user.visible_message(
-			span_notice("[user] [cistern_open ? "replaces the lid on" : "lifts the lid off"] the cistern!"),
-			span_notice("You [cistern_open ? "replace the lid on" : "lift the lid off"] the cistern!"),
-			span_hear("You hear grinding porcelain."))
+			span_notice("[user] [cistern_open ? "replaces the lid on" : "lifts the lid off"]A cisterna!"),
+			span_notice("Você.[cistern_open ? "replace the lid on" : "lift the lid off"]A cisterna!"),
+			span_hear("Você ouve porcelana."))
 		cistern_open = !cistern_open
 		update_appearance(UPDATE_ICON_STATE)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/toilet/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!cistern_open)
-		to_chat(user, span_warning("You need to open [src]'s cistern first!"))
+		to_chat(user, span_warning("Você precisa abrir.[src]Primeiro a cisterna!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!has_water_reclaimer)
-		to_chat(user, span_warning("\the [src] doesn't have a water reclaimer installed."))
+		to_chat(user, span_warning("\the [src]Não tem um recuperador de água instalado."))
 		return ITEM_INTERACT_BLOCKING
 
 	tool.play_tool_sound(src)
 	has_water_reclaimer = FALSE
 	new /obj/item/stock_parts/water_recycler(drop_location())
-	to_chat(user, span_notice("You remove the water reclaimer from \the [src]."))
+	to_chat(user, span_notice("Você remove o recuperador de água de\the [src]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/toilet/wrench_act(mob/living/user, obj/item/tool)
@@ -414,8 +414,7 @@
 
 ///A toilet made of meat that only drops remains when deconstructed, often unleashed unto this cursed plane of existence by hopeless people off'ing themselves with experi-scanners.
 /obj/structure/toilet/greyscale/flesh
-	desc = "A horrendous mass of fused flesh resembling a standard-issue HT-451 model toilet. How it manages to function as one is beyond you. \
-	This one seems to be made out of the flesh of a devoted employee of the RnD department."
+	desc = "Uma massa horrível de carne fundida parecida com um banheiro padrão modelo HT-451. Como consegue funcionar como alguém está além de você. Este parece ser feito da carne de um empregado dedicado do departamento de Rnd."
 
 /obj/structure/toilet/greyscale/flesh/Initialize(mapload, mob/living/carbon/suicide)
 	. = ..()

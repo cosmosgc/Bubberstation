@@ -1,6 +1,6 @@
 /datum/mafia_role/obsessed
 	name = "Obsessed"
-	desc = "Lynch your obsession before you get killed at all costs!"
+	desc = "Lynch sua obsessão antes de ser morto a todo custo!"
 	win_condition = "lynch their obsession."
 	revealed_outfit = /datum/outfit/mafia/obsessed
 	team = MAFIA_TEAM_SOLO
@@ -15,7 +15,7 @@
 
 /datum/mafia_role/obsessed/New(datum/mafia_controller/game) //note: obsession is always a townie
 	. = ..()
-	desc = initial(desc) + " Obsessions are assigned on the first night."
+	desc = initial(desc) + "Obsessões são atribuídas na primeira noite."
 	RegisterSignal(game, COMSIG_MAFIA_SUNDOWN, PROC_REF(find_obsession))
 
 /datum/mafia_role/obsessed/proc/find_obsession(datum/mafia_controller/game)
@@ -28,13 +28,13 @@
 			break
 	if(!obsession)
 		obsession = pick(all_roles_shuffle) //okay no town just pick anyone here
-	desc = initial(desc) + " Target: [obsession.body.real_name]"
+	desc = initial(desc) + "Alvo:[obsession.body.real_name]"
 	var/obj/item/modular_computer/modpc = player_pda
 	if(modpc)
 		modpc.update_static_data_for_all_viewers()
 	else
 		game.update_static_data(body)
-	send_message_to_player(span_userdanger("Your obsession is [obsession.body.real_name]! Get them lynched to win!"))
+	send_message_to_player(span_userdanger("Sua obsessão é[obsession.body.real_name]Linchá-los para ganhar!"))
 	RegisterSignal(obsession, COMSIG_MAFIA_ON_KILL, PROC_REF(check_victory))
 	UnregisterSignal(game, COMSIG_MAFIA_SUNDOWN)
 
@@ -49,11 +49,11 @@
 		game.award_role(winner_award, src)
 		reveal_role(game, FALSE)
 	else
-		to_chat(body, span_userdanger("You have failed your objective to lynch [obsession.body.real_name]!"))
+		to_chat(body, span_userdanger("Você falhou no seu objetivo de linchar[obsession.body.real_name]!"))
 
 /datum/mafia_role/clown
 	name = "Clown"
-	desc = "If you are lynched you take down one of your voters (guilty or abstain) with you and win. HONK!"
+	desc = "Se você for linchado você derruba um de seus eleitores (culpado ou abstido) com você e ganha. HONK!"
 	win_condition = "get themselves lynched!"
 	revealed_outfit = /datum/outfit/mafia/clown
 	team = MAFIA_TEAM_SOLO

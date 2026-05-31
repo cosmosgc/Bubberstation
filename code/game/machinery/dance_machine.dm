@@ -1,6 +1,6 @@
 /obj/machinery/jukebox
 	name = "jukebox"
-	desc = "A classic music player."
+	desc = "Um músico clássico."
 	icon = 'icons/obj/machines/music.dmi'
 	icon_state = "jukebox"
 	base_icon_state = "jukebox"
@@ -64,14 +64,14 @@
 	if(isobserver(user))
 		return ..()
 	if(!anchored)
-		balloon_alert(user, "must be anchored!")
+		balloon_alert(user, "deve ser ancorado!")
 		return UI_CLOSE
 	if(!allowed(user))
 		balloon_alert(user, "acesso negado!")
 		user.playsound_local(src, 'sound/machines/compiler/compiler-failure.ogg', 20, TRUE)
 		return UI_CLOSE
 	if(!length(music_player.songs))
-		to_chat(user,span_warning("Error: No music tracks have been authorized for your station. Petition Central Command to resolve this issue."))
+		to_chat(user,span_warning("Nenhuma música foi autorizada para sua estação. Petição do Comando Central para resolver esta questão."))
 		user.playsound_local(src, 'sound/machines/compiler/compiler-failure.ogg', 25, TRUE)
 		return UI_CLOSE
 	return ..()
@@ -98,7 +98,7 @@
 
 		if("select_track")
 			if(!isnull(music_player.active_song_sound))
-				to_chat(user, span_warning("Error: You cannot change the song until the current one is over."))
+				to_chat(user, span_warning("Você não pode mudar a música até que a atual acabe."))
 				return TRUE
 
 			var/datum/track/new_song = music_player.songs[params["track"]]
@@ -130,7 +130,7 @@
 	if(COOLDOWN_FINISHED(src, jukebox_song_cd))
 		activate_music()
 		return
-	balloon_alert(user, "on cooldown for [DisplayTimeText(COOLDOWN_TIMELEFT(src, jukebox_song_cd))]!")
+	balloon_alert(user, "na refrigeração para[DisplayTimeText(COOLDOWN_TIMELEFT(src, jukebox_song_cd))]!")
 	if(COOLDOWN_FINISHED(src, jukebox_error_cd))
 		playsound(src, 'sound/machines/compiler/compiler-failure.ogg', 25, TRUE)
 		COOLDOWN_START(src, jukebox_error_cd, 15 SECONDS)
@@ -168,7 +168,7 @@
 
 /obj/machinery/jukebox/disco
 	name = "radiant dance machine mark IV"
-	desc = "The first three prototypes were discontinued after mass casualty incidents."
+	desc = "Os três primeiros protótipos foram descontinuados após incidentes de baixas em massa."
 	icon_state = "disco"
 	base_icon_state = "disco"
 	req_access = list(ACCESS_ENGINEERING)
@@ -181,7 +181,7 @@
 
 /obj/machinery/jukebox/disco/indestructible
 	name = "radiant dance machine mark V"
-	desc = "Now redesigned with data gathered from the extensive disco and plasma research."
+	desc = "Agora redesenhou com dados coletados da extensa pesquisa de disco e plasma."
 	req_access = null
 	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF

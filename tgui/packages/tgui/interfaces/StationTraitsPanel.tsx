@@ -59,7 +59,7 @@ const FutureStationTraitsPage = (props) => {
           <Dropdown
             onSelected={setSelectedTrait}
             options={traitNames}
-            placeholder="Select trait to add..."
+            placeholder="Selecione traço para adicionar..."
             selected={selectedTrait}
             width="100%"
           />
@@ -139,7 +139,7 @@ const FutureStationTraitsPage = (props) => {
               <Button
                 color="red"
                 icon="times"
-                tooltip="The next round will roll station traits randomly, just like normal"
+                tooltip="A próxima rodada vai rolar traços da estação aleatoriamente, como o normal"
                 onClick={() => act('clear_future_traits')}
               >
                 Run Station Traits Normally
@@ -187,9 +187,9 @@ const ViewStationTraitsPage = (props) => {
                 disabled={data.too_late_to_revert || !stationTrait.can_revert}
                 tooltip={
                   (!stationTrait.can_revert &&
-                    'This trait is not revertable.') ||
+                    'Essa característica não é revertível.') ||
                   (data.too_late_to_revert &&
-                    "It's too late to revert station traits, the round has already started.")
+                    "É tarde demais para reverter os traços da estação, a rodada já começou.")
                 }
                 icon="times"
                 onClick={() =>
@@ -225,7 +225,7 @@ export const StationTraitsPanel = (props) => {
   }
 
   return (
-    <Window title="Modify Station Traits" height={500} width={500}>
+    <Window title="Modifique Traços da Estação" height={500} width={500}>
       <Window.Content scrollable>
         <Tabs>
           <Tabs.Tab

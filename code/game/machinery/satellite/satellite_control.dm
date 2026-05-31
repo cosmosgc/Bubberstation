@@ -1,6 +1,6 @@
 /obj/machinery/computer/sat_control
 	name = "satellite control"
-	desc = "Used to control the satellite network."
+	desc = "Usado para controlar a rede de satélite."
 	circuit = /obj/item/circuitboard/computer/sat_control
 	var/notice
 
@@ -27,7 +27,7 @@
 		if(satellite.id != toggled_id)
 			continue
 		if(satellite.obj_flags & EMAGGED)
-			to_chat(usr, span_warning("The satellite doesn't seem to respond...?"))
+			to_chat(usr, span_warning("O satélite não parece responder...?"))
 			return
 		if(is_valid_z_level(get_turf(satellite), current_turf))
 			satellite.toggle()

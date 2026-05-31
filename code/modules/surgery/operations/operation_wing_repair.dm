@@ -1,8 +1,8 @@
 /datum/surgery_operation/organ/fix_wings
 	name = "repair wings"
 	rnd_name = "Pteroplasty (Wing Repair)"
-	desc = "Repair a patient's damaged wings to restore flight capability."
-	rnd_desc = "A surgical procedure that repairs damaged wings using Synthflesh."
+	desc = "Reparar as asas danificadas de um paciente para restaurar a capacidade de vôo."
+	rnd_desc = "Um procedimento cirúrgico que repara asas danificadas usando Synthflesh."
 	implements = list(
 		TOOL_HEMOSTAT = 1.15,
 		TOOL_SCREWDRIVER = 2.85,
@@ -38,9 +38,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You begin to repair [organ.owner]'s damaged wings..."),
-		span_notice("[surgeon] begins to repair [organ.owner]'s damaged wings."),
-		span_notice("[surgeon] begins to perform surgery on [organ.owner]'s damaged wings."),
+		span_notice("Você começa a reparar[organ.owner]Asas danificadas..."),
+		span_notice("[surgeon]começa a reparar[organ.owner]Asas danificadas."),
+		span_notice("[surgeon]Começa a operar em[organ.owner]Asas danificadas."),
 	)
 	display_pain(organ.owner, "Your wings sting like hell!")
 
@@ -48,9 +48,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You succeed in repairing [organ.owner]'s wings."),
-		span_notice("[surgeon] successfully repairs [organ.owner]'s wings!"),
-		span_notice("[surgeon] completes the surgery on [organ.owner]'s wings."),
+		span_notice("Você consegue consertar.[organ.owner]As asas."),
+		span_notice("[surgeon]Consertar com sucesso.[organ.owner]Asas!"),
+		span_notice("[surgeon]completa a cirurgia em[organ.owner]As asas."),
 	)
 	display_pain(organ.owner, "You can feel your wings again!")
 	// heal the wings in question

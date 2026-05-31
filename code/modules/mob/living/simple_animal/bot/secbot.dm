@@ -1,6 +1,6 @@
 /mob/living/simple_animal/bot/secbot
 	name = "\improper Securitron"
-	desc = "A little security robot. He looks less than thrilled."
+	desc = "Um robô de segurança. Ele parece menos do que entusiasmado."
 	icon = 'icons/mob/silicon/aibots.dmi'
 	icon_state = "secbot"
 	light_color = "#f56275"
@@ -23,7 +23,7 @@
 	data_hud_type = TRAIT_SECURITY_HUD
 	hackables = "target identification systems"
 	path_image_color = COLOR_RED
-	possessed_message = "You are a securitron! Guard the station to the best of your ability!"
+	possessed_message = "Você é um securitron! Protejam a estação o melhor que puderem!"
 
 	automated_announcements = list(
 		BEEPSKY_VOICED_CRIMINAL_DETECTED = 'sound/mobs/non-humanoids/beepsky/criminal.ogg',
@@ -71,14 +71,14 @@
 
 /mob/living/simple_animal/bot/secbot/beepsky
 	name = "Commander Beep O'sky"
-	desc = "It's Commander Beep O'sky! Officially the superior officer of all bots on station, Beepsky remains as humble and dedicated to the law as the day he was first fabricated."
+	desc = "É o Comandante Beep O'sky! Oficialmente o oficial superior de todos os bots na estação, Beepsky permanece tão humilde e dedicado à lei como no dia em que foi fabricado."
 	bot_mode_flags = BOT_MODE_ON | BOT_MODE_AUTOPATROL | BOT_MODE_REMOTE_ENABLED
 	commissioned = TRUE
 
 
 /mob/living/simple_animal/bot/secbot/beepsky/officer
 	name = "Officer Beepsky"
-	desc = "It's Officer Beepsky! Powered by a potato and a shot of whiskey, and with a sturdier reinforced chassis, too."
+	desc = "É o policial Beepsky! Alimentado por uma batata e uma dose de uísque, e com um chassis reforçado mais resistente, também."
 	health = 45
 
 /mob/living/simple_animal/bot/secbot/beepsky/officer/Initialize(mapload)
@@ -88,19 +88,19 @@
 
 /mob/living/simple_animal/bot/secbot/beepsky/ofitser
 	name = "Prison Ofitser"
-	desc = "Powered by the tears and sweat of laborers."
+	desc = "Alimentado pelas lágrimas e suor dos trabalhadores."
 	bot_mode_flags = ~(BOT_MODE_CAN_BE_SAPIENT|BOT_MODE_AUTOPATROL)
 
 /mob/living/simple_animal/bot/secbot/beepsky/armsky
 	name = "Sergeant-At-Armsky"
-	desc = "It's Sergeant-At-Armsky! He's a disgruntled assistant to the warden that would probably shoot you if he had hands."
+	desc = "É o Sargento Armsky! Ele é um assistente descontente do diretor que provavelmente atiraria em você se tivesse mãos."
 	health = 45
 	bot_mode_flags = ~(BOT_MODE_CAN_BE_SAPIENT|BOT_MODE_AUTOPATROL)
 	security_mode_flags = SECBOT_DECLARE_ARRESTS | SECBOT_CHECK_IDS | SECBOT_CHECK_RECORDS | SECBOT_CHECK_WEAPONS
 
 /mob/living/simple_animal/bot/secbot/beepsky/jr
 	name = "Officer Pipsqueak"
-	desc = "It's Commander Beep O'sky's smaller, just-as aggressive cousin, Pipsqueak."
+	desc = "É o menor primo agressivo do Comandante Beep O'sky, Pipsqueak."
 	commissioned = FALSE
 
 /mob/living/simple_animal/bot/secbot/beepsky/jr/Initialize(mapload)
@@ -109,7 +109,7 @@
 
 /mob/living/simple_animal/bot/secbot/pingsky
 	name = "Officer Pingsky"
-	desc = "It's Officer Pingsky! Delegated to satellite guard duty for harbouring anti-human sentiment."
+	desc = "É o oficial Pingsky! Delegada à guarda por satélite por abrigar sentimentos anti-humanos."
 	light_color = "#62baf5"
 	radio_channel = RADIO_CHANNEL_AI_PRIVATE
 	bot_mode_flags = ~(BOT_MODE_CAN_BE_SAPIENT|BOT_MODE_AUTOPATROL)
@@ -117,7 +117,7 @@
 
 /mob/living/simple_animal/bot/secbot/genesky
 	name = "Officer Genesky"
-	desc = "A beefy variant of the standard securitron model."
+	desc = "Uma variante do modelo padrão de securitron."
 	health = 50
 	faction = list(FACTION_NANOTRASEN_PRIVATE)
 	bot_mode_flags = BOT_MODE_ON
@@ -185,7 +185,7 @@
 		base_speed += 3
 		addtimer(VARSET_CALLBACK(src, base_speed, base_speed - 3), 6 SECONDS)
 		playsound(src, 'sound/machines/defib/defib_zap.ogg', 50)
-		visible_message(span_warning("[src] shakes and speeds up!"))
+		visible_message(span_warning("[src]Treme e acelera!"))
 
 /mob/living/simple_animal/bot/secbot/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -264,8 +264,7 @@
 
 		// Turns an oversight into a feature. Beepsky will now announce when pacifists taunt him over sec comms.
 		if(HAS_TRAIT(user, TRAIT_PACIFISM))
-			user.visible_message(span_notice("[user] taunts [src], daring [p_them()] to give chase!"), \
-				span_notice("You taunt [src], daring [p_them()] to chase you!"), span_hear("You hear someone shout a daring taunt!"), DEFAULT_MESSAGE_RANGE, user)
+			user.visible_message(span_notice("[user]Gozos.[src], ousado[p_them()]Perseguidor!"), 				span_notice("Você zomba[src], ousado[p_them()]Perseguir você!"), span_hear("Você ouve alguém gritar uma provocação ousada!"), DEFAULT_MESSAGE_RANGE, user)
 			speak("Taunted by pacifist scumbag [RUNECHAT_BOLD("[user]")] in [get_area(src)].", radio_channel)
 
 			// Interrupt the attack chain. We've already handled this scenario for pacifists.
@@ -288,14 +287,14 @@
 	if(!(bot_cover_flags & BOT_COVER_EMAGGED))
 		return
 	if(user)
-		balloon_alert(user, "target assessment circuits shorted")
+		balloon_alert(user, "Circuitos de avaliação de alvos encurtados.")
 		oldtarget_name = user.name
 
 	if(bot_type == HONK_BOT)
-		audible_message(span_danger("[src] gives out an evil laugh!"))
+		audible_message(span_danger("[src]Dá uma risada do mal!"))
 		playsound(src, 'sound/mobs/non-humanoids/honkbot/honkbot_evil_laugh.ogg', 75, TRUE, -1) // evil laughter
 	else
-		audible_message(span_danger("[src] buzzes oddly!"))
+		audible_message(span_danger("[src]Que estranho!"))
 
 	security_mode_flags &= ~SECBOT_DECLARE_ARRESTS
 	update_appearance()
@@ -336,8 +335,7 @@
 /mob/living/simple_animal/bot/secbot/proc/start_handcuffing(mob/living/carbon/current_target)
 	mode = BOT_ARREST
 	playsound(src, 'sound/items/weapons/cablecuff.ogg', 30, TRUE, -2)
-	current_target.visible_message(span_danger("[src] is trying to put zipties on [current_target]!"),\
-						span_userdanger("[src] is trying to put zipties on you!"))
+	current_target.visible_message(span_danger("[src]Está tentando colocar zíperes[current_target]!"),						span_userdanger("[src]Está tentando colocar zíperes em você!"))
 	addtimer(CALLBACK(src, PROC_REF(handcuff_target), current_target), 6 SECONDS)
 
 /mob/living/simple_animal/bot/secbot/proc/handcuff_target(mob/living/carbon/current_target)
@@ -375,8 +373,7 @@
 	if(security_mode_flags & SECBOT_DECLARE_ARRESTS)
 		var/area/location = get_area(src)
 		speak("[security_mode_flags & SECBOT_HANDCUFF_TARGET ? "Arresting" : "Detaining"] level [threat] scumbag [RUNECHAT_BOLD("[current_target]")] in [location].", radio_channel)
-	current_target.visible_message(span_danger("[src] stuns [current_target]!"),\
-							span_userdanger("[src] stuns you!"))
+	current_target.visible_message(span_danger("[src]ATORDOAMENTOS[current_target]!"),							span_userdanger("[src]Te atordoa!"))
 
 	target_lastloc = current_target.loc
 	mode = BOT_PREP_ARREST
@@ -505,7 +502,7 @@
 		target = nearby_carbons
 		oldtarget_name = nearby_carbons.name
 		threat_react(threatlevel)
-		visible_message("<b>[src]</b> points at [nearby_carbons.name]!")
+		visible_message("<b>[src]</b>Pontos em[nearby_carbons.name]!")
 		mode = BOT_HUNT
 		INVOKE_ASYNC(src, PROC_REF(handle_automated_action))
 		break

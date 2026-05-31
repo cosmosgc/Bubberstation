@@ -52,10 +52,8 @@
 
 /datum/heretic_knowledge/limited_amount/starting/base_rust
 	name = "Blacksmith's Tale"
-	desc = "Opens up the Path of Rust to you. \
-		Allows you to transmute a knife with any trash item into a Rusty Blade. \
-		You can only create two at a time."
-	gain_text = "\"Let me tell you a story\", said the Blacksmith, as he gazed deep into his rusty blade."
+	desc = "Abre o caminho da Rust para você. Permite que transmute uma faca com qualquer item de lixo em uma lâmina Rusty. Você só pode criar dois de cada vez."
+	gain_text = "\"Deixe-me contar uma história.\", disse o ferreiro, enquanto ele olhava profundamente em sua lâmina enferrujada."
 	required_atoms = list(
 		/obj/item/knife = 1,
 		/obj/item/trash = 1,
@@ -104,8 +102,8 @@
 
 /datum/heretic_knowledge/spell/rust_charge
 	name = "Rust Charge"
-	desc = "A charge that must be started on a rusted tile and will destroy any rusted objects you come into contact with, will deal high damage to others and rust around you during the charge."
-	gain_text = "The hills sparkled now, as I neared them my mind began to wander. I quickly regained my resolve and pushed forward, this last leg would be the most treacherous."
+	desc = "Uma carga que deve ser iniciada em uma telha enferrujada e destruirá quaisquer objetos enferrujados que você entrar em contato, lidará com altos danos aos outros e enferrujará ao seu redor durante a carga."
+	gain_text = "As colinas brilhavam agora, enquanto eu me aproximava deles minha mente começou a vaguear. Rapidamente recuperei minha determinação e avancei, esta última perna seria a mais traiçoeira."
 
 	action_to_add = /datum/action/cooldown/mob_cooldown/charge/rust
 	cost = 2
@@ -113,19 +111,14 @@
 
 /datum/heretic_knowledge/spell/rust_construction
 	name = "Rust Construction"
-	desc = "Grants you Rust Construction, a spell that allows you to raise a wall out of a rusted floor. \
-		Anyone overtop the wall will be throw aside (or upwards) and sustain damage."
-	gain_text = "Images of foreign and ominous structures began to dance in my mind. Covered head to toe in thick rust, \
-		they no longer looked man made. Or perhaps they never were in the first place."
+	desc = "Concede-lhe Rust Construction, um feitiço que permite levantar uma parede de um chão enferrujado. Qualquer um acima da parede será jogado de lado (ou para cima) e manter danos."
+	gain_text = "Imagens de estruturas estranhas e sinistros começaram a dançar em minha mente. Cobertos de cabeça aos pés em espessa ferrugem, eles não pareciam mais homens feitos. Ou talvez nunca tenham sido."
 	action_to_add = /datum/action/cooldown/spell/pointed/rust_construction
 	cost = 2
 
 /datum/heretic_knowledge/armor/rust
-	desc = "Allows you to transmute a table (or a suit), a mask and any trash item to create a Salvaged Remains. \
-			Has extra armor, tackle resistance and syringe immunity while standing on rust. \
-			Acts as a focus while hooded."
-	gain_text = "From beneath warped scrap, the Blacksmith pulls forth an ancient fabric. \
-				\"Whatever this once stood for is lost. So now, we give it new purpose.\""
+	desc = "Permite que transmute uma mesa (ou um terno), uma máscara e qualquer item de lixo para criar um Restos Salvados. Tem armadura extra, resistência e imunidade da seringa enquanto está na ferrugem. Atua como foco enquanto encapuza."
+	gain_text = "De baixo de sucata deformada, o ferreiro puxa um tecido antigo.\"Seja lá o que isso já representou está perdido. Então, agora, damos um novo propósito.\""
 	result_atoms = list(/obj/item/clothing/suit/hooded/cultrobes/eldritch/rust)
 	research_tree_icon_state = "rust_armor"
 	required_atoms = list(
@@ -136,18 +129,16 @@
 
 /datum/heretic_knowledge/spell/area_conversion
 	name = "Aggressive Spread"
-	desc = "Grants you Aggressive Spread, a spell that spreads rust to nearby surfaces. \
-		Already rusted surfaces are destroyed \ Also improves the rusting abilities of non rust-heretics."
-	gain_text = "All wise men know well not to visit the Rusted Hills... Yet the Blacksmith's tale was inspiring."
+	desc = "Concede-lhe Agressive Spread, um feitiço que espalha ferrugem para superfícies próximas. Superfícies já enferrujadas são destruídas \ Também melhora as habilidades enferrujadas de não-heréticos ferrugem."
+	gain_text = "Todos os sábios sabem bem não visitar as Colinas Rusted... No entanto, o conto do ferreiro foi inspirador."
 	action_to_add = /datum/action/cooldown/spell/aoe/rust_conversion
 	cost = 2
 	research_tree_icon_frame = 5
 
 /datum/heretic_knowledge/blade_upgrade/rust
 	name = "Toxic Blade"
-	desc = "Your Rusty Blade now disgusts enemies on attack \ Allows you to rust Titanium and Plastitanium.."
-	gain_text = "The Blacksmith hands you their blade. \"The Blade will guide you through the flesh, should you let it.\" \
-		The heavy rust weights it down. You stare deeply into it. The Rusted Hills call for you, now."
+	desc = "Sua lâmina Rusty agora enoja inimigos no ataque \ Permite que você enferruje titânio e Plastânio.."
+	gain_text = "O ferreiro lhe dá a lâmina.\"A Lâmina te guiará através da carne, se deixar.\"A ferrugem pesada o reduz. Você olha profundamente para ele. As Colinas Rusted chamam por você, agora."
 	research_tree_icon_path = 'icons/ui_icons/antags/heretic/knowledge.dmi'
 	research_tree_icon_state = "blade_upgrade_rust"
 
@@ -161,11 +152,8 @@
 
 /datum/heretic_knowledge/spell/entropic_plume
 	name = "Entropic Plume"
-	desc = "Grants you Entropic Plume, a spell that releases a vexing wave of Rust. \
-		Blinds, poisons, and inflicts Amok on any heathen it hits, causing them to strike \
-		at friend or foe wildly. Also rusts and destroys and surfaces it hits and improves the rusting abilities of non-rust heretics."
-	gain_text = "The corrosion was unstoppable. The rust was unpleasable. \
-		The Blacksmith was gone, and you hold their blade. Champions of hope, the Rustbringer is nigh!"
+	desc = "Concede-lhe Plume Entropica, um feitiço que libera uma onda de Rust. Cegos, venenos e inflige Amok a qualquer pagão que acerte, fazendo com que ataquem amigos ou inimigos. Também ferrugem e destrói e superfícies que atinge e melhora as habilidades de ferrugem de hereges não-ferrugem."
+	gain_text = "A corrosão era imparável. A ferrugem era desagradável. O ferreiro se foi, e você segura a lâmina deles. Campeões da esperança, o Rustbringer está próximo!"
 
 	action_to_add = /datum/action/cooldown/spell/cone/staggered/entropic_plume
 	cost = 2
@@ -173,16 +161,11 @@
 
 /datum/heretic_knowledge/ultimate/rust_final
 	name = "Rustbringer's Oath"
-	desc = "The ascension ritual of the Path of Rust. \
-		Bring 3 corpses to a transmutation rune on the bridge of the station to complete the ritual. \
-		When completed, the ritual site will endlessly spread rust onto any surface, stopping for nothing. \
-		Additionally, you will become extremely resilient on rust, healing at triple the rate \
-		and becoming immune to many effects and dangers \ You will be able to rust almost anything upon ascending."
-	gain_text = "Champion of rust. Corruptor of steel. Fear the dark, for the RUSTBRINGER has come! \
-		The Blacksmith forges ahead! Rusted Hills, CALL MY NAME! WITNESS MY ASCENSION!"
+	desc = "O ritual de ascensão do Caminho da Rust. Traga 3 corpos para uma runa de transmutação na ponte da estação para completar o ritual. Quando concluído, o local ritual espalhará infinitamente ferrugem em qualquer superfície, parando por nada. Além disso, você se tornará extremamente resistente à ferrugem, curando ao triplo da taxa e tornando-se imune a muitos efeitos e perigos \ Você será capaz de enferrujar quase tudo ao subir."
+	gain_text = "Campeão da ferrugem. Corruptor de aço. Temam a escuridão, pois o RUSTBRINGER chegou! O ferreiro avança! Rusted Hills, chame meu nome! Testemunhe minha ascensão!"
 
 	ascension_achievement = /datum/award/achievement/misc/rust_ascension
-	announcement_text = "%SPOOKY% Fear the decay, for the Rustbringer, %NAME% has ascended! None shall escape the corrosion! %SPOOKY%"
+	announcement_text = "Medo da decadência, para o Rustbringer, Name subiu! Ninguém escapará da corrosão! SPOOKY"
 	announcement_sound = 'sound/music/antag/heretic/ascend_rust.ogg'
 	/// If TRUE, then immunities are currently active.
 	var/immunities_active = FALSE
@@ -217,7 +200,7 @@
 	if(ritual_location)
 		var/area/our_area = get_area(loc)
 		if(!istype(our_area, ritual_location))
-			loc.balloon_alert(user, "ritual failed, must be in [initial(ritual_location.name)]!") // "must be in bridge"
+			loc.balloon_alert(user, "ritual falhou, deve estar em[initial(ritual_location.name)]!") // "Deve estar na ponte."
 			return FALSE
 
 	return ..()

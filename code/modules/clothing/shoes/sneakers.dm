@@ -33,7 +33,7 @@
 
 /obj/item/clothing/shoes/sneakers/black
 	name = "black shoes"
-	desc = "A pair of black shoes."
+	desc = "Um par de sapos pretos."
 	flags_1 = parent_type::flags_1 | NO_NEW_GAGS_PREVIEW_1 // same icon/color as base type
 	custom_price = PAYCHECK_CREW
 
@@ -44,7 +44,7 @@
 
 /obj/item/clothing/shoes/sneakers/brown
 	name = "brown shoes"
-	desc = "A pair of brown shoes."
+	desc = "Um par de sapos castanhos."
 	icon_state = "/obj/item/clothing/shoes/sneakers/brown"
 	greyscale_colors = "#472c21#ffffff"
 
@@ -74,7 +74,7 @@
 
 /obj/item/clothing/shoes/sneakers/red
 	name = "red shoes"
-	desc = "Stylish red shoes."
+	desc = "Sapatos vermelhos elegantes."
 	icon_state = "/obj/item/clothing/shoes/sneakers/red"
 	greyscale_colors = "#a52f29#ffffff"
 
@@ -89,7 +89,7 @@
 
 /obj/item/clothing/shoes/sneakers/rainbow
 	name = "rainbow shoes"
-	desc = "Very gay shoes."
+	desc = "Sapatos muito gays."
 	icon = 'icons/obj/clothing/shoes.dmi'
 	icon_state = "rain_bow"
 	post_init_icon_state = null
@@ -149,7 +149,7 @@
 
 /obj/item/clothing/shoes/sneakers/orange/attack_self(mob/user)
 	if(attached_cuffs)
-		to_chat(user, span_notice("You remove [attached_cuffs] from [src]."))
+		to_chat(user, span_notice("Você tira.[attached_cuffs]De[src]."))
 		if(Adjacent(user)) //tk is love, tk is life.
 			user.put_in_hands(attached_cuffs)
 		else
@@ -170,7 +170,7 @@
 
 /obj/item/clothing/shoes/sneakers/orange/can_mob_unequip(mob/user)
 	if(user.get_item_by_slot(slot_flags) == src && attached_cuffs)
-		to_chat(user, span_warning("You need help taking these off!"))
+		to_chat(user, span_warning("Você precisa de ajuda para tirar isso!"))
 		return FALSE
 	return ..()
 
@@ -178,7 +178,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/c = user
 		if(c.shoes == src && attached_cuffs)
-			to_chat(c, span_warning("You need help taking these off!"))
+			to_chat(c, span_warning("Você precisa de ajuda para tirar isso!"))
 			return
 	return ..()
 
@@ -188,7 +188,7 @@
 	greyscale_colors = "#ffffff#ffffff"
 
 /obj/item/clothing/shoes/sneakers/marisa
-	desc = "A pair of magic black shoes."
+	desc = "Um par de sapatos pretos mágicos."
 	name = "magic shoes"
 	icon = 'icons/map_icons/clothing/shoes.dmi'
 	icon_state = "/obj/item/clothing/shoes/sneakers/marisa"
@@ -203,6 +203,6 @@
 
 /obj/item/clothing/shoes/sneakers/cyborg
 	name = "cyborg boots"
-	desc = "Shoes for a cyborg costume."
+	desc = "Sapatos para uma fantasia de ciborgue."
 	icon_state = "/obj/item/clothing/shoes/sneakers/cyborg"
 	greyscale_colors = "#4e4e4e#4e4e4e"

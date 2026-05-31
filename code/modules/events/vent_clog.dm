@@ -6,7 +6,7 @@
 	weight = 25
 	earliest_start = 5 MINUTES
 	category = EVENT_CATEGORY_JANITORIAL
-	description = "Harmless mobs climb out of a vent."
+	description = "Máfias inofensivas saem da ventilação."
 
 /datum/round_event_control/vent_clog/can_spawn_event(players_amt, allow_magic = FALSE)
 	. = ..()
@@ -153,7 +153,7 @@
 
 	var/mob/new_mob = new spawned_mob(vent_loc) // we spawn it early so we can actually use is_blocked_turf
 	living_mobs += WEAKREF(new_mob)
-	vent.visible_message(span_warning("[new_mob] crawls out of [vent]!"))
+	vent.visible_message(span_warning("[new_mob]Rasteja para fora[vent]!"))
 
 	var/list/potential_locations = list(vent_loc) // already confirmed to be accessable via the 2nd if check of the proc
 
@@ -178,7 +178,7 @@
 ///Handles the actual unclogging action and ends the event on completion.
 /datum/round_event/vent_clog/proc/attempt_unclog(mob/user)
 	if(vent.welded)
-		to_chat(user, span_notice("You cannot pump [vent] if it's welded shut!"))
+		to_chat(user, span_notice("Você não pode bombear.[vent]Se estiver soldada!"))
 		return
 
 	user.balloon_alert_to_viewers("plunging vent...", "plunging clogged vent...")
@@ -208,7 +208,7 @@
 	weight = 12
 	max_occurrences = 5
 	earliest_start = 10 MINUTES
-	description = "Dangerous mobs climb out of a vent."
+	description = "Máfias perigosas saem de uma ventilação."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 4
 
@@ -243,7 +243,7 @@
 	min_players = 15
 	max_occurrences = 3
 	earliest_start = 25 MINUTES
-	description = "Really dangerous mobs climb out of a vent."
+	description = "Máfias perigosas saem de uma ventilação."
 	min_wizard_trigger_potency = 3
 	max_wizard_trigger_potency = 6
 
@@ -273,7 +273,7 @@
 	typepath = /datum/round_event/vent_clog/strange
 	weight = 5
 	max_occurrences = 2
-	description = "Strange mobs climb out of a vent, harmfulness varies."
+	description = "Múltiplas estranhas saem de um respiradouro, a nocividade varia."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 7
 

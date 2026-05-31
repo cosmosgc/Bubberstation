@@ -3,7 +3,7 @@
 
 /obj/item/clockwork/replica_fabricator
 	name = "replica fabricator"
-	desc = "A strange, brass device with many twisting cogs and vents."
+	desc = "Um estranho dispositivo de latão com muitas engrenagens e aberturas."
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
 	lefthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_righthand.dmi'
@@ -40,10 +40,10 @@
 	. = ..()
 	if(IS_CLOCK(user))
 		. += "[span_brass("Current power: ")][span_clockyellow("[power]")] [span_brass("J / ")][span_clockyellow("[max_power]")] [span_brass("J.")]"
-		. += span_brass("Use on brass to convert it into power.")
-		. += span_brass("Use on other materials to convert them into power, but less efficiently.")
-		. += span_brass("<b>Use</b> in-hand to select what to fabricate.")
-		. += span_brass("<b>Right Click</b> in-hand to fabricate bronze sheets.")
+		. += span_brass("Use em latão para convertê-lo em poder.")
+		. += span_brass("Use em outros materiais para convertê-los em energia, mas menos eficientemente.")
+		. += span_brass("<b>Use</b>Na mão para selecionar o que fabricar.")
+		. += span_brass("<b>Clique Direito</b>Na mão para fabricar folhas de bronze.")
 
 
 /obj/item/clockwork/replica_fabricator/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -60,11 +60,11 @@
 	var/turf/creation_turf = get_turf(interacting_with)
 
 	if(locate(selected_output.to_create_path) in creation_turf)
-		to_chat(user, span_clockyellow("There is already one of these on this tile!"))
+		to_chat(user, span_clockyellow("Já tem um desses nesse azulejo!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(power < selected_output.cost)
-		to_chat(user, span_clockyellow("[src] needs at least [selected_output.cost]W of power to create this."))
+		to_chat(user, span_clockyellow("[src]Precisa pelo menos[selected_output.cost]W de poder para criar isso."))
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/effect/temp_visual/ratvar/constructing_effect/effect = new(creation_turf, selected_output.creation_delay)
@@ -101,7 +101,7 @@
 		return
 
 	if(power < BRASS_POWER_COST)
-		to_chat(user, span_clockyellow("You need at least [display_energy(BRASS_POWER_COST)] of power to fabricate bronze."))
+		to_chat(user, span_clockyellow("Você precisa pelo menos[display_energy(BRASS_POWER_COST)]De poder para fabricar bronze."))
 		return
 
 	var/sheets = tgui_input_number(user, "How many sheets do you want to fabricate?", "Sheet Fabrication", 0, round(power / BRASS_POWER_COST), 0)
@@ -113,7 +113,7 @@
 	var/obj/item/stack/sheet/bronze/sheet_stack = new(null, sheets)
 	user.put_in_hands(sheet_stack)
 	playsound(src, 'sound/machines/click.ogg', 50, 1)
-	to_chat(user, span_clockyellow("You fabricate [sheets] bronze."))
+	to_chat(user, span_clockyellow("Você fabrica[sheets]Bronze."))
 
 
 /obj/item/clockwork/replica_fabricator/attack_self(mob/user, modifiers)
@@ -139,7 +139,7 @@
 /// Attempt to convert the targeted item into power, if it's a sheet item
 /obj/item/clockwork/replica_fabricator/proc/attempt_convert_materials(atom/attacking_item, mob/user)
 	if(power >= max_power)
-		to_chat(user, span_clockyellow("[src] is already at maximum power!"))
+		to_chat(user, span_clockyellow("[src]Já está na potência máxima!"))
 		return
 
 	if(istype(attacking_item, /obj/item/stack/sheet/bronze))
@@ -149,7 +149,7 @@
 			var/amount_to_take = clamp(round((max_power - power) / BRASS_POWER_COST), 0, bronze_stack.amount)
 
 			if(!amount_to_take)
-				to_chat(user, span_clockyellow("[src] can't be powered further using this!"))
+				to_chat(user, span_clockyellow("[src]Não podemos mais usar isso!"))
 				return
 
 			bronze_stack.use(amount_to_take)
@@ -160,7 +160,7 @@
 			qdel(bronze_stack)
 
 		playsound(src, 'sound/machines/click.ogg', 50, 1)
-		to_chat(user, span_clockyellow("You convert [bronze_stack.amount] bronze into [bronze_stack.amount * BRASS_POWER_COST] watts of power."))
+		to_chat(user, span_clockyellow("Você se converte.[bronze_stack.amount]bronze em[bronze_stack.amount * BRASS_POWER_COST]Watts de energia."))
 
 		return TRUE
 
@@ -171,7 +171,7 @@
 			var/amount_to_take = clamp(round((max_power - power) / REGULAR_POWER_COST), 0, stack.amount)
 
 			if(!amount_to_take)
-				to_chat(user, span_clockyellow("[src] can't be powered further using this!"))
+				to_chat(user, span_clockyellow("[src]Não podemos mais usar isso!"))
 				return
 
 			stack.use(amount_to_take)
@@ -182,7 +182,7 @@
 			qdel(stack)
 
 		playsound(src, 'sound/machines/click.ogg', 50, 1)
-		to_chat(user, span_clockyellow("You convert [stack.amount] [stack.name] into [stack.amount * REGULAR_POWER_COST] watts of power."))
+		to_chat(user, span_clockyellow("Você se converte.[stack.amount] [stack.name]Em[stack.amount * REGULAR_POWER_COST]Watts de energia."))
 
 		return TRUE
 
@@ -210,7 +210,7 @@
 /datum/replica_fabricator_output/proc/on_create(atom/created_atom, turf/creation_turf, mob/creator)
 	SHOULD_CALL_PARENT(TRUE)
 	playsound(creation_turf, 'sound/machines/clockcult/integration_cog_install.ogg', 50, 1) // better sound?
-	to_chat(creator, span_clockyellow("You create \an [name] for [display_energy(cost)] of power."))
+	to_chat(creator, span_clockyellow("Você cria\an [name]Para[display_energy(cost)]De Poder."))
 
 
 /datum/replica_fabricator_output/brass_floor

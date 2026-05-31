@@ -1,14 +1,14 @@
 
 /datum/action/cooldown/spell/list_target/telepathy
 	name = "Telepathy"
-	desc = "Telepathically transmits a message to the target."
+	desc = "Telepaticamente transmite uma mensagem para o alvo."
 	button_icon = 'icons/mob/actions/actions_revenant.dmi'
 	button_icon_state = "r_transmit"
 
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
 	antimagic_flags = MAGIC_RESISTANCE_MIND
 
-	choose_target_message = "Choose a target to whisper to."
+	choose_target_message = "Escolha um alvo para sussurrar."
 
 	/// The message we send to the next person via telepathy.
 	var/message
@@ -27,7 +27,7 @@
 		return . | SPELL_CANCEL_CAST
 
 	if(get_dist(cast_on, owner) > target_radius)
-		owner.balloon_alert(owner, "they're too far!")
+		owner.balloon_alert(owner, "Eles estão muito longe!")
 		return . | SPELL_CANCEL_CAST
 
 	if(!message)
@@ -42,16 +42,16 @@
 
 	var/failure_message_for_ghosts = ""
 
-	to_chat(owner, "<span class='[bold_telepathy_span]'>You transmit to [cast_on]:</span> [formatted_message]")
+	to_chat(owner, "<span class='[bold_telepathy_span]'>Você transmite para[cast_on]:</span> [formatted_message]")
 	/* BUBBER EDIT REMOVAL START
 	if(!cast_on.can_block_magic(antimagic_flags, charge_cost = 0)) //hear no evil
 	*/ //BUBBER EDIT REMOVAL END
 	if(!cast_on.can_block_magic(antimagic_flags, charge_cost = 0) && !(HAS_TRAIT(cast_on, TRAIT_PSIONIC_DAMPENER))) // BUBBER EDIT ADDITION
 		cast_on.balloon_alert(cast_on, "você ouve uma voz")
-		to_chat(cast_on, "<span class='[bold_telepathy_span]'>You hear a voice in your head...</span> [formatted_message]")
+		to_chat(cast_on, "<span class='[bold_telepathy_span]'>Você ouve uma voz em sua cabeça...</span> [formatted_message]")
 	else
-		owner.balloon_alert(owner, "transmission blocked!")
-		to_chat(owner, span_warning("Something has blocked your transmission!"))
+		owner.balloon_alert(owner, "transmissão bloqueada!")
+		to_chat(owner, span_warning("Algo bloqueou sua transmissão!"))
 		failure_message_for_ghosts = "<span class='[bold_telepathy_span]'> (blocked by antimagic)</span>"
 
 	for(var/mob/dead/ghost as anything in GLOB.dead_mob_list)

@@ -1,6 +1,6 @@
 /obj/machinery/posialert
 	name = "automated positronic alert console"
-	desc = "A console that will ping when a positronic personality is available for download."
+	desc = "Um console que tocará quando uma personalidade positrônica estiver disponível para download."
 	icon = 'modular_skyrat/modules/positronic_alert_console/icons/terminals.dmi'
 	icon_state = "posialert"
 	// to create a cooldown so if roboticists are tired of ghosts
@@ -19,9 +19,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/posialert, 28)
 /obj/machinery/posialert/examine(mob/user)
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, robotics_cooldown))
-		. += span_notice("Remaining time on mute is [COOLDOWN_TIMELEFT(src, robotics_cooldown) * 0.1] seconds.")
-		. += span_notice("Mute reason: [mute_reason]")
-	. += span_notice("Press the screen to mute or unmute the console.")
+		. += span_notice("O tempo restante em silêncio é[COOLDOWN_TIMELEFT(src, robotics_cooldown) * 0.1]segundos.")
+		. += span_notice("Razão Muda:[mute_reason]")
+	. += span_notice("Pressione a tela para silenciar ou soltar o console.")
 
 /obj/machinery/posialert/Initialize(mapload)
 	. = ..()
@@ -38,24 +38,24 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/posialert, 28)
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, robotics_cooldown))
 		COOLDOWN_RESET(src, robotics_cooldown)
-		to_chat(user, span_notice("You have removed the mute on [src]."))
+		to_chat(user, span_notice("Você removeu o mudo.[src]."))
 		return
 	mute_reason = null
 	mute_reason = stripped_input(user, "What would the reason for the mute be? (max characters is 20)", "Mute Reason", "", 20)
 	if(!mute_reason)
-		to_chat(user, span_warning("[src] requires a reason to mute!"))
+		to_chat(user, span_warning("[src]requer uma razão para se calar!"))
 		return
 	COOLDOWN_START(src, robotics_cooldown, 5 MINUTES)
-	to_chat(user, span_notice("You have muted [src] for five minutes."))
+	to_chat(user, span_notice("Você se calou.[src]Por cinco minutos."))
 
 /obj/machinery/posialert/attack_ghost(mob/user)
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, robotics_cooldown))
-		to_chat(user, span_warning("[src] has been muted! Remaining time on mute is [COOLDOWN_TIMELEFT(src, robotics_cooldown) * 0.1] seconds."))
-		to_chat(user, span_warning("[src]'s mute reason: [mute_reason]"))
+		to_chat(user, span_warning("[src]Foi silenciado! O tempo restante em silêncio é[COOLDOWN_TIMELEFT(src, robotics_cooldown) * 0.1]segundos."))
+		to_chat(user, span_warning("[src]A razão muda:[mute_reason]"))
 		return
 	if(!COOLDOWN_FINISHED(src, ghost_cooldown))
-		to_chat(user, span_warning("[src] is currently still on cooldown! Remaining time on cooldown is [COOLDOWN_TIMELEFT(src, ghost_cooldown) * 0.1] seconds."))
+		to_chat(user, span_warning("[src]No momento, ainda está em repouso! O tempo restante na refrigeração é[COOLDOWN_TIMELEFT(src, ghost_cooldown) * 0.1]segundos."))
 		return
 	COOLDOWN_START(src, ghost_cooldown, 30 SECONDS)
 	flick("posialertflash",src)

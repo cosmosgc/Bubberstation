@@ -134,7 +134,7 @@ function Controls() {
             <Box
               lineHeight={1.9}
               style={{
-                textShadow: '1px 1px 0 black',
+                textShadow: '1px 1px 0 preto',
               }}
             >
               {`${parseFloat(biomass.toFixed(2))} units`}
@@ -166,7 +166,7 @@ function Controls() {
               <Box
                 lineHeight={1.9}
                 style={{
-                  textShadow: '1px 1px 0 black',
+                  textShadow: '1px 1px 0 preto',
                 }}
               >
                 {`${beakerCurrentVolume} of ${beakerMaxVolume} units`}

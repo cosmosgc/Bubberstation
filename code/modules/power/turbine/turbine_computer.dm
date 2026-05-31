@@ -1,6 +1,6 @@
 /obj/machinery/computer/turbine_computer
 	name = "gas turbine control computer"
-	desc = "A computer to remotely control a gas turbine."
+	desc = "Um computador para controlar remotamente uma turbina a gás."
 	icon_screen = "turbinecomp"
 	icon_keyboard = "tech_key"
 	circuit = /obj/item/circuitboard/computer/turbine_computer
@@ -23,16 +23,16 @@
 /obj/machinery/computer/turbine_computer/multitool_act(mob/living/user, obj/item/multitool/multitool)
 	. = ITEM_INTERACT_FAILURE
 	if(!istype(multitool.buffer, /obj/machinery/power/turbine/core_rotor))
-		to_chat(user, span_notice("Wrong machine type in [multitool] buffer..."))
+		to_chat(user, span_notice("Tipo máquina errada em[multitool]Tampão..."))
 		return
 	if(turbine_core)
-		to_chat(user, span_notice("Changing [src] bluespace network..."))
+		to_chat(user, span_notice("Mudando[src]Rede bluespace..."))
 	if(!do_after(user, 0.2 SECONDS, src))
 		return
 
 	playsound(get_turf(user), 'sound/machines/click.ogg', 10, TRUE)
 	register_machine(multitool.buffer)
-	to_chat(user, span_notice("You link [src] to the console in [multitool]'s buffer."))
+	to_chat(user, span_notice("Você liga.[src]Para o console em[multitool]É um amortecedor."))
 	return ITEM_INTERACT_SUCCESS
 
 /**

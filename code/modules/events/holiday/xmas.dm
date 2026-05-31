@@ -2,14 +2,14 @@
 	name = "xmas cracker"
 	icon = 'icons/obj/holiday/christmas.dmi'
 	icon_state = "cracker"
-	desc = "Directions for use: Requires two people, one to pull each end."
+	desc = "Instruções para uso: requer duas pessoas, uma para puxar cada extremidade."
 	w_class = WEIGHT_CLASS_TINY
 	/// The crack state of the toy. If set to TRUE, you can no longer crack it by attacking.
 	var/cracked = FALSE
 
 /obj/item/toy/xmas_cracker/attack(mob/target, mob/user)
 	if( !cracked && ishuman(target) && (target.stat == CONSCIOUS) && !target.get_active_held_item() )
-		target.visible_message(span_notice("[user] and [target] pop \an [src]! *pop*"), span_notice("You pull \an [src] with [target]! *pop*"), span_hear("You hear a pop."))
+		target.visible_message(span_notice("[user]E[target]Pop.\an [src]Pop"), span_notice("Você puxa.\an [src]Com[target]Pop"), span_hear("Você ouve um estouro."))
 		var/obj/item/paper/joke_paper = new /obj/item/paper(user.loc)
 		joke_paper.name = "[pick("awful","terrible","unfunny")] joke"
 		joke_paper.add_raw_text(pick("What did one snowman say to the other?\n\n<i>'Is it me or can you smell carrots?'</i>",
@@ -38,7 +38,7 @@
 /obj/item/clothing/head/costume/festive
 	name = "festive paper hat"
 	icon_state = "xmashat"
-	desc = "A crappy paper hat that you are REQUIRED to wear."
+	desc = "Um chapéu de papel que você precisa usar."
 	flags_inv = 0
 	armor_type = /datum/armor/none
 	dog_fashion = /datum/dog_fashion/head/festive
@@ -75,7 +75,7 @@
 	max_occurrences = 1
 	earliest_start = 30 MINUTES
 	category = EVENT_CATEGORY_HOLIDAY
-	description = "Spawns Santa, who shall roam the station, handing out gifts."
+	description = "Spawns Noel, que deve vagar pela estação, distribuindo presentes."
 
 /datum/round_event/ghost_role/santa
 	role_name = "Santa"

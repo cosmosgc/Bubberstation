@@ -5,7 +5,7 @@
 	max_occurrences = 3
 	min_players = 10
 	category = EVENT_CATEGORY_ENTITIES
-	description = "Kudzu begins to overtake the station. Might spawn man-traps."
+	description = "Kudzu começa a ultrapassar a estação. Pode gerar armadilhas humanas."
 	min_wizard_trigger_potency = 4
 	max_wizard_trigger_potency = 7
 	admin_setup = list(
@@ -73,17 +73,17 @@
 	new /datum/spacevine_controller(floor, selected_mutations, potency, production, src) //spawn a controller at turf with randomized stats and a single random mutation
 
 /datum/event_admin_setup/set_location/spacevine
-	input_text = "Spawn vines at current location?"
+	input_text = "Vinhedos não tem horário local?"
 
 /datum/event_admin_setup/set_location/spacevine/apply_to_event(datum/round_event/spacevine/event)
 	event.override_turf = chosen_turf
 
 /datum/event_admin_setup/multiple_choice/spacevine
-	input_text = "Select starting mutations."
+	input_text = "Selecione mutações iniciais."
 	min_choices = 0
 
 /datum/event_admin_setup/multiple_choice/spacevine/prompt_admins()
-	var/customize_mutations = tgui_alert(usr, "Select mutations?", event_control.name, list("Custom", "Random", "Cancel"))
+	var/customize_mutations = tgui_alert(usr, "Selecionar mutações?", event_control.name, list("Custom", "Random", "Cancel"))
 	switch(customize_mutations)
 		if("Custom")
 			return ..()
@@ -103,7 +103,7 @@
 	event.override_mutations = type_choices
 
 /datum/event_admin_setup/input_number/spacevine_potency
-	input_text = "Set vine's potency (effects mutation frequency + max severity)"
+	input_text = "Ajuste a potência da videira (efeitos frequência de mutação + gravidade máxima)"
 	max_value = 100
 
 /datum/event_admin_setup/input_number/spacevine_potency/prompt_admins()
@@ -114,7 +114,7 @@
 	event.potency = chosen_value
 
 /datum/event_admin_setup/input_number/spacevine_production
-	input_text = "Set vine's production (effects spreading cap + speed) (lower is faster)"
+	input_text = "Coloque a produção da videira (efeitos espalhando a tampa + velocidade)"
 	min_value = 1
 	max_value = 10
 

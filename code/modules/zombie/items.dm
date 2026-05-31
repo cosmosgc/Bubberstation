@@ -1,9 +1,6 @@
 /obj/item/mutant_hand/zombie
 	name = "zombie claw"
-	desc = "A zombie's claw is its primary tool, capable of infecting \
-		humans, butchering all other living things to \
-		sustain the zombie, smashing open airlock doors and opening \
-		child-safe caps on bottles."
+	desc = "A garra de um zumbi é sua principal ferramenta, capaz de infectar humanos, massacrando todas as outras coisas vivas para sustentar o zumbi, quebrando portas abertas e abrindo tampas seguras para crianças em garrafas."
 
 	hitsound = 'sound/effects/hallucinations/growl1.ogg'
 	force = 21 // Just enough to break airlocks with melee attacks
@@ -68,10 +65,10 @@
 	if(!infection)
 		infection = new()
 		infection.Insert(target)
-		to_chat(user, span_alien("You see [target] twitch for a moment as [target.p_their()] head is covered in \a [infection] - [target.p_Theyve()] been infected."))
+		to_chat(user, span_alien("Viu?[target]Estremeça por um momento.[target.p_their()]A cabeça está coberta de\a [infection] - [target.p_Theyve()]foi infectado."))
 
 /obj/item/mutant_hand/zombie/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is ripping [user.p_their()] brains out! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]está rasgando[user.p_their()]Cérebros para fora! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	var/obj/item/bodypart/head = user.get_bodypart(BODY_ZONE_HEAD)
 	if(head)
 		head.dismember()

@@ -123,14 +123,8 @@ SUBSYSTEM_DEF(dynamic)
 		for(var/job in job_prefs)
 			var/priority = job_prefs[job]
 			job_data += "[job]: [SSjob.job_priority_level_to_string(priority)]"
-		to_chat(player, span_danger("You were unable to qualify for any roundstart antagonist role this round \
-			because your job preferences presented a high chance of all of your selected jobs being unavailable, \
-			along with 'return to lobby if job is unavailable' enabled. \
-			Increase the number of roles set to medium or low priority to reduce the chances of this happening."))
-		log_admin("[player.ckey] failed to qualify for any roundstart antagonist role \
-			because their job preferences presented a high chance of all of their selected jobs being unavailable, \
-			along with 'return to lobby if job is unavailable' enabled and has [player.client.prefs.be_special.len] antag preferences enabled. \
-			They will be unable to qualify for any roundstart antagonist role. These are their job preferences - [job_data.Join(" | ")]")
+		to_chat(player, span_danger("Você não foi capaz de se qualificar para qualquer papel antagonista de roundstart nesta rodada porque suas preferências de trabalho apresentaram uma grande chance de todos os seus trabalhos selecionados estarem indisponíveis, junto com 'retorno ao lobby se o trabalho não estiver disponível' habilitado. Aumente o número de papéis definidos para média ou baixa prioridade para reduzir as chances de isso acontecer."))
+		log_admin("[player.ckey] failed to qualify for any roundstart antagonist role 			because their job preferences presented a high chance of all of their selected jobs being unavailable, 			along with 'return to lobby if job is unavailable' enabled and has [player.client.prefs.be_special.len] antag preferences enabled. 			They will be unable to qualify for any roundstart antagonist role. These are their job preferences - [job_data.Join(" | ")]")
 
 	var/num_real_players = length(antag_candidates)
 	// now select a tier (if admins didn't)
@@ -342,8 +336,7 @@ SUBSYSTEM_DEF(dynamic)
 	if(isnull(picked_ruleset))
 		log_dynamic("Midround ([range]): No rulesets to pick from!")
 		return FALSE
-	message_admins("Midround ([range]): Executing [picked_ruleset.config_tag] \
-		[MIDROUND_CANCEL_HREF()] [MIDROUND_REROLL_HREF(rulesets_weighted)]")
+	message_admins("Midround ([range]): Executing [picked_ruleset.config_tag] 		[MIDROUND_CANCEL_HREF()] [MIDROUND_REROLL_HREF(rulesets_weighted)]")
 	// if we have admins online, we have a waiting period before execution to allow them to cancel or reroll
 	if(length(GLOB.admins))
 		COOLDOWN_START(src, midround_admin_cancel_period, 15 SECONDS)
@@ -363,8 +356,7 @@ SUBSYSTEM_DEF(dynamic)
 					message_admins("Rerolling Midround ([range]): Failed to pick a new ruleset, cancelling instead!")
 					midround_admin_cancel = TRUE
 					continue
-				message_admins("Rerolling Midround ([range]): Executing [picked_ruleset.config_tag] - \
-					[length(rulesets_weighted) - 1] remaining rulesets in pool. [MIDROUND_CANCEL_HREF()] [MIDROUND_REROLL_HREF(rulesets_weighted)]")
+				message_admins("Rerolling Midround ([range]): Executing [picked_ruleset.config_tag] - 					[length(rulesets_weighted) - 1] remaining rulesets in pool. [MIDROUND_CANCEL_HREF()] [MIDROUND_REROLL_HREF(rulesets_weighted)]")
 			stoplag()
 
 	// NOTE: !! THIS CAN SLEEP !!
@@ -658,7 +650,7 @@ SUBSYSTEM_DEF(dynamic)
 		if(!check_rights(R_ADMIN) || midround_admin_reroll)
 			return
 		if(COOLDOWN_FINISHED(src, midround_admin_cancel_period))
-			to_chat(usr, span_alert("Too late!"))
+			to_chat(usr, span_alert("Tarde demais!"))
 			return
 		midround_admin_reroll = TRUE
 		message_admins(span_adminnotice("[key_name_admin(usr)] rerolled the queued midround ruleset."))
@@ -669,7 +661,7 @@ SUBSYSTEM_DEF(dynamic)
 		if(!check_rights(R_ADMIN) || midround_admin_cancel)
 			return
 		if(COOLDOWN_FINISHED(src, midround_admin_cancel_period))
-			to_chat(usr, span_alert("Too late!"))
+			to_chat(usr, span_alert("Tarde demais!"))
 			return
 		midround_admin_cancel = TRUE
 		message_admins(span_adminnotice("[key_name_admin(usr)] cancelled the queued midround ruleset."))

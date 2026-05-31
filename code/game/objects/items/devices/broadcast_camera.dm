@@ -3,7 +3,7 @@
 // Broadcasts its surroundings to entertainment monitors and its audio to entertainment radio channel
 /obj/item/broadcast_camera
 	name = "broadcast camera"
-	desc = "A large camera that streams its live feed and audio to entertainment monitors across the station, allowing everyone to watch the broadcast."
+	desc = "Uma grande câmera que transmite sua transmissão ao vivo e áudio para monitores de entretenimento através da estação, permitindo que todos assistam a transmissão."
 	desc_controls = "Right-click to change the broadcast name. Alt-click to toggle microphone."
 	icon = 'icons/obj/service/broadcast.dmi'
 	icon_state = "broadcast_cam0"
@@ -61,8 +61,8 @@
 
 /obj/item/broadcast_camera/examine(mob/user)
 	. = ..()
-	. += span_notice("Broadcast name is <b>[broadcast_name]</b>")
-	. += span_notice("The microphone is <b>[active_microphone ? "On" : "Off"]</b>")
+	. += span_notice("O nome da transmissão é<b>[broadcast_name]</b>")
+	. += span_notice("O microfone é<b>[active_microphone ? "On" : "Off"]</b>")
 
 /obj/item/broadcast_camera/on_enter_storage(datum/storage/master_storage)
 	. = ..()
@@ -116,7 +116,7 @@
 	active_microphone = !active_microphone
 
 	/// Text popup for letting the user know that the microphone has changed state
-	balloon_alert(user, "microphone [active_microphone ? "" : "de"]activated")
+	balloon_alert(user, "microfone[active_microphone ? "" : "de"]Ativado")
 
 	///If the radio exists as an object, set its state accordingly
 	if(active)

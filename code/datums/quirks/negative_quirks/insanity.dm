@@ -1,13 +1,11 @@
 /datum/quirk/insanity
 	name = "Reality Dissociation Syndrome"
-	desc = "You suffer from a severe disorder that causes very vivid hallucinations and trouble expressing your ideas. \
-		Mindbreaker toxin can suppress its effects, and you are immune to mindbreaker's hallucinogenic properties. \
-		THIS IS NOT A LICENSE TO GRIEF."
+	desc = "Você sofre de um distúrbio grave que causa alucinações muito vívidas e problemas para expressar suas ideias. A toxina destruidora de mentes pode suprimir seus efeitos, e você é imune às propriedades alucinogênicas do quebra-cabeças. Isto não é uma licença para o luto."
 	icon = FA_ICON_GRIN_TONGUE_WINK
 	value = -8
 	gain_text = span_userdanger("...")
-	lose_text = span_notice("You feel in tune with the world again.")
-	medical_record_text = "Patient suffers from acute Reality Dissociation Syndrome and experiences vivid hallucinations, and may have trouble speaking."
+	lose_text = span_notice("Você se sente em sintonia com o mundo novamente.")
+	medical_record_text = "O paciente sofre de síndrome de dissociação da realidade aguda e experimenta alucinações vívidas, e pode ter problemas para falar."
 	hardcore_value = 6
 	mail_goodies = list(/obj/item/storage/pill_bottle/lsdpsych)
 	/// Weakref to the trauma we give out

@@ -1,7 +1,6 @@
 /datum/action/cooldown/spell/pointed/dominate
 	name = "Dominate"
-	desc = "This spell dominates the mind of a lesser creature to the will of Nar'Sie, \
-		allying it only to her direct followers."
+	desc = "Este feitiço domina a mente de uma criatura menor à vontade de Nar'Sie, aliando-a apenas aos seus seguidores diretos."
 	background_icon_state = "bg_demon"
 	overlay_icon_state = "bg_demon_border"
 
@@ -40,8 +39,8 @@
 /datum/action/cooldown/spell/pointed/dominate/cast(mob/living/simple_animal/cast_on)
 	. = ..()
 	if(cast_on.can_block_magic(antimagic_flags))
-		to_chat(cast_on, span_warning("Your feel someone attempting to subject your mind to terrible machinations!"))
-		to_chat(owner, span_warning("[cast_on] resists your domination!"))
+		to_chat(cast_on, span_warning("Sente alguém tentando sujeitar sua mente a terríveis maquinações!"))
+		to_chat(owner, span_warning("[cast_on]resiste à sua dominação!"))
 		return FALSE
 
 	var/turf/cast_turf = get_turf(cast_on)

@@ -14,12 +14,12 @@ export const ProximitySensor = (props) => {
             <LabeledList.Item label="Status">
               <Button
                 icon={scanning ? 'lock' : 'unlock'}
-                content={scanning ? 'Armed' : 'Not Armed'}
+                content={scanning ? 'Armed' : 'Não Armado'}
                 selected={scanning}
                 onClick={() => act('scanning')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Detection Range">
+            <LabeledList.Item label="Alcance de detecção">
               <Button
                 icon="backward"
                 disabled={scanning}
@@ -35,7 +35,7 @@ export const ProximitySensor = (props) => {
           </LabeledList>
         </Section>
         <Section
-          title="Auto Arm"
+          title="Braço Automático"
           buttons={
             <Button
               icon={'clock-o'}

@@ -2,7 +2,7 @@
 
 /obj/machinery/chem_master
 	name = "\improper ChemMaster 3000"
-	desc = "Used to separate chemicals and distribute them in a variety of forms."
+	desc = "Usado para separar produtos químicos e distribuí-los em uma variedade de formas."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "chemmaster"
 	base_icon_state = "chemmaster"
@@ -81,17 +81,17 @@
 /obj/machinery/chem_master/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads:<br>Reagent buffer capacity: <b>[reagents.maximum_volume]</b> units.<br>Printing speed: <b>[0.75 SECONDS / printing_speed * 100]%</b>.")
+		. += span_notice("A exibição de status diz:<br>Capacidade de reserva de reagente:<b>[reagents.maximum_volume]</b>Unidades.<br>Velocidade de impressão:<b>[0.75 SECONDS / printing_speed * 100]%</b>.")
 		if(!QDELETED(beaker))
-			. += span_notice("[beaker] of <b>[beaker.reagents.maximum_volume]u</b> capacity inserted.")
-			. += span_notice("Right click with empty hand to remove beaker.")
+			. += span_notice("[beaker]de<b>[beaker.reagents.maximum_volume]U</b>Capacidade inserida.")
+			. += span_notice("Clique com a mão vazia para remover o copo.")
 		else
-			. += span_warning("Missing input beaker.")
+			. += span_warning("Beker de entrada faltando.")
 
-		. += span_notice("It can be [EXAMINE_HINT("wrenched")] [anchored ? "loose" : "in place"].")
-		. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "close" : "open"].")
+		. += span_notice("Pode ser.[EXAMINE_HINT("wrenched")] [anchored ? "loose" : "in place"].")
+		. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")] [panel_open ? "close" : "open"].")
 		if(panel_open)
-			. += span_notice("The machine can be [EXAMINE_HINT("pried")] apart.")
+			. += span_notice("A máquina pode ser[EXAMINE_HINT("pried")]Separados.")
 
 /obj/machinery/chem_master/update_appearance(updates)
 	. = ..()
@@ -189,7 +189,7 @@
 
 /obj/machinery/chem_master/wrench_act(mob/living/user, obj/item/tool)
 	if(is_printing)
-		balloon_alert(user, "still printing!")
+		balloon_alert(user, "Ainda imprimindo!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(default_unfasten_wrench(user, tool) == SUCCESSFUL_UNFASTEN)
@@ -198,14 +198,14 @@
 
 /obj/machinery/chem_master/screwdriver_act(mob/living/user, obj/item/tool)
 	if(is_printing)
-		balloon_alert(user, "still printing!")
+		balloon_alert(user, "Ainda imprimindo!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/chem_master/crowbar_act(mob/living/user, obj/item/tool)
 	if(is_printing)
-		balloon_alert(user, "still printing!")
+		balloon_alert(user, "Ainda imprimindo!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_crowbar(user, tool)
@@ -583,7 +583,7 @@
 
 /obj/machinery/chem_master/condimaster
 	name = "CondiMaster 3000"
-	desc = "Used to create condiments and other cooking supplies."
+	desc = "Costumava criar condimentos e outros suprimentos de cozinha."
 	icon_state = "condimaster"
 
 /obj/machinery/chem_master/condimaster/load_printable_containers()

@@ -3,7 +3,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 
 /obj/machinery/fax
 	name = "Fax Machine"
-	desc = "Bluespace technologies on the application of bureaucracy."
+	desc = "Tecnologias do espaço azul na aplicação da burocracia."
 	icon = 'icons/obj/machines/fax.dmi'
 	icon_state = "fax"
 	density = TRUE
@@ -116,7 +116,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 /obj/machinery/fax/examine()
 	. = ..()
 	if(jammed)
-		. += span_notice("Its output port is jammed and needs cleaning.")
+		. += span_notice("Sua porta de saída está bloqueada e precisa ser limpa.")
 
 
 /obj/machinery/fax/on_set_is_operational(old_value)
@@ -141,13 +141,13 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
  */
 /obj/machinery/fax/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if (!panel_open && !allow_exotic_faxes)
-		balloon_alert(user, "abra o painel primeiro!")
+		balloon_alert(user, "Abra o painel primeiro!")
 		return FALSE
 	if (!(obj_flags & EMAGGED))
 		obj_flags |= EMAGGED
 		playsound(src, 'sound/mobs/non-humanoids/dog/growl2.ogg', 50, FALSE)
-		balloon_alert(user, "migrated to syndienet 2.0")
-		to_chat(user, span_warning("An image appears on [src] screen for a moment with Ian in the cap of a Syndicate officer."))
+		balloon_alert(user, "Migrado para Syndienet 2.0")
+		to_chat(user, span_warning("Uma imagem aparece em[src]Tela por um momento com Ian no boné de um oficial do Sindicato."))
 		return TRUE
 	return FALSE
 
@@ -175,7 +175,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 		if (fax_name_exist(new_fax_name))
 			// Being able to set the same name as another fax machine will give a lot of gimmicks for the traitor.
 			if (syndicate_network != TRUE && !(obj_flags & EMAGGED))
-				to_chat(user, span_warning("There is already a fax machine with this name on the network."))
+				to_chat(user, span_warning("Já tem um fax com esse nome na rede."))
 				return ITEM_INTERACT_SUCCESS
 		user.log_message("renamed [fax_name] (fax machine) to [new_fax_name].", LOG_GAME)
 		fax_name = new_fax_name
@@ -207,7 +207,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 			return FALSE
 		clean_spray.reagents.remove_reagent(/datum/reagent/space_cleaner, clean_spray.amount_per_transfer_from_this)
 		playsound(loc, 'sound/effects/spray3.ogg', 50, TRUE, MEDIUM_RANGE_SOUND_EXTRARANGE)
-		user.visible_message(span_notice("[user] cleans \the [src]."), span_notice("You clean \the [src]."))
+		user.visible_message(span_notice("[user]Limpa.\the [src]."), span_notice("Você limpa.\the [src]."))
 		jammed = FALSE
 		return TRUE
 	if (istype(item, /obj/item/soap) || istype(item, /obj/item/rag))
@@ -215,9 +215,9 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 		if (istype(item, /obj/item/soap))
 			var/obj/item/soap/used_soap = item
 			cleanspeed = used_soap.cleanspeed
-		user.visible_message(span_notice("[user] starts to clean \the [src]."), span_notice("You start to clean \the [src]..."))
+		user.visible_message(span_notice("[user]Começa a limpar.\the [src]."), span_notice("Você começa a limpar\the [src]..."))
 		if (do_after(user, cleanspeed, target = src))
-			user.visible_message(span_notice("[user] cleans \the [src]."), span_notice("You clean \the [src]."))
+			user.visible_message(span_notice("[user]Limpa.\the [src]."), span_notice("Você limpa.\the [src]."))
 			jammed = FALSE
 		return TRUE
 	return FALSE
@@ -312,7 +312,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 		if("send_special")
 			var/obj/item/paper/fax_paper = loaded_item_ref?.resolve()
 			if(!istype(fax_paper))
-				to_chat(usr, icon2html(src.icon, usr) + span_warning("Fax cannot send all above paper on this protected network, sorry."))
+				to_chat(usr, icon2html(src.icon, usr) + span_warning("Fax não pode enviar todos os papéis acima desta rede protegida, desculpe."))
 				return
 
 			fax_paper.request_state = TRUE
@@ -325,7 +325,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 
 			GLOB.requests.fax_request(usr.client, "sent a fax message from [fax_name]/[fax_id] to [params["name"]]", list("paper" = fax_paper, "destination_id" = params["id"], "sender_name" = fax_name))
 			to_chat(GLOB.admins,
-				span_adminnotice("[icon2html(src.icon, GLOB.admins)]<b><font color=green>FAX REQUEST: </font>[ADMIN_FULLMONTY(usr)]:</b> [span_linkify("sent a fax message from [fax_name]/[fax_id][ADMIN_FLW(src)] to [html_encode(params["name"])]")] [ADMIN_SHOW_PAPER(fax_paper)] [ADMIN_PRINT_FAX(fax_paper, fax_name, params["id"])]"),
+				span_adminnotice("[icon2html(src.icon, GLOB.admins)]<b><font color=green>PEDIDO FAX:</font>[ADMIN_FULLMONTY(usr)]:</b> [span_linkify("sent a fax message from [fax_name]/[fax_id][ADMIN_FLW(src)] to [html_encode(params["name"])]")] [ADMIN_SHOW_PAPER(fax_paper)] [ADMIN_PRINT_FAX(fax_paper, fax_name, params["id"])]"),
 				type = MESSAGE_TYPE_PRAYER,
 				confidential = TRUE)
 			for(var/client/staff as anything in GLOB.admins)
@@ -391,7 +391,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 			continue
 		if (FAX.jammed)
 			do_sparks(5, TRUE, src)
-			balloon_alert(usr, "destination port jammed")
+			balloon_alert(usr, "porto de destino emperrado")
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 			return FALSE
 		FAX.receive(loaded, fax_name)

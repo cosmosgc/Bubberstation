@@ -2,7 +2,7 @@
 
 /obj/machinery/oven/stone
 	name = "stone oven"
-	desc = "Sorry buddy, all this stone used up the budget that would have normally gone to garfield comic jokes."
+	desc = "Desculpe amigo, toda essa pedra gastou o orçamento que normalmente teria ido para piadas em quadrinhos de Garfield."
 	icon = 'modular_skyrat/modules/primitive_cooking_additions/icons/stone_kitchen_machines.dmi'
 	circuit = null
 	use_power = FALSE
@@ -30,7 +30,7 @@
 /obj/machinery/oven/stone/examine(mob/user)
 	. = ..()
 
-	. += span_notice("It can be taken apart with a <b>crowbar</b>.")
+	. += span_notice("Pode ser desmontado com um<b>Pé de cabra.</b>.")
 
 // previously NO_DECONSTRUCTION
 /obj/machinery/oven/stone/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)

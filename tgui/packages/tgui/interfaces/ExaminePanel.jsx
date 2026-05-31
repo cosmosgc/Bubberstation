@@ -88,7 +88,7 @@ export const ExaminePanel = () => {
               <Button
                 color={data.art_ref_nsfw ? 'pink' : 'green'}
                 tooltip={
-                  data.art_ref_nsfw ? 'NSFW Reference Image' : 'Reference Image'
+                  data.art_ref_nsfw ? 'Imagem de referência da NSFW' : 'Imagem de referência'
                 }
                 icon="image"
                 style={{
@@ -106,7 +106,7 @@ export const ExaminePanel = () => {
                   <Section
                     fill
                     style={{ textAlign: 'center' }}
-                    title="Character Preview"
+                    title="Visualização de Caracteres"
                   >
                     <ByondUi
                       key={previewKey}
@@ -123,7 +123,7 @@ export const ExaminePanel = () => {
                   <>
                     <Section
                       maxheight="310px"
-                      title="Character Preview"
+                      title="Visualização de Caracteres"
                       style={{ textAlign: 'center' }}
                     >
                       <ByondUi
@@ -165,7 +165,7 @@ export const ExaminePanel = () => {
                     >
                       <Section
                         fitted
-                        title={'Flavor Text'}
+                        title={'Texto Sabor'}
                         style={{ textAlign: 'center' }}
                       />
                     </Tabs.Tab>
@@ -175,7 +175,7 @@ export const ExaminePanel = () => {
                     >
                       <Section
                         fitted
-                        title={'NSFW (Warning)'}
+                        title={'NSFW (Aviso)'}
                         style={{ textAlign: 'center' }}
                       />
                     </Tabs.Tab>
@@ -186,7 +186,7 @@ export const ExaminePanel = () => {
                       <Section
                         fitted
                         title={
-                          custom_species ? custom_species : 'Unnamed Species'
+                          custom_species ? custom_species : 'Espécie Sem Nome'
                         }
                         style={{ textAlign: 'center' }}
                       />
@@ -233,7 +233,7 @@ export const ExaminePanel = () => {
                     >
                       {custom_species
                         ? formatURLs(custom_species_lore)
-                        : 'Just a normal space dweller.'}
+                        : 'Apenas um morador normal do espaço.'}
                     </Section>
                   )}
                   <Tabs fluid>
@@ -243,7 +243,7 @@ export const ExaminePanel = () => {
                     >
                       <Section
                         fitted
-                        title={'OOC Notes'}
+                        title={'Nota como COC'}
                         style={{ textAlign: 'center' }}
                       />
                     </Tabs.Tab>
@@ -253,7 +253,7 @@ export const ExaminePanel = () => {
                     >
                       <Section
                         fitted
-                        title={'Character Advert'}
+                        title={'Anúncio de Caracteres'}
                         style={{ textAlign: 'center' }}
                       />
                     </Tabs.Tab>

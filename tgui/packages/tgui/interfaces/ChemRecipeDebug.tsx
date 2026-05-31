@@ -17,26 +17,26 @@ import { type ActiveReaction, ReactionDisplay } from './ChemHeater';
 import { type Beaker, BeakerSectionDisplay } from './common/BeakerDisplay';
 
 const TEMP_MODES = [
-  'Reaction Temp',
-  'Forced Temp',
-  'Minimum Temp',
-  'Optimal Temp',
+  'Temp de reação',
+  'Temp forçado',
+  'Temperatura Mínima',
+  'Temp ótima',
   'Overheat Temp',
 ];
-const REACTION_MODES = ['Next Reaction', 'Previous Reaction', 'Pick Reaction'];
+const REACTION_MODES = ['Próxima Reação', 'Reação anterior', 'Escolha a reação'];
 const REACTION_VARS = [
-  'Required Temp',
-  'Optimal Temp',
+  'Temp necessário',
+  'Temp ótima',
   'Overheat Temp',
   'Optimal Min Ph',
   'Optimal Max Ph',
-  'Ph Range',
-  'Temp Exp Factor',
+  'PH Range',
+  'Fator Temp Exp',
   'Ph Exp Factor',
-  'Thermic Constant',
-  'H Ion Release',
-  'Rate Up Limit',
-  'Purity Min',
+  'Constante Térmica',
+  'H Ion Liberação',
+  'Limite de Taxa',
+  'Pureza Min.',
 ];
 
 type BeakerDebug = Beaker & {
@@ -142,7 +142,7 @@ export const ChemRecipeDebug = (props) => {
                       label={
                         <Box
                           style={{
-                            transform: 'translate(0%, -15%)',
+                            transform: 'Tradução:',
                           }}
                         >
                           Temp Mode:
@@ -186,7 +186,7 @@ export const ChemRecipeDebug = (props) => {
                 </Stack.Item>
                 <Stack.Item ml="20px">
                   <LabeledList>
-                    <LabeledList.Item label="Force Ph">
+                    <LabeledList.Item label="Força Ph">
                       <Button.Checkbox
                         checked={use_forced_ph}
                         onClick={() => act('toggle_forced_ph')}
@@ -221,7 +221,7 @@ export const ChemRecipeDebug = (props) => {
                 </Stack.Item>
                 <Stack.Item ml="20px">
                   <LabeledList>
-                    <LabeledList.Item label="Force Purity">
+                    <LabeledList.Item label="Forçar Pureza">
                       <Button.Checkbox
                         checked={use_forced_purity}
                         onClick={() => act('toggle_forced_purity')}
@@ -285,7 +285,7 @@ export const ChemRecipeDebug = (props) => {
                       label={
                         <Box
                           style={{
-                            transform: 'translate(0%, -10%)',
+                            transform: 'Tradução:',
                           }}
                         >
                           Direction:
@@ -334,7 +334,7 @@ export const ChemRecipeDebug = (props) => {
                         icon="flask"
                         onClick={() => act('edit_reaction')}
                       >
-                        {editReaction?.name || 'Edit Reaction'}
+                        {editReaction?.name || 'Editar reação'}
                       </Button>
                     </LabeledList.Item>
                   </LabeledList>
@@ -345,7 +345,7 @@ export const ChemRecipeDebug = (props) => {
                       label={
                         <Box
                           style={{
-                            transform: 'translate(0%, -10%)',
+                            transform: 'Tradução:',
                             width: '57px',
                           }}
                         >
@@ -386,7 +386,7 @@ export const ChemRecipeDebug = (props) => {
                       <Button
                         color="green"
                         icon="sync"
-                        tooltip="Reset Value"
+                        tooltip="Reiniciar valor"
                         disabled={editReaction === null}
                         onClick={() => act('reset_value')}
                       />
@@ -433,7 +433,7 @@ export const ChemRecipeDebug = (props) => {
           />
         )}
         <BeakerSectionDisplay
-          title_label="Internal Buffer"
+          title_label="Buffer Interno"
           beaker={beaker}
           showpH={false}
         />

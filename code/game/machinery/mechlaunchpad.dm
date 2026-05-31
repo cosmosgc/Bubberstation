@@ -1,6 +1,6 @@
 /obj/machinery/mechpad
 	name = "orbital mech pad"
-	desc = "A slab of heavy plating designed to withstand orbital-drop impacts. Through some sort of advanced bluespace tech, this one seems able to send and receive Mechs. Requires linking to a console to function."
+	desc = "Um bloco de revestimento pesado projetado para suportar impactos de gota orbital. Através de algum tipo de tecnologia de espaço azul avançada, este parece capaz de enviar e receber Mechs. Requer ligação a um console para funcionar."
 	icon = 'icons/obj/machines/telepad.dmi'
 	icon_state = "mechpad"
 	base_icon_state = "mechpad"
@@ -14,12 +14,12 @@
 
 /obj/machinery/mechpad/Initialize(mapload)
 	. = ..()
-	display_name = "Orbital Pad - [get_area_name(src)]"
+	display_name = "Orbital Pad -[get_area_name(src)]"
 
 /obj/machinery/mechpad/examine(mob/user)
 	. = ..()
-	. += span_notice("Use a multitool with the panel open to save id to buffer.")
-	. += span_notice("Use wirecutters with the panel open to [mech_only ? "cut" : "mend"] the lifeform restriction wire.")
+	. += span_notice("Use uma multitool com o painel aberto para salvar id em buffer.")
+	. += span_notice("Use cortadores de arame com o painel aberto para[mech_only ? "cut" : "mend"]O fio de restrição da forma de vida.")
 
 /obj/machinery/mechpad/update_icon_state()
 	. = ..()
@@ -36,14 +36,14 @@
 		return NONE
 
 	multitool.set_buffer(src)
-	balloon_alert(user, "salvo no buffer da multitool")
+	balloon_alert(user, "Salvo nenhum buffer da multitool")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/mechpad/wirecutter_act(mob/living/user, obj/item/tool)
 	if(!panel_open)
 		return NONE
 	mech_only = !mech_only
-	to_chat(user, span_notice("You [mech_only ? "mend" : "cut"] the lifeform restriction wire."))
+	to_chat(user, span_notice("Você.[mech_only ? "mend" : "cut"]O fio de restrição da forma de vida."))
 	return ITEM_INTERACT_SUCCESS
 
 /**

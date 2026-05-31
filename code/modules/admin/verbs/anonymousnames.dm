@@ -12,7 +12,7 @@ GLOBAL_DATUM(current_anonymous_theme, /datum/anonymous_theme)
 	set name = "Setup Anonymous Names"
 
 	if(GLOB.current_anonymous_theme)
-		var/response = tgui_alert(usr, "Anon mode is currently enabled. Disable?", "cold feet", list("Disable Anon Names", "Keep it Enabled"))
+		var/response = tgui_alert(usr, "O modo Anon está ativado no momento. Desabilitar?", "cold feet", list("Disable Anon Names", "Keep it Enabled"))
 		if(response != "Disable Anon Names")
 			return
 		message_admins(span_adminnotice("[key_name_admin(usr)] has disabled anonymous names."))
@@ -22,7 +22,7 @@ GLOBAL_DATUM(current_anonymous_theme, /datum/anonymous_theme)
 	for(var/_theme in typesof(/datum/anonymous_theme))
 		var/datum/anonymous_theme/theme = _theme
 		input_list[initial(theme.name)] = theme
-	var/result = input(usr, "Choose an anonymous theme","going dark") as null|anything in input_list
+	var/result = input(usr, "Escolha um tema anônimo.","Fico escuro.") as null|anything in input_list
 	if(!usr || !result || result == "Cancel")
 		return
 	var/datum/anonymous_theme/chosen_theme = input_list[result]

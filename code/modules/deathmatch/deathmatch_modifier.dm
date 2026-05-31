@@ -63,7 +63,7 @@
 
 /datum/deathmatch_modifier/health
 	name = "Double-Health"
-	description = "Doubles your starting health"
+	description = "Dobra sua saúde inicial."
 	blacklisted_modifiers = list(/datum/deathmatch_modifier/health/half, /datum/deathmatch_modifier/health/triple)
 	var/multiplier = 2
 
@@ -73,48 +73,48 @@
 
 /datum/deathmatch_modifier/health/half
 	name = "Half-Health"
-	description = "It's your funeral"
+	description = "É o seu funeral."
 	blacklisted_modifiers = list(/datum/deathmatch_modifier/health, /datum/deathmatch_modifier/health/triple)
 	multiplier = 0.5
 
 /datum/deathmatch_modifier/health/triple
 	name = "Triple-Health"
-	description = "When \"Double-Health\" isn't enough..."
+	description = "Quanto\"Saúde dupla.\"Não é suficiente..."
 	multiplier = 3
 	blacklisted_modifiers = list(/datum/deathmatch_modifier/health, /datum/deathmatch_modifier/health/half)
 
 
 /datum/deathmatch_modifier/tenacity
 	name = "Tenacity"
-	description = "Unaffected by critical condition and pain"
+	description = "Não afetado pela condição crítica e dor"
 
 /datum/deathmatch_modifier/tenacity/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	player.add_traits(list(TRAIT_NOSOFTCRIT, TRAIT_NOHARDCRIT, TRAIT_ANALGESIA, TRAIT_NO_DAMAGE_OVERLAY), DEATHMATCH_TRAIT)
 
 /datum/deathmatch_modifier/no_wounds
 	name = "No Wounds"
-	description = "Ah, the good ol' days when people did't have literal dents in their skulls..."
+	description = "Os bons velhos tempos em que as pessoas não tinham marcas literais nos crânios..."
 
 /datum/deathmatch_modifier/no_wounds/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	ADD_TRAIT(player, TRAIT_NEVER_WOUNDED, DEATHMATCH_TRAIT)
 
 /datum/deathmatch_modifier/no_knockdown
 	name = "No Knockdowns"
-	description = "I'M FUCKING INVINCIBLE!"
+	description = "Eu sou invencível!"
 
 /datum/deathmatch_modifier/no_knockdown/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	player.add_traits(list(TRAIT_STUNIMMUNE, TRAIT_SLEEPIMMUNE), DEATHMATCH_TRAIT)
 
 /datum/deathmatch_modifier/no_slowdown
 	name = "No Slowdowns"
-	description = "You're too slow!"
+	description = "Você é muito lento!"
 
 /datum/deathmatch_modifier/no_slowdown/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	ADD_TRAIT(player, TRAIT_IGNORESLOWDOWN, DEATHMATCH_TRAIT)
 
 /datum/deathmatch_modifier/teleport
 	name = "Random Teleports"
-	description = "One moment I'm here, the next I'm there"
+	description = "Num momento estou aqui, no outro estou lá"
 	///A lazylist of lobbies that have this modifier enabled
 	var/list/signed_lobbies
 	///The cooldown to the teleportation effect.
@@ -166,7 +166,7 @@
 
 /datum/deathmatch_modifier/snail_crawl
 	name = "Snail Crawl"
-	description = "Lube the floor as you slather it with your body"
+	description = "Lubrifique o chão enquanto você o esfrega com seu corpo"
 	blacklisted_modifiers = list(/datum/deathmatch_modifier/no_gravity)
 
 /datum/deathmatch_modifier/snail_crawl/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
@@ -174,7 +174,7 @@
 
 /datum/deathmatch_modifier/blinking_and_breathing
 	name = "Manual Blinking/Breathing"
-	description = "Ruin everyone's fun by forcing them to breathe and blink manually"
+	description = "Arruinar a diversão de todos forçando-os a respirar e piscar manualmente."
 
 /datum/deathmatch_modifier/blinking_and_breathing/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	player.AddComponent(/datum/component/manual_blinking)
@@ -182,14 +182,14 @@
 
 /datum/deathmatch_modifier/forcefield_trail
 	name = "Forcefield Trail"
-	description = "You leave short-living unpassable forcefields in your wake"
+	description = "Você deixa campos de força intransponíveis em seu caminho."
 
 /datum/deathmatch_modifier/forcefield_trail/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	player.AddElement(/datum/element/effect_trail, /obj/effect/forcefield/cosmic_field/extrafast)
 
 /datum/deathmatch_modifier/xray
 	name = "X-Ray Vision"
-	description = "See through the cordons of the deathmatch arena!"
+	description = "Veja através dos cordões da arena da luta mortal!"
 	blacklisted_modifiers = list(/datum/deathmatch_modifier/thermal)
 
 /datum/deathmatch_modifier/xray/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
@@ -198,7 +198,7 @@
 
 /datum/deathmatch_modifier/thermal
 	name = "Thermal Vision"
-	description = "See mobs through walls"
+	description = "Ver multidões através das paredes"
 	blacklisted_modifiers = list(/datum/deathmatch_modifier/xray)
 
 /datum/deathmatch_modifier/thermal/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
@@ -207,21 +207,21 @@
 
 /datum/deathmatch_modifier/regen
 	name = "Health Regen"
-	description = "The closest thing to free health insurance you can get"
+	description = "A coisa mais próxima de seguro de saúde grátis que você pode obter"
 
 /datum/deathmatch_modifier/regen/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	player.AddComponent(/datum/component/regenerator, regeneration_delay = 4 SECONDS, brute_per_second = 2.5, burn_per_second = 2.5, tox_per_second = 2.5)
 
 /datum/deathmatch_modifier/nearsightness
 	name = "Nearsightness"
-	description = "Oops, I forgot my glasses at home"
+	description = "Esqueci meus óculos em casa."
 
 /datum/deathmatch_modifier/nearsightness/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	player.become_nearsighted(DEATHMATCH_TRAIT)
 
 /datum/deathmatch_modifier/ocelot
 	name = "Ocelot"
-	description = "Shoot faster, with extra ricochet and less spread. You're pretty good!"
+	description = "Atire mais rápido, com ricochete extra e menos espalhado. Você é muito bom!"
 	blacklisted_modifiers = list(/datum/deathmatch_modifier/stormtrooper)
 
 /datum/deathmatch_modifier/ocelot/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
@@ -243,7 +243,7 @@
 
 /datum/deathmatch_modifier/stormtrooper
 	name = "Stormtrooper Aim"
-	description = "Fresh out of the 'I Can't Aim For Shit' School"
+	description = "Acabado de sair da escola\"Não posso mirar em merda\""
 	blacklisted_modifiers = list(/datum/deathmatch_modifier/ocelot)
 
 /datum/deathmatch_modifier/stormtrooper/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
@@ -256,14 +256,14 @@
 
 /datum/deathmatch_modifier/four_hands
 	name = "Four Hands"
-	description = "When one pair isn't enough..."
+	description = "Quando um par não é suficiente..."
 
 /datum/deathmatch_modifier/four_hands/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	player.change_number_of_hands(4)
 
 /datum/deathmatch_modifier/paraplegic
 	name = "Paraplegic"
-	description = "Wheelchairs. For. Everyone."
+	description = "Cadeiras de Rodas. Todos."
 
 /datum/deathmatch_modifier/paraplegic/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	player.gain_trauma(/datum/brain_trauma/severe/paralysis/paraplegic, TRAUMA_RESILIENCE_ABSOLUTE)
@@ -276,7 +276,7 @@
 
 /datum/deathmatch_modifier/mounts
 	name = "Mounts"
-	description = "A horse! A horse! My kingdom for a horse!"
+	description = "Um cavalo! Um cavalo! Meu Reino por um cavalo!"
 
 /datum/deathmatch_modifier/mounts/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	///We do a bit of fun over balance here, some mounts may be better than others.
@@ -301,7 +301,7 @@
 
 /datum/deathmatch_modifier/no_gravity
 	name = "No Gravity"
-	description = "Hone your robusting skills in zero g"
+	description = "Mostre suas habilidades robustas em zero g."
 	blacklisted_modifiers = list(/datum/deathmatch_modifier/mounts, /datum/deathmatch_modifier/paraplegic, /datum/deathmatch_modifier/minefield)
 
 /datum/deathmatch_modifier/no_gravity/on_start_game(datum/deathmatch_lobby/lobby)
@@ -316,7 +316,7 @@
 
 /datum/deathmatch_modifier/drop_pod
 	name = "Drop Pod: Syndies"
-	description = "Steel Rain: Syndicate Edition"
+	description = "Edição de Sindicato"
 	///A lazylist of lobbies that have this modifier enabled
 	var/list/signed_lobbies
 	///The type of drop pod that'll periodically fall from the sky
@@ -389,7 +389,7 @@
 
 /datum/deathmatch_modifier/drop_pod/monsters
 	name = "Drop Pod: Monsters"
-	description = "Monsters are raining from the sky!"
+	description = "Monstros estão chovendo do céu!"
 
 /datum/deathmatch_modifier/drop_pod/monsters/populate_contents()
 	contents = list(
@@ -417,7 +417,7 @@
 
 /datum/deathmatch_modifier/drop_pod/missiles
 	name = "Drop Pod: Cruise Missiles"
-	description = "You're going to get shelled hard"
+	description = "Você vai ser bombardeado com força"
 	drop_pod_type = /obj/structure/closet/supplypod/deadmatch_missile
 	interval = list(3 SECONDS, 5 SECONDS)
 	amount = list(1, 3)
@@ -427,7 +427,7 @@
 
 /datum/deathmatch_modifier/explode_on_death
 	name = "Explosive Death"
-	description = "Everyone gets a microbomb that cannot be manually activated."
+	description = "Todos recebem uma microbomba que não pode ser ativada manualmente."
 
 /datum/deathmatch_modifier/explode_on_death/on_start_game(datum/deathmatch_lobby/lobby)
 	ADD_TRAIT(lobby, TRAIT_DEATHMATCH_EXPLOSIVE_IMPLANTS, DEATHMATCH_TRAIT)
@@ -438,7 +438,7 @@
 
 /datum/deathmatch_modifier/helgrasp
 	name = "Helgrasped"
-	description = "Cursed hands are being thrown at you!"
+	description = "Mãos amaldiçoadas estão sendo jogadas em você!"
 
 /datum/deathmatch_modifier/helgrasp/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	var/metabolism_rate = /datum/reagent/inverse/helgrasp/heretic::metabolization_rate
@@ -446,7 +446,7 @@
 
 /datum/deathmatch_modifier/wasted
 	name = "Wasted"
-	description = "You've had one drink too many"
+	description = "Você bebeu demais."
 
 /datum/deathmatch_modifier/wasted/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	player.adjust_drunk_effect(rand(30, 35))
@@ -455,7 +455,7 @@
 
 /datum/deathmatch_modifier/monkeys
 	name = "Monkeyfication"
-	description = "Go back, I want to be monkey!"
+	description = "Volta, eu quero ser macaco!"
 
 /datum/deathmatch_modifier/monkeys/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	//we don't call monkeyize(), because it'd set the player name to a generic "monkey(number)".
@@ -463,14 +463,14 @@
 
 /datum/deathmatch_modifier/inverted_movement
 	name = "Inverted Movement"
-	description = "Up is down, left is right"
+	description = "Para cima é para baixo, esquerda é direita"
 
 /datum/deathmatch_modifier/inverted_movement/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	player.AddElement(/datum/element/inverted_movement)
 
 /datum/deathmatch_modifier/minefield
 	name = "Minefield"
-	description = "Oh, it seems you've trotted on a mine!"
+	description = "Parece que pisou em uma mina!"
 
 /datum/deathmatch_modifier/minefield/on_start_game(datum/deathmatch_lobby/lobby)
 	var/list/mines = subtypesof(/obj/effect/mine)
@@ -498,7 +498,7 @@
 
 /datum/deathmatch_modifier/random
 	name = "Random Modifiers"
-	description = "Picks 3 to 5 random modifiers as the game is about to start"
+	description = "Escolhe de 3 a 5 modificadores aleatórios como o jogo está prestes a começar"
 	random_exempted = TRUE
 
 /datum/deathmatch_modifier/random/on_select(datum/deathmatch_lobby/lobby)
@@ -537,7 +537,7 @@
 
 /datum/deathmatch_modifier/any_loadout
 	name = "Any Loadout Allowed"
-	description = "Watch players pick Instagib everytime"
+	description = "Veja os jogadores Escolherem Instagib todas como vezes"
 	random_exempted = TRUE
 
 /datum/deathmatch_modifier/any_loadout/selectable(datum/deathmatch_lobby/lobby)
@@ -560,7 +560,7 @@
 
 /datum/deathmatch_modifier/hear_global_chat
 	name = "Heightened Hearing"
-	description = "This lets you hear people through wall, as well as deadchat"
+	description = "Isso permite que você ouça as pessoas através da parede, bem como bate-papo"
 	random_exempted = TRUE
 
 /datum/deathmatch_modifier/hear_global_chat/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
@@ -568,7 +568,7 @@
 
 /datum/deathmatch_modifier/apply_quirks
 	name = "Quirks enabled"
-	description = "Applies selected quirks to all players"
+	description = "Aplica peculiaridades selecionadas para todos os jogadores."
 
 /datum/deathmatch_modifier/apply_quirks/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	if (!player.client)
@@ -578,7 +578,7 @@
 
 /datum/deathmatch_modifier/martial_artistry
 	name = "Random martial arts"
-	description = "Everyone learns a random martial art!"
+	description = "Todo mundo aprende uma arte marcial aleatória!"
 	blacklisted_maps = list(/datum/lazy_template/deathmatch/meatower)
 	// kaza ruk excluded because its too common and too simple, mushpunch excluded because its horrible and not even funny
 	var/static/list/weighted_martial_arts = list(
@@ -604,4 +604,4 @@
 
 	instantiated_art.teach(player)
 
-	to_chat(player, span_revenboldnotice("Your martial art is [uppertext(instantiated_art.name)]!"))
+	to_chat(player, span_revenboldnotice("Sua arte marcial é[uppertext(instantiated_art.name)]!"))

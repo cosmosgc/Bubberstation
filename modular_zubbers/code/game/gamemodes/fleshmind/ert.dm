@@ -39,4 +39,4 @@
 			"style" = /datum/pod_style/deathsquad,
 			"spawn" = living_mob,
 		))
-		to_chat(living_mob, span_redtext("The drop pod thrusters fire up, you're being deployed to the station!"))
+		to_chat(living_mob, span_redtext("Os propulsores de descarga dispararam, vocês estão sendo enviados para a estação!"))

@@ -3,7 +3,7 @@
 
 /obj/machinery/atmospherics/components/binary/circulator
 	name = "circulator"
-	desc = "A gas circulating turbine and heat exchanger."
+	desc = "Uma turbina de gás circulante e trocador de calor."
 	icon = 'modular_skyrat/master_files/icons/obj/machines/thermoelectric.dmi'
 	icon_state = "circ-unassembled-0"
 	density = TRUE
@@ -141,16 +141,16 @@
 /obj/machinery/atmospherics/components/binary/circulator/wrench_act(mob/living/user, obj/item/I)
 
 	if(!panel_open)
-		balloon_alert(user, "abra o painel primeiro!")
+		balloon_alert(user, "Abra o painel primeiro!")
 		return TRUE
 
 	if(generator)
-		balloon_alert(user, "disconnect [generator] first!")
+		balloon_alert(user, "Desligador[generator]Primero!")
 		return TRUE
 
 	set_anchored(!anchored)
 	I.play_tool_sound(src)
-	balloon_alert(user, "you [anchored?"secure":"unsecure"] [src].")
+	balloon_alert(user, "Você.[anchored?"secure":"unsecure"] [src].")
 
 	var/obj/machinery/atmospherics/node1 = nodes[1]
 	var/obj/machinery/atmospherics/node2 = nodes[2]
@@ -203,22 +203,22 @@
 
 /obj/machinery/atmospherics/components/binary/circulator/multitool_act(mob/living/user, obj/item/I)
 	if(generator)
-		balloon_alert(user, "disconnect [generator] first!")
+		balloon_alert(user, "Desligador[generator]Primero!")
 		return TRUE
 
 	mode = !mode
-	balloon_alert(user, "you set [src] to [mode?"cold":"hot"] mode.")
+	balloon_alert(user, "Você está pronto?[src]Para[mode?"cold":"hot"]Modo.")
 	return TRUE
 
 /obj/machinery/atmospherics/components/binary/circulator/screwdriver_act(mob/user, obj/item/I)
 	if(..())
 		return TRUE
 	if(generator)
-		balloon_alert(user, "disconnect the generator first!")
+		balloon_alert(user, "Desligue o gerador primeiro!")
 		return TRUE
 	panel_open = !panel_open
 	I.play_tool_sound(src)
-	balloon_alert(user, "you [panel_open?"open":"close"] the panel on [src].")
+	balloon_alert(user, "Você.[panel_open?"open":"close"]O painel em[src].")
 	update_icon_nopipes()
 	return TRUE
 
@@ -234,7 +234,7 @@
 
 /obj/machinery/atmospherics/components/binary/circulator/crowbar_act(mob/user, obj/item/I)
 	if(anchored)
-		balloon_alert(user, "[src] is anchored!")
+		balloon_alert(user, "[src]Está ancorado!")
 		return TRUE
 	if(!panel_open)
 		circulator_flip()
@@ -268,7 +268,7 @@
 	if(!ishuman(usr))
 		return
 	flipped = !flipped
-	balloon_alert(usr, "you flip [src].")
+	balloon_alert(usr, "Você vira.[src].")
 	playsound(src, 'sound/items/tools/change_drill.ogg', 50)
 	update_icon_nopipes()
 

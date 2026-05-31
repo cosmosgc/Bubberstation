@@ -72,7 +72,7 @@ export function PlantAnalyzerSeedStats(props) {
                 }
               >
                 {getTraitInfo(seed_data.graft_gene, trait_db)?.name ||
-                  'No graft gene'}
+                  'Nenhum gene de enxerto.'}
               </Button>
             </Stack.Item>
             {seed_data.mutatelist.length > 0 && (
@@ -122,7 +122,7 @@ export function PlantAnalyzerSeedStats(props) {
 
             <LabeledList.Item
               label="Endurance"
-              tooltip="The health pool of the plant that delays withering. Improves quality of resulting food & drinks."
+              tooltip="O pool de saúde da planta que demora a murchar. Melhora a qualidade dos alimentos e bebidas resultantes."
             >
               <ProgressBar
                 value={seed_data.endurance / 100}
@@ -162,14 +162,14 @@ export function PlantAnalyzerSeedStats(props) {
 
             <LabeledList.Item
               label="Maturation"
-              tooltip="The age at which the plant starts growing products."
+              tooltip="A idade em que a planta começa a cultivar produtos."
             >
               {formatPerSecond(seed_data.maturation, cycle_seconds)}
             </LabeledList.Item>
 
             <LabeledList.Item
               label="Production"
-              tooltip="The time needed for a mature plant to (re)grow a product."
+              tooltip="O tempo necessário para uma planta madura crescer um produto."
             >
               {formatPerSecond(seed_data.production, cycle_seconds)}
             </LabeledList.Item>
@@ -183,7 +183,7 @@ export function PlantAnalyzerSeedStats(props) {
 
             <LabeledList.Item
               label="Yield"
-              tooltip="The number of products gathered in a single harvest."
+              tooltip="O número de produtos coletados em uma única colheita."
             >
               <ProgressBar
                 value={seed_data.yield / 10}
@@ -199,7 +199,7 @@ export function PlantAnalyzerSeedStats(props) {
 
             <LabeledList.Item
               label="Potency"
-              tooltip="Determines product mass, reagent volume and strength of effects."
+              tooltip="Determina a massa do produto, volume de reagente e força dos efeitos."
             >
               <ProgressBar
                 value={seed_data.potency / 100}
@@ -215,7 +215,7 @@ export function PlantAnalyzerSeedStats(props) {
 
             <LabeledList.Item
               label="Instability"
-              tooltip="The likelihood of the plant to randomize stats or mutate. Affects quality of resulting food & drinks."
+              tooltip="A probabilidade da planta randomizar estatísticas ou mutar. Afeta a qualidade dos alimentos e bebidas resultantes."
             >
               <ProgressBar
                 value={seed_data.instability}
@@ -258,7 +258,7 @@ export function PlantAnalyzerSeedStats(props) {
                       tooltip={traitInfo?.description}
                       icon={traitInfo?.icon}
                     >
-                      {traitInfo?.name || 'Unknown Trait'}
+                      {traitInfo?.name || 'Traço Desconhecido'}
                     </Button>
                   </Stack.Item>
                 );
@@ -342,7 +342,7 @@ export function PlantAnalyzerSeedChems(props) {
                     <Box
                       inline
                       style={{
-                        borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',
+                        borderBottom: '2px pontilhado rgba(255, 255, 0,8)',
                       }}
                     >
                       Expected Volume
@@ -363,7 +363,7 @@ export function PlantAnalyzerSeedChems(props) {
               ))}
               <Table.Row
                 className="candystripe"
-                style={{ borderTop: '2px dotted gray' }}
+                style={{ borderTop: '2px pontilhado cinza' }}
               >
                 <Table.Cell py={1} pl={1}>
                   Total
@@ -387,7 +387,7 @@ export function PlantAnalyzerSeedChems(props) {
               </Table.Row>
               <Table.Row
                 className="candystripe"
-                style={{ borderTop: '2px dotted gray' }}
+                style={{ borderTop: '2px pontilhado cinza' }}
               >
                 <Table.Cell py={1} pl={1}>
                   Cap
@@ -400,7 +400,7 @@ export function PlantAnalyzerSeedChems(props) {
               {seed_data.grind_results.length > 0 && (
                 <Table.Row
                   className="candystripe"
-                  style={{ borderTop: '2px dotted gray' }}
+                  style={{ borderTop: '2px pontilhado cinza' }}
                 >
                   <Table.Cell py={0.5} pl={1} colSpan={2}>
                     <i>Grinds nutriments into:</i>
@@ -411,7 +411,7 @@ export function PlantAnalyzerSeedChems(props) {
               {seed_data.juice_name && (
                 <Table.Row
                   className="candystripe"
-                  style={{ borderTop: '2px dotted gray' }}
+                  style={{ borderTop: '2px pontilhado cinza' }}
                 >
                   <Table.Cell py={0.5} pl={1} colSpan={2}>
                     <i>Juices into:</i>
@@ -422,7 +422,7 @@ export function PlantAnalyzerSeedChems(props) {
               {seed_data.distill_reagent && (
                 <Table.Row
                   className="candystripe"
-                  style={{ borderTop: '2px dotted gray' }}
+                  style={{ borderTop: '2px pontilhado cinza' }}
                 >
                   <Table.Cell py={0.5} pl={1} colSpan={2}>
                     <i>Distills into:</i>
@@ -471,7 +471,7 @@ export function PlantAnalyzerPlantChems(props) {
               ))}
               <Table.Row
                 className="candystripe"
-                style={{ borderTop: '2px dotted gray' }}
+                style={{ borderTop: '2px pontilhado cinza' }}
               >
                 <Table.Cell py={1} pl={1} colSpan={2}>
                   Total

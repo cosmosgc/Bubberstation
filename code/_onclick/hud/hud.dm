@@ -507,9 +507,9 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 
 	if(hud_used && client)
 		hud_used.show_hud() //Shows the next hud preset
-		to_chat(usr, span_info("Switched HUD mode. Press F12 to toggle."))
+		to_chat(usr, span_info("Modo HUD trocado. Pressione F12 para alternar."))
 	else
-		to_chat(usr, span_warning("This mob type does not use a HUD."))
+		to_chat(usr, span_warning("Este tipo de máfia não usa um HUD."))
 
 /// Rebuilds our mob's hand slot screen elements
 /datum/hud/proc/build_hand_slots(update_hud = FALSE)

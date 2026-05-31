@@ -1,6 +1,6 @@
 /obj/item/toy/singlecard
 	name = "card"
-	desc = "A playing card used to play card games like poker."
+	desc = "Uma carta de baralho costumava jogar jogos de cartas como pôquer."
 	icon = 'icons/obj/toys/playing_cards.dmi'
 	icon_state = "sc_Ace of Spades_nanotrasen"
 	w_class = WEIGHT_CLASS_TINY
@@ -59,17 +59,17 @@
 		return
 
 	if(user.is_holding(src))
-		user.visible_message(span_notice("[user] checks [user.p_their()] card."), span_notice("The card reads: [cardname]."))
+		user.visible_message(span_notice("[user]Cheques.[user.p_their()]Cartão."), span_notice("O cartão diz:[cardname]."))
 		if(blank)
-			. += span_notice("The card is blank. Write on it with a pen.")
+			. += span_notice("O cartão está em branco. Escreva com uma caneta.")
 	else if(HAS_TRAIT(user, TRAIT_XRAY_VISION))
-		. += span_notice("You scan the card with your x-ray vision and it reads: [cardname].")
+		. += span_notice("Você escaneia o cartão com sua visão de raio-x e ele diz:[cardname].")
 	else
-		. += span_warning("You need to have the card in your hand to check it!")
+		. += span_warning("Precisa ter o cartão na mão para verificar!")
 
 	var/marked_color = getMarkedColor(user)
 	if(marked_color)
-		. += span_notice("The card has a [marked_color] mark on the corner!")
+		. += span_notice("O cartão tem um[marked_color]Marca na esquina!")
 
 /obj/item/toy/singlecard/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(isnull(held_item) || src == held_item)
@@ -102,7 +102,7 @@
 	return NONE
 
 /obj/item/toy/singlecard/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] is slitting [user.p_their()] wrists with \the [src]! It looks like [user.p_they()] [user.p_have()] an unlucky card!"))
+	user.visible_message(span_suicide("[user]Está cortando[user.p_their()]Pulsos com\the [src]Parece que...[user.p_they()] [user.p_have()]Um cartão de azar!"))
 	playsound(src, 'sound/items/weapons/bladeslice.ogg', 50, TRUE)
 	return BRUTELOSS
 
@@ -157,7 +157,7 @@
 				user.balloon_alert_to_viewers("puts card in deck")
 				return ITEM_INTERACT_SUCCESS
 
-			to_chat(user, span_warning("\The [dealer_deck] is stacked too high!"))
+			to_chat(user, span_warning("\The [dealer_deck]Está muito alto!"))
 			return ITEM_INTERACT_BLOCKING
 
 		card = dealer_deck.draw(user)
@@ -200,13 +200,13 @@
 
 	if(marked_cheating_color && !blank && IS_WRITING_UTENSIL(tool)) // You cheated not only the game, but yourself
 		marked_color = marked_cheating_color
-		to_chat(user, span_notice("You put a [marked_color] mark in the corner of [src] with the [tool]. Cheat to win!"))
+		to_chat(user, span_notice("Você colocou um[marked_color]Marca no canto de[src]como[tool]Trapaceiro para Ganhar!"))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!user.can_write(tool))
 		return NONE
 
-	var/cardtext = stripped_input(user, "What do you wish to write on the card?", "Card Writing", "", 50)
+	var/cardtext = stripped_input(user, "O que deseja escrever no cartão?", "Escrita de Cartas", "", 50)
 	if(!cardtext || !user.can_perform_action(src))
 		return ITEM_INTERACT_BLOCKING
 

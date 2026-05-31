@@ -3,15 +3,7 @@
 	spark_system.attach(src)
 
 	add_traits(list(TRAIT_CAN_STRIP, TRAIT_FORCED_STANDING, TRAIT_KNOW_ENGI_WIRES, TRAIT_IGNORE_SURGERY_MODIFIERS), INNATE_TRAIT)
-	AddComponent(/datum/component/tippable, \
-		tip_time = 3 SECONDS, \
-		untip_time = 2 SECONDS, \
-		self_right_time = 3 SECONDS, \
-		post_tipped_callback = CALLBACK(src, PROC_REF(after_tip_over)), \
-		post_untipped_callback = CALLBACK(src, PROC_REF(after_righted)), \
-		roleplay_friendly = TRUE, \
-		roleplay_emotes = list(/datum/emote/silicon/buzz, /datum/emote/silicon/buzz2, /datum/emote/silicon/beep, /datum/emote/silicon/beep2), /* SKYRAT EDIT CHANGE - ORIGINAL: roleplay_emotes = list(/datum/emote/silicon/buzz, /datum/emote/silicon/buzz2, /datum/emote/silicon/beep)*/ \
-		roleplay_callback = CALLBACK(src, PROC_REF(untip_roleplay)))
+	AddComponent(/datum/component/tippable, 		tip_time = 3 SECONDS, 		untip_time = 2 SECONDS, 		self_right_time = 3 SECONDS, 		post_tipped_callback = CALLBACK(src, PROC_REF(after_tip_over)), 		post_untipped_callback = CALLBACK(src, PROC_REF(after_righted)), 		roleplay_friendly = TRUE, 		roleplay_emotes = list(/datum/emote/silicon/buzz, /datum/emote/silicon/buzz2, /datum/emote/silicon/beep, /datum/emote/silicon/beep2), /* SKYRAT EDIT CHANGE - ORIGINAL: roleplay_emotes = list(/datum/emote/silicon/buzz, /datum/emote/silicon/buzz2, /datum/emote/silicon/beep)*/ 		roleplay_callback = CALLBACK(src, PROC_REF(untip_roleplay)))
 		//BUBBER EDIT: REDUCES THE SELF-RIGHT TIME FOR BORGS TO 3 SECONDS, FROM 60 SECONDS
 
 	set_wires(new /datum/wires/robot(src))
@@ -158,11 +150,11 @@
 		return
 
 	if(wires.is_cut(WIRE_RESET_MODEL))
-		to_chat(src,span_userdanger("ERROR: Model installer reply timeout. Please check internal connections."))
+		to_chat(src,span_userdanger("Tempo de resposta do instalador do modelo. Por favor, verifique as conexões internas."))
 		return
 
 	if(lockcharge == TRUE)
-		to_chat(src,span_userdanger("ERROR: Lockdown is engaged. Please disengage lockdown to pick module."))
+		to_chat(src,span_userdanger("Bloqueio ativado. Por favor, desative o bloqueio para escolher o módulo."))
 		return
 
 	// SKYRAT EDIT START - Making the cyborg model list static to reduce how many times it's generated.
@@ -250,14 +242,14 @@
 
 /mob/living/silicon/robot/proc/toggle_ionpulse()
 	if(!ionpulse)
-		to_chat(src, span_notice("No thrusters are installed!"))
+		to_chat(src, span_notice("Nenhum propulsor está instalado!"))
 		return
 
 	if(!ion_trail)
 		ion_trail = new(src)
 
 	ionpulse_on = !ionpulse_on
-	to_chat(src, span_notice("You [ionpulse_on ? null :"de"]activate your ion thrusters."))
+	to_chat(src, span_notice("Você.[ionpulse_on ? null :"de"]Ative seus propulsores de íons."))
 	if(ionpulse_on)
 		ion_trail.start()
 	else
@@ -475,7 +467,7 @@
 	. = ..()
 	if(lamp_enabled)
 		toggle_headlamp(TRUE)
-		balloon_alert(src, "headlamp off!")
+		balloon_alert(src, "O farol está desligado!")
 	COOLDOWN_START(src, disabled_time, disrupt_duration)
 	return TRUE
 
@@ -492,7 +484,7 @@
 	lamp_functional = FALSE
 	playsound(src, 'sound/effects/footstep/glass_step.ogg', 50)
 	toggle_headlamp(TRUE)
-	to_chat(src, span_danger("Your headlamp is broken! You'll need a human to help replace it."))
+	to_chat(src, span_danger("Seu farol está quebrado! Precisará de um humano para ajudar a substituí-lo."))
 
 /**
  * Handles headlamp toggling, disabling, and color setting.
@@ -510,7 +502,7 @@
 /mob/living/silicon/robot/proc/toggle_headlamp(turn_off = FALSE, update_color = FALSE)
 	//if both lamp is enabled AND the update_color flag is on, keep the lamp on. Otherwise, if anything listed is true, disable the lamp.
 	if(!COOLDOWN_FINISHED(src, disabled_time))
-		balloon_alert(src, "disrupted!")
+		balloon_alert(src, "Perturbado!")
 		return FALSE
 
 	//BUBBER EDIT - Disables flashlight when held
@@ -584,8 +576,7 @@
 		removing.update_appearance()
 
 	else
-		to_chat(src, span_bolddanger("Oops! Something went very wrong, your MMI was unable to receive your mind. \
-			You have been ghosted. Please make a bug report so we can fix this bug."))
+		to_chat(src, span_bolddanger("Oops! Algo deu errado, seu MMI foi incapaz de receber sua mente. Você foi assombrado. Por favor, faça um relatório de bug para consertarmos esse bug."))
 		ghostize()
 		stack_trace("Borg MMI lacked a brainmob")
 
@@ -608,7 +599,7 @@
 
 /mob/living/silicon/robot/can_perform_action(atom/target, action_bitflags)
 	if(lockcharge || low_power_mode)
-		to_chat(src, span_warning("You can't do that right now!"))
+		to_chat(src, span_warning("Não pode fazer isso agora!"))
 		return FALSE
 	return ..()
 
@@ -814,15 +805,15 @@
 	if(!user.temporarilyRemoveItemFromInventory(new_upgrade)) //calling the upgrade's dropped() proc /before/ we add action buttons
 		return FALSE
 	if(!new_upgrade.action(src, user))
-		to_chat(user, span_danger("Upgrade error."))
+		to_chat(user, span_danger("Erro de atualização."))
 		new_upgrade.forceMove(loc) //gets lost otherwise
 		return FALSE
-	to_chat(user, span_notice("You apply the upgrade to [src]."))
+	to_chat(user, span_notice("Você aplica a atualização para[src]."))
 	add_to_upgrades(new_upgrade)
 
 ///Moves the upgrade inside the robot and registers relevant signals.
 /mob/living/silicon/robot/proc/add_to_upgrades(obj/item/borg/upgrade/new_upgrade)
-	to_chat(src, "----------------\nNew hardware detected...Identified as \"<b>[new_upgrade]</b>\"...Setup complete.\n----------------")
+	to_chat(src, "----------------\nNovo hardware detectado... Identificado como\"<b>[new_upgrade]</b>\"...Configuração completa.\n----------------")
 	if(new_upgrade.one_use)
 		logevent("Firmware [new_upgrade] run successfully.")
 		qdel(new_upgrade)
@@ -921,7 +912,7 @@
 
 /datum/action/innate/undeployment
 	name = "Disconnect from shell"
-	desc = "Stop controlling your shell and resume normal core operations."
+	desc = "Pare de controlar sua concha e retome as operações normais."
 	button_icon = 'icons/mob/actions/actions_AI.dmi'
 	button_icon_state = "ai_core"
 
@@ -971,10 +962,10 @@
 	if(incapacitated)
 		return FALSE
 	if(!HAS_TRAIT(target, TRAIT_CAN_MOUNT_CYBORGS))
-		target.visible_message(span_warning("[target] really can't seem to mount [src]..."))
+		target.visible_message(span_warning("[target]Realmente não consigo montar[src]..."))
 		return FALSE
 	if(model && !model.allow_riding)
-		target.visible_message(span_boldwarning("Unfortunately, [target] just can't seem to hold onto [src]!"))
+		target.visible_message(span_boldwarning("Infelizmente,[target]Não consigo me segurar.[src]!"))
 		return FALSE
 
 	return ..()
@@ -989,7 +980,7 @@
 
 /mob/living/silicon/robot/can_resist()
 	if(lockcharge)
-		balloon_alert(src, "locked down!")
+		balloon_alert(src, "Fechado!")
 		return FALSE
 	return ..()
 
@@ -1051,7 +1042,7 @@
 	.[/datum/job/cyborg::title] = minutes
 
 /mob/living/silicon/robot/proc/untip_roleplay()
-	to_chat(src, span_notice("Your frustration has empowered you! You can now right yourself faster!"))
+	to_chat(src, span_notice("Sua frustração o empoderou! Agora você pode se endireitar mais rápido!"))
 
 /mob/living/silicon/robot/get_fire_overlay(stacks, on_fire)
 	return make_generic_fire_overlay()
@@ -1078,7 +1069,7 @@
 	if(!length(buckled_mobs))
 		return
 	for(var/mob/living/buckled_mob as anything in buckled_mobs)
-		buckled_mob.visible_message(span_warning("[buckled_mob] is knocked off of [src] by the charge in [src]'s chassis induced by the hyperkinetic dampener field!"))
+		buckled_mob.visible_message(span_warning("[buckled_mob]é derrubado de[src]Pela carga em[src]O chassi é induzido pelo campo de amortecimento hipercinético!"))
 		buckled_mob.Paralyze(1 SECONDS)
 		unbuckle_mob(buckled_mob)
 	do_sparks(5, 0, src)

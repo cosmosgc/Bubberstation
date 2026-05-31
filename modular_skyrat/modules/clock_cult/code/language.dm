@@ -8,7 +8,7 @@
 
 /datum/language/ratvar
 	name = "Ratvarian"
-	desc = "A timeless language full of power and incomprehensible to the unenlightened."
+	desc = "Uma linguagem atemporal cheia de poder e incompreensível para os não iluminados."
 	icon_state = "ratvar"
 	key = "r"
 	default_priority = 10

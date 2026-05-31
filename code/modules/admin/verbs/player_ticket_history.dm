@@ -37,18 +37,7 @@ ADMIN_VERB(player_ticket_history, R_ADMIN, "Player Ticket History", "Allows you 
 	var/list/datum/ticket_history/history_cache = list()
 	ticket_histories[ckey] = history_cache
 
-	var/datum/db_query/ticket_lookup = SSdbcore.NewQuery("\
-		WITH DISTINCT_TICKETS AS ( \
-			SELECT id, round_id, ticket, sender, recipient FROM [format_table_name("ticket")] \
-			WHERE id IN ( \
-				SELECT MAX(id) FROM ticket GROUP BY round_id, ticket \
-			) \
-			AND round_id != :current_round \
-		) \
-		SELECT round_id, ticket FROM DISTINCT_TICKETS \
-		WHERE sender = :ckey OR recipient = :ckey \
-		ORDER BY id DESC \
-		LIMIT :max_entries",
+	var/datum/db_query/ticket_lookup = SSdbcore.NewQuery("		WITH DISTINCT_TICKETS AS ( 			SELECT id, round_id, ticket, sender, recipient FROM [format_table_name("ticket")] 			WHERE id IN ( 				SELECT MAX(id) FROM ticket GROUP BY round_id, ticket 			) 			AND round_id != :current_round 		) 		SELECT round_id, ticket FROM DISTINCT_TICKETS 		WHERE sender = :ckey OR recipient = :ckey 		ORDER BY id DESC 		LIMIT :max_entries",
 		list(
 			"ckey" = ckey,
 			"current_round" = GLOB.round_id,
@@ -57,7 +46,7 @@ ADMIN_VERB(player_ticket_history, R_ADMIN, "Player Ticket History", "Allows you 
 	)
 	if(!ticket_lookup.Execute())
 		qdel(ticket_lookup)
-		to_chat(usr, "Failed to query ticket history for [ckey]!")
+		to_chat(usr, "Não foi possível consultar o histórico de tickets para[ckey]!")
 		return
 
 	var/list/lookup_targets = list()
@@ -77,12 +66,7 @@ ADMIN_VERB(player_ticket_history, R_ADMIN, "Player Ticket History", "Allows you 
 			ticket_history.round_id = text2num(round)
 			ticket_history.ticket_number = text2num(ticket)
 
-			var/datum/db_query/ticket_lookup_instance = SSdbcore.NewQuery("\
-				SELECT action, message, timestamp, recipient, sender \
-				FROM [format_table_name("ticket")] \
-				WHERE round_id = :round AND ticket = :ticket \
-				ORDER BY id DESC \
-			", list(
+			var/datum/db_query/ticket_lookup_instance = SSdbcore.NewQuery("				SELECT action, message, timestamp, recipient, sender 				FROM [format_table_name("ticket")] 				WHERE round_id = :round AND ticket = :ticket 				ORDER BY id DESC 			", list(
 				"round" = round,
 				"ticket" = ticket
 			))
@@ -108,11 +92,11 @@ ADMIN_VERB(player_ticket_history, R_ADMIN, "Player Ticket History", "Allows you 
 	UNTIL(lookup_targets.len == 0)
 
 	if(!length(history_cache))
-		to_chat(usr, span_adminnotice("No ticket history found for [ckey]!"))
+		to_chat(usr, span_adminnotice("Nenhum histórico de ingressos encontrado para[ckey]!"))
 		ticket_histories -= ckey
 		return
 
-	to_chat(usr, span_adminnotice("Finished caching ticket history for [ckey]!"))
+	to_chat(usr, span_adminnotice("Terminado o histórico de bilhetes de cache para[ckey]!"))
 
 /datum/ticket_history_holder/ui_state(mob/user)
 	return ADMIN_STATE(R_ADMIN)

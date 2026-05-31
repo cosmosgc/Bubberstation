@@ -109,10 +109,7 @@
 
 ///Flicks a certain overlay onto an atom, handling icon_state strings
 /atom/proc/flick_overlay(image_to_show, list/show_to, duration, layer)
-	var/image/passed_image = \
-		istext(image_to_show) \
-			? image(icon, src, image_to_show, layer) \
-			: image_to_show
+	var/image/passed_image = 		istext(image_to_show) 			? image(icon, src, image_to_show, layer) 			: image_to_show
 
 	flick_overlay_global(passed_image, show_to, duration)
 
@@ -127,10 +124,7 @@
 	if(!display)
 		return null
 
-	var/mutable_appearance/passed_appearance = \
-		istext(display) \
-			? mutable_appearance(icon, display, layer) \
-			: display
+	var/mutable_appearance/passed_appearance = 		istext(display) 			? mutable_appearance(icon, display, layer) 			: display
 
 	// If you don't give it a layer, we assume you want it to layer on top of this atom
 	// Because this is vis_contents, we need to set the layer manually (you can just set it as you want on return if this is a problem)
@@ -243,7 +237,7 @@
 		return
 	if (announce_to_ghosts)
 		var/area/player_area = get_area(character)
-		deadchat_broadcast(span_game(" has arrived at the station at [span_name(player_area.name)]."), span_game("[span_name(character.real_name)] ([rank])"), follow_target = character, message_type=DEADCHAT_ARRIVALRATTLE)
+		deadchat_broadcast(span_game("Chegou à estação em[span_name(player_area.name)]."), span_game("[span_name(character.real_name)] ([rank])"), follow_target = character, message_type=DEADCHAT_ARRIVALRATTLE)
 	if(character.mind && (character.mind.assigned_role.job_flags & JOB_ANNOUNCE_ARRIVAL))
 		aas_config_announce(/datum/aas_config_entry/arrival, list("PERSON" = character.real_name,"RANK" = rank))
 

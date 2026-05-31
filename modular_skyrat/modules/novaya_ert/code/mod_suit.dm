@@ -1,13 +1,7 @@
 /datum/mod_theme/frontline
 	name = "frontline"
-	desc = "A Pan-Slavic Commonwealth Defense Collegia protective suit, designed for fortified positions operation and humanitarian aid."
-	extended_desc = "A cheaper and more versatile replacement of the dated VOSKHOD Power Armor, designed by the then-Novaya Rossiyskaya Imperiya Innovations Collegia in \
-	collaboration with Agurkrral researchers. Instead of the polyurea coated durathread-lined plasteel plates it utilises thin plates of Kevlar-backed titanium, making it lighter and more compact \
-	while leaving place for other modules; yet due to its lack of energy dissipation systems, making its user more vulnerable against conventional laser weaponry. \
-	Built-in projectile trajectory and munition assistance computer informs the operator of better places to aim, as well as the remaining munitions for \
-	the currently held weapon and its magazines. This function is quite straining on the power cell, and as such, this suit is rarely seen outside of the fortified positions or humanitarian missions; \
-	becoming the sign of what little hospitality and assistance the military can provide. However many people who had an experience with this MOD describe it as \"Very uncomfortable.\", \
-	mainly due to its lack of proper environmental regulation systems. But because of its protective capabilities, extreme mass-production and cheap price, it easily became the main armor system of the PSC DC."
+	desc = "Um traje de proteção contra Collegia da Defesa Pan-eslava, projetado para operações de posições fortificadas e ajuda humanitária."
+	extended_desc = "Uma substituição mais barata e versátil da datada Armadura de Energia VOSKHOD, projetada pela então Novaya Rossiyskaya Imperiya Inovações Collegia em colaboração com pesquisadores Agurkrral. Em vez das placas revestidas com poliureia, ele usa placas finas de titânio com suporte de Kevlar, tornando-o mais leve e compacto, deixando o lugar para outros módulos, mas devido à falta de sistemas de dissipação de energia, tornando seu usuário mais vulnerável contra armas laser convencionais. A trajetória de projéteis embutidos e o computador de assistência de munições informa o operador de melhores lugares para mirar, bem como as munições restantes para a arma e suas revistas. Esta função é bastante tensa na célula de energia, e como tal, este processo raramente é visto fora das posições fortificadas ou missões humanitárias, tornando-se o sinal de que pouca hospitalidade e assistência os militares podem fornecer. No entanto, muitas pessoas que tiveram uma experiência com este MOD descrevê-lo como\"Muito desconfortável.\", principalmente devido à sua falta de sistemas adequados de regulação ambiental. Mas por causa de suas capacidades de proteção, extrema produção em massa e preço barato, tornou-se facilmente o principal sistema de blindagem do PSC DC."
 	default_skin = "frontline"
 	armor_type = /datum/armor/mod_theme_frontline
 	complexity_max = DEFAULT_MAX_COMPLEXITY
@@ -100,11 +94,8 @@
 /datum/mod_theme/frontline/surplus
 	name = "frontline surplus"
 	activation_step_time = MOD_ACTIVATION_STEP_TIME + 3
-	desc = "A Pan-Slavic Commonwealth Defense Collegia protective suit, designed for fortified positions operation and humanitarian aid, this one looks rather old and worn out."
-	extended_desc = "A Pan-Slavic Commonwealth Defense Collegia protective suit, designed for fortified positions operation and humanitarian aid. \
-		This one was purchased at auction, the combat spec modules have been removed but \
-		it would still be right at home in the service of gunrunners and private security forces. \
-		Though, it's internal systems have degraded, and some of the ablative plating has been removed."
+	desc = "Um traje protetor Pan-Eslavo da Defesa da Commonwealth, projetado para operações de posições fortificadas e ajuda humanitária, este parece um tanto velho e desgastado."
+	extended_desc = "Um traje de proteção contra Collegia da Defesa Pan-eslava, projetado para operações de posições fortificadas e ajuda humanitária. Este foi comprado em leilão, os módulos de especificações de combate foram removidos, mas ainda estaria em casa ao serviço de traficantes de armas e forças de segurança privadas. No entanto, seus sistemas internos se degradaram, e alguns dos revestimentos ablativos foram removidos."
 	armor_type = /datum/armor/mod_theme_frontline/surplus
 
 /datum/mod_theme/frontline/surplus/set_skin(obj/item/mod/control/mod, skin)
@@ -128,21 +119,15 @@
 
 /datum/supply_pack/imports/surplus_nri_modsuit
 	name = "Surplus Combat MODsuit Crate"
-	desc = "A crate containing a single surplus MODsuit, \
-		designed for use by the Pan-Slavic Commonwealth Defense Collegia. \
-		This one has been stripped of its combat modules, but is still a good suit for those who need protection and mobility. \
-		Notably, does not use or require a armor module."
+	desc = "Uma caixa contendo um único superávit MODsuit, projetado para ser usado pela Pan-Slavic Commonwealth Defense Collegia. Este foi despojado de seus módulos de combate, mas ainda é um bom terno para aqueles que precisam de proteção e mobilidade. Notavelmente, não usa ou requer um módulo de armadura."
 	cost = CARGO_CRATE_VALUE * 22
 	contains = list(/obj/item/mod/control/pre_equipped/frontline/surplus)
 	order_flags = ORDER_CONTRABAND
 
 /datum/mod_theme/policing
 	name = "policing"
-	desc = "A Pan-Slavic Commonwealth Internal Affairs Collegia general purpose protective suit, designed for coreworld patrols."
-	extended_desc = "An Apadyne Technologies outsourced, then modified for frontier use by the responding imperial police precinct, MODsuit model, \
-		designed for reassuring panicking civilians than participating in active combat. The suit's thin plastitanium armor plating is durable against environment and projectiles, \
-		and comes with a built-in miniature power redistribution system to protect against energy weaponry; albeit ineffectively. \
-		Thanks to the modifications of the local police, additional armoring has been added to its legs and arms, at the cost of an increased system load."
+	desc = "Um traje de proteção para fins gerais da Comunidade Pan-Eslava, projetado para patrulhas do núcleo mundial."
+	extended_desc = "Uma Apadyne Technologies terceirizou, então modificada para uso fronteiriço pela delegacia de polícia imperial, modelo de traje, projetada para tranquilizar civis em pânico do que participar de combate ativo. A armadura fina de plastitânio do terno é durável contra o ambiente e projéteis, e vem com um sistema de redistribuição de energia em miniatura para proteger contra armas de energia, embora ineficazmente. Graças às modificações da polícia local, armamento adicional foi adicionado às suas pernas e braços, ao custo de um aumento da carga do sistema."
 	default_skin = "policing"
 	armor_type = /datum/armor/mod_theme_policing
 	complexity_max = DEFAULT_MAX_COMPLEXITY - 1
@@ -227,22 +212,14 @@
 ///Unrelated-to-Spider-Clan version of the module.
 /obj/item/mod/module/status_readout/operational
 	name = "MOD operational status readout module"
-	desc = "A once-common module, this technology unfortunately went out of fashion in the safer regions of space; \
-		however, it remained in use everywhere else. This particular unit hooks into the suit's spine, \
-		capable of capturing and displaying all possible biometric data of the wearer; sleep, nutrition, fitness, fingerprints, \
-		and even useful information such as their overall health and wellness. The vitals monitor also comes with a speaker, loud enough \
-		to alert anyone nearby that someone has, in fact, died. This specific unit has a clock and operational ID readout."
+	desc = "Um módulo uma vez comum, esta tecnologia infelizmente saiu da moda nas regiões mais seguras do espaço, no entanto, permaneceu em uso em todos os outros lugares. Esta unidade em particular se conecta à espinha do terno, capaz de capturar e exibir todos os dados biométricos possíveis do usuário, sono, nutrição, aptidão, impressões digitais, e até informações úteis, como sua saúde e bem-estar. O monitor de sinais vitais também vem com um alto-falante, alto o suficiente para alertar qualquer pessoa por perto que alguém tenha, de fato, morrido. Esta unidade específica tem um relógio e identificação operacional."
 	display_time = TRUE
 	death_sound = 'modular_skyrat/modules/novaya_ert/sound/flatline.ogg'
 
 ///Blatant copy of the adrenaline boost module.
 /obj/item/mod/module/auto_doc
 	name = "MOD automatic paramedical module"
-	desc = "The reverse-engineered and redesigned medical assistance system, previously used by the now decommissioned VOSKHOD combat armor. \
-		The technology it uses is very similar to the one of Spider Clan, yet Innovations and Defense Collegium reject any similarities. \
-		Using a built-in storage of chemical compounds and miniature chemical mixer, it's capable of injecting its user with simple painkillers and coagulants, \
-		assisting them with their restoration, as long as they don't overdose themselves. However, this system heavily relies on some rarely combat-available chemical compounds to prepare its injections, \
-		mainly Cryptobiolin, which appear in the user's bloodstream from time to time, and its trivial damage assesment systems are inadequate for complete restoration purposes."
+	desc = "O sistema de assistência médica de engenharia reversa e redesenhado, anteriormente usado pela armadura de combate VOSKHOD desativada. A tecnologia que ele usa é muito semelhante à do Clã Aranha, mas Inovações e Defesa Collegium rejeitam qualquer semelhança. Usando um armazenamento incorporado de compostos químicos e misturador químico em miniatura, é capaz de injetar em seu usuário analgésicos simples e coagulantes, ajudando-os na restauração, desde que não se sobrecarreguem. No entanto, este sistema depende fortemente de alguns compostos químicos raramente disponíveis para combate para preparar suas injeções, principalmente Cryptobiolina, que aparecem na corrente sanguínea do usuário de tempos em tempos, e seus sistemas triviais de avaliação de danos são inadequados para fins de restauração completa."
 	icon_state = "adrenaline_boost"
 	module_type = MODULE_TOGGLE
 	incompatible_modules = list(/obj/item/mod/module/adrenaline_boost, /obj/item/mod/module/auto_doc)
@@ -282,19 +259,19 @@
 		return FALSE
 
 	if(!check_power(use_energy_cost))
-		balloon_alert(mod.wearer, "carga insuficiente!")
+		balloon_alert(mod.wearer, "Insuficiência de carga!")
 		SEND_SIGNAL(src, COMSIG_MODULE_DEACTIVATED)
 		return FALSE
 
 	if(!(allow_flags & MODULE_ALLOW_PHASEOUT) && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
-		to_chat(mod.wearer, span_warning("You cannot activate this right now."))
+		to_chat(mod.wearer, span_warning("Você não pode ativar isso agora."))
 		return FALSE
 
 	if(SEND_SIGNAL(src, COMSIG_MODULE_TRIGGERED) & MOD_ABORT_USE)
 		return FALSE
 
 	if(!reagents.has_reagent(reagent_required, reagent_required_amount))
-		balloon_alert(mod.wearer, "not enough chems!")
+		balloon_alert(mod.wearer, "Chems não suficientes!")
 		SEND_SIGNAL(src, COMSIG_MODULE_DEACTIVATED)
 		return FALSE
 
@@ -310,22 +287,22 @@
 	if(new_bruteloss)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/mine_salve, 10)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/sal_acid, 5)
-		to_chat(mod.wearer, span_warning("Brute treatment administered. Overdose risks present on further use, consult your first-aid analyzer."))
+		to_chat(mod.wearer, span_warning("Tratamento brutal administrado. Riscos de overdose presentes em uso, consulte seu analisador de primeiros socorros."))
 
 	if(new_fireloss)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/mine_salve, 10)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/oxandrolone, 5)
-		to_chat(mod.wearer, span_warning("Burn treatment administered. Overdose risks present on further use, consult your first-aid analyzer."))
+		to_chat(mod.wearer, span_warning("Tratamento de queimadura administrado. Riscos de overdose presentes em uso, consulte seu analisador de primeiros socorros."))
 
 	if(new_toxloss)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/mine_salve, 10)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/pen_acid, 5)
-		to_chat(mod.wearer, span_warning("Toxin treatment administered. Overdose risks present on further use, consult your first-aid analyzer."))
+		to_chat(mod.wearer, span_warning("Tratamento de toxina administrado. Riscos de overdose presentes em uso, consulte seu analisador de primeiros socorros."))
 
 	if(new_stamloss)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/mine_salve, 10)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/stimulants, 10)
-		to_chat(mod.wearer, span_warning("Combat stimulants administered. Overdose risks present on further use, consult your first-aid analyzer."))
+		to_chat(mod.wearer, span_warning("Estimulantes de combate administrados. Riscos de overdose presentes em uso, consulte seu analisador de primeiros socorros."))
 
 	mod.wearer.reagents.add_reagent(/datum/reagent/medicine/coagulant, 5)
 	reagents.remove_reagent(reagent_required, reagent_required_amount)
@@ -348,7 +325,7 @@
 	if(!attacking_item.reagents.trans_to(src, reagent_required_amount, target_id = reagent_required))
 		return FALSE
 /// And if you got to that point without screwing up then it awards you with being refilled.
-	balloon_alert(mod.wearer, "charge reloaded")
+	balloon_alert(mod.wearer, "Carga recarregada.")
 	return TRUE
 
 /obj/item/mod/module/auto_doc/on_deactivation(display_message = TRUE, deleting = FALSE)
@@ -383,10 +360,10 @@
 
 	mod.wearer.reagents.add_reagent(/datum/reagent/cryptobiolin, 10)
 	mod.wearer.reagents.add_reagent(/datum/reagent/drug/maint/sludge, 5)
-	to_chat(affected_mob, span_danger("Your head starts slightly spinning, and your chest hurts."))
+	to_chat(affected_mob, span_danger("Sua cabeça começa a girar ligeiramente, e seu peito dói."))
 
 /// Not exactly a MODsuit thing but it's needed for the refills huh?
 /obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin
 	name = "bottle of cryptobiolin"
-	desc = "Nothing screams budget cuts like bottled suit fluid."
+	desc = "Nada grita cortes de orçamento como fluido de terno engarrafado."
 	list_reagents = list(/datum/reagent/cryptobiolin = 100)

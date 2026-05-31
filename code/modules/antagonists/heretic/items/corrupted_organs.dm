@@ -1,14 +1,14 @@
 /// Renders you unable to see people who were heretics at the time that this organ is gained
 /obj/item/organ/eyes/corrupt
 	name = "corrupt orbs"
-	desc = "These eyes have seen something they shouldn't have."
+	desc = "Esses olhos viram algo que não deveriam ter visto."
 	icon_state = "eyes_voidwalker"
 	iris_overlay = null
 	eye_color_left = COLOR_VOID_PURPLE
 	eye_color_right = COLOR_VOID_PURPLE
 	organ_flags = parent_type::organ_flags | ORGAN_HAZARDOUS
 	pupils_name = span_hypnophrase("pierced realities") //teeny tiny mansus portals, IN YOUR EYEBALLS (known to cause cancer in the state of california)
-	penlight_message = "ARE THE LOCK, THE LIGHT IS THE KEY! THE HIGHER I RISE, THE MORE I-"
+	penlight_message = "A luz é a chave! Quanto mais alto eu subo, mais eu..."
 	/// The override images we are applying
 	var/list/hallucinations
 
@@ -44,19 +44,19 @@
 /obj/item/organ/eyes/corrupt/penlight_examine(mob/living/viewer, obj/item/examtool)
 	viewer.playsound_local(src, 'sound/effects/magic/magic_block_mind.ogg', 75, FALSE)
 	if(!viewer.is_blind() && !IS_HERETIC_OR_MONSTER(viewer))
-		to_chat(viewer, span_danger("Your eyes sizzle in their sockets as eldritch energies assault them!"))
+		to_chat(viewer, span_danger("Seus olhos brilham em suas órbitas enquanto as energias de Eldritch os atacam!"))
 		viewer.emote("scream")
 		viewer.add_mood_event("gates_of_mansus", /datum/mood_event/gates_of_mansus)
 		viewer.adjust_timed_status_effect(15 SECONDS, /datum/status_effect/speech/slurring/heretic)
 		viewer.adjust_timed_status_effect(5 SECONDS, /datum/status_effect/temporary_blindness) //debounce basically.
 		var/obj/item/organ/eyes/parboiled = viewer.get_organ_slot(ORGAN_SLOT_EYES)
 		parboiled?.apply_organ_damage(40) //enough to blind, but not enough to blind *permanently*
-	return "[owner.p_Their()] eyes [span_hypnophrase(penlight_message)]"
+	return "[owner.p_Their()]Olhos[span_hypnophrase(penlight_message)]"
 
 /// Sometimes speak in incomprehensible tongues
 /obj/item/organ/tongue/corrupt
 	name = "corrupt tongue"
-	desc = "This one tells only lies."
+	desc = "Este só diz mentiras."
 	organ_flags = parent_type::organ_flags | ORGAN_HAZARDOUS
 
 /obj/item/organ/tongue/corrupt/Initialize(mapload)
@@ -83,7 +83,7 @@
 /// Randomly secretes alcohol or hallucinogens when you're drinking something
 /obj/item/organ/liver/corrupt
 	name = "corrupt liver"
-	desc = "After what you've seen you could really go for a drink."
+	desc = "Depois do que você viu você poderia realmente ir para uma bebida."
 	organ_flags = parent_type::organ_flags | ORGAN_HAZARDOUS
 	/// How much extra ingredients to add?
 	var/amount_added = 5
@@ -123,13 +123,13 @@
 	extra_reagents.add_reagent(pick(extra_ingredients), amount_added)
 	extra_reagents.trans_to(human, amount_added, transferred_by = src, methods = INJECT)
 	if (prob(20))
-		to_chat(human, span_warning("As you take a sip, you feel something bubbling in your stomach..."))
+		to_chat(human, span_warning("Ao tomar um gole, sente algo borbulhando no estômago..."))
 
 
 /// Rapidly become hungry if you are not digesting blood
 /obj/item/organ/stomach/corrupt
 	name = "corrupt stomach"
-	desc = "This parasite demands an unwholesome diet in order to be satisfied."
+	desc = "Este parasita exige uma dieta prejudicial para ser satisfeito."
 	organ_flags = parent_type::organ_flags | ORGAN_HAZARDOUS
 	/// Do we have an unholy thirst?
 	var/thirst_satiated = FALSE
@@ -162,7 +162,7 @@
 		return
 
 	if (!thirst_satiated)
-		to_chat(source, span_cult_italic("The thirst is satisfied... for now."))
+		to_chat(source, span_cult_italic("A sede está satisfeita... por enquanto."))
 	thirst_satiated = TRUE
 	deltimer(thirst_timer)
 	thirst_timer = addtimer(VARSET_CALLBACK(src, thirst_satiated, FALSE), 3 MINUTES, TIMER_STOPPABLE | TIMER_DELETE_ME)
@@ -194,7 +194,7 @@
 /// Occasionally bombards you with spooky hands and lets everyone hear your pulse.
 /obj/item/organ/heart/corrupt
 	name = "corrupt heart"
-	desc = "What corruption is this spreading along with the blood?"
+	desc = "Que corrupção está se espalhando junto com o sangue?"
 	beat_noise = "THE THUMPTHUMPTHUMPING OF THE CHISEL ON THE GLASS. OPEN THE FUTURE SHATTER THE-"
 	organ_flags = parent_type::organ_flags | ORGAN_HAZARDOUS
 	cell_line = CELL_LINE_ORGAN_HEART_CURSED
@@ -221,12 +221,12 @@
 		hearer.adjust_timed_status_effect(15 SECONDS, /datum/status_effect/speech/slurring/heretic)
 		var/obj/item/bodypart/head/regret = hearer.get_bodypart(BODY_ZONE_HEAD)
 		regret?.force_wound_upwards(/datum/wound/pierce/bleed/severe/magicalearpain, wound_source = "stethoscoped a corrupted heart")
-	return "[owner.p_Their()] heart produces [span_hypnophrase(beat_noise)]"
+	return "[owner.p_Their()]O coração produz[span_hypnophrase(beat_noise)]"
 
 /// Sometimes cough out some kind of dangerous gas
 /obj/item/organ/lungs/corrupt
 	name = "corrupt lungs"
-	desc = "Some things SHOULD be drowned in tar."
+	desc = "Algumas coisas devem ser afogadas no alcatrão."
 	organ_flags = parent_type::organ_flags | ORGAN_HAZARDOUS
 	breath_noise = "SECRET SONGS OF THE BREAKING OF THE MAKING OF THE WAKING FROM THE-"
 	/// How likely are we not to cough every time we take a breath?
@@ -265,12 +265,12 @@
 		hearer.emote("scream")
 		hearer.add_mood_event("gates_of_mansus", /datum/mood_event/gates_of_mansus)
 		hearer.sound_damage(10, 40 SECONDS)
-	return "[owner.p_Their()] lungs emit [span_hypnophrase(breath_noise)]"
+	return "[owner.p_Their()]pulmões emitem[span_hypnophrase(breath_noise)]"
 
 /// It's full of worms
 /obj/item/organ/appendix/corrupt
 	name = "corrupt appendix"
-	desc = "What kind of dark, cosmic force is even going to bother to corrupt an appendix?"
+	desc = "Que tipo de força cósmica escura se incomodará em corromper um apêndice?"
 	organ_flags = parent_type::organ_flags | ORGAN_HAZARDOUS
 	/// How likely are we to spawn worms?
 	var/worm_chance = 2

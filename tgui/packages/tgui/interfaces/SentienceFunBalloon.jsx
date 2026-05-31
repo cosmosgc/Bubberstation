@@ -14,12 +14,12 @@ export const SentienceFunBalloon = (props) => {
   const { act, data } = useBackend();
   const { group_name, range, antag } = data;
   return (
-    <Window title={'Sentience Fun Balloon'} width={400} height={200}>
+    <Window title={'Balão Divertido Sentido'} width={400} height={200}>
       <Window.Content>
         <Stack vertical>
-          <Section title="Configure balloon effect:">
+          <Section title="Configurar efeito balão:">
             <LabeledList>
-              <LabeledList.Item label="Group name">
+              <LabeledList.Item label="Nome do grupo">
                 <Input
                   fluid
                   value={group_name}
@@ -30,7 +30,7 @@ export const SentienceFunBalloon = (props) => {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Effect range">
+              <LabeledList.Item label="Faixa de efeitos">
                 <NumberInput
                   tickWhileDragging
                   width="84px"
@@ -46,7 +46,7 @@ export const SentienceFunBalloon = (props) => {
                   }
                 />
               </LabeledList.Item>
-              <LabeledList.Item label="Make group into antagonists?">
+              <LabeledList.Item label="Transformar grupos em antagonistas?">
                 <Button.Checkbox
                   icon={data.antag ? 'user-secret' : 'times'}
                   content={data.antag ? 'Yes' : 'No'}
@@ -62,7 +62,7 @@ export const SentienceFunBalloon = (props) => {
               icon="magic"
               color="good"
               textAlign="center"
-              content="Pop Balloon"
+              content="Pop Balão"
               onClick={() => act('pop')}
             />
           </Section>

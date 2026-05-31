@@ -44,17 +44,11 @@
 
 /datum/species/jelly/get_species_lore()
 	return list(
-		"A species essentially crafted whole-cloth by Nanotrasen's R&D department in Sector C7, \
-		slimepeople were produced by uplifting xenobiological slimes made in a laboratory environment. \
-		They have since spread out in small numbers all over the universe, but the majority remain in the company's orbit.",
+		"A species essentially crafted whole-cloth by Nanotrasen's R&D department in Sector C7, 		slimepeople were produced by uplifting xenobiological slimes made in a laboratory environment. 		They have since spread out in small numbers all over the universe, but the majority remain in the company's orbit.",
 
-		"Their bodies are malleable, and structurally resemble a single cell, with simple organs in the center of their bodies. \
-		They have no defined appearance, but struggle to fully pass as other species.",
+		"Their bodies are malleable, and structurally resemble a single cell, with simple organs in the center of their bodies. 		They have no defined appearance, but struggle to fully pass as other species.",
 
-		"Slimepeople have developed a beautiful system of body language, typically involving light and the fluidity of their bodies in elaborate dances and gestures. \
-		Due to their chemical makeup, they are able to produce bioluminescent lighting within their membrane. \
-		It has been documented that a person can be 'melted' into a slimeperson much like with non-sentient, xenobiological slimes. \
-		It has little effect on sapience, and as a result, a few researchers in Nanotrasen R&D have transformed themselves this way.",
+		"Slimepeople have developed a beautiful system of body language, typically involving light and the fluidity of their bodies in elaborate dances and gestures. 		Due to their chemical makeup, they are able to produce bioluminescent lighting within their membrane. 		It has been documented that a person can be 'melted' into a slimeperson much like with non-sentient, xenobiological slimes. 		It has little effect on sapience, and as a result, a few researchers in Nanotrasen R&D have transformed themselves this way.",
 	)
 
 /datum/species/jelly/roundstartslime/create_pref_unique_perks()
@@ -64,7 +58,7 @@
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "biohazard",
 		SPECIES_PERK_NAME = "Squishy Form",
-		SPECIES_PERK_DESC = "Being made of slime, you have the ability to alter your physical form to be whatever you choose! You may grow ears, change your hair, and even become a taur-like if you so choose, at the press of a button and the snap of a finger!"
+		SPECIES_PERK_DESC = "Sendo feito de lodo, você tem a habilidade de alterar sua forma física para ser o que quiser! Você pode crescer orelhas, mudar seu cabelo, e até mesmo se tornar um taur-like se você assim escolher, ao apertar um botão e o estalar de um dedo!"
 	))
 
 	return perk_descriptions
@@ -121,7 +115,7 @@
 		return
 	alterer.visible_message(
 		span_notice("[owner] [shapeshift_text]"),
-		span_notice("You focus intently on altering your body while standing perfectly still...")
+		span_notice("Você se concentra atentamente em alterar seu corpo enquanto está perfeitamente parado...")
 	)
 	change_form(alterer)
 
@@ -283,7 +277,7 @@
 			if(new_style)
 				alterer.set_facial_hairstyle(new_style, update = TRUE)
 		if("Hair Color")
-			var/hair_area = tgui_alert(alterer, "Select which color you would like to change", "Hair Color Alterations", list("Hairstyle", "Facial Hair", "Both"))
+			var/hair_area = tgui_alert(alterer, "Selecione qual cor você gostaria de mudar.", "Hair Color Alterations", list("Hairstyle", "Facial Hair", "Both"))
 			if(!hair_area)
 				return
 			var/new_hair_color = tgui_color_picker(alterer, "Select your new hair color", "Hair Color Alterations", alterer.dna.features[FEATURE_MUTANT_COLOR])
@@ -319,7 +313,7 @@
 	switch(dna_alteration)
 		if("Body Size")
 			if(oversized_user && !HAS_TRAIT(alterer, TRAIT_OVERSIZED))
-				var/reset_size = tgui_alert(alterer, "Do you wish to return to being oversized?", "Size Change", list("Yes", "No"))
+				var/reset_size = tgui_alert(alterer, "Deseja voltar a ser grande demais?", "Size Change", list("Yes", "No"))
 				if(reset_size == "Yes")
 					alterer.add_quirk(/datum/quirk/oversized)
 					return
@@ -458,7 +452,7 @@
 	if(alterer.get_organ_slot(ORGAN_SLOT_TESTICLES))
 		genital_list += list("Testicles Size")
 	if(!length(genital_list))
-		alterer.balloon_alert(alterer, "no genitals!")
+		alterer.balloon_alert(alterer, "Sem genitais!")
 
 	var/dna_alteration = tgui_input_list(
 		alterer,
@@ -559,8 +553,8 @@
 /datum/action/innate/alter_form/proc/begin_character_alteration(mob/living/carbon/human/alterer)
 	var/list/mob/living/carbon/viable_targets = list()
 
-	to_chat(alterer, span_userdanger("This ability is not meant to be used for mechanical advantage."))
-	to_chat(alterer, span_warning("Your use of character mode will be admin logged! Don't mess about!"))
+	to_chat(alterer, span_userdanger("Essa habilidade não deve ser usada para vantagem mecânica."))
+	to_chat(alterer, span_warning("Seu uso do modo de caráter será registrado! Não brinque!"))
 
 	for (var/mob/living/carbon/human/iter_carbon in view(alterer))
 		if (!is_valid_char_alteration_target(iter_carbon))
@@ -576,7 +570,7 @@
 		5 SECONDS,
 	)
 	if (isnull(target) || !is_valid_char_alteration_target(target))
-		alterer.balloon_alert(alterer, "invalid selection!")
+		alterer.balloon_alert(alterer, "Seleção inválida!")
 		return
 
 	var/mode = tgui_alert(
@@ -600,7 +594,7 @@
 			return
 
 	if (isnull(target_client) || isnull(target_mob))
-		alterer.balloon_alert(alterer, "invalid selection!")
+		alterer.balloon_alert(alterer, "Seleção inválida!")
 		return
 
 	var/list/prefdata_names = target_client.prefs.create_character_profiles()
@@ -616,7 +610,7 @@
 		timeout = 5 SECONDS
 	)
 	if (isnull(target_char_name))
-		alterer.balloon_alert(alterer, "no selection!")
+		alterer.balloon_alert(alterer, "Sem seleção!")
 		return
 
 	if (!is_valid_char_alteration_target(target))
@@ -632,7 +626,7 @@
 	)
 
 	if (allowed != "Yes")
-		alterer.balloon_alert(alterer, "transformation rejected")
+		alterer.balloon_alert(alterer, "Transformação rejeitada.")
 		return
 
 	var/datum/preferences/prefs = target_client?.prefs
@@ -659,8 +653,8 @@
  */
 /datum/action/innate/alter_form/proc/do_char_alteration(mob/living/carbon/human/alterer, mob/living/carbon/human/target, datum/preferences/char_source)
 	target.visible_message(
-		span_warning("[target.get_visible_name()] unnervingly twitches, [target.p_their()] body distorting... until eventually transforming into something new."),
-		span_warning("Your body sears and tears, taking a new form!")
+		span_warning("[target.get_visible_name()]Enervantemente treme,[target.p_their()]corpo distorcendo... até que eventualmente se transforma em algo novo."),
+		span_warning("Seu corpo sela e lágrimas, tomando uma nova forma!")
 	)
 	var/original_name = target.dna.real_name
 
@@ -693,7 +687,7 @@
 	var/curr_name = human_owner.dna.real_name
 	if (curr_name == orig_name)
 		return
-	return span_warning("This character has been transformed via Shapeshift, originally being [orig_name].")
+	return span_warning("Este personagem foi transformado via Shapeshift, originalmente sendo[orig_name].")
 
 /**
  * Validates if the target can be transformed.

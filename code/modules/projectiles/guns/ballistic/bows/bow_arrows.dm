@@ -27,7 +27,7 @@
 ///base arrow projectile
 /obj/projectile/bullet/arrow
 	name = "arrow"
-	desc = "Ow! Get it out of me!"
+	desc = "Ow! Pneu é tão de mim!"
 	icon = 'icons/obj/weapons/bows/arrows.dmi'
 	icon_state = "arrow_projectile"
 	damage = 50
@@ -49,7 +49,7 @@
 /// sticky arrows
 /obj/item/ammo_casing/arrow/sticky
 	name = "sticky arrow"
-	desc = "A sticky arrow. Not sharp-ended, but ripping it off yourself once hit would be rather difficult and painful."
+	desc = "Uma flecha pegajosa. Não de ponta afiada, mas arrancar uma vez seria difícil e doloroso."
 	icon_state = "sticky_arrow"
 	inhand_icon_state = "sticky_arrow"
 	base_icon_state = "sticky_arrow"
@@ -58,7 +58,7 @@
 ///sticky arrow projectile
 /obj/projectile/bullet/arrow/sticky
 	name = "sticky arrow"
-	desc = "Quite the sticky situation..."
+	desc = "Que situação complicada..."
 	icon_state = "sticky_arrow_projectile"
 	damage = 30
 	speed = 1.3
@@ -78,7 +78,7 @@
 /// poison arrows
 /obj/item/ammo_casing/arrow/poison
 	name = "poisonous arrow"
-	desc = "A poisonous arrow."
+	desc = "Uma flor venenosa."
 	icon_state = "poison_arrow"
 	inhand_icon_state = "poison_arrow"
 	base_icon_state = "poison_arrow"
@@ -87,7 +87,7 @@
 /// poison arrow projctile
 /obj/projectile/bullet/arrow/poison
 	name = "poisonous arrow"
-	desc = "Better to not get hit with this!"
+	desc = "Melhor não ser atingido com isso!"
 	icon_state = "poison_arrow_projectile"
 	damage = 40
 	embed_type = /datum/embedding/arrow
@@ -103,7 +103,7 @@
 /// holy arrows
 /obj/item/ammo_casing/arrow/holy
 	name = "holy arrow"
-	desc = "A holy diver seeking its target."
+	desc = "Um mergulhador sagrado procurando seu mundo."
 	icon_state = "holy_arrow"
 	inhand_icon_state = "holy_arrow"
 	base_icon_state = "holy_arrow"
@@ -112,7 +112,7 @@
 /// holy arrow projectile
 /obj/projectile/bullet/arrow/holy
 	name = "holy arrow"
-	desc = "Here it comes, cultist scum!"
+	desc = "Aí vem, escória cultista!"
 	icon_state = "holy_arrow_projectile"
 
 /obj/projectile/bullet/arrow/holy/Initialize(mapload)
@@ -124,10 +124,7 @@
 // completely dogshit quality and they break when they hit something.
 /obj/item/ammo_casing/arrow/plastic
 	name = "plastic arrow"
-	desc = "The earliest mining teams within the Spinward Sector were the somewhat stout ancestors of the modern settlers. These teams \
-		found themselves often unable to access the quality materials they were digging up for equipment maintenance, all being sent off-site. \
-		Left with few options, and in need of a way to protect themselves in the hostile work environments of the Spinward, they turned \
-		to the one material they had in abundance."
+	desc = "As primeiras equipes de mineração dentro do Setor Spinward foram os ancestrais fortes dos colonos modernos. Essas equipes muitas vezes não conseguiram acessar os materiais de qualidade que estavam desenterrando para manutenção de equipamentos, todos sendo enviados para fora do local. Deixados com poucas opções, e precisando de uma maneira de se proteger nos ambientes de trabalho hostis do Spinward, eles se voltaram para o único material que tinham em abundância."
 	icon_state = "plastic_arrow"
 	base_icon_state = "plastic_arrow"
 	projectile_type = /obj/projectile/bullet/arrow/plastic
@@ -137,7 +134,7 @@
 /// plastic arrow projectile
 /obj/projectile/bullet/arrow/plastic
 	name = "plastic arrow"
-	desc = "If this is about to kill you, you should feel genuine shame."
+	desc = "Se isso está prestes a te matar, você deve sentir verdadeira vergonha."
 	damage = 5
 	stamina = 50
 	weak_against_armour = TRUE
@@ -146,7 +143,7 @@
 /// special pyre sect arrow
 /obj/item/ammo_casing/arrow/holy/blazing
 	name = "blazing star arrow"
-	desc = "A holy diver seeking its target, blessed with fire. Will ignite on hit, destroying the arrow. But if you hit an already ignited target...?"
+	desc = "Um mergulhador sagrado buscando seu alvo, abençoado com fogo. Vai incendiar com o golpe, destruindo a flecha. Mas se acertar um alvo já incendiado...?"
 	icon_state = "flaming_arrow"
 	inhand_icon_state = "flaming_arrow"
 	base_icon_state = "flaming_arrow"
@@ -155,7 +152,7 @@
 
 /obj/projectile/bullet/arrow/blazing
 	name = "blazing arrow"
-	desc = "THE UNMATCHED POWER OF THE SUN"
+	desc = "O PODER DESEMPENHO DO SOL"
 	icon_state = "flaming_arrow_projectile"
 	damage_type = BURN
 	embed_type = null
@@ -166,17 +163,17 @@
 		return
 	var/mob/living/carbon/human/human_target = target
 	if(!human_target.on_fire)
-		to_chat(human_target, span_danger("[src] explodes into flames which quickly envelop you!"))
+		to_chat(human_target, span_danger("[src]Explode em chamas que rapidamente envolvem você!"))
 		human_target.adjust_fire_stacks(2)
 		human_target.ignite_mob()
 		return
-	to_chat(human_target, span_danger("[src] reacts with the flames enveloping you! Oh shit!"))
+	to_chat(human_target, span_danger("[src]Reage com as chamas que o envolvem! Merda!"))
 	explosion(src, light_impact_range = 1, flame_range = 2) //ow
 
 /// Ashen arrows
 /obj/item/ammo_casing/arrow/ashen
 	name = "ashen arrow"
-	desc = "An arrow made from watcher sinew and bone. Seems unusually lethal against the creatures it is made from."
+	desc = "Uma seta feita de osso e osso. Parece anormalmente letal contra as criaturas de que é feito."
 	icon_state = "ashen_arrow"
 	inhand_icon_state = "ashen_arrow"
 	base_icon_state = "ashen_arrow"

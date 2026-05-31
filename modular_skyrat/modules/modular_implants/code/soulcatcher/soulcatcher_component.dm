@@ -43,13 +43,13 @@
 
 	var/signal_result = SEND_SIGNAL(parent_body, COMSIG_SOULCATCHER_SCAN_BODY, parent_body)
 	if(!signal_result)
-		to_chat(user, span_warning("[parent_body] has already been scanned!"))
+		to_chat(user, span_warning("[parent_body]Já foi escaneado!"))
 		return FALSE
 
 	if(istype(parent, /obj/item/handheld_soulcatcher))
 		var/obj/item/handheld_soulcatcher/parent_device = parent
 		playsound(parent_device, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
-		parent_device.visible_message(span_notice("[parent_device] beeps: [parent_body] is now scanned."))
+		parent_device.visible_message(span_notice("[parent_device]BIPS:[parent_body]Agora está escaneado."))
 
 	return TRUE
 
@@ -57,7 +57,7 @@
 	/// What is the name of the room?
 	name = "Default Room"
 	/// What is the description of the room?
-	room_description = "An orange platform suspended in space orbited by reflective cubes of various sizes. There really isn't much here at the moment."
+	room_description = "Uma plataforma laranja suspensa no espaço orbitada por cubos reflexivos de vários tamanhos. Não há muito aqui no momento."
 
 /// Attemps to add a ghost to the soulcatcher room.
 /datum/carrier_room/soulcatcher/proc/add_soul_from_ghost(mob/dead/observer/ghost)
@@ -105,11 +105,11 @@
 	current_mobs += new_soul
 	soul_component.current_room = WEAKREF(src)
 
-	to_chat(new_soul, span_cyan("You find yourself now inside of: [name]"))
+	to_chat(new_soul, span_cyan("Você se encontra agora dentro de:[name]"))
 	to_chat(new_soul, span_notice(room_description))
-	to_chat(new_soul, span_doyourjobidiot("You have entered a soulcatcher, do not share any information you have received while a ghost. If you have died within the round, you do not know your identity until your body has been scanned, standard blackout policy also applies."))
-	to_chat(new_soul, span_notice("While inside of [src], you are able to speak and emote by using the normal hotkeys and verbs, unless disabled by the owner."))
-	to_chat(new_soul, span_notice("You may use the leave soulcatcher verb to leave the soulcatcher and return to your body at any time."))
+	to_chat(new_soul, span_doyourjobidiot("Você entrou em um caça-almas, não compartilha nenhuma informação que recebeu enquanto um fantasma. Se você morreu no round, não sabe sua identidade até que seu corpo seja escaneado, a política padrão de apagão também se aplica."))
+	to_chat(new_soul, span_notice("Enquanto dentro de[src]Você é capaz de falar e emocionar usando as teclas de atalho e verbos normais, a menos que seja desativada pelo dono."))
+	to_chat(new_soul, span_notice("Você pode usar o verbo de deixar a alma pegar para deixar a alma pegar e voltar para o seu corpo a qualquer momento."))
 
 	var/atom/parent_atom = parent_object
 	if(istype(parent_atom))

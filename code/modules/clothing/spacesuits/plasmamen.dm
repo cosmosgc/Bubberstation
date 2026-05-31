@@ -2,7 +2,7 @@
 
 /obj/item/clothing/suit/space/eva/plasmaman
 	name = "EVA plasma envirosuit"
-	desc = "A special plasma containment suit designed to be space-worthy, as well as worn over other clothing. Like its smaller counterpart, it can automatically extinguish the wearer in a crisis, and holds twice as many charges."
+	desc = "Um traje especial de contenção de plasma projetado para ser digno de espaço, bem como usado sobre outras roupas. Como sua contraparte menor, ele pode automaticamente extinguir o usuário em uma crise, e detém o dobro de acusações."
 	allowed = list(/obj/item/gun, /obj/item/ammo_casing, /obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank)
 	armor_type = /datum/armor/eva_plasmaman
 	resistance_flags = FIRE_PROOF
@@ -20,7 +20,7 @@
 
 /obj/item/clothing/suit/space/eva/plasmaman/examine(mob/user)
 	. = ..()
-	. += span_notice("There [extinguishes_left == 1 ? "is" : "are"] [extinguishes_left] extinguisher charge\s left in this suit.")
+	. += span_notice("Ali.[extinguishes_left == 1 ? "is" : "are"] [extinguishes_left]A carga do extintor é deixada neste terno.")
 
 /obj/item/clothing/suit/space/eva/plasmaman/equipped(mob/living/user, slot)
 	. = ..()
@@ -51,7 +51,7 @@
 	COOLDOWN_START(src, extinguish_timer, extinguish_cooldown)
 	// Check if our (possibly other) wearer is on fire once the cooldown ends
 	addtimer(CALLBACK(src, PROC_REF(check_fire_state)), extinguish_cooldown)
-	owner.visible_message(span_warning("[owner]'s suit automatically extinguishes [owner.p_them()]!"), span_warning("Your suit automatically extinguishes you."))
+	owner.visible_message(span_warning("[owner]O traje se apaga automaticamente.[owner.p_them()]!"), span_warning("Seu traje automaticamente o apaga."))
 	owner.extinguish_mob()
 	new /obj/effect/particle_effect/water(get_turf(owner))
 
@@ -60,11 +60,11 @@
 		return
 
 	if (extinguishes_left == initial(extinguishes_left))
-		to_chat(user, span_notice("The inbuilt extinguisher is full."))
+		to_chat(user, span_notice("O extintor embutido está cheio."))
 		return ITEM_INTERACT_BLOCKING
 
 	extinguishes_left = initial(extinguishes_left)
-	to_chat(user, span_notice("You refill the suit's built-in extinguisher, using up the cartridge."))
+	to_chat(user, span_notice("Você enche o extintor embutido, usando o cartucho."))
 	check_fire_state()
 	qdel(tool)
 	return ITEM_INTERACT_SUCCESS
@@ -72,7 +72,7 @@
 //I just want the light feature of helmets
 /obj/item/clothing/head/helmet/space/plasmaman
 	name = "plasma envirosuit helmet"
-	desc = "A special containment helmet that allows plasma-based lifeforms to exist safely in an oxygenated environment. It is space-worthy, and may be worn in tandem with other EVA gear."
+	desc = "Um capacete de contenção especial que permite que formas de vida baseadas em plasma existam em segurança em um ambiente oxigenado. É digno de espaço, e pode ser usado em conjunto com outros equipamentos EVA."
 	icon = 'icons/obj/clothing/head/plasmaman_hats.dmi'
 	worn_icon = 'icons/mob/clothing/head/plasmaman_head.dmi'
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL | SNUG_FIT | STACKABLE_HELMET_EXEMPT | PLASMAMAN_PREVENT_IGNITION | HEADINTERNALS
@@ -138,7 +138,7 @@
 	if(!.)
 		return
 	if(helmet_on)
-		to_chat(user, span_notice("Your helmet's torch can't pass through your welding visor!"))
+		to_chat(user, span_notice("A tocha do seu capacete não pode passar pelo seu visor de solda!"))
 		set_light_on(FALSE)
 		helmet_on = FALSE
 	playsound(src, up ? SFX_VISOR_UP : SFX_VISOR_DOWN, 50, TRUE)
@@ -163,17 +163,17 @@
 		return NONE
 
 	if(smile)
-		to_chat(user, span_warning("Seems like someone already drew something on [src]'s visor!"))
+		to_chat(user, span_warning("Parece que alguém já desenhou algo sobre[src]O visor!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/toy/crayon/crayon = tool
-	to_chat(user, span_notice("You start drawing a smiley face on [src]'s visor..."))
+	to_chat(user, span_notice("Você começa a desenhar um rosto sorridente[src]O visor..."))
 	if(!do_after(user, 2.5 SECONDS, target = src))
 		return ITEM_INTERACT_BLOCKING
 
 	smile = TRUE
 	smile_color = crayon.paint_color
-	to_chat(user, "You draw a smiley on [src] visor.")
+	to_chat(user, "Você desenha um sorriso[src]Viseira.")
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
@@ -208,7 +208,7 @@
 
 	if(helmet_on)
 		if(!up)
-			to_chat(user, span_notice("Your helmet's torch can't pass through your welding visor!"))
+			to_chat(user, span_notice("A tocha do seu capacete não pode passar pelo seu visor de solda!"))
 			set_light_on(FALSE)
 			// BUBBER EDIT ADDITION START
 			helmet_on = FALSE
@@ -231,7 +231,7 @@
 
 /obj/item/clothing/head/helmet/space/plasmaman/security
 	name = "security plasma envirosuit helmet"
-	desc = "A plasmaman containment helmet designed for security officers, protecting them from burning alive, alongside other undesirables."
+	desc = "Um capacete de contenção de plasma projetado para oficiais de segurança, protegendo-os de queimar vivos, ao lado de outros indesejáveis."
 	icon_state = "security_envirohelm"
 	inhand_icon_state = null
 	armor_type = /datum/armor/head_helmet/plasmaman
@@ -243,7 +243,7 @@
 
 /obj/item/clothing/head/helmet/space/plasmaman/security/detective
 	name = "detective's plasma envirosuit helmet"
-	desc = "A special containment helmet designed for detectives, protecting them from burning alive, alongside other undesirables."
+	desc = "Um capacete especial de contenção projetado para detetives, protegendo-os de queimar vivos, ao lado de outros indesejáveis."
 	icon_state = "white_envirohelm"
 	inhand_icon_state = null
 	armor_type = /datum/armor/fedora_det_hat/plasmaman
@@ -255,7 +255,7 @@
 
 /obj/item/clothing/head/helmet/space/plasmaman/security/warden
 	name = "warden's plasma envirosuit helmet"
-	desc = "A plasmaman containment helmet designed for the warden. A pair of white stripes being added to differeciate them from other members of security."
+	desc = "Um capacete de contenção projetado para o diretor. Um par de listras brancas sendo adicionadas para diferenciá-las de outros membros da segurança."
 	icon_state = "warden_envirohelm"
 	inhand_icon_state = null
 	armor_type = /datum/armor/hats_warden/plasmaman
@@ -267,7 +267,7 @@
 
 /obj/item/clothing/head/helmet/space/plasmaman/security/head_of_security
 	name = "head of security's plasma envirosuit helmet"
-	desc = "A special containment helmet designed for the Head of Security. A pair of gold stripes are added to differentiate them from other members of security."
+	desc = "Um capacete especial de contenção projetado para o Chefe de Segurança. Um par de listras douradas são adicionadas para diferenciá-las de outros membros da segurança."
 	icon_state = "hos_envirohelm"
 	inhand_icon_state = null
 	armor_type = /datum/armor/hats_hos/plasmaman
@@ -279,73 +279,73 @@
 
 /obj/item/clothing/head/helmet/space/plasmaman/prisoner
 	name = "prisoner's plasma envirosuit helmet"
-	desc = "A plasmaman containment helmet for prisoners."
+	desc = "Um capacete de contenção para prisioneiros."
 	icon_state = "prisoner_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/medical
 	name = "medical doctor's plasma envirosuit helmet"
-	desc = "An envirohelmet designed for plasmaman medical doctors, having two stripes down its length to denote as much."
+	desc = "Um envirohelmet projetado para médicos plasmáticos, tendo duas listras abaixo de seu comprimento para denotar tanto."
 	icon_state = "doctor_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/coroner
 	name = "coroners's plasma envirosuit helmet"
-	desc = "An envirohelmet designed for plasmaman coroners, having more edge than the usual model."
+	desc = "Um envirohelmet projetado para legistas de plasma, com mais vantagem que o modelo habitual."
 	icon_state = "coroner_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/paramedic
 	name = "paramedic plasma envirosuit helmet"
-	desc = "An envirohelmet designed for plasmaman paramedics, with darker blue stripes compared to the medical model."
+	desc = "Um Envirohelmet projetado para paramédicos plasmáticos, com listras azuis mais escuras em comparação com o modelo médico."
 	icon_state = "paramedic_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/viro
 	name = "virology plasma envirosuit helmet"
-	desc = "The helmet worn by the safest people on the station, those who are completely immune to the monstrosities they create."
+	desc = "O capacete usado pelas pessoas mais seguras na estação, aqueles que são completamente imunes às monstruosidades que criam."
 	icon_state = "virologist_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/chemist
 	name = "chemistry plasma envirosuit helmet"
-	desc = "A plasmaman envirosuit designed for chemists, two orange stripes going down its face."
+	desc = "Um equipamento de plasma projetado para químicos, duas listras laranjas descendo pelo rosto."
 	icon_state = "chemist_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/chief_medical_officer
 	name = "chief medical officer's plasma envirosuit helmet"
-	desc = "A special containment helmet designed for the Chief Medical Officer. A gold stripe applied to differentiate them from other medical staff."
+	desc = "Um capacete especial de contenção projetado para o Oficial Médico Chefe. Uma faixa de ouro aplicada para diferenciá-los de outros médicos."
 	icon_state = "cmo_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/science
 	name = "science plasma envirosuit helmet"
-	desc = "A plasmaman envirohelmet designed for scientists."
+	desc = "Um homem de plasma envirohelmet projetado para cientistas."
 	icon_state = "scientist_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/robotics
 	name = "robotics plasma envirosuit helmet"
-	desc = "A plasmaman envirohelmet designed for roboticists."
+	desc = "Um homem de plasma envirohelmet projetado para robóticas."
 	icon_state = "roboticist_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/genetics
 	name = "geneticist's plasma envirosuit helmet"
-	desc = "A plasmaman envirohelmet designed for geneticists."
+	desc = "Um homem de plasma envirohelmet projetado para geneticistas."
 	icon_state = "geneticist_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/research_director
 	name = "research director's plasma envirosuit helmet"
-	desc = "A special containment helmet designed for the Research Director. A light brown design is applied to differentiate them from other scientists."
+	desc = "Um capacete especial de contenção projetado para o diretor de pesquisa. Um desenho marrom claro é aplicado para diferenciá-los de outros cientistas."
 	icon_state = "rd_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/engineering
 	name = "engineering plasma envirosuit helmet"
-	desc = "A space-worthy helmet specially designed for engineer plasmamen, the usual purple stripes being replaced by engineering's orange."
+	desc = "Um capacete especialmente projetado para o engenheiro plasmamen, as listras roxas habituais sendo substituídas pela laranja da engenharia."
 	icon_state = "engineer_envirohelm"
 	inhand_icon_state = null
 	armor_type = /datum/armor/space_plasmaman/engineering_atmos
@@ -355,7 +355,7 @@
 
 /obj/item/clothing/head/helmet/space/plasmaman/atmospherics
 	name = "atmospherics plasma envirosuit helmet"
-	desc = "A space-worthy helmet specially designed for atmos technician plasmamen, the usual purple stripes being replaced by atmos' blue. Has improved thermal shielding."
+	desc = "Um capacete especialmente projetado para técnicos de plasma da Atmos, as listras roxas normais sendo substituídas pelo azul da Atmos. Melhorou o escudo térmico."
 	icon_state = "atmos_envirohelm"
 	inhand_icon_state = null
 	armor_type = /datum/armor/space_plasmaman/engineering_atmos
@@ -363,7 +363,7 @@
 
 /obj/item/clothing/head/helmet/space/plasmaman/chief_engineer
 	name = "chief engineer's plasma envirosuit helmet"
-	desc = "A special containment helmet designed for the Chief Engineer, the usual purple stripes being replaced by the chief's green. Has improved thermal shielding."
+	desc = "Um capacete especial de contenção projetado para o engenheiro chefe, as listras roxas habituais sendo substituídas pelo verde do chefe. Melhorou o escudo térmico."
 	icon_state = "ce_envirohelm"
 	inhand_icon_state = null
 	armor_type = /datum/armor/space_plasmaman/engineering_atmos
@@ -371,32 +371,32 @@
 
 /obj/item/clothing/head/helmet/space/plasmaman/cargo
 	name = "cargo plasma envirosuit helmet"
-	desc = "A plasmaman envirohelmet designed for cargo techs and quartermasters."
+	desc = "Um homem de plasma envirohelmet projetado para técnicos de carga e contramestres."
 	icon_state = "cargo_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/mining
 	name = "mining plasma envirosuit helmet"
-	desc = "A khaki helmet given to plasmamen miners operating on lavaland."
+	desc = "Um capacete de cáqui dado aos mineradores de plasma operando em lavalândia."
 	icon_state = "explorer_envirohelm"
 	inhand_icon_state = null
 	visor_icon = "explorer_envisor"
 
 /obj/item/clothing/head/helmet/space/plasmaman/chaplain
 	name = "chaplain's plasma envirosuit helmet"
-	desc = "An envirohelmet specially designed for only the most pious of plasmamen."
+	desc = "Um envirohelmet especialmente projetado para apenas o mais piedoso dos plasmamen."
 	icon_state = "chap_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/white
 	name = "white plasma envirosuit helmet"
-	desc = "A generic white envirohelm."
+	desc = "Um ambiente branco genérico."
 	icon_state = "white_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/curator
 	name = "curator's plasma envirosuit helmet"
-	desc = "A slight modification on a traditional voidsuit helmet, this helmet was Nanotrasen's first solution to the *logistical problems* that come with employing plasmamen. Despite their limitations, these helmets still see use by historians and old-school plasmamen alike."
+	desc = "Uma pequena modificação em um capacete de traje vazio tradicional, este capacete foi a primeira solução de Nanotrasen para os *problemas logísticos* que vêm com o emprego de plasmamen. Apesar de suas limitações, esses capacetes ainda veem o uso de historiadores e plasmistas da velha escola."
 	icon_state = "prototype_envirohelm"
 	inhand_icon_state = "void_helmet"
 	actions_types = list(/datum/action/item_action/toggle_welding_screen)
@@ -405,26 +405,26 @@
 
 /obj/item/clothing/head/helmet/space/plasmaman/botany
 	name = "botany plasma envirosuit helmet"
-	desc = "A green and blue envirohelmet designating its wearer as a botanist. While not specifically designed for it, it would protect against minor plant-related injuries."
+	desc = "Um envirohelmet verde e azul que designa seu usuário como botânico. Embora não especificamente projetado para ele, ele protegeria contra pequenos ferimentos relacionados à planta."
 	icon_state = "botany_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/janitor
 	name = "janitor's plasma envirosuit helmet"
-	desc = "A grey helmet bearing a pair of purple stripes, designating the wearer as a janitor."
+	desc = "Um capacete cinza com um par de listras roxas, designando o usuário como zelador."
 	icon_state = "janitor_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/mime
 	name = "mime envirosuit helmet"
-	desc = "The make-up is painted on, it's a miracle it doesn't chip. It's not very colourful."
+	desc = "A maquiagem está pintada, é um milagre que não bata. Não é muito colorido."
 	icon_state = "mime_envirohelm"
 	inhand_icon_state = null
 	visor_icon = "mime_envisor"
 
 /obj/item/clothing/head/helmet/space/plasmaman/clown
 	name = "clown envirosuit helmet"
-	desc = "The make-up is painted on, it's a miracle it doesn't chip. <i>'HONK!'</i>"
+	desc = "A maquiagem está pintada, é um milagre que não bata.<i>HONK!</i>"
 	icon_state = "clown_envirohelm"
 	inhand_icon_state = null
 	visor_icon = "clown_envisor"
@@ -436,7 +436,7 @@
 
 /obj/item/clothing/head/helmet/space/plasmaman/head_of_personnel
 	name = "head of personnel's envirosuit helmet"
-	desc = "A special containment helmet designed for the Head of Personnel. Embarrassingly enough, it looks way too much like the captain's design save for the red stripes."
+	desc = "Um capacete especial de contenção projetado para o Chefe de Pessoal. Embaraçosamente, parece muito com o projeto do capitão salvo para as listras vermelhas."
 	icon_state = "hop_envirohelm"
 	inhand_icon_state = null
 	armor_type = /datum/armor/hats_hopcap/plasmaman
@@ -448,7 +448,7 @@
 
 /obj/item/clothing/head/helmet/space/plasmaman/captain
 	name = "captain's plasma envirosuit helmet"
-	desc = "A special containment helmet designed for the Captain. Embarrassingly enough, it looks way too much like the Head of Personnel's design save for the gold stripes. I mean, come on. Gold stripes can fix anything."
+	desc = "Um capacete especial de contenção projetado para o Capitão. Embaraçosamente, parece muito com o projeto do Chefe de Pessoal, exceto para as listras de ouro. Quero dizer, qual é. Faixas de ouro podem consertar qualquer coisa."
 	icon_state = "captain_envirohelm"
 	inhand_icon_state = null
 	armor_type = /datum/armor/hats_caphat/plasmaman
@@ -460,7 +460,7 @@
 
 /obj/item/clothing/head/helmet/space/plasmaman/centcom_commander
 	name = "CentCom commander plasma envirosuit helmet"
-	desc = "A special containment helmet designed for the Higher Central Command Staff. Not many of these exist, as CentCom does not usually employ plasmamen to higher staff positions due to their complications."
+	desc = "Um capacete especial de contenção projetado para o Alto Comando Central. Não existem muitos desses, pois a CentCom normalmente não emprega plasmistas para cargos superiores devido às suas complicações."
 	icon_state = "commander_envirohelm"
 	inhand_icon_state = null
 	armor_type = /datum/armor/hats_centhat/plasmaman
@@ -472,24 +472,23 @@
 
 /obj/item/clothing/head/helmet/space/plasmaman/centcom_official
 	name = "CentCom official plasma envirosuit helmet"
-	desc = "A special containment helmet designed for CentCom Staff. They sure do love their green."
+	desc = "Um capacete de contenção especial projetado para o pessoal da CentCom. Eles adoram o verde."
 	icon_state = "official_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/centcom_intern
 	name = "CentCom intern plasma envirosuit helmet"
-	desc = "A special containment helmet designed for CentCom Staff. You know, so any coffee spills don't kill the poor sod."
+	desc = "Um capacete de contenção especial projetado para o pessoal da CentCom. Qualquer derramamento de café não mata o pobre coitado."
 	icon_state = "intern_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/syndie
 	name = "tacticool envirosuit helmet"
-	desc = "There's no doubt about it, this helmet puts you above ALL of the other plasmamen. If you see another plasmaman wearing a helmet like this, it's either because they're a fellow badass, \
-		or they've murdered one of your fellow badasses and have taken it from them as a trophy. Either way, anyone wearing this deserves at least a cursory nod of respect."
+	desc = "Não há dúvida, este capacete coloca você acima de todos os outros plasmamen. Se vir outro homem de plasma usando um capacete como este, ou é porque eles são durões, ou eles mataram um dos seus companheiros valentões e o tiraram deles como troféu. De qualquer forma, qualquer um que use isso merece pelo menos um leve aceno de respeito."
 	icon_state = "syndie_envirohelm"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/helmet/space/plasmaman/bitrunner
 	name = "bitrunner's plasma envirosuit helmet"
-	desc = "An envirohelmet with extended blue light filters for bitrunning plasmamen."
+	desc = "Um envirohelmet com extensos filtros de luz azul para plasmógrafos bitruning."
 	icon_state = "bitrunner_envirohelm"

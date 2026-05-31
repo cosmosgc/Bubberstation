@@ -132,21 +132,21 @@
 		return
 
 	if(!attached_circuit)
-		examine_text += span_notice("There is no integrated circuit attached.")
+		examine_text += span_notice("Não há nenhum circuito integrado ligado.")
 		return
 
-	examine_text += span_notice("There is an integrated circuit attached. Use a multitool to access the wiring. Use a screwdriver to remove it from [source].")
-	examine_text += span_notice("The cover panel to the integrated circuit is [locked? "trancado" : "destrancado"].")
+	examine_text += span_notice("Há um circuito integrado ligado. Use uma ferramenta para acessar a fiação. Use uma chave de fenda para removê-la.[source].")
+	examine_text += span_notice("O painel de cobertura para o circuito integrado é[locked? "trancado" : "destrancado"].")
 	var/obj/item/stock_parts/power_store/cell = attached_circuit.cell
-	examine_text += span_notice("The charge meter reads [cell ? round(cell.percent(), 1) : 0]%.")
+	examine_text += span_notice("O medidor de carga diz[cell ? round(cell.percent(), 1) : 0]%.")
 
 	if (shell_flags & SHELL_FLAG_USB_PORT)
-		examine_text += span_notice("There is a <b>USB port</b> on the front.")
+		examine_text += span_notice("Há um<b>Porta USB</b>Na frente.")
 
 	if(shell_flags & SHELL_FLAG_REQUIRE_ANCHOR)
-		examine_text += span_notice("The shell does not require a battery to function and will draw from the area's APC whenever possible.")
+		examine_text += span_notice("O escudo não requer uma bateria para funcionar e vai tirar do APC da área sempre que possível.")
 		if(!source.anchored)
-			examine_text += span_danger("<b>The integrated circuit is non-functional whilst the shell is unanchored.</b>")
+			examine_text += span_danger("<b>O circuito integrado não é funcional enquanto a concha não é ancorada.</b>")
 
 
 /**
@@ -168,7 +168,7 @@
 		return
 
 	if(istype(item, /obj/item/stock_parts/power_store/cell))
-		source.balloon_alert(user, "can't put cell in directly!")
+		source.balloon_alert(user, "Não posso colocar o celular diretamente!")
 		return
 
 	if(istype(item, /obj/item/inducer))
@@ -183,7 +183,7 @@
 			return ITEM_INTERACT_SUCCESS
 
 		if(!attached_circuit.owner_id && isidcard(item))
-			source.balloon_alert(user, "owner id set for [item]")
+			source.balloon_alert(user, "ID do proprietário definido para[item]")
 			attached_circuit.owner_id = WEAKREF(item)
 			return ITEM_INTERACT_SUCCESS
 
@@ -200,11 +200,11 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if(attached_circuit)
-		source.balloon_alert(user, "there is already a circuitboard inside!")
+		source.balloon_alert(user, "Já tem uma placa de circuito dentro!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(logic_board.current_size > capacity)
-		source.balloon_alert(user, "this is too large to fit into [parent]!")
+		source.balloon_alert(user, "Isso é muito grande para caber em[parent]!")
 		return ITEM_INTERACT_BLOCKING
 
 	logic_board.inserter_mind = WEAKREF(user.mind)
@@ -252,7 +252,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	tool.play_tool_sound(parent)
-	source.balloon_alert(user, "you unscrew [attached_circuit] from [parent].")
+	source.balloon_alert(user, "Você desaparafusa.[attached_circuit]De[parent].")
 	remove_circuit()
 	return ITEM_INTERACT_BLOCKING
 
@@ -278,7 +278,7 @@
 		return COMPONENT_CANCEL_ADD_COMPONENT
 
 	if(attached_circuit.current_size + added_comp.circuit_size > capacity)
-		source.balloon_alert(user, "it won't fit!")
+		source.balloon_alert(user, "Não cabe!")
 		return COMPONENT_CANCEL_ADD_COMPONENT
 
 /datum/component/shell/proc/override_power_usage(datum/source, power_to_use)
@@ -367,15 +367,15 @@
 		return
 
 	if (!(shell_flags & SHELL_FLAG_USB_PORT))
-		source.balloon_alert(user, "this shell has no usb ports")
+		source.balloon_alert(user, "Esta concha não tem portas USB.")
 		return COMSIG_CANCEL_USB_CABLE_ATTACK
 
 	if (isnull(attached_circuit))
-		source.balloon_alert(user, "no circuit inside")
+		source.balloon_alert(user, "Sem circuito dentro.")
 		return COMSIG_CANCEL_USB_CABLE_ATTACK
 
 	if(attached_circuit.locked)
-		source.balloon_alert(user, "circuit is locked!")
+		source.balloon_alert(user, "Circuito bloqueado!")
 		return COMSIG_CANCEL_USB_CABLE_ATTACK
 
 	usb_cable.attached_circuit = attached_circuit

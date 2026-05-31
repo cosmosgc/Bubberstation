@@ -1,6 +1,6 @@
 /obj/machinery/igniter
 	name = "igniter"
-	desc = "It's useful for igniting plasma."
+	desc = "É útil para acender plasma."
 	icon = 'icons/obj/machines/floor.dmi'
 	icon_state = "igniter0"
 	base_icon_state = "igniter"
@@ -38,8 +38,8 @@
 
 /obj/machinery/igniter/examine(mob/user)
 	. = ..()
-	. += span_notice("Use a [EXAMINE_HINT("multitool")] to set its ID to match your ignition controller's ID.")
-	. += span_notice("It could be [EXAMINE_HINT("welded")] apart.")
+	. += span_notice("Use um.[EXAMINE_HINT("multitool")]para definir sua identidade para combinar com sua identificação do controlador de ignição.")
+	. += span_notice("Pode ser.[EXAMINE_HINT("welded")]Separados.")
 
 /obj/machinery/igniter/welder_act(mob/living/user, obj/item/tool)
 	if(on)
@@ -49,10 +49,10 @@
 		balloon_alert(user, "combustível insuficiente!")
 		return
 
-	loc.balloon_alert(user, "dismantling [src]")
+	loc.balloon_alert(user, "Desmontar[src]")
 	if(!tool.use_tool(src, user, delay = 2.5 SECONDS, amount = 2, volume = 50))
 		return
-	loc.balloon_alert(user, "[src] dismantled")
+	loc.balloon_alert(user, "[src]Desmantelado")
 
 	deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
@@ -66,8 +66,8 @@
 	if(!change_id || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	id = change_id
-	balloon_alert(user, "id set to [id]")
-	to_chat(user, span_notice("You change the ID to [id]."))
+	balloon_alert(user, "id definido para[id]")
+	to_chat(user, span_notice("Você muda a identidade para[id]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/igniter/incinerator_ordmix
@@ -134,7 +134,7 @@
 
 /obj/item/wallframe/sparker
 	name = "Sparker WallFrame"
-	desc = "An unmounted sparker. Attach it to a wall to use."
+	desc = "Uma faísca desmontada. Coloque em uma parede para usar."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "migniter"
 	result_path = /obj/machinery/sparker
@@ -143,7 +143,7 @@
 
 /obj/machinery/sparker
 	name = "mounted igniter"
-	desc = "A wall-mounted ignition device."
+	desc = "Um dispositivo de ignição montado na parede."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "migniter"
 	base_icon_state = "migniter"
@@ -186,18 +186,18 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/sparker, 26)
 
 /obj/machinery/sparker/examine(mob/user)
 	. = ..()
-	. += span_notice("Use a [EXAMINE_HINT("multitool")] to set its ID to match your ignition controller's ID.")
-	. += span_notice("It could be [EXAMINE_HINT("welded")] apart.")
+	. += span_notice("Use um.[EXAMINE_HINT("multitool")]para definir sua identidade para combinar com sua identificação do controlador de ignição.")
+	. += span_notice("Pode ser.[EXAMINE_HINT("welded")]Separados.")
 
 /obj/machinery/sparker/welder_act(mob/living/user, obj/item/tool)
 	if(!tool.tool_start_check(user, amount = 1))
 		balloon_alert(user, "combustível insuficiente!")
 		return TRUE
 
-	loc.balloon_alert(user, "dismantling [src]")
+	loc.balloon_alert(user, "Desmontar[src]")
 	if(!tool.use_tool(src, user, delay = 1.5 SECONDS, amount = 1, volume = 50))
 		return
-	loc.balloon_alert(user, "[src] dismantled")
+	loc.balloon_alert(user, "[src]Desmantelado")
 
 	deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
@@ -210,8 +210,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/sparker, 26)
 	if(!change_id || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	id = change_id
-	balloon_alert(user, "id set to [id]")
-	to_chat(user, span_notice("You change the ID to [id]."))
+	balloon_alert(user, "id definido para[id]")
+	to_chat(user, span_notice("Você muda a identidade para[id]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/sparker/update_icon_state()
@@ -231,9 +231,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/sparker, 26)
 	tool.play_tool_sound(src, 50)
 	disable = !disable
 	if (disable)
-		user.visible_message(span_notice("[user] disables \the [src]!"), span_notice("You disable the connection to \the [src]."))
+		user.visible_message(span_notice("[user]Desativa\the [src]!"), span_notice("Você desativa a conexão com\the [src]."))
 	if (!disable)
-		user.visible_message(span_notice("[user] reconnects \the [src]!"), span_notice("You fix the connection to \the [src]."))
+		user.visible_message(span_notice("[user]Reconectar\the [src]!"), span_notice("Você conserta a conexão com\the [src]."))
 	update_appearance()
 	return TRUE
 

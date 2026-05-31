@@ -2,7 +2,7 @@
 
 /obj/structure/dresser//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "dresser"
-	desc = "A nicely-crafted wooden dresser. It's filled with lots of undies."
+	desc = "Uma bela cômoda de madeira. Está cheio de calcinhas."
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "dresser"
 	resistance_flags = FLAMMABLE
@@ -12,9 +12,9 @@
 
 /obj/structure/dresser/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
 	if(I.tool_behaviour == TOOL_WRENCH)
-		to_chat(user, span_notice("You begin to [anchored ? "unwrench" : "wrench"] [src]."))
+		to_chat(user, span_notice("Você começa[anchored ? "unwrench" : "wrench"] [src]."))
 		if(I.use_tool(src, user, 20, volume=50))
-			to_chat(user, span_notice("You successfully [anchored ? "unwrench" : "wrench"] [src]."))
+			to_chat(user, span_notice("Você com sucesso.[anchored ? "unwrench" : "wrench"] [src]."))
 			set_anchored(!anchored)
 	else
 		return ..()
@@ -32,7 +32,7 @@
 		return
 	var/mob/living/carbon/human/dressing_human = user
 	if(HAS_TRAIT(dressing_human, TRAIT_NO_UNDERWEAR))
-		to_chat(dressing_human, span_warning("You are not capable of wearing underwear."))
+		to_chat(dressing_human, span_warning("Você não é capaz de usar cueca."))
 		return
 
 	var/choice = tgui_input_list(user, "Underwear, Bra, Undershirt, or Socks?", "Changing", list("Underwear", "Underwear Color", "Bra", "Bra Color", "Undershirt", "Undershirt Color", "Socks", "Socks Color")) //SKYRAT EDIT ADDITION - Colorable Undershirt/Socks/Bra

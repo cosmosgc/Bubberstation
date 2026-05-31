@@ -3,7 +3,7 @@
 	starting_title = "I Found a Mysterious Book in the Library That Teaches Me How to Become a Chuunibyou, But It Turns Out It's Actually a Grimoire That Unlocks My Hidden Powers!"
 	starting_author = "Anonymous"
 	name = "I Found a Mysterious Book in the Library That Teaches Me How to Become a Chuunibyou, But It Turns Out It's Actually a Grimoire That Unlocks My Hidden Powers!"
-	desc = "I'd rather get caught holding a syndicate revolver, honestly."
+	desc = "Prefiro ser pego segurando um revólver do sindicato, honestamente."
 	icon_state ="chuuni_manga"
 	remarks = list(
 		"How can anyone believe this stuff?",
@@ -18,14 +18,14 @@
 	if (!isliving(user))
 		return
 	if (user.GetComponent(/datum/component/chuunibyou))
-		to_chat(user, span_warning("You're already a chuunibyou!"))
+		to_chat(user, span_warning("Você já é um chuunibyou!"))
 		return
 	return TRUE
 
 /obj/item/book/granter/chuunibyou/recoil(mob/living/user)
-	to_chat(user, span_warning("You just can't bring yourself to read it... it's just not worth the cringe..."))
+	to_chat(user, span_warning("Você não pode ler isso. Não vale a pena..."))
 
 /obj/item/book/granter/chuunibyou/on_reading_finished(mob/living/user)
 	..()
-	to_chat(user, span_notice("You've learned how to cast spells in a more chuunibyou-like style!"))
+	to_chat(user, span_notice("Você aprendeu a lançar feitiços em um estilo mais \"chuunibyou\"!"))
 	user.AddComponent(/datum/component/chuunibyou/no_healing)

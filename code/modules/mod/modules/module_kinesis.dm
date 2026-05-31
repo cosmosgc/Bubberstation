@@ -1,11 +1,7 @@
 ///Kinesis - Gives you the ability to move and launch objects.
 /obj/item/mod/module/anomaly_locked/kinesis
 	name = "MOD kinesis module"
-	desc = "A modular plug-in to the forearm, this module was presumed lost for many years, \
-		despite the suits it used to be mounted on still seeing some circulation. \
-		This piece of technology allows the user to generate precise anti-gravity fields, \
-		letting them move objects as small as a titanium rod to as large as industrial machinery. \
-		Oddly enough, it doesn't seem to work on living creatures."
+	desc = "Um plug-in modular para o antebraço, este módulo foi presumido perdido por muitos anos, apesar dos ternos que costumava ser montado em ainda vendo alguma circulação. Esta tecnologia permite que o usuário gere campos antigravidade precisos, deixando-os mover objetos tão pequenos quanto uma haste de titânio para máquinas industriais. Curiosamente, não parece funcionar em criaturas vivas."
 	icon_state = "kinesis"
 	module_type = MODULE_ACTIVE
 	complexity = 3
@@ -55,10 +51,10 @@
 		launch(launched_object)
 		return
 	if(!range_check(target))
-		balloon_alert(mod.wearer, "longe demais!")
+		balloon_alert(mod.wearer, "Longe demais!")
 		return
 	if(!can_grab(target))
-		balloon_alert(mod.wearer, "can't grab!")
+		balloon_alert(mod.wearer, "Não consigo agarrar!")
 		return
 	drain_power(use_energy_cost)
 	grab_atom(target)
@@ -71,7 +67,7 @@
 		clear_grab()
 		return
 	if(!range_check(grabbed_atom))
-		balloon_alert(mod.wearer, "fora do alcance!")
+		balloon_alert(mod.wearer, "Fora da Aliança!")
 		clear_grab()
 		return
 	drain_power(use_energy_cost/10)
@@ -263,10 +259,7 @@
 
 /obj/item/mod/module/anomaly_locked/kinesis/plus
 	name = "MOD kinesis+ module"
-	desc = "A modular plug-in to the forearm, this module was recently redeveloped in secret. \
-		The bane of all ne'er-do-wells, the kinesis+ module is a powerful tool that allows the user \
-		to manipulate the world around them. Like its older counterpart, it's capable of manipulating \
-		structures, machinery, vehicles, and, thanks to the fruitful efforts of its creators - living beings."
+	desc = "Um plug-in modular no antebraço, este módulo foi recentemente reconstruído em segredo. A ruína de todos os ne'er-do-wells, o módulo kinesis+ é uma ferramenta poderosa que permite ao usuário manipular o mundo ao seu redor. Como sua contraparte mais antiga, é capaz de manipular estruturas, máquinas, veículos, e, graças aos esforços frutíferos de seus criadores - seres vivos."
 	complexity = 0
 	prebuilt = TRUE
 	stat_required = CONSCIOUS
@@ -274,8 +267,7 @@
 /// Admin suit version of kinesis. Can grab anything at any range, may enable phasing through walls.
 /obj/item/mod/module/anomaly_locked/kinesis/admin
 	name = "MOD kinesis++ module"
-	desc = "A modular plug-in to the forearm, this module was recently reredeveloped in super secret. \
-		This one can force some of the grasped objects to phase through walls. Oh no."
+	desc = "Um plug-in modular no antebraço, este módulo foi recentemente reconstruído em super segredo. Este pode forçar alguns dos objetos agarrados a passarem pelas paredes. Oh, não."
 	complexity = 0
 	grab_range = INFINITY
 	use_energy_cost = DEFAULT_CHARGE_DRAIN * 0

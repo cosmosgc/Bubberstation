@@ -2,7 +2,7 @@
 
 /obj/item/storage/box/donkpockets
 	name = "box of donk-pockets"
-	desc = "Instructions: Heat in microwave. Product will stay perpetually warmed with cutting edge Donk Co. technology."
+	desc = "Instruções: aquecimento no microondas. O produto ficará sempre aquecido com tecnologia de ponta da Donk Co."
 	icon_state = "donkpocketbox"
 	illustration = null
 	/// What type of donk pocket are we gonna cram into this box?
@@ -45,14 +45,14 @@
 
 /obj/item/storage/box/donkpockets/donkpocketshell
 	name = "box of Donk Co. 'Donk Spike' flechette shells"
-	desc = "Instructions: DO NOT heat in microwave. Product will remove all hostile threats with cutting edge Donk Co. technology."
+	desc = "Instruções: não aqueça no microondas. O produto removerá todas as ameaças hostis com tecnologia Donk Co. de ponta."
 	icon_state = "donkpocketboxshell"
 	donktype = /obj/item/ammo_casing/shotgun/flechette/donk
 	storage_type = /datum/storage/box/donk_bullets
 
 /obj/item/storage/box/papersack
 	name = "paper sack"
-	desc = "A sack neatly crafted out of paper."
+	desc = "Um saco feito com papel."
 	icon = 'icons/obj/storage/paperbag.dmi'
 	icon_state = "paperbag_None"
 	inhand_icon_state = null
@@ -88,15 +88,15 @@
 /obj/item/storage/box/papersack/update_desc(updates)
 	switch(design_choice)
 		if("None")
-			desc = "A sack neatly crafted out of paper."
+			desc = "Um saco feito com papel."
 		if("NanotrasenStandard")
-			desc = "A standard Nanotrasen paper lunch sack for loyal employees on the go."
+			desc = "Um saco de almoço padrão de Nanotrasen para empregados leais em movimento."
 		if("SyndiSnacks")
-			desc = "The design on this paper sack is a remnant of the notorious 'SyndieSnacks' program."
+			desc = "O desenho deste saco de papel é um remanescente do notório programa \"SyndieSnacks\"."
 		if("Heart")
-			desc = "A paper sack with a heart etched onto the side."
+			desc = "Um saco de papel com um coração gravado ao lado."
 		if("SmileyFace")
-			desc = "A paper sack with a crude smile etched onto the side."
+			desc = "Um saco de papel com um sorriso grosseiro gravado ao lado."
 	return ..()
 
 /obj/item/storage/box/papersack/tool_act(mob/living/user, obj/item/tool, list/modifiers)
@@ -110,12 +110,12 @@
 		return ITEM_INTERACT_SUCCESS
 	if(tool.get_sharpness() && !contents.len)
 		if(design_choice == "None")
-			user.show_message(span_notice("You cut eyeholes into [src]."), MSG_VISUAL)
+			user.show_message(span_notice("Você corta buracos nos olhos[src]."), MSG_VISUAL)
 			new /obj/item/clothing/head/costume/papersack(drop_location())
 			qdel(src)
 			return ITEM_INTERACT_SUCCESS
 		else if(design_choice == "SmileyFace")
-			user.show_message(span_notice("You cut eyeholes into [src] and modify the design."), MSG_VISUAL)
+			user.show_message(span_notice("Você corta buracos nos olhos[src]e modificar o projeto."), MSG_VISUAL)
 			new /obj/item/clothing/head/costume/papersack/smiley(drop_location())
 			qdel(src)
 			return ITEM_INTERACT_SUCCESS
@@ -134,22 +134,22 @@
 	if(user.incapacitated)
 		return FALSE
 	if(contents.len)
-		balloon_alert(user, "items inside!")
+		balloon_alert(user, "Itens dentro!")
 		return FALSE
 	if(!P || !user.is_holding(P))
-		balloon_alert(user, "needs pen!")
+		balloon_alert(user, "Precisa de caneta!")
 		return FALSE
 	return TRUE
 
 /obj/item/storage/box/papersack/meat
-	desc = "It's slightly moist and smells like a slaughterhouse."
+	desc = "Está um pouco úmido e cheira como um matadouro."
 
 /obj/item/storage/box/papersack/meat/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/food/meat/slab(src)
 
 /obj/item/storage/box/papersack/wheat
-	desc = "It's a bit dusty, and smells like a barnyard."
+	desc = "Está um pouco empoeirado, e cheira a celeiro."
 
 /obj/item/storage/box/papersack/wheat/PopulateContents()
 	for(var/i in 1 to 7)
@@ -164,7 +164,7 @@
 	. = ..()
 	if(theme_name)
 		name = "[name] ([theme_name])"
-		desc = "A box containing supplementary ingredients for the aspiring chef. The box's theme is '[theme_name]'."
+		desc = "Uma caixa contendo ingredientes suplementares para o aspirante a chef. O tema da caixa é '[theme_name]'."
 		inhand_icon_state = "syringe_kit"
 
 /obj/item/storage/box/ingredients/wildcard
@@ -322,7 +322,7 @@
 
 /obj/item/storage/box/ingredients/random
 	theme_name = "random"
-	desc = "This box should not exist, contact the proper authorities."
+	desc = "Esta caixa não deveria existir, entre em contato com as autoridades."
 
 /obj/item/storage/box/ingredients/random/Initialize(mapload)
 	. = ..()
@@ -332,7 +332,7 @@
 
 /obj/item/storage/box/gum
 	name = "bubblegum packet"
-	desc = "The packaging is entirely in Japanese, apparently. You can't make out a single word of it."
+	desc = "A embalagem está totalmente em japonês, aparentemente. Não dá para entender uma única palavra."
 	icon = 'icons/obj/storage/gum.dmi'
 	icon_state = "bubblegum_generic"
 	w_class = WEIGHT_CLASS_TINY
@@ -350,14 +350,13 @@
 
 /obj/item/storage/box/gum/wake_up
 	name = "\improper Activin 12 Hour medicated gum packet"
-	desc = "Stay awake during long shifts in the maintenance tunnels with Activin! The approval seal of the Mothic Nomad Fleet \
-		is emblazoned on the packaging, alongside a litany of health and safety disclaimers in both Mothic and Galactic Common."
+	desc = "Fique acordado durante longos turnos nos túneis de manutenção com Activin! O selo de aprovação da Frota Nômade Mothic está gravado na embalagem, ao lado de uma ladainha de avisos de saúde e segurança em Mothic e Galactic Common."
 	icon_state = "bubblegum_wake_up"
 	custom_premium_price = PAYCHECK_CREW * 1.5
 
 /obj/item/storage/box/gum/wake_up/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<i>You read some of the health and safety information...</i>")
+	. += span_notice("<i>Você leu algumas informações de saúde e segurança...</i>")
 	. += "\t[span_info("For the relief of tiredness and drowsiness while working.")]"
 	. += "\t[span_info("Do not chew more than one strip every 12 hours. Do not use as a complete substitute for sleep.")]"
 	. += "\t[span_info("Do not give to children under 16. Do not exceed the maximum dosage. Do not ingest. Do not take for more than 3 days consecutively. Do not take in conjunction with other medication. May cause adverse reactions in patients with pre-existing heart conditions.")]"
@@ -430,14 +429,14 @@
 
 /obj/item/storage/box/gum/nicotine
 	name = "nicotine gum packet"
-	desc = "Designed to help with nicotine addiction and oral fixation all at once without destroying your lungs in the process. Mint flavored!"
+	desc = "Projetado para ajudar com o vício em nicotina e fixação oral de uma só vez sem destruir seus pulmões no processo. Tem sabor de hortelã!"
 	icon_state = "bubblegum_nicotine"
 	custom_premium_price = PAYCHECK_CREW * 1.5
 	spawning_gum_type = /obj/item/food/bubblegum/nicotine
 
 /obj/item/storage/box/gum/happiness
 	name = "HP+ gum packet"
-	desc = "A seemingly homemade packaging with an odd smell. It has a weird drawing of a smiling face sticking out its tongue."
+	desc = "Uma embalagem aparentemente caseira com um cheiro estranho. Tem um desenho estranho de um rosto sorridente saindo da língua."
 	icon_state = "bubblegum_happiness"
 	custom_price = PAYCHECK_COMMAND * 3
 	custom_premium_price = PAYCHECK_COMMAND * 3
@@ -450,13 +449,13 @@
 
 /obj/item/storage/box/gum/bubblegum
 	name = "bubblegum gum packet"
-	desc = "The packaging is entirely in Demonic, apparently. You feel like even opening this would be a sin."
+	desc = "A embalagem está totalmente em Demonic, aparentemente. Você acha que abrir isso seria um pecado."
 	icon_state = "bubblegum_bubblegum"
 	spawning_gum_type = /obj/item/food/bubblegum/bubblegum
 
 /obj/item/storage/box/mothic_rations
 	name = "Mothic Rations Pack"
-	desc = "A box containing a few rations and some Activin gum, for keeping a starving moth going."
+	desc = "Uma caixa contendo algumas rações e chiclete Activin, por manter uma mariposa faminta."
 	icon_state = "moth_package"
 	illustration = null
 
@@ -474,7 +473,7 @@
 
 /obj/item/storage/box/tiziran_goods
 	name = "Tiziran Farm-Fresh Pack"
-	desc = "A box containing an assortment of fresh Tiziran goods- perfect for making the foods of the Lizard Empire."
+	desc = "Uma caixa contendo uma variedade de produtos Tiziran frescos... perfeito para fazer os alimentos do Império Lagarto."
 	icon_state = "lizard_package"
 	illustration = null
 
@@ -496,7 +495,7 @@
 
 /obj/item/storage/box/tiziran_cans
 	name = "Tiziran Canned Goods Pack"
-	desc = "A box containing an assortment of canned Tiziran goods- to be eaten as is, or used in cooking."
+	desc = "Uma caixa contendo uma variedade de enlatados produtos Tiziran- para ser comido como é, ou usado na cozinha."
 	icon_state = "lizard_package"
 	illustration = null
 
@@ -511,7 +510,7 @@
 
 /obj/item/storage/box/tiziran_meats
 	name = "Tiziran Meatmarket Pack"
-	desc = "A box containing an assortment of fresh-frozen Tiziran meats and fish- the keys to lizard cooking."
+	desc = "Uma caixa contendo uma variedade de carnes Tiziran congeladas e peixes... as chaves para cozinhar lagartos."
 	icon_state = "lizard_package"
 	illustration = null
 
@@ -527,7 +526,7 @@
 
 /obj/item/storage/box/mothic_goods
 	name = "Mothic Farm-Fresh Pack"
-	desc = "A box containing an assortment of Mothic cooking supplies."
+	desc = "Uma caixa contendo uma variedade de suprimentos de cozinha Mothic."
 	icon_state = "moth_package"
 	illustration = null
 
@@ -548,7 +547,7 @@
 
 /obj/item/storage/box/mothic_cans_sauces
 	name = "Mothic Pantry Pack"
-	desc = "A box containing an assortment of Mothic canned goods and premade sauces."
+	desc = "Uma caixa contendo uma variedade de produtos mothic enlatados e molhos pré-feitos."
 	icon_state = "moth_package"
 	illustration = null
 
@@ -565,7 +564,7 @@
 
 /obj/item/storage/box/condimentbottles
 	name = "box of condiment bottles"
-	desc = "It has a large ketchup smear on it."
+	desc = "Tem uma mancha de ketchup."
 	illustration = "condiment"
 
 /obj/item/storage/box/condimentbottles/PopulateContents()
@@ -576,7 +575,7 @@
 /obj/item/storage/box/coffeepack
 	icon_state = "arabica_beans"
 	name = "arabica beans"
-	desc = "A bag containing fresh, dry coffee arabica beans. Ethically sourced and packaged by Waffle Corp."
+	desc = "Um saco contendo grãos de café fresco e seco. Eticamente fonte e embalado pela Waffle Corp."
 	illustration = null
 	icon = 'icons/obj/food/containers.dmi'
 	storage_type = /datum/storage/box/coffee
@@ -591,5 +590,5 @@
 /obj/item/storage/box/coffeepack/robusta
 	icon_state = "robusta_beans"
 	name = "robusta beans"
-	desc = "A bag containing fresh, dry coffee robusta beans. Ethically sourced and packaged by Waffle Corp."
+	desc = "Um saco contendo grãos de café seco e fresco. Eticamente fonte e embalado pela Waffle Corp."
 	beantype = /obj/item/food/grown/coffee/robusta

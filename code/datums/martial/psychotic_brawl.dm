@@ -40,13 +40,13 @@
 					if(grab_attack)
 						log_combat(attacker, defender, "grabbed", addition="aggressively")
 						defender.visible_message(
-							span_warning("[attacker] violently grabs [defender]!"),
-							span_userdanger("You're violently grabbed by [attacker]!"),
-							span_hear("You hear sounds of aggressive fondling!"),
+							span_warning("[attacker]violentamente agarra[defender]!"),
+							span_userdanger("Você está violentamente agarrado por[attacker]!"),
+							span_hear("Você ouve sons de carinho agressivo!"),
 							null,
 							attacker,
 						)
-						to_chat(attacker, span_danger("You violently grab [defender]!"))
+						to_chat(attacker, span_danger("Você agarra violentamente[defender]!"))
 						attacker.setGrabState(GRAB_AGGRESSIVE) //Instant aggressive grab
 					else
 						log_combat(attacker, defender, "grabbed", addition="passively")
@@ -60,13 +60,13 @@
 			attacker.do_attack_animation(defender, ATTACK_EFFECT_PUNCH)
 			attacker.emote("flip")
 			defender.visible_message(
-				span_danger("[attacker] [atk_verb]s [defender]!"),
-				span_userdanger("You're [atk_verb]ed by [attacker]!"),
-				span_hear("You hear a sickening sound of flesh hitting flesh!"),
+				span_danger("[attacker] [atk_verb]S[defender]!"),
+				span_userdanger("Você é[atk_verb]ed por[attacker]!"),
+				span_hear("Você ouve um som doentio de carne batendo em carne!"),
 				null,
 				attacker,
 			)
-			to_chat(attacker, span_danger("You [atk_verb] [defender]!"))
+			to_chat(attacker, span_danger("Você.[atk_verb] [defender]!"))
 			playsound(defender, 'sound/items/weapons/punch1.ogg', 40, TRUE, -1)
 			defender.apply_damage(defender_damage, attacker.get_attack_type(), BODY_ZONE_HEAD)
 			attacker.apply_damage(rand(5, 10), attacker.get_attack_type(), BODY_ZONE_HEAD)
@@ -85,13 +85,13 @@
 
 			attacker.do_attack_animation(defender, ATTACK_EFFECT_PUNCH)
 			defender.visible_message(
-				span_danger("[attacker] [atk_verb]s [defender] with such inhuman strength that it sends [defender.p_them()] flying backwards!"),
-				span_userdanger("You're [atk_verb]ed by [attacker] with such inhuman strength that it sends you flying backwards!"),
-				span_hear("You hear a sickening sound of flesh hitting flesh!"),
+				span_danger("[attacker] [atk_verb]S[defender]com tanta força desumana que envia[defender.p_them()]Voando para trás!"),
+				span_userdanger("Você é[atk_verb]ed por[attacker]Com tanta força desumana que te faz voar para trás!"),
+				span_hear("Você ouve um som doentio de carne batendo em carne!"),
 				null,
 				attacker,
 			)
-			to_chat(attacker, span_danger("You [atk_verb] [defender] with such inhuman strength that it sends [defender.p_them()] flying backwards!"))
+			to_chat(attacker, span_danger("Você.[atk_verb] [defender]com tanta força desumana que envia[defender.p_them()]Voando para trás!"))
 			defender.apply_damage(rand(15, 30), attacker.get_attack_type())
 			playsound(defender, 'sound/effects/meteorimpact.ogg', 25, TRUE, -1)
 			var/throwtarget = get_edge_target_turf(attacker, get_dir(attacker, get_step_away(defender, attacker)))

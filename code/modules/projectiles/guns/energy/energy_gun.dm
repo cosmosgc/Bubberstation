@@ -1,6 +1,6 @@
 /obj/item/gun/energy/e_gun
 	name = "energy gun"
-	desc = "A basic hybrid energy gun with two settings: disable and kill."
+	desc = "Uma arma de energia híbrida básica com duas configurações: desativar e matar."
 	icon_state = "energy"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = null //so the human update icon uses the icon_state instead.
@@ -18,20 +18,14 @@
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/advancedegun, /datum/crafting_recipe/tempgun, /datum/crafting_recipe/beam_rifle)
 
 	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
+		/datum/element/slapcrafting,		slapcraft_recipes = slapcraft_recipe_list,	)
 
 /obj/item/gun/energy/e_gun/add_seclight_point()
-	AddComponent(/datum/component/seclite_attachable, \
-		light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', \
-		light_overlay = "flight", \
-		overlay_x = 15, \
-		overlay_y = 10)
+	AddComponent(/datum/component/seclite_attachable, 		light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', 		light_overlay = "flight", 		overlay_x = 15, 		overlay_y = 10)
 
 /obj/item/gun/energy/e_gun/mini
 	name = "miniature energy gun"
-	desc = "A small, pistol-sized energy gun with a built-in flashlight. It has two settings: disable and kill."
+	desc = "Uma arma de energia pequena com uma lanterna. Tem duas configurações: desativar e matar."
 	icon_state = "mini"
 	inhand_icon_state = "gun"
 	w_class = WEIGHT_CLASS_SMALL
@@ -42,31 +36,25 @@
 
 /obj/item/gun/energy/e_gun/mini/add_seclight_point()
 	// The mini energy gun's light comes attached but is unremovable.
-	AddComponent(/datum/component/seclite_attachable, \
-		starting_light = new /obj/item/flashlight/seclite(src), \
-		is_light_removable = FALSE, \
-		light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', \
-		light_overlay = "mini-light", \
-		overlay_x = 19, \
-		overlay_y = 13)
+	AddComponent(/datum/component/seclite_attachable, 		starting_light = new /obj/item/flashlight/seclite(src), 		is_light_removable = FALSE, 		light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', 		light_overlay = "mini-light", 		overlay_x = 19, 		overlay_y = 13)
 
 /obj/item/gun/energy/e_gun/stun
 	name = "tactical energy gun"
-	desc = "Military issue energy gun, is able to fire stun rounds."
+	desc = "Arma de energia militar é capaz de disparar balas de choque."
 	icon_state = "energytac"
 	ammo_x_offset = 2
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode/spec, /obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser)
 
 /obj/item/gun/energy/e_gun/old
 	name = "prototype energy gun"
-	desc = "NT-P:01 Prototype Energy Gun. Early stage development of a unique laser rifle that has multifaceted energy lens allowing the gun to alter the form of projectile it fires on command."
+	desc = "NT-P:01 Protótipo de Arma de Energia. Desenvolvimento inicial de um rifle laser único que tem lentes de energia multifacetadas permitindo que a arma altere a forma de projétil que dispara sob comando."
 	icon_state = "protolaser"
 	ammo_x_offset = 2
 	ammo_type = list(/obj/item/ammo_casing/energy/laser, /obj/item/ammo_casing/energy/electrode/old)
 
 /obj/item/gun/energy/e_gun/mini/practice_phaser
 	name = "practice phaser"
-	desc = "A modified version of the basic phaser gun, this one fires less concentrated energy bolts designed for target practice."
+	desc = "Uma versão modificada da arma phaser básica, esta dispara menos parafusos de energia concentrados projetados para a prática do alvo."
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser/practice)
 	icon_state = "decloner"
 	//You have no icons for energy types, you're a decloner
@@ -75,7 +63,7 @@
 
 /obj/item/gun/energy/e_gun/hos
 	name = "\improper X-01 MultiPhase Energy Gun"
-	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
+	desc = "Esta é uma recriação moderna e cara de uma antiga arma laser. Esta arma tem vários bombeiros únicos, mas não tem a capacidade de recarregar com o tempo."
 	cell_type = /obj/item/stock_parts/power_store/cell/hos_gun
 	icon_state = "hoslaser"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -87,9 +75,7 @@
 
 /obj/item/gun/energy/e_gun/dragnet
 	name = "\improper DRAGnet translocation shotgun"
-	desc = "The \"Dynamic Rapid-Apprehension of the Guilty Network\" translocation shotgun (or DRAGnet for short) is a revolution in law enforcement technology. \
-		By syncing the weapon to a DRAGnet beacon, the bluespace transportation fields produced by the weapon's 'snare' function can rapidly exfiltrate an entire \
-		security squad, with criminal in tow. Otherwise, the weapon is an entirely nonlethal apprehension tool. Exceptionally useful for nonlethal close-quarters battle."
+	desc = "O\"Dinâmica rápida apreensão da Rede Culpada\"Translocação de espingarda (ou DRAGnet para abreviar) é uma revolução na tecnologia de aplicação da lei. Ao sincronizar a arma com um sinalizador DRAGnet, os campos de transporte do espaço azul produzidos pela função 'sonda' da arma podem rapidamente exfiltrar um esquadrão de segurança inteiro, com um criminoso no reboque. Caso contrário, a arma é uma ferramenta de apreensão totalmente não letal. Excepcionalmente útil para uma batalha não letal."
 	icon_state = "dragnet"
 	worn_icon_state = "dragnet"
 	base_icon_state = "dragnet"
@@ -117,24 +103,24 @@
 /obj/item/gun/energy/e_gun/dragnet/proc/link_beacon(mob/living/user, obj/item/dragnet_beacon/our_beacon)
 	if(linked_beacon)
 		if(our_beacon == linked_beacon)
-			balloon_alert(user, "already synced!")
+			balloon_alert(user, "Já sincronizado!")
 			return
 		else
 			UnregisterSignal(linked_beacon, COMSIG_QDELETING) //You're getting overridden dude.
 
 	linked_beacon = our_beacon
-	balloon_alert(user, "beacon synced")
+	balloon_alert(user, "O farol está sincronizado.")
 	RegisterSignal(our_beacon, COMSIG_QDELETING, PROC_REF(handle_beacon_disable))
 
 ///Handles clearing the linked_beacon reference in the event that it is deleted.
 /obj/item/gun/energy/e_gun/dragnet/proc/handle_beacon_disable(datum/source)
 	SIGNAL_HANDLER
-	visible_message(span_warning("A light on the [src] flashes, indicating that it is no longer linked with a DRAGnet beacon!"))
+	visible_message(span_warning("Uma luz sobre o[src]flashes, indicando que não está mais ligado com um farol DRAGnet!"))
 	linked_beacon = null
 
 /obj/item/gun/energy/e_gun/turret
 	name = "hybrid turret gun"
-	desc = "A heavy hybrid energy cannon with two settings: Stun and kill."
+	desc = "Um canhão de energia híbrido pesado com duas configurações: atordoar e matar."
 	icon_state = "turretlaser"
 	inhand_icon_state = "turretlaser"
 	slot_flags = null
@@ -149,7 +135,7 @@
 
 /obj/item/gun/energy/e_gun/nuclear
 	name = "advanced energy gun"
-	desc = "An energy gun with an experimental miniaturized nuclear reactor that automatically charges the internal power cell."
+	desc = "Uma arma de energia com um reator nuclear experimental miniaturizado que carrega automaticamente a célula de energia interna."
 	icon_state = "nucgun"
 	inhand_icon_state = "nucgun"
 	charge_delay = 10
@@ -184,12 +170,12 @@
 			if(0 to 200)
 				fail_tick += (2*(fail_chance))
 				M.adjust_fire_loss(3)
-				to_chat(M, span_userdanger("Your [name] feels warmer."))
+				to_chat(M, span_userdanger("Sua[name]Parece mais quente."))
 			if(201 to INFINITY)
 				SSobj.processing.Remove(src)
 				M.adjust_fire_loss(10)
 				reactor_overloaded = TRUE
-				to_chat(M, span_userdanger("Your [name]'s reactor overloads!"))
+				to_chat(M, span_userdanger("Sua[name]Sobrecarga do reator!"))
 
 /obj/item/gun/energy/e_gun/nuclear/emp_act(severity)
 	. = ..()

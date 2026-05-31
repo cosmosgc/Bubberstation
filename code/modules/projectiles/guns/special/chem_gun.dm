@@ -2,7 +2,7 @@
 //this is meant to hold reagents/obj/item/gun/syringe
 /obj/item/gun/chem
 	name = "reagent gun"
-	desc = "A Nanotrasen syringe gun, modified to automatically synthesise chemical darts, and instead hold reagents."
+	desc = "Uma arma de seringa Nanotrasen, modificada para sintetizar automaticamente dardos químicos, e, em vez disso, segurar reagentes."
 	icon_state = "chemgun"
 	inhand_icon_state = "chemgun"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -51,7 +51,7 @@
 		return
 	if(world.time < last_synth+time_per_syringe)
 		return
-	to_chat(loc, span_warning("You hear a click as [src] synthesizes a new dart."))
+	to_chat(loc, span_warning("Você ouve um clique como[src]sintetiza um novo dardo."))
 	syringes_left++
 	if(chambered && !chambered.loaded_projectile)
 		chambered.newshot()

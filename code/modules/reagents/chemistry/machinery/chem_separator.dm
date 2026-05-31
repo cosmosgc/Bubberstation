@@ -3,7 +3,7 @@
 
 /obj/structure/chem_separator
 	name = "distillation apparatus"
-	desc = "A device that performs chemical separation by distillation."
+	desc = "Um dispositivo que realiza separação química por destilação."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "separator"
 	light_power = 1
@@ -102,38 +102,38 @@
 	. = ..()
 
 	if(reagents.total_volume)
-		. += span_notice("The distilation flask reads <b>[reagents.total_volume]/[reagents.maximum_volume]u</b>.")
+		. += span_notice("O frasco de destilação diz<b>[reagents.total_volume]/[reagents.maximum_volume]U</b>.")
 	if(!QDELETED(distilled_container))
-		. += span_notice("The distilation beaker reads <b>[distilled_container.reagents.total_volume]/[distilled_container.reagents.maximum_volume]u</b>.")
-		. += span_notice("Remove beaker with [EXAMINE_HINT("LMB")].")
+		. += span_notice("O copo de destilação lê<b>[distilled_container.reagents.total_volume]/[distilled_container.reagents.maximum_volume]U</b>.")
+		. += span_notice("Remova o copo com[EXAMINE_HINT("LMB")].")
 	else
-		. += span_warning("Its missing a distilation container, insert with [EXAMINE_HINT("LMB")]")
+		. += span_warning("Falta um recipiente de destilação, insira com[EXAMINE_HINT("LMB")]")
 	if(!QDELETED(fuel_container))
-		. += span_notice("The burner fuel container reads <b>[fuel_container.reagents.total_volume]/[fuel_container.reagents.maximum_volume]u</b>.")
-		. += span_notice("Remove fuel with [EXAMINE_HINT("RMB")].")
+		. += span_notice("O recipiente de combustível diz:<b>[fuel_container.reagents.total_volume]/[fuel_container.reagents.maximum_volume]U</b>.")
+		. += span_notice("Retirar combustível com[EXAMINE_HINT("RMB")].")
 	else
-		. += span_warning("Its missing a beaker containing fuel for the burner, insert with [EXAMINE_HINT("RMB")]")
+		. += span_warning("Falta um copo contendo combustível para o queimador, insira com[EXAMINE_HINT("RMB")]")
 	if(burner_on)
-		. += span_notice("Off burner with [EXAMINE_HINT("ALT LMB")].")
+		. += span_notice("Fora do queimador com[EXAMINE_HINT("ALT LMB")].")
 	else
-		. += span_notice("You can start a flame with a combustible device.")
+		. += span_notice("Você pode iniciar uma chama com um dispositivo combustível.")
 
 	if(condenser_installed)
-		. += span_notice("The in-built condenser can facilitate faster cooling but consumes fuel.")
+		. += span_notice("O condensador embutido pode facilitar o resfriamento mais rápido, mas consome combustível.")
 	else
-		. += span_notice("You could install a [EXAMINE_HINT("condenser")] for faster cooling.")
+		. += span_notice("Você poderia instalar um[EXAMINE_HINT("condenser")]para resfriamento mais rápido.")
 
-	. += span_notice("You can [EXAMINE_HINT("examine more")] to see reagent boiling points & fuel properties.")
-	. += span_notice("The whole aparatus can be [EXAMINE_HINT("pried")] apart.")
+	. += span_notice("Você pode.[EXAMINE_HINT("examine more")]para ver pontos de ebulição reagentes e propriedades de combustível.")
+	. += span_notice("Todo o aparato pode ser[EXAMINE_HINT("pried")]Separados.")
 
 /obj/structure/chem_separator/examine_more(mob/user)
 	. = ..()
 
-	. += span_notice("For burner fuel Plasma > Oil > Welding Fuel = Oxygen > Ethanol > Monkey Energy")
+	. += span_notice("Para combustível descartável Plasma > Óleo > Combustível de solda = Oxigênio > Etanol > Energia do Macaco")
 
-	. += span_notice("Upon cross examining the flasks reagents contents with its chart you see the boiling points of each reagent present.")
+	. += span_notice("Ao examinar os reagentes dos frascos com seu gráfico, vemos os pontos de ebulição de cada reagente presente.")
 	for(var/datum/reagent/reg as anything in reagents.reagent_list)
-		. += span_notice("[reg.name] [get_boiling_point(reg)]K")
+		. += span_notice("[reg.name] [get_boiling_point(reg)]K.")
 
 /obj/structure/chem_separator/update_overlays()
 	. = ..()
@@ -269,24 +269,24 @@
 
 		//add new container
 		if(!user.transferItemToLoc(tool, src))
-			to_chat(user, span_warning("[tool] is stuck in your hand."))
+			to_chat(user, span_warning("[tool]está preso em sua mão."))
 			return ITEM_INTERACT_BLOCKING
 		distilled_container = tool
 
 		START_PROCESSING(SSobj, src)
-		balloon_alert(user, "distillation container added.")
+		balloon_alert(user, "recipiente de destilação adicionado.")
 
 		ui_interact(user)
 		update_appearance(UPDATE_OVERLAYS)
 		return ITEM_INTERACT_SUCCESS
 	else if(istype(tool, /obj/item/assembly/igniter/condenser))
 		if(!user.temporarilyRemoveItemFromInventory(tool))
-			to_chat(user, span_warning("[tool] is stuck in your hand."))
+			to_chat(user, span_warning("[tool]está preso em sua mão."))
 			return ITEM_INTERACT_BLOCKING
 		condenser_installed = TRUE
 		update_static_data_for_all_viewers()
 		qdel(tool)
-		balloon_alert(user, "condenser installed.")
+		balloon_alert(user, "Condensador instalado.")
 		return ITEM_INTERACT_SUCCESS
 
 	///Try & ignite the bunset burner with this item
@@ -308,7 +308,7 @@
 			return TRUE
 
 		if(user.put_in_hands(distilled_container))
-			to_chat(user, span_notice("you take out the output flask."))
+			to_chat(user, span_notice("Você tira o frasco de saída."))
 			update_appearance(UPDATE_OVERLAYS)
 		return TRUE
 
@@ -326,10 +326,10 @@
 
 		//add new container
 		if(!user.transferItemToLoc(tool, src))
-			to_chat(user, span_warning("[tool] is stuck in your hand."))
+			to_chat(user, span_warning("[tool]está preso em sua mão."))
 			return ITEM_INTERACT_BLOCKING
 		fuel_container = tool
-		balloon_alert(user, "fuel container added.")
+		balloon_alert(user, "Contêiner de combustível adicionado.")
 
 		ui_interact(user)
 		return ITEM_INTERACT_SUCCESS
@@ -341,7 +341,7 @@
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 		if(user.put_in_hands(fuel_container))
-			to_chat(user, span_notice("you take out the burner fuel container"))
+			to_chat(user, span_notice("Você tira o recipiente de combustível descartável."))
 			toggle_burner(FALSE)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 

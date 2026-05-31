@@ -35,7 +35,7 @@
 	var/mob/living/A = get_duelist(gun_A)
 	var/mob/living/B = get_duelist(gun_B)
 	if(!A || !B)
-		message_duelists(span_warning("To begin the duel, both participants need to be holding paired dueling pistols."))
+		message_duelists(span_warning("Para começar o duelo, ambos os participantes precisam segurar pistolas emparelhadas."))
 		return
 	begin()
 
@@ -45,7 +45,7 @@
 	fired.Cut()
 	countdown_step = countdown_length
 
-	message_duelists(span_notice("Set your gun setting and move [required_distance] steps away from your opponent."))
+	message_duelists(span_notice("Coloque sua arma e mexa-se.[required_distance]Afaste-se do seu oponente."))
 
 	START_PROCESSING(SSobj,src)
 
@@ -67,7 +67,7 @@
 	return G == gun_A ? gun_B : gun_A
 
 /datum/duel/proc/end()
-	message_duelists(span_notice("Duel finished. Re-engaging safety."))
+	message_duelists(span_notice("Duelo terminado. Religando a segurança."))
 	STOP_PROCESSING(SSobj,src)
 	state = DUEL_IDLE
 
@@ -94,24 +94,24 @@
 
 
 /datum/duel/proc/back_to_prep()
-	message_duelists(span_notice("Positions invalid. Please move to valid positions exactly [required_distance] steps away from each other to continue."))
+	message_duelists(span_notice("Posições inválidas. Por favor, mudem para posições válidas exatamente.[required_distance]Afaste-se um do outro para continuar."))
 	state = DUEL_PREPARATION
 	confirmations.Cut()
 	countdown_step = countdown_length
 
 /datum/duel/proc/confirm_positioning()
-	message_duelists(span_notice("Position confirmed. Confirm readiness by pulling the trigger once."))
+	message_duelists(span_notice("Posição confirmada. Confirme a prontidão puxando o gatilho uma vez."))
 	state = DUEL_READY
 
 /datum/duel/proc/confirm_ready()
-	message_duelists(span_notice("Readiness confirmed. Starting countdown. Commence firing at zero mark."))
+	message_duelists(span_notice("Pronto. Iniciando contagem regressiva. Iniciar disparo a zero."))
 	state = DUEL_COUNTDOWN
 
 /datum/duel/proc/countdown_step()
 	countdown_step--
 	if(countdown_step == 0)
 		state = DUEL_FIRING
-		message_duelists(span_userdanger("Fire!"))
+		message_duelists(span_userdanger("Fogo!"))
 	else
 		message_duelists(span_userdanger("[countdown_step]!"))
 
@@ -147,7 +147,7 @@
 
 /obj/item/gun/energy/dueling
 	name = "dueling pistol"
-	desc = "High-tech dueling pistol. Launches chaff and projectile according to preset settings."
+	desc = "Pistola de duelo de alta tecnologia. Lança joio e projétil de acordo com as configurações predefinidas."
 	icon_state = "dueling_pistol"
 	inhand_icon_state = "gun"
 	ammo_x_offset = 2
@@ -171,7 +171,7 @@
 
 		if(!check_valid_duel(user, FALSE) && !other_gun.check_valid_duel(user, FALSE))
 			var/datum/duel/D = new(src, other_gun)
-			to_chat(user,span_notice("Pairing established. Pairing code: [D.pairing_code]"))
+			to_chat(user,span_notice("Emparelhamento estabelecido. Código de pareamento:[D.pairing_code]"))
 			return
 
 	return ..()
@@ -211,7 +211,7 @@
 			setting = DUEL_SETTING_C
 		if(DUEL_SETTING_C)
 			setting = DUEL_SETTING_A
-	to_chat(user,span_notice("You switch [src] setting to [setting] mode."))
+	to_chat(user,span_notice("Você troca.[src]Ajustando para[setting]Modo."))
 	update_appearance()
 
 /obj/item/gun/energy/dueling/update_overlays()
@@ -237,7 +237,7 @@
 		if(DUEL_READY)
 			return .
 		else
-			to_chat(user,span_warning("[src] is locked. Wait for FIRE signal before shooting."))
+			to_chat(user,span_warning("[src]Está trancada. Espere o sinal antes de atirar."))
 			return FALSE
 
 /obj/item/gun/energy/dueling/proc/is_duelist(mob/living/L)
@@ -252,10 +252,10 @@
 		return
 	if(duel.state == DUEL_READY)
 		duel.confirmations[src] = TRUE
-		to_chat(user,span_notice("You confirm your readiness."))
+		to_chat(user,span_notice("Você confirma sua prontidão."))
 		return
 	else if(!is_duelist(target)) //I kinda want to leave this out just to see someone shoot a bystander or missing.
-		to_chat(user,span_warning("[src] safety system prevents shooting anyone but your designated opponent."))
+		to_chat(user,span_warning("[src]O sistema de segurança evita atirar em qualquer um, exceto no seu oponente designado."))
 		return
 	else
 		duel.fired[src] = TRUE
@@ -269,7 +269,7 @@
 /obj/item/gun/energy/dueling/proc/check_valid_duel(mob/living/user, do_warn)
 	if(!duel)
 		if(do_warn)
-			to_chat(user,span_warning("[src] is currently unpaired."))
+			to_chat(user,span_warning("[src]está atualmente sem par."))
 		return FALSE
 	return TRUE
 

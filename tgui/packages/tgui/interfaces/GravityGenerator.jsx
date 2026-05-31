@@ -38,7 +38,7 @@ const GravityGeneratorContent = (props) => {
             onClick={() => act('gentoggle')}
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Gravity Charge">
+        <LabeledList.Item label="Carga de gravidade">
           <ProgressBar
             value={charge_count / 100}
             ranges={{
@@ -48,7 +48,7 @@ const GravityGeneratorContent = (props) => {
             }}
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Charge Mode">
+        <LabeledList.Item label="Modo de carga">
           {charging_state === 0 &&
             ((on && <Box color="good">Fully Charged</Box>) || (
               <Box color="bad">Not Charging</Box>

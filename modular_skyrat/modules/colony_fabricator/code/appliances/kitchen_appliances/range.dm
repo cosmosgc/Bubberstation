@@ -1,8 +1,6 @@
 /obj/machinery/oven/range_frontier
 	name = "frontier range"
-	desc = "A combined oven and stove commonly seen on the frontier. Comes from the factory packed up \
-		in a neatly compact format that can then be deployed into a nearly full size appliance. \
-		It seems, however, that the designer forgot to include instructions on packing these things back up."
+	desc = "Um forno combinado e fogão comumente visto na fronteira. Vem da fábrica embalada em um formato perfeitamente compacto que pode então ser implantado em um aparelho de tamanho quase completo. Parece, no entanto, que o designer esqueceu de incluir instruções sobre embalar essas coisas de volta."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/kitchen_stuff/range.dmi'
 	icon_state = "range_off"
 	base_icon_state = "range"
@@ -17,7 +15,7 @@
 
 /obj/machinery/oven/range_frontier/examine(mob/user)
 	. = ..()
-	. += span_notice("It cannot be repacked, but can be deconstructed normally.")
+	. += span_notice("Não pode ser reembalado, mas pode ser desconstruído normalmente.")
 
 /obj/machinery/oven/range_frontier/unanchored
 	anchored = FALSE

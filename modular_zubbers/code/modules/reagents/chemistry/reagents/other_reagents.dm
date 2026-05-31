@@ -42,7 +42,7 @@
 
 /datum/reagent/mutationtoxin/akula
 	name = "Akula Mutation Toxin"
-	description = "An akula toxin."
+	description = "Uma toxina akula."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/akula
 	taste_description = "fish"
@@ -56,18 +56,18 @@
 
 /datum/reagent/transformative_virus/android
 	name = "Android Nanomachines"
-	description = "One with the machine."
+	description = "Um com a máquina."
 	color = "#535E66"  //RGB: 94, 255, 59
-	taste_description = "circuitry and steel"
+	taste_description = "circuito e aço"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	transformation_disease = /datum/disease/transformation_race/android
 
 /datum/reagent/mutationtoxin/anthromorph
 	name = "Anthromorph Mutation Toxin"
-	description = "An anthromorph toxin."
+	description = "Uma toxina antromorfa."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/mammal
-	taste_description = "wet dog"
+	taste_description = "Cão molhado."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	mutationtexts = list(
 		"You feel pinpricks on your skin." = MUT_MSG_IMMEDIATE,
@@ -86,10 +86,10 @@
 
 /datum/reagent/mutationtoxin/dwarf
 	name = "Dwarf Mutation Toxin"
-	description = "A dwarf toxin."
+	description = "Uma toxina anã."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/dwarf
-	taste_description = "ale and earth"
+	taste_description = "Ale e terra"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	mutationtexts = list(
 		"You feel a desire for some ale." = MUT_MSG_IMMEDIATE,
@@ -100,7 +100,7 @@
 
 /datum/reagent/mutationtoxin/ethereal
 	name = "Ethereal Mutation Toxin"
-	description = "A lightbulb toxin."
+	description = "Uma toxina de lâmpada."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/ethereal
 	taste_description = "electricity"
@@ -122,10 +122,10 @@
 
 /datum/reagent/mutationtoxin/felinid/primitive
 	name = "Ice Walker Mutation Toxin"
-	description = "A ice Walker toxin."
+	description = "Uma toxina de gelo Walker."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/human/felinid/primitive
-	taste_description = "something ancient and cold"
+	taste_description = "Algo antigo e frio"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	mutationtexts = list(
 		"Your mind feels clouded." = MUT_MSG_IMMEDIATE,
@@ -146,10 +146,10 @@
 
 /datum/reagent/mutationtoxin/ghoul
 	name = "Ghoul Mutation Toxin"
-	description = "A ghoul toxin."
+	description = "Uma toxina Ghoul."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/ghoul
-	taste_description = "rotting flesh"
+	taste_description = "Carne podre."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	mutationtexts = list(
 		"Your muscles are sore." = MUT_MSG_IMMEDIATE,
@@ -168,7 +168,7 @@
 
 /datum/reagent/transformative_virus/hemophage
 	name = "Hemophage Corruption Virus"
-	description = "A hemophage virus."
+	description = "Um vírus hemofágico."
 	color = BLOOD_COLOR_RED
 	taste_description = "blood"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
@@ -176,7 +176,7 @@
 
 /datum/reagent/mutationtoxin/insect
 	name = "Insect Mutation Toxin"
-	description = "An insect toxin."
+	description = "Uma toxina de insetos."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/insect
 	taste_description = "honey"
@@ -206,7 +206,7 @@
 
 /datum/reagent/mutationtoxin/monkey
 	name = "Monkey Mutation Toxin"
-	description = "A monkey toxin."
+	description = "Uma toxina de macaco."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/monkey
 	taste_description = "bananas"
@@ -245,10 +245,10 @@
 
 /datum/reagent/mutationtoxin/shadekin
 	name = "Shadekin Mutation Toxin"
-	description = "A shadekin toxin."
+	description = "Uma toxina shadekin."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/shadekin
-	taste_description = "something dark and furry"
+	taste_description = "Algo escuro e peludo"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	mutationtexts = list(
 		"You feel at home in the darkness." = MUT_MSG_IMMEDIATE,
@@ -259,10 +259,10 @@
 
 /datum/reagent/mutationtoxin/shadow
 	name = "Shadow Mutation Toxin"
-	description = "A dark toxin."
+	description = "Uma toxina escura."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/shadow
-	taste_description = "the night"
+	taste_description = "A noite"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	mutationtexts = list(
 		"You feel at home in the darkness." = MUT_MSG_IMMEDIATE,
@@ -281,10 +281,10 @@
 
 /datum/reagent/mutationtoxin/skrell
 	name = "Skrell Mutation Toxin"
-	description = "A skrell toxin."
+	description = "Uma toxina Skrell."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/skrell
-	taste_description = "salted squid"
+	taste_description = "lula salgada"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	mutationtexts = list(
 		"Your skin feels rubbery" = MUT_MSG_IMMEDIATE,
@@ -295,7 +295,7 @@
 
 /datum/reagent/transformative_virus/synthetic
 	name = "Synthetic Nanomachines"
-	description = "We can rebuild them."
+	description = "Podemos reconstruí-los."
 	color = "#535E66"  //RGB: 94, 255, 59
 	taste_description = "metal"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
@@ -303,7 +303,7 @@
 
 /datum/reagent/mutationtoxin/tajaran
 	name = "Tajaran Mutation Toxin"
-	description = "A tajaran toxin."
+	description = "Uma toxina tajaran."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/tajaran
 	taste_description = "toxoplasmosis"
@@ -317,10 +317,10 @@
 
 /datum/reagent/mutationtoxin/teshari
 	name = "Teshari Mutation Toxin"
-	description = "A teshari toxin."
+	description = "Uma toxina teshari."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/teshari
-	taste_description = "fried chicken"
+	taste_description = "Frango frito."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	mutationtexts = list(
 		"You feel pinpricks on your skin." = MUT_MSG_IMMEDIATE,
@@ -331,10 +331,10 @@
 
 /datum/reagent/mutationtoxin/vox
 	name = "Vox Mutation Toxin"
-	description = "A voxin."
+	description = "Uma voxina."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/vox
-	taste_description = "skreeing with a metallic tinge"
+	taste_description = "Skreeeing com um toque metálico"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	mutationtexts = list(
 		"Your throat feels scratchy." = MUT_MSG_IMMEDIATE,
@@ -345,10 +345,10 @@
 
 /datum/reagent/mutationtoxin/vox_primalis
 	name = "Vox Primalis Mutation Toxin"
-	description = "A vox primalis toxin."
+	description = "Uma toxina vox primalis."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/vox_primalis
-	taste_description = "screeching with a metallic tinge"
+	taste_description = "Gritando com um toque metálico"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	mutationtexts = list(
 		"Your throat feels scratchy." = MUT_MSG_IMMEDIATE,
@@ -359,10 +359,10 @@
 
 /datum/reagent/mutationtoxin/vulpkanin
 	name = "Fox Mutation Toxin"
-	description = "A foxin."
+	description = "Uma raposa."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/vulpkanin
-	taste_description = "orange chicken"
+	taste_description = "Frango laranja"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	mutationtexts = list(
 		"You feel pinpricks on your skin." = MUT_MSG_IMMEDIATE,
@@ -373,10 +373,10 @@
 
 /datum/reagent/mutationtoxin/xenohybrid
 	name = "Xenohybrid Mutation Toxin"
-	description = "A xenohybrid toxin."
+	description = "Uma toxina xenohybrid."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/xeno
-	taste_description = "sour apples"
+	taste_description = "Maçãs azedas"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 	mutationtexts = list(
 		"Your throat feels scratchy." = MUT_MSG_IMMEDIATE,
@@ -396,9 +396,9 @@
 //New chemical which only causes people to perform the 'weh' emote. No way to create this, currently will only be in rare foam grenades found as loot
 /datum/reagent/juice_that_makes_you_weh
 	name = "Juice That Makes You Weh"
-	description = "A strange green chemical, will cause iliving beings to 'weh' uncontrollably for a time"
+	description = "Um estranho químico verde, fará com que os seres vivos fiquem incontroláveis por um tempo."
 	color = "#37e427" // rgb: 165, 240, 238
-	taste_description = "an odd sweetness with a hint of spice"
+	taste_description = "uma doçura estranha com um toque de tempero"
 	metabolization_rate = 2 // metabolises 10x faster, will occur more often but not hang around for ages
 	penetrates_skin = VAPOR
 	ph = 5.5
@@ -408,7 +408,7 @@
 	. = ..()
 
 	if (prob(50))
-		to_chat(affected_mob, span_warning("You feel the urge to weh..."))
+		to_chat(affected_mob, span_warning("Você sente o desejo de..."))
 		addtimer(CALLBACK(src, PROC_REF(do_weh), affected_mob), rand(1, 4) SECONDS)
 
 /datum/reagent/juice_that_makes_you_weh/proc/do_weh(mob/living/carbon/M)
@@ -420,15 +420,15 @@
 //Hugging the plushie turns yourself into the plushie!
 /datum/reagent/plushmium
 	name = "Plushmium"
-	description = "A strange chemical, seeming almost fluffy, if it were not for it being a liquid. Known to have a strange effect on plushies."
+	description = "Um químico estranho, parecendo quase fofo, se não fosse por ser um líquido. Conhecido por ter um efeito estranho em pelúcias."
 	color = "#fbcbd7"
-	taste_description = "the soft feeling of a plushie"
+	taste_description = "A sensação suave de um plushie"
 	ph = 5
 
 /datum/reagent/plushmium/expose_obj(obj/exposed_obj, reac_volume, methods, show_message)
 	. = ..()
 	if(istype(exposed_obj, /obj/item/toy/plush) && reac_volume >= 5)
-		exposed_obj.loc.visible_message(span_warning("The plushie seems to be staring back at you."))
+		exposed_obj.loc.visible_message(span_warning("A pelúcia parece estar olhando para você."))
 		var/obj/item/toy/plushie_shell/new_shell = new /obj/item/toy/plushie_shell(exposed_obj.loc)
 		new_shell.name = exposed_obj.name
 		new_shell.icon = exposed_obj.icon

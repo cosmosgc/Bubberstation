@@ -8,7 +8,7 @@ The console is located at computer/gulag_teleporter.dm
 //Gulag teleporter
 /obj/machinery/gulag_teleporter
 	name = "labor camp teleporter"
-	desc = "A bluespace teleporter used for teleporting prisoners to the labor camp."
+	desc = "Um teletransportador do espaço azul usado para teletransportar prisioneiros para o campo de trabalho."
 	icon = 'icons/obj/machines/implant_chair.dmi'
 	icon_state = "implantchair"
 	base_icon_state = "implantchair"
@@ -49,7 +49,7 @@ The console is located at computer/gulag_teleporter.dm
 /obj/machinery/gulag_teleporter/interact(mob/user)
 	. = ..()
 	if(locked)
-		to_chat(user, span_warning("[src] is locked!"))
+		to_chat(user, span_warning("[src]Está trancada!"))
 		return
 	toggle_open()
 
@@ -84,7 +84,7 @@ The console is located at computer/gulag_teleporter.dm
 	if(locked)
 		if(message_cooldown <= world.time)
 			message_cooldown = world.time + 50
-			to_chat(user, span_warning("[src]'s door won't budge!"))
+			to_chat(user, span_warning("[src]A porta não se mexe!"))
 		return
 	open_machine()
 
@@ -99,17 +99,16 @@ The console is located at computer/gulag_teleporter.dm
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
 	user.visible_message(
-		span_notice("You see [user] kicking against the door of [src]!"),
-		span_notice("You lean on the back of [src] and start pushing the door open... (this will take about [DisplayTimeText(resist_time)].)"),
-		span_hear("You hear a metallic creaking from [src]."),
+		span_notice("Viu?[user]Chutando contra a porta de[src]!"),
+		span_notice("Você se apoia na parte de trás de[src]E começar a empurrar a porta aberta...[DisplayTimeText(resist_time)].)"),
+		span_hear("Você ouve um metal rangendo de[src]."),
 	)
 
 	if(do_after(user, resist_time, target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || state_open || !locked)
 			return
 		locked = FALSE
-		user.visible_message(span_warning("[user] successfully broke out of [src]!"), \
-			span_notice("You successfully break out of [src]!"))
+		user.visible_message(span_warning("[user]Com sucesso, fugiu.[src]!"), 			span_notice("Você conseguiu escapar.[src]!"))
 		open_machine()
 
 /obj/machinery/gulag_teleporter/proc/locate_reclaimer()
@@ -119,7 +118,7 @@ The console is located at computer/gulag_teleporter.dm
 
 /obj/machinery/gulag_teleporter/proc/toggle_open()
 	if(panel_open)
-		to_chat(usr, span_notice("Close the maintenance panel first."))
+		to_chat(usr, span_notice("Feche o painel de manutenção primeiro."))
 		return
 
 	if(state_open)
@@ -180,7 +179,7 @@ The console is located at computer/gulag_teleporter.dm
 /*  beacon that receives the teleported prisoner */
 /obj/structure/gulag_beacon
 	name = "labor camp bluespace beacon"
-	desc = "A receiving beacon for bluespace teleportations."
+	desc = "Um sinal receptor para teletransportações do espaço azul."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "light_on-8"
 	resistance_flags = INDESTRUCTIBLE

@@ -24,7 +24,7 @@
 
 /obj/item/circuit_component/controller
 	display_name = "Controller"
-	desc = "Used to receive inputs from the controller shell. Use the shell in hand to trigger the output signal."
+	desc = "Costumava receber entradas da shell do controlador. Use o escudo para ativar o sinal de saída."
 	desc_controls = "Alt-click for the alternate signal. Right click for the extra signal."
 	/// The three separate buttons that are called in attack_hand on the shell.
 	var/datum/port/output/signal
@@ -53,7 +53,7 @@
 	))
 
 /obj/item/circuit_component/controller/proc/handle_trigger(atom/source, user, port_name, datum/port/output/port_signal)
-	source.balloon_alert(user, "clicked [port_name] button")
+	source.balloon_alert(user, "Clicked[port_name]Botão")
 	playsound(source, SFX_KEYBOARD_CLICKS, 25, FALSE)
 	entity.set_output(user)
 	port_signal.set_output(COMPONENT_SIGNAL)

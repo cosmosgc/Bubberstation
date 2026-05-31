@@ -7,7 +7,7 @@
 
 /obj/structure/inflatable
 	name = "inflatable wall"
-	desc = "An inflated membrane. Do not puncture. Alt+Click to deflate."
+	desc = "Uma membrana inflada. Não fure. Alt+Click para esvaziar."
 	can_atmos_pass = ATMOS_PASS_DENSITY
 	density = TRUE
 	anchored = TRUE
@@ -48,7 +48,7 @@
 
 /obj/structure/inflatable/attackby(obj/item/attacking_item, mob/user, params)
 	if(attacking_item.sharpness)
-		visible_message(span_danger("<b>[user] pierces [src] with [attacking_item]!</b>"))
+		visible_message(span_danger("<b>[user]Pierces.[src]Com[attacking_item]!</b>"))
 		deflate(TRUE)
 		return
 	return ..()
@@ -115,7 +115,7 @@
 	if(!user.can_interact_with(src))
 		return
 	toggle_door()
-	to_chat(user, span_notice("You [door_state ? "close" : "open"] [src]!"))
+	to_chat(user, span_notice("Você.[door_state ? "close" : "open"] [src]!"))
 
 /obj/structure/inflatable/door/update_icon_state()
 	. = ..()
@@ -136,7 +136,7 @@
 // The deployable item
 /obj/item/inflatable
 	name = "inflatable wall"
-	desc = "A folded membrane which rapidly expands into a large cubical shape on activation."
+	desc = "Uma membrana dobrada que se expande rapidamente para uma grande forma cúbica na ativação."
 	icon = 'modular_skyrat/modules/inflatables/icons/inflatable.dmi'
 	icon_state = "folded_wall"
 	base_icon_state = "folded_wall"
@@ -156,13 +156,13 @@
 /obj/item/inflatable/attack_self(mob/user)
 	. = ..()
 	if(torn)
-		to_chat(user, span_warning("[src] is too damaged to function!"))
+		to_chat(user, span_warning("[src]Está muito danificado para funcionar!"))
 		return
 	if(locate(structure_type) in get_turf(user))
-		to_chat(user, span_warning("There is already a wall here!"))
+		to_chat(user, span_warning("Já tem uma parede aqui!"))
 		return
 	playsound(loc, 'sound/items/zip/zip.ogg', 75, 1)
-	to_chat(user, span_notice("You inflate [src]."))
+	to_chat(user, span_notice("Você infla[src]."))
 	if(do_after(user, 1 SECONDS, src))
 		new structure_type(get_turf(user))
 		qdel(src)
@@ -171,16 +171,16 @@
 	if(!istype(attacking_item, /obj/item/stack/medical/wrap/sticky_tape))
 		return ..()
 	if(!torn)
-		to_chat(user, span_notice("[src] does not need repairing!"))
+		to_chat(user, span_notice("[src]Não precisa de reparos!"))
 		return
 	var/obj/item/stack/medical/wrap/sticky_tape/attacking_tape = attacking_item
 	if(attacking_tape.use(TAPE_REQUIRED_TO_FIX, check = TRUE))
-		to_chat(user, span_danger("There is not enough of [attacking_tape]! You need at least [TAPE_REQUIRED_TO_FIX] pieces!"))
+		to_chat(user, span_danger("Não há o suficiente de[attacking_tape]Você precisa pelo menos[TAPE_REQUIRED_TO_FIX]Pedaços!"))
 		return
 	if(!do_after(user, 2 SECONDS, src))
 		return
 	playsound(user, 'modular_skyrat/modules/inflatables/sound/ducttape1.ogg', 50, 1)
-	to_chat(user, span_notice("You fix [src] using [attacking_tape]!"))
+	to_chat(user, span_notice("Você conserta.[src]Usando[attacking_tape]!"))
 	attacking_tape.use(TAPE_REQUIRED_TO_FIX)
 	torn = FALSE
 	update_appearance()
@@ -192,10 +192,10 @@
 /obj/item/inflatable/examine(mob/user)
 	. = ..()
 	if(torn)
-		. += span_warning("It is badly torn, and cannot be used! The damage looks like it could be repaired with some <b>tape</b>.")
+		. += span_warning("Está muito rasgado, e não pode ser usado! O dano parece que poderia ser reparado com alguns<b>Fita.</b>.")
 
 /obj/item/inflatable/suicide_act(mob/living/user)
-	visible_message(user, span_danger("[user] starts shoving the [src] up [user.p_their()] ass! It looks like [user.p_their()] going to pull the cord, oh shit!"))
+	visible_message(user, span_danger("[user]Começa a empurrar o[src]Para cima.[user.p_their()]Bunda! Parece que...[user.p_their()]Vai jogar uma corda, oh merda!"))
 	playsound(user.loc, 'sound/machines/hiss.ogg', 75, 1)
 	new structure_type(user.loc)
 	user.gib()
@@ -203,7 +203,7 @@
 
 /obj/item/inflatable/door
 	name = "inflatable door"
-	desc = "A folded membrane which rapidly expands into a simple door on activation."
+	desc = "Uma membrana dobrada que se expande rapidamente em uma porta simples na ativação."
 	icon = 'modular_skyrat/modules/inflatables/icons/inflatable.dmi'
 	icon_state = "folded_door"
 	base_icon_state = "folded_door"
@@ -224,7 +224,7 @@
 /obj/item/storage/inflatable
 	icon = 'modular_skyrat/modules/more_briefcases/icons/briefcases.dmi'
 	name = "inflatable barrier box"
-	desc = "Contains inflatable walls and doors."
+	desc = "Contém paredes infláveis e portas."
 	icon_state = "briefcase_inflate"
 	w_class = WEIGHT_CLASS_NORMAL
 	storage_type = /datum/storage/inflatables_box

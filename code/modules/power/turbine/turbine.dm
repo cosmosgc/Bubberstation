@@ -90,16 +90,16 @@
 /obj/machinery/power/turbine/examine(mob/user)
 	. = ..()
 	if(installed_part)
-		. += span_notice("Currently at tier [installed_part.current_tier].")
+		. += span_notice("Atualmente em nível[installed_part.current_tier].")
 		if(installed_part.current_tier + 1 < TURBINE_PART_TIER_FOUR)
-			. += span_notice("Can be upgraded by using a tier [installed_part.current_tier + 1] part.")
-		. += span_notice("\The [installed_part] can be [EXAMINE_HINT("pried")] out.")
+			. += span_notice("Pode ser melhorado usando uma camada[installed_part.current_tier + 1]Parte.")
+		. += span_notice("\The [installed_part]Pode ser[EXAMINE_HINT("pried")]Fora.")
 	else
-		. += span_warning("Is missing a [initial(part_path.name)].")
-	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
+		. += span_warning("Está faltando um[initial(part_path.name)].")
+	. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
 	if(panel_open)
-		. += span_notice("It can rotated with a [EXAMINE_HINT("wrench")]")
-		. += span_notice("The full machine can be [EXAMINE_HINT("pried")] apart")
+		. += span_notice("Ele pode girar com um[EXAMINE_HINT("wrench")]")
+		. += span_notice("A máquina completa pode ser[EXAMINE_HINT("pried")]Separados.")
 
 ///Is this machine currently running
 /obj/machinery/power/turbine/proc/is_active()
@@ -167,10 +167,10 @@
 /obj/machinery/power/turbine/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ITEM_INTERACT_BLOCKING
 	if(is_active())
-		balloon_alert(user, "turn it off!")
+		balloon_alert(user, "Desligue isso!")
 		return
 	if(!anchored)
-		balloon_alert(user, "ancore primeiro!")
+		balloon_alert(user, "Ancore primeiro!")
 		return
 
 	tool.play_tool_sound(src, 50)
@@ -194,13 +194,13 @@
 /obj/machinery/power/turbine/crowbar_act_secondary(mob/living/user, obj/item/tool)
 	. = ITEM_INTERACT_BLOCKING
 	if(!panel_open)
-		balloon_alert(user, "panel is closed!")
+		balloon_alert(user, "O painel está fechado!")
 		return
 	if(!installed_part)
-		balloon_alert(user, "no rotor installed!")
+		balloon_alert(user, "Sem rotor instalado!")
 		return
 	if(is_active())
-		balloon_alert(user, "[src] is on!")
+		balloon_alert(user, "[src]Está ligado!")
 		return
 
 	user.put_in_hands(installed_part)
@@ -253,10 +253,10 @@
 
 	//not in a state to accept the part. block so we don't bash the machine and damage it
 	if(is_active())
-		balloon_alert(user, "turn off the machine first!")
+		balloon_alert(user, "Desligue a máquina primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	if(!panel_open)
-		balloon_alert(user, "open the maintenance hatch first!")
+		balloon_alert(user, "Abra a escotilha de manutenção primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	//install the part
@@ -264,9 +264,9 @@
 		return ITEM_INTERACT_BLOCKING
 	if(installed_part)
 		user.put_in_hands(installed_part)
-		balloon_alert(user, "replaced part with the one in hand")
+		balloon_alert(user, "Substituido por um na mão.")
 	else
-		balloon_alert(user, "installed new part")
+		balloon_alert(user, "Instalação de nova peça")
 	user.transferItemToLoc(object, src)
 	installed_part = object
 	efficiency = installed_part.get_tier_value(TURBINE_MAX_EFFICIENCY)
@@ -275,7 +275,7 @@
 
 /obj/machinery/power/turbine/inlet_compressor
 	name = "inlet compressor"
-	desc = "The input side of a turbine generator, contains the compressor."
+	desc = "O lado de entrada de um gerador de turbinas contém o compressor."
 	icon_state = "inlet_compressor"
 	base_icon_state = "inlet"
 	circuit = /obj/item/circuitboard/machine/turbine_compressor
@@ -334,7 +334,7 @@
 //===========================OUTLET==============================================
 /obj/machinery/power/turbine/turbine_outlet
 	name = "turbine outlet"
-	desc = "The output side of a turbine generator, contains the turbine and the stator."
+	desc = "O lado de saída de um gerador de turbina, contém a turbina e o estator."
 	icon_state = "turbine_outlet"
 	base_icon_state = "outlet"
 	circuit = /obj/item/circuitboard/machine/turbine_stator
@@ -381,7 +381,7 @@
 //===========================================CORE ROTOR=========================================
 /obj/machinery/power/turbine/core_rotor
 	name = "core rotor"
-	desc = "The middle part of a turbine generator, contains the rotor and the main computer."
+	desc = "A parte do meio de um gerador de turbinas contém o rotor e o computador principal."
 	icon_state = "core_rotor"
 	base_icon_state = "core"
 	can_change_cable_layer = TRUE
@@ -434,9 +434,9 @@
 /obj/machinery/power/turbine/core_rotor/examine(mob/user)
 	. = ..()
 	if(!panel_open)
-		. += span_notice("[EXAMINE_HINT("screw")] open its panel to change cable layer.")
+		. += span_notice("[EXAMINE_HINT("screw")]Abra o painel para mudar a cama do cabo.")
 	if(!all_parts_connected)
-		. += span_warning("The parts need to be linked via a [EXAMINE_HINT("multitool")]")
+		. += span_warning("As partes precisam ser ligadas através de um[EXAMINE_HINT("multitool")]")
 
 ///Adds overlays to this turbines appearance
 /obj/machinery/power/turbine/core_rotor/set_overlays(list/overlays)
@@ -449,7 +449,7 @@
 
 /obj/machinery/power/turbine/core_rotor/cable_layer_act(mob/living/user, obj/item/tool)
 	if(!panel_open)
-		balloon_alert(user, "abra o painel primeiro!")
+		balloon_alert(user, "Abra o painel primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	return ..()
 
@@ -463,10 +463,10 @@
 		return ITEM_INTERACT_SUCCESS
 
 	//log rotor to link later to computer
-	balloon_alert(user, "all parts linked")
+	balloon_alert(user, "Todas como partes ligadas")
 	var/obj/item/multitool/multitool = tool
 	multitool.set_buffer(src)
-	to_chat(user, span_notice("You store linkage information in [tool]'s buffer."))
+	to_chat(user, span_notice("Você armazena informações de ligação em[tool]É um amortecedor."))
 
 	//success
 	return ITEM_INTERACT_SUCCESS
@@ -686,14 +686,7 @@
 
 /obj/item/paper/guides/jobs/atmos/turbine
 	name = "paper- 'Quick guide on the new and improved turbine!'"
-	default_raw_text = "<B>How to operate the turbine</B><BR>\
-	-The new turbine is not much different from the old one, just put gases in the chamber, light them up and activate the machine from the nearby computer.\
-	-There is a new parameter that's visible within the turbine computer's UI, damage. The turbine will be damaged when the heat gets too high, according to the tiers of the parts used. Make sure it doesn't get too hot!<BR>\
-	-You can avoid the turbine critically failing by upgrading the parts of the machine, but not with stock parts as you might be used to. There are 3 all-new parts, one for each section of the turbine.<BR>\
-	-These items are: the compressor part, the rotor part and the stator part. All of them can be printed in any engi lathes (both proto and auto).<BR>\
-	-There are 4 tiers for these items, only the first tier can be printed. The next tier of each part can be made by using various materials on the part (clicking with the material in hand, on the part). The material required to reach the next tier is stated in the part's examine text, try shift clicking it!<BR>\
-	-Each tier increases the efficiency (more power), the max reachable RPM, and the max temperature that the machine can process without taking damage (up to fusion temperatures at the last tier!).<BR>\
-	-A word of warning, the machine is very inefficient in its gas consumption and many unburnt gases will pass through. If you want to be cheap you can either pre-burn the gases or add a filtering system to collect the unburnt gases and reuse them."
+	default_raw_text = "<B>Como operar uma concha</B><BR>- A nova turbina não é muito diferente da antiga, basta colocar gases na câmara, acendê-los e ativar a máquina do computador próximo. - Há um novo parâmetro que é visível dentro da interface da turbina, dano. A turbina será danificada quando o calor ficar muito alto, de acordo com as camadas das peças usadas. Certifique-se que não fique muito quente!<BR>- Você pode evitar a turbina falhando criticamente ao atualizar as partes da máquina, mas não com peças de estoque como você poderia estar acostumado. Há 3 peças totalmente novas, uma para cada seção da turbina.<BR>- Esses itens são: a parte do compressor, a parte do rotor e a parte do estator. Todos eles podem ser impressos em qualquer torno engi (proto e auto).<BR>- Há 4 níveis para esses itens, só o primeiro nível pode ser impresso. A próxima camada de cada peça pode ser feita usando vários materiais da peça (clique com o material na mão, na parte). O material necessário para chegar ao próximo nível está indicado no texto do exame da parte, tente mudar clicando nele!<BR>Cada nível aumenta a eficiência (mais energia), o RPM máx. alcançável, e a temperatura máxima que a máquina pode processar sem causar danos (até temperaturas de fusão na última camada!).<BR>- Uma palavra de aviso, a máquina é muito ineficiente em seu consumo de gás e muitos gases não queimados vão passar. Se quiser ser barato, pode pré-queimar os gases ou adicionar um sistema de filtragem para coletar os gases não queimados e reutilizá-los."
 
 /datum/aas_config_entry/engineering_turbine_failure
 	name = "Engineering Alert: Turbine Failure"

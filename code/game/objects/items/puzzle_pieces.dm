@@ -5,7 +5,7 @@
 //**************
 /obj/item/keycard
 	name = "security keycard"
-	desc = "This feels like it belongs to a door."
+	desc = "Parece que pertence a uma porta."
 	icon = 'icons/obj/fluff/puzzle_small.dmi'
 	icon_state = "keycard"
 	force = 0
@@ -22,13 +22,13 @@
 //Two test keys for use alongside the two test doors.
 /obj/item/keycard/yellow
 	name = "yellow keycard"
-	desc = "A yellow keycard. How fantastic. Looks like it belongs to a high security door."
+	desc = "Um cartão amarelo. Que fantástico. Parece que pertence a uma porta de alta segurança."
 	color = "#f0da12"
 	puzzle_id = "yellow"
 
 /obj/item/keycard/blue
 	name = "blue keycard"
-	desc = "A blue keycard. How terrific. Looks like it belongs to a high security door."
+	desc = "Um cartão azul. Que maravilha. Parece que pertence a uma porta de alta segurança."
 	color = "#3bbbdb"
 	puzzle_id = "blue"
 
@@ -38,7 +38,7 @@
 
 /obj/machinery/door/puzzle
 	name = "locked door"
-	desc = "This door only opens under certain conditions. It looks virtually indestructible."
+	desc = "Esta porta só se abre sob certas condições. Parece virtualmente indestrutível."
 	icon = 'icons/obj/doors/puzzledoor/default.dmi'
 	icon_state = "door_closed"
 	explosion_block = 3
@@ -113,7 +113,7 @@
 	if(puzzle_id && puzzle_id != try_id)
 		return FALSE
 	if(!density)
-		visible_message(span_warning("The door can't seem to be closed."))
+		visible_message(span_warning("A porta não parece estar fechada."))
 		return TRUE
 	if(open_message)
 		visible_message(span_notice(open_message))
@@ -121,7 +121,7 @@
 	return TRUE
 
 /obj/machinery/door/puzzle/keycard
-	desc = "This door only opens when a keycard is swiped. It looks virtually indestructible."
+	desc = "Esta porta só abre quando um cartão é roubado. Parece virtualmente indestrutível."
 	uses_queuelinks = FALSE
 
 /obj/machinery/door/puzzle/keycard/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
@@ -130,21 +130,21 @@
 		return
 	var/obj/item/keycard/key = attacking_item
 	if(!try_puzzle_open(key.puzzle_id))
-		to_chat(user, span_notice("[src] buzzes. This must not be the right key."))
+		to_chat(user, span_notice("[src]Buzzes. Esta não deve ser a chave certa."))
 
 //Test doors. Gives admins a few doors to use quickly should they so choose for events.
 /obj/machinery/door/puzzle/keycard/yellow_required
 	name = "blue airlock"
-	desc = "It looks like it requires a yellow keycard."
+	desc = "Parece que requer um cartão amarelo."
 	puzzle_id = "yellow"
 
 /obj/machinery/door/puzzle/keycard/blue_required
 	name = "blue airlock"
-	desc = "It looks like it requires a blue keycard."
+	desc = "Parece que precisa de um cartão azul."
 	puzzle_id = "blue"
 
 /obj/machinery/door/puzzle/light
-	desc = "This door only opens when a linked mechanism is powered. It looks virtually indestructible."
+	desc = "Esta porta só se abre quando um mecanismo conectado é alimentado. Parece virtualmente indestrutível."
 
 //*************************
 //***Box Pushing Puzzles***
@@ -152,7 +152,7 @@
 //We're working off a subtype of pressureplates, which should work just a BIT better now.
 /obj/structure/holobox
 	name = "holobox"
-	desc = "A hard-light box, containing a secure decryption key."
+	desc = "Uma caixa de luz dura, contendo uma chave de decodificação segura."
 	icon = 'icons/obj/fluff/puzzle_small.dmi'
 	icon_state = "laserbox"
 	density = TRUE
@@ -161,7 +161,7 @@
 //Uses the pressure_plate settings for a pretty basic custom pattern that waits for a specific item to trigger. Easy enough to retool for mapping purposes or subtypes.
 /obj/item/pressure_plate/hologrid
 	name = "hologrid"
-	desc = "A high power, electronic input port for a holobox, which can unlock the hologrid's storage compartment. Safe to stand on."
+	desc = "Uma porta de entrada eletrônica de alta potência para uma holobox, que pode desbloquear o compartimento de armazenamento do hologrid. É seguro ficar em pé."
 	icon = 'icons/obj/fluff/puzzle_small.dmi'
 	icon_state = "lasergrid"
 	anchored = TRUE
@@ -189,7 +189,7 @@
 /obj/item/pressure_plate/hologrid/examine(mob/user)
 	. = ..()
 	if(claimed)
-		. += span_notice("This one appears to be spent already.")
+		. += span_notice("Este parece já ter sido gasto.")
 
 /obj/item/pressure_plate/hologrid/trigger()
 	if(!claimed)
@@ -209,7 +209,7 @@
 //Light puzzle
 /obj/structure/light_puzzle
 	name = "light mechanism"
-	desc = "It's a mechanism that seems to power something when all the lights are lit up. It looks virtually indestructible."
+	desc = "É um mecanismo que parece alimentar algo quando todas as luzes estão acesas. Parece virtualmente indestrutível."
 	icon = 'icons/obj/fluff/puzzle_small.dmi'
 	icon_state = "light_puzzle"
 	anchored = TRUE
@@ -302,7 +302,7 @@
 	for(var/checking_light in light_list)
 		if(!checking_light)
 			return
-	visible_message(span_boldnotice("[src] becomes fully charged!"))
+	visible_message(span_boldnotice("[src]Fica totalmente carregado!"))
 	powered = TRUE
 	SEND_SIGNAL(src, COMSIG_PUZZLE_COMPLETED)
 	playsound(src, 'sound/machines/synth/synth_yes.ogg', 100, TRUE)
@@ -349,7 +349,7 @@
 
 /obj/machinery/puzzle/button
 	name = "control panel"
-	desc = "A panel that controls something nearby. I'm sure it being covered in hazard stripes is fine."
+	desc = "Um painel que controla algo próximo. Tenho certeza que estar coberto de listras de perigo é bom."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "lockdown0"
 	base_icon_state = "lockdown"
@@ -362,7 +362,7 @@
 		return
 	used = single_use
 	update_icon_state()
-	visible_message(span_notice("[user] presses a button on [src]."), span_notice("You press a button on [src]."))
+	visible_message(span_notice("[user]Aperte um botão.[src]."), span_notice("Aperte um botão.[src]."))
 	playsound(src, 'sound/machines/terminal/terminal_button07.ogg', 45, TRUE)
 	on_puzzle_complete()
 
@@ -370,7 +370,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/puzzle/button, 32)
 
 /obj/machinery/puzzle/keycardpad
 	name = "keycard panel"
-	desc = "A panel that controls something nearby. Accepts keycards."
+	desc = "Um painel que controla algo próximo. Aceita cartões de chaves."
 	icon_state = "keycardpad0"
 	base_icon_state = "keycardpad"
 
@@ -393,7 +393,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/puzzle/keycardpad, 32)
 
 /obj/machinery/puzzle/password
 	name = "password panel"
-	desc = "A panel that controls something nearby. This one requires a (case-sensitive) password, and it's not \"Swordfish\"."
+	desc = "Um painel que controla algo próximo. Este requer uma senha (sensível ao caso) e não é\"Peixe-espada.\"."
 	icon_state = "passpad0"
 	base_icon_state = "passpad"
 	///The password to this door.
@@ -429,8 +429,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/puzzle/keycardpad, 32)
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/puzzle/password, 32)
 
 /obj/machinery/puzzle/password/pin
-	desc = "A panel that controls something nearby. This one requires a PIN password, so let's start by typing in 1234..."
-	tgui_text = "Please enter the PIN code."
+	desc = "Um painel que controla algo próximo. Este requer uma senha PIN, então vamos começar digitando em 1234..."
+	tgui_text = "Por favor, digite o código PIN."
 	tgui_title = "What's the PIN code?"
 	input_max_len_is_pass = TRUE
 	///The length of the PIN. Suggestion: something between 4 and 12.
@@ -471,7 +471,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/puzzle/password/pin, 32)
 ///blockades destroy themselves if they receive COMSIG_GLOB_PUZZLE_COMPLETED with their ID
 /obj/structure/puzzle_blockade
 	name = "shield gate"
-	desc = "A wall of solid light, likely defending something important. Virtually indestructible, must be a way around, or to disable it."
+	desc = "Uma parede de luz sólida, provavelmente defendendo algo importante. Virtualmente indestrutível, deve ser uma forma de contornar, ou de desativá-lo."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "wave2"
 	resistance_flags = INDESTRUCTIBLE | FIRE_PROOF | ACID_PROOF | LAVA_PROOF
@@ -502,7 +502,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/puzzle/password/pin, 32)
 
 /obj/structure/puzzle_blockade/oneway
 	name = "one-way gate"
-	desc = "A wall of solid light, likely defending something important. Virtually indestructible."
+	desc = "Uma parede de luz sólida, provavelmente defendendo algo importante. Virtualmente indestrutível."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "oneway"
 	base_icon_state = "oneway"
@@ -526,7 +526,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/puzzle/password/pin, 32)
 
 /obj/effect/puzzle_poddoor_open
 	name = "puzzle-poddoor relay"
-	desc = "Activates pod doors if activated with a puzzle signal."
+	desc = "Ativa portas pod se ativado com um sinal de quebra-cabeça."
 	icon = 'icons/effects/mapping_helpers.dmi'
 	icon_state = ""
 	anchored = TRUE
@@ -568,7 +568,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/puzzle/password/pin, 32)
 ///A dotted board that can be used as clue for PIN puzzle machinery
 /obj/effect/decal/puzzle_dots
 	name = "dotted board"
-	desc = "A board filled with colored dots. What could this mean?"
+	desc = "Uma tábua cheia de pontos coloridos. O que isso pode significar?"
 	icon = 'icons/obj/fluff/puzzle_small.dmi'
 	icon_state = "puzzle_dots"
 	layer = ABOVE_NORMAL_TURF_LAYER
@@ -634,7 +634,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/puzzle/password/pin, 32)
 	icon_state = pick(pass_character)
 	if(!text2num(icon_state))
 		name = "letter"
-		desc = "A letter vandalizing the station."
+		desc = "Uma carta vandalizando a estação."
 	return TRUE
 
 /obj/effect/decal/cleanable/crayon/puzzle/pin

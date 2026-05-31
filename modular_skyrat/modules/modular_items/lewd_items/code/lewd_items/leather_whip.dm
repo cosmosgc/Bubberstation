@@ -2,7 +2,7 @@
 
 /obj/item/clothing/mask/leatherwhip
 	name = "leather whip"
-	desc = "A tool used for domination. Hurts in a way you like it."
+	desc = "Uma ferramenta usada para dominar. Dói de um jeito que você gosta."
 	icon_state = "leather_whip_pink_hard"
 	worn_icon_state = "leather_whip"
 	base_icon_state = "leather"
@@ -100,9 +100,9 @@
 /obj/item/clothing/mask/leatherwhip/examine(mob/user)
 	. = ..()
 	if(!color_changed)
-		. += span_notice("Alt-click to change it's color.")
+		. += span_notice("Alt-click para mudar sua cor.")
 	else if(!form_changed)
-		. += span_notice("Alt-click to change it's form.")
+		. += span_notice("Alt-click para mudar sua forma.")
 
 //to change color
 /obj/item/clothing/mask/leatherwhip/click_alt(mob/user)
@@ -175,19 +175,18 @@
 	var/message = ""
 	//and there is code for successful check, so we are whipping someone
 	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
-		to_chat(user, span_danger("[target] doesn't want you to do that."))
+		to_chat(user, span_danger("[target]Não quer que faça isso."))
 		return
 
 	switch(user.zone_selected) //to let code know what part of body we gonna whip
 		if(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			if(carbon_target && !carbon_target.has_feet())
-				to_chat(user, span_danger("Looks like [target] is missing their legs!"))
+				to_chat(user, span_danger("Parece que sim.[target]Está faltando suas pernas!"))
 				return
 
 			if(current_whip_type == "hard")
 				message = (user == target) ? pick("Knocks [target.p_them()]self down with [src]",
-						"Uses [src] to knock [target.p_them()]self on the ground") \
-					: pick("drops [target] to the ground with [src]",
+						"Uses [src] to knock [target.p_them()]self on the ground") 					: pick("drops [target] to the ground with [src]",
 						"Uses [src] to put [target] on [target.p_their()] knees")
 
 				if(prob(60))
@@ -199,8 +198,7 @@
 				conditional_pref_sound(loc, 'sound/items/weapons/whip.ogg', 100)
 			else
 				message = (user == target) ? pick("knocks [target.p_them()]self down with [src]",
-						"gently uses [src] to knock [target.p_them()]self on the ground") \
-					: pick("drops [target] to the ground with [src]",
+						"gently uses [src] to knock [target.p_them()]self on the ground") 					: pick("drops [target] to the ground with [src]",
 						"uses [src] to put [target] on [target.p_their()] knees")
 				if(prob(30))
 					target.try_lewd_autoemote(pick("gasp", "shiver"))
@@ -212,8 +210,7 @@
 
 		if(BODY_ZONE_HEAD)
 			message = (user == target) ? pick("wraps [src] around [target.p_their()] neck, choking [target.p_them()]self",
-					"chokes [target.p_them()]self with [src]") \
-				: pick("chokes [target] with [src]",
+					"chokes [target.p_them()]self with [src]") 				: pick("chokes [target] with [src]",
 					"twines [src] around [target]'s neck!")
 			if(prob(70))
 				target.try_lewd_autoemote(pick("gasp", "choke", "moan"))
@@ -223,12 +220,11 @@
 
 		if(BODY_ZONE_PRECISE_GROIN)
 			if(carbon_target && !carbon_target.is_bottomless())
-				to_chat(user, span_danger("Looks like [target]'s butt is covered!"))
+				to_chat(user, span_danger("Parece que sim.[target]A bunda está coberta!"))
 				return
 			if(current_whip_type == "weak")
 				message = (user == target) ? pick("whips [target.p_them()]self with [src]",
-						"flogs [target.p_them()]self with [src]") \
-					: pick("playfully flogs [target]'s thighs with [src]",
+						"flogs [target.p_them()]self with [src]") 					: pick("playfully flogs [target]'s thighs with [src]",
 						"flogs [target] with [src]", "mercilessly flogs [target] with [src]")
 				if(prob(70))
 					target.try_lewd_autoemote(pick("moan", "twitch"))
@@ -243,8 +239,7 @@
 
 			else
 				message = (user == target) ? pick("roughly flogs [target.p_them()]self with [src]",
-						"flogs [target.p_them()]self with [src]") \
-					: pick("playfully flogs [target]'s thighs with [src]",
+						"flogs [target.p_them()]self with [src]") 					: pick("playfully flogs [target]'s thighs with [src]",
 						"flogs [target] with [src]",
 						"mercilessly flogs [target] with [src]")
 				if(prob(70))
@@ -260,8 +255,7 @@
 		else
 			if(current_whip_type == "hard")
 				message = (user == target) ? pick("disciplines [target.p_them()]self with [src]",
-						"lashes [target.p_them()]self with [src]") \
-					: pick("lashes [target] with [src]",
+						"lashes [target.p_them()]self with [src]") 					: pick("lashes [target] with [src]",
 						"Uses [src] to discipline [target]",
 						"disciplines [target] with [src]")
 				if(prob(10))
@@ -272,8 +266,7 @@
 
 			else
 				message = (user == target) ? pick("whips [target.p_them()]self with [src]",
-						"lashes [target.p_them()]self with [src]") \
-					: pick("playfully lashes [target] with [src]",
+						"lashes [target.p_them()]self with [src]") 					: pick("playfully lashes [target] with [src]",
 						"disciplines [target] with [src]",
 						"gently lashes [target] with [src]")
 				if(prob(30))
@@ -292,9 +285,9 @@
 	switch(current_whip_type)
 		if("hard")
 			current_whip_type = "weak"
-			to_chat(user, span_notice("[src] feels softer. Easy mode!"))
+			to_chat(user, span_notice("[src]Parece mais suave. Modo fácil!"))
 		if("weak")
 			current_whip_type = "hard"
-			to_chat(user, span_notice("[src] is now hard. Someone need to be punished!"))
+			to_chat(user, span_notice("[src]Agora é difícil. Alguém precisa ser punido!"))
 	update_icon()
 	update_icon_state()

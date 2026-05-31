@@ -43,13 +43,7 @@ SUBSYSTEM_DEF(goldeneye)
 
 /// Activates goldeneye.
 /datum/controller/subsystem/goldeneye/proc/activate()
-	var/message = "/// GOLDENEYE DEFENCE NETWORK BREACHED /// \n \
-	Unauthorised GoldenEye Defence Network access detected. \n \
-	ICARUS online. \n \
-	Targeting system override detected... \n \
-	New target: /NTSS13/ \n \
-	ICARUS firing protocols activated. \n \
-	ETA to fire: [ignition_time / 10] seconds."
+	var/message = "/// GOLDENEYE DEFENCE NETWORK BREACHED /// \n 	Unauthorised GoldenEye Defence Network access detected. \n 	ICARUS online. \n 	Targeting system override detected... \n 	New target: /NTSS13/ \n 	ICARUS firing protocols activated. \n 	ETA to fire: [ignition_time / 10] seconds."
 
 	priority_announce(message, "GoldenEye Defence Network", ANNOUNCER_ICARUS)
 	goldeneye_activated = TRUE
@@ -74,7 +68,7 @@ SUBSYSTEM_DEF(goldeneye)
 // Goldeneye key
 /obj/item/goldeneye_key
 	name = "\improper GoldenEye authentication keycard"
-	desc = "A high profile authentication keycard to Nanotrasen's GoldenEye defence network. It seems indestructible."
+	desc = "Um cartão de autenticação de alto perfil para a rede de defesa GoldenEye de Nanotrasen. Parece indestrutível."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi'
 	icon_state = "goldeneye_key"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
@@ -103,7 +97,7 @@ SUBSYSTEM_DEF(goldeneye)
 // Upload terminal
 /obj/machinery/goldeneye_upload_terminal
 	name = "\improper GoldenEye Defnet Upload Terminal"
-	desc = "An ominous terminal with some ports and keypads, the screen is scrolling with illegible nonsense. It has a strange marking on the side, a red ring with a gold circle within."
+	desc = "Um terminal sinistro com algumas portas e teclados, a tela está rolando com ilegíveis absurdos. Tem uma marca estranha no lado, um anel vermelho com um círculo de ouro dentro."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi'
 	icon_state = "goldeneye_terminal"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
@@ -142,7 +136,7 @@ SUBSYSTEM_DEF(goldeneye)
 // Pinpointer
 /obj/item/pinpointer/nuke/goldeneye
 	name = "\improper GoldenEye keycard pinpointer"
-	desc = "A handheld tracking device that locks onto certain signals. This one is configured to locate any GoldenEye keycards."
+	desc = "Um dispositivo de rastreamento portátil que trava em certos sinais. Este está configurado para localizar qualquer cartão GoldenEye."
 	icon_state = "pinpointer_syndicate"
 	worn_icon_state = "pinpointer_black"
 	active = TRUE
@@ -154,11 +148,11 @@ SUBSYSTEM_DEF(goldeneye)
 
 /obj/item/pinpointer/nuke/goldeneye/attack_self(mob/living/user)
 	if(!LAZYLEN(SSgoldeneye.goldeneye_keys))
-		to_chat(user, span_danger("ERROR! No GoldenEye keys detected!"))
+		to_chat(user, span_danger("ERRO! Nenhuma chave GoldenEye detetada!"))
 		return
 	target = tgui_input_list(user, "Select GoldenEye keycard to track", "GoldenEye keycard", SSgoldeneye.goldeneye_keys)
 	if(target)
-		to_chat(user, span_notice("Set to track: [target.name]"))
+		to_chat(user, span_notice("Preparar para rasgar:[target.name]"))
 
 /obj/item/pinpointer/nuke/goldeneye/scan_for_target()
 	if(QDELETED(target))
@@ -168,7 +162,7 @@ SUBSYSTEM_DEF(goldeneye)
 /datum/objective/goldeneye
 	name = "subvert goldeneye"
 	objective_name = "Subvert GoldenEye"
-	explanation_text = "Extract all of the required GoldenEye authentication keys from the heads of staff and activate GoldenEye."
+	explanation_text = "Extrair todas as chaves de autenticação necessárias GoldenEye dos chefes de equipe e ativar GoldenEye."
 	martyr_compatible = TRUE
 
 /datum/objective/goldeneye/check_completion()
@@ -181,7 +175,7 @@ SUBSYSTEM_DEF(goldeneye)
 
 /atom/movable/screen/alert/status_effect/goldeneye_pinpointer
 	name = "Target Integrated Pinpointer"
-	desc = "Even stealthier than a normal implant, it points to a selected GoldenEye keycard."
+	desc = "Mesmo mais furtivo do que um implante normal, aponta para um cartão selecionado."
 	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "pinon"
 
@@ -251,7 +245,7 @@ SUBSYSTEM_DEF(goldeneye)
 
 /datum/status_effect/goldeneye_pinpointer/proc/set_target(obj/item/new_target)
 	target = new_target
-	to_chat(owner, span_redtext("Integrated pinpointer set to: [target.name]"))
+	to_chat(owner, span_redtext("Identificador integrado para:[target.name]"))
 
 #undef ICARUS_IGNITION_TIME
 #undef PINPOINTER_PING_TIME

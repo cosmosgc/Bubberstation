@@ -4,7 +4,7 @@
 //Comes with a handy lock to prevent them from running off.
 /obj/item/pet_carrier
 	name = "pet carrier"
-	desc = "A big white-and-blue pet carrier. Good for carrying <s>meat to the chef</s> cute animals around."
+	desc = "Um grande portador de animais de estimação branco e azul. Bom para carregar<s>Carne para o chef</s>Animais bonitos por preto."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/pet_carrier"
 	post_init_icon_state = "pet_carrier_open"
@@ -67,25 +67,25 @@
 	if(occupants.len)
 		for(var/V in occupants)
 			var/mob/living/L = V
-			. += span_notice("It has [L] inside.")
+			. += span_notice("Tem.[L]Dentro.")
 	else
-		. += span_notice("It has nothing inside.")
+		. += span_notice("Não tem nada dentro.")
 
 	// At some point these need to be converted to contextual screentips
-	. += span_notice("Activate it in your hand to [open ? "close" : "open"] its door. Click-drag onto floor to release its occupants.")
+	. += span_notice("Ative-o em sua mão para[open ? "close" : "open"]Sua porta. Click-drag no chão para liberar seus ocupantes.")
 	if(!open && allows_locking)
-		. += span_notice("Alt-click to [locked ? "unlock" : "lock"] its door.")
+		. += span_notice("Alt-click para[locked ? "unlock" : "lock"]Sua porta.")
 
 /obj/item/pet_carrier/attack_self(mob/living/user)
 	if(open)
-		to_chat(user, span_notice("You close [src]'s door."))
+		to_chat(user, span_notice("Você fecha.[src]É a porta."))
 		playsound(user, close_sound, 50, TRUE)
 		open = FALSE
 	else
 		if(locked)
-			to_chat(user, span_warning("[src] is locked!"))
+			to_chat(user, span_warning("[src]Está trancada!"))
 			return
-		to_chat(user, span_notice("You open [src]'s door."))
+		to_chat(user, span_notice("Você abre.[src]É a porta."))
 		playsound(user, open_sound, 50, TRUE)
 		open = TRUE
 	update_appearance()
@@ -94,7 +94,7 @@
 	if(open || !allows_locking)
 		return CLICK_ACTION_BLOCKING
 	locked = !locked
-	to_chat(user, span_notice("You flip the lock switch [locked ? "down" : "up"]."))
+	to_chat(user, span_notice("Você liga o interruptor.[locked ? "down" : "up"]."))
 	if(locked)
 		playsound(user, 'sound/machines/airlock/boltsdown.ogg', 30, TRUE)
 	else
@@ -106,34 +106,32 @@
 	if(user.combat_mode || !isliving(interacting_with))
 		return NONE
 	if(!open)
-		to_chat(user, span_warning("You need to open [src]'s door!"))
+		to_chat(user, span_warning("Você precisa abrir.[src]Uma porta!"))
 		return ITEM_INTERACT_BLOCKING
 	var/mob/living/target = interacting_with
 	if(target.mob_size > max_occupant_weight)
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = target
 			if(isfeline(H)) // SKYRAT EDIT - FELINE TRAITS. Was: isfelinid(H)
-				to_chat(user, span_warning("You'd need a lot of catnip and treats, plus maybe a laser pointer, for that to work."))
+				to_chat(user, span_warning("Precisaria de muito petisco e guloseimas, mais talvez um ponteiro laser, para isso funcionar."))
 			else
-				to_chat(user, span_warning("Humans, generally, do not fit into pet carriers."))
+				to_chat(user, span_warning("Humanos, geralmente, não se encaixam em portadores de animais."))
 		else
-			to_chat(user, span_warning("You get the feeling [target] isn't meant for a [name]."))
+			to_chat(user, span_warning("Você tem a sensação[target]Não é para um[name]."))
 		return ITEM_INTERACT_BLOCKING
 	if(user == target)
-		to_chat(user, span_warning("Why would you ever do that?"))
+		to_chat(user, span_warning("Por que faria isso?"))
 		return ITEM_INTERACT_BLOCKING
 	load_occupant(user, target)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/pet_carrier/relaymove(mob/living/user, direction)
 	if(open)
-		loc.visible_message(span_notice("[user] climbs out of [src]!"), \
-		span_warning("[user] jumps out of [src]!"))
+		loc.visible_message(span_notice("[user]Subindo para fora[src]!"), 		span_warning("[user]Pula para fora[src]!"))
 		remove_occupant(user)
 		return
 	else if(!locked)
-		loc.visible_message(span_notice("[user] pushes open the door to [src]!"), \
-		span_warning("[user] pushes open the door of [src]!"))
+		loc.visible_message(span_notice("[user]Empurra abre a porta para[src]!"), 		span_warning("[user]Empurra abre a porta de[src]!"))
 		open = TRUE
 		update_appearance()
 		return
@@ -144,22 +142,22 @@
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
 	if(user.mob_size <= MOB_SIZE_SMALL)
-		to_chat(user, span_notice("You poke a limb through [src]'s bars and start fumbling for the lock switch... (This will take some time.)"))
-		to_chat(loc, span_warning("You see [user] reach through the bars and fumble for the lock switch!"))
+		to_chat(user, span_notice("Você cutuca um membro[src]As barras e começar a falhar para o interruptor de fechadura ... Isso vai levar algum tempo."))
+		to_chat(loc, span_warning("Viu?[user]Aproximem-se pelas barras e desafie-se para o interruptor!"))
 		if(!do_after(user, rand(300, 400), target = user) || open || !locked || !(user in occupants))
 			return
-		loc.visible_message(span_warning("[user] flips the lock switch on [src] by reaching through!"), null, null, null, user)
-		to_chat(user, span_bolddanger("Bingo! The lock pops open!"))
+		loc.visible_message(span_warning("[user]Liga o Interruptor de Bloqueio.[src]Chegando através!"), null, null, null, user)
+		to_chat(user, span_bolddanger("Bingo! Uma \"fechadura abra\"!"))
 		locked = FALSE
 		playsound(src, 'sound/machines/airlock/boltsup.ogg', 30, TRUE)
 		update_appearance()
 	else
-		loc.visible_message(span_warning("[src] starts rattling as something pushes against the door!"), null, null, null, user)
-		to_chat(user, span_notice("You start pushing out of [src]... (This will take about 20 seconds.)"))
+		loc.visible_message(span_warning("[src]Começa a bater como algo empurra contra a porta!"), null, null, null, user)
+		to_chat(user, span_notice("Você começa a empurrar para fora[src]Isso levará cerca de 20 segundos."))
 		if(!do_after(user, 20 SECONDS, target = user) || open || !locked || !(user in occupants))
 			return
-		loc.visible_message(span_warning("[user] shoves out of [src]!"), null, null, null, user)
-		to_chat(user, span_notice("You shove open [src]'s door against the lock's resistance and fall out!"))
+		loc.visible_message(span_warning("[user]Empurra para fora[src]!"), null, null, null, user)
+		to_chat(user, span_notice("Você se abre.[src]A porta contra a resistência da fechadura e cair!"))
 		locked = FALSE
 		open = TRUE
 		update_appearance()
@@ -174,8 +172,7 @@
 
 /obj/item/pet_carrier/mouse_drop_dragged(atom/over_atom, mob/user, src_location, over_location, params)
 	if(isopenturf(over_atom) && open && occupants.len)
-		user.visible_message(span_notice("[user] unloads [src]."), \
-		span_notice("You unload [src] onto [over_atom]."))
+		user.visible_message(span_notice("[user]Descarrega.[src]."), 		span_notice("Você descarrega.[src]em frente[over_atom]."))
 		for(var/V in occupants)
 			remove_occupant(V, over_atom)
 
@@ -191,21 +188,19 @@
 
 /obj/item/pet_carrier/proc/load_occupant(mob/living/user, mob/living/target)
 	if(pet_carrier_full(src))
-		to_chat(user, span_warning("[src] is already carrying too much!"))
+		to_chat(user, span_warning("[src]Já está carregando demais!"))
 		return
-	user.visible_message(span_notice("[user] starts loading [target] into [src]."), \
-	span_notice("You start loading [target] into [src]..."), null, null, target)
-	to_chat(target, span_userdanger("[user] starts loading you into [user.p_their()] [name]!"))
+	user.visible_message(span_notice("[user]Começa a carregar.[target]Em[src]."), 	span_notice("Você começa a carregar[target]Em[src]..."), null, null, target)
+	to_chat(target, span_userdanger("[user]Começa a carregar você para[user.p_their()] [name]!"))
 	if(!do_after(user, 3 SECONDS, target))
 		return
 	if(target in occupants)
 		return
 	if(pet_carrier_full(src)) //Run the checks again, just in case
-		to_chat(user, span_warning("[src] is already carrying too much!"))
+		to_chat(user, span_warning("[src]Já está carregando demais!"))
 		return
-	user.visible_message(span_notice("[user] loads [target] into [src]!"), \
-	span_notice("You load [target] into [src]."), null, null, target)
-	to_chat(target, span_userdanger("[user] loads you into [user.p_their()] [name]!"))
+	user.visible_message(span_notice("[user]Cargas.[target]Em[src]!"), 	span_notice("Você carrega.[target]Em[src]."), null, null, target)
+	to_chat(target, span_userdanger("[user]Carrega você em[user.p_their()] [name]!"))
 	add_occupant(target)
 
 /obj/item/pet_carrier/proc/add_occupant(mob/living/occupant)
@@ -225,7 +220,7 @@
 
 /obj/item/pet_carrier/biopod
 	name = "biopod"
-	desc = "Alien device used for undescribable purpose. Or carrying pets."
+	desc = "Dispositivo alienígena usado para propósito indescritível. Ou carregando animais de estimação."
 	icon = 'icons/obj/pet_carrier.dmi'
 	icon_state = "biopod_open"
 	post_init_icon_state = null
@@ -238,7 +233,7 @@
 
 /obj/item/pet_carrier/small
 	name = "small pet carrier"
-	desc = "A small pet carrier for miniature sized animals."
+	desc = "Um pequeno porta-animais para animais de tamanho miniatura."
 	icon = 'icons/obj/pet_carrier.dmi'
 	icon_state = "small_carrier_open"
 	post_init_icon_state = null
@@ -257,7 +252,7 @@
 
 /obj/item/pet_carrier/small/mouse
 	name = "small mouse carrier"
-	desc = "A small pet carrier for miniature sized animals. This looks prepared for a mouse."
+	desc = "Um pequeno porta-animais para animais de tamanho miniatura. Parece preparado para um rato."
 	icon_state = "small_carrier_occupied_unlocked"
 	open = FALSE
 

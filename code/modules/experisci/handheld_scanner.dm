@@ -5,7 +5,7 @@
  */
 /obj/item/experi_scanner
 	name = "Experi-Scanner"
-	desc = "A handheld scanner used for completing the many experiments of modern science."
+	desc = "Um scanner portátil usado para completar as muitas experiências da ciência moderna."
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "experiscanner"
@@ -25,15 +25,10 @@
 		COMSIG_ITEM_PRE_ATTACK = TYPE_PROC_REF(/datum/component/experiment_handler, try_run_handheld_experiment),
 		COMSIG_ITEM_AFTERATTACK = TYPE_PROC_REF(/datum/component/experiment_handler, ignored_handheld_experiment_attempt),
 	)
-	AddComponent(/datum/component/experiment_handler, \
-		allowed_experiments = list(/datum/experiment/scanning, /datum/experiment/physical), \
-		disallowed_traits = EXPERIMENT_TRAIT_DESTRUCTIVE, \
-		config_flags = EXPERIMENT_CONFIG_ALWAYS_ANNOUNCE, \
-		experiment_signals = handheld_signals, \
-	)
+	AddComponent(/datum/component/experiment_handler, 		allowed_experiments = list(/datum/experiment/scanning, /datum/experiment/physical), 		disallowed_traits = EXPERIMENT_TRAIT_DESTRUCTIVE, 		config_flags = EXPERIMENT_CONFIG_ALWAYS_ANNOUNCE, 		experiment_signals = handheld_signals, 	)
 
 /obj/item/experi_scanner/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] is giving in to the Great Toilet Beyond! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Está cedendo ao Grande Banheiro Além! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 
 	forceMove(drop_location())
 	user.forceMove(src)

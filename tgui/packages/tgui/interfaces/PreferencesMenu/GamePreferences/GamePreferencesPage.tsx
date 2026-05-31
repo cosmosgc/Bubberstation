@@ -42,7 +42,7 @@ export function GamePreferencesPage(props) {
         <Box
           as="span"
           style={{
-            borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',
+            borderBottom: '2px pontilhado rgba(255, 255, 0,8)',
           }}
         >
           {nameInner}

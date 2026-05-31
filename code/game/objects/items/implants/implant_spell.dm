@@ -1,6 +1,6 @@
 /obj/item/implant/spell
 	name = "spell implant"
-	desc = "Allows you to cast a spell as if you were a wizard."
+	desc = "Permite lançar um feitiço como se fosse um mago."
 	actions_types = null
 
 	/// Whether to make the spell robeless
@@ -10,15 +10,9 @@
 	/// The actual spell we give to the person on implant
 	var/datum/action/cooldown/spell/spell_to_give
 
-	implant_info = "Automatically activates upon implantation. If not inert, theoretically provides spellcasting ability. \
-		Unfortunately, is inert."
+	implant_info = "Automatically activates upon implantation. If not inert, theoretically provides spellcasting ability. 		Unfortunately, is inert."
 
-	implant_lore = "The Thaumic Accumulation/Instruction Matrix is an exotic thaumic accumulator designed for \
-		subdermal implantation, and meant to provide an interface between magic spells \
-		like those used by the Wizard's Federation, which have notoriously been uncooperative with technology, \
-		and mundane users who lack innate magical aptitude. Very little is known about how it works, especially \
-		because thaumic matrices, especially those designed for cross-disciplinary interaction, are hard to recover \
-		intact."
+	implant_lore = "The Thaumic Accumulation/Instruction Matrix is an exotic thaumic accumulator designed for 		subdermal implantation, and meant to provide an interface between magic spells 		like those used by the Wizard's Federation, which have notoriously been uncooperative with technology, 		and mundane users who lack innate magical aptitude. Very little is known about how it works, especially 		because thaumic matrices, especially those designed for cross-disciplinary interaction, are hard to recover 		intact."
 
 /obj/item/implant/spell/Initialize(mapload)
 	. = ..()
@@ -30,8 +24,7 @@
 	if(make_robeless && (spell_to_give.spell_requirements & SPELL_REQUIRES_WIZARD_GARB))
 		spell_to_give.spell_requirements &= ~SPELL_REQUIRES_WIZARD_GARB
 
-	implant_info = "Automatically activates upon implantation. Allows an implantee to cast [spell_to_give], \
-		[make_robeless ? ", without needing appropriate wizard garb" : " if dressed in appropriate garb"]."
+	implant_info = "Automatically activates upon implantation. Allows an implantee to cast [spell_to_give], 		[make_robeless ? ", without needing appropriate wizard garb" : " if dressed in appropriate garb"]."
 
 /obj/item/implant/spell/Destroy()
 	QDEL_NULL(spell_to_give)
@@ -56,7 +49,7 @@
 	if(spell_to_give)
 		spell_to_give.Remove(source)
 		if(source.stat != DEAD && !silent)
-			to_chat(source, span_boldnotice("The knowledge of how to cast [spell_to_give] slips out from your mind."))
+			to_chat(source, span_boldnotice("O conhecimento de como lançar[spell_to_give]Sai da sua mente."))
 	return TRUE
 
 /obj/item/implanter/spell
@@ -65,5 +58,5 @@
 
 /obj/item/implantcase/spell
 	name = "implant case - 'Wizardry'"
-	desc = "A glass case containing an implant that can teach the user the arts of Wizardry."
+	desc = "Uma caixa de vidro contendo um implante que pode ensinar ao usuário as artes da magia."
 	imp_type = /obj/item/implant/spell

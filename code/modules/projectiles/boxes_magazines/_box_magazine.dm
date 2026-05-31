@@ -1,7 +1,7 @@
 //Boxes of ammo
 /obj/item/ammo_box
 	name = "ammo box (null_reference_exception)"
-	desc = "A box of ammo."
+	desc = "Uma caixa de munição."
 	icon = 'icons/obj/weapons/guns/ammo.dmi'
 	abstract_type = /obj/item/ammo_box
 	obj_flags = CONDUCTS_ELECTRICITY
@@ -85,8 +85,7 @@
 	var/list/readout = list()
 
 	if(caliber && max_ammo) // Text references a 'magazine' as only magazines generally have the caliber variable initialized
-		readout += "Up to [span_warning("[max_ammo] [caliber] [casing_phrasing]s")] can be found within this magazine. \
-		\nAccidentally discharging any of these projectiles may void your insurance contract."
+		readout += "Até[span_warning("[max_ammo] [caliber] [casing_phrasing]s")]pode ser encontrada nesta revista.\nLiberar acidentalmente qualquer um desses projéteis pode anular seu contrato de seguro."
 
 	var/obj/item/ammo_casing/mag_ammo = get_and_shuffle_round()
 
@@ -196,11 +195,11 @@
 /obj/item/ammo_box/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(IS_WRITING_UTENSIL(tool))
 		if(!ammo_band_icon)
-			balloon_alert(user, "no indicator support!")
+			balloon_alert(user, "Sem suporte indicador!")
 			return
 		var/new_color = tgui_color_picker(user, "Set a new ammo band color, cancel to remove indicator", "Ammo Box Indicator Color", ammo_band_color)
 		ammo_band_color = new_color
-		balloon_alert(user, "indicator updated")
+		balloon_alert(user, "indicador atualizado")
 		update_appearance()
 		return
 
@@ -244,7 +243,7 @@
 
 	if(num_loaded)
 		if(!silent)
-			to_chat(user, span_notice("You load [num_loaded > 1 ? "[num_loaded] [casing_phrasing]s" : "a [casing_phrasing]"] into \the [src]!"))
+			to_chat(user, span_notice("Você carrega.[num_loaded > 1 ? "[num_loaded] [casing_phrasing]s" : "a [casing_phrasing]"]em\the [src]!"))
 			playsound(src, 'sound/items/weapons/gun/general/mag_bullet_insert.ogg', 60, TRUE)
 		update_appearance()
 
@@ -259,7 +258,7 @@
 	if(!user.is_holding(src) || !user.put_in_hands(A)) //incase they're using TK
 		A.bounce_away(FALSE, NONE)
 	playsound(src, 'sound/items/weapons/gun/general/mag_bullet_insert.ogg', 60, TRUE)
-	to_chat(user, span_notice("You remove a [casing_phrasing] from [src]!"))
+	to_chat(user, span_notice("Você remove um[casing_phrasing]De[src]!"))
 	update_appearance()
 
 /obj/item/ammo_box/examine(mob/user)
@@ -271,7 +270,7 @@
 	. += "It has <b>[shells_left]</b> [casing_phrasing]\s remaining."
 	// this is kind of awkward phrasing, but it's the top/ready ammo in the box
 	// intended for people who have like three mislabeled magazines
-	. += span_notice("\A <b>[top_round]</b> is ready.")
+	. += span_notice("\A <b>[top_round]</b>Está pronto.")
 
 /obj/item/ammo_box/update_icon_state()
 	. = ..()
@@ -298,7 +297,7 @@
 
 /obj/item/ammo_box/magazine
 	name = "A magazine (what?)"
-	desc = "A magazine of rounds, they look like error signs... this should probably be reported somewhere."
+	desc = "Uma revista de rondas, eles parecem sinais de erro... isso provavelmente deve ser relatado em algum lugar."
 	abstract_type = /obj/item/ammo_box/magazine
 	ammo_box_multiload = AMMO_BOX_MULTILOAD_IN // so you can't use a magazine like a bootleg speedloader
 	drop_sound = 'sound/items/handling/gun/ballistics/magazine/magazine_drop1.ogg'

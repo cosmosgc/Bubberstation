@@ -1,7 +1,7 @@
 // SPACE VINES (Note that this code is very similar to Biomass code)
 /obj/structure/spacevine
 	name = "space vine"
-	desc = "An extremely expansionistic species of vine."
+	desc = "Uma espécie extremamente expansionista de videira."
 	icon = 'icons/mob/spacevines.dmi'
 	icon_state = "Light1"
 	anchored = TRUE
@@ -151,7 +151,7 @@
 	for(var/datum/spacevine_mutation/mutation in mutations)
 		mutation.on_buckle(src, victim)
 	if((victim.stat != DEAD) && (victim.buckled != src) && can_tangle) //not dead and not captured and can tangle
-		to_chat(victim, span_userdanger("The vines [pick("wind", "tangle", "tighten")] around you!"))
+		to_chat(victim, span_userdanger("Como videiras[pick("wind", "tangle", "tighten")]Ao seu retorno!"))
 		buckle_mob(victim, force = TRUE)
 
 /// Finds a target tile to spread to. If checks pass it will spread to it and also proc on_spread on target.

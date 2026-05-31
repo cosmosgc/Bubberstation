@@ -200,12 +200,12 @@ const ManagementConsole = () => {
   return (
     <Stack fill vertical>
       <Stack.Item>
-        <Section title="ID Management">
+        <Section title="Gestão de IDs">
           <IdShowcase id={data.inserted_id} />
         </Section>
       </Stack.Item>
       <Stack.Item grow>
-        <Section title="Security Implants" scrollable fill>
+        <Section title="Implantes de segurança" scrollable fill>
           <AllImplantDisplay implants={data.implants} />
         </Section>
       </Stack.Item>
@@ -261,7 +261,7 @@ export const PrisonerManagement = () => {
   const { data } = useBackend<Data>();
   const { authorized } = data;
   return (
-    <Window width={465} height={565} title="Prisoner Management">
+    <Window width={465} height={565} title="Gestão de Prisioneiros">
       <Window.Content>
         {authorized ? <ManagementConsole /> : <LogIn />}
       </Window.Content>

@@ -13,7 +13,7 @@
 
 /obj/item/bodypart/arm/left/robot
 	name = "cyborg left arm"
-	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
+	desc = "Um membro esquelético embrulhado em pseudomúsculos, com um caso de baixa condutividade."
 	limb_id = BODYPART_ID_ROBOTIC
 	attack_verb_simple = list("slapped", "punched")
 	inhand_icon_state = "buildpipe"
@@ -48,7 +48,7 @@
 
 /obj/item/bodypart/arm/right/robot
 	name = "cyborg right arm"
-	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
+	desc = "Um membro esquelético embrulhado em pseudomúsculos, com um caso de baixa condutividade."
 	attack_verb_simple = list("slapped", "punched")
 	inhand_icon_state = "buildpipe"
 	icon_static = 'icons/mob/augmentation/augments.dmi'
@@ -84,7 +84,7 @@
 
 /obj/item/bodypart/leg/left/robot
 	name = "cyborg left leg"
-	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
+	desc = "Um membro esquelético embrulhado em pseudomúsculos, com um caso de baixa condutividade."
 	attack_verb_simple = list("kicked", "stomped")
 	inhand_icon_state = "buildpipe"
 	icon_static = 'icons/mob/augmentation/augments.dmi'
@@ -129,12 +129,12 @@
 	owner.Knockdown(knockdown_time)
 	if(INCAPACITATED_IGNORING(owner, INCAPABLE_RESTRAINTS|INCAPABLE_GRAB)) // So the message isn't duplicated. If they were stunned beforehand by something else, then the message not showing makes more sense anyways.
 		return
-	to_chat(owner, span_danger("As your [plaintext_zone] unexpectedly malfunctions, it causes you to fall to the ground!"))
+	to_chat(owner, span_danger("Como seu[plaintext_zone]Inesperadamente avarias, faz você cair no chão!"))
 	return
 
 /obj/item/bodypart/leg/right/robot
 	name = "cyborg right leg"
-	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
+	desc = "Um membro esquelético embrulhado em pseudomúsculos, com um caso de baixa condutividade."
 	attack_verb_simple = list("kicked", "stomped")
 	inhand_icon_state = "buildpipe"
 	icon_static =  'icons/mob/augmentation/augments.dmi'
@@ -179,12 +179,12 @@
 	owner.Knockdown(knockdown_time)
 	if(INCAPACITATED_IGNORING(owner, INCAPABLE_RESTRAINTS|INCAPABLE_GRAB)) // So the message isn't duplicated. If they were stunned beforehand by something else, then the message not showing makes more sense anyways.
 		return
-	to_chat(owner, span_danger("As your [plaintext_zone] unexpectedly malfunctions, it causes you to fall to the ground!"))
+	to_chat(owner, span_danger("Como seu[plaintext_zone]Inesperadamente avarias, faz você cair no chão!"))
 	return
 
 /obj/item/bodypart/chest/robot
 	name = "cyborg torso"
-	desc = "A heavily reinforced case containing cyborg logic boards, with space for a standard power cell."
+	desc = "Uma caixa fortemente reforçada contendo placas lógicas cyborg, com espaço para uma célula de energia padrão."
 	inhand_icon_state = "buildpipe"
 	icon_static =  'icons/mob/augmentation/augments.dmi'
 	icon = 'icons/mob/augmentation/augments.dmi'
@@ -240,7 +240,7 @@
 
 	var/damage_percent_to_max = (get_damage() / max_damage)
 	if (stun_time && (damage_percent_to_max >= robotic_emp_paralyze_damage_percent_threshold))
-		to_chat(owner, span_danger("Your [plaintext_zone]'s logic boards temporarily become unresponsive!"))
+		to_chat(owner, span_danger("Sua[plaintext_zone]As placas lógicas temporariamente não respondem!"))
 		owner.Stun(stun_time)
 	owner.Shake(pixelshiftx = shift_x, pixelshifty = shift_y, duration = shake_duration)
 	return
@@ -302,24 +302,24 @@
 /obj/item/bodypart/chest/robot/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/stock_parts/power_store/cell))
 		if(cell)
-			to_chat(user, span_warning("A cell is already present in [src]!"))
+			to_chat(user, span_warning("Uma célula já está presente em[src]!"))
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
 		cell = tool
-		to_chat(user, span_notice("You insert [cell] into [src]."))
+		to_chat(user, span_notice("Você insere[cell]em[src]."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/stack/cable_coil))
 		if(wired)
-			to_chat(user, span_warning("[src] is already wired up!"))
+			to_chat(user, span_warning("[src]Já está ligado!"))
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/stack/cable_coil/coil = tool
 		if (!coil.use(1))
-			to_chat(user, span_warning("You need one length of coil to wire it!"))
+			to_chat(user, span_warning("Você precisa de uma bobina para enfiá-lo!"))
 			return ITEM_INTERACT_BLOCKING
 		wired = TRUE
-		to_chat(user, span_notice("You wire the cell inside of [src]."))
+		to_chat(user, span_notice("Você liga a célula dentro de[src]."))
 		return ITEM_INTERACT_SUCCESS
 	return NONE
 
@@ -329,7 +329,7 @@
 		return
 	. = TRUE
 	cutter.play_tool_sound(src)
-	to_chat(user, span_notice("You cut the wires out of [src]."))
+	to_chat(user, span_notice("Você cortou os fios[src]."))
 	new /obj/item/stack/cable_coil(drop_location(), 1)
 	wired = FALSE
 
@@ -337,24 +337,23 @@
 	..()
 	. = TRUE
 	if(!cell)
-		to_chat(user, span_warning("There's no power cell installed in [src]!"))
+		to_chat(user, span_warning("Não há nenhuma célula de energia instalada.[src]!"))
 		return
 	screwtool.play_tool_sound(src)
-	to_chat(user, span_notice("Remove [cell] from [src]."))
+	to_chat(user, span_notice("Remover[cell]De[src]."))
 	cell.forceMove(drop_location())
 
 /obj/item/bodypart/chest/robot/examine(mob/user)
 	. = ..()
 	if(cell)
 		. += {"It has a [cell] inserted.\n
-		[span_info("You can use a <b>screwdriver</b> to remove [cell].")]"}
+		[span_info("Você pode usar um<b>Chave de fenda</b>Para remover[cell].")]"}
 	else
-		. += span_info("It has an empty port for a <b>power cell</b>.")
+		. += span_info("Tem um porto vazio para um<b>Célula de energia</b>.")
 	if(wired)
-		. += "Its all wired up[cell ? " and ready for usage" : ""].\n"+\
-		span_info("You can use <b>wirecutters</b> to remove the wiring.")
+		. += "Está tudo ligado.[cell ? " and ready for usage" : ""].\n"+		span_info("Você pode usar<b>Cortadores de arame</b>para remover a fiação.")
 	else
-		. += span_info("It has a couple spots that still need to be <b>wired</b>.")
+		. += span_info("Tem alguns pontos que ainda precisam ser<b>com fio</b>.")
 
 /obj/item/bodypart/chest/robot/drop_organs(mob/user, violent_removal)
 	var/atom/drop_loc = drop_location()
@@ -366,7 +365,7 @@
 
 /obj/item/bodypart/head/robot
 	name = "cyborg head"
-	desc = "A standard reinforced braincase, with spine-plugged neural socket and sensor gimbals."
+	desc = "Uma caixa cerebral padrão reforçada, com encaixe neural com a coluna e gimbals sensores."
 	inhand_icon_state = "buildpipe"
 	icon_static = 'icons/mob/augmentation/augments.dmi'
 	icon = 'icons/mob/augmentation/augments.dmi'
@@ -409,7 +408,7 @@
 	if(!. || isnull(owner))
 		return
 
-	to_chat(owner, span_danger("Your [plaintext_zone]'s optical transponders glitch out and malfunction!"))
+	to_chat(owner, span_danger("Sua[plaintext_zone]Os transmissores ópticos falham e falham!"))
 
 	var/glitch_duration = AUGGED_HEAD_EMP_GLITCH_DURATION
 	if (severity == EMP_HEAVY)
@@ -434,16 +433,16 @@
 /obj/item/bodypart/head/robot/examine(mob/user)
 	. = ..()
 	if(!flash1 && !flash2)
-		. += span_info("It has two empty eye sockets for <b>flashes</b>.")
+		. += span_info("Tem duas cavidades oculares vazias para<b>flashes</b>.")
 	else
 		var/single_flash = FALSE
 		if(!flash1 || !flash2)
 			single_flash = TRUE
 			. += {"One of its eye sockets is currently occupied by a flash.\n
-			[span_info("It has an empty eye socket for another <b>flash</b>.")]"}
+			[span_info("Tem um olho vazio para outro.<b>flash</b>.")]"}
 		else
 			. += "It has two eye sockets occupied by flashes."
-		. += span_notice("You can remove the seated flash[single_flash ? "":"es"] with a <b>crowbar</b>.")
+		. += span_notice("Você pode remover o flash sentado.[single_flash ? "":"es"]com um<b>Pé de cabra.</b>.")
 
 /obj/item/bodypart/head/robot/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/assembly/flash/handheld))
@@ -451,11 +450,11 @@
 
 	var/obj/item/assembly/flash/handheld/flash = tool
 	if(flash1 && flash2)
-		to_chat(user, span_warning("[src] already has both flash-eyes present!"))
+		to_chat(user, span_warning("[src]Já tem os dois olhos presentes!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(flash.burnt_out)
-		to_chat(user, span_warning("You can't use a broken flash!"))
+		to_chat(user, span_warning("Você não pode usar um flash quebrado!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(flash, src))
@@ -465,18 +464,18 @@
 		flash2 = flash
 	else
 		flash1 = flash
-	to_chat(user, span_notice("You insert the flash into the eye socket."))
+	to_chat(user, span_notice("Você insere o flash na cavidade ocular."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/bodypart/head/robot/crowbar_act(mob/living/user, obj/item/prytool)
 	..()
 	if(flash1 || flash2)
 		prytool.play_tool_sound(src)
-		to_chat(user, span_notice("You remove the flash from [src]."))
+		to_chat(user, span_notice("Você remove o flash de[src]."))
 		flash1?.forceMove(drop_location())
 		flash2?.forceMove(drop_location())
 	else
-		to_chat(user, span_warning("There is no flash to remove from [src]."))
+		to_chat(user, span_warning("Não há nenhum flash para remover[src]."))
 	return TRUE
 
 /obj/item/bodypart/head/robot/drop_organs(mob/user, violent_removal)
@@ -491,7 +490,7 @@
 
 /obj/item/bodypart/arm/left/robot/surplus
 	name = "surplus prosthetic left arm"
-	desc = "A skeletal, robotic limb. Outdated and fragile, but it's still better than nothing."
+	desc = "Um membro esquelético, robótico. Fora de moda e frágil, mas ainda é melhor do que nada."
 	icon_static = 'icons/mob/augmentation/surplus_augments.dmi'
 	icon = 'icons/mob/augmentation/surplus_augments.dmi'
 	burn_modifier = 1
@@ -506,7 +505,7 @@
 
 /obj/item/bodypart/arm/right/robot/surplus
 	name = "surplus prosthetic right arm"
-	desc = "A skeletal, robotic limb. Outdated and fragile, but it's still better than nothing."
+	desc = "Um membro esquelético, robótico. Fora de moda e frágil, mas ainda é melhor do que nada."
 	icon_static = 'icons/mob/augmentation/surplus_augments.dmi'
 	icon = 'icons/mob/augmentation/surplus_augments.dmi'
 	burn_modifier = 1
@@ -521,7 +520,7 @@
 
 /obj/item/bodypart/leg/left/robot/surplus
 	name = "surplus prosthetic left leg"
-	desc = "A skeletal, robotic limb. Outdated and fragile, but it's still better than nothing."
+	desc = "Um membro esquelético, robótico. Fora de moda e frágil, mas ainda é melhor do que nada."
 	icon_static = 'icons/mob/augmentation/surplus_augments.dmi'
 	icon = 'icons/mob/augmentation/surplus_augments.dmi'
 	brute_modifier = 1
@@ -536,7 +535,7 @@
 
 /obj/item/bodypart/leg/right/robot/surplus
 	name = "surplus prosthetic right leg"
-	desc = "A skeletal, robotic limb. Outdated and fragile, but it's still better than nothing."
+	desc = "Um membro esquelético, robótico. Fora de moda e frágil, mas ainda é melhor do que nada."
 	icon_static = 'icons/mob/augmentation/surplus_augments.dmi'
 	icon = 'icons/mob/augmentation/surplus_augments.dmi'
 	brute_modifier = 1
@@ -553,7 +552,7 @@
 
 /obj/item/bodypart/arm/left/robot/advanced
 	name = "advanced robotic left arm"
-	desc = "An advanced cybernetic arm, capable of greater feats of strength and durability."
+	desc = "Um braço cibernético avançado, capaz de maiores feitos de força e durabilidade."
 	icon_static = 'icons/mob/augmentation/advanced_augments.dmi'
 	icon = 'icons/mob/augmentation/advanced_augments.dmi'
 	unarmed_damage_low = 5
@@ -565,7 +564,7 @@
 
 /obj/item/bodypart/arm/right/robot/advanced
 	name = "advanced robotic right arm"
-	desc = "An advanced cybernetic arm, capable of greater feats of strength and durability."
+	desc = "Um braço cibernético avançado, capaz de maiores feitos de força e durabilidade."
 	icon_static = 'icons/mob/augmentation/advanced_augments.dmi'
 	icon = 'icons/mob/augmentation/advanced_augments.dmi'
 	unarmed_damage_low = 5
@@ -577,7 +576,7 @@
 
 /obj/item/bodypart/leg/left/robot/advanced
 	name = "advanced robotic left leg"
-	desc = "An advanced cybernetic leg, capable of greater feats of strength and durability."
+	desc = "Uma perna cibernética avançada, capaz de maiores feitos de força e durabilidade."
 	icon_static = 'icons/mob/augmentation/advanced_augments.dmi'
 	icon = 'icons/mob/augmentation/advanced_augments.dmi'
 	unarmed_damage_low = 7
@@ -589,7 +588,7 @@
 
 /obj/item/bodypart/leg/right/robot/advanced
 	name = "advanced robotic right leg"
-	desc = "An advanced cybernetic leg, capable of greater feats of strength and durability."
+	desc = "Uma perna cibernética avançada, capaz de maiores feitos de força e durabilidade."
 	icon_static = 'icons/mob/augmentation/advanced_augments.dmi'
 	icon = 'icons/mob/augmentation/advanced_augments.dmi'
 	unarmed_damage_low = 7

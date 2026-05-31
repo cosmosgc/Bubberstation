@@ -9,9 +9,7 @@
  */
 /datum/grand_finale/immortality
 	name = "Perpetuation"
-	desc = "The ultimate use of your gathered power! Share with the crew the gift, or curse, of eternal life! \
-		And why not just the crew? How about their pets too? And any other animals around here! \
-		What if nobody died ever again!?"
+	desc = "O uso final de seu poder acumulado! Compartilhe com a tripulação o dom, ou maldição, da vida eterna! E por que não só a tripulação? E os animais de estimação deles também? E qualquer outro animal por aqui! E se ninguém morrer de novo?"
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "asclepius_active"
 	glow_colour = COLOR_PALE_GREEN
@@ -24,7 +22,7 @@
 		new /obj/effect/temp_visual/immortality_pulse(get_turf(alive_guy))
 		if (!alive_guy.mind)
 			continue
-		to_chat(alive_guy, span_notice("You feel <b>extremely</b> healthy."))
+		to_chat(alive_guy, span_notice("Você sente<b>Extremamente</b>saudável."))
 	RegisterSignal(SSdcs, COMSIG_GLOB_MOB_DEATH, PROC_REF(something_died))
 
 /// Called when something passes into the great beyond, make it not do that
@@ -53,7 +51,7 @@
 
 	var/datum/mind/dead_mind = HAS_TRAIT(died, TRAIT_SUICIDED) ? null : died.mind // There is a way out of the cycle
 	if (!isnull(dead_mind))
-		to_chat(died, span_boldnotice("Your spirit surges! You will return to life in [DisplayTimeText(IMMORTAL_PRE_ACTIVATION_TIME + IMMORTAL_RESURRECT_TIME)]."))
+		to_chat(died, span_boldnotice("Seu espírito sobe! Você vai voltar à vida em[DisplayTimeText(IMMORTAL_PRE_ACTIVATION_TIME + IMMORTAL_RESURRECT_TIME)]."))
 	animate(died, alpha = died.alpha, time = IMMORTAL_PRE_ACTIVATION_TIME / 2, flags = ANIMATION_PARALLEL)
 	animate(alpha = 0, time = IMMORTAL_PRE_ACTIVATION_TIME / 2, easing = SINE_EASING | EASE_IN)
 	addtimer(CALLBACK(src, PROC_REF(reverse_death), died, dead_mind, died_turf, body_type, saved_appearance), IMMORTAL_PRE_ACTIVATION_TIME, TIMER_DELETE_ME)
@@ -134,7 +132,7 @@
 /// A ghostly image of a mob showing where and what is going to respawn
 /obj/effect/spectre_of_resurrection
 	name = "spectre"
-	desc = "A frightening apparition, slowly growing more solid."
+	desc = "Uma aparição assustadora, lentamente crescendo mais sólida."
 	icon_state = "blank_white"
 	anchored = TRUE
 	layer = MOB_LAYER
@@ -203,7 +201,7 @@
 	SIGNAL_HANDLER
 	if (isnull(corpse))
 		return
-	visible_message(span_boldnotice("[corpse] suddenly shudders to life!"))
+	visible_message(span_boldnotice("[corpse]de arrependimento, treme para a vida!"))
 	corpse.remove_traits(list(TRAIT_NO_TELEPORT, TRAIT_AI_PAUSED), MAGIC_TRAIT)
 	corpse.remove_status_effect(/datum/status_effect/grouped/stasis, MAGIC_TRAIT)
 	corpse.forceMove(loc)

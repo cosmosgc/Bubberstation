@@ -1,6 +1,6 @@
 /obj/item/assembly/timer
 	name = "timer"
-	desc = "Used to time things. Works well with contraptions which has to count down. Tick tock."
+	desc = "Costumava cronometrar coisas. Funciona bem com engenhocas que têm que contar para baixo. Tique-taque."
 	icon_state = "timer"
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.5)
 	assembly_behavior = ASSEMBLY_TOGGLEABLE_INPUT
@@ -14,13 +14,13 @@
 	var/hearing_range = 3
 
 /obj/item/assembly/timer/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] looks at the timer and decides [user.p_their()] fate! It looks like [user.p_theyre()] going to commit suicide!"))
+	user.visible_message(span_suicide("[user]Olhe para o cronômetro e decida[user.p_their()]Destino! Parece que...[user.p_theyre()]Vai cometer suicídio!"))
 	activate()//doesnt rely on timer_end to prevent weird metas where one person can control the timer and therefore someone's life. (maybe that should be how it works...)
 	addtimer(CALLBACK(src, PROC_REF(manual_suicide), user), time SECONDS)//kill yourself once the time runs out
 	return MANUAL_SUICIDE
 
 /obj/item/assembly/timer/proc/manual_suicide(mob/living/user)
-	user.visible_message(span_suicide("[user]'s time is up!"))
+	user.visible_message(span_suicide("[user]O tempo acabou!"))
 	user.adjust_oxy_loss(200)
 	user.death(FALSE)
 
@@ -34,7 +34,7 @@
 
 /obj/item/assembly/timer/examine(mob/user)
 	. = ..()
-	. += span_notice("The timer is [timing ? "counting down from [time]":"set for [time] seconds"].")
+	. += span_notice("O temporizador é[timing ? "counting down from [time]":"set for [time] seconds"].")
 
 /obj/item/assembly/timer/activate()
 	if(!..())
@@ -56,7 +56,7 @@
 /obj/item/assembly/timer/proc/timer_end()
 	if(secured && next_activate <= world.time)
 		pulse()
-		audible_message(span_infoplain("[icon2html(src, hearers(src))] *beep* *beep* *beep*"), null, hearing_range)
+		audible_message(span_infoplain("[icon2html(src, hearers(src))]Bip, bip"), null, hearing_range)
 		for(var/mob/hearing_mob in get_hearers_in_view(hearing_range, src))
 			hearing_mob.playsound_local(get_turf(src), 'sound/machines/beep/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	if(loop)

@@ -5,7 +5,7 @@
  */
 /obj/item/newspaper
 	name = "newspaper"
-	desc = "An issue of The Griffon, the newspaper circulating aboard Nanotrasen Space Stations."
+	desc = "Um número do Griffon, o jornal circulando a bordo das Estações Espaciais Nanotrasen."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "newspaper"
 	inhand_icon_state = "newspaper"
@@ -39,11 +39,7 @@
 /obj/item/newspaper/Initialize(mapload)
 	. = ..()
 	register_context()
-	AddComponent(\
-		/datum/component/two_handed,\
-		wield_callback = CALLBACK(src, PROC_REF(on_wielded)),\
-		unwield_callback = CALLBACK(src, PROC_REF(on_unwielded)),\
-	)
+	AddComponent(		/datum/component/two_handed,		wield_callback = CALLBACK(src, PROC_REF(on_wielded)),		unwield_callback = CALLBACK(src, PROC_REF(on_unwielded)),	)
 	AddElement(/datum/element/burn_on_item_ignition)
 	RegisterSignal(src, COMSIG_ATOM_IGNITED_BY_ITEM, PROC_REF(close_paper_ui))
 	creation_time = GLOB.news_network.last_action
@@ -71,30 +67,27 @@
 	SStgui.close_uis(src)
 
 /obj/item/newspaper/suicide_act(mob/living/user)
-	user.visible_message(span_suicide(\
-		"[user] is focusing intently on [src]! It looks like [user.p_theyre()] trying to commit sudoku... \
-		until [user.p_their()] eyes light up with realization!"\
-	))
+	user.visible_message(span_suicide(		"[user]está focando atentamente em[src]Parece que...[user.p_theyre()]Tentando cometer sudoku... até[user.p_their()]Os olhos se iluminam com a realização!"	))
 	user.say(";JOURNALISM IS MY CALLING! EVERYBODY APPRECIATES UNBIASED REPORTI-GLORF", forced = "newspaper suicide")
 	var/obj/item/reagent_containers/cup/glass/bottle/whiskey/last_drink = new(user.loc)
 	playsound(user, 'sound/items/drink.ogg', vol = rand(10, 50), vary = TRUE)
 	last_drink.reagents.trans_to(user, last_drink.reagents.total_volume, transferred_by = user)
-	user.visible_message(span_suicide("[user] downs the contents of [last_drink.name] in one gulp! Shoulda stuck to sudoku!"))
+	user.visible_message(span_suicide("[user]Derruba o conteúdo de[last_drink.name]Em um gole! Deveria ter ficado com Sudoku!"))
 	return TOXLOSS
 
 /obj/item/newspaper/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if (tool.tool_behaviour == TOOL_SCREWDRIVER || tool.tool_behaviour == TOOL_WIRECUTTER || tool.sharpness)
 		if (punctured)
-			balloon_alert(user, "already has holes!")
+			balloon_alert(user, "Já tem buracos!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/used_verb = "cutting out"
 		if (tool.sharpness != SHARP_EDGED || tool.tool_behaviour == TOOL_SCREWDRIVER)
 			used_verb = "puncturing"
 
-		balloon_alert(user, "[used_verb] peekholes...")
+		balloon_alert(user, "[used_verb]Olha só...")
 		if (!do_after(user, 3 SECONDS, src))
-			balloon_alert(user, "interrompido!")
+			balloon_alert(user, "Interrompido!")
 			return ITEM_INTERACT_BLOCKING
 
 		playsound(src, 'sound/items/duct_tape/duct_tape_rip.ogg', 50, TRUE)
@@ -110,7 +103,7 @@
 		return NONE
 
 	if (scribble_page == current_page)
-		user.balloon_alert(user, "already scribbled!")
+		user.balloon_alert(user, "Já rabiscado!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/new_scribble_text = tgui_input_text(user, "What do you want to scribble?", "Write something", max_length = MAX_MESSAGE_LEN)
@@ -121,10 +114,10 @@
 	user.balloon_alert(user, "scribbling...")
 	playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
 	if (!do_after(user, 2 SECONDS, src))
-		balloon_alert(user, "interrompido!")
+		balloon_alert(user, "Interrompido!")
 		return ITEM_INTERACT_BLOCKING
 
-	user.balloon_alert(user, "scribbled!")
+	user.balloon_alert(user, "Escrevo!")
 	scribble_page = current_page
 	scribble_text = new_scribble_text
 	return ITEM_INTERACT_SUCCESS
@@ -176,7 +169,7 @@
 /obj/item/newspaper/examine(mob/user)
 	. = ..()
 	if (punctured)
-		. += span_notice("It has a pair of small peek holes punctured near the top.")
+		. += span_notice("Tem um par de pequenos buracos perfurados perto do topo.")
 	else
 		. += span_notice("You can cut out some peek holes using something [span_bolditalic("sharp")] or [span_bolditalic("pointy")]...")
 

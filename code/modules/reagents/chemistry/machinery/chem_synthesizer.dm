@@ -1,6 +1,6 @@
 /obj/machinery/chem_dispenser/chem_synthesizer //formerly SCP-294 made by mrty, but now only for testing purposes
 	name = "\improper debug chemical synthesizer"
-	desc = "If you see this, yell at adminbus."
+	desc = "Se vir isso, grite com o adminbus."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "dispenser"
 	base_icon_state = "dispenser"
@@ -57,7 +57,7 @@
 			if(beaker)
 				return
 			beaker = new /obj/item/reagent_containers/cup/beaker/bluespace(src)
-			visible_message(span_notice("[src] dispenses a bluespace beaker."))
+			visible_message(span_notice("[src]Dispensa um copo do espaço azul."))
 			return TRUE
 
 		if("amount")

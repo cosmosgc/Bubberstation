@@ -6,7 +6,7 @@
 
 /datum/vote/storyteller
 	name = "Storyteller"
-	default_message = "Vote for the storyteller!"
+	default_message = "Vote no contador de histórias!"
 	has_desc = TRUE
 	count_method = VOTE_COUNT_METHOD_RANKED
 	winner_method = VOTE_WINNER_METHOD_RANKED
@@ -27,7 +27,7 @@
 	if((length(choices) == 1)) // Only one choice, no need to vote.
 		var/de_facto_winner = choices[1]
 		SSgamemode.storyteller_vote_result(de_facto_winner)
-		to_chat(world, span_boldannounce("The storyteller vote has been skipped because there is only one storyteller left to vote for. The storyteller has been changed to [de_facto_winner]."))
+		to_chat(world, span_boldannounce("O voto do contador de histórias foi ignorado porque só resta um contador de histórias para votar. O contador de histórias mudou para[de_facto_winner]."))
 		return FALSE
 
 /datum/vote/storyteller/can_be_initiated(mob/by_who, forced = FALSE)
@@ -36,7 +36,7 @@
 		return TRUE
 
 	if(SSgamemode.storyteller_voted)
-		default_message = "The next Storyteller has already been selected."
+		default_message = "O próximo contador de histórias já foi selecionado."
 		return FALSE
 
 /datum/vote/storyteller/finalize_vote(winning_option)

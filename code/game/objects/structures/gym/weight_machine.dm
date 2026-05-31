@@ -4,7 +4,7 @@
 
 /obj/structure/weightmachine
 	name = "chest press machine"
-	desc = "Just looking at this thing makes you feel tired."
+	desc = "Só de olhar para essa coisa, você se sente cansado."
 	icon = 'icons/obj/fluff/gym_equipment.dmi'
 	icon_state = "stacklifter"
 	base_icon_state = "stacklifter"
@@ -78,14 +78,14 @@
 
 	if(being_buckled == buckler)
 		being_buckled.visible_message(
-			span_notice("[buckler] lays down on [src]."),
-			span_notice("You lay down on [src]."),
+			span_notice("[buckler]Deite-se em[src]."),
+			span_notice("Você se deita[src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_buckled.visible_message(
-			span_notice("[buckler] lays [being_buckled] down on [src]."),
-			span_notice("[buckler] lays you down on [src]."),
+			span_notice("[buckler]Deitados.[being_buckled]Para baixo.[src]."),
+			span_notice("[buckler]Deita você em cima[src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -95,14 +95,14 @@
 
 	if(being_unbuckled == unbuckler)
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler] gets up from [src]."),
-			span_notice("You get up from [src]."),
+			span_notice("[unbuckler]Levanta-se de[src]."),
+			span_notice("Você se levanta de[src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler] pulls [being_unbuckled] up from [src]."),
-			span_notice("[unbuckler] pulls you up from [src]."),
+			span_notice("[unbuckler]Puxa.[being_unbuckled]Para cima de[src]."),
+			span_notice("[unbuckler]Te puxa de[src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -122,7 +122,7 @@
 
 /obj/structure/weightmachine/crowbar_act_secondary(mob/living/user, obj/item/tool)
 	if(anchored)
-		balloon_alert(user, "still secured!")
+		balloon_alert(user, "Ainda seguro!")
 		return FALSE
 	tool.play_tool_sound(src)
 	balloon_alert(user, "desconstruindo...")
@@ -136,7 +136,7 @@
 
 /obj/structure/weightmachine/proc/perform_workout(mob/living/user)
 	if(user.nutrition <= NUTRITION_LEVEL_STARVING)
-		user.balloon_alert(user, "too hungry to workout!")
+		user.balloon_alert(user, "Com fome demais para treinar!")
 		return
 
 	user.balloon_alert_to_viewers("[pick(more_weight)]")
@@ -147,7 +147,7 @@
 		var/clumsy_chance = 30 - (user.mind.get_skill_level(/datum/skill/athletics) * 5)
 		if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(clumsy_chance))
 			playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
-			to_chat(user, span_warning("Your hand slips, causing \the [src] to smash you!"))
+			to_chat(user, span_warning("Sua mão escorrega, causando\the [src]Para esmagar você!"))
 			user.take_bodypart_damage(rand(2, 5))
 			end_workout()
 			return
@@ -231,7 +231,7 @@
 
 	pixel_shift_z = 5
 
-	drunk_message = "You raise the bar over you trying to balance it with one hand, keyword tried."
+	drunk_message = "Você levanta a barra sobre você tentando equilibrá-la com uma mão, palavra-chave tentada."
 
 #undef WORKOUT_XP
 #undef EXERCISE_STATUS_DURATION

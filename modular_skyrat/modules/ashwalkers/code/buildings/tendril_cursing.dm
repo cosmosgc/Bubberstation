@@ -14,7 +14,7 @@
 		if(isliving(user))
 			var/mob/living/living_user = user
 			living_user.adjust_fire_loss(100)
-		to_chat(user, span_warning("The knife sears your hand!"))
+		to_chat(user, span_warning("A faca sela sua mão!"))
 		return
 	return ..()
 
@@ -27,7 +27,7 @@
 		for(var/mob/select_mob in GLOB.player_list)
 			if(!is_species(select_mob, /datum/species/lizard/ashwalker))
 				continue
-			to_chat(select_mob, span_boldwarning("A cursed tendril has been broken! The target has been marked until they flee the lands!"))
+			to_chat(select_mob, span_boldwarning("Um maldito tentáculo foi quebrado! O alvo foi marcado até fugirem das terras!"))
 	. = ..()
 
 /datum/component/ash_cursed
@@ -55,7 +55,7 @@
 	for(var/mob/select_mob in GLOB.player_list)
 		if(!is_species(select_mob, /datum/species/lizard/ashwalker))
 			continue
-		to_chat(select_mob, span_boldwarning("A target has died, the curse has been lifted!"))
+		to_chat(select_mob, span_boldwarning("Um alvo morreu, a maldição foi levantada!"))
 	Destroy()
 
 /datum/component/ash_cursed/proc/do_move()
@@ -66,7 +66,7 @@
 		for(var/mob/select_mob in GLOB.player_list)
 			if(!is_species(select_mob, /datum/species/lizard/ashwalker))
 				continue
-			to_chat(select_mob, span_boldwarning("A target has fled from the land, breaking the curse!"))
+			to_chat(select_mob, span_boldwarning("Um alvo fugiu da terra, quebrando a maldição!"))
 		return
 	if(prob(75))
 		return

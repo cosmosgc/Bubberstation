@@ -57,8 +57,7 @@
 	effect_explosion(sm)
 	effect_emergency_state()
 	effect_cascade_demoralize()
-	priority_announce("A Type-C resonance shift event has occurred in your sector. Scans indicate local oscillation flux affecting spatial and gravitational substructure. \
-		Multiple resonance hotspots have formed. Please standby.", "Nanotrasen Star Observation Association", ANNOUNCER_SPANOMALIES)
+	priority_announce("A Type-C resonance shift event has occurred in your sector. Scans indicate local oscillation flux affecting spatial and gravitational substructure. 		Multiple resonance hotspots have formed. Please standby.", "Nanotrasen Star Observation Association", ANNOUNCER_SPANOMALIES)
 	sleep(2 SECONDS)
 	effect_strand_shuttle()
 	sleep(5 SECONDS)
@@ -70,7 +69,7 @@
 	return ..()
 
 /datum/sm_delam/cascade/examine(obj/machinery/power/supermatter_crystal/sm)
-	return list(span_bolddanger("The crystal is vibrating at immense speeds, warping space around it!"))
+	return list(span_bolddanger("O cristal está vibrando em velocidades imensas, deformando o espaço ao redor dele!"))
 
 /datum/sm_delam/cascade/overlays(obj/machinery/power/supermatter_crystal/sm)
 	return list()
@@ -87,8 +86,7 @@
 		return FALSE
 	if(!can_select(sm))
 		return FALSE
-	priority_announce("Attention: Long range anomaly scans indicate abnormal quantities of harmonic flux originating from \
-	a subject within [station_name()], a resonance collapse may occur.",
+	priority_announce("Attention: Long range anomaly scans indicate abnormal quantities of harmonic flux originating from 	a subject within [station_name()], a resonance collapse may occur.",
 	"Nanotrasen Star Observation Association", 'sound/announcer/alarm/airraid.ogg')
 	return TRUE
 

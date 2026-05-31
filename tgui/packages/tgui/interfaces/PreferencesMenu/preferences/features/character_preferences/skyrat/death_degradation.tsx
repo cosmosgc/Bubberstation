@@ -2,79 +2,79 @@
 import { CheckboxInput, type Feature, FeatureNumberInput } from '../../base';
 
 export const dc_starting_degradation: Feature<number> = {
-  name: 'A_Starting Degradation',
+  name: 'A Iniciar degradação',
   component: FeatureNumberInput,
-  description: 'The degradation you will start with.',
+  description: 'A degradação que você vai começar.',
 };
 
 export const dc_max_degradation: Feature<number> = {
-  name: 'A_Max Degradation',
+  name: 'Degradação máxima',
   component: FeatureNumberInput,
-  description: 'The absolute maximum degradation you can have.',
+  description: 'A degradação máxima absoluta que você pode ter.',
 };
 
 export const dc_living_degradation_recovery_per_second: Feature<number> = {
-  name: 'B_Recovery per second while alive',
+  name: 'Recuperar por segundo enquanto vivo',
   component: FeatureNumberInput,
   description:
-    'While alive, your degradation will be reduced by this much per second. If negative, this will cause you to slowly die.',
+    'Enquanto estiver vivo, sua degradação será reduzida a isso por segundo. Se negativo, isso o fará morrer lentamente.',
 };
 
 export const dc_dead_degradation_per_second: Feature<number> = {
-  name: 'B_Degradation per second while dead',
+  name: 'B Degradação por segundo enquanto morto',
   component: FeatureNumberInput,
 };
 
 export const dc_degradation_on_death: Feature<number> = {
-  name: 'B_Immediate degradation on death',
+  name: 'Degradação imediata na morte',
   component: FeatureNumberInput,
-  description: 'Has a cooldown of around 5 minutes between deaths. ',
+  description: 'Tem um resfriamento de cerca de 5 minutos entre as mortes.',
 };
 
 export const dc_stasis_dead_degradation_mult: Feature<number> = {
-  name: 'B_Stasis degradation mult',
+  name: 'B Stasis degradação mult',
   component: FeatureNumberInput,
   description:
-    'While on stasis, any passive degradation you receive will be reduced by this much.',
+    'Enquanto estiver em estase, qualquer degradação passiva que receber será reduzida por isso.',
 };
 
 export const dc_formeldahyde_dead_degradation_mult: Feature<number> = {
-  name: 'C_Formeldehyde death degradation mult',
+  name: 'Degradação da morte de Formeldehyde',
   component: FeatureNumberInput,
   description:
-    'If you are organic and have formeldahyde in your system, any passive degradation caused by being dead will be multiplied against this.',
+    'Se você é orgânico e tem formeldahyde em seu sistema, qualquer degradação passiva causada por estar morto será multiplicada contra isso.',
 };
 
 export const dc_rezadone_living_degradation_reduction: Feature<number> = {
-  name: 'C_Pure rezadone degradation reduction',
+  name: 'C Pure rezadone redução da degradação',
   component: FeatureNumberInput,
   description:
-    'If you are organic, alive, and metabolizing rezadone at 100% purity, you will passively recover from degradation at this rate per second.',
+    'Se você é orgânico, vivo, e metabolizando Rezadona a 100% de pureza, você vai se recuperar passivamente da degradação a esta taxa por segundo.',
 };
 
 export const dc_eigenstasium_degradation_reduction: Feature<number> = {
-  name: 'C_Eigenstasium degradation reduction',
+  name: 'Redução da degradação do autoestásio',
   component: FeatureNumberInput,
   description:
-    'If you have eigenstasium in your system, you will passively recover from degradation at this rate per second. This works for synths, and while dead.',
+    'Se você tem eigenstácio em seu sistema, você vai se recuperar passivamente da degradação a esta taxa por segundo. Isso funciona com sintéticos e mortos.',
 };
 
 export const dc_crit_threshold_reduction_min_percent_of_max: Feature<number> = {
-  name: 'Crit threshold: Start degradation percent',
+  name: 'Crit limiar: começar degradação por cento',
   component: FeatureNumberInput,
   description:
-    'Crit threshold will begin decreasing when degradation is this percent to max.',
+    'O limiar de hematócrito começará a diminuir quando a degradação for este percentual ao máximo.',
 };
 
 export const dc_crit_threshold_reduction_percent_of_max: Feature<number> = {
-  name: 'Crit threshold: End degradation percent',
+  name: 'Limiar crítico:',
   component: FeatureNumberInput,
   description:
-    'Crit threshold will stop decreasing and reach its maximum reduction when degradation is this percent to max.',
+    'O limite do hematócrito vai parar de diminuir e atingir sua redução máxima quando a degradação for este percentual ao máximo.',
 };
 
 export const dc_max_crit_threshold_reduction: Feature<number> = {
-  name: 'Crit threshold: Maximum reduction',
+  name: 'Limite máximo de redução.',
   component: FeatureNumberInput,
   description:
     'When at the ending degradation percent, crit threshold will be reduced by this, \
@@ -82,21 +82,21 @@ export const dc_max_crit_threshold_reduction: Feature<number> = {
 };
 
 export const dc_stamina_damage_min_percent_of_max: Feature<number> = {
-  name: 'Stamina damage: Start degradation percent',
+  name: 'Danos na resistência:',
   component: FeatureNumberInput,
   description:
-    'Minimum stamina damage will start increasing once degradation reaches this percent of maximum degradation.',
+    'Dano mínimo de resistência começará a aumentar quando a degradação atingir este percentual de degradação máxima.',
 };
 
 export const dc_stamina_damage_percent_of_max: Feature<number> = {
-  name: 'Stamina damage: End degradation percent',
+  name: 'Dano de resistência:',
   component: FeatureNumberInput,
   description:
-    'Minimum stamina damage will reach its maximum possible value once degradation reaches this percent of maximum degradation.',
+    'Dano mínimo de resistência atingirá seu valor máximo possível quando a degradação atingir esse percentual de degradação máxima.',
 };
 
 export const dc_max_stamina_damage: Feature<number> = {
-  name: 'Stamina damage: Maximum',
+  name: 'Danos de resistência:',
   component: FeatureNumberInput,
   description:
     'When at the ending degradation percent, your stamina damage will always be at LEAST this, \
@@ -104,14 +104,14 @@ export const dc_max_stamina_damage: Feature<number> = {
 };
 
 export const dc_permakill_at_max: Feature<boolean> = {
-  name: 'PK: Permaghost at maximum degradation',
+  name: 'Permaghost na degradação máxima.',
   component: CheckboxInput,
   description:
-    'If true, you will be permanently ghosted if your degradation reaches its maximum possible value.',
+    'Se for verdade, você será permanentemente assombrado se sua degradação atingir seu valor máximo possível.',
 };
 
 export const dc_force_death_if_permakilled: Feature<boolean> = {
-  name: 'PK: Force death if permaghosted',
+  name: 'Forçar a morte se for permagostada',
   component: CheckboxInput,
-  description: 'If true, you will be permanently killed on permaghost as well.',
+  description: 'Se for verdade, você será morto permanentemente em Permaghost também.',
 };

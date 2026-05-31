@@ -162,7 +162,7 @@ export const UserDetails = () => {
         <Stack.Item>
           {user
             ? `${user.name || 'Unknown'} | ${user.job}`
-            : 'No ID detected! Contact the Head of Personnel.'}
+            : 'Nenhuma identificação detectada! Contate o Chefe de Pessoal.'}
         </Stack.Item>
       </Stack>
     </NoticeBox>
@@ -355,7 +355,7 @@ const ProductList = (props: any) => {
         <Stack.Item
           width={3.5}
           fontSize={0.8}
-          color={'rgba(255, 255, 255, 0.5)'}
+          color={'Rgba(255, 0,5)'}
         >
           {remaining} left
         </Stack.Item>
@@ -379,7 +379,7 @@ const ProductRefitsAvailable = ({ fluid }: ProductRefitsAvailableProps) => {
     <Button
       width={fluid ? '32px' : '20px'}
       color={'transparent'}
-      tooltip="This outfit supports your species!"
+      tooltip="Essa roupa sustenta sua espécie!"
       icon="fa-shirt"
       style={{ opacity: 0.5 }}
     />
@@ -407,7 +407,7 @@ const ProductColorSelect = (props: ProductColorSelectProps) => {
       width={fluid ? '32px' : '20px'}
       icon={'palette'}
       color={'transparent'}
-      tooltip={'Change color'}
+      tooltip={'Mudar de cor'}
       style={disabled ? { pointerEvents: 'none', opacity: 0.5 } : {}}
       onClick={() => act('select_colors', { ref: product.ref })}
     />

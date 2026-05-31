@@ -1,6 +1,6 @@
 /obj/structure/aquarium
 	name = "aquarium"
-	desc = "A vivarium in which aquatic fauna and flora are usually kept and displayed."
+	desc = "Um biotério no qual fauna e flora aquáticas são geralmente mantidos e exibidos."
 	density = TRUE
 	anchored = FALSE
 
@@ -65,13 +65,13 @@
 	if(!istype(tool, /obj/item/stack/sheet/glass))
 		return
 	if(!broken)
-		balloon_alert(user, "aquarium not broken!")
+		balloon_alert(user, "Aquário não quebrado!")
 		return ITEM_INTERACT_BLOCKING
 	var/obj/item/stack/sheet/glass/glass = tool
 	if(glass.get_amount() < 2)
-		balloon_alert(user, "it needs two sheets!")
+		balloon_alert(user, "Precisa de dois lençóis!")
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "fixing the aquarium...")
+	balloon_alert(user, "Consertando o aquário...")
 	if(!do_after(user, 2 SECONDS, target = src))
 		return ITEM_INTERACT_BLOCKING
 	glass.use(2)
@@ -121,7 +121,7 @@
 
 /obj/item/fish_tank
 	name = "fish tank"
-	desc = "A more portable sort of aquarium to store various fishes in, unless they're too big or there're too many of them."
+	desc = "Um tipo mais portátil de aquário para armazenar vários peixes, a menos que sejam muito grandes ou sejam muitos."
 	icon = 'icons/obj/aquarium/tanks.dmi'
 	icon_state = "fish_tank_map"
 	base_icon_state = "fish_tank"
@@ -161,18 +161,7 @@
 /obj/item/fish_tank/Initialize(mapload)
 	. = ..()
 	update_appearance()
-	AddComponent(\
-		/datum/component/aquarium,\
-		min_px = 6,\
-		max_px = 26,\
-		min_py = 7,\
-		max_py = 24,\
-		default_beauty = 100,\
-		reagents_size = src.reagent_size,\
-		min_fluid_temp = src.min_fluid_temp,\
-		max_fluid_temp = src.max_fluid_temp,\
-		init_mode = init_mode,\
-	)
+	AddComponent(		/datum/component/aquarium,		min_px = 6,		max_px = 26,		min_py = 7,		max_py = 24,		default_beauty = 100,		reagents_size = src.reagent_size,		min_fluid_temp = src.min_fluid_temp,		max_fluid_temp = src.max_fluid_temp,		init_mode = init_mode,	)
 	AddComponent(/datum/component/plumbing/aquarium)
 	RegisterSignal(src, COMSIG_AQUARIUM_FLUID_CHANGED, PROC_REF(on_aquarium_liquid_changed))
 	RegisterSignal(src, COMSIG_AQUARIUM_CAN_INSERT, PROC_REF(can_insert))
@@ -200,10 +189,10 @@
 		return
 	var/obj/item/fish/fish = item
 	if(fish.size > maximum_relative_size)
-		balloon_alert(user, "fish is too big!")
+		balloon_alert(user, "O peixe é muito grande!")
 		return COMSIG_CANNOT_INSERT_IN_AQUARIUM
 	if(current_summed_size > max_total_size)
-		balloon_alert(user, "fish tank is full!")
+		balloon_alert(user, "O aquário está cheio!")
 		return COMSIG_CANNOT_INSERT_IN_AQUARIUM
 	return COMSIG_CAN_INSERT_IN_AQUARIUM
 
@@ -253,7 +242,7 @@
 /obj/item/fish_tank/examine(mob/user)
 	. = ..()
 	if(HAS_TRAIT_FROM(src, TRAIT_STOP_FISH_REPRODUCTION_AND_GROWTH, INNATE_TRAIT))
-		. += span_warning("It's cramped in there. There's no more room for fish to reproduce and grow!")
+		. += span_warning("Está apertado lá dentro. Não há mais espaço para peixes se reproduzirem e crescerem!")
 
 ///The lawyer's own pet goldfish's fish tank. It used to be an aquarium, but now it can be held and carried around.
 /obj/item/fish_tank/lawyer

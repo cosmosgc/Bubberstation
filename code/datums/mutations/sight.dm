@@ -1,7 +1,7 @@
 //Nearsightedness restricts your vision by several tiles.
 /datum/mutation/nearsight
 	name = "Near Sightness"
-	desc = "The holder of this mutation has poor eyesight."
+	desc = "O detentor desta mutação tem visão ruim."
 	instability = NEGATIVE_STABILITY_MODERATE
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_danger("You can't see very well.")
@@ -20,7 +20,7 @@
 ///Blind makes you blind. Who knew?
 /datum/mutation/blind
 	name = "Blindness"
-	desc = "Renders the subject completely blind."
+	desc = "Muda o sujeito completo cego."
 	instability = NEGATIVE_STABILITY_MAJOR
 	quality = NEGATIVE
 	text_gain_indication = span_danger("You can't seem to see anything.")
@@ -39,7 +39,7 @@
 ///Thermal Vision lets you see mobs through walls
 /datum/mutation/thermal
 	name = "Thermal Vision"
-	desc = "The user of this genome can visually perceive the unique human thermal signature."
+	desc = "O usuário deste genoma pode visualmente perceber a única assinatura térmica humana."
 	quality = POSITIVE
 	difficulty = 18
 	text_gain_indication = span_notice("You can see the heat rising off of your skin...")
@@ -70,7 +70,7 @@
 
 /datum/action/cooldown/spell/thermal_vision
 	name = "Activate Thermal Vision"
-	desc = "You can see thermal signatures, at the cost of your eyesight."
+	desc = "Você pode ver assinaturas térmicas, ao custo de sua visão."
 	button_icon = 'icons/mob/actions/actions_changeling.dmi'
 	button_icon_state = "augmented_eyesight"
 
@@ -94,7 +94,7 @@
 	. = ..()
 	ADD_TRAIT(cast_on, TRAIT_THERMAL_VISION, GENETIC_MUTATION)
 	cast_on.update_sight()
-	to_chat(cast_on, span_info("You focus your eyes intensely, as your vision becomes filled with heat signatures."))
+	to_chat(cast_on, span_info("Você foca seus olhos intensamente, enquanto sua visão fica cheia de assinaturas de calor."))
 	addtimer(CALLBACK(src, PROC_REF(deactivate), cast_on), thermal_duration)
 
 /datum/action/cooldown/spell/thermal_vision/proc/deactivate(mob/living/cast_on)
@@ -103,7 +103,7 @@
 
 	REMOVE_TRAIT(cast_on, TRAIT_THERMAL_VISION, GENETIC_MUTATION)
 	cast_on.update_sight()
-	to_chat(cast_on, span_info("You blink a few times, your vision returning to normal as a dull pain settles in your eyes."))
+	to_chat(cast_on, span_info("Você pisca algumas vezes, sua visão voltando ao normal como uma dor chata se instala em seus olhos."))
 
 	if(iscarbon(cast_on))
 		var/mob/living/carbon/carbon_cast_on = cast_on
@@ -112,7 +112,7 @@
 ///X-ray Vision lets you see through walls.
 /datum/mutation/xray
 	name = "X Ray Vision"
-	desc = "A strange genome that allows the user to see between the spaces of walls." //actual x-ray would mean you'd constantly be blasting rads, which might be fun for later //hmb
+	desc = "Um genoma estranho que permite ao usuário ver entre os espaços das paredes." //actual x-ray would mean you'd constantly be blasting rads, which might be fun for later //hmb
 	text_gain_indication = span_notice("The walls suddenly disappear!")
 	instability = POSITIVE_INSTABILITY_MAJOR
 	locked = TRUE
@@ -134,7 +134,7 @@
 ///Laser Eyes lets you shoot lasers from your eyes!
 /datum/mutation/laser_eyes
 	name = "Laser Eyes"
-	desc = "Reflects concentrated light back from the eyes."
+	desc = "Reflete luz concentrada dos olhos."
 	quality = POSITIVE
 	locked = TRUE
 	difficulty = 16
@@ -168,7 +168,7 @@
 
 	if(!source.combat_mode)
 		return
-	to_chat(source, span_warning("You shoot with your laser eyes!"))
+	to_chat(source, span_warning("Você atira com seus olhos laser!"))
 	source.changeNext_move(CLICK_CD_RANGE)
 	source.newtonian_move(get_angle(source, target))
 	var/obj/projectile/beam/laser/laser_eyes/LE = new(source.loc)
@@ -186,7 +186,7 @@
 
 /datum/mutation/illiterate
 	name = "Illiterate"
-	desc = "Causes a severe case of Aphasia that prevents reading or writing."
+	desc = "Causa um caso grave de afasia que impede a leitura ou escrita."
 	instability = NEGATIVE_STABILITY_MAJOR
 	quality = NEGATIVE
 	text_gain_indication = span_danger("You feel unable to read or write.")

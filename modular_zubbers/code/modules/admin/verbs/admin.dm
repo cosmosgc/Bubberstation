@@ -11,7 +11,7 @@ ADMIN_VERB(ping_deadmins, R_ADMIN, "Ping De-adminned Admins", "Send a notificati
 		to_chat(
 			deadmin_client,
 			fieldset_block(
-				span_adminhelp("[user.key] is requesting help"),
+				span_adminhelp("[user.key]Está pedindo ajuda."),
 				span_adminsay(message),
 				"boxed_message red_box"),
 			type = MESSAGE_TYPE_SYSTEM,

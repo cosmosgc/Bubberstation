@@ -44,7 +44,7 @@
 	if(host.stat == DEAD)
 		var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
 		timer_id = addtimer(CALLBACK(src, PROC_REF(transform_host)), revive_time, TIMER_STOPPABLE)
-		to_chat(host, span_userdanger("You feel your veins throb as your body begins twitching..."))
+		to_chat(host, span_userdanger("Você sente suas veias pulsando enquanto seu corpo começa a tremer..."))
 
 	RegisterSignal(parent, COMSIG_MUTANT_CURED, PROC_REF(cure_host))
 
@@ -65,7 +65,7 @@
 	if(ismutant(host) && old_species)
 		host.set_species(old_species)
 	host.revive(HEAL_ALL,force_grab_ghost = TRUE)
-	to_chat(host, span_greentext("You feel like you're free of that foul disease!"))
+	to_chat(host, span_greentext("Você se sente livre dessa doença!"))
 	ADD_TRAIT(host, TRAIT_MUTANT_IMMUNE, "mutant_virus")
 	host.mind?.remove_antag_datum(/datum/antagonist/mutant)
 	host.remove_filter("infection_glow")
@@ -75,7 +75,7 @@
 /datum/component/mutant_infection/proc/extract_rna()
 	if(rna_extracted)
 		return FALSE
-	to_chat(host, span_userdanger("You feel your genes being altered!"))
+	to_chat(host, span_userdanger("Você sente seus genes sendo alterados!"))
 	rna_extracted = TRUE
 	addtimer(CALLBACK(src, PROC_REF(refresh_rna)), RNA_REFRESH_TIME, TIMER_STOPPABLE)
 	return TRUE
@@ -92,7 +92,7 @@
 		if(toxloss < 50)
 			host.adjust_tox_loss(tox_loss_mod * seconds_per_tick)
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(host, span_userdanger("You feel your motor controls seize up for a moment!"))
+				to_chat(host, span_userdanger("Você sente seus controles de motor se apoderar por um momento!"))
 				host.Paralyze(10)
 		else
 			host.adjust_tox_loss((tox_loss_mod * 2) * seconds_per_tick)
@@ -107,17 +107,15 @@
 	if(host.stat != DEAD)
 		return
 	if(!ismutant(host))
-		to_chat(host, span_cult_large("You can feel your heart stopping, but something isn't right... \
-		life has not abandoned your broken form. You can only feel a deep and immutable hunger that \
-		not even death can stop, you will rise again!"))
+		to_chat(host, span_cult_large("Você pode sentir seu coração parar, mas algo não está certo... a vida não abandonou sua forma quebrada. Você só pode sentir uma fome profunda e imutável que nem mesmo a morte pode parar, você vai ressuscitar!"))
 	var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
-	to_chat(host, span_redtext("You will transform in approximately [revive_time/10] seconds."))
+	to_chat(host, span_redtext("Você vai se transformar em aproximadamente[revive_time/10]Segundos."))
 	timer_id = addtimer(CALLBACK(src, PROC_REF(transform_host)), revive_time, TIMER_STOPPABLE)
 
 /datum/component/mutant_infection/proc/cure_host()
 	SIGNAL_HANDLER
 	if(!host.stat == DEAD)
-		to_chat(host, span_notice("You start to feel refreshed and invigorated!"))
+		to_chat(host, span_notice("Você começa a se sentir revigorado e revigorado!"))
 	STOP_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, PROC_REF(Destroy)), CURE_TIME)
 
@@ -136,13 +134,13 @@
 	regenerate()
 
 	host.do_jitter_animation(30)
-	host.visible_message(span_danger("[host] suddenly convulses, as [host.p_they()][stand_up ? " stagger to [host.p_their()] feet and" : ""] gain a ravenous hunger in [host.p_their()] eyes!"), span_alien("You HUNGER!"))
+	host.visible_message(span_danger("[host]de repente convulsões, como[host.p_they()][stand_up ? " stagger to [host.p_their()] feet and" : ""]Ganhar uma fome voraz em[host.p_their()]Olhos!"), span_alien("Seu caçador!"))
 	playsound(host.loc, 'sound/effects/hallucinations/far_noise.ogg', 50, TRUE)
 	if(is_species(host, /datum/species/mutant/infectious/fast))
-		to_chat(host, span_redtext("You are a FAST zombie. You run fast and hit more quickly, beware however, you are much weaker and susceptible to damage."))
+		to_chat(host, span_redtext("Você é um zumbi rápido. Você corre rápido e bate mais rápido, cuidado no entanto, você é muito mais fraco e suscetível a danos."))
 	else
-		to_chat(host, span_redtext("You are a SLOW zombie. You walk slowly and hit more slowly and harder. However, you are far more resilient to most damage types."))
-	to_chat(host, span_alertalien("You are now a mutant! Do not seek to be cured, do not help any non-mutants in any way, do not harm your mutant brethren. You retain some higher functions and can reason to an extent."))
+		to_chat(host, span_redtext("Você é um zumbi lento. Você anda devagar e bate mais devagar e mais forte. No entanto, você é muito mais resistente à maioria dos tipos de danos."))
+	to_chat(host, span_alertalien("Agora você é um mutante! Não procurem ser curados, não ajudem nenhum não mutante de forma alguma, não machuquem seus irmãos mutantes. Você mantém algumas funções superiores e pode raciocinar até certo ponto."))
 	host.mind?.add_antag_datum(/datum/antagonist/mutant)
 	create_glow()
 	RegisterSignal(parent, COMSIG_LIVING_DEATH, PROC_REF(mutant_death))
@@ -150,8 +148,8 @@
 /datum/component/mutant_infection/proc/mutant_death()
 	SIGNAL_HANDLER
 	var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
-	to_chat(host, span_cult_large("You can feel your heart stopping, but something isn't right... you will rise again!"))
-	to_chat(host, span_redtext("You will revive in approximately [revive_time/10] seconds."))
+	to_chat(host, span_cult_large("Você pode sentir seu coração parando, mas algo não está certo... você vai se levantar novamente!"))
+	to_chat(host, span_redtext("Você vai reviver em aproximadamente[revive_time/10]Segundos."))
 	timer_id = addtimer(CALLBACK(src, PROC_REF(regenerate)), revive_time, TIMER_STOPPABLE)
 
 /datum/component/mutant_infection/proc/regenerate()
@@ -160,8 +158,7 @@
 		if(!istype(canidate))
 			return
 		host.key = canidate.key
-	to_chat(host, span_notice("You feel an itching, both inside and \
-		outside as your tissues knit and reknit."))
+	to_chat(host, span_notice("Você sente uma coceira, dentro e fora, enquanto seus tecidos tricotam e retricotam."))
 	playsound(host, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 	host.revive(HEAL_ALL, force_grab_ghost = TRUE)
 

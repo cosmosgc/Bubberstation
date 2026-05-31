@@ -5,14 +5,11 @@
 
 /datum/brain_trauma/special/imaginary_friend
 	name = "Imaginary Friend"
-	desc = "Patient can see and hear an imaginary person."
-	scan_desc = "partial schizophrenia"
-	symptoms = "Exhibits signs of interacting with an unseen individual, including talking to themselves, \
-		responding to unheard stimuli, and displaying behaviors that suggest the presence of a companion. \
-		This \"imaginary friend\" may influence the patient's actions and emotional state, \
-		leading to social withdrawal, altered perceptions of reality, or atypical activities."
-	gain_text = span_notice("You feel in good company, for some reason.")
-	lose_text = span_warning("You feel lonely again.")
+	desc = "O paciente pode ver e ouvir uma pessoa imaginária."
+	scan_desc = "esquizofrenia parcial."
+	symptoms = "Exhibits signs of interacting with an unseen individual, including talking to themselves, 		responding to unheard stimuli, and displaying behaviors that suggest the presence of a companion. 		This \"imaginary friend\" may influence the patient's actions and emotional state, 		leading to social withdrawal, altered perceptions of reality, or atypical activities."
+	gain_text = span_notice("Você se sente em boa companhia, por alguma razão.")
+	lose_text = span_warning("Você se sente sozinha novamente.")
 	var/mob/eye/imaginary_friend/friend
 	var/friend_initialized = FALSE
 
@@ -62,7 +59,7 @@
 		checked_target = owner,
 		ignore_category = POLL_IGNORE_IMAGINARYFRIEND,
 		alert_pic = owner,
-		role_name_text = "imaginary friend",
+		role_name_text = "Amigo imaginário.",
 	)
 	add_friend(chosen_one)
 
@@ -83,7 +80,7 @@
 	name = "imaginary friend"
 	real_name = "imaginary friend"
 	move_on_shuttle = TRUE
-	desc = "A wonderful yet fake friend."
+	desc = "Um amigo maravilhoso e falso."
 	sight = NONE
 	mouse_opacity = MOUSE_OPACITY_ICON
 	see_invisible = SEE_INVISIBLE_LIVING
@@ -112,9 +109,9 @@
 	Show()
 
 /mob/eye/imaginary_friend/proc/greet()
-	to_chat(src, span_notice("<b>You are the imaginary friend of [owner]!</b>"))
-	to_chat(src, span_notice("You are absolutely loyal to your friend, no matter what."))
-	to_chat(src, span_notice("You cannot directly influence the world around you, but you can see what [owner] cannot."))
+	to_chat(src, span_notice("<b>Você é o amigo imaginário de[owner]!</b>"))
+	to_chat(src, span_notice("Você é absolutamente leal ao seu amigo, não importa o que aconteça."))
+	to_chat(src, span_notice("Você não pode influenciar diretamente o mundo ao seu redor, mas você pode ver o que[owner]Não posso."))
 
 /**
  * Arguments:
@@ -364,12 +361,12 @@
 	if(!can_run_emote(user, TRUE, intentional))
 		return FALSE
 	if(is_banned_from(user.ckey, "Emote"))
-		to_chat(user, span_boldwarning("You cannot send custom emotes (banned)."))
+		to_chat(user, span_boldwarning("Você não pode enviar emotes personalizados (proibidos)."))
 		return FALSE
 	else if(QDELETED(user))
 		return FALSE
 	else if(user.client && user.client.prefs.muted & MUTE_IC)
-		to_chat(user, span_boldwarning("You cannot send IC messages (muted)."))
+		to_chat(user, span_boldwarning("Você não pode enviar mensagens de IC."))
 		return FALSE
 	else if(!params)
 		message = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
@@ -451,7 +448,7 @@
 
 /datum/action/innate/imaginary_join
 	name = "Join"
-	desc = "Join your owner, following them from inside their mind."
+	desc = "Junte-se ao seu dono, seguindo-os de dentro de sua mente."
 	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
 	background_icon_state = "bg_revenant"
 	overlay_icon_state = "bg_revenant_border"
@@ -463,7 +460,7 @@
 
 /datum/action/innate/imaginary_hide
 	name = "Hide"
-	desc = "Hide yourself from your owner's sight."
+	desc = "Esconda-se da vista do seu dono."
 	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
 	background_icon_state = "bg_revenant"
 	overlay_icon_state = "bg_revenant_border"
@@ -473,11 +470,11 @@
 	var/mob/eye/imaginary_friend/I = owner
 	if(I.hidden)
 		name = "Show"
-		desc = "Become visible to your owner."
+		desc = "Torne-se visível para o seu dono."
 		button_icon_state = "unhide"
 	else
 		name = "Hide"
-		desc = "Hide yourself from your owner's sight."
+		desc = "Esconda-se da vista do seu dono."
 		button_icon_state = "hide"
 	build_all_button_icons()
 
@@ -491,10 +488,10 @@
 	var/mob/eye/imaginary_friend/fake_friend = owner
 	if(fake_friend.hidden)
 		name = "Show"
-		desc = "Become visible to your owner."
+		desc = "Torne-se visível para o seu dono."
 	else
 		name = "Hide"
-		desc = "Hide yourself from your owner's sight."
+		desc = "Esconda-se da vista do seu dono."
 	return ..()
 
 /datum/action/innate/imaginary_hide/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
@@ -511,7 +508,7 @@
 
 /datum/brain_trauma/special/imaginary_friend/trapped_owner
 	name = "Trapped Victim"
-	desc = "Patient appears to be targeted by an invisible entity."
+	desc = "O paciente parece ser alvo de uma entidade invisível."
 	gain_text = ""
 	lose_text = ""
 	random_gain = FALSE
@@ -533,12 +530,12 @@
 /mob/eye/imaginary_friend/trapped
 	name = "figment of imagination?"
 	real_name = "figment of imagination?"
-	desc = "The previous host of this body."
+	desc = "O hospedeiro anterior deste corpo."
 
 /mob/eye/imaginary_friend/trapped/greet()
-	to_chat(src, span_notice(span_bold("You have managed to hold on as a figment of the new host's imagination!")))
-	to_chat(src, span_notice("All hope is lost for you, but at least you may interact with your host. You do not have to be loyal to them."))
-	to_chat(src, span_notice("You cannot directly influence the world around you, but you can see what the host cannot."))
+	to_chat(src, span_notice(span_bold("Você conseguiu se segurar como uma invenção da imaginação do novo anfitrião!")))
+	to_chat(src, span_notice("Toda esperança está perdida para você, mas pelo menos você pode interagir com seu anfitrião. Não precisa ser leal a eles."))
+	to_chat(src, span_notice("Você não pode influenciar diretamente o mundo ao seu redor, mas você pode ver o que o anfitrião não pode."))
 
 /mob/eye/imaginary_friend/trapped/setup_friend()
 	real_name = "[owner.real_name]?"

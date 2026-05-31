@@ -6,13 +6,13 @@ import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 const commandJobs = [
-  'Head of Personnel',
-  'Head of Security',
-  'Chief Engineer',
-  'Research Director',
-  'Chief Medical Officer',
+  'Chefe de Pessoal',
+  'Chefe de Segurança',
+  'Engenheiro Chefe.',
+  'Diretor de Pesquisa',
+  'Oficial Médico Chefe.',
   'Quartermaster',
-  'Nanotrasen Consultant',
+  'Consultor Nanotrasen',
 ];
 
 export const RecordManifest = (props) => {
@@ -22,7 +22,7 @@ export const RecordManifest = (props) => {
   const { act } = useBackend();
 
   return (
-    <Window title="All crew with information" width={450} height={500}>
+    <Window title="Toda a tripulação com informações" width={450} height={500}>
       <Window.Content scrollable>
         {Object.entries(manifest).map(([dept, crew]) => (
           <Section className={`CrewManifest--${dept}`} key={dept} title={dept}>
@@ -34,7 +34,7 @@ export const RecordManifest = (props) => {
                   </Table.Cell>
                   <Table.Cell>
                     <Button
-                      content="Show exploitables"
+                      content="Mostre exploráveis."
                       onClick={() =>
                         act('show_exploitables', {
                           exploitable_id: crewMember.name,
@@ -50,7 +50,7 @@ export const RecordManifest = (props) => {
                     collapsing
                   >
                     {positions[dept].exceptions.includes(crewMember.rank) && (
-                      <Tooltip content="No position limit" position="bottom">
+                      <Tooltip content="Sem limite de posição." position="bottom">
                         <Icon className="CrewManifest__Icon" name="infinity" />
                       </Tooltip>
                     )}
@@ -66,7 +66,7 @@ export const RecordManifest = (props) => {
                       </Tooltip>
                     )}
                     {commandJobs.includes(crewMember.rank) && (
-                      <Tooltip content="Member of command" position="bottom">
+                      <Tooltip content="Membro do comando." position="bottom">
                         <Icon
                           className={classes([
                             'CrewManifest__Icon',

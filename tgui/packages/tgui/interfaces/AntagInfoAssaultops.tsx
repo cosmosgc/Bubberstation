@@ -152,7 +152,7 @@ const TargetPrintout = (props) => {
       </Box>
       <Stack>
         <Stack.Item grow>
-          <Section title="Available Targets">
+          <Section title="Alvos disponíveis">
             <Box textColor="red" mb={2}>
               These are targets you have not yet extracted a GoldenEye key from.
               They can be extracted by the in-TERROR-gator.
@@ -172,7 +172,7 @@ const TargetPrintout = (props) => {
         </Stack.Item>
         <Divider vertical />
         <Stack.Item grow>
-          <Section title="Extracted Targets">
+          <Section title="Alvos Extraídos">
             <Box textColor="green" mb={2}>
               These are targets you have extracted a GoldenEye keycard from.
               They cannot be extracted again.
@@ -232,7 +232,7 @@ const KeyPrintout = (props) => {
                           ', ' +
                           key.coord_z +
                           ')' +
-                          ' (Tracking)'
+                          '(Rastreando)'
                         : key.name +
                           ' (' +
                           key.coord_x +

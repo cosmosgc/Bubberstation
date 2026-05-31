@@ -2,7 +2,7 @@
 
 /obj/item/universal_scanner
 	name = "universal scanner"
-	desc = "A device used to check objects against Nanotrasen exports database, assign price tags, or ready an item for a custom vending machine."
+	desc = "Um dispositivo usado para verificar objetos contra Nanotrasen exporta banco de dados, atribuir etiquetas de preço, ou preparar um item para uma máquina de venda personalizada."
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "export scanner"
 	worn_icon_state = "electronic"
@@ -75,14 +75,14 @@
 		var/obj/item/card/id/potential_acc = attacking_item
 		if(potential_acc.registered_account)
 			if(payments_acc == potential_acc.registered_account)
-				to_chat(user, span_notice("ID card already registered."))
+				to_chat(user, span_notice("Cartão de identidade já registrado."))
 				return
 			else
 				payments_acc = potential_acc.registered_account
 				playsound(src, 'sound/machines/ping.ogg', 40, TRUE)
-				to_chat(user, span_notice("[src] registers the ID card. Tag a wrapped item to create a barcode."))
+				to_chat(user, span_notice("[src]Registra o cartão de identidade. Marque um item embrulhado para criar um código de barras."))
 		else if(!potential_acc.registered_account)
-			to_chat(user, span_warning("This ID card has no account registered!"))
+			to_chat(user, span_warning("Este cartão de identidade não tem conta registrada!"))
 			return
 	if(istype(attacking_item, /obj/item/paper))
 		if (!(paper_count >= max_paper_count))
@@ -90,66 +90,66 @@
 			qdel(attacking_item)
 			if (paper_count >= max_paper_count)
 				paper_count = max_paper_count
-				to_chat(user, span_notice("[src]'s paper supply is now full."))
+				to_chat(user, span_notice("[src]O suprimento de papel está cheio."))
 				return
-			to_chat(user, span_notice("You refill [src]'s paper supply, you have [paper_count] left."))
+			to_chat(user, span_notice("Você enche.[src]O suprimento de papel, você tem[paper_count]Esquerda."))
 		else
-			to_chat(user, span_notice("[src]'s paper supply is full."))
+			to_chat(user, span_notice("[src]O suprimento de papel está cheio."))
 
 /obj/item/universal_scanner/attack_self_secondary(mob/user, modifiers)
 	. = ..()
 	if(scanning_mode == SCAN_SALES_TAG)
 		if(paper_count <= 0)
-			to_chat(user, span_warning("You're out of paper!'."))
+			to_chat(user, span_warning("Você está sem papel!"))
 			return
 		if(!payments_acc)
-			to_chat(user, span_warning("You need to swipe [src] with an ID card first."))
+			to_chat(user, span_warning("Você precisa roubar.[src]com um cartão de identificação primeiro."))
 			return
 		paper_count--
 		playsound(src, 'sound/machines/click.ogg', 40, TRUE)
-		to_chat(user, span_notice("You print a new barcode."))
+		to_chat(user, span_notice("Imprime um novo código de barras."))
 		var/obj/item/barcode/new_barcode = new /obj/item/barcode(src)
 		new_barcode.payments_acc = payments_acc		// The sticker gets the scanner's registered account.
 		new_barcode.cut_multiplier = cut_multiplier		// Also the registered percent cut.
 		user.put_in_hands(new_barcode)
 	if(scanning_mode == SCAN_PRICE_TAG)
 		if(loc != user)
-			to_chat(user, span_warning("You must be holding \the [src] to continue!"))
+			to_chat(user, span_warning("Você deve estar segurando.\the [src]Continua!"))
 			return
 		var/chosen_price = tgui_input_number(user, "Set price", "Price", new_custom_price)
 		if(!chosen_price || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH) || loc != user)
 			return
 		new_custom_price = chosen_price
-		to_chat(user, span_notice("[src] will now give things a [new_custom_price] [MONEY_SYMBOL] tag."))
+		to_chat(user, span_notice("[src]agora dará as coisas um[new_custom_price] [MONEY_SYMBOL]Tag."))
 
 /obj/item/universal_scanner/item_ctrl_click(mob/user)
 	. = CLICK_ACTION_BLOCKING
 	if(scanning_mode == SCAN_SALES_TAG)
 		payments_acc = null
-		to_chat(user, span_notice("You clear the registered account."))
+		to_chat(user, span_notice("Você limpa a conta registrada."))
 		return CLICK_ACTION_SUCCESS
 
 /obj/item/universal_scanner/click_alt(mob/user)
 	if(!scanning_mode == SCAN_SALES_TAG)
 		return CLICK_ACTION_BLOCKING
-	var/potential_cut = input("How much would you like to pay out to the registered card?","Percentage Profit ([round(cut_min*100)]% - [round(cut_max*100)]%)") as num|null
+	var/potential_cut = input("Quanto você gostaria de pagar pelo cartão registrado?","Percentagem de lucro ([round(cut_min*100)]% - [round(cut_max*100)]%)") as num|null
 	if(!potential_cut)
 		cut_multiplier = initial(cut_multiplier)
 	cut_multiplier = clamp(round(potential_cut/100, cut_min), cut_min, cut_max)
-	to_chat(user, span_notice("[round(cut_multiplier*100)]% profit will be received if a package with a barcode is sold."))
+	to_chat(user, span_notice("[round(cut_multiplier*100)]O lucro será recebido se um pacote com código de barras for vendido."))
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/universal_scanner/examine(mob/user)
 	. = ..()
-	. += span_notice("It has [paper_count]/[max_paper_count] available barcodes. Refill with paper.")
+	. += span_notice("Tem.[paper_count]/[max_paper_count]Códigos de barras disponíveis. Reencher com papel.")
 
 	if(scanning_mode == SCAN_SALES_TAG)
-		. += span_notice("Profit split on sale is currently set to [round(cut_multiplier*100)]%. <b>Alt-click</b> to change.")
+		. += span_notice("A divisão de lucros na venda está definida para[round(cut_multiplier*100)]%. <b>Alt-click</b>Para lamar.")
 		if(payments_acc)
-			. += span_notice("<b>Ctrl-click</b> to clear the registered account.")
+			. += span_notice("<b>Ctrl-click</b>Para limpar uma conta registrada.")
 
 	if(scanning_mode == SCAN_PRICE_TAG)
-		. += span_notice("The current custom price is set to [new_custom_price] [MONEY_SYMBOL]. <b>Right-click</b> to change.")
+		. += span_notice("O preço atual está definido como[new_custom_price] [MONEY_SYMBOL]. <b>Botão direito</b>Para lamar.")
 
 /obj/item/universal_scanner/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	switch(scanning_mode)
@@ -207,13 +207,11 @@
 		if(!parcel.sticker)
 			return
 		var/obj/item/barcode/our_code = parcel.sticker
-		to_chat(user, span_notice("Export barcode detected! This parcel, upon export, will pay out to [our_code.payments_acc.account_holder], \
-			with a [our_code.cut_multiplier * 100]% split to them (already reflected in above recorded value)."))
+		to_chat(user, span_notice("Código de barras de exportação detectado! Este pacote, após exportação, vai pagar para[our_code.payments_acc.account_holder], comum[our_code.cut_multiplier * 100]% dividido a eles (já refletidos no valor acima registrado)."))
 
 	if(istype(target, /obj/item/barcode))
 		var/obj/item/barcode/our_code = target
-		to_chat(user, span_notice("Export barcode detected! This barcode, if attached to a parcel, will pay out to [our_code.payments_acc.account_holder], \
-			with a [our_code.cut_multiplier * 100]% split to them."))
+		to_chat(user, span_notice("Código de barras de exportação detectado! Este código de barras, se anexado a um pacote, vai pagar para[our_code.payments_acc.account_holder], comum[our_code.cut_multiplier * 100]Separado para ele."))
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/scan_human = user
@@ -222,10 +220,10 @@
 			var/datum/bank_account/scanner_account = scan_human.get_bank_account()
 
 			if(!istype(get_area(cube), /area/shuttle/supply))
-				to_chat(user, span_warning("Shuttle placement not detected. Handling tip not registered."))
+				to_chat(user, span_warning("Posição do ônibus não detectada. Manuseando informações não registradas."))
 
 			else if(cube.bounty_handler_account)
-				to_chat(user, span_warning("Bank account for handling tip already registered!"))
+				to_chat(user, span_warning("Conta bancária para lidar com gorjeta já registrada!"))
 
 			else if(scanner_account)
 				cube.AddComponent(/datum/component/pricetag, list(scanner_account), cube.handler_tip, FALSE)
@@ -238,7 +236,7 @@
 						shareholder.bank_card_talk("<b>[cube]</b> was scanned in \the <b>[get_area(cube)]</b> by <b>[scan_human] ([scan_human.job])</b>.")
 
 			else
-				to_chat(user, span_warning("Bank account not detected. Handling tip not registered."))
+				to_chat(user, span_warning("Conta bancária não detectada. Manuseando informações não registradas."))
 
 /**
  * Scans an object, target, and sets its custom_price variable to new_custom_price, presenting it to the user.
@@ -247,7 +245,7 @@
 	if(isitem(target))
 		var/obj/item/selected_target = target
 		selected_target.custom_price = new_custom_price
-		to_chat(user, span_notice("You set the price of [selected_target] to [new_custom_price] [MONEY_SYMBOL]."))
+		to_chat(user, span_notice("Você estabeleceu o preço de[selected_target]Para[new_custom_price] [MONEY_SYMBOL]."))
 
 /**
  * check_menu: Checks if we are allowed to interact with a radial menu
@@ -264,7 +262,7 @@
 
 /obj/item/barcode
 	name = "barcode tag"
-	desc = "A tiny tag, associated with a crewmember's account. Attach to a wrapped item to give that account a portion of the wrapped item's profit."
+	desc = "Uma etiqueta, associada à conta de um tripulante. Anexar a um item embrulhado para dar a essa conta uma parte do lucro do item embrulhado."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "barcode"
 	w_class = WEIGHT_CLASS_TINY

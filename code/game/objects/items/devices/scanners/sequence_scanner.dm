@@ -6,7 +6,7 @@
 	worn_icon_state = "healthanalyzer"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
-	desc = "A hand-held scanner for analyzing someones gene sequence on the fly. Use on a DNA console to update the internal database."
+	desc = "Um scanner portátil para analisar a sequência genética de alguém. Use em um console de DNA para atualizar o banco de dados interno."
 	obj_flags = CONDUCTS_ELECTRICITY
 	item_flags = NOBLUDGEON
 	slot_flags = ITEM_SLOT_BELT
@@ -28,18 +28,18 @@
 
 /obj/item/sequence_scanner/examine(mob/user)
 	. = ..()
-	. += span_notice("Use primary attack to scan mutations, Secondary attack to scan genetic makeup")
+	. += span_notice("Use ataque primário para escanear mutações, ataque secundário para escanear a composição genética.")
 	if(LAZYLEN(genetic_makeup_buffer) > 0)
-		. += span_notice("It has the genetic makeup of \"[genetic_makeup_buffer["name"]]\" stored inside its buffer")
+		. += span_notice("Tem a composição genética de\"[genetic_makeup_buffer["name"]]\"Armazenado dentro de seu tampão.")
 
 /obj/item/sequence_scanner/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(istype(interacting_with, /obj/machinery/computer/dna_console))
 		var/obj/machinery/computer/dna_console/console = interacting_with
 		if(console.stored_research)
-			to_chat(user, span_notice("[name] linked to central research database."))
+			to_chat(user, span_notice("[name]Ligado ao banco de dados central de pesquisa."))
 			discovered = console.stored_research.discovered_mutations
 		else
-			to_chat(user,span_warning("No database to update from."))
+			to_chat(user,span_warning("Nenum banco de dados para atualizar."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!isliving(interacting_with))
@@ -49,13 +49,13 @@
 
 	//no scanning if its a husk or DNA-less Species
 	if (!HAS_TRAIT(interacting_with, TRAIT_GENELESS) && !HAS_TRAIT(interacting_with, TRAIT_BADDNA))
-		user.visible_message(span_notice("[user] analyzes [interacting_with]'s genetic sequence."))
-		balloon_alert(user, "sequence analyzed")
+		user.visible_message(span_notice("[user]Análises[interacting_with]É uma sequência genética."))
+		balloon_alert(user, "Sequência analisada")
 		playsound(user, 'sound/items/healthanalyzer.ogg', 50) // close enough
 		gene_scan(interacting_with, user)
 		return ITEM_INTERACT_SUCCESS
 
-	user.visible_message(span_notice("[user] fails to analyze [interacting_with]'s genetic sequence."), span_warning("[interacting_with] has no readable genetic sequence!"))
+	user.visible_message(span_notice("[user]Não consegue analisar.[interacting_with]É uma sequência genética."), span_warning("[interacting_with]Não tem sequência genética legível!"))
 	return ITEM_INTERACT_BLOCKING
 
 /obj/item/sequence_scanner/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
@@ -72,16 +72,16 @@
 
 	//no scanning if its a husk, DNA-less Species or DNA that isn't able to be copied by a changeling/disease
 	if (!HAS_TRAIT(interacting_with, TRAIT_GENELESS) && !HAS_TRAIT(interacting_with, TRAIT_BADDNA) && !HAS_TRAIT(interacting_with, TRAIT_NO_DNA_COPY))
-		user.visible_message(span_warning("[user] is scanning [interacting_with]'s genetic makeup."))
+		user.visible_message(span_warning("[user]está escaneando.[interacting_with]É a composição genética."))
 		if(!do_after(user, 3 SECONDS, interacting_with))
-			balloon_alert(user, "scan failed!")
-			user.visible_message(span_warning("[user] fails to scan [interacting_with]'s genetic makeup."))
+			balloon_alert(user, "A varredura falhou!")
+			user.visible_message(span_warning("[user]Falha na Varredura.[interacting_with]É a composição genética."))
 			return ITEM_INTERACT_BLOCKING
 		makeup_scan(interacting_with, user)
-		balloon_alert(user, "makeup scanned")
+		balloon_alert(user, "Maquiagem escaneada.")
 		return ITEM_INTERACT_SUCCESS
 
-	user.visible_message(span_notice("[user] fails to analyze [interacting_with]'s genetic makeup."), span_warning("[interacting_with] has no readable genetic makeup!"))
+	user.visible_message(span_notice("[user]Não consegue analisar.[interacting_with]É a composição genética."), span_warning("[interacting_with]Não tem uma composição genética legível!"))
 	return ITEM_INTERACT_BLOCKING
 
 /obj/item/sequence_scanner/attack_self(mob/user)
@@ -103,7 +103,7 @@
 		LAZYSET(buffer, mutation.type, GET_SEQUENCE(mutation.type))
 		active_mutations.Add(mutation.type)
 
-	to_chat(user, span_notice("Subject [target.name]'s DNA sequence has been saved to buffer."))
+	to_chat(user, span_notice("Assunto[target.name]A sequência de DNA foi guardada como tampão."))
 	for(var/mutation in buffer)
 		//highlight activated mutations
 		if(LAZYFIND(active_mutations, mutation))

@@ -10,7 +10,7 @@
 		return
 	if(HAS_TRAIT_FROM(exposed_mob, TRAIT_HUSK, CHANGELING_DRAIN) && (exposed_mob.reagents.get_reagent_amount(/datum/reagent/medicine/rezadone) + reac_volume >= 20))//Costs a little more than a normal husk
 		exposed_mob.cure_husk(CHANGELING_DRAIN)
-		exposed_mob.visible_message("<span class='nicegreen'>A rubbery liquid coats [exposed_mob]'s tissues. [exposed_mob] looks a lot healthier!")
+		exposed_mob.visible_message("<span class='nicegreen'>Um casaco líquido de borracha[exposed_mob]São lenços.[exposed_mob]Parece muito mais saudável!")
 
 /datum/reagent/medicine/regen_jelly/expose_mob(mob/living/carbon/human/exposed_mob, reac_volume)
 	. = ..()

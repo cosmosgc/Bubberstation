@@ -56,7 +56,7 @@
 	if(!is_type_in_typecache(tool, accepted_anomalies))
 		return 0
 	if(core)
-		source.balloon_alert(user, "already has core!")
+		source.balloon_alert(user, "Já tem núcleo!")
 		return ITEM_INTERACT_FAILURE
 	if(pre_insert_callback)
 		var/callback_return
@@ -73,7 +73,7 @@
 	if(!user.transferItemToLoc(tool, source))
 		return ITEM_INTERACT_FAILURE
 	core = tool
-	source.balloon_alert(user, "core inserted")
+	source.balloon_alert(user, "núcleo inserido")
 	playsound(source, 'sound/machines/click.ogg', 30, TRUE)
 	source.update_appearance(UPDATE_ICON_STATE)
 	if(core_insert_callback)
@@ -90,15 +90,15 @@
 		source.balloon_alert(user, "sem núcleo!")
 		return ITEM_INTERACT_FAILURE
 	if(!core_removable)
-		source.balloon_alert(user, "cannot remove core!")
+		source.balloon_alert(user, "Não consigo remover o núcleo!")
 	INVOKE_ASYNC(src, PROC_REF(try_remove_core), source, user, tool)
 	return ITEM_INTERACT_SUCCESS
 
 /datum/component/anomaly_locked_module/proc/try_remove_core(obj/item/mod/module/source, mob/living/user, obj/item/tool)
 	if(!do_after(user, 3 SECONDS, source))
-		source.balloon_alert(user, "interrompido!")
+		source.balloon_alert(user, "Interrompido!")
 		return
-	source.balloon_alert(user, "core removed")
+	source.balloon_alert(user, "núcleo removido")
 	core.forceMove(source.drop_location())
 	if(source.Adjacent(user) && !issilicon(user))
 		user.put_in_hands(core)
@@ -116,14 +116,14 @@
 	if(!length(accepted_anomalies))
 		return
 	if(core)
-		examine_list += span_notice("There is a [core.name] installed in it. [core_removable ? "You could remove it with a <b>screwdriver</b>..." : "Unfortunately, due to a design quirk, it's unremovable."]")
+		examine_list += span_notice("Há um[core.name]Instalado Nele.[core_removable ? "You could remove it with a <b>screwdriver</b>..." : "Unfortunately, due to a design quirk, it's unremovable."]")
 		return
 	var/list/core_list = list()
 	for(var/atom/core_path as anything in accepted_anomalies)
 		core_list += initial(core_path.name)
-	examine_list += span_notice("You need to insert \a [english_list(core_list, and_text = " or ")] for this module to function.")
+	examine_list += span_notice("Você precisa inserir\a [english_list(core_list, and_text = " or ")]para que este módulo funcione.")
 	if(!core_removable)
-		examine_list += span_notice("Due to some design quirk, once a core is inserted, it won't be removable.")
+		examine_list += span_notice("Devido a uma peculiaridade de design, uma vez inserido um núcleo, não será removível.")
 
 /datum/component/anomaly_locked_module/proc/on_update_icon_state(obj/item/mod/module/source)
 	SIGNAL_HANDLER

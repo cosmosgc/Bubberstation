@@ -117,7 +117,7 @@ GLOBAL_VAR(basketball_game)
 	notify_ghosts(
 		"Basketball minigame is about to start!",
 		source = home_hoop,
-		header = "Basketball Minigame",
+		header = "Minijogo de basquete",
 		ghost_sound = 'sound/effects/ghost2.ogg',
 		notify_volume = 75,
 	)
@@ -193,22 +193,19 @@ GLOBAL_VAR(basketball_game)
 		if(player_client)
 			player_client.prefs.safe_transfer_prefs_to(baller, is_antag = TRUE)
 		if(player_client.mob.mind)
-			baller.AddComponent( \
-				/datum/component/temporary_body, \
-				old_mind = player_client.mob.mind, \
-			)
+			baller.AddComponent( 				/datum/component/temporary_body, 				old_mind = player_client.mob.mind, 			)
 		baller.PossessByPlayer(player_key)
 		minigame_basketball_mobs |= baller
 
 		SEND_SOUND(baller, sound('sound/items/whistle/whistle.ogg', volume=30))
 		if(is_player_referee)
-			to_chat(baller, span_notice("You are a referee. Make sure the teams play fair and use your whistle to call fouls appropriately."))
+			to_chat(baller, span_notice("Você é um árbitro. Certifique-se que os times joguem limpo e use seu apito para chamar faltas apropriadamente."))
 		else
-			to_chat(baller, span_notice("You are a basketball player for the [team_name]. Score as much as you can before time runs out."))
-			to_chat(baller, span_info("LMB to pass the ball while on help intent (zero stamina cost/) - accuracy penalty when scoring)"))
-			to_chat(baller, span_info("RMB to shoot the ball ([STAMINA_COST_SHOOTING] stamina cost) - this goes over players heads"))
-			to_chat(baller, span_info("Click directly on hoop while adjacent to dunk ([STAMINA_COST_DUNKING] stamina cost)"))
-			to_chat(baller, span_info("Spinning decreases other players disarm chance against you but reduces shooting accuracy ([STAMINA_COST_SPINNING] stamina cost)"))
+			to_chat(baller, span_notice("Você é um jogador de basquete para o[team_name]Marque o máximo que puder antes que o tempo acabe."))
+			to_chat(baller, span_info("LMB para passar a bola enquanto na intenção de ajuda (zero resistência custo /) - penalidade de precisão ao marcar)"))
+			to_chat(baller, span_info("RMB para atirar a bola ([STAMINA_COST_SHOOTING]Isso passa por cima das cabeças dos jogadores."))
+			to_chat(baller, span_info("Clique diretamente no aro, enquanto adjacente ao mergulho.[STAMINA_COST_DUNKING]Esforço custo)"))
+			to_chat(baller, span_info("Girando diminui outros jogadores desarmar chance contra você, mas reduz a precisão de tiro ([STAMINA_COST_SPINNING]Esforço custo)"))
 
 /**
  * Called after the game is finished. Sends end game notifications to teams and dusts the losers.
@@ -236,17 +233,17 @@ GLOBAL_VAR(basketball_game)
 		for(var/ckey in winner_team_ckeys)
 			var/mob/living/competitor = get_mob_by_ckey(ckey)
 			if(competitor in minigame_basketball_mobs)
-				to_chat(competitor, span_hypnophrase("The game resulted in a draw!"))
+				to_chat(competitor, span_hypnophrase("O jogo resultou em um empate!"))
 	else
 		for(var/ckey in winner_team_ckeys)
 			var/mob/living/competitor = get_mob_by_ckey(ckey)
 			if(competitor in minigame_basketball_mobs)
-				to_chat(competitor, span_hypnophrase("[winner_team_name] team wins!"))
+				to_chat(competitor, span_hypnophrase("[winner_team_name]Equipe ganha!"))
 
 		for(var/ckey in loser_team_ckeys)
 			var/mob/living/competitor = get_mob_by_ckey(ckey)
 			if(competitor in minigame_basketball_mobs)
-				to_chat(competitor, span_hypnophrase("[winner_team_name] team wins!"))
+				to_chat(competitor, span_hypnophrase("[winner_team_name]Equipe ganha!"))
 				competitor.dust()
 
 	addtimer(CALLBACK(src, PROC_REF(end_game)), 20 SECONDS) // give winners time for a victory lap
@@ -306,8 +303,8 @@ GLOBAL_VAR(basketball_game)
 	//small message about not getting into this game for clarity on why they didn't get in
 	for(var/unpicked in possible_keys)
 		var/client/unpicked_client = GLOB.directory[unpicked]
-		to_chat(unpicked_client, span_danger("Sorry, the starting basketball game has too many players and you were not picked."))
-		to_chat(unpicked_client, span_warning("You're still signed up, getting messages from the current round, and have another chance to join when the one starting now finishes."))
+		to_chat(unpicked_client, span_danger("Desculpe, o jogo de basquete tem muitos jogadores e você não foi escolhido."))
+		to_chat(unpicked_client, span_warning("Você ainda está se inscrevendo, recebendo mensagens da rodada atual, e tem outra chance de se juntar quando a que começa agora terminar."))
 
 	prepare_game(filtered_keys)
 
@@ -378,7 +375,7 @@ GLOBAL_VAR(basketball_game)
 
 	var/client/ghost_client = user.client
 	if(!SSticker.HasRoundStarted())
-		to_chat(ghost_client, span_warning("Wait for the round to start."))
+		to_chat(ghost_client, span_warning("Espere a rodada começar."))
 		return
 
 	switch(action)
@@ -386,19 +383,19 @@ GLOBAL_VAR(basketball_game)
 			if(GLOB.basketball_signup[ghost_client.ckey] || GLOB.basketball_bad_signup[ghost_client.ckey])
 				GLOB.basketball_signup -= ghost_client.ckey
 				GLOB.basketball_bad_signup -= ghost_client.ckey
-				to_chat(ghost_client, span_notice("You unregister from basketball."))
+				to_chat(ghost_client, span_notice("Você não tem registro do basquete."))
 			else
 				GLOB.basketball_signup[ghost_client.ckey] = TRUE
-				to_chat(ghost_client, span_notice("You sign up for basketball."))
+				to_chat(ghost_client, span_notice("Você se inscreve para o basquete."))
 
 			check_signups()
 			return TRUE
 		if("basketball_start")
 			if(!GLOB.basketball_signup[ghost_client.ckey])
-				to_chat(ghost_client, span_notice("You must sign up to start the game."))
+				to_chat(ghost_client, span_notice("Você deve se inscrever para começar o jogo."))
 				return
 			if(current_map)
-				to_chat(ghost_client, span_notice("Wait for current basketball game to finish."))
+				to_chat(ghost_client, span_notice("Espere o atual jogo de basquete terminar."))
 				return
 			try_autostart()
 			return TRUE

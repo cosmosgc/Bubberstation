@@ -11,9 +11,8 @@
 	id = "organ_set_bonus_fish"
 	tick_interval = 1 SECONDS
 	organs_needed = 3
-	bonus_activate_text = span_notice("Fish DNA is deeply infused with you! While wet, you crawl faster, are slippery, cannot slip, and it takes longer to dry out. \
-		You're also resistant to high pressure, better at fishing, but less resilient when dry, especially against burns.")
-	bonus_deactivate_text = span_notice("You no longer feel as fishy. The moisture around your body begins to dissipate faster...")
+	bonus_activate_text = span_notice("DNA de peixe está profundamente infundido em você! Enquanto molhado, você rasteja mais rápido, é escorregadio, não pode escorregar, e leva mais tempo para secar. Você também é resistente à alta pressão, melhor na pesca, mas menos resistente quando seco, especialmente contra queimaduras.")
+	bonus_deactivate_text = span_notice("Você não se sente mais suspeito. A umidade em torno de seu corpo começa a dissipar-se mais rápido...")
 	bonus_traits = list(
 		TRAIT_RESISTHIGHPRESSURE,
 		TRAIT_EXPERT_FISHER,
@@ -212,7 +211,7 @@
 ///Tail for fish DNA-infused spacemen. It provides a speed buff while in water. It's also needed for the crawl speed bonus once the threshold is reached.
 /obj/item/organ/tail/fish
 	name = "fish tail"
-	desc = "A severed tail from some sort of marine creature... or a fish-infused spaceman. It's smooth, faintly wet and definitely not flopping."
+	desc = "Uma cauda cortada de algum tipo de criatura marinha... ou um astronauta infundido em peixes. É suave, ligeiramente molhado e definitivamente não falha."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/organ/tail/fish"
 	post_init_icon_state = "fish_tail"
@@ -314,7 +313,7 @@
 ///Lungs that replace the need of oxygen with water vapor or being wet
 /obj/item/organ/lungs/fish
 	name = "mutated gills"
-	desc = "Fish DNA infused on what once was a normal pair of lungs that now require spacemen to breathe water vapor, or keep themselves covered in water."
+	desc = "DNA de peixe infundido no que já foi um par normal de pulmões que agora requerem homens do espaço para respirar vapor de água, ou manter-se cobertos de água."
 	icon = 'icons/obj/medical/organs/infuser_organs.dmi'
 	icon_state = "gills"
 	breath_noise = "the dribbling of water"
@@ -401,7 +400,7 @@
 /// Subtype of gills that allow the mob to optionally breathe water.
 /obj/item/organ/lungs/fish/amphibious
 	name = "mutated semi-aquatic lungs"
-	desc = "DNA from an amphibious or semi-aquatic creature infused on a pair lungs. Enjoy breathing underwater without drowning outside water."
+	desc = "DNA de uma criatura anfíbia ou semi-aquática infundida em dois pulmões. Aproveite respirar debaixo d'água sem se afogar fora da água."
 	safe_oxygen_min = /obj/item/organ/lungs::safe_oxygen_min
 	has_gills = FALSE
 	/**
@@ -439,7 +438,7 @@
 ///Fish infuser organ, allows mobs to safely eat raw fish.
 /obj/item/organ/stomach/fish
 	name = "mutated fish-stomach"
-	desc = "Fish DNA infused into a stomach now permeated by the faint smell of salt and slightly putrefied fish."
+	desc = "DNA de peixe infundido em um estômago agora permeado pelo fraco cheiro de sal e peixe ligeiramente putrefato."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/organ/stomach/fish"
 	post_init_icon_state = "stomach"
@@ -465,7 +464,7 @@
 ///Organ from fish with the ink production trait. Doesn't count toward the organ set bonus but is buffed once it's active.
 /obj/item/organ/tongue/inky
 	name = "ink-secreting tongue"
-	desc = "A black tongue linked to two swollen black sacs underneath the palate."
+	desc = "Uma língua negra ligada a dois sacos negros inchados sob o palato."
 	icon = 'icons/obj/medical/organs/infuser_organs.dmi'
 	icon_state = "inky_tongue"
 	actions_types = list(/datum/action/cooldown/ink_spit)
@@ -478,28 +477,7 @@
 	 *   - Apply a low pass filter with its cutoff at the target frequency
 	 *   - Boost frequencies very close to the target frequency
 	 */
-	voice_filter = "\
-	rubberband=pitch='\
-		ifnot(%BLIPS%,\
-			2-(%PITCH%+if(%FEMALE%,4))/16\
-			,1)'\
-	:formant=preserved,\
-	highpass=f=1000:t=s:w=24,\
-	equalizer=f=1200:g=15,\
-	equalizer=f=4350:g=-15,\
-	highshelf=f=870:g=1,\
-	afftfilt=\
-		real='\
-			st(0,(b+0.5)/nb*sr);\
-			st(1,3000+1500*sin(9.3*2*PI*pts));\
-			st(2,ld(0)/ld(1));\
-			re*(1-ld(2)^2+2*gauss(log(ld(2)+1)))'\
-		:imag='\
-			st(0,(b+0.5)/nb*sr);\
-			st(1,3000+1500*sin(9.3*2*PI*pts));\
-			st(2,ld(0)/ld(1));\
-			im*(1-ld(2)^2+2*gauss(log(ld(2)+1)))'\
-		:win_size=1024"
+	voice_filter = "	rubberband=pitch='		ifnot(%BLIPS%,			2-(%PITCH%+if(%FEMALE%,4))/16			,1)'	:formant=preserved,	highpass=f=1000:t=s:w=24,	equalizer=f=1200:g=15,	equalizer=f=4350:g=-15,	highshelf=f=870:g=1,	afftfilt=		real='			st(0,(b+0.5)/nb*sr);			st(1,3000+1500*sin(9.3*2*PI*pts));			st(2,ld(0)/ld(1));			re*(1-ld(2)^2+2*gauss(log(ld(2)+1)))'		:imag='			st(0,(b+0.5)/nb*sr);			st(1,3000+1500*sin(9.3*2*PI*pts));			st(2,ld(0)/ld(1));			im*(1-ld(2)^2+2*gauss(log(ld(2)+1)))'		:win_size=1024"
 
 	// Seafood instead of meat, because it's a fish organ
 	foodtype_flags = RAW | SEAFOOD | GORE
@@ -520,7 +498,7 @@
 ///Organ from fish with the toxic trait. Allows the user to use tetrodotoxin as a healing chem instead of a toxin.
 /obj/item/organ/liver/fish
 	name = "mutated fish-liver"
-	desc = "Fish DNA infused into a stomach that now uses tetrodotoxin as regenerative material. It also processes alcohol quite well."
+	desc = "DNA de peixe infundido em um estômago que agora usa tetrodotoxina como material regenerativo. Também processa bem o álcool."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/organ/liver/fish"
 	post_init_icon_state = "liver"

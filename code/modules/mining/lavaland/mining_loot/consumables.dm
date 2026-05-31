@@ -2,7 +2,7 @@
 
 /obj/item/disk/design_disk/modkit_disc
 	name = "KA Mod Disk"
-	desc = "A design disc containing the design for a unique kinetic accelerator modkit. It's compatible with a research console."
+	desc = "Um disco de design contendo o projeto de um único acelerador cinético modkit. É compatível com um console de pesquisa."
 	icon_state = "datadisk1"
 	var/modkit_design = /datum/design/unique_modkit
 
@@ -29,7 +29,7 @@
 // Wisp Lantern
 /obj/item/wisp_lantern
 	name = "spooky lantern"
-	desc = "This lantern gives off no light, but is home to a friendly wisp."
+	desc = "Esta lanterna não dá luz, mas é o lar de um wisp amigável."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "lantern-blue-on"
 	inhand_icon_state = "lantern-blue-on"
@@ -41,20 +41,20 @@
 	. = ..()
 
 	if(!wisp)
-		to_chat(user, span_warning("The wisp has gone missing!"))
+		to_chat(user, span_warning("O wisp sumiu!"))
 		icon_state = "lantern-blue"
 		inhand_icon_state = "lantern-blue"
 		return
 
 	if(wisp.loc == src)
-		to_chat(user, span_notice("You release the wisp. It begins to bob around your head."))
+		to_chat(user, span_notice("Você solta o wisp. Começa a enrolar sua cabeça."))
 		icon_state = "lantern-blue"
 		inhand_icon_state = "lantern-blue"
 		wisp.orbit(user, 20)
 		SSblackbox.record_feedback("tally", "wisp_lantern", 1, "Freed")
 		return
 
-	to_chat(user, span_notice("You return the wisp to the lantern."))
+	to_chat(user, span_notice("Você devolve o fio para a lanterna."))
 	icon_state = "lantern-blue-on"
 	inhand_icon_state = "lantern-blue-on"
 	wisp.forceMove(src)
@@ -69,12 +69,12 @@
 		if(wisp.loc == src)
 			qdel(wisp)
 		else
-			wisp.visible_message(span_notice("[wisp] has a sad feeling for a moment, then it passes."))
+			wisp.visible_message(span_notice("[wisp]tem um sentimento triste por um momento, então passa."))
 	return ..()
 
 /obj/effect/wisp
 	name = "friendly wisp"
-	desc = "Happy to light your way."
+	desc = "Fico feliz em descobrir seu caminho."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "orb"
 	light_system = OVERLAY_LIGHT
@@ -92,7 +92,7 @@
 		return
 	var/mob/being = thing
 	RegisterSignal(being, COMSIG_MOB_UPDATE_SIGHT, PROC_REF(update_user_sight))
-	to_chat(being, span_notice("The wisp enhances your vision."))
+	to_chat(being, span_notice("O wisp melhora sua visão."))
 	ADD_TRAIT(being, TRAIT_THERMAL_VISION, REF(src))
 	being.update_sight()
 
@@ -101,7 +101,7 @@
 		return ..()
 	var/mob/being = orbit_target
 	UnregisterSignal(being, COMSIG_MOB_UPDATE_SIGHT)
-	to_chat(being, span_notice("Your vision returns to normal."))
+	to_chat(being, span_notice("Sua visão volta ao normal."))
 	REMOVE_TRAIT(being, TRAIT_THERMAL_VISION, REF(src))
 	being.update_sight()
 	return ..()
@@ -115,7 +115,7 @@
 
 /obj/item/jacobs_ladder
 	name = "jacob's ladder"
-	desc = "A celestial ladder that violates the laws of physics."
+	desc = "Uma escada celestial que viola as leis da física."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "ladder00"
 
@@ -123,7 +123,7 @@
 	var/turf/our_loc = get_turf(src)
 	var/ladder_x = our_loc.x
 	var/ladder_y = our_loc.y
-	to_chat(user, span_notice("You unfold the ladder. It extends much farther than you were expecting."))
+	to_chat(user, span_notice("Você abre a escada. Ele se estende muito mais longe do que você esperava."))
 	var/last_ladder = null
 	for(var/i in 1 to world.maxz)
 		if(is_centcom_level(i) || is_reserved_level(i) || is_away_level(i))
@@ -135,24 +135,24 @@
 // Inherit from unbreakable but don't set ID, to suppress the default Z linkage
 /obj/structure/ladder/unbreakable/jacob
 	name = "jacob's ladder"
-	desc = "An indestructible celestial ladder that violates the laws of physics."
+	desc = "Uma escada celestial indestrutível que viola as leis da física."
 
 // Book of Babel
 
 /obj/item/book_of_babel
 	name = "Book of Babel"
-	desc = "An ancient tome written in countless tongues."
+	desc = "Um antigo tomo escrito em inúmeras línguas."
 	icon = 'icons/obj/service/library.dmi'
 	icon_state = "book1"
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/book_of_babel/attack_self(mob/user)
 	if(user.is_blind())
-		to_chat(user, span_warning("You are blind and can't read anything!"))
+		to_chat(user, span_warning("Você é cego e não sabe ler nada!"))
 		return FALSE
 	if(!user.can_read(src))
 		return FALSE
-	to_chat(user, span_notice("You flip through the pages of the book, quickly and conveniently learning every language in existence. Somewhat less conveniently, the aging book crumbles to dust in the process. Whoops."))
+	to_chat(user, span_notice("Você revira as páginas do livro, rapidamente e convenientemente aprendendo cada língua existente. Um pouco menos convenientemente, o livro de envelhecimento se desfaz em pó no processo. Opa."))
 	cure_curse_of_babel(user) // removes tower of babel if we have it
 	user.grant_all_languages(source = LANGUAGE_BABEL)
 	user.remove_blocked_language(GLOB.all_languages, source = LANGUAGE_ALL)
@@ -178,12 +178,12 @@
 
 /obj/item/reagent_containers/cup/bottle/potion/flight
 	name = "strange elixir"
-	desc = "A flask with an almost-holy aura emitting from it. The label on the bottle says: 'erqo'hyy tvi'rf lbh jv'atf'."
+	desc = "Um frasco com uma aura quase sagrada que emite dele. O rótulo na garrafa diz: 'erqo'hyy tvi'rf lbh jv'atf'."
 	list_reagents = list(/datum/reagent/flightpotion = 5)
 
 /datum/reagent/flightpotion
 	name = "Flight Potion"
-	description = "Strange mutagenic compound of unknown origins."
+	description = "Estranho composto mutagênico de origens desconhecidas."
 	color = "#976230"
 
 /datum/reagent/flightpotion/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume, show_message = TRUE)
@@ -196,7 +196,7 @@
 	var/obj/item/bodypart/chest/chest = exposed_human.get_bodypart(BODY_ZONE_CHEST)
 	if(!chest.wing_types || reac_volume < 5 || !exposed_human.dna)
 		if((methods & INGEST) && show_message)
-			to_chat(exposed_human, span_notice("<i>You feel nothing but a terrible aftertaste.</i>"))
+			to_chat(exposed_human, span_notice("<i>Você não sente nada além de um mau gosto.</i>"))
 		return
 	var/had_wings = exposed_human.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS)
 	var/wing_type = get_wing_choice(exposed_human, chest)
@@ -205,9 +205,9 @@
 	var/obj/item/organ/wings/functional/wings = new wing_type()
 	wings.Insert(exposed_human)
 	if(had_wings)
-		to_chat(exposed_human, span_userdanger("A terrible pain travels down your back as your wings change shape!"))
+		to_chat(exposed_human, span_userdanger("Uma dor terrível viaja pelas costas enquanto suas asas mudam de forma!"))
 	else
-		to_chat(exposed_human, span_userdanger("A terrible pain travels down your back as wings burst out!"))
+		to_chat(exposed_human, span_userdanger("Uma dor terrível viaja pelas suas costas enquanto as asas explodem!"))
 	playsound(exposed_human.loc, 'sound/items/poster/poster_ripped.ogg', 50, TRUE, -1)
 	exposed_human.apply_damage(20, def_zone = BODY_ZONE_CHEST, forced = TRUE, wound_bonus = CANT_WOUND)
 	exposed_human.emote("scream")

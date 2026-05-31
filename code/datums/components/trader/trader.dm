@@ -383,7 +383,7 @@ Can accept both a type path, and an instance of a datum. Type path has priority.
 		trader.say(trader_data.return_trader_phrase(TRADER_NOT_BUYING_ANYTHING))
 		return
 
-	var/list/buy_info = list(span_green("I'm willing to buy the following:"))
+	var/list/buy_info = list(span_green("Estou disposto a comprar o seguinte:"))
 
 	var/list/product_info
 	for(var/obj/item/thing as anything in wanted_items)
@@ -392,7 +392,7 @@ Can accept both a type path, and an instance of a datum. Type path has priority.
 		if(product_info[TRADER_PRODUCT_INFO_QUANTITY] <= 0) //Zero demand
 			buy_info += span_notice("&bull; [span_red("(DOESN'T WANT MORE)")] [initial(thing.name)] for [product_info[TRADER_PRODUCT_INFO_PRICE]] [trader_data.currency_name][product_info[TRADER_PRODUCT_INFO_PRICE_MOD_DESCRIPTION]]; willing to buy [span_red("[tern_op_result]")] more.")
 		else
-			buy_info += span_notice("&bull; [initial(thing.name)] for [product_info[TRADER_PRODUCT_INFO_PRICE]] [trader_data.currency_name][product_info[TRADER_PRODUCT_INFO_PRICE_MOD_DESCRIPTION]]; willing to buy [span_green("[tern_op_result]")]")
+			buy_info += span_notice("&bull;[initial(thing.name)]para[product_info[TRADER_PRODUCT_INFO_PRICE]] [trader_data.currency_name][product_info[TRADER_PRODUCT_INFO_PRICE_MOD_DESCRIPTION]]? disposto a comprar[span_green("[tern_op_result]")]")
 
 	to_chat(customer, boxed_message(buy_info.Join("\n")))
 
@@ -404,7 +404,7 @@ Can accept both a type path, and an instance of a datum. Type path has priority.
 	if(!length(products))
 		trader.say(trader_data.return_trader_phrase(TRADER_NOT_SELLING_ANYTHING))
 		return
-	var/list/sell_info = list(span_green("I'm currently selling the following:"))
+	var/list/sell_info = list(span_green("Estou vendendo o seguinte:"))
 	var/list/product_info
 	for(var/obj/item/thing as anything in products)
 		product_info = products[thing]
@@ -412,7 +412,7 @@ Can accept both a type path, and an instance of a datum. Type path has priority.
 		if(product_info[TRADER_PRODUCT_INFO_QUANTITY] <= 0) //Out of stock
 			sell_info += span_notice("&bull; [span_red("(OUT OF STOCK)")] [initial(thing.name)] for [product_info[TRADER_PRODUCT_INFO_PRICE]] [trader_data.currency_name]; [span_red("[tern_op_result]")] left in stock")
 		else
-			sell_info += span_notice("&bull; [initial(thing.name)] for [product_info[TRADER_PRODUCT_INFO_PRICE]] [trader_data.currency_name]; [span_green("[tern_op_result]")] left in stock")
+			sell_info += span_notice("&bull;[initial(thing.name)]para[product_info[TRADER_PRODUCT_INFO_PRICE]] [trader_data.currency_name]; [span_green("[tern_op_result]")]Deixado em estoque")
 	to_chat(customer, boxed_message(sell_info.Join("\n")))
 
 ///Sets quantity of all products to initial(quanity); this proc is currently called during initialize
@@ -427,10 +427,10 @@ Can accept both a type path, and an instance of a datum. Type path has priority.
 /datum/component/trader/proc/can_trade(mob/customer)
 	var/mob/living/trader = parent
 	if(trader.combat_mode)
-		trader.balloon_alert(customer, "in combat!")
+		trader.balloon_alert(customer, "Em combate!")
 		return FALSE
 	if(IS_DEAD_OR_INCAP(trader))
-		trader.balloon_alert(customer, "indisposed!")
+		trader.balloon_alert(customer, "Indisposto!")
 		return FALSE
 	return TRUE
 

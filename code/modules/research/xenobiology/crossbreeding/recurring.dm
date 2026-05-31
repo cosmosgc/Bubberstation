@@ -5,7 +5,7 @@ Recurring extracts:
 */
 /obj/item/slimecross/recurring
 	name = "recurring extract"
-	desc = "A tiny, glowing core, wrapped in several layers of goo."
+	desc = "Um pequeno núcleo brilhante, envolto em várias camadas de gosma."
 	effect = "recurring"
 	icon_state = "recurring"
 	abstract_type = /obj/item/slimecross/recurring
@@ -17,7 +17,7 @@ Recurring extracts:
 /obj/item/slimecross/recurring/Initialize(mapload)
 	. = ..()
 	extract = new extract_type(src.loc)
-	visible_message(span_notice("[src] wraps a layer of goo around itself!"))
+	visible_message(span_notice("[src]Envolva uma cama de goo ao redor de si mesmo!"))
 	extract.name = name
 	extract.desc = desc
 	extract.icon = icon
@@ -34,7 +34,7 @@ Recurring extracts:
 		extract.extract_uses++
 		cooldown = max_cooldown
 	else if(extract.extract_uses <= 0)
-		extract.visible_message(span_warning("The light inside [extract] flickers and dies out."))
+		extract.visible_message(span_warning("Uma luz interior[extract]Brilha e morte."))
 		extract.desc = "A tiny, inert core, bleeding dark, cerulean-colored goo."
 		extract.icon_state = "prismatic"
 		qdel(src)

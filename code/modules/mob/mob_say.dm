@@ -7,7 +7,7 @@
 	set instant = TRUE
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("A fala está desativada."))
 		return
 
 	//queue this message because verbs are scheduled to process after SendMaps in the tick and speech is pretty expensive when it happens.
@@ -22,7 +22,7 @@
 	set instant = TRUE
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("A fala está desativada."))
 		return
 
 	if(message)
@@ -45,7 +45,7 @@
 	set desc = "Perform a custom emote. Leave blank to pick between an audible or a visible emote (Defaults to visible)."
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("A fala está desativada."))
 		return
 
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
@@ -63,7 +63,7 @@
 
 	if(filter_result && !filterproof)
 		//The filter warning message shows the sanitized message though.
-		to_chat(src, span_warning("That message contained a word prohibited in IC chat! Consider reviewing the server rules."))
+		to_chat(src, span_warning("Essa mensagem conta uma palavra proibida no bate-papo do IC! Considere Rever como Regras do Servidor."))
 		to_chat(src, span_warning("\"[message]\""))
 		REPORT_CHAT_FILTER_TO_USER(src, filter_result)
 		log_filter("IC", message, filter_result)
@@ -71,7 +71,7 @@
 		return FALSE
 
 	if(soft_filter_result && !filterproof)
-		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"Sua mensagem contém\"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\"Tem certeza que quer dizer?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 			SSblackbox.record_feedback("tally", "soft_ic_blocked_words", 1, LOWER_TEXT(config.soft_ic_filter_regex.match))
 			log_filter("Soft IC", message, filter_result)
 			return FALSE
@@ -82,7 +82,7 @@
 
 	if(client && !(ignore_spam || forced))
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, span_danger("You cannot speak IC (muted)."))
+			to_chat(src, span_danger("Você não pode falar CI."))
 			return FALSE
 		if(client.handle_spam_prevention(message, MUTE_IC))
 			return FALSE
@@ -95,9 +95,9 @@
 
 	if(!..()) // the can_speak check
 		if(HAS_MIND_TRAIT(src, TRAIT_MIMING))
-			to_chat(src, span_green("Your vow of silence prevents you from speaking!"))
+			to_chat(src, span_green("Seu voto de silêncio o impede de falar!"))
 		else
-			to_chat(src, span_warning("You find yourself unable to speak!"))
+			to_chat(src, span_warning("Você não consegue falar!"))
 		return FALSE
 
 	return TRUE
@@ -120,12 +120,12 @@
 	var/alt_name = ""
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("A fala está desativada."))
 		return
 
 	//SKYRAT EDIT ADDITION
 	if(!GLOB.dchat_allowed && !check_rights(R_ADMIN, FALSE))
-		to_chat(src, "<span class='danger'>Dead chat is currently muted.</span>")
+		to_chat(src, "<span class='danger'>O bate-papo está mudo.</span>")
 		return
 	//SKYRAT EDIT END
 
@@ -134,17 +134,17 @@
 		return
 
 	if(jb)
-		to_chat(src, span_danger("You have been banned from deadchat."))
+		to_chat(src, span_danger("Você foi banido do bate-papo."))
 		return
 
 	if (src.client)
 		if(src.client.prefs.muted & MUTE_DEADCHAT)
-			to_chat(src, span_danger("You cannot talk in deadchat (muted)."))
+			to_chat(src, span_danger("Você não pode falar em conversa fiada."))
 			return
 
 		if(SSlag_switch.measures[SLOWMODE_SAY] && !HAS_TRAIT(src, TRAIT_BYPASS_MEASURES) && src == usr)
 			if(!COOLDOWN_FINISHED(client, say_slowmode))
-				to_chat(src, span_warning("Message not sent due to slowmode. Please wait [SSlag_switch.slowmode_cooldown/10] seconds between messages.\n\"[message]\""))
+				to_chat(src, span_warning("Mensagem não enviada devido ao modo lento. Por favor, espere.[SSlag_switch.slowmode_cooldown/10]Segundos entre como mensagens.\n\"[message]\""))
 				return
 			COOLDOWN_START(client, say_slowmode, SSlag_switch.slowmode_cooldown)
 

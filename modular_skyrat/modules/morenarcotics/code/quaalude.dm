@@ -6,7 +6,7 @@
 
 /datum/reagent/drug/quaalude
 	name = "Quaalude"
-	description = "Relaxes the user, putting them in a hypnotic, drugged state. A favorite drug of kids from Brooklyn." //THAT WAS THE BEST FUCKIN DRUG EVER MADE
+	description = "Relaxa o usuário, colocando-os em um estado hipnótico, drogado. Uma droga favorita de crianças do Brooklyn." //THAT WAS THE BEST FUCKIN DRUG EVER MADE
 	color = "#ffe669"
 	overdose_threshold = 20
 	ph = 8
@@ -35,7 +35,7 @@
 		affected_carbon.emote(pick("laugh", "drool"))
 
 	if(SPT_PROB(1, seconds_per_tick) && !HAS_TRAIT(affected_carbon, TRAIT_FLOORED))
-		affected_carbon.visible_message(span_danger("[affected_carbon]'s legs become too weak to carry their own weight!"))
+		affected_carbon.visible_message(span_danger("[affected_carbon]As pernas ficam muito fracas para carregar seu próprio peso!"))
 		affected_carbon.Knockdown(90, TRUE)
 		affected_carbon.drop_all_held_items()
 

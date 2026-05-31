@@ -1,8 +1,7 @@
 // Surgical analog to manual dislocation treatment
 /datum/surgery_operation/limb/repair_dislocation
 	name = "reset dislocation"
-	desc = "Reset a dislocated bone in a patient's limb. \
-		Similar to the field procedure, but quicker and safer due to being performed in a controlled environment."
+	desc = "Reset um osso deslocado no membro de um paciente. Semelhante ao procedimento de campo, mas mais rápido e seguro devido a ser realizado em um ambiente controlado."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED | OPERATION_AFFECTS_MOOD | OPERATION_STANDING_ALLOWED | OPERATION_IGNORE_CLOTHES
 	implements = list(
 		TOOL_BONESET = 1,
@@ -34,9 +33,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to reset the dislocation in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to reset the dislocation in [FORMAT_LIMB_OWNER(limb)] with [tool]."),
-		span_notice("[surgeon] begins to reset the dislocation in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a reiniciar o deslocamento em[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]Começa a reiniciar a luxação em[FORMAT_LIMB_OWNER(limb)]com[tool]."),
+		span_notice("[surgeon]Começa a reiniciar a luxação em[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "Your [limb.plaintext_zone] aches with pain!")
 
@@ -48,9 +47,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You successfully reset the dislocation in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] successfully resets the dislocation in [FORMAT_LIMB_OWNER(limb)]!"),
-		span_notice("[surgeon] successfully resets the dislocation in [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você reiniciou com sucesso a luxação.[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]com sucesso reinicia a luxação em[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("[surgeon]com sucesso reinicia a luxação em[FORMAT_LIMB_OWNER(limb)]!"),
 	)
 	display_pain(limb.owner, "Your [limb.plaintext_zone] feels much better now!")
 
@@ -58,16 +57,16 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You fail to reset the dislocation in [FORMAT_LIMB_OWNER(limb)], causing further damage!"),
-		span_notice("[surgeon] fails to reset the dislocation in [FORMAT_LIMB_OWNER(limb)], causing further damage!"),
-		span_notice("[surgeon] fails to reset the dislocation in [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você não redefiniu a luxação.[FORMAT_LIMB_OWNER(limb)], causando mais danos!"),
+		span_notice("[surgeon]Falha em reiniciar a luxação.[FORMAT_LIMB_OWNER(limb)], causando mais danos!"),
+		span_notice("[surgeon]Falha em reiniciar a luxação.[FORMAT_LIMB_OWNER(limb)]!"),
 	)
 	display_pain(limb.owner, "The pain in your [limb.plaintext_zone] intensifies!")
 	limb.receive_damage(25, damage_source = tool)
 
 /datum/surgery_operation/limb/repair_hairline
 	name = "repair hairline fracture"
-	desc = "Mend a hairline fracture in a patient's bone."
+	desc = "Conserte uma fratura no osso de um paciente."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_BONESET = 1,
@@ -100,9 +99,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to repair the fracture in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to repair the fracture in [FORMAT_LIMB_OWNER(limb)] with [tool]."),
-		span_notice("[surgeon] begins to repair the fracture in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a reparar a fratura em[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]Começa a reparar a fratura em[FORMAT_LIMB_OWNER(limb)]com[tool]."),
+		span_notice("[surgeon]Começa a reparar a fratura em[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "Your [limb.plaintext_zone] aches with pain!")
 
@@ -113,14 +112,14 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You successfully repair the fracture in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] successfully repairs the fracture in [FORMAT_LIMB_OWNER(limb)]!"),
-		span_notice("[surgeon] successfully repairs the fracture in [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você reparou com sucesso a fratura em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Conserta com sucesso a fratura em[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("[surgeon]Conserta com sucesso a fratura em[FORMAT_LIMB_OWNER(limb)]!"),
 	)
 
 /datum/surgery_operation/limb/reset_compound
 	name = "reset compound fracture"
-	desc = "Reset a compound fracture in a patient's bone, preparing it for proper healing."
+	desc = "Reinicie uma fratura exposta no osso de um paciente, preparando-o para uma cura adequada."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_BONESET = 1,
@@ -154,9 +153,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to reset the bone in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to reset the bone in [FORMAT_LIMB_OWNER(limb)] with [tool]."),
-		span_notice("[surgeon] begins to reset the bone in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a reiniciar o osso.[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]começa a reiniciar o osso.[FORMAT_LIMB_OWNER(limb)]com[tool]."),
+		span_notice("[surgeon]começa a reiniciar o osso.[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "The aching pain in your [limb.plaintext_zone] is overwhelming!")
 
@@ -167,14 +166,14 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You successfully reset the bone in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] successfully resets the bone in [FORMAT_LIMB_OWNER(limb)] with [tool]!"),
-		span_notice("[surgeon] successfully resets the bone in [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você reiniciou o osso com sucesso.[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Repõe com sucesso o osso.[FORMAT_LIMB_OWNER(limb)]com[tool]!"),
+		span_notice("[surgeon]Repõe com sucesso o osso.[FORMAT_LIMB_OWNER(limb)]!"),
 	)
 
 /datum/surgery_operation/limb/repair_compound
 	name = "repair compound fracture"
-	desc = "Mend a compound fracture in a patient's bone."
+	desc = "Conserte uma fratura exposta no osso de um paciente."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		/obj/item/stack/medical/bone_gel = 1,
@@ -207,9 +206,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to repair the fracture in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to repair the fracture in [FORMAT_LIMB_OWNER(limb)] with [tool]."),
-		span_notice("[surgeon] begins to repair the fracture in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a reparar a fratura em[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]Começa a reparar a fratura em[FORMAT_LIMB_OWNER(limb)]com[tool]."),
+		span_notice("[surgeon]Começa a reparar a fratura em[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "The aching pain in your [limb.plaintext_zone] is overwhelming!")
 
@@ -219,14 +218,14 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You successfully repair the fracture in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] successfully repairs the fracture in [FORMAT_LIMB_OWNER(limb)] with [tool]!"),
-		span_notice("[surgeon] successfully repairs the fracture in [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você reparou com sucesso a fratura em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Conserta com sucesso a fratura em[FORMAT_LIMB_OWNER(limb)]com[tool]!"),
+		span_notice("[surgeon]Conserta com sucesso a fratura em[FORMAT_LIMB_OWNER(limb)]!"),
 	)
 
 /datum/surgery_operation/limb/prepare_cranium_repair
 	name = "discard skull debris"
-	desc = "Clear away bone fragments and debris from a patient's cranial fissure in preparation for repair."
+	desc = "Limpar fragmentos ósseos e detritos da fissura craniana de um paciente em preparação para reparo."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_HEMOSTAT = 1,
@@ -258,9 +257,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to discard the smaller skull debris in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to discard the smaller skull debris in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to poke around in [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("Você começa a descartar os restos menores do crânio.[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]Começa a descartar os restos menores do crânio.[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]Começa a bisbilhotar[FORMAT_LIMB_OWNER(limb)]..."),
 	)
 	display_pain(limb.owner, "Your brain feels like it's getting stabbed by little shards of glass!")
 
@@ -271,7 +270,7 @@
 
 /datum/surgery_operation/limb/repair_cranium
 	name = "repair cranium"
-	desc = "Mend a cranial fissure in a patient's skull."
+	desc = "Conserte uma fissura craniana no crânio de um paciente."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		/obj/item/stack/medical/bone_gel = 1,
@@ -303,9 +302,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to repair [limb.owner || limb]'s skull as best you can..."),
-		span_notice("[surgeon] begins to repair [limb.owner || limb]'s skull with [tool]."),
-		span_notice("[surgeon] begins to repair [limb.owner || limb]'s skull."),
+		span_notice("Você começa a reparar[limb.owner || limb]O crânio o melhor que puder..."),
+		span_notice("[surgeon]começa a reparar[limb.owner || limb]O crânio com[tool]."),
+		span_notice("[surgeon]começa a reparar[limb.owner || limb]É o crânio."),
 	)
 
 	display_pain(limb.owner, "You can feel pieces of your skull rubbing against your brain!")
@@ -317,7 +316,7 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You successfully repair [limb.owner || limb]'s skull."),
-		span_notice("[surgeon] successfully repairs [limb.owner || limb]'s skull with [tool]."),
-		span_notice("[surgeon] successfully repairs [limb.owner || limb]'s skull.")
+		span_notice("Você reparou com sucesso.[limb.owner || limb]É o crânio."),
+		span_notice("[surgeon]Consertar com sucesso.[limb.owner || limb]O crânio com[tool]."),
+		span_notice("[surgeon]Consertar com sucesso.[limb.owner || limb]É o crânio.")
 	)

@@ -120,10 +120,10 @@ export function Upload(props) {
                 fluid
                 tooltip={
                   active_newscaster_cooldown
-                    ? "Send your book to the station's newscaster's channel."
-                    : 'Please wait ' +
+                    ? "Envie seu livro para o canal da emissora."
+                    : 'Por favor, espere.' +
                       cooldown_string +
-                      ' before sending your book to the newscaster!'
+                      'Antes de enviar seu livro para o repórter!'
                 }
                 tooltipPosition="top"
                 icon="newspaper"

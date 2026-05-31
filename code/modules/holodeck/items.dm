@@ -9,7 +9,7 @@
 
 /obj/item/melee/energy/sword/holographic
 	name = "holographic energy sword"
-	desc = "May the force be with you. Sorta."
+	desc = "Que a força esteja com você. Mais ou menos."
 	damtype = STAMINA
 	throw_speed = 2
 	block_chance = 0
@@ -33,7 +33,7 @@
 	sword_color_icon = "red"
 
 /obj/item/toy/cards/deck/syndicate/holographic
-	desc = "A deck of holographic playing cards."
+	desc = "Um baralho de cartas holográficas."
 
 /obj/item/toy/cards/deck/syndicate/holographic/Initialize(mapload, obj/machinery/computer/holodeck/holodeck)
 	src.holodeck = holodeck
@@ -55,7 +55,7 @@
 	icon = 'icons/obj/toys/balls.dmi'
 	icon_state = "dodgeball"
 	inhand_icon_state = "dodgeball"
-	desc = "Used for playing the most violent and degrading of childhood games."
+	desc = "Usado para jogar os jogos mais violentos e degradantes da infância."
 	w_class = WEIGHT_CLASS_BULKY //Stops people from hiding it in their bags/pockets
 
 /obj/item/toy/dodgeball/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
@@ -66,7 +66,7 @@
 		M.apply_damage(10, STAMINA)
 		if(prob(5))
 			M.Paralyze(60)
-			visible_message(span_danger("[M] is knocked right off [M.p_their()] feet!"))
+			visible_message(span_danger("[M]é derrubado imediatamente[M.p_their()]Pés!"))
 
 //
 // Machines
@@ -74,7 +74,7 @@
 
 /obj/machinery/readybutton
 	name = "ready declaration device"
-	desc = "This device is used to declare ready. If all devices in an area are ready, the event will begin!"
+	desc = "Este dispositivo é usado para declarar pronto. Se todos os dispositivos estiverem prontos, o evento começará!"
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "auth_off"
 	var/ready = 0
@@ -86,22 +86,22 @@
 	power_channel = AREA_USAGE_ENVIRON
 
 /obj/machinery/readybutton/attack_ai(mob/user)
-	to_chat(user, span_warning("The station AI is not to interact with these devices!"))
+	to_chat(user, span_warning("A estação de IA não deve interagir com esses dispositivos!"))
 	return
 
 /obj/machinery/readybutton/attack_paw(mob/user, list/modifiers)
-	to_chat(user, span_warning("You are too primitive to use this device!"))
+	to_chat(user, span_warning("Você é muito primitivo para usar este dispositivo!"))
 	return
 
 /obj/machinery/readybutton/attackby(obj/item/W, mob/user, list/modifiers, list/attack_modifiers)
-	to_chat(user, span_warning("The device is a solid button, there's nothing you can do with it!"))
+	to_chat(user, span_warning("O dispositivo é um botão sólido, não há nada que possa fazer com ele!"))
 
 /obj/machinery/readybutton/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
 	if(machine_stat & (NOPOWER|BROKEN))
-		to_chat(user, span_warning("This device is not powered!"))
+		to_chat(user, span_warning("Este dispositivo não está ligado!"))
 		return
 
 	currentarea = get_area(src)
@@ -110,7 +110,7 @@
 		return
 
 	if(eventstarted)
-		to_chat(usr, span_warning("The event has already begun!"))
+		to_chat(usr, span_warning("O evento já começou!"))
 		return
 
 	ready = !ready
@@ -147,7 +147,7 @@
 					qdel(barrier)
 
 			for(var/mob/contestant in area_turf)
-				to_chat(contestant, span_userdanger("FIGHT!"))
+				to_chat(contestant, span_userdanger("Briga!"))
 
 /obj/machinery/conveyor/holodeck
 
@@ -157,15 +157,15 @@
 
 /obj/item/paper/fluff/holodeck/trek_diploma
 	name = "paper - Starfleet Academy Diploma"
-	default_raw_text = {"<h2>Starfleet Academy</h2></br><p>Official Diploma</p></br>"}
+	default_raw_text = {"<h2>Academia da Frota Estelar</h2></br><p>Diploma Oficial</p></br>"}
 
 /obj/item/paper/fluff/holodeck/disclaimer
 	name = "Holodeck Disclaimer"
-	default_raw_text = "Bruises sustained in the holodeck can be healed simply by sleeping."
+	default_raw_text = "Contusões no holodeck podem ser curadas simplesmente dormindo."
 
 /obj/vehicle/ridden/scooter/skateboard/pro/holodeck
 	name = "holographic skateboard"
-	desc = "A holographic copy of the EightO brand professional skateboard."
+	desc = "Uma cópia holográfica do skate profissional da marca 80."
 	instability = 6
 
 /obj/vehicle/ridden/scooter/skateboard/pro/holodeck/pick_up_board() //picking up normal skateboards spawned in the holodeck gets rid of the holo flag, now you cant pick them up.

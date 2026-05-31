@@ -1,6 +1,6 @@
 /obj/item/retractor
 	name = "retractor"
-	desc = "Retracts stuff."
+	desc = "Retrai coisas."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "retractor"
 	inhand_icon_state = "retractor"
@@ -20,7 +20,7 @@
 	return surgical_tray_overlay
 
 /obj/item/retractor/augment
-	desc = "Micro-mechanical manipulator for retracting stuff."
+	desc = "Manipulador micromecânico para retrair coisas."
 	toolspeed = 0.5
 
 /obj/item/retractor/cyborg
@@ -30,7 +30,7 @@
 
 /obj/item/hemostat
 	name = "hemostat"
-	desc = "You think you have seen this before."
+	desc = "Você acha que já viu isso antes."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "hemostat"
 	inhand_icon_state = "hemostat"
@@ -52,7 +52,7 @@
 	return surgical_tray_overlay
 
 /obj/item/hemostat/augment
-	desc = "Tiny servos power a pair of pincers to stop bleeding."
+	desc = "Pequenos servos alimentam um par de pinças para parar de sangrar."
 	toolspeed = 0.5
 
 /obj/item/hemostat/cyborg
@@ -62,7 +62,7 @@
 
 /obj/item/cautery
 	name = "cautery"
-	desc = "This stops bleeding."
+	desc = "Isso para de sangrar."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "cautery"
 	inhand_icon_state = "cautery"
@@ -85,10 +85,10 @@
 	return surgical_tray_overlay
 
 /obj/item/cautery/ignition_effect(atom/ignitable_atom, mob/user)
-	return span_rose("[user] touches the end of [src] to \the [ignitable_atom], igniting it with a puff of smoke.")
+	return span_rose("[user]Toca o fim de[src]Para\the [ignitable_atom], acendendo-o com um sopro de fumaça.")
 
 /obj/item/cautery/augment
-	desc = "A heated element that cauterizes wounds."
+	desc = "Um elemento aquecido que cauteriza feridas."
 	toolspeed = 0.5
 
 /obj/item/cautery/cyborg
@@ -98,7 +98,7 @@
 
 /obj/item/cautery/advanced
 	name = "searing tool"
-	desc = "It projects a high power laser used for medical applications."
+	desc = "Projeta um laser de alta potência usado para aplicações médicas."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "e_cautery"
 	inhand_icon_state = "e_cautery"
@@ -119,14 +119,7 @@
 
 /obj/item/cautery/advanced/Initialize(mapload)
 	. = ..()
-	AddComponent( \
-		/datum/component/transforming, \
-		force_on = force, \
-		throwforce_on = throwforce, \
-		hitsound_on = hitsound, \
-		w_class_on = w_class, \
-		clumsy_check = FALSE, \
-	)
+	AddComponent( 		/datum/component/transforming, 		force_on = force, 		throwforce_on = throwforce, 		hitsound_on = hitsound, 		w_class_on = w_class, 		clumsy_check = FALSE, 	)
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
 /*
@@ -144,17 +137,17 @@
 		tool_behaviour = TOOL_CAUTERY
 		set_light_color(LIGHT_COLOR_ORANGE)
 
-	balloon_alert(user, "lenses set to [active ? "drill" : "mend"]")
+	balloon_alert(user, "Lentes ajustadas para[active ? "drill" : "mend"]")
 	playsound(user ? user : src, 'sound/items/weapons/tap.ogg', 50, TRUE)
 	return COMPONENT_NO_DEFAULT_MESSAGE
 
 /obj/item/cautery/advanced/examine()
 	. = ..()
-	. += span_notice("It's set to [tool_behaviour == TOOL_CAUTERY ? "mending" : "drilling"] mode.")
+	. += span_notice("Está definido para[tool_behaviour == TOOL_CAUTERY ? "mending" : "drilling"]Modo.")
 
 /obj/item/surgicaldrill
 	name = "surgical drill"
-	desc = "You can drill using this item. You dig?"
+	desc = "Pode perfurar usando este item. Entendeu?"
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "drill"
 	inhand_icon_state = "drill"
@@ -185,7 +178,7 @@
 	return surgical_tray_overlay
 
 /obj/item/surgicaldrill/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] rams [src] into [user.p_their()] chest! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Carneiros[src]Em[user.p_their()]Baú! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon, gib), DROP_ALL_REMAINS), 2.5 SECONDS)
 	user.SpinAnimation(3, 10)
 	playsound(user, 'sound/machines/juicer.ogg', 20, TRUE)
@@ -196,14 +189,14 @@
 	icon_state = "toolkit_medborg_drill"
 
 /obj/item/surgicaldrill/augment
-	desc = "Effectively a small power drill contained within your arm. May or may not pierce the heavens."
+	desc = "Efetivamente uma pequena broca de energia contida em seu braço. Pode ou não pode perfurar os céus."
 	hitsound = 'sound/items/weapons/circsawhit.ogg'
 	w_class = WEIGHT_CLASS_SMALL
 	toolspeed = 0.5
 
 /obj/item/scalpel
 	name = "scalpel"
-	desc = "Cut, cut, and once more cut."
+	desc = "Corta, corta, e mais uma vez."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "scalpel"
 	inhand_icon_state = "scalpel"
@@ -234,11 +227,7 @@
 
 /obj/item/scalpel/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/butchering, \
-	speed = 8 SECONDS * toolspeed, \
-	effectiveness = 100, \
-	bonus_modifier = 0, \
-	)
+	AddComponent(/datum/component/butchering, 	speed = 8 SECONDS * toolspeed, 	effectiveness = 100, 	bonus_modifier = 0, 	)
 	AddElement(/datum/element/eyestab)
 	alt_continuous = string_list(alt_continuous)
 	alt_simple = string_list(alt_simple)
@@ -248,7 +237,7 @@
 	return surgical_tray_overlay
 
 /obj/item/scalpel/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is slitting [user.p_their()] [pick("wrists", "throat", "stomach")] with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Está cortando[user.p_their()] [pick("wrists", "throat", "stomach")]Com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/scalpel/cyborg
@@ -257,12 +246,12 @@
 	icon_angle = 0
 
 /obj/item/scalpel/augment
-	desc = "Ultra-sharp blade attached directly to your bone for extra-accuracy."
+	desc = "Lâmina ultra-afiada ligada diretamente ao seu osso para precisão extra."
 	toolspeed = 0.5
 
 /obj/item/circular_saw
 	name = "circular saw"
-	desc = "For heavy duty cutting."
+	desc = "Para cortes pesos."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "saw"
 	inhand_icon_state = "saw"
@@ -291,19 +280,12 @@
 
 /obj/item/circular_saw/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/butchering, \
-	speed = 4 SECONDS * toolspeed, \
-	effectiveness = 100, \
-	bonus_modifier = 5, \
-	butcher_sound = 'sound/items/weapons/circsawhit.ogg', \
-	)
+	AddComponent(/datum/component/butchering, 	speed = 4 SECONDS * toolspeed, 	effectiveness = 100, 	bonus_modifier = 5, 	butcher_sound = 'sound/items/weapons/circsawhit.ogg', 	)
 	//saws are very accurate and fast at butchering
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/chainsaw)
 
 	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
+		/datum/element/slapcrafting,		slapcraft_recipes = slapcraft_recipe_list,	)
 
 /obj/item/circular_saw/get_surgery_tool_overlay(tray_extended)
 	return surgical_tray_overlay
@@ -314,14 +296,14 @@
 	icon_angle = 0
 
 /obj/item/circular_saw/augment
-	desc = "A small but very fast spinning saw. It rips and tears until it is done."
+	desc = "Uma serra pequena, mas muito rápida. Ela rasga e chora até que seja feito."
 	w_class = WEIGHT_CLASS_SMALL
 	toolspeed = 0.5
 
 
 /obj/item/surgical_drapes
 	name = "surgical drapes"
-	desc = "Nanotrasen brand surgical drapes provide optimal safety and infection control."
+	desc = "As cortinas cirúrgicas da marca Nanotrasen fornecem segurança e controle de infecção."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "surgical_drapes"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
@@ -344,7 +326,7 @@
 
 /obj/item/surgical_processor //allows medical cyborgs to scan and initiate advanced surgeries
 	name = "surgical processor"
-	desc = "A device for scanning and initiating surgeries from a disk or operating computer."
+	desc = "Um dispositivo para resolver e iniciar cirurgias de um disco ou computador operacional."
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "surgical_processor"
 	item_flags = NOBLUDGEON
@@ -359,8 +341,8 @@
 
 /obj/item/surgical_processor/examine(mob/user)
 	. = ..()
-	. += span_notice("Equip the processor in one of your active modules to access downloaded advanced surgeries.")
-	. += span_boldnotice("Advanced surgeries available:")
+	. += span_notice("Equipar o processador em um de seus módulos ativos para acessar cirurgias avançadas baixadas.")
+	. += span_boldnotice("Cirurgias avançadas disponíveis:")
 	//list of downloaded surgeries' names
 	var/list/surgeries_names = list()
 	for(var/datum/surgery_operation/downloaded_surgery as anything in GLOB.operations.get_instances_from(loaded_surgeries))
@@ -381,7 +363,7 @@
 /obj/item/surgical_processor/interact_with_atom(atom/design_holder, mob/living/user, list/modifiers)
 	if(!istype(design_holder, /obj/item/disk/surgery) && !istype(design_holder, /obj/machinery/computer/operating))
 		return NONE
-	balloon_alert(user, "copying designs...")
+	balloon_alert(user, "Copiando desenhos...")
 	playsound(src, 'sound/machines/terminal/terminal_processing.ogg', 25, TRUE)
 	if(do_after(user, 1 SECONDS, target = design_holder))
 		if(istype(design_holder, /obj/item/disk/surgery))
@@ -408,7 +390,7 @@
 
 /obj/item/scalpel/advanced
 	name = "laser scalpel"
-	desc = "An advanced scalpel which uses laser technology to cut."
+	desc = "Um bisturi avançado que usa tecnologia laser para cortar."
 	icon_state = "e_scalpel"
 	inhand_icon_state = "e_scalpel"
 	surgical_tray_overlay = "scalpel_advanced"
@@ -431,16 +413,7 @@
 
 /obj/item/scalpel/advanced/Initialize(mapload)
 	. = ..()
-	AddComponent( \
-		/datum/component/transforming, \
-		force_on = force + 1, \
-		throwforce_on = throwforce, \
-		throw_speed_on = throw_speed, \
-		sharpness_on = sharpness, \
-		hitsound_on = hitsound, \
-		w_class_on = w_class, \
-		clumsy_check = FALSE, \
-	)
+	AddComponent( 		/datum/component/transforming, 		force_on = force + 1, 		throwforce_on = throwforce, 		throw_speed_on = throw_speed, 		sharpness_on = sharpness, 		hitsound_on = hitsound, 		w_class_on = w_class, 		clumsy_check = FALSE, 	)
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
 /*
@@ -458,17 +431,17 @@
 		tool_behaviour = TOOL_SCALPEL
 		set_light_color(LIGHT_COLOR_BLUE)
 
-	balloon_alert(user, "[active ? "enabled" : "disabled"] bone-cutting mode")
+	balloon_alert(user, "[active ? "enabled" : "disabled"]Modo de corte ósseo")
 	playsound(user ? user : src, 'sound/machines/click.ogg', 50, TRUE)
 	return COMPONENT_NO_DEFAULT_MESSAGE
 
 /obj/item/scalpel/advanced/examine()
 	. = ..()
-	. += span_notice("It's set to [tool_behaviour == TOOL_SCALPEL ? "scalpel" : "saw"] mode.")
+	. += span_notice("Está definido para[tool_behaviour == TOOL_SCALPEL ? "scalpel" : "saw"]Modo.")
 
 /obj/item/retractor/advanced
 	name = "mechanical pinches"
-	desc = "An agglomerate of rods and gears."
+	desc = "Um aglomerado de varas e engrenagens."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "adv_retractor"
 	inhand_icon_state = "adv_retractor"
@@ -485,14 +458,7 @@
 
 /obj/item/retractor/advanced/Initialize(mapload)
 	. = ..()
-	AddComponent( \
-		/datum/component/transforming, \
-		force_on = force, \
-		throwforce_on = throwforce, \
-		hitsound_on = hitsound, \
-		w_class_on = w_class, \
-		clumsy_check = FALSE, \
-	)
+	AddComponent( 		/datum/component/transforming, 		force_on = force, 		throwforce_on = throwforce, 		hitsound_on = hitsound, 		w_class_on = w_class, 		clumsy_check = FALSE, 	)
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
 /*
@@ -504,17 +470,17 @@
 	SIGNAL_HANDLER
 
 	tool_behaviour = (active ? TOOL_HEMOSTAT : TOOL_RETRACTOR)
-	balloon_alert(user, "gears set to [active ? "clamp" : "retract"]")
+	balloon_alert(user, "Engrenagens prontas para[active ? "clamp" : "retract"]")
 	playsound(user ? user : src, 'sound/items/tools/change_drill.ogg', 50, TRUE)
 	return COMPONENT_NO_DEFAULT_MESSAGE
 
 /obj/item/retractor/advanced/examine()
 	. = ..()
-	. += span_notice("It resembles a [tool_behaviour == TOOL_RETRACTOR ? "retractor" : "hemostat"].")
+	. += span_notice("Parece...[tool_behaviour == TOOL_RETRACTOR ? "retractor" : "hemostat"].")
 
 /obj/item/shears
 	name = "amputation shears"
-	desc = "A type of heavy duty surgical shears used for achieving a clean separation between limb and patient. Keeping the patient still is imperative to be able to secure and align the shears."
+	desc = "Um tipo de tesoura cirúrgica usada para conseguir uma separação limpa entre membro e paciente. Manter o paciente parado é imperativo para ser capaz de proteger e alinhar as tesouras."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "shears"
 	icon_angle = 90
@@ -542,7 +508,7 @@
 	var/mob/living/carbon/patient = amputee
 
 	if(HAS_TRAIT(patient, TRAIT_NODISMEMBER))
-		to_chat(user, span_warning("The patient's limbs look too sturdy to amputate."))
+		to_chat(user, span_warning("Os membros do paciente estão muito fortes para amputar."))
 		return
 
 	var/candidate_name
@@ -552,20 +518,20 @@
 	if(user.zone_selected == BODY_ZONE_PRECISE_GROIN)
 		tail_snip_candidate = patient.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 		if(!tail_snip_candidate)
-			to_chat(user, span_warning("[patient] does not have a tail."))
+			to_chat(user, span_warning("[patient]Não tem cauda."))
 			return
 		candidate_name = tail_snip_candidate.name
 
 	else
 		limb_snip_candidate = patient.get_bodypart(check_zone(user.zone_selected))
 		if(!limb_snip_candidate)
-			to_chat(user, span_warning("[patient] is already missing that limb, what more do you want?"))
+			to_chat(user, span_warning("[patient]Já está faltando esse membro, o que mais você quer?"))
 			return
 		candidate_name = limb_snip_candidate.name
 
 	var/amputation_speed_mod = 1
 
-	patient.visible_message(span_danger("[user] begins to secure [src] around [patient]'s [candidate_name]."), span_userdanger("[user] begins to secure [src] around your [candidate_name]!"))
+	patient.visible_message(span_danger("[user]Começa a proteger[src]Por aí.[patient]'s[candidate_name]."), span_userdanger("[user]Começa a proteger[src]em rasga de seu[candidate_name]!"))
 	playsound(get_turf(patient), 'sound/items/tools/ratchet.ogg', 20, TRUE)
 	if(patient.stat >= UNCONSCIOUS || HAS_TRAIT(patient, TRAIT_INCAPACITATED)) //if you're incapacitated (due to paralysis, a stun, being in staminacrit, etc.), critted, unconscious, or dead, it's much easier to properly line up a snip
 		amputation_speed_mod *= 0.5
@@ -581,7 +547,7 @@
 			tail_snip_candidate.forceMove(get_turf(patient))
 		else
 			limb_snip_candidate.dismember()
-		user.visible_message(span_danger("[src] violently slams shut, amputating [patient]'s [candidate_name]."), span_notice("You amputate [patient]'s [candidate_name] with [src]."))
+		user.visible_message(span_danger("[src]violentamente bate fechado, amputando[patient]'s[candidate_name]."), span_notice("Você amputa[patient]'s[candidate_name]Com[src]."))
 		user.log_message("[user] has amputated [patient]'s [candidate_name] with [src]", LOG_GAME)
 		patient.log_message("[patient]'s [candidate_name] has been amputated by [user] with [src]", LOG_GAME)
 
@@ -589,7 +555,7 @@
 		user.add_mood_event("morbid_dismemberment", /datum/mood_event/morbid_dismemberment)
 
 /obj/item/shears/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] is pinching [user.p_them()]self with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Está beliscando.[user.p_them()]ego com\the [src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	var/timer = 1 SECONDS
 	for(var/obj/item/bodypart/thing in user.get_bodyparts())
 		if(thing.body_part == CHEST)
@@ -602,7 +568,7 @@
 
 /obj/item/bonesetter
 	name = "bonesetter"
-	desc = "For setting things right."
+	desc = "Por acertar as coisas."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "bonesetter"
 	icon_angle = 135
@@ -628,7 +594,7 @@
 
 /obj/item/blood_filter
 	name = "blood filter"
-	desc = "For filtering the blood."
+	desc = "Por filtrar o sangue."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "bloodfilter"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
@@ -701,28 +667,28 @@
 
 /obj/item/retractor/cruel
 	name = "twisted retractor"
-	desc = "Helps reveal secrets that would rather stay buried."
+	desc = "Ajuda a revelar segredos que preferem encontrar enterrados."
 	icon_state = "cruelretractor"
 	surgical_tray_overlay = "retractor_cruel"
 	item_flags = SURGICAL_TOOL | CRUEL_IMPLEMENT
 
 /obj/item/hemostat/cruel
 	name = "cruel hemostat"
-	desc = "Clamping bleeders, but not so good at fixing breathers."
+	desc = "Hemorragia, mas não tão bom em consertar respiradores."
 	icon_state = "cruelhemostat"
 	surgical_tray_overlay = "hemostat_cruel"
 	item_flags = SURGICAL_TOOL | CRUEL_IMPLEMENT
 
 /obj/item/cautery/cruel
 	name = "savage cautery"
-	desc = "Chalk this one up as another successful vivisection."
+	desc = "Este aqui é mais uma vivissecção bem sucedida."
 	icon_state = "cruelcautery"
 	surgical_tray_overlay = "cautery_cruel"
 	item_flags = SURGICAL_TOOL | CRUEL_IMPLEMENT
 
 /obj/item/scalpel/cruel
 	name = "hungry scalpel"
-	desc = "I remember every time I hold you. My born companion..."
+	desc = "Lembro-me de cada vez que te seguro. Meu companheiro de nascença..."
 	icon_state = "cruelscalpel"
 	surgical_tray_overlay = "scalpel_cruel"
 	item_flags = SURGICAL_TOOL | CRUEL_IMPLEMENT
@@ -733,7 +699,7 @@
 
 /obj/item/surgicaldrill/cruel
 	name = "tearing drill"
-	desc = "What secrets do they keep buried within those pearls..."
+	desc = "Que segredos eles mantêm enterrados nessas pérolas..."
 	icon_state = "crueldrill"
 	inhand_icon_state = "crueldrill"
 	surgical_tray_overlay = "drill_cruel"
@@ -741,7 +707,7 @@
 
 /obj/item/circular_saw/cruel
 	name = "jagged bonesaw"
-	desc = "A twisted blade for twisted purpose. Rip sinew and bone until your work is done."
+	desc = "Uma lâmina distorcida para propósito distorcido. Rasgue tendões e ossos até que seu trabalho termine."
 	icon_state = "cruelsaw"
 	inhand_icon_state = "cruelsaw"
 	icon_angle = 0
@@ -751,7 +717,7 @@
 
 /obj/item/bonesetter/cruel
 	name = "harsh bonesetter"
-	desc = "We shall make you whole once more..."
+	desc = "Vamos deixá-lo inteiro mais uma vez..."
 	icon_state = "cruelbonesetter"
 	inhand_icon_state = "cruelbonesetter"
 	surgical_tray_overlay = "bonesetter_cruel"
@@ -759,35 +725,35 @@
 
 /obj/item/blood_filter/cruel
 	name = "malignant blood filter"
-	desc = "You must be made pure..."
+	desc = "Você deve ser feito puro..."
 	icon_state = "cruelbloodfilter"
 	inhand_icon_state = "cruelbloodfilter"
 	surgical_tray_overlay = "filter_cruel"
 	item_flags = SURGICAL_TOOL | CRUEL_IMPLEMENT
 
 /obj/item/retractor/cruel/augment
-	desc = "A twisted micro-mechanical manipulator for retracting flesh and sinew."
+	desc = "Um manipulador micromecânico retorcido para retrair carne e nervos."
 	toolspeed = 0.5
 
 /obj/item/hemostat/cruel/augment
-	desc = "Tiny, warped servos power a pair of pincers to stop bleeding."
+	desc = "Pequenos servos deformados alimentam um par de pinças para parar de sangrar."
 	toolspeed = 0.5
 
 /obj/item/cautery/cruel/augment
-	desc = "All mistakes can be burned away with a little flame..."
+	desc = "Todos os erros podem ser queimados com uma pequena chama..."
 	toolspeed = 0.5
 
 /obj/item/scalpel/cruel/augment
-	desc = "Ultra-sharp blade attached directly to your bone for enhanced vivisection."
+	desc = "Lâmina ultra-afiada ligada diretamente ao seu osso para uma vivissecção melhorada."
 	toolspeed = 0.5
 
 /obj/item/surgicaldrill/cruel/augment
-	desc = "You cannot hide your secrets from me..."
+	desc = "Você não pode esconder seus segredos de mim..."
 	hitsound = 'sound/items/weapons/circsawhit.ogg'
 	w_class = WEIGHT_CLASS_SMALL
 	toolspeed = 0.5
 
 /obj/item/circular_saw/cruel/augment
-	desc = "A jagged sawblade built for grisly work."
+	desc = "Uma lâmina de serra entalhada construída para um trabalho horrível."
 	w_class = WEIGHT_CLASS_SMALL
 	toolspeed = 0.5

@@ -37,8 +37,7 @@
 	trait_flags = parent_type::trait_flags | STATION_TRAIT_REQUIRES_AI
 	weight = 5
 	show_in_report = TRUE
-	report_message = "For experimental purposes, this station AI might show divergence from default lawset. Do not meddle with this experiment, we've removed \
-		access to your set of alternative upload modules because we know you're already thinking about meddling with this experiment."
+	report_message = "Para fins experimentais, esta estação de IA pode mostrar divergência de leis padrão. Não se meta com esse experimento, nós removemos o acesso ao seu conjunto de módulos de upload alternativos porque sabemos que você já está pensando em se meter com esse experimento."
 	trait_to_give = STATION_TRAIT_UNIQUE_AI
 
 /datum/station_trait/unique_ai/on_round_start()
@@ -216,7 +215,7 @@
 
 
 /datum/station_trait/birthday/proc/announce_birthday()
-	report_message = "We here at Nanotrasen would all like to wish [birthday_person ? birthday_person_name : "Employee Name"] a very happy birthday."
+	report_message = "Nós aqui em Nanotrasen gostaríamos de desejar[birthday_person ? birthday_person_name : "Employee Name"]Um feliz aniversário."
 	priority_announce("Happy birthday to [birthday_person ? birthday_person_name : "Employee Name"]! Nanotrasen wishes you a very happy [birthday_person ? thtotext(birthday_person.age + 1) : "255th"] birthday.")
 	if(birthday_person)
 		playsound(birthday_person, 'sound/items/party_horn.ogg', 50)
@@ -255,18 +254,18 @@
 
 /obj/item/birthday_invite
 	name = "birthday invitation"
-	desc = "A card stating that it's someone's birthday today."
+	desc = "Um cartão dizendo que é aniversário de alguém hoje."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/birthday_invite/proc/setup_card(birthday_name)
-	desc = "A card stating that its [birthday_name]'s birthday today."
+	desc = "Um cartão dizendo que seu[birthday_name]Hoje é aniversário."
 	icon_state = "paperslip_words"
 	icon = 'icons/obj/service/bureaucracy.dmi'
 
 /obj/item/clothing/head/costume/party
 	name = "party hat"
-	desc = "A crappy paper hat that you are REQUIRED to wear."
+	desc = "Um chapéu de papel que você precisa usar."
 	icon_state = "party_hat"
 	greyscale_config =  /datum/greyscale_config/party_hat
 	greyscale_config_worn = /datum/greyscale_config/party_hat/worn
@@ -297,7 +296,7 @@
 	weight = 2
 	cost = STATION_TRAIT_COST_LOW
 	show_in_report = TRUE
-	report_message = "Nanotrasen has chosen your station for an experiment - everyone has free scryers! Use these to talk to other people easily and privately."
+	report_message = "Nanotrasen escolheu sua estação para um experimento - todos têm scriers grátis! Use isso para falar com outras pessoas facilmente e em particular."
 
 /datum/station_trait/scryers/New()
 	. = ..()
@@ -328,7 +327,7 @@
 	show_in_report = TRUE
 	weight = 5
 	cost = STATION_TRAIT_COST_MINIMAL
-	report_message = "It has become temporarily fashionable to use a wallet, so everyone on the station has been issued one."
+	report_message = "Ficou temporariamente na moda usar uma carteira, então todos na estação receberam uma."
 
 /datum/station_trait/wallets/New()
 	. = ..()
@@ -370,15 +369,14 @@
 	trait_flags = STATION_TRAIT_PLANETARY
 	weight = 10
 	show_in_report = TRUE
-	report_message = "There sure are a lot of trees out there."
+	report_message = "Tem muitas árvores lá fora."
 
 /datum/station_trait/linked_closets
 	name = "Closet Anomaly"
 	trait_type = STATION_TRAIT_NEUTRAL
 	show_in_report = TRUE
 	weight = 1
-	report_message = "We've reports of loose bluespace streams affecting your station's lockers and closets. \
-		You might lose some of your belongings... or gain some new ones!"
+	report_message = "Temos relatos de fluxos de espaço azul soltos afetando os armários e armários da sua estação. Você pode perder alguns de seus pertences... ou ganhar alguns novos!"
 
 /datum/station_trait/linked_closets/on_round_start()
 	. = ..()
@@ -448,10 +446,10 @@
 			lobby_button.balloon_alert(player, "anti-skub")
 		if(ANTI_SKUB)
 			skubbers[player.ckey] = SKUB_IDFC
-			lobby_button.balloon_alert(player, "don't care")
+			lobby_button.balloon_alert(player, "Não me importo.")
 		if(SKUB_IDFC)
 			skubbers[player.ckey] = RANDOM_SKUB
-			lobby_button.balloon_alert(player, "on the best side")
+			lobby_button.balloon_alert(player, "No melhor lado")
 		if(RANDOM_SKUB)
 			skubbers[player.ckey] = PRO_SKUB
 			lobby_button.balloon_alert(player, "pro-skub")
@@ -502,8 +500,7 @@
 /// Crew don't ever spawn as enemies of the station. Obsesseds, blob infection, space changelings etc can still happen though
 /datum/station_trait/background_checks
 	name = "Station-Wide Background Checks"
-	report_message = "We replaced the intern doing your crew's background checks with a trained screener for this shift! \
-		That said, our enemies may just find another way to infiltrate the station, so be careful."
+	report_message = "Substituímos o estagiário fazendo a verificação de antecedentes da sua equipe por um rastreador treinado para este turno! Dito isso, nossos inimigos podem achar outro jeito de se infiltrar na estação, então tenha cuidado."
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 1
 	show_in_report = TRUE
@@ -571,7 +568,7 @@
 /// We're pulling a Jim Kramer with this one boys
 /datum/station_trait/gmm_spotlight
 	name = "GMM Economic Spotlight"
-	report_message = "This shift, the Galactic Mineral Market is doing a showcase on your crew's affulence! Every paycheck, the station newscasters will alert the crew who has the most credits."
+	report_message = "Esta mudança, o Mercado Mineral Galáctico está fazendo uma apresentação da sua tripulação! Cada pagamento, os repórteres da estação alertarão a tripulação que tem mais créditos."
 	trait_type = STATION_TRAIT_NEUTRAL
 	trait_to_give = STATION_TRAIT_ECONOMY_ALERTS
 	weight = 2

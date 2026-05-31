@@ -1,7 +1,7 @@
 /// Spawns a little worm nearby
 /datum/action/cooldown/mob_cooldown/hivelord_spawn
 	name = "Spawn Brood"
-	desc = "Release an attack form to an adjacent square to attack your target or anyone nearby."
+	desc = "Libere um formulário de ataque para um quadrado adjacente para atacar seu alvo ou alguém próximo."
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "hivelord_brood"
 	background_icon_state = "bg_demon"

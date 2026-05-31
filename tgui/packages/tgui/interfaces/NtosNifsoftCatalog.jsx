@@ -31,10 +31,10 @@ export const NtosNifsoftCatalog = (props) => {
       <NtosWindow.Content scrollable>
         <Section>
           <LabeledList>
-            <LabeledList.Item label={'Credits in account'}>
+            <LabeledList.Item label={'Créditos na conta'}>
               {current_balance}
             </LabeledList.Item>
-            <LabeledList.Item label="Rewards Points">
+            <LabeledList.Item label="Pontos de recompensa">
               <b>{rewards_points}</b>
             </LabeledList.Item>
           </LabeledList>
@@ -76,7 +76,7 @@ const ProductCategory = (props) => {
               }
               fill={false}
             >
-              <Collapsible title="Product Notes">
+              <Collapsible title="Notas de produto">
                 <BlockQuote>{product.desc}</BlockQuote>
               </Collapsible>
               <Button

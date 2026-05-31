@@ -8,7 +8,7 @@
 	icon_state = "ore"
 	inhand_icon_state = null
 	full_w_class = WEIGHT_CLASS_BULKY
-	singular_name = "ore chunk"
+	singular_name = "Pedaço de minério"
 	material_flags = MATERIAL_EFFECTS
 	var/points = 0 //How many points this ore gets you from the ore redemption machine
 	var/refined_type = null //What this ore defaults to being refined into
@@ -79,7 +79,7 @@
 /obj/item/stack/ore/uranium
 	name = "uranium ore"
 	icon_state = "uranium"
-	singular_name = "uranium ore chunk"
+	singular_name = "pedaço de minério de urânio"
 	points = 30
 	material_flags = NONE
 	mats_per_unit = list(/datum/material/uranium=SHEET_MATERIAL_AMOUNT)
@@ -92,7 +92,7 @@
 /obj/item/stack/ore/iron
 	name = "iron ore"
 	icon_state = "iron"
-	singular_name = "iron ore chunk"
+	singular_name = "Pedaço de minério de ferro"
 	points = 1
 	mats_per_unit = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/iron
@@ -104,7 +104,7 @@
 /obj/item/stack/ore/glass
 	name = "sand pile"
 	icon_state = "glass"
-	singular_name = "sand pile"
+	singular_name = "Pilha de areia"
 	points = 1
 	mats_per_unit = list(/datum/material/sand = SHEET_MATERIAL_AMOUNT)
 	material_type = /datum/material/sand
@@ -114,11 +114,7 @@
 	merge_type = /obj/item/stack/ore/glass
 	usable_for_construction = TRUE
 
-GLOBAL_LIST_INIT(sand_recipes, list(\
-		new /datum/stack_recipe("pile of dirt", /obj/machinery/hydroponics/soil, 3, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_TOOLS), \
-		new /datum/stack_recipe("sandstone", /obj/item/stack/sheet/mineral/sandstone, 1, 1, 50, crafting_flags = CRAFT_NO_MATERIALS, category = CAT_MISC),\
-		new /datum/stack_recipe("aesthetic volcanic floor tile", /obj/item/stack/tile/basalt, 2, 1, 50, crafting_flags = NONE, category = CAT_TILES)\
-))
+GLOBAL_LIST_INIT(sand_recipes, list(		new /datum/stack_recipe("pile of dirt", /obj/machinery/hydroponics/soil, 3, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_TOOLS), 		new /datum/stack_recipe("sandstone", /obj/item/stack/sheet/mineral/sandstone, 1, 1, 50, crafting_flags = CRAFT_NO_MATERIALS, category = CAT_MISC),		new /datum/stack_recipe("aesthetic volcanic floor tile", /obj/item/stack/tile/basalt, 2, 1, 50, crafting_flags = NONE, category = CAT_TILES)))
 
 /obj/item/stack/ore/glass/Initialize(mapload, new_amount, merge, list/mat_override, mat_amt)
 	. = ..()
@@ -139,12 +135,12 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 		return
 	var/mob/living/carbon/human/C = hit_atom
 	if(C.is_eyes_covered())
-		C.visible_message(span_danger("[C]'s eye protection blocks the sand!"), span_warning("Your eye protection blocks the sand!"))
+		C.visible_message(span_danger("[C]A proteção ocular bloqueia a areia!"), span_warning("Sua proteção ocular bloqueia a areia!"))
 		return
 	C.adjust_eye_blur(12 SECONDS)
 	C.adjust_stamina_loss(15)//the pain from your eyes burning does stamina damage
 	C.adjust_confusion(5 SECONDS)
-	to_chat(C, span_userdanger("\The [src] gets into your eyes! The pain, it burns!"))
+	to_chat(C, span_userdanger("\The [src]Entra em seus olhos! A dor, ela queima!"))
 	qdel(src)
 
 /obj/item/stack/ore/glass/ex_act(severity, target)
@@ -160,14 +156,14 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 /obj/item/stack/ore/glass/basalt
 	name = "volcanic ash"
 	icon_state = "volcanic_sand"
-	singular_name = "volcanic ash pile"
+	singular_name = "pilha de cinzas vulcânicas"
 	mine_experience = 0
 	merge_type = /obj/item/stack/ore/glass/basalt
 
 /obj/item/stack/ore/plasma
 	name = "plasma ore"
 	icon_state = "plasma"
-	singular_name = "plasma ore chunk"
+	singular_name = "pedaço de minério de plasma"
 	points = 15
 	mats_per_unit = list(/datum/material/plasma=SHEET_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/mineral/plasma
@@ -177,13 +173,13 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	merge_type = /obj/item/stack/ore/plasma
 
 /obj/item/stack/ore/plasma/welder_act(mob/living/user, obj/item/I)
-	to_chat(user, span_warning("You can't hit a high enough temperature to smelt [src] properly!"))
+	to_chat(user, span_warning("Você não pode atingir uma temperatura alta o suficiente para cheirar[src]Bem!"))
 	return TRUE
 
 /obj/item/stack/ore/silver
 	name = "silver ore"
 	icon_state = "silver"
-	singular_name = "silver ore chunk"
+	singular_name = "Pedaço de minério de prata"
 	points = 16
 	mine_experience = 3
 	mats_per_unit = list(/datum/material/silver=SHEET_MATERIAL_AMOUNT)
@@ -195,7 +191,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 /obj/item/stack/ore/gold
 	name = "gold ore"
 	icon_state = "gold"
-	singular_name = "gold ore chunk"
+	singular_name = "Pedaço de minério de ouro"
 	points = 18
 	mine_experience = 5
 	mats_per_unit = list(/datum/material/gold=SHEET_MATERIAL_AMOUNT)
@@ -207,7 +203,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 /obj/item/stack/ore/diamond
 	name = "diamond ore"
 	icon_state = "diamond"
-	singular_name = "diamond ore chunk"
+	singular_name = "pedaço de minério de diamante"
 	points = 50
 	mats_per_unit = list(/datum/material/diamond=SHEET_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/mineral/diamond
@@ -225,7 +221,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 /obj/item/stack/ore/bananium
 	name = "bananium ore"
 	icon_state = "bananium"
-	singular_name = "bananium ore chunk"
+	singular_name = "pedaço de minério de banânio"
 	points = 60
 	mats_per_unit = list(/datum/material/bananium=SHEET_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/mineral/bananium
@@ -236,7 +232,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 /obj/item/stack/ore/titanium
 	name = "titanium ore"
 	icon_state = "titanium"
-	singular_name = "titanium ore chunk"
+	singular_name = "pedaço de minério de titânio"
 	points = 50
 	mats_per_unit = list(/datum/material/titanium=SHEET_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/mineral/titanium
@@ -247,14 +243,14 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 
 /obj/item/stack/ore/slag
 	name = "slag"
-	desc = "Completely useless."
+	desc = "Completamente inútil."
 	icon_state = "slag"
-	singular_name = "slag chunk"
+	singular_name = "Pedaço de escória."
 	merge_type = /obj/item/stack/ore/slag
 
 /obj/item/gibtonite
 	name = "gibtonite ore"
-	desc = "Extremely explosive if struck with mining equipment, Gibtonite is often used by miners to speed up their work by using it as a mining charge. This material is illegal to possess by unauthorized personnel under space law."
+	desc = "Extremamente explosivo se atingido com equipamentos de mineração, Gibtonite é frequentemente usado por mineiros para acelerar seu trabalho usando-o como uma carga de mineração. Este material é ilegal de possuir por pessoal não autorizado sob a lei espacial."
 	icon = 'icons/obj/ore.dmi'
 	icon_state = "gibtonite"
 	inhand_icon_state = "Gibtonite ore"
@@ -283,9 +279,9 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 /obj/item/gibtonite/examine(mob/user)
 	. = ..()
 	if(rig)
-		. += span_warning("There is some kind of device <b>rigged</b> to it!")
+		. += span_warning("Há algum tipo de dispositivo.<b>Armado.</b>Paralele!")
 	else
-		. += span_notice("You could <b>rig</b> something to it.")
+		. += span_notice("Você poderia.<b>rig</b>algo para isso.")
 
 /obj/item/gibtonite/Destroy()
 	QDEL_NULL(rig)
@@ -349,7 +345,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	primed = FALSE
 	if(det_timer)
 		deltimer(det_timer)
-	defuser?.visible_message(span_notice("The chain reaction stopped! ...The ore's quality looks diminished."), span_notice("You stopped the chain reaction. ...The ore's quality looks diminished."))
+	defuser?.visible_message(span_notice("A reação em cadeia parou! A qualidade do minério parece diminuída."), span_notice("Você parou a reação em cadeia. A qualidade do minério parece diminuída."))
 	icon_state = "gibtonite"
 	quality = GIBTONITE_QUALITY_LOW
 
@@ -378,7 +374,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 		notify_admins = TRUE
 
 	if(user)
-		user.visible_message(span_warning("[user] strikes \the [src], causing a chain reaction!"), span_danger("You strike \the [src], causing a chain reaction."))
+		user.visible_message(span_warning("[user]Strikes\the [src], causando uma reação em cadeia!"), span_danger("Você ataca.\the [src], causando uma reação em cadeia."))
 
 	var/attacher_text = attacher ? "Igniter attacher: [ADMIN_LOOKUPFLW(attacher)]" : null
 
@@ -471,9 +467,9 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	return value
 
 /obj/item/coin/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] contemplates suicide with \the [src]!"))
+	user.visible_message(span_suicide("[user]contempla suicídio com\the [src]!"))
 	if (!attack_self(user))
-		user.visible_message(span_suicide("[user] couldn't flip \the [src]!"))
+		user.visible_message(span_suicide("[user]Não podia virar\the [src]!"))
 		return SHAME
 	addtimer(CALLBACK(src, PROC_REF(manual_suicide), user), 1 SECONDS)//10 = time takes for flip animation
 	return MANUAL_SUICIDE_NONLETHAL
@@ -481,31 +477,31 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 /obj/item/coin/proc/manual_suicide(mob/living/user)
 	var/index = sideslist.Find(coinflip)
 	if (index == 2)//tails
-		user.visible_message(span_suicide("\the [src] lands on [coinflip]! [user] promptly falls over, dead!"))
+		user.visible_message(span_suicide("\the [src]Aterrissando[coinflip]! [user]Imediamente cai, morto!"))
 		user.adjust_oxy_loss(200)
 		user.death(FALSE)
 		user.set_suicide(TRUE)
 		user.suicide_log()
 	else
-		user.visible_message(span_suicide("\the [src] lands on [coinflip]! [user] keeps on living!")) //Don't put it in your pocket. It's your lucky quarter.
+		user.visible_message(span_suicide("\the [src]Aterrissando[coinflip]! [user]Continua vivendo!")) //Don'Coloque no seu bolso. Ele.'s your lucky quarter.
 
 /obj/item/coin/examine(mob/user)
 	. = ..()
-	. += span_info("It's worth [value] [MONEY_NAME_AUTOPURAL(value)].")
+	. += span_info("Vale a pena.[value] [MONEY_NAME_AUTOPURAL(value)].")
 
 /obj/item/coin/attackby(obj/item/W, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/CC = W
 		if(string_attached)
-			to_chat(user, span_warning("There already is a string attached to this coin!"))
+			to_chat(user, span_warning("Já tem uma corda presa nessa moeda!"))
 			return
 
 		if (CC.use(1))
 			add_overlay("coin_string_overlay")
 			string_attached = 1
-			to_chat(user, span_notice("You attach a string to the coin."))
+			to_chat(user, span_notice("Você coloca uma corda na moeda."))
 		else
-			to_chat(user, span_warning("You need one length of cable to attach a string to the coin!"))
+			to_chat(user, span_warning("Você precisa de um cabo para colocar uma corda na moeda!"))
 			return
 	else
 		..()
@@ -518,13 +514,13 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	new /obj/item/stack/cable_coil(drop_location(), 1)
 	overlays = list()
 	string_attached = null
-	to_chat(user, span_notice("You detach the string from the coin."))
+	to_chat(user, span_notice("Você tira a corda da moeda."))
 	return TRUE
 
 /obj/item/coin/attack_self(mob/user)
 	if(cooldown < world.time)
 		if(string_attached) //does the coin have a wire attached
-			to_chat(user, span_warning("The coin won't flip very well with something attached!") )
+			to_chat(user, span_warning("A moeda não vai jogar muito bem com algo anexado!") )
 			return FALSE//do not flip the coin
 		cooldown = world.time + 15
 		flick("coin_[coinflip]_flip", src)
@@ -534,9 +530,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 		var/oldloc = loc
 		sleep(1.5 SECONDS)
 		if(loc == oldloc && user && !user.incapacitated)
-			user.visible_message(span_notice("[user] flips [src]. It lands on [coinflip]."), \
-				span_notice("You flip [src]. It lands on [coinflip]."), \
-				span_hear("You hear the clattering of loose change."))
+			user.visible_message(span_notice("[user]Flips[src]Ele pousa em[coinflip]."), 				span_notice("Você vira[src]Ele pousa em[coinflip]."), 				span_hear("Você ouve o barulho de moedas soltas."))
 		if(has_action)
 			if(coinflip == heads_name)
 				heads_action(user)
@@ -593,12 +587,12 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	return list(/datum/reagent/iron = 4, /datum/reagent/consumable/ethanol/ritual_wine = 4)
 
 /obj/item/coin/twoheaded
-	desc = "Hey, this coin's the same on both sides!"
+	desc = "Essa moeda é a mesma dos dois lados!"
 	sideslist = list("heads")
 
 /obj/item/coin/antagtoken
 	name = "antag token"
-	desc = "A novelty coin that helps the heart know what hard evidence cannot prove."
+	desc = "Uma moeda nova que ajuda o coração a saber o que provas não podem provar."
 	icon_state = "coin_valid"
 	custom_materials = list(/datum/material/plastic = COIN_MATERIAL_AMOUNT)
 	sideslist = list("valid", "salad")
@@ -614,7 +608,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 
 /obj/item/coin/gold/debug
 	custom_materials = list(/datum/material/gold = COIN_MATERIAL_AMOUNT)
-	desc = "If you got this somehow, be aware that it will dust you. Almost certainly."
+	desc = "Se você tem isso de alguma forma, esteja ciente de que ele vai limpar você. Quase certo."
 
 /obj/item/coin/gold/debug/grind_results()
 	return list(/datum/reagent/gold/cursed = 8)
@@ -622,7 +616,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 /obj/item/coin/gold/debug/attack_self(mob/user)
 	if(cooldown < world.time)
 		if(string_attached) //does the coin have a wire attached
-			to_chat(user, span_warning("The coin won't flip very well with something attached!") )
+			to_chat(user, span_warning("A moeda não vai jogar muito bem com algo anexado!") )
 			return FALSE//do not flip the coin
 		cooldown = world.time + 15
 		flick("coin_[coinflip]_flip", src)
@@ -632,11 +626,9 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 		var/oldloc = loc
 		sleep(1.5 SECONDS)
 		if(loc == oldloc && user && !user.incapacitated)
-			user.visible_message(span_notice("[user] flips [src]. It lands on [coinflip]."), \
-				span_notice("You flip [src]. It lands on [coinflip]."), \
-				span_hear("You hear the clattering of loose change."))
+			user.visible_message(span_notice("[user]Flips[src]Ele pousa em[coinflip]."), 				span_notice("Você vira[src]Ele pousa em[coinflip]."), 				span_hear("Você ouve o barulho de moedas soltas."))
 		SSeconomy.fire()
-		to_chat(user,"<span class='bounty'>[SSeconomy.inflation_value()] is the inflation value.</span>")
+		to_chat(user,"<span class='bounty'>[SSeconomy.inflation_value()]é o valor da inflação.</span>")
 	return TRUE//did the coin flip? useful for suicide_act
 
 
@@ -652,7 +644,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 
 /obj/item/coin/eldritch
 	name = "eldritch coin"
-	desc = "A surprisingly heavy, ornate coin. Its sides seem to depict a different image each time you look."
+	desc = "Uma moeda surpreendentemente pesada e ornamentada. Seus lados parecem retratar uma imagem diferente cada vez que você olha."
 	icon_state = "coin_heretic"
 	custom_materials = list(/datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT)
 	sideslist = list("heretic", "blade")

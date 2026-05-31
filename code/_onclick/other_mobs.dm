@@ -25,7 +25,7 @@
 	if(!has_active_hand()) //can't attack without a hand.
 		var/obj/item/bodypart/check_arm = get_active_hand()
 		if(check_arm?.bodypart_disabled)
-			to_chat(src, span_warning("Seu [check_arm.name] não está em condição de ser usado."))
+			to_chat(src, span_warning("Seu.[check_arm.name] não está em condição de ser usado."))
 			return FALSE
 
 			to_chat(src, span_notice("Você olha para seu braço e suspira."))

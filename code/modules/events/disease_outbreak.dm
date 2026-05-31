@@ -30,7 +30,7 @@
 	min_players = 10
 	weight = 5
 	category = EVENT_CATEGORY_HEALTH
-	description = "A 'classic' virus will infect some members of the crew."
+	description = "Um vírus 'clássico' vai infectar alguns membros da tripulação."
 	min_wizard_trigger_potency = 2
 	max_wizard_trigger_potency = 6
 	admin_setup = list(/datum/event_admin_setup/minimum_candidate_requirement/disease_outbreak, /datum/event_admin_setup/listed_options/disease_outbreak)
@@ -85,7 +85,7 @@
 
 ///Handles checking and alerting admins about the number of valid candidates
 /datum/event_admin_setup/minimum_candidate_requirement/disease_outbreak
-	output_text = "There are no candidates eligible to receive a disease!"
+	output_text = "Não há candidatos elegíveis para receber uma doença!"
 
 /datum/event_admin_setup/minimum_candidate_requirement/disease_outbreak/count_candidates()
 	var/datum/round_event_control/disease_outbreak/disease_control = event_control
@@ -95,7 +95,7 @@
 
 ///Handles actually selecting whicch disease will spawn.
 /datum/event_admin_setup/listed_options/disease_outbreak
-	input_text = "Select a specific disease? Warning: Some are EXTREMELY dangerous."
+	input_text = "Selecionar uma doença específica? Aviso: alguns são extremamente perigosos."
 	normal_run_option = "Random Classic Disease (Safe)"
 	special_run_option = "Entirely Random Disease (Dangerous)"
 
@@ -204,7 +204,7 @@
 	weight = 15
 	min_players = 35 // To avoid shafting lowpop
 	earliest_start = 15 MINUTES // give the chemist a chance
-	description = "An 'advanced' disease will infect some members of the crew."
+	description = "Uma doença avançada vai infectar alguns membros da tripulação."
 	min_wizard_trigger_potency = 2
 	max_wizard_trigger_potency = 6
 	admin_setup = list(
@@ -221,7 +221,7 @@
  */
 
 /datum/event_admin_setup/listed_options/disease_outbreak_advanced/severity
-	input_text = "Pick a severity!"
+	input_text = "Escolha uma gravidade!"
 	normal_run_option = "Random"
 
 /datum/event_admin_setup/listed_options/disease_outbreak_advanced/severity/get_list()
@@ -241,7 +241,7 @@
 			return ADMIN_CANCEL_EVENT
 
 /datum/event_admin_setup/listed_options/disease_outbreak_advanced/transmissibility
-	input_text = "Pick a transmissibility!"
+	input_text = "Escolha uma transmissibilidade!"
 	normal_run_option = "Random"
 
 /datum/event_admin_setup/listed_options/disease_outbreak_advanced/transmissibility/get_list()
@@ -261,13 +261,13 @@
 			return ADMIN_CANCEL_EVENT
 
 /datum/event_admin_setup/input_number/disease_outbreak_advanced
-	input_text = "How many symptoms do you want your virus to have?"
+	input_text = "Quantos sintomas quer que seu vírus tenha?"
 	default_value = 4
 	max_value = 7
 	min_value = 1
 
 /datum/event_admin_setup/input_number/disease_outbreak_advanced/prompt_admins()
-	var/customize_number_of_symptoms = tgui_alert(usr, "Select number of symptoms?", event_control.name, list("Default", "Custom"))
+	var/customize_number_of_symptoms = tgui_alert(usr, "Selecionar número de sintomas?", event_control.name, list("Default", "Custom"))
 	switch(customize_number_of_symptoms)
 		if("Custom")
 			return ..()
@@ -524,7 +524,7 @@
 	if(properties["stage_rate"] >= 7)
 		name = "Advanced [name]"
 
-	cure_text = "If you can see this, something has gone wrong."
+	cure_text = "Se você pode ver isso, algo deu errado."
 
 /**
  * Set the transmission methods on the generated virus
@@ -538,7 +538,7 @@
 			spread_text = "Fluids"
 		if(DISEASE_SPREAD_CONTACT_SKIN)
 			update_spread_flags(DISEASE_SPREAD_BLOOD | DISEASE_SPREAD_CONTACT_FLUIDS | DISEASE_SPREAD_CONTACT_SKIN)
-			spread_text = "Skin contact"
+			spread_text = "Contato com a pele"
 		if(DISEASE_SPREAD_AIRBORNE)
 			update_spread_flags(DISEASE_SPREAD_BLOOD | DISEASE_SPREAD_CONTACT_FLUIDS | DISEASE_SPREAD_CONTACT_SKIN | DISEASE_SPREAD_AIRBORNE)
 			spread_text = "Respiration"

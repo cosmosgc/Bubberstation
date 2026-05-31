@@ -18,7 +18,7 @@ export const ReagentLookup = (props) => {
           ml={1}
           icon="wifi"
           color="teal"
-          tooltip="Open the associated wikipage for this reagent."
+          tooltip="Abra a página associada para este reagente."
           tooltipPosition="left"
           onClick={() => {
             Byond.command(`wiki Guide_to_chemistry#${reagent.name}`);
@@ -42,7 +42,7 @@ export const ReagentLookup = (props) => {
               ))}
             </LabeledList.Item>
           )}
-          <LabeledList.Item label="Metabolization rate">
+          <LabeledList.Item label="Taxa de metabolização">
             {reagent.metaRate}u/s
           </LabeledList.Item>
         </LabeledList>
@@ -50,10 +50,10 @@ export const ReagentLookup = (props) => {
       <LabeledList.Item label="Impurities">
         <LabeledList>
           {reagent.impureReagent && (
-            <LabeledList.Item label="Impure reagent">
+            <LabeledList.Item label="Reage impuro.">
               <Button
                 icon="vial"
-                tooltip="This reagent will partially convert into this when the purity is above the Inverse purity on consumption."
+                tooltip="Este reagente se converterá parcialmente nisso quando a pureza estiver acima da pureza inversa no consumo."
                 tooltipPosition="left"
                 content={reagent.impureReagent}
                 onClick={() =>
@@ -65,11 +65,11 @@ export const ReagentLookup = (props) => {
             </LabeledList.Item>
           )}
           {reagent.inverseReagent && (
-            <LabeledList.Item label="Inverse reagent">
+            <LabeledList.Item label="Reagente inverso.">
               <Button
                 icon="vial"
                 content={reagent.inverseReagent}
-                tooltip="This reagent will convert into this when the purity is below the Inverse purity on consumption."
+                tooltip="Este reagente se converterá nisso quando a pureza estiver abaixo da pureza inversa no consumo."
                 tooltipPosition="left"
                 onClick={() =>
                   act('reagent_click', {
@@ -80,10 +80,10 @@ export const ReagentLookup = (props) => {
             </LabeledList.Item>
           )}
           {reagent.failedReagent && (
-            <LabeledList.Item label="Failed reagent">
+            <LabeledList.Item label="Reage Falhado.">
               <Button
                 icon="vial"
-                tooltip="This reagent will turn into this if the purity of the reaction is below the minimum purity on completion."
+                tooltip="Este reagente vai se transformar nisso se a pureza da reação estiver abaixo da pureza mínima na conclusão."
                 tooltipPosition="left"
                 content={reagent.failedReagent}
                 onClick={() =>
@@ -107,7 +107,7 @@ export const ReagentLookup = (props) => {
         <Button
           icon="flask"
           mt={2}
-          content={'Find associated reaction'}
+          content={'Encontre a reação associada.'}
           color="purple"
           onClick={() =>
             act('find_reagent_reaction', {

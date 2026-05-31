@@ -83,7 +83,7 @@ export const MedicalRecordView = (props) => {
               icon="trash"
               disabled={!station_z}
               onClick={() => act('expunge_record', { crew_ref: crew_ref })}
-              tooltip="Expunge record data."
+              tooltip="Expulse os dados do registro."
             >
               Delete
             </Button.Confirm>
@@ -101,7 +101,7 @@ export const MedicalRecordView = (props) => {
             </LabeledList.Item>
             {/* <LabeledList.Item label="Age"> // ORIGINAL */}
             {/* SKYRAT EDIT CHANGE BEGIN - Chronological age */}
-            <LabeledList.Item label="Physical Age">
+            <LabeledList.Item label="Idade Física">
               {/* SKYRAT EDIT CHANGE END */}
               <RestrictedInput
                 minValue={min_age}
@@ -119,7 +119,7 @@ export const MedicalRecordView = (props) => {
               />
             </LabeledList.Item>
             {/* SKYRAT EDIT ADDITION BEGIN - Chronological age */}
-            <LabeledList.Item label="Chronological Age">
+            <LabeledList.Item label="Era Cronológica">
               <RestrictedInput
                 minValue={min_age}
                 maxValue={max_chrono_age}
@@ -156,7 +156,7 @@ export const MedicalRecordView = (props) => {
                 text={dna}
               />
             </LabeledList.Item>
-            <LabeledList.Item color="bad" label="Blood Type">
+            <LabeledList.Item color="bad" label="Tipo sanguíneo">
               <EditableText
                 field="blood_type"
                 target_ref={crew_ref}
@@ -187,18 +187,18 @@ export const MedicalRecordView = (props) => {
                   </Button>
                 );
               })}
-              label="Physical Status"
+              label="Status físico"
             >
               <Box color={PHYSICALSTATUS2COLOR[physical_status]}>
                 {physical_status}
               </Box>
             </LabeledList.Item>
             {physical_status === 'Deceased' && (
-              <LabeledList.Item label="Cause of Death">
+              <LabeledList.Item label="Causa da morte">
                 <Box>
                   <Input
                     fluid
-                    placeholder="Input Cause of Death..."
+                    placeholder="Causa de Entrada da Morte..."
                     value={cause_of_death}
                     onChange={(value) =>
                       act('set_cause_of_death', {
@@ -234,18 +234,18 @@ export const MedicalRecordView = (props) => {
                   </Button>
                 );
               })}
-              label="Mental Status"
+              label="Estado Mental"
             >
               <Box color={MENTALSTATUS2COLOR[mental_status]}>
                 {mental_status}
               </Box>
             </LabeledList.Item>
-            <LabeledList.Item label="Minor Disabilities">
+            <LabeledList.Item label="Deficiências Menores">
               {minor_disabilities_array.map((disability, index) => (
                 <Box key={index}>&#8226; {disability}</Box>
               ))}
             </LabeledList.Item>
-            <LabeledList.Item label="Major Disabilities">
+            <LabeledList.Item label="Grandes Deficiências">
               {major_disabilities_array.map((disability, index) => (
                 <Box key={index}>&#8226; {disability}</Box>
               ))}
@@ -256,12 +256,12 @@ export const MedicalRecordView = (props) => {
               ))}
             </LabeledList.Item>
             {/* SKYRAT EDIT START - RP Records (Not pretty but it's there) */}
-            <LabeledList.Item label="General Records">
+            <LabeledList.Item label="Registros Gerais">
               <Box maxWidth="100%" preserveWhitespace>
                 {past_general_records || 'N/A'}
               </Box>
             </LabeledList.Item>
-            <LabeledList.Item label="Past Medical Records">
+            <LabeledList.Item label="Registros médicos passados">
               <Box maxWidth="100%" preserveWhitespace>
                 {past_medical_records || 'N/A'}
               </Box>

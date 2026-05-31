@@ -1,7 +1,6 @@
 /obj/item/multitool/circuit
 	name = "circuit multitool"
-	desc = "A circuit multitool. Used to mark entities which can then be uploaded to components by pressing the upload button on a port. \
-	Acts as a normal multitool otherwise. Use in hand to clear marked entity so that you can mark another entity."
+	desc = "Um circuito multitool. Usado para marcar entidades que podem ser enviadas para componentes pressionando o botão de upload em uma porta. Atua como uma multitool normal, caso contrário. Use na mão para limpar a entidade marcada para que você possa marcar outra entidade."
 	icon_state = "multitool_circuit"
 	apc_scanner = FALSE // would conflict with mark clearing
 
@@ -14,7 +13,7 @@
 
 /obj/item/multitool/circuit/examine(mob/user)
 	. = ..()
-	. += span_notice("It has [marked_atom? "a" : "no"] marked entity registered.")
+	. += span_notice("Tem.[marked_atom? "a" : "no"]Entidade marcada registrada.")
 
 /obj/item/multitool/circuit/attack_self(mob/user, modifiers)
 	. = ..()
@@ -92,7 +91,7 @@
 	if(chosen == target || (chosen in (carbon_target ? carbon_target.get_visible_items() : target.get_equipped_items(INCLUDE_HELD))))
 		mark_target(chosen)
 	else
-		balloon_alert(user, "cannot mark entity")
+		balloon_alert(user, "Não pode marcar entidade.")
 
 /obj/item/multitool/circuit/proc/check_menu(mob/user, mob/living/target)
 	return !marked_atom && user.is_holding(src) && user.Adjacent(target)

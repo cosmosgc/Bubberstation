@@ -142,7 +142,7 @@ const IntroductionSection = (props) => {
             objectiveFollowup={
               <ReplaceObjectivesButton
                 can_change_objective={can_change_objective}
-                button_title={'Evolve New Directives'}
+                button_title={'Evolua Novas Direções'}
                 button_colour={'green'}
               />
             }
@@ -255,7 +255,7 @@ const MemoriesSection = (props) => {
     <Section
       fill
       scrollable={!!memories && !!memories.length}
-      title="Stolen Memories"
+      title="Memórias roubadas"
       buttons={
         <Button
           icon="info"
@@ -296,7 +296,7 @@ const VictimPatternsSection = (props) => {
     <Section
       fill
       scrollable={!!stolen_antag_info}
-      title="Additional Stolen Information"
+      title="Informações adicionais roubadas"
     >
       {(!!stolen_antag_info && stolen_antag_info) || (
         <Dimmer fontSize="20px">Absorb a victim first!</Dimmer>

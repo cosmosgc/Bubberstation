@@ -14,15 +14,7 @@
 /datum/martial_art/spiders_bite/activate_style(mob/living/new_holder)
 	. = ..()
 	RegisterSignal(new_holder, COMSIG_HUMAN_PUNCHED, PROC_REF(kick_disarm))
-	tackle_comp = new_holder.AddComponent(/datum/component/tackler, \
-		stamina_cost = 20, \
-		base_knockdown = 0.2 SECONDS, \
-		range = 5, \
-		speed = 1.5, \
-		skill_mod = 6, \
-		min_distance = 1, \
-		silent_gain = TRUE, \
-	)
+	tackle_comp = new_holder.AddComponent(/datum/component/tackler, 		stamina_cost = 20, 		base_knockdown = 0.2 SECONDS, 		range = 5, 		speed = 1.5, 		skill_mod = 6, 		min_distance = 1, 		silent_gain = TRUE, 	)
 
 /datum/martial_art/spiders_bite/deactivate_style(mob/living/old_holder)
 	. = ..()
@@ -49,9 +41,9 @@
 	if(isnull(weapon) || !target.dropItemToGround(weapon))
 		return
 	source.visible_message(
-		span_warning("[source] knocks [target]'s [weapon.name] out of [target.p_their()] hands with a kick!"),
-		span_notice("You channel the flow of gravity and knock [target]'s [weapon.name] out of [target.p_their()] hands with a kick!"),
-		span_hear("You hear a thud, followed by a clatter."),
+		span_warning("[source]Bate.[target]'s[weapon.name]Fora[target.p_their()]mãos com um chute!"),
+		span_notice("Você canaliza o fluxo da gravidade e bate[target]'s[weapon.name]Fora[target.p_their()]mãos com um chute!"),
+		span_hear("Você ouve um barulho, seguido por um barulho."),
 	)
 
 /datum/martial_art/spiders_bite/get_prefered_attacking_limb(mob/living/martial_artist, mob/living/target)
@@ -65,8 +57,4 @@
 	set desc = "Remember the Spider Bite technique used by the Spider Clan."
 	set category = "Spider's Bite"
 
-	to_chat(usr, span_info("<b><i>You retreat inward and recall the Spider Clan's techniques...</i></b>\n\
-		&bull; Remember, <b>Many Legged Spider</b>: Unarmed attacks against staggered opponents will always be kicks - granting you greater accuracy and damage.\n\
-		&bull; Remember, <b>Jump and Climb</b>: Right clicking on throw mode will perform a tackle which is far far less likely to fail.\n\
-		&bull; Remember, <b>Flow of Gravity</b>: Kicking opponents will have a chance to knock their weapons to the floor. The chance increases for each sequential kick.\n\
-		&bull; Remember, <b>Wrap in Web</b>: Your grabs will be harder to escape from."))
+	to_chat(usr, span_info("<b><i>Você recua para dentro e se lembra das técnicas do Clã Aranha...</i></b>\nLembre-se,<b>Muitas Aranhas Pernas</b>Ataques desarmados contra oponentes cambaleantes serão sempre chutes, garantindo maior precisão e dano.\nLembre-se,<b>Pule e suba.</b>Clicar com o botão direito no modo de lançamento fará um tackle que é muito menos provável que falhe.\nLembre-se,<b>Fluxo de gravidade</b>Os oponentes terão a chance de derrubar suas armas. A chance aumenta para cada chute sequencial.\nLembre-se,<b>Enrolar na Web</b>Sua captura será mais difícil de escapar."))

@@ -1,6 +1,6 @@
 /obj/machinery/computer/camera_advanced
 	name = "advanced camera console"
-	desc = "Used to access the various cameras on the station."
+	desc = "Costumava acessar as várias câmeras da estação."
 	icon_screen = "cameras"
 	icon_keyboard = "security_key"
 	light_color = COLOR_SOFT_RED
@@ -54,15 +54,10 @@
 	if(move_down_action)
 		actions += new move_down_action(src)
 	if(add_usb_port)
-		AddComponent(/datum/component/usb_port, \
-			typecacheof(list(
+		AddComponent(/datum/component/usb_port, 			typecacheof(list(
 				/obj/item/circuit_component/advanced_camera,
 				/obj/item/circuit_component/advanced_camera_intercept,
-				), \
-			), \
-			extra_registration_callback = PROC_REF(register_usb_port), \
-			extra_unregistration_callback = PROC_REF(unregister_usb_port) \
-		)
+				), 			), 			extra_registration_callback = PROC_REF(register_usb_port), 			extra_unregistration_callback = PROC_REF(unregister_usb_port) 		)
 
 /obj/machinery/computer/camera_advanced/Destroy()
 	unset_machine()
@@ -159,7 +154,7 @@
 	if(isnull(user.client))
 		return
 	if(!QDELETED(current_user))
-		to_chat(user, span_warning("The console is already in use!"))
+		to_chat(user, span_warning("O console já está em uso!"))
 		return
 
 	if(eyeobj)
@@ -169,7 +164,7 @@
 	/* We're attempting to initialize the eye past this point */
 
 	if(!CreateEye())
-		to_chat(user, span_warning("\The [src] flashes a bunch of never-ending errors on the display. Something is really wrong."))
+		to_chat(user, span_warning("\The [src]Faz um monte de erros intermináveis na tela. Algo está errado."))
 		return
 
 	SEND_SIGNAL(src, COMSIG_ADVANCED_CAMERA_EYE_CREATED, eyeobj)
@@ -259,9 +254,9 @@
 		return
 	var/mob/eye/camera/remote/remote_eye = owner.remote_control
 	if(remote_eye.zMove(UP))
-		to_chat(owner, span_notice("You move upwards."))
+		to_chat(owner, span_notice("Você vai para cima."))
 	else
-		to_chat(owner, span_notice("You can't move upwards!"))
+		to_chat(owner, span_notice("Você não pode se mover para cima!"))
 
 /datum/action/innate/camera_multiz_down
 	name = "Move down a floor"
@@ -273,9 +268,9 @@
 		return
 	var/mob/eye/camera/remote/remote_eye = owner.remote_control
 	if(remote_eye.zMove(DOWN))
-		to_chat(owner, span_notice("You move downwards."))
+		to_chat(owner, span_notice("Você vai para baixo."))
 	else
-		to_chat(owner, span_notice("You can't move downwards!"))
+		to_chat(owner, span_notice("Não pode descer!"))
 
 /obj/machinery/computer/camera_advanced/human_ai/screwdriver_act(mob/living/user, obj/item/tool)
 	balloon_alert(user, "repackaging...")
@@ -334,8 +329,8 @@
 /// Advanced camera component
 
 /obj/item/circuit_component/advanced_camera
-	display_name = "Advanced Camera Console"
-	desc = "Gets the position being viewed through the console."
+	display_name = "Console de Câmera Avançada"
+	desc = "Obtém a posição sendo vista através do console."
 
 	var/datum/port/output/eye_x
 	var/datum/port/output/eye_y
@@ -387,8 +382,8 @@
 /// Advanced camera target intercept component
 
 /obj/item/circuit_component/advanced_camera_intercept
-	display_name = "Advanced Camera Target Intercept"
-	desc = "Allows the user to target an entity or position with the console."
+	display_name = "Intercepto de alvo avançado da câmera"
+	desc = "Permite ao usuário direcionar uma entidade ou posição com o console."
 
 	var/datum/port/input/enabled
 

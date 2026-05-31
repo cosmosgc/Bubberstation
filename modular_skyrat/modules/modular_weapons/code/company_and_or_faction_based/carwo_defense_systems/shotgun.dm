@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/shotgun/riot/sol
 	name = "\improper Renoster Shotgun"
-	desc = "A twelve gauge shotgun with an eight shell capacity underneath. Made for and used by TerraGov's various military branches."
+	desc = "Uma espingarda de calibre 12 com capacidade de 8 balas embaixo. Feito e usado pelos vários ramos militares de Terragov."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/guns48x.dmi'
 	icon_state = "renoster"
@@ -39,18 +39,12 @@
 
 /obj/item/gun/ballistic/shotgun/riot/sol/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/shotgun/riot/sol/examine_more(mob/user)
 	. = ..()
 
-	. += "The Renoster was designed at its core as a police shotgun. \
-		As consequence, it holds all the qualities a police force would want \
-		in one. Large shell capacity, sturdy frame, while holding enough \
-		capacity for modification to satiate even the most overfunded of \
-		peacekeeper forces. Inevitably, the weapon made its way into civilian \
-		markets alongside its sale to several military branches that also \
-		saw value in having a heavy shotgun."
+	. += "The Renoster was designed at its core as a police shotgun. 		As consequence, it holds all the qualities a police force would want 		in one. Large shell capacity, sturdy frame, while holding enough 		capacity for modification to satiate even the most overfunded of 		peacekeeper forces. Inevitably, the weapon made its way into civilian 		markets alongside its sale to several military branches that also 		saw value in having a heavy shotgun."
 
 	return .
 
@@ -64,7 +58,7 @@
 // Shotgun but EVIL!
 
 /obj/item/gun/ballistic/shotgun/riot/sol/evil
-	desc = "A twleve gauge shotgun with an eight shell capacity underneath. This one is painted in a tacticool black."
+	desc = "Uma espingarda com oito balas por baixo. Este é pintado em um preto táctico."
 
 	icon_state = "renoster_evil"
 	worn_icon_state = "renoster_evil"

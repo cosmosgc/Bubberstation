@@ -30,7 +30,7 @@ export function NtosArcade(props) {
   return (
     <NtosWindow width={450} height={350}>
       <NtosWindow.Content>
-        <Section title="Outbomb Cuban Pete Ultra" textAlign="center">
+        <Section title="Bomba de Fogo Cubano Pete Ultra" textAlign="center">
           <Stack fill>
             <Stack.Item>
               <PlayerStats />
@@ -53,7 +53,7 @@ function PlayerStats(props) {
   return (
     <>
       <LabeledList>
-        <LabeledList.Item label="Player Health">
+        <LabeledList.Item label="Saúde do Jogador">
           <ProgressBar
             value={PlayerHitpoints}
             minValue={0}
@@ -68,7 +68,7 @@ function PlayerStats(props) {
             {PlayerHitpoints}HP
           </ProgressBar>
         </LabeledList.Item>
-        <LabeledList.Item label="Player Magic">
+        <LabeledList.Item label="Jogador Mágico">
           <ProgressBar
             value={PlayerMP}
             minValue={0}
@@ -124,7 +124,7 @@ function BottomButtons(props) {
     <>
       <Button
         icon="fist-raised"
-        tooltip="Go in for the kill!"
+        tooltip="Entrem para matar!"
         tooltipPosition="top"
         disabled={!GameActive || !!PauseState}
         onClick={() => act('Attack')}
@@ -133,7 +133,7 @@ function BottomButtons(props) {
       </Button>
       <Button
         icon="band-aid"
-        tooltip="Heal yourself!"
+        tooltip="Cure-se!"
         tooltipPosition="top"
         disabled={!GameActive || !!PauseState}
         onClick={() => act('Heal')}
@@ -142,7 +142,7 @@ function BottomButtons(props) {
       </Button>
       <Button
         icon="magic"
-        tooltip="Recharge your magic!"
+        tooltip="Recarregue sua magia!"
         tooltipPosition="top"
         disabled={!GameActive || !!PauseState}
         onClick={() => act('Recharge_Power')}
@@ -153,7 +153,7 @@ function BottomButtons(props) {
       <Box>
         <Button
           icon="sync-alt"
-          tooltip="One more game couldn't hurt."
+          tooltip="Mais um jogo não faria mal."
           tooltipPosition="top"
           disabled={!!GameActive}
           onClick={() => act('Start_Game')}
@@ -162,7 +162,7 @@ function BottomButtons(props) {
         </Button>
         <Button
           icon="ticket-alt"
-          tooltip="Claim at your local Arcade Computer for Prizes!"
+          tooltip="Reivindicação em seu computador local Arcade para prêmios!"
           tooltipPosition="top"
           disabled={!!GameActive}
           onClick={() => act('Dispense_Tickets')}

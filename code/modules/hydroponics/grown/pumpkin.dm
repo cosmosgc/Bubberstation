@@ -1,7 +1,7 @@
 // Pumpkin
 /obj/item/seeds/pumpkin
 	name = "pumpkin seed pack"
-	desc = "These seeds grow into pumpkin vines."
+	desc = "Estas sementes crescem em videiras de abóbora."
 	icon_state = "seed-pumpkin"
 	plant_icon_offset = 4
 	species = "pumpkin"
@@ -20,7 +20,7 @@
 /obj/item/food/grown/pumpkin
 	seed = /obj/item/seeds/pumpkin
 	name = "pumpkin"
-	desc = "It's large and scary."
+	desc = "É grande e assustador."
 	icon_state = "pumpkin"
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES
@@ -33,7 +33,7 @@
 
 /obj/item/food/grown/pumpkin/attackby(obj/item/W as obj, mob/user as mob, list/modifiers, list/attack_modifiers)
 	if(W.get_sharpness())
-		user.show_message(span_notice("You carve a face into [src]!"), MSG_VISUAL)
+		user.show_message(span_notice("Você entalha um rosto[src]!"), MSG_VISUAL)
 		new carved_type(user.loc)
 		qdel(src)
 		return
@@ -43,7 +43,7 @@
 // Blumpkin
 /obj/item/seeds/pumpkin/blumpkin
 	name = "blumpkin seed pack"
-	desc = "These seeds grow into blumpkin vines."
+	desc = "Essas sementes crescem em videiras."
 	icon_state = "seed-blumpkin"
 	species = "blumpkin"
 	plantname = "Blumpkin Vines"
@@ -55,7 +55,7 @@
 /obj/item/food/grown/pumpkin/blumpkin
 	seed = /obj/item/seeds/pumpkin/blumpkin
 	name = "blumpkin"
-	desc = "The pumpkin's toxic sibling."
+	desc = "A abóbora é um irmão tóxico."
 	icon_state = "blumpkin"
 	bite_consumption_mod = 3
 	wine_power = 50

@@ -14,12 +14,12 @@
 	SIGNAL_HANDLER
 	var/mob/currentmob = parent
 	if(currentmob && sourcemob && !(QDELETED(sourcemob)) && !(QDELETED(currentmob)))
-		to_chat(currentmob, span_warning("Your current body no longer anchoring you, your soul returns to your original body."))
+		to_chat(currentmob, span_warning("Seu corpo atual não mais ancorando você, sua alma retorna ao seu corpo original."))
 		sourcemob.ckey = currentmob.ckey
 		if(HAS_TRAIT_FROM(sourcemob, TRAIT_SACRIFICED, "sacrificed"))
 			REMOVE_TRAIT(sourcemob, TRAIT_SACRIFICED, "sacrificed")
 	else
-		to_chat(currentmob, span_warning("You were unable to return to your old body as it was destroyed."))
+		to_chat(currentmob, span_warning("Você foi incapaz de retornar ao seu antigo corpo como ele foi destruído."))
 	if(!QDELETED(src) && !deleting)
 		qdel(src)
 		deleting = TRUE

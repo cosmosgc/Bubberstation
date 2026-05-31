@@ -2,7 +2,7 @@
 
 /obj/machinery/recycler
 	name = "recycler"
-	desc = "A large crushing machine used to recycle small items inefficiently. There are lights on the side."
+	desc = "Uma grande máquina de esmagamento usada para reciclar pequenos itens ineficientemente. Há luzes ao lado."
 	icon = 'icons/obj/machines/recycling.dmi'
 	icon_state = "grinder-o0"
 	base_icon_state = "grinder-o"
@@ -20,18 +20,10 @@
 
 /obj/machinery/recycler/Initialize(mapload)
 	materials = new (
-		src, \
-		SSmaterials.get_materials_by_flag(MATERIAL_SILO_STORED), \
-		INFINITY, \
-		MATCONTAINER_NO_INSERT \
-	)
+		src, 		SSmaterials.get_materials_by_flag(MATERIAL_SILO_STORED), 		INFINITY, 		MATCONTAINER_NO_INSERT 	)
 	AddElement(/datum/element/simple_rotation)
 	AddComponent(
-		/datum/component/butchering/recycler, \
-		speed = 0.1 SECONDS, \
-		effectiveness = amount_produced, \
-		bonus_modifier = amount_produced / 5, \
-	)
+		/datum/component/butchering/recycler, 		speed = 0.1 SECONDS, 		effectiveness = amount_produced, 		bonus_modifier = amount_produced / 5, 	)
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -60,7 +52,7 @@
 
 /obj/machinery/recycler/examine(mob/user)
 	. = ..()
-	. += span_notice("Reclaiming <b>[amount_produced]%</b> of materials salvaged.")
+	. += span_notice("Reclamando<b>[amount_produced]%</b>de materiais recuperados.")
 	. += {"The power light is [(machine_stat & NOPOWER) ? "off" : "on"].
 	The safety-mode light is [safety_mode ? "on" : "off"].
 	The safety-sensors status light is [obj_flags & EMAGGED ? "off" : "on"]."}
@@ -71,7 +63,7 @@
 
 /obj/machinery/recycler/can_be_unfasten_wrench(mob/user, silent)
 	if(!(isfloorturf(loc) || isindestructiblefloor(loc)) && !anchored)
-		to_chat(user, span_warning("[src] needs to be on the floor to be secured!"))
+		to_chat(user, span_warning("[src]Precisa estar no chão para estar seguro!"))
 		return FAILED_UNFASTEN
 	return SUCCESSFUL_UNFASTEN
 
@@ -89,7 +81,7 @@
 		safety_mode = FALSE
 		update_appearance()
 	playsound(src, SFX_SPARKS, 75, TRUE, SILENCED_SOUND_EXTRARANGE)
-	balloon_alert(user, "travas desativadas")
+	balloon_alert(user, "Travas desativadas")
 	return FALSE
 
 /obj/machinery/recycler/update_icon_state()
@@ -157,7 +149,7 @@
 		if(thing.flags_1 & HOLOGRAM_1)
 			for(var/atom/movable/hologram_content as anything in thing.contents)
 				hologram_content.forceMove(loc) // we shouldn't qdel() the non-holographic content of the hologram.
-			visible_message(span_notice("[thing] fades away!"))
+			visible_message(span_notice("[thing]Desapareça!"))
 			qdel(thing)
 			continue
 
@@ -307,6 +299,6 @@
 
 /obj/item/paper/guides/recycler
 	name = "paper - 'garbage duty instructions'"
-	default_raw_text = "<h2>New Assignment</h2> You have been assigned to collect garbage from trash bins, located around the station. The crewmembers will put their trash into it and you will collect said trash.<br><br>There is a recycling machine near your closet, inside maintenance; use it to recycle the trash for a small chance to get useful minerals. Then, deliver these minerals to cargo or engineering. You are our last hope for a clean station. Do not screw this up!"
+	default_raw_text = "<h2>Nova atribuição</h2>Você foi designado para coletar lixo de lixeiras, localizadas ao redor da estação. Os tripulantes vão colocar seu lixo nele e você vai coletar o lixo dito.<br><br>Há uma máquina de reciclagem perto do seu armário, dentro da manutenção, use-a para reciclar o lixo para uma pequena chance de obter minerais úteis. Então, entregue esses minerais para carga ou engenharia. Você é nossa última esperança para uma estação limpa. Não estrague tudo!"
 
 #undef SAFETY_COOLDOWN

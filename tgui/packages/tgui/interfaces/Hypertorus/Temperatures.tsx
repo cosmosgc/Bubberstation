@@ -205,7 +205,7 @@ export const HypertorusTemperatures = (props) => {
   const show_max = label_legible(next_power_level_temperature, maxTemperature);
 
   return (
-    <Section title="Gas Monitoring">
+    <Section title="Monitoramento de gás">
       <Box className="hypertorus-temperatures__container">
         <Box className="hypertorus-temperatures__y-axis-marks">
           {show_min && (
@@ -214,13 +214,13 @@ export const HypertorusTemperatures = (props) => {
           <TemperatureLabel
             key="prev_fusion_temp"
             icon="chevron-down"
-            tooltip="Previous Fusion Level"
+            tooltip="Nível de Fusão Anterior"
             value={prev_power_level_temperature}
           />
           <TemperatureLabel
             key="next_fusion_temp"
             icon="chevron-up"
-            tooltip="Next Fusion Level"
+            tooltip="Próximo Nível de Fusão"
             value={next_power_level_temperature}
           />
           {show_max && (

@@ -36,7 +36,7 @@
 	attempt_remove(gun_to_draw, get_turf(user))
 	playsound(resolve_parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
 	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob, put_in_hands), gun_to_draw)
-	user.visible_message(span_warning("[user] draws [gun_to_draw] from [resolve_parent]!"), span_notice("You draw [gun_to_draw] from [resolve_parent]."))
+	user.visible_message(span_warning("[user]\"Desejos\"[gun_to_draw]De[resolve_parent]!"), span_notice("Você desenha.[gun_to_draw]De[resolve_parent]."))
 
 /*
 * GLASSES
@@ -57,7 +57,7 @@
 
 /obj/item/clothing/glasses/hud/eyepatch/sec/blindfold
 	name = "sec blindfold HUD"
-	desc = "a fake blindfold with a security HUD inside, helps you look like blind justice. This won't provide the same protection that you'd get from sunglasses."
+	desc = "Uma venda falsa com um HUD de segurança dentro, te ajuda a parecer justiça cega. Isso não fornecerá a mesma proteção que você teria dos óculos de sol."
 	icon_state =  "secfold"
 	base_icon_state =  "secfold"
 
@@ -101,7 +101,7 @@
 
 /obj/item/clothing/head/helmet/sec/click_alt(mob/user)
 	flipped_visor = !flipped_visor
-	balloon_alert(user, "visor flipped")
+	balloon_alert(user, "Viseira Virada")
 	// base_icon_state is modified for seclight attachment component
 	base_icon_state = "[initial(base_icon_state)][flipped_visor ? "-novisor" : ""]"
 	icon_state = base_icon_state
@@ -122,7 +122,7 @@
 
 /obj/item/clothing/head/helmet/sec/futuristic/click_alt(mob/user)
 	flipped_visor = !flipped_visor
-	balloon_alert(user, "visor flipped")
+	balloon_alert(user, "Viseira Virada")
 	// base_icon_state is modified for seclight attachment component
 	base_icon_state = "[initial(base_icon_state)][flipped_visor ? "-novisor" : ""]"
 	icon_state = base_icon_state
@@ -165,7 +165,7 @@
 //Not technically an override but oh well
 /obj/item/clothing/neck/security_cape
 	name = "security cape"
-	desc = "A fashionable cape worn by security officers."
+	desc = "Uma capa elegante usada por seguranças."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "cape_red"
@@ -175,12 +175,12 @@
 
 /obj/item/clothing/neck/security_cape/armplate
 	name = "security gauntlet"
-	desc = "A fashionable full-arm gauntlet worn by security officers. The gauntlet itself is made of plastic, and provides no protection, but it looks cool as hell."
+	desc = "Uma luva de braço cheio usada por seguranças. A luva em si é feita de plástico, e não fornece proteção, mas parece legal como o inferno."
 	icon_state = "armplate_red"
 
 /obj/item/clothing/neck/security_cape/click_alt(mob/user)
 	swapped = !swapped
-	to_chat(user, span_notice("You swap which arm [src] will lay over."))
+	to_chat(user, span_notice("Você troca qual braço[src]Deite-se."))
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
 
@@ -198,7 +198,7 @@
 */
 /obj/item/clothing/gloves/color/black/security
 	name = "security gloves"
-	desc = "A pair of security gloves."
+	desc = "Um par de luvas de segurança."
 	icon = 'icons/obj/clothing/gloves.dmi'
 	worn_icon = 'icons/mob/clothing/hands.dmi'
 	icon_state = "sec"
@@ -223,7 +223,7 @@
 */
 /obj/item/clothing/suit/armor/vest/alt/sec
 	name = "armored security vest"
-	desc = "A Type-II-AD-P armored vest that provides decent protection against most types of damage."
+	desc = "Um colete blindado tipo II-AD-P que fornece proteção decente contra a maioria dos danos."
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	icon_state = "armor_sec"
@@ -266,7 +266,7 @@
 
 //Standard Bulletproof Vest
 /obj/item/clothing/suit/armor/bulletproof
-	desc = "A Type-III-AD-P heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
+	desc = "Um colete pesado à prova de balas tipo III-AD-P que se destaca em proteger o usuário contra armas de projéteis e explosivos tradicionais em menor escala."
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //Riot Armor
@@ -283,7 +283,7 @@
 
 /obj/item/clothing/suit/cowboyvest
 	name = "blonde cowboy vest"
-	desc = "A white cream vest lined with... fur, of all things, for desert weather. There's a small deer head logo sewn into the vest."
+	desc = "Um colete de creme branco forrado com... pele, de todas as coisas, para o tempo do deserto. Há um pequeno logotipo de cabeça de veado costurado no colete."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "cowboy_vest"
@@ -294,7 +294,7 @@
 
 /obj/item/clothing/suit/jacket/det_suit/cowboyvest
 	name = "blonde cowboy vest"
-	desc = "A white cream vest lined with... fur, of all things, for desert weather. There's a small deer head logo sewn into the vest."
+	desc = "Um colete de creme branco forrado com... pele, de todas as coisas, para o tempo do deserto. Há um pequeno logotipo de cabeça de veado costurado no colete."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "cowboy_vest"
@@ -330,7 +330,7 @@
 */
 //Officer
 /obj/item/clothing/under/rank/security/officer
-	desc = "A tactical security uniform for officers, complete with a Lopland belt buckle."
+	desc = "Um uniforme de segurança tático para oficiais, completo com uma fivela de cinto Lopland."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "rsecurity"
@@ -354,7 +354,7 @@
 // DETECTIVE
 /obj/item/clothing/under/rank/security/detective/cowboy
 	name = "blonde cowboy uniform"
-	desc = "A blue shirt and dark jeans, with a pair of spurred cowboy boots to boot."
+	desc = "Camisa azul e jeans escuros, com um par de botas de cowboy."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'	//Donator item-ish? See the /armorless one below it
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
@@ -366,7 +366,7 @@
 
 /obj/item/clothing/under/rank/security/detective/runner
 	name = "runner sweater"
-	desc = "<i>\"You look lonely.\"</i>"
+	desc = "<i>\"Você parece solitário.\"</i>"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "runner"
@@ -439,55 +439,55 @@
 /// PRISONER
 /obj/item/clothing/under/rank/prisoner/protcust
 	name = "protective custody prisoner jumpsuit"
-	desc = "A mustard coloured prison jumpsuit, often worn by former Security members, informants and former CentCom employees. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "Um macacão da prisão de cor mostarda, usado por ex-membros da segurança, informantes e ex-funcionários da CentCom. Seus sensores de terno estão presos no\"Totalmente ligado.\"Posição."
 	icon_state = "/obj/item/clothing/under/rank/prisoner/protcust"
 	greyscale_colors = "#FFB600"
 
 /obj/item/clothing/under/rank/prisoner/skirt/protcust
 	name = "protective custody prisoner jumpskirt"
-	desc = "A mustard coloured prison jumpskirt, often worn by former Security members, informants and former CentCom employees. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "Uma saia preta da prisão, usada por ex-membros da segurança, informantes e ex-funcionários da CentCom. Seus sensores de terno estão presos no\"Totalmente ligado.\"Posição."
 	icon_state = "/obj/item/clothing/under/rank/prisoner/skirt/protcust"
 	greyscale_colors = "#FFB600"
 
 /obj/item/clothing/under/rank/prisoner/lowsec
 	name = "low security prisoner jumpsuit"
-	desc = "A pale, almost creamy prison jumpsuit, this one denotes a low security prisoner, things like fraud and anything white collar. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "Um macacão de prisão pálido, quase cremoso, este denota um prisioneiro de baixa segurança, coisas como fraude e colarinho branco. Seus sensores de terno estão presos no\"Totalmente ligado.\"Posição."
 	icon_state = "/obj/item/clothing/under/rank/prisoner/lowsec"
 	greyscale_colors = "#AB9278"
 
 /obj/item/clothing/under/rank/prisoner/skirt/lowsec
 	name = "low security prisoner jumpskirt"
-	desc = "A pale, almost creamy prison jumpskirt, this one denotes a low security prisoner, things like fraud and anything white collar. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "Uma saia pálida, quase cremosa, denota um prisioneiro de baixa segurança, coisas como fraude e colarinho branco. Seus sensores de terno estão presos no\"Totalmente ligado.\"Posição."
 	icon_state = "/obj/item/clothing/under/rank/prisoner/skirt/lowsec"
 	greyscale_colors = "#AB9278"
 
 /obj/item/clothing/under/rank/prisoner/highsec
 	name = "high risk prisoner jumpsuit"
-	desc = "A bright red prison jumpsuit, depending on who sees it, either a badge of honour or a sign to avoid. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "Um macacão vermelho, dependendo de quem o veja, um distintivo de honra ou um sinal para evitar. Seus sensores de terno estão presos no\"Totalmente ligado.\"Posição."
 	icon_state = "/obj/item/clothing/under/rank/prisoner/highsec"
 	greyscale_colors = "#FF3400"
 
 /obj/item/clothing/under/rank/prisoner/skirt/highsec
 	name = "high risk prisoner jumpskirt"
-	desc = "A bright red prison jumpskirt, depending on who sees it, either a badge of honour or a sign to avoid. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "Uma saia vermelha brilhante, dependendo de quem a veja, ou um distintivo de honra ou um sinal para evitar. Seus sensores de terno estão presos no\"Totalmente ligado.\"Posição."
 	icon_state = "/obj/item/clothing/under/rank/prisoner/skirt/highsec"
 	greyscale_colors = "#FF3400"
 
 /obj/item/clothing/under/rank/prisoner/supermax
 	name = "supermax prisoner jumpsuit"
-	desc = "A dark crimson red prison jumpsuit, for the worst of the worst, or the Clown. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "Um macacão vermelho escuro, para o pior dos piores, ou o palhaço. Seus sensores de terno estão presos no\"Totalmente ligado.\"Posição."
 	icon_state = "/obj/item/clothing/under/rank/prisoner/supermax"
 	greyscale_colors = "#992300"
 
 /obj/item/clothing/under/rank/prisoner/skirt/supermax
 	name = "supermax prisoner jumpskirt"
-	desc = "A dark crimson red prison jumpskirt, for the worst of the worst, or the Clown. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "Uma saia preta vermelha da prisão, para o pior dos piores, ou o palhaço. Seus sensores de terno estão presos no\"Totalmente ligado.\"Posição."
 	icon_state = "/obj/item/clothing/under/rank/prisoner/skirt/supermax"
 	greyscale_colors = "#992300"
 
 /obj/item/clothing/under/rank/prisoner/classic
 	name = "classic prisoner jumpsuit"
-	desc = "A black and white striped jumpsuit, like something out of a movie."
+	desc = "Um macacão listrado preto e branco, como algo saído de um filme."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
@@ -503,21 +503,21 @@
 
 /obj/item/clothing/under/rank/prisoner/syndicate
 	name = "syndicate prisoner jumpsuit"
-	desc = "A crimson red jumpsuit worn by syndicate captives. Its sensors have been shorted out."
+	desc = "Um macacão vermelho vermelho usado por prisioneiros do sindicato. Seus sensores estão curtos."
 	icon_state = "/obj/item/clothing/under/rank/prisoner/syndicate"
 	greyscale_colors = "#992300"
 	has_sensor = FALSE
 
 /obj/item/clothing/under/rank/prisoner/skirt/syndicate
 	name = "syndicate prisoner jumpskirt"
-	desc = "A crimson red jumpskirt worn by syndicate captives. Its sensors have been shorted out."
+	desc = "Uma saia vermelha vermelha usada por prisioneiros do sindicato. Seus sensores estão curtos."
 	icon_state = "/obj/item/clothing/under/rank/prisoner/skirt/syndicate"
 	greyscale_colors = "#992300"
 	has_sensor = FALSE
 
 /obj/item/clothing/under/rank/prisoner/syndicate/station
 	name = "syndicate prisoner jumpsuit"
-	desc = "A dark blood red prison jumpsuit, for the known Syndicate captives, valuable targets to CentCom and interrogation. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "Um macacão vermelho de sangue escuro, para os prisioneiros conhecidos do Sindicato, alvos valiosos para a CentCom e interrogatório. Seus sensores de terno estão presos no\"Totalmente ligado.\"Posição."
 	icon_state = "/obj/item/clothing/under/rank/prisoner/syndicate/station"
 	greyscale_colors = "#5c0000ff"
 
@@ -527,7 +527,7 @@
 //Adds reskins and special footstep noises
 /obj/item/clothing/shoes/jackboots/sec
 	name = "security jackboots"
-	desc = "Lopland's Peacekeeper-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
+	desc = "Botas de combate de segurança para cenários de combate ou situações de combate. Todo combate, o tempo todo."
 	icon_state = "jackboots_sec"
 	icon = 'icons/obj/clothing/shoes.dmi'
 	worn_icon = 'icons/mob/clothing/feet.dmi'
@@ -653,7 +653,7 @@
 		qdel(reskin_component)
 
 /obj/item/storage/belt/holster
-	desc = "A rather plain but still cool looking holster that can hold a handgun, and some ammo."
+	desc = "Um coldre bastante simples mas ainda legal que pode segurar uma arma, e alguma munição."
 
 /datum/storage/holster
 	max_slots = 3
@@ -685,7 +685,7 @@
 
 /obj/item/storage/belt/holster/detective
 	name = "detective's holster"
-	desc = "A holster able to carry handguns and extra ammo, thanks to an additional hand-sewn pouch. WARNING: Badasses only."
+	desc = "Um coldre capaz de carregar armas e munição extra, graças a uma bolsa costurada à mão adicional. ATENÇÃO: só badass."
 
 /datum/storage/holster/detective
 	max_slots = 4
@@ -864,7 +864,7 @@
 // turning one of the duplicate security winter jackets into a wintercoat
 /obj/item/clothing/suit/hooded/wintercoat/security/redsec
 	name = "security winter coat"
-	desc = "A winter coat with an armored vest resting atop it, perfect for those cold Freyja nights."
+	desc = "Um casaco de inverno com um colete blindado em cima, perfeito para as noites frias de Freyja."
 	icon_state = "coatsecurity_winter"
 	icon = 'modular_zubbers/icons/obj/clothing/suits/wintercoat.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/suits/wintercoat.dmi'
@@ -874,7 +874,7 @@
 
 /obj/item/clothing/head/hooded/winterhood/security/redsec
 	name = "security winter hood"
-	desc = "A red, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes."
+	desc = "Um capuz de inverno vermelho e blindado. Definitivamente não é à prova de balas, especialmente a parte em que seu rosto vai."
 	icon = 'modular_zubbers/icons/obj/clothing/head/winterhood.dmi'
 	icon_state = "winterhood_security"
 	worn_icon = 'modular_zubbers/icons/mob/clothing/head/winterhood.dmi'
@@ -885,7 +885,7 @@
 */
 
 /obj/item/clothing/suit/armor/vest/alt/sec/redsec
-	desc = "A Type I armored vest that provides decent protection against most types of damage."
+	desc = "Um colete blindado tipo I que fornece proteção decente contra a maioria dos danos."
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	icon_state = "armor_sec"
@@ -913,7 +913,7 @@
 */
 /obj/item/clothing/shoes/jackboots/sec/redsec
 	name = "jackboots"
-	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
+	desc = "Botas de combate de segurança para cenários de combate ou situações de combate. Todo combate, o tempo todo."
 	icon_state = "jackboots_sec"
 	icon = 'icons/obj/clothing/shoes.dmi'
 	worn_icon = 'icons/mob/clothing/feet.dmi'
@@ -926,7 +926,7 @@
 
 //Finally, a few description changes for items that couldn't get a resprite.
 /obj/item/clothing/head/bio_hood/security
-	desc = "A hood that protects the head and face from biological contaminants. This is a slightly outdated model from Nanotrasen Securities - you can hardly see through the foggy visor's ageing red. Hopefully it's still up to spec..."
+	desc = "Um capuz que protege a cabeça e o rosto de contaminantes biológicos. Este é um modelo um pouco desatualizado da Nanotrasen Securities - você mal consegue ver através do visor de nevoeiro envelhecendo vermelho. Espero que ainda esteja à altura..."
 
 /obj/item/clothing/suit/bio_suit/security
-	desc = "A suit that protects against biological contamination. This is a slightly outdated model from Nanotrasen Securities, using their red color-scheme and even outdated labelling. Hopefully it's still up to spec..."
+	desc = "Um processo que protege contra contaminação biológica. Este é um modelo ligeiramente desatualizado da Nanotrasen Securities, usando seu esquema de cor vermelha e até mesmo etiqueta desatualizada. Espero que ainda esteja à altura..."

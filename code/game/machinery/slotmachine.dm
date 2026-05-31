@@ -1,5 +1,4 @@
-/*******************************\
-|   SLOT MACHINES               |
+/*******************************|   SLOT MACHINES               |
 |   Original code by Glloyd     |
 |   Tgstation port by Miauw     |
 |   Tgui spin by stylemistake   |
@@ -21,7 +20,7 @@
 
 /obj/machinery/computer/slot_machine
 	name = "slot machine"
-	desc = "Gambling for the antisocial."
+	desc = "Jogando para o anti-social."
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "slots"
 	icon_keyboard = null
@@ -157,17 +156,17 @@
 				inserted_coin.throw_at(user, 3, 10)
 				if(prob(10))
 					balance = max(balance - SPIN_PRICE, 0)
-				to_chat(user, span_warning("[src] spits your coin back out!"))
+				to_chat(user, span_warning("[src]Cospe sua moeda de volta!"))
 				return ITEM_INTERACT_BLOCKING
 			else
 				if(!user.temporarilyRemoveItemFromInventory(inserted_coin))
 					return ITEM_INTERACT_BLOCKING
-				balloon_alert(user, "coin inserted")
+				balloon_alert(user, "Moeda inserida.")
 				balance += inserted_coin.value
 				qdel(inserted_coin)
 				return ITEM_INTERACT_SUCCESS
 		else
-			balloon_alert(user, "holochips only!")
+			balloon_alert(user, "Só holochips!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(inserted, /obj/item/holochip))
@@ -175,12 +174,12 @@
 			var/obj/item/holochip/inserted_chip = inserted
 			if(!user.temporarilyRemoveItemFromInventory(inserted_chip))
 				return ITEM_INTERACT_BLOCKING
-			balloon_alert(user, "[inserted_chip.credits] [MONEY_NAME_AUTOPURAL(inserted_chip.credits)] inserted")
+			balloon_alert(user, "[inserted_chip.credits] [MONEY_NAME_AUTOPURAL(inserted_chip.credits)]Inserido")
 			balance += inserted_chip.credits
 			qdel(inserted_chip)
 			return ITEM_INTERACT_SUCCESS
 		else
-			balloon_alert(user, "coins only!")
+			balloon_alert(user, "Só moedas!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/card/id/id_card = inserted.GetID()
@@ -207,9 +206,9 @@
 			name = msg
 
 		playsound(src, 'sound/machines/terminal/terminal_success.ogg', 50, TRUE)
-		desc = "Owned by [id_bank_account.account_holder], draws directly from [user.p_their()] account."
+		desc = "Propriedade de[id_bank_account.account_holder], tira diretamente de[user.p_their()]Conta."
 		house_bank_account = id_bank_account
-		to_chat(user, span_notice("You link the slot machine to [id_bank_account.account_holder]'s account."))
+		to_chat(user, span_notice("Você liga a máquina de fenda para[id_bank_account.account_holder]Uma conta."))
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
@@ -221,10 +220,10 @@
 
 	if(paymode == HOLOCHIP)
 		paymode = COIN
-		balloon_alert(user, "now using coins")
+		balloon_alert(user, "agora usando moedas")
 	else
 		paymode = HOLOCHIP
-		balloon_alert(user, "now using holochips")
+		balloon_alert(user, "agora usando holochips")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/computer/slot_machine/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -234,7 +233,7 @@
 	var/datum/effect_system/basic/spark_spread/spark_system = new(src.loc, 4, 0)
 	spark_system.start()
 	playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	balloon_alert(user, "machine rigged")
+	balloon_alert(user, "Máquina manipulada.")
 	return TRUE
 
 /obj/machinery/computer/slot_machine/ui_assets(mob/user)
@@ -332,7 +331,7 @@
 	var/the_name
 	if(user)
 		the_name = user.real_name
-		visible_message(span_notice("[user] pulls the lever and the slot machine starts spinning!"))
+		visible_message(span_notice("[user]Puxa a alavanca e a máquina de fenda começa a girar!"))
 		if(isliving(user))
 			var/mob/living/living_user = user
 			living_user.add_mood_event("slots_spin", /datum/mood_event/slots)
@@ -372,16 +371,16 @@
 /// Check if the machine can be spun
 /obj/machinery/computer/slot_machine/proc/can_spin(mob/user)
 	if(machine_stat & NOPOWER)
-		balloon_alert(user, "sem energia!")
+		balloon_alert(user, "Sem energia!")
 		return FALSE
 	if(machine_stat & BROKEN)
-		balloon_alert(user, "machine broken!")
+		balloon_alert(user, "Máquina quebrada!")
 		return FALSE
 	if(working)
-		balloon_alert(user, "already spinning!")
+		balloon_alert(user, "Já está girando!")
 		return FALSE
 	if(balance < SPIN_PRICE)
-		balloon_alert(user, "insufficient balance!")
+		balloon_alert(user, "equilíbrio insuficiente!")
 		return FALSE
 	return TRUE
 
@@ -452,13 +451,13 @@
 
 	else if(linelength == 3)
 		winning = WINNING_FREESPIN
-		balloon_alert(user, "won 3 free games!")
+		balloon_alert(user, "Ganhou 3 jogos grátis!")
 		balance += SPIN_PRICE * 4
 		money = max(money - SPIN_PRICE * 4, money)
 
 	else
 		winning = WINNING_NOTHING
-		balloon_alert(user, "no luck!")
+		balloon_alert(user, "Sem sorte!")
 		did_player_win = FALSE
 		user.add_mood_event(SLOTS_MOOD_CATEGORY, /datum/mood_event/slots/loss)
 
@@ -556,7 +555,7 @@
 
 /obj/machinery/computer/slot_machine/command
 	name = "command slot machine"
-	desc = "The handle is made of solid gold, and the screen is polished with the tears of overworked assistants."
+	desc = "O cabo é feito de ouro maciço, e a tela é polida com as lágrimas de assistentes sobrecarregados."
 	symbol_paths = list(
 		/obj/item/disk/nuclear,
 		/obj/item/clothing/accessory/medal/gold,
@@ -576,7 +575,7 @@
 
 /obj/machinery/computer/slot_machine/security
 	name = "security slot machine"
-	desc = "Repurposed from a confiscated syndicate gambling ring. Losing is a crime. Winning is also a crime."
+	desc = "Reutilizado de uma rede de apostas confiscada. Perder é um crime. Vencer também é crime."
 	symbol_paths = list(
 		/obj/item/food/donut/berry,
 		/mob/living/simple_animal/bot/secbot/beepsky,
@@ -596,7 +595,7 @@
 
 /obj/machinery/computer/slot_machine/medical
 	name = "medical slot machine"
-	desc = "A miracle of modern medicine! It cures boredom, but causes acute financial necrosis."
+	desc = "Um milagre da medicina moderna! Cura o tédio, mas causa necrose financeira aguda."
 	symbol_paths = list(
 		/obj/item/storage/medkit/brute,
 		/obj/vehicle/sealed/mecha/odysseus,
@@ -616,7 +615,7 @@
 
 /obj/machinery/computer/slot_machine/engineering
 	name = "engineering slot machine"
-	desc = "Gambling for those who think wearing insulated gloves makes them invincible. Ground yourself before playing."
+	desc = "Jogar para quem acha que usar luvas isoladas os torna invencíveis. Fique de castigo antes de jogar."
 	symbol_paths = list(
 		/obj/item/storage/toolbox/mechanical,
 		/obj/item/blueprints,
@@ -636,7 +635,7 @@
 
 /obj/machinery/computer/slot_machine/cargo
 	name = "cargo slot machine"
-	desc = "Every credit spent here is a credit that won't be spent on 'useless' things, like food or medicine."
+	desc = "Cada crédito gasto aqui é um crédito que não será gasto em coisas inúteis, como comida ou medicina."
 	symbol_paths = list(
 		/obj/item/bounty_cube,
 		/obj/item/clipboard,
@@ -656,7 +655,7 @@
 
 /obj/machinery/computer/slot_machine/service
 	name = "service slot machine"
-	desc = "The handle is a repurposed rolling pin. Every loss is just another ingredient for the daily special."
+	desc = "O cabo é um rolo repropósito. Cada perda é apenas outro ingrediente para o especial diário."
 	symbol_paths = list(
 		/obj/item/clothing/head/hats/tophat,
 		/obj/item/reagent_containers/cup/watering_can,
@@ -676,7 +675,7 @@
 
 /obj/machinery/computer/slot_machine/science
 	name = "research slot machine"
-	desc = "The reels seem to exist in multiple dimensions at once. It still takes your money in all of them."
+	desc = "Os rolos parecem existir em múltiplas dimensões ao mesmo tempo. Ainda leva seu dinheiro em todos eles."
 	symbol_paths = list(
 		/obj/item/stack/sheet/mineral/gold,
 		/obj/item/stack/sheet/mineral/silver,
@@ -695,7 +694,7 @@
 	. = ..()
 
 /obj/machinery/computer/slot_machine/clown
-	desc = "Gambling is fun! Smells like bananas, wet shoes, and regret. HONK!"
+	desc = "Jogar é divertido! Cheira a bananas, sapatos molhados e arrependimento. HONK!"
 	symbol_paths = list(
 		/obj/item/food/grown/banana,
 		/obj/item/toy/crayon/spraycan/lubecan,
@@ -714,7 +713,7 @@
 	. = ..()
 
 /obj/machinery/computer/slot_machine/mime
-	desc = "Gambling is a silent tragedy. The machine stares back at you with a cold indifference."
+	desc = "Jogar é uma tragédia silenciosa. A máquina olha para você com uma indiferença fria."
 	symbol_paths = list(
 		/obj/item/book/granter/action/spell/mime/mimery,
 		/obj/item/clothing/mask/gas/mime,
@@ -734,7 +733,7 @@
 
 /obj/machinery/computer/slot_machine/syndicate
 	name = "syndicate slot machine"
-	desc = "Gambling for the operative who's already lost everything. Death to Nanotrasen, and death to your wallet."
+	desc = "Jogando para o agente que já perdeu tudo. Morte a Nanotrasen, e morte à sua carteira."
 	symbol_paths = list(
 		/obj/machinery/nuclearbomb,
 		/obj/item/card/emag,

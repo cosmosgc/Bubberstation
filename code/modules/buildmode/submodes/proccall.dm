@@ -7,8 +7,7 @@
 
 /datum/buildmode_mode/proccall/show_help(client/builder)
 	to_chat(builder, span_purple(boxed_message(
-		"[span_bold("Choose procedure and arguments")] -> Right Mouse Button on buildmode button\n\
-		[span_bold("Apply procedure on object")] -> Left Mouse Button on machinery"))
+		"[span_bold("Choose procedure and arguments")] -> Right Mouse Button on buildmode button\n		[span_bold("Apply procedure on object")] -> Left Mouse Button on machinery"))
 	)
 
 /datum/buildmode_mode/proccall/change_settings(client/target_client)
@@ -25,15 +24,15 @@
 
 /datum/buildmode_mode/proccall/handle_click(client/target_client, params, datum/object as null|area|mob|obj|turf)
 	if(!proc_name || !proc_args)
-		tgui_alert(target_client, "Undefined ProcCall or arguments.")
+		tgui_alert(target_client, "ProcCall ou argumentos indefinidos.")
 		return
 
 	if(!hascall(object, proc_name))
-		to_chat(target_client, span_warning("Error: callproc_datum(): type [object.type] has no proc named [proc_name]."), confidential = TRUE)
+		to_chat(target_client, span_warning("Erro: callproc datum(): tipo[object.type]Não tem nenhum processo chamado[proc_name]."), confidential = TRUE)
 		return
 
 	if(!is_valid_src(object))
-		to_chat(target_client, span_warning("Error: callproc_datum(): owner of proc no longer exists."), confidential = TRUE)
+		to_chat(target_client, span_warning("Erro: Callproc datum(): o dono do processo não existe mais."), confidential = TRUE)
 		return
 
 

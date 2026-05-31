@@ -37,7 +37,7 @@
 	antag_memory += "Surprise is my weapon. Shadows are my armor. Without them, I am nothing.<br>"
 
 /datum/objective/cyborg_hijack
-	explanation_text = "Use your gloves to convert at least one cyborg to aid you in sabotaging the station."
+	explanation_text = "Use suas luvas para converter pelo menos um ciborgue para ajudá-lo a sabotar a estação."
 
 /datum/objective/door_jack
 	///How many doors that need to be opened using the gloves to pass the objective
@@ -47,13 +47,13 @@
 	var/area/detonation_location
 
 /datum/objective/security_scramble
-	explanation_text = "Use your gloves on a security console to set everyone to arrest at least once.  Note that the AI will be alerted once you begin!"
+	explanation_text = "Use suas luvas em um console de segurança para prender todos pelo menos uma vez. Note que a IA será alertada quando começar!"
 
 /datum/objective/terror_message
-	explanation_text = "Use your gloves on a communication console in order to bring another threat to the station.  Note that the AI will be alerted once you begin!"
+	explanation_text = "Use suas luvas em um console de comunicação para trazer outra ameaça para a estação. Note que a IA será alertada quando começar!"
 
 /datum/objective/research_secrets
-	explanation_text = "Use your gloves on a research & development server to sabotage research efforts.  Note that the AI will be alerted once you begin!"
+	explanation_text = "Use suas luvas em um servidor de pesquisa e desenvolvimento para sabotar esforços de pesquisa. Note que a IA será alertada quando começar!"
 
 /**
  * Proc that adds all the ninja's objectives to the antag datum.
@@ -106,9 +106,9 @@
 /datum/antagonist/ninja/greet()
 	. = ..()
 	SEND_SOUND(owner.current, sound('sound/music/antag/ninja_greeting.ogg'))
-	to_chat(owner.current, span_danger("I am an elite mercenary of the mighty Spider Clan!"))
-	to_chat(owner.current, span_warning("Surprise is my weapon. Shadows are my armor. Without them, I am nothing."))
-	to_chat(owner.current, span_notice("The station is located to your [dir2text(get_dir(owner.current, locate(world.maxx/2, world.maxy/2, owner.current.z)))]. A thrown ninja star will be a great way to get there."))
+	to_chat(owner.current, span_danger("Sou um mercenário de elite do poderoso Clã Aranha!"))
+	to_chat(owner.current, span_warning("Surpresa é minha arma. Sombras são minha armadura. Sem eles, não sou nada."))
+	to_chat(owner.current, span_notice("A estação está localizada ao seu[dir2text(get_dir(owner.current, locate(world.maxx/2, world.maxy/2, owner.current.z)))]Uma estrela ninja será uma ótima maneira de chegar lá."))
 	owner.announce_objectives()
 
 /datum/antagonist/ninja/on_gain() // BUBBER EDIT BEGIN- WHOLE PROC EDITS

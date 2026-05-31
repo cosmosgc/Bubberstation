@@ -51,7 +51,7 @@
 		return FALSE
 	if(camera_enabled)
 		if(alarm_manager.send_alarm(ALARM_MOTION, src, src))
-			visible_message(span_warning("A red light flashes on [src]!"))
+			visible_message(span_warning("Uma luz vermelha pisca[src]!"))
 	detectTime = -1
 	return TRUE
 

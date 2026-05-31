@@ -29,10 +29,10 @@
 		return FALSE
 	// No Mind!
 	if(!conversion_target.mind)
-		to_chat(owner.current, span_danger("[conversion_target] isn't self-aware enough to be made into a Ghoul."))
+		to_chat(owner.current, span_danger("[conversion_target]Não é autoconsciente o suficiente para ser transformado em um Ghoul."))
 		return FALSE
 	if(AmValidAntag(conversion_target) == GHOULING_BANNED)
-		to_chat(owner.current, span_danger("[conversion_target] resists the power of your blood to dominate their mind!"))
+		to_chat(owner.current, span_danger("[conversion_target]resiste ao poder de seu sangue para dominar sua mente!"))
 		return FALSE
 	var/mob/living/master = conversion_target.mind.enslaved_to?.resolve()
 	if(!master || (master == owner.current))
@@ -41,7 +41,7 @@
 	if(bloodsuckerdatum && bloodsuckerdatum.broke_masquerade)
 		//ghoul stealing
 		return TRUE
-	to_chat(owner.current, span_danger("[conversion_target]'s mind is overwhelmed with too much external force to put your own!"))
+	to_chat(owner.current, span_danger("[conversion_target]A mente está sobrecarregada com muita força externa para colocar a sua!"))
 	return FALSE
 
 /**

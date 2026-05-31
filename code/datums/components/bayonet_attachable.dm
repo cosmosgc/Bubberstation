@@ -87,12 +87,12 @@
 	SIGNAL_HANDLER
 
 	if(isnull(bayonet))
-		examine_list += "It has a <b>bayonet</b> lug on it."
+		examine_list += "Tem...<b>baioneta</b>Vamos lá."
 		return
 
-	examine_list += "It has \a [bayonet] [removable ? "" : "permanently "]affixed to it."
+	examine_list += "Tem.\a [bayonet] [removable ? "" : "permanently "]Afixado nele."
 	if(removable)
-		examine_list += span_info("[bayonet] looks like it can be <b>unscrewed</b> from [bayonet].")
+		examine_list += span_info("[bayonet]Parece que pode ser<b>\"Desenroso\".</b>De[bayonet].")
 
 /datum/component/bayonet_attachable/proc/on_pre_attack(obj/item/source, atom/target, mob/living/user, list/modifiers)
 	SIGNAL_HANDLER
@@ -111,7 +111,7 @@
 		return
 
 	if(bayonet)
-		source.balloon_alert(attacker, "already has \a [bayonet]!")
+		source.balloon_alert(attacker, "Já tem.\a [bayonet]!")
 		return
 
 	if(!attacker.transferItemToLoc(attacking_item, source))
@@ -162,7 +162,7 @@
 
 /datum/component/bayonet_attachable/proc/unscrew_bayonet(obj/item/source, mob/user, obj/item/tool)
 	tool?.play_tool_sound(source)
-	source.balloon_alert(user, "unscrewed [bayonet]")
+	source.balloon_alert(user, "\"Desenroso\".[bayonet]")
 
 	var/obj/item/to_remove = bayonet
 	to_remove.forceMove(source.drop_location())
@@ -204,7 +204,7 @@
 
 	if (!bayonet || allow_sawnoff)
 		return
-	source.balloon_alert(user, "bayonet must be removed!")
+	source.balloon_alert(user, "Baioneta deve ser removida!")
 	return COMPONENT_CANCEL_SAWING_OFF
 
 /datum/component/bayonet_attachable/proc/on_sawn_off(obj/item/source, mob/user)

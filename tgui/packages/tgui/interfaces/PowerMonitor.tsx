@@ -134,16 +134,16 @@ export function PowerMonitorContent(props) {
                 data={supplyData}
                 rangeX={[0, supplyData.length - 1]}
                 rangeY={[0, maxValue]}
-                strokeColor="rgba(0, 181, 173, 1)"
-                fillColor="rgba(0, 181, 173, 0.25)"
+                strokeColor="Rgba (0, 181, 173, 1)"
+                fillColor="(0, 181, 173, 0,25)"
               />
               <Chart.Line
                 fillPositionedParent
                 data={demandData}
                 rangeX={[0, demandData.length - 1]}
                 rangeY={[0, maxValue]}
-                strokeColor="rgba(224, 57, 151, 1)"
-                fillColor="rgba(224, 57, 151, 0.25)"
+                strokeColor="Rgba(224, 57, 151, 1)"
+                fillColor="Rgba(224, 57, 151, 0,25)"
               />
             </Section>
           </Flex.Item>
@@ -219,32 +219,32 @@ function StationAreas(props) {
               <Table.Cell textAlign="right" width={7}>
                 Draw
               </Table.Cell>
-              <Tooltip content="Equipment power">
+              <Tooltip content="Potência do equipamento">
                 <Table.Cell collapsing>Eqp</Table.Cell>
               </Tooltip>
-              <Tooltip content="Lighting power">
+              <Tooltip content="Poder de iluminação">
                 <Table.Cell collapsing>Lgt</Table.Cell>
               </Tooltip>
-              <Tooltip content="Environment power">
+              <Tooltip content="Poder ambiente">
                 <Table.Cell collapsing>Env</Table.Cell>
               </Tooltip>
             </Table.Row>
             {areas.map((area) => (
-              <tr key={area.id} className="Table__row candystripe">
+              <tr key={area.id} className="Candystripe">
                 <td>{area.name}</td>
-                <td className="Table__cell text-right text-nowrap">
+                <td className="Texto-direita texto-nowrap">
                   <AreaCharge charging={area.charging} charge={area.charge} />
                 </td>
-                <td className="Table__cell text-right text-nowrap">
+                <td className="Texto-direita texto-nowrap">
                   {area.load}
                 </td>
-                <td className="Table__cell text-center text-nowrap">
+                <td className="Text-center de célula de tabela text-nowrap">
                   <AreaStatusColorBox status={area.eqp} />
                 </td>
-                <td className="Table__cell text-center text-nowrap">
+                <td className="Text-center de célula de tabela text-nowrap">
                   <AreaStatusColorBox status={area.lgt} />
                 </td>
-                <td className="Table__cell text-center text-nowrap">
+                <td className="Text-center de célula de tabela text-nowrap">
                   <AreaStatusColorBox status={area.env} />
                 </td>
               </tr>

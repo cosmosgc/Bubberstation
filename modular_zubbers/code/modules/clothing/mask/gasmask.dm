@@ -6,8 +6,7 @@
 
 /obj/item/clothing/mask/gas/modulator
 	name = "modified gas mask"
-	desc = "An older model of gas mask issued for use on station to help protect against airborne hazards. This one appears to be \
-		heavily modified, and the filter assembly has been replaced with a voice modulator to make the wearer sound more robotic."
+	desc = "Um modelo antigo de máscara de gás emitido para uso na estação para ajudar a proteger contra riscos aéreos. Este parece ser fortemente modificado, e o conjunto de filtro foi substituído por um modulador de voz para fazer o usuário soar mais robótico."
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
 	max_filters = 0
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 0.55, /datum/material/glass = SMALL_MATERIAL_AMOUNT)
@@ -24,16 +23,15 @@
 
 /obj/item/clothing/mask/gas/modulator/examine(mob/user)
 	. = ..()
-	. += span_notice("Its voice modulator is currently [modulate_voice ? "enabled" : "disabled"]. <b>Alt-click</b> to toggle it.")
+	. += span_notice("Seu modulador de voz está atualmente[modulate_voice ? "enabled" : "disabled"]. <b>Alt-click</b>Para mudar.")
 
 /obj/item/clothing/mask/gas/modulator/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<i>You examine [src] closer, and notice a warning label on the side of the voice analyzer module.. \
-		\"Please enunciate words CLEARLY and PRECISELY for device to function.\"</i>")
+	. += span_notice("<i>Você examina.[src]Mais perto, e note um rótulo de aviso no lado do módulo analisador de voz.\"Por favor, enuncie palavras com clareza e precisão para o dispositivo funcionar.\"</i>")
 
 /obj/item/clothing/mask/gas/modulator/click_alt(mob/user)
 	modulate_voice = !modulate_voice
-	balloon_alert(user, "voice modulator [modulate_voice ? "enabled":"disabled"]")
+	balloon_alert(user, "Modulador de voz[modulate_voice ? "enabled":"disabled"]")
 	update_voice(user)
 
 	return CLICK_ACTION_SUCCESS

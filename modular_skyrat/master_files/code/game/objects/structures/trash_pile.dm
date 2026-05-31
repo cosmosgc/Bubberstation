@@ -2,7 +2,7 @@
 
 /obj/structure/trash_pile
 	name = "trash pile"
-	desc = "A heap of garbage, but maybe there's something interesting inside?"
+	desc = "Um monte de lixo, mas talvez haja algo interessante dentro?"
 	icon = 'modular_skyrat/master_files/icons/obj/trash_piles.dmi'
 	icon_state = "randompile"
 	density = TRUE
@@ -41,27 +41,27 @@
 		var/atom/hidden_atom = contents[contents.len] // Get the most recent hidden thing
 		if(istype(hidden_atom, /mob/living))
 			var/mob/living/hidden_mob = hidden_atom
-			balloon_alert(user, "someone is inside!")
+			balloon_alert(user, "Alguém está lá dentro!")
 			eject_mob(hidden_mob)
 		else if (istype(hidden_atom, /obj/item))
 			var/obj/item/hidden_item = hidden_atom
-			balloon_alert(user, "found something!")
+			balloon_alert(user, "Encontrei Algo!")
 			hidden_item.forceMove(src.loc)
 	else
 		// You already searched this one bruh
 		if(user.ckey in searchedby)
-			balloon_alert(user, "already searched!")
+			balloon_alert(user, "Já procurei!")
 		// You found an item!
 		else
 			produce_alpha_item()
-			balloon_alert(user, "found something!")
+			balloon_alert(user, "Encontrei Algo!")
 			searchedby += user.ckey
 
 /obj/structure/trash_pile/attack_hand(mob/user)
 	// Human mob
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
-		human_user.visible_message("[user] searches through \the [src].", span_notice("You search through \the [src]."))
+		human_user.visible_message("[user]buscas através\the [src].", span_notice("Você procura através\the [src]."))
 		// Do the searching
 		if(do_after(user, rand(4 SECONDS, 6 SECONDS), target = src))
 			if(src.loc) // Let's check if the pile still exists
@@ -93,14 +93,13 @@
 /obj/structure/trash_pile/proc/do_dive(mob/user)
 	if(contents.len)
 		for(var/mob/hidden_mob in contents)
-			balloon_alert(user, "already someone inside!")
+			balloon_alert(user, "Já tem alguém lá dentro!")
 			eject_mob(hidden_mob)
 			return FALSE
 	return TRUE
 
 /obj/structure/trash_pile/proc/dive_in_pile(mob/user)
-	user.visible_message(span_warning("[user] starts diving into [src]."), \
-								span_notice("You start diving into [src]..."))
+	user.visible_message(span_warning("[user]Começa a mergulhar[src]."), 								span_notice("Você começa a mergulhar em[src]..."))
 	var/adjusted_dive_time = hide_person_time
 	if(HAS_TRAIT(user, TRAIT_RESTRAINED)) // hiding takes twice as long when restrained.
 		adjusted_dive_time *= 2
@@ -118,11 +117,11 @@
 /obj/structure/trash_pile/attackby(obj/item/hidden_item, mob/living/user, params)
 	if(!user.combat_mode)
 		if(can_hide_item(hidden_item))
-			balloon_alert(user, "hiding item...")
+			balloon_alert(user, "Esconder itens...")
 			if(do_after(user, hide_item_time, user))
 				if(src.loc)
 					if(user.transferItemToLoc(hidden_item, src))
-						balloon_alert(user, "item hidden")
+						balloon_alert(user, "item escondido")
 					else
 						balloon_alert(user, "está preso na sua mão!")
 		else

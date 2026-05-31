@@ -2,12 +2,12 @@
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon
 	name = "Port Tarkon Crew Member"
-	prompt_name = "a port deck worker"
+	prompt_name = "Um trabalhador de convés portuário."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	you_are_text = "You are a member of Tarkon Industries, recently assigned to a recently recovered asset known as Port Tarkon. Your supervisors are the Ensign and Site Director."
-	flavour_text = "On the recently reclaimed Port Tarkon, You are tasked to help finish construction and carry on any tasks given by the site director. It may be best to look at your departmental noteboard. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
-	important_text = "You are not to abandon Port Tarkon. Check other sleepers for alternative jobs. Listen to the Site Director and Ensign."
+	you_are_text = "Você é membro das Indústrias Tarkon, recentemente designada para um ativo recentemente recuperado conhecido como Port Tarkon. Seus supervisores são o Alferes e Diretor do Site."
+	flavour_text = "No recentemente recuperado Port Tarkon, você está encarregado de ajudar a terminar a construção e realizar quaisquer tarefas dadas pelo diretor do site. Talvez seja melhor olhar para o seu caderno do departamento. (OOC nota: Este papel fantasma não foi projetado com Plasmamen ou Vox em mente. Enquanto existem algumas acomodações para que possam sobreviver, deve-se notar que não eram o ponto focal enquanto projetavam Port Tarkon. O armário no meio da sala acima contém as acomodações para essas espécies."
+	important_text = "Você não deve abandonar Port Tarkon. Verifique outros adormecidos para trabalhos alternativos. Ouça o Diretor do Site e o Alferes."
 	outfit = /datum/outfit/tarkon
 	faction = list(FACTION_TARKON)
 	spawner_job_path = /datum/job/tarkon
@@ -84,7 +84,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/cargo
 	name = "Port Tarkon Supply Crew Member"
-	prompt_name = "a port salvage tech"
+	prompt_name = "Uma tecnologia de salvamento de porto."
 	outfit = /datum/outfit/tarkon/cargo
 
 /datum/outfit/tarkon/cargo
@@ -104,12 +104,12 @@
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/sci
 	name = "Port Tarkon Research Crew Member"
-	prompt_name = "a port researcher"
+	prompt_name = "Um pesquisador de porto."
 	outfit = /datum/outfit/tarkon/sci
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/service
 	name = "Port Tarkon Service Crew Member"
-	prompt_name = "a port tarkon chef, and janitor"
+	prompt_name = "um chef porto Tarkon, e zelador"
 	outfit = /datum/outfit/tarkon/service
 
 /datum/outfit/tarkon/service
@@ -142,7 +142,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/med
 	name = "Port Tarkon Medical Crew Member"
-	prompt_name = "a port trauma medic"
+	prompt_name = "Um médico de trauma."
 	outfit = /datum/outfit/tarkon/med
 
 /datum/outfit/tarkon/med
@@ -164,7 +164,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/engi
 	name = "Port Tarkon Engineering Crew Member"
-	prompt_name = "a port maintenance engineer"
+	prompt_name = "um engenheiro de manutenção de porto"
 	outfit = /datum/outfit/tarkon/engi
 
 /datum/outfit/tarkon/engi
@@ -187,7 +187,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/sec
 	name = "Port Tarkon Security Crew Member"
-	prompt_name = "a port security member"
+	prompt_name = "Um membro da segurança do porto."
 	outfit = /datum/outfit/tarkon/sec
 
 /datum/outfit/tarkon/sec
@@ -210,12 +210,12 @@
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/ensign
 	name = "Port Tarkon Ensign"
-	prompt_name = "an abandoned ensign"
+	prompt_name = "Um alferes abandonado."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper-o"
-	you_are_text = "You were tasked by Tarkon Industries to Port Tarkon as a low-level command member. Your superior is the site director."
-	flavour_text = "Second in command, you are usually tasked with outward missions with other tarkon members while the site director stays at the port. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
-	important_text = "You are not to abandon Port Tarkon without reason. You are allowed to travel within available Z-levels and to the station, and are allowed to hold exploration parties."
+	you_are_text = "Você foi designado pelas Indústrias Tarkon para Port Tarkon como um membro de baixo nível de comando. Seu superior é o diretor do site."
+	flavour_text = "Segundo no comando, você geralmente é encarregado de missões externas com outros membros do Tarkon enquanto o diretor do site fica no porto. (OOC nota: Este papel fantasma não foi projetado com Plasmamen ou Vox em mente. Enquanto existem algumas acomodações para que possam sobreviver, deve-se notar que não eram o ponto focal enquanto projetavam Port Tarkon. O armário no meio da sala acima contém as acomodações para essas espécies."
+	important_text = "Você não deve abandonar Port Tarkon sem razão. Você está autorizado a viajar dentro de níveis Z disponíveis e para a estação, e está autorizado a realizar grupos de exploração."
 	outfit = /datum/outfit/tarkon/ensign
 	spawner_job_path = /datum/job/tarkon
 
@@ -236,12 +236,12 @@
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon/director
 	name = "Port Tarkon Site Director"
-	prompt_name = "a port site director"
+	prompt_name = "Um diretor do porto."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	you_are_text = "You are a newly assigned Site Director for Port Tarkon. Your superiors are none except the will of yourself and Tarkon Industries."
-	flavour_text = "On the recently reclaimed Port Tarkon, You are tasked with overlooking your crew and keeping the port up and running. (OOC note: This ghost role was not designed with Plasmamen or Vox in mind. While there are some accommodations so that they can survive, it should be noted that they were not the focal point whilst designing Port Tarkon. The closet in the middle of the room above contains the 'accommodations' for those species.)"
-	important_text = "You are not to abandon Port Tarkon. Check other sleepers for alternative jobs."
+	you_are_text = "Você é um novo Diretor de Site para Port Tarkon. Seus superiores não são ninguém, exceto você e as Indústrias Tarkon."
+	flavour_text = "No recentemente recuperado Port Tarkon, você está encarregado de ignorar sua tripulação e manter o porto funcionando. (OOC nota: Este papel fantasma não foi projetado com Plasmamen ou Vox em mente. Enquanto existem algumas acomodações para que possam sobreviver, deve-se notar que não eram o ponto focal enquanto projetavam Port Tarkon. O armário no meio da sala acima contém as acomodações para essas espécies."
+	important_text = "Você não deve abandonar Port Tarkon. Verifique outros adormecidos para trabalhos alternativos."
 	outfit = /datum/outfit/tarkon/director
 	spawner_job_path = /datum/job/tarkon
 
@@ -287,7 +287,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)
 
 /obj/structure/spawner/tarkon_xenos
 	name = "infested warren"
-	desc = "A deep tunnel that goes deeper than any light can reach. A distant roaring could be heard within..."
+	desc = "Um túnel profundo que vai mais fundo do que qualquer luz pode alcançar. Um rugido distante podia ser ouvido dentro..."
 	icon_state = "hole"
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	pressure_resistance = 200 //No more pressure cheating. Burn it and its reward or fight.
@@ -298,7 +298,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)
 		/mob/living/basic/alien/drone/tarkon,
 		/mob/living/basic/alien/sentinel
 	)
-	spawn_text = "crawls out of"
+	spawn_text = "Rasteja para fora"
 	faction = list(ROLE_ALIEN)
 	var/boss_mob = /mob/living/basic/alien/queen/large
 	var/loot_drop = /obj/effect/mob_spawn/corpse/human/tarkon
@@ -311,7 +311,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)
 
 /obj/effect/nest_break
 	name = "collapsing infested nest"
-	desc = "Stop standing and get clear!"
+	desc = "Pare de se levantar e saia!"
 	layer = TABLE_LAYER
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	icon_state = "hole"
@@ -324,21 +324,21 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)
 	for(var/mob/M in range(7,src))
 		shake_camera(M, 15, 1)
 	playsound(get_turf(src),'sound/effects/explosion/explosionfar.ogg', 200, TRUE)
-	visible_message(span_boldannounce("The nest's entrance starts to crumble before something charges forth!"))
+	visible_message(span_boldannounce("A entrada do ninho começa a desmoronar antes que algo avance!"))
 	new boss_mob(loc)
 	new loot_drop(loc)
 	qdel(src)
 
 /obj/effect/nest_break/Initialize(mapload)
 	. = ..()
-	visible_message(span_boldannounce("The nest rumbles violently as the entrance begins to crack and break apart!"))
+	visible_message(span_boldannounce("O ninho ruge violentamente quando a entrada começa a rachar e quebrar!"))
 	playsound(loc,'sound/effects/tendril_destroyed.ogg', 200, FALSE, 50, TRUE, TRUE)
 	addtimer(CALLBACK(src, PROC_REF(rustle)), 5 SECONDS)
 	do_jiggle_sr()
 
 /obj/structure/spawner/tarkon_xenos/common
 	name = "infested nest"
-	desc = "A deep tunnel lined with weeds, something can be heard stirring within..."
+	desc = "Um túnel profundo coberto de ervas daninhas, algo pode ser ouvido mexendo dentro..."
 	icon_state = "hole"
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	max_integrity = 300
@@ -349,7 +349,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod/tarkon, 32)
 
 /obj/structure/spawner/tarkon_xenos/minor
 	name = "infested tunnel"
-	desc = "A tunnel lined with weeds, something can be heard clicking deep within..."
+	desc = "Um túnel cheio de ervas daninhas, algo pode ser ouvido..."
 	icon_state = "hole"
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	max_integrity = 150

@@ -98,7 +98,7 @@
 		return NONE
 
 	if (ismob(source))
-		source.balloon_alert(source, "longe demais!")
+		source.balloon_alert(source, "Longe demais!")
 
 	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 
@@ -171,7 +171,7 @@
 		new force_teleport_in_effect(movable_parent.loc)
 
 	if (ismob(movable_parent))
-		movable_parent.balloon_alert(movable_parent, "moved out of range!")
+		movable_parent.balloon_alert(movable_parent, "Saiu faça aliança!")
 
 	SEND_SIGNAL(parent, COMSIG_LEASH_FORCE_TELEPORT)
 

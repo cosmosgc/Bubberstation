@@ -4,20 +4,20 @@
 
 /obj/item/clockwork/trap_placer/skewer
 	name = "brass skewer"
-	desc = "A spiked, brass skewer attached to a steam powered extension mechanism."
+	desc = "Um espeto de bronze ligado a um mecanismo de extensão movido a vapor."
 	icon_state = "brass_skewer_extended"
 	result_path = /obj/structure/destructible/clockwork/trap/skewer
-	clockwork_desc = "A skewer that can pierce through a target, activated by a linked trigger."
+	clockwork_desc = "Um espeto que pode atravessar um alvo, ativado por um gatilho ligado."
 
 /obj/structure/destructible/clockwork/trap/skewer
 	name = "brass skewer"
-	desc = "A spiked, brass skewer attached to a steam powered extension mechanism."
+	desc = "Um espeto de bronze ligado a um mecanismo de extensão movido a vapor."
 	icon_state = "brass_skewer"
 	component_datum = /datum/component/clockwork_trap/skewer
 	unwrench_path = /obj/item/clockwork/trap_placer/skewer
 	buckle_lying = FALSE
 	max_integrity = 40
-	clockwork_desc = "A skewer that can pierce through a target, activated by a linked trigger."
+	clockwork_desc = "Um espeto que pode atravessar um alvo, ativado por um gatilho ligado."
 	COOLDOWN_DECLARE(stab_cooldown)
 	/// If the spear is currently extended
 	var/extended = FALSE
@@ -49,7 +49,7 @@
 			continue
 
 		target_stabbed = TRUE
-		to_chat(stabbed_mob, span_userdanger("You are impaled by [src]!"))
+		to_chat(stabbed_mob, span_userdanger("Você está empalado por[src]!"))
 		stabbed_mob.emote("scream")
 		playsound(src, 'sound/machines/clockcult/brass_skewer.ogg')
 		stabbed_mob.apply_damage(SKEWER_DAMAGE, BRUTE, BODY_ZONE_CHEST)
@@ -72,10 +72,10 @@
 	if(!buckled_mob.break_do_after_checks())
 		return
 
-	balloon_alert(buckled_mob, "climbing off of [src]...")
+	balloon_alert(buckled_mob, "Subindo de[src]...")
 
 	if(!do_after(buckled_mob, 5 SECONDS, target = src))
-		balloon_alert(buckled_mob, "failed to climb off [src]")
+		balloon_alert(buckled_mob, "Não conseguiu descer.[src]")
 		return
 
 	return ..()

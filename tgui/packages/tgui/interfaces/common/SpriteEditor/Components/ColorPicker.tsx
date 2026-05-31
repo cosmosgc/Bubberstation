@@ -147,7 +147,7 @@ const Slider = (props: SliderProps) => {
             ...dimensions,
             style: {
               backgroundImage: backgroundImage,
-              outline: '2px solid black',
+              outline: '2px preto sólido',
               borderRadius: '2px',
             },
           })}
@@ -242,7 +242,7 @@ const SatValPad = (props: SatValPadProps) => {
             width: `${touchpadWidth}px`,
             height: `${touchpadWidth}px`,
             style: {
-              outline: '2px solid black',
+              outline: '2px preto sólido',
               backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)), linear-gradient(to right, ${hsva2hslString({ h: hue, s: 0, v: 1 })}, ${hsva2hslString({ h: hue, s: 1, v: 1 })})`,
             },
           })}
@@ -388,7 +388,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
                     crossLength="1.5em"
                     markerPosition={h / 360}
                     markerColor={hsva2hslString({ h, s: 1, v: 1, a: 1 })}
-                    backgroundImage="linear-gradient(to right in hsl longer hue, red, red)"
+                    backgroundImage="Gradiente linear (para a direita em hsl maior tonalidade, vermelho, vermelho)"
                     onDrag={(value) =>
                       setColor({ h: Math.round(value * 360), s, v, a })
                     }
@@ -418,7 +418,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
                 <LabeledList.Item verticalAlign="middle" label="H">
                   <PickerComponentRow
                     markerColor={hsva2hslString({ h, s: 1, v: 1, a: 1 })}
-                    backgroundImage="linear-gradient(to right in hsl longer hue, red, red)"
+                    backgroundImage="Gradiente linear (para a direita em hsl maior tonalidade, vermelho, vermelho)"
                     value={h}
                     max={360}
                     unit="°"
@@ -472,7 +472,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
                   <PickerComponentRow
                     markerColor={`rgb(${r}, 0, 0)`}
                     whiteMarkerBorder={r < 128}
-                    backgroundImage="linear-gradient(to right, black, rgb(255, 0, 0))"
+                    backgroundImage="Gradiente linear (à direita, preto, rgb(255, 0, 0))"
                     value={r}
                     max={255}
                     onDrag={(value) =>
@@ -488,7 +488,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
                   <PickerComponentRow
                     markerColor={`rgb(0, ${g}, 0)`}
                     whiteMarkerBorder={g < 128}
-                    backgroundImage="linear-gradient(to right, black, rgb(0, 255, 0))"
+                    backgroundImage="Gradiente linear (para a direita, preto, rgb (0, 255, 0)"
                     value={g}
                     max={255}
                     onDrag={(value) =>
@@ -504,7 +504,7 @@ export const ColorPicker = (props: ColorPickerProps) => {
                   <PickerComponentRow
                     markerColor={`rgb( 0, 0, ${b})`}
                     whiteMarkerBorder={b < 128}
-                    backgroundImage="linear-gradient(to right, black, rgb(0, 0, 255))"
+                    backgroundImage="(para a direita, preto, rgb (0, 0, 255))"
                     value={b}
                     max={255}
                     onDrag={(value) =>

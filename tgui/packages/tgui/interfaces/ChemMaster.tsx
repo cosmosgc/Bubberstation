@@ -139,7 +139,7 @@ const ChemMasterContent = (props: {
                 opacity: hasBeakerInHand ? 1 : 0.5,
               }}
               tooltip={
-                !hasBeakerInHand && 'You need to hold a container in your hand'
+                !hasBeakerInHand && 'Você precisa segurar um contêiner em sua mão.'
               }
               tooltipPosition="bottom-start"
             >
@@ -182,7 +182,7 @@ const ChemMasterContent = (props: {
               icon={isTransfering ? 'exchange-alt' : 'trash'}
               onClick={() => act('toggleTransferMode')}
             >
-              {isTransfering ? 'Moving reagents' : 'Destroying reagents'}
+              {isTransfering ? 'Reagentes em movimento.' : 'Destruindo reagentes.'}
             </Button>
           </>
         }
@@ -303,7 +303,7 @@ const ChemMasterContent = (props: {
             <Box
               lineHeight={1.9}
               style={{
-                textShadow: '1px 1px 0 black',
+                textShadow: '1px 1px 0 preto',
               }}
             >
               {`Printing ${printingProgress} out of ${printingTotal}`}
@@ -383,7 +383,7 @@ const ReagentEntry = (props: ReagentProps) => {
         </Button>
         <Button
           icon="ellipsis-h"
-          tooltip="Custom amount"
+          tooltip="Quantidade personalizada."
           disabled={isPrinting}
           onClick={() =>
             act('transfer', {
@@ -468,7 +468,7 @@ const AnalysisResults = (props: {
 
   return (
     <Section
-      title="Analysis Results"
+      title="Resultados da Análise"
       buttons={
         <Button icon="arrow-left" onClick={() => props.onExit()}>
           Back
@@ -493,13 +493,13 @@ const AnalysisResults = (props: {
           {color}
         </LabeledList.Item>
         <LabeledList.Item label="Description">{description}</LabeledList.Item>
-        <LabeledList.Item label="Metabolization Rate">
+        <LabeledList.Item label="Taxa de metabolização">
           {metaRate} units/second
         </LabeledList.Item>
-        <LabeledList.Item label="Overdose Threshold">
+        <LabeledList.Item label="Overdose Limiar">
           {overdose > 0 ? `${overdose} units` : 'N/A'}
         </LabeledList.Item>
-        <LabeledList.Item label="Addiction Types">
+        <LabeledList.Item label="Tipos de vício">
           {addictionTypes.length ? addictionTypes.toString() : 'N/A'}
         </LabeledList.Item>
       </LabeledList>

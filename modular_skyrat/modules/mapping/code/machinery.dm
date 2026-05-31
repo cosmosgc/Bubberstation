@@ -14,8 +14,8 @@
 /obj/item/gps/computer/space/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(I.use_tool(src, user, 20, volume=50))
-		user.visible_message(span_warning("[user] disassembles [src]."),
-			span_notice("You start to disassemble [src]..."), span_hear("You hear clanking and banging noises."))
+		user.visible_message(span_warning("[user]Desmonta[src]."),
+			span_notice("Você começa a desmontar[src]..."), span_hear("Você ouve barulhos."))
 		deconstruct(TRUE)
 	return TRUE
 

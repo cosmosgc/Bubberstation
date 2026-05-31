@@ -1,6 +1,6 @@
 /obj/machinery/power/manufacturing/lathe // this is a heavily gutted autolathe
 	name = "manufacturing lathe"
-	desc = "Lathes the set recipe until it runs out of resources. Only accepts sheets or other kinds of material stacks."
+	desc = "Torce a receita até ficar sem recursos. Só aceita lençóis ou outros tipos de pilhas de material."
 	icon_state = "lathe"
 	circuit = /obj/item/circuitboard/machine/manulathe
 	/// power cost for lathing
@@ -20,12 +20,7 @@
 
 /obj/machinery/power/manufacturing/lathe/Initialize(mapload)
 	print_sound = new(src,  FALSE)
-	materials = new ( \
-		src, \
-		SSmaterials.flat_materials, \
-		0, \
-		MATCONTAINER_EXAMINE|MATCONTAINER_NO_INSERT, \
-	)
+	materials = new ( 		src, 		SSmaterials.flat_materials, 		0, 		MATCONTAINER_EXAMINE|MATCONTAINER_NO_INSERT, 	)
 	register_context()
 	. = ..()
 	if(!GLOB.autounlock_techwebs[/datum/techweb/autounlocking/autolathe])
@@ -57,10 +52,10 @@
 	var/datum/design/design
 	if(!isnull(design_id))
 		design = SSresearch.techweb_design_by_id(design_id)
-	. += span_notice("It is set to print [!isnull(design) ? design.name : "nothing, set with a multitool"].")
+	. += span_notice("Está pronto para imprimir.[!isnull(design) ? design.name : "nothing, set with a multitool"].")
 	if(isnull(design))
 		return
-	. += span_notice("It needs:")
+	. += span_notice("Precisa de:")
 	for(var/valid_type, amount in design.materials)
 		var/atom/ingredient = valid_type
 

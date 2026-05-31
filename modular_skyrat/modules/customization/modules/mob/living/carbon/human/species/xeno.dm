@@ -58,14 +58,14 @@
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "biohazard",
 		SPECIES_PERK_NAME = "Xenomorphic Biology",
-		SPECIES_PERK_DESC = "Xeno-hybrids inherit organs from their primal ascendants."
+		SPECIES_PERK_DESC = "Xeno-híbridos herdam órgãos de seus ascendentes primitivos."
 	))
 
 	to_add += list(list(
 		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 		SPECIES_PERK_ICON = "fire",
 		SPECIES_PERK_NAME = "High Temperature Weakness",
-		SPECIES_PERK_DESC = "A partial silicone structure and acid blood make the xeno-hybrid species extremely weak to heat."
+		SPECIES_PERK_DESC = "Uma estrutura parcial de silicone e sangue ácido fazem com que a espécie xeno-híbrida seja extremamente fraca para aquecer."
 	))
 
 	return to_add
@@ -104,7 +104,7 @@
 
 /datum/action/cooldown/alien/make_structure/plant_weeds/Activate(atom/target)
 	if(build_duration && !do_after(owner, build_duration))
-		owner.balloon_alert(owner, "interrompido!")
+		owner.balloon_alert(owner, "Interrompido!")
 		return
 	return ..()
 

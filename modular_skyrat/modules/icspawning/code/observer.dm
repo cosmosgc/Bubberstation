@@ -156,7 +156,7 @@
 		var/list/custom_names = list()
 		for(var/datum/outfit/req_outfit in GLOB.custom_outfits)
 			custom_names[req_outfit.name] = req_outfit
-		var/selected_name = input("Select outfit", "Robust quick dress shop") as null|anything in sort_list(custom_names)
+		var/selected_name = input("Escolha a roupa.", "Loja de vestidos rápida e robusta.") as null|anything in sort_list(custom_names)
 		dresscode = custom_names[selected_name]
 		if(isnull(dresscode))
 			return

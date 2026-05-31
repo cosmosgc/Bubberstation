@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/hash
 	name = "hash"
-	desc = "Concentrated cannabis extract. Delivers a much better high when used in a bong."
+	desc = "Extrato de cannabis concentrado. Dá uma dose muito melhor quando usado em um cachimbo."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "hash"
 	volume = 20
@@ -9,7 +9,7 @@
 
 /obj/item/reagent_containers/hash/dabs
 	name = "dab"
-	desc = "Oil extract from cannabis plants. Just delivers a different type of hit."
+	desc = "Extrato de óleo de plantas de cannabis. Só entrega um tipo diferente de sucesso."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "dab"
 	volume = 40
@@ -18,7 +18,7 @@
 
 /obj/item/reagent_containers/hashbrick
 	name = "hash brick"
-	desc = "A brick of hash. Good for transport!"
+	desc = "Um tijolo de haxixe. Bom para o transporte!"
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "hashbrick"
 	volume = 80
@@ -27,9 +27,9 @@
 
 
 /obj/item/reagent_containers/hashbrick/attack_self(mob/user)
-	user.visible_message(span_notice("[user] starts breaking up the [src]."))
+	user.visible_message(span_notice("[user]começa a quebrar o[src]."))
 	if(do_after(user,10))
-		to_chat(user, span_notice("You finish breaking up the [src]."))
+		to_chat(user, span_notice("Você termina de quebrar o[src]."))
 		for(var/i = 1 to 4)
 			new /obj/item/reagent_containers/hash(user.loc)
 		qdel(src)
@@ -51,7 +51,7 @@
 
 /datum/export/crack/hashbrick
 	cost = CARGO_CRATE_VALUE * 2
-	unit_name = "hash brick"
+	unit_name = "Tijolo de haxixe"
 	export_types = list(/obj/item/reagent_containers/hashbrick)
 	include_subtypes = FALSE
 

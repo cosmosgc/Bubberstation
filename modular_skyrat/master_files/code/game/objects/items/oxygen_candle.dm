@@ -2,7 +2,7 @@
 
 /obj/item/oxygen_candle
 	name = "oxygen candle"
-	desc = "A steel tube with the words 'OXYGEN - PULL CORD TO IGNITE' stamped on the side.\nA small label reads <span class='warning'>'WARNING: NOT FOR LIGHTING USE. WILL IGNITE FLAMMABLE GASSES'</span>"
+	desc = "Um tubo de aço com as palavras 'Oxygen - PULL CORD TO IGNITE' estampado no lado.\nUm pequeno rótulo diz<span class='warning'>Não para uso de iluminação. IRÁ IGNTAR GASSES FLAMMÁVEIS</span>"
 	icon = 'modular_skyrat/master_files/icons/obj/oxygen_candle.dmi'
 	icon_state = "oxycandle"
 	w_class = WEIGHT_CLASS_SMALL
@@ -14,7 +14,7 @@
 /obj/item/oxygen_candle/attack_self(mob/user)
 	if(!pulled)
 		playsound(src, 'sound/effects/fuse.ogg', 75, 1)
-		balloon_alert(user, "cord pulled")
+		balloon_alert(user, "corda puxada")
 		icon_state = "oxycandle_burning"
 		pulled = TRUE
 		processing = TRUE

@@ -1,6 +1,6 @@
 /obj/item/bait_can
 	name = "can o bait"
-	desc = "there's a lot of them in there, getting them out takes a while though."
+	desc = "Há muitos deles lá dentro, tirá-los leva um tempo."
 	icon = 'icons/obj/fishing.dmi'
 	icon_state = "bait_can"
 	base_icon_state =  "bait_can"
@@ -22,7 +22,7 @@
 
 /obj/item/bait_can/examine(mob/user)
 	. = ..()
-	. += span_info("It[uses_left ? " has got [uses_left] [bait_type::name] left" : "'s empty"].")
+	. += span_info("Ele.[uses_left ? " has got [uses_left] [bait_type::name] left" : "'s empty"].")
 
 /obj/item/bait_can/update_icon_state()
 	. = ..()
@@ -38,7 +38,7 @@
 		user.balloon_alert(user, "empty")
 		return
 	if(!COOLDOWN_FINISHED(src, bait_removal_cooldown))
-		user.balloon_alert(user, "wait a bit")
+		user.balloon_alert(user, "Espere um pouco.")
 		return
 	COOLDOWN_START(src, bait_removal_cooldown, cooldown_time)
 	update_appearance()
@@ -47,23 +47,23 @@
 
 /obj/item/bait_can/worm
 	name = "can o' worm"
-	desc = "This can got worms."
+	desc = "Isso pode ter vermes."
 	bait_type = /obj/item/food/bait/worm
 
 /obj/item/bait_can/worm/premium
 	name = "can o' worm deluxe"
-	desc = "This can got fancy worms."
+	desc = "Isso pode ter vermes chiques."
 	bait_type = /obj/item/food/bait/worm/premium
 
 /obj/item/bait_can/super_baits
 	name = "can o' super-baits"
-	desc = "This can got the nectar of god."
+	desc = "Isso pode ter o néctar de Deus."
 	bait_type = /obj/item/food/bait/doughball/synthetic/super
 	uses_left = 12
 
 /obj/item/fishing_lure
 	name = "fishing lure"
-	desc = "It's just that, a plastic piece of fishing equipment, yet fish yearn with every last molecule of their bodies to take a bite of it."
+	desc = "É só que, um pedaço de plástico de equipamento de pesca, ainda peixe anseia com cada última molécula de seus corpos para dar uma mordida dele."
 	icon = 'icons/obj/fishing.dmi'
 	icon_state = "minnow"
 	w_class = WEIGHT_CLASS_SMALL
@@ -93,9 +93,9 @@
 
 /obj/item/fishing_lure/examine(mob/user)
 	. = ..()
-	. += span_info("It has to be spun with a frequency of [spin_frequency[1] * 0.1] to [spin_frequency[2] * 0.1] seconds while fishing.")
+	. += span_info("Tem que ser girado com uma frequência de[spin_frequency[1] * 0.1]para[spin_frequency[2] * 0.1]segundos enquanto pescava.")
 	if(HAS_MIND_TRAIT(user, TRAIT_EXAMINE_FISHING_SPOT))
-		. += span_tinynotice("Thanks to your experience, you can examine it again to get a list of fish you can catch with it.")
+		. += span_tinynotice("Graças à sua experiência, você pode examiná-lo novamente para obter uma lista de peixes que você pode pegar com ele.")
 
 /obj/item/fishing_lure/examine_more(mob/user)
 	. = ..()
@@ -110,7 +110,7 @@
 	if(!length(known_fishes))
 		return
 
-	. += span_info("You can catch the following fish with this lure: [english_list(known_fishes)].")
+	. += span_info("Você pode pegar o seguinte peixe com esta isca:[english_list(known_fishes)].")
 
 ///Check if the fish is in the list of catchable fish for this fishing lure. Return value is a multiplier.
 /obj/item/fishing_lure/check_bait(obj/item/fish/fish)
@@ -128,7 +128,7 @@
 
 /obj/item/fishing_lure/minnow
 	name = "artificial minnow"
-	desc = "A fishing lure that may attract small fish. Too tiny, too large, or too picky prey won't be interested in it, though."
+	desc = "Uma isca de pesca que pode atrair peixes pequenos. Muito pequeno, muito grande, ou presa muito exigente não estará interessado nele, embora."
 	icon_state = "minnow"
 
 /obj/item/fishing_lure/minnow/is_catchable_fish(obj/item/fish/fish, list/fish_properties)
@@ -141,7 +141,7 @@
 
 /obj/item/fishing_lure/plug
 	name = "artificial plug lure"
-	desc = "A bigger fishing lure that may attract larger fish. Tiny or picky prey will remain uninterested."
+	desc = "Uma isca de pesca maior que pode atrair peixes maiores. Pequenas ou exigentes presas permanecerão desinteressadas."
 	icon_state = "plug"
 
 /obj/item/fishing_lure/plug/is_catchable_fish(obj/item/fish/fish, list/fish_properties)
@@ -153,7 +153,7 @@
 
 /obj/item/fishing_lure/dropping
 	name = "plastic dropping"
-	desc = "A fishing lure to catch all sort of slimy, ratty, disgusting and/or junk-loving fish."
+	desc = "Uma isca de pesca para pegar todo tipo de peixe nojento, nojento e/ou amante de lixo."
 	icon_state = "dropping"
 	spin_frequency = list(1.5 SECONDS, 2.8 SECONDS)
 
@@ -173,7 +173,7 @@
 
 /obj/item/fishing_lure/spoon
 	name = "\improper Indy spoon lure"
-	desc = "A lustrous piece of metal mimicking the scales of a fish. It specializes in catching small-to-medium-sized fish that live in freshwater."
+	desc = "Um pedaço de metal brilhante imitando as escamas de um peixe. É especializada em pegar peixes pequenos a médios que vivem em água doce."
 	icon_state = "spoon"
 	spin_frequency = list(1.25 SECONDS, 2.25 SECONDS)
 
@@ -191,7 +191,7 @@
 
 /obj/item/fishing_lure/artificial_fly
 	name = "\improper Silkbuzz artificial fly"
-	desc = "A fishing lure resembling a large wooly fly. Unlike most other lures, it's fancy enough to catch the interest of picky fish, but only those."
+	desc = "Uma isca de pesca parecida com uma grande mosca de lã. Ao contrário da maioria das outras iscas, é chique o suficiente para pegar o interesse de peixes exigentes, mas só aqueles."
 	icon_state = "artificial_fly"
 	spin_frequency = list(1.1 SECONDS, 2 SECONDS)
 
@@ -202,7 +202,7 @@
 
 /obj/item/fishing_lure/led
 	name = "\improper LED fishing lure"
-	desc = "A heavy, waterproof and fish-looking LED stick, specialized to catch only nocturnal and deep-dwelling fish."
+	desc = "Um stick LED pesado, impermeável e com aparência de peixe, especializado para pegar apenas peixes noturnos e profundos."
 	icon_state = "led"
 	spin_frequency = list(3 SECONDS, 3.8 SECONDS)
 
@@ -229,7 +229,7 @@
 
 /obj/item/fishing_lure/lucky_coin
 	name = "\improper Maneki-Coin lure"
-	desc = "A faux-gold lure. Catches the attention of fishies that love shinies. Not nearly tasty-looking enough for anything else."
+	desc = "Uma isca de ouro falso. Pega a atenção de peixes que amam brilhos. Não parece muito saboroso para qualquer outra coisa."
 	icon_state = "lucky_coin"
 	spin_frequency = list(1.5 SECONDS, 2.7 SECONDS)
 
@@ -248,7 +248,7 @@
 
 /obj/item/fishing_lure/algae
 	name = "plastic algae lure"
-	desc = "A soft clump of fake algae. Herbivores love it. Nothing else does, not even omnivores."
+	desc = "Um grupo macio de algas falsas. Herbívoros adoram. Nada mais faz, nem mesmo omnívoros."
 	icon_state = "algae"
 	spin_frequency = list(3 SECONDS, 5 SECONDS)
 
@@ -259,7 +259,7 @@
 
 /obj/item/fishing_lure/grub
 	name = "\improper Twister Worm lure"
-	desc = "A soft plastic lure with the body of a grub and a twisting tail. Specialized for catching small fish, as long as they aren't herbivores, picky, or picky herbivores."
+	desc = "Uma isca de plástico macia com o corpo de uma larvas e uma cauda giratória. Especializado para pegar pequenos peixes, contanto que não sejam herbívoros, exigentes ou exigentes herbívoros."
 	icon_state = "grub"
 	spin_frequency = list(1 SECONDS, 2.7 SECONDS)
 
@@ -272,7 +272,7 @@
 
 /obj/item/fishing_lure/buzzbait
 	name = "\improper Electric-Buzz lure"
-	desc = "A metallic, colored clanker attached to a series of cables that somehow attract shock-worthy fish."
+	desc = "Um lanco metálico, colorido, ligado a uma série de cabos que de alguma forma atraem peixes dignos de choque."
 	icon_state = "buzzbait"
 	spin_frequency = list(0.8 SECONDS, 1.7 SECONDS)
 
@@ -283,7 +283,7 @@
 
 /obj/item/fishing_lure/spinnerbait
 	name = "spinnerbait lure"
-	desc = "A spinny, vulnerable lure, great for attracting freshwater predators, though omnivores won't be interested in it."
+	desc = "Uma isca instável, vulnerável, ótima para atrair predadores de água doce, embora omnívoros não estejam interessados nisso."
 	icon_state = "spinnerbait"
 	spin_frequency = list(2 SECONDS, 4 SECONDS)
 
@@ -299,7 +299,7 @@
 
 /obj/item/fishing_lure/daisy_chain
 	name = "daisy chain lure"
-	desc = "A lure resembling a small school of fish. Saltwater predators love it, but not much else will."
+	desc = "Uma isca parecida com uma pequena escola de peixes. Predadores de água salgada adoram, mas não muito mais."
 	icon_state = "daisy_chain"
 	spin_frequency = list(2 SECONDS, 4 SECONDS)
 

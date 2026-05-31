@@ -5,7 +5,7 @@
 
 /obj/machinery/portable_atmospherics/canister
 	name = "canister"
-	desc = "A canister for the storage of gas."
+	desc = "Um recipiente para o armazenamento de gás."
 	icon = 'icons/map_icons/objects.dmi'
 	icon_state = "/obj/machinery/portable_atmospherics/canister"
 	post_init_icon_state = ""
@@ -81,7 +81,7 @@
 /obj/machinery/portable_atmospherics/canister/interact(mob/user)
 	. = ..()
 	if(!allowed(user))
-		to_chat(user, span_alert("Error - Unauthorized User."))
+		to_chat(user, span_alert("Erro - Usuário não autorizado."))
 		playsound(src, 'sound/machines/compiler/compiler-failure.ogg', 50, TRUE)
 		return
 
@@ -108,22 +108,22 @@
 /obj/machinery/portable_atmospherics/canister/examine(user)
 	. = ..()
 	if(atom_integrity < max_integrity)
-		. += span_notice("Integrity compromised, repair hull with a welding tool.")
-	. += span_notice("A sticker on its side says <b>MAX SAFE PRESSURE: [siunit_pressure(initial(pressure_limit), 0)]; MAX SAFE TEMPERATURE: [siunit(temp_limit, "K", 0)]</b>.")
-	. += span_notice("The hull is <b>welded</b> together and can be cut apart.")
+		. += span_notice("Integridade comprometida, reparar casco com uma ferramenta de solda.")
+	. += span_notice("Um adesivo de seu lado diz<b>Pressão máxima segura:[siunit_pressure(initial(pressure_limit), 0)]Temperatura Max Seguro:[siunit(temp_limit, "K", 0)]</b>.")
+	. += span_notice("O casco é<b>Soldado.</b>Juntas e podem ser separadas.")
 	if(internal_cell)
-		. += span_notice("The internal cell has [internal_cell.percent()]% of its total charge.")
+		. += span_notice("A célula interna tem[internal_cell.percent()]De sua carga total.")
 	else
-		. += span_notice("Warning, no cell installed, use a screwdriver to open the hatch and insert one.")
+		. += span_notice("Aviso, nenhuma célula instalada, use uma chave de fenda para abrir a escotilha e inserir uma.")
 	if(panel_open)
-		. += span_notice("Hatch open, close it with a screwdriver.")
+		. += span_notice("Abra, feche com uma chave de fenda.")
 
 // Please keep the canister types sorted
 // Basic canister per gas below here
 
 /obj/machinery/portable_atmospherics/canister/air
 	name = "Air canister"
-	desc = "Pre-mixed air."
+	desc = "Ar pré-misturado."
 	icon_state = "/obj/machinery/portable_atmospherics/canister/air"
 	post_init_icon_state = ""
 	greyscale_config = /datum/greyscale_config/canister
@@ -303,7 +303,7 @@
 
 /obj/machinery/portable_atmospherics/canister/fusion_test
 	name = "fusion test canister"
-	desc = "Don't be a badmin."
+	desc = "Não seja mau."
 	temp_limit = 1e12
 	pressure_limit = 1e14
 
@@ -316,7 +316,7 @@
 
 /obj/machinery/portable_atmospherics/canister/anesthetic_mix
 	name = "Anesthetic mix"
-	desc = "A mixture of N2O and Oxygen"
+	desc = "Uma mistura de N2O e oxigênio."
 	icon_state = "/obj/machinery/portable_atmospherics/canister/anesthetic_mix"
 	post_init_icon_state = ""
 	greyscale_config = /datum/greyscale_config/canister/double_stripe
@@ -420,15 +420,15 @@
 	if(istype(item, /obj/item/stock_parts/power_store/cell))
 		var/obj/item/stock_parts/power_store/cell/active_cell = item
 		if(!panel_open)
-			balloon_alert(user, "open hatch first!")
+			balloon_alert(user, "Abra a escotilha primeiro!")
 			return TRUE
 		if(!user.transferItemToLoc(active_cell, src))
 			return TRUE
 		if(internal_cell)
 			user.put_in_hands(internal_cell)
-			balloon_alert(user, "you replace the cell")
+			balloon_alert(user, "Você substitui a célula.")
 		else
-			balloon_alert(user, "you install the cell")
+			balloon_alert(user, "Você instala a célula.")
 		internal_cell = active_cell
 		return TRUE
 	return ..()
@@ -450,12 +450,12 @@
 
 	var/pressure = air_contents.return_pressure()
 	if(pressure > 300)
-		to_chat(user, span_alert("The pressure gauge on [src] indicates a high pressure inside... maybe you want to reconsider?"))
+		to_chat(user, span_alert("O medidor de pressão ligado.[src]indica uma alta pressão dentro... talvez queira reconsiderar?"))
 		message_admins("[src] deconstructed by [ADMIN_LOOKUPFLW(user)]")
 		user.log_message("deconstructed [src] with a welder.", LOG_GAME)
-	to_chat(user, span_notice("You begin cutting [src] apart..."))
+	to_chat(user, span_notice("Você começa a cortar[src]Separados..."))
 	if(I.use_tool(src, user, 3 SECONDS, volume=50))
-		to_chat(user, span_notice("You cut [src] apart."))
+		to_chat(user, span_notice("Você cortou.[src]Separados."))
 		deconstruct(TRUE)
 
 	return ITEM_INTERACT_SUCCESS

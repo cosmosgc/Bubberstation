@@ -17,7 +17,7 @@
 
 /obj/structure/mirror
 	name = "mirror"
-	desc = "Mirror mirror on the wall, who's the most robust of them all?"
+	desc = "Espelho espelho na parede, quem é o mais robusto de todos?"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
 	movement_type = FLOATING
@@ -48,13 +48,7 @@
 	. = ..()
 	var/static/list/reflection_filter = alpha_mask_filter(icon = icon('icons/obj/watercloset.dmi', "mirror_mask"))
 	var/static/matrix/reflection_matrix = matrix(0.75, 0, 0, 0, 0.75, 0)
-	AddComponent(/datum/component/reflection, \
-		reflection_filter = reflection_filter, \
-		reflection_matrix = reflection_matrix, \
-		can_reflect = CALLBACK(src, PROC_REF(can_reflect)), \
-		update_signals = list(COMSIG_ATOM_BREAK), \
-		check_reflect_signals = list(SIGNAL_ADDTRAIT(TRAIT_NO_MIRROR_REFLECTION), SIGNAL_REMOVETRAIT(TRAIT_NO_MIRROR_REFLECTION)), \
-	)
+	AddComponent(/datum/component/reflection, 		reflection_filter = reflection_filter, 		reflection_matrix = reflection_matrix, 		can_reflect = CALLBACK(src, PROC_REF(can_reflect)), 		update_signals = list(COMSIG_ATOM_BREAK), 		check_reflect_signals = list(SIGNAL_ADDTRAIT(TRAIT_NO_MIRROR_REFLECTION), SIGNAL_REMOVETRAIT(TRAIT_NO_MIRROR_REFLECTION)), 	)
 	if(mapload)
 		find_and_mount_on_atom()
 	update_choices()
@@ -89,12 +83,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
 /obj/structure/mirror/wrench_act_secondary(mob/living/user, obj/item/tool)
 	if(!deconstructable)
-		balloon_alert(user, "magic prevents detaching!")
+		balloon_alert(user, "A magia impede o desapego!")
 		return NONE
-	user.visible_message(span_notice("[user] starts detaching [src]..."), span_notice("You start detaching [src]..."))
+	user.visible_message(span_notice("[user]Começa a se separar.[src]..."), span_notice("Você começa a se separar.[src]..."))
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 3 SECONDS))
-		user.visible_message(span_notice("[user] detaches [src]!"), span_notice("You detach [src] from the wall."))
+		user.visible_message(span_notice("[user]Detaches[src]!"), span_notice("Você se desprende.[src]Da parede."))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 		deconstruct()
 		return ITEM_INTERACT_SUCCESS
@@ -138,9 +132,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 /obj/structure/mirror/proc/change_beard(mob/living/carbon/human/beard_dresser)
 	if(beard_dresser.physique == FEMALE)
 		if(beard_dresser.facial_hairstyle == "Shaved")
-			balloon_alert(beard_dresser, "nothing to shave!")
+			balloon_alert(beard_dresser, "Nada para se barbear!")
 			return
-		var/shave_beard = tgui_alert(beard_dresser, "Shave your beard?", "Grooming", list("Yes", "No"))
+		var/shave_beard = tgui_alert(beard_dresser, "Raspe sua barba?", "Grooming", list("Yes", "No"))
 		if(shave_beard == "Yes" && can_use_mirror(beard_dresser))
 			beard_dresser.set_facial_hairstyle("Shaved", update = TRUE)
 		return
@@ -151,7 +145,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 		return
 
 	if(HAS_TRAIT(beard_dresser, TRAIT_SHAVED))
-		to_chat(beard_dresser, span_notice("If only growing back facial hair were that easy for you... The reminder makes you feel terrible."))
+		to_chat(beard_dresser, span_notice("Se ao menos crescer de volta o cabelo facial fosse tão fácil para você... O lembrete faz você se sentir horrível."))
 		beard_dresser.add_mood_event("bald_hair_day", /datum/mood_event/bald_reminder)
 		return
 
@@ -162,7 +156,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	if(isnull(new_style) || !can_use_mirror(hairdresser))
 		return
 	if(HAS_TRAIT(hairdresser, TRAIT_BALD))
-		to_chat(hairdresser, span_notice("If only growing back hair were that easy for you... The reminder makes you feel terrible."))
+		to_chat(hairdresser, span_notice("Se o cabelo fosse tão fácil para você... O lembrete faz você se sentir horrível."))
 		hairdresser.add_mood_event("bald_hair_day", /datum/mood_event/bald_reminder)
 		return
 
@@ -192,7 +186,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	var/datum/species/newrace = GLOB.species_prototypes[new_race_path]
 	var/attributes_desc = newrace.get_physical_attributes()
 
-	var/answer = tgui_alert(race_changer, attributes_desc, "Become a [newrace]?", list("Yes", "No"))
+	var/answer = tgui_alert(race_changer, attributes_desc, "Torne-se um[newrace]?", list("Yes", "No"))
 	if(!answer || !can_use_mirror(race_changer))
 		return
 	if(answer != "Yes")
@@ -214,7 +208,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 				race_changer.dna.features[FEATURE_MUTANT_COLOR] = sanitize_hexcolor(new_mutantcolor)
 				race_changer.dna.update_uf_block(/datum/dna_block/feature/mutant_color)
 			else
-				to_chat(race_changer, span_notice("Invalid color. Your color is not bright enough."))
+				to_chat(race_changer, span_notice("Cor inválida. Sua cor não é brilhante o suficiente."))
 
 	race_changer.update_body(is_creating = TRUE)
 	race_changer.update_mutations_overlay() // no hulk lizard
@@ -235,16 +229,16 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	switch(chosen_sex)
 		if("Warlock")
 			sexy.gender = MALE
-			to_chat(sexy, span_notice("Man, you feel like a man!"))
+			to_chat(sexy, span_notice("Cara, você se sente como um homem!"))
 		if("Witch")
 			sexy.gender = FEMALE
-			to_chat(sexy, span_notice("Man, you feel like a woman!"))
+			to_chat(sexy, span_notice("Cara, você se sente uma mulher!"))
 		if("Wizard")
 			sexy.gender = PLURAL
-			to_chat(sexy, span_notice("Woah dude, you feel like a dude!"))
+			to_chat(sexy, span_notice("Cara, você se sente como um cara!"))
 		if("Itzard")
 			sexy.gender = NEUTER
-			to_chat(sexy, span_notice("Woah dude, you feel like something else!"))
+			to_chat(sexy, span_notice("Cara, você se sente como outra coisa!"))
 
 	var/chosen_physique = tgui_input_list(sexy, "Alter your physique as well?", "Confirmation", list("Warlock Physique", "Witch Physique", "Wizards Don't Need Gender"))
 
@@ -263,12 +257,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	user.set_eye_color(sanitize_hexcolor(new_eye_color))
 	user.dna.update_ui_block(/datum/dna_block/identity/eye_colors)
 	user.update_body()
-	to_chat(user, span_notice("You gaze at your new eyes with your new eyes. Perfect!"))
+	to_chat(user, span_notice("Você olha para seus novos olhos com seus novos olhos. Perfeito!"))
 
 /obj/structure/mirror/examine(mob/user)
 	. = ..()
 	if(deconstructable)
-		. += span_notice("It's mounted to the wall with a couple of <b>bolts</b>.")
+		. += span_notice("É montado na parede com um par de<b>parafusos</b>.")
 
 /obj/structure/mirror/examine_status(mob/living/carbon/human/user)
 	if(broken)
@@ -289,7 +283,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	. = ..()
 	if(broken || . <= 0) // breaking a mirror truly gets you bad luck!
 		return
-	to_chat(user, span_warning("A chill runs down your spine as [src] shatters..."))
+	to_chat(user, span_warning("Um frio escorre pela sua espinha como[src]Estilhaços..."))
 	user.AddComponent(/datum/component/omen, incidents_left = 7)
 
 /obj/structure/mirror/bullet_act(obj/projectile/proj)
@@ -299,7 +293,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	. = ..()
 	if(broken) // breaking a mirror truly gets you bad luck!
 		var/mob/living/unlucky_dude = proj.firer
-		to_chat(unlucky_dude, span_warning("A chill runs down your spine as [src] shatters..."))
+		to_chat(unlucky_dude, span_warning("Um frio escorre pela sua espinha como[src]Estilhaços..."))
 		unlucky_dude.AddComponent(/datum/component/omen, incidents_left = 7)
 
 /obj/structure/mirror/atom_break(damage_flag, mapload)
@@ -310,7 +304,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	if(!mapload)
 		playsound(src, SFX_SHATTER, 70, TRUE)
 	if(desc == initial(desc))
-		desc = "Oh no, seven years of bad luck!"
+		desc = "Oh não, sete anos de azar!"
 	broken = TRUE
 
 /obj/structure/mirror/atom_deconstruct(disassembled = TRUE)
@@ -348,7 +342,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
 /obj/item/wallframe/mirror
 	name = "mirror"
-	desc = "An unmounted mirror. Attach it to a wall to use."
+	desc = "Um espelho desmontado. Coloque em uma parede para usar."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
 	custom_materials = list(/datum/material/glass = SHEET_MATERIAL_AMOUNT * 5, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 2)
@@ -357,7 +351,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
 /obj/structure/mirror/magic
 	name = "magic mirror"
-	desc = "Turn and face the strange... face."
+	desc = "Vire e enfrente o estranho... rosto."
 	icon_state = "magic_mirror"
 	mirror_options = MAGIC_MIRROR_OPTIONS
 	deconstructable = FALSE
@@ -381,7 +375,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
 //Magic mirrors can change hair color as well
 /obj/structure/mirror/magic/change_hair(mob/living/carbon/human/user)
-	var/hairchoice = tgui_alert(user, "Hairstyle or hair color?", "Change Hair", list("Style", "Color"))
+	var/hairchoice = tgui_alert(user, "Cabelo ou cor de cabelo?", "Change Hair", list("Style", "Color"))
 	if(!can_use_mirror(user))
 		return
 	if(hairchoice == "Style") //So you just want to use a mirror then?
@@ -404,7 +398,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	if(HAS_TRAIT(race_changer, TRAIT_ADVANCEDTOOLUSER) && HAS_TRAIT(race_changer, TRAIT_LITERATE))
 		return
 
-	to_chat(race_changer, span_alert("You feel quite intelligent."))
+	to_chat(race_changer, span_alert("Você se sente muito inteligente."))
 	// Prevents wizards from being soft locked out of everything
 	// If this stays after the species was changed once more, well, the magic mirror did it. It's magic i aint gotta explain shit
 	race_changer.add_traits(list(TRAIT_LITERATE, TRAIT_ADVANCEDTOOLUSER), SPECIES_TRAIT)
@@ -421,7 +415,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
 /obj/structure/mirror/magic/pride
 	name = "pride's mirror"
-	desc = "Pride cometh before the..."
+	desc = "O orgulho vem antes do..."
 	race_flags = MIRROR_PRIDE
 	mirror_options = PRIDE_MIRROR_OPTIONS
 	/// If the last user has altered anything about themselves
@@ -437,8 +431,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	if (!changed || QDELETED(user) || !IN_GIVEN_RANGE(user, src, 3)) // 3 range gives a tiny bit of leeway if you try to run away after using it
 		return
 	user.visible_message(
-		span_bolddanger("The ground splits beneath [user] as [user.p_their()] hand leaves the mirror!"),
-		span_notice("Perfect. Much better! Now <i>nobody</i> will be able to resist yo-"),
+		span_bolddanger("O chão se divide por baixo[user]Como[user.p_their()]Mão deixa o espelho!"),
+		span_notice("Perfeito. Muito melhor! Agora.<i>Ninguém.</i>Será capaz de resistir..."),
 	)
 
 	var/turf/user_turf = get_turf(user)

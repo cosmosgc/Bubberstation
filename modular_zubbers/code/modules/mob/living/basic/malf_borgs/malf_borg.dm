@@ -1,6 +1,6 @@
 /mob/living/basic/malf_borg
 	name = "Malfunctioning Cyborg"
-	desc = "A small cyborg unit, hacked or malfunctioning. It is likely hostile."
+	desc = "Uma pequena unidade cyborg, hackeada ou com defeito. É provavelmente hostil."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 
 	ai_controller = /datum/ai_controller/basic_controller/simple/simple_skirmisher

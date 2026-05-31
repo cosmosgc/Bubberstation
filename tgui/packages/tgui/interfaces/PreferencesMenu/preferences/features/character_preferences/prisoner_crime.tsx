@@ -2,8 +2,8 @@ import type { FeatureChoiced } from '../base';
 import { FeatureDropdownInput } from '../dropdowns';
 
 export const prisoner_crime: FeatureChoiced = {
-  name: 'Prisoner crime',
+  name: 'Crime de prisioneiro.',
   description:
-    'When a prisoner, this will be added to your records as the reason for your arrest.',
+    'Quando um prisioneiro, isso será adicionado aos seus registros como a razão de sua prisão.',
   component: FeatureDropdownInput,
 };

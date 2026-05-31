@@ -2,17 +2,17 @@
 import { CheckboxInput, type FeatureToggle } from '../../base';
 
 export const looc_admin_pref: FeatureToggle = {
-  name: 'See remote LOOC',
+  name: 'Veja LOOC remoto',
   category: 'ADMIN',
   description:
-    'Toggles whether you want to see LOOC anywhere as an admin or not.',
+    'Comuta se você quer ver LOOC em algum lugar como administrador ou não.',
   component: CheckboxInput,
 };
 
 export const enable_looc_runechat: FeatureToggle = {
-  name: 'Enable LOOC runechat',
+  name: 'Activar runechat LOOC',
   category: 'RUNECHAT',
   description:
-    "If TRUE, LOOC will appear above the speaker's head as well as in the chat.",
+    "Se True, LoOC aparecerá acima da cabeça do alto-falante, bem como na conversa.",
   component: CheckboxInput,
 };

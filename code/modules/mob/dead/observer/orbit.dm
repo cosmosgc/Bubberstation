@@ -27,10 +27,9 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 			var/auto_observe = params["auto_observe"]
 			var/atom/poi = SSpoints_of_interest.get_poi_atom_by_ref(ref)
 
-			if((ismob(poi) && !SSpoints_of_interest.is_valid_poi(poi, CALLBACK(src, PROC_REF(validate_mob_poi)))) \
-				|| !SSpoints_of_interest.is_valid_poi(poi)
+			if((ismob(poi) && !SSpoints_of_interest.is_valid_poi(poi, CALLBACK(src, PROC_REF(validate_mob_poi)))) 				|| !SSpoints_of_interest.is_valid_poi(poi)
 			)
-				to_chat(usr, span_notice("That point of interest is no longer valid."))
+				to_chat(usr, span_notice("Esse ponto de interesse não é mais válido."))
 				return TRUE
 
 			var/mob/dead/observer/user = usr
@@ -181,8 +180,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 		user.orbiting_ref = null
 		return
 
-	if((ismob(poi) && !SSpoints_of_interest.is_valid_poi(poi, CALLBACK(src, PROC_REF(validate_mob_poi)))) \
-		|| !SSpoints_of_interest.is_valid_poi(poi)
+	if((ismob(poi) && !SSpoints_of_interest.is_valid_poi(poi, CALLBACK(src, PROC_REF(validate_mob_poi)))) 		|| !SSpoints_of_interest.is_valid_poi(poi)
 	)
 		user.orbiting_ref = null
 		return

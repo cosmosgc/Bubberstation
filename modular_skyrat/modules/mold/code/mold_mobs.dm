@@ -11,7 +11,7 @@
 
 /mob/living/basic/mold
 	name = "mold mob"
-	desc = "A debug mob for molds. You should report seeing this."
+	desc = "Uma multidão de depuração de mofo. Deveria relatar isso."
 	icon = 'modular_skyrat/modules/mold/icons/blob_mobs.dmi'
 	gold_core_spawnable = NO_SPAWN
 	faction = list(FACTION_MOLD)
@@ -25,7 +25,7 @@
  */
 /mob/living/basic/mold/oil_shambler
 	name = "oil shambler"
-	desc = "Humanoid figure covered in oil, or maybe they're just oil? They seem to be perpetually on fire."
+	desc = "Figura humanóide coberta de óleo, ou talvez seja apenas óleo? Parecem estar sempre em chamas."
 	icon_state = "oil_shambler"
 	icon_living = "oil_shambler"
 	icon_dead = "oil_shambler"
@@ -46,7 +46,7 @@
 
 	basic_mob_flags = DEL_ON_DEATH
 	gold_core_spawnable = HOSTILE_SPAWN
-	death_message = "evaporates!"
+	death_message = "Evapora!"
 
 	light_system = OVERLAY_LIGHT
 	light_color = LIGHT_COLOR_FIRE
@@ -109,7 +109,7 @@
  */
 /mob/living/basic/mold/diseased_rat
 	name = "diseased rat"
-	desc = "An incredibly large, rabid looking rat. There are shrooms growing out of it"
+	desc = "Um rato incrivelmente grande e raivoso. Há cogumelos crescendo fora dele."
 	icon_state = "diseased_rat"
 	icon_living = "diseased_rat"
 	icon_dead = "diseased_rat_dead"
@@ -143,7 +143,7 @@
 
 	var/mob/living/carbon/disease_target = target
 	if(can_inject(disease_target))
-		to_chat(disease_target, span_danger("[src] manages to penetrate your clothing with its teeth!"))
+		to_chat(disease_target, span_danger("[src]consegue penetrar em suas roupas com seus dentes!"))
 		disease_target.ForceContractDisease(new given_disease(), FALSE, TRUE)
 
 /datum/ai_controller/basic_controller/diseased_rat
@@ -174,7 +174,7 @@
  */
 /mob/living/basic/mold/electric_mosquito
 	name = "electric mosquito"
-	desc = "An oversized mosquito with what seems like electricity inside its body."
+	desc = "Um mosquito gigante com o que parece eletricidade dentro de seu corpo."
 	icon_state = "electric_mosquito"
 	icon_living = "electric_mosquito"
 	icon_dead = "electric_mosquito_dead"
@@ -231,7 +231,7 @@
  */
 /mob/living/basic/mold/centaur
 	name = "centaur"
-	desc = "A horrific combination of bone and flesh with multiple sets of legs and feet."
+	desc = "Uma horrível combinação de osso e carne com vários conjuntos de pernas e pés."
 	icon_state = "centaur"
 	icon_living = "centaur"
 	icon_dead = "centaur_dead"

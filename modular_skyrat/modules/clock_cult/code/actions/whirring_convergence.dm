@@ -4,7 +4,7 @@
 */
 /datum/action/innate/clockcult/comm
 	name = "Whirring Convergence"
-	desc = "Whispered words that link to the internal cogs of us all.<br><b>Warning:</b> Nearby non-servants can still hear you."
+	desc = "Palavras sussurradas que se ligam às engrenagens internas de todos nós.<br><b>Aviso:</b>Os não-servos próximos ainda podem te ouvir."
 	button_icon_state = "linked_minds"
 
 /datum/action/innate/clockcult/comm/Activate()
@@ -20,7 +20,7 @@
 	var/list/soft_filter_result = CAN_BYPASS_FILTER(usr) ? null : is_soft_ic_filtered(input)
 	if(soft_filter_result)
 
-		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"Sua mensagem contém\"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\"Tem certeza que quer dizer?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 			return
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[html_encode(input)]\"")
 		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[input]\"")
@@ -40,7 +40,7 @@
 /proc/send_clock_message(mob/living/user, sent_message, span = "<span class='brass'>", msg_ghosts = TRUE)
 	var/final_message = ""
 	if(user)
-		final_message = span + "<i><b>Clock[user.gender == FEMALE ? "sister" : "brother"] [findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (as [user.name])"]</b> transmits, \"" + sent_message + "\"</i></span>"
+		final_message = span + "<i><b>Relógio[user.gender == FEMALE ? "sister" : "brother"] [findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (as [user.name])"]</b>transmite,\"" + sent_message + "\"</i></span>"
 	else
 		final_message = span + sent_message + "</span>"
 

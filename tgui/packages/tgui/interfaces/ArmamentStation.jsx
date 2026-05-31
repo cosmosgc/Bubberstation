@@ -18,9 +18,9 @@ export const ArmamentStation = (props) => {
   const { act, data } = useBackend();
   const { armaments_list = [], card_inserted, card_points, card_name } = data;
   return (
-    <Window theme="armament" title="Armament Station" width={1000} height={600}>
+    <Window theme="armament" title="Estação de Armamento" width={1000} height={600}>
       <Window.Content>
-        <Section grow height="100%" title="Armaments Station">
+        <Section grow height="100%" title="Estação de Armamentos">
           {card_inserted ? (
             <Stack>
               <Stack.Item grow fill>
@@ -35,7 +35,7 @@ export const ArmamentStation = (props) => {
                 <Button
                   icon="eject"
                   fontSize="20px"
-                  content="Eject Card"
+                  content="Ejetar cartão"
                   onClick={() => act('eject_card')}
                 />
               </Stack.Item>
@@ -54,7 +54,7 @@ export const ArmamentStation = (props) => {
                         width="100%"
                         content={
                           armament_category.category +
-                          ' (Pick ' +
+                          '(Pick' +
                           armament_category.category_limit +
                           ')'
                         }
@@ -112,7 +112,7 @@ export const ArmamentStation = (props) => {
             </Stack.Item>
             <Divider vertical />
             <Stack.Item width="20%">
-              <Section title="Selected Armament">
+              <Section title="Armamento Selecionado">
                 {armaments_list.map((armament_category) =>
                   armament_category.subcategories.map((subcat) =>
                     subcat.items.map(
@@ -138,7 +138,7 @@ export const ArmamentStation = (props) => {
                                   : 'green'
                               }
                             >
-                              {'Quantity Remaining: ' +
+                              {'Quantidade restante:' +
                                 (item.quantity - item.purchased)}
                             </Stack.Item>
                             <Stack.Item
@@ -181,7 +181,7 @@ export const ArmamentStation = (props) => {
                             {!!item.buyable_ammo && (
                               <Stack.Item>
                                 <Button
-                                  content="Buy Ammo"
+                                  content="Compre munição"
                                   textAlign="center"
                                   width="100%"
                                   disabled={item.magazine_cost > card_points}

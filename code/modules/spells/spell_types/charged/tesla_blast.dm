@@ -1,7 +1,6 @@
 /datum/action/cooldown/spell/charged/beam/tesla
 	name = "Tesla Blast"
-	desc = "Charge up a tesla arc and release it at random nearby targets! \
-		You can move freely while it charges. The arc jumps between targets and can knock them down."
+	desc = "Carregue um arco Tesla e solte-o em alvos próximos! Você pode se mover livremente enquanto carrega. O arco salta entre os alvos e pode derrubá-los."
 	button_icon_state = "lightning"
 	sound = 'sound/effects/magic/lightningbolt.ogg'
 
@@ -12,7 +11,7 @@
 	invocation_type = INVOCATION_SHOUT
 	school = SCHOOL_EVOCATION
 
-	channel_message = span_notice("You start gathering power...")
+	channel_message = span_notice("Você começa a reunir energia...")
 	charge_overlay_icon = 'icons/effects/effects.dmi'
 	charge_overlay_state = "electricity"
 	charge_sound = 'sound/effects/magic/lightning_chargeup.ogg'
@@ -31,8 +30,8 @@
 
 	if(to_beam.can_block_magic(antimagic_flags))
 		to_beam.visible_message(
-			span_warning("[to_beam] absorbs the spell, remaining unharmed!"),
-			span_userdanger("You absorb the spell, remaining unharmed!"),
+			span_warning("[to_beam]absorve o feitiço, permanecendo ileso!"),
+			span_userdanger("Você absorve o feitiço, permanece ileso!"),
 		)
 
 	else

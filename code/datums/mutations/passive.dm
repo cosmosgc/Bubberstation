@@ -1,6 +1,6 @@
 /datum/mutation/biotechcompat
 	name = "Biotech Compatibility"
-	desc = "Subject is more compatibile with biotechnology such as skillchips."
+	desc = "O sujeito é mais compatível com biotecnologia, como chips de habilidade."
 	quality = POSITIVE
 	instability = POSITIVE_INSTABILITY_MINI
 
@@ -16,7 +16,7 @@
 
 /datum/mutation/clever
 	name = "Clever"
-	desc = "Causes the subject to feel just a little bit smarter. Most effective in specimens with low levels of intelligence."
+	desc = "Faz o sujeito se sentir um pouco mais inteligente. Mais eficaz em espécimes com baixos níveis de inteligência."
 	quality = POSITIVE
 	instability = POSITIVE_INSTABILITY_MODERATE // literally makes you on par with station equipment
 	text_gain_indication = span_danger("You feel a little bit smarter.")

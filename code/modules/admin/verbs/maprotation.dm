@@ -29,12 +29,12 @@ ADMIN_VERB(admin_change_map, R_SERVER, "Change Map", "Set the next map.", ADMIN_
 		log_admin("[key_name(user)] is changing the map to a custom map")
 		var/datum/map_config/virtual_map = new
 
-		var/map_file = input(user, "Pick file:", "Map File") as null|file
+		var/map_file = input(user, "Escolha o arquivo:", "Arquivo do mapa") as null|file
 		if(isnull(map_file))
 			return
 
 		if(copytext("[map_file]", -4) != ".dmm")//4 == length(".dmm")
-			to_chat(user, span_warning("Filename must end in '.dmm': [map_file]"))
+			to_chat(user, span_warning("O nome do arquiteto deve terminar em '.dmm':[map_file]"))
 			return
 
 		if(fexists("_maps/custom/[map_file]"))
@@ -44,24 +44,24 @@ ADMIN_VERB(admin_change_map, R_SERVER, "Change Map", "Set the next map.", ADMIN_
 		// This is to make sure the map works so the server does not start without a map.
 		var/datum/parsed_map/M = new (map_file)
 		if(!M)
-			to_chat(user, span_warning("Map '[map_file]' failed to parse properly."))
+			to_chat(user, span_warning("Mapa.[map_file]Falharam em analiso Corretamente."))
 			return
 
 		if(!M.bounds)
-			to_chat(user, span_warning("Map '[map_file]' has non-existant bounds."))
+			to_chat(user, span_warning("Mapa.[map_file]' tem limites não-existantes."))
 			qdel(M)
 			return
 
 		qdel(M)
 		var/config_file = null
 		var/list/json_value = list()
-		var/config = tgui_alert(user,"Would you like to upload an additional config for this map?", "Map Config", list("Yes", "No"))
+		var/config = tgui_alert(user,"Gostaria de carregar uma configuração adicional para este mapa?", "Map Config", list("Yes", "No"))
 		if(config == "Yes")
 			config_file = input(user, "Pick file:", "Config JSON File") as null|file
 			if(isnull(config_file))
 				return
 			if(copytext("[config_file]", -5) != ".json")
-				to_chat(src, span_warning("Filename must end in '.json': [config_file]"))
+				to_chat(src, span_warning("O nome do arquivo deve terminar em 'Json':[config_file]"))
 				return
 			if(fexists("data/custom_map_json/[config_file]"))
 				fdel("data/custom_map_json/[config_file]")
@@ -71,22 +71,22 @@ ADMIN_VERB(admin_change_map, R_SERVER, "Change Map", "Set the next map.", ADMIN_
 			json_value = virtual_map.LoadConfig("data/custom_map_json/[config_file]", TRUE)
 
 			if(!json_value)
-				to_chat(src, span_warning("Failed to load config: [config_file]. Check that the fields are filled out correctly. \"map_path\": \"custom\" and \"map_file\": \"your_map_name.dmm\""))
+				to_chat(src, span_warning("Falha ao carregar a configuração:[config_file]Verifique se os campos estão preenchidos corretamente.\"caminho do mapa\": \"personalizado\"E\"arquivo map\": \"Seu nome mapa.\""))
 				return
 		else
 			virtual_map = load_map_config()
-			virtual_map.map_name = input(user, "Choose the name for the map", "Map Name") as null|text
+			virtual_map.map_name = input(user, "Escolha o nome do mapa.", "Nome do mapa") as null|text
 			if(isnull(virtual_map.map_name))
 				virtual_map.map_name = "Custom"
 
-			var/shuttles = tgui_alert(user,"Do you want to modify the shuttles?", "Map Shuttles", list("Yes", "No"))
+			var/shuttles = tgui_alert(user,"Quer modificar como naves?", "Map Shuttles", list("Yes", "No"))
 			if(shuttles == "Yes")
 				for(var/s in virtual_map.shuttles)
-					var/shuttle = input(user, s, "Map Shuttles") as null|text
+					var/shuttle = input(user, s, "Naves de mapa") as null|text
 					if(!shuttle)
 						continue
 					if(!SSmapping.shuttle_templates[shuttle])
-						to_chat(user, span_warning("No such shuttle as '[shuttle]' exists, using default."))
+						to_chat(user, span_warning("Nenhuma nave auxiliar como[shuttle]' existe, usando o padrão."))
 						continue
 					virtual_map.shuttles[s] = shuttle
 

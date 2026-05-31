@@ -18,11 +18,11 @@ export function setupLink() {
     websocket: {
       open(ws) {
         ws.subscribe('link');
-        logger.log('client connected');
+        logger.log('Cliente conectado');
       },
       close(ws) {
         ws.unsubscribe('link');
-        logger.log('client disconnected');
+        logger.log('Cliente desconectado');
       },
       message: handleLinkMessage,
     },
@@ -95,7 +95,7 @@ function handleLinkMessage(
     return;
   }
 
-  logger.log('unhandled message', JSON.stringify(message));
+  logger.log('Mensagem não manuseada', JSON.stringify(message));
 }
 
 function upgradeServer(req: Request, srv: Bun.Server<unknown>) {
@@ -111,6 +111,6 @@ function upgradeServer(req: Request, srv: Bun.Server<unknown>) {
   if (upgraded) {
     return new Response('Ok');
   } else {
-    return new Response('Upgrade failed', { status: 500 });
+    return new Response('A atualização falhou.', { status: 500 });
   }
 }

@@ -3,13 +3,13 @@
 #define BRAWN_AIRLOCK_LEVEL 4
 /datum/action/cooldown/bloodsucker/targeted/brawn
 	name = "Brawn"
-	desc = "Snap restraints, break lockers and doors at higher levels, or deal terrible damage with your bare hands."
+	desc = "Amarrar, quebrar armários e portas em níveis mais altos, ou causar danos terríveis com suas próprias mãos."
 	button_icon_state = "power_strength"
 	purchase_flags = BLOODSUCKER_CAN_BUY|GHOUL_CAN_BUY
 	bloodcost = 10
 	cooldown_time = 12 SECONDS
 	target_range = 1
-	prefire_message = "Select a target."
+	prefire_message = "Selecione um Alvo."
 
 /datum/action/cooldown/bloodsucker/targeted/brawn/get_power_explanation_extended()
 	. = list()
@@ -31,14 +31,14 @@
 		if(level_current >= BRAWN_BREAKOUT_LEVEL && escape_puller())
 			PowerActivatedSuccesfully()
 			return FALSE
-		owner.balloon_alert(owner, "ability level too low to break free!")
+		owner.balloon_alert(owner, "Nível de habilidade muito baixo para se libertar!")
 	// Did neither, now we can PUNCH.
 	if(HAS_TRAIT(owner, TRAIT_HANDS_BLOCKED))
-		owner.balloon_alert(owner, "your hands are blocked!")
+		owner.balloon_alert(owner, "Suas mãos estão bloqueadas!")
 		return FALSE
 	// check if we have atleast one arm
 	if(!owner.get_active_hand())
-		owner.balloon_alert(owner, "you need a usable arm!")
+		owner.balloon_alert(owner, "Você precisa de um braço utilizável!")
 		return FALSE
 	return TRUE
 
@@ -49,8 +49,8 @@
 	var/obj/handcuffed = user.get_item_by_slot(ITEM_SLOT_HANDCUFFED)
 	if(user.buckled && handcuffed && user.buckled.unbuckle_mob(user))
 		user.visible_message(
-			span_warning("[user] breaks free of [user.buckled]!"),
-			span_warning("We break free of [user.buckled]!"),
+			span_warning("[user]Quebras livres de[user.buckled]!"),
+			span_warning("Nós nos libertamos[user.buckled]!"),
 		)
 		user.buckled = null
 		return TRUE
@@ -61,10 +61,10 @@
 		if(!istype(closet))
 			return FALSE
 		closet.visible_message(
-			span_warning("[closet] tears apart as [user] bashes it open from within!"),
-			span_warning("[closet] tears apart as you bash it open from within!"),
+			span_warning("[closet]Rasga-se como[user]Arrebenta por dentro!"),
+			span_warning("[closet]Rasgando enquanto você o abre por dentro!"),
 		)
-		to_chat(user, span_warning("We bash [closet] wide open!"))
+		to_chat(user, span_warning("Nós batemos[closet]Abra a porta!"))
 		addtimer(CALLBACK(src, PROC_REF(break_closet), user, closet), 1)
 		return TRUE
 
@@ -75,8 +75,8 @@
 		var/leg_cuffs = user.clear_cuffs(legcuffed, TRUE)
 		if(hand_cuffs || leg_cuffs)
 			user.visible_message(
-				span_warning("[user] discards their restraints like it's nothing!"),
-				span_warning("We break through our restraints!"),
+				span_warning("[user]Descarta suas amarras como se não fosse nada!"),
+				span_warning("Quebramos nossas amorras!"),
 			)
 			return TRUE
 
@@ -84,8 +84,8 @@
 	if(user.wear_suit?.breakouttime)
 		var/obj/item/clothing/suit/straightjacket = user.get_item_by_slot(ITEM_SLOT_OCLOTHING)
 		user.visible_message(
-			span_warning("[user] rips straight through the [user.p_their()] [straightjacket]!"),
-			span_warning("We tear through our [straightjacket]!"),
+			span_warning("[user]Corta direto através do[user.p_their()] [straightjacket]!"),
+			span_warning("Nós rasgamos através do nosso[straightjacket]!"),
 		)
 		if(straightjacket && user.wear_suit == straightjacket)
 			qdel(straightjacket)
@@ -116,8 +116,8 @@
 	// /proc/log_combat(atom/user, atom/target, what_done, atom/object=null, addition=null)
 	log_combat(owner, pulled_mob, "used Brawn power")
 	owner.visible_message(
-		span_warning("[owner] tears free of [pulled_mob]'s grasp!"),
-		span_warning("You shrug off [pulled_mob]'s grasp!"),
+		span_warning("[owner]Lágrimas livres de[pulled_mob]Apertar!"),
+		span_warning("Você se afasta.[pulled_mob]Apertar!"),
 	)
 	owner.pulledby = null // It's already done, but JUST IN CASE.
 	return TRUE
@@ -134,12 +134,11 @@
 		var/powerlevel = GetPowerLevel()
 		if(rand(5 + powerlevel) >= 5)
 			target_atom.visible_message(
-				span_danger("[user] lands a vicious punch, sending [target_atom] away!"), \
-				span_userdanger("[user] has landed a horrifying punch on you, sending you flying!"),
+				span_danger("[user]Dá um soco cruel, enviando[target_atom]Afaste-se!"), 				span_userdanger("[user]Caiu um soco horrível em você, mandando você voar!"),
 			)
 			target_atom.Knockdown(GetKnockdown())
 		// Attack!
-		owner.balloon_alert(owner, "you punch [target_atom]!")
+		owner.balloon_alert(owner, "Você soca.[target_atom]!")
 		playsound(get_turf(target_atom), 'sound/items/weapons/punch4.ogg', 60, 1, -1)
 		user.do_attack_animation(target_atom, ATTACK_EFFECT_SMASH)
 		var/obj/item/bodypart/affecting = target_atom.get_bodypart(ran_zone(target_atom.zone_selected))
@@ -155,29 +154,29 @@
 	// Target Type: Locker
 	else if(istype(target, /obj/structure/closet))
 		if(level_current <= BRAWN_BREAKOUT_LEVEL)
-			target.balloon_alert(user, "ability level too low to break open!")
+			target.balloon_alert(user, "Nível de habilidade muito baixo para se abrir!")
 			return FALSE
 		var/obj/structure/closet/target_closet = target
-		user.balloon_alert(user, "you prepare to bash [target_closet] open...")
+		user.balloon_alert(user, "Prepare-se para bater[target_closet]Abra...")
 		if(!do_after(user, 2.5 SECONDS, target_closet))
-			user.balloon_alert(user, "interrompido!")
+			user.balloon_alert(user, "Interrompido!")
 			return FALSE
-		target_closet.visible_message(span_danger("[target_closet] breaks open as [user] bashes it!"))
+		target_closet.visible_message(span_danger("[target_closet]Se abra como[user]Bate!"))
 		addtimer(CALLBACK(src, PROC_REF(break_closet), user, target_closet), 1)
 		playsound(get_turf(user), 'sound/effects/grillehit.ogg', 80, TRUE, -1)
 	// Target Type: Door
 	else if(istype(target, /obj/machinery/door))
 		if(level_current <= BRAWN_AIRLOCK_LEVEL)
-			target.balloon_alert(user, "ability level too low to break open!")
+			target.balloon_alert(user, "Nível de habilidade muito baixo para se abrir!")
 			return FALSE
 		var/obj/machinery/door/target_airlock = target
 		playsound(get_turf(user), 'sound/machines/airlock/airlock_alien_prying.ogg', 40, TRUE, -1)
-		owner.balloon_alert(owner, "you prepare to tear open [target_airlock]...")
+		owner.balloon_alert(owner, "Você se prepara para rasgar[target_airlock]...")
 		if(!do_after(user, 2.5 SECONDS, target_airlock))
-			user.balloon_alert(user, "interrompido!")
+			user.balloon_alert(user, "Interrompido!")
 			return FALSE
 		if(target_airlock.Adjacent(user))
-			target_airlock.visible_message(span_danger("[target_airlock] breaks open as [user] bashes it!"))
+			target_airlock.visible_message(span_danger("[target_airlock]Se abra como[user]Bate!"))
 			user.Stun(10)
 			user.do_attack_animation(target_airlock, ATTACK_EFFECT_SMASH)
 			playsound(get_turf(target_airlock), 'sound/effects/bang.ogg', 30, 1, -1)

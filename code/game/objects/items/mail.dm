@@ -2,7 +2,7 @@
 /obj/item/mail
 	name = "mail"
 	gender = NEUTER
-	desc = "An officially postmarked, tamper-evident parcel regulated by CentCom and made of high-quality materials."
+	desc = "Uma encomenda oficialmente marcada e evidente regulada pela CentCom e feita de materiais de alta qualidade."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "mail_small"
 	inhand_icon_state = "paper"
@@ -113,9 +113,9 @@
 
 /obj/item/mail/multitool_act(mob/living/user, obj/item/tool)
 	if(user.get_inactive_held_item() == src)
-		balloon_alert(user, "nothing to disable!")
+		balloon_alert(user, "Nada para desativar!")
 		return TRUE
-	balloon_alert(user, "hold it!")
+	balloon_alert(user, "Espere!")
 	return FALSE
 
 
@@ -131,7 +131,7 @@
 		// If the recipient's mind has gone, then anyone can open their mail
 		// whether a mind can actually be qdel'd is an exercise for the reader
 		if(recipient && recipient != user?.mind)
-			to_chat(user, span_notice("You can't open somebody else's mail! That's <em>illegal</em>!"))
+			to_chat(user, span_notice("Você não pode abrir a correspondência de outra pessoa! Isso é...<em>ilegal.</em>!"))
 			return FALSE
 
 	balloon_alert(user, "unwrapping...")
@@ -155,17 +155,17 @@
 /obj/item/mail/examine_more(mob/user)
 	. = ..()
 	if(!postmarked)
-		. += span_info("This mail has no postmarking of any sort...")
+		. += span_info("Este correio não tem nenhum tipo de carimbo postal...")
 	else
-		. += span_notice("<i>You notice the postmarking on the front of the mail...</i>")
+		. += span_notice("<i>Você percebe o carimbo na frente do correio...</i>")
 	var/datum/mind/recipient = recipient_ref.resolve()
 	if(recipient)
-		. += span_info("[postmarked ? "Certified NT" : "Uncertfieid"] mail for [recipient].")
+		. += span_info("[postmarked ? "Certified NT" : "Uncertfieid"]Correio para[recipient].")
 	else if(postmarked)
-		. += span_info("Certified mail for [GLOB.station_name].")
+		. += span_info("Correio certificado para[GLOB.station_name].")
 	else
-		. += span_info("This is a dead letter mail with no recipient.")
-	. += span_info("Distribute by hand or via destination tagger using the certified NT disposal system.")
+		. += span_info("Esta é uma carta morta sem destinatário.")
+	. += span_info("Distribuir à mão ou através de etiquetador de destino usando o sistema de eliminação NT certificado.")
 
 /// Accepts a mind to initialize goodies for a piece of mail.
 /obj/item/mail/proc/initialize_for_recipient(datum/mind/recipient)
@@ -251,7 +251,7 @@
 /// Crate for mail from CentCom.
 /obj/structure/closet/crate/mail
 	name = "mail crate"
-	desc = "A certified post crate from CentCom."
+	desc = "Uma caixa de correio certificada da CentCom."
 	icon_state = "mail"
 	base_icon_state = "mail"
 	can_install_electronics = FALSE
@@ -317,7 +317,7 @@
 /// Crate for mail that automatically generates a lot of mail. Usually only normal mail, but on lowpop it may end up just being junk.
 /obj/structure/closet/crate/mail/full
 	name = "brimming mail crate"
-	desc = "A certified post crate from CentCom. Looks stuffed to the gills."
+	desc = "Uma caixa de correio certificada da CentCom. Parece cheio de guelras."
 
 /obj/structure/closet/crate/mail/full/Initialize(mapload)
 	. = ..()
@@ -325,7 +325,7 @@
 
 ///Used in the mail strike shuttle loan event
 /obj/structure/closet/crate/mail/full/mail_strike
-	desc = "A post crate from somewhere else. It has no NT logo on it."
+	desc = "Uma caixa postal de outro lugar. Não tem nenhum logotipo NT."
 	postmarked = FALSE
 
 /obj/structure/closet/crate/mail/full/mail_strike/populate(amount)
@@ -345,7 +345,7 @@
 /// Mailbag.
 /obj/item/storage/bag/mail
 	name = "mail bag"
-	desc = "A bag for letters, envelopes, and other postage."
+	desc = "Um saco para cartas, envelopes e outros correios."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "mailbag"
 	worn_icon_state = "mailbag"
@@ -421,20 +421,20 @@
 	if(armed == FALSE || user.get_inactive_held_item() != src)
 		return ..()
 	if(IS_WEAKREF_OF(user.mind, made_by_ref))
-		balloon_alert(user, "disarming trap...")
+		balloon_alert(user, "Desarmar a armadilha...")
 		if(!do_after(user, 2 SECONDS, target = src))
 			return FALSE
 		balloon_alert(user, "disarmed")
 		playsound(src, 'sound/machines/defib/defib_ready.ogg', vol = 100, vary = TRUE)
 		armed = FALSE
 		return TRUE
-	balloon_alert(user, "tinkering with something...")
+	balloon_alert(user, "Mexendo com algo...")
 
 	if(!do_after(user, 2 SECONDS, target = src))
 		after_unwrap(user)
 		return FALSE
 	if(prob(50))
-		balloon_alert(user, "disarmed something...?")
+		balloon_alert(user, "Desarmou alguma coisa...?")
 		playsound(src, 'sound/machines/defib/defib_ready.ogg', vol = 100, vary = TRUE)
 		armed = FALSE
 		return TRUE
@@ -444,7 +444,7 @@
 ///Generic mail used in the mail strike shuttle loan event
 /obj/item/mail/mail_strike
 	name = "dead mail"
-	desc = "An unmarked parcel of unknown origins, effectively undeliverable."
+	desc = "Uma parcela não identificada de origens desconhecidas, efetivamente não entregue."
 	postmarked = FALSE
 	generic_goodies = list(
 		/obj/effect/spawner/random/entertainment/money_medium = 2,
@@ -474,7 +474,7 @@
 ///Also found in the mail strike shuttle loan. It contains a random grenade that'll be triggered when unwrapped
 /obj/item/mail/traitor/mail_strike
 	name = "dead mail"
-	desc = "An unmarked parcel of unknown origins, effectively undeliverable."
+	desc = "Uma parcela não identificada de origens desconhecidas, efetivamente não entregue."
 	postmarked = FALSE
 
 /obj/item/mail/traitor/mail_strike/Initialize(mapload)
@@ -492,7 +492,7 @@
 
 /obj/item/storage/mail_counterfeit_device
 	name = "GLA-2 mail counterfeit device"
-	desc = "A single-use device for spoofing official NT envelopes. Can hold one normal sized object, and can be programmed to arm its contents when opened."
+	desc = "Um dispositivo de uso único para falsificar envelopes oficiais da NT. Pode segurar um objeto de tamanho normal, e pode ser programado para armar seu conteúdo quando aberto."
 	w_class = WEIGHT_CLASS_NORMAL
 	icon = 'icons/obj/antags/syndicate_tools.dmi'
 	icon_state = "mail_counterfeit_device"
@@ -500,20 +500,20 @@
 
 /obj/item/storage/mail_counterfeit_device/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<i>You notice the manufacturer information on the side of the device...</i>")
+	. += span_notice("<i>Você nota a informação do fabricante do lado do dispositivo...</i>")
 	. += "\t[span_info("Guerilla Letter Assembler")]"
 	. += "\t[span_info("GLA Postal Service, right on schedule.")]"
 	return .
 
 /obj/item/storage/mail_counterfeit_device/attack_self(mob/user, modifiers)
-	var/mail_type = tgui_alert(user, "Make it look like an envelope or like normal mail?", "Mail Counterfeiting", list("Mail", "Envelope"))
+	var/mail_type = tgui_alert(user, "Fazer parecer um envelope ou uma correspondência normal?", "Mail Counterfeiting", list("Mail", "Envelope"))
 	if(isnull(mail_type))
 		return FALSE
 	if(loc != user)
 		return FALSE
 	mail_type = LOWER_TEXT(mail_type)
 
-	var/mail_armed = tgui_alert(user, "Arm it?", "Mail Counterfeiting", list("Yes", "No")) == "Yes"
+	var/mail_armed = tgui_alert(user, "Armar?", "Mail Counterfeiting", list("Yes", "No")) == "Yes"
 	if(isnull(mail_armed))
 		return FALSE
 	if(loc != user)

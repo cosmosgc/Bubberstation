@@ -7,7 +7,7 @@
 	name = "terminal"
 	icon = 'icons/obj/pipes_n_cables/structures.dmi'
 	icon_state = "term"
-	desc = "It's an underfloor wiring terminal, used to draw power from the grid."
+	desc = "É um terminal de fiação sob o piso, usado para extrair energia da rede."
 	layer = WIRE_TERMINAL_LAYER //a bit above wires
 	var/obj/machinery/power/master = null
 
@@ -26,9 +26,9 @@
 /obj/machinery/power/terminal/examine(mob/user)
 	. = ..()
 	if(!QDELETED(powernet))
-		. += span_notice("It's operating on the [LOWER_TEXT(GLOB.cable_layer_to_name["[cable_layer]"])].")
+		. += span_notice("Está operando no[LOWER_TEXT(GLOB.cable_layer_to_name["[cable_layer]"])].")
 	else
-		. += span_warning("It's disconnected from the [LOWER_TEXT(GLOB.cable_layer_to_name["[cable_layer]"])].")
+		. += span_warning("Está desconectado do[LOWER_TEXT(GLOB.cable_layer_to_name["[cable_layer]"])].")
 
 /obj/machinery/power/terminal/should_have_node()
 	return TRUE
@@ -50,14 +50,14 @@
 	if(isturf(loc))
 		var/turf/T = loc
 		if(T.underfloor_accessibility < UNDERFLOOR_INTERACTABLE)
-			balloon_alert(user, "must expose the cable terminal!")
+			balloon_alert(user, "Deve expor o terminal de cabo!")
 			return
 
 	if(master && !master.can_terminal_dismantle())
 		return
 
-	user.visible_message(span_notice("[user.name] dismantles the cable terminal from [master]."))
-	balloon_alert(user, "cutting the cables...")
+	user.visible_message(span_notice("[user.name]Desmonta o terminal de cabo de[master]."))
+	balloon_alert(user, "Cortar os cabos...")
 
 	playsound(src.loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 	if(I.use_tool(src, user, 50))
@@ -70,7 +70,7 @@
 
 		var/obj/item/stack/cable_coil/cable = new (drop_location(), 10)
 		qdel(src)
-		cable.balloon_alert(user, "cable terminal dismantled")
+		cable.balloon_alert(user, "Terminal de cabo desmontado.")
 
 /obj/machinery/power/terminal/wirecutter_act(mob/living/user, obj/item/I)
 	..()

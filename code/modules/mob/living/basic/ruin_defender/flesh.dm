@@ -21,7 +21,7 @@
 
 /mob/living/basic/living_limb_flesh
 	name = "living flesh"
-	desc = "A vaguely leg or arm shaped flesh abomination. It pulses, like a heart."
+	desc = "Uma vaga abominação em forma de perna ou braço. Pulso, como um coração."
 	icon = 'icons/mob/simple/animal.dmi'
 	icon_state = "limb"
 	icon_living = "limb"
@@ -67,7 +67,7 @@
 		return
 	var/mob/living/carbon/human/victim = current_bodypart.owner
 	if(SPT_PROB(LIVING_FLESH_WARN_CHANCE, SSMOBS_DT))
-		to_chat(victim, span_warning("The skin on your [current_bodypart.plaintext_zone] crawls."))
+		to_chat(victim, span_warning("A pele na sua[current_bodypart.plaintext_zone]Rasteja."))
 
 	victim.adjust_nutrition(-1.5)
 
@@ -78,7 +78,7 @@
 		if(HAS_TRAIT(victim, TRAIT_IMMOBILIZED))
 			return
 		step(victim, pick(GLOB.cardinals))
-		to_chat(victim, span_warning("Your [current_bodypart.plaintext_zone] moves on its own!"))
+		to_chat(victim, span_warning("Sua[current_bodypart.plaintext_zone]Se move por conta própria!"))
 		return
 
 	var/list/candidates = list()
@@ -95,11 +95,11 @@
 		return
 
 	if (!prob(victim.combat_mode ? LIVING_FLESH_COMBAT_TOUCH_CHANCE : LIVING_FLESH_TOUCH_CHANCE) && candidate.can_be_pulled(user = victim, force = victim.pull_force))
-		victim.visible_message(span_warning("[victim]'s [current_bodypart.plaintext_zone] suddenly fastens around [candidate]!"))
+		victim.visible_message(span_warning("[victim]'s[current_bodypart.plaintext_zone]De arrependimento, aperta ao redor[candidate]!"))
 		INVOKE_ASYNC(victim, TYPE_PROC_REF(/atom/movable, start_pulling), candidate, supress_message = TRUE)
 		return
 
-	victim.visible_message(span_warning("[victim]'s [current_bodypart.plaintext_zone] suddenly spasms towards [candidate]!"))
+	victim.visible_message(span_warning("[victim]'s[current_bodypart.plaintext_zone]de repente espasmos em direção[candidate]!"))
 	var/active_hand = victim.active_hand_index
 	var/new_index = (current_bodypart.body_zone == BODY_ZONE_L_ARM) ? LEFT_HANDS : RIGHT_HANDS
 	if (active_hand != new_index)
@@ -147,9 +147,9 @@
 			part_type = /obj/item/bodypart/leg/right/flesh
 
 	if (!isnull(target_part))
-		target.visible_message(span_danger("[src] tears off [target]'s [target_part.plaintext_zone] and attaches itself in [target_part.p_their()] place!"), span_userdanger("[src] tears off your [target_part.plaintext_zone] and attaches itself in [target_part.p_their()] place!"))
+		target.visible_message(span_danger("[src]Rasga.[target]'s[target_part.plaintext_zone]e se apega em[target_part.p_their()]Lugar!"), span_userdanger("[src]Derruba-o.[target_part.plaintext_zone]e se apega em[target_part.p_their()]Lugar!"))
 	else
-		target.visible_message(span_danger("[src] attaches itself to where [target]'s [target.parse_zone_with_bodypart(target_zone)] used to be!"), span_userdanger("[src] attaches itself to where your [target.parse_zone_with_bodypart(target_zone)] used to be!"))
+		target.visible_message(span_danger("[src]Se apega a onde[target]'s[target.parse_zone_with_bodypart(target_zone)]Costumava ser!"), span_userdanger("[src]Se liga a onde seu[target.parse_zone_with_bodypart(target_zone)]Costumava ser!"))
 
 	var/obj/item/bodypart/new_bodypart = new part_type()
 	forceMove(new_bodypart)
@@ -164,7 +164,7 @@
 	if(!detach_self())
 		return
 	var/turf/our_location = get_turf(src)
-	our_location.visible_message(span_warning("[part_owner][part_owner.p_s()] [current_bodypart.plaintext_zone] begins to convulse wildly!"))
+	our_location.visible_message(span_warning("[part_owner][part_owner.p_s()] [current_bodypart.plaintext_zone]Começa a convulsão selvagem!"))
 
 /mob/living/basic/living_limb_flesh/proc/owner_died(datum/source, gibbed)
 	SIGNAL_HANDLER
@@ -201,7 +201,7 @@
 /mob/living/basic/living_limb_flesh/proc/wake_up(atom/limb)
 	if(QDELETED(src))
 		return
-	visible_message(span_warning("[src] begins flailing around!"))
+	visible_message(span_warning("[src]Começa a se mexer!"))
 	Shake(6, 6, 0.5 SECONDS)
 	ai_controller.set_ai_status(AI_STATUS_ON)
 	forceMove(limb.drop_location())

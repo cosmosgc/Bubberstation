@@ -7,7 +7,7 @@
 
 /obj/item/organ/tongue/dog
 	name = "long tongue"
-	desc = "A long and wet tongue. It seems to jump when it's called good, oddly enough."
+	desc = "Uma língua longa e molhada. Parece saltar quando se chama bom, estranhamente."
 	say_mod = "woofs"
 	icon_state = "tongue"
 	modifies_speech = TRUE
@@ -43,7 +43,7 @@
 
 /obj/item/organ/tongue/avian
 	name = "avian tongue"
-	desc = "A short and stubby tongue that craves seeds."
+	desc = "Uma língua baixinha que deseja sementes."
 	say_mod = "chirps"
 	icon_state = "tongue"
 	modifies_speech = TRUE
@@ -65,7 +65,7 @@
 
 /obj/item/organ/tongue/bovine
 	name = "bovine tongue"
-	desc = "A long and wide tongue that craves grass."
+	desc = "Uma língua longa e larga que anseia por grama."
 	say_mod = "moos"
 	icon_state = "tongue"
 	modifies_speech = TRUE
@@ -87,7 +87,7 @@
 
 /obj/item/organ/tongue/mouse
 	name = "murid tongue"
-	desc = "a short, rough tongue covered in bumps."
+	desc = "Uma língua curta e áspera coberta de solavancos."
 	say_mod = "squeaks"
 	icon_state = "tongue"
 	modifies_speech = TRUE
@@ -127,7 +127,7 @@
 
 /obj/item/organ/tongue/lizard/robot
 	name = "robotic lizard voicebox"
-	desc = "A lizard-like voice synthesizer that can interface with organic lifeforms."
+	desc = "Um sintetizador de voz tipo lagarto que pode interagir com formas de vida orgânicas."
 	organ_flags = ORGAN_ROBOTIC
 	icon_state = "tonguerobot"
 	say_mod = "hizzes"
@@ -148,7 +148,7 @@
 	name = "forked cybernetic tongue"
 	icon = 'modular_skyrat/modules/organs/icons/cyber_tongue.dmi'
 	icon_state = "cybertongue-lizard"
-	desc =  "A fully-functional forked synthetic tongue, encased in soft silicone. Features include high-resolution vocals and taste receptors."
+	desc =  "Uma língua sintética bifurcada totalmente funcional, envolto em silicone macio. As características incluem vocais de alta resolução e receptores de sabor."
 	organ_flags = ORGAN_ROBOTIC
 	// Not as good as organic tongues, not as bad as the robotic voicebox.
 	taste_sensitivity = 20
@@ -158,7 +158,7 @@
 	name = "cybernetic tongue"
 	icon = 'modular_skyrat/modules/organs/icons/cyber_tongue.dmi'
 	icon_state = "cybertongue"
-	desc =  "A fully-functional synthetic tongue, encased in soft silicone. Features include high-resolution vocals and taste receptors."
+	desc =  "Uma língua sintética totalmente funcional, envolto em silicone macio. As características incluem vocais de alta resolução e receptores de sabor."
 	organ_flags = ORGAN_ROBOTIC
 	say_mod = "says"
 	// Not as good as organic tongues, not as bad as the robotic voicebox.
@@ -166,20 +166,20 @@
 
 /obj/item/organ/tongue/vox
 	name = "vox tongue"
-	desc = "A fleshy muscle mostly used for skreeing."
+	desc = "Um músculo carnudo usado principalmente para skreeing."
 	say_mod = "skrees"
 	liked_foodtypes = MEAT | FRIED
 
 /obj/item/organ/tongue/dwarven
 	name = "dwarven tongue"
-	desc = "A fleshy muscle mostly used for bellowing."
+	desc = "Um músculo carnudo usado para gritar."
 	say_mod = "bellows"
 	liked_foodtypes = ALCOHOL | MEAT | DAIRY //Dwarves like alcohol, meat, and dairy products.
 	disliked_foodtypes = JUNKFOOD | FRIED | CLOTH //Dwarves hate foods that have no nutrition other than alcohol.
 
 /obj/item/organ/tongue/ghoul
 	name = "ghoulish tongue"
-	desc = "A fleshy muscle mostly used for rasping."
+	desc = "Um músculo carnudo usado para raspar."
 	say_mod = "rasps"
 	liked_foodtypes = RAW | MEAT
 	disliked_foodtypes = VEGETABLES | FRUIT | CLOTH
@@ -187,7 +187,7 @@
 
 /obj/item/organ/tongue/insect
 	name = "insect tongue"
-	desc = "A fleshy muscle mostly used for chittering."
+	desc = "Um músculo carnudo usado para chittering."
 	say_mod = "chitters"
 	liked_foodtypes = GROSS | RAW | TOXIC | GORE
 	disliked_foodtypes = CLOTH | GRAIN | FRIED
@@ -195,7 +195,7 @@
 
 /obj/item/organ/tongue/xeno_hybrid
 	name = "alien tongue"
-	desc = "According to leading xenobiologists the evolutionary benefit of having a second mouth in your mouth is \"that it looks badass\"."
+	desc = "De acordo com os principais xenobiologistas o benefício evolutivo de ter uma segunda boca em sua boca é\"Que parece foda.\"."
 	icon_state = "tonguexeno"
 	say_mod = "hisses"
 	taste_sensitivity = 10
@@ -208,5 +208,5 @@
 
 /obj/item/organ/tongue/skrell
 	name = "skrell tongue"
-	desc = "A fleshy muscle mostly used for warbling."
+	desc = "Um músculo carnudo usado principalmente para ondulação."
 	say_mod = "warbles"

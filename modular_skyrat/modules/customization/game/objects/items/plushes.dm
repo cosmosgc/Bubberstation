@@ -9,7 +9,7 @@
 
 /obj/item/toy/plush/skyrat/borbplushie
 	name = "borb plushie"
-	desc = "An adorable stuffed toy that resembles a round, fluffy looking bird. Not to be mistaken for his friend, the birb plushie."
+	desc = "Um adorável brinquedo de pelúcia que se parece com um pássaro redondo e fofo. Sem ser confundido com o amigo dele, o birb plushie."
 	icon_state = "plushie_borb"
 	attack_verb_continuous = list("pecks", "peeps")
 	attack_verb_simple = list("peck", "peep")
@@ -17,7 +17,7 @@
 
 /obj/item/toy/plush/skyrat/deer
 	name = "deer plushie"
-	desc = "An adorable stuffed toy that resembles a deer."
+	desc = "Um adorável brinquedo de pelúcia que se parece com um veado."
 	icon_state = "plushie_deer"
 	attack_verb_continuous = list("headbutts", "boops", "bapps", "bumps")
 	attack_verb_simple = list("headbutt", "boop", "bap", "bump")
@@ -25,7 +25,7 @@
 
 /obj/item/toy/plush/skyrat/fermis
 	name = "medcat plushie"
-	desc = "An affectionate stuffed toy that resembles a certain medcat, comes complete with battery operated wagging tail!! You get the impression she's cheering you on to find happiness and be kind to people."
+	desc = "Um afetuoso brinquedo de pelúcia que se parece com um certo medcat, vem completo com bateria abanando cauda! Você tem a impressão que ela está te torcendo para encontrar felicidade e ser gentil com as pessoas."
 	icon_state = "plushie_fermis"
 	attack_verb_continuous = list("cuddles", "petpatts", "wigglepurrs")
 	attack_verb_simple = list("cuddle", "petpatt", "wigglepurr")
@@ -34,17 +34,17 @@
 
 /obj/item/toy/plush/skyrat/fermis/chen
 	name = "securicat plushie"
-	desc = "The official stuffed companion to the medcat plushie!! It resembles a certain securicat. You get the impression she's encouraging you to be brave and protect those you care for."
+	desc = "O companheiro oficial de pelúcia para o petisco! Parece um certo securicat. Você tem a impressão que ela está encorajando você a ser corajoso e proteger aqueles que você gosta."
 	icon_state = "plushie_chen"
 	attack_verb_continuous = list("snuggles", "meowhuggies", "wigglepurrs")
 	attack_verb_simple = list("snuggle", "meowhuggie", "wigglepurr")
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list(JOB_ASSISTANT, JOB_HEAD_OF_SECURITY)
-	special_desc = "There's a pocket under the coat hiding a tiny picture of the medcat plushie and a tinier ribbon diamond ring. D'awww."
+	special_desc = "Há um bolso embaixo do casaco escondendo uma pequena imagem do plushie de medcat e um anel de diamante de fita menor. D'awww."
 
 /obj/item/toy/plush/skyrat/sechound
 	name = "sec-hound plushie"
-	desc = "An adorable stuffed toy of a SecHound, the trusty Nanotrasen sponsored security borg!"
+	desc = "Um adorável brinquedo de pelúcia de um SecHound, o confiável Nanotrasen patrocinou o borg da segurança!"
 	icon_state = "plushie_securityk9"
 	attack_verb_continuous = list("beeps", "boops", "pings")
 	attack_verb_simple = list("beep", "boop", "ping")
@@ -52,7 +52,7 @@
 
 /obj/item/toy/plush/skyrat/medihound
 	name = "medi-hound plushie"
-	desc = "An adorable stuffed toy of a medihound."
+	desc = "Um adorável brinquedo de pelúcia."
 	icon_state = "plushie_medihound"
 	attack_verb_continuous = list("beeps", "boops", "pings")
 	attack_verb_simple = list("beep", "boop", "ping")
@@ -60,7 +60,7 @@
 
 /obj/item/toy/plush/skyrat/engihound
 	name = "engi-hound plushie"
-	desc = "An adorable stuffed toy of a engihound."
+	desc = "Um adorável brinquedo de pelúcia de um engihound."
 	icon_state = "plushie_engihound"
 	attack_verb_continuous = list("beeps", "boops", "pings")
 	attack_verb_simple = list("beep", "boop", "ping")
@@ -68,7 +68,7 @@
 
 /obj/item/toy/plush/skyrat/scrubpuppy
 	name = "scrub-puppy plushie"
-	desc = "An adorable stuffed toy of a Scrubpuppy, the hard-working pup who keeps the station clean!"
+	desc = "Um adorável brinquedo de pelúcia de um Scrubpuppy, o cachorro trabalhador que mantém a estação limpa!"
 	icon_state = "plushie_scrubpuppy"
 	attack_verb_continuous = list("beeps", "boops", "pings")
 	attack_verb_simple = list("beep", "boop", "ping")
@@ -76,7 +76,7 @@
 
 /obj/item/toy/plush/skyrat/meddrake
 	name = "medi-drake plushie"
-	desc = "An adorable stuffed toy of a Medidrake."
+	desc = "Um adorável brinquedo de pelúcia de um Medidrake."
 	icon_state = "plushie_meddrake"
 	attack_verb_continuous = list("beeps", "boops", "pings")
 	attack_verb_simple = list("beep", "boop", "ping")
@@ -84,7 +84,7 @@
 
 /obj/item/toy/plush/skyrat/secdrake
 	name = "sec-drake plushie"
-	desc = "An adorable stuffed toy of a Secdrake."
+	desc = "Um adorável brinquedo de pelúcia de um Secdrake."
 	icon_state = "plushie_secdrake"
 	attack_verb_continuous = list("beeps", "boops", "pings")
 	attack_verb_simple = list("beep", "boop", "ping")
@@ -92,7 +92,7 @@
 
 /obj/item/toy/plush/skyrat/fox
 	name = "fox plushie"
-	desc = "An adorable stuffed toy of a Fox."
+	desc = "Um adorável brinquedo de pelúcia de uma raposa."
 	icon_state = "plushie_fox"
 	attack_verb_continuous = list("geckers", "boops", "nuzzles")
 	attack_verb_simple = list("gecker", "boop", "nuzzle")
@@ -100,7 +100,7 @@
 
 /obj/item/toy/plush/skyrat/duffmoth
 	name = "suspicious moth plushie"
-	desc = "A plushie depicting a certain moth. He probably got turned into a marketable plushie."
+	desc = "Uma pelúcia retratando uma certa mariposa. Ele provavelmente se transformou em uma pelúcia comercializável."
 	icon_state = "plushie_duffy"
 	attack_verb_continuous = list("flutters", "flaps", "squeaks")
 	attack_verb_simple = list("flutter", "flap", "squeak")
@@ -109,7 +109,7 @@
 
 /obj/item/toy/plush/skyrat/leaplush
 	name = "suspicious deer plushie"
-	desc = "A cute and all too familiar deer."
+	desc = "Um veado bonito e muito familiar."
 	icon_state = "plushie_lea"
 	attack_verb_continuous = list("headbutts", "plaps")
 	attack_verb_simple = list("headbutt", "plap")
@@ -118,7 +118,7 @@
 
 /obj/item/toy/plush/skyrat/sarmieplush
 	name = "cosplayer plushie"
-	desc = "A stuffed toy who look like a familiar cosplayer, <b>he looks sad.</b>"
+	desc = "Um brinquedo de pelúcia que parece um cosplayer familiar,<b>Ele parece baste.</b>"
 	icon_state = "plushie_sarmie"
 	attack_verb_continuous = list("baps")
 	attack_verb_simple = list("bap")
@@ -127,7 +127,7 @@
 
 /obj/item/toy/plush/skyrat/sharknet
 	name = "gluttonous shark plushie"
-	desc = "A heavy plushie of a rather large and hungry shark"
+	desc = "Um pedacinho pesado de um tubarão grande e faminto"
 	icon_state = "plushie_sharknet"
 	attack_verb_continuous = list("cuddles", "squishes", "wehs")
 	attack_verb_simple = list("cuddle", "squish", "weh")
@@ -141,7 +141,7 @@
 
 /obj/item/toy/plush/skyrat/pintaplush
 	name = "smaller deer plushie"
-	desc = "A pint-sized cervine with a vacant look."
+	desc = "Um cervine do tamanho de uma cerveja com um olhar vago."
 	icon_state = "plushie_pinta"
 	attack_verb_continuous = list("bonks", "snugs")
 	attack_verb_simple = list("bonk", "snug")
@@ -150,7 +150,7 @@
 
 /obj/item/toy/plush/skyrat/szaplush
 	name = "suspicious spider"
-	desc = "A plushie of a shy looking drider, colored in floortile gray."
+	desc = "Uma pelúcia de um drider tímido, colorido em cinza."
 	icon_state = "plushie_sza"
 	attack_verb_continuous = list("scuttles", "chitters", "bites")
 	attack_verb_simple = list("scuttle", "chitter", "bite")
@@ -159,7 +159,7 @@
 
 /obj/item/toy/plush/skyrat/riffplush
 	name = "valid plushie"
-	desc = "A stuffed toy in the likeness of a peculiar demonic one. Likely turned into a plushie to sell such. They look quite alright about it."
+	desc = "Um brinquedo de pelúcia na semelhança de um demoníaco peculiar. Provavelmente se transformou em uma pelúcia para vender isso. Eles parecem muito bem sobre isso."
 	icon_state = "plushie_riffy"
 	attack_verb_continuous = list("slaps", "challenges")
 	attack_verb_simple = list("slap", "challenge")
@@ -167,7 +167,7 @@
 
 /obj/item/toy/plush/skyrat/ian
 	name = "plush corgi"
-	desc = "A plushie of an adorable corgi! Don't you just want to hug it and squeeze it and call it \"Ian\"?"
+	desc = "Um corgi adorável! Você não quer apenas abraçá-lo, apertar e chamá-lo\"Ian.\"?"
 	icon_state = "ianplushie"
 	attack_verb_continuous = list("barks", "woofs", "wags his tail at")
 	attack_verb_simple = list("lick", "nuzzle", "bite")
@@ -176,19 +176,19 @@
 
 /obj/item/toy/plush/skyrat/ian/small
 	name = "small plush corgi"
-	desc = "A plushie of an adorable corgi! Don't you just want to hug it and squeeze it and call it \"Ian\"?"
+	desc = "Um corgi adorável! Você não quer apenas abraçá-lo, apertar e chamá-lo\"Ian.\"?"
 	icon_state = "corgi"
 
 /obj/item/toy/plush/skyrat/ian/lisa
 	name = "plush girly corgi"
-	desc = "A plushie of an adorable corgi! Don't you just want to hug it and squeeze it and call it \"Lisa\"?"
+	desc = "Um corgi adorável! Você não quer apenas abraçá-lo, apertar e chamá-lo\"Lisa.\"?"
 	icon_state = "girlycorgi"
 	attack_verb_continuous = list("barks", "woofs", "wags her tail at")
 	gender = FEMALE
 
 /obj/item/toy/plush/skyrat/cat
 	name = "cat plushie"
-	desc = "A small cat plushie with black beady eyes."
+	desc = "Um pequeno gato de pelúcia com olhos pretos."
 	icon_state = "blackcat"
 	attack_verb_continuous = list("cuddles", "meows", "hisses")
 	attack_verb_simple = list("cuddle", "meow", "hiss")
@@ -204,7 +204,7 @@
 
 /obj/item/toy/plush/skyrat/seaduplush
 	name = "sneed plushie"
-	desc = "A plushie of a particular, bundled up IPC. Underneath the cloak, you can see a plush recreation of the captain's sabre."
+	desc = "Uma fantasia de um particular, empacotado IPC. Debaixo do manto, você pode ver uma recriação do sabre do capitão."
 	icon_state = "plushie_seadu"
 	attack_verb_continuous = list("beeps", "sneeds", "swords")
 	attack_verb_simple = list("beep", "sneed", "sword")
@@ -212,7 +212,7 @@
 
 /obj/item/toy/plush/skyrat/lizzyplush
 	name = "odd yoga lizzy plushie"
-	desc = "Brought to you by Nanotrasen Wellness Program is the Yoga Odd Lizzy! He smells vaguely of blueberries, and likely resembles a horrible lover."
+	desc = "O Programa Nanotrasen Wellness é o Yoga Odd Lizzy! Ele cheira vagamente a mirtilos, e provavelmente se parece com um amante horrível."
 	icon_state = "plushie_lizzy"
 	attack_verb_continuous = list("wehs")
 	attack_verb_simple = list("weh")
@@ -220,7 +220,7 @@
 
 /obj/item/toy/plush/skyrat/mechanic_fox
 	name = "mechanist fox plushie"
-	desc = "A fox with fabulous hair! It has a tendency to make synth plushies look good as new when placed next to them."
+	desc = "Uma raposa com um cabelo fabuloso! Tem a tendência de fazer synth pelúcias parecerem novas quando colocadas ao lado delas."
 	icon_state = "plushie_cali"
 	attack_verb_continuous = list("fixes", "updates", "hugs")
 	attack_verb_simple = list("fix", "update", "hug")
@@ -228,7 +228,7 @@
 
 /obj/item/toy/plush/skyrat/tribal_salamander
 	name = "tribal salamander plushie"
-	desc = "A water-safe plushie that always seems to lose any clothes you try to put on it."
+	desc = "Um plushie seguro de água que sempre parece perder qualquer roupa que você tenta colocar nele."
 	icon_state = "plushie_azu"
 	attack_verb_continuous = list("wurbles at", "warbles at")
 	attack_verb_simple = list("wurbles at", "warbles at")
@@ -236,7 +236,7 @@
 
 /obj/item/toy/plush/skyrat/commanding_teshari
 	name = "commanding teshari plushy"
-	desc = "A very soft plush resembling a certain science-loving, command inclined Teshari. Just holding it makes you feel cared for."
+	desc = "Uma pelúcia muito suave que se assemelha a um certo amante da ciência, comando inclinado Teshari. Segurar faz você se sentir bem."
 	icon_state = "plushie_alara"
 	attack_verb_continuous = list("peeps", "wurbles", "hugs")
 	attack_verb_simple = list("peeps", "wurbles", "hugs")
@@ -244,7 +244,7 @@
 
 /obj/item/toy/plush/skyrat/breakdancing_bird
 	name = "breakdancing bird plushie"
-	desc = "This little robotic bird plushie loves to give you a little dance in celebration of your achievements, no matter how mundane."
+	desc = "Este pequeno pássaro robótico adora dar-lhe uma pequena dança em celebração de suas conquistas, não importa o quão mundano."
 	icon_state = "plushie_cadicus"
 	attack_verb_continuous = list("boops", "dances next to")
 	attack_verb_simple = list("boop", "dance next to")
@@ -252,7 +252,7 @@
 
 /obj/item/toy/plush/skyrat/skreking_vox
 	name = "skreking vox plushie"
-	desc = "A vox plushie that seems ready to pull a gun on you and demand your money! Rumor has it that if you poke it in a particular way, it will show you its skrektual technique."
+	desc = "Uma plushie vox que parece pronta para apontar uma arma para você e exigir seu dinheiro! Há rumores de que se você cutucá-lo de uma forma específica, ele vai mostrar-lhe sua técnica skrektual."
 	icon_state = "plushie_toko"
 	attack_verb_continuous = list("rustles at", "threatens", "skreks at")
 	attack_verb_simple = list("rustle at", "threaten", "skrek at")
@@ -260,7 +260,7 @@
 
 /obj/item/toy/plush/skyrat/blue_dog
 	name = "blue dog plushie"
-	desc = "A devious looking husky that seems to be begging for headpats. It smells faintly of blueberries."
+	desc = "Um desonesta que parece está implorando por headpats. Cheira um mirtillos."
 	icon_state = "plushie_cobalt"
 	attack_verb_continuous = list("barks at", "borks at", "woofs at")
 	attack_verb_simple = list("bark at", "bork at", "woof at")
@@ -268,7 +268,7 @@
 
 /obj/item/toy/plush/skyrat/engi_snek
 	name = "engineering snek plushie"
-	desc = "This plush looks like it knows the difference between pumps and pipes! The arm is detachable, so don't lose it!"
+	desc = "Essa peluche parece saber a diferença entre bombas e tubos! O braço é destacável, então não o perca!"
 	icon_state = "plushie_tyri"
 	attack_verb_continuous = list("fixes", "unbolts", "welds")
 	attack_verb_simple = list("fix", "unbolt", "weld")
@@ -276,7 +276,7 @@
 
 /obj/item/toy/plush/skyrat/glitch_synth
 	name = "glitching synthetic plushie"
-	desc = "A synthetic plush, the interface seems to glitch out every time you give it a hug or call it cute!"
+	desc = "Uma pelúcia sintética, a interface parece falhar toda vez que você dá um abraço ou chama de fofo!"
 	icon_state = "plushie_rex"
 	attack_verb_continuous = list("beeps", "hugs", "health analyzes")
 	attack_verb_simple = list("beep", "hug", "health analyze")
@@ -284,7 +284,7 @@
 
 /obj/item/toy/plush/skyrat/boom_bird
 	name = "boom bird plushie"
-	desc = "This little bird plushie may look like a nerd, but you have the sneaking suspicion it might be valid! Why does your skin start to glow when you hug it?"
+	desc = "Este passarinho pode parecer um nerd, mas você suspeita que pode ser válido! Por que sua pele começa a brilhar quando a abraça?"
 	icon_state = "plushie_dima"
 	attack_verb_continuous = list("punches", "explodes on", "peeps")
 	attack_verb_simple = list("punch", "explode on", "peep")
@@ -292,7 +292,7 @@
 
 /obj/item/toy/plush/skyrat/blue_cat
 	name = "blue cat plushie"
-	desc = "A bright blue cat plush with neon pink hair, here to hand out kisses wherever kisses need be. Usually found near its home habitat, the tram."
+	desc = "Um gato azul brilhante com cabelo rosa neon, aqui para dar beijos onde os beijos precisarem. Normalmente encontrado perto de seu habitat, o bonde."
 	icon_state = "plushie_skyy"
 	attack_verb_continuous = list("kisses", "nuzzles", "cuddles", "purrs against")
 	attack_verb_simple = list("kiss", "nuzzle", "cuddle", "purr against")
@@ -300,7 +300,7 @@
 
 /obj/item/toy/plush/skyrat/igneous_synth
 	name = "igneous synth plushie"
-	desc = "Not actually made of igneous rock, giving this plush a hug will let you feel like you're being squeezed by the jaws of life!"
+	desc = "Não é feito de rocha ígnea, dar um abraço a essa pelúcia vai te deixar sentir como se estivesse sendo espremido pelas mandíbulas da vida!"
 	icon_state = "plushie_granite"
 	attack_verb_continuous = list("bleps", "SQUEEZES", "pies")
 	attack_verb_simple = list("blep", "SQUEEZE", "pie")
@@ -308,7 +308,7 @@
 
 /obj/item/toy/plush/skyrat/edgy_bird
 	name = "edgy birb plushie"
-	desc = "An edgy plush of an edgy bird. You could swear it's teleporting to a different spot every time you look away..."
+	desc = "Um pássaro nervoso. Você pode jurar que está se teletransportando para um lugar diferente toda vez que você olha para o outro lado..."
 	icon_state = "plushie_koto"
 	attack_verb_continuous = list("pecks", "teleports behind", "caws at")
 	attack_verb_simple = list("peck", "teleport behind", "caw at")
@@ -316,12 +316,12 @@
 
 /obj/item/toy/plush/skyrat/fox/mia
 	name = "silver fox plushie"
-	desc = "A small stuffed silver fox with a collar tag that says “Eavy” and a tiny bell in its fluffy tail."
+	desc = "Uma pequena raposa de prata recheada com um colarinho que diz \"Eavy.\"e um pequeno sino em sua causa má."
 	icon_state = "miafox"
 
 /obj/item/toy/plush/skyrat/fox/kailyn
 	name = "teasable fox plushie"
-	desc = "A familiar looking vixen in a peacekeeper attire, perfect for everyone who intends on venturing in the dark alone! There's a little tag which tells you to not boop its nose."
+	desc = "Uma megera familiar em um traje de pacificador, perfeito para todos que pretendem aventurar-se no escuro sozinhos! Tem uma etiqueta que diz para não bater no nariz."
 	icon_state = "teasefox"
 	attack_verb_continuous = list("sneezes on", "detains", "tazes")
 	attack_verb_simple = list("sneeze on", "detain", "taze")
@@ -329,7 +329,7 @@
 
 /obj/item/toy/plush/skyrat/xixi
 	name = "familiar looking harpy plushie"
-	desc = "A plushie depicting a bright-red and oddly familiar looking harpy! The tag on the back lists distributor information and a tagline telling you how it'll add a little 'skree' to your daily grind."
+	desc = "Uma pelúcia retratando uma harpia brilhante e estranhamente familiar! A etiqueta no verso lista informações do distribuidor e uma tagline dizendo como vai adicionar um pouco de 'skree' ao seu trabalho diário."
 	icon_state = "plushie_xixi"
 	attack_verb_continuous = list("caws", "skrees", "pecks")
 	attack_verb_simple = list("caw", "skree", "peck")
@@ -337,11 +337,7 @@
 
 /obj/item/toy/plush/skyrat/zapp
 	name = "Lil' Zapp"
-	desc = "An authentic piece of primo Pwr Game merchandise! \
-			This cuddly companion is the perfect ornament to decorate your battlestation. \
-			He sits upright unassisted, and can hold your headset, webcam, or keep your Pwr Game safe and secure. \
-			This one is outfitted with a state-of-the-art skill reader; \
-			just squeeze him tight and Zapp will tell you if you're ready for the next big game!"
+	desc = "Um autêntico pedaço de mercadoria Pwr Game! Este companheiro fofinho é o ornamento perfeito para decorar sua batalha. Ele fica sentado sem assistência, e pode segurar seu fone, webcam, ou manter seu jogo Pwr seguro. Este está equipado com um leitor de habilidades de última geração, aperte-o bem e Zapp dirá se estiver pronto para o próximo grande jogo!"
 	icon_state = "plushie_zapp"
 	attack_verb_continuous = list("boops", "nuzzles")
 	attack_verb_simple = list("boop", "nuzzle")
@@ -406,7 +402,7 @@
 
 /obj/item/toy/plush/skyrat/rubi
 	name = "huggable bee plushie"
-	desc = "It reminds you of a very, very, very huggable bee."
+	desc = "Isso te lembra uma abelha muito, muito, muito abraçável."
 	icon_state = "plushie_rubi"
 	gender = FEMALE
 	squeak_override = list('sound/items/weapons/thudswoosh.ogg' = 1)
@@ -419,16 +415,16 @@
 	var/mob/living/living_user = user
 	if(istype(living_user))
 		living_user.add_mood_event("hug", /datum/mood_event/warmhug/rubi, src)
-	user.visible_message(span_notice("[user] hugs \the [src]."), span_notice("You hug \the [src]."))
+	user.visible_message(span_notice("[user]Abraços\the [src]."), span_notice("Você se abraça.\the [src]."))
 
 /datum/mood_event/warmhug/rubi
-	description = span_nicegreen("Warm cozy bee hugs are the best!")
+	description = span_nicegreen("Abraços aconchegantes são os melhores!")
 	mood_change = 0
 	timeout = 2 MINUTES
 
 /obj/item/toy/plush/skyrat/roselia
 	name = "obscene sergal plushie"
-	desc = "A plush recreation of a pink sergal. The chest is extremely padded and the small plush clothes are barely holding themselves together."
+	desc = "Uma recriação de um sergal rosa. O peito é extremamente acolchoado e as pequenas roupas de pelúcia mal estão se segurando."
 	icon_state = "plushie_roselia"
 	attack_verb_continuous = list("hugs")
 	attack_verb_simple = list("hug")
@@ -437,7 +433,7 @@
 
 /obj/item/toy/plush/skyrat/chunko
 	name = "chunko fop"
-	desc = "A soulless creature that haunts your dreams."
+	desc = "Uma criatura sem alma que assombra seus sonhos."
 	icon_state = "plushie_pfbonnie"
 	var/responses = list("Do you fear death? Do you fear the world you live in? What 'God's so called infinite mercy is? A neverending life of constant and unending misery. Being forced to work and go on as millions, trillions suffer around you as you are either too powerless or too lazy to do anything? Is this worth living? Capitalism in overdrive, life in hell. Why?", "Hi!!", )
 	COOLDOWN_DECLARE(chunko_cooldown)
@@ -458,7 +454,7 @@
 
 /obj/item/toy/plush/skyrat/chunko/bonnie
 	name = "chunko fop blue bunny"
-	desc = "An 'adorable', if big eyed rabbit girl. This one is blue. Produced by the Chunko Fop Company <b><i>TM</i></b>. Spits out various Rabbit facts of dubious validity."
+	desc = "Uma garota\"adorável\", se de olhos grandes. Este é azul. Produzido pela Companhia Chunko Fop<b><i>TM</i></b>Cuspa vários fatos Rabbit de validade duvidosa."
 	icon_state = "plushie_pfbonnie"
 	gender = FEMALE
 	attack_verb_continuous = list("pats", "hugs", "scolds", "pets")
@@ -468,7 +464,7 @@
 
 /obj/item/toy/plush/skyrat/chunko/andrew
 	name = "chunko fop green and orange bunny"
-	desc = "An 'adorable', if big eyed rabbit girl(?). This one is green and orange. Produced by the Chunko Fop Company <b><i>TM</i></b>. Spits out various Bunnies of dubious existance."
+	desc = "Uma garota\"adorável\", se de olhos grandes. Este é verde e laranja. Produzido pela Companhia Chunko Fop<b><i>TM</i></b>Cospe vários coelhos de existência duvidosa."
 	icon_state = "plushie_pfandrew"
 	gender = MALE
 	attack_verb_continuous = list("pats", "hugs", "scolds", "pets")
@@ -479,7 +475,7 @@
 
 /obj/item/toy/plush/skyrat/chunko/inessa
 	name = "chunko fop medical bear"
-	desc = "An 'adorable', tired looking bear woman. This one produces fake smoke! Produced by the Chunko Fop Company <b><i>TM</i></b>. Spits out various Medical facts with a broken voicebox."
+	desc = "Uma mulher de urso\"adorável\" e cansada. Este produz fumaça falsa! Produzido pela Companhia Chunko Fop<b><i>TM</i></b>Cospe vários fatos médicos com uma caixa de voz quebrada."
 	icon_state = "plushie_pfinessa"
 	gender = FEMALE
 	attack_verb_continuous = list("slashes", "dissects", "yawns", "smokes")
@@ -490,7 +486,7 @@
 // Donation reward for shyshadow
 /obj/item/toy/plush/skyrat/chunko/plushie_winrow
 	name = "dark and brooding lizard plush"
-	desc = "An almost intimidating black lizard plush, this one's got a little beret to come with it! Best not to separate the two. Its eyes shine with suggestion, no maidens?"
+	desc = "Um lagarto preto quase intimidante pelúcia, este tem uma pequena boina para vir com ele! Melhor não separar os dois. Seus olhos brilham com sugestão, sem donzelas?"
 	icon_state = "plushie_shyshadow"
 	gender = MALE
 	attack_verb_continuous = list("slashes", "bites", "rizzes")
@@ -500,13 +496,13 @@
 // Donation reward for tobjv
 /obj/item/toy/plush/skyrat/tesh
 	name = "Squish-Me-Tesh"
-	desc = "Winner of Be Made Into A Plushy by ClownCo!"
+	desc = "Vencedor de ser transformado em um Plushy pela PalhaçoCo!"
 	icon_state = "plushie_tobjv2"
 
 // Donation reward for tobjv
 /obj/item/toy/plush/skyrat/immovable_rod
 	name = "immovable rod"
-	desc = "Realistic! But also squishy and certainly not as dangerous as its real counterpart."
+	desc = "Realista! Mas também mole e certamente não tão perigoso quanto sua verdadeira contraparte."
 	icon_state = "plushie_tobjv"
 
 /obj/item/toy/plush/skyrat/immovable_rod/Bump(atom/clong)
@@ -518,13 +514,13 @@
 // Donation reward for gamerguy14948
 /obj/item/toy/plush/skyrat/voodoo
 	name = "voodoo doll"
-	desc = "A not so small voodoo doll made out of cut and sewn potato bags. It almost looks cute."
+	desc = "Uma boneca de vodu não tão pequena feita de sacos de batata cortados e costurados. Quase parece bonito."
 	icon_state = "plushie_gamerguy"
 
 // Donation reward for Dudewithatude
 /obj/item/toy/plush/skyrat/plushie_star
 	name = "star angel plush"
-	desc = "The plushie of a celestial in the known universe."
+	desc = "O plushie de um celestial no universo sabecido."
 	icon_state = "plushie_star"
 	gender = FEMALE
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/trills.ogg' = 1)
@@ -532,19 +528,19 @@
 // Donation reward for SRQ
 /obj/item/toy/plush/skyrat/plushie_chiara
 	name = "commanding fox plush"
-	desc = "A large stuffed fox which radiates confidence and vigor from their emerald eyes."
+	desc = "Uma grande raposa empalhada que irradia confiança e vigor de seus olhos de esmeralda."
 	icon_state = "plushie_chiara"
 
 // Donation reward for Superlagg
 /obj/item/toy/plush/skyrat/plushie_dan
 	name = "comfy fox plush"
-	desc = "A stuffed fox with an aura of endearment leaking from their soft exterior."
+	desc = "Uma raposa de pelúcia com uma aura de carinho vazando de seu exterior macio."
 	icon_state = "plushie_dan"
 
 //Donation reward for KLB100
 /obj/item/toy/plush/skyrat/fox/plushie_jeanne
 	name = "masked roboticist plushie"
-	desc = "A familiar snow white Vulpkanin plushie. This one appears to be wearing a mask obscuring their face."
+	desc = "Um Vulpkanin branco de neve familiar. Este parece estar usando uma máscara ocultando seu rosto."
 	icon_state = "plushie_jeanne"
 	attack_verb_continuous = list("cuddles", "squishes", "blushes")
 	attack_verb_simple = list("cuddle", "squish", "blush")
@@ -552,13 +548,13 @@
 //Donation reward for Dalao Azure
 /obj/item/toy/plush/skyrat/plushie_azyre
 	name = "handsome chef plushie"
-	desc = "A need to cook only rivaled by a hunger for fox tail."
+	desc = "A necessidade de cozinhar só rivaliza com uma fome de cauda de raposa."
 	icon_state = "plushie_azyre"
 
 //Donation reward for Razurath
 /obj/item/toy/plush/skyrat/plushie_razurath
 	name = "science shark plushie"
-	desc = "A determined scientist with a hint of mischief in her smile."
+	desc = "Um cientista determinado com uma pitada de travessura em seu sorriso."
 	icon_state = "plush_scishark"
 	attack_verb_continuous = list("bites", "eats", "fin slaps")
 	attack_verb_simple = list("bite", "eat", "fin slap")
@@ -567,13 +563,13 @@
 //Other donation reward for Razurath
 /obj/item/toy/plush/skyrat/plushie_razurath/second
 	name = "dwarf shark plushie"
-	desc = "Despite her height, the plushie regards you with keen and frankly unamused eyes; the look on her face, and the elegance of her little tiny coat tell you that she knows something you don't."
+	desc = "Apesar de sua altura, a pelúcia o vê com olhos aguçados e francamente desconcertados, o olhar em seu rosto, e a elegância de seu pequeno casaco lhe dizem que ela sabe algo que você não sabe."
 	icon_state = "plushie_nedilla"
 
 //Donation reward for October23
 /obj/item/toy/plush/skyrat/plushie_elofy
 	name = "bumbling wolfgirl plushie"
-	desc = "A white-haired wolfgirl in a stylish red security skirt. Despite her scary cybernetic arm, she is soft to hug and only wishes to be praised and comforted."
+	desc = "Uma lobinha de cabelos brancos com uma elegante saia de segurança vermelha. Apesar de seu assustador braço cibernético, ela é macia para abraçar e só deseja ser elogiada e confortada."
 	icon_state = "plush_lonie"
 	attack_verb_continuous = list("snuggles", "nibbles", "awoos", "tail whaps")
 	attack_verb_simple = list("snuggle", "nibble", "awoo", "tail whap")
@@ -582,7 +578,7 @@
 //Donation reward for syntax1112
 /obj/item/toy/plush/skyrat/plushie_syntax1112
 	name = "lop bunny plushie"
-	desc = "A floppy-eared rabbit in marketable plushie form. Complete with an internal self-inflating squeaker device!"
+	desc = "Um coelho de orelhas moles em forma de pelúcia. Completo com um dispositivo de auto-inflação interna!"
 	icon_state = "fuzz_bunny"
 	attack_verb_continuous = list("nibbles", "squeaks", "nose twitches", "thumps", "whops")
 	attack_verb_simple = list("nibble", "squeak", "nose twitch", "thump", "whop")
@@ -591,7 +587,7 @@
 // Donation reward for SomeRandomOwl
 /obj/item/toy/plush/skyrat/snow_owl
 	name = "snowy owl plush"
-	desc = "A very soft plush resembling a feathery and witch like owl who is known to frequent science and medical."
+	desc = "Uma pelúcia muito macia parecida com uma pluma e bruxa como coruja que é conhecida por frequentar ciência e medicina."
 	icon_state = "plushie_owl"
 	attack_verb_continuous = list("hoots", "screms", "hugs")
 	attack_verb_simple = list("hoot", "screm", "hug")
@@ -600,8 +596,7 @@
 // Donation reward for Jolly66
 /obj/item/toy/plush/skyrat/derg_plushie
 	name = "wingless dragon plush"
-	desc = "A cute green-and-yellow wingless dragon plushie! For what its worth, it does have a comically large tail. \
-		Comes with an additional paramedic cap."
+	desc = "Um lindo dragão verde e amarelo sem asas! Se vale de algo, tem uma cauda cômica. Vem com um boné de paramédico adicional."
 	icon_state = "plushie_derg"
 	attack_verb_continuous = list("wehs", "wehs softly", "stutters")
 	attack_verb_simple = list("weh", "weh softly", "stutter")
@@ -610,7 +605,7 @@
 // Donation reward for Gofawful5
 /obj/item/toy/plush/skyrat/tracy
 	name = "creature plushie"
-	desc = "An astonishingly well-endowed catfox plushie... It seems content."
+	desc = "Um catfox super bem-dotado... Parece satisfeito."
 	icon_state = "plush_tracy"
 	attack_verb_continuous = list("expands")
 	attack_verb_simple = list("expand")
@@ -620,7 +615,7 @@
 //Donation reward for Frixit
 /obj/item/toy/plush/skyrat/plushie_synthia
 	name = "adventurous synth plushie"
-	desc = "This plush is perfect For adventures in space and in bed, a cuddly purple Synth, their scarf is extra soft!"
+	desc = "Esta pelúcia é perfeita para aventuras no espaço e na cama, um sintético roxo fofinho, seu cachecol é extra macio!"
 	icon_state = "plushie_synthia"
 	attack_verb_continuous = list("blushes", "hugs", "whips")
 	attack_verb_simple = list("blush", "hug", "whip")
@@ -629,7 +624,7 @@
 //Donation reward for Kitsun
 /obj/item/toy/plush/skyrat/jecca
 	name = "sexy snoodle plushie"
-	desc = "For some reason, this plushie is rather shiny, with glistening, glittering scales, and its ruby colored eyes seem to be rather enticing and full of mischievous, lewd thoughts behind them."
+	desc = "Por alguma razão, esta plushie é bastante brilhante, com brilhantes, escalas brilhantes, e seus olhos rubi coloridos parecem ser bastante atraente e cheio de pensamentos travessos e lascivos atrás deles."
 	icon_state = "plushie_jecca"
 	attack_verb_continuous = list("sighs")
 	attack_verb_simple = list("sigh")
@@ -639,7 +634,7 @@
 //Donation reward for BriareosBlue
 /obj/item/toy/plush/skyrat/courier_synth
 	name = "courier synth plushie"
-	desc = "This synth plushie looks about ready to deliver hugs and beeps straight to the heart! The tag seems to have an advertisement for a delivery company on it..."
+	desc = "Este synth plushie parece pronto para dar abraços e bips direto para o coração! A etiqueta parece ter um anúncio para uma empresa de entrega..."
 	icon_state = "plushie_courier"
 	attack_verb_continuous = list("delivers", "export scans", "dwoops", "bwuhs", "stamps")
 	attack_verb_simple = list("deliver", "export scan", "dwoop", "bwuh", "stamp")
@@ -648,7 +643,7 @@
 //Donation reward for olirant
 /obj/item/toy/plush/skyrat/plush_janiborg
 	name = "Friendly Janiborg Plush"
-	desc = "A miniature omnidroid toy straight from the Lockstep Enterprises Corporation marketing department in handsome janitorial purple. Now with real squirting action!"
+	desc = "Um brinquedo omnidroid em miniatura direto do departamento de marketing da Lockstep Enterprises Corporation, em roxo bonito. Agora com ação esguichada de verdade!"
 	icon_state = "plush_janiborg"
 	attack_verb_continuous = list("beeps", "washes", "mops", "squirts", "soaps")
 	attack_verb_simple = list("beep", "wash", "mop", "squirt", "soap")

@@ -32,7 +32,7 @@
 
 /obj/effect/nettingportal
 	name = "DRAGnet teleportation field"
-	desc = "A field of bluespace energy, locking on to teleport a target."
+	desc = "Um campo de energia do espaço azul, travando para teletransportar um alvo."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "dragnetfield"
 	light_range = 3
@@ -61,7 +61,7 @@
 
 /obj/item/dragnet_beacon
 	name = "\improper DRAGnet beacon"
-	desc = "Can be synced with a DRAGnet to set it as a designated teleporting point."
+	desc = "Pode ser sincronizado com um DRAGnet para definir como um ponto de teletransporte designado."
 	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "dragnet_beacon"
 	inhand_icon_state = "beacon"
@@ -78,31 +78,31 @@
 
 	if(isidcard(tool))
 		if(!anchored)
-			balloon_alert(user, "wrench the beacon first!")
+			balloon_alert(user, "Aperte o farol primeiro!")
 			return
 
 		if(obj_flags & EMAGGED)
-			balloon_alert(user, "the access control is fried!")
+			balloon_alert(user, "O controle de acesso está frito!")
 			return
 
 		var/obj/item/card/id/id_card = tool
 		if((ACCESS_SECURITY in id_card.GetAccess()))
 			locked = !locked
-			balloon_alert(user, "beacon [locked ? "trancado" : "destrancado"]")
+			balloon_alert(user, "farol[locked ? "trancado" : "destrancado"]")
 		else
 			balloon_alert(user, "sem acesso!")
 
 /obj/item/dragnet_beacon/wrench_act(mob/living/user, obj/item/tool)
 	if(user.is_holding(src))
-		balloon_alert(user, "put it down first!")
+		balloon_alert(user, "Coloque no chão primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(anchored && locked)
-		balloon_alert(user, "must be unlocked first!")
+		balloon_alert(user, "Deve ser desbloqueado primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(isinspace() && !anchored)
-		balloon_alert(user, "nothing to anchor to!")
+		balloon_alert(user, "Nada para ancorar!")
 		return ITEM_INTERACT_BLOCKING
 
 	set_anchored(!anchored)
@@ -116,5 +116,5 @@
 	locked = FALSE
 	set_anchored(FALSE)
 	do_sparks(3, TRUE, src)
-	balloon_alert(user, "beacon unlocked")
+	balloon_alert(user, "farol destrancado")
 	return TRUE

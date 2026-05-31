@@ -1,7 +1,7 @@
 /// A nasty little robotic bug that dusts people on attack. Jeepers. This should be a very, very, very rare spawn.
 /mob/living/basic/supermatter_spider
 	name = "supermatter spider"
-	desc= "A sliver of supermatter placed upon a robotically enhanced pedestal."
+	desc= "Um pedaço de supermatéria colocado em um pedestal robótico melhorado."
 
 	icon = 'icons/mob/simple/smspider.dmi'
 	icon_state = "smspider"
@@ -24,7 +24,7 @@
 	minimum_survivable_temperature = TCMB
 	maximum_survivable_temperature = T0C + 1250
 	habitable_atmos = null
-	death_message = "falls to the ground, its shard dulling to a miserable grey!"
+	death_message = "Cai no chão, seu caco embotando para um cinza miserável!"
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, STAMINA = 0, OXY = 1)
 
 	faction = list(FACTION_HOSTILE)
@@ -71,11 +71,11 @@
 /// Simple proc that plays the supermatter dusting sound and sends a visible message.
 /mob/living/basic/supermatter_spider/proc/dust_feedback(atom/target)
 	playsound(get_turf(src), 'sound/effects/supermatter.ogg', 10, TRUE)
-	visible_message(span_danger("[src] knocks into [target], turning [target.p_them()] to dust in a brilliant flash of light!"))
+	visible_message(span_danger("[src]bate em[target], virando[target.p_them()]A poeira em um brilhante clarão de luz!"))
 
 /mob/living/basic/supermatter_spider/overcharged
 	name = "overcharged supermatter spider"
-	desc = "A sliver of overcharged supermatter placed upon a robotically enhanced pedestal. This one seems especially dangerous."
+	desc = "Uma lasca de supermatéria sobrecarregada colocada em um pedestal robótico melhorado. Este parece especialmente perigoso."
 	icon_state = "smspideroc"
 	icon_living = "smspideroc"
 	maxHealth = 25

@@ -41,7 +41,7 @@
 /* Action for opening the synthbrain computer */
 /datum/action/item_action/synth/open_internal_computer
 	name = "Open persocom emulation"
-	desc = "Accesses your built-in virtual machine."
+	desc = "Acessa sua máquina virtual integrada."
 	check_flags = AB_CHECK_CONSCIOUS
 
 /datum/action/item_action/synth/open_internal_computer/Trigger(trigger_flags)
@@ -108,10 +108,10 @@ Various overrides necessary to get the persocom working, namely ui status, power
 	var/obj/item/organ/brain/synth/robotbrain = targetmachine.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(istype(robotbrain))
 		if(user.zone_selected == BODY_ZONE_PRECISE_EYES)
-			balloon_alert(user, "establishing SSH login with persocom...")
+			balloon_alert(user, "Estabelecendo login SSH com Persocom...")
 			if(do_after(user, 5 SECONDS))
-				balloon_alert(user, "connection established!")
-				to_chat(targetmachine, span_notice("[user] establishes an SSH connection between [src] and your persocom emulation."))
+				balloon_alert(user, "Ligação estabelecida!")
+				to_chat(targetmachine, span_notice("[user]estabelece uma conexão SSH entre[src]e sua emulação persocom."))
 				robotbrain.internal_computer.interact(user)
 			return
 	return ..()

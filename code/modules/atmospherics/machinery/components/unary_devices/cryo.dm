@@ -189,28 +189,28 @@
 /obj/machinery/cryo_cell/examine(mob/user) //this is leaving out everything but efficiency since they follow the same idea of "better beaker, better results"
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Efficiency at <b>[efficiency * 100]</b>%.")
+		. += span_notice("A exibição de status diz: eficiência em<b>[efficiency * 100]</b>%.")
 		if(occupant)
 			if(on)
-				. += span_notice("Someone's inside [src]!")
+				. += span_notice("Tem alguém lá dentro.[src]!")
 			else
-				. += span_notice("You can barely make out a form floating in [src].")
+				. += span_notice("Você mal consegue ver uma forma flutuando[src].")
 		else
-			. += span_notice("[src] seems empty.")
+			. += span_notice("[src]Parece Vazio.")
 		if(beaker)
-			. += span_notice("A beaker of [beaker.reagents.maximum_volume]u capacity is located inside.")
+			. += span_notice("Um copo de[beaker.reagents.maximum_volume]Sua capacidade está localizada lá dentro.")
 		else
-			. += span_warning("Its missing a beaker.")
+			. += span_warning("Falta um copo.")
 
-		. += span_notice("Use [EXAMINE_HINT("Alt-Click")] to [state_open ? "Close" : "Open"] the machine.")
-		. += span_notice("Use [EXAMINE_HINT("Ctrl-Click")] to turn [on ? "Off" : "On"] the machine.")
+		. += span_notice("Use[EXAMINE_HINT("Alt-Click")]Para[state_open ? "Close" : "Open"]A máquina.")
+		. += span_notice("Use[EXAMINE_HINT("Ctrl-Click")]paravirar[on ? "Off" : "On"]A máquina.")
 
-		. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] open.")
+		. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")]Abra.")
 		if(panel_open)
-			. += span_notice("[src] can be [EXAMINE_HINT("pried")] apart.")
-			. += span_notice("[src] can be rotated with a [EXAMINE_HINT("wrench")].")
+			. += span_notice("[src]Pode ser[EXAMINE_HINT("pried")]Separados.")
+			. += span_notice("[src]pode ser girado com um[EXAMINE_HINT("wrench")].")
 		else if(machine_stat & NOPOWER)
-			. += span_notice("[src] can be [EXAMINE_HINT("pried")] open.")
+			. += span_notice("[src]Pode ser[EXAMINE_HINT("pried")]Abra.")
 
 /obj/machinery/cryo_cell/update_icon()
 	SET_PLANE_IMPLICIT(src, initial(plane))
@@ -236,30 +236,30 @@
 	if(!istype(tool, /obj/item/reagent_containers/cup))
 		return
 	if(!QDELETED(beaker))
-		balloon_alert(user, "beaker present!")
+		balloon_alert(user, "Presente de béquer!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING
 
 	beaker = tool
-	balloon_alert(user, "beaker inserted")
+	balloon_alert(user, "béquer inserido.")
 	user.log_message("added \a [tool] to cryo containing [pretty_string_from_reagent_list(tool.reagents.reagent_list)].", LOG_GAME)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/cryo_cell/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ITEM_INTERACT_BLOCKING
 	if(on)
-		balloon_alert(user, "desligue!")
+		balloon_alert(user, "Desligue!")
 		return ITEM_INTERACT_BLOCKING
 	if(occupant)
-		balloon_alert(user, "occupant inside!")
+		balloon_alert(user, "Ocupante dentro!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/cryo_cell/crowbar_act(mob/living/user, obj/item/tool)
 	if(on)
-		balloon_alert(user, "desligue!")
+		balloon_alert(user, "Desligue!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/can_crowbar = FALSE
@@ -285,7 +285,7 @@
 
 	var/unsafe_release = FALSE
 	if(internal_pressure > 2 * ONE_ATMOSPHERE)
-		to_chat(user, span_warning("As you begin prying \the [src] a gush of air blows in your face... maybe you should reconsider?"))
+		to_chat(user, span_warning("Enquanto você começa a bisbilhotar\the [src]Um sopro de ar na sua cara... Talvez deve reconsiderar?"))
 		if(!do_after(user, 2 SECONDS, target = src))
 			return ITEM_INTERACT_BLOCKING
 		unsafe_release = TRUE
@@ -305,13 +305,13 @@
 /obj/machinery/cryo_cell/wrench_act(mob/living/user, obj/item/tool)
 	. = ITEM_INTERACT_BLOCKING
 	if(on)
-		balloon_alert(user, "desligue!")
+		balloon_alert(user, "Desligue!")
 		return
 	if(occupant)
-		balloon_alert(user, "occupant inside!")
+		balloon_alert(user, "Ocupante dentro!")
 		return
 	if(state_open)
-		balloon_alert(user, "close first!")
+		balloon_alert(user, "Feche primeiro!")
 		return
 
 	if(default_change_direction_wrench(user, tool))
@@ -519,14 +519,11 @@
 /obj/machinery/cryo_cell/container_resist_act(mob/living/user)
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message(span_notice("You see [user] kicking against the glass of [src]!"), \
-		span_notice("You struggle inside [src], kicking the release with your foot... (this will take about [DisplayTimeText(CRYO_BREAKOUT_TIME)].)"), \
-		span_hear("You hear a thump from [src]."))
+	user.visible_message(span_notice("Viu?[user]Chutando contra o copo de[src]!"), 		span_notice("Você luta por dentro.[src]Chutando a liberação com o pé...[DisplayTimeText(CRYO_BREAKOUT_TIME)].)"), 		span_hear("Você ouve uma batida de[src]."))
 	if(do_after(user, CRYO_BREAKOUT_TIME, target = src, hidden = TRUE))
 		if(!user || user.stat != CONSCIOUS || user.loc != src )
 			return
-		user.visible_message(span_warning("[user] successfully broke out of [src]!"), \
-			span_notice("You successfully break out of [src]!"))
+		user.visible_message(span_warning("[user]Com sucesso, fugiu.[src]!"), 			span_notice("Você conseguiu escapar.[src]!"))
 		open_machine()
 
 /obj/machinery/cryo_cell/ui_state(mob/user)
@@ -628,7 +625,7 @@
 /obj/machinery/cryo_cell/click_ctrl(mob/user)
 	if(is_operational && !state_open)
 		set_on(!on)
-		balloon_alert(user, "turned [on ? "on" : "off"]")
+		balloon_alert(user, "Virado.[on ? "on" : "off"]")
 		return CLICK_ACTION_SUCCESS
 	return CLICK_ACTION_BLOCKING
 
@@ -641,7 +638,7 @@
 		close_machine()
 	else
 		open_machine()
-	balloon_alert(user, "door [state_open ? "opened" : "closed"]")
+	balloon_alert(user, "Porta.[state_open ? "opened" : "closed"]")
 	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/cryo_cell/mouse_drop_receive(mob/target, mob/user, params)
@@ -654,7 +651,7 @@
 			close_machine(target)
 		return
 
-	user.visible_message(span_notice("[user] starts shoving [target] inside [src]."), span_notice("You start shoving [target] inside [src]."))
+	user.visible_message(span_notice("[user]Começa a empurrar.[target]Dentro.[src]."), span_notice("Você começa a empurrar[target]Dentro.[src]."))
 	if (do_after(user, 2.5 SECONDS, target=target))
 		close_machine(target)
 

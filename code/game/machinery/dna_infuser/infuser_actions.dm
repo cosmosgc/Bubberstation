@@ -1,7 +1,7 @@
 ///Action from the inky tongue, from fish with the ink production trait.
 /datum/action/cooldown/ink_spit
 	name = "Spit Ink"
-	desc = "Spits ink at someone, blinding them temporarily."
+	desc = "Cuspa tinta em alguém, ofuscando-os temporariamente."
 	button_icon = 'icons/hud/radial_fishing.dmi'
 	button_icon_state = "oil"
 	base_background_icon_state = "bg_default"
@@ -24,7 +24,7 @@
 	if(!.)
 		return
 
-	to_chat(on_who, span_notice("You prepare your ink glands. <B>Right-click to fire at a target!</B>"))
+	to_chat(on_who, span_notice("Prepare suas glândulas de tinta.<B>Botão direito para atirar em um alvo!</B>"))
 	build_all_button_icons()
 
 /datum/action/cooldown/ink_spit/unset_click_ability(mob/on_who, refund_cooldown = TRUE)
@@ -46,8 +46,8 @@
 
 	var/modifiers = params2list(params)
 	clicker.visible_message(
-		span_danger("[clicker] spits ink!"),
-		span_bold("You spit ink."),
+		span_danger("[clicker]Cuspiu tinta!"),
+		span_bold("Você cuspiu tinta."),
 	)
 	var/obj/projectile/ink_spit/ink = new /obj/projectile/ink_spit(clicker.loc)
 	ink.aim_projectile(target, clicker, modifiers)

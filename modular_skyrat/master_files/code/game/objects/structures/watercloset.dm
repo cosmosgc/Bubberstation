@@ -1,19 +1,19 @@
 /obj/structure/sink/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(busy)
-		to_chat(user, span_warning("Someone's already washing here!"))
+		to_chat(user, span_warning("Alguém já está se lavando aqui!"))
 		return
 
 	if(istype(attacking_item, /obj/item/towel))
 		if(reagents.total_volume <= 0)
-			to_chat(user, span_notice("\The [src] is dry."))
+			to_chat(user, span_notice("\The [src]está seco."))
 			return FALSE
 
 		busy = TRUE
-		user.visible_message(span_notice("[user] starts washing [attacking_item] in [src]."), span_notice("You start washing [attacking_item] in [src]."))
+		user.visible_message(span_notice("[user]Começa a lavar.[attacking_item]em[src]."), span_notice("Você começa a lavar.[attacking_item]em[src]."))
 
 		if(!do_after(user, 2 SECONDS, src))
 			busy = FALSE
-			to_chat(user, span_warning("You take [attacking_item] away from [src] before you're done washing it."))
+			to_chat(user, span_warning("Você pega.[attacking_item]longe de[src]Antes que termine de lavar."))
 			return FALSE
 
 		var/obj/item/towel/washed_towel = attacking_item
@@ -24,7 +24,7 @@
 		washed_towel.set_wet(TRUE)
 		washed_towel.make_used(user, silent = TRUE)
 
-		user.visible_message(span_notice("[user] finishes washing [attacking_item] in [src]."), span_notice("You finish washing [washed_towel] in [src], leaving it quite wet."))
+		user.visible_message(span_notice("[user]termina de lavar.[attacking_item]em[src]."), span_notice("Você termina de lavar.[washed_towel]em[src], deixando-o bastante molhado."))
 		playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
 
 		busy = FALSE

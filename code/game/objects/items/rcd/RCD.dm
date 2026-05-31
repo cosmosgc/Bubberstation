@@ -100,7 +100,7 @@
 
 /obj/item/construction/rcd/ui_action_click(mob/user, actiontype)
 	if (!COOLDOWN_FINISHED(src, destructive_scan_cooldown))
-		to_chat(user, span_warning("[src] lets out a low buzz."))
+		to_chat(user, span_warning("[src]Vamos sair com pouco barulho."))
 		return
 
 	COOLDOWN_START(src, destructive_scan_cooldown, RCD_DESTRUCTIVE_SCAN_COOLDOWN)
@@ -110,11 +110,11 @@
 	var/turf/T = get_turf(user)
 
 	if(!isopenturf(T)) // Oh fuck
-		user.visible_message(span_suicide("[user] is beating [user.p_them()]self to death with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user]está batendo[user.p_them()]e eu morrer com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 		return BRUTELOSS
 
 	mode = RCD_TURF
-	user.visible_message(span_suicide("[user] sets the RCD to 'Wall' and points it down [user.p_their()] throat! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Defina o RCD para\"Parede\"e depois para baixo.[user.p_their()]Garganta! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	if(useResource(16, user)) // It takes 16 resources to construct a wall
 		var/success = T.rcd_act(user, src, list("[RCD_DESIGN_MODE]" = RCD_TURF, "[RCD_DESIGN_PATH]" = /turf/open/floor/plating/rcd))
 		T = get_turf(user)
@@ -126,7 +126,7 @@
 		user.gib(DROP_ALL_REMAINS)
 		return MANUAL_SUICIDE
 
-	user.visible_message(span_suicide("[user] pulls the trigger... But there is not enough ammo!"))
+	user.visible_message(span_suicide("[user]Puxa o gatilho... Mas não há munição suficiente!"))
 	return SHAME
 
 /**
@@ -164,7 +164,7 @@
 			//check if we can build our window on the grill
 			if(target_turf.is_blocked_turf(exclude_mobs = !is_full_tile, source_atom = null, ignore_atoms = structures_to_ignore, type_list = TRUE))
 				playsound(user, SFX_TOOL_SWITCH, 20, TRUE)
-				balloon_alert(user, "tile is blocked!")
+				balloon_alert(user, "O azulejo está bloqueado!")
 				return FALSE
 
 		/**
@@ -184,7 +184,7 @@
 
 			if(ignore_types && target_turf.is_blocked_turf(exclude_mobs = FALSE, source_atom = null, ignore_atoms = ignore_types, type_list = TRUE))
 				playsound(get_turf(user), SFX_TOOL_SWITCH, 20, TRUE)
-				balloon_alert(user, "something is on the girder!")
+				balloon_alert(user, "Algo está na viga!")
 				return FALSE
 
 		//check if turf is blocked in for dense structures
@@ -219,7 +219,7 @@
 			//check if the structure can fit on this turf
 			if(target_turf.is_blocked_turf(exclude_mobs = ignore_mobs, source_atom = null, ignore_atoms = ignored_types, type_list = TRUE))
 				playsound(get_turf(user), SFX_TOOL_SWITCH, 20, TRUE)
-				balloon_alert(user, "something is on the tile!")
+				balloon_alert(user, "Algo está no azulejo!")
 				return FALSE
 
 	return TRUE
@@ -254,7 +254,7 @@
 
 	//straight up can't touch this
 	if(mode == RCD_DECONSTRUCT && (target.resistance_flags & INDESTRUCTIBLE))
-		balloon_alert(user, "too durable!")
+		balloon_alert(user, "Muito durável!")
 		return ITEM_INTERACT_BLOCKING
 
 	rcd_results[RCD_DESIGN_MODE] = mode
@@ -262,9 +262,7 @@
 
 	var/delay = rcd_results["delay"] * delay_mod
 	if (
-		!(construction_upgrades & RCD_UPGRADE_NO_FREQUENT_USE_COOLDOWN) \
-			&& !rcd_results[RCD_RESULT_BYPASS_FREQUENT_USE_COOLDOWN] \
-			&& current_active_effects > 0
+		!(construction_upgrades & RCD_UPGRADE_NO_FREQUENT_USE_COOLDOWN) 			&& !rcd_results[RCD_RESULT_BYPASS_FREQUENT_USE_COOLDOWN] 			&& current_active_effects > 0
 	)
 		delay *= FREQUENT_USE_DEBUFF_MULTIPLIER
 
@@ -466,8 +464,7 @@
 	interact_with_atom(target, user, modifiers)
 
 /obj/item/construction/rcd/proc/detonate_pulse()
-	audible_message(span_danger("<b>[src] begins to vibrate and buzz loudly!</b>"), \
-	span_danger("<b>[src] begins vibrating violently!</b>"))
+	audible_message(span_danger("<b>[src]Começa a vibrar e zumbir alto!</b>"), 	span_danger("<b>[src]Começa a vibrar violentamente!</b>"))
 	// 5 seconds to get rid of it
 	addtimer(CALLBACK(src, PROC_REF(detonate_pulse_explode)), 5 SECONDS)
 
@@ -476,7 +473,7 @@
 	qdel(src)
 
 /obj/item/construction/rcd/borg
-	desc = "A device used to rapidly build walls and floors."
+	desc = "Um dispositivo usado para construir pares e pisos rápidos."
 	banned_upgrades = RCD_UPGRADE_SILO_LINK
 	/// enery usage
 	var/energyfactor = 0.072 * STANDARD_CELL_CHARGE
@@ -495,10 +492,10 @@
 	if(!iscyborg(borgy))
 		return FALSE
 	if(!borgy.cell)
-		balloon_alert(user, "no cell found!")
+		balloon_alert(user, "Nenhuma cela encontrada!")
 		return FALSE
 	if(borgy.cell.charge < (amount * energyfactor))
-		balloon_alert(user, "insufficient charge!")
+		balloon_alert(user, "Insuficiência de carga!")
 		return FALSE
 	if(!dry_run)
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
@@ -507,7 +504,7 @@
 
 /obj/item/construction/rcd/borg/syndicate
 	name = "syndicate RCD"
-	desc = "A reverse-engineered RCD with black market upgrades that allow this device to deconstruct reinforced walls. Property of Donk Co."
+	desc = "Um RCD de engenharia reversa com melhorias no mercado negro que permitem que este dispositivo desconstrua paredes reforçadas. Propriedade de Donk Co."
 	icon_state = "ircd"
 	inhand_icon_state = "ircd"
 	energyfactor = 0.066 * STANDARD_CELL_CHARGE
@@ -521,7 +518,7 @@
 
 /obj/item/construction/rcd/ce
 	name = "professional RCD"
-	desc = "A higher-end model of the rapid construction device, prefitted with improved cooling and disruption prevention. Provided to the chief engineer."
+	desc = "Um modelo de ponta superior do dispositivo de construção rápida, preparado com melhor refrigeração e prevenção de rupturas. Fornecido ao engenheiro-chefe."
 	icon_state = "cercd"
 	inhand_icon_state = "cercd"
 	construction_upgrades = RCD_UPGRADE_ANTI_INTERRUPT | RCD_UPGRADE_NO_FREQUENT_USE_COOLDOWN
@@ -546,7 +543,7 @@
 // Ranged RCD
 /obj/item/construction/rcd/arcd
 	name = "advanced rapid-construction-device (ARCD)"
-	desc = "A prototype RCD with ranged capability and infinite capacity."
+	desc = "Um protótipo de RCD com capacidade variada e capacidade infinita."
 	max_matter = INFINITY
 	matter = INFINITY
 	canRturf = TRUE
@@ -562,7 +559,7 @@
 
 /obj/item/construction/rcd/exosuit
 	name = "mounted RCD"
-	desc = "An exosuit-mounted Rapid Construction Device."
+	desc = "Um dispositivo de construção rápida montado em exossuit."
 	max_matter = INFINITY // mass-energy equivalence go brrrrrr
 	canRturf = TRUE
 	ranged = TRUE
@@ -603,7 +600,7 @@
 		return FALSE
 	var/obj/vehicle/sealed/mecha/gundam = owner
 	if(!gundam.has_charge(amount * MASS_TO_ENERGY))
-		gundam.balloon_alert(user, "insufficient charge!")
+		gundam.balloon_alert(user, "Insuficiência de carga!")
 		return FALSE
 	if(!dry_run)
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
@@ -614,8 +611,7 @@
 	var/obj/item/mecha_parts/mecha_equipment/rcd/ourshell = loc
 	if(!istype(ourshell))
 		return
-	ourshell.audible_message(span_danger("<b>[ourshell] begins to vibrate and buzz loudly!</b>"), \
-	span_danger("<b>[ourshell] begins vibrating violently!</b>"))
+	ourshell.audible_message(span_danger("<b>[ourshell]Começa a vibrar e zumbir alto!</b>"), 	span_danger("<b>[ourshell]Começa a vibrar violentamente!</b>"))
 	// 5 seconds to get rid of it
 	addtimer(CALLBACK(src, PROC_REF(detonate_pulse_explode)), 5 SECONDS)
 
@@ -633,7 +629,7 @@
 
 /obj/item/rcd_ammo
 	name = "RCD matter cartridge"
-	desc = "Highly compressed matter for the RCD."
+	desc = "Matéria altamente comprimida para o RCD."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rcdammo"
 	w_class = WEIGHT_CLASS_TINY

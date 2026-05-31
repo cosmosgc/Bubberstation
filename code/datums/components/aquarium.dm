@@ -217,7 +217,7 @@
 		ADD_TRAIT(parent, TRAIT_AQUARIUM_PANEL_OPEN, AQUARIUM_TRAIT)
 		source.reagents.flags |= TRANSPARENT|REFILLABLE
 
-	source.balloon_alert(user, "panel [closing ? "closed" : "open"]")
+	source.balloon_alert(user, "Painel.[closing ? "closed" : "open"]")
 	source.update_appearance()
 	return CLICK_ACTION_SUCCESS
 
@@ -229,14 +229,14 @@
 		if(source.reagents && HAS_TRAIT(source, TRAIT_AQUARIUM_PANEL_OPEN))
 			return //don't block, we'll be transferring reagents to the feed storage.
 		if(!item.reagents.total_volume)
-			source.balloon_alert(user, "[item] is empty!")
+			source.balloon_alert(user, "[item]Está vazio!")
 			return ITEM_INTERACT_BLOCKING
 		var/list/fishes = get_fishes()
 		if(!length(fishes))
-			source.balloon_alert(user, "no fish to feed!")
+			source.balloon_alert(user, "Não há peixe para alimentar!")
 			return ITEM_INTERACT_BLOCKING
 		feed_fishes(item, fishes)
-		source.balloon_alert(user, "fed the fish")
+		source.balloon_alert(user, "Alimentei os peixes.")
 		return ITEM_INTERACT_SUCCESS
 
 	if(!HAS_TRAIT(item, TRAIT_AQUARIUM_CONTENT) || (!isitem(parent) && user.combat_mode))
@@ -246,12 +246,12 @@
 	if(!can_insert(source, item, user))
 		return ITEM_INTERACT_BLOCKING
 	if(broken)
-		source.balloon_alert(user, "aquarium is broken!")
+		source.balloon_alert(user, "O aquário está quebrado!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(item, source))
 		user.balloon_alert(user, "preso na sua mão!")
 		return ITEM_INTERACT_BLOCKING
-	source.balloon_alert(user, "added to aquarium")
+	source.balloon_alert(user, "adicionado ao aquário")
 	source.update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
@@ -286,7 +286,7 @@
 /datum/component/aquarium/proc/on_plunger_act(atom/movable/source, obj/item/plunger/plunger, mob/living/user, reinforced)
 	SIGNAL_HANDLER
 	if(!HAS_TRAIT(source, TRAIT_AQUARIUM_PANEL_OPEN))
-		source.balloon_alert(user, "abra o painel primeiro!")
+		source.balloon_alert(user, "Abra o painel primeiro!")
 		return
 	INVOKE_ASYNC(src, PROC_REF(do_plunging), source, user)
 	return COMPONENT_NO_AFTERATTACK
@@ -300,11 +300,11 @@
 
 /datum/component/aquarium/proc/on_examine(atom/movable/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_notice("Its temperature and fluid are currently set to [EXAMINE_HINT("[fluid_temp] K")] and [EXAMINE_HINT(fluid_type)].")
+	examine_list += span_notice("Sua temperatura e fluido estão ajustados para[EXAMINE_HINT("[fluid_temp] K")]E[EXAMINE_HINT(fluid_type)].")
 	var/panel_open = HAS_TRAIT(source, TRAIT_AQUARIUM_PANEL_OPEN)
-	examine_list += span_notice("[EXAMINE_HINT("Alt-click")] to [panel_open ? "close" : "open"] the control and feed panel.")
+	examine_list += span_notice("[EXAMINE_HINT("Alt-click")]Para[panel_open ? "close" : "open"]O painel de controle e alimentação.")
 	if(panel_open && source.reagents.total_volume)
-		examine_list += span_notice("You can use a plunger to empty the feed storage.")
+		examine_list += span_notice("Pode usar um desentupidor para esvaziar o depósito.")
 
 ///Check if an item can be inserted into the aquarium
 /datum/component/aquarium/proc/can_insert(atom/movable/source, obj/item/item, mob/living/user)
@@ -319,7 +319,7 @@
 			if(content == item)
 				continue
 			if(content.type == item.type)
-				source.balloon_alert(user, "cannot add to aquarium!")
+				source.balloon_alert(user, "Não pode adicionar ao aquário!")
 				return FALSE
 	return TRUE
 
@@ -670,7 +670,7 @@
 		if("remove_item")
 			var/atom/movable/item = locate(params["item_reference"]) in movable.contents
 			item?.forceMove(movable.drop_location())
-			to_chat(user, span_notice("You take out [item] from [movable]."))
+			to_chat(user, span_notice("Você tira.[item]De[movable]."))
 		if("rename_fish")
 			var/new_name = sanitize_name(params["chosen_name"])
 			var/atom/movable/fish = locate(params["fish_reference"]) in movable.contents
@@ -699,7 +699,7 @@
 /datum/component/aquarium/proc/admire(atom/movable/source, mob/living/user)
 	if(!isliving(user))
 		return
-	source.balloon_alert(user, "admiring aquarium...")
+	source.balloon_alert(user, "Admirando o aquário...")
 	if(!do_after(user, 5 SECONDS, target = source))
 		return
 	var/alive_fish = 0

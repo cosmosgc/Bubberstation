@@ -151,7 +151,7 @@
 
 	if(isliving(source))
 		var/mob/living/owner = source
-		to_chat(owner, span_boldwarning("Your [network_name] breaks!"))
+		to_chat(owner, span_boldwarning("Sua[network_name]Quebra!"))
 
 	qdel(src)
 
@@ -198,7 +198,7 @@
 	else
 		stack_trace("[type] was created without a valid linker_action_path. No one will be able to link to it.")
 
-	to_chat(owner, span_boldnotice("You establish a [network_name], allowing you to link minds to communicate telepathically."))
+	to_chat(owner, span_boldnotice("Você estabelece um[network_name], permitindo que você ligue mentes para se comunicar telepaticamente."))
 
 /datum/component/mind_linker/active_linking/Destroy()
 	QDEL_NULL(linker_action)
@@ -217,9 +217,9 @@
 	RegisterSignal(to_link, COMSIG_MINDSHIELD_IMPLANTED, PROC_REF(sig_unlink_mob))
 	var/mob/living/owner = parent
 	to_chat(to_link, span_notice(link_message))
-	to_chat(owner, span_notice("You connect [to_link]'s mind to your [network_name]."))
+	to_chat(owner, span_notice("Você se conecta.[to_link]A mente para o seu[network_name]."))
 	for(var/mob/living/other_link as anything in linked_mobs)
-		to_chat(other_link, span_notice("You feel a new presence within [owner.real_name]'s [network_name]."))
+		to_chat(other_link, span_notice("Você sente uma nova presença dentro[owner.real_name]'s[network_name]."))
 
 /datum/component/mind_linker/active_linking/unlink_mob(mob/living/to_unlink)
 	. = ..()
@@ -229,14 +229,14 @@
 	UnregisterSignal(to_unlink, COMSIG_MINDSHIELD_IMPLANTED)
 	var/mob/living/owner = parent
 	to_chat(to_unlink, span_warning(unlink_message))
-	to_chat(owner, span_warning("You feel someone disconnect from your [network_name]."))
+	to_chat(owner, span_warning("Você sente alguém desconectar de seu[network_name]."))
 	for(var/mob/living/other_link as anything in linked_mobs)
-		to_chat(other_link, span_warning("You feel a pressence disappear from [owner.real_name]'s [network_name]."))
+		to_chat(other_link, span_warning("Você sente uma pressão desaparecer de[owner.real_name]'s[network_name]."))
 
 // Used in mind linker to talk to everyone in the network.
 /datum/action/innate/linked_speech
 	name = "Mind Link Speech"
-	desc = "Send a psychic message to everyone connected to your Link."
+	desc = "Envie uma mensagem psíquica para todos ligados ao seu Link."
 	button_icon_state = "link_speech"
 	button_icon = 'icons/mob/actions/actions_slime.dmi'
 	background_icon_state = "bg_alien"
@@ -251,7 +251,7 @@
 
 	var/datum/component/mind_linker/linker = Target
 	name = "[linker.network_name] Speech"
-	desc = "Send a psychic message to everyone connected to your [linker.network_name]."
+	desc = "Envie uma mensagem psíquica para todos ligados ao seu[linker.network_name]."
 	button_icon = linker.speech_action_icon
 	button_icon_state = linker.speech_action_icon_state
 	background_icon_state = linker.speech_action_background_icon_state
@@ -268,7 +268,7 @@
 		return
 
 	if(QDELETED(linker))
-		to_chat(owner, span_warning("The link seems to have been severed."))
+		to_chat(owner, span_warning("A ligação parece ter sido cortada."))
 		return
 
 	var/formatted_message = "<i><font color=[linker.chat_color]>\[[linker_parent.real_name]'s [linker.network_name]\] <b>[owner]:</b> [message]</font></i>"
@@ -280,7 +280,7 @@
 		var/avoid_highlighting = (recipient == owner) || (recipient == linker_parent)
 		to_chat(recipient, formatted_message, type = MESSAGE_TYPE_RADIO, avoid_highlighting = avoid_highlighting)
 		if(linker.show_balloon_alert && recipient != owner)
-			recipient.balloon_alert(recipient, "you hear a voice from your [linker.network_name]")
+			recipient.balloon_alert(recipient, "Você ouve uma voz de seu[linker.network_name]")
 
 	for(var/mob/recipient as anything in GLOB.dead_mob_list)
 		to_chat(recipient, "[FOLLOW_LINK(recipient, owner)] [formatted_message]", type = MESSAGE_TYPE_RADIO)

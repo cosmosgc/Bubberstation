@@ -1,8 +1,8 @@
 /datum/surgery_operation/organ/lobotomy
 	name = "lobotomize"
 	rnd_name = "Lobotomy (Lobotomy)"
-	desc = "Repair most of a patient's brain traumas, with the risk of causing new permanent traumas."
-	rnd_desc = "An invasive surgical procedure which guarantees removal of almost all brain traumas, but might cause another permanent trauma in return."
+	desc = "Reparar a maioria dos traumas cerebrais de um paciente, com o risco de causar novos traumas permanentes."
+	rnd_desc = "Um procedimento cirúrgico invasivo que garante a remoção de quase todos os traumas cerebrais, mas pode causar outro trauma permanente em troca."
 	operation_flags = OPERATION_MORBID | OPERATION_AFFECTS_MOOD | OPERATION_LOCKED | OPERATION_NOTABLE | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_SCALPEL = 1.15,
@@ -30,9 +30,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You begin to perform a lobotomy on [FORMAT_ORGAN_OWNER(organ)]'s brain..."),
-		span_notice("[surgeon] begins to perform a lobotomy on [FORMAT_ORGAN_OWNER(organ)]'s brain."),
-		span_notice("[surgeon] begins to perform surgery on [FORMAT_ORGAN_OWNER(organ)]'s brain."),
+		span_notice("Você começa a fazer uma lobotomia em[FORMAT_ORGAN_OWNER(organ)]O cérebro..."),
+		span_notice("[surgeon]Começa a fazer uma lobotomia em[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
+		span_notice("[surgeon]Começa a operar em[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head pounds with unimaginable pain!")
 
@@ -40,9 +40,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You successfully perform a lobotomy on [FORMAT_ORGAN_OWNER(organ)]!"),
-		span_notice("[surgeon] successfully lobotomizes [FORMAT_ORGAN_OWNER(organ)]!"),
-		span_notice("[surgeon] finishes performing surgery on [FORMAT_ORGAN_OWNER(organ)]'s brain."),
+		span_notice("Você fez uma lobotomia com sucesso em[FORMAT_ORGAN_OWNER(organ)]!"),
+		span_notice("[surgeon]Com sucesso lobotomiza[FORMAT_ORGAN_OWNER(organ)]!"),
+		span_notice("[surgeon]Termina a cirurgia em[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head goes totally numb for a moment, the pain is overwhelming!")
 
@@ -70,9 +70,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("You remove the wrong part, causing more damage!"),
-		span_notice("[surgeon] unsuccessfully attempts to lobotomize [FORMAT_ORGAN_OWNER(organ)]!"),
-		span_notice("[surgeon] completes the surgery on [FORMAT_ORGAN_OWNER(organ)]'s brain."),
+		span_warning("Você remove a parte errada, causando mais danos!"),
+		span_notice("[surgeon]Sem sucesso tentativas de lobotomizar[FORMAT_ORGAN_OWNER(organ)]!"),
+		span_notice("[surgeon]Completa a cirurgia em[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
 	)
 	display_pain(organ.owner, "The pain in your head only seems to get worse!")
 	organ.apply_organ_damage(80)

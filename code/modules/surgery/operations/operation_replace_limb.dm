@@ -1,7 +1,7 @@
 /datum/surgery_operation/limb/replace_limb
 	name = "augment limb"
 	rnd_name = "Augmentation"
-	desc = "Replace a patient's limb with a robotic or prosthetic one."
+	desc = "Substituir o membro de um paciente por um robótico ou protético."
 	operation_flags = OPERATION_NOTABLE
 	implements = list(
 		/obj/item/bodypart = 1,
@@ -54,7 +54,7 @@
 	if(!length(tool.contents))
 		return TRUE
 	// Prevents quickly filling someone with high-tier organs by augmenting them with a pre-stuffed limb
-	to_chat(surgeon, span_warning("[tool] needs to be empty in order to be attached!"))
+	to_chat(surgeon, span_warning("[tool]Precisa estar vazio para ser preso!"))
 	return FALSE
 
 /datum/surgery_operation/limb/replace_limb/on_preop(obj/item/bodypart/limb, mob/living/surgeon, obj/item/bodypart/tool, list/operation_args)
@@ -62,9 +62,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to augment [limb.owner]'s [limb.name] with [tool]..."),
-		span_notice("[surgeon] begins to augment [limb.owner]'s [limb.name] with [tool]."),
-		span_notice("[surgeon] begins to augment [limb.owner]'s [limb.name]."),
+		span_notice("Você começa a aumentar.[limb.owner]'s[limb.name]Com[tool]..."),
+		span_notice("[surgeon]começa a aumentar[limb.owner]'s[limb.name]Com[tool]."),
+		span_notice("[surgeon]começa a aumentar[limb.owner]'s[limb.name]."),
 	)
 	display_pain(limb.owner, "You feel a horrible pain in your [limb.plaintext_zone]!")
 
@@ -77,9 +77,9 @@
 		display_results(
 			surgeon,
 			patient,
-			span_warning("You can't seem to fit [tool] onto [patient]'s body!"),
-			span_warning("[surgeon] can't seem to fit [tool] onto [patient]'s body!"),
-			span_warning("[surgeon] can't seem to fit [tool] onto [patient]'s body!"),
+			span_warning("Você não parece caber[tool]em frente[patient]Ó corpo!"),
+			span_warning("[surgeon]Não consigo caber.[tool]em frente[patient]Ó corpo!"),
+			span_warning("[surgeon]Não consigo caber.[tool]em frente[patient]Ó corpo!"),
 		)
 		tool.forceMove(patient.drop_location())
 		return // could possibly happen
@@ -90,9 +90,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You successfully augment [patient]'s [limb.plaintext_zone] with [tool]!"),
-		span_notice("[surgeon] successfully augments [patient]'s [limb.plaintext_zone] with [tool]!"),
-		span_notice("[surgeon] finishes augmenting [patient]'s [limb.plaintext_zone]."),
+		span_notice("Você conseguiu aumentar.[patient]'s[limb.plaintext_zone]Com[tool]!"),
+		span_notice("[surgeon]Com sucesso aumenta[patient]'s[limb.plaintext_zone]Com[tool]!"),
+		span_notice("[surgeon]Termina de aumentar[patient]'s[limb.plaintext_zone]."),
 	)
 	display_pain(patient, "Your [limb.plaintext_zone] comes awash with synthetic sensation!", TRUE)
 	log_combat(surgeon, patient, "augmented", addition = "by giving him new [tool]")

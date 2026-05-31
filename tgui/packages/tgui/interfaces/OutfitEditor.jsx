@@ -33,7 +33,7 @@ export const OutfitEditor = (props) => {
                   ml={0.5}
                   color="transparent"
                   icon="pencil-alt"
-                  title="Rename this outfit"
+                  title="Renomeie essa roupa."
                   onClick={() => act('rename', {})}
                 />
                 {outfit.name}
@@ -42,12 +42,12 @@ export const OutfitEditor = (props) => {
                 <Button
                   color="transparent"
                   icon="info"
-                  tooltip="Ctrl-click a button to select *any* item instead of what will probably fit in that slot."
+                  tooltip="Clique em um botão para selecionar qualquer item em vez do que provavelmente caberá nesse slot."
                   tooltipPosition="bottom-start"
                 />
                 <Button
                   icon="code"
-                  tooltip="Edit this outfit on a VV window"
+                  tooltip="Edite esta roupa em uma janela VV"
                   tooltipPosition="bottom-start"
                   onClick={() => act('vv')}
                 />
@@ -56,8 +56,8 @@ export const OutfitEditor = (props) => {
                   icon={saveable ? 'save' : 'trash-alt'}
                   tooltip={
                     saveable
-                      ? 'Save this outfit to the custom outfit list'
-                      : 'Remove this outfit from the custom outfit list'
+                      ? 'Guarde esta roupa para a lista de roupas personalizadas.'
+                      : 'Tire essa roupa da lista de roupas personalizadas.'
                   }
                   tooltipPosition="bottom-start"
                   onClick={() => act(saveable ? 'save' : 'delete')}
@@ -83,7 +83,7 @@ export const OutfitEditor = (props) => {
             </Stack>
             <Stack mb={2}>
               <OutfitSlot
-                name="Suit Storage"
+                name="Armazém de roupas"
                 icon="briefcase-medical"
                 slot="suit_store"
               />
@@ -92,19 +92,19 @@ export const OutfitEditor = (props) => {
             </Stack>
             <Stack mb={2}>
               <OutfitSlot name="Belt" icon="band-aid" slot="belt" />
-              <OutfitSlot name="Left Hand" icon="hand-paper" slot="l_hand" />
-              <OutfitSlot name="Right Hand" icon="hand-paper" slot="r_hand" />
+              <OutfitSlot name="Mão esquerda" icon="hand-paper" slot="l_hand" />
+              <OutfitSlot name="Mão direita" icon="hand-paper" slot="r_hand" />
             </Stack>
             <Stack mb={2}>
               <OutfitSlot name="Shoes" icon="socks" slot="shoes" />
               <OutfitSlot
-                name="Left Pocket"
+                name="Bolso esquerdo"
                 icon="envelope-open-o"
                 iconRot={180}
                 slot="l_pocket"
               />
               <OutfitSlot
-                name="Right Pocket"
+                name="Bolso Direito"
                 icon="envelope-open-o"
                 iconRot={180}
                 slot="r_pocket"

@@ -1,6 +1,6 @@
 /obj/structure/towel_bin
 	name = "towel bin"
-	desc = "Seeing this really makes you think of how much worse your life would have been without towels. Seriously, who doesn't use towels?"
+	desc = "Ver isso te faz pensar em como sua vida teria sido pior sem toalhas. Sério, quem não usa toalhas?"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "linenbin-full"
 	anchored = TRUE
@@ -50,11 +50,11 @@
 
 /obj/structure/towel_bin/screwdriver_act(mob/living/user, obj/item/tool)
 	if(amount)
-		to_chat(user, span_warning("[src] must be empty first!"))
+		to_chat(user, span_warning("[src]Deve ester vazio primeiro!"))
 		return ITEM_INTERACT_SUCCESS
 
 	if(tool.use_tool(src, user, 0.5 SECONDS, volume = 50))
-		to_chat(user, span_notice("You disassemble [src]."))
+		to_chat(user, span_notice("Você se desmonta.[src]."))
 		new /obj/item/stack/rods(loc, 2)
 		qdel(src)
 		return ITEM_INTERACT_SUCCESS
@@ -73,15 +73,15 @@
 			return
 		LAZYADD(towels, attacking_item)
 		amount++
-		to_chat(user, span_notice("You put [attacking_item] in [src]."))
+		to_chat(user, span_notice("Você colocou[attacking_item]Em[src]."))
 		update_appearance()
 
 	else if(amount && !hidden && attacking_item.w_class < WEIGHT_CLASS_BULKY) //make sure there's sheets to hide it among, make sure nothing else is hidden in there.
 		if(!user.transferItemToLoc(attacking_item, src))
-			to_chat(user, span_warning("[attacking_item] is stuck to your hand, you cannot hide it among the sheets!"))
+			to_chat(user, span_warning("[attacking_item]está preso em sua mão, você não pode escondê-lo entre os lençóis!"))
 			return
 		hidden = attacking_item
-		to_chat(user, span_notice("You hide [attacking_item] among the sheets."))
+		to_chat(user, span_notice("Você se esconde.[attacking_item]entre os lençóis."))
 
 
 /obj/structure/towel_bin/attack_paw(mob/user, list/modifiers)
@@ -117,7 +117,7 @@
  */
 /obj/structure/towel_bin/proc/take_towel_out(mob/user, tk = FALSE)
 	if(amount <= 0)
-		to_chat(user, span_warning("You can't figure out how to take a towel out of [src] when it doesn't contain any!"))
+		to_chat(user, span_warning("Você não pode descobrir como tirar uma toalha de[src]quando não contém nenhum!"))
 		return
 
 	amount--
@@ -132,12 +132,12 @@
 		towel = new (loc)
 
 	towel.forceMove(drop_location())
-	to_chat(user, span_notice("You [tk ? "telekinetically remove" : "take"] \a [towel] out of [src]."))
+	to_chat(user, span_notice("Você.[tk ? "telekinetically remove" : "take"] \a [towel]Fora[src]."))
 	update_appearance()
 
 	if(hidden)
 		if(!tk)
-			to_chat(user, span_notice("\A [hidden] falls out of [towel]!"))
+			to_chat(user, span_notice("\A [hidden]Cai fora.[towel]!"))
 
 		hidden.forceMove(drop_location())
 		hidden = null

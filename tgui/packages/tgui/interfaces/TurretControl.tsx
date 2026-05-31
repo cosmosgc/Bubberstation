@@ -24,7 +24,7 @@ export const TurretControl = (props) => {
         <InterfaceLockNoticeBox />
         <Section>
           <LabeledList>
-            <LabeledList.Item label="Turret Status">
+            <LabeledList.Item label="Estado da torre">
               <Button
                 icon={enabled ? 'power-off' : 'times'}
                 content={enabled ? 'Enabled' : 'Disabled'}
@@ -33,7 +33,7 @@ export const TurretControl = (props) => {
                 onClick={() => act('power')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Turret Mode">
+            <LabeledList.Item label="Modo Torre">
               <Button
                 icon={lethal ? 'exclamation-triangle' : 'minus-circle'}
                 content={lethal ? 'Lethal' : 'Stun'}
@@ -42,7 +42,7 @@ export const TurretControl = (props) => {
                 onClick={() => act('mode')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Target Cyborgs">
+            <LabeledList.Item label="Alvo Cyborgs.">
               <Button
                 icon={shootCyborgs ? 'check' : 'times'}
                 content={shootCyborgs ? 'Yes' : 'No'}

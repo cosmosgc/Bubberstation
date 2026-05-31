@@ -1,24 +1,22 @@
 
 /obj/item/holosign_creator/security
-	desc = "A holographic projector that creates holographic security barriers and restraints. You can remotely open barriers with it.\
-			Restraints are applied with the creator itself, but the projections may destabilize when exposed to EMP's, or when the captive leaves it's 9 meter range."
+	desc = "Um projetor holográfico que cria barreiras de segurança holográficas e restrições. Você pode abrir barreiras remotamente com ele. Restrições são aplicadas com o próprio criador, mas as projeções podem desestabilizar quando expostas ao PEM, ou quando o prisioneiro sai, tem alcance de 9 metros."
 
 /obj/item/holosign_creator/security/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!iscarbon(interacting_with))
 		return ..()
 	var/mob/living/carbon/human = interacting_with
 	if(human.handcuffed) // is our target already handcuffed?
-		user.balloon_alert(user, "already cuffed")
+		user.balloon_alert(user, "Já algemado.")
 		return ITEM_INTERACT_BLOCKING
 	if(!human.canBeHandcuffed()) // does he actually have arms?
-		user.balloon_alert(user, "needs two hands")
+		user.balloon_alert(user, "Precisa de duas mãos.")
 		return ITEM_INTERACT_BLOCKING
 	if(DOING_INTERACTION_WITH_TARGET(user, human))
 		return ITEM_INTERACT_BLOCKING
 	log_combat(user, human, "attempted to handcuff")
 	playsound(src, 'sound/items/weapons/cablecuff.ogg', 30, TRUE, -2)
-	human.visible_message(span_danger("[user] begins restraining [human] with [src]!"), \
-	span_userdanger("[user] begins shaping a holographic field around your hands!"))
+	human.visible_message(span_danger("[user]Começa a restrição.[human]Com[src]!"), 	span_userdanger("[user]começa a moldar um campo holográfico em torno de suas mãos!"))
 	if(!do_after(user, 4.5 SECONDS, human, extra_checks = CALLBACK(src, PROC_REF(can_handcuff), user))) // he is up for grabs, so lets handcuff them
 		return ITEM_INTERACT_BLOCKING
 	human.set_handcuffed(new /obj/item/restraints/handcuffs/holographic/used(human))
@@ -27,7 +25,7 @@
 		ourcuffs.our_projector = src
 		ourcuffs.our_guy = human
 		human.apply_status_effect(/datum/status_effect/holocuff_distance)
-	to_chat(user, span_notice("You restrain [human]."))
+	to_chat(user, span_notice("Você se retém.[human]."))
 	log_combat(user, human, "handcuffed")
 	return ITEM_INTERACT_SUCCESS
 
@@ -46,7 +44,7 @@
 
 /obj/item/restraints/handcuffs/holographic
 	name = "holographic energy field"
-	desc = "A weirdly solid holographic field... how did you get this? this item gives you the permission to scream at coders."
+	desc = "Como conseguiu isso? Este item lhe dá permissão para gritar com programadores."
 	icon = 'modular_zubbers/icons/obj/holocuffs.dmi'
 	icon_state = "holocuffs"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
@@ -58,7 +56,7 @@
 
 
 /obj/item/restraints/handcuffs/holographic/used
-	desc = "A holographic projection of handcuffs, suprisingly hard to break out of"
+	desc = "Uma projeção holográfica de algemas, surpreendentemente difícil de escapar"
 	item_flags = DROPDEL
 
 /obj/item/restraints/handcuffs/holographic/proc/check_distance()
@@ -74,7 +72,7 @@
 
 /obj/item/restraints/handcuffs/holographic/on_uncuffed(datum/source, mob/living/wearer)
 	. = ..()
-	wearer.visible_message(span_danger("[wearer]'s [name] breaks in a discharge of energy!"), span_userdanger("[wearer]'s [name] breaks in a discharge of energy!"))
+	wearer.visible_message(span_danger("[wearer]'s[name]Quebra uma descarga de energia!"), span_userdanger("[wearer]'s[name]Quebra uma descarga de energia!"))
 	do_sparks(2, TRUE, src)
 	wearer.remove_status_effect(/datum/status_effect/holocuff_distance)
 	qdel(src)
@@ -95,7 +93,7 @@
 
 /atom/movable/screen/alert/status_effect/holocuff_distance
 	name = "Holocuff Range"
-	desc = "If only I could get out of the projector's range, it'd lose control!"
+	desc = "Se eu pudesse sair do alcance do projetor, perderia o controle!"
 	icon = 'modular_zubbers/icons/obj/holocuffs.dmi'
 	icon_state = "holocuffs"
 
@@ -107,6 +105,6 @@
 		if(dist > 9)
 			do_sparks(2, TRUE, owner)
 			owner.dropItemToGround(ourcuffs, TRUE)
-			owner.visible_message(span_danger("[owner]'s holographic energy field breaks in a discharge of energy!"), span_userdanger("[owner]'s holographic energy field breaks in a discharge of energy!"))
+			owner.visible_message(span_danger("[owner]O campo de energia holográfica quebra em uma descarga de energia!"), span_userdanger("[owner]O campo de energia holográfica quebra em uma descarga de energia!"))
 			Destroy()
 

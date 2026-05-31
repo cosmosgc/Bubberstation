@@ -12,26 +12,26 @@ import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 const weaponlist = [
-  'Fist Fight',
-  'Ceremonial Weapons',
-  'Melee Only',
-  'Any Weapons',
+  'Luta de Punho',
+  'Armas Cerimoniais',
+  'Apenas Melee.',
+  'Qualquer arma.',
 ];
 
-const stakelist = ['No Stakes', 'Holy Match', 'Money Match', 'Your Soul'];
+const stakelist = ['Sem Stakes.', 'Santo jogo.', 'Jogo de Dinheiro', 'Sua alma'];
 
 const weaponblurb = [
-  'You will fight with your fists only. Any weapons will be considered a violation.',
-  'You can only fight with ceremonial weapons. You will be at a severe disadvantage without one!',
-  'You can fight with weapons, or fists if you have none. Ranged weapons are a violation.',
-  'You can fight with any and all weapons as you please. Try not to kill them, okay?',
+  'Você vai lutar apenas com seus punhos. Qualquer arma será considerada uma violação.',
+  'Você só pode lutar com armas cerimoniais. Você ficará em desvantagem sem uma!',
+  'Pode lutar com armas ou punhos se não tiver nenhum. Armas rangedas são uma violação.',
+  'Pode lutar com todas as armas que quiser. Tente não matá-los, certo?',
 ];
 
 const stakesblurb = [
-  "No stakes, just for fun. Who doesn't love some recreational sparring?",
-  "A match for the chaplain's deity. The Chaplain suffers large consequences for failure, but advances their sect by winning.",
-  'A match with money on the line. Whomever wins takes all the money of whomever loses.',
-  "A lethal match with the loser's soul becoming under ownership of the winner.",
+  "Sem apostas, só por diversão. Quem não gosta de treinos recreativos?",
+  "Uma combinação para a divindade do capelão. O Capelão sofre grandes consequências para o fracasso, mas avança sua seita vencendo.",
+  'Uma partida com dinheiro em jogo. Quem ganhar leva todo o dinheiro de quem perder.',
+  "Uma luta letal com a alma do perdedor ficando sob a propriedade do vencedor.",
 ];
 
 type Info = {
@@ -215,7 +215,7 @@ export const SparringContract = (props) => {
                     tooltip={
                       (in_area &&
                         `Both participants are present in the ${area}.`) ||
-                      'Both participants need to be in the arena!'
+                      'Amas os participantes precisam estar na arena!'
                     }
                     color={(in_area && 'green') || 'red'}
                     icon="ring"
@@ -226,8 +226,8 @@ export const SparringContract = (props) => {
                     tooltip={
                       (left_sign !== 'none' &&
                         right_sign !== 'none' &&
-                        'Both signatures present, terms agreed upon.') ||
-                      'You need signatures from both fighters on the terms!'
+                        'Ambas como assinatura presentes, termos acordados.') ||
+                      'Você precisa de assinaturas de ambos os lutadores nos termos!'
                     }
                     color={
                       (left_sign !== 'none' &&
@@ -242,8 +242,8 @@ export const SparringContract = (props) => {
                   <Button
                     tooltip={
                       (!no_chaplains &&
-                        'At least one chaplain is present. Holy matches allowed.') ||
-                      'No chaplain present for this fight. No Holy Matches!'
+                        'Pelo menos um capelão está presente. Santo jogo permitido.') ||
+                      'Nenhum capelão presente nesta luta. Nada de Holy Matches!'
                     }
                     color={(!no_chaplains && 'green') || 'yellow'}
                     icon="cross"

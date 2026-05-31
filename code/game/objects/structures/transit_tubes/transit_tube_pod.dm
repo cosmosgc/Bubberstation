@@ -32,7 +32,7 @@
 		if(!moving)
 			I.play_tool_sound(src)
 			if(contents.len)
-				user.visible_message(span_notice("[user] empties \the [src]."), span_notice("You empty \the [src]."))
+				user.visible_message(span_notice("[user]Vazios.\the [src]."), span_notice("Você está vazio.\the [src]."))
 				empty_pod()
 			else
 				deconstruct(TRUE)
@@ -75,9 +75,9 @@
 	if(!moving)
 		user.changeNext_move(CLICK_CD_BREAKOUT)
 		user.last_special = world.time + CLICK_CD_BREAKOUT
-		to_chat(user, span_notice("You start trying to escape from the pod..."))
+		to_chat(user, span_notice("Você começa a tentar escapar da cápsula..."))
 		if(do_after(user, 1 MINUTES, target = src))
-			to_chat(user, span_notice("You manage to open the pod."))
+			to_chat(user, span_notice("Você consegue abrir a cápsula."))
 			empty_pod()
 
 /obj/structure/transit_tube_pod/proc/empty_pod(atom/location)
@@ -155,7 +155,7 @@
 	var/list/savedcontents = contents.Copy()
 	var/saveddir = dir
 	var/turf/destination = get_edge_target_turf(src,saveddir)
-	visible_message(span_warning("[src] ejects its insides out!"))
+	visible_message(span_warning("[src]Ejeta suas entranhas para fora!"))
 	deconstruct(FALSE)//we automatically deconstruct the pod
 	for(var/i in savedcontents)
 		var/atom/movable/AM = i
@@ -208,7 +208,7 @@
 
 /obj/structure/transit_tube_pod/dispensed
 	name = "temporary transit tube pod"
-	desc = "Hits the skrrrt (tube station), then hits the dirt (nonexistence). You know how it is."
+	desc = "Atinge o skrrrt (estação de tubulação), então atinge a sujeira (não existência). Você sabe como é."
 	icon_state = "temppod"
 	occupied_icon_state = "temppod_occupied"
 

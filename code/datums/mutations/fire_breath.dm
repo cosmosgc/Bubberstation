@@ -1,6 +1,6 @@
 /datum/mutation/firebreath
 	name = "Fire Breath"
-	desc = "An ancient mutation that gives lizards breath of fire."
+	desc = "Uma mutação antiga que dá sopro de fogo aos lagartos."
 	quality = POSITIVE
 	difficulty = 12
 	locked = TRUE
@@ -27,7 +27,7 @@
 
 /datum/action/cooldown/spell/cone/staggered/fire_breath
 	name = "Fire Breath"
-	desc = "You breathe a cone of fire directly in front of you."
+	desc = "Você respira um cone de fogo diretamente na sua frente."
 	button_icon_state = "fireball0"
 	sound = 'sound/effects/magic/demon_dies.ogg' //horrifying lizard noises
 
@@ -56,7 +56,7 @@
 
 	our_lizard.adjust_fire_stacks(cone_levels)
 	our_lizard.ignite_mob()
-	to_chat(our_lizard, span_warning("Something in front of your mouth catches fire!"))
+	to_chat(our_lizard, span_warning("Algo na frente da sua boca pega fogo!"))
 
 /datum/action/cooldown/spell/cone/staggered/fire_breath/after_cast(atom/cast_on)
 	. = ..()

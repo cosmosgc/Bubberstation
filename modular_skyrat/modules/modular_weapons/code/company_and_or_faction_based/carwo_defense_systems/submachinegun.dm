@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/automatic/sol_smg
 	name = "\improper Sindano Submachine Gun"
-	desc = "A small submachine gun firing .35 Sol. Commonly seen in the hands of PMCs and other unsavory corpos. Accepts any standard Sol pistol magazine."
+	desc = "Uma pequena submetralhadora disparando .35 Sol. Comumente visto nas mãos de PMCs e outros corpos desagradáveis. Aceita qualquer revista padrão Sol."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/guns32x.dmi'
 	icon_state = "sindano"
@@ -37,18 +37,12 @@
 
 /obj/item/gun/ballistic/automatic/sol_smg/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/sol_smg/examine_more(mob/user)
 	. = ..()
 
-	. += "The Sindano submachinegun was originally produced for military contract. \
-		These guns were seen in the hands of anyone from medics, ship techs, logistics officers, \
-		and shuttle pilots often had several just to show off. Due to TerraGov's quest to \
-		extend the lifespans of their logistics officers and quartermasters, the weapon \
-		uses the same standard pistol cartridge that most other miltiary weapons of \
-		small caliber use. This results in interchangeable magazines between pistols \
-		and submachineguns, neat!"
+	. += "The Sindano submachinegun was originally produced for military contract. 		These guns were seen in the hands of anyone from medics, ship techs, logistics officers, 		and shuttle pilots often had several just to show off. Due to TerraGov's quest to 		extend the lifespans of their logistics officers and quartermasters, the weapon 		uses the same standard pistol cartridge that most other miltiary weapons of 		small caliber use. This results in interchangeable magazines between pistols 		and submachineguns, neat!"
 
 	return .
 
@@ -58,7 +52,7 @@
 // Sindano (evil)
 
 /obj/item/gun/ballistic/automatic/sol_smg/evil
-	desc = "A small submachinegun, this one is painted in tacticool black. Accepts any standard Sol pistol magazine."
+	desc = "Uma pequena sub-metralhadora, esta é pintada em preto. Aceita qualquer revista padrão Sol."
 
 	icon_state = "sindano_evil"
 	inhand_icon_state = "sindano_evil"

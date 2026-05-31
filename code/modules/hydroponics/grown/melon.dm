@@ -1,7 +1,7 @@
 // Watermelon
 /obj/item/seeds/watermelon
 	name = "watermelon seed pack"
-	desc = "These seeds grow into watermelon plants."
+	desc = "Estas sementes crescem em plantas de melancia."
 	icon_state = "seed-watermelon"
 	species = "watermelon"
 	plantname = "Watermelon Vines"
@@ -16,7 +16,7 @@
 	reagents_add = list(/datum/reagent/water = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.2)
 
 /obj/item/seeds/watermelon/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is swallowing [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]é engolir[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	user.gib(DROP_ALL_REMAINS)
 	new product(drop_location())
 	qdel(src)
@@ -25,7 +25,7 @@
 /obj/item/food/grown/watermelon
 	seed = /obj/item/seeds/watermelon
 	name = "watermelon"
-	desc = "It's full of watery goodness."
+	desc = "Está cheio de água boa."
 	icon_state = "watermelon"
 	inhand_icon_state = "watermelon"
 	bite_consumption_mod = 2
@@ -50,7 +50,7 @@
 	if(seed)
 		melon_pulp_count += round(seed.potency / 25)
 
-	user.balloon_alert(user, "scooped out [melon_pulp_count] pulp(s)")
+	user.balloon_alert(user, "Arrancado para fora[melon_pulp_count]Polpa(s)")
 	for(var/i in 1 to melon_pulp_count)
 		new /obj/item/food/watermelonmush(user.loc)
 
@@ -63,13 +63,13 @@
 			melon_armour = new /obj/item/clothing/suit/armor/durability/watermelon/fire_resist
 		else
 			melon_armour = new /obj/item/clothing/suit/armor/durability/watermelon
-		to_chat(user, span_notice("You hollow the melon into a helmet with [I]."))
+		to_chat(user, span_notice("Você oco o melão em um capacete com[I]."))
 	else
 		if(seed.resistance_flags & FIRE_PROOF)
 			melon_armour = new /obj/item/clothing/head/helmet/durability/watermelon/fire_resist
 		else
 			melon_armour = new /obj/item/clothing/head/helmet/durability/watermelon
-		to_chat(user, span_notice("You hollow the melon into a chestplate with [I]."))
+		to_chat(user, span_notice("Você oco o melão em um peitoral com[I]."))
 	remove_item_from_storage(user)
 	qdel(src)
 	user.put_in_hands(melon_armour)
@@ -77,7 +77,7 @@
 // Holymelon
 /obj/item/seeds/watermelon/holy
 	name = "holymelon seed pack"
-	desc = "These seeds grow into holymelon plants."
+	desc = "Estas sementes crescem em plantas holymelon."
 	icon_state = "seed-holymelon"
 	species = "holymelon"
 	plantname = "Holy Melon Vines"
@@ -91,7 +91,7 @@
 /obj/item/food/grown/holymelon
 	seed = /obj/item/seeds/watermelon/holy
 	name = "holymelon"
-	desc = "The water within this melon has been blessed by some deity that's particularly fond of watermelon."
+	desc = "A água dentro deste melão foi abençoada por alguma divindade que gosta particularmente de melancia."
 	icon_state = "holymelon"
 	inhand_icon_state = "holymelon"
 	bite_consumption_mod = 2
@@ -122,7 +122,7 @@
 	if(seed)
 		holymelon_pulp_count += round(seed.potency / 25)
 
-	user.balloon_alert(user, "scooped out [holymelon_pulp_count] pulp(s)")
+	user.balloon_alert(user, "Arrancado para fora[holymelon_pulp_count]Polpa(s)")
 	for(var/i in 1 to holymelon_pulp_count)
 		new /obj/item/food/holymelonmush(user.loc)
 
@@ -135,13 +135,13 @@
 			holymelon_armour = new /obj/item/clothing/suit/armor/durability/holymelon/fire_resist
 		else
 			holymelon_armour = new /obj/item/clothing/suit/armor/durability/holymelon
-		to_chat(user, span_notice("You hollow the holymelon into a helmet with [I]."))
+		to_chat(user, span_notice("Você oca o holymelon em um capacete com[I]."))
 	else
 		if(seed.resistance_flags & FIRE_PROOF)
 			holymelon_armour = new /obj/item/clothing/head/helmet/durability/holymelon/fire_resist
 		else
 			holymelon_armour = new /obj/item/clothing/head/helmet/durability/holymelon
-		to_chat(user, span_notice("You hollow the holymelon into a chestplate with [I]."))
+		to_chat(user, span_notice("Você oca o holymelon em um peitoral com[I]."))
 	remove_item_from_storage(user)
 	qdel(src)
 	user.put_in_hands(holymelon_armour)
@@ -157,14 +157,14 @@
 	var/mob/living/carbon/human/holy_person = mob_eating
 	if(!holy_person.mind?.holy_role || HAS_TRAIT(holy_person, TRAIT_AGEUSIA))
 		return
-	to_chat(holy_person, span_notice("Truly, a piece of heaven!"))
+	to_chat(holy_person, span_notice("Verdadeiramente, um pedaço do céu!"))
 	holy_person.add_mood_event("Divine_chew", /datum/mood_event/holy_consumption)
 	return FOOD_LIKED
 
 /// Barrel melon Seeds
 /obj/item/seeds/watermelon/barrel
 	name = "barrelmelon seed pack"
-	desc = "These seeds grow into barrelmelon plants."
+	desc = "Estas sementes crescem em plantas de melancia."
 	icon_state = "seed-barrelmelon"
 	species = "barrelmelon"
 	plantname = "Barrel Melon Vines"
@@ -179,7 +179,7 @@
 /obj/item/food/grown/barrelmelon
 	seed = /obj/item/seeds/watermelon/barrel
 	name = "barrelmelon"
-	desc = "The nutriments within this melon have been compressed and fermented into rich alcohol."
+	desc = "Os nutrientes dentro deste melão foram comprimidos e fermentados em álcool rico."
 	icon_state = "barrelmelon"
 	inhand_icon_state = "barrelmelon"
 	distill_reagent = /datum/reagent/medicine/antihol //You can call it a integer overflow.
@@ -195,7 +195,7 @@
 	if(seed)
 		barrelmelon_pulp_count += round(seed.potency / 25)
 
-	user.balloon_alert(user, "scooped out [barrelmelon_pulp_count] pulp(s)")
+	user.balloon_alert(user, "Arrancado para fora[barrelmelon_pulp_count]Polpa(s)")
 	for(var/i in 1 to barrelmelon_pulp_count)
 		new /obj/item/food/barrelmelonmush(user.loc)
 
@@ -208,13 +208,13 @@
 			barrelmelon_armour = new /obj/item/clothing/suit/armor/durability/barrelmelon/fire_resist
 		else
 			barrelmelon_armour = new /obj/item/clothing/suit/armor/durability/barrelmelon
-		to_chat(user, span_notice("You hollow the barrelmelon into a helmet with [I]."))
+		to_chat(user, span_notice("Você oca o barril de melancia em um capacete com[I]."))
 	else
 		if(seed.resistance_flags & FIRE_PROOF)
 			barrelmelon_armour = new /obj/item/clothing/head/helmet/durability/barrelmelon/fire_resist
 		else
 			barrelmelon_armour = new /obj/item/clothing/head/helmet/durability/barrelmelon
-		to_chat(user, span_notice("You hollow the barrelmelon into a chestplate with [I]."))
+		to_chat(user, span_notice("Você oca o barril de melancia em um peitoral com[I]."))
 
 	remove_item_from_storage(user)
 	qdel(src)

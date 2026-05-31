@@ -34,8 +34,8 @@
 
 /obj/machinery/plumbing/floor_pump/examine(mob/user)
 	. = ..()
-	. += span_notice("It's currently turned [turned_on ? "ON" : "OFF"].")
-	. += span_notice("Its height regulator [height_regulator ? "points at [height_regulator]" : "is disabled"]. Click while unanchored to change.")
+	. += span_notice("Está atualmente virada.[turned_on ? "ON" : "OFF"].")
+	. += span_notice("Seu regulador de alta[height_regulator ? "points at [height_regulator]" : "is disabled"]Clique enquanto não é ancorado para mudar.")
 
 /obj/machinery/plumbing/floor_pump/update_appearance(updates)
 	. = ..()
@@ -63,7 +63,7 @@
 	if(!anchored)
 		set_regulator(user)
 		return
-	balloon_alert(user, "turned [turned_on ? "off" : "on"]")
+	balloon_alert(user, "Virado.[turned_on ? "off" : "on"]")
 	turned_on = !turned_on
 	update_icon_state()
 
@@ -96,12 +96,7 @@
  * Can the pump actually run at all?
  */
 /obj/machinery/plumbing/floor_pump/proc/can_run()
-	return is_operational \
-		&& turned_on \
-		&& anchored \
-		&& !panel_open \
-		&& isturf(loc) \
-		&& are_reagents_ready()
+	return is_operational 		&& turned_on 		&& anchored 		&& !panel_open 		&& isturf(loc) 		&& are_reagents_ready()
 
 /**
  * Is the internal reagents container able to give or take liquid as appropriate?
@@ -115,8 +110,7 @@
  * * affected_turf - the turf to check.
  */
 /obj/machinery/plumbing/floor_pump/proc/should_pump(turf/affected_turf)
-	return isturf(affected_turf) \
-		&& should_regulator_permit(affected_turf)
+	return isturf(affected_turf) 		&& should_regulator_permit(affected_turf)
 
 /**
  * Should the liquid height regulator allow water to be pumped here?
@@ -174,7 +168,7 @@
 
 /obj/machinery/plumbing/floor_pump/input
 	name = "liquid input pump"
-	desc = "Pump used to siphon liquids from a location into the plumbing pipenet."
+	desc = "Bomba usada para sugar líquidos de um local para o encanamento."
 	icon_state = "active_input"
 	base_icon_state = "active_input"
 
@@ -221,7 +215,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/input/on/waste, 0
 
 /obj/machinery/plumbing/floor_pump/output
 	name = "liquid output pump"
-	desc = "Pump used to dump liquids out from a plumbing pipenet into a location."
+	desc = "Bomba usada para despejar líquidos de um encanamento para um local."
 	icon_state = "active_output"
 	base_icon_state = "active_output"
 
@@ -242,9 +236,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/input/on/waste, 0
 /obj/machinery/plumbing/floor_pump/output/examine(mob/user)
 	. = ..()
 	if(over_pressure)
-		. += span_warning("The gas regulator light is blinking.")
+		. += span_warning("A luz do regulador de gás está piscando.")
 	if(over_volume)
-		. += span_warning("The liquid volume regulator light is blinking.")
+		. += span_warning("A luz do regulador de volume líquido está piscando.")
 
 /obj/machinery/plumbing/floor_pump/output/are_reagents_ready()
 	return reagents.total_volume > 0
@@ -302,7 +296,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on/supply/
 
 /obj/item/construction/plumbing/engineering
 	name = "engineering plumbing constructor"
-	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed for logistics regarding fluids."
+	desc = "Um tipo de construtor de encanamento projetado para implantar rapidamente as máquinas necessárias para a logística em relação aos fluidos."
 	icon = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
 	icon_state = "plumberer_engi"
 	var/static/list/engineering_design_types = list(

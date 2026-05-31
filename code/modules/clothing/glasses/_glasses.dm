@@ -38,7 +38,7 @@
 		AddElement(/datum/element/wearable_client_colour, glass_colour_type, ITEM_SLOT_EYES, GLASSES_TRAIT, forced = forced_glass_color, comsig_toggle = COMSIG_CLICK_ALT_SECONDARY)
 
 /obj/item/clothing/glasses/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] is stabbing \the [src] into [user.p_their()] eyes! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Está esfaqueando.\the [src]Em[user.p_their()]Olhos! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/clothing/glasses/visor_toggling()
@@ -61,7 +61,7 @@
 		var/obj/item/organ/eyes/eyes = H.get_organ_slot(ORGAN_SLOT_EYES)
 		if(!H.is_blind())
 			if(H.glasses == src)
-				to_chat(H, span_danger("[src] overloads and blinds you!"))
+				to_chat(H, span_danger("[src]Sobrecarrega e cega você!"))
 				H.flash_act(visual = 1)
 				H.adjust_temp_blindness(6 SECONDS)
 				H.set_eye_blur_if_lower(10 SECONDS)
@@ -76,7 +76,7 @@
 
 /obj/item/clothing/glasses/meson
 	name = "optical meson scanner"
-	desc = "Used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting conditions."
+	desc = "Usado pela equipe de engenharia e mineração para ver estruturas e terrenos básicos através de paredes, independentemente das condições de iluminação."
 	icon_state = "meson"
 	inhand_icon_state = "meson"
 	clothing_traits = list(TRAIT_MADNESS_IMMUNE)
@@ -90,12 +90,12 @@
 	equip_sound = SFX_GOGGLES_EQUIP
 
 /obj/item/clothing/glasses/meson/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] is putting \the [src] to [user.p_their()] eyes and overloading the brightness! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]está colocando\the [src]Para[user.p_their()]Olhos e sobrecarregando o brilho! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/clothing/glasses/meson/night
 	name = "night vision meson scanner"
-	desc = "An optical meson scanner fitted with an amplified visible light spectrum overlay, providing greater visual clarity in darkness."
+	desc = "Um scanner óptico equipado com um amplificado espectro de luz visível, proporcionando maior clareza visual na escuridão."
 	icon_state = "nvgmeson"
 	inhand_icon_state = "nvgmeson"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
@@ -110,7 +110,7 @@
 
 /obj/item/clothing/glasses/meson/gar
 	name = "gar mesons"
-	desc = "Do the impossible, see the invisible!"
+	desc = "Faça o impossível, veja o invisível!"
 	icon_state = "gar_meson"
 	inhand_icon_state = "gar_meson"
 	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
@@ -124,7 +124,7 @@
 
 /obj/item/clothing/glasses/science
 	name = "science goggles"
-	desc = "A pair of snazzy goggles used to protect against chemical spills. Fitted with an analyzer for scanning items and reagents."
+	desc = "Um par de óculos usados para proteger contra derrames químicos. Com um analisador para escanear itens e reagentes."
 	icon_state = "purple"
 	inhand_icon_state = "glasses"
 	glass_colour_type = /datum/client_colour/glass_colour/purple
@@ -141,12 +141,12 @@
 	acid = 100
 
 /obj/item/clothing/glasses/science/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] is tightening \the [src]'s straps around [user.p_their()] neck! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Está apertando.\the [src]As alças ao redor[user.p_their()]pescoço! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/clothing/glasses/science/night
 	name = "night vision science goggles"
-	desc = "Lets the user see in the dark and recognize chemical compounds at a glance."
+	desc = "Deixa o usuário ver no escuro e reconhecer compostos químicos em um relance."
 	icon_state = "scihudnight"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	// Real vivid purple
@@ -160,7 +160,7 @@
 
 /obj/item/clothing/glasses/night
 	name = "night vision goggles"
-	desc = "You can totally see in the dark now!"
+	desc = "Você pode ver no escuro agora!"
 	icon_state = "night"
 	inhand_icon_state = "glasses"
 	flags_cover = GLASSESCOVERSEYES
@@ -232,7 +232,7 @@
 
 /obj/item/clothing/glasses/eyepatch/medical
 	name = "medical eyepatch"
-	desc = "Used by space weeaboos to pretend their eye isn't there, and crewmembers who actually lost their eye to pretend their eye is there."
+	desc = "Usados pelo espaço para fingir que seus olhos não estão lá, e membros da tripulação que realmente perderam seus olhos para fingir que seus olhos estão lá."
 	icon_state = "eyepatch_medical"
 	base_icon_state = "eyepatch_medical"
 	inhand_icon_state = null
@@ -261,7 +261,7 @@
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
-	desc = "Such a dapper eyepiece!"
+	desc = "Que oculares elegantes!"
 	icon_state = "monocle"
 	inhand_icon_state = "headset" // lol
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
@@ -270,7 +270,7 @@
 
 /obj/item/clothing/glasses/material
 	name = "optical material scanner"
-	desc = "Very confusing glasses."
+	desc = "Óculos muito confusos."
 	icon_state = "material"
 	inhand_icon_state = "glasses"
 	flags_cover = GLASSESCOVERSEYES
@@ -282,13 +282,13 @@
 
 /obj/item/clothing/glasses/material/mining
 	name = "optical material scanner"
-	desc = "Used by miners to detect ores deep within the rock."
+	desc = "Usado por mineiros para detectar minérios dentro da rocha."
 	icon_state = "material"
 	inhand_icon_state = "glasses"
 
 /obj/item/clothing/glasses/material/mining/gar
 	name = "gar material scanner"
-	desc = "Do the impossible, see the invisible!"
+	desc = "Faça o impossível, veja o invisível!"
 	icon_state = "gar_meson"
 	inhand_icon_state = "gar_meson"
 	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
@@ -303,7 +303,7 @@
 
 /obj/item/clothing/glasses/regular
 	name = "prescription glasses"
-	desc = "Made by Nerd. Co."
+	desc = "Feito por Nerd. Co."
 	icon_state = "glasses_regular"
 	inhand_icon_state = "glasses"
 	flags_cover = GLASSESCOVERSEYES
@@ -328,7 +328,7 @@
 		var/mob/living/crusher = movable
 		if(crusher.move_intent != MOVE_INTENT_WALK && (!(crusher.movement_type & MOVETYPES_NOT_TOUCHING_GROUND) || crusher.buckled))
 			playsound(src, 'sound/effects/footstep/glass_step.ogg', 30, TRUE)
-			visible_message(span_warning("[crusher] steps on [src], damaging it!"))
+			visible_message(span_warning("[crusher]Vamos lá.[src]Danificando!"))
 			take_damage(100, sound_effect = FALSE)
 
 /obj/item/clothing/glasses/regular/atom_destruction(damage_flag)
@@ -342,8 +342,7 @@
 	if(!I.tool_start_check(user, amount=1))
 		return
 	if(I.use_tool(src, user, 10, volume=30))
-		user.visible_message(span_notice("[user] welds [src] back together."),\
-					span_notice("You weld [src] back together."))
+		user.visible_message(span_notice("[user]Soldas[src]De volta junta."),					span_notice("Você solda[src]De volta junta."))
 		repair()
 		return TRUE
 
@@ -353,24 +352,24 @@
 
 /obj/item/clothing/glasses/regular/thin
 	name = "thin prescription glasses"
-	desc = "More expensive, more fragile and much less practical, but oh so fashionable."
+	desc = "Mais caro, mais frágil e muito menos prático, mas tão elegante."
 	icon_state = "glasses_thin"
 
 /obj/item/clothing/glasses/regular/jamjar
 	name = "jamjar glasses"
-	desc = "Also known as Virginity Protectors."
+	desc = "Também conhecido como Protetores de Virgindade."
 	icon_state = "glasses_jamjar"
 	inhand_icon_state = "glasses_jamjar"
 
 /obj/item/clothing/glasses/regular/hipster
 	name = "prescription glasses"
-	desc = "Made by Uncool. Co."
+	desc = "Feito por Uncool. Co."
 	icon_state = "glasses_hipster"
 	inhand_icon_state = null
 
 /obj/item/clothing/glasses/regular/circle
 	name = "circle glasses"
-	desc = "Why would you wear something so controversial yet so brave?"
+	desc = "Por que usaria algo tão controverso e corajoso?"
 	icon_state = "glasses_circle"
 	inhand_icon_state = null
 
@@ -378,7 +377,7 @@
 
 /obj/item/clothing/glasses/sunglasses
 	name = "sunglasses"
-	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks flashes."
+	desc = "Estranhamente antiga tecnologia usada para ajudar a fornecer a abertura ocular rudimentar. Bloqueios de cegagem primitivos."
 	icon_state = "sun"
 	inhand_icon_state = "sunglasses"
 	flags_cover = GLASSESCOVERSEYES
@@ -395,20 +394,18 @@
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/hudsunsec, /datum/crafting_recipe/hudsunmed, /datum/crafting_recipe/hudsundiag, /datum/crafting_recipe/scienceglasses)
 
 	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
+		/datum/element/slapcrafting,		slapcraft_recipes = slapcraft_recipe_list,	)
 
 /obj/item/clothing/glasses/sunglasses/reagent
 	name = "beer goggles"
 	icon_state = "sunhudbeer"
-	desc = "A pair of sunglasses outfitted with apparatus to scan reagents, as well as providing an innate understanding of liquid viscosity while in motion."
+	desc = "Um par de óculos de sol equipados com aparelhos para escanear reagentes, além de fornecer uma compreensão inata da viscosidade líquida enquanto em movimento."
 	clothing_traits = list(TRAIT_BOOZE_SLIDER, TRAIT_REAGENT_SCANNER)
 
 /obj/item/clothing/glasses/sunglasses/chemical
 	name = "science glasses"
 	icon_state = "sunhudsci"
-	desc = "A pair of tacky purple sunglasses that allow the wearer to recognize various chemical compounds with only a glance."
+	desc = "Um par de óculos roxos brega que permitem ao usuário reconhecer vários compostos químicos com apenas um olhar."
 	clothing_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_RESEARCH_SCANNER)
 	custom_materials = list(/datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.55, /datum/material/iron = SMALL_MATERIAL_AMOUNT / 2)
 
@@ -416,13 +413,11 @@
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/scienceglassesremoval)
 
 	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
+		/datum/element/slapcrafting,		slapcraft_recipes = slapcraft_recipe_list,	)
 
 /obj/item/clothing/glasses/sunglasses/gar
 	name = "black gar glasses"
-	desc = "Go beyond impossible and kick reason to the curb!"
+	desc = "Ir além do impossível e chutar a razão para a calçada!"
 	icon_state = "gar_black"
 	inhand_icon_state = "gar_black"
 	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
@@ -436,35 +431,35 @@
 
 /obj/item/clothing/glasses/sunglasses/gar/orange
 	name = "gar glasses"
-	desc = "Just who the hell do you think I am?!"
+	desc = "Quem você pensa que eu sou?"
 	icon_state = "gar"
 	inhand_icon_state = "gar"
 	glass_colour_type = /datum/client_colour/glass_colour/orange
 
 /obj/item/clothing/glasses/sunglasses/gar/giga
 	name = "black giga gar glasses"
-	desc = "Believe in us humans."
+	desc = "Acredite em nós humanos."
 	icon_state = "gigagar_black"
 	force = 12
 	throwforce = 12
 
 /obj/item/clothing/glasses/sunglasses/gar/giga/red
 	name = "giga gar glasses"
-	desc = "We evolve past the person we were a minute before. Little by little we advance with each turn. That's how a drill works!"
+	desc = "Nós evoluímos após a pessoa que estávamos um minuto antes. Pouco a pouco avançamos a cada volta. É assim que funciona!"
 	icon_state = "gigagar_red"
 	inhand_icon_state = "gar"
 	glass_colour_type = /datum/client_colour/glass_colour/red
 
 /obj/item/clothing/glasses/sunglasses/noir
 	name = "noir glasses"
-	desc = "A pair of sleek, futuristic glasses that allow the wearer to see the world in a different light."
+	desc = "Um par de óculos elegantes e futuristas que permitem ao usuário ver o mundo sob uma luz diferente."
 	glass_colour_type = /datum/client_colour/monochrome/glasses
 	forced_glass_color =  TRUE
 
 ///Syndicate item that upgrades the flash protection of your eyes.
 /obj/item/syndicate_contacts
 	name = "suspicious contact lens case"
-	desc = "A sinister red case that contains two shiny black contact lenses."
+	desc = "Um caso vermelho sinistro que contém duas lentes de contato pretas brilhantes."
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "contacts"
@@ -472,21 +467,21 @@
 /obj/item/syndicate_contacts/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!user.get_organ_slot(ORGAN_SLOT_EYES))
-		to_chat(user, span_warning("You have no eyes to apply the contacts to!"))
+		to_chat(user, span_warning("Você não tem olhos para aplicar os contatos!"))
 		return
 	var/obj/item/organ/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
 
-	to_chat(user, span_notice("You begin applying the contact lenses to your eyes..."))
+	to_chat(user, span_notice("Você começa a aplicar as lentes de contato em seus olhos..."))
 	if(!do_after(user, 3 SECONDS, src))
 		return
-	to_chat(user, span_notice("The contacts seamlessly merge with your iris."))
+	to_chat(user, span_notice("Os contatos se fundem perfeitamente com sua íris."))
 	eyes.flash_protect += FLASH_PROTECTION_WELDER
-	to_chat(user, span_warning("\The [src] disintegrates into nothing."))
+	to_chat(user, span_warning("\The [src]Se desintegrar em nada."))
 	qdel(src)
 
 /obj/item/clothing/glasses/welding
 	name = "welding goggles"
-	desc = "Protects the eyes from bright flashes; approved by the mad scientist association."
+	desc = "Protege os olhos de clarões brilhantes, aprovados pela associação de cientistas loucos."
 	icon_state = "welding-g"
 	inhand_icon_state = "welding-g"
 	actions_types = list(/datum/action/item_action/toggle)
@@ -526,7 +521,7 @@
 
 /obj/item/clothing/glasses/blindfold
 	name = "blindfold"
-	desc = "Covers the eyes, preventing sight."
+	desc = "Cobre os olhos, impedindo a visão."
 	icon_state = "blindfold"
 	inhand_icon_state = "blindfold"
 	flash_protect = FLASH_PROTECTION_WELDER
@@ -541,7 +536,7 @@
 
 /obj/item/clothing/glasses/trickblindfold
 	name = "blindfold"
-	desc = "A see-through blindfold perfect for cheating at games like pin the stun baton on the clown."
+	desc = "Uma venda transparente perfeita para trapacear em jogos como colocar o bastão de choque no palhaço."
 	icon_state = "trickblindfold"
 	inhand_icon_state = "blindfold"
 	flags_cover = GLASSESCOVERSEYES
@@ -549,7 +544,7 @@
 
 /obj/item/clothing/glasses/blindfold/white
 	name = "blind personnel blindfold"
-	desc = "Indicates that the wearer suffers from blindness."
+	desc = "Indica que o usuário sofre de cegueira."
 	icon_state = "blindfoldwhite"
 	inhand_icon_state = null
 	var/colored_before = FALSE
@@ -561,13 +556,13 @@
 	return ..()
 
 /obj/item/clothing/glasses/sunglasses/big
-	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Larger than average enhanced shielding blocks flashes."
+	desc = "Estranhamente antiga tecnologia usada para ajudar a fornecer cobertura ocular rudimentar. Blocos de blindagem maiores que a média."
 	icon_state = "bigsunglasses"
 	inhand_icon_state = null
 
 /obj/item/clothing/glasses/thermal
 	name = "optical thermal scanner"
-	desc = "Thermals in the shape of glasses."
+	desc = "Térmicas em forma de óculos."
 	icon_state = "thermal"
 	inhand_icon_state = "glasses"
 	vision_flags = SEE_MOBS
@@ -588,7 +583,7 @@
 
 /obj/item/clothing/glasses/thermal/xray
 	name = "syndicate xray goggles"
-	desc = "A pair of xray goggles manufactured by the Syndicate."
+	desc = "Um par de óculos de raios X fabricados pelo Sindicato."
 	icon_state = "material"
 	color_cutoffs = null
 	vision_flags = SEE_TURFS|SEE_MOBS|SEE_OBJS
@@ -606,14 +601,14 @@
 
 /obj/item/clothing/glasses/thermal/syndi
 	name = "chameleon thermals"
-	desc = "A pair of thermal optic goggles with an onboard chameleon generator."
+	desc = "Um par de óculos térmicos com um gerador camaleão a bordo."
 	actions_types = list(/datum/action/item_action/chameleon/change/glasses/no_preset)
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT ADDITION
-	special_desc = "Chameleon thermal goggles employed by the Syndicate in infiltration operations." //SKYRAT EDIT ADDITION, I don't think the regular description persists through chameleon changes.
+	special_desc = "Óculos térmicos camaleões empregados pelo Sindicato em operações de infiltração." //SKYRAT EDIT ADDITION, I don't think the regular description persists through chameleon changes.
 
 /obj/item/clothing/glasses/thermal/monocle
 	name = "thermoncle"
-	desc = "Never before has seeing through walls felt so gentlepersonly."
+	desc = "Nunca antes tinha visto através das paredes tão gentilmente."
 	icon_state = "thermoncle"
 	flags_1 = null //doesn't protect eyes because it's a monocle, duh
 
@@ -627,7 +622,7 @@
 
 /obj/item/clothing/glasses/thermal/eyepatch
 	name = "optical thermal eyepatch"
-	desc = "An eyepatch with built-in thermal optics."
+	desc = "Um eyepatch com óptica térmica integrada."
 	icon_state = "eyepatch"
 	base_icon_state = "eyepatch"
 	inhand_icon_state = null
@@ -640,7 +635,7 @@
 
 /obj/item/clothing/glasses/cold
 	name = "cold goggles"
-	desc = "A pair of goggles meant for low temperatures."
+	desc = "Um par de óculos para baixas temperaturas."
 	icon_state = "cold"
 	inhand_icon_state = null
 	flags_cover = GLASSESCOVERSEYES
@@ -650,7 +645,7 @@
 
 /obj/item/clothing/glasses/heat
 	name = "heat goggles"
-	desc = "A pair of goggles meant for high temperatures."
+	desc = "Um par de óculos para altas temperaturas."
 	icon_state = "heat"
 	inhand_icon_state = null
 	flags_cover = GLASSESCOVERSEYES
@@ -660,7 +655,7 @@
 
 /obj/item/clothing/glasses/orange
 	name = "orange glasses"
-	desc = "A sweet pair of orange shades."
+	desc = "Um doce par de toneladas de laranja."
 	icon_state = "orangeglasses"
 	inhand_icon_state = null
 	flags_cover = GLASSESCOVERSEYES
@@ -668,7 +663,7 @@
 
 /obj/item/clothing/glasses/red
 	name = "red glasses"
-	desc = "Hey, you're looking good, senpai!"
+	desc = "Ei, você está bonito, senpai!"
 	icon_state = "redglasses"
 	inhand_icon_state = null
 	flags_cover = GLASSESCOVERSEYES
@@ -693,7 +688,7 @@
 
 /obj/item/clothing/glasses/debug
 	name = "debug glasses"
-	desc = "Medical, security and diagnostic hud."
+	desc = "Médico, segurança e diagnóstico."
 	desc_controls = "Alt click to toggle xray."
 	icon_state = "nvgmeson"
 	inhand_icon_state = "nvgmeson"
@@ -735,13 +730,13 @@
 
 /obj/item/clothing/glasses/regular/kim
 	name = "binoclard lenses"
-	desc = "Shows you know how to sew a lapel and center a back vent."
+	desc = "Mostra que você sabe costurar uma lapela e centralizar uma ventilação traseira."
 	icon_state = "glasses_binoclard"
 	inhand_icon_state = null
 
 /obj/item/clothing/glasses/salesman
 	name = "colored glasses"
-	desc = "A pair of glasses with uniquely colored lenses. The frame is inscribed with 'Best Salesman 1997'."
+	desc = "Um par de óculos com lentes de cor única. O quadro está inscrito com 'Melhor vendedor 1997'."
 	icon_state = "salesman"
 	inhand_icon_state = "salesman"
 	flags_cover = GLASSESCOVERSEYES
@@ -766,7 +761,7 @@
 	SIGNAL_HANDLER
 	if(amount < SANITY_UNSTABLE)
 		icon_state = "salesman_fzz"
-		desc = "A pair of glasses, the lenses are full of TV static. They've certainly seen better days..."
+		desc = "Um par de óculos, as lentes estão cheias de estática de TV. Eles certamente já tiveram dias melhores..."
 		bigshot.update_worn_glasses()
 	else
 		icon_state = initial(icon_state)
@@ -775,7 +770,7 @@
 
 /obj/item/clothing/glasses/nightmare_vision
 	name = "nightmare vision goggles"
-	desc = "They give off a putrid stench. Seemingly no effect on anything."
+	desc = "Eles dão um fedor pútrido. Parece que não há efeito em nada."
 	icon_state = "nightmare"
 	inhand_icon_state = "glasses"
 	glass_colour_type = /datum/client_colour/glass_colour/nightmare
@@ -802,15 +797,7 @@
 		return
 	//5% chance to get mare vision
 	if(prob(5))
-		stored_hallucination = 	user.cause_hallucination( \
-			/datum/hallucination/delusion/preset/mare, \
-			src.name, \
-			duration = 0, \
-			affects_us = TRUE, \
-			affects_others = TRUE, \
-			skip_nearby = FALSE, \
-			play_wabbajack = FALSE, \
-		)
+		stored_hallucination = 	user.cause_hallucination( 			/datum/hallucination/delusion/preset/mare, 			src.name, 			duration = 0, 			affects_us = TRUE, 			affects_others = TRUE, 			skip_nearby = FALSE, 			play_wabbajack = FALSE, 		)
 
 /obj/item/clothing/glasses/nightmare_vision/dropped(mob/living/user)
 	. = ..()
@@ -818,14 +805,14 @@
 
 /obj/item/clothing/glasses/osi
 	name = "O.S.I. Sunglasses"
-	desc = "There's no such thing as good news! Just bad news and... weird news.."
+	desc = "Não existem boas notícias! Só más notícias e... notícias estranhas..."
 	icon_state = "osi_glasses"
 	inhand_icon_state = null
 	flags_cover = GLASSESCOVERSEYES
 
 /obj/item/clothing/glasses/phantom
 	name = "Phantom Thief Mask"
-	desc = "Lookin' cool."
+	desc = "Parece legal."
 	icon_state = "phantom_glasses"
 	inhand_icon_state = null
 	flags_cover = GLASSESCOVERSEYES

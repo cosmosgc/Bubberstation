@@ -1,13 +1,12 @@
 /datum/quirk/social_anxiety
 	name = "Social Anxiety"
-	desc = "Talking to people is very difficult for you, and you often stutter or even lock up."
+	desc = "Falar com as pessoas é muito difícil para você, e você gagueja ou até tranca."
 	icon = FA_ICON_COMMENT_SLASH
 	value = -3
-	gain_text = span_danger("You start worrying about what you're saying.")
-	lose_text = span_notice("You feel easier about talking again.") //if only it were that easy!
-	medical_record_text = "Patient is usually anxious in social encounters and prefers to avoid them."
-	medical_symptom_text = "Experiences intense anxiety and discomfort in social situations, \
-		leading to avoidance of social interactions and difficulty in communication."
+	gain_text = span_danger("Você começa a se preocupar com o que está dizendo.")
+	lose_text = span_notice("Você se sente mais fácil de falar novamente.") //if only it were that easy!
+	medical_record_text = "O paciente geralmente está ansioso em encontros sociais e prefere evitá-los."
+	medical_symptom_text = "Sofre intensa ansiedade e desconforto em situações sociais, levando a evitar interações sociais e dificuldade de comunicação."
 	hardcore_value = 4
 	mob_trait = TRAIT_ANXIOUS
 	mail_goodies = list(/obj/item/storage/pill_bottle/psicodine)
@@ -57,7 +56,7 @@
 				new_message += pick("uh,","erm,","um,")
 				if(prob(min(5, moodmod))) //Max 1 in 20 chance of cutoff after a successful filler roll, for 50% odds in a 15 word sentence
 					quirk_holder.set_silence_if_lower(6 SECONDS)
-					to_chat(quirk_holder, span_danger("You feel self-conscious and stop talking. You need a moment to recover!"))
+					to_chat(quirk_holder, span_danger("Você se sente consciente e pare de falar. Você precisa de um momento para se recuperar!"))
 					break
 			new_message += word
 
@@ -65,14 +64,14 @@
 
 	if(prob(min(50, (0.50 * moodmod)))) //Max 50% chance of not talking
 		if(dumb_thing)
-			to_chat(quirk_holder, span_userdanger("You think of a dumb thing you said a long time ago and scream internally."))
+			to_chat(quirk_holder, span_userdanger("Você pensa em algo idiota que disse há muito tempo e grita internamente."))
 			dumb_thing = FALSE //only once per life
 			if(prob(1))
 				new/obj/item/food/spaghetti/pastatomato(get_turf(quirk_holder)) //now that's what I call spaghetti code
 		else
-			to_chat(quirk_holder, span_warning("You think that wouldn't add much to the conversation and decide not to say it."))
+			to_chat(quirk_holder, span_warning("Acha que isso não aumentaria muito a conversa e decidiria não dizer."))
 			if(prob(min(25, (0.25 * moodmod)))) //Max 25% chance of silence stacks after successful not talking roll
-				to_chat(quirk_holder, span_danger("You retreat into yourself. You <i>really</i> don't feel up to talking."))
+				to_chat(quirk_holder, span_danger("Você se retira em si mesmo. Você.<i>Realmente.</i>Não se sinta à vontade para falar."))
 				quirk_holder.set_silence_if_lower(10 SECONDS)
 
 		speech_args[SPEECH_MESSAGE] = pick("Uh.","Erm.","Um.")
@@ -87,7 +86,7 @@
 	if(prob(85) || (istype(mind_check) && mind_check.mind))
 		return
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), quirk_holder, span_smallnotice("You make eye contact with [A].")), 0.3 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), quirk_holder, span_smallnotice("Você faz contato visual com[A].")), 0.3 SECONDS)
 
 /datum/quirk/social_anxiety/proc/eye_contact(datum/source, mob/living/other_mob, triggering_examiner)
 	SIGNAL_HANDLER
@@ -116,6 +115,6 @@
 	return COMSIG_BLOCK_EYECONTACT
 
 /datum/mood_event/anxiety_eyecontact
-	description = "Sometimes eye contact makes me so nervous..."
+	description = "Às vezes, o contato visual me deixa tão nervosa..."
 	mood_change = -5
 	timeout = 3 MINUTES

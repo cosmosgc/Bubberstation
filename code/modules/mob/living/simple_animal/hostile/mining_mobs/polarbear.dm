@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/asteroid/polarbear
 	name = "polar bear"
-	desc = "An aggressive animal that defends its territory with incredible power. These beasts don't run from their enemies."
+	desc = "Um animal agressivo que defende seu território com um poder incrível. Essas bestas não fogem de seus inimigos."
 	icon = 'icons/mob/simple/icemoon/icemoon_monsters.dmi'
 	icon_state = "polarbear"
 	icon_living = "polarbear"
@@ -38,12 +38,7 @@
 
 /mob/living/simple_animal/hostile/asteroid/polarbear/Initialize(mapload)
 	. = ..()
-	AddElement(\
-		/datum/element/change_force_on_death,\
-		move_force = MOVE_FORCE_DEFAULT,\
-		move_resist = MOVE_RESIST_DEFAULT,\
-		pull_force = PULL_FORCE_DEFAULT,\
-	)
+	AddElement(		/datum/element/change_force_on_death,		move_force = MOVE_FORCE_DEFAULT,		move_resist = MOVE_RESIST_DEFAULT,		pull_force = PULL_FORCE_DEFAULT,	)
 
 /mob/living/simple_animal/hostile/asteroid/polarbear/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	. = ..()
@@ -51,7 +46,7 @@
 		rapid_melee = initial(rapid_melee)
 		return
 	if(!aggressive_message_said && target)
-		visible_message(span_danger("\The [src] gets an enraged look at [target]!"))
+		visible_message(span_danger("\The [src]tem um olhar enfurecido[target]!"))
 		aggressive_message_said = TRUE
 	rapid_melee = 2
 
@@ -63,5 +58,5 @@
 
 /mob/living/simple_animal/hostile/asteroid/polarbear/lesser
 	name = "magic polar bear"
-	desc = "It seems sentient somehow."
+	desc = "Parece senciente de alguma forma."
 	faction = list(FACTION_NEUTRAL)

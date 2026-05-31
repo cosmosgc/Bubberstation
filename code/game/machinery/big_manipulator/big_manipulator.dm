@@ -1,6 +1,6 @@
 /obj/machinery/big_manipulator
 	name = "big manipulator"
-	desc = "Operates different objects. Truly, a groundbreaking innovation..."
+	desc = "Opera objetos diferentes. Verdadeiramente, uma inovação inovadora..."
 	icon = 'icons/obj/machines/big_manipulator_parts/big_manipulator_core.dmi'
 	icon_state = "core"
 	post_init_icon_state = "core"
@@ -110,14 +110,14 @@
 	if(!new_turf || !isturf(new_turf))
 		new_turf = find_suitable_turf()
 		if(!new_turf)
-			balloon_alert(user, "no suitable turfs found!")
+			balloon_alert(user, "Nenhum território adequado encontrado!")
 			return FALSE
 
 	var/list/current_points = (transfer_type == TRANSFER_TYPE_PICKUP) ? pickup_points : dropoff_points
 	var/point_type = (transfer_type == TRANSFER_TYPE_PICKUP) ? "pickup" : "dropoff"
 
 	if(length(current_points) + 1 > interaction_point_limit)
-		balloon_alert(user, "[point_type] point limit reached!")
+		balloon_alert(user, "[point_type]Ponto limite alcançado!")
 		return FALSE
 
 	var/datum/stock_part/servo/locate_servo = locate() in component_parts
@@ -359,7 +359,7 @@
 
 /obj/machinery/big_manipulator/can_be_unfasten_wrench(mob/user, silent)
 	if(current_task != CURRENT_TASK_NONE || on)
-		to_chat(user, span_warning("[src] is activated!"))
+		to_chat(user, span_warning("[src]Está ativado!"))
 		return FAILED_UNFASTEN
 	return ..()
 
@@ -392,14 +392,14 @@
 
 /obj/machinery/big_manipulator/mouse_drop_dragged(atom/drop_point, mob/user, src_location, over_location, params)
 	if(current_task != CURRENT_TASK_NONE)
-		balloon_alert(user, "turn it off first!")
+		balloon_alert(user, "Desligue isso primeiro!")
 		return
 
 	var/mob/living/carbon/human/species/monkey/poor_monkey = monkey_worker?.resolve()
 	if(!poor_monkey)
 		return
 
-	balloon_alert(user, "trying to unbuckle...")
+	balloon_alert(user, "Tentando Soltar...")
 	if(!do_after(user, 3 SECONDS, src))
 		balloon_alert(user, "interrupted")
 		return
@@ -410,7 +410,7 @@
 
 /obj/machinery/big_manipulator/mouse_drop_receive(atom/monkey, mob/user, params)
 	if(current_task != CURRENT_TASK_NONE)
-		balloon_alert(user, "turn it off first!")
+		balloon_alert(user, "Desligue isso primeiro!")
 		return
 
 	if(monkey_worker?.resolve())
@@ -421,10 +421,10 @@
 
 	var/mob/living/carbon/human/species/monkey/poor_monkey = monkey
 	if(poor_monkey.mind)
-		balloon_alert(user, "too smart!")
+		balloon_alert(user, "Muito espero!")
 		return
 
-	poor_monkey.balloon_alert(user, "trying to buckle...")
+	poor_monkey.balloon_alert(user, "Tentando cincola...")
 	if(!do_after(user, 3 SECONDS, poor_monkey))
 		poor_monkey.balloon_alert(user, "interrupted")
 		return
@@ -454,7 +454,7 @@
 		return
 	var/obj/item/card/id/resolve_id = id_lock.resolve()
 	if(clicked_by_this_id != resolve_id)
-		balloon_alert(user, "locked by another id")
+		balloon_alert(user, "Travado por outra identidade.")
 		return
 	id_lock = null
 	balloon_alert(user, "destrancado com sucesso")
@@ -476,11 +476,11 @@
 
 	if(newly_on)
 		if(!powered())
-			balloon_alert(user, "sem energia!")
+			balloon_alert(user, "Sem energia!")
 			return
 
 		if(!anchored)
-			balloon_alert(user, "ancore primeiro!")
+			balloon_alert(user, "Ancore primeiro!")
 			return
 
 		validate_all_points()
@@ -519,12 +519,12 @@
 /// Attempts to press the power button.
 /obj/machinery/big_manipulator/proc/try_press_on(mob/living/carbon/human/user)
 	if(power_access_wire_cut)
-		balloon_alert(user, "unresponsive!")
+		balloon_alert(user, "Sem resposta!")
 		return
 
 	// Reject activation during stopping task
 	if(current_task == CURRENT_TASK_STOPPING)
-		balloon_alert(user, "stopping in progress!")
+		balloon_alert(user, "Parando em progresso!")
 		return
 
 	toggle_power_state(user)
@@ -543,11 +543,11 @@
 
 /obj/machinery/big_manipulator/ui_interact(mob/user, datum/tgui/ui)
 	if(id_lock)
-		to_chat(user, span_warning("[src] is locked behind ID authentication!"))
+		to_chat(user, span_warning("[src]Está trancada atrás da autenticação de identificação!"))
 		ui?.close()
 		return
 	if(!anchored)
-		to_chat(user, span_warning("[src] isn't attached to the ground!"))
+		to_chat(user, span_warning("[src]Não está preso ao chão!"))
 		ui?.close()
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -654,12 +654,12 @@
 
 		if("reset_tasking_Pickup Points")
 			pickup_strategy.current_index = 1
-			balloon_alert(ui.user, "index reset")
+			balloon_alert(ui.user, "índice reset")
 			return TRUE
 
 		if("reset_tasking_Dropoff Points")
 			dropoff_strategy.current_index = 1
-			balloon_alert(ui.user, "index reset")
+			balloon_alert(ui.user, "índice reset")
 			return TRUE
 
 		if("cycle_tasking_schedule")

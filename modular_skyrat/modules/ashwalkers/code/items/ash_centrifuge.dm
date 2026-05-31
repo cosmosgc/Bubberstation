@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/cup/primitive_centrifuge
 	name = "primitive centrifuge"
-	desc = "A small cup that allows a person to slowly spin out liquids they do not desire."
+	desc = "Um pequeno copo que permite que uma pessoa gire lentamente líquidos que não deseja."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/misc_tools.dmi'
 	icon_state = "primitive_centrifuge"
 	volume = 100
@@ -8,8 +8,8 @@
 
 /obj/item/reagent_containers/cup/primitive_centrifuge/examine()
 	. = ..()
-	. += span_notice("<b>Ctrl + Click</b> to select chemicals to remove.")
-	. += span_notice("<b>Ctrl + Shift + Click</b> to select a chemical to keep, the rest removed.")
+	. += span_notice("<b>Ctrl + Clique</b>para selecionar produtos químicos para remover.")
+	. += span_notice("<b>Ctrl + Shift + Clique</b>para selecionar um produto químico para manter, o resto removido.")
 
 /obj/item/reagent_containers/cup/primitive_centrifuge/item_ctrl_click(mob/user)
 	if(!length(reagents.reagent_list))
@@ -18,7 +18,7 @@
 	var/datum/user_input = tgui_input_list(user, "Select which chemical to remove.", "Removal Selection", reagents.reagent_list)
 
 	if(!user_input)
-		balloon_alert(user, "no selection")
+		balloon_alert(user, "Sem seleção.")
 		return
 
 	user.balloon_alert_to_viewers("spinning [src]...")
@@ -29,7 +29,7 @@
 
 	reagents.del_reagent(user_input.type)
 	user.mind.adjust_experience(/datum/skill/primitive, 5)
-	balloon_alert(user, "removed reagent from [src]")
+	balloon_alert(user, "Reagente removido de[src]")
 
 /obj/item/reagent_containers/cup/primitive_centrifuge/click_ctrl_shift(mob/user)
 	if(!length(reagents.reagent_list))
@@ -38,7 +38,7 @@
 	var/datum/user_input = tgui_input_list(user, "Select which chemical to keep, the rest removed.", "Keep Selection", reagents.reagent_list)
 
 	if(!user_input)
-		balloon_alert(user, "no selection")
+		balloon_alert(user, "Sem seleção.")
 		return
 
 	user.balloon_alert_to_viewers("spinning [src]...")
@@ -52,4 +52,4 @@
 			reagents.del_reagent(remove_reagent.type)
 
 	user.mind.adjust_experience(/datum/skill/primitive, 5)
-	balloon_alert(user, "removed reagents from [src]")
+	balloon_alert(user, "Reagentes removidos de[src]")

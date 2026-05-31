@@ -72,7 +72,7 @@
 	living_pawn.face_atom(target)
 	living_pawn.set_anchored(TRUE)
 
-	living_pawn.visible_message(span_warning("[living_pawn] begins to charge up energy!"))
+	living_pawn.visible_message(span_warning("[living_pawn]Começa a carregar energia!"))
 	playsound(living_pawn, pick(living_pawn.charge_sounds), 100, TRUE)
 
 	// Visual effect for charging
@@ -124,7 +124,7 @@
 			L.apply_damage(damage, STAMINA) // Add stamina damage
 			if(prob(50))
 				L.Knockdown(10) // Shorter knockdown, 50% chance
-			to_chat(L, span_warning("You're hit by [living_pawn]'s sonic blast!"))
+			to_chat(L, span_warning("Você foi atingido por[living_pawn]A explosão sônica!"))
 
 		// Break windows and weak objects, but less severely
 		for(var/obj/O in T)
@@ -135,4 +135,4 @@
 
 	// Play the blast sound
 	playsound(living_pawn, 'sound/effects/explosion/explosioncreak2.ogg', 100, TRUE)
-	living_pawn.visible_message(span_danger("[living_pawn] releases a powerful sonic blast!"))
+	living_pawn.visible_message(span_danger("[living_pawn]Libera uma poderosa explosão sônica!"))

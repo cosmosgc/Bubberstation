@@ -5,7 +5,7 @@
 
 /datum/mutation/nervousness
 	name = "Nervousness"
-	desc = "Causes the holder to stutter."
+	desc = "Faz com que o portador gagueje."
 	instability = NEGATIVE_STABILITY_MINI
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_danger("You feel nervous.")
@@ -16,7 +16,7 @@
 
 /datum/mutation/wacky
 	name = "Wacky"
-	desc = "You are not a clown. You are the entire circus."
+	desc = "Você não é um palhaço. Você é o circo inteiro."
 	instability = NEGATIVE_STABILITY_MINI
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_sans(span_notice("You feel an off sensation in your voicebox."))
@@ -40,7 +40,7 @@
 
 /datum/mutation/heckacious
 	name = "Heckacious Larincks"
-	desc = "duge what is WISH your words man..........."
+	desc = "Cague o que deseja, homem..."
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_sans("aw SHIT man. your throat feels like FUCKASS.")
 	text_lose_indication = span_notice("The demonic entity possessing your larynx has finally released its grasp.")
@@ -135,7 +135,7 @@
 
 /datum/mutation/mute
 	name = "Mute"
-	desc = "Completely inhibits the vocal section of the brain."
+	desc = "Inibe completamente a parte vocal do cérebro."
 	instability = NEGATIVE_STABILITY_MAJOR
 	quality = NEGATIVE
 	text_gain_indication = span_danger("You feel unable to express yourself at all.")
@@ -154,7 +154,7 @@
 
 /datum/mutation/unintelligible
 	name = "Unintelligible"
-	desc = "Partially inhibits the vocal center of the brain, severely distorting speech."
+	desc = "Inibe parcialmente o centro vocal do cérebro, distorcendo severamente a fala."
 	instability = NEGATIVE_STABILITY_MODERATE
 	quality = NEGATIVE
 	text_gain_indication = span_danger("You can't seem to form any coherent thoughts!")
@@ -173,7 +173,7 @@
 
 /datum/mutation/swedish
 	name = "Swedish"
-	desc = "A horrible mutation originating from the distant past. Thought to be eradicated after the incident in 2037."
+	desc = "Uma mutação horrível originada do passado distante. Pensado para ser erradicado após o incidente em 2037."
 	instability = NEGATIVE_STABILITY_MINI
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_notice("You feel Swedish, however that works.")
@@ -198,7 +198,7 @@
 
 /datum/mutation/elvis
 	name = "Elvis"
-	desc = "A terrifying mutation named after its 'patient-zero'."
+	desc = "Uma mutação terrível com o nome de \"Paciente zero.\"."
 	instability = NEGATIVE_STABILITY_MINI
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_notice("You feel pretty good, honeydoll.")
@@ -214,14 +214,14 @@
 			if(SPT_PROB(7.5, seconds_per_tick))
 				var/list/dancetypes = list("swinging", "fancy", "stylish", "20'th century", "jivin'", "rock and roller", "cool", "salacious", "bashing", "smashing")
 				var/dancemoves = pick(dancetypes)
-				owner.visible_message("<b>[owner]</b> busts out some [dancemoves] moves!")
+				owner.visible_message("<b>[owner]</b>Estraga alguns.[dancemoves]Mexam-se!")
 		if(2)
 			if(SPT_PROB(7.5, seconds_per_tick))
 				owner.visible_message("<b>[owner]</b> [pick("jiggles their hips", "rotates their hips", "gyrates their hips", "taps their foot", "dances to an imaginary song", "jiggles their legs", "snaps their fingers")]!")
 
 /datum/mutation/stoner
 	name = "Stoner"
-	desc = "A common mutation that severely decreases intelligence."
+	desc = "Uma mutação comum que diminui a inteligência."
 	quality = NEGATIVE
 	text_gain_indication = span_notice("You feel...totally chill, man!")
 	text_lose_indication = span_notice("You feel like you have a better sense of time.")
@@ -240,7 +240,7 @@
 
 /datum/mutation/medieval
 	name = "Medieval"
-	desc = "A horrible mutation originating from the distant past, thought to have once been a common gene in all of old world Europe."
+	desc = "Uma mutação horrível originada do passado distante, pensa-se ter sido um gene comum em toda a Europa do velho mundo."
 	instability = NEGATIVE_STABILITY_MINI
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_notice("You feel like seeking the holy grail!")
@@ -282,7 +282,7 @@
 
 /datum/mutation/piglatin
 	name = "Pig Latin"
-	desc = "Historians say back in the 2020's humanity spoke entirely in this mystical language."
+	desc = "Historiadores dizem que em 2020 a humanidade falava inteiramente nesta linguagem mística."
 	instability = NEGATIVE_STABILITY_MINI
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_notice("Omethingsay eelsfay offyay.")

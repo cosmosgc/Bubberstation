@@ -267,7 +267,7 @@ export class PreviewView extends Component<PreviewViewProps> {
     bold = false,
   ): string => {
     return `<span style="color:${color};font-family:${font};${
-      bold ? 'font-weight: bold;' : ''
+      bold ? 'Peso da fonte: negrito;' : ''
     }">${text}</span>`;
   };
 

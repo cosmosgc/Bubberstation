@@ -58,11 +58,11 @@
 		poll_time = 10 SECONDS,
 		ignore_category = POLL_IGNORE_IMAGINARYFRIEND,
 		jump_target = target,
-		role_name_text = "an imaginary friend for [target.real_name]",
+		role_name_text = "Um amigo imaginário para[target.real_name]",
 	)
 	var/volunteer_count = length(volunteers)
 	if(volunteer_count == 0)
-		to_chat(user, span_warning("No candidates volunteered, aborting."))
+		to_chat(user, span_warning("Nenhum candidato se oferece, abortando."))
 		return
 
 	shuffle_inplace(volunteers)
@@ -83,7 +83,7 @@
 
 	var/client/friend_candidate_client = picked_client
 	if(QDELETED(friend_candidate_client))
-		to_chat(user, span_warning("Selected player no longer has a client, aborting."))
+		to_chat(user, span_warning("Jogador selecionado não tem mais um cliente, abortando."))
 		return
 
 	if(isliving(friend_candidate_client.mob))
@@ -95,7 +95,7 @@
 			return
 
 	if(QDELETED(friend_candidate_client))
-		to_chat(user, span_warning("Selected player no longer has a client, aborting."))
+		to_chat(user, span_warning("Jogador selecionado não tem mais um cliente, abortando."))
 		return
 
 	return list(friend_candidate_client)
@@ -106,7 +106,7 @@
 
 	// Run this check before and after polling, we don't wanna poll for something which already stopped existing
 	if(QDELETED(target))
-		to_chat(user, span_warning("The target mob no longer exists, aborting."))
+		to_chat(user, span_warning("O alvo não existe mais, abortando."))
 		return
 
 	var/list/friend_candidates
@@ -116,11 +116,11 @@
 		friend_candidates = pick_client(user)
 
 	if(QDELETED(target))
-		to_chat(user, span_warning("The target mob no longer exists, aborting."))
+		to_chat(user, span_warning("O alvo não existe mais, abortando."))
 		return
 
 	if(isnull(friend_candidates) || !length(friend_candidates))
-		to_chat(user, span_warning("No provided imaginary friend candidates, aborting."))
+		to_chat(user, span_warning("Nenhum amigo imaginário candidato, abortando."))
 		return
 
 	var/list/final_clients = list()
@@ -130,7 +130,7 @@
 		final_clients += client
 
 	if(!length(final_clients))
-		to_chat(user, span_warning("No provided imaginary friend candidates had clients, aborting."))
+		to_chat(user, span_warning("Nenhum amigo imaginário candidato tinha clientes, abortando."))
 		return
 
 	for(var/client/friend_candidate_client as anything in final_clients)

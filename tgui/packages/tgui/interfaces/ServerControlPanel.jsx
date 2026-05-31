@@ -8,7 +8,7 @@ export const MicrofusionGunControl = (props) => {
   const { act, data } = useBackend();
   const { current_players, servers = [] } = data;
   return (
-    <Window title="Server Control Panel" width={500} height={700}>
+    <Window title="Painel de controle do servidor" width={500} height={700}>
       <Window.Content>
         {servers.len === 0 ? (
           <NoticeBox>No server is currently online.</NoticeBox>

@@ -1,6 +1,6 @@
 /obj/item/codeword_granter
 	name = "codeword manual"
-	desc = "A black manual with a red S lovingly inscribed on the cover by only the finest of presses from a factory."
+	desc = "Um manual preto com um vermelho escrito na capa por apenas as melhores prensas de uma fábrica."
 	icon = 'modular_zubbers/code/modules/opposing_force/icons/items.dmi'
 	icon_state = "codeword_book"
 	/// Number of charges the book has, limits the number of times it can be used.
@@ -11,11 +11,11 @@
 	if(!isliving(user))
 		return
 
-	to_chat(user, span_boldannounce("You start skimming through [src], and feel suddenly imparted with the knowledge of the following code words:"))
+	to_chat(user, span_boldannounce("Você começa a passar[src], e se sentir de repente transmitido com o conhecimento das seguintes palavras de código:"))
 
 	user.AddComponent(/datum/component/codeword_hearing, GLOB.syndicate_code_phrase_regex, "blue", src)
 	user.AddComponent(/datum/component/codeword_hearing, GLOB.syndicate_code_response_regex, "red", src)
-	to_chat(user, "<b>Code Phrases</b>: [jointext(GLOB.syndicate_code_phrase, ", ")]")
+	to_chat(user, "<b>Código Frases</b>: [jointext(GLOB.syndicate_code_phrase, ", ")]")
 	to_chat(user, "<b>Code Responses</b>: [span_red("[jointext(GLOB.syndicate_code_response, ", ")]")]")
 
 	use_charge(user)
@@ -32,12 +32,12 @@
 	playsound(loc, SFX_PUNCH, 25, TRUE, -1)
 
 	if(attacked_mob.stat == DEAD)
-		attacked_mob.visible_message(span_danger("[user] smacks [attacked_mob]'s lifeless corpse with [src]."), span_userdanger("[user] smacks your lifeless corpse with [src]."), span_hear("You hear smacking."))
+		attacked_mob.visible_message(span_danger("[user]Strocks[attacked_mob]O cadáver sem vida com[src]."), span_userdanger("[user]Bate no seu cadáver sem vida com[src]."), span_hear("Você ouve batidas."))
 	else
-		attacked_mob.visible_message(span_notice("[user] teaches [attacked_mob] by beating [attacked_mob.p_them()] over the head with [src]!"), span_boldnotice("As [user] hits you with [src], you feel suddenly imparted with the knowledge of some [span_red("specific words")]."), span_hear("You hear smacking."))
+		attacked_mob.visible_message(span_notice("[user]Ensina[attacked_mob]Batendo[attacked_mob.p_them()]sobre a cabeça com[src]!"), span_boldnotice("As [user] hits you with [src], you feel suddenly imparted with the knowledge of some [span_red("specific words")]."), span_hear("Você ouve batidas."))
 		attacked_mob.AddComponent(/datum/component/codeword_hearing, GLOB.syndicate_code_phrase_regex, "blue", src)
 		attacked_mob.AddComponent(/datum/component/codeword_hearing, GLOB.syndicate_code_response_regex, "red", src)
-		to_chat(attacked_mob, span_boldnotice("You feel suddenly imparted with the knowledge of the following code words:"))
+		to_chat(attacked_mob, span_boldnotice("Você se sente de repente transmitido com o conhecimento das seguintes palavras de código:"))
 		to_chat(attacked_mob, "<b>Code Phrases</b>: [span_blue("[jointext(GLOB.syndicate_code_phrase, ", ")]")]")
 		to_chat(attacked_mob, "<b>Code Responses</b>: [span_red("[jointext(GLOB.syndicate_code_response, ", ")]")]")
 		use_charge(user)
@@ -48,33 +48,33 @@
 
 	if(!charges)
 		var/turf/src_turf = get_turf(src)
-		src_turf.visible_message(span_warning("The cover and contents of [src] start shifting and changing! It slips out of your hands!"))
+		src_turf.visible_message(span_warning("A capa e o conteúdo de[src]Comece a mudar e mudar! Ele escapa de suas mãos!"))
 		new /obj/item/book/manual/random(src_turf)
 		qdel(src)
 
 
 /obj/item/antag_granter/changeling
 	name = "viral injector"
-	desc = "A blue injector filled with some viscous, red substance. It has no markings apart from an orange warning stripe near the large needle."
+	desc = "Um injetor azul cheio de substância viscosa e vermelha. Não tem marcas além de uma faixa de aviso laranja perto da agulha grande."
 	icon_state = "changeling_injector"
 	antag_datum = /datum/antagonist/changeling
-	user_message = "As you inject the substance into yourself, you start to feel... <span class='red'><b>better</b></span>."
+	user_message = "Como você injeta a substância em si mesmo, você começa a sentir...<span class='red'><b>Melhor.</b></span>."
 
 
 /obj/item/antag_granter/heretic
 	name = "strange book"
-	desc = "A purple book with a green eye on the cover. You swear it's looking at you...."
+	desc = "Um livro roxo com um olho verde na capa. Você jura que está olhando para você..."
 	icon_state = "heretic_granter"
 	antag_datum = /datum/antagonist/heretic
-	user_message = "As you open the book, you see a great flash as <span class='hypnophrase'>the world becomes all the clearer for you</span>."
+	user_message = "Ao abrir o livro, você vê um grande flash como<span class='hypnophrase'>O mundo se torna mais claro para você.</span>."
 
 /obj/item/antag_granter/clock_cultist
 	name = "brass contraption"
-	desc = "A cogwheel-shaped device of brass, with a glass lens floating, suspended in the center."
+	desc = "Um dispositivo em forma de engrenagem de latão, com uma lente de vidro flutuando, suspenso no centro."
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
 	icon_state = "vanguard_cogwheel"
 	antag_datum = /datum/antagonist/clock_cultist/solo
-	user_message = "A whirring fills your ears as <span class='brass'>knowledge of His Eminence fills your mind</span>."
+	user_message = "Um zumbido enche seus ouvidos como<span class='brass'>O conhecimento de Sua Eminência enche sua mente.</span>."
 
 /obj/item/antag_granter/clock_cultist/attack_self(mob/user, modifiers)
 	. = ..()

@@ -1,7 +1,7 @@
 /// Wall mounted mining weather tracker
 /obj/machinery/mining_weather_monitor
 	name = "barometric monitor"
-	desc = "A machine monitoring atmospheric data from mining environments. Provides warnings about incoming weather fronts."
+	desc = "Uma máquina monitorando dados atmosféricos de ambientes de mineração. Fornece avisos sobre frentes meteorológicas."
 	icon = 'icons/obj/devices/miningradio.dmi'
 	icon_state = "wallmount"
 	light_power = 1
@@ -9,13 +9,7 @@
 
 /obj/machinery/mining_weather_monitor/Initialize(mapload, ndir, nbuild)
 	. = ..()
-	AddComponent( \
-		/datum/component/weather_announcer, \
-		state_normal = "wallgreen", \
-		state_warning = "wallyellow", \
-		state_danger = "wallred", \
-		radar_z_trait = ZTRAIT_MINING, \
-	)
+	AddComponent( 		/datum/component/weather_announcer, 		state_normal = "wallgreen", 		state_warning = "wallyellow", 		state_danger = "wallred", 		radar_z_trait = ZTRAIT_MINING, 	)
 
 /obj/machinery/mining_weather_monitor/update_overlays()
 	. = ..()
@@ -44,7 +38,7 @@ GLOBAL_LIST_EMPTY(weather_towers)
 
 /obj/machinery/power/weather_tower
 	name = "doppler radar tower"
-	desc = "A tower that monitors atmospheric data from mining environments. Provides warnings about incoming weather fronts."
+	desc = "Uma torre que monitora dados atmosféricos de ambientes de mineração. Fornece avisos sobre frentes meteorológicas."
 	icon = 'icons/obj/mining_zones/terrain.dmi'
 	icon_state = "radar"
 	base_icon_state = "radar"
@@ -117,9 +111,9 @@ GLOBAL_LIST_EMPTY(weather_towers)
 /obj/machinery/power/weather_tower/examine(mob/user)
 	. = ..()
 	if(isnull(core))
-		. += span_info("It has a slot in which you could install a weather anomaly core.")
+		. += span_info("Tem uma vaga na qual você pode instalar um núcleo de anomalia do tempo.")
 	else
-		. += span_info("It has \a [core] installed, unlocking weather control.")
+		. += span_info("Tem.\a [core]Instalado, desbloqueando o controle meteorológico.")
 
 /obj/machinery/power/weather_tower/ui_interact(mob/user, datum/tgui/ui)
 	if(isnull(core))
@@ -189,20 +183,20 @@ GLOBAL_LIST_EMPTY(weather_towers)
 /obj/machinery/power/weather_tower/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/assembly/signaler/anomaly))
 		if(!isnull(core))
-			to_chat(user, span_warning("The weather core slot is already occupied."))
+			to_chat(user, span_warning("O centro meteorológico já está ocupado."))
 			return ITEM_INTERACT_FAILURE
 
 		if(!istype(tool, /obj/item/assembly/signaler/anomaly/weather))
-			to_chat(user, span_warning("[tool] probably won't do anything useful within [src]."))
+			to_chat(user, span_warning("[tool]provavelmente não vai fazer nada útil dentro[src]."))
 			return ITEM_INTERACT_FAILURE
 
 		if(!user.transferItemToLoc(tool, src))
-			to_chat(user, span_warning("You can't seem to part ways with [tool]."))
+			to_chat(user, span_warning("Você não pode se separar com[tool]."))
 			return ITEM_INTERACT_FAILURE
 
 		core = tool
 		update_appearance()
-		to_chat(user, span_notice("You install [tool] into [src]."))
+		to_chat(user, span_notice("Você instala.[tool]em[src]."))
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
@@ -297,7 +291,7 @@ GLOBAL_LIST_EMPTY(weather_towers)
 
 	var/success = !!weather
 	if(success)
-		visible_message(span_notice("The [src] hums as it summons a [weather]."))
+		visible_message(span_notice("O[src]Hums como ele invoca um[weather]."))
 		use_core_charge(charge_amount)
 		COOLDOWN_START(src, summon_weather_cd, 8 MINUTES)
 		COOLDOWN_START(src, clear_weather_cd, 4 MINUTES)
@@ -308,7 +302,7 @@ GLOBAL_LIST_EMPTY(weather_towers)
 		else
 			log_game("[user ? key_name(user) : "Unknown"] summoned [weather.name] weather using [src] [AREACOORD(src)].")
 	else
-		audible_message(span_warning("The [src] emits a frustrated buzz as nothing happens."))
+		audible_message(span_warning("O[src]emite um zumbido frustrado como nada acontece."))
 		COOLDOWN_START(src, summon_weather_cd, 1 MINUTES)
 
 	return success
@@ -320,7 +314,7 @@ GLOBAL_LIST_EMPTY(weather_towers)
 
 	core.charges -= amount
 	if(core.charges <= 0)
-		visible_message(span_boldwarning("[core] expends all of its energy and disintegrates!"))
+		visible_message(span_boldwarning("[core]gasta toda a sua energia e desintegra-se!"))
 		new /obj/effect/decal/cleanable/ash/large(loc)
 		QDEL_NULL(core)
 

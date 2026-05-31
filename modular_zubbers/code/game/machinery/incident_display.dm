@@ -120,7 +120,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/disease, 32)
 
 	if(sign_features == DISPLAY_TRAM)
 		tool.play_tool_sound(src)
-		balloon_alert(user, "set to disease")
+		balloon_alert(user, "Pronto para a doença.")
 		name = NAME_DISEASE
 		desc = DESC_DISEASE
 		sign_features = DISPLAY_DISEASE
@@ -128,7 +128,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/disease, 32)
 		return TRUE
 	else if(sign_features == DISPLAY_DISEASE)
 		tool.play_tool_sound(src)
-		balloon_alert(user, "set to delam")
+		balloon_alert(user, "Vamos para Delam.")
 		name = NAME_DELAM
 		desc = DESC_DELAM
 		sign_features = DISPLAY_DELAM
@@ -137,7 +137,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/disease, 32)
 		return TRUE
 	else
 		tool.play_tool_sound(src)
-		balloon_alert(user, "set to tram")
+		balloon_alert(user, "Vamos para o laço.")
 		name = NAME_TRAM
 		desc = DESC_TRAM
 		sign_features = DISPLAY_TRAM
@@ -161,8 +161,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/disease, 32)
 /obj/machinery/incident_display/examine(mob/user)
 	. = ..()
 	if(sign_features & DISPLAY_DISEASE)
-		. += span_notice("It can be changed to display delam-free shifts with a [EXAMINE_HINT("multitool")].")
-		. += span_info("The station has [current_disease_metric] reported active infections incident\s at the moment.")
+		. += span_notice("Ele pode ser alterado para exibir turnos livres de delam com um[EXAMINE_HINT("multitool")].")
+		. += span_info("A estação tem[current_disease_metric]Relataram infecções ativas no momento.")
 		if(current_disease_metric == 0)
 			. += span_notice("<b>[pick(disease_slogan_good)]</b><br/>")
 		else

@@ -7,42 +7,42 @@ import {
   getGasLabel,
 } from './constants';
 
-describe('gas helper functions', () => {
-  it('should get the proper gas label', () => {
+describe('Funções auxiliares de gás', () => {
+  it('deve obter a etiqueta de gás adequada', () => {
     const gasId = 'antinoblium';
     const gasLabel = getGasLabel(gasId);
     expect(gasLabel).toBe('Anti-Noblium');
   });
 
-  it('should get the proper gas label with a fallback', () => {
+  it('deve obter a etiqueta de gás adequada com um recuo', () => {
     const gasId = 'nonexistent';
     const gasLabel = getGasLabel(gasId, 'fallback');
 
     expect(gasLabel).toBe('fallback');
   });
 
-  it('should return none if no gas and no fallback is found', () => {
+  it('Não deve devolver nenhum se nenhum gás e nenhum retorno for encontrado.', () => {
     const gasId = 'nonexistent';
     const gasLabel = getGasLabel(gasId);
 
     expect(gasLabel).toBe('None');
   });
 
-  it('should get the proper gas color', () => {
+  it('deve ter a cor do gás adequada', () => {
     const gasId = 'antinoblium';
     const gasColor = getGasColor(gasId);
 
     expect(gasColor).toBe('maroon');
   });
 
-  it('should return a string if no gas is found', () => {
+  it('deve devolver uma corda se nenhum gás é encontrado', () => {
     const gasId = 'nonexistent';
     const gasColor = getGasColor(gasId);
 
     expect(gasColor).toBe('black');
   });
 
-  it('should return the gas object if found', () => {
+  it('Deve devolver o objeto de gás se encontrado.', () => {
     const gasId = 'antinoblium';
     const gas = getGasFromId(gasId);
 
@@ -55,14 +55,14 @@ describe('gas helper functions', () => {
     });
   });
 
-  it('should return undefined if no gas is found', () => {
+  it('Deve retornar indefinido se nenhum gás for encontrado.', () => {
     const gasId = 'nonexistent';
     const gas = getGasFromId(gasId);
 
     expect(gas).toBeUndefined();
   });
 
-  it('should return the gas using a path', () => {
+  it('deve devolver o gás usando um caminho', () => {
     const gasPath = '/datum/gas/antinoblium';
     const gas = getGasFromPath(gasPath);
 

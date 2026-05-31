@@ -14,11 +14,9 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py310_22.11.1-1-
 # Put conda in path so we can use conda
 ENV PATH=$CONDA_DIR/bin:$PATH
 
-# Enable intel packages
-RUN conda config --add channels intel
-# Setup intel enhanced python environment named 'intel'.
-RUN conda create -n intel intelpython3_full python=3.9 numba=0.55.1 && conda clean --index-cache --tarballs --packages
-# Use the intel enhanced python environment from now on.
+# Setup python environment named 'intel'.
+RUN conda create -n intel python=3.10 && conda clean --tarballs --packages
+# Use the intel python environment from now on.
 SHELL ["conda", "run", "-n", "intel", "/bin/bash", "-c"]
 
 # Setup python requirements and install the TTS python module into the new intel anaconda environment.

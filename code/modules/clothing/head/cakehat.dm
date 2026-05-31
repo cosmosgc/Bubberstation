@@ -1,6 +1,6 @@
 /obj/item/clothing/head/utility/hardhat/cakehat
 	name = "cakehat"
-	desc = "You put the cake on your head. Brilliant."
+	desc = "Coloque o bolo na cabeça. Brilhante."
 	icon = 'icons/obj/clothing/head/costume.dmi'
 	worn_icon = 'icons/mob/clothing/head/costume.dmi'
 	icon_state = "hardhat0_cakehat"
@@ -59,7 +59,7 @@
 
 /obj/item/clothing/head/utility/hardhat/cakehat/energycake
 	name = "energy cake"
-	desc = "You put the energy sword on your cake. Brilliant."
+	desc = "Você colocou a espada de energia em seu bolo. Brilhante."
 	icon_state = "hardhat1_energycake"
 	inhand_icon_state = "hardhat0_energycake"
 	hat_type = "energycake"
@@ -80,10 +80,10 @@
 
 /obj/item/clothing/head/utility/hardhat/cakehat/energycake/turn_on(mob/living/user)
 	playsound(src, 'sound/items/weapons/saberon.ogg', 5, TRUE)
-	to_chat(user, span_warning("You turn on \the [src]."))
+	to_chat(user, span_warning("Você liga.\the [src]."))
 	return ..()
 
 /obj/item/clothing/head/utility/hardhat/cakehat/energycake/turn_off(mob/living/user)
 	playsound(src, 'sound/items/weapons/saberoff.ogg', 5, TRUE)
-	to_chat(user, span_warning("You turn off \the [src]."))
+	to_chat(user, span_warning("Você desliga.\the [src]."))
 	return ..()

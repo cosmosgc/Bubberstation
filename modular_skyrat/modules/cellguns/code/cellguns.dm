@@ -1,6 +1,6 @@
 /obj/item/gun/energy/cell_loaded //The basic cell loaded gun
 	name = "cell-loaded gun"
-	desc = "A energy gun that functions by loading cells for ammo types"
+	desc = "Uma arma de energia que funciona carregando células para tipos de munição"
 
 	/// List containing what cells are allowed to be installed by the gun. This includes all subtypes.
 	var/list/allowed_cells = list()
@@ -18,16 +18,16 @@
 	. = ..()
 	if(maxcells)
 		. += "<b>[installedcells.len]</b> out of <b>[maxcells]</b> cell slots are filled."
-		. += span_info("You can use AltClick with an empty hand to remove the most recently inserted cell from the chamber.")
+		. += span_info("Você pode usar AltClick com uma mão vazia para remover a célula recentemente inserida da câmara.")
 
 		for(var/cell in installedcells)
-			. += span_notice("There is \a [cell] loaded in the chamber.") //Shows what cells are currently inside of the gun
+			. += span_notice("Há\a [cell]Carregado na câmara.") //Shows what cells are currently inside of the gun
 
 /// Handles insertion of weapon cells
 /obj/item/gun/energy/cell_loaded/attackby(obj/item/weaponcell/used_cell, mob/user)
 	if(is_type_in_list(used_cell, allowed_cells)) // Checks allowed_cells to see if the gun is able to load the cells.
 		if(installedcells.len >= maxcells) //Prevents the user from loading any cells past the maximum cell allowance
-			to_chat(user, span_notice("[src] is full, take a cell out to make room."))
+			to_chat(user, span_notice("[src]Está cheio, pegue uma cela para dar espaço."))
 			return
 
 		var/obj/item/weaponcell/cell = used_cell
@@ -35,7 +35,7 @@
 			return
 
 		playsound(loc, 'sound/machines/click.ogg', 50, 1)
-		to_chat(user, span_notice("You install the [cell]."))
+		to_chat(user, span_notice("Você instala o[cell]."))
 		ammo_type += new cell.ammo_type(src)
 		installedcells += cell
 	else
@@ -74,10 +74,10 @@
 
 /obj/item/gun/energy/cell_loaded/click_alt(mob/user, modifiers)
 	if(!installedcells.len) //Checks to see if there is a cell inside of the gun, before removal.
-		to_chat(user, span_notice("The [src] has no cells inside"))
+		to_chat(user, span_notice("O[src]Não tem células dentro."))
 		return CLICK_ACTION_BLOCKING
 
-	to_chat(user, span_notice("You remove a cell"))
+	to_chat(user, span_notice("Você remove uma cela."))
 	var/obj/item/last_cell = installedcells[installedcells.len]
 
 	if(last_cell)

@@ -12,7 +12,7 @@
  */
 /obj/item/locator
 	name = "bluespace locator"
-	desc = "A handheld device that locks onto the unique bluespace resonance of tracking implants, providing real-time directional and positional data."
+	desc = "Um dispositivo portátil que trava a única ressonância do espaço azul dos implantes de rastreamento, fornecendo dados direcionais e posicionais em tempo real."
 	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "locator"
 	var/temp = null
@@ -73,7 +73,7 @@
  */
 /obj/item/hand_tele
 	name = "hand tele"
-	desc = "A portable item using blue-space technology. One of the buttons opens a portal, the other re-opens your last destination."
+	desc = "Um item portátil usando tecnologia de espaço azul. Um dos botões abre um portal, o outro abre seu último destino."
 	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "hand_tele"
 	inhand_icon_state = "electronic"
@@ -112,7 +112,7 @@
 ///Checks if the targeted portal was created by us, then causes it to expire, removing it
 /obj/item/hand_tele/proc/try_dispel_portal(atom/target, mob/user)
 	if(is_parent_of_portal(target))
-		to_chat(user, span_notice("You dispel [target] with [src]!"))
+		to_chat(user, span_notice("Você se dissipa.[target]Com[src]!"))
 		var/obj/effect/portal/portal = target
 		portal.expire()
 		return TRUE
@@ -134,7 +134,7 @@
 		portal_location = last_portal_location_ref.resolve()
 
 	if (isnull(portal_location))
-		to_chat(user, span_warning("[src] flashes briefly. No target is locked in."))
+		to_chat(user, span_warning("[src]flashes breves. Nenhum alvo está preso."))
 		return ITEM_INTERACT_BLOCKING
 
 	try_create_portal_to(user, portal_location)
@@ -149,7 +149,7 @@
 	//SKYRAT EDIT BEGIN
 	var/turf/my_turf = get_turf(src)
 	if(is_away_level(my_turf.z))
-		to_chat(user, "<span class='warning'>[src] cannot be used here!</span>")
+		to_chat(user, "<span class='warning'>[src]Não pode ser usado aqui!</span>")
 		return
 	//SKYRAT EDIT END
 	var/list/locations = list()
@@ -204,7 +204,7 @@
 /// Takes either PORTAL_LOCATION_DANGEROUS or an /obj/machinery/computer/teleport/computer.
 /obj/item/hand_tele/proc/try_create_portal_to(mob/user, teleport_location)
 	if (length(active_portal_pairs) >= max_portal_pairs)
-		user.show_message(span_notice("[src] is recharging!"))
+		user.show_message(span_notice("[src]Está recarregando!"))
 		return
 
 	var/atom/teleport_target
@@ -229,11 +229,11 @@
 		teleport_target = target
 
 	if (teleport_target == null)
-		to_chat(user, span_notice("[src] vibrates, then stops. Maybe you should try something else."))
+		to_chat(user, span_notice("[src]vibra, então pára. Talvez devesse tentar outra coisa."))
 		return
 
 	if(!check_teleport_valid(src, teleport_target))
-		to_chat(user, span_notice("[src] is malfunctioning."))
+		to_chat(user, span_notice("[src]está com defeito."))
 		return
 
 	if (!can_teleport_notifies(user))
@@ -251,14 +251,14 @@
 
 	try_move_adjacent(portal1, user.dir)
 	if(QDELETED(portal1) || QDELETED(portal2)) //in the event that something managed to delete the portal objects, i.e. something teleported them
-		to_chat(user, span_notice("[src] vibrates, but no portal seems to appear. Maybe you should try something else."))
+		to_chat(user, span_notice("[src]Vibra, mas nenhum portal parece apareceu. Talvez deve tentar outra coisa."))
 		return
 	active_portal_pairs[portal1] = portal2
 
 	investigate_log("was used by [key_name(user)] at [AREACOORD(user)] to create a portal pair with destinations [AREACOORD(portal1)] and [AREACOORD(portal2)].", INVESTIGATE_PORTAL)
 	add_fingerprint(user)
 
-	user.show_message(span_notice("Locked in."), MSG_AUDIBLE)
+	user.show_message(span_notice("Fechado."), MSG_AUDIBLE)
 
 	return TRUE
 
@@ -268,7 +268,7 @@
 /obj/item/hand_tele/proc/can_teleport_notifies(mob/user)
 	var/turf/current_location = get_turf(user)
 	if (!current_location || !check_teleport_valid(src, current_location) || is_away_level(current_location.z) || !isturf(user.loc))
-		to_chat(user, span_notice("[src] is malfunctioning."))
+		to_chat(user, span_notice("[src]está com defeito."))
 		return FALSE
 
 	return TRUE
@@ -299,21 +299,21 @@
 
 /obj/item/hand_tele/suicide_act(mob/living/user)
 	if(iscarbon(user))
-		user.visible_message(span_suicide("[user] is creating a weak portal and sticking [user.p_their()] head through! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user]está criando um portal fraco e grudando[user.p_their()]Vá em frente! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 		var/mob/living/carbon/itemUser = user
 		var/obj/item/bodypart/head/head = itemUser.get_bodypart(BODY_ZONE_HEAD)
 		if(head)
 			head.drop_limb()
 			var/list/safeLevels = SSmapping.levels_by_any_trait(list(ZTRAIT_SPACE_RUINS, ZTRAIT_LAVA_RUINS, ZTRAIT_STATION, ZTRAIT_MINING))
 			head.forceMove(locate(rand(1, world.maxx), rand(1, world.maxy), pick(safeLevels)))
-			itemUser.visible_message(span_suicide("The portal snaps closed taking [user]'s head with it!"))
+			itemUser.visible_message(span_suicide("O portal está fechado.[user]É a cabeça com ele!"))
 		else
-			itemUser.visible_message(span_suicide("[user] looks even further depressed as they realize they do not have a head...and suddenly dies of shame!"))
+			itemUser.visible_message(span_suicide("[user]Parecem ainda mais deprimidos quando percebem que não têm cabeça... e de repente morrem de vergonha!"))
 		return BRUTELOSS
 
 /obj/item/syndicate_teleporter
 	name = "experimental teleporter"
-	desc = "A reverse-engineered version of the Nanotrasen handheld teleporter. Lacks the advanced safety features of its counterpart. A three-headed serpent can be seen on the back."
+	desc = "Uma versão reversa do teletransportador portátil Nanotrasen. Faltam os recursos avançados de segurança de sua contraparte. Uma serpente de três cabeças pode ser vista nas costas."
 	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "syndi-tele"
 	throwforce = 5
@@ -347,7 +347,7 @@
 
 /obj/item/syndicate_teleporter/examine(mob/user)
 	. = ..()
-	. += span_notice("[src] has <b>[charges]</b> out of [max_charges] charges left.")
+	. += span_notice("[src]Tem.<b>[charges]</b>Fora[max_charges]As acusações foram deixadas.")
 
 /obj/item/syndicate_teleporter/attack_self(mob/user)
 	. = ..()
@@ -361,7 +361,7 @@
 		charges++
 		if(ishuman(loc))
 			var/mob/living/carbon/human/holder = loc
-			balloon_alert(holder, "teleporter beeps")
+			balloon_alert(holder, "Teletransporte bips")
 		playsound(src, 'sound/machines/beep/twobeep.ogg', 10, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
 
 /obj/item/syndicate_teleporter/emp_act(severity)
@@ -371,7 +371,7 @@
 	var/teleported_something = FALSE
 	if(ishuman(loc))
 		var/mob/living/carbon/human/holder = loc
-		balloon_alert(holder, "teleporter buzzes!")
+		balloon_alert(holder, "Teletransportador Zumbi!")
 		attempt_teleport(user = holder, triggered_by_emp = TRUE)
 	else
 		var/turf/teleport_turf = get_turf(src)
@@ -380,7 +380,7 @@
 				teleported_something = TRUE
 			attempt_teleport(user = mob_on_same_tile, triggered_by_emp = TRUE, not_holding_tele = TRUE)
 		if(!teleported_something)
-			visible_message(span_danger("[src] blinks out of existence!"))
+			visible_message(span_danger("[src]Pisca para fora da existência!"))
 			do_sparks(2, 1, src)
 			qdel(src)
 
@@ -392,7 +392,7 @@
  **/
 /obj/item/syndicate_teleporter/proc/attempt_teleport(mob/user, triggered_by_emp = FALSE, not_holding_tele = FALSE)
 	if(!charges && !triggered_by_emp)
-		balloon_alert(user, "recarregando!")
+		balloon_alert(user, "Recarregando!")
 		return
 
 	var/turf/current_location = get_turf(user)
@@ -400,7 +400,7 @@
 	if(malfunctioning(user, current_location))
 		if(not_holding_tele)
 			return
-		balloon_alert(user, "malfunctioning!")
+		balloon_alert(user, "Mau funcionamento!")
 		return
 
 	var/teleport_distance = rand(minimum_teleport_distance, maximum_teleport_distance)
@@ -416,7 +416,7 @@
 			panic_teleport(user, destination) //We're in a wall, engage emergency parallel teleport.
 		else
 			if(bagholdingcheck && !not_holding_tele)
-				to_chat(user, span_warning("The bluespace interface on your bag of holding interferes with the teleport!"))
+				to_chat(user, span_warning("A interface do espaço azul na sua bolsa de espera interfere com o teletransporte!"))
 			get_fragged(user, destination, not_holding_tele) //EMP teleported you into a wall? Wearing a BoH? You're dead.
 	else
 		telefrag(destination, user)
@@ -461,7 +461,7 @@
 		charges = max(charges - 1, 0)
 		new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(mobloc)
 		new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(emergency_destination)
-		balloon_alert(user, "emergency teleport triggered!")
+		balloon_alert(user, "teletransporte de emergência ativado!")
 		if(make_bloods(destination, emergency_destination, user))
 			new /obj/effect/temp_visual/circle_wave/syndi_teleporter/bloody(destination)
 		else
@@ -483,9 +483,9 @@
 	playsound(destination, SFX_PORTAL_ENTER, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	playsound(destination, 'sound/effects/magic/disintegrate.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	if(!not_holding_tele)
-		to_chat(victim, span_userdanger("You teleport into [destination], [src] tries to save you, but..."))
+		to_chat(victim, span_userdanger("Você se teletransporta para[destination], [src]Tenta salvar você, mas..."))
 	else
-		to_chat(victim, span_userdanger("You teleport into [destination]."))
+		to_chat(victim, span_userdanger("Você se teletransporta para[destination]."))
 	destination.ex_act(EXPLODE_HEAVY)
 	victim.unequip_everything()
 	victim.investigate_log("has been gibbed by [src].", INVESTIGATE_DEATHS)
@@ -496,7 +496,7 @@
 	for(var/mob/living/victim in fragging_location)//Hit everything in the turf
 		victim.apply_damage(20, BRUTE)
 		victim.Paralyze(6 SECONDS)
-		to_chat(victim, span_warning("[user] teleports into you, knocking you to the floor with the bluespace wave!"))
+		to_chat(victim, span_warning("[user]teletransporta-se para dentro de você, batendo no chão com a onda do espaço azul!"))
 		victim.throw_at(get_step_rand(victim), 1, 1, user, spin = TRUE)
 
 ///Bleed and make blood splatters at tele start and end points
@@ -515,8 +515,7 @@
 	// average evens out to 10 per teleport, but the randomness spices things up
 	if(prob(25) && bleed_amount)
 		playsound(src, 'sound/effects/wounds/pierce1.ogg', 40, vary = TRUE)
-		visible_message(span_warning("Blood visibly spurts out of [user] as [src] fails to teleport [user.p_their()] body properly!"), \
-			span_boldwarning("Blood visibly spurts out of you as [src] fails to teleport your body properly!"))
+		visible_message(span_warning("Sangue visivelmente jorra para fora[user]Como[src]Não consegue se teletransportar.[user.p_their()]Corpo corporativo!"), 			span_boldwarning("O sangue jorra visivelmente de você como[src]Falha em teletransporte ao seu corpo, corpo e corpo!"))
 		carbon_user.bleed(bleed_amount * 0.75)
 		carbon_user.spray_blood(pick(GLOB.alldirs), rand(1, 3))
 		return TRUE

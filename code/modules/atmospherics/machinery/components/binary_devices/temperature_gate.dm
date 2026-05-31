@@ -1,7 +1,7 @@
 /obj/machinery/atmospherics/components/binary/temperature_gate
 	icon_state = "tgate_map-3"
 	name = "temperature gate"
-	desc = "An activable gate that compares the input temperature with the interface set temperature to check if the gas can flow from the input side to the output side or not."
+	desc = "Um portão ativável que compara a temperatura de entrada com a temperatura definida pela interface para verificar se o gás pode fluir do lado de entrada para o lado de saída ou não."
 	can_unwrench = TRUE
 	shift_underlay_only = FALSE
 	construction_type = /obj/item/pipe/directional
@@ -30,7 +30,7 @@
 /obj/machinery/atmospherics/components/binary/temperature_gate/click_ctrl(mob/user)
 	if(is_operational)
 		set_on(!on)
-		balloon_alert(user, "turned [on ? "on" : "off"]")
+		balloon_alert(user, "Virado.[on ? "on" : "off"]")
 		investigate_log("was turned [on ? "on" : "off"] by [key_name(user)]", INVESTIGATE_ATMOS)
 		return CLICK_ACTION_SUCCESS
 	return CLICK_ACTION_BLOCKING
@@ -41,7 +41,7 @@
 
 	target_temperature = max_temperature
 	investigate_log("was set to [target_temperature] K by [key_name(user)]", INVESTIGATE_ATMOS)
-	balloon_alert(user, "target temperature set to [target_temperature] K")
+	balloon_alert(user, "Temperatura do Alvo Definida para[target_temperature]K.")
 	update_appearance(UPDATE_ICON)
 	return CLICK_ACTION_SUCCESS
 
@@ -131,7 +131,7 @@
 /obj/machinery/atmospherics/components/binary/temperature_gate/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		to_chat(user, span_warning("Você não pode destrancar[src]Desligue isso primeiro!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/binary/temperature_gate/multitool_act(mob/living/user, obj/item/multitool/I)
@@ -139,9 +139,9 @@
 	if (istype(I))
 		inverted = !inverted
 		if(inverted)
-			to_chat(user, span_notice("You set the [src]'s sensors to release gases when the temperature is higher than the setted one."))
+			to_chat(user, span_notice("Você definir o[src]Os sensores liberam gases quando a temperatura é maior do que a fixa."))
 		else
-			to_chat(user, span_notice("You set the [src]'s sensors to the default settings."))
+			to_chat(user, span_notice("Você definir o[src]Os sensores das configurações padrão."))
 	return TRUE
 
 //mapping

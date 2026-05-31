@@ -11,7 +11,7 @@
 //Simply lists them.
 /datum/team/xeno/roundend_report()
 	var/list/parts = list()
-	parts += span_header("The [name] were:")
+	parts += span_header("O[name]Foram:")
 	parts += printplayerlist(members)
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
 
@@ -83,7 +83,7 @@
 /datum/objective/escape_captivity
 
 /datum/objective/escape_captivity/New()
-	explanation_text = "Escape from captivity."
+	explanation_text = "Fugir do cativeiro."
 
 /datum/objective/escape_captivity/check_completion()
 	if(!istype(get_area(owner), GLOB.communications_controller.captivity_area))
@@ -92,7 +92,7 @@
 /datum/objective/advance_hive
 
 /datum/objective/advance_hive/New()
-	explanation_text = "Survive and advance the Hive."
+	explanation_text = "Sobreviver e avançar a Colmeia."
 
 /datum/objective/advance_hive/check_completion()
 	return owner.current && owner.current.stat != DEAD
@@ -108,12 +108,12 @@
 	var/escape_count = 0 //counts the number of xenomorphs that were born in captivity who ended the round outside of it
 	var/captive_count = 0 //counts the number of xenomorphs born in captivity who remained there until the end of the round (losers)
 
-	parts += span_header("The [name] were: <br>")
+	parts += span_header("O[name]Foram:<br>")
 
 	if(check_captivity(progenitor.current) == CAPTIVE_XENO_PASS)
-		parts += span_greentext("The progenitor of this hive was [progenitor.key], as [progenitor], who successfully escaped captivity!") + "<br>"
+		parts += span_greentext("O progenitor desta colmeia foi[progenitor.key], como[progenitor], que escapou com sucesso do cativeiro!") + "<br>"
 	else
-		parts += span_redtext("The progenitor of this hive was [progenitor.key], as [progenitor], who failed to escape captivity") + "<br>"
+		parts += span_redtext("O progenitor desta colmeia foi[progenitor.key], como[progenitor], que falhou em escalar do cativeiro") + "<br>"
 
 	for(var/datum/mind/alien_mind in members)
 		if(alien_mind == progenitor)
@@ -133,9 +133,9 @@
 
 	var/thank_you_message
 	if(captive_count > escape_count)
-		thank_you_message = "xenobiological containment architecture"
+		thank_you_message = "Arquitetura de contenção xenobiológica"
 	else
-		thank_you_message = "xenofauna combat effectiveness"
+		thank_you_message = "Xenofauna eficácia de combate"
 
 	parts += "<span class='neutraltext'>Nanotrasen thanks the crew of [station_name()] for providing much needed research data on <b>[thank_you_message]</b>.</span>"
 

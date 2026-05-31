@@ -23,9 +23,7 @@
 	// No revolution exists which means admin adding this will create a new revolution team
 	// This causes problems because revolution teams (currently) require a dynamic datum to process its victory / defeat conditions
 	if(!(locate(/datum/team/revolution) in GLOB.antagonist_teams))
-		var/confirm = tgui_alert(admin, "Notice: Revolutions do not function 100% when created via traitor panel instead of dynamic. \
-			The leaders will be able to convert as normal, but the shuttle will not be blocked and there will be no announcements when either side wins. \
-			Are you sure?", "Be Wary", list("Yes", "No"))
+		var/confirm = tgui_alert(admin, "Revoluções não funcionam 100% quando criadas através de painel traidor em vez de dinâmica. Os líderes serão capazes de se converter como normal, mas a nave auxiliar não será bloqueada e não haverá anúncios quando ambos os lados ganharem. Tem certeza?", "Be Wary", list("Yes", "No"))
 		if(QDELETED(src) || QDELETED(new_owner.current) || confirm != "Yes")
 			return
 
@@ -35,7 +33,7 @@
 	new_owner.add_antag_datum(src)
 	message_admins("[key_name_admin(admin)] has rev'ed [key_name_admin(new_owner)].")
 	log_admin("[key_name(admin)] has rev'ed [key_name(new_owner)].")
-	to_chat(new_owner.current, span_userdanger("You are a member of the revolution!"))
+	to_chat(new_owner.current, span_userdanger("Você é um membro da revolução!"))
 
 /datum/antagonist/rev/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/M = mob_override || owner.current
@@ -60,7 +58,7 @@
 
 /datum/antagonist/rev/greet()
 	. = ..()
-	to_chat(owner, span_userdanger("Help your cause. Do not harm your fellow freedom fighters. You can identify your comrades by the red \"R\" icons, and your leaders by the blue \"R\" icons. Help them kill the heads to win the revolution!"))
+	to_chat(owner, span_userdanger("Ajude sua causa. Não machuque seus companheiros lutadores da liberdade. Você pode identificar seus companheiros pelo vermelho\"R\"ícones, e seus líderes pelo azul\"R\"ícones. Ajude-os a matar as cabeças para ganhar a revolução!"))
 	owner.announce_objectives()
 
 /datum/antagonist/rev/create_team(datum/team/revolution/new_team)
@@ -86,7 +84,7 @@
 	new_revhead.silent = TRUE
 	old_owner.add_antag_datum(new_revhead,old_team)
 	new_revhead.silent = FALSE
-	to_chat(old_owner, span_userdanger("You have proved your devotion to revolution! You are a head revolutionary now!"))
+	to_chat(old_owner, span_userdanger("Você provou sua devoção à revolução! Você é uma cabeça revolucionária agora!"))
 
 /datum/antagonist/rev/get_admin_commands()
 	. = ..()
@@ -105,7 +103,7 @@
 	new_owner.add_antag_datum(src)
 	message_admins("[key_name_admin(admin)] has head-rev'ed [key_name_admin(new_owner)].")
 	log_admin("[key_name(admin)] has head-rev'ed [key_name(new_owner)].")
-	to_chat(new_owner.current, span_userdanger("You are a member of the revolutionaries' leadership now!"))
+	to_chat(new_owner.current, span_userdanger("Você é um membro da liderança dos revolucionários agora!"))
 
 /datum/antagonist/rev/head/get_admin_commands()
 	. = ..()
@@ -119,7 +117,7 @@
 	var/list/L = owner.current.get_contents()
 	var/obj/item/assembly/flash/handheld/flash = locate() in L
 	if (!flash)
-		to_chat(admin, span_danger("Deleting flash failed!"))
+		to_chat(admin, span_danger("O flash de eliminação falhou!"))
 		return
 	qdel(flash)
 
@@ -140,7 +138,7 @@
 	var/list/L = owner.current.get_contents()
 	var/obj/item/assembly/flash/handheld/flash = locate() in L
 	if (!flash)
-		to_chat(admin, span_danger("Repairing flash failed!"))
+		to_chat(admin, span_danger("O flash de reparo falhou!"))
 	else
 		flash.burnt_out = FALSE
 		flash.update_appearance()
@@ -196,11 +194,11 @@
 	if(flashed.stat == DEAD || issilicon(flashed) || isdrone(flashed))
 		return
 	if(flashed.stat != CONSCIOUS)
-		to_chat(source, span_warning("[flashed.p_They()] must be conscious before you can convert [flashed.p_them()]!"))
+		to_chat(source, span_warning("[flashed.p_They()]Deve estar consciente antes de se converter.[flashed.p_them()]!"))
 		return
 
 	if(isnull(flashed.mind) || !GET_CLIENT(flashed))
-		to_chat(source, span_warning("[flashed]'s mind is so vacant that it is not susceptible to influence!"))
+		to_chat(source, span_warning("[flashed]A mente é tão vazia que não é suscetível à influência!"))
 		return
 
 	var/holiday_meme_chance = check_holidays(APRIL_FOOLS) && prob(10)
@@ -209,7 +207,7 @@
 			INVOKE_ASYNC(src, PROC_REF(_async_holiday_meme_say), flashed)
 		flash.times_used-- // Flashes are less likely to burn out for headrevs, when used for conversion
 	else
-		to_chat(source, span_warning("[flashed] seems resistant to [flash]!"))
+		to_chat(source, span_warning("[flashed]Parece resistente a[flash]!"))
 
 /// Used / called async from [proc/on_flash] to deliver a funny meme line
 /datum/antagonist/rev/head/proc/_async_holiday_meme_say(mob/living/carbon/flashed)
@@ -291,18 +289,18 @@
 	new_rev.silent = TRUE
 	old_owner.add_antag_datum(new_rev,old_team)
 	new_rev.silent = FALSE
-	to_chat(old_owner, span_userdanger("Revolution has been disappointed of your leader traits! You are a regular revolutionary now!"))
+	to_chat(old_owner, span_userdanger("A revolução ficou decepcionada com seus traços de líder! Você é um revolucionário regular agora!"))
 
 /datum/antagonist/rev/farewell()
 	if(!owner.current)
 		return
 	owner.current.balloon_alert_to_viewers("deconverted!")
 	if(ishuman(owner.current))
-		owner.current.visible_message(span_deconversion_message("[owner.current] looks like [owner.current.p_theyve()] just remembered [owner.current.p_their()] real allegiance!"), null, null, null, owner.current)
-		to_chat(owner, "<span class='deconversion_message bold'>You are no longer a brainwashed revolutionary! Your memory is hazy from the time you were a rebel...the only thing you remember is the name of the one who brainwashed you....</span>")
+		owner.current.visible_message(span_deconversion_message("[owner.current]Parece que...[owner.current.p_theyve()]Acabei de lembrar.[owner.current.p_their()]Uma verdadeira lealdade!"), null, null, null, owner.current)
+		to_chat(owner, "<span class='deconversion_message bold'>Você não é mais um revolucionário lavagem cerebral! Sua memória está confusa desde que você foi rebelde... a única coisa que você se lembra é o nome de quem fez lavagem cerebral em você...</span>")
 	else if(issilicon(owner.current))
-		owner.current.visible_message(span_deconversion_message("The frame beeps contentedly, purging the hostile memory engram from the MMI before initializing it."), null, null, null, owner.current)
-		to_chat(owner, span_userdanger("The frame's firmware detects and deletes your neural reprogramming! You remember nothing but the name of the one who flashed you."))
+		owner.current.visible_message(span_deconversion_message("O quadro apita satisfeito, removendo o engrama de memória hostil do MMI antes de inicializá-lo."), null, null, null, owner.current)
+		to_chat(owner, span_userdanger("O firmware do quadro detecta e apaga sua reprogramação neural! Não se lembra de nada além do nome de quem te mostrou."))
 
 /datum/antagonist/rev/head/farewell()
 	if (deconversion_source == DECONVERTER_STATION_WIN || !owner.current)
@@ -310,13 +308,13 @@
 	owner.current.balloon_alert_to_viewers("deconverted!")
 	if((ishuman(owner.current)))
 		if(owner.current.stat != DEAD)
-			owner.current.visible_message(span_deconversion_message("[owner.current] looks like [owner.current.p_theyve()] just remembered [owner.current.p_their()] real allegiance!"), null, null, null, owner.current)
-			to_chat(owner, "<span class='deconversion_message bold'>You have given up your cause of overthrowing the command staff. You are no longer a Head Revolutionary.</span>")
+			owner.current.visible_message(span_deconversion_message("[owner.current]Parece que...[owner.current.p_theyve()]Acabei de lembrar.[owner.current.p_their()]Uma verdadeira lealdade!"), null, null, null, owner.current)
+			to_chat(owner, "<span class='deconversion_message bold'>Você desistiu de sua causa de derrubar a equipe de comando. Você não é mais um chefe revolucionário.</span>")
 		else
-			to_chat(owner, "<span class='deconversion_message bold'>The sweet release of death. You are no longer a Head Revolutionary.</span>")
+			to_chat(owner, "<span class='deconversion_message bold'>A doce libertação da morte. Você não é mais um chefe revolucionário.</span>")
 	else if(issilicon(owner.current))
-		owner.current.visible_message(span_deconversion_message("The frame beeps contentedly, suppressing the disloyal personality traits from the MMI before initializing it."), null, null, null, owner.current)
-		to_chat(owner, span_userdanger("The frame's firmware detects and suppresses your unwanted personality traits! You feel more content with the leadership around these parts."))
+		owner.current.visible_message(span_deconversion_message("O quadro apita satisfeito, suprimindo os traços de personalidade desleal do MMI antes de inicializá-lo."), null, null, null, owner.current)
+		to_chat(owner, span_userdanger("O firmware do quadro detecta e suprime seus traços indesejados de personalidade! Você se sente mais contente com a liderança por aqui."))
 
 /// Handles rev removal via IC methods such as borging, mindshielding, blunt force trauma to the head or revs losing.
 /datum/antagonist/rev/proc/remove_revolutionary(deconverter)
@@ -347,18 +345,17 @@
 	if(give_flash)
 		var/where = carbon_owner.equip_conspicuous_item(new /obj/item/assembly/flash/handheld)
 		if (where)
-			to_chat(carbon_owner, "The flash in your [where] will help you to persuade the crew to join your cause.")
+			to_chat(carbon_owner, "O flash em seu[where]Te ajudará a convencer a tripulação a se juntar à sua causa.")
 		else
-			to_chat(carbon_owner, "The Syndicate were unfortunately unable to get you a flash.")
+			to_chat(carbon_owner, "Infelizmente, o Sindicato não conseguiu te dar um flash.")
 
 	if(give_hud)
 		var/obj/item/organ/cyberimp/eyes/hud/security/syndicate/hud = new()
 		hud.Insert(carbon_owner)
 		if(carbon_owner.get_quirk(/datum/quirk/body_purist))
-			to_chat(carbon_owner, "Being a body purist, you would never accept cybernetic implants. Upon hearing this, your employers signed you up for a special program, which... for \
-			some odd reason, you just can't remember... either way, the program must have worked, because you have gained the ability to keep track of who is mindshield-implanted, and therefore unable to be recruited.")
+			to_chat(carbon_owner, "Sendo purista, você nunca aceitaria implantes cibernéticos. Ao ouvir isso, seus empregadores te inscreveram para um programa especial, que... por alguma razão estranha, você não se lembra... de qualquer forma, o programa deve ter funcionado, porque você ganhou a capacidade de acompanhar quem é implantado e, portanto, incapaz de ser recrutado.")
 		else
-			to_chat(carbon_owner, "Your eyes have been implanted with a cybernetic security HUD which will help you keep track of who is mindshield-implanted, and therefore unable to be recruited.")
+			to_chat(carbon_owner, "Seus olhos foram implantados com um HUD de segurança cibernética que irá ajudá-lo a manter o controle de quem é implantado em escudos mentais, e, portanto, incapaz de ser recrutado.")
 
 /datum/team/revolution
 	name = "\improper Revolution"
@@ -460,19 +457,19 @@
 
 	if(headrevs.len)
 		var/list/headrev_part = list()
-		headrev_part += span_header("The head revolutionaries were:")
+		headrev_part += span_header("Os revolucionários principais eram:")
 		headrev_part += printplayerlist(headrevs, GLOB.revolution_handler.result != REVOLUTION_VICTORY)
 		result += headrev_part.Join("<br>")
 
 	if(revs.len)
 		var/list/rev_part = list()
-		rev_part += span_header("The revolutionaries were:")
+		rev_part += span_header("Os revolucionários eram:")
 		rev_part += printplayerlist(revs, GLOB.revolution_handler.result != REVOLUTION_VICTORY)
 		result += rev_part.Join("<br>")
 
 	var/list/heads = SSjob.get_all_heads()
 	if(heads.len)
-		var/head_text = span_header("The heads of staff were:")
+		var/head_text = span_header("Os chefes de equipe eram:")
 		head_text += "<ul class='playerlist'>"
 		for(var/datum/mind/head in heads)
 			var/target = (head in targets)

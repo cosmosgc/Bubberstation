@@ -151,7 +151,7 @@
 /obj/machinery/door/airlock/tram/crush()
 	for(var/turf/checked_turf in locs)
 		for(var/mob/living/future_pancake in checked_turf)
-			future_pancake.visible_message(span_warning("[src] beeps angrily and closes on [future_pancake]!"), span_userdanger("[src] beeps angrily and closes on you!"))
+			future_pancake.visible_message(span_warning("[src]Apita com Raiva e Fecha.[future_pancake]!"), span_userdanger("[src]Apita com raiva e fecha em você!"))
 			var/sig_return = SEND_SIGNAL(future_pancake, COMSIG_LIVING_DOORCRUSHED, src)
 			future_pancake.add_splatter_floor(loc)
 			log_combat(src, future_pancake, "crushed")
@@ -211,7 +211,7 @@
  */
 /obj/machinery/door/airlock/tram/examine(mob/user)
 	. = ..()
-	. += span_notice("It has an emergency mechanism to open using [EXAMINE_HINT("just your hands")] in the event of an emergency.")
+	. += span_notice("Tem um mecanismo de emergência para abrir usando[EXAMINE_HINT("just your hands")]em caso de emergência.")
 
 /**
  * Tram doors can be opened with hands when unpowered

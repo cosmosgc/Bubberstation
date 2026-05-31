@@ -1,6 +1,6 @@
 /obj/item/electropack
 	name = "electropack"
-	desc = "Dance my monkeys! DANCE!!!"
+	desc = "Dancem meus macacos! DANÇA!!"
 	icon = 'icons/obj/devices/tool.dmi'
 	icon_state = "electropack0"
 	inhand_icon_state = "electropack"
@@ -28,7 +28,7 @@
 	return ..()
 
 /obj/item/electropack/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] hooks [user.p_them()]self to the electropack and spams the trigger! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Ganchos[user.p_them()]Eu sou o eletropacote e spam é o gatilho! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return FIRELOSS
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
@@ -36,7 +36,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(src == C.back)
-			to_chat(user, span_warning("You need help taking this off!"))
+			to_chat(user, span_warning("Você precisa de ajuda para tirar isso!"))
 			return
 	return ..()
 
@@ -46,7 +46,7 @@
 		A.icon = 'icons/obj/devices/assemblies.dmi'
 
 		if(!user.transferItemToLoc(W, A))
-			to_chat(user, span_warning("[W] is stuck to your hand, you cannot attach it to [src]!"))
+			to_chat(user, span_warning("[W]está preso em sua mão, você não pode prendê-lo a[src]!"))
 			return
 		W.master = A
 		A.helmet_part = W
@@ -71,7 +71,7 @@
 		var/mob/living/L = loc
 		step(L, pick(GLOB.cardinals))
 
-		to_chat(L, span_danger("You feel a sharp shock!"))
+		to_chat(L, span_danger("Você sente um choque agudo!"))
 		do_sparks(3, TRUE, L)
 		L.Paralyze(100)
 

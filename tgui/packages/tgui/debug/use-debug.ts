@@ -17,9 +17,9 @@ export function setDebugHotKeys(): void {
       // stack in order for this to be a fatal error.
       setTimeout(() => {
         throw new Error(
-          'OOPSIE WOOPSIE!! UwU We made a fucky wucky!! A wittle' +
-            ' fucko boingo! The code monkeys at our headquarters are' +
-            ' working VEWY HAWD to fix this!',
+          'Oopsie Woopsie! UwU Nós fizemos um wucky fodido! Um pouquinho.' +
+            'Maldito boingo! Os macacos código em nossa sede são' +
+            'Trabalhando para consertar isso!',
         );
       });
     }

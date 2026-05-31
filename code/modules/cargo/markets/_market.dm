@@ -55,13 +55,13 @@
 	var/price = item.price + shipment_fee
 
 	if(!uplink.current_user)///There is no ID card on the user, or the ID card has no account
-		to_chat(user, span_warning("The uplink sparks, as it can't identify an ID card with a bank account on you."))
+		to_chat(user, span_warning("O uplink acende, como ele não pode identificar um cartão de identificação com uma conta bancária em você."))
 		return FALSE
 	var/balance = uplink?.current_user.account_balance
 
 	// I can't get the price of the item and shipping in a clean way to the UI, so I have to do this.
 	if(balance < price)
-		to_chat(user, span_warning("You don't have enough [MONEY_NAME] in [uplink] for [item] with [method] shipping."))
+		to_chat(user, span_warning("Você não tem o suficiente.[MONEY_NAME]em[uplink]para[item]com[method]Transporte."))
 		return FALSE
 
 	if(item.buy(uplink, user, method, legal_status))

@@ -62,7 +62,7 @@ const SelectedSection = (props) => {
     <Box>
       <div style={{ textAlign: 'center' }}>
         <Box color="good" bold fontSize="16px">
-          {'Selected Research'}
+          {'Pesquisa Seleccionada'}
         </Box>
         <Divider />
         <Box bold fontSize="14px">
@@ -94,8 +94,8 @@ const SelectedSection = (props) => {
             disabled={!data.in_area || data.focused_research.researched}
             content={
               data.focused_research.researched
-                ? 'Ritual Completed'
-                : 'Begin Ritual'
+                ? 'Ritual Concluído'
+                : 'Começar Ritual'
             }
             onClick={() => act('start_research')}
           />
@@ -110,7 +110,7 @@ const ResearchSection = (props) => {
   return (
     <Stack vertical>
       <Stack.Item>
-        <Section fill title="Basic Research">
+        <Section fill title="Pesquisa Básica">
           <div style={{ textAlign: 'center' }}>
             {ResearchNode(data.starting_research, act)}
           </div>

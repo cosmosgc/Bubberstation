@@ -76,7 +76,7 @@ const MainPage = (props) => {
         WARNING: Disabling wireless transmitters when using a wireless device
         may prevent you from reenabling them!
       </NoticeBox>
-      <Section title="Wireless Connectivity">
+      <Section title="Conectividade sem fio">
         {ntnetrelays.map((relay) => (
           <Section
             key={relay.ref}
@@ -95,7 +95,7 @@ const MainPage = (props) => {
           />
         ))}
       </Section>
-      <Section title="Security Systems">
+      <Section title="Sistemas de Segurança">
         {!!idsalarm && (
           <>
             <NoticeBox>NETWORK INCURSION DETECTED</NoticeBox>
@@ -107,7 +107,7 @@ const MainPage = (props) => {
         )}
         <LabeledList>
           <LabeledList.Item
-            label="IDS Status"
+            label="Estado da IDS"
             buttons={
               <>
                 <Button
@@ -127,11 +127,11 @@ const MainPage = (props) => {
           />
         </LabeledList>
         <Section
-          title="System Log"
+          title="Diário do sistema"
           buttons={
             <Button.Confirm
               icon="trash"
-              content="Clear Logs"
+              content="Diários de bordo."
               onClick={() => act('purgelogs')}
             />
           }
@@ -174,8 +174,8 @@ const TabletPage = (props) => {
                     color={tablet.enabled_spam ? 'good' : 'default'}
                     content={
                       tablet.enabled_spam
-                        ? 'Restrict Mass PDA'
-                        : 'Allow Mass PDA'
+                        ? 'Restrinja uma missa PDA'
+                        : 'Permita uma missa PDA'
                     }
                     onClick={() =>
                       act('toggle_mass_pda', {

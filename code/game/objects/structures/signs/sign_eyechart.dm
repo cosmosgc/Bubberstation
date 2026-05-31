@@ -1,8 +1,7 @@
 /obj/structure/sign/eyechart
 	icon_state = "eyechart"
 	name = "eye chart"
-	desc = "A poster with a series of colored bars and letters of different sizes, \
-		used to test color vision and blindness - I mean, visual acuity."
+	desc = "Um pôster com uma série de barras coloridas e letras de diferentes tamanhos, usado para testar visão colorida e cegueira, quero dizer, acuidade visual."
 	is_editable = TRUE
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/eyechart, 32)
@@ -15,17 +14,17 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/eyechart, 32)
 	if(!user.can_read(src, READING_CHECK_LITERACY, silent = TRUE) || !user.has_language(/datum/language/common, UNDERSTOOD_LANGUAGE))
 		if(!user.is_blind())
 			. += "<hr>You gaze at the wall of symbols, trying to make sense of them..."
-			. += span_warning("...But you don't actually know what any of them mean.")
+			. += span_warning("Mas você não sabe o que nenhum deles significa.")
 		return
 
 	if(user.is_blind())
 		. += "<hr>You feel the poster."
-		. += span_notice("Yes, feels like... \"E, P, D...\" Good thing this chart has braille!")
+		. += span_notice("Sim, parece que...\"E, P, D...\"Ainda bem que este gráfico tem braille!")
 		return
 
 	if(!user.can_read(src, READING_CHECK_LIGHT, silent = TRUE))
 		. += "<hr>You squint at the chart."
-		. += span_warning("...But it's too dark to make out anything.")
+		. += span_warning("Mas está muito escuro para entender qualquer coisa.")
 		return
 
 	var/colorblind = HAS_TRAIT(user, TRAIT_COLORBLIND)
@@ -44,10 +43,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/eyechart, 32)
 
 	. += "<hr>You read through the chart, for old time's sake."
 	if(eye_goodness <= 0)
-		. += span_notice("\"E, F, P...\" Yep, you can read down to the [colorblind ? "brown - wait, isn't it supposed to be red? -" : "red"] line.")
+		. += span_notice("\"E, F, P...\"Sim, você pode ler para o[colorblind ? "brown - wait, isn't it supposed to be red? -" : "red"]Linha.")
 	else if(eye_goodness < little_bad)
-		. += span_notice("\"E, F, P...\" You can make out most of the letters, but it gets a bit difficult past the [colorblind ? "grey - wait, isn't it supposed to be green? -" : "green"] line.")
+		. += span_notice("\"E, F, P...\"Você pode entender a maioria das cartas, mas fica um pouco difícil depois do[colorblind ? "grey - wait, isn't it supposed to be green? -" : "green"]Linha.")
 	else if(eye_goodness < very_bad)
-		. += span_warning("\"E, F, P..?\" You can make out the big letters, but the smaller ones are a bit of a blur.")
+		. += span_warning("\"E, F, P.?\"Você pode ver as letras grandes, mas as menores são um pouco confusas.")
 	else
-		. += span_warning("\"E, P, D..?\" You can hardly make out the big letters, let alone the smaller ones.")
+		. += span_warning("\"E, P, D...?\"Você mal consegue entender as letras grandes, muito menos as menores.")

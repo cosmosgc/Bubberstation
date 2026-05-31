@@ -1,7 +1,7 @@
 /// Item you use on a mob to make it bigger and stronger
 /obj/item/fugu_gland
 	name = "wumborian fugu gland"
-	desc = "The key to the wumborian fugu's ability to increase its mass arbitrarily, this disgusting remnant can apply the same effect to other creatures, giving them great strength."
+	desc = "A chave para a capacidade do fugu wumboriano de aumentar sua massa arbitrariamente, este remanescente nojento pode aplicar o mesmo efeito a outras criaturas, dando-lhes grande força."
 	icon = 'icons/obj/medical/organs/organs.dmi'
 	icon_state = "fugu_gland"
 	item_flags = NOBLUDGEON
@@ -27,7 +27,7 @@
 		balloon_alert(user, "está morto!")
 		return ITEM_INTERACT_BLOCKING
 	if(HAS_TRAIT(animal, TRAIT_FUGU_GLANDED))
-		balloon_alert(user, "already large!")
+		balloon_alert(user, "Já é grande!")
 		return ITEM_INTERACT_BLOCKING
 
 	ADD_TRAIT(animal, TRAIT_FUGU_GLANDED, type)
@@ -38,6 +38,6 @@
 	animal.melee_damage_upper = max((animal.melee_damage_upper * 2), 10)
 	animal.update_transform(2)
 	animal.AddElement(/datum/element/wall_tearer)
-	to_chat(user, span_info("You increase the size of [animal], giving [animal.p_them()] a surge of strength!"))
+	to_chat(user, span_info("Você aumenta o tamanho de[animal], dando[animal.p_them()]Uma onda de força!"))
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS

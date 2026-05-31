@@ -62,10 +62,10 @@
 /// Signal handler for light eater flavortext
 /datum/element/light_eaten/proc/on_examine(atom/eaten_light, mob/examiner, list/examine_text)
 	SIGNAL_HANDLER
-	examine_text += span_warning("It's dark and empty...")
+	examine_text += span_warning("Está escuro e vazio...")
 	if(isliving(examiner) && prob(20))
 		var/mob/living/target = examiner
-		examine_text += span_danger("You can feel something in [eaten_light.p_them()] gnash at your eyes!")
+		examine_text += span_danger("Você pode sentir algo dentro[eaten_light.p_them()]Rasgue seus olhos!")
 		target.adjust_temp_blindness(10 SECONDS)
 		target.set_eye_blur_if_lower(20 SECONDS)
 	return NONE

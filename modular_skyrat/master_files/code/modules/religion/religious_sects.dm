@@ -62,7 +62,7 @@
 
 		actual_successor.mind.holy_role = HOLY_ROLE_HIGHPRIEST
 
-		to_chat(actual_successor, span_warning("You have been chosen as the successor to the previous high priest. Visit a holy altar to declare the station's religion!"))
+		to_chat(actual_successor, span_warning("Você foi escolhido como sucessor do Sumo Sacerdote anterior. Visite um altar sagrado para declarar a religião da estação!"))
 
 		return actual_successor
 

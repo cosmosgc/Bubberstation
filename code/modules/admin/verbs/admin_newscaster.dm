@@ -40,7 +40,7 @@ ADMIN_VERB(access_news_network, R_ADMIN, "Access Newscaster Network", "Allows yo
 /datum/newspanel/ui_static_data(mob/user)
 	. = ..()
 	if (!is_admin(user))
-		to_chat(usr, "Error: you are not an admin!", confidential = TRUE)
+		to_chat(usr, "Erro: você não é um administrador!", confidential = TRUE)
 		return
 
 /datum/newspanel/ui_data(mob/user)
@@ -151,7 +151,7 @@ ADMIN_VERB(access_news_network, R_ADMIN, "Access Newscaster Network", "Allows yo
 
 		if("createStory")
 			if(!current_channel)
-				to_chat(usr, "select a channel first!")
+				to_chat(usr, "Selecione um canal primeiro!")
 				return TRUE
 			var/current_channel_id = params["current"]
 			create_story(channel_id = current_channel_id)
@@ -277,7 +277,7 @@ ADMIN_VERB(access_news_network, R_ADMIN, "Access Newscaster Network", "Allows yo
  * *user: The mob who is being checked for a held photo object.
  */
 /datum/newspanel/proc/attach_photo(mob/user)
-	to_chat(user, "I didn't add this!")
+	to_chat(user, "Eu não adicionei isso!")
 	return
 
 /**
@@ -289,13 +289,13 @@ ADMIN_VERB(access_news_network, R_ADMIN, "Access Newscaster Network", "Allows yo
 		return
 	var/datum/feed_channel/potential_channel = GLOB.news_network.network_channels_by_name[channel_name]
 	if(potential_channel)
-		tgui_alert(usr, "ERROR: Feed channel with that name already exists on the Network.", list("Okay"))
+		tgui_alert(usr, "Canal de alimentação com esse nome já existe na rede.", list("Okay"))
 		return TRUE
 	if(!channel_desc)
 		return TRUE
 	if(isnull(channel_locked))
 		return TRUE
-	var/choice = tgui_alert(usr, "Please confirm feed channel creation","Network Channel Handler", list("Confirm","Cancel"))
+	var/choice = tgui_alert(usr, "Por favor, confirme a criação do canal de alimentação.","Network Channel Handler", list("Confirm","Cancel"))
 	if(choice == "Confirm")
 		GLOB.news_network.create_feed_channel(channel_name, "Centcom Official", channel_desc, locked = channel_locked)
 		SSblackbox.record_feedback("text", "newscaster_channels", 1, "[channel_name]")

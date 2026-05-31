@@ -1,12 +1,12 @@
 /proc/create_message(type, target_key, admin_ckey, text, timestamp, server, secret, logged = 1, browse, expiry, note_severity)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."), confidential = TRUE)
+		to_chat(usr, span_danger("Não conseguimos estabelecer a conexão do banco de dados."), confidential = TRUE)
 		return
 	if(!type)
 		return
 	var/target_ckey = ckey(target_key)
 	if(!target_key && (type == "note" || type == "message" || type == "watchlist entry"))
-		var/new_key = input(usr,"Who would you like to create a [type] for?","Enter a key or ckey",null) as null|text
+		var/new_key = input(usr,"Quem você gostaria de criar um[type]Por quê?","Digite uma chave ou ckey",null) as null|text
 		if(!new_key)
 			return
 		var/new_ckey = ckey(new_key)
@@ -18,7 +18,7 @@
 			qdel(query_find_ckey)
 			return
 		if(!query_find_ckey.NextRow())
-			if(tgui_alert(usr, "[new_key]/([new_ckey]) has not been seen before, are you sure you want to create a [type] for them?", "Unknown ckey", list("Yes", "No", "Cancel")) != "Yes")
+			if(tgui_alert(usr, "[new_key]/([new_ckey]Não foi visto antes, você tem certeza que quer criar um[type]Para ele?", "Unknown ckey", list("Yes", "No", "Cancel")) != "Yes")
 				qdel(query_find_ckey)
 				return
 		qdel(query_find_ckey)
@@ -43,7 +43,7 @@
 		if (ssqlname)
 			server = ssqlname
 	if(isnull(secret))
-		switch(tgui_alert(usr,"Hide note from being viewed by players?", "Secret note?",list("Yes","No","Cancel")))
+		switch(tgui_alert(usr,"Esconder nota de ser visto por jogadores?", "Secret note?",list("Yes","No","Cancel")))
 			if("Yes")
 				secret = 1
 			if("No")
@@ -51,8 +51,8 @@
 			else
 				return
 	if(isnull(expiry))
-		if(tgui_alert(usr, "Set an expiry time? Expired messages are hidden like deleted ones.", "Expiry time?", list("Yes", "No", "Cancel")) == "Yes")
-			var/expire_time = input("Set expiry time for [type] as format YYYY-MM-DD HH:MM:SS. All times in server time. HH:MM:SS is optional and 24-hour. Must be later than current time for obvious reasons.", "Set expiry time", ISOtime()) as null|text
+		if(tgui_alert(usr, "Marcar o prazo de validade? Mensagens expiradas são escondidas como apagadas.", "Expiry time?", list("Yes", "No", "Cancel")) == "Yes")
+			var/expire_time = input("Ajuste o tempo de expiração para[type]como formato YYYY-MM-DD HH:SS. Todas as vezes no tempo do servidor. A SS é opcional e 24 horas. Deve ser mais tarde do que o tempo atual por razões óbvias.", "Definir o tempo de expiração", ISOtime()) as null|text
 			if(!expire_time)
 				return
 			var/datum/db_query/query_validate_expire_time = SSdbcore.NewQuery(
@@ -65,7 +65,7 @@
 			if(query_validate_expire_time.NextRow())
 				var/checktime = text2num(query_validate_expire_time.item[1])
 				if(!checktime)
-					to_chat(usr, "Datetime entered is improperly formatted or not later than current server time.", confidential = TRUE)
+					to_chat(usr, "A data de entrada está mal formatada ou não depois da hora atual do servidor.", confidential = TRUE)
 					qdel(query_validate_expire_time)
 					return
 				expiry = query_validate_expire_time.item[1]
@@ -111,7 +111,7 @@
 
 /proc/delete_message(message_id, logged = 1, browse)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."), confidential = TRUE)
+		to_chat(usr, span_danger("Não conseguimos estabelecer a conexão do banco de dados."), confidential = TRUE)
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -154,7 +154,7 @@
 
 /proc/edit_message(message_id, browse)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."), confidential = TRUE)
+		to_chat(usr, span_danger("Não conseguimos estabelecer a conexão do banco de dados."), confidential = TRUE)
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -180,7 +180,7 @@
 		var/target_key = query_find_edit_message.item[2]
 		var/admin_key = query_find_edit_message.item[3]
 		var/old_text = query_find_edit_message.item[4]
-		var/new_text = input("Input new [type]", "New [type]", "[old_text]") as null|message
+		var/new_text = input("Entrada nova[type]", "Novo.[type]", "[old_text]") as null|message
 		if(!new_text)
 			qdel(query_find_edit_message)
 			return
@@ -204,7 +204,7 @@
 
 /proc/edit_message_expiry(message_id, browse)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."), confidential = TRUE)
+		to_chat(usr, span_danger("Não conseguimos estabelecer a conexão do banco de dados."), confidential = TRUE)
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -231,7 +231,7 @@
 		var/admin_key = query_find_edit_expiry_message.item[3]
 		var/old_expiry = query_find_edit_expiry_message.item[4]
 		var/new_expiry
-		var/expire_time = input("Set expiry time for [type] as format YYYY-MM-DD HH:MM:SS. All times in server time. HH:MM:SS is optional and 24-hour. Must be later than current time for obvious reasons. Enter -1 to remove expiry time.", "Set expiry time", old_expiry) as null|text
+		var/expire_time = input("Ajuste o tempo de expiração para[type]como formato YYYY-MM-DD HH:SS. Todas as vezes no tempo do servidor. A SS é opcional e 24 horas. Deve ser mais tarde do que o tempo atual por razões óbvias. Digite -1 para remover o prazo de validade.", "Definir o tempo de expiração", old_expiry) as null|text
 		if(!expire_time)
 			qdel(query_find_edit_expiry_message)
 			return
@@ -248,7 +248,7 @@
 			if(query_validate_expire_time_edit.NextRow())
 				var/checktime = text2num(query_validate_expire_time_edit.item[1])
 				if(!checktime)
-					to_chat(usr, "Datetime entered is improperly formatted or not later than current server time.", confidential = TRUE)
+					to_chat(usr, "A data de entrada está mal formatada ou não depois da hora atual do servidor.", confidential = TRUE)
 					qdel(query_validate_expire_time_edit)
 					qdel(query_find_edit_expiry_message)
 					return
@@ -275,7 +275,7 @@
 
 /proc/edit_message_severity(message_id)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."), confidential = TRUE)
+		to_chat(usr, span_danger("Não conseguimos estabelecer a conexão do banco de dados."), confidential = TRUE)
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -303,7 +303,7 @@
 			old_severity = "NA"
 		var/editor_key = usr.key
 		var/editor_ckey = usr.ckey
-		var/new_severity = input("Set the severity of the note.", "Severity", null, null) as null|anything in list("high", "medium", "minor", "none") //lowercase for edit log consistency
+		var/new_severity = input("Defina a gravidade da nota.", "Severity", null, null) as null|anything in list("high", "medium", "minor", "none") //lowercase for edit log consistency
 		if(!new_severity)
 			qdel(query_find_edit_note_severity)
 			return
@@ -326,7 +326,7 @@
 
 /proc/toggle_message_secrecy(message_id)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."), confidential = TRUE)
+		to_chat(usr, span_danger("Não conseguimos estabelecer a conexão do banco de dados."), confidential = TRUE)
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -370,7 +370,7 @@
 
 /proc/browse_messages(type, target_ckey, index, linkless = FALSE, filter, agegate = FALSE)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."), confidential = TRUE)
+		to_chat(usr, span_danger("Não conseguimos estabelecer a conexão do banco de dados."), confidential = TRUE)
 		return
 
 	//Needs to be requested before url retrieval since you can view your notes before SSassets finishes initialization
@@ -382,11 +382,7 @@
 	for(var/letter in GLOB.alphabet)
 		navbar += "<a href='byond://?_src_=holder;[HrefToken()];showmessages=[letter]'>[letter]</a>"
 	navbar += "<a href='byond://?_src_=holder;[HrefToken()];showmemo=1'>Memos</a><a href='byond://?_src_=holder;[HrefToken()];showwatch=1'>Watchlist</a>"
-	navbar += "<br><form method='GET' name='search' action='?'>\
-	<input type='hidden' name='_src_' value='holder'>\
-	[HrefTokenFormField()]\
-	<input type='text' name='searchmessages' value='[index]'>\
-	<input type='submit' value='Search'></form>"
+	navbar += "<br><form method='GET' name='search' action='?'>	<input type='hidden' name='_src_' value='holder'>	[HrefTokenFormField()]	<input type='text' name='searchmessages' value='[index]'>	<input type='submit' value='Search'></form>"
 	if(!linkless)
 		output = navbar
 	if(type == "memo" || type == "watchlist entry")
@@ -651,7 +647,7 @@
 
 /proc/get_message_output(type, target_ckey, show_secret = TRUE, after_timestamp)
 	if(!SSdbcore.Connect())
-		to_chat(usr, span_danger("Failed to establish database connection."), confidential = TRUE)
+		to_chat(usr, span_danger("Não conseguimos estabelecer a conexão do banco de dados."), confidential = TRUE)
 		return
 	if(!type)
 		return
@@ -696,7 +692,7 @@
 /proc/display_admin_messages(client/display_to)
 	var/list/text = list()
 	for(var/datum/admin_message/message in get_message_output("message", display_to.ckey))
-		text += "<font color='[COLOR_RED]' size='3'><b>Admin message left by [span_prefix("[message.admin_key]")] on [message.timestamp]</b></font>"
+		text += "<font color='[COLOR_RED]' size='3'><b>Mensagem de administração deixada por[span_prefix("[message.admin_key]")]Vamos.[message.timestamp]</b></font>"
 		text += "<br><font color='[COLOR_RED]'>[message.text] <A href='byond://?messageread=[message.id]'>(Click here to verify you have read this message)</A></font><br>"
 	if(length(text))
 		to_chat(display_to, text.Join())
@@ -704,7 +700,7 @@
 /proc/display_unread_notes(client/display_to, show_after)
 	var/list/text = list()
 	for(var/datum/admin_message/message in get_message_output("note", display_to.ckey, FALSE, show_after))
-		text += "<font color='[COLOR_RED]' size='3'><b>Note left by [span_prefix("[message.admin_key]")] on [message.timestamp]</b></font>"
+		text += "<font color='[COLOR_RED]' size='3'><b>Nota deixada por[span_prefix("[message.admin_key]")]Vamos.[message.timestamp]</b></font>"
 		text += "<br><font color='[COLOR_RED]'>[message.text]</font><br>"
 	if(length(text))
 		to_chat(display_to, text.Join())
@@ -712,7 +708,7 @@
 /proc/display_admin_memos(client/display_to)
 	var/list/text = list()
 	for(var/datum/admin_message/message in get_message_output("memo", display_to.ckey))
-		text += "[span_memo("Memo by <span class='prefix'>[message.admin_key]")] on [message.timestamp]"
+		text += "[span_memo("Memo by <span class='prefix'>[message.admin_key]")]Vamos.[message.timestamp]"
 		if(message.editor_key)
 			text += "<br>[span_memoedit("Last edit by [message.editor_key] <A href='byond://?_src_=holder;[HrefToken()];messageedits=[message.id]'>(Click here to see edit log)</A>")]"
 		text += "<br>[message.text]</span><br>"

@@ -86,9 +86,9 @@
 
 /datum/objective/sacrifice/update_explanation_text()
 	if(target)
-		explanation_text = "Sacrifice [target], the [target.assigned_role.title] via invoking an Offer rune with [target.p_them()] on it and three acolytes around it."
+		explanation_text = "Sacrifício[target], o[target.assigned_role.title]Invocando uma Runa de Oferta com[target.p_them()]nele e três acólitos ao redor."
 	else
-		explanation_text = "The veil has already been weakened here, proceed to the final objective."
+		explanation_text = "O véu já foi enfraquecido aqui, siga para o objetivo final."
 
 /datum/objective/eldergod
 	var/summoned = FALSE
@@ -106,7 +106,7 @@
 	update_explanation_text()
 
 /datum/objective/eldergod/update_explanation_text()
-	explanation_text = "Summon Nar'Sie by invoking the rune 'Summon Nar'Sie'. The summoning can only be accomplished in [english_list(summon_spots)] - where the veil is weak enough for the ritual to begin."
+	explanation_text = "Chame Nar'Sie invocando uma runa\"Convoque Nar'Sie\". A convocação só pode ser realizada em[english_list(summon_spots)]- onde o véu é fraco o suficiente para o ritual começar."
 
 /datum/objective/eldergod/check_completion()
 	if(killed)

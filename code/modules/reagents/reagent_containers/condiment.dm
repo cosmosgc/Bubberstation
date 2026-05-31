@@ -7,7 +7,7 @@
 //Food items that aren't eaten normally and leave an empty container behind.
 /obj/item/reagent_containers/condiment
 	name = "condiment bottle"
-	desc = "Just your average condiment bottle."
+	desc = "Só uma garrafa de condimento normal."
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "bottle"
 	inhand_icon_state = "beer" //Generic held-item sprite until unique ones are made.
@@ -37,7 +37,7 @@
 	return ..()
 
 /obj/item/reagent_containers/condiment/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] is trying to eat the entire [src]! It looks like [user.p_they()] forgot how food works!"))
+	user.visible_message(span_suicide("[user]está tentando comer todo o[src]Parece que...[user.p_they()]Esqueci como a comida funcional!"))
 	return OXYLOSS
 
 /obj/item/reagent_containers/condiment/proc/try_eat(atom/target, mob/living/user)
@@ -47,21 +47,21 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(target == user)
 		user.visible_message(
-			span_notice("[user] swallows some of the contents of \the [src]."),
-			span_notice("You swallow some of the contents of \the [src]."),
+			span_notice("[user]engole um pouco do conteúdo de\the [src]."),
+			span_notice("Você engoliu um pouco do conteúdo de\the [src]."),
 		)
 	else
 		target.visible_message(
-			span_warning("[user] attempts to feed [target] from [src]."),
-			span_warning("[user] attempts to feed you from [src]."),
+			span_warning("[user]Tentativas de se alimentar[target]De[src]."),
+			span_warning("[user]Tentamos alimentá-lo.[src]."),
 		)
 		if(!do_after(user, 3 SECONDS, target))
 			return ITEM_INTERACT_BLOCKING
 		if(!reagents || !reagents.total_volume)
 			return ITEM_INTERACT_BLOCKING // The condiment might be empty after the delay.
 		target.visible_message(
-			span_warning("[user] fed [target] from [src]."),
-			span_warning("[user] fed you from [src]."),
+			span_warning("[user]Alimentado.[target]De[src]."),
+			span_warning("[user]Alimentá-lo de[src]."),
 		)
 		log_combat(user, target, "fed", reagents.get_reagent_log_string())
 
@@ -101,7 +101,7 @@
 
 /obj/item/reagent_containers/condiment/enzyme
 	name = "universal enzyme"
-	desc = "Used in cooking various dishes."
+	desc = "Usado em cozinhar vários pratos."
 	icon_state = "enzyme"
 	list_reagents = list(/datum/reagent/consumable/enzyme = 50)
 	fill_icon_thresholds = null
@@ -111,12 +111,12 @@
 	var/datum/chemical_reaction/recipe = GLOB.chemical_reactions_list[/datum/chemical_reaction/food/cheesewheel]
 	var/milk_required = recipe.required_reagents[/datum/reagent/consumable/milk]
 	var/enzyme_required = recipe.required_catalysts[/datum/reagent/consumable/enzyme]
-	. += span_notice("[milk_required] milk, [enzyme_required] enzyme and you got cheese.")
-	. += span_warning("Remember, the enzyme isn't used up, so return it to the bottle, dingus!")
+	. += span_notice("[milk_required]Leite,[enzyme_required]Enzima e queijo.")
+	. += span_warning("Lembre-se, a enzima não está gasta, então devolva para a garrafa, Dingus!")
 
 /obj/item/reagent_containers/condiment/sugar
 	name = "sugar sack"
-	desc = "Tasty spacey sugar!"
+	desc = "Doce Saboroso!"
 	icon_state = "sugar"
 	inhand_icon_state = "carton"
 	lefthand_file = 'icons/mob/inhands/items/drinks_lefthand.dmi'
@@ -133,11 +133,11 @@
 	var/eggwhite_required = standard_recipe.required_reagents[/datum/reagent/consumable/eggwhite]
 	var/sugar_required = standard_recipe.required_reagents[/datum/reagent/consumable/sugar]
 	var/soymilk_required = alt_recipe.required_reagents[/datum/reagent/consumable/soymilk]
-	. += span_notice("[flour_required] flour, [sugar_required] sugar, and either [eggyolk_required] egg yolk + [eggwhite_required] egg white or [soymilk_required] soy milk yields a cake dough. You can make pie dough from it.")
+	. += span_notice("[flour_required]Farinha,[sugar_required]açúcar, e qualquer um[eggyolk_required]Gema de ovo[eggwhite_required]Clara de ovo ou[soymilk_required]Leite de soja produz uma massa de bolo. Você pode fazer massa de torta com isso.")
 
 /obj/item/reagent_containers/condiment/saltshaker //Separate from above since it's a small shaker rather then
 	name = "salt shaker" // a large one.
-	desc = "Salt. From space oceans, presumably."
+	desc = "Sal. Dos oceanos espaciais, presumível."
 	icon_state = "saltshakersmall"
 	icon_empty = "emptyshaker"
 	inhand_icon_state = ""
@@ -148,12 +148,12 @@
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/saltshaker/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] begins to swap forms with the salt shaker! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Começa a trocar formulários com o saleiro! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	var/newname = "[name]"
 	name = "[user.name]"
 	user.name = newname
 	user.real_name = newname
-	desc = "Salt. From dead crew, presumably."
+	desc = "Sal. Da tripulação morta, presumivelmente."
 	return TOXLOSS
 
 /obj/item/reagent_containers/condiment/saltshaker/interact_with_atom(atom/target, mob/living/user, list/modifiers)
@@ -162,9 +162,9 @@
 		return .
 	if(isturf(target))
 		if(!reagents.has_reagent(/datum/reagent/consumable/salt, 2))
-			to_chat(user, span_warning("You don't have enough salt to make a pile!"))
+			to_chat(user, span_warning("Você não tem sal suficiente para fazer uma pilha!"))
 			return
-		user.visible_message(span_notice("[user] shakes some salt onto [target]."), span_notice("You shake some salt onto [target]."))
+		user.visible_message(span_notice("[user]Agita um pouco de sal.[target]."), span_notice("Você agita um pouco de sal[target]."))
 		reagents.remove_reagent(/datum/reagent/consumable/salt, 2)
 		new/obj/effect/decal/cleanable/food/salt(target)
 		return ITEM_INTERACT_SUCCESS
@@ -172,7 +172,7 @@
 
 /obj/item/reagent_containers/condiment/peppermill
 	name = "pepper mill"
-	desc = "Often used to flavor food or make people sneeze."
+	desc = "Frequentemente usado para sabotar comida ou faz as pessoas espirrarem."
 	icon_state = "peppermillsmall"
 	icon_empty = "emptyshaker"
 	inhand_icon_state = ""
@@ -184,7 +184,7 @@
 
 /obj/item/reagent_containers/condiment/milk
 	name = "space milk"
-	desc = "It's milk. White and nutritious goodness!"
+	desc = "É leite. Bondade branca e nutritiva!"
 	icon_state = "milk"
 	inhand_icon_state = "carton"
 	lefthand_file = 'icons/mob/inhands/items/drinks_lefthand.dmi'
@@ -197,12 +197,12 @@
 	var/datum/chemical_reaction/recipe = GLOB.chemical_reactions_list[/datum/chemical_reaction/food/cheesewheel]
 	var/milk_required = recipe.required_reagents[/datum/reagent/consumable/milk]
 	var/enzyme_required = recipe.required_catalysts[/datum/reagent/consumable/enzyme]
-	. += span_notice("[milk_required] milk, [enzyme_required] enzyme and you got cheese.")
-	. += span_warning("Remember, the enzyme isn't used up, so return it to the bottle, dingus!")
+	. += span_notice("[milk_required]Leite,[enzyme_required]Enzima e queijo.")
+	. += span_warning("Lembre-se, a enzima não está gasta, então devolva para a garrafa, Dingus!")
 
 /obj/item/reagent_containers/condiment/flour
 	name = "flour sack"
-	desc = "A big bag of flour. Good for baking!"
+	desc = "Um grande saco de farinha. Bom para cozinhar!"
 	icon_state = "flour"
 	inhand_icon_state = "carton"
 	lefthand_file = 'icons/mob/inhands/items/drinks_lefthand.dmi'
@@ -220,12 +220,12 @@
 	var/cakebatter_eggyolk_required = recipe_cakebatter.required_reagents[/datum/reagent/consumable/eggyolk]
 	var/cakebatter_sugar_required = recipe_cakebatter.required_reagents[/datum/reagent/consumable/sugar]
 	. += "<b><i>You retreat inward and recall the teachings of... Making Dough...</i></b>"
-	. += span_notice("[dough_flour_required] flour, [dough_water_required] water makes normal dough. You can make flat dough from it.")
-	. += span_notice("[cakebatter_flour_required] flour, [cakebatter_eggyolk_required] egg yolk (or soy milk), [cakebatter_sugar_required] sugar makes cake dough. You can make pie dough from it.")
+	. += span_notice("[dough_flour_required]Farinha,[dough_water_required]A água faz massa normal. Você pode ganhar dinheiro com isso.")
+	. += span_notice("[cakebatter_flour_required]Farinha,[cakebatter_eggyolk_required]Gema de ovo (ou leite de soja),[cakebatter_sugar_required]O açúcar faz massa de bolo. Você pode fazer massa de torta com isso.")
 
 /obj/item/reagent_containers/condiment/soymilk
 	name = "soy milk"
-	desc = "It's soy milk. White and nutritious goodness!"
+	desc = "É leite de soja. Bondade branca e nutritiva!"
 	icon_state = "soymilk"
 	inhand_icon_state = "carton"
 	lefthand_file = 'icons/mob/inhands/items/drinks_lefthand.dmi'
@@ -235,7 +235,7 @@
 
 /obj/item/reagent_containers/condiment/rice
 	name = "rice sack"
-	desc = "A big bag of rice. Good for cooking!"
+	desc = "Um grande saco de arroz. Bom para cozinhar!"
 	icon_state = "rice"
 	inhand_icon_state = "carton"
 	lefthand_file = 'icons/mob/inhands/items/drinks_lefthand.dmi'
@@ -245,7 +245,7 @@
 
 /obj/item/reagent_containers/condiment/cornmeal
 	name = "cornmeal box"
-	desc = "A big box of cornmeal. Great for southern style cooking."
+	desc = "Uma grande caixa de farinha de milho. Ótimo para cozinhar estilo sulista."
 	icon_state = "cornmeal"
 	inhand_icon_state = "carton"
 	lefthand_file = 'icons/mob/inhands/items/drinks_lefthand.dmi'
@@ -255,69 +255,69 @@
 
 /obj/item/reagent_containers/condiment/bbqsauce
 	name = "bbq sauce"
-	desc = "Hand wipes not included."
+	desc = "Toalhitas não incluídas."
 	icon_state = "bbqsauce"
 	list_reagents = list(/datum/reagent/consumable/bbqsauce = 50)
 
 /obj/item/reagent_containers/condiment/soysauce
 	name = "soy sauce"
-	desc = "A salty soy-based flavoring."
+	desc = "Um sabor de soja salgada."
 	icon_state = "soysauce"
 	list_reagents = list(/datum/reagent/consumable/soysauce = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/mayonnaise
 	name = "mayonnaise"
-	desc = "An oily condiment made from egg yolks."
+	desc = "Um crédito oleoso feito de gemas de ovo."
 	icon_state = "mayonnaise"
 	list_reagents = list(/datum/reagent/consumable/mayonnaise = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/vinegar
 	name = "vinegar"
-	desc = "Perfect for chips, if you're feeling Space British."
+	desc = "Perfeito para batatas fritas, se está se sentindo britânico."
 	icon_state = "vinegar"
 	list_reagents = list(/datum/reagent/consumable/vinegar = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/vegetable_oil
 	name = "cooking oil"
-	desc = "For all your deep-frying needs."
+	desc = "Por todas as suas necessidades."
 	icon_state = "cooking_oil"
 	list_reagents = list(/datum/reagent/consumable/nutriment/fat/oil = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/olive_oil
 	name = "quality oil"
-	desc = "For the fancy chef inside everyone."
+	desc = "Para o chef chique dentro de todos."
 	icon_state = "oliveoil"
 	list_reagents = list(/datum/reagent/consumable/nutriment/fat/oil/olive = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/yoghurt
 	name = "yoghurt carton"
-	desc = "Creamy and smooth."
+	desc = "Creme e suave."
 	icon_state = "yoghurt"
 	list_reagents = list(/datum/reagent/consumable/yoghurt = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/peanut_butter
 	name = "peanut butter"
-	desc = "Tasty, fattening processed peanuts in a jar."
+	desc = "Saboroso, engordando alterações processadas em um frasco."
 	icon_state = "peanutbutter"
 	list_reagents = list(/datum/reagent/consumable/peanut_butter = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/cherryjelly
 	name = "cherry jelly"
-	desc = "A jar of super-sweet cherry jelly."
+	desc = "Um pote de geléia de cereja super doce."
 	icon_state = "cherryjelly"
 	list_reagents = list(/datum/reagent/consumable/cherryjelly = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/honey
 	name = "honey"
-	desc = "A jar of sweet and viscous honey."
+	desc = "Um pote de mel doce e visível."
 	icon_state = "honey"
 	list_reagents = list(/datum/reagent/consumable/honey = 50)
 	fill_icon_thresholds = null
@@ -326,49 +326,49 @@
 	name = "ketchup"
 	// At time of writing, "ketchup" mechanically, is just ground tomatoes,
 	// rather than // tomatoes plus vinegar plus sugar.
-	desc = "A tomato slurry in a tall plastic bottle. Somehow still vaguely American."
+	desc = "Uma pasta de tomate em uma garrafa de plástico alta. De alguma forma, ainda vagamente americano."
 	icon_state = "ketchup"
 	list_reagents = list(/datum/reagent/consumable/ketchup = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/mustard
 	name = "mustard"
-	desc = "A spicy and tangy sauce made out of the mustard plant. Great on hotdogs!"
+	desc = "Um molho picante e picante feito de mostarda. Ótimo em cachorro-quente!"
 	icon_state = "mustard"
 	list_reagents = list(/datum/reagent/consumable/mustard = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/worcestershire
 	name = "worcestershire sauce"
-	desc = "A fermented sauce of legend from old England. Makes almost anything better."
+	desc = "Um molho fermentado dapresta da velha Inglaterra. Torna quase tudo melhor."
 	icon_state = "worcestershire"
 	list_reagents = list(/datum/reagent/consumable/worcestershire = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/red_bay
 	name = "\improper Red Bay seasoning"
-	desc = "Mars' favourite seasoning."
+	desc = "O temperamento favorito de Marte."
 	icon_state = "red_bay"
 	list_reagents = list(/datum/reagent/consumable/red_bay = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/curry_powder
 	name = "curry powder"
-	desc = "It's this yellow magic that makes curry taste like curry."
+	desc = "É essa magia amarela que faz curry ter gosto de curry."
 	icon_state = "curry_powder"
 	list_reagents = list(/datum/reagent/consumable/curry_powder = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/dashi_concentrate
 	name = "dashi concentrate"
-	desc = "A bottle of Amagi brand dashi concentrate. Simmer with water in a 1:8 ratio for a perfect dashi broth."
+	desc = "Uma garrafa de concentrado da marca Amagi. Cozinhe com água em uma proporção de 1:8 para um caldo perfeito."
 	icon_state = "dashi_concentrate"
 	list_reagents = list(/datum/reagent/consumable/dashi_concentrate = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/coconut_milk
 	name = "coconut milk"
-	desc = "It's coconut milk. Toasty!"
+	desc = "É leite de coco. Toasty!"
 	icon_state = "coconut_milk"
 	inhand_icon_state = "carton"
 	lefthand_file = 'icons/mob/inhands/items/drinks_lefthand.dmi'
@@ -378,14 +378,14 @@
 
 /obj/item/reagent_containers/condiment/grounding_solution
 	name = "grounding solution"
-	desc = "A food-safe ionic solution designed to neutralise the enigmatic \"liquid electricity\" that is common to food from Sprout, forming harmless salt on contact."
+	desc = "Uma solução iônica segura para neutralizar o enigmático\"eletricidade líquida\"Isso é comum à comida de Sprout, formando sal inofensivo em contato."
 	icon_state = "grounding_solution"
 	list_reagents = list(/datum/reagent/consumable/grounding_solution = 50)
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/protein
 	name = "protein powder"
-	desc = "Fuel for your inner Hulk - because you can't spell 'swole' without 'whey'!"
+	desc = "Combustível para seu Hulk interior - porque você não pode soletrar 'swole' sem 'whey'!"
 	icon_state = "protein"
 	list_reagents = list(/datum/reagent/consumable/nutriment/protein = 40)
 	fill_icon_thresholds = null
@@ -394,7 +394,7 @@
 
 /obj/item/reagent_containers/condiment/creamer
 	name = "coffee creamer pack"
-	desc = "Better not think about what they're making this from."
+	desc = "Melhor não pensar no que estão fazendo."
 	icon_state = "condi_creamer"
 	volume = 5
 	list_reagents = list(/datum/reagent/consumable/creamer = 5)
@@ -402,20 +402,20 @@
 
 /obj/item/reagent_containers/condiment/chocolate
 	name = "chocolate sprinkle pack"
-	desc= "The amount of sugar that's already there wasn't enough for you?"
+	desc= "A quantidade de açúcar que já não era suficiente para você?"
 	icon_state = "condi_chocolate"
 	list_reagents = list(/datum/reagent/consumable/choccyshake = 10)
 
 
 /obj/item/reagent_containers/condiment/hotsauce
 	name = "hotsauce bottle"
-	desc= "You can almost TASTE the stomach ulcers!"
+	desc= "Você pode quase provar as úlceras estomacais!"
 	icon_state = "hotsauce"
 	list_reagents = list(/datum/reagent/consumable/capsaicin = 50)
 
 /obj/item/reagent_containers/condiment/coldsauce
 	name = "coldsauce bottle"
-	desc= "Leaves the tongue numb from its passage."
+	desc= "Deixa a língua dormente de sua passagem."
 	icon_state = "coldsauce"
 	list_reagents = list(/datum/reagent/consumable/frostoil = 50)
 
@@ -423,7 +423,7 @@
 
 /obj/item/reagent_containers/condiment/pack
 	name = "condiment pack"
-	desc = "A small plastic pack with condiments to put on your food."
+	desc = "Um pequeno pacote de plástico com condimentos para colocar em sua comida."
 	icon_state = "condi_empty"
 	initial_reagent_flags = parent_type::initial_reagent_flags | NO_SPLASH
 	volume = 10
@@ -466,14 +466,14 @@
 	//You can tear the bag open above food to put the condiments on it, obviously.
 	if(IS_EDIBLE(target))
 		if(!reagents.total_volume)
-			to_chat(user, span_warning("You tear open [src], but there's nothing in it."))
+			to_chat(user, span_warning("Você se abre[src], mas não há nada nele."))
 			qdel(src)
 			return ITEM_INTERACT_BLOCKING
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
-			to_chat(user, span_warning("You tear open [src], but [target] is stacked so high that it just drips off!") )
+			to_chat(user, span_warning("Você se abre[src], mas[target]é empilhado tão alto que apenas pinga!") )
 			qdel(src)
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("You tear open [src] above [target] and the condiments drip onto it."))
+		to_chat(user, span_notice("Você se abre[src]Acima.[target]e os condimentos escorrem nela."))
 		reagents.trans_to(target, amount_per_transfer_from_this, transferred_by = user)
 		qdel(src)
 		return ITEM_INTERACT_SUCCESS
@@ -485,7 +485,7 @@
 
 	if(!reagents.total_volume)
 		icon_state = "condi_empty"
-		desc = "A small condiment pack. It is empty."
+		desc = "Um pequeno pacote de condimentos. Está vazio."
 		return
 	var/datum/reagent/main_reagent = reagents.get_master_reagent()
 
@@ -495,7 +495,7 @@
 		desc = temp_list[3]
 	else
 		icon_state = "condi_mixed"
-		desc = "A small condiment pack. The label says it contains [originalname]"
+		desc = "Um pequeno pacote de condimentos. O rótulo diz que contém[originalname]"
 
 //Ketchup
 /obj/item/reagent_containers/condiment/pack/ketchup

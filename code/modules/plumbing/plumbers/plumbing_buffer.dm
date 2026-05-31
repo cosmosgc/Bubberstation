@@ -1,6 +1,6 @@
 /obj/machinery/plumbing/buffer
 	name = "automatic buffer"
-	desc = "A chemical holding tank that waits for neighbouring automatic buffers to complete before allowing a withdrawal. Connect/reset by screwdrivering"
+	desc = "Um tanque químico que espera os buffers automáticos vizinhos terminarem antes de permitir uma retirada. Conexão/reset por chave de fenda"
 	icon_state = "buffer"
 	pass_flags_self = PASSMACHINE | LETPASSTHROW // It looks short enough.
 	buffer = 200
@@ -41,16 +41,16 @@
 
 /obj/machinery/plumbing/buffer/examine(mob/user)
 	. = ..()
-	. += span_notice("It activates at a threshold of [activation_volume]u of reagents")
+	. += span_notice("Ele se ativa em um liminar de[activation_volume]Reagentes.")
 	switch(mode)
 		if(AB_UNREADY)
-			. += span_notice("It is filling up on reagents.")
+			. += span_notice("Está se enchendo de reagentes.")
 		if(AB_IDLE)
-			. += span_notice("It is waiting on other buffers to activate.")
+			. += span_notice("Está esperando outros amortecedores para ativar.")
 		if(AB_READY)
-			. += span_notice("It is sending reagents.")
-	. += span_notice("Its activation threshold can be changed with by [EXAMINE_HINT("hand")].")
-	. += span_notice("Its connections can be changed with a [EXAMINE_HINT("screwdriver")].")
+			. += span_notice("Está enviando reagentes.")
+	. += span_notice("Seu limite de ativação pode ser alterado com[EXAMINE_HINT("hand")].")
+	. += span_notice("Suas conexões podem ser alteradas com[EXAMINE_HINT("screwdriver")].")
 
 /obj/machinery/plumbing/buffer/update_icon_state()
 	. = ..()

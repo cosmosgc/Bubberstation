@@ -21,7 +21,7 @@
 	if(!in_range(user, src) && !isobserver(user))
 		return
 
-	. += span_notice("Insert [EXAMINE_HINT("Research Notes")] to generate points.")
+	. += span_notice("Inserir[EXAMINE_HINT("Research Notes")]para gerar pontos.")
 
 /obj/machinery/rnd/server/oldstation/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/research_notes) && stored_research)

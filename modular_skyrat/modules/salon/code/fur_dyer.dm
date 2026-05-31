@@ -3,7 +3,7 @@
 
 /obj/item/fur_dyer
 	name = "electric fur dyer"
-	desc = "Dye that is capable of recoloring fur in a mostly permanent way."
+	desc = "Tingimento que é capaz de recolorar peles de forma permanente."
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "fur_sprayer"
 	w_class = WEIGHT_CLASS_TINY
@@ -21,7 +21,7 @@
 	else
 		mode = COLOR_MODE_SPECIFIC
 
-	balloon_alert(user, "set to [mode]!")
+	balloon_alert(user, "Pronto para[mode]!")
 
 /obj/item/fur_dyer/attack(mob/living/M, mob/living/user, params)
 	if(!ishuman(M))
@@ -36,13 +36,13 @@
 			dye_general(target_human, user)
 
 /obj/item/fur_dyer/proc/dye_general(mob/living/carbon/human/target_human, mob/living/user)
-	var/selected_mutant_color = tgui_alert(user, "Please select which mutant color you'd like to change", "Select Color", list("One", "Two", "Three"))
+	var/selected_mutant_color = tgui_alert(user, "Por favor, selecione qual cor mutante você gostaria de mudar", "Select Color", list("One", "Two", "Three"))
 
 	if(!selected_mutant_color)
 		return
 
 	if(!(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
-		to_chat(user, span_danger("A red light blinks!"))
+		to_chat(user, span_danger("Uma luz vermelha pisca!"))
 		return
 
 	// BUBBERSTATION EDIT START: TGUI COLOR PICKER
@@ -59,7 +59,7 @@
 
 	selected_color = sanitize_hexcolor(selected_color)
 
-	visible_message(span_notice("[user] starts to masterfully paint [target_human]!"))
+	visible_message(span_notice("[user]começa a pintar magistralmente[target_human]!"))
 
 	if(do_after(user, 20 SECONDS, target_human))
 		switch(selected_mutant_color)
@@ -73,7 +73,7 @@
 		target_human.regenerate_icons()
 		item_use_power(power_use_amount, user)
 
-		visible_message(span_notice("[user] finishes painting [target_human]!"))
+		visible_message(span_notice("[user]termina de pintar[target_human]!"))
 
 		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE)
 
@@ -83,17 +83,17 @@
 	var/list/list/current_markings = target_human.dna.body_markings.Copy()
 
 	if(!current_markings.len)
-		to_chat(user, span_danger("[target_human] has no markings!"))
+		to_chat(user, span_danger("[target_human]Não tem marcas!"))
 		return
 
 	if(!(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
-		to_chat(user, span_danger("A red light blinks!"))
+		to_chat(user, span_danger("Uma luz vermelha pisca!"))
 		return
 
 	var/selected_marking_area = user.zone_selected
 
 	if(!current_markings[selected_marking_area])
-		to_chat(user, span_danger("[target_human] has no bodymarkings on this limb!"))
+		to_chat(user, span_danger("[target_human]Não tem marcas neste membro!"))
 		return
 
 	var/selected_marking_id = tgui_input_list(user, "Please select which marking you'd like to color!", "Select marking", current_markings[selected_marking_area])
@@ -115,7 +115,7 @@
 
 	selected_color = sanitize_hexcolor(selected_color)
 
-	visible_message(span_notice("[user] starts to masterfully paint [target_human]!"))
+	visible_message(span_notice("[user]começa a pintar magistralmente[target_human]!"))
 
 	if(do_after(user, 20 SECONDS, target_human))
 		current_markings[selected_marking_area][selected_marking_id] = selected_color
@@ -126,7 +126,7 @@
 
 		item_use_power(power_use_amount, user)
 
-		visible_message(span_notice("[user] finishes painting [target_human]!"))
+		visible_message(span_notice("[user]termina de pintar[target_human]!"))
 
 		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE)
 

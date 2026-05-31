@@ -252,7 +252,7 @@
 					carbon_owner.mind.adjust_experience(/datum/skill/athletics, seconds_between_ticks * sleep_quality * SLEEP_QUALITY_WORKOUT_MULTIPLER)
 					carbon_owner.adjust_timed_status_effect(-1 * seconds_between_ticks * sleep_quality * SLEEP_QUALITY_WORKOUT_MULTIPLER, /datum/status_effect/exercised)
 					if(prob(2))
-						to_chat(carbon_owner, span_notice("You feel your fitness improving!"))
+						to_chat(carbon_owner, span_notice("Você sente sua aptidão melhorando!"))
 
 			if(health_ratio > 0.8) // only heals minor physical damage
 				need_mob_update += owner.adjust_brute_loss(-0.4 * sleep_quality * seconds_between_ticks, updating_health = FALSE, required_bodytype = BODYTYPE_ORGANIC)
@@ -273,7 +273,7 @@
 
 /atom/movable/screen/alert/status_effect/asleep
 	name = "Asleep"
-	desc = "You've fallen asleep. Wait a bit and you should wake up. Unless you don't, considering how helpless you are."
+	desc = "Você adormeceu. Espere um pouco e você deve acordar. A menos que não, considerando o quão impotente você está."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "asleep"
 
@@ -329,7 +329,7 @@
 
 /atom/movable/screen/alert/status_effect/stasis
 	name = "Stasis"
-	desc = "Your biological functions have halted. You could live forever this way, but it's pretty boring."
+	desc = "Suas funções biológicas pararam. Poderia viver para sempre assim, mas é bem chato."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "stasis"
 
@@ -347,7 +347,7 @@
 
 /atom/movable/screen/alert/status_effect/his_wrath
 	name = "His Wrath"
-	desc = "You fled from His Grace instead of feeding Him, and now you suffer."
+	desc = "Você fugiu de Sua Graça em vez de alimentá-lo, e agora você sofre."
 	icon_state = "his_grace"
 	alerttooltipstyle = "hisgrace"
 
@@ -482,7 +482,7 @@
 		owner.emote(pick("gasp", "gag", "choke"))
 
 /datum/status_effect/neck_slice/get_examine_text()
-	return span_warning("[owner.p_Their()] neck is cut and is bleeding profusely!")
+	return span_warning("[owner.p_Their()]O pescoço foi cortado e está sangrando profusamente!")
 
 /// Applies a curse with various possible effects
 /mob/living/proc/apply_necropolis_curse(set_curse)
@@ -574,7 +574,7 @@
 	. = ..()
 	owner.add_traits(list(TRAIT_PACIFISM, TRAIT_MUTE), REF(src))
 	owner.add_mood_event(REF(src), /datum/mood_event/gondola)
-	to_chat(owner, span_notice("You suddenly feel at peace and feel no need to make any sudden or rash actions..."))
+	to_chat(owner, span_notice("De repente, você se sente em paz e não precisa fazer nenhuma ação súbita ou precipitada..."))
 
 /datum/status_effect/gonbola_pacify/on_remove()
 	owner.remove_traits(list(TRAIT_PACIFISM, TRAIT_MUTE), REF(src))
@@ -591,7 +591,7 @@
 
 /atom/movable/screen/alert/status_effect/trance
 	name = "Trance"
-	desc = "Everything feels so distant, and you can feel your thoughts forming loops inside your head..."
+	desc = "Tudo parece tão distante, e você pode sentir seus pensamentos formando laços dentro de sua cabeça..."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "high"
 
@@ -606,8 +606,7 @@
 	RegisterSignal(owner, COMSIG_MOVABLE_HEAR, PROC_REF(hypnotize))
 	ADD_TRAIT(owner, TRAIT_MUTE, TRAIT_STATUS_EFFECT(id))
 	owner.add_client_colour(/datum/client_colour/monochrome, REF(src))
-	owner.visible_message("[stun ? span_warning("[owner] stands still as [owner.p_their()] eyes seem to focus on a distant point.") : ""]", \
-	span_warning(pick("You feel your thoughts slow down...", "You suddenly feel extremely dizzy...", "You feel like you're in the middle of a dream...","You feel incredibly relaxed...")))
+	owner.visible_message("[stun ? span_warning("[owner] stands still as [owner.p_their()] eyes seem to focus on a distant point.") : ""]", 	span_warning(pick("Você sente seus pensamentos devagar...", "Você se sente extremamente tonta...", "Você se sente no meio de um sonho...","Você se sente incrivelmente relaxado...")))
 	return TRUE
 
 /datum/status_effect/trance/on_creation(mob/living/new_owner, _duration, _stun = TRUE)
@@ -620,10 +619,10 @@
 	REMOVE_TRAIT(owner, TRAIT_MUTE, TRAIT_STATUS_EFFECT(id))
 	owner.remove_status_effect(/datum/status_effect/dizziness)
 	owner.remove_client_colour(REF(src))
-	to_chat(owner, span_warning("You snap out of your trance!"))
+	to_chat(owner, span_warning("Você sai do seu transe!"))
 
 /datum/status_effect/trance/get_examine_text()
-	return span_warning("[owner.p_They()] seem[owner.p_s()] slow and unfocused.")
+	return span_warning("[owner.p_They()]Parece.[owner.p_s()]Devagar e sem foco.")
 
 /datum/status_effect/trance/proc/hypnotize(datum/source, list/hearing_args)
 	SIGNAL_HANDLER
@@ -654,13 +653,13 @@
 	switch(rand(1,5))
 		if(1)
 			if((owner.mobility_flags & MOBILITY_MOVE) && isturf(owner.loc))
-				to_chat(owner, span_warning("Your leg spasms!"))
+				to_chat(owner, span_warning("Seus espasmos nas pernas!"))
 				step(owner, pick(GLOB.cardinals))
 		if(2)
 			var/obj/item/held_item = owner.get_active_held_item()
 			if(!held_item)
 				return
-			to_chat(owner, span_warning("Your fingers spasm!"))
+			to_chat(owner, span_warning("Seus dedos estão espasmos!"))
 			owner.log_message("used [held_item] due to a Muscle Spasm", LOG_ATTACK)
 			held_item.attack_self(owner)
 		if(3)
@@ -674,13 +673,13 @@
 			for(var/mob/living/nearby_mobs in oview(owner, range))
 				targets += nearby_mobs
 			if(LAZYLEN(targets))
-				to_chat(owner, span_warning("Your arm spasms!"))
+				to_chat(owner, span_warning("Seus espasmos no braço!"))
 				owner.log_message(" attacked someone due to a Muscle Spasm", LOG_ATTACK) //the following attack will log itself
 				owner.ClickOn(pick(targets))
 			owner.set_combat_mode(FALSE)
 		if(4)
 			owner.set_combat_mode(TRUE)
-			to_chat(owner, span_warning("Your arm spasms!"))
+			to_chat(owner, span_warning("Seus espasmos no braço!"))
 			owner.log_message("attacked [owner.p_them()]self to a Muscle Spasm", LOG_ATTACK)
 			owner.ClickOn(owner)
 			owner.set_combat_mode(FALSE)
@@ -690,7 +689,7 @@
 			for(var/turf/nearby_turfs in oview(owner, 3))
 				targets += nearby_turfs
 			if(LAZYLEN(targets) && held_item)
-				to_chat(owner, span_warning("Your arm spasms!"))
+				to_chat(owner, span_warning("Seus espasmos no braço!"))
 				owner.log_message("threw [held_item] due to a Muscle Spasm", LOG_ATTACK)
 				owner.throw_item(pick(targets))
 
@@ -703,7 +702,7 @@
 
 /datum/status_effect/convulsing/on_creation(mob/living/zappy_boy)
 	. = ..()
-	to_chat(zappy_boy, span_boldwarning("You feel a shock moving through your body! Your hands start shaking!"))
+	to_chat(zappy_boy, span_boldwarning("Você sente um choque se movendo pelo seu corpo! Suas mãos começam a tremer!"))
 
 /datum/status_effect/convulsing/tick(seconds_between_ticks)
 	var/mob/living/carbon/H = owner
@@ -711,14 +710,14 @@
 		var/obj/item/I = H.get_active_held_item()
 		if(I && H.dropItemToGround(I))
 			H.visible_message(
-				span_notice("[H]'s hand convulses, and they drop their [I.name]!"),
-				span_userdanger("Your hand convulses violently, and you drop what you were holding!"),
+				span_notice("[H]Convulsões de mão, e eles deixam cair seus[I.name]!"),
+				span_userdanger("Sua mão convulsa violentamente, e você larga o que estava segurando!"),
 			)
 			H.adjust_jitter(10 SECONDS)
 
 /atom/movable/screen/alert/status_effect/convulsing
 	name = "Shaky Hands"
-	desc = "You've been zapped with something and your hands can't stop shaking! You can't seem to hold on to anything."
+	desc = "Você foi atingido com algo e suas mãos não param de tremer! Você não consegue segurar em nada."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "convulsing"
 
@@ -731,7 +730,7 @@
 
 /datum/status_effect/dna_melt/on_creation(mob/living/new_owner, set_duration)
 	. = ..()
-	to_chat(new_owner, span_boldwarning("My body can't handle the mutations! I need to get my mutations removed fast!"))
+	to_chat(new_owner, span_boldwarning("Meu corpo não aguenta as mutações! Preciso remover minhas mutações rápido!"))
 
 /datum/status_effect/dna_melt/on_remove()
 	if(!ishuman(owner))
@@ -742,7 +741,7 @@
 
 /atom/movable/screen/alert/status_effect/dna_melt
 	name = "Genetic Breakdown"
-	desc = "I don't feel so good. Your body can't handle the mutations! You have one minute to remove your mutations, or you will be met with a horrible fate."
+	desc = "Não me sinto bem. Seu corpo não aguenta as mutações! Tem um minuto para remover suas mutações, ou terá um destino horrível."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "dna_melt"
 
@@ -798,7 +797,7 @@
 
 /atom/movable/screen/alert/status_effect/go_away
 	name = "TO THE STARS AND BEYOND!"
-	desc = "I must go, my people need me!"
+	desc = "Tenho que ir, meu povo precisa de mim!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "high"
 
@@ -824,27 +823,27 @@
 		if(0 to 300)
 			if(prob(1))
 				fake_msg = pick(
-				span_warning(pick("Your head hurts.", "Your head pounds.")),
-				span_warning(pick("You're having difficulty breathing.", "Your breathing becomes heavy.")),
-				span_warning(pick("You feel dizzy.", "Your head spins.")),
-				span_warning(pick("You swallow excess mucus.", "You lightly cough.")),
-				span_warning(pick("Your head hurts.", "Your mind blanks for a moment.")),
-				span_warning(pick("Your throat hurts.", "You clear your throat.")))
+				span_warning(pick("Sua cabeça dói.", "Seus quilos.")),
+				span_warning(pick("Você está com dificuldade para respirar.", "Sua respiração se torna pesada.")),
+				span_warning(pick("Você se sente tonta.", "Sua cabeça gira.")),
+				span_warning(pick("Você engole muco em excesso.", "Você tosse levemente.")),
+				span_warning(pick("Sua cabeça dói.", "Sua mente está vazia por um momento.")),
+				span_warning(pick("Sua garganta dói.", "Você limpa a garganta.")))
 		if(301 to 600)
 			if(prob(2))
 				fake_msg = pick(
-				span_warning(pick("Your head hurts a lot.", "Your head pounds incessantly.")),
-				span_warning(pick("Your windpipe feels like a straw.", "Your breathing becomes tremendously difficult.")),
-				span_warning("You feel very [pick("dizzy","woozy","faint")]."),
-				span_warning(pick("You hear a ringing in your ear.", "Your ears pop.")),
-				span_warning("You nod off for a moment."))
+				span_warning(pick("Sua cabeça dói muito.", "Sua cabeça bate incessantemente.")),
+				span_warning(pick("Sua traqueia parece uma palha.", "Sua respiração se torna tremendamente difícil.")),
+				span_warning("Você se sente muito.[pick("dizzy","woozy","faint")]."),
+				span_warning(pick("Você ouve um zumbido no seu ouvido.", "Suas orelhas estoram.")),
+				span_warning("Você cochilou por um momento."))
 		else
 			if(prob(3))
 				if(prob(50))// coin flip to throw a message or an emote
 					fake_msg = pick(
-					span_userdanger(pick("Your head hurts!", "You feel a burning knife inside your brain!", "A wave of pain fills your head!")),
-					span_userdanger(pick("Your lungs hurt!", "It hurts to breathe!")),
-					span_warning(pick("You feel nauseated.", "You feel like you're going to throw up!")))
+					span_userdanger(pick("Sua cabeça dói!", "Você sente uma faca queimando dentro do seu cérebro!", "Uma onda de dor enche sua cabeça!")),
+					span_userdanger(pick("Seus pulmões doem!", "Dói respirar!")),
+					span_warning(pick("Você se sente enjoada.", "Você sente que vai vomitar!")))
 				else
 					if(prob(40))
 						fake_emote = "cough"
@@ -882,7 +881,7 @@
 /datum/status_effect/ants/on_creation(mob/living/new_owner, amount_left)
 	if(isnum(amount_left) && new_owner.stat < HARD_CRIT)
 		if(new_owner.stat < UNCONSCIOUS) // Unconscious people won't get messages
-			to_chat(new_owner, span_userdanger("You're covered in ants!"))
+			to_chat(new_owner, span_userdanger("Você está coberto de formigas!"))
 		ants_remaining += amount_left
 		RegisterSignal(new_owner, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(ants_washed))
 	. = ..()
@@ -892,7 +891,7 @@
 	if(isnum(amount_left) && ants_remaining >= 1 && victim.stat < HARD_CRIT)
 		if(victim.stat < UNCONSCIOUS) // Unconscious people won't get messages
 			if(!prob(1)) // 99%
-				to_chat(victim, span_userdanger("You're covered in MORE ants!"))
+				to_chat(victim, span_userdanger("Você está coberto de mais formigas!"))
 			else // 1%
 				victim.say("AAHH! THIS SITUATION HAS ONLY BEEN MADE WORSE WITH THE ADDITION OF YET MORE ANTS!!", forced = /datum/status_effect/ants)
 		ants_remaining += amount_left
@@ -900,7 +899,7 @@
 
 /datum/status_effect/ants/on_remove()
 	ants_remaining = 0
-	to_chat(owner, span_notice("All of the ants are off of your body!"))
+	to_chat(owner, span_notice("Todas as formigas estão fora do seu corpo!"))
 	UnregisterSignal(owner, COMSIG_COMPONENT_CLEAN_ACT)
 	. = ..()
 
@@ -913,7 +912,7 @@
 		return COMPONENT_CLEANED|COMPONENT_CLEANED_GAIN_XP
 
 /datum/status_effect/ants/get_examine_text()
-	return span_warning("[owner.p_They()] [owner.p_are()] covered in ants!")
+	return span_warning("[owner.p_They()] [owner.p_are()]Coberto de formigas!")
 
 /datum/status_effect/ants/tick(seconds_between_ticks)
 	var/mob/living/carbon/human/victim = owner
@@ -928,16 +927,16 @@
 		if(prob(50)) // Most of the damage is done through random chance. When tested yielded an average 100 brute with 200u ants.
 			switch(rand(1,50))
 				if (1 to 8) //16% Chance
-					to_chat(victim, span_danger("You scratch at the ants on your scalp!."))
+					to_chat(victim, span_danger("Você coça as formigas no seu couro cabeludo!"))
 					owner.apply_damage(0.4 * seconds_between_ticks, BRUTE, BODY_ZONE_HEAD)
 				if (9 to 29) //40% chance
-					to_chat(victim, span_danger("You scratch at the ants on your arms!"))
+					to_chat(victim, span_danger("Você coça as formigas em seus braços!"))
 					owner.apply_damage(1.2 * seconds_between_ticks, BRUTE, pick(GLOB.arm_zones))
 				if (30 to 49) //38% chance
-					to_chat(victim, span_danger("You scratch at the ants on your leg!"))
+					to_chat(victim, span_danger("Você coça as formigas na sua perna!"))
 					owner.apply_damage(1.2 * seconds_between_ticks, BRUTE, pick(GLOB.leg_zones))
 				if(50) // 2% chance
-					to_chat(victim, span_danger("You rub some ants away from your eyes!"))
+					to_chat(victim, span_danger("Você esfrega algumas formigas longe de seus olhos!"))
 					victim.set_eye_blur_if_lower(6 SECONDS)
 					ants_remaining -= 5 // To balance out the blindness, it'll be a little shorter.
 	ants_remaining--
@@ -946,7 +945,7 @@
 
 /atom/movable/screen/alert/status_effect/ants
 	name = "Ants!"
-	desc = span_warning("JESUS FUCKING CHRIST! CLICK TO GET THOSE THINGS OFF!")
+	desc = span_warning("Jesus Cristo! Clique para tirar essas coisas!")
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "antalert"
 	clickable_glow = TRUE
@@ -958,11 +957,11 @@
 	var/mob/living/living = owner
 	if(!istype(living) || !living.can_resist() || living != owner)
 		return
-	to_chat(living, span_notice("You start to shake the ants off!"))
+	to_chat(living, span_notice("Você começa a sacudir as formigas!"))
 	if(!do_after(living, 2 SECONDS, target = living))
 		return
 	for (var/datum/status_effect/ants/ant_covered in living.status_effects)
-		to_chat(living, span_notice("You manage to get some of the ants off!"))
+		to_chat(living, span_notice("Você consegue tirar algumas formigas!"))
 		ant_covered.ants_remaining -= 10 // 5 Times more ants removed per second than just waiting in place
 
 /datum/status_effect/ants/fire
@@ -972,7 +971,7 @@
 
 /atom/movable/screen/alert/status_effect/ants/fire
 	name = "Fire Ants!"
-	desc = span_warning("JESUS FUCKING CHRIST IT BURNS! CLICK TO GET THOSE THINGS OFF!")
+	desc = span_warning("Jesus Cristo, ele queima! Clique para tirar essas coisas!")
 
 /datum/status_effect/rebuked
 	id = "rebuked"
@@ -1007,7 +1006,7 @@
 
 /atom/movable/screen/alert/status_effect/freezing_blast
 	name = "Freezing Blast"
-	desc = "You've been struck by a freezing blast! Your body moves more slowly!"
+	desc = "Você foi atingido por uma explosão gelada! Seu corpo se move mais devagar!"
 	icon_state = "frozen"
 
 /datum/status_effect/freezing_blast/on_apply()
@@ -1027,7 +1026,7 @@
 
 /atom/movable/screen/alert/status_effect/discoordinated
 	name = "Discoordinated"
-	desc = "You can't seem to properly use anything..."
+	desc = "Você parece não poder usar nada..."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "convulsing"
 
@@ -1066,7 +1065,7 @@
 
 /atom/movable/screen/alert/status_effect/careful_driving
 	name = "Careful Driving"
-	desc = "That was close! You almost ran that one over!"
+	desc = "Essa foi por pouco! Você quase atropelou aquele!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "paralysis"
 
@@ -1093,7 +1092,7 @@
 
 /atom/movable/screen/alert/status_effect/midas_blight
 	name = "Midas Blight"
-	desc = "Your blood is being turned to gold, slowing your movements!"
+	desc = "Seu sangue está sendo transformado em ouro, retardando seus movimentos!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "midas_blight"
 
@@ -1143,7 +1142,7 @@
 
 /atom/movable/screen/alert/status_effect/designated_target
 	name = "Designated Target"
-	desc = "You've been lit up by some kind of bright energy! Wash it off to get rid of it, or you'll be a lot easier to hit!"
+	desc = "Você foi iluminado por algum tipo de energia brilhante! Lave-o para se livrar dele, ou você será muito mais fácil de bater!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "designated_target"
 

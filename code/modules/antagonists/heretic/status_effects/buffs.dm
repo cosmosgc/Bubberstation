@@ -11,7 +11,7 @@
 	var/turf/location
 
 /datum/status_effect/crucible_soul/on_apply()
-	to_chat(owner,span_notice("You phase through reality, nothing is out of bounds!"))
+	to_chat(owner,span_notice("Você passa pela realidade, nada está fora dos limites!"))
 	owner.alpha = 180
 	owner.pass_flags |= PASSCLOSEDTURF | PASSGLASS | PASSGRILLE | PASSMACHINE | PASSSTRUCTURE | PASSTABLE | PASSMOB | PASSDOORS | PASSVEHICLE
 	location = get_turf(owner)
@@ -20,7 +20,7 @@
 	return TRUE
 
 /datum/status_effect/crucible_soul/on_remove()
-	to_chat(owner,span_notice("You regain your physicality, returning you to your original location..."))
+	to_chat(owner,span_notice("Recupera sua fisicalidade, retornando para sua localização original..."))
 	owner.alpha = initial(owner.alpha)
 	owner.pass_flags &= ~(PASSCLOSEDTURF | PASSGLASS | PASSGRILLE | PASSMACHINE | PASSSTRUCTURE | PASSTABLE | PASSMOB | PASSDOORS | PASSVEHICLE)
 	owner.forceMove(location)
@@ -28,11 +28,11 @@
 	location = null
 
 /datum/status_effect/crucible_soul/get_examine_text()
-	return span_notice("[owner.p_They()] [owner.p_do()]n't seem to be all here.")
+	return span_notice("[owner.p_They()] [owner.p_do()]Não parece estar tudo aqui.")
 
 /datum/action/cancel_crucible_soul
 	name = "Recall"
-	desc = "Use to end the blessing early"
+	desc = "Use para acabar com a bênção cedo."
 	button_icon = 'icons/obj/antags/eldritch.dmi'
 	button_icon_state = "crucible_soul"
 
@@ -92,7 +92,7 @@
 			found_wound.remove_wound()
 	if(length(drinker.get_missing_limbs()))
 		drinker.regenerate_limbs()
-		to_chat(drinker, span_hypnophrase("The mansus has given you new limbs."))
+		to_chat(drinker, span_hypnophrase("O mansus lhe deu novos membros."))
 	playsound(drinker, 'sound/effects/chemistry/ahaha.ogg', 50, TRUE, -1, extrarange = SILENCED_SOUND_EXTRARANGE, frequency = 0.5)
 
 /datum/status_effect/marshal/tick(seconds_between_ticks)
@@ -125,22 +125,21 @@
 
 /atom/movable/screen/alert/status_effect/crucible_soul
 	name = "Blessing of Crucible Soul"
-	desc = "You phased through reality. You are halfway to your final destination..."
+	desc = "Você passou pela realidade. Você está a meio caminho do seu destino final..."
 	icon_state = "crucible"
 
 /atom/movable/screen/alert/status_effect/crucible_soul/cooldown
-	desc = "You have recently phased through reality. You must wait before you can do so once more."
+	desc = "Você recentemente passou pela realidade. Você deve esperar antes de fazer isso mais uma vez."
 	icon_state = "crucible_cooldown"
 
 /atom/movable/screen/alert/status_effect/duskndawn
 	name = "Blessing of Dusk and Dawn"
-	desc = "Many things hide beyond the horizon. With Owl's help I managed to slip past Sun's guard and Moon's watch."
+	desc = "Muitas coisas se escondem além do horizonte. Com a ajuda da Coruja consegui passar pela guarda do Sol e pelo relógio da Lua."
 	icon_state = "duskndawn"
 
 /atom/movable/screen/alert/status_effect/marshal
 	name = "Blessing of Wounded Soldier"
-	desc = "Some people seek power through redemption. One thing many people don't know is that battle \
-		is the ultimate redemption, and wounds let you bask in eternal glory."
+	desc = "Algumas pessoas buscam poder através da redenção. Uma coisa que muitas pessoas não sabem é que a batalha é a redenção final, e as feridas deixam você se aproveitar da glória eterna."
 	icon_state = "wounded_soldier"
 
 // BLADES
@@ -216,7 +215,7 @@
 	mob/living/carbon/human/source,
 	atom/movable/hitby,
 	damage = 0,
-	attack_text = "the attack",
+	attack_text = "O ataque.",
 	attack_type = MELEE_ATTACK,
 	armour_penetration = 0,
 	damage_type = BRUTE,
@@ -237,9 +236,9 @@
 
 	playsound(get_turf(source), 'sound/items/weapons/parry.ogg', 100, TRUE)
 	source.visible_message(
-		span_warning("[to_remove] orbiting [source] snaps in front of [attack_text], blocking it before vanishing!"),
-		span_warning("[to_remove] orbiting you snaps in front of [attack_text], blocking it before vanishing!"),
-		span_hear("You hear a clink."),
+		span_warning("[to_remove]orbitando[source]Snaps na frente de[attack_text], bloqueando-o antes de desaparecer!"),
+		span_warning("[to_remove]orbitando você estala na frente de[attack_text], bloqueando-o antes de desaparecer!"),
+		span_hear("Você ouve um clink."),
 	)
 
 	qdel(to_remove)
@@ -317,33 +316,33 @@
 	UnregisterSignal(owner, COMSIG_CARBON_CUFF_ATTEMPTED)
 	UnregisterSignal(owner, COMSIG_BEING_STRIPPED)
 	owner.visible_message(
-		span_warning("The haze around [owner] disappears, leaving them materialized!"),
-		span_notice("You exit the refuge."),
+		span_warning("A neblina ao redor[owner]Desaparece, deixando-os materializados!"),
+		span_notice("Você sai do refúgio."),
 	)
 
 /datum/status_effect/caretaker_refuge/get_examine_text()
-	return span_warning("[owner.p_Theyre()] enveloped in an unholy haze!")
+	return span_warning("[owner.p_Theyre()]Envolto em uma névoa profana!")
 
 /datum/status_effect/caretaker_refuge/proc/nullrod_handler(datum/source, obj/item/weapon)
 	SIGNAL_HANDLER
 	playsound(get_turf(owner), 'sound/effects/curse/curse1.ogg', 80, TRUE)
-	owner.visible_message(span_warning("[weapon] repels the haze around [owner]!"))
+	owner.visible_message(span_warning("[weapon]repele a neblina ao redor.[owner]!"))
 	owner.remove_status_effect(type)
 
 /datum/status_effect/caretaker_refuge/proc/on_focus_lost()
 	SIGNAL_HANDLER
-	to_chat(owner, span_danger("Without a focus, your refuge weakens and dissipates!"))
+	to_chat(owner, span_danger("Sem foco, seu refúgio enfraquece e se dissipa!"))
 	qdel(src)
 
 /datum/status_effect/caretaker_refuge/proc/no_strip(atom/source, mob/user, obj/item/equipping)
 	SIGNAL_HANDLER
-	to_chat(user, span_warning("You fail to put anything on [source] as they are incorporeal!"))
+	to_chat(user, span_warning("Você não consegue colocar nada.[source]como são incorpóreos!"))
 	return COMPONENT_CANT_STRIP
 
 /datum/status_effect/caretaker_refuge/proc/prevent_spell_usage(datum/source, datum/spell)
 	SIGNAL_HANDLER
 	if(!istype(spell, /datum/action/cooldown/spell/caretaker))
-		owner.balloon_alert(owner, "may not cast spells in refuge!")
+		owner.balloon_alert(owner, "não pode lançar feitiços em refúgio!")
 		return SPELL_CANCEL_CAST
 
 /datum/status_effect/caretaker_refuge/proc/prevent_cuff(datum/source, mob/attemptee)
@@ -367,7 +366,7 @@
 
 /atom/movable/screen/alert/status_effect/moon_grasp_hide
 	name = "Blessing of The Moon"
-	desc = "The Moon clouds their vision, as the sun always has yours."
+	desc = "A Lua nubla sua visão, como o sol sempre tem a sua."
 	icon_state = "moon_hide"
 
 // Last Resort
@@ -380,12 +379,12 @@
 
 /atom/movable/screen/alert/status_effect/heretic_lastresort
 	name = "Last Resort"
-	desc = "Your head spins, heart pumping as fast as it can!"
+	desc = "Sua cabeça gira, coração bombeando o mais rápido que pode!"
 	icon_state = "lastresort"
 
 /datum/status_effect/heretic_lastresort/on_apply()
 	ADD_TRAIT(owner, TRAIT_IGNORESLOWDOWN, TRAIT_STATUS_EFFECT(id))
-	to_chat(owner, span_userdanger("You won't give up that easily!"))
+	to_chat(owner, span_userdanger("Você não vai desistir tão facilmente!"))
 	return TRUE
 
 /datum/status_effect/heretic_lastresort/on_remove()

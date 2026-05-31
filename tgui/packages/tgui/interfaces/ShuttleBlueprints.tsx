@@ -174,7 +174,7 @@ const ShuttleConstruction = () => {
   );
   const { act, data } = useBackend<ShuttleBlueprintsData>();
   if (data.linkedShuttle !== 0) {
-    throw new Error('type guard failure - linkedShuttle must be 0');
+    throw new Error('Tipo falha de guarda - ligado O ônibus deve ser 0.');
   }
   const {
     onShuttleFrame,
@@ -190,8 +190,8 @@ const ShuttleConstruction = () => {
     <Stack justify="space-around">
       <Stack.Item grow>
         <DirectionPad
-          title="Shuttle Direction"
-          tooltip="This specifies the direction that the shuttle being built is facing."
+          title="Direção do ônibus"
+          tooltip="Isso especifica a direção que a nave está enfrentando."
           enabledDirections={Direction.ALL}
           selectedDirection={shuttleDirection}
           onSelect={(dir) => setShuttleDirection(dir)}
@@ -209,17 +209,17 @@ const ShuttleConstruction = () => {
                   disabled={!onShuttleFrame || tooManyShuttles || problems}
                   tooltip={
                     <ProblemsTooltip
-                      description="Create a new shuttle using a shuttle frame."
-                      problemHeader="The following problems prevent you from creating a shuttle with this frame."
+                      description="Criar uma nova nave usando uma estrutura de transporte."
+                      problemHeader="Os seguintes problemas impedem que você crie uma nave com este quadro."
                       problems={problems ?? 0}
                       problemStrings={[
-                        'You are not on a shuttle frame.',
-                        'There are too many custom shuttles currently.',
-                        'This frame is too large.',
+                        'Você não está em uma estrutura de transporte.',
+                        'Há muitas naves personalizadas atualmente.',
+                        'Este quadro é muito grande.',
                         'This frame includes the APC of a custom area, but does not enclose the entire area.\
                          Remove the APC or add the rest of the area to the frame.',
-                        'This frame encroaches on an area custom shuttles may not dock at.',
-                        'This frame includes an APC belonging to a non-custom area.',
+                        'Este quadro entra em uma área em que as naves não podem atracar.',
+                        'Este quadro inclui um APC pertencente a uma área não-costume.',
                       ]}
                     />
                   }
@@ -257,7 +257,7 @@ const ShuttleConstruction = () => {
                     ? 'The master blueprint for this shuttle still exists. \
                           Whoever has it can copy it to this set of blueprints.'
                     : null
-                  : 'You must be on a custom shuttle to do this.'
+                  : 'Você deve estar em um transporte personalizado para fazer isso.'
               }
               onClick={() => act('tryLinkShuttle')}
             >
@@ -276,7 +276,7 @@ const ShuttleConfiguration = () => {
     useState<AreaData>();
   const { act, data } = useBackend<ShuttleBlueprintsData>();
   if (data.linkedShuttle === 0) {
-    throw new Error('type guard failure - linkedShuttle must be non-zero');
+    throw new Error('Tipo falha de guarda - ligado O ônibus deve ser não-zero.');
   }
   const {
     visualizing,
@@ -306,13 +306,13 @@ const ShuttleConfiguration = () => {
         <h3>
           {onShuttle
             ? inDefaultArea
-              ? 'Default Area'
+              ? 'Área Predefinida'
               : currentAreaName
-            : 'Not on Shuttle'}
+            : 'Não no ônibus.'}
         </h3>
       </Stack.Item>
       <Stack.Item>
-        <Input fluid placeholder="New Area Name" onChange={setName} />
+        <Input fluid placeholder="Novo nome da área" onChange={setName} />
         <Stack>
           <Stack.Item>
             <Button.Confirm
@@ -320,9 +320,9 @@ const ShuttleConfiguration = () => {
               tooltip={
                 onShuttle
                   ? inDefaultArea
-                    ? 'Designate a room within the shuttle as its own area.'
-                    : 'You can only designate a new area from the default area.'
-                  : 'You must be on the linked shuttle to do this.'
+                    ? 'Designe um quarto dentro da nave como sua própria área.'
+                    : 'Você só pode designar uma nova área da área padrão.'
+                  : 'Você deve estar na nave ligada para fazer isso.'
               }
               onClick={() => act('createNewArea', { name: name })}
             >
@@ -335,9 +335,9 @@ const ShuttleConfiguration = () => {
               tooltip={
                 onShuttle
                   ? inDefaultArea
-                    ? 'You cannot rename the default area.'
+                    ? 'Você não pode renomear a área padrão.'
                     : null
-                  : 'You must be on the linked shuttle to do this.'
+                  : 'Você deve estar na nave ligada para fazer isso.'
               }
               onClick={() => act('renameArea', { name: name })}
             >
@@ -350,7 +350,7 @@ const ShuttleConfiguration = () => {
         <Stack fill justify="center">
           <Stack.Item>
             <Dropdown
-              placeholder="Select Area"
+              placeholder="Selecionar área"
               options={Object.entries(neighboringAreas).map(([ref, name]) => {
                 return {
                   displayText: name,
@@ -369,16 +369,16 @@ const ShuttleConfiguration = () => {
                 !(onShuttle && inDefaultArea && mergeArea) || mergeApcConflict
               }
               tooltip={
-                'Expand the selected area with the connected section of the default area.' +
+                'Expanda a área selecionada com a seção conectada da área padrão.' +
                 (onShuttle
                   ? mergeArea
                     ? inDefaultArea
                       ? mergeApcConflict
-                        ? '\nBoth the selected area and the region that it would expand into have APCs. You must remove one first.'
+                        ? '\nTanto a área selecionada quanto a região que se expandiria para ter APCs. Você deve remover um primeiro.'
                         : ''
-                      : '\nYou can only expand the selected area into the default area.'
+                      : '\nVocê só pode expandir a área selecionada para a área padrão.'
                     : ''
-                  : '\nYou must be on the linked shuttle to do this.')
+                  : '\nVocê deve estar na nave ligada para fazer isso.')
               }
               onClick={() => act('mergeIntoArea', { area: mergeAreaRef })}
             >
@@ -396,17 +396,17 @@ const ShuttleConfiguration = () => {
                   disabled={!(idle && onShuttleFrame) || problems || tooLarge}
                   tooltip={
                     <ProblemsTooltip
-                      description="Expand the linked shuttle with an adjacent shuttle frame."
-                      problemHeader="The following problems prevent you from expanding the shuttle."
+                      description="Expanda a nave com uma estrutura adjacente."
+                      problemHeader="Os seguintes problemas o impedem de expandir a nave auxiliar."
                       problems={problems ?? 0}
                       problemStrings={[
-                        'You must be standing on the shuttle frame you wish to expand the shuttle with.',
-                        'This frame is not adjacent to the linked shuttle.',
-                        'This frame is too large.',
+                        'Você deve estar na estrutura da nave que deseja expandir a nave.',
+                        'Este quadro não é adjacente à nave conectada.',
+                        'Este quadro é muito grande.',
                         'This frame includes the APC of a custom area, but does not enclose the entire area.\
                          Remove the APC or add the rest of the area to the frame.',
-                        'This frame encroaches on an area custom shuttles may not dock at.',
-                        'This frame includes an APC belonging to a non-custom area.',
+                        'Este quadro entra em uma área em que as naves não podem atracar.',
+                        'Este quadro inclui um APC pertencente a uma área não-costume.',
                       ]}
                     />
                   }
@@ -444,14 +444,14 @@ const ShuttleConfiguration = () => {
         <Button.Confirm
           disabled={!onShuttle || inDefaultArea || removalApcConflict}
           tooltip={
-            'Merge the current area into the default area.' +
+            'Mesclar a área atual na área padrão.' +
             (onShuttle
               ? inDefaultArea
-                ? '\nYou are already in the default area.'
+                ? '\nVocê já está na área padrão.'
                 : removalApcConflict
-                  ? '\nBoth the current and default areas have APCs. You must remove one first.'
+                  ? '\nAs áreas atuais e padrão têm APCs. Você deve remover um primeiro.'
                   : ''
-              : '\nYou must be on the linked shuttle to do this.')
+              : '\nVocê deve estar na nave ligada para fazer isso.')
           }
           onClick={() => act('releaseArea')}
         >
@@ -466,8 +466,8 @@ const ShuttleConfiguration = () => {
               ? idle
                 ? '\nThis will delete any areas left without any space, \
               and will decommission the shuttle entirely if there is nothing left of it.'
-                : '\nThe shuttle must be idle to do this.'
-              : '\nOnly the master blueprint can do this.'
+                : '\nA nave deve estar ociosa para fazer isso.'
+              : '\nSó a planta principal pode fazer isso.'
           }`}
           onClick={() => act('cleanupEmptyTurfs')}
         >

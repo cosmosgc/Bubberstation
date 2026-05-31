@@ -1,7 +1,7 @@
 //The SmartDarts themselves
 /obj/item/reagent_containers/syringe/smartdart
 	name = "SmartDart"
-	desc = "Allows the user to safely inject chemicals at a range without harming the patient."
+	desc = "Permite que o usuário injete produtos químicos em segurança sem prejudicar o paciente."
 	volume = 10
 	icon = 'modular_skyrat/modules/medical/icons/obj/smartdarts.dmi'
 	icon_state = "dart_0"
@@ -11,7 +11,7 @@
 //Code that handles the base interactions involving smartdarts
 /obj/item/reagent_containers/syringe/smartdart/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	if(target.reagents)
-		to_chat(user, span_warning("The [src] is unable to manually inject chemicals."))
+		to_chat(user, span_warning("O[src]é incapaz de injetar produtos químicos manualmente."))
 	return NONE
 //A majority of this code is from the original syringes.dm file.
 /obj/item/reagent_containers/syringe/smartdart/interact_with_atom_secondary(atom/target, mob/living/user, list/modifiers)
@@ -19,30 +19,30 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if(reagents.total_volume >= reagents.maximum_volume)
-		to_chat(user, span_notice("[src] is full."))
+		to_chat(user, span_notice("[src]Está cheio."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(isliving(target))
-		to_chat(user, span_warning("The [src] is unable to take blood."))
+		to_chat(user, span_warning("O[src]é incapaz de tirar sangue."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!target.reagents.total_volume)
-		to_chat(user, span_warning("[target] is empty!"))
+		to_chat(user, span_warning("[target]Está vazio!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!target.is_drawable(user))
-		to_chat(user, span_warning("You cannot directly remove reagents from [target]!"))
+		to_chat(user, span_warning("Você não pode remover diretamente reagentes de[target]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user) // transfer from, transfer to - who cares?
-	to_chat(user, span_notice("You fill [src] with [trans] units of the solution. It now contains [reagents.total_volume] units."))
+	to_chat(user, span_notice("Você enche.[src]Com[trans]Unidades da solução. Agora contém[reagents.total_volume]Unidades."))
 
 	return ITEM_INTERACT_SUCCESS
 
 //The base smartdartgun
 /obj/item/gun/syringe/smartdart
 	name = "medical SmartDart gun"
-	desc = "An adjusted version of the medical syringe gun that only allows SmartDarts to be chambered."
+	desc = "Uma versão ajustada da arma de seringa médica que só permite que SmartDarts seja accionado."
 	w_class = WEIGHT_CLASS_NORMAL //I might need to look into changing this later depending on feedback
 	icon = 'modular_skyrat/modules/medical/icons/obj/dartguns.dmi'
 	icon_state = "smartdartgun"
@@ -59,7 +59,7 @@
 /obj/item/gun/syringe/smartdart/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/reagent_containers/syringe/smartdart))
 		return ..()
-	to_chat(user, span_notice("The [tool] is unable to fit inside of the [src]! Try using a <b>SmartDart</b> instead."))
+	to_chat(user, span_notice("O[tool]é incapaz de caber dentro do[src]Tente user um<b>SmartDart</b>Em vez disso."))
 	return ITEM_INTERACT_BLOCKING
 
 /obj/item/gun/syringe/smartdart/examine(mob/user)
@@ -112,8 +112,8 @@
 	if(!injectee.can_inject(target_zone = def_zone, injection_flags = inject_flags)) // if the syringe is blocked
 		blocked = 100
 	if(blocked == 100)
-		target.visible_message(span_danger("\The [src] is deflected!"),
-							span_userdanger("You are protected against \the [src]!"))
+		target.visible_message(span_danger("\The [src]Está desviado!"),
+							span_userdanger("Você está protegido contra\the [src]!"))
 		return
 
 	//Checks for allergies, and saves allergies to a list if they are present
@@ -158,9 +158,9 @@
 		else
 			injectee.reagents.add_reagent(meds.type, inject_amount, null, chemical_temp, meds.purity)
 
-	injectee.visible_message(span_notice("[src] embeds itself into [injectee]"), span_notice("You feel a small prick as [src] embeds itself into you."))
+	injectee.visible_message(span_notice("[src]Se incorpora em[injectee]"), span_notice("Você sente um pequeno pau como[src]se incorpora em você."))
 	if(prevention_used) //Used to signal that allergens were not injected into the target mob.
-		injectee.visible_message(span_notice("[src] lets out a short beep."), span_notice("You hear a short beep from [src]."))
+		injectee.visible_message(span_notice("[src]Vamos dar um pequeno bip."), span_notice("Você ouve um pequeno bip de[src]."))
 		playsound(loc, 'sound/machines/ping.ogg', 50, 1, -1)
 	return BULLET_ACT_HIT
 

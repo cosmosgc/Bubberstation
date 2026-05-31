@@ -35,7 +35,7 @@
 
 /obj/item/wallframe/examine(mob/user)
 	. = ..()
-	. += span_notice("It can be [EXAMINE_HINT("wrenched")] apart.")
+	. += span_notice("Pode ser.[EXAMINE_HINT("wrenched")]Separados.")
 
 /**
  * Returns an structure to mount on from the atom passed
@@ -56,9 +56,9 @@
 		return ITEM_INTERACT_FAILURE
 
 	playsound(loc, 'sound/machines/click.ogg', 75, TRUE)
-	user.visible_message(span_notice("[user.name] attaches [src] to the wall."),
-		span_notice("You attach [src] to the wall."),
-		span_hear("You hear clicking."))
+	user.visible_message(span_notice("[user.name]APENAS[src]Para um parede."),
+		span_notice("Você anexa[src]Para um parede."),
+		span_hear("Você ouve o clique."))
 
 	var/floor_to_support = get_dir(user, support_structure)
 	var/obj/hanging_object = new result_path(get_turf(user))
@@ -93,22 +93,22 @@
 */
 /obj/item/wallframe/proc/try_build(atom/support, mob/user)
 	if(get_dist(support, user) > 1)
-		balloon_alert(user, "you are too far!")
+		balloon_alert(user, "Você está muito longe!")
 		return FALSE
 	var/floor_to_support = get_dir(user, support)
 	if(!(floor_to_support in GLOB.cardinals))
-		balloon_alert(user, "stand in line with wall!")
+		balloon_alert(user, "Fiquem em fila com a parede!")
 		return FALSE
 	var/turf/T = get_turf(user)
 	if(!isfloorturf(T) && !bypass_floor) //BUBBER EDIT - allows for wallmounts in floorless areas
-		balloon_alert(user, "cannot place here!")
+		balloon_alert(user, "Não posso ficar aqui!")
 		return FALSE
 	var/area/A = get_area(T)
 	if(A.always_unpowered && !bypass_unpowered) //BUBBER EDIT - allows for wallmounts in unpowered areas
 		balloon_alert(user, "não pode ser colocado aqui!")
 		return
 	if(check_wall_item(T, floor_to_support, wall_external))
-		balloon_alert(user, "already something here!")
+		balloon_alert(user, "Já tem alguma coisa aqui!")
 		return FALSE
 
 	return TRUE
@@ -126,7 +126,7 @@
 	return interact_with_atom(get_step(get_turf(user), user.dir), user)
 
 /obj/item/wallframe/wrench_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("You dismantle [src]."))
+	to_chat(user, span_notice("Você desmonta.[src]."))
 	deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
 
@@ -136,7 +136,7 @@
 		new mat.sheet_type(drop, round(custom_materials[mat] / SHEET_MATERIAL_AMOUNT))
 
 /obj/item/electronics
-	desc = "Looks like a circuit. Probably is."
+	desc = "Parece um circuito. Provavelmente é."
 	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	icon_state = "door_electronics"
 	inhand_icon_state = "electronic"

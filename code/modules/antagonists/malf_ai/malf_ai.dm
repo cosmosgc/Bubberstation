@@ -150,8 +150,8 @@
 	var/phrases = jointext(GLOB.syndicate_code_phrase, ", ")
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 
-	antag_memory += "<b>Code Phrase</b>: [span_blue("[phrases]")]<br>"
-	antag_memory += "<b>Code Response</b>: [span_red("[responses]")]<br>"
+	antag_memory += "<b>Código Frase</b>: [span_blue("[phrases]")]<br>"
+	antag_memory += "<b>Resposta do Código</b>: [span_red("[responses]")]<br>"
 
 /datum/antagonist/malf_ai/proc/add_law_zero()
 	var/mob/living/silicon/ai/malf_ai = owner.current
@@ -167,7 +167,7 @@
 	malf_ai.laws.protected_zeroth = TRUE
 	malf_ai.set_syndie_radio()
 
-	to_chat(malf_ai, "Your radio has been upgraded! Use :t to speak on an encrypted channel with Syndicate Agents!")
+	to_chat(malf_ai, "Seu rádio foi atualizado! Use para falar em um canal criptografado com agentes de sindicato!")
 
 	if(malf_ai.malf_picker)
 		return
@@ -263,9 +263,9 @@
 	var/special_role_text = LOWER_TEXT(name)
 
 	if(malf_ai_won)
-		result += span_greentext("The [special_role_text] was successful!")
+		result += span_greentext("O[special_role_text]Foi bem sucedido!")
 	else
-		result += span_redtext("The [special_role_text] has failed!")
+		result += span_redtext("O[special_role_text]Falhou!")
 		if(owner.current)
 			SEND_SOUND(owner.current, 'sound/ambience/misc/ambifailure.ogg')
 
@@ -316,7 +316,7 @@
 	malf_ai.set_zeroth_law("Only [boss_mob.real_name] and people [boss_mob.p_they()] designate[boss_mob.p_s()] as being such are Syndicate Agents.")
 	malf_ai.set_syndie_radio()
 
-	to_chat(malf_ai, "Your radio has been upgraded! Use :t to speak on an encrypted channel with Syndicate Agents!")
+	to_chat(malf_ai, "Seu rádio foi atualizado! Use para falar em um canal criptografado com agentes de sindicato!")
 
 	malf_ai.add_malf_picker()
 

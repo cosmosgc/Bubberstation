@@ -18,10 +18,8 @@
 		if (crewmate == invoker) //everyone but the wizard is royally fucked, no matter who they are
 			continue
 		if (crewmate.has_trauma_type(/datum/brain_trauma/mild/hallucinations)) //for an already insane person, this is retribution
-			to_chat(crewmate, span_boldwarning("Your surroundings suddenly fill with a cacophony of manic laughter and psychobabble..."))
-			to_chat(crewmate, span_nicegreen("...but as the moment passes, you realise that whatever eldritch power behind the event happened to affect you \
-				has resonated within the ruins of your already shattered mind, creating a singularity of mental instability! \
-				As it collapses unto itself, you feel... at peace, finally."))
+			to_chat(crewmate, span_boldwarning("Seu ambiente de repente se enche de uma cacofonia de risos maníacos e psicodistúrbios..."))
+			to_chat(crewmate, span_nicegreen("...mas quando o momento passa, você percebe que qualquer poder de eldritch por trás do evento aconteceu para afetá-lo ressoou dentro das ruínas de sua mente já quebrada, criando uma singularidade de instabilidade mental! Quando ela se desmorona, você se sente... em paz, finalmente."))
 			if(crewmate.has_quirk(/datum/quirk/insanity))
 				crewmate.remove_quirk(/datum/quirk/insanity)
 			else
@@ -30,11 +28,7 @@
 			//everyone else gets to relish in madness
 			//yes killing their mood will also trigger mood hallucinations
 			create_vendetta(crewmate.mind, invoker.mind)
-			to_chat(crewmate, span_boldwarning("Your surroundings suddenly fill with a cacophony of manic laughter and psychobabble. \n\
-				You feel your inner psyche shatter into a myriad pieces of jagged glass of colors unknown to the universe, \
-				infinitely reflecting a blinding, maddening light coming from the innermost sanctums of your destroyed mind. \n\
-				After a brief pause which felt like a millenia, one phrase rebounds ceaselessly in your head, imbued with the false hope of absolution... \n\
-				<b>[invoker] must die.</b>"))
+			to_chat(crewmate, span_boldwarning("Seu ambiente de repente se enche de uma cacofonia de risadas maníacas e psicodistúrbios.\nVocê sente sua psique interior despedaçar-se em uma miríade de pedaços de vidro irregular de cores desconhecidas do universo, refletindo infinitamente uma luz ofuscante e louca vindo dos mais íntimos santuários de sua mente destruída.\nDepois de uma breve pausa que parecia um milênio, uma frase se recupera incessantemente em sua cabeça, imbuída da falsa esperança de absolvição...\n				<b>[invoker]Deve morrer.</b>"))
 			var/datum/brain_trauma/mild/hallucinations/added_trauma = new()
 			added_trauma.resilience = TRAUMA_RESILIENCE_ABSOLUTE
 			crewmate.adjust_organ_loss(ORGAN_SLOT_BRAIN, BRAIN_DAMAGE_DEATH - 25, BRAIN_DAMAGE_DEATH - 25) //you'd better hope chap didn't pick a hypertool
@@ -46,4 +40,4 @@
 	invoker.add_mood_event("wizard_ritual_finale", /datum/mood_event/madness_elation)
 	var/obj/item/gun/magic/staff/chaos/true_wabbajack/the_wabbajack = new
 	invoker.put_in_active_hand(the_wabbajack)
-	to_chat(invoker, span_mind_control("Your every single instinct and rational thought is screaming at you as [the_wabbajack] appears in your firm grip..."))
+	to_chat(invoker, span_mind_control("Seu instinto e pensamento racional está gritando com você como[the_wabbajack]aparece em seu aperto firme..."))

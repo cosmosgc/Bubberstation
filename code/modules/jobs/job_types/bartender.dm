@@ -1,6 +1,6 @@
 /datum/job/bartender
 	title = JOB_BARTENDER
-	description = "Serve booze, mix drinks, keep the crew drunk."
+	description = "Sirva bebida, misture bebidas, deixe a equipe bêbada."
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
@@ -69,4 +69,4 @@
 	var/obj/item/card/id/W = H.wear_id
 	if(H.age < AGE_MINOR)
 		W.registered_age = AGE_MINOR
-		to_chat(H, span_notice("You're not technically old enough to access or serve alcohol, but your ID has been discreetly modified to display your age as [AGE_MINOR]. Try to keep that a secret!"))
+		to_chat(H, span_notice("Não tem idade para acessar ou servir álcool, mas sua identidade foi discretamente modificada para mostrar sua idade como[AGE_MINOR]Tente manter isso em segredo!"))

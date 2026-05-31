@@ -1,6 +1,6 @@
 /datum/action/cooldown/mob_cooldown/blood_worm/invade
 	name = "Invade Corpse"
-	desc = "Invade a humanoid corpse, taking it as your host."
+	desc = "Invadir um corpo humanóide, tomando-o como seu hospedeiro."
 
 	button_icon_state = "invade_corpse"
 
@@ -40,7 +40,7 @@
 	var/mob/living/carbon/human/victim = target
 
 	if (!worm.Adjacent(victim))
-		victim.balloon_alert(worm, "longe demais!")
+		victim.balloon_alert(worm, "Longe demais!")
 		return FALSE
 	if (!victim.IsReachableBy(worm))
 		victim.balloon_alert(worm, "não alcança!")
@@ -53,8 +53,8 @@
 
 	worm.visible_message(
 		message = span_danger("\The [worm] starts entering \the [victim]!"),
-		self_message = span_notice("You start entering \the [victim]."),
-		blind_message = span_hear("You hear squeezing.")
+		self_message = span_notice("Você começa a entrar\the [victim]."),
+		blind_message = span_hear("Você ouve apertando.")
 	)
 
 	if (!do_after(worm, 5 SECONDS, victim, extra_checks = CALLBACK(src, PROC_REF(invade_check), worm, victim)))
@@ -68,18 +68,18 @@
 /datum/action/cooldown/mob_cooldown/blood_worm/invade/proc/invade_check(mob/living/basic/blood_worm/worm, mob/living/carbon/human/victim, feedback = FALSE)
 	if (HAS_TRAIT(victim, TRAIT_BLOOD_WORM_HOST))
 		if (feedback)
-			victim.balloon_alert(worm, "already a host!")
+			victim.balloon_alert(worm, "Já é um hospedeiro!")
 		return FALSE
 	if (victim.stat != DEAD)
 		if (feedback)
-			victim.balloon_alert(worm, "still alive!")
+			victim.balloon_alert(worm, "Ainda vivo!")
 		return FALSE
 	if (!CAN_HAVE_BLOOD(victim))
 		if (feedback)
-			victim.balloon_alert(worm, "sem sangue!")
+			victim.balloon_alert(worm, "Sem sangue!")
 		return FALSE
 	if (victim.get_blood_volume() + worm.health * BLOOD_WORM_HEALTH_TO_BLOOD <= worm.get_eject_volume_threshold())
 		if (feedback)
-			victim.balloon_alert(worm, "not enough blood for control!")
+			victim.balloon_alert(worm, "Não há sangue suficiente para o controle!")
 		return FALSE
 	return TRUE

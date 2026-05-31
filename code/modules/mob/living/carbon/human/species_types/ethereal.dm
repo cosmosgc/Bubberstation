@@ -129,7 +129,7 @@
 		return
 	disrupted = TRUE
 	refresh_light_color(source)
-	to_chat(source, span_notice("You feel the light of your body leave you."))
+	to_chat(source, span_notice("Você sente a luz do seu corpo deixá-lo."))
 	switch(severity)
 		if(EMP_LIGHT)
 			addtimer(CALLBACK(src, PROC_REF(stop_emp), source), 10 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE) //We're out for 10 seconds
@@ -139,7 +139,7 @@
 /datum/species/ethereal/proc/hit_by_saboteur(mob/living/carbon/human/source, disrupt_duration)
 	disrupted = TRUE
 	refresh_light_color(source)
-	to_chat(source, span_warning("Something inside of you crackles in a bad way."))
+	to_chat(source, span_warning("Algo dentro de você estala de um jeito ruim."))
 	source.take_bodypart_damage(burn = 3, wound_bonus = CANT_WOUND)
 	addtimer(CALLBACK(src, PROC_REF(stop_emp), source), disrupt_duration, TIMER_UNIQUE|TIMER_OVERRIDE)
 	return TRUE
@@ -150,8 +150,8 @@
 		return FALSE
 	emageffect = TRUE
 	if(user)
-		to_chat(user, span_notice("You tap [source] on the back with your card."))
-	source.visible_message(span_danger("[source] starts flickering in an array of colors!"))
+		to_chat(user, span_notice("Você bate[source]Na parte de trás com seu cartão."))
+	source.visible_message(span_danger("[source]Começa a piscar em uma série de cores!"))
 	handle_emag(source)
 	addtimer(CALLBACK(src, PROC_REF(stop_emag), source), 2 MINUTES) //Disco mode for 2 minutes! This doesn't affect the ethereal at all besides either annoying some players, or making someone look badass.
 	return TRUE
@@ -165,7 +165,7 @@
 /datum/species/ethereal/proc/stop_emp(mob/living/carbon/human/ethereal)
 	disrupted = FALSE
 	refresh_light_color(ethereal)
-	to_chat(ethereal, span_notice("You feel more energized as your shine comes back."))
+	to_chat(ethereal, span_notice("Você se sente mais energizado quando seu brilho volta."))
 
 /datum/species/ethereal/proc/handle_emag(mob/living/carbon/human/ethereal)
 	if(!emageffect)
@@ -177,7 +177,7 @@
 /datum/species/ethereal/proc/stop_emag(mob/living/carbon/human/ethereal)
 	emageffect = FALSE
 	refresh_light_color(ethereal)
-	ethereal.visible_message(span_danger("[ethereal] stops flickering and goes back to their normal state!"))
+	ethereal.visible_message(span_danger("[ethereal]Pare de tremer e volte ao seu estado normal!"))
 
 /datum/species/ethereal/proc/handle_glow_emote(mob/living/carbon/human/ethereal, power, range, flare = FALSE, duration = 5 SECONDS, flare_time = 0)
 	powermult = power
@@ -199,7 +199,7 @@
 	powermult = 1
 	rangemult = 1
 	disrupted = TRUE
-	to_chat(ethereal, span_warning("Your shine flickers and fades."))
+	to_chat(ethereal, span_warning("Seu brilho brilha e desaparece."))
 	addtimer(CALLBACK(src, PROC_REF(stop_emp), ethereal), flare_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 
@@ -242,20 +242,14 @@
 	return 'sound/mobs/humanoids/ethereal/ethereal_hiss.ogg'
 
 /datum/species/ethereal/get_physical_attributes()
-	return "Ethereals process electricity as their power supply, not food, and are somewhat resistant to it.\
-		They do so via their crystal core, their equivalent of a human heart, which will also encase them in a reviving crystal if they die.\
-		However, their skin is very thin and easy to pierce with brute weaponry."
+	return "Ethereals process electricity as their power supply, not food, and are somewhat resistant to it.		They do so via their crystal core, their equivalent of a human heart, which will also encase them in a reviving crystal if they die.		However, their skin is very thin and easy to pierce with brute weaponry."
 
 /datum/species/ethereal/get_species_description()
-	return "Coming from the planet of Sprout, the theocratic ethereals are \
-		separated socially by caste, and espouse a dogma of aiding the weak and \
-		downtrodden."
+	return "Coming from the planet of Sprout, the theocratic ethereals are 		separated socially by caste, and espouse a dogma of aiding the weak and 		downtrodden."
 
 /datum/species/ethereal/get_species_lore()
 	return list(
-		"Ethereals are a species native to the planet Sprout. \
-		When they were originally discovered, they were at a medieval level of technological progression, \
-		but due to their natural acclimation with electricity, they felt easy among the large Nanotrasen installations.",
+		"Ethereals are a species native to the planet Sprout. 		When they were originally discovered, they were at a medieval level of technological progression, 		but due to their natural acclimation with electricity, they felt easy among the large Nanotrasen installations.",
 	)
 
 /datum/species/ethereal/create_pref_unique_perks()
@@ -266,32 +260,31 @@
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "bolt",
 			SPECIES_PERK_NAME = "Shockingly Tasty",
-			SPECIES_PERK_DESC = "Ethereals can feed on electricity from APCs, and do not otherwise need to eat.",
+			SPECIES_PERK_DESC = "Ethereals podem se alimentar de eletricidade de APCs, e de outra forma não precisam comer.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "lightbulb",
 			SPECIES_PERK_NAME = "Disco Ball",
-			SPECIES_PERK_DESC = "Ethereals passively generate their own light.",
+			SPECIES_PERK_DESC = "Etéreos geram passivamente sua própria luz.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 			SPECIES_PERK_ICON = "gem",
 			SPECIES_PERK_NAME = "Crystal Core",
-			SPECIES_PERK_DESC = "The Ethereal's heart will encase them in crystal should they die, returning them to life after a time - \
-				at the cost of a permanent brain trauma.",
+			SPECIES_PERK_DESC = "O coração do Etéreo vai encarcerá-los em cristal caso morram, devolvendo-os à vida após um tempo, ao custo de um trauma cerebral permanente.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 			SPECIES_PERK_ICON = "fist-raised",
 			SPECIES_PERK_NAME = "Elemental Attacker",
-			SPECIES_PERK_DESC = "Ethereals deal burn damage with their punches instead of brute.",
+			SPECIES_PERK_DESC = "Ethereals lidam com danos causados por queimaduras com seus socos em vez de brutos.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "biohazard",
 			SPECIES_PERK_NAME = "Starving Artist",
-			SPECIES_PERK_DESC = "Ethereals take toxin damage while starving.",
+			SPECIES_PERK_DESC = "Os etéreos causam danos na toxina enquanto passam fome.",
 		),
 	)
 
@@ -322,8 +315,7 @@
 	)
 
 /datum/species/ethereal/lustrous/get_physical_attributes()
-	return "Lustrous are what remains of an Ethereal after freebasing esoteric drugs. \
-		They are pressure immune, virus immune, can see bluespace tears in reality, and have a really weird scream. They remain vulnerable to physical damage."
+	return "Lustrous are what remains of an Ethereal after freebasing esoteric drugs. 		They are pressure immune, virus immune, can see bluespace tears in reality, and have a really weird scream. They remain vulnerable to physical damage."
 
 /datum/species/ethereal/lustrous/get_scream_sound(mob/living/carbon/human/ethereal)
 	return pick(

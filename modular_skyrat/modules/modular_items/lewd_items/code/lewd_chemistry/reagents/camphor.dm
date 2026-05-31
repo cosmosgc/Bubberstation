@@ -2,9 +2,8 @@
 /// Able to reset one's genital size back to normal upon OD, or alternatively, if the user sets the size and then disables the organ, that size.
 /datum/reagent/drug/aphrodisiac/camphor
 	name = "Camphor"
-	description = "Naturally found in some species of evergreen trees, camphor is a waxy substance. When ingested by most animals it acts as an anaphrodisiac, \
-					reducing libido and calming them. Non-habit forming and non-addictive. This is not an aphrodisiac."
-	taste_description = "dull bitterness"
+	description = "Naturalmente encontrado em algumas espécies de árvores sempre verdes, cânfora é uma substância cera. Quando ingerido pela maioria dos animais age como um anafrodisíaco, reduzindo a libido e acalmando-os. Formando não-habitação e não-addictivo. Isso não é afrodisíaco."
+	taste_description = "amargura maçante"
 	taste_mult = 2
 	color = "#D9D9D9"
 	overdose_threshold = 25 // OD will reset sizes of genitals back to normal.
@@ -18,7 +17,7 @@
 	exposed_mob.adjust_arousal(arousal_adjust_amount)
 	exposed_mob.adjust_pleasure(pleasure_adjust_amount)
 	if(exposed_mob.arousal <= 0 && old_arousal > 0)
-		to_chat(exposed_mob, span_notice("You no longer feel aroused."))
+		to_chat(exposed_mob, span_notice("Você não se sente mais excitado."))
 
 /datum/reagent/drug/aphrodisiac/camphor/overdose_effects(mob/living/carbon/human/exposed_mob)
 	var/modified_genitals = FALSE
@@ -82,12 +81,12 @@
 
 // Notify the user that they're overdosing. Doesn't affect their mood.
 /datum/reagent/drug/aphrodisiac/camphor/overdose_start(mob/living/carbon/human/exposed_mob)
-	to_chat(exposed_mob, span_userdanger("You feel like you took too much [name]!"))
+	to_chat(exposed_mob, span_userdanger("Você sente que tomou demais.[name]!"))
 	exposed_mob.add_mood_event("[type]_overdose", /datum/mood_event/minor_overdose, name)
 
 /datum/chemical_reaction/camphor
 	results = list(/datum/reagent/drug/aphrodisiac/camphor = 6)
 	required_reagents = list(/datum/reagent/carbon = 2, /datum/reagent/hydrogen = 2, /datum/reagent/oxygen = 2, /datum/reagent/sulfur = 1)
 	required_temp = 400
-	mix_message = "The mixture boils off a yellow, smelly vapor..."
+	mix_message = "A mistura ferve de um vapor amarelo e fedorento..."
 	erp_reaction = TRUE

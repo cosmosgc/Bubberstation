@@ -46,14 +46,13 @@
 	lover.remove_status_effect(/datum/status_effect/in_love)
 
 /datum/antagonist/valentine/greet()
-	to_chat(owner, span_boldwarning("You're on a date with [date.name]! Protect [date.p_them()] at all costs. \
-		This takes priority over all other loyalties."))
+	to_chat(owner, span_boldwarning("Você está em um encontro com[date.name]Proteja![date.p_them()]a todo custo. Isso tem prioridade sobre todas as outras lealdades."))
 
 //Squashed up a bit
 /datum/antagonist/valentine/roundend_report()
 	var/datum/antagonist/valentine/dates_valentine = date?.has_antag_datum(type)
 	if(isnull(dates_valentine))
-		return span_redtext("[owner.name] had no date!")
+		return span_redtext("[owner.name]Não tinha nenhum encontro!")
 
 	dates_valentine.show_in_roundend = FALSE // We show up for them instead
 	var/datum/objective/protect/valentine/our_objective = locate() in objectives
@@ -62,12 +61,12 @@
 	var/dates_survived = our_objective?.check_completion()
 
 	if(we_survived && dates_survived)
-		return span_greentext("[owner.name] and [date.name] had a successful date!")
+		return span_greentext("[owner.name]e[date.name]Tive um encontro bem sucedido!")
 	else if(we_survived)
-		return span_redtext("[owner.name] failed to protect [date.name], [owner.p_their()] date!")
+		return span_redtext("[owner.name]Falhou em proteger[date.name], [owner.p_their()]Encontro!")
 	else if(dates_survived)
-		return span_redtext("[date.name] failed to protect [owner.name], [date.p_their()] date!")
-	return span_redtext("[owner.name] and [date.name] both failed to protect each other on their date!")
+		return span_redtext("[date.name]Falhou em proteger[owner.name], [date.p_their()]Encontro!")
+	return span_redtext("[owner.name]e[date.name]Ambos falharam em proteger um ao outro em seu encontro!")
 
 /datum/antagonist/valentine/third_wheel
 	name = "\improper Third Wheel"
@@ -77,13 +76,13 @@
 /datum/antagonist/valentine/third_wheel/roundend_report()
 	var/datum/objective/protect/valentine/our_objective = locate() in objectives
 	if(our_objective?.check_completion())
-		return span_greentext("[owner.name] was a third wheel, but protected [date.name]!")
+		return span_greentext("[owner.name]era uma terceira roda, mas protegida[date.name]!")
 
-	return span_redtext("[owner.name] was a third wheel, but failed to protect [date.name]!")
+	return span_redtext("[owner.name]era uma terceira roda, mas falhou em proteger[date.name]!")
 
 /datum/objective/protect/valentine
 	admin_grantable = FALSE
 	human_check = FALSE
 
 /datum/objective/protect/valentine/update_explanation_text()
-	explanation_text = "Protect [target.name], your date."
+	explanation_text = "Proteger[target.name]Seu encontro."

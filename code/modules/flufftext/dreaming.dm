@@ -261,7 +261,7 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 	. += "You feel exhausted"
 
 /datum/mood_event/mansus_dream_fatigue
-	description = "I must recover before I can dream of Mansus again."
+	description = "Precisa me recuperar antes de sonhar com Mansus novamente."
 	mood_change = -2
 	timeout = 5 MINUTES
 

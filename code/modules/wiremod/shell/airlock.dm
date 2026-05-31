@@ -14,12 +14,7 @@
 
 /obj/machinery/door/airlock/shell/Initialize(mapload)
 	. = ..()
-	AddComponent( \
-		/datum/component/shell, \
-		unremovable_circuit_components = list(new /obj/item/circuit_component/airlock, new /obj/item/circuit_component/airlock_access_event, new /obj/item/circuit_component/remotecam/airlock), \
-		capacity = SHELL_CAPACITY_LARGE, \
-		shell_flags = SHELL_FLAG_ALLOW_FAILURE_ACTION|SHELL_FLAG_REQUIRE_ANCHOR \
-	)
+	AddComponent( 		/datum/component/shell, 		unremovable_circuit_components = list(new /obj/item/circuit_component/airlock, new /obj/item/circuit_component/airlock_access_event, new /obj/item/circuit_component/remotecam/airlock), 		capacity = SHELL_CAPACITY_LARGE, 		shell_flags = SHELL_FLAG_ALLOW_FAILURE_ACTION|SHELL_FLAG_REQUIRE_ANCHOR 	)
 
 /obj/machinery/door/airlock/shell/check_access(obj/item/I)
 	return FALSE
@@ -40,7 +35,7 @@
 
 /obj/item/circuit_component/airlock
 	display_name = "Airlock"
-	desc = "The general interface with an airlock. Includes general statuses of the airlock"
+	desc = "A interface geral com uma câmara de ar. Inclui status geral da câmara de ar."
 
 	/// The shell, if it is an airlock.
 	var/obj/machinery/door/airlock/attached_airlock
@@ -135,8 +130,8 @@
 
 
 /obj/item/circuit_component/airlock_access_event
-	display_name = "Airlock Access Event"
-	desc = "An event that can be handled through circuit components to determine if the door should open or not for an entity that might be trying to access it."
+	display_name = "Evento de acesso à câmara de ar"
+	desc = "Um evento que pode ser manuseado através de componentes de circuito para determinar se a porta deve abrir ou não para uma entidade que pode estar tentando acessá-la."
 	circuit_flags = CIRCUIT_FLAG_INSTANT
 
 	/// The shell, if it is an airlock.
@@ -191,7 +186,7 @@
 	var/list/result = SScircuit_component.execute_instant_run()
 
 	if(!result)
-		attached_airlock.visible_message(span_warning("[attached_airlock]'s circuitry overheats!"))
+		attached_airlock.visible_message(span_warning("[attached_airlock]O circuito superaquece!"))
 		return
 
 	if(result["should_open"])

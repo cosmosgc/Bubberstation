@@ -4,7 +4,7 @@
 	typepath = /datum/round_event/wizard/rpgloot
 	max_occurrences = 1
 	earliest_start = 0 MINUTES
-	description = "Every item in the world will have fantastical names."
+	description = "Cada item do mundo terá nomes fantásticos."
 	min_wizard_trigger_potency = 4
 	max_wizard_trigger_potency = 7
 
@@ -13,7 +13,7 @@
 
 /obj/item/upgradescroll
 	name = "item fortification scroll"
-	desc = "Somehow, this piece of paper can be applied to items to make them \"better\". Apparently there's a risk of losing the item if it's already \"too good\". <i>This all feels so arbitrary...</i>"
+	desc = "De alguma forma, este pedaço de papel pode ser aplicado a itens para fazê-los\"Melhor.\"Aparentemente há um risco de perder o item se já está\"Muito bom.\". <i>Isso tudo parece tão arbitrário...</i>"
 	icon = 'icons/obj/scrolls.dmi'
 	icon_state = "scroll"
 	worn_icon_state = "scroll"
@@ -41,13 +41,13 @@
 	target.AddComponent(/datum/component/fantasy, upgrade_amount, null, null, can_backfire, TRUE)
 	uses -= 1
 	if(!uses)
-		visible_message(span_warning("[src] vanishes, its magic completely consumed from the fortification."))
+		visible_message(span_warning("[src]desaparece, sua magia completamente consumida da fortificação."))
 		qdel(src)
 	return TRUE
 
 /obj/item/upgradescroll/unlimited
 	name = "unlimited foolproof item fortification scroll"
-	desc = "Somehow, this piece of paper can be applied to items to make them \"better\". This scroll is made from the tongues of dead paper wizards, and can be used an unlimited number of times, with no drawbacks."
+	desc = "De alguma forma, este pedaço de papel pode ser aplicado a itens para fazê-los\"Melhor.\"Este pergaminho é feito de línguas de magos de papel mortos, e pode ser usado um número ilimitado de vezes, sem inconvenientes."
 	uses = INFINITY
 	can_backfire = FALSE
 

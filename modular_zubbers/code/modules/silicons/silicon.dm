@@ -18,14 +18,14 @@
 		return
 
 	if(!COOLDOWN_FINISHED(door, answer_cd))
-		to_chat(src, span_warning("Your processor is still cooling down."))
+		to_chat(src, span_warning("Seu processador ainda está esfriando."))
 		return
 
 	if(!requester.can_track(src))
-		to_chat(src, span_notice("Unable to track requester."))
+		to_chat(src, span_notice("Incapaz de rastrear o solicitante."))
 		return
 	if(door.aiControlDisabled != AI_WIRE_NORMAL)
-		to_chat(src, span_notice("Unable to access airlock"))
+		to_chat(src, span_notice("Incapaz de acessar a câmara de ar."))
 		return
 
 	COOLDOWN_START(door, answer_cd, 10 SECONDS)
@@ -36,16 +36,16 @@
 				door.unbolt()
 			door.open()
 			playsound(door, 'sound/machines/ping.ogg', 50, FALSE, SILENCED_SOUND_EXTRARANGE, ignore_walls = FALSE)
-			to_chat(src, "<span class='notice'>You open the [door] for [requester].</span>")
+			to_chat(src, "<span class='notice'>Você abre o[door]para[requester].</span>")
 		if("bolt")
 			if(!door.locked)
 				door.bolt()
-				door.visible_message(span_danger("Wow you really pissed [src] off, they bolted the door in your face!"), vision_distance = COMBAT_MESSAGE_RANGE)
+				door.visible_message(span_danger("Uau, você está muito chateado.[src]Eles trancaram a porta na sua cara!"), vision_distance = COMBAT_MESSAGE_RANGE)
 		if("shock")
 			door.set_electrified(MACHINE_DEFAULT_ELECTRIFY_TIME)
 			playsound(door, 'sound/machines/buzz/buzz-sigh.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE, ignore_walls = FALSE)
-			door.visible_message(span_notice("The door buzzes, [src] has denied your request"), vision_distance = COMBAT_MESSAGE_RANGE)
+			door.visible_message(span_notice("A porta toca,[src]Negou seu pedido."), vision_distance = COMBAT_MESSAGE_RANGE)
 		if("deny")
 			playsound(door, 'sound/machines/buzz/buzz-sigh.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE, ignore_walls = FALSE)
-			door.visible_message(span_notice("The door buzzes, [src] has denied your request"), vision_distance = COMBAT_MESSAGE_RANGE)
-			to_chat(src, "You deny [requester]'s request")
+			door.visible_message(span_notice("A porta toca,[src]Negou seu pedido."), vision_distance = COMBAT_MESSAGE_RANGE)
+			to_chat(src, "Você nega.[requester]O pedido.")

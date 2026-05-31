@@ -1,11 +1,11 @@
 
 /datum/reagent/thermite
 	name = "Thermite"
-	description = "Thermite produces an aluminothermic reaction known as a thermite reaction. Can be used to melt walls."
+	description = "Thermite produz uma reação aluminotérmica conhecida como reação termite. Pode ser usado para derreter paredes."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	color = "#550000"
-	taste_description = "sweet tasting metal"
+	taste_description = "doce degustação de metal"
 
 /datum/reagent/thermite/expose_turf(turf/exposed_turf, reac_volume)
 	. = ..()
@@ -19,8 +19,7 @@
 
 /datum/reagent/nitroglycerin
 	name = "Nitroglycerin"
-	description = "Nitroglycerin is a heavy, colorless, oily liquid obtained by nitrating glycerol. \
-		It is commonly used to treat heart conditions, but also in the creation of explosives."
+	description = "Nitroglicerina é um líquido pesado, incolor e oleoso obtido por nitrificação de glicerol. É comumente usado para tratar doenças cardíacas, mas também na criação de explosivos."
 	color = COLOR_GRAY
 	taste_description = "oil"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -37,7 +36,7 @@
 
 /datum/reagent/stabilizing_agent
 	name = "Stabilizing Agent"
-	description = "Keeps unstable chemicals stable. This does not work on everything."
+	description = "Mantém os químicos instáveis estáveis. Isso não funciona em tudo."
 	color = COLOR_YELLOW
 	taste_description = "metal"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -49,7 +48,7 @@
 
 /datum/reagent/clf3
 	name = "Chlorine Trifluoride"
-	description = "A very flammable liquid capable of burning even through the hull of the station. Bursts into a fireball upon creation."
+	description = "Um líquido muito inflamável capaz de queimar até o casco da estação. Explode em uma bola de fogo sobre a criação."
 	color = "#FFC8C8"
 	metabolization_rate = 10 * REAGENTS_METABOLISM
 	taste_description = "burning"
@@ -88,9 +87,9 @@
 
 /datum/reagent/sorium
 	name = "Sorium"
-	description = "Sends everything flying from the detonation point."
+	description = "Envia tudo voando do ponto de detonação."
 	color = "#5A64C8"
-	taste_description = "air and bitterness"
+	taste_description = "Ar e amargura"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -101,9 +100,9 @@
 
 /datum/reagent/liquid_dark_matter
 	name = "Liquid Dark Matter"
-	description = "Sucks everything into the detonation point."
+	description = "Suga tudo para o ponto de detonação."
 	color = "#210021"
-	taste_description = "compressed bitterness"
+	taste_description = "Amargura comprimida"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -114,7 +113,7 @@
 
 /datum/reagent/gunpowder
 	name = "Gunpowder"
-	description = "Explodes. Violently."
+	description = "Explodir. Violentamente."
 	color = COLOR_BLACK
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
 	taste_description = "salt"
@@ -153,7 +152,7 @@
 		reagent_explode(holder, volume, modifier = 5, strengthdiv = 10, clear_holder_reagents = FALSE, flame_factor = 1)
 		return SPARK_ACT_DESTRUCTIVE | SPARK_ACT_CLEAR_ALL
 
-	holder.my_atom.visible_message(span_boldnotice("Sparks start flying around the gunpowder!"))
+	holder.my_atom.visible_message(span_boldnotice("Sparks começam a voar em torno da pólvora!"))
 	if (!(spark_flags & SPARK_ACT_ENCLOSED))
 		do_sparks(2, TRUE, get_turf(holder.my_atom))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(reagent_explode), holder, volume, 5, 10), rand(5 SECONDS, 10 SECONDS))
@@ -161,7 +160,7 @@
 
 /datum/reagent/rdx
 	name = "RDX"
-	description = "Military grade explosive"
+	description = "Explosivo de Grau Militar"
 	color = COLOR_WHITE
 	taste_description = "salt"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -180,7 +179,7 @@
 
 /datum/reagent/tatp
 	name = "TaTP"
-	description = "Suicide grade explosive"
+	description = "Explosivo de grau suicida"
 	color = COLOR_WHITE
 	taste_description = "death"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -192,7 +191,7 @@
 
 /datum/reagent/flash_powder
 	name = "Flash Powder"
-	description = "Makes a very bright flash."
+	description = "Faz um flash muito brilhante."
 	color = "#C8C8C8"
 	taste_description = "salt"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -223,7 +222,7 @@
 
 /datum/reagent/smoke_powder
 	name = "Smoke Powder"
-	description = "Makes a large cloud of smoke that can carry reagents."
+	description = "Faz uma grande nuvem de fumaça que pode transportar reagentes."
 	color = "#C8C8C8"
 	taste_description = "smoke"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -239,16 +238,16 @@
 	if (iscarbon(holder.my_atom))
 		var/mob/living/carbon/victim = holder.my_atom
 		if (victim.stat != DEAD)
-			victim.visible_message(span_warning("[victim] starts violently coughing up smoke!"))
+			victim.visible_message(span_warning("[victim]Começa a tossir fumaça violentamente!"))
 		victim.adjust_organ_loss(ORGAN_SLOT_LUNGS, volume / 15)
 	do_chem_smoke(amount = volume / 1.5, holder = holder.my_atom, location = location, carry = holder, silent = FALSE, log = TRUE)
 	return SPARK_ACT_NON_DESTRUCTIVE | SPARK_ACT_CLEAR_ALL
 
 /datum/reagent/sonic_powder
 	name = "Sonic Powder"
-	description = "Makes a deafening noise."
+	description = "Faz um Barulho Surdecedor."
 	color = "#C8C8C8"
-	taste_description = "loud noises"
+	taste_description = "Barulhos altos."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -262,7 +261,7 @@
 
 /datum/reagent/phlogiston
 	name = "Phlogiston"
-	description = "Catches you on fire and makes you ignite."
+	description = "Te pega em Chamas e te faz arder."
 	color = "#FA00AF"
 	taste_description = "burning"
 	self_consuming = TRUE
@@ -297,7 +296,7 @@
 
 /datum/reagent/napalm
 	name = "Napalm"
-	description = "Very flammable."
+	description = "Muito inflamável."
 	color = "#FA00AF"
 	taste_description = "burning"
 	self_consuming = TRUE
@@ -339,11 +338,11 @@
 
 /datum/reagent/cryostylane
 	name = "Cryostylane"
-	description = "Induces a cryostasis like state in a patient's organs, preventing them from decaying while dead. Slows down surgery while in a patient however. When reacted with oxygen, it will slowly consume it and reduce a container's temperature to 0K. Also damages slime simplemobs when 5u is sprayed."
+	description = "Induz uma criostase como estado nos órgãos de um paciente, impedindo-os de decair enquanto estão mortos. Abranda a cirurgia em um paciente. Quando reage com oxigênio, lentamente o consome e reduz a temperatura de um recipiente para 0K. Também danifica lodo simples quando 5u é pulverizado."
 	color = "#0000DC"
 	ph = 8.6
 	metabolization_rate = 0.05 * REAGENTS_METABOLISM
-	taste_description = "icy bitterness"
+	taste_description = "Amargo gelado"
 	purity = REAGENT_STANDARD_PURITY
 	self_consuming = TRUE
 	inverse_chem_val = 0.5
@@ -396,7 +395,7 @@
 
 /datum/reagent/pyrosium
 	name = "Pyrosium"
-	description = "Comes into existence at 20K. As long as there is sufficient oxygen for it to react with, Pyrosium slowly heats all other reagents in the container."
+	description = "Aparece a 20 mil. Enquanto houver oxigênio suficiente para reagir, Pyrosium aquece lentamente todos os outros reagentes no recipiente."
 	color = "#64FAC8"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	taste_description = "bitterness"
@@ -423,10 +422,10 @@
 
 /datum/reagent/teslium //Teslium. Causes periodic shocks, and makes shocks against the target much more effective.
 	name = "Teslium"
-	description = "An unstable, electrically-charged metallic slurry. Periodically electrocutes its victim, and makes electrocutions against them more deadly. Excessively heating teslium results in dangerous destabilization. Do not allow it to come into contact with water."
+	description = "Uma pasta metálica instável, carregada eletricamente. Periodicamente eletrocuta sua vítima, e faz eletrocuções contra eles mais mortais. Aquecimento excessivo resulta em desestabilização perigosa. Não permita que entre em contato com água."
 	color = "#20324D" //RGB: 32, 50, 77
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	taste_description = "charged metal"
+	taste_description = "Carregado de metal"
 	self_consuming = TRUE
 	var/shock_timer = 0
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -469,7 +468,7 @@
 
 /datum/reagent/teslium/energized_jelly
 	name = "Energized Jelly"
-	description = "Electrically-charged jelly. Boosts jellypeople's nervous system, but only shocks other lifeforms."
+	description = "Geléia carregada eletronicamente. Aumenta o sistema nervoso das pessoas, mas só choca outras formas de vida."
 	color = "#CAFF43"
 	taste_description = "jelly"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -488,9 +487,9 @@
 
 /datum/reagent/firefighting_foam
 	name = "Firefighting Foam"
-	description = "A historical fire suppressant. Originally believed to simply displace oxygen to starve fires, it actually interferes with the combustion reaction itself. Vastly superior to the cheap water-based extinguishers found on NT vessels."
+	description = "Um supressor de incêndio histórico. Originalmente acreditado para simplesmente deslocar oxigênio para incêndios de fome, ele realmente interfere com a própria reação de combustão. Muito superior aos extintores baratos à base de água encontrados em vasos NT."
 	color = "#A6FAFF55"
-	taste_description = "the inside of a fire extinguisher"
+	taste_description = "o interior de um extintor de incêndio"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 

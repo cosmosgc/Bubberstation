@@ -48,7 +48,7 @@ const Info = (props) => {
       <LabeledList.Item label="Name">
         {can_rename ? (
           <Input
-            placeholder="Input a name"
+            placeholder="Introduza um nome"
             value={name === 'Unknown' ? '' : name}
             onBlur={(value) =>
               act('rename_disease', {
@@ -83,22 +83,22 @@ const Traits = (props) => {
   return (
     <Section title="Statistics">
       <LabeledList>
-        <Tooltip content="Protection from cures and natural recovery.">
+        <Tooltip content="Proteção contra curas e recuperação natural.">
           <LabeledList.Item color={getColor(resistance)} label="Resistance">
             {resistance}
           </LabeledList.Item>
         </Tooltip>
-        <Tooltip content="Symptomic progression.">
-          <LabeledList.Item color={getColor(stage_speed)} label="Stage speed">
+        <Tooltip content="Progressão sintomática.">
+          <LabeledList.Item color={getColor(stage_speed)} label="Velocidade do palco">
             {stage_speed}
           </LabeledList.Item>
         </Tooltip>
-        <Tooltip content="Detection difficulty from medical equipment.">
+        <Tooltip content="Dificuldade de detecção de equipamentos médicos.">
           <LabeledList.Item color={getColor(stealth)} label="Stealth">
             {stealth}
           </LabeledList.Item>
         </Tooltip>
-        <Tooltip content="Decides the spread type.">
+        <Tooltip content="Decide o tipo de espalhamento.">
           <LabeledList.Item
             color={getColor(transmission)}
             label="Transmissibility"
@@ -106,7 +106,7 @@ const Traits = (props) => {
             {transmission}
           </LabeledList.Item>
         </Tooltip>
-        <Tooltip content="Overall danger posed by the disease.">
+        <Tooltip content="O perigo da doença.">
           <LabeledList.Item
             color={getColor(severity)}
             label="Severity"

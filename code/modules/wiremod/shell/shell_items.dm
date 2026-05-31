@@ -5,18 +5,18 @@
  */
 /obj/item/shell
 	name = "assembly"
-	desc = "A shell assembly that can be completed by screwdrivering it."
+	desc = "Um conjunto de conchas que pode ser concluído com uma chave de fenda."
 	icon = 'icons/obj/science/circuits.dmi'
 	abstract_type = /obj/item/shell
 	var/shell_to_spawn
 	var/screw_delay = 3 SECONDS
 
 /obj/item/shell/screwdriver_act(mob/living/user, obj/item/tool)
-	user.visible_message(span_notice("[user] begins finishing [src]."), span_notice("You begin finishing [src]."))
+	user.visible_message(span_notice("[user]Começa a terminar.[src]."), span_notice("Você começa a terminar.[src]."))
 	tool.play_tool_sound(src)
 	if(!do_after(user, screw_delay, src))
 		return
-	user.visible_message(span_notice("[user] finishes [src]."), span_notice("You finish [src]."))
+	user.visible_message(span_notice("[user]Termina[src]."), span_notice("Você termina.[src]."))
 
 	var/turf/drop_loc = drop_location()
 

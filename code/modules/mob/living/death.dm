@@ -243,7 +243,7 @@
 		if(valid_area_check)
 			deadchat_broadcast(" has died at <b>[get_area_name(death_turf)]</b>.", "<b>[mind.name]</b>", follow_target = src, turf_target = death_turf, message_type=DEADCHAT_DEATHRATTLE)
 		if(SSlag_switch.measures[DISABLE_DEAD_KEYLOOP] && !client?.holder)
-			to_chat(src, span_deadsay(span_big("Observer freelook is disabled.\nPlease use Orbit, Teleport, and Jump to look around.")))
+			to_chat(src, span_deadsay(span_big("O observador Freelook está desativado.\nPor favor, use Orbit, Teleport e Pule para dar uma olhada.")))
 			ghostize(TRUE)
 	set_disgust(0)
 	SetSleeping(0, 0)

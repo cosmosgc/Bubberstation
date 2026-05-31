@@ -1,11 +1,11 @@
 /datum/quirk/egg_production
 	name = "Oviparity"
-	desc = "Whether it be genetics or some other factor, you are capable of producing eggs."
+	desc = "Seja genética ou outro fator, você é capaz de produzir ovos."
 	icon = FA_ICON_EGG
 	value = 0
-	gain_text = span_notice("You suddenly feel rather productive.")
-	lose_text = span_warning("You no longer feel productive. Sad.")
-	medical_record_text = "Patient possesses the capability to produce eggs."
+	gain_text = span_notice("Você de repente se sente bastante produtivo.")
+	lose_text = span_warning("Você não se sente mais produtivo. Triste.")
+	medical_record_text = "O paciente pode ter a capacidade de produzir ovos."
 
 //Quirk addition
 /datum/quirk/egg_production/add(client/client_source)
@@ -25,7 +25,7 @@
 /// The full action functionality segment
 /datum/action/cooldown/spell/egg_production
 	name = "Produce an Egg"
-	desc = "Concentrate your efforts to lay an egg. Questionable use in public."
+	desc = "Concentre seus esforços para pôr um ovo. Uso questionável em público."
 
 	button_icon = 'icons/obj/food/egg.dmi'
 	button_icon_state = "egg"
@@ -105,7 +105,7 @@
 
 /datum/action/cooldown/spell/egg_production/proc/egg_update(delta, mob/living/egg_holder)
 	eggs_stored = clamp((eggs_stored + delta), 0, maximum_eggs) // clamps the stored eggs value between 0 and the maximum, AND increments by the delta amount (which should be 1)
-	desc = "[initial(desc)]. You carry [eggs_stored] egg\s." // this is meant to add an active readout of how many eggs are stored on mouse-over of the action
+	desc = "[initial(desc)]Você carrega[eggs_stored]Ovos." // this is meant to add an active readout of how many eggs are stored on mouse-over of the action
 
 	if(eggs_stored == 0)// handles removal of the modifier if stored eggs is 0
 		owner.remove_movespeed_modifier(/datum/movespeed_modifier/eggnant, update = TRUE)
@@ -122,18 +122,18 @@
 
 	switch(eggs_stored) //Tracks each threshold a to_chat should be triggered, a separate 98 value is there to ensure an alt text is displayed for going back down from max.
 		if(20)
-			to_chat(owner, span_purple("You're beginning to feel [is_delta_negative ? "less weighed down, but still full..." : "rather heavy..."]"))
+			to_chat(owner, span_purple("Você está começando a sentir[is_delta_negative ? "less weighed down, but still full..." : "rather heavy..."]"))
 		if(40)
-			to_chat(owner, span_purple("You feel [is_delta_negative ? "less swollen, but still really heavy..." : "really swollen with all these eggs..."]"))
+			to_chat(owner, span_purple("Você sente[is_delta_negative ? "less swollen, but still really heavy..." : "really swollen with all these eggs..."]"))
 		if(60)
 			to_chat(owner, span_crossooc("[is_delta_negative ? "You're a bit less taut, but still feel very swollen!" : "You're overly gravid! You feel like you should really lay these eggs soon..."]"))
 		if(80)
-			to_chat(owner, span_crossooc("You feel [is_delta_negative ? "a little relieved, but still extremely taut!" : "very close to full at this point, any more eggs and you'll run out of room!"]"))
+			to_chat(owner, span_crossooc("Você sente[is_delta_negative ? "a little relieved, but still extremely taut!" : "very close to full at this point, any more eggs and you'll run out of room!"]"))
 		if(100)
-			to_chat(owner, span_alertwarning("Your body can't handle anymore eggs! You need to lay some to make room, now!"))
+			to_chat(owner, span_alertwarning("Seu corpo não aguenta mais ovos! Precisa colocar um pouco para dar espaço, agora!"))
 		if(98)
 			if(is_delta_negative)
-				to_chat(owner, span_warning("You feel like you still have very little room for anymore eggs..."))
+				to_chat(owner, span_warning("Você sente que ainda tem muito pouco espaço para mais ovos..."))
 
 //setting the base movespeed modifier
 /datum/movespeed_modifier/eggnant
@@ -143,16 +143,16 @@
 /datum/action/cooldown/spell/egg_production/cast(mob/living/cast_on)
 	.=..()
 	if(eggs_stored <= 0)
-		owner.balloon_alert(owner, "no eggs to lay!")
+		owner.balloon_alert(owner, "Sem ovos para pôr!")
 		return FALSE
 
-	to_chat(owner, span_noticealien("You start laying an egg..."))
+	to_chat(owner, span_noticealien("Você começa a pôr um ovo..."))
 	if(!do_after(owner, 10 SECONDS, cast_on, IGNORE_HELD_ITEM))
-		owner.balloon_alert(owner, "stopped attempting to lay an egg.")
+		owner.balloon_alert(owner, "Parei de tentar pôr um ovo.")
 		return FALSE
 
 	egg_update(-1) //decrements the stored eggs by 1
 	egg = new(owner)
 	owner.put_in_hands(egg)
-	owner.visible_message(span_noticealien("[owner] laid an egg!"), span_alertalien("You laid an egg!"))
+	owner.visible_message(span_noticealien("[owner]Coloque um ovo!"), span_alertalien("Você botou um ovo!"))
 	return TRUE

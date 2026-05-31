@@ -27,7 +27,7 @@ export function useChatPersistence() {
   useEffect(() => {
     if (!loaded && settingsLoaded) {
       async function fetchChat(): Promise<void> {
-        console.log('Initializing chat');
+        console.log('Inicializando chat');
         await loadChatFromStorage();
 
         setLoaded(true);
@@ -61,13 +61,13 @@ export function useChatPersistence() {
 
     // Empty settings, set defaults
     if (!state) {
-      console.log('Initialized chat with default settings');
+      console.log('Conversa inicializada com configurações padrão');
     } else if (state && 'version' in state && state.version === version) {
-      console.log('Loaded chat state from storage:', state);
+      console.log('Estado de bate-papo carregado do armazenamento:', state);
       startChatStateMigration(state);
     } else {
       // Discard incompatible versions
-      console.log('Discarded incompatible chat state from storage:', state);
+      console.log('Descartado estado incompatível de bate-papo do armazenamento:', state);
     }
   }
 

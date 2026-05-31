@@ -4,7 +4,7 @@ GLOBAL_VAR_INIT(experimental_cloner_fuckup_chance, 50)
 /// Machine which experimentally clones people you scanned with the experimental cloner scanner
 /obj/machinery/experimental_cloner
 	name = "experimental cloning pod"
-	desc = "An early prototype of the currently-outlawed cloning pods used by Nanotrasen executives. I wonder if it still works?"
+	desc = "Um protótipo antigo das cápsulas de clonagem atualmente proibidas usadas pelos executivos Nanotrasen. Será que ainda funciona?"
 	icon = 'icons/obj/machines/cloning.dmi'
 	icon_state = "pod_0"
 	base_icon_state = "pod"
@@ -39,7 +39,7 @@ GLOBAL_VAR_INIT(experimental_cloner_fuckup_chance, 50)
 /obj/machinery/experimental_cloner/examine(mob/user)
 	. = ..()
 	if (running)
-		. += span_notice("You can see a shape forming in the murky liquid.")
+		. += span_notice("Você pode ver uma forma se formando no líquido escuro.")
 
 /obj/machinery/experimental_cloner/update_icon_state()
 	. = ..()
@@ -55,16 +55,16 @@ GLOBAL_VAR_INIT(experimental_cloner_fuckup_chance, 50)
 
 	if (!tool.tool_start_check(user, amount = 5))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("You start slicing \the [src] apart."))
+	to_chat(user, span_notice("Você começa a cortar\the [src]Separados."))
 	if(!tool.use_tool(src, user, 6 SECONDS, amount = 5, volume = 50))
 		return ITEM_INTERACT_BLOCKING
 	deconstruct(disassembled = TRUE)
-	to_chat(user, span_notice("You slice \the [src] apart."))
+	to_chat(user, span_notice("Você corta.\the [src]Separados."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/experimental_cloner/multitool_act(mob/living/user, obj/item/multitool/tool)
 	tool.set_buffer(src)
-	balloon_alert(user, "frequency stored")
+	balloon_alert(user, "frequência armazenada")
 	return ITEM_INTERACT_SUCCESS
 
 /// Start growing a guy
@@ -111,7 +111,7 @@ GLOBAL_VAR_INIT(experimental_cloner_fuckup_chance, 50)
 		checked_target = result,
 		ignore_category = POLL_IGNORE_EXPERIMENTAL_CLONER,
 		alert_pic = result,
-		role_name_text = "Clone of [loaded_record.name]",
+		role_name_text = "Clone de[loaded_record.name]",
 		announce_chosen = TRUE,
 	)
 
@@ -126,7 +126,7 @@ GLOBAL_VAR_INIT(experimental_cloner_fuckup_chance, 50)
 
 	chosen_one.log_message("took control of experimental clone of [result].", LOG_GAME)
 	result.PossessByPlayer(chosen_one.ckey)
-	to_chat(chosen_one, span_boldnotice("You are [loaded_record.name]! You aren't quite sure where you are or how you got here, though."))
+	to_chat(chosen_one, span_boldnotice("Você é.[loaded_record.name]Você não tem certeza de onde está ou como chegou aqui."))
 	var/policy = get_policy(ROLE_EXPERIMENTAL_CLONER)
 	if (policy)
 		to_chat(chosen_one, span_notice(policy))

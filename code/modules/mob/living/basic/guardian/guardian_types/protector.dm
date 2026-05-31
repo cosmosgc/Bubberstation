@@ -7,7 +7,7 @@
 	damage_coeff = list(BRUTE = 0.4, BURN = 0.4, TOX = 0.4, STAMINA = 0, OXY = 0.4)
 	playstyle_string = span_holoparasite("As a <b>protector</b> type you cause your summoner to leash to you instead of you leashing to them and have two modes; Combat Mode, where you do and take medium damage, and Protection Mode, where you do and take almost no damage, but move slightly slower.")
 	creator_name = "Protector"
-	creator_desc = "Causes you to teleport to it when out of range, unlike other parasites. Has two modes; Combat, where it does and takes medium damage, and Protection, where it does and takes almost no damage but moves slightly slower."
+	creator_desc = "Faz com que você se teletransporte para ele quando fora de alcance, ao contrário de outros parasitas. Tem dois modos, combate, onde faz e leva danos médios, e proteção, onde faz e quase não leva danos, mas se move um pouco mais lento."
 	creator_icon = "protector"
 	toggle_button_type = /datum/action/cooldown/guardian/toggle_mode
 	/// Action which toggles our shield
@@ -41,7 +41,7 @@
 /// Toggle a status effect which makes you slow but defensive
 /datum/action/cooldown/mob_cooldown/protector_shield
 	name = "Protection Mode"
-	desc = "Enter a defensive stance which slows you down and reduces your damage, but makes you almost invincible."
+	desc = "Introduza uma postura defensiva que te atrasa e reduz seus danos, mas te torna quase invencível."
 	button_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "shield-old"
 	background_icon = 'icons/hud/guardian.dmi'
@@ -91,7 +91,7 @@
 		original_damage_coeff = basic_owner.damage_coeff
 		basic_owner.damage_coeff = shielded_damage
 
-	to_chat(owner, span_bolddanger("You enter protection mode."))
+	to_chat(owner, span_bolddanger("Você entra no modo de proteção."))
 	RegisterSignal(owner, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(on_update_overlays))
 	RegisterSignals(owner, COMSIG_LIVING_ADJUST_STANDARD_DAMAGE_TYPES, PROC_REF(on_health_changed))
 	owner.update_appearance(UPDATE_ICON)
@@ -106,7 +106,7 @@
 		var/mob/living/basic/basic_owner = owner
 		basic_owner.damage_coeff = original_damage_coeff
 
-	to_chat(owner, span_bolddanger("You return to your normal mode."))
+	to_chat(owner, span_bolddanger("Volte ao seu modo normal."))
 	UnregisterSignal(owner, list(COMSIG_ATOM_UPDATE_OVERLAYS) + COMSIG_LIVING_ADJUST_STANDARD_DAMAGE_TYPES)
 	owner.update_appearance(UPDATE_ICON)
 

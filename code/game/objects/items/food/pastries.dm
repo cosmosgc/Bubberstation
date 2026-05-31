@@ -4,7 +4,7 @@
 
 /obj/item/food/muffin
 	name = "muffin"
-	desc = "A delicious and spongy little cake."
+	desc = "Um bolo delicioso e esponjoso."
 	icon_state = "muffin"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -19,7 +19,7 @@
 /obj/item/food/muffin/berry
 	name = "berry muffin"
 	icon_state = "berrymuffin"
-	desc = "A delicious and spongy little cake, with berries."
+	desc = "Um bolo delicioso e esponjoso, com bagas."
 	tastes = list("muffin" = 3, "berry" = 1)
 	foodtypes = GRAIN|DAIRY|SUGAR|BREAKFAST|FRUIT
 	venue_value = FOOD_PRICE_NORMAL
@@ -29,7 +29,7 @@
 	name = "booberry muffin"
 	icon_state = "berrymuffin"
 	alpha = 125
-	desc = "My stomach is a graveyard! No living being can quench my bloodthirst!"
+	desc = "Meu estômago é um cemitério! Nenhum ser vivo pode matar minha sede de sangue!"
 	tastes = list("muffin" = 3, "spookiness" = 1)
 	foodtypes = GRAIN|DAIRY|SUGAR|BREAKFAST|FRUIT
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -42,7 +42,7 @@
 	name = "moffin"
 	icon_state = "moffin_1"
 	base_icon_state = "moffin"
-	desc = "A delicious and spongy little cake."
+	desc = "Um bolo delicioso e esponjoso."
 	tastes = list("muffin" = 3, "dust" = 1, "lint" = 1)
 	foodtypes = CLOTH|DAIRY|GRAIN|SUGAR|BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -57,15 +57,15 @@
 		return
 	var/mob/living/moffin_observer = user
 	if(moffin_observer.get_liked_foodtypes() & CLOTH)
-		. += span_nicegreen("Ooh! It's even got bits of clothes on it! Yummy!")
+		. += span_nicegreen("Ooh! Tem até pedaços de roupas nele! Delicioso!")
 	else
-		. += span_warning("You're not too sure what's on top though...")
+		. += span_warning("Não tem certeza do que está por cima.")
 
 ////////////////////////////////////////////WAFFLES////////////////////////////////////////////
 
 /obj/item/food/waffles
 	name = "waffles"
-	desc = "Mmm, waffles."
+	desc = "Waffles."
 	icon_state = "waffles"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 8,
@@ -82,7 +82,7 @@
 
 /obj/item/food/soylentgreen
 	name = "\improper Soylent Green"
-	desc = "Not made of people. Honest." //Totally people.
+	desc = "Não feito de pessoas. Sério." //Totally people.
 	icon_state = "soylent_green"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 10,
@@ -97,7 +97,7 @@
 
 /obj/item/food/soylenviridians
 	name = "\improper Soylent Virdians"
-	desc = "Not made of people. Honest." //Actually honest for once.
+	desc = "Não feito de pessoas. Sério." //Actually honest for once.
 	icon_state = "soylent_yellow"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 10,
@@ -111,7 +111,7 @@
 
 /obj/item/food/rofflewaffles
 	name = "roffle waffles"
-	desc = "Waffles from Roffle. Co."
+	desc = "Waffles de Roffle. Co."
 	icon_state = "rofflewaffles"
 	bite_consumption = 4
 	food_reagents = list(
@@ -132,7 +132,7 @@
 
 /obj/item/food/cookie
 	name = "cookie"
-	desc = "COOKIE!!!"
+	desc = "COOKIE!!"
 	icon_state = "COOKIE!!!"
 	bite_consumption = 1
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -151,7 +151,7 @@
 
 /obj/item/food/fortunecookie
 	name = "fortune cookie"
-	desc = "A true prophecy in each cookie!"
+	desc = "Uma verdadeira profecia em cada biscoito!"
 	icon_state = "fortune_cookie"
 	trash_type = /obj/item/paper/paperslip/fortune
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
@@ -181,7 +181,7 @@
 
 /obj/item/food/cookie/sugar
 	name = "sugar cookie"
-	desc = "Just like your little sister used to make."
+	desc = "Como sua irmãzinha fazia."
 	icon_state = "sugarcookie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
@@ -195,12 +195,12 @@
 	. = ..()
 	if(seasonal_changes && check_holidays(FESTIVE_SEASON))
 		var/shape = pick("tree", "bear", "santa", "stocking", "present", "cane")
-		desc = "A sugar cookie in the shape of a [shape]. I hope Santa likes it!"
+		desc = "Um biscoito de açúcar na forma de um[shape]Espero que o Papai Noel goste!"
 		icon_state = "sugarcookie_[shape]"
 
 /obj/item/food/chococornet
 	name = "chocolate cornet"
-	desc = "Which side's the head, the fat end or the thin end?"
+	desc = "Que lado é a cabeça, a ponta gorda ou a ponta fina?"
 	icon_state = "chococornet"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -213,7 +213,7 @@
 
 /obj/item/food/cookie/oatmeal
 	name = "oatmeal cookie"
-	desc = "The best of both cookie and oat."
+	desc = "O melhor de biscoito e aveia."
 	icon_state = "oatmealcookie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -225,7 +225,7 @@
 
 /obj/item/food/cookie/raisin
 	name = "raisin cookie"
-	desc = "Why would you put raisins on a cookie?"
+	desc = "Por que colocaria passas em um biscoito?"
 	icon_state = "raisincookie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -237,7 +237,7 @@
 
 /obj/item/food/poppypretzel
 	name = "poppy pretzel"
-	desc = "It's all twisted up!"
+	desc = "Está tudo torcido!"
 	icon_state = "poppypretzel"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -251,7 +251,7 @@
 
 /obj/item/food/plumphelmetbiscuit
 	name = "plump helmet biscuit"
-	desc = "This is a finely-prepared plump helmet biscuit. The ingredients are exceptionally minced plump helmet, and well-minced dwarven wheat flour."
+	desc = "Este é um biscoito de capacete bem preparado. Os ingredientes são capacete excepcionalmente picado e farinha de trigo bem picada."
 	icon_state = "phelmbiscuit"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -267,7 +267,7 @@
 	var/fey = prob(10)
 	if(fey)
 		name = "exceptional plump helmet biscuit"
-		desc = "Microwave is taken by a fey mood! It has cooked an exceptional plump helmet biscuit!"
+		desc = "Microondas são tomadas por um humor fey! Cozinhou um excepcional biscoito de capacete gordo!"
 		food_reagents = list(
 			/datum/reagent/medicine/omnizine = 5,
 			/datum/reagent/consumable/nutriment = 1,
@@ -279,7 +279,7 @@
 
 /obj/item/food/cracker
 	name = "cracker"
-	desc = "It's a salted cracker."
+	desc = "É um biscoito salgado."
 	icon_state = "cracker"
 	bite_consumption = 1
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
@@ -291,7 +291,7 @@
 
 /obj/item/food/khachapuri
 	name = "khachapuri"
-	desc = "Bread with egg and cheese?"
+	desc = "Pão com ovo e queijo?"
 	icon_state = "khachapuri"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 11,
@@ -305,7 +305,7 @@
 
 /obj/item/food/cherrycupcake
 	name = "cherry cupcake"
-	desc = "A sweet cupcake with cherry bits."
+	desc = "Um doce cupcake com pedaços de cereja."
 	icon_state = "cherrycupcake"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -319,14 +319,14 @@
 
 /obj/item/food/cherrycupcake/blue
 	name = "blue cherry cupcake"
-	desc = "Blue cherries inside a delicious cupcake."
+	desc = "Cerejas azuis dentro de um delicioso cupcake."
 	icon_state = "bluecherrycupcake"
 	tastes = list("cake" = 3, "blue cherry" = 1)
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/jupitercupcake
 	name = "jupiter-cup-cake"
-	desc = "A static dessert."
+	desc = "Uma sobremesa estática."
 	icon_state = "jupitercupcake"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -343,7 +343,7 @@
 
 /obj/item/food/honeybun
 	name = "honey bun"
-	desc = "A sticky pastry bun glazed with honey."
+	desc = "Um pão de pastel grudento com mel."
 	icon_state = "honeybun"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -356,7 +356,7 @@
 
 /obj/item/food/cannoli
 	name = "cannoli"
-	desc = "A Sicilian treat that makes you into a wise guy."
+	desc = "Um tratamento siciliano que faz de você um espertinho."
 	icon_state = "cannoli"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -370,7 +370,7 @@
 
 /obj/item/food/icecream
 	name = "waffle cone"
-	desc = "Delicious waffle cone, but no ice cream."
+	desc = "Cone delicioso de waffle, mas sem sorvete."
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "icecream_cone_waffle"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
@@ -395,7 +395,7 @@
 
 /obj/item/food/icecream/Initialize(mapload, list/prefill_flavours)
 	if(ingredients)
-		ingredients_text = "Requires: [reagent_paths_list_to_text(ingredients)]"
+		ingredients_text = "Requer:[reagent_paths_list_to_text(ingredients)]"
 	src.prefill_flavours = prefill_flavours
 	return ..()
 
@@ -406,7 +406,7 @@
 
 /obj/item/food/icecream/chocolate
 	name = "chocolate cone"
-	desc = "Delicious chocolate cone, but no ice cream."
+	desc = "Cone de chocolate delicioso, mas sem sorvete."
 	icon_state = "icecream_cone_chocolate"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
@@ -420,7 +420,7 @@
 
 /obj/item/food/icecream/korta
 	name = "korta cone"
-	desc = "Delicious lizard-friendly cone, but no ice cream."
+	desc = "Cone delicioso, mas sem sorvete."
 	foodtypes = NUTS | SUGAR
 	ingredients = list(
 		/datum/reagent/consumable/korta_flour,
@@ -429,7 +429,7 @@
 
 /obj/item/food/cookie/peanut_butter
 	name = "peanut butter cookie"
-	desc = "A tasty, chewy peanut butter cookie."
+	desc = "Um delicioso biscoito de manteiga de amendoim."
 	icon_state = "peanut_butter_cookie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
@@ -441,7 +441,7 @@
 
 /obj/item/food/raw_brownie_batter
 	name = "raw brownie batter"
-	desc = "A sticky mixture of raw brownie batter, cook it in the oven!"
+	desc = "Uma mistura pegajosa de massa crua de brownie, cozinhe no forno!"
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "raw_brownie_batter"
 	food_reagents = list(
@@ -457,7 +457,7 @@
 
 /obj/item/food/brownie_sheet
 	name = "brownie sheet"
-	desc = "An uncut sheet of cooked brownie, use a knife to cut it!."
+	desc = "Uma folha não cortada de brownie cozido, use uma faca para cortá-lo!."
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "brownie_sheet"
 	food_reagents = list(
@@ -474,7 +474,7 @@
 
 /obj/item/food/brownie
 	name = "brownie"
-	desc = "A square slice of delicious, chewy brownie. Often the target of potheads."
+	desc = "Uma fatia quadrada de delicioso, mastigado brownie. Muitas vezes o alvo dos maconheiros."
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "brownie"
 	food_reagents = list(
@@ -488,7 +488,7 @@
 
 /obj/item/food/peanut_butter_brownie_batter
 	name = "raw peanut butter brownie batter"
-	desc = "A sticky mixture of raw peanut butter brownie batter, cook it in the oven!"
+	desc = "Uma mistura pegajosa de massa de brownie de manteiga de amendoim crua, cozinhe no forno!"
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "peanut_butter_brownie_batter"
 	food_reagents = list(
@@ -505,7 +505,7 @@
 
 /obj/item/food/peanut_butter_brownie_sheet
 	name = "peanut butter brownie sheet"
-	desc = "An uncut sheet of cooked peanut butter brownie, use a knife to cut it!"
+	desc = "Uma folha não cortada de brownie de manteiga de amendoim cozido, use uma faca para cortá-lo!"
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "peanut_butter_brownie_sheet"
 	food_reagents = list(
@@ -523,7 +523,7 @@
 
 /obj/item/food/peanut_butter_brownie
 	name = "peanut butter brownie"
-	desc = "A square slice of delicious, chewy peanut butter brownie. Often the target of potheads."
+	desc = "Uma fatia quadrada de brownie de manteiga de amendoim delicioso. Muitas vezes o alvo dos maconheiros."
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "peanut_butter_brownie"
 	food_reagents = list(
@@ -538,7 +538,7 @@
 
 /obj/item/food/crunchy_peanut_butter_tart
 	name = "crunchy peanut butter tart"
-	desc = "A miniature pie with a peanut butter filling, creamy icing, and topping of chopped nuts."
+	desc = "Uma torta em miniatura com um recheio de manteiga de amendoim, cobertura cremosa de nozes picadas."
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "crunchy_peanut_butter_tart"
 	food_reagents = list(
@@ -553,7 +553,7 @@
 
 /obj/item/food/cookie/chocolate_chip_cookie
 	name = "chocolate chip cookie"
-	desc = "A delightful-smelling chocolate chip cookie. Where's the milk?"
+	desc = "Um delicioso biscoito de chocolate. Onde está o leite?"
 	icon_state = "COOKIE!!!"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
 	tastes = list("soft cookie" = 2, "chocolate" = 3)
@@ -564,7 +564,7 @@
 
 /obj/item/food/cookie/snickerdoodle
 	name = "snickerdoodle"
-	desc = "A soft cookie made from vanilla and cinnamon."
+	desc = "Um biscoito macio feito de baunilha e canela."
 	icon_state = "snickerdoodle"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
 	tastes = list("soft cookie" = 2, "vanilla" = 3)
@@ -575,7 +575,7 @@
 
 /obj/item/food/cookie/macaron
 	name = "macaron"
-	desc = "A sandwich-like confectionary with a soft cookie shell and a creamy meringue center."
+	desc = "Um doce tipo sanduíche com uma casca de biscoito macio e um centro de merengue cremoso."
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6)
 	icon_state = "macaron_1"
 	base_icon_state = "macaron"
@@ -591,7 +591,7 @@
 
 /obj/item/food/cookie/thumbprint_cookie
 	name = "thumbprint cookie"
-	desc = "A cookie with a thumb-sized indent in the middle made for fillings. This one is filled with cherry jelly"
+	desc = "Um biscoito com um dedo no meio feito para recheio. Este está cheio de geléia de cereja."
 	icon_state = "thumbprint_cookie"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6)
 	tastes = list("cookie" = 2, "cherry jelly" = 3)

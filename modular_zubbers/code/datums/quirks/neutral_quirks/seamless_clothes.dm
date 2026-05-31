@@ -1,11 +1,11 @@
 /datum/quirk/equipping/seamless_clothes
 	name = "Seamless Heels"
-	desc = "You come with heels stuck on you. Whether it be a freak accident or part of your design, you can't take them off."
-	medical_record_text = "Subject appears to have clothing attire fused to their body."
+	desc = "Você vem com saltos presos em você. Seja um acidente ou parte do seu projeto, você não pode tirá-los."
+	medical_record_text = "O sujeito parece ter roupas fundidas em seu corpo."
 	value = 0
 	icon = FA_ICON_TSHIRT
-	gain_text = span_notice("You feel things stick to your body.")
-	lose_text = span_notice("You feel things loose their grip on your body.")
+	gain_text = span_notice("Você sente que as coisas grudam no seu corpo.")
+	lose_text = span_notice("Você sente coisas soltas em seu corpo.")
 	quirk_flags = QUIRK_HIDE_FROM_SCAN
 	forced_items = list(/obj/item/clothing/shoes/fancy_heels = list(ITEM_SLOT_FEET))
 	var/prefix = "seamless"

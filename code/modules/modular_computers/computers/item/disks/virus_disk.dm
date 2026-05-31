@@ -11,10 +11,10 @@
 
 /obj/item/disk/computer/virus/proc/send_virus(obj/item/modular_computer/pda/source, obj/item/modular_computer/pda/target, mob/living/user, message)
 	if(charges <= 0)
-		to_chat(user, span_notice("ERROR: Out of charges."))
+		to_chat(user, span_notice("Sem acusações."))
 		return FALSE
 	if(!target)
-		to_chat(user, span_notice("ERROR: Could not find device."))
+		to_chat(user, span_notice("Não achei o dispositivo."))
 		return FALSE
 	return TRUE
 
@@ -31,7 +31,7 @@
 	if(!.)
 		return FALSE
 
-	user.show_message(span_notice("Success!"))
+	user.show_message(span_notice("Sucesso!"))
 	charges--
 	target.honkvirus_amount = rand(15, 25)
 	return TRUE
@@ -51,7 +51,7 @@
 	var/datum/computer_file/program/messenger/app = locate() in target.stored_files
 	if(!app)
 		return FALSE
-	user.show_message(span_notice("Success!"))
+	user.show_message(span_notice("Sucesso!"))
 	charges--
 	app.alert_silenced = TRUE
 	app.ringtone = ""
@@ -71,7 +71,7 @@
 
 	var/difficulty = target.get_detomatix_difficulty()
 	if(SEND_SIGNAL(target, COMSIG_TABLET_CHECK_DETONATE) & COMPONENT_TABLET_NO_DETONATE || prob(difficulty * 15))
-		user.show_message(span_danger("ERROR: Target could not be bombed."), MSG_VISUAL)
+		user.show_message(span_danger("Alvo não pode ser bombardeado."), MSG_VISUAL)
 		charges--
 		return
 
@@ -82,14 +82,14 @@
 	var/fakejob = sanitize_name(tgui_input_text(user, "Enter a job for the rigged message.", "Forge Message", max_length = MAX_NAME_LEN), allow_numbers = TRUE)
 	if(!fakejob || source != original_host || !user.can_perform_action(source))
 		return
-	var/attach_fake_photo = tgui_alert(user, "Attach a fake photo?", "Forge Message", list("Yes", "No")) == "Yes"
+	var/attach_fake_photo = tgui_alert(user, "Anexar uma foto falsa?", "Forge Message", list("Yes", "No")) == "Yes"
 
 	var/datum/computer_file/program/messenger/app = locate() in source.stored_files
 	var/datum/computer_file/program/messenger/target_app = locate() in target.stored_files
 	if(!app || charges <= 0 || !app.send_rigged_message(user, message, list(target_app), fakename, fakejob, attach_fake_photo))
 		return FALSE
 	charges--
-	user.show_message(span_notice("Success!"))
+	user.show_message(span_notice("Sucesso!"))
 	var/reference = REF(src)
 	target.add_traits(list(TRAIT_PDA_CAN_EXPLODE, TRAIT_PDA_MESSAGE_MENU_RIGGED), reference)
 	addtimer(TRAIT_CALLBACK_REMOVE(target, TRAIT_PDA_MESSAGE_MENU_RIGGED, reference), 10 SECONDS)
@@ -114,11 +114,11 @@
 	if(!istype(attacking_item, /obj/item/stack/telecrystal))
 		return
 	if(!charges)
-		to_chat(user, span_notice("[src] is out of charges, it's refusing to accept [attacking_item]."))
+		to_chat(user, span_notice("[src]Está fora das acusações, se recusa a aceitar[attacking_item]."))
 		return
 	var/obj/item/stack/telecrystal/telecrystal_stack = attacking_item
 	telecrystals += telecrystal_stack.amount
-	to_chat(user, span_notice("You slot [telecrystal_stack] into [src]. The next time it's used, it will also give telecrystals."))
+	to_chat(user, span_notice("Você está em posição.[telecrystal_stack]Em[src]Da próxima vez que for usada, também dará telecristais."))
 	telecrystal_stack.use(telecrystal_stack.amount)
 
 
@@ -129,7 +129,7 @@
 
 	charges--
 	var/unlock_code = "[rand(100,999)] [pick(GLOB.phonetic_alphabet)]"
-	to_chat(user, span_notice("Success! The unlock code to the target is: [unlock_code]"))
+	to_chat(user, span_notice("Sucesso! O código de desbloqueio para o alvo é:[unlock_code]"))
 	var/datum/component/uplink/hidden_uplink = target.GetComponent(/datum/component/uplink)
 	if(!hidden_uplink)
 		var/datum/mind/target_mind

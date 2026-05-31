@@ -5,7 +5,7 @@
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	icon = 'icons/obj/devices/remote.dmi'
 	name = "tram remote"
-	desc = "A remote control that can be linked to a tram. This can only go well."
+	desc = "Um controle remoto que pode ser ligado a um bonde. Isso só pode dar certo."
 	w_class = WEIGHT_CLASS_TINY
 	options = RAPID_MODE
 	///desired tram destination
@@ -41,8 +41,8 @@
 			destination = potential_platform.platform_code
 			break
 
-	balloon_alert(user, "set [selected_platform]")
-	to_chat(user, span_notice("You change the platform ID on [src] to [selected_platform]."))
+	balloon_alert(user, "Preparar.[selected_platform]")
+	to_chat(user, span_notice("Você muda a identificação da plataforma.[src]Para[selected_platform]."))
 
 ///set safety bypass
 /obj/item/assembly/control/transport/remote/item_ctrl_click(mob/user)
@@ -52,7 +52,7 @@
 		if(RAPID_MODE)
 			options &= ~RAPID_MODE
 	update_appearance()
-	balloon_alert(user, "mode: [options ? "fast" : "safe"]")
+	balloon_alert(user, "Modo:[options ? "fast" : "safe"]")
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/assembly/control/transport/remote/examine(mob/user)
@@ -91,7 +91,7 @@
 		return
 
 	if(cooldown)
-		balloon_alert(user, "cooldown: [DisplayTimeText(cooldown, 1)]")
+		balloon_alert(user, "Arrefecer:[DisplayTimeText(cooldown, 1)]")
 		return
 
 	activate(user)
@@ -100,10 +100,10 @@
 ///send our selected commands to the tram
 /obj/item/assembly/control/transport/remote/activate(mob/user)
 	if(!specific_transport_id)
-		balloon_alert(user, "no tram linked!")
+		balloon_alert(user, "Nenum bonde ligado!")
 		return
 	if(!destination)
-		balloon_alert(user, "no destination!")
+		balloon_alert(user, "Sem destino!")
 		return
 
 	SEND_SIGNAL(src, COMSIG_TRANSPORT_REQUEST, specific_transport_id, destination, options)
@@ -121,8 +121,8 @@
 	specific_transport_id = tgui_input_list(user, "Available transports", "Select a transport", transports_available)
 
 	if(specific_transport_id)
-		balloon_alert(user, "tram linked")
+		balloon_alert(user, "Trem ligado.")
 	else
-		balloon_alert(user, "link failed!")
+		balloon_alert(user, "A ligação falhou!")
 
 	update_appearance()

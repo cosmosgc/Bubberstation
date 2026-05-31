@@ -30,7 +30,7 @@
 
 /obj/voidout
 	name = "???"
-	desc = "We've been burying them wrong."
+	desc = "Nós os enterramos errados."
 
 	icon = 'modular_zubbers/icons/obj/voidout.dmi'
 	icon_state = "voidout"
@@ -96,8 +96,8 @@
 
 	if(our_turf && our_turf == their_turf)
 		kill_target.visible_message(
-			span_danger("Something terrible violently phases right into [kill_target]!"),
-			span_userdanger("Something terrible violently phases right into you, stealing something precious!"),
+			span_danger("Algo terrível violentamente fases direito em[kill_target]!"),
+			span_userdanger("Algo terrível violentamente entra em você, roubando algo precioso!"),
 		)
 		var/obj/item/organ/heart/target_heart = kill_target.get_organ_slot(ORGAN_SLOT_HEART)
 		kill_target.add_splatter_floor(their_turf)

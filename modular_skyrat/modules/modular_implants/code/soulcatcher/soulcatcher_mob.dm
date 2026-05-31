@@ -14,13 +14,13 @@
 	set category = "IC"
 
 	if(!able_to_leave)
-		to_chat(src, span_warning("You are unable to leave the soulcatcher."))
+		to_chat(src, span_warning("Você é incapaz de deixar o caçador de almas."))
 		return FALSE
 
-	if(tgui_alert(src, "Are you sure you wish to leave the soulcatcher? IF you had a body, this will return you to your body", "Soulcatcher", list("Yes", "No")) != "Yes")
+	if(tgui_alert(src, "Tem certeza que quer deixar o caça-almas? Se você tivesse um corpo, isso o devolveria ao seu corpo.", "Soulcatcher", list("Yes", "No")) != "Yes")
 		return FALSE
 
-	if(tgui_alert(src, "Are you really sure about this?", "Soulcatcher", list("Yes", "No")) != "Yes")
+	if(tgui_alert(src, "Tem certeza disso?", "Soulcatcher", list("Yes", "No")) != "Yes")
 		return FALSE
 
 	return_to_body()

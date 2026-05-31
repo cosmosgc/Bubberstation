@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/revolver/sol
 	name = "\improper Eland Revolver"
-	desc = "A small revolver with a comically short barrel and cylinder space for eight .35 Sol Short rounds."
+	desc = "Um pequeno revólver com um pequeno barril cômico e espaço de cilindro para oito rodadas de 35 Sol."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/trappiste_fabriek/guns32x.dmi'
 	icon_state = "eland"
@@ -20,18 +20,12 @@
 
 /obj/item/gun/ballistic/revolver/sol/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/revolver/sol/examine_more(mob/user)
 	. = ..()
 
-	. += "The Eland is one of the few Trappiste weapons not made for military contract. \
-		Instead, the Eland started life as a police weapon, offered as a gun to finally \
-		outmatch all others in the cheap police weapons market. Unfortunately, this \
-		coincided with nearly every TerraGov police force realising they are actually \
-		comically overfunded. With military weapons bought for police forces taking \
-		over the market, the Eland instead found home in the civilian personal defense \
-		market. That is likely the reason you are looking at this one now."
+	. += "The Eland is one of the few Trappiste weapons not made for military contract. 		Instead, the Eland started life as a police weapon, offered as a gun to finally 		outmatch all others in the cheap police weapons market. Unfortunately, this 		coincided with nearly every TerraGov police force realising they are actually 		comically overfunded. With military weapons bought for police forces taking 		over the market, the Eland instead found home in the civilian personal defense 		market. That is likely the reason you are looking at this one now."
 
 	return .
 
@@ -44,7 +38,7 @@
 
 /obj/item/gun/ballistic/revolver/takbok
 	name = "\improper Takbok Revolver"
-	desc = "A hefty revolver with an equally large cylinder capable of holding five .585 Trappiste rounds."
+	desc = "Um revólver robusto com um cilindro igualmente grande capaz de segurar cinco balas de .585 Trappiste."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/trappiste_fabriek/guns32x.dmi'
 	icon_state = "takbok"
@@ -66,20 +60,12 @@
 
 /obj/item/gun/ballistic/revolver/takbok/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/revolver/takbok/examine_more(mob/user)
 	. = ..()
 
-	. += "The Takbok is a unique design for Trappiste for the sole reason that it \
-		was made at first to be a one-off. Founder of partner company Carwo Defense, \
-		Darmaan Khaali Carwo herself, requested a sporting revolver from Trappiste. \
-		What was delivered wasn't a target revolver, it was a target crusher. The \
-		weapon became popular as Carwo crushed many shooting competitions using \
-		the Takbok, with the design going on several production runs up until \
-		2523 when the popularity of the gun fell off. Due to the number of revolvers \
-		made, they are still easy enough to find if you look despite production \
-		having already ceased many years ago."
+	. += "The Takbok is a unique design for Trappiste for the sole reason that it 		was made at first to be a one-off. Founder of partner company Carwo Defense, 		Darmaan Khaali Carwo herself, requested a sporting revolver from Trappiste. 		What was delivered wasn't a target revolver, it was a target crusher. The 		weapon became popular as Carwo crushed many shooting competitions using 		the Takbok, with the design going on several production runs up until 		2523 when the popularity of the gun fell off. Due to the number of revolvers 		made, they are still easy enough to find if you look despite production 		having already ceased many years ago."
 
 	return .
 

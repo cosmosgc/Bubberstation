@@ -3,7 +3,7 @@
 
 /obj/machinery/computer/operating
 	name = "operating computer"
-	desc = "Monitors patient vitals and displays surgery steps. Can be loaded with surgery disks to perform experimental procedures. Automatically syncs to operating tables within its line of sight for surgical tech advancement."
+	desc = "Monitora os sinais vitais do paciente e mostra passos cirúrgicos. Pode ser carregado com discos cirúrgicos para realizar procedimentos experimentais. Sincroniza automaticamente com mesas de operação dentro de sua linha de visão para avanço técnico cirúrgico."
 	icon_screen = "crew"
 	icon_keyboard = "med_key"
 	circuit = /obj/item/circuitboard/computer/operating
@@ -47,12 +47,7 @@
 		COMSIG_OPERATING_COMPUTER_AUTOPSY_COMPLETE = TYPE_PROC_REF(/datum/component/experiment_handler, try_run_autopsy_experiment),
 	)
 	experiment_handler = AddComponent(
-		/datum/component/experiment_handler, \
-		allowed_experiments = list(/datum/experiment/autopsy), \
-		config_flags = EXPERIMENT_CONFIG_ALWAYS_ACTIVE, \
-		config_mode = EXPERIMENT_CONFIG_ALTCLICK, \
-		experiment_signals = operating_signals, \
-	)
+		/datum/component/experiment_handler, 		allowed_experiments = list(/datum/experiment/autopsy), 		config_flags = EXPERIMENT_CONFIG_ALWAYS_ACTIVE, 		config_mode = EXPERIMENT_CONFIG_ALTCLICK, 		experiment_signals = operating_signals, 	)
 
 /obj/machinery/computer/operating/Destroy()
 	for(var/direction in GLOB.alldirs)
@@ -70,9 +65,9 @@
 /obj/machinery/computer/operating/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/disk/surgery))
 		user.visible_message(
-			span_notice("[user] begins to load [tool] in [src]..."),
-			span_notice("You begin to load a surgery protocol from [tool]..."),
-			span_hear("You hear the chatter of a floppy drive."),
+			span_notice("[user]começa a carregar[tool]Em[src]..."),
+			span_notice("Você começa a carregar um protocolo de cirurgia de[tool]..."),
+			span_hear("Você ouve a conversa de um drive flexível."),
 		)
 		var/obj/item/disk/surgery/disky = tool
 		if(!do_after(user, 1 SECONDS, src))
@@ -80,7 +75,7 @@
 		advanced_surgeries |= disky.surgeries
 		update_static_data_for_all_viewers()
 		playsound(src, 'sound/machines/compiler/compiler-stage2.ogg', 50, FALSE, SILENCED_SOUND_EXTRARANGE)
-		balloon_alert(user, "surgeries loaded")
+		balloon_alert(user, "Cirurgias carregadas")
 		return ITEM_INTERACT_SUCCESS
 
 	if((tool.item_flags & SURGICAL_TOOL) && !user.combat_mode)

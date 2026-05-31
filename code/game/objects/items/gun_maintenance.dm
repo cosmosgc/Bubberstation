@@ -1,6 +1,6 @@
 /obj/item/gun_maintenance_supplies
 	name = "gun maintenance kit"
-	desc = "A toolbox containing gun maintenance supplies and spare parts. Can be applied to firearms to maintain them."
+	desc = "Uma caixa de ferramentas contendo suprimentos de manutenção de armas e peças de reposição. Pode ser aplicado em armas de fogo para mantê-las."
 	icon = 'icons/obj/storage/toolbox.dmi'
 	icon_state = "maint_kit"
 	inhand_icon_state = "ammobox"
@@ -22,7 +22,7 @@
 
 /obj/item/gun_maintenance_supplies/examine(mob/user)
 	. = ..()
-	. += span_info("This kit has [uses] uses out of [max_uses] left.")
+	. += span_info("Este kit tem[uses]usa fora de[max_uses]Esquerda.")
 
 /obj/item/gun_maintenance_supplies/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	. = ..()
@@ -30,7 +30,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if(!isgun(interacting_with))
-		balloon_alert(user, "not a gun!")
+		balloon_alert(user, "Não uma arma!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/gun/gun_to_fix = interacting_with
@@ -57,10 +57,10 @@
 		use_charge = TRUE
 
 	if(!use_charge)
-		balloon_alert(user, "no need for repair!")
+		balloon_alert(user, "Não há necessidade de reparo!")
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "maintenance complete")
+	balloon_alert(user, "Manutenção completa")
 	use_the_kit()
 	return ITEM_INTERACT_SUCCESS
 
@@ -71,8 +71,7 @@
 
 /obj/item/gun_maintenance_supplies/makeshift
 	name = "makeshift gun maintenance kit"
-	desc = "A toolbox containing enough supplies to juryrig repairs on firearms. Can be applied to firearms to maintain them. \
-		The tools are a little basic, and the materials low-quality, but it gets the job done."
+	desc = "Uma caixa de ferramentas contendo suprimentos suficientes para jurar reparos em armas de fogo. Pode ser aplicado em armas de fogo para mantê-las. As ferramentas são um pouco básicas, e os materiais de baixa qualidade, mas ele faz o trabalho feito."
 	icon_state = "maint_kit_makeshift"
 	inhand_icon_state = "toolbox_blue"
 	uses = 1

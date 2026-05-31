@@ -13,7 +13,7 @@
 /// The Tesla engine
 /obj/energy_ball
 	name = "energy ball"
-	desc = "An energy ball."
+	desc = "Uma bola de energia."
 	icon = 'icons/obj/machines/engine/energy_ball.dmi'
 	icon_state = "energy_ball"
 	anchored = TRUE
@@ -162,7 +162,7 @@
 	if(!iscarbon(user))
 		return
 	var/mob/living/carbon/jedi = user
-	to_chat(jedi, span_userdanger("That was a shockingly dumb idea."))
+	to_chat(jedi, span_userdanger("Foi uma ideia chocantemente idiota."))
 	var/obj/item/organ/brain/rip_u = locate(/obj/item/organ/brain) in jedi.organs
 	jedi.ghostize(jedi)
 	if(rip_u)

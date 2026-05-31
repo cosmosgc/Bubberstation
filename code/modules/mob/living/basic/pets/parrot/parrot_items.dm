@@ -11,7 +11,7 @@
 		return FALSE
 
 	if (!istype(equipping, /obj/item/radio/headset))
-		to_chat(user, span_warning("[equipping] won't fit!"))
+		to_chat(user, span_warning("[equipping]Não cabe!"))
 		return FALSE
 
 	return TRUE
@@ -34,7 +34,7 @@
 
 	parrot_source.ears = radio
 
-	to_chat(user, span_notice("You fit [radio] onto [source]."))
+	to_chat(user, span_notice("Você se encaixa[radio]em frente[source]."))
 
 /datum/strippable_item/parrot_headset/start_unequip(atom/source, mob/user)
 	. = ..()

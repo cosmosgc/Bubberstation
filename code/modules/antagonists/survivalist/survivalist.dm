@@ -24,7 +24,7 @@
 		owner.announce_objectives()
 
 /datum/antagonist/survivalist/guns
-	greet_message = "Your own safety matters above all else, and the only way to ensure your safety is to stockpile weapons! Grab as many guns as possible, by any means necessary. Kill anyone who gets in your way."
+	greet_message = "Sua própria segurança importa acima de tudo, e a única maneira de garantir sua segurança é estocar armas! Pegue o máximo de armas possível, por qualquer meio necessário. Mate qualquer um que ficar no seu caminho."
 	hardcore_random_bonus = TRUE
 
 /datum/antagonist/survivalist/guns/forge_objectives()
@@ -35,12 +35,12 @@
 
 /datum/antagonist/survivalist/magic
 	name = "Amateur Magician"
-	greet_message = "Grow your newfound talent! Grab as many magical artefacts as possible, by any means necessary. Kill anyone who gets in your way."
+	greet_message = "Cresça seu novo talento! Pegue tantos artefatos mágicos quanto possível, por qualquer meio necessário. Mate qualquer um que ficar no seu caminho."
 	hardcore_random_bonus = TRUE
 
 /datum/antagonist/survivalist/magic/greet()
 	. = ..()
-	to_chat(owner, span_notice("As a wonderful magician, you should remember that spellbooks don't mean anything if they are used up."))
+	to_chat(owner, span_notice("Como um mágico maravilhoso, lembre-se que livros de feitiço não significam nada se forem usados."))
 
 /datum/antagonist/survivalist/magic/forge_objectives()
 	var/datum/objective/steal_n_of_type/summon_magic/magic = new
@@ -61,7 +61,7 @@
 /// Applied by the battle royale objective
 /datum/antagonist/survivalist/battle_royale
 	name = "Battle Royale Contestant"
-	greet_message = "There has to be some way you can make it out of this alive..."
+	greet_message = "Tem que haver algum jeito de você sair dessa vivo..."
 	announce_objectives = FALSE
 
 /datum/antagonist/survivalist/battle_royale/on_gain()
@@ -71,12 +71,7 @@
 	RegisterSignals(owner.current, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING), PROC_REF(on_died))
 
 /datum/antagonist/survivalist/battle_royale/greet()
-	to_chat(owner, span_warning("[span_bold("You hear a tinny voice in your ear: ")] \
-		Welcome contestant to Rumble Royale, the galaxy's greatest show! \n\
-		You may have already heard our announcement, but we're glad to tell you that you are on live TV! \n\
-		Your objective in this contest is simple: Within ten minutes be the last contestant left alive, to win a fabulous prize! \n\
-		Your fellow contestants will be hearing this too, so you should grab a GPS quick and get hunting! \n\
-		Noncompliance and removal of this implant is not recommended, and remember to smile for the cameras!"))
+	to_chat(owner, span_warning("[span_bold("You hear a tinny voice in your ear: ")] 		Welcome contestant to Rumble Royale, the galaxy's greatest show! \n		You may have already heard our announcement, but we're glad to tell you that you are on live TV! \n		Your objective in this contest is simple: Within ten minutes be the last contestant left alive, to win a fabulous prize! \n		Your fellow contestants will be hearing this too, so you should grab a GPS quick and get hunting! \n		Noncompliance and removal of this implant is not recommended, and remember to smile for the cameras!"))
 
 	return ..()
 
@@ -86,7 +81,7 @@
 	UnregisterSignal(owner.current, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING))
 	if (owner.current.stat == DEAD)
 		return ..()
-	to_chat(owner, span_notice("Your body is flooded with relief. Against all the odds, you've made it out alive."))
+	to_chat(owner, span_notice("Seu corpo está inundado de alívio. Contra todas as probabilidades, você saiu vivo."))
 	owner.current?.add_mood_event("battle_royale", /datum/mood_event/royale_survivor)
 	return ..()
 
@@ -104,5 +99,5 @@
 	owner.remove_antag_datum(type)
 
 /datum/mood_event/royale_survivor
-	description = "I made it out of Rumble Royale with my life."
+	description = "Consegui sair de Rumble Royale com minha vida."
 	mood_change = 4

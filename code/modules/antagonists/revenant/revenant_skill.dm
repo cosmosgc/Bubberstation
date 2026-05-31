@@ -78,7 +78,7 @@
 		if(ghost.essence_excess >= unlock_amount)
 			return NONE
 		if(feedback)
-			to_chat(ghost, span_revenwarning("You don't have enough essence to unlock [initial(source.name)]!"))
+			to_chat(ghost, span_revenwarning("Você não tem essência suficiente para abrir[initial(source.name)]!"))
 		return SPELL_CANCEL_CAST
 
 	if(!ghost.cast_check(cast_amount, deduct_essence = FALSE, silent = !feedback))
@@ -95,11 +95,11 @@
 
 	if(locked)
 		if(ghost.unlock(unlock_amount))
-			to_chat(ghost, span_revennotice("You have unlocked [initial(source.name)]!"))
+			to_chat(ghost, span_revennotice("Você está destrancada.[initial(source.name)]!"))
 			locked = FALSE
 			update_spell_name()
 		else
-			to_chat(ghost, span_revenwarning("You don't have enough essence to unlock [initial(source.name)]!"))
+			to_chat(ghost, span_revenwarning("Você não tem essência suficiente para abrir[initial(source.name)]!"))
 		return SPELL_CANCEL_CAST
 
 	if(!ghost.cast_check(cast_amount, deduct_essence = TRUE, silent = FALSE))

@@ -22,7 +22,7 @@ export const TrainingMachine = () => {
   return (
     <Window width={230} height={150} title="AURUMILL">
       <Window.Content>
-        <Section fill title="Training Machine">
+        <Section fill title="Máquina de treinamento">
           <TrainingControls />
         </Section>
       </Window.Content>

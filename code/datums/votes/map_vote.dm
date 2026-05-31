@@ -1,6 +1,6 @@
 /datum/vote/map_vote
 	name = "Map"
-	default_message = "Vote for next round's map!"
+	default_message = "Vote no mapa da próxima rodada!"
 	count_method = VOTE_COUNT_METHOD_SINGLE
 	winner_method = VOTE_WINNER_METHOD_NONE
 	display_statistics = FALSE
@@ -19,12 +19,10 @@
 	if(length(choices) == 1) // Only one choice, no need to vote. Let's just auto-rotate it to the only remaining map because it would just happen anyways.
 		var/datum/map_config/change_me_out = global.config.maplist[choices[1]]
 		finalize_vote(choices[1])// voted by not voting, very sad.
-		to_chat(world, span_boldannounce("The map vote has been skipped because there is only one map left to vote for. \
-			The map has been changed to [change_me_out.map_name]."))
+		to_chat(world, span_boldannounce("A votação do mapa foi ignorada porque só há um mapa para votar. O mapa foi mudado para[change_me_out.map_name]."))
 		return FALSE
 	if(length(choices) == 0)
-		to_chat(world, span_boldannounce("A map vote was called, but there are no maps to vote for! \
-			Players, complain to the admins. Admins, complain to the coders."))
+		to_chat(world, span_boldannounce("Um mapa foi chamado, mas não há mapas para votar! Jogadores, reclamem com os administradores. Administração, reclame com os codificadores."))
 		return FALSE
 
 	return TRUE

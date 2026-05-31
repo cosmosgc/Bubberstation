@@ -2,7 +2,7 @@
 
 /obj/item/food/vendor_snacks
 	name = "\improper God's Strongest Snacks"
-	desc = "You best hope you aren't a sinner. (You should never see this item please report it)"
+	desc = "Espero que não seja um pecador. (Você nunca deve ver este item por favor relate-o)"
 	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodpack_generic"
 	trash_type = /obj/item/trash/vendor_trash
@@ -16,7 +16,7 @@
 
 /obj/item/trash/vendor_trash
 	name = "\improper God's Weakest Snacks"
-	desc = "The leftovers of what was likely a great snack in a past time."
+	desc = "As sobras do que provavelmente foi um ótimo lanche no passado."
 	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodpack_generic_trash"
 	custom_materials = list(
@@ -29,17 +29,17 @@
 
 /obj/item/reagent_containers/cup/glass/dry_ramen/prepared
 	name = "cup ramen"
-	desc = "This one even comes with water, amazing!"
+	desc = "Este vem com água, incrível!"
 	list_reagents = list(/datum/reagent/consumable/hot_ramen = 15, /datum/reagent/consumable/salt = 3)
 
 /obj/item/reagent_containers/cup/glass/dry_ramen/prepared/hell
 	name = "spicy cup ramen"
-	desc = "This one comes with water, AND a security checkpoint's worth of capsaicin!"
+	desc = "Este vem com água, e um posto de segurança vale capsaicina!"
 	list_reagents = list(/datum/reagent/consumable/hell_ramen = 15, /datum/reagent/consumable/salt = 3)
 
 /obj/item/food/vendor_snacks/rice_crackers
 	name = "rice crackers"
-	desc = "Despite most of the package being clear, you will never truly know what flavor these are until you eat them."
+	desc = "Apesar da maioria do pacote ser claro, você nunca vai realmente saber que sabor estes são até que você comê-los."
 	icon_state = "rice_cracka"
 	trash_type = /obj/item/trash/vendor_trash/rice_crackers
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/rice = 2)
@@ -52,12 +52,12 @@
 
 /obj/item/trash/vendor_trash/rice_crackers
 	name = "empty rice crackers bag"
-	desc = "You never did find out what flavor that was supposed to be, did you?"
+	desc = "Você nunca descobriu que sabor deveria ser, não é?"
 	icon_state = "rice_cracka_trash"
 
 /obj/item/food/vendor_snacks/mochi_ice_cream
 	name = "mochi ice cream balls - vanilla"
-	desc = "A six pack of mochi ice cream, which is to say vanilla icecream surrounded by mochi. Comes with small plastic skewer for consumption."
+	desc = "Um seis pacotes de sorvete mochi, ou seja, sorvete de baunilha cercado por mochi. Vem com pequeno espeto de plástico para consumo."
 	icon_state = "mochi_ice"
 	trash_type = /obj/item/trash/vendor_trash/mochi_ice_cream
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/ice = 3)
@@ -67,7 +67,7 @@
 
 /obj/item/food/vendor_snacks/mochi_ice_cream/matcha
 	name = "mochi ice cream balls - matcha"
-	desc = "A six pack of mochi ice cream - or, more specifically, matcha icecream surrounded by mochi. Comes with small plastic skewer for consumption."
+	desc = "Seis pacotes de sorvete mochi ou, mais especificamente, sorvete de fósforo cercado por mochi. Vem com pequeno espeto de plástico para consumo."
 	icon_state = "mochi_ice_green"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/tea = 2)
 	tastes = list("rice cake" = 1, "bitter matcha" = 2)
@@ -75,17 +75,17 @@
 
 /obj/item/food/vendor_snacks/mochi_ice_cream/matcha/examine_more(mob/user)
 	. = ..()
-	. += span_notice("A small label on the container specifies that this icecream is made using only culinary grade matcha grown outside of the Sol system.")
+	. += span_notice("Uma pequena etiqueta no recipiente especifica que este sorvete é feito usando apenas fósforos de qualidade culinária cultivados fora do sistema Sol.")
 	return .
 
 /obj/item/trash/vendor_trash/mochi_ice_cream
 	name = "empty mochi ice cream tray"
-	desc = "Somehow, that tiny plastic skewer it came with has gone missing."
+	desc = "De alguma forma, o espeto de plástico que veio desapareceu."
 	icon_state = "mochi_ice_trash"
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea
 	name = "bottle of tea"
-	desc = "A bottle of tea brought to you in a convenient plastic bottle."
+	desc = "Uma garrafa de chá trouxe para você em uma conveniente garrafa de plástico."
 	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "tea_bottle"
 	list_reagents = list(/datum/reagent/consumable/tea = 40)
@@ -96,7 +96,7 @@
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/astra
 	name = "bottle of tea astra"
-	desc = "A bottle of tea astra, known for the rather unusual tastes the leaf is known to give when brewed."
+	desc = "Uma garrafa de chá astra, conhecida pelos gostos bastante incomuns que a folha é conhecida por dar quando fabricada."
 	icon_state = "tea_bottle_blue"
 	list_reagents = list(
 		/datum/reagent/consumable/tea = 25,
@@ -107,14 +107,14 @@
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/strawberry
 	name = "bottle of strawberry tea"
-	desc = "A bottle of strawberry flavored tea; does not contain any actual strawberries."
+	desc = "Uma garrafa de chá com sabor de morango, não contém nenhum morango de verdade."
 	icon_state = "tea_bottle_pink"
 	list_reagents = list(/datum/reagent/consumable/pinktea = 40)
 	custom_price = PAYCHECK_LOWER * 2
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/nip
 	name = "bottle of catnip tea"
-	desc = "A bottle of catnip tea, required to be at or under a 50% concentration by the SFDA for safety purposes."
+	desc = "Uma garrafa de chá de gato, necessária para estar em ou sob uma concentração de 50% pelo SFDA para fins de segurança."
 	icon_state = "tea_bottle_pink"
 	list_reagents = list(
 		/datum/reagent/consumable/catnip_tea = 20,
@@ -128,7 +128,7 @@
 
 /obj/item/food/vendor_snacks/mothmallow
 	name = "mothmallow"
-	desc = "A vacuum sealed bag containing a pretty crushed looking mothmallow, someone save him!"
+	desc = "Um saco selado a vácuo contendo uma mariposa bem esmagada, alguém o salve!"
 	icon_state = "mothmallow"
 	trash_type = /obj/item/trash/vendor_trash/mothmallow
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/sugar = 4)
@@ -141,12 +141,12 @@
 
 /obj/item/trash/vendor_trash/mothmallow
 	name = "empty mothmallow bag"
-	desc = "Finally he is free."
+	desc = "Finalmente ele está livre."
 	icon_state = "mothmallow_trash"
 
 /obj/item/food/vendor_snacks/moth_bag
 	name = "engine fodder"
-	desc = "A vacuum sealed bag containing a small portion of colorful engine fodder."
+	desc = "Um saco selado a vácuo contendo uma pequena porção de ração colorida."
 	icon_state = "fodder"
 	trash_type = /obj/item/trash/vendor_trash/moth_bag
 	food_reagents = list(/datum/reagent/consumable/sugar = 3, /datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/salt = 2)
@@ -156,7 +156,7 @@
 
 /obj/item/food/vendor_snacks/moth_bag/fuel_jack
 	name = "fueljack's snack"
-	desc = "A vacuum sealed bag containing a smaller than usual brick of fueljack's lunch, ultimately downgrading it to a fueljack's snack."
+	desc = "Um saco selado a vácuo contendo um tijolo menor do que o normal do almoço do fueljack, em última análise, rebaixando-o para o lanche de um fueljack."
 	icon_state = "fuel_jack_snack"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/protein = 1)
 	tastes = list("cabbage" = 1, "potato" = 1, "onion" = 1, "chili" = 1, "cheese" = 1)
@@ -165,7 +165,7 @@
 
 /obj/item/food/vendor_snacks/moth_bag/cheesecake
 	name = "chocolate cheesecake cube"
-	desc = "A vacuum sealed bag containing a small cube of a mothic style cheesecake, this one is covered in chocolate."
+	desc = "Um saco selado a vácuo contendo um pequeno cubo de um cheesecake estilo mariposa, este está coberto de chocolate."
 	icon_state = "choco_cheese_cake"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 2, /datum/reagent/consumable/sugar = 4)
 	tastes = list("cheesecake" = 1, "chocolate" = 1)
@@ -174,62 +174,62 @@
 
 /obj/item/food/vendor_snacks/moth_bag/cheesecake/honey
 	name = "honey cheesecake cube"
-	desc = "A vacuum sealed bag containing a small cube of a mothic style cheesecake, this one is covered in honey."
+	desc = "Um saco selado a vácuo contendo um pequeno cubo de um cheesecake estilo mariposa, este está coberto de mel."
 	icon_state = "honey_cheese_cake"
 	tastes = list("cheesecake" = 1, "honey" = 1)
 	foodtypes = SUGAR | FRIED | DAIRY | GRAIN
 
 /obj/item/trash/vendor_trash/moth_bag
 	name = "empty mothic snack bag"
-	desc = "The clear plastic reveals that this no longer holds tasty treats for your winged friends."
+	desc = "O plástico límpido revela que isso não contém mais doces saborosos para seus amigos alados."
 	icon_state = "moth_bag_trash"
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/lemonade
 	name = "\improper Gyárhajó 1023: Lemonade"
-	desc = "A can of lemonade, for those who are into that kind of thing, or just have no choice."
+	desc = "Uma lata de limonada, para quem gosta desse tipo de coisa, ou não tem escolha."
 	icon_state = "lemonade"
 	list_reagents = list(/datum/reagent/consumable/lemonade = 30)
 	drink_type = FRUIT
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/lemonade/examine_more(mob/user)
 	. = ..()
-	. += span_notice("Markings on the can indicate this one was made on <i>factory ship 1023</i> of the Grand Nomad Fleet.")
+	. += span_notice("Marcas na lata indicam que esta foi feita em<i>Nave-fábrica 1023</i>da frota Grand Nomad.")
 	return .
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/navy_rum
 	name = "\improper Gyárhajó 1506: Navy Rum"
-	desc = "A can of navy rum brewed up and imported from a detachment of the nomad fleet, or so the can says."
+	desc = "Uma lata de rum da marinha produzida e importada de um destacamento da frota nômade."
 	icon_state = "navy_rum"
 	list_reagents = list(/datum/reagent/consumable/ethanol/navy_rum = 30)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/navy_rum/examine_more(mob/user)
 	. = ..()
-	. += span_notice("Markings on the can indicate this one was made on <i>factory ship 1506</i> of the Grand Nomad Fleet.")
+	. += span_notice("Marcas na lata indicam que esta foi feita em<i>Nave-fábrica 1506</i>da frota Grand Nomad.")
 	return .
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/soda_water_moth
 	name = "\improper Gyárhajó 1023: Soda Water"
-	desc = "A can of soda water. Why not make a rum and soda? Now that you think of it, maybe not."
+	desc = "Uma lata de água com gás. Por que não fazer um rum com soda? Agora que pensa nisso, talvez não."
 	icon_state = "soda_water"
 	list_reagents = list(/datum/reagent/consumable/sodawater = 30)
 	drink_type = SUGAR
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/soda_water_moth/examine_more(mob/user)
 	. = ..()
-	. += span_notice("Markings on the can indicate this one was made on <i>factory ship 1023</i> of the Grand Nomad Fleet.")
+	. += span_notice("Marcas na lata indicam que esta foi feita em<i>Nave-fábrica 1023</i>da frota Grand Nomad.")
 	return .
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/ginger_beer
 	name = "\improper Gyárhajó 1023: Ginger Beer"
-	desc = "A can of ginger beer, don't let the beer part mislead you, this is entirely non-alcoholic."
+	desc = "Uma lata de cerveja de gengibre, não deixe a parte da cerveja te enganar, isso é totalmente sem álcool."
 	icon_state = "gingie_beer"
 	list_reagents = list(/datum/reagent/consumable/sol_dry = 30)
 	drink_type = SUGAR
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/ginger_beer/examine_more(mob/user)
 	. = ..()
-	. += span_notice("Markings on the can indicate this one was made on <i>factory ship 1023</i> of the Grand Nomad Fleet.")
+	. += span_notice("Marcas na lata indicam que esta foi feita em<i>Nave-fábrica 1023</i>da frota Grand Nomad.")
 	return .
 
 /*
@@ -238,7 +238,7 @@
 
 /obj/item/food/vendor_snacks/lizard_bag
 	name = "candied mushroom"
-	desc = "An odd treat of the lizard empire, a mushroom dipped in caramel; unfortunately, it seems to have been bagged before the caramel fully hardened."
+	desc = "Um deleite estranho do império lagarto, um cogumelo mergulhado em caramelo, infelizmente, parece ter sido ensacado antes do caramelo totalmente endurecido."
 	icon_state = "candied_shroom"
 	trash_type = /obj/item/trash/vendor_trash/lizard_bag
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/caramel = 2)
@@ -251,7 +251,7 @@
 
 /obj/item/food/vendor_snacks/lizard_bag/moon_jerky
 	name = "moonfish jerky"
-	desc = "A fish jerky, made from what you can only hope is moonfish. It also seems to taste subtly of barbecue"
+	desc = "Um peixe seco, feito do que você só pode esperar é moonfish. Também parece ter gosto sutil de churrasco."
 	icon_state = "moon_jerky"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 2, /datum/reagent/consumable/bbqsauce = 2)
 	tastes = list("fish" = 1, "smokey sauce" = 1)
@@ -260,12 +260,12 @@
 
 /obj/item/trash/vendor_trash/lizard_bag
 	name = "empty tiziran snack bag"
-	desc = "All that money importing tiziran snacks just to end at this?"
+	desc = "Todo aquele dinheiro importando lanches Tiziran só para terminar com isso?"
 	icon_state = "tizira_bag_trash"
 
 /obj/item/food/vendor_snacks/lizard_box
 	name = "tiziran dumplings"
-	desc = "A three pack of tiziran style dumplings, not actually stuffed with anything."
+	desc = "Três bolinhos estilo tiziran, não recheados com nada."
 	icon_state = "dumpling"
 	trash_type = /obj/item/trash/vendor_trash/lizard_box
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3)
@@ -275,7 +275,7 @@
 
 /obj/item/food/vendor_snacks/lizard_box/sweet_roll
 	name = "honey roll"
-	desc = "Definitely don't let the guards find out that someone stole your last one."
+	desc = "Definitivamente não deixe os guardas descobrirem que alguém roubou seu último."
 	icon_state = "sweet_roll"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/honey = 2)
 	tastes = list("bread" = 1, "honey" = 1, "fruit" = 1)
@@ -284,19 +284,19 @@
 
 /obj/item/trash/vendor_trash/lizard_box
 	name = "empty tiziran snack box"
-	desc = "Tizira, contributing to the space plastic crisis since 2530."
+	desc = "Tizira, contribuindo para a crise espacial de plástico desde 2530."
 	icon_state = "tizira_box_trash"
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/mushroom
 	name = "bottle of mushroom tea"
-	desc = "A bottle of somewhat bitter mushroom tea, a favorite of the Tiziran empire."
+	desc = "Uma garrafa de chá de cogumelos um pouco amargo, um favorito do império Tiziran."
 	icon_state = "tea_bottle_grey"
 	list_reagents = list(/datum/reagent/consumable/mushroom_tea = 40)
 	custom_price = PAYCHECK_LOWER * 2
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/kortara
 	name = "kortara"
-	desc = "A can of kortara, alcohol brewed from korta seeds, which gives it a unique peppery spice flavor."
+	desc = "Uma lata de kortara, álcool produzido a partir de sementes de korta, o que lhe dá um sabor peculiar de especiarias picantes."
 	icon_state = "kortara"
 	list_reagents = list(/datum/reagent/consumable/ethanol/kortara = 30)
 	drink_type = ALCOHOL

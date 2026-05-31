@@ -51,7 +51,7 @@
 			else
 				return
 		else
-			to_chat(trimmer, span_warning("There are no restylable features there!"))
+			to_chat(trimmer, span_warning("Não há características respeitáveis lá!"))
 			return
 
 	target_organ.attempt_feature_restyle(source, trimmer, original_target, body_zone, restyle_type, style_speed)
@@ -63,7 +63,7 @@
 	if(restyle_flags & restyle_type)
 		INVOKE_ASYNC(src, PROC_REF(attempt_feature_restyle), source, trimmer, original_target, body_zone, restyle_type, style_speed)
 	else
-		to_chat(trimmer, span_warning("This tool is incompatible with \the [src]!"))
+		to_chat(trimmer, span_warning("Esta ferramenta é incompatível com\the [src]!"))
 
 ///Restyles the external organ from a list of valid options
 /obj/item/organ/proc/attempt_feature_restyle(atom/source, mob/living/trimmer, atom/movable/original_target, body_zone, restyle_type, style_speed)
@@ -71,13 +71,13 @@
 	var/new_style = tgui_input_list(trimmer, "Select a new style", "Grooming", restyles)
 
 	trimmer.visible_message(
-		span_notice("[trimmer] tries to change [original_target == trimmer ? trimmer.p_their() : original_target.name + "'s"] [name]."),
-		span_notice("You try to change [original_target == trimmer ? "your" : original_target.name + "'s"] [name].")
+		span_notice("[trimmer]Tenta lamar[original_target == trimmer ? trimmer.p_their() : original_target.name + "'s"] [name]."),
+		span_notice("Você tenta mudar[original_target == trimmer ? "your" : original_target.name + "'s"] [name].")
 	)
 	if(new_style && do_after(trimmer, style_speed, target = original_target))
 		trimmer.visible_message(
-			span_notice("[trimmer] successfully changes [original_target == trimmer ? trimmer.p_their() : original_target.name + "'s"] [name]."),
-			span_notice("You successfully change [original_target == trimmer ? "your" : original_target.name + "'s"] [name].")
+			span_notice("[trimmer]com sucesso muda[original_target == trimmer ? trimmer.p_their() : original_target.name + "'s"] [name]."),
+			span_notice("Você mudou com sucesso.[original_target == trimmer ? "your" : original_target.name + "'s"] [name].")
 		)
 
 		simple_change_sprite(restyles[new_style]) //turn name to type and pass it on
@@ -85,7 +85,7 @@
 /// Allows for the restyling of visual organs to other styles within the same pool (if not forbidden)
 /obj/item/flesh_shears
 	name = "flesh reshaper"
-	desc = "Uses shearing action and growth inducers to reshape your coworkers external features!"
+	desc = "Usa ação de cisalhamento e indutores de crescimento para remodelar suas características externas!"
 
 	icon_state = "flesh_shaper"
 	icon = 'icons/obj/medical/surgery_tools.dmi'

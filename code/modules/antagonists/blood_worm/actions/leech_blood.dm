@@ -1,6 +1,6 @@
 /datum/action/cooldown/mob_cooldown/blood_worm/leech
 	name = "Leech Blood"
-	desc = "Aggressively grab a target with your teeth and leech off of their blood. Also works on reagent containers like blood packs. Leeching will be canceled if you do any other actions."
+	desc = "Agressivamente pegue um alvo com seus dentes e sanguessuga do sangue deles. Também funciona em recipientes reagentes como pacotes de sangue. Leeching será cancelado se você fizer qualquer outra ação."
 
 	button_icon_state = "leech_blood"
 
@@ -41,7 +41,7 @@
 	if (!ismovable(target))
 		return FALSE
 	if (!owner.Adjacent(target))
-		target.balloon_alert(owner, "longe demais!")
+		target.balloon_alert(owner, "Longe demais!")
 		return FALSE
 	if (!target.IsReachableBy(owner))
 		target.balloon_alert(owner, "não alcança!")
@@ -55,7 +55,7 @@
 	else if (is_reagent_container(target))
 		leech_container(owner, target)
 	else
-		target.balloon_alert(owner, "can't leech from this!")
+		target.balloon_alert(owner, "Não posso sair disso!")
 
 	return TRUE // Prevents biting.
 
@@ -65,7 +65,7 @@
 
 	leech.visible_message(
 		message = span_danger("\The [leech] start[leech.p_s()] trying to bite into \the [target]!"),
-		self_message = span_danger("You start trying to bite into \the [target]!"),
+		self_message = span_danger("Você começa a tentar morder\the [target]!"),
 		ignored_mobs = list(target)
 	)
 
@@ -80,7 +80,7 @@
 		return
 
 	if (leech.pulling != target && leech.grab(target) != GRAB_SUCCESS)
-		target.balloon_alert(leech, "unable to grab!")
+		target.balloon_alert(leech, "Incapaz de agarrar!")
 		return
 
 	if (leech.grab_state < GRAB_AGGRESSIVE)
@@ -100,8 +100,8 @@
 
 	leech.visible_message(
 		message = span_danger("\The [leech] bite[leech.p_s()] into \the [target]!"),
-		self_message = span_danger("You bite into \the [target]!"),
-		blind_message = span_hear("You hear a bite, followed by a sickening crunch!"),
+		self_message = span_danger("Você morde\the [target]!"),
+		blind_message = span_hear("Você ouve uma mordida, seguida de uma crise doentia!"),
 		ignored_mobs = list(target)
 	)
 
@@ -117,9 +117,9 @@
 
 	var/synth_content = target.get_blood_synth_content()
 	if (synth_content >= 1)
-		target.balloon_alert(leech, "fully synthetic")
+		target.balloon_alert(leech, "Totalmente sintético.")
 	else if (synth_content > 0)
-		target.balloon_alert(leech, "[ceil(synth_content * 100)]% synthetic")
+		target.balloon_alert(leech, "[ceil(synth_content * 100)]% sintético")
 
 	// Because of DO_AFTER_CHECK_NEXT_MOVE
 	leech.next_move = 0
@@ -143,22 +143,22 @@
 
 /datum/action/cooldown/mob_cooldown/blood_worm/leech/proc/leech_living_start_check(mob/living/basic/blood_worm/leech, mob/living/target)
 	if (target.get_blood_volume() <= 0)
-		target.balloon_alert(leech, "sem sangue!")
+		target.balloon_alert(leech, "Sem sangue!")
 		return FALSE
 	if (HAS_TRAIT(target, TRAIT_BLOOD_WORM_HOST))
-		target.balloon_alert(leech, "occupied by our kin!")
+		target.balloon_alert(leech, "Ocupado por nossos pais!")
 		return FALSE
 	return TRUE
 
 /datum/action/cooldown/mob_cooldown/blood_worm/leech/proc/leech_living_active_check(mob/living/basic/blood_worm/leech, mob/living/target)
 	if (target.get_blood_volume() <= 0)
-		target.balloon_alert(leech, "no more blood!")
+		target.balloon_alert(leech, "Chega de sangue!")
 		return FALSE
 	if (HAS_TRAIT(target, TRAIT_BLOOD_WORM_HOST))
-		target.balloon_alert(leech, "occupied by our kin!")
+		target.balloon_alert(leech, "Ocupado por nossos pais!")
 		return FALSE
 	if (!leech.Adjacent(target) || leech.pulling != target || leech.grab_state < GRAB_AGGRESSIVE)
-		target.balloon_alert(leech, "grab lost!")
+		target.balloon_alert(leech, "Pegar Perdido!")
 		return FALSE
 	return TRUE
 
@@ -176,7 +176,7 @@
 
 	leech.visible_message(
 		message = span_danger("\The [leech] start[leech.p_s()] trying to bite into \the [target]!"),
-		self_message = span_danger("You start trying to bite into \the [target]!")
+		self_message = span_danger("Você começa a tentar morder\the [target]!")
 	)
 
 	leech.changeNext_move(CLICK_CD_CLICK_ABILITY)
@@ -186,8 +186,8 @@
 
 	leech.visible_message(
 		message = span_danger("\The [leech] bite[leech.p_s()] into \the [target]!"),
-		self_message = span_danger("You bite into \the [target]!"),
-		blind_message = span_hear("You hear a bite!"),
+		self_message = span_danger("Você morde\the [target]!"),
+		blind_message = span_hear("Você ouve uma mordida!"),
 		ignored_mobs = list(target)
 	)
 
@@ -228,20 +228,20 @@
 	synth_content /= total_volume
 
 	if (synth_content >= 1)
-		target.balloon_alert(leech, "fully synthetic")
+		target.balloon_alert(leech, "Totalmente sintético.")
 	else if (synth_content > 0)
-		target.balloon_alert(leech, "[ceil(synth_content * 100)]% synthetic")
+		target.balloon_alert(leech, "[ceil(synth_content * 100)]% sintético")
 
 /datum/action/cooldown/mob_cooldown/blood_worm/leech/proc/leech_container_start_check(mob/living/basic/blood_worm/leech, obj/item/reagent_containers/target, feedback = FALSE)
 	if (!length(get_blood_in_container(target)))
 		if (feedback)
-			target.balloon_alert(leech, "sem sangue!")
+			target.balloon_alert(leech, "Sem sangue!")
 		return FALSE
 	return TRUE
 
 /datum/action/cooldown/mob_cooldown/blood_worm/leech/proc/leech_container_active_check(mob/living/basic/blood_worm/leech, obj/item/reagent_containers/target)
 	if (!length(get_blood_in_container(target)))
-		target.balloon_alert(leech, "no more blood!")
+		target.balloon_alert(leech, "Chega de sangue!")
 		return FALSE
 	return TRUE
 

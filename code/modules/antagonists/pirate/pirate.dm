@@ -13,7 +13,7 @@
 
 /datum/antagonist/pirate/greet()
 	. = ..()
-	to_chat(owner, "<B>The station refused to pay for your protection. Protect the ship, siphon the [MONEY_NAME] from the station, and raid it for even more loot.</B>")
+	to_chat(owner, "<B>A estação se recusou a pagar pela sua proteção. Proteger a nave, desviar o[MONEY_NAME]Da estação, e o ataque para mais saques.</B>")
 	owner.announce_objectives()
 
 /datum/antagonist/pirate/get_team()
@@ -73,14 +73,14 @@
 
 /datum/objective/loot
 	var/obj/machinery/computer/piratepad_control/cargo_hold
-	explanation_text = "Acquire valuable loot and store it in the designated area."
+	explanation_text = "Adquira um saque valioso e guarde-o na área designada."
 	var/target_value = 50000
 
 
 /datum/objective/loot/update_explanation_text()
 	if(cargo_hold)
 		var/area/storage_area = get_area(cargo_hold)
-		explanation_text = "Acquire loot and store [target_value] of [MONEY_NAME] worth in [storage_area.name] cargo hold."
+		explanation_text = "Adquira saques e lojas.[target_value]De[MONEY_NAME]Vale a pena em[storage_area.name]Portão de carga."
 
 /datum/objective/loot/proc/loot_listing()
 	//Lists notable loot.
@@ -105,7 +105,7 @@
 /datum/team/pirate/roundend_report()
 	var/list/parts = list()
 
-	parts += span_header("Space Pirates were:")
+	parts += span_header("Piratas espaciais eram:")
 
 	var/all_dead = TRUE
 	for(var/datum/mind/M in members)

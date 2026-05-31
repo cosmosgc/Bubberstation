@@ -29,7 +29,7 @@
 	leap_icon?.icon_state = "leap_[leap_on_click ? "on":"off"]"
 	update_icons()
 	if(message)
-		to_chat(src, span_noticealien("You will now [leap_on_click ? "leap at":"slash at"] enemies!"))
+		to_chat(src, span_noticealien("Agora você vai.[leap_on_click ? "leap at":"slash at"]Inimigos!"))
 	else
 		return
 
@@ -47,11 +47,11 @@
 		return
 
 	if(pounce_cooldown > world.time)
-		to_chat(src, span_alertalien("You are too fatigued to pounce right now!"))
+		to_chat(src, span_alertalien("Você está muito cansado para atacar agora!"))
 		return
 
 	if(!has_gravity() || !A.has_gravity())
-		to_chat(src, span_alertalien("It is unsafe to leap without gravity!"))
+		to_chat(src, span_alertalien("Não é seguro saltar sem gravidade!"))
 		//It's also extremely buggy visually, so it's balance+bugfix
 		return
 
@@ -84,7 +84,7 @@
 				if(H.check_block(src, 0, "\the [src]", attack_type = LEAP_ATTACK))
 					blocked = TRUE
 			if(!blocked)
-				L.visible_message(span_danger("[src] pounces on [L]!"), span_userdanger("[src] pounces on you!"))
+				L.visible_message(span_danger("[src]Pula sobre[L]!"), span_userdanger("[src]Ataca sobre você!"))
 				L.Paralyze(5 SECONDS)
 				sleep(0.2 SECONDS)//Runtime prevention (infinite bump() calls on hulks)
 				step_towards(src,L)
@@ -93,7 +93,7 @@
 
 			toggle_leap(0)
 		else if(hit_atom.density && !hit_atom.CanPass(src, get_dir(hit_atom, src)))
-			visible_message(span_danger("[src] smashes into [hit_atom]!"), span_alertalien("[src] smashes into [hit_atom]!"))
+			visible_message(span_danger("[src]Bate em[hit_atom]!"), span_alertalien("[src]Bate em[hit_atom]!"))
 			Paralyze(40, ignore_canstun = TRUE)
 
 #undef MAX_ALIEN_LEAP_DIST

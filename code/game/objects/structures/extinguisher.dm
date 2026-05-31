@@ -1,6 +1,6 @@
 /obj/structure/extinguisher_cabinet
 	name = "extinguisher cabinet"
-	desc = "A small wall mounted cabinet designed to hold a fire extinguisher."
+	desc = "Um pequeno armário montado na parede projetado para segurar um extintor de incêndio."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "extinguisher"
 	anchored = TRUE
@@ -67,11 +67,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 
 /obj/structure/extinguisher_cabinet/attackby(obj/item/used_item, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(used_item.tool_behaviour == TOOL_WRENCH && !stored_extinguisher)
-		user.balloon_alert(user, "deconstructing cabinet...")
+		user.balloon_alert(user, "Desconstruindo armário...")
 		used_item.play_tool_sound(src)
 		if(used_item.use_tool(src, user, 60))
 			playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
-			user.balloon_alert(user, "cabinet deconstructed")
+			user.balloon_alert(user, "Gabinete desconstruído.")
 			deconstruct(TRUE)
 		return
 
@@ -82,7 +82,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 			if(!user.transferItemToLoc(used_item, src))
 				return
 			stored_extinguisher = used_item
-			user.balloon_alert(user, "extinguisher stored")
+			user.balloon_alert(user, "Extintor Armazenado")
 			update_appearance(UPDATE_ICON)
 			return TRUE
 		else
@@ -101,7 +101,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 		return
 	if(stored_extinguisher)
 		user.put_in_hands(stored_extinguisher)
-		user.balloon_alert(user, "extinguisher removed")
+		user.balloon_alert(user, "Extintor removido")
 		if(!opened)
 			opened = 1
 			playsound(loc, 'sound/machines/click.ogg', 15, TRUE, -3)
@@ -119,7 +119,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 	. = COMPONENT_CANCEL_ATTACK_CHAIN
 	if(stored_extinguisher)
 		stored_extinguisher.forceMove(loc)
-		to_chat(user, span_notice("You telekinetically remove [stored_extinguisher] from [src]."))
+		to_chat(user, span_notice("Você remove telecinicamente.[stored_extinguisher]De[src]."))
 		stored_extinguisher = null
 		opened = TRUE
 		playsound(loc, 'sound/machines/click.ogg', 15, TRUE, -3)
@@ -133,7 +133,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 
 /obj/structure/extinguisher_cabinet/proc/toggle_cabinet(mob/user)
 	if(opened && broken)
-		user.balloon_alert(user, "it's broken!")
+		user.balloon_alert(user, "Está quebrado!")
 	else
 		playsound(loc, 'sound/machines/click.ogg', 15, TRUE, -3)
 		opened = !opened
@@ -181,7 +181,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 
 /obj/item/wallframe/extinguisher_cabinet
 	name = "extinguisher cabinet frame"
-	desc = "Used for building wall-mounted extinguisher cabinets."
+	desc = "Usado para construir armários de extintores montados na parede."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "extinguisher" //Reuses wallmount icon, but no door overlay
 	result_path = /obj/structure/extinguisher_cabinet

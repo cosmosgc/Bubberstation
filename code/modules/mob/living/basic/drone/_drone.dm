@@ -15,7 +15,7 @@
  */
 /mob/living/basic/drone
 	name = "Drone"
-	desc = "A maintenance drone, an expendable robot built to perform station repairs."
+	desc = "Um drone de manutenção, um robô descartável construído para fazer reparos na estação."
 	icon = 'icons/mob/silicon/drone.dmi'
 	icon_state = "drone_maint_grey"
 	icon_living = "drone_maint_grey"
@@ -55,10 +55,7 @@
 	var/colour = "grey"
 	var/list/drone_overlays[DRONE_TOTAL_LAYERS]
 	/// Drone laws announced on spawn
-	var/laws = \
-	"1. You may not involve yourself in the matters of another being, even if such matters conflict with Law Two or Law Three, unless the other being is another Drone.\n"+\
-	"2. You may not harm any being, regardless of intent or circumstance.\n"+\
-	"3. Your goals are to actively build, maintain, repair, improve, and provide power to the best of your abilities within the facility that housed your activation." //for derelict drones so they don't go to station.
+	var/laws = 	"1. You may not involve yourself in the matters of another being, even if such matters conflict with Law Two or Law Three, unless the other being is another Drone.\n"+	"2. You may not harm any being, regardless of intent or circumstance.\n"+	"3. Your goals are to actively build, maintain, repair, improve, and provide power to the best of your abilities within the facility that housed your activation." //for derelict drones so they don't go to station.
 	/// Amount of damage sustained if hit by a heavy EMP pulse
 	var/heavy_emp_damage = 25
 	///Alarm listener datum, handes caring about alarm events and such
@@ -91,16 +88,7 @@
 	/// If we have laws to minimize bothering others. Enables or disables drone laws enforcement components (use [/mob/living/basic/drone/proc/set_shy] to set)
 	var/shy = TRUE
 	/// Flavor text announced to drones on [/mob/proc/Login]
-	var/flavortext = \
-	"\n<big><span class='warning'>DO NOT INTERFERE WITH THE ROUND AS A DRONE OR YOU WILL BE DRONE BANNED</span></big>\n"+\
-	"<span class='notice'>Drones are a ghost role that are allowed to fix the station and build things. Interfering with the round as a drone is against the rules.</span>\n"+\
-	"<span class='notice'>Actions that constitute interference include, but are not limited to:</span>\n"+\
-	"<span class='notice'>     - Interacting with round critical objects (IDs, weapons, contraband, powersinks, bombs, etc.)</span>\n"+\
-	"<span class='notice'>     - Interacting with living beings (communication, attacking, healing, etc.)</span>\n"+\
-	"<span class='notice'>     - Interacting with non-living beings (dragging bodies, looting bodies, etc.)</span>\n"+\
-	"<span class='warning'>These rules are at admin discretion and will be heavily enforced.</span>\n"+\
-	"<span class='warning'><u>If you do not have the regular drone laws, follow your laws to the best of your ability.</u></span>\n"+\
-	"<span class='notice'>Prefix your message with :b to speak in Drone Chat.</span>\n"
+	var/flavortext = 	"\n<big><span class='warning'>DO NOT INTERFERE WITH THE ROUND AS A DRONE OR YOU WILL BE DRONE BANNED</span></big>\n"+	"<span class='notice'>Drones are a ghost role that are allowed to fix the station and build things. Interfering with the round as a drone is against the rules.</span>\n"+	"<span class='notice'>Actions that constitute interference include, but are not limited to:</span>\n"+	"<span class='notice'>     - Interacting with round critical objects (IDs, weapons, contraband, powersinks, bombs, etc.)</span>\n"+	"<span class='notice'>     - Interacting with living beings (communication, attacking, healing, etc.)</span>\n"+	"<span class='notice'>     - Interacting with non-living beings (dragging bodies, looting bodies, etc.)</span>\n"+	"<span class='warning'>These rules are at admin discretion and will be heavily enforced.</span>\n"+	"<span class='warning'><u>If you do not have the regular drone laws, follow your laws to the best of your ability.</u></span>\n"+	"<span class='notice'>Prefix your message with :b to speak in Drone Chat.</span>\n"
 
 /mob/living/basic/drone/Initialize(mapload)
 	. = ..()
@@ -232,21 +220,21 @@
 
 	//Hacked
 	if(hacked)
-		. += span_warning("Its display is glowing red!")
+		. += span_warning("Sua tela é vermelha brilhante!")
 
 	//Damaged
 	if(health != maxHealth)
 		if(health > maxHealth * 0.33) //Between maxHealth and about a third of maxHealth, between 30 and 10 for normal drones
-			. += span_warning("Its screws are slightly loose.")
+			. += span_warning("Seus parafusos estão ligeiramente soltos.")
 		else //otherwise, below about 33%
-			. += span_boldwarning("Its screws are very loose!")
+			. += span_boldwarning("Seus parafusos são muito soltos!")
 
 	//Dead
 	if(stat == DEAD)
 		if(client)
-			. += span_deadsay("A message repeatedly flashes on its display: \"REBOOT -- REQUIRED\".")
+			. += span_deadsay("Uma mensagem repetidamente pisca em sua tela:\"REBOOT - EXIGIDO\".")
 		else
-			. += span_deadsay("A message repeatedly flashes on its display: \"ERROR -- OFFLINE\".")
+			. += span_deadsay("Uma mensagem repetidamente pisca em sua tela:\"ERRO - OFFLINE\".")
 
 /mob/living/basic/drone/assess_threat(judgement_criteria, lasercolor = "", datum/callback/weaponcheck=null) //Secbots won't hunt maintenance drones.
 	return -10
@@ -256,18 +244,18 @@
 	if(. & EMP_PROTECT_SELF)
 		return
 	Stun(70)
-	to_chat(src, span_danger("<b>ER@%R: MME^RY CO#RU9T!</b> R&$b@0tin)..."))
+	to_chat(src, span_danger("<b>MME^RY CO#RU9T!</b>R&$b@0tin)..."))
 	if(severity == 1)
 		adjust_brute_loss(heavy_emp_damage)
-		to_chat(src, span_userdanger("HeAV% DA%^MMA+G TO I/O CIR!%UUT!"))
+		to_chat(src, span_userdanger("HeAV% DA%^MMA+G TO I/O CIR!"))
 
 /mob/living/basic/drone/proc/alarm_triggered(datum/source, alarm_type, area/source_area)
 	SIGNAL_HANDLER
-	to_chat(src, "--- [alarm_type] alarm detected in [source_area.name]!")
+	to_chat(src, "--- [alarm_type]Alarme detectado em[source_area.name]!")
 
 /mob/living/basic/drone/proc/alarm_cleared(datum/source, alarm_type, area/source_area)
 	SIGNAL_HANDLER
-	to_chat(src, "--- [alarm_type] alarm in [source_area.name] has been cleared.")
+	to_chat(src, "--- [alarm_type]Alarme em[source_area.name]Foi libertado.")
 
 /mob/living/basic/drone/proc/set_shy(new_shy)
 	shy = new_shy

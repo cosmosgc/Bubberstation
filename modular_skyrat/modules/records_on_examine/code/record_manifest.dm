@@ -84,13 +84,13 @@
 		var/exploitable_id = params["exploitable_id"]
 		var/datum/record/locked/target_record = find_record(exploitable_id, TRUE)
 		if(!isnull(target_record)) // this can be null
-			to_chat(usr, "<b>Exploitable information:</b> [target_record.exploitable_information]")
+			to_chat(usr, "<b>Informações úteis:</b> [target_record.exploitable_information]")
 
 	else if(action == "show_background")
 		var/background_id = params["background_id"]
 		var/datum/record/locked/target_record = find_record(background_id, TRUE)
 		if(!isnull(target_record))
-			to_chat(usr, "<b>Background information:</b> [target_record.background_information]")
+			to_chat(usr, "<b>Informação de fundo:</b> [target_record.background_information]")
 
 
 /datum/record_manifest/ui_data(mob/user)

@@ -15,7 +15,7 @@ let setClientThemeTimer: NodeJS.Timeout;
  *
  * If you change ANYTHING in interface/skin.dmf you need to change it here.
  *
- * There's no way round it. We're essentially changing the skin by hand.
+ * There'Não dá para contornar isso. Nós're essentially changing the skin by hand.
  * It's painful but it works, and is the way Lummox suggested.
  */
 export function setClientTheme(name): void | Promise<void> {

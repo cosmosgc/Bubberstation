@@ -120,7 +120,7 @@ function ShoppingTab(props) {
                 autoFocus
                 mt={0.5}
                 width="150px"
-                placeholder="Search item..."
+                placeholder="Procurar item..."
                 value={searchItem}
                 onChange={setSearchItem}
               />
@@ -134,7 +134,7 @@ function ShoppingTab(props) {
             {goods.map((item) => (
               <Table.Row
                 key={item.ref}
-                style={{ borderBottom: 'thin solid #333' }}
+                style={{ borderBottom: 'sólido fino #333' }}
               >
                 {!condensed && (
                   <Table.Cell collapsing>
@@ -250,7 +250,7 @@ function CheckoutTab(props) {
             {checkout_list.map((item, index) => (
               <Table.Row
                 key={item.ref}
-                style={{ borderBottom: 'thin solid #333' }}
+                style={{ borderBottom: 'sólido fino #333' }}
               >
                 <Table.Cell collapsing>{capitalize(item.name)}</Table.Cell>
                 <Table.Cell color="label" fontSize="10px">
@@ -313,7 +313,7 @@ function CheckoutTab(props) {
                 color="yellow"
                 disabled={total_cost <= 0}
                 tooltip={
-                  total_cost <= 0 ? 'Order atleast 1 item' : express_tooltip
+                  total_cost <= 0 ? 'Ordem pelo menos 1 item' : express_tooltip
                 }
                 tooltipPosition="top-start"
                 onClick={() => act('express')}

@@ -101,9 +101,9 @@
 	. = ..()
 	if(methods_to_fix)
 		for(var/tool_method in methods_to_fix)
-			. += span_warning("It needs someone to [EXAMINE_HINT(tool_method)].")
+			. += span_warning("Precisa de alguém para...[EXAMINE_HINT(tool_method)].")
 	if(panel_open)
-		. += span_notice("It can be deconstructed with a [EXAMINE_HINT("crowbar.")]")
+		. += span_notice("Pode ser desconstruído com um[EXAMINE_HINT("crowbar.")]")
 
 /**
  * Signal proc for [COMSIG_ATOM_TOOL_ACT], from a variety of signals, registered on the machinery.
@@ -120,13 +120,13 @@
 /obj/machinery/transport/proc/try_fix_machine(obj/machinery/transport/machine, mob/living/user, obj/item/tool)
 	SHOULD_CALL_PARENT(TRUE)
 
-	machine.balloon_alert(user, "percussive maintenance...")
+	machine.balloon_alert(user, "Manutenção percussiva...")
 	if(!tool.use_tool(machine, user, 7 SECONDS, volume = 50))
-		machine.balloon_alert(user, "interrompido!")
+		machine.balloon_alert(user, "Interrompido!")
 		return FALSE
 
 	playsound(src, 'sound/machines/synth/synth_yes.ogg', 75, use_reverb = TRUE)
-	machine.balloon_alert(user, "success!")
+	machine.balloon_alert(user, "Sucesso!")
 	UnregisterSignal(src, repair_signals)
 	LAZYNULL(repair_signals)
 	methods_to_fix = list()

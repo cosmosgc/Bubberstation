@@ -1,6 +1,6 @@
 /obj/machinery/power/manufacturing/crafter
 	name = "manufacturing assembling machine"
-	desc = "Assembles (crafts) the set recipe until it runs out of resources. Only resources on it will be used."
+	desc = "Reúna a receita definida até ficar sem recursos. Apenas recursos nele serão usados."
 	icon_state = "crafter"
 	density = FALSE
 	circuit = /obj/item/circuitboard/machine/manucrafter
@@ -26,10 +26,10 @@
 
 /obj/machinery/power/manufacturing/crafter/examine(mob/user)
 	. = ..()
-	. += span_notice("It is currently manufacturing <b>[isnull(recipe) ? "nothing. Use a multitool to set it" : recipe.name]</b>.")
+	. += span_notice("Está atualmente fabricando.<b>[isnull(recipe) ? "nothing. Use a multitool to set it" : recipe.name]</b>.")
 	if(isnull(recipe))
 		return
-	. += span_notice("It needs:")
+	. += span_notice("Precisa de:")
 	for(var/valid_type in recipe.reqs)
 		// Check if they're datums, specifically reagents.
 		var/datum/reagent/reagent_ingredient = valid_type
@@ -121,5 +121,5 @@
 
 /obj/machinery/power/manufacturing/crafter/cooker
 	name = "manufacturing cooking machine" // maybe this shouldnt be available dont wanna make chef useless, though otherwise it would need a sprite
-	desc = "Cooks the set recipe until it runs out of resources. Inputs irrelevant to the recipe are ignored."
+	desc = "Cozinhe a receita até ficar sem recursos. Entradas irrelevantes para a receita são ignoradas."
 	cooking = TRUE

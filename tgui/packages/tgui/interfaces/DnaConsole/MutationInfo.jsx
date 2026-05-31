@@ -45,8 +45,8 @@ const ChromosomeInfo = (props) => {
           disabled={mutation.ValidStoredChromos.length === 0}
           selected={
             mutation.ValidStoredChromos.length === 0
-              ? 'No Suitable Chromosomes'
-              : 'Select a chromosome'
+              ? 'Sem cromossomas adaptados.'
+              : 'Selecione um cromossomo.'
           }
           onSelected={(e) =>
             act('apply_chromo', {
@@ -83,7 +83,7 @@ const MutationCombiner = (props) => {
       width="240px"
       options={mutations.map((mutation) => mutation.Name)}
       disabled={mutations.length === 0}
-      selected="Combine mutations"
+      selected="Combinar mutações"
       onSelected={(value) =>
         act(`combine_${source.Source}`, {
           firstref: brefFromName(value),
@@ -163,7 +163,7 @@ export const MutationInfo = (props) => {
                   width="240px"
                   options={advInjectors.map((injector) => injector.name)}
                   disabled={advInjectors.length === 0 || !mutation.Active}
-                  selected="Add to advanced injector"
+                  selected="Adicionar ao injetor avançado"
                   onSelected={(value) =>
                     act('add_advinj_mut', {
                       mutref: mutation.ByondRef,
@@ -231,7 +231,7 @@ export const MutationInfo = (props) => {
                 <Button
                   icon="save"
                   disabled={savedToConsole || !mutation.Active}
-                  content="Save to Console"
+                  content="Salve para Console"
                   onClick={() =>
                     act('save_console', {
                       mutref: mutation.ByondRef,
@@ -252,7 +252,7 @@ export const MutationInfo = (props) => {
                     diskReadOnly ||
                     !mutation.Active
                   }
-                  content="Save to Disk"
+                  content="Salvar para Disco"
                   onClick={() =>
                     act('save_disk', {
                       mutref: mutation.ByondRef,

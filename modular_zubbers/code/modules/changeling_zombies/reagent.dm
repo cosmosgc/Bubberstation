@@ -1,9 +1,9 @@
 /datum/reagent/changeling_zombie_virus
 	name = "NT-CZV-1"
-	description = "\[CLASSIFED\]. THIS INCIDENT HAS BEEN REPORTED. DO NOT CONSUME. DISPOSE OF SAFELY."
+	description = "\[CLASSIFED\]Este incidente foi reportado. Não consuma. Eliminação de segurança."
 	color = "#191dff"
 	metabolization_rate = INFINITY
-	taste_description = "spare change"
+	taste_description = "Um trocado."
 	ph = 0.5
 
 /datum/reagent/changeling_zombie_virus/expose_mob(mob/living/carbon/human/exposed_mob, methods=TOUCH, reac_volume)
@@ -13,7 +13,7 @@
 
 /obj/item/reagent_containers/cup/glass/changeling_zombie_virus
 	name = "NT-CZV vial"
-	desc = "A small bottle of the NT-CZV pathogen. Nanotrasen Bioweapons inc."
+	desc = "Uma pequena garrafa do patógeno NT-CZV. Nanotrasen Bioarmas inc."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/changeling_zombie_virus=30)
@@ -71,5 +71,5 @@
 		return
 
 	if(infecting_human.AddComponent(/datum/component/changeling_zombie_infection))
-		to_chat(infecting_human,span_warning("You accidentally scratch your [found_hand.name] on [source]. Ouch."))
+		to_chat(infecting_human,span_warning("Você acidentalmente coça seu[found_hand.name]Vamos.[source]Ouch."))
 		found_hand.receive_damage(1)

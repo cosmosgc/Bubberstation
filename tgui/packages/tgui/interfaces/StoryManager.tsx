@@ -34,7 +34,7 @@ export const StoryManager = (props) => {
   const [id, setID] = useLocalState('id', '');
 
   return (
-    <Window width={600} height={800} title="Lorecaster Manager">
+    <Window width={600} height={800} title="Gerente de Lorecaster">
       <Window.Content scrollable>
         <Section textAlign="center">
           Lorecaster story manager
@@ -50,21 +50,21 @@ export const StoryManager = (props) => {
             <LabeledList.Item label="Title">
               <TextArea
                 height="20px"
-                placeholder="A short, consise title/author for the article."
+                placeholder="Um curto, consiste título/autor para o artigo."
                 onChange={setTitle}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Body Text">
+            <LabeledList.Item label="Texto do Corpo">
               <TextArea
                 height="100px"
-                placeholder="The contents of the article itself."
+                placeholder="O conteúdo do artigo em si."
                 onChange={setText}
               />
             </LabeledList.Item>
             <LabeledList.Item label="ID">
               <TextArea
                 height="20px"
-                placeholder="A unique id for the article. Article will not publish if set ID is in use."
+                placeholder="Uma identidade única para o artigo. O artigo não publicará se a identificação estiver em uso."
                 onChange={setID}
               />
             </LabeledList.Item>
@@ -87,14 +87,14 @@ export const StoryManager = (props) => {
             Publish
           </Button>
         </Section>
-        <Collapsible title="Current Stories">
+        <Collapsible title="Histórias atuais">
           {current_stories.map((story) => (
             <Collapsible
               bold
               key={story.id}
               title={
                 story.title +
-                ' | Published ' +
+                'Publicado' +
                 story.month +
                 '/' +
                 story.day +
@@ -121,14 +121,14 @@ export const StoryManager = (props) => {
             </Collapsible>
           ))}
         </Collapsible>
-        <Collapsible title="Archived Stories">
+        <Collapsible title="Histórias Arquivadas">
           {archived_stories.map((story) => (
             <Collapsible
               bold
               key={story.id}
               title={
                 story.title +
-                ' | Published ' +
+                'Publicado' +
                 story.month +
                 '/' +
                 story.day +

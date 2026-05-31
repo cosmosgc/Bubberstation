@@ -43,7 +43,7 @@ export const ClockworkSlab = (props) => {
           title={
             <Box inline color={'good'}>
               <Icon name={'cog'} rotation={0} spin={1} />
-              {' Clockwork Slab '}
+              {'Slab relógio'}
               <Icon name={'cog'} rotation={35} spin={1} />
             </Box>
           }
@@ -65,7 +65,7 @@ export const ClockworkSlab = (props) => {
             <Section
               height="100%"
               overflowY="auto"
-              title="Servants of the Cog vol.1"
+              title="Servos da Cog vol.1"
             >
               <ClockworkHelp />
             </Section>
@@ -79,7 +79,7 @@ export const ClockworkSlab = (props) => {
 const ClockworkHelp = (props) => {
   return (
     <>
-      <Collapsible title="Where To Start" color="average" open={1}>
+      <Collapsible title="Onde Começar" color="average" open={1}>
         <Section>
           After a long and destructive war, Rat&#39;Var has been imprisoned
           inside a dimension of suffering.
@@ -96,7 +96,7 @@ const ClockworkHelp = (props) => {
           <br />
         </Section>
       </Collapsible>
-      <Collapsible title="Unlocking Scriptures" color="average">
+      <Collapsible title="Desbloqueando como Escrituras" color="average">
         <Section>
           Most scriptures require <b>cogs</b> to unlock.
           <br />
@@ -233,7 +233,7 @@ const ClockworkSpellList = (props) => {
                   }
                   tooltip={
                     script.research_required
-                      ? 'Research is required to unlock this.'
+                      ? 'A pesquisa é necessária para desbloquear isso.'
                       : script.tip
                   }
                   disabled={script.research_required}
@@ -278,7 +278,7 @@ const ClockworkOverview = (props) => {
   return (
     <Box>
       <Box color="good" bold fontSize="16px">
-        {'Celestial Gateway Report'}
+        {'Relatório Celestial Gateway'}
       </Box>
       <Divider />
       <ClockworkOverviewStat

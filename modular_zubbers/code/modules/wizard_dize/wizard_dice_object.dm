@@ -2,7 +2,7 @@
 
 /obj/item/dice/d20/teleporting_die_of_fate
 	name = "wizardly die of fate"
-	desc = "An absurdly magical d20. Land on 20, and get a chance to win a chance to win a prize!"
+	desc = "Um d20 absurdamente mágico. Pouse na 20, e tenha a chance de ganhar um prêmio!"
 	microwave_riggable = FALSE //lol. lmao
 	COOLDOWN_DECLARE(roll_cd) //Prevents exploits
 	var/smite_rng_seed = 1
@@ -51,16 +51,16 @@
 
 /obj/item/dice/d20/teleporting_die_of_fate/examine(mob/user)
 	. = ..()
-	. += span_notice("Roll a 20, and you might become magical...")
-	. += span_warning("Roll a 1, and you will end up in medical!")
+	. += span_notice("Role um 20, e você pode se tornar mágico...")
+	. += span_warning("Role um 1, e você vai acabar no médico!")
 	if(relocation_timer && isobserver(user))
-		. += span_notice("The dice will relocate in [DisplayTimeText(timeleft(relocation_timer),1)]!")
-		. += span_warning("It has <b>[uses_left]</b> use[uses_left == 1 ? "" : "s"] left...")
+		. += span_notice("Os dados se mudarão.[DisplayTimeText(timeleft(relocation_timer),1)]!")
+		. += span_warning("Tem.<b>[uses_left]</b>usar[uses_left == 1 ? "" : "s"]Esquerda...")
 
 /obj/item/dice/d20/teleporting_die_of_fate/equipped(mob/user, slot)
 	. = ..()
 	if(!ishuman(user) || !user.mind || IS_WIZARD(user))
-		to_chat(user, span_warning("You feel the magic of the dice is restricted to ordinary people! You should leave it alone."))
+		to_chat(user, span_warning("Você sente que a magia dos dados é restrita às pessoas comuns! Deveria deixar isso em paz."))
 		user.dropItemToGround(src)
 	else if(do_teleport && !was_touched)
 		create_timer(teleport_delay_pickup)
@@ -69,17 +69,17 @@
 /obj/item/dice/d20/teleporting_die_of_fate/diceroll(mob/user, in_hand=FALSE)
 
 	if(!COOLDOWN_FINISHED(src, roll_cd))
-		to_chat(user, span_warning("Hold on, [src] isn't caught up with your last roll!"))
+		to_chat(user, span_warning("Espere,[src]Não está com seu último rolo!"))
 		return
 
 	. = ..()
 
 	if(!ishuman(user) || !user.mind || IS_WIZARD(user))
-		to_chat(user, span_warning("You feel the magic of the dice is restricted to ordinary people!"))
+		to_chat(user, span_warning("Você sente que a magia dos dados é restrita às pessoas comuns!"))
 		return
 
 	var/turf/current_turf = get_turf(src)
-	current_turf.visible_message(span_userdanger("[src] flares briefly."))
+	current_turf.visible_message(span_userdanger("[src]Arde rápidamente."))
 
 	addtimer(CALLBACK(src, PROC_REF(effect), user, .), 1 SECONDS)
 	COOLDOWN_START(src, roll_cd, 2.5 SECONDS)
@@ -96,7 +96,7 @@
 					"[src] was all used up, and was removed from reality.",
 					source = src
 				)
-			current_turf.visible_message(span_warning("[src] phases out of reality..."))
+			current_turf.visible_message(span_warning("[src]Fases fora da realidade..."))
 			qdel(src)
 			return
 
@@ -111,7 +111,7 @@
 	if(!desired_turf) //Do nothing as a failsafe for a failsafe.
 		return
 
-	current_turf.visible_message(span_warning("[src] phases out to another location!"))
+	current_turf.visible_message(span_warning("[src]Fases para outro local!"))
 
 	//Teleport!
 	src.forceMove(desired_turf)
@@ -148,7 +148,7 @@
 		return
 
 	user.emote("laugh")
-	current_turf.visible_message(span_userdanger("Magic flows out of [src] and into [user]!"))
+	current_turf.visible_message(span_userdanger("A magia flui para fora[src]e em[user]!"))
 	user.drop_everything(del_on_drop = FALSE, force = TRUE, del_if_nodrop = TRUE)
 	user.mind.make_wizard()
 
@@ -166,20 +166,20 @@
 		if(0)
 			//Bad luck.
 			target.AddComponent(/datum/component/omen/smite, incidents_left = 7) //7 (years) bad luck
-			to_chat(target, span_warning("You get a bad feeling about this..."))
+			to_chat(target, span_warning("Você tem um mau pressentimento sobre isso..."))
 		if(1)
 			//Drain bamage.
 			target.adjust_organ_loss(ORGAN_SLOT_BRAIN, BRAIN_DAMAGE_DEATH - 1, BRAIN_DAMAGE_DEATH - 1)
-			to_chat(target, span_warning("You feel <b>stupid</b> for rolling [src]..."))
+			to_chat(target, span_warning("Você sente<b>Estúpido.</b>para rolar[src]..."))
 		if(2)
 			//Forced to speak a random language.
 			target.apply_status_effect(/datum/status_effect/tower_of_babel, teleport_delay_pickup)
-			to_chat(target, span_warning("Come, let us go down and confuse their language there, so that they will not understand one another's speech. It'd be fucking hilarious!"))
+			to_chat(target, span_warning("Venha, vamos descer e confundir sua linguagem lá, para que eles não entendam o discurso um do outro. Seria hilário pra caralho!"))
 		if(3)
 			//Raining fireball.
 			target.Immobilize(3 SECONDS)
 			new /obj/effect/temp_visual/target(get_turf(target))
-			to_chat(target, span_warning("I CAST FIREBALL!"))
+			to_chat(target, span_warning("Eu castiguei nevoeiro!"))
 		if(4)
 			//Lighting bolt smite.
 			var/turf/lightning_source = get_turf(src)
@@ -187,11 +187,11 @@
 			target.adjust_fire_loss(LIGHTNING_BOLT_DAMAGE)
 			playsound(get_turf(target), 'sound/effects/magic/lightningbolt.ogg', 50, TRUE)
 			target.electrocution_animation(LIGHTNING_BOLT_ELECTROCUTION_ANIMATION_LENGTH)
-			to_chat(target, span_warning("LIGHTNING BOLT!!"))
+			to_chat(target, span_warning("Fogo!"))
 		if(5)
 			//Ick Ock Phobia
 			target.gain_trauma(/datum/brain_trauma/mild/phobia/ocky_icky, TRAUMA_RESILIENCE_SURGERY)
-			to_chat(target, span_warning("Those damn coders are out to get us!!!"))
+			to_chat(target, span_warning("Esses malditos codificadores estão atrás de nós!"))
 		if(6)
 			//A rod comes and fucks you up. And the station.
 			var/turf/target_turf = get_turf(target)
@@ -200,7 +200,7 @@
 			var/turf/end_turf = spaceDebrisFinishLoc(startside, target_turf.z)
 			if(start_turf && end_turf)
 				new /obj/effect/immovablerod(start_turf, end_turf, target, FALSE)
-			to_chat(target, span_warning("Huh. Nothing seems to have happened. I guess I am unstoppable..."))
+			to_chat(target, span_warning("Huh. Nada parece ter acontecido. Acho que sou imparável..."))
 		if(7)
 			//A pod comes down and slams you.
 			target.Immobilize(3 SECONDS)
@@ -213,16 +213,16 @@
 				"explosionSize" = list(0, 0, 2, 4),
 				"effectStun" = TRUE
 			))
-			to_chat(target, span_warning("SPECIAL DELIVERY!"))
+			to_chat(target, span_warning("Entrega especial!"))
 		if(8)
 			//You turn into a lizard. If you're already a lizard, you're now scared of lizards.
 			//Can be fixed via SAD.
 			if(target.dna && !istype(target.dna.species,/datum/species/lizard))
 				target.set_species(/datum/species/lizard)
-				to_chat(target, span_warning("You're a lizard, Harry."))
+				to_chat(target, span_warning("Você é um lagarto, Harry."))
 			else
 				target.gain_trauma(/datum/brain_trauma/mild/phobia/lizards, TRAUMA_RESILIENCE_SURGERY)
-				to_chat(target, span_warning("Wait a minute, I've been a LIZARD THIS WHOLE TIME?"))
+				to_chat(target, span_warning("Espera um minuto, eu fui um Lizard esse tempo todo?"))
 
 
 

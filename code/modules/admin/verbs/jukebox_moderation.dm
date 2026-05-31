@@ -1,19 +1,19 @@
 ADMIN_VERB(upload_jukebox_music, R_SERVER, "Jukebox Upload Music", "Upload a valid .ogg file to be accessed via the jukebox.", ADMIN_CATEGORY_SERVER)
-	var/file = input(user, "Select a .ogg file to upload to the jukebox.") as sound|null
+	var/file = input(user, "Selecione um arquivo Ogg para carregar na jukebox.") as sound|null
 	if(!file)
 		return
 
 	// we could theorticly support other sound types but OGG is the better format from what I am aware and I am 100% sure its length is properly fetched.
 	if(!IS_OGG_FILE(file))
-		tgui_alert(user, "Invalid file type. Please select an OGG file.", "Loading error", list("Ok"))
+		tgui_alert(user, "Tipo de arquivo inválido. Por favor, selecione um arquivo OGG.", "Loading error", list("Ok"))
 		return
 
 	var/list/track_data = splittext(file, "+")
 	if(track_data.len < 2)
-		if(tgui_alert(user, "Your song currently does not have a beat in deciseconds added to its title, e.g: SS13+5.ogg. Continue?", "Confirmation", list("Yes", "No")) != "Yes")
+		if(tgui_alert(user, "Sua música atualmente não tem uma batida em decisegundos adicionada ao título, por exemplo, SS13+5.ogg. Continuar?", "Confirmation", list("Yes", "No")) != "Yes")
 			return
 	if(track_data.len > 2)
-		tgui_alert(user, "Titles should only have its title and beat in deciseconds, e.g: SS13+5.ogg", "Loading error", list("Ok"))
+		tgui_alert(user, "Títulos só devem ter seu título e bater em decisegundos, por exemplo: SS13+5.ogg", "Loading error", list("Ok"))
 		return
 
 
@@ -24,7 +24,7 @@ ADMIN_VERB(upload_jukebox_music, R_SERVER, "Jukebox Upload Music", "Upload a val
 	fcopy(file, save_path)
 
 	message_admins("[key_name_admin(user)] uploaded [clean_name] to the jukebox!")
-	to_chat(user, span_notice("Successfully uploaded [clean_name]!"))
+	to_chat(user, span_notice("Enviado com sucesso[clean_name]!"))
 
 ADMIN_VERB(browse_jukebox_music, R_SERVER, "Jukebox Browse Music", "Browse music files for moderation.", ADMIN_CATEGORY_SERVER)
 	var/list/files = flist(CONFIG_JUKEBOX_SOUNDS)
@@ -33,7 +33,7 @@ ADMIN_VERB(browse_jukebox_music, R_SERVER, "Jukebox Browse Music", "Browse music
 		if(!IS_SOUND_FILE(thing))
 			files -= thing
 	if(!files.len)
-		to_chat(user, span_warning("No uploaded tracks found."))
+		to_chat(user, span_warning("Nenhuma pista encontrada."))
 		return
 
 	var/choice = tgui_input_list(user, "Select a track:", "Select Jukebox Music", files)
@@ -42,7 +42,7 @@ ADMIN_VERB(browse_jukebox_music, R_SERVER, "Jukebox Browse Music", "Browse music
 
 	var/path = "[CONFIG_JUKEBOX_SOUNDS][choice]"
 
-	switch(tgui_alert(user, "Play, Delete, or Download?", choice, list("Play", "Delete", "Download")))
+	switch(tgui_alert(user, "Jogar, Apagar ou Baixar?", choice, list("Play", "Delete", "Download")))
 		if ("Play")
 			SEND_SOUND(user, sound(path))
 		if ("Delete")

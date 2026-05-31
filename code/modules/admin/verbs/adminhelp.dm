@@ -74,13 +74,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	switch(state)
 		if(AHELP_ACTIVE)
 			l2b = active_tickets
-			title = "Active Tickets"
+			title = "Bilhetes Ativos"
 		if(AHELP_CLOSED)
 			l2b = closed_tickets
-			title = "Closed Tickets"
+			title = "Bilhetes fecados"
 		if(AHELP_RESOLVED)
 			l2b = resolved_tickets
-			title = "Resolved Tickets"
+			title = "Bilhetes resolvidos"
 	if(!l2b)
 		return
 	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>[title]</title></head>")
@@ -306,7 +306,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	if(urgent)
 		var/extra_message = CONFIG_GET(string/urgent_ahelp_message)
-		to_chat(initiator, span_boldwarning("Notified admins to prioritize your ticket"))
+		to_chat(initiator, span_boldwarning("Administradores avisados para priorizar seu ingresso."))
 		var/datum/discord_embed/embed = format_embed_discord(message)
 		embed.content = extra_message
 		embed.footer = "This player requested an admin"
@@ -324,7 +324,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	// BUBBER EDIT END
 	log_admin_private("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
 	if(admin_number_present <= 0)
-		to_chat(initiator, span_notice("No active admins are online, your adminhelp was sent to admins who are available through IRC or Discord."), confidential = TRUE)
+		to_chat(initiator, span_notice("Nenhum administrador ativo está online, sua ajuda foi enviada para administradores que estão disponíveis através de IRC ou Discórdia."), confidential = TRUE)
 		heard_by_no_admins = TRUE
 		var/regular_webhook_url = CONFIG_GET(string/regular_adminhelp_webhook_url)
 		if(regular_webhook_url && (!urgent || regular_webhook_url != CONFIG_GET(string/urgent_adminhelp_webhook_url)))
@@ -425,10 +425,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/ref_src = "[REF(src)]"
 	//Message to be sent to all admins
 	var/admin_msg = fieldset_block(
-		span_adminhelp("Ticket [TicketHref("#[id]", ref_src)]"),
-		"<b>[LinkedReplyName(ref_src)]</b>\n\n\
-		[span_linkify(keywords_lookup(msg))]\n\n\
-		<b class='smaller'>[FullMonty(ref_src)]</b>",
+		span_adminhelp("Bilhete.[TicketHref("#[id]", ref_src)]"),
+		"<b>[LinkedReplyName(ref_src)]</b>\n\n		[span_linkify(keywords_lookup(msg))]\n\n		<b class='smaller'>[FullMonty(ref_src)]</b>",
 		"boxed_message red_box")
 
 	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>", player_message = "<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>")
@@ -462,11 +460,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //Reopen a closed ticket
 /datum/admin_help/proc/Reopen()
 	if(state == AHELP_ACTIVE)
-		to_chat(usr, span_warning("This ticket is already open."), confidential = TRUE)
+		to_chat(usr, span_warning("Este bilhete já está aberto."), confidential = TRUE)
 		return
 
 	if(GLOB.ahelp_tickets.CKey2ActiveTicket(initiator_ckey))
-		to_chat(usr, span_warning("This user already has an active ticket, cannot reopen this one."), confidential = TRUE)
+		to_chat(usr, span_warning("Este usuário já tem um ticket ativo, não pode reabrir este."), confidential = TRUE)
 		return
 
 	statclick = new(null, src)
@@ -484,7 +482,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		initiator.current_ticket = src
 	send2adminchat("Ticket #[id]:", "Reopened!") // BUBBER EDIT - LOG ALL AHELPS TO DISCORD
 	AddInteraction("<font color='purple'>Reopened by [key_name_admin(usr)]</font>", player_message = "Ticket reopened!")
-	var/msg = span_adminhelp("Ticket [TicketHref("#[id]")] reopened by [key_name_admin(usr)].")
+	var/msg = span_adminhelp("Bilhete.[TicketHref("#[id]")]Reaberto por[key_name_admin(usr)].")
 	message_admins(msg)
 	log_admin_private(msg)
 	SSblackbox.LogAhelp(id, "Reopened", "Reopened by [usr.key]", usr.ckey)
@@ -509,7 +507,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		return
 	//SKYRAT EDIT ADDITION BEGIN - ADMIN
 	if(handler && handler != usr.ckey)
-		var/response = tgui_alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", list("Yes", "No"))
+		var/response = tgui_alert(usr, "Este bilhete já está sendo tratado por[handler]Você quer continuar?", "Ticket already assigned", list("Yes", "No"))
 		if(!response || response == "No")
 			return
 	//SKYRAT EDIT ADDITION END
@@ -531,7 +529,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		return
 	//SKYRAT EDIT ADDITION BEGIN - ADMIN
 	if(handler && handler != usr.ckey)
-		var/response = tgui_alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", list("Yes", "No"))
+		var/response = tgui_alert(usr, "Este bilhete já está sendo tratado por[handler]Você quer continuar?", "Ticket already assigned", list("Yes", "No"))
 		if(!response || response == "No")
 			return
 	//SKYRAT EDIT ADDITION END
@@ -542,7 +540,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client, giveadminhelpverb)), 5 SECONDS)
 	send2adminchat("Ticket #[id]:", "Marked as resolved by [key_name]") // BUBBER EDIT - LOG ALL AHELPS TO DISCORD
 	AddInteraction("<font color='green'>Resolved by [key_name].</font>", player_message = "<font color='green'>Ticket resolved!</font>")
-	to_chat(initiator, span_adminhelp("Your ticket has been resolved by an admin. The Adminhelp verb will be returned to you shortly."), confidential = TRUE)
+	to_chat(initiator, span_adminhelp("Seu ingresso foi resolvido por um administrador. O verbo Adminhelp será devolvido em breve."), confidential = TRUE)
 	if(!silent)
 		SSblackbox.record_feedback("tally", "ahelp_stats", 1, "resolved")
 		var/msg = "Ticket [TicketHref("#[id]")] resolved by [key_name]"
@@ -556,7 +554,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		return
 	//SKYRAT EDIT ADDITION BEGIN - ADMIN
 	if(handler && handler != usr.ckey)
-		var/response = tgui_alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", list("Yes", "No"))
+		var/response = tgui_alert(usr, "Este bilhete já está sendo tratado por[handler]Você quer continuar?", "Ticket already assigned", list("Yes", "No"))
 		if(!response || response == "No")
 			return
 	//SKYRAT EDIT ADDITION END
@@ -565,9 +563,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		send2adminchat("[key_name]", "Rejected Adminhelp: [id]") // BUBBER EDIT - LOG ALL AHELPS TO DISCORD
 		SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
 
-		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>", confidential = TRUE)
-		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b> The adminhelp verb has been returned to you so that you may try again.</font>", confidential = TRUE)
-		to_chat(initiator, "Please try to be calm, clear, and descriptive in admin helps, do not assume the admin has seen any related events, and clearly state the names of anybody you are reporting.", confidential = TRUE)
+		to_chat(initiator, "<font color='red' size='4'><b>-Ajuda Rejeitada!</b></font>", confidential = TRUE)
+		to_chat(initiator, "<font color='red'><b>Sua ajuda administrativa foi rejeitada.</b>O verbo adminhelp foi devolvido para que você possa tentar novamente.</font>", confidential = TRUE)
+		to_chat(initiator, "Por favor, tente ser calmo, claro e descritivo na administração ajuda, não suponha que o administrador tenha visto qualquer evento relacionado, e indique claramente os nomes de alguém que você está relatando.", confidential = TRUE)
 
 	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "rejected")
 	var/msg = "Ticket [TicketHref("#[id]")] rejected by [key_name]"
@@ -583,7 +581,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		return
 	//SKYRAT EDIT ADDITION BEGIN - ADMIN
 	if(handler && handler != usr.ckey)
-		var/response = tgui_alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", list("Yes", "No"))
+		var/response = tgui_alert(usr, "Este bilhete já está sendo tratado por[handler]Você quer continuar?", "Ticket already assigned", list("Yes", "No"))
 		if(!response || response == "No")
 			return
 	//SKYRAT EDIT ADDITION END
@@ -654,7 +652,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			return "INVALID, CALL A CODER"
 
 /datum/admin_help/proc/Retitle()
-	var/new_title = input(usr, "Enter a title for the ticket", "Rename Ticket", name) as text|null
+	var/new_title = input(usr, "Digite um título para o ticket.", "Mudar o Nome do Bilhete", name) as text|null
 	if(new_title)
 		name = new_title
 		//not saying the original name cause it could be a long ass message
@@ -820,7 +818,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 
 /datum/admin_help_ui_handler/proc/perform_adminhelp(client/user_client, message, urgent)
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."), confidential = TRUE)
+		to_chat(usr, span_danger("A fala está desativada."), confidential = TRUE)
 		return
 
 	if(!message)
@@ -828,7 +826,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 
 	//handle muting and automuting
 	if(user_client.prefs.muted & MUTE_ADMINHELP)
-		to_chat(user_client, span_danger("Error: Admin-PM: You cannot send adminhelps (Muted)."), confidential = TRUE)
+		to_chat(user_client, span_danger("Não pode enviar ajuda administrativa."), confidential = TRUE)
 		return
 	if(user_client.handle_spam_prevention(message, MUTE_ADMINHELP))
 		return
@@ -866,7 +864,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 	set category = "Admin"
 	set name = "Adminhelp"
 	GLOB.admin_help_ui_handler.ui_interact(mob)
-	to_chat(src, span_boldnotice("Adminhelp failing to open or work? <a href='byond://?src=[REF(src)];tguiless_adminhelp=1'>Click here</a>"))
+	to_chat(src, span_boldnotice("Ajuda administrativa falhando embrir ou trabalhar?<a href='byond://?src=[REF(src)];tguiless_adminhelp=1'>Clique aqui.</a>"))
 
 /client/verb/view_latest_ticket()
 	set category = "Admin"
@@ -891,7 +889,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 			return
 
 		// client had no tickets this round
-		to_chat(src, span_warning("You have not had an ahelp ticket this round."))
+		to_chat(src, span_warning("Você não teve uma multa de ajuda nesta rodada."))
 		return
 
 	current_ticket.player_ticket_panel()

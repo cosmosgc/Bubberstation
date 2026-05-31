@@ -1,7 +1,6 @@
 /obj/item/gun/ballistic/automatic/smart_machine_gun
 	name = "\improper M63A4 \"Smartgun\""
-	desc = "A weapon with a blistering rate of fire, so heavy that it needs to be mounted on a modsuit to wield. \
-	It's equipped with IFF technology, allowing the bullets to intentionally miss friendly targets."
+	desc = "Uma arma com uma taxa de fogo tão forte que precisa ser montada em um modsuit para empunhar. Está equipado com tecnologia IFF, permitindo que as balas percam alvos amigos intencionalmente."
 	icon = 'modular_skyrat/modules/marines/icons/items/guns.dmi'
 	lefthand_file = 'modular_skyrat/modules/marines/icons/mobs/guns_l.dmi'
 	righthand_file = 'modular_skyrat/modules/marines/icons/mobs/guns_r.dmi'
@@ -53,7 +52,7 @@
 	. = ..()
 	. += "<b>RMB with an empty hand</b> to [cover_open ? "close" : "open"] the dust cover."
 	if(cover_open && magazine)
-		. += span_notice("It seems like you could use an <b>empty hand</b> to remove the magazine.")
+		. += span_notice("Parece que você poderia usar um<b>Mão vazia</b>Para remover uma revista.")
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
@@ -62,7 +61,7 @@
 	if(!user.can_perform_action(src))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	cover_open = !cover_open
-	to_chat(user, span_notice("You [cover_open ? "open" : "close"] [src]'s cover."))
+	to_chat(user, span_notice("Você.[cover_open ? "open" : "close"] [src]É um disfarce."))
 	playsound(src, 'sound/items/weapons/gun/l6/l6_door.ogg', 60, TRUE)
 	update_appearance()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -75,13 +74,13 @@
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/eject_magazine(mob/user, display_message = TRUE, obj/item/ammo_box/magazine/tac_load = null)
 	if(!cover_open)
-		to_chat(user, span_warning("The cover is closed! Open it before ejecting the magazine!"))
+		to_chat(user, span_warning("A capa está fechada! Abra antes de ejetar a revista!"))
 		return
 	return ..()
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/attackby(obj/item/attack_item, mob/user, params)
 	if(!cover_open && istype(attack_item, accepted_magazine_type))
-		to_chat(user, span_warning("[src]'s dust cover prevents a magazine from being fit."))
+		to_chat(user, span_warning("[src]A cobertura de poeira impede uma revista de ficção em forma."))
 		return
 	..()
 
@@ -133,7 +132,7 @@
 
 /obj/item/ammo_casing/smart/a10x28
 	name = "10x28mm bullet"
-	desc = "A 10x28m caseless bullet."
+	desc = "Uma bala 10x28m."
 	icon_state = "762-casing"
 	caliber = "a10x28"
 	projectile_type = /obj/projectile/bullet/smart/a10x28

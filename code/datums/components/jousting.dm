@@ -59,7 +59,7 @@
 
 /datum/component/jousting/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_notice("It can be used on a vehicle for jousting, dealing potential knockdowns and additional damage.")
+	examine_list += span_notice("Pode ser usado em um veículo para disputa, lidando com possíveis nocautes e danos adicionais.")
 
 /datum/component/jousting/proc/on_transform(obj/item/source, mob/user, active)
 	SIGNAL_HANDLER

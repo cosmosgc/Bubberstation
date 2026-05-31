@@ -65,19 +65,19 @@
 /obj/machinery/chem_heater/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Heating reagents at <b>[heater_coefficient * 1000]%</b> speed.")
+		. += span_notice("A exibição de status diz:<b>[heater_coefficient * 1000]%</b>Velocidade.")
 		if(!QDELETED(beaker))
-			. += span_notice("It has a beaker of [beaker.reagents.total_volume] units capacity.")
+			. += span_notice("Tem um copo de[beaker.reagents.total_volume]Capacidade das unidades.")
 			if(beaker.reagents.is_reacting)
-				. += span_notice("Its contents are currently reacting.")
+				. += span_notice("Seu conteúdo está reagindo.")
 		else
-			. += span_warning("There is no beaker inserted.")
-		. += span_notice("Its heating is turned [on ? "On" : "Off"].")
-		. += span_notice("The status display reads: Heating reagents at <b>[heater_coefficient * 1000]%</b> speed.")
+			. += span_warning("Não há nenhum copo inserido.")
+		. += span_notice("O aquecimento está girando.[on ? "On" : "Off"].")
+		. += span_notice("A exibição de status diz:<b>[heater_coefficient * 1000]%</b>Velocidade.")
 		if(panel_open)
-			. += span_notice("Its panel is open and can now be [EXAMINE_HINT("pried")] apart.")
+			. += span_notice("Seu painel está aberto e agora pode ser[EXAMINE_HINT("pried")]Separados.")
 		else
-			. += span_notice("Its panel can be [EXAMINE_HINT("pried")] open")
+			. += span_notice("Seu painel pode ser[EXAMINE_HINT("pried")]Abra.")
 
 /obj/machinery/chem_heater/update_icon_state()
 	icon_state = "[base_icon_state][(beaker && !panel_open) ? 1 : 0]b"
@@ -103,7 +103,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	ui_interact(user)
-	balloon_alert(user, "beaker added")
+	balloon_alert(user, "béquer adicionado")
 
 	return ITEM_INTERACT_SUCCESS
 
@@ -380,7 +380,7 @@
 //Has a lot of buffer and is upgraded
 /obj/machinery/chem_heater/debug
 	name = "Debug Reaction Chamber"
-	desc = "Now with even more buffers!"
+	desc = "Agora com ainda mais amortecedores!"
 
 /obj/machinery/chem_heater/debug/Initialize(mapload)
 	. = ..()
@@ -391,7 +391,7 @@
 
 //map load types
 /obj/machinery/chem_heater/withbuffer
-	desc = "This Reaction Chamber comes with a bit of buffer to help get you started."
+	desc = "Esta Câmara de Reação vem com um pouco de amortecedor para ajudá-lo a começar."
 
 /obj/machinery/chem_heater/withbuffer/Initialize(mapload)
 	. = ..()

@@ -10,7 +10,7 @@
  */
 /mob/living/proc/perform_surgery(atom/movable/operating_on, potential_tool = IMPLEMENT_HAND, intentionally_fail = FALSE, operating_zone = zone_selected)
 	if(DOING_INTERACTION(src, (HAS_TRAIT(src, TRAIT_HIPPOCRATIC_OATH) ? operating_on : DOAFTER_SOURCE_SURGERY)))
-		operating_on.balloon_alert(src, "already performing surgery!")
+		operating_on.balloon_alert(src, "Já está fazendo cirurgia!")
 		return ITEM_INTERACT_BLOCKING
 
 	// allow cyborgs to use "hands"
@@ -45,13 +45,13 @@
 		if (isliving(operating_on))
 			var/mob/living/patient = operating_on
 			if(!patient.is_location_accessible(operating_zone, IGNORED_OPERATION_CLOTHING_SLOTS))
-				patient.balloon_alert(src, "operation site is obstructed!")
+				patient.balloon_alert(src, "O local da operação está obstruído!")
 			else if(!IS_LYING_OR_CANNOT_LIE(patient))
-				patient.balloon_alert(src, "not lying down!")
+				patient.balloon_alert(src, "Não deitado!")
 			else
-				patient.balloon_alert(src, "nothing to do with [realtool.name]!")
+				patient.balloon_alert(src, "Nada a ver com[realtool.name]!")
 		else
-			operating.balloon_alert(src, "nothing to do with [realtool.name]!")
+			operating.balloon_alert(src, "Nada a ver com[realtool.name]!")
 		//  ...then, block attacking. prevents the surgeon from viciously stabbing the patient on a mistake
 		return ITEM_INTERACT_BLOCKING
 
@@ -140,9 +140,9 @@
 		return ITEM_INTERACT_BLOCKING
 
 	visible_message(
-		span_notice("[src] attempts to close [p_their()] own [limb.plaintext_zone] with [tool]..."),
-		span_notice("You attempt to close your own [limb.plaintext_zone] with [tool]..."),
-		span_hear("You hear [tool?.get_temperature() ? "singeing" : "stitching"] sounds."),
+		span_notice("[src]Tenta fechar[p_their()]Mesmo.[limb.plaintext_zone]com[tool]..."),
+		span_notice("Você tenta fechar seu próprio[limb.plaintext_zone]com[tool]..."),
+		span_hear("Você ouve.[tool?.get_temperature() ? "singeing" : "stitching"]Sons."),
 		vision_distance = 5,
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
@@ -156,9 +156,9 @@
 		return ITEM_INTERACT_BLOCKING
 
 	visible_message(
-		span_notice("[src] closes [p_their()] own [limb.plaintext_zone] with [tool]."),
-		span_notice("You close your own [limb.plaintext_zone] with [tool]."),
-		span_hear("You hear [tool?.get_temperature() ? "singeing" : "stitching"] sounds."),
+		span_notice("[src]Fecha.[p_their()]Mesmo.[limb.plaintext_zone]com[tool]."),
+		span_notice("Você fecha o seu.[limb.plaintext_zone]com[tool]."),
+		span_hear("Você ouve.[tool?.get_temperature() ? "singeing" : "stitching"]Sons."),
 		vision_distance = 5,
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
@@ -213,7 +213,7 @@
 
 	var/list/operations = surgeon.get_available_operations(src, surgeon.get_active_held_item())
 	if(!length(operations))
-		to_chat(surgeon, boxed_message(span_info("No available surgeries.")))
+		to_chat(surgeon, boxed_message(span_info("Nenhuma cirurgia disponível.")))
 		return
 
 	var/list/operations_info = list()
@@ -222,7 +222,7 @@
 		var/atom/movable/operating_on = operations[radial_slice][2]
 		operations_info += "[radial_slice]: [operation.name] on [operating_on]"
 
-	to_chat(surgeon, boxed_message(span_info("Available surgeries:<br><hr>[jointext(operations_info, "<br>")]")))
+	to_chat(surgeon, boxed_message(span_info("Cirurgias disponíveis:<br><hr>[jointext(operations_info, "<br>")]")))
 
 /// Takes a target zone and returns a list of readable surgery states for that zone.
 /// Example output may be list("Skin is cut", "Blood vessels are unclamped", "Bone is sawed")
@@ -1021,7 +1021,7 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	if(target.stat >= UNCONSCIOUS || HAS_TRAIT(target, TRAIT_KNOCKEDOUT))
 		return
 	if(HAS_TRAIT(target, TRAIT_ANALGESIA) || drunken_patient && prob(drunken_ignorance_probability))
-		to_chat(target, span_notice("You feel a dull, numb sensation as your body is surgically operated on."))
+		to_chat(target, span_notice("Você sente uma sensação de dormência quando seu corpo é operado cirurgicamente."))
 		return
 	to_chat(target, span_userdanger(pain_message))
 	if(prob(30) && !mechanical_surgery)
@@ -1131,9 +1131,9 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You begin to operate on [display_target]..."),
-		span_notice("[surgeon] begins to operate on [display_target]."),
-		span_notice("[surgeon] begins to operate on [display_target]."),
+		span_notice("Você começa a operar[display_target]..."),
+		span_notice("[surgeon]Começa a operar[display_target]."),
+		span_notice("[surgeon]Começa a operar[display_target]."),
 	)
 
 /**
@@ -1163,9 +1163,9 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You succeed."),
-		span_notice("[surgeon] succeeds!"),
-		span_notice("[surgeon] finishes."),
+		span_notice("Você tem sucesso."),
+		span_notice("[surgeon]Bem sucedido!"),
+		span_notice("[surgeon]Termina."),
 	)
 
 /**
@@ -1212,9 +1212,9 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	display_results(
 		surgeon,
 		patient,
-		span_warning("You screw up![screwedmessage]"),
-		span_warning("[surgeon] screws up!"),
-		span_notice("[surgeon] finishes."),
+		span_warning("Você estragou tudo![screwedmessage]"),
+		span_warning("[surgeon]Estraga tudo!"),
+		span_notice("[surgeon]Termina."),
 		TRUE, //By default the patient will notice if the wrong thing has been cut
 	)
 

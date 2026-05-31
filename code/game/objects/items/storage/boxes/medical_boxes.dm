@@ -2,7 +2,7 @@
 
 /obj/item/storage/box/syringes
 	name = "box of syringes"
-	desc = "A box full of syringes."
+	desc = "Uma caixa cheia de seringas."
 	illustration = "syringe"
 
 /obj/item/storage/box/syringes/PopulateContents()
@@ -20,7 +20,7 @@
 
 /obj/item/storage/box/medipens
 	name = "box of medipens"
-	desc = "A box full of epinephrine MediPens."
+	desc = "Uma caixa cheia de epinefrina MediPens."
 	illustration = "epipen"
 
 /obj/item/storage/box/medipens/PopulateContents()
@@ -29,7 +29,7 @@
 
 /obj/item/storage/box/medipens/utility
 	name = "stimpack value kit"
-	desc = "A box with several stimpack medipens for the economical miner."
+	desc = "Uma caixa com vários estimulantes para o mineiro econômico."
 	illustration = "epipen"
 
 /obj/item/storage/box/medipens/utility/PopulateContents()
@@ -74,7 +74,7 @@
 
 /obj/item/storage/box/medigels
 	name = "box of medical gels"
-	desc = "A box full of medical gel applicators, with unscrewable caps and precision spray heads."
+	desc = "Uma caixa cheia de aplicadores de gel médico, com tampas inescrevíveis e cabeças de spray de precisão."
 	illustration = "medgel"
 
 /obj/item/storage/box/medigels/PopulateContents()
@@ -83,7 +83,7 @@
 
 /obj/item/storage/box/injectors
 	name = "box of DNA injectors"
-	desc = "This box contains injectors, it seems."
+	desc = "Parece que esta caixa contém injetores."
 	illustration = "dna"
 
 /obj/item/storage/box/injectors/PopulateContents()
@@ -95,7 +95,7 @@
 
 /obj/item/storage/box/bodybags
 	name = "body bags"
-	desc = "The label indicates that it contains body bags."
+	desc = "O rótulo indica que contém sacos para cadáveres."
 	illustration = "bodybags"
 
 /obj/item/storage/box/bodybags/PopulateContents()
@@ -105,7 +105,7 @@
 
 /obj/item/storage/box/pillbottles
 	name = "box of pill bottles"
-	desc = "It has pictures of pill bottles on its front."
+	desc = "Tem fotos de frascos de pílulas na frente."
 	illustration = "pillbox"
 
 /obj/item/storage/box/pillbottles/PopulateContents()
@@ -122,7 +122,7 @@
 
 /obj/item/storage/box/evilmeds
 	name = "box of premium medicine"
-	desc = "Contains a large number of beakers filled with premium medical supplies. Straight from Interdyne Pharmaceutics!"
+	desc = "Contém um grande número de copos cheios de suprimentos médicos premium. Direto da Farmácia Interdyne!"
 	icon_state = "syndiebox"
 	illustration = "beaker"
 
@@ -140,7 +140,7 @@
 
 /obj/item/storage/box/bandages
 	name = "box of bandages"
-	desc = "A box of DeForest brand gel bandages designed to treat blunt-force trauma."
+	desc = "Uma caixa de curativos da marca DeForest feitos para tratar traumas contundentes."
 	icon = 'icons/obj/storage/box.dmi' // SKYRAT EDIT CHANGE
 	icon_state = "brutebox"
 	base_icon_state = "brutebox"
@@ -173,7 +173,7 @@
 // The actual box
 /obj/item/storage/box/triage_cards
 	name = "triage card box"
-	desc = "A box containing triage cards, used for quickly assessing the severity of a patient's condition."
+	desc = "Uma caixa com cartões de triagem, usada para avaliar a gravidade do paciente."
 	custom_price = PAYCHECK_CREW
 
 /obj/item/storage/box/triage_cards/PopulateContents()
@@ -191,8 +191,8 @@
 
 /obj/item/paper/triage
 	name = "triage card"
-	desc = "A card used to determine the severity of a patient's condition at a glance."
-	default_raw_text = "It's so over" // filler text
+	desc = "Um cartão usado para determinar a gravidade da condição do paciente."
+	default_raw_text = "Acabou." // filler text
 	var/severity = "none"
 
 /obj/item/paper/triage/Initialize(mapload)
@@ -232,19 +232,19 @@
 	. = ..()
 	switch(severity)
 		if(SEVERITY_DEAD)
-			. += span_notice("This card indicates that the patient is deceased or is not expected to survive.")
+			. += span_notice("Este cartão indica que o paciente morreu ou não se espera que sobreviva.")
 		if(SEVERITY_IMMEDIATE)
-			. += span_notice("This card indicates that the patient is in a critical condition and requires immediate attention.")
+			. += span_notice("Este cartão indica que o paciente está em estado crítico e requer atenção imediata.")
 		if(SEVERITY_DELAYED)
-			. += span_notice("This card indicates that the patient is seriously injured, but not in immediate danger.")
+			. += span_notice("Este cartão indica que o paciente está gravemente ferido, mas não em perigo imediato.")
 		if(SEVERITY_MINIMAL)
-			. += span_notice("This card indicates that the patient is only slightly injured.")
+			. += span_notice("Este cartão indica que o paciente está levemente ferido.")
 
-	. += span_smallnoticeital("There is a guide to triage on the back of the card, if you <i>look closer</i>.")
+	. += span_smallnoticeital("Há um guia para triagem atrás do cartão, se você<i>Olhe mais de preto.</i>.")
 
 /obj/item/paper/triage/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<i>The back of [src] has a guide to performing triage:</i>")
+	. += span_notice("<i>A parte de trás de[src]tem um guia para a triagem:</i>")
 	. += "&bull; \"Is the victim walking and can respond to simple orders?\" If so, mark as <b>minimal</b>."
 	. += "&bull; \"Has the victim stopped breathing entirely (without even gasping for air)?\" If so, mark as <b>expectant / deceased</b>."
 	. += "&bull; \"Is the victim bleeding, failing to follow simple commands, lacking a pulse, having difficulties breathing?\" If so, mark as <b>immediate</b>."
@@ -261,7 +261,7 @@
 		return NONE
 
 	user.do_attack_animation(interacting_with, used_item = src)
-	interacting_with.balloon_alert(user, "card attached")
+	interacting_with.balloon_alert(user, "cartão anexado")
 	interacting_with.AddComponent(/datum/component/sticker, src, get_dir(interacting_with, src), px, py)
 	return ITEM_INTERACT_SUCCESS
 
@@ -284,7 +284,7 @@
 // Paper bin to store a lot of triage cards. Goes away when empty.
 /obj/item/paper_bin/triage
 	name = "triage card stack"
-	desc = "A stack of triage cards for quickly assessing the severity of a patient's condition."
+	desc = "Uma pilha de cartões de triagem para avaliar a gravidade do paciente."
 	icon_state = ""
 	bin_overlay_string = ""
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'

@@ -29,10 +29,10 @@ GLOBAL_LIST_INIT(print_types, init_print_types())
 
 /proc/check_can_print_canvas(_typepath, _image_file, obj/item/modular_computer/computer, mob/user)
 	if(!(computer.hardware_flag & PROGRAM_CONSOLE))
-		to_chat(user, span_notice("Printing error: Canvas printing is only supported on stationary consoles."))
+		to_chat(user, span_notice("Erro de impressão: impressão de tela só é suportada em consoles estacionários."))
 		return FALSE
 	if(computer.stored_paper < CANVAS_PAPER_COST)
-		to_chat(user, span_notice("Printing error: Your printer needs at least [CANVAS_PAPER_COST] paper to print a canvas."))
+		to_chat(user, span_notice("Erro de impressão: sua impressora precisa pelo menos[CANVAS_PAPER_COST]Papel para imprimir uma tela."))
 		return FALSE
 	return TRUE
 
@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(print_types, init_print_types())
 
 /proc/check_can_print_photo(_typepath, _image_file, obj/item/modular_computer/computer, mob/user)
 	if(computer.stored_paper < PHOTO_PAPER_COST)
-		to_chat(user, span_notice("Printing error: Your printer needs at least [PHOTO_PAPER_COST] paper to print a photo."))
+		to_chat(user, span_notice("Erro de impressão: sua impressora precisa pelo menos[PHOTO_PAPER_COST]Papel para imprimir uma foto."))
 		return FALSE
 	return TRUE
 
@@ -87,7 +87,7 @@ GLOBAL_LIST_INIT(print_types, init_print_types())
 /datum/computer_file/program/filemanager
 	filename = "filemanager"
 	filedesc = "File Manager"
-	extended_desc = "This program allows management of files."
+	extended_desc = "Este programa permite o gerenciamento de arquivos."
 	program_open_overlay = "generic"
 	size = 8
 	program_flags = NONE

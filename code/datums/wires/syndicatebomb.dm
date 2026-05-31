@@ -51,10 +51,10 @@
 	switch(parse_wire(wire))
 		if(WIRE_BOOM)
 			if(!bomb.active)
-				holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))] Nothing happens."))
+				holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))]Nada de descontece."))
 				return
 
-			holder.visible_message(span_danger("[icon2html(bomb, viewers(holder))] An alarm sounds! It's go-"))
+			holder.visible_message(span_danger("[icon2html(bomb, viewers(holder))]Um alarme soa! Está indo..."))
 			bomb.explode_now = TRUE
 			if(is_dangerous())
 				tell_admins(bomb, user, "detonated via boom wire")
@@ -62,21 +62,21 @@
 					add_memory_in_range(bomb, 7, /datum/memory/bomb_defuse_failure, protagonist = user, antagonist = bomb)
 
 		if(WIRE_UNBOLT)
-			holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))] The bolts spin in place for a moment."))
+			holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))]Os parafusos giram no lugar por um momento."))
 
 		if(WIRE_DELAY)
 			if(bomb.delayedbig)
-				holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))] Nothing happens."))
+				holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))]Nada de descontece."))
 				return
 
-			holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))] The bomb chirps."))
+			holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))]Uma bomba chirps."))
 			playsound(bomb, 'sound/machines/chime.ogg', 30, TRUE)
 			bomb.detonation_timer += (30 SECONDS)
 			if(bomb.active)
 				bomb.delayedbig = TRUE
 
 		if(WIRE_PROCEED)
-			holder.visible_message(span_danger("[icon2html(bomb, viewers(holder))] The bomb buzzes ominously!"))
+			holder.visible_message(span_danger("[icon2html(bomb, viewers(holder))]A bomba soa ameaçadoramente!"))
 			playsound(bomb, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 			var/seconds = bomb.seconds_remaining()
 			if(seconds >= 61) // Long fuse bombs can suddenly become more dangerous if you tinker with them.
@@ -88,13 +88,13 @@
 
 		if(WIRE_ACTIVATE)
 			if(!bomb.active)
-				holder.visible_message(span_danger("[icon2html(bomb, viewers(holder))] You hear the bomb start ticking!"))
+				holder.visible_message(span_danger("[icon2html(bomb, viewers(holder))]Você ouve a bomba começar a bater!"))
 				bomb.activate()
 				bomb.update_appearance()
 			else if(bomb.delayedlittle)
-				holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))] Nothing happens."))
+				holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))]Nada de descontece."))
 			else
-				holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))] The bomb seems to hesitate for a moment."))
+				holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))]A bomba parece hesitar por um momento."))
 				bomb.detonation_timer += 100
 				bomb.delayedlittle = TRUE
 
@@ -104,7 +104,7 @@
 		if(WIRE_BOOM)
 			if(mend || !bomb.active)
 				return
-			holder.visible_message(span_danger("[icon2html(bomb, viewers(holder))] An alarm sounds! It's go-"))
+			holder.visible_message(span_danger("[icon2html(bomb, viewers(holder))]Um alarme soa! Está indo..."))
 			bomb.explode_now = TRUE
 			if(is_dangerous())
 				tell_admins(bomb, source, "detonated via boom wire")
@@ -114,21 +114,21 @@
 		if(WIRE_UNBOLT)
 			if(mend || !bomb.anchored)
 				return
-			holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))] The bolts lift out of the ground!"))
+			holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))]Os parafusos levantam do chão!"))
 			playsound(bomb, 'sound/effects/stealthoff.ogg', 30, TRUE)
 			bomb.set_anchored(FALSE)
 
 		if(WIRE_PROCEED)
 			if(mend || !bomb.active)
 				return
-			holder.visible_message(span_danger("[icon2html(bomb, viewers(holder))] The digital display on the device deactivates."))
+			holder.visible_message(span_danger("[icon2html(bomb, viewers(holder))]O display digital do dispositivo desativa."))
 			bomb.examinable_countdown = FALSE
 
 		if(WIRE_ACTIVATE)
 			if(mend || !bomb.active)
 				return
 			var/bomb_time_left = bomb.seconds_remaining()
-			holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))] The timer stops! The bomb has been defused!"))
+			holder.visible_message(span_notice("[icon2html(bomb, viewers(holder))]O temporizador pára! A bomba foi desativada!"))
 			bomb.defuse()
 			if(is_dangerous())
 				tell_admins(bomb, source, "defused")

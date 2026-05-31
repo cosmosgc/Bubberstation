@@ -44,17 +44,17 @@
 
 	owner.emote("mumble")
 	owner.playsound_local(get_turf(owner), 'sound/effects/magic/magic_block_mind.ogg', 75, vary = TRUE) // sound of creepy whispers
-	to_chat(owner, span_reallybig(span_hypnophrase("You feel a magical force affecting your speech patterns!")))
+	to_chat(owner, span_reallybig(span_hypnophrase("Você sente uma força mágica afetando seus padrões de fala!")))
 
 /datum/status_effect/tower_of_babel/magical/on_remove()
 	. = ..()
 	if(!.)
 		return
 
-	to_chat(owner, span_reallybig(span_hypnophrase("You feel the magical force affecting your speech patterns fade away...")))
+	to_chat(owner, span_reallybig(span_hypnophrase("Sente a força mágica que afeta seus padrões de fala desaparecendo...")))
 
 /atom/movable/screen/alert/status_effect/tower_of_babel
 	name = "Tower of babel"
-	desc = "You seem to be babbling in a strange language..."
+	desc = "Você parece estar tagarelando em uma língua estranha..."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "mind_control"

@@ -2,7 +2,7 @@
 	name = "Charge"
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "sniper_zoom"
-	desc = "Allows you to charge at a chosen position."
+	desc = "Permite que você carregue em uma posição escolhida."
 	cooldown_time = 1.5 SECONDS
 	/// Delay before the charge actually occurs
 	var/charge_delay = 0.3 SECONDS
@@ -174,7 +174,7 @@
 
 /// Actually hit someone
 /datum/action/cooldown/mob_cooldown/charge/proc/hit_target(atom/movable/source, mob/living/target, damage_dealt)
-	target.visible_message(span_danger("[source] slams into [target]!"), span_userdanger("[source] tramples you into the ground!"))
+	target.visible_message(span_danger("[source]Bate em[target]!"), span_userdanger("[source]Atropela você no chão!"))
 	target.apply_damage(damage_dealt, BRUTE, wound_bonus = CANT_WOUND)
 	playsound(get_turf(target), 'sound/effects/meteorimpact.ogg', 100, TRUE)
 	shake_camera(target, 4, 3)
@@ -211,7 +211,7 @@
 		living_source = source
 
 	if(!isliving(target))
-		source.visible_message(span_danger("[source] smashes into [target]!"))
+		source.visible_message(span_danger("[source]Bate em[target]!"))
 		living_source?.Stun(recoil_duration, ignore_canstun = TRUE)
 		return
 
@@ -222,7 +222,7 @@
 			living_source.Stun(recoil_duration, ignore_canstun = TRUE)
 			return
 
-	living_target.visible_message(span_danger("[source] charges into [living_target]!"), span_userdanger("[source] charges into you!"))
+	living_target.visible_message(span_danger("[source]Carrega em[living_target]!"), span_userdanger("[source]Carrega em você!"))
 	living_target.Knockdown(knockdown_duration)
 
 /datum/status_effect/tired_post_charge
@@ -245,7 +245,7 @@
 
 /datum/action/cooldown/mob_cooldown/charge/triple_charge
 	name = "Triple Charge"
-	desc = "Allows you to charge three times at a chosen position."
+	desc = "Permite carregar três vezes em uma posição escolhida."
 	charge_delay = 0.6 SECONDS
 
 /datum/action/cooldown/mob_cooldown/charge/triple_charge/charge_sequence(atom/movable/charger, atom/target_atom, delay, past)
@@ -256,7 +256,7 @@
 	name = "Hallucination Charge"
 	button_icon = 'icons/effects/bubblegum.dmi'
 	button_icon_state = "smack ya one"
-	desc = "Allows you to create hallucinations that charge around your target."
+	desc = "Permite que você crie alucinações que se acumulem em torno do seu alvo."
 	cooldown_time = 2 SECONDS
 	charge_delay = 0.6 SECONDS
 	/// The damage the hallucinations in our charge do
@@ -315,7 +315,7 @@
 	name = "Surround Target"
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "expand"
-	desc = "Allows you to create hallucinations that charge around your target."
+	desc = "Permite que você crie alucinações que se acumulem em torno do seu alvo."
 	charge_delay = 0.6 SECONDS
 	charge_past = 2
 

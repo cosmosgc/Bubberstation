@@ -3,40 +3,34 @@
 /////////// thederelict items
 
 /obj/item/paper/fluff/ruins/thederelict/equipment
-	default_raw_text = "If the equipment breaks there should be enough spare parts in our engineering storage near the north east solar array."
+	default_raw_text = "Se o equipamento quebrar deve haver peças de reposição suficientes em nosso armazenamento de engenharia perto da matriz solar nordeste."
 	name = "Equipment Inventory"
 
 /obj/item/paper/fluff/ruins/thederelict/syndie_mission
 	name = "Mission Objectives"
-	default_raw_text = "The Syndicate have cunningly disguised a Syndicate Uplink as your PDA. Simply enter the code \"678 Bravo\" into the ringtone select to unlock its hidden features. <br><br><b>Objective #1</b>. Kill the God damn AI in a fire blast that it rocks the station. <b>Success!</b>  <br><b>Objective #2</b>. Escape alive. <b>Failed.</b>"
+	default_raw_text = "O Sindicato disfarçou astutamente um link de sindicato como seu PDA. Basta digitar o código.\"678 Bravo\"no toque, selecione para desbloquear suas características ocultas.<br><br><b>Objetivo #1</b>Mate a maldita IA em uma explosão de fogo que abala a estação.<b>Sucesso!</b>  <br><b>Objetivo # 2</b>Fuja vivo.<b>Falhou.</b>"
 
 /obj/item/paper/fluff/ruins/thederelict/nukie_objectives
 	name = "Objectives of a Nuclear Operative"
-	default_raw_text = "<b>Objective #1</b>: Destroy the station with a nuclear device."
+	default_raw_text = "<b>Objetivo #1</b>Destruir a estação com um dispositivo nuclear."
 
 /obj/item/paper/crumpled/bloody/ruins/thederelict/unfinished
 	name = "unfinished paper scrap"
-	desc = "Looks like someone started shakily writing a will in space common, but were interrupted by something bloody..."
-	default_raw_text = "I, Victor Belyakov, do hereby leave my _- "
+	desc = "Parece que alguém começou a escrever um testamento no espaço comum, mas foi interrompido por algo sangrento..."
+	default_raw_text = "Eu, Victor Belyakov, deixo meu..."
 
 /obj/item/paper/fluff/ruins/thederelict/vaultraider
 	name = "Vault Raider Objectives"
-	default_raw_text = "<b>Objectives #1</b>: Find out what is hidden in Kosmicheskaya Stantsiya 13s Vault"
+	default_raw_text = "<b>Objetivos #1</b>Descubra o que está escondido em Kosmicheskaya Stantsiya 13s Coult"
 
 ///The Derelict Terminals
 /obj/machinery/computer/terminal/derelict/bridge
 	icon_screen = "comm"
 	icon_keyboard = "tech_key"
-	content = list("Central Command Status Summary -- Impending Doom -- Your station is somehow in the middle of hostile territory, in clear view of any enemy of the corporation. Your likelihood to survive is low, \
-	and station destruction is expected and almost inevitable. Secure any sensitive material and neutralize any enemy you will come across. It is important that you at least try to maintain the station. \
-	Good luck. -- Special Orders for KC13: Our military presence is inadequate in your sector. We need you to construct BSA-87 Artillery position aboard your station. Base parts are available for shipping via cargo. \
-	-Nanotrasen Naval Command -- Identified Shift Divergences: Overflow bureaucracy mistake - It seems for some reason we put out the wrong job-listing for the overflow role this shift...I hope you like captains.")
+	content = list("Central Command Status Summary -- Impending Doom -- Your station is somehow in the middle of hostile territory, in clear view of any enemy of the corporation. Your likelihood to survive is low, 	and station destruction is expected and almost inevitable. Secure any sensitive material and neutralize any enemy you will come across. It is important that you at least try to maintain the station. 	Good luck. -- Special Orders for KC13: Our military presence is inadequate in your sector. We need you to construct BSA-87 Artillery position aboard your station. Base parts are available for shipping via cargo. 	-Nanotrasen Naval Command -- Identified Shift Divergences: Overflow bureaucracy mistake - It seems for some reason we put out the wrong job-listing for the overflow role this shift...I hope you like captains.")
 
 /obj/machinery/computer/terminal/derelict/cargo
-	content = list("INTER-MAIL - #789 - Cargo Technician I. Miller -> J. Holmes -- Jake, with all due respect, I don't know how you guys can keep this shit up. Robotics has made not one, but THREE AIs, \
-	and at least one of them either has combat upgrades or isn't telling us the whole story. Not that we can even get close enough to tell, mind, they're doing everything in their power to keep us away. It's \
-	unnerving. Meanwhile, a little birdie tells me one of your officers has been spending all shift trying to get their baton back from the clown with.. lethal force. This place is a fucking powder keg, Jake, \
-	you know as well as I do. Either stop fucking around or we'll take matters into our own hands.")
+	content = list("INTER-MAIL - #789 - Cargo Technician I. Miller -> J. Holmes -- Jake, with all due respect, I don't know how you guys can keep this shit up. Robotics has made not one, but THREE AIs, 	and at least one of them either has combat upgrades or isn't telling us the whole story. Not that we can even get close enough to tell, mind, they're doing everything in their power to keep us away. It's 	unnerving. Meanwhile, a little birdie tells me one of your officers has been spending all shift trying to get their baton back from the clown with.. lethal force. This place is a fucking powder keg, Jake, 	you know as well as I do. Either stop fucking around or we'll take matters into our own hands.")
 
 /obj/machinery/computer/terminal/derelict/security
 	content = list("INTER-MAIL - #790 - Cargo Technician J. Holmes -> I. Miller -- HOT SINGLE SILICONS IN YOUR AREA, CLICK ->HERE<- FOR MORE INFORMATION!")
@@ -44,7 +38,7 @@
 /// Vault controller for use on the derelict/KS13.
 /obj/machinery/computer/vaultcontroller
 	name = "vault controller"
-	desc = "It seems to be powering and controlling the vault locks."
+	desc = "Parece estar alimentando e controlando as fechaduras do cofre."
 	icon_screen = "power"
 	icon_keyboard = "power_key"
 	light_color = LIGHT_COLOR_DIM_YELLOW
@@ -61,7 +55,7 @@
 
 /obj/machinery/computer/monitor/examine(mob/user)
 	. = ..()
-	. += span_notice("It appears to be powered via a cable connector.")
+	. += span_notice("Parece ser alimentado por um conector de cabo.")
 
 //Checks for cable connection, charges if possible.
 /obj/machinery/computer/vaultcontroller/process()
@@ -169,12 +163,12 @@
 
 ///Overrides screwdriver act to prevent all deconstruction and hacking. Override for extra tuff fluff
 /obj/machinery/door/airlock/vault/derelict/screwdriver_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_danger("The robust make of [src] makes it impossible to access the panel in any way!"))
+	to_chat(user, span_danger("A marca robusta de[src]torna impossível acessar o painel de qualquer forma!"))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/fluff/oldturret
 	name = "broken turret"
-	desc = "An obsolete model of turret, long non-functional."
+	desc = "Um modelo obsoleto de torre, não funcional."
 	icon = 'icons/obj/weapons/turrets.dmi'
 	icon_state = "turretCover"
 	density = TRUE
@@ -186,7 +180,7 @@
 /// https://www.youtube.com/watch?v=FHH1vfY6HTA (new video)
 /obj/item/tape/captains_log
 	name = "captain's log"
-	desc = "A dusty old tape."
+	desc = "Uma fita velha empoeirada."
 	icon_state = "tape_blue"
 	used_capacity = 10 MINUTES // so the tape is full and can't be recorded over
 	storedinfo = list( // the captain recorded this in several segements

@@ -9,7 +9,7 @@
 
 /datum/symptom/fire
 	name = "Spontaneous Combustion"
-	desc = "The virus turns fat into an extremely flammable compound, and raises the body's temperature, making the host burst into flames spontaneously."
+	desc = "O vírus transforma gordura em um composto extremamente inflamável, e aumenta a temperatura do corpo, fazendo o hospedeiro explodir em chamas espontaneamente."
 	illness = "Spontaneous Combustion"
 	stealth = 0
 	resistance = 0
@@ -59,8 +59,8 @@
 			living_mob.take_overall_damage(burn = ((advanced_stage ? 5 : 3) * power), required_bodytype = BODYTYPE_ORGANIC)
 			living_mob.ignite_mob(silent = TRUE)
 			if(living_mob.on_fire) //check to make sure they actually caught on fire, or if it was prevented cause they were wet.
-				living_mob.visible_message(span_warning("[living_mob] catches fire!"), ignored_mobs = living_mob)
-				to_chat(living_mob, span_userdanger((advanced_stage ? "Your skin erupts into an inferno!" : "Your skin bursts into flames!")))
+				living_mob.visible_message(span_warning("[living_mob]Pega nevoeiro!"), ignored_mobs = living_mob)
+				to_chat(living_mob, span_userdanger((advanced_stage ? "Sua pele irrompe em um inferno!" : "Sua pele explode em Chamas!")))
 				living_mob.emote("scream")
 			else if(!suppress_warning)
 				warn_mob(living_mob)
@@ -70,10 +70,10 @@
 
 /datum/symptom/fire/proc/warn_mob(mob/living/living_mob)
 	if(prob(33.33))
-		living_mob.show_message(span_hear("You hear a crackling noise."), type = MSG_AUDIBLE)
+		living_mob.show_message(span_hear("Você ouve um barulho crepitando."), type = MSG_AUDIBLE)
 	else
 		if(HAS_TRAIT(living_mob, TRAIT_ANOSMIA)) //Anosmia quirk holder can't smell anything.
-			to_chat(living_mob, span_warning("You feel hot."))
+			to_chat(living_mob, span_warning("Você se sente quente."))
 		else
 			to_chat(living_mob, span_warning("[pick("You feel hot.", "You smell smoke.")]"))
 
@@ -92,7 +92,7 @@ Bonus
 /datum/symptom/alkali
 
 	name = "Alkali perspiration"
-	desc = "The virus attaches to sudoriparous glands, synthesizing a chemical that bursts into flames when reacting with water, leading to self-immolation."
+	desc = "O vírus liga-se às glândulas sudoríparas, sintetizando um produto químico que explode em chamas ao reagir com água, levando à auto-imolação."
 	illness = "Crispy Skin"
 	stealth = 2
 	resistance = -2
@@ -137,19 +137,19 @@ Bonus
 				to_chat(M, span_warning("[pick("Your veins boil.", "You feel hot.", "You smell meat cooking.")]"))
 		if(4)
 			if(M.fire_stacks < 0)
-				M.visible_message(span_warning("[M]'s sweat sizzles and pops on contact with water!"))
+				M.visible_message(span_warning("[M]Está suando e estourando em contato com água!"))
 				explosion(M, devastation_range = -1, heavy_impact_range = (-1 + explosion_power), light_impact_range = (2 * explosion_power), explosion_cause = src)
 			Alkali_fire_stage_4(M, A)
 			M.ignite_mob()
-			to_chat(M, span_userdanger("Your sweat bursts into flames!"))
+			to_chat(M, span_userdanger("Seu suor explode em Chamas!"))
 			M.emote("scream")
 		if(5)
 			if(M.fire_stacks < 0)
-				M.visible_message(span_warning("[M]'s sweat sizzles and pops on contact with water!"))
+				M.visible_message(span_warning("[M]Está suando e estourando em contato com água!"))
 				explosion(M, devastation_range = -1, heavy_impact_range = (-1 + explosion_power), light_impact_range = (2 * explosion_power), explosion_cause = src)
 			Alkali_fire_stage_5(M, A)
 			M.ignite_mob()
-			to_chat(M, span_userdanger("Your skin erupts into an inferno!"))
+			to_chat(M, span_userdanger("Sua pele irrompe em um inferno!"))
 			M.emote("scream")
 
 /datum/symptom/alkali/proc/Alkali_fire_stage_4(mob/living/M, datum/disease/advance/A)

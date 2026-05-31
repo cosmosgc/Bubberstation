@@ -3,7 +3,7 @@
 
 /obj/structure/large_mortar
 	name = "large mortar"
-	desc = "A large bowl perfect for grinding or juicing a large number of things at once."
+	desc = "Uma tigela grande perfeita para moer ou espremer um grande número de coisas ao mesmo tempo."
 	icon = 'modular_skyrat/modules/primitive_cooking_additions/icons/cooking_structures.dmi'
 	icon_state = "big_mortar"
 	density = TRUE
@@ -25,9 +25,9 @@
 
 /obj/structure/large_mortar/examine(mob/user)
 	. = ..()
-	. += span_notice("It currently contains <b>[length(contents)]/[maximum_contained_items]</b> items.")
-	. += span_notice("It can be (un)secured with <b>Right Click</b>")
-	. += span_notice("You can empty all of the items out of it with <b>Alt Click</b>")
+	. += span_notice("Ele atualmente contém<b>[length(contents)]/[maximum_contained_items]</b>Itens.")
+	. += span_notice("Pode ser (in)seguro com<b>Clique Direito</b>")
+	. += span_notice("Você pode esvaziar todos os itens com<b>Alt Click</b>")
 
 /obj/structure/large_mortar/Destroy()
 	drop_everything_contained()
@@ -35,11 +35,11 @@
 
 /obj/structure/large_mortar/click_alt(mob/user)
 	if(!length(contents))
-		balloon_alert(user, "nothing inside")
+		balloon_alert(user, "Nada dentro.")
 		return CLICK_ACTION_BLOCKING
 
 	drop_everything_contained()
-	balloon_alert(user, "removed all items")
+	balloon_alert(user, "Remova todos os pontos.")
 	return CLICK_ACTION_SUCCESS
 
 /// Drops all contents at the mortar
@@ -78,7 +78,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 		if(!length(tool.contents))
-			balloon_alert(user, "nothing to transfer!")
+			balloon_alert(user, "Nada para transferir!")
 			return ITEM_INTERACT_BLOCKING
 
 		for(var/obj/item/target_item in tool.contents)
@@ -102,7 +102,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 		if(!length(contents) && reagents.total_volume == 0)
-			balloon_alert(user, "mortar empty!")
+			balloon_alert(user, "Argamassa vazia!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/list/choose_options = list(
@@ -113,7 +113,7 @@
 		var/picked_option = show_radial_menu(user, src, choose_options, radius = 38, require_near = TRUE)
 
 		if(user.get_stamina_loss() > LARGE_MORTAR_STAMINA_MINIMUM)
-			balloon_alert(user, "too tired!")
+			balloon_alert(user, "Muito bem!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!in_range(src, user) || !user.is_holding(tool) || !picked_option)
@@ -135,7 +135,7 @@
 			has_resource = length(contents) > 0
 
 		if(!has_resource)
-			balloon_alert(user, "nothing to [act_verb]!")
+			balloon_alert(user, "Nada para[act_verb]!")
 			return ITEM_INTERACT_BLOCKING
 
 		balloon_alert_to_viewers("[act_verb_ing]...")
@@ -149,7 +149,7 @@
 			if("Juice")
 				for(var/obj/item/target_item as anything in contents)
 					if (reagents.total_volume >= reagents.maximum_volume)
-						balloon_alert(user, "overflowing!")
+						balloon_alert(user, "Transbordando!")
 						break
 
 					if (target_item.juice_typepath())
@@ -161,7 +161,7 @@
 			if("Grind")
 				for(var/obj/item/target_item as anything in contents)
 					if (reagents.total_volume >= reagents.maximum_volume)
-						balloon_alert(user, "overflowing!")
+						balloon_alert(user, "Transbordando!")
 						break
 
 					if (target_item.grind_results() || target_item.reagents?.total_volume)
@@ -173,7 +173,7 @@
 		return ITEM_INTERACT_SUCCESS
 
 	if(!tool.grind_results() && !tool.juice_typepath() && !tool.reagents?.total_volume)
-		balloon_alert(user, "can't grind this!")
+		balloon_alert(user, "Não posso moer isso!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(length(contents) >= maximum_contained_items)
@@ -186,30 +186,30 @@
 ///Juices the passed target item, and transfers any contained chems to the mortar as well
 /obj/structure/large_mortar/proc/juice_target_item(obj/item/to_be_juiced, mob/living/carbon/human/user)
 	if(to_be_juiced.flags_1 & HOLOGRAM_1)
-		to_chat(user, span_notice("You try to juice [to_be_juiced], but it fades away!"))
+		to_chat(user, span_notice("Você tenta suco[to_be_juiced], mas Desapareça!"))
 		qdel(to_be_juiced)
 		return
 
 	if(!to_be_juiced.juice(src.reagents, user))
-		to_chat(user, span_danger("You fail to juice [to_be_juiced]."))
+		to_chat(user, span_danger("Você não tem suco.[to_be_juiced]."))
 
-	to_chat(user, span_notice("You juice [to_be_juiced] into a liquid."))
+	to_chat(user, span_notice("Seu suco.[to_be_juiced]em um líquido."))
 	QDEL_NULL(to_be_juiced)
 
 ///Grinds the passed target item, and transfers any contained chems to the mortar as well
 /obj/structure/large_mortar/proc/grind_target_item(obj/item/to_be_ground, mob/living/carbon/human/user)
 	if(to_be_ground.flags_1 & HOLOGRAM_1)
-		to_chat(user, span_notice("You try to grind [to_be_ground], but it fades away!"))
+		to_chat(user, span_notice("Você tenta moer[to_be_ground], mas Desapareça!"))
 		qdel(to_be_ground)
 		return
 
 	if(!to_be_ground.grind(src.reagents, user))
 		if(isstack(to_be_ground))
-			to_chat(usr, span_notice("[src] attempts to grind as many pieces of [to_be_ground] as possible."))
+			to_chat(usr, span_notice("[src]Tenta moer tantas peças de[to_be_ground]o mais possível."))
 		else
-			to_chat(user, span_danger("You fail to grind [to_be_ground]."))
+			to_chat(user, span_danger("Você falha em moer[to_be_ground]."))
 
-	to_chat(user, span_notice("You break [to_be_ground] into a fine powder."))
+	to_chat(user, span_notice("Você quebra[to_be_ground]em um pó fino."))
 	QDEL_NULL(to_be_ground)
 
 #undef LARGE_MORTAR_STAMINA_MINIMUM

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/bot/secbot/ed209
 	name = "\improper ED-209 Security Robot"
-	desc = "A security robot. He looks less than thrilled."
+	desc = "Um robô de segurança. Ele parece menos do que entusiasmado."
 	icon_state = "ed209"
 	light_color = "#f84e4e"
 	density = TRUE
@@ -27,11 +27,7 @@
 	. = ..()
 	set_weapon() //giving it the right projectile and firing sound.
 
-	AddComponent(/datum/component/defaceable, \
-		icon = 'icons/mob/silicon/aibot_faces.dmi', \
-		icon_states = list("ed209" = FALSE, "ed209_highlight" = TRUE), \
-		drawing_of = "a face", \
-	)
+	AddComponent(/datum/component/defaceable, 		icon = 'icons/mob/silicon/aibot_faces.dmi', 		icon_states = list("ed209" = FALSE, "ed209_highlight" = TRUE), 		drawing_of = "a face", 	)
 
 /mob/living/simple_animal/bot/secbot/ed209/bot_reset()
 	..()
@@ -41,8 +37,8 @@
 	. = ..()
 	icon_state = "ed209[get_bot_flag(bot_mode_flags, BOT_MODE_ON)]"
 	set_weapon()
-	balloon_alert(user, "travas desativadas")
-	audible_message(span_bolddanger("[src] buzzes menacingly!"))
+	balloon_alert(user, "Travas desativadas")
+	audible_message(span_bolddanger("[src]Apita ameaçadoramente!"))
 	return TRUE
 
 /mob/living/simple_animal/bot/secbot/ed209/handle_automated_action()

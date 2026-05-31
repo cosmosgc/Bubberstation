@@ -53,7 +53,7 @@ const CooldownEstimate = (props) => {
     (cost >= COST_MODERATE_BOUND && 'yellow') ||
     'green';
   const cooldownText =
-    (cost >= COST_VERY_LONG_BOUND && 'very long') ||
+    (cost >= COST_VERY_LONG_BOUND && 'Muito tempo.') ||
     (cost >= COST_LONG_BOUND && 'long') ||
     (cost >= COST_MODERATE_BOUND && 'moderate') ||
     'short';
@@ -102,7 +102,7 @@ export const DepartmentOrderContent = (props) => {
 
 export const NtosDeptOrder = () => {
   return (
-    <NtosWindow title="Department Orders" width={620} height={580}>
+    <NtosWindow title="Ordens do Departamento" width={620} height={580}>
       <NtosWindow.Content>
         <DepartmentOrderContent />
       </NtosWindow.Content>
@@ -128,8 +128,8 @@ const CooldownDimmer = () => {
             lineHeight={2}
             tooltip={
               (!!can_override &&
-                'This action requires Head of Staff access!') ||
-              'Crate already shipped! No cancelling now!'
+                'Esta ação requer acesso ao Chefe de Gabinete!') ||
+              'Crate já enviado! Sem cancelamento agora!'
             }
             fontSize="14px"
             color="red"
@@ -199,7 +199,7 @@ const DepartmentCatalog = () => {
                       <Box
                         as="span"
                         style={{
-                          borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',
+                          borderBottom: '2px pontilhado rgba(255, 0,8)',
                         }}
                       >
                         {pack.name}

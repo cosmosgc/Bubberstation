@@ -1,6 +1,6 @@
 /mob/living/basic/cockroach
 	name = "cockroach"
-	desc = "This station is just crawling with bugs."
+	desc = "Esta estação está cheia de insetos."
 	icon_state = "cockroach"
 	icon_dead = "cockroach_no_animation"
 	density = FALSE
@@ -50,12 +50,7 @@
 	. = ..()
 	AddElement(/datum/element/death_drops, /obj/effect/decal/cleanable/insectguts)
 	AddElement(/datum/element/swabable, cockroach_cell_line, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 7)
-	AddComponent( \
-		/datum/component/squashable, \
-		squash_chance = 50, \
-		squash_damage = 1, \
-		squash_flags = SQUASHED_SHOULD_BE_GIBBED|SQUASHED_ALWAYS_IF_DEAD|SQUASHED_DONT_SQUASH_IN_CONTENTS, \
-	)
+	AddComponent( 		/datum/component/squashable, 		squash_chance = 50, 		squash_damage = 1, 		squash_flags = SQUASHED_SHOULD_BE_GIBBED|SQUASHED_ALWAYS_IF_DEAD|SQUASHED_DONT_SQUASH_IN_CONTENTS, 	)
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_NUKEIMMUNE, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_RADIMMUNE, INNATE_TRAIT)
@@ -79,7 +74,7 @@
 /mob/living/basic/cockroach/sewer
 	name = "sewer roach"
 	icon_state = "cockroach_sewer"
-	desc = "This bug has a really bad attitude."
+	desc = "Este inseto tem uma atitude muito ruim."
 	health = 2
 	maxHealth = 2 // Wow!
 	melee_damage_lower = 2
@@ -92,7 +87,7 @@
 
 /mob/living/basic/cockroach/bloodroach
 	name = "bloodroach"
-	desc = "This cockroach has gorged itself on maintenance blood, and has a glistening red sheen to its fatty carapace. Incredibly disgusting."
+	desc = "Esta barata devora-se em sangue de manutenção, e tem um brilho vermelho brilhante para sua carapaça gorda. Incrivelmente nojento."
 	icon_state = "bloodroach"
 	icon_dead = "bloodroach_no_animation"
 	health = 3
@@ -109,7 +104,7 @@
 	for(var/turf/messy_turf in view(src, 2))
 		new /obj/effect/decal/cleanable/blood(messy_turf)
 		for(var/mob/living/mob_in_turf in messy_turf)
-			mob_in_turf.visible_message(span_danger("[mob_in_turf] is splattered with blood!"), span_userdanger("You're splattered with blood!"))
+			mob_in_turf.visible_message(span_danger("[mob_in_turf]está cheio de sangue!"), span_userdanger("Você está cheio de sangue!"))
 			mob_in_turf.add_blood_DNA(list("Non-human DNA" = random_human_blood_type()))
 			mob_in_turf.add_mood_event("splattered_with_blood", /datum/mood_event/splattered_with_blood)
 			playsound(mob_in_turf, 'sound/effects/splat.ogg', 50, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE)
@@ -118,7 +113,7 @@
 /// Roach with a spiky hat, like a caltrop
 /mob/living/basic/cockroach/hauberoach
 	name = "hauberoach"
-	desc = "Is that cockroach wearing a tiny yet immaculate replica 19th century Prussian spiked helmet? ...Is that a bad thing?"
+	desc = "Aquela barata está usando um minúsculo e imaculado capacete prussiano do século 19? Isso é uma coisa ruim?"
 	icon_state = "hauberoach"
 	attack_verb_continuous = "rams its spike into"
 	attack_verb_simple = "ram your spike into"
@@ -138,28 +133,22 @@
 /mob/living/basic/cockroach/hauberoach/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/caltrop, min_damage = 10, max_damage = 15, flags = (CALTROP_BYPASS_SHOES | CALTROP_SILENT))
-	AddComponent( \
-		/datum/component/squashable, \
-		squash_chance = 100, \
-		squash_damage = 1, \
-		squash_flags = SQUASHED_SHOULD_BE_GIBBED|SQUASHED_ALWAYS_IF_DEAD|SQUASHED_DONT_SQUASH_IN_CONTENTS, \
-		squash_callback = TYPE_PROC_REF(/mob/living/basic/cockroach/hauberoach, on_squish), \
-	)
+	AddComponent( 		/datum/component/squashable, 		squash_chance = 100, 		squash_damage = 1, 		squash_flags = SQUASHED_SHOULD_BE_GIBBED|SQUASHED_ALWAYS_IF_DEAD|SQUASHED_DONT_SQUASH_IN_CONTENTS, 		squash_callback = TYPE_PROC_REF(/mob/living/basic/cockroach/hauberoach, on_squish), 	)
 
 ///Proc used to override the squashing behavior of the normal cockroach.
 /mob/living/basic/cockroach/hauberoach/proc/on_squish(mob/living/cockroach, mob/living/living_target)
 	if(!istype(living_target))
 		return FALSE //We failed to run the invoke. Might be because we're a structure. Let the squashable element handle it then!
 	if(!HAS_TRAIT(living_target, TRAIT_PIERCEIMMUNE))
-		living_target.visible_message(span_danger("[living_target] steps onto [cockroach]'s spike!"), span_userdanger("You step onto [cockroach]'s spike!"))
+		living_target.visible_message(span_danger("[living_target]Passos em[cockroach]É o Spike!"), span_userdanger("Você pisa em[cockroach]É o Spike!"))
 		return TRUE
-	living_target.visible_message(span_notice("[living_target] squashes [cockroach], not even noticing its spike."), span_notice("You squashed [cockroach], not even noticing its spike."))
+	living_target.visible_message(span_notice("[living_target]Squash.[cockroach], nem mesmo notei seu pico."), span_notice("Você esmagou.[cockroach], nem mesmo notei seu pico."))
 	return FALSE
 
 /// Regal rat royal escort
 /mob/living/basic/cockroach/hauberoach/imperial
 	name = "imperial hauberoach"
-	desc = "This cockroach seems to have found employment as a professional royal guard."
+	desc = "Esta barata parece ter encontrado emprego como guarda real profissional."
 	health = 2
 	maxHealth = 2
 	melee_damage_lower = 3
@@ -171,7 +160,7 @@
 /// Roach with a gun
 /mob/living/basic/cockroach/glockroach
 	name = "glockroach"
-	desc = "HOLY SHIT, THAT COCKROACH HAS A GUN!"
+	desc = "Puta que pariu, aquela coroa tem uma arma!"
 	icon_state = "glockroach"
 	melee_damage_lower = 2.5
 	melee_damage_upper = 10
@@ -188,12 +177,7 @@
 
 /mob/living/basic/cockroach/glockroach/Initialize(mapload)
 	. = ..()
-	AddComponent(\
-		/datum/component/ranged_attacks,\
-		casing_type = /obj/item/ammo_casing/glockroach,\
-		burst_shots = burst_shots,\
-		cooldown_time = ranged_cooldown,\
-	)
+	AddComponent(		/datum/component/ranged_attacks,		casing_type = /obj/item/ammo_casing/glockroach,		burst_shots = burst_shots,		cooldown_time = ranged_cooldown,	)
 	if (ranged_cooldown <= 1 SECONDS)
 		AddComponent(/datum/component/ranged_mob_full_auto)
 
@@ -209,7 +193,7 @@
 
 /mob/living/basic/cockroach/glockroach/gang
 	name = "gangroach"
-	desc = "This roach grew up on the wrong side of the streets and has fallen in with the wrong crowd."
+	desc = "Esta barata cresceu do lado errado das ruas e caiu com a multidão errada."
 	icon_state = "glockroach_sewer"
 	health = 2
 	maxHealth = 2
@@ -222,13 +206,13 @@
 
 /obj/item/ammo_casing/glockroach
 	name = "0.9mm bullet casing"
-	desc = "A... 0.9mm bullet casing? What?"
+	desc = "Um cartucho de 0,9mm? O quê?"
 	projectile_type = /obj/projectile/glockroachbullet
 
 /// Roach with an SMG
 /mob/living/basic/cockroach/glockroach/mobroach
 	name = "mobroach"
-	desc = "WE'RE FUCKED, THAT COCKROACH HAS A TOMMYGUN!"
+	desc = "Estamos fodidos, aquele palhaço tem uma arma!"
 	icon_state = "mobroach"
 	burst_shots = 4
 	ranged_cooldown = 2 SECONDS
@@ -238,7 +222,7 @@
 
 /mob/living/basic/cockroach/glockroach/mobroach/goon
 	name = "goonroach"
-	desc = "You got it, boss."
+	desc = "Pode deixar, chefe."
 	icon_state = "mobroach_sewer"
 	health = 2
 	maxHealth = 2

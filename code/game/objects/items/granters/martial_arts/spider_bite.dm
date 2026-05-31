@@ -3,10 +3,8 @@
 
 	name = "mysterious scroll"
 	martial_name = "spider's bite"
-	desc = "A scroll filled with strange markings. It seems to be drawings of some sort of martial art."
-	greet = span_sciradio("You have learned the Spider Clan's historic technique, The Spider's Bite. \
-		You are now able to kick standing targets who are staggered, potentially disarming them of their weapons. \
-		You can also tackle targets with great effectiveness, and have more solid grabs.")
+	desc = "Um pergaminho cheio de marcas estranhas. Parecem desenhos de algum tipo de arte marcial."
+	greet = span_sciradio("You have learned the Spider Clan's historic technique, The Spider's Bite. 		You are now able to kick standing targets who are staggered, potentially disarming them of their weapons. 		You can also tackle targets with great effectiveness, and have more solid grabs.")
 	icon = 'icons/obj/scrolls.dmi'
 	icon_state = "sleepingcarp"
 	worn_icon_state = "scroll"
@@ -28,7 +26,7 @@
 	. = ..()
 	if(uses <= 0)
 		name = "empty scroll"
-		desc = "It's completely blank."
+		desc = "Está completamente em branco."
 		icon_state = "blankscroll"
 	else
 		name = initial(name)

@@ -1,14 +1,9 @@
 /datum/bloodsucker_clan/nosferatu
 	name = CLAN_NOSFERATU
-	description = "The Nosferatu Clan is unable to blend in with the crew, with no abilities such as Masquerade and Veil. \n\
-		Additionally, has a permanent bad back and looks like a Bloodsucker upon a simple examine, and their face is disfigured \n\
-		they can fit in the vents. \n\
-		The Favorite Ghoul is also permanently disfigured, and can also ventcrawl, but only while entirely nude. \n\
-		They also have night vision, know what each wire does, and have silent footsteps."
+	description = "O clã Nosferatu é incapaz de se misturar com a tripulação, sem habilidades como Masquerade e Veil.\nAlém disso, tem uma dor permanente nas costas e parece um sanguessuga em um simples exame, e seu rosto está desfigurado.\nEles podem caber na ventilação.\nO Ghoul Favorito também está permanentemente desfigurado, e também pode ventrawl, mas apenas enquanto completamente nu.\nEles também têm visão noturna, sabem o que cada fio faz, e têm passos silenciosos."
 	clan_objective = /datum/objective/bloodsucker/kindred
 	join_icon_state = "nosferatu"
-	join_description = "You are permanetly disfigured, look like a Bloodsucker to all who examine you, \
-		lose your Masquerade ability, but gain the ability to Ventcrawl even while clothed."
+	join_description = "Você está permanentemente desfigurado, parece um sanguessuga para todos que o examinam, perde sua habilidade de mascarado, mas ganha a habilidade de Ventcrawl mesmo vestido."
 	blood_drink_type = BLOODSUCKER_DRINK_INHUMANELY
 	var/ventcrawl_time = 10 SECONDS
 
@@ -39,7 +34,7 @@
 		if(isnull(item))
 			continue
 		if(provide_feedback)
-			to_chat(owner_mob, span_warning("You cannot ventcrawl while holding items!"))
+			to_chat(owner_mob, span_warning("Você não pode ventrawl enquanto guarda itens!"))
 		return FALSE
 	return TRUE
 
@@ -77,8 +72,8 @@
 		ogler.add_mood_event("nosferatu_examine", /datum/mood_event/nosferatu_examined, ogled, owner_datum.GetRank())
 		ogler.adjust_disgust(owner_datum.GetRank() * 10)
 	// show that they are dangerous nosferatu, as if you're gazing upon them with fear, without mentioning the clan name/antagonist name, describe their appearance
-	examine_text += span_danger("[ogled.p_They()] look[ogled.p_s()] like a pale, grotesque hunchback, with a mouth full of jagged yellowy teeth, and breath that reeks of fresh blood. You feel both afraid and disgusted as you gaze upon [ogled.p_them()].")
-	examine_text += span_userdanger("[ogled.p_They()] [ogled.p_are()] clearly a BLOODSUCKER!")
+	examine_text += span_danger("[ogled.p_They()]Veja.[ogled.p_s()]Como um corcunda pálido e grotesco, com uma boca cheia de dentes amarelos e com um hálito que cheira a sangue fresco. Você sente tanto medo e nojo como você olha[ogled.p_them()].")
+	examine_text += span_userdanger("[ogled.p_They()] [ogled.p_are()]Claramente um sanguinário!")
 
 /datum/bloodsucker_clan/nosferatu/Destroy(force)
 	var/datum/action/cooldown/bloodsucker/feed/suck = locate() in bloodsuckerdatum.powers
@@ -95,7 +90,7 @@
 	ghouldatum.owner.current.add_traits(traits_to_add, GHOUL_TRAIT)
 	ghouldatum.traits += traits_to_add
 	ghouldatum.owner.current.update_sight()
-	to_chat(ghouldatum.owner.current, span_notice("Additionally, you can now ventcrawl while naked, and are permanently disfigured. You also have night vision, know how which wires to cut, and have silent footsteps."))
+	to_chat(ghouldatum.owner.current, span_notice("Além disso, agora você pode desabafar enquanto está nua, e está permanentemente desfigurada. Você também tem visão noturna, sabe como cortar fios, e tem passos silenciosos."))
 
 /datum/bloodsucker_clan/nosferatu/favorite_ghoul_loss(datum/antagonist/bloodsucker/source, datum/antagonist/ghoul/ghouldatum)
 	ghouldatum.owner.current.update_sight()

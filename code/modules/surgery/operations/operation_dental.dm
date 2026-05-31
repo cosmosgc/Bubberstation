@@ -1,6 +1,6 @@
 /datum/surgery_operation/limb/add_dental_implant
 	name = "add dental implant"
-	desc = "Implant a pill into a patient's teeth."
+	desc = "Implantar uma pílula nos dentes de um paciente."
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		/obj/item/reagent_containers/applicator/pill = 1,
@@ -38,9 +38,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to wedge [tool] in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to wedge \the [tool] in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to wedge something in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a cunhar[tool]Em[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]começa a cunhar\the [tool]Em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Começa a colocar algo em[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "Something's being jammed into your [limb.plaintext_zone]!")
 
@@ -56,14 +56,14 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You wedge [tool] into [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] wedges [tool] into [FORMAT_LIMB_OWNER(limb)]!"),
-		span_notice("[surgeon] wedges something into [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Sua cunha.[tool]Em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Cunhas.[tool]Em[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("[surgeon]Encaixa algo em[FORMAT_LIMB_OWNER(limb)]!"),
 	)
 
 /datum/surgery_operation/limb/remove_dental_implant
 	name = "remove dental implant"
-	desc = "Remove a dental implant from a patient's teeth."
+	desc = "Remova um implante dentário dos dentes de um paciente."
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_HEMOSTAT = 1,
@@ -89,9 +89,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin looking in [limb.owner || limb]'s mouth for dental implants..."),
-		span_notice("[surgeon] begins to look in [limb.owner || limb]'s mouth."),
-		span_notice("[surgeon] begins to examine [limb.owner || limb]'s teeth."),
+		span_notice("Você começa a olhar[limb.owner || limb]boca para implantes dentários..."),
+		span_notice("[surgeon]começa a olhar[limb.owner || limb]Uma boca."),
+		span_notice("[surgeon]Começa a examinar[limb.owner || limb]Os dentes."),
 	)
 	display_pain(limb.owner, "You feel fingers poke around at your teeth.")
 
@@ -103,9 +103,9 @@
 		display_results(
 			surgeon,
 			limb.owner,
-			span_notice("You don't find any dental implants in [FORMAT_LIMB_OWNER(limb)]."),
-			span_notice("[surgeon] doesn't find any dental implants in [FORMAT_LIMB_OWNER(limb)]."),
-			span_notice("[surgeon] finishes examining [FORMAT_LIMB_OWNER(limb)]."),
+			span_notice("Você não encontra nenhum implante dentário em[FORMAT_LIMB_OWNER(limb)]."),
+			span_notice("[surgeon]não encontra nenhum implante dentário em[FORMAT_LIMB_OWNER(limb)]."),
+			span_notice("[surgeon]Termina de exame.[FORMAT_LIMB_OWNER(limb)]."),
 		)
 		return
 
@@ -118,9 +118,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You carefully remove [yoinked] from [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] carefully removes [yoinked] from [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] carefully removes something from [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você retira com cuidado.[yoinked]De[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Cuidado com a remoção.[yoinked]De[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Cuidado, remova algo de[FORMAT_LIMB_OWNER(limb)]."),
 	)
 
 // Teeth pill code
@@ -138,7 +138,7 @@
 	if(!do_after(owner, owner.stat * (2.5 SECONDS), owner,  IGNORE_USER_LOC_CHANGE | IGNORE_INCAPACITATED))
 		return FALSE
 	var/obj/item/pill = target
-	to_chat(owner, span_notice("You grit your teeth and burst the implanted [pill.name]!"))
+	to_chat(owner, span_notice("Você range os dentes e rompe o implante.[pill.name]!"))
 	owner.log_message("swallowed an implanted pill, [pill]", LOG_ATTACK)
 	pill.reagents.trans_to(owner, pill.reagents.total_volume, transferred_by = owner, methods = INGEST)
 	qdel(pill)

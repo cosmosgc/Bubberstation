@@ -3,7 +3,7 @@
 // This surgery is so snowflake that it doesn't use any of the operation subtypes, it forges its own path
 /datum/surgery_operation/limb/prosthetic_replacement
 	name = "prosthetic replacement"
-	desc = "Replace a missing limb with a prosthetic (or arbitrary) item."
+	desc = "Substituir um membro perdido por um item protético (ou arbitrário)."
 	implements = list(
 		/obj/item/bodypart = 1,
 		/obj/item = 1,
@@ -88,9 +88,9 @@
 		surgeon,
 		limb.owner,
 		// "You begin to attach the right arm to john doe's right arm stump"
-		span_notice("You begin to attach [tool]'s to [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to attach [tool]'s to [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to attach [tool]'s to [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a anexar[tool]É para[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]começa a anexar[tool]É para[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]começa a anexar[tool]É para[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel an uncomfortable sensation where your [parse_zone(limb.body_zone)] should be!")
 
@@ -118,9 +118,9 @@
 		bodypart_to_attach.bodypart_flags |= BODYPART_IMPLANTED
 	display_results(
 		surgeon, patient,
-		span_notice("You succeed in replacing [patient]'s [bodypart_to_attach.plaintext_zone]."),
-		span_notice("[surgeon] successfully replaces [patient]'s [bodypart_to_attach.plaintext_zone] with [bodypart_to_attach]!"),
-		span_notice("[surgeon] successfully replaces [patient]'s [bodypart_to_attach.plaintext_zone]!"),
+		span_notice("Você consegue substituir[patient]'s[bodypart_to_attach.plaintext_zone]."),
+		span_notice("[surgeon]com sucesso substitui[patient]'s[bodypart_to_attach.plaintext_zone]Com[bodypart_to_attach]!"),
+		span_notice("[surgeon]com sucesso substitui[patient]'s[bodypart_to_attach.plaintext_zone]!"),
 	)
 	display_pain(patient, "You feel synthetic sensation wash from your [bodypart_to_attach.plaintext_zone], which you can feel again!", TRUE)
 
@@ -130,9 +130,9 @@
 	new_limb.add_surgical_state(SURGERY_PROSTHETIC_UNSECURED)
 	display_results(
 		surgeon, patient,
-		span_notice("You attach [thing_to_attach]."),
-		span_notice("[surgeon] finishes attaching [thing_to_attach]!"),
-		span_notice("[surgeon] finishes the attachment procedure!"),
+		span_notice("Você anexa[thing_to_attach]."),
+		span_notice("[surgeon]Termina de anexar[thing_to_attach]!"),
+		span_notice("[surgeon]Termina o procedimento de ligação!"),
 	)
 	display_pain(patient, "You feel a strange sensation as [thing_to_attach] takes the place of your arm!", TRUE)
 
@@ -140,7 +140,7 @@
 
 /datum/surgery_operation/limb/secure_arbitrary_prosthetic
 	name = "secure prosthetic"
-	desc = "Ensure that an arbitrary prosthetic is properly attached to a patient's body."
+	desc = "Certifique-se de que uma prótese arbitrária esteja devidamente ligada ao corpo de um paciente."
 	implements = list(
 		/obj/item/stack/medical/suture = 1,
 		/obj/item/stack/medical/wrap/sticky_tape/surgical = 1.25,
@@ -157,9 +157,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to [tool.singular_name] [limb] to [limb.owner]'s body."),
-		span_notice("[surgeon] begins to [tool.singular_name] [limb] to [limb.owner]'s body."),
-		span_notice("[surgeon] begins to [tool.singular_name] something to [limb.owner]'s body."),
+		span_notice("Você começa[tool.singular_name] [limb]Para[limb.owner]Ó corpo."),
+		span_notice("[surgeon]começa a[tool.singular_name] [limb]Para[limb.owner]Ó corpo."),
+		span_notice("[surgeon]começa a[tool.singular_name]Algo para[limb.owner]Ó corpo."),
 	)
 	display_pain(limb.owner, "[surgeon] begins to [tool.singular_name] [limb] to your body!", IS_ROBOTIC_LIMB(limb))
 
@@ -167,9 +167,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You finish [tool.apply_verb] [limb] to [limb.owner]'s body."),
-		span_notice("[surgeon] finishes [tool.apply_verb] [limb] to [limb.owner]'s body."),
-		span_notice("[surgeon] finishes the [tool.apply_verb] procedure!"),
+		span_notice("Você termina.[tool.apply_verb] [limb]Para[limb.owner]Ó corpo."),
+		span_notice("[surgeon]Termina.[tool.apply_verb] [limb]Para[limb.owner]Ó corpo."),
+		span_notice("[surgeon]Termina o[tool.apply_verb]Processo!"),
 	)
 	display_pain(limb.owner, "You feel more secure as your prosthetic is firmly attached to your body!", IS_ROBOTIC_LIMB(limb))
 	limb.remove_surgical_state(SURGERY_PROSTHETIC_UNSECURED)

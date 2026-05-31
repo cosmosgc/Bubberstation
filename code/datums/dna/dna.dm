@@ -290,14 +290,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
  * * target_dna The DNA that we are comparing to
  */
 /datum/dna/proc/is_same_as(datum/dna/target_dna)
-	if( \
-		unique_identity == target_dna.unique_identity \
-		&& mutation_index == target_dna.mutation_index \
-		&& real_name == target_dna.real_name \
-		&& species.type == target_dna.species.type \
-		&& compare_list(features, target_dna.features) \
-		&& blood_type.type == target_dna.blood_type.type \
-	)
+	if( 		unique_identity == target_dna.unique_identity 		&& mutation_index == target_dna.mutation_index 		&& real_name == target_dna.real_name 		&& species.type == target_dna.species.type 		&& compare_list(features, target_dna.features) 		&& blood_type.type == target_dna.blood_type.type 	)
 		return TRUE
 
 	return FALSE
@@ -755,5 +748,5 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			return
 		eyes.Remove(src)
 		qdel(eyes)
-		visible_message(span_notice("[src] looks up and their eyes melt away!"), span_userdanger("I understand now."))
+		visible_message(span_notice("[src]Olha para cima e seus olhos derretem!"), span_userdanger("Eu entendo agora."))
 		addtimer(CALLBACK(src, PROC_REF(adjust_organ_loss), ORGAN_SLOT_BRAIN, 200), 2 SECONDS)

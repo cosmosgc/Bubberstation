@@ -1,6 +1,6 @@
 /obj/item/straight_razor
 	name = "straight razor"
-	desc = "A very sharp blade, mostly used for shaving faces..."
+	desc = "Uma lâmina muito afiada, usada principalmente para barbear rostos..."
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "straight_razor"
 	force = 12
@@ -26,30 +26,28 @@
 		var/mob/living/carbon/human/target_human = attacked_mob
 		var/location = user.zone_selected
 		if(!(location in list(BODY_ZONE_PRECISE_MOUTH)) && !user.combat_mode)
-			to_chat(user, span_warning("You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their facial hair.\""))
+			to_chat(user, span_warning("Pare, olhe para o que está segurando e pense em si mesmo.\"Deve ser usado no cabelo facial.\""))
 			return
 		if(location == BODY_ZONE_PRECISE_MOUTH && !target_human.get_bodypart(BODY_ZONE_HEAD))
-			to_chat(user, span_warning("[target_human] doesn't have a head!"))
+			to_chat(user, span_warning("[target_human]Não tem cabeça!"))
 			return
 		if(location == BODY_ZONE_PRECISE_MOUTH)
 			var/obj/item/bodypart/head/noggin = target_human.get_bodypart(BODY_ZONE_HEAD)
 			if(!(noggin.head_flags & HEAD_FACIAL_HAIR))
-				to_chat(user, span_warning("There is no facial hair to shave!"))
+				to_chat(user, span_warning("Não há pêlos faciais para barbear!"))
 				return
 			var/covering = target_human.is_mouth_covered()
 			if(covering)
-				to_chat(user, span_warning("[covering] is in the way!"))
+				to_chat(user, span_warning("[covering]Está no caminho!"))
 				return
 			if(target_human.facial_hairstyle == "Shaved")
-				to_chat(user, span_warning("Already clean-shaven!"))
+				to_chat(user, span_warning("Já barbeado!"))
 				return
 
 			var/self_shaving = target_human == user // Shaving yourself?
-			user.visible_message(span_notice("[user] starts to shave [self_shaving ? user.p_their() : "[target_human]'s"] facial hair with [src]."), \
-				span_notice("You take a moment to shave [self_shaving ? "your" : "[target_human]'s" ] facial hair with [src]..."))
+			user.visible_message(span_notice("[user]Começa a se barbear.[self_shaving ? user.p_their() : "[target_human]'s"]Cabelo facial com[src]."), 				span_notice("Tire um momento para se barbear.[self_shaving ? "your" : "[target_human]'s" ]Cabelo facial com[src]..."))
 			if(do_after(user, shaving_time, target = target_human))
-				user.visible_message(span_notice("[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] facial hair clean with [src]."), \
-					span_notice("You finish shaving[self_shaving ? "" : " [target_human]'s facial hair"] with [src]. Fast and clean!"))
+				user.visible_message(span_notice("[user]Barba.[self_shaving ? user.p_their() : "[target_human]'s"]Cabelo facial limpo com[src]."), 					span_notice("Você termina de fazer a barba.[self_shaving ? "" : " [target_human]'s facial hair"]com[src]Rápido e limpo!"))
 				shave(target_human)
 
 		else

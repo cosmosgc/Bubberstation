@@ -52,11 +52,11 @@
 				return FALSE
 			// Don't let people off station futz with the station network.
 			if(!is_station_level(z))
-				balloon_alert(user, "fora do alcance!")
+				balloon_alert(user, "Fora da Aliança!")
 				return TRUE
 
 			expunge_record_info(target)
-			balloon_alert(user, "record expunged")
+			balloon_alert(user, "Disco apagado.")
 			playsound(src, 'sound/machines/terminal/terminal_eject.ogg', 70, TRUE)
 			investigate_log("[key_name(user)] expunged the record of [target.name].", INVESTIGATE_RECORDS)
 
@@ -68,7 +68,7 @@
 			return TRUE
 
 		if("logout")
-			balloon_alert(user, "logged out")
+			balloon_alert(user, "Desligado.")
 			playsound(src, 'sound/machines/terminal/terminal_off.ogg', 70, TRUE)
 			authenticated = FALSE
 
@@ -77,22 +77,22 @@
 		if("purge_records")
 			// Don't let people off station futz with the station network.
 			if(!is_station_level(z))
-				balloon_alert(user, "fora do alcance!")
+				balloon_alert(user, "Fora da Aliança!")
 				return TRUE
 
 			ui.close()
-			balloon_alert(user, "purging records...")
+			balloon_alert(user, "Purgar registra...")
 			playsound(src, 'sound/machines/terminal/terminal_alert.ogg', 70, TRUE)
 
 			if(do_after(user, 5 SECONDS))
 				for(var/datum/record/crew/entry in GLOB.manifest.general)
 					expunge_record_info(entry)
 
-				balloon_alert(user, "records purged")
+				balloon_alert(user, "Registros apagados")
 				playsound(src, 'sound/machines/terminal/terminal_off.ogg', 70, TRUE)
 				investigate_log("[key_name(user)] purged all records.", INVESTIGATE_RECORDS)
 			else
-				balloon_alert(user, "interrompido!")
+				balloon_alert(user, "Interrompido!")
 
 			return TRUE
 
@@ -144,7 +144,7 @@
 		return FALSE
 
 	if(mugshot.picture.psize_x > ICON_SIZE_X || mugshot.picture.psize_y > ICON_SIZE_Y)
-		balloon_alert(user, "photo too large!")
+		balloon_alert(user, "Foto muito grande!")
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 70, TRUE)
 		return FALSE
 
@@ -155,7 +155,7 @@
 
 	new /datum/record/crew(name = name, character_appearance = mugshot.picture.picture_image)
 
-	balloon_alert(user, "record created")
+	balloon_alert(user, "Registro criou")
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 70, TRUE)
 
 	qdel(mugshot)
@@ -172,7 +172,7 @@
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 70, TRUE)
 		return FALSE
 
-	balloon_alert(user, "logged in")
+	balloon_alert(user, "logado.")
 	playsound(src, 'sound/machines/terminal/terminal_on.ogg', 70, TRUE)
 
 	return TRUE

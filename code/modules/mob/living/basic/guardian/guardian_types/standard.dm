@@ -10,7 +10,7 @@
 	environment_smash = ENVIRONMENT_SMASH_WALLS
 	playstyle_string = span_holoparasite("As a <b>standard</b> type you have no special abilities, but have a high damage resistance and a powerful attack capable of smashing through walls.")
 	creator_name = "Standard"
-	creator_desc = "Devastating close combat attacks and high damage resistance. Can smash through weak walls."
+	creator_desc = "Ataques de combate devastadores e alta resistência a danos. Pode quebrar paredes fracas."
 	creator_icon = "standard"
 	/// The text we shout when attacking.
 	var/battlecry = "AT"
@@ -41,7 +41,7 @@
 /// Action to change our battlecry
 /datum/action/select_guardian_battlecry
 	name = "Select Battlecry"
-	desc = "Update the really cool thing you shout whenever you attack."
+	desc = "Atualize a coisa legal que grita quando ataca."
 	button_icon = 'icons/obj/clothing/gloves.dmi'
 	button_icon_state = "boxing"
 	background_icon = 'icons/hud/guardian.dmi'

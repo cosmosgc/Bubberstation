@@ -1,8 +1,8 @@
 /obj/item/ai_module/zeroth/transmitInstructions(datum/ai_laws/law_datum, mob/sender, overflow)
 	if(law_datum.owner)
 		if(law_datum.owner.laws.zeroth)
-			to_chat(law_datum.owner, "[sender.real_name] attempted to modify your zeroth law.")
-			to_chat(law_datum.owner, "It would be in your best interest to play along with [sender.real_name] that:")
+			to_chat(law_datum.owner, "[sender.real_name]Tentou modificar sua lei zero.")
+			to_chat(law_datum.owner, "Seria melhor para você jogar junto com[sender.real_name]Isso:")
 			for(var/failedlaw in laws)
 				to_chat(law_datum.owner, "[failedlaw]")
 			return TRUE
@@ -34,7 +34,7 @@
 
 /obj/item/ai_module/zeroth/onehuman/install(datum/ai_laws/law_datum, mob/user)
 	if(!targetName)
-		to_chat(user, span_alert("No name detected on module, please enter one."))
+		to_chat(user, span_alert("Nenhum nome detectado no módulo, por favor digite um."))
 		return FALSE
 	..()
 

@@ -4,7 +4,7 @@
 
 /obj/item/gavelhammer
 	name = "gavel"
-	desc = "Order, order! No bombs in my courthouse."
+	desc = "Ordem, ordem! Sem bombas no meu tribunal."
 	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "gavelhammer"
 	icon_angle = -135
@@ -21,13 +21,13 @@
 	AddElement(/datum/element/kneejerk)
 
 /obj/item/gavelhammer/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] has sentenced [user.p_them()]self to death with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Condenado.[user.p_them()]e eu morrer com[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	playsound(loc, 'sound/items/gavel.ogg', 50, TRUE, -1)
 	return BRUTELOSS
 
 /obj/item/gavelblock
 	name = "sound block"
-	desc = "Smack it with a gavel when the assistants get rowdy."
+	desc = "Bata com um martelo quando os assistentes ficarem agitados."
 	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "gavelblock"
 	force = 2
@@ -39,7 +39,7 @@
 /obj/item/gavelblock/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(I, /obj/item/gavelhammer))
 		playsound(loc, 'sound/items/gavel.ogg', 100, TRUE)
-		user.visible_message(span_warning("[user] strikes [src] with [I]."))
+		user.visible_message(span_warning("[user]Strikes[src]com[I]."))
 		user.changeNext_move(CLICK_CD_MELEE)
 	else
 		return ..()

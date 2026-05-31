@@ -26,12 +26,12 @@
 
 	var/free_space = reagents.maximum_volume - reagents.total_volume
 	if(free_space <= 0)
-		to_chat(user, span_warning("Your [src] can't absorb any more liquid!"))
+		to_chat(user, span_warning("Sua[src]Não consigo absorver mais líquido!"))
 		return TRUE
 
 	var/datum/reagents/tempr = liquids.take_reagents_flat(free_space)
 	tempr.trans_to(reagents, tempr.total_volume)
-	to_chat(user, span_notice("You soak \the [src] with some liquids."))
+	to_chat(user, span_notice("Você está encharcado.\the [src]com alguns líquidos."))
 	qdel(tempr)
 	user.changeNext_move(CLICK_CD_RANGE) // This used to be CLICK_CD_MELEE, which is painfully slow
 	return TRUE

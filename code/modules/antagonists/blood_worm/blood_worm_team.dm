@@ -64,12 +64,12 @@
 	report += printplayerlist(members)
 
 	if (length(objectives))
-		report += span_header("Their collective goals:")
+		report += span_header("Seus objetivos coletivos:")
 		report += print_objective_list()
 
 	report += ""
 
-	report += did_we_win() ? span_greentext("The [name] were successful!") : span_redtext("The [name] have failed!")
+	report += did_we_win() ? span_greentext("O[name]foram bem sucedidos!") : span_redtext("O[name]Falhou!")
 
 	return "<div class='panel redborder'>[report.Join("<br>")]</div>"
 

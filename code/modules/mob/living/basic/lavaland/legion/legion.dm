@@ -4,7 +4,7 @@
  */
 /mob/living/basic/mining/legion
 	name = "legion"
-	desc = "You can still see what was once a human under the shifting mass of corruption."
+	desc = "Você ainda pode ver o que já foi um humano sob a massa de corrupção."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	icon_state = "legion"
 	icon_living = "legion"
@@ -22,9 +22,9 @@
 	attack_verb_simple = "lash out at"
 	speak_emote = list("gurgles")
 	attack_sound = 'sound/items/weapons/pierce.ogg'
-	throw_blocked_message = "bounces harmlessly off of"
+	throw_blocked_message = "Rebenta inofensivamente de"
 	crusher_loot = /obj/item/crusher_trophy/legion_skull
-	death_message = "wails in chorus and dissolves into quivering flesh."
+	death_message = "Chora em coro e se dissolve em carne trêmula."
 	ai_controller = /datum/ai_controller/basic_controller/legion
 	/// What kind of mob do we spawn?
 	var/brood_type = /mob/living/basic/mining/legion_brood
@@ -93,7 +93,7 @@
 	ai_controller?.set_blackboard_key(BB_LEGION_CORPSE, consumed)
 	ai_controller?.set_blackboard_key(BB_LEGION_RECENT_LINES, consumed.copy_recent_speech(line_chance = 80))
 	stored_mob = consumed
-	visible_message(span_warning("[src] staggers to [p_their()] feet!"))
+	visible_message(span_warning("[src]Cambaleando para[p_their()]Pés!"))
 	if (prob(75))
 		return
 	// Congratulations you have won a special prize: cancer
@@ -113,7 +113,7 @@
 /// Like a Legion but it's an adorable snowman
 /mob/living/basic/mining/legion/snow
 	name = "snow legion"
-	desc = "You can vaguely see what was once a human under the densely packed snow. Cute, but macabre."
+	desc = "Você pode ver vagamente o que já foi um humano sob a neve densamente carregada. Bonito, mas macabro."
 	icon = 'icons/mob/simple/icemoon/icemoon_monsters.dmi'
 	icon_state = "snowlegion"
 	icon_living = "snowlegion"
@@ -135,7 +135,7 @@
 /// Like a Legion but shorter and faster
 /mob/living/basic/mining/legion/dwarf
 	name = "dwarf legion"
-	desc = "You can still see what was once a rather small human under the shifting mass of corruption."
+	desc = "Você ainda pode ver o que já foi um humano bem pequeno sob a massa de corrupção."
 	icon_state = "dwarf_legion"
 	icon_living = "dwarf_legion"
 	icon_dead = "dwarf_legion"
@@ -149,7 +149,7 @@
 /// Like a Legion but larger and spawns regular Legions, not currently used anywhere and very soulful
 /mob/living/basic/mining/legion/large
 	name = "myriad"
-	desc = "A legion of legions, a dead end to whatever form the Necropolis was attempting to create."
+	desc = "Uma legião de legiões, um beco sem saída para qualquer forma que a Necrópole estava tentando criar."
 	icon = 'icons/mob/simple/lavaland/64x64megafauna.dmi'
 	icon_state = "legion"
 	icon_living = "legion"
@@ -167,14 +167,7 @@
 
 /mob/living/basic/mining/legion/large/Initialize(mapload)
 	. = ..()
-	AddComponent(\
-		/datum/component/spawner,\
-		spawn_types = list(/mob/living/basic/mining/legion),\
-		spawn_time = 20 SECONDS,\
-		max_spawned = 3,\
-		spawn_text = "peels itself off from",\
-		faction = faction,\
-	)
+	AddComponent(		/datum/component/spawner,		spawn_types = list(/mob/living/basic/mining/legion),		spawn_time = 20 SECONDS,		max_spawned = 3,		spawn_text = "peels itself off from",		faction = faction,	)
 
 /// Create what we want to drop on death, in proc form so we can always return a static list
 /mob/living/basic/mining/legion/large/get_loot_list()

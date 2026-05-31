@@ -120,14 +120,13 @@
 					breath = null // uh oh where'd the air go
 					check_breath(breath)
 					if(oxyloss <= OXYGEN_DAMAGE_CHOKING_THRESHOLD && stat == CONSCIOUS)
-						to_chat(src, "<span class='userdanger'>You hold in your breath!</span>")
+						to_chat(src, "<span class='userdanger'>Segure a respiração!</span>")
 					else
 						//Try and drink water
 						var/datum/reagents/tempr = our_turf.liquids.take_reagents_flat(CHOKE_REAGENTS_INGEST_ON_BREATH_AMOUNT)
 						tempr.trans_to(src, tempr.total_volume, methods = INGEST)
 						qdel(tempr)
-						visible_message("<span class='warning'>[src] chokes on [our_turf.liquids.reagents_to_text()]!</span>", \
-									"<span class='userdanger'>You're choking on [our_turf.liquids.reagents_to_text()]!</span>")
+						visible_message("<span class='warning'>[src]Engasga-se.[our_turf.liquids.reagents_to_text()]!</span>", 									"<span class='userdanger'>Você está sufocando.[our_turf.liquids.reagents_to_text()]!</span>")
 					return FALSE
 				//SKYRAT EDIT END
 				var/breath_moles = 0
@@ -352,22 +351,22 @@
 				// At lower pp, give out a little warning
 				clear_mood_event("smell")
 				if(prob(5))
-					to_chat(src, span_notice("There is an unpleasant smell in the air."))
+					to_chat(src, span_notice("Há um cheiro desagradável no ar."))
 			if(5 to 20)
 				//At somewhat higher pp, warning becomes more obvious
 				if(prob(15))
-					to_chat(src, span_warning("You smell something horribly decayed inside this room."))
+					to_chat(src, span_warning("Você cheira algo horrivelmente decaído dentro desta sala."))
 					add_mood_event("smell", /datum/mood_event/disgust/bad_smell)
 			if(15 to 30)
 				//Small chance to vomit. By now, people have internals on anyway
 				if(prob(5))
-					to_chat(src, span_warning("The stench of rotting carcasses is unbearable!"))
+					to_chat(src, span_warning("O fedor de carcaças podres é insuportável!"))
 					add_mood_event("smell", /datum/mood_event/disgust/nauseating_stench)
 					vomit(VOMIT_CATEGORY_DEFAULT)
 			if(30 to INFINITY)
 				//Higher chance to vomit. Let the horror start
 				if(prob(25))
-					to_chat(src, span_warning("The stench of rotting carcasses is unbearable!"))
+					to_chat(src, span_warning("O fedor de carcaças podres é insuportável!"))
 					add_mood_event("smell", /datum/mood_event/disgust/nauseating_stench)
 					vomit(VOMIT_CATEGORY_DEFAULT)
 			else
@@ -642,18 +641,15 @@
 
 	// We are very cold, increase body temperature
 	if(bodytemperature <= BODYTEMP_COLD_DAMAGE_LIMIT)
-		natural_change = max((body_temperature_difference * metabolism_efficiency / BODYTEMP_AUTORECOVERY_DIVISOR), \
-			BODYTEMP_AUTORECOVERY_MINIMUM)
+		natural_change = max((body_temperature_difference * metabolism_efficiency / BODYTEMP_AUTORECOVERY_DIVISOR), 			BODYTEMP_AUTORECOVERY_MINIMUM)
 
 	// we are cold, reduce the minimum increment and do not jump over the difference
 	else if(bodytemperature > BODYTEMP_COLD_DAMAGE_LIMIT && bodytemperature < get_body_temp_normal())
-		natural_change = max(body_temperature_difference * metabolism_efficiency / BODYTEMP_AUTORECOVERY_DIVISOR, \
-			min(body_temperature_difference, BODYTEMP_AUTORECOVERY_MINIMUM / 4))
+		natural_change = max(body_temperature_difference * metabolism_efficiency / BODYTEMP_AUTORECOVERY_DIVISOR, 			min(body_temperature_difference, BODYTEMP_AUTORECOVERY_MINIMUM / 4))
 
 	// We are hot, reduce the minimum increment and do not jump below the difference
 	else if(bodytemperature > get_body_temp_normal() && bodytemperature <= BODYTEMP_HEAT_DAMAGE_LIMIT)
-		natural_change = min(body_temperature_difference * metabolism_efficiency / BODYTEMP_AUTORECOVERY_DIVISOR, \
-			max(body_temperature_difference, -(BODYTEMP_AUTORECOVERY_MINIMUM / 4)))
+		natural_change = min(body_temperature_difference * metabolism_efficiency / BODYTEMP_AUTORECOVERY_DIVISOR, 			max(body_temperature_difference, -(BODYTEMP_AUTORECOVERY_MINIMUM / 4)))
 
 	// We are very hot, reduce the body temperature
 	else if(bodytemperature >= BODYTEMP_HEAT_DAMAGE_LIMIT)

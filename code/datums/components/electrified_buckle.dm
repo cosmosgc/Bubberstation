@@ -193,7 +193,7 @@
 	do_electrocution()
 
 	if (print_message)
-		parent_as_movable.visible_message(span_danger("[parent_as_movable] delivers a powerful shock!"), span_hear("You hear a deep sharp shock!"))
+		parent_as_movable.visible_message(span_danger("[parent_as_movable]Isso causa um choque poderoso!"), span_hear("Você ouve um choque profundo!"))
 
 /// Zap whoever is buckled to us
 /datum/component/electrified_buckle/proc/do_electrocution()
@@ -235,11 +235,11 @@
 	if(shock_on_loop)
 		shock_on_loop = FALSE
 		STOP_PROCESSING(SSprocessing, src)
-		parent_as_movable.visible_message(span_notice("\The [parent_as_movable] emits a snap as its circuit opens, making it safe for now."))
+		parent_as_movable.visible_message(span_notice("\The [parent_as_movable]Emite um estado quando seu circuito se abre, rasgando-o seguro por próximo."))
 	else
 		shock_on_loop = TRUE
 		START_PROCESSING(SSprocessing, src)
-		parent_as_movable.visible_message(span_notice("You hear the sound of an electric circuit closing coming from \the [parent_as_movable]!"))
+		parent_as_movable.visible_message(span_notice("Você ouve o som de um circuito elétrico vindo de\the [parent_as_movable]!"))
 
 #undef ELECTRIC_BUCKLE_SHOCK_STRENGTH_DIVISOR
 #undef ELECTRIC_BUCKLE_MINUMUM_POWERNET_STRENGTH

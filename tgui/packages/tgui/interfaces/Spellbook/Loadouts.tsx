@@ -15,7 +15,7 @@ export function Loadouts(props) {
           <SingleLoadout
             loadoutId="loadout_classic"
             loadoutColor="purple"
-            name="The Classic Wizard"
+            name="O Mágico Clássico"
             icon="fire"
             author="Archchancellor Gray"
             blurb="
@@ -26,7 +26,7 @@ export function Loadouts(props) {
               "
           />
           <SingleLoadout
-            name="Mjolnir's Power"
+            name="Poder de Mjolnir"
             icon="hammer"
             loadoutId="loadout_hammer"
             loadoutColor="green"
@@ -43,7 +43,7 @@ export function Loadouts(props) {
       <Stack.Item>
         <Stack fill>
           <SingleLoadout
-            name="Fantastical Army"
+            name="Exército Fantástico."
             icon="pastafarianism"
             loadoutId="loadout_army"
             loadoutColor="yellow"
@@ -59,7 +59,7 @@ export function Loadouts(props) {
             icon="skull"
             loadoutId="loadout_tap"
             loadoutColor="white"
-            author="Tom the Empty"
+            author="Tom, o Vazio."
             blurb="
                 Embrace the dark, and tap into your soul.
                 You can recharge very long recharge spells
@@ -92,7 +92,7 @@ function SingleLoadout(props: Props) {
         {blurb}
         <Divider />
         <Button.Confirm
-          confirmContent="Confirm Purchase?"
+          confirmContent="Confirmar compra?"
           confirmIcon="dollar-sign"
           confirmColor="good"
           fluid

@@ -29,7 +29,7 @@
 
 /obj/item/food/pie/plain
 	name = "plain pie"
-	desc = "A simple pie, still delicious."
+	desc = "Uma torta simples, ainda deliciosa."
 	icon_state = "pie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 8,
@@ -44,13 +44,13 @@
 
 /obj/item/food/pie/empty
 	name = "pie"
-	desc = "A custom pie made by a crazed chef."
+	desc = "Uma torta personalizada feita por um chef maluco."
 	icon_state = "pie_custom"
 	slice_type = /obj/item/food/pieslice/empty
 
 /obj/item/food/pieslice/empty
 	name = "pie slice"
-	desc = "A custom pie slice made by a crazed chef."
+	desc = "Uma fatia de torta feita por um chef maluco."
 	icon_state = "pie_custom_slice"
 
 /obj/item/food/pieslice/empty/Initialize(mapload)
@@ -59,7 +59,7 @@
 
 /obj/item/food/pie/cream
 	name = "banana cream pie"
-	desc = "Just like back home, on clown planet! HONK!"
+	desc = "Assim como em casa, no planeta palhaço! HONK!"
 	icon_state = "pie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 8,
@@ -80,7 +80,7 @@
 		victim.Paralyze(2 SECONDS) //splat!
 	if(can_splat_on)
 		victim.adjust_eye_blur(2 SECONDS)
-	victim.visible_message(span_warning("[victim] is creamed by [src]!"), span_userdanger("You've been creamed by [src]!"))
+	victim.visible_message(span_warning("[victim]é creme de[src]!"), span_userdanger("Você foi amassado por[src]!"))
 	playsound(victim, SFX_DESECRATION, 50, TRUE)
 
 /obj/item/food/pie/cream/nostun
@@ -88,7 +88,7 @@
 
 /obj/item/food/pie/berryclafoutis
 	name = "berry clafoutis"
-	desc = "No black birds, this is a good sign."
+	desc = "Sem pássaros negros, é um bom sinal."
 	icon_state = "berryclafoutis"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 11,
@@ -102,7 +102,7 @@
 
 /obj/item/food/pie/bearypie
 	name = "beary pie"
-	desc = "No brown bears, this is a good sign."
+	desc = "Sem urso marrom, isso é um bom sinal."
 	icon_state = "bearypie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 12,
@@ -117,7 +117,7 @@
 /obj/item/food/pie/meatpie
 	name = "meat-pie"
 	icon_state = "meatpie"
-	desc = "An old barber recipe, very delicious!"
+	desc = "Uma velha receita de barbeiro, muito deliciosa!"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
@@ -132,7 +132,7 @@
 
 /obj/item/food/pieslice/meatpie
 	name = "meat-pie slice"
-	desc = "Oh nice, meat pie!"
+	desc = "Boa, torta de carne!"
 	icon_state = "meatpie_slice"
 	tastes = list("pie" = 1, "meat" = 1)
 	foodtypes = GRAIN|DAIRY|MEAT
@@ -142,7 +142,7 @@
 /obj/item/food/pie/tofupie
 	name = "tofu-pie"
 	icon_state = "meatpie"
-	desc = "A delicious tofu pie."
+	desc = "Uma deliciosa torta de tofu."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 11,
 		/datum/reagent/consumable/nutriment/protein = 1,
@@ -155,7 +155,7 @@
 
 /obj/item/food/pieslice/tofupie
 	name = "tofu-pie slice"
-	desc = "Oh nice, meat pie- WAIT A MINUTE!!"
+	desc = "Boa, torta de carne. Espere um minuto!"
 	icon_state = "meatpie_slice"
 	tastes = list("pie" = 1, "disappointment" = 1, "tofu" = 1)
 	foodtypes = GRAIN|DAIRY|VEGETABLES
@@ -163,7 +163,7 @@
 
 /obj/item/food/pie/amanita_pie
 	name = "amanita pie"
-	desc = "Sweet and tasty poison pie."
+	desc = "Torta de veneno doce e saborosa."
 	icon_state = "amanita_pie"
 	bite_consumption = 4
 	food_reagents = list(
@@ -178,7 +178,7 @@
 
 /obj/item/food/pie/plump_pie
 	name = "plump pie"
-	desc = "I bet you love stuff made out of plump helmets!"
+	desc = "Aposto que você adora coisas feitas de capacetes gordos!"
 	icon_state = "plump_pie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 11,
@@ -192,7 +192,7 @@
 	var/fey = prob(10)
 	if(fey)
 		name = "exceptional plump pie"
-		desc = "Microwave is taken by a fey mood! It has cooked an exceptional plump pie!"
+		desc = "Microondas são tomadas por um humor fey! Cozinhou uma torta excecional!"
 		food_reagents = list(
 			/datum/reagent/consumable/nutriment = 11,
 			/datum/reagent/medicine/omnizine = 5,
@@ -203,7 +203,7 @@
 /obj/item/food/pie/xemeatpie
 	name = "xeno-pie"
 	icon_state = "xenomeatpie"
-	desc = "A delicious meatpie. Probably heretical."
+	desc = "Uma deliciosa torta de carne. Provavelmente herético."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 11,
 		/datum/reagent/consumable/nutriment/protein = 4,
@@ -217,7 +217,7 @@
 
 /obj/item/food/pieslice/xemeatpie
 	name = "xeno-pie slice"
-	desc = "Oh god... Is that still moving?"
+	desc = "Oh Deus... Ainda está se mexendo?"
 	icon_state = "xenopie_slice"
 	tastes = list("pie" = 1, "acid" = 1, "meat" = 1)
 	foodtypes = GRAIN|DAIRY|MEAT
@@ -226,7 +226,7 @@
 
 /obj/item/food/pie/applepie
 	name = "apple pie"
-	desc = "A pie containing sweet sweet love... or apple."
+	desc = "Uma torta contendo doce amor... ou maçã."
 	icon_state = "applepie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 11,
@@ -239,7 +239,7 @@
 
 /obj/item/food/pieslice/apple
 	name = "apple pie slice"
-	desc = "A slice of comfy apple pie, warm autumn memories ahead."
+	desc = "Uma fatia de torta de maçã confortável, memórias quentes de outono à frente."
 	icon_state = "applepie_slice"
 	tastes = list("pie" = 1, "apples" = 1)
 	foodtypes = GRAIN|DAIRY|FRUIT|SUGAR
@@ -248,7 +248,7 @@
 
 /obj/item/food/pie/cherrypie
 	name = "cherry pie"
-	desc = "Taste so good, make a grown man cry."
+	desc = "O gosto é tão bom, fazer um adulto chorar."
 	icon_state = "cherrypie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 11,
@@ -261,7 +261,7 @@
 
 /obj/item/food/pieslice/cherry
 	name = "cherry pie slice"
-	desc = "A slice of delicious cherry pie, I hope it's morellos!"
+	desc = "Uma fatia de torta de cereja deliciosa, espero que seja morellos!"
 	icon_state = "cherrypie_slice"
 	tastes = list("pie" = 1, "apples" = 1)
 	foodtypes = GRAIN|DAIRY|FRUIT|SUGAR
@@ -269,7 +269,7 @@
 
 /obj/item/food/pie/pumpkinpie
 	name = "pumpkin pie"
-	desc = "A delicious treat for the autumn months."
+	desc = "Uma delícia para os meses de outono."
 	icon_state = "pumpkinpie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 11,
@@ -282,7 +282,7 @@
 
 /obj/item/food/pieslice/pumpkin
 	name = "pumpkin pie slice"
-	desc = "A slice of pumpkin pie, with whipped cream on top. Perfection."
+	desc = "Uma fatia de torta de abóbora, com chantilly em cima. Perfeição."
 	icon_state = "pumpkinpieslice"
 	tastes = list("pie" = 1, "pumpkin" = 1)
 	foodtypes = GRAIN|DAIRY|VEGETABLES|SUGAR
@@ -290,7 +290,7 @@
 
 /obj/item/food/pie/appletart
 	name = "golden apple streusel tart"
-	desc = "A tasty dessert that won't make it through a metal detector."
+	desc = "Uma sobremesa saborosa que não vai passar por um detector de metais."
 	icon_state = "gappletart"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 8,
@@ -303,7 +303,7 @@
 
 /obj/item/food/pie/grapetart
 	name = "grape tart"
-	desc = "A tasty dessert that reminds you of the wine you didn't make."
+	desc = "Uma sobremesa saborosa que lembra o vinho que você não fez."
 	icon_state = "grapetart"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
@@ -328,7 +328,7 @@
 
 /obj/item/food/pie/berrytart
 	name = "berry tart"
-	desc = "A tasty dessert of many different small barries on a thin pie crust."
+	desc = "Uma sobremesa saborosa de muitas pequenas barries diferentes em uma fina crosta torta."
 	icon_state = "berrytart"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -339,7 +339,7 @@
 
 /obj/item/food/pie/cocolavatart
 	name = "chocolate lava tart"
-	desc = "A tasty dessert made of chocolate, with a liquid core." //But it doesn't even contain chocolate...
+	desc = "Uma sobremesa saborosa feita de chocolate, com um núcleo líquido." //But it doesn't even contain chocolate...
 	icon_state = "cocolavatart"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
@@ -350,7 +350,7 @@
 
 /obj/item/food/pie/blumpkinpie
 	name = "blumpkin pie"
-	desc = "An odd blue pie made with toxic blumpkin."
+	desc = "Uma torta azul estranha feita com um blumpkin tóxico."
 	icon_state = "blumpkinpie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 13,
@@ -363,7 +363,7 @@
 
 /obj/item/food/pieslice/blumpkin
 	name = "blumpkin pie slice"
-	desc = "A slice of blumpkin pie, with whipped cream on top. Is this edible?"
+	desc = "Uma fatia de torta com chantilly em cima. Isso é comestível?"
 	icon_state = "blumpkinpieslice"
 	tastes = list("pie" = 1, "a mouthful of pool water" = 1)
 	foodtypes = GRAIN|DAIRY|VEGETABLES|SUGAR
@@ -371,7 +371,7 @@
 
 /obj/item/food/pie/dulcedebatata
 	name = "dulce de batata"
-	desc = "A delicious jelly made with sweet potatoes."
+	desc = "Uma geleia deliciosa feita com batatas doces."
 	icon_state = "dulcedebatata"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 14,
@@ -385,7 +385,7 @@
 
 /obj/item/food/pieslice/dulcedebatata
 	name = "dulce de batata slice"
-	desc = "A slice of sweet dulce de batata jelly."
+	desc = "Uma fatia de doce doce doce de batata geleia."
 	icon_state = "dulcedebatataslice"
 	tastes = list("jelly" = 1, "sweet potato" = 1)
 	foodtypes = VEGETABLES | SUGAR
@@ -393,7 +393,7 @@
 
 /obj/item/food/pie/frostypie
 	name = "frosty pie"
-	desc = "Tastes like blue and cold."
+	desc = "Tem gosto de azul e frio."
 	icon_state = "frostypie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 14,
@@ -406,7 +406,7 @@
 
 /obj/item/food/pieslice/frostypie
 	name = "frosty pie slice"
-	desc = "Tasty blue, like my favourite crayon!"
+	desc = "Azul saboroso, como meu lápis de cor favorito!"
 	icon_state = "frostypie_slice"
 	tastes = list("pie" = 1, "mint" = 1)
 	foodtypes = GRAIN | FRUIT | SUGAR
@@ -414,7 +414,7 @@
 
 /obj/item/food/pie/baklava
 	name = "baklava"
-	desc = "A delightful healthy snack made of nut layers with thin bread."
+	desc = "Um delicioso lanche saudável feito de camadas de nozes com pão fino."
 	icon_state = "baklava"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 12,
@@ -428,7 +428,7 @@
 
 /obj/item/food/pieslice/baklava
 	name = "baklava dish"
-	desc = "A portion of a delightful healthy snack made of nut layers with thin bread"
+	desc = "Uma porção de um delicioso lanche saudável feito de camadas de nozes com pão fino."
 	icon_state = "baklavaslice"
 	tastes = list("nuts" = 1, "pie" = 1)
 	foodtypes = GRAIN|DAIRY|SUGAR
@@ -436,7 +436,7 @@
 
 /obj/item/food/pie/frenchsilkpie
 	name = "french silk pie"
-	desc = "A decadent pie made of a creamy chocolate mousse filling topped with a layer of whipped cream and chocolate shavings. Sliceable."
+	desc = "Uma torta decadente feita de uma mousse cremosa de chocolate recheada com uma camada de chantilly e aparas de chocolate. Facilite."
 	icon_state = "frenchsilkpie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 12,
@@ -449,7 +449,7 @@
 
 /obj/item/food/pieslice/frenchsilk
 	name = "french silk pie slice"
-	desc = "A slice of french silk pie, filled with a chocolate mousse and topped with a layer of whipped cream and chocolate shavings. Delicious enough to make you cry."
+	desc = "Uma fatia de torta de seda francesa, cheia de mousse de chocolate e coberta com uma camada de chantilly e aparas de chocolate. Delicioso o suficiente para te fazer chorar."
 	icon_state = "frenchsilkpieslice"
 	tastes = list("pie" = 1, "smooth chocolate" = 1, "whipped cream" = 1)
 	foodtypes = GRAIN | DAIRY | SUGAR
@@ -457,7 +457,7 @@
 
 /obj/item/food/pie/shepherds_pie
 	name = "shepherds pie"
-	desc = "A dish of minced meat and mixed vegetables baked under a layer of creamy mashed potatoes. Sliceable."
+	desc = "Um prato de carne picada e legumes misturados cozidos sob uma camada de purê cremoso de batatas. Facilite."
 	icon_state = "shepherds_pie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 40,
@@ -473,7 +473,7 @@
 
 /obj/item/food/pieslice/shepherds_pie
 	name = "shepherds pie slice"
-	desc = "A messy slice of shepherds pie, made of minced meat and mixed vegetables baked under a layer of creamy mashed potatoes. Dangerously tasty."
+	desc = "Uma fatia de torta de pastor, feita de carne picada e legumes misturados cozidos sob uma camada de purê cremoso de batatas. Perigosamente saboroso."
 	icon_state = "shepherds_pie_slice"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 10,
@@ -487,7 +487,7 @@
 
 /obj/item/food/pie/asdfpie
 	name = "pie-flavored pie"
-	desc = "I baked you a pie!"
+	desc = "Fiz uma torta para você!"
 	icon_state = "asdfpie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 16,
@@ -499,7 +499,7 @@
 
 /obj/item/food/pie/bacid_pie
 	name = "battery acid pie"
-	desc = "Ooh it's a pie made of... battery acid? You suppose an ethereal could find some enjoyement in eating this."
+	desc = "É uma torta feita de ácido de bateria? Você acha que um etéreo poderia encontrar algum prazer em comer isso."
 	icon_state = "bacid_pie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 18,
@@ -514,7 +514,7 @@
 
 /obj/item/food/pieslice/bacid_pie
 	name = "battery acid pie slice"
-	desc = "The battery acid filling has a concerningly appealing bright green color"
+	desc = "O enchimento de ácido da bateria tem uma atraente cor verde brilhante."
 	icon_state = "bacid_pie_slice"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4.5,

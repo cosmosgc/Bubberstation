@@ -4,7 +4,7 @@
 
 /obj/structure/cargo_shelf //Crate shelf port from Shiptest: https://github.com/shiptest-ss13/Shiptest/pull/2374
 	name = "Cargo shelf"
-	desc = "It's a shelf! For storing crates!"
+	desc = "É uma prateleira! Por guardar caixas!"
 	icon = 'modular_zubbers/icons/obj/structures.dmi'
 	icon_state = "shelf_base"
 	density = TRUE
@@ -40,12 +40,12 @@
 
 /obj/structure/cargo_shelf/examine(mob/user)
 	. = ..()
-	. += span_notice("There are some <b>bolts</b> holding [src] together.")
+	. += span_notice("Há alguns<b>Parafusos</b>Segurando[src]Juntas.")
 	if(shelf_contents.Find(null)) // If there's an empty space in the shelf, let the examiner know.
-		. += span_notice("You could <b>drag and drop</b> a crate into [src].")
+		. += span_notice("Você poderia.<b>Arrastar e soltar</b>Uma caixa em[src].")
 	if(contents.len) // If there are any crates in the shelf, let the examiner know.
-		. += span_notice("You could <b>drag and drop</b> a crate out of [src].")
-		. += span_notice("[src] contains:")
+		. += span_notice("Você poderia.<b>Arrastar e soltar</b>Uma caixa de[src].")
+		. += span_notice("[src]contém:")
 		for(var/obj/structure/closet/crate/crate in shelf_contents)
 			. += "	[icon2html(crate, user)] [crate]"
 
@@ -58,13 +58,13 @@
 	return ..()
 
 /obj/structure/cargo_shelf/relay_container_resist_act(mob/living/user, obj/structure/closet/crate)
-	to_chat(user, span_notice("You begin attempting to knock [crate] out of [src]"))
+	to_chat(user, span_notice("Você começa a tentar bater[crate]Fora[src]"))
 	if(do_after(user, 30 SECONDS, target = crate))
 		if(!user || user.stat != CONSCIOUS || user.loc != crate || crate.loc != src)
 			return // If the user is in a strange condition, return early.
-		visible_message(span_warning("[crate] falls off of [src]!"),
-						span_notice("You manage to knock [crate] free of [src]"),
-						span_notice("You hear a thud."))
+		visible_message(span_warning("[crate]Queda de[src]!"),
+						span_notice("Você consegue bater[crate]Livre de[src]"),
+						span_notice("Você ouve um barulho."))
 		crate.forceMove(drop_location()) // Drop the crate onto the shelf,
 		step_rand(crate, 1) // Then try to push it somewhere.
 		crate.layer = initial(crate.layer) // Reset the crate back to having the default layer, otherwise we might get strange interactions.
@@ -79,7 +79,7 @@
 /obj/structure/cargo_shelf/proc/load(obj/structure/closet/crate/crate, mob/user)
 	var/next_free = shelf_contents.Find(null) // Find the first empty slot in the shelf.
 	if(!next_free) // If we don't find an empty slot, return early.
-		balloon_alert(user, "shelf full!")
+		balloon_alert(user, "Prateleira cheia!")
 		return FALSE
 	if(do_after(user, use_delay, target = crate))
 		if(shelf_contents[next_free] != null)
@@ -128,12 +128,12 @@
 		switch(pick(1, 1, 1, 1, 2, 2, 3)) // Randomly pick whether to do nothing, open the crate, or break it open.
 			if(2) // Open the crate!
 				if(crate.open()) // Break some open, cause a little chaos.
-					crate.visible_message(span_warning("[crate]'s lid falls open!"))
+					crate.visible_message(span_warning("[crate]Um tampa cai aberta!"))
 				else // If we somehow fail to open the crate, just break it instead!
-					crate.visible_message(span_warning("[crate] falls apart!"))
+					crate.visible_message(span_warning("[crate]Se desfaz!"))
 					crate.deconstruct()
 			if(3) // Break that crate!
-				crate.visible_message(span_warning("[crate] falls apart!"))
+				crate.visible_message(span_warning("[crate]Se desfaz!"))
 				crate.deconstruct()
 		shelf_contents[shelf_contents.Find(crate)] = null
 	if(!(flags_1 & NO_DEBRIS_AFTER_DECONSTRUCTION))
@@ -160,20 +160,19 @@
 	name = "Cargo shelf parts"
 	icon = 'modular_zubbers/icons/obj/structures.dmi'
 	icon_state = "rack_parts"
-	desc = "Parts of a cargo shelf, for storing crates."
+	desc = "Partes de uma prateleira de carga, para armazenar caixas."
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 4)
 
 /obj/item/rack_parts/cargo_shelf/attack_self(mob/user)
 	if(building)
 		return
 	building = TRUE
-	to_chat(user, span_notice("You start constructing a cargo shelf..."))
+	to_chat(user, span_notice("Você começa a construir uma prateleira de carga..."))
 	if(do_after(user, 50, target = user, progress=TRUE))
 		if(!user.temporarilyRemoveItemFromInventory(src))
 			return
 		var/obj/structure/cargo_shelf/R = new /obj/structure/cargo_shelf(get_turf(src))
-		user.visible_message("<span class='notice'>[user] assembles \a [R].\
-			</span>", span_notice("You assemble \a [R]."))
+		user.visible_message("<span class='notice'>[user]Montar\a [R].			</span>", span_notice("Você se reúne.\a [R]."))
 		R.add_fingerprint(user)
 		qdel(src)
 	building = FALSE
@@ -186,20 +185,19 @@
 
 /obj/item/rack_parts/gun
 	name = "gun rack parts"
-	desc = "Parts of a gun rack."
+	desc = "Partes de uma arma."
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2)
 
 /obj/item/rack_parts/gun/attack_self(mob/user)
 	if(building)
 		return
 	building = TRUE
-	to_chat(user, span_notice("You start constructing a gun rack..."))
+	to_chat(user, span_notice("Você começa a construir uma arma..."))
 	if(do_after(user, 50, target = user, progress=TRUE))
 		if(!user.temporarilyRemoveItemFromInventory(src))
 			return
 		var/obj/structure/rack/gunrack/R = new /obj/structure/rack/gunrack(get_turf(src))
-		user.visible_message("<span class='notice'>[user] assembles \a [R].\
-			</span>", span_notice("You assemble \a [R]."))
+		user.visible_message("<span class='notice'>[user]Montar\a [R].			</span>", span_notice("Você se reúne.\a [R]."))
 		R.add_fingerprint(user)
 		qdel(src)
 	building = FALSE
@@ -212,20 +210,19 @@
 
 /obj/item/rack_parts/shelf
 	name = "shelf parts"
-	desc = "Parts of a standard shelf."
+	desc = "Partes de uma prateleira padrão."
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2)
 
 /obj/item/rack_parts/shelf/attack_self(mob/user)
 	if(building)
 		return
 	building = TRUE
-	to_chat(user, span_notice("You start constructing a standard shelf..."))
+	to_chat(user, span_notice("Você começa a construir uma prateleira padrão..."))
 	if(do_after(user, 50, target = user, progress=TRUE))
 		if(!user.temporarilyRemoveItemFromInventory(src))
 			return
 		var/obj/structure/rack/shelf/R = new /obj/structure/rack/shelf(get_turf(src))
-		user.visible_message("<span class='notice'>[user] assembles \a [R].\
-			</span>", span_notice("You assemble \a [R]."))
+		user.visible_message("<span class='notice'>[user]Montar\a [R].			</span>", span_notice("Você se reúne.\a [R]."))
 		R.add_fingerprint(user)
 		qdel(src)
 	building = FALSE

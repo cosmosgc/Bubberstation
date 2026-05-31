@@ -4,7 +4,7 @@
 
 /obj/item/circuitboard/machine/powerator
 	name = "Powerator"
-	desc = "The powerator is a machine that allows stations to sell their power to other stations that require additional sources."
+	desc = "O poderador é uma máquina que permite que estações vendam sua energia para outras estações que requerem fontes adicionais."
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/powerator
 	req_components = list(
@@ -19,15 +19,15 @@
 
 /datum/supply_pack/misc/powerator
 	name = "Powerator"
-	desc = "We know the feeling of losing power and Central sending power, it is our time to do the same."
+	desc = "Sabemos o sentimento de perda de energia e Central enviando energia, é nossa hora de fazer o mesmo."
 	cost = CARGO_CRATE_VALUE * 50 // 10,000
 	contains = list(/obj/item/circuitboard/machine/powerator)
-	crate_name = "Powerator Circuitboard Crate"
+	crate_name = "Plataforma de Circuito Powerator"
 	crate_type = /obj/structure/closet/crate
 
 /datum/design/board/powerator
 	name = "Machine Design (Powerator)"
-	desc = "Allows for the construction of circuit boards used to build a powerator."
+	desc = "Permite a construção de placas de circuito usadas para construir um gerador."
 	id = "powerator"
 	build_path = /obj/item/circuitboard/machine/powerator
 	category = list(
@@ -38,7 +38,7 @@
 /datum/techweb_node/powerator
 	id = TECHWEB_NODE_POWERATOR
 	display_name = "Powerator"
-	description = "We've been saved by it in the past, we should send some power ourselves!"
+	description = "Fomos salvos por isso no passado, deveríamos enviar algum poder nós mesmos!"
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	hidden = TRUE
 	experimental = TRUE
@@ -49,7 +49,7 @@
 
 /obj/machinery/powerator
 	name = "powerator"
-	desc = "Beyond the ridiculous name, it is the standard for transporting and selling energy to power networks that require additional sources!"
+	desc = "Além do nome ridículo, é o padrão para transportar e vender energia para redes de energia que exigem fontes adicionais!"
 	icon = 'modular_zubbers/icons/obj/machines/powerator.dmi'
 	icon_state = "powerator"
 
@@ -109,21 +109,21 @@
 /obj/machinery/powerator/examine(mob/user)
 	. = ..()
 	if(panel_open)
-		. += span_warning("The maintenance panel is currently open, preventing [src] from working!")
+		. += span_warning("O painel de manutenção está aberto, evitando[src]De trabalhar!")
 
 	if(!anchored)
-		. += span_warning("The anchors are not bolted to the floor, preventing [src] from working!")
+		. += span_warning("As âncoras não estão trancadas no chão, impedindo[src]De trabalhar!")
 
 	if(machine_stat & (NOPOWER | BROKEN))
-		. += span_warning("There is either damage or no power being supplied, preventing [src] from working!")
+		. += span_warning("Há danos ou nenhuma energia sendo fornecida, impedindo[src]De trabalhar!")
 
 	if(!attached_cable)
-		. += span_warning("There is no power cable underneath, preventing [src] from working!")
+		. += span_warning("Não há cabo de força por baixo, impedindo[src]De trabalhar!")
 
-	. += span_notice("Current Power: [display_power(current_power)]/[display_power(max_power)]")
-	. += span_notice("This machine has made [credits_made] credits from selling power so far.")
+	. += span_notice("Potência atual:[display_power(current_power)]/[display_power(max_power)]")
+	. += span_notice("Esta máquina fez[credits_made]créditos de vender energia até agora.")
 	if(length(powerator_list[powerator_faction]) > 1)
-		. += span_notice("Multiple powerators detected, total efficiency reduced by [(powerator_penalty_multiplier_list[powerator_faction])*100]%")
+		. += span_notice("Vários potênciadores detectados, eficiência total reduzida por[(powerator_penalty_multiplier_list[powerator_faction])*100]%")
 
 /obj/machinery/powerator/RefreshParts()
 	. = ..()
@@ -229,7 +229,7 @@
 
 /obj/machinery/powerator/interdyne
 	name = "Interdyne powerator"
-	desc = "Beyond the ridiculous name, it is the standard for transporting and selling energy to power networks that require additional sources! It appears to be an earlier variant before environmental regulation reduced its efficiency."
+	desc = "Além do nome ridículo, é o padrão para transportar e vender energia para redes de energia que exigem fontes adicionais! Parece ser uma variante anterior antes da regulação ambiental reduzir sua eficiência."
 	circuit = /obj/item/circuitboard/machine/powerator/interdyne
 
 	powerator_faction = POWERATOR_FACTION_INTERDYNE
@@ -243,7 +243,7 @@
 
 /obj/machinery/powerator/tarkon
 	name = "Tarkon powerator"
-	desc = "Beyond the ridiculous name, it is the standard for transporting and selling energy to power networks that require additional sources! It appears to be an earlier variant before environmental regulation reduced its efficiency."
+	desc = "Além do nome ridículo, é o padrão para transportar e vender energia para redes de energia que exigem fontes adicionais! Parece ser uma variante anterior antes da regulação ambiental reduzir sua eficiência."
 	circuit = /obj/item/circuitboard/machine/powerator/tarkon
 
 	powerator_faction = POWERATOR_FACTION_TARKON

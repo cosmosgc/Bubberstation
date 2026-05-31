@@ -26,21 +26,21 @@ const fuelstyle = {
 };
 
 const variousButtonIcons = {
-  'Restore Hull': 'wrench',
-  'Fix Engine': 'rocket',
-  'Repair Electronics': 'server',
+  'Restaure o casco.': 'wrench',
+  'Motor de correção': 'rocket',
+  'Reparo de Eletrônica': 'server',
   Wait: 'clock',
   Continue: 'arrow-right',
-  'Explore Ship': 'door-open',
-  'Leave the Derelict': 'arrow-right',
-  'Welcome aboard.': 'user-plus',
-  'Where did you go?!': 'user-minus',
-  'A good find.': 'box-open',
-  'Continue travels.': 'arrow-right',
-  'Keep Speed': 'tachometer-alt',
-  'Slow Down': 'arrow-left',
-  'Speed Past': 'tachometer-alt',
-  'Go Around': 'redo',
+  'Explore o navio': 'door-open',
+  'Deixe o deserto.': 'arrow-right',
+  'Bem-vindo a bordo.': 'user-plus',
+  'Onde você foi?': 'user-minus',
+  'Uma boa descoberta.': 'box-open',
+  'Continue viajando.': 'arrow-right',
+  'Mantenha a velocidade.': 'tachometer-alt',
+  'Devagar.': 'arrow-left',
+  'Velocidade Passada': 'tachometer-alt',
+  'Dê a volta.': 'redo',
   'Oh...': 'circle',
   Dock: 'dollar-sign',
 };
@@ -57,47 +57,47 @@ const locationInfo = [
   {
     title: 'Pluto',
     blurb:
-      'Pluto, long since occupied with long-range sensors and scanners, stands ready to, and indeed continues to probe the far reaches of the galaxy.',
+      'Plutão, há muito ocupado com sensores de longo alcance e scanners, está pronto para, e de fato continua a sondar os confins da galáxia.',
   },
   {
-    title: 'Asteroid Belt',
+    title: 'Cinto de asteróides',
     blurb:
-      'At the edge of the Sol system lies a treacherous asteroid belt. Many have been crushed by stray asteroids and misguided judgement.',
+      'Na borda do sistema Sol está um cinturão de asteróides traiçoeiro. Muitos foram esmagados por asteróides perdidos e julgamentos equivocados.',
   },
   {
     title: 'Proxima Centauri',
     blurb:
-      'The nearest star system to Sol, in ages past it stood as a reminder of the boundaries of sub-light travel, now a low-population sanctuary for adventurers and traders.',
+      'O sistema estelar mais próximo do Sol, em tempos passados, era um lembrete dos limites das viagens sub-light, agora um santuário de baixa população para aventureiros e comerciantes.',
   },
   {
-    title: 'Dead Space',
+    title: 'Espaço Morto',
     blurb:
-      'This region of space is particularly devoid of matter. Such low-density pockets are known to exist, but the vastness of it is astounding.',
+      'Esta região do espaço é particularmente desprovida de matéria. Esses bolsos de baixa densidade são conhecidos por existir, mas a vastidão dele é surpreendente.',
   },
   {
     title: 'Rigel Prime',
     blurb:
-      'Rigel Prime, the center of the Rigel system, burns hot, basking its planetary bodies in warmth and radiation.',
+      'Rigel Prime, o centro do sistema Rigel, queima quente, aquecendo seus corpos planetários em calor e radiação.',
   },
   {
     title: 'Tau Ceti Beta',
     blurb:
-      'Tau Ceti Beta has recently become a waypoint for colonists headed towards Orion. There are many ships and makeshift stations in the vicinity.',
+      'Tau Ceti Beta se tornou um ponto de passagem para colonos indo para Orion. Há muitas naves e estações improvisadas nas proximidades.',
   },
   {
-    title: 'Space Bugs',
+    title: 'Insetos do Espaço',
     blurb:
-      "You see some space bugs out your window. They contort in various reality bending ways, and it makes you sick. You know it's Galactic Policy to report all sightings of space bugs.",
+      "Você vê alguns insetos espaciais pela janela. Eles se contorcem de várias formas, e isso te deixa doente. Você sabe que é política Galáctica relatar todos os avistamentos de insetos espaciais.",
   },
   {
-    title: 'Space Outpost Beta-9',
+    title: 'Posto avançado espacial Beta-9',
     blurb:
-      "You have come into range of the first man-made structure in this region of space. It has been constructed not by travellers from Sol, but by colonists from Orion. It stands as a monument to the colonists' success.",
+      "Você entrou no alcance da primeira estrutura feita pelo homem nesta região do espaço. Foi construída não por viajantes de Sol, mas por colonos de Orion. É um monumento ao sucesso dos colonos.",
   },
   {
     title: 'Orion Prime',
     blurb:
-      'You have made it to Orion! Congratulations! Your crew is one of the few to start a new foothold for mankind!',
+      'Você chegou a Orion! Parabéns! Sua tripulação é uma das poucas para começar uma nova posição para a humanidade!',
   },
 ];
 
@@ -116,7 +116,7 @@ const AdventureStatus = (props) => {
   } = data;
   return (
     <Section
-      title="Adventure Status"
+      title="Status de Aventura"
       fill
       buttons={
         !!lings_suspected && (
@@ -125,7 +125,7 @@ const AdventureStatus = (props) => {
             color="black"
             textAlign="center"
             icon="skull"
-            content="RANDOM KILL"
+            content="RANDOM MATAR"
             disabled={eventname}
             onClick={() => act('random_kill')}
           />
@@ -217,14 +217,14 @@ const ORION_STATUS_START = (props) => {
         <Stack.Item grow={1} />
         <Stack.Item fontSize="32px">{gamename}</Stack.Item>
         <Stack.Item grow fontSize="15px" color="label">
-          {'"Experience the journey of your ancestors!"'}
+          {'Experimente a jornada de seus ancestrais!'}
         </Stack.Item>
         <Stack.Item fontSize="15px">
           <Button
             lineHeight={2}
             fluid
             icon="play"
-            content="Begin Game"
+            content="Começar o Jogo"
             onClick={() => act('start_game')}
           />
         </Stack.Item>
@@ -253,7 +253,7 @@ const ORION_STATUS_INSTRUCTIONS = (props) => {
         title="Objective"
         buttons={
           <Button
-            content="Back to Main Menu"
+            content="De volta ao Menu Principal"
             onClick={() => act('back_to_menu')}
           />
         }
@@ -265,7 +265,7 @@ const ORION_STATUS_INSTRUCTIONS = (props) => {
           what they were seeking... or lose their lives on the way.
         </Box>
       </Section>
-      <Section title="Status Example">
+      <Section title="Exemplo de status">
         <Stack>
           <Stack.Item basis={70} grow align="center">
             {fake_settlers?.map((settler) => (
@@ -280,7 +280,7 @@ const ORION_STATUS_INSTRUCTIONS = (props) => {
                     content="KILL"
                   />
                 </Stack.Item>
-                <Stack.Item className={'moods32x32 mood5'} />
+                <Stack.Item className={'Humors32x32um humor5'} />
               </Stack>
             ))}
           </Stack.Item>
@@ -319,7 +319,7 @@ const ORION_STATUS_INSTRUCTIONS = (props) => {
                 <Button
                   fluid
                   icon="hamburger"
-                  content={'Food Left: 80'}
+                  content={'Comida esquerda: 80'}
                   color="green"
                 />
               </Stack.Item>
@@ -327,7 +327,7 @@ const ORION_STATUS_INSTRUCTIONS = (props) => {
                 <Button
                   fluid
                   icon="gas-pump"
-                  content={'Fuel Left: 60'}
+                  content={'Combustível à esquerda: 60'}
                   color="olive"
                 />
               </Stack.Item>
@@ -335,7 +335,7 @@ const ORION_STATUS_INSTRUCTIONS = (props) => {
                 <Button
                   fluid
                   icon="wrench"
-                  content={'Hull Parts: 1'}
+                  content={'Partes do casco: 1'}
                   color="average"
                 />
               </Stack.Item>
@@ -343,7 +343,7 @@ const ORION_STATUS_INSTRUCTIONS = (props) => {
                 <Button
                   fluid
                   icon="server"
-                  content={'Electronics: 1'}
+                  content={'Eletrônica: 1'}
                   color="blue"
                 />
               </Stack.Item>
@@ -351,7 +351,7 @@ const ORION_STATUS_INSTRUCTIONS = (props) => {
                 <Button
                   fluid
                   icon="rocket"
-                  content={'Engine Parts: 1'}
+                  content={'Peças do motor: 1'}
                   color="violet"
                 />
               </Stack.Item>
@@ -434,7 +434,7 @@ const ORION_STATUS_GAMEOVER = (props) => {
       <Stack vertical textAlign="center" fill>
         <Stack.Item grow={1} />
         <Stack.Item color="red" fontSize="32px">
-          {'Game Over'}
+          {'Fim do jogo'}
         </Stack.Item>
         <Stack.Item grow fontSize="15px" color="label">
           {reason}
@@ -444,7 +444,7 @@ const ORION_STATUS_GAMEOVER = (props) => {
             lineHeight={2}
             fluid
             icon="arrow-left"
-            content="Main Menu"
+            content="Menu Principal"
             onClick={() => act('back_to_menu')}
           />
         </Stack.Item>
@@ -485,7 +485,7 @@ const ORION_STATUS_MARKET = (props) => {
           <Stack fill textAlign="center" vertical>
             <Stack.Item grow>
               <Box mb={-2} bold fontSize="15px">
-                {(turns === 4 && 'Tau Ceti Beta') || 'Small Space Port'}
+                {(turns === 4 && 'Tau Ceti Beta') || 'Porto do Pequeno Espaço'}
               </Box>
               <br />
               <Box fontSize="14px">
@@ -518,7 +518,7 @@ const ORION_STATUS_MARKET = (props) => {
                           <Button
                             fluid
                             icon="gas-pump"
-                            content={'5 Food -> 5 Fuel'}
+                            content={'5 Comida -> 5 Combustível'}
                             color="green"
                             onClick={() =>
                               act('trade', {
@@ -533,7 +533,7 @@ const ORION_STATUS_MARKET = (props) => {
                           <Button
                             fluid
                             icon="wrench"
-                            content={'5 Fuel for Hull Plates'}
+                            content={'5 Combustível para placas de casco'}
                             color="average"
                             onClick={() =>
                               act('buyparts', {
@@ -546,7 +546,7 @@ const ORION_STATUS_MARKET = (props) => {
                           <Button
                             fluid
                             icon="server"
-                            content={'5 Fuel for Electronics'}
+                            content={'5 Combustível para eletrônica'}
                             color="blue"
                             onClick={() =>
                               act('buyparts', {
@@ -559,7 +559,7 @@ const ORION_STATUS_MARKET = (props) => {
                           <Button
                             fluid
                             icon="rocket"
-                            content={'5 Fuel for Engine Parts'}
+                            content={'5 Combustível para peças de motor'}
                             color="violet"
                             onClick={() =>
                               act('buyparts', {
@@ -576,7 +576,7 @@ const ORION_STATUS_MARKET = (props) => {
                           <Button
                             fluid
                             icon="hamburger"
-                            content={'5 Fuel -> 5 Food'}
+                            content={'5 Combustível -> 5 Comida'}
                             color="olive"
                             onClick={() =>
                               act('trade', {
@@ -591,7 +591,7 @@ const ORION_STATUS_MARKET = (props) => {
                           <Button
                             fluid
                             icon="user-plus"
-                            content={'10 Food, 10 Fuel for Crew'}
+                            content={'10 Comida, 10 Combustível para tripulação'}
                             color="white"
                             onClick={() => act('buycrew')}
                           />
@@ -600,7 +600,7 @@ const ORION_STATUS_MARKET = (props) => {
                           <Button
                             fluid
                             icon="user-minus"
-                            content={'Crew for 7 Food, 7 Fuel'}
+                            content={'Equipe para 7 Comidas, 7 Combustível'}
                             color="black"
                             onClick={() => act('sellcrew')}
                           />
@@ -609,7 +609,7 @@ const ORION_STATUS_MARKET = (props) => {
                           <Button
                             fluid
                             icon="meteor"
-                            content={'Odd Crew (Same Price)'}
+                            content={'Odd Crew (mesmo preço)'}
                             color="purple"
                             onClick={() =>
                               act('buycrew', {
@@ -642,7 +642,7 @@ export const OrionGame = (props) => {
   return (
     <Window title={gamename} width={420} height={535}>
       <Window.Content scrollable>
-        {(eventname === 'Space Port Raid' && <MarketRaid />) || (
+        {(eventname === 'Raid do Porto Espacial' && <MarketRaid />) || (
           <GameStatusComponent />
         )}
       </Window.Content>

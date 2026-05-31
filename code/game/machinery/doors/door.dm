@@ -5,7 +5,7 @@
 
 /obj/machinery/door
 	name = "door"
-	desc = "It opens and closes."
+	desc = "Abre e fecha."
 	icon = 'icons/obj/doors/doorint.dmi'
 	icon_state = "door_closed"
 	base_icon_state = "door"
@@ -144,11 +144,11 @@
 	. = ..()
 	if(red_alert_access)
 		if(SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED)
-			. += span_notice("Due to a security threat, its access requirements have been lifted!")
+			. += span_notice("Devido a uma ameaça de segurança, suas necessidades de acesso foram retiradas!")
 		else
-			. += span_notice("In the event of a red alert, its access requirements will automatically lift.")
+			. += span_notice("No caso de um alerta vermelho, seus requisitos de acesso serão automaticamente levantados.")
 	if(has_access_panel)
-		. += span_notice("Its maintenance panel is [panel_open ? "open" : "<b>screwed</b> in place"].")
+		. += span_notice("Seu painel de manutenção é[panel_open ? "open" : "<b>screwed</b> in place"].")
 
 /obj/machinery/door/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -232,7 +232,7 @@
 		return
 	if(!red_alert_access)
 		return
-	audible_message(span_notice("[src] whirr[p_s()] as [p_they()] automatically lift[p_s()] access requirements!"))
+	audible_message(span_notice("[src]Whirrr[p_s()]Como[p_they()]Levantar automáticamente.[p_s()]Requisitos de acesso!"))
 	playsound(src, 'sound/machines/airlock/boltsup.ogg', 50, TRUE)
 
 /obj/machinery/door/proc/try_safety_unlock(mob/user)
@@ -377,7 +377,7 @@
 	addtimer(CALLBACK(src, PROC_REF(deregister_pressure_push_signal), opener), do_after_time + 0.5 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE) // extra half-second to be safe, else this is just a guarantee we remove the signal.
 
 	SSblackbox.record_feedback("tally", "unrestricted_airlock_usage", 1, "open attempt ([type])") // statcollecting on how often people try to use this.
-	balloon_alert(opener, "activating unrestricted latch...")
+	balloon_alert(opener, "ativando trava sem restrições...")
 
 	if(istype(get_area(src), /area/station/maintenance))
 		playsound(get_turf(src), 'sound/machines/airlock/airlock_latch_hiss.ogg', 45, vary = TRUE, falloff_exponent = (SOUND_FALLOFF_EXPONENT * 2)) // sound travels further in maintenance muahaha
@@ -402,8 +402,8 @@
 		return COMSIG_ATOM_BLOCKS_PRESSURE
 
 	// have both since this is a newer mechanic and i want it to be a bit more obvious why for the time being
-	balloon_alert(source, "resisting pressure!")
-	to_chat(source, span_warning("You're holding onto the unrestricted latch, preventing pressure from pushing you away!"))
+	balloon_alert(source, "Resistência à pressão!")
+	to_chat(source, span_warning("Você está segurando o trinco irrestrito, impedindo que a pressão te afaste!"))
 	COOLDOWN_START(src, pressure_push_cooldown, 5 SECONDS)
 	return COMSIG_ATOM_BLOCKS_PRESSURE
 
@@ -492,10 +492,7 @@
 				playsound(loc, 'sound/effects/glass/glasshit.ogg', 90, TRUE)
 			else if(damage_amount)
 				//SKYRAT EDIT ADDITION - CREDITS TO WHITEDREAM(valtos)
-				playsound(src, pick('modular_skyrat/master_files/sound/effects/metalblock1.wav', 'modular_skyrat/master_files/sound/effects/metalblock2.wav', \
-									'modular_skyrat/master_files/sound/effects/metalblock3.wav', 'modular_skyrat/master_files/sound/effects/metalblock4.wav', \
-									'modular_skyrat/master_files/sound/effects/metalblock5.wav', 'modular_skyrat/master_files/sound/effects/metalblock6.wav', \
-									'modular_skyrat/master_files/sound/effects/metalblock7.wav', 'modular_skyrat/master_files/sound/effects/metalblock8.wav'), 50, TRUE)
+				playsound(src, pick('modular_skyrat/master_files/sound/effects/metalblock1.wav', 'modular_skyrat/master_files/sound/effects/metalblock2.wav', 									'modular_skyrat/master_files/sound/effects/metalblock3.wav', 'modular_skyrat/master_files/sound/effects/metalblock4.wav', 									'modular_skyrat/master_files/sound/effects/metalblock5.wav', 'modular_skyrat/master_files/sound/effects/metalblock6.wav', 									'modular_skyrat/master_files/sound/effects/metalblock7.wav', 'modular_skyrat/master_files/sound/effects/metalblock8.wav'), 50, TRUE)
 				//SKYRAT EDIT END
 			else
 				playsound(src, 'sound/items/weapons/tap.ogg', 50, TRUE)
@@ -656,7 +653,7 @@
 /obj/machinery/door/proc/crush()
 	for(var/turf/checked_turf in locs)
 		for(var/mob/living/future_pancake in checked_turf)
-			future_pancake.visible_message(span_warning("[src] closes on [future_pancake], crushing [future_pancake.p_them()]!"), span_userdanger("[src] closes on you and crushes you!"))
+			future_pancake.visible_message(span_warning("[src]Fecha.[future_pancake]Esmagando[future_pancake.p_them()]!"), span_userdanger("[src]Fecha com você e te esmaga!"))
 			var/sig_return = SEND_SIGNAL(future_pancake, COMSIG_LIVING_DOORCRUSHED, src)
 			future_pancake.add_splatter_floor(loc)
 			log_combat(src, future_pancake, "crushed")

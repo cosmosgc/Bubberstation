@@ -399,12 +399,12 @@
 	if (freon_pp > gas_stimulation_min)
 		breather.reagents.add_reagent(/datum/reagent/freon, 1)
 	if (prob(freon_pp))
-		to_chat(breather, span_alert("Your mouth feels like it's burning!"))
+		to_chat(breather, span_alert("Sua boca parece estar queimando!"))
 	if (freon_pp > 40)
 		breather.emote("gasp")
 		breather.adjust_fire_loss(15)
 		if (prob(freon_pp / 2))
-			to_chat(breather, span_alert("Your throat closes up!"))
+			to_chat(breather, span_alert("Sua garganta fecha!"))
 			breather.set_silence_if_lower(6 SECONDS)
 	else
 		breather.adjust_fire_loss(freon_pp / 4)
@@ -424,7 +424,7 @@
 	// Euphoria side-effect.
 	if(healium_pp > gas_stimulation_min)
 		if(prob(15))
-			to_chat(breather, span_alert("Your head starts spinning and your lungs burn!"))
+			to_chat(breather, span_alert("Sua cabeça começa a girar e seus pulmões queimam!"))
 			healium_euphoria = EUPHORIA_ACTIVE
 			breather.emote("gasp")
 	else
@@ -478,22 +478,22 @@
 			// At lower pp, give out a little warning
 			breather.clear_mood_event("smell")
 			if(prob(5))
-				to_chat(breather, span_notice("There is an unpleasant smell in the air."))
+				to_chat(breather, span_notice("Há um cheiro desagradável no ar."))
 		if(5 to 15)
 			//At somewhat higher pp, warning becomes more obvious
 			if(prob(15))
-				to_chat(breather, span_warning("You smell something horribly decayed inside this room."))
+				to_chat(breather, span_warning("Você cheira algo horrivelmente decaído dentro desta sala."))
 				breather.add_mood_event("smell", /datum/mood_event/disgust/bad_smell)
 		if(15 to 30)
 			//Small chance to vomit. By now, people have internals on anyway
 			if(prob(5))
-				to_chat(breather, span_warning("The stench of rotting carcasses is unbearable!"))
+				to_chat(breather, span_warning("O fedor de carcaças podres é insuportável!"))
 				breather.add_mood_event("smell", /datum/mood_event/disgust/nauseating_stench)
 				breather.vomit(VOMIT_CATEGORY_DEFAULT)
 		if(30 to INFINITY)
 			//Higher chance to vomit. Let the horror start
 			if(prob(15))
-				to_chat(breather, span_warning("The stench of rotting carcasses is unbearable!"))
+				to_chat(breather, span_warning("O fedor de carcaças podres é insuportável!"))
 				breather.add_mood_event("smell", /datum/mood_event/disgust/nauseating_stench)
 				breather.vomit(VOMIT_CATEGORY_DEFAULT)
 		else
@@ -558,7 +558,7 @@
 	if((prob(nitrium_pp) && (nitrium_pp > 15)))
 		// Nitrium side-effect.
 		breather.adjust_organ_loss(ORGAN_SLOT_LUNGS, nitrium_pp * 0.1)
-		to_chat(breather, span_notice("You feel a burning sensation in your chest"))
+		to_chat(breather, span_notice("Você sente uma sensação de queimação em seu peito"))
 	// Metabolize to reagents.
 	if (nitrium_pp > 5)
 		var/existing = breather.reagents.get_reagent_amount(/datum/reagent/nitrium_low_metabolization)
@@ -780,7 +780,7 @@
 			breath_effect_prob = 25
 		if(breath_temperature < cold_level_1_threshold)
 			if(prob(sqrt(breath_effect_prob) * 4))
-				to_chat(breather, span_warning("You feel [cold_message] in your [name]!"))
+				to_chat(breather, span_warning("Você sente[cold_message]em seu[name]!"))
 				if(prob(50))
 					breather.emote("shiver")
 			if(prob(breath_effect_prob))
@@ -806,7 +806,7 @@
 			heat_message_prob = 25
 		if(breath_temperature > heat_level_1_threshold)
 			if(prob(sqrt(heat_message_prob) * 4))
-				to_chat(breather, span_warning("You feel [hot_message] in your [name]!"))
+				to_chat(breather, span_warning("Você sente[hot_message]em seu[name]!"))
 
 	// The air you breathe out should match your body temperature
 	breath.temperature = breather.bodytemperature
@@ -857,7 +857,7 @@
 		if(do_i_cough)
 			owner.emote("cough")
 	if(organ_flags & ORGAN_FAILING && owner.stat == CONSCIOUS)
-		owner.visible_message(span_danger("[owner] grabs [owner.p_their()] throat, struggling for breath!"), span_userdanger("You suddenly feel like you can't breathe!"))
+		owner.visible_message(span_danger("[owner]Pega.[owner.p_their()]garganta, lutando pela respiração!"), span_userdanger("De repente você sente que não consegue respirar!"))
 		failed = TRUE
 
 /obj/item/organ/lungs/get_availability(datum/species/owner_species, mob/living/owner_mob)
@@ -866,17 +866,17 @@
 /obj/item/organ/lungs/feel_for_damage(self_aware)
 	if(organ_flags & ORGAN_FAILING)
 		if(self_aware)
-			return span_boldwarning("Your lungs hurt madly[HAS_TRAIT(owner, TRAIT_NOBREATH) ? "" : ", and you can't breathe"]!")
-		return span_boldwarning("It hurts madly[HAS_TRAIT(owner, TRAIT_NOBREATH) ? "" : ", and you can't breathe"]!")
+			return span_boldwarning("Seus pulmões doem loucamente.[HAS_TRAIT(owner, TRAIT_NOBREATH) ? "" : ", and you can't breathe"]!")
+		return span_boldwarning("Dói loucamente.[HAS_TRAIT(owner, TRAIT_NOBREATH) ? "" : ", and you can't breathe"]!")
 	if(damage < low_threshold)
 		return ""
 	if(damage < high_threshold)
 		if(self_aware)
-			return span_warning("Your lungs feel tight[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", and breathing is harder"].")
-		return span_warning("It feels tight[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", and breathing is harder"].")
+			return span_warning("Seus pulmões estão apertados.[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", and breathing is harder"].")
+		return span_warning("Parece apertado.[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", and breathing is harder"].")
 	if(self_aware)
-		return span_boldwarning("Your lungs feel extremely tight[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", and every breath is a struggle"].")
-	return span_boldwarning("It feels extremely tight[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", and every breath is a struggle"].")
+		return span_boldwarning("Seus pulmões estão muito apertados.[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", and every breath is a struggle"].")
+	return span_boldwarning("Parece extremamente apertado.[HAS_TRAIT(owner, TRAIT_NOBREATH) ?  "" : ", and every breath is a struggle"].")
 
 /obj/item/organ/lungs/get_status_appendix(advanced, add_tooltips)
 	var/initial_pressure_mult = initial(received_pressure_mult)
@@ -889,34 +889,29 @@
 	if (received_pressure_mult > initial_pressure_mult) // higher than usual
 		beginning_text = span_blue("<b>[beginning_text]</b>")
 		dilation_text = span_blue("[(received_pressure_mult * 100) - 100]%")
-		tooltip = "Subject's lungs are dilated and breathing more air than usual. \
-			Increases the effectiveness of healium and other gases."
+		tooltip = "Subject's lungs are dilated and breathing more air than usual. 			Increases the effectiveness of healium and other gases."
 
 	else
 		beginning_text = span_alert("<b>[beginning_text]</b>")
 		if (received_pressure_mult <= 0) // lethal
 			dilation_text = span_alert("<b>[received_pressure_mult * 100]%</b>")
-			tooltip = "Subject's lungs are completely shut. Subject is unable to breathe and requires emergency surgery. \
-				If asthmatic, perform asthmatic bypass surgery and adminster albuterol inhalant. \
-				Otherwise, replace lungs."
+			tooltip = "Subject's lungs are completely shut. Subject is unable to breathe and requires emergency surgery. 				If asthmatic, perform asthmatic bypass surgery and adminster albuterol inhalant. 				Otherwise, replace lungs."
 		else
 			dilation_text = span_alert("[received_pressure_mult * 100]%")
-			tooltip = "Subject's lungs are partially shut. \
-				If unable to breathe, administer a high-pressure internals tank or replace lungs. \
-				If asthmatic, inhaled albuterol or bypass surgery will likely help."
+			tooltip = "Subject's lungs are partially shut. 				If unable to breathe, administer a high-pressure internals tank or replace lungs. 				If asthmatic, inhaled albuterol or bypass surgery will likely help."
 
 	return beginning_text + conditional_tooltip(dilation_text, tooltip, add_tooltips)
 
 /// by default, returns the lungs' breath_noise var as a notice. called when stethoscope is used on chest, uses the return as a message for stethoscope user.
 /obj/item/organ/lungs/proc/hear_breath_noise(mob/living/hearer)
-	return span_notice("[owner.p_Their()] lungs emit [breath_noise].")
+	return span_notice("[owner.p_Their()]pulmões emitem[breath_noise].")
 
 #define SMOKER_ORGAN_HEALTH (STANDARD_ORGAN_THRESHOLD * 0.75)
 #define SMOKER_LUNG_HEALING (STANDARD_ORGAN_HEALING * 0.75)
 
 /obj/item/organ/lungs/plasmaman
 	name = "plasma filter"
-	desc = "A spongy rib-shaped mass for filtering plasma from the air."
+	desc = "Uma massa esponjosa em forma de costela para filtrar plasma do ar."
 	icon_state = "lungs-plasma"
 	organ_traits = list(TRAIT_NOHUNGER) // A fresh breakfast of plasma is a great start to any morning.
 	breath_noise = "a crackle, like crushed foam"
@@ -926,7 +921,7 @@
 
 /obj/item/organ/lungs/plasmaman/plasmaman_smoker
 	name = "smoker plasma filter"
-	desc = "A plasma filter that look discolored, a result from smoking a lot."
+	desc = "Um filtro de plasma que parece descolorado, resultado de fumar muito."
 	icon_state = "lungs_plasma_smoker"
 	breath_noise = "a wheezing crackle, like crushed foam"
 	maxHealth = SMOKER_ORGAN_HEALTH
@@ -934,7 +929,7 @@
 
 /obj/item/organ/lungs/slime
 	name = "slime vacuole"
-	desc = "A large organelle designed to store oxygen and other important gasses."
+	desc = "Uma grande organela projetada para armazenar oxigênio e outros gases importantes."
 	breath_noise = "a low burbling"
 	safe_plasma_max = 0 //We breathe this to gain POWER.
 
@@ -946,7 +941,7 @@
 
 /obj/item/organ/lungs/smoker_lungs
 	name = "smoker lungs"
-	desc = "A pair of lungs that look sickly, a result from smoking a lot."
+	desc = "Um par de pulmões que parecem doentes, resultado de fumar muito."
 	icon_state = "lungs_smoker"
 	breath_noise = "an unsteady, wheezing rhythm"
 	maxHealth = SMOKER_ORGAN_HEALTH
@@ -954,8 +949,8 @@
 
 /obj/item/organ/lungs/cybernetic
 	name = "basic cybernetic lungs"
-	desc = "A basic cybernetic version of the lungs found in traditional humanoid entities."
-	failing_desc = "seems to be broken."
+	desc = "Uma versão cibernética básica dos pulmões encontrados em entidades humanóides tradicionais."
+	failing_desc = "Parece estar quebrado."
 	icon_state = "lungs-c"
 	breath_noise = "a steady whirr"
 	organ_flags = ORGAN_ROBOTIC
@@ -974,7 +969,7 @@
 
 /obj/item/organ/lungs/cybernetic/tier2
 	name = "cybernetic lungs"
-	desc = "A cybernetic version of the lungs found in traditional humanoid entities. Allows for greater intakes of oxygen than organic lungs, requiring slightly less pressure."
+	desc = "Uma versão cibernética dos pulmões encontrada em entidades humanóides tradicionais. Permite uma maior ingestão de oxigênio do que pulmões orgânicos, exigindo um pouco menos de pressão."
 	icon_state = "lungs-c-u"
 	maxHealth = 1.5 * STANDARD_ORGAN_THRESHOLD
 	safe_oxygen_min = 13
@@ -982,7 +977,7 @@
 
 /obj/item/organ/lungs/cybernetic/tier3
 	name = "upgraded cybernetic lungs"
-	desc = "A more advanced version of the stock cybernetic lungs. Features the ability to filter out lower levels of plasma and carbon dioxide."
+	desc = "Uma versão mais avançada dos pulmões cibernéticos. Apresenta a capacidade de filtrar níveis mais baixos de plasma e dióxido de carbono."
 	icon_state = "lungs-c-u2"
 	safe_plasma_max = 20
 	safe_co2_max = 20
@@ -996,8 +991,7 @@
 
 /obj/item/organ/lungs/cybernetic/surplus
 	name = "surplus prosthetic lungs"
-	desc = "Two fragile, inflatable sacks of air that only barely mimic the function of human lungs. \
-		Offer no protection against EMPs."
+	desc = "Dois frágeis e infláveis sacos de ar que mal imitam a função dos pulmões humanos. Não oferecem proteção contra PEMs."
 	breath_noise = "a concerningly unstable scratchy whirr. You <b>shouldn't touch this</b> while it's running"
 	icon_state = "lungs-c-s"
 	maxHealth = 0.35 * STANDARD_ORGAN_THRESHOLD
@@ -1009,18 +1003,18 @@
 	AddElement(/datum/element/dangerous_organ_removal, /*surgical = */ TRUE)
 
 /obj/item/organ/lungs/cybernetic/surplus/hear_breath_noise(mob/living/hearer)
-	return span_danger("[owner.p_Their()] lungs emit [breath_noise].")
+	return span_danger("[owner.p_Their()]pulmões emitem[breath_noise].")
 
 /obj/item/organ/lungs/ghost
 	name = "ghost lungs"
-	desc = "No one knows what this is even supposed to breathe."
+	desc = "Ninguém sabe o que isso deveria respirar."
 	icon_state = "lungs-ghost"
 	movement_type = PHASING
 	organ_flags = parent_type::organ_flags | ORGAN_GHOST
 
 /obj/item/organ/lungs/lavaland
 	name = "blackened frilled lungs" // blackened from necropolis exposure
-	desc = "Exposure to the necropolis has mutated these lungs to breathe the air of Indecipheres, the lava-covered moon."
+	desc = "A exposição à necrópole mutou estes pulmões para respirar o ar de Indecipheres, a lua coberta de lava."
 	icon_state = "lungs-ashwalker"
 	breath_noise = "a throbbing smoke-like hiss"
 
@@ -1118,7 +1112,7 @@
 
 /obj/item/organ/lungs/ethereal
 	name = "aeration reticulum"
-	desc = "These exotic lungs seem crunchier than most."
+	desc = "Esses pulmões exóticos parecem mais crus que a maioria."
 	icon_state = "lungs_ethereal"
 	breath_noise = "a low fluorescent hum"
 	heat_level_1_threshold = FIRE_MINIMUM_TEMPERATURE_TO_SPREAD // 150C or 433k, in line with ethereal max safe body temperature
@@ -1127,7 +1121,7 @@
 
 /obj/item/organ/lungs/ethereal/ethereal_smoker
 	name = "smoker aeration reticulum"
-	desc = "A pair of exotic lungs that look pale and sickly, a result from smoking a lot."
+	desc = "Um par de pulmões exóticos que parecem pálidos e doentes, resultado de fumar muito."
 	icon_state = "lungs_ethereal_smoker"
 	breath_noise = "a spotty hum, like a broken lightbulb"
 	maxHealth = SMOKER_ORGAN_HEALTH
@@ -1148,14 +1142,14 @@
 
 /obj/item/organ/lungs/pod
 	name = "pod vacuole"
-	desc = "A large organelle designed to store oxygen and other important gasses."
+	desc = "Uma grande organela projetada para armazenar oxigênio e outros gases importantes."
 	breath_noise = "a humid hiss"
 	foodtype_flags = PODPERSON_ORGAN_FOODTYPES
 	color = COLOR_LIME
 
 /obj/item/organ/lungs/evolved
 	name = "evolved lungs"
-	desc = "A pair of lungs, with an organic filtering system and a stronger musculature."
+	desc = "Um par de pulmões, com um sistema de filtragem orgânica e uma musculatura mais forte."
 
 	icon_state = "lungs-evolved"
 

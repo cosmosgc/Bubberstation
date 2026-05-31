@@ -90,7 +90,7 @@ export const SeedExtractor = (props) => {
               <Table.Cell collapsing p={1}>
                 <Tooltip
                   content={
-                    'Potency: Determines product mass, reagent volume and strength of effects.'
+                    'Determina a massa do produto, volume de reagente e força dos efeitos.'
                   }
                 >
                   <Box
@@ -104,7 +104,7 @@ export const SeedExtractor = (props) => {
               <Table.Cell collapsing p={1}>
                 <Tooltip
                   content={
-                    'Yield: The number of products gathered in a single harvest.'
+                    'O número de produtos coletados em uma única colheita.'
                   }
                 >
                   <Box
@@ -118,7 +118,7 @@ export const SeedExtractor = (props) => {
               <Table.Cell collapsing p={1}>
                 <Tooltip
                   content={
-                    'Instability: The likelihood of the plant to randomize stats or mutate. Affects quality of resulting food & drinks.'
+                    'A probabilidade da planta randomizar estatísticas ou mutar. Afeta a qualidade dos alimentos e bebidas resultantes.'
                   }
                 >
                   <Box
@@ -132,7 +132,7 @@ export const SeedExtractor = (props) => {
               <Table.Cell collapsing p={1}>
                 <Tooltip
                   content={
-                    'Endurance: The health pool of the plant that delays death. Improves quality of resulting food & drinks.'
+                    'O pool de saúde da planta que atrasa a morte. Melhora a qualidade dos alimentos e bebidas resultantes.'
                   }
                 >
                   <Box
@@ -181,7 +181,7 @@ export const SeedExtractor = (props) => {
               </Table.Cell>
               <Table.Cell collapsing p={1} textAlign="right">
                 {sortField !== 'name' && (
-                  <Tooltip content="Reset sorting">
+                  <Tooltip content="Reset classificação">
                     <Button
                       color="transparent"
                       icon="refresh"
@@ -192,7 +192,7 @@ export const SeedExtractor = (props) => {
                 <Box align="right" />
               </Table.Cell>
               <Table.Cell collapsing p={1} textAlign="right">
-                <Tooltip content={action ? 'Scrap seeds' : 'Take seeds'}>
+                <Tooltip content={action ? 'Sementes de sucata' : 'Leve as sementes.'}>
                   <Button
                     icon={action ? 'trash' : 'eject'}
                     color={action ? 'bad' : ''}
@@ -205,7 +205,7 @@ export const SeedExtractor = (props) => {
               seeds.map((item) => (
                 <Table.Row
                   key={item.key}
-                  style={{ borderTop: '2px solid #222' }}
+                  style={{ borderTop: '2px sólido #222' }}
                 >
                   <Table.Cell collapsing>
                     <Box
@@ -344,7 +344,7 @@ export const Level = (props) => {
     >
       <span
         style={{
-          textShadow: '1px 1px 0 black',
+          textShadow: '1px 1px 0 preto',
         }}
       >
         {props.value}
@@ -392,7 +392,7 @@ export const ReagentTooltip = (props) => {
         </Table.Row>
       ))}
       <Table.Row>
-        <Table.Cell colSpan={3} style={{ borderTop: '1px dotted gray' }} />
+        <Table.Cell colSpan={3} style={{ borderTop: '1 px pontilhado cinza' }} />
       </Table.Row>
       <Table.Row header>
         <Table.Cell pt={1.5}>Total</Table.Cell>
@@ -413,7 +413,7 @@ export const ReagentTooltip = (props) => {
       {!!props.grind_results.length && (
         <>
           <Table.Row>
-            <Table.Cell colSpan={3} style={{ borderTop: '1px dotted gray' }} />
+            <Table.Cell colSpan={3} style={{ borderTop: '1 px pontilhado cinza' }} />
           </Table.Row>
           <Table.Row header>
             <Table.Cell colSpan={3} pt={1}>

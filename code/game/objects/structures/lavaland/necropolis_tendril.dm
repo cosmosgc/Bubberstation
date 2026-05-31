@@ -1,7 +1,7 @@
 //Necropolis Tendrils, which spawn lavaland monsters and break into a chasm when killed
 /obj/structure/spawner/lavaland
 	name = "necropolis tendril"
-	desc = "A vile tendril of corruption, originating deep underground. Terrible monsters are pouring out of it."
+	desc = "Um vil tendil de corrupção, originando-se no subsolo. Monstros terríveis estão saindo disso."
 
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	icon_state = "tendril"
@@ -47,8 +47,8 @@ GLOBAL_LIST_INIT(tendrils, list())
 
 /obj/structure/spawner/lavaland/examine(mob/user)
 	var/list/examine_messages = ..()
-	examine_messages += span_notice("Once this thing gets hurts enough, it triggers a violent final retaliation.")
-	examine_messages += span_notice("You'll only have a few moments to run up, grab some loot with an open hand, and get out with it.")
+	examine_messages += span_notice("Uma vez que isso dói o suficiente, isso desencadeia uma retaliação final violenta.")
+	examine_messages += span_notice("Você só terá alguns minutos para correr para cima, pegar algum saque com uma mão aberta, e sair com ele.")
 	return examine_messages
 
 /obj/structure/spawner/lavaland/Destroy()
@@ -74,7 +74,7 @@ GLOBAL_LIST_INIT(tendrils, list())
 
 /obj/effect/collapse
 	name = "collapsing necropolis tendril"
-	desc = "Get your loot and get clear!"
+	desc = "Pegem seu dinheiro e saiam!"
 	layer = TABLE_LAYER
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	icon_state = "tendril"
@@ -88,7 +88,7 @@ GLOBAL_LIST_INIT(tendrils, list())
 /obj/effect/collapse/Initialize(mapload)
 	. = ..()
 	emitted_light = new(loc)
-	visible_message(span_bolddanger("The tendril writhes in fury as the earth around it begins to crack and break apart! Get back!"))
+	visible_message(span_bolddanger("Os tentáculos se contorcem em fúria enquanto a terra ao redor começa a rachar e quebrar! Para trás!"))
 	balloon_alert_to_viewers("interact to grab loot before collapse!", vision_distance = 7)
 	playsound(loc,'sound/effects/tendril_destroyed.ogg', 200, FALSE, 50, TRUE, TRUE)
 	addtimer(CALLBACK(src, PROC_REF(collapse)), 5 SECONDS)
@@ -97,17 +97,17 @@ GLOBAL_LIST_INIT(tendrils, list())
 	var/list/examine_messages = ..()
 	if(isliving(user))
 		if(has_collected(user))
-			examine_messages += span_boldnotice("You've grabbed what you can, now get out!")
+			examine_messages += span_boldnotice("Você pegou o que podia, agora saia!")
 		else
-			examine_messages += span_boldnotice("You might have some time to grab some goodies with an open hand before it collapses!")
+			examine_messages += span_boldnotice("Você pode ter algum tempo para pegar algumas guloseimas com uma mão aberta antes que ela caia!")
 	return examine_messages
 
 /obj/effect/collapse/attack_hand(mob/living/collector, list/modifiers)
 	. = ..()
 	if(has_collected(collector))
-		to_chat(collector, span_danger("You've already gotten some loot, just get out of there with it!"))
+		to_chat(collector, span_danger("Você já conseguiu algum saque, saia daí com isso!"))
 		return
-	visible_message(span_warning("Something falls free of the tendril!"))
+	visible_message(span_warning("Algo cai livre do tentáculo!"))
 	var/obj/structure/closet/crate/necropolis/tendril/loot = new /obj/structure/closet/crate/necropolis/tendril(loc)
 	collector.start_pulling(loot)
 	collected += WEAKREF(collector)
@@ -132,7 +132,7 @@ GLOBAL_LIST_INIT(tendrils, list())
 	for(var/mob/M in range(7,src))
 		shake_camera(M, 15, 1)
 	playsound(get_turf(src),'sound/effects/explosion/explosionfar.ogg', 200, TRUE)
-	visible_message(span_bolddanger("The tendril falls inward, the ground around it widening into a yawning chasm!"))
+	visible_message(span_bolddanger("O tentáculo cai para dentro, o chão ao seu redor se expandindo em um abismo bocejante!"))
 	for(var/turf/T in RANGE_TURFS(2,src))
 		if(HAS_TRAIT(T, TRAIT_NO_TERRAFORM))
 			continue

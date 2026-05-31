@@ -5,7 +5,7 @@
 ///Pad for the Civilian Bounty Control.
 /obj/machinery/piratepad/civilian
 	name = "civilian bounty pad"
-	desc = "A machine designed to send civilian bounty targets to centcom."
+	desc = "Uma máquina projetada para enviar alvos civis para o Centcom."
 	layer = TABLE_LAYER
 	resistance_flags = FIRE_PROOF
 	circuit = /obj/item/circuitboard/machine/bountypad
@@ -28,7 +28,7 @@
 ///Computer for assigning new civilian bounties, and sending bounties for collection.
 /obj/machinery/computer/piratepad_control/civilian
 	name = "civilian bounty control terminal"
-	desc = "A console for assigning civilian bounties to inserted ID cards, and for controlling the bounty pad for export."
+	desc = "Um console para atribuir recompensas civis a cartões de identificação inseridos, e para controlar o bloco de recompensas para exportação."
 	status_report = "Ready for delivery."
 	icon_screen = "civ_bounty"
 	icon_keyboard = "id_key"
@@ -50,7 +50,7 @@
 
 /obj/machinery/computer/piratepad_control/multitool_act(mob/living/user, obj/item/multitool/I)
 	if(istype(I) && istype(I.buffer,/obj/machinery/piratepad/civilian))
-		to_chat(user, span_notice("You link [src] with [I.buffer] in [I] buffer."))
+		to_chat(user, span_notice("Você liga.[src]com[I.buffer]em[I]Tampão."))
 		pad_ref = WEAKREF(I.buffer)
 		return TRUE
 
@@ -167,13 +167,12 @@
 			var/obj/item/bounty_cube/reward = new /obj/item/bounty_cube(drop_location())
 			reward.set_up(stack_item, inserted_scan_id)
 	if(active_count >= 1)
-		status_report += "x[active_count] Bount[active_count > 1 ? "ies" : "y"] completed! \
-			Please give your bounty cube[active_count > 1 ? "s" : ""] to cargo for your automated payout shortly. "
+		status_report += "x[active_count] Bount[active_count > 1 ? "ies" : "y"] completed! 			Please give your bounty cube[active_count > 1 ? "s" : ""] to cargo for your automated payout shortly. "
 
 	if(check_global)
 		update_global_bounty_list(round(CIV_BOUNTY_BASELINE + (SSeconomy.civ_bounty_tracker / 3)), FALSE)
 
-	pad.visible_message(span_notice("[pad] activates!"))
+	pad.visible_message(span_notice("[pad]Ativar!"))
 	pad.finish_sending()
 	playsound(loc, 'sound/machines/synth/synth_yes.ogg', 30 , TRUE)
 	sending = FALSE
@@ -186,7 +185,7 @@
 		return FALSE
 	if((id_account.civilian_bounty || id_account.bounties) && !COOLDOWN_FINISHED(id_account, bounty_timer))
 		var/time_left = DisplayTimeText(COOLDOWN_TIMELEFT(id_account, bounty_timer), round_seconds_to = 1)
-		balloon_alert(user, "try again in [time_left]!")
+		balloon_alert(user, "Tente novamente.[time_left]!")
 		return FALSE
 	if(!inserted_scan_id.trim)
 		say("Requesting ID card has no job assignment registered!")
@@ -314,8 +313,8 @@
 		else
 			id_eject(user, target)
 
-	user.visible_message(span_notice("[user] inserts \the [card_to_insert] into \the [src]."),
-						span_notice("You insert \the [card_to_insert] into \the [src]."))
+	user.visible_message(span_notice("[user]Inserções\the [card_to_insert]em\the [src]."),
+						span_notice("Você insere\the [card_to_insert]em\the [src]."))
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 	ui_interact(user)
 	return TRUE
@@ -323,12 +322,11 @@
 ///Removes A stored ID card.
 /obj/machinery/computer/piratepad_control/civilian/proc/id_eject(mob/user, obj/item/target)
 	if(!target)
-		to_chat(user, span_warning("That slot is empty!"))
+		to_chat(user, span_warning("Essa vaga está vazia!"))
 		return FALSE
 	else
 		try_put_in_hand(target, user)
-		user.visible_message(span_notice("[user] gets \the [target] from \the [src]."), \
-							span_notice("You get \the [target] from \the [src]."))
+		user.visible_message(span_notice("[user]fica.\the [target]De\the [src]."), 							span_notice("Você consegue.\the [target]De\the [src]."))
 		playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 		inserted_scan_id = null
 		return TRUE
@@ -365,8 +363,7 @@
 
 		if(enable_high_priority && prob(HIGH_PRIORITY_BOUNTY_ODDS))
 			new_bounty.high_priority = TRUE
-			new_bounty.description += "</br>\
-				This bounty is marked as <b>high priority</b>, and will reward <b>1.5x</b> the normal payout!"
+			new_bounty.description += "</br>				This bounty is marked as <b>high priority</b>, and will reward <b>1.5x</b> the normal payout!"
 	return jobs_picked
 
 /// Performs several global bounty updates in a row on a callback loop, adding one each time.
@@ -391,7 +388,7 @@
  */
 /obj/machinery/computer/piratepad_control/civilian/proc/print_sheet(mob/living/user)
 	if(!COOLDOWN_FINISHED(src, sheet_printer_cooldown))
-		balloon_alert(user, "printer spooling!")
+		balloon_alert(user, "Rolagem de impressora!")
 		return FALSE
 
 	var/obj/item/paper/paper = new(loc)
@@ -419,13 +416,13 @@
 ///Beacon to launch a new bounty setup when activated.
 /obj/item/civ_bounty_beacon
 	name = "civilian bounty beacon"
-	desc = "N.T. approved civilian bounty beacon, toss it down and you will have a bounty pad and computer delivered to you."
+	desc = "N.T. aprovou o sinal de recompensa civil, jogue-o para baixo e você terá um bloco de recompensa e computador entregue a você."
 	icon = 'icons/obj/machines/floor.dmi'
 	icon_state = "floor_beacon"
 	var/uses = 2
 
 /obj/item/civ_bounty_beacon/attack_self()
-	loc.visible_message(span_warning("\The [src] begins to beep loudly!"))
+	loc.visible_message(span_warning("\The [src]Começa a tocar alto!"))
 	addtimer(CALLBACK(src, PROC_REF(launch_payload)), 1 SECONDS)
 
 /obj/item/civ_bounty_beacon/proc/launch_payload()

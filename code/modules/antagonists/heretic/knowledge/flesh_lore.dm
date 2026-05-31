@@ -51,10 +51,8 @@
 
 /datum/heretic_knowledge/limited_amount/starting/base_flesh
 	name = "Principle of Hunger"
-	desc = "Opens up the Path of Flesh to you. \
-		Allows you to transmute a knife and a pool of blood into a Bloody Blade. \
-		You can create upto twenty at a time." //SKYRAT EDIT three to twenty
-	gain_text = "Hundreds of us starved, but not me... I found strength in my greed."
+	desc = "Abre o Caminho da Carne para você. Permite que transmute uma faca e uma poça de sangue em uma Lâmina Sangrenta. Você pode criar até vinte de cada vez." //SKYRAT EDIT three to twenty
+	gain_text = "Centenas de nós morreram de fome, mas eu não... Encontrei força na minha ganância."
 	required_atoms = list(
 		/obj/item/knife = 1,
 		/obj/effect/decal/cleanable/blood = 1,
@@ -72,7 +70,7 @@
 	summon_objective.owner = our_heretic.owner
 	our_heretic.objectives += summon_objective
 
-	to_chat(user, span_hierophant("Undertaking the Path of Flesh, you are given another objective."))
+	to_chat(user, span_hierophant("Comprometendo o Caminho da Carne, você tem outro objetivo."))
 	our_heretic.owner.announce_objectives()
 
 /datum/heretic_knowledge/limited_amount/starting/base_flesh/on_mansus_grasp(mob/living/source, mob/living/target)
@@ -82,22 +80,22 @@
 		return
 
 	if(LAZYLEN(created_items) >= limit)
-		target.balloon_alert(source, "at ghoul limit!")
+		target.balloon_alert(source, "no limite de Ghoul!")
 		return COMPONENT_BLOCK_HAND_USE
 
 	if(HAS_TRAIT(target, TRAIT_HUSK))
-		target.balloon_alert(source, "husked!")
+		target.balloon_alert(source, "Descascado!")
 		return COMPONENT_BLOCK_HAND_USE
 
 	if(!IS_VALID_GHOUL_MOB(target))
-		target.balloon_alert(source, "invalid body!")
+		target.balloon_alert(source, "Corpo inválido!")
 		return COMPONENT_BLOCK_HAND_USE
 
 	target.grab_ghost()
 
 	// The grab failed, so they're mindless or playerless. We can't continue
 	if(!target.mind || !target.client)
-		target.balloon_alert(source, "no soul!")
+		target.balloon_alert(source, "Nenhuma alma!")
 		return COMPONENT_BLOCK_HAND_USE
 
 	make_ghoul(source, target)
@@ -129,11 +127,8 @@
 /datum/heretic_knowledge/limited_amount/flesh_ghoul
 	name = "Imperfect Ritual"
 	// BUBBER CHANGE BELOW - GHOUL MAXHP
-	desc = "Allows you to transmute a corpse and a poppy to create a Voiceless Dead. \
-		The corpse does not need to have a soul. \
-		Voiceless Dead are mute ghouls and have 100 health, but can use Bloody Blades effectively. \
-		You can only create two at a time."
-	gain_text = "I found notes of a dark ritual, unfinished... yet still, I pushed forward."
+	desc = "Permite que transmute um cadáver e uma papoula para criar um morto sem voz. O cadáver não precisa ter alma. Mortos sem voz são fantasmas mudos e têm 100 de saúde, mas podem usar Lâminas Sangrentas de forma eficaz. Você só pode criar dois de cada vez."
+	gain_text = "Achei notas de um ritual obscuro, inacabado... mas ainda assim, eu avancei."
 	required_atoms = list(
 		/mob/living/carbon/human = 1,
 		/obj/item/food/grown/poppy = 1,
@@ -152,7 +147,7 @@
 		if(body.stat != DEAD)
 			continue
 		if(!IS_VALID_GHOUL_MOB(body) || HAS_TRAIT(body, TRAIT_HUSK))
-			to_chat(user, span_hierophant_warning("[body] is not in a valid state to be made into a ghoul."))
+			to_chat(user, span_hierophant_warning("[body]Não está em um estado válido para ser transformado em um fantasma."))
 			continue
 
 		// We'll select any valid bodies here. If they're clientless, we'll give them a new one.
@@ -173,9 +168,9 @@
 
 	if(!soon_to_be_ghoul.mind || !soon_to_be_ghoul.client)
 		message_admins("[ADMIN_LOOKUPFLW(user)] is creating a voiceless dead of a body with no player.")
-		var/mob/chosen_one = SSpolling.poll_ghosts_for_target("Do you want to play as [span_danger(soon_to_be_ghoul.real_name)], a [span_notice("voiceless dead")]?", check_jobban = ROLE_HERETIC, role = ROLE_HERETIC, poll_time = 5 SECONDS, checked_target = soon_to_be_ghoul, alert_pic = mutable_appearance('icons/mob/human/human.dmi', "husk"), jump_target = soon_to_be_ghoul, role_name_text = "voiceless dead")
+		var/mob/chosen_one = SSpolling.poll_ghosts_for_target("Do you want to play as [span_danger(soon_to_be_ghoul.real_name)], a [span_notice("voiceless dead")]?", check_jobban = ROLE_HERETIC, role = ROLE_HERETIC, poll_time = 5 SECONDS, checked_target = soon_to_be_ghoul, alert_pic = mutable_appearance('icons/mob/human/human.dmi', "husk"), jump_target = soon_to_be_ghoul, role_name_text = "Morto sem voz")
 		if(isnull(chosen_one))
-			loc.balloon_alert(user, "ritual failed, no ghosts!")
+			loc.balloon_alert(user, "O ritual falhou, sem fantasmas!")
 			return FALSE
 		message_admins("[key_name_admin(chosen_one)] has taken control of ([key_name_admin(soon_to_be_ghoul)]) to replace an AFK player.")
 		soon_to_be_ghoul.ghostize(FALSE)
@@ -213,21 +208,15 @@
 
 /datum/heretic_knowledge/spell/flesh_surgery
 	name = "Knitting of Flesh"
-	desc = "Grants you the spell Knit Flesh. This spell allows you to remove organs from victims \
-		without requiring a lengthy surgery. This process is much longer if the target is not dead. \
-		This spell also allows you to heal your minions and summons, or restore failing organs to acceptable status."
-	gain_text = "But they were not out of my reach for long. With every step, the screams grew, until at last \
-		I learned that they could be silenced."
+	desc = "Concede-lhe o feitiço Tricô Carne. Este feitiço permite remover órgãos das vítimas sem precisar de uma cirurgia longa. Este processo é muito mais longo se o alvo não estiver morto. Este feitiço também permite que você cure seus servos e convoque, ou restaure órgãos que falharam para um status aceitável."
+	gain_text = "Mas não ficaram fora do meu alcance por muito tempo. A cada passo, os gritos cresciam, até que finalmente aprendi que podiam ser silenciados."
 	action_to_add = /datum/action/cooldown/spell/touch/flesh_surgery
 	cost = 2
 	drafting_tier = 5
 
 /datum/heretic_knowledge/armor/flesh
-	desc = "Allows you to transmute a table (or a suit), a mask and a pool of blood to create a writhing embrace. \
-		It grants you the ability to detect the health condition of other living (and non-living) and an aura that slowly heals your summons. \
-		Acts as a focus while hooded."
-	gain_text = "I tugged these wretched, slothing things about me, like one might a warm blanket. \
-				With eyes-not-mine, they will witness. With teeth-not-mine, they will clench. With limbs-not-mine, they will break."
+	desc = "Permite transmutar uma mesa (ou um terno), uma máscara e uma poça de sangue para criar um abraço retorcido. Dá-lhe a capacidade de detectar a condição de saúde de outros vivos (e não vivos) e uma aura que lentamente cura sua convocação. Atua como foco enquanto encapuza."
+	gain_text = "Eu puxei essas miseráveis coisas sobre mim, como um cobertor quente. Com olhos não meus, eles vão testemunhar. Com dentes não meus, eles vão apertar. Com membros, não meus, eles vão quebrar."
 	result_atoms = list(/obj/item/clothing/suit/hooded/cultrobes/eldritch/flesh)
 	research_tree_icon_state = "flesh_armor"
 	required_atoms = list(
@@ -238,11 +227,8 @@
 
 /datum/heretic_knowledge/summon/raw_prophet
 	name = "Raw Ritual"
-	desc = "Allows you to transmute a pair of eyes, a left arm, and a pool of blood to create a Raw Prophet. \
-		Raw Prophets have a greatly increased sight range and x-ray vision, as well as a long range jaunt and \
-		the ability to link minds to communicate with ease, but are very fragile and weak in combat."
-	gain_text = "I could not continue alone. I was able to summon The Uncanny Man to help me see more. \
-		The screams... once constant, now silenced by their wretched appearance. Nothing was out of reach."
+	desc = "Permite transmutar um par de olhos, um braço esquerdo, e uma poça de sangue para criar um Profeta Raw. Profetas Raw têm um alcance de visão muito aumentado e visão de raio-x, bem como um passeio de longa distância e a capacidade de ligar mentes para se comunicar com facilidade, mas são muito frágeis e fracos em combate."
+	gain_text = "Eu não podia continuar sozinha. Fui capaz de convocar o Homem Incrível para me ajudar a ver mais. Os gritos... uma vez constantes, agora silenciados por sua aparência miserável. Nada estava fora de alcance."
 	required_atoms = list(
 		/obj/item/organ/eyes = 1,
 		/obj/effect/decal/cleanable/blood = 1,
@@ -255,9 +241,8 @@
 
 /datum/heretic_knowledge/blade_upgrade/flesh
 	name = "Bleeding Steel"
-	desc = "Your Bloody Blade now causes enemies to bleed heavily on attack."
-	gain_text = "The Uncanny Man was not alone. They led me to the Marshal. \
-		I finally began to understand. And then, blood rained from the heavens."
+	desc = "Seu maldito. Blade agora faz inimigos sangrarem muito no ataque."
+	gain_text = "O homem estranho não estava sozinho. Eles me levaram ao Marechal. Finalmente comecei a entender. E então, o sangue chovia dos céus."
 	research_tree_icon_path = 'icons/ui_icons/antags/heretic/knowledge.dmi'
 	research_tree_icon_state = "blade_upgrade_flesh"
 	///What type of wound do we apply on hit
@@ -274,10 +259,8 @@
 
 /datum/heretic_knowledge/summon/stalker
 	name = "Lonely Ritual"
-	desc = "Allows you to transmute a tail of any kind, a stomach, a tongue, a pen and a piece of paper to create a Stalker. \
-		Stalkers can jaunt, release EMPs, shapeshift into animals or automatons, and are strong in combat."
-	gain_text = "I was able to combine my greed and desires to summon an eldritch beast I had never seen before. \
-		An ever shapeshifting mass of flesh, it knew well my goals. The Marshal approved."
+	desc = "Permite transmutar uma cauda de qualquer tipo, um estômago, uma língua, uma caneta e um pedaço de papel para criar um Stalker. Perseguidores podem correr, liberar PEMs, transformar em animais ou autômatos, e são fortes em combate."
+	gain_text = "Eu fui capaz de combinar minha ganância e desejos de invocar uma besta eldritch que eu nunca tinha visto antes. Uma massa de carne que mudava de forma, conhecia bem meus objetivos. O delegado aprovou."
 
 	required_atoms = list(
 		/obj/item/organ/tail = 1,
@@ -294,20 +277,11 @@
 
 /datum/heretic_knowledge/ultimate/flesh_final
 	name = "Priest's Final Hymn"
-	desc = "The ascension ritual of the Path of Flesh. \
-		Bring 4 corpses to a transmutation rune to complete the ritual. \
-		When completed, you gain the ability to shed your human form \
-		and become the Lord of the Night, a supremely powerful creature. \
-		Just the act of transforming causes nearby heathens great fear and trauma. \
-		While in the Lord of the Night form, you can consume arms to heal and regain segments. \
-		Additionally, you can summon three times as many Ghouls and Voiceless Dead, \
-		and can create unlimited blades to arm them all."
-	gain_text = "With the Marshal's knowledge, my power had peaked. The throne was open to claim. \
-		Men of this world, hear me, for the time has come! The Marshal guides my army! \
-		Reality will bend to THE LORD OF THE NIGHT or be unraveled! WITNESS MY ASCENSION!"
+	desc = "O ritual de ascensão do Caminho da Carne. Traga 4 corpos para uma runa de transmutação para completar o ritual. Quando concluído, você ganha a habilidade de perder sua forma humana e se tornar o Senhor da Noite, uma criatura extremamente poderosa. Apenas o ato de transformar causa aos pagãos próximos grande medo e trauma. Enquanto na forma do Senhor da Noite, você pode consumir braços para curar e recuperar segmentos. Além disso, você pode invocar três vezes mais Ghouls e Voz Sem Morto, e pode criar lâminas ilimitadas para armar todos eles."
+	gain_text = "Com o conhecimento do marechal, meu poder atingiu o pico. O trono estava aberto para reivindicar. Homens deste mundo, ouçam-me, pois chegou a hora! O marechal guia meu exército! A realidade se curvará ao Senhor da noite ou será desvendada! Testemunhe minha ascensão!"
 	required_atoms = list(/mob/living/carbon/human = 4)
 	ascension_achievement = /datum/award/achievement/misc/flesh_ascension
-	announcement_text = "%SPOOKY% Ever coiling vortex. Reality unfolded. ARMS OUTREACHED, THE LORD OF THE NIGHT, %NAME% has ascended! Fear the ever twisting hand! %SPOOKY%"
+	announcement_text = "Sempre enrolando vórtice. Realidade desdobrada. O Senhor da noite subiu! Medo da mão sempre torcendo! SPOOKY"
 	announcement_sound = 'sound/music/antag/heretic/ascend_flesh.ogg'
 
 /datum/heretic_knowledge/ultimate/flesh_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)

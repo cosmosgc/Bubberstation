@@ -1,6 +1,6 @@
 /datum/mafia_role/traitor
 	name = "Traitor"
-	desc = "You're a solo traitor. You are immune to night kills, can kill every night and you win by outnumbering everyone else."
+	desc = "Você é um traidor solo. Você é imune a mortes noturnas, pode matar todas as noites e você ganha superando todos os outros."
 	win_condition = "kill everyone."
 	team = MAFIA_TEAM_SOLO
 	role_type = NEUTRAL_KILL
@@ -21,12 +21,12 @@
 	SIGNAL_HANDLER
 
 	if(game.phase == MAFIA_PHASE_NIGHT && !lynch)
-		to_chat(body,span_userdanger("You were attacked, but they'll have to try harder than that to put you down."))
+		to_chat(body,span_userdanger("Você foi atacado, mas terão que se esforçar mais para te derrubar."))
 		return MAFIA_PREVENT_KILL
 
 /datum/mafia_role/nightmare
 	name = "Nightmare"
-	desc = "You're a solo monster that cannot be detected by detective roles. You can flicker lights of another room each night, becoming immune to attacks from those roles. You can instead decide to hunt, killing everyone in a flickering room. Kill everyone to win."
+	desc = "Você é um monstro solitário que não pode ser detectado por papéis de detetive. Você pode piscar luzes de outra sala toda noite, tornando-se imune a ataques desses papéis. Em vez disso, você pode decidir caçar, matando todos em uma sala cintilante. Mate todos para ganhar."
 	win_condition = "kill everyone."
 	revealed_outfit = /datum/outfit/mafia/nightmare
 	role_flags = ROLE_UNDETECTABLE | ROLE_CAN_KILL

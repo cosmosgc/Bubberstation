@@ -1,6 +1,6 @@
 /obj/machinery/recharge_station
 	name = "recharging station"
-	desc = "This device recharges energy-dependent lifeforms, like cyborgs, ethereals, and MODsuit users."
+	desc = "Este dispositivo recarrega formas de vida dependentes de energia, como ciborgues, etéreas e usuários de MODsuit."
 	icon = 'icons/obj/machines/borg_charger.dmi'
 	icon_state = "borgcharger0"
 	base_icon_state = "borgcharger"
@@ -24,10 +24,7 @@
 	. = ..()
 
 	materials = new (
-		src, \
-		mapload, \
-		mat_container_flags = MATCONTAINER_NO_INSERT, \
-	)
+		src, 		mapload, 		mat_container_flags = MATCONTAINER_NO_INSERT, 	)
 	charge_cell = CALLBACK(src, PROC_REF(charge_target_cell))
 
 	update_appearance()
@@ -85,11 +82,11 @@
 /obj/machinery/recharge_station/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Recharging: <b>[display_power(recharge_speed, convert = FALSE)]</b>.")
+		. += span_notice("A exibição de status diz: recarga:<b>[display_power(recharge_speed, convert = FALSE)]</b>.")
 		if(materials.silo)
-			. += span_notice("The ore silo link indicator is lit, and cyborg restocking can be toggled by <b>Right-Clicking</b> [src].")
+			. += span_notice("O indicador de ligação de silo de minério está aceso, e o repovoamento de cyborg pode ser alternado por<b>Clicando direto</b> [src].")
 		if(repairs)
-			. += span_notice("[src] has been upgraded to support automatic repairs.")
+			. += span_notice("[src]Foi atualizado para suportar reparos automáticos.")
 
 /obj/machinery/recharge_station/on_set_is_operational(old_value)
 	if(old_value) //Turned off

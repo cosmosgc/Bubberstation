@@ -1,13 +1,13 @@
 /obj/item/organ/cyberimp/arm/toolkit/power_cord
 	name = "charging implant"
-	desc = "An internal power cord. Useful if you run on elecricity. Not so much otherwise."
+	desc = "Um cabo interno. Útil se você correr com eleciedade. Não tanto assim."
 	items_to_create = list(/obj/item/synth_powercord)
 	zone = BODY_ZONE_L_ARM
 	slot = ORGAN_SLOT_LEFT_ARM_AUG
 
 /obj/item/synth_powercord
 	name = "power cord"
-	desc = "An internal power cord. Useful if you run on electricity. Not so much otherwise."
+	desc = "Um cabo interno. Útil se você usar eletricidade. Não tanto assim."
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "wire1"
 	///Object basetypes which the powercord is allowed to connect to.
@@ -43,20 +43,20 @@
 
 	var/obj/item/organ/stomach/synth/synth_cell = user.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(QDELETED(synth_cell) || !istype(synth_cell))
-		to_chat(user, span_warning("You plug into [target], but nothing happens! It seems you don't have an internal cell to charge."))
+		to_chat(user, span_warning("Você se conecta[target]Mas nada acontece! Parece que você não tem uma cela interna para carregar."))
 		return
 
 	if(nutrition_level_joules >= SYNTH_CHARGE_ALMOST_FULL)
-		user.balloon_alert(user, "cell fully charged!")
+		user.balloon_alert(user, "Célula totalmente carregada!")
 		return
 
-	user.visible_message(span_notice("[user] inserts a power connector into [target]."), span_notice("You begin to draw power from [target]."))
+	user.visible_message(span_notice("[user]Insere um condutor de energia em[target]."), span_notice("Você começa a tirar o poder de[target]."))
 	do_power_draw(target, user)
 
 	if(QDELETED(target))
 		return
 
-	user.visible_message(span_notice("[user] unplugs from [target]."), span_notice("You unplug from [target]."))
+	user.visible_message(span_notice("[user]Desligador de[target]."), span_notice("Você desliga de[target]."))
 
 /**
  * Runs a loop to charge a synth cell (stomach) from a power cell or APC.
@@ -83,7 +83,7 @@
 	var/minimum_cell_charge = target_apc ? SYNTH_APC_MINIMUM_PERCENT : 0
 
 	if(!target_cell || target_cell.percent() < minimum_cell_charge)
-		user.balloon_alert(user, UNLINT("APC charge low!"))
+		user.balloon_alert(user, UNLINT("Carga APC Baixa!"))
 		return
 
 	var/energy_needed
@@ -93,13 +93,13 @@
 		nutrition_level_joules = user.nutrition * SYNTH_JOULES_PER_NUTRITION
 		energy_needed = SYNTH_CHARGE_MAX - nutrition_level_joules
 		if(energy_needed < (SYNTH_CHARGE_MAX - SYNTH_CHARGE_ALMOST_FULL))
-			user.balloon_alert(user, "cell fully charged!")
+			user.balloon_alert(user, "Célula totalmente carregada!")
 			break
 
 		// Check if the charge level of the cell is below the minimum.
 		// Prevents synths from overloading the cell.
 		if(target_cell.percent() < minimum_cell_charge)
-			user.balloon_alert(user, UNLINT("APC charge low!"))
+			user.balloon_alert(user, UNLINT("Carga APC Baixa!"))
 			break
 
 		// Attempt to drain charge from the cell.
@@ -114,7 +114,7 @@
 			// The cell could be sabotaged, which causes it to explode and qdelete.
 			if(QDELETED(target_cell))
 				return
-			user.balloon_alert(user, UNLINT("APC failure!"))
+			user.balloon_alert(user, UNLINT("Fala do APC!"))
 			break
 
 		// If charging was successful, then increase user nutrition and emit sparks.

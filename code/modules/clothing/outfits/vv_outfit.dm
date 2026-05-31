@@ -134,10 +134,10 @@
 	for(var/obj/item/implant/implant in implants)
 		outfit.implants |= implant.type
 	//Copy to outfit cache
-	var/outfit_name = stripped_input(usr,"Enter the outfit name")
+	var/outfit_name = stripped_input(usr,"Digite o nome da roupa.")
 	outfit.name = outfit_name
 	GLOB.custom_outfits += outfit
-	to_chat(usr,"Outfit registered, use select equipment to equip it.")
+	to_chat(usr,"Roupa registrada, use equipamentos selecionados para equipar.")
 
 /datum/outfit/varedit/post_equip(mob/living/carbon/human/human, visuals_only)
 	. = ..()

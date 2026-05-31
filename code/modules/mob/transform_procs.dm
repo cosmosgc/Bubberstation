@@ -33,7 +33,7 @@
 	icon = initial(icon)
 	RemoveInvisibility(type)
 	set_species(/datum/species/monkey)
-	to_chat(src, span_boldnotice("You are now \a [dna.species.name]."))
+	to_chat(src, span_boldnotice("Agora você é.\a [dna.species.name]."))
 	name = LOWER_TEXT(dna.species.name)
 	regenerate_icons()
 	set_name()
@@ -74,7 +74,7 @@
 	icon = initial(icon)
 	RemoveInvisibility(type)
 	set_species(species)
-	to_chat(src, span_boldnotice("You are now \a [dna.species.name]."))
+	to_chat(src, span_boldnotice("Agora você é.\a [dna.species.name]."))
 	SEND_SIGNAL(src, COMSIG_MONKEY_HUMANIZE)
 	return src
 
@@ -99,7 +99,7 @@
 				break
 			landmark_loc += sloc.loc
 		if(!length(landmark_loc))
-			to_chat(src, "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone.")
+			to_chat(src, "Deus, desculpe não acharmos uma localização desocupada, então estamos te desovando em cima de alguém.")
 			for(var/obj/effect/landmark/start/ai/sloc in GLOB.landmarks_list)
 				landmark_loc += sloc.loc
 
@@ -190,10 +190,10 @@
 	return ..()
 
 /mob/living/silicon/robot/proc/replace_banned_cyborg()
-	to_chat(src, "<b>You are job banned from cyborg! Appeal your job ban if you want to avoid this in the future!</b>")
+	to_chat(src, "<b>Você está proibido de trabalhar em cyborg! Apelar para sua proibição de trabalho se quiser evitar isso no futuro!</b>")
 	ghostize(FALSE)
 
-	var/mob/chosen_one = SSpolling.poll_ghosts_for_target("Do you want to play as [span_notice(name)]?", check_jobban = JOB_CYBORG, poll_time = 5 SECONDS, checked_target = src, alert_pic = src, role_name_text = "cyborg")
+	var/mob/chosen_one = SSpolling.poll_ghosts_for_target("Você quer jogar como[span_notice(name)]?", check_jobban = JOB_CYBORG, poll_time = 5 SECONDS, checked_target = src, alert_pic = src, role_name_text = "cyborg")
 	if(chosen_one)
 		message_admins("[key_name_admin(chosen_one)] has taken control of ([key_name_admin(src)]) to replace a jobbanned player.")
 		key = chosen_one.key
@@ -225,7 +225,7 @@
 	new_xeno.set_combat_mode(TRUE)
 	new_xeno.PossessByPlayer(key)
 
-	to_chat(new_xeno, span_boldnotice("You are now an alien."))
+	to_chat(new_xeno, span_boldnotice("Você agora é um alienígena."))
 	qdel(src)
 	return new_xeno
 
@@ -257,7 +257,7 @@
 	new_slime.set_combat_mode(TRUE)
 	new_slime.PossessByPlayer(key)
 
-	to_chat(new_slime, span_boldnotice("You are now a slime. Skreee!"))
+	to_chat(new_slime, span_boldnotice("Agora você é uma gosma. Skreee!"))
 	qdel(src)
 	return new_slime
 
@@ -285,7 +285,7 @@
 	new_corgi.set_combat_mode(TRUE)
 	new_corgi.PossessByPlayer(key)
 
-	to_chat(new_corgi, span_boldnotice("You are now a Corgi. Yap Yap!"))
+	to_chat(new_corgi, span_boldnotice("Agora você é um Corgi. Yap Yap!"))
 	qdel(src)
 	return new_corgi
 
@@ -308,7 +308,7 @@
 	if(mind)
 		mind.transfer_to(new_crab)
 
-	to_chat(new_crab, span_boldnotice("You have evolved into a crab!"))
+	to_chat(new_crab, span_boldnotice("Você evoluiu para um caranguejo!"))
 	qdel(src)
 	return new_crab
 
@@ -335,7 +335,7 @@
 		mind.transfer_to(new_gorilla)
 	else
 		new_gorilla.PossessByPlayer(key)
-	to_chat(new_gorilla, span_boldnotice("You are now a gorilla. Ooga ooga!"))
+	to_chat(new_gorilla, span_boldnotice("Agora você é um gorila. Ooga ooga!"))
 	qdel(src)
 	return new_gorilla
 
@@ -346,7 +346,7 @@
 	if(isnull(mobpath))
 		return
 	if(!safe_animal(mobpath))
-		to_chat(usr, span_danger("Sorry but this mob type is currently unavailable."))
+		to_chat(usr, span_danger("Desculpe, mas esse tipo de máfia não está disponível."))
 		return
 
 	if(HAS_TRAIT(src, TRAIT_NO_TRANSFORM))
@@ -369,7 +369,7 @@
 	new_mob.PossessByPlayer(key)
 	new_mob.set_combat_mode(TRUE)
 
-	to_chat(new_mob, span_boldnotice("You suddenly feel more... animalistic."))
+	to_chat(new_mob, span_boldnotice("De repente você se sente mais... animalista."))
 	qdel(src)
 	return new_mob
 
@@ -380,14 +380,14 @@
 	if(isnull(mobpath))
 		return
 	if(!safe_animal(mobpath))
-		to_chat(usr, span_danger("Sorry but this mob type is currently unavailable."))
+		to_chat(usr, span_danger("Desculpe, mas esse tipo de máfia não está disponível."))
 		return
 
 	var/mob/living/new_mob = new mobpath(src.loc)
 
 	new_mob.PossessByPlayer(key)
 	new_mob.set_combat_mode(TRUE)
-	to_chat(new_mob, span_boldnotice("You feel more... animalistic."))
+	to_chat(new_mob, span_boldnotice("Você se sente mais... animalista."))
 
 	. = new_mob
 	qdel(src)

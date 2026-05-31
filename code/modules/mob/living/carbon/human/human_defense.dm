@@ -47,8 +47,8 @@
 		return ..()
 
 	visible_message(
-		span_danger("\The [hitting_projectile] gets reflected by [src]!"),
-		span_userdanger("\The [hitting_projectile] gets reflected by [src]!"),
+		span_danger("\The [hitting_projectile]É refletido por[src]!"),
+		span_userdanger("\The [hitting_projectile]É refletido por[src]!"),
 	)
 	// Finds and plays the block_sound of item which reflected
 	for(var/obj/item/held_item in held_items)
@@ -113,9 +113,8 @@
 		return
 	var/obj/item/bodypart/arm/active_arm = user.get_active_hand()
 	playsound(loc, active_arm.unarmed_attack_sound, 25, TRUE, -1)
-	visible_message(span_danger("[user] [hulk_verb]ed [src]!"), \
-					span_userdanger("[user] [hulk_verb]ed [src]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), null, user)
-	to_chat(user, span_danger("You [hulk_verb] [src]!"))
+	visible_message(span_danger("[user] [hulk_verb]Ed.[src]!"), 					span_userdanger("[user] [hulk_verb]Ed.[src]!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), null, user)
+	to_chat(user, span_danger("Você.[hulk_verb] [src]!"))
 	apply_damage(15, BRUTE, wound_bonus=10)
 
 /mob/living/carbon/human/attack_hand(mob/user, list/modifiers)
@@ -138,9 +137,9 @@
 		target.Knockdown(SHOVE_KNOCKDOWN_HUMAN, daze_amount = 3 SECONDS)
 	if(!HAS_TRAIT(src, TRAIT_BRAWLING_KNOCKDOWN_BLOCKED))
 		Knockdown(SHOVE_KNOCKDOWN_COLLATERAL, daze_amount = 3 SECONDS)
-	target.visible_message(span_danger("[shover] shoves [target.name] into [name]!"),
-		span_userdanger("You're shoved into [name] by [shover]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, list(shover))
-	to_chat(shover, span_danger("You shove [target.name] into [name]!"))
+	target.visible_message(span_danger("[shover]Empurra.[target.name]Em[name]!"),
+		span_userdanger("Você está enfiado em[name]Por que[shover]!"), span_hear("Você ouve barulheira agressiva seguida de um barulho!"), COMBAT_MESSAGE_RANGE, list(shover))
+	to_chat(shover, span_danger("Você empurra.[target.name]Em[name]!"))
 	log_combat(shover, target, "shoved", addition = "into [name][weapon ? " with [weapon]" : ""]")
 	return COMSIG_LIVING_SHOVE_HANDLED
 
@@ -152,23 +151,20 @@
 		var/obj/item/I = get_active_held_item()
 		if(I && !(I.item_flags & ABSTRACT) && dropItemToGround(I))
 			playsound(loc, 'sound/items/weapons/slash.ogg', 25, TRUE, -1)
-			visible_message(span_danger("[user] disarmed [src]!"), \
-							span_userdanger("[user] disarmed you!"), span_hear("You hear aggressive shuffling!"), null, user)
-			to_chat(user, span_danger("You disarm [src]!"))
+			visible_message(span_danger("[user]Desarmada[src]!"), 							span_userdanger("[user]Desarmei você!"), span_hear("Você ouve baralhar agressivo!"), null, user)
+			to_chat(user, span_danger("Você desarma.[src]!"))
 		else if(!user.client || prob(5)) // only natural monkeys get to stun reliably, (they only do it occasionaly)
 			playsound(loc, 'sound/items/weapons/pierce.ogg', 25, TRUE, -1)
 			if (src.IsKnockdown() && !src.IsParalyzed())
 				Paralyze(40)
 				log_combat(user, src, "pinned")
-				visible_message(span_danger("[user] pins [src] down!"), \
-								span_userdanger("[user] pins you down!"), span_hear("You hear shuffling and a muffled groan!"), null, user)
-				to_chat(user, span_danger("You pin [src] down!"))
+				visible_message(span_danger("[user]Pins[src]Abaixe-se!"), 								span_userdanger("[user]Te prende!"), span_hear("Você ouve baralhar e um gemido abafado!"), null, user)
+				to_chat(user, span_danger("Você pin[src]Abaixe-se!"))
 			else
 				Knockdown(30)
 				log_combat(user, src, "tackled")
-				visible_message(span_danger("[user] tackles [src] down!"), \
-								span_userdanger("[user] tackles you down!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), null, user)
-				to_chat(user, span_danger("You tackle [src] down!"))
+				visible_message(span_danger("[user]Tackles[src]Abaixe-se!"), 								span_userdanger("[user]Derruba você!"), span_hear("Você ouve barulheira agressiva seguida de um barulho!"), null, user)
+				to_chat(user, span_danger("Você joga[src]Abaixe-se!"))
 		return TRUE
 
 	if(!user.combat_mode)
@@ -200,24 +196,21 @@
 		var/obj/item/I = get_active_held_item()
 		if(I && dropItemToGround(I))
 			playsound(loc, 'sound/items/weapons/slash.ogg', 25, TRUE, -1)
-			visible_message(span_danger("[user] disarms [src]!"), \
-							span_userdanger("[user] disarms you!"), span_hear("You hear aggressive shuffling!"), null, user)
-			to_chat(user, span_danger("You disarm [src]!"))
+			visible_message(span_danger("[user]Desarmar.[src]!"), 							span_userdanger("[user]Desarmar você!"), span_hear("Você ouve baralhar agressivo!"), null, user)
+			to_chat(user, span_danger("Você desarma.[src]!"))
 		else if(!HAS_TRAIT(src, TRAIT_INCAPACITATED))
 			playsound(loc, 'sound/items/weapons/pierce.ogg', 25, TRUE, -1)
 			var/shovetarget = get_edge_target_turf(user, get_dir(user, get_step_away(src, user)))
 			adjust_stamina_loss(35)
 			throw_at(shovetarget, 4, 2, user, force = MOVE_FORCE_OVERPOWERING)
 			log_combat(user, src, "shoved")
-			visible_message(span_danger("[user] tackles [src] down!"), \
-							span_userdanger("[user] shoves you with great force!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), null, user)
-			to_chat(user, span_danger("You shove [src] with great force!"))
+			visible_message(span_danger("[user]Tackles[src]Abaixe-se!"), 							span_userdanger("[user]Te empurra com muita força!"), span_hear("Você ouve barulheira agressiva seguida de um barulho!"), null, user)
+			to_chat(user, span_danger("Você empurra.[src]Com grande força!"))
 		else
 			Paralyze(5 SECONDS)
 			playsound(loc, 'sound/items/weapons/punch3.ogg', 25, TRUE, -1)
-			visible_message(span_danger("[user] slams [src] into the floor!"), \
-							span_userdanger("[user] slams you into the ground!"), span_hear("You hear something slam loudly onto the floor!"), null, user)
-			to_chat(user, span_danger("You slam [src] into the floor beneath you!"))
+			visible_message(span_danger("[user]Slams[src]Para o chão!"), 							span_userdanger("[user]Bate no chão!"), span_hear("Você ouve algo bater alto no chão!"), null, user)
+			to_chat(user, span_danger("Você bate[src]no chão abaixo de você!"))
 			log_combat(user, src, "slammed into the ground")
 		return TRUE
 
@@ -227,17 +220,15 @@
 		var/damage = prob(90) ? rand(user.melee_damage_lower, user.melee_damage_upper) : 0
 		if(!damage)
 			playsound(loc, 'sound/items/weapons/slashmiss.ogg', 50, TRUE, -1)
-			visible_message(span_danger("[user] lunges at [src]!"), \
-							span_userdanger("[user] lunges at you!"), span_hear("You hear a swoosh!"), null, user)
-			to_chat(user, span_danger("You lunge at [src]!"))
+			visible_message(span_danger("[user]Pulmões em[src]!"), 							span_userdanger("[user]Pulgas em você!"), span_hear("Você ouve um shoosh!"), null, user)
+			to_chat(user, span_danger("Você se atira em[src]!"))
 			return FALSE
 		var/obj/item/bodypart/affecting = get_bodypart(get_random_valid_zone(user.zone_selected))
 		var/armor_block = run_armor_check(affecting, MELEE,"","",10)
 
 		playsound(loc, 'sound/items/weapons/slice.ogg', 25, TRUE, -1)
-		visible_message(span_danger("[user] slashes at [src]!"), \
-						span_userdanger("[user] slashes at you!"), span_hear("You hear a sickening sound of a slice!"), null, user)
-		to_chat(user, span_danger("You slash at [src]!"))
+		visible_message(span_danger("[user]Cortes em[src]!"), 						span_userdanger("[user]Corta em você!"), span_hear("Você ouve um som doentio de uma fatia!"), null, user)
+		to_chat(user, span_danger("Você corta em[src]!"))
 		if(dismembering_strike(user, user.zone_selected)) //Dismemberment successful
 			apply_damage(damage, BRUTE, affecting, armor_block)
 		log_combat(user, src, "attacked")
@@ -348,7 +339,7 @@
 /mob/living/carbon/human/blob_act(obj/structure/blob/B)
 	if(stat == DEAD)
 		return
-	show_message(span_userdanger("The blob attacks you!"))
+	show_message(span_userdanger("A bolha te ataca!"))
 	var/dam_zone = pick(BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	var/obj/item/bodypart/affecting = get_bodypart(get_random_valid_zone(dam_zone))
 	apply_damage(5, BRUTE, affecting, run_armor_check(affecting, MELEE))
@@ -386,7 +377,7 @@
 		if(undergoing_cardiac_arrest() && can_heartattack() && (shock_damage * siemens_coeff >= 1) && prob(25))
 			var/obj/item/organ/heart/heart = get_organ_slot(ORGAN_SLOT_HEART)
 			if(heart.Restart() && stat == CONSCIOUS)
-				to_chat(src, span_notice("You feel your heart beating again!"))
+				to_chat(src, span_notice("Você sente seu coração batendo novamente!"))
 	if (!(flags & SHOCK_NO_HUMAN_ANIM))
 		electrocution_animation(4 SECONDS)
 
@@ -413,7 +404,7 @@
 				update_worn_neck()
 				update_worn_head()
 			else
-				to_chat(src, span_notice("Your [head_clothes.name] protects your head and face from the acid!"))
+				to_chat(src, span_notice("Sua[head_clothes.name]protege sua cabeça e rosto do ácido!"))
 		else
 			. = get_bodypart(BODY_ZONE_HEAD)
 			if(.)
@@ -434,7 +425,7 @@
 				update_worn_undersuit()
 				update_worn_oversuit()
 			else
-				to_chat(src, span_notice("Your [chest_clothes.name] protects your body from the acid!"))
+				to_chat(src, span_notice("Sua[chest_clothes.name]protege seu corpo do ácido!"))
 		else
 			. = get_bodypart(BODY_ZONE_CHEST)
 			if(.)
@@ -466,7 +457,7 @@
 				update_worn_undersuit()
 				update_worn_oversuit()
 			else
-				to_chat(src, span_notice("Your [arm_clothes.name] protects your arms and hands from the acid!"))
+				to_chat(src, span_notice("Sua[arm_clothes.name]Protege seus braços e mãos do ácido!"))
 		else
 			. = get_bodypart(BODY_ZONE_R_ARM)
 			if(.)
@@ -492,7 +483,7 @@
 				update_worn_undersuit()
 				update_worn_oversuit()
 			else
-				to_chat(src, span_notice("Your [leg_clothes.name] protects your legs and feet from the acid!"))
+				to_chat(src, span_notice("Sua[leg_clothes.name]protege suas pernas e pés do ácido!"))
 		else
 			. = get_bodypart(BODY_ZONE_R_LEG)
 			if(.)
@@ -555,15 +546,15 @@
 		return
 	var/list/combined_msg = list()
 
-	visible_message(span_notice("[src] examines [p_them()]self."))
+	visible_message(span_notice("[src]Exame.[p_them()]Eu."))
 
-	combined_msg += span_notice("<b>You check yourself for injuries.</b>")
+	combined_msg += span_notice("<b>Verifique se está ferido.</b>")
 
 
 	for(var/part_zone, body_part_untyped in get_bodyparts_by_zones())
 		var/obj/item/bodypart/body_part = body_part_untyped
 		if(isnull(body_part) || IS_STUMP(body_part))
-			combined_msg += span_boldannounce("&rdsh; Your [parse_zone(body_part?.body_zone || part_zone)] is missing!")
+			combined_msg += span_boldannounce("Seu.[parse_zone(body_part?.body_zone || part_zone)]Está faltando!")
 			continue
 		if(body_part.bodypart_flags & BODYPART_PSEUDOPART) //don't show injury text for fake bodyparts; ie chainsaw arms or synthetic armblades
 			continue
@@ -575,27 +566,27 @@
 	var/tox = get_tox_loss() + (disgust / 5) + (HAS_TRAIT(src, TRAIT_SELF_AWARE) ? 0 : (rand(-3, 0) * 5))
 	switch(tox)
 		if(10 to 20)
-			combined_msg += span_danger("You feel sick.")
+			combined_msg += span_danger("Você se sente doente.")
 		if(20 to 40)
-			combined_msg += span_danger("You feel nauseated.")
+			combined_msg += span_danger("Você se sente enjoada.")
 		if(40 to INFINITY)
-			combined_msg += span_danger("You feel very unwell!")
+			combined_msg += span_danger("Você se sente muito mal!")
 
 	var/cached_blood_volume = HAS_TRAIT(src, TRAIT_NOBLOOD) ? BLOOD_VOLUME_NORMAL : get_blood_volume(apply_modifiers = TRUE)
 	var/oxy = get_oxy_loss() + (losebreath * 4) + (cached_blood_volume < BLOOD_VOLUME_NORMAL ? ((BLOOD_VOLUME_NORMAL - cached_blood_volume) * 0.1) : 0) + (HAS_TRAIT(src, TRAIT_SELF_AWARE) ? 0 : (rand(-3, 0) * 5))
 	switch(oxy)
 		if(10 to 20)
-			combined_msg += span_danger("You feel lightheaded.")
+			combined_msg += span_danger("Você se sente tonto.")
 		if(20 to 40)
-			combined_msg += losebreath ? span_danger("You're choking!") : span_danger("Your thinking is clouded and distant.")
+			combined_msg += losebreath ? span_danger("Você está sufocando!") : span_danger("Seu pensamento está nublado e distante.")
 		if(40 to INFINITY)
-			combined_msg += span_danger("You feel like you're about to pass out!")
+			combined_msg += span_danger("Você sente que está prestes a desmaiar!")
 
 	if(get_stamina_loss())
 		if(get_stamina_loss() > 30)
-			combined_msg += span_info("You're completely exhausted.")
+			combined_msg += span_info("Está completamente exausto.")
 		else
-			combined_msg += span_info("You feel fatigued.")
+			combined_msg += span_info("Você se sente cansado.")
 
 	to_chat(src, boxed_message(combined_msg.Join("<br>")))
 	//BUBBER EDIT BEGIN

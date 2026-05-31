@@ -72,12 +72,11 @@
 /datum/component/stun_n_cuff/proc/cuff_target(mob/living/carbon/human_target)
 	if(human_target.handcuffed)
 		var/mob/living/living_parent = parent
-		living_parent.balloon_alert(human_target, "already cuffed!")
+		living_parent.balloon_alert(human_target, "Já algemado!")
 		return
 
 	playsound(parent, 'sound/items/weapons/cablecuff.ogg', 30, TRUE)
-	human_target.visible_message(span_danger("[parent] is trying to put zipties on [human_target]!"),\
-		span_danger("[parent] is trying to put zipties on you!"))
+	human_target.visible_message(span_danger("[parent]Está tentando colocar zíperes[human_target]!"),		span_danger("[parent]Está tentando colocar zíperes em você!"))
 
 	if(!do_after(parent, handcuff_timer, human_target))
 		return
@@ -93,8 +92,6 @@
 	log_combat(parent, human_target, "honked")
 
 	human_target.visible_message(
-		span_danger("[parent] stuns [human_target]!"), \
-		span_userdanger("[parent] stuns you!"), \
-	)
+		span_danger("[parent]atordoamentos[human_target]!"), 		span_userdanger("[parent]Te atordoa!"), 	)
 	COOLDOWN_START(src, stun_cooldown, stun_cooldown_timer)
 	post_stun_callback?.Invoke(human_target)

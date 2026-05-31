@@ -56,10 +56,7 @@
 	make_transformable()
 	AddElement(/datum/element/update_icon_updates_onmob)
 	AddComponent(
-		/datum/component/butchering, \
-		speed = 5 SECONDS, \
-		butcher_sound = active_hitsound, \
-	)
+		/datum/component/butchering, 		speed = 5 SECONDS, 		butcher_sound = active_hitsound, 	)
 
 /obj/item/melee/energy/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -69,23 +66,13 @@
  * Gives our item the transforming component, passing in our various vars.
  */
 /obj/item/melee/energy/proc/make_transformable()
-	AddComponent( \
-		/datum/component/transforming, \
-		force_on = active_force, \
-		throwforce_on = active_throwforce, \
-		throw_speed_on = active_throw_speed, \
-		sharpness_on = active_sharpness, \
-		hitsound_on = active_hitsound, \
-		w_class_on = active_w_class, \
-		attack_verb_continuous_on = list("attacks", "slashes", "slices", "tears", "lacerates", "rips", "dices", "cuts"), \
-		attack_verb_simple_on = list("attack", "slash", "slice", "tear", "lacerate", "rip", "dice", "cut"), \
-	)
+	AddComponent( 		/datum/component/transforming, 		force_on = active_force, 		throwforce_on = active_throwforce, 		throw_speed_on = active_throw_speed, 		sharpness_on = active_sharpness, 		hitsound_on = active_hitsound, 		w_class_on = active_w_class, 		attack_verb_continuous_on = list("attacks", "slashes", "slices", "tears", "lacerates", "rips", "dices", "cuts"), 		attack_verb_simple_on = list("attack", "slash", "slice", "tear", "lacerate", "rip", "dice", "cut"), 	)
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
 /obj/item/melee/energy/suicide_act(mob/living/user)
 	if(!HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
 		attack_self(user)
-	user.visible_message(span_suicide("[user] is [pick("slitting [user.p_their()] stomach open with", "falling on")] [src]! It looks like [user.p_theyre()] trying to commit seppuku!"))
+	user.visible_message(span_suicide("[user]É[pick("slitting [user.p_their()] stomach open with", "falling on")] [src]! Parece que...[user.p_theyre()]Tentando cometer seppuku!"))
 	return (BRUTELOSS|FIRELOSS)
 
 /obj/item/melee/energy/process(seconds_per_tick)
@@ -101,7 +88,7 @@
 		var/mob/living/carbon/carbon_user = user
 		if(carbon_user.wear_mask)
 			in_mouth = ", barely missing [carbon_user.p_their()] nose"
-	. = span_rose("[user] swings [user.p_their()] [name][in_mouth]. [user.p_They()] light[user.p_s()] [user.p_their()] [atom.name] in the process.")
+	. = span_rose("[user]balanços[user.p_their()] [name][in_mouth]. [user.p_They()]luz[user.p_s()] [user.p_their()] [atom.name]no processo.")
 	playsound(loc, hitsound, get_clamped_volume(), TRUE, -1)
 	add_fingerprint(user)
 
@@ -147,7 +134,7 @@
 /// Energy axe - extremely strong.
 /obj/item/melee/energy/axe
 	name = "energy axe"
-	desc = "An energized battle axe."
+	desc = "Um machado de batalha energizado."
 	icon_state = "axe"
 	inhand_icon_state = "axe"
 	base_icon_state = "axe"
@@ -172,18 +159,11 @@
 	active_w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/melee/energy/axe/make_transformable()
-	AddComponent( \
-		/datum/component/transforming, \
-		force_on = active_force, \
-		throwforce_on = active_throwforce, \
-		throw_speed_on = active_throw_speed, \
-		sharpness_on = sharpness, \
-		w_class_on = active_w_class, \
-	)
+	AddComponent( 		/datum/component/transforming, 		force_on = active_force, 		throwforce_on = active_throwforce, 		throw_speed_on = active_throw_speed, 		sharpness_on = sharpness, 		w_class_on = active_w_class, 	)
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
 /obj/item/melee/energy/axe/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] swings [src] towards [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]balanços[src]em direção[user.p_their()]Cabeça! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return (BRUTELOSS|FIRELOSS)
 
 /// Energy swords.
@@ -193,7 +173,7 @@
 
 /obj/item/melee/energy/sword
 	name = "energy sword"
-	desc = "May the force be within you."
+	desc = "Que a força esteja dentro de você."
 	icon_state = "e_sword"
 	base_icon_state = "e_sword"
 	inhand_icon_state = "e_sword"
@@ -245,7 +225,7 @@
 	var/obj/item/stock_parts/power_store/our_cell = user.cell
 	if(HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE) && !(our_cell.use(hitcost)))
 		attack_self(user)
-		to_chat(user, span_notice("It's out of charge!"))
+		to_chat(user, span_notice("Está fora de carga!"))
 		return
 	return ..()
 
@@ -256,7 +236,7 @@
 
 /obj/item/melee/energy/sword/cyborg/saw //Used by medical Syndicate cyborgs
 	name = "energy saw"
-	desc = "For heavy duty cutting. It has a carbon-fiber blade in addition to a toggleable hard-light edge to dramatically increase sharpness."
+	desc = "Para cortes pesados. Tem uma lâmina de fibra de carbono, além de uma borda de luz dura para aumentar drasticamente a nitidez."
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "esaw"
 	hitsound = 'sound/items/weapons/circsawhit.ogg'
@@ -328,7 +308,7 @@
 
 /obj/item/melee/energy/sword/saber/multitool_act(mob/living/user, obj/item/tool)
 	if(hacked)
-		to_chat(user, span_warning("It's already fabulous!"))
+		to_chat(user, span_warning("Já está fabuloso!"))
 		return
 	hacked = TRUE
 	sword_color_icon = "rainbow"
@@ -352,7 +332,7 @@
 /// Energy blades, which are effectively perma-extended energy swords
 /obj/item/melee/energy/blade
 	name = "energy blade"
-	desc = "A concentrated beam of energy in the shape of a blade. Very stylish... and lethal."
+	desc = "Um feixe concentrado de energia na forma de uma lâmina. Muito elegante... e letal."
 	icon_state = "blade"
 	base_icon_state = "blade"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -392,7 +372,7 @@
 
 /obj/item/melee/energy/blade/hardlight
 	name = "hardlight blade"
-	desc = "An extremely sharp blade made out of hard light. Packs quite a punch."
+	desc = "Uma lâmina extremamente afiada feita de luz forte. É um soco e tanto."
 	icon_state = "lightblade"
 	inhand_icon_state = "lightblade"
 	base_icon_state = "lightblade"
@@ -400,8 +380,7 @@
 
 /obj/item/melee/energy/sword/surplus
 	name = "\improper Pattern I 'Iaito' energy sword"
-	desc = "Oversized, overengineered, and somehow still mass-produced. The twin energy blades, theoretically, help make up for the poor cutting plane the emitter generates. \
-		When there are no more heroes in a desperate struggle, it's kill or be killed."
+	desc = "Superdimensionado, super-engenhariado, e de alguma forma ainda produzido em massa. As duas lâminas de energia, teoricamente, ajudam a compensar o pobre avião de corte que o emissor gera. Quando não há mais heróis em uma luta desesperada, é matar ou ser morto."
 	icon_state = "surplus_e_sword"
 	inhand_icon_state = "surplus_e_sword"
 	base_icon_state = "surplus_e_sword"
@@ -429,27 +408,16 @@
 /obj/item/melee/energy/sword/surplus/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_TRANSFORMING_PRE_TRANSFORM, PROC_REF(check_power))
-	AddElement(/datum/element/examine_lore, \
-		lore = "This early iteration of the now infamous energy sword was, supposedly, a Waffle Corp prototype first trialed in a variety of armed conflicts \
-		around the interstellar frontier.<br>\
-		<br>\
-		Unfortunately, the success rate of the platform, along with the survival rate of its users, was abysmally low. \
-		To make matters worse, initial overestimation of its effectiveness meant that by the time its myriad flaws reared their heads, production had already \
-		reached such a level that the company behind its manufacture would have to pay more to properly disassemble and dispose of the swords, \
-		than if they started offloading them onto markets of various legitimacy to try and recoup costs. Thus, the Iaito was 'born'.<br><br>\
-		As a consequence of its haphazard proliferation and its low market price compared to later, improved energy sword models, examples of the Iaito are \
-		typically found in the hands of various grunts, mooks, goons, criminals, wannabe assassins, lunatics, or those otherwise embroiled in \
-		a desperate struggle. If you're actually trying to kill someone with this sword, you may or may not fit into one or more of those categories." \
-	)
+	AddElement(/datum/element/examine_lore, 		lore = "This early iteration of the now infamous energy sword was, supposedly, a Waffle Corp prototype first trialed in a variety of armed conflicts 		around the interstellar frontier.<br>		<br>		Unfortunately, the success rate of the platform, along with the survival rate of its users, was abysmally low. 		To make matters worse, initial overestimation of its effectiveness meant that by the time its myriad flaws reared their heads, production had already 		reached such a level that the company behind its manufacture would have to pay more to properly disassemble and dispose of the swords, 		than if they started offloading them onto markets of various legitimacy to try and recoup costs. Thus, the Iaito was 'born'.<br><br>		As a consequence of its haphazard proliferation and its low market price compared to later, improved energy sword models, examples of the Iaito are 		typically found in the hands of various grunts, mooks, goons, criminals, wannabe assassins, lunatics, or those otherwise embroiled in 		a desperate struggle. If you're actually trying to kill someone with this sword, you may or may not fit into one or more of those categories." 	)
 
 /obj/item/melee/energy/sword/surplus/examine(mob/user)
 	. = ..()
 	if(charge)
-		. += span_notice("[src] has [charge] hits left before it must be recharged.")
+		. += span_notice("[src]Tem[charge]Bate à esquerda antes de ser recarregado.")
 	else
-		. += span_warning("[src] needs to be recharged.")
+		. += span_warning("[src]precisa ser recarregado.")
 
-	. += span_info("You get the sense that this weapon isn't very effective unless you hit someone while they are exposed in some way, like attacking from behind or while they're staggered.")
+	. += span_info("Você tem a sensação de que esta arma não é muito eficaz a menos que você bater em alguém enquanto eles são expostos de alguma forma, como atacar por trás ou enquanto eles estão cambaleando.")
 
 /obj/item/melee/energy/sword/surplus/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -497,16 +465,16 @@
 		return SECONDARY_ATTACK_CALL_NORMAL
 
 	if(DOING_INTERACTION(user, DOAFTER_SOURCE_CHARGING_ESWORD))
-		user.balloon_alert(user, "ocupado!")
+		user.balloon_alert(user, "Ocupado!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	if(charge <= max_charge)
-		user.balloon_alert(user, "attempting recharge...")
+		user.balloon_alert(user, "Tentando recarregar...")
 		if(!do_after(user, charge_time, target = src, extra_checks = CALLBACK(src, PROC_REF(do_jiggle), user), interaction_key = DOAFTER_SOURCE_CHARGING_ESWORD, iconstate = "beat_the_heat"))
-			user.balloon_alert(user, "interrompido!")
+			user.balloon_alert(user, "Interrompido!")
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	charge = max_charge
-	user.balloon_alert(user, "recharge successful")
+	user.balloon_alert(user, "Recarregar sucesso")
 	playsound(src, 'sound/machines/ping.ogg', 40, TRUE)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
@@ -536,14 +504,14 @@
 
 	charge--
 	if(charge <= 0)
-		user.balloon_alert(user, "sem carga!")
+		user.balloon_alert(user, "Sem carga!")
 		attack_self(user)
 
 /obj/item/melee/energy/sword/surplus/proc/check_power(obj/item/source, mob/user, active)
 	SIGNAL_HANDLER
 
 	if(charge <= 0 && !HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
-		balloon_alert(user, "sem carga!")
+		balloon_alert(user, "Sem carga!")
 		return COMPONENT_BLOCK_TRANSFORM
 
 /obj/item/melee/energy/sword/surplus/proc/do_jiggle(mob/user)
@@ -559,7 +527,7 @@
 
 /obj/item/melee/energy/sword/nullrod
 	name = "light energy sword"
-	desc = "If you strike me down, I shall become more robust than you can possibly imagine."
+	desc = "Se me derrubar, serei mais robusto do que imagina."
 	throw_speed = 3
 	throw_range = 4
 	block_chance = 30
@@ -589,13 +557,13 @@
 
 /obj/item/melee/energy/sword/nullrod/red
 	name = "dark energy sword"
-	desc = "Woefully ineffective when used on steep terrain."
+	desc = "Infelizmente ineficaz quando usado em terrenos íngremes."
 	sword_color_icon = "red"
 	light_color = COLOR_SOFT_RED
 
 /obj/item/melee/energy/sword/nullrod/pirate
 	name = "nautical energy cutlass"
-	desc = "Convincing HR that your religion involved piracy was no mean feat."
+	desc = "Convencer o RH de que sua religião envolvia pirataria não foi um feito."
 	icon_state = "e_cutlass"
 	inhand_icon_state = "e_cutlass"
 	base_icon_state = "e_cutlass"

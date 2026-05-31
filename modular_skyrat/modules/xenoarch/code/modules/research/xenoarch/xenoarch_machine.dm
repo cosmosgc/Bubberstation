@@ -65,7 +65,7 @@
 	. = ..()
 
 	toggle_panel_open()
-	to_chat(user, span_notice("You [panel_open ? "open":"close"] the maintenance panel of [src]."))
+	to_chat(user, span_notice("Você.[panel_open ? "open":"close"]O painel de manutenção de[src]."))
 	tool.play_tool_sound(src)
 	return ITEM_INTERACT_SUCCESS
 
@@ -77,7 +77,7 @@
 
 /obj/machinery/xenoarch/researcher
 	name = "xenoarch researcher"
-	desc = "A machine that is used to condense strange rocks, useless relics, and broken objects into bigger artifacts."
+	desc = "Uma máquina que é usada para condensar rochas estranhas, relíquias inúteis, e objetos quebrados em artefatos maiores."
 	icon_state = "researcher"
 	circuit = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_researcher
 	/// the amount of research that is currently done
@@ -107,7 +107,7 @@
 
 /obj/machinery/xenoarch/researcher/examine(mob/user)
 	. = ..()
-	. += span_notice("[current_research]/[max_research] research available.")
+	. += span_notice("[current_research]/[max_research]Pesquisa disponível.")
 
 /obj/machinery/xenoarch/researcher/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(user.combat_mode)
@@ -120,13 +120,13 @@
 			strange_rocks.forceMove(src)
 			xenoarch_contents += strange_rocks
 
-		balloon_alert(user, "items inserted!")
+		balloon_alert(user, "Itens inseridos!")
 		return ITEM_INTERACT_SUCCESS
 
 	if(is_type_in_list(tool, accepted_types))
 		tool.forceMove(src)
 		xenoarch_contents += tool
-		balloon_alert(user, "item inserted!")
+		balloon_alert(user, "Item inserido!")
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
@@ -142,7 +142,7 @@
 		removed_item.forceMove(src_turf)
 		xenoarch_contents -= removed_item
 
-	balloon_alert(user, "items removed!")
+	balloon_alert(user, "Itens removidos!")
 
 /obj/machinery/xenoarch/researcher/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
@@ -156,7 +156,7 @@
 	switch(choice)
 		if("Lavaland Chest (150)")
 			if(current_research < 150)
-				balloon_alert(user, "insufficient research!")
+				balloon_alert(user, "Pesquisa insuficiente!")
 				return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 			current_research -= 150
@@ -164,7 +164,7 @@
 
 		if("Anomalous Crystal (150)")
 			if(current_research < 150)
-				balloon_alert(user, "insufficient research!")
+				balloon_alert(user, "Pesquisa insuficiente!")
 				return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 			current_research -= 150
@@ -174,7 +174,7 @@
 
 		if("Bepis Tech (100)")
 			if(current_research < 100)
-				balloon_alert(user, "insufficient research!")
+				balloon_alert(user, "Pesquisa insuficiente!")
 				return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 			current_research -= 100
@@ -198,7 +198,7 @@
 
 /obj/machinery/xenoarch/scanner
 	name = "xenoarch scanner"
-	desc = "A machine that is used to scan strange rocks, making it easier to extract the item inside."
+	desc = "Uma máquina que é usada para escanear rochas estranhas, tornando mais fácil extrair o item dentro."
 	icon_state = "scanner"
 	circuit = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_scanner
 
@@ -219,23 +219,23 @@
 		for(var/obj/item/xenoarch/strange_rock/chosen_rocks in tool.contents)
 			chosen_rocks.get_scanned()
 
-		balloon_alert(user, "scan complete!")
+		balloon_alert(user, "Escaneamento completo!")
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/xenoarch/strange_rock))
 		var/obj/item/xenoarch/strange_rock/chosen_rock = tool
 		if(chosen_rock.get_scanned())
-			balloon_alert(user, "scan complete!")
+			balloon_alert(user, "Escaneamento completo!")
 			return ITEM_INTERACT_SUCCESS
 		else
-			to_chat(user, span_warning("[chosen_rock] was unable to be scanned, perhaps it was already scanned?"))
+			to_chat(user, span_warning("[chosen_rock]foi incapaz de ser escaneado, talvez já tenha sido escaneado?"))
 			return ITEM_INTERACT_BLOCKING
 
 	return ..()
 
 /obj/machinery/xenoarch/recoverer
 	name = "xenoarch recoverer"
-	desc = "A machine that will recover the damaged, destroyed objects found within the strange rocks."
+	desc = "Uma máquina que recuperará os objetos danificados e destruídos encontrados dentro das rochas estranhas."
 	icon_state = "recoverer"
 	circuit = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_recoverer
 	/// Assoc list of item type to reward pool
@@ -270,13 +270,13 @@
 			current_item.forceMove(src)
 			xenoarch_contents += current_item
 
-		balloon_alert(user, "items inserted!")
+		balloon_alert(user, "Itens inseridos!")
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/xenoarch/broken_item))
 		tool.forceMove(src)
 		xenoarch_contents += tool
-		balloon_alert(user, "item inserted!")
+		balloon_alert(user, "Item inserido!")
 		return ITEM_INTERACT_SUCCESS
 
 	return ..()
@@ -291,7 +291,7 @@
 		removed_item.forceMove(src_turf)
 		xenoarch_contents -= removed_item
 
-	balloon_alert(user, "items removed!")
+	balloon_alert(user, "Itens removidos!")
 
 /obj/machinery/xenoarch/recoverer/xenoarch_process()
 	var/turf/src_turf = get_turf(src)
@@ -321,7 +321,7 @@
 
 /obj/machinery/xenoarch/digger
 	name = "xenoarch digger"
-	desc = "A machine that is used to slowly uncover items within strange rocks."
+	desc = "Uma máquina que é usada para descobrir lentamente itens dentro de rochas estranhas."
 	icon_state = "digger"
 	circuit = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_digger
 
@@ -346,13 +346,13 @@
 			strange_rocks.forceMove(src)
 			xenoarch_contents += strange_rocks
 
-		balloon_alert(user, "rocks inserted!")
+		balloon_alert(user, "Pedras inseridas!")
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/xenoarch/strange_rock))
 		tool.forceMove(src)
 		xenoarch_contents += tool
-		balloon_alert(user, "rock inserted!")
+		balloon_alert(user, "Pedra inserida!")
 		return ITEM_INTERACT_SUCCESS
 
 	return ..()
@@ -367,7 +367,7 @@
 		removed_item.forceMove(src_turf)
 		xenoarch_contents -= removed_item
 
-	balloon_alert(user, "items removed!")
+	balloon_alert(user, "Itens removidos!")
 
 /obj/machinery/xenoarch/digger/xenoarch_process()
 	var/turf/src_turf = get_turf(src)

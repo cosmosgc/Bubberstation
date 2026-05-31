@@ -6,10 +6,10 @@
 		if(!cell)
 			balloon_alert(user, "sem célula!")
 			return TRUE
-		balloon_alert(user, "removing cell...")
+		balloon_alert(user, "removendo a célula...")
 		tool.play_tool_sound(src, 100)
 		if(!tool.use_tool(src, user, 3 SECONDS) || !opened)
-			balloon_alert(user, "interrompido!")
+			balloon_alert(user, "Interrompido!")
 			return TRUE
 		tool.play_tool_sound(src, 100)
 		balloon_alert(user, "célula removida")

@@ -1,8 +1,6 @@
 /datum/action/cooldown/spell/shadow_cloak
 	name = "Cloak of Shadow"
-	desc = "Completely conceals your identity, but does not make you invisible.  Can be activated early to disable it. \
-		While cloaked, you move faster, but undergo actions much slower. \
-		Taking damage while cloaked may cause it to lift suddenly, causing negative effects. "
+	desc = "Esconde completamente sua identidade, mas não o torna invisível. Pode ser ativado cedo para desativá-lo. Enquanto camuflado, você se move mais rápido, mas sofre ações muito mais lentas. Sofrer danos enquanto está camuflado pode fazer com que ele se levante de repente, causando efeitos negativos."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
@@ -29,7 +27,7 @@
 
 /datum/action/cooldown/spell/shadow_cloak/is_valid_target(atom/cast_on)
 	if(HAS_TRAIT(cast_on, TRAIT_HULK)) // Hulks are not stealthy. Need not apply
-		cast_on.balloon_alert(cast_on, "cannot cast while hulk!")
+		cast_on.balloon_alert(cast_on, "Não pode lançar enquanto Hulk!")
 		return FALSE
 	return isliving(cast_on)
 
@@ -68,8 +66,8 @@
 /datum/action/cooldown/spell/shadow_cloak/proc/cloak_mob(mob/living/cast_on)
 	playsound(cast_on, 'sound/effects/chemistry/ahaha.ogg', 50, TRUE, -1, extrarange = SILENCED_SOUND_EXTRARANGE, frequency = 0.5)
 	cast_on.visible_message(
-		span_warning("[cast_on] disappears into the shadows!"),
-		span_notice("You disappear into the shadows, becoming unidentifiable."),
+		span_warning("[cast_on]Desapareça nas sombras!"),
+		span_notice("Você desaparece nas sombras, tornando-se inidentificável."),
 	)
 
 	active_cloak = cast_on.apply_status_effect(/datum/status_effect/shadow_cloak)
@@ -86,8 +84,8 @@
 	playsound(cast_on, 'sound/effects/curse/curseattack.ogg', 50)
 	if(show_message)
 		cast_on.visible_message(
-			span_warning("[cast_on] appears from the shadows!"),
-			span_notice("You appear from the shadows, identifiable once more."),
+			span_warning("[cast_on]Aparece das Sombras!"),
+			span_notice("Você aparece das sombras, identificável mais uma vez."),
 		)
 
 	// Clear up the timer
@@ -101,8 +99,8 @@
 	var/mob/living/removed = source.owner
 	uncloak_mob(removed, show_message = FALSE)
 	removed.visible_message(
-		span_warning("[removed] is pulled from the shadows!"),
-		span_userdanger("You are pulled out of the shadows!"),
+		span_warning("[removed]é tirado das sombras!"),
+		span_userdanger("Você foi tirado das sombras!"),
 	)
 
 	removed.Knockdown(0.5 SECONDS)
@@ -116,8 +114,8 @@
 
 	uncloak_mob(source, show_message = FALSE)
 	source.visible_message(
-		span_warning("[source] suddenly appears from the shadows!"),
-		span_userdanger("As you lose your focus, you are pulled out of the shadows!"),
+		span_warning("[source]De arrependimento aparece das sombras!"),
+		span_userdanger("Como você perde seu foco, você é retirado das sombras!"),
 	)
 	StartCooldown(uncloak_time / 3)
 

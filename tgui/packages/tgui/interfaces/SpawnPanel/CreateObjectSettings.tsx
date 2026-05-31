@@ -40,7 +40,7 @@ export function CreateObjectSettings(props: CreateObjectSettingsProps) {
 
   const [amount, setAmount] = useState(1);
   const [cordsType, setCordsType] = useState(0);
-  const [spawnLocation, setSpawnLocation] = useState('Current location');
+  const [spawnLocation, setSpawnLocation] = useState('Localização atual');
   const [direction, setDirection] = useState(0);
   const [objectName, setObjectName] = useState('');
   const [offset, setOffset] = useState('');
@@ -55,7 +55,7 @@ export function CreateObjectSettings(props: CreateObjectSettingsProps) {
     setCordsType(value);
     storage.set('spawnpanel-offset_type', value);
     sendUpdatedSettings({
-      offset_type: value ? 'Absolute offset' : 'Relative offset',
+      offset_type: value ? 'Deslocamento absoluto' : 'Desvio relativo',
     });
   };
 
@@ -121,7 +121,7 @@ export function CreateObjectSettings(props: CreateObjectSettingsProps) {
 
     const currentSettings = {
       atom_amount: amount,
-      offset_type: cordsType ? 'Absolute offset' : 'Relative offset',
+      offset_type: cordsType ? 'Deslocamento absoluto' : 'Desvio relativo',
       where_target_type: spawnLocation,
       atom_dir: dirValues[direction],
       offset: parseOffset(offset),
@@ -136,7 +136,7 @@ export function CreateObjectSettings(props: CreateObjectSettingsProps) {
   const resetAdvancedSettings = () => {
     const defaultAmount = 1;
     const defaultCordsType = 0;
-    const defaultSpawnLocation = 'Current location';
+    const defaultSpawnLocation = 'Localização atual';
     const defaultDirection = 0;
     const defaultObjectName = '';
     const defaultOffset = '';
@@ -157,7 +157,7 @@ export function CreateObjectSettings(props: CreateObjectSettingsProps) {
 
     sendUpdatedSettings({
       atom_amount: defaultAmount,
-      offset_type: defaultCordsType ? 'Absolute offset' : 'Relative offset',
+      offset_type: defaultCordsType ? 'Deslocamento absoluto' : 'Desvio relativo',
       where_target_type: defaultSpawnLocation,
       atom_dir: dirValues[defaultDirection],
       offset: defaultOffset,
@@ -186,9 +186,9 @@ export function CreateObjectSettings(props: CreateObjectSettingsProps) {
   }, []);
 
   const isTargetMode =
-    spawnLocation === 'Targeted location' ||
-    spawnLocation === 'Targeted location (droppod)' ||
-    spawnLocation === "In targeted mob's hand";
+    spawnLocation === 'Localização do alvo' ||
+    spawnLocation === 'Localização do alvo.' ||
+    spawnLocation === "Na mão da máfia";
 
   const isPreciseModeActive = data?.precise_mode === 'Target';
   const isMarkModeActive = data?.precise_mode === 'Mark';
@@ -221,7 +221,7 @@ export function CreateObjectSettings(props: CreateObjectSettingsProps) {
 
     const currentSettings = {
       atom_amount: amount,
-      offset_type: cordsType ? 'Absolute offset' : 'Relative offset',
+      offset_type: cordsType ? 'Deslocamento absoluto' : 'Desvio relativo',
       where_target_type: spawnLocation,
       atom_dir: dirValues[direction],
       offset: parseOffset(offset),
@@ -342,8 +342,8 @@ export function CreateObjectSettings(props: CreateObjectSettingsProps) {
                       tooltipPosition="top"
                       disabled={
                         isTargetMode ||
-                        spawnLocation === 'At a marked object' ||
-                        spawnLocation === 'In the marked object' ||
+                        spawnLocation === 'Em um objeto marcado' ||
+                        spawnLocation === 'No objeto marcado' ||
                         isAnyPreciseModeActive
                       }
                     />
@@ -356,8 +356,8 @@ export function CreateObjectSettings(props: CreateObjectSettingsProps) {
                       width="100%"
                       disabled={
                         isTargetMode ||
-                        spawnLocation === 'At a marked object' ||
-                        spawnLocation === 'In the marked object' ||
+                        spawnLocation === 'Em um objeto marcado' ||
+                        spawnLocation === 'No objeto marcado' ||
                         isAnyPreciseModeActive
                       }
                     />
@@ -374,7 +374,7 @@ export function CreateObjectSettings(props: CreateObjectSettingsProps) {
                   onChange={(value: string) => updateObjectName(value)}
                   value={objectName}
                   width="100%"
-                  placeholder="leave empty for initial"
+                  placeholder="Deixe vazio para inicial"
                   disabled={isAnyPreciseModeActive}
                 />
               </Table.Cell>
@@ -394,7 +394,7 @@ export function CreateObjectSettings(props: CreateObjectSettingsProps) {
                       width: '22px',
                       lineHeight: '22px',
                     }}
-                    tooltip="Advanced settings"
+                    tooltip="Configurações avançadas"
                     tooltipPosition="top"
                     disabled={isAnyPreciseModeActive}
                   />
@@ -408,7 +408,7 @@ export function CreateObjectSettings(props: CreateObjectSettingsProps) {
                       lineHeight: '22px',
                     }}
                     onClick={() => resetAdvancedSettings()}
-                    tooltip="Reset advanced settings"
+                    tooltip="Reinicie as configurações avançadas"
                     tooltipPosition="top"
                     disabled={isAnyPreciseModeActive}
                   />
@@ -421,8 +421,8 @@ export function CreateObjectSettings(props: CreateObjectSettingsProps) {
                       lineHeight: '22px',
                     }}
                     icon={
-                      spawnLocation === 'At a marked object' ||
-                      spawnLocation === 'In the marked object'
+                      spawnLocation === 'Em um objeto marcado' ||
+                      spawnLocation === 'No objeto marcado'
                         ? 'thumbtack'
                         : 'eye-dropper'
                     }
@@ -431,18 +431,18 @@ export function CreateObjectSettings(props: CreateObjectSettingsProps) {
                         newPreciseType:
                           isMarkModeActive || isCopyModeActive
                             ? 'Off'
-                            : spawnLocation === 'At a marked object' ||
-                                spawnLocation === 'In the marked object'
+                            : spawnLocation === 'Em um objeto marcado' ||
+                                spawnLocation === 'No objeto marcado'
                               ? 'Mark'
                               : 'Copy',
                       });
                     }}
                     selected={isMarkModeActive || isCopyModeActive}
                     tooltip={
-                      spawnLocation === 'At a marked object' ||
-                      spawnLocation === 'In the marked object'
-                        ? 'Mark atom'
-                        : 'Copy atom path'
+                      spawnLocation === 'Em um objeto marcado' ||
+                      spawnLocation === 'No objeto marcado'
+                        ? 'Marcar átomo'
+                        : 'Copiar caminho átomo'
                     }
                     tooltipPosition="top"
                     disabled={isAnyPreciseModeActive && !isMarkModeActive}

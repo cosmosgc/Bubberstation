@@ -48,18 +48,18 @@ export function AirLockMainSection(props) {
       <Stack.Item>
         <Section fill>
           <LabeledList>
-            <LabeledList.Item label="Integrated Circuit Shell">
+            <LabeledList.Item label="Concha de circuito integrado">
               <Button.Checkbox
                 checked={shell}
                 onClick={() => {
                   act('set_shell', { on: !shell });
                 }}
-                tooltip="Whether this airlock can have an integrated circuit placed inside of it or not."
+                tooltip="Se esta câmara de ar pode ter um circuito integrado dentro dela ou não."
               >
                 Shell
               </Button.Checkbox>
             </LabeledList.Item>
-            <LabeledList.Item label="Access Required">
+            <LabeledList.Item label="Acesso Necessário">
               <Button
                 icon={oneAccess ? 'unlock' : 'lock'}
                 onClick={() => act('one_access')}
@@ -67,7 +67,7 @@ export function AirLockMainSection(props) {
                 {oneAccess ? 'One' : 'All'}
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Unrestricted Access">
+            <LabeledList.Item label="Acesso Livre">
               <Button
                 icon={unres_direction & 1 ? 'check-square-o' : 'square-o'}
                 selected={unres_direction & 1}
@@ -113,7 +113,7 @@ export function AirLockMainSection(props) {
                 West
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Airlock Name">
+            <LabeledList.Item label="Nome da câmara de ar">
               <Input
                 fluid
                 maxLength={30}
@@ -125,7 +125,7 @@ export function AirLockMainSection(props) {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Cycling Id">
+            <LabeledList.Item label="Ciclismo Id">
               <Input
                 fluid
                 maxLength={30}

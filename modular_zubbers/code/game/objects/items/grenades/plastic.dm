@@ -7,7 +7,7 @@
 		return FALSE
 
 	if(isliving(bomb_target) && bomb_target.GetComponent(/datum/component/c4_body_tracker))
-		to_chat(user,span_warning("There is already an explosive charge planted on [bomb_target]!"))
+		to_chat(user,span_warning("Já há uma carga explosiva plantada em[bomb_target]!"))
 		return FALSE
 
 	. = ..()
@@ -60,11 +60,11 @@
 
 /datum/reagent/toxin/acid/c4_b_gone
 	name = "c4-b-gone"
-	description = "A patented acidic compound by HugBox incorporated that is designed to (unsafely) remove c4 from most living beings."
+	description = "Um composto ácido patenteado pela HugBox incorporado que foi projetado para remover C4 da maioria dos seres vivos."
 
 	color = "#C6BED8" // rgb: 198, 190, 216
 
-	taste_description = "a box of acidic hugs"
+	taste_description = "Uma caixa de abraços ácidos."
 
 	reagent_weight = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED

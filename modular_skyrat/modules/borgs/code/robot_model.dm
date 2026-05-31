@@ -549,4 +549,4 @@
 
 /obj/item/robot_model/ninja_saboteur/do_transform_animation()
 	. = ..()
-	to_chat(loc, span_userdanger("While you have picked the saboteur model, that doesn't mean you are allowed to sabotage the station by delaminating the supermatter or opening all the doors to the armory, you should still ahelp to ask the permission to do that and the reason for it."))
+	to_chat(loc, span_userdanger("Enquanto você escolheu o modelo sabotador, isso não significa que você está autorizado a sabotar a estação, eliminando a supermatéria ou abrindo todas as portas para o arsenal, você ainda deve ajudar a pedir a permissão para fazer isso e a razão para isso."))

@@ -44,21 +44,21 @@
 		if(!forge_item || !crayon_item.paint_color)
 			return
 		color = crayon_item.paint_color
-		to_chat(user, span_notice("You color [src] with [crayon_item]..."))
+		to_chat(user, span_notice("Você cora.[src]Com[crayon_item]..."))
 		return
 	return ..()
 
 /obj/item/stack/clay
 	name = "clay"
-	desc = "A pile of clay that can be used to create ceramic artwork."
+	desc = "Uma pilha de argila que pode ser usada para criar arte cerâmica."
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "clay"
 	merge_type = /obj/item/stack/clay
-	singular_name = "glob of clay"
+	singular_name = "Glob de argila"
 
 /datum/export/ceramics
 	cost = CARGO_CRATE_VALUE * 2
-	unit_name = "ceramic product"
+	unit_name = "produto cerâmico"
 	export_types = list(
 		/obj/item/plate/ceramic,
 		/obj/item/plate/oven_tray/material/ceramic,
@@ -71,7 +71,7 @@
 
 /datum/export/ceramics_unfinished
 	cost = CARGO_CRATE_VALUE * 0.5
-	unit_name = "unfinished ceramic product"
+	unit_name = "produto cerâmico inacabado"
 	export_types = list(/obj/item/ceramic/plate,
 						/obj/item/ceramic/bowl,
 						/obj/item/ceramic/tray,
@@ -82,7 +82,7 @@
 
 /obj/item/ceramic/plate
 	name = "ceramic plate"
-	desc = "A piece of clay that is flat, in the shape of a plate."
+	desc = "Um pedaço de argila que é plana, na forma de um prato."
 	icon_state = "clay_plate"
 	forge_item = /obj/item/plate/ceramic
 
@@ -93,7 +93,7 @@
 
 /obj/item/ceramic/tray
 	name = "ceramic tray"
-	desc = "A piece of clay that is flat, in the shape of a tray."
+	desc = "Um pedaço de argila plana, em forma de bandeja."
 	icon_state = "clay_tray"
 	forge_item = /obj/item/plate/oven_tray/material/ceramic
 
@@ -104,7 +104,7 @@
 
 /obj/item/ceramic/bowl
 	name =  "ceramic bowl"
-	desc = "A piece of clay with a raised lip, in the shape of a bowl."
+	desc = "Um pedaço de argila com um lábio levantado, na forma de uma tigela."
 	icon_state = "clay_bowl"
 	forge_item = /obj/item/reagent_containers/cup/bowl/ceramic
 
@@ -116,13 +116,13 @@
 
 /obj/item/ceramic/cup
 	name = "ceramic cup"
-	desc = "A piece of clay with high walls, in the shape of a cup. It can hold 120 units."
+	desc = "Um pedaço de argila com paredes altas, em forma de copo. Pode conter 120 unidades."
 	icon_state = "clay_cup"
 	forge_item = /obj/item/reagent_containers/cup/beaker/large/ceramic
 
 /obj/item/reagent_containers/cup/beaker/large/ceramic
 	name = "ceramic cup"
-	desc = "A cup that is made from ceramic."
+	desc = "Uma xícara feita de cerâmica."
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "clay_cup"
 	custom_materials = null
@@ -132,14 +132,14 @@
 
 /obj/item/ceramic/brick
 	name = "clay bricks"
-	desc = "A few block of clay, ready to be fired into bricks!"
+	desc = "Um pouco de barro, pronto para ser lançado em tijolos!"
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "claybricks"
 	forge_item = /obj/item/stack/sheet/mineral/stone/five
 
 /obj/structure/throwing_wheel
 	name = "throwing wheel"
-	desc = "A machine that allows you to throw clay."
+	desc = "Uma máquina que permite jogar argila."
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "throw_wheel_empty"
 	density = TRUE
@@ -211,9 +211,9 @@
 	in_use = TRUE
 	var/spinning_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_SPIN
 	if(!has_clay)
-		balloon_alert(user, "there is no clay!")
+		balloon_alert(user, "Não há argila!")
 		return
-	var/user_input = tgui_alert(user, "What would you like to do?", "Choice Selection", list("Create", "Remove"))
+	var/user_input = tgui_alert(user, "O que está fazendo?", "Choice Selection", list("Create", "Remove"))
 	if(!user_input)
 		return
 	switch(user_input)

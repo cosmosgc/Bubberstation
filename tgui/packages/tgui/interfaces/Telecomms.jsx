@@ -55,7 +55,7 @@ export const Telecomms = (props) => {
               }
             />
             <LabeledList.Item
-              label="Identification String"
+              label="Corrente de identificação"
               buttons={
                 <Input
                   width={13}
@@ -154,7 +154,7 @@ export const Telecomms = (props) => {
                 />
               </Section>
             )}
-            <Section title="Linked Network Entities">
+            <Section title="Entidades de Rede Vinculadas">
               <Table>
                 {linked.map((entry) => (
                   <Table.Row key={entry.id} className="candystripe">
@@ -173,7 +173,7 @@ export const Telecomms = (props) => {
                 ))}
               </Table>
             </Section>
-            <Section title="Filtered Frequencies">
+            <Section title="Freqüências filtradas">
               <Table>
                 {frequencies.map((entry) => (
                   <Table.Row key={frequencies.i} className="candystripe">
@@ -257,7 +257,7 @@ export const Telecomms = (props) => {
             </Section>
             {type === 'server' && (
               <Section
-                title="Frequencies Settings"
+                title="Configuração das Frequências"
                 buttons={
                   <Button
                     icon="plus"
@@ -318,7 +318,7 @@ export const Telecomms = (props) => {
                 <LabeledControls m={1}>
                   <Button
                     icon={'plus'}
-                    content={'Add Machine'}
+                    content={'Adicionar máquina'}
                     disabled={!multitool}
                     onClick={() => act('buffer')}
                   />

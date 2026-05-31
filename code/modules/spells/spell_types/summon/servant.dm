@@ -1,7 +1,7 @@
 
 /datum/action/cooldown/spell/summon_mob
 	name = "Summon Servant"
-	desc = "This spell can be used to call your servant, whenever you need it."
+	desc = "Este feitiço pode ser usado para chamar seu servo, sempre que precisar."
 	button_icon_state = "summons"
 
 	school = SCHOOL_CONJURATION
@@ -27,23 +27,23 @@
 
 /datum/action/cooldown/spell/summon_mob/Grant(mob/grant_to)
 	. = ..()
-	owner.balloon_alert(owner, "conjuring a new [servant_title]...")
+	owner.balloon_alert(owner, "conjurando um novo[servant_title]...")
 	find_servant()
 
 /datum/action/cooldown/spell/summon_mob/before_cast(mob/living/invoker, feedback)
 	. = ..()
 	if(!selected_summon)
 		if(summoning_servant)
-			owner.balloon_alert(owner, "still conjuring!")
+			owner.balloon_alert(owner, "Ainda conjurando!")
 			return SPELL_CANCEL_CAST
-		owner.balloon_alert(owner, "conjuring [servant_title]...")
+		owner.balloon_alert(owner, "conjurando[servant_title]...")
 		find_servant()
 		return SPELL_CANCEL_CAST
 
 	var/mob/living/to_summon = summon_weakref?.resolve()
 
 	if(QDELETED(to_summon))
-		to_chat(owner, span_warning("You can't seem to summon your [servant_title] - it seems they've vanished from reality, or never existed in the first place..."))
+		to_chat(owner, span_warning("Você não consegue invocar seu[servant_title]Parece que desapareceram da realidade, ou nunca existiram..."))
 		return SPELL_CANCEL_CAST
 
 /datum/action/cooldown/spell/summon_mob/cast()
@@ -51,7 +51,7 @@
 
 	var/mob/living/to_summon = summon_weakref?.resolve()
 
-	to_summon.visible_message(span_alert("[to_summon] suddenly vanishes into thin air!"), span_alert("You have been summoned to serve!"), span_hear("You hear something teleport away from nearby, off to serve..."))
+	to_summon.visible_message(span_alert("[to_summon]de repente desaparece no ar!"), span_alert("Você foi chamado para servir!"), span_hear("Você ouve algo se teletransportar de perto, para servir..."))
 
 	do_teleport(
 		to_summon,
@@ -64,7 +64,7 @@
 
 /datum/action/cooldown/spell/summon_mob/proc/find_servant()
 	summoning_servant = TRUE //If we find a candidate, this stays true and locks in the summoned servant.
-	var/list/candidate_list = SSpolling.poll_ghost_candidates("Do you want to play as [span_danger("[owner.real_name]'s")] [span_notice("[servant_title]")]?", check_jobban = ROLE_WIZARD, role = ROLE_WIZARD, poll_time = 15 SECONDS, alert_pic = owner, role_name_text = "[servant_title]")
+	var/list/candidate_list = SSpolling.poll_ghost_candidates("Você quer jogar como[span_danger("[owner.real_name]'s")] [span_notice("[servant_title]")]?", check_jobban = ROLE_WIZARD, role = ROLE_WIZARD, poll_time = 15 SECONDS, alert_pic = owner, role_name_text = "[servant_title]")
 	if(!length(candidate_list))
 		summoning_servant = FALSE
 		return
@@ -76,7 +76,7 @@
 
 	message_admins("[ADMIN_LOOKUPFLW(chosen_one)] was spawned as a Magical Servant ([servant_title])")
 	var/turf/spawn_location = get_turf(owner)
-	spawn_location.visible_message(span_userdanger("A Magical [servant_title] appears in a cloud of smoke!"))
+	spawn_location.visible_message(span_userdanger("Um mágico.[servant_title]aparece em uma nuvem de fumaça!"))
 	var/mob/living/carbon/human/human_servant = new(spawn_location)
 	human_servant.equipOutfit(/datum/outfit/butler)
 	do_smoke(0, src, spawn_location)

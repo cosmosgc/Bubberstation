@@ -45,7 +45,7 @@
 		if(living_pawn.has_ally(REF(potential_friend)))
 			continue
 		living_pawn.befriend(potential_friend)
-		to_chat(potential_friend, span_nicegreen("[living_pawn] looks at you with endearing eyes!"))
+		to_chat(potential_friend, span_nicegreen("[living_pawn]Olha para você com olhos cativantes!"))
 		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
 
 	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
@@ -107,7 +107,7 @@
 /datum/pet_command/mine_walls
 	command_name = "Mine"
 	radial_icon_state = "mine"
-	command_desc = "Command your pet to mine down walls."
+	command_desc = "Comande seu animal de estimação para minar paredes."
 	speech_commands = list("mine", "smash")
 
 /datum/pet_command/mine_walls/try_activate_command(mob/living/commander, radial_command)

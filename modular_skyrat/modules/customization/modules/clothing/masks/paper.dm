@@ -1,6 +1,6 @@
 /datum/action/item_action/adjust/papermask
 	name = "Adjust paper mask"
-	desc = "LMB: Change mask face. RMB: Adjust mask."
+	desc = "Troque de máscara. Ajuste a máscara."
 
 /datum/action/item_action/adjust/papermask/Trigger(trigger_flags)
 	. = ..()
@@ -14,7 +14,7 @@
 
 /obj/item/clothing/mask/paper
 	name = "paper mask"
-	desc = "It's true. Once you wear a mask for so long, you forget about who you are. Wonder if that happens with shitty paper ones."
+	desc = "É verdade. Quando usa uma máscara por tanto tempo, esquece quem é. Será que isso acontece com os papéis de merda?"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "mask_paper"
@@ -166,7 +166,7 @@
 /obj/item/clothing/mask/paper/proc/check_pen(datum/source, mob/user)
 	SIGNAL_HANDLER
 	if(!user.is_holding_item_of_type(/obj/item/pen))
-		balloon_alert(user, "must be holding a pen!")
+		balloon_alert(user, "Deve estar segurando uma cana!")
 		return CLICK_ACTION_BLOCKING
 	return NONE
 
@@ -186,10 +186,10 @@
 		wear_hair_over = !wear_hair_over
 		if(wear_hair_over)
 			alternate_worn_layer = BACK_LAYER
-			to_chat(user, "You [is_worn ? "" : "will "]sweep your hair over the mask.")
+			to_chat(user, "Você.[is_worn ? "" : "will "]Varrer o cabelo sobre a máscara.")
 		else
 			alternate_worn_layer = initial(alternate_worn_layer)
-			to_chat(user, "You [is_worn ? "" : "will "]sweep your hair under the mask.")
+			to_chat(user, "Você.[is_worn ? "" : "will "]Varra o cabelo sob a máscara.")
 
 		user.update_worn_mask()
 
@@ -199,7 +199,7 @@
 	if(!user.incapacitated)
 		var/is_worn = user.wear_mask == src
 		strap_hidden = !strap_hidden
-		to_chat(user, "You [is_worn ? "" : "will "][strap_hidden ? "hide" : "show"] the mask strap.")
+		to_chat(user, "Você.[is_worn ? "" : "will "][strap_hidden ? "hide" : "show"]A alça da máscara.")
 
 		user.update_worn_mask()
 

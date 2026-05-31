@@ -1,6 +1,6 @@
 /datum/action/changeling/lesserform
 	name = "Lesser Form"
-	desc = "We debase ourselves and become lesser. We become a monkey. Costs 5 chemicals."
+	desc = "Nós nos rebaixamos e nos tornamos menores. Nós nos tornamos um macaco. Custa 5 produtos químicos."
 	helptext = "The transformation greatly reduces our size, allowing us to slip out of cuffs and climb through vents."
 	button_icon_state = "lesser_form"
 	category = "stealth"
@@ -29,13 +29,13 @@
 /// Stop being a monkey
 /datum/action/changeling/lesserform/proc/unmonkey(mob/living/carbon/human/user)
 	if(user.movement_type & VENTCRAWLING)
-		user.balloon_alert(user, "can't transform in pipes!")
+		user.balloon_alert(user, "Não pode se transformar em tubos!")
 		return FALSE
 	var/datum/antagonist/changeling/changeling = IS_CHANGELING(user)
 	var/datum/changeling_profile/chosen_form = select_form(changeling, user)
 	if(!chosen_form)
 		return FALSE
-	to_chat(user, span_notice("We transform our appearance."))
+	to_chat(user, span_notice("Transformamos nossa aparência."))
 	var/datum/dna/chosen_dna = chosen_form.dna
 	var/datum/species/chosen_species = chosen_dna.species
 	user.humanize(species = chosen_species, instant = transform_instantly)
@@ -53,7 +53,7 @@
 
 /// Become a monkey
 /datum/action/changeling/lesserform/proc/become_monkey(mob/living/carbon/human/user)
-	to_chat(user, span_warning("Our genes cry out!"))
+	to_chat(user, span_warning("Nossos genes gritam!"))
 	user.monkeyize(instant = transform_instantly)
 	return TRUE
 
@@ -65,7 +65,7 @@
 /datum/action/changeling/lesserform/update_button_name(atom/movable/screen/movable/action_button/button, force)
 	if (ismonkey(owner))
 		name = "Human Form"
-		desc = "We change back into a human. Costs 5 chemicals."
+		desc = "Voltamos a ser humanos. Custa 5 produtos químicos."
 	else
 		name = initial(name)
 		desc = initial(desc)

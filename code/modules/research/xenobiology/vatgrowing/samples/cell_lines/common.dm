@@ -5,7 +5,7 @@
 ////////////////////////////////
 
 /datum/micro_organism/cell_line/mouse //nuisance cell line designed to complicate the growing of animal type cell lines.
-	desc = "Murine cells"
+	desc = "Células murinas"
 	required_reagents = list(/datum/reagent/consumable/nutriment/protein)
 	supplementary_reagents = list(
 		/datum/reagent/growthserum = 2,
@@ -29,7 +29,7 @@
 	resulting_atom_count = 2
 
 /datum/micro_organism/cell_line/chicken //basic cell line designed as a good source of protein and eggyolk.
-	desc = "Galliform skin cells."
+	desc = "Células de pele galiformes."
 	required_reagents = list(/datum/reagent/consumable/nutriment/protein)
 
 	supplementary_reagents = list(
@@ -47,7 +47,7 @@
 	resulting_atom = /mob/living/basic/chicken
 
 /datum/micro_organism/cell_line/cow
-	desc = "Bovine stem cells"
+	desc = "Células tronco bovinas"
 	required_reagents = list(
 	/datum/reagent/consumable/nutriment/protein,
 	/datum/reagent/consumable/nutriment,
@@ -66,7 +66,7 @@
 	resulting_atom = /mob/living/basic/cow
 
 /datum/micro_organism/cell_line/moonicorn
-	desc = "Fairyland Bovine stem cells"
+	desc = "Células-tronco bovinas das fadas"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/consumable/nutriment,
@@ -91,7 +91,7 @@
 	resulting_atom = /mob/living/basic/cow/moonicorn
 
 /datum/micro_organism/cell_line/goat
-	desc = "Caprine cells"
+	desc = "Células Caprinas"
 	required_reagents = list(
 	/datum/reagent/consumable/nutriment/protein,
 	/datum/reagent/cellulose
@@ -113,7 +113,7 @@
 	resulting_atom = /mob/living/basic/goat
 
 /datum/micro_organism/cell_line/pig
-	desc = "Porcine stem cells"
+	desc = "Células-tronco suínas"
 	required_reagents = list(
 	/datum/reagent/consumable/nutriment/protein
 	)
@@ -134,7 +134,7 @@
 	resulting_atom = /mob/living/basic/pig
 
 /datum/micro_organism/cell_line/cat
-	desc = "Feliform cells"
+	desc = "Células feliformes"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/consumable/liquidgibs)
@@ -155,7 +155,7 @@
 	resulting_atom = /mob/living/basic/pet/cat
 
 /datum/micro_organism/cell_line/corgi
-	desc = "Canid cells"
+	desc = "Células canidas"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/consumable/liquidgibs)
@@ -174,7 +174,7 @@
 	resulting_atom = /mob/living/basic/pet/dog/corgi
 
 /datum/micro_organism/cell_line/pug
-	desc = "Squat canid cells"
+	desc = "Células canid de agachamento"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/consumable/liquidgibs)
@@ -192,7 +192,7 @@
 	resulting_atom = /mob/living/basic/pet/dog/pug
 
 /datum/micro_organism/cell_line/bear //bears can't really compete directly with more powerful creatures, so i made it possible to grow them real fast.
-	desc = "Ursine cells"
+	desc = "Células de ursina"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/consumable/liquidgibs,
@@ -213,7 +213,7 @@
 	resulting_atom = /mob/living/basic/bear
 
 /datum/micro_organism/cell_line/carp
-	desc = "Cyprinid cells"
+	desc = "Células ciprinídeas"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/consumable/nutriment)
@@ -232,7 +232,7 @@
 	resulting_atom = /mob/living/basic/carp
 
 /datum/micro_organism/cell_line/megacarp
-	desc = "Cartilaginous cyprinid cells"
+	desc = "Células ciprinidas cartilaginosas"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/medicine/c2/synthflesh,
@@ -252,7 +252,7 @@
 	resulting_atom = /mob/living/basic/carp/mega
 
 /datum/micro_organism/cell_line/snake
-	desc = "Ophidic cells"
+	desc = "Células ofídicas"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/consumable/liquidgibs)
@@ -275,7 +275,7 @@
 //////////////////////////////////////////
 
 /datum/micro_organism/cell_line/slime
-	desc = "Slime particles"
+	desc = "Partículas de lama"
 	required_reagents = list(/datum/reagent/consumable/nutriment/protein)
 
 	supplementary_reagents = list(
@@ -293,7 +293,7 @@
 	resulting_atom = /mob/living/basic/slime
 
 /datum/micro_organism/cell_line/blob_spore //nuisance cell line
-	desc = "Immature blob spores"
+	desc = "Esporos de bolas imaturas"
 	required_reagents = list(/datum/reagent/consumable/nutriment/protein)
 
 	supplementary_reagents = list(
@@ -313,7 +313,7 @@
 	resulting_atom = /mob/living/basic/blob_minion/spore/independent
 
 /datum/micro_organism/cell_line/blobbernaut
-	desc = "Blobular myocytes"
+	desc = "Miócitos blobulares"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/medicine/c2/synthflesh,
@@ -332,7 +332,7 @@
 	resulting_atom = /mob/living/basic/blob_minion/blobbernaut/independent
 
 /datum/micro_organism/cell_line/gelatinous_cube
-	desc = "Cubic ooze particles"
+	desc = "Partículas de ozúbico cúbico"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/toxin/slimejelly,
@@ -357,7 +357,7 @@
 	resulting_atom = /mob/living/simple_animal/hostile/ooze/gelatinous
 
 /datum/micro_organism/cell_line/sholean_grapes
-	desc = "Globular ooze particles"
+	desc = "Partículas de ozônio globular"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/toxin/slimejelly,
@@ -387,7 +387,7 @@
 //// MISC ////
 ////////////////////
 /datum/micro_organism/cell_line/cockroach //general nuisance cell line
-	desc = "Blattodeoid anthropod cells"
+	desc = "Células antropodeóides blattodeóides"
 	required_reagents = list(/datum/reagent/consumable/nutriment/protein)
 	supplementary_reagents = list(
 		/datum/reagent/growthserum = 1,
@@ -406,7 +406,7 @@
 	resulting_atom_count = 5
 
 /datum/micro_organism/cell_line/glockroach
-	desc = "Gattodeoid anthropod cells"
+	desc = "Células antropodeóides Gattodeoid"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/drug/maint/powder,
@@ -428,7 +428,7 @@
 	resulting_atom_count = 2
 
 /datum/micro_organism/cell_line/hauberoach
-	desc = "Hattodeoid anthropod cells"
+	desc = "Células antropodeóides"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/consumable/ethanol/beer,
@@ -450,7 +450,7 @@
 	resulting_atom_count = 2
 
 /datum/micro_organism/cell_line/pine
-	desc = "Coniferous plant cells"
+	desc = "Células de plantas coníferas"
 	required_reagents = list(
 		/datum/reagent/ammonia,
 		/datum/reagent/ash,
@@ -471,7 +471,7 @@
 	resulting_atom = /mob/living/basic/tree
 
 /datum/micro_organism/cell_line/vat_beast
-	desc = "Hypergenic xenocytes"
+	desc = "Xenócitos hipergênicos"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/consumable/nutriment/vitamin,
@@ -501,7 +501,7 @@
 
 //randomizes from the netherworld pool!
 /datum/micro_organism/cell_line/netherworld
-	desc = "Aberrant residue"
+	desc = "Resíduo aberrante"
 	required_reagents = list(//theme here: very odd requirements
 		/datum/reagent/water/hollowwater,//geyser reagent, so plentiful when found
 		/datum/reagent/consumable/ethanol/wizz_fizz, //EZ bartender drink, like brainless
@@ -531,7 +531,7 @@
 /datum/micro_organism/cell_line/clown/succeed_growing(obj/machinery/vatgrower/vat)
 	if(vat.reagents.has_reagent(/datum/reagent/toxin/mutagen) && prob(CYTO_SHINY_CHANCE))
 		resulting_atom = pick(/mob/living/basic/clown/mutant, /mob/living/basic/clown/fleshclown)
-		vat.visible_message(span_warning("The biological sample in [vat] mutates into something horrific!"))
+		vat.visible_message(span_warning("A amostra biológica em[vat]se transforma em algo horrível!"))
 	else
 		resulting_atom = initial(resulting_atom)
 	return ..()
@@ -542,7 +542,7 @@
 	supplementary_reagents[/datum/reagent/toxin/mutagen] = 8
 
 /datum/micro_organism/cell_line/clown/bananaclown
-	desc = "Clown bits with banana chunks"
+	desc = "Palhaços com pedaços de banana"
 
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
@@ -565,7 +565,7 @@
 	resulting_atom = /mob/living/basic/clown/banana
 
 /datum/micro_organism/cell_line/clown/glutton
-	desc = "hyperadipogenic clown stem cells"
+	desc = "Células-tronco de palhaço hiperadipogênico"
 
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
@@ -591,7 +591,7 @@
 	resulting_atom = /mob/living/basic/clown/mutant/glutton
 
 /datum/micro_organism/cell_line/clown/longclown
-	desc = "long clown bits"
+	desc = "Longos pedaços de palhaço."
 
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
@@ -614,7 +614,7 @@
 	resulting_atom = /mob/living/basic/clown/longface
 
 /datum/micro_organism/cell_line/frog
-	desc = "anura amphibian cells"
+	desc = "células anura anfíbio"
 	required_reagents = list(/datum/reagent/consumable/nutriment/protein)
 
 	supplementary_reagents = list(
@@ -635,7 +635,7 @@
 	resulting_atom = /obj/effect/spawner/random/frog
 
 /datum/micro_organism/cell_line/axolotl
-	desc = "caudata amphibian cells"
+	desc = "Células de anfíbioscaudatas"
 	required_reagents = list(/datum/reagent/consumable/nutriment/protein)
 
 	supplementary_reagents = list(
@@ -658,7 +658,7 @@
 	resulting_atom = /mob/living/basic/axolotl
 
 /datum/micro_organism/cell_line/walking_mushroom
-	desc = "motile fungal hyphae"
+	desc = "Hifas fúngicas móveis"
 	required_reagents = list(/datum/reagent/consumable/nutriment/protein)
 
 	supplementary_reagents = list(
@@ -683,7 +683,7 @@
 	resulting_atom = /mob/living/basic/mushroom
 
 /datum/micro_organism/cell_line/queen_bee
-	desc = "aphid cells"
+	desc = "Células de afídeos"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/consumable/corn_syrup)
@@ -711,14 +711,14 @@
 	if(grow_count % 2) // every other growth cycle spawns a horde of bees insteads
 		resulting_atom_count = 5
 		resulting_atom = /mob/living/basic/bee
-		vat.visible_message(span_warning("You hear angry buzzing coming from the inside of the vat!"))
+		vat.visible_message(span_warning("Você ouve um zumbido de raiva vindo do interior do tanque!"))
 	else
 		resulting_atom_count = initial(resulting_atom_count)
 		resulting_atom = initial(resulting_atom)
 	return ..()
 
 /datum/micro_organism/cell_line/butterfly
-	desc = "Papilionoidea cells"
+	desc = "Células de Papilionoidea"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 	)
@@ -741,7 +741,7 @@
 	resulting_atom_count = 3
 
 /datum/micro_organism/cell_line/mega_arachnid
-	desc = "pseudoarachnoid cells"
+	desc = "Células pseudoarachnoid"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/ants,
@@ -767,7 +767,7 @@
 	resulting_atom = /mob/living/basic/mega_arachnid
 
 /datum/micro_organism/cell_line/snail
-	desc = "gastropod epithelial cells"
+	desc = "Células epiteliais gastrópodes"
 	required_reagents = list(
 		/datum/reagent/consumable/nutriment/protein,
 		/datum/reagent/iron,

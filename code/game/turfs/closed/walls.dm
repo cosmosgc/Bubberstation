@@ -1,6 +1,6 @@
 /turf/closed/wall
 	name = "wall"
-	desc = "A huge chunk of iron used to separate rooms."
+	desc = "Um enorme pedaço de ferro usado para separar quartos."
 	icon = 'icons/turf/walls/wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
@@ -81,11 +81,11 @@
 /turf/closed/wall/examine(mob/user)
 	. = ..()
 	if(initial(smoothing_flags) & SMOOTH_DIAGONAL_CORNERS)
-		. += span_notice("You could adjust its corners with a <b>wrench</b>.")
+		. += span_notice("Você poderia ajustar seus cantos com um<b>Chave Inglesa.</b>.")
 	. += deconstruction_hints(user)
 
 /turf/closed/wall/proc/deconstruction_hints(mob/user)
-	return span_notice("The outer plating is <b>welded</b> firmly in place.")
+	return span_notice("O revestimento exterior é<b>Soldado.</b>Firmemente nenhum lugar.")
 
 /turf/closed/wall/attack_tk()
 	return
@@ -164,9 +164,7 @@
 	else
 		playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
 		add_dent(WALL_DENT_HIT)
-		user.visible_message(span_danger("[user] smashes \the [src]!"), \
-					span_danger("You smash \the [src]!"), \
-					span_hear("You hear a booming smash!"))
+		user.visible_message(span_danger("[user]Esmaga.\the [src]!"), 					span_danger("Você quebra\the [src]!"), 					span_hear("Você ouve um estrondo!"))
 	return TRUE
 
 /**
@@ -331,6 +329,6 @@
 	else
 		smoothing_flags |= SMOOTH_DIAGONAL_CORNERS
 	QUEUE_SMOOTH(src)
-	to_chat(user, span_notice("You adjust [src]."))
+	to_chat(user, span_notice("Você se ajusta.[src]."))
 	tool.play_tool_sound(src)
 	return ITEM_INTERACT_SUCCESS

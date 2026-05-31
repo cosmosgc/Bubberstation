@@ -301,7 +301,7 @@ SUBSYSTEM_DEF(polling)
 
 	//SKYRAT EDIT ADDITION BEGIN
 	if(is_banned_from(potential_candidate.ckey, BAN_GHOST_TAKEOVER) || is_banned_from(potential_candidate.ckey, BAN_ANTAGONIST))
-		to_chat(potential_candidate, "There was a ghost prompt for: [role], unfortunately you are banned from ghost takeovers.")
+		to_chat(potential_candidate, "Havia um alerta fantasma para:[role]Infelizmente, você está banido das aquisições de fantasmas.")
 		return FALSE
 	//SKYRAT EDIT END
 
@@ -328,7 +328,7 @@ SUBSYSTEM_DEF(polling)
 			if(duplicate_message_check(finishing_poll))
 				alert.update_stacks_overlay()
 			else
-				alert.owner.clear_alert("[finishing_poll.poll_key]_poll_alert")
+				alert.owner.clear_alert("[finishing_poll.poll_key]poll alert")
 
 	//More than enough time for the the `UNTIL()` stopping loop in `poll_candidates()` to be over, and the results to be turned in.
 	QDEL_IN(finishing_poll, 0.5 SECONDS)

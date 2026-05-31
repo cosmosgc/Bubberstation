@@ -7,7 +7,7 @@
 	name = "\improper AR glasses"
 	icon = 'icons/obj/clothing/glasses.dmi'
 	icon_state = "glasses_regular"
-	desc = "A heads-up display that provides important info in (almost) real time. These don't really seem to work"
+	desc = "Um heads-up que fornece informações importantes em (quase) tempo real. Isso não parece funcionar."
 	actions_types = list(/datum/action/item_action/toggle_mode)
 	glass_colour_type = /datum/client_colour/glass_colour/gray
 	/// Defines sound to be played upon mode switching
@@ -141,7 +141,7 @@
 
 /obj/item/clothing/glasses/hud/ar/aviator
 	name = "aviators"
-	desc = "A pair of designer sunglasses with electrochromatic darkening lenses!"
+	desc = "Um par de óculos de sol com lentes escurecidas eletrocromáticas!"
 	worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
 	icon_state = "aviator"
 	off_state = "aviator_off"
@@ -152,7 +152,7 @@
 
 /obj/item/clothing/glasses/fake_sunglasses/aviator
 	name = "aviators"
-	desc = "A pair of designer sunglasses. Doesn't seem like it'll block flashes."
+	desc = "Um par de óculos de sol. Não parece que vai bloquear flashes."
 	worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
 	icon_state = "aviator"
 	icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
@@ -160,7 +160,7 @@
 // Security Aviators
 /obj/item/clothing/glasses/hud/ar/aviator/security
 	name = "security HUD aviators"
-	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records. This HUD has been fitted inside of a pair of sunglasses with toggleable electrochromatic tinting."
+	desc = "Um heads-up que verifica os humanóides em vista e fornece dados precisos sobre seu status de identificação e registros de segurança. Este HUD foi montado dentro de um par de óculos de sol com tintura eletrocromática amovível."
 	icon_state = "aviator_sec"
 	off_state = "aviator_sec_flash"
 	flash_protect = FLASH_PROTECTION_NONE
@@ -172,7 +172,7 @@
 // Medical Aviators
 /obj/item/clothing/glasses/hud/ar/aviator/health
 	name = "medical HUD aviators"
-	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their health status. This HUD has been fitted inside of a pair of sunglasses."
+	desc = "Um heads-up que escaneia os humanóides em vista e fornece dados precisos sobre seu estado de saúde. Este HUD foi colocado dentro de um par de óculos escuros."
 	icon_state = "aviator_med"
 	flash_protect = FLASH_PROTECTION_NONE
 	clothing_traits = list(TRAIT_MEDICAL_HUD)
@@ -181,7 +181,7 @@
 // (Normal) meson scanner Aviators
 /obj/item/clothing/glasses/hud/ar/aviator/meson
 	name = "meson HUD aviators"
-	desc = "A heads-up display used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting conditions. This HUD has been fitted inside of a pair of sunglasses."
+	desc = "Um heads-up usado pela equipe de engenharia e mineração para ver estruturas básicas e layouts de terreno através de paredes, independentemente das condições de iluminação. Este HUD foi colocado dentro de um par de óculos escuros."
 	icon_state = "aviator_meson"
 	flash_protect = FLASH_PROTECTION_NONE
 	clothing_traits = list(TRAIT_MADNESS_IMMUNE)
@@ -192,7 +192,7 @@
 // diagnostic Aviators
 /obj/item/clothing/glasses/hud/ar/aviator/diagnostic
 	name = "diagnostic HUD aviators"
-	desc = "A heads-up display capable of analyzing the integrity and status of robotics and exosuits. This HUD has been fitted inside of a pair of sunglasses."
+	desc = "Uma tela heads-up capaz de analisar a integridade e o status da robótica e exossuits. Este HUD foi colocado dentro de um par de óculos escuros."
 	icon_state = "aviator_diagnostic"
 	flash_protect = FLASH_PROTECTION_NONE
 	clothing_traits = list(TRAIT_DIAGNOSTIC_HUD)
@@ -201,7 +201,7 @@
 // Science Aviators
 /obj/item/clothing/glasses/hud/ar/aviator/science
 	name = "science aviators"
-	desc = "A pair of tacky purple aviator sunglasses that allow the wearer to recognize various chemical compounds with only a glance."
+	desc = "Um par de óculos de sol roxos que permitem ao usuário reconhecer vários compostos químicos com apenas um olhar."
 	icon_state = "aviator_sci"
 	flash_protect = FLASH_PROTECTION_NONE
 	glass_colour_type = /datum/client_colour/glass_colour/purple
@@ -215,31 +215,31 @@
 
 /obj/item/clothing/glasses/hud/ar/aviator/security/prescription
 	name = "prescription security HUD aviators"
-	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records. This HUD has been fitted inside of a pair of sunglasses with toggleable electrochromatic tinting which. Has lenses that help correct eye sight."
+	desc = "Um heads-up que verifica os humanóides em vista e fornece dados precisos sobre seu status de identificação e registros de segurança. Este HUD foi montado dentro de um par de óculos de sol com tintura eletrocromática amovível que. Tem lentes que ajudam a corrigir a visão ocular."
 	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED, TRAIT_SECURITY_HUD)
 	permanent_clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
 /obj/item/clothing/glasses/hud/ar/aviator/health/prescription
 	name = "prescription medical HUD aviators"
-	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their health status. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
+	desc = "Um heads-up que escaneia os humanóides em vista e fornece dados precisos sobre seu estado de saúde. Este HUD foi colocado dentro de um par de óculos de sol que tem lentes que ajudam a corrigir a visão dos olhos."
 	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED, TRAIT_MEDICAL_HUD)
 	permanent_clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
 /obj/item/clothing/glasses/hud/ar/aviator/meson/prescription
 	name = "prescription meson HUD aviators"
-	desc = "A heads-up display used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting conditions. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
+	desc = "Um heads-up usado pela equipe de engenharia e mineração para ver estruturas básicas e layouts de terreno através de paredes, independentemente das condições de iluminação. Este HUD foi colocado dentro de um par de óculos de sol que tem lentes que ajudam a corrigir a visão dos olhos."
 	clothing_traits = list(TRAIT_MADNESS_IMMUNE, TRAIT_NEARSIGHTED_CORRECTED)
 	permanent_clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
 /obj/item/clothing/glasses/hud/ar/aviator/diagnostic/prescription
 	name = "prescription diagnostic HUD aviators"
-	desc = "A heads-up display capable of analyzing the integrity and status of robotics and exosuits. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
+	desc = "Uma tela heads-up capaz de analisar a integridade e o status da robótica e exossuits. Este HUD foi colocado dentro de um par de óculos de sol que tem lentes que ajudam a corrigir a visão dos olhos."
 	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED, TRAIT_DIAGNOSTIC_HUD)
 	permanent_clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
 /obj/item/clothing/glasses/hud/ar/aviator/science/prescription
 	name = "prescription science aviators"
-	desc = "A pair of tacky purple aviator sunglasses that allow the wearer to recognize various chemical compounds with only a glance, which has lenses that help correct eye sight."
+	desc = "Um par de óculos de sol roxos que permitem ao usuário reconhecer vários compostos químicos com apenas um olhar, que tem lentes que ajudam a corrigir a visão ocular."
 	clothing_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_RESEARCH_SCANNER, TRAIT_NEARSIGHTED_CORRECTED)
 	permanent_clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
@@ -247,7 +247,7 @@
 
 /obj/item/clothing/glasses/hud/ar/projector
 	name = "retinal projector"
-	desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than a visor."
+	desc = "Um fone equipado com uma lente de varredura e projetor de retina montado. Não fornece proteção ocular, mas é menos intrusivo que um visor."
 	icon_state = "projector"
 	worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
 	icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'

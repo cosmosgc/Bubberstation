@@ -189,8 +189,8 @@
 
 /datum/custom_order/reagent/drink/handle_get_order(mob/living/basic/robot_customer/customer_pawn, obj/item/order_item)
 	customer_pawn.visible_message(
-		span_danger("[customer_pawn] slurps up [order_item] in one go!"),
-		span_danger("You slurp up [order_item] in one go."),
+		span_danger("[customer_pawn]Esvaziar[order_item]De uma vez!"),
+		span_danger("Você se desfaz.[order_item]De uma vez."),
 	)
 	return ..()
 
@@ -215,7 +215,7 @@
 
 /datum/custom_order/reagent/soup/handle_get_order(mob/living/basic/robot_customer/customer_pawn, obj/item/order_item)
 	customer_pawn.visible_message(
-		span_danger("[customer_pawn] pours [order_item] right down [customer_pawn.p_their()] hatch!"),
-		span_danger("You pour [order_item] down your hatch in one go."),
+		span_danger("[customer_pawn]Derrama.[order_item]Para baixo.[customer_pawn.p_their()]Escotilha!"),
+		span_danger("Você derrama[order_item]Desça sua escotilha de uma vez."),
 	)
 	return ..()

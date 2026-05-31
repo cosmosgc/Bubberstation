@@ -2,7 +2,7 @@
 /// Grants reader the ability to toggle sign language using a HUD button.
 /obj/item/book/granter/sign_language
 	name = "Galactic Standard Sign Language"
-	desc = "A comprehensive guide to learning sign language and finger-spelling."
+	desc = "Um guia abrangente para aprender língua de sinais e ortografia."
 	remarks = list(
 		"Signing comprises a range of techniques...",
 		"Words can be spelled out through sequences of signs...",
@@ -16,12 +16,12 @@
 	if (!iscarbon(user))
 		return
 	if (user.GetComponent(/datum/component/sign_language))
-		to_chat(user, span_warning("You already know all about sign language!"))
+		to_chat(user, span_warning("Você já sabe tudo sobre linguagem de sinais!"))
 		return
 	return TRUE
 
 /obj/item/book/granter/sign_language/recoil(mob/living/user)
-	to_chat(user, span_warning("You can't read it, the pages are too faded and smudged!"))
+	to_chat(user, span_warning("Você não pode ler, as páginas estão muito apagadas e borradas!"))
 
 /// Called when the reading is completely finished. This is where the actual granting should happen.
 /obj/item/book/granter/sign_language/on_reading_finished(mob/living/user)

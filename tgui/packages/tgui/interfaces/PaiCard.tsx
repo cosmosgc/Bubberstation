@@ -45,7 +45,7 @@ export const PaiCard = (props) => {
   const { pai } = data;
 
   return (
-    <Window width={400} height={400} title="pAI Options Menu">
+    <Window width={400} height={400} title="Menu Opções do PAI">
       <Window.Content scrollable>
         {!pai ? <PaiDownload /> : <PaiOptions />}
       </Window.Content>
@@ -71,7 +71,7 @@ const PaiDownload = (props) => {
                 color="good"
                 icon="bell"
                 onClick={() => act('request')}
-                tooltip="Request more candidates from beyond."
+                tooltip="Solicito mais candidatos do além."
               >
                 Request
               </Button>
@@ -118,7 +118,7 @@ const CandidateDisplay = (props: { candidate: Candidate; index: number }) => {
           {name ? (
             <Box color="green">{name}</Box>
           ) : (
-            'None provided - name will be randomized.'
+            'Nenhum, desde que o nome seja aleatório.'
           )}
         </Stack.Item>
         {!!description && (

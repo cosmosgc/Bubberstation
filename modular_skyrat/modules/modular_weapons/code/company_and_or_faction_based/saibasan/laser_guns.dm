@@ -11,9 +11,7 @@
 // Long version, takes both hands to use and doesn't fit in any bags out there
 /obj/item/gun/energy/modular_laser_rifle
 	name = "\improper Hyeseong modular laser rifle"
-	desc = "A popular energy weapon system that can be reconfigured into many different variants on the fly. \
-		Seen commonly amongst the Marsians who produce the weapon, with many different shapes and sizes to fit \
-		the wide variety of modders the planet is home to."
+	desc = "Um sistema de armas de energia popular que pode ser reconfigurado em muitas variantes diferentes na mosca. Visto comumente entre os marcianos que produzem a arma, com muitas formas e tamanhos diferentes para se adequar à grande variedade de modders que o planeta abriga."
 	base_icon_state = "hyeseong"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/saibasan/guns48x.dmi'
 	icon_state = "hyeseong_kill"
@@ -69,13 +67,7 @@
 	/// Keeps track of our soulcatcher component
 	var/datum/component/carrier/soulcatcher/tracked_soulcatcher
 	/// What is this gun's extended examine, we only have to do this because the carbine is a subtype
-	var/expanded_examine_text = "The Hyeseong rifle is the first line of man-portable Marsian weapons platforms \
-		from Cybersun Industries. Like her younger sister weapon, the Hoshi carbine, CI used funding aid provided \
-		by TerraGov to develop a portable weapon fueled by a proprietary generator rumored to be fueled by superstable plasma. \
-		A rugged and hefty weapon, the Hyeseong stars in applications anywhere from medium to long ranges, though struggling \
-		in CQB. Her onboard machine intelligence, at first devised to support the operator and manage the internal reactor, \
-		is shipped with a more professional and understated personality-- since influenced by 'negligence' from users in \
-		wiping the intelligence's memory before resale or transport."
+	var/expanded_examine_text = "The Hyeseong rifle is the first line of man-portable Marsian weapons platforms 		from Cybersun Industries. Like her younger sister weapon, the Hoshi carbine, CI used funding aid provided 		by TerraGov to develop a portable weapon fueled by a proprietary generator rumored to be fueled by superstable plasma. 		A rugged and hefty weapon, the Hyeseong stars in applications anywhere from medium to long ranges, though struggling 		in CQB. Her onboard machine intelligence, at first devised to support the operator and manage the internal reactor, 		is shipped with a more professional and understated personality-- since influenced by 'negligence' from users in 		wiping the intelligence's memory before resale or transport."
 	/// A cooldown for when the weapon has last spoken, prevents messages from getting turbo spammed
 	COOLDOWN_DECLARE(last_speech)
 
@@ -91,8 +83,8 @@
 
 /obj/item/gun/energy/modular_laser_rifle/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
-	. += span_notice("You can <b>Alt-Click</b> this gun to access the <b>internal soulcatcher</b>.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
+	. += span_notice("Você pode.<b>Alt-Click</b>Esta arma para acessar o<b>Apanhador de almas interno</b>.")
 
 /obj/item/gun/energy/modular_laser_rifle/examine_more(mob/user)
 	. = ..()
@@ -241,12 +233,12 @@
 // Power cell for the big rifle
 /obj/item/stock_parts/power_store/cell/hyeseong_internal_cell
 	name = "\improper Hyeseong modular laser rifle internal cell"
-	desc = "These are usually supposed to be inside of the gun, you know."
+	desc = "Normalmente isso deveria estar dentro da arma."
 	maxcharge = STANDARD_CELL_CHARGE * 2
 
 /datum/action/item_action/toggle_personality
 	name = "Toggle Weapon Personality"
-	desc = "Toggles the weapon's personality core. Studies find that turning them off makes them quite sad, however."
+	desc = "Alterna o núcleo de personalidade da arma. Estudos acham que desligá-los os deixa tristes, no entanto."
 	background_icon_state = "bg_mod"
 
 /datum/component/carrier/soulcatcher/modular_laser
@@ -277,13 +269,7 @@
 	)
 	default_selected_mode = "Incinerate"
 	speech_json_file = SHORT_MOD_LASER_SPEECH
-	expanded_examine_text = "The Hoshi carbine is the latest line of man-portable Marsian weapons platforms from \
-		Cybersun Industries. Like her older sister weapon, the Hyeseong rifle, CI used funding aid provided by TerraGov \
-		to develop a portable weapon fueled by a proprietary generator rumored to be fueled by superstable plasma. A \
-		lithe and mobile weapon, the Hoshi stars in close-quarters battle, trickshots, and area-of-effect blasts; though \
-		ineffective at ranged combat. Her onboard machine intelligence, at first devised to support the operator and \
-		manage the internal reactor, was originally shipped with a more energetic personality-- since influenced by 'negligence' \
-		from users in wiping the intelligence's memory before resale or transport."
+	expanded_examine_text = "A carabina Hoshi é a última linha de plataformas de armas marsianas portáteis pela Cybersun Industries. Como sua arma irmã mais velha, o rifle Hyeseong, CI usou ajuda de financiamento fornecida por Terragov para desenvolver uma arma portátil alimentada por um gerador proprietário rumores de ser alimentado por plasma super estável. Uma arma móvel, Hoshi estrela em combate de perto, tiros de truques e explosões de área de efeito, embora ineficaz em combate variado. A inteligência da máquina a bordo, inicialmente concebida para apoiar o operador e gerenciar o reator interno, foi originalmente enviada com uma personalidade mais energética, uma vez que influenciada pela \"negligência\" dos usuários em limpar a memória da inteligência antes da revenda ou transporte."
 
 /obj/item/gun/energy/modular_laser_rifle/carbine/emp_act(severity)
 	. = ..()

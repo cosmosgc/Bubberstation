@@ -23,15 +23,14 @@
 	require_hearing = TRUE
 
 /datum/hallucination/station_message/blob_alert/do_fake_alert()
-	priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", \
-		"Biohazard Alert", ANNOUNCER_OUTBREAK5, players = list(hallucinator))
+	priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", 		"Biohazard Alert", ANNOUNCER_OUTBREAK5, players = list(hallucinator))
 
 /datum/hallucination/station_message/shuttle_dock
 
 /datum/hallucination/station_message/shuttle_dock/do_fake_alert()
 	priority_announce(
 		text = "[SSshuttle.emergency] has docked with the station. You have [DisplayTimeText(SSshuttle.emergency_dock_time)] to board the emergency shuttle.",
-		title = "Emergency Shuttle Arrival",
+		title = "Chegada do ônibus de emergência",
 		sound = ANNOUNCER_SHUTTLEDOCK,
 		sender_override = "Emergency Shuttle Uplink Alert",
 		players = list(hallucinator),
@@ -45,8 +44,7 @@
 	if(!(locate(/mob/living/silicon/ai) in GLOB.silicon_mobs))
 		return CANCEL_FAKE_ALERT
 
-	priority_announce("Hostile runtimes detected in all station systems, please deactivate your AI to prevent possible damage to its morality core.", \
-		"Anomaly Alert", ANNOUNCER_AIMALF, players = list(hallucinator))
+	priority_announce("Hostile runtimes detected in all station systems, please deactivate your AI to prevent possible damage to its morality core.", 		"Anomaly Alert", ANNOUNCER_AIMALF, players = list(hallucinator))
 
 /datum/hallucination/station_message/heretic
 	require_hearing = TRUE
@@ -107,7 +105,7 @@
 
 	priority_announce(
 		text = "Figments from an eldritch god are being summoned by [totally_real_cult_leader.real_name] into [fake_summon_area] from an unknown dimension. Disrupt the ritual at all costs!",
-		title = "[command_name()] Higher Dimensional Affairs",
+		title = "[command_name()]Assunto Dimensional Superiores",
 		sound = 'sound/music/antag/bloodcult/bloodcult_scribe.ogg',
 		has_important_message = TRUE,
 		players = list(hallucinator),
@@ -124,7 +122,7 @@
 
 /datum/hallucination/station_message/supermatter_delam/do_fake_alert()
 	SEND_SOUND(hallucinator, 'sound/effects/magic/charge.ogg')
-	to_chat(hallucinator, span_bolddanger("You feel reality distort for a moment..."))
+	to_chat(hallucinator, span_bolddanger("Você sente a realidade distorcer por um momento..."))
 
 /datum/hallucination/station_message/clock_cult_ark
 	// Clock cult's long gone, but this stays for posterity.

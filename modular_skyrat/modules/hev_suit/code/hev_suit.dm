@@ -31,7 +31,7 @@
 
 /obj/item/clothing/head/helmet/space/hev_suit
 	name = "hazardous environment suit helmet"
-	desc = "The Mark IV HEV suit helmet."
+	desc = "O Capacete de Terno Mark IV."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
 	icon_state = "hev"
@@ -71,7 +71,7 @@
 
 /obj/item/clothing/suit/space/hev_suit
 	name = "hazardous environment suit"
-	desc = "The Mark IV HEV suit protects the user from a number of hazardous environments and has in build ballistic protection."
+	desc = "O traje Mark IV protege o usuário de vários ambientes perigosos e tem em construção proteção balística."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/spacesuit.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/spacesuit.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/spacesuit_digi.dmi'
@@ -235,7 +235,7 @@
 	if(!new_setting)
 		new_setting = HEV_NOTIFICATION_TEXT_AND_VOICE
 
-	to_chat(my_suit.current_user, span_notice("[my_suit] notification mode is now [new_setting]."))
+	to_chat(my_suit.current_user, span_notice("[my_suit]O modo de notificação é agora.[new_setting]."))
 
 	my_suit.send_notifications = new_setting
 
@@ -481,7 +481,7 @@
 		return
 	current_internals_tank = tank
 	ADD_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
-	to_chat(current_user, span_notice("You hear a click as [current_internals_tank] is secured to your suit."))
+	to_chat(current_user, span_notice("Você ouve um clique como[current_internals_tank]Está seguro em seu traje."))
 	playsound(src, atmospherics_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING VITALSIGN MONITORING SYSTEMS...")
@@ -665,7 +665,7 @@
 	timer_id = addtimer(CALLBACK(src, PROC_REF(finished)), 4 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/proc/finished()
-	to_chat(current_user, span_notice("You feel [src] seal around your body, locking it in place!"))
+	to_chat(current_user, span_notice("Você sente[src]Selem ao redor do corpo, tranquem no lugar!"))
 	ADD_TRAIT(src, TRAIT_NODROP, "hev_trait")
 	send_message("ALL SYSTEMS ONLINE, WELCOME [uppertext(current_user.real_name)]", HEV_COLOR_GREEN)
 	playsound(src, safe_day_sound, 50)
@@ -705,7 +705,7 @@
 
 /obj/item/clothing/head/helmet/space/hev_suit/pcv
 	name = "powered combat helmet"
-	desc = "A deprecated combat helmet developed during the early 21th century in Sol-3, with protections rated level III-A. Contains attachment points for AN/PVS night vision goggles."
+	desc = "Um capacete de combate desatualizado desenvolvido no início do século 21 em Sol-3, com proteções classificadas de nível III-A. Contém pontos de fixação para óculos de visão noturna AN/PVS."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_muzzled.dmi'
@@ -772,7 +772,7 @@
 
 /obj/item/clothing/suit/space/hev_suit/pcv
 	name = "powered combat vest"
-	desc = "An electrically charged piece of body armor, the power stiffens the suit's fibers to provide a layer of resilient armor in response to trauma received from kinetic force.  It's fitted with a geiger counter, tactical radio, a heads up display and a combat cocktail injector that allows the user to function normally even after serious injury. The concentration of mass in the lower rear side from the onboard computer makes your ass feel heavy."
+	desc = "Uma armadura carregada eletricamente, o poder endurece as fibras do traje para fornecer uma camada de armadura resistente em resposta ao trauma recebido pela força cinética. Ele está equipado com um contador geiger, rádio tático, um heads up display e um coquetel de combate injetor que permite que o usuário funcione normalmente, mesmo após ferimentos graves. A concentração de massa no lado inferior traseiro do computador de bordo faz sua bunda se sentir pesada."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_digi.dmi'

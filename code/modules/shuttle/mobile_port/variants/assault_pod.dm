@@ -21,7 +21,7 @@
 	inhand_icon_state = "nukietalkie"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-	desc = "Used to select a landing zone for assault pods."
+	desc = "Costumava escolher uma zona de pouso para cápsulas de assalto."
 	var/shuttle_id = "steel_rain"
 	var/dwidth = 3
 	var/dheight = 0
@@ -59,7 +59,7 @@
 		if(S.shuttleId == shuttle_id)
 			S.possible_destinations = "[landing_zone.shuttle_id]"
 
-	to_chat(user, span_notice("Landing zone set."))
+	to_chat(user, span_notice("Zona de pouso pronta."))
 
 	qdel(src)
 
@@ -68,7 +68,7 @@
 	icon = 'icons/obj/scrolls.dmi'
 	icon_state = "blueprints"
 	inhand_icon_state = null
-	desc = "A map of the station used to select where you want to land your shuttle."
+	desc = "Um mapa da estação usado para selecionar onde quer pousar sua nave auxiliar."
 	shuttle_id = "pirate"
 	dwidth = 1
 	dheight = 1

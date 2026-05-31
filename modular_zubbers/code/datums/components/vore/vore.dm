@@ -1,6 +1,6 @@
 /datum/action/innate/vore_mode
 	name = "Vore Mode"
-	desc = "<b>Left Click</b> to switch into vore mode<br><b>Right click</b> to see the vore UI<br>When aggressively grabbing someone in vore mode:<br><ul><li>Click on <b>yourself</b> to eat them</li><li>Click on <b>them</b> to feed yourself to them</li><li>Click on <b>someone else</b> to feed them who you're holding</li></ul>"
+	desc = "<b>Clique à esquerda</b>Para mudar para o modo vore<br><b>Click direito</b>Para ver a real UI<br>Quando agressivamente agarrando alguém em modo vore:<br><ul><li>Clique em<b>você mesmo.</b>para comê-los.</li><li>Clique em<b>Eles.</b>para se alimentar com eles.</li><li>Clique em<b>Outra pessoa.</b>para alimentá-los que você está segurando</li></ul>"
 	click_action = TRUE
 	ranged_mousepointer = 'modular_zubbers/icons/effects/mouse_pointers/vore.dmi'
 	default_button_position = "EAST-4:-10,SOUTH:5" // We're bottom left, it's bottom right, it's perfect
@@ -175,7 +175,7 @@
 		if(selected)
 			var/filename = splittext(selected, " - ")[1]
 			usr << ftp(file("[full_path]/[filename]"))
-			to_chat(usr, "Attempting to send [selected], this may take a few minutes.")
+			to_chat(usr, "Tentando enviar[selected]Isso pode levar alguns minutos.")
 
 /datum/component/vore/proc/save_belly_backup(special_name)
 	var/datum/vore_preferences/vore_prefs = get_parent_vore_prefs()
@@ -201,9 +201,9 @@
 		return
 
 	if(non_owner_modified_settings)
-		var/confirmation = tgui_alert(usr, "Warning: Your bellies were changed by [non_owner_modified_settings]. Do you want to save these changes permanently?", "Dirty Belly Prefs", list("No", "Yes"))
+		var/confirmation = tgui_alert(usr, "Aviso: suas barrigas foram mudadas por[non_owner_modified_settings]Você quer salvar essas mudanças permanentemente?", "Dirty Belly Prefs", list("No", "Yes"))
 		if(confirmation != "Yes")
-			var/restore = tgui_alert(usr, "Do you want to undo all changes by [non_owner_modified_settings] and revert to your preferences? A backup of their changes will be created.", "Revert?", list("No", "Yes"))
+			var/restore = tgui_alert(usr, "Quer desfazer todas as mudanças por[non_owner_modified_settings]e voltar às suas preferências? Um backup de suas mudanças será criado.", "Revert?", list("No", "Yes"))
 			if(restore == "Yes")
 				save_belly_backup("modified_[sanitize_filename(non_owner_modified_settings)]")
 				clear_bellies()
@@ -238,7 +238,7 @@
 		vore_mode_action.build_all_button_icons(UPDATE_BUTTON_BACKGROUND | UPDATE_BUTTON_STATUS)
 
 	if(!check_vore_grab(user))
-		to_chat(user, span_danger("You must have an aggressive grab to do vore."))
+		to_chat(user, span_danger("Você deve ter um ataque agressivo para fazer vore."))
 		return TRUE
 	var/mob/living/pulled = user.pulling
 
@@ -261,36 +261,36 @@
 	var/datum/component/vore/pred_component = pred.GetComponent(/datum/component/vore)
 	if(!pred_component)
 		log_game("[user] tried to feed [prey] to [pred] but pred had vore disabled")
-		to_chat(user, span_danger("[pred] isn't interested in mechanical vore."))
+		to_chat(user, span_danger("[pred]Não está interessado em mecânica."))
 		return FALSE
 	if(!pred_component.selected_belly)
-		to_chat(user, span_danger("[pred] doesn't have a belly selected."))
+		to_chat(user, span_danger("[pred]não tem uma barriga selecionada."))
 		return FALSE
 	if(pred_component.count_prey() >= MAX_PREY)
-		to_chat(user, span_danger("[pred] is too full to eat more."))
+		to_chat(user, span_danger("[pred]está muito cheio para comer mais."))
 		return FALSE
 	var/datum/component/vore/prey_component = prey.GetComponent(/datum/component/vore)
 	if(!prey_component)
 		log_game("[user] tried to feed [prey] to [pred] but prey had vore disabled")
-		to_chat(user, span_danger("[prey] isn't interested in mechanical vore."))
+		to_chat(user, span_danger("[prey]Não está interessado em mecânica."))
 		return FALSE
 	if(MATRYOSHKA_BANNED && prey_component.has_prey())
 		return FALSE
 	if(REQUIRES_PLAYER)
 		if(!pred.client)
 			log_game("[user] tried to feed [prey] to [pred] but pred was logged off")
-			to_chat(user, span_danger("[pred] isn't logged on."))
+			to_chat(user, span_danger("[pred]não está conectado."))
 			return FALSE
 		if(!prey.client)
 			log_game("[user] tried to feed [prey] to [pred] but prey was logged off")
-			to_chat(user, span_danger("[prey] isn't logged on."))
+			to_chat(user, span_danger("[prey]não está conectado."))
 			return FALSE
 	if(NO_DEAD)
 		if(pred.stat)
-			to_chat(user, span_danger("[pred] doesn't look healthy enough to feed."))
+			to_chat(user, span_danger("[pred]Não parece saudável o suficiente para se alimentar."))
 			return FALSE
 		if(prey.stat)
-			to_chat(user, span_danger("[prey] doesn't look healthy enough to eat."))
+			to_chat(user, span_danger("[prey]Não parece saudável o suficiente para comer."))
 			return FALSE
 	if(!is_type_in_typecache(pred, GLOB.vore_allowed_mob_types))
 		return FALSE
@@ -298,10 +298,10 @@
 		return FALSE
 
 	if(prey.buckled)
-		to_chat(user, span_danger("[prey] is buckled."))
+		to_chat(user, span_danger("[prey]Está dobrado."))
 		return FALSE
 	if(prey.has_buckled_mobs())
-		to_chat(user, span_danger("[prey] has buckled mobs."))
+		to_chat(user, span_danger("[prey]tem dobrado multidões."))
 		return FALSE
 
 	// Check pred prefs
@@ -320,15 +320,15 @@
 				if(assume_active_consent || pred == user)
 					allowed_to_pred = TRUE
 				else
-					to_chat(user, span_warning("Please wait, [pred] is deciding if they want to eat [prey]..."))
-					if(tgui_alert(pred, "[user] is trying to feed [prey] to you, are you okay with this?", "Pred Pref", list("Yes", "No")) == "Yes")
+					to_chat(user, span_warning("Por favor, espere.[pred]É decidir se eles querem comer[prey]..."))
+					if(tgui_alert(pred, "[user]está tentando se alimentar.[prey]Para você, você está bem com isso?", "Pred Pref", list("Yes", "No")) == "Yes")
 						allowed_to_pred = TRUE
 			if(PREF_TRINARY_ALWAYS)
 				allowed_to_pred = TRUE
 
 		if(!allowed_to_pred)
 			log_game("[key_name(user)] tried to feed [key_name(prey)] to [key_name(pred)] and was rejected by pred [key_name(pred)]")
-			to_chat(user, span_warning("[pred] isn't interested in being a pred."))
+			to_chat(user, span_warning("[pred]Não está interessado em ser um pred."))
 			return FALSE
 
 	// Check prey prefs
@@ -345,15 +345,15 @@
 				if(assume_active_consent || prey == user)
 					allowed_to_prey = TRUE
 				else
-					to_chat(user, span_warning("Please wait, [prey] is deciding if they want to be fed to [pred]..."))
-					if(tgui_alert(prey, "[user] is trying to feed you to [pred], are you okay with this?", "Prey Pref", list("Yes", "No")) == "Yes")
+					to_chat(user, span_warning("Por favor, espere.[prey]é decidir se eles querem ser alimentados para[pred]..."))
+					if(tgui_alert(prey, "[user]está tentando alimentá-lo para[pred]Você está bem com isso?", "Prey Pref", list("Yes", "No")) == "Yes")
 						allowed_to_prey = TRUE
 			if(PREF_TRINARY_ALWAYS)
 				allowed_to_prey = TRUE
 
 		if(!allowed_to_prey)
 			log_game("[key_name(user)] tried to feed [key_name(prey)] to [key_name(pred)] and was rejected by prey [key_name(prey)]")
-			to_chat(user, span_warning("[prey] isn't interested in being prey."))
+			to_chat(user, span_warning("[prey]Não está interessado em ser presa."))
 			return FALSE
 
 	return TRUE
@@ -370,25 +370,25 @@
 /datum/component/vore/proc/vore_other()
 	var/mob/living/pred = parent
 	if(!check_vore_grab(pred))
-		to_chat(parent, span_danger("You must have a[ishuman(pred) ? "n aggressive" : ""] grab to eat someone."))
+		to_chat(parent, span_danger("Você deve ter um[ishuman(pred) ? "n aggressive" : ""]Pegar para comer alguém."))
 		return
 	var/mob/living/prey = pred.pulling
 	if(!check_vore_preferences(parent, pred, prey))
 		return
 	#ifdef VORE_DELAY
-	pred.visible_message(span_danger("[pred] is attempting to [LOWER_TEXT(selected_belly.insert_verb)] [prey] into their [LOWER_TEXT(selected_belly.name)]!"), pref_to_check = /datum/preference/toggle/erp/vore_enable)
+	pred.visible_message(span_danger("[pred]está tentando[LOWER_TEXT(selected_belly.insert_verb)] [prey]em seus[LOWER_TEXT(selected_belly.name)]!"), pref_to_check = /datum/preference/toggle/erp/vore_enable)
 	if(!do_after(pred, VORE_DELAY, prey))
 		return
 	if(!check_vore_grab(pred) || !check_vore_preferences(parent, pred, prey, assume_active_consent = TRUE))
 		return
 	#endif
-	pred.visible_message(span_danger("[pred] manages to [LOWER_TEXT(selected_belly.insert_verb)] [prey] into their [LOWER_TEXT(selected_belly.name)]!"), pref_to_check = /datum/preference/toggle/erp/vore_enable)
+	pred.visible_message(span_danger("[pred]consegue[LOWER_TEXT(selected_belly.insert_verb)] [prey]em seus[LOWER_TEXT(selected_belly.name)]!"), pref_to_check = /datum/preference/toggle/erp/vore_enable)
 	complete_vore(prey)
 
 /datum/component/vore/proc/feed_self_to_other()
 	var/mob/living/prey = parent
 	if(!check_vore_grab(prey))
-		to_chat(parent, span_danger("You must have a[ishuman(prey) ? "n aggressive" : ""] grab to feed yourself to someone."))
+		to_chat(parent, span_danger("Você deve ter um[ishuman(prey) ? "n aggressive" : ""]Pegue para se alimentar de alguém."))
 		return
 	var/mob/living/pred = prey.pulling
 	if(!check_vore_preferences(parent, pred, prey))
@@ -396,19 +396,19 @@
 	// check_vore_preferences asserts this exists
 	var/datum/component/vore/pred_component = pred.GetComponent(/datum/component/vore)
 	#ifdef VORE_DELAY
-	prey.visible_message(span_danger("[prey] is attempting to make [pred] [LOWER_TEXT(pred_component.selected_belly.insert_verb)] [prey] into their [LOWER_TEXT(pred_component.selected_belly.name)]!"), pref_to_check = /datum/preference/toggle/erp/vore_enable)
+	prey.visible_message(span_danger("[prey]está tentando fazer[pred] [LOWER_TEXT(pred_component.selected_belly.insert_verb)] [prey]em seus[LOWER_TEXT(pred_component.selected_belly.name)]!"), pref_to_check = /datum/preference/toggle/erp/vore_enable)
 	if(!do_after(prey, VORE_DELAY, pred))
 		return
 	if(!check_vore_grab(prey) || !check_vore_preferences(parent, pred, prey, assume_active_consent = TRUE))
 		return
 	#endif
-	prey.visible_message(span_danger("[prey] manages to make [pred] [LOWER_TEXT(pred_component.selected_belly.insert_verb)] [prey] into their [LOWER_TEXT(pred_component.selected_belly.name)]!"), pref_to_check = /datum/preference/toggle/erp/vore_enable)
+	prey.visible_message(span_danger("[prey]consegue fazer[pred] [LOWER_TEXT(pred_component.selected_belly.insert_verb)] [prey]em seus[LOWER_TEXT(pred_component.selected_belly.name)]!"), pref_to_check = /datum/preference/toggle/erp/vore_enable)
 	pred_component.complete_vore(prey)
 
 /datum/component/vore/proc/feed_other_to_other(mob/living/pred)
 	var/mob/living/feeder = parent
 	if(!check_vore_grab(feeder))
-		to_chat(feeder, span_danger("You must have a[ishuman(feeder) ? "n aggressive" : ""] grab to feed someone to someone else."))
+		to_chat(feeder, span_danger("Você deve ter um[ishuman(feeder) ? "n aggressive" : ""]Pegar para alimentar outra pessoa."))
 		return
 	if(!feeder.can_perform_action(pred, pred.interaction_flags_click | FORBID_TELEKINESIS_REACH))
 		return
@@ -418,7 +418,7 @@
 	// check_vore_preferences asserts this exists
 	var/datum/component/vore/pred_component = pred.GetComponent(/datum/component/vore)
 	#ifdef VORE_DELAY
-	feeder.visible_message(span_danger("[feeder] is attempting to make [pred] [LOWER_TEXT(pred_component.selected_belly.insert_verb)] [prey] into their [LOWER_TEXT(pred_component.selected_belly.name)]!"), pref_to_check = /datum/preference/toggle/erp/vore_enable)
+	feeder.visible_message(span_danger("[feeder]está tentando fazer[pred] [LOWER_TEXT(pred_component.selected_belly.insert_verb)] [prey]em seus[LOWER_TEXT(pred_component.selected_belly.name)]!"), pref_to_check = /datum/preference/toggle/erp/vore_enable)
 	if(!do_after(feeder, VORE_DELAY, pred))
 		return
 	if(!check_vore_grab(feeder) || !check_vore_preferences(feeder, pred, prey, assume_active_consent = TRUE))
@@ -426,7 +426,7 @@
 	if(!feeder.can_perform_action(pred, pred.interaction_flags_click | FORBID_TELEKINESIS_REACH))
 		return
 	#endif
-	feeder.visible_message(span_danger("[feeder] manages to make [pred] [LOWER_TEXT(pred_component.selected_belly.insert_verb)] [prey] into their [LOWER_TEXT(pred_component.selected_belly.name)]!"), pref_to_check = /datum/preference/toggle/erp/vore_enable)
+	feeder.visible_message(span_danger("[feeder]consegue fazer[pred] [LOWER_TEXT(pred_component.selected_belly.insert_verb)] [prey]em seus[LOWER_TEXT(pred_component.selected_belly.name)]!"), pref_to_check = /datum/preference/toggle/erp/vore_enable)
 	pred_component.complete_vore(prey)
 
 /datum/component/vore/proc/complete_vore(mob/living/prey)

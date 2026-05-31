@@ -10,8 +10,8 @@
 /datum/smite/curse_of_babel/effect(client/user, mob/living/carbon/target)
 	. = ..()
 	if(!iscarbon(target))
-		to_chat(user, span_warning("This must be used on a carbon mob."), confidential = TRUE)
+		to_chat(user, span_warning("Isso deve ser usado em uma multidão de carbono."), confidential = TRUE)
 		return
 
 	target.apply_status_effect(/datum/status_effect/tower_of_babel, duration)
-	to_chat(target, span_userdanger("The gods have punished you for your sins!"), confidential = TRUE)
+	to_chat(target, span_userdanger("Os deuses te castigaram por seus pecados!"), confidential = TRUE)

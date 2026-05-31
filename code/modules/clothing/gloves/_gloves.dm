@@ -41,7 +41,7 @@
 		. |= COMPONENT_CLEANED|COMPONENT_CLEANED_GAIN_XP
 
 /obj/item/clothing/gloves/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("\the [src] are forcing [user]'s hands around [user.p_their()] neck! It looks like the gloves are possessed!"))
+	user.visible_message(span_suicide("\the [src]estão forçando[user]As mãos ao redor[user.p_their()]pescoço! Parece que as luvas estão possuídas!"))
 	return OXYLOSS
 
 /obj/item/clothing/gloves/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
@@ -80,11 +80,11 @@
 		return
 	if (!can_cut_with(tool))
 		return
-	balloon_alert(user, "cutting off fingertips...")
+	balloon_alert(user, "Cortando as pontas dos dedos...")
 
 	if(!do_after(user, 3 SECONDS, target=src, extra_checks = CALLBACK(src, PROC_REF(can_cut_with), tool)))
 		return
-	balloon_alert(user, "cut fingertips off")
+	balloon_alert(user, "Corte a ponta dos dedos.")
 	qdel(src)
 	user.put_in_hands(new cut_type)
 	return TRUE

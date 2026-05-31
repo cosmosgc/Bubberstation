@@ -10,7 +10,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 	name = "gravity suspension harness"
-	desc = "A bootleg derivative of common Skrellian construction equipment, manufactured and heavily used by Deep Spacer tribes, this harness employs suspensor tech to either nullify or magnify gravity around the wearer."
+	desc = "Um derivado pirata de equipamento de construção Skrellian comum, fabricado e fortemente usado por tribos Deep Spacer, este arnês emprega tecnologia suspensor para anular ou ampliar a gravidade em torno do usuário."
 	slot_flags = ITEM_SLOT_BACK
 	icon_state = "gravityharness-off"
 	worn_icon_state = "gravityharness-off"
@@ -66,7 +66,7 @@
 
 	if(!gravity_on && (!current_cell || current_cell.charge < GRAVITY_FIELD_COST))
 		if(user)
-			to_chat(user, span_warning("The gravitic engine on [src] has no charge."))
+			to_chat(user, span_warning("O motor gravitico ligado.[src]Não tem custo."))
 
 		return FALSE
 
@@ -110,7 +110,7 @@
 
 			user.AddElement(/datum/element/forced_gravity, 0)
 			playsound(src, 'sound/effects/gravhit.ogg', 50)
-			to_chat(user, span_notice("[src] releases a metallic hum, projecting a local anti-gravity field."))
+			to_chat(user, span_notice("[src]libera um zumbido metálico, projetando um campo antigravidade local."))
 			gravity_on = TRUE
 			icon_state = ANTIGRAVITY_STATE
 			worn_icon_state = ANTIGRAVITY_STATE
@@ -123,7 +123,7 @@
 
 			ADD_TRAIT(user, TRAIT_NEGATES_GRAVITY, CLOTHING_TRAIT)
 			playsound(src, 'modular_skyrat/master_files/sound/effects/robot_sit.ogg', 25)
-			to_chat(user, span_notice("[src] shudders and hisses, projecting a local extra-gravity field."))
+			to_chat(user, span_notice("[src]Tremores e assobios, projetando um campo de gravidade extra local."))
 			gravity_on = TRUE
 			icon_state = EXTRAGRAVITY_STATE
 			worn_icon_state = EXTRAGRAVITY_STATE
@@ -132,14 +132,14 @@
 			if(!user.has_gravity() && mode != MODE_GRAVOFF)
 				new /obj/effect/temp_visual/mook_dust/robot(get_turf(src))
 				playsound(src, 'modular_skyrat/master_files/sound/effects/robot_sit.ogg', 25)
-				to_chat(user, span_notice("[src] lets out a soft whine as your suspension field dissipates, gravity around you normalizing."))
+				to_chat(user, span_notice("[src]deixa sair um choro suave enquanto seu campo de suspensão se dissipa, a gravidade ao seu redor normalizando."))
 				mode = MODE_GRAVOFF
 
 			else
 				if(user.has_gravity() && mode != MODE_GRAVOFF)
 					new /obj/effect/temp_visual/mook_dust(get_turf(src))
 					playsound(src, 'sound/effects/gravhit.ogg', 50)
-					to_chat(user, span_notice("[src] lets out a soft whine as your suspension field dissipates, gravity around you normalizing."))
+					to_chat(user, span_notice("[src]deixa sair um choro suave enquanto seu campo de suspensão se dissipa, a gravidade ao seu redor normalizando."))
 					mode = MODE_GRAVOFF
 
 			icon_state = OFF_STATE
@@ -189,7 +189,7 @@
 
 	// cell.use will return FALSE if charge is lower than GRAVITY_FIELD_COST
 	if(!current_cell.use(GRAVITY_FIELD_COST))
-		to_chat(user, span_warning("The gravitic engine cuts off as [current_cell] runs out of charge."))
+		to_chat(user, span_warning("O motor gravitic corta como[current_cell]Fica sem carga."))
 		change_mode(MODE_GRAVOFF)
 
 /obj/item/gravity_harness/get_cell()
@@ -201,27 +201,27 @@
 	. = ..()
 	if(in_range(src, user) || isobserver(user))
 		. += "The gravity harness is [gravity_on ? "on" : "off"] and the field is set to [mode]"
-		. += "The power meter shows [current_cell ? "<b>[round(current_cell.percent(), 0.1)]%</b> charge remaining." : "[span_warning("\"MISSING CELL\"")]"]"
+		. += "O mediador de energia mostra[current_cell ? "<b>[round(current_cell.percent(), 0.1)]%</b> charge remaining." : "[span_warning("\"MISSING CELL\"")]"]"
 
 		if(cell_cover_open)
 			. += "The cell cover is open, exposing the battery."
 			if(!current_cell)
-				. += span_warning("The cell slot is empty, showing bare connectors.")
+				. += span_warning("A cela está vazia, mostrando conectores nus.")
 			else
 				. += "\The [current_cell] is firmly in place."
 
 	return .
 
 /obj/item/gravity_harness/screwdriver_act(mob/living/user, obj/item/screwdriver)
-	balloon_alert(user, "[cell_cover_open ? "closing" : "opening"] cover...")
+	balloon_alert(user, "[cell_cover_open ? "closing" : "opening"]Cubra...")
 	screwdriver.play_tool_sound(src, 100)
 
 	if(!screwdriver.use_tool(src, user, 1 SECONDS))
-		balloon_alert(user, "interrompido!")
+		balloon_alert(user, "Interrompido!")
 		return FALSE
 
 	screwdriver.play_tool_sound(src, 100)
-	balloon_alert(user, "cover [cell_cover_open ? "closed" : "opened"]")
+	balloon_alert(user, "Capa.[cell_cover_open ? "closed" : "opened"]")
 	cell_cover_open = !cell_cover_open
 	return TRUE
 
@@ -233,9 +233,9 @@
 		balloon_alert(user, "sem célula!")
 		return
 
-	balloon_alert(user, "removing cell...")
+	balloon_alert(user, "removendo a célula...")
 	if(!do_after(user, 1.5 SECONDS, target = src))
-		balloon_alert(user, "interrompido!")
+		balloon_alert(user, "Interrompido!")
 		return
 
 	change_mode(MODE_GRAVOFF)
@@ -258,19 +258,19 @@
 		return ..()
 
 	if(!cell_cover_open)
-		balloon_alert(user, "open the cell cover first!")
+		balloon_alert(user, "Abra a tampa da cela primeiro!")
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return ITEM_INTERACT_BLOCKING
 
 	if(current_cell)
-		balloon_alert(user, "cell already installed!")
+		balloon_alert(user, "O celular já está instalado!")
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return ITEM_INTERACT_BLOCKING
 
 	/// Shadow realm? I'm sending you to Lake City, FL!
 	tool.moveToNullspace()
 	current_cell = tool
-	balloon_alert(user, "cell installed")
+	balloon_alert(user, "Célula instalada")
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 	return ITEM_INTERACT_SUCCESS
 

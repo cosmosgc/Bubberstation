@@ -17,7 +17,7 @@ export const ModalContext = createContext<ModalContextType>([
 export function useAlarmModal() {
   const context = useContext(ModalContext);
   if (!context) {
-    throw new Error('useAlarmModal must be used within a ModalProvider');
+    throw new Error('Use AlarmModal deve ser usado dentro de um ModalProvider');
   }
 
   return context;

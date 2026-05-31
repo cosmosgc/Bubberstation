@@ -216,7 +216,7 @@
 
 /obj/projectile/bullet/rebar/supermatter/proc/dust_feedback(atom/target)
 	playsound(get_turf(src), 'sound/effects/supermatter.ogg', 10, TRUE)
-	visible_message(span_danger("[target] is hit by [src], turning [target.p_them()] to dust in a brilliant flash of light!"))
+	visible_message(span_danger("[target]é atingido por[src], Virando[target.p_them()]A poeira em um brilhante clarão de luz!"))
 
 /obj/projectile/bullet/paperball
 	desc = "Doink!"
@@ -225,6 +225,6 @@
 	shrapnel_type = null
 	embed_type = null
 	name = "paper ball"
-	desc = "doink!"
+	desc = "Doink!"
 	damage_type = BRUTE
 	icon_state = "paperball"

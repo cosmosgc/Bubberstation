@@ -12,7 +12,7 @@ export function AirAlarmControlHome(props: Props) {
   const { act, data } = useBackend<AirAlarmData>();
   const { setScreen } = props;
   if (!setScreen) {
-    throw new Error('setScreen is required');
+    throw new Error('SetScreen é necessário.');
   }
 
   const {

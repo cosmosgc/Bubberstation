@@ -1,6 +1,6 @@
 /obj/machinery/nanite_programmer
 	name = "nanite programmer"
-	desc = "A device that can edit nanite program disks to adjust their functionality."
+	desc = "Um dispositivo que pode editar discos de programa nanites para ajustar sua funcionalidade."
 	icon = 'modular_zubbers/icons/obj/machines/nanite_machines.dmi'
 	icon_state = "nanite_programmer"
 	use_power = IDLE_POWER_USE
@@ -28,7 +28,7 @@
 	var/obj/item/disk/nanite_program/new_disk = tool
 	if(!user.transferItemToLoc(new_disk, src))
 		return NONE
-	to_chat(user, span_notice("You insert [new_disk] into [src]"))
+	to_chat(user, span_notice("Você insere[new_disk]Em[src]"))
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 	if(disk)
 		eject(user)
@@ -61,7 +61,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	if(disk && user.can_perform_action(src, !issilicon(user)))
-		to_chat(user, span_notice("You take out [disk] from [src]."))
+		to_chat(user, span_notice("Você tira.[disk]De[src]."))
 		eject(user)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 

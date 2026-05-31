@@ -5,7 +5,7 @@
 
 /obj/item/assembly/voice
 	name = "voice analyzer"
-	desc = "A small electronic device able to record a voice sample, and send a signal when that sample is repeated."
+	desc = "Um pequeno dispositivo eletrônico capaz de gravar uma amostra de voz, e enviar um sinal quando essa amostra é repetida."
 	icon_state = "voice"
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.5)
 	assembly_behavior = ASSEMBLY_TOGGLEABLE_INPUT
@@ -31,7 +31,7 @@
 
 /obj/item/assembly/voice/examine(mob/user)
 	. = ..()
-	. += span_notice("Use a multitool to swap between \"inclusive\", \"exclusive\", \"recognizer\", and \"voice sensor\" mode.")
+	. += span_notice("Use uma ferramenta para trocar\"Inclusive\", \"exclusivo\", \"Reconhecida\", e\"Sensor de voz\"Modo.")
 
 /obj/item/assembly/voice/Hear(atom/movable/speaker, message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range)
 	. = ..()
@@ -98,7 +98,7 @@
 	..()
 	mode %= modes.len
 	mode++
-	to_chat(user, span_notice("You set [src] into [modes[mode]] mode."))
+	to_chat(user, span_notice("Você está pronto.[src]em[modes[mode]]Modo."))
 	listening = FALSE
 	recorded = ""
 	return TRUE

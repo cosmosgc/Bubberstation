@@ -18,7 +18,7 @@
  */
 /obj/item/blueprints
 	name = "station blueprints"
-	desc = "Blueprints of the station. There is a \"Classified\" stamp and several coffee stains on it."
+	desc = "Plantas da estação. Há um\"Confidencial\"Selo e várias manchas de café nele."
 	icon = 'icons/obj/scrolls.dmi'
 	icon_state = "blueprints"
 	inhand_icon_state = "blueprints"
@@ -219,27 +219,27 @@
 		return
 
 	rename_area(area_editing, new_name)
-	user.balloon_alert(user, "area renamed to [new_name]")
+	user.balloon_alert(user, "área renomeada para[new_name]")
 	user.log_message("has renamed [prevname] to [new_name]", LOG_GAME)
 	return TRUE
 
 ///Cyborg blueprints - The same as regular but with a different fluff text.
 /obj/item/blueprints/cyborg
 	name = "station schematics"
-	desc = "A digital copy of the station blueprints stored in your memory."
+	desc = "Uma cópia digital das plantas da estação armazenadas em sua memória."
 	fluffnotice = "Intellectual Property of Nanotrasen. For use in engineering cyborgs only. Wipe from memory upon departure from the station."
 
 ///Golem blueprints - Used to make golem areas that won't give the hazardous area debuffs.
 /obj/item/blueprints/golem
 	name = "land claim"
-	desc = "Use it to build new structures in the wastes."
+	desc = "Use-o para construir novas estruturas nos resíduos."
 	fluffnotice = "In memory of the Liberator's brother, Delaminator, and his Scarlet Macaw-iathan, from which this artifact was stolen."
 	new_area_type = /area/golem
 
 ///Slime blueprints - Makes areas colored and compatible with xenobiology camera consoles, one time use.
 /obj/item/blueprints/slime
 	name = "cerulean prints"
-	desc = "A one use yet of blueprints made of jelly like organic material. Extends the reach of the management console."
+	desc = "Um uso ainda de plantas feitas de geléia como material orgânico. Estende o alcance do console de gerenciamento."
 	fluffnotice = "Copyright by Science Inc. Renaming areas will allow for management consoles to traverse them."
 	color = "#2956B2"
 

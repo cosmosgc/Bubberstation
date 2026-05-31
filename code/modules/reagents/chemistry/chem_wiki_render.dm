@@ -16,7 +16,7 @@ ADMIN_VERB(generate_wikichem_list, R_DEBUG, "Parse Wikichems", "Parse and genera
 		max_length = MAX_MESSAGE_LEN,
 		) //95% of the time, the reagent type is a lowercase, no spaces / underscored version of the name
 	if(!input_text)
-		to_chat(user, "Input was blank!")
+		to_chat(user, "A entrada está em branco!")
 		return
 	text2file(prefix_reaction, "[GLOB.log_directory]/chem_parse.txt")
 	var/list/names = splittext("[input_text]", ",")
@@ -24,13 +24,13 @@ ADMIN_VERB(generate_wikichem_list, R_DEBUG, "Parse Wikichems", "Parse and genera
 	for(var/name in names)
 		var/datum/reagent/reagent = GLOB.chemical_reagents_list[get_chem_id(name)]
 		if(!reagent)
-			to_chat(user, "Could not find [name]. Skipping.")
+			to_chat(user, "Não foi possível encontrar[name]Saltando.")
 			continue
 		//Get reaction
 		var/list/reactions = GLOB.chemical_reactions_list_product_index[reagent.type]
 
 		if(!length(reactions))
-			to_chat(user, "Could not find [name] reaction! Continuing anyways.")
+			to_chat(user, "Não foi possível encontrar[name]Reação! Continuando assim mesmo.")
 			var/single_parse = generate_chemwiki_line(reagent, null)
 			text2file(single_parse, "[GLOB.log_directory]/chem_parse.txt")
 			continue
@@ -138,7 +138,7 @@ ADMIN_VERB(generate_wikichem_list, R_DEBUG, "Parse Wikichems", "Parse and genera
 				else if (sum_change < 0)
 					outstring += "\n<br>H+ producing"
 			else
-				to_chat(usr, "[reaction] doesn't have valid product and reagent volumes! Please tell Fermi.")
+				to_chat(usr, "[reaction]Não tem volumes válidos de produto e reagente! Por favor, diga a Fermi.")
 		else
 			if(reaction.H_ion_release > 0)
 				outstring += "\n<br>H+ consuming"

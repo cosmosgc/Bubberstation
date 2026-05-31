@@ -1,6 +1,6 @@
 /obj/machinery/computer/atmos_alert
 	name = "atmospheric alert console"
-	desc = "Used to monitor the station's air alarms."
+	desc = "Costumava monitorar os alarmes da estação."
 	circuit = /obj/item/circuitboard/computer/atmos_alert
 	icon_screen = "alert:0"
 	icon_keyboard = "atmos_key"
@@ -12,7 +12,7 @@
 /obj/machinery/computer/atmos_alert/examine(mob/user)
 	. = ..()
 	var/obj/item/circuitboard/computer/atmos_alert/my_circuit = circuit
-	. += span_info("The console is set to [my_circuit.station_only ? "track all station and mining alarms" : "track alarms on the same z-level"].")
+	. += span_info("O console está definido para[my_circuit.station_only ? "track all station and mining alarms" : "track alarms on the same z-level"].")
 
 /obj/machinery/computer/atmos_alert/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
@@ -42,11 +42,11 @@
 		if("clear")
 			var/zone = params["zone"]
 			if(zone in priority_alarms)
-				to_chat(usr, span_notice("Priority alarm for [zone] cleared."))
+				to_chat(usr, span_notice("Alarme prioritário para[zone]Limpo."))
 				priority_alarms -= zone
 				. = TRUE
 			if(zone in minor_alarms)
-				to_chat(usr, span_notice("Minor alarm for [zone] cleared."))
+				to_chat(usr, span_notice("Pequeno alarme para[zone]Limpo."))
 				minor_alarms -= zone
 				. = TRUE
 	update_appearance()

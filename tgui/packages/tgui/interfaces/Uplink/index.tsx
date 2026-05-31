@@ -245,7 +245,7 @@ export class Uplink extends Component<any, UplinkState> {
           </Box>
         ),
         population_tooltip:
-          'This item is not cleared for operations performed against stations crewed by fewer than ' +
+          'Este item não está autorizado para operações contra estações tripuladas por menos de' +
           item.population_minimum +
           ' people.',
         insufficient_population: !hasEnoughPop,

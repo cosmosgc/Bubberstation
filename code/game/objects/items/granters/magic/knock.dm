@@ -2,7 +2,7 @@
 	granted_action = /datum/action/cooldown/spell/aoe/knock
 	action_name = "knock"
 	icon_state ="bookknock"
-	desc = "This book is hard to hold closed properly."
+	desc = "Este livro é difícil de manter fechado corretamente."
 	remarks = list(
 		"Open Sesame!",
 		"So THAT'S the magic password!",
@@ -15,5 +15,5 @@
 
 /obj/item/book/granter/action/spell/knock/recoil(mob/living/user)
 	. = ..()
-	to_chat(user, span_warning("You're knocked down!"))
+	to_chat(user, span_warning("Você foi derrubado!"))
 	user.Paralyze(4 SECONDS)

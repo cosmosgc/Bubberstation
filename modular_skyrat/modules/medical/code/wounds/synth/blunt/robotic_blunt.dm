@@ -113,7 +113,7 @@
 	return ..()
 
 /datum/wound/blunt/robotic/get_limb_examine_description()
-	return span_warning("This limb looks loosely held together.")
+	return span_warning("Este membro parece solto.")
 
 // this wound is unaffected by cryoxadone and pyroxadone
 /datum/wound/blunt/robotic/on_xadone(power)
@@ -133,7 +133,7 @@
 		if(istype(held_item, /obj/item/offhand))
 			held_item = victim.get_inactive_held_item()
 		if(held_item && victim.dropItemToGround(held_item))
-			victim.visible_message(span_danger("[victim] drops [held_item] in shock!"), span_warning("<b>The force on your [limb.plaintext_zone] causes you to drop [held_item]!</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
+			victim.visible_message(span_danger("[victim]Gotas[held_item]em choque!"), span_warning("<b>A força em seu[limb.plaintext_zone]Faz você cair.[held_item]!</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
 
 /datum/wound/blunt/robotic/remove_wound(ignore_limb, replaced, destroying)
 	. = ..()
@@ -256,13 +256,13 @@
 		attack_direction = get_dir(victim, attacking_item)
 
 	if (!isnull(attack_direction) && prob(stagger_score * stagger_movement_chance_ratio))
-		to_chat(victim, span_warning("The force of the blow sends you reeling!"))
+		to_chat(victim, span_warning("A força do golpe te faz tremer!"))
 		var/turf/target_loc = get_step(victim, attack_direction)
 		victim.Move(target_loc)
 
 	victim.visible_message(span_warning(message), ignored_mobs = victim)
 	to_chat(victim, span_warning(self_message))
-	victim.balloon_alert(victim, "oscillation! stop moving")
+	victim.balloon_alert(victim, "oscilação! Pare de se mexer.")
 
 	victim.Shake(pixelshiftx = shift, pixelshifty = shift, duration = shake_duration)
 	var/aftershock_delay = (shake_duration * STAGGER_PERCENT_OF_SHAKE_DURATION_TO_AFTERSHOCK_DELAY)
@@ -321,7 +321,7 @@
 		message += "."
 
 	to_chat(victim, span_danger(message))
-	victim.balloon_alert(victim, "oscillation over")
+	victim.balloon_alert(victim, "oscilação sobre")
 
 	oscillating = FALSE
 
@@ -329,13 +329,12 @@
 
 /// Called when percussive maintenance succeeds at its random roll.
 /datum/wound/blunt/robotic/proc/handle_percussive_maintenance_success(attacking_item, mob/living/user)
-	victim.visible_message(span_green("[victim]'s [limb.plaintext_zone] rattles from the impact, but looks a lot more secure!"), \
-		span_green("Your [limb.plaintext_zone] rattles into place!"))
+	victim.visible_message(span_green("[victim]'s[limb.plaintext_zone]chocalhos do impacto, mas parece muito mais seguro!"), 		span_green("Sua[limb.plaintext_zone]chocalhos no lugar!"))
 	remove_wound()
 
 /// Called when percussive maintenance fails at its random roll.
 /datum/wound/blunt/robotic/proc/handle_percussive_maintenance_failure(attacking_item, mob/living/user)
-	to_chat(victim, span_warning("Your [limb.plaintext_zone] rattles around, but you don't sense any sign of improvement."))
+	to_chat(victim, span_warning("Sua[limb.plaintext_zone]Não sente nenhum sinal de melhora."))
 
 /// If our victim has no gravity, the effects of movement are multiplied by this.
 #define VICTIM_MOVED_NO_GRAVITY_EFFECT_MULT 0.5

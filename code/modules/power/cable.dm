@@ -16,7 +16,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 ////////////////////////////////
 /obj/structure/cable
 	name = "power cable"
-	desc = "A flexible, superconducting insulated cable for heavy-duty power transfer."
+	desc = "Um cabo supercondutor flexível para transferência de energia."
 	icon = 'icons/obj/pipes_n_cables/layer_cable.dmi'
 	icon_state = "l2-1-2-4-8-node"
 	color = CABLE_HEX_COLOR_YELLOW
@@ -215,7 +215,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 	if (shock(user, 50))
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user] cuts the cable."), span_notice("You cut the cable."))
+	user.visible_message(span_notice("[user]Corta o cabo."), span_notice("Você cortou o cabo."))
 	investigate_log("was cut by [key_name(usr)] in [AREACOORD(src)]", INVESTIGATE_WIRES)
 	deconstruct()
 	return ITEM_INTERACT_SUCCESS
@@ -274,9 +274,9 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 
 /obj/structure/cable/proc/get_power_info()
 	if(powernet?.avail > 0)
-		return span_danger("Total power: [display_power(powernet.avail)]\nLoad: [display_power(powernet.load)]\nExcess power: [display_power(surplus())]")
+		return span_danger("Potência total:[display_power(powernet.avail)]\nCarregar:[display_power(powernet.load)]\nExcesso de poder:[display_power(surplus())]")
 	else
-		return span_danger("The cable is not powered.")
+		return span_danger("O cabo não está ligado.")
 
 // shock the user with probability prb
 /obj/structure/cable/shock(mob/living/shocking, chance, shock_source, siemens_coeff)
@@ -493,7 +493,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 	amount = MAXCOIL
 	merge_type = /obj/item/stack/cable_coil // This is here to let its children merge between themselves
 	color = CABLE_HEX_COLOR_YELLOW
-	desc = "A coil of insulated power cable."
+	desc = "Uma bobina de cabo isolado."
 	throwforce = 0
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 3
@@ -503,7 +503,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 	slot_flags = ITEM_SLOT_BELT
 	attack_verb_continuous = list("whips", "lashes", "disciplines", "flogs")
 	attack_verb_simple = list("whip", "lash", "discipline", "flog")
-	singular_name = "cable piece"
+	singular_name = "peça de cabo"
 	full_w_class = WEIGHT_CLASS_SMALL
 	usesound = 'sound/items/deconstruct.ogg'
 	cost = 1
@@ -538,7 +538,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 	if(novariants)
 		return
 	. = ..()
-	desc = "A [(amount < 3) ? "piece" : "coil"] of insulated power cable."
+	desc = "A[(amount < 3) ? "piece" : "coil"]de cabo de energia isolado."
 
 /obj/item/stack/cable_coil/proc/set_cable_color(new_color)
 	color = GLOB.cable_colors[new_color]
@@ -554,16 +554,16 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 
 /obj/item/stack/cable_coil/suicide_act(mob/living/user)
 	if(locate(/obj/structure/chair/stool) in get_turf(user))
-		user.visible_message(span_suicide("[user] is making a noose with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user]está fazendo uma forca com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	else
-		user.visible_message(span_suicide("[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user]Está estrangulando[user.p_them()]ego com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/stack/cable_coil/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
 	if(!ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("Você não tem a destreza de fazer isso!"))
 		return FALSE
 	if(user.incapacitated || !user.Adjacent(src))
 		return FALSE
@@ -610,7 +610,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 			target_layer = CABLE_LAYER_3
 		if("Multilayer cable hub")
 			name = "multilayer cable hub"
-			desc = "A multilayer cable hub."
+			desc = "Um cubo de cabo multicamadas."
 			icon = 'icons/obj/pipes_n_cables/structures.dmi'
 			icon_state = "cable_bridge"
 			novariants = TRUE
@@ -619,7 +619,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 			target_layer = CABLE_LAYER_2
 		if("Multi Z layer cable hub")
 			name = "multi z layer cable hub"
-			desc = "A multi-z layer cable hub."
+			desc = "Um cubo de cabo multi-z."
 			icon = 'icons/obj/pipes_n_cables/structures.dmi'
 			icon_state = "cablerelay-broken-cable"
 			novariants = TRUE
@@ -662,8 +662,8 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 		balloon_alert(user, "membro não danificado")
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user] starts to fix some of the wires in [attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [affecting.name]."),
-		span_notice("You start fixing some of the wires in [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
+	user.visible_message(span_notice("[user]Começa a consertar alguns fios[attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [affecting.name]."),
+		span_notice("Você começa a consertar alguns fios[attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
 
 	var/use_delay = repeating ? 1 SECONDS : 0
 	if(user == attacked_humanoid)
@@ -694,20 +694,20 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 		return
 
 	if(!isturf(T) || T.underfloor_accessibility < UNDERFLOOR_INTERACTABLE || !T.can_have_cabling())
-		to_chat(user, span_warning("You can only lay cables on catwalks and plating!"))
+		to_chat(user, span_warning("Você só pode colocar cabos em passarelas e chapeamento!"))
 		return
 
 	if(get_amount() < 1) // Out of cable
-		to_chat(user, span_warning("There is no cable left!"))
+		to_chat(user, span_warning("Não sobrou nenhum cabo!"))
 		return
 
 	if(get_dist(T,user) > 1) // Too far
-		to_chat(user, span_warning("You can't lay cable at a place that far away!"))
+		to_chat(user, span_warning("Você não pode colocar TV a cabo em um lugar tão longe!"))
 		return
 
 	for(var/obj/structure/cable/C in T)
 		if(C.cable_layer & target_layer)
-			to_chat(user, span_warning("There's already a cable at that position!"))
+			to_chat(user, span_warning("Já tem um cabo naquela posição!"))
 			return
 
 	var/obj/structure/cable/C = new target_type(T)
@@ -754,7 +754,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 ///multilayer cable to connect different layers
 /obj/structure/cable/multilayer
 	name = "multilayer cable hub"
-	desc = "A flexible, superconducting insulated multilayer hub for heavy-duty multilayer power transfer."
+	desc = "Um cubo de multicamadas flexível e supercondutor para transferência de energia multicamadas."
 	icon = 'icons/obj/pipes_n_cables/structures.dmi'
 	icon_state = "cable_bridge"
 	cable_layer = CABLE_LAYER_2
@@ -823,13 +823,13 @@ GLOBAL_LIST(hub_radial_layer_list)
 	switch(layer_result)
 		if("Layer 1")
 			CL = CABLE_LAYER_1
-			to_chat(user, span_warning("You toggle L1 connection."))
+			to_chat(user, span_warning("Você alterna a conexão L1."))
 		if("Layer 2")
 			CL = CABLE_LAYER_2
-			to_chat(user, span_warning("You toggle L2 connection."))
+			to_chat(user, span_warning("Você alterna a conexão L2."))
 		if("Layer 3")
 			CL = CABLE_LAYER_3
-			to_chat(user, span_warning("You toggle L3 connection."))
+			to_chat(user, span_warning("Você alterna a conexão L3."))
 
 	cut_cable_from_powernet(FALSE)
 
@@ -845,7 +845,7 @@ GLOBAL_LIST(hub_radial_layer_list)
 	if(!istype(user))
 		return FALSE
 	if(!ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("Você não tem a destreza de fazer isso!"))
 		return FALSE
 	if(user.incapacitated || !user.Adjacent(src))
 		return FALSE
@@ -860,7 +860,7 @@ GLOBAL_LIST(hub_radial_layer_list)
 	auto_propagate_cut_cable(src) // update the powernets
 
 /obj/structure/cable/multilayer/click_ctrl(mob/user)
-	to_chat(user, span_warning("You push the reset button."))
+	to_chat(user, span_warning("Aperte o botão de reiniciar."))
 	addtimer(CALLBACK(src, PROC_REF(Reload)), 10, TIMER_UNIQUE) //spam protect
 	return CLICK_ACTION_SUCCESS
 

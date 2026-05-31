@@ -3,7 +3,7 @@
 
 /obj/item/borg/upgrade
 	name = "borg upgrade module"
-	desc = "Protected by FRM."
+	desc = "Protegido pela RFM."
 	icon = 'icons/mob/silicon/robot_items.dmi'
 	icon_state = "module_general"
 	w_class = WEIGHT_CLASS_SMALL
@@ -26,15 +26,15 @@
 
 /obj/item/borg/upgrade/proc/action(mob/living/silicon/robot/borg, mob/living/user = usr)
 	if(borg.stat == DEAD)
-		to_chat(user, span_warning("[src] will not function on a deceased cyborg!"))
+		to_chat(user, span_warning("[src]Não funcionará em um cyborg morto!"))
 		return FALSE
 	if(model_type && !is_type_in_list(borg.model, model_type))
-		to_chat(borg, span_alert("Upgrade mounting error! No suitable hardpoint detected."))
-		to_chat(user, span_warning("There's no mounting point for the module!"))
+		to_chat(borg, span_alert("Erro de montagem de atualização! Nenhum ponto rígido adequado detectado."))
+		to_chat(user, span_warning("Não há ponto de montagem para o módulo!"))
 		return FALSE
 	if(!allow_duplicates && (locate(type) in borg.upgrades))
-		to_chat(borg, span_alert("Upgrade mounting error! Hardpoint already occupied!"))
-		to_chat(user, span_warning("The mounting point for the module is already occupied!"))
+		to_chat(borg, span_alert("Erro de montagem de atualização! Ponto difícil já ocupado!"))
+		to_chat(user, span_warning("O ponto de montagem do módulo já está ocupado!"))
 		return FALSE
 	// Handles adding/removing items.
 	if(length(items_to_add))
@@ -72,7 +72,7 @@
 
 /obj/item/borg/upgrade/rename
 	name = "cyborg reclassification board"
-	desc = "Used to rename a cyborg."
+	desc = "Costumava renomear um cyborg."
 	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	icon_state = "cyborg_upgrade1"
 	var/heldname = ""
@@ -99,7 +99,7 @@
 
 /obj/item/borg/upgrade/disablercooler
 	name = "cyborg rapid disabler cooling module"
-	desc = "Used to cool a mounted disabler, increasing the potential current in it and thus its recharge rate."
+	desc = "Usado para esfriar um desativador montado, aumentando a corrente potencial nele e, portanto, sua taxa de recarga."
 	icon_state = "module_security"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/security)
@@ -114,11 +114,11 @@
 
 	var/obj/item/gun/energy/disabler/cyborg/disabler = locate() in borg.model.modules
 	if(isnull(disabler))
-		to_chat(user, span_warning("There's no disabler in this unit!"))
+		to_chat(user, span_warning("Não há desativador nesta unidade!"))
 		return FALSE
 	if(disabler.charge_delay <= 2)
-		to_chat(borg, span_warning("A cooling unit is already installed!"))
-		to_chat(user, span_warning("There's no room for another cooling unit!"))
+		to_chat(borg, span_warning("Uma unidade de refrigeração já está instalada!"))
+		to_chat(user, span_warning("Não há espaço para outra unidade de refrigeração!"))
 		return FALSE
 
 	disabler.charge_delay = max(2 , disabler.charge_delay - 4)
@@ -134,7 +134,7 @@
 
 /obj/item/borg/upgrade/thrusters
 	name = "ion thruster upgrade"
-	desc = "An energy-operated thruster system for cyborgs."
+	desc = "Um sistema de propulsão de energia para cyborgs."
 	icon_state = "module_general"
 
 /obj/item/borg/upgrade/thrusters/action(mob/living/silicon/robot/borg, mob/living/user = usr)
@@ -142,7 +142,7 @@
 	if(!.)
 		return .
 	if(borg.ionpulse)
-		to_chat(user, span_warning("This unit already has ion thrusters installed!"))
+		to_chat(user, span_warning("Esta unidade já tem propulsores de íons instalados!"))
 		return FALSE
 
 	borg.ionpulse = TRUE
@@ -156,7 +156,7 @@
 
 /obj/item/borg/upgrade/diamond_drill
 	name = "mining cyborg diamond drill"
-	desc = "A diamond drill replacement for the mining model's standard drill."
+	desc = "Um substituto de broca de diamante para a broca padrão do modelo de mineração."
 	icon_state = "module_miner"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/miner)
@@ -167,7 +167,7 @@
 
 /obj/item/borg/upgrade/soh
 	name = "mining cyborg satchel of holding"
-	desc = "A satchel of holding replacement for mining cyborg's ore satchel module."
+	desc = "Uma mochila de substituição para o módulo de minar cyborg."
 	icon_state = "module_miner"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/miner)
@@ -178,7 +178,7 @@
 
 /obj/item/borg/upgrade/tboh
 	name = "janitor cyborg trash bag of holding"
-	desc = "A trash bag of holding replacement for the janiborg's standard trash bag."
+	desc = "Um saco de lixo para substituir o saco de lixo padrão do janiborg."
 	icon_state = "module_janitor"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/janitor)
@@ -189,7 +189,7 @@
 
 /obj/item/borg/upgrade/amop
 	name = "janitor cyborg advanced mop"
-	desc = "An advanced mop replacement for the janiborg's standard mop."
+	desc = "Um substituto de esfregão avançado para o esfregão padrão do janiborg."
 	icon_state = "module_janitor"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/janitor)
@@ -200,7 +200,7 @@
 
 /obj/item/borg/upgrade/prt
 	name = "janitor cyborg plating repair tool"
-	desc = "A tiny heating device to repair burnt and damaged hull platings with."
+	desc = "Um pequeno dispositivo de aquecimento para reparar revezamentos queimados e danificados."
 	icon_state = "module_janitor"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/janitor)
@@ -210,7 +210,7 @@
 
 /obj/item/borg/upgrade/plunger
 	name = "janitor cyborg plunging tool"
-	desc = "An integrated cyborg retractable plunger. It's meant for plunging things, duh."
+	desc = "Um êmbolo retrátil cyborg integrado. É para mergulhar coisas."
 	icon_state = "module_janitor"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/janitor)
@@ -220,7 +220,7 @@
 
 /obj/item/borg/upgrade/high_capacity_light_replacer
 	name = "janitor cyborg high capacity replacer"
-	desc = "Increases the amount of lights that can be stored in the replacer."
+	desc = "Aumenta a quantidade de luzes que podem ser armazenadas no substituto."
 	icon_state = "module_janitor"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/janitor)
@@ -231,7 +231,7 @@
 
 /obj/item/borg/upgrade/syndicate
 	name = "illegal equipment module"
-	desc = "Unlocks the hidden, deadlier functions of a cyborg."
+	desc = "Desbloqueia as funções ocultas e mortíferas de um cyborg."
 	icon_state = "module_illegal"
 	require_model = TRUE
 
@@ -260,7 +260,7 @@
 
 /obj/item/borg/upgrade/lavaproof
 	name = "mining cyborg lavaproof chassis"
-	desc = "An upgrade kit to apply specialized coolant systems and insulation layers to a mining cyborg's chassis, enabling them to withstand exposure to molten rock and liquid plasma."
+	desc = "Um kit de atualização para aplicar sistemas especializados de refrigeração e camadas de isolamento no chassi de um cyborg mineiro, permitindo-lhes resistir à exposição a rocha derretida e plasma líquido."
 	icon_state = "module_miner"
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | FREEZE_PROOF
 	require_model = TRUE
@@ -281,7 +281,7 @@
 
 /obj/item/borg/upgrade/selfrepair
 	name = "self-repair module"
-	desc = "This module will repair the cyborg over time."
+	desc = "Este módulo vai reparar o cyborg com o tempo."
 	icon_state = "module_general"
 	require_model = TRUE
 	var/repair_amount = -1
@@ -311,10 +311,10 @@
 
 /obj/item/borg/upgrade/selfrepair/ui_action_click()
 	if(on)
-		to_chat(toggle_action.owner, span_notice("You deactivate the self-repair module."))
+		to_chat(toggle_action.owner, span_notice("Desativa o módulo de auto-reparação."))
 		deactivate_sr()
 	else
-		to_chat(toggle_action.owner, span_notice("You activate the self-repair module."))
+		to_chat(toggle_action.owner, span_notice("Você ativa o módulo de auto-reparação."))
 		activate_sr()
 
 
@@ -343,12 +343,12 @@
 
 	if(istype(cyborg) && (cyborg.stat != DEAD) && on)
 		if(!cyborg.cell)
-			to_chat(cyborg, span_alert("Self-repair module deactivated. Please insert power cell."))
+			to_chat(cyborg, span_alert("Módulo de auto-reparação desativado. Por favor, insira célula de energia."))
 			deactivate_sr()
 			return
 
 		if(cyborg.cell.charge < energy_cost * 2)
-			to_chat(cyborg, span_alert("Self-repair module deactivated. Please recharge."))
+			to_chat(cyborg, span_alert("Módulo de auto-reparação desativado. Por favor, recarregue."))
 			deactivate_sr()
 			return
 
@@ -374,14 +374,13 @@
 				msgmode = "critical"
 			else if(cyborg.health < cyborg.maxHealth)
 				msgmode = "normal"
-			to_chat(cyborg, span_notice("Self-repair is active in [span_boldnotice("[msgmode]")] mode."))
+			to_chat(cyborg, span_notice("Auto-reparo está ativo em[span_boldnotice("[msgmode]")]Modo."))
 	else
 		deactivate_sr()
 
 /obj/item/borg/upgrade/hypospray
 	name = "medical cyborg hypospray advanced synthesiser"
-	desc = "An upgrade to the Medical model cyborg's hypospray, allowing it \
-		to produce more advanced and complex medical reagents."
+	desc = "Uma atualização para o hypospray do cyborg modelo médico, permitindo que ele produza reagentes médicos mais avançados e complexos."
 	icon_state = "module_medical"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/medical)
@@ -404,13 +403,11 @@
 
 /obj/item/borg/upgrade/hypospray/expanded
 	name = "medical cyborg expanded hypospray"
-	desc = "An upgrade to the Medical model's hypospray, allowing it \
-		to treat a wider range of conditions and problems."
+	desc = "Uma atualização para o hipospray do modelo médico, permitindo que ele trate uma gama mais ampla de condições e problemas."
 
 /obj/item/borg/upgrade/piercing_hypospray
 	name = "cyborg piercing hypospray"
-	desc = "An upgrade to a cyborg's hypospray, allowing it to \
-		pierce armor and thick material."
+	desc = "Uma atualização para o hipospray de um cyborg, permitindo que ele perfurar armadura e material grosso."
 	icon_state = "module_medical"
 
 /obj/item/borg/upgrade/piercing_hypospray/action(mob/living/silicon/robot/borg, mob/living/user = usr)
@@ -425,7 +422,7 @@
 		found_hypo = TRUE
 
 	if(!found_hypo)
-		to_chat(user, span_warning("There are no installed hypospray modules to upgrade with piercing!")) //check to see if any hyposprays were upgraded
+		to_chat(user, span_warning("Não há módulos de hipospray instalados para atualizar com piercing!")) //check to see if any hyposprays were upgraded
 		return FALSE
 
 	// If we are actually going to install the upgrade due to the presence of compatible modules, make sure their emagged counterparts get upgraded too.
@@ -443,9 +440,7 @@
 
 /obj/item/borg/upgrade/surgery_omnitool
 	name = "cyborg surgical omni-tool upgrade"
-	desc = "An upgrade to the Medical model, upgrading the built-in \
-		surgical omnitool, to be on par with advanced surgical tools, allowing for faster surgery. \
-		It also upgrades their scanner."
+	desc = "Uma atualização para o modelo médico, melhorando o omnitool cirúrgico embutido, para estar ao lado de ferramentas cirúrgicas avançadas, permitindo uma cirurgia mais rápida. Também atualiza o scanner."
 	icon_state = "module_medical"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/medical,  /obj/item/robot_model/syndicate_medical)
@@ -461,7 +456,7 @@
 	ADD_TRAIT(cyborg, TRAIT_FASTMED, REF(src))
 	for(var/obj/item/borg/cyborg_omnitool/medical/omnitool_upgrade in cyborg.model.modules)
 		if(omnitool_upgrade.upgraded)
-			to_chat(user, span_warning("This unit is already equipped with an omnitool upgrade!"))
+			to_chat(user, span_warning("Esta unidade já está equipada com uma atualização omnitool!"))
 			return FALSE
 	for(var/obj/item/borg/cyborg_omnitool/medical/omnitool in cyborg.model.modules)
 		omnitool.set_upgraded(TRUE)
@@ -476,8 +471,7 @@
 
 /obj/item/borg/upgrade/engineering_omnitool
 	name = "cyborg engineering omni-tool upgrade"
-	desc = "An upgrade to the Engineering model, upgrading the built-in \
-		engineering omnitool, to be on par with advanced engineering tools"
+	desc = "Uma atualização para o modelo de engenharia, atualizando o omnitool de engenharia integrado, para estar ao lado de ferramentas de engenharia avançadas."
 	icon_state = "module_engineer"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/engineering,  /obj/item/robot_model/saboteur)
@@ -489,7 +483,7 @@
 		return .
 	for(var/obj/item/borg/cyborg_omnitool/engineering/omnitool_upgrade in cyborg.model.modules)
 		if(omnitool_upgrade.upgraded)
-			to_chat(user, span_warning("This unit is already equipped with an omnitool upgrade!"))
+			to_chat(user, span_warning("Esta unidade já está equipada com uma atualização omnitool!"))
 			return FALSE
 	for(var/obj/item/borg/cyborg_omnitool/engineering/omnitool in cyborg.model.modules)
 		omnitool.set_upgraded(TRUE)
@@ -507,8 +501,7 @@
 
 /obj/item/borg/upgrade/defib
 	name = "medical cyborg defibrillator"
-	desc = "An upgrade to the Medical model, installing a built-in \
-		defibrillator, for on the scene revival."
+	desc = "Uma atualização para o modelo médico, instalando um desfibrilador embutido, para reavivamento em cena."
 	icon_state = "module_medical"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/medical)
@@ -520,7 +513,7 @@
 	var/obj/item/borg/upgrade/defib/backpack/defib_pack = locate() in borg //If a full defib unit was used to upgrade prior, we can just pop it out now and replace
 	if(defib_pack)
 		defib_pack.deactivate(borg, user)
-		to_chat(user, span_notice("The defibrillator pops out of the chassis as the compact upgrade installs."))
+		to_chat(user, span_notice("O desfibrilador sai do chassis enquanto a atualização compacta se instala."))
 	. = ..()
 
 ///A version of the above that also acts as a holder of an actual defibrillator item used in place of the upgrade chip.
@@ -555,9 +548,7 @@
 
 /obj/item/borg/upgrade/processor
 	name = "medical and research cyborg surgical processor" // BUBBER EDIT Research borgs
-	desc = "An upgrade to the Medical and Research model, installing a processor \
-		capable of scanning surgery disks and carrying \
-		out procedures"
+	desc = "Uma atualização para o modelo Médico e Pesquisa, instalando um processador capaz de escanear discos cirúrgicos e realizar procedimentos"
 	icon_state = "module_medical"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/medical, /obj/item/robot_model/syndicate_medical)
@@ -567,7 +558,7 @@
 
 /obj/item/borg/upgrade/ai
 	name = "B.O.R.I.S. module"
-	desc = "Bluespace Optimized Remote Intelligence Synchronization. An uplink device which takes the place of an MMI in cyborg endoskeletons, creating a robotic shell controlled by an AI."
+	desc = "Bluespace Otimizou a sincronização da inteligência remota. Um dispositivo uplink que toma o lugar de um MMI em cyborg endoskeletons, criando uma concha robótica controlada por uma IA."
 	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	icon_state = "boris"
 
@@ -576,7 +567,7 @@
 	if(!.)
 		return .
 	if(borg.key) //You cannot replace a player unless the key is completely removed.
-		to_chat(user, span_warning("Intelligence patterns detected in this [borg.braintype]. Aborting."))
+		to_chat(user, span_warning("Padrões de inteligência detectados neste[borg.braintype]Abortando."))
 		return FALSE
 
 	borg.make_shell(src)
@@ -591,7 +582,7 @@
 
 /obj/item/borg/upgrade/expand
 	name = "borg expander"
-	desc = "A cyborg resizer, it makes a cyborg huge."
+	desc = "Um cyborg resizer, faz um cyborg enorme."
 	icon_state = "module_general"
 
 /obj/item/borg/upgrade/expand/action(mob/living/silicon/robot/borg, mob/living/user = usr)
@@ -600,7 +591,7 @@
 		return FALSE
 
 	if(borg.hasExpanded)
-		to_chat(usr, span_warning("This unit already has an expand module installed!"))
+		to_chat(usr, span_warning("Esta unidade já tem um módulo de expansão instalado!"))
 		return FALSE
 
 	ADD_TRAIT(borg, TRAIT_NO_TRANSFORM, REF(src))
@@ -635,7 +626,7 @@
 
 /obj/item/borg/upgrade/rped
 	name = "engineering cyborg RPED (expanded)"
-	desc = "An expanded rapid part exchange device for the engineering cyborg."
+	desc = "Um dispositivo de troca rápida de partes para o cyborg de engenharia."
 	icon_state = "module_engineer"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
@@ -645,7 +636,7 @@
 
 /obj/item/borg/upgrade/smallrped
 	name = "engineering cyborg RPED"
-	desc = "A regular version of rapid part exchange device for the engineering cyborg."
+	desc = "Uma versão regular do dispositivo de troca rápida de partes para o cyborg de engenharia."
 	icon_state = "module_engineer"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
@@ -659,14 +650,14 @@
 	var/obj/item/borg/upgrade/smallrped/upgrade = locate() in borg
 	var/obj/item/storage/part_replacer/cyborg/small/replacer = locate() in borg.model.modules
 	if(upgrade)
-		to_chat(user, span_notice("The old RPED module is now expanded and gets more space"))
+		to_chat(user, span_notice("O antigo módulo RPED agora está expandido e ganha mais espaço."))
 		replacer.emptyStorage()
 		replacer.forceMove(get_turf(borg))
 		qdel(upgrade)
 
 /obj/item/borg/upgrade/inducer
 	name = "engineering integrated power inducer"
-	desc = "An integrated inducer that can charge a device's internal cell from power provided by the cyborg."
+	desc = "Um indutor integrado que pode carregar a célula interna de um dispositivo da energia fornecida pelo cyborg."
 	icon_state = "module_engineer"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
@@ -675,7 +666,7 @@
 
 /obj/item/borg/upgrade/pinpointer
 	name = "medical cyborg crew pinpointer"
-	desc = "A crew pinpointer module for the medical cyborg. Permits remote access to the crew monitor."
+	desc = "Um módulo de identificação para o ciborgue médico. Permite acesso remoto ao monitor da tripulação."
 	icon_state = "module_medical"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/medical, /obj/item/robot_model/syndicate_medical)
@@ -713,7 +704,7 @@
 
 /obj/item/borg/upgrade/transform
 	name = "borg model picker (Standard)"
-	desc = "Allows you to turn a cyborg into a standard cyborg."
+	desc = "Permite transformar um ciborgue em um ciborgue padrão."
 	icon_state = "module_general"
 	var/obj/item/robot_model/new_model = null
 
@@ -724,13 +715,13 @@
 
 /obj/item/borg/upgrade/transform/clown
 	name = "borg model picker (Clown)"
-	desc = "Allows you to turn a cyborg into a clown, honk."
+	desc = "Permite que você transforme um ciborgue em palhaço, buzine."
 	icon_state = "module_honk"
 	new_model = /obj/item/robot_model/clown
 
 /obj/item/borg/upgrade/engineering_app
 	name = "engineering manipulation apparatus"
-	desc = "An engineering cyborg upgrade allowing for manipulation of circuit boards and other engineering matter."
+	desc = "Uma atualização cyborg de engenharia permitindo manipulação de placas de circuito e outra matéria de engenharia."
 	icon_state = "module_engineer"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
@@ -740,7 +731,7 @@
 
 /obj/item/borg/upgrade/beaker_app
 	name = "beaker storage apparatus"
-	desc = "A supplementary beaker storage apparatus for medical cyborgs."
+	desc = "Um aparelho de armazenamento suplementar de cyborgs médicos."
 	icon_state = "module_medical"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/medical)
@@ -750,7 +741,7 @@
 
 /obj/item/borg/upgrade/bs_syringe
 	name = "advanced syringe"
-	desc = "Bluespace technology that expands capacity of your standard cyborg syringe."
+	desc = "Tecnologia do espaço azul que expande a capacidade de sua seringa cyborg padrão."
 	icon_state = "module_medical"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/medical)
@@ -761,7 +752,7 @@
 
 /obj/item/borg/upgrade/drink_app
 	name = "glass storage apparatus"
-	desc = "A supplementary drinking glass storage apparatus for service cyborgs."
+	desc = "Um aparelho suplementar de armazenamento de vidro para cyborgs de serviço."
 	icon_state = "module_service"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/service)
@@ -771,7 +762,7 @@
 
 /obj/item/borg/upgrade/broomer
 	name = "experimental push broom"
-	desc = "An experimental push broom used for efficiently pushing refuse."
+	desc = "Uma vassoura experimental usada para empurrar eficientemente o lixo."
 	icon_state = "module_janitor"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/janitor)
@@ -781,7 +772,7 @@
 
 /obj/item/borg/upgrade/condiment_synthesizer
 	name = "Service Cyborg Condiment Synthesiser"
-	desc = "An upgrade to the service model cyborg, allowing it to produce solid condiments."
+	desc = "Uma atualização para o cyborg modelo de serviço, permitindo que ele produza condimentos sólidos."
 	icon_state = "module_service"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/service)
@@ -791,7 +782,7 @@
 
 /obj/item/borg/upgrade/silicon_knife
 	name = "Service Cyborg Kitchen Toolset"
-	desc = "An upgrade to the service model cyborg, to help process foods."
+	desc = "Uma atualização para o cyborg modelo de serviço, para ajudar a processar alimentos."
 	icon_state = "module_service"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/service)
@@ -801,7 +792,7 @@
 
 /obj/item/borg/upgrade/service_apparatus
 	name = "Service Cyborg Service Apparatus"
-	desc = "An upgrade to the service model cyborg, to help handle foods and paper."
+	desc = "Uma atualização para o cyborg modelo de serviço, para ajudar a lidar com alimentos e papel."
 	icon_state = "module_service"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/service)
@@ -811,7 +802,7 @@
 
 /obj/item/borg/upgrade/rolling_table
 	name = "Service Cyborg Rolling Table Dock"
-	desc = "An upgrade to the service model cyborg, to help provide mobile service."
+	desc = "Uma atualização para o cyborg modelo de serviço, para ajudar a fornecer serviço móvel."
 	icon_state = "module_service"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/service)
@@ -821,7 +812,7 @@
 
 /obj/item/borg/upgrade/service_cookbook
 	name = "Service Cyborg Cookbook"
-	desc = "An upgrade to the service model cyborg, that lets them create more foods."
+	desc = "Uma atualização para o modelo de serviço cyborg, que os permite criar mais alimentos."
 	icon_state = "module_service"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/service)
@@ -831,7 +822,7 @@
 
 /obj/item/borg/upgrade/botany_upgrade
 	name = "Service Cyborg Botany Tools"
-	desc = "An upgrade to the service model cyborg, that let them do gardening and plant processing."
+	desc = "Uma atualização para o modelo de serviço cyborg, que os deixa fazer jardinagem e processamento de plantas."
 	icon_state = "module_service"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/service)
@@ -841,7 +832,7 @@
 
 /obj/item/borg/upgrade/shuttle_blueprints
 	name = "Engineering Cyborg Shuttle Blueprint Database"
-	desc = "An upgrade to the engineering model cyborg allowing for the construction and expansion of shuttles."
+	desc = "Uma atualização para o modelo de engenharia cyborg permitindo a construção e expansão de vaivéns."
 	icon_state = "module_engineer"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
@@ -853,7 +844,7 @@
 //A reusable tool that can bring borgs back to life. They gotta be repaired first, though.
 /obj/item/borg_restart_board
 	name = "cyborg emergency reboot module"
-	desc = "A reusable firmware reset tool that can force a reboot of a disabled-but-repaired cyborg, bringing it back online."
+	desc = "Uma ferramenta reutilizável de reset de firmware que pode forçar uma reinicialização de um cyborg desativado, mas reparado, trazendo-o de volta on-line."
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	icon_state = "cyborg_upgrade1"
@@ -862,13 +853,13 @@
 	if(!istype(borgo))
 		return ..()
 	if(!borgo.opened)
-		to_chat(user, span_warning("You must access the cyborg's internals!"))
+		to_chat(user, span_warning("Você deve acessar os internos do cyborg!"))
 		return ..()
 	if(borgo.health < 0)
-		to_chat(user, span_warning("You have to repair the cyborg before using this module!"))
+		to_chat(user, span_warning("Você tem que consertar o cyborg antes de usar este módulo!"))
 		return ..()
 	if(!(borgo.stat & DEAD))
-		to_chat(user, span_warning("This cyborg is already operational!"))
+		to_chat(user, span_warning("Este cyborg já está operacional!"))
 		return ..()
 
 	if(borgo.mind)

@@ -23,7 +23,7 @@ export const SkillPanel = (props) => {
   const { act, data } = useBackend();
   const skills = data.skills || [];
   return (
-    <Window title="Manage Skills" width={600} height={500}>
+    <Window title="Gerenciar habilidades" width={600} height={500}>
       <Window.Content scrollable>
         <Section title={skills.playername}>
           <LabeledList>
@@ -48,7 +48,7 @@ export const SkillPanel = (props) => {
                 <ProgressBar value={skill.exp_percent} color="good" />
                 <br />
                 <Button
-                  content="Adjust Exp"
+                  content="Ajustar Exp"
                   onClick={() =>
                     act('adj_exp', {
                       skill: skill.path,
@@ -56,7 +56,7 @@ export const SkillPanel = (props) => {
                   }
                 />
                 <Button
-                  content="Set Exp"
+                  content="Definir Exp"
                   onClick={() =>
                     act('set_exp', {
                       skill: skill.path,
@@ -64,7 +64,7 @@ export const SkillPanel = (props) => {
                   }
                 />
                 <Button
-                  content="Set Level"
+                  content="Defina o nível"
                   onClick={() =>
                     act('set_lvl', {
                       skill: skill.path,

@@ -18,7 +18,7 @@
 
 	var/mob/living/carbon/human/human_target = target
 	var/static/list/dye_options = list(DYE_OPTION_HAIR_COLOR, DYE_OPTION_GRADIENT)
-	var/gradient_or_hair = tgui_alert(user, "What would you like to do?", "Hair Dye Spray", dye_options, autofocus = TRUE)
+	var/gradient_or_hair = tgui_alert(user, "O que gostaria de fazer?", "Hair Dye Spray", dye_options, autofocus = TRUE)
 	if(!gradient_or_hair || !user.can_perform_action(src, NEED_DEXTERITY))
 		return
 
@@ -30,7 +30,7 @@
 			return
 
 
-		human_target.visible_message(span_notice("[user] starts applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair..."), span_notice("[dying_themselves ? "You start" : "[user] starts"] applying hair dye to [dying_themselves ? "your own" : "your"] hair..."), ignored_mobs = user)
+		human_target.visible_message(span_notice("[user]Começa a aplicar tintura no cabelo.[dying_themselves ? "their own" : "[human_target]'s"]Cabelo..."), span_notice("[dying_themselves ? "You start" : "[user] starts"]aplicando tintura de cabelo em[dying_themselves ? "your own" : "your"]Cabelo..."), ignored_mobs = user)
 		if(!dying_themselves)
 			balloon_alert(user, "dyeing...")
 		if(!do_after(usr, 3 SECONDS, target))
@@ -39,7 +39,7 @@
 		human_target.set_haircolor(sanitize_hexcolor(new_color), update = TRUE)
 
 	else
-		var/beard_or_hair = input(user, "What do you want to dye?", "Character Preference")  as null|anything in list("Hair", "Facial Hair")
+		var/beard_or_hair = input(user, "O que você quer pintar?", "Preferência de caráter")  as null|anything in list("Hair", "Cabelo facial")
 		if(!beard_or_hair || !user.can_perform_action(src, NEED_DEXTERITY))
 			return
 
@@ -52,7 +52,7 @@
 		if(!new_grad_color || !user.can_perform_action(src, NEED_DEXTERITY))
 			return
 
-		human_target.visible_message(span_notice("[user] starts applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair..."), span_notice("[dying_themselves ? "You start" : "[user] starts"] applying hair dye to [dying_themselves ? "your own" : "your"] hair..."), ignored_mobs = user)
+		human_target.visible_message(span_notice("[user]Começa a aplicar tintura no cabelo.[dying_themselves ? "their own" : "[human_target]'s"]Cabelo..."), span_notice("[dying_themselves ? "You start" : "[user] starts"]aplicando tintura de cabelo em[dying_themselves ? "your own" : "your"]Cabelo..."), ignored_mobs = user)
 		if(!dying_themselves)
 			balloon_alert(user, "dyeing...")
 		if(!do_after(usr, 3 SECONDS, target))
@@ -67,9 +67,9 @@
 
 	playsound(src, 'sound/effects/spray.ogg', 10, vary = TRUE)
 
-	human_target.visible_message(span_notice("[user] finishes applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair, changing its color!"), span_notice("[dying_themselves ? "You finish" : "[user] finishes"] applying hair dye to [dying_themselves ? "your own" : "your"] hair, changing its color!"), ignored_mobs = user)
+	human_target.visible_message(span_notice("[user]termina de aplicar tintura de cabelo para[dying_themselves ? "their own" : "[human_target]'s"]Cabelo, mudando de cor!"), span_notice("[dying_themselves ? "You finish" : "[user] finishes"]aplicando tintura de cabelo em[dying_themselves ? "your own" : "your"]Cabelo, mudando de cor!"), ignored_mobs = user)
 	if(!dying_themselves)
-		balloon_alert(user, "dyeing complete!")
+		balloon_alert(user, "tingimento completo!")
 
 	uses--
 

@@ -1,6 +1,6 @@
 /obj/item/toy/plush/chaotic_toaster
 	name = "Chaotic toaster"
-	desc = "You arent sure if this plushie want a hug, or harvest your organs, or both."
+	desc = "Você não tem certeza se este plushie quer um abraço, ou colher seus órgãos, ou ambos."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "chaotic_toaster"
 	attack_verb_simple = list("beeped", "booped", "pinged")
@@ -8,26 +8,26 @@
 
 /obj/item/toy/plush/Synth
 	name = "Synth plushie"
-	desc = "An adorable stuffed toy that resembles a very happy synth."
+	desc = "Um adorável brinquedo de pelúcia que se parece com um sintético muito feliz."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "plushie_synth"
 
 /obj/item/toy/plush/mal0
 	name = "Mal0 plushie"
-	desc = "An adorable stuffed toy that resembles something you download on your pda."
+	desc = "Um adorável brinquedo de pelúcia que se parece com algo que você baixa no seu PDA."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "plushie_mal0"
 
 /obj/item/toy/plush/nobl
 	name = "fluffy skog plushie"
-	desc = "It seems to be a small canine, not necessarily latex like you would suspect for some reason, but extremely squishy."
+	desc = "Parece ser um canino pequeno, não necessariamente látex como você suspeitaria por alguma razão, mas extremamente esfomeado."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "nobl"
 	squeak_override = list('modular_zubbers/sound/misc/dog_toy.ogg' = 1)
 
 /obj/item/toy/plush/chirp_plush
 	name = "chirping synth Plushie"
-	desc = "It's warm to the touch."
+	desc = "Está quente ao toque."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "chirp"//Sprited by Kan3/kaylexi
 	attack_verb_continuous = list("chirps", "chimes")
@@ -37,7 +37,7 @@
 
 /obj/item/toy/plush/bigdeer
 	name = "big deer plushie"
-	desc = "An incredibly round deer plush. It appears to have had too many berries for snack time."
+	desc = "Uma pelúcia de cervo incrivelmente redonda. Parece ter tido muitas frutas para o lanche."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "bigdeer" //sprited by Gavla
 	attack_verb_simple = list("puff", "smother")
@@ -48,7 +48,7 @@
 
 /obj/item/toy/plush/bubbledragon
 	name = "bubbledragon plushie"
-	desc = "This plush of a regal dragon seems to clean every surface it touches. When hugged, it squeaks and blows bubbles! An excellent companion for when TamaGoSlep"
+	desc = "Esta pelúcia de dragão real parece limpar cada superfície que toca. Quando abraçada, ela range e sopra bolhas! Um excelente companheiro para quando TamaGoSlep"
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "bubbledragon"
 	squeak_override = list('modular_zubbers/sound/misc/squeakle.ogg' = 1)
@@ -62,27 +62,27 @@
 
 /obj/item/toy/plush/headcrab
 	name = "headcrab plushie"
-	desc = "A small, parasitic alien from the borderworld of Xen, this one is fake."
+	desc = "Um pequeno alienígena parasita da fronteira de Xen, este é falso."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "headcrab"
 
 /obj/item/toy/plush/bellybird
 	name = "bellybird plushie"
-	desc = "It has a tag on the back. 'You seen the opera, now get ready for the theatrical release with the new Bellybird plushie. House Feather's patented design allows this plushie to feel almost lifelike with its synthetic feathers and smoothed scales, glow in the dark eyes and a round tummy to rest your head on, not to mention it comes complete with Autumn the snake tail! Witness Autumn in action as this flexible tail is able to snap her jaws and hiss at any opponent with such realism. Order now for only two low payments of 19.95!'"
+	desc = "Tem uma etiqueta atrás. Você viu a ópera, agora prepare-se para o lançamento teatral com o novo Bellybird plushie. O design patenteado da House Feather permite que essa plushie se sinta quase viva com suas penas sintéticas e balanças suavizadas, brilho nos olhos escuros e uma barriga redonda para descansar sua cabeça, sem mencionar que vem completa com Outono a cauda da cobra! Testemunha Autumn em ação como esta cauda flexível é capaz de quebrar suas mandíbulas e assobios em qualquer oponente com tal realismo. Peça agora apenas dois pagamentos baixos de 19,95!"
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "bellybird"
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/hiss.ogg' = 1)
 
 /obj/item/toy/plush/tiredtesh
 	name = "tired tesh plushie"
-	desc = "He looks very eepy. A tag on the back of the plushie reads, 'Happy birthday, big guy.'"
+	desc = "Ele parece muito estranho. Uma etiqueta na parte de trás diz: \"Feliz aniversário, grandão\"."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "tiredtesh"
 	squeak_override = list('modular_zubbers/sound/emotes/nose_boop.ogg' = 1)
 
 /obj/item/toy/plush/xenoplush
 	name = "xenomorph plushie"
-	desc = "A cute rendition of the notorious xenomorph. Its stuffing is an acidic green colour."
+	desc = "Uma bela interpretação do famoso xenomorfo. Seu recheio é uma cor verde ácida."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "xenoplush"
 	squeak_override = list('sound/mobs/non-humanoids/hiss/hiss6.ogg' = 1)
@@ -94,7 +94,7 @@
 
 /obj/item/toy/plush/xenoplush/xenomaidplush
 	name = "xenomorph maid plushie"
-	desc = "A cute rendition of the notorious xenomorph, but in a maid costume. It's eager to help you clean the station."
+	desc = "Uma bela interpretação do famoso xenomorfo, mas em uma fantasia de empregada. Está ansioso para ajudá-lo a limpar a estação."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "xenomaidplush"
 	attack_verb_continuous = list("polishes", "cleans", "tidies", "washes")
@@ -106,7 +106,7 @@
 
 /obj/item/toy/plush/purplecat
 	name = "Purple cat plushie"
-	desc = "A small, fluffy purple cat with an even purpler collar and bell. It also has a translucent green tail that rubbery to the touch."
+	desc = "Um pequeno gato roxo fofinho com um colarinho roxo e sino. Também tem uma cauda verde translúcida que é de borracha ao toque."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "purplecat" //sprited by Bit_Synergy
 	attack_verb_simple = list("mew", "mow")
@@ -116,7 +116,7 @@
 
 /obj/item/toy/plush/largeredslime
 	name = "large red slime plushie" //Donator item exclusive for Blovy. Sprited by Casey/Keila.
-	desc = "The plushie is squishy to touch and smells strongly of strawberry."
+	desc = "O plushie é mole para tocar e cheira forte de morango."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "blovyplushie"
 	attack_verb_continuous = list("blorbles", "slimes", "absorbs")
@@ -125,7 +125,7 @@
 
 /obj/item/toy/plush/tunafish
 	name = "Piscene Paddle" //Donator plush for Astroturf, sprited by Crumpaloo
-	desc = "Useful for more than just sashimi."
+	desc = "Útil para mais do que sashimi."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "tunafish"
 	attack_verb_continuous = list("slaps", "whacks")
@@ -137,7 +137,7 @@
 
 /obj/item/toy/plush/secoff
 	name = "GalFed Secoff"
-	desc = "A soft toy representing a popular, young officer, representing the alliance between GalFed and NT. The bottom of his work boot says 'Andy'"
+	desc = "Um brinquedo suave representando um jovem oficial popular, representando a aliança entre GalFed e NT. O fundo de sua bota de trabalho diz 'Andy'"
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "secoff"
 	attack_verb_continuous = list("shoots (and misses)", "batongs", "annoys", "harmbatons", "magdumps")
@@ -146,7 +146,7 @@
 
 /obj/item/toy/plush/cescrewsplush
 	name = "Chief Screws Plush" //Plush for Steals The Screwdriver/SteamStucKobold, sprited by stickygoat. and Amorbis
-	desc = "An adorable blue Lizard plushie wearing a Chief Engineer's Uniform, Rocket Boots, and Meson Goggles. It has a strange, silicone pocket on its underside..."
+	desc = "Uma adorável pelúcia azul de lagarto usando um uniforme de engenheiro chefe, Rocket Boots, e óculos Meson. Tem um estranho bolso de silicone na parte de baixo..."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "cescrewsplush"
 	attack_verb_continuous = list("slaps", "plaps", "smears")
@@ -156,10 +156,10 @@
 
 /obj/item/toy/plush/cescrewsplush/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to take a look under her skirt.")
+	. += span_notice("Alt-click para dar uma olhada embaixo da saia.")
 
 /obj/item/toy/plush/cescrewsplush/click_alt(mob/user)
-	user.visible_message(span_notice("[user] turns [src], revealing the hole underneath."), span_notice("You turn [src], revealing a tight, lubed hole."))
+	user.visible_message(span_notice("[user]Vira.[src]Revelando o buraco por baixo."), span_notice("Você vira.[src]Revelando um buraco apertado e lubrificado."))
 	playsound(user, 'sound/effects/blob/blobattack.ogg', 50, TRUE)
 	var/obj/item/toy/plush/fleshlight/screws/toy = new(null)
 	qdel(src)
@@ -168,7 +168,7 @@
 
 /obj/item/toy/plush/internshiba
 	name = "Intern Shiba Plush" //Plush for Kazumi Hasegawa/sprited by Amorbis
-	desc = "An adorable shiba inu plushie of a well-known intern mutt."
+	desc = "Uma adorável shiba inu plushie de um conhecido vira-lata."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "internshiba"
 	attack_verb_continuous = list("baps", "paws", "claws")
@@ -178,7 +178,7 @@
 
 /obj/item/toy/plush/bottomsynf
 	name = "CentCom Synth Fox Plush"
-	desc = "The plush of a synth fox who enjoys being high in the chain of command. Or so it seems. It's wearing its favourite CentCom formal coat."
+	desc = "A pelúcia de uma raposa sintética que gosta de ser alta na cadeia de comando. Parece que sim. Está usando seu casaco formal favorito da CentCom."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "bottomsynf"
 	attack_verb_continuous = list("emags", "hacks", "geckers")
@@ -190,7 +190,7 @@
 // Spontaneously combusts when touched by other plushies
 /obj/item/toy/plush/cat_annoying
 	name = "\improper Annoying Cat Plush"
-	desc = "This plush reeks of Green apples, and HATES physical affection. You can feel it looking at you with a judgmental gaze.."
+	desc = "Este cheiro de maçãs verdes, e odeia afeto físico. Você pode sentir olhando para você com um olhar crítico."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "annoyingcat"
 	gender = MALE
@@ -211,19 +211,18 @@
 
 /obj/item/toy/plush/cat_annoying/proc/combust()
 	src.fire_act(5000)
-	src.visible_message(span_notice("The [src.name] spontaneously combusts from physical affection!"))
+	src.visible_message(span_notice("O[src.name]Combustos espontâneos de afeto físico!"))
 	addtimer(CALLBACK(src, PROC_REF(ash)), 2 SECONDS)
 
 /obj/item/toy/plush/cat_annoying/proc/ash()
 	new /obj/effect/decal/cleanable/ash(get_turf(src))
-	src.visible_message(span_warning("The [src.name] turns to ash!"))
+	src.visible_message(span_warning("O[src.name]Vira Cinzas!"))
 	qdel(src)
 
 // Plush for Vanilla
 /obj/item/toy/plush/suspicious_protogen
 	name = "\improper Suspicious protogen plush"
-	desc = "A suspicious pink looking protogen plushie commonly seen roaming the station almost everywhere, \
-			perfect for cuddling when you feel upset at something."
+	desc = "Uma plushie de protogênio suspeito geralmente visto vagando pela estação quase em todo lugar, perfeito para abraçar quando você se sente chateado com alguma coisa."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "pinkproot"
 	gender = FEMALE
@@ -232,7 +231,7 @@
 // Plush for ZeferwasnttakenFR
 /obj/item/toy/plush/foxy_plush
 	name = "tiny prankster fox plush"
-	desc = "A fox plush made to look like a certain prankster fox. Unsuprisingly it also smells like ocean breeze and a nice warm forge. \ Batteries not included for the plastic arm!"
+	desc = "Uma raposa de pelúcia feita para parecer uma certa raposa brincalhão. Sem surpresa, também cheira a brisa do oceano e uma forja quente. \ Baterias não incluídas para o braço plástico!"
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "FoxyPlush"
 	gender = MALE
@@ -241,7 +240,7 @@
 // Rin/Yayyay007's plush
 /obj/item/toy/plush/squeaky_toy
 	name = "squeaky rat plushie"
-	desc = "A plush made to order of a particular rodent. Smells like an awful lover. \ A small sticker says, TUG MY EARS!"
+	desc = "Uma pelúcia feita para encomendar um roedor em particular. Cheira como um amante horrível. Um pequeno adesivo diz: \"Abaixe meus ouvido!\""
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "squeaky_toy"
 	gender = MALE
@@ -250,7 +249,7 @@
 // Sophie/Cydia's plush
 /obj/item/toy/plush/androiddog
 	name = "android dog plushie"
-	desc = "A faded plushie toy of an android dog. Will not bite. \ A sticker says 'Push me!' on a little heart on the hand."
+	desc = "Um brinquedo de pelúcia de um cão andróide. Não vai morder. \ Um adesivo diz 'Me empurre!' em um pequeno coração na mão."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "androiddog"
 	gender = FEMALE
@@ -259,7 +258,7 @@
 // xPokee's plush
 /obj/item/toy/plush/ghoul
 	name = "intern ghoul plushie"
-	desc = "Even the marketable plushie of this thing is utterly terrifying. At least it's cuddly..."
+	desc = "Até a pelúcia comercial desta coisa é absolutamente assustadora. Pelo menos é fofinho..."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "johnghoul"
 	attack_verb_continuous = list("ghouls")
@@ -269,9 +268,7 @@
 // sprite by Cepha, code by Mitryll
 /obj/item/toy/plush/mold_kobold
 	name = "hemophage awareness kobold"
-	desc = "A cuddly kobold plushie. Produced by Nanotrasen in the soft likeness of a hemophage employee; \
-			focus groups thought this design played less into hemophage stereotypes as opposed to the previous iteration, \
-			Lord Grog the Vile Parasite. A tag on the left leg says 10% of proceeds go to blood banks!"
+	desc = "Um peluche de kobold fofinho. Produzido por Nanotrasen na semelhança suave de um funcionário de hemofagia, grupos focais pensaram que este projeto jogava menos em estereótipos de hemofagia em oposição à iteração anterior, Lorde Grog, o Parasita Vil. Uma etiqueta na perna esquerda diz que 10% dos lucros vão para bancos de sangue!"
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "themold"
 	attack_verb_continuous = list("bites", "curses", "drains")
@@ -281,9 +278,7 @@
 // Plushie for Decinomics
 /obj/item/toy/plush/sinvox
 	name = "sinister vox plushie"
-	desc = "An evil looking toy. It's got a vox beak that splits into mandibles like a bug;\
-		its tail looks like a copy of the xenomorph plushie stitched together poorly.\
-		Property and copyright of VOXXXED Studios..."
+	desc = "Um brinquedo maligno. Ele tem um bico de vox que se divide em mandíbulas como um inseto; sua cauda parece uma cópia do xenomorph plushie costurado mal. Propriedade e direitos autorais dos estúdios VOXXED..."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "sinvox"
 	attack_verb_continuous = list("hisses at", "bites", "mauls", "quills", "tail stabs")
@@ -296,7 +291,7 @@
 
 /obj/item/toy/plush/mothroach_plush
 	name = "mothroach plush"
-	desc = "A plushie featuring the likeness everyone's favorite genetic freak-turned station pet. Do not soak it in milk and throw it against a wall."
+	desc = "Uma pelúcia com a semelhança do animal de estimação de todos. Não encharque no leite e jogue contra uma parede."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "mothroach"
 	attack_verb_continuous = list("mothroaches", "moths", "roaches")
@@ -306,13 +301,13 @@
 
 /obj/item/toy/plush/moth/lovers
 	name = "lovers moth plushie"
-	desc = "An adorable mothperson plushie. It's a lovely bug!"
+	desc = "Uma adorável peluche mariposa. É um inseto adorável!"
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "moffplush_lovers"
 
 /obj/item/toy/plush/lazy_synth
 	name = "lazy synth plush"
-	desc = "A soft plush of an extremely lazy synth. Might be found loafing in random places."
+	desc = "Uma pelúcia macia de um sintetizador extremamente preguiçoso. Pode ser encontrado em lugares aleatórios."
 	attack_verb_continuous = list("squishes", "loafs on", "sleeps on", "eggs")
 	attack_verb_simple = list("squish", "loaf on", "sleep on", "egg")
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
@@ -323,7 +318,7 @@
 	name = "strange goat plushie"
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "goat"
-	desc = "Despite its cuddly appearance and plush nature, it will beat you up all the same. Goats never change."
+	desc = "Apesar de sua aparência fofinha e sua natureza de pelúcia, vai bater em você da mesma forma. Cabras nunca mudam."
 	squeak_override = list('sound/items/weapons/punch1.ogg'=1)
 	/// Whether or not this goat is currently taking in a monsterous doink
 	var/going_hard = FALSE
@@ -341,15 +336,15 @@
 	if(!istype(fat_dart))
 		return ..()
 	if(splat)
-		to_chat(user, span_notice("[src] doesn't seem to be able to go hard right now."))
+		to_chat(user, span_notice("[src]Não parece ser capaz de ir duro agora."))
 		return
 	if(going_hard)
-		to_chat(user, span_notice("[src] is already going too hard!"))
+		to_chat(user, span_notice("[src]Já está indo muito duro!"))
 		return
 	if(!fat_dart.lit)
-		to_chat(user, span_notice("You'll have to light that first!"))
+		to_chat(user, span_notice("Você vai ter que acender isso primeiro!"))
 		return
-	to_chat(user, span_notice("You put [fat_dart] into [src]'s mouth."))
+	to_chat(user, span_notice("Você colocou[fat_dart]Em[src]Uma boca."))
 	qdel(fat_dart)
 	going_hard = TRUE
 	update_icon(UPDATE_OVERLAYS)
@@ -363,15 +358,15 @@
 		update_icon(UPDATE_OVERLAYS)
 	icon_state = "goat_splat"
 	playsound(src, SFX_DESECRATION, 50, TRUE)
-	visible_message(span_danger("[src] gets absolutely flattened!"))
+	visible_message(span_danger("[src]Fica completa achatado!"))
 	splat = TRUE
 
 /obj/item/toy/plush/goatplushie/examine()
 	. = ..()
 	if(splat)
-		. += span_notice("[src] might need medical attention.")
+		. += span_notice("[src]Pode precisar de cuidados médicos.")
 	if(going_hard)
-		. += span_notice("[src] is going so hard, feel free to take a picture.")
+		. += span_notice("[src]Está indo tão difícil, sinta-se livre para tirar uma foto.")
 
 /obj/item/toy/plush/goatplushie/update_overlays()
 	. = ..()
@@ -380,7 +375,7 @@
 
 /obj/item/toy/plush/sunny_plush
 	name = "weighty moostoat plushie"
-	desc = "A soft, weighted plushie of a moostoat. Very comfortable to hug and have lying on you. It smells of fresh milk."
+	desc = "Um mostoat macio e pesado. Muito confortável para abraçar e ter deitado em você. Cheira a leite fresco."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "sunny_plush"
 	squeak_override = list(
@@ -392,7 +387,7 @@
 //Original Design by Cepha
 /obj/item/toy/plush/amber_shadekin_plush
 	name = "Squishy Shadekin Plush"
-	desc = "A plushie featuring the likeness of a certain self declared mad genius shadekin. It smells faintly of cinnamon."
+	desc = "Uma pelúcia com a semelhança de um certo gênio louco, Shakekin. Cheira levemente a canela."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "amberalert"
 	attack_verb_continuous = list("mars at", "bites", "chomps", "paws at", "fwoomps", "marmars")
@@ -403,7 +398,7 @@
 //Marketable Plushie of Vega VI, made by Ssalty
 /obj/item/toy/plush/ethereal
 	name = "businessman ethereal plush"
-	desc = "A plushie showing a succesful ethereal, manufactured in attempts to raise visibility of Sproutians and their culture, and 3% are going to charity! Its shoe-straps can be tugged on to activate the voicebox, playing real ethereal noises!"
+	desc = "Uma plushie mostrando um sucesso etéreo, fabricado em tentativas de aumentar a visibilidade dos Sproutianos e sua cultura, e 3% vão para a caridade! Suas sapatilhas podem ser puxadas para ativar a caixa de voz, tocando ruídos etéreos reais!"
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "ethereal"
 	attack_verb_continuous = list("businesscard-slaps", "financially educates", "threatens to sue", "zaps", "bzzts", "buzzes")
@@ -414,7 +409,7 @@
 /obj/item/toy/plush/cello_plush
 	var/shirt = TRUE
 	name = "concerningly large merseed plush"
-	desc = "A large, silky-soft plushie of a merseed dragon. When you hug it, you can't get your arms around it no matter how hard you try."
+	desc = "Um grande e suave plushie de um dragão de merseed. Quando você abraça, não consegue abraçar, não importa o quanto tente."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	lefthand_file = 'modular_zubbers/icons/mob/inhands/items/plushes_lefthand.dmi'
 	righthand_file = 'modular_zubbers/icons/mob/inhands/items/plushes_righthand.dmi'
@@ -430,12 +425,12 @@
 /obj/item/toy/plush/cello_plush/click_alt(mob/user)
 	shirt = !shirt
 	if(!shirt)
-		balloon_alert(user, "tummy shown...")
+		balloon_alert(user, "Uma barra Mostrou...")
 		icon_state = "celloplush-alt"
 		inhand_icon_state = "celloplush-alt"
 
 	else
-		balloon_alert(user, "tummy tucked away...")
+		balloon_alert(user, "Barriga Escondida...")
 		icon_state = "celloplush"
 		inhand_icon_state = "celloplush-shirt"
 
@@ -451,7 +446,7 @@
 	light_color = COLOR_LIGHT_ORANGE
 	light_on = FALSE
 	name = "extra hot moth plush"
-	desc = "An action plush of a mothic engineer. Comes with family-friendly, self-igniting action! Not a viable source of heat, or fire. "
+	desc = "Uma pelúcia de ação de um engenheiro de traça. Vem com ação familiar, auto-ignorante! Não é uma fonte viável de calor, ou fogo."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	lefthand_file = 'modular_zubbers/icons/mob/inhands/items/plushes_lefthand.dmi'
 	righthand_file = 'modular_zubbers/icons/mob/inhands/items/plushes_righthand.dmi'
@@ -488,7 +483,7 @@
 // Props to Seijan-Etroix for helping with the design!
 /obj/item/toy/plush/tian_plush
 	name = "bureaucratic goat plush"
-	desc = "A giant, weighted plushie of a goat-carp bureaucrat, who seems to be very hungry for paper(work). It's nearly impossible to get your arms all the way around her.<br><br><span style=color:#6685F5><i>A tag on the back reads 'Comfort provided under official licence.'</i></span>"
+	desc = "Um gigante, peeed plushie de um bode carp burocrata, que parece estar com muita fome de papel (trabalho). É quase impossível abraçar ela.<br><br><span style=color:#6685F5><i>Uma etiqueta na parte de trás diz 'Comfort fornecido sob licença oficial.'</i></span>"
 	attack_verb_continuous = list("stomps", "smothers", "buries", "squishes", "nibbles", "gnashes", "flattens", "pummels", "chomps")
 	attack_verb_simple = list("stomp", "smother", "bury", "squish", "nibble", "gnash", "flatten", "pummel", "chomp")
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
@@ -527,7 +522,7 @@
 //Plot armour
 /obj/item/toy/plush/tian_plush/attackby(obj/item/I, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(I.get_sharpness())
-		to_chat(user, span_notice("[I] just bounces off!"))
+		to_chat(user, span_notice("[I]Apenas salta!"))
 		return
 	return ..()
 
@@ -536,7 +531,7 @@
 	if(is_type_in_typecache(tool, folder_insertables))
 		if(!user.transferItemToLoc(tool, src, silent = FALSE))
 			return ITEM_INTERACT_BLOCKING
-		balloon_alert(user, "nom!")
+		balloon_alert(user, "Nom!")
 		return ITEM_INTERACT_SUCCESS
 	return NONE
 
@@ -551,7 +546,7 @@
 		item_to_insert.do_pickup_animation(src)
 		item_to_insert.forceMove(src)
 	playsound(src, item_to_insert.pickup_sound, PICKUP_SOUND_VOLUME, item_to_insert.sound_vary, ignore_walls = FALSE)
-	balloon_alert(user, "nom!")
+	balloon_alert(user, "Nom!")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/toy/plush/tian_plush/ui_interact(mob/user, datum/tgui/ui)
@@ -587,7 +582,7 @@
 			if(istype(Item))
 				Item.forceMove(usr.loc)
 				usr.put_in_hands(Item)
-				to_chat(usr, span_notice("You remove [Item] from [src]."))
+				to_chat(usr, span_notice("Você tira.[Item]De[src]."))
 				. = TRUE
 		if("examine")
 			var/obj/item/Item = locate(params["ref"]) in src
@@ -598,18 +593,18 @@
 /obj/item/toy/plush/tian_plush/click_alt(mob/user)
 	shirt = !shirt
 	if(!shirt)
-		balloon_alert(user, "tummy shown...")
+		balloon_alert(user, "Uma barra Mostrou...")
 		icon_state = "tianplush-alt"
 
 	else
-		balloon_alert(user, "tummy tucked away...")
+		balloon_alert(user, "Barriga Escondida...")
 		icon_state = "tianplush"
 	return ..()
 
 // Plushling, used when plushnium reactions fail
 /obj/item/toy/plush/plushling
 	name = "peculiar plushie"
-	desc = "An adorable stuffed toy- wait, did it just move?"
+	desc = "Um adorável brinquedo de pelúcia... Espere, ele se moveu?"
 	/// Cooldown ticks between absorbs
 	var/absorb_cooldown = 100
 	/// When can it absorb another plushie
@@ -620,7 +615,7 @@
 /obj/item/toy/plush/plushling/attack_self(mob/user)
 	if(!user)
 		return
-	to_chat(user, span_warning("You try to pet the plushie, but recoil as it bites your hand instead! OW!"))
+	to_chat(user, span_warning("Você tenta acariciar o pelúcia, mas se retrai enquanto morde sua mão! OW!"))
 	var/mob/living/carbon/human/human_user = user
 	if(!human_user)
 		return
@@ -656,7 +651,7 @@
 			if(istype(adjacent_plush, /obj/item/toy/plush/plushling)) //These do not hunt their own kind
 				continue
 			src.throw_at(adjacent_plush, 1, 2)
-			visible_message(span_danger("[src] leaps at [adjacent_plush]!"))
+			visible_message(span_danger("[src]Pula sobre[adjacent_plush]!"))
 			break
 		return
 	if(istype(target, /obj/item/toy/plush/plushling)) //These do not consume their own.
@@ -667,9 +662,9 @@
 /obj/item/toy/plush/plushling/proc/plushie_absorb(obj/item/toy/plush/victim)
 	if(!victim)
 		return
-	visible_message(span_warning("[src] gruesomely mutilates [victim], leaving nothing more than dust!"))
+	visible_message(span_warning("[src]Horrivelmente mutilados.[victim], deixando nada mais do que poeira!"))
 	name = victim.name
-	desc = victim.desc + " Wait, did it just move..?"
+	desc = victim.desc + "Espere, ele se moveu...?"
 	icon_state = victim.icon_state
 	squeak_override = victim.squeak_override
 	new /obj/effect/decal/cleanable/ash(get_turf(victim))
@@ -682,7 +677,7 @@
 
 /obj/item/toy/plush/aeri
 	name = "Interdimensional Terrorist Plushie"
-	desc = "A highly controversial silicone 'plushie' modeled after its infamous namesake. Pulled from most storefronts after a spectacular public backlash, it now survives mainly through grey-market resellers. Rumor has it a few limited-run units shipped with a functional handheld railgun."
+	desc = "Um silicone altamente controverso\"plushie\" modelado após seu famoso homônimo. Tirado da maioria das lojas após uma espetacular reação pública, agora sobrevive principalmente através de revendedores de mercado cinzento. Há rumores de que algumas unidades de execução limitada foram enviadas com uma arma manual funcional."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "aeri"
 	inhand_icon_state = null
@@ -702,7 +697,7 @@
 /obj/item/toy/plush/aeri/proc/update_plush_state()
 	if(clothed)
 		name = "Interdimensional Terrorist Plushie"
-		desc = "A highly controversial silicone 'plushie' modeled after its infamous namesake. Pulled from most storefronts after a spectacular public backlash, it now survives mainly through grey-market resellers. Rumor has it a few limited-run units shipped with a functional handheld railgun."
+		desc = "Um silicone altamente controverso\"plushie\" modelado após seu famoso homônimo. Tirado da maioria das lojas após uma espetacular reação pública, agora sobrevive principalmente através de revendedores de mercado cinzento. Há rumores de que algumas unidades de execução limitada foram enviadas com uma arma manual funcional."
 		icon_state = "aeri"
 		//probably not necessary to put the verb and squeak override once again here but it kinda bugs out if I don't
 		attack_verb_continuous = list("cuddles", "squeaks", "hugs", "caresses")
@@ -715,7 +710,7 @@
 		hitsound = initial(hitsound)
 	else
 		name = "Interdimensional terrorist Doll"
-		desc = "Without the outfit, the 'plushie' label becomes much harder to defend. Beneath the clothing is a glossy, stretchable silicone shell with ribbed orifices and breasts that experts have described as 'Fuckable'."
+		desc = "Sem a roupa, o rótulo \"plushie\" fica muito mais difícil de defender. Abaixo da roupa está uma concha de silicone brilhante e esticável com orifícios e seios nervurados que os especialistas descreveram como \"Fodidos.\"."
 		icon_state = "aeri-alt"
 		attack_verb_continuous = list("cuddles", "squeaks", "hugs", "caresses")
 		attack_verb_simple = list("cuddle", "squeak", "hug", "caress")
@@ -732,16 +727,16 @@
 /obj/item/toy/plush/aeri/examine(mob/user)
 	. = ..()
 	if(clothed)
-		. += span_purple("Alt-click to remove the plushie's clothes.")
+		. += span_purple("Alt-click para remover as roupas da pelúcia.")
 	else
-		. += span_purple("Alt-click to dress the doll back up.")
+		. += span_purple("Alt-click para vestir uma boneca de volta.")
 
 /obj/item/toy/plush/aeri/click_alt(mob/user)
 	clothed = !clothed
 	if(clothed)
-		to_chat(user, span_notice("You dress [src] back up."))
+		to_chat(user, span_notice("Você se veste.[src]Para trás."))
 	else
-		to_chat(user, span_notice("You remove [src]'s clothes."))
+		to_chat(user, span_notice("Você tira.[src]Como rupias."))
 	playsound(user, 'modular_zubbers/sound/lewd/rubber1.ogg', 50, TRUE)
 	update_plush_state()
 	return TRUE
@@ -759,7 +754,7 @@
 
 //If you suicide with this toy it just summons a BSA smite on you
 /obj/item/toy/plush/aeri/suicide_act(mob/living/carbon/human/user)
-	user.visible_message(span_suicide("[user] angers the plushie! Oh god, it's locking a Bluespace Artillery strike onto [user.p_them()]! It looks like [user.p_theyre()] trying to kill [user.p_them()]self!"))
+	user.visible_message(span_suicide("[user]Irrita o peluche! Deus, está travando uma artilharia Bluespace.[user.p_them()]Parece que...[user.p_theyre()]Tentando matar.[user.p_them()]Eu!"))
 	var/datum/smite/bsa/bluespace_smite = new()
 	bluespace_smite.effect(user.client, user)
 	return BRUTELOSS
@@ -771,7 +766,7 @@
 	slot_flags = ITEM_SLOT_HEAD
 	worn_icon = 'modular_zubbers/icons/mob/clothing/head/hats.dmi'
 	worn_icon_state = "expie"
-	desc = "A plushie of a canid of sorts. It yearns to be detonated on a landmine."
+	desc = "Um tipo de canid. Ele anseia ser detonado em uma mina terrestre."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	attack_verb_simple = list("bark", "growl", "whine")
 	squeak_override = list('modular_zubbers/sound/misc/plushie.ogg' = 1)
@@ -788,7 +783,7 @@
 	if(!istype(enom))
 		return ..()
 	enom.forceMove(src) // pill go into the expie stummy
-	to_chat(feeder, span_notice("You feed the [enom] to [src] and watch as it eats..."))
+	to_chat(feeder, span_notice("Você alimenta o[enom]Para[src]E veja como ele vem..."))
 	playsound(src, 'modular_zubbers/sound/misc/eatcrunch.ogg', 75, TRUE)
 	addtimer(CALLBACK(src, PROC_REF(eat), feeder, enom), 3 SECONDS)
 	return ITEM_INTERACT_SUCCESS
@@ -804,7 +799,7 @@
 	SIGNAL_HANDLER
 	playsound(src, 'modular_zubbers/sound/misc/dogshake.ogg', 75)
 	spasm_animation(2 SECONDS)
-	visible_message(span_warning("[src] gets soaked and shakes itself off!"))
+	visible_message(span_warning("[src]Fico encharcado e se agito!"))
 
 /obj/item/toy/plush/expie/Initialize(mapload)
 	. = ..()
@@ -824,7 +819,7 @@
 
 /obj/item/toy/plush/expie/milky
 	name = "Milky Plushie"
-	desc = "A plushie of snowy-white, furred canid. Maybe it'll trade something with you?"
+	desc = "Uma pelúcia de canid branco-neve. Talvez troque algo com você?"
 	worn_icon_state = "milky"
 	icon_state = "milky"
 	inhand_icon_state = "milky"

@@ -25,15 +25,14 @@
 
 /obj/item/storage/toolbox/emergency/turret/mesa
 	name = "USMC stationary defense deployment system"
-	desc = "You feel a strange urge to hit this with a wrench."
+	desc = "Você sente uma estranha vontade de acertar isso com uma chave inglesa."
 
 /obj/item/storage/toolbox/emergency/turret/mesa/PopulateContents()
 	return null
 
 /obj/item/storage/toolbox/emergency/turret/mesa/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_WRENCH && user.combat_mode)
-		user.visible_message(span_danger("[user] bashes [src] with [I]!"), \
-			span_danger("You bash [src] with [I]!"), null, COMBAT_MESSAGE_RANGE)
+		user.visible_message(span_danger("[user]Bashes.[src]com[I]!"), 			span_danger("Você bate[src]com[I]!"), null, COMBAT_MESSAGE_RANGE)
 		playsound(src, "sound/items/tools/drill_use.ogg", 80, TRUE, -1)
 		var/obj/machinery/porta_turret/syndicate/pod/toolbox/mesa/turret = new(get_turf(loc))
 		turret.faction = list(FACTION_HECU)

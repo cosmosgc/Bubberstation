@@ -1,6 +1,6 @@
 /datum/surgery_operation/limb/prepare_cavity
 	name = "widen chest cavity"
-	desc = "Widen a patient's chest cavity to allow for implanting of larger items."
+	desc = "Ampliar a cavidade torácica de um paciente para permitir implante de itens maiores."
 	implements = list(
 		TOOL_RETRACTOR = 1,
 		TOOL_CROWBAR = 1.5,
@@ -24,9 +24,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to open [FORMAT_LIMB_OWNER(limb)] cavity wide..."),
-		span_notice("[surgeon] begins to open [FORMAT_LIMB_OWNER(limb)] cavity wide."),
-		span_notice("[surgeon] begins to open [FORMAT_LIMB_OWNER(limb)] cavity wide."),
+		span_notice("Você começa a abrir[FORMAT_LIMB_OWNER(limb)]Cavidade larga..."),
+		span_notice("[surgeon]começa a abrir[FORMAT_LIMB_OWNER(limb)]Cavidade larga."),
+		span_notice("[surgeon]começa a abrir[FORMAT_LIMB_OWNER(limb)]Cavidade larga."),
 	)
 	display_pain(limb.owner, "You can feel pressure as your [limb.plaintext_zone] is being opened wide!")
 
@@ -36,7 +36,7 @@
 
 /datum/surgery_operation/limb/cavity_implant
 	name = "cavity implant"
-	desc = "Implant an item into a patient's body cavity."
+	desc = "Implantar um item na vida de um paciente."
 	operation_flags = OPERATION_NOTABLE
 	implements = list(
 		/obj/item = 1,
@@ -91,9 +91,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to insert [tool] into [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to insert [tool] into [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to insert [tool.w_class > WEIGHT_CLASS_SMALL ? tool : "something"] into [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a inserir[tool]Em[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]começa a inserir[tool]Em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]começa a inserir[tool.w_class > WEIGHT_CLASS_SMALL ? tool : "something"]Em[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You can feel something being inserted into your [limb.plaintext_zone], it hurts like hell!")
 
@@ -102,9 +102,9 @@
 		display_results(
 			surgeon,
 			limb.owner,
-			span_warning("You can't seem to fit [tool] in [limb.owner]'s [limb.plaintext_zone]!"),
-			span_warning("[surgeon] can't seem to fit [tool] in [limb.owner]'s [limb.plaintext_zone]!"),
-			span_warning("[surgeon] can't seem to fit [tool.w_class > WEIGHT_CLASS_SMALL ? tool : "something"] in [limb.owner]'s [limb.plaintext_zone]!"),
+			span_warning("Você não parece caber[tool]Em[limb.owner]'s[limb.plaintext_zone]!"),
+			span_warning("[surgeon]Não consigo caber.[tool]Em[limb.owner]'s[limb.plaintext_zone]!"),
+			span_warning("[surgeon]Não consigo caber.[tool.w_class > WEIGHT_CLASS_SMALL ? tool : "something"]Em[limb.owner]'s[limb.plaintext_zone]!"),
 		)
 		return
 
@@ -113,15 +113,15 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You stuff [tool] into [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] stuffs [tool] into [FORMAT_LIMB_OWNER(limb)]!"),
-		span_notice("[surgeon] stuffs [tool.w_class > WEIGHT_CLASS_SMALL ? tool : "something"] into [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Sua coisa.[tool]Em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Coisas.[tool]Em[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("[surgeon]Coisas.[tool.w_class > WEIGHT_CLASS_SMALL ? tool : "something"]Em[FORMAT_LIMB_OWNER(limb)]."),
 	)
 
 
 /datum/surgery_operation/limb/undo_cavity_implant
 	name = "remove cavity implant"
-	desc = "Remove an item from a body cavity."
+	desc = "Aposentar um item de uma vida corporal."
 	implements = list(
 		IMPLEMENT_HAND = 1,
 		TOOL_HEMOSTAT = 2,
@@ -163,9 +163,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to extract [limb.cavity_item] from [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to extract [limb.cavity_item] from [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to extract something from [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a extrair[limb.cavity_item]De[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]começa a extrair[limb.cavity_item]De[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]começa a extrair algo de[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a serious pain in your [limb.plaintext_zone]!")
 
@@ -174,9 +174,9 @@
 		display_results(
 			surgeon,
 			limb.owner,
-			span_warning("You find nothing to remove from [FORMAT_LIMB_OWNER(limb)]."),
-			span_warning("[surgeon] finds nothing to remove from [FORMAT_LIMB_OWNER(limb)]."),
-			span_warning("[surgeon] finds nothing to remove from [FORMAT_LIMB_OWNER(limb)]."),
+			span_warning("Você não encontra nada para remover[FORMAT_LIMB_OWNER(limb)]."),
+			span_warning("[surgeon]não encontra nada para remover[FORMAT_LIMB_OWNER(limb)]."),
+			span_warning("[surgeon]não encontra nada para remover[FORMAT_LIMB_OWNER(limb)]."),
 		)
 		return
 
@@ -186,9 +186,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You pull [implant] out of [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] pulls [implant] out of [FORMAT_LIMB_OWNER(limb)]!"),
-		span_notice("[surgeon] pulls something out of [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você puxa.[implant]Fora[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Puxa.[implant]Fora[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("[surgeon]Tira Algo de[FORMAT_LIMB_OWNER(limb)]!"),
 	)
 	display_pain(limb.owner, "You can feel [implant.name] being pulled out of you!")
 	surgeon.put_in_hands(implant)

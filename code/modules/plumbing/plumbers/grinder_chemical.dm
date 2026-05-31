@@ -1,6 +1,6 @@
 /obj/machinery/plumbing/grinder_chemical
 	name = "chemical grinder"
-	desc = "Chemical grinder. Can either grind or juice stuff you put in."
+	desc = "Moedor químico. Pode moer ou espremer coisas que você coloca."
 	icon_state = "grinder_chemical"
 	layer = ABOVE_ALL_MOB_LAYER
 	plane = ABOVE_GAME_PLANE
@@ -21,7 +21,7 @@
 /obj/machinery/plumbing/grinder_chemical/examine(mob/user)
 	. = ..()
 
-	. += span_notice("Use empty hand to change operation mode. Currently [grinding ? "Grinding" : "Juicing"]")
+	. += span_notice("Use a mão vazia para mudar o modo de operação. Atualmente.[grinding ? "Grinding" : "Juicing"]")
 
 /**
  * Check if the user can interact with the grinder
@@ -69,20 +69,20 @@
 		return
 	else if(istype(tool, /obj/item/storage/bag))
 		if(!anchored)
-			to_chat(user, span_warning("Anchor first to start [grinding ? "grind" : "juice"]."))
+			to_chat(user, span_warning("Âncora primeiro para começar[grinding ? "grind" : "juice"]."))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("You dump items from [tool] into the grinder."))
+		to_chat(user, span_notice("Você despeja itens de[tool]Para o moedor."))
 		for(var/obj/item/obj_item in tool.contents)
 			blend(obj_item)
 		return ITEM_INTERACT_SUCCESS
 	else if(!tool.tool_behaviour)
 		var/action = "[grinding ? "grind" : "juice"]"
 		if(!anchored)
-			to_chat(user, span_warning("Anchor first to star [action]."))
+			to_chat(user, span_warning("Âncora primeiro para estrelar[action]."))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("You attempt to [action] [tool]."))
+		to_chat(user, span_notice("Você tenta[action] [tool]."))
 		blend(tool)
 		return ITEM_INTERACT_SUCCESS
 

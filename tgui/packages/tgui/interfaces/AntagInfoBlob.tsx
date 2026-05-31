@@ -103,7 +103,7 @@ const Overview = (props) => {
 
 const Basics = (props) => {
   return (
-    <Collapsible title="The Basics">
+    <Collapsible title="O básico">
       <LabeledList>
         <LabeledList.Item label="Attacking">
           You can expand, which will attack people, damage objects, or place a
@@ -168,21 +168,21 @@ const Structures = (props) => {
       <Box>You can upgrade normal blobs into the following types of blob:</Box>
       <Divider />
       <LabeledList>
-        <LabeledList.Item label="Strong Blobs">
+        <LabeledList.Item label="Blobs Fortes">
           Strong blobs are expensive but take more damage. In additon, they are
           fireproof and can block air, use these to protect yourself from
           station fires.
         </LabeledList.Item>
-        <LabeledList.Item label="Reflective Blobs">
+        <LabeledList.Item label="Blobs Refletivos">
           Upgrading strong blobs creates reflective blobs, capable of reflecting
           most projectiles at the cost of the strong blob&apos;s extra health.
         </LabeledList.Item>
-        <LabeledList.Item label="Resource Blobs">
+        <LabeledList.Item label="Blobs de Recursos">
           Blobs which produce more resources for you, build as many of these as
           possible to consume the station. This type of blob must be placed near
           node blobs or your core to work.
         </LabeledList.Item>
-        <LabeledList.Item label="Factory Blobs">
+        <LabeledList.Item label="Blobs de Fábrica">
           Blobs that spawn blob spores which will attack nearby enemies. This
           type of blob must be placed near node blobs or your core to work.
         </LabeledList.Item>

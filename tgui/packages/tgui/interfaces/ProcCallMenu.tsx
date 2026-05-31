@@ -56,7 +56,7 @@ export const ProcCallMenu = (props) => {
                 <Stack.Divider />
                 <Stack.Item>
                   <Button.Checkbox
-                    content="Resolve Weakref"
+                    content="Resolver Fraco"
                     textAlign="center"
                     checked={resolve_weakref}
                     onClick={() => act('resolve_weakref')}
@@ -104,7 +104,7 @@ export const ProcCallMenu = (props) => {
                 <Stack.Item>
                   <Button
                     fluid
-                    content="Add Argument"
+                    content="Adicionar Argumento"
                     color="good"
                     icon="plus"
                     onClick={() => act('add_argument')}

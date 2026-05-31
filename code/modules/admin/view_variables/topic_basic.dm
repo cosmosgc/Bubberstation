@@ -35,11 +35,11 @@
 			if (!C)
 				return
 			if(!target)
-				to_chat(usr, span_warning("The object you tried to expose to [C] no longer exists (nulled or hard-deled)"), confidential = TRUE)
+				to_chat(usr, span_warning("O objeto que você tentou expor[C]não existe mais"), confidential = TRUE)
 				return
 			message_admins("[key_name_admin(usr)] Showed [key_name_admin(C)] a <a href='byond://?_src_=vars;datumrefresh=[REF(target)]'>VV window</a>")
 			log_admin("Admin [key_name(usr)] Showed [key_name(C)] a VV window of a [target]")
-			to_chat(C, "[holder.fakekey ? "an Administrator" : "[usr.client.key]"] has granted you access to view a View Variables window", confidential = TRUE)
+			to_chat(C, "[holder.fakekey ? "an Administrator" : "[usr.client.key]"]lhe concedeu acesso para ver uma janela de View Variáveis.", confidential = TRUE)
 			C.debug_variables(target)
 	if(check_rights(R_DEBUG))
 		if(href_list[VV_HK_DELETE])
@@ -69,7 +69,7 @@
 			return
 
 		if(QDELETED(src))
-			to_chat(usr, "That thing doesn't exist anymore!", confidential = TRUE)
+			to_chat(usr, "Essa coisa não existe mais!", confidential = TRUE)
 			return
 
 		var/add_source
@@ -112,14 +112,14 @@
 		if(!usr || path == "---Components---" || path == "---Elements---")
 			return
 		if(QDELETED(src))
-			to_chat(usr, "That thing doesn't exist anymore!")
+			to_chat(usr, "Essa coisa não existe mais!")
 			return
 		var/list/targets_to_remove_from = list(target)
 		if(mass_remove)
 			var/method = vv_subtype_prompt(target.type)
 			targets_to_remove_from = get_all_of_type(target.type, method)
 
-			if(alert(usr, "Are you sure you want to mass-delete [path] on [target.type]?", "Mass Remove Confirmation", "Yes", "No") == "No")
+			if(alert(usr, "Tem certeza de que quer se livrar em massa?[path]Vamos.[target.type]?", "Mass Remover Confirmação", "Yes", "No") == "No")
 				return
 
 		for(var/datum/target_to_remove_from as anything in targets_to_remove_from)

@@ -69,7 +69,7 @@
 	return ..()
 
 /obj/item/photo/suicide_act(mob/living/carbon/human/user)
-	user.visible_message(span_suicide("[user] is taking one last look at \the [src]! It looks like [user.p_theyre()] giving in to death!"))//when you wanna look at photo of waifu one last time before you die...
+	user.visible_message(span_suicide("[user]Está dando uma última olhada.\the [src]Parece que...[user.p_theyre()]Ceder à morte!"))//when you wanna look at photo of waifu one last time before you die...
 	if (!ishuman(user) || user.physique == MALE)
 		playsound(user, 'sound/mobs/humanoids/human/laugh/manlaugh1.ogg', 50, TRUE)//EVERY TIME I DO IT MAKES ME LAUGH
 	else
@@ -96,22 +96,18 @@
 	if(in_range(src, user) || isobserver(user))
 		show(user)
 	else
-		. += span_warning("You need to get closer to get a good look at this photo!")
+		. += span_warning("Precisa se aproximar para dar uma boa olhada nessa foto!")
 
 /obj/item/photo/proc/show(mob/user)
 	if(!istype(picture) || !picture.picture_image)
-		to_chat(user, span_warning("[src] seems to be blank..."))
+		to_chat(user, span_warning("[src]Parece está em branco..."))
 		return
 	var/width_height = "width"
 	if(picture.psize_y > picture.psize_x)
 		// if we're a tall picture, swap our focus to height to stay in frame
 		width_height = "height"
 	user << browse_rsc(picture.picture_image, "tmp_photo.png")
-	user << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>[name]</title></head>" \
-		+ "<body style='overflow:hidden;margin:0;text-align:center'>" \
-		+ "<img src='tmp_photo.png' [width_height]='480' style='image-rendering:pixelated' />" \
-		+ "[scribble ? "<br>Written on the back:<br><i>[scribble]</i>" : ""]"\
-		+ "</body></html>", "window=photo_showing;size=480x608")
+	user << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>[name]</title></head>" 		+ "<body style='overflow:hidden;margin:0;text-align:center'>" 		+ "<img src='tmp_photo.png' [width_height]='480' style='image-rendering:pixelated' />" 		+ "[scribble ? "<br>Written on the back:<br><i>[scribble]</i>" : ""]"		+ "</body></html>", "window=photo_showing;size=480x608")
 	onclose(user, "[name]")
 
 /obj/item/photo/verb/rename()

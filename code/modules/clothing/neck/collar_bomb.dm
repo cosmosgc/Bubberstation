@@ -1,7 +1,7 @@
 ///Special neckwear that kills its wearer if triggered, by either its specific remote or assemblies.
 /obj/item/clothing/neck/collar_bomb
 	name = "collar bomb"
-	desc = "A cumbersome collar of some sort, filled with just enough explosive to rip one's head off... at least that's what it reads on the front tag."
+	desc = "Um colar de algum tipo, cheio de explosivos o suficiente para arrancar a cabeça. Pelo menos é o que diz na etiqueta da frente."
 	icon_state = "collar_bomb"
 	icon = 'icons/obj/clothing/neck.dmi'
 	inhand_icon_state = "reverse_bear_trap"
@@ -36,7 +36,7 @@
 	. = ..()
 	if(user.get_item_by_slot(ITEM_SLOT_NECK) == src)
 		return
-	. += span_tinynotice("It has a [EXAMINE_HINT("wire")] panel that could be interacted with...")
+	. += span_tinynotice("Tem...[EXAMINE_HINT("wire")]painel que poderia ser interagido com...")
 
 /obj/item/clothing/neck/collar_bomb/attackby(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
 	if(is_wire_tool(item))
@@ -72,7 +72,7 @@
 		balloon_alert_to_viewers("dud...")
 		active = FALSE
 		return
-	visible_message(span_warning("[src] goes off, outright decapitating [brian]!"), span_hear("You hear a fleshy boom!"))
+	visible_message(span_warning("[src]Sai, completo decapitando[brian]!"), span_hear("Você ouve um boom carnudo!"))
 	playsound(src, SFX_EXPLOSION, 30, TRUE)
 	brian.apply_damage(200, BRUTE, BODY_ZONE_HEAD)
 	var/obj/item/bodypart/head/myhead = brian.get_bodypart(BODY_ZONE_HEAD)
@@ -84,7 +84,7 @@
 ///The button that detonates the collar.
 /obj/item/collar_bomb_button
 	name = "big yellow button"
-	desc = "It looks like a big red button, except it's yellow. It comes with a heavy trigger, to avoid accidents."
+	desc = "Parece um grande botão vermelho, exceto que é amarelo. Vem com um gatilho pesado, para evitar acidentes."
 	icon = 'icons/obj/devices/assemblies.dmi'
 	icon_state = "bigyellow"
 	inhand_icon_state = "electronic"

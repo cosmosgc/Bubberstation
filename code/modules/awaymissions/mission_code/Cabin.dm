@@ -35,7 +35,7 @@
 
 /obj/structure/firepit
 	name = "firepit"
-	desc = "Warm and toasty."
+	desc = "Quente e quente."
 	icon = 'icons/obj/fluff/fireplace.dmi'
 	icon_state = "firepit-active"
 	density = FALSE
@@ -88,7 +88,7 @@
 
 /obj/machinery/recycler/lumbermill
 	name = "lumbermill saw"
-	desc = "Faster then the cartoons!"
+	desc = "Mais rápido que os desenhos animados!"
 	obj_flags = CAN_BE_HIT | EMAGGED
 	item_recycle_sound = 'sound/items/weapons/chainsawhit.ogg'
 
@@ -102,7 +102,7 @@
 
 /obj/structure/ladder/unbreakable/rune
 	name = "\improper Teleportation Rune"
-	desc = "Could lead anywhere."
+	desc = "Pode levar um lugar qualquer."
 	icon = 'icons/obj/antags/cult/rune.dmi'
 	icon_state = "1"
 	color = rgb(0,0,255)
@@ -122,7 +122,7 @@
 	user.balloon_alert_to_viewers("activating...")
 
 /obj/structure/ladder/unbreakable/rune/show_final_fluff_message(mob/user, going_up)
-	visible_message(span_notice("[user] activates [src] and teleports away."))
+	visible_message(span_notice("[user]Ativa.[src]e se teletransporta."))
 	user.balloon_alert_to_viewers("warped in")
 
 /obj/structure/ladder/unbreakable/rune/use(mob/user, going_up = TRUE)
@@ -131,12 +131,7 @@
 
 /*Cabin's forest. Removed in the new cabin map since it was buggy and I prefer manual placement.*/
 /datum/map_generator/snowy
-	modules = list(/datum/map_generator_module/bottomlayer/snow, \
-	/datum/map_generator_module/snow/pine_trees, \
-	/datum/map_generator_module/snow/dead_trees, \
-	/datum/map_generator_module/snow/rand_bushes, \
-	/datum/map_generator_module/snow/rand_ice_rocks, \
-	/datum/map_generator_module/snow/bunnies)
+	modules = list(/datum/map_generator_module/bottomlayer/snow, 	/datum/map_generator_module/snow/pine_trees, 	/datum/map_generator_module/snow/dead_trees, 	/datum/map_generator_module/snow/rand_bushes, 	/datum/map_generator_module/snow/rand_ice_rocks, 	/datum/map_generator_module/snow/bunnies)
 
 /datum/map_generator_module/snow/checkPlaceAtom(turf/T)
 	if(istype(T, /turf/open/misc/asteroid/snow))

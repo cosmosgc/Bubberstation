@@ -31,7 +31,7 @@
 // todo move this to it's own trait
 /obj/item/clothing/neck/necklace/memento_mori/memento(mob/living/carbon/human/user)
 	if(IS_BLOODSUCKER(user))
-		to_chat(user, span_warning("The Memento notices your undead soul, and refuses to react.."))
+		to_chat(user, span_warning("O Memento percebe sua alma morta-viva, e se recusa a reagir."))
 		return
 	return ..()
 

@@ -36,7 +36,7 @@ export const ForensicsSpoofer = (props) => {
   const [currentTab, setTab] = useState(0);
   return (
     <Window
-      title="Forensics Spoofing Device"
+      title="Dispositivo de Spoofing Forense"
       width={460}
       height={340}
       theme="syndicate"
@@ -50,8 +50,8 @@ export const ForensicsSpoofer = (props) => {
                   <Button
                     width="100%"
                     icon={silent ? 'eye-slash' : 'eye'}
-                    content={silent ? 'Silent Mode: On' : 'Silent Mode: Off'}
-                    tooltip="On Silent Mode this device will make the same sounds and sights as an actual Forensics Scanner."
+                    content={silent ? 'Modo Silencioso: Ligado' : 'Modo silencioso: desligado'}
+                    tooltip="No modo silencioso, este dispositivo fará os mesmos sons e miras que um scanner forense."
                     onClick={() => act('stealth')}
                   />
                 </Stack.Item>
@@ -59,7 +59,7 @@ export const ForensicsSpoofer = (props) => {
                   <Button
                     width="100%"
                     icon={scanmode ? 'magnifying-glass' : 'share-from-square'}
-                    content={scanmode ? 'Mode: Scan' : 'Mode: Apply'}
+                    content={scanmode ? 'Modo: Varrer' : 'Modo: Aplicar'}
                     color={scanmode ? 'blue' : 'red'}
                     onClick={() => act('scanmode')}
                   />

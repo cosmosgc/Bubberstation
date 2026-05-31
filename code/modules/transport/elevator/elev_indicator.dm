@@ -3,7 +3,7 @@
  */
 /obj/machinery/lift_indicator
 	name = "elevator indicator"
-	desc = "Indicates what floor the elevator is at and which way it's going."
+	desc = "Indica em que andar está o elevador e para onde está indo."
 	icon = 'icons/obj/machines/lift_indicator.dmi'
 	icon_state = "lift_indo-base"
 	base_icon_state = "lift_indo-"
@@ -50,7 +50,7 @@
 	. = ..()
 
 	if(!is_operational)
-		. += span_notice("The display is dark.")
+		. += span_notice("A tela está escura.")
 		return
 
 	var/dirtext
@@ -62,7 +62,7 @@
 		else
 			dirtext = "stopped"
 
-	. += span_notice("The elevator is at floor [current_lift_floor], [dirtext].")
+	. += span_notice("O elevador está no chão.[current_lift_floor], [dirtext].")
 
 /**
  * Update state, and only process if elevator is moving.

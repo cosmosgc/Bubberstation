@@ -1,6 +1,6 @@
 /obj/machinery/computer/apc_control
 	name = "power flow control console"
-	desc = "Used to remotely control the flow of power to different parts of the station."
+	desc = "Usado para controlar remotamente o fluxo de energia para diferentes partes da estação."
 	icon_screen = "solar"
 	icon_keyboard = "power_key"
 	req_access = list(ACCESS_CE)
@@ -30,7 +30,7 @@
 
 /obj/machinery/computer/apc_control/attack_ai(mob/user)
 	if(!isAdminGhostAI(user))
-		to_chat(user,span_warning("[src] does not support AI control.")) //You already have APC access, cheater!
+		to_chat(user,span_warning("[src]Não suporta controle de IA.")) //You already have APC access, cheater!
 		return
 	return ..()
 
@@ -40,7 +40,7 @@
 	obj_flags |= EMAGGED
 	if (user)
 		user.log_message("emagged [src].", LOG_ATTACK, color="red")
-		balloon_alert(user, "controlador de acesso em curto")
+		balloon_alert(user, "Controlador de acesso em curto")
 	playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	return TRUE
 
@@ -63,7 +63,7 @@
 	if(isnull(apc))
 		return
 	if(apc.remote_control_user)
-		to_chat(user, span_warning("\The [apc] is being controlled by someone else!"))
+		to_chat(user, span_warning("\The [apc]está sendo controlado por outra pessoa!"))
 		return
 	if(active_apc)
 		disconnect_apc()

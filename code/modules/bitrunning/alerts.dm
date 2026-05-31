@@ -5,7 +5,7 @@
 
 /atom/movable/screen/alert/bitrunning/qserver_domain_complete
 	name = "Domain Completed"
-	desc = "The domain is completed. Activate to exit."
+	desc = "O domínio está completo. Ativar para sair."
 	timeout = 20 SECONDS
 	clickable_glow = TRUE
 
@@ -18,6 +18,6 @@
 	if(!isliving(living_owner))
 		return
 
-	if(tgui_alert(living_owner, "Disconnect safely?", "Server Message", list("Exit", "Remain"), 10 SECONDS) == "Exit")
+	if(tgui_alert(living_owner, "Desligar com segurança?", "Server Message", list("Exit", "Remain"), 10 SECONDS) == "Exit")
 		SEND_SIGNAL(living_owner, COMSIG_BITRUNNER_ALERT_SEVER)
 

@@ -29,7 +29,7 @@
 		var/obj/item/organ/new_organ = new infusion_organ()
 		new_organ.replace_into(target)
 		if(new_organ.owner != target)
-			to_chat(usr, span_notice("[target] is unable to carry [new_organ]!"))
+			to_chat(usr, span_notice("[target]é incapaz de carregar[new_organ]!"))
 			qdel(new_organ)
 			. = FALSE
 			continue

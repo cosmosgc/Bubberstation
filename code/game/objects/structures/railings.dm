@@ -1,6 +1,6 @@
 /obj/structure/railing
 	name = "railing"
-	desc = "Basic railing meant to protect idiots like you from falling."
+	desc = "Para proteger idiotas como você de cair."
 	icon = 'icons/obj/railings.dmi'
 	icon_state = "railing"
 	flags_1 = ON_BORDER_1
@@ -79,9 +79,9 @@
 /obj/structure/railing/examine(mob/user)
 	. = ..()
 	if(anchored == TRUE)
-		. += span_notice("The railing is <b>bolted</b> to the floor.")
+		. += span_notice("O corrimão é<b>Aparafusado.</b>Para o chão.")
 	else
-		. += span_notice("The railing is <i>unbolted</i> from the floor and can be deconstructed with <b>wirecutters</b>.")
+		. += span_notice("O corrimão é<i>Sem parafusos.</i>do chão e pode ser desconstruído com<b>Cortadores de arme</b>.")
 
 /obj/structure/railing/attackby(obj/item/I, mob/living/user, list/modifiers, list/attack_modifiers)
 	..()
@@ -92,22 +92,22 @@
 			if(!I.tool_start_check(user, amount=1))
 				return
 
-			to_chat(user, span_notice("You begin repairing [src]..."))
+			to_chat(user, span_notice("Você começa a reparar[src]..."))
 			if(I.use_tool(src, user, 40, volume=50))
 				atom_integrity = max_integrity
-				to_chat(user, span_notice("You repair [src]."))
+				to_chat(user, span_notice("Você conserta.[src]."))
 		else
-			to_chat(user, span_warning("[src] is already in good condition!"))
+			to_chat(user, span_warning("[src]Já está em boas condições!"))
 		return
 
 
 /obj/structure/railing/wirecutter_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(resistance_flags & INDESTRUCTIBLE)
-		to_chat(user, span_warning("You try to cut apart the railing, but it's too hard!"))
+		to_chat(user, span_warning("Você tenta cortar a grade, mas é muito difícil!"))
 		I.play_tool_sound(src, 100)
 		return TRUE
-	to_chat(user, span_warning("You cut apart the railing."))
+	to_chat(user, span_warning("Você cortou a grade."))
 	I.play_tool_sound(src, 100)
 	deconstruct()
 	return TRUE
@@ -120,10 +120,10 @@
 ///Implements behaviour that makes it possible to unanchor the railing.
 /obj/structure/railing/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
-	to_chat(user, span_notice("You begin to [anchored ? "unfasten the railing from":"fasten the railing to"] the floor..."))
+	to_chat(user, span_notice("Você começa[anchored ? "unfasten the railing from":"fasten the railing to"]O chão..."))
 	if(I.use_tool(src, user, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_anchored), anchored)))
 		set_anchored(!anchored)
-		to_chat(user, span_notice("You [anchored ? "fasten the railing to":"unfasten the railing from"] the floor."))
+		to_chat(user, span_notice("Você.[anchored ? "fasten the railing to":"unfasten the railing from"]O chão."))
 	return TRUE
 
 /obj/structure/railing/CanPass(atom/movable/mover, border_dir)
@@ -168,7 +168,7 @@
 
 /obj/structure/railing/wooden_fence
 	name = "wooden fence"
-	desc = "wooden fence meant to keep animals in."
+	desc = "cerca de madeira destinada a manter animais dentro"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "wooden_railing"
 	item_deconstruct = /obj/item/stack/sheet/mineral/wood

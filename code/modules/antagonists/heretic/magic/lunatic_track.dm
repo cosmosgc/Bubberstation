@@ -1,6 +1,6 @@
 /datum/action/cooldown/lunatic_track
 	name = "Moonlight Echo"
-	desc = "Track your ringleader."
+	desc = "Rastreie seu líder."
 	check_flags = AB_CHECK_CONSCIOUS
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
@@ -17,14 +17,14 @@
 	var/datum/antagonist/lunatic/lunatic_datum = IS_LUNATIC(owner)
 	var/mob/living/carbon/human/ascended_heretic = lunatic_datum.ascended_body
 	if(!(ascended_heretic))
-		owner.balloon_alert(owner, "what cruel fate, your master is gone...")
+		owner.balloon_alert(owner, "Que destino cruel, seu mestre se foi...")
 		StartCooldown(1 SECONDS)
 		return FALSE
 	playsound(owner, 'sound/effects/singlebeat.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 	owner.balloon_alert(owner, get_balloon_message(ascended_heretic))
 
 	if(ascended_heretic.stat == DEAD)
-		to_chat(owner, span_hierophant("[ascended_heretic] is dead. Weep for the lie has struck out."))
+		to_chat(owner, span_hierophant("[ascended_heretic]Está morto. Chorar para a mentira caiu fora."))
 
 	StartCooldown()
 	return TRUE
@@ -34,7 +34,7 @@
 /datum/action/cooldown/lunatic_track/proc/get_balloon_message(mob/living/carbon/human/tracked_mob)
 	var/balloon_message = generate_balloon_message(tracked_mob)
 	if(tracked_mob.stat == DEAD)
-		balloon_message = "they're dead, " + balloon_message
+		balloon_message = "Eles estão mortos." + balloon_message
 
 	return balloon_message
 
@@ -51,42 +51,42 @@
 
 	switch(dist)
 		if(0 to 15)
-			balloon_message = "very near, [dir2text(dir)]!"
+			balloon_message = "Muito perto,[dir2text(dir)]!"
 		if(16 to 31)
-			balloon_message = "near, [dir2text(dir)]!"
+			balloon_message = "perto,[dir2text(dir)]!"
 		if(32 to 127)
-			balloon_message = "far, [dir2text(dir)]!"
+			balloon_message = "Longe,[dir2text(dir)]!"
 		else
-			balloon_message = "very far!"
+			balloon_message = "Muito longe!"
 
 	// Early returns here if we don't need to tell them the z-levels
 	if(our_z == their_z)
 		return balloon_message
 
 	if(is_mining_level(their_z))
-		balloon_message = "on lavaland!"
+		balloon_message = "Em Lavaland!"
 		return balloon_message
 
 	if(is_away_level(their_z) || is_secret_level(their_z))
-		balloon_message = "beyond the gateway!"
+		balloon_message = "além do portal!"
 		return balloon_message
 
 	// We already checked if they are on lavaland or gateway, so if they arent there or on the station we can early return
 	if(!is_station_level(their_z))
-		balloon_message = "on another plane!"
+		balloon_message = "Em outro avião!"
 		return balloon_message
 
 	// They must be on station because we have checked every other z-level, and since we arent on station we should go there
 	if(!is_station_level(our_z))
-		balloon_message = "on station!"
+		balloon_message = "Na estação!"
 		return balloon_message
 
 	if(our_z > their_z)
-		balloon_message = "below you!"
+		balloon_message = "Abaixo de você!"
 		return balloon_message
 
 	if(our_z < their_z)
-		balloon_message = "above you!"
+		balloon_message = "Acima de você!"
 		return balloon_message
 
 	return balloon_message

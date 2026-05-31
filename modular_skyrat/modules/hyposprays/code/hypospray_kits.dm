@@ -1,6 +1,6 @@
 /obj/item/storage/hypospraykit
 	name = "hypospray kit"
-	desc = "A hypospray kit with foam insets for hypovials and a mounting point on the bottom."
+	desc = "Um kit de hipospray com entrada de espuma para hipoviais e um ponto de montagem no fundo."
 	icon = 'modular_skyrat/modules/hyposprays/icons/hypokits.dmi'
 	icon_state = "firstaid-mini"
 	worn_icon_state = "healthanalyzer" // Get a better sprite later
@@ -27,11 +27,11 @@
 //Code to give hypospray kits selectable paterns.
 /obj/item/storage/hypospraykit/examine(mob/living/user)
 	. = ..()
-	. += span_notice("Ctrl-Shift-Click to reskin this")
+	. += span_notice("Ctrl-Shift-Clique para reesculpir isso")
 	if(attached_hypo)
-		. += span_notice("[attached_hypo] is mounted on the bottom. Alt-Right-Click to take it off.")
+		. += span_notice("[attached_hypo]é montado no fundo. Alt-Right-Click para tirá-lo.")
 	else
-		. += span_notice("Right-Click with a hypospray to mount it.")
+		. += span_notice("Clique direito com um hypospray para montá-lo.")
 
 /obj/item/storage/hypospraykit/Initialize(mapload)
 	. = ..()
@@ -108,25 +108,25 @@
 	if(!istype(tool, /obj/item/hypospray/mkii) || !LAZYACCESS(modifiers, RIGHT_CLICK))
 		return ..()
 	if(!isnull(attached_hypo))
-		balloon_alert(user, "mount point full!  Remove [attached_hypo] first!")
+		balloon_alert(user, "Ponto de montagem completo! Removedor[attached_hypo]Primero!")
 		return ITEM_INTERACT_BLOCKING
 	tool.moveToNullspace()
 	attached_hypo = tool
 	RegisterSignal(tool, COMSIG_QDELETING, PROC_REF(on_attached_hypo_qdel))
-	balloon_alert(user, "attached [attached_hypo].")
+	balloon_alert(user, "Anexado[attached_hypo].")
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/storage/hypospraykit/click_alt_secondary(mob/user)
 	if(attached_hypo != null)
 		if(user.put_in_hands(attached_hypo))
-			balloon_alert(user, "removed [attached_hypo].")
+			balloon_alert(user, "Removido[attached_hypo].")
 			UnregisterSignal(attached_hypo, COMSIG_QDELETING)
 			attached_hypo = null
 			update_appearance()
 			// Ditto here.
 		else
-			balloon_alert(user, "couldn't pull the hypo!")
+			balloon_alert(user, "Não consegui parar a injeção!")
 
 /obj/item/storage/hypospraykit/proc/on_attached_hypo_qdel()
 	if(attached_hypo)
@@ -186,7 +186,7 @@
 /// Deluxe hypokit: more storage, but you can't pocket it.
 /obj/item/storage/hypospraykit/cmo
 	name = "deluxe hypospray kit"
-	desc = "An extended hypospray kit with foam insets for hypovials & a mounting point on the bottom."
+	desc = "Um kit de hypospray estendido com entrada de espuma para hipoviais e um ponto de montagem no fundo."
 	icon_state = "cmo-mini"
 	current_case = "cmo"
 	is_xl = TRUE
@@ -203,7 +203,7 @@
 	new /obj/item/hypospray/mkii/deluxe/cmo(src)
 
 /obj/item/storage/hypospraykit/cmo/empty
-	desc = "An extended hypospray kit with foam insets for hypovials & a mounting point on the bottom."
+	desc = "Um kit de hypospray estendido com entrada de espuma para hipoviais e um ponto de montagem no fundo."
 	icon_state = "emt-mini"
 	current_case = "emt"
 	empty = TRUE
@@ -211,7 +211,7 @@
 /// Preloaded version: this is what goes in the locker.
 /obj/item/storage/hypospraykit/cmo/preloaded
 	name = "CMO's deluxe hypospray kit"
-	desc = "The CMO's precious extended hypospray kit, preloaded with a deluxe hypospray & a handful of vials.  Retains the usual insets and mounting point of smaller hypokits."
+	desc = "O precioso kit de hipospray estendido da CMO, pré-carregado com um hipospray de luxo e um punhado de frascos. Mantém as entradas habituais e o ponto de montagem de hipokits menores."
 
 /obj/item/storage/hypospraykit/cmo/preloaded/PopulateContents()
 	if(empty)
@@ -225,7 +225,7 @@
 /// Combat hypokit
 /obj/item/storage/hypospraykit/cmo/combat
 	name = "combat hypospray kit"
-	desc = "A larger tactical hypospray kit containing a combat-focused deluxe hypospray and vials."
+	desc = "Um kit de hipospray tático maior contendo um hipospray de luxo com foco em combate e frascos."
 	icon_state = "tactical-mini"
 	current_case = "tactical"
 
@@ -244,7 +244,7 @@
 // Paramedic hypokit
 /obj/item/storage/hypospraykit/paramedic
 	name = "paramedic hypospray kit"
-	desc = "A hypospray kit containing an advanced hypospray and a starter set of vials."
+	desc = "Um kit de hipospray contendo um hipospray avançado e um conjunto de frascos."
 	icon_state = "buffs-mini"
 	current_case = "buffs"
 

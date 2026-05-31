@@ -6,7 +6,7 @@
 
 /obj/item/xenoarch/hammer
 	name = "parent dev item"
-	desc = "A hammer that can be used to remove dirt from strange rocks."
+	desc = "Um martelo que pode ser usado para remover sujeira de rochas estranhas."
 	tool_behaviour = TOOL_HAMMER
 	var/dig_amount = 1
 	var/dig_speed = 1 SECONDS
@@ -15,17 +15,17 @@
 /obj/item/xenoarch/hammer/examine(mob/user)
 	. = ..()
 	if(advanced)
-		. += span_notice("This is an advanced hammer. It can change its digging depth from 1 to 30. Click to change depth.")
+		. += span_notice("Este é um martelo avançado. Pode mudar sua profundidade de escavação de 1 para 30. Clique para mudar de profundidade.")
 
-	. += span_notice("Current Digging Depth: [dig_amount]cm")
+	. += span_notice("Profundidade atual de escavação:[dig_amount]cm")
 
 /obj/item/xenoarch/hammer/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!advanced)
-		to_chat(user, span_warning("This is not an advanced hammer, it cannot change its digging depth."))
+		to_chat(user, span_warning("Este não é um martelo avançado, não pode mudar sua profundidade de escavação."))
 		return
 
-	var/user_choice = input(user, "Choose the digging depth. 1 to 30", "Digging Depth Selection") as null|num
+	var/user_choice = input(user, "Escolha a profundidade de escavação. 1 a 30", "Cavando Seleção Profundidade") as null|num
 	if(!user_choice)
 		dig_amount = 1
 		dig_speed = 1
@@ -44,7 +44,7 @@
 
 	dig_amount = round_dig
 	dig_speed = round_dig * 0.5
-	to_chat(user, span_notice("You change the hammer's digging depth to [round_dig]cm."))
+	to_chat(user, span_notice("Você muda a profundidade do martelo para[round_dig]cm."))
 
 /obj/item/xenoarch/hammer/cm1
 	name = "hammer (1cm)"
@@ -99,7 +99,7 @@
 
 /obj/item/xenoarch/brush
 	name = "brush"
-	desc = "A brush that is used to uncover the secrets of the past from strange rocks."
+	desc = "Um pincel que é usado para descobrir os segredos do passado de rochas estranhas."
 	var/dig_speed = 3 SECONDS
 	icon_state = "brush"
 
@@ -112,12 +112,12 @@
 
 /obj/item/xenoarch/tape_measure
 	name = "measuring tape"
-	desc = "A measuring tape specifically produced to measure the depth that has been dug into strange rocks."
+	desc = "Uma fita métrica especificamente produzida para medir a profundidade que foi escavada em rochas estranhas."
 	icon_state = "tape"
 
 /obj/item/xenoarch/handheld_scanner
 	name = "handheld scanner"
-	desc = "A handheld scanner for strange rocks. It tags the depths to the rock."
+	desc = "Um scanner portátil para rochas estranhas. Marca as profundezas da rocha."
 	icon_state = "scanner"
 	var/scanning_speed = 3 SECONDS
 	var/scan_advanced = FALSE
@@ -130,7 +130,7 @@
 
 /obj/item/xenoarch/handheld_recoverer
 	name = "handheld recoverer"
-	desc = "An item that has the capabilities to recover items lost due to time."
+	desc = "Um item que tem capacidade de recuperar itens perdidos devido ao tempo."
 	icon_state = "recoverer"
 
 /obj/item/xenoarch/handheld_recoverer/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -178,7 +178,7 @@
 
 /obj/item/storage/belt/utility/xenoarch
 	name = "xenoarch toolbelt"
-	desc = "Holds tools."
+	desc = "Segura ferramentas."
 	icon = 'modular_skyrat/modules/xenoarch/icons/xenoarch_items.dmi'
 	icon_state = "xenoarch_belt"
 	content_overlays = FALSE
@@ -201,7 +201,7 @@
 
 /obj/item/storage/bag/xenoarch
 	name = "xenoarch mining satchel"
-	desc = "This little bugger can be used to store and transport rocks and relics."
+	desc = "Este pequeno idiota pode ser usado para armazenar e transportar pedras e relíquias."
 	icon = 'modular_skyrat/modules/xenoarch/icons/xenoarch_items.dmi'
 	icon_state = "satchel"
 	worn_icon_state = "satchel"
@@ -261,14 +261,13 @@
 
 			else
 				if(!spam_protection)
-					to_chat(user, span_warning("Your [name] is full and can't hold any more!"))
+					to_chat(user, span_warning("Sua[name]Está cheio e não aguenta mais!"))
 					spam_protection = TRUE
 					continue
 
 	if(show_message)
 		playsound(user, SFX_RUSTLE, 50, TRUE)
-		user.visible_message(span_notice("[user] scoops up the items beneath [user.p_them()]."), \
-			span_notice("You scoop up the items beneath you with your [name]."))
+		user.visible_message(span_notice("[user]Pega os itens abaixo[user.p_them()]."), 			span_notice("Você pega os itens abaixo de você com seu[name]."))
 
 	spam_protection = FALSE
 
@@ -312,11 +311,10 @@
 
 /obj/item/skillchip/xenoarch_magnifier
 	name = "R3T3N-T1VE skillchip"
-	desc = "This biochip integrates with user's brain to enable the mastery of a specific skill. Consult certified Nanotrasen neurosurgeon before use. \
-	There's a little face etched into the back of the skillchip, with buck teeth and goofy-looking glasses."
+	desc = "Este biochip se integra com o cérebro do usuário para permitir o domínio de uma habilidade específica. Consultor certificado neurocirurgião Nanotrasen antes de usar. Há um rostinho gravado na parte de trás do chip de habilidade, com dentes de buck e óculos patetas."
 	auto_traits = list(TRAIT_XENOARCH_QUALIFIED)
 	skill_name = "Xenoarchaeological Analysis"
-	skill_description = "Allows for the more thorough magnification and notice of details on freshly-excavated xenoarchaeological garbage."
+	skill_description = "Permite a ampliação mais completa e o aviso de detalhes sobre o lixo xenoarqueológico recém escavado."
 	skill_icon = "magnifying-glass"
-	activate_message = span_notice("You feel the gleaned knowledge of a xenoarchaeological digsite internship reveal itself to your mind.")
-	deactivate_message = span_notice("The knowledge from a digsite internship fades away into jumbled coffee orders from ungrateful supervisors.")
+	activate_message = span_notice("Você sente que o conhecimento de um estágio xenoarqueológico se revela à sua mente.")
+	deactivate_message = span_notice("O conhecimento de um estágio de digsite desvanece-se em pedidos de café de supervisores ingratos.")

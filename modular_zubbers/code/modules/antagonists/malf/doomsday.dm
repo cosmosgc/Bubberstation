@@ -3,7 +3,7 @@
 		if(is_station_level(power.z))
 			explosion(power, light_impact_range = 15, explosion_cause = src, adminlog = TRUE)
 			sleep(1)
-	to_chat(world, span_bold("You hear a series of explosions!"))
+	to_chat(world, span_bold("Você ouve uma série de explosões!"))
 	SSticker.force_ending = FORCE_END_ROUND
 
 /proc/test_doomsday()

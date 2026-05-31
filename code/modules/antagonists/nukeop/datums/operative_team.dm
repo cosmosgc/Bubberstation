@@ -22,7 +22,7 @@
 
 /datum/team/nuclear/roundend_report()
 	var/list/parts = list()
-	parts += span_header("[syndicate_name] Operatives:")
+	parts += span_header("[syndicate_name]Agentes:")
 
 	switch(get_result())
 		if(NUKE_RESULT_FLUKE)
@@ -62,7 +62,7 @@
 			parts += "<span class='neutraltext big'>Neutral Victory</span>"
 			parts += "<B>Mission aborted!</B>"
 
-	var/text = span_header("<br>The syndicate operatives were:")
+	var/text = span_header("<br>Os agentes do sindicato eram:")
 	var/purchases = ""
 	var/TC_uses = 0
 	LAZYINITLIST(GLOB.uplink_purchase_logs_by_key)
@@ -162,12 +162,12 @@
 		poll_time = 30 SECONDS,
 		ignore_category = POLL_IGNORE_SYNDICATE,
 		alert_pic = /obj/structure/sign/poster/contraband/gorlex_recruitment,
-		role_name_text = "emergency syndicate reinforcement",
+		role_name_text = "Reforço do sindicato de emergência.",
 		amount_to_pick = 1,
 	)
 
 	if(isnull(chosen_one))
-		tgui_alert(admin, "No candidates found.", "Recruitment Shortage", list("OK"))
+		tgui_alert(admin, "Nenhum candidato encontrado.", "Recruitment Shortage", list("OK"))
 		return
 
 
@@ -213,7 +213,7 @@
 	playsound(spawn_loc, SFX_SPARKS, 50, TRUE)
 	playsound(spawn_loc, 'sound/effects/phasein.ogg', 50, TRUE)
 
-	tgui_alert(admin, "Reinforcement spawned at [infil_or_nukebase] with [tc_to_spawn].", "Reinforcements have arrived", list("God speed"))
+	tgui_alert(admin, "Reforço gerado em[infil_or_nukebase]com[tc_to_spawn].", "Reinforcements have arrived", list("God speed"))
 
 /datum/team/nuclear/proc/is_disk_rescued()
 	for(var/obj/item/disk/nuclear/nuke_disk in SSpoints_of_interest.real_nuclear_disks)

@@ -80,7 +80,7 @@ export const RecordPrint = (props) => {
             icon="question"
             onClick={() => swapTabs(PRINTOUT.Missing)}
             selected={printType === PRINTOUT.Missing}
-            tooltip="Prints a poster with mugshot and description."
+            tooltip="Imprime um pôster com foto e descrição."
             tooltipPosition="bottom"
           >
             Missing
@@ -107,7 +107,7 @@ export const RecordPrint = (props) => {
             onClick={() => swapTabs(PRINTOUT.Wanted)}
             selected={printType === PRINTOUT.Wanted}
             tooltip={`Prints a poster with mugshot and crimes.${
-              innocent ? ' (Requires crimes)' : ''
+              innocent ? '(Requer crimes)' : ''
             }`}
             tooltipPosition="bottom"
           >
@@ -118,7 +118,7 @@ export const RecordPrint = (props) => {
       }
       fill
       scrollable
-      title="Print Record"
+      title="Imprimir o Registro"
     >
       <Stack color="label" fill vertical>
         <Stack.Item>

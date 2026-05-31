@@ -10,12 +10,12 @@
 /obj/item/pen/cyborg
 	name = "integrated pen"
 	font = CYBORG_FONT
-	desc = "You can almost hear the sound of gears grinding against one another as you write with this pen. Almost."
+	desc = "Você quase pode ouvir o som de engrenagens moendo uns contra os outros enquanto você escreve com esta caneta. Quase."
 
 
 /obj/item/clipboard/cyborg
 	name = "\improper integrated clipboard"
-	desc = "A clipboard which seems to come adapted with a paper synthetizer, carefully hidden in its paper clip."
+	desc = "Uma prancheta que parece vir adaptada com um sintetizador de papel, cuidadosamente escondida em seu clipe de papel."
 	integrated_pen = TRUE
 	/// When was the last time the printer was used?
 	COOLDOWN_DECLARE(printer_cooldown)
@@ -39,12 +39,12 @@
 
 /obj/item/clipboard/cyborg/click_alt(mob/user)
 	if(!iscyborg(user))
-		to_chat(user, span_warning("You do not seem to understand how to use [src]."))
+		to_chat(user, span_warning("Você parece não entender como usar[src]."))
 		return CLICK_ACTION_BLOCKING
 	var/mob/living/silicon/robot/cyborg_user = user
 	// Not enough charge? Tough luck.
 	if(cyborg_user?.cell.charge < paper_charge_cost)
-		to_chat(user, span_warning("Your internal cell doesn't have enough charge left to use [src]'s integrated printer."))
+		to_chat(user, span_warning("Seu celular interno não tem carga suficiente para usar.[src]Impressora Integrada."))
 		return CLICK_ACTION_BLOCKING
 	// Check for cooldown to avoid paper spamming
 	if(COOLDOWN_FINISHED(src, printer_cooldown))
@@ -59,12 +59,12 @@
 			RegisterSignal(new_paper, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_top_paper_change))
 			top_paper = new_paper
 			update_appearance()
-			to_chat(user, span_notice("[src]'s integrated printer whirs to life, spitting out a fresh piece of paper and clipping it into place."))
+			to_chat(user, span_notice("[src]Impressora integrada, cospe um pedaço de papel fresco e o coloca no lugar."))
 			return CLICK_ACTION_SUCCESS
 		else
-			to_chat(user, span_warning("[src]'s integrated printer refuses to print more paper, as [src] already contains enough paper."))
+			to_chat(user, span_warning("[src]A impressionora integrada se recusa a imprime mais papel.[src]Já contém papel suficiente."))
 	else
-		to_chat(user, span_warning("[src]'s integrated printer refuses to print more paper, its bluespace paper synthesizer not having finished recovering from its last synthesis."))
+		to_chat(user, span_warning("[src]A impressora integrada se recusa a imprimir mais papel, seu sintetizador de papel do espaço azul não ter acabado de se recuperar de sua última síntese."))
 	return CLICK_ACTION_BLOCKING
 
 
@@ -76,7 +76,7 @@
 /// THE CLAMPS!!
 /obj/item/borg/hydraulic_clamp
 	name = "integrated hydraulic clamp"
-	desc = "A neat way to lift and move around few small packages for quick and painless deliveries!"
+	desc = "Uma maneira limpa de levantar e mover alguns pacotes pequenos para entregas rápidas e indolor!"
 	icon = 'icons/obj/devices/mecha_equipment.dmi' // Just some temporary sprites because I don't have any unique one yet
 	icon_state = "mecha_clamp"
 	/// How much power does it draw per operation?
@@ -133,9 +133,9 @@
 
 /obj/item/borg/hydraulic_clamp/examine(mob/user)
 	. = ..()
-	. += span_notice("It's cargo hold has a capacity of [storage_capacity] and is currently holding <b>[contents.len ? contents.len : 0]</b> items in it!")
+	. += span_notice("O porão de carga tem uma capacidade de[storage_capacity]e atualmente está segurando<b>[contents.len ? contents.len : 0]</b>Itens nele!")
 	if(storage_capacity > 1)
-		. += span_notice("Use in hand to select an item you want to prioritize taking out of the storage.")
+		. += span_notice("Use na mão para selecionar um item que você queira priorizar tirando do armazenamento.")
 
 
 /// A simple proc to empty the contents of the hydraulic clamp, forcing them on the turf it's on. Also forces `selected_item_index` to 0, to avoid any possible issues resulting from it.
@@ -152,7 +152,7 @@
 	if(spilled_amount)
 		var/holder = cyborg_holding_me?.resolve()
 		if(holder)
-			visible_message(span_warning("[cyborg_holding_me?.resolve()] spills the content of [src]'s cargo hold all over the floor!"))
+			visible_message(span_warning("[cyborg_holding_me?.resolve()]derrama o conteúdo de[src]A carga está no chão!"))
 
 
 /obj/item/borg/hydraulic_clamp/attack_self(mob/user, modifiers)
@@ -162,7 +162,7 @@
 	selected_item_index = 0
 
 	if(contents.len <= 1)
-		to_chat(user, span_warning("There's currently [contents.len ? "only one item" : "nothing"] to take out of [src]'s cargo hold, no need to pick!"))
+		to_chat(user, span_warning("Há atualmente[contents.len ? "only one item" : "nothing"]Para tirar de[src]Não precisa escolher!"))
 		return
 
 	. = ..()
@@ -182,7 +182,7 @@
 		return
 
 	selected_item_index = new_index
-	to_chat(user, span_notice("[src] will now prioritize unloading [selection]."))
+	to_chat(user, span_notice("[src]Vamos dar prioridade à descarga.[selection]."))
 
 
 /obj/item/borg/hydraulic_clamp/emp_act(severity)
@@ -196,7 +196,7 @@
 
 	// Not enough charge? Tough luck.
 	if(user?.cell.charge < charge_cost)
-		to_chat(user, span_warning("Your internal cell doesn't have enough charge left to use [src]."))
+		to_chat(user, span_warning("Seu celular interno não tem carga suficiente para usar.[src]."))
 		return
 
 	user.cell.use(charge_cost)
@@ -214,7 +214,7 @@
 		selected_item_index = 0
 
 		if(unloading_time > 0.5 SECONDS) // We don't want too much chat spam if the clamp works fast.
-			to_chat(user, span_notice("You start unloading something from [src]..."))
+			to_chat(user, span_notice("Você começa a descarregar algo de[src]..."))
 		playsound(src, clamp_sound, clamp_sound_volume, FALSE, -5)
 		COOLDOWN_START(src, clamp_cooldown, cooldown_duration)
 
@@ -224,7 +224,7 @@
 
 		var/turf/extraction_turf = get_turf(attacked_atom)
 		extracted_item.forceMove(extraction_turf)
-		visible_message(span_notice("[src.loc] unloads [extracted_item] from [src]."))
+		visible_message(span_notice("[src.loc]Descarrega.[extracted_item]De[src]."))
 		log_silicon("[user] unloaded [extracted_item] onto [extraction_turf] ([AREACOORD(extraction_turf)]).")
 		in_use = FALSE
 		return
@@ -232,26 +232,26 @@
 	// We're trying to load something in the clamp
 	else
 		if(whitelisted_contents && !is_type_in_list(attacked_atom, whitelisted_item_types))
-			to_chat(user, span_warning("[src] can only pick up [whitelisted_item_description]!"))
+			to_chat(user, span_warning("[src]Só pode atender.[whitelisted_item_description]!"))
 			in_use = FALSE
 			return
 
 		if(contents.len >= storage_capacity)
-			to_chat(user, span_warning("[src] is already at full capacity!"))
+			to_chat(user, span_warning("[src]Já está em plena capacidade!"))
 			in_use = FALSE
 			return
 
 		if(item_weight_limit)
 			var/obj/item/to_lift = attacked_atom
 			if(!to_lift || to_lift.w_class > item_weight_limit)
-				to_chat(user, span_warning("[to_lift] is too big for [src]!"))
+				to_chat(user, span_warning("[to_lift]é muito grande para[src]!"))
 				in_use = FALSE
 				return
 
 		var/atom/movable/lifting_up = attacked_atom
 
 		if(lifting_up.anchored)
-			to_chat(user, span_warning("[lifting_up] is firmly secured, it's not currently possible to move it into [src]!"))
+			to_chat(user, span_warning("[lifting_up]Está firmemente seguro, não é possível movê-lo para[src]!"))
 			in_use = FALSE
 			return
 
@@ -261,7 +261,7 @@
 			var/obj/item/delivery/big/parcel = lifting_up
 			if(parcel.contains_mobs)
 				if(!can_hold_mobs)
-					to_chat(user, span_warning("[src]'s warning light blinks red: There's something with the potential to be alive inside of [parcel]!"))
+					to_chat(user, span_warning("[src]A luz de aviso pisca vermelho: Há algo com o potencial de estar vivo dentro de[parcel]!"))
 					in_use = FALSE
 					return
 				contains_mobs = TRUE
@@ -270,7 +270,7 @@
 		lifting_up.add_fingerprint(user)
 
 		if(loading_time > 0.5 SECONDS) // We don't want too much chat spam if the clamp works fast.
-			to_chat(user, span_notice("You start loading [lifting_up] into [src]'s cargo hold..."))
+			to_chat(user, span_notice("Você começa a carregar[lifting_up]Em[src]O porão de carga..."))
 		playsound(src, clamp_sound, clamp_sound_volume, FALSE, -5)
 
 		if(!do_after(user, loading_time, lifting_up)) // It takes two seconds to put stuff into the clamp's cargo hold
@@ -282,13 +282,13 @@
 		lifting_up.forceMove(src)
 		var/turf/lifting_up_from = get_turf(lifting_up.loc)
 		log_silicon("[user] loaded [lifting_up] (Contains mobs: [contains_mobs]) into [src] at ([AREACOORD(lifting_up_from)]).")
-		visible_message(span_notice("[src.loc] loads [lifting_up] into [src]'s cargo hold."))
+		visible_message(span_notice("[src.loc]Cargas.[lifting_up]Em[src]O porão de carga."))
 		in_use = FALSE
 
 /// The fabled paper plane crossbow and its hardlight paper planes.
 /obj/item/paperplane/syndicate/hardlight
 	name = "hardlight paper plane"
-	desc = "Hard enough to hurt, fickle enough to be impossible to pick up."
+	desc = "Difícil o bastante para doer, inconstante o suficiente para ser impossível de pegar."
 	impact_eye_damage_lower = 10
 	impact_eye_damage_higher = 10
 	delete_on_impact = TRUE
@@ -305,7 +305,7 @@
 
 /obj/item/borg/paperplane_crossbow
 	name = "paper plane crossbow"
-	desc = "Be careful, don't aim for the eyes- Who am I kidding, <i>definitely</i> aim for the eyes!"
+	desc = "Cuidado, não mire nos olhos. Quem estou enganando,<i>Com certeza.</i>Aponte para os olhos!"
 	icon = 'icons/obj/weapons/guns/energy.dmi'
 	icon_state = "crossbow"
 	/// How many planes does the crossbow currently have in its internal magazine?
@@ -324,9 +324,9 @@
 
 /obj/item/borg/paperplane_crossbow/examine(mob/user)
 	. = ..()
-	. += span_notice("There is <b>[planes]</b> left inside of its internal magazine, out of [max_planes].")
+	. += span_notice("Há<b>[planes]</b>Feito dentro de sua revista interna, fora de[max_planes].")
 	var/charging_speed = 10 / charge_delay
-	. += span_notice("It recharges at a rate of <b>[charging_speed]</b> plane[charging_speed >= 2 ? "s" : ""] per second.")
+	. += span_notice("Ele recarrega a uma taxa de<b>[charging_speed]</b>Avião[charging_speed >= 2 ? "s" : ""]Por segundo.")
 
 
 /obj/item/borg/paperplane_crossbow/equipped()
@@ -358,7 +358,7 @@
 	if(!COOLDOWN_FINISHED(src, shooting_cooldown))
 		return ITEM_INTERACT_BLOCKING
 	if(planes <= 0)
-		to_chat(user, span_warning("Not enough paper planes left!"))
+		to_chat(user, span_warning("Não sobraram aviões de papel suficiente!"))
 		return ITEM_INTERACT_BLOCKING
 	planes--
 
@@ -367,7 +367,7 @@
 	playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
 	plane_to_fire.throw_at(target, plane_to_fire.throw_range, plane_to_fire.throw_speed, user)
 	COOLDOWN_START(src, shooting_cooldown, shooting_delay)
-	user.visible_message(span_warning("[user] shoots a paper plane at [target]!"))
+	user.visible_message(span_warning("[user]Atira em um avião de papel.[target]!"))
 	check_amount()
 	return ITEM_INTERACT_SUCCESS
 
@@ -379,7 +379,7 @@
 
 	var/mob/living/silicon/robot/robot_user = user
 	if(!robot_user.cell.use(10))
-		to_chat(user, span_warning("Not enough power."))
+		to_chat(user, span_warning("Não há energia suficiente."))
 		return ITEM_INTERACT_BLOCKING
 	return shoot(interacting_with, user)
 
@@ -423,18 +423,12 @@
 /obj/item/bounty_cube
 	w_class = WEIGHT_CLASS_SMALL
 
-#define BASE_NINJA_REAGENTS list(\
-		/datum/reagent/medicine/inacusiate,\
-		/datum/reagent/medicine/morphine,\
-		/datum/reagent/medicine/potass_iodide,\
-		/datum/reagent/medicine/syndicate_nanites,\
-		/datum/reagent/consumable/nutriment\
-	)
+#define BASE_NINJA_REAGENTS list(		/datum/reagent/medicine/inacusiate,		/datum/reagent/medicine/morphine,		/datum/reagent/medicine/potass_iodide,		/datum/reagent/medicine/syndicate_nanites,		/datum/reagent/consumable/nutriment	)
 
 
 /obj/item/katana/ninja_blade
 	name = "energy katana"
-	desc = "A katana infused with strong energy."
+	desc = "Uma katana infundida com forte energia."
 	force = 30
 	icon_state = "energy_katana"
 	inhand_icon_state = "energy_katana"
@@ -448,7 +442,7 @@
 
 /obj/item/reagent_containers/borghypo/syndicate/ninja
 	name = "modified cyborg hypospray"
-	desc = "An experimental piece of technology used to produce powerful restorative nanites used to very quickly restore injuries of all types. metabolizes potassium iodide for radiation poisoning, inacusiate for ear damage and morphine for offense and nutriment for the operative in the field."
+	desc = "Uma tecnologia experimental usada para produzir poderosos nanites restauradores usados para restaurar rapidamente lesões de todos os tipos. metaboliza iodeto de potássio para envenenamento por radiação, inacusia para danos na orelha e morfina para ofensa e nutrição para o agente em campo."
 	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
 	icon_state = "borghypo_n"
 	charge_cost = 20
@@ -459,7 +453,7 @@
 /// Engineering Modules ///
 /obj/item/crowbar/cyborg/power
 	name = "modular crowbar"
-	desc = "A cyborg fitted module resembling the jaws of life."
+	desc = "Um módulo ciborgue que se assemelha às mandíbulas da vida."
 	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
 	icon_state = "jaws_pry_cyborg"
 	usesound = 'sound/items/tools/jaws_pry.ogg'
@@ -474,18 +468,18 @@
 	playsound(get_turf(user), 'sound/items/tools/change_jaws.ogg', 50, TRUE)
 	if(tool_behaviour == TOOL_CROWBAR)
 		tool_behaviour = TOOL_WIRECUTTER
-		to_chat(user, span_notice("You attach the cutting jaws to [src]."))
+		to_chat(user, span_notice("Você prende as mandíbulas cortantes para[src]."))
 		icon_state = "jaws_cutter_cyborg"
 		usesound = 'sound/items/tools/jaws_cut.ogg'
 	else
 		tool_behaviour = TOOL_CROWBAR
-		to_chat(user, span_notice("You attach the prying jaws to [src]."))
+		to_chat(user, span_notice("Você prende as mandíbulas a[src]."))
 		icon_state = "jaws_pry_cyborg"
 		usesound = 'sound/items/tools/jaws_pry.ogg'
 
 /obj/item/screwdriver/cyborg/power
 	name =	"automated drill"
-	desc = "A cyborg fitted module resembling the hand drill"
+	desc = "Um módulo ciborgue que se assemelha à broca manual."
 	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
 	icon_state = "drill_screw_cyborg"
 	hitsound = 'sound/items/tools/drill_hit.ogg'
@@ -501,11 +495,11 @@
 	playsound(get_turf(user), 'sound/items/tools/change_drill.ogg', 50, TRUE)
 	if(tool_behaviour == TOOL_SCREWDRIVER)
 		tool_behaviour = TOOL_WRENCH
-		to_chat(user, span_notice("You attach the bolt bit to [src]."))
+		to_chat(user, span_notice("Você prende o parafuso ao[src]."))
 		icon_state = "drill_bolt_cyborg"
 	else
 		tool_behaviour = TOOL_SCREWDRIVER
-		to_chat(user, span_notice("You attach the screw bit to [src]."))
+		to_chat(user, span_notice("Você prende o parafuso ao[src]."))
 		icon_state = "drill_screw_cyborg"
 
 /// Shapeshifter
@@ -583,18 +577,18 @@
 		if (isturf(user.loc))
 			toggle(user)
 		else
-			to_chat(user, span_warning("You can't use [src] while inside something!"))
+			to_chat(user, span_warning("Você não pode usar[src]dentro de Alguma Eisa!"))
 	else
-		to_chat(user, span_warning("You need at least [activationCost] charge in your cell to use [src]!"))
+		to_chat(user, span_warning("Você precisa pelo menos[activationCost]Carregar em sua cela para usar[src]!"))
 
 /obj/item/borg_shapeshifter/proc/toggle(mob/living/silicon/robot/user)
 	if(active)
 		playsound(src, 'sound/effects/pop.ogg', 100, TRUE, -6)
-		to_chat(user, span_notice("You deactivate \the [src]."))
+		to_chat(user, span_notice("Você desativa.\the [src]."))
 		deactivate(user)
 	else
 		if(animation_playing)
-			to_chat(user, span_notice("\the [src] is recharging."))
+			to_chat(user, span_notice("\the [src]está recarregando."))
 			return
 		var/static/list/model_icons = sort_list(list(
 			"Standard" = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = "robot"),
@@ -650,7 +644,7 @@
 			return FALSE
 		qdel(model)
 		animation_playing = TRUE
-		to_chat(user, span_notice("You activate \the [src]."))
+		to_chat(user, span_notice("Você ativa.\the [src]."))
 		playsound(src, 'sound/effects/seedling_chargeup.ogg', 100, TRUE, -6)
 		var/start = user.filters.len
 		var/X,Y,rsq,i,f
@@ -667,10 +661,10 @@
 			animate(offset=f:offset-1, time=rand()*20+10)
 		if (do_after(user, 5 SECONDS, target=user) && use_power(user, activationCost))
 			playsound(src, 'sound/effects/bamf.ogg', 100, TRUE, -6)
-			to_chat(user, span_notice("You are now disguised."))
+			to_chat(user, span_notice("Agora você está disfarçado."))
 			activate(user)
 		else
-			to_chat(user, span_warning("The chameleon field fizzles."))
+			to_chat(user, span_warning("O campo camaleão falha."))
 			do_sparks(3, FALSE, user)
 			for(i=1, i<=min(7, user.filters.len), ++i) // removing filters that are animating does nothing, we gotta stop the animations first
 				f = user.filters[start+i]
@@ -767,17 +761,17 @@
 /obj/item/borg_shapeshifter/proc/disrupt(mob/living/silicon/robot/user)
 	SIGNAL_HANDLER
 	if(active)
-		to_chat(user, span_danger("Your chameleon field deactivates."))
+		to_chat(user, span_danger("Seu campo camaleão desativa."))
 		deactivate(user)
 
 // Quadruped tongue - lick lick
 /obj/item/quadborg_tongue
 	name = "synthetic tongue"
-	desc = "Useful for slurping mess off the floor before affectionally licking the crew members in the face."
+	desc = "Útil para sujar o chão antes de lamber os membros da tripulação na cara."
 	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
 	icon_state = "synthtongue"
 	hitsound = 'sound/effects/blob/attackblob.ogg'
-	desc = "For giving affectionate kisses."
+	desc = "Por dar beijos afetuosos."
 	item_flags = NOBLUDGEON
 
 /obj/item/quadborg_tongue/interact_with_atom(atom/target, mob/living/user, list/modifiers)
@@ -789,20 +783,20 @@
 
 	if(!HAS_TRAIT(target, TRAIT_AFFECTION_AVERSION)) // Checks for Affection Aversion trait
 		if(check_zone(borg.zone_selected) == "head")
-			borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]'s face!"), span_notice("You affectionally lick \the [mob]'s face!"))
+			borg.visible_message(span_warning("\the [borg]Afetivamente lambe\the [mob]Ó rosto!"), span_notice("Você amavelmente lambe\the [mob]Ó rosto!"))
 			playsound(borg, 'sound/effects/blob/attackblob.ogg', 50, 1)
 		else
-			borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]!"), span_notice("You affectionally lick \the [mob]!"))
+			borg.visible_message(span_warning("\the [borg]Afetivamente lambe\the [mob]!"), span_notice("Você amavelmente lambe\the [mob]!"))
 			playsound(borg, 'sound/effects/blob/attackblob.ogg', 50, 1)
 		return ITEM_INTERACT_SUCCESS
 	else
-		to_chat(user, span_warning("ERROR: [target] is on the Do Not Lick registry!"))
+		to_chat(user, span_warning("ERRO:[target]está no registro Do Not Lick!"))
 		return ITEM_INTERACT_BLOCKING
 
 // Quadruped nose - Boop
 /obj/item/quadborg_nose
 	name = "boop module"
-	desc = "The BOOP module"
+	desc = "O módulo BOOP"
 	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
 	icon_state = "nose"
 	obj_flags = CONDUCTS_ELECTRICITY
@@ -812,19 +806,19 @@
 /obj/item/quadborg_nose/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	if(!HAS_TRAIT(target, TRAIT_AFFECTION_AVERSION)) // Checks for Affection Aversion trait
 		do_attack_animation(target, null, src)
-		user.visible_message(span_notice("[user] [pick("nuzzles", "pushes", "boops")] \the [target.name] with their nose!"))
+		user.visible_message(span_notice("[user] [pick("nuzzles", "pushes", "boops")] \the [target.name]Com nariz!"))
 		return ITEM_INTERACT_SUCCESS
 	else
-		to_chat(user, span_warning("ERROR: [target] is on the No Nosing registry!"))
+		to_chat(user, span_warning("ERRO:[target]está no registro Sem Nosing!"))
 		return ITEM_INTERACT_BLOCKING
 
 /// Better Clamp
 /obj/item/borg/hydraulic_clamp/better
 	name = "improved integrated hydraulic clamp"
-	desc = "A neat way to lift and move around crates for quick and painless deliveries!"
+	desc = "Uma maneira limpa de levantar e mover caixas para entregas rápidas e indolors!"
 	storage_capacity = 4
 	whitelisted_item_types = list(/obj/structure/closet/crate, /obj/item/delivery/big, /obj/item/delivery, /obj/item/bounty_cube) // If they want to carry a small package or a bounty cube instead, so be it, honestly.
-	whitelisted_item_description = "wrapped packages"
+	whitelisted_item_description = "Embrulhados"
 	item_weight_limit = NONE
 	clamp_sound_volume = 50
 
@@ -835,7 +829,7 @@
 
 /obj/item/borg/hydraulic_clamp/mail
 	name = "integrated rapid mail delivery device"
-	desc = "Allows you to carry around a lot of mail, to distribute it around the station like the good little mailbot you are!"
+	desc = "Permite que você carregue um monte de correspondência, para distribuí-lo pela estação como o bom pequeno mailbot que você é!"
 	icon = 'icons/obj/service/library.dmi'
 	icon_state = "bookbag"
 	storage_capacity = 100
@@ -850,7 +844,7 @@
 
 /obj/item/borg/forging_setup
 	name = "integrated forging dispenser"
-	desc = "Allows cyborgs to dispense the necessary structures for forging in return for power."
+	desc = "Permite que cyborgs disponibilizem as estruturas necessárias para forjar em troca de poder."
 	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
 	icon_state = "forge_dispense"
 	/// how much charge the item will use per use
@@ -859,21 +853,21 @@
 /obj/item/borg/forging_setup/attack_self(mob/user, modifiers)
 	var/mob/living/silicon/robot/robot_user = user
 	if(!istype(robot_user)) //you have to be a borg to use this item
-		to_chat(user, span_warning("Must be a cyborg to use [src]!"))
+		to_chat(user, span_warning("Deve ser um cyborg para usar.[src]!"))
 		return
 
 	if(robot_user.cell.charge < charge_cost)
-		to_chat(user, span_warning("carga insuficiente!"))
+		to_chat(user, span_warning("Insuficiência de carga!"))
 		return
 
 	var/turf/src_turf = get_turf(src)
 	if(!isopenturf(src_turf) || isspaceturf(src_turf))
-		to_chat(user, span_warning("Must be built on a solid surface!"))
+		to_chat(user, span_warning("Deve ser construída em uma superfície sólida!"))
 		return
 
 	for(var/obj/structure/locate_structure in src_turf)
 		if(locate_structure.density)
-			to_chat(user, span_warning("Must be built on an empty surface!"))
+			to_chat(user, span_warning("Deve ser construída em uma superfície vazia!"))
 			return
 
 	robot_user.cell.use(charge_cost)

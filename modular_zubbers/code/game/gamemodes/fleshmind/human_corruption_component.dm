@@ -38,8 +38,8 @@
 
 	var/mob/living/carbon/human/infected_human = parent
 
-	to_chat(infected_human, span_hypnophrase("Your mind feels at ease, your mind feels one with the flesh."))
-	to_chat(infected_human, span_userdanger("IMPORTANT INFO, MUST READ: [CONTROLLED_MOB_POLICY]"))
+	to_chat(infected_human, span_hypnophrase("Sua mente sente-se à vontade, sua mente sente-se com a carne."))
+	to_chat(infected_human, span_userdanger("IMPORTANTE INFO, DEVE LEIR:[CONTROLLED_MOB_POLICY]"))
 
 	RegisterSignal(infected_human, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(update_parent_overlays))
 	RegisterSignal(infected_human, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
@@ -108,17 +108,17 @@
 /datum/component/human_corruption/proc/on_examine(atom/examined, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += "<b>[p_They()] have strange wires wrappped around [p_them()]!</b>"
+	examine_list += "<b>[p_They()]Tem fiostranhos inscritos ao refazer[p_them()]!</b>"
 
 /datum/component/human_corruption/proc/core_death(obj/structure/fleshmind/structure/core/deleting_core, force)
 	SIGNAL_HANDLER
 
-	to_chat(parent, span_userdanger("Your mind screams as you feel a processor core dying!"))
+	to_chat(parent, span_userdanger("Sua mente grita ao sentir um núcleo de processador morrendo!"))
 
 /datum/component/human_corruption/proc/component_death(obj/structure/fleshmind/structure/core/deleting_core, force)
 	SIGNAL_HANDLER
 
-	to_chat(parent, span_userdanger("Your mechanical implants fail catastrophically as your link to the hive is cut off!"))
+	to_chat(parent, span_userdanger("Seus implantes mecânicos falham catastróficamente quando sua ligação com a colmeia é cortada!"))
 
 	var/mob/living/carbon/human/parent_human = parent
 	INVOKE_ASYNC(parent_human, TYPE_PROC_REF(/mob, emote), "scream")
@@ -144,7 +144,7 @@
 	INVOKE_ASYNC(parent_human, TYPE_PROC_REF(/mob, emote), "scream")
 	parent_human.apply_status_effect(/datum/status_effect/jitter, 20 SECONDS)
 	parent_human.Knockdown(10)
-	to_chat(parent_human, span_userdanger("You feel your implants freeze up!"))
+	to_chat(parent_human, span_userdanger("Você sente seus implantes congelar!"))
 
 /datum/component/human_corruption/proc/host_death()
 	SIGNAL_HANDLER

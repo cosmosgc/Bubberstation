@@ -1,6 +1,6 @@
 /datum/job/prisoner
 	title = JOB_PRISONER
-	description = "Keep yourself occupied in permabrig."
+	description = "Mantenha-se ocupado em permanente."
 	faction = FACTION_STATION
 	total_positions = 12		// SKYRAT EDIT: Original value (0)
 	spawn_positions = 2
@@ -22,7 +22,7 @@
 	)
 
 	family_heirlooms = list(/obj/item/pen/blue)
-	rpg_title = "Defeated Miniboss"
+	rpg_title = "Derrotado Miniboss"
 	job_flags = STATION_JOB_FLAGS | JOB_CANNOT_OPEN_SLOTS | JOB_ANTAG_PROTECTED & ~JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 /datum/job/prisoner/New()
@@ -46,7 +46,7 @@
 	var/datum/record/crew/target_record = find_record(crewmember.real_name)
 	target_record.crimes += past_crime
 	target_record.recreate_manifest_photos(add_height_chart = TRUE)
-	to_chat(crewmember, span_warning("You are imprisoned for \"[crime_name]\"."))
+	to_chat(crewmember, span_warning("Você está preso por\"[crime_name]\"."))
 	crewmember.add_mob_memory(/datum/memory/key/permabrig_crimes, crimes = crime_name)
 
 /datum/outfit/job/prisoner

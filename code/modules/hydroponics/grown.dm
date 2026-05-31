@@ -109,7 +109,7 @@
 	if(!dry_grind || HAS_TRAIT(src, TRAIT_DRIED))
 		return TRUE
 	if (user)
-		to_chat(user, span_warning("[src] needs to be dry before it can be ground up!"))
+		to_chat(user, span_warning("[src]Precisa estar seco antes que possa ser moído!"))
 	return FALSE
 
 /// Turns the nutriments and vitamins into the distill reagent or fruit wine

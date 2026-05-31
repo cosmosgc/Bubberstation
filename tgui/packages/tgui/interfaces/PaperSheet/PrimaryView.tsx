@@ -94,7 +94,7 @@ export class PrimaryView extends Component {
           {canEdit && (
             <Flex.Item shrink={1} height={`${TEXTAREA_INPUT_HEIGHT}px`}>
               <Section
-                title="Insert Text"
+                title="Inserir texto"
                 fitted
                 fill
                 buttons={

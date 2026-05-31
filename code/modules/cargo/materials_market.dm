@@ -5,9 +5,7 @@
 
 /obj/machinery/materials_market
 	name = "galactic materials market"
-	desc = "This machine allows the user to buy and sell sheets of minerals \
-		across the system. Prices are known to fluxuate quite often,\
-		sometimes even within the same minute. All transactions are final."
+	desc = "Esta máquina permite ao usuário comprar e vender folhas de minerais através do sistema. Sabe-se que os preços fluem muitas vezes, às vezes mesmo dentro do mesmo minuto. Todas as transações são finais."
 	circuit = /obj/item/circuitboard/machine/materials_market
 	req_access = list(ACCESS_CARGO)
 	density = TRUE
@@ -46,27 +44,27 @@
 		return NONE
 
 	if(!is_operational)
-		balloon_alert(user, "sem energia!")
+		balloon_alert(user, "Sem energia!")
 		return ITEM_INTERACT_FAILURE
 
 	var/list/datum/material/materials = exportable.custom_materials
 	if(materials.len != 1)
-		balloon_alert(user, "alloy stacks not allowed")
+		balloon_alert(user, "pilhas de liga não são permitidas.")
 		return ITEM_INTERACT_FAILURE
 
 	var/price = SSstock_market.materials_prices[materials[1].type]
 	if(!price)
-		balloon_alert(user, "materials in stack are worthless")
+		balloon_alert(user, "Os materiais na pilha são inúteis.")
 		return ITEM_INTERACT_FAILURE
 
 	if(!user.transferItemToLoc(exportable, src))
-		to_chat(user, span_warning("[exportable] is stuck in hand!"))
+		to_chat(user, span_warning("[exportable]Está preso na mão!"))
 		return ITEM_INTERACT_FAILURE
 
 	var/obj/item/stock_block/new_block = new /obj/item/stock_block(drop_location())
 	new_block.export_value = price
 	new_block.set_custom_materials(materials)
-	to_chat(user, span_notice("You have created a stock block worth [new_block.export_value * exportable.amount] [MONEY_SYMBOL]! Sell it before it becomes liquid!"))
+	to_chat(user, span_notice("Você criou um bloco de ações no valor[new_block.export_value * exportable.amount] [MONEY_SYMBOL]Venda antes que fique líquido!"))
 	playsound(src, 'sound/machines/synth/synth_yes.ogg', 50, FALSE)
 	qdel(exportable)
 	use_energy(active_power_usage)
@@ -88,10 +86,7 @@
 /obj/machinery/materials_market/proc/find_order(mob/user, is_ordering_private)
 	for(var/datum/supply_order/order in SSshuttle.shopping_list)
 		// Must be a Galactic Materials Market order and payed by the null account(if ordered via cargo budget) or by correct user for private purchase
-		if(order.orderer_rank == GALATIC_MATERIAL_ORDER && ( \
-			(!is_ordering_private && isnull(order.paying_account)) || \
-			(is_ordering_private && !isnull(order.paying_account) && order.orderer == user) \
-		))
+		if(order.orderer_rank == GALATIC_MATERIAL_ORDER && ( 			(!is_ordering_private && isnull(order.paying_account)) || 			(is_ordering_private && !isnull(order.paying_account) && order.orderer == user) 		))
 			return order
 	return null
 
@@ -302,10 +297,7 @@
 
 			//Place a new order
 			var/datum/supply_pack/custom/minerals/mineral_pack = new(
-				purchaser = is_ordering_private ? living_user : "Cargo", \
-				cost = cost, \
-				contains = things_to_order, \
-			)
+				purchaser = is_ordering_private ? living_user : "Cargo", 				cost = cost, 				contains = things_to_order, 			)
 			var/datum/supply_order/disposable/materials/new_order = new(
 				pack = mineral_pack,
 				orderer = living_user,
@@ -340,7 +332,7 @@
 
 /obj/item/stock_block
 	name = "stock block"
-	desc = "A block of stock. It's worth a certain amount of money, based on a sale on the materials market. Ship it on the cargo shuttle to claim your money."
+	desc = "Um bloco de ações. Vale uma certa quantia de dinheiro, baseado em uma venda no mercado de materiais. Envie no transporte de carga para reclamar seu dinheiro."
 	icon = 'icons/obj/economy.dmi'
 	icon_state = "stock_block"
 	/// How many credits was this worth when created?
@@ -358,15 +350,15 @@
 
 	var/datum/material/export_mat = custom_materials[1]
 	var/quantity = custom_materials[export_mat] / SHEET_MATERIAL_AMOUNT
-	. += span_notice("\The [src] is worth [quantity * export_value] [MONEY_SYMBOL], from selling [quantity] sheets of [export_mat.name].")
+	. += span_notice("\The [src]vale a pena.[quantity * export_value] [MONEY_SYMBOL], de vender[quantity]Folhas de[export_mat.name].")
 
 	if(fluid)
-		. += span_warning("\The [src] is currently liquid! Its value is based on the market price.")
+		. += span_warning("\The [src]é atualmente líquido! Seu valor é baseado no preço de mercado.")
 	else
 		. += span_notice("\The [src]'s value is still [span_boldnotice("locked in")]. [span_boldnotice("Sell it")] before its value becomes liquid!")
 
 /obj/item/stock_block/proc/value_warning()
-	visible_message(span_warning("\The [src] is starting to become liquid!"))
+	visible_message(span_warning("\The [src]Está começando a ficar líquido!"))
 	icon_state = "stock_block_fluid"
 	update_appearance(UPDATE_ICON_STATE)
 
@@ -374,7 +366,7 @@
 	export_value = SSstock_market.materials_prices[custom_materials[1]]
 	icon_state = "stock_block_liquid"
 	update_appearance(UPDATE_ICON_STATE)
-	visible_message(span_warning("\The [src] becomes liquid!"))
+	visible_message(span_warning("\The [src]Fica líquido!"))
 	fluid = TRUE
 
 #undef MAX_STACK_LIMIT

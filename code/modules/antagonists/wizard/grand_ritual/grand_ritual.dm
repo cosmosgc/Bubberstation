@@ -22,8 +22,7 @@
  */
 /datum/action/cooldown/grand_ritual
 	name = "Grand Ritual"
-	desc = "Provides direction to a nexus of power, then draws a rune in that location for completing the Grand Ritual. \
-		The ritual process will take longer each time it is completed."
+	desc = "Fornece direção para um nexo de energia, em seguida, desenha uma runa nesse local para completar o Grande Ritual. O processo ritual levará mais tempo a cada vez que for concluído."
 	check_flags = AB_CHECK_CONSCIOUS | AB_CHECK_INCAPACITATED | AB_CHECK_HANDS_BLOCKED
 	background_icon_state = "bg_spell"
 	button_icon = 'icons/mob/actions/actions_cult.dmi'
@@ -89,7 +88,7 @@
 
 	if(!isturf(owner.loc))
 		if (feedback)
-			owner.balloon_alert(owner, "can't reach the floor!")
+			owner.balloon_alert(owner, "Não consigo alcançar o chão!")
 		return FALSE
 	return TRUE
 
@@ -124,35 +123,33 @@
 /datum/action/cooldown/grand_ritual/proc/set_new_area()
 	var/list/possible_areas = GLOB.the_station_areas.Copy()
 	for (var/area/possible_area as anything in possible_areas)
-		if (initial(possible_area.outdoors) \
-			|| !is_type_in_typecache(possible_area, area_whitelist) \
-			|| is_type_in_typecache(possible_area, area_blacklist))
+		if (initial(possible_area.outdoors) 			|| !is_type_in_typecache(possible_area, area_whitelist) 			|| is_type_in_typecache(possible_area, area_blacklist))
 			possible_areas -= possible_area
 
 	target_area = pick(possible_areas)
 	if (validate_area()) // Well this is risky but probably not every area on the station is going to get deleted, right?
-		to_chat(owner, span_alert("The next nexus of power lies within [initial(target_area.name)]"))
+		to_chat(owner, span_alert("O próximo nexo de poder está dentro[initial(target_area.name)]"))
 
 /// Checks if you're actually able to draw a rune here
 /datum/action/cooldown/grand_ritual/proc/start_drawing_rune()
 	var/atom/existing_rune = rune?.resolve()
 	if (existing_rune)
-		owner.balloon_alert(owner, "rune already exists!")
+		owner.balloon_alert(owner, "Rune já existe!")
 		return
 
 	var/turf/target_turf = get_turf(owner)
 	for (var/turf/nearby_turf as anything in RANGE_TURFS(1, target_turf))
 		if (!is_type_in_typecache(nearby_turf, blacklisted_rune_turfs))
 			continue
-		owner.balloon_alert(owner, "invalid floor!")
+		owner.balloon_alert(owner, "Piso inválido!")
 		return
 
 	if (locate(/obj/effect/grand_rune) in range(3, target_turf))
-		owner.balloon_alert(owner, "rune too close!")
+		owner.balloon_alert(owner, "Runa muito perto!")
 		return
 
 	if (drawing_rune)
-		owner.balloon_alert(owner, "already drawing!")
+		owner.balloon_alert(owner, "Já está desenhando!")
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(draw_rune), target_turf)
@@ -161,13 +158,13 @@
 /datum/action/cooldown/grand_ritual/proc/draw_rune(turf/target_turf)
 	drawing_rune = TRUE
 	var/next_rune_typepath = get_appropriate_rune_typepath()
-	target_turf.balloon_alert(owner, "conjuring rune...")
+	target_turf.balloon_alert(owner, "Conjurando runa...")
 	var/draw_effect_typepath = /obj/effect/temp_visual/wizard_rune/drawing
 	if(next_rune_typepath == /obj/effect/grand_rune/finale/cheesy)
 		draw_effect_typepath = /obj/effect/temp_visual/wizard_rune/drawing/cheese
 	var/obj/effect/temp_visual/wizard_rune/drawing/draw_effect = new draw_effect_typepath(target_turf)
 	if(!do_after(owner, 4 SECONDS, target_turf))
-		target_turf.balloon_alert(owner, "interrompido!")
+		target_turf.balloon_alert(owner, "Interrompido!")
 		drawing_rune = FALSE
 		qdel(draw_effect)
 		var/fail_effect_typepath = /obj/effect/temp_visual/wizard_rune/failed
@@ -192,7 +189,7 @@
 	if (evaporated_obstacles)
 		playsound(target_turf, 'sound/effects/magic/blind.ogg', 100, TRUE)
 
-	target_turf.balloon_alert(owner, "rune created")
+	target_turf.balloon_alert(owner, "Rune criado")
 	var/obj/effect/grand_rune/new_rune = new next_rune_typepath(target_turf, times_completed)
 	if(istype(new_rune, /obj/effect/grand_rune/finale))
 		drew_finale = TRUE
@@ -219,24 +216,21 @@
 	if(total_cheese_sacrificed >= CHEESE_SACRIFICE_GOAL)
 		if(!total_cheese_goal_met)
 			total_cheese_goal_met = TRUE
-			to_chat(owner, span_revenbignotice("YES! CHEESE! CHEESE FOR EVERYONE! SUCH A GRAND FEAST! YOU SHALL HAVE YOUR PRIZE, MY CHAMPION!!"))
+			to_chat(owner, span_revenbignotice("Sim! Queijo! Queijo para todos! Que grande banquete! Você terá seu prêmio, meu campeão!"))
 		else
-			to_chat(owner, span_revennotice("You hear maddening laughter as you are hit with an overwhelming odor of fine cheddar..."))
+			to_chat(owner, span_revennotice("Você ouve risos loucos quando é atingido com um odor esmagador de cheddar fino..."))
 	else if (total_cheese_sacrificed)
-		to_chat(owner, span_revendanger("You please me, mortal. Do continue to send cheese, my feast still needs <b>[CHEESE_SACRIFICE_GOAL - total_cheese_sacrificed]</b> more to be magnificent..."))
+		to_chat(owner, span_revendanger("Você me agrada, mortal. Continue mandando queijo, meu banquete ainda precisa.<b>[CHEESE_SACRIFICE_GOAL - total_cheese_sacrificed]</b>Mais para ser magnífico..."))
 	rune = null
 	times_completed++
 	set_new_area()
 	switch (times_completed)
 		if (GRAND_RITUAL_RUNES_WARNING_POTENCY)
-			to_chat(owner, span_warning("Your collected power is growing, \
-				but further rituals will alert your enemies to your position."))
+			to_chat(owner, span_warning("Seu poder coletado está crescendo, mas rituais adicionais alertarão seus inimigos para sua posição."))
 		if (GRAND_RITUAL_IMMINENT_FINALE_POTENCY)
-			var/message = "You are overflowing with power! \
-				Your next Grand Ritual will allow you to choose a powerful effect, and grant you victory."
+			var/message = "You are overflowing with power! 				Your next Grand Ritual will allow you to choose a powerful effect, and grant you victory."
 			if(total_cheese_sacrificed >= CHEESE_SACRIFICE_GOAL)
-				message = "You are overflowing with chaotic energies! \
-					Your next Grand Ritual will conjure a powerful artefact for your use, and grant you victory."
+				message = "You are overflowing with chaotic energies! 					Your next Grand Ritual will conjure a powerful artefact for your use, and grant you victory."
 			to_chat(owner, span_warning(message))
 		if (GRAND_RITUAL_FINALE_COUNT)
 			SEND_SIGNAL(src, COMSIG_GRAND_RITUAL_FINAL_COMPLETE)
@@ -260,7 +254,7 @@
 	// Either us or the location is somewhere it shouldn't be
 	if (!our_z || !area_z)
 		// "Hell if I know"
-		balloon_message = "on another plane!"
+		balloon_message = "Em outro avião!"
 	// It's not on the same z-level as us
 	else if (our_z != area_z)
 		// It's on the station
@@ -268,25 +262,25 @@
 			// We're on a multi-z station
 			if (is_station_level(our_z))
 				if (our_z > area_z)
-					balloon_message = "below you!"
+					balloon_message = "Abaixo de você!"
 				else
-					balloon_message = "above you!"
+					balloon_message = "Acima de você!"
 			// We're off station, it's not
 			else
-				balloon_message = "on station!"
+				balloon_message = "Na estação!"
 	// It's on the same z-level as us!
 	else
 		var/dist = get_dist(our_turf, area_turf)
 		var/dir = get_dir(our_turf, area_turf)
 		switch(dist)
 			if (0 to 15)
-				balloon_message = "very near, [dir2text(dir)]!"
+				balloon_message = "Muito perto,[dir2text(dir)]!"
 			if (16 to 31)
-				balloon_message = "near, [dir2text(dir)]!"
+				balloon_message = "perto,[dir2text(dir)]!"
 			if (32 to 127)
-				balloon_message = "far, [dir2text(dir)]!"
+				balloon_message = "Longe,[dir2text(dir)]!"
 			else
-				balloon_message = "very far!"
+				balloon_message = "Muito longe!"
 
 	return balloon_message
 

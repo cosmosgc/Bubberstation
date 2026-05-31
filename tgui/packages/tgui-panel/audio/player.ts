@@ -51,7 +51,7 @@ export class AudioPlayer {
 
     const audio = new Audio(url);
     if (!audio) {
-      logger.log('failed to create audio element');
+      logger.log('Não conseguiu criar o elemento de áudio.');
       return;
     }
     this.element = audio;
@@ -70,7 +70,7 @@ export class AudioPlayer {
       if (isProtectedError(error)) {
         Byond.sendMessage('audio/protected');
       }
-      logger.log('playback error:', JSON.stringify(error));
+      logger.log('Erro de reprodução:', JSON.stringify(error));
       this.stop();
     });
 
@@ -88,7 +88,7 @@ export class AudioPlayer {
 
     audio.play()?.catch(() => {
       // no error is passed here, it's sent to the event listener
-      logger.log('playback failed');
+      logger.log('reprodução falhou');
     });
 
     this.onPlaySubscribers.forEach((subscriber) => {

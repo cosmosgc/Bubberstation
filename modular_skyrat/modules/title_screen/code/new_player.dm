@@ -109,17 +109,17 @@
 		play_lobby_button_sound()
 		// Prevent readying up after the round has begun setting up or is already playing
 		if(SSticker.current_state >= GAME_STATE_SETTING_UP)
-			to_chat(src, span_notice("The round is starting. You cannot ready up at this time."))
+			to_chat(src, span_notice("A rodada está começando. Você não pode se preparar agora."))
 			return FALSE
 		if(CONFIG_GET(flag/min_flavor_text))
 			var/datum/preferences/preferences = client.prefs
 			var/uses_silicon_flavortext = (is_silicon_job(preferences?.get_highest_priority_job()) && length_char(client?.prefs?.read_preference(/datum/preference/text/silicon_flavor_text)) < CONFIG_GET(number/silicon_flavor_text_character_requirement))
 			var/uses_normal_flavortext = (!is_silicon_job(preferences?.get_highest_priority_job()) && length_char(client?.prefs?.read_preference(/datum/preference/text/flavor_text)) < CONFIG_GET(number/flavor_text_character_requirement))
 			if(uses_silicon_flavortext)
-				to_chat(src, span_notice("You need at least [CONFIG_GET(number/silicon_flavor_text_character_requirement)] characters of Silicon Flavor Text to ready up for the round. You have [length_char(client.prefs.read_preference(/datum/preference/text/silicon_flavor_text))] characters."))
+				to_chat(src, span_notice("Você precisa pelo menos[CONFIG_GET(number/silicon_flavor_text_character_requirement)]personagens de Silicon Sabor Texto para preparar para a rodada. Você tem[length_char(client.prefs.read_preference(/datum/preference/text/silicon_flavor_text))]Personagens."))
 				return
 			if(uses_normal_flavortext)
-				to_chat(src, span_notice("You need at least [CONFIG_GET(number/flavor_text_character_requirement)] characters of Flavor Text to ready up for the round. You have [length_char(client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
+				to_chat(src, span_notice("Você precisa pelo menos[CONFIG_GET(number/flavor_text_character_requirement)]Personagens do texto do sabor para preparar para a rodada. Você tem[length_char(client.prefs.read_preference(/datum/preference/text/flavor_text))]Personagens."))
 				return
 
 		if(!unvetted_notified && !trigger_unvetted_warning())
@@ -198,7 +198,7 @@
 	if(LAZYLEN(servers) == 1)
 		var/server_name = servers[1]
 		var/server_ip = servers[server_name]
-		var/confirm = tgui_alert(src, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", list("Connect me!", "Stay here"))
+		var/confirm = tgui_alert(src, "Tem certeza que quer trocar para[server_name] ([server_ip])?", "Swapping server!", list("Connect me!", "Stay here"))
 		if(confirm == "Connect me!")
 			to_chat_immediate(src, "So long, spaceman.")
 			client << link(server_ip)
@@ -207,7 +207,7 @@
 	if(!server_name)
 		return
 	var/server_ip = servers[server_name]
-	var/confirm = tgui_alert(src, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", list("Connect me!", "Stay here!"))
+	var/confirm = tgui_alert(src, "Tem certeza que quer trocar para[server_name] ([server_ip])?", "Swapping server!", list("Connect me!", "Stay here!"))
 	if(confirm == "Connect me!")
 		to_chat_immediate(src, "So long, spaceman.")
 		src.client << link(server_ip)
@@ -219,7 +219,7 @@
 	if (!client || client.interviewee)
 		return
 	if(!length(GLOB.lobby_station_traits))
-		to_chat(src, span_warning("There are currently no job traits available!"))
+		to_chat(src, span_warning("Atualmente, não há traços de trabalho disponíveis!"))
 		return
 	var/list/available_lobby_station_traits = list()
 	for (var/datum/station_trait/trait as anything in GLOB.lobby_station_traits)
@@ -228,7 +228,7 @@
 		available_lobby_station_traits += trait
 
 	if(!LAZYLEN(available_lobby_station_traits))
-		to_chat(src, span_warning("There are currently no job traits available!"))
+		to_chat(src, span_warning("Atualmente, não há traços de trabalho disponíveis!"))
 		return
 
 	var/datum/station_trait/clicked_trait = tgui_input_list(src, "Select a job trait to sign up for:", "Job Traits", available_lobby_station_traits)

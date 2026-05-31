@@ -1,8 +1,8 @@
 //It's Wiz-Off, the wizard themed card game! It's modular too, in case you might want to make it Syndie, Sec and Clown themed or something stupid like that.
 /obj/item/toy/cards/deck/wizoff
 	name = "\improper Wiz-Off deck"
-	desc = "A Wiz-Off deck. Fight an arcane battle for the fate of the universe: Draw 5! Play 5! Best of 5! A rules card is attached."
-	cardgame_desc = "Wiz-Off game"
+	desc = "Um convés Wiz-Off. Lute uma batalha arcana pelo destino do universo. Jogue 5! Melhor de 5! Um cartão de regras está anexado."
+	cardgame_desc = "Jogo Wiz-Off"
 	icon_state = "deck_wizoff_full"
 	deckstyle = "wizoff"
 
@@ -13,7 +13,7 @@
 		initial_cards += card
 
 /obj/item/toy/singlecard/wizoff_ruleset
-	desc = "A ruleset for the playing card game Wiz-Off."
+	desc = "Um conjunto de regras para o jogo Wiz-Off."
 	cardname = "Wizoff Ruleset"
 	deckstyle = "black"
 	has_unique_card_icons = FALSE
@@ -21,12 +21,12 @@
 
 /obj/item/toy/singlecard/wizoff_ruleset/examine(mob/living/carbon/human/user)
 	. = ..()
-	. += span_notice("Remember the rules of Wiz-Off!")
-	. += span_info("Each player draws 5 cards.")
-	. += span_info("There are five rounds. Each round, a player selects a card to play, and the winner is selected based on the following rules:")
-	. += span_info("Defensive beats Offensive!")
-	. += span_info("Offensive beats Utility!")
-	. += span_info("Utility beats Defensive!")
-	. += span_info("If both players play the same type of spell, the higher number wins!")
-	. += span_info("The player who wins the most of the 5 rounds wins the game!")
-	. += span_notice("Now get ready to battle for the fate of the universe: Wiz-Off!")
+	. += span_notice("Lembre-se das regras de Wiz-Off!")
+	. += span_info("Cada jogador tira 5 cartas.")
+	. += span_info("Há cinco tiros. Cada rodada, um jogador seleciona uma carta para jogar, e o vencedor é selecionado com base nas seguintes regras:")
+	. += span_info("Defensivo vence ofensivo!")
+	. += span_info("Ofensivo vence o utilitário!")
+	. += span_info("Utilidade vence Defesa!")
+	. += span_info("Se os dois jogadores jogarem o mesmo tipo de feitiço, o maior número ganha!")
+	. += span_info("O jogador que ganha a maioria dos 5 rounds ganha o jogo!")
+	. += span_notice("Agora prepare-se para lutar pelo destino do universo:")

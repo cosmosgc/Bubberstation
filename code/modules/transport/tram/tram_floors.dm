@@ -20,7 +20,7 @@
 
 /turf/open/floor/tram/examine(mob/user)
 	. += ..()
-	. += span_notice("The reinforcement bolts are [EXAMINE_HINT("wrenched")] firmly in place. Use a [EXAMINE_HINT("wrench")] to remove the plate.")
+	. += span_notice("Os parafusos de reforço são[EXAMINE_HINT("wrenched")]Firmemente nenhum lugar. Use um.[EXAMINE_HINT("wrench")]Para remover uma placa.")
 
 /turf/open/floor/tram/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/stack/thermoplastic))
@@ -44,7 +44,7 @@
 
 /turf/open/floor/tram/wrench_act(mob/living/user, obj/item/item)
 	..()
-	to_chat(user, span_notice("You begin removing the plate..."))
+	to_chat(user, span_notice("Você começa a remover a placa..."))
 	if(item.use_tool(src, user, 30, volume=80))
 		if(!istype(src, /turf/open/floor/tram))
 			return TRUE
@@ -91,7 +91,7 @@
 
 /turf/open/floor/tram/plate
 	name = "linear induction plate"
-	desc = "The linear induction plate that powers the tram."
+	desc = "A placa de indução linear que alimenta o bonde."
 	icon = 'icons/turf/tram.dmi'
 	icon_state = "tram_plate"
 	base_icon_state = "tram_plate"
@@ -104,7 +104,7 @@
 	return list("tram_plate-scorched1","tram_plate-scorched2")
 
 /turf/open/floor/tram/plate/energized
-	desc = "The linear induction plate that powers the tram. It is currently energized."
+	desc = "A placa de indução linear que alimenta o bonde. Está energizado atualmente."
 	/// Inbound station
 	var/inbound
 	/// Outbound station
@@ -119,8 +119,8 @@
 /turf/open/floor/tram/plate/energized/examine(mob/user)
 	. = ..()
 	if(broken || burnt)
-		. += span_danger("It looks damaged and the electrical components exposed!")
-		. += span_notice("The plate can be repaired using a [EXAMINE_HINT("titanium sheet")].")
+		. += span_danger("Parece danificado e os componentes elétricos expostos!")
+		. += span_notice("A placa pode ser reparada usando um[EXAMINE_HINT("titanium sheet")].")
 
 /turf/open/floor/tram/plate/energized/broken_states()
 	return list("energized_plate_damaged")
@@ -137,7 +137,7 @@
 		return ITEM_INTERACT_BLOCKING
 	broken = FALSE
 	update_appearance()
-	balloon_alert(user, "plate replaced")
+	balloon_alert(user, "Placa substituída.")
 	return ITEM_INTERACT_SUCCESS
 
 /turf/open/floor/tram/plate/energized/broken
@@ -165,7 +165,7 @@
 
 /turf/open/indestructible/tram/plate
 	name = "linear induction plate"
-	desc = "The linear induction plate that powers the tram."
+	desc = "A placa de indução linear que alimenta o bonde."
 	icon_state = "tram_plate"
 	base_icon_state = "tram_plate"
 	flags_1 = NONE
@@ -176,11 +176,11 @@
 
 /turf/open/floor/glass/reinforced/tram
 	name = "tram bridge"
-	desc = "It shakes a bit when you step, but lets you cross between sides quickly!"
+	desc = "Ele treme um pouco quando você pisa, mas deixa você cruzar os lados rapidamente!"
 
 /obj/structure/thermoplastic
 	name = "tram floor"
-	desc = "A lightweight thermoplastic flooring."
+	desc = "Um piso termoplástico leve."
 	icon = 'icons/turf/tram.dmi'
 	icon_state = "tram_dark"
 	base_icon_state = "tram_dark"
@@ -219,10 +219,10 @@
 	. = ..()
 
 	if(secured)
-		. += span_notice("It is secured with a set of [EXAMINE_HINT("screws.")] To remove tile use a [EXAMINE_HINT("screwdriver.")]")
+		. += span_notice("Está seguro com um conjunto de[EXAMINE_HINT("screws.")]Para remover o azulejo use um[EXAMINE_HINT("screwdriver.")]")
 	else
-		. += span_notice("You can [EXAMINE_HINT("crowbar")] to remove the tile.")
-		. += span_notice("It can be re-secured using a [EXAMINE_HINT("screwdriver.")]")
+		. += span_notice("Você pode.[EXAMINE_HINT("crowbar")]Para remover o azulejo.")
+		. += span_notice("Pode ser reassegurado usando um[EXAMINE_HINT("screwdriver.")]")
 
 /obj/structure/thermoplastic/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
 	. = ..()
@@ -242,31 +242,31 @@
 /obj/structure/thermoplastic/screwdriver_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
 	if(secured)
-		user.visible_message(span_notice("[user] begins to unscrew the tile..."),
-		span_notice("You begin to unscrew the tile..."))
+		user.visible_message(span_notice("[user]começa a desaparafusar o azulejo..."),
+		span_notice("Você começa a desaparafusar o azulejo..."))
 		if(tool.use_tool(src, user, 1 SECONDS, volume = 50))
 			secured = FALSE
-			to_chat(user, span_notice("The screws come out, and a gap forms around the edge of the tile."))
+			to_chat(user, span_notice("Os parafusos saem, e uma lacuna se forma na borda do azulejo."))
 	else
-		user.visible_message(span_notice("[user] begins to fasten the tile..."),
-		span_notice("You begin to fasten the tile..."))
+		user.visible_message(span_notice("[user]começa a apertar o azulejo..."),
+		span_notice("Você começa a apertar o azulejo..."))
 		if(tool.use_tool(src, user, 1 SECONDS, volume = 50))
 			secured = TRUE
-			to_chat(user, span_notice("The tile is securely screwed in place."))
+			to_chat(user, span_notice("O azulejo está firmemente ferrado no lugar."))
 
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/thermoplastic/crowbar_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
 	if(secured)
-		to_chat(user, span_warning("The security screws need to be removed first!"))
+		to_chat(user, span_warning("Os parafusos de segurança precisam ser removidos primeiro!"))
 		return FALSE
 
 	else
-		user.visible_message(span_notice("[user] wedges \the [tool] into the tile's gap in the edge and starts prying..."),
-		span_notice("You wedge \the [tool] into the tram panel's gap in the frame and start prying..."))
+		user.visible_message(span_notice("[user]Cunhas.\the [tool]na abertura do azulejo na borda e começa a bisbilhotar..."),
+		span_notice("Sua cunha.\the [tool]na abertura do painel do bonde no quadro e começar a bisbilhotar..."))
 		if(tool.use_tool(src, user, 1 SECONDS, volume = 50))
-			to_chat(user, span_notice("The panel pops out of the frame."))
+			to_chat(user, span_notice("O painel sai da modura."))
 			var/obj/item/stack/thermoplastic/pulled_tile = new floor_tile()
 			pulled_tile.update_integrity(atom_integrity)
 			user.put_in_hands(pulled_tile)
@@ -276,22 +276,22 @@
 
 /obj/structure/thermoplastic/welder_act(mob/living/user, obj/item/tool)
 	if(atom_integrity >= max_integrity)
-		to_chat(user, span_warning("[src] is already in good condition!"))
+		to_chat(user, span_warning("[src]Já está em boas condições!"))
 		return ITEM_INTERACT_SUCCESS
 	if(!tool.tool_start_check(user, amount = 0, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return FALSE
-	to_chat(user, span_notice("You begin repairing [src]..."))
+	to_chat(user, span_notice("Você começa a reparar[src]..."))
 	var/integrity_to_repair = max_integrity - atom_integrity
 	if(tool.use_tool(src, user, integrity_to_repair * 0.5, volume = 50))
 		atom_integrity = max_integrity
-		to_chat(user, span_notice("You repair [src]."))
+		to_chat(user, span_notice("Você conserta.[src]."))
 		update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/stack/thermoplastic
 	name = "thermoplastic tram tile"
-	singular_name = "thermoplastic tram tile"
-	desc = "A high-traction floor tile. It sparkles in the light."
+	singular_name = "telha termoplástica de bonde"
+	desc = "Um piso de alta atração. Brilha na luz."
 	icon = 'icons/obj/tiles.dmi'
 	lefthand_file = 'icons/mob/inhands/items/tiles_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/tiles_righthand.dmi'
@@ -337,4 +337,4 @@
 				damage_value = "mediocre"
 		if(!damage_value)
 			return
-		. += span_notice("Those could work as a [damage_value] throwing weapon.")
+		. += span_notice("Isso pode funcionar como um[damage_value]Atirando arma.")

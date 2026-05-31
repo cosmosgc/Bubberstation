@@ -5,7 +5,7 @@
 /// A mannequin! A structure that can display clothing on itself.
 /obj/structure/mannequin
 	name = "mannequin"
-	desc = "Oh, so this is a dress-up game now."
+	desc = "Oh, então este é um jogo de vestir-se agora."
 	icon = 'icons/mob/human/mannequin.dmi'
 	icon_state = "mannequin_wood_male"
 	density = TRUE
@@ -162,7 +162,7 @@
 
 /obj/structure/mannequin/skeleton
 	name = "skeleton model"
-	desc = "Not to knock over."
+	desc = "Não para derrubar."
 	material = MANNEQUIN_SKELETON
 	obj_flags = UNIQUE_RENAME
 	starting_items = list(
@@ -198,7 +198,7 @@ GLOBAL_LIST_INIT(strippable_mannequin_items, create_strippable_list(list(
 	if(!.)
 		return FALSE
 	if(!(equipping.slot_flags & item_slot))
-		to_chat(user, span_warning("[equipping] won't fit!"))
+		to_chat(user, span_warning("[equipping]Não cabe!"))
 		return FALSE
 	return TRUE
 

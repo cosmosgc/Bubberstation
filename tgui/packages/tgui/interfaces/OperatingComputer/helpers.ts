@@ -8,7 +8,7 @@ export function extractSurgeryName(
   // operation names may be "make incision", "lobotomy", or "disarticulation (amputation)"
   const { name, tool_rec } = operation;
   if (!name) {
-    return { name: 'Error Surgery', tool: 'Error' };
+    return { name: 'Cirurgia de Erro', tool: 'Error' };
   }
   const parenthesis = name.indexOf('(');
   if (parenthesis === -1) {
@@ -48,29 +48,29 @@ export function extractRequirementMap(
 
   const optional_title = () => {
     if (optional_requirements.length === 1) {
-      if (hard_requirements.length === 0) return 'The following is optional:';
-      return 'Additionally, the following is optional:';
+      if (hard_requirements.length === 0) return 'O seguinte é opcional:';
+      return 'Além disso, o seguinte é opcional:';
     }
     if (hard_requirements.length === 0)
-      return 'All of the following are optional:';
-    return 'Additionally, all of the following are optional:';
+      return 'Todos os seguintes são opcionais:';
+    return 'Além disso, todos os seguintes são opcionais:';
   };
 
   const blocked_title = () => {
     if (blocked_requirements.length === 1) {
       if (hard_requirements.length === 0)
-        return 'The following would block the procedure:';
-      return 'However, the following would block the procedure:';
+        return 'O seguinte bloquearia o procedimento:';
+      return 'No entanto, o seguinte bloquearia o procedimento:';
     }
     if (hard_requirements.length === 0)
-      return 'Any of the following would block the procedure:';
-    return 'However, any of the following would block the procedure:';
+      return 'Qualquer um dos seguintes bloquearia o procedimento:';
+    return 'No entanto, qualquer um dos seguintes bloquearia o procedimento:';
   };
 
   return {
-    [`${hard_requirements.length === 1 ? 'The' : 'All of the'} following are required:`]:
+    [`${hard_requirements.length === 1 ? 'The' : 'Todos os'} following are required:`]:
       hard_requirements,
-    'Additionally, one of the following is required:': soft_requirements,
+    'Além disso, um dos seguintes é necessário:': soft_requirements,
     [optional_title()]: optional_requirements,
     [blocked_title()]: blocked_requirements,
   };

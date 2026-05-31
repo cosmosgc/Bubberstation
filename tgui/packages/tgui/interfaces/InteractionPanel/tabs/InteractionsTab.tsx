@@ -53,7 +53,7 @@ export const InteractionsTab = (props: InteractionsTabProps) => {
         color={block_interact ? 'grey' : colors[interaction]}
         tooltip={
           block_interact
-            ? 'You cannot interact right now'
+            ? 'Você não pode interagir agora.'
             : descriptions[interaction]
         }
         icon="exclamation-circle"
@@ -92,7 +92,7 @@ export const InteractionsTab = (props: InteractionsTabProps) => {
   return (
     <Stack fill vertical>
       <NoticeBox>
-        {block_interact ? 'Unable to Interact' : 'Able to Interact'}
+        {block_interact ? 'Incapaz de interagir' : 'Capaz de interagir'}
       </NoticeBox>
       <Stack.Item grow>
         {showCategories ? (

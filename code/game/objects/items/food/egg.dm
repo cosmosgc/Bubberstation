@@ -3,7 +3,7 @@
 
 /obj/item/food/chocolateegg
 	name = "chocolate egg"
-	desc = "Such, sweet, fattening food."
+	desc = "Que doce, comida de engorda."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "chocolateegg"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/sugar = 2, /datum/reagent/consumable/coco = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
@@ -18,7 +18,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/egg
 	name = "egg"
-	desc = "An egg!"
+	desc = "Um ovo!"
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "egg"
 	inhand_icon_state = "egg"
@@ -39,7 +39,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/egg/organic
 	name = "organic egg"
-	desc = "A 100% natural egg from the best hens."
+	desc = "Um ovo 100% natural das melhores galinhas."
 	starting_reagent_purity = 1
 
 /obj/item/food/egg/rotten
@@ -54,7 +54,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	AddElement(/datum/element/microwavable, /obj/item/food/boiledegg/rotten)
 
 /obj/item/food/egg/gland
-	desc = "An egg! It looks weird..."
+	desc = "Um ovo! Parece estranho..."
 
 /obj/item/food/egg/gland/Initialize(mapload)
 	. = ..()
@@ -81,9 +81,9 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		return
 	var/spawned_chickens = prob(97) ? 1 : min(4, chickens_remaining) // We don't want to go over the limit
 	if (spawned_chickens > 1) // Chicken jackpot!
-		visible_message(span_notice("[spawned_chickens] chicks come out of the egg! Jackpot!"))
+		visible_message(span_notice("[spawned_chickens]Garotas saem do ovo! Jackpot!"))
 	else
-		visible_message(span_notice("A chick comes out of the cracked egg!"))
+		visible_message(span_notice("Uma garota sai do ovo rachado!"))
 	for(var/i in 1 to spawned_chickens)
 		new /mob/living/basic/chick(spawn_turf)
 		GLOB.chicks_from_eggs++
@@ -94,29 +94,29 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		var/clr = crayon.crayon_color
 
 		if(!(clr in list("blue", "green", "mime", "orange", "purple", "rainbow", "red", "yellow")))
-			to_chat(usr, span_notice("[src] refuses to take on this colour!"))
+			to_chat(usr, span_notice("[src]Se recusa a tomar essa cor!"))
 			return
 
-		to_chat(usr, span_notice("You colour [src] with [item]."))
+		to_chat(usr, span_notice("Você color[src]com[item]."))
 		icon_state = "egg-[clr]"
 
 	else if(istype(item, /obj/item/stamp/clown))
 		var/clowntype = pick("grock", "grimaldi", "rainbow", "chaos", "joker", "sexy", "standard", "bobble",
 			"krusty", "bozo", "pennywise", "ronald", "jacobs", "kelly", "popov", "cluwne")
 		icon_state = "egg-clown-[clowntype]"
-		desc = "An egg that has been decorated with the grotesque, robustable likeness of a clown's face. "
-		to_chat(usr, span_notice("You stamp [src] with [item], creating an artistic and not remotely horrifying likeness of clown makeup."))
+		desc = "Um ovo que foi decorado com a semelhança grotesca e robusta do rosto de um palhaço."
+		to_chat(usr, span_notice("Você carimbe[src]com[item], criando uma aparência artística e não remotamente horrível de maquiagem de palhaço."))
 
 	else if(is_reagent_container(item))
 		var/obj/item/reagent_containers/dunk_test_container = item
 		if (!dunk_test_container.is_drainable() || !dunk_test_container.reagents.has_reagent(/datum/reagent/water))
 			return
 
-		to_chat(user, span_notice("You check if [src] is rotten."))
+		to_chat(user, span_notice("Você verifica se[src]está podre."))
 		if(istype(src, /obj/item/food/egg/rotten))
-			to_chat(user, span_warning("[src] floats in the [dunk_test_container]!"))
+			to_chat(user, span_warning("[src]flutua no[dunk_test_container]!"))
 		else
-			to_chat(user, span_notice("[src] sinks into the [dunk_test_container]!"))
+			to_chat(user, span_notice("[src]Afunda na[dunk_test_container]!"))
 	else
 		..()
 
@@ -137,7 +137,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	reagents.trans_to(broken_egg, reagents.total_volume, copy_only = TRUE)
 
 	hit_griddle.AddToGrill(broken_egg, user)
-	interacting_with.balloon_alert(user, "cracks [src] open")
+	interacting_with.balloon_alert(user, "Quebros[src]Abra.")
 
 	qdel(src)
 	return ITEM_INTERACT_BLOCKING
@@ -180,25 +180,17 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/egg/fertile
 	name = "fertile-looking egg"
-	desc = "An egg! It looks fertilized.\nQuite how you can tell this just by looking at it is a mystery."
+	desc = "Um ovo! Parece fertilizado.\nComo você pode dizer isso só de olhar para ele é um mistério."
 	chick_throw_prob = 100
 
 /obj/item/food/egg/fertile/Initialize(mapload, loc)
 	. = ..()
 
-	AddComponent(/datum/component/fertile_egg,\
-		embryo_type = /mob/living/basic/chick,\
-		minimum_growth_rate = 1,\
-		maximum_growth_rate = 2,\
-		total_growth_required = 200,\
-		current_growth = 0,\
-		location_allowlist = typecacheof(list(/turf)),\
-		spoilable = FALSE,\
-	)
+	AddComponent(/datum/component/fertile_egg,		embryo_type = /mob/living/basic/chick,		minimum_growth_rate = 1,		maximum_growth_rate = 2,		total_growth_required = 200,		current_growth = 0,		location_allowlist = typecacheof(list(/turf)),		spoilable = FALSE,	)
 
 /obj/item/food/friedegg
 	name = "fried egg"
-	desc = "A fried egg. Would go well with a touch of salt and pepper."
+	desc = "Um ovo frito. Ficaria bem com um toque de sal e pimenta."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "friedegg"
 	food_reagents = list(
@@ -214,7 +206,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/rawegg
 	name = "raw egg"
-	desc = "Supposedly good for you, if you can stomach it. Better fried."
+	desc = "Supostamente bom para você, se puder aguentar. Melhor fritar."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "rawegg"
 	food_reagents = list() // Receives all reagents from its whole egg counterpart
@@ -229,7 +221,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/boiledegg
 	name = "boiled egg"
-	desc = "A hard boiled egg."
+	desc = "Um ovo cozido."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "egg"
 	inhand_icon_state = "egg"
@@ -247,7 +239,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/eggsausage
 	name = "egg with sausage"
-	desc = "A good egg with a side of sausages."
+	desc = "Um bom ovo com um lado de salsichas."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "eggsausage"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 8, /datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/consumable/nutriment = 4)
@@ -265,7 +257,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/omelette //FUCK THIS
 	name = "omelette du fromage"
-	desc = "That's all you can say!"
+	desc = "É tudo o que pode dizer!"
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "omelette"
 	food_reagents = list(
@@ -287,11 +279,10 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	if(istype(item, /obj/item/kitchen/fork))
 		var/obj/item/kitchen/fork/fork = item
 		if(fork.forkload)
-			to_chat(user, span_warning("You already have omelette on your fork!"))
+			to_chat(user, span_warning("Já tem omelete no garfo!"))
 		else
 			fork.icon_state = "forkloaded"
-			user.visible_message(span_notice("[user] takes a piece of omelette with [user.p_their()] fork!"), \
-				span_notice("You take a piece of omelette with your fork."))
+			user.visible_message(span_notice("[user]Leva um pedaço de omelete com[user.p_their()]Garfo!"), 				span_notice("Pegue um pedaço de omelete com seu garfo."))
 
 			var/datum/reagent/reagent = pick(reagents.reagent_list)
 			reagents.remove_reagent(reagent.type, 1)
@@ -303,7 +294,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/benedict
 	name = "eggs benedict"
-	desc = "There is only one egg on this, how rude."
+	desc = "Só há um ovo nisso, que rude."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "benedict"
 	food_reagents = list(
@@ -320,7 +311,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/eggwrap
 	name = "egg wrap"
-	desc = "The precursor to Pigs in a Blanket."
+	desc = "O precursor de Porcos em um cobertor."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "eggwrap"
 	food_reagents = list(
@@ -335,7 +326,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/chawanmushi
 	name = "chawanmushi"
-	desc = "A legendary egg custard that makes friends out of enemies. Probably too hot for a cat to eat."
+	desc = "Um legendário creme de ovo que faz amigos de inimigos. Provavelmente muito quente para um gato comer."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "chawanmushi"
 	food_reagents = list(
@@ -350,7 +341,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/spore_sack
 	name = "spore sack"
-	desc = "A spore sack. blobby and gooey!"
+	desc = "Um saco de esporos. Blobby e gooey!"
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "spore_sack"
 	base_icon_state = "spore_sack"
@@ -386,7 +377,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	reagents.trans_to(broken_egg, reagents.total_volume, copy_only = TRUE)
 
 	hit_griddle.AddToGrill(broken_egg, user)
-	interacting_with.balloon_alert(user, "cracks [src] open")
+	interacting_with.balloon_alert(user, "Quebros[src]Abra.")
 
 	qdel(src)
 	return ITEM_INTERACT_BLOCKING
@@ -397,7 +388,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/friedegg/spore
 	name = "fried spore"
-	desc = "A fried blob spore. Would go well with a dab of cold sauce."
+	desc = "Um esporo de bolha frita. Seria bom com um pouco de molho frio."
 	icon_state = "friedspore"
 	//superior healing and cyto reagents to compensate for rarity and mild poison effect.
 	food_reagents = list(
@@ -408,7 +399,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/rawegg/spore
 	name = "burst spore"
-	desc = "Is this the ant egg everyone is always talking about? Better fried."
+	desc = "Este é o ovo de formiga que todos estão sempre falando? Melhor fritar."
 	icon_state = "burstspore"
 	tastes = list("sliminess" = 4, "blob" = 2)
 

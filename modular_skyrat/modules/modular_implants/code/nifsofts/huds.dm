@@ -1,6 +1,6 @@
 /datum/nifsoft/hud
 	name = "Scrying Lens"
-	program_desc = "An umbrella term for all sorts of NIFsofts dealing with heads-up displays, this sort of technology dates back almost to the beginning of NIFsoft development. These 'softs are commonly used in the civilian field for integration with all sorts of activities; piloting, swordplay, scientific research, or even AI copiloting for important social interactions. While normally the nanomachines involved in the program's operation are used as a sort of artificial contact lens over the user's visual organs, Nanotrasen regulations have bid these particular forks to instead integrate with glasses the user's already wearing."
+	program_desc = "Um termo guarda-chuva para todos os tipos de NIFsofts lidando com heads-up displays, este tipo de tecnologia remonta quase ao início do desenvolvimento NIFsoft. Esses moles são comumente usados no campo civil para integração com todos os tipos de atividades, pilotagem, espadachim, pesquisa científica, ou mesmo AI co-piloto para interações sociais importantes. Enquanto normalmente as nanomáquinas envolvidas na operação do programa são usadas como uma espécie de lente de contato artificial sobre os órgãos visuais do usuário, os regulamentos de Nanotrasen ordenam que esses garfos específicos se integrem com óculos que o usuário já está usando."
 	compatible_nifs = list(/obj/item/organ/cyberimp/brain/nif/standard)
 	active_mode = TRUE
 	active_cost = 0.5
@@ -46,7 +46,7 @@
 /datum/nifsoft/hud/activate()
 	var/obj/item/clothing/glasses/worn_glasses = linked_mob.get_item_by_slot(ITEM_SLOT_EYES)
 	if(eyewear_check && !active && (!istype(worn_glasses) || !HAS_TRAIT(worn_glasses, TRAIT_NIFSOFT_HUD_GRANTER)))
-		linked_mob.balloon_alert(linked_mob, "no compatible eyewear!")
+		linked_mob.balloon_alert(linked_mob, "Sem óculos compatíveis!")
 		return FALSE
 
 	. = ..() // active = !active
@@ -81,7 +81,7 @@
 /datum/element/nifsoft_hud/proc/on_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
 
-	examine_text += span_cyan("Wearing this item in your glasses slot will allow you to use NIFSoft HUDs.")
+	examine_text += span_cyan("Usar este item em seu espaço de óculos permitirá que você use HUDs NIFSoft.")
 
 /datum/element/nifsoft_hud/Detach(datum/target)
 	UnregisterSignal(target, COMSIG_ATOM_EXAMINE)
@@ -162,7 +162,7 @@
 
 /obj/item/clothing/glasses/trickblindfold/obsolete/nif
 	name = "modernized fake blindfold"
-	desc = "A restored version of the obsolete fake blindfold, retrofitted with the proper electronics to work as a NIF HUD."
+	desc = "Uma versão restaurada da venda falsa obsoleta, adaptada com a eletrônica adequada para funcionar como um HUD NIF."
 
 /obj/item/clothing/glasses/trickblindfold/obsolete/nif/Initialize(mapload)
 	. = ..()

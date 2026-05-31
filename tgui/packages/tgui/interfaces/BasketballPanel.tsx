@@ -35,7 +35,7 @@ export const BasketballPanel = (props) => {
                     is an ongoing one, you will be signed up
                     for the next.
                   `}
-                    content="Sign Up"
+                    content="Inscreva-se"
                     onClick={() => act('basketball_signup')}
                   />
                   <Button

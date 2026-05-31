@@ -3,7 +3,7 @@
 	name = "Fire Leaper Bubble"
 	button_icon = 'icons/obj/weapons/guns/projectiles.dmi'
 	button_icon_state = "leaper"
-	desc = "Fires a poisonous leaper bubble towards the victim!"
+	desc = "Dispara uma bolha venenosa para a vítima!"
 	background_icon_state = "bg_revenant"
 	overlay_icon_state = "bg_revenant_border"
 	cooldown_time = 7 SECONDS
@@ -49,17 +49,17 @@
 
 /obj/effect/decal/cleanable/leaper_sludge
 	name = "leaper sludge"
-	desc = "A small pool of sludge, containing trace amounts of leaper venom."
+	desc = "Uma pequena poça de lama, contendo vestígios de veneno de saltador."
 	icon = 'icons/effects/tomatodecal.dmi'
 	icon_state = "tomato_floor1"
 
 // bubble ability reagent
 /datum/reagent/toxin/leaper_venom
 	name = "Leaper venom"
-	description = "A toxin spat out by leapers that, while harmless in small doses, quickly creates a toxic reaction if too much is in the body."
+	description = "Uma toxina cuspiu por saltadores que, embora inofensiva em pequenas doses, rapidamente cria uma reação tóxica se muito está no corpo."
 	color = "#801E28" // rgb: 128, 30, 40
 	toxpwr = 0
-	taste_description = "french cuisine"
+	taste_description = "cozinha francesa"
 	taste_mult = 1.3
 
 /datum/reagent/toxin/leaper_venom/on_mob_life(mob/living/carbon/poisoned_mob, seconds_per_tick, metabolization_ratio)
@@ -72,7 +72,7 @@
 // bubble ability structure
 /obj/structure/leaper_bubble
 	name = "leaper bubble"
-	desc = "A floating bubble containing leaper venom. The contents are under a surprising amount of pressure."
+	desc = "Uma bolha flutuante contendo veneno de saltador. O conteúdo está sob uma pressão surpreendente."
 	icon = 'icons/obj/weapons/guns/projectiles.dmi'
 	icon_state = "leaper"
 	max_integrity = 10
@@ -114,7 +114,7 @@
 	button_icon_state = "blood_effect_falling"
 	background_icon_state = "bg_revenant"
 	overlay_icon_state = "bg_revenant_border"
-	desc = "Rain down poisonous droplets of blood!"
+	desc = "Chuva tem venenosas de sangue!"
 	cooldown_time = 10 SECONDS
 	click_to_activate = FALSE
 	shared_cooldown = NONE
@@ -190,7 +190,7 @@
 // flop ability
 /datum/action/cooldown/mob_cooldown/belly_flop
 	name = "Belly Flop"
-	desc = "Belly flop your enemy!"
+	desc = "A barra arrebenta seu inimigo!"
 	cooldown_time = 14 SECONDS
 	background_icon_state = "bg_revenant"
 	overlay_icon_state = "bg_revenant_border"
@@ -199,7 +199,7 @@
 /datum/action/cooldown/mob_cooldown/belly_flop/Activate(atom/target)
 	var/turf/target_turf = get_turf(target)
 	if(isclosedturf(target_turf) || isspaceturf(target_turf))
-		owner.balloon_alert(owner, "base not suitable!")
+		owner.balloon_alert(owner, "Base não é adequada!")
 		return FALSE
 	new /obj/effect/temp_visual/leaper_crush(target_turf)
 	owner.throw_at(target = target_turf, range = 7, speed = 1, spin = FALSE, callback = CALLBACK(src, PROC_REF(flop_on_turf), target_turf))
@@ -217,12 +217,12 @@
 		var/throw_dir = victim.loc == owner.loc ? get_dir(owner, victim) : pick(GLOB.alldirs)
 		var/throwtarget = get_edge_target_turf(victim, throw_dir)
 		victim.throw_at(target = throwtarget, range = 3, speed = 1)
-		victim.visible_message(span_warning("[victim] is thrown clear of [owner]!"))
+		victim.visible_message(span_warning("[victim]é jogado fora de[owner]!"))
 
 // flop ability effects
 /obj/effect/temp_visual/leaper_crush
 	name = "grim tidings"
-	desc = "Incoming leaper!"
+	desc = "Saltando!"
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "lily_pad"
 	layer = BELOW_MOB_LAYER

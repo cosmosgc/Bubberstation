@@ -3,7 +3,7 @@
  */
 /mob/living/basic/blob_minion/spore
 	name = "blob spore"
-	desc = "A floating, fragile spore."
+	desc = "Um esporo flutuante e frágil."
 	icon = 'icons/mob/nonhuman-player/blob.dmi'
 	icon_state = "blobpod"
 	base_icon_state = "blobpod"
@@ -21,7 +21,7 @@
 	attack_verb_continuous = "batters"
 	attack_verb_simple = "batter"
 	attack_sound = 'sound/items/weapons/genhit1.ogg'
-	death_message = "explodes into a cloud of gas!"
+	death_message = "explode em uma nuvem de gás!"
 	gold_core_spawnable = HOSTILE_SPAWN
 	basic_mob_flags = DEL_ON_DEATH
 	ai_controller = /datum/ai_controller/basic_controller/blob_spore
@@ -50,7 +50,7 @@
 
 /// Become a zombie
 /mob/living/basic/blob_minion/spore/proc/zombify(mob/living/carbon/human/target)
-	visible_message(span_warning("The corpse of [target.name] suddenly rises!"))
+	visible_message(span_warning("O cadáver de[target.name]Subindo de arrependimento!"))
 	var/mob/living/basic/blob_minion/zombie/blombie = change_mob_type(zombie_type, loc, new_name = initial(zombie_type.name))
 	blombie.pass_flags |= PASSBLOB //No way to pass the blob_borne info through change_mob_type() to Initilize(), so we just circumvent it here.
 	APPLY_FACTION_AND_ALLIES_FROM(blombie, src) //inherit the spore's faction in case it was spawned with a different one (eg gold core)
@@ -92,12 +92,7 @@
 		ADD_TRAIT(src, TRAIT_PERMANENTLY_MORTAL, INNATE_TRAIT)
 
 	if (istype(new_strain, /datum/blobstrain/reagent/distributed_neurons))
-		AddComponent(\
-			/datum/component/ghost_direct_control,\
-			ban_type = ROLE_BLOB_INFECTION,\
-			poll_candidates = TRUE,\
-			poll_ignore_key = POLL_IGNORE_BLOB,\
-		)
+		AddComponent(			/datum/component/ghost_direct_control,			ban_type = ROLE_BLOB_INFECTION,			poll_candidates = TRUE,			poll_ignore_key = POLL_IGNORE_BLOB,		)
 	else
 		qdel(GetComponent(/datum/component/ghost_direct_control))
 
@@ -130,14 +125,8 @@
 /mob/living/basic/blob_minion/spore/independent/Initialize(mapload)
 	. = ..()
 	//free but incredibly shitty antag. Good job hazard to add some friction to gathering spore toxin.
-	AddComponent(\
-		/datum/component/ghost_direct_control,\
-		ban_type = ROLE_FREE_BLOB,\
-		poll_candidates = TRUE,\
-		poll_ignore_key = POLL_IGNORE_FREE_SPORE,\
-		after_assumed_control = CALLBACK(src, PROC_REF(on_assumed_control)),\
-	)
+	AddComponent(		/datum/component/ghost_direct_control,		ban_type = ROLE_FREE_BLOB,		poll_candidates = TRUE,		poll_ignore_key = POLL_IGNORE_FREE_SPORE,		after_assumed_control = CALLBACK(src, PROC_REF(on_assumed_control)),	)
 
 /mob/living/basic/blob_minion/spore/independent/proc/on_assumed_control()
-	to_chat(src, span_blobannounce("You are a spore born free from the shackles of an overmind.\n\nHowever this strange predicament has not muted the hostility you feel towards creatures that are not your kin, this base instinct appears to be a part of your true self."))
+	to_chat(src, span_blobannounce("Você é um esporo nascido livre das algemas de uma mente.\n\nNo entanto, esta estranha situação não tem silenciado a hostilidade que você sente contra criaturas que não são seus parentes, este instinto de base parece ser uma parte de seu verdadeiro eu."))
 	SEND_SOUND(src, sound('sound/music/antag/blobalert.ogg', volume = 50))

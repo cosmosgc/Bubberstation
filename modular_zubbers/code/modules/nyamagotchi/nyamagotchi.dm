@@ -11,7 +11,7 @@
 
 /obj/item/toy/nyamagotchi
 	name = "Nyamagotchi"
-	desc = "A small electronic 'pet' that requires care and attention. An ancient relic sure to evoke nostalgic feelings."
+	desc = "Um pequeno \"pet\" eletrônico que requer cuidado e atenção. Uma relíquia antiga certamente evoca sentimentos nostálgicos."
 	icon = 'modular_zubbers/icons/obj/toys/toys.dmi'
 	icon_state = "nya"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
@@ -132,9 +132,9 @@
 	if(in_range(src, user) || isobserver(user))
 		. += "[readout()]"
 		if(!COOLDOWN_FINISHED(src, mute_pet))
-			. += span_notice("<b>Alt-click</b> to disable mute feature.")
+			. += span_notice("<b>Alt-click</b>para desativar o recurso mudo.")
 		else
-			. += span_notice("<b>Alt-click</b> to temporarily mute notifications.")
+			. += span_notice("<b>Alt-click</b>para temporariamente silenciar notificações.")
 
 /obj/item/toy/nyamagotchi/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	context[SCREENTIP_CONTEXT_LMB] = "Interact"
@@ -144,11 +144,11 @@
 /obj/item/toy/nyamagotchi/proc/readout()
 	switch(alive)
 		if(NO_ANIMAL)
-			return span_notice("[src] is ready to be started!")
+			return span_notice("[src]Está pronto para começar!")
 		if(ANIMAL_ALIVE)
-			return span_notice("[src] is alive, it has reached age [age]! Use the <b>'Check Status'</b> button to see its stats!")
+			return span_notice("[src]Está vivo, já atingiu a idade.[age]Use o<b>Verificar status</b>botão para ver suas estatísticas!")
 		if(ANIMAL_DEAD)
-			return span_purple("[src] is DEAD. You're a terrible person.")
+			return span_purple("[src]Está morto. Você é uma pessoa terrível.")
 
 /obj/item/toy/nyamagotchi/proc/update_available_icons()
 	icons_available = list()
@@ -189,13 +189,13 @@
 
 	if(COOLDOWN_FINISHED(src, mute_pet))
 		COOLDOWN_START(src, mute_pet, update_rate * 5.75)
-		user.balloon_alert(user, "muted!")
-		to_chat(user, span_notice("You turn on [src]'s mute feature."))
+		user.balloon_alert(user, "Mutado!")
+		to_chat(user, span_notice("Você liga.[src]É uma característica muda."))
 
 	else
 		COOLDOWN_RESET(src, mute_pet)
-		user.balloon_alert(user, "unmuted!")
-		to_chat(user, span_notice("You turn off [src]'s mute feature."))
+		user.balloon_alert(user, "Sem som!")
+		to_chat(user, span_notice("Você desliga.[src]É uma característica muda."))
 		be_known(sfx = MEOW_NORMAL)
 
 /obj/item/toy/nyamagotchi/proc/start()
@@ -293,7 +293,7 @@
 // Interactions
 /obj/item/toy/nyamagotchi/proc/action_check()
 	if(!isnull(last_task))
-		usr.balloon_alert(usr, "still [last_task]!")
+		usr.balloon_alert(usr, "Ainda.[last_task]!")
 		be_known(sfx = MEOW_SAD)
 		return FALSE
 	return TRUE
@@ -303,47 +303,47 @@
 		return
 	else if(hunger > 20)
 		hunger -= min(rand(30, 40), hunger)
-		to_chat(usr, span_purple("You fed [src]! Its hunger is now at [hunger]."))
+		to_chat(usr, span_purple("Você se alimentou.[src]Sua fome está agora em[hunger]."))
 		be_known(sfx = EAT_FOOD, speech = pick(feed_messages))
 		last_task = "eating"
 	else
-		usr.balloon_alert(usr, "not hungry!")
+		usr.balloon_alert(usr, "Não estou com fome!")
 
 /obj/item/toy/nyamagotchi/proc/play()
 	if(!action_check())
 		return
 	else if(happiness < 80)
 		happiness += min(rand(30, 40), 100 - happiness)
-		to_chat(usr, span_purple("You play with [src]! Its happiness is now [happiness]."))
+		to_chat(usr, span_purple("Você brinca com[src]Sua felicidade é agora[happiness]."))
 		be_known(sfx = PURR_PLAY, speech = pick(play_messages))
 		last_task = "playing"
 	else
-		usr.balloon_alert(usr, "not bored!")
+		usr.balloon_alert(usr, "Não entediada!")
 
 /obj/item/toy/nyamagotchi/proc/rest()
 	if(!action_check())
 		return
 	else if(energy < 80)
 		energy += min(rand(30, 40), 100 - energy)
-		to_chat(usr, span_purple("[src] rests and regains energy. Its energy is now [energy]."))
+		to_chat(usr, span_purple("[src]Descansa e recupera energia. Sua energia é agora[energy]."))
 		be_known(sfx = PURR_SLEEP, speech = pick(rest_messages))
 		last_task = "resting"
 	else
-		usr.balloon_alert(usr, "not tired!")
+		usr.balloon_alert(usr, "Não estou cansado!")
 
 // Function for when the nyamagotchi dies
 /obj/item/toy/nyamagotchi/proc/die()
 	last_task = null
 	alive = ANIMAL_DEAD
-	audible_message(span_warning("[src] makes a weak, sad noise and then goes silent... Rest in peace."), hearing_distance = COMBAT_MESSAGE_RANGE)
+	audible_message(span_warning("[src]Faz um barulho fraco e triste e depois fica em silêncio... Descanse em paz."), hearing_distance = COMBAT_MESSAGE_RANGE)
 	if(ishuman(loc))
-		to_chat(loc, span_warning("[src] shows an x3 on its display. It's dead. You're a terrible person."))
+		to_chat(loc, span_warning("[src]mostra um x3 em sua tela. Está morto. Você é uma pessoa terrível."))
 	//src.icon_state = "dead"
 	be_known(sfx = 'sound/misc/sadtrombone.ogg', visible = "nyamagotchi died!")
 	update_available_icons()
 
 /obj/item/toy/nyamagotchi/proc/check_status()
-	balloon_alert(usr, "hunger: [hunger] happiness: [happiness] energy: [energy]")
+	balloon_alert(usr, "Fome:[hunger]Felicidade:[happiness]Energia:[energy]")
 
 /datum/action/item_action/nyamagotchi_menu
 	name = "Check Nyamagotchi"

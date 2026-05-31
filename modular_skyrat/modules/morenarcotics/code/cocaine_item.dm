@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/crack
 	name = "crack"
-	desc = "A rock of freebase cocaine, otherwise known as crack."
+	desc = "Uma pedra de cocaína de base livre, também conhecida como crack."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "crack"
 	volume = 10
@@ -9,7 +9,7 @@
 
 /obj/item/reagent_containers/crackbrick
 	name = "crack brick"
-	desc = "A brick of crack cocaine."
+	desc = "Um tijolo de cocaína."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "crackbrick"
 	volume = 40
@@ -18,7 +18,7 @@
 
 /obj/item/reagent_containers/crackbrick/attackby(obj/item/W, mob/user, params)
 	if(W.get_sharpness())
-		user.show_message(span_notice("You cut \the [src] into some rocks."), MSG_VISUAL)
+		user.show_message(span_notice("Você cortou.\the [src]Em algumas rodas."), MSG_VISUAL)
 		for(var/i = 1 to 4)
 			new /obj/item/reagent_containers/crack(user.loc)
 		qdel(src)
@@ -34,7 +34,7 @@
 // Should probably give this the edible component at some point
 /obj/item/reagent_containers/cocaine
 	name = "cocaine"
-	desc = "Reenact your favorite scenes from Scarface!"
+	desc = "Refaça suas cenas favoritas de Scarface!"
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "cocaine"
 	volume = 5
@@ -50,11 +50,11 @@
 	else if(user.is_mouth_covered(ITEM_SLOT_MASK))
 		covered = "mask"
 	if(covered)
-		to_chat(user, span_warning("You have to remove your [covered] first!"))
+		to_chat(user, span_warning("Você tem que remover seu[covered]Primero!"))
 		return
-	user.visible_message(span_notice("[user] starts snorting the [src]."))
+	user.visible_message(span_notice("[user]Começa a cheirar o[src]."))
 	if(do_after(user, 30))
-		to_chat(user, span_notice("You finish snorting the [src]."))
+		to_chat(user, span_notice("Você termina de cheirar o[src]."))
 		if(reagents.total_volume)
 			reagents.trans_to(user, reagents.total_volume, transferred_by = user, methods = INGEST)
 		qdel(src)
@@ -79,7 +79,7 @@
 
 /obj/item/reagent_containers/cocainebrick
 	name = "cocaine brick"
-	desc = "A brick of cocaine. Good for transport!"
+	desc = "Um tijolo de cocaína. Bom para o transporte!"
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "cocainebrick"
 	volume = 25
@@ -88,9 +88,9 @@
 
 
 /obj/item/reagent_containers/cocainebrick/attack_self(mob/user)
-	user.visible_message(span_notice("[user] starts breaking up the [src]."))
+	user.visible_message(span_notice("[user]começa a quebrar o[src]."))
 	if(do_after(user,10))
-		to_chat(user, span_notice("You finish breaking up the [src]."))
+		to_chat(user, span_notice("Você termina de quebrar o[src]."))
 		for(var/i = 1 to 5)
 			new /obj/item/reagent_containers/cocaine(user.loc)
 		qdel(src)
@@ -112,7 +112,7 @@
 
 /datum/export/crack/crackbrick
 	cost = CARGO_CRATE_VALUE * 2.5
-	unit_name = "crack brick"
+	unit_name = "Tijolo de crack"
 	export_types = list(/obj/item/reagent_containers/crackbrick)
 	include_subtypes = FALSE
 
@@ -124,6 +124,6 @@
 
 /datum/export/cocainebrick
 	cost = CARGO_CRATE_VALUE * 2
-	unit_name = "cocaine brick"
+	unit_name = "tijolo de cocaína"
 	export_types = list(/obj/item/reagent_containers/cocainebrick)
 	include_subtypes = FALSE

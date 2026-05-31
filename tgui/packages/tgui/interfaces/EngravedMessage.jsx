@@ -68,12 +68,12 @@ export const EngravedMessage = (props) => {
         </Section>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="Created On">{realdate}</LabeledList.Item>
+            <LabeledList.Item label="Criado em">{realdate}</LabeledList.Item>
           </LabeledList>
         </Section>
         {!!admin_mode && (
           <Section
-            title="Admin Panel"
+            title="Painel de Administração"
             buttons={
               <Button
                 icon="times"
@@ -84,10 +84,10 @@ export const EngravedMessage = (props) => {
             }
           >
             <LabeledList>
-              <LabeledList.Item label="Creator Ckey">
+              <LabeledList.Item label="Ckey Criador">
                 {creator_key}
               </LabeledList.Item>
-              <LabeledList.Item label="Creator Character Name">
+              <LabeledList.Item label="Nome do Criador">
                 {creator_name}
               </LabeledList.Item>
             </LabeledList>

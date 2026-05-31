@@ -23,14 +23,14 @@ export const SpaceHeater = (props) => {
               {!!data.chemHacked && (
                 <Button
                   icon="eject"
-                  content="Eject beaker"
+                  content="Ejetar o copo"
                   disabled={!data.beaker}
                   onClick={() => act('ejectBeaker')}
                 />
               )}
               <Button
                 icon="eject"
-                content="Eject Cell"
+                content="Ejetar Célula"
                 disabled={!data.hasPowercell || !data.open}
                 onClick={() => act('eject')}
               />
@@ -64,7 +64,7 @@ export const SpaceHeater = (props) => {
         </Section>
         <Section title="Thermostat">
           <LabeledList>
-            <LabeledList.Item label="Current Temperature">
+            <LabeledList.Item label="Temperatura atual">
               <Box
                 fontSize="18px"
                 color={
@@ -78,7 +78,7 @@ export const SpaceHeater = (props) => {
                 {data.currentTemp}°C
               </Box>
             </LabeledList.Item>
-            <LabeledList.Item label="Target Temperature">
+            <LabeledList.Item label="Temperatura do Alvo">
               {(data.open && (
                 <NumberInput
                   animated

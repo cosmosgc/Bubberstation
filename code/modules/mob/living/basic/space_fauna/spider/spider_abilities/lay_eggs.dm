@@ -1,6 +1,6 @@
 /datum/action/cooldown/mob_cooldown/lay_eggs
 	name = "Lay Eggs"
-	desc = "Lay a cluster of eggs, which will soon grow into a normal spider."
+	desc = "Coloque um cacho de ovos, que logo se tornará uma aranha normal."
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "lay_eggs"
 	background_icon_state = "bg_alien"
@@ -30,12 +30,12 @@
 		return FALSE
 	if(DOING_INTERACTION(owner, DOAFTER_SOURCE_SPIDER))
 		if (feedback)
-			owner.balloon_alert(owner, "ocupado!")
+			owner.balloon_alert(owner, "Ocupado!")
 		return FALSE
 	var/obj/structure/spider/eggcluster/eggs = locate() in get_turf(owner)
 	if(eggs)
 		if (feedback)
-			owner.balloon_alert(owner, "already eggs here!")
+			owner.balloon_alert(owner, "Já ovos aqui!")
 		return FALSE
 	return TRUE
 
@@ -43,12 +43,12 @@
 	owner.balloon_alert_to_viewers("laying eggs...")
 	StartCooldown(360 SECONDS, 360 SECONDS)
 	if(!do_after(owner, egg_lay_time, target = get_turf(owner), interaction_key = DOAFTER_SOURCE_SPIDER))
-		owner.balloon_alert(owner, "interrompido!")
+		owner.balloon_alert(owner, "Interrompido!")
 		StartCooldown(0 SECONDS)
 		return
 	var/obj/structure/spider/eggcluster/eggs = locate() in get_turf(owner)
 	if(eggs)
-		owner.balloon_alert(owner, "already eggs here!")
+		owner.balloon_alert(owner, "Já ovos aqui!")
 	else
 		lay_egg()
 	StartCooldown()
@@ -62,14 +62,14 @@
 
 /datum/action/cooldown/mob_cooldown/lay_eggs/abnormal
 	name = "Lay Abnormal Eggs"
-	desc = "Lay a cluster of eggs, which will soon grow into a uncommon spider."
+	desc = "Coloque um cacho de ovos, que logo se tornará uma aranha incomum."
 	button_icon_state = "lay_abnormal_eggs"
 	cooldown_time = 180 SECONDS
 	egg_type = /obj/effect/mob_spawn/ghost_role/spider/abnormal
 
 /datum/action/cooldown/mob_cooldown/lay_eggs/enriched
 	name = "Lay Enriched Eggs"
-	desc = "Lay a cluster of eggs, which will soon grow into a rare spider.  Requires you drain a human per cluster of these eggs."
+	desc = "Coloque um cacho de ovos, que logo se tornará uma aranha rara. Requer drenar um humano por grupo desses ovos."
 	button_icon_state = "lay_enriched_eggs"
 	cooldown_time = 60 SECONDS
 	egg_type = /obj/effect/mob_spawn/ghost_role/spider/enriched
@@ -82,7 +82,7 @@
 		return FALSE
 	if (charges <= 0)
 		if (feedback)
-			owner.balloon_alert(owner, "must feed first!")
+			owner.balloon_alert(owner, "Deve se alimentar primeiro!")
 		return FALSE
 	return TRUE
 

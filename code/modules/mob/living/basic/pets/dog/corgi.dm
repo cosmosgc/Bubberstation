@@ -3,7 +3,7 @@
 /mob/living/basic/pet/dog/corgi
 	name = "\improper corgi"
 	real_name = "corgi"
-	desc = "They're a corgi."
+	desc = "Eles são corgi."
 	icon_state = "corgi"
 	icon_living = "corgi"
 	icon_dead = "corgi_dead"
@@ -73,11 +73,7 @@
 		/mob/living/basic/pet/dog/corgi/puppy = 95,
 		/mob/living/basic/pet/dog/corgi/puppy/void = 5,
 	)
-	AddComponent(\
-		/datum/component/breed,\
-		can_breed_with = typecacheof(list(/mob/living/basic/pet/dog/corgi)),\
-		baby_paths = baby_paths,\
-	)
+	AddComponent(		/datum/component/breed,		can_breed_with = typecacheof(list(/mob/living/basic/pet/dog/corgi)),		baby_paths = baby_paths,	)
 
 /// Removes the hat and shirt (but not ID) of this corgi
 /mob/living/basic/pet/dog/corgi/proc/undress_dog()
@@ -115,14 +111,14 @@
 /mob/living/basic/pet/dog/corgi/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(attacking_item, /obj/item/razor))
 		if(shaved)
-			to_chat(user, span_warning("You can't shave this corgi, [p_they()] has already been shaved!"))
+			to_chat(user, span_warning("Você não pode raspar este corgi,[p_they()]Já foi raspado!"))
 			return
 		if(!can_be_shaved)
-			to_chat(user, span_warning("You can't shave this corgi, [p_they()] [p_do()]n't have a fur coat!"))
+			to_chat(user, span_warning("Você não pode raspar este corgi,[p_they()] [p_do()]Não tenho um casaco de pele!"))
 			return
-		user.visible_message(span_notice("[user] starts to shave [src] using \the [attacking_item]."), span_notice("You start to shave [src] using \the [attacking_item]..."))
+		user.visible_message(span_notice("[user]Começa a se barbear.[src]usando\the [attacking_item]."), span_notice("Você começa a se barbear.[src]usando\the [attacking_item]..."))
 		if(do_after(user, 5 SECONDS, target = src))
-			user.visible_message(span_notice("[user] shaves [src]'s hair using \the [attacking_item]."))
+			user.visible_message(span_notice("[user]Barba.[src]É o cabelo usando\the [attacking_item]."))
 			playsound(get_turf(src), 'sound/items/hair-clippers.ogg', 20, TRUE)
 			shaved = TRUE
 			icon_living = "[icon_living]_shaved"
@@ -213,24 +209,24 @@
 /mob/living/basic/pet/dog/corgi/proc/place_on_head(obj/item/item_to_add, mob/living/user)
 	if(inventory_head)
 		if(user)
-			balloon_alert(user, "already wearing a hat!")
+			balloon_alert(user, "Já está usando um chapéu!")
 		return FALSE
 
 	if(isnull(item_to_add))
 		if (!isnull(user))
-			user.visible_message(span_notice("[user] pets [src]."), span_notice("You rest your hand on [src]'s head for a moment."))
+			user.visible_message(span_notice("[user]Animais de estimação[src]."), span_notice("Você descansa em sua mão[src]É a cabeça por um momento."))
 			if(flags_1 & HOLOGRAM_1)
 				return
 			user.add_mood_event(REF(src), /datum/mood_event/pet_animal, src)
 		return FALSE
 
 	if(user && !user.temporarilyRemoveItemFromInventory(item_to_add))
-		to_chat(user, span_warning("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s head!"))
+		to_chat(user, span_warning("\The [item_to_add]está preso em sua mão, você não pode colocá-lo[src]A cabeça!"))
 		return FALSE
 
 	//Various hats and items (worn on his head) change Ian's behaviour. His attributes are reset when a hat is removed.
 	if(!ispath(item_to_add.dog_fashion, /datum/dog_fashion/head))
-		to_chat(user, span_warning("You set [item_to_add] on [src]'s head, but it falls off!"))
+		to_chat(user, span_warning("Você está pronto.[item_to_add]Vamos.[src]É a cabeça, mas cai!"))
 		item_to_add.forceMove(drop_location())
 		if(prob(25))
 			step_rand(item_to_add)
@@ -239,11 +235,11 @@
 
 	if (user)
 		if(stat == DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH))
-			to_chat(user, span_notice("There is merely a dull, lifeless look in [real_name]'s eyes as you put \the [item_to_add] on [p_them()]."))
+			to_chat(user, span_notice("Há apenas um olhar chato, sem vida[real_name]Os olhos como você coloca\the [item_to_add]Vamos.[p_them()]."))
 		else
-			user.visible_message(span_notice("[user] puts [item_to_add] on [real_name]'s head. [src] looks at [user] and barks once."),
-				span_notice("You put [item_to_add] on [real_name]'s head. [src] gives you a peculiar look, then wags [p_their()] tail once and barks."),
-				span_hear("You hear a friendly-sounding bark."))
+			user.visible_message(span_notice("[user]coloca[item_to_add]Vamos.[real_name]A cabeça.[src]Olha só.[user]e ladra uma vez."),
+				span_notice("Você colocou[item_to_add]Vamos.[real_name]A cabeça.[src]Dá-lhe um olhar peculiar, então balança[p_their()]cauda uma vez e ladra."),
+				span_hear("Você ouve um latido amigável."))
 	item_to_add.forceMove(src)
 	inventory_head = item_to_add
 	update_corgi_fluff()
@@ -300,13 +296,13 @@
 		inventory_head.forceMove(drop_location())
 		inventory_head = null
 	place_on_head(pick(possible_headwear))
-	visible_message(span_notice("[src] puts [inventory_head] on [p_their()] own head, somehow."))
+	visible_message(span_notice("[src]coloca[inventory_head]Vamos.[p_their()]A própria cabeça, de alguma forma."))
 
 ///Deadchat plays command that drops the current hat off Ian.
 /mob/living/basic/pet/dog/corgi/proc/drop_hat()
 	if(!inventory_head)
 		return
-	visible_message(span_notice("[src] vigorously shakes [p_their()] head, dropping [inventory_head] to the ground."))
+	visible_message(span_notice("[src]vigorosamente treme[p_their()]cabeça, caindo[inventory_head]Para o chão."))
 	inventory_head.forceMove(drop_location())
 	inventory_head = null
 	update_corgi_fluff()
@@ -322,7 +318,7 @@
 
 /mob/living/basic/pet/dog/corgi/exoticcorgi
 	name = "Exotic Corgi"
-	desc = "As cute as they are colorful!"
+	desc = "Tão bonitos quanto coloridos!"
 	icon = 'icons/mob/simple/pets.dmi'
 	icon_state = "corgigrey"
 	icon_living = "corgigrey"
@@ -339,7 +335,7 @@
 	name = "Ian"
 	real_name = "Ian" //Intended to hold the name without altering it.
 	gender = MALE
-	desc = "He's the HoP's beloved corgi."
+	desc = "Ele é o corgi amado do HoP."
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "bops"
@@ -378,7 +374,7 @@
 		icon_living = "old_corgi"
 		held_state = "old_corgi"
 		icon_dead = "old_corgi_dead"
-		desc = "At a ripe old age of [record_age], Ian's not as spry as he used to be, but he'll always be the HoP's beloved corgi." //RIP
+		desc = "Em uma idade madura de[record_age]Ian não é tão ágil como antes, mas sempre será o corgi amado do HoP." //RIP
 		ai_controller?.set_blackboard_key(BB_DOG_IS_SLOW, TRUE)
 		is_slow = TRUE
 		speed = 2
@@ -491,8 +487,7 @@
 	SIGNAL_HANDLER
 	if (!is_type_in_list(prey, edible_types) || istype(prey, type))
 		return
-	visible_message(span_warning("Dark magic resonating from [src] devours [prey]!"), \
-		"<span class='cult big bold'>DELICIOUS SOULS</span>")
+	visible_message(span_warning("Magia negra ressoando de[src]devora[prey]!"), 		"<span class='cult big bold'>ALGO DELICIOSO</span>")
 	playsound(src, 'sound/effects/magic/demon_attack1.ogg', 75, TRUE)
 	new /obj/effect/temp_visual/cult/sac(get_turf(prey))
 	narsie_act()
@@ -514,8 +509,7 @@
 
 /mob/living/basic/pet/dog/corgi/narsie/narsie_act()
 	if(stat == DEAD) //Nar'Sie loves her doggy
-		visible_message(span_warning("[src] arises again, revived by the dark magicks!"), \
-		span_cult_large("RISE"))
+		visible_message(span_warning("[src]Surge novamente, revivido pelos magos das trevas!"), 		span_cult_large("RISE"))
 		revive(ADMIN_HEAL_ALL) //also means that a dead Nars-Ian can consume a pet and revive
 	adjust_brute_loss(-maxHealth)
 
@@ -524,7 +518,7 @@
 	name = "Lisa"
 	real_name = "Lisa"
 	gender = FEMALE
-	desc = "She's tearing you apart."
+	desc = "Ela está te destruindo."
 	gold_core_spawnable = NO_SPAWN
 	unique_pet = TRUE
 	icon_state = "lisa"
@@ -543,7 +537,7 @@
 /mob/living/basic/pet/dog/corgi/puppy
 	name = "\improper corgi puppy"
 	real_name = "corgi"
-	desc = "They're a corgi puppy!"
+	desc = "Eles são um cachorro corgi!"
 	icon_state = "puppy"
 	icon_living = "puppy"
 	icon_dead = "puppy_dead"
@@ -560,12 +554,12 @@
 	name = "Ian"
 	real_name = "Ian"
 	gender = MALE
-	desc = "He's the HoP's beloved corgi puppy."
+	desc = "Ele é o amado filhote de cachorro corgi do HoP."
 
 /mob/living/basic/pet/dog/corgi/puppy/void //Tribute to the corgis born in nullspace
 	name = "\improper void puppy"
 	real_name = "voidy"
-	desc = "A corgi puppy that has been infused with deep space energy. It's staring back..."
+	desc = "Um cachorro corgi que foi infundido com energia espacial profunda. Está olhando para trás..."
 	gender = NEUTER
 	icon_state = "void_puppy"
 	icon_living = "void_puppy"

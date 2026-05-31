@@ -6,7 +6,7 @@
 	icon_state = "portagrav"
 	base_icon_state = "portagrav"
 	name = "Portable Gravity Unit"
-	desc = "Generates gravity around itself. Powered by wire or cell. Must be anchored before use."
+	desc = "Gera gravidade em torno de si mesma. Alimentado por fio ou célula. Deve estar ancorado antes do uso."
 	max_integrity = 250
 	circuit = /obj/item/circuitboard/machine/portagrav
 	armor_type = /datum/armor/portable_gravity
@@ -42,10 +42,7 @@
 	if(anchored && wire_mode)
 		connect_to_network()
 
-	AddElement( \
-		/datum/element/contextual_screentip_bare_hands, \
-		rmb_text = "Toggle power", \
-	)
+	AddElement( 		/datum/element/contextual_screentip_bare_hands, 		rmb_text = "Toggle power", 	)
 
 	var/static/list/tool_behaviors = list(
 		TOOL_WRENCH = list(
@@ -72,7 +69,7 @@
 	. += "The charge meter reads: [!isnull(cell) ? "[round(cell.percent(), 1)]%" : "NO CELL"]."
 	. += "It is[anchored ? "" : " not"] anchored."
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("<b>Right-click</b> to toggle [on ? "off" : "on"].")
+		. += span_notice("<b>Botão direito</b>Para alternar[on ? "off" : "on"].")
 
 /obj/machinery/power/portagrav/RefreshParts()
 	. = ..()
@@ -100,10 +97,10 @@
 	if(!istype(tool, /obj/item/stock_parts/power_store/cell))
 		return NONE
 	if(!panel_open)
-		balloon_alert(user, "must open panel!")
+		balloon_alert(user, "Tem que abrir o painel!")
 		return ITEM_INTERACT_BLOCKING
 	if(cell)
-		balloon_alert(user, "already has a cell!")
+		balloon_alert(user, "Já tem uma cela!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_FAILURE
@@ -121,7 +118,7 @@
 /obj/machinery/power/portagrav/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(on)
-		balloon_alert(user, "desligue primeiro!")
+		balloon_alert(user, "Desligue primeiro!")
 		return
 	default_unfasten_wrench(user, tool)
 	if(anchored && wire_mode)
@@ -151,9 +148,9 @@
 	if(obj_flags & EMAGGED)
 		return FALSE
 	obj_flags |= EMAGGED
-	visible_message(span_warning("Sparks fly out of [src]!"))
+	visible_message(span_warning("As faíscas voam para fora[src]!"))
 	if(user)
-		balloon_alert(user, "unsafe gravity unlocked")
+		balloon_alert(user, "gravidade insegura desbloqueada")
 		user.log_message("emagged [src].", LOG_ATTACK)
 	playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	return TRUE
@@ -171,10 +168,10 @@
 		return FALSE
 	if((!wire_mode && cell?.charge < draw_per_range * range) || (wire_mode && surplus() < draw_per_range * range))
 		if(!isnull(user))
-			balloon_alert(user, "energia insuficiente!")
+			balloon_alert(user, "Insuficiência de energia!")
 		return FALSE
 	if(!isnull(user))
-		balloon_alert(user, "turned on")
+		balloon_alert(user, "Ligado.")
 	on = TRUE
 	START_PROCESSING(SSmachines, src)
 	gravity_field = new(src, range = src.range, gravity = grav_strength)

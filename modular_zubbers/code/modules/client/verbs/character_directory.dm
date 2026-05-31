@@ -133,7 +133,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 
 	// This is primarily to stop malicious users from trying to lag the server by spamming this verb
 	if(!COOLDOWN_FINISHED(src, char_directory_cooldown))
-		to_chat(src, span_alert("Hold your horses! It's still refreshing!"))
+		to_chat(src, span_alert("Calma aí! Ainda é refrescante!"))
 		return
 	COOLDOWN_START(src, char_directory_cooldown, 10)
 
@@ -279,7 +279,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 		if("refresh")
 			// This is primarily to stop malicious users from trying to lag the server by spamming this verb
 			if(!COOLDOWN_FINISHED(user.client, char_directory_cooldown))
-				to_chat(user, "<span class='warning'>Don't spam character directory refresh.</span>")
+				to_chat(user, "<span class='warning'>Não refresque o diretório de caracteres de spam.</span>")
 				return
 			COOLDOWN_START(user.client, char_directory_cooldown, 10)
 			update_static_data(user, ui)

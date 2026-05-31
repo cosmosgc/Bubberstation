@@ -8,7 +8,7 @@
  */
 /datum/symptom/confusion
 	name = "Confusion"
-	desc = "The virus interferes with the proper function of the neural system, leading to bouts of confusion and erratic movement."
+	desc = "O vírus interfere com a função adequada do sistema neural, levando a crises de confusão e movimento errático."
 	illness = "Shattered Reality"
 	stealth = 2
 	resistance = 1
@@ -55,7 +55,7 @@
 			if(prob(base_message_chance) && !suppress_warning)
 				to_chat(infected_mob, span_warning("[pick("Your head hurts.", "Your mind blanks for a moment.")]"))
 		else
-			to_chat(infected_mob, span_userdanger("You can't think straight!"))
+			to_chat(infected_mob, span_userdanger("Você não pode pensar direito!"))
 			infected_mob.adjust_confusion_up_to(16 SECONDS * power, 30 SECONDS)
 			if(brain_damage)
 				infected_mob.adjust_organ_loss(ORGAN_SLOT_BRAIN, 3 * power, 80)

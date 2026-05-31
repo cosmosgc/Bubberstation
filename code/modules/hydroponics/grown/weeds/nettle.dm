@@ -1,6 +1,6 @@
 /obj/item/seeds/nettle
 	name = "nettle seed pack"
-	desc = "These seeds grow into nettles."
+	desc = "Estas sementes crescem em urtigas."
 	icon_state = "seed-nettle"
 	plant_icon_offset = 0
 	species = "nettle"
@@ -18,7 +18,7 @@
 
 /obj/item/seeds/nettle/death
 	name = "death-nettle seed pack"
-	desc = "These seeds grow into death-nettles."
+	desc = "Estas sementes crescem em redes mortíferas."
 	icon_state = "seed-deathnettle"
 	species = "deathnettle"
 	plantname = "Death Nettles"
@@ -35,7 +35,7 @@
 /obj/item/food/grown/nettle // "snack"
 	seed = /obj/item/seeds/nettle
 	name = "\improper nettle"
-	desc = "It's probably <B>not</B> wise to touch it with bare hands..."
+	desc = "Provavelmente.<B>Não.</B>sábio para tocá-lo com as próprias mãos..."
 	icon_state = "nettle"
 	inhand_icon_state = "nettle"
 	bite_consumption_mod = 2
@@ -52,13 +52,13 @@
 	attack_verb_simple = list("sting")
 
 /obj/item/food/grown/nettle/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is eating some of [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]está comendo um pouco de[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return (BRUTELOSS|TOXLOSS)
 
 /obj/item/food/grown/nettle/death
 	seed = /obj/item/seeds/nettle/death
 	name = "\improper deathnettle"
-	desc = "The <span class='danger'>glowing</span> nettle incites <span class='bolddanger'>rage</span> in you just from looking at it!"
+	desc = "O<span class='danger'>Brilhando</span>Urtiga incita<span class='bolddanger'>Raiva</span>em você só de olhar para ele!"
 	icon_state = "deathnettle"
 	inhand_icon_state = "deathnettle"
 	bite_consumption_mod = 4 // I guess if you really wanted to

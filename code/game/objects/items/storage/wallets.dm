@@ -1,6 +1,6 @@
 /obj/item/storage/wallet
 	name = "wallet"
-	desc = "It can hold a few small and personal things."
+	desc = "Pode segurar algumas coisas pequenas e pessoais."
 	icon_state = "wallet"
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FLAMMABLE
@@ -88,7 +88,7 @@
 /obj/item/storage/wallet/examine()
 	. = ..()
 	if(front_id)
-		. += span_notice("Alt-click to remove the id.")
+		. += span_notice("Alt-click para remover o ID.")
 
 /obj/item/storage/wallet/get_id_examine_strings(mob/user)
 	. = ..()
@@ -133,7 +133,7 @@
 
 ///Used by the toilet fish source.
 /obj/item/storage/wallet/money
-	desc = "It can hold a few small and personal things. This one reeks of toilet water."
+	desc = "Pode segurar algumas coisas pequenas e pessoais. Este cheira a água do banheiro."
 
 /obj/item/storage/wallet/money/PopulateContents()
 	for(var/iteration in 1 to pick(3, 4))

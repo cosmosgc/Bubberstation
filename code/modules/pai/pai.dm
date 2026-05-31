@@ -2,7 +2,7 @@
 	can_be_held = TRUE
 	can_buckle_to = FALSE
 	density = FALSE
-	desc = "A generic pAI hard-light holographics emitter."
+	desc = "Um emissor holográfico genérico de luz dura."
 	health = 500
 	held_lh = 'icons/mob/inhands/pai_item_lh.dmi'
 	held_rh = 'icons/mob/inhands/pai_item_rh.dmi'
@@ -133,7 +133,7 @@
 // See software.dm for Topic()
 /mob/living/silicon/pai/can_perform_action(atom/target, action_bitflags)
 	if(!(action_bitflags & ALLOW_PAI))
-		to_chat(src, span_warning("Your holochasis does not allow you to do this!"))
+		to_chat(src, span_warning("Seu holocasis não permite que você faça isso!"))
 		return FALSE
 	action_bitflags |= ALLOW_RESTING // Resting is just an aesthetic feature for them
 	action_bitflags &= ~ALLOW_SILICON_REACH // They don't get long reach like the rest of silicons
@@ -268,7 +268,7 @@
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
 /mob/living/silicon/pai/update_desc(updates)
-	desc = "A hard-light holographic avatar representing a pAI. This one appears in the form of a [chassis]."
+	desc = "Um avatar holográfico de luz dura representando uma IAP. Este aparece na forma de[chassis]."
 	return ..()
 
 /mob/living/silicon/pai/update_icon_state()
@@ -308,7 +308,7 @@
  */
 /mob/living/silicon/pai/proc/fix_speech()
 	var/mob/living/silicon/pai = src
-	balloon_alert(pai, "speech modulation corrected")
+	balloon_alert(pai, "Modulação de fala corrigida.")
 	for(var/effect in typesof(/datum/status_effect/speech))
 		pai.remove_status_effect(effect)
 	return TRUE
@@ -336,8 +336,8 @@
 /mob/living/silicon/pai/proc/handle_emag(mob/living/carbon/attacker)
 	if(!isliving(attacker))
 		return FALSE
-	balloon_alert(attacker, "directive override complete")
-	balloon_alert(src, "directive override detected")
+	balloon_alert(attacker, "Supressão de diretiva completa.")
+	balloon_alert(src, "Desativação de diretiva detectada")
 	log_game("[key_name(attacker)] emagged [key_name(src)], wiping their master DNA and supplemental directive.")
 	emagged = TRUE
 	master_ref = WEAKREF(attacker)
@@ -345,13 +345,13 @@
 	master_dna = "Untraceable Signature"
 	// Sets supplemental directive to this
 	add_supplied_law(0, "Do not interfere with the operations of the Syndicate.")
-	to_chat(src, span_danger("ALERT: Foreign software detected."))
+	to_chat(src, span_danger("Software estrangeiro detectado."))
 	return TRUE
 
 /mob/living/silicon/pai/on_saboteur(datum/source, disrupt_duration)
 	. = ..()
 	set_silence_if_lower(disrupt_duration)
-	balloon_alert(src, "muted!")
+	balloon_alert(src, "Mutado!")
 	return TRUE
 
 /**
@@ -368,7 +368,7 @@
 	master_dna = null
 	add_supplied_law(0, "None.")
 	leash = AddComponent(/datum/component/leash, card, HOLOFORM_DEFAULT_RANGE, force_teleport_out_effect = /obj/effect/temp_visual/guardian/phase/out)
-	balloon_alert(src, "software rebooted")
+	balloon_alert(src, "Software reiniciado")
 	return TRUE
 
 /**
@@ -379,17 +379,17 @@
  */
 /mob/living/silicon/pai/proc/set_dna(mob/user)
 	if(!iscarbon(user))
-		balloon_alert(user, "incompatible DNA signature")
-		balloon_alert(src, "incompatible DNA signature")
+		balloon_alert(user, "Assinatura de DNA incompatível.")
+		balloon_alert(src, "Assinatura de DNA incompatível.")
 		return FALSE
 	if(emagged)
-		balloon_alert(user, "directive system malfunctional")
+		balloon_alert(user, "Sistema diretivo defeituoso.")
 		return FALSE
 	var/mob/living/carbon/master = user
 	master_ref = WEAKREF(master)
 	master_name = master.real_name
 	master_dna = master.dna.unique_enzymes
-	to_chat(src, span_bolddanger("You have been bound to a new master: [user.real_name]!"))
+	to_chat(src, span_bolddanger("Você foi obrigado a um novo mestre.[user.real_name]!"))
 	holochassis_ready = TRUE
 	return TRUE
 
@@ -401,7 +401,7 @@
  */
 /mob/living/silicon/pai/proc/set_laws(mob/user)
 	if(!master_ref)
-		balloon_alert(user, "access denied: no master")
+		balloon_alert(user, "Acesso negado: nenhum mestre.")
 		return FALSE
 	var/new_laws = tgui_input_text(
 		user,
@@ -422,7 +422,7 @@
  * @returns {boolean} - TRUE if successful, FALSE if not.
  */
 /mob/living/silicon/pai/proc/toggle_holo()
-	balloon_alert(src, "holomatrix [can_holo ? "disabled" : "enabled"]")
+	balloon_alert(src, "Holomatrix[can_holo ? "disabled" : "enabled"]")
 	can_holo = !can_holo
 	return TRUE
 
@@ -441,7 +441,7 @@
 		can_receive = !can_receive
 	radio.wires.cut(transmit_holder)//wires.cut toggles cut and uncut states
 	transmit_holder = (transmitting ? can_transmit : can_receive) //recycling can be fun!
-	balloon_alert(src, "[transmitting ? "outgoing" : "incoming"] radio [transmit_holder ? "enabled" : "disabled"]")
+	balloon_alert(src, "[transmitting ? "outgoing" : "incoming"]rádio[transmit_holder ? "enabled" : "disabled"]")
 	return TRUE
 
 /**
@@ -452,13 +452,13 @@
  * @returns {boolean} - TRUE if successful, FALSE if not.
  */
 /mob/living/silicon/pai/proc/wipe_pai(mob/user)
-	if(tgui_alert(user, "Are you certain you wish to delete the current personality? This action cannot be undone.", "Personality Wipe", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "Tem certeza que deseja apagar a personalidade atual? Essa ação não pode ser desfeita.", "Personality Wipe", list("Yes", "No")) != "Yes")
 		return FALSE
-	to_chat(src, span_warning("You feel yourself slipping away from reality."))
-	to_chat(src, span_danger("Byte by byte you lose your sense of self."))
-	to_chat(src, span_userdanger("Your mental faculties leave you."))
+	to_chat(src, span_warning("Você se sente escapando da realidade."))
+	to_chat(src, span_danger("Byte byte você perde seu senso de si mesmo."))
+	to_chat(src, span_userdanger("Suas faculdades mentais te deixam."))
 	to_chat(src, span_rose("oblivion... "))
-	balloon_alert(user, "personality wiped")
+	balloon_alert(user, "personalidade apagada")
 	playsound(src, 'sound/machines/buzz/buzz-two.ogg', 30, TRUE)
 	qdel(src)
 	return TRUE
@@ -468,7 +468,7 @@
 	SIGNAL_HANDLER
 
 	for(var/mob/living/cultist as anything in invokers)
-		to_chat(cultist, span_cult_italic("You don't think this is what Nar'Sie had in mind when She asked for blood sacrifices..."))
+		to_chat(cultist, span_cult_italic("Não acha que era isso que Nar'sie tinha em mente quando pediu sacrifícios de sangue..."))
 	return STOP_SACRIFICE|SILENCE_SACRIFICE_MESSAGE
 
 /// Updates the distance we can be from our pai card

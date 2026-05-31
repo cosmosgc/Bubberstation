@@ -2,7 +2,7 @@
 /mob/living/basic/blob_minion
 	abstract_type = /mob/living/basic/blob_minion
 	name = "Blob Error"
-	desc = "A nonfunctional fungal creature created by bad code or celestial mistake. Point and laugh."
+	desc = "Uma criatura fúngica não funcional criada por código ruim ou erro celestial. Aponte e ria."
 	icon = 'icons/mob/nonhuman-player/blob.dmi'
 	icon_state = "blob_head"
 	base_icon_state = "blob_head"
@@ -53,4 +53,4 @@
 /// Called when our factory is destroyed
 /mob/living/basic/blob_minion/proc/on_factory_destroyed()
 	SIGNAL_HANDLER
-	to_chat(src, span_userdanger("Your factory was destroyed! You feel yourself dying!"))
+	to_chat(src, span_userdanger("Sua fábrica foi destruída! Você se sente morrendo!"))

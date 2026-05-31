@@ -151,13 +151,13 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(list(
 		if(!isnull(place.apc))
 			apc_map[place.name] = place.apc
 		if(length(apc_map) > 1) // When merging 2 or more areas make sure we arent merging their apc into 1 area
-			to_chat(creator, span_warning("Multiple APC's detected in the vicinity. only 1 is allowed."))
+			to_chat(creator, span_warning("Vários APCs foram detectados nas proximidades. Só um é permitido."))
 			return
 		areas[place.name] = place
 
 	var/area_choice = tgui_input_list(creator, "Choose an area to expand or make a new area", "Area Expansion", areas)
 	if(isnull(area_choice))
-		to_chat(creator, span_warning("No choice selected. The area remains undefined."))
+		to_chat(creator, span_warning("Nenhuma escolha selecionada. A área permanece indefinida."))
 		return
 	area_choice = areas[area_choice]
 
@@ -178,7 +178,7 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(list(
 
 	//we haven't done anything. let's get outta here
 	if(newA == oldA)
-		to_chat(creator, span_warning("Selected choice is same as the area your standing in. No area changes were requested."))
+		to_chat(creator, span_warning("Escolha selecionada é a mesma área onde você está. Nenhuma mudança de área foi solicitada."))
 		return
 
 	/**
@@ -198,7 +198,7 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(list(
 	for(var/area_name in affected_areas)
 		area_list += affected_areas[area_name]
 	SEND_GLOBAL_SIGNAL(COMSIG_AREA_CREATED, newA, area_list, creator)
-	to_chat(creator, span_notice("You have created a new area, named [newA.name]. It is now weather proof, and constructing an APC will allow it to be powered."))
+	to_chat(creator, span_notice("Você criou uma nova área, chamada[newA.name]Agora é a prova do tempo, e construir um APC permitirá que ele seja alimentado."))
 	creator.log_message("created a new area: [AREACOORD(creator)] (previously \"[oldA.name]\")", LOG_GAME)
 
 	//purge old areas that had all their turfs merged into the new one i.e. old empty areas. also recompute fire doors

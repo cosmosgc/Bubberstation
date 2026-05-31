@@ -3,7 +3,7 @@
 
 /obj/item/storage/box/drinkingglasses
 	name = "box of drinking glasses"
-	desc = "It has a picture of drinking glasses on it."
+	desc = "Tem uma foto de copos de bebida."
 	illustration = "drinkglass"
 
 /obj/item/storage/box/drinkingglasses/PopulateContents()
@@ -11,7 +11,7 @@
 		new /obj/item/reagent_containers/cup/glass/drinkingglass(src)
 /obj/item/storage/box/cups
 	name = "box of paper cups"
-	desc = "It has pictures of paper cups on the front."
+	desc = "Tem fotos de copos de papel na frente."
 	illustration = "cup"
 
 /obj/item/storage/box/cups/PopulateContents()
@@ -21,7 +21,7 @@
 //Some spare PDAs in a box
 /obj/item/storage/box/pdas
 	name = "spare PDAs"
-	desc = "A box of spare PDA microcomputers."
+	desc = "Uma caixa de microcomputadores de PDA."
 	illustration = "pda"
 
 /obj/item/storage/box/pdas/PopulateContents()
@@ -30,7 +30,7 @@
 
 /obj/item/storage/box/ids
 	name = "box of spare IDs"
-	desc = "Has so many empty IDs."
+	desc = "Tem tantas identidades vazias."
 	illustration = "id"
 
 /obj/item/storage/box/ids/PopulateContents()
@@ -38,7 +38,7 @@
 		new /obj/item/card/id/advanced(src)
 /obj/item/storage/box/silver_ids
 	name = "box of spare silver IDs"
-	desc = "Shiny IDs for important people."
+	desc = "Identidades brilhantes para pessoas importantes."
 	illustration = "id"
 
 /obj/item/storage/box/silver_ids/PopulateContents()
@@ -47,7 +47,7 @@
 
 /obj/item/storage/box/mousetraps
 	name = "box of Pest-B-Gon mousetraps"
-	desc = span_alert("Keep out of reach of children.")
+	desc = span_alert("Mantenha fora do alcance das crianças.")
 	illustration = "mousetrap"
 
 /obj/item/storage/box/mousetraps/PopulateContents()
@@ -56,7 +56,7 @@
 
 /obj/item/storage/box/snappops
 	name = "snap pop box"
-	desc = "Eight wrappers of fun! Ages 8 and up. Not suitable for children."
+	desc = "Oito embalagens de diversão! 8 anos e mais. Não é adequado para crianças."
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "spbox"
 	illustration = ""
@@ -68,7 +68,7 @@
 
 /obj/item/storage/box/matches
 	name = "matchbox"
-	desc = "A small box of Almost But Not Quite Plasma Premium Matches."
+	desc = "Uma pequena caixa de quase mas não bastante Plasma Premium Fósforos."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "matchbox"
 	inhand_icon_state = "zippo"
@@ -106,7 +106,7 @@
 
 /obj/item/storage/box/lights
 	name = "box of replacement bulbs"
-	desc = "This box is shaped on the inside so that only light tubes and bulbs fit."
+	desc = "Esta caixa é moldada por dentro para que apenas tubos de luz e lâmpadas se encaixem."
 	inhand_icon_state = "syringe_kit"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
@@ -146,7 +146,7 @@
 
 /obj/item/storage/box/dishdrive
 	name = "DIY Dish Drive Kit"
-	desc = "Contains everything you need to build your own Dish Drive!"
+	desc = "Contém tudo que você precisa para construir seu próprio Dish Drive!"
 	custom_premium_price = PAYCHECK_CREW * 3
 
 /obj/item/storage/box/dishdrive/PopulateContents()
@@ -164,7 +164,7 @@
 
 /obj/item/storage/box/actionfigure
 	name = "box of action figures"
-	desc = "The latest set of collectable action figures."
+	desc = "O último conjunto de figuras de ação colecionáveis."
 	icon_state = "box"
 
 /obj/item/storage/box/actionfigure/PopulateContents()
@@ -174,7 +174,7 @@
 
 /obj/item/storage/box/tail_pin
 	name = "pin the tail on the corgi supplies"
-	desc = "For ages 10 and up. ...Why is this even on a space station? Aren't you a little old for babby games?" //Intentional typo.
+	desc = "Por 10 anos e para cima. Por que isso está em uma estação espacial? Você não é um pouco velho para jogos babby?" //Intentional typo.
 	custom_price = PAYCHECK_COMMAND * 1.25
 
 /obj/item/storage/box/tail_pin/PopulateContents()
@@ -184,7 +184,7 @@
 
 /obj/item/storage/box/party_poppers
 	name = "box of party poppers"
-	desc = "Turn any event into a celebration and ensure the janitor stays busy."
+	desc = "Transforme qualquer evento em uma celebração e garanta que o zelador fique ocupado."
 
 /obj/item/storage/box/party_poppers/PopulateContents()
 	for(var/i in 1 to 5)
@@ -192,7 +192,7 @@
 
 /obj/item/storage/box/balloons
 	name = "box of long balloons"
-	desc = "A completely randomized and wacky box of long balloons, harvested straight from balloon farms on the clown planet."
+	desc = "Uma caixa completamente aleatória e maluca de balões longos, colhida diretamente de fazendas de balões no planeta palhaço."
 	illustration = "balloon"
 	storage_type = /datum/storage/box/balloon
 
@@ -202,7 +202,7 @@
 
 /obj/item/storage/box/stickers
 	name = "sticker pack"
-	desc = "A pack of removable stickers. Removable? What a rip off!<br>On the back, <b>DO NOT GIVE TO THE CLOWN!</b> is printed in large lettering."
+	desc = "Um pacote de adesivos removíveis. Removível? Que roubo!<br>Lá atrás,<b>Não dê ao palhaço!</b>é impresso em letras grandes."
 	icon = 'icons/obj/toys/stickers.dmi'
 	icon_state = "stickerpack"
 	illustration = null
@@ -245,7 +245,7 @@
 
 /obj/item/storage/box/stickers/googly
 	name = "googly eye sticker pack"
-	desc = "Turn anything and everything into something vaguely alive!"
+	desc = "Transformar tudo em algo vago vivo!"
 	illustration = "googly-alt"
 
 /obj/item/storage/box/stickers/googly/PopulateContents()
@@ -255,7 +255,7 @@
 /// A box containing a skub, for easier carry because skub is a bulky item.
 /obj/item/storage/box/stickers/skub
 	name = "skub fan pack"
-	desc = "A vinyl pouch to store your skub and pro-skub shirt in. A label on the back reads: \"Skubtide, Stationwide\"."
+	desc = "Uma bolsa de vinil para guardar sua camisa de skub. Um rótulo no verso diz:\"Skubtide, Estação\"."
 	icon_state = "skubpack"
 	illustration = "label_skub"
 	w_class = WEIGHT_CLASS_SMALL
@@ -268,7 +268,7 @@
 
 /obj/item/storage/box/stickers/anti_skub
 	name = "anti-skub stickers pack"
-	desc = "The enemy may have been given a skub and a shirt, but I've got more stickers! Plus the pack can hold my anti-skub shirt."
+	desc = "O inimigo pode ter sido dado um pau e uma camisa, mas eu tenho mais adesivos! Além disso, o pacote pode segurar minha camisa anti-skub."
 	icon_state = "skubpack"
 	illustration = "label_anti_skub"
 	storage_type = /datum/storage/box/anti_skub
@@ -289,7 +289,7 @@
 
 /obj/item/storage/box/heretic_box
 	name = "box of pierced realities"
-	desc = "A box containing toys resembling pierced realities."
+	desc = "Uma caixa com brinquedos parecidos com realidades perfuradas."
 
 /obj/item/storage/box/heretic_box/PopulateContents()
 	for(var/i in 1 to rand(1,4))
@@ -298,7 +298,7 @@
 
 /obj/item/storage/box/purity_seal_box
 	name = "box of purity seals"
-	desc = "A box containing several blessed purity seals."
+	desc = "Uma caixa contendo vários selos de pureza abençoados."
 
 /obj/item/storage/box/purity_seal_box/PopulateContents()
 	for(var/i in 1 to 4)
@@ -307,7 +307,7 @@
 
 /obj/item/storage/box/stamps
 	name = "box of stamps"
-	desc = "Stamps for all kinds of documents."
+	desc = "Selos para todos os tipos de documentos."
 	illustration = "stamp"
 	custom_price = PAYCHECK_CREW
 

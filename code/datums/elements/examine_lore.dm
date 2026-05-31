@@ -11,7 +11,7 @@
 /datum/element/examine_lore/Attach(datum/target, lore_hint, lore)
 	. = ..()
 
-	src.lore_hint = lore_hint || span_notice("You can [EXAMINE_HINT("look closer")] to learn a little more about [target].")
+	src.lore_hint = lore_hint || span_notice("Você pode.[EXAMINE_HINT("look closer")]para aprender um pouco mais sobre[target].")
 	src.lore = lore
 
 	if(!lore)

@@ -160,7 +160,7 @@
 
 /obj/machinery/restaurant_portal
 	name = "restaurant portal"
-	desc = "A robot-only gate into the wonders of Space Station cuisine!"
+	desc = "Um portão só para robôs nas maravilhas da cozinha da Estação Espacial!"
 	icon = 'icons/obj/machines/restaurant_portal.dmi'
 	icon_state = "portal"
 	base_icon_state = "portal"
@@ -221,7 +221,7 @@
 		return ..()
 
 	if(!(linked_venue.req_access in used_id.GetAccess()))
-		to_chat(user, span_warning("This card lacks the access to change this venue's status."))
+		to_chat(user, span_warning("Este cartão não tem acesso para mudar o status deste local."))
 		return
 
 	linked_venue.toggle_open()
@@ -232,7 +232,7 @@
 		return NONE
 
 	if(!allowed(user))
-		balloon_alert(user, "acesso insuficiente!")
+		balloon_alert(user, "Acesso insuficiente!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/list/radial_items = list()
@@ -255,7 +255,7 @@
 
 	turned_on_portal = WEAKREF(user)
 
-	balloon_alert(user, "venue changed to [chosen_venue.name]")
+	balloon_alert(user, "local mudado para[chosen_venue.name]")
 
 	if(linked_venue && (src in linked_venue.restaurant_portals)) //We're already linked, unlink us.
 		linked_venue.restaurant_portals -= src
@@ -275,7 +275,7 @@
 
 /obj/machinery/restaurant_portal/wrench_act(mob/living/user, obj/item/tool)
 	if(!panel_open)
-		balloon_alert(user, "abra o painel primeiro!")
+		balloon_alert(user, "Abra o painel primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	if (default_unfasten_wrench(user, tool))
@@ -308,7 +308,7 @@
 	icon_state = "signmaker_service"
 	creation_time = 1 SECONDS
 	holosign_type = /obj/structure/holosign/robot_seat
-	desc = "Use this to place seats for your restaurant guests!"
+	desc = "Use isto para colocar assentos para seus hóspedes do restaurante!"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 /obj/item/holosign_creator/robot_seat/attack_self(mob/user)
@@ -316,7 +316,7 @@
 
 /obj/structure/holosign/robot_seat
 	density = FALSE
-	desc = "Used to indicate a place to sit for a robot tourist. I better be careful."
+	desc = "Costumava indicar um lugar para sentar para um turista robô. É melhor ter cuidado."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "eating_zone"
 	layer = BELOW_MOB_LAYER

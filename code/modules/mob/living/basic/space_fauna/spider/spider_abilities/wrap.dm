@@ -1,9 +1,6 @@
 /datum/action/cooldown/mob_cooldown/wrap
 	name = "Wrap"
-	desc = "Wrap something or someone in a cocoon. \
-		If it's a human or similar species, you'll also consume them. \
-		Consuming a wrapped victim can empower your egg-laying abilities. \
-		Activate this ability and then click on an adjacent target to begin wrapping them."
+	desc = "Embrulhe algo ou alguém em um casulo. Se for uma espécie humana ou similar, você também os consumirá. Consumir uma vítima embrulhada pode fortalecer suas habilidades de postura de ovos. Ative essa habilidade e clique em um alvo adjacente para começar a embrulhá-los."
 	background_icon_state = "bg_alien"
 	overlay_icon_state = "bg_alien_border"
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
@@ -30,7 +27,7 @@
 		return FALSE
 	if(DOING_INTERACTION(owner, DOAFTER_SOURCE_SPIDER))
 		if (feedback)
-			owner.balloon_alert(owner, "ocupado!")
+			owner.balloon_alert(owner, "Ocupado!")
 		return FALSE
 	return TRUE
 
@@ -39,7 +36,7 @@
 	if(!.)
 		return
 
-	on_who.balloon_alert(on_who, "prepared to wrap")
+	on_who.balloon_alert(on_who, "preparado para embrulhar")
 	button_icon_state = "wrap_1"
 	build_all_button_icons()
 
@@ -49,13 +46,13 @@
 		return
 
 	if (refund_cooldown)
-		on_who.balloon_alert(on_who, "wrap cancelled")
+		on_who.balloon_alert(on_who, "wrap cancelado")
 	button_icon_state = "wrap_0"
 	build_all_button_icons()
 
 /datum/action/cooldown/mob_cooldown/wrap/Activate(atom/to_wrap)
 	if(!owner.Adjacent(to_wrap))
-		owner.balloon_alert(owner, "precisa estar mais perto!")
+		owner.balloon_alert(owner, "Precisa estar mais perto!")
 		return FALSE
 
 	if(!ismovable(to_wrap) || to_wrap == owner)
@@ -63,13 +60,13 @@
 	if(isliving(to_wrap))
 		var/mob/living/living_target = to_wrap
 		if(living_target.mob_biotypes & MOB_SPECIAL)
-			owner.balloon_alert(owner, "can't wrap, too strong!")
+			owner.balloon_alert(owner, "Não pode embrulhar, muito forte!")
 			return FALSE
 		if(living_target.mob_biotypes & MOB_SPIRIT)
-			owner.balloon_alert(owner, "can't wrap ghosts!")
+			owner.balloon_alert(owner, "Não posso embrulhar fantasmas!")
 			return FALSE
 		if(isspider(living_target))
-			owner.balloon_alert(owner, "can't wrap spiders!")
+			owner.balloon_alert(owner, "Não posso embrulhar aranhas!")
 			return FALSE
 	var/atom/movable/target_movable = to_wrap
 	if(target_movable.anchored)
@@ -81,15 +78,15 @@
 
 /datum/action/cooldown/mob_cooldown/wrap/proc/cocoon(atom/movable/to_wrap)
 	if(isliving(to_wrap))
-		to_chat(to_wrap, span_userdanger("[owner] begins to secrete a sticky substance around you."))
+		to_chat(to_wrap, span_userdanger("[owner]Começa a segregar uma substância pegajosa ao seu redor."))
 	owner.visible_message(
-		span_notice("[owner] begins to secrete a sticky substance around [to_wrap]."),
-		span_notice("You begin wrapping [to_wrap] into a cocoon."),
+		span_notice("[owner]começa a secretar uma substância pegajosa ao redor[to_wrap]."),
+		span_notice("Você começa a embrulhar[to_wrap]Em um casulo."),
 	)
 	if(do_after(owner, wrap_time, target = to_wrap, interaction_key = DOAFTER_SOURCE_SPIDER))
 		wrap_target(to_wrap)
 	else
-		owner.balloon_alert(owner, "interrompido!")
+		owner.balloon_alert(owner, "Interrompido!")
 
 /datum/action/cooldown/mob_cooldown/wrap/proc/wrap_target(mob/living/to_wrap)
 	var/obj/structure/spider/cocoon/casing = new(to_wrap.loc)
@@ -103,15 +100,15 @@
 				egg_power.charges++
 				egg_power.build_all_button_icons()
 				owner.visible_message(
-					span_danger("[owner] sticks a proboscis into [living_wrapped] and sucks a viscous substance out."),
-					span_notice("You suck the nutriment out of [living_wrapped], feeding you enough to lay a cluster of enriched eggs."),
+					span_danger("[owner]Enfia um proboscis em[living_wrapped]e suga uma substância viscosa para fora."),
+					span_notice("Você suga o alimento de[living_wrapped], alimentando você o suficiente para colocar um grupo de ovos enriquecidos."),
 				)
 			ADD_TRAIT(living_wrapped, TRAIT_SPIDER_CONSUMED, TRAIT_GENERIC)
 			living_wrapped.investigate_log("has been killed by being wrapped in a cocoon.", INVESTIGATE_DEATHS)
 			living_wrapped.death() //you just ate them, they're dead.
 			log_combat(owner, living_wrapped, "spider cocooned")
 		else
-			to_chat(owner, span_warning("[living_wrapped] is not edible!"))
+			to_chat(owner, span_warning("[living_wrapped]Não é comestível!"))
 
 	to_wrap.forceMove(casing)
 	if(isliving(to_wrap)&& (to_wrap.mob_biotypes & MOB_HUMANOID))

@@ -1,7 +1,7 @@
 /mob/living/basic/construct/juggernaut
 	name = "Juggernaut"
 	real_name = "Juggernaut"
-	desc = "A massive, armored construct built to spearhead attacks and soak up enemy fire."
+	desc = "Uma construção maciça e blindada construída para atacar e absorver fogo inimigo."
 	icon_state = "juggernaut"
 	icon_living = "juggernaut"
 	maxHealth = 150
@@ -44,8 +44,8 @@
 
 	apply_damage(hitting_projectile.damage * 0.5, hitting_projectile.damage_type)
 	visible_message(
-		span_danger("\The [hitting_projectile] is reflected by [src]'s armored shell!"),
-		span_userdanger("\The [hitting_projectile] is reflected by your armored shell!"),
+		span_danger("\The [hitting_projectile]é refletido por[src]A concha blindada!"),
+		span_userdanger("\The [hitting_projectile]é refletido pela sua concha blindada!"),
 	)
 
 	hitting_projectile.reflect(src)

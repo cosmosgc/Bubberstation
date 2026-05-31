@@ -27,8 +27,8 @@ export const PaintingMachine = (props) => {
             <>
               <Button.Confirm
                 disabled={!hasPDA}
-                content="Paint PDA"
-                confirmContent="Confirm?"
+                content="Pinte PDA"
+                confirmContent="Confirmado?"
                 onClick={() =>
                   act('trim_pda', {
                     selection: selectedPDA,
@@ -38,7 +38,7 @@ export const PaintingMachine = (props) => {
               <Button.Confirm
                 disabled={!hasPDA}
                 content="Reset Imprint"
-                confirmContent="Confirm?"
+                confirmContent="Confirmado?"
                 onClick={() => {
                   act('reset_pda');
                 }}
@@ -59,19 +59,19 @@ export const PaintingMachine = (props) => {
           </Stack>
         </Section>
         <Section
-          title="ID Trim Imprinter"
+          title="ID Aparar Impressora"
           buttons={
             <>
               <Button.Confirm
                 disabled={!hasID}
-                content="Reset ID Account"
-                confirmContent="Confirm?"
+                content="Reiniciar conta de identificação"
+                confirmContent="Confirmado?"
                 onClick={() => act('reset_card')}
               />
               <Button.Confirm
                 disabled={!hasID}
-                content="Imprint ID Trim"
-                confirmContent="Confirm?"
+                content="Identifique-se."
+                confirmContent="Confirmado?"
                 onClick={(sel) =>
                   act('trim_card', {
                     selection: selectedTrim,
@@ -81,8 +81,8 @@ export const PaintingMachine = (props) => {
               <Button
                 icon="question-circle"
                 tooltip={
-                  'WARNING: This is destructive' +
-                  ' and will wipe ALL access on the card.'
+                  'Isso é destrutivo.' +
+                  'e limpará todos os acessos no cartão.'
                 }
                 tooltipPosition="left"
               />

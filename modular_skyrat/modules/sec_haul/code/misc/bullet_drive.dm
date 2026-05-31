@@ -1,6 +1,6 @@
 /obj/machinery/dish_drive/bullet
 	name = "bullet drive"
-	desc = "A modified verison of the dish drive, for security. Because they're lazy."
+	desc = "Uma versão modificada da unidade de prato, para segurança. Porque eles são preguiçosos."
 	icon = 'modular_skyrat/modules/sec_haul/icons/misc/bulletdrive.dmi'
 	icon_state = "synthesizer"
 	density = TRUE
@@ -23,12 +23,12 @@
 /obj/machinery/dish_drive/bullet/do_the_dishes(manual)
 	if(!LAZYLEN(dish_drive_contents))
 		if(manual)
-			visible_message(span_notice("[src] is empty!"))
+			visible_message(span_notice("[src]Está vazio!"))
 		return
 	var/obj/machinery/disposal/bin/bin = locate() in view(binrange, src) //SKYRAT EDIT CHANGE
 	if(!bin)
 		if(manual)
-			visible_message(span_warning("[src] buzzes. There are no disposal bins in range!"))
+			visible_message(span_warning("[src]Buzzes. Não há lixeiras ao alcance!"))
 			playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, TRUE)
 		return
 	var/disposed = 0
@@ -39,12 +39,12 @@
 			use_energy(active_power_usage)
 			disposed++
 	if(disposed)
-		visible_message(span_notice("[src] [pick("whooshes", "bwooms", "fwooms", "pshooms")] and demoleculizes [disposed] stored item\s into the nearby void."))
+		visible_message(span_notice("[src] [pick("whooshes", "bwooms", "fwooms", "pshooms")]e demoleculiza[disposed]Armazenados no vazio próximo."))
 		playsound(src, 'sound/items/pshoom/pshoom.ogg', 50, TRUE)
 		playsound(bin, 'sound/items/pshoom/pshoom.ogg', 50, TRUE)
 		flick("synthesizer_beam", src)
 	else
-		visible_message(span_notice("There are no disposable items in [src]!"))
+		visible_message(span_notice("Não há itens descartáveis em[src]!"))
 	time_since_dishes = world.time + 600
 
 /obj/machinery/dish_drive/bullet/process()
@@ -54,12 +54,12 @@
 		return
 	for(var/obj/item/I in view(2 + suck_distance, src))
 		if(istype(I, /obj/machinery/dish_drive/bullet))
-			visible_message(span_userdanger("[src] has detected another bullet drive nearby, and is sad!"))
+			visible_message(span_userdanger("[src]Detectou outra bala perto, e está triste!"))
 			break
 		if(is_type_in_list(I, collectable_items) && I.loc != src && (!I.reagents || !I.reagents.total_volume))
 			if(I.Adjacent(src))
 				LAZYADD(dish_drive_contents, I)
-				visible_message(span_notice("[src] beams up [I]!"))
+				visible_message(span_notice("[src]Vigas para cima[I]!"))
 				I.moveToNullspace()
 				playsound(src, 'sound/items/pshoom/pshoom.ogg', 50, TRUE)
 				flick("synthesizer_beam", src)

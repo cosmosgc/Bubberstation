@@ -3,7 +3,7 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher
 	name = "break-action grenade launcher"
-	desc = "A break-action grenade launcher. Archaic by modern standards, but it still works, so who can complain?"
+	desc = "Um lançador de granadas. Archaic pelos padrões modernos, mas ainda funciona, então quem pode reclamar?"
 	icon_state = "grenade_launcher"
 	inhand_icon_state = "grenade_launcher"
 	worn_icon_state = "shotgun"
@@ -49,7 +49,7 @@
 	pin = null
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/cyborg
-	desc = "A 6-shot grenade launcher."
+	desc = "Um lançador de granadas de seis tiros."
 	name = "multi grenade launcher"
 	icon = 'icons/obj/devices/mecha_equipment.dmi'
 	icon_state = "mecha_grenadelnchr"
@@ -61,7 +61,7 @@
 
 /obj/item/gun/ballistic/automatic/gyropistol
 	name = "gyrojet pistol"
-	desc = "A prototype pistol designed to fire self propelled rockets."
+	desc = "Uma pistola protótipo projetada para disparar foguetes autopropulsores."
 	icon_state = "gyropistol"
 	fire_sound = 'sound/items/weapons/gun/general/grenade_launch.ogg'
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m75
@@ -72,10 +72,7 @@
 
 /obj/item/gun/ballistic/rocketlauncher
 	name = "\improper Dardo-RE Rocket Launcher"
-	desc = "A reusable rocket propelled grenade launcher. An arrow pointing toward the front of the launcher \
-		alongside the words \"Front Toward Enemy\" are printed on the tube. Someone seems to have crossed out \
-		that last word and written \"NT\" over it at some point. A sticker near the back of the launcher warn \
-		to \"CHECK BACKBLAST CLEAR BEFORE FIRING\", whatever that means."
+	desc = "Um lança-granadas de foguetes reutilizáveis. Uma seta apontando para a frente do lançador ao lado das palavras\"Frente ao inimigo\"são impressos no tubo. Alguém parece ter riscado a última palavra e escrito\"NT\"em algum momento. Um adesivo perto da parte de trás do lançador avisa para\"Cheque o retrovisor antes de disparar.\"O que quer que isso signifique."
 	icon = 'icons/obj/weapons/guns/wide_guns.dmi'
 	icon_state = "rocketlauncher"
 	inhand_icon_state = "rocketlauncher"
@@ -106,16 +103,12 @@
 		AddElement(/datum/element/backblast)
 
 /obj/item/gun/ballistic/rocketlauncher/unrestricted
-	desc = "A reusable rocket propelled grenade launcher. An arrow pointing toward the front of the launcher \
-		alongside the words \"Front Toward Enemy\" are printed on the tube. \
-		A sticker near the back of the launcher warn to \"CHECK BACKBLAST CLEAR BEFORE FIRING\", whatever that means."
+	desc = "Um lança-granadas de foguetes reutilizáveis. Uma seta apontando para a frente do lançador ao lado das palavras\"Frente ao inimigo\"são impressos no tubo. Um adesivo perto da parte de trás do lançador avisa para\"Cheque o retrovisor antes de disparar.\"O que quer que isso signifique."
 	pin = /obj/item/firing_pin
 
 /obj/item/gun/ballistic/rocketlauncher/nobackblast
 	name = "\improper Dardo-REF Flameless Rocket Launcher"
-	desc = "A reusable rocket propelled grenade launcher. An arrow pointing toward the front of the launcher \
-		alongside the words \"Front Toward Enemy\" are printed on the tube. \
-		This one has been fitted with a special backblast diverter to prevent 'friendly' fire 'accidents' during use."
+	desc = "Um lança-granadas de foguetes reutilizáveis. Uma seta apontando para a frente do lançador ao lado das palavras\"Frente ao inimigo\"são impressos no tubo. Este foi equipado com um desvio especial para evitar acidentes durante o uso."
 	backblast = FALSE
 
 /obj/item/gun/ballistic/rocketlauncher/try_fire_gun(atom/target, mob/living/user, params)
@@ -133,8 +126,7 @@
 		. += "rocketlauncher_loaded"
 
 /obj/item/gun/ballistic/rocketlauncher/suicide_act(mob/living/user)
-	user.visible_message(span_warning("[user] aims [src] at the ground! It looks like [user.p_theyre()] performing a sick rocket jump!"), \
-		span_userdanger("You aim [src] at the ground to perform a bisnasty rocket jump..."))
+	user.visible_message(span_warning("[user]Objetivos[src]No chão! Parece que...[user.p_theyre()]Fazenda um salto de foguete doente!"), 		span_userdanger("Você aponta[src]no chão para executar um salto de foguete bisnasty..."))
 	if(can_shoot())
 		ADD_TRAIT(user, TRAIT_NO_TRANSFORM, REF(src))
 		playsound(src, 'sound/vehicles/rocketlaunch.ogg', 80, TRUE, 5)
@@ -151,12 +143,10 @@
 		sleep(0.5 SECONDS)
 		shoot_with_empty_chamber(user)
 		sleep(2 SECONDS)
-		user.visible_message(span_warning("[user] looks about the room realizing [user.p_theyre()] still there. [user.p_They()] proceed to shove [src] down their throat and choke [user.p_them()]self with it!"), \
-			span_userdanger("You look around after realizing you're still here, then proceed to choke yourself to death with [src]!"))
+		user.visible_message(span_warning("[user]Parece que a sala percebeu[user.p_theyre()]Ainda lá.[user.p_They()]Continue um empurrar.[src]Pela garganta e sufocar[user.p_them()]Me dê isso!"), 			span_userdanger("Você olha ao redor depois de perceber que ainda está aqui, então continue a sufocar-se até a morte com[src]!"))
 		sleep(2 SECONDS)
 		return OXYLOSS
 
 /obj/item/gun/ballistic/rocketlauncher/unrestricted/nanotrasen
-	desc = "A reusable rocket propelled grenade launcher. The words \"Syndicate this way\" and an arrow have been written near the barrel. \
-	A sticker near the cheek rest reads, \"ENSURE AREA BEHIND IS CLEAR BEFORE FIRING\""
+	desc = "Um lança-granadas de foguetes reutilizáveis. As palavras\"Assim.\"E uma flecha foi escrita perto do barril. Um adesivo perto do resto da bochecha diz,\"A área segura por trás é clara antes de disparar.\""
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/rocketlauncher/empty

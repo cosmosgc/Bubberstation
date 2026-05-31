@@ -134,7 +134,7 @@
 	if(ui_reagent_id)
 		var/datum/reagent/reagent = GLOB.chemical_reagents_list[ui_reagent_id]
 		if(!reagent)
-			to_chat(user, "Could not find reagent!")
+			to_chat(user, "Não achei o reagente!")
 			ui_reagent_id = null
 		else
 			data["reagent_mode_reagent"] = list("name" = reagent.name, "id" = reagent.type, "desc" = reagent.description, "reagentCol" = reagent.color, "pH" = reagent.ph, "pHCol" = convert_ph_to_readable_color(reagent.ph), "metaRate" = reagent.metabolization_rate, "OD" = reagent.overdose_threshold)
@@ -154,7 +154,7 @@
 	if (ui_reaction_id)
 		var/datum/chemical_reaction/reaction = GLOB.chemical_reactions_list[ui_reaction_id]
 		if(!reaction)
-			to_chat(user, "Could not find reaction!")
+			to_chat(user, "Não achei a reação!")
 			ui_reaction_id = null
 			return data
 		//Required holder
@@ -266,7 +266,7 @@
 		ui_reaction_index = index
 	var/list/sub_reactions = GLOB.chemical_reactions_list_product_index[path]
 	if(!length(sub_reactions))
-		to_chat(usr, "There is no recipe associated with this product.")
+		to_chat(usr, "Não há receita associada a este produto.")
 		return FALSE
 	if(ui_reaction_index > length(sub_reactions))
 		ui_reaction_index = 1
@@ -292,16 +292,16 @@
 			input_reagent = get_reagent_type_from_product_string(input_reagent) //from string to type
 			var/datum/reagent/reagent = GLOB.chemical_reagents_list[input_reagent]
 			if(!reagent)
-				to_chat(usr, "Could not find reagent!")
+				to_chat(usr, "Não achei o reagente!")
 				return FALSE
 			ui_reagent_id = reagent.type
 			return TRUE
 		if("search_recipe")
-			var/input_reagent = (input("Enter the name of product reagent", "Input") as text|null)
+			var/input_reagent = (input("Digite o nome do reagente do produto.", "Input") as text|null)
 			input_reagent = get_reagent_type_from_product_string(input_reagent) //from string to type
 			var/datum/reagent/reagent = GLOB.chemical_reagents_list[input_reagent]
 			if(!reagent)
-				to_chat(usr, "Could not find product reagent!")
+				to_chat(usr, "Não achei o reagente do produto!")
 				return
 			ui_reaction_id = get_reaction_from_indexed_possibilities(reagent.type)
 			return TRUE

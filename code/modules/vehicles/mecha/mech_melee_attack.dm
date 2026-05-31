@@ -26,7 +26,7 @@
 			playsound(src, mecha_attacker.burn_attack_sound, 50, TRUE)
 		else
 			return
-	mecha_attacker.visible_message(span_danger("[mecha_attacker] hits [src]!"), span_danger("You hit [src]!"), null, COMBAT_MESSAGE_RANGE)
+	mecha_attacker.visible_message(span_danger("[mecha_attacker]hits[src]!"), span_danger("Você bateu.[src]!"), null, COMBAT_MESSAGE_RANGE)
 	if(prob(hardness + mecha_attacker.force) && mecha_attacker.force > 20)
 		dismantle_wall(1)
 		playsound(src, mecha_attacker.destroy_wall_sound, 100, TRUE)
@@ -47,7 +47,7 @@
 			playsound(src, 'sound/items/tools/welder.ogg', 50, TRUE)
 		else
 			return
-	mecha_attacker.visible_message(span_danger("[mecha_attacker] hits [src]!"), span_danger("You hit [src]!"), null, COMBAT_MESSAGE_RANGE)
+	mecha_attacker.visible_message(span_danger("[mecha_attacker]hits[src]!"), span_danger("Você bateu.[src]!"), null, COMBAT_MESSAGE_RANGE)
 	..()
 	return take_damage(mecha_attacker.force * 3, mecha_attacker.damtype, "melee", FALSE, get_dir(src, mecha_attacker)) // multiplied by 3 so we can hit objs hard but not be overpowered against mobs.
 
@@ -63,7 +63,7 @@
 			playsound(src, mecha_attacker.burn_attack_sound, 50, TRUE)
 		else
 			return
-	mecha_attacker.visible_message(span_danger("[mecha_attacker] hits [src]!"), span_danger("You hit [src]!"), null, COMBAT_MESSAGE_RANGE)
+	mecha_attacker.visible_message(span_danger("[mecha_attacker]hits[src]!"), span_danger("Você bateu.[src]!"), null, COMBAT_MESSAGE_RANGE)
 	..()
 	return take_damage(mecha_attacker.force * 3, mecha_attacker.damtype, "melee", FALSE, get_dir(src, mecha_attacker)) // multiplied by 3 so we can hit objs hard but not be overpowered against mobs.
 
@@ -81,7 +81,7 @@
 			playsound(src, mecha_attacker.burn_attack_sound, 50, TRUE)
 		else
 			return
-	mecha_attacker.visible_message(span_danger("[mecha_attacker] smashes [src]!"), span_danger("You smash [src]!"), null, COMBAT_MESSAGE_RANGE)
+	mecha_attacker.visible_message(span_danger("[mecha_attacker]Esmaga.[src]!"), span_danger("Você quebra[src]!"), null, COMBAT_MESSAGE_RANGE)
 	// Additionally destroy any grilles
 	for(var/obj/structure/grille/grille in src.loc)
 		if(istype(grille))
@@ -101,7 +101,7 @@
 			playsound(src, 'sound/items/tools/welder.ogg', 50, TRUE)
 		else
 			return
-	mecha_attacker.visible_message(span_danger("[mecha_attacker] hits [src]!"), span_danger("You hit [src]!"), null, COMBAT_MESSAGE_RANGE)
+	mecha_attacker.visible_message(span_danger("[mecha_attacker]hits[src]!"), span_danger("Você bateu.[src]!"), null, COMBAT_MESSAGE_RANGE)
 	..()
 	return take_damage(mecha_attacker.force, mecha_attacker.damtype, "melee", FALSE, get_dir(src, mecha_attacker))
 
@@ -109,13 +109,12 @@
 	if(istype(user) && !user.combat_mode)
 		step_away(src, mecha_attacker)
 		log_combat(user, src, "pushed", mecha_attacker)
-		visible_message(span_warning("[mecha_attacker] pushes [src] out of the way."), \
-						span_warning("[mecha_attacker] pushes you out of the way."), span_hear("You hear aggressive shuffling!"), 5, list(mecha_attacker))
-		to_chat(mecha_attacker, span_danger("You push [src] out of the way."))
+		visible_message(span_warning("[mecha_attacker]Empurra[src]Sai do caminho."), 						span_warning("[mecha_attacker]Tira você do caminho."), span_hear("Você ouve baralhar agressivo!"), 5, list(mecha_attacker))
+		to_chat(mecha_attacker, span_danger("Você empurra.[src]Sai do caminho."))
 		return
 
 	if(!isnull(user) && HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("You don't want to harm other living beings!"))
+		to_chat(user, span_warning("Você não quer machucar outros seres vivos!"))
 		return
 
 	mecha_attacker.do_attack_animation(src)
@@ -155,8 +154,7 @@
 			soften_text = span_warning("Sua armadura amortizou um golpe no seu [zone_readable]!")
 		))
 
-	visible_message(span_danger("[mecha_attacker.name] [mecha_attacker.attack_verbs[1]] [src]!"), \
-		span_userdanger("[mecha_attacker.name] [mecha_attacker.attack_verbs[2]] you!"), span_hear("You hear a sickening sound of flesh [mecha_attacker.attack_verbs[3]] flesh!"), COMBAT_MESSAGE_RANGE, list(mecha_attacker))
-	to_chat(mecha_attacker, span_danger("You [mecha_attacker.attack_verbs[1]] [src]!"))
+	visible_message(span_danger("[mecha_attacker.name] [mecha_attacker.attack_verbs[1]] [src]!"), 		span_userdanger("[mecha_attacker.name] [mecha_attacker.attack_verbs[2]]Você!"), span_hear("Você ouve um som repugnante de carne[mecha_attacker.attack_verbs[3]]Carne!"), COMBAT_MESSAGE_RANGE, list(mecha_attacker))
+	to_chat(mecha_attacker, span_danger("Você.[mecha_attacker.attack_verbs[1]] [src]!"))
 	..()
 	return damage

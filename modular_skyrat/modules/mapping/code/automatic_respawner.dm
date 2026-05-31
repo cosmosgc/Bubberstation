@@ -1,6 +1,6 @@
 /obj/machinery/automatic_respawner
 	name = "Automatic Respawner"
-	desc = "Allows for lost souls to find a new body."
+	desc = "Permite que almas Perdidas encontrem um novo corpo."
 	icon = 'modular_skyrat/modules/mapping/icons/machinery/automatic_respawner.dmi'
 	icon_state = "respawner"
 	use_power = FALSE //It doesn't make sense for this to require power in most of the use cases.
@@ -28,18 +28,18 @@
 
 		var/datum/component/respawner/mind_component = user.mind.GetComponent(target_component)
 		if(!mind_component)
-			to_chat(user, span_warning("You are not able to use [src]!"))
+			to_chat(user, span_warning("Você não é capaz de usar[src]!"))
 			return FALSE
 
 		if(mind_component.time_before_respawn && !COOLDOWN_FINISHED(mind_component, respawn_timer))
-			to_chat(user, span_warning("You have [COOLDOWN_TIMELEFT(mind_component, respawn_timer) / 10] seconds left before you can use [src]."))
+			to_chat(user, span_warning("Você tem[COOLDOWN_TIMELEFT(mind_component, respawn_timer) / 10]segundos restantes antes de você pode usar[src]."))
 			return FALSE
 
 	if(!COOLDOWN_FINISHED(src, respawn_cooldown))
-		to_chat(user, span_warning("[src] has [COOLDOWN_TIMELEFT(src, respawn_cooldown) / 10] seconds left before it can be used again. Please try again later."))
+		to_chat(user, span_warning("[src]Tem.[COOLDOWN_TIMELEFT(src, respawn_cooldown) / 10]segundos para que possa ser usado novamente. Por favor, tente mais tarde."))
 		return FALSE
 
-	var/choice = tgui_alert(user, "Do you wish to use the respawner? If you have a body, you will not be able to return to it.", name, list("Yes", "No"))
+	var/choice = tgui_alert(user, "Você deseja usar o respawner? Se tiver um corpo, não poderá voltar para ele.", name, list("Yes", "No"))
 	if(choice != "Yes")
 		return FALSE
 
@@ -68,10 +68,10 @@
 	. = ..()
 	if(cooldown_time)
 		if(!COOLDOWN_FINISHED(src, respawn_cooldown))
-			. += span_warning("[src] has [COOLDOWN_TIMELEFT(src, respawn_cooldown) / 10] seconds left before it can be used again.")
+			. += span_warning("[src]Tem.[COOLDOWN_TIMELEFT(src, respawn_cooldown) / 10]segundos para que possa ser usado novamente.")
 
 		else
-			. += span_abductor("[src] has a cooldown of [cooldown_time / 10] seconds between uses.")
+			. += span_abductor("[src]Tem um resfriamento de[cooldown_time / 10]Segundos entre nós.")
 
 /obj/machinery/automatic_respawner/test
 	cooldown_time = 1.5 MINUTES
@@ -79,7 +79,7 @@
 
 /obj/item/respawn_implant //Not actually an implanter
 	name = "Respawn Implanter"
-	desc = "Life doesn't end after death."
+	desc = "A vida não acaba depois da morte."
 	icon = 'modular_skyrat/modules/aesthetics/implanter/implanter.dmi'
 	icon_state = "implanter0"
 	inhand_icon_state = "syringe_0"

@@ -9,7 +9,7 @@
 
 /datum/symptom/hallucigen
 	name = "Hallucigen"
-	desc = "The virus stimulates the brain, causing occasional hallucinations."
+	desc = "O vírus estimula o cérebro, causando alucinações ocasionais."
 	illness = "Paranoyance"
 	stealth = 1
 	resistance = -2
@@ -43,8 +43,7 @@
 	if(!.)
 		return
 	var/mob/living/carbon/M = A.affected_mob
-	var/list/healthy_messages = list("Your lungs feel great.", "You realize you haven't been breathing.", "You don't feel the need to breathe.",\
-					"Your eyes feel great.", "Your ears feel great.", "You don't feel the need to blink.")
+	var/list/healthy_messages = list("Your lungs feel great.", "You realize you haven't been breathing.", "You don't feel the need to breathe.",					"Your eyes feel great.", "Your ears feel great.", "You don't feel the need to blink.")
 	switch(A.stage)
 		if(1, 2)
 			if(prob(base_message_chance))

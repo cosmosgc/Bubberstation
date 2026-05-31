@@ -23,13 +23,9 @@
 	/// We will explode if we're not in here after a set time
 	var/list/limited_areas = list()
 
-	implant_info = "Forcibly inducts the host into televised bloodsport by threatening their life via electrically-detonated microexplosive. \
-		Detonates upon death, expiry of an internal timer, or attempted removal."
+	implant_info = "Forcibly inducts the host into televised bloodsport by threatening their life via electrically-detonated microexplosive. 		Detonates upon death, expiry of an internal timer, or attempted removal."
 
-	implant_lore = "The Donk Co. 'Rumble Royale' Contestant Motivation Implant is a licensed copy of the Robust Corp RX-78 Employee Management Implant, \
-		featuring the very same microbomb that has provided plausible deniability, evidence disposal, and equipment denial for numerous non-state actors. \
-		The Rumble Royale variant also features additional nervous system interception functionality, allowing for broadcasting the host's field of view \
-		to compatible entertainment monitors, and a GPS-compatible tracking beacon for the sake of allowing contestants to locate each other more easily."
+	implant_lore = "The Donk Co. 'Rumble Royale' Contestant Motivation Implant is a licensed copy of the Robust Corp RX-78 Employee Management Implant, 		featuring the very same microbomb that has provided plausible deniability, evidence disposal, and equipment denial for numerous non-state actors. 		The Rumble Royale variant also features additional nervous system interception functionality, allowing for broadcasting the host's field of view 		to compatible entertainment monitors, and a GPS-compatible tracking beacon for the sake of allowing contestants to locate each other more easily."
 
 /obj/item/implant/explosive/battle_royale/on_death(datum/source, gibbed)
 	if (!battle_started)
@@ -44,13 +40,7 @@
 	if (!battle_started)
 		return
 	name = "[name] - [imp_in.real_name]"
-	camera = target.AddComponent( \
-		/datum/component/simple_bodycam, \
-		camera_name = "rumble royale tracker", \
-		c_tag = "Competitor [target.real_name]", \
-		network = BATTLE_ROYALE_CAMERA_NET, \
-		emp_proof = TRUE, \
-	)
+	camera = target.AddComponent( 		/datum/component/simple_bodycam, 		camera_name = "rumble royale tracker", 		c_tag = "Competitor [target.real_name]", 		network = BATTLE_ROYALE_CAMERA_NET, 		emp_proof = TRUE, 	)
 	announce()
 	if (area_limited)
 		limit_areas()
@@ -62,7 +52,7 @@
 	if (has_exploded || QDELETED(src))
 		return
 	if (!special && prob(removed_explode_chance))
-		target.visible_message(span_boldwarning("[src] beeps ominously."))
+		target.visible_message(span_boldwarning("[src]Apita ameaçadoramente."))
 		playsound(loc, 'sound/items/timer.ogg', 50, vary = FALSE)
 		explode(target)
 	target?.mind?.remove_antag_datum(/datum/antagonist/survivalist/battle_royale)
@@ -82,7 +72,7 @@
 		return
 	if (!source.itch() || prob(80))
 		return
-	to_chat(source, span_boldwarning("You feel a lump which shouldn't be there."))
+	to_chat(source, span_boldwarning("Você sente um caroço que não deveria estar lá."))
 
 /// Start the battle royale
 /obj/item/implant/explosive/battle_royale/proc/start_battle(target_area_name, list/limited_areas)
@@ -93,13 +83,7 @@
 	src.limited_areas = limited_areas
 	battle_started = TRUE
 	name = "[name] - [imp_in.real_name]"
-	imp_in.AddComponent( \
-		/datum/component/simple_bodycam, \
-		camera_name = "rumble royale tracker", \
-		c_tag = "Competitor [imp_in.real_name]", \
-		network = BATTLE_ROYALE_CAMERA_NET, \
-		emp_proof = TRUE, \
-	)
+	imp_in.AddComponent( 		/datum/component/simple_bodycam, 		camera_name = "rumble royale tracker", 		c_tag = "Competitor [imp_in.real_name]", 		network = BATTLE_ROYALE_CAMERA_NET, 		emp_proof = TRUE, 	)
 	AddComponent(/datum/component/gps, "Rumble Royale - [imp_in.real_name]")
 	playsound(loc, 'sound/items/timer.ogg', 50, vary = FALSE)
 
@@ -120,7 +104,7 @@
 	if (is_type_in_list(get_area(source), limited_areas))
 		return
 	playsound(imp_in, 'sound/items/timer.ogg', 50, vary = FALSE)
-	to_chat(imp_in, span_boldwarning("You are out of bounds! Get to the [target_area_name] quickly!"))
+	to_chat(imp_in, span_boldwarning("Você está fora dos limites! Vá para o[target_area_name]Rápido!"))
 	addtimer(CALLBACK(src, PROC_REF(check_area_deadly)), 5 SECONDS, TIMER_DELETE_ME)
 
 /// After a grace period they're still out of bounds, killing time

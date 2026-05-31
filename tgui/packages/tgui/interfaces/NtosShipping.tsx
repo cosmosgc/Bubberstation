@@ -30,24 +30,24 @@ const ShippingHub = (props) => {
 
   return (
     <Section
-      title="NTOS Shipping Hub."
+      title="Centro de Transporte da NTOS."
       buttons={
         <Button
           icon="eject"
-          content="Eject Id"
+          content="Ejetar Id"
           onClick={() => act('ejectid')}
         />
       }
     >
       <LabeledList>
-        <LabeledList.Item label="Current User">
+        <LabeledList.Item label="Usuário atual">
           {current_user || 'N/A'}
         </LabeledList.Item>
-        <LabeledList.Item label="Inserted Card">
+        <LabeledList.Item label="Cartão Inserído">
           {card_owner || 'N/A'}
         </LabeledList.Item>
-        <LabeledList.Item label="Available Paper">{paperamt}</LabeledList.Item>
-        <LabeledList.Item label="Profit on Sale">
+        <LabeledList.Item label="Papel disponível">{paperamt}</LabeledList.Item>
+        <LabeledList.Item label="Lucro à venda">
           {barcode_split}%
         </LabeledList.Item>
       </LabeledList>
@@ -61,40 +61,40 @@ const ShippingOptions = (props) => {
   const { has_id_slot, current_user } = data;
 
   return (
-    <Section title="Shipping Options">
+    <Section title="Opções de envio">
       <Box>
         <Button
           icon="id-card"
-          tooltip="The currently ID card will become the current user."
+          tooltip="O cartão de identificação atual será o usuário atual."
           tooltipPosition="right"
           disabled={!has_id_slot}
           onClick={() => act('selectid')}
-          content="Set Current ID"
+          content="Definir ID atual"
         />
       </Box>
       <Box>
         <Button
           icon="print"
-          tooltip="Print a barcode to use on a wrapped package."
+          tooltip="Imprima um código de barras para usar em um pacote embrulhado."
           tooltipPosition="right"
           disabled={!current_user}
           onClick={() => act('print')}
-          content="Print Barcode"
+          content="Imprimir código de barras"
         />
       </Box>
       <Box>
         <Button
           icon="tags"
-          tooltip="Set how much profit you'd like on your package."
+          tooltip="Defina quanto lucro você gostaria em seu pacote."
           tooltipPosition="right"
           onClick={() => act('setsplit')}
-          content="Set Profit Margin"
+          content="Marcar Margem de Lucros"
         />
       </Box>
       <Box>
         <Button
           icon="sync-alt"
-          content="Reset ID"
+          content="Reiniciar ID"
           onClick={() => act('resetid')}
         />
       </Box>

@@ -64,7 +64,7 @@
 	user.changeNext_move(CLICK_CD_MELEE) // Ugh. Ideally we shouldn't be setting cooldowns outside of click code.
 	user.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
 	playsound(loc, 'sound/items/weapons/tap.ogg', 40, TRUE, -1)
-	user.visible_message(span_danger("[user] hits [src]. Nothing happens."), null, null, COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_danger("[user]hits[src]Nada acontece."), null, null, COMBAT_MESSAGE_RANGE)
 	log_message("Attack by hand/paw (no damage). Attacker - [user].", LOG_MECHA, color="red")
 
 /obj/vehicle/sealed/mecha/attack_paw(mob/user, list/modifiers)
@@ -198,7 +198,7 @@
 			qdel(tracker)
 
 	if(!equipment_disabled && LAZYLEN(occupants)) //prevent spamming this message with back-to-back EMPs
-		to_chat(occupants, span_warning("Error -- Connection to equipment control unit has been lost."))
+		to_chat(occupants, span_warning("Erro. A conexão com a unidade de controle de equipamentos foi perdida."))
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/vehicle/sealed/mecha, restore_equipment)), 3 SECONDS, TIMER_UNIQUE | TIMER_OVERRIDE)
 	equipment_disabled = TRUE
 	set_mouse_pointer()
@@ -230,19 +230,17 @@
 	//If our weapon that we are hitting the mech with has armour penetration, we could potentially get a hit in on the occupant
 	var/peeling_the_onion = clamp(weapon.armour_penetration - (get_armor_rating(MELEE)/2), 0, 100)
 
-	if(peeling_the_onion && prob(peeling_the_onion) && !(mecha_flags & CANNOT_OVERPENETRATE) \
-		&& LAZYLEN(occupants) \
-		&& !(mecha_flags & SILICON_PILOT))
+	if(peeling_the_onion && prob(peeling_the_onion) && !(mecha_flags & CANNOT_OVERPENETRATE) 		&& LAZYLEN(occupants) 		&& !(mecha_flags & SILICON_PILOT))
 		var/mob/living/hitmob = pick(occupants)
 		weapon.melee_attack_chain(user, hitmob, modifiers, list("[FORCE_MULTIPLIER]" = (peeling_the_onion/100), "[SILENCE_DEFAULT_MESSAGES]" = TRUE)) //Perform an extra attack on the occupant if all the above conditions pass
 
 /obj/vehicle/sealed/mecha/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/mmi))
 		if(!mmi_move_inside(tool,user))
-			balloon_alert(user, "initialization of MMI failed!")
+			balloon_alert(user, "A inicialização do MMI falhou!")
 			return ITEM_INTERACT_BLOCKING
 
-		balloon_alert(user, "initialized MMI")
+		balloon_alert(user, "MMI inicializado")
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/mecha_ammo))
@@ -257,10 +255,10 @@
 			if(mecha_flags & ID_LOCK_ON)
 				balloon_alert(user, "acesso negado!")
 			else
-				balloon_alert(user, "unable to set id lock!")
+				balloon_alert(user, "Incapaz de definir a trava de identificação!")
 			return ITEM_INTERACT_BLOCKING
 		mecha_flags ^= ID_LOCK_ON
-		balloon_alert(user, "[mecha_flags & ID_LOCK_ON ? "enabled" : "disabled"] id lock!")
+		balloon_alert(user, "[mecha_flags & ID_LOCK_ON ? "enabled" : "disabled"]Identifiquem-se!")
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/mecha_parts))
@@ -281,7 +279,7 @@
 /// Try to insert a stock part into the mech
 /obj/vehicle/sealed/mecha/proc/try_insert_part(obj/item/stock_parts/tool, mob/living/user)
 	if(!(mecha_flags & PANEL_OPEN))
-		balloon_alert(user, "abra o painel primeiro!")
+		balloon_alert(user, "Abra o painel primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(tool, /obj/item/stock_parts/power_store/cell))
@@ -293,7 +291,7 @@
 			return  ITEM_INTERACT_BLOCKING
 
 		cell = tool
-		balloon_alert(user, "installed power cell")
+		balloon_alert(user, "célula de energia instalada")
 		diag_hud_set_mechcell()
 		playsound(src, 'sound/items/tools/screwdriver2.ogg', 50, FALSE)
 		log_message("Power cell installed", LOG_MECHA)
@@ -308,7 +306,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 		scanmod = tool
-		balloon_alert(user, "installed scanning module")
+		balloon_alert(user, "módulo de digitalização instalado")
 		playsound(src, 'sound/items/tools/screwdriver2.ogg', 50, FALSE)
 		log_message("[tool] installed", LOG_MECHA)
 		update_part_values()
@@ -323,7 +321,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 		capacitor = tool
-		balloon_alert(user, "installed capacitor")
+		balloon_alert(user, "Condensador instalado")
 		playsound(src, 'sound/items/tools/screwdriver2.ogg', 50, FALSE)
 		log_message("[tool] installed", LOG_MECHA)
 		update_part_values()
@@ -338,7 +336,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 		servo = tool
-		balloon_alert(user, "installed servo")
+		balloon_alert(user, "servo instalado")
 		playsound(src, 'sound/items/tools/screwdriver2.ogg', 50, FALSE)
 		log_message("[tool] installed", LOG_MECHA)
 		update_part_values()
@@ -356,9 +354,9 @@
 
 	var/hit_verb = length(attacking_item.attack_verb_simple) ? "[pick(attacking_item.attack_verb_simple)]" : "hit"
 	user.visible_message(
-		span_danger("[user] [hit_verb][plural_s(hit_verb)] [src] with [attacking_item][damage_taken ? "." : ", without leaving a mark!"]"),
-		span_danger("You [hit_verb] [src] with [attacking_item][damage_taken ? "." : ", without leaving a mark!"]"),
-		span_hear("You hear a [hit_verb]."),
+		span_danger("[user] [hit_verb][plural_s(hit_verb)] [src]com[attacking_item][damage_taken ? "." : ", without leaving a mark!"]"),
+		span_danger("Você.[hit_verb] [src]com[attacking_item][damage_taken ? "." : ", without leaving a mark!"]"),
+		span_hear("Você ouve...[hit_verb]."),
 		COMBAT_MESSAGE_RANGE,
 	)
 
@@ -375,20 +373,20 @@
 /obj/vehicle/sealed/mecha/examine(mob/user)
 	. = ..()
 	if(mecha_flags & PANEL_OPEN)
-		. += span_notice("The panel is open. You could use a <b>crowbar</b> to eject parts or lock the panel back with a <b>screwdriver</b>.")
+		. += span_notice("O painel está aberto. Você poderia usar um<b>Pé de cabra.</b>para ejetar peças ou bloquear o painel de volta com um<b>Chave de fenda</b>.")
 	else
-		. += span_notice("You could unlock the maintenance cover with a <b>screwdriver</b>.")
+		. += span_notice("Você poderia desbloquear a cobertura de manutenção com um<b>Chave de fenda</b>.")
 
 /obj/vehicle/sealed/mecha/screwdriver_act(mob/living/user, obj/item/tool)
 	..()
 	. = TRUE
 
 	if(LAZYLEN(occupants))
-		balloon_alert(user, "panel blocked")
+		balloon_alert(user, "painel bloqueado")
 		return
 
 	mecha_flags ^= PANEL_OPEN
-	balloon_alert(user, (mecha_flags & PANEL_OPEN) ? "panel open" : "panel closed")
+	balloon_alert(user, (mecha_flags & PANEL_OPEN) ? "painel aberto" : "Painel fechado")
 	tool.play_tool_sound(src)
 
 /obj/vehicle/sealed/mecha/crowbar_act(mob/living/user, obj/item/tool)
@@ -399,12 +397,12 @@
 		remover.empty_mech(src, user)
 		return
 	if(!(mecha_flags & PANEL_OPEN))
-		balloon_alert(user, "abra o painel primeiro!")
+		balloon_alert(user, "Abra o painel primeiro!")
 		return
 	if(dna_lock && user.has_dna())
 		var/mob/living/carbon/user_carbon = user
 		if(user_carbon.dna.unique_enzymes != dna_lock)
-			balloon_alert(user, "access with this DNA denied!")
+			balloon_alert(user, "Acesso com este DNA negado!")
 			return
 	if((mecha_flags & ID_LOCK_ON) && !allowed(user))
 		balloon_alert(user, "acesso negado!")
@@ -429,14 +427,14 @@
 		diag_hud_set_mechcell()
 		tool.play_tool_sound(src)
 		return
-	balloon_alert(user, "no parts!")
+	balloon_alert(user, "Sem peças!")
 
 /obj/vehicle/sealed/mecha/welder_act(mob/living/user, obj/item/W)
 	if(user.combat_mode)
 		return
 	. = TRUE
 	if(DOING_INTERACTION(user, src))
-		balloon_alert(user, "you're already repairing this!")
+		balloon_alert(user, "Você já está consertando isso!")
 		return
 	if(atom_integrity >= max_integrity)
 		balloon_alert(user, "não está danificado!")
@@ -444,13 +442,13 @@
 	if(!W.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return
 	user.balloon_alert_to_viewers("started welding [src]", "started repairing [src]")
-	audible_message(span_hear("You hear welding."))
+	audible_message(span_hear("Você ouve solda."))
 	var/did_the_thing
 	while(atom_integrity < max_integrity)
 		if(W.use_tool(src, user, 2.5 SECONDS, volume=50))
 			did_the_thing = TRUE
 			repair_damage(10)
-			audible_message(span_hear("You hear welding."))
+			audible_message(span_hear("Você ouve solda."))
 		else
 			break
 	if(did_the_thing)
@@ -495,7 +493,7 @@
 /obj/vehicle/sealed/mecha/proc/ammo_resupply(obj/item/mecha_ammo/A, mob/user,fail_chat_override = FALSE)
 	if(!A.rounds)
 		if(!fail_chat_override)
-			balloon_alert(user, "the box is empty!")
+			balloon_alert(user, "A caixa está vazia!")
 		return FALSE
 	var/ammo_needed
 	var/found_gun
@@ -518,7 +516,7 @@
 			else
 				gun.projectiles_cache = gun.projectiles_cache + ammo_needed
 			playsound(get_turf(user),A.load_audio,50,TRUE)
-			to_chat(user, span_notice("You add [ammo_needed] [A.ammo_type][ammo_needed > 1?"s":""] to \the [gun]"))
+			to_chat(user, span_notice("Você acrescenta[ammo_needed] [A.ammo_type][ammo_needed > 1?"s":""]para\the [gun]"))
 			A.rounds = A.rounds - ammo_needed
 			if(A.custom_materials)	//Change material content of the ammo box according to the amount of ammo deposited into the weapon
 				/// list of materials contained in the ammo box after we put it through the equation so we can stick this list into set_custom_materials()
@@ -537,7 +535,7 @@
 		else
 			gun.projectiles_cache = gun.projectiles_cache + A.rounds
 		playsound(get_turf(user),A.load_audio,50,TRUE)
-		to_chat(user, span_notice("You add [A.rounds] [A.ammo_type][A.rounds > 1?"s":""] to \the [gun]"))
+		to_chat(user, span_notice("Você acrescenta[A.rounds] [A.ammo_type][A.rounds > 1?"s":""]para\the [gun]"))
 		if(A.qdel_on_empty)
 			qdel(A)
 			return TRUE
@@ -547,9 +545,9 @@
 		return TRUE
 	if(!fail_chat_override)
 		if(found_gun)
-			balloon_alert(user, "ammo storage is full!")
+			balloon_alert(user, "O depósito de munição está cheio!")
 		else
-			balloon_alert(user, "can't use this ammo!")
+			balloon_alert(user, "Não posso usar essa munição!")
 	return FALSE
 
 ///Upgrades any attached RCD equipment.

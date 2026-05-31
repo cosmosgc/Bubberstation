@@ -6,7 +6,7 @@
  */
 /datum/pet_command/idle
 	command_name = "Stay"
-	command_desc = "Command your pet to stay idle in this location."
+	command_desc = "Comande seu animal de estimação para ficar ocioso neste local."
 	radial_icon_state = "halt"
 	speech_commands = list("sit", "stay", "stop")
 	command_feedback = "sits"
@@ -23,7 +23,7 @@
  */
 /datum/pet_command/free
 	command_name = "Loose"
-	command_desc = "Allow your pet to resume its natural behaviours."
+	command_desc = "Permita que seu animal de estimação retome seus comportamentos naturais."
 	radial_icon_state = "free"
 	speech_commands = list("free", "loose")
 	command_feedback = "relaxes"
@@ -41,7 +41,7 @@
  */
 /datum/pet_command/follow
 	command_name = "Follow"
-	command_desc = "Command your pet to accompany you."
+	command_desc = "Ordene ao seu animal de estimação que o acompanhe."
 	radial_icon_state = "follow"
 	speech_commands = list("heel", "follow")
 	callout_type = /datum/callout_option/move
@@ -79,7 +79,7 @@
  */
 /datum/pet_command/play_dead
 	command_name = "Play Dead"
-	command_desc = "Play a macabre trick."
+	command_desc = "Faça um truque macabro."
 	radial_icon_state = "play_dead"
 	speech_commands = list("play dead") // Don't get too creative here, people talk about dying pretty often
 
@@ -96,7 +96,7 @@
  */
 /datum/pet_command/good_boy
 	command_name = "Good Boy"
-	command_desc = "Give your pet a compliment."
+	command_desc = "Dê um elogio ao seu animal de estimação."
 	hidden = TRUE
 
 /datum/pet_command/good_boy/New(mob/living/parent)
@@ -146,7 +146,7 @@
  */
 /datum/pet_command/attack
 	command_name = "Attack"
-	command_desc = "Command your pet to attack things that you point out to it."
+	command_desc = "Comande seu animal de estimação para atacar coisas que você aponta para ele."
 	radial_icon_state = "attack"
 	requires_pointing = TRUE
 	callout_type = /datum/callout_option/attack
@@ -180,7 +180,7 @@
 /datum/pet_command/attack/proc/refuse_target(mob/living/parent, atom/target)
 	var/mob/living/living_parent = parent
 	living_parent.balloon_alert_to_viewers("[refuse_reaction]")
-	living_parent.visible_message(span_notice("[living_parent] refuses to attack [target]."))
+	living_parent.visible_message(span_notice("[living_parent]Se recusa a atacar.[target]."))
 
 /datum/pet_command/attack/execute_action(datum/ai_controller/controller)
 	controller.queue_behavior(attack_behaviour, BB_CURRENT_PET_TARGET, targeting_strategy_key)
@@ -191,7 +191,7 @@
  */
 /datum/pet_command/breed
 	command_name = "Breed"
-	command_desc = "Command your pet to attempt to breed with a partner."
+	command_desc = "Comande seu animal de estimação para tentar procriar com um parceiro."
 	requires_pointing = TRUE
 	radial_icon_state = "breed"
 	speech_commands = list("breed", "consummate")
@@ -227,7 +227,7 @@
  */
 /datum/pet_command/use_ability
 	command_name = "Use ability"
-	command_desc = "Command your pet to use one of its special skills on something that you point out to it."
+	command_desc = "Ordene ao seu animal de estimação para usar uma de suas habilidades especiais em algo que você aponte para ele."
 	radial_icon = 'icons/mob/actions/actions_spells.dmi'
 	radial_icon_state = "projectile"
 	requires_pointing = TRUE
@@ -255,7 +255,7 @@
 
 /datum/pet_command/protect_owner
 	command_name = "Protect owner"
-	command_desc = "Your pet will run to your aid."
+	command_desc = "Seu animal de estimação irá ajudá-lo."
 	hidden = TRUE
 	callout_type = /datum/callout_option/guard
 	///the range our owner needs to be in for us to protect him
@@ -318,7 +318,7 @@
  */
 /datum/pet_command/fish
 	command_name = "Fish"
-	command_desc = "Command your pet to try fishing at a nearby fishing spot."
+	command_desc = "Comande seu animal de estimação para tentar pescar em um ponto de pesca próximo."
 	requires_pointing = TRUE
 	radial_icon_state = "fish"
 	speech_commands = list("fish")
@@ -333,7 +333,7 @@
 
 /datum/pet_command/move
 	command_name = "Move"
-	command_desc = "Command your pet to move to a location!"
+	command_desc = "Ordene ao seu animal de estimação que se mude para um local!"
 	requires_pointing = TRUE
 	radial_icon_state = "move"
 	speech_commands = list("move", "walk")

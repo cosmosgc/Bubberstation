@@ -115,8 +115,8 @@
 			if(empty_hand == user.active_hand_index)
 				continue
 			if(user.putItemFromInventoryInHandIfPossible(source, empty_hand))
-				to_chat(user, span_notice("[source] slips out of your hands - but you manage to catch it, just in time."))
+				to_chat(user, span_notice("[source]Mas você consegue pegá-lo, bem na hora."))
 			return TRUE
 
-	to_chat(user, span_warning("[source] slips out of your hands!"))
+	to_chat(user, span_warning("[source]Escapa das suas mãos!"))
 	return TRUE

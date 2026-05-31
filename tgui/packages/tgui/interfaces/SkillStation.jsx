@@ -37,7 +37,7 @@ export const InsertedSkillchip = (props) => {
 
   return (
     <Section
-      title="Inserted Skillchip"
+      title="Habilidade Inserida"
       buttons={
         <>
           <Button
@@ -72,7 +72,7 @@ export const InsertedSkillchip = (props) => {
             <LabeledList.Item label="Complexity">
               <Icon name="brain" width="15px" textAlign="center" /> {complexity}
             </LabeledList.Item>
-            <LabeledList.Item label="Slot Size">
+            <LabeledList.Item label="Tamanho da Fenda">
               <Box color={slots_used + slot_use > slots_max && 'red'}>
                 <Icon name="save" width="15px" textAlign="center" /> {slot_use}
               </Box>
@@ -101,8 +101,8 @@ export const ImplantedSkillchips = (props) => {
   const current = data.current || [];
 
   return (
-    <Section title="Implanted Skillchips">
-      {!current.length && 'No skillchips detected.'}
+    <Section title="Aperfeiçoamentos implantados">
+      {!current.length && 'Nenum chip de habilidade detectado.'}
       {!!current.length && (
         <Table>
           <Table.Row header>
@@ -120,7 +120,7 @@ export const ImplantedSkillchips = (props) => {
               <Button
                 color="transparent"
                 icon="save"
-                tooltip="Slot Size"
+                tooltip="Tamanho da Fenda"
                 tooltipPosition="top"
                 content={`${slots_used}/${slots_max}`}
               />
@@ -129,7 +129,7 @@ export const ImplantedSkillchips = (props) => {
               <Button
                 color="transparent"
                 icon="check"
-                tooltip="Is Active"
+                tooltip="Está ativo"
                 tooltipPosition="top"
               />
             </Table.Cell>
@@ -243,7 +243,7 @@ export const SkillStation = (props) => {
   const { data } = useBackend();
   const { working, timeleft, error } = data;
   return (
-    <Window title="Skillsoft Station" width={500} height={500}>
+    <Window title="Competências da Estação" width={500} height={500}>
       <Window.Content>
         {!!error && <NoticeBox>{error}</NoticeBox>}
         {!!working && (

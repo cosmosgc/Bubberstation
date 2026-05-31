@@ -5,10 +5,7 @@
 /datum/hallucination/telepathy/start()
 	var/datum/action/cooldown/spell/list_target/telepathy/mimiced_type = pick(typesof(/datum/action/cooldown/spell/list_target/telepathy))
 	hallucinator.balloon_alert(hallucinator, "você ouve uma voz")
-	to_chat(hallucinator, "\
-		<span class='[initial(mimiced_type.bold_telepathy_span)]'>You hear a voice in your head...</span>\
-		<span class='[initial(mimiced_type.telepathy_span)]'> [get_telepath_message()]</span>\
-	")
+	to_chat(hallucinator, "		<span class='[initial(mimiced_type.bold_telepathy_span)]'>Você ouve uma voz em sua cabeça...</span>		<span class='[initial(mimiced_type.telepathy_span)]'> [get_telepath_message()]</span>	")
 	return TRUE
 
 /datum/hallucination/telepathy/proc/get_telepath_message()

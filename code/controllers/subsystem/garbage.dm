@@ -232,7 +232,7 @@ SUBSYSTEM_DEF(garbage)
 					var/client/admin = c
 					if(!check_rights_for(admin, R_ADMIN))
 						continue
-					to_chat(admin, "## TESTING: GC: -- [ADMIN_VV(D)] | [type] was unable to be GC'd --")
+					to_chat(admin, "Teste: GC:[ADMIN_VV(D)] | [type]foi incapaz de ser GC'd -")
 				#endif
 				I.failures++
 
@@ -398,11 +398,7 @@ SUBSYSTEM_DEF(garbage)
 			// indicates the objects Destroy() does not respect force
 			#ifdef TESTING
 			if(!trash.no_respect_force)
-				testing("WARNING: [to_delete.type] has been force deleted, but is \
-					returning an immortal QDEL_HINT, indicating it does \
-					not respect the force flag for qdel(). It has been \
-					placed in the queue, further instances of this type \
-					will also be queued.")
+				testing("WARNING: [to_delete.type] has been force deleted, but is 					returning an immortal QDEL_HINT, indicating it does 					not respect the force flag for qdel(). It has been 					placed in the queue, further instances of this type 					will also be queued.")
 			#endif
 			trash.no_respect_force++
 

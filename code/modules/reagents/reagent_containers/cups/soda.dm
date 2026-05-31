@@ -42,12 +42,12 @@
 
 /obj/item/reagent_containers/cup/soda_cans/suicide_act(mob/living/carbon/human/H)
 	if(!reagents.total_volume)
-		H.visible_message(span_warning("[H] is trying to take a big sip from [src]... The can is empty!"))
+		H.visible_message(span_warning("[H]está tentando tomar um grande gole de[src]A lata está vazia!"))
 		return SHAME
 	if(!is_drainable())
 		open_soda(H)
 		sleep(1 SECONDS)
-	H.visible_message(span_suicide("[H] takes a big sip from [src]! It looks like [H.p_theyre()] trying to commit suicide!"))
+	H.visible_message(span_suicide("[H]Toma um grande gole de[src]! Parece que...[H.p_theyre()]Tentando cometer suicídio!"))
 	playsound(H,'sound/items/drink.ogg', 80, TRUE)
 	reagents.trans_to(H, src.reagents.total_volume, transferred_by = H) //a big sip
 	sleep(0.5 SECONDS)
@@ -78,13 +78,13 @@
 
 	if(target == user)
 		user.visible_message(
-			span_warning("[user] crushes the can of [src] on [user.p_their()] forehead!"),
-			span_notice("You crush the can of [src] on your forehead."),
+			span_warning("[user]Esmaga a lata de[src]Vamos.[user.p_their()]testa!"),
+			span_notice("Você esmaga a lata de[src]Na sua testa."),
 		)
 	else
 		user.visible_message(
-			span_warning("[user] crushes the can of [src] on [target]'s forehead!"),
-			span_notice("You crush the can of [src] on [target]'s forehead."),
+			span_warning("[user]Esmaga a lata de[src]Vamos.[target]A testa!"),
+			span_notice("Você esmaga a lata de[src]Vamos.[target]Na testa."),
 		)
 	playsound(src, 'sound/items/weapons/pierce.ogg', rand(10, 50), TRUE)
 	var/obj/item/trash/can/crushed_can = new /obj/item/trash/can(target.drop_location())
@@ -106,7 +106,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/proc/open_soda(mob/user)
 	if(tape_color)
-		to_chat(user, "You rip off the tape covering [src]'s hole.")
+		to_chat(user, "Você arranca a cobertura da fita[src]O buraco.")
 		playsound(user, 'sound/items/duct_tape/duct_tape_rip.ogg', 50, TRUE)
 		tape_color = null
 		add_container_flags(OPENCONTAINER)
@@ -114,11 +114,11 @@
 		return
 
 	if(prob(fizziness))
-		user.visible_message(span_danger("[user] opens [src], and is suddenly sprayed by the fizzing contents!"), span_danger("You pull back the tab of [src], and are suddenly sprayed with a torrent of liquid! Ahhh!!"))
+		user.visible_message(span_danger("[user]Abre.[src], e de repente é pulverizado pelo conteúdo da bomba!"), span_danger("Você puxa para trás a aba de[src], e de repente são pulverizados com uma torrente de líquido! Ahhh!"))
 		burst_soda(user)
 		return
 
-	to_chat(user, "You pull back the tab of [src] with a satisfying pop.") //Ahhhhhhhh
+	to_chat(user, "Você puxa para trás a aba de[src]com um pop satisfatório.") //Ahhhhhhhh
 	add_container_flags(OPENCONTAINER)
 	playsound(src, SFX_CAN_OPEN, 50, TRUE)
 	throwforce = 0
@@ -143,7 +143,7 @@
 
 	playsound(src, 'sound/items/can/can_pop.ogg', 80, TRUE)
 	if(!hide_message)
-		visible_message(span_danger("[src] spills over, fizzing its contents all over [target]!"))
+		visible_message(span_danger("[src]Derrama, espalhando seu conteúdo por todo lado.[target]!"))
 	add_container_flags(OPENCONTAINER)
 	reagents.expose(target, TOUCH)
 	reagents.clear_reagents()
@@ -152,7 +152,7 @@
 /obj/item/reagent_containers/cup/soda_cans/wirecutter_act(mob/living/user, obj/item/tool)
 	if (!fuse_color)
 		return NONE
-	to_chat(user, span_notice("You snip [src]'s fuse off."))
+	to_chat(user, span_notice("Você corta[src]Está se fundindo."))
 	tool.play_tool_sound(src, 50)
 	add_fingerprint(user)
 	fuse_color = null
@@ -167,15 +167,15 @@
 /obj/item/reagent_containers/cup/soda_cans/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if (istype(tool, /obj/item/stack/cable_coil))
 		if (fuse_color)
-			to_chat(user, span_warning("[src] already has a fuse attached to it!"))
+			to_chat(user, span_warning("[src]Já tem um fusível ligado a ele!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if (tape_color)
-			to_chat(user, span_warning("[src]'s hole is covered up with tape!"))
+			to_chat(user, span_warning("[src]O buraco está coberto de fita!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if (!is_drainable())
-			to_chat(user, span_warning("[src] hasn't been opened yet!"))
+			to_chat(user, span_warning("[src]Ainda não foi aberto!"))
 			return ITEM_INTERACT_BLOCKING
 
 		var/obj/item/stack/cable_coil/coil = tool
@@ -187,18 +187,18 @@
 		fuse_color = coil_color
 		// Heating replaced with lighting the fuse
 		RemoveElement(/datum/element/reagents_item_heatable)
-		to_chat(user, span_notice("You attach a fuse to [src]."))
+		to_chat(user, span_notice("Você liga um fusível a[src]."))
 		log_bomber(user, "attached a fuse to", src)
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
 	if (istype(tool, /obj/item/stack/medical/wrap/sticky_tape))
 		if (tape_color)
-			to_chat(user, span_warning("[src]'s hole is already covered up with tape!"))
+			to_chat(user, span_warning("[src]O buraco já está coberto de fita!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if (!is_drainable())
-			to_chat(user, span_warning("[src] hasn't been opened yet!"))
+			to_chat(user, span_warning("[src]Ainda não foi aberto!"))
 			return ITEM_INTERACT_BLOCKING
 
 		var/obj/item/stack/medical/wrap/sticky_tape/tape = tool
@@ -208,7 +208,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 		tape_color = tape_colors[1]
-		to_chat(user, span_notice("You wrap [src] up in [tape]."))
+		to_chat(user, span_notice("Você embrulha[src]Em cima[tape]."))
 		reset_container_flags()
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
@@ -217,12 +217,12 @@
 		return ..()
 
 	if (fuse_timer)
-		to_chat(user, span_warning("[src] is already lit!"))
+		to_chat(user, span_warning("[src]Já está acesa!"))
 		return ITEM_INTERACT_BLOCKING
 
 	add_fingerprint(user)
 	log_bomber(user, "has primed a rigged", src)
-	to_chat(user, span_warning("You light [src]'s fuse!"))
+	to_chat(user, span_warning("Você acende.[src]O fusível!"))
 	fuse_timer = addtimer(CALLBACK(src, PROC_REF(try_detonate)), rand(2 SECONDS, 4 SECONDS))
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -270,7 +270,7 @@
 		return
 
 	burst_soda(hit_atom, hide_message = TRUE)
-	visible_message(span_danger("[src]'s impact with [hit_atom] causes it to rupture, spilling everywhere!"))
+	visible_message(span_danger("[src]O impacto com[hit_atom]causa a ruptura, derramando em todo lugar!"))
 	var/obj/item/trash/can/crushed_can = new /obj/item/trash/can(loc)
 	crushed_can.icon_state = icon_state
 	moveToNullspace()
@@ -278,7 +278,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/attack_self(mob/user)
 	if(fuse_timer)
-		balloon_alert(user, "the fuse is on fire!")
+		balloon_alert(user, "O fusível está pegando fogo!")
 		return
 
 	if(!is_drainable())
@@ -290,7 +290,7 @@
 /obj/item/reagent_containers/cup/soda_cans/attack_self_secondary(mob/user)
 	if(!is_drainable())
 		playsound(src, 'sound/items/can/can_shake.ogg', 50, TRUE)
-		user.visible_message(span_danger("[user] shakes [src]!"), span_danger("You shake up [src]!"), vision_distance=2)
+		user.visible_message(span_danger("[user]Shakes.[src]!"), span_danger("Você treme.[src]!"), vision_distance=2)
 		fizziness += SODA_FIZZINESS_SHAKE
 		return
 	return ..()
@@ -300,7 +300,7 @@
 	if(!in_range(user, src))
 		return
 	if(fizziness > 30 && prob(fizziness * 2))
-		. += span_notice("<i>You examine [src] closer, and note the following...</i>")
+		. += span_notice("<i>Você examina.[src]Mais perto, e note o seguinte...</i>")
 		. += "\t[span_warning("You get a menacing aura of fizziness from it...")]"
 
 /obj/item/reagent_containers/cup/soda_cans/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
@@ -316,14 +316,14 @@
 
 /obj/item/reagent_containers/cup/soda_cans/cola
 	name = "Space Cola"
-	desc = "Cola. in space."
+	desc = "Cola. No espaço."
 	icon_state = "cola"
 	list_reagents = list(/datum/reagent/consumable/space_cola = 30)
 	drink_type = SUGAR
 
 /obj/item/reagent_containers/cup/soda_cans/tonic
 	name = "T-Borg's tonic water"
-	desc = "Quinine tastes funny, but at least it'll keep that Space Malaria away."
+	desc = "Quinine tem gosto engraçado, mas pelo menos manterá a Malária Espacial longe."
 	icon_state = "tonic"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/tonic = 50)
@@ -331,14 +331,14 @@
 
 /obj/item/reagent_containers/cup/soda_cans/sodawater
 	name = "soda water"
-	desc = "A can of soda water. Why not make a scotch and soda?"
+	desc = "Uma lata de água com gás. Por que não fazer um uísque com soda?"
 	icon_state = "sodawater"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/sodawater = 50)
 
 /obj/item/reagent_containers/cup/soda_cans/lemon_lime
 	name = "orange soda"
-	desc = "You wanted ORANGE. It gave you Lemon Lime."
+	desc = "Você queria laranja. Te deu limão."
 	icon_state = "lemon-lime"
 	list_reagents = list(/datum/reagent/consumable/lemon_lime = 30)
 	drink_type = FRUIT
@@ -349,62 +349,62 @@
 
 /obj/item/reagent_containers/cup/soda_cans/sol_dry
 	name = "Sol Dry"
-	desc = "Maybe this will help your tummy feel better. Maybe not."
+	desc = "Talvez isso ajude sua barriga a se sentir melhor. Talvez não."
 	icon_state = "sol_dry"
 	list_reagents = list(/datum/reagent/consumable/sol_dry = 30)
 	drink_type = SUGAR
 
 /obj/item/reagent_containers/cup/soda_cans/space_up
 	name = "Space-Up!"
-	desc = "Tastes like a hull breach in your mouth."
+	desc = "Tem gosto de quebra de casco na boca."
 	icon_state = "space-up"
 	list_reagents = list(/datum/reagent/consumable/space_up = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/starkist
 	name = "Star-kist"
-	desc = "The taste of a star in liquid form. And, a bit of tuna...?"
+	desc = "O sabor de uma estrela em forma líquida. E um pouco de atum...?"
 	icon_state = "starkist"
 	list_reagents = list(/datum/reagent/consumable/space_cola = 15, /datum/reagent/consumable/orangejuice = 15)
 	drink_type = SUGAR | FRUIT | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/space_mountain_wind
 	name = "Space Mountain Wind"
-	desc = "Blows right through you like a space wind."
+	desc = "Sopra através de você como um vento espacial."
 	icon_state = "space_mountain_wind"
 	list_reagents = list(/datum/reagent/consumable/spacemountainwind = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/thirteenloko
 	name = "Thirteen Loko"
-	desc = "The CMO has advised crew members that consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
+	desc = "A CMO avisou os tripulantes que o consumo de Treze Loko pode resultar em convulsões, cegueira, embriaguez ou até morte. Por favor, beba responsavelmente."
 	icon_state = "thirteen_loko"
 	list_reagents = list(/datum/reagent/consumable/ethanol/thirteenloko = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/dr_gibb
 	name = "Dr. Gibb"
-	desc = "A delicious mixture of 42 different flavors."
+	desc = "Uma deliciosa mistura de 42 sabores diferentes."
 	icon_state = "dr_gibb"
 	list_reagents = list(/datum/reagent/consumable/dr_gibb = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/pwr_game
 	name = "Pwr Game"
-	desc = "The only drink with the PWR that true gamers crave. When a gamer talks about gamerfuel, this is what they're literally referring to."
+	desc = "A única bebida que os verdadeiros jogadores desejam. Quando um jogador fala sobre gamerfuel, isso é o que eles estão literalmente se referindo."
 	icon_state = "purple_can"
 	list_reagents = list(/datum/reagent/consumable/pwr_game = 30)
 
 /obj/item/reagent_containers/cup/soda_cans/shamblers
 	name = "Shambler's juice"
-	desc = "~Shake me up some of that Shambler's Juice!~"
+	desc = "Agite-me um pouco daquele suco de Shambler!"
 	icon_state = "shamblers"
 	list_reagents = list(/datum/reagent/consumable/shamblers = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/shamblers/eldritch
 	name = "Shambler's juice Eldritch Energy!"
-	desc = "~J'I'CE!~"
+	desc = "~ J'I'CE!"
 	icon_state = "shamblerseldritch"
 	volume = 40
 	list_reagents = list(/datum/reagent/consumable/shamblers = 30, /datum/reagent/eldritch = 5)
@@ -412,21 +412,21 @@
 
 /obj/item/reagent_containers/cup/soda_cans/wellcheers
 	name = "Wellcheers Juice"
-	desc = "A strange purple drink, smelling of saltwater. Somewhere in the distance, you hear seagulls."
+	desc = "Uma bebida roxa estranha, cheirando a água salgada. Em algum lugar distante, você ouve gaivotas."
 	icon_state = "wellcheers"
 	list_reagents = list(/datum/reagent/consumable/wellcheers = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/grey_bull
 	name = "Grey Bull"
-	desc = "Grey Bull, it gives you gloves!"
+	desc = "Grey Bull, te dá luvas!"
 	icon_state = "energy_drink"
 	list_reagents = list(/datum/reagent/consumable/grey_bull = 20)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/monkey_energy
 	name = "Monkey Energy"
-	desc = "Unleash the ape!"
+	desc = "Soltem o macaco!"
 	icon_state = "monkey_energy"
 	inhand_icon_state = "monkey_energy"
 	volume = 50
@@ -435,27 +435,27 @@
 
 /obj/item/reagent_containers/cup/soda_cans/volt_energy
 	name = "24-Volt Energy"
-	desc = "Recharge, with 24-Volt Energy!"
+	desc = "Recarregar, com 24 volts de energia!"
 	icon_state = "volt_energy"
 	list_reagents = list(/datum/reagent/consumable/volt_energy = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/melon_soda
 	name = "Kansumi Melon Soda"
-	desc = "Japan's favourite melon soda, now available in can form!"
+	desc = "O refrigerante de melão favorito do Japão, agora disponível em forma de lata!"
 	icon_state = "melon_soda"
 	list_reagents = list(/datum/reagent/consumable/melon_soda = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/air
 	name = "canned air"
-	desc = "There is no air shortage. Do not drink."
+	desc = "Não há falta de ar. Não beba."
 	icon_state = "air"
 	list_reagents = list(/datum/reagent/nitrogen = 24, /datum/reagent/oxygen = 6)
 
 /obj/item/reagent_containers/cup/soda_cans/beer
 	name = "space beer"
-	desc = "Canned beer. In space."
+	desc = "Cerveja enlatada. No espaço."
 	icon_state = "space_beer"
 	volume = 40
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer = 40)
@@ -463,7 +463,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/beer/rice
 	name = "rice beer"
-	desc = "A light, rice-based lagered beer popular on Mars. Considered a hate crime against Bavarians under the Reinheitsgebot Act of 1516."
+	desc = "Uma cerveja leve à base de arroz popular em Marte. Considerado um crime de ódio contra bávaros sob a Lei Reinheitsgebot de 1516."
 	icon_state = "ebisu"
 	list_reagents = list(/datum/reagent/consumable/ethanol/rice_beer = 40)
 
@@ -474,10 +474,10 @@
 	switch(brand)
 		if("Ebisu Super Dry")
 			icon_state = "ebisu"
-			desc = "Mars' favourite rice beer brand, 200 years running."
+			desc = "A marca favorita de cerveja de arroz de Marte, 200 anos seguidos."
 		if("Shimauma Ichiban")
 			icon_state = "shimauma"
-			desc = "Mars' most middling rice beer brand. Not as popular as Ebisu, but it's comfortable in second place."
+			desc = "A marca de cerveja de arroz mais medíocre de Marte. Não tão popular quanto Ebisu, mas é confortável em segundo lugar."
 		if("Moonlabor Malt's")
 			icon_state = "moonlabor"
-			desc = "Mars' underdog rice beer brand. Popular amongst the Yakuza, for reasons unknown."
+			desc = "A marca de cerveja de arroz da Mars. Popular entre os Yakuza, por razões desconhecidas."

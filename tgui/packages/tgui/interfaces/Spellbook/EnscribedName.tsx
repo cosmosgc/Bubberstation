@@ -14,7 +14,7 @@ export function EnscribedName(props) {
         fontSize="50px"
         color="bad"
         textAlign="center"
-        fontFamily="Ink Free"
+        fontFamily="Tinta Livre"
       >
         {owner}
       </Box>

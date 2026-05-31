@@ -1,7 +1,7 @@
 /obj/item/stack/medical/wrap/sticky_tape
 	name = "sticky tape"
-	singular_name = "sticky tape"
-	desc = "Used for sticking to things for sticking said things to people."
+	singular_name = "Fita adesiva."
+	desc = "Usado para se apegar às coisas por se prender às pessoas."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/stack/medical/wrap/sticky_tape"
 	post_init_icon_state = "tape"
@@ -45,7 +45,7 @@
 		var/new_tape_gag = new tape_gag(src)
 		user.put_in_hands(new_tape_gag)
 		use(1)
-		to_chat(user, span_notice("You rip off a piece of tape."))
+		to_chat(user, span_notice("Você arranca um pedaço de fita."))
 		playsound(user, 'sound/items/duct_tape/duct_tape_snap.ogg', 50, TRUE)
 		return TRUE
 	return ..()
@@ -59,10 +59,10 @@
 		return NONE
 
 	if(target.get_embed()?.type == conferred_embed)
-		to_chat(user, span_warning("[target] is already coated in [src]!"))
+		to_chat(user, span_warning("[target]já está revestido em[src]!"))
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user] begins wrapping [target] with [src]."), span_notice("You begin wrapping [target] with [src]."))
+	user.visible_message(span_notice("[user]Começa a embrulhar[target]Com[src]."), span_notice("Você começa a embrulhar[target]Com[src]."))
 	playsound(user, 'sound/items/duct_tape/duct_tape_rip.ogg', 50, TRUE)
 
 	if(!do_after(user, 3 SECONDS, target=target))
@@ -72,17 +72,17 @@
 	use(1)
 	if(istype(target, /obj/item/clothing/gloves/fingerless))
 		var/obj/item/clothing/gloves/tackler/offbrand/O = new /obj/item/clothing/gloves/tackler/offbrand
-		to_chat(user, span_notice("You turn [target] into [O] with [src]."))
+		to_chat(user, span_notice("Você vira.[target]Em[O]Com[src]."))
 		QDEL_NULL(target)
 		user.put_in_hands(O)
 		return ITEM_INTERACT_SUCCESS
 
 	if(target.get_embed()?.type == conferred_embed)
-		to_chat(user, span_warning("[target] is already coated in [src]!"))
+		to_chat(user, span_warning("[target]já está revestido em[src]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	target.set_embed(conferred_embed)
-	to_chat(user, span_notice("You finish wrapping [target] with [src]."))
+	to_chat(user, span_notice("Termine de Embrulhar.[target]Com[src]."))
 	target.name = "[prefix] [target.name]"
 
 	if(isgrenade(target))
@@ -93,8 +93,8 @@
 
 /obj/item/stack/medical/wrap/sticky_tape/super
 	name = "super sticky tape"
-	singular_name = "super sticky tape"
-	desc = "Quite possibly the most mischievous substance in the galaxy. Use with extreme lack of caution."
+	singular_name = "Super fita adesiva"
+	desc = "Possivelmente a substância mais travessa da galáxia. Use com extrema falta de cuidado."
 	prefix = "super sticky"
 	conferred_embed = /datum/embedding/sticky_tape/super
 	splint_factor = 0.4
@@ -111,8 +111,8 @@
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/stack/medical/wrap/sticky_tape/pointy"
 	post_init_icon_state = "tape_spikes"
-	singular_name = "pointy tape"
-	desc = "Used for sticking to things for sticking said things inside people."
+	singular_name = "Fita pontuda."
+	desc = "Usado para se apegar às coisas por enfiar coisas ditas dentro das pessoas."
 	prefix = "pointy"
 	conferred_embed = /datum/embedding/pointy_tape
 	merge_type = /obj/item/stack/medical/wrap/sticky_tape/pointy
@@ -125,8 +125,8 @@
 
 /obj/item/stack/medical/wrap/sticky_tape/pointy/super
 	name = "super pointy tape"
-	singular_name = "super pointy tape"
-	desc = "You didn't know tape could look so sinister. Welcome to Space Station 13."
+	singular_name = "Fita super pontuda"
+	desc = "Você não sabia que fita podia parecer tão sinistro. Bem-vindo à Estação Espacial 13."
 	prefix = "super pointy"
 	conferred_embed = /datum/embedding/pointy_tape/super
 	merge_type = /obj/item/stack/medical/wrap/sticky_tape/pointy/super
@@ -138,8 +138,8 @@
 
 /obj/item/stack/medical/wrap/sticky_tape/surgical
 	name = "surgical tape"
-	singular_name = "surgical tape"
-	desc = "Made for patching broken bones back together alongside bone gel, not for playing pranks."
+	singular_name = "Fita cirúrgica."
+	desc = "Feito para remendar ossos quebrados juntos ao lado de gel de osso, não para brincadeiras."
 	prefix = "surgical"
 	conferred_embed = /datum/embedding/sticky_tape/surgical
 	splint_factor = 0.5
@@ -156,8 +156,8 @@
 
 /obj/item/stack/medical/wrap/sticky_tape/duct
 	name = "duct tape"
-	singular_name = "duct tape"
-	desc = "Tape designed for sealing punctures, holes and breakages in objects. Engineers swear by this stuff for practically all kinds of repairs. Maybe a little TOO much..."
+	singular_name = "Fita adesiva."
+	desc = "Fita projetada para selar perfurações, furos e quebras em objetos. Engenheiros juram por isso para praticamente todos os tipos de reparos. Talvez um pouco demais..."
 	prefix = "duct taped"
 	conferred_embed = /datum/embedding/sticky_tape/duct
 	merge_type = /obj/item/stack/medical/wrap/sticky_tape/duct
@@ -177,10 +177,10 @@
 		var/robot_is_damaged = robotic_pal.get_brute_loss()
 
 		if(!robot_is_damaged)
-			user.balloon_alert(user, "[robotic_pal] is not damaged!")
+			user.balloon_alert(user, "[robotic_pal]Não está danificado!")
 			return ITEM_INTERACT_BLOCKING
 
-		user.visible_message(span_notice("[user] begins repairing [robotic_pal] with [src]."), span_notice("You begin repairing [robotic_pal] with [src]."))
+		user.visible_message(span_notice("[user]Começa a reparar.[robotic_pal]Com[src]."), span_notice("Você começa a reparar[robotic_pal]Com[src]."))
 		playsound(user, 'sound/items/duct_tape/duct_tape_rip.ogg', 50, TRUE)
 
 		if(!do_after(user, 3 SECONDS, target = robotic_pal))
@@ -188,24 +188,24 @@
 
 		robotic_pal.adjust_brute_loss(-object_repair_value)
 		use(1)
-		to_chat(user, span_notice("You finish repairing [interacting_with] with [src]."))
+		to_chat(user, span_notice("Você termina de consertar.[interacting_with]Com[src]."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!isobj(interacting_with) || iseffect(interacting_with))
 		return NONE
 
 	if(HAS_TRAIT(interacting_with, TRAIT_DUCT_TAPE_UNREPAIRABLE))
-		user.balloon_alert(user, "cannot be repaired with duct tape!")
+		user.balloon_alert(user, "Não pode ser reparado com fita adesiva!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/object_to_repair = interacting_with
 	var/object_is_damaged = object_to_repair.get_integrity() < object_to_repair.max_integrity
 
 	if(!object_is_damaged)
-		user.balloon_alert(user, "[object_to_repair] is not damaged!")
+		user.balloon_alert(user, "[object_to_repair]Não está danificado!")
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user] begins repairing [object_to_repair] with [src]."), span_notice("You begin repairing [object_to_repair] with [src]."))
+	user.visible_message(span_notice("[user]Começa a reparar.[object_to_repair]Com[src]."), span_notice("Você começa a reparar[object_to_repair]Com[src]."))
 	playsound(user, 'sound/items/duct_tape/duct_tape_rip.ogg', 50, TRUE)
 
 	if(!do_after(user, 3 SECONDS, target = object_to_repair))
@@ -218,5 +218,5 @@
 		object_to_repair.repair_damage(object_repair_value)
 
 	use(1)
-	to_chat(user, span_notice("You finish repairing [interacting_with] with [src]."))
+	to_chat(user, span_notice("Você termina de consertar.[interacting_with]Com[src]."))
 	return ITEM_INTERACT_SUCCESS

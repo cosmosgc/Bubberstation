@@ -17,8 +17,8 @@
 
 /datum/storage/bag/trash/remove_single(mob/removing, obj/item/thing, atom/remove_to_loc, silent)
 	real_location.visible_message(
-		span_notice("[removing] starts fishing around inside [parent]."),
-		span_notice("You start digging around in [parent] to try and pull something out."),
+		span_notice("[removing]Começa a pescar por dentro.[parent]."),
+		span_notice("Você começa a cavar em torno[parent]Para tentar tirar algo mais."),
 	)
 	if(!do_after(removing, 1.5 SECONDS, parent))
 		return FALSE
@@ -289,7 +289,7 @@
 
 	if(istype(to_insert, /obj/item/storage/backpack) && length(to_insert.contents))
 		if(messages && user)
-			parent.balloon_alert(user, "can't store filled backpacks!")
+			parent.balloon_alert(user, "Não posso guardar mochilas cheias!")
 		return FALSE
 
 	return TRUE
@@ -314,7 +314,7 @@
 	SIGNAL_HANDLER
 
 	if(user && messages)
-		parent.balloon_alert(user, "garment bag is in the way!")
+		parent.balloon_alert(user, "A bolsa está no caminho!")
 	return BLOCK_STORAGE_INSERT
 
 ///Quiver bag

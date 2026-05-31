@@ -1,5 +1,5 @@
 /obj/structure/closet/crate/bin
-	desc = "A trash bin, place your trash here for the janitor to collect."
+	desc = "Uma lixeira, coloque seu lixo aqui para o zelador recolher."
 	name = "trash bin"
 	icon_state = "trashbin"
 	base_icon_state = "trashbin"
@@ -36,7 +36,7 @@
 /obj/structure/closet/crate/bin/attackby(obj/item/W, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(W, /obj/item/storage/bag/trash) && !opened)
 		var/obj/item/storage/bag/trash/T = W
-		to_chat(user, span_notice("You fill the bag."))
+		to_chat(user, span_notice("Você enche o saco."))
 		for(var/obj/item/O in src)
 			T.atom_storage?.attempt_insert(O, user, TRUE)
 		T.update_appearance()
@@ -66,5 +66,5 @@
 
 	items_to_sweep.Cut()
 
-	to_chat(user, span_notice("You sweep the pile of garbage into [src]."))
+	to_chat(user, span_notice("Você varre o monte de lixo em[src]."))
 	playsound(broom.loc, 'sound/items/weapons/thudswoosh.ogg', 30, TRUE, -1)

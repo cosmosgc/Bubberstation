@@ -1,8 +1,8 @@
 /datum/surgery_operation/basic/dissection
 	name = "experimental dissection"
 	rnd_name = "Experimental Androtomy (Experimental Dissection and Autopsy)"
-	desc = "Perform an experimental dissection on a patient to obtain research points."
-	rnd_desc = "An experimental surgical procedure that dissects bodies in exchange for research points at ancient R&D consoles."
+	desc = "Faça uma dissecção experimental em um paciente para obter pontos de pesquisa."
+	rnd_desc = "Um procedimento cirúrgico experimental que disseca corpos em troca de pontos de pesquisa em antigos consoles de P&D."
 	implements = list(
 		/obj/item/autopsy_scanner = 1,
 		TOOL_SCALPEL = 1.66,
@@ -29,9 +29,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You begin to dissect [patient]..."),
-		span_notice("[surgeon] begins to dissect [patient]."),
-		span_notice("[surgeon] begins to dissect [patient]."),
+		span_notice("Você começa a dissecar[patient]..."),
+		span_notice("[surgeon]Começa a dissecar[patient]."),
+		span_notice("[surgeon]Começa a dissecar[patient]."),
 	)
 
 /datum/surgery_operation/basic/dissection/on_failure(mob/living/patient, mob/living/surgeon, tool, list/operation_args)
@@ -39,9 +39,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_warning("You dissect [patient], but don't find anything particularly interesting."),
-		span_warning("[surgeon] dissects [patient]."),
-		span_warning("[surgeon] dissects [patient]."),
+		span_warning("Você disseca.[patient]Mas não ache nada particularmente interessante."),
+		span_warning("[surgeon]Disseca[patient]."),
+		span_warning("[surgeon]Disseca[patient]."),
 	)
 	give_paper(surgeon, points_earned)
 	patient.apply_damage(80, BRUTE, BODY_ZONE_CHEST)
@@ -52,9 +52,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_warning("You dissect [patient], discovering [points_earned] point\s of data!"),
-		span_warning("[surgeon] dissects [patient]."),
-		span_warning("[surgeon] dissects [patient]."),
+		span_warning("Você disseca.[patient], Descobrindo[points_earned]Ponto de dados!"),
+		span_warning("[surgeon]Disseca[patient]."),
+		span_warning("[surgeon]Disseca[patient]."),
 	)
 	give_paper(surgeon, points_earned)
 	patient.apply_damage(80, BRUTE, BODY_ZONE_CHEST)
@@ -92,7 +92,7 @@
 
 /obj/item/research_notes
 	name = "research notes"
-	desc = "Valuable scientific data. Use it in an ancient research server to turn it in."
+	desc = "Dados científicos valiosos. Use em um antigo servidor de pesquisa para entregá-lo."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "paper"
 	w_class = WEIGHT_CLASS_SMALL
@@ -113,7 +113,7 @@
 
 /obj/item/research_notes/examine(mob/user)
 	. = ..()
-	. += span_notice("It is worth [value] research points.")
+	. += span_notice("Vale a pena.[value]Pontos de pesquisa.")
 
 /obj/item/research_notes/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/research_notes))

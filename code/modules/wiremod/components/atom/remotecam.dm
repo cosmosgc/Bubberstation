@@ -10,8 +10,8 @@
  * Attaches a camera for surveillance-on-the-go.
  */
 /obj/item/circuit_component/remotecam
-	display_name = "Camera Abstract Type"
-	desc = "This is the abstract parent type - do not use this directly!"
+	display_name = "Tipo Abstrato da Câmera"
+	desc = "Este é o tipo de pai abstrato - não use isso diretamente!"
 	category = "Entity"
 	circuit_flags = CIRCUIT_NO_DUPLICATES
 
@@ -228,7 +228,7 @@
 	for(var/mob/M as anything in GLOB.player_list)
 		if (M.client?.eye == shell_camera)
 			M.reset_perspective(null)
-			to_chat(M, span_warning("The screen bursts into static!"))
+			to_chat(M, span_warning("A tela explode em estática!"))
 
 /**
  * Restore emp'd camera
@@ -279,8 +279,8 @@
 		shell_camera.toggle_cam(null, 0)
 
 /obj/item/circuit_component/remotecam/bci
-	display_name = "BCI Camera"
-	desc = "Digitizes user's sight for surveillance-on-the-go. User must have fully functional eyes for digitizer to work. Camera range input is either 0 (near) or 1 (far). Network field is used for camera network."
+	display_name = "Câmera BCI"
+	desc = "Digitaliza a visão do usuário para vigilância em andamento. O usuário deve ter olhos funcionais para o digitalizador funcionar. A entrada do alcance da câmera é 0 ou 1 (a distância). Campo de rede é usado para a rede de câmeras."
 	category = "BCI"
 	camera_prefix = "BCI"
 	required_shells = list(/obj/item/organ/cyberimp/bci)
@@ -292,13 +292,13 @@
 	var/mob/living/carbon/bciuser = null
 
 /obj/item/circuit_component/remotecam/drone
-	display_name = "Remote Camera"
-	desc = "Capture the surrounding environment for surveillance-on-the-go. Camera range input is either 0 (near) or 1 (far). Network field is used for camera network."
+	display_name = "Câmera remota"
+	desc = "Capture o ambiente ao redor para vigilância. A entrada do alcance da câmera é 0 ou 1 (a distância). Campo de rede é usado para a rede de câmeras."
 	camera_prefix = "Drone"
 
 /obj/item/circuit_component/remotecam/airlock
-	display_name = "Peephole Camera"
-	desc = "A peephole camera that captures both sides of the airlock. Network field is used for camera network."
+	display_name = "Câmera Peephole"
+	desc = "Uma câmera que captura os dois lados da câmara. Campo de rede é usado para a rede de câmeras."
 	camera_prefix = "Airlock"
 
 	/// Hardcode camera to near range
@@ -307,7 +307,7 @@
 
 /obj/item/circuit_component/remotecam/polaroid
 	display_name = "Camera Stream Add-On"
-	desc = "Relays a polaroid camera's feed as a digital stream for surveillance-on-the-go. The camera stream will not work if stored inside of a container like a backpack/box. Network field is used for camera network."
+	desc = "Retransmite a transmissão de uma câmera polaróide como um fluxo digital para vigilância. O fluxo da câmera não funcionará se armazenado dentro de um recipiente como uma mochila/caixa. Campo de rede é usado para a rede de câmeras."
 	camera_prefix = "Polaroid"
 
 	/// Hardcode camera to near range

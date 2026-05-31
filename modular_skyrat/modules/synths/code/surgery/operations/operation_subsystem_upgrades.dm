@@ -45,16 +45,16 @@
 /datum/surgery_operation/limb/subsystem_upgrade/muscled_veins
 	name = "muscled veins"
 	rnd_name = "Hydraulics Redundancy Subroutine (Muscled Veins)"
-	desc = "Add redundancies to a robotic patient's hydraulic system, allowing it to pump fluids without an engine or pump."
+	desc = "Adicione redundâncias ao sistema hidráulico de um paciente robótico, permitindo bombear fluidos sem motor ou bomba."
 	status_effect_gained = /datum/status_effect/subsystem_upgrade/heart/muscled_veins
 
 /datum/surgery_operation/limb/subsystem_upgrade/muscled_veins/on_preop(obj/item/bodypart/limb, mob/living/surgeon, tool)
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You start wrapping muscles around [limb.owner]'s blood vessels."),
-		span_notice("[surgeon] starts wrapping muscles around [limb.owner]'s blood vessels."),
-		span_notice("[surgeon] starts manipulating [limb.owner]'s blood vessels."),
+		span_notice("Você começa a enrolar os músculos[limb.owner]Os vasos sanguíneos."),
+		span_notice("[surgeon]Começa a envolver os músculos.[limb.owner]Os vasos sanguíneos."),
+		span_notice("[surgeon]Começa a manipular[limb.owner]Os vasos sanguíneos."),
 	)
 	display_pain(limb.owner, "Your entire body burns in agony!")
 
@@ -63,16 +63,16 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You reshape [limb.owner]'s blood vessels, adding a muscled membrane!"),
-		span_notice("[surgeon] reshapes [limb.owner]'s blood vessels, adding a muscled membrane!"),
-		span_notice("[surgeon] finishes manipulating [limb.owner]'s blood vessels."),
+		span_notice("Você reformula[limb.owner]Os vasos sanguíneos, adicionando uma membrana muscular!"),
+		span_notice("[surgeon]Refazer[limb.owner]Os vasos sanguíneos, adicionando uma membrana muscular!"),
+		span_notice("[surgeon]termina de manipular[limb.owner]Os vasos sanguíneos."),
 	)
 	display_pain(limb.owner, "You can feel your heartbeat's powerful pulses ripple through your body!")
 
 /datum/surgery_operation/limb/subsystem_upgrade/nerve_splicing
 	name = "splice nerves"
 	rnd_name = "Reinforced Servos (Spliced Nerves)"
-	desc = "Upgrade a synthetic patient's movement servos, allowing it to better resist stuns."
+	desc = "Atualize os servos de movimento de um paciente sintético, permitindo que ele resista melhor aos choques."
 	time = 15.5 SECONDS
 	status_effect_gained = /datum/status_effect/subsystem_upgrade/nerves/spliced
 
@@ -80,9 +80,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You start splicing together [limb.owner]'s nerves."),
-		span_notice("[surgeon] starts splicing together [limb.owner]'s nerves."),
-		span_notice("[surgeon] starts manipulating [limb.owner]'s nervous system."),
+		span_notice("Vocês começam a se juntar[limb.owner]Os nervos."),
+		span_notice("[surgeon]Começa a se juntar[limb.owner]Os nervos."),
+		span_notice("[surgeon]Começa a manipular[limb.owner]É o sistema nervoso."),
 	)
 	display_pain(limb.owner, "Your entire body goes numb!")
 
@@ -91,16 +91,16 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You successfully splice [limb.owner]'s nervous system!"),
-		span_notice("[surgeon] successfully splices [limb.owner]'s nervous system!"),
-		span_notice("[surgeon] finishes manipulating [limb.owner]'s nervous system."),
+		span_notice("Você se uniu com sucesso.[limb.owner]É o sistema nervoso!"),
+		span_notice("[surgeon]Com sucesso se encaixa.[limb.owner]É o sistema nervoso!"),
+		span_notice("[surgeon]termina de manipular[limb.owner]É o sistema nervoso."),
 	)
 	display_pain(limb.owner, "You regain feeling in your body; It feels like everything's happening around you in slow motion!")
 
 /datum/surgery_operation/limb/subsystem_upgrade/nerve_grounding
 	name = "ground nerves"
 	rnd_name = "Reinforced Capacitors (Grounded Nerves)"
-	desc = "Install an additional capacitor bank designed to abdorb electrical shocks."
+	desc = "Instale um banco de capacitores adicional projetado para absorver choques elétricos."
 	time = 15.5 SECONDS
 	status_effect_gained = /datum/status_effect/subsystem_upgrade/nerves/grounded
 
@@ -108,9 +108,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You start rerouting [limb.owner]'s nerves."),
-		span_notice("[surgeon] starts rerouting [limb.owner]'s nerves."),
-		span_notice("[surgeon] starts manipulating [limb.owner]'s nervous system."),
+		span_notice("Você começa a reencaminhar[limb.owner]Os nervos."),
+		span_notice("[surgeon]Começa a reencaminhar.[limb.owner]Os nervos."),
+		span_notice("[surgeon]Começa a manipular[limb.owner]É o sistema nervoso."),
 	)
 	display_pain(limb.owner, "Your entire body goes numb!")
 
@@ -119,25 +119,25 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You successfully reroute [limb.owner]'s nervous system!"),
-		span_notice("[surgeon] successfully reroutes [limb.owner]'s nervous system!"),
-		span_notice("[surgeon] finishes manipulating [limb.owner]'s nervous system."),
+		span_notice("Você reencaminha com sucesso.[limb.owner]É o sistema nervoso!"),
+		span_notice("[surgeon]com sucesso redireciona[limb.owner]É o sistema nervoso!"),
+		span_notice("[surgeon]termina de manipular[limb.owner]É o sistema nervoso."),
 	)
 	display_pain(limb.owner, "You regain feeling in your body! You feel energized!")
 
 /datum/surgery_operation/limb/subsystem_upgrade/ligament_reinforcement
 	name = "strengthen ligaments"
 	rnd_name = "Anchor Point Reinforcement (Ligament Reinforcement)"
-	desc = "Reinforce a robotic patient's limb joints to prevent dismemberment, at the cost of making nerve connections easier to interrupt."
+	desc = "Reforce as articulações dos membros de um paciente robótico para evitar o desmembramento, ao custo de facilitar as conexões nervosas."
 	status_effect_gained = /datum/status_effect/subsystem_upgrade/ligaments/reinforced
 
 /datum/surgery_operation/limb/subsystem_upgrade/ligament_reinforcement/on_preop(obj/item/bodypart/limb, mob/living/surgeon, tool)
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You start reinforcing [limb.owner]'s ligaments."),
-		span_notice("[surgeon] starts reinforcing [limb.owner]'s ligaments."),
-		span_notice("[surgeon] starts manipulating [limb.owner]'s ligaments."),
+		span_notice("Você começa a reforçar[limb.owner]Os ligamentos."),
+		span_notice("[surgeon]Começa a reforçar.[limb.owner]Os ligamentos."),
+		span_notice("[surgeon]Começa a manipular[limb.owner]Os ligamentos."),
 	)
 	display_pain(limb.owner, "Your limbs burn with severe pain!")
 
@@ -146,16 +146,16 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You reinforce [limb.owner]'s ligaments!"),
-		span_notice("[surgeon] reinforces [limb.owner]'s ligaments!"),
-		span_notice("[surgeon] finishes manipulating [limb.owner]'s ligaments."),
+		span_notice("Você reforça[limb.owner]Os ligamentos!"),
+		span_notice("[surgeon]Reforça[limb.owner]Os ligamentos!"),
+		span_notice("[surgeon]termina de manipular[limb.owner]Os ligamentos."),
 	)
 	display_pain(limb.owner, "Your limbs feel more secure, but also more frail.")
 
 /datum/surgery_operation/limb/subsystem_upgrade/cortex_folding
 	name = "cortex folding"
 	rnd_name = "Neuropathing Reinforcement (Cortex Folding)"
-	desc = "Reprogram a robotic patient's neural network in a downright eldritch programming language, giving space to non-standard neural patterns."
+	desc = "Reprogramar a rede neural de um paciente robótico em uma linguagem de programação de eldritch, dando espaço para padrões neurais não padrão."
 	operation_flags = OPERATION_AFFECTS_MOOD | OPERATION_NOTABLE | OPERATION_MORBID | OPERATION_LOCKED | OPERATION_NO_PATIENT_REQUIRED
 	status_effect_gained = /datum/status_effect/subsystem_upgrade/cortex // Not actually applied, simply for compatibility checks
 	required_zone = BODY_ZONE_CHEST
@@ -179,9 +179,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You start folding [limb.owner]'s cerebral cortex."),
-		span_notice("[surgeon] starts folding [limb.owner]'s cerebral cortex."),
-		span_notice("[surgeon] starts performing surgery on [limb.owner]'s brain."),
+		span_notice("Você começa a dobrar[limb.owner]É o córtex cerebral."),
+		span_notice("[surgeon]Começa a dobrar[limb.owner]É o córtex cerebral."),
+		span_notice("[surgeon]Começa a cirurgia em[limb.owner]É o cérebro."),
 	)
 	display_pain(limb.owner, "Your head throbs with gruesome pain, it's nearly too much to handle!")
 
@@ -190,9 +190,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You fold [limb.owner]'s cerebral cortex into a fractal pattern!"),
-		span_notice("[surgeon] folds [limb.owner]'s cerebral cortex into a fractal pattern!"),
-		span_notice("[surgeon] completes the surgery on [limb.owner]'s brain."),
+		span_notice("Você dobra[limb.owner]O córtex cerebral está em um padrão fractal!"),
+		span_notice("[surgeon]dobras[limb.owner]O córtex cerebral está em um padrão fractal!"),
+		span_notice("[surgeon]completa a cirurgia em[limb.owner]É o cérebro."),
 	)
 	display_pain(limb.owner, "Your brain feels stronger... and more flexible!")
 
@@ -203,9 +203,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_warning("You screw up, damaging the brain!"),
-		span_warning("[surgeon] screws up, damaging the brain!"),
-		span_notice("[surgeon] completes the surgery on [limb.owner]'s brain."),
+		span_warning("Você estraga tudo, prejudica o cérebro!"),
+		span_warning("[surgeon]Estraga tudo, prejudica o cérebro!"),
+		span_notice("[surgeon]completa a cirurgia em[limb.owner]É o cérebro."),
 	)
 	display_pain(limb.owner, "Your head throbs with excruciating pain!")
 	brain.apply_organ_damage(60)
@@ -214,8 +214,7 @@
 /datum/surgery_operation/limb/subsystem_upgrade/cortex_imprint
 	name = "cortex imprinting"
 	rnd_name = "Anti-Cascade 2.0 (Cortex Imprinting)"
-	desc = "Update a robotic patient's underlying operating system to a \"newer version\", improving overall performance and resilience. \
-		Shame about all the adware."
+	desc = "Atualize o sistema operacional de um paciente robótico para\"Versão mais recente\", melhorando o desempenho geral e resiliência. Vergonha por todo o adware."
 	status_effect_gained = /datum/status_effect/subsystem_upgrade/cortex/imprinted
 	required_zone = BODY_ZONE_CHEST
 
@@ -223,9 +222,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You start carving [limb.owner]'s outer cerebral cortex into a self-imprinting pattern."),
-		span_notice("[surgeon] starts carving [limb.owner]'s outer cerebral cortex into a self-imprinting pattern."),
-		span_notice("[surgeon] starts performing surgery on [limb.owner]'s brain."),
+		span_notice("Você começa a esculpir[limb.owner]O córtex cerebral externo em um padrão de autoimpressão."),
+		span_notice("[surgeon]Começa a esculpir[limb.owner]O córtex cerebral externo em um padrão de autoimpressão."),
+		span_notice("[surgeon]Começa a cirurgia em[limb.owner]É o cérebro."),
 	)
 	display_pain(limb.owner, "Your head throbs with gruesome pain, it's nearly too much to handle!")
 
@@ -234,9 +233,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You reshape [limb.owner]'s outer cerebral cortex into a self-imprinting pattern!"),
-		span_notice("[surgeon] reshapes [limb.owner]'s outer cerebral cortex into a self-imprinting pattern!"),
-		span_notice("[surgeon] completes the surgery on [limb.owner]'s brain."),
+		span_notice("Você reformula[limb.owner]O córtex cerebral externo em um padrão de autoimpressão!"),
+		span_notice("[surgeon]Refazer[limb.owner]O córtex cerebral externo em um padrão de autoimpressão!"),
+		span_notice("[surgeon]completa a cirurgia em[limb.owner]É o cérebro."),
 	)
 	display_pain(limb.owner, "Your brain feels stronger... and more resilient!")
 
@@ -246,9 +245,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_warning("You screw up, damaging the brain!"),
-		span_warning("[surgeon] screws up, damaging the brain!"),
-		span_notice("[surgeon] completes the surgery on [limb.owner]'s brain."),
+		span_warning("Você estraga tudo, prejudica o cérebro!"),
+		span_warning("[surgeon]Estraga tudo, prejudica o cérebro!"),
+		span_notice("[surgeon]completa a cirurgia em[limb.owner]É o cérebro."),
 	)
 	display_pain(limb.owner, "Your brain throbs with intense pain; Thinking hurts!")
 	limb.owner.adjust_organ_loss(ORGAN_SLOT_BRAIN, 60)

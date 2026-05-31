@@ -6,9 +6,9 @@
 #define HASTE_GETUP_LEVEL 3
 /datum/action/cooldown/bloodsucker/targeted/haste
 	name = "Immortal Haste"
-	desc = "Force yourself to stand up if you're down and dash somewhere with supernatural speed. Those nearby may be knocked away, stunned, or left empty-handed."
+	desc = "Forçar-se a se levantar se você está para baixo e correr em algum lugar com velocidade sobrenatural. Os vizinhos podem ser derrubados, atordoados ou deixados de mãos vazias."
 	button_icon_state = "power_speed"
-	prefire_message = "You prepare to dash!"
+	prefire_message = "Preparem-se para correr!"
 	purchase_flags = BLOODSUCKER_CAN_BUY|GHOUL_CAN_BUY
 	bloodcost = 6
 	cooldown_time = 12 SECONDS
@@ -41,13 +41,13 @@
 		return FALSE
 	// Being Grabbed
 	if(user.pulledby && user.pulledby.grab_state >= GRAB_AGGRESSIVE)
-		user.balloon_alert(user, "you're being grabbed!")
+		user.balloon_alert(user, "Você está sendo pego!")
 		return FALSE
 	if(!user.has_gravity(user.loc)) //We dont want people to be able to use this to fly around in space
-		user.balloon_alert(user, "you cannot dash while floating!")
+		user.balloon_alert(user, "Você não pode correr enquanto flutua!")
 		return FALSE
 	if(level_current < HASTE_GETUP_LEVEL && user.body_position == LYING_DOWN)
-		user.balloon_alert(user, "you must be standing to dash!")
+		user.balloon_alert(user, "Você deve estar em pé para correr!")
 		return FALSE
 	return TRUE
 
@@ -65,7 +65,7 @@
 	var/stuns_mobs = TRUE
 	var/temp_cooldown = cooldown_time
 	if(level_current >= HASTE_GETUP_LEVEL && user.body_position == LYING_DOWN)
-		to_chat(user, span_danger("Your heart takes a beat, and you force yourself to stand up!"))
+		to_chat(user, span_danger("Seu coração bate e se força a se levantar!"))
 		user.SetKnockdown(0)
 		user.set_stamina_loss(0)
 		user.set_resting(FALSE, FALSE, TRUE)
@@ -78,7 +78,7 @@
 	user.pulledby?.stop_pulling()
 	// Go to target turf
 	// DO NOT USE WALK TO.
-	owner.balloon_alert(owner, "you dash into the air!")
+	owner.balloon_alert(owner, "Você corre para o ar!")
 	playsound(get_turf(owner), 'sound/items/weapons/punchmiss.ogg', 25, 1, -1)
 	var/safety = get_dist(user, targeted_turf) * 3 + 1
 	var/consequetive_failures = 0

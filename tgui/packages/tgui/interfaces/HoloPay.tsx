@@ -220,7 +220,7 @@ const SetupDisplay = (props) => {
           />
         </Stack.Item>
         <Stack.Item>
-          <Tooltip content="Set a forced fee rather than pay what you want.">
+          <Tooltip content="Coloque uma taxa forçada em vez de pagar o que quiser.">
             <Box bold color="label">
               Forced Fee
             </Box>

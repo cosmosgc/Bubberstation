@@ -3,7 +3,7 @@
 	icon = 'icons/map_icons/items/encryptionkey.dmi'
 	icon_state = "/obj/item/encryptionkey"
 	post_init_icon_state = "cypherkey_basic"
-	desc = "An encryption key for a radio headset."
+	desc = "Uma chave de encriptação para um fone de rádio."
 	w_class = WEIGHT_CLASS_TINY
 	greyscale_config = /datum/greyscale_config/encryptionkey_basic
 	greyscale_colors = "#820a16#3758c4"
@@ -17,7 +17,7 @@
 /obj/item/encryptionkey/examine(mob/user)
 	. = ..()
 	if(!LAZYLEN(channels) && !(special_channels & RADIO_SPECIAL_BINARY) && !LAZYLEN(language_data))
-		. += span_warning("Has no special codes in it. You should probably tell a coder!")
+		. += span_warning("Não tem códigos especiais. Deveria dizer a um programador!")
 		return
 
 	var/list/examine_text_list = list()
@@ -28,7 +28,7 @@
 		examine_text_list += "[GLOB.channel_tokens[MODE_BINARY]] - [MODE_BINARY]"
 
 	if(length(examine_text_list))
-		. += span_notice("It can access the following channels; [jointext(examine_text_list, ", ")].")
+		. += span_notice("Pode acessar os seguintes canais:[jointext(examine_text_list, ", ")].")
 
 	var/list/language_text_list = list()
 	for(var/lang in language_data)
@@ -43,7 +43,7 @@
 		language_text_list += langstring
 
 	if(length(language_text_list))
-		. += span_notice("It can translate the following languages; [jointext(language_text_list, ", ")].")
+		. += span_notice("Pode traduzir as seguintes línguas:[jointext(language_text_list, ", ")].")
 
 /obj/item/encryptionkey/syndicate
 	name = "syndicate encryption key"

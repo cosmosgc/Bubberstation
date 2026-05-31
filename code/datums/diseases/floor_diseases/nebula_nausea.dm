@@ -1,7 +1,7 @@
 /// Caused by dirty food. Makes you vomit stars.
 /datum/disease/nebula_nausea
 	name = "Nebula Nausea"
-	desc = "You can't contain the colorful beauty of the cosmos inside."
+	desc = "Você não pode conter a beleza colorida do cosmos dentro."
 	form = "Condition"
 	agent = "Stars"
 	cure_text = /datum/reagent/space_cleaner::name
@@ -21,15 +21,15 @@
 	switch(stage)
 		if(2)
 			if(SPT_PROB(1, seconds_per_tick) && affected_mob.stat == CONSCIOUS)
-				to_chat(affected_mob, span_warning("The colorful beauty of the cosmos seems to have taken a toll on your equilibrium."))
+				to_chat(affected_mob, span_warning("A beleza colorida do cosmos parece ter tido um impacto no seu equilíbrio."))
 		if(3)
 			if(SPT_PROB(1, seconds_per_tick) && affected_mob.stat == CONSCIOUS)
-				to_chat(affected_mob, span_warning("Your stomach swirls with colors unseen by human eyes."))
+				to_chat(affected_mob, span_warning("Seu estômago gira com cores invisíveis pelos olhos humanos."))
 		if(4)
 			if(SPT_PROB(1, seconds_per_tick) && affected_mob.stat == CONSCIOUS)
-				to_chat(affected_mob, span_warning("It feels like you're floating through a maelstrom of celestial colors."))
+				to_chat(affected_mob, span_warning("Parece que você está flutuando através de um mastro de cores celestes."))
 		if(5)
 			if(SPT_PROB(1, seconds_per_tick) && affected_mob.stat == CONSCIOUS)
-				to_chat(affected_mob, span_warning("Your stomach has become a turbulent nebula, swirling with kaleidoscopic patterns."))
+				to_chat(affected_mob, span_warning("Seu estômago tornou-se uma nebulosa turbulenta, girando com padrões caleidoscópicos."))
 			else
 				affected_mob.vomit(vomit_flags = (MOB_VOMIT_MESSAGE | MOB_VOMIT_HARM), vomit_type = /obj/effect/decal/cleanable/vomit/nebula, lost_nutrition = 10, distance = 2)

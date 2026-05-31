@@ -5,6 +5,6 @@ export const soulcatcher_overlays: FeatureToggle = {
   name: 'Soulcatcher Overlays',
   category: 'GAMEPLAY',
   description:
-    'When enabled, will you be shown fullscreen overlays while inside of a soulcatcher?',
+    'Quando estiver habilitado, você será exibido em tela cheia enquanto estiver dentro de um caça-almas?',
   component: CheckboxInput,
 };

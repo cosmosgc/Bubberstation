@@ -2,7 +2,7 @@
 
 /obj/item/bonesetter/alien
 	name = "alien bonesetter"
-	desc = "A reversed engineered bonesetter... <b> This does not look nice to be on the receiving end of... </b>."
+	desc = "Um reverso maquinista...<b>Isso não parece legal estar no final da recepção...</b>."
 	icon = 'modular_skyrat/modules/filtersandsetters/icons/surgery_tools.dmi'
 	icon_state = "bonesetter"
 	toolspeed = 0.25
@@ -30,20 +30,20 @@
 	var/treatment_delay = base_treat_time * self_penalty_mult * scanned_mult
 
 	if(victim == user)
-		victim.visible_message(span_danger("[user] begins [scanned ? "expertly" : ""] realigning [victim.p_their()] [limb.plaintext_zone] with [I]."), span_warning("You begin realigning your [limb.plaintext_zone] with [I][scanned ? ", keeping the holo-image's indications in mind" : ""]..."))
+		victim.visible_message(span_danger("[user]Começa[scanned ? "expertly" : ""]Realinhando[victim.p_their()] [limb.plaintext_zone]Com[I]."), span_warning("Você começa a realinhar seu[limb.plaintext_zone]Com[I][scanned ? ", keeping the holo-image's indications in mind" : ""]..."))
 	else
-		user.visible_message(span_danger("[user] begins [scanned ? "expertly" : ""] realigning [victim]'s [limb.plaintext_zone] with [I]."), span_notice("You begin realigning [victim]'s [limb.plaintext_zone] with [I][scanned ? ", keeping the holo-image's indications in mind" : ""]..."))
+		user.visible_message(span_danger("[user]Começa[scanned ? "expertly" : ""]Realinhando[victim]'s[limb.plaintext_zone]Com[I]."), span_notice("Você começa a realinhar[victim]'s[limb.plaintext_zone]Com[I][scanned ? ", keeping the holo-image's indications in mind" : ""]..."))
 
 	if(!do_after(user, treatment_delay, target = victim, extra_checks=CALLBACK(src, PROC_REF(still_exists))))
 		return
 
 	if(victim == user)
 		limb.receive_damage(brute=25, wound_bonus=CANT_WOUND)
-		victim.visible_message(span_danger("[user] finishes realigning [victim.p_their()] [limb.plaintext_zone] with a disturbing <b>crunch</b>!"), span_userdanger("You reset your [limb.plaintext_zone] with a disturbing <b>crunch</b>!"))
+		victim.visible_message(span_danger("[user]Termina de realinhar[victim.p_their()] [limb.plaintext_zone]com uma perturbação<b>Esmagamento</b>!"), span_userdanger("Você redefiniu seu[limb.plaintext_zone]com uma perturbação<b>Esmagamento</b>!"))
 	else
 		limb.receive_damage(brute=20, wound_bonus=CANT_WOUND)
-		user.visible_message(span_danger("[user] finishes realigning [victim]'s [limb.plaintext_zone] with a disturbing <b>crunch</b>!"), span_nicegreen("You finish realigning [victim]'s [limb.plaintext_zone] with a disturbing <b>crunch</b>!"), ignored_mobs=victim)
-		to_chat(victim, span_userdanger("[user] resets your [limb.plaintext_zone] with a disturbing <b>crunch</b>!"))
+		user.visible_message(span_danger("[user]Termina de realinhar[victim]'s[limb.plaintext_zone]com uma perturbação<b>Esmagamento</b>!"), span_nicegreen("Você termina de realinhar[victim]'s[limb.plaintext_zone]com uma perturbação<b>Esmagamento</b>!"), ignored_mobs=victim)
+		to_chat(victim, span_userdanger("[user]resets seu[limb.plaintext_zone]com uma perturbação<b>Esmagamento</b>!"))
 
 	victim.emote("scream")
 	playsound(user, 'sound/effects/wounds/crack1.ogg', 70, TRUE)
@@ -62,20 +62,20 @@
 	var/treatment_delay = base_treat_time * self_penalty_mult * scanned_mult
 
 	if(victim == user)
-		victim.visible_message(span_danger("[user] begins [scanned ? "expertly" : ""] realigning [victim.p_their()] [limb.plaintext_zone] with [I]."), span_warning("You begin realigning your [limb.plaintext_zone] with [I][scanned ? ", keeping the holo-image's indications in mind" : ""]..."))
+		victim.visible_message(span_danger("[user]Começa[scanned ? "expertly" : ""]Realinhando[victim.p_their()] [limb.plaintext_zone]Com[I]."), span_warning("Você começa a realinhar seu[limb.plaintext_zone]Com[I][scanned ? ", keeping the holo-image's indications in mind" : ""]..."))
 	else
-		user.visible_message(span_danger("[user] begins [scanned ? "expertly" : ""] realigning [victim]'s [limb.plaintext_zone] with [I]."), span_notice("You begin realigning [victim]'s [limb.plaintext_zone] with [I][scanned ? ", keeping the holo-image's indications in mind" : ""]..."))
+		user.visible_message(span_danger("[user]Começa[scanned ? "expertly" : ""]Realinhando[victim]'s[limb.plaintext_zone]Com[I]."), span_notice("Você começa a realinhar[victim]'s[limb.plaintext_zone]Com[I][scanned ? ", keeping the holo-image's indications in mind" : ""]..."))
 
 	if(!do_after(user, treatment_delay, target = victim, extra_checks=CALLBACK(src, PROC_REF(still_exists))))
 		return
 
 	if(victim == user)
 		limb.receive_damage(brute=45, wound_bonus=CANT_WOUND)
-		victim.visible_message(span_danger("[user] finishes realigning [victim.p_their()] [limb.plaintext_zone] with a disturbing <b>crunch</b>!"), span_userdanger("You reset your [limb.plaintext_zone] with a disturbing <b>crunch</b>!"))
+		victim.visible_message(span_danger("[user]Termina de realinhar[victim.p_their()] [limb.plaintext_zone]com uma perturbação<b>Esmagamento</b>!"), span_userdanger("Você redefiniu seu[limb.plaintext_zone]com uma perturbação<b>Esmagamento</b>!"))
 	else
 		limb.receive_damage(brute=40, wound_bonus=CANT_WOUND)
-		user.visible_message(span_danger("[user] finishes realigning [victim]'s [limb.plaintext_zone] with a disturbing <b>crunch</b>!"), span_nicegreen("You finish realigning [victim]'s [limb.plaintext_zone] with a disturbing <b>crunch</b>!"), ignored_mobs=victim)
-		to_chat(victim, span_userdanger("[user] resets your [limb.plaintext_zone] with a disturbing <b>crunch</b>!"))
+		user.visible_message(span_danger("[user]Termina de realinhar[victim]'s[limb.plaintext_zone]com uma perturbação<b>Esmagamento</b>!"), span_nicegreen("Você termina de realinhar[victim]'s[limb.plaintext_zone]com uma perturbação<b>Esmagamento</b>!"), ignored_mobs=victim)
+		to_chat(victim, span_userdanger("[user]resets seu[limb.plaintext_zone]com uma perturbação<b>Esmagamento</b>!"))
 
 	victim.emote("scream")
 	playsound(user, 'sound/effects/wounds/crack2.ogg', 70, TRUE)
@@ -83,7 +83,7 @@
 
 /datum/design/alienbonesetter
 	name = "Alien Bonesetter"
-	desc = "An abomination of reverse engineered tech, designed by a madman."
+	desc = "Uma abominação da engenharia reversa projetada por um louco."
 	id = "alien_bonesetter"
 	build_path = /obj/item/bonesetter/alien
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
@@ -95,14 +95,14 @@
 
 /obj/item/blood_filter/alien
 	name = "alien bloodfilter"
-	desc = "A reversed engineered bloodfilter... <b> This does not look nice to be on the receiving end of... </b>."
+	desc = "Um filtro de sangue invertido...<b>Isso não parece legal estar no final da recepção...</b>."
 	icon = 'modular_skyrat/modules/filtersandsetters/icons/surgery_tools.dmi'
 	icon_state = "bloodfilter"
 	toolspeed = 0.25
 
 /datum/design/alienbloodfilter
 	name = "Alien Blood filter"
-	desc = "An abomination of reverse engineered tech, designed by a madman."
+	desc = "Uma abominação da engenharia reversa projetada por um louco."
 	id = "alien_bloodfilter"
 	build_path = /obj/item/blood_filter/alien
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
@@ -114,7 +114,7 @@
 
 /obj/item/blood_filter/advanced
 	name = "medical combitool"
-	desc = "An unholy combination of bonesetter and bloodfilter."
+	desc = "Uma combinação profana de ossos e filtro de sangue."
 	icon = 'modular_skyrat/modules/filtersandsetters/icons/surgery_tools.dmi'
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*6, /datum/material/glass = SHEET_MATERIAL_AMOUNT*2, /datum/material/silver = SHEET_MATERIAL_AMOUNT*2, /datum/material/titanium =SHEET_MATERIAL_AMOUNT * 2.5)
 	icon_state = "combitool"
@@ -135,14 +135,7 @@
 
 /obj/item/blood_filter/advanced/Initialize(mapload)
 	. = ..()
-	AddComponent( \
-		/datum/component/transforming, \
-		force_on = force, \
-		throwforce_on = throwforce, \
-		hitsound_on = hitsound, \
-		w_class_on = w_class, \
-		clumsy_check = FALSE, \
-	)
+	AddComponent( 		/datum/component/transforming, 		force_on = force, 		throwforce_on = throwforce, 		hitsound_on = hitsound, 		w_class_on = w_class, 		clumsy_check = FALSE, 	)
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
 /*
@@ -154,17 +147,17 @@
 	SIGNAL_HANDLER
 
 	tool_behaviour = (active ? TOOL_BONESET : TOOL_BLOODFILTER)
-	balloon_alert(user, "tools set to [active ? "set bones" : "filter blood"]")
+	balloon_alert(user, "Ferramentas prontas para[active ? "set bones" : "filter blood"]")
 	playsound(user ? user : src, 'sound/items/tools/change_drill.ogg', 50, TRUE)
 	return COMPONENT_NO_DEFAULT_MESSAGE
 
 /obj/item/blood_filter/advanced/examine()
 	. = ..()
-	. += span_notice("It resembles a [tool_behaviour == TOOL_BLOODFILTER ? "bloodfilter" : "bonesetter"].")
+	. += span_notice("Parece...[tool_behaviour == TOOL_BLOODFILTER ? "bloodfilter" : "bonesetter"].")
 
 /datum/design/combitool
 	name = "Medical Combitool"
-	desc = "This tool can be either used as bloodfilter or bonesetter."
+	desc = "Esta ferramenta pode ser usada como filtro de sangue ou de ossos."
 	id = "combitool"
 	build_path = /obj/item/blood_filter/advanced
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB

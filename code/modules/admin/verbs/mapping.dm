@@ -110,12 +110,12 @@ ADMIN_VERB(cmd_show_at_markers, R_DEBUG, "Show roundstart AT markers", "Places a
 		count++
 
 	if(count)
-		to_chat(user, "[count] AT markers removed.", confidential = TRUE)
+		to_chat(user, "[count]Marcadores AT removidos.", confidential = TRUE)
 	else
 		for(var/t in GLOB.active_turfs_startlist)
 			new /obj/effect/abstract/marker/at(t)
 			count++
-		to_chat(user, "[count] AT markers placed.", confidential = TRUE)
+		to_chat(user, "[count]Marcadores AT colocados.", confidential = TRUE)
 
 	BLACKBOX_LOG_ADMIN_VERB("Show Roundstart Active Turf Markers")
 
@@ -130,7 +130,7 @@ ADMIN_VERB(disable_mapping_verbs, R_DEBUG, "Disable Mapping Verbs", "Disable all
 
 ADMIN_VERB_VISIBILITY(count_objects_on_z_level, ADMIN_VERB_VISIBLITY_FLAG_MAPPING_DEBUG)
 ADMIN_VERB(count_objects_on_z_level, R_DEBUG, "Count Objects On Z-Level", "Counts the number of objects of a certain type on a specific z-level.", ADMIN_CATEGORY_MAPPING)
-	var/level = input(user, "Which z-level?","Level?") as text|null
+	var/level = input(user, "Qual nível z?","Nível?") as text|null
 	if(!level)
 		return
 	var/num_level = text2num(level)
@@ -139,7 +139,7 @@ ADMIN_VERB(count_objects_on_z_level, R_DEBUG, "Count Objects On Z-Level", "Count
 	if(!isnum(num_level))
 		return
 
-	var/type_text = input(user, "Which type path?","Path?") as text|null
+	var/type_text = input(user, "Que tipo de caminho?","Caminho?") as text|null
 	if(!type_text)
 		return
 	var/type_path = text2path(type_text)
@@ -163,12 +163,12 @@ ADMIN_VERB(count_objects_on_z_level, R_DEBUG, "Count Objects On Z-Level", "Count
 					count++
 					atom_list += A
 
-	to_chat(world, "There are [count] objects of type [type_path] on z-level [num_level]", confidential = TRUE)
+	to_chat(world, "Há[count]objetos do tipo[type_path]em nível z[num_level]", confidential = TRUE)
 	BLACKBOX_LOG_ADMIN_VERB("Count Objects Zlevel")
 
 ADMIN_VERB_VISIBILITY(count_objects_all, ADMIN_VERB_VISIBLITY_FLAG_MAPPING_DEBUG)
 ADMIN_VERB(count_objects_all, R_DEBUG, "Count Objects All", "Counts the number of objects of a certain type in the game world.", ADMIN_CATEGORY_MAPPING)
-	var/type_text = input(user, "Which type path?","") as text|null
+	var/type_text = input(user, "Que tipo de caminho?","") as text|null
 	if(!type_text)
 		return
 	var/type_path = text2path(type_text)
@@ -181,7 +181,7 @@ ADMIN_VERB(count_objects_all, R_DEBUG, "Count Objects All", "Counts the number o
 		if(istype(A,type_path))
 			count++
 
-	to_chat(world, "There are [count] objects of type [type_path] in the game world", confidential = TRUE)
+	to_chat(world, "Há[count]objetos do tipo[type_path]no mundo do jogo", confidential = TRUE)
 	BLACKBOX_LOG_ADMIN_VERB("Count Objects All")
 
 GLOBAL_VAR_INIT(say_disabled, FALSE)
@@ -386,7 +386,7 @@ ADMIN_VERB(check_for_obstructed_atmospherics, R_DEBUG, "Check For Obstructed Atm
 			results += "There is an obstruction on top of an atmospherics machine at: [ADMIN_VERBOSEJMP(iterated_turf)].<br>"
 
 	if(results.len == 1) // only the header is in the list, we're good
-		to_chat(user, "No obstructions detected.", confidential = TRUE)
+		to_chat(user, "Nenhuma obstrução detectada.", confidential = TRUE)
 	else
 		var/datum/browser/popup = new(user.mob, "atmospherics_obstructions", "Atmospherics Obstructions", 900, 750)
 		popup.set_content(results.Join())

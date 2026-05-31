@@ -19,7 +19,7 @@ export const NtosNewsArchive = (props) => {
             key={story.title}
             title={
               story.title +
-              ' | Published ' +
+              'Publicado' +
               story.month +
               '/' +
               story.day +

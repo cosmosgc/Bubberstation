@@ -107,7 +107,7 @@
 		return
 	add_traits(list(TRAIT_GODMODE, TRAIT_IMMOBILIZED), MEGAFAUNA_TRAIT)
 	balloon_alert_to_viewers("invulnerable! overload the machines!")
-	visible_message(span_danger("[src] drops to the ground staggered, unable to keep up with injuries!"))
+	visible_message(span_danger("[src]Cai no chão cambaleando, incapaz de acompanhar os ferimentos!"))
 	phase_invulnerability_timer = addtimer(CALLBACK(src, PROC_REF(phase_too_slow)), phase_invul_time, TIMER_STOPPABLE|TIMER_UNIQUE)
 	add_filter(PHASEREGEN_FILTER, 2, list("type" = "outline", "color" = COLOR_PALE_GREEN, "alpha" = 0, "size" = 1))
 	var/filter = get_filter(PHASEREGEN_FILTER)
@@ -142,7 +142,7 @@
 	for(var/turf/open/target in RANGE_TURFS(1, loc))
 		new /obj/effect/temp_visual/mook_dust(target)
 	playsound(loc, 'sound/effects/meteorimpact.ogg', 40, TRUE)
-	visible_message(span_danger("[src] retreats through the ground back to where it came from!"))
+	visible_message(span_danger("[src]Recua pelo chão de volta para onde veio!"))
 	forceMove(spawn_loc)
 
 /// The Thing is successfully hit by incendiary fire while downed by damage (alternatively takes too much damage if not ruin spawned)
@@ -167,7 +167,7 @@
 	phase_invulnerability_timer = null
 	remove_traits(list(TRAIT_GODMODE, TRAIT_IMMOBILIZED), MEGAFAUNA_TRAIT)
 	balloon_alert_to_viewers("recovers!")
-	visible_message(span_danger("[src] recovers from the damage! Too slow!"))
+	visible_message(span_danger("[src]Se recupera dos danos! Muito lento!"))
 	adjust_health(-(maxHealth/3) * 0.5) //half of a phase (which is a third of maxhealth)
 	var/filter = get_filter(PHASEREGEN_FILTER)
 	if(!isnull(filter))
@@ -201,7 +201,7 @@
 
 /obj/structure/thing_boss_phase_depleter
 	name = "Molecular Accelerator"
-	desc = "Weird-ass lab equipment."
+	desc = "Equipamento de laboratório estranho."
 	icon_state = "thingdepleter"
 	anchored = TRUE
 	density = TRUE
@@ -238,7 +238,7 @@
 
 /obj/structure/thing_boss_phase_depleter/examine(mob/user)
 	. = ..()
-	. += density ? span_boldnotice("It may be possible to overload this and destroy that things defenses...") : span_bolddanger("The machine is currently being restrained by tendrils.")
+	. += density ? span_boldnotice("Pode ser possível sobrecarregar isso e destruir que as coisas defesas...") : span_bolddanger("A máquina está sendo contida por tentáculos.")
 
 /obj/structure/thing_boss_phase_depleter/proc/set_circuit_floor(state)
 	for(var/turf/open/floor/circuit/circuit in RANGE_TURFS(1, loc))
@@ -291,7 +291,7 @@
 
 /obj/structure/aggro_gate
 	name = "biohazard gate"
-	desc = "A wall of solid light, only activating when a human is endangered by a biohazard, unfortunately that does little for safety as it locks you in with said biohazard. Virtually indestructible, you must evade (or kill) the threat."
+	desc = "Uma parede de luz sólida, ativando apenas quando um humano é ameaçado por um perigo biológico, infelizmente, isso faz pouco por segurança enquanto o prende com o dito perigo biológico. Virtualmente indestrutível, você deve evitar (ou matar) a ameaça."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "wave2"
 	resistance_flags = INDESTRUCTIBLE | FIRE_PROOF | ACID_PROOF | LAVA_PROOF

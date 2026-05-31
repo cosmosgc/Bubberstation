@@ -178,7 +178,7 @@ const MainMenu = () => {
                   {...buttonProps}
                   p={0.75}
                   icon="refresh"
-                  tooltip="Refresh structural data"
+                  tooltip="Atualizar dados estruturais"
                   onClick={() => act('refresh')}
                 />
               </Stack.Item>

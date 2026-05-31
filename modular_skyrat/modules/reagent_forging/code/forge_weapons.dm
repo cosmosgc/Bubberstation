@@ -10,11 +10,11 @@
 
 /obj/item/forging/reagent_weapon/examine(mob/user)
 	. = ..()
-	. += span_notice("Using a hammer on [src] will repair its damage!")
+	. += span_notice("Usando um martelo[src]Vai reparar seus danos!")
 
 /obj/item/forging/reagent_weapon/sword
 	name = "reagent sword"
-	desc = "A sharp, maneuverable bastard sword most adept at blocking opposing melee strikes."
+	desc = "Uma espada esperta e manobrável mais adepta em bloquear ataques contra mim."
 	force = 7
 	armour_penetration = 10
 	wound_bonus = -5
@@ -51,7 +51,7 @@
 
 /obj/item/forging/reagent_weapon/katana
 	name = "reagent katana"
-	desc = "A katana sharp enough to penetrate body armor, but not quite million-times-folded sharp."
+	desc = "Uma katana afiada o suficiente para penetrar na armadura, mas não muito afiada de milhões de vezes."
 	force = 7
 	armour_penetration = 25 //Slices through armour like butter, but can't quite bisect a knight like the real thing.
 	wound_bonus = -5
@@ -75,7 +75,7 @@
 
 /obj/item/forging/reagent_weapon/dagger
 	name = "reagent dagger"
-	desc = "A lightweight dagger historically used to stab at the gaps in armour of fallen knights of old."
+	desc = "Um punhal leve usado historicamente para furar as brechas na armadura de cavaleiros caídos da antiguidade."
 	force = 5
 	icon_state = "dagger"
 	inhand_icon_state = "dagger"
@@ -158,7 +158,7 @@
 
 	if(!successful_sneak_attack)
 		if(sneak_attack_fail_message)
-			user.balloon_alert(carbon_target, "sneak attack avoided!")
+			user.balloon_alert(carbon_target, "Ataque furtivo evitado!")
 		return FALSE
 	return TRUE
 
@@ -167,12 +167,12 @@
 	var/armor_block = carbon_target.run_armor_check(affecting, MELEE, armour_penetration = armour_penetration)
 
 	carbon_target.apply_damage(bonus_damage, BRUTE, def_zone = affecting, blocked = armor_block, wound_bonus = exposed_wound_bonus, sharpness = SHARP_EDGED)
-	carbon_target.balloon_alert(user, "sneak attack!")
+	carbon_target.balloon_alert(user, "Ataque furtivo!")
 	playsound(carbon_target, 'sound/items/weapons/guillotine.ogg', 50, TRUE)
 
 /obj/item/forging/reagent_weapon/rapier
 	name = "reagent rapier"
-	desc = "A lightweight rapier with a light and quick swing, even while being so thin, you feel like you can stop all harm with this"
+	desc = "Um rapier leve com um balanço leve e rápido, mesmo sendo tão magro, você sente que pode parar todo o mal com isso."
 	force = 12
 	armour_penetration = 25
 	block_chance = 35
@@ -199,7 +199,7 @@
 
 /obj/item/forging/reagent_weapon/staff //doesn't do damage. Useful for healing reagents.
 	name = "reagent staff"
-	desc = "A staff most notably capable of being imbued with reagents, especially useful alongside its otherwise harmless nature."
+	desc = "Uma equipe especialmente capaz de ser imbuída de reagentes, especialmente útil ao lado de sua natureza inofensiva."
 	force = 0
 	icon_state = "staff"
 	inhand_icon_state = "staff"
@@ -217,7 +217,7 @@
 
 /obj/item/forging/reagent_weapon/spear
 	name = "reagent spear"
-	desc = "A long spear that can be wielded in two hands to boost damage at the cost of single-handed versatility."
+	desc = "Uma lança longa que pode ser empunhada em duas mãos para aumentar os danos ao custo da versatilidade."
 	force = 7
 	throwforce = 22
 	armour_penetration = 10
@@ -252,7 +252,7 @@
 
 /obj/item/forging/reagent_weapon/axe
 	name = "reagent axe"
-	desc = "An axe especially balanced for throwing and embedding into fleshy targets, yet also effective at destroying shields of all sorts."
+	desc = "Um machado especialmente equilibrado para atirar e incorporar em alvos carnudos, mas também eficaz em destruir escudos de todos os tipos."
 	force = 7
 	armour_penetration = 10
 	wound_bonus = -5
@@ -287,17 +287,17 @@
 		var/mob/living/carbon/human/H = M
 		for(var/obj/item/shield/I in H.held_items)
 			if(I.breakable_by_damage)
-				user.balloon_alert(user, "devastating blow!")
+				user.balloon_alert(user, "Golpe devastador!")
 				playsound(src, 'sound/effects/bang.ogg', 30)
 				I.take_damage(15, BRUTE, 0, FALSE, get_dir(user, H))
 			else
-				user.balloon_alert(user, "crippling blow!")
+				user.balloon_alert(user, "Golpe paralisante!")
 				playsound(src, 'sound/effects/tableheadsmash.ogg', 30)
 				H.apply_damage(15, STAMINA)
 
 /obj/item/forging/reagent_weapon/hammer
 	name = "reagent hammer"
-	desc = "A heavy, weighted hammer that packs an incredible punch but can prove to be unwieldy. Useful for forging!"
+	desc = "Um martelo pesado e pesado que carrega um soco incrível, mas que pode provar ser desarrumado. Útil para forjar!"
 	force = 7 //strong when wielded, but boring.
 	armour_penetration = 10
 	wound_bonus = -5
@@ -329,7 +329,7 @@
 
 /obj/item/shield/buckler/reagent_weapon //Same as a buckler, but metal.
 	name = "reagent plated buckler shield"
-	desc = "A small, round shield best used in tandem with a melee weapon in close-quarters combat."
+	desc = "Um pequeno escudo redondo melhor usado em conjunto com uma arma em combate."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_worn.dmi'
 	icon_state = "buckler"
@@ -355,7 +355,7 @@
 
 /obj/item/shield/buckler/reagent_weapon/examine(mob/user)
 	. = ..()
-	. += span_notice("Using a hammer on [src] will repair its damage!")
+	. += span_notice("Usando um martelo[src]Vai reparar seus danos!")
 
 /obj/item/shield/buckler/reagent_weapon/attackby(obj/item/attacking_item, mob/user, params)
 	if(atom_integrity >= max_integrity)
@@ -369,13 +369,13 @@
 			var/fixing_amount = min(max_integrity - atom_integrity, 5)
 			atom_integrity += fixing_amount
 			user.mind.adjust_experience(/datum/skill/smithing, 5) //useful heating means you get some experience
-			balloon_alert(user, "partially repaired!")
+			balloon_alert(user, "parcialmente reparado!")
 		return
 	return ..()
 
 /obj/item/shield/buckler/reagent_weapon/pavise //similar to the adamantine shield. Huge, slow, lets you soak damage and packs a wallop.
 	name = "reagent plated pavise shield"
-	desc = "An oblong shield used by ancient crossbowmen as cover while reloading. Probably just as useful with an actual gun."
+	desc = "Um escudo oblongo usado pelos antigos homens da besta como cobertura enquanto recarrega. Provavelmente útil com uma arma de verdade."
 	force = 10
 	icon_state = "pavise"
 	inhand_icon_state = "pavise"
@@ -431,7 +431,7 @@
 
 /obj/item/forging/reagent_weapon/bokken
 	name = "bokken"
-	desc = "A wooden sword that is capable of wielded in two hands. It seems to be made to prevent permanent injuries."
+	desc = "Uma espada de madeira capaz de empunhar em duas mãos. Parece ser feito para prevenir ferimentos permanentes."
 	force = 10
 	armour_penetration = 40
 	icon_state = "bokken"
@@ -451,11 +451,7 @@
 
 /obj/item/forging/reagent_weapon/bokken/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/two_handed,\
-		force_multiplier = 2, \
-		wield_callback = CALLBACK(src, PROC_REF(on_wield)), \
-		unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), \
-	)
+	AddComponent(/datum/component/two_handed,		force_multiplier = 2, 		wield_callback = CALLBACK(src, PROC_REF(on_wield)), 		unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), 	)
 
 /obj/item/forging/reagent_weapon/bokken/proc/on_wield()
 	wielded = TRUE
@@ -468,7 +464,7 @@
 /obj/item/forging/reagent_weapon/bokken/attack(mob/living/carbon/target_mob, mob/living/user, params)
 	. = ..()
 	if(!iscarbon(target_mob))
-		user.visible_message(span_warning("The [src] seems to be ineffective against the [target_mob]!"))
+		user.visible_message(span_warning("O[src]Parece ser ineficaz contra o[target_mob]!"))
 		playsound(src, 'sound/items/weapons/genhit.ogg', 75, TRUE)
 		return
 	playsound(src, pick('sound/items/weapons/genhit1.ogg', 'sound/items/weapons/genhit2.ogg', 'sound/items/weapons/genhit3.ogg'), 100, TRUE)

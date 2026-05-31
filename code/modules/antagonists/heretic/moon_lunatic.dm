@@ -35,7 +35,7 @@
 	lunatic_obj.master = heretic_master
 	lunatic_obj.update_explanation_text()
 
-	to_chat(owner, span_boldnotice("Ruin the lie, save the truth through obeying [heretic_master] the ringleader!"))
+	to_chat(owner, span_boldnotice("Arruinar a mentira, salvar a verdade através da obediência[heretic_master]O líder!"))
 
 /datum/antagonist/lunatic/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/our_mob = mob_override || owner.current
@@ -56,11 +56,11 @@
 
 // Mood event given to moon acolytes
 /datum/mood_event/heretics/lunatic
-	description = "THE TRUTH REVEALED, THE LIE SLAIN."
+	description = "A verdade revelou, a mentira."
 	mood_change = 10
 
 /datum/objective/lunatic
-	explanation_text = "Assist your ringleader. If you are seeing this, scroll up in chat for who that is and report this"
+	explanation_text = "Ajude seu líder. Se você está vendo isso, role em bate-papo para quem é e relate isso"
 	var/datum/mind/master
 	// If the person with this objective is a lunatic master
 	var/is_master = FALSE
@@ -68,9 +68,9 @@
 /datum/objective/lunatic/update_explanation_text()
 	. = ..()
 	if(is_master)
-		explanation_text = "Lead your lunatics to further your own goals!"
+		explanation_text = "Lidere seus lunáticos para promover seus próprios objetivos!"
 		return
-	explanation_text = "Assist your ringleader [master], do not harm fellow lunatics"
+	explanation_text = "Ajude seu líder.[master], não machuque companheiros lunáticos"
 
 // Lunatic master
 /datum/antagonist/lunatic/master

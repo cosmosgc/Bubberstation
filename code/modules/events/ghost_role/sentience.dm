@@ -27,7 +27,7 @@ GLOBAL_LIST_INIT(high_priority_sentience, typecacheof(list(
 	typepath = /datum/round_event/ghost_role/sentience
 	weight = 10
 	category = EVENT_CATEGORY_FRIENDLY
-	description = "An animal or robot becomes sentient!"
+	description = "Um animal ou robô se torna senciente!"
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 7
 
@@ -103,10 +103,8 @@ GLOBAL_LIST_INIT(high_priority_sentience, typecacheof(list(
 		selected.health = selected.maxHealth
 		spawned_mobs += selected
 
-		to_chat(selected, span_userdanger("Hello world!"))
-		to_chat(selected, span_warning("Due to freak radiation and/or chemicals \
-			and/or lucky chance, you have gained human level intelligence \
-			and the ability to speak and understand human language!"))
+		to_chat(selected, span_userdanger("Olá, mundo!"))
+		to_chat(selected, span_warning("Devido à radiação estranha e/ou produtos químicos e/ou chance de sorte, você ganhou inteligência nível humano e a capacidade de falar e entender a linguagem humana!"))
 
 	return SUCCESSFUL_SPAWN
 
@@ -127,7 +125,7 @@ GLOBAL_LIST_INIT(high_priority_sentience, typecacheof(list(
 	typepath = /datum/round_event/ghost_role/sentience/all
 	weight = 0
 	category = EVENT_CATEGORY_FRIENDLY
-	description = "ALL animals and robots become sentient, provided there is enough ghosts."
+	description = "Todos os animais e robôs se tornam sensíveis, desde que haja fantasmas suficientes."
 
 /datum/round_event/ghost_role/sentience/all
 	one = "all"

@@ -1,7 +1,7 @@
 /datum/surgery_operation/limb/debride
 	name = "debride infected flesh"
 	rnd_name = "Debridement"
-	desc = "Remove infected or necrotic flesh from a patient's wound to promote healing."
+	desc = "Remova a carne infectada ou necrótica da ferida de um paciente para promover a cura."
 	implements = list(
 		TOOL_HEMOSTAT = 1,
 		TOOL_SCALPEL = 1.25,
@@ -50,11 +50,11 @@
 		if(-INFINITY to 1)
 			return null
 		if(1 to 2)
-			progress_text = ", preparing to remove the last remaining bits of infection"
+			progress_text = ", preparando para remover os últimos pedaços de infecção"
 		if(2 to 4)
-			progress_text = ", steadily narrowing the remaining bits of infection"
+			progress_text = ", estreitando constantemente os restantes pedaços de infecção"
 		if(5 to INFINITY)
-			progress_text = ", though there's still quite a lot to excise"
+			progress_text = ", embora ainda há muito para excisar"
 
 	return progress_text
 
@@ -62,9 +62,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to excise infected flesh from [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to excise infected flesh from [FORMAT_LIMB_OWNER(limb)] with [tool]."),
-		span_notice("[surgeon] begins to excise infected flesh from [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a extirpar carne infectada de[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]Começa a extirpar a carne infectada de[FORMAT_LIMB_OWNER(limb)]Com[tool]."),
+		span_notice("[surgeon]Começa a extirpar a carne infectada de[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "The infection in your [limb.plaintext_zone] stings like hell! It feels like you're being stabbed!")
 
@@ -76,17 +76,17 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You successfully excise some of the infected flesh from [FORMAT_LIMB_OWNER(limb)][get_progress(wound)]."),
-		span_notice("[surgeon] successfully excises some of the infected flesh from [FORMAT_LIMB_OWNER(limb)] with [tool]!"),
-		span_notice("[surgeon] successfully excises some of the infected flesh from  [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você extirpa com sucesso parte da carne infectada de[FORMAT_LIMB_OWNER(limb)][get_progress(wound)]."),
+		span_notice("[surgeon]Com sucesso extirpa parte da carne infectada de[FORMAT_LIMB_OWNER(limb)]Com[tool]!"),
+		span_notice("[surgeon]Com sucesso extirpa parte da carne infectada de[FORMAT_LIMB_OWNER(limb)]!"),
 	)
 
 /datum/surgery_operation/limb/debride/on_failure(obj/item/bodypart/limb, mob/living/surgeon, obj/item/tool, list/operation_args)
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You carve away some of the healthy flesh from [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] carves away some of the healthy flesh from [FORMAT_LIMB_OWNER(limb)] with [tool]!"),
-		span_notice("[surgeon] carves away some of the healthy flesh from  [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você esculpi um pouco da carne saudável.[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Esculpe parte da carne saudável de[FORMAT_LIMB_OWNER(limb)]Com[tool]!"),
+		span_notice("[surgeon]Esculpe parte da carne saudável de[FORMAT_LIMB_OWNER(limb)]!"),
 	)
 	limb.receive_damage(rand(4, 8), wound_bonus = CANT_WOUND, sharpness = tool.get_sharpness(), damage_source = tool)

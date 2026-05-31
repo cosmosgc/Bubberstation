@@ -13,7 +13,7 @@
 
 /obj/item/borg/upgrade/advcutter
 	name = "mining cyborg advanced plasma cutter"
-	desc = "An upgrade for the mining cyborgs plasma cutter, bringing it to advanced operation."
+	desc = "Uma atualização para o cortador de plasma de cyborgs, levando-o para operação avançada."
 	icon_state = "module_miner"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/miner)
@@ -24,7 +24,7 @@
 	if(.)
 		var/obj/item/gun/energy/plasmacutter/brg/AC = locate() in R.model.modules
 		if(AC)
-			to_chat(user, span_warning("This unit is already equipped with A plasma Cutter!"))
+			to_chat(user, span_warning("Esta unidade já está equipada com um cortador de plasma!"))
 			return FALSE
 		AC = new(R.model)
 		R.model.basic_modules += AC

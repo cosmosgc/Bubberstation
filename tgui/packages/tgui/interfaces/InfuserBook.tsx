@@ -40,7 +40,7 @@ const PAGE_HEIGHT = 30;
 
 const TIER2TIERDATA: TierData[] = [
   {
-    name: 'Lesser Mutant',
+    name: 'Menos Mutante',
     desc: `
       Lesser Mutants usually have a smaller list of potential mutations, and
       do not have bonuses for infusing many organs. Common species, cosmetics,
@@ -49,7 +49,7 @@ const TIER2TIERDATA: TierData[] = [
     icon: 'circle-o',
   },
   {
-    name: 'Regular Mutant',
+    name: 'Mutante Normal',
     desc: `
       Regular Mutants all have bonuses for infusing DNA into yourself, and are
       common enough to find consistently in a shift. Always available!
@@ -57,7 +57,7 @@ const TIER2TIERDATA: TierData[] = [
     icon: 'circle-half-stroke',
   },
   {
-    name: 'Greater Mutant',
+    name: 'Grande Mutante',
     desc: `
       Greater Mutants have stronger upsides and downsides along with their
       bonus, and are harder to find in a shift. Must be unlocked by first
@@ -125,10 +125,10 @@ export const InfuserBook = (props) => {
 
   const tabs = [
     'Introduction',
-    'Tier 0 - Lesser Mutants',
-    'Tier 1 - Regular Mutants',
-    'Tier 2 - Greater Mutants',
-    'Tier 3 - Abberations - RESTRICTED',
+    'Nível 0 - Mutantes Menores',
+    'Nível 1 - Mutantes regulares',
+    'Nível 2 - Grandes Mutantes',
+    'Tier 3 - Aberrações - RESTRITOS',
   ];
 
   const paginatedTabs = chunk(tabs, 3);
@@ -136,7 +136,7 @@ export const InfuserBook = (props) => {
   const restrictedNext = chapter === 3 && pageInChapter === 0;
 
   return (
-    <Window title="DNA Infusion Manual" width={620} height={500}>
+    <Window title="Manual de perfusão de DNA" width={620} height={500}>
       <Window.Content>
         <Stack vertical>
           <Stack.Item mb={-1}>
@@ -191,7 +191,7 @@ export const InfuserBook = (props) => {
                   onClick={() => setPage(pageInChapter + 1)}
                   fluid
                 >
-                  {restrictedNext ? 'RESTRICTED' : 'Next Page'}
+                  {restrictedNext ? 'RESTRICTED' : 'Próxima Página'}
                 </Button>
               </Stack.Item>
             </Stack>
@@ -204,7 +204,7 @@ export const InfuserBook = (props) => {
 
 export const InfuserInstructions = (props) => {
   return (
-    <Section title="DNA Infusion Guide" height={PAGE_HEIGHT}>
+    <Section title="Guia de infusão de DNA" height={PAGE_HEIGHT}>
       <Stack vertical>
         <Stack.Item fontSize="16px">What does it do?</Stack.Item>
         <Stack.Item color="label">

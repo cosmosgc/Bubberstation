@@ -2,10 +2,10 @@
 	. = ..()
 	if(. || !charging)
 		return
-	to_chat(user, span_notice("You activate the quick release as the cell pops out!"))
+	to_chat(user, span_notice("Você ativa a liberação rápida quando a célula sair!"))
 	removecell(charging.forceMove(drop_location()))
 	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/cell_charger/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt click it to engage the ejection lever!")
+	. += span_notice("Alt clique para ligar a alavanca de ejeção!")

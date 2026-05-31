@@ -1,7 +1,7 @@
 //does brute damage through armor and bio resistance
 /datum/blobstrain/reagent/reactive_spines
 	name = "Reactive Spines"
-	description = "will do high brute damage through armor and bio resistance."
+	description = "causará altos danos brutos através de armadura e resistência biológica."
 	effectdesc = "will also react when attacked with burn or brute damage, attacking everything in melee range."
 	analyzerdescdamage = "Does high brute damage, ignoring armor and bio resistance."
 	analyzerdesceffect = "When attacked with burn or brute damage it violently lashes out, attacking everything nearby."
@@ -15,7 +15,7 @@
 /datum/blobstrain/reagent/reactive_spines/damage_reaction(obj/structure/blob/B, damage, damage_type, damage_flag)
 	if(damage && ((damage_type == BRUTE) || (damage_type == BURN)) && B.get_integrity() - damage > 0 && COOLDOWN_FINISHED(src, retaliate_cooldown)) // Is there any damage, is it burn or brute, will we be alive, and has the cooldown finished?
 		COOLDOWN_START(src, retaliate_cooldown, 2.5 SECONDS) // 2.5 seconds before auto-retaliate can whack everything within 1 tile again
-		B.visible_message(span_boldwarning("The blob retaliates, lashing out!"))
+		B.visible_message(span_boldwarning("A bolha retalia, atacando!"))
 		for(var/atom/thing in range(1, B))
 			if(!thing.can_blob_attack())
 				continue

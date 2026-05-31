@@ -41,7 +41,7 @@
 
 	if(exposed_mob.apply_damage(damage, TOX) && damage >= 6)
 		// yes i know it's not burn damage. the burning is on the inside.
-		to_chat(exposed_mob, span_danger("You feel a burning sensation."))
+		to_chat(exposed_mob, span_danger("Você sente uma sensação de queimação."))
 
 /// If bugkiller delivers a lethal dosage, applies this effect which does a funny animation THEN kills 'em
 /// Also makes it so simplemobs / basicmobs no longer delete when they die (if they do)
@@ -60,7 +60,7 @@
 	if(owner.stat == DEAD)
 		return FALSE
 	playsound(owner, 'sound/mobs/humanoids/human/scream/malescream_1.ogg', 25, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE, frequency = 5)
-	to_chat(owner, span_userdanger("The world begins to go dark..."))
+	to_chat(owner, span_userdanger("O mundo começa a ficar escuro..."))
 	owner.spasm_animation(spasm_loops)
 	owner.adjust_eye_blur(duration)
 	return TRUE
@@ -86,6 +86,6 @@
 
 /atom/movable/screen/alert/status_effect/bugkiller_death
 	name = "Overwhelming Toxicity"
-	desc = "Don't go into the light!"
+	desc = "Não vá para a luz!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "paralysis"

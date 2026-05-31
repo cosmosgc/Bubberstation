@@ -66,7 +66,7 @@
 
 	var/mob/holder = get(movable_parent, /mob)
 	if(holder)
-		to_chat(holder, span_danger("You can't help but feel that you just lost something back there..."))
+		to_chat(holder, span_danger("Não pode deixar de sentir que perdeu algo lá atrás."))
 		holder.temporarilyRemoveItemFromInventory(parent, TRUE) // prevents ghost diskie
 
 	movable_parent.forceMove(target_turf)
@@ -85,33 +85,27 @@
 	var/turf/new_destination = relocate()
 	// Our turf actually didn't change, so it's more likely we became secluded
 	if(current_turf == old_turf)
-		log_game("[parent] moved out of bounds at [loc_name(current_turf)], becoming inaccessible / secluded. \
-			Moving it to [loc_name(new_destination)].")
+		log_game("[parent] moved out of bounds at [loc_name(current_turf)], becoming inaccessible / secluded. 			Moving it to [loc_name(new_destination)].")
 
 		if(inform_admins)
-			message_admins("[parent] moved out of bounds at [ADMIN_VERBOSEJMP(current_turf)], becoming inaccessible / secluded. \
-				Moving it to [ADMIN_VERBOSEJMP(new_destination)].")
+			message_admins("[parent] moved out of bounds at [ADMIN_VERBOSEJMP(current_turf)], becoming inaccessible / secluded. 				Moving it to [ADMIN_VERBOSEJMP(new_destination)].")
 
 	// Our locs changes, we did in fact move somewhere
 	else
-		log_game("[parent] attempted to be moved out of bounds from [loc_name(old_turf)] \
-			to [loc_name(current_turf)]. Moving it to [loc_name(new_destination)].")
+		log_game("[parent] attempted to be moved out of bounds from [loc_name(old_turf)] 			to [loc_name(current_turf)]. Moving it to [loc_name(new_destination)].")
 
 		if(inform_admins)
-			message_admins("[parent] attempted to be moved out of bounds from [ADMIN_VERBOSEJMP(old_turf)] \
-				to [ADMIN_VERBOSEJMP(current_turf)]. Moving it to [ADMIN_VERBOSEJMP(new_destination)].")
+			message_admins("[parent] attempted to be moved out of bounds from [ADMIN_VERBOSEJMP(old_turf)] 				to [ADMIN_VERBOSEJMP(current_turf)]. Moving it to [ADMIN_VERBOSEJMP(new_destination)].")
 
 /// Signal proc for [SIGNAL_ADDTRAIT], via [TRAIT_SECLUDED_LOCATION] on our locs, to ensure nothing funky happens
 /datum/component/stationloving/proc/on_loc_secluded(atom/movable/source)
 	SIGNAL_HANDLER
 
 	var/turf/new_destination = relocate()
-	log_game("[parent] moved out of bounds at [loc_name(source)], becoming inaccessible / secluded. \
-		Moving it to [loc_name(new_destination)].")
+	log_game("[parent] moved out of bounds at [loc_name(source)], becoming inaccessible / secluded. 		Moving it to [loc_name(new_destination)].")
 
 	if(inform_admins)
-		message_admins("[parent] moved out of bounds at [ADMIN_VERBOSEJMP(source)], becoming inaccessible / secluded. \
-			Moving it to [ADMIN_VERBOSEJMP(new_destination)].")
+		message_admins("[parent] moved out of bounds at [ADMIN_VERBOSEJMP(source)], becoming inaccessible / secluded. 			Moving it to [ADMIN_VERBOSEJMP(new_destination)].")
 
 /datum/component/stationloving/proc/check_soul_imbue(datum/source)
 	SIGNAL_HANDLER
@@ -178,9 +172,7 @@
 		return FALSE
 
 	var/turf/new_turf = relocate()
-	log_game("[parent] has been destroyed in [loc_name(current_turf)]. \
-		Preventing destruction and moving it to [loc_name(new_turf)].")
+	log_game("[parent] has been destroyed in [loc_name(current_turf)]. 		Preventing destruction and moving it to [loc_name(new_turf)].")
 	if(inform_admins)
-		message_admins("[parent] has been destroyed in [ADMIN_VERBOSEJMP(current_turf)]. \
-			Preventing destruction and moving it to [ADMIN_VERBOSEJMP(new_turf)].")
+		message_admins("[parent] has been destroyed in [ADMIN_VERBOSEJMP(current_turf)]. 			Preventing destruction and moving it to [ADMIN_VERBOSEJMP(new_turf)].")
 	return TRUE

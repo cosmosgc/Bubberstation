@@ -209,5 +209,5 @@
 		new /obj/effect/spawner/random/entertainment/plushie_delux(get_turf(my_atom))
 	else
 		new /obj/item/toy/plush/plushling(get_turf(my_atom))
-	my_atom.visible_message(span_boldwarning("The reaction suddenly zaps, creating a plushie!"))
+	my_atom.visible_message(span_boldwarning("A reação de repente zaps, criando um plushie!"))
 	holder.clear_reagents()

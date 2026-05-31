@@ -1,7 +1,7 @@
 /obj/item/organ/eyes
 	name = BODY_ZONE_PRECISE_EYES
 	icon_state = "eyes"
-	desc = "I see you!"
+	desc = "Eu te vendo!"
 	visual = TRUE
 	zone = BODY_ZONE_PRECISE_EYES
 	slot = ORGAN_SLOT_EYES
@@ -249,7 +249,7 @@
 		return
 
 	var/picked_side = pick(valid_sides)
-	to_chat(owner, span_userdanger("You feel searing pain shoot though your [picked_side == RIGHT_EYE_SCAR ? "right" : "left"] eye!"))
+	to_chat(owner, span_userdanger("Você sente uma dor ardente, embora seu[picked_side == RIGHT_EYE_SCAR ? "right" : "left"]Olho!"))
 	// oof ouch my eyes
 	apply_organ_damage(rand((maxHealth - high_threshold) * 0.5, maxHealth - low_threshold))
 	var/datum/wound/pierce/bleed/severe/eye/eye_puncture = new
@@ -599,7 +599,7 @@
 
 /// by default, returns the eyes' penlight_message var as a notice span. May do other things when overridden, such as eldritch insanity, or eye damage, or whatnot. Whatever you want, really.
 /obj/item/organ/eyes/proc/penlight_examine(mob/living/viewer)
-	return span_notice("[owner.p_Their()] eyes [penlight_message].")
+	return span_notice("[owner.p_Their()]Olhos.[penlight_message].")
 
 #define NIGHTVISION_LIGHT_OFF 0
 #define NIGHTVISION_LIGHT_LOW 1

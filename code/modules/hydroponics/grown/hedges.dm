@@ -1,6 +1,6 @@
 /obj/item/seeds/shrub
 	name = "shrub seed pack"
-	desc = "These seeds grow into hedge shrubs."
+	desc = "Essas sementes crescem em arbustos."
 	icon_state = "seed-shrub"
 	species = "shrub"
 	plantname = "Shrubbery"
@@ -18,23 +18,23 @@
 /obj/item/grown/shrub
 	seed = /obj/item/seeds/shrub
 	name = "shrub"
-	desc = "A shrubbery, it looks nice and it was only a few credits too. Plant it on the ground to grow a hedge, shrubbing skills not required."
+	desc = "Um arbusto, parece bom e foram apenas alguns créditos também. Plantá-lo no chão para cultivar uma sebe, habilidades de arbusto não necessárias."
 	icon_state = "shrub"
 
 /obj/item/grown/shrub/attack_self(mob/user)
 	var/turf/player_turf = get_turf(user)
 	if(player_turf?.is_blocked_turf(TRUE))
 		return FALSE
-	user.visible_message(span_danger("[user] begins to plant \the [src]..."))
+	user.visible_message(span_danger("[user]começa a plantar\the [src]..."))
 	if(do_after(user, 8 SECONDS, target = user.drop_location(), progress = TRUE))
 		new /obj/structure/hedge/opaque(user.drop_location())
-		to_chat(user, span_notice("You plant \the [src]."))
+		to_chat(user, span_notice("Você planta.\the [src]."))
 		qdel(src)
 
 ///the structure placed by the shrubs
 /obj/structure/hedge
 	name = "hedge"
-	desc = "A large bushy hedge."
+	desc = "Um grande arbusto."
 	icon = 'icons/obj/smooth_structures/hedge.dmi'
 	icon_state = "hedge-0"
 	base_icon_state = "hedge"
@@ -63,7 +63,7 @@
 
 /obj/item/seeds/organ_tree
 	name = "organ tree seed pack"
-	desc = "These seeds grow into an organ tree."
+	desc = "Estas sementes crescem em uma árvore de órgãos."
 	icon_state = "seed-organ"
 	species = "organ"
 	plantname = "Organ Tree"

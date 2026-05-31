@@ -69,10 +69,10 @@
 /mob/living/silicon/ai/proc/announcement()
 	var/static/announcing_vox = 0 // Stores the time of the last announcement
 	if(announcing_vox > world.time)
-		to_chat(src, span_notice("Please wait [DisplayTimeText(announcing_vox - world.time)]."))
+		to_chat(src, span_notice("Por favor, espere.[DisplayTimeText(announcing_vox - world.time)]."))
 		return
 
-	var/message = input(src, "WARNING: Misuse of this verb can result in you being job banned. More help is available in 'Announcement Help'", "Announcement", src.last_announcement) as text|null
+	var/message = input(src, "O mau uso deste verbo pode resultar em você ser banido do trabalho. Mais ajuda está disponível em 'Annunciation Help'", "Announcement", src.last_announcement) as text|null
 
 	if(!message || announcing_vox > world.time)
 		return
@@ -83,7 +83,7 @@
 		return
 
 	if(control_disabled)
-		to_chat(src, span_warning("Wireless interface disabled, unable to interact with announcement PA."))
+		to_chat(src, span_warning("Interface sem fio desativada, incapaz de interagir com o anúncio PA."))
 		return
 
 	var/list/words = splittext(trim(message), " ")
@@ -127,7 +127,7 @@
 					incorrect_words += word
 
 	if(incorrect_words.len)
-		to_chat(src, span_notice("These words are not available on the announcement system: [english_list(incorrect_words)]."))
+		to_chat(src, span_notice("Estas palavras não estão disponíveis no sistema de anúncio:[english_list(incorrect_words)]."))
 		return
 
 	announcing_vox = world.time + VOX_DELAY
@@ -197,7 +197,7 @@
 		return
 	vox_type = selection
 
-	to_chat(src, "Vox voice set to [vox_type]")
+	to_chat(src, "Vox. Vox.[vox_type]")
 
 
 /mob/living/silicon/ai/verb/display_word_string()

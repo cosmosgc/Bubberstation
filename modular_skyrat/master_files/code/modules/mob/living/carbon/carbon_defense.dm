@@ -8,9 +8,8 @@
 		if(target_on_help_and_unarmed || HAS_TRAIT(target, TRAIT_RESTRAINED))
 			do_slap_animation(target)
 			playsound(target.loc, 'sound/items/weapons/slap.ogg', 50, TRUE, -1)
-			visible_message("<span class='danger'>[src] slaps [target] in the face!</span>",
-				"<span class='notice'>You slap [target] in the face! </span>",\
-			"You hear a slap.")
+			visible_message("<span class='danger'>[src]tapas[target]Na cara!</span>",
+				"<span class='notice'>You slap [target] in the face! </span>",			"You hear a slap.")
 			target.unwag_tail()
 			return
 	if(zone_selected == BODY_ZONE_PRECISE_GROIN && target.dir == src.dir)
@@ -19,26 +18,24 @@
 				var/obj/item/bodypart/affecting = src.get_bodypart(BODY_ZONE_HEAD)
 				if(affecting?.receive_damage(PERSONAL_SPACE_DAMAGE))
 					src.update_damage_overlays()
-				visible_message(span_danger("[src] tried slapping [target]'s ass, but they were slapped instead!"),
-				span_danger("You tried slapping [target]'s ass, but they hit you back, ouch!"),
+				visible_message(span_danger("[src]Tentei bater[target]Mas eles foram esbofeteados!"),
+				span_danger("Você tentou bater[target]Mas eles te bateram de volta!"),
 				"You hear a slap.", ignored_mobs = list(target))
 				playsound(target.loc, 'sound/effects/snap.ogg', 50, TRUE, ASS_SLAP_EXTRA_RANGE)
-				to_chat(target, span_danger("[src] tried slapping your ass, but you hit them back!"))
+				to_chat(target, span_danger("[src]Tentou bater na sua bunda, mas você bateu de volta!"))
 				return
 			else
-				visible_message(span_danger("[src] tried slapping [target]'s ass, but they were blocked!"),
-				span_danger("You tried slapping [target]'s ass, but they blocked you!"),
+				visible_message(span_danger("[src]Tentei bater[target]Mas eles estavam bloqueados!"),
+				span_danger("Você tentou bater[target]Mas eles te bloquearam!"),
 				"You hear a slap.", ignored_mobs = list(target))
 				playsound(target.loc, 'sound/items/weapons/thudswoosh.ogg', 50, TRUE, ASS_SLAP_EXTRA_RANGE)
-				to_chat(target, span_danger("[src] tried slapping your ass, but you blocked them!"))
+				to_chat(target, span_danger("[src]Tentou bater na sua bunda, mas você os bloqueou!"))
 				return
 		else
 			do_ass_slap_animation(target)
 			playsound(target.loc, 'sound/items/weapons/slap.ogg', 50, TRUE, ASS_SLAP_EXTRA_RANGE)
-			visible_message("<span class='danger'>[src] slaps [target] right on the ass!</span>",\
-				"<span class='notice'>You slap [target] on the ass, how satisfying.</span>",\
-				"You hear a slap.", ignored_mobs = list(target))
-			to_chat(target, "<span class='danger'>[src] slaps your ass!")
+			visible_message("<span class='danger'>[src]tapas[target]Bem na bunda!</span>",				"<span class='notice'>Você bate.[target]na bunda, que satisfatório.</span>",				"Você ouve um tapa.", ignored_mobs = list(target))
+			to_chat(target, "<span class='danger'>[src]Bate na sua bunda!")
 			return
 	return ..()
 

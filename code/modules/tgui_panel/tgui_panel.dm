@@ -64,7 +64,7 @@
  */
 /datum/tgui_panel/proc/on_initialize_timed_out()
 	// Currently does nothing but sending a message to old chat.
-	SEND_TEXT(client, span_userdanger("Failed to load fancy chat, click <a href='byond://?src=[REF(src)];reload_tguipanel=1'>HERE</a> to attempt to reload it."))
+	SEND_TEXT(client, span_userdanger("Não conseguiu carregar o chat chique, clique.<a href='byond://?src=[REF(src)];reload_tguipanel=1'>Aqui.</a>para tentar recarregar."))
 
 /**
  * private

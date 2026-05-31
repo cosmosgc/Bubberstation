@@ -179,7 +179,7 @@
 	if(override_question)
 		title_text += span_bold(override_question)
 	else
-		title_text += span_bold("[capitalize(name)] Vote")
+		title_text += span_bold("[capitalize(name)]Votação")
 
 	returned_text += "Winner Selection: "
 	switch(winner_method)
@@ -199,7 +199,7 @@
 		total_votes += choices[option]
 
 	if(total_votes <= 0)
-		return span_bold("Vote Result: Inconclusive - No Votes!")
+		return span_bold("Resultado da votação: inconclusivo - Sem votos!")
 
 	if (display_statistics)
 		returned_text += "\nResults:"
@@ -242,7 +242,7 @@
 		for(var/a_winner in all_winners)
 			returned_text += "\n\t[a_winner]"
 
-	returned_text += span_bold("\nVote Result: [real_winner]")
+	returned_text += span_bold("\nResultado da votação:[real_winner]")
 	return returned_text
 
 /**

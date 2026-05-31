@@ -40,7 +40,7 @@
 	attack_vis_effect = ATTACK_EFFECT_CLAW
 	gold_core_spawnable = NO_SPAWN
 	death_sound = 'sound/mobs/non-humanoids/hiss/hiss6.ogg'
-	death_message = "lets out a waning guttural screech, green blood bubbling from its maw..."
+	death_message = "deixa sair um grito gutural minguante, sangue verde borbulhando de sua mãe..."
 
 	habitable_atmos = null
 	unsuitable_atmos_damage = FALSE
@@ -73,7 +73,7 @@
 		return
 	if(locate(/obj/structure/alien/weeds/node) in get_turf(src))
 		return
-	visible_message(span_alertalien("[src] plants some alien weeds!"))
+	visible_message(span_alertalien("[src]Planta algumas ervas daninhas alienígenas!"))
 	new /obj/structure/alien/weeds/node(loc)
 
 ///Lays an egg on the turf the mob is currently standing on.
@@ -82,7 +82,7 @@
 		return
 	if(locate(/obj/structure/alien/egg) in get_turf(src))
 		return
-	visible_message(span_alertalien("[src] lays an egg!"))
+	visible_message(span_alertalien("[src]Põe um ovo!"))
 	new /obj/structure/alien/egg(loc)
 
 /mob/living/basic/alien/get_bloodtype()

@@ -23,7 +23,7 @@
 // Proto Nitrate Tools
 /obj/item/crowbar/power/protonitrate
 	name = "proto nitrate jaws of life"
-	desc = "Hydraulic tool combined with Proto Nitrate Crystal for increased efficeincy."
+	desc = "Ferramenta hidráulica combinada com Proto Nitrato Crystal para aumentar a eficiência."
 	icon = 'modular_zubbers/icons/obj/equipment/equipment.dmi'
 	icon_state = "pn_jaws"
 	toolspeed = 0.5
@@ -38,7 +38,7 @@
 
 	tool_behaviour = (active ? second_tool_behavior : first_tool_behavior)
 	if(user)
-		balloon_alert(user, "attached [tool_behaviour == first_tool_behavior ? inactive_text : active_text]")
+		balloon_alert(user, "Anexado[tool_behaviour == first_tool_behavior ? inactive_text : active_text]")
 	playsound(src, 'sound/items/tools/change_jaws.ogg', 50, TRUE)
 	if(tool_behaviour != TOOL_WIRECUTTER)
 		RemoveElement(/datum/element/cuffsnapping, snap_time_weak_handcuffs, snap_time_strong_handcuffs)
@@ -55,7 +55,7 @@
 
 /obj/item/crowbar/power/protonitrate/science
 	name = "proto nitrate hybrid cutters" // hybrid between crowbar and wirecutters
-	desc = "Hybrid cutters combined with Proto Nitrate Crystal for increased efficeincy but without the hydraulic force required to pry open doors."
+	desc = "Cortadores híbridos combinados com Proto Nitrato Crystal para aumentar a eficiência, mas sem a força hidráulica necessária para abrir portas."
 	icon_state = "pn_jaws_sci"
 	inhand_icon_state = "jaws_sci"
 	force_opens = FALSE
@@ -67,7 +67,7 @@
 
 /obj/item/screwdriver/power/protonitrate
 	name = "proto nitrate hand drill"
-	desc = "Hand drill combined with Proto Nitrate Crystal for increased efficeincy."
+	desc = "Perfuração combinada com Proto Nitrato Crystal para aumentar a eficiência."
 	icon = 'modular_zubbers/icons/obj/equipment/equipment.dmi'
 	icon_state = "pn_drill"
 	toolspeed = 0.25
@@ -87,7 +87,7 @@
 
 /obj/item/weldingtool/experimental/protonitrate
 	name = "proto nitrate welding tool"
-	desc = "An experimental welder further enchanced by combining it with Proto Nitrate Crystal."
+	desc = "Um soldado experimental ainda mais encantado combinando-o com Proto Nitrato Crystal."
 	icon = 'modular_zubbers/icons/obj/equipment/equipment.dmi'
 	icon_state = "pn_welder"
 	toolspeed = 0.25

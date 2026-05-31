@@ -1,6 +1,6 @@
 /obj/item/organ/empowered_borer_egg
 	name = "strange egg"
-	desc = "All slimy and yuck."
+	desc = "Todo viscoso e nojento."
 	icon_state = "innards" // not like you'll be seeing this anyway
 	visual = TRUE
 	zone = BODY_ZONE_CHEST
@@ -12,7 +12,7 @@
 
 /obj/item/organ/empowered_borer_egg/on_find(mob/living/finder)
 	..()
-	to_chat(finder, span_warning("You found an unknown egg in [owner]'s [zone]!"))
+	to_chat(finder, span_warning("Você encontrou um ovo desconhecido em[owner]'s[zone]!"))
 
 /obj/item/organ/empowered_borer_egg/Initialize(mapload)
 	. = ..()
@@ -25,7 +25,7 @@
 
 /obj/item/organ/empowered_borer_egg/on_mob_remove(mob/living/carbon/M, special = FALSE, movement_flags)
 	. = ..()
-	visible_message(span_warning(span_italics("As [src] is cut out of [M], it quickly vibrates and shatters, leaving nothing but some goop!")))
+	visible_message(span_warning(span_italics("Como[src]é cortado de[M], ele vibra rapidamente e quebra, deixando nada além de alguma gosma!")))
 	new/obj/effect/decal/cleanable/food/egg_smudge(get_turf(src))
 	qdel(src)
 
@@ -42,13 +42,13 @@
 		borer_egg.generation = generation
 		var/obj/item/bodypart/chest/chest = owner.get_bodypart(BODY_ZONE_CHEST)
 		chest.dismember()
-		owner.visible_message(span_danger("An egg explodes out of [owner]'s chest, sending gore flying everywhere!"), span_danger("An egg explodes out of your chest, giblets flying everywhere!"))
+		owner.visible_message(span_danger("Um ovo explode[owner]É o peito, mandando Gore voando por toda parte!"), span_danger("Um ovo explode do seu peito, cavalheiros voando por toda parte!"))
 		return
 	var/mob/dead/observer/new_borer = pick(candidates)
 	var/mob/living/basic/cortical_borer/empowered/spawned_cb = new(get_turf(owner))
 	var/obj/item/bodypart/chest/chest = owner.get_bodypart(BODY_ZONE_CHEST)
 	chest.dismember()
-	owner.visible_message(span_danger("[spawned_cb] explodes out of [owner]'s chest, sending gore flying everywhere!"), span_danger("[spawned_cb] explodes out of your chest, giblets flying everywhere!"))
+	owner.visible_message(span_danger("[spawned_cb]Explode de[owner]É o peito, mandando Gore voando por toda parte!"), span_danger("[spawned_cb]Explode do seu peito, cavalheiros voando por toda parte!"))
 	spawned_cb.generation = generation
 	spawned_cb.ckey = new_borer.ckey
 	spawned_cb.mind.add_antag_datum(/datum/antagonist/cortical_borer)

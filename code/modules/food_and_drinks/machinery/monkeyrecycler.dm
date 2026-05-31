@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 
 /obj/machinery/monkey_recycler
 	name = "monkey recycler"
-	desc = "A machine used for recycling dead monkeys into monkey cubes."
+	desc = "Uma máquina usada para reciclar macacos mortos em cubos de macacos."
 	icon = 'icons/obj/machines/kitchen.dmi'
 	icon_state = "grinder"
 	base_icon_state = "grinder"
@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 /obj/machinery/monkey_recycler/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Producing <b>[cube_production]</b> cubes for every monkey inserted.")
+		. += span_notice("A exibição de status diz:<b>[cube_production]</b>cubos para cada macaco inserido.")
 
 /obj/machinery/monkey_recycler/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -63,35 +63,35 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 	if(!istype(target))
 		return
 	if(target.stat == CONSCIOUS)
-		to_chat(user, span_warning("The monkey is struggling far too much to put it in the recycler."))
+		to_chat(user, span_warning("O macaco está lutando demais para colocá-lo na reciclagem."))
 		return
 	if(target.buckled || target.has_buckled_mobs())
-		to_chat(user, span_warning("The monkey is attached to something."))
+		to_chat(user, span_warning("O macaco está preso a algo."))
 		return
 	qdel(target)
-	to_chat(user, span_notice("You stuff the monkey into the machine."))
+	to_chat(user, span_notice("Você enfia o macaco na máquina."))
 	playsound(src.loc, 'sound/machines/juicer.ogg', 50, TRUE)
 	var/offset = prob(50) ? -2 : 2
 	animate(src, pixel_x = pixel_x + offset, time = 0.2, loop = 200) //start shaking
 	use_energy(active_power_usage)
 	stored_matter += cube_production
 	addtimer(VARSET_CALLBACK(src, pixel_x, base_pixel_x))
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), user, span_notice("The machine now has [stored_matter] monkey\s worth of material stored.")))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), user, span_notice("A máquina agora tem[stored_matter]O valor do macaco em material armazenado.")))
 
 /obj/machinery/monkey_recycler/interact(mob/user)
 	if(stored_matter >= 1)
-		to_chat(user, span_notice("The machine hisses loudly as it condenses the ground monkey meat. After a moment, it dispenses a brand new monkey cube."))
+		to_chat(user, span_notice("A máquina assobia alto enquanto condensa a carne de macaco moído. Depois de um momento, dispensa um novo cubo de macaco."))
 		playsound(src.loc, 'sound/machines/hiss.ogg', 50, TRUE)
 		for(var/i in 1 to floor(stored_matter))
 			new /obj/item/food/monkeycube(src.loc)
 			stored_matter--
-		to_chat(user, span_notice("The machine's display flashes that it has [stored_matter] monkeys worth of material left."))
+		to_chat(user, span_notice("A tela da máquina pisca que ela tem[stored_matter]O material dos macacos ficou."))
 	else
-		to_chat(user, span_danger("The machine needs at least 1 monkey worth of material to produce a monkey cube. It currently has [stored_matter]."))
+		to_chat(user, span_danger("A máquina precisa de pelo menos 1 macaco para produzir um cubo de macaco. Ele tem atualmente[stored_matter]."))
 
 /obj/machinery/monkey_recycler/multitool_act(mob/living/user, obj/item/multitool/I)
 	. = ..()
 	if(istype(I))
 		I.set_buffer(src)
-		balloon_alert(user, "salvo no buffer da multitool")
+		balloon_alert(user, "Salvo nenhum buffer da multitool")
 		return TRUE

@@ -42,7 +42,7 @@ export const GhostMenu = (props) => {
   const { has_fun, can_boo } = data;
   return (
     <Window
-      title="Ghost Menu"
+      title="Menu Fantasma"
       width={500}
       height={630}
       buttons={
@@ -50,13 +50,13 @@ export const GhostMenu = (props) => {
           <>
             <Button
               disabled={!can_boo}
-              tooltip="Haunts things near you, with a cooldown."
+              tooltip="Assombra as coisas perto de você, com um resfriado."
               onClick={() => act('boo')}
             >
               Boo!
             </Button>
             <Button
-              tooltip="Allows you to possess any non-sentient mob."
+              tooltip="Permite que você possua qualquer multidão não-senciente."
               onClick={() => act('possess')}
             >
               Possess
@@ -68,13 +68,13 @@ export const GhostMenu = (props) => {
       <Window.Content>
         <Stack fill>
           <Stack.Item width="40%">
-            <Section title="Player & Round Info">
+            <Section title="Jogador e Informações Redondas">
               <RoundSection />
             </Section>
             <Section title="HUDs">
               <HudSection />
             </Section>
-            <Section title="Ghost Settings">
+            <Section title="Configurações do Fantasma">
               <GhostSettingsSection />
             </Section>
           </Stack.Item>
@@ -97,13 +97,13 @@ const RoundSection = (props) => {
           fluid
           dmIcon="icons/mob/simple/mob.dmi"
           dmIconState="ghost"
-          tooltip="Click to re-enter your corpse."
+          tooltip="Clique para entrar novamente em seu cadáver."
           onClick={() => act('return_to_body')}
           fontSize="11px"
           buttons={
             <Button.Confirm
               icon="ghost"
-              tooltip="Become unable to be resusitated, permanently leaving your corpse behind."
+              tooltip="Não pode ser ressuscitado, deixando seu cadáver para trás."
               onClick={() => act('DNR')}
             />
           }
@@ -155,7 +155,7 @@ const HudSection = (props) => {
       ))}
       {!lag_switch_on && (
         <Button
-          tooltip="Performs a t-ray scan where you are."
+          tooltip="Realiza um raio-x onde você está."
           onClick={() => act('tray_scan')}
         >
           T-ray Scan
@@ -186,7 +186,7 @@ const GhostSettingsSection = (props) => {
       <Stack.Item>
         <Button
           fluid
-          tooltip="Restores your ghost character's appearance and username to that in your character preferences."
+          tooltip="Restaura a aparência e o nome de usuário do seu personagem fantasma em suas preferências."
           onClick={() => act('restore_appearance')}
         >
           Restore Ghost Character
@@ -218,7 +218,7 @@ const NotificationPreferences = (props) => {
   const { act, data } = useBackend<Data>();
   const { notification_data } = data;
   if (!notification_data) {
-    return 'No notifications!';
+    return 'Sem notificações!';
   }
 
   const ignores = notification_data.sort((a, b) => {
@@ -237,19 +237,19 @@ const NotificationPreferences = (props) => {
     <Section
       scrollable
       fill
-      title="Ghost Role Notifications"
+      title="Notificações de Papel Fantasma"
       buttons={
         <>
           <Button
             icon="check"
             color="good"
-            tooltip="Enable all notifications."
+            tooltip="Active todas as notificações."
             onClick={() => act('turn_all_on')}
           />
           <Button
             icon="times"
             color="bad"
-            tooltip="Disable all notifications."
+            tooltip="Desativar todas as notificações."
             onClick={() => act('turn_all_off')}
           />
         </>

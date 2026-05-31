@@ -175,9 +175,9 @@
 			ADD_TRAIT(contained, TRAIT_CONTRABAND, INNATE_TRAIT)
 	var/mob/living/carbon/human/human_user = user
 	if(istype(human_user) && isitem(spawned_item) && human_user.put_in_hands(spawned_item))
-		to_chat(human_user, span_boldnotice("[spawned_item] materializes into your hands!"))
+		to_chat(human_user, span_boldnotice("[spawned_item]se materializa em suas mãos!"))
 	else
-		to_chat(user, span_boldnotice("[spawned_item] materializes onto the floor!"))
+		to_chat(user, span_boldnotice("[spawned_item]Se materializa no chão!"))
 	SEND_SIGNAL(uplink_handler, COMSIG_ON_UPLINK_PURCHASE, spawned_item, user)
 	return spawned_item
 
@@ -243,7 +243,7 @@
 /datum/uplink_item/special_equipment
 	category = /datum/uplink_category/objective_special
 	name = "Objective-Specific Equipment"
-	desc = "Equipment necessary for accomplishing specific objectives. If you are seeing this, something has gone wrong."
+	desc = "Equipamento necessário para alcançar objetivos específicos. Se está vendo isso, algo deu errado."
 	limited_stock = 1
 	uplink_item_flags = SYNDIE_TRIPS_CONTRABAND
 	purchasable_from = parent_type::purchasable_from & ~UPLINK_SPY // Ditto

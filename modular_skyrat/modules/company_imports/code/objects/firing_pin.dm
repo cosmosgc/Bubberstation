@@ -2,9 +2,9 @@ GLOBAL_VAR_INIT(permit_pin_unrestricted, FALSE)
 // Firing pin that can be used off station freely, and requires a permit to use on-station
 /obj/item/firing_pin/permit_pin
 	name = "permit-locked firing pin"
-	desc = "A firing pin for a station who can't trust their crew. Only allows you to fire the weapon off-station or with a firearms permit.."
+	desc = "Um alfinete para uma estação que não pode confiar em sua tripulação. Só permite disparar a arma fora do posto ou com permissão de armas."
 	icon_state = "firing_pin_explorer"
-	fail_message = "firearms permit check failed!</span>"
+	fail_message = "As armas de fogo falharam!</span>"
 
 // This checks that the user isn't on the station Z-level.
 /obj/item/firing_pin/permit_pin/pin_auth(mob/living/user)
@@ -32,7 +32,7 @@ GLOBAL_VAR_INIT(permit_pin_unrestricted, FALSE)
 	. = ..()
 	if(obj_flags & EMAGGED)
 		return FALSE
-	balloon_alert(user, "firing pin unlocked!")
+	balloon_alert(user, "Alfinete destrancado!")
 	obj_flags |= EMAGGED
 	can_remove = TRUE
 	return TRUE

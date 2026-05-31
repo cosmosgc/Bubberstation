@@ -140,7 +140,7 @@ export function Evidence(props: Props) {
                 />
               </Flex.Item>
               <Flex.Item align="center">
-                <Box className="Evidence__Box__TextBox title">
+                <Box className="Título da caixa de provas">
                   <b>{evidence.name}</b>
                 </Box>
               </Flex.Item>

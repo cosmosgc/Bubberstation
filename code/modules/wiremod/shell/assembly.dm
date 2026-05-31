@@ -5,7 +5,7 @@
  */
 /obj/item/assembly/wiremod
 	name = "circuit assembly"
-	desc = "A small electronic device that can house an integrated circuit."
+	desc = "Um pequeno dispositivo eletrônico que pode abrigar um circuito integrado."
 	icon_state = "wiremod"
 	assembly_behavior = ASSEMBLY_ALL
 
@@ -85,15 +85,15 @@
 
 /obj/item/assembly/wiremod/examine(mob/user)
 	. = ..()
-	. += span_notice("You can also [secured && "un"]secure [src] by right-clicking it with a screwdriver, even if an integrated circuit is attached.")
+	. += span_notice("Você também pode.[secured && "un"]Seguro.[src]clicando com o botão direito com uma chave de fenda, mesmo que um circuito integrado esteja ligado.")
 
 // This is to bypass removing the circuit with a screwdriver left-click
 /obj/item/assembly/wiremod/screwdriver_act_secondary(mob/living/user, obj/item/tool)
 	screwdriver_act(user, tool)
 
 /obj/item/circuit_component/assembly_input
-	display_name = "Assembly Input"
-	desc = "Triggers when pulsed by an attached wire or assembly."
+	display_name = "Entrada de Montagem"
+	desc = "Ativa quando pulsado por um fio ou conjunto conectado."
 
 	var/datum/port/output/signal
 
@@ -111,8 +111,8 @@
 	signal.set_output(COMPONENT_SIGNAL)
 
 /obj/item/circuit_component/assembly_output
-	display_name = "Assembly Output"
-	desc = "Pulses an attached wire or assembly when triggered."
+	display_name = "Saída de Montagem"
+	desc = "Pulso de um fio ou montagem quando acionado."
 
 	var/obj/item/assembly/attached_assembly
 

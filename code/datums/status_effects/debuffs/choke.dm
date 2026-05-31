@@ -58,9 +58,7 @@
 	choke_loop = new /datum/looping_sound/choking(owner)
 	check_audio_state()
 
-	owner.visible_message(span_bolddanger("[owner] tries to speak, but can't! They're choking!"), \
-		span_userdanger("You try to breathe, but there's a block! You're choking!"), \
-	)
+	owner.visible_message(span_bolddanger("[owner]Tenta falar, mas não consegue! Estão engasgando!"), 		span_userdanger("Você tenta respirar, mas há um bloqueio! Você está sufocando!"), 	)
 
 	//barticles
 	if(flaming)
@@ -122,7 +120,7 @@
 		choking_on.throw_at(target, distance, 1, source)
 
 /datum/status_effect/choke/get_examine_text()
-	return span_boldwarning("[owner.p_They()] [owner.p_are()] choking!")
+	return span_boldwarning("[owner.p_They()] [owner.p_are()]Engasgando!")
 
 /datum/status_effect/choke/proc/remove_choke(datum/source)
 	SIGNAL_HANDLER
@@ -162,7 +160,7 @@
 
 /datum/status_effect/choke/proc/attempt_eat(mob/source, atom/eating)
 	SIGNAL_HANDLER
-	source.balloon_alert(source, "can't get it down!")
+	source.balloon_alert(source, "Não consigo descer!")
 	return BLOCK_EAT_ATTEMPT
 
 /datum/status_effect/choke/proc/helped(mob/source, mob/helping)
@@ -179,10 +177,10 @@
 	if(victim == aggressor)
 		return
 	if(DOING_INTERACTION_WITH_TARGET(aggressor, victim))
-		victim.balloon_alert(aggressor, "already helping!")
+		victim.balloon_alert(aggressor, "Já está ajudando!")
 		return
 	if(DOING_INTERACTION(aggressor, "heimlich"))
-		victim.balloon_alert(aggressor, "already helping someone!")
+		victim.balloon_alert(aggressor, "Já está ajudando alguém!")
 		return
 
 	if(!thrusting_continues(victim, aggressor, before_work = TRUE))
@@ -197,12 +195,9 @@
 
 	var/mob/living/livin_victim = victim
 	if(iscarbon(aggressor) && livin_victim.body_position == STANDING_UP)
-		owner.visible_message(span_warning("[aggressor] wraps [aggressor.p_their()] arms around [victim]'s stomach, and begins thrusting [aggressor.p_their()] fists towards themselves!"), \
-			span_boldwarning("[aggressor] wraps [aggressor.p_their()] arms around you, and begins thrusting their hands into your chest. [capitalize(GLOB.deity)] that hurts!"), \
-			)
+		owner.visible_message(span_warning("[aggressor]Envoltório[aggressor.p_their()]braços ao redor[victim]E começa a empurrar[aggressor.p_their()]punhos em direção a si mesmos!"), 			span_boldwarning("[aggressor]Envoltório[aggressor.p_their()]braços ao seu redor, e começa a empurrar suas mãos para o seu peito.[capitalize(GLOB.deity)]Isso dói!"), 			)
 	else
-		owner.visible_message(span_warning("[aggressor] places [aggressor.p_their()] [hand_name]s on [victim]'s back, and begins forcefully striking it!"), \
-			span_boldwarning("You feel [aggressor]\s [hand_name]s on your back, and then repeated striking!"))
+		owner.visible_message(span_warning("[aggressor]Lugares[aggressor.p_their()] [hand_name]Está ligado.[victim]Está de volta, e começa a bater com força!"), 			span_boldwarning("Você sente[aggressor]\s[hand_name]Está de costas, e depois repetiu o golpe!"))
 
 	if(!do_after(aggressor, 7 SECONDS, victim, extra_checks = CALLBACK(src, PROC_REF(thrusting_continues), victim, aggressor), interaction_key = "heimlich"))
 		aggressor.stop_pulling()
@@ -210,8 +205,7 @@
 	aggressor.stop_pulling()
 
 	var/atom/movable/choking_on = choking_on_ref?.resolve()
-	owner.visible_message(span_green("[victim] vomits up \the[choking_on]. [victim.p_theyre()] gonna make it!"), \
-			span_green("You vomit up that accursed blockage. YOU CAN BREATHE! The broken chest is a hell of a price to pay."))
+	owner.visible_message(span_green("[victim]Vomite.\the[choking_on]. [victim.p_theyre()]Vai conseguir!"), 			span_green("Vomita aquele maldito bloqueio. Você pode respirar! O peito quebrado é um ótimo preço a pagar."))
 	if(iscarbon(victim))
 		var/mob/living/carbon/carbon_victim = victim
 		var/obj/item/bodypart/chest = carbon_victim.get_bodypart(BODY_ZONE_CHEST)
@@ -233,13 +227,13 @@
 				continue
 			free_hands += 1
 		if(free_hands < 2)
-			victim.balloon_alert(aggressor, "need 2 free hands!")
+			victim.balloon_alert(aggressor, "Preciso de duas mãos livres!")
 			return FALSE
 
 	if(iscarbon(victim))
 		var/mob/living/carbon/carbon_victim = victim
 		if(!carbon_victim.appears_alive())
-			victim.balloon_alert(aggressor, "too late...")
+			victim.balloon_alert(aggressor, "Tarde demais...")
 			return FALSE
 
 	if(!choking_on_ref)
@@ -248,17 +242,17 @@
 	if(!before_work)
 		// This check isn't valid at first because it looks dumb if other things fail
 		if(victim.pulledby != aggressor)
-			victim.balloon_alert(aggressor, "must be able to move them!")
+			victim.balloon_alert(aggressor, "Deve ser capaz de movê-los!")
 			return FALSE
 
 		// Similarly, but also this is a burden of knowhow that's cringe
 		if(aggressor.dir != get_dir(aggressor, victim))
-			victim.balloon_alert(aggressor, "must be facing them!")
+			victim.balloon_alert(aggressor, "Deve estrelando-os!")
 			return FALSE
 
 		// See above
 		if(victim.dir != aggressor.dir)
-			victim.balloon_alert(aggressor, "must be facing the same way!")
+			victim.balloon_alert(aggressor, "Deve este olhando do mesmo jeito!")
 			return FALSE
 
 	// If we ain't starting, deal a tad bit of brute, as a treat

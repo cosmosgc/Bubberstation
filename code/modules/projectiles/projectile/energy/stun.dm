@@ -43,8 +43,8 @@
 	// we need a "from", otherwise, where does the electricity come from?
 	if(isnull(fired_from))
 		target.visible_message(
-			span_warning("[src]\s collide with [target] harmlessly[isfloorturf(target.loc) ? ", before falling to [target.loc]" : ""]."),
-			span_notice("[src] collide with you harmlessly[isfloorturf(target.loc) ? ", before falling to [target.loc]" : ""]."),
+			span_warning("[src]\"Collide com[target]Inofensivamente.[isfloorturf(target.loc) ? ", before falling to [target.loc]" : ""]."),
+			span_notice("[src]colidir com você inofensivamente.[isfloorturf(target.loc) ? ", before falling to [target.loc]" : ""]."),
 		)
 		return
 
@@ -155,12 +155,7 @@
 
 	if(istype(taser, /obj/item/mecha_parts/mecha_equipment))
 		var/obj/item/mecha_parts/mecha_equipment/taser_equipment = taser
-		if(!taser_equipment.chassis \
-			|| !taser_equipment.active \
-			|| taser_equipment.get_integrity() <= 1 \
-			|| taser_equipment.chassis.is_currently_ejecting \
-			|| taser_equipment.chassis.equipment_disabled \
-			|| !taser_equipment.chassis.use_energy(energy_drain * seconds_between_ticks))
+		if(!taser_equipment.chassis 			|| !taser_equipment.active 			|| taser_equipment.get_integrity() <= 1 			|| taser_equipment.chassis.is_currently_ejecting 			|| taser_equipment.chassis.equipment_disabled 			|| !taser_equipment.chassis.use_energy(energy_drain * seconds_between_ticks))
 			return FALSE
 		return TRUE
 
@@ -168,7 +163,7 @@
 
 /datum/status_effect/tased/on_apply()
 	if(issilicon(owner) || isbot(owner) || isdrone(owner) || HAS_TRAIT(owner, TRAIT_PIERCEIMMUNE))
-		owner.visible_message(span_warning("[capitalize(electrode_name)] fail to catch [owner][isfloorturf(owner.loc) ? ", falling to [owner.loc]" : ""]!"))
+		owner.visible_message(span_warning("[capitalize(electrode_name)]Não conseguir pegar.[owner][isfloorturf(owner.loc) ? ", falling to [owner.loc]" : ""]!"))
 		return FALSE
 
 	RegisterSignal(owner, COMSIG_LIVING_RESIST, PROC_REF(try_remove_taser))
@@ -315,8 +310,8 @@
 	if(QDELING(src))
 		return
 	owner.visible_message(
-		span_warning("[capitalize(electrode_name)] stop shocking [owner][isfloorturf(owner.loc) ? ", falling to [owner.loc]" : ""]."),
-		span_notice("[capitalize(electrode_name)] stop shocking you[isfloorturf(owner.loc) ? ", falling to [owner.loc]" : ""]."),
+		span_warning("[capitalize(electrode_name)]Pare de chocar.[owner][isfloorturf(owner.loc) ? ", falling to [owner.loc]" : ""]."),
+		span_notice("[capitalize(electrode_name)]Pare de te chocar.[isfloorturf(owner.loc) ? ", falling to [owner.loc]" : ""]."),
 	)
 	qdel(src)
 
@@ -335,15 +330,15 @@
 	owner.shake_up_animation()
 	playsound(owner, 'sound/items/weapons/thudswoosh.ogg', 50, TRUE, -1)
 	remover.visible_message(
-		span_warning("[owner] tries to remove [electrode_name][remover == owner ? "" : " from [owner]"]!"),
-		span_notice("You try to remove [electrode_name][remover == owner ? "" : " from [owner]"]!"),
+		span_warning("[owner]Tenta remover[electrode_name][remover == owner ? "" : " from [owner]"]!"),
+		span_notice("Você tenta remover[electrode_name][remover == owner ? "" : " from [owner]"]!"),
 	)
 	// If embedding was less... difficult to work with, I would make tasers rely on an embedded object to handle this
 	if(!do_after(remover, 5 SECONDS, owner, extra_checks = CALLBACK(src, PROC_REF(try_remove_taser_checks)), interaction_key = id))
 		return
 	remover.visible_message(
-		span_warning("[owner] removes [electrode_name] from [remover == owner ? "[owner.p_their()]" : "[owner]'s"] body!"),
-		span_notice("You remove [electrode_name][remover == owner ? "" : " from [owner]'s body"]!"),
+		span_warning("[owner]Remove[electrode_name]De[remover == owner ? "[owner.p_their()]" : "[owner]'s"]Corpo!"),
+		span_notice("Você tira.[electrode_name][remover == owner ? "" : " from [owner]'s body"]!"),
 	)
 	end_tase()
 
@@ -369,8 +364,8 @@
 			if(disruptor.body_position == LYING_DOWN)
 				return
 	disruptor.visible_message(
-		span_warning("[disruptor] gets tangled in [electrode_name]!"),
-		span_warning("You get tangled in [electrode_name]!"),
+		span_warning("[disruptor]Fica emaranhado[electrode_name]!"),
+		span_warning("Você fica enrolado[electrode_name]!"),
 	)
 	if(!disruptor.check_stun_immunity(CANSTUN|CANKNOCKDOWN))
 		disruptor.apply_damage(90, STAMINA)
@@ -381,7 +376,7 @@
 /// Screen alert for being tased, clicking does a resist
 /atom/movable/screen/alert/tazed
 	name = "Tased!"
-	desc = "You're being tased! You can click this or resist to attempt to stop it, assuming you've not already collapsed."
+	desc = "Você está sendo eletrocutado! Você pode clicar nisso ou resistir para tentar detê-lo, assumindo que você ainda não entrou em colapso."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "stun"
 	clickable_glow = TRUE

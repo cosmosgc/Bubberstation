@@ -9,7 +9,7 @@
 
 /obj/item/clothing/sextoy/eggvib
 	name = "vibrating egg"
-	desc = "A simple, vibrating sex toy."
+	desc = "Um simples e vibrante Brinquedo sexual."
 	icon_state = "eggvib_pink_off"
 	base_icon_state = "eggvib"
 	inhand_icon_state = "eggvib_pink"
@@ -45,9 +45,9 @@
 /obj/item/clothing/sextoy/eggvib/examine(mob/user)
 	. = ..()
 	if(!color_changed)
-		. += span_notice("Alt-click to change it's colors.")
+		. += span_notice("Alt-click para mudar suas cores.")
 	else
-		. += span_notice("Alt-click to toggle vibration modes.")
+		. += span_notice("Alt-click para alternar modos de vibração.")
 
 /obj/item/clothing/sextoy/eggvib/click_alt(mob/user)
 	if(!color_changed)
@@ -61,13 +61,13 @@
 		toggle_mode()
 		switch(vibration_mode)
 			if(EGGVIB_LOW)
-				to_chat(user, span_notice("You set the vibration mode to low. Bzzz..."))
+				to_chat(user, span_notice("Você defini o modo de vibração para baixo. Bzzz..."))
 			if(EGGVIB_MEDIUM)
-				to_chat(user, span_notice("You set the vibration mode to medium. Bzzzz!"))
+				to_chat(user, span_notice("Você define o modo de vibração como médio. Bzzzz!"))
 			if(EGGVIB_HIGH)
-				to_chat(user, span_notice("You set the vibration mode to high. Careful with that thing."))
+				to_chat(user, span_notice("Você define o modo de vibração para alta. Cuidado com essa coisa."))
 			if(EGGVIB_OFF)
-				to_chat(user, span_notice("You turn off the vibrating egg. Fun time's over."))
+				to_chat(user, span_notice("Você desliga o ovo vibratório. Acabou a diversão."))
 		update_icon()
 		update_icon_state()
 	return CLICK_ACTION_SUCCESS
@@ -153,7 +153,7 @@
 
 /obj/item/clothing/sextoy/eggvib/signalvib
 	name = "signal vibrating egg"
-	desc = "A vibrating sex toy with remote control capability. Use a signaller to turn it on."
+	desc = "Um brinquedo sexual vibratório com controle remoto. Use um sinalizador para ligá-lo."
 	icon_state = "signalvib_pink_low_off"
 	base_icon_state = "signalvib"
 	inhand_icon_state = "signalvib_pink"
@@ -209,7 +209,7 @@
 		color_changed = TRUE
 	else
 		if(!toy_on)
-			to_chat(user, span_notice("You can't switch modes while the vibrating egg is turned off!"))
+			to_chat(user, span_notice("Você não pode mudar de modo enquanto o ovo vibratório está desligado!"))
 			return CLICK_ACTION_BLOCKING
 		toggle_mode()
 		soundloop1.stop()
@@ -217,13 +217,13 @@
 		soundloop3.stop()
 		switch(vibration_mode)
 			if(EGGVIB_LOW)
-				to_chat(user, span_notice("You set the vibration mode to low. Bzzz..."))
+				to_chat(user, span_notice("Você defini o modo de vibração para baixo. Bzzz..."))
 				soundloop1.start()
 			if(EGGVIB_MEDIUM)
-				to_chat(user, span_notice("You set the vibration mode to medium. Bzzzz!"))
+				to_chat(user, span_notice("Você define o modo de vibração como médio. Bzzzz!"))
 				soundloop2.start()
 			if(EGGVIB_HIGH)
-				to_chat(user, span_notice("You set the vibration mode to high. Careful with that thing!"))
+				to_chat(user, span_notice("Você define o modo de vibração para alta. Cuidado com essa coisa!"))
 				soundloop3.start()
 		update_icon()
 		update_icon_state()
@@ -258,11 +258,11 @@
 		return
 	if(toy_on)
 		if(src == vibrated.penis || src == vibrated.vagina || src == vibrated.anus)
-			to_chat(vibrated, span_purple("You feel pleasant vibrations deep below..."))
+			to_chat(vibrated, span_purple("Você sente vibrações agradáveis lá embaixo..."))
 		else if(src == vibrated.nipples)
-			to_chat(vibrated, span_purple("You feel pleasant stimulation in your nipples."))
+			to_chat(vibrated, span_purple("Você sente um estímulo agradável em seus mamilos."))
 	else if(!toy_on && is_inside_lewd_slot(vibrated))
-		to_chat(vibrated, span_purple("The vibrating toy no longer drives you mad."))
+		to_chat(vibrated, span_purple("O brinquedo vibratório não te deixa mais louco."))
 
 	if(!master)
 		return

@@ -59,26 +59,26 @@
 	if(host_role.mafia_game_controller.phase != valid_use_period)
 		return FALSE
 	if(host_role.role_flags & ROLE_ROLEBLOCKED)
-		host_role.send_message_to_player(span_warning("You were roleblocked!"))
+		host_role.send_message_to_player(span_warning("Você foi bloqueado!"))
 		return FALSE
 
 	if(potential_target)
 		if(use_flags & CAN_USE_ON_DEAD)
 			if(potential_target.game_status != MAFIA_DEAD)
 				if(!silent)
-					host_role.send_message_to_player(span_notice("This can only be used on dead players."))
+					host_role.send_message_to_player(span_notice("Isso só pode ser usado em jogadores mortos."))
 				return FALSE
 		else if(potential_target.game_status == MAFIA_DEAD)
 			if(!silent)
-				host_role.send_message_to_player(span_notice("This can only be used on living players."))
+				host_role.send_message_to_player(span_notice("Isso só pode ser usado em jogadores vivos."))
 			return FALSE
 		if(!(use_flags & CAN_USE_ON_SELF) && (potential_target == host_role))
 			if(!silent)
-				host_role.send_message_to_player(span_notice("This can only be used on others."))
+				host_role.send_message_to_player(span_notice("Isso só pode ser usado em outros."))
 			return FALSE
 		if(!(use_flags & CAN_USE_ON_OTHERS) && (potential_target != host_role))
 			if(!silent)
-				host_role.send_message_to_player(span_notice("This can only be used on yourself."))
+				host_role.send_message_to_player(span_notice("Isso só pode ser usado em si mesmo."))
 			return FALSE
 	return TRUE
 
@@ -100,7 +100,7 @@
 
 	if(target_role)
 		if(SEND_SIGNAL(target_role, COMSIG_MAFIA_ON_VISIT, game, host_role) & MAFIA_VISIT_INTERRUPTED) //visited a warden. something that prevents you by visiting that person
-			host_role.send_message_to_player(span_danger("Your [name] was interrupted!"))
+			host_role.send_message_to_player(span_danger("Sua[name]Foi interrompido!"))
 			return FALSE
 
 	return TRUE
@@ -118,18 +118,18 @@
 
 	var/feedback_text = "You will %WILL_PERFORM% [ability_action]%SELF%"
 	if(use_flags & CAN_USE_ON_SELF)
-		feedback_text = replacetext(feedback_text, "%SELF%", ".")
+		feedback_text = replacetext(feedback_text, "\"Eu mesmo\"", ".")
 	else
-		feedback_text = replacetext(feedback_text, "%SELF%", " [new_target.body].")
+		feedback_text = replacetext(feedback_text, "\"Eu mesmo\"", " [new_target.body].")
 
 	if(target_role == new_target)
 		using_ability = FALSE
 		target_role = null
-		feedback_text = replacetext(feedback_text, "%WILL_PERFORM%", "not")
+		feedback_text = replacetext(feedback_text, "Vai atuar", "not")
 	else
 		using_ability = TRUE
 		target_role = new_target
-		feedback_text = replacetext(feedback_text, "%WILL_PERFORM%", "now")
+		feedback_text = replacetext(feedback_text, "Vai atuar", "now")
 
 	host_role.send_message_to_player(span_notice(feedback_text))
 	return TRUE

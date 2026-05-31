@@ -4,7 +4,7 @@
  */
 /obj/item/storage/pill_bottle
 	name = "pill bottle"
-	desc = "It's an airtight container for storing medication."
+	desc = "É um recipiente hermético para armazenar medicamentos."
 	icon_state = "pill_canister"
 	icon = 'icons/obj/medical/chemical.dmi'
 	inhand_icon_state = "contsolid"
@@ -22,7 +22,7 @@
 	VAR_PROTECTED/obj/item/reagent_containers/applicator/pill/spawn_type
 
 /obj/item/storage/pill_bottle/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is trying to get the cap off [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Está tentando tirar o boné.[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return TOXLOSS
 
 /obj/item/storage/pill_bottle/PopulateContents()
@@ -36,7 +36,7 @@
 
 /obj/item/storage/pill_bottle/multiver
 	name = "bottle of multiver pills"
-	desc = "Contains pills used to counter toxins."
+	desc = "Contém pílulas usadas para combater toxinas."
 	spawn_count = 7
 	spawn_type = /obj/item/reagent_containers/applicator/pill/multiver
 
@@ -45,109 +45,109 @@
 
 /obj/item/storage/pill_bottle/epinephrine
 	name = "bottle of epinephrine pills"
-	desc = "Contains pills used to stabilize patients."
+	desc = "Contém pílulas usadas para estabilizar pacientes."
 	spawn_count = 7
 	spawn_type = /obj/item/reagent_containers/applicator/pill/epinephrine
 
 /obj/item/storage/pill_bottle/mutadone
 	name = "bottle of mutadone pills"
-	desc = "Contains pills used to treat genetic abnormalities."
+	desc = "Contém pílulas usadas para tratar anomalias genéticas."
 	spawn_count = 7
 	spawn_type = /obj/item/reagent_containers/applicator/pill/mutadone
 
 /obj/item/storage/pill_bottle/potassiodide
 	name = "bottle of potassium iodide pills"
-	desc = "Contains pills used to reduce radiation damage."
+	desc = "Contém pílulas usadas para reduzir danos à radiação."
 	spawn_count = 3
 	spawn_type = /obj/item/reagent_containers/applicator/pill/potassiodide
 
 /obj/item/storage/pill_bottle/probital
 	name = "bottle of probital pills"
-	desc = "Contains pills used to treat brute damage. The tag in the bottle states 'Eat before ingesting, may cause fatigue'."
+	desc = "Contém pílulas usadas para tratar danos brutos. A etiqueta na garrafa diz \"Comer antes de Ingerir, pode causar fadiga\"."
 	spawn_count = 4
 	spawn_type = /obj/item/reagent_containers/applicator/pill/probital
 
 /obj/item/storage/pill_bottle/iron
 	name = "bottle of iron pills"
-	desc = "Contains pills used to reduce blood loss slowly. The tag in the bottle states 'Only take one each five minutes'."
+	desc = "Contém pílulas usadas para reduzir a perda de sangue lentamente. A etiqueta na garrafa diz: \"Só pegue um a cada cinco minutos\"."
 	spawn_count = 4
 	spawn_type = /obj/item/reagent_containers/applicator/pill/iron
 
 /obj/item/storage/pill_bottle/mannitol
 	name = "bottle of mannitol pills"
-	desc = "Contains pills used to treat brain damage."
+	desc = "Contém pílulas usadas para tratar danos cerebrais."
 	spawn_count = 7
 	spawn_type = /obj/item/reagent_containers/applicator/pill/mannitol
 
 //Contains 4 pills instead of 7, and 5u pills instead of 50u (50u pills heal 250 brain damage, 5u pills heal 25)
 /obj/item/storage/pill_bottle/mannitol/braintumor
-	desc = "Contains diluted pills used to treat brain tumor symptoms. Take one when feeling lightheaded."
+	desc = "Contém pílulas diluídas usadas para tratar sintomas de tumor cerebral. Tome um quando estiver tonto."
 	spawn_count = 4
 	spawn_type = /obj/item/reagent_containers/applicator/pill/mannitol/braintumor
 
 /obj/item/storage/pill_bottle/stimulant
 	name = "bottle of stimulant pills"
-	desc = "Guaranteed to give you that extra burst of energy during a long shift!"
+	desc = "Garantido para lhe dar aquela explosão extra de energia durante um longo turno!"
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/stimulant
 
 /obj/item/storage/pill_bottle/sansufentanyl
 	name = "bottle of experimental medication"
-	desc = "A bottle of pills developed by Interdyne Pharmaceuticals. They're used to treat Hereditary Manifold Sickness."
+	desc = "Um frasco de pílulas desenvolvido pela Interdyne Pharmaceuticals. Eles são usados para tratar a doença do Manifold Hereditário."
 	spawn_count = 6
 	spawn_type = /obj/item/reagent_containers/applicator/pill/sansufentanyl
 
 /obj/item/storage/pill_bottle/mining
 	name = "bottle of patches"
-	desc = "Contains patches used to treat brute and burn damage."
+	desc = "Contém patches usados para tratar danos brutos e queimados."
 	spawn_count = 3
 	spawn_type = /obj/item/reagent_containers/applicator/patch/libital
 
 /obj/item/storage/pill_bottle/zoom
 	name = "suspicious pill bottle"
-	desc = "The label is pretty old and almost unreadable, you recognize some chemical compounds."
+	desc = "O rótulo é muito velho e quase ilegível, você reconhece alguns compostos químicos."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/zoom
 
 /obj/item/storage/pill_bottle/happy
 	name = "suspicious pill bottle"
-	desc = "There is a smiley on the top."
+	desc = "Tem um sorriso no topo."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/happy
 
 /obj/item/storage/pill_bottle/lsd
 	name = "suspicious pill bottle"
-	desc = "There is a crude drawing which could be either a mushroom, or a deformed moon."
+	desc = "Há um desenho bruto que pode ser um cogumelo, ou uma lua deformada."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/lsd
 
 /obj/item/storage/pill_bottle/aranesp
 	name = "suspicious pill bottle"
-	desc = "The label has 'fuck disablers' hastily scrawled in black marker."
+	desc = "O rótulo tem 'deficientes de merda' rapidamente rabiscaram em marcador preto."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/aranesp
 
 /obj/item/storage/pill_bottle/psicodine
 	name = "bottle of psicodine pills"
-	desc = "Contains pills used to treat mental distress and traumas."
+	desc = "Contém pílulas usadas para tratar sofrimento mental e traumas."
 	spawn_count = 7
 	spawn_type = /obj/item/reagent_containers/applicator/pill/psicodine
 
 /obj/item/storage/pill_bottle/penacid
 	name = "bottle of pentetic acid pills"
-	desc = "Contains pills to expunge radiation and toxins."
+	desc = "Contém pílulas para eliminar radiação e toxinas."
 	spawn_count = 3
 	spawn_type = /obj/item/reagent_containers/applicator/pill/penacid
 
 /obj/item/storage/pill_bottle/neurine
 	name = "bottle of neurine pills"
-	desc = "Contains pills to treat non-severe mental traumas."
+	desc = "Contém pílulas para tratar traumas mentais não graves."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/neurine
 
 /obj/item/storage/pill_bottle/maintenance_pill
 	name = "bottle of maintenance pills"
-	desc = "An old pill bottle. It smells musty."
+	desc = "Um velho frasco de pílulas. Cheira a mofo."
 	spawn_type = /obj/item/reagent_containers/applicator/pill/maintenance
 
 /obj/item/storage/pill_bottle/maintenance_pill/Initialize(mapload)
@@ -163,44 +163,42 @@
 ///////////////////////////////////////// Psychologist inventory pillbottles
 /obj/item/storage/pill_bottle/happinesspsych
 	name = "happiness pills"
-	desc = "Contains pills used as a last resort means to temporarily stabilize depression and anxiety. WARNING: side effects may include slurred speech, drooling, and severe addiction."
+	desc = "Contém pílulas usadas como último recurso para estabilizar temporariamente a depressão e ansiedade. ATENÇÃO: efeitos colaterais podem incluir fala suja, baba e dependência grave."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/happinesspsych
 
 /obj/item/storage/pill_bottle/lsdpsych
 	name = "mindbreaker toxin pills"
-	desc = "!FOR THERAPEUTIC USE ONLY! Contains pills used to alleviate the symptoms of Reality Dissociation Syndrome."
+	desc = "Só para uso terapêutico! Contém pílulas usadas para aliviar os sintomas da Síndrome de Dissociação Real."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/lsdpsych
 
 /obj/item/storage/pill_bottle/paxpsych
 	name = "pax pills"
-	desc = "Contains pills used to temporarily pacify patients that are deemed a harm to themselves or others."
+	desc = "Contém pílulas usadas para pacificar temporariamente pacientes que são considerados um dano para si mesmos ou para os outros."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/paxpsych
 
 /obj/item/storage/pill_bottle/naturalbait
 	name = "freshness jar"
-	desc = "Full of natural fish bait."
+	desc = "Cheio de gelo natural."
 	spawn_count = 7
 	spawn_type = /obj/item/food/bait/natural
 
 /obj/item/storage/pill_bottle/ondansetron
 	name = "ondansetron patches"
-	desc = "A bottle containing patches of ondansetron, a drug used to treat nausea and vomiting. May cause drowsiness."
+	desc = "Uma garrafa contendo manchas de ondansetron, uma droga usada para tratar náuseas e vômitos. Pode causar sonolência."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/patch/ondansetron
 
 /obj/item/storage/pill_bottle/immunodeficiency
 	name = "bottle of immune boosters"
-	desc = "Contains immune system boosters, used to manage chronic immunodeficiency."
+	desc = "Contém reforço do sistema imunológico, usado para controlar imunodeficiência crônica."
 	spawn_count = 5
 	spawn_type = /obj/item/reagent_containers/applicator/pill/spaceacillin
 
 /obj/item/storage/pill_bottle/prescription_stimulant
 	name = "bottle of prescribed stimulant pills"
-	desc = "A bottle of mild and medicinally approved stimulants to help prevent drowsiness. \n\
-		The list of substances reads: Contains 3u modafinil, 5u synaptizine and 5u glucose. \n\
-		A warning label reads: <b>Take in moderation</b>."
+	desc = "Uma garrafa de estimulantes suaves e medicamente aprovados para evitar sonolência.\nA lista de substâncias diz: contém 3u modafinil, 5u sinaptizina e 5u glicose.\nUm rótulo de aviso diz:<b>Tome com moderação.</b>."
 	spawn_count = 7
 	spawn_type = /obj/item/reagent_containers/applicator/pill/prescription_stimulant

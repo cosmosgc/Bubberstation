@@ -2,7 +2,7 @@
 
 /datum/action/innate/mmi_comp_disconnect
 	name = "Disconnect from remote circuit"
-	desc = "Stop controlling an integrated circuit"
+	desc = "Pare de controlar um circuito integrado."
 	button_icon = 'icons/mob/actions/actions_AI.dmi'
 	button_icon_state = "ai_core"
 
@@ -19,8 +19,8 @@
  * Allows an MMI to be inserted into a shell, allowing it to be linked up. Requires a shell.
  */
 /obj/item/circuit_component/mmi
-	display_name = "Man-Machine Interface"
-	desc = "A component that allows an MMI or B.O.R.I.S. module to be inserted into the shell, allowing a brain or artificial intelligence to output signals."
+	display_name = "Interface homem-máquina"
+	desc = "Um componente que permite que um MMI ou módulo B.O.R.I.S. seja inserido na concha, permitindo que um cérebro ou inteligência artificial produzam sinais."
 	category = "Action"
 	circuit_flags = CIRCUIT_FLAG_REFUSE_MODULE
 
@@ -135,7 +135,7 @@
 	if(istype(item, /obj/item/mmi))
 		target_mmi = item
 		if(!target_mmi.brainmob)
-			shell.balloon_alert(user, "no consciousness detected!")
+			shell.balloon_alert(user, "Nenhuma consciência detectada!")
 			return ITEM_INTERACT_FAILURE
 		new_occupant = target_mmi.brainmob
 	else if(istype(item, /obj/item/borg/upgrade/ai))
@@ -144,10 +144,10 @@
 		return
 	var/datum/component/shell/shell_comp = shell.GetComponent(/datum/component/shell)
 	if(shell_comp.locked)
-		shell.balloon_alert(user, "trancado!")
+		shell.balloon_alert(user, "Trancado!")
 		return ITEM_INTERACT_FAILURE
 	if(brain || boris)
-		shell.balloon_alert(user, "already has brain!")
+		shell.balloon_alert(user, "Já tem cérebro!")
 		return ITEM_INTERACT_FAILURE
 	if(!user.transferItemToLoc(item, src))
 		return ITEM_INTERACT_FAILURE
@@ -217,7 +217,7 @@
 		removing.forceMove(drop_location())
 
 /obj/item/circuit_component/mmi/proc/confirm_ai_connect(mob/living/silicon/ai/user, atom/movable/shell)
-	var/confirmation = tgui_alert(user, "Connect to [shell]?", buttons = list("Yes", "No"))
+	var/confirmation = tgui_alert(user, "Conectar com[shell]?", buttons = list("Yes", "No"))
 	if(confirmation != "Yes")
 		return
 	if(QDELETED(src) || QDELETED(user) || QDELETED(shell) || !parent?.shell || !user.can_interact_with(shell) || !boris)
@@ -227,7 +227,7 @@
 /obj/item/circuit_component/mmi/proc/do_ai_connect(mob/living/silicon/ai/user, atom/movable/shell)
 	if(occupant)
 		if(occupant != user)
-			shell.balloon_alert(user, "occupied!")
+			shell.balloon_alert(user, "Ocupado!")
 		return
 	set_occupant(user)
 
@@ -250,7 +250,7 @@
 	for(var/atom/movable/location as anything in get_nested_locs(ai) + ai)
 		AddComponentFrom(REF(location), /datum/component/shuttle_move_deferred_checks, PROC_REF(post_movement_checks))
 	disconnect_action.Grant(ai)
-	to_chat(ai, span_notice("Established connection with remote circuit."))
+	to_chat(ai, span_notice("Conexão estabelecida com circuito remoto."))
 
 /obj/item/circuit_component/mmi/proc/occupant_or_container_moved(atom/movable/occupant_or_container, atom/old_loc)
 	SIGNAL_HANDLER
@@ -293,7 +293,7 @@
 		for(var/atom/movable/location as anything in get_nested_locs(ai) + ai)
 			RemoveComponentSource(REF(location), /datum/component/shuttle_move_deferred_checks)
 		ai.reset_perspective(null)
-		to_chat(ai, span_notice("Disconnected from remote circuit."))
+		to_chat(ai, span_notice("Desligado do circuito remoto."))
 	occupant.remote_control = null
 	UnregisterSignal(occupant, list(COMSIG_MOB_CLICKON, COMSIG_QDELETING))
 	occupant = null

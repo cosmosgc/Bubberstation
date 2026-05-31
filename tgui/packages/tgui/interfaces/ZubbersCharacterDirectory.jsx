@@ -15,22 +15,22 @@ import { Window } from '../layouts';
 const erpTagColor = {
   Unset: '#000000',
   'Top - Dom': '#410308',
-  'Top - Switch': '#410308',
+  'Topo - Troque': '#410308',
   'Top - Sub': '#410308',
-  'Verse-Top - Dom': '#3d003b',
-  'Verse-Top - Switch': '#3d003b',
-  'Verse-Top - Sub': '#3d003b',
-  'Verse - Dom': '#310042',
-  'Verse - Switch': '#310042',
-  'Verse - Sub': '#310042',
-  'Verse-Bottom - Dom': '#29084b',
-  'Verse-Bottom - Switch': '#29084b',
-  'Verse-Bottom - Sub': '#29084b',
-  'Bottom - Dom': '#002f51',
-  'Bottom - Switch': '#002f51',
-  'Bottom - Sub': '#002f51',
-  'Check OOC Notes': '#333333',
-  'Ask (L)OOC': '#333333',
+  'Versículo Top - Dom': '#3d003b',
+  'Versículo-Top - Troque': '#3d003b',
+  'Versículo Top - Sub': '#3d003b',
+  'Versículo - Dom': '#310042',
+  'Versículo - Troca': '#310042',
+  'Versículo - Sub': '#310042',
+  'Versículo-Bottom - Dom': '#29084b',
+  'Versículo-Bottom - Troque': '#29084b',
+  'Versículo-Bottom - Sub': '#29084b',
+  'Fundo, Dom.': '#002f51',
+  'Inferior - Interruptor': '#002f51',
+  'Fundo - Sub.': '#002f51',
+  'Verifique nota como COO': '#333333',
+  'Pergunte (L)OOC': '#333333',
   No: '#131313',
   Yes: '#002901',
 };
@@ -55,7 +55,7 @@ export const ZubbersCharacterDirectory = (props) => {
           <LabeledList>
             <LabeledList.Item label="Visibility">
               <Button fluid>
-                {personalVisibility ? 'Shown' : 'Not Shown'}
+                {personalVisibility ? 'Shown' : 'Não Mostrado'}
               </Button>
             </LabeledList.Item>
             <LabeledList.Item label="Attraction">
@@ -116,23 +116,23 @@ const CharacterDirectoryList = (props) => {
 
   const erpOrder = [
     'Top - Dom',
-    'Top - Switch',
+    'Topo - Troque',
     'Top - Sub',
-    'Bottom - Dom',
-    'Bottom - Switch',
-    'Bottom - Sub',
-    'Verse - Dom',
-    'Verse - Switch',
-    'Verse - Sub',
-    'Verse-Top - Dom',
-    'Verse-Top - Switch',
-    'Verse-Top - Sub',
-    'Verse-Bottom - Dom',
-    'Verse-Bottom - Switch',
-    'Verse-Bottom - Sub',
+    'Fundo, Dom.',
+    'Inferior - Interruptor',
+    'Fundo - Sub.',
+    'Versículo - Dom',
+    'Versículo - Troca',
+    'Versículo - Sub',
+    'Versículo Top - Dom',
+    'Versículo-Top - Troque',
+    'Versículo Top - Sub',
+    'Versículo-Bottom - Dom',
+    'Versículo-Bottom - Troque',
+    'Versículo-Bottom - Sub',
     'Yes',
-    'Check OOC Notes',
-    'Ask (L)OOC',
+    'Verifique nota como COO',
+    'Pergunte (L)OOC',
     'No',
     'Unset',
   ];
@@ -156,16 +156,16 @@ const CharacterDirectoryList = (props) => {
           <Button icon="sync" onClick={() => act('refresh')}>
             {'Refresh'}
           </Button>
-          <Tooltip content="Display a random player's advert. Click if you dare.">
+          <Tooltip content="Mostre o anúncio de um jogador aleatório. Clique se ousar.">
             <Button icon="random" onClick={handleRandomView}>
-              {'I Feel Lucky'}
+              {'Sinto-me com sorte.'}
             </Button>
           </Tooltip>
         </>
       }
     >
       <Input
-        placeholder="Search name..."
+        placeholder="Nome da pesquisa..."
         onChange={setSearchTerm}
         value={searchTerm}
         mb={2}
@@ -291,7 +291,7 @@ const SortButton = ({ id, sortId, sortOrder, onClick, children }) => (
       {sortId === id && (
         <Icon
           name={sortOrder === 'asc' ? 'sort-up' : 'sort-down'}
-          ml="0.25rem;"
+          ml="0,25rem."
         />
       )}
     </Button>

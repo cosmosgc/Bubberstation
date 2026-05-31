@@ -146,7 +146,7 @@ const Stats = (props) => {
   } = data;
   return (
     <>
-      <Section title="Pet Stats">
+      <Section title="Estátuas de Animais">
         <Flex>
           <Flex.Item>
             <PetIcon our_pet_state={pet_state} />
@@ -182,7 +182,7 @@ const Stats = (props) => {
           </Flex.Item>
         </Flex>
       </Section>
-      <Section title="Pet Location" style={{ padding: '5px' }}>
+      <Section title="Localização do animal de estimação" style={{ padding: '5px' }}>
         <Stack>
           <Stack.Item grow>{pet_area}</Stack.Item>
           <Stack.Item>
@@ -198,7 +198,7 @@ const Stats = (props) => {
       </Section>
       <Stack fill>
         <Stack.Item grow>
-          <Section title="Pet Feed Dropzone">
+          <Section title="Ração de animais de estimação Dropzone">
             <Stack>
               <Stack.Item grow>{selected_area}</Stack.Item>
               <Stack.Item>
@@ -215,7 +215,7 @@ const Stats = (props) => {
                     disabled={!can_reroll}
                     onClick={() => act('get_feed_location')}
                   >
-                    {selected_area === 'No location set'
+                    {selected_area === 'Sem localização definida.'
                       ? 'Generate'
                       : 'Reroll'}
                   </Button>
@@ -256,7 +256,7 @@ const PetTricks = (props) => {
       title={capitalize(TrickName)}
       buttons={
         <Button.Input
-          buttonText="Rename Trick"
+          buttonText="Renomear Trick"
           color="transparent"
           onCommit={setTrickName}
         />
@@ -326,7 +326,7 @@ const Customization = (props) => {
   );
   return (
     <>
-      <Section title="Pet Preview" textAlign="center">
+      <Section title="Previsão do animal de estimação" textAlign="center">
         <Image
           m={1}
           src={`data:image/jpeg;base64,${preview_icon}`}
@@ -335,13 +335,13 @@ const Customization = (props) => {
           style={{
             verticalAlign: 'middle',
             borderRadius: '1em',
-            border: '1px solid white',
+            border: '1px branco sólido',
           }}
         />
       </Section>
       <Stack>
         <Stack.Item width="50%">
-          <Section title="Pet Name">
+          <Section title="Nome do animal de estimação">
             <Input
               fluid
               maxLength={30}
@@ -351,7 +351,7 @@ const Customization = (props) => {
           </Section>
         </Stack.Item>
         <Stack.Item width="50%">
-          <Section title="Pet Hat">
+          <Section title="Chapéu de estimação">
             <Dropdown
               selected={selectedHat?.hat_name}
               options={hat_selections.map((selected_hat) => {
@@ -366,7 +366,7 @@ const Customization = (props) => {
       </Stack>
       <Stack mt={0.5}>
         <Stack.Item width="50%">
-          <Section title="Pet Color">
+          <Section title="Cor do animal de estimação">
             <Dropdown
               selected={selectedColor?.color_name}
               options={possible_colors.map((possible_color) => {
@@ -379,7 +379,7 @@ const Customization = (props) => {
           </Section>
         </Stack.Item>
         <Stack.Item width="50%">
-          <Section title="Pet Gender">
+          <Section title="Gênero de animais de estimação">
             <Stack>
               <Stack.Item grow>
                 <Button
@@ -432,19 +432,19 @@ const AllPetUpdates = (props) => {
   const { pet_updates } = data;
 
   return (
-    <Section title="Pet Updates" fill>
+    <Section title="Atualizações de animais de estimação" fill>
       <Stack vertical>
         {pet_updates.map((update) => (
           <Stack.Item key={update.update_id} mt={3}>
             <Box
               textAlign="center"
-              style={{ borderRadius: '1em', border: '1px solid white' }}
+              style={{ borderRadius: '1em', border: '1px branco sólido' }}
             >
               <Flex>
                 <Flex.Item
                   width="25%"
                   style={{
-                    borderRight: '1px solid white',
+                    borderRight: '1px branco sólido',
                   }}
                 >
                   <Stack vertical>
@@ -516,7 +516,7 @@ const PetIcon = (props) => {
           style={{
             verticalAlign: 'middle',
             borderRadius: '1em',
-            border: '1px solid white',
+            border: '1px branco sólido',
           }}
         />
       </Stack.Item>

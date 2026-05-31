@@ -7,9 +7,9 @@ const firstRow = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36] as const;
 const secondRow = [2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35] as const;
 const thirdRow = [1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34] as const;
 const fourthRow = {
-  's1-12': '1st 12',
-  's13-24': '2nd 12',
-  's25-36': '3rd 12',
+  's1-12': '1o 12o.',
+  's13-24': '2o 12o',
+  's25-36': '3o 12o',
 } as const;
 const fifthRow = [
   { color: 'transparent', text: '1-18', value: 's1-18' },
@@ -42,8 +42,8 @@ export function RouletteBoard(props) {
           ))}
           <RouletteNumberCell
             color="transparent"
-            text="2 to 1"
-            value="s3rd col"
+            text="2 a 1"
+            value="S3rd col"
           />
         </Table.Row>
         <Table.Row>
@@ -57,8 +57,8 @@ export function RouletteBoard(props) {
           ))}
           <RouletteNumberCell
             color="transparent"
-            text="2 to 1"
-            value="s2nd col"
+            text="2 a 1"
+            value="S2nd Col"
           />
         </Table.Row>
         <Table.Row>
@@ -72,8 +72,8 @@ export function RouletteBoard(props) {
           ))}
           <RouletteNumberCell
             color="transparent"
-            text="2 to 1"
-            value="s1st col"
+            text="2 a 1"
+            value="S1st col"
           />
         </Table.Row>
         <Table.Row>

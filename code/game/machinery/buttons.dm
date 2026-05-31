@@ -1,6 +1,6 @@
 /obj/machinery/button
 	name = "button"
-	desc = "A remote control switch."
+	desc = "Um interruptor de controle remoto."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	base_icon_state = "button"
 	icon_state = "button"
@@ -140,28 +140,28 @@
 
 /obj/machinery/button/proc/assembly_act(mob/living/user, obj/item/assembly/new_device)
 	if(device)
-		to_chat(user, span_warning("The button already contains a device!"))
+		to_chat(user, span_warning("O botão já contém um dispositivo!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!(new_device.assembly_behavior & ASSEMBLY_FUNCTIONAL_OUTPUT))
-		to_chat(user, span_warning("\The [new_device] won't really do anything meaningful inside of the button..."))
+		to_chat(user, span_warning("\The [new_device]Não fará nada significativo dentro do botão..."))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(new_device, src, silent = FALSE))
-		to_chat(user, span_warning("\The [new_device] is stuck to you!"))
+		to_chat(user, span_warning("\The [new_device]Está preso a você!"))
 		return ITEM_INTERACT_BLOCKING
 
 	device = new_device
 	SEND_SIGNAL(new_device, COMSIG_ASSEMBLY_ADDED_TO_BUTTON, src, user)
-	to_chat(user, span_notice("You add \the [new_device] to the button."))
+	to_chat(user, span_notice("Você acrescenta\the [new_device]No botão."))
 
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/button/proc/airlock_electronics_act(mob/living/user, obj/item/electronics/airlock/new_board)
 	if(board)
-		to_chat(user, span_warning("The button already contains a board!"))
+		to_chat(user, span_warning("O botão já contém uma tábua!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(new_board, src, silent = FALSE))
-		to_chat(user, span_warning("\The [new_board] is stuck to you!"))
+		to_chat(user, span_warning("\The [new_board]Está preso a você!"))
 		return ITEM_INTERACT_BLOCKING
 
 	board = new_board
@@ -169,7 +169,7 @@
 		req_one_access = board.accesses
 	else
 		req_access = board.accesses
-	to_chat(user, span_notice("You add \the [new_board] to the button."))
+	to_chat(user, span_notice("Você acrescenta\the [new_board]No botão."))
 
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -184,16 +184,16 @@
 
 /obj/machinery/button/wrench_act(mob/living/user, obj/item/tool)
 	if(!panel_open)
-		balloon_alert(user, "open button first!")
+		balloon_alert(user, "Abra o botão primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(device || board)
-		balloon_alert(user, "empty button first!")
+		balloon_alert(user, "Primeiro o botão vazio!")
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You start unsecuring the button frame..."))
+	to_chat(user, span_notice("Você começa a insegurar a moldura do botão..."))
 	if(tool.use_tool(src, user, 40, volume=50))
-		to_chat(user, span_notice("You unsecure the button frame."))
+		to_chat(user, span_notice("Você não protege a moldura do botão."))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 		deconstruct(TRUE)
 
@@ -220,7 +220,7 @@
 	// The device inside can be emagged by swiping the button
 	// returning TRUE will prevent feedback (so we can do our own)
 	if(!device?.emag_act(user, emag_card))
-		balloon_alert(user, "access overridden")
+		balloon_alert(user, "Acesso anulado")
 	return TRUE
 
 /obj/machinery/button/attack_ai(mob/user)
@@ -252,12 +252,12 @@
 	if(can_alter_skin)
 		if(skin == "")
 			skin = "-warning"
-			to_chat(user, span_notice("You change the button frame's front panel to warning lines."))
+			to_chat(user, span_notice("Você muda o painel frontal do botão para linhas de aviso."))
 		else
 			skin = ""
-			to_chat(user, span_notice("You change the button frame's front panel to default."))
+			to_chat(user, span_notice("Você muda o painel dianteiro do botão para padrão."))
 		update_appearance(UPDATE_ICON)
-		balloon_alert(user, "style swapped")
+		balloon_alert(user, "Estilo trocado.")
 
 /obj/machinery/button/attack_hand_secondary(mob/user, list/modifiers)
 	if(!initialized_button)
@@ -279,13 +279,13 @@
 /obj/machinery/button/proc/remove_assembly(mob/user)
 	SEND_SIGNAL(device, COMSIG_ASSEMBLY_REMOVED_FROM_BUTTON, src, user)
 	user.put_in_hands(device)
-	to_chat(user, span_notice("You remove \the [device] from the button frame."))
+	to_chat(user, span_notice("Você tira.\the [device]Da moldura do botão."))
 	device = null
 	update_appearance(UPDATE_ICON)
 
 /obj/machinery/button/proc/remove_airlock_electronics(mob/user)
 	user.put_in_hands(board)
-	to_chat(user, span_notice("You remove the board from the button frame."))
+	to_chat(user, span_notice("Você remove o quadro do botão."))
 	req_access = list()
 	req_one_access = list()
 	board = null
@@ -337,11 +337,11 @@
 	if(!panel_open)
 		return
 	if(device)
-		. += span_notice("There is \a [device] inside, which could be removed with an <b>empty hand</b>.")
+		. += span_notice("Há\a [device]dentro, que poderia ser removido com um<b>Mão vazia</b>.")
 	if(board)
-		. += span_notice("There is \a [board] inside, which could be removed with an <b>empty hand</b>.")
+		. += span_notice("Há\a [board]dentro, que poderia ser removido com um<b>Mão vazia</b>.")
 	if(isnull(board) && isnull(device))
-		. += span_notice("There is nothing currently installed in \the [src].")
+		. += span_notice("Não há nada atualmente instalado em\the [src].")
 
 /obj/machinery/button/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(panel_open)
@@ -388,7 +388,7 @@
 
 /obj/machinery/button/door
 	name = "door button"
-	desc = "A door remote control switch."
+	desc = "Um interruptor de controle remoto da porta."
 	var/normaldoorcontrol = FALSE
 	var/specialfunctions = OPEN // Bitflag, see assembly file
 	var/sync_doors = TRUE
@@ -447,7 +447,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/door, 24)
 
 /obj/machinery/button/massdriver
 	name = "mass driver button"
-	desc = "A remote control switch for a mass driver."
+	desc = "Um interruptor de controle remoto para um motorista em massa."
 	icon_state= "button-warning"
 	skin = "-warning"
 	device_type = /obj/item/assembly/control/massdriver
@@ -457,7 +457,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/door, 24)
 
 /obj/machinery/button/ignition
 	name = "ignition switch"
-	desc = "A remote control switch for a mounted igniter."
+	desc = "Um interruptor de controle remoto para uma ignição montada."
 	icon_state= "button-warning"
 	skin = "-warning"
 	device_type = /obj/item/assembly/control/igniter
@@ -467,7 +467,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/door, 24)
 
 /obj/machinery/button/ignition/incinerator
 	name = "combustion chamber ignition switch"
-	desc = "A remote control switch for the combustion chamber's igniter."
+	desc = "Um interruptor de controle remoto para a ignição da câmara de combustão."
 
 /obj/machinery/button/ignition/incinerator/ordmix
 	id = INCINERATOR_ORDMIX_IGNITER
@@ -480,7 +480,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/door, 24)
 
 /obj/machinery/button/flasher
 	name = "flasher button"
-	desc = "A remote control switch for a mounted flasher."
+	desc = "Um interruptor de controle remoto para um piscador montado."
 	icon_state= "button-warning"
 	skin = "-warning"
 	device_type = /obj/item/assembly/control/flasher
@@ -490,7 +490,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/door, 24)
 
 /obj/machinery/button/curtain
 	name = "curtain button"
-	desc = "A remote control switch for a mechanical curtain."
+	desc = "Um controle remoto para uma cortina mecânica."
 	icon_state= "button-warning"
 	skin = "-warning"
 	device_type = /obj/item/assembly/control/curtain
@@ -504,7 +504,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/door, 24)
 
 /obj/machinery/button/crematorium
 	name = "crematorium igniter"
-	desc = "Burn baby burn!"
+	desc = "Queime o bebê!"
 	icon_state= "button-warning"
 	skin = "-warning"
 	device_type = /obj/item/assembly/control/crematorium
@@ -516,7 +516,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/door, 24)
 
 /obj/item/wallframe/button
 	name = "button frame"
-	desc = "Used for building buttons."
+	desc = "Usado para construir botões."
 	icon_state = "button"
 	result_path = /obj/machinery/button
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)

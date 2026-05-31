@@ -4,15 +4,15 @@
 	icon = 'icons/obj/toys/chess.dmi'
 	icon_state = "white_pawn"
 	name = "\improper Probably a White Pawn"
-	desc = "This is weird. Please inform administration on how you managed to get the parent chess piece. Thanks!"
+	desc = "Isso é estranho. Por favor, informe a administração sobre como conseguiu a peça de xadrez dos pais. Obrigado!"
 	max_integrity = 100
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2)
 
 /obj/structure/chess/wrench_act(mob/user, obj/item/tool)
 	if(flags_1 & HOLOGRAM_1)
-		balloon_alert(user, "it goes right through!")
+		balloon_alert(user, "Passa direto!")
 		return TRUE
-	to_chat(user, span_notice("You start to take apart the chess piece."))
+	to_chat(user, span_notice("Começa a desmontar a peça de xadrez."))
 	if(!do_after(user, 0.5 SECONDS, target = src))
 		return TRUE
 	var/obj/item/stack/sheet/iron/metal_sheets = new (drop_location(), 2)
@@ -24,85 +24,85 @@
 
 /obj/structure/chess/whitepawn
 	name = "\improper white pawn"
-	desc = "A white pawn chess piece. Get accused of cheating when executing a sick En Passant."
+	desc = "Uma peça de xadrez de peão branco. Ser acusado de trapacear quando executar um En Passant doente."
 	icon_state = "white_pawn"
 
 /obj/structure/chess/whiterook
 	name = "\improper white rook"
-	desc = "A white rook chess piece. Also known as a castle. Can move any number of tiles in a straight line. It has a special move called castling."
+	desc = "Uma peça de xadrez de torre branca. Também conhecido como castelo. Pode mover qualquer número de peças em linha reta. Tem um movimento especial chamado casting."
 	icon_state = "white_rook"
 
 /obj/structure/chess/whiteknight
 	name = "\improper white knight"
-	desc = "A white knight chess piece. It can hop over other pieces, moving in L shapes. A white kni- oh. Hah!"
+	desc = "Uma peça de xadrez de cavaleiro branco. Ele pode pular sobre outras peças, movendo-se em formas L. Um kni branco. Hah!"
 	icon_state = "white_knight"
 
 /obj/structure/chess/whitebishop
 	name = "\improper white bishop"
-	desc = "A white bishop chess piece. It can move any number of tiles in a diagonal line."
+	desc = "Uma peça de xadrez do bispo branco. Pode mover qualquer número de peças em uma linha diagonal."
 	icon_state = "white_bishop"
 
 /obj/structure/chess/whitequeen
 	name = "\improper white queen"
-	desc = "A white queen chess piece. It can move any number of tiles in diagonal and straight lines."
+	desc = "Uma peça de xadrez rainha branca. Ele pode mover qualquer número de azulejos em diagonais e linhas retas."
 	icon_state = "white_queen"
 
 /obj/structure/chess/whiteking
 	name = "\improper white king"
-	desc = "A white king chess piece. It can move one tile in any direction."
+	desc = "Uma peça de xadrez do rei branco. Pode mover um azulejo em qualquer direção."
 	icon_state = "white_king"
 
 /obj/structure/chess/blackpawn
 	name = "\improper black pawn"
-	desc = "A black pawn chess piece. Get accused of cheating when executing a sick En Passant."
+	desc = "Uma peça de xadrez de peão preto. Ser acusado de trapacear quando executar um En Passant doente."
 	icon_state = "black_pawn"
 
 /obj/structure/chess/blackrook
 	name = "\improper black rook"
-	desc = "A black rook chess piece. Also known as a castle. Can move any number of tiles in a straight line. It has a special move called castling."
+	desc = "Uma peça de xadrez preta. Também conhecido como castelo. Pode mover qualquer número de peças em linha reta. Tem um movimento especial chamado casting."
 	icon_state = "black_rook"
 
 /obj/structure/chess/blackknight
 	name = "\improper black knight"
-	desc = "A black knight chess piece. It can hop over other pieces, moving in L shapes."
+	desc = "Uma peça de xadrez cavaleiro negro. Ele pode pular sobre outras peças, movendo-se em formas L."
 	icon_state = "black_knight"
 
 /obj/structure/chess/blackbishop
 	name = "\improper black bishop"
-	desc = "A black bishop chess piece. It can move any number of tiles in a diagonal line."
+	desc = "Uma peça de xadrez de bispo negro. Pode mover qualquer número de peças em uma linha diagonal."
 	icon_state = "black_bishop"
 
 /obj/structure/chess/blackqueen
 	name = "\improper black queen"
-	desc = "A black queen chess piece. It can move any number of tiles in diagonal and straight lines."
+	desc = "Uma peça de xadrez rainha negra. Ele pode mover qualquer número de azulejos em diagonais e linhas retas."
 	icon_state = "black_queen"
 
 /obj/structure/chess/blackking
 	name = "\improper black king"
-	desc = "A black king chess piece. It can move one tile in any direction."
+	desc = "Uma peça de xadrez do rei negro. Pode mover um azulejo em qualquer direção."
 	icon_state = "black_king"
 
 /obj/structure/chess/checker
 	icon_state = "white_checker_man"
 	name = "\improper Probably a White Checker"
-	desc = "This is weird. Please inform administration on how you managed to get the parent checker piece. Thanks!"
+	desc = "Isso é estranho. Por favor, informe a administração sobre como conseguiu a peça de verificação dos pais. Obrigado!"
 
 /obj/structure/chess/checker/whiteman
 	name = "\improper White Checker Man"
-	desc = "A white checker piece. Looks suspiciously like a flattened chess pawn."
+	desc = "Um pedaço de cheque branco. Parece um peão de xadrez achatado."
 	icon_state = "white_checker_man"
 
 /obj/structure/chess/checker/whiteking
 	name = "\improper White Checker Man"
-	desc = "A white checker piece. It's stacked!"
+	desc = "Uma peça de cheque branco. Está empilhado!"
 	icon_state = "white_checker_king"
 
 /obj/structure/chess/checker/blackman
 	name = "\improper Black Checker Man"
-	desc = "A black checker piece. Looks suspiciously like a flattened chess pawn."
+	desc = "Uma peça preta. Parece um peão de xadrez achatado."
 	icon_state = "black_checker_man"
 
 /obj/structure/chess/checker/blackking
 	name = "\improper Black Checker King"
-	desc = "A black checker piece. It's stacked!"
+	desc = "Uma peça preta. Está empilhado!"
 	icon_state = "black_checker_king"

@@ -48,20 +48,20 @@
 
 /obj/item/assembly_holder/proc/try_add_assembly(obj/item/assembly/attached_assembly, mob/user)
 	if(attached_assembly.secured)
-		balloon_alert(user, "not attachable!")
+		balloon_alert(user, "Não é anexável!")
 		return FALSE
 
 	if(LAZYLEN(assemblies) >= HOLDER_MAX_ASSEMBLIES)
-		balloon_alert(user, "too many assemblies!")
+		balloon_alert(user, "Muitas assembléias!")
 		return FALSE
 
 	if(attached_assembly.assembly_flags & ASSEMBLY_NO_DUPLICATES)
 		if(locate(attached_assembly.type) in assemblies)
-			balloon_alert(user, "can't attach another of that!")
+			balloon_alert(user, "Não posso anexar outro!")
 			return FALSE
 
 	add_assembly(attached_assembly, user)
-	balloon_alert(user, "part attached")
+	balloon_alert(user, "Parte anexada")
 	return TRUE
 
 /**
@@ -157,7 +157,7 @@
 /obj/item/assembly_holder/attack_self(mob/user)
 	src.add_fingerprint(user)
 	if(LAZYLEN(assemblies) == 1)
-		balloon_alert(user, "part missing!")
+		balloon_alert(user, "Parte faltando!")
 		return
 
 	for(var/obj/item/assembly/assembly as anything in assemblies)

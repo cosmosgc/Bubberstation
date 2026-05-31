@@ -4,7 +4,7 @@
  */
 /datum/action/cooldown/mob_cooldown/watcher_overwatch
 	name = "Overwatch"
-	desc = "Keep a close eye on the target's actions, automatically firing upon them if they act."
+	desc = "Fique de olho nas ações do alvo, disparando sobre eles automaticamente se agirem."
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
 	button_icon_state = "eye"
 	background_icon_state = "bg_demon"
@@ -45,7 +45,7 @@
 	living_owner.face_atom(target)
 	living_owner.Stun(overwatch_duration, ignore_canstun = TRUE)
 	target.apply_status_effect(/datum/status_effect/overwatch, overwatch_duration, owner, projectile_type, projectile_sound)
-	owner.visible_message(span_warning("[owner]'s eye locks on to [target]!"))
+	owner.visible_message(span_warning("[owner]Olho travado em[target]!"))
 	StartCooldown()
 	return TRUE
 
@@ -145,7 +145,7 @@
 
 /atom/movable/screen/alert/status_effect/overwatch
 	name = "Overwatched"
-	desc = "Freeze! You are being watched!"
+	desc = "Parado! Você está sendo vigiado!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "aimed"
 

@@ -99,4 +99,4 @@
 /datum/component/interaction_booby_trap/proc/on_examine(atom/source, mob/examiner, list/examine_list)
 	SIGNAL_HANDLER
 	var/defuse_hint = (defuse_tool) ? "Perhaps [tool_behaviour_name(defuse_tool)] could help..." : ""
-	examine_list += span_warning("There's a light flashing red inside the maintenance panel. [defuse_hint]")
+	examine_list += span_warning("Há uma luz vermelha piscando dentro do painel de manutenção.[defuse_hint]")

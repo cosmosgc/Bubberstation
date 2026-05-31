@@ -13,8 +13,8 @@ import { NtosWindow } from '../layouts';
 export const NtosCivCargoHoldTerminal = (props) => {
   const { act, data } = useBackend();
   const { status_report, id_inserted, id_bounty_info, picking } = data;
-  const in_text = 'Welcome valued employee.';
-  const out_text = 'To begin, insert your ID into the console.';
+  const in_text = 'Bem-vindo, valioso empregado.';
+  const out_text = 'Para começar, insira sua identidade no console.';
   return (
     <NtosWindow width={580} height={375}>
       <NtosWindow.Content scrollable>
@@ -24,19 +24,19 @@ export const NtosCivCargoHoldTerminal = (props) => {
               {id_inserted ? in_text : out_text}
             </NoticeBox>
             <Section
-              title="Bounty Choice"
+              title="Escolha da recompensa"
               buttons={
                 <Button
                   icon={id_bounty_info ? 'recycle' : 'pen'}
                   color={id_bounty_info ? 'green' : 'default'}
-                  tooltip={id_bounty_info ? 'Replace Bounty' : 'New Bounty'}
+                  tooltip={id_bounty_info ? 'Substituir recompensa' : 'Nova recompensa'}
                   disabled={!id_inserted}
                   onClick={() => act('bounty')}
                 />
               }
             >
               <LabeledList>
-                <LabeledList.Item label="Cargo Report">
+                <LabeledList.Item label="Relatório de Carga">
                   {status_report}
                 </LabeledList.Item>
               </LabeledList>
@@ -52,9 +52,9 @@ export const NtosCivCargoHoldTerminal = (props) => {
 const BountyTextBox = (props) => {
   const { data } = useBackend();
   const { id_bounty_info, id_bounty_value, id_bounty_num } = data;
-  const na_text = 'N/A, please add a new bounty.';
+  const na_text = 'N/A, por favor adicione uma nova recompensa.';
   return (
-    <Section title="Bounty Info">
+    <Section title="Informações sobre recompensas">
       <LabeledList>
         <LabeledList.Item label="Description">
           {id_bounty_info ? id_bounty_info : na_text}
@@ -74,7 +74,7 @@ const BountyPickBox = (props) => {
   const { act, data } = useBackend();
   const { id_bounty_names, id_bounty_infos, id_bounty_values } = data;
   return (
-    <Section title="Please Select a Bounty:" textAlign="center">
+    <Section title="Por favor, selecione uma recompensa:" textAlign="center">
       <Flex width="100%" wrap>
         <Flex.Item shrink={0} grow={0.5}>
           <BountyPickButton

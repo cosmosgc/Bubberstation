@@ -2,7 +2,7 @@
 
 /datum/action/cooldown/mob_cooldown/bot/build_girder
 	name = "Build Girder"
-	desc = "Use iron rods to build a girder!"
+	desc = "Use barras de ferro para construir uma viga!"
 	button_icon = 'icons/obj/structures.dmi'
 	button_icon_state = "girder"
 	cooldown_time = 5 SECONDS
@@ -21,12 +21,12 @@
 	if(DOING_INTERACTION(owner, BUILDING_WALL_ABILITY))
 		return TRUE
 	if(!isopenturf(target) || isgroundlessturf(target))
-		owner.balloon_alert(owner, "cant build here!")
+		owner.balloon_alert(owner, "Não posso construir aqui!")
 		return TRUE
 	var/obj/item/stack/rods/our_rods = locate() in owner
 	var/turf/turf_target = target
 	if(turf_target.is_blocked_turf())
-		owner.balloon_alert(owner, "bloqueado!")
+		owner.balloon_alert(owner, "Bloqueado!")
 		return TRUE
 	var/obj/effect/constructing_effect/effect = new(turf_target, 3 SECONDS)
 
@@ -43,7 +43,7 @@
 
 /datum/action/repairbot_resources
 	name = "Resources"
-	desc = "Manage your resources."
+	desc = "Gerencie seus recursos."
 	button_icon = 'icons/obj/stack_objects.dmi'
 	button_icon_state = "sheet-metal_3"
 	background_icon_state = "bg_tech_blue"
@@ -100,7 +100,7 @@
 			if(isnull(my_sheet))
 				return
 			if(is_type_in_typecache(my_sheet, eject_blacklist))
-				to_chat(owner, span_warning("You're unable to eject [my_sheet]!"))
+				to_chat(owner, span_warning("Você é incapaz de ejetar[my_sheet]!"))
 				return
 
 			my_sheet.forceMove(owner.drop_location())

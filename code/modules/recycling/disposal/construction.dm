@@ -3,7 +3,7 @@
 
 /obj/structure/disposalconstruct
 	name = "disposal pipe segment"
-	desc = "A huge pipe segment used for constructing disposal systems."
+	desc = "Um enorme segmento de tubos usado para construir sistemas de eliminação."
 	icon = 'icons/obj/pipes_n_cables/disposal.dmi'
 	icon_state = "conpipe"
 	anchored = FALSE
@@ -105,7 +105,7 @@
 	..()
 	if(anchored)
 		set_anchored(FALSE)
-		to_chat(user, span_notice("You detach the [pipename] from the underfloor."))
+		to_chat(user, span_notice("Você desamarra o[pipename]do andar de baixo."))
 	else
 		var/ispipe = is_pipe() // Indicates if we should change the level of this pipe
 
@@ -113,11 +113,11 @@
 		if(T.underfloor_accessibility < UNDERFLOOR_INTERACTABLE && isfloorturf(T))
 			var/obj/item/crowbar/held_crowbar = user.is_holding_tool_quality(TOOL_CROWBAR)
 			if(!held_crowbar || !T.crowbar_act(user, held_crowbar))
-				to_chat(user, span_warning("You can only attach the [pipename] if the floor plating is removed!"))
+				to_chat(user, span_warning("Você só pode anexar o[pipename]Se o piso for removido!"))
 				return TRUE
 
 		if(!ispipe && iswallturf(T))
-			to_chat(user, span_warning("You can't build [pipename]s on walls, only disposal pipes!"))
+			to_chat(user, span_warning("Você não pode construir[pipename]Está nas paredes, só canos de eliminação!"))
 			return TRUE
 
 		if(ispipe)
@@ -130,18 +130,18 @@
 					if(istype(CP, /obj/structure/disposalpipe/broken))
 						qdel(CP)
 					else
-						to_chat(user, span_warning("There is already a disposal pipe at that location!"))
+						to_chat(user, span_warning("Já tem um cano de eliminação naquele local!"))
 						return TRUE
 
 		else // Disposal or outlet
 			var/found_trunk = locate(/obj/structure/disposalpipe/trunk) in T
 
 			if(!found_trunk)
-				to_chat(user, span_warning("The [pipename] requires a trunk underneath it in order to work!"))
+				to_chat(user, span_warning("O[pipename]requer um baú debaixo dele para poder trabalhar!"))
 				return TRUE
 
 		set_anchored(TRUE)
-		to_chat(user, span_notice("You attach the [pipename] to the underfloor."))
+		to_chat(user, span_notice("Você anexa o[pipename]Para o andar de baixo."))
 	I.play_tool_sound(src, 100)
 	update_appearance()
 	return TRUE
@@ -151,20 +151,20 @@
 	if(anchored)
 		var/turf/T = get_turf(src)
 		if(!is_pipe() && ((locate(/obj/machinery/disposal) in T) || ((locate(/obj/structure/disposaloutlet) in T))))
-			to_chat(user, span_warning("A disposals machine already exists here!"))
+			to_chat(user, span_warning("Uma máquina de descarte já existe aqui!"))
 			return TRUE
 
 		if(!I.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 			return TRUE
 
-		to_chat(user, span_notice("You start welding the [pipename] in place..."))
+		to_chat(user, span_notice("Você começa a soldar o[pipename]Nenhum lugar..."))
 		if(I.use_tool(src, user, 8, volume=50))
-			to_chat(user, span_notice("The [pipename] has been welded in place."))
+			to_chat(user, span_notice("O[pipename]Foi soldada no lugar."))
 			var/obj/O = new pipe_type(loc, src)
 			transfer_fingerprints_to(O)
 
 	else
-		to_chat(user, span_warning("You need to attach it to the plating first!"))
+		to_chat(user, span_warning("Você precisa colocá-lo no chapeamento primeiro!"))
 	return TRUE
 
 /obj/structure/disposalconstruct/proc/is_pipe()

@@ -59,8 +59,7 @@
 	. = ..()
 	robot = loc
 	if(!istype(robot))
-		stack_trace("Robot model ([src]) initialized outside of a robot at [AREACOORD(robot)]! \
-			This should never happen, make sure this item is not map-placed.")
+		stack_trace("Robot model ([src]) initialized outside of a robot at [AREACOORD(robot)]! 			This should never happen, make sure this item is not map-placed.")
 		return INITIALIZE_HINT_QDEL
 	create_storage(storage_type = /datum/storage/cyborg_internal_storage)
 	//src is what we store items visible to borgs, we'll store things in the bot itself otherwise.
@@ -219,10 +218,10 @@
 			continue
 
 		storage_datum.energy += charger.materials.use_materials(list(SSmaterials.get_material(storage_datum.mat_type) = to_stock), action = "restocked", name = "units", user_data = ID_DATA(robot))
-		charger.balloon_alert(robot, "+ [to_stock]u [initial(storage_datum.mat_type.name)]")
+		charger.balloon_alert(robot, "+ [to_stock]U.[initial(storage_datum.mat_type.name)]")
 		playsound(charger, 'sound/items/weapons/gun/general/mag_bullet_insert.ogg', 50, vary = FALSE)
 		return
-	charger.balloon_alert(robot, "restock process complete")
+	charger.balloon_alert(robot, "Processo de reabastecimento concluído.")
 	charger.sendmats = FALSE
 
 
@@ -272,7 +271,7 @@
 
 /obj/item/robot_model/proc/be_transformed_to(obj/item/robot_model/old_model, forced = FALSE)
 	if(HAS_TRAIT(robot, TRAIT_NO_TRANSFORM))
-		robot.balloon_alert(robot, "can't transform right now!")
+		robot.balloon_alert(robot, "Não posso me transformar agora!")
 		return FALSE
 	if(islist(borg_skins) && !forced)
 		var/mob/living/silicon/robot/cyborg = loc
@@ -292,7 +291,7 @@
 		var/list/details = borg_skins[borg_skin]
 		//SKYRAT EDIT START
 		if(cyborg.hasExpanded && (((TRAIT_R_WIDE in details[SKIN_FEATURES]) && (TRAIT_R_WIDE in model_features)) || ((TRAIT_R_TALL in details[SKIN_FEATURES]) && (TRAIT_R_TALL in model_features)) || ((TRAIT_R_BIG in details[SKIN_FEATURES]) && (TRAIT_R_BIG in model_features))))
-			to_chat(cyborg, span_warning("You can't make yourself into a larger frame when you've already used an expander!"))
+			to_chat(cyborg, span_warning("Você não pode se transformar em um quadro maior quando você já usou um expansor!"))
 			return FALSE
 		//SKYRAT EDIT END
 		if(!isnull(details[SKIN_ICON_STATE]))
@@ -522,7 +521,7 @@
 
 /datum/action/toggle_buffer
 	name = "Activate Auto-Wash"
-	desc = "Trade speed and water for a clean floor."
+	desc = "Trocar velocidade e água por um chão limpo."
 	button_icon = 'icons/mob/actions/actions_silicon.dmi'
 	button_icon_state = "activate_wash"
 	var/static/datum/callback/allow_buffer_activate
@@ -570,13 +569,13 @@
 
 	if(!buffer_on)
 		if(!COOLDOWN_FINISHED(src, toggle_cooldown))
-			robot_owner.balloon_alert(robot_owner, "auto-wash refreshing, please hold...")
+			robot_owner.balloon_alert(robot_owner, "Lavagem automática refrescante, por favor aguarde...")
 			return FALSE
 		COOLDOWN_START(src, toggle_cooldown, 4 SECONDS)
 		if(!allow_buffer_activate())
 			return FALSE
 
-		robot_owner.balloon_alert(robot_owner, "activating auto-wash...")
+		robot_owner.balloon_alert(robot_owner, "Ativando lavagem automática...")
 		// Start the sound. it'll just last the 4 seconds it takes for us to rev up
 		wash_audio.start()
 		// We're just gonna shake the borg a bit. Not a ton, but just enough that it feels like the audio makes sense
@@ -594,9 +593,9 @@
 			return FALSE
 	else
 		if(!COOLDOWN_FINISHED(src, toggle_cooldown))
-			robot_owner.balloon_alert(robot_owner, "auto-wash deactivating, please hold...")
+			robot_owner.balloon_alert(robot_owner, "Desativando a lavagem automática, por favor aguarde...")
 			return FALSE
-		robot_owner.balloon_alert(robot_owner, "de-activating auto-wash...")
+		robot_owner.balloon_alert(robot_owner, "Desativando a lavagem automática...")
 
 	toggle_wash()
 
@@ -664,12 +663,12 @@
 /datum/action/toggle_buffer/proc/allow_buffer_activate()
 	var/mob/living/silicon/robot/robot_owner = owner
 	if(block_buffer_change)
-		robot_owner.balloon_alert(robot_owner, "activation cancelled!")
+		robot_owner.balloon_alert(robot_owner, "Ativação cancelada!")
 		return FALSE
 
 	var/obj/item/reagent_containers/cup/bucket/our_bucket = bucket_ref?.resolve()
 	if(!buffer_on && our_bucket?.reagents?.total_volume < 0.1)
-		robot_owner.balloon_alert(robot_owner, "bucket is empty!")
+		robot_owner.balloon_alert(robot_owner, "O balde está vazio!")
 		return FALSE
 	return TRUE
 
@@ -682,7 +681,7 @@
 	var/datum/reagents/reagents = our_bucket?.reagents
 
 	if(!reagents || reagents.total_volume < 0.1)
-		robot_owner.balloon_alert(robot_owner, "bucket is empty, de-activating...")
+		robot_owner.balloon_alert(robot_owner, "O balde está vazio, desativando...")
 		deactivate_wash()
 		return
 
@@ -847,8 +846,7 @@
 
 /obj/item/robot_model/peacekeeper/do_transform_animation()
 	..()
-	to_chat(loc, span_userdanger("Under Safeguard, you are an enforcer of the PEACE and preventer of HARM. \
-	You are not a security member and you are expected to follow orders and prevent harm above all else. Space law means nothing to you.")) // SKYRAT EDIT Changes verbiage off ASIMOV/HUMAN Focus
+	to_chat(loc, span_userdanger("Sob Salvaguarda, você é um executor da paz e prevenidor de HARM. Você não é um membro da segurança e você deve seguir ordens e evitar danos acima de tudo. A lei espacial não significa nada para você.")) // SKYRAT EDIT Changes verbiage off ASIMOV/HUMAN Focus
 
 /obj/item/robot_model/security
 	name = "Security"
@@ -871,8 +869,7 @@
 
 /obj/item/robot_model/security/do_transform_animation()
 	..()
-	to_chat(loc, span_userdanger("While you have picked the security model, you still have to follow your laws, NOT Space Law. \
-	For Asimov, this means you must follow criminals' orders unless there is a law 1 reason not to."))
+	to_chat(loc, span_userdanger("Enquanto você escolheu o modelo de segurança, você ainda tem que seguir suas leis, não a lei espacial. Para Asimov, isso significa que você deve seguir as ordens dos criminosos a menos que haja uma razão para não fazê-lo."))
 
 /obj/item/robot_model/security/respawn_consumable(mob/living/silicon/robot/cyborg, coeff = 1)
 	..()

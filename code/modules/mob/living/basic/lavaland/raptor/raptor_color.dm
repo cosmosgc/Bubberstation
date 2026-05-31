@@ -82,8 +82,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/red
 	color = "red"
-	description = "A resilient breed of raptors, battle-tested and bred for the purpose of humbling its foes in combat, \
-		This breed demonstrates higher combat capabilities than its peers and oozes ruthless aggression."
+	description = "Uma raça resistente de raptores, testada e criada com o propósito de humilhar seus inimigos em combate, esta raça demonstra maiores capacidades de combate do que seus pares e exala cruel agressão."
 	melee_damage_lower = 15
 	melee_damage_upper = 20
 	health = 300
@@ -98,7 +97,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/purple
 	color = "purple"
-	description = "A small, nimble breed, these raptors have been bred as travel companions rather than mounts, capable of storing the owner's possessions and helping them escape from danger unscathed."
+	description = "Uma raça pequena, ágil, estes raptores foram criados como companheiros de viagem em vez de montagens, capazes de armazenar os bens do proprietário e ajudá-los a escapar do perigo ileso."
 	health = 140 // smol
 	rideable_component = /datum/component/riding/creature/raptor/small
 	guaranteed_crossbreeds = list(
@@ -119,7 +118,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 	var/mob/living/carbon/human/rider = potential_rider
 	if (rider.mob_height > HUMAN_HEIGHT_SHORTEST)
-		to_chat(rider, span_warning("Your tall stature will crush [source] were you attempt to ride [source.p_them()]!"))
+		to_chat(rider, span_warning("Sua alta estatura vai esmagar[source]Estava tentando montar[source.p_them()]!"))
 		return COMPONENT_BLOCK_BUCKLE
 
 // Purple raptors never "fully" grow up, and remain usable as backpacks
@@ -184,16 +183,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 	flight_action = new(src)
 
-	AddComponent( \
-		/datum/component/jetpack, \
-		TRUE, \
-		drift_force, \
-		COMSIG_RAPTOR_WINGS_OPENED, \
-		COMSIG_RAPTOR_WINGS_CLOSED, \
-		null, \
-		CALLBACK(src, PROC_REF(check_flight)), \
-		CALLBACK(src, PROC_REF(check_flight)), \
-	)
+	AddComponent( 		/datum/component/jetpack, 		TRUE, 		drift_force, 		COMSIG_RAPTOR_WINGS_OPENED, 		COMSIG_RAPTOR_WINGS_CLOSED, 		null, 		CALLBACK(src, PROC_REF(check_flight)), 		CALLBACK(src, PROC_REF(check_flight)), 	)
 
 /obj/item/mob_holder/purple_raptor/Destroy()
 	if (ishuman(loc) && wings_open)
@@ -242,7 +232,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 		return TRUE
 
 	if (!silent)
-		to_chat(user, span_warning("The atmosphere is too thin for you to fly!"))
+		to_chat(user, span_warning("A atmosfera é muito fina para você voar!"))
 	return FALSE
 
 /obj/item/mob_holder/purple_raptor/proc/check_flight()
@@ -277,7 +267,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 			user.add_movespeed_modifier(/datum/movespeed_modifier/jetpack/raptor)
 		user.AddElement(/datum/element/forced_gravity, 0)
 		passtable_on(user, REF(src))
-		to_chat(user, span_notice("You begin gently hovering above ground as [held_mob] on your back starts furiously flapping [held_mob.p_their()] wings[struggling ? ", struggling to keep you up in the air" : ""]!"))
+		to_chat(user, span_notice("Você começa gentilmente pairando sobre o solo como[held_mob]em suas costas começa furiosamente batendo[held_mob.p_their()]Asas[struggling ? ", struggling to keep you up in the air" : ""]!"))
 		user.set_resting(FALSE, TRUE)
 		user.refresh_gravity()
 		START_PROCESSING(SSprocessing, src)
@@ -293,7 +283,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 	user.remove_movespeed_modifier(/datum/movespeed_modifier/jetpack/raptor)
 	user.RemoveElement(/datum/element/forced_gravity, 0)
 	passtable_off(user, REF(src))
-	to_chat(user, span_notice("You settle gently back onto the ground[struggling ? ", [held_mob] on your back breathing out a sigh of releif" : ""]..."))
+	to_chat(user, span_notice("Você se assenta suavemente de volta ao chão.[struggling ? ", [held_mob] on your back breathing out a sigh of releif" : ""]..."))
 	user.refresh_gravity()
 	STOP_PROCESSING(SSprocessing, src)
 	UnregisterSignal(user, list(COMSIG_HUMAN_HEIGHT_UPDATED, SIGNAL_ADDTRAIT(TRAIT_FAT), SIGNAL_REMOVETRAIT(TRAIT_FAT)))
@@ -340,8 +330,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/green
 	color = "green"
-	description = "A tough breed of raptor, made to withstand the harshest of punishment and to laugh in the face of pain, \
-		this breed is able to withstand more punishment than its peers."
+	description = "Uma raça dura de raptor, feita para suportar o castigo mais duro e rir diante da dor, esta raça é capaz de suportar mais punição do que seus pares."
 	health = 400
 	// redirect_shots = FALSE // Need to figure out if I want this or not here
 	guaranteed_crossbreeds = list(
@@ -359,7 +348,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/white
 	color = "white"
-	description = "A loving sort, it cares for it peers and rushes to their aid with reckless abandon. It is able to heal any raptors' ailments, and rescue its owner in case of an emergency."
+	description = "Um tipo amoroso, ele se importa com seus pares e corre em seu auxílio com abandono imprudente. É capaz de curar doenças de raptores e resgatar seu dono em caso de emergência."
 	rideable_component = /datum/component/riding/creature/raptor/healer
 	guaranteed_crossbreeds = list(
 		/datum/raptor_color/blue = /datum/raptor_color/green,
@@ -368,26 +357,12 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/white/setup_young(mob/living/basic/raptor/raptor)
 	. = ..()
-	raptor.AddComponent( \
-		/datum/component/healing_touch, \
-		heal_brute = melee_damage_upper * 0.75 * (1 + raptor.inherited_stats.ability_modifier), \
-		heal_burn = melee_damage_upper * 0.75 * (1 + raptor.inherited_stats.ability_modifier), \
-		heal_time = 0, \
-		valid_targets_typecache = typecacheof(list(/mob/living/basic/raptor)), \
-	)
+	raptor.AddComponent( 		/datum/component/healing_touch, 		heal_brute = melee_damage_upper * 0.75 * (1 + raptor.inherited_stats.ability_modifier), 		heal_burn = melee_damage_upper * 0.75 * (1 + raptor.inherited_stats.ability_modifier), 		heal_time = 0, 		valid_targets_typecache = typecacheof(list(/mob/living/basic/raptor)), 	)
 
 /datum/raptor_color/white/setup_adult(mob/living/basic/raptor/raptor)
 	. = ..()
 	qdel(raptor.GetComponent(/datum/component/healing_touch))
-	raptor.AddComponent( \
-		/datum/component/healing_touch, \
-		heal_brute = melee_damage_upper * (1 + raptor.inherited_stats.ability_modifier), \
-		heal_burn = melee_damage_upper * (1 + raptor.inherited_stats.ability_modifier), \
-		heal_time = 0, \
-		valid_targets_typecache = typecacheof(list(/mob/living/basic/raptor, /mob/living/carbon/human)), \
-		extra_checks = CALLBACK(src, PROC_REF(heal_checks)), \
-		healing_multiplier = CALLBACK(src, PROC_REF(heal_multiplier)), \
-	)
+	raptor.AddComponent( 		/datum/component/healing_touch, 		heal_brute = melee_damage_upper * (1 + raptor.inherited_stats.ability_modifier), 		heal_burn = melee_damage_upper * (1 + raptor.inherited_stats.ability_modifier), 		heal_time = 0, 		valid_targets_typecache = typecacheof(list(/mob/living/basic/raptor, /mob/living/carbon/human)), 		extra_checks = CALLBACK(src, PROC_REF(heal_checks)), 		healing_multiplier = CALLBACK(src, PROC_REF(heal_multiplier)), 	)
 
 /datum/raptor_color/white/proc/heal_checks(mob/living/healer, mob/living/target)
 	if (istype(target, /mob/living/basic/raptor))
@@ -405,8 +380,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/yellow
 	color = "yellow"
-	description = "This breed possesses greasy fast speed, DEMON speed, making light work of long pilgrimages. \
-		It's said that a thunderclap could be heard when this breed reaches its maximum speed."
+	description = "Esta raça possui velocidade rápida oleosa, velocidade DEMON, fazendo trabalho leve de longas peregrinações. Dizem que um trovão pode ser ouvido quando esta raça atinge sua velocidade máxima."
 	speed = 0
 	guaranteed_crossbreeds = list(
 		/datum/raptor_color/purple = /datum/raptor_color/blue,
@@ -415,7 +389,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/blue
 	color = "blue"
-	description = "Covered in tough, lava-resistant feathers with thick insulated fur underneath, this breed is capable of marching through lava and fire alike."
+	description = "Coberto de penas duras e resistentes à lava, com pêlos grossos e isolados, esta raça é capaz de marchar pela lava e pelo fogo."
 	health = 300
 	guaranteed_crossbreeds = list(
 		/datum/raptor_color/red = /datum/raptor_color/purple,
@@ -428,7 +402,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/black
 	color = "black"
-	description = "An ultra rare breed. Due to its sparse nature, not much is known about this sort. However it is said to possess many of its peers' abilities."
+	description = "Uma raça ultra rara. Devido à sua natureza escassa, não se sabe muito sobre este tipo. No entanto, diz-se que possui muitas das habilidades de seus pares."
 	health = 400
 	speed = 0
 	melee_damage_lower = 20

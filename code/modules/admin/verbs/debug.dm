@@ -15,10 +15,10 @@ ADMIN_VERB(air_status, R_DEBUG, "Air Status In Location", "Gets the air status f
 
 ADMIN_VERB(cmd_admin_robotize, R_FUN, "Make Cyborg", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/target)
 	if(!SSticker.HasRoundStarted())
-		tgui_alert(user, "Wait until the game starts")
+		tgui_alert(user, "Espere até o jogo começar.")
 		return
 	if(issilicon(target))
-		tgui_alert(user, "They are already a cyborg.")
+		tgui_alert(user, "Eles já são um cyborg.")
 		return
 	log_admin("[key_name(user)] has robotized [target.key].")
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob, Robotize))
@@ -31,7 +31,7 @@ ADMIN_VERB(cmd_admin_robotize, R_FUN, "Make Cyborg", ADMIN_VERB_NO_DESCRIPTION, 
 	if(!length(types))
 		return
 
-	var/key = input(usr, "Choose an object to delete.", "Delete:") as null|anything in sort_list(types)
+	var/key = input(usr, "Escolha um objeto para apagar.", "Delete:") as null|anything in sort_list(types)
 
 	if(!key)
 		return
@@ -72,7 +72,7 @@ ADMIN_VERB(cmd_del_all_hard, R_DEBUG|R_SPAWN, "Hard-Del-All", "Hard delete all d
 	if(!type_to_del)
 		return
 
-	var/choice = alert(user, "ARE YOU SURE that you want to hard delete this type? It will cause MASSIVE lag.", "Hoooo lad what happen?", "Yes", "No")
+	var/choice = alert(user, "Tem certeza que quer deletar esse tipo? Isso causará atraso massivo.", "Hoooo rapaz o que aconteceu?", "Yes", "No")
 	if(choice != "Yes")
 		return
 
@@ -116,7 +116,7 @@ ADMIN_VERB(cmd_debug_make_powernets, R_DEBUG|R_SERVER, "Make Powernets", "Regene
 ADMIN_VERB_VISIBILITY(cmd_admin_grantfullaccess, ADMIN_VERB_VISIBLITY_FLAG_MAPPING_DEBUG)
 ADMIN_VERB(cmd_admin_grantfullaccess, R_DEBUG, "Grant Full Access", "Grant full access to a mob.", ADMIN_CATEGORY_DEBUG, mob/M in world)
 	if(!SSticker.HasRoundStarted())
-		tgui_alert(user, "Wait until the game starts")
+		tgui_alert(user, "Espere até o jogo começar.")
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -150,17 +150,17 @@ ADMIN_VERB(cmd_admin_grantfullaccess, R_DEBUG, "Grant Full Access", "Grant full 
 			H.equip_to_slot(id, ITEM_SLOT_ID)
 
 	else
-		tgui_alert(user,"Invalid mob")
+		tgui_alert(user,"Máfia inválida")
 	BLACKBOX_LOG_ADMIN_VERB("Grant Full Access")
 	log_admin("[key_name(user)] has granted [M.key] full access.")
 	message_admins(span_adminnotice("[key_name_admin(user)] has granted [M.key] full access."))
 
 ADMIN_VERB(cmd_assume_direct_control, R_ADMIN, "Assume Direct Control", "Assume direct control of a mob.", ADMIN_CATEGORY_DEBUG, mob/M)
 	if(M.ckey)
-		if(tgui_alert(user,"This mob is being controlled by [M.key]. Are you sure you wish to assume control of it? [M.key] will be made a ghost.",,list("Yes","No")) != "Yes")
+		if(tgui_alert(user,"Esta multidão está sendo controlada por[M.key]Tem certeza de que quer assumir o controle?[M.key]Será feito um fantasma.",,list("Yes","No")) != "Yes")
 			return
 	if(!M || QDELETED(M))
-		to_chat(user, span_warning("The target mob no longer exists."))
+		to_chat(user, span_warning("A máfia alvo não existe mais."))
 		return
 	message_admins(span_adminnotice("[key_name_admin(user)] assumed direct control of [M]."))
 	log_admin("[key_name(user)] assumed direct control of [M].")
@@ -179,17 +179,17 @@ ADMIN_VERB(cmd_give_direct_control, R_ADMIN, "Give Direct Control", "Give direct
 	if(!M)
 		return
 	if(M.ckey)
-		if(tgui_alert(user,"This mob is being controlled by [M.key]. Are you sure you wish to give someone else control of it? [M.key] will be made a ghost.",,list("Yes","No")) != "Yes")
+		if(tgui_alert(user,"Esta multidão está sendo controlada por[M.key]Tem certeza que quer dar a outra pessoa o controle?[M.key]Será feito um fantasma.",,list("Yes","No")) != "Yes")
 			return
 	var/client/newkey = tgui_input_list(user, "Pick the player to put in control.", "New player", sort_list(GLOB.clients))
 	if(isnull(newkey))
 		return
 	var/mob/oldmob = newkey.mob
 	var/delmob = FALSE
-	if((isobserver(oldmob) || tgui_alert(user,"Do you want to delete [newkey]'s old mob?","Delete?",list("Yes","No")) != "No"))
+	if((isobserver(oldmob) || tgui_alert(user,"Você quer deletar[newkey]A velha máfia?","Delete?",list("Yes","No")) != "No"))
 		delmob = TRUE
 	if(!M || QDELETED(M))
-		to_chat(user, span_warning("The target mob no longer exists, aborting."))
+		to_chat(user, span_warning("O alvo não existe mais, abortando."))
 		return
 	if(M.ckey)
 		M.ghostize(FALSE)
@@ -233,7 +233,7 @@ ADMIN_VERB(cmd_admin_areatest, R_DEBUG, "Test Areas", "Tests the areas for vario
 	))
 
 	if(SSticker.current_state == GAME_STATE_STARTUP)
-		to_chat(user, "Game still loading, please hold!", confidential = TRUE)
+		to_chat(user, "Jogo ainda carregado, por favor aguarde!", confidential = TRUE)
 		return
 
 	var/log_message
@@ -457,12 +457,12 @@ ADMIN_VERB(cmd_admin_areatest_all, R_DEBUG, "Test Areas (ALL)", "Tests the areas
 
 ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_rejuvenate, R_ADMIN, "Rejuvenate", mob/living/M in world)
 	if(!istype(M))
-		tgui_alert(user,"Cannot revive a ghost")
+		tgui_alert(user,"Não pode reviver um fantasma")
 		return
 	M.revive(ADMIN_HEAL_ALL)
 
 	log_admin("[key_name(user)] healed / revived [key_name(M)]")
-	var/msg = span_danger("Admin [key_name_admin(user)] healed / revived [ADMIN_LOOKUPFLW(M)]!")
+	var/msg = span_danger("Administrador.[key_name_admin(user)]curados e revividos[ADMIN_LOOKUPFLW(M)]!")
 	message_admins(msg)
 	admin_ticket_log(M, msg)
 	BLACKBOX_LOG_ADMIN_VERB("Rejuvenate")
@@ -621,7 +621,7 @@ ADMIN_VERB(place_ruin, R_DEBUG, "Spawn Ruin", "Attempt to randomly place a speci
 		return
 	var/datum/map_template/ruin/template = data[1]
 	if (exists[template])
-		var/response = tgui_alert(user,"There is already a [template] in existence.", "Spawn Ruin", list("Jump", "Place Another"))
+		var/response = tgui_alert(user,"Já existe um[template]na existência.", "Spawn Ruin", list("Jump", "Place Another"))
 		if (!response)
 			return
 		if (response == "Jump")
@@ -637,7 +637,7 @@ ADMIN_VERB(place_ruin, R_DEBUG, "Spawn Ruin", "Attempt to randomly place a speci
 		to_chat(user, span_name("[template.name]"), confidential = TRUE)
 		to_chat(user, span_italics("[template.description]"), confidential = TRUE)
 	else
-		to_chat(user, span_warning("Failed to place [template.name]."), confidential = TRUE)
+		to_chat(user, span_warning("Falhou em colocar[template.name]."), confidential = TRUE)
 
 ADMIN_VERB(unload_ctf, R_DEBUG, "Unload CTF", "Despawns the majority of CTF.", ADMIN_CATEGORY_DEBUG)
 	toggle_id_ctf(user, CTF_GHOST_CTF_GAME_ID, unload=TRUE)
@@ -695,7 +695,7 @@ ADMIN_VERB(view_runtimes, R_DEBUG, "View Runtimes", "Opens the runtime viewer.",
 		if(GLOB.total_runtimes >= 100000)
 			warning = "There are a TON of runtimes, clicking any button (especially \"linear\") WILL LIKELY crash the server"
 		// Not using TGUI alert, because it's view runtimes, stuff is probably broken
-		alert(user, "[warning]. Proceed with caution. If you really need to see the runtimes, download the runtime log and view it in a text editor.", "HEED THIS WARNING CAREFULLY MORTAL")
+		alert(user, "[warning]Prossiga com cuidado. Se você realmente precisa ver os tempos de execução, baixe o registro de tempo de execução e veja em um editor de texto.", "Acate este aviso cuidadosamente Mortal")
 
 ADMIN_VERB(pump_random_event, R_DEBUG, "Pump Random Event", "Schedules the event subsystem to fire a new random event immediately. Some events may fire without notification.", ADMIN_CATEGORY_DEBUG)
 	SSevents.scheduled = world.time
@@ -727,14 +727,14 @@ ADMIN_VERB(show_line_profiling, R_DEBUG, "Show Line Profiling", "Shows tracked p
 		"Total Time" = GLOBAL_PROC_REF(cmp_profile_time_dsc),
 		"Call Count" = GLOBAL_PROC_REF(cmp_profile_count_dsc),
 	)
-	var/sort = input(user, "Sort type?", "Sort Type", "Avg time") as null|anything in sortlist
+	var/sort = input(user, "Tipo de sorte?", "Tipo de Ordenação", "Hora de Avg.") as null|anything in sortlist
 	if (!sort)
 		return
 	sort = sortlist[sort]
 	profile_show(user, sort)
 
 ADMIN_VERB(reload_configuration, R_DEBUG, "Reload Configuration", "Reloads the configuration from the default path on the disk, wiping any in-round modifications.", ADMIN_CATEGORY_DEBUG)
-	if(tgui_alert(user, "Are you absolutely sure you want to reload the configuration from the default path on the disk, wiping any in-round modifications?", "Really reset?", list("No", "Yes")) != "Yes")
+	if(tgui_alert(user, "Tem certeza absoluta que quer recarregar a configuração do caminho padrão no disco, limpando alguma modificação?", "Really reset?", list("No", "Yes")) != "Yes")
 		return
 	config.admin_reload()
 
@@ -765,10 +765,10 @@ ADMIN_VERB(reestablish_tts_connection, R_DEBUG, "Re-establish Connection To TTS"
 
 ADMIN_VERB(allow_browser_inspect, R_DEBUG, "Allow Browser Inspect", "Allow browser debugging via inspect", ADMIN_CATEGORY_DEBUG)
 	if(user.byond_version < 516)
-		to_chat(user, span_warning("You can only use this on 516!"))
+		to_chat(user, span_warning("Você só pode usar isso no 516!"))
 		return
 
-	to_chat(user, span_notice("You can now right click to use inspect on browsers."))
+	to_chat(user, span_notice("Agora você pode clicar para inspecionar navegadores."))
 	winset(user, null, list("browser-options" = "+devtools"))
 
 /proc/generate_timer_source_output(list/datum/timedevent/events)
@@ -829,75 +829,75 @@ ADMIN_VERB(check_missing_sprites, R_DEBUG, "Debug Worn Item Sprites", "We're can
 		//Is there an explicit worn_icon to pick against the worn_icon_state? Easy street expected behavior.
 		if(sprite.worn_icon)
 			if(!icon_exists(sprite.worn_icon, sprite.icon_state))
-				to_chat(user, span_warning("ERROR sprites for [sprite.type]. Slot Flags are [sprite.slot_flags]."), confidential = TRUE)
+				to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Bandeiras de Fenda são[sprite.slot_flags]."), confidential = TRUE)
 		else if(sprite.worn_icon_state)
 			if(sprite.slot_flags & ITEM_SLOT_MASK)
 				actual_file_name = 'icons/mob/clothing/mask.dmi'
 				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
-					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Mask slot."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Mascarado."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_NECK)
 				actual_file_name = 'icons/mob/clothing/neck.dmi'
 				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
-					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Neck slot."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Entalhe de pescoço."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_BACK)
 				actual_file_name = 'icons/mob/clothing/back.dmi'
 				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
-					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Back slot."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Para trás."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_HEAD)
 				actual_file_name = 'icons/mob/clothing/head/default.dmi'
 				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
-					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Head slot."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Posição da cabeça."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_BELT)
 				actual_file_name = 'icons/mob/clothing/belt.dmi'
 				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
-					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Belt slot."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]O cinto."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_SUITSTORE)
 				actual_file_name = 'icons/mob/clothing/belt_mirror.dmi'
 				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
-					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Suit Storage slot."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Sala de armazenamento de trajes."), confidential = TRUE)
 		else if(sprite.icon_state)
 			if(sprite.slot_flags & ITEM_SLOT_MASK)
 				actual_file_name = 'icons/mob/clothing/mask.dmi'
 				if(!icon_exists(actual_file_name, sprite.icon_state))
-					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Mask slot."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Mascarado."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_NECK)
 				actual_file_name = 'icons/mob/clothing/neck.dmi'
 				if(!icon_exists(actual_file_name, sprite.icon_state))
-					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Neck slot."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Entalhe de pescoço."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_BACK)
 				actual_file_name = 'icons/mob/clothing/back.dmi'
 				if(!icon_exists(actual_file_name, sprite.icon_state))
-					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Back slot."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Para trás."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_HEAD)
 				actual_file_name = 'icons/mob/clothing/head/default.dmi'
 				if(!icon_exists(actual_file_name, sprite.icon_state))
-					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Head slot."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Posição da cabeça."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_BELT)
 				actual_file_name = 'icons/mob/clothing/belt.dmi'
 				if(!icon_exists(actual_file_name, sprite.icon_state))
-					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Belt slot."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]O cinto."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_SUITSTORE)
 				actual_file_name = 'icons/mob/clothing/belt_mirror.dmi'
 				if(!icon_exists(actual_file_name, sprite.icon_state))
-					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Suit Storage slot."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Sala de armazenamento de trajes."), confidential = TRUE)
 
 #ifndef OPENDREAM_REAL
 ADMIN_VERB(start_tracy, R_DEBUG, "Run Tracy Now", "Start running the byond-tracy profiler immediately", ADMIN_CATEGORY_DEBUG)
 	if(Tracy.enabled)
-		to_chat(user, span_warning("byond-tracy is already running!"), avoid_highlighting = TRUE, type = MESSAGE_TYPE_DEBUG, confidential = TRUE)
+		to_chat(user, span_warning("Byond-Tracy já está correndo!"), avoid_highlighting = TRUE, type = MESSAGE_TYPE_DEBUG, confidential = TRUE)
 		return
 	else if(Tracy.error)
-		to_chat(user, span_danger("byond-tracy failed to initialize during an earlier attempt: [Tracy.error]"), avoid_highlighting = TRUE, type = MESSAGE_TYPE_DEBUG, confidential = TRUE)
+		to_chat(user, span_danger("Byond-tracy falhou em inicializar durante uma tentativa anterior:[Tracy.error]"), avoid_highlighting = TRUE, type = MESSAGE_TYPE_DEBUG, confidential = TRUE)
 		return
 	message_admins(span_adminnotice("[key_name_admin(user)] is trying to start the byond-tracy profiler."))
 	log_admin("[key_name(user)] is trying to start the byond-tracy profiler.")
 	if(!Tracy.enable("[user.ckey]"))
 		var/error = Tracy.error || "N/A"
-		to_chat(user, span_danger("byond-tracy failed to initialize: [error]"), avoid_highlighting = TRUE, type = MESSAGE_TYPE_DEBUG, confidential = TRUE)
+		to_chat(user, span_danger("Byond-tracy falhou em inicializar:[error]"), avoid_highlighting = TRUE, type = MESSAGE_TYPE_DEBUG, confidential = TRUE)
 		message_admins(span_adminnotice("[key_name_admin(user)] tried to start the byond-tracy profiler, but it failed to initialize ([error])"))
 		log_admin("[key_name(user)] tried to start the byond-tracy profiler, but it failed to initialize ([error])")
 		return
-	to_chat(user, span_notice("byond-tracy successfully started!"), avoid_highlighting = TRUE, type = MESSAGE_TYPE_DEBUG, confidential = TRUE)
+	to_chat(user, span_notice("byond-tracy começou com sucesso!"), avoid_highlighting = TRUE, type = MESSAGE_TYPE_DEBUG, confidential = TRUE)
 	message_admins(span_adminnotice("[key_name_admin(user)] started the byond-tracy profiler."))
 	log_admin("[key_name(user)] started the byond-tracy profiler.")
 	if(Tracy.trace_path)
@@ -990,11 +990,11 @@ ADMIN_VERB(show_powernets, R_DEBUG, "Color Powernet Runs", "Colors every node an
 			marker.powernet_owner = REF(net)
 
 ADMIN_VERB(count_instances, R_DEBUG, "Count Atoms/Datums", "Count how many atom or datum instances there are of each type, then output it to a JSON to download.", ADMIN_CATEGORY_DEBUG)
-	var/option = tgui_alert(user, "What type of instances do you wish to count?", "Instance Count", list("Atoms", "Datums"))
+	var/option = tgui_alert(user, "Que tipo de casos deseja contar?", "Instance Count", list("Atoms", "Datums"))
 	if(!option)
 		return
 	var/list/result
-	to_chat(user, span_notice("Beginning instance count ([option])"), type = MESSAGE_TYPE_DEBUG)
+	to_chat(user, span_notice("Começando contagem de instância ([option])"), type = MESSAGE_TYPE_DEBUG)
 	switch(option)
 		if("Atoms")
 			result = count_atoms()
@@ -1002,7 +1002,7 @@ ADMIN_VERB(count_instances, R_DEBUG, "Count Atoms/Datums", "Count how many atom 
 			result = count_datums()
 
 	if(result)
-		to_chat(user, span_adminnotice("Counted [length(result)] instances, sending compiled JSON file now."), type = MESSAGE_TYPE_DEBUG)
+		to_chat(user, span_adminnotice("Contado.[length(result)]Casos, enviando o arquivo JSON compilado agora."), type = MESSAGE_TYPE_DEBUG)
 		var/tmp_path = "tmp/instance_count_[user.ckey].json"
 		fdel(tmp_path)
 		rustg_file_write(json_encode(result, JSON_PRETTY_PRINT), tmp_path)
@@ -1035,17 +1035,16 @@ ADMIN_VERB(count_instances, R_DEBUG, "Count Atoms/Datums", "Count how many atom 
 ADMIN_VERB_VISIBILITY(export_save_to_dev_preference, ADMIN_VERB_VISIBLITY_FLAG_LOCALHOST)
 ADMIN_VERB(export_save_to_dev_preference, R_DEBUG, "Export Save as Dev Preferences", "Exports your savefile to be used by any guests that connect to your localost.", ADMIN_CATEGORY_SERVER)
 	if(!user.is_localhost())
-		tgui_alert(user, "You shouldn't be using this right now!", "Export Failed", list("OK"))
+		tgui_alert(user, "Não deveria estar usando isso agora!", "Export Failed", list("OK"))
 		log_admin("[key_name(user)] attempted to export preferences to [DEV_PREFS_PATH] - this is normally locked to localhost only!")
 		stack_trace("Export Save as Dev Preferences was called by a non-localhost user!")
 		return
 	if(is_guest_key(user.key))
-		tgui_alert(user, "Guests don't have preferences to export.", "Export Failed", list("OK"))
+		tgui_alert(user, "Os hóspedes não têm preferências para exportar.", "Export Failed", list("OK"))
 		return
 	var/datum/preferences/user_prefs = user.prefs
 	var/datum/json_savefile/dev_save = new(DEV_PREFS_PATH)
 	user_prefs.save_preferences()
 	user_prefs.savefile.copy_to_savefile(dev_save)
 	dev_save.save()
-	tgui_alert(user, "Exported preferences to [DEV_PREFS_PATH]. \
-		Next time you localhost as a guest it will use this savefile as-is.", "Export Complete", list("OK thanks"))
+	tgui_alert(user, "Preferências exportadas para[DEV_PREFS_PATH]Da próxima vez que o anfitrião local for convidado, usará este arquivo de salvamento como está.", "Export Complete", list("OK thanks"))

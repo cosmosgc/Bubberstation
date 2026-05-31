@@ -11,7 +11,7 @@
 	max_occurrences = 1
 	min_players = 20
 	category = EVENT_CATEGORY_INVASION
-	description = "The crew will either pay up, or face a pirate assault."
+	description = "A tripulação vai pagar ou enfrentar um ataque pirata."
 	admin_setup = list(/datum/event_admin_setup/listed_options/pirates)
 	map_flags = EVENT_SPACE_ONLY
 
@@ -72,7 +72,7 @@
 	if(chosen_gang.paid_off)
 		return
 
-	var/list/candidates = SSpolling.poll_ghost_candidates("Do you wish to be considered for a [span_notice("pirate crew of [chosen_gang.name]?")]", check_jobban = ROLE_TRAITOR, alert_pic = /obj/item/claymore/cutlass, role_name_text = "pirate crew")
+	var/list/candidates = SSpolling.poll_ghost_candidates("Você deseja ser considerado para um[span_notice("pirate crew of [chosen_gang.name]?")]", check_jobban = ROLE_TRAITOR, alert_pic = /obj/item/claymore/cutlass, role_name_text = "tripulação pirata")
 	shuffle_inplace(candidates)
 
 	var/template_key = "pirate_[chosen_gang.ship_template_id]"
@@ -96,19 +96,19 @@
 				notify_ghosts(
 					"The [chosen_gang.ship_name] has an object of interest: [spawned_mob]!",
 					source = spawned_mob,
-					header = "Pirates!",
+					header = "Piratas!",
 				)
 			else
 				notify_ghosts(
 					"The [chosen_gang.ship_name] has an object of interest: [spawner]!",
 					source = spawner,
-					header = "Pirate Spawn Here!",
+					header = "Pirata Spawn aqui!",
 				)
 
 	priority_announce(chosen_gang.arrival_announcement, sender_override = chosen_gang.ship_name)
 
 /datum/event_admin_setup/listed_options/pirates
-	input_text = "Select Pirate Gang"
+	input_text = "Escolha uma pirata gangue."
 	normal_run_option = "Random Pirate Gang"
 
 /datum/event_admin_setup/listed_options/pirates/get_list()

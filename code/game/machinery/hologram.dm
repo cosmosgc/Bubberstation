@@ -35,7 +35,7 @@ Possible to do for anyone motivated enough:
 
 /obj/machinery/holopad
 	name = "holopad"
-	desc = "It's a floor-mounted device for projecting holographic images."
+	desc = "É um dispositivo montado no chão para projetar imagens holográficas."
 	icon = 'icons/obj/machines/floor.dmi'
 	icon_state = "holopad0"
 	base_icon_state = "holopad"
@@ -115,7 +115,7 @@ Possible to do for anyone motivated enough:
 
 /obj/machinery/holopad/secure
 	name = "secure holopad"
-	desc = "It's a floor-mounted device for projecting holographic images. This one will refuse to auto-connect incoming calls."
+	desc = "É um dispositivo montado no chão para projetar imagens holográficas. Este se recusará a ligar automaticamente as chamadas recebidas."
 	secure = TRUE
 
 /obj/machinery/holopad/secure/Initialize(mapload)
@@ -228,15 +228,15 @@ Possible to do for anyone motivated enough:
 /obj/machinery/holopad/examine(mob/user)
 	. = ..()
 	if(isAI(user) || in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Current projection range: <b>[holo_range]</b> units.")
+		. += span_notice("A exibição de status diz: Alcance de projeção atual:<b>[holo_range]</b>Unidades.")
 
 	if(!isAI(user))
 		return
 
-	. += span_info("Use :[/datum/saymode/holopad::key] to speak through the projection.")
-	. += span_info("Right-click to project or cancel a projection.")
-	. += span_info("Alt-click to hangup all active and incomming calls.")
-	. += span_info("Ctrl-click to end projection without jumping to your last location.")
+	. += span_info("Uso:[/datum/saymode/holopad::key]para falar através da projeção.")
+	. += span_info("Clique com o botão direito para projetar ou cancelar uma projeção.")
+	. += span_info("Alt-click para desligar todas as chamadas ativa e incomming.")
+	. += span_info("Ctrl-clique para terminar a projeção sem saltar para sua última localização.")
 
 /obj/machinery/holopad/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -268,11 +268,11 @@ Possible to do for anyone motivated enough:
 /obj/machinery/holopad/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/disk/holodisk))
 		if(disk)
-			to_chat(user,span_warning("There's already a disk inside [src]!"))
+			to_chat(user,span_warning("Já tem um disco dentro.[src]!"))
 			return
 		if (!user.transferItemToLoc(tool, src))
 			return
-		to_chat(user,span_notice("You insert [tool] into [src]."))
+		to_chat(user,span_notice("Você insere[tool]Em[src]."))
 		disk = tool
 		return ITEM_INTERACT_SUCCESS
 	return NONE
@@ -327,19 +327,19 @@ Possible to do for anyone motivated enough:
 			if(isAI(usr))
 				var/mob/living/silicon/ai/ai_user = usr
 				ai_user.eyeobj.setLoc(get_turf(src))
-				to_chat(usr, span_info("AIs can not request AI presence. Jumping instead."))
+				to_chat(usr, span_info("IA não pode pedir presença de IA. Saltando em vez disso."))
 				return
 			if(last_request + 200 < world.time)
 				last_request = world.time
-				to_chat(usr, span_info("You requested an AI's presence."))
+				to_chat(usr, span_info("Você pediu a presença de uma IA."))
 				var/area/area = get_area(src)
 				for(var/mob/living/silicon/ai/AI in GLOB.silicon_mobs)
 					if(!AI.client)
 						continue
-					to_chat(AI, span_info("Your presence is requested at <a href='byond://?src=[REF(AI)];jump_to_holopad=[REF(src)]'>\the [area]</a>. <a href='byond://?src=[REF(AI)];project_to_holopad=[REF(src)]'>Project Hologram?</a>"))
+					to_chat(AI, span_info("Sua presença é solicitada em<a href='byond://?src=[REF(AI)];jump_to_holopad=[REF(src)]'>\the [area]</a>. <a href='byond://?src=[REF(AI)];project_to_holopad=[REF(src)]'>Projeto Holograma?</a>"))
 				return TRUE
 			else
-				to_chat(usr, span_info("A request for AI presence was already sent recently."))
+				to_chat(usr, span_info("Um pedido de presença de IA já foi enviado recentemente."))
 				return
 		if("holocall")
 			if(outgoing_call)
@@ -365,7 +365,7 @@ Possible to do for anyone motivated enough:
 					calling = TRUE
 					return TRUE
 			else
-				to_chat(usr, span_warning("You must stand on the holopad to make a call!"))
+				to_chat(usr, span_warning("Você deve ficar na holopade para fazer uma ligação!"))
 		if("connectcall")
 			var/datum/holocall/call_to_connect = locate(params["holopad"]) in holo_calls
 			if(!QDELETED(call_to_connect))
@@ -570,7 +570,7 @@ Possible to do for anyone motivated enough:
 		set_holo(user, hologram)
 
 		set_holo(user, hologram)
-		visible_message(span_notice("A holographic image of [user] flickers to life before your eyes!"))
+		visible_message(span_notice("Uma imagem holográfica de[user]Brilha para a vida diante de seus olhos!"))
 
 		return hologram
 	else
@@ -759,7 +759,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	hologram.name = "[record.caller_name] (Hologram)"//If someone decides to right click.
 	set_holo(record, hologram)
 
-	visible_message(span_notice("A holographic image of [record.caller_name] flickers to life before your eyes!"))
+	visible_message(span_notice("Uma imagem holográfica de[record.caller_name]Brilha para a vida diante de seus olhos!"))
 	return hologram
 
 /obj/machinery/holopad/proc/replay_start()

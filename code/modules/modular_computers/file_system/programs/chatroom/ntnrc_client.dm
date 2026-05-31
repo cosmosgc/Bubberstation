@@ -13,7 +13,7 @@
 	filedesc = "Chat Client"
 	downloader_category = PROGRAM_CATEGORY_DEVICE
 	program_open_overlay = "text"
-	extended_desc = "This program allows communication over NTNRC network."
+	extended_desc = "Este programa permite comunicação através da rede NTNRC."
 	size = 8
 	ui_header = "ntnrc_idle.gif"
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
@@ -141,7 +141,7 @@
 				if(!computer)
 					// This program shouldn't even be runnable without computer.
 					CRASH("Var computer is null!")
-				computer.visible_message(span_warning("\The [computer] shows an \"I/O Error - Hard drive may be full. Please free some space and try again. Required space: [logfile.size]GQ\" warning."))
+				computer.visible_message(span_warning("\The [computer]Mostra...\"Erro, o disco rígido pode estar cheio. Por favor, libere algum espaço e tente novamente. Espaço necessário:[logfile.size]GQ.\"Aviso."))
 			return TRUE
 		if("PRG_renamechannel")
 			if(!authed)

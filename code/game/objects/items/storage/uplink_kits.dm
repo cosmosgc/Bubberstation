@@ -335,13 +335,13 @@
 
 /obj/item/storage/box/syndie_kit
 	name = "box"
-	desc = "A sleek, sturdy box."
+	desc = "Uma caixa elegante e resistente."
 	icon_state = "syndiebox"
 	illustration = "writing_syndie"
 
 /obj/item/storage/box/syndie_kit/rebarxbowsyndie
 	name = "Boxed Rebar Crossbow"
-	desc = "A scoped weapon with low armor penetration, but devastating against flesh. Features instruction manual for making specialty ammo."
+	desc = "Uma arma com baixa penetração de armadura, mas devastadora contra a carne. Manual de instruções para fazer munição especial."
 
 /obj/item/storage/box/syndie_kit/rebarxbowsyndie/PopulateContents()
 	new /obj/item/book/granter/crafting_recipe/dusting/rebarxbowsyndie_ammo(src)
@@ -366,7 +366,7 @@
 
 /obj/item/storage/box/syndie_kit/origami_bundle
 	name = "origami kit"
-	desc = "A box full of a number of rather masterfully engineered paper planes and a manual on \"The Art of Origami\"."
+	desc = "Uma caixa cheia de vários aviões de papel bem magistralmente projetados e um manual sobre\"A arte de Origami\"."
 
 /obj/item/storage/box/syndie_kit/origami_bundle/PopulateContents()
 	new /obj/item/book/granter/action/origami(src)
@@ -464,7 +464,7 @@
 
 /obj/item/storage/box/syndie_kit/mail_counterfeit
 	name = "mail counterfeit kit"
-	desc = "A GLA Postal Service branded box. It's emblazoned with the motto: *Nothing stops the mail*."
+	desc = "Uma caixa de correio GLA. Está com o lema: \"Nada para o correio\"."
 
 /obj/item/storage/box/syndie_kit/mail_counterfeit/PopulateContents()
 	for(var/i in 1 to 6)
@@ -493,7 +493,7 @@
 
 /obj/item/storage/box/syndie_kit/nuke
 	name = "nuke core extraction kit"
-	desc = "A box containing the equipment and instructions for extracting the plutonium cores of most Nanotrasen nuclear explosives."
+	desc = "Uma caixa contendo o equipamento e instruções para extrair os núcleos de plutônio da maioria dos explosivos nucleares de Nanotrasen."
 
 /obj/item/storage/box/syndie_kit/nuke/PopulateContents()
 	new /obj/item/screwdriver/nuke(src)
@@ -502,7 +502,7 @@
 
 /obj/item/storage/box/syndie_kit/supermatter
 	name = "supermatter sliver extraction kit"
-	desc = "A box containing the equipment and instructions for extracting a sliver of supermatter."
+	desc = "Uma caixa contendo o equipamento e instruções para extrair uma lasca de supermatéria."
 
 /obj/item/storage/box/syndie_kit/supermatter/PopulateContents()
 	new /obj/item/scalpel/supermatter(src)
@@ -618,7 +618,7 @@
 
 /obj/item/storage/box/syndie_kit/bee_grenades
 	name = "buzzkill grenade box"
-	desc = "A sleek, sturdy box with a buzzing noise coming from the inside. Uh oh."
+	desc = "Uma caixa elegante e resistente com um zumbido vindo de dentro. Uh oh."
 
 /obj/item/storage/box/syndie_kit/bee_grenades/PopulateContents()
 	for(var/i in 1 to 3)
@@ -650,7 +650,7 @@
 
 /obj/item/storage/box/syndie_kit/core_gear
 	name = "core equipment box"
-	desc = "Contains all the necessary gear for success for any nuclear operative unsure of what is needed for success in the field. Everything here WILL help you."
+	desc = "Contém toda a engrenagem necessária para o sucesso para qualquer agente nuclear inseguro do que é necessário para o sucesso no campo. Tudo aqui vai te ajudar."
 
 /obj/item/storage/box/syndie_kit/core_gear/PopulateContents()
 	new /obj/item/implanter/freedom (src)
@@ -663,7 +663,7 @@
 
 /obj/item/storage/box/syndie_kit/sniper_surplus
 	name = "surplus .50 BMG magazine box"
-	desc = "A shoddy box full of surplus .50 BMG magazines. Not as strong, but good enough to keep lead in the air."
+	desc = "Uma caixa suja cheia de revistas BMG .50. Não tão forte, mas bom o suficiente para manter o chumbo no ar."
 
 /obj/item/storage/box/syndie_kit/sniper_surplus/PopulateContents()
 	for(var/i in 1 to 7)
@@ -671,10 +671,7 @@
 
 /obj/item/storage/box/syndie_kit/shotgun_surplus
 	name = "\improper Donk Co. 'Donk Spike' flechette 12g Bulldog magazine box"
-	desc = "A shoddy box full of Donk Co. 'Donk Spike' flechette 12g. It is debatable whether or not these are actually \
-		better or worse than standard flechette. Donk Co. did genuinely believe in this product being the future of military \
-		ammunition production. The only reason it didn't see wider adoption was a lack of faith in the product. Do you \
-		believe in Donk? Time to put that to the test."
+	desc = "Uma caixa cheia de Donk Co.\"Donk Spike\" Flechette 12g. É discutível se estes são ou não melhores ou piores do que o padrão Flechette. Donk Co. acreditava que este produto era o futuro da produção de munição militar. A única razão para não ver adoção mais ampla foi a falta de fé no produto. Você acredita em Donk? Hora de testar isso."
 
 /obj/item/storage/box/syndie_kit/shotgun_surplus/PopulateContents()
 	for(var/i in 1 to 7)
@@ -693,7 +690,7 @@
 
 /obj/item/storage/box/syndie_kit/signaler
 	name = "signaler box"
-	desc = "Contains everything an agent would need to remotely detonate their bombs."
+	desc = "Contém tudo que um agente precisaria para detonar remotamente suas bombas."
 
 /obj/item/storage/box/syndie_kit/signaler/PopulateContents()
 	for(var/i in 1 to 6)
@@ -701,7 +698,7 @@
 
 /obj/item/storage/box/syndie_kit/imp_deathrattle
 	name = "deathrattle implant box"
-	desc = "Contains eight linked deathrattle implants."
+	desc = "Contém oito implantes de deathrattle ligados."
 
 /obj/item/storage/box/syndie_kit/imp_deathrattle/PopulateContents()
 	new /obj/item/implanter(src)
@@ -726,7 +723,7 @@
 
 /obj/item/storage/box/syndie_kit/pinata
 	name = "weapons grade pinata kit"
-	desc = "Contains a weapons grade pinata and 2 belts for carrying its contents."
+	desc = "Contém uma pinata grau armas e dois cintos para carregar seu conteúdo."
 
 /obj/item/storage/box/syndie_kit/pinata/PopulateContents()
 	new /obj/item/pinata/syndie(src)
@@ -735,7 +732,7 @@
 
 /obj/item/storage/box/syndie_kit/induction_kit
 	name = "syndicate induction kit"
-	desc = "Contains all you need for introducing your newest comrade to the Syndicate and all its worker's benefits."
+	desc = "Contém tudo que você precisa para apresentar seu mais novo camarada para o Sindicato e todos os benefícios de seus trabalhadores."
 
 /obj/item/storage/box/syndie_kit/induction_kit/PopulateContents()
 	// Basic weaponry, so they have something to use.
@@ -765,12 +762,12 @@
 
 /obj/item/implanter/induction_implant
 	name = "implanter (nuclear operative)"
-	desc = "A sterile automatic implant injector. You can see a tiny, somehow legible sticker on the side: 'NOT A BRAINWASH DEVICE'"
+	desc = "Um injetor de implante automático estéril. Você pode ver um pequeno, de alguma forma legível adesivo no lado: 'Não um dispositivo de lavagem cerebral'"
 	imp_type = /obj/item/implant/nuclear_operative
 
 /obj/item/implant/nuclear_operative
 	name = "nuclear operative implant"
-	desc = "Registers you as a member of a Syndicate nuclear operative team."
+	desc = "Registra você como membro de uma equipe operacional nuclear do Sindicato."
 	implant_color = "r"
 
 /obj/item/implant/nuclear_operative/implant(mob/living/target, mob/user, silent = FALSE, force = FALSE)
@@ -781,18 +778,18 @@
 
 	if(IS_NUKE_OP(human_target)) // this wont proc due to ..() but i guess its good as a just-in-case?
 		if(human_target == user)
-			to_chat(user, span_userdanger("You're already a nuclear operative, dumbass! The implant disintegrates within you! You feel sick..."))
+			to_chat(user, span_userdanger("Você já é um agente nuclear, idiota! O implante se desintegra dentro de você! Você se sente mal..."))
 			human_target.Stun(10 SECONDS)
 			human_target.reagents.add_reagent(/datum/reagent/toxin, 10)
 			return FALSE
 		else
-			to_chat(user, span_notice("You finish implanting [human_target], but you don't really notice a difference. Huh."))
-			to_chat(human_target, span_userdanger("Nothing seems to really happen, but you start to feel a little ill.."))
+			to_chat(user, span_notice("Você termina de implantar[human_target]Mas você não percebe uma diferença. Huh."))
+			to_chat(human_target, span_userdanger("Nada parece realmente acontecer, mas você começa a se sentir um pouco doente."))
 			human_target.reagents.add_reagent(/datum/reagent/toxin, 2)
 			return FALSE
 
 	if(!human_target.is_antag()) // GTFO. Technically not foolproof but making a heartbreaker or a paradox clone a nuke op sounds hilarious
-		to_chat(human_target, span_notice("Huh? Nothing happened? But you're starting to feel a little ill..."))
+		to_chat(human_target, span_notice("Huh? Não aconteceu nada? Mas você está começando a se sentir um pouco doente..."))
 		human_target.reagents.add_reagent(/datum/reagent/toxin, 15)
 		return FALSE
 
@@ -801,8 +798,8 @@
 	nuke_datum.nukeop_outfit = null
 	human_target.mind?.add_antag_datum(nuke_datum)
 	human_target.add_faction(ROLE_SYNDICATE)
-	to_chat(human_target, span_warning("You are now a nuclear operative. Your main objective, if you were an antagonist and willing, is presumably to assist the nuclear operative team and secure the disk."))
-	to_chat(human_target, span_userdanger("This implant does NOT, in any way, brainwash you. If you were a normal crew member beforehand, forcibly implanted or otherwise, you are still one and cannot assist the nuclear operatives."))
+	to_chat(human_target, span_warning("Agora você é um agente nuclear. Seu objetivo principal, se você fosse um antagonista e disposto, é provavelmente ajudar a equipe operacional nuclear e proteger o disco."))
+	to_chat(human_target, span_userdanger("Este implante não, de forma alguma, faz lavagem cerebral em você. Se você era um membro normal da tripulação antes, implantado à força ou de outra forma, você ainda é um e não pode ajudar os agentes nucleares."))
 	return TRUE
 
 /obj/item/implant/nuclear_operative/removed(mob/target, silent = FALSE, special = FALSE)
@@ -812,13 +809,13 @@
 	var/mob/living/living_target = target
 	living_target.mind.remove_antag_datum(/datum/antagonist/nukeop)
 	living_target.remove_faction(ROLE_SYNDICATE)
-	to_chat(target, span_notice("You feel a little less nuclear."))
-	to_chat(target, span_userdanger("You're no longer identified as a nuclear operative! You are free to follow any valid goals you wish, even continuing to secure the disk. Just make sure neither any turrets nor operatives kill you on sight."))
+	to_chat(target, span_notice("Você se sente menos nuclear."))
+	to_chat(target, span_userdanger("Você não está mais identificado como um agente nuclear! Você está livre para seguir os objetivos válidos que desejar, mesmo continuando a proteger o disco. Apenas certifique-se de que nenhuma torre ou agente te matem assim que o virem."))
 	return TRUE
 
 /obj/item/storage/box/syndie_kit/poster_box
 	name = "syndicate poster pack"
-	desc = "Contains a variety of demotivational posters to ensure minimum productivity for the crew of any Nanotrasen station."
+	desc = "Contém uma variedade de cartazes desmotivacionais para garantir produtividade mínima para a tripulação de qualquer estação Nanotrasen."
 
 	/// Number of posters this box contains when spawning.
 	var/poster_count = 3
@@ -829,7 +826,7 @@
 
 /obj/item/storage/box/syndie_kit/cowboy
 	name = "western outlaw pack"
-	desc = "Contains everything you'll need to be the rootin' tootin' cowboy you always wanted. Either play the Lone Ranger or go in with your posse of outlaws."
+	desc = "Contém tudo que precisa para ser o caubói que sempre quis. Ou faz de Lone Ranger ou entra com seu bando de foras da lei."
 
 /obj/item/storage/box/syndie_kit/cowboy/PopulateContents()
 	generate_items_inside(list(
@@ -844,7 +841,7 @@
 
 /obj/item/storage/box/syndicate/contract_kit
 	name = "Contract Kit"
-	desc = "Supplied to Syndicate contractors."
+	desc = "Fornecido para empresários do Sindicato."
 	icon_state = "syndiebox"
 	illustration = "writing_syndie"
 
@@ -857,7 +854,7 @@
 
 /obj/item/storage/box/syndicate/contractor_loadout
 	name = "Standard Loadout"
-	desc = "Supplied to Syndicate contractors, providing their specialised space suit and chameleon uniform."
+	desc = "Fornecido a empreiteiros do Sindicato, fornecendo seu traje espacial especializado e uniforme camaleão."
 	icon_state = "syndiebox"
 	illustration = "writing_syndie"
 
@@ -876,7 +873,7 @@
 
 /obj/item/storage/box/syndicate/horse_box
 	name = "A pony box"
-	desc = "This is a set containing a syndicate pony cube and an apple, for the best cowboys in the wild station! Don't make an apple pie!"
+	desc = "Este é um conjunto contendo um cubo de pônei do sindicato e uma maçã, para os melhores cowboys da estação selvagem! Não faça uma torta de maçã!"
 	icon_state = "syndiebox"
 	illustration = "writing_syndie"
 

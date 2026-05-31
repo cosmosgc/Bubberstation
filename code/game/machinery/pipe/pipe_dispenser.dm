@@ -6,7 +6,7 @@
 	name = "pipe dispenser"
 	icon = 'icons/obj/machines/lathes.dmi'
 	icon_state = "pipe_d"
-	desc = "Dispenses countless types of pipes. Very useful if you need pipes."
+	desc = "Dispensa inúmeros tipos de tubos. Muito útil se precisar de canos."
 	density = TRUE
 	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_OFFLINE
 	interaction_flags_mouse_drop = NEED_DEXTERITY
@@ -107,7 +107,7 @@
 
 						var/obj/structure/disposalconstruct/disposal_out = new (loc, p_type)
 						if(!disposal_out.can_place())
-							to_chat(usr, span_warning("There's not enough room to build that here!"))
+							to_chat(usr, span_warning("Não há espaço para construir isso aqui!"))
 							qdel(disposal_out)
 							return
 
@@ -138,7 +138,7 @@
 			if (ISNOTSTUB(target_dir))
 				p_init_dir = target_dir
 			else
-				to_chat(usr, span_warning("\The [src]'s screen flashes a warning: Can't configure a pipe to only connect in one direction."))
+				to_chat(usr, span_warning("\The [src]A tela pisca um aviso: não pode configurar um tubo para se conectar apenas em uma direção."))
 
 		if("init_reset")
 			p_init_dir = ALL_CARDINALS
@@ -154,7 +154,7 @@
 /obj/machinery/pipedispenser/attackby(obj/item/W, mob/user, list/modifiers, list/attack_modifiers)
 	add_fingerprint(user)
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter))
-		to_chat(usr, span_notice("You put [W] back into [src]."))
+		to_chat(usr, span_notice("Você colocou[W]De volta para[src]."))
 		qdel(W)
 		return
 	else
@@ -179,7 +179,7 @@
 	name = "disposal pipe dispenser"
 	icon = 'icons/obj/machines/lathes.dmi'
 	icon_state = "pipe_d"
-	desc = "Dispenses pipes that will ultimately be used to move trash around."
+	desc = "Tubos de dispensa que serão usados para mover lixo."
 	density = TRUE
 	category = DISPOSAL_PIPEDISPENSER
 
@@ -203,7 +203,7 @@
 	icon = 'icons/obj/machines/lathes.dmi'
 	icon_state = "pipe_d"
 	density = TRUE
-	desc = "Dispenses pipes that will move beings around."
+	desc = "Dispensa canos que moverão seres."
 	category = TRANSIT_PIPEDISPENSER
 
 #undef ATMOS_PIPEDISPENSER

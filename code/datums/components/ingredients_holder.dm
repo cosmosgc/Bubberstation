@@ -98,9 +98,7 @@
 
 	var/atom/atom_parent = parent
 
-	examine_list += "It [LAZYLEN(ingredient_names) \
-		? "contains [english_list(ingredient_names)] making a [custom_adjective()]-sized [initial(atom_parent.name)]" \
-		: "does not contain any ingredients"]."
+	examine_list += "Ele.[LAZYLEN(ingredient_names) 		? "contains [english_list(ingredient_names)] making a [custom_adjective()]-sized [initial(atom_parent.name)]" 		: "does not contain any ingredients"]."
 
 //// Proc that checks if an ingredient is valid or not, returning false if it isnt and true if it is.
 /datum/component/ingredients_holder/proc/valid_ingredient(obj/ingredient)
@@ -123,11 +121,11 @@
 		if (ingredient.is_drainable()) // For stuff like adding flour from a flour sack into a bowl, we handle the transfer of the reagent elsewhere, but we shouldn't regard it beyond some user feedback.
 			attacker.balloon_alert(attacker, "transferring...")
 			return
-		attacker.balloon_alert(attacker, "doesn't go on that!")
+		attacker.balloon_alert(attacker, "Não vá nisso!")
 		return
 
 	if (LAZYLEN(ingredient_names) >= max_ingredients)
-		attacker.balloon_alert(attacker, "too full!")
+		attacker.balloon_alert(attacker, "Muito cheio!")
 		return COMPONENT_NO_AFTERATTACK
 
 	if(!attacker.transferItemToLoc(ingredient, parent))

@@ -123,7 +123,7 @@ export const PetBuilder = (props) => {
   };
 
   return (
-    <Window title="Create Your Pet!" width={665} height={325}>
+    <Window title="Crie seu animal de estimação!" width={665} height={325}>
       <Window.Content>
         <Flex width="50%">
           <Flex.Item>
@@ -222,7 +222,7 @@ const PetSelector = ({
   <Section>
     <Stack vertical>
       <Stack.Item>
-        <Flex style={{ borderBottom: '2px solid #6f1d94' }}>
+        <Flex style={{ borderBottom: '2px sólido #6f1d94' }}>
           <Flex.Item>
             <Button
               color="transparent"
@@ -294,7 +294,7 @@ const PetDetails = ({
   setSelectedGender,
 }: any) => (
   <Stack vertical width="85%">
-    <Flex style={{ borderBottom: '1px solid gray' }}>
+    <Flex style={{ borderBottom: '1px cinza sólido' }}>
       <Flex.Item>
         <Stack vertical>
           <Stack.Item style={{ fontSize: '16px' }}>Pet Name</Stack.Item>
@@ -314,7 +314,7 @@ const PetDetails = ({
       </Flex.Item>
       <Flex.Item>
         <Icon
-          style={{ transform: 'rotate(30deg)', fontSize: '30px' }}
+          style={{ transform: 'Vire (30deg)', fontSize: '30px' }}
           ml={8}
           mt={1}
           name="paw"
@@ -325,7 +325,7 @@ const PetDetails = ({
       <Stack vertical>
         <Stack.Item style={{ fontSize: '16px' }}>Pet Gender</Stack.Item>
         <Stack.Item>
-          <Stack mt={0.5} style={{ borderBottom: '1px solid gray' }}>
+          <Stack mt={0.5} style={{ borderBottom: '1px cinza sólido' }}>
             <Stack.Item grow ml={2} mb={2}>
               <Button
                 selected={selectedGender === PetGender.male}
@@ -365,7 +365,7 @@ const TrickSequence = ({
   <Section
     mt={1}
     width="80%"
-    style={{ borderBottom: '0px solid #6f1d94' }}
+    style={{ borderBottom: '0px sólido #6f1d94' }}
     title={TrickName}
     buttons={
       <Button.Input

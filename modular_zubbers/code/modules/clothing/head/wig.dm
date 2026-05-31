@@ -18,7 +18,7 @@
 	if(item_path && !head_accessory)
 		add_head_accessory(attachment)
 	else
-		to_chat(user, span_notice("You can't put \the [attachment.name] on the head of \the [holder.name]"))
+		to_chat(user, span_notice("Você não pode colocar\the [attachment.name]Na cabeça de\the [holder.name]"))
 		return
 
 /obj/item/clothing/head/wig/proc/add_head_accessory(obj/item/clothing/attachment)

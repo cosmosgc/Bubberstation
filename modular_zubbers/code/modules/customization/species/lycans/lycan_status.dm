@@ -24,7 +24,7 @@
 	if(!istype(current_wolf))
 		return FALSE
 
-	human_owner.visible_message(span_warning("[human_owner] turns [human_owner.p_their()] head to the sky and howls, rapidly growing and transforming into a horrible beast!"))
+	human_owner.visible_message(span_warning("[human_owner]Vira.[human_owner.p_their()]Vá para o céu e uiva, crescendo rapidamente e transformando-se em uma besta horrível!"))
 
 	var/client/target_client = human_owner.client
 	if (!isnull(target_client))
@@ -35,7 +35,7 @@
 			lycan_brain.last_slot = target_client.prefs.savefile.get_entry("default_slot")
 		target_client.prefs.load_character(slot)
 		if (!ispath(target_client.prefs.read_preference(/datum.preference/choiced/species), current_wolf.lycanthropy_species))
-			to_chat(human_owner, span_warning("Your selected slot is not a lycan! Defaulting to simply changing your species..."))
+			to_chat(human_owner, span_warning("Seu espaço escolhido não é um lycan! Presumindo simplesmente mudar sua espécie..."))
 			target_client.prefs.load_character(lycan_brain.last_slot)
 			human_owner.set_species(current_wolf.lycanthropy_species, TRUE, TRUE, FALSE)
 			lycan_brain.last_slot = null // allows for easier switching in later procs
@@ -64,7 +64,7 @@
 	if (!istype(lycan_brain))
 		return
 
-	human_owner.visible_message(span_warning("[human_owner] shrinks down, their fur receding!"))
+	human_owner.visible_message(span_warning("[human_owner]Encolhem, uma pele deles recua!"))
 
 	if (lycan_brain.last_slot)
 		var/client/target_client = human_owner.client
@@ -94,7 +94,7 @@
 		return
 
 /datum/status_effect/beast_form/get_examine_text()
-	return span_notice("The NT employee manual has a entry on this species... <a href='byond://?src=[REF(src)];[BEAST_FORM_EXPOSITION_LINK]=1'>Recall what you read?</a>")
+	return span_notice("O manual de funcionários da NT tem uma entrada nesta espécie...<a href='byond://?src=[REF(src)];[BEAST_FORM_EXPOSITION_LINK]=1'>Lembra-se do que leu?</a>")
 
 /datum/status_effect/beast_form/Topic(href, list/href_list)
 	. = ..()
@@ -105,27 +105,25 @@
 /datum/status_effect/beast_form/proc/print_exposition(mob/user)
 	var/list/render_list = list()
 
-	render_list += "Legends of lycanthropy and animalistic shapeshifters have always existed, but were not confirmed until a century ago when the Cursekin species was \
-	officially recognized by most polities across the orion arm. The origin for their curse may vary by Cursekin - some from a god, some from genetics - but each \
-	has the ability to transform into a terrifying beast with claws like razors."
+	render_list += "Legends of lycanthropy and animalistic shapeshifters have always existed, but were not confirmed until a century ago when the Cursekin species was 	officially recognized by most polities across the orion arm. The origin for their curse may vary by Cursekin - some from a god, some from genetics - but each 	has the ability to transform into a terrifying beast with claws like razors."
 	render_list += "<hr>"
-	render_list += span_notice("Lycans and related may come in various forms, but each have similarities in how they function.")
-	render_list += span_notice("\nLycans possess [EXAMINE_HINT("exceptionally strong claws")], about as strong as a [EXAMINE_HINT("circular saw")] without the armor penetration.")
-	render_list += span_notice("\nLycans also have [EXAMINE_HINT("significant damage resistance")] to brute, and to a lesser extent, burn.")
-	render_list += span_notice("\nHowever, Lycans [EXAMINE_HINT("cannot wear any clothes")] and cannot have synthetic organs.")
-	render_list += span_notice("\nAdditionally, each Lycan possesses a [EXAMINE_HINT("marked weakness to silver")], taking [EXAMINE_HINT("increased damage")] from weapons comprised of it.")
-	render_list += span_notice("\nFinally, Lycans [EXAMINE_HINT("cannot use batons")] nor [EXAMINE_HINT("most firearms")] due to the size of their fingers.")
-	render_list += span_notice("\nThe Lycan form can be [EXAMINE_HINT("toggled at will")], or [EXAMINE_HINT("forcefully removed")] by [EXAMINE_HINT("knocking them into hard-crit")].")
+	render_list += span_notice("Lycans e parentes podem vir em várias formas, mas cada um tem semelhanças em como funcionam.")
+	render_list += span_notice("\nOs Lycans possuem[EXAMINE_HINT("exceptionally strong claws")], quase tão forte como um[EXAMINE_HINT("circular saw")]sem a penetração da armadura.")
+	render_list += span_notice("\nLycans também têm.[EXAMINE_HINT("significant damage resistance")]E, em menor grau, queimar.")
+	render_list += span_notice("\nSem entanto, Lycans.[EXAMINE_HINT("cannot wear any clothes")]e não pode ter órgãos sintéticos.")
+	render_list += span_notice("\nAlém disso, cada Lycan possui um[EXAMINE_HINT("marked weakness to silver")], Tomando[EXAMINE_HINT("increased damage")]De armas compostas dele.")
+	render_list += span_notice("\nFinalmente, Lycans.[EXAMINE_HINT("cannot use batons")]Nem[EXAMINE_HINT("most firearms")]Devido ao tamanho de seus dedos.")
+	render_list += span_notice("\nA forma Lycan pode ser[EXAMINE_HINT("toggled at will")], ou[EXAMINE_HINT("forcefully removed")]Por que[EXAMINE_HINT("knocking them into hard-crit")].")
 	render_list += "<hr>"
-	render_list += span_warning("While mostly docile, tamed, and relatively weak, it is rumored that some Lycans harbor a [EXAMINE_HINT("exceptionally capable")] form of the curse. Keep an eye out for any of the following:")
-	render_list += span_warning("\n	* Extremely powerful claws")
-	render_list += span_warning("\n	* Aggressive health regeneration")
-	render_list += span_warning("\n	* Immunity to shoves and resistance to pain/stunning")
-	render_list += span_warning("\n	* The ability to shrug off any amount of pain and keep sprinting")
-	render_list += span_boldwarning("\nIf you find yourself facing a Lycan with these traits, take these precautions.")
-	render_list += span_warning("\n	* Avoid physical weaponry and stamina weapons - their regeneration rapidly heals brute and stamina drain")
-	render_list += span_warning("\n	* Use silver weaponry - they deal extra burn damage")
-	render_list += span_warning("\n	* Use aerosolized silver - they cannot use internals and will burn on contact with it")
+	render_list += span_warning("Enquanto a maioria dócil, domesticada, e relativamente fraca, rumores dizem que alguns Lycans abrigam um[EXAMINE_HINT("exceptionally capable")]A forma da maldição. Fique de olho em qualquer um dos seguintes:")
+	render_list += span_warning("\nGarras extremamente poderosas")
+	render_list += span_warning("\nRegeneração agressiva da saúde")
+	render_list += span_warning("\nImunidade aos empurrões e resistência à dor/estume")
+	render_list += span_warning("\n* A habilidade de dar de ombros qualquer quantidade de dor e continuar correndo")
+	render_list += span_boldwarning("\nSe você se encontrar enfrentando um Lycan com essas características, tome essas precauções.")
+	render_list += span_warning("\n* Evite armas físicas e armas de resistência - sua regeneração cura rapidamente o ralo bruto e a resistência")
+	render_list += span_warning("\nUsem armas prateadas.")
+	render_list += span_warning("\n* Use prata aerossol - eles não podem usar internos e vão queimar em contato com ele")
 
 	var/output = jointext(render_list, "")
 

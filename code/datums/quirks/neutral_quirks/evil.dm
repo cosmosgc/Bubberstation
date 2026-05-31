@@ -1,14 +1,12 @@
 /datum/quirk/evil
 	name = "Fundamentally Evil"
-	desc = "Where you would have a soul is but an ink-black void. While you are committed to maintaining your social standing, \
-		anyone who stares too long into your cold, uncaring eyes will know the truth. You are truly evil. There is nothing \
-		wrong with you. You chose to be evil, committed to it. Your ambitions come first above all."
+	desc = "Onde você teria uma alma é apenas um vazio negro. Enquanto você está comprometido em manter sua posição social, qualquer um que olha muito tempo em seus olhos frios e indiferentes saberá a verdade. Você é realmente mau. Não há nada de errado com você. Você escolheu ser mau, comprometido com isso. Suas ambições vêm em primeiro lugar."
 	icon = FA_ICON_HAND_MIDDLE_FINGER
 	value = 0
 	mob_trait = TRAIT_EVIL
-	gain_text = span_notice("You shed what little remains of your humanity. You have work to do.")
-	lose_text = span_notice("You suddenly care more about others and their needs.")
-	medical_record_text = "Patient has passed all our social fitness tests with flying colours, but had trouble on the empathy tests."
+	gain_text = span_notice("Você perde o pouco que resta da sua humanidade. Você tem trabalho a fazer.")
+	lose_text = span_notice("De repente você se importa mais com os outros e suas necessidades.")
+	medical_record_text = "O paciente passou em todos os testes de aptidão social, mas teve problemas nos testes de empatia."
 	mail_goodies = list(/obj/item/food/grown/citrus/lemon)
 
 /datum/quirk/evil/post_add()

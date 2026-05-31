@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 /datum/nifsoft/hivemind
 	name = "Hivemind"
-	program_desc = "Hivemind is a program developed as a more reliable simulacrum of the mysterious means of communication that some varieties of slime share. It's built on a specific configuration of the NIF capable of generating a localized subspace network; the content the user's very thoughts, serving as a high-tech means of telepathic communication between NIF users."
+	program_desc = "Hivemind é um programa desenvolvido como um simulacro mais confiável dos meios misteriosos de comunicação que algumas variedades de lodo compartilham. É construída sobre uma configuração específica do NIF capaz de gerar uma rede subespacial localizada, o conteúdo dos pensamentos do usuário, servindo como um meio de comunicação telepática de alta tecnologia entre os usuários do NIF."
 	activation_cost = 10
 	active_mode = TRUE
 	active_cost = 0.2
@@ -29,10 +29,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 /datum/nifsoft/hivemind/New()
 	. = ..()
 
-	user_network = linked_mob.AddComponent(/datum/component/mind_linker/active_linking/nif, \
-		network_name = "Hivemind Link", \
-		linker_action_path = /datum/action/innate/hivemind_config, \
-	)
+	user_network = linked_mob.AddComponent(/datum/component/mind_linker/active_linking/nif, 		network_name = "Hivemind Link", 		linker_action_path = /datum/action/innate/hivemind_config, 	)
 
 	keyboard_action = new(linked_mob)
 	keyboard_action.Grant(linked_mob)
@@ -58,8 +55,8 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		hivemind.linked_mobs -= linked_mob
 		var/mob/living/hivemind_owner = hivemind.parent
 
-		to_chat(hivemind_owner, span_abductor("[linked_mob] has left your Hivemind."))
-		to_chat(linked_mob, span_abductor("You have left [hivemind_owner]'s Hivemind."))
+		to_chat(hivemind_owner, span_abductor("[linked_mob]Deixou seu Hivemind."))
+		to_chat(linked_mob, span_abductor("Você se foi.[hivemind_owner]É o Hivemind."))
 
 	qdel(user_network)
 	return ..()
@@ -78,7 +75,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	linked_mob.put_in_hands(linked_keyboard)
 	linked_keyboard.source_user = linked_mob
 
-	linked_mob.visible_message(span_notice("The [linked_keyboard] materializes in [linked_mob]'s hands."), span_notice("The [linked_keyboard] appears in your hands."))
+	linked_mob.visible_message(span_notice("O[linked_keyboard]Se materializa em[linked_mob]Mãos."), span_notice("O[linked_keyboard]aparece em suas mãos."))
 	return TRUE
 
 /datum/action/innate/hivemind_config
@@ -124,7 +121,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		return FALSE
 
 	hivemind.active_network = new_active_hivemind
-	to_chat(user, span_abductor("You are now sending messages to [new_active_hivemind.name]."))
+	to_chat(user, span_abductor("Você está agora enviando mensagens para[new_active_hivemind.name]."))
 
 	if(hivemind.active)
 		hivemind.activate()
@@ -141,8 +138,8 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	if(!hivemind_to_leave)
 		return FALSE
 
-	to_chat(hivemind_to_leave.parent, span_abductor("[user] has been removed from your Hivemind."))
-	to_chat(user, span_abductor("You have left [hivemind_to_leave.parent]'s Hivemind."))
+	to_chat(hivemind_to_leave.parent, span_abductor("[user]foi removido de seu Hivemind."))
+	to_chat(user, span_abductor("Você se foi.[hivemind_to_leave.parent]É o Hivemind."))
 
 	hivemind.network_list -= hivemind_to_leave
 	hivemind_to_leave.linked_mobs -= user
@@ -152,11 +149,11 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	var/mob/living/carbon/human/user = owner
 	if(user in GLOB.hivemind_users)
 		GLOB.hivemind_users -= user
-		to_chat(user, span_abductor("You are now unable to receive invites."))
+		to_chat(user, span_abductor("Agora você não pode receber convites."))
 		return
 
 	GLOB.hivemind_users += user
-	to_chat(user, span_abductor("You are now able to receive invites."))
+	to_chat(user, span_abductor("Agora você pode receber convites."))
 
 /datum/action/innate/hivemind_keyboard
 	name = "Hivemind Keyboard"
@@ -210,8 +207,8 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	if(!person_to_add)
 		return
 
-	if(tgui_alert(person_to_add, "[owner] wishes to add you to their Hivemind, do you accept?", "Incoming Hivemind Invite", list("Accept", "Reject")) != "Accept")
-		to_chat(owner, span_warning("[person_to_add] denied the request to join your Hivemind."))
+	if(tgui_alert(person_to_add, "[owner]deseja adicioná-lo ao Hivemind deles, você aceita?", "Incoming Hivemind Invite", list("Accept", "Reject")) != "Accept")
+		to_chat(owner, span_warning("[person_to_add]Negou o pedido para se juntar ao seu Hivemind."))
 		return
 
 	linked_mobs += person_to_add
@@ -222,8 +219,8 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		return FALSE
 
 	target_hivemind.network_list += src
-	to_chat(person_to_add, span_abductor("You have now been added to [owner]'s Hivemind"))
-	to_chat(owner, span_abductor("[person_to_add] has now been added to your Hivemind"))
+	to_chat(person_to_add, span_abductor("Você foi adicionado a[owner]'s Hivemind"))
+	to_chat(owner, span_abductor("[person_to_add]Agora foi adicionado ao seu Hivemind."))
 
 ///Removes a user from the list of connected people within a hivemind
 /datum/component/mind_linker/active_linking/nif/proc/remove_user()
@@ -241,8 +238,8 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 	linked_mobs -= person_to_remove
 	target_hivemind.network_list -= src
-	to_chat(person_to_remove, span_abductor("You have now been removed from [owner]'s Hivemind."))
-	to_chat(owner, span_abductor("[person_to_remove] has now been removed from your Hivemind."))
+	to_chat(person_to_remove, span_abductor("Você agora foi removido de[owner]É o Hivemind."))
+	to_chat(owner, span_abductor("[person_to_remove]agora foi removido de seu Hivemind."))
 
 /datum/component/mind_linker/active_linking/nif/proc/change_chat_color()
 	var/mob/living/carbon/human/owner = parent
@@ -255,7 +252,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 /obj/item/hivemind_keyboard
 	name = "Hivemind Interface Device"
-	desc = "A holographic gesture controller, hooked to hand and finger signals of the user's own choice. This is paired with the Hivemind program itself, used as a means of filtering out unwanted thoughts from being added to the network, ensuring that only intentional thoughts of communication can go through."
+	desc = "Um controlador de gestos holográficos, viciado em sinais de mãos e dedos da própria escolha do usuário. Isso é emparelhado com o próprio programa Hivemind, usado como um meio de filtrar pensamentos indesejados de serem adicionados à rede, garantindo que apenas pensamentos intencionais de comunicação possam passar."
 	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "designator_mining"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
@@ -282,7 +279,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		return
 
 	if(QDELETED(connected_network))
-		to_chat(user, span_warning("The link seems to have been severed."))
+		to_chat(user, span_warning("A ligação parece ter sido cortada."))
 		return
 
 	var/datum/asset/spritesheet_batched/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)

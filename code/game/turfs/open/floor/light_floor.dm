@@ -5,7 +5,7 @@
 
 /turf/open/floor/light
 	name = "light floor"
-	desc = "A wired glass tile embedded into the floor. Modify the color with a Multitool."
+	desc = "Uma telha de vidro com fio no chão. Modifique a cor com um Multitool."
 	light_range = 5
 	icon_state = "light_on-1"
 	floor_tile = /obj/item/stack/tile/light
@@ -30,11 +30,11 @@
 
 /turf/open/floor/light/examine(mob/user)
 	. = ..()
-	. += span_notice("There's a <b>small crack</b> on the edge of it.")
-	. += span_notice("Use a multitool on it to change colors.")
-	. += span_notice("Use a screwdriver to turn it off or on.")
+	. += span_notice("Tem...<b>Pequena rachadura</b>Sem limite.")
+	. += span_notice("Use uma ferramenta para mudar as cores.")
+	. += span_notice("Use uma chave de fenda para desligar ou ligar.")
 	if(state) ///check if broken
-		. += span_danger("The light bulb seems fried!")
+		. += span_danger("A lâmpada parece frita!")
 
 ///create radial menu
 /turf/open/floor/light/proc/populate_lighttile_designs()
@@ -135,15 +135,15 @@
 	if(istype(C, /obj/item/light/bulb)) //only for light tiles
 		var/obj/item/light/bulb/B = C
 		if(B.status)/// check if broken
-			to_chat(user, span_danger("The light bulb is broken!"))
+			to_chat(user, span_danger("A lâmpada está quebrada!"))
 			return
 		if(state && user.temporarilyRemoveItemFromInventory(C))
 			qdel(C)
 			state = LIGHTFLOOR_FINE //fixing it by bashing it with a light bulb, fun eh?
 			update_appearance()
-			to_chat(user, span_notice("You replace the light bulb."))
+			to_chat(user, span_notice("Você substitui a lâmpada."))
 		else
-			to_chat(user, span_notice("The light bulb seems fine, no need to replace it."))
+			to_chat(user, span_notice("A lâmpada parece boa, não precisa substituí-la."))
 
 /turf/open/floor/light/emp_act(severity)
 	. = ..()
@@ -160,7 +160,7 @@
 //Cycles through all of the colours
 /turf/open/floor/light/colour_cycle
 	name = "dancefloor"
-	desc = "Funky floor."
+	desc = "Piso esquisito."
 	icon_state = "light_on-cycle_all"
 	light_color = LIGHT_COLOR_SLIME_LAMP
 	can_modify_colour = FALSE

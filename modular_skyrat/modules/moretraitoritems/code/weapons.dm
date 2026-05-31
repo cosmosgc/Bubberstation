@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/revolver/ocelot
 	name = "Colt Peacemaker revolver"
-	desc = "A modified Peacemaker revolver that chambers .357 ammo. Less powerful than the regular .357, but ricochets a lot more." // We need tension...conflict. The world today has become too soft. We're living in an age where true feelings are suppressed. So we're going to shake things up a bit. We'll create a world dripping with tension... ...a world filled with greed and suspicion, bravery and cowardice.
+	desc = "Um revólver pacificador modificado que carrega munição .357. Menos poderoso que a .357, mas ricocheteia muito mais." // We need tension...conflict. The world today has become too soft. We'Vivendo em uma época onde sentimentos verdadeiros são suprimidos. Então nós're going to shake things up a bit. We'll create a world dripping with tension... ...a world filled with greed and suspicion, bravery and cowardice.
 	// this could probably be made funnier by reducing its damage multiplier but also making it so that every fired bullet has the wacky ricochets
 	// but that's a different plate of cookies for a different glass of milk
 	icon_state = "c38_panther"
@@ -10,7 +10,7 @@
 
 /obj/item/ammo_casing/c357/peacemaker
 	name = ".357 Peacemaker bullet casing"
-	desc = "A .357 Peacemaker bullet casing."
+	desc = "Um carrinho pacificador .357."
 	caliber = CALIBER_357
 	projectile_type = /obj/projectile/bullet/c357/peacemaker
 
@@ -40,7 +40,7 @@
 
 /obj/item/ammo_box/speedloader/c357/peacemaker
 	name = "speed loader (.357 Peacemaker)"
-	desc = "Designed to quickly reload revolvers."
+	desc = "Projetado para recarregar revólveres rapidamente."
 	icon_state = "357"
 	ammo_type = /obj/item/ammo_casing/c357/peacemaker
 	max_ammo = 7
@@ -50,7 +50,7 @@
 
 /obj/item/clothing/head/hats/sus_bowler
 	name = "odd bowler"
-	desc = "A deep black bowler. Inside the hat, there is a sleek red S, with a smaller X insignia embroidered within. On closer inspection, the brim feels oddly weighted..."
+	desc = "Um boliche preto profundo. Dentro do chapéu, há um S vermelho elegante, com uma insígnia X menor bordada dentro. Na inspeção mais próxima, a borda parece estranhamente ponderada..."
 	icon_state = "bowler"
 	force = 10
 	throwforce = 45
@@ -83,8 +83,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/robohand
 	name = "Malorian Arms 3516"
-	desc = "The Malorian Arms 3516 is a 14mm heavy pistol, sporting a titanium frame and unique wooden grip. A custom Dyna-porting and \
-	direct integral cyber-interlink means only someone with a cyberarm and smartgun link can take full advantage of the pistol's features."
+	desc = "O Malorian Arms 3516 é uma pistola pesada de 14mm, com armação de titânio e alça de madeira única. Um cyber-entrelaçamento direto e personalizado de Dyna significa que apenas alguém com um cyberarm e um link de arma inteligente pode tirar pleno proveito das características da pistola."
 	icon = 'modular_skyrat/modules/moretraitoritems/icons/3516.dmi'
 	icon_state = "3516"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -123,20 +122,20 @@
 		return ITEM_INTERACT_BLOCKING
 	var/obj/item/bodypart/selected_hand = user.get_active_hand()
 	if(IS_ORGANIC_LIMB(selected_hand))
-		to_chat(user, span_warning("You can't seem to figure out how to use [src], perhaps you need to check the manual?"))
+		to_chat(user, span_warning("Você não consegue descobrir como usar[src]Talvez precisa de checar o manual?"))
 		return ITEM_INTERACT_BLOCKING
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/gun/ballistic/automatic/pistol/robohand/insert_magazine(mob/user, obj/item/ammo_box/magazine/inserted_mag, display_message)
 	if(!istype(inserted_mag, accepted_magazine_type))
-		to_chat(user, span_warning("\The [inserted_mag] doesn't seem to fit into \the [src]..."))
+		to_chat(user, span_warning("\The [inserted_mag]Não parece caber em\the [src]..."))
 		return FALSE
 	if(!user.transferItemToLoc(inserted_mag, src))
-		to_chat(user, span_warning("You cannot seem to get \the [src] out of your hands!"))
+		to_chat(user, span_warning("Você parece não conseguir\the [src]Fora de suas mãos!"))
 		return FALSE
 	magazine = inserted_mag
 	if(display_message)
-		to_chat(user, span_notice("You load a new [magazine_wording] into \the [src]."))
+		to_chat(user, span_notice("Você carrega um novo[magazine_wording]Em\the [src]."))
 	playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
 	if(bolt_type == BOLT_TYPE_OPEN && !bolt_locked)
 		chamber_round(TRUE)
@@ -158,16 +157,16 @@
 	var/obj/item/ammo_box/magazine/old_mag = magazine
 	if(tac_load)
 		if (insert_magazine(user, tac_load, FALSE))
-			to_chat(user, span_notice("You perform an elite tactical reload on \the [src]."))
+			to_chat(user, span_notice("Você executa uma recarga tática de elite\the [src]."))
 		else
-			to_chat(user, span_warning("You dropped the old [magazine_wording], but the new one doesn't fit. How embarassing."))
+			to_chat(user, span_warning("Você deixou cair o velho[magazine_wording]Mas o novo não se encaixa. Que vergonha."))
 			magazine = null
 	else
 		magazine = null
 	user.put_in_hands(old_mag)
 	old_mag.update_appearance()
 	if(display_message)
-		to_chat(user, span_notice("You pull the [magazine_wording] out of \the [src]."))
+		to_chat(user, span_notice("Você puxa o[magazine_wording]Fora\the [src]."))
 	update_appearance()
 	animate(src, transform = turn(matrix(), 120), time = 0.2 SECONDS, loop = 1) //Le johnny robohand again
 	animate(transform = turn(matrix(), 240), time = 0.2 SECONDS)
@@ -186,7 +185,7 @@
 
 /obj/item/ammo_casing/c14mm
 	name = "14mm bullet casing"
-	desc = "A 14mm bullet casing. Badass."
+	desc = "Um cartucho de 14mm. Fodão."
 	caliber = CALIBRE_14MM
 	projectile_type = /obj/projectile/bullet/c14mm
 
@@ -210,7 +209,7 @@
 
 //nullrod katana
 /obj/item/katana/weak/curator //This has the same stats as the curator's claymore
-	desc = "An ancient Katana. Forged by... Well, it doesn't really say, but surely it's authentic! And sharp to boot!"
+	desc = "Uma antiga Katana. Forjado por... Bem, realmente não diz, mas certamente é autêntico! E afiado até o fim!"
 	force = 15
 	block_chance = 30
 	armour_penetration = 5

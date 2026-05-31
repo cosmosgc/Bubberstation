@@ -38,13 +38,13 @@
 		limb.receive_damage(effective_damage, wound_bonus = CANT_WOUND, damage_source = src)
 		if(effective_damage && prob(33))
 			var/gauze_text = (gauze?.splint_factor ? ", although the [gauze] helps to prevent some of the leakage" : "")
-			to_chat(victim, span_danger("Your [limb.plaintext_zone] sizzles as some gel leaks and warps the exterior metal[gauze_text]..."))
+			to_chat(victim, span_danger("Sua[limb.plaintext_zone]Como um gel vaza e deforma o metal exterior[gauze_text]..."))
 
 		if(regen_time_elapsed > regen_time_needed)
 			if(!victim || !limb)
 				qdel(src)
 				return
-			to_chat(victim, span_green("The gel within your [limb.plaintext_zone] has fully hardened, allowing you to re-solder it!"))
+			to_chat(victim, span_green("O gel dentro do seu[limb.plaintext_zone]Está totalmente endurecido, permitindo que você o re-solde!"))
 			gelled = FALSE
 			ready_to_resolder = TRUE
 			ready_to_secure_internals = FALSE
@@ -162,13 +162,13 @@
 
 	var/limb_can_shock_pre_sleep = (victim.stat != DEAD && limb.biological_state & BIO_WIRED)
 	var/shock_or_not = (limb_can_shock_pre_sleep ? ", risking electrocution" : "")
-	var/self_message = span_warning("You start prying open [your_or_other] [limb.plaintext_zone] with [crowbarring_item][shock_or_not]...")
+	var/self_message = span_warning("Você começa a se abrir[your_or_other] [limb.plaintext_zone]com[crowbarring_item][shock_or_not]...")
 
-	user?.visible_message(span_bolddanger("[user] starts prying open [their_or_other] [limb.plaintext_zone] with [crowbarring_item]!"), self_message, ignored_mobs = list(victim))
+	user?.visible_message(span_bolddanger("[user]Começa a se abrir.[their_or_other] [limb.plaintext_zone]com[crowbarring_item]!"), self_message, ignored_mobs = list(victim))
 
 	var/victim_message
 	if (user != victim) // this exists so we can do a userdanger
-		victim_message = span_userdanger("[user] starts prying open your [limb.plaintext_zone] with [crowbarring_item]!")
+		victim_message = span_userdanger("[user]Começa a se intrometer[limb.plaintext_zone]com[crowbarring_item]!")
 	else
 		victim_message = self_message
 	to_chat(victim, victim_message)
@@ -205,9 +205,9 @@
 			stunned = TRUE
 
 			message = span_boldwarning("[user] is shocked by [their_or_other] [limb.plaintext_zone], [user.p_their()] crowbar slipping as [user.p_they()] briefly convulse!")
-			self_message = span_userdanger("You are shocked by [your_or_other] [limb.plaintext_zone], causing your crowbar to slip out!")
+			self_message = span_userdanger("Você está chocado.[your_or_other] [limb.plaintext_zone], fazendo seu pé de cabra escapar!")
 			if (user != victim)
-				victim_message = span_userdanger("[user] is shocked by your [limb.plaintext_zone] in [user.p_their()] efforts to tear it open!")
+				victim_message = span_userdanger("[user]está chocado com o seu[limb.plaintext_zone]em[user.p_their()]Esforços para abri-lo!")
 
 		var/shock_damage = CROWBAR_OPEN_SHOCK_POWER
 		var/obj/item/stack/medical/wrap/gauze = LAZYACCESS(limb.applied_items, LIMB_ITEM_GAUZE)
@@ -219,15 +219,15 @@
 		var/other_shock_text = ""
 		var/self_shock_text = ""
 		if (!limb_can_shock)
-			other_shock_text = ", and is striken by golden bolts of electricity"
-			self_shock_text = ", but are immediately shocked by the electricity contained within"
+			other_shock_text = ", e é atingido por parafusos dourados de eletricidade"
+			self_shock_text = ", mas ficam imediatamente chocados com a eletricidade contida dentro"
 		message = span_boldwarning("[user] tears open [their_or_other] [limb.plaintext_zone] with [user.p_their()] crowbar[other_shock_text]!")
-		self_message = span_warning("You tear open [your_or_other] [limb.plaintext_zone] with your crowbar[self_shock_text]!")
+		self_message = span_warning("Você se abre[your_or_other] [limb.plaintext_zone]Com seu pé de cabra[self_shock_text]!")
 		if (user != victim)
-			victim_message = span_userdanger("Your [limb.plaintext_zone] fragments and splinters as [user] tears it open with [user.p_their()] crowbar!")
+			victim_message = span_userdanger("Sua[limb.plaintext_zone]fragmentos e lascas como[user]Rasga com[user.p_their()]Pé de cabra!")
 
 		playsound(get_turf(crowbarring_item), 'sound/effects/bang.ogg', 35, TRUE) // we did it!
-		to_chat(user, span_green("You've torn [your_or_other] [limb.plaintext_zone] open, heavily damaging it but making it a lot easier to screwdriver the internals!"))
+		to_chat(user, span_green("Você rasgou[your_or_other] [limb.plaintext_zone]aberto, danificando-o, mas tornando muito mais fácil a chave de fenda interna!"))
 		var/damage = CROWBAR_OPEN_BRUTE_DAMAGE
 		if (limb_essential()) // can't be disabled
 			damage *= CROWBAR_OPEN_ESSENTIAL_LIMB_DAMAGE_MULT
@@ -307,22 +307,20 @@
 
 	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
-	user?.visible_message(span_notice("[user] begins the delicate operation of securing the internals of [their_or_other] [limb.plaintext_zone]..."), \
-		span_notice("You begin the delicate operation of securing the internals of [your_or_other] [limb.plaintext_zone]..."))
+	user?.visible_message(span_notice("[user]começa a delicada operação de garantir o interior de[their_or_other] [limb.plaintext_zone]..."), 		span_notice("Você começa a delicada operação de garantir os internos de[your_or_other] [limb.plaintext_zone]..."))
 	if (confused)
-		to_chat(user, span_warning("You are confused by the layout of [your_or_other] [limb.plaintext_zone]! A diagnostic hud would help, as would knowing robo/engi wires! You could also tear the limb open with a crowbar, or get someone else to help."))
+		to_chat(user, span_warning("Você está confuso com o layout de[your_or_other] [limb.plaintext_zone]Um hud de diagnóstico ajudaria, assim como conhecer fios robo-engi! Você também pode rasgar o membro com um pé de cabra, ou conseguir alguém para ajudar."))
 
 	if (!securing_item.use_tool(target = victim, user = user, delay = (10 SECONDS * delay_mult), volume = 50, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return TRUE
 
 	if (prob(chance))
-		user?.visible_message(span_green("[user] finishes securing the internals of [their_or_other] [limb.plaintext_zone]!"), \
-			span_green("You finish securing the internals of [your_or_other] [limb.plaintext_zone]!"))
-		to_chat(user, span_green("[capitalize(your_or_other)] [limb.plaintext_zone]'s internals are now secure! Your next step is to weld/cauterize it."))
+		user?.visible_message(span_green("[user]termina de proteger os internos de[their_or_other] [limb.plaintext_zone]!"), 			span_green("Você termina de proteger os internos de[your_or_other] [limb.plaintext_zone]!"))
+		to_chat(user, span_green("[capitalize(your_or_other)] [limb.plaintext_zone]Os internos estão seguros agora! Seu próximo passo é soldar e cauterizar."))
 		ready_to_secure_internals = FALSE
 		ready_to_resolder = TRUE
 	else
-		user?.visible_message(span_danger("[user] screws up and accidentally damages [their_or_other] [limb.plaintext_zone]!"))
+		user?.visible_message(span_danger("[user]Estraga tudo e acidentalmente danos.[their_or_other] [limb.plaintext_zone]!"))
 		limb.receive_damage(brute = SECURE_INTERNALS_FAILURE_BRUTE_DAMAGE, damage_source = securing_item, wound_bonus = CANT_WOUND)
 
 	return TRUE
@@ -336,7 +334,7 @@
  */
 /datum/wound/blunt/robotic/secures_internals/proc/apply_gel(obj/item/stack/medical/bone_gel/gel, mob/user)
 	if (gelled)
-		to_chat(user, span_warning("[user == victim ? "Your" : "[victim]'s"] [limb.plaintext_zone] is already filled with bone gel!"))
+		to_chat(user, span_warning("[user == victim ? "Your" : "[victim]'s"] [limb.plaintext_zone]Já está cheio de gel de osso!"))
 		return TRUE
 
 	var/delay_mult = 1
@@ -346,17 +344,17 @@
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		delay_mult *= 0.75
 
-	user.visible_message(span_danger("[user] begins hastily applying [gel] to [victim]'s [limb.plaintext_zone]..."), span_warning("You begin hastily applying [gel] to [user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone], disregarding the acidic effect it seems to have on the metal..."))
+	user.visible_message(span_danger("[user]Começa rapidamente a aplicar[gel]para[victim]'s[limb.plaintext_zone]..."), span_warning("Você começa rapidamente a aplicar[gel]para[user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone], desconsiderando o efeito ácido que parece ter sobre o metal ..."))
 
 	if (!do_after(user, (6 SECONDS * delay_mult), target = victim, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return TRUE
 
 	gel.use(1)
 	if(user != victim)
-		user.visible_message(span_notice("[user] finishes applying [gel] to [victim]'s [limb.plaintext_zone], emitting a fizzing noise!"), span_notice("You finish applying [gel] to [victim]'s [limb.plaintext_zone]!"), ignored_mobs=victim)
-		to_chat(victim, span_userdanger("[user] finishes applying [gel] to your [limb.plaintext_zone], and you can hear the sizzling of the metal..."))
+		user.visible_message(span_notice("[user]termina de aplicar[gel]para[victim]'s[limb.plaintext_zone]Emitindo um barulho!"), span_notice("Você termina de se inscrever.[gel]para[victim]'s[limb.plaintext_zone]!"), ignored_mobs=victim)
+		to_chat(victim, span_userdanger("[user]termina de aplicar[gel]para o seu[limb.plaintext_zone], e você pode ouvir o brilho do metal ..."))
 	else
-		victim.visible_message(span_notice("[victim] finishes applying [gel] to [victim.p_their()] [limb.plaintext_zone], emitting a funny fizzing sound!"), span_notice("You finish applying [gel] to your [limb.plaintext_zone], and you can hear the sizzling of the metal..."))
+		victim.visible_message(span_notice("[victim]termina de aplicar[gel]para[victim.p_their()] [limb.plaintext_zone]Emitindo um som engraçado!"), span_notice("Você termina de se inscrever.[gel]para o seu[limb.plaintext_zone], e você pode ouvir o brilho do metal ..."))
 
 	gelled = TRUE
 	set_disabling(TRUE)
@@ -373,8 +371,7 @@
 
 	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
-	victim.visible_message(span_notice("[user] begins re-soldering [their_or_other] [limb.plaintext_zone]..."), \
-		span_notice("You begin re-soldering [your_or_other] [limb.plaintext_zone]..."))
+	victim.visible_message(span_notice("[user]Começa a re-soldar[their_or_other] [limb.plaintext_zone]..."), 		span_notice("Você começa a re-soldar[your_or_other] [limb.plaintext_zone]..."))
 
 	var/delay_mult = 1
 	if (welding_item.tool_behaviour == TOOL_CAUTERY)
@@ -385,8 +382,7 @@
 	if (!welding_item.use_tool(target = victim, user = user, delay = 7 SECONDS * delay_mult, volume = 50,  extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return TRUE
 
-	victim.visible_message(span_green("[user] finishes re-soldering [their_or_other] [limb.plaintext_zone]!"), \
-		span_notice("You finish re-soldering [your_or_other] [limb.plaintext_zone]!"))
+	victim.visible_message(span_green("[user]termina de re-soldar[their_or_other] [limb.plaintext_zone]!"), 		span_notice("Você termina de re-soldar[your_or_other] [limb.plaintext_zone]!"))
 	remove_wound()
 	return TRUE
 
@@ -397,8 +393,7 @@
 	if (ready_to_resolder)
 		string = "Apply a welder/cautery to the limb to finalize repairs."
 	else if (ready_to_secure_internals)
-		string = "Use a screwdriver/wrench to secure the internals of the limb. This step is best performed by a qualified technician. \
-		In absence of one, bone gel or a crowbar may be used."
+		string = "Use a screwdriver/wrench to secure the internals of the limb. This step is best performed by a qualified technician. 		In absence of one, bone gel or a crowbar may be used."
 
 	return string
 
@@ -407,11 +402,11 @@
 
 	var/wound_step = get_wound_step_info()
 	if (wound_step)
-		. += "\n\n<b>Current step</b>: [span_notice(wound_step)]"
+		. += "\n\n<b>Passo atual</b>: [span_notice(wound_step)]"
 
 /datum/wound/blunt/robotic/secures_internals/get_simple_scanner_description(mob/user)
 	. = ..()
 
 	var/wound_step = get_wound_step_info()
 	if (wound_step)
-		. += "\n\n<b>Current step</b>: [span_notice(wound_step)]"
+		. += "\n\n<b>Passo atual</b>: [span_notice(wound_step)]"

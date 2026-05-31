@@ -1,6 +1,6 @@
 /obj/structure/fireaxecabinet
 	name = "fire axe cabinet"
-	desc = "There is a small label that reads \"For Emergency use only\" along with details for safe use of the axe. As if."
+	desc = "Há uma pequena etiqueta que lê\"Só para uso de emergência.\"junto com detalhes para uso seguro do machado. Como se."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "fireaxe"
 	anchored = TRUE
@@ -60,12 +60,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet, 32)
 				update_appearance()
 				balloon_alert(user, "consertado")
 		else
-			balloon_alert(user, "already repaired!")
+			balloon_alert(user, "Já está consertado!")
 		return
 	else if(istype(attacking_item, /obj/item/stack/sheet/glass) && broken)
 		var/obj/item/stack/sheet/glass/glass_stack = attacking_item
 		if(glass_stack.get_amount() < 2)
-			balloon_alert(user, "need more glass!")
+			balloon_alert(user, "Precisa de mais vidro!")
 			return
 		balloon_alert(user, "repairing")
 		if(do_after(user, 2 SECONDS, target = src) && glass_stack.use(2))
@@ -75,7 +75,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet, 32)
 	else if(open || broken)
 		if(istype(attacking_item, item_path) && !held_item)
 			if(HAS_TRAIT(attacking_item, TRAIT_WIELDED))
-				balloon_alert(user, "unwield it!")
+				balloon_alert(user, "Solte-o!")
 				return
 			if(!user.transferItemToLoc(attacking_item, src))
 				return
@@ -193,16 +193,16 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet, 32)
 	. += locked ? "trancado" : "destrancado"
 
 /obj/structure/fireaxecabinet/proc/toggle_lock(mob/user)
-	to_chat(user, span_notice("Resetting circuitry..."))
+	to_chat(user, span_notice("Reiniciando circuitos..."))
 	playsound(src, 'sound/machines/locktoggle.ogg', 50, TRUE)
 	if(do_after(user, 2 SECONDS, target = src))
-		to_chat(user, span_notice("You [locked ? "disable" : "re-enable"] the locking modules."))
+		to_chat(user, span_notice("Você.[locked ? "disable" : "re-enable"]Os módulos de bloqueio."))
 		locked = !locked
 		update_appearance()
 
 /obj/structure/fireaxecabinet/proc/toggle_open(mob/user)
 	if(locked)
-		balloon_alert(user, "won't budge!")
+		balloon_alert(user, "Não se mexa!")
 		return
 	else
 		open = !open
@@ -217,7 +217,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet/empty, 32)
 
 /obj/item/wallframe/fireaxecabinet
 	name = "fire axe cabinet"
-	desc = "Home to a window's greatest nightmare. Apply to wall to use."
+	desc = "Lar do maior pesadelo de uma janela. Aplicar na parede para usar."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "fireaxe"
 	result_path = /obj/structure/fireaxecabinet/empty
@@ -226,7 +226,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet/empty, 32)
 
 /obj/structure/fireaxecabinet/mechremoval
 	name = "mech removal tool cabinet"
-	desc = "There is a small label that reads \"For Emergency use only\" along with details for safe use of the tool. As if."
+	desc = "Há uma pequena etiqueta que lê\"Só para uso de emergência.\"junto com detalhes para uso seguro da ferramenta. Como se."
 	icon_state = "mechremoval"
 	item_path = /obj/item/crowbar/mechremoval
 	item_overlay = "crowbar"
@@ -245,14 +245,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet/mechremoval/empty, 32)
 
 /obj/item/wallframe/fireaxecabinet/mechremoval
 	name = "mech removal tool cabinet"
-	desc = "Home to a very special crowbar. Apply to wall to use."
+	desc = "Lar de um pé de cabra muito especial. Aplicar na parede para usar."
 	icon_state = "mechremoval"
 	result_path = /obj/structure/fireaxecabinet/mechremoval/empty
 
 /obj/structure/fireaxecabinet/jawsofrecovery
 	name = "jaws of recovery tool cabinet"
-	desc = "There is a small label that reads \"For Emergency use only\" along with details for safe use of the jaws of recovery. \
-		The lock seems to require...a surgical drill bit to unlock? You have no idea who thought this was a good idea."
+	desc = "Há uma pequena etiqueta que lê\"Só para uso de emergência.\"junto com detalhes para uso seguro das mandíbulas da recuperação. A fechadura parece precisar de uma broca cirúrgica para destrancar? Você não tem ideia de quem achou isso uma boa ideia."
 	icon_state = "jaws_of_recovery"
 	item_path = /obj/item/crowbar/power/paramedic
 	item_overlay = "jaws"
@@ -272,6 +271,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet/jawsofrecovery/empty, 
 
 /obj/item/wallframe/fireaxecabinet/jawsofrecovery
 	name = "jaws of recovery tool cabinet"
-	desc = "Home to the paramedic's jaws of recovery. Apply to wall to use."
+	desc = "Lar das mandíbulas dos paramédicos de recuperação. Aplicar na parede para usar."
 	icon_state = "jaws_of_recovery"
 	result_path = /obj/structure/fireaxecabinet/jawsofrecovery/empty

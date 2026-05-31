@@ -1,7 +1,7 @@
 ///AI Upgrades
 /obj/item/aiupgrade
 	name = "ai upgrade disk"
-	desc = "You really shouldn't be seeing this"
+	desc = "Você realmente não deveria estar vendo isso"
 	icon = 'icons/obj/devices/floppy_disks.dmi'
 	icon_state = "datadisk3"
 	///The upgrade that will be applied to the AI when installed
@@ -19,7 +19,7 @@
 			var/datum/action/gifted_action = new ability
 			gifted_action.Grant(AI)
 		else if(gifted_ability.one_purchase)
-			to_chat(user, "[AI] already has \a [src] installed!")
+			to_chat(user, "[AI]Já tem.\a [src]Instalado!")
 			return
 		else
 			action.uses += initial(action.uses)
@@ -33,8 +33,8 @@
 			if(gifted_ability.unlock_sound)
 				AI.playsound_local(AI, gifted_ability.unlock_sound, 50, 0)
 		update_static_data(AI)
-	to_chat(user, span_notice("You install [src], upgrading [AI]."))
-	to_chat(AI, span_userdanger("[user] has upgraded you with [src]!"))
+	to_chat(user, span_notice("Você instala.[src], atualização[AI]."))
+	to_chat(AI, span_userdanger("[user]Tem melhorado você com[src]!"))
 	user.log_message("has upgraded [key_name(AI)] with a [src].", LOG_GAME)
 	qdel(src)
 	return TRUE
@@ -43,7 +43,7 @@
 //Malf Picker
 /obj/item/malf_upgrade
 	name = "combat software upgrade"
-	desc = "A highly illegal, highly dangerous upgrade for artificial intelligence units, granting them a variety of powers as well as the ability to hack APCs.<br>This upgrade does not override any active laws, and must be applied directly to an active AI core."
+	desc = "Um altamente ilegal, altamente perigoso upgrade para unidades de inteligência artificial, concedendo-lhes uma variedade de poderes, bem como a capacidade de hackear APCs.<br>Essa atualização não substitui nenhuma lei ativa, e deve ser aplicada diretamente a um núcleo de IA ativo."
 	icon = 'icons/obj/devices/floppy_disks.dmi'
 	icon_state = "datadisk3"
 
@@ -57,15 +57,15 @@
 	var/mob/living/silicon/ai/AI = A
 	if(AI.malf_picker)
 		AI.malf_picker.processing_time += 50
-		to_chat(AI, span_userdanger("[user] has attempted to upgrade you with combat software that you already possess. You gain 50 points to spend on Malfunction Modules instead."))
+		to_chat(AI, span_userdanger("[user]tentou atualizá-lo com software de combate que você já possui. Você ganha 50 pontos para gastar em módulos de mau funcionamento."))
 	else
-		to_chat(AI, span_userdanger("[user] has upgraded you with combat software!"))
-		to_chat(AI, span_userdanger("Your current laws and objectives remain unchanged.")) //this unlocks malf powers, but does not give the license to plasma flood
+		to_chat(AI, span_userdanger("[user]Atualizou você com software de combate!"))
+		to_chat(AI, span_userdanger("Suas leis e objetivos atuais permanecem inalterados.")) //this unlocks malf powers, but does not give the license to plasma flood
 		AI.add_malf_picker()
 		AI.hack_software = TRUE
 		log_silicon("[key_name(user)] has upgraded [key_name(AI)] with a [src].")
 		message_admins("[ADMIN_LOOKUPFLW(user)] has upgraded [ADMIN_LOOKUPFLW(AI)] with a [src].")
-	to_chat(user, span_notice("You install [src], upgrading [AI]."))
+	to_chat(user, span_notice("Você instala.[src], atualização[AI]."))
 	qdel(src)
 	return TRUE
 
@@ -73,7 +73,7 @@
 //Lipreading
 /obj/item/aiupgrade/surveillance_upgrade
 	name = "surveillance software upgrade"
-	desc = "An illegal software package that will allow an artificial intelligence to 'hear' from its cameras via lip reading and hidden microphones."
+	desc = "Um pacote de software ilegal que permitirá que uma inteligência artificial \"ouça\" de suas câmeras através de leitura labial e microfones escondidos."
 	to_gift = /datum/ai_module/malf/upgrade/eavesdrop
 
 /obj/item/aiupgrade/surveillance_upgrade/Initialize(mapload)
@@ -83,5 +83,5 @@
 
 /obj/item/aiupgrade/power_transfer
 	name = "power transfer upgrade"
-	desc = "A legal upgrade that allows an artificial intelligence to directly provide power to APCs from a distance"
+	desc = "Uma atualização legal que permite que uma inteligência artificial forneça energia diretamente para APCs à distância."
 	to_gift = /datum/ai_module/power_apc

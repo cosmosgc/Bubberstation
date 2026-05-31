@@ -89,7 +89,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 			topiclimiter[SECOND_COUNT] = 0
 		topiclimiter[SECOND_COUNT] += 1
 		if (topiclimiter[SECOND_COUNT] > stl)
-			to_chat(src, span_danger("Your previous action was ignored because you've done too many in a second"))
+			to_chat(src, span_danger("Sua ação anterior foi ignorada porque você já fez muitas em um segundo."))
 			return
 
 	// Tgui Topic middleware
@@ -104,7 +104,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
-		to_chat(src, span_danger("An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)"))
+		to_chat(src, span_danger("Um erro foi detectado em como seu cliente está recebendo recursos. Tentando corrigir... (Se você continuar vendo essas mensagens você pode querer fechar e reconectar)"))
 		src << browse("...", "window=asset_cache_browser")
 		return
 	if (href_list["asset_cache_preload_data"])
@@ -133,7 +133,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 
 	// TGUIless adminhelp
 	if(href_list["tguiless_adminhelp"])
-		no_tgui_adminhelp(input(src, "Enter your ahelp", "Ahelp") as null|message)
+		no_tgui_adminhelp(input(src, "Entre na sua ajuda.", "Ahelp") as null|message)
 		return
 
 	if(href_list["commandbar_typing"])
@@ -175,7 +175,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 
 /client/proc/is_content_unlocked()
 	if(!prefs.unlock_content)
-		to_chat(src, "Become a BYOND member to access member-perks and features, as well as support the engine that makes this game possible. Only 10 bucks for 3 months! <a href=\"https://secure.byond.com/membership\">Click Here to find out more</a>.")
+		to_chat(src, "Torne-se um membro da BYOND para acessar as vantagens e recursos dos membros, bem como apoiar o motor que torna este jogo possível. Só 10 dólares por 3 meses!<a href=\"https://secure.byond.com/membership\">Clique Aqui para saber mais.</a>.")
 		return FALSE
 	return TRUE
 
@@ -230,13 +230,13 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 
 		src.last_message_count++
 		if(src.last_message_count >= SPAM_TRIGGER_AUTOMUTE)
-			to_chat(src, span_danger("You have exceeded the spam filter limit for identical messages. A mute was automatically applied for the current round. Contact admins to request its removal."))
+			to_chat(src, span_danger("Você ultrapassou o limite de filtro de spam para mensagens idênticas. Um mudo foi automaticamente aplicado para a rodada atual. Contate os administradores para pedir sua remoção."))
 			cmd_admin_mute(src, mute_type, 1)
 			return TRUE
 		if(src.last_message_count >= SPAM_TRIGGER_WARNING)
 			//"auto-ban" sends the message that the cold and uncaring gamecode has been designed to quiash you like a bug in short measure should you continue, and it's quite intentional that the user isn't told exactly what that entails.
-			to_chat(src, span_userdanger("You are nearing the auto-ban limit for identical messages."))
-			mob.balloon_alert(mob, "stop spamming!")
+			to_chat(src, span_userdanger("Você está perto do limite de proibição automática para mensagens idênticas."))
+			mob.balloon_alert(mob, "Pare de usar spam!")
 			return FALSE
 	else
 		last_message = message
@@ -249,10 +249,10 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 	if (holder)
 		var/admin_max_file_size = CONFIG_GET(number/upload_limit_admin)
 		if(filelength > admin_max_file_size)
-			to_chat(src, span_warning("Error: AllowUpload(): File Upload too large. Upload Limit: [admin_max_file_size/1024]KiB."))
+			to_chat(src, span_warning("Erro: AllowUpload(): Arquivo Upload muito grande. Limite de envio:[admin_max_file_size/1024]KiB."))
 			return FALSE
 	else if(filelength > client_max_file_size)
-		to_chat(src, span_warning("Error: AllowUpload(): File Upload too large. Upload Limit: [client_max_file_size/1024]KiB."))
+		to_chat(src, span_warning("Erro: AllowUpload(): Arquivo Upload muito grande. Limite de envio:[client_max_file_size/1024]KiB."))
 		return FALSE
 	return TRUE
 
@@ -366,7 +366,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 				concatables += (!isnull(matched_ip) ? matched_ip : matched_cid)
 			concatables += "as [isnull(potential_match) ? "[joined_player_ckey] (no longer logged in)" : "[key_name_admin(potential_match)]"]"
 			if(same_round)
-				concatables += span_bold("in the current round")
+				concatables += span_bold("na rodada atual")
 
 			concatables += "</span>"
 
@@ -396,14 +396,14 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 		if(!GLOB.admin_datums[ckey])
 			var/list/autoadmin_ranks = ranks_from_rank_name(CONFIG_GET(string/autoadmin_rank))
 			if (autoadmin_ranks.len == 0)
-				to_chat(world, "Autoadmin rank not found")
+				to_chat(world, "Autoadmin Rank não foi encontrado.")
 			else
 				new /datum/admins(autoadmin_ranks, ckey)
 
 	if(CONFIG_GET(flag/enable_localhost_rank) && !connecting_admin && is_localhost())
 		var/datum/admin_rank/localhost_rank = new("!localhost!", RANK_SOURCE_LOCAL, R_EVERYTHING, R_DBRANKS, R_EVERYTHING) //+EVERYTHING -DBRANKS *EVERYTHING
 		if(QDELETED(localhost_rank))
-			to_chat(world, "Local admin rank creation failed, somehow?")
+			to_chat(world, "A criação de postos de administração local falhou?")
 			return
 		new /datum/admins(list(localhost_rank), ckey, 1, 1)
 
@@ -421,9 +421,9 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 
 		if (num2text(byond_build) in GLOB.blacklisted_builds)
 			log_access("Failed login: [key] - blacklisted byond version")
-			to_chat_immediate(src, span_userdanger("Your version of byond is blacklisted."))
-			to_chat_immediate(src, span_danger("Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]]."))
-			to_chat_immediate(src, span_danger("Please download a new version of byond. If [byond_build] is the latest, you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions."))
+			to_chat_immediate(src, span_userdanger("Sua versão do byond está na lista negra."))
+			to_chat_immediate(src, span_danger("Byond build[byond_build] ([byond_version].[byond_build]) está na lista negra pela seguinte razão:[GLOB.blacklisted_builds[num2text(byond_build)]]."))
+			to_chat_immediate(src, span_danger("Por favor, baixe uma nova versão do byond. Se[byond_build]é a última, você pode ir para<a href=\"https://secure.byond.com/download/build\">O site de BYOND</a>para baixar outras versões."))
 			if(connecting_admin)
 				to_chat_immediate(src, "As an admin, you are being allowed to continue using this version, but please consider changing byond versions")
 			else
@@ -469,7 +469,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 	var/warn_build = CONFIG_GET(number/client_warn_build)
 
 	if (byond_version < breaking_version || (byond_version == breaking_version && byond_build < breaking_build)) //Out of date client.
-		to_chat_immediate(src, span_danger("<b>Your version of BYOND is too old:</b>"))
+		to_chat_immediate(src, span_danger("<b>Sua versão de BOND é muito antiga.</b>"))
 		to_chat_immediate(src, CONFIG_GET(string/client_error_message))
 		to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
 		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later")
@@ -488,11 +488,11 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 			msg += "Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.<br>"
 			src << browse(HTML_SKELETON(msg), "window=warning_popup")
 		else
-			to_chat(src, span_danger("<b>Your version of byond may be getting out of date:</b>"))
+			to_chat(src, span_danger("<b>Sua versão do byond pode estar ficando desatualizada.</b>"))
 			to_chat(src, CONFIG_GET(string/client_warn_message))
-			to_chat(src, "Your version: [byond_version].[byond_build]")
-			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later")
-			to_chat(src, "Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
+			to_chat(src, "Sua versão:[byond_version].[byond_build]")
+			to_chat(src, "Versão necessária para remover esta mensagem:[warn_version].[warn_build]Ou mais tarde")
+			to_chat(src, "Visita<a href=\"https://secure.byond.com/download\">O site de BYOND</a>para obter a última versão de BYOND.")
 
 	if (connection == "web" && !connecting_admin)
 		if (!CONFIG_GET(flag/allow_webclient))
@@ -568,7 +568,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 	apply_clickcatcher()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		to_chat(src, span_info("You have unread updates in the changelog."))
+		to_chat(src, span_info("Você tem atualizações não lidas no changelog."))
 		if(CONFIG_GET(flag/aggressive_changelog))
 			changelog()
 		else
@@ -583,7 +583,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 		convert_notes_sql(ckey)
 	display_admin_messages(src)
 	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
-		to_chat(src, span_warning("Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you."))
+		to_chat(src, span_warning("Incapaz de acessar o navegador de cache de ativos, se estiver usando um arquivo skin personalizado, por favor, permita que DS baixe a versão atualizada, se não estiver, então faça um relatório de bug. Esta não é uma questão crítica, mas pode causar problemas com o download de recursos, como é impossível saber quando recursos extras chegaram para você."))
 
 	update_ambience_pref(prefs.read_preference(/datum/preference/numeric/volume/sound_ambience_volume))
 	check_ip_intel()
@@ -715,8 +715,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 			// If we don't have panic_bunker_living set and the client is not in the DB, reject them.
 			// Otherwise, if we do have a panic_bunker_living set, check if they have enough minutes played.
 			if((living_recs == 0 && !client_is_in_db) || living_recs >= minutes)
-				var/reject_message = "Failed Login: [key] - [client_is_in_db ? "":"New "]Account attempting to connect during panic bunker, but\
-					[living_recs == 0 ? " was rejected due to no prior connections to game servers (no database entry)":" they do not have the required living time [minutes]/[living_recs]"]."
+				var/reject_message = "Failed Login: [key] - [client_is_in_db ? "":"New "]Account attempting to connect during panic bunker, but					[living_recs == 0 ? " was rejected due to no prior connections to game servers (no database entry)":" they do not have the required living time [minutes]/[living_recs]"]."
 				log_access(reject_message)
 				message_admins(span_adminnotice("[reject_message]"))
 				var/message = CONFIG_GET(string/panic_bunker_message)
@@ -726,7 +725,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 				var/list/panic_addr = CONFIG_GET(string/panic_server_address)
 				if(panic_addr && !connectiontopic_a["redirect"])
 					var/panic_name = CONFIG_GET(string/panic_server_name)
-					to_chat_immediate(src, span_notice("Sending you to [panic_name ? panic_name : panic_addr]."))
+					to_chat_immediate(src, span_notice("Enviando você para[panic_name ? panic_name : panic_addr]."))
 					winset(src, null, "command=.options")
 					src << link("[panic_addr]?redirect=1")
 				qdel(query_client_in_db)
@@ -749,7 +748,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 			var/list/panic_addr = CONFIG_GET(string/panic_server_address)
 			if(panic_addr && !connectiontopic_a["redirect"])
 				var/panic_name = CONFIG_GET(string/panic_server_name)
-				to_chat(src, "<span class='notice'>Sending you to [panic_name ? panic_name : panic_addr].</span>")
+				to_chat(src, "<span class='notice'>Enviando você para[panic_name ? panic_name : panic_addr].</span>")
 				winset(src, null, "command=.options")
 				src << link("[panic_addr]?redirect=1")
 			qdel(query_client_in_db)
@@ -955,7 +954,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 		clicklimiter[SECOND_COUNT] += 1 + (!!ab)
 
 		if (clicklimiter[SECOND_COUNT] > scl)
-			to_chat(src, span_danger("Your previous click was ignored because you've done too many in a second"))
+			to_chat(src, span_danger("Seu clique anterior foi ignorado porque você fez muitos em um segundo."))
 			return
 
 	//check if the server is overloaded and if it is then queue up the click for next tick
@@ -1127,7 +1126,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 	var/new_duration = world.realtime + duration
 	if(prefs.hearted_until > new_duration)
 		return
-	to_chat(src, span_nicegreen("Someone awarded you a heart!"))
+	to_chat(src, span_nicegreen("Alguém lhe deu um coração!"))
 	prefs.hearted_until = new_duration
 	prefs.hearted = TRUE
 	prefs.save_preferences()
@@ -1157,7 +1156,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 /client/proc/check_panel_loaded()
 	if(stat_panel.is_ready())
 		return
-	to_chat(src, span_userdanger("Statpanel failed to load, click <a href='byond://?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel "))
+	to_chat(src, span_userdanger("Statpanel falhou em carregar, clique<a href='byond://?src=[REF(src)];reload_statbrowser=1'>Aqui.</a>Para recarregar o painel"))
 
 /**
  * Initializes dropdown menus on client

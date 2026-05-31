@@ -1,23 +1,16 @@
 /datum/wound/blunt/robotic/secures_internals/critical
 	name = "Collapsed Superstructure"
-	desc = "The superstructure has totally collapsed in one or more locations, causing extreme internal oscillation with every move and massive limb dysfunction"
-	treat_text = "Reforming of superstructure via either RCD or manual molding, followed by typical treatment of loosened internals. \
-				To manually mold, the limb must be aggressively grabbed and welded held to it to make it malleable (though attacking it til thermal overload may be adequate) \
-				followed by firmly grasping and molding the limb with heat-resistant gloves."
-	occur_text = "caves in on itself, damaged solder and shrapnel flying out in a miniature explosion"
-	examine_desc = "has caved in, with internal components visible through gaps in the metal"
+	desc = "A superestrutura entrou em colapso em um ou mais locais, causando oscilação interna extrema com cada movimento e disfunção maciça dos membros."
+	treat_text = "Reforma da superestrutura através de RCD ou moldagem manual, seguido do tratamento típico dos internos soltos. Para moldá-lo manualmente, o membro deve ser agarrado agressivamente e soldado a ele para torná-lo maleável (embora atacando-lo até sobrecarga térmica pode ser adequada), seguido por agarrar firmemente e moldar o membro com luvas resistentes ao calor."
+	occur_text = "cavernas em si mesmo, solda danificada e estilhaços voando para fora em uma explosão em miniatura"
+	examine_desc = "cedeu, com componentes internos visíveis através de lacunas no metal"
 	severity = WOUND_SEVERITY_CRITICAL
-	treat_text = "Use a rapid construction device."
+	treat_text = "Use um dispositivo de construção rápido."
 	disabling = TRUE
 
-	simple_treat_text = "If on the <b>chest</b>, <b>walk</b>, <b>grasp it</b>, <b>splint</b>, <b>rest</b> or <b>buckle yourself</b> to something to reduce movement effects. \
-	Afterwards, get someone, ideally a <b>robo/engi</b> to <b>firmly grasp</b> the limb and hold a <b>welder</b> to it. Then, have them <b>use their hands</b> to <b>mold the metal</b> - \
-	careful though, it's <b>hot</b>! An <b>RCD</b> can skip all this, but is hard to come by. Afterwards, have them <b>screw/wrench</b> and then <b>re-solder</b> the limb!"
+	simple_treat_text = "Se na<b>peito</b>, <b>Ande.</b>, <b>Agarre-o.</b>, <b>Tala.</b>, <b>Descanse.</b>ou<b>Aperte-se.</b>para algo que reduza os efeitos do movimento. Depois, consiga alguém, idealmente um<b>Robo/engi</b>para<b>agarrado firmemente</b>o membro e segure um<b>soldador</b>a ele. Então, pegue-os.<b>Use suas mãos.</b>para<b>Molde o metal.</b>- Cuidado, é<b>Quente</b>Um!<b>RCD</b>pode pular tudo isso, mas é difícil de encontrar. Depois, pegue-os.<b>Parafusar/parafusar</b>e então<b>Re-soldado</b>O membro!"
 
-	homemade_treat_text = "The metal can be made <b>malleable</b> by repeated application of a welder, to a <b>severe burn</b>. Afterwards, a <b>plunger</b> can reset the metal, \
-	as can <b>percussive maintenance</b>. After the metal is reset, if <b>unable to screw/wrench</b>, <b>bone gel</b> can, over time, secure inner components at risk of <b>corrossion</b>. \
-	Alternatively, <b>crowbar</b> the limb open to expose the internals - this will make it <b>easier</b> to re-secure them, but has a <b>high risk</b> of <b>shocking</b> you, \
-	so use insulated gloves. This will <b>cripple the limb</b>, so use it only as a last resort!"
+	homemade_treat_text = "O metal pode ser feito<b>Maleável.</b>por aplicação repetida de um soldador,<b>Queimadura severa.</b>Depois,<b>êmbolo</b>pode reiniciar o metal, como pode<b>Manutenção percussiva</b>Depois que o metal for reiniciado,<b>incapaz de apertar/parafusar</b>, <b>Gel de osso</b>pode, ao longo do tempo, proteger componentes internos em risco de<b>Corrosão</b>Alternativamente,<b>Pé de cabra.</b>O membro aberto para expor os internos.<b>Mais fácil.</b>Mas tem um<b>Alto risco.</b>de<b>Chocante.</b>Então use luvas isoladas. Isso vai<b>Aleije o membro.</b>Então use-o apenas como último recurso!"
 
 	interaction_efficiency_penalty = 2.8
 	limp_slowdown = 8
@@ -105,13 +98,11 @@
 		return FALSE
 
 	if(user.grab_state < GRAB_AGGRESSIVE)
-		to_chat(user, span_warning("You must have [victim] in an aggressive grab to manipulate [victim.p_their()] [LOWER_TEXT(name)]!"))
+		to_chat(user, span_warning("Você deve ter.[victim]em um ataque agressivo para manipular[victim.p_their()] [LOWER_TEXT(name)]!"))
 		return TRUE
 
-	user.visible_message(span_danger("[user] begins softly pressing against [victim]'s collapsed [limb.plaintext_zone]..."), \
-	span_notice("You begin softly pressing against [victim]'s collapsed [limb.plaintext_zone]..."), \
-	ignored_mobs = victim)
-	to_chat(victim, span_userdanger("[user] begins pressing against your collapsed [limb.plaintext_zone]!"))
+	user.visible_message(span_danger("[user]Começa suavemente pressionando contra[victim]Está em colapso.[limb.plaintext_zone]..."), 	span_notice("Você começa suavemente pressionando contra[victim]Está em colapso.[limb.plaintext_zone]..."), 	ignored_mobs = victim)
+	to_chat(victim, span_userdanger("[user]Começa a pressionar contra seu colapso.[limb.plaintext_zone]!"))
 
 	var/delay_mult = 1
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
@@ -159,21 +150,18 @@
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 
 	if ((user != victim && user.combat_mode))
-		user.visible_message(span_bolddanger("[user] molds [their_or_other] [limb.plaintext_zone] into a really silly shape! What a goofball!"), \
-			span_danger("You maliciously mold [victim]'s [limb.plaintext_zone] into a weird shape, damaging it in the process!"), ignored_mobs = victim)
-		to_chat(victim, span_userdanger("[user] molds your [limb.plaintext_zone] into a weird shape, damaging it in the process!"))
+		user.visible_message(span_bolddanger("[user]Moldes[their_or_other] [limb.plaintext_zone]em uma forma muito boba! Que pateta!"), 			span_danger("Você maliciosamente molda[victim]'s[limb.plaintext_zone]em uma forma estranha, danificando-o no processo!"), ignored_mobs = victim)
+		to_chat(victim, span_userdanger("[user]molda seu[limb.plaintext_zone]em uma forma estranha, danificando-o no processo!"))
 
 		limb.receive_damage(brute = MOLD_METAL_SABOTAGE_BRUTE_DAMAGE, wound_bonus = CANT_WOUND, damage_source = user)
 	else if (prob(chance))
-		user.visible_message(span_green("[user] carefully molds [their_or_other] [limb.plaintext_zone] into the proper shape!"), \
-			span_green("You carefully mold [victim]'s [limb.plaintext_zone] into the proper shape!"), ignored_mobs = victim)
-		to_chat(victim, span_green("[user] carefully molds your [limb.plaintext_zone] into the proper shape!"))
-		to_chat(user, span_green("[capitalize(your_or_other)] [limb.plaintext_zone] has been molded into the proper shape! Your next step is to use a screwdriver/wrench to secure your internals."))
+		user.visible_message(span_green("[user]Cuidado com os moldes.[their_or_other] [limb.plaintext_zone]na forma correta!"), 			span_green("Você molda cuidadosamente.[victim]'s[limb.plaintext_zone]na forma correta!"), ignored_mobs = victim)
+		to_chat(victim, span_green("[user]cuidadosamente molda seu[limb.plaintext_zone]na forma correta!"))
+		to_chat(user, span_green("[capitalize(your_or_other)] [limb.plaintext_zone]Foi moldado na forma correta! Seu próximo passo é usar uma chave de fenda para proteger seus internos."))
 		set_superstructure_status(TRUE)
 	else
-		user.visible_message(span_danger("[user] accidentally molds [their_or_other] [limb.plaintext_zone] into the wrong shape!"), \
-			span_danger("You accidentally mold [your_or_other] [limb.plaintext_zone] into the wrong shape!"), ignored_mobs = victim)
-		to_chat(victim, span_userdanger("[user] accidentally molds your [limb.plaintext_zone] into the wrong shape!"))
+		user.visible_message(span_danger("[user]acidentalmente mofo[their_or_other] [limb.plaintext_zone]Na forma errada!"), 			span_danger("Você acidentalmente molda[your_or_other] [limb.plaintext_zone]Na forma errada!"), ignored_mobs = victim)
+		to_chat(victim, span_userdanger("[user]acidentalmente molda seu[limb.plaintext_zone]Na forma errada!"))
 
 		limb.receive_damage(brute = MOLD_METAL_FAILURE_BRUTE_DAMAGE, damage_source = user, wound_bonus = CANT_WOUND)
 
@@ -185,7 +173,7 @@
 	if (sufficiently_insulated_gloves || HAS_TRAIT(user, TRAIT_RESISTHEAT) || HAS_TRAIT(user, TRAIT_RESISTHEATHANDS))
 		return
 
-	to_chat(user, span_danger("You burn your hand on [victim]'s [limb.plaintext_zone]!"))
+	to_chat(user, span_danger("Você queima sua mão[victim]'s[limb.plaintext_zone]!"))
 	var/obj/item/bodypart/affecting = user.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 	affecting?.receive_damage(burn = MOLD_METAL_HAND_BURNT_BURN_DAMAGE, damage_source = limb)
 
@@ -206,8 +194,7 @@
 	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 
-	user?.visible_message(span_danger("[user] carefully holds [welder] to [their_or_other] [limb.plaintext_zone], slowly heating it..."), \
-		span_warning("You carefully hold [welder] to [your_or_other] [limb.plaintext_zone], slowly heating it..."), ignored_mobs = victim)
+	user?.visible_message(span_danger("[user]com cuidado[welder]para[their_or_other] [limb.plaintext_zone], aquecendo lentamente..."), 		span_warning("Você segura com cuidado.[welder]para[your_or_other] [limb.plaintext_zone], aquecendo lentamente..."), ignored_mobs = victim)
 
 	var/delay_mult = 1
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
@@ -219,14 +206,13 @@
 	var/wound_path = /datum/wound/burn/robotic/overheat/moderate
 	if (user != victim && user.combat_mode)
 		wound_path = /datum/wound/burn/robotic/overheat/critical // it really isnt that bad, overheat wounds are a bit funky
-		user.visible_message(span_danger("[user] heats [victim]'s [limb.plaintext_zone] aggressively, overheating it far beyond the necessary point!"), \
-			span_danger("You heat [victim]'s [limb.plaintext_zone] aggressively, overheating it far beyond the necessary point!"), ignored_mobs = victim)
-		to_chat(victim, span_userdanger("[user] heats your [limb.plaintext_zone] aggressively, overheating it far beyond the necessary point!"))
+		user.visible_message(span_danger("[user]calores[victim]'s[limb.plaintext_zone]agressivamente, superaquecendo muito além do ponto necessário!"), 			span_danger("Você esquenta.[victim]'s[limb.plaintext_zone]agressivamente, superaquecendo muito além do ponto necessário!"), ignored_mobs = victim)
+		to_chat(victim, span_userdanger("[user]aquece o seu[limb.plaintext_zone]agressivamente, superaquecendo muito além do ponto necessário!"))
 
 	var/datum/wound/burn/robotic/overheat/overheat_wound = new wound_path
 	overheat_wound.apply_wound(limb, wound_source = welder)
 
-	to_chat(user, span_green("[capitalize(your_or_other)] [limb.plaintext_zone] is now heated, allowing it to be molded! Your next step is to have someone physically reset the superstructure with their hands."))
+	to_chat(user, span_green("[capitalize(your_or_other)] [limb.plaintext_zone]agora está aquecido, permitindo que seja moldado! Seu próximo passo é ter alguém fisicamente redefinindo a superestrutura com as mãos."))
 	return TRUE
 
 /// Cost of an RCD to quickly fix our broken in raw matter
@@ -243,7 +229,7 @@
 	var/silo_has_enough_materials = (treating_rcd.get_silo_iron() > ROBOTIC_T3_BLUNT_WOUND_RCD_SILO_COST)
 
 	if (!silo_has_enough_materials && !has_enough_matter) // neither the silo, nor the rcd, has enough
-		user?.balloon_alert(user, "not enough matter!")
+		user?.balloon_alert(user, "Não há matéria suficiente!")
 		return TRUE
 
 	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
@@ -310,7 +296,7 @@
 		if (misused)
 			limb.receive_damage(brute = 10, damage_source = treating_rcd, wound_bonus = CANT_WOUND)
 		// the double message is fine here, since the first message also tells you if you fucked up and did some damage
-		to_chat(user, span_green("The superstructure has been reformed! Your next step is to secure the internals via a screwdriver/wrench."))
+		to_chat(user, span_green("A superestrutura foi reformada! Seu próximo passo é proteger os internos através de uma chave de fenda."))
 	return TRUE
 
 #undef ROBOTIC_T3_BLUNT_WOUND_RCD_COST
@@ -326,8 +312,7 @@
 
 	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
-	user?.visible_message(span_notice("[user] begins plunging at the dents on [their_or_other] [limb.plaintext_zone] with [treating_plunger]..."), \
-		span_green("You begin plunging at the dents on [your_or_other] [limb.plaintext_zone] with [treating_plunger]..."))
+	user?.visible_message(span_notice("[user]Começa a mergulhar nas amassadas.[their_or_other] [limb.plaintext_zone]com[treating_plunger]..."), 		span_green("Você começa a mergulhar nas amassadas[your_or_other] [limb.plaintext_zone]com[treating_plunger]..."))
 
 	var/delay_mult = 1
 	if (HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
@@ -352,30 +337,26 @@
 		success_chance *= 1.5
 
 	if (prob(success_chance))
-		user?.visible_message(span_green("[victim]'s [limb.plaintext_zone] lets out a sharp POP as [treating_plunger] forces it into its normal position!"), \
-			span_green("[victim]'s [limb.plaintext_zone] lets out a sharp POP as your [treating_plunger] forces it into its normal position!"))
-		to_chat(user, span_green("[capitalize(your_or_other)] [limb.plaintext_zone]'s structure has been reset to it's proper position! Your next step is to secure it with a screwdriver/wrench, though bone gel would also work."))
+		user?.visible_message(span_green("[victim]'s[limb.plaintext_zone]Vamos sair de um POP afiado como[treating_plunger]Força-o em sua posição normal!"), 			span_green("[victim]'s[limb.plaintext_zone]deixa sair um POP afiado como seu[treating_plunger]Força-o em sua posição normal!"))
+		to_chat(user, span_green("[capitalize(your_or_other)] [limb.plaintext_zone]A estrutura foi restabelecida na posição correta! Seu próximo passo é prendê-lo com uma chave de fendas, embora gel de osso também funcione."))
 		set_superstructure_status(TRUE)
 	else
-		user?.visible_message(span_danger("[victim]'s [limb.plaintext_zone] splinters from [treating_plunger]'s plunging!"), \
-			span_danger("[capitalize(your_or_other)] [limb.plaintext_zone] splinters from your [treating_plunger]'s plunging!"))
+		user?.visible_message(span_danger("[victim]'s[limb.plaintext_zone]Estilhaços de[treating_plunger]Está caindo!"), 			span_danger("[capitalize(your_or_other)] [limb.plaintext_zone]Estilhaços do seu[treating_plunger]Está caindo!"))
 		limb.receive_damage(brute = 5, damage_source = treating_plunger)
 
 	return TRUE
 
 /datum/wound/blunt/robotic/secures_internals/critical/handle_percussive_maintenance_success(attacking_item, mob/living/user)
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
-	victim.visible_message(span_green("[victim]'s [limb.plaintext_zone] gets smashed into a proper shape!"), \
-		span_green("Your [limb.plaintext_zone] gets smashed into a proper shape!"))
+	victim.visible_message(span_green("[victim]'s[limb.plaintext_zone]é esmagado em uma forma adequada!"), 		span_green("Sua[limb.plaintext_zone]é esmagado em uma forma adequada!"))
 
-	var/user_message = "[capitalize(your_or_other)] [limb.plaintext_zone]'s superstructure has been reset! Your next step is to screwdriver/wrench the internals, \
-	though if you're desperate enough to use percussive maintenance, you might want to either use a crowbar or bone gel..."
+	var/user_message = "[capitalize(your_or_other)] [limb.plaintext_zone]'s superstructure has been reset! Your next step is to screwdriver/wrench the internals, 	though if you're desperate enough to use percussive maintenance, you might want to either use a crowbar or bone gel..."
 	to_chat(user, span_green(user_message))
 
 	set_superstructure_status(TRUE)
 
 /datum/wound/blunt/robotic/secures_internals/critical/handle_percussive_maintenance_failure(attacking_item, mob/living/user)
-	to_chat(victim, span_danger("Your [limb.plaintext_zone] only deforms more from the impact..."))
+	to_chat(victim, span_danger("Sua[limb.plaintext_zone]Só deforma mais do impacto..."))
 	limb.receive_damage(brute = 1, damage_source = attacking_item, wound_bonus = CANT_WOUND)
 
 /datum/wound/blunt/robotic/secures_internals/critical/uses_percussive_maintenance()

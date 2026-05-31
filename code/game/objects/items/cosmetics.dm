@@ -1,7 +1,7 @@
 /obj/item/lipstick
 	gender = PLURAL
 	name = "red lipstick"
-	desc = "A generic brand of lipstick."
+	desc = "Uma marca genérica de batom."
 	icon =  'modular_skyrat/modules/salon/icons/items.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/cosmetic.dmi'
 	icon_state = "lipstick"
 	base_icon_state = "lipstick"
@@ -101,13 +101,13 @@
 
 /obj/item/lipstick/black/death
 	name = "\improper Kiss of Death"
-	desc = "An incredibly potent tube of lipstick made from the venom of the dreaded Yellow Spotted Space Lizard, as deadly as it is chic. Try not to smear it!"
+	desc = "Um tubo de batom incrivelmente potente feito do veneno do temido lagarto espacial manchado amarelo, tão mortal quanto chique. Tente não manchar!"
 	lipstick_trait = TRAIT_KISS_OF_DEATH
 	random_spawn = FALSE
 
 /obj/item/lipstick/syndie
 	name = "syndie lipstick"
-	desc = "Syndicate branded lipstick with a killer dose of kisses. Observe safety regulations!"
+	desc = "Baton marcado com uma dose de beijos. Observe as regras de segurança!"
 	icon_state = "slipstick"
 	base_icon_state = "slipstick"
 	lipstick_color = COLOR_SYNDIE_RED
@@ -133,7 +133,7 @@
 	update_appearance()
 
 /obj/item/lipstick/attack_self(mob/user)
-	to_chat(user, span_notice("You twist [src] [open ? "closed" : "open"]."))
+	to_chat(user, span_notice("Você torce.[src] [open ? "closed" : "open"]."))
 	open = !open
 	update_appearance(UPDATE_ICON)
 
@@ -142,29 +142,26 @@
 		return
 
 	if(!ishuman(M))
-		to_chat(user, span_warning("Where are the lips on that?"))
+		to_chat(user, span_warning("Onde estão os lábios disso?"))
 		return
 
 	var/mob/living/carbon/human/target = M
 	if(target.is_mouth_covered())
-		to_chat(user, span_warning("Remove [ target == user ? "your" : "[target.p_their()]" ] mask!"))
+		to_chat(user, span_warning("Remover[ target == user ? "your" : "[target.p_their()]" ]Máscara!"))
 		return
 	if(target.lip_style) //if they already have lipstick on
-		to_chat(user, span_warning("You need to wipe off the old lipstick first!"))
+		to_chat(user, span_warning("Você precisa limpar o batom velho primeiro!"))
 		return
 
 	if(target == user)
-		user.visible_message(span_notice("[user] does [user.p_their()] lips with \the [src]."), \
-			span_notice("You take a moment to apply \the [src]. Perfect!"))
+		user.visible_message(span_notice("[user]Sim.[user.p_their()]lábios com\the [src]."), 			span_notice("Tire um momento para se candidatar.\the [src]Perfeito!"))
 		target.update_lips(style, lipstick_color, lipstick_trait)
 		return
 
-	user.visible_message(span_warning("[user] begins to do [target]'s lips with \the [src]."), \
-		span_notice("You begin to apply \the [src] on [target]'s lips..."))
+	user.visible_message(span_warning("[user]Começa a fazer[target]Os lábios com\the [src]."), 		span_notice("Você começa a aplicar\the [src]Vamos.[target]Os lábios..."))
 	if(!do_after(user, 2 SECONDS, target = target))
 		return
-	user.visible_message(span_notice("[user] does [target]'s lips with \the [src]."), \
-		span_notice("You apply \the [src] on [target]'s lips."))
+	user.visible_message(span_notice("[user]Sim.[target]Os lábios com\the [src]."), 		span_notice("Você se candidata.\the [src]Vamos.[target]Os lábios."))
 	target.update_lips(style, lipstick_color, lipstick_trait)
 
 //you can wipe off lipstick with paper!
@@ -174,21 +171,19 @@
 
 	var/mob/living/carbon/human/target = M
 	if(target == user)
-		to_chat(user, span_notice("You wipe off the lipstick with [src]."))
+		to_chat(user, span_notice("Você limpa o batom com[src]."))
 		target.update_lips(null)
 		return
-	user.visible_message(span_warning("[user] begins to wipe [target]'s lipstick off with \the [src]."), \
-		span_notice("You begin to wipe off [target]'s lipstick..."))
+	user.visible_message(span_warning("[user]Começa a limpar[target]É batom com\the [src]."), 		span_notice("Você começa a limpar.[target]É batom..."))
 	if(!do_after(user, 1 SECONDS, target = target))
 		return
-	user.visible_message(span_notice("[user] wipes [target]'s lipstick off with \the [src]."), \
-		span_notice("You wipe off [target]'s lipstick."))
+	user.visible_message(span_notice("[user]Toalhitas[target]É batom com\the [src]."), 		span_notice("Você se limpa.[target]É batom."))
 	target.update_lips(null)
 
 /* SKYRAT EDIT REMOVAL
 /obj/item/razor
 	name = "electric razor"
-	desc = "The latest and greatest power razor born from the science of shaving."
+	desc = "A mais recente e mais poderosa navalha nascida da ciência de barbear."
 	icon = 'icons/obj/cosmetic.dmi'
 	icon_state = "razor"
 	inhand_icon_state = "razor"
@@ -199,7 +194,7 @@
 	drop_sound = SFX_GENERIC_DEVICE_DROP
 
 /obj/item/razor/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins shaving [user.p_them()]self without the razor guard! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Começa a fazer a barba.[user.p_them()]Sem o guarda navalha! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	shave(user, BODY_ZONE_PRECISE_MOUTH)
 	shave(user, BODY_ZONE_HEAD)//doesn't need to be BODY_ZONE_HEAD specifically, but whatever
 	return BRUTELOSS
@@ -219,13 +214,13 @@
 	var/location = user.zone_selected
 	var/static/list/head_zones = list(BODY_ZONE_PRECISE_EYES, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)
 	if(!noggin && (location in head_zones))
-		to_chat(user, span_warning("[human_target] doesn't have a head!"))
+		to_chat(user, span_warning("[human_target]Não tem cabeça!"))
 		return
 	if(location == BODY_ZONE_PRECISE_MOUTH)
 		if(!user.combat_mode)
 			if(human_target.gender == MALE)
 				if(human_target == user)
-					to_chat(user, span_warning("You need a mirror to properly style your own facial hair!"))
+					to_chat(user, span_warning("Precisa de um espelho para estilizar seu próprio cabelo facial!"))
 					return
 				if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 					return
@@ -234,18 +229,18 @@
 					return
 				var/covering = human_target.is_mouth_covered()
 				if(covering)
-					to_chat(user, span_warning("[covering] is in the way!"))
+					to_chat(user, span_warning("[covering]Está no caminho!"))
 					return
 				if(!(noggin.head_flags & HEAD_FACIAL_HAIR))
-					to_chat(user, span_warning("There is no facial hair to style!"))
+					to_chat(user, span_warning("Não há cabelo facial para estilizar!"))
 					return
 				if(HAS_TRAIT(human_target, TRAIT_SHAVED))
-					to_chat(user, span_warning("[human_target] is just way too shaved. Like, really really shaved."))
+					to_chat(user, span_warning("[human_target]Está muito barbeado. Realmente raspada."))
 					return
-				user.visible_message(span_notice("[user] tries to change [human_target]'s facial hairstyle using [src]."), span_notice("You try to change [human_target]'s facial hairstyle using [src]."))
+				user.visible_message(span_notice("[user]Tenta mudar[human_target]O penteado facial usando[src]."), span_notice("Você tenta mudar[human_target]O penteado facial usando[src]."))
 				playsound(src, 'sound/items/hair-clippers.ogg', 50)
 				if(new_style && do_after(user, 6 SECONDS, target = human_target))
-					user.visible_message(span_notice("[user] successfully changes [human_target]'s facial hairstyle using [src]."), span_notice("You successfully change [human_target]'s facial hairstyle using [src]."))
+					user.visible_message(span_notice("[user]com sucesso muda[human_target]O penteado facial usando[src]."), span_notice("Você mudou com sucesso.[human_target]O penteado facial usando[src]."))
 					human_target.set_facial_hairstyle(new_style, update = TRUE)
 					return
 			else
@@ -253,37 +248,33 @@
 		else
 			var/covering = human_target.is_mouth_covered()
 			if(covering)
-				to_chat(user, span_warning("[covering] is in the way!"))
+				to_chat(user, span_warning("[covering]Está no caminho!"))
 				return
 			if(!(noggin.head_flags & HEAD_FACIAL_HAIR))
-				to_chat(user, span_warning("There is no facial hair to shave!"))
+				to_chat(user, span_warning("Não há pêlos faciais para barbear!"))
 				return
 			if(human_target.facial_hairstyle == "Shaved")
-				to_chat(user, span_warning("Already clean-shaven!"))
+				to_chat(user, span_warning("Já barbeado!"))
 				return
 
 			if(human_target == user) //shaving yourself
-				user.visible_message(span_notice("[user] starts to shave [user.p_their()] facial hair with [src]."), \
-					span_notice("You take a moment to shave your facial hair with [src]..."))
+				user.visible_message(span_notice("[user]Começa a se barbear.[user.p_their()]Cabelo facial com[src]."), 					span_notice("Tire um momento para raspar seu cabelo facial com[src]..."))
 				playsound(src, 'sound/items/hair-clippers.ogg', 50)
 				if(do_after(user, 5 SECONDS, target = user))
-					user.visible_message(span_notice("[user] shaves [user.p_their()] facial hair clean with [src]."), \
-						span_notice("You finish shaving with [src]. Fast and clean!"))
+					user.visible_message(span_notice("[user]Barba.[user.p_their()]Cabelo facial limpo com[src]."), 						span_notice("Você termina de fazer a barba com[src]Rápido e limpo!"))
 					shave(user, location)
 				return
 			else
-				user.visible_message(span_warning("[user] tries to shave [human_target]'s facial hair with [src]."), \
-					span_notice("You start shaving [human_target]'s facial hair..."))
+				user.visible_message(span_warning("[user]Tenta se barbear.[human_target]É o cabelo facial com[src]."), 					span_notice("Você começa a fazer a barba.[human_target]O cabelo facial..."))
 				playsound(src, 'sound/items/hair-clippers.ogg', 50)
 				if(do_after(user, 5 SECONDS, target = human_target))
-					user.visible_message(span_warning("[user] shaves off [human_target]'s facial hair with [src]."), \
-						span_notice("You shave [human_target]'s facial hair clean off."))
+					user.visible_message(span_warning("[user]Raspa.[human_target]É o cabelo facial com[src]."), 						span_notice("Você se barbeia.[human_target]O cabelo facial está limpo."))
 					shave(human_target, location)
 				return
 	else if(location == BODY_ZONE_HEAD)
 		if(!user.combat_mode)
 			if(human_target == user)
-				to_chat(user, span_warning("You need a mirror to properly style your own hair!"))
+				to_chat(user, span_warning("Você precisa de um espelho para fazer seu próprio cabelo!"))
 				return
 			if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 				return
@@ -291,47 +282,43 @@
 			if(isnull(new_style))
 				return
 			if(!human_target.is_location_accessible(location))
-				to_chat(user, span_warning("The headgear is in the way!"))
+				to_chat(user, span_warning("O capacete está no caminho!"))
 				return
 			if(!(noggin.head_flags & HEAD_HAIR))
-				to_chat(user, span_warning("There is no hair to style!"))
+				to_chat(user, span_warning("Não há cabelo para estilizar!"))
 				return
 			if(HAS_TRAIT(human_target, TRAIT_BALD))
-				to_chat(user, span_warning("[human_target] is just way too bald. Like, really really bald."))
+				to_chat(user, span_warning("[human_target]É muito careca. Muito careca."))
 				return
-			user.visible_message(span_notice("[user] tries to change [human_target]'s hairstyle using [src]."), span_notice("You try to change [human_target]'s hairstyle using [src]."))
+			user.visible_message(span_notice("[user]Tenta mudar[human_target]O penteado usando[src]."), span_notice("Você tenta mudar[human_target]O penteado usando[src]."))
 			playsound(src, 'sound/items/hair-clippers.ogg', 50)
 			if(new_style && do_after(user, 6 SECONDS, target = human_target))
-				user.visible_message(span_notice("[user] successfully changes [human_target]'s hairstyle using [src]."), span_notice("You successfully change [human_target]'s hairstyle using [src]."))
+				user.visible_message(span_notice("[user]com sucesso muda[human_target]O penteado usando[src]."), span_notice("Você mudou com sucesso.[human_target]O penteado usando[src]."))
 				human_target.set_hairstyle(new_style, update = TRUE)
 				return
 		else
 			if(!human_target.is_location_accessible(location))
-				to_chat(user, span_warning("The headgear is in the way!"))
+				to_chat(user, span_warning("O capacete está no caminho!"))
 				return
 			if(!(noggin.head_flags & HEAD_HAIR))
-				to_chat(user, span_warning("There is no hair to shave!"))
+				to_chat(user, span_warning("Não há cabelo para barbear!"))
 				return
 			if(human_target.hairstyle == "Bald" || human_target.hairstyle == "Balding Hair" || human_target.hairstyle == "Skinhead")
-				to_chat(user, span_warning("There is not enough hair left to shave!"))
+				to_chat(user, span_warning("Não há cabelo suficiente para se barbear!"))
 				return
 
 			if(human_target == user) //shaving yourself
-				user.visible_message(span_notice("[user] starts to shave [user.p_their()] head with [src]."), \
-					span_notice("You start to shave your head with [src]..."))
+				user.visible_message(span_notice("[user]Começa a se barbear.[user.p_their()]cabeça com[src]."), 					span_notice("Você começa a raspar a cabeça com[src]..."))
 				playsound(src, 'sound/items/hair-clippers.ogg', 50)
 				if(do_after(user, 5 SECONDS, target = user))
-					user.visible_message(span_notice("[user] shaves [user.p_their()] head with [src]."), \
-						span_notice("You finish shaving with [src]."))
+					user.visible_message(span_notice("[user]Barba.[user.p_their()]cabeça com[src]."), 						span_notice("Você termina de fazer a barba com[src]."))
 					shave(user, location)
 				return
 			else
-				user.visible_message(span_warning("[user] tries to shave [human_target]'s head with [src]!"), \
-					span_notice("You start shaving [human_target]'s head..."))
+				user.visible_message(span_warning("[user]Tenta se barbear.[human_target]'s cabeça com[src]!"), 					span_notice("Você começa a fazer a barba.[human_target]A cabeça..."))
 				playsound(src, 'sound/items/hair-clippers.ogg', 50)
 				if(do_after(user, 5 SECONDS, target = human_target))
-					user.visible_message(span_warning("[user] shaves [human_target]'s head bald with [src]!"), \
-						span_notice("You shave [human_target]'s head bald."))
+					user.visible_message(span_warning("[user]Barba.[human_target]É careca com a cabeça[src]!"), 						span_notice("Você se barbeia.[human_target]É careca."))
 					shave(human_target, location)
 				return
 	return ..()
@@ -339,7 +326,7 @@
 
 /obj/item/razor/surgery
 	name = "surgical razor"
-	desc = "A medical grade razor. Its precision blades provide a clean shave for surgical preparation."
+	desc = "Uma navalha de grau médico. Suas lâminas de precisão fornecem um barbear limpo para preparação cirúrgica."
 	icon = 'icons/obj/cosmetic.dmi'
 	icon_state = "medrazor"
 

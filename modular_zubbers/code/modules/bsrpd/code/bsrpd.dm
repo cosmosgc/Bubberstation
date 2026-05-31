@@ -4,7 +4,7 @@
 
 /obj/item/pipe_dispenser/bluespace
 	name = "bluespace RPD"
-	desc = "State of the art technology being tested by NT scientists; this is their only working prototype."
+	desc = "Tecnologia de ponta sendo testada por cientistas da NT, este é o único protótipo que eles trabalham."
 	icon = 'modular_zubbers/icons/obj/bsrpd.dmi'
 	icon_state = "bsrpd"
 	lefthand_file = 'modular_zubbers/icons/mob/inhands/items/bsrpd_lefthand.dmi'
@@ -21,19 +21,19 @@
 /obj/item/pipe_dispenser/bluespace/attackby(obj/item/item, mob/user, param)
 	if(istype(item, /obj/item/stack/sheet/bluespace_crystal))
 		if(BSRPD_CAPACITY_NEW > (BSRPD_CAPACITY_MAX - current_capacity) || ranged_use_cost == 0)
-			to_chat(user, span_warning("You cannot recharge [src] anymore!"))
+			to_chat(user, span_warning("Você não pode recarregar.[src]Mais!"))
 			return
 		item.use(1)
-		to_chat(user, span_notice("You recharge the bluespace capacitor inside of [src]"))
+		to_chat(user, span_notice("Você recarrega o capacitor do espaço azul dentro de[src]"))
 		current_capacity += BSRPD_CAPACITY_NEW
 		return
 	if(istype(item, /obj/item/assembly/signaler/anomaly/bluespace))
 		if(ranged_use_cost)
-			to_chat(user, span_notice("You slot [item] into [src]; supercharging the bluespace capacitor!"))
+			to_chat(user, span_notice("Você está em posição.[item]em[src]Supercarregando o capacitor do espaço azul!"))
 			ranged_use_cost = 0
 			qdel(item)
 		else
-			to_chat(user, span_warning("You cannot improve the [src] further."))
+			to_chat(user, span_warning("Você não pode melhorar o[src]Mais longe."))
 		return
 	return ..()
 
@@ -46,11 +46,11 @@
 	else
 		. += "You cannot see the charge capacity."
 
-	. += span_notice("<b>Alt-Click</b> to toggle remote piping.")
+	. += span_notice("<b>Alt-Click</b>Para alternar tubulação remota.")
 
 /obj/item/pipe_dispenser/bluespace/click_alt(mob/user)
 	remote_piping_toggle = !remote_piping_toggle
-	balloon_alert(user, "remote piping [remote_piping_toggle ? "on" : "off"]")
+	balloon_alert(user, "Tubulação remota[remote_piping_toggle ? "on" : "off"]")
 	playsound(get_turf(src), 'sound/machines/click.ogg', 50, TRUE)
 	return CLICK_ACTION_SUCCESS
 
@@ -58,7 +58,7 @@
 	if(!remote_piping_toggle) // If we are in proximity to the target or have our safety on, don't use charge and don't call this shitcode.
 		return NONE
 	if(current_capacity < ranged_use_cost)
-		to_chat(user, span_warning("The [src] lacks the charge to do that."))
+		to_chat(user, span_warning("O[src]Falta a acusação para fazer isso."))
 		return ITEM_INTERACT_BLOCKING
 	if(!in_use)
 		user.Beam(interacting_with, icon_state = "rped_upgrade", time = 1 SECONDS)

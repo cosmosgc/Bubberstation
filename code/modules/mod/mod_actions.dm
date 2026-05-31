@@ -33,13 +33,13 @@
 /datum/action/item_action/mod/do_effect(trigger_flags)
 	var/obj/item/mod/control/mod = target
 	if(mod.malfunctioning && prob(MOD_MALFUNCTION_PROB))
-		mod.balloon_alert(usr, "button malfunctions!")
+		mod.balloon_alert(usr, "Falha no botão!")
 		return FALSE
 	return TRUE
 
 /datum/action/item_action/mod/deploy
 	name = "Deploy MODsuit"
-	desc = "LMB: Deploy/Undeploy part. RMB: Deploy/Undeploy full suit."
+	desc = "Prepare-se para preparar parte. Coloquem o terno completo."
 	button_icon_state = "deploy"
 
 /datum/action/item_action/mod/deploy/do_effect(trigger_flags)
@@ -57,7 +57,7 @@
 
 /datum/action/item_action/mod/activate
 	name = "Activate MODsuit"
-	desc = "LMB: Activate/Deactivate suit with prompt. RMB: Activate/Deactivate suit skipping prompt."
+	desc = "Ativar/Desativar terno com prompt. Ativar/Desativar o processo de fuga."
 	button_icon_state = "activate"
 	/// First time clicking this will set it to TRUE, second time will activate it.
 	var/ready = FALSE
@@ -87,7 +87,7 @@
 
 /datum/action/item_action/mod/module
 	name = "Toggle Module"
-	desc = "Toggle a MODsuit module."
+	desc = "Alternar um módulo MODsuit."
 	button_icon_state = "module"
 
 /datum/action/item_action/mod/module/do_effect(trigger_flags)
@@ -102,7 +102,7 @@
 
 /datum/action/item_action/mod/panel
 	name = "MODsuit Panel"
-	desc = "Open the MODsuit's panel."
+	desc = "Abra o painel do MODsuit."
 	button_icon_state = "panel"
 
 /datum/action/item_action/mod/panel/do_effect(trigger_flags)
@@ -139,7 +139,7 @@
 	qdel(src)
 
 /datum/action/item_action/mod/pinnable/module
-	desc = "Activate the module."
+	desc = "Ative o módulo."
 	/// Overrides the icon applications.
 	var/override = FALSE
 	/// Module we are linked to.
@@ -157,7 +157,7 @@
 		// clears check hands and check conscious
 		check_flags = NONE
 	name = "Activate [capitalize(linked_module.name)]"
-	desc = "Quickly activate [linked_module]."
+	desc = "Ativar rápido.[linked_module]."
 	RegisterSignals(linked_module, list(
 		COMSIG_MODULE_ACTIVATED,
 		COMSIG_MODULE_DEACTIVATED,

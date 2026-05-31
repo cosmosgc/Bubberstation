@@ -3,7 +3,7 @@
 	typepath = /datum/round_event/brand_intelligence
 	weight = 5
 	category = EVENT_CATEGORY_AI
-	description = "Vending machines will attack people until the Patient Zero is disabled."
+	description = "Máquinas de venda vão atacar pessoas até que o Paciente Zero seja desativado."
 	min_players = 15
 	max_occurrences = 1
 	min_wizard_trigger_potency = 2
@@ -67,7 +67,7 @@
 			clear_from_lists(saved)
 		if(!QDELETED(origin_machine))
 			origin_machine.speak("I am... vanquished. My people will remem...ber...meeee.")
-			origin_machine.visible_message(span_notice("[origin_machine] beeps and seems lifeless."))
+			origin_machine.visible_message(span_notice("[origin_machine]Apita e parece sem vida."))
 			clear_from_lists(origin_machine)
 		kill()
 		return
@@ -129,7 +129,7 @@
 	return VENDING_DENIED
 
 /datum/event_admin_setup/listed_options/brand_intelligence
-	input_text = "Select a specific vendor path?"
+	input_text = "Selecionar um caminho de fornecedor específico?"
 	normal_run_option = "Random Vendor"
 
 /datum/event_admin_setup/listed_options/brand_intelligence/get_list()

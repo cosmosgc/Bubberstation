@@ -82,7 +82,7 @@
 	//comes after healing so new limbs comically drop to the floor
 	if(starting_turf)
 		if(!check_teleport_valid(parent, starting_turf))
-			to_chat(parent, span_warning("For some reason, your head aches and fills with mental fog when you try to think of where you were... It feels like you're now going against some dull, unstoppable universal force."))
+			to_chat(parent, span_warning("Por alguma razão, sua cabeça dói e se enche de neblina mental quando tenta pensar onde estava... Parece que agora você está indo contra alguma força universal chata e imparável."))
 		else
 			var/atom/movable/master = parent
 			master.forceMove(starting_turf)
@@ -133,15 +133,15 @@
 
 ///differently themed dejavu for modsuits.
 /datum/component/dejavu/timeline
-	rewind_message = "Your suit rewinds, pulling you through spacetime!"
-	no_rewinds_message = "\"Rewind complete. You have arrived at: 10 seconds ago.\""
+	rewind_message = "Seu terno rebobina, puxando você através do espaço-tempo!"
+	no_rewinds_message = "\"Rebobinar completa. Chegou há 10 segundos.\""
 
 /datum/component/dejavu/timeline/rewind()
 	playsound(get_turf(parent), 'sound/items/modsuit/rewinder.ogg', 50, TRUE)
 	return ..()
 
 /datum/component/dejavu/wizard
-	rewind_message = "Your temporal ward activated, pulling you through spacetime!"
+	rewind_message = "Sua ala temporal ativada, puxando você pelo espaço-tempo!"
 
 /datum/component/dejavu/wizard/rewind()
 	playsound(get_turf(parent), 'sound/items/modsuit/rewinder.ogg', 50, TRUE)

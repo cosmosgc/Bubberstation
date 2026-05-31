@@ -11,7 +11,7 @@
 	required_temp = 480 // cook it
 	purity_min = 0
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL | REACTION_TAG_DRUG
-	mix_message = "The solution thickens into a paste!"
+	mix_message = "A solução engrossa em uma pasta!"
 
 /datum/chemical_reaction/powder_cocaine
 	is_cold_recipe = TRUE
@@ -19,7 +19,7 @@
 	required_temp = 250 //freeze it
 	reaction_flags = REACTION_INSTANT
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL | REACTION_TAG_DRUG
-	mix_message = "The solution freezes into a powder!"
+	mix_message = "A solução congela em um pó!"
 
 /datum/chemical_reaction/powder_cocaine/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -32,7 +32,7 @@
 	purity_min = 0
 	reaction_flags = REACTION_INSTANT
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL | REACTION_TAG_DRUG
-	mix_message = "The solution solidifies into chunks!"
+	mix_message = "A solução se solidifica em pedaços!"
 
 /datum/chemical_reaction/crack_cooking/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -44,7 +44,7 @@
 
 /datum/reagent/drug/cocaine
 	name = "Cocaine"
-	description = "A powerful stimulant extracted from coca leaves. Causes drowsiness and severe brain damage if overdosed."
+	description = "Um poderoso estimulante extraído de folhas de coca. Causa sonolência e danos cerebrais graves se tiver overdose."
 	color = "#ffffff"
 	overdose_threshold = 20
 	ph = 9
@@ -78,7 +78,7 @@
 	. = TRUE
 
 /datum/reagent/drug/cocaine/overdose_start(mob/living/M)
-	to_chat(M, span_userdanger("Your heart beats is beating so fast, it hurts..."))
+	to_chat(M, span_userdanger("Seu coração bate tão rápido, que dói..."))
 
 /datum/reagent/drug/cocaine/overdose_process(mob/living/M, seconds_per_tick, times_fired)
 	M.adjust_tox_loss(5 * REM * seconds_per_tick, 0)
@@ -88,7 +88,7 @@
 		M.emote(pick("twitch","drool"))
 	if(!HAS_TRAIT(M, TRAIT_FLOORED))
 		if(SPT_PROB(1.5, seconds_per_tick))
-			M.visible_message(span_danger("[M] collapses onto the floor!"))
+			M.visible_message(span_danger("[M]Cai no chão!"))
 			M.Paralyze(135,TRUE)
 			M.drop_all_held_items()
 	..()
@@ -96,7 +96,7 @@
 
 /datum/reagent/drug/coca_powder
 	name = "Coca Powder"
-	description = "Ground-up and filtered coca leaves, mildly stimulating."
+	description = "Folhas de coca filtradas, levemente estimulantes."
 	color = "#20862f"
 	taste_description = "bitterness"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -112,10 +112,10 @@
 
 /datum/reagent/drug/coca_paste
 	name = "Coca Paste"
-	description = "An acidc paste containing high amount of cocaine and toxic chemicals used to process it - consumption is ill-advised."
+	description = "Uma pasta ácida contendo alta quantidade de cocaína e produtos químicos tóxicos usados para processá-la - o consumo é imprudente."
 	color = "#4e6444"
 	ph = 5
-	taste_description = "acidic sludge"
+	taste_description = "lodo ácido"
 	addiction_types = list(/datum/addiction/stimulants = 17)
 	metabolized_traits = list(TRAIT_ANALGESIA, TRAIT_BATON_RESISTANCE)
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -148,7 +148,7 @@
 	return UPDATE_MOB_HEALTH
 
 /datum/reagent/drug/coca_paste/overdose_start(mob/living/M)
-	to_chat(M, span_userdanger("Your heart beats is beating so fast, it hurts..."))
+	to_chat(M, span_userdanger("Seu coração bate tão rápido, que dói..."))
 
 /datum/reagent/drug/coca_paste/overdose_process(mob/living/M, seconds_per_tick, times_fired)
 	M.adjust_tox_loss(5 * REM * seconds_per_tick, 0)
@@ -158,7 +158,7 @@
 		M.emote(pick("twitch","drool"))
 	if(!HAS_TRAIT(M, TRAIT_FLOORED))
 		if(SPT_PROB(1.5, seconds_per_tick))
-			M.visible_message(span_danger("[M] collapses onto the floor!"))
+			M.visible_message(span_danger("[M]Cai no chão!"))
 			M.Paralyze(135,TRUE)
 			M.drop_all_held_items()
 	..()
@@ -169,11 +169,11 @@
 
 /datum/reagent/drug/freebase_cocaine
 	name = "Freebase Cocaine"
-	description = "A smokable form of cocaine, Its higher bioavaliability results in a more intense high."
+	description = "Uma forma fumegante de cocaína, sua maior biodisponibilidade resulta em uma alta mais intensa."
 	color = "#f0e6bb"
 	overdose_threshold = 15
 	ph = 9 // it probably shouldnt be? but im too lazy to check it, and it was 9 because it was inhereiting
-	taste_description = "crunchy bitterness"
+	taste_description = "Amargura crocante"
 	addiction_types = list(/datum/addiction/stimulants = 24) // even more addictive
 	metabolized_traits = list(TRAIT_ANALGESIA, TRAIT_BATON_RESISTANCE)
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -204,7 +204,7 @@
 	..()
 
 /datum/reagent/drug/freebase_cocaine/overdose_start(mob/living/M)
-	to_chat(M, span_userdanger("Your heart beats is beating so fast, it hurts..."))
+	to_chat(M, span_userdanger("Seu coração bate tão rápido, que dói..."))
 
 /datum/reagent/drug/freebase_cocaine/overdose_process(mob/living/M, seconds_per_tick, times_fired)
 	M.adjust_tox_loss(5 * REM * seconds_per_tick, 0)
@@ -214,7 +214,7 @@
 		M.emote(pick("twitch","drool"))
 	if(!HAS_TRAIT(M, TRAIT_FLOORED))
 		if(SPT_PROB(1.5, seconds_per_tick))
-			M.visible_message(span_danger("[M] collapses onto the floor!"))
+			M.visible_message(span_danger("[M]Cai no chão!"))
 			M.Paralyze(135,TRUE)
 			M.drop_all_held_items()
 	..()

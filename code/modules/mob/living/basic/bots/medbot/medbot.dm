@@ -2,7 +2,7 @@
 
 /mob/living/basic/bot/medbot
 	name = "\improper Medibot"
-	desc = "A little medical robot. He looks somewhat underwhelmed."
+	desc = "Um pequeno robô médico. Ele parece um pouco deprimido."
 	icon = 'icons/mob/silicon/aibots.dmi'
 	icon_state = "medbot_generic_idle"
 	base_icon_state = "medbot"
@@ -22,7 +22,7 @@
 	bot_type = MED_BOT
 	data_hud_type = TRAIT_MEDICAL_HUD
 	hackables = "health processor circuits"
-	possessed_message = "You are a medbot! Ensure good health among the crew to the best of your ability!"
+	possessed_message = "Você é um medbot! Assegure-se de boa saúde entre a tripulação o melhor que puder!"
 
 	additional_access = /datum/id_trim/medibot
 	announcement_type = /datum/action/cooldown/bot_announcement/medbot
@@ -135,27 +135,14 @@
 	if(!isnull(new_skin))
 		skin = new_skin
 		update_appearance()
-	AddComponent(/datum/component/tippable, \
-		tip_time = 3 SECONDS, \
-		untip_time = 3 SECONDS, \
-		self_right_time = 3.5 MINUTES, \
-		pre_tipped_callback = CALLBACK(src, PROC_REF(pre_tip_over)), \
-		post_tipped_callback = CALLBACK(src, PROC_REF(after_tip_over)), \
-		post_untipped_callback = CALLBACK(src, PROC_REF(after_righted)))
+	AddComponent(/datum/component/tippable, 		tip_time = 3 SECONDS, 		untip_time = 3 SECONDS, 		self_right_time = 3.5 MINUTES, 		pre_tipped_callback = CALLBACK(src, PROC_REF(pre_tip_over)), 		post_tipped_callback = CALLBACK(src, PROC_REF(after_tip_over)), 		post_untipped_callback = CALLBACK(src, PROC_REF(after_righted)))
 
-	AddComponent(/datum/component/defaceable, \
-		drawing_of = "eyes", \
-		on_defaced = CALLBACK(src, PROC_REF(on_defaced)), \
-	)
+	AddComponent(/datum/component/defaceable, 		drawing_of = "eyes", 		on_defaced = CALLBACK(src, PROC_REF(on_defaced)), 	)
 
 	var/static/list/hat_offsets = list(4,-9)
 	var/static/list/remove_hat = list(SIGNAL_ADDTRAIT(TRAIT_MOB_TIPPED))
 	var/static/list/prevent_checks = list(TRAIT_MOB_TIPPED)
-	AddElement(/datum/element/hat_wearer,\
-		offsets = hat_offsets,\
-		remove_hat_signals = remove_hat,\
-		traits_prevent_checks = prevent_checks,\
-	)
+	AddElement(/datum/element/hat_wearer,		offsets = hat_offsets,		remove_hat_signals = remove_hat,		traits_prevent_checks = prevent_checks,	)
 	RegisterSignal(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, PROC_REF(pre_attack))
 
 	if(!HAS_TRAIT(SSstation, STATION_TRAIT_MEDBOT_MANIA) || !mapload || !is_station_level(z))
@@ -269,8 +256,8 @@
 
 /mob/living/basic/bot/medbot/emag_effects(mob/user)
 	medical_mode_flags &= ~MEDBOT_DECLARE_CRIT
-	balloon_alert(user, "reagent synthesis circuits shorted")
-	audible_message(span_danger("[src] buzzes oddly!"))
+	balloon_alert(user, "Circuitos de síntese reagentes encurtados")
+	audible_message(span_danger("[src]Que estranho!"))
 	flick_overlay_view(mutable_appearance(icon, "[base_icon_state]_spark"), 1 SECONDS)
 	playsound(src, SFX_SPARKS, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	return TRUE
@@ -283,8 +270,8 @@
 		"It appears to be tipped over, and is quietly waiting for someone to set it right.",
 		"It is tipped over and requesting help.",
 		"They are tipped over and appear visibly distressed.",
-		span_warning("They are tipped over and visibly panicking!"),
-		span_warning(span_bold("They are freaking out from being tipped over!"))
+		span_warning("Eles estão visivelmente em pânico!"),
+		span_warning(span_bold("Eles estão pirando de serem derrubados!"))
 	)
 	. += pick(panic_state)
 /*
@@ -351,11 +338,11 @@
 
 	if (!(bot_access_flags & BOT_COVER_EMAGGED))
 		if((damage_type_healer == HEAL_ALL_DAMAGE && patient.get_total_damage() <= heal_threshold) || (!(damage_type_healer == HEAL_ALL_DAMAGE) && patient.get_current_damage_of_type(damage_type_healer) <= heal_threshold))
-			to_chat(src, "[patient] is healthy! Your programming prevents you from tending the wounds of anyone with less than [heal_threshold + 1] [damage_type_healer == HEAL_ALL_DAMAGE ? "total" : damage_type_healer] damage.")
+			to_chat(src, "[patient]É saudável! Sua programação o impede de cuidar das feridas de alguém com menos de[heal_threshold + 1] [damage_type_healer == HEAL_ALL_DAMAGE ? "total" : damage_type_healer]Dano.")
 			return
 
 	update_bot_mode(new_mode = BOT_HEALING, update_hud = FALSE)
-	patient.visible_message("[src] is trying to tend the wounds of [patient]", span_userdanger("[src] is trying to tend your wounds!"))
+	patient.visible_message("[src]está tentando cuidar das feridas de[patient]", span_userdanger("[src]Está tentando cuidar de suas feridas!"))
 	if(!do_after(src, delay = 2 SECONDS, target = patient, interaction_key = TEND_DAMAGE_INTERACTION))
 		update_bot_mode(new_mode = BOT_IDLE)
 		return
@@ -377,11 +364,11 @@
 		if(patient.get_current_damage_of_type(damage_type_healer) <= heal_threshold)
 			done_healing = TRUE
 
-	patient.visible_message(span_notice("[src] tends the wounds of [patient]!"), "[span_infoplain(span_green("[src] tends your wounds!"))]")
+	patient.visible_message(span_notice("[src]tende as feridas de[patient]!"), "[span_infoplain(span_green("[src] tends your wounds!"))]")
 
 	if(done_healing)
-		visible_message(span_infoplain("[src] places [p_their()] tools back into [p_themselves()]."))
-		to_chat(src, "[patient] is now healthy!")
+		visible_message(span_infoplain("[src]Lugares[p_their()]ferramentas de volta para[p_themselves()]."))
+		to_chat(src, "[patient]Agora está saudável!")
 		update_bot_mode(new_mode = BOT_IDLE)
 		return
 
@@ -442,14 +429,14 @@
 
 /mob/living/basic/bot/medbot/mysterious
 	name = "\improper Mysterious Medibot"
-	desc = "International Medibot of mystery."
+	desc = "Medibot Internacional de mistério."
 	skin = "bezerk"
 	damage_type_healer = HEAL_ALL_DAMAGE
 	heal_amount = 10
 
 /mob/living/basic/bot/medbot/derelict
 	name = "\improper Old Medibot"
-	desc = "Looks like it hasn't been modified since the late 2080s."
+	desc = "Parece que não foi modificado desde o final dos anos 2080."
 	skin = "bezerk"
 	damage_type_healer = HEAL_ALL_DAMAGE
 	medical_mode_flags = MEDBOT_SPEAK_MODE
@@ -458,7 +445,7 @@
 
 /mob/living/basic/bot/medbot/nukie
 	name = "Oppenheimer"
-	desc = "A medibot stolen from a Nanotrasen station and upgraded by the Syndicate. Despite their best efforts at reprogramming, it still appears visibly upset near nuclear explosives."
+	desc = "Um medibot roubado de uma estação Nanotrasen e atualizado pelo Sindicato. Apesar de seus melhores esforços em reprogramar, ainda parece visivelmente perturbado perto de explosivos nucleares."
 	health = 40
 	maxHealth = 40
 	skin = "bezerk"

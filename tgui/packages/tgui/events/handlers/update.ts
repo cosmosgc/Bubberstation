@@ -52,7 +52,7 @@ function resume(payload: UpdatePayload): void {
     perf.mark('resume/finish');
 
     if (process.env.NODE_ENV !== 'production') {
-      logger.log('visible in', perf.measure('render/finish', 'resume/finish'));
+      logger.log('visível em', perf.measure('render/finish', 'resume/finish'));
     }
   });
 }

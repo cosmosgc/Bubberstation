@@ -8,7 +8,7 @@
 /datum/action/innate/clockcult/quick_bind
 	name = "Quick Bind"
 	button_icon_state = "telerune"
-	desc = "A quick bound spell."
+	desc = "Um feitiço rápido."
 	/// Weakref to the relevant slab
 	var/datum/weakref/slab_weakref
 	/// Ref to the relevant scripture
@@ -53,7 +53,7 @@
 		scripture.begin_invoke(owner, activation_slab)
 
 	else
-		to_chat(owner, span_brass("You fail to invoke [name]."))
+		to_chat(owner, span_brass("Você não consegue invocar[name]."))
 
 /datum/action/item_action/toggle/clock
 	button_icon = 'modular_skyrat/modules/clock_cult/icons/background_clock.dmi'

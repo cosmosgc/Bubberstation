@@ -2,7 +2,7 @@
 
 /obj/item/clothing/neck/cloak
 	name = "brown cloak"
-	desc = "It's a cape that can be worn around your neck."
+	desc = "É uma capa que pode ser usada no seu pescoço."
 	icon = 'icons/obj/clothing/cloaks.dmi'
 	worn_icon = 'icons/mob/clothing/neck.dmi'
 	icon_state = "qmcloak"
@@ -16,42 +16,42 @@
 	AddElement(/datum/element/surgery_aid, "cloak")
 
 /obj/item/clothing/neck/cloak/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Está estrangulando[user.p_them()]ego com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/clothing/neck/cloak/hos
 	name = "head of security's cloak"
-	desc = "Worn by Securistan, ruling the station with an iron fist."
+	desc = "Usado pelo Securistan, governando a estação com um punho de ferro."
 	icon_state = "hoscloak"
 
 /obj/item/clothing/neck/cloak/qm
 	name = "quartermaster's cloak"
-	desc = "Worn by Cargonia, supplying the station with the necessary tools for survival."
+	desc = "Usado pela Cargonia, fornecendo à estação as ferramentas necessárias para sobreviver."
 
 /obj/item/clothing/neck/cloak/cmo
 	name = "chief medical officer's cloak"
-	desc = "Worn by Meditopia, the valiant men and women keeping pestilence at bay."
+	desc = "Usados pela Meditopia, os valentes homens e mulheres mantendo a pestilência longe."
 	icon_state = "cmocloak"
 
 /obj/item/clothing/neck/cloak/ce
 	name = "chief engineer's cloak"
-	desc = "Worn by Engitopia, wielders of an unlimited power."
+	desc = "Usado por Engitopia, possíveis de um poder limitado."
 	icon_state = "cecloak"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/neck/cloak/rd
 	name = "research director's cloak"
-	desc = "Worn by Sciencia, thaumaturges and researchers of the universe."
+	desc = "Usado por Sciencia, taumaturgos e pesquisadores do universo."
 	icon_state = "rdcloak"
 
 /obj/item/clothing/neck/cloak/cap
 	name = "captain's cloak"
-	desc = "Worn by the commander of Space Station 13."
+	desc = "Usado pelo comandante da Estação Espacial 13."
 	icon_state = "capcloak"
 
 /obj/item/clothing/neck/cloak/hop
 	name = "head of personnel's cloak"
-	desc = "Worn by the Head of Personnel. It smells faintly of bureaucracy."
+	desc = "Usado pelo Chef de Pessoal. Cheira levemente a burocracia."
 	icon_state = "hopcloak"
 
 /obj/item/clothing/neck/cloak/skill_reward
@@ -65,25 +65,25 @@
 
 /obj/item/clothing/neck/cloak/skill_reward/gaming
 	name = "legendary gamer's cloak"
-	desc = "Worn by the most skilled professional gamers on the station, this legendary cloak is only attainable by achieving true gaming enlightenment. This status symbol represents the awesome might of a being of focus, commitment, and sheer fucking will. Something casual gamers will never begin to understand."
+	desc = "Usado pelos jogadores profissionais mais habilidosos da estação, esta capa lendária só é alcançável por alcançar a verdadeira iluminação dos jogos. Este símbolo de status representa o incrível poder de um ser de foco, compromisso e pura vontade. Algo que jogadores casuais nunca vão entender."
 	icon_state = "gamercloak"
 	associated_skill_path = /datum/skill/gaming
 
 /obj/item/clothing/neck/cloak/skill_reward/cleaning
 	name = "legendary cleaner's cloak"
-	desc = "Worn by the most skilled custodians, this legendary cloak is only attainable by achieving janitorial enlightenment. This status symbol represents a being not only extensively trained in grime combat, but one who is willing to use an entire arsenal of cleaning supplies to its full extent to wipe grime's miserable ass off the face of the station."
+	desc = "Usado pelos guardas mais hábeis, esta capa lendária só é alcançável através da iluminação de limpeza. Este símbolo de status representa um ser não só extensivamente treinado em combate sujo, mas alguém que está disposto a usar todo um arsenal de suprimentos de limpeza em sua extensão para limpar a bunda miserável de Grime fora da face da estação."
 	icon_state = "cleanercloak"
 	associated_skill_path = /datum/skill/cleaning
 
 /obj/item/clothing/neck/cloak/skill_reward/mining
 	name = "legendary miner's cloak"
-	desc = "Worn by the most skilled miners, this legendary cloak is only attainable by achieving true mineral enlightenment. This status symbol represents a being who has forgotten more about rocks than most miners will ever know, a being who has moved mountains and filled valleys."
+	desc = "Usado pelos mineiros mais hábeis, esta capa lendária só é alcançável por alcançar a verdadeira iluminação mineral. Este símbolo de status representa um ser que esqueceu mais sobre rochas do que a maioria dos mineiros jamais saberá, um ser que moveu montanhas e vales cheios."
 	icon_state = "minercloak"
 	associated_skill_path = /datum/skill/mining
 
 /obj/item/clothing/neck/cloak/skill_reward/playing
 	name = "legendary veteran's cloak"
-	desc = "Worn by the wisest of veteran employees, this legendary cloak is only attainable by maintaining a living employment agreement with Nanotrasen for over <b>five thousand hours</b>. This status symbol represents a being is better than you in nearly every quantifiable way, simple as that."
+	desc = "Usado pelo mais sábio dos empregados veteranos, esta capa lendária só é alcançável mantendo um contrato de trabalho vivo com Nanotrasen para mais<b>Cinco mil horas.</b>Este símbolo de status representa um ser melhor do que você em quase todas as maneiras quantificáveis, simples assim."
 	icon = 'modular_zubbers/icons/obj/clothing/neck/neck.dmi' //Bubber Addition
 	worn_icon = 'modular_zubbers/icons/mob/clothing/neck/neck.dmi' //Bubber Addition
 	worn_icon_teshari = 'modular_zubbers/icons/mob/clothing/species/teshari/neck.dmi' //Bubber Addition

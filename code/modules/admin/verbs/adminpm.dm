@@ -42,7 +42,7 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 			nametag = "[real_mob_name](as [mob_name])"
 		targets["[nametag] - [client]"] = client
 
-	var/target = input(src,"To whom shall we send a message?", "Admin PM", null) as null|anything in sort_list(targets)
+	var/target = input(src,"A quem nos envia uma mensagem?", "Admin PM", null) as null|anything in sort_list(targets)
 	if (isnull(target))
 		return
 	user.cmd_admin_pm(targets[target], null)
@@ -311,7 +311,7 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 	if(ambiguious_recipient == EXTERNAL_PM_USER)
 		var/datum/admin_help/new_admin_help = admin_ticket_log(src,
 			"<font color='red'>Reply PM from-<b>[name_key_with_link]</b> to <i>External</i>: [keyword_parsed_msg]</font>",
-			player_message = "<font color='red'>Reply PM from-<b>[name_key_with_link]</b> to <i>External</i>: [send_message]</font>")
+			player_message = "<font color='red'>Responde, PM de...<b>[name_key_with_link]</b>Para<i>Exterior</i>: [send_message]</font>")
 
 		new_admin_help.reply_to_admins_notification(raw_message)
 
@@ -400,7 +400,7 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 		admin_ticket_log(recipient,
 			"<font color='purple'>PM From [name_key_with_link]: [keyword_parsed_msg]</font>",
 			log_in_blackbox = FALSE,
-			player_message = "<font color='purple'>PM From [link_to_us]: [send_message]</font>")
+			player_message = "<font color='purple'>PM De[link_to_us]: [send_message]</font>")
 
 		if(!already_logged) //Reply to an existing ticket
 			SSblackbox.LogAhelp(recipient_ticket_id, "Reply", send_message, recip_ckey, our_ckey)
@@ -483,8 +483,8 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 		return TRUE
 
 	// This is us (a player) trying to talk to the recipient (an admin)
-	var/replymsg = "Reply PM from-<b>[name_key_with_link]</b>: [span_linkify(keyword_parsed_msg)]"
-	var/player_replymsg = "Reply PM from-<b>[link_to_us]</b>: [span_linkify(send_message)]"
+	var/replymsg = "Responde, PM de...<b>[name_key_with_link]</b>: [span_linkify(keyword_parsed_msg)]"
+	var/player_replymsg = "Responde, PM de...<b>[link_to_us]</b>: [span_linkify(send_message)]"
 	admin_ticket_log(src,
 		"<font color='red'>[replymsg]</font>",
 		log_in_blackbox = FALSE,
@@ -754,10 +754,8 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 		src,
 		type = MESSAGE_TYPE_ADMINPM,
 		html = fieldset_block(
-			span_adminhelp("Administrator private message"),
-			"<span class='[span_class]'>Admin PM from-<b>[reply_to]</b></span>\n\n\
-			<span class='[span_class]'>[message]</span>\n\n\
-			<i class='adminsay'>Click on the administrator's name to reply.</i>",
+			span_adminhelp("Mensagem privada do administrador"),
+			"<span class='[span_class]'>Diretor.<b>[reply_to]</b></span>\n\n			<span class='[span_class]'>[message]</span>\n\n			<i class='adminsay'>Clique no nome do administrador para responder.</i>",
 			"boxed_message red_box"),
 		confidential = TRUE
 	)

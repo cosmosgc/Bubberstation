@@ -60,42 +60,42 @@ export const ScannerGate = (props) => {
 
 const SCANNER_GATE_ROUTES = {
   Off: {
-    title: 'Scanner Mode: Off',
+    title: 'Desligado.',
     component: () => ScannerGateOff,
   },
   Wanted: {
-    title: 'Scanner Mode: Wanted',
+    title: 'Procurado',
     component: () => ScannerGateWanted,
   },
   Guns: {
-    title: 'Scanner Mode: Guns',
+    title: 'Escâner de Modo: Armas',
     component: () => ScannerGateGuns,
   },
   Mindshield: {
-    title: 'Scanner Mode: Mindshield',
+    title: 'Scanner de Modo:',
     component: () => ScannerGateMindshield,
   },
   Disease: {
-    title: 'Scanner Mode: Disease',
+    title: 'Modo scanner: doença',
     component: () => ScannerGateDisease,
   },
   Species: {
-    title: 'Scanner Mode: Species',
+    title: 'Modo Scanner: Espécie',
     component: () => ScannerGateSpecies,
   },
   Nutrition: {
-    title: 'Scanner Mode: Nutrition',
+    title: 'Modo scanner: nutrição',
     component: () => ScannerGateNutrition,
   },
   //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
   Gender: {
-    title: 'Scanner Mode: Gender',
+    title: 'Modo Scanner: Gênero',
     component: () => ScannerGateGender,
   },
   //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
   // BUBBER EDIT START - NANITES
   Nanites: {
-    title: 'Scanner Mode: Nanites',
+    title: 'Nanitas',
     component: () => ScannerGateNanites,
   },
   // BUBBER EDIT END - NANITES
@@ -175,7 +175,7 @@ const ScannerGateWanted = (props) => {
   return (
     <>
       <Box mb={2}>
-        Trigger if the person scanned {reverse ? 'does not have' : 'has'} any
+        Trigger if the person scanned {reverse ? 'não tem' : 'has'} any
         warrants for their arrest.
       </Box>
       <ScannerGateMode />
@@ -189,7 +189,7 @@ const ScannerGateGuns = (props) => {
   return (
     <>
       <Box mb={2}>
-        Trigger if the person scanned {reverse ? 'does not have' : 'has'} any
+        Trigger if the person scanned {reverse ? 'não tem' : 'has'} any
         guns.
       </Box>
       <ScannerGateMode />
@@ -203,7 +203,7 @@ const ScannerGateMindshield = (props) => {
   return (
     <>
       <Box mb={2}>
-        Trigger if the person scanned {reverse ? 'does not have' : 'has'} a
+        Trigger if the person scanned {reverse ? 'não tem' : 'has'} a
         mindshield.
       </Box>
       <ScannerGateMode />
@@ -217,7 +217,7 @@ const ScannerGateDisease = (props) => {
   return (
     <>
       <Box mb={2}>
-        Trigger if the person scanned {reverse ? 'does not have' : 'has'} a
+        Trigger if the person scanned {reverse ? 'não tem' : 'has'} a
         disease equal or worse than {disease_threshold}.
       </Box>
       <Box mb={2}>
@@ -251,7 +251,7 @@ const ScannerGateSpecies = (props) => {
         Trigger if the person scanned is {reverse ? 'not' : ''} of the{' '}
         {species.specie_name} species.
         {target_zombie
-          ? ' All zombie types will be detected, including dormant zombies.'
+          ? 'Todos os zumbis serão detectados, incluindo zumbis adormecidos.'
           : null}
       </Box>
       <Box mb={2}>
@@ -283,7 +283,7 @@ const ScannerGateNutrition = (props) => {
   return (
     <>
       <Box mb={2}>
-        Trigger if the person scanned {reverse ? 'does not have' : 'has'} the{' '}
+        Trigger if the person scanned {reverse ? 'não tem' : 'has'} the{' '}
         {nutrition.name} nutrition level.
       </Box>
       <Box mb={2}>
@@ -311,12 +311,12 @@ const ScannerGateNanites = (props, context) => {
   return (
     <>
       <Box mb={2}>
-        Trigger if the person scanned {reverse ? 'does not have' : 'has'} nanite
+        Trigger if the person scanned {reverse ? 'não tem' : 'has'} nanite
         cloud {nanite_cloud}.
       </Box>
       <Box mb={2}>
         <LabeledList>
-          <LabeledList.Item label="Cloud ID">
+          <LabeledList.Item label="ID da Nuvem">
             <NumberInput
               value={nanite_cloud}
               width="65px"
@@ -375,7 +375,7 @@ const ScannerGateMode = (props) => {
   const { reverse } = data;
   return (
     <LabeledList>
-      <LabeledList.Item label="Scanning Mode">
+      <LabeledList.Item label="Modo de digitalização">
         <Button
           content={reverse ? 'Inverted' : 'Default'}
           icon={reverse ? 'random' : 'long-arrow-alt-right'}

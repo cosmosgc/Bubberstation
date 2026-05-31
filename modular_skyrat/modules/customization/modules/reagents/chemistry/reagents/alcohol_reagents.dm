@@ -35,19 +35,19 @@
 
 /datum/reagent/consumable/ethanol/synthanol
 	name = "Synthanol"
-	description = "A runny liquid with conductive capacities. Its effects on synthetics are similar to those of alcohol on organics."
+	description = "Um líquido escorrendo com capacidade condutiva. Seus efeitos nos sintéticos são similares aos do álcool nos orgânicos."
 	color = "#1BB1FF"
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC | REAGENT_PROTEAN
 	boozepwr = 50
 	quality = DRINK_NICE
-	taste_description = "motor oil"
+	taste_description = "óleo de motor"
 
 /datum/glass_style/drinking_glass/synthanol
 	required_drink_type = /datum/reagent/consumable/ethanol/synthanol
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi' // This should cover anything synthanol related. Will have to individually tag others unless we make an object path for Skyrat drinks.
 	icon_state = "synthanolglass"
 	name = "glass of synthanol"
-	desc = "The equivalent of alcohol for synthetic crewmembers. They'd find it awful if they had tastebuds too."
+	desc = "O equivalente a álcool para tripulantes sintéticos. Eles achariam horrível se tivessem bom gosto também."
 
 /datum/reagent/consumable/ethanol/synthanol/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	if(!(affected_mob.mob_biotypes & MOB_ROBOTIC))
@@ -61,128 +61,128 @@
 	if(C.mob_biotypes & MOB_ROBOTIC)
 		return
 	if(method == INGEST)
-		to_chat(C, pick(span_danger("That was awful!"), span_danger("That was disgusting!")))
+		to_chat(C, pick(span_danger("Isso foi horrível!"), span_danger("Isso foi nojento!")))
 
 /datum/reagent/consumable/ethanol/synthanol/robottears
 	name = "Robot Tears"
-	description = "An oily substance that an IPC could technically consider a 'drink'."
+	description = "Uma substância oleosa que um IPC pode tecnicamente considerar uma bebida."
 	color = "#363636"
 	quality = DRINK_GOOD
 	boozepwr = 25
-	taste_description = "existential angst"
+	taste_description = "Angustiação existencial"
 
 /datum/glass_style/drinking_glass/synthanol/robottears
 	required_drink_type = /datum/reagent/consumable/ethanol/synthanol/robottears
 	icon_state = "robottearsglass"
 	name = "glass of robot tears"
-	desc = "No robots were hurt in the making of this drink."
+	desc = "Nenhum robô foi ferido na fabricação desta bebida."
 
 /datum/reagent/consumable/ethanol/synthanol/trinary
 	name = "Trinary"
-	description = "A fruit drink meant only for synthetics, however that works."
+	description = "Uma bebida de frutas destinada apenas para sintéticos, no entanto isso funciona."
 	color = "#ADB21f"
 	quality = DRINK_GOOD
 	boozepwr = 20
-	taste_description = "modem static"
+	taste_description = "modem estático"
 
 /datum/glass_style/drinking_glass/synthanol/trinary
 	required_drink_type = /datum/reagent/consumable/ethanol/synthanol/trinary
 	icon_state = "trinaryglass"
 	name = "glass of trinary"
-	desc = "Colorful drink made for synthetic crewmembers. It doesn't seem like it would taste well."
+	desc = "Bebida colorida feita para tripulantes sintéticos. Não parece que seria um bom gosto."
 
 /datum/reagent/consumable/ethanol/synthanol/servo
 	name = "Servo"
-	description = "A drink containing some organic ingredients, but meant only for synthetics."
+	description = "Uma bebida contendo alguns ingredientes orgânicos, mas só para sintéticos."
 	color = "#5B3210"
 	quality = DRINK_GOOD
 	boozepwr = 25
-	taste_description = "motor oil and cocoa"
+	taste_description = "óleo de motor e cacau"
 
 /datum/glass_style/drinking_glass/synthanol/servo
 	required_drink_type = /datum/reagent/consumable/ethanol/synthanol/servo
 	icon_state = "servoglass"
 	name = "glass of servo"
-	desc = "Chocolate - based drink made for IPCs. Not sure if anyone's actually tried out the recipe."
+	desc = "Bebida baseada em chocolate feita para IPCs. Não sei se alguém já provou a receita."
 
 /datum/reagent/consumable/ethanol/synthanol/uplink
 	name = "Uplink"
-	description = "A potent mix of alcohol and synthanol. Will only work on synthetics."
+	description = "Uma mistura potente de álcool e sinttanol. Só funcionará com sintéticos."
 	color = "#E7AE04"
 	quality = DRINK_GOOD
 	boozepwr = 15
-	taste_description = "a GUI in visual basic"
+	taste_description = "Uma GUI no básico visual"
 
 /datum/glass_style/drinking_glass/synthanol/uplink
 	required_drink_type = /datum/reagent/consumable/ethanol/synthanol/uplink
 	icon_state = "uplinkglass"
 	name = "glass of uplink"
-	desc = "An exquisite mix of the finest liquoirs and synthanol. Meant only for synthetics."
+	desc = "Uma mistura requintada de alcaçuz e sintâniol. Era só para sintéticos."
 
 /datum/reagent/consumable/ethanol/synthanol/synthncoke
 	name = "Synth 'n Coke"
-	description = "The classic drink adjusted for a robot's tastes."
+	description = "A bebida clássica se ajustou para o gosto de um robô."
 	color = "#7204E7"
 	quality = DRINK_GOOD
 	boozepwr = 25
-	taste_description = "fizzy motor oil"
+	taste_description = "óleo de motor efervescente"
 
 /datum/glass_style/drinking_glass/synthanol/synthncoke
 	required_drink_type = /datum/reagent/consumable/ethanol/synthanol/synthncoke
 	icon_state = "synthncokeglass"
 	name = "glass of synth 'n coke"
-	desc = "Classic drink altered to fit the tastes of a robot, contains de-rustifying properties. Bad idea to drink if you're made of carbon."
+	desc = "Bebida clássica alterada para se adequar aos gostos de um robô, contém propriedades desprotegidas. Péssima ideia de beber se for feito de carbono."
 
 /datum/reagent/consumable/ethanol/synthanol/synthignon
 	name = "Synthignon"
-	description = "Someone mixed wine and alcohol for robots. Hope you're proud of yourself."
+	description = "Alguém misturou vinho e álcool para robôs. Espero que esteja orgulhoso de si mesmo."
 	color = "#D004E7"
 	quality = DRINK_GOOD
 	boozepwr = 25
-	taste_description = "fancy motor oil"
+	taste_description = "Óleo de motor chique."
 
 /datum/glass_style/drinking_glass/synthanol/synthignon
 	required_drink_type = /datum/reagent/consumable/ethanol/synthanol/synthignon
 	icon_state = "synthignonglass"
 	name = "glass of synthignon"
-	desc = "Someone mixed good wine and robot booze. Romantic, but atrocious."
+	desc = "Alguém misturou bom vinho e álcool robô. Romântico, mas atroz."
 
 // Other Booze
 
 /datum/reagent/consumable/ethanol/gunfire
 	name = "Gunfire"
-	description = "A drink that tastes like tiny explosions."
+	description = "Uma bebida que tem gosto de pequenas explosões."
 	color = "#e4830d"
 	boozepwr = 40
 	quality = DRINK_GOOD
-	taste_description = "tiny explosions"
+	taste_description = "Pequenas explosões."
 
 /datum/glass_style/drinking_glass/gunfire
 	required_drink_type = /datum/reagent/consumable/ethanol/gunfire
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "gunfire"
 	name = "glass of gunfire"
-	desc = "It pops constantly as you look at it, giving off tiny sparks."
+	desc = "Ele aparece constantemente enquanto você olha para ele, dando pequenas faíscas."
 
 /datum/reagent/consumable/ethanol/gunfire/on_mob_life(mob/living/carbon/M)
 	if (prob(3))
-		to_chat(M,span_notice("You feel the gunfire pop in your mouth."))
+		to_chat(M,span_notice("Sente o tiro na boca."))
 	return ..()
 
 /datum/reagent/consumable/ethanol/hellfire
 	name = "Hellfire"
-	description = "A nice drink that isn't quite as hot as it looks."
+	description = "Uma bebida que não é tão quente quanto parece."
 	color = "#fb2203"
 	boozepwr = 60
 	quality = DRINK_VERYGOOD
-	taste_description = "cold flames that lick at the top of your mouth"
+	taste_description = "chamas frias que lambem no topo da sua boca"
 
 /datum/glass_style/drinking_glass/hellfire
 	required_drink_type = /datum/reagent/consumable/ethanol/hellfire
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "hellfire"
 	name = "glass of hellfire"
-	desc = "An amber colored drink that isn't quite as hot as it looks."
+	desc = "Uma bebida de cor âmbar que não é tão quente quanto parece."
 
 /datum/reagent/consumable/ethanol/hellfire/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
@@ -190,11 +190,11 @@
 
 /datum/reagent/consumable/ethanol/sins_delight
 	name = "Sin's Delight"
-	description = "The drink smells like the seven sins."
+	description = "A bebida cheira como os sete pecados."
 	color = "#330000"
 	boozepwr = 66
 	quality = DRINK_FANTASTIC
-	taste_description = "overpowering sweetness with a touch of sourness, followed by iron and the sensation of a warm summer breeze"
+	taste_description = "Sobrepujante doçura com um toque de amargura, seguido de ferro e a sensação de uma brisa quente de verão"
 	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING //component drink is demon's blood, thus this drink is made with blood so hemophages can comfortably drink it
 
 /datum/glass_style/drinking_glass/sins_delight
@@ -202,74 +202,74 @@
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "sins_delight"
 	name = "glass of sin's delight"
-	desc = "You can smell the seven sins rolling off the top of the glass."
+	desc = "Dá para sentir os sete pecados saindo do topo do vidro."
 
 /datum/reagent/consumable/ethanol/daiquiri/strawberry
 	name = "Strawberry Daiquiri"
-	description = "Pink looking alcoholic drink."
+	description = "Bebida alcoólica rosa."
 	boozepwr = 20
 	color = "#FF4A74"
 	quality = DRINK_NICE
-	taste_description = "sweet strawberry, lime and the ocean breeze"
+	taste_description = "Doce morango, limão e a brisa do oceano"
 
 /datum/glass_style/drinking_glass/daiquiri/strawberry
 	required_drink_type = /datum/reagent/consumable/ethanol/daiquiri/strawberry
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "strawberry_daiquiri"
 	name = "glass of strawberry daiquiri"
-	desc = "Pink looking drink with flowers and a big straw to sip it. Looks sweet and refreshing, perfect for warm days."
+	desc = "Uma bebida rosa com flores e um canudo grande para beber. Parece doce e refrescante, perfeito para dias quentes."
 
 /datum/glass_style/drinking_glass/liz_fizz
 	required_drink_type = /datum/reagent/consumable/liz_fizz
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "liz_fizz"
 	name = "glass of liz fizz"
-	desc = "Looks like a citrus sherbet seperated in layers? Why would anyone want that is beyond you."
+	desc = "Parece um cítrico separado em camadas? Por que alguém iria querer isso está além de você."
 
 /datum/reagent/consumable/ethanol/miami_vice
 	name = "Miami Vice"
-	description = "A drink layering Pina Colada and Strawberry Daiquiri"
+	description = "Uma irmã em Camadas Pina Colada e Morango Daiquiri"
 	boozepwr = 30
 	color = "#D8FF59"
 	quality = DRINK_FANTASTIC
-	taste_description = "sweet and refreshing flavor, complemented with strawberries and coconut, and hints of citrus"
+	taste_description = "Sabor doce e refrescante, complementado com morangos e coco, e diz de citrinos"
 
 /datum/glass_style/drinking_glass/miami_vice
 	required_drink_type = /datum/reagent/consumable/ethanol/miami_vice
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "miami_vice"
 	name = "glass of miami vice"
-	desc = "Strawberries and coconut, like yin and yang."
+	desc = "Morangos e coco, como yin e yang."
 
 /datum/reagent/consumable/ethanol/malibu_sunset
 	name = "Malibu Sunset"
-	description = "A drink consisting of creme de coconut and tropical juices"
+	description = "Uma bebida de creme de coco e sucos tropicais."
 	boozepwr = 20
 	color = "#FF9473"
 	quality = DRINK_VERYGOOD
-	taste_description = "coconut, with orange and grenadine accents"
+	taste_description = "Coco, com acentos de laranja e grenadine"
 
 /datum/glass_style/drinking_glass/malibu_sunset
 	required_drink_type = /datum/reagent/consumable/ethanol/malibu_sunset
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "malibu_sunset"
 	name = "glass of malibu sunset"
-	desc = "Tropical looking drinks, with ice cubes hovering on the surface and grenadine coloring the bottom."
+	desc = "Bebidas tropicais, com cubos de gelo pairando na superfície e grenadina colorindo o fundo."
 
 /datum/reagent/consumable/ethanol/hotlime_miami
 	name = "Hotlime Miami"
-	description = "The essence of the 90's, if they were a bloody mess that is."
+	description = "A essência dos anos 90, se fossem uma bagunça."
 	boozepwr = 40
 	color = "#A7FAE8"
 	quality = DRINK_FANTASTIC
-	taste_description = "coconut and aesthetic violence"
+	taste_description = "coco e violência estética"
 
 /datum/glass_style/drinking_glass/hotlime_miami
 	required_drink_type = /datum/reagent/consumable/ethanol/hotlime_miami
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "hotlime_miami"
 	name = "glass of hotlime miami"
-	desc = "This looks very aesthetically pleasing."
+	desc = "Isso parece muito esteticamente agradável."
 
 /datum/reagent/consumable/ethanol/hotlime_miami/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
@@ -279,63 +279,63 @@
 
 /datum/reagent/consumable/ethanol/coggrog
 	name = "Cog Grog"
-	description = "Now you can fill yourself with the power of Ratvar!"
+	description = "Agora você pode se encher com o poder de Ratvar!"
 	color = rgb(255, 201, 49)
 	boozepwr = 10
 	quality = DRINK_FANTASTIC
-	taste_description = "a brass taste with a hint of oil"
+	taste_description = "Um gosto de latão com um toque de óleo"
 
 /datum/glass_style/drinking_glass/coggrog
 	required_drink_type = /datum/reagent/consumable/ethanol/coggrog
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "coggrog"
 	name = "glass of cog grog"
-	desc = "Not even Ratvar's Four Generals could withstand this!  Qevax Jryy!"
+	desc = "Nem os Quatro Generais de Ratvar aguentariam isso! Qevax Jryy!"
 
 /datum/reagent/consumable/ethanol/badtouch
 	name = "Bad Touch"
-	description = "A sour and vintage drink. Some say the inventor gets slapped a lot."
+	description = "Uma bebida azeda e vintage. Alguns dizem que o inventor leva muito tapa."
 	color = rgb(31, 181, 99)
 	boozepwr = 35
 	quality = DRINK_GOOD
-	taste_description = "a slap to the face"
+	taste_description = "Um tapa na cara."
 
 /datum/glass_style/drinking_glass/badtouch
 	required_drink_type = /datum/reagent/consumable/ethanol/badtouch
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "badtouch"
 	name = "glass of bad touch"
-	desc = "We're nothing but mammals after all."
+	desc = "Afinal, não somos nada além de mamíferos."
 
 /datum/reagent/consumable/ethanol/marsblast
 	name = "Marsblast"
-	description = "A spicy and manly drink in honor of the first colonists on Mars."
+	description = "Uma bebida picante e masculina em hondra dos primeiros colonos em Marte."
 	color = rgb(246, 143, 55)
 	boozepwr = 70
 	quality = DRINK_FANTASTIC
-	taste_description = "hot red sand"
+	taste_description = "Areia vermelha quente"
 
 /datum/glass_style/drinking_glass/marsblast
 	required_drink_type = /datum/reagent/consumable/ethanol/marsblast
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "marsblast"
 	name = "glass of marsblast"
-	desc = "One of these is enough to leave your face as red as the planet."
+	desc = "Um desses é suficiente para deixar seu rosto tão vermelho quanto o planeta."
 
 /datum/reagent/consumable/ethanol/mercuryblast
 	name = "Mercuryblast"
-	description = "A sour burningly cold drink that's sure to chill the drinker."
+	description = "Uma bebida azeda e fria que vai arrefecer o bebedor."
 	color = rgb(29, 148, 213)
 	boozepwr = 40
 	quality = DRINK_VERYGOOD
-	taste_description = "chills down your spine"
+	taste_description = "Arrepia sua espinha"
 
 /datum/glass_style/drinking_glass/mercuryblast
 	required_drink_type = /datum/reagent/consumable/ethanol/mercuryblast
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "mercuryblast"
 	name = "glass of mercuryblast"
-	desc = "No thermometers were harmed in the creation of this drink"
+	desc = "Nenhum termômetro foi prejudicado na criação desta bebida."
 
 /datum/reagent/consumable/ethanol/mercuryblast/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
@@ -343,22 +343,22 @@
 
 /datum/reagent/consumable/ethanol/piledriver
 	name = "Piledriver"
-	description = "A bright drink that leaves you with a burning sensation."
+	description = "Uma bebida brilhante que te deixa com uma sensação de queimação."
 	color = rgb(241, 146, 59)
 	boozepwr = 45
 	quality = DRINK_NICE
-	taste_description = "a fire in your throat"
+	taste_description = "Um nevoeiro em sua garganta"
 
 /datum/glass_style/drinking_glass/piledriver
 	required_drink_type = /datum/reagent/consumable/ethanol/piledriver
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "piledriver"
 	name = "glass of piledriver"
-	desc = "Not the only thing to leave your throat sore."
+	desc = "Não é a única coisa que deixa sua garganta dorida."
 
 /datum/reagent/consumable/ethanol/zenstar
 	name = "Zen Star"
-	description = "A sour and bland drink, rather disappointing."
+	description = "Uma bebida azeda e sem graça, bastante decepcionante."
 	color = rgb(51, 87, 203)
 	boozepwr = 35
 	quality = DRINK_NICE
@@ -369,7 +369,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "zenstar"
 	name = "glass of zen star"
-	desc = "You'd think something so balanced would actually taste nice... you'd be dead wrong."
+	desc = "Você pensaria que algo tão equilibrado seria realmente gostoso... você estaria muito errado."
 
 
 // RACE SPECIFIC DRINKS
@@ -377,16 +377,16 @@
 /datum/reagent/consumable/ethanol/coldscales
 	name = "Coldscales"
 	color = "#5AEB52" //(90, 235, 82)
-	description = "A cold looking drink made for people with scales."
+	description = "Uma bebida fria feita para pessoas com escamas."
 	boozepwr = 50 //strong!
-	taste_description = "dead flies"
+	taste_description = "Moscas Mortas."
 
 /datum/glass_style/drinking_glass/coldscales
 	required_drink_type = /datum/reagent/consumable/ethanol/coldscales
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "coldscales"
 	name = "glass of coldscales"
-	desc = "A soft green drink that looks inviting!"
+	desc = "Um refrigerante verde que parece convidativo!"
 
 /datum/reagent/consumable/ethanol/coldscales/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(islizard(exposed_mob))
@@ -398,16 +398,16 @@
 /datum/reagent/consumable/ethanol/oil_drum
 	name = "Oil Drum"
 	color = "#000000" //(0, 0, 0)
-	description = "Industrial grade oil mixed with some ethanol to make it a drink. Somehow not known to be toxic."
+	description = "Óleo industrial misturado com etanol para fazer uma bebida. De alguma forma, não conhecido como tóxico."
 	boozepwr = 45
-	taste_description = "oil spill"
+	taste_description = "derramamento de óleo"
 
 /datum/glass_style/drinking_glass/oil_drum
 	required_drink_type = /datum/reagent/consumable/ethanol/oil_drum
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "oil_drum"
 	name = "drum of oil"
-	desc = "A gray can of booze and oil..."
+	desc = "Uma lata cinza de bebida e óleo..."
 
 /datum/reagent/consumable/ethanol/oil_drum/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(MOB_ROBOTIC)
@@ -419,9 +419,9 @@
 /datum/reagent/consumable/ethanol/nord_king
 	name = "Nord King"
 	color = "#EB1010" //(235, 16, 16)
-	description = "Strong mead mixed with more honey and ethanol. Beloved by its human patrons."
+	description = "Hidromel forte misturado com mais mel e etanol. Amado por seus clientes humanos."
 	boozepwr = 50 //strong!
-	taste_description = "honey and red wine"
+	taste_description = "mel e vinho tinto."
 	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING //component drink is red mead, thus this drink is made with blood so hemophages can comfortably drink it
 
 /datum/glass_style/drinking_glass/nord_king
@@ -429,7 +429,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "nord_king"
 	name = "keg of nord king"
-	desc = "A dripping keg of red mead."
+	desc = "Um barril de hidromel vermelho."
 
 /datum/reagent/consumable/ethanol/nord_king/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(ishumanbasic(exposed_mob) || isdwarf(exposed_mob))
@@ -441,9 +441,9 @@
 /datum/reagent/consumable/ethanol/velvet_kiss
 	name = "Velvet Kiss"
 	color = "#EB1010" //(235, 16, 16)
-	description = "A bloody drink mixed with wine."
+	description = "Uma bebida sangrenta misturada com vinho."
 	boozepwr = 10 //weak
-	taste_description = "iron with grapejuice"
+	taste_description = "Ferro com suco de uva"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
 
@@ -452,7 +452,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "velvet_kiss"
 	name = "glass of velvet kiss"
-	desc = "Red and white drink for the upper classes or undead."
+	desc = "Bebidas vermelhas e brancas para as classes altas ou mortos-vivos."
 
 /datum/reagent/consumable/ethanol/velvet_kiss/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(iszombie(exposed_mob) || isvampire(exposed_mob) || isdullahan(exposed_mob) || ishemophage(exposed_mob)) //Rare races!
@@ -469,16 +469,16 @@
 /datum/reagent/consumable/ethanol/abduction_fruit
 	name = "Abduction Fruit"
 	color = "#DEFACD" //(222, 250, 205)
-	description = "Mixing of juices to make an alien taste."
+	description = "Misturando sucos para fazer um gosto alienígena."
 	boozepwr = 80 //Strong
-	taste_description = "grass and lime"
+	taste_description = "Erva e limão"
 
 /datum/glass_style/drinking_glass/abduction_fruit
 	required_drink_type = /datum/reagent/consumable/ethanol/abduction_fruit
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "abduction_fruit"
 	name = "glass of abduction fruit"
-	desc = "Mixed fruits that were never meant to be mixed..."
+	desc = "Frutos mistos que nunca foram feitos para serem misturados..."
 
 /datum/reagent/consumable/ethanol/abduction_fruit/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(isabductor(exposed_mob) || isxenohybrid(exposed_mob))
@@ -490,16 +490,16 @@
 /datum/reagent/consumable/ethanol/bug_zapper
 	name = "Bug Zapper"
 	color = "#F5882A" //(222, 250, 205)
-	description = "Copper and lemon juice. Hardly even a drink."
+	description = "Cobre e suco de limão. Nem mesmo uma bebida."
 	boozepwr = 5 //No booze really
-	taste_description = "copper and AC power"
+	taste_description = "Cobre e energia AC"
 
 /datum/glass_style/drinking_glass/bug_zapper
 	required_drink_type = /datum/reagent/consumable/ethanol/bug_zapper
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "bug_zapper"
 	name = "glass of bug zapper"
-	desc = "An odd mix of copper, lemon juice and power meant for non-human consumption."
+	desc = "Uma estranha mistura de cobre, suco de limão e energia para consumo não humano."
 
 /datum/reagent/consumable/ethanol/bug_zapper/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(isinsect(exposed_mob) || isflyperson(exposed_mob) || ismoth(exposed_mob))
@@ -511,16 +511,16 @@
 /datum/reagent/consumable/ethanol/mush_crush
 	name = "Mush Crush"
 	color = "#F5882A" //(222, 250, 205)
-	description = "Soil in a glass."
+	description = "Solo em um copo."
 	boozepwr = 5 //No booze really
-	taste_description = "dirt and iron"
+	taste_description = "Sujeira e Ferro"
 
 /datum/glass_style/drinking_glass/mush_crush
 	required_drink_type = /datum/reagent/consumable/ethanol/mush_crush
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "mush_crush"
 	name = "glass of mush crush"
-	desc = "Popular among people that want to grow their own food rather than drink the soil."
+	desc = "Popular entre pessoas que querem cultivar sua própria comida em vez de beber o solo."
 
 /datum/reagent/consumable/ethanol/mush_crush/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(ispodperson(exposed_mob) || issnail(exposed_mob))
@@ -532,16 +532,16 @@
 /datum/reagent/consumable/ethanol/hollow_bone
 	name = "Hollow Bone"
 	color = "#FCF7D4" //(252, 247, 212)
-	description = "Shockingly none-harmful mix of toxins and milk."
+	description = "Chocantemente, mistura de toxinas e leite."
 	boozepwr = 15
-	taste_description = "Milk and salt"
+	taste_description = "Leite e Sal"
 
 /datum/glass_style/drinking_glass/hollow_bone
 	required_drink_type = /datum/reagent/consumable/ethanol/hollow_bone
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "hollow_bone"
 	name = "skull of hollow bone"
-	desc = "Mixing of milk and bone hurting juice for enjoyment for rather skinny people."
+	desc = "Misturar leite e suco de osso para diversão para pessoas magras."
 
 /datum/reagent/consumable/ethanol/hollow_bone/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(isplasmaman(exposed_mob) || isskeleton(exposed_mob))
@@ -553,16 +553,16 @@
 /datum/reagent/consumable/ethanol/jell_wyrm
 	name = "Jell Wyrm"
 	color = "#FF6200" //(255, 98, 0)
-	description = "Horrible mix of CO2, toxins, and heat. Meant for slime based life."
+	description = "Horrível mistura de CO2, toxinas e calor. Significado para a vida baseada no lodo."
 	boozepwr = 40
-	taste_description = "tropical sea"
+	taste_description = "Mar tropical"
 
 /datum/glass_style/drinking_glass/jell_wyrm
 	required_drink_type = /datum/reagent/consumable/ethanol/jell_wyrm
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "jell_wyrm"
 	name = "glass of jell wyrm"
-	desc = "A bubbly drink that is rather inviting to those that don't know who it's meant for."
+	desc = "Uma bebida borbulhante que é bastante convidativa para aqueles que não sabem para quem é destinada."
 
 /datum/reagent/consumable/ethanol/jell_wyrm/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
@@ -584,16 +584,16 @@
 /datum/reagent/consumable/ethanol/laval_spit //Yes Laval
 	name = "Laval Spit"
 	color = "#DE3009" //(222, 48, 9)
-	description = "Heat minerals and some mauna loa. Meant for rock based life."
+	description = "Minerais de calor e um pouco de Mauna Loa. Significado para a vida baseada no rock."
 	boozepwr = 30
-	taste_description = "tropical island"
+	taste_description = "Ilha tropical."
 
 /datum/glass_style/drinking_glass/laval_spit
 	required_drink_type = /datum/reagent/consumable/ethanol/laval_spit
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "laval_spit"
 	name = "glass of laval spit"
-	desc = "Piping hot drink for those who can stomach the heat of lava."
+	desc = "Bebida quente para quem pode suportar o calor da lava."
 
 /datum/reagent/consumable/ethanol/laval_spit/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(isgolem(exposed_mob))
@@ -605,16 +605,16 @@
 /datum/reagent/consumable/ethanol/frisky_kitty
 	name = "Frisky Kitty"
 	color = "#FCF7D4" //(252, 247, 212)
-	description = "Warm milk mixed with catnip."
+	description = "Leite quente misturado com papai de gato."
 	boozepwr = 0
-	taste_description = "Warm milk and catnip"
+	taste_description = "Leite quente e papai de gato"
 
 /datum/glass_style/drinking_glass/frisky_kitty
 	required_drink_type = /datum/reagent/consumable/ethanol/frisky_kitty
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "frisky_kitty"
 	name = "cup of frisky kitty"
-	desc = "Warm milk and some catnip."
+	desc = "Leite quente e um poco de bebida."
 
 /datum/reagent/consumable/ethanol/frisky_kitty/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(isfeline(exposed_mob))
@@ -626,19 +626,19 @@
 
 /datum/reagent/consumable/ethanol/bloodshot_base
 	name = "Bloodshot Base"
-	description = "The bootleg blend of nutrients and alcohol that goes into making Bloodshots. Doesn't taste too great on its own, for Hemophages at least."
+	description = "A mistura pirata de nutrientes e álcool que vai fazer Bloodshots. Não é muito gostoso sozinho, para os hemofármacos, pelo menos."
 	color = "#c29ca1"
 	boozepwr = 25 // Still more concentrated than in Bloodshot.
-	taste_description = "nutritious mix with an alcoholic kick to it"
+	taste_description = "Mistura nutritiva com um chute alcoólico."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 
 /datum/reagent/consumable/ethanol/bloodshot
 	name = "Bloodshot"
-	description = "The history of the 'Bloodshot' is based in a mix of flavor-neutral chems devised to help deliver nutrients to a Hemophage's tumorous organs. Due to the expense of the real thing and the clinical nature of it, this liquor has been designed as a 'improvised' alternative; though, still tasting like a hangover cure. It smells like iron, giving a clue to the key ingredient."
+	description = "A história do 'Bloodshot' é baseada em uma mistura de produtos químicos neutros para ajudar a entregar nutrientes para os órgãos tumorais de um hemofago. Devido à despesa da coisa real e a natureza clínica dela, este licor foi projetado como uma alternativa 'melhorada', embora, ainda provando como uma cura de ressaca. Cheira a ferro, dando uma pista para o ingrediente chave."
 	color = "#a30000"
 	boozepwr = 20 // The only booze in it is Bloody Mary
-	taste_description = "blood filled to the brim with nutrients of all kinds"
+	taste_description = "Sangue de todos os tipos."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
 
@@ -648,7 +648,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "bloodshot"
 	name = "glass of bloodshot"
-	desc = "The history of the 'Bloodshot' is based in a mix of flavor-neutral chems devised to help deliver nutrients to a Hemophage's tumorous organs. Due to the expense of the real thing and the clinical nature of it, this liquor has been designed as a 'improvised' alternative; though, still tasting like a hangover cure. It smells like iron, giving a clue to the key ingredient."
+	desc = "A história do 'Bloodshot' é baseada em uma mistura de produtos químicos neutros para ajudar a entregar nutrientes para os órgãos tumorais de um hemofago. Devido à despesa da coisa real e a natureza clínica dela, este licor foi projetado como uma alternativa 'melhorada', embora, ainda provando como uma cura de ressaca. Cheira a ferro, dando uma pista para o ingrediente chave."
 
 
 #define BLOODSHOT_DISGUST 25
@@ -674,11 +674,11 @@
 
 /datum/reagent/consumable/ethanol/blizzard_brew
 	name = "Blizzard Brew"
-	description = "An ancient recipe. Served best chilled as much as dwarvenly possible."
+	description = "Uma receita antiga. Serviu melhor resfriado tanto quanto anões possível."
 	color = rgb(180, 231, 216)
 	boozepwr = 25
 	metabolization_rate = 1.25 * REAGENTS_METABOLISM
-	taste_description = "ancient icicles"
+	taste_description = "Picles antigos"
 	overdose_threshold = 25
 	var/obj/structure/ice_stasis/cube
 	var/atom/movable/screen/alert/status_effect/freon/cryostylane_alert
@@ -688,7 +688,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "blizzard_brew"
 	name = "glass of Blizzard Brew"
-	desc = "An ancient recipe. Served best chilled as much as dwarvenly possible."
+	desc = "Uma receita antiga. Serviu melhor resfriado tanto quanto anões possível."
 
 /datum/reagent/consumable/ethanol/blizzard_brew/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(isdwarf(exposed_mob))
@@ -713,11 +713,11 @@
 
 /datum/reagent/consumable/ethanol/molten_mead
 	name = "Molten Mead"
-	description = "Famously known to set beards aflame. Ingest at your own risk!"
+	description = "Famosamente consciente por incendiar como barbas. Ingera por sua conta e risco!"
 	color = rgb(224, 78, 16)
 	boozepwr = 35
 	metabolization_rate = 1.25 * REAGENTS_METABOLISM
-	taste_description = "burning wasps"
+	taste_description = "Vespas queimando"
 	overdose_threshold = 25
 
 /datum/glass_style/drinking_glass/molten_mead
@@ -725,7 +725,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "molten_mead"
 	name = "glass of Molten Mead"
-	desc = "Famously known to set beards aflame. Ingest at your own risk!"
+	desc = "Famosamente consciente por incendiar como barbas. Ingera por sua conta e risco!"
 
 /datum/reagent/consumable/ethanol/molten_mead/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(isdwarf(exposed_mob))
@@ -741,10 +741,10 @@
 
 /datum/reagent/consumable/ethanol/hippie_hooch
 	name = "Hippie Hooch"
-	description = "Peace and love! Under request of the HR department, this drink is sure to sober you up quickly."
+	description = "Paz e amor! Sob pedido do departamento de RH, esta bebida certamente vai deixá-lo sóbrio rapidamente."
 	color = rgb(77, 138, 34)
 	boozepwr = -20
-	taste_description = "eggy hemp"
+	taste_description = "cânhamo ovo"
 	var/static/list/status_effects_to_clear = list(
 		/datum/status_effect/confusion,
 		/datum/status_effect/dizziness,
@@ -757,7 +757,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "hippie_hooch"
 	name = "glass of Hippie Hooch"
-	desc = "Peace and love! Under request of the HR department, this drink is sure to sober you up quickly."
+	desc = "Paz e amor! Sob pedido do departamento de RH, esta bebida certamente vai deixá-lo sóbrio rapidamente."
 
 /datum/reagent/consumable/ethanol/hippie_hooch/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(isdwarf(exposed_mob))
@@ -777,17 +777,17 @@
 
 /datum/reagent/consumable/ethanol/research_rum
 	name = "Research Rum"
-	description = "Cooked up by dwarven scientists, this glowing pink brew is sure to supercharge your thinking. How? Science!"
+	description = "Cozido por cientistas anões, esta bebida rosa brilhante certamente vai sobrecarregar seu pensamento. Como? Ciência!"
 	color = rgb(169, 69, 169)
 	boozepwr = 50
-	taste_description = "slippery grey matter"
+	taste_description = "Matéria cinzenta escorregadia"
 
 /datum/glass_style/drinking_glass/research_rum
 	required_drink_type = /datum/reagent/consumable/ethanol/research_rum
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "research_rum"
 	name = "glass of Research Rum"
-	desc = "Cooked up by dwarven scientists, this glowing pink brew is sure to supercharge your thinking. How? Science!"
+	desc = "Cozido por cientistas anões, esta bebida rosa brilhante certamente vai sobrecarregar seu pensamento. Como? Ciência!"
 
 /datum/reagent/consumable/ethanol/research_rum/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(isdwarf(exposed_mob))
@@ -803,17 +803,17 @@
 
 /datum/reagent/consumable/ethanol/golden_grog
 	name = "Golden Grog"
-	description = "A drink concocted by a dwarven Quartermaster who had too much time and money on his hands. Commonly ordered by influencers looking to flaunt their wealth."
+	description = "Uma bebida feita por um contramestre anões que tinha muito tempo e dinheiro nas mãos. Ordenados por influenciadores que querem exibir sua riqueza."
 	color = rgb(247, 230, 141)
 	boozepwr = 70
-	taste_description = "sweet credit holochips"
+	taste_description = "doce crédito holochips"
 
 /datum/glass_style/drinking_glass/golden_grog
 	required_drink_type = /datum/reagent/consumable/ethanol/golden_grog
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "golden_grog"
 	name = "glass of Golden Grog"
-	desc = "A drink concocted by a dwarven Quartermaster who had too much time and money on his hands. Commonly ordered by influencers looking to flaunt their wealth."
+	desc = "Uma bebida feita por um contramestre anões que tinha muito tempo e dinheiro nas mãos. Ordenados por influenciadores que querem exibir sua riqueza."
 
 /datum/reagent/consumable/ethanol/golden_grog/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(isdwarf(exposed_mob))
@@ -827,9 +827,9 @@
 /datum/reagent/consumable/ethanol/appletini
 	name = "Appletini"
 	color = "#9bd1a9" //(155, 209, 169)
-	description = "The electric-green appley beverage nobody can turn down!"
+	description = "A bebida de maçã verde-elétrica ninguém pode recusar!"
 	boozepwr = 50
-	taste_description = "Sweet and green"
+	taste_description = "Doce e verde"
 	quality = DRINK_GOOD
 
 /datum/glass_style/drinking_glass/appletini
@@ -837,14 +837,14 @@
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "appletini"
 	name = "glass of appletini"
-	desc = "An appley beverage in a martini glass"
+	desc = "Uma bebida de maçã em um copo de martini"
 
 /datum/reagent/consumable/ethanol/quadruple_sec/cityofsin //making this a subtype was some REAL JANK, but it saves me a headache, and it looks good!
 	name = "City of Sin"
 	color = "#eb9378" //(235, 147, 120)
-	description = "A smooth, fancy drink for people of ill repute"
+	description = "Uma bebida suave e chique para pessoas de má reputação"
 	boozepwr = 70
-	taste_description = "Your own sins"
+	taste_description = "Seus próprios pecados"
 	quality = DRINK_VERYGOOD //takes extra effort
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
@@ -853,15 +853,15 @@
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "cityofsin"
 	name = "glass of city of sin"
-	desc = "Looking at it makes you recall every mistake you've made."
+	desc = "Olhar para ele faz você lembrar de cada erro que cometeu."
 
 /datum/reagent/consumable/ethanol/shakiri
 	name = "Shakiri"
-	description = "A sweet, fragrant red drink made from fermented kiri fruits. It seems to gently sparkle when exposed to light."
+	description = "Uma bebida vermelha doce e perfumada feita de frutos de kiri fermentados. Parece brilhar suavemente quando exposto à luz."
 	boozepwr = 45
 	color = "#cf3c3c"
 	quality = DRINK_GOOD
-	taste_description = "delicious liquified jelly"
+	taste_description = "Deliciosa geléia liqueificada"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/glass_style/drinking_glass/shakiri
@@ -869,49 +869,49 @@
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "shakiri"
 	name = "glass of shakiri"
-	desc = "A sweet, fragrant red drink made from fermented kiri fruits. It seems to gently sparkle when exposed to light."
+	desc = "Uma bebida vermelha doce e perfumada feita de frutos de kiri fermentados. Parece brilhar suavemente quando exposto à luz."
 
 /datum/reagent/consumable/ethanol/shakiri_spritz
 	name = "Shakiri Spritz"
-	description = "A carbonated cocktail made from shakiri and orange juice with soda water."
+	description = "Um coquetel carbonatado feito de shakiri e suco de laranja com água com soda."
 	color = "#cf863c"
 	quality = DRINK_GOOD
 	boozepwr = 45
-	taste_description = "tangy, carbonated sweetness"
+	taste_description = "Tangy, doce carbonatado"
 
 /datum/glass_style/drinking_glass/shakiri_spritz
 	required_drink_type = /datum/reagent/consumable/ethanol/shakiri_spritz
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "shakiri_spritz"
 	name = "glass of shakiri spritz"
-	desc = "A carbonated cocktail made from shakiri and orange juice with soda water."
+	desc = "Um coquetel carbonatado feito de shakiri e suco de laranja com água com soda."
 
 /datum/reagent/consumable/ethanol/crimson_hurricane
 	name = "Crimson Hurricane"
-	description = "A strong, citrusy cocktail of human origin, now made with shakiri and kiri jelly for a delightfully sweet drink."
+	description = "Um forte coquetel cítrico de origem humana, agora feito com shakiri e geléia kiri para uma bebida deliciosamente doce."
 	color = "#b86637"
 	quality = DRINK_VERYGOOD
 	boozepwr = 60
-	taste_description = "thick, fruity sweetness with a punch"
+	taste_description = "Doce grosso e frutado com um soco"
 
 /datum/glass_style/drinking_glass/crimson_hurricane
 	required_drink_type = /datum/reagent/consumable/ethanol/crimson_hurricane
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "crimson_hurricane"
 	name = "glass of crimson hurricane"
-	desc = "A strong, citrusy cocktail of human origin, now with shakiri and kiri jelly for a delightfully sweet drink."
+	desc = "Um forte coquetel cítrico de origem humana, agora com shakiri e geléia kiri para uma bebida deliciosamente doce."
 
 /datum/reagent/consumable/ethanol/shakiri_rogers
 	name = "Shakiri Rogers"
-	description = "A take on the classic Roy Rogers, with shakiri instead of grenadine. Sweet and refreshing."
+	description = "Uma opinião sobre o clássico Roy Rogers, com shakiri em vez de grenadine. Doce e refrescante."
 	color = "#6F2B1A"
 	quality = DRINK_GOOD
 	boozepwr = 45
-	taste_description = "fruity, carbonated soda with a slight kick"
+	taste_description = "Frutado, refrigerante carbonatado com um pára-quedas"
 
 /datum/glass_style/drinking_glass/shakiri_rogers
 	required_drink_type = /datum/reagent/consumable/ethanol/shakiri_rogers
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "shakiri_rogers"
 	name = "glass of shakiri rogers"
-	desc = "A take on the classic Roy Rogers, with shakiri instead of grenadine. Sweet and refreshing."
+	desc = "Uma opinião sobre o clássico Roy Rogers, com shakiri em vez de grenadine. Doce e refrescante."

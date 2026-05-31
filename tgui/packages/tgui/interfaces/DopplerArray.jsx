@@ -33,12 +33,12 @@ const DopplerArrayContent = (props) => {
     return record.name === activeRecordName;
   });
   const DopplerArrayFooter = (
-    <Section title={disk ? `${disk} (${storage})` : 'No Disk Inserted'}>
+    <Section title={disk ? `${disk} (${storage})` : 'Nenhum disco inserido'}>
       <Button
         textAlign="center"
         fluid
         icon="eject"
-        content="Eject Disk"
+        content="Disco Ejetar"
         disabled={!disk}
         onClick={() => act('eject_disk')}
       />
@@ -81,7 +81,7 @@ const DopplerArrayContent = (props) => {
                     icon="floppy-disk"
                     content="Save"
                     disabled={!disk}
-                    tooltip="Save the record selected to an inserted data disk."
+                    tooltip="Guardar o registro selecionado para um disco de dados inserido."
                     tooltipPosition="bottom"
                     onClick={() =>
                       act('save_record', {
@@ -102,31 +102,31 @@ const DopplerArrayContent = (props) => {
                 <LabeledList.Item label="Displacement">
                   {activeRecord.displacement} seconds
                 </LabeledList.Item>
-                <LabeledList.Item label="Epicenter Radius">
+                <LabeledList.Item label="Raio Epicentro">
                   {activeRecord.factual_epicenter_radius}
                   {activeRecord.theory_epicenter_radius &&
-                    ' (Theoretical: ' +
+                    '(Teórico:' +
                       activeRecord.theory_epicenter_radius +
                       ')'}
                 </LabeledList.Item>
-                <LabeledList.Item label="Outer Radius">
+                <LabeledList.Item label="Raio Exterior">
                   {activeRecord.factual_outer_radius}
                   {activeRecord.theory_outer_radius &&
                     ` (Theoretical: ${activeRecord.theory_outer_radius})`}
                 </LabeledList.Item>
-                <LabeledList.Item label="Shockwave Radius">
+                <LabeledList.Item label="Raio da onda de choque">
                   {activeRecord.factual_shockwave_radius}
                   {activeRecord.theory_shockwave_radius &&
-                    ' (Theoretical: ' +
+                    '(Teórico:' +
                       activeRecord.theory_shockwave_radius +
                       ')'}
                 </LabeledList.Item>
-                <LabeledList.Item label="Possible Cause(s)">
+                <LabeledList.Item label="Possível Causa(s)">
                   {activeRecord.reaction_results.length
                     ? activeRecord.reaction_results.map((reaction_name) => (
                         <Box key={reaction_name}>{reaction_name}</Box>
                       ))
-                    : 'No information available'}
+                    : 'Nenhuma informação disponível.'}
                 </LabeledList.Item>
               </LabeledList>
             </Section>

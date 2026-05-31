@@ -7,7 +7,7 @@
 
 /obj/machinery/trading_card_holder
 	name = "card slot"
-	desc = "A slot for placing Tactical Game Cards."
+	desc = "Uma vaga para colocar cartas táticas."
 	icon = 'icons/obj/toys/tcgmisc.dmi'
 	icon_state = "card_holder_inactive"
 	use_power = NO_POWER_USE
@@ -31,7 +31,7 @@
 		if(card_template.cardtype == "Creature")
 			if(!user.transferItemToLoc(current_card, src))
 				return
-			to_chat(user, span_notice("You put the [current_card] card in [src]."))
+			to_chat(user, span_notice("Você colocou o[current_card]cartão em[src]."))
 			icon_state = "card_holder_active"
 			update_appearance()
 			current_summon = new(locate(x + summon_offset_x, y + summon_offset_y, z))
@@ -40,7 +40,7 @@
 			current_summon.team_color = team_color
 			current_summon.load_model()
 		else
-			to_chat(user, span_notice("The [src] smartly rejects the non-creature card."))
+			to_chat(user, span_notice("O[src]Rejeita inteligentemente o cartão de não-criatura."))
 			current_card = null
 			return ..()
 	else
@@ -67,10 +67,10 @@ GLOBAL_LIST_EMPTY(tcgcard_machine_radial_choices)
 			if("Pickup")
 				if(current_card)
 					user.put_in_hands(current_card)
-					to_chat(user, span_notice("You take the [current_card] card out of [src]."))
+					to_chat(user, span_notice("Você pega o[current_card]cartão fora de[src]."))
 					current_card = null
 				else
-					to_chat(user, span_notice("The blank card dematerializes."))
+					to_chat(user, span_notice("O cartão em branco desmaterializa."))
 				card_template = null
 				icon_state = "card_holder_inactive"
 				update_appearance()
@@ -84,7 +84,7 @@ GLOBAL_LIST_EMPTY(tcgcard_machine_radial_choices)
 			if(null)
 				return
 	else
-		to_chat(user, span_warning("[src] is empty!"))
+		to_chat(user, span_warning("[src]Está vazio!"))
 	add_fingerprint(user)
 	return ..()
 
@@ -99,7 +99,7 @@ GLOBAL_LIST_EMPTY(tcgcard_machine_radial_choices)
 		current_summon.team_color = team_color
 		current_summon.load_model()
 	else
-		to_chat(user, span_notice("The [src] already contains a card."))
+		to_chat(user, span_notice("O[src]Já contém um cartão."))
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/trading_card_holder/proc/check_menu(mob/living/user)
@@ -117,12 +117,12 @@ GLOBAL_LIST_EMPTY(tcgcard_machine_radial_choices)
 /obj/machinery/trading_card_holder/examine(mob/user)
 	. = ..()
 	if(card_template)
-		. += span_notice("There is currently a [card_template.name] card inserted.")
+		. += span_notice("Há atualmente um[card_template.name]Cartão inserido.")
 	else
 		if(current_summon)
-			. += span_notice("There is currently a blank card inserted.")
+			. += span_notice("Há atualmente um cartão em branco inserido.")
 		else
-			. += span_notice("There is no card currently inserted.")
+			. += span_notice("Não há nenhum cartão atualmente inserido.")
 
 /obj/machinery/trading_card_holder/red
 	summon_offset_y = -1
@@ -249,7 +249,7 @@ GLOBAL_LIST_EMPTY(tcgcard_machine_radial_choices)
 
 /obj/structure/trading_card_summon/blank
 	name = "blank card"
-	desc = "A blank card used to represent cards summoned by other cards."
+	desc = "Um cartão em branco usado para representar cartões convocados por outros cartões."
 	summon_power = 1
 	summon_resolve = 1
 	power_color = DEFAULT_MODIFIED_COLOR
@@ -287,7 +287,7 @@ GLOBAL_LIST_EMPTY(tcgcard_machine_radial_choices)
 ///A button that generates a player manipulable bar of icons, in this case a mana bar.
 /obj/machinery/trading_card_button
 	name = "mana control panel"
-	desc = "A set of buttons that lets you keep track of your mana when playing Tactical Game Cards."
+	desc = "Um conjunto de botões que permite acompanhar sua mana quando joga cartas táticas."
 	icon = 'icons/obj/toys/tcgmisc.dmi'
 	icon_state = "mana_buttons"
 	use_power = NO_POWER_USE
@@ -362,7 +362,7 @@ GLOBAL_LIST_EMPTY(tcgcard_mana_bar_radial_choices)
 
 /obj/machinery/trading_card_button/health
 	name = "life control panel"
-	desc = "A set of buttons that lets you keep track of your life shards when playing Tactical Game Cards."
+	desc = "Um conjunto de botões que te permite acompanhar seus fragmentos de vida quando joga cartas táticas."
 	icon_state = "health_buttons"
 	display_panel_type = /obj/effect/trading_card_panel/health
 	panel_offset_x = -1
@@ -447,7 +447,7 @@ GLOBAL_LIST_EMPTY(tcgcard_health_bar_radial_choices)
 
 /obj/effect/trading_card_panel/examine(mob/user)
 	. = ..()
-	. += span_notice("It is currently showing [gems] out of [gem_slots] [gem_title].")
+	. += span_notice("Ele está mostrando atualmente[gems]Fora[gem_slots] [gem_title].")
 
 ///A variant of the display panel for life shards, this one is set up to display two columns.
 /obj/effect/trading_card_panel/health

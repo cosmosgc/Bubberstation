@@ -24,7 +24,7 @@
 	aimed_gun = gun
 
 	source.face_atom(target)
-	source.visible_message(span_danger("[source.name] aims at [target.name] with the [aimed_gun.name]!"))
+	source.visible_message(span_danger("[source.name]Mirar em[target.name]como[aimed_gun.name]!"))
 
 	was_running = (source.move_intent == MOVE_INTENT_RUN)
 	if(was_running)
@@ -59,10 +59,10 @@
 		locked = TRUE
 		log_combat(target, source, "locked onto with aiming")
 		playsound(get_turf(source), 'modular_skyrat/modules/gunpoint/sound/targeton.ogg', 50,1)
-		to_chat(source, span_notice("<b>You lock onto [target.name]!</b>"))
-		target.visible_message(span_warning("<b>[source.name] holds [target.name] at gunpoint with the [aimed_gun.name]!</b>"), span_userdanger("[source.name] holds you at gunpoint with the [aimed_gun.name]!"))
+		to_chat(source, span_notice("<b>Você trava em[target.name]!</b>"))
+		target.visible_message(span_warning("<b>[source.name]Segura.[target.name]com uma arma apontada para o[aimed_gun.name]!</b>"), span_userdanger("[source.name]te mantém sob a mira de uma arma.[aimed_gun.name]!"))
 		if(target.gunpointed.len == 1)//First case
-			to_chat(target, span_danger("You can move, but you see that [source.name] has a gun pointed at you!"))
+			to_chat(target, span_danger("Você pode se mover, mas você vê que[source.name]Tem uma arma apontada para você!"))
 		if(target.gp_effect.icon_state != "locked")
 			target.gp_effect.icon_state = "locked"
 
@@ -88,7 +88,7 @@
 	target.gunpointed -= src
 	source.gunpointing = null
 	if(locked)
-		target.visible_message(span_notice("[source.name] no longer holds [target.name] at gunpoint."), span_notice("<b>[source.name] no longer holds you at gunpoint.</b>"))
+		target.visible_message(span_notice("[source.name]Não mais segura[target.name]com uma arma apontada."), span_notice("<b>[source.name]Não mais te mantém sob a mira de uma arma.</b>"))
 	source = null
 	target = null
 	aimed_gun = null

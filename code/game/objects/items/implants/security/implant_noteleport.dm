@@ -1,21 +1,14 @@
 ///Blocks the implantee from being teleported
 /obj/item/implant/teleport_blocker
 	name = "bluespace grounding implant"
-	desc = "Grounds your bluespace signature in baseline reality, whatever the hell that means."
+	desc = "Fundamenta sua assinatura no espaço azul na realidade, seja lá o que isso signifique."
 	actions_types = null
 	implant_flags = IMPLANT_TYPE_SECURITY
 	hud_icon_state = "hud_imp_noteleport"
 
-	implant_info = "Automatically activates upon implantation. \
-		Grounds users' bluespace signatures, preventing jaunting and/or teleportation."
+	implant_info = "Automatically activates upon implantation. 		Grounds users' bluespace signatures, preventing jaunting and/or teleportation."
 
-	implant_lore = "The Robust Corp BG-001-EXP is a subcutaneous, experimental bluespace counter-resonance \
-		frequency generator, designed to firmly ground an implantee's bluespace signature in baseline reality. \
-		In layman's terms, it counteracts attempts to slip into bluespace or similar gaps in reality, \
-		generating a dissonant frequency that interferes with the attempt, resulting in temporary paralysis. \
-		Test subjects report that the interference feels like slamming into a wall, with none of the \
-		physical trauma of actually slamming into a wall. Preliminary reports indicate that this \
-		would likely be useful for keeping especially slippery prisoners in place."
+	implant_lore = "The Robust Corp BG-001-EXP is a subcutaneous, experimental bluespace counter-resonance 		frequency generator, designed to firmly ground an implantee's bluespace signature in baseline reality. 		In layman's terms, it counteracts attempts to slip into bluespace or similar gaps in reality, 		generating a dissonant frequency that interferes with the attempt, resulting in temporary paralysis. 		Test subjects report that the interference feels like slamming into a wall, with none of the 		physical trauma of actually slamming into a wall. Preliminary reports indicate that this 		would likely be useful for keeping especially slippery prisoners in place."
 
 /obj/item/implant/teleport_blocker/implant(mob/living/target, mob/user, silent = FALSE, force = FALSE)
 	. = ..()
@@ -37,7 +30,7 @@
 /obj/item/implant/teleport_blocker/proc/on_teleport(mob/living/teleportee, atom/destination, channel)
 	SIGNAL_HANDLER
 
-	to_chat(teleportee, span_holoparasite("You feel yourself teleporting, but are suddenly flung back to where you just were!"))
+	to_chat(teleportee, span_holoparasite("Você se sente se teletransportando, mas de repente está de volta para onde estava!"))
 
 	teleportee.apply_status_effect(/datum/status_effect/incapacitating/paralyzed, 5 SECONDS)
 	do_sparks(5, TRUE, teleportee, spark_type = /datum/effect_system/basic/spark_spread/quantum)
@@ -47,7 +40,7 @@
 /obj/item/implant/teleport_blocker/proc/on_jaunt(mob/living/jaunter)
 	SIGNAL_HANDLER
 
-	to_chat(jaunter, span_holoparasite("As you attempt to jaunt, you slam directly into the barrier between realities and are sent crashing back into corporeality!"))
+	to_chat(jaunter, span_holoparasite("Enquanto você tenta fugir, você bate diretamente na barreira entre realidades e é enviado de volta para a corporeidade!"))
 
 	jaunter.apply_status_effect(/datum/status_effect/incapacitating/paralyzed, 5 SECONDS)
 	do_sparks(5, TRUE, jaunter, spark_type = /datum/effect_system/basic/spark_spread/quantum)
@@ -55,5 +48,5 @@
 
 /obj/item/implantcase/teleport_blocker
 	name = "implant case - 'Bluespace Grounding'"
-	desc = "A glass case containing a bluespace grounding implant."
+	desc = "Uma caixa de vidro contendo um implante de aterramento de espaço azul."
 	imp_type = /obj/item/implant/teleport_blocker

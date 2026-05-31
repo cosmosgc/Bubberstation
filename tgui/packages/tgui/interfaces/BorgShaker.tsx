@@ -42,13 +42,13 @@ export const BorgShaker = (props) => {
             <>
               <Button
                 icon="book"
-                content={'Reaction search'}
+                content={'Busca de reação'}
                 disabled={
                   data.reagentSearchContainer !==
                     ContainerPreference.InternalBeaker && !data.apparatusHasItem
                 }
                 tooltip={
-                  'Look up recipes and reagents! Choose a container source'
+                  'Procure receitas e reagentes! Escolha uma fonte de contêiner.'
                 }
                 tooltipPosition="bottom-start"
                 onClick={() => act('reaction_lookup')}
@@ -62,7 +62,7 @@ export const BorgShaker = (props) => {
                     ? 'green'
                     : 'default'
                 }
-                tooltip="Search source: Internal Beaker"
+                tooltip="Fonte de pesquisa:"
                 onClick={() => {
                   act('set_preferred_container', {
                     value: ContainerPreference.InternalBeaker,
@@ -72,7 +72,7 @@ export const BorgShaker = (props) => {
               <Button
                 icon="vial"
                 width="24px"
-                tooltip="Search source: Beverage Apparatus"
+                tooltip="Fonte de pesquisa:"
                 color={
                   data.reagentSearchContainer ===
                   ContainerPreference.BeverageApparatus

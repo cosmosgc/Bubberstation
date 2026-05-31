@@ -1,7 +1,6 @@
 /datum/reagent/toxin/acid/bio_acid
 	name = "adaptive bio-acid"
-	description = "An immensely strong, acidic substance of seemingly biological origin. It is teeming with microscopic\
-	organisms that seem to alter its composition to most adaptively dissolve whatever it comes into contact with."
+	description = "Uma substância ácida imensamente forte de origem aparentemente biológica. Está cheio de organismos microscópicos que parecem alterar sua composição para dissolver o que quer que entre em contato."
 	color = "#9455ff"
 	creation_purity = 100
 	toxpwr = 0
@@ -11,7 +10,7 @@
 
 /datum/reagent/toxin/acid/bio_acid/expose_mob(mob/living/exposed_mob, methods = TOUCH, reac_volume, show_message = TRUE, touch_protection)
 	if(IS_CHANGELING(exposed_mob))
-		to_chat(exposed_mob, span_changeling("We excrete a bio-agent to neutralize the bio-acid. It is routine and reflexive to do so."))
+		to_chat(exposed_mob, span_changeling("Excretamos um bio-agente para neutralizar o bio-ácido. É rotina e reflexivo fazer isso."))
 		volume = min(0.1, volume)
 		holder.update_total()
 		return

@@ -137,7 +137,7 @@
 	if(!active())
 		var/datum/overlap = ducting_layer_check(parent_obj, -ducting_layer)
 		if(!isnull(overlap))
-			parent_obj.balloon_alert(user, "overlapping [istype(overlap, /obj/machinery/duct) ? "duct" : "machine"] detected!")
+			parent_obj.balloon_alert(user, "sobreposição[istype(overlap, /obj/machinery/duct) ? "duct" : "machine"]Detectado!")
 			return ITEM_INTERACT_FAILURE
 */
 
@@ -256,7 +256,7 @@
 	SIGNAL_HANDLER
 
 	if(distinct_reagent_cap != INFINITY)
-		examine_list += span_notice("This plumbing component will only accept up to [distinct_reagent_cap] distinct reagents at once.")
+		examine_list += span_notice("Este componente de encanamento só aceitará até[distinct_reagent_cap]Reagentes distintos de uma vez.")
 
 ///called from in process(). only calls process_request(), but can be overwritten for children with special behaviour
 /datum/component/plumbing/proc/send_request(dir)

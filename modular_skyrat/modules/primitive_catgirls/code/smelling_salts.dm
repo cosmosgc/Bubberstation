@@ -1,6 +1,6 @@
 /obj/item/smelling_salts
 	name = "smelling salts"
-	desc = "A small pile of a salt-like substance that smells absolutely repulsive. Rumor has it that the smell is so pungent that even the dead will come back to life to escape it."
+	desc = "Uma pequena pilha de uma substância salgada que cheira absolutamente repulsiva. Dizem que o cheiro é tão pungente que até os mortos voltarão à vida para escapar dele."
 	icon_state = "smelling_salts"
 	icon = 'modular_skyrat/modules/primitive_catgirls/icons/salts.dmi'
 	w_class = WEIGHT_CLASS_TINY
@@ -10,15 +10,15 @@
 /obj/item/smelling_salts/attack(mob/living/mob_attacked, mob/user)
 	. = ..()
 	if(!iscarbon(mob_attacked))
-		to_chat(user, span_warning("On second thought, maybe [src] won't work on [mob_attacked]."))
+		to_chat(user, span_warning("Pensando bem, talvez[src]Não vai funcionar.[mob_attacked]."))
 		return
 
 	if(mob_attacked == user)
-		to_chat(user, span_warning("You can't bring yourself to get [src] anywhere near your face."))
+		to_chat(user, span_warning("Você não pode conseguir[src]em qualquer lugar perto do seu rosto."))
 		return
 
 	if(mob_attacked.stat != DEAD)
-		to_chat(user, span_warning("On second thought, maybe you shouldn't use this on [mob_attacked] if they're not <b>dead</b>."))
+		to_chat(user, span_warning("Pensando bem, talvez você não devesse usar isso em[mob_attacked]Se eles não estão<b>Morto</b>."))
 		return
 
 	try_revive(mob_attacked, user)
@@ -28,11 +28,11 @@
 	carbon_target.grab_ghost()
 
 	if(!do_after(user, 3 SECONDS, carbon_target))
-		user.balloon_alert(user, "stopped reviving [carbon_target]")
+		user.balloon_alert(user, "Pare de reviver.[carbon_target]")
 		return
 
 	if(carbon_target.stat != DEAD)
-		to_chat(user, span_warning("Wait, [carbon_target] isn't actually <b>dead</b>!"))
+		to_chat(user, span_warning("Espere,[carbon_target]Na verdade, não é.<b>Morto</b>!"))
 		return
 	carbon_target.notify_revival("You are being brought back to life!")
 

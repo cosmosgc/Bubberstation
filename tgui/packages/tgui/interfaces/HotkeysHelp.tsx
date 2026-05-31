@@ -93,9 +93,9 @@ export const HotkeysHelp = (props) => {
   const { data } = useBackend<HotkeysHelpData>();
 
   return (
-    <Window title="Hotkeys Help" width={500} height={800}>
+    <Window title="Teclas de atalho Ajuda" width={500} height={800}>
       <Window.Content scrollable>
-        <Section title="Sorted by Key">
+        <Section title="Ordenado por Chave">
           <Table>
             <Table.Row header>
               <Table.Cell textAlign="center" m={1}>

@@ -7,7 +7,7 @@ Slimecrossing Armor
 //Rebreather mask - Chilling Blue
 /obj/item/clothing/mask/nobreath
 	name = "rebreather mask"
-	desc = "A transparent mask, resembling a conventional breath mask, but made of bluish slime. Seems to lack any air supply tube, though."
+	desc = "Uma máscara transparente, parecida com uma máscara de respiração convencional, mas feita de lodo azulado. Parece que não há nenhum tubo de ar."
 	icon_state = "slime"
 	inhand_icon_state = "b_mask"
 	body_parts_covered = NONE
@@ -34,7 +34,7 @@ Slimecrossing Armor
 
 /obj/item/clothing/glasses/prism_glasses
 	name = "prism glasses"
-	desc = "The lenses seem to glow slightly, and reflect light into dazzling colors."
+	desc = "Como lentes paresm brilhar ligamente, e refletem luz em núcleos deslumbrantes."
 	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "prismglasses"
 	actions_types = list(/datum/action/item_action/change_prism_colour, /datum/action/item_action/place_light_prism)
@@ -48,7 +48,7 @@ Slimecrossing Armor
 
 /obj/structure/light_prism
 	name = "light prism"
-	desc = "A shining crystal of semi-solid light. Looks fragile."
+	desc = "Um cristal brilhante de luz semi-sólida. Parece frágil."
 	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "lightprism"
 	density = FALSE
@@ -63,7 +63,7 @@ Slimecrossing Armor
 	set_light(5)
 
 /obj/structure/light_prism/attack_hand(mob/user, list/modifiers)
-	to_chat(user, span_notice("You dispel [src]."))
+	to_chat(user, span_notice("Você se dissipa.[src]."))
 	qdel(src)
 
 /datum/action/item_action/change_prism_colour
@@ -88,18 +88,18 @@ Slimecrossing Armor
 /datum/action/item_action/place_light_prism/do_effect(trigger_flags)
 	var/obj/item/clothing/glasses/prism_glasses/glasses = target
 	if(locate(/obj/structure/light_prism) in get_turf(owner))
-		to_chat(owner, span_warning("There isn't enough ambient energy to fabricate another light prism here."))
+		to_chat(owner, span_warning("Não há energia ambiente suficiente para fabricar outro prisma de luz aqui."))
 		return
 	if(istype(glasses))
 		if(!glasses.glasses_color)
-			to_chat(owner, span_warning("The lens is oddly opaque..."))
+			to_chat(owner, span_warning("A lente é estranhamente opaca..."))
 			return
-		to_chat(owner, span_notice("You channel nearby light into a glowing, ethereal prism."))
+		to_chat(owner, span_notice("Você canaliza a luz próxima para um brilhante prisma etéreo."))
 		new /obj/structure/light_prism(get_turf(owner), glasses.glasses_color)
 
 /obj/item/clothing/head/peaceflower
 	name = "heroine bud"
-	desc = "An extremely addictive flower, full of peace magic."
+	desc = "Uma flor extremamente viciante, Cheia de magia de paz."
 	icon = 'icons/obj/science/slimecrossing.dmi'
 	worn_icon = 'icons/mob/clothing/head/costume.dmi'
 	icon_state = "peaceflower"
@@ -115,13 +115,13 @@ Slimecrossing Armor
 
 /obj/item/clothing/head/peaceflower/can_mob_unequip(mob/user)
 	if(user.get_item_by_slot(slot_flags) == src)
-		to_chat(user, span_warning("You feel at peace. <b style='color:pink'>Why would you want anything else?</b>"))
+		to_chat(user, span_warning("Você se sente em paz.<b style='color:pink'>Por que você quer outra coisa?</b>"))
 		return FALSE
 	return ..()
 
 /obj/item/clothing/suit/armor/heavy/adamantine
 	name = "adamantine armor"
-	desc = "A full suit of adamantine plate armor. Impressively resistant to damage, but weighs about as much as you do."
+	desc = "Uma armadura completa de adamantina. Impressionantemente resistente a danos, mas pesa tanto quanto você."
 	icon_state = "adamsuit"
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'

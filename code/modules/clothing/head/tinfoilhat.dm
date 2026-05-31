@@ -1,6 +1,6 @@
 /obj/item/clothing/head/costume/foilhat
 	name = "tinfoil hat"
-	desc = "Thought control rays, psychotronic scanning. Don't mind that, I'm protected cause I made this hat."
+	desc = "Raios de controle de pensamento, varredura psicotrônica. Não se preocupe, estou protegido porque fiz este chapéu."
 	icon_state = "foilhat"
 	inhand_icon_state = null
 	armor_type = /datum/armor/costume_foilhat
@@ -21,13 +21,7 @@
 		return
 
 	AddComponent(
-		/datum/component/anti_magic, \
-		antimagic_flags = MAGIC_RESISTANCE_MIND, \
-		inventory_flags = ITEM_SLOT_HEAD, \
-		charges = 6, \
-		block_magic = CALLBACK(src, PROC_REF(drain_antimagic)), \
-		expiration = CALLBACK(src, PROC_REF(warp_up)) \
-	) //BUBBERSTATION CHANGE: NEAR-INFINITE CHARGES (6 TO 1000)
+		/datum/component/anti_magic, 		antimagic_flags = MAGIC_RESISTANCE_MIND, 		inventory_flags = ITEM_SLOT_HEAD, 		charges = 6, 		block_magic = CALLBACK(src, PROC_REF(drain_antimagic)), 		expiration = CALLBACK(src, PROC_REF(warp_up)) 	) //BUBBERSTATION CHANGE: NEAR-INFINITE CHARGES (6 TO 1000)
 
 
 /obj/item/clothing/head/costume/foilhat/equipped(mob/living/carbon/human/user, slot)
@@ -43,14 +37,14 @@
 	RegisterSignal(user, COMSIG_HUMAN_SUICIDE_ACT, PROC_REF(call_suicide))
 
 	// user.gain_trauma(paranoia, TRAUMA_RESILIENCE_MAGIC ) BUBBERSTATION CHANGE: REMOVES PARANOIA
-	to_chat(user, span_warning("As you don the foiled hat, an entire world of conspiracy theories and seemingly insane ideas suddenly rush into your mind. What you once thought unbelievable suddenly seems.. undeniable. Everything is connected and nothing happens just by accident. You know too much and now they're out to get you. "))
+	to_chat(user, span_warning("Enquanto você usa o chapéu desfeito, um mundo inteiro de teorias de conspiração e idéias aparentemente insanas de repente entra em sua mente. O que você achou inacreditável de repente parece inegável. Tudo está conectado e nada acontece por acidente. Você sabe demais e agora eles querem te pegar."))
 
 /obj/item/clothing/head/costume/foilhat/mouse_drop_dragged(atom/over_object, mob/user)
 	//God Im sorry
 	if(!warped && iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(src == C.head)
-			to_chat(C, span_userdanger("Why would you want to take this off? Do you want them to get into your mind?!"))
+			to_chat(C, span_userdanger("Por que quer tirar isso? Você quer que eles entrem em sua mente?"))
 			return
 	return ..()
 
@@ -64,11 +58,11 @@
 
 /// When the foilhat is drained an anti-magic charge.
 /obj/item/clothing/head/costume/foilhat/proc/drain_antimagic(mob/user)
-	to_chat(user, span_warning("[src] crumples slightly. Something is trying to get inside your mind!"))
+	to_chat(user, span_warning("[src]Amassa levemente. Algo está tentando entrar na sua mente!"))
 
 /obj/item/clothing/head/costume/foilhat/proc/warp_up()
 	name = "scorched tinfoil hat"
-	desc = "A badly warped up hat. Quite unlikely this will still work against any of the fictional or real dangers it used to."
+	desc = "Um chapéu muito torcido. Muito improvável que isso ainda funcione contra qualquer um dos perigos ficcionais ou reais que costumava fazer."
 	warped = TRUE
 	clothing_flags &= ~ANTI_TINFOIL_MANEUVER
 	if(!isliving(loc)) //BUBBERSTATION CHANGE, REMOVES PARANOIA
@@ -79,13 +73,13 @@
 		return
 	// QDEL_NULL(paranoia) BUBBERSTATION CHANGE, REMOVES PARANOIA
 	if(target.stat < UNCONSCIOUS)
-		to_chat(target, span_warning("Your zealous conspirationism rapidly dissipates as the donned hat warps up into a ruined mess. All those theories starting to sound like nothing but a ridicolous fanfare."))
+		to_chat(target, span_warning("Seu zeloso conspiracionismo rapidamente se dissipa enquanto o chapéu enfeitiçado se transforma em uma bagunça arruinada. Todas essas teorias começam a soar como uma fanfarra ridícula."))
 
 /obj/item/clothing/head/costume/foilhat/attack_hand(mob/user, list/modifiers)
 	if(!warped && iscarbon(user))
 		var/mob/living/carbon/wearer = user
 		if(src == wearer.head)
-			to_chat(user, span_userdanger("Why would you want to take this off? Do you want them to get into your mind?!"))
+			to_chat(user, span_userdanger("Por que quer tirar isso? Você quer que eles entrem em sua mente?"))
 			return
 	return ..()
 
@@ -103,7 +97,7 @@
 	return OXYLOSS
 
 /obj/item/clothing/head/costume/foilhat/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] gets a crazed look in [user.p_their()] eyes! [capitalize(user.p_they())] [user.p_have()] witnessed the truth, and try to commit suicide!"))
+	user.visible_message(span_suicide("[user]Tem um olhar louco.[user.p_their()]Olhos![capitalize(user.p_they())] [user.p_have()]Testemunhou a verdade, e tentou cometer suicídio!"))
 	var/static/list/conspiracy_line = list(
 		";THEY'RE HIDING CAMERAS IN THE CEILINGS! THEY WITNESS EVERYTHING WE DO!!",
 		";HOW CAN I LIVE IN A WORLD WHERE MY FATE AND EXISTENCE IS DECIDED BY A GROUP OF INDIVIDUALS?!!",

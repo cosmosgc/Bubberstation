@@ -104,7 +104,7 @@
 		if(extra_classes)
 			classes += extra_classes
 
-		.["class"] = input(src, "What kind of data?", "Variable Type", default_class) as null|anything in classes
+		.["class"] = input(src, "Que tipo de dados?", "Tipo Variável", default_class) as null|anything in classes
 		if(holder && holder.marked_datum && .["class"] == markstring)
 			.["class"] = VV_MARKED_DATUM
 
@@ -116,19 +116,19 @@
 
 	switch(.["class"])
 		if(VV_TEXT)
-			.["value"] = input("Enter new text:", "Text", current_value) as null|text
+			.["value"] = input("Digite novo texto:", "Text", current_value) as null|text
 			if(.["value"] == null)
 				.["class"] = null
 				return
 		if(VV_MESSAGE)
-			.["value"] = input("Enter new text:", "Text", current_value) as null|message
+			.["value"] = input("Digite novo texto:", "Text", current_value) as null|message
 			if(.["value"] == null)
 				.["class"] = null
 				return
 
 
 		if(VV_NUM)
-			.["value"] = input("Enter new number:", "Num", current_value) as null|num
+			.["value"] = input("Digite o novo número:", "Num", current_value) as null|num
 			if(.["value"] == null)
 				.["class"] = null
 				return
@@ -173,7 +173,7 @@
 				.["class"] = null
 				return
 			var/list/things = vv_reference_list(type, subtypes)
-			var/value = input("Select reference:", "Reference", current_value) as null|anything in things
+			var/value = input("Selecione a referência:", "Reference", current_value) as null|anything in things
 			if(!value)
 				.["class"] = null
 				return
@@ -186,7 +186,7 @@
 				.["class"] = null
 				return
 			var/list/things = vv_reference_list(type, subtypes)
-			var/value = input("Select reference:", "Reference", current_value) as null|anything in things
+			var/value = input("Selecione a referência:", "Reference", current_value) as null|anything in things
 			if(!value)
 				.["class"] = null
 				return
@@ -199,7 +199,7 @@
 				.["class"] = null
 				return
 			var/list/things = vv_reference_list(type, subtypes)
-			var/value = input("Select reference:", "Reference", current_value) as null|anything in things
+			var/value = input("Selecione a referência:", "Reference", current_value) as null|anything in things
 			if(!value)
 				.["class"] = null
 				return
@@ -212,26 +212,26 @@
 				.["class"] = null
 				return
 			var/list/things = vv_reference_list(type, subtypes)
-			var/value = input("Select reference:", "Reference", current_value) as null|anything in things
+			var/value = input("Selecione a referência:", "Reference", current_value) as null|anything in things
 			if(!value)
 				.["class"] = null
 				return
 			.["value"] = WEAKREF(things[value])
 
 		if(VV_CLIENT)
-			.["value"] = input("Select reference:", "Reference", current_value) as null|anything in GLOB.clients
+			.["value"] = input("Selecione a referência:", "Reference", current_value) as null|anything in GLOB.clients
 			if(.["value"] == null)
 				.["class"] = null
 				return
 
 		if(VV_FILE)
-			.["value"] = input("Pick file:", "File") as null|file
+			.["value"] = input("Escolha o arquivo:", "File") as null|file
 			if(.["value"] == null)
 				.["class"] = null
 				return
 
 		if(VV_ICON)
-			.["value"] = input("Pick icon:", "Icon") as null|icon
+			.["value"] = input("Escolha o ícone:", "Icon") as null|icon
 			if(.["value"] == null)
 				.["class"] = null
 				return
@@ -298,7 +298,7 @@
 			.["type"] = /list
 			var/list/value = list()
 
-			var/expectation = alert("Would you like to populate the list", "Populate List?", "Yes", "No")
+			var/expectation = alert("Gostaria de preencher a lista?", "Lista de povoação?", "Yes", "No")
 			if(!expectation || expectation == "No")
 				.["value"] = value
 				return .
@@ -316,15 +316,15 @@
 		if(VV_TEXT_LOCATE)
 			var/datum/D
 			do
-				var/ref = input("Enter reference:", "Reference") as null|text
+				var/ref = input("Digite a referência:", "Reference") as null|text
 				if(!ref)
 					break
 				D = locate(ref)
 				if(!D)
-					tgui_alert(usr,"Invalid ref!")
+					tgui_alert(usr,"Ref inválido!")
 					continue
 				if(!D.can_vv_mark())
-					tgui_alert(usr,"Datum can not be marked!")
+					tgui_alert(usr,"Datum não pode ser marcado!")
 					continue
 			while(!D)
 			.["type"] = D.type

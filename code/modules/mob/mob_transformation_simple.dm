@@ -5,7 +5,7 @@
 /mob/proc/change_mob_type(new_type = null, turf/location = null, new_name = null as text|null, delete_old_mob = FALSE)
 
 	if(isnewplayer(src))
-		to_chat(usr, span_danger("Cannot convert players who have not entered yet."))
+		to_chat(usr, span_danger("Não pode converter jogadores que ainda não entraram."))
 		return
 
 	if(!new_type)
@@ -15,11 +15,11 @@
 		new_type = text2path(new_type)
 
 	if(!ispath(new_type) )
-		to_chat(usr, "Invalid type path (new_type = [new_type]) in change_mob_type(). Contact a coder.")
+		to_chat(usr, "Caminho de tipo inválido (new type =[new_type]) em change mob type(). Contate um programador.")
 		return
 
 	if(ispath(new_type, /mob/dead/new_player))
-		to_chat(usr, span_danger("Cannot convert into a new_player mob type."))
+		to_chat(usr, span_danger("Não pode se converter em um novo tipo de grupo."))
 		return
 
 	if (SEND_SIGNAL(src, COMSIG_PRE_MOB_CHANGED_TYPE) & COMPONENT_BLOCK_MOB_CHANGE)
@@ -36,7 +36,7 @@
 		desired_mob = new new_type(src.loc)
 
 	if(!ismob(desired_mob))
-		to_chat(usr, "Type path is not a mob (new_type = [new_type]) in change_mob_type(). Contact a coder.")
+		to_chat(usr, "Tipo caminho não é uma multidão (novo tipo =[new_type]) em change mob type(). Contate um programador.")
 		qdel(desired_mob)
 		return
 

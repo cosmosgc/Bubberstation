@@ -64,17 +64,17 @@
 /obj/structure/reagent_dispensers/examine(mob/user)
 	. = ..()
 	if(can_be_tanked)
-		. += span_notice("Use a sheet of iron to convert this into a plumbing-compatible tank.")
+		. += span_notice("Use uma folha de ferro para converter isso em um tanque compatível com encanamento.")
 	if(openable)
 		if(!leaking)
-			. += span_notice("Its tap looks like it could be <b>wrenched</b> open.")
+			. += span_notice("Seu toque parece que poderia ser<b>Estrangulada.</b>Abra.")
 		else
-			. += span_warning("Its tap is <b>wrenched</b> open!")
+			. += span_warning("Seu toque é<b>Estrangulada.</b>Abra!")
 	if(accepts_rig && get_dist(user, src) <= 2)
 		if(rig)
-			. += span_warning("There is some kind of device <b>rigged</b> to the tank!")
+			. += span_warning("Há algum tipo de dispositivo.<b>Armado.</b>Para o tanque!")
 		else
-			. += span_notice("It looks like you could <b>rig</b> a device to the tank.")
+			. += span_notice("Parece que você poderia.<b>rig</b>Um dispositivo para o tanque.")
 
 
 /obj/structure/reagent_dispensers/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
@@ -88,7 +88,7 @@
 		return FALSE //so we can refill them via their afterattack.
 	if(istype(attacking_item, /obj/item/assembly_holder) && accepts_rig)
 		if(rig)
-			balloon_alert(user, "another device is in the way!")
+			balloon_alert(user, "Outro dispositivo está no caminho!")
 			return ..()
 		var/obj/item/assembly_holder/holder = attacking_item
 		if(!(locate(/obj/item/assembly/igniter) in holder.assemblies))
@@ -173,12 +173,12 @@
 		reagents.del_reagent(/datum/reagent/fuel) // not actually used for the explosion
 	if(reagents.total_volume)
 		if(!fuel_amt)
-			visible_message(span_danger("\The [src] ruptures!"))
+			visible_message(span_danger("\The [src]Rupturas!"))
 		// Leave it up to future terrorists to figure out the best way to mix reagents with fuel for a useful boom here
 		chem_splash(loc, null, 2 + floor((reagents.total_volume + fuel_amt) / 1000), list(reagents), extra_heat=(fuel_amt / 50),adminlog=(fuel_amt<25))
 
 	if(fuel_amt) // with that done, actually explode
-		visible_message(span_danger("\The [src] explodes!"))
+		visible_message(span_danger("\The [src]Explodir!"))
 		// old code for reference:
 		// standard fuel tank = 1000 units = heavy_impact_range = 1, light_impact_range = 5, flame_range = 5
 		// big fuel tank = 5000 units = devastation_range = 1, heavy_impact_range = 2, light_impact_range = 7, flame_range = 12
@@ -221,7 +221,7 @@
 	if(!openable)
 		return FALSE
 	leaking = !leaking
-	balloon_alert(user, "[leaking ? "opened" : "closed"] tap")
+	balloon_alert(user, "[leaking ? "opened" : "closed"]Bata.")
 	user.log_message("[leaking ? "opened" : "closed"] [src].", LOG_GAME)
 	tank_leak()
 	return ITEM_INTERACT_SUCCESS
@@ -232,20 +232,20 @@
 
 /obj/structure/reagent_dispensers/watertank
 	name = "water tank"
-	desc = "A water tank."
+	desc = "Um tanque de água."
 	icon_state = "water"
 	openable = TRUE
 	climbable = TRUE
 
 /obj/structure/reagent_dispensers/watertank/high
 	name = "high-capacity water tank"
-	desc = "A highly pressurized water tank made to hold gargantuan amounts of water."
+	desc = "Um tanque de água altamente pressurizado feito para conter quantidades gigantescas de água."
 	icon_state = "water_high" //I was gonna clean my room...
 	tank_volume = 3000
 
 /obj/structure/reagent_dispensers/foamtank//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "firefighting foam tank"
-	desc = "A tank full of firefighting foam."
+	desc = "Um tanque cheio de espuma de combate a incêndios."
 	icon_state = "foam"
 	reagent_id = /datum/reagent/firefighting_foam
 	tank_volume = 500
@@ -254,7 +254,7 @@
 
 /obj/structure/reagent_dispensers/fueltank//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "fuel tank"
-	desc = "A tank full of industrial welding fuel. Do not consume."
+	desc = "Um tanque cheio de combustível de solda industrial. Não consuma."
 	icon_state = "fuel"
 	reagent_id = /datum/reagent/fuel
 	openable = TRUE
@@ -307,10 +307,10 @@
 	var/obj/item/weldingtool/refilling_welder = attacking_item
 	if(istype(refilling_welder) && !refilling_welder.welding)
 		if(refilling_welder.reagents.has_reagent(/datum/reagent/fuel, refilling_welder.max_fuel))
-			to_chat(user, span_warning("Your [refilling_welder.name] is already full!"))
+			to_chat(user, span_warning("Sua[refilling_welder.name]Já está cheio!"))
 			return
 		reagents.trans_to(refilling_welder, refilling_welder.max_fuel, transferred_by = user)
-		user.visible_message(span_notice("[user] refills [user.p_their()] [refilling_welder.name]."), span_notice("You refill [refilling_welder]."))
+		user.visible_message(span_notice("[user]Recheios.[user.p_their()] [refilling_welder.name]."), span_notice("Você enche.[refilling_welder]."))
 		playsound(src, 'sound/effects/refill.ogg', 50, TRUE)
 		refilling_welder.update_appearance()
 		return
@@ -318,25 +318,25 @@
 	var/obj/item/lighter/refilling_lighter = attacking_item
 	if(istype(refilling_lighter) && !refilling_lighter.lit)
 		if(refilling_lighter.reagents.has_reagent(/datum/reagent/fuel, refilling_lighter.maximum_fuel))
-			to_chat(user, span_warning("Your [refilling_lighter.name] is already full!"))
+			to_chat(user, span_warning("Sua[refilling_lighter.name]Já está cheio!"))
 			return
 		reagents.trans_to(refilling_lighter, refilling_lighter.maximum_fuel, transferred_by = user)
-		user.visible_message(span_notice("[user] refills [user.p_their()] [refilling_lighter.name]."), span_notice("You refill [refilling_lighter]."))
+		user.visible_message(span_notice("[user]Recheios.[user.p_their()] [refilling_lighter.name]."), span_notice("Você enche.[refilling_lighter]."))
 		playsound(src, 'sound/effects/refill.ogg', 25, TRUE)
 		return
 
 	if(!reagents.has_reagent(/datum/reagent/fuel))
-		to_chat(user, span_warning("[src] is out of fuel!"))
+		to_chat(user, span_warning("[src]Está sem combustível!"))
 		return
 	user.visible_message(
-		span_danger("[user] catastrophically fails at refilling [user.p_their()] [attacking_item.name]!"),
-		span_userdanger("That was stupid of you."))
+		span_danger("[user]catastróficamente falha em reabastecer[user.p_their()] [attacking_item.name]!"),
+		span_userdanger("Isso foi estúpido de sua parte."))
 	log_bomber(user, "detonated a", src, "via [attacking_item.name]")
 	boom()
 
 /obj/structure/reagent_dispensers/fueltank/large
 	name = "high capacity fuel tank"
-	desc = "A tank full of a high quantity of welding fuel. Keep away from open flames."
+	desc = "Um tanque cheio de combustível de solda. Fique longe de chamas abertas."
 	icon_state = "fuel_high"
 	tank_volume = 5000
 
@@ -356,7 +356,7 @@
 
 /obj/structure/reagent_dispensers/wall/peppertank
 	name = "pepper spray refiller"
-	desc = "Contains condensed capsaicin for use in law \"enforcement.\""
+	desc = "Contém capsaicina condensada para uso legal\"Força.\""
 	icon_state = "pepper"
 	reagent_id = /datum/reagent/consumable/condensedcapsaicin
 
@@ -365,13 +365,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 /obj/structure/reagent_dispensers/wall/peppertank/Initialize(mapload)
 	. = ..()
 	if(prob(1))
-		desc = "IT'S PEPPER TIME, BITCH!"
+		desc = "Está na hora, vadia!"
 	if(mapload)
 		find_and_mount_on_atom()
 
 /obj/structure/reagent_dispensers/water_cooler
 	name = "water cooler"
-	desc = "A machine that cools and dispenses liquids to drink. The 'hot' handle doesn't seem to do anything."
+	desc = "Uma máquina que esfria e dispensa líquidos para beber. O cabo \"Quente\" não parece fazer nada."
 	icon_state = "water_cooler"
 	anchored = TRUE
 	tank_volume = 200
@@ -421,16 +421,16 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 
 
 	if(user.combat_mode && our_jug)
-		balloon_alert(user, "removing jug...")
+		balloon_alert(user, "Removendo Jarro...")
 		if(!do_after(user, COOLER_JUG_EJECT_TIME, src))
 			return
 		eject_jug(user)
 		return
 
 	if(!paper_cups)
-		to_chat(user, span_warning("There aren't any cups left!"))
+		to_chat(user, span_warning("Não sobrou nenhum copo!"))
 		return
-	user.visible_message(span_notice("[user] takes a cup from [src]."), span_notice("You take a paper cup from [src]."))
+	user.visible_message(span_notice("[user]Pega uma xícara de[src]."), span_notice("Você pega um copo de papel de[src]."))
 	var/obj/item/reagent_containers/cup/glass/sillycup/new_cup = new(get_turf(src))
 	user.put_in_hands(new_cup)
 	paper_cups--
@@ -490,11 +490,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 
 /obj/structure/reagent_dispensers/water_cooler/attack_hand_secondary(mob/user, modifiers)
 	if(tipped)
-		balloon_alert(user, "it's already tipped!")
+		balloon_alert(user, "Já está dobrado!")
 		return
 
 	if(anchored)
-		balloon_alert(user, "it's anchored!")
+		balloon_alert(user, "Está ancorado!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	if(!do_after(user, 1.5 SECONDS, src))
@@ -507,11 +507,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 		return
 
 	if(tipped)
-		balloon_alert(user, "it's tipped!")
+		balloon_alert(user, "Está dobrado!")
 		return
 
 	var/obj/item/reagent_containers/cooler_jug/new_jug = tool
-	balloon_alert(user, "replacing jug...")
+	balloon_alert(user, "Substituindo Jarro...")
 	if(!do_after(user, COOLER_JUG_EJECT_TIME, src))
 		return
 
@@ -531,7 +531,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 	if(QDELETED(src))
 		return
 	if(reagents.total_volume)
-		visible_message(span_danger("\The [src] flips on it's side and spills everywhere!"))
+		visible_message(span_danger("\The [src]Vira de lado e derrama em todo lugar!"))
 		chem_splash(get_turf(src), null, 2 + floor((reagents.total_volume) / 1000), list(reagents))
 	eject_jug(throw_away = TRUE)
 	playsound(src, 'sound/effects/glass/glassbash.ogg', 100)
@@ -601,12 +601,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 ///Punch cooler. Starts full of healing juice. In case anyone wants to map one somewhere as a healing station.
 /obj/structure/reagent_dispensers/water_cooler/punch_cooler
 	name = "punch cooler"
-	desc = "A machine that dispenses fruit punch to drink. This juice is unbearably sweet, and can only be safely consumed in the presence of a liquid cooler. Engage with caution."
+	desc = "Uma máquina que dispensa ponche de frutas para beber. Este suco é insuportavelmente doce, e só pode ser consumido com segurança na presença de um líquido refrigerador. Com cuidado."
 	reagent_id = /datum/reagent/consumable/fruit_punch
 
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"
-	desc = "Beer is liquid bread, it's good for you..."
+	desc = "Cerveja é pão líquido, é bom para você..."
 	icon_state = "beer"
 	reagent_id = /datum/reagent/consumable/ethanol/beer
 	openable = TRUE
@@ -618,7 +618,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 
 /obj/structure/reagent_dispensers/wall/virusfood
 	name = "virus food dispenser"
-	desc = "A dispenser of low-potency virus mutagenic."
+	desc = "Um distribuidor de vírus de baixa potência mutagênico."
 	icon_state = "virus_food"
 	reagent_id = /datum/reagent/consumable/virus_food
 
@@ -631,14 +631,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/virusfood, 30
 
 /obj/structure/reagent_dispensers/cooking_oil
 	name = "vat of cooking oil"
-	desc = "A huge metal vat with a tap on the front. Filled with cooking oil for use in frying food."
+	desc = "Um enorme tanque de metal com uma torneira na frente. Cheio de óleo de cozinha para uso em fritar comida."
 	icon_state = "vat"
 	reagent_id = /datum/reagent/consumable/nutriment/fat/oil
 	openable = TRUE
 
 /obj/structure/reagent_dispensers/servingdish
 	name = "serving dish"
-	desc = "A dish full of food slop for your bowl."
+	desc = "Um prato cheio de comida para sua tigela."
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "serving"
 	reagent_id = /datum/reagent/consumable/nutraslop
@@ -647,7 +647,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/virusfood, 30
 	name = "stationary water tank"
 	anchored = TRUE
 	icon_state = "water_stationary" //SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
-	desc = "A stationary, plumbed, water tank."
+	desc = "Um tanque de água estacionário."
 	can_be_tanked = FALSE
 
 /obj/structure/reagent_dispensers/plumbed/Initialize(mapload)
@@ -684,7 +684,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/virusfood, 30
 /obj/structure/reagent_dispensers/plumbed/fuel
 	name = "stationary fuel tank"
 	icon_state = "fuel_stationary"
-	desc = "A stationary, plumbed, fuel tank."
+	desc = "Um tanque de combustível estacionário."
 	reagent_id = /datum/reagent/fuel
 	accepts_rig = TRUE
 

@@ -4,7 +4,7 @@
 	var/force_looping = FALSE
 
 /datum/smite/rod/configure(client/user)
-	var/loop_input = tgui_alert(usr,"Would you like this rod to force-loop across space z-levels?", "Loopy McLoopface", list("Yes", "No"))
+	var/loop_input = tgui_alert(usr,"Você gostaria que esta haste force-loop através dos níveis Z do espaço?", "Loopy McLoopface", list("Yes", "No"))
 
 	force_looping = (loop_input == "Yes")
 

@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/toy/foamforce_implant
 	name = "Pop-up Donksoft Blaster"
-	desc = "A spring primed Donksoft blaster that pops out of a panel on your arm. You wonder if having a high tension spring installed in your arm was a good idea."
+	desc = "Uma mola donksoft que sai de um painel no seu braço. Você se pergunta se ter uma mola de alta tensão instalada em seu braço foi uma boa ideia."
 	icon = 'modular_zubbers/icons/obj/guns/popupdart_toy.dmi' //modified Derringer sprite by the wonderful Niim. Further modified by myself/MrGloopy.
 	icon_state = "popupdart_toy"
 	force = 0
@@ -21,7 +21,7 @@
 			jammed = FALSE
 			unjam_chance = initial(unjam_chance)
 		else
-			balloon_alert(user, "jammed!")
+			balloon_alert(user, "Encravado!")
 			playsound(user,'sound/items/weapons/jammed.ogg', 75, TRUE)
 			return FALSE
 	return ..()
@@ -40,7 +40,7 @@
 	if (bolt_locked)
 		drop_bolt(user)
 		return
-	balloon_alert(user, "plunger deprimed")
+	balloon_alert(user, "Desentupido")
 	playsound(src, rack_sound, rack_sound_volume, rack_sound_vary)
 	handle_chamber(empty_chamber =  FALSE, from_firing = FALSE, chamber_next_round = FALSE)
 	bolt_locked = TRUE
@@ -50,7 +50,7 @@
 	if(!do_after(user, draw_time, target = src))
 		return
 	playsound(src, bolt_drop_sound, bolt_drop_sound_volume, FALSE)
-	balloon_alert(user, "plunger drawn")
+	balloon_alert(user, "êmbolo puxado")
 	chamber_round()
 	bolt_locked = FALSE
 	update_appearance()

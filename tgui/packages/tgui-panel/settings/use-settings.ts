@@ -21,10 +21,10 @@ export function useSettings() {
     async function fetchSettings(): Promise<void> {
       try {
         const storedSettings = await storage.get('panel-settings');
-        console.log('Loaded panel settings from storage:', storedSettings);
+        console.log('Configurações do painel carregado do armazenamento:', storedSettings);
         startSettingsMigration(storedSettings);
       } catch (error) {
-        console.error('Failed to load panel settings:', error);
+        console.error('Falha ao carregar as configurações do painel:', error);
       }
     }
 
@@ -35,7 +35,7 @@ export function useSettings() {
 
   function storeSettings(update: SettingsState): void {
     setSettings(update);
-    console.log('Updated panel settings:', update);
+    console.log('Configurações atualizadas do painel:', update);
     storage.set('panel-settings', { ...update, ...highlights });
   }
 

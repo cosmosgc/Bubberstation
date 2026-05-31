@@ -6,7 +6,7 @@
  */
 /obj/vehicle/sealed/car/vim
 	name = "\improper Vim"
-	desc = "A miniature exosuit from Nanotrasen, developed to let the irreplaceable station pets live a little longer."
+	desc = "Um exosuit miniatura de Nanotrasen, desenvolvido para deixar os animais insubstituíveis da estação viver um pouco mais."
 	icon_state = "vim"
 	max_integrity = 50
 	armor_type = /datum/armor/car_vim
@@ -34,20 +34,16 @@
 
 /obj/vehicle/sealed/car/vim/Initialize(mapload)
 	. = ..()
-	AddComponent( \
-		/datum/component/shell, \
-		unremovable_circuit_components = list(new /obj/item/circuit_component/vim), \
-		capacity = SHELL_CAPACITY_SMALL, \
-	)
+	AddComponent( 		/datum/component/shell, 		unremovable_circuit_components = list(new /obj/item/circuit_component/vim), 		capacity = SHELL_CAPACITY_SMALL, 	)
 
 /obj/vehicle/sealed/car/vim/examine(mob/user)
 	. = ..()
-	. += span_notice("[src] can be repaired with a welder.")
+	. += span_notice("[src]pode ser consertado com um soldador.")
 
 /obj/vehicle/sealed/car/vim/atom_destruction(damage_flag)
 	new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
 	do_sparks(5, TRUE, src)
-	visible_message(span_bolddanger("[src] blows apart!"))
+	visible_message(span_bolddanger("[src]Vai pelos são!"))
 	return ..()
 
 /obj/vehicle/sealed/car/vim/mob_try_enter(mob/entering)
@@ -55,7 +51,7 @@
 		return FALSE
 	var/mob/living/animal_or_basic = entering
 	if(animal_or_basic.mob_size > maximum_mob_size)
-		entering.balloon_alert(entering, "can't fit inside!")
+		entering.balloon_alert(entering, "Não cabem dentro!")
 		return FALSE
 	return ..()
 
@@ -72,13 +68,13 @@
 	if(!W.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return
 	user.balloon_alert_to_viewers("started welding [src]", "started repairing [src]")
-	audible_message(span_hear("You hear welding."))
+	audible_message(span_hear("Você ouve solda."))
 	var/did_the_thing
 	while(atom_integrity < max_integrity)
 		if(W.use_tool(src, user, 2.5 SECONDS, volume=50))
 			did_the_thing = TRUE
 			atom_integrity += min(VIM_HEAL_AMOUNT, (max_integrity - atom_integrity))
-			audible_message(span_hear("You hear welding."))
+			audible_message(span_hear("Você ouve solda."))
 		else
 			break
 	if(did_the_thing)
@@ -119,7 +115,7 @@
 
 /obj/item/circuit_component/vim
 	display_name = "Vim"
-	desc = "A miniature exosuit from Nanotrasen, developed to let the irreplaceable station pets live a little longer."
+	desc = "Um exosuit miniatura de Nanotrasen, desenvolvido para deixar os animais insubstituíveis da estação viver um pouco mais."
 
 	/// Sent when the mech chimes.
 	var/datum/port/output/chime

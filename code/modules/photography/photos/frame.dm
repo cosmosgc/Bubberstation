@@ -2,7 +2,7 @@
 
 /obj/item/wallframe/picture
 	name = "picture frame"
-	desc = "The perfect showcase for your favorite deathtrap memories."
+	desc = "O show perfeito para suas memórias favoritas."
 	icon = 'icons/obj/signs.dmi'
 	custom_materials = list(/datum/material/wood =SHEET_MATERIAL_AMOUNT)
 	resistance_flags = FLAMMABLE
@@ -20,7 +20,7 @@
 			displayed = I
 			update_appearance()
 		else
-			to_chat(user, span_warning("\The [src] already contains a photo."))
+			to_chat(user, span_warning("\The [src]Já contém uma foto."))
 	..()
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
@@ -31,7 +31,7 @@
 	if(contents.len)
 		var/obj/item/I = pick(contents)
 		user.put_in_hands(I)
-		to_chat(user, span_notice("You carefully remove the photo from \the [src]."))
+		to_chat(user, span_notice("Você cuidadosamente remover a foto de\the [src]."))
 		displayed = null
 		update_appearance()
 	return ..()
@@ -63,7 +63,7 @@
 
 /obj/structure/sign/picture_frame
 	name = "picture frame"
-	desc = "Every time you look it makes you laugh."
+	desc = "Toda vez que você olha faz você rir."
 	icon = 'icons/obj/signs.dmi'
 	icon_state = "frame-overlay"
 	custom_materials = list(/datum/material/wood =SHEET_MATERIAL_AMOUNT)
@@ -121,10 +121,10 @@
 /obj/structure/sign/picture_frame/proc/try_deconstruct(mob/living/user, obj/item/tool)
 	if(!can_decon)
 		return FALSE
-	to_chat(user, span_notice("You start unsecuring [name]..."))
+	to_chat(user, span_notice("Você começa a se proteger.[name]..."))
 	if(tool.use_tool(src, user, 3 SECONDS, volume=50))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
-		to_chat(user, span_notice("You unsecure [name]."))
+		to_chat(user, span_notice("Você não está seguro.[name]."))
 		deconstruct()
 	return TRUE
 
@@ -139,7 +139,7 @@
 		return FALSE
 	tool.play_tool_sound(src)
 	framed.forceMove(drop_location())
-	user.visible_message(span_warning("[user] cuts away [framed] from [src]!"))
+	user.visible_message(span_warning("[user]Corte-os.[framed]De[src]!"))
 	set_and_save_framed(null)
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -149,7 +149,7 @@
 
 	if(istype(I, /obj/item/photo))
 		if(framed)
-			to_chat(user, span_warning("\The [src] already contains a photo."))
+			to_chat(user, span_warning("\The [src]Já contém uma foto."))
 			return TRUE
 		var/obj/item/photo/P = I
 		if(!user.transferItemToLoc(P, src))
@@ -183,7 +183,7 @@
 
 /obj/structure/sign/picture_frame/showroom
 	name = "distinguished crew display"
-	desc = "A photo frame to commemorate crewmembers that distinguished themselves in the line of duty. WARNING: unauthorized tampering will be severely punished."
+	desc = "Uma moldura para comemorar os tripulantes que se distinguiram no cumprimento do dever. ATENÇÃO: adulteração não autorizada será severamente punida."
 	can_decon = FALSE
 
 /// This used to be a plaque portrait of a monkey. Now it's been revamped into something more.
@@ -201,19 +201,18 @@
 		if(1) // Deempisi
 			name = "\improper Mr. Deempisi portrait"
 			icon_state = "frame-monkey"
-			desc = "Under the portrait a plaque reads: 'While the meat grinder may not have spared you, fear not. Not one part of you has gone to waste... You were delicious.'"
+			desc = "Sob o retrato uma placa diz: 'Enquanto o moedor de carne pode não ter poupado você, não tema. Nenhuma parte de você foi desperdiçada... Você estava delicioso."
 		if(2) // A fruit
 			name = "picture of a fruit"
 			icon_state = "frame-fruit"
-			desc = "<i>Ceci n'est pas une orange.</i>"
+			desc = "<i>Ceci n'est pas une laranja.</i>"
 		if(3) // Rat
 			name = "\improper Tom portrait"
-			desc = "Jerry the cat is still not amused."
+			desc = "Jerry, o gato, ainda não está divertido."
 			icon_state = "frame-rat"
 		if(4) // Ratvar
 			name = "portrait of the imprisoned god"
-			desc = "Under the portrait a plaque reads: 'In loving memory of Ratvar, ancient powerful entity and rival of Nar'Sie, \
-				ultimately struck down by NT bluespace artillery at the hands of Outpost 17 crew. Rust in peace.'" // common core lore.
+			desc = "Sob o retrato, uma placa diz:\"Em memória amorosa de Ratvar, antiga entidade poderosa e rival de Nar'Sie, em última análise atingido pela artilharia do espaço azul NT nas mãos da tripulação Outpost 17. Rust em paz." // common core lore.
 			icon_state = "frame-ratvar"
 	portrait_name = name
 	portrait_state = icon_state
@@ -236,14 +235,14 @@
 /obj/structure/sign/picture_frame/portrait/update_desc(updates)
 	. = ..()
 	if(framed)
-		desc = "Every time you look it makes you laugh."
+		desc = "Toda vez que você olha faz você rir."
 	else
 		desc = portrait_desc
 
 /obj/structure/sign/picture_frame/portrait/examine_more(mob/user)
 	. = ..()
 	if(!framed)
-		. += span_notice("The frame and the picture are glued together, but you guess you could slip a photo between the two.")
+		. += span_notice("O quadro e a foto estão colados, mas você acha que poderia colocar uma foto entre os dois.")
 
 //persistent frames, make sure the same ID doesn't appear more than once per map
 /obj/structure/sign/picture_frame/showroom/one

@@ -1,7 +1,7 @@
 /obj/item/camera
 	name = "camera"
 	icon = 'icons/obj/art/camera.dmi'
-	desc = "A polaroid camera."
+	desc = "Uma câmera polaróide."
 	icon_state = "camera"
 	base_icon_state = "camera"
 	inhand_icon_state = "camera"
@@ -94,14 +94,14 @@
 
 /obj/item/camera/examine(mob/user)
 	. = ..()
-	. += span_notice("It has [pictures_left] photos left.")
-	. += span_notice("Alt-click to change its focusing, allowing you to set how big of an area it will capture.")
-	. += span_notice("The present dimensions of the picture are [EXAMINE_HINT("[APERTURE_TO_METERS(picture_size_x)]x[APERTURE_TO_METERS(picture_size_y)]")]")
+	. += span_notice("Tem.[pictures_left]Faltam fotos.")
+	. += span_notice("Alt-clique para mudar seu foco, permitindo definir o tamanho de uma área que ele capturará.")
+	. += span_notice("As dimensões atuais da imagem são[EXAMINE_HINT("[APERTURE_TO_METERS(picture_size_x)]x[APERTURE_TO_METERS(picture_size_y)]")]")
 
 	if(isnull(disk))
-		. += span_notice("It has a slot for a holorecord disk.")
+		. += span_notice("Tem um espaço para um disco hologravador.")
 	else
-		. += span_notice("It has \an [disk.name] inserted.")
+		. += span_notice("Tem.\an [disk.name]inserido.")
 
 /obj/item/camera/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -121,7 +121,7 @@
 
 	if(user)
 		if(loc != user)
-			to_chat(user, span_warning("You must be holding the camera to continue!"))
+			to_chat(user, span_warning("Você deve estar segurando a câmera para continuar!"))
 			return FALSE
 		desired_x = tgui_input_number(user, "Set camera half width Aperture", "Zoom", picture_size_x, CAMERA_PICTURE_SIZE_HARD_LIMIT, 2)
 		if(!desired_x || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH|ALLOW_PAI) || loc != user)
@@ -134,7 +134,7 @@
 	picture_size_y = clamp(desired_y, 2, CAMERA_PICTURE_SIZE_HARD_LIMIT)
 
 	if(user)
-		to_chat(user, span_notice("The dimensions of the picture will be [EXAMINE_HINT("[APERTURE_TO_METERS(picture_size_x)]x[APERTURE_TO_METERS(picture_size_y)]")]"))
+		to_chat(user, span_notice("As dimensões da imagem serão[EXAMINE_HINT("[APERTURE_TO_METERS(picture_size_x)]x[APERTURE_TO_METERS(picture_size_y)]")]"))
 
 	return TRUE
 /// Resets flash to be used again
@@ -192,12 +192,12 @@
 
 	if(!on)
 		if(user)
-			user.balloon_alert(user, "flash still charging!")
+			user.balloon_alert(user, "O flash ainda está carregando!")
 		return
 
 	if(blending)
 		if(user)
-			user.balloon_alert(user, "image still blending!")
+			user.balloon_alert(user, "imagem ainda se misturando!")
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(capture_image), target, user)
@@ -322,16 +322,16 @@
 	var/obj/item/photo/new_photo
 	if(user)
 		if(!pictures_left)
-			to_chat(user, span_warning("No film left."))
+			to_chat(user, span_warning("Não sobrou nenhum filme."))
 			return
 
 		new_photo = new(src, picture)
 
-		to_chat(user, span_notice("[pictures_left] photos left."))
+		to_chat(user, span_notice("[pictures_left]Faltam fotos."))
 
 		var/name_customized = FALSE
 		if(can_customise)
-			var/customise = tgui_alert(user, "Do you want to customize the photo?", "Customization", list("Yes", "No"))
+			var/customise = tgui_alert(user, "Quer personalizar a foto?", "Customization", list("Yes", "No"))
 			if(customise == "Yes")
 				var/name1 = tgui_input_text(user, "Set a name for this photo, or leave blank.", "Name", max_length = 32)
 				var/desc1 = tgui_input_text(user, "Set a description to add to photo, or leave blank.", "Description", max_length = 128)
@@ -350,12 +350,12 @@
 		var/mob/living/holder = loc
 
 		if(!pictures_left)
-			to_chat(holder, span_warning("No film left."))
+			to_chat(holder, span_warning("Não sobrou nenhum filme."))
 			return
 
 		new_photo = new(get_turf(src), picture)
 
-		to_chat(holder, span_notice("[pictures_left] photos left."))
+		to_chat(holder, span_notice("[pictures_left]Faltam fotos."))
 
 	new_photo.set_picture(picture, TRUE, TRUE)
 	if(CONFIG_GET(flag/picture_logging_camera))
@@ -378,7 +378,7 @@
 /obj/item/camera/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/camera_film))
 		if(pictures_left)
-			balloon_alert(user, "isn't empty!")
+			balloon_alert(user, "Não está vazio!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.temporarilyRemoveItemFromInventory(tool))
 			return ITEM_INTERACT_BLOCKING
@@ -389,13 +389,13 @@
 
 	if(istype(tool, /obj/item/disk/holodisk))
 		if(!user.transferItemToLoc(tool, src))
-			balloon_alert(user, "stuck in hand!")
+			balloon_alert(user, "Preso na mão!")
 			return TRUE
 		if(disk)
 			user.put_in_hands(disk)
-			balloon_alert(user, "disks swapped!")
+			balloon_alert(user, "Discos trocados!")
 		else
-			balloon_alert(user, "disk inserted!")
+			balloon_alert(user, "Disco inserido!")
 		playsound(src, 'sound/machines/card_slide.ogg', 50)
 		disk = tool
 		return ITEM_INTERACT_SUCCESS
@@ -408,7 +408,7 @@
 /obj/item/camera/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(disk)
 		if(!ismob(interacting_with))
-			to_chat(user, span_warning("Invalid holodisk target."))
+			to_chat(user, span_warning("Alvo holodisk inválido."))
 			return ITEM_INTERACT_BLOCKING
 		if(disk.record)
 			QDEL_NULL(disk.record)

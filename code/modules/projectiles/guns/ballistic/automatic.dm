@@ -16,7 +16,7 @@
 
 /obj/item/gun/ballistic/automatic/proto
 	name = "\improper Nanotrasen Saber SMG"
-	desc = "A prototype full-auto 9mm submachine gun, designated 'SABR'. Has a threaded barrel for suppressors."
+	desc = "Um protótipo de uma submetralhadora de 9mm automática, designado \"SABR\". Tem um barril roscado para supressores."
 	icon_state = "saber"
 	burst_size = 1
 	actions_types = list()
@@ -36,7 +36,7 @@
 
 /obj/item/gun/ballistic/automatic/c20r
 	name = "\improper C-20r SMG"
-	desc = "A bullpup three-round burst .45 SMG, designated 'C-20r'. Has a 'Scarborough Arms - Per falcis, per pravitas' buttstamp."
+	desc = "Uma explosão de três balas, SMG 45, designada \"C-20r.\"Tem...\"Scarborough Arms - Per falcis, per pravitas bumbum."
 	icon_state = "c20r"
 	inhand_icon_state = "c20r"
 	selector_switch_icon = TRUE
@@ -65,11 +65,7 @@
 
 /obj/item/gun/ballistic/automatic/wt550
 	name = "\improper WT-550 Autorifle"
-	desc = "Recalled by Nanotrasen due to public backlash around heat distribution resulting in unintended discombobulation. \
-		This outcry was fabricated through various Syndicate-backed misinformation operations to force Nanotrasen to abandon \
-		its ballistics weapon program, cornering them into the energy weapons market. Most often found today in the hands of pirates, \
-		underfunded security personnel, cargo technicians, theoretical physicists, and gang bangers out on the rim. \
-		Light-weight and fully automatic. Uses 4.6x30mm rounds."
+	desc = "Relembrado por Nanotrasen devido à reação pública em torno da distribuição de calor resultando em desbobulação não intencional. Este clamor foi fabricado através de várias operações de desinformação apoiadas pelo Sindicato para forçar Nanotrasen a abandonar seu programa de armas balísticas, encurralando-os no mercado de armas de energia. Muitas vezes encontrado hoje nas mãos de piratas, pessoal de segurança subfinanciado, técnicos de carga, físicos teóricos, e bandidos de gangues na borda. Peso leve e totalmente automático. Usa balas 4,6x30mm."
 	icon_state = "wt550"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = "arg"
@@ -91,8 +87,7 @@
 
 /obj/item/gun/ballistic/automatic/smartgun
 	name = "\improper Abielle Smart-SMG"
-	desc = "An old experiment in smart-weapon technology that guides bullets towards the target the gun was aimed at when fired. \
-		While the tracking functions worked fine, the gun is prone to insanely wide spread thanks to it's practically non-existant barrel."
+	desc = "Um velho experimento em tecnologia de armas inteligentes que guia balas em direção ao alvo que a arma foi apontada quando disparada. Enquanto as funções de rastreamento funcionavam bem, a arma é propensa a espalhar-se loucamente graças ao barril praticamente não existente."
 	icon_state = "smartgun"
 	inhand_icon_state = "smartgun"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/smartgun
@@ -119,7 +114,7 @@
 
 /obj/item/gun/ballistic/automatic/mini_uzi
 	name = "\improper Type U3 Uzi"
-	desc = "A lightweight, burst-fire submachine gun, for when you really want someone dead. Uses 9mm rounds."
+	desc = "Uma metralhadora leve, para quando realmente quer alguém morto. Usa balas de 9mm."
 	icon_state = "miniuzi"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/uzim9mm
 	burst_size = 2
@@ -134,14 +129,14 @@
  */
 /obj/item/gun/ballistic/automatic/mini_uzi/chimpgun
 	name = "\improper MONK-10"
-	desc = "Developed by Syndicate monkeys, for syndicate Monkeys. Despite the name, this weapon resembles an Uzi significantly more than a MAC-10. Uses 9mm rounds. There's a label on the other side of the gun that says \"Do what comes natural.\""
+	desc = "Desenvolvido por macacos do Sindicato, para o sindicato Macacos. Apesar do nome, esta arma se parece com uma Uzi significativamente mais do que uma MAC-10. Usa balas de 9mm. Há uma etiqueta do outro lado da arma que diz\"Faça o que é natural.\""
 	projectile_damage_multiplier = 0.4
 	projectile_wound_bonus = -25
 	pin = /obj/item/firing_pin/monkey
 
 /obj/item/gun/ballistic/automatic/m90
 	name = "\improper M-90gl Carbine"
-	desc = "A three-round burst .223 toploading carbine, designated 'M-90gl'. Has an attached underbarrel grenade launcher."
+	desc = "Uma explosão de .223 com carga máxima, chamada M-90gl. Tem um lançador de granadas."
 	desc_controls = "Right-click to use grenade launcher."
 	icon_state = "m90"
 	w_class = WEIGHT_CLASS_BULKY
@@ -190,7 +185,7 @@
 
 /obj/item/gun/ballistic/automatic/tommygun
 	name = "\improper Thompson SMG"
-	desc = "Based on the classic 'Chicago Typewriter'."
+	desc = "Baseado no clássico \"Chicago Máquina de escrever\"."
 	icon_state = "tommygun"
 	inhand_icon_state = "shotgun"
 	selector_switch_icon = TRUE
@@ -217,7 +212,7 @@
  */
 /obj/item/gun/ballistic/automatic/tommygun/chimpgun
 	name = "\improper Typewriter"
-	desc = "It was the best of times, it was the BLURST of times!? You stupid monkeys!"
+	desc = "Foi o melhor dos tempos, foi o BLURST dos tempos!? Seus macacos estúpidos!"
 	burst_delay = 2
 	rof = 0.2 SECONDS
 	projectile_damage_multiplier = 0.4
@@ -226,7 +221,7 @@
 
 /obj/item/gun/ballistic/automatic/ar
 	name = "\improper NT-ARG 'Boarder'"
-	desc = "A robust assault rifle used by Nanotrasen fighting forces."
+	desc = "Um rifle de assalto robusto usado pelas forças de combate Nanotrasen."
 	icon_state = "arg"
 	inhand_icon_state = "arg"
 	slot_flags = 0
@@ -239,7 +234,7 @@
 
 /obj/item/gun/ballistic/automatic/l6_saw
 	name = "\improper L6 SAW"
-	desc = "A heavily modified 7mm light machine gun, designated 'L6 SAW'. Has 'Aussec Armoury - 2531' engraved on the receiver below the designation."
+	desc = "Uma metralhadora de 7mm altamente modificada, designada\"L6 SAW\". Tem 'Aussec Armoury - 2531' gravado no receptor abaixo da designação."
 	icon_state = "l6"
 	inhand_icon_state = "l6closedmag"
 	base_icon_state = "l6"
@@ -274,12 +269,12 @@
 	. = ..()
 	. += "<b>alt + click</b> to [cover_open ? "close" : "open"] the dust cover."
 	if(cover_open && magazine)
-		. += span_notice("It seems like you could use an <b>empty hand</b> to remove the magazine.")
+		. += span_notice("Parece que você poderia usar um<b>Mão vazia</b>Para remover uma revista.")
 
 
 /obj/item/gun/ballistic/automatic/l6_saw/click_alt(mob/user)
 	cover_open = !cover_open
-	balloon_alert(user, "cover [cover_open ? "opened" : "closed"]")
+	balloon_alert(user, "Capa.[cover_open ? "opened" : "closed"]")
 	playsound(src, 'sound/items/weapons/gun/l6/l6_door.ogg', 60, TRUE)
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
@@ -295,7 +290,7 @@
 
 /obj/item/gun/ballistic/automatic/l6_saw/try_fire_gun(atom/target, mob/living/user, params)
 	if(cover_open)
-		balloon_alert(user, "close the cover!")
+		balloon_alert(user, "Feche a tampa!")
 		return FALSE
 
 	. = ..()
@@ -309,13 +304,13 @@
 		..()
 		return
 	if (!cover_open)
-		balloon_alert(user, "open the cover!")
+		balloon_alert(user, "Abra a tampa!")
 		return
 	..()
 
 /obj/item/gun/ballistic/automatic/l6_saw/attackby(obj/item/A, mob/user, list/modifiers, list/attack_modifiers)
 	if(!cover_open && istype(A, accepted_magazine_type))
-		balloon_alert(user, "open the cover!")
+		balloon_alert(user, "Abra a tampa!")
 		return
 	..()
 
@@ -323,7 +318,7 @@
 
 /obj/item/gun/ballistic/automatic/laser
 	name = "laser rifle"
-	desc = "Though sometimes mocked for the relatively weak firepower of their energy weapons, the logistic miracle of rechargeable ammunition has given Nanotrasen a decisive edge over many a foe."
+	desc = "Embora às vezes zombou do poder de fogo relativamente fraco de suas armas de energia, o milagre logístico da munição recarregável deu a Nanotrasen uma vantagem decisiva sobre muitos inimigos."
 	icon_state = "oldrifle"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = "arg"
@@ -341,9 +336,7 @@
 
 /obj/item/gun/ballistic/automatic/battle_rifle
 	name = "\improper NT BR-38 battle rifle"
-	desc = "Nanotrasen's latest prototype .38 Special longarm, found exclusively in the hands of their private security teams. \
-		Technically a pistol-caliber carbine, despite the name and its use as a designated marksman rifle. Acceleration technology \
-		enables improved ballistic performance, but necessitates maintenance."
+	desc = "O mais recente protótipo de Nanotrasen, calibre 38, encontrado exclusivamente nas mãos de suas equipes de segurança privadas. Tecnicamente uma carabina calibre pistola, apesar do nome e seu uso como um rifle de atirador designado. Tecnologia de aceleração permite melhor desempenho balístico, mas requer manutenção."
 	icon = 'icons/obj/weapons/guns/wide_guns.dmi'
 	icon_state = "battle_rifle"
 	inhand_icon_state = "battle_rifle"
@@ -391,21 +384,7 @@
 /obj/item/gun/ballistic/automatic/battle_rifle/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/scope, range_modifier = 2)
-	AddElement(/datum/element/examine_lore, \
-		lore = "The BR-38 is Nanotrasen's latest foray into entirely in-house, standard-issue-ready, accelerator-assisted ballistic firearms.<br>\
-		<br>\
-		The acceleration rail built into the barrel assembly boosts fired projectiles to higher velocities than unassisted bullets, \
-		allowing even less powerful cartridges, such as the venerable .38 Special, to have improved ballistic performance and stopping power. \
-		Even though the chambering makes this more of a pistol-caliber carbine than a battle rifle, countless arguments in both the marketing office \
-		and the corporate boardroom about the name meant that something had to give; in this case, the slightly misleading designation.<br>\
-		<br>\
-		It's hard to cover up everything about its troubled development, though.<br>\
-		<br>\
-		In a sour twist of irony for Nanotrasen's historical issues with ballistics-based security weapons, the BR-38 has one significant flaw. \
-		It is possible for the weapons system to suffer from unintended discombulations due to closed heat distribution systems, should the weapon be tampered with. \
-		Nanotrasen's weapons R&D teams are still working on this issue, while also trying to work out why the weapon's onboard computation systems \
-		suffer from so many calculation errors, before moving onto a full commercial rollout." \
-	)
+	AddElement(/datum/element/examine_lore, 		lore = "The BR-38 is Nanotrasen's latest foray into entirely in-house, standard-issue-ready, accelerator-assisted ballistic firearms.<br>		<br>		The acceleration rail built into the barrel assembly boosts fired projectiles to higher velocities than unassisted bullets, 		allowing even less powerful cartridges, such as the venerable .38 Special, to have improved ballistic performance and stopping power. 		Even though the chambering makes this more of a pistol-caliber carbine than a battle rifle, countless arguments in both the marketing office 		and the corporate boardroom about the name meant that something had to give; in this case, the slightly misleading designation.<br>		<br>		It's hard to cover up everything about its troubled development, though.<br>		<br>		In a sour twist of irony for Nanotrasen's historical issues with ballistics-based security weapons, the BR-38 has one significant flaw. 		It is possible for the weapons system to suffer from unintended discombulations due to closed heat distribution systems, should the weapon be tampered with. 		Nanotrasen's weapons R&D teams are still working on this issue, while also trying to work out why the weapon's onboard computation systems 		suffer from so many calculation errors, before moving onto a full commercial rollout." 	)
 	register_context()
 
 /obj/item/gun/ballistic/automatic/battle_rifle/add_context(atom/source, list/context, obj/item/held_item, mob/user)
@@ -418,10 +397,10 @@
 /obj/item/gun/ballistic/automatic/battle_rifle/examine(mob/user)
 	. = ..()
 	if(shots_before_degradation)
-		. += span_notice("[src] can fire [shots_before_degradation] more times before risking system degradation.")
+		. += span_notice("[src]Pode atirar[shots_before_degradation]Mais vezes antes da degradação do sistema.")
 	else
-		. += span_notice("[src] is in the process of system degradation. It is currently at stage [degradation_stage] of [degradation_stage_max]. Use a multitool on [src] to recalibrate. Alternatively, insert it into a weapon recharger.")
-	. += span_notice("You can [EXAMINE_HINT("look closer")] to learn a little more about [src].")
+		. += span_notice("[src]está em processo de degradação do sistema. Está no momento.[degradation_stage]De[degradation_stage_max]Use uma multitool.[src]Para recalibrar. Alternativamente, insira em um carrinho de armas.")
+	. += span_notice("Você pode.[EXAMINE_HINT("look closer")]Para apresentar um poco mais sobre[src].")
 
 
 
@@ -453,12 +432,12 @@
 		return FALSE
 	obj_flags |= EMAGGED
 	projectile_damage_multiplier = emagged_projectile_damage_multiplier
-	balloon_alert(user, "heat distribution systems deactivated")
+	balloon_alert(user, "Sistemas de distribuição de calor desativados.")
 	return TRUE
 
 /obj/item/gun/ballistic/automatic/battle_rifle/multitool_act(mob/living/user, obj/item/tool)
 	if(!tool.use_tool(src, user, 20 SECONDS, volume = 50))
-		balloon_alert(user, "interrompido!")
+		balloon_alert(user, "Interrompido!")
 		return ITEM_INTERACT_BLOCKING
 
 	emp_malfunction = FALSE
@@ -467,7 +446,7 @@
 	projectile_speed_multiplier = initial(projectile_speed_multiplier)
 	fire_delay = initial(fire_delay)
 	update_appearance()
-	balloon_alert(user, "system reset")
+	balloon_alert(user, "Sistema reset")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/gun/ballistic/automatic/battle_rifle/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
@@ -520,7 +499,7 @@
 
 /// Proc to handle the countdown for our detonation
 /obj/item/gun/ballistic/automatic/battle_rifle/proc/perform_extreme_malfunction(mob/living/user)
-	balloon_alert(user, "gun is exploding, throw it!")
+	balloon_alert(user, "A arma está explodindo, jogue-a!")
 	explosion_timer = addtimer(CALLBACK(src, PROC_REF(fucking_explodes_you)), 5 SECONDS, (TIMER_UNIQUE|TIMER_OVERRIDE))
 	playsound(src, 'sound/items/weapons/gun/general/empty_alarm.ogg', 50, FALSE)
 
@@ -530,8 +509,4 @@
 
 //component for seclight attachment
 /obj/item/gun/ballistic/automatic/battle_rifle/add_seclight_point()
-	AddComponent(/datum/component/seclite_attachable, \
-		light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', \
-		light_overlay = "flight", \
-		overlay_x = 28, \
-		overlay_y = 12)
+	AddComponent(/datum/component/seclite_attachable, 		light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', 		light_overlay = "flight", 		overlay_x = 28, 		overlay_y = 12)

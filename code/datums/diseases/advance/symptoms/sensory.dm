@@ -7,7 +7,7 @@
 */
 /datum/symptom/mind_restoration
 	name = "Mind Restoration"
-	desc = "The virus strengthens the bonds between neurons, reducing the duration of any ailments of the mind."
+	desc = "O vírus fortalece os laços entre neurônios, reduzindo a duração de qualquer doença da mente."
 	stealth = -1
 	resistance = -2
 	stage_speed = 1
@@ -77,7 +77,7 @@
 
 /datum/symptom/sensory_restoration
 	name = "Sensory Restoration"
-	desc = "The virus stimulates the production and replacement of sensory tissues, causing the host to regenerate eyes and ears when damaged."
+	desc = "O vírus estimula a produção e substituição de tecidos sensoriais, fazendo o hospedeiro regenerar olhos e ouvidos quando danificado."
 	stealth = 0
 	resistance = 1
 	stage_speed = -2
@@ -109,11 +109,11 @@
 			eyes.apply_organ_damage(-2)
 			if(prob(20))
 				if(infected_mob.is_blind_from(EYE_DAMAGE))
-					to_chat(infected_mob, span_warning("Your vision slowly returns..."))
+					to_chat(infected_mob, span_warning("Sua visão lentamente retorna..."))
 					infected_mob.adjust_eye_blur(20 SECONDS)
 
 				else if(infected_mob.is_nearsighted_from(EYE_DAMAGE))
-					to_chat(infected_mob, span_warning("The blackness in your peripheral vision begins to fade."))
+					to_chat(infected_mob, span_warning("A escuridão em sua visão periférica começa a desaparecer."))
 					infected_mob.adjust_eye_blur(5 SECONDS)
 
 		else

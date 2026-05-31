@@ -3,7 +3,7 @@
 	name = "tourist bot"
 	maxHealth = 150
 	health = 150
-	desc = "I wonder what they'll order..."
+	desc = "Eu me pergunto o que eles vão pedir..."
 	gender = NEUTER
 
 	icon = 'icons/mob/simple/tourists.dmi'
@@ -117,7 +117,7 @@
 	else
 		order = attending_venue.order_food_line(wanted_item)
 
-	. += span_notice("Their order was: \"[order].\"")
+	. += span_notice("Uma ordem de tempos:\"[order].\"")
 
 /mob/living/basic/robot_customer/death()
 	new /obj/effect/gibspawner/robot(drop_location())

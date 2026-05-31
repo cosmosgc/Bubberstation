@@ -1,33 +1,11 @@
 /// Possible places/departments to inspect
-#define INSPECTION_LIST list( \
-	"Cargo", \
-	"Command", \
-	"Engineering", \
-	"Medical", \
-	"Science", \
-	"Service", \
-	"Security", \
-)
+#define INSPECTION_LIST list( 	"Cargo", 	"Command", 	"Engineering", 	"Medical", 	"Science", 	"Service", 	"Security", )
 
 /// List of possible decorative job titles for additional roleplay potential
-#define NRI_JOB_LIST list( \
-	"PSC Patrol Officer", \
-	"PSC Satellite-Patrol Officer", \
-	"PSC Yefreitor-Patrol Officer", \
-	"PSC Junior Patrol Officer", \
-	"PSC Government Investigator", \
-	"PSC Field Inspector", \
-	"PSC Counter-Truancy Officer", \
-)
+#define NRI_JOB_LIST list( 	"PSC Patrol Officer", 	"PSC Satellite-Patrol Officer", 	"PSC Yefreitor-Patrol Officer", 	"PSC Junior Patrol Officer", 	"PSC Government Investigator", 	"PSC Field Inspector", 	"PSC Counter-Truancy Officer", )
 
 /// List of possible decorative leader job titles for additional roleplay potential
-#define NRI_LEADER_JOB_LIST list( \
-	"PSC Lieutenant Officer", \
-	"PSC Sergeant Officer", \
-	"PSC Senior Patrol Officer", \
-	"PSC Lead Investigator", \
-	"PSC Lead Inspector", \
-)
+#define NRI_LEADER_JOB_LIST list( 	"PSC Lieutenant Officer", 	"PSC Sergeant Officer", 	"PSC Senior Patrol Officer", 	"PSC Lead Investigator", 	"PSC Lead Inspector", )
 
 /// Amount of items to "confiscate", lower amount
 #define CONFISCATE_LOWER 10
@@ -45,15 +23,8 @@ GLOBAL_VAR(first_officer)
 	ship_name_pool = "imperial_names"
 
 	threat_title = "Commonwealth Audit"
-	threat_content = "Greetings %STATION, this is the %SHIPNAME dispatch outpost. \
-	Due to recent Imperial regulatory violations, such as %RESULT and many other smaller issues, your station has been fined %PAYOFF credits. \
-	Inadequate imperial police activity is currently present in your sector, thus the failure to comply might instead result in a police patrol dispatch \
-	for second attempt negotiations, sector police presence reinforcement and close-up inspections. Pan Slavic Commonwealth's collegial secretary out."
-	arrival_announcement = "Regulation-identified vessel approaching. Vessel ID tag is %NUMBER1-%NUMBER2-%NUMBER3. \
-	Vessel Model: Potato Beetle, Flight ETA: three minutes minimal. Vessel is authorised by the international regulations to perform its duties. \
-	We're clear for close orbit. Friendly reminder not to measure the distance between the vessel and the destination location, nor install any tracking devices anywhere on board of the vessel or in its close vicinity, \
-	unless given permission to; not to approach it, unless given permission to; not to perform any aggressive actions, nor any preparations to do so, to the vessel or the commissioned crew, \
-	as all of this is grounds for preemptive self-defense procedures initiation, and might result in moral or structural damage, arrests, injury or possibly death. In case of any complaints, they are to be sent directly to your employers."
+	threat_content = "Greetings %STATION, this is the %SHIPNAME dispatch outpost. 	Due to recent Imperial regulatory violations, such as %RESULT and many other smaller issues, your station has been fined %PAYOFF credits. 	Inadequate imperial police activity is currently present in your sector, thus the failure to comply might instead result in a police patrol dispatch 	for second attempt negotiations, sector police presence reinforcement and close-up inspections. Pan Slavic Commonwealth's collegial secretary out."
+	arrival_announcement = "Regulation-identified vessel approaching. Vessel ID tag is %NUMBER1-%NUMBER2-%NUMBER3. 	Vessel Model: Potato Beetle, Flight ETA: three minutes minimal. Vessel is authorised by the international regulations to perform its duties. 	We're clear for close orbit. Friendly reminder not to measure the distance between the vessel and the destination location, nor install any tracking devices anywhere on board of the vessel or in its close vicinity, 	unless given permission to; not to approach it, unless given permission to; not to perform any aggressive actions, nor any preparations to do so, to the vessel or the commissioned crew, 	as all of this is grounds for preemptive self-defense procedures initiation, and might result in moral or structural damage, arrests, injury or possibly death. In case of any complaints, they are to be sent directly to your employers."
 	possible_answers = list("Submit to audit and pay the fine.", "Override the response system for an immediate police dispatch.")
 
 	response_received = "Should be it, thank you for cooperation. Pan-Slavic Commonwealth collegial secretary out."
@@ -85,8 +56,7 @@ GLOBAL_VAR(first_officer)
 		"inadequate support of the local producer",
 		"unregulated production of Gauss weaponry aboard this installation",
 		"SolFed-backed stationary military formation on the surface of Indecipheres",
-		"AUTOMATED REGULATORY VIOLATION DETECTION SYSTEM CRITICAL FAILURE. PLEASE CONTACT AND INFORM THE DISPATCHED AUTHORITIES TO RESOLVE THE ISSUE. \
-		ANY POSSIBLE INDENTURE HAS BEEN CLEARED. WE APOLOGIZE FOR THE INCONVENIENCE",
+		"AUTOMATED REGULATORY VIOLATION DETECTION SYSTEM CRITICAL FAILURE. PLEASE CONTACT AND INFORM THE DISPATCHED AUTHORITIES TO RESOLVE THE ISSUE. 		ANY POSSIBLE INDENTURE HAS BEEN CLEARED. WE APOLOGIZE FOR THE INCONVENIENCE",
 	)
 	var/final_result = pick(right_pick, wrong_pick)
 	var/built_threat_content = replacetext(threat_content, "%SHIPNAME", ship_name)
@@ -160,7 +130,7 @@ GLOBAL_VAR(first_officer)
 
 /obj/item/card/id/advanced/nri_police
 	name = "\improper Commonwealth police identification card"
-	desc = "A retro-looking card model modified to work with the modern identification systems."
+	desc = "Um modelo de cartão retro-olhar modificado para trabalhar com os modernos sistemas de identificação."
 	icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	icon_state = "card_nri_police"
 	assigned_icon_state = "assigned_nri_police"
@@ -179,15 +149,15 @@ GLOBAL_VAR(first_officer)
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider
 	name = "Pan-Slavic Raider sleeper"
-	desc = "Cozy. You get the feeling you aren't supposed to be here, though..."
-	prompt_name = "a Pan-Slavic Marine"
+	desc = "Aconchegante. Você tem a sensação de que não deveria estar aqui..."
+	prompt_name = "Um fuzileiro pan-eslavo."
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cryopod"
 	mob_species = /datum/species/human
 	faction = list(FACTION_RAIDER)
-	you_are_text = "You are a Pan-Slavic Commonwealth task force."
-	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
-	important_text = "Allowed races are Humans, Akula, Teshari and Synths. Follow your field officer's orders. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly."
+	you_are_text = "Você é uma força-tarefa da Comunidade Pan-eslava."
+	flavour_text = "A estação se recusou a pagar a multa por quebrar as regras imperiais, você está aqui para recuperar a dívida. Faça isso exigindo os fundos. Abordagem forçada é geralmente recomendada, mas não é o único método."
+	important_text = "Raças permitidas são Humanos, Akula, Teshari e Sintéticos. Siga as ordens do seu oficial de campo. Menção importante - enquanto você está listado como os piratas gamewise, você realmente não é lore-e-tudo-outro-wise. Representação adequada."
 	outfit = /datum/outfit/pirate/nri
 	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/synthetic, /datum/species/teshari)
 	random_appearance = FALSE
@@ -217,11 +187,11 @@ GLOBAL_VAR(first_officer)
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer
 	name = "Pan-Slavic Officer sleeper"
-	prompt_name = "a Pan-Slavic Field Officer"
+	prompt_name = "Um oficial de campo Pan-eslavo."
 	mob_name = "Pan-Slavic Commonwealth police patrol's field officer"
 	outfit = /datum/outfit/pirate/nri/officer
-	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, as a consequence you are here to perform a prolonged inspection."
-	important_text = "Allowed races are Humans, Akula, Teshari and Synths. Roleplay accordingly. There is an important document in your pocket I'd advise you to read and keep safe."
+	flavour_text = "A estação se recusou a pagar a multa por quebrar as regras imperiais, como consequência, você está aqui para realizar uma inspeção prolongada."
+	important_text = "Raças permitidas são Humanos, Akula, Teshari e Sintéticos. Representação adequada. Há um documento importante no seu bolso que aconselho que leia e mantenha em segurança."
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/apply_codename(mob/living/carbon/human/spawned_human)
 	var/callsign = pick(GLOB.callsigns_nri)
@@ -238,16 +208,9 @@ GLOBAL_VAR(first_officer)
 	// if this is the first officer, keep a reference to them
 	if(!GLOB.first_officer)
 		GLOB.first_officer = spawned_human
-		to_chat(spawned_human, span_bold("With you being the leader of the group and having a special designation, 'Actual', it's your duty to make sure this entire operation \
-			goes smoothly. As in, doesn't result in an intergalactic political scandal, or an unneecessary shooting. It's also very likely expected for you to be performing \
-			all the necessary negotiations, so do prepare yourself for that."))
+		to_chat(spawned_human, span_bold("Com você sendo o líder do grupo e tendo uma designação especial, 'Na verdade', é seu dever garantir que toda esta operação corra bem. Como em, não resulta em um escândalo político intergaláctico, ou um tiroteio desnecessário. Também é muito provável que você esteja realizando todas as negociações necessárias, então prepare-se para isso."))
 
-	to_chat(spawned_human, "[span_bold("The station has overriden the response system for the reasons unknown, keep the ship intact, communicate with the station, \
-		perform an inspection to determine the legitimacy of the fine, and try to get the funds yourself, if it's legitimate. \
-		In any case, perform your predefined duties and uphold some semblance of intergalactic law and professionalism, even if just for show.")] <br><br>\
-		[span_small("Also, a small OOC clarification: none of your objectives are meant to be completable mechanically, so don't stress yourself over not greentexting or anything; \
-		If you have a better plan than 'completing' them, like an idea for a gimmick, it's better to communicate with the admins and your colleagues to possibly allow you to \
-		do something custom.")]")
+	to_chat(spawned_human, "[span_bold("The station has overriden the response system for the reasons unknown, keep the ship intact, communicate with the station, 		perform an inspection to determine the legitimacy of the fine, and try to get the funds yourself, if it's legitimate. 		In any case, perform your predefined duties and uphold some semblance of intergalactic law and professionalism, even if just for show.")] <br><br>		[span_small("Also, a small OOC clarification: none of your objectives are meant to be completable mechanically, so don't stress yourself over not greentexting or anything; 		If you have a better plan than 'completing' them, like an idea for a gimmick, it's better to communicate with the admins and your colleagues to possibly allow you to 		do something custom.")]")
 	apply_codename(spawned_human)
 
 
@@ -292,7 +255,7 @@ GLOBAL_VAR(first_officer)
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate/nri
 	name = "police shuttle navigation computer"
-	desc = "Used to designate a precise transit location for the police shuttle."
+	desc = "Usado para designar um local preciso para o transporte da polícia."
 
 /obj/machinery/base_alarm/nri_raider
 	alarm_sound_file = 'modular_skyrat/modules/encounters/sounds/env_horn.ogg'
@@ -300,7 +263,7 @@ GLOBAL_VAR(first_officer)
 
 /obj/machinery/porta_turret/syndicate/nri_raider
 	name = "anti-projectile turret"
-	desc = "An automatic defense turret designed for point-defense, it's probably not that wise to try approaching it."
+	desc = "Uma torre de defesa automática projetada para defesa de ponta, provavelmente não é tão sábio tentar se aproximar dela."
 	scan_range = 9
 	shot_delay = 15
 	faction = list(FACTION_RAIDER)
@@ -341,11 +304,11 @@ GLOBAL_VAR(first_officer)
 	landing_sound = sound('modular_skyrat/modules/encounters/sounds/env_ship_down.ogg')
 
 /obj/structure/plaque/static_plaque/golden/commission/ks13/nri_raider
-	desc = "formerly-NRI Terentiev-Yermolayev Orbital Shipworks, Providence High Orbit, Ship OSTs-02\n'Potato Beetle' Class Corvette\nCommissioned 10/11/2562 'Keeping Promises'"
+	desc = "Anteriormente, NRI Terentiev-Yermolayev Orbital Shipworks, Providence High Orbit, Ship OSTs-02\n\"Besouro de Batata\"Classe Corvette\nComissionado 10/11/2562 'Mantendo promessas'"
 
 /obj/machinery/computer/centcom_announcement/nri_raider
 	name = "police announcement console"
-	desc = "A console used for making priority Internal Affairs Collegium dispatch reports."
+	desc = "Um console usado para fazer relatórios de despacho de Assuntos Internos."
 	req_access = null
 	circuit = null
 	command_name = "PSC Enforcer-Class Starship Telegram"
@@ -360,7 +323,7 @@ GLOBAL_VAR(first_officer)
 
 /obj/item/storage/box/nri_survival_pack/raider
 	w_class = WEIGHT_CLASS_SMALL
-	desc = "A box filled with useful emergency items, supplied by the Commonwealth. It feels particularily light."
+	desc = "Uma caixa cheia de itens de emergência úteis, fornecidos pela Comunidade. Parece particularmente leve."
 
 /obj/item/storage/box/nri_survival_pack/raider/PopulateContents()
 	new /obj/item/oxygen_candle(src)
@@ -471,15 +434,15 @@ GLOBAL_VAR(first_officer)
 
 /obj/machinery/shuttle_scrambler/nri
 	name = "system crasher"
-	desc = "This heap of machinery locks down supply lines to a halt. Can be turned off, but does not siphon any money. Do that yourself, lazyass."
+	desc = "Este monte de máquinas bloqueia as linhas de abastecimento. Pode ser desligado, mas não rouba dinheiro. Faça isso você mesmo, preguiçoso."
 	siphon_per_tick = 0
 
 /obj/machinery/shuttle_scrambler/nri/toggle_on(mob/user)
 	SSshuttle.registerTradeBlockade(src)
 	AddComponent(/datum/component/gps, "NRI Starship")
 	active = TRUE
-	to_chat(user,span_notice("You toggle [src] [active ? "on":"off"]."))
-	to_chat(user,span_warning("The scrambling signal can be now tracked by GPS."))
+	to_chat(user,span_notice("Você comuta[src] [active ? "on":"off"]."))
+	to_chat(user,span_warning("O sinal pode ser rastreado pelo GPS."))
 	START_PROCESSING(SSobj,src)
 
 /obj/machinery/shuttle_scrambler/nri/process()
@@ -497,7 +460,7 @@ GLOBAL_VAR(first_officer)
 
 /obj/machinery/shuttle_scrambler/nri/interact(mob/user)
 	if(active)
-		var/deactivation_response = tgui_alert(user,"Turn the crasher off?", "Crasher", list("Yes", "Cancel"))
+		var/deactivation_response = tgui_alert(user,"Desligar o batedor?", "Crasher", list("Yes", "Cancel"))
 		if(deactivation_response != "Yes")
 			return
 		if(!active|| !user.can_perform_action(src))
@@ -505,9 +468,9 @@ GLOBAL_VAR(first_officer)
 		toggle_off(user)
 		update_appearance()
 		send_notification()
-		to_chat(user,span_notice("You toggle [src] [active ? "on":"off"]."))
+		to_chat(user,span_notice("Você comuta[src] [active ? "on":"off"]."))
 		return
-	var/scramble_response = tgui_alert(user, "Turning the crasher on might alienate the population and will make the shuttle trackable by GPS. Are you sure you want to do it?", "Crasher", list("Yes", "Cancel"))
+	var/scramble_response = tgui_alert(user, "Ligar o batedor pode alienar a população e tornar a nave rastreável pelo GPS. Tem certeza que quer fazer isso?", "Crasher", list("Yes", "Cancel"))
 	if(scramble_response != "Yes")
 		return
 	if(active || !user.can_perform_action(src))
@@ -515,7 +478,7 @@ GLOBAL_VAR(first_officer)
 	toggle_on(user)
 	update_appearance()
 	send_notification()
-	to_chat(user,span_notice("You toggle [src] [active ? "on":"off"]."))
+	to_chat(user,span_notice("Você comuta[src] [active ? "on":"off"]."))
 	return
 
 
@@ -607,12 +570,12 @@ GLOBAL_VAR(first_officer)
 
 /datum/objective/policing
 	name = "policing"
-	explanation_text = "Contact the station to perform an inspection. Delegate responsibilities among the ship's crew. Minimise civilian casualties."
+	explanation_text = "Contate a estação para fazer uma inspeção. Delegar responsabilidades entre a tripulação da nave. Minimizar vítimas civis."
 	martyr_compatible = TRUE
 
 /datum/objective/inspect_area
 	name = "inspect area"
-	explanation_text = "Inspect certain department and make sure it's up to our specifications. Special scrutiny and pickyness is advised."
+	explanation_text = "Inspecione certo departamento e certifique-se de que está de acordo com nossas especificações. Escrutínio especial e exigente é aconselhado."
 	///Area picked for an entirely roleplay objective.
 	var/inspection_area
 	martyr_compatible = TRUE
@@ -624,9 +587,9 @@ GLOBAL_VAR(first_officer)
 /datum/objective/inspect_area/update_explanation_text()
 	..()
 	if(inspection_area)
-		explanation_text = "Inspect [inspection_area] department and make sure it's up to our specifications. Special scrutiny and pickyness is advised."
+		explanation_text = "Inspecção[inspection_area]Departamento e certifique-se de que está de acordo com nossas especificações. Escrutínio especial e exigente é aconselhado."
 	else
-		explanation_text = "Perform a general station inspection and make sure it's up to any loose specifications you can think of."
+		explanation_text = "Realize uma inspeção geral na estação e certifique-se de que esteja à altura de quaisquer especificações soltas."
 
 /datum/objective/survey
 	name = "survey"
@@ -642,18 +605,18 @@ GLOBAL_VAR(first_officer)
 /datum/objective/survey/update_explanation_text()
 	..()
 	if(survey_area)
-		explanation_text = "Execute continuous crime prevention and citizen surveying procedures over [survey_area] department. Prevent crime in a given department and perform a public survey to collect people's opinions on various matters."
+		explanation_text = "Executem a prevenção contínua do crime e os procedimentos de levantamento de cidadãos[survey_area]Departamento. Evitar o crime em um departamento e realizar uma pesquisa pública para coletar opiniões das pessoas em vários assuntos."
 	else
-		explanation_text = "Execute continuous crime prevention and citizen surveying procedures around the station. Prevent crime around the area and perform a public survey to collect people's opinions on various matters."
+		explanation_text = "Executem a prevenção contínua do crime e os procedimentos de levantamento de cidadãos ao redor da estação. Evitar o crime na área e fazer uma pesquisa pública para coletar opiniões sobre vários assuntos."
 
 /datum/objective/steal_n_of_type/contraband
 	name = "confiscate contraband"
-	explanation_text = "Confiscate at least cool number pieces of contraband. Drugs, illicit weaponry, armor or equipment of any sort."
+	explanation_text = "Confisque pelo menos partes legais de contrabando. Drogas, armas ilícitas, armaduras ou equipamentos de qualquer tipo."
 
 /datum/objective/steal_n_of_type/contraband/New()
 	. = ..()
 	amount = rand(CONFISCATE_LOWER, CONFISCATE_HIGHER)
-	explanation_text = "Confiscate at least [amount] pieces of contraband. Drugs, illicit weaponry, armor or equipment of any sort."
+	explanation_text = "Confisco pelo menos.[amount]Pedaços de contrabando. Drogas, armas ilícitas, armaduras ou equipamentos de qualquer tipo."
 	update_explanation_text()
 	return
 
@@ -662,12 +625,12 @@ GLOBAL_VAR(first_officer)
 
 /datum/objective/dock
 	name = "dock"
-	explanation_text = "Dock to, or generally attempt to stay in the same sector the station is; to extend your on-site presence."
+	explanation_text = "Dock para, ou geralmente tentar ficar no mesmo setor a estação é, para estender sua presença no local."
 	martyr_compatible = TRUE
 
 /datum/objective/dock/New()
 	. = ..()
-	explanation_text = "Dock to, or generally attempt to stay in the same sector the [station_name()] is; to extend your on-site presence."
+	explanation_text = "Dock para, ou geralmente tentar encontrar no mesmo setor o[station_name()]É, para estender sua presença no local."
 	update_explanation_text()
 	return
 

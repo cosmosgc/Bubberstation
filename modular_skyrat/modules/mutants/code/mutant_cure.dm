@@ -1,6 +1,6 @@
 /obj/item/rna_extractor
 	name = "advanced virus RNA extractor"
-	desc = "A tool used to extract the RNA from viruses. Apply to skin."
+	desc = "Uma ferramenta usada para extrair o RNA de vírus. Aplicar na pele."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "extractor"
 	custom_materials = list(
@@ -14,12 +14,12 @@
 
 /obj/item/rna_extractor/attackby(obj/item/O, mob/living/user)
 	if((istype(O, /obj/item/rna_vial) && loaded_vial != null))
-		to_chat(user, span_warning("[src] can not hold more than one vial!"))
+		to_chat(user, span_warning("[src]Não pode segurar mais de um frasco!"))
 		return FALSE
 	if(istype(O, /obj/item/rna_vial))
 		if(!user.transferItemToLoc(O, src))
 			return FALSE
-		to_chat(user, span_notice("You insert [O] into [src]!"))
+		to_chat(user, span_notice("Você insere[O]em[src]!"))
 		loaded_vial = O
 		playsound(loc, 'sound/items/weapons/autoguninsert.ogg', 35, 1)
 		update_appearance()
@@ -34,36 +34,36 @@
 		return
 	var/mob/living/carbon/human/target = interacting_with
 	if(!loaded_vial)
-		to_chat(user, span_danger("[src] is empty!"))
+		to_chat(user, span_danger("[src]Está vazio!"))
 		return
 	if(loaded_vial.contains_rna)
-		to_chat(user, span_danger("[src] already has RNA data in it, upload it to the combinator!"))
+		to_chat(user, span_danger("[src]Já tem dados de RNA, carregue-os para o combinador!"))
 		return
 	if(!ismutant(target))
-		to_chat(user, span_danger("[target] does not register as infected!"))
+		to_chat(user, span_danger("[target]Não se registre como infectado!"))
 		return
 	var/datum/component/mutant_infection/target_infection = target.GetComponent(/datum/component/mutant_infection)
 	if(!target_infection)
-		to_chat(user, span_danger("[target] does not register as infected!"))
+		to_chat(user, span_danger("[target]Não se registre como infectado!"))
 		return
 	if(target_infection.extract_rna())
 		loaded_vial.load_rna(target)
-		to_chat(user, span_notice("[src] successfully scanned [target], and now holds a sample virus RNA data."))
+		to_chat(user, span_notice("[src]Escaneado com sucesso[target]E agora tem uma amostra de dados de RNA do vírus."))
 		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE, -6)
 		update_appearance()
 	else
-		to_chat(user, span_warning("[target] has no useable RNA!"))
+		to_chat(user, span_warning("[target]Não tem RNA utilizável!"))
 
 /obj/item/rna_extractor/proc/unload_vial(mob/living/user)
 	if(loaded_vial)
 		loaded_vial.forceMove(user.loc)
 		user.put_in_hands(loaded_vial)
-		to_chat(user, span_notice("You remove [loaded_vial] from [src]."))
+		to_chat(user, span_notice("Você tira.[loaded_vial]De[src]."))
 		loaded_vial = null
 		update_appearance()
 		playsound(loc, 'sound/items/weapons/empty.ogg', 50, 1)
 	else
-		to_chat(user, span_notice("[src] isn't loaded!"))
+		to_chat(user, span_notice("[src]Não está carregada!"))
 		return
 
 /obj/item/rna_extractor/update_overlays()
@@ -84,7 +84,7 @@
 
 /obj/item/rna_vial
 	name = "raw RNA vial"
-	desc = "A glass vial containing raw virus RNA. Slot this into the combinator to upload the sample."
+	desc = "Um frasco de vidro contendo RNA do vírus. Coloque isso no combinador para carregar a amostra."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "rnavial"
 	custom_materials = list(
@@ -110,7 +110,7 @@
 
 /obj/item/hnz_cure
 	name = "HNZ-1 cure vial"
-	desc = "A counter to the HNZ-1 virus, used to rapidly reverse the effects of the virus."
+	desc = "Um contador do vírus HNZ-1, usado para reverter rapidamente os efeitos do vírus."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_cure"
 	var/used = FALSE
@@ -118,17 +118,17 @@
 /obj/item/hnz_cure/attack(mob/living/M, mob/living/user, params)
 	. = ..()
 	if(used)
-		to_chat(user, span_danger("[src] has been used and is useless!"))
+		to_chat(user, span_danger("[src]foi usado e é inútil!"))
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!H.GetComponent(/datum/component/mutant_infection))
-			to_chat(user, span_danger("[H] does not register as infected!"))
+			to_chat(user, span_danger("[H]Não se registre como infectado!"))
 			return
 		if(do_after(user, 4 SECONDS))
 			cure_target(H)
 			playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE, -6)
-			to_chat(user, span_notice("You inject [H] wth [src]!"))
+			to_chat(user, span_notice("Você injeta.[H]wth[src]!"))
 			used = TRUE
 			update_appearance()
 
@@ -151,7 +151,7 @@
 
 /obj/machinery/rnd/rna_recombinator
 	name = "RNA recombinator"
-	desc = "This machine is used to recombine RNA sequences from extracted vials of raw virus."
+	desc = "Esta máquina é usada para recombinar sequências de RNA de frascos extraídos de vírus cru."
 	icon = 'modular_skyrat/modules/mutants/icons/cure_machine.dmi'
 	icon_state = "h_lathe"
 	base_icon_state = "h_lathe"
@@ -180,7 +180,7 @@
 	if(!user.transferItemToLoc(weapon, src))
 		return FALSE
 	loaded_item = weapon
-	to_chat(user, span_notice("You insert [weapon] to into [src] reciprocal."))
+	to_chat(user, span_notice("Você insere[weapon]para entrar em[src]Reciproca."))
 	flick("h_lathe_load", src)
 	update_appearance()
 	playsound(loc, 'sound/items/weapons/autoguninsert.ogg', 35, 1)
@@ -229,11 +229,11 @@
 		SStgui.update_uis(src)
 	else
 		if(status != STATUS_IDLE)
-			to_chat(usr, span_warning("[src] is currently recombinating!"))
+			to_chat(usr, span_warning("[src]Está se recombinando!"))
 		else if(!loaded_item)
-			to_chat(usr, span_warning("[src] is not currently loaded!"))
+			to_chat(usr, span_warning("[src]Não está carregada no momento!"))
 		else if(!process || process != loaded_item) //Interface exploit protection (such as hrefs or swapping items with interface set to old item)
-			to_chat(usr, span_danger("Interface failure detected in [src]. Please try again."))
+			to_chat(usr, span_danger("Falha na interface detectada.[src]Por favor, tente de novo."))
 		else
 			if(operation == "virus")
 				status = STATUS_RECOMBINATING_VIRUS
@@ -334,11 +334,7 @@
 
 /datum/reagent/hnz
 	name = "HNZ-1"
-	description = "HNZ-1 is a highly experimental viral bioterror agent \
-		which causes dormant nodules to be etched into the grey matter of \
-		the subject. These nodules only become active upon death of the \
-		host, upon which, the secondary structures activate and take control \
-		of the host body."
+	description = "HNZ-1 é um agente altamente experimental de bioterrorismo viral que faz nódulos adormecidos serem gravados na matéria cinzenta do sujeito. Estes nódulos só se tornam ativos após a morte do hospedeiro, sobre o qual, as estruturas secundárias ativam e tomam controle do corpo hospedeiro."
 	color = "#191dff"
 	metabolization_rate = INFINITY
 	taste_description = "brains"
@@ -350,7 +346,7 @@
 
 /obj/item/reagent_containers/cup/bottle/hnz
 	name = "HNZ-1 bottle"
-	desc = "A small bottle of the HNZ-1 pathogen. Nanotrasen Bioweapons inc."
+	desc = "Uma pequena garrafa do patógeno HNZ-1. Nanotrasen Bioarmas inc."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/hnz = 30)
@@ -364,7 +360,7 @@
 
 /obj/item/storage/briefcase/virology/hnz
 	name = "\improper HNZ-1 biocontainer"
-	desc = "An airtight biosealed box containing the highly reactive substance, HNZ1. Authorised personnel only."
+	desc = "Uma caixa biosselada hermética contendo a substância altamente reativa, HNZ1. Apenas pessoal autorizado."
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 500
 

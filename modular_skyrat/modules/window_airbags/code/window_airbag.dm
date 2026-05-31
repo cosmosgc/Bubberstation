@@ -37,7 +37,7 @@
 /datum/element/airbag/proc/on_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
 
-	examine_text += span_warning("It has a blinking red light indicating an airbag is installed. <b>Alt+click</b> to disarm.")
+	examine_text += span_warning("Tem uma luz vermelha piscando indicando que um airbag está instalado.<b>Alt+click</b>Desarmar.")
 
 /datum/element/airbag/proc/on_altclick(atom/movable/clicked_atom, mob/living/clicker)
 	SIGNAL_HANDLER
@@ -49,16 +49,16 @@
 /datum/element/airbag/proc/disarm_airbag(atom/movable/clicked_atom, mob/living/clicker)
 	if(!istype(clicker))
 		return
-	clicked_atom.balloon_alert(clicker, "disarming airbag...")
+	clicked_atom.balloon_alert(clicker, "Desarmar o airbag...")
 	if(do_after(clicker, DISARM_TIME, clicked_atom))
-		clicked_atom.balloon_alert(clicker, "airbag disarmed!")
+		clicked_atom.balloon_alert(clicker, "Airbag desarmado!")
 		new disarmed_type(get_turf(clicked_atom))
 		Detach(clicked_atom)
 
 // A fun little gadget!
 /obj/item/airbag
 	name = "airbag"
-	desc = "A small package with an explosive attached. Stand clear!"
+	desc = "Um pacote pequeno com um explosivo preso. Afastem-se!"
 	icon = 'modular_skyrat/modules/inflatables/icons/inflatable.dmi'
 	icon_state = "airbag_safe"
 	base_icon_state = "airbag"
@@ -120,7 +120,7 @@
 
 /obj/structure/inflatable/window_airbag
 	name = "window airbag"
-	desc = "A quick deploying airbag that seals holes when a window is broken!"
+	desc = "Um airbag rápido que fecha buracos quando uma janela está quebrada!"
 	icon_state = "airbag_wall"
 	torn_type = null // No debris left behind!
 	deflated_type = null

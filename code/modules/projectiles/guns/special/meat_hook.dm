@@ -4,7 +4,7 @@
 /// Meat Hook
 /obj/item/gun/magic/hook
 	name = "meat hook"
-	desc = "Mid or feed."
+	desc = "Meio ou meio."
 	ammo_type = /obj/item/ammo_casing/magic/hook
 	icon_state = "hook"
 	inhand_icon_state = "hook"
@@ -21,7 +21,7 @@
 	can_muzzle_flash = FALSE
 
 /obj/item/gun/magic/hook/shoot_with_empty_chamber(mob/living/user)
-	balloon_alert(user, "not ready yet!")
+	balloon_alert(user, "Ainda não está pronto!")
 
 /obj/item/gun/magic/hook/can_trigger_gun(mob/living/user, akimbo_usage) // This isn't really a gun, so it shouldn't be checking for TRAIT_NOGUNS, a firing pin (pinless), or a trigger guard (guardless)
 	if(akimbo_usage)
@@ -33,11 +33,11 @@
 /obj/item/gun/magic/hook/suicide_act(mob/living/user)
 	var/obj/item/bodypart/head/removable = user.get_bodypart(BODY_ZONE_HEAD)
 	if(isnull(removable))
-		user.visible_message(span_suicide("[user] stuffs the chain of the [src] down the hole where their head should be! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user]encha a cadia do[src]no buraco onde a cabeça deles deveria estar! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 		return OXYLOSS
 
 	playsound(get_turf(src), fire_sound, 50, TRUE, -1)
-	user.visible_message(span_suicide("[user] is using the [src] on their [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]está usando o[src]em seus[user.p_their()]Cabeça! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	playsound(get_turf(src), 'sound/items/weapons/bladeslice.ogg', 70)
 	removable.dismember(silent = FALSE)
 	return BRUTELOSS
@@ -47,7 +47,7 @@
 
 /obj/item/ammo_casing/magic/hook
 	name = "hook"
-	desc = "A hook."
+	desc = "Um gancho."
 	projectile_type = /obj/projectile/hook
 	caliber = CALIBER_HOOK
 	firing_effect_type = /obj/effect/temp_visual/dir_setting/firing_effect
@@ -82,7 +82,7 @@
 	if(victim.anchored || HAS_TRAIT_FROM(victim, TRAIT_HOOKED, REF(firer)))
 		return
 
-	victim.visible_message(span_danger("[victim] is snagged by [firer]'s hook!"))
+	victim.visible_message(span_danger("[victim]Está preso por[firer]O gancho!"))
 
 	var/datum/hook_and_move/puller = new
 	puller.begin_pulling(firer, victim, get_turf(firer))

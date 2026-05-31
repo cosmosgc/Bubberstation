@@ -227,7 +227,7 @@ SUBSYSTEM_DEF(player_ranks)
 
 	if(!admin_holder.check_for_rights(R_ADMIN))
 		if(is_admin_client)
-			to_chat(admin, span_warning("You do not possess the permissions to do this."))
+			to_chat(admin, span_warning("Você não tem permissão para fazer isso."))
 
 		return FALSE
 
@@ -246,7 +246,7 @@ SUBSYSTEM_DEF(player_ranks)
 
 	if(already_in_config[ckey])
 		if(is_admin_client)
-			to_chat(admin, span_warning("\"[ckey]\" is already a [rank_title]!"))
+			to_chat(admin, span_warning("\"[ckey]\"Já é um[rank_title]!"))
 
 		return FALSE
 
@@ -273,8 +273,7 @@ SUBSYSTEM_DEF(player_ranks)
 		return FALSE
 
 	var/datum/db_query/query_add_player_rank = SSdbcore.NewQuery(
-		"INSERT INTO [format_table_name(PLAYER_RANK_TABLE_NAME)] (ckey, rank, admin_ckey) VALUES(:ckey, :rank, :admin_ckey) \
-		ON DUPLICATE KEY UPDATE deleted = 0, admin_ckey = :admin_ckey",
+		"INSERT INTO [format_table_name(PLAYER_RANK_TABLE_NAME)] (ckey, rank, admin_ckey) VALUES(:ckey, :rank, :admin_ckey) 		ON DUPLICATE KEY UPDATE deleted = 0, admin_ckey = :admin_ckey",
 		list("ckey" = ckey, "rank" = controller.rank_title, "admin_ckey" = admin_ckey),
 	)
 
@@ -316,7 +315,7 @@ SUBSYSTEM_DEF(player_ranks)
 
 	if(!admin_holder.check_for_rights(R_ADMIN))
 		if(is_admin_client)
-			to_chat(admin, span_warning("You do not possess the permissions to do this."))
+			to_chat(admin, span_warning("Você não tem permissão para fazer isso."))
 
 		return FALSE
 
@@ -378,7 +377,7 @@ SUBSYSTEM_DEF(player_ranks)
 		return
 
 	if(!check_rights_for(admin, R_ADMIN | R_DEBUG | R_SERVER))
-		to_chat(admin, span_warning("You do not possess the permissions to do this."))
+		to_chat(admin, span_warning("Você não tem permissão para fazer isso."))
 		return
 
 	var/datum/player_rank_controller/controller = get_controller_for_group(rank_title)

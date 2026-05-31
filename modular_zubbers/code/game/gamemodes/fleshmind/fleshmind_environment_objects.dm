@@ -37,7 +37,7 @@
  */
 /obj/structure/fleshmind/wireweed
 	name = "wireweed"
-	desc = "A strange pulsating mass of organic wires."
+	desc = "Uma estranha massa pulsante de fios orgânicos."
 	icon = 'modular_zubbers/icons/fleshmind/wireweed_floor.dmi'
 	icon_state = "wires-0"
 	base_icon_state = "wires"
@@ -129,7 +129,7 @@
 		return
 	if(prob(WIREWEED_HEAL_CHANCE))
 		entered_mob.heal_overall_damage(WIREWEED_HEAL_AMOUNT, WIREWEED_HEAL_AMOUNT)
-		to_chat(entered_mob, span_green("[src] heals you as you cross over it!"))
+		to_chat(entered_mob, span_green("[src]Cura você enquanto atravessa sobre ela!"))
 	if(ishuman(entered_mob) && prob(WIREWEED_REPLACE_BODYPART_CHANCE))
 		var/mob/living/carbon/human/human_mob = moving_atom
 		for(var/zone in replacement_zones)
@@ -139,7 +139,7 @@
 			var/obj/item/bodypart/new_bodypart = new bodypart_type()
 			new_bodypart.replace_limb(human_mob, TRUE)
 			human_mob.update_body(TRUE)
-			to_chat(human_mob, span_green("[src] shoots a mechanical limb right into your missing limb!"))
+			to_chat(human_mob, span_green("[src]Atira um membro mecânico direto em seu membro perdido!"))
 
 /obj/effect/temp_visual/wireweed_spread
 	icon = 'modular_zubbers/icons/fleshmind/wireweed_floor.dmi'

@@ -5,7 +5,7 @@
 
 /obj/item/clothing/sextoy/magic_wand
 	name = "magic wand"
-	desc = "Not sure where is magic in this thing, but if you press button - it makes funny vibrations"
+	desc = "Não sei onde há magia nessa coisa, mas se você pressionar o botão - faz vibrações engraçadas"
 	icon_state = "magicwand_off"
 	base_icon_state = "magicwand"
 	worn_icon_state = "magicwand"
@@ -106,12 +106,12 @@
 		return
 
 	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
-		to_chat(user, span_danger("Looks like [target] don't want you to do that."))
+		to_chat(user, span_danger("Parece que sim.[target]Não quero que faça isso."))
 		return FALSE
 
 	var/message = ""
 	if(vibration_mode == MAGIC_WAND_MODE_OFF)
-		to_chat(user, span_warning("You must turn on the toy, to use it!"))
+		to_chat(user, span_warning("Você deve ligar o brinquedo, para usá-lo!"))
 		return FALSE
 
 	var/first_adjective = ""
@@ -136,7 +136,7 @@
 					return FALSE
 
 				if(!(vagina?.is_exposed() || penis?.is_exposed()))
-					to_chat(user, span_danger("Looks like [carbon_target]'s groin is covered!"))
+					to_chat(user, span_danger("Parece que sim.[carbon_target]A virilha está coberta!"))
 					return FALSE
 
 				var/target_organs = list()
@@ -151,16 +151,14 @@
 
 				var/organ_to_use = pick(target_organs)
 				message = (user == target) ? pick("massages their [organ_to_use] with the [src]",
-						"[first_adjective] teases their [organ_to_use] with [src]") \
-					: pick("[second_adjective] massages [target]'s [organ_to_use] with [src]",
+						"[first_adjective] teases their [organ_to_use] with [src]") 					: pick("[second_adjective] massages [target]'s [organ_to_use] with [src]",
 						"uses [src] to [first_adjective] massage [target]'s [organ_to_use]",
 						"leans the vibrator against [target]'s [organ_to_use]")
 				carbon_target.adjust_arousal(vibration_mode == MAGIC_WAND_MODE_LOW ? 4 : (vibration_mode == MAGIC_WAND_MODE_HIGH ? 8 : 5))
 				carbon_target.adjust_pleasure(vibration_mode == MAGIC_WAND_MODE_LOW ? 2 : (vibration_mode == MAGIC_WAND_MODE_HIGH ? 10 : 5))
 			else
 				message = (user == target) ? pick("massages their synthetic genitals with the [src]",
-						"[first_adjective] teases their synthetic genitals with [src]") \
-					: pick("[second_adjective] massages [target]'s synthetic genitals with [src]",
+						"[first_adjective] teases their synthetic genitals with [src]") 					: pick("[second_adjective] massages [target]'s synthetic genitals with [src]",
 						"uses [src] to [first_adjective] massage [target]'s synthetic genitals",
 						"leans the vibrator against [target]'s synthetic genitals")
 
@@ -168,25 +166,23 @@
 			if(carbon_target)
 				var/obj/item/organ/genital/breasts = carbon_target.get_organ_slot(ORGAN_SLOT_BREASTS)
 				if(!breasts?.is_exposed())
-					to_chat(user, span_danger("Looks like [target]'s chest is covered!"))
+					to_chat(user, span_danger("Parece que sim.[target]O peito está coberto!"))
 					return FALSE
 
 				var/breasts_or_nipples = breasts ? ORGAN_SLOT_BREASTS : ORGAN_SLOT_NIPPLES
 				message = (user == target) ? pick("massages their [breasts_or_nipples] with the [src]",
-						"[first_adjective] teases their [breasts ? "tits" : ORGAN_SLOT_NIPPLES] with [src]") \
-					: pick("[second_adjective] teases [target]'s [breasts_or_nipples] with [src]",
+						"[first_adjective] teases their [breasts ? "tits" : ORGAN_SLOT_NIPPLES] with [src]") 					: pick("[second_adjective] teases [target]'s [breasts_or_nipples] with [src]",
 						"uses [src] to [vibration_mode == MAGIC_WAND_MODE_LOW ? "slowly" : ""] massage [target]'s [breasts ? "tits" : ORGAN_SLOT_NIPPLES]",
 						"uses [src] to tease [target]'s [breasts ? "boobs" : ORGAN_SLOT_NIPPLES]")
 				carbon_target.adjust_arousal((vibration_mode == MAGIC_WAND_MODE_LOW ? 3 : (vibration_mode == MAGIC_WAND_MODE_HIGH ? 7 : 4)))
 				carbon_target.adjust_pleasure((vibration_mode == MAGIC_WAND_MODE_LOW ? 1 : (vibration_mode == MAGIC_WAND_MODE_HIGH ? 9 : 4)))
 			else
 				message = (user == target) ? pick("massages their touch sensors with the [src]",
-						"[first_adjective] teases their touch sensors with [src]") \
-					: pick("[second_adjective] teases [target]'s touch sensors with [src]",
+						"[first_adjective] teases their touch sensors with [src]") 					: pick("[second_adjective] teases [target]'s touch sensors with [src]",
 						"uses [src] to [vibration_mode == MAGIC_WAND_MODE_LOW ? "slowly" : ""] massage [target]'s touch sensors",
 						"uses [src] to tease [target]'s touch sensors")
 		else
-			to_chat(user, span_warning("Use the wand on their groin or chest!"))
+			to_chat(user, span_warning("Use uma varinha na virilha ou não!"))
 			return FALSE
 
 	if(prob(30))
@@ -200,13 +196,13 @@
 
 	switch(vibration_mode)
 		if(MAGIC_WAND_MODE_LOW)
-			to_chat(user, span_notice("Vibrator mode switched to low. Bzzz..."))
+			to_chat(user, span_notice("Modo vibratório trocado para baixo. Bzzz..."))
 		if(MAGIC_WAND_MODE_MEDIUM)
-			to_chat(user, span_notice("Vibrator mode switched to medium. Bzzzz!"))
+			to_chat(user, span_notice("Modo de vibração mudou para média. Bzzzz!"))
 		if(MAGIC_WAND_MODE_HIGH)
-			to_chat(user, span_notice("Vibrator mode switched to high. Careful with that thing."))
+			to_chat(user, span_notice("O modo de vibração mudou para alto. Cuidado com essa coisa."))
 		if(MAGIC_WAND_MODE_OFF)
-			to_chat(user, span_notice("[src] is turned off. Fun time's over?"))
+			to_chat(user, span_notice("[src]Está desligado. Acabou a diversão?"))
 
 	update_icon()
 	update_icon_state()

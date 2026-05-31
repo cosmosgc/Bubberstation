@@ -250,7 +250,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	//Set news report and mode result
 	SSdynamic.set_round_result()
 
-	to_chat(world, span_infoplain(span_big(span_bold("<BR><BR><BR>The round has ended."))))
+	to_chat(world, span_infoplain(span_big(span_bold("<BR><BR><BR>Uma rodada terminou."))))
 	log_game("The round has ended.")
 	for(var/channel_tag in CONFIG_GET(str_list/channel_announce_end_game))
 		send2chat(new /datum/tgs_message_content("[GLOB.round_id ? "Round [GLOB.round_id]" : "The round has"] just ended."), channel_tag)
@@ -269,7 +269,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	CHECK_TICK
 
 	handle_hearts()
-	set_observer_default_invisibility(0, span_warning("The round is over! You are now visible to the living."))
+	set_observer_default_invisibility(0, span_warning("A rodada acabou! Agora você é visível para os vivos."))
 
 	CHECK_TICK
 
@@ -360,7 +360,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		parts += "[FOURSPACES]Round ID: <b>[info]</b>"
 	parts += "[FOURSPACES]Map: [SSmapping.current_map?.return_map_name()]"
 	parts += "[FOURSPACES]Shift Duration: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B>"
-	parts += "[FOURSPACES]Station Integrity: <B>[GLOB.station_was_nuked ? span_redtext("Destroyed") : "[popcount["station_integrity"]]%"]</B>"
+	parts += "[FOURSPACES]Integridade da Estação:<B>[GLOB.station_was_nuked ? span_redtext("Destroyed") : "[popcount["station_integrity"]]%"]</B>"
 	var/total_players = GLOB.joined_player_list.len
 	if(total_players)
 		parts+= "[FOURSPACES]Total Population: <B>[total_players]</B>"
@@ -443,14 +443,14 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 					parts += "<span class='marooned'>You managed to survive, but were marooned on [station_name()]...</span>"
 				else
 					parts += "<div class='panel greenborder'>"
-					parts += span_greentext("You managed to survive the events on [station_name()] as [M.real_name].")
+					parts += span_greentext("Você conseguiu sobreviver aos eventos em[station_name()]Como[M.real_name].")
 			else
 				parts += "<div class='panel greenborder'>"
-				parts += span_greentext("You managed to survive the events on [station_name()] as [M.real_name].")
+				parts += span_greentext("Você conseguiu sobreviver aos eventos em[station_name()]Como[M.real_name].")
 
 		else
 			parts += "<div class='panel redborder'>"
-			parts += span_redtext("You did not survive the events on [station_name()]...")
+			parts += span_redtext("Você não sobreviveu aos eventos em[station_name()]...")
 	else
 		parts += "<div class='panel stationborder'>"
 	parts += "<br>"
@@ -476,7 +476,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		var/mob/living/silicon/ai/aiPlayer = i
 		var/datum/mind/aiMind = aiPlayer.deployed_shell?.mind || aiPlayer.mind
 		if(aiMind)
-			parts += "<b>[aiPlayer.name]</b>'s laws [aiPlayer.stat != DEAD ? "at the end of the round" : "when it was [span_redtext("deactivated")]"] were:" //SKYRAT EDIT CHANGE
+			parts += "<b>[aiPlayer.name]</b>É a Leis.[aiPlayer.stat != DEAD ? "at the end of the round" : "when it was [span_redtext("deactivated")]"]Foram:" //SKYRAT EDIT CHANGE
 			parts += aiPlayer.laws.get_law_list(include_zeroth=TRUE)
 
 		parts += "<b>Total law changes: [aiPlayer.law_change_counter]</b>"
@@ -498,7 +498,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		if (!robo.connected_ai && robo.mind)
 			//SKYRAT EDIT CHANGE BEGIN - ROUNDEND
 			//parts += "[borg_spacer?"<br>":""]<b>[robo.name]</b> (Played by: <b>[robo.mind.key]</b>) [(robo.stat != DEAD)? "[span_greentext("survived")] as an AI-less borg!" : "was [span_redtext("unable to survive")] the rigors of being a cyborg without an AI."] Its laws were:"
-			parts += "[borg_spacer?"<br>":""]<b>[robo.name]</b> [(robo.stat != DEAD)? "[span_greentext("survived")] as an AI-less borg!" : "was [span_redtext("unable to survive")] the rigors of being a cyborg without an AI."] Its laws were:"
+			parts += "[borg_spacer?"<br>":""]<b>[robo.name]</b> [(robo.stat != DEAD)? "[span_greentext("survived")] as an AI-less borg!" : "was [span_redtext("unable to survive")] the rigors of being a cyborg without an AI."]Suas leis eram:"
 			//SKYRAT EDIT CHANGE END
 
 			if(robo) //How the hell do we lose robo between here and the world messages directly above this?
@@ -600,7 +600,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 /datum/controller/subsystem/ticker/proc/medal_report()
 	if(GLOB.commendations.len)
 		var/list/parts = list()
-		parts += span_header("Medal Commendations:")
+		parts += span_header("Comendações de Medalha:")
 		for (var/com in GLOB.commendations)
 			parts += com
 		return "<div class='panel stationborder'>[parts.Join("<br>")]</div>"
@@ -689,7 +689,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	var/datum/action/report/R = new
 	C.persistent_client.player_actions += R
 	R.Grant(C.mob)
-	to_chat(C,span_infoplain("<a href='byond://?src=[REF(R)];report=1'>Show roundend report again</a>"))
+	to_chat(C,span_infoplain("<a href='byond://?src=[REF(R)];report=1'>Mostre o relatório de volta.</a>"))
 
 /datum/action/report
 	name = "Show roundend report"
@@ -765,7 +765,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		parts += "<span class='infoplain'>Total Achievements Earned: <B>[length(GLOB.achievements_unlocked)]!</B></span><BR>"
 		parts += "<ul class='playerlist'>"
 		for(var/datum/achievement_report/cheevo_report in GLOB.achievements_unlocked)
-			parts += "<b>[cheevo_report.winner]</b> earned the [span_greentext("'[cheevo_report.cheevo]'")] achievement at [cheevo_report.award_location]!<BR>" // SKYRAT EDIT - No ckeys in the round end report - ORIGINAL: parts += "<BR>[cheevo_report.winner_key] was <b>[cheevo_report.winner]</b>, who earned the [span_greentext("'[cheevo_report.cheevo]'")] achievement at [cheevo_report.award_location]!<BR>"
+			parts += "<b>[cheevo_report.winner]</b>Ganhou[span_greentext("'[cheevo_report.cheevo]'")]A conquista em[cheevo_report.award_location]!<BR>" // SKYRAT EDIT - No ckeys in the round end report - ORIGINAL: parts += "<BR>[cheevo_report.winner_key]era<b>[cheevo_report.winner]</b>, que ganhou o[span_greentext("'[cheevo_report.cheevo]'")]A conquista em[cheevo_report.award_location]!<BR>"
 		parts += "</ul>"
 		return "<div class='panel greenborder'><ul>[parts.Join()]</ul></div>"
 

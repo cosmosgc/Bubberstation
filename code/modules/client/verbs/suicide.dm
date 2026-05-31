@@ -34,7 +34,7 @@
 	if(!can_suicide())
 		return FALSE
 
-	var/confirm = tgui_alert(src, "Are you sure you want to commit suicide?", "Confirm Suicide", list("Yes", "No"))
+	var/confirm = tgui_alert(src, "Tem certeza que quer cometer suicídio?", "Confirm Suicide", list("Yes", "No"))
 
 	// ensure our situation didn't change while we were sleeping waiting for the tgui_alert.
 	if(!can_suicide() || (ckey != oldkey))
@@ -43,35 +43,35 @@
 	if(confirm == "Yes")
 		return TRUE
 
-	balloon_alert(src, "suicide attempt aborted!")
+	balloon_alert(src, "Tentativa de suicídio abortada!")
 	return FALSE
 
 /// Checks if we are in a valid state to suicide (not already suiciding, capable of actually killing ourselves, area checks, etc.) Returns TRUE if we can suicide, FALSE if we can not.
 /mob/living/proc/can_suicide()
 	// SKYRAT EDIT ADDITION
 	if(CONFIG_GET(flag/disable_suicide))
-		to_chat(src, span_warning("Suicide is disabled on this server."))
+		to_chat(src, span_warning("Suicídio está desativado neste servidor."))
 		return FALSE
 	// SKYRAT EDIT END
 
 	if(HAS_TRAIT_FROM_ONLY(src, TRAIT_SUICIDED, REF(src)))
-		to_chat(src, span_warning("You are already commiting suicide!"))
+		to_chat(src, span_warning("Você já está cometendo suicídio!"))
 		return FALSE
 
 	var/area/checkable = get_area(src)
 	if(checkable.area_flags & BLOCK_SUICIDE)
-		to_chat(src, span_warning("You can't commit suicide here! You can ghost if you'd like."))
+		to_chat(src, span_warning("Você não pode cometer suicídio aqui! Você pode fantasma se quiser."))
 		return FALSE
 
 	switch(stat)
 		if(CONSCIOUS)
 			return TRUE
 		if(SOFT_CRIT)
-			to_chat(src, span_warning("You can't commit suicide while in a critical condition!"))
+			to_chat(src, span_warning("Você não pode cometer suicídio em uma condição crítica!"))
 		if(UNCONSCIOUS, HARD_CRIT)
-			to_chat(src, span_warning("You need to be conscious to commit suicide!"))
+			to_chat(src, span_warning("Você precisa estar consciente para cometer suicídio!"))
 		if(DEAD)
-			to_chat(src, span_warning("You're already dead!"))
+			to_chat(src, span_warning("Você já está morto!"))
 	return FALSE
 
 /// Inserts in logging and death + mind dissociation when we're fully done with ending the life of our mob, as well as adjust the health. We will disallow re-entering the body when this is called.

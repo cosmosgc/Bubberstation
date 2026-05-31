@@ -8,7 +8,7 @@
 
 /atom/movable/screen/alert/status_effect/frenzy
 	name = "Frenzy"
-	desc = "You are in a Frenzy! You are entirely Feral and, depending on your Clan, fighting for your life! Find and drink blood, or you will suffer a Final Death!"
+	desc = "Você está em um Frenzy! Você é totalmente Feral e, dependendo do seu clã, lutando por sua vida! Encontre e beba sangue, ou sofrerá uma morte final!"
 	icon = 'modular_zubbers/icons/mob/actions/bloodsucker.dmi'
 	icon_state = "power_recover"
 	alerttooltipstyle = "cult"
@@ -25,7 +25,7 @@
 	var/trait_list = list(TRAIT_MUTE, TRAIT_SIGN_LANGUAGE_BLOCKED, TRAIT_DEAF, TRAIT_STRONG_GRABBER)
 
 /datum/status_effect/frenzy/get_examine_text()
-	return span_notice("They seem... inhumane, and feral!")
+	return span_notice("Parecem desumanos e selvagens!")
 
 /atom/movable/screen/alert/status_effect/masquerade/MouseEntered(location,control,params)
 	desc = initial(desc)
@@ -37,9 +37,9 @@
 
 	// Disable ALL Powers and notify their entry
 	bloodsuckerdatum.DisableAllPowers(forced = TRUE)
-	to_chat(owner, span_userdanger("<FONT size = 3>Blood! You need Blood, now! You enter a total Frenzy! You will DIE if you do not get BLOOD."))
-	to_chat(owner, span_announce("* Bloodsucker Tip: While in Frenzy, you quickly accrue burn damage, instantly Aggresively grab, have stun resistance, cannot speak, hear, or use any powers outside of Feed and Trespass (If you have it)."))
-	owner.balloon_alert(owner, "you enter a frenzy! Drink blood, or you will die!")
+	to_chat(owner, span_userdanger("<FONT size = 3>Sangue! Você precisa de Sangue, agora! Você entra num Frenzy total! Você morrerá se não pegar sangue."))
+	to_chat(owner, span_announce("Enquanto em Frenzy, você rapidamente acumula danos por queimaduras, instantaneamente agarra, tem resistência de atordoar, não pode falar, ouvir ou usar qualquer poder fora de Feed and Trespass."))
+	owner.balloon_alert(owner, "Você entra em um frenesi! Beba sangue, ou você morrerá!")
 	SEND_SIGNAL(bloodsuckerdatum, COMSIG_BLOODSUCKER_ENTERS_FRENZY)
 
 	// Give the other Frenzy effects
@@ -58,7 +58,7 @@
 	return ..()
 
 /datum/status_effect/frenzy/on_remove()
-	owner.balloon_alert(owner, "you come back to your senses.")
+	owner.balloon_alert(owner, "Você volta aos seus sentidos.")
 	owner.remove_traits(trait_list, FRENZY_TRAIT)
 	if(was_tooluser)
 		ADD_TRAIT(owner, TRAIT_ADVANCEDTOOLUSER, SPECIES_TRAIT)

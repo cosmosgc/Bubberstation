@@ -12,7 +12,7 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 
 /obj/machinery/requests_console
 	name = "requests console"
-	desc = "A console intended to send requests to different departments on the station."
+	desc = "Um console destinado a enviar pedidos para diferentes departamentos na estação."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "req_comp_off"
 	base_icon_state = "req_comp"
@@ -70,12 +70,12 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 /obj/machinery/requests_console/examine(mob/user)
 	. = ..()
 	if(!open)
-		. += span_notice("It looks like you can pry open the panel with <b>a crowbar</b>.")
+		. += span_notice("Parece que você pode abrir o painel com<b>Um pé de cabra.</b>.")
 	else
-		. += span_warning("The panel was pried open, you can close it with <b>a crowbar</b>.")
+		. += span_warning("O painel foi aberto, você pode fechar com<b>Um pé de cabra.</b>.")
 
 	if(hack_state)
-		. += span_warning("The console seems to have been tampered with!")
+		. += span_warning("O console parece ter sido adulterado!")
 
 /obj/machinery/requests_console/update_overlays()
 	. = ..()
@@ -192,12 +192,12 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 			// Check if user can call this emergency (prevent self-calls) RETA
 			var/user_dept = reta_get_user_department(usr)
 			if(user_dept == target_dept && !isAdminGhostAI(usr))
-				to_chat(usr, span_alert("You cannot call your own department for emergency assistance."))
+				to_chat(usr, span_alert("Você não pode ligar para seu próprio departamento para assistência de emergência."))
 				return
 
 			// Check cooldown RETA
 			if(origin_dept && target_dept && reta_on_cooldown(origin_dept, target_dept))
-				to_chat(usr, span_alert("Emergency calls to [target_dept] are on cooldown."))
+				to_chat(usr, span_alert("Chamadas de emergência para[target_dept]Estão na refrigeração."))
 				return
 
 			emergency = emergency_type
@@ -290,7 +290,7 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 			return TRUE
 		if("send_announcement")
 			if(!COOLDOWN_FINISHED(src, announcement_cooldown))
-				to_chat(usr, span_alert("Intercomms recharging. Please stand by."))
+				to_chat(usr, span_alert("Intercomunicadores recarregando. Por favor, aguarde."))
 				return
 			if(!can_send_announcements)
 				return
@@ -299,7 +299,7 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 
 			var/message = reject_bad_text(trim(html_encode(params["message"]), MAX_MESSAGE_LEN), ascii_only = FALSE)
 			if(!message)
-				to_chat(usr, span_alert("Invalid message."))
+				to_chat(usr, span_alert("Mensagem inválida."))
 				return
 			if(isliving(usr))
 				var/mob/living/L = usr
@@ -309,7 +309,7 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 			GLOB.news_network.submit_article(message, department, NEWSCASTER_STATION_ANNOUNCEMENTS, null)
 			usr.log_talk(message, LOG_SAY, tag="station announcement from [src]")
 			message_admins("[ADMIN_LOOKUPFLW(usr)] has made a station announcement from [src] at [AREACOORD(usr)].")
-			deadchat_broadcast(" made a station announcement from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
+			deadchat_broadcast("fez um anúncio da estação de[span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
 
 			COOLDOWN_START(src, announcement_cooldown, ANNOUNCEMENT_COOLDOWN_TIME)
 			announcement_authenticated = FALSE
@@ -336,7 +336,7 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 				return
 			var/message = reject_bad_text(trim(html_encode(params["message"]), MAX_MESSAGE_LEN), ascii_only = FALSE)
 			if(!message)
-				to_chat(usr, span_alert("Invalid message."))
+				to_chat(usr, span_alert("Mensagem inválida."))
 				has_mail_send_error = TRUE
 				return TRUE
 			var/request_type = params["request_type"]
@@ -496,10 +496,10 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 /obj/machinery/requests_console/crowbar_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src, 50)
 	if(open)
-		to_chat(user, span_notice("You close the maintenance panel."))
+		to_chat(user, span_notice("Feche o painel de manutenção."))
 		open = FALSE
 	else
-		to_chat(user, span_notice("You open the maintenance panel."))
+		to_chat(user, span_notice("Abra o painel de manutenção."))
 		open = TRUE
 	update_appearance()
 	return TRUE
@@ -508,13 +508,13 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 	if(open)
 		hack_state = !hack_state
 		if(hack_state)
-			to_chat(user, span_notice("You modify the wiring."))
+			to_chat(user, span_notice("Você modifica a fiação."))
 		else
-			to_chat(user, span_notice("You reset the wiring."))
+			to_chat(user, span_notice("Você redefiniu a fiação."))
 		update_appearance()
 		tool.play_tool_sound(src, 50)
 	else
-		to_chat(user, span_warning("You must open the maintenance panel first!"))
+		to_chat(user, span_warning("Você deve abrir o painel de manutenção primeiro!"))
 	return TRUE
 
 /obj/machinery/requests_console/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
@@ -542,7 +542,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/requests_console/auto_name, 30)
 
 /obj/item/wallframe/requests_console
 	name = "requests console"
-	desc = "An unmounted requests console. Attach it to a wall to use."
+	desc = "Um console de pedidos desmontado. Coloque em uma parede para usar."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "req_comp_off"
 	result_path = /obj/machinery/requests_console/auto_name

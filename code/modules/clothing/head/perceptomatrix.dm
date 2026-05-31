@@ -5,9 +5,7 @@
 /// Helmet which can turn you into a BEAST!! once an anomaly core is inserted
 /obj/item/clothing/head/helmet/perceptomatrix
 	name = "perceptomatrix helm"
-	desc = "This piece of headgear harnesses the energies of a hallucinatory anomaly to create a safe audiovisual replica of -all- external stimuli directly into the cerebral cortex, \
-		granting the user effective immunity to both psychic threats, and anything that would affect their perception - be it ear, eye, or even brain damage. \
-		It can also violently discharge said energy, inducing hallucinations in others."
+	desc = "Este pedaço de capacete aproveita as energias de uma anomalia alucinatória para criar uma réplica audiovisual segura de estímulos externos diretamente no córtex cerebral, concedendo ao usuário imunidade efetiva a ambas as ameaças psíquicas, e qualquer coisa que afete sua percepção, seja ouvido, olho ou até dano cerebral. Também pode violentamente descarregar energia, induzindo alucinações em outros."
 	icon_state = "perceptomatrix_helmet_inactive"
 	worn_icon_state = "perceptomatrix_helmet_inactive"
 	base_icon_state = "perceptomatrix_helmet"
@@ -84,7 +82,7 @@
 /obj/item/clothing/head/helmet/perceptomatrix/proc/pre_cast_core_check(mob/caster, datum/action/cooldown/spell/spell)
 	SIGNAL_HANDLER
 	if((!core_installed) && spell.school == SCHOOL_PSYCHIC)
-		to_chat(caster, span_warning("You can't zap minds through [src]'s shielding without a core installed!"))
+		to_chat(caster, span_warning("Você não pode zap mentes através[src]Está protegendo sem um núcleo instalado!"))
 		return SPELL_CANCEL_CAST
 
 /obj/item/clothing/head/helmet/perceptomatrix/proc/update_anomaly_state()
@@ -104,10 +102,7 @@
 	// just blocking future instances of deafness isn't what the item is meant to do but there's no proper way to do it otherwise at the moment.
 	active_components += AddComponent(/datum/component/wearertargeting/earprotection, EAR_PROTECTION_HEAVY) // should be same as highest value
 	active_components += AddComponent(
-		/datum/component/anti_magic, \
-		antimagic_flags = MAGIC_RESISTANCE_MIND, \
-		inventory_flags = ITEM_SLOT_HEAD, \
-	)
+		/datum/component/anti_magic, 		antimagic_flags = MAGIC_RESISTANCE_MIND, 		inventory_flags = ITEM_SLOT_HEAD, 	)
 	AddElement(/datum/element/wearable_client_colour, /datum/client_colour/perceptomatrix, ITEM_SLOT_HEAD, HELMET_TRAIT, forced = TRUE)
 
 	update_icon_state()
@@ -119,7 +114,7 @@
 /obj/item/clothing/head/helmet/perceptomatrix/examine(mob/user)
 	. = ..()
 	if (!core_installed)
-		. += span_warning("It requires a hallucination anomaly core in order to function.")
+		. += span_warning("Requer um núcleo de anomalia de alucinações para funcionar.")
 
 /obj/item/clothing/head/helmet/perceptomatrix/update_icon_state()
 	icon_state = base_icon_state + (core_installed ? "" : "_inactive")
@@ -144,7 +139,7 @@
 
 /datum/action/cooldown/spell/pointed/percept_hallucination
 	name = "Hallucinate"
-	desc = "Redirect perceptual energies towards a target, staggering them."
+	desc = "Redefinir as energias perceptuais para um Alvo, cambaleando-as."
 	button_icon_state = "blind"
 	ranged_mousepointer = 'icons/effects/mouse_pointers/blind_target.dmi'
 
@@ -179,8 +174,8 @@
 /datum/action/cooldown/spell/pointed/percept_hallucination/proc/blows_up_pancakes_with_mind(obj/item/food/pancakes/pancakes)
 
 	owner.visible_message(
-		span_userdanger("[owner] blows up [pancakes] with [owner.p_their()] mind!"),
-		span_userdanger("You blow up [pancakes] with your mind!")
+		span_userdanger("[owner]Explodir.[pancakes]Com[owner.p_their()]Mente!"),
+		span_userdanger("Você explode.[pancakes]Com sua mente!")
 	)
 
 	for(var/mob/chef in get_hearers_in_view(7, pancakes))
@@ -218,11 +213,11 @@
 		return
 
 	if(cast_on.can_block_magic(antimagic_flags))
-		to_chat(cast_on, span_notice("You feel psychic energies reflecting off you."))
-		to_chat(owner, span_warning("[cast_on] deflects the energy!"))
+		to_chat(cast_on, span_notice("Você sente energias psíquicas refletindo em você."))
+		to_chat(owner, span_warning("[cast_on]Desvia a energia!"))
 		return
 
-	to_chat(cast_on, span_warning("Your brain feels like it's on fire!"))
+	to_chat(cast_on, span_warning("Seu cérebro parece estar pegando fogo!"))
 	cast_on.emote("scream")
 	cast_on.set_eye_blur_if_lower(eye_blur_duration)
 	cast_on.adjust_staggered(stagger_duration)

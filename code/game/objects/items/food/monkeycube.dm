@@ -1,6 +1,6 @@
 /obj/item/food/monkeycube
 	name = "monkey cube"
-	desc = "Just add water!"
+	desc = "Basta adicionar água!"
 	icon_state = "monkeycube"
 	bite_consumption = 12
 	food_reagents = list(/datum/reagent/monkey_powder = 30)
@@ -38,7 +38,7 @@
 		ADD_TRAIT(bananas, TRAIT_SPAWNED_MOB, INNATE_TRAIT)
 		SET_FACTION_AND_ALLIES_FROM(bananas, src)
 
-		visible_message(span_notice("[src] expands!"))
+		visible_message(span_notice("[src]Expandir!"))
 		bananas.log_message("spawned via [src], Last attached mob: [key_name(spammer)].", LOG_ATTACK)
 
 		var/alpha_to = bananas.alpha
@@ -48,23 +48,23 @@
 		animate(bananas, 0.5 SECONDS, alpha = alpha_to, transform = scale_to, easing = QUAD_EASING|EASE_OUT)
 
 	else if (!spammer) // Visible message in case there are no fingerprints
-		visible_message(span_notice("[src] fails to expand!"))
+		visible_message(span_notice("[src]Não consegue se expandir!"))
 		return
 
 	animate(src, 0.4 SECONDS, alpha = 0, transform = transform.Scale(0), easing = QUAD_EASING|EASE_IN)
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/item/food/monkeycube/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is putting [src] in [user.p_their()] mouth! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]está colocando[src]Em[user.p_their()]Boca! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	var/eating_success = do_after(user, 1 SECONDS, src)
 	if(QDELETED(user)) //qdeletion: the nuclear option of self-harm
 		return SHAME
 	if(!eating_success || QDELETED(src)) //checks if src is gone or if they failed to wait for a second
-		user.visible_message(span_suicide("[user] chickens out!"))
+		user.visible_message(span_suicide("[user]Galinhas fora!"))
 		return SHAME
 	if(HAS_TRAIT(user, TRAIT_NOHUNGER)) //plasmamen don't have saliva/stomach acid
-		user.visible_message(span_suicide("[user] realizes [user.p_their()] body won't activate [src]!")
-		,span_warning("Your body won't activate [src]..."))
+		user.visible_message(span_suicide("[user]Percebe?[user.p_their()]O corpo não vai se ativar.[src]!")
+		,span_warning("Seu corpo não vai se ativar.[src]..."))
 		return SHAME
 	playsound(user, 'sound/items/eatfood.ogg', rand(10, 50), TRUE)
 	user.temporarilyRemoveItemFromInventory(src) //removes from hands, keeps in M
@@ -75,15 +75,15 @@
 	if(QDELETED(user) || QDELETED(src))
 		return
 	if(src.loc != user) //how the hell did you manage this
-		to_chat(user, span_warning("Something happened to [src]..."))
+		to_chat(user, span_warning("Algo aconteceu com[src]..."))
 		return
 	Expand()
-	user.visible_message(span_danger("[user]'s torso bursts open as a primate emerges!"))
+	user.visible_message(span_danger("[user]O torso explode quando um primata emerge!"))
 	user.gib(DROP_BRAIN|DROP_BODYPARTS|DROP_ITEMS) // just remove the organs
 
 /obj/item/food/monkeycube/proc/on_mail_unwrap(atom/source, mob/user, obj/item/mail/traitor/letter)
 	SIGNAL_HANDLER
-	to_chat(user, span_danger("As you open [letter], its contents rapidly expand!"))
+	to_chat(user, span_danger("Enquanto você abre[letter]Seu conteúdo se expande rapidamente!"))
 	Expand()
 	return COMPONENT_TRAITOR_MAIL_HANDLED
 
@@ -92,7 +92,7 @@
 
 /obj/item/food/monkeycube/gorilla
 	name = "gorilla cube"
-	desc = "A Waffle Corp. brand gorilla cube. Now with extra molecules!"
+	desc = "Um cubo de gorila da Waffle Corp. Agora com moléculas extras!"
 	bite_consumption = 20
 	food_reagents = list(
 		/datum/reagent/monkey_powder = 30,
@@ -103,7 +103,7 @@
 
 /obj/item/food/monkeycube/chicken
 	name = "chicken cube"
-	desc = "A new Nanotrasen classic, the chicken cube. Tastes like everything!"
+	desc = "Um novo clássico de Nanotrasen, o cubo de frango. Tem gosto de tudo!"
 	bite_consumption = 20
 	food_reagents = list(
 		/datum/reagent/consumable/eggyolk = 30,
@@ -114,7 +114,7 @@
 
 /obj/item/food/monkeycube/bee
 	name = "bee cube"
-	desc = "We were sure it was a good idea. Just add water."
+	desc = "Tínhamos certeza que era uma boa ideia. Basta adicionar água."
 	bite_consumption = 20
 	food_reagents = list(
 		/datum/reagent/consumable/honey = 10,
@@ -126,7 +126,7 @@
 
 /obj/item/food/monkeycube/dangerous_horse
 	name = "a pony cube"
-	desc = "This is a cube that, when water is added, creates a syndicate pony powerful enough to break the enemy's face!"
+	desc = "Este é um cubo que, quando a água é adicionada, cria um pónei do sindicato poderoso o suficiente para quebrar o rosto do inimigo!"
 	bite_consumption = 10
 	food_reagents = list(
 		/datum/reagent/toxin = 15,
@@ -137,7 +137,7 @@
 
 /obj/item/food/monkeycube/random
 	name = "monster cube"
-	desc = "A cube that, when water is added, creates a random creature. Who knows what's inside?"
+	desc = "Um cubo que, quando água é adicionada, cria uma criatura aleatória. Quem sabe o que tem dentro?"
 	food_reagents = list(
 		/datum/reagent/toxin = 15,
 		/datum/reagent/medicine/strange_reagent = 1,

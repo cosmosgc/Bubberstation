@@ -2,60 +2,60 @@
 import { CheckboxInput, type Feature } from '../../base';
 
 export const well_trained__prefers_males: Feature<boolean> = {
-  name: 'Subs To He/Him',
+  name: 'Subs Para Ele',
   component: CheckboxInput,
 };
 
 export const well_trained__prefers_females: Feature<boolean> = {
-  name: 'Subs To She/Her',
+  name: 'Substitua-a',
   component: CheckboxInput,
 };
 
 export const well_trained__prefers_plurals: Feature<boolean> = {
-  name: 'Subs To They/Them',
+  name: 'Subs Para Eles/Eles',
   component: CheckboxInput,
 };
 
 export const well_trained__prefers_neuters: Feature<boolean> = {
-  name: 'Subs To It/Its',
+  name: 'Subs para ele / Its',
   component: CheckboxInput,
 };
 
 export const well_trained__prefers_other: Feature<boolean> = {
-  name: 'Subs To Any Other Genders',
+  name: 'Subs A qualquer outro gênero',
   component: CheckboxInput,
 };
 
 export const well_trained__snap: Feature<boolean> = {
-  name: 'Be Commanded With *snap',
+  name: 'Ser comandado com *snap',
   component: CheckboxInput,
 };
 
 export const well_trained__snap2: Feature<boolean> = {
-  name: 'Be Commanded With *snap2',
+  name: 'Seja comandado com *snap2',
   component: CheckboxInput,
 };
 
 export const well_trained__snap3: Feature<boolean> = {
-  name: 'Be Commanded With *snap3',
+  name: 'Seja comandado com *snap3',
   component: CheckboxInput,
 };
 
 export const well_trained__clicker: Feature<boolean> = {
-  name: 'Be Commanded With Clicker',
+  name: 'Seja comandado com Clicker',
   component: CheckboxInput,
 };
 
 export const well_trained__sub_inspect_dom: Feature<boolean> = {
-  name: 'Be Embarassed Upon Examining Dom',
+  name: 'Seja embalado ao examinar Dom',
   component: CheckboxInput,
   description:
-    'If unchecked, you will not blush and turn when inspecting a compatible dom. ',
+    'Se descontrolado, você não vai corar e virar quando inspecionar um Dom compatível.',
 };
 
 export const well_trained__sub_sense_dom: Feature<boolean> = {
-  name: 'Dom Sense',
+  name: 'Dom Senso',
   component: CheckboxInput,
   description:
-    'If unchecked, you will not be alerted to the presence of compatible doms automatically, and will not recieve a positive moodlet for being near them. ',
+    'Se descontrolado, você não será alertado para a presença de doms compatíveis automaticamente, e não irá receber um moodlet positivo por estar perto deles.',
 };

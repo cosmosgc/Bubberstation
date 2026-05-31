@@ -254,7 +254,7 @@ ADMIN_VERB(centcom_podlauncher, R_ADMIN, "Config/Launch Supplypod", "Configure a
 		if("teleportBack") //After teleporting to centcom/dropoff, this button allows the user to teleport to the last spot they were at.
 			var/mob/M = holder.mob
 			if (!oldTurf) //If theres no turf to go back to, error and cancel
-				to_chat(M, "Nowhere to jump to!")
+				to_chat(M, "Não tem para onde pular!")
 				return
 			M.forceMove(oldTurf) //Perform the actual teleport
 			if (holder.holder)
@@ -294,11 +294,11 @@ ADMIN_VERB(centcom_podlauncher, R_ADMIN, "Config/Launch Supplypod", "Configure a
 			var/list/expNames = list("Devastation", "Heavy Damage", "Light Damage", "Flame", "Flash") //Explosions have a range of different types of damage
 			var/list/boomInput = list()
 			for (var/i=1 to length(expNames)) //Gather input from the user for the value of each type of damage
-				boomInput.Add(input("Enter the [expNames[i]] range of the explosion. WARNING: This ignores the bomb cap!", "[expNames[i]] Range",  0) as null|num)
+				boomInput.Add(input("Entre.[expNames[i]]Alcance da explosão. Isso ignora o boné da bomba!", "[expNames[i]]Distância",  0) as null|num)
 				if (isnull(boomInput[i]))
 					return
 				if (!isnum(boomInput[i])) //If the user doesn't input a number, set that specific explosion value to zero
-					tgui_alert(usr, "That wasn't a number! Value set to default (zero) instead.")
+					tgui_alert(usr, "Não era um número! Valor definido como padrão (zero) em vez disso.")
 					boomInput[i] = 0
 			explosionChoice = 1
 			temp_pod.explosionSize = boomInput
@@ -316,11 +316,11 @@ ADMIN_VERB(centcom_podlauncher, R_ADMIN, "Config/Launch Supplypod", "Configure a
 				damageChoice = 0
 				temp_pod.damage = 0
 				return
-			var/damageInput = input("Enter the amount of brute damage dealt by getting hit","How much damage to deal",  0) as null|num
+			var/damageInput = input("Introduza a quantidade de dano bruto causado por ser atingido.","Quanto dano para lidar",  0) as null|num
 			if (isnull(damageInput))
 				return
 			if (!isnum(damageInput)) //Sanitize the input for damage to deal.s
-				tgui_alert(usr, "That wasn't a number! Value set to default (zero) instead.")
+				tgui_alert(usr, "Não era um número! Valor definido como padrão (zero) em vez disso.")
 				damageInput = 0
 			damageChoice = 1
 			temp_pod.damage = damageInput
@@ -354,14 +354,14 @@ ADMIN_VERB(centcom_podlauncher, R_ADMIN, "Config/Launch Supplypod", "Configure a
 			if (temp_pod.effectShrapnel == TRUE) //If already doing custom damage, set back to default (no shrapnel)
 				temp_pod.effectShrapnel = FALSE
 				return
-			var/shrapnelInput = input("Please enter the type of pellet cloud you'd like to create on landing (Can be any projectile!)", "Projectile Typepath",  0) in sort_list(subtypesof(/obj/projectile), GLOBAL_PROC_REF(cmp_typepaths_asc))
+			var/shrapnelInput = input("Por favor, insira o tipo de nuvem de pellet que você gostaria de criar na aterrissagem (pode ser qualquer projétil!)", "Tipo de Projétil",  0) in sort_list(subtypesof(/obj/projectile), GLOBAL_PROC_REF(cmp_typepaths_asc))
 			if (isnull(shrapnelInput))
 				return
-			var/shrapnelMagnitude = input("Enter the magnitude of the pellet cloud. This is usually a value around 1-5. Please note that Ryll-Ryll has asked me to tell you that if you go too crazy with the projectiles you might crash the server. So uh, be gentle!", "Shrapnel Magnitude", 0) as null|num
+			var/shrapnelMagnitude = input("Introduza a magnitude da nuvem. Isso geralmente é um valor em torno de 1-5. Por favor, note que Ryll-Ryll me pediu para dizer que se você enlouquecer com os projéteis você pode invadir o servidor. Então, seja gentil!", "Estilhaço Magnitude", 0) as null|num
 			if (isnull(shrapnelMagnitude))
 				return
 			if (!isnum(shrapnelMagnitude))
-				tgui_alert(usr, "That wasn't a number! Value set to 3 instead.")
+				tgui_alert(usr, "Não era um número! Valor ajustado para 3.")
 				shrapnelMagnitude = 3
 			temp_pod.shrapnel_type = shrapnelInput
 			temp_pod.shrapnel_magnitude = shrapnelMagnitude
@@ -454,7 +454,7 @@ ADMIN_VERB(centcom_podlauncher, R_ADMIN, "Config/Launch Supplypod", "Configure a
 				temp_pod.fallingSound = initial(temp_pod.fallingSound)
 				temp_pod.fallingSoundLength = initial(temp_pod.fallingSoundLength)
 				return
-			var/soundInput = input(holder, "Please pick a sound file to play when the pod lands! Sound will start playing and try to end when the pod lands.\nSound MUST be shorter then sum of FALL and PRE.", "Pick a Sound File") as null|sound
+			var/soundInput = input(holder, "Por favor, escolha um arquivo de som para tocar quando a cápsula pousar! O som começará a tocar e tentará terminar quando a cápsula pousar.\nO som deve ser mais curto do que a soma de quedas e pre.", "Escolha um arquivo de som") as null|sound
 			if (isnull(soundInput))
 				return
 			var/sound/tempSound = sound(soundInput)
@@ -473,7 +473,7 @@ ADMIN_VERB(centcom_podlauncher, R_ADMIN, "Config/Launch Supplypod", "Configure a
 				if (isnull(soundLen))
 					return
 				if (!isnum(soundLen))
-					tgui_alert(usr, "That wasn't a number! Value set to default ([initial(temp_pod.fallingSoundLength)*0.1]) instead.")
+					tgui_alert(usr, "Não era um número! Valor definido como padrão ([initial(temp_pod.fallingSoundLength)*0.1]Em vez disso.")
 			temp_pod.fallingSound = soundInput
 			temp_pod.fallingSoundLength = soundLen
 			. = TRUE
@@ -481,7 +481,7 @@ ADMIN_VERB(centcom_podlauncher, R_ADMIN, "Config/Launch Supplypod", "Configure a
 			if (!isnull(temp_pod.landingSound))
 				temp_pod.landingSound = null
 				return
-			var/soundInput = input(holder, "Please pick a sound file to play when the pod lands! I reccomend a nice \"oh shit, i'm sorry\", incase you hit someone with the pod.", "Pick a Sound File") as null|sound
+			var/soundInput = input(holder, "Por favor, escolha um arquivo de som para tocar quando a cápsula pousar! Recomendo uma boa\"Merda, me desculpe.\"Caso acerte alguém com a cápsula.", "Escolha um arquivo de som") as null|sound
 			if (isnull(soundInput))
 				return
 			temp_pod.landingSound = soundInput
@@ -490,7 +490,7 @@ ADMIN_VERB(centcom_podlauncher, R_ADMIN, "Config/Launch Supplypod", "Configure a
 			if (!isnull(temp_pod.openingSound))
 				temp_pod.openingSound = null
 				return
-			var/soundInput = input(holder, "Please pick a sound file to play when the pod opens! I reccomend a stock sound effect of kids cheering at a party, incase your pod is full of fun exciting stuff!", "Pick a Sound File") as null|sound
+			var/soundInput = input(holder, "Por favor, escolha um arquivo de som para tocar quando a cápsula abrir! Recomendo um efeito de ação de crianças torcendo em uma festa, caso sua cápsula esteja cheia de coisas divertidas e excitantes!", "Escolha um arquivo de som") as null|sound
 			if (isnull(soundInput))
 				return
 			temp_pod.openingSound = soundInput
@@ -499,7 +499,7 @@ ADMIN_VERB(centcom_podlauncher, R_ADMIN, "Config/Launch Supplypod", "Configure a
 			if (!isnull(temp_pod.leavingSound))
 				temp_pod.leavingSound = null
 				return
-			var/soundInput = input(holder, "Please pick a sound file to play when the pod leaves! I reccomend a nice slide whistle sound, especially if you're using the reverse pod effect.", "Pick a Sound File") as null|sound
+			var/soundInput = input(holder, "Por favor, escolha um arquivo de som para tocar quando a cápsula sair! Recomendo um bom som, especialmente se estiver usando o efeito inverso.", "Escolha um arquivo de som") as null|sound
 			if (isnull(soundInput))
 				return
 			temp_pod.leavingSound = soundInput
@@ -508,7 +508,7 @@ ADMIN_VERB(centcom_podlauncher, R_ADMIN, "Config/Launch Supplypod", "Configure a
 			if (temp_pod.soundVolume != initial(temp_pod.soundVolume))
 				temp_pod.soundVolume = initial(temp_pod.soundVolume)
 				return
-			var/soundInput = input(holder, "Please pick a volume. Default is between 4 and 100 with 50 being average, but pick whatever. I'm a notification, not a cop. If you still cant hear your sound, consider turning on the Quiet effect. It will silence all pod sounds except for the custom admin ones set by the previous three buttons.", "Pick Admin Sound Volume") as null|num
+			var/soundInput = input(holder, "Por favor, escolha um volume. O padrão é entre 4 e 100 com 50 sendo média, mas escolha o que quiser. Eu sou uma notificação, não um policial. Se ainda não consegue ouvir seu som, considere ligar o efeito Silêncio. Vai silenciar todos os sons da cápsula, exceto os da administração, definidos pelos três botões anteriores.", "Escolha o volume de som do administrador") as null|num
 			if (isnull(soundInput))
 				return
 			temp_pod.soundVolume = soundInput
@@ -537,7 +537,7 @@ ADMIN_VERB(centcom_podlauncher, R_ADMIN, "Config/Launch Supplypod", "Configure a
 			updateSelector()
 			. = TRUE
 		if("clearBay") //Delete all mobs and objs in the selected bay
-			if(tgui_alert(usr, "This will delete all objs and mobs in [bay]. Are you sure?", "Confirmation", list("Delete that shit", "No")) == "Delete that shit")
+			if(tgui_alert(usr, "Isso apagará todos os objs e multidões.[bay]Tem certeza?", "Confirmation", list("Delete that shit", "No")) == "Delete that shit")
 				clearBay()
 				refreshBay()
 			. = TRUE
@@ -638,7 +638,7 @@ ADMIN_VERB(centcom_podlauncher, R_ADMIN, "Config/Launch Supplypod", "Configure a
 			var/turf/target_turf = get_turf(target)
 			setDropoff(target_turf)
 			customDropoff = TRUE
-			to_chat(user, span_notice("You've selected [target_turf] at [COORD(target_turf)] as your dropoff location."))
+			to_chat(user, span_notice("Você escolheu[target_turf]em[COORD(target_turf)]como seu local de entrega."))
 
 /datum/centcom_podlauncher/proc/refreshView()
 	switch(tabIndex)
@@ -657,7 +657,7 @@ ADMIN_VERB(centcom_podlauncher, R_ADMIN, "Config/Launch Supplypod", "Configure a
 
 /datum/centcom_podlauncher/proc/createOrderedArea(area/area_to_order) //This assumes the area passed in is a continuous square
 	if (isnull(area_to_order)) //If theres no supplypod bay mapped into centcom, throw an error
-		to_chat(holder.mob, "No /area/centcom/central_command_areas/supplypod/loading/one (or /two or /three or /four) in the world! You can make one yourself (then refresh) for now, but yell at a mapper to fix this, today!")
+		to_chat(holder.mob, "Nenhuma área/centcom/central command areas/supplypod/loading/um (ou dois ou três ou quatro) no mundo! Você pode fazer um você mesmo (então se refrescar) por enquanto, mas grite com um mapper para consertar isso, hoje!")
 		CRASH("No /area/centcom/central_command_areas/supplypod/loading/one (or /two or /three or /four) has been mapped into the centcom z-level!")
 	orderedArea = list()
 	if (length(area_to_order.contents)) //Go through the area passed into the proc, and figure out the top left and bottom right corners by calculating max and min values

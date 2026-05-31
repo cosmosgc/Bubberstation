@@ -2,8 +2,7 @@
 /// Acts as a GPS beacon & connects to station crew monitors from lavaland
 /obj/item/clothing/accessory/kheiral_cuffs
 	name = "\improper Kheiral cuffs"
-	desc = "A prototype wrist communicator powered by Kheiral Matter. When both ends are clamped to one wrist, acts as a signal range booster for your suit sensors.\n\
-		A small engraving on the inside reads, \"NOT HANDCUFFS\"."
+	desc = "Um protótipo de comunicador de pulso alimentado por Kheiral Matter. Quando ambas as extremidades são presas em um pulso, age como um reforço de alcance de sinal para seus sensores de terno.\nUma pequena gravidade no interior diz,\"NÃO MÃOS\"."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "strand"
 	worn_icon = 'icons/mob/clothing/hands.dmi'
@@ -36,7 +35,7 @@
 /obj/item/clothing/accessory/kheiral_cuffs/examine(mob/user)
 	. = ..()
 	if(gps_enabled)
-		. += span_notice("The cuff's GPS signal is on.")
+		. += span_notice("O sinal do GPS da algema está ligado.")
 
 /obj/item/clothing/accessory/kheiral_cuffs/equipped(mob/user, slot, initial)
 	. = ..()
@@ -64,7 +63,7 @@
 	if(id_card)
 		gps_name = id_card.registered_name
 	AddComponent(/datum/component/gps/kheiral_cuffs, "*[gps_name]'s Kheiral Link")
-	balloon_alert(user, "gps activated")
+	balloon_alert(user, "GPS ativado")
 	ADD_TRAIT(user, TRAIT_MULTIZ_SUIT_SENSORS, REF(src))
 	gps_enabled = TRUE
 
@@ -74,7 +73,7 @@
 		return
 	if(on_wrist && far_from_home)
 		return
-	balloon_alert(user, "gps de-activated") // GPS component deletes itself when we get on-Z
+	balloon_alert(user, "GPS Desativado.") // GPS component deletes itself when we get on-Z
 	REMOVE_TRAIT(user, TRAIT_MULTIZ_SUIT_SENSORS, REF(src))
 	gps_enabled = FALSE
 
@@ -114,14 +113,14 @@
 		return
 
 	var/mob/living/carbon/human/victim = user
-	victim.visible_message(span_suicide("[user] locks [src] around their neck, wrinkles forming across their face. It looks like [user.p_theyre()] trying to commit suicide!"))
+	victim.visible_message(span_suicide("[user]Fechaduras[src]em volta do pescoço, rugas se formando em seu rosto. Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	for(var/mult in 1 to 5) // Rapidly age
 		if(!do_after(victim, 0.5 SECONDS)) // just to space out the aging, either way you still dust.
 			break
 		var/before_age = victim.age
 		victim.age = round((victim.age * 1.5),1)
-		to_chat(victim, span_danger("You age [(victim.age - before_age)] years!"))
+		to_chat(victim, span_danger("Você envelhece.[(victim.age - before_age)]Anos!"))
 
-	to_chat(victim, span_danger("At the ripe age of [victim.age], your cells fail their cycle of mitosis, allowing the sands of time to wash over you."))
+	to_chat(victim, span_danger("Na idade madura de[victim.age]Suas células falham seu ciclo de mitose, permitindo que as areias do tempo se lavem sobre você."))
 	victim.dust(TRUE, TRUE, TRUE)
 	return MANUAL_SUICIDE

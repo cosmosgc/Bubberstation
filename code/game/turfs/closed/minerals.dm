@@ -164,7 +164,7 @@
 
 /turf/closed/mineral/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers, exp_multiplier = 1)
 	if (!ISADVANCEDTOOLUSER(user))
-		to_chat(usr, span_warning("You don't have the dexterity to do this!"))
+		to_chat(usr, span_warning("Você não tem a destreza de fazer isso!"))
 		return
 
 	if(I.tool_behaviour != TOOL_MINING)
@@ -198,7 +198,7 @@
 	var/mining_speed = mining_arms ? tool_mine_speed : hand_mine_speed
 	TIMER_COOLDOWN_START(src, REF(user), mining_speed)
 	var/skill_modifier = user.mind?.get_skill_modifier(/datum/skill/mining, SKILL_SPEED_MODIFIER) || 1
-	balloon_alert(user, "pulling out pieces...")
+	balloon_alert(user, "Tirando peças...")
 	if(!do_after(user, mining_speed * skill_modifier, target = src))
 		TIMER_COOLDOWN_END(src, REF(user)) //if we fail we can start again immediately
 		return
@@ -764,12 +764,12 @@
 
 /turf/closed/mineral/random/stationside/asteroid/porus
 	name = "porous iron rock"
-	desc = "This rock is filled with pockets of breathable air."
+	desc = "Esta rocha está cheia de bolsas de ar respirável."
 	baseturfs = /turf/open/misc/asteroid
 
 /turf/closed/mineral/asteroid/porous
 	name = "porous rock"
-	desc = "This rock is filled with pockets of breathable air."
+	desc = "Esta rocha está cheia de bolsas de ar respirável."
 	baseturfs = /turf/open/misc/asteroid
 
 //GIBTONITE
@@ -791,25 +791,25 @@
 /turf/closed/mineral/gibtonite/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers, exp_multiplier = 1)
 	var/previous_stage = stage
 	if(istype(attacking_item, /obj/item/goliath_infuser_hammer) && stage == GIBTONITE_ACTIVE)
-		user.visible_message(span_notice("[user] digs [attacking_item] to [src]..."), span_notice("Your tendril hammer instictively digs and wraps around [src] to stop it..."))
+		user.visible_message(span_notice("[user]Escava.[attacking_item]Para[src]..."), span_notice("Seu martelo tendil escava e enrola instictivamente[src]Para parar..."))
 		defuse(user)
 	else if(istype(attacking_item, /obj/item/mining_scanner) || istype(attacking_item, /obj/item/t_scanner/adv_mining_scanner) && stage == GIBTONITE_ACTIVE)
-		user.visible_message(span_notice("[user] holds [attacking_item] to [src]..."), span_notice("You use [attacking_item] to locate where to cut off the chain reaction and attempt to stop it..."))
+		user.visible_message(span_notice("[user]Segura.[attacking_item]Para[src]..."), span_notice("Você usa[attacking_item]Para localizar onde cortar a reação em cadeia e tentar pará-la..."))
 		defuse(user)
 	. = ..()
 	if(istype(attacking_item, /obj/item/clothing/gloves/gauntlets) && previous_stage == GIBTONITE_UNSTRUCK && stage == GIBTONITE_ACTIVE && istype(user))
 		user.Immobilize(0.5 SECONDS)
 		user.throw_at(get_ranged_target_turf(src, get_dir(src, user), 5), range = 5, speed = 3, spin = FALSE)
-		user.visible_message(span_danger("[user] hit gibtonite with [attacking_item.name], launching [user.p_them()] back!"), span_danger("You've struck gibtonite! Your [attacking_item.name] launched you back!"))
+		user.visible_message(span_danger("[user]Bata em gibtonita com[attacking_item.name], lançando[user.p_them()]Para trás!"), span_danger("Você bateu em gibtonita! Sua[attacking_item.name]lançá-lo de volta!"))
 
 /turf/closed/mineral/gibtonite/proc/explosive_reaction(mob/user = null)
 	if(stage == GIBTONITE_UNSTRUCK)
 		activated_overlay = mutable_appearance('icons/turf/smoothrocks_overlays.dmi', "rock_Gibtonite_inactive", ON_EDGED_TURF_LAYER) //shows in gaps between pulses if there are any
 		add_overlay(activated_overlay)
 		name = "gibtonite deposit"
-		desc = "An active gibtonite reserve. Run!"
+		desc = "Uma reserva de gibtonita ativa. Corra!"
 		stage = GIBTONITE_ACTIVE
-		visible_message(span_danger("There's gibtonite inside! It's going to explode!"))
+		visible_message(span_danger("Tem gibtonita lá dentro! Vai explodir!"))
 
 		var/notify_admins = !is_mining_level(z)
 
@@ -838,11 +838,11 @@
 		cut_overlay(activated_overlay)
 		activated_overlay.icon_state = "rock_Gibtonite_inactive"
 		add_overlay(activated_overlay)
-		desc = "An inactive gibtonite reserve. The ore can be extracted."
+		desc = "Uma reserva de gibtonita inativa. O minério pode ser extraído."
 		stage = GIBTONITE_STABLE
 		if(det_time < 0)
 			det_time = 0
-		visible_message(span_notice("The chain reaction stopped! The gibtonite had [det_time] reactions left till the explosion!"))
+		visible_message(span_notice("A reação em cadeia parou! A gibtonita tinha[det_time]Reações deixadas até a explosão!"))
 		if(defuser)
 			SEND_SIGNAL(defuser, COMSIG_LIVING_DEFUSED_GIBTONITE, det_time)
 
@@ -905,7 +905,7 @@
 
 /turf/closed/mineral/strong
 	name = "Very strong rock"
-	desc = "Seems to be stronger than the other rocks in the area. Only a master of mining techniques could destroy this."
+	desc = "Parece ser mais forte que as outras rochas da área. Só um mestre em técnicas de mineração poderia destruir isso."
 	turf_type = /turf/open/misc/asteroid/basalt/lava_land_surface
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -916,12 +916,12 @@
 
 /turf/closed/mineral/strong/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers, exp_multiplier = 1)
 	if(!ishuman(user))
-		to_chat(usr, span_warning("Only a more advanced species could break a rock such as this one!"))
+		to_chat(usr, span_warning("Só uma espécie mais avançada poderia quebrar uma rocha como esta!"))
 		return FALSE
 	if(user.mind?.get_skill_level(/datum/skill/mining) >= SKILL_LEVEL_MASTER)
 		. = ..()
 	else
-		to_chat(usr, span_warning("The rock seems to be too strong to destroy. Maybe I can break it once I become a master miner."))
+		to_chat(usr, span_warning("A rocha parece ser muito forte para destruir. Talvez eu possa quebrá-lo quando me tornar um mestre mineiro."))
 
 
 /turf/closed/mineral/strong/gets_drilled(mob/user, exp_multiplier = 0)

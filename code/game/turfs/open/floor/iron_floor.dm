@@ -12,7 +12,7 @@
 
 /turf/open/floor/iron/examine(mob/user)
 	. = ..()
-	. += span_notice("There's a <b>small crack</b> on the edge of it.")
+	. += span_notice("Tem um...<b>pequena rachadura</b>no limite.")
 
 /turf/open/floor/iron/update_icon_state()
 	if(broken || burnt)
@@ -482,7 +482,7 @@
 
 /turf/open/floor/iron/goonplaque
 	name = "commemorative plaque"
-	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding."
+	desc = "\"Esta é uma placa em honra de nossos camaradas nas Estações G4407. Espero que o modelo TG4407 possa cumprir sua fama e fortuna.\"Arranhado embaixo, há uma imagem grosseira de um meteoro e um homem do espaço. O homem do espaço está rindo. O meteoro está explodindo."
 	icon_state = "plaque"
 	base_icon_state = "plaque"
 	tiled_turf = FALSE
@@ -527,11 +527,11 @@
 /turf/open/floor/iron/bluespace
 	icon_state = "bluespace"
 	base_icon_state = "bluespace"
-	desc = "Sadly, these don't seem to make you faster..."
+	desc = "Infelizmente, isso não faz você mais rápido..."
 	floor_tile = /obj/item/stack/tile/iron/bluespace
 
 /turf/open/floor/iron/sepia
 	icon_state = "sepia"
 	base_icon_state = "sepia"
-	desc = "Well, the flow of time is normal on these tiles, weird."
+	desc = "Bem, o fluxo de tempo é normal nesses azulejos, estranho."
 	floor_tile = /obj/item/stack/tile/iron/sepia

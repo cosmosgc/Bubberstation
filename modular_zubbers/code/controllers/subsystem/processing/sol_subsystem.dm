@@ -33,8 +33,8 @@ PROCESSING_SUBSYSTEM_DEF(sunlight)
 			SEND_SIGNAL(src, COMSIG_SOL_END)
 			warn_daylight(
 				danger_level = DANGER_LEVEL_SOL_ENDED,
-				vampire_warning_message = span_announce("The solar flare has ended, and the daylight danger has passed... for now."),
-				ghoul_warning_message = span_announce("The solar flare has ended, and the daylight danger has passed... for now."),
+				vampire_warning_message = span_announce("A erupção solar terminou, e o perigo da luz do dia passou... por enquanto."),
+				ghoul_warning_message = span_announce("A erupção solar terminou, e o perigo da luz do dia passou... por enquanto."),
 			)
 		return ..()
 
@@ -43,19 +43,19 @@ PROCESSING_SUBSYSTEM_DEF(sunlight)
 			SEND_SIGNAL(src, COMSIG_SOL_NEAR_START)
 			warn_daylight(
 				danger_level = DANGER_LEVEL_FIRST_WARNING,
-				vampire_warning_message = span_danger("Solar Flares will bombard the station with dangerous UV radiation in [TIME_BLOODSUCKER_DAY_WARN / 60] minutes. <b>Prepare to seek cover in a coffin or closet.</b>"),
+				vampire_warning_message = span_danger("Chamas solares bombardearão a estação com perigosa radiação UV.[TIME_BLOODSUCKER_DAY_WARN / 60]minutos.<b>Prepare-se para procurar cobertura em um caixão ou armário.</b>"),
 			)
 		if(TIME_BLOODSUCKER_DAY_FINAL_WARN)
 			message_admins("BLOODSUCKER NOTICE: Daylight beginning in [TIME_BLOODSUCKER_DAY_FINAL_WARN] seconds.)")
 			warn_daylight(
 				danger_level = DANGER_LEVEL_SECOND_WARNING,
-				vampire_warning_message = span_userdanger("Solar Flares are about to bombard the station! You have [TIME_BLOODSUCKER_DAY_FINAL_WARN] seconds to find cover!"),
-				ghoul_warning_message = span_danger("In [TIME_BLOODSUCKER_DAY_FINAL_WARN] seconds, your master will be at risk of a Solar Flare. Make sure they find cover!"),
+				vampire_warning_message = span_userdanger("As chamas solares estão prestes a bombardear a estação! Você tem[TIME_BLOODSUCKER_DAY_FINAL_WARN]Segundos para achar cobertura!"),
+				ghoul_warning_message = span_danger("Em.[TIME_BLOODSUCKER_DAY_FINAL_WARN]segundos, seu mestre estará em risco de uma chama solar. Certifique-se de que encontrem cobertura!"),
 			)
 		if(TIME_BLOODSUCKER_BURN_INTERVAL)
 			warn_daylight(
 				danger_level = DANGER_LEVEL_THIRD_WARNING,
-				vampire_warning_message = span_userdanger("Seek cover, for Sol rises!"),
+				vampire_warning_message = span_userdanger("Procuram a Cobertura, Sol soberbo!"),
 			)
 		if(NONE)
 			sunlight_active = TRUE
@@ -64,8 +64,8 @@ PROCESSING_SUBSYSTEM_DEF(sunlight)
 			message_admins("BLOODSUCKER NOTICE: Daylight Beginning (Lasts for [TIME_BLOODSUCKER_DAY / 60] minutes.)")
 			warn_daylight(
 				danger_level = DANGER_LEVEL_SOL_ROSE,
-				vampire_warning_message = span_userdanger("Solar flares bombard the station with deadly UV light! Stay in cover for the next [TIME_BLOODSUCKER_DAY / 60] minutes or risk Final Death!"),
-				ghoul_warning_message = span_userdanger("Solar flares bombard the station with UV light!"),
+				vampire_warning_message = span_userdanger("Explosões solares bombardeiam a estação com luz UV mortal! Fique em cobertura para o próximo[TIME_BLOODSUCKER_DAY / 60]minutos ou arriscar a morte final!"),
+				ghoul_warning_message = span_userdanger("Explosões solares bombardeiam a estação com luz UV!"),
 			)
 	..()
 

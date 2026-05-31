@@ -30,23 +30,23 @@
 					icon_state = "chalkboard_filled"
 					update_appearance()
 		else
-			to_chat(user, span_warning("It appears there's no more space on the chalkboard..."))
+			to_chat(user, span_warning("Parece que não há mais espaço no quadro..."))
 	else if(istype(attacking_item, /obj/item/toy/crayon/green)) //What are you, stupid?
 		tgui_input_text(user, "What would you like to write on the chalkboard?", "Lecture time!", max_length = CHAT_MESSAGE_MAX_LENGTH, multiline = TRUE) //Fake them out.
 		if(do_after(user, 5 SECONDS, target = src))
-			to_chat(user, span_warning("Green chalk on a green board isn't a very good idea. It seems you need some white crayon to write on this. Idiot."))
+			to_chat(user, span_warning("Giz verde em um quadro verde não é uma boa ideia. Parece que precisa de lápis branco para escrever sobre isso. Idiota."))
 			if(ishuman(user))
 				var/mob/living/carbon/human/idiot = user
 				idiot.add_mood_event("chalkboard", /datum/mood_event/green_idiot)
-	else to_chat(user, span_warning("It seems you need some white crayon to write on this."))
+	else to_chat(user, span_warning("Parece que precisa de lápis branco para escrever sobre isso."))
 
 /obj/structure/chalkboard/attack_hand_secondary(mob/user)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
-	to_chat(user, span_warning("You pick up the eraser and begin to clear the board."))
+	to_chat(user, span_warning("Você pega a borracha e começa a limpar o tabuleiro."))
 	if(!written_text)
-		to_chat(user, span_warning("You pick up the eraser and give the board a few pap-paps, but it has nothing on it to erase."))
+		to_chat(user, span_warning("Você pega a borracha e dá ao conselho alguns papis, mas não tem nada para apagar."))
 		if(ishuman(user))
 			var/mob/living/carbon/human/papper = user
 			papper.add_mood_event("chalkboard", /datum/mood_event/cathartic_eraser)
@@ -59,7 +59,7 @@
 /obj/structure/chalkboard/wrench_act_secondary(mob/living/user, obj/item/tool)
 	if(obj_flags & NO_DEBRIS_AFTER_DECONSTRUCTION)
 		return FALSE
-	to_chat(user, span_notice("You start deconstructing [src]..."))
+	to_chat(user, span_notice("Você começa a desconstruir[src]..."))
 	if(tool.use_tool(src, user, 4 SECONDS, volume=50))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 		deconstruct()
@@ -72,11 +72,11 @@
 	qdel(src)
 
 /datum/mood_event/cathartic_eraser
-	description = "Gave the chalkboard a few paps with the eraser. It makes you feel a little better."
+	description = "Dei ao quadro alguns papis com a borracha. Faz você se sentir um pouco melhor."
 	mood_change = 1
 	timeout = 1 MINUTES
 
 /datum/mood_event/green_idiot
-	description = "I tried to write on the chalkboard, which is green, with a green crayon. I feel dumb."
+	description = "Tentei escrever no quadro, que é verde, com um lápis de cor verde. Me sinto idiota."
 	mood_change = -1
 	timeout = 1 MINUTES

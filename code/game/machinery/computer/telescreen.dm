@@ -1,6 +1,6 @@
 /obj/machinery/computer/security/telescreen
 	name = "\improper Telescreen"
-	desc = "Used for watching an empty arena."
+	desc = "Usado para ver uma arena vazia."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "telescreen"
 	icon_keyboard = null
@@ -21,7 +21,7 @@
 
 /obj/item/wallframe/telescreen
 	name = "telescreen frame"
-	desc = "A wall-mountable telescreen frame. Apply to wall to use."
+	desc = "Um quarto de tele-tela montado na parede. Aplicar na parede para usar."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "telescreen"
 	result_path = /obj/machinery/computer/security/telescreen
@@ -38,7 +38,7 @@
 
 /obj/machinery/computer/security/telescreen/entertainment
 	name = "entertainment monitor"
-	desc = "Damn, they better have the /tg/ channel on these things."
+	desc = "Droga, é melhor que eles tenham o canal /tg/ nessas coisas."
 	icon = 'icons/obj/machines/status_display.dmi'
 	icon_state = "entertainment_frame"
 	icon_screen = "entertainment_blank"
@@ -86,8 +86,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/entertai
 
 /obj/machinery/computer/security/telescreen/entertainment/examine(mob/user)
 	. = ..()
-	. += length(network) ? span_notice("The TV is broadcasting something!") : span_notice("<i>There's nothing on TV.</i>")
-	. += span_notice("The volume is currently [speakers.should_be_listening ? "on" : "off"].")
+	. += length(network) ? span_notice("A TV está transmitindo algo!") : span_notice("<i>Não há nada na TV.</i>")
+	. += span_notice("O volume está atualmente[speakers.should_be_listening ? "on" : "off"].")
 
 /obj/machinery/computer/security/telescreen/entertainment/ui_state(mob/user)
 	return GLOB.always_state
@@ -203,7 +203,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/entertai
 
 /obj/machinery/computer/security/telescreen/rd
 	name = "\improper Research Director's telescreen"
-	desc = "Used for watching the AI and the RD's goons from the safety of his office."
+	desc = "Usado para vigiar a IA e os capangas da RD da segurança de seu escritório."
 	network = list(
 		CAMERANET_NETWORK_RD,
 		CAMERANET_NETWORK_AI_CORE,
@@ -223,7 +223,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/rd, 32)
 
 /obj/machinery/computer/security/telescreen/research
 	name = "research telescreen"
-	desc = "A telescreen with access to the research division's camera network."
+	desc = "Uma tela com acesso à rede de câmeras da divisão de pesquisa."
 	network = list(CAMERANET_NETWORK_RD)
 	frame_type = /obj/item/wallframe/telescreen/research
 
@@ -235,7 +235,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/research
 
 /obj/machinery/computer/security/telescreen/ce
 	name = "\improper Chief Engineer's telescreen"
-	desc = "Used for watching the engine, telecommunications and the minisat."
+	desc = "Usado para ver o motor, as telecomunicações e o minisat."
 	network = list(CAMERANET_NETWORK_ENGINE, CAMERANET_NETWORK_TELECOMMS, CAMERANET_NETWORK_MINISAT)
 	frame_type = /obj/item/wallframe/telescreen/ce
 
@@ -247,7 +247,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/ce, 32)
 
 /obj/machinery/computer/security/telescreen/cmo
 	name = "\improper Chief Medical Officer's telescreen"
-	desc = "A telescreen with access to the medbay's camera network."
+	desc = "Uma tela com acesso à rede de câmeras do Medbay."
 	network = list(CAMERANET_NETWORK_MEDBAY)
 	frame_type = /obj/item/wallframe/telescreen/cmo
 
@@ -259,7 +259,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/cmo, 32)
 
 /obj/machinery/computer/security/telescreen/med_sec
 	name = "\improper medical telescreen"
-	desc = "A telescreen with access to the medbay's camera network."
+	desc = "Uma tela com acesso à rede de câmeras do Medbay."
 	network = list(CAMERANET_NETWORK_MEDBAY)
 	frame_type = /obj/item/wallframe/telescreen/med_sec
 
@@ -271,7 +271,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/med_sec,
 
 /obj/machinery/computer/security/telescreen/vault
 	name = "vault monitor"
-	desc = "A telescreen that connects to the vault's camera network."
+	desc = "Uma tela que se conecta à rede de câmeras do cofre."
 	network = list(CAMERANET_NETWORK_VAULT)
 	frame_type = /obj/item/wallframe/telescreen/vault
 
@@ -283,7 +283,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/vault, 3
 
 /obj/machinery/computer/security/telescreen/ordnance
 	name = "bomb test site monitor"
-	desc = "A telescreen that connects to the bomb test site's camera."
+	desc = "Uma tela que se conecta à câmera do local de teste."
 	network = list(CAMERANET_NETWORK_ORDNANCE)
 	frame_type = /obj/item/wallframe/telescreen/ordnance
 
@@ -295,7 +295,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/ordnance
 
 /obj/machinery/computer/security/telescreen/engine
 	name = "engine monitor"
-	desc = "A telescreen that connects to the engine's camera network."
+	desc = "Uma tela que se conecta à rede de câmeras do motor."
 	network = list(CAMERANET_NETWORK_ENGINE)
 	frame_type = /obj/item/wallframe/telescreen/engine
 
@@ -308,7 +308,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/engine, 
 
 /obj/machinery/computer/security/telescreen/turbine
 	name = "turbine monitor"
-	desc = "A telescreen that connects to the turbine's camera."
+	desc = "Uma tela que se conecta à câmera da turbina."
 	network = list(CAMERANET_NETWORK_TURBINE)
 	frame_type = /obj/item/wallframe/telescreen/turbine
 
@@ -321,7 +321,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/turbine,
 
 /obj/machinery/computer/security/telescreen/interrogation
 	name = "interrogation room monitor"
-	desc = "A telescreen that connects to the interrogation room's camera."
+	desc = "Uma tela que se conecta à câmera da sala de interrogatório."
 	network = list(CAMERANET_NETWORK_INTERROGATION)
 	frame_type = /obj/item/wallframe/telescreen/interrogation
 
@@ -333,7 +333,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/interrog
 
 /obj/machinery/computer/security/telescreen/prison
 	name = "prison monitor"
-	desc = "A telescreen that connects to the permabrig's camera network."
+	desc = "Uma tela que se conecta à rede de câmeras do Permabrig."
 	network = list(CAMERANET_NETWORK_PRISON)
 	frame_type = /obj/item/wallframe/telescreen/prison
 
@@ -345,7 +345,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/prison, 
 
 /obj/machinery/computer/security/telescreen/auxbase
 	name = "auxiliary base monitor"
-	desc = "A telescreen that connects to the auxiliary base's camera."
+	desc = "Uma tela que se conecta à câmera da base auxiliar."
 	network = list(CAMERANET_NETWORK_AUXBASE)
 	frame_type = /obj/item/wallframe/telescreen/auxbase
 
@@ -358,7 +358,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/auxbase,
 
 /obj/machinery/computer/security/telescreen/minisat
 	name = "minisat monitor"
-	desc = "A telescreen that connects to the minisat's camera network."
+	desc = "Uma tela que se conecta à rede de câmeras do minisat."
 	network = list(CAMERANET_NETWORK_MINISAT)
 	frame_type = /obj/item/wallframe/telescreen/minisat
 
@@ -370,7 +370,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/minisat,
 
 /obj/machinery/computer/security/telescreen/aiupload
 	name = "\improper AI upload monitor"
-	desc = "A telescreen that connects to the AI upload's camera network."
+	desc = "Uma tela que se conecta à rede de câmeras da IA."
 	network = list(CAMERANET_NETWORK_AI_UPLOAD)
 	frame_type = /obj/item/wallframe/telescreen/aiupload
 
@@ -382,7 +382,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/aiupload
 
 /obj/machinery/computer/security/telescreen/bar
 	name = "bar monitor"
-	desc = "A telescreen that connects to the bar's camera network. Perfect for checking on customers."
+	desc = "Uma tela que se conecta à rede de câmeras do bar. Perfeito para verificar os clientes."
 	network = list(CAMERANET_NETWORK_BAR)
 	frame_type = /obj/item/wallframe/telescreen/bar
 
@@ -394,7 +394,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/bar, 32)
 
 /obj/machinery/computer/security/telescreen/isolation
 	name = "isolation cell monitor"
-	desc = "A telescreen that connects to the isolation cells camera network."
+	desc = "Uma tela que se conecta à rede de câmeras de células de isolamento."
 	network = list(CAMERANET_NETWORK_ISOLATION)
 	frame_type = /obj/item/wallframe/telescreen/bar
 
@@ -406,7 +406,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/isolatio
 
 /obj/machinery/computer/security/telescreen/normal
 	name = "security camera monitor"
-	desc = "A telescreen that connects to the stations camera network."
+	desc = "Uma tela que se conecta à rede de câmeras."
 	network = list(CAMERANET_NETWORK_SS13)
 	frame_type = /obj/item/wallframe/telescreen/normal
 
@@ -418,7 +418,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/normal, 
 
 /obj/machinery/computer/security/telescreen/tcomms
 	name = "tcomms camera monitor"
-	desc = "A telescreen that connects to the tcomms camera network."
+	desc = "Uma tela que se conecta à rede de câmeras tcomms."
 	network = list(CAMERANET_NETWORK_TELECOMMS)
 	frame_type = /obj/item/wallframe/telescreen/tcomms
 
@@ -430,7 +430,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/tcomms, 
 
 /obj/machinery/computer/security/telescreen/test_chamber
 	name = "xenobiology test chamber camera monitor"
-	desc = "A telescreen that connects to the xenobiology test chamber camera network."
+	desc = "Uma tela que se conecta à rede de câmeras de teste de xenobiologia."
 	network = list(CAMERANET_NETWORK_XENOBIOLOGY)
 	frame_type = /obj/item/wallframe/telescreen/test_chamber
 
@@ -442,7 +442,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/test_cha
 
 /obj/machinery/computer/security/telescreen/engine_waste
 	name = "\improper Engine Waste Monitor"
-	desc = "A telescreen that connects to the engine waste camera network."
+	desc = "Uma tela que se conecta à rede de câmeras de resíduos de motores."
 	network = list(CAMERANET_NETWORK_WASTE)
 	frame_type = /obj/item/wallframe/telescreen/engine_waste
 
@@ -454,7 +454,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/engine_w
 
 /obj/machinery/computer/security/telescreen/cargo_sec
 	name = "cargo camera monitor"
-	desc = "A telescreen that connects to the cargo and main station camera network."
+	desc = "Uma tela que se conecta à rede de câmeras de carga e estação principal."
 	network = list(CAMERANET_NETWORK_SS13,
 					CAMERA_NETWORK_CARGO,
 					)
@@ -471,7 +471,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/cargo_se
 
 /obj/machinery/computer/security/telescreen/moon_outpost/research
 	name = "research monitor"
-	desc = "Used for monitoring the research division and the labs within."
+	desc = "Usado para monitorar a divisão de pesquisa e os laboratórios internos."
 	network = list(CAMERANET_NETWORK_MOON19_RESEARCH,
 					CAMERANET_NETWORK_MOON19_XENO,
 					)
@@ -480,7 +480,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/moon_out
 
 /obj/machinery/computer/security/telescreen/moon_outpost/xenobio
 	name = "xenobiology monitor"
-	desc = "Used for watching the contents of the xenobiology containment pen."
+	desc = "Usado para ver o conteúdo da caneta de contenção de xenobiologia."
 	network = list(CAMERANET_NETWORK_MOON19_XENO)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/moon_outpost/xenobio, 32)
@@ -490,7 +490,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/moon_out
 
 /obj/machinery/computer/security/telescreen/underground_outpost/research
 	name = "research monitor"
-	desc = "Used for monitoring the research division and the labs within."
+	desc = "Usado para monitorar a divisão de pesquisa e os laboratórios internos."
 	network = list(CAMERANET_NETWORK_UGO45_RESEARCH)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/underground_outpost/research, 32)
@@ -517,7 +517,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/deep_sto
 /// A button that adds a camera network to the entertainment monitors
 /obj/machinery/button/showtime
 	name = "thunderdome showtime button"
-	desc = "Use this button to allow entertainment monitors to broadcast the big game."
+	desc = "Use este botão para permitir que monitores de entretenimento transmitam o grande jogo."
 	device_type = /obj/item/assembly/control/showtime
 	req_access = list()
 	id = "showtime_1"
@@ -530,7 +530,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/deep_sto
 
 /obj/item/assembly/control/showtime
 	name = "showtime controller"
-	desc = "A remote controller for entertainment monitors."
+	desc = "Um controlador remoto para monitores de entretenimento."
 	/// Stores if the show associated with this controller is active or not
 	var/is_show_active = FALSE
 	/// The camera network id this controller toggles
@@ -560,7 +560,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/deep_sto
 
 /obj/machinery/computer/security/telescreen/monastery
 	name = "monastery monitor"
-	desc = "A telescreen that connects to the monastery's camera network."
+	desc = "Uma tela que se conecta à rede de câmeras do mosteiro."
 	network = list(CAMERANET_NETWORK_MONASTERY)
 	frame_type = /obj/item/wallframe/telescreen/monastery
 

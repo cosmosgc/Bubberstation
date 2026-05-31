@@ -1,6 +1,6 @@
 /obj/item/clothing/under/ethereal_tunic
 	name = "ethereal tunic"
-	desc = "A simple sleeveless tunic worn over an undersuit, it glows in the dark!"
+	desc = "Uma simples túnica sem mangas usada sobre uma roupa íntima, brilha no escuro!"
 	icon = 'icons/map_icons/clothing/under/_under.dmi'
 	worn_icon = 'icons/mob/clothing/under/ethereal.dmi'
 	icon_state = "/obj/item/clothing/under/ethereal_tunic"
@@ -26,7 +26,7 @@
 
 /obj/item/clothing/under/ethereal_tunic/trailwarden
 	name = "trailwarden tunic"
-	desc = "Farmers and pilgrims would commonly find their clothes permanently stained from years of wading through the mud and bioluminescent flora of Sprout, eventually it became customary to dye clothes to replicate this effect purposefully."
+	desc = "Fazendeiros e peregrinos comumente encontrariam suas roupas permanentemente manchadas de anos andando através da lama e flora bioluminescente de Sprout, eventualmente tornou-se costume pintar roupas para replicar este efeito propositadamente."
 	icon_state = "/obj/item/clothing/under/ethereal_tunic/trailwarden"
 	greyscale_colors = "#32a87d"
 
@@ -34,6 +34,6 @@
 	. = ..()
 	if(isethereal(user) && (slot & ITEM_SLOT_ICLOTHING))
 		var/mob/living/carbon/human/ethereal = user
-		to_chat(ethereal, span_notice("[src] gently quivers for a moment as you put it on."))
+		to_chat(ethereal, span_notice("[src]gentilmente treme por um momento enquanto você coloca."))
 		set_greyscale(ethereal.dna.species.fixed_mut_color)
 		ethereal.update_worn_undersuit()

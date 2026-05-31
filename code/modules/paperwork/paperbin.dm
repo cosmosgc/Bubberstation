@@ -54,7 +54,7 @@
 	if(!droppoint)
 		droppoint = drop_location()
 	if(collapse)
-		visible_message(span_warning("The stack of paper collapses!"))
+		visible_message(span_warning("A pilha de papel desmorona!"))
 	for(var/obj/item/paper/stacked_paper in paper_stack) //first, dump all of the paper that already exists
 		stacked_paper.forceMove(droppoint)
 		if(!stacked_paper.pixel_y)
@@ -103,7 +103,7 @@
 		pen.add_fingerprint(user)
 		pen.forceMove(user.loc)
 		user.put_in_hands(pen)
-		to_chat(user, span_notice("Você tira [pen] de [src]."))
+		to_chat(user, span_notice("Você tira [pen]De[src]."))
 		bin_pen = null
 		update_appearance()
 	else if(total_paper > 0)
@@ -112,7 +112,7 @@
 		top_paper.add_fingerprint(user)
 		top_paper.forceMove(user.loc)
 		user.put_in_hands(top_paper)
-		to_chat(user, span_notice("Você tira [top_paper] de [src]."))
+		to_chat(user, span_notice("Você tira [top_paper]De[src]."))
 		update_appearance()
 	else
 		to_chat(user, span_warning("[src] está vazio!"))
@@ -127,7 +127,7 @@
 		var/obj/item/paper/paper = I
 		if(!user.transferItemToLoc(paper, src, silent = FALSE))
 			return
-		to_chat(user, span_notice("Você coloca [paper] em [src]."))
+		to_chat(user, span_notice("Você coloca [paper]Em.[src]."))
 		paper_stack += paper
 		total_paper += 1
 		update_appearance()
@@ -135,7 +135,7 @@
 		var/obj/item/pen/pen = I
 		if(!user.transferItemToLoc(pen, src, silent = FALSE))
 			return
-		to_chat(user, span_notice("Você coloca [pen] em [src]."))
+		to_chat(user, span_notice("Você coloca [pen]Em.[src]."))
 		bin_pen = pen
 		update_appearance()
 	else
@@ -185,9 +185,7 @@
 			if(paper_number != total_paper && paper_number % PAPERS_PER_OVERLAY != 0) //only top paper and every nth paper get overlays
 				continue
 
-			var/obj/item/paper/current_paper = paper_number > (total_paper - paper_stack.len) \
-				? paper_stack[paper_stack.len - (total_paper - paper_number + 1) + 1] \
-				: reference_paper
+			var/obj/item/paper/current_paper = paper_number > (total_paper - paper_stack.len) 				? paper_stack[paper_stack.len - (total_paper - paper_number + 1) + 1] 				: reference_paper
 
 			var/mutable_appearance/paper_overlay = mutable_appearance(current_paper.icon, current_paper.icon_state)
 			if(current_paper == reference_paper)

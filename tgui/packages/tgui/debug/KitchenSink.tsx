@@ -37,7 +37,7 @@ export function KitchenSink(props: Props) {
   const Layout = panel ? Pane : Window;
 
   return (
-    <Layout title="Kitchen Sink" width={600} height={500}>
+    <Layout title="Cozinha Sink" width={600} height={500}>
       <Layout.Content>
         <Stack fill>
           <Stack.Item grow>
@@ -102,7 +102,7 @@ function TreePage(props: TreeProps) {
       scrollable
       title={`${backend.config.interface.name ?? 'TGUI'} data`}
     >
-      <div style={{ border: 'thin solid var(--color-base)' }}>
+      <div style={{ border: 'Var fino e sólido.' }}>
         <JSONTree data={inView} theme={tgui16} />
       </div>
     </Section>

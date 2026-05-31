@@ -18,14 +18,14 @@
 
 /obj/item/tank/internals/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click the tank to toggle the valve.")
+	. += span_notice("Alt-clique no tanque para alternar a válvula.")
 
 /*
  * Oxygen
  */
 /obj/item/tank/internals/oxygen
 	name = "oxygen tank"
-	desc = "A tank of oxygen, this one is blue."
+	desc = "Um tanque de oxigênio, este é azul."
 	icon_state = "oxygen"
 	inhand_icon_state = "oxygen_tank"
 	tank_holder_icon_state = "holder_oxygen"
@@ -40,14 +40,14 @@
 
 
 /obj/item/tank/internals/oxygen/yellow
-	desc = "A tank of oxygen, this one is yellow."
+	desc = "Um tanque de oxigênio, este é amarelo."
 	icon_state = "oxygen_f"
 	inhand_icon_state = "oxygen_f_tank"
 	tank_holder_icon_state = "holder_oxygen_f"
 	dog_fashion = null
 
 /obj/item/tank/internals/oxygen/red
-	desc = "A tank of oxygen, this one is red."
+	desc = "Um tanque de oxigênio, este é vermelho."
 	icon_state = "oxygen_fr"
 	inhand_icon_state = "oxygen_fr_tank"
 	tank_holder_icon_state = "holder_oxygen_fr"
@@ -61,7 +61,7 @@
  */
 /obj/item/tank/internals/anesthetic
 	name = "anesthetic tank"
-	desc = "A tank with an N2O/O2 gas mix."
+	desc = "Um tanque com uma mistura de gás N2O/O2."
 	icon_state = "anesthetic"
 	inhand_icon_state = "an_tank"
 	tank_holder_icon_state = "holder_anesthetic"
@@ -74,11 +74,11 @@
 
 /obj/item/tank/internals/anesthetic/examine(mob/user)
 	. = ..()
-	. += span_notice("A warning is etched into [src]...")
-	. += span_warning("There is no process in the body that uses N2O, so patients will exhale the N2O... exposing you to it. Make sure to work in a well-ventilated space to avoid sleepy mishaps.")
+	. += span_notice("Um aviso está gravado em[src]...")
+	. += span_warning("Não há nenhum processo no corpo que use N2O, então os pacientes exalarão o N2O... expondo você a ele. Certifique-se de trabalhar em um espaço bem ventilado para evitar acidentes sonolentos.")
 
 /obj/item/tank/internals/anesthetic/pure
-	desc = "A tank with pure N2O. There is a warning sticker crudely slapped onto the tank."
+	desc = "Um tanque com N2O puro. Há um adesivo de aviso mal colocado no tanque."
 	icon_state = "anesthetic_warning"
 
 /obj/item/tank/internals/anesthetic/pure/populate_gas()
@@ -90,7 +90,7 @@
  */
 /obj/item/tank/internals/plasma
 	name = "plasma tank"
-	desc = "Contains dangerous plasma. Do not inhale. Warning: extremely flammable."
+	desc = "Contém plasma perigoso. Não inale. Aviso: extremamente inflamável."
 	icon_state = "plasma"
 	inhand_icon_state = "plasma_tank"
 	worn_icon_state = "plasmatank"
@@ -130,7 +130,7 @@
 
 /obj/item/tank/internals/plasmaman
 	name = "plasma internals tank"
-	desc = "A tank of plasma gas designed specifically for use as internals, particularly for plasma-based lifeforms. If you're not a Plasmaman, you probably shouldn't use this."
+	desc = "Um tanque de gás de plasma projetado especificamente para uso interno, particularmente para formas de vida baseadas em plasma. Se não é um Plasmaman, não deveria usar isso."
 	icon_state = "plasmaman_tank"
 	inhand_icon_state = "plasmaman_tank"
 	tank_holder_icon_state = null
@@ -171,7 +171,7 @@
  */
 /obj/item/tank/internals/emergency_oxygen
 	name = "emergency oxygen tank"
-	desc = "Used for emergencies. Contains very little oxygen, so try to conserve it until you actually need it."
+	desc = "Usado para emergências. Contém muito pouco oxigênio, então tente conservá-lo até que você realmente precise dele."
 	icon_state = "emergency"
 	inhand_icon_state = "emergency_tank"
 	worn_icon_state = "emergency"
@@ -222,7 +222,7 @@
 
 /obj/item/tank/internals/generic
 	name = "gas tank"
-	desc = "A generic tank used for storing and transporting gasses. Can be used for internals."
+	desc = "Um tanque genérico usado para armazenar e transportar gases. Pode ser usado para internos."
 	icon_state = "generic"
 	inhand_icon_state = "generic_tank"
 	distribute_pressure = TANK_DEFAULT_RELEASE_PRESSURE
@@ -237,7 +237,7 @@
  */
 /obj/item/tank/internals/emergency_oxygen/engi/clown
 	name = "funny emergency oxygen tank"
-	desc = "Used for emergencies. Contains very little oxygen with an extra of a funny gas, so try to conserve it until you actually need it."
+	desc = "Usado para emergências. Contém muito pouco oxigênio com um extra de um gás engraçado, então tente conservá-lo até que você realmente precise dele."
 	icon_state = "emergency_clown"
 	inhand_icon_state = "emergency_clown"
 	worn_icon_state = "emergency_clown"

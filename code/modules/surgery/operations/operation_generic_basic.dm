@@ -3,8 +3,7 @@
 /datum/surgery_operation/basic/incise_skin
 	name = "make incision"
 	// rnd_name = "Laparotomy / Craniotomy / Myotomy (Make Incision)" // Maybe we keep this one simple
-	desc = "Make an incision in the patient's skin to access internals. \
-		Causes \"cut skin\" surgical state."
+	desc = "Faça uma incisão na pele do paciente para acessar os internos. Causas\"Pele Cortada\"estado cirúrgico."
 	implements = list(
 		TOOL_SCALPEL = 1,
 		/obj/item/melee/energy/sword = 1.33,
@@ -46,9 +45,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You begin to make an incision in [patient]..."),
-		span_notice("[surgeon] begins to make an incision in [patient]."),
-		span_notice("[surgeon] begins to make an incision in [patient]."),
+		span_notice("Você começa a fazer uma incisão em[patient]..."),
+		span_notice("[surgeon]começa a fazer uma incisão em[patient]."),
+		span_notice("[surgeon]começa a fazer uma incisão em[patient]."),
 	)
 	display_pain(patient, "You feel a sharp stabbing sensation!")
 
@@ -58,8 +57,7 @@
 
 /datum/surgery_operation/basic/saw_bone
 	name = "saw bone"
-	desc = "Saw through the patient's bones to access their internal organs. \
-		Causes \"bone sawed\" surgical state."
+	desc = "Vi através dos ossos do paciente para acessar seus órgãos internos. Causas\"Osso serrado\"estado cirúrgico."
 	implements = list(
 		TOOL_SAW = 1,
 		/obj/item/shovel/serrated = 1.33,
@@ -104,9 +102,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You begin to saw through [patient]'s bones..."),
-		span_notice("[surgeon] begins to saw through [patient]'s bones."),
-		span_notice("[surgeon] begins to saw through [patient]'s bones."),
+		span_notice("Você começa a ver através[patient]Ossos..."),
+		span_notice("[surgeon]começa a serrar[patient]Ossos."),
+		span_notice("[surgeon]começa a serrar[patient]Ossos."),
 	)
 	display_pain(patient, "You feel a horrid ache spread through your insides!")
 
@@ -117,17 +115,16 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You saw [patient] open."),
-		span_notice("[surgeon] saws [patient] open!"),
-		span_notice("[surgeon] saws [patient] open!"),
+		span_notice("Você viu.[patient]Abra."),
+		span_notice("[surgeon]Serras.[patient]Abra!"),
+		span_notice("[surgeon]Serras.[patient]Abra!"),
 	)
 	display_pain(patient, "It feels like something just broke!")
 
 // Closing of skin for basic mobs
 /datum/surgery_operation/basic/close_skin
 	name = "mend incision"
-	desc = "Mend the incision in the patient's skin, closing it up. \
-		Clears most surgical states."
+	desc = "Conserte a incisão na pele do paciente, fechando. Limpa a maioria dos estados cirúrgicos."
 	implements = list(
 		TOOL_CAUTERY = 1,
 		/obj/item/stack/medical/suture = 1,
@@ -173,9 +170,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You begin to mend the incision in [patient]..."),
-		span_notice("[surgeon] begins to mend the incision in [patient]."),
-		span_notice("[surgeon] begins to mend the incision in [patient]."),
+		span_notice("Você começa a consertar a incisão[patient]..."),
+		span_notice("[surgeon]Começa a consertar a incisão em[patient]."),
+		span_notice("[surgeon]Começa a consertar a incisão em[patient]."),
 	)
 	display_pain(patient, "You are being [istype(tool, /obj/item/stack/medical/suture) ? "pinched" : "burned"]!")
 

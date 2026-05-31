@@ -216,7 +216,7 @@ function tab_change(tab) {
   current_tab = tab;
   set_byond_tab(tab);
   if (document.getElementById(tab))
-    document.getElementById(tab).className = "button active"; // make current button active
+    document.getElementById(tab).className = "Botão ativo"; // make current button active
   var verb_tabs_thingy = verb_tabs.includes(tab);
   statcontentdiv.className = "statcontent";
   if (tab == "Status") {
@@ -225,7 +225,7 @@ function tab_change(tab) {
     draw_mc();
   } else if (verb_tabs_thingy) {
     draw_verbs(tab);
-  } else if (tab == "Debug Stat Panel") {
+  } else if (tab == "Painel Stat de depuração") {
     draw_debug();
   } else if (tab == "Tickets") {
     draw_tickets();
@@ -253,7 +253,7 @@ function draw_debug() {
   link.onclick = function () {
     wipe_verbs();
   };
-  link.textContent = "Wipe All Verbs";
+  link.textContent = "Todos os verbos";
   wipeverbstabs.appendChild(link);
   document.getElementById("statcontent").appendChild(wipeverbstabs);
   var wipeUpdateVerbsTabs = document.createElement("div");
@@ -261,7 +261,7 @@ function draw_debug() {
   updateLink.onclick = function () {
     update_verbs();
   };
-  updateLink.textContent = "Wipe and Update All Verbs";
+  updateLink.textContent = "Atualize todos os verbos";
   wipeUpdateVerbsTabs.appendChild(updateLink);
   document.getElementById("statcontent").appendChild(wipeUpdateVerbsTabs);
   var text = document.createElement("div");
@@ -285,7 +285,7 @@ function draw_debug() {
         removeStatusTab(part);
       };
     })(part);
-    a.textContent = " Delete Tab " + part;
+    a.textContent = "Apagar aba" + part;
     td1.appendChild(a);
     tr.appendChild(td1);
     table1.appendChild(tr);
@@ -308,7 +308,7 @@ function draw_debug() {
   }
   document.getElementById("statcontent").appendChild(table2);
   var text3 = document.createElement("div");
-  text3.textContent = "Permanent Tabs:";
+  text3.textContent = "Tabs permanentes:";
   document.getElementById("statcontent").appendChild(text3);
   var table3 = document.createElement("table");
   for (var i = 0; i < permanent_tabs.length; i++) {
@@ -384,7 +384,7 @@ function draw_mc() {
     if (part[3]) {
       var a = document.createElement("a");
       a.href =
-        "byond://?_src_=vars;admin_token=" + href_token + ";Vars=" + part[3];
+        "Tradução e Sincronia:" + href_token + "Vars=" + part[3];
       a.textContent = part[2];
       td2.appendChild(a);
     } else {
@@ -451,25 +451,25 @@ function draw_listedturf() {
       // rather than every onmousedown getting the "part" of the last entry.
       return function (e) {
         e.preventDefault();
-        clickcatcher = "byond://?src=" + part[1];
+        clickcatcher = "Src=" + part[1];
         switch (e.button) {
           case 1:
-            clickcatcher += ";statpanel_item_click=middle";
+            clickcatcher += "Tradução:";
             break;
           case 2:
-            clickcatcher += ";statpanel_item_click=right";
+            clickcatcher += "# Statpanel item clique=direita #";
             break;
           default:
-            clickcatcher += ";statpanel_item_click=left";
+            clickcatcher += "* Statpanel item clique=esquerda";
         }
         if (e.shiftKey) {
-          clickcatcher += ";statpanel_item_shiftclick=1";
+          clickcatcher += "Tradução e Sincronia: 1";
         }
         if (e.ctrlKey) {
-          clickcatcher += ";statpanel_item_ctrlclick=1";
+          clickcatcher += "* Statpanel item ctrlclick=1";
         }
         if (e.altKey) {
-          clickcatcher += ";statpanel_item_altclick=1";
+          clickcatcher += "Tradução e Sincronia:";
         }
         window.location.href = clickcatcher;
       };
@@ -527,7 +527,7 @@ function draw_sdql2() {
     var td2 = document.createElement("td");
     if (part[2]) {
       var a = document.createElement("a");
-      a.href = "byond://?src=" + part[2] + ";statpanel_item_click=left";
+      a.href = "Src=" + part[2] + "* Statpanel item clique=esquerda";
       a.textContent = part[1];
       td2.appendChild(a);
     } else {
@@ -555,16 +555,16 @@ function draw_tickets() {
     if (part[2]) {
       var a = document.createElement("a");
       a.href =
-        "byond://?_src_=holder;admin_token=" +
+        "Src = Detentor; Admin token=" +
         href_token +
-        ";ahelp=" +
+        "*Ajuda=" +
         part[2] +
-        ";ahelp_action=ticket;statpanel_item_click=left;action=ticket";
+        "* Action=ticket* Item Statpanel clique=esquerda* Action=ticket";
       a.textContent = part[1];
       td2.appendChild(a);
     } else if (part[3]) {
       var a = document.createElement("a");
-      a.href = "byond://?src=" + part[3] + ";statpanel_item_click=left";
+      a.href = "Src=" + part[3] + "* Statpanel item clique=esquerda";
       a.textContent = part[1];
       td2.appendChild(a);
     } else {
@@ -585,11 +585,11 @@ function draw_interviews() {
   var manDiv = document.createElement("div");
   manDiv.className = "interview_panel_controls";
   var manLink = document.createElement("a");
-  manLink.textContent = "Open Interview Manager Panel";
+  manLink.textContent = "Painel do Gerente de Entrevista Aberto";
   manLink.href =
-    "byond://?_src_=holder;admin_token=" +
+    "Src = Detentor; Admin token=" +
     href_token +
-    ";interview_man=1;statpanel_item_click=left";
+    "Entrevista homem=1; item statpanel clique=esquerda";
   manDiv.appendChild(manLink);
   body.appendChild(manDiv);
 
@@ -623,11 +623,11 @@ function draw_interviews() {
     var a = document.createElement("a");
     a.textContent = part["status"];
     a.href =
-      "byond://?_src_=holder;admin_token=" +
+      "Src = Detentor; Admin token=" +
       href_token +
-      ";interview=" +
+      "*Entevista=" +
       part["ref"] +
-      ";statpanel_item_click=left";
+      "* Statpanel item clique=esquerda";
     td.appendChild(a);
     tr.appendChild(td);
     table.appendChild(tr);
@@ -840,7 +840,7 @@ Byond.subscribeTo("update_stat", function (payload) {
 
   if (current_tab == "Status") {
     draw_status();
-  } else if (current_tab == "Debug Stat Panel") {
+  } else if (current_tab == "Painel Stat de depuração") {
     draw_debug();
   }
 });
@@ -861,10 +861,10 @@ Byond.subscribeTo("update_mc", function (payload) {
 });
 
 Byond.subscribeTo("create_debug", function () {
-  if (!document.getElementById("Debug Stat Panel")) {
-    addPermanentTab("Debug Stat Panel");
+  if (!document.getElementById("Painel Stat de depuração")) {
+    addPermanentTab("Painel Stat de depuração");
   } else {
-    removePermanentTab("Debug Stat Panel");
+    removePermanentTab("Painel Stat de depuração");
   }
 });
 

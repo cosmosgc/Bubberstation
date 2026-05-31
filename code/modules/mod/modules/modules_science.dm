@@ -3,9 +3,7 @@
 ///Reagent Scanner - Lets the user scan reagents.
 /obj/item/mod/module/reagent_scanner
 	name = "MOD reagent scanner module"
-	desc = "A module based off research-oriented Nanotrasen HUDs, this is capable of scanning the contents of \
-		containers and projecting the information in an easy-to-read format on the wearer's display. \
-		It cannot detect flavors, so that's up to you."
+	desc = "Um módulo baseado em HUDs de Nanotrasen orientados à pesquisa, isso é capaz de digitalizar o conteúdo de contêineres e projetar a informação em um formato fácil de ler na tela do usuário. Não pode detectar sabores, então é com você."
 	icon_state = "scanner"
 	module_type = MODULE_TOGGLE
 	complexity = 1
@@ -21,10 +19,7 @@
 
 /obj/item/mod/module/reagent_scanner/advanced
 	name = "MOD advanced reagent scanner module"
-	desc = "An advanced module with all the features of research-oriented Nanotrasen HUDs, this is capable of scanning \
-		the contents of containers and projecting the information in an easy-to-read format on the wearer's display. \
-		It also contains a research scanner and an explosion sensor that gives details on nearby explosions. \
-		No improvements have been made to allow it to detect flavors so that's still up to you."
+	desc = "Um módulo avançado com todas as características dos HUDs de Nanotrasen orientados à pesquisa, isso é capaz de digitalizar o conteúdo dos contêineres e projetar a informação em um formato fácil de ler na tela do usuário. Também contém um scanner de pesquisa e um sensor de explosão que dá detalhes sobre explosões próximas. Nenhuma melhoria foi feita para permitir que ele detecte sabores, então isso ainda depende de você."
 	complexity = 0
 	removable = FALSE
 	var/explosion_detection_dist = 21
@@ -47,12 +42,12 @@
 		return
 	if(get_dist(epicenter, wearer_turf) > explosion_detection_dist)
 		return
-	to_chat(mod.wearer, span_notice("Explosion detected! Epicenter: [devastation_range], Outer: [heavy_impact_range], Shock: [light_impact_range]"))
+	to_chat(mod.wearer, span_notice("Explosão detectada! Epicentro:[devastation_range], Exterior:[heavy_impact_range], Choque:[light_impact_range]"))
 
 ///Anti-Gravity - Makes the user weightless.
 /obj/item/mod/module/anomaly_locked/antigrav
 	name = "MOD anti-gravity module"
-	desc = "A module that uses a gravitational core to make the user completely weightless."
+	desc = "Um módulo que usa um núcleo gravitacional para tornar o usuário completamente sem peso."
 	icon_state = "antigrav"
 	module_type = MODULE_TOGGLE
 	complexity = 2
@@ -84,7 +79,7 @@
 ///Teleporter - Lets the user teleport to a nearby location.
 /obj/item/mod/module/anomaly_locked/teleporter
 	name = "MOD teleporter module"
-	desc = "A module that uses a bluespace core to let the user transport their particles elsewhere."
+	desc = "Um módulo que usa um núcleo de espaço azul para deixar o usuário transportar suas partículas para outro lugar."
 	icon_state = "teleporter"
 	module_type = MODULE_ACTIVE
 	complexity = 3
@@ -104,17 +99,17 @@
 		return
 	var/turf/open/target_turf = get_turf(target)
 	if(get_dist(target_turf, mod.wearer) > max_range)
-		balloon_alert(mod.wearer, "longe demais!")
+		balloon_alert(mod.wearer, "Longe demais!")
 		return
 	if(!istype(target_turf))
 		balloon_alert(mod.wearer, "alvo inválido!")
 		return
 	if(target_turf.is_blocked_turf_ignore_climbable() || !los_check(mod.wearer, target, pass_args = PASSTABLE|PASSGLASS|PASSGRILLE|PASSMOB|PASSMACHINE|PASSSTRUCTURE|PASSFLAPS|PASSWINDOW))
-		balloon_alert(mod.wearer, "blocked destination!")
+		balloon_alert(mod.wearer, "Destinobloqueado!")
 		return
 	// check early so we don't go through the whole loops
 	if(!check_teleport_valid(mod.wearer, target_turf, channel = TELEPORT_CHANNEL_BLUESPACE, original_destination = target_turf))
-		balloon_alert(mod.wearer, "something holds you back!")
+		balloon_alert(mod.wearer, "Algo te prende!")
 		return
 	balloon_alert(mod.wearer, "teleportando...")
 	var/matrix/pre_matrix = matrix()
@@ -123,7 +118,7 @@
 	post_matrix.Scale(0.25, 4)
 	animate(mod.wearer, teleport_time, color = COLOR_CYAN, transform = pre_matrix.Multiply(mod.wearer.transform), easing = SINE_EASING|EASE_OUT)
 	if(!do_after(mod.wearer, teleport_time, target = mod))
-		balloon_alert(mod.wearer, "interrompido!")
+		balloon_alert(mod.wearer, "Interrompido!")
 		animate(mod.wearer, teleport_time*0.1, color = null, transform = post_matrix.Multiply(mod.wearer.transform), easing = SINE_EASING|EASE_IN)
 		return
 	animate(mod.wearer, teleport_time*0.1, color = null, transform = post_matrix.Multiply(mod.wearer.transform), easing = SINE_EASING|EASE_IN)

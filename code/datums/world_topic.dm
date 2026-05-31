@@ -84,7 +84,7 @@
 		if(PRcounts[id] > CONFIG_GET(number/pr_announcements_per_round))
 			return
 
-	var/final_composed = span_announce("PR: [input[keyword]]")
+	var/final_composed = span_announce("PR:[input[keyword]]")
 	for(var/client/C in GLOB.clients)
 		C.AnnouncePR(final_composed)
 
@@ -92,7 +92,7 @@
 	keyword = "Ahelp"
 
 /datum/world_topic/ahelp_relay/Run(list/input)
-	relay_msg_admins(span_adminnotice("<b><font color=red>HELP: </font> [input["source"]] [input["message_sender"]]: [input["message"]]</b>"))
+	relay_msg_admins(span_adminnotice("<b><font color=red>Socorro:</font> [input["source"]] [input["message_sender"]]: [input["message"]]</b>"))
 
 /datum/world_topic/comms_console
 	keyword = "Comms_Console"
@@ -119,10 +119,7 @@
 	var/extended_time_display = DisplayTimeText(EXTENDED_CROSS_SECTOR_CANCEL_TIME)
 	var/normal_time_display = DisplayTimeText(CROSS_SECTOR_CANCEL_TIME)
 
-	var/message = "<b color='orange'>CROSS-SECTOR MESSAGE (INCOMING):</b> [input["sender_ckey"]] (from [input["source"]]) is about to send \
-			the following message (will autoapprove in [soft_filter_passed ? "[extended_time_display]" : "[normal_time_display]"]): \
-			<b><a href='byond://?src=[REF(src)];reject_cross_comms_message=[timer_id]'>REJECT</a></b><br><br>\
-			[input["message"]]"
+	var/message = "<b color='orange'>CROSS-SECTOR MESSAGE (INCOMING):</b> [input["sender_ckey"]] (from [input["source"]]) is about to send 			the following message (will autoapprove in [soft_filter_passed ? "[extended_time_display]" : "[normal_time_display]"]): 			<b><a href='byond://?src=[REF(src)];reject_cross_comms_message=[timer_id]'>REJECT</a></b><br><br>			[input["message"]]"
 
 	if(soft_filter_passed)
 		message += "<br><br><b>NOTE: This message passed the soft filter on the origin server! The time was automatically expanded to [extended_time_display].</b>"
@@ -142,7 +139,7 @@
 
 		var/timer_id = href_list["reject_cross_comms_message"]
 		if (!(timer_id in timers))
-			to_chat(usr, span_warning("It's too late!"))
+			to_chat(usr, span_warning("É tarde demais!"))
 			return
 
 		deltimer(timer_id)
@@ -260,9 +257,7 @@
 	input["timer_id"] = timer_id
 	LAZYADD(timers, timer_id)
 
-	var/message = "<b color='orange'>Cross-sector channel creation (Incoming):</b> [input["author_ckey"]] is about to create a cross-sector \
-			newscaster channel \"[input["message"]]\" (will autoapprove in [DisplayTimeText(message_delay)]): \
-			<b><a href='byond://?src=[REF(src)];reject_channel_creation=[timer_id]'>REJECT</a></b>"
+	var/message = "<b color='orange'>Cross-sector channel creation (Incoming):</b> [input["author_ckey"]] is about to create a cross-sector 			newscaster channel \"[input["message"]]\" (will autoapprove in [DisplayTimeText(message_delay)]): 			<b><a href='byond://?src=[REF(src)];reject_channel_creation=[timer_id]'>REJECT</a></b>"
 
 	message_admins(span_adminnotice(message))
 
@@ -281,7 +276,7 @@
 		return
 
 	if (!(timer_id in timers))
-		to_chat(usr, span_warning("It's too late!"))
+		to_chat(usr, span_warning("É tarde demais!"))
 		return
 
 	deltimer(timer_id)

@@ -2,7 +2,7 @@
 /mob/living/basic/construct/proteon
 	name = "Proteon"
 	real_name = "Proteon"
-	desc = "A weaker construct meant to scour ruins for objects of Nar'Sie's affection. Those barbed claws are no joke."
+	desc = "Uma construção fraca destinada a vasculhar ruínas para objetos da afeição de Nar'Sie. Essas garras farpadas não são brincadeira."
 	icon_state = "proteon"
 	icon_living = "proteon"
 	maxHealth = 35

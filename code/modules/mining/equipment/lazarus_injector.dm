@@ -8,7 +8,7 @@
  */
 /obj/item/lazarus_injector
 	name = "lazarus injector"
-	desc = "An injector with a cocktail of nanomachines and chemicals, this device can seemingly raise animals from the dead, making them become friendly to the user. Unfortunately, the process is useless on higher forms of life and incredibly costly, so these were hidden in storage until an executive thought they'd be great motivation for some of their employees."
+	desc = "Um injetor com um coquetel de nanomáquinas e produtos químicos, este dispositivo pode aparentemente criar animais dos mortos, tornando-os amigáveis ao usuário. Infelizmente, o processo é inútil em formas de vida mais elevadas e incrivelmente caros, então estes foram escondidos no armazenamento até que um executivo pensou que seria uma grande motivação para alguns de seus funcionários."
 	icon = 'icons/obj/medical/syringe.dmi'
 	icon_state = "lazarus_hypo"
 	inhand_icon_state = "hypo"
@@ -38,7 +38,7 @@
 		balloon_alert(user, "criatura inválida!")
 		return ITEM_INTERACT_BLOCKING
 	if(target_animal.stat != DEAD)
-		balloon_alert(user, "it's not dead!")
+		balloon_alert(user, "Não está morto!")
 		return ITEM_INTERACT_BLOCKING
 
 	target_animal.lazarus_revive(user, malfunctioning)
@@ -46,7 +46,7 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/lazarus_injector/proc/expend(atom/revived_target, mob/user)
-	user.visible_message(span_notice("[user] injects [revived_target] with [src], reviving it."))
+	user.visible_message(span_notice("[user]Injeções[revived_target]com[src]Revivendo."))
 	SSblackbox.record_feedback("tally", "lazarus_injector", 1, revived_target.type)
 	loaded = FALSE
 	playsound(src,'sound/effects/refill.ogg',50,TRUE)
@@ -62,6 +62,6 @@
 /obj/item/lazarus_injector/examine(mob/user)
 	. = ..()
 	if(!loaded)
-		. += span_info("[src] is empty.")
+		. += span_info("[src]Está vazio.")
 	if(malfunctioning)
-		. += span_info("The display on [src] seems to be flickering.")
+		. += span_info("A exibição em[src]Parece estar piscando.")

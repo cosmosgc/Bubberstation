@@ -1,7 +1,7 @@
 /datum/disease/dnaspread
 	name = "Space Retrovirus"
 	max_stages = 4
-	spread_text = "Skin contact"
+	spread_text = "Contato com a pele"
 	spread_flags = DISEASE_SPREAD_BLOOD | DISEASE_SPREAD_CONTACT_SKIN | DISEASE_SPREAD_CONTACT_FLUIDS
 	cure_text = /datum/reagent/medicine/mutadone::name
 	cures = list(/datum/reagent/medicine/mutadone)
@@ -10,9 +10,7 @@
 	viable_mobtypes = list(/mob/living/carbon/human)
 	var/datum/dna/original_dna = null
 	var/transformed = 0
-	desc = "A disease which transplants the genetic code of the initial vector into new hosts. \
-		While patient zero will be asymptomatic, all subsequent hosts will shows symptoms similar to that of a common cold or flu \
-		- until eventually transforming into a genetic copy of patient zero."
+	desc = "Uma doença que transplanta o código genético do vetor inicial em novos hospedeiros. Enquanto o paciente zero será assintomático, todos os hospedeiros subseqüentes mostrarão sintomas semelhantes aos de um resfriado comum ou gripe até eventualmente se transformarem em uma cópia genética do paciente zero."
 	severity = DISEASE_SEVERITY_MEDIUM
 	bypasses_immunity = TRUE
 
@@ -46,11 +44,11 @@
 			if(SPT_PROB(4, seconds_per_tick))
 				affected_mob.emote("cough")
 			if(SPT_PROB(0.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Your muscles ache."))
+				to_chat(affected_mob, span_danger("Seus músculos doem."))
 				if(prob(20))
 					affected_mob.take_bodypart_damage(1, updating_health = FALSE)
 			if(SPT_PROB(0.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Your stomach hurts."))
+				to_chat(affected_mob, span_danger("Seu estômago dói."))
 				if(prob(20))
 					affected_mob.adjust_tox_loss(2, FALSE)
 		if(4)
@@ -59,7 +57,7 @@
 				original_dna = new affected_mob.dna.type
 				affected_mob.dna.copy_dna(original_dna)
 
-				to_chat(affected_mob, span_danger("You don't feel like yourself.."))
+				to_chat(affected_mob, span_danger("Você não se sente como você..."))
 				var/datum/dna/transform_dna = strain_data["dna"]
 
 				transform_dna.copy_dna(affected_mob.dna, COPY_DNA_SE|COPY_DNA_SPECIES)
@@ -78,5 +76,5 @@
 		affected_mob.updateappearance(mutcolor_update=1)
 		affected_mob.domutcheck()
 
-		to_chat(affected_mob, span_notice("You feel more like yourself."))
+		to_chat(affected_mob, span_notice("Você se sente mais como você."))
 	return ..()

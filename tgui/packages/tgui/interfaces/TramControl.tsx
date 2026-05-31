@@ -46,16 +46,16 @@ const DEPARTMENT2COLOR = {
   Office: 'red',
   Dormitories: 'black',
   // BUBBER EDIT ADD - Moonstation
-  'Arrivals Terminal': 'yellow',
-  'Cryogenic Sleepers': 'purple',
-  'Main Station': 'blue',
+  'Terminal de Chegadas': 'yellow',
+  'Dorminhocos Criogênicos': 'purple',
+  'Estação Principal': 'blue',
   'Departures/Evac': 'green',
 } as const;
 
 const COLOR2BLURB = {
-  blue: "This is the tram's current location.",
-  green: 'This is the selected destination.',
-  transparent: 'Click to set destination.',
+  blue: "Esta é a localização atual do bonde.",
+  green: 'Este é o destino escolhido.',
+  transparent: 'Clique para definir o destino.',
 } as const;
 
 const marginNormal = 1;
@@ -74,7 +74,7 @@ export const TramControl = (props) => {
   const [transitIndex, setTransitIndex] = useState(1);
 
   return (
-    <Window title="Tram Controls" width={600} height={300}>
+    <Window title="Controle de Tram" width={600} height={300}>
       <Window.Content>
         {(!!broken && <BrokenTramDimmer />) || (
           <Section fill>
@@ -199,7 +199,7 @@ const Destination = (props) => {
                   tooltip={dep}
                   style={{
                     borderRadius: '5em',
-                    border: '2px solid white',
+                    border: '2px branco sólido',
                   }}
                 />
               </Stack.Item>

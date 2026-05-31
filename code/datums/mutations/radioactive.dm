@@ -1,6 +1,6 @@
 /datum/mutation/radioactive
 	name = "Radioactivity"
-	desc = "A volatile mutation that causes the host to sent out deadly beta radiation. This affects both the hosts and their surroundings."
+	desc = "Uma mutação volátil que faz o hospedeiro enviar radiação beta mortal. Isso afeta os anfitriões e seus arredores."
 	quality = NEGATIVE
 	text_gain_indication = span_warning("You can feel it in your bones!")
 	instability = NEGATIVE_STABILITY_MAJOR
@@ -35,11 +35,7 @@
  */
 /datum/mutation/radioactive/proc/make_radioactive(mob/living/carbon/human/who)
 	return who.AddComponent(
-		/datum/component/radioactive_emitter, \
-		cooldown_time = 5 SECONDS, \
-		range = 1 * (GET_MUTATION_POWER(src) * 2), \
-		threshold = RAD_MEDIUM_INSULATION, \
-	)
+		/datum/component/radioactive_emitter, 		cooldown_time = 5 SECONDS, 		range = 1 * (GET_MUTATION_POWER(src) * 2), 		threshold = RAD_MEDIUM_INSULATION, 	)
 
 /datum/mutation/radioactive/on_losing(mob/living/carbon/human/owner)
 	QDEL_NULL(radioactivity_source_ref)

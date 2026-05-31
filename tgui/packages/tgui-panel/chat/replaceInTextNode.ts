@@ -149,7 +149,7 @@ export const replaceInTextNode =
  */
 function createHighlightNode(text: string): Node {
   const node = document.createElement('span');
-  node.setAttribute('style', 'background-color:#fd4;color:#000');
+  node.setAttribute('style', 'Fundo-cor:#fd4;color:#000');
   node.textContent = text;
   return node;
 }

@@ -124,8 +124,8 @@
 
 	var/obj/item/bodypart/bodyparent = parent
 	source.visible_message(
-		span_warning("As [source] attempts to swing with [source.p_their()] [bodyparent.name], it falls right off!"),
-		span_warning("As you attempt to swing with [source.p_their()] [bodyparent.name], it falls right off!"),
+		span_warning("Como[source]Tentando balançar com[source.p_their()] [bodyparent.name]Ele cai logo!"),
+		span_warning("Enquanto você tenta balançar com[source.p_their()] [bodyparent.name]Ele cai logo!"),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
 	bodyparent.dismember(silent = TRUE) // which removes the limb, which qdels us (which nulls all the references and signals)

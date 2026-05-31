@@ -1,6 +1,6 @@
 /datum/action/cooldown/mob_cooldown/aphrodisiacal_bite
 	name = "Inject Aphrodisiac"
-	desc = "Sink your fangs into another and inject them with your aphrodisiac."
+	desc = "Enfie suas presas em outra e injete com seu afrodisíaco."
 
 	button_icon = 'modular_zubbers/icons/mob/actions/quirks/aphrodisiacal_bite.dmi'
 	button_icon_state = "aphrodisiac"
@@ -30,36 +30,36 @@
 	. = ..()
 	if (!.)
 		return
-	owner.visible_message(span_warning("[owner] bares [owner.p_their()] fangs..."), span_notice("You bare your fangs..."))
+	owner.visible_message(span_warning("[owner]nus[owner.p_their()]Fangs..."), span_notice("Você desnuda suas presas..."))
 
 /datum/action/cooldown/mob_cooldown/aphrodisiacal_bite/Activate(atom/target_atom)
 	if (!isliving(target_atom))
 		return FALSE
 
 	if (astype(owner, /mob/living/carbon)?.is_mouth_covered())
-		owner.balloon_alert(owner, "boca coberta!")
+		owner.balloon_alert(owner, "Boa coberta!")
 		return FALSE
 
 	if (!owner.Adjacent(target_atom))
-		owner.balloon_alert(owner, "longe demais!")
+		owner.balloon_alert(owner, "Longe demais!")
 		return FALSE
 
 	if (target_atom == owner)
-		owner.balloon_alert(owner, "can't bite yourself!")
+		owner.balloon_alert(owner, "Não pode se morder!")
 		return FALSE
 
 	if(!iscarbon(target_atom))
-		owner.balloon_alert(owner, "not carbon!")
+		owner.balloon_alert(owner, "Não carbono!")
 		return FALSE
 
 	if(!astype(target_atom, /mob/living/carbon).client?.prefs.read_preference(/datum/preference/toggle/erp/aphro))
-		owner.balloon_alert(owner, "not interested!")
+		owner.balloon_alert(owner, "Não estou interessado!")
 		log_game("[key_name(owner)] tried to bite [key_name(astype(target_atom, /mob/living/carbon))] but [key_name(astype(target_atom, /mob/living/carbon))] had aphrodisiacs disabled")
 		return FALSE
 
 	log_combat(owner, target_atom, "started to bite", null, "with venom: [reagent_typepath::name]")
-	owner.visible_message(span_warning("[owner] starts to bite [target_atom]!"), span_warning("You start to bite [target_atom]!"), ignored_mobs = target_atom)
-	to_chat(target_atom, span_userdanger("[owner] starts to bite you!"))
+	owner.visible_message(span_warning("[owner]Começa a morder[target_atom]!"), span_warning("Você começa a morder[target_atom]!"), ignored_mobs = target_atom)
+	to_chat(target_atom, span_userdanger("[owner]Começa a te morder!"))
 	owner.balloon_alert_to_viewers("biting...")
 	if (!do_after(owner, 0.5 SECONDS, target_atom, IGNORE_HELD_ITEM))
 		return FALSE

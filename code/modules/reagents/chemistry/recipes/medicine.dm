@@ -28,7 +28,7 @@
 /datum/chemical_reaction/medicine/oculine
 	results = list(/datum/reagent/medicine/oculine = 3)
 	required_reagents = list(/datum/reagent/medicine/c2/multiver = 1, /datum/reagent/carbon = 1, /datum/reagent/hydrogen = 1)
-	mix_message = "The mixture bubbles noticeably and becomes a dark grey color!"
+	mix_message = "A mistura bolhas visivelmente e se torna uma cor cinza escuro!"
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_HEALING | REACTION_TAG_ORGAN
 	//Fermichem vars
 	required_temp = 200
@@ -56,7 +56,7 @@
 /datum/chemical_reaction/medicine/inacusiate
 	results = list(/datum/reagent/medicine/inacusiate = 2)
 	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/carbon = 1, /datum/reagent/medicine/c2/multiver = 1)
-	mix_message = "The mixture sputters loudly and becomes a light grey color!"
+	mix_message = "A mistura sopra alto e se torna uma cor cinza clara!"
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_HEALING | REACTION_TAG_ORGAN
 	//Fermichem vars
 	required_temp = 300
@@ -74,12 +74,12 @@
 
 ///Calls it over and over
 /datum/chemical_reaction/medicine/inacusiate/overheated(datum/reagents/holder, datum/equilibrium/equilibrium, vol_added)
-	holder.my_atom.audible_message(span_notice("[icon2html(holder.my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))]The [holder.my_atom] suddenly gives out a loud bang!"))
+	holder.my_atom.audible_message(span_notice("[icon2html(holder.my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))]O[holder.my_atom]De repente dá um estrondo alto!"))
 	explode_deafen(holder, equilibrium, 0.5, 10, 3)
 
 /datum/chemical_reaction/medicine/inacusiate/overly_impure(datum/reagents/holder, datum/equilibrium/equilibrium, vol_added)
 	var/power = equilibrium.reacted_vol/10
-	holder.my_atom.audible_message(span_notice("[icon2html(holder.my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))]The [holder.my_atom] suddenly gives out an ear-crushingly loud bang!"))
+	holder.my_atom.audible_message(span_notice("[icon2html(holder.my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))]O[holder.my_atom]De repente, dá um som forte!"))
 	explode_deafen(holder, equilibrium, power/2, power*2, max(power/2, 3))
 	clear_products(holder)
 
@@ -175,7 +175,7 @@
 	overheat_temp = 980
 	thermic_constant = 75
 	rate_up_lim = 10
-	mix_message = "The solution rapidly changes colors, boiling into a pale blue."
+	mix_message = "A solução muda rapidamente as cores, fervendo em um azul pálido."
 
 /datum/chemical_reaction/medicine/albuterol_to_salbutamol
 	results = list(/datum/reagent/medicine/salbutamol = 2, /datum/reagent/ammonia = 1)
@@ -185,7 +185,7 @@
 	required_temp = 300
 	optimal_temp = 500
 	overheat_temp = 800
-	mix_message = "The solution breaks apart, turning a deeper blue."
+	mix_message = "A solução se rompe, virando um azul mais profundo."
 
 /datum/chemical_reaction/medicine/albuterol_to_convermol
 	results = list(/datum/reagent/medicine/c2/convermol = 1, /datum/reagent/lithium = 3, /datum/reagent/aluminium = 3, /datum/reagent/bromine = 3)
@@ -196,7 +196,7 @@
 	optimal_temp = 920
 	overheat_temp = 990
 	thermic_constant = 25
-	mix_message = "The solution rapidly breaks apart, turning a mix of colors."
+	mix_message = "A solução se quebra rapidamente, girando uma mistura de cores."
 
 /datum/chemical_reaction/medicine/albuterol_to_convermol/overheated(datum/reagents/holder, datum/equilibrium/equilibrium, impure = FALSE)
 	var/bonus = impure ? 2 : 1
@@ -205,7 +205,7 @@
 /datum/chemical_reaction/medicine/ephedrine
 	results = list(/datum/reagent/medicine/ephedrine = 4)
 	required_reagents = list(/datum/reagent/consumable/sugar = 1, /datum/reagent/fuel/oil = 1, /datum/reagent/hydrogen = 1, /datum/reagent/diethylamine = 1)
-	mix_message = "The solution fizzes and gives off toxic fumes."
+	mix_message = "A solução produz gases tóxicos."
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_HEALING | REACTION_TAG_OTHER | REACTION_TAG_DANGEROUS
 	//FermiChem vars:
 	required_temp = 200
@@ -230,7 +230,7 @@
 /datum/chemical_reaction/medicine/diphenhydramine
 	results = list(/datum/reagent/medicine/diphenhydramine = 4)
 	required_reagents = list(/datum/reagent/fuel/oil = 1, /datum/reagent/carbon = 1, /datum/reagent/bromine = 1, /datum/reagent/diethylamine = 1, /datum/reagent/consumable/ethanol = 1)
-	mix_message = "The mixture dries into a pale blue powder."
+	mix_message = "A mistura seca em um pó azul pálido."
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_HEALING | REACTION_TAG_OTHER
 
 /datum/chemical_reaction/medicine/atropine
@@ -266,7 +266,7 @@
 /datum/chemical_reaction/medicine/mannitol
 	results = list(/datum/reagent/medicine/mannitol = 3)
 	required_reagents = list(/datum/reagent/consumable/sugar = 1, /datum/reagent/hydrogen = 1, /datum/reagent/water = 1)
-	mix_message = "The solution slightly bubbles, becoming thicker."
+	mix_message = "A solução ligeiramente bolhas, ficando mais espessa."
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_HEALING | REACTION_TAG_ORGAN
 	//FermiChem vars:
 	required_temp = 50

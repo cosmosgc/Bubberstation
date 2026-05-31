@@ -32,7 +32,7 @@
 
 	var/list/soft_filter_result = CAN_BYPASS_FILTER(src) ? null : is_soft_ooc_filtered(message)
 	if (soft_filter_result)
-		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"Sua mensagem contém\"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\"Tem certeza que quer dizer?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 			return
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[html_encode(message)]\"")
 		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[message]\"")
@@ -49,7 +49,7 @@
 				SSadmin_verbs.dynamic_invoke_verb(client, /datum/admin_verb/dsay, message)
 			if(MODE_PUPPET)
 				if(!mind.current.say(message))
-					to_chat(src, span_warning("Your linked body was unable to speak!"))
+					to_chat(src, span_warning("Seu corpo ligado foi incapaz de falar!"))
 		return
 
 	message = copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN)

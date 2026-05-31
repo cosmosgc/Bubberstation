@@ -53,7 +53,7 @@ DROP TRIGGER IF EXISTS `log_player_rank_additions`;
 CREATE TRIGGER `log_player_rank_additions`
 AFTER INSERT ON `player_rank`
 FOR EACH ROW
-INSERT INTO player_rank_log (ckey, rank, admin_ckey, `action`) VALUES (NEW.ckey, NEW.rank, NEW.admin_ckey, 'ADDED');
+INSERT INTO player_rank_log (ckey, `rank`, admin_ckey, `action`) VALUES (NEW.ckey, NEW.`rank`, NEW.admin_ckey, 'ADDED');
 
 
 --
@@ -66,9 +66,9 @@ AFTER UPDATE ON `player_rank`
 FOR EACH ROW
 BEGIN
  IF NEW.deleted = 1 THEN
-  INSERT INTO player_rank_log (ckey, rank, admin_ckey, `action`) VALUES (NEW.ckey, NEW.rank, NEW.admin_ckey, 'REMOVED');
+  INSERT INTO player_rank_log (ckey, `rank`, admin_ckey, `action`) VALUES (NEW.ckey, NEW.`rank`, NEW.admin_ckey, 'REMOVED');
  ELSE
-  INSERT INTO player_rank_log (ckey, rank, admin_ckey, `action`) VALUES (NEW.ckey, NEW.rank, NEW.admin_ckey, 'ADDED');
+INSERT INTO player_rank_log (ckey, `rank`, admin_ckey, `action`) VALUES (NEW.ckey, NEW.`rank`, NEW.admin_ckey, 'ADDED');
  END IF;
 END; //
 DELIMITER ;

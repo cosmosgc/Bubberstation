@@ -13,7 +13,7 @@
 
 /datum/wound/loss
 	name = "Dismemberment Wound"
-	desc = "oof ouch!!"
+	desc = "Oof ouch!"
 
 	sound_effect = 'sound/effects/dismember.ogg'
 	severity = WOUND_SEVERITY_LOSS
@@ -35,14 +35,14 @@
 	var/self_msg
 
 	if(dismembered_part.body_zone == BODY_ZONE_CHEST)
-		occur_text = "is split open, causing [victim.p_their()] internal organs to spill out!"
+		occur_text = "está dividido, causando[victim.p_their()]Órgãos internos para derramar!"
 		self_msg = "is split open, causing your internal organs to spill out!"
 	else
 		occur_text = dismembered_part.get_dismember_message(wounding_type, outright)
 
-	var/msg = span_bolddanger("[victim]'s [dismembered_part.plaintext_zone] [occur_text]")
+	var/msg = span_bolddanger("[victim]'s[dismembered_part.plaintext_zone] [occur_text]")
 
-	victim.visible_message(msg, span_userdanger("Your [dismembered_part.plaintext_zone] [self_msg ? self_msg : occur_text]"))
+	victim.visible_message(msg, span_userdanger("Sua[dismembered_part.plaintext_zone] [self_msg ? self_msg : occur_text]"))
 
 	loss_wounding_type = wounding_type
 
@@ -61,25 +61,25 @@
 	if(outright)
 		switch(wounding_type)
 			if(WOUND_BLUNT)
-				occur_text = "is outright smashed to a gross pulp, severing it completely!"
+				occur_text = "Está completamente esmagado por uma polpa bruta, cortando-a completamente!"
 			if(WOUND_SLASH)
-				occur_text = "is outright slashed off, severing it completely!"
+				occur_text = "é completamente cortado, cortando completamente!"
 			if(WOUND_PIERCE)
-				occur_text = "is outright blasted apart, severing it completely!"
+				occur_text = "Está completamente destroçado, cortando-o completamente!"
 			if(WOUND_BURN)
-				occur_text = "is outright incinerated, falling to dust!"
+				occur_text = "Está totalmente incinerado, caindo em pó!"
 	else
 		var/bone_text = get_internal_description()
 		var/tissue_text = get_external_description()
 
 		switch(wounding_type)
 			if(WOUND_BLUNT)
-				occur_text = "is shattered through the last [bone_text] holding it together, severing it completely!"
+				occur_text = "é quebrado através do último[bone_text]Mantendo-se firme, cortando-o completamente!"
 			if(WOUND_SLASH)
-				occur_text = "is slashed through the last [tissue_text] holding it together, severing it completely!"
+				occur_text = "é cortado através do último[tissue_text]Mantendo-se firme, cortando-o completamente!"
 			if(WOUND_PIERCE)
-				occur_text = "is pierced through the last [tissue_text] holding it together, severing it completely!"
+				occur_text = "é perfurado através do último[tissue_text]Mantendo-se firme, cortando-o completamente!"
 			if(WOUND_BURN)
-				occur_text = "is completely incinerated, falling to dust!"
+				occur_text = "está completamente incinerado, caindo ao pó!"
 
 	return occur_text

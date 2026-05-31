@@ -20,7 +20,7 @@
 
 	if(length(user.held_items) < 0 || iscyborg(user) || source.anchored)
 		return
-	examine_list += span_smallnotice("You could bind [source.p_them()] to your wrist with a pair of handcuffs...")
+	examine_list += span_smallnotice("Você poderia amarrar[source.p_them()]ao seu pulso com um par de algemas...")
 
 ///Give context to players holding a pair of handcuffs when hovering the item
 /datum/element/cuffable_item/proc/on_requesting_context_from_item(datum/source, list/context, obj/item/held_item, mob/user)
@@ -48,13 +48,13 @@
 		return
 
 	if(HAS_TRAIT_FROM(source, TRAIT_NODROP, CUFFED_ITEM_TRAIT))
-		to_chat(user, span_warning("[source] is already cuffed to your wrist!"))
+		to_chat(user, span_warning("[source]Já está algemado ao seu pulso!"))
 		return
 
 	if(cuffs.handcuffs_clumsiness_check(user))
 		return
 
-	source.balloon_alert(user, "cuffing item...")
+	source.balloon_alert(user, "Algemando item...")
 	playsound(source, cuffs.cuffsound, 30, TRUE, -2)
 	if(!do_after(user, cuffs.get_handcuff_time(user), source))
 		return
@@ -62,8 +62,8 @@
 	playsound(source, cuffs.cuffsuccesssound, 30, TRUE, -2)
 
 	if(user.apply_status_effect(/datum/status_effect/cuffed_item, source, cuffs))
-		source.balloon_alert(user, "item cuffed to wrist")
+		source.balloon_alert(user, "item algemado ao pulso")
 		return
 
-	source.balloon_alert(user, "couldn't cuff to wrist!")
+	source.balloon_alert(user, "Não podia algemar o pulso!")
 	return

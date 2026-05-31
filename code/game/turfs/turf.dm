@@ -373,7 +373,7 @@ GLOBAL_LIST_EMPTY(station_turfs)
 			break
 	if(prev_turf && !(flags & FALL_NO_MESSAGE))
 		for(var/mov_name in falling_mov_names)
-			prev_turf.visible_message(span_danger("[mov_name] falls through [prev_turf]!"))
+			prev_turf.visible_message(span_danger("[mov_name]cai através[prev_turf]!"))
 	if(!(flags & FALL_INTERCEPTED) && zFall(falling, levels + 1))
 		return FALSE
 	for(var/atom/movable/falling_mov as anything in falling_movables)
@@ -854,7 +854,7 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		return
 	if(!GLOB.preset_fish_sources[fish_source].has_known_fishes(src))
 		return
-	. += span_tinynoticeital("This is a fishing spot. You can look again to list its fishes...")
+	. += span_tinynoticeital("Este é um ponto de pesca. Você pode olhar novamente para listar seus peixes...")
 
 /turf/examine_more(mob/user)
 	. = ..()

@@ -33,16 +33,16 @@
 	if(QDELETED(src) || QDELETED(owner.current))
 		return FALSE
 	if(!chosen_clan)
-		to_chat(person_selecting, span_announce("You choose to remain ignorant, for now."))
+		to_chat(person_selecting, span_announce("Você escolhe permanecer ignorante, por enquanto."))
 		return
 	my_clan = new chosen_clan(src)
 
 /datum/antagonist/bloodsucker/proc/remove_clan(mob/admin)
 	if(owner.current.has_status_effect(/datum/status_effect/frenzy))
-		to_chat(admin, span_announce("Removing a Bloodsucker from a Clan while they are in a Frenzy will break stuff, this action has been blocked."))
+		to_chat(admin, span_announce("Remover um sanguessuga de um clã enquanto eles estão em um Frenzy vai quebrar coisas, esta ação foi bloqueada."))
 		return
 	QDEL_NULL(my_clan)
-	to_chat(owner.current, span_announce("You have been forced out of your clan! You can re-enter one by regular means."))
+	to_chat(owner.current, span_announce("Você foi forçado a sair do seu clã! Você pode reentrar em um por meios regulares."))
 
 /datum/antagonist/bloodsucker/proc/admin_set_clan(mob/admin)
 	assign_clan_and_bane(admin)

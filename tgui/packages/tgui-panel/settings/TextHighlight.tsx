@@ -136,7 +136,7 @@ function TextHighlightSetting(props) {
         <Stack.Item>
           <Button.Checkbox
             checked={highlightWholeMessage}
-            tooltip="If this option is selected, the entire message will be highlighted in yellow."
+            tooltip="Se esta opção for selecionada, toda a mensagem será destacada em amarelo."
             onClick={() =>
               updateHighlight({
                 id,
@@ -151,7 +151,7 @@ function TextHighlightSetting(props) {
           <Button.Checkbox
             checked={matchWord}
             tooltipPosition="bottom-start"
-            tooltip="If this option is selected, only exact matches (no extra letters before or after) will trigger. Not compatible with punctuation. Overriden if regex is used."
+            tooltip="Se esta opção for selecionada, apenas correspondências exatas (sem letras extras antes ou depois) irão disparar. Não compatível com pontuação. Overriden se regex for usado."
             disabled={!!highlightRegex}
             onClick={() =>
               updateHighlight({
@@ -165,7 +165,7 @@ function TextHighlightSetting(props) {
         </Stack.Item>
         <Stack.Item>
           <Button.Checkbox
-            tooltip="If this option is selected, the highlight will be case-sensitive."
+            tooltip="Se esta opção for selecionada, o destaque será sensível."
             checked={matchCase}
             onClick={() =>
               updateHighlight({
@@ -197,8 +197,8 @@ function TextHighlightSetting(props) {
         fluid
         height="3em"
         value={highlightText}
-        placeholder="Put words to highlight here. Separate terms with commas, i.e. (term1, term2, term3)"
-        style={{ border: isRegexValid ? '' : '1px solid red' }}
+        placeholder="Coloque palavras para destacar aqui. Termos separados com vírgulas, ou seja, (termo1, termo2, termo3)"
+        style={{ border: isRegexValid ? '' : '1px vermelho sólido' }}
         onBlur={(value) =>
           updateHighlight({
             id: id,

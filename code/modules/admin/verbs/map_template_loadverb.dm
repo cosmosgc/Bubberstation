@@ -11,7 +11,7 @@ ADMIN_VERB(map_template_load, R_DEBUG, "Map Template - Place", "Place a map temp
 
 	var/list/preview = list()
 	var/center
-	var/centeralert = tgui_alert(user,"Center Template.","Template Centering",list("Yes","No"))
+	var/centeralert = tgui_alert(user,"Modelo central.","Template Centering",list("Yes","No"))
 	switch(centeralert)
 		if("Yes")
 			center = TRUE
@@ -24,7 +24,7 @@ ADMIN_VERB(map_template_load, R_DEBUG, "Map Template - Place", "Place a map temp
 		SET_PLANE(item, ABOVE_LIGHTING_PLANE, place_on)
 		preview += item
 	user.images += preview
-	if(tgui_alert(user,"Confirm location.","Template Confirm",list("Yes","No")) == "Yes")
+	if(tgui_alert(user,"Confirme a localização.","Template Confirm",list("Yes","No")) == "Yes")
 		if(template.load(T, centered = center))
 			var/affected = template.get_affected_turfs(T, centered = center)
 			for(var/AT in affected)
@@ -35,18 +35,18 @@ ADMIN_VERB(map_template_load, R_DEBUG, "Map Template - Place", "Place a map temp
 
 			message_admins(span_adminnotice("[key_name_admin(user)] has placed a map template ([template.name]) at [ADMIN_COORDJMP(T)]"))
 		else
-			to_chat(user, "Failed to place map", confidential = TRUE)
+			to_chat(user, "Falhou em colocar o mapa.", confidential = TRUE)
 	user.images -= preview
 
 ADMIN_VERB(map_template_upload, R_DEBUG, "Map Template - Upload", "Upload a map template to the server.", ADMIN_CATEGORY_DEBUG)
-	var/map = input(user, "Choose a Map Template to upload to template storage","Upload Map Template") as null|file
+	var/map = input(user, "Escolha um modelo de mapa para enviar para o armazenamento do modelo","Enviar Modelo de Mapa") as null|file
 	if(!map)
 		return
 	if(copytext("[map]", -4) != ".dmm")//4 == length(".dmm")
-		to_chat(user, span_warning("Filename must end in '.dmm': [map]"), confidential = TRUE)
+		to_chat(user, span_warning("O nome do arquivo deve terminar em '.dmm':[map]"), confidential = TRUE)
 		return
 	var/datum/map_template/M
-	switch(tgui_alert(user, "What kind of map is this?", "Map type", list("Normal", "Shuttle", "Cancel")))
+	switch(tgui_alert(user, "Que tipo de mapa é esse?", "Map type", list("Normal", "Shuttle", "Cancel")))
 		if("Normal")
 			M = new /datum/map_template(map, "[map]", TRUE)
 		if("Shuttle")
@@ -54,7 +54,7 @@ ADMIN_VERB(map_template_upload, R_DEBUG, "Map Template - Upload", "Upload a map 
 		else
 			return
 	if(!M.cached_map)
-		to_chat(user, span_warning("Map template '[map]' failed to parse properly."), confidential = TRUE)
+		to_chat(user, span_warning("Modelo de mapa[map]Falharam em analisar corretamente."), confidential = TRUE)
 		return
 
 	var/datum/map_report/report = M.cached_map.check_for_errors()
@@ -62,15 +62,15 @@ ADMIN_VERB(map_template_upload, R_DEBUG, "Map Template - Upload", "Upload a map 
 	if(report)
 		report.show_to(user)
 		report_link = " - <a href='byond://?src=[REF(report)];[HrefToken(forceGlobal = TRUE)];show=1'>validation report</a>"
-		to_chat(user, span_warning("Map template '[map]' <a href='byond://?src=[REF(report)];[HrefToken()];show=1'>failed validation</a>."), confidential = TRUE)
+		to_chat(user, span_warning("Modelo de mapa[map]' <a href='byond://?src=[REF(report)];[HrefToken()];show=1'>validação falhada</a>."), confidential = TRUE)
 		if(report.loadable)
-			var/response = tgui_alert(user, "The map failed validation, would you like to load it anyways?", "Map Errors", list("Cancel", "Upload Anyways"))
+			var/response = tgui_alert(user, "O mapa falhou, gostaria de carregá-lo?", "Map Errors", list("Cancel", "Upload Anyways"))
 			if(response != "Upload Anyways")
 				return
 		else
-			tgui_alert(user, "The map failed validation and cannot be loaded.", "Map Errors", list("Oh Darn"))
+			tgui_alert(user, "O mapa falhou na validação e não pode ser carregado.", "Map Errors", list("Oh Darn"))
 			return
 
 	SSmapping.map_templates[M.name] = M
 	message_admins(span_adminnotice("[key_name_admin(user)] has uploaded a map template '[map]' ([M.width]x[M.height])[report_link]."))
-	to_chat(user, span_notice("Map template '[map]' ready to place ([M.width]x[M.height])"), confidential = TRUE)
+	to_chat(user, span_notice("Modelo de mapa[map]' pronto para colocar ([M.width]x[M.height])"), confidential = TRUE)

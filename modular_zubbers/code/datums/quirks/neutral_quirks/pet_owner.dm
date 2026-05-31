@@ -1,12 +1,12 @@
 /datum/quirk/item_quirk/pet_owner
 	name = "Pet Owner"
-	desc = "You bring your pet to work with you so that it, too, can experience the dangers of station life."
+	desc = "Você traz seu animal de estimação para trabalhar com você para que ele, também, possa experimentar os perigos da vida de estação."
 	icon = FA_ICON_HORSE
 	value = 0
 	mob_trait = TRAIT_PET_OWNER
-	gain_text = span_notice("You brought your pet with you to work.")
-	lose_text = span_danger("You feel lonely, as if leaving somebody behind...")
-	medical_record_text = "Patient mentions their fondness for their pet."
+	gain_text = span_notice("Você trouxe seu animal de estimação para o trabalho.")
+	lose_text = span_danger("Você se sente solitário, como se deixasse alguém para trás...")
+	medical_record_text = "O paciente menciona seu carinho pelo animal de estimação."
 	mail_goodies = list(
 		/obj/item/clothing/neck/petcollar
 	)
@@ -45,7 +45,7 @@
 		list(
 			LOCATION_HANDS = ITEM_SLOT_HANDS
 		),
-		flavour_text = "Looks tightly packed - you might not be able to put the pet back in once they're out.",
+		flavour_text = "Parece bem arrumado - você pode não ser capaz de colocar o animal de estimação de volta uma vez que eles estão fora.",
 	)
 
 /datum/preference/choiced/pet_owner

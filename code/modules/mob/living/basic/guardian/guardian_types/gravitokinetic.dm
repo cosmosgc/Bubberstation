@@ -6,7 +6,7 @@
 	damage_coeff = list(BRUTE = 0.75, BURN = 0.75, TOX = 0.75, STAMINA = 0, OXY = 0.75)
 	playstyle_string = span_holoparasite("As a <b>gravitokinetic</b> type, you can right-click to make the gravity on the ground stronger, and punching applies this effect to a target.")
 	creator_name = "Gravitokinetic"
-	creator_desc = "Attacks will apply crushing gravity to the target. Can target the ground as well to slow targets advancing on you, but you are not immune to your own such effects."
+	creator_desc = "Ataques aplicarão gravidade esmagadora ao alvo. Pode mirar no chão também para alvos lentos avançando em você, mas você não é imune a seus próprios efeitos."
 	creator_icon = "gravitokinetic"
 	/// Targets we have applied our gravity effects on.
 	var/list/gravity_targets = list()
@@ -44,16 +44,16 @@
 /mob/living/basic/guardian/gravitokinetic/recall_effects()
 	. = ..()
 	if (length(gravity_targets))
-		to_chat(src, span_bolddanger("You have released your gravitokinetic powers!"))
+		to_chat(src, span_bolddanger("Você libertou seus poderes gravitocinéticos!"))
 	clear_gravity()
 
 /mob/living/basic/guardian/gravitokinetic/melee_attack(atom/target, list/modifiers, ignore_cooldown)
 	. = ..()
 	if (!. || !isliving(target) || target == src || target == summoner || shares_summoner(target) || gravity_targets[target])
 		return
-	to_chat(src, span_bolddanger("Your punch has applied heavy gravity to [target]!"))
+	to_chat(src, span_bolddanger("Seu soco tem aplicado gravidade pesada para[target]!"))
 	add_gravity(target, punch_gravity)
-	to_chat(target, span_userdanger("Everything feels really heavy!"))
+	to_chat(target, span_userdanger("Tudo parece muito peso!"))
 	return TRUE
 
 /mob/living/basic/guardian/gravitokinetic/UnarmedAttack(atom/attack_target, proximity_flag, list/modifiers)
@@ -66,7 +66,7 @@
 /mob/living/basic/guardian/gravitokinetic/proc/slam_turf(turf/open/slammed)
 	if (!isopenturf(slammed) || isgroundlessturf(slammed))
 		return
-	visible_message(span_danger("[src] slams their fist into the [slammed]!"), span_notice("You amplify gravity around the [slammed]."))
+	visible_message(span_danger("[src]Bate seu punho no[slammed]!"), span_notice("Você amplifica a gravidade em torno do[slammed]."))
 	do_attack_animation(slammed)
 	add_gravity(slammed, turf_gravity)
 
@@ -89,7 +89,7 @@
 	if (isnull(gravity_targets[target]))
 		return
 	if (too_far)
-		to_chat(src, span_bolddanger("You are too far away from [target] to amplify gravity's hold on them!"))
+		to_chat(src, span_bolddanger("Você está muito longe de[target]Para ampliar a gravidade!"))
 	UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 	target.RemoveElement(/datum/element/forced_gravity, gravity_targets[target])
 	gravity_targets -= target

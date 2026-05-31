@@ -1,6 +1,6 @@
 /datum/reagent/consumable/orangejuice
 	name = "Orange Juice"
-	description = "Both delicious AND rich in Vitamin C, what more do you need?"
+	description = "Ambos deliciosos e ricos em vitamina C, o que mais você precisa?"
 	color = "#E78108" // rgb: 231, 129, 8
 	taste_description = "oranges"
 	ph = 3.3
@@ -16,7 +16,7 @@
 
 /datum/reagent/consumable/tomatojuice
 	name = "Tomato Juice"
-	description = "Tomatoes made into juice. What a waste of big, juicy tomatoes, huh?"
+	description = "Tomates feitos em suco. Que desperdício de tomates, hein?"
 	color = "#731008" // rgb: 115, 16, 8
 	taste_description = "tomatoes"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -31,9 +31,9 @@
 
 /datum/reagent/consumable/limejuice
 	name = "Lime Juice"
-	description = "The sweet-sour juice of limes."
+	description = "O suco de limão."
 	color = "#a6f19a" // rgb: 166, 241, 154
-	taste_description = "unbearable sourness"
+	taste_description = "Azedo insuportável"
 	ph = 2.2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -47,7 +47,7 @@
 
 /datum/reagent/consumable/carrotjuice
 	name = "Carrot Juice"
-	description = "It is just like a carrot but without crunching."
+	description = "É como uma cenoura, mas sem mastigar."
 	color = "#973800" // rgb: 151, 56, 0
 	taste_description = "carrots"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -69,7 +69,7 @@
 
 /datum/reagent/consumable/berryjuice
 	name = "Berry Juice"
-	description = "A delicious blend of several different kinds of berries."
+	description = "Uma deliciosa mistura de vários tipos diferentes de frutas."
 	color = "#863333" // rgb: 134, 51, 51
 	taste_description = "berries"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -77,14 +77,14 @@
 
 /datum/reagent/consumable/applejuice
 	name = "Apple Juice"
-	description = "The sweet juice of an apple, fit for all ages."
+	description = "O suco doce de uma maçã, adequado para todas as idades."
 	color = "#fff06b" // rgb: 255, 240, 107
 	taste_description = "apples"
 	ph = 3.2 // ~ 2.7 -> 3.7
 
 /datum/reagent/consumable/poisonberryjuice
 	name = "Poison Berry Juice"
-	description = "A tasty juice blended from various kinds of very deadly and toxic berries."
+	description = "Um delicioso suco misturado de vários tipos de bagas muito mortais e tóxicas."
 	color = "#792b49" // rgb: 121, 43, 73
 	taste_description = "berries"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -97,15 +97,15 @@
 
 /datum/reagent/consumable/watermelonjuice
 	name = "Watermelon Juice"
-	description = "Delicious juice made from watermelon."
+	description = "Suco delicioso feito de melancia."
 	color = "#af5e5e" // rgb: 175, 94, 94
-	taste_description = "juicy watermelon"
+	taste_description = "Melancia suculenta"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/lemonjuice
 	name = "Lemon Juice"
-	description = "This juice is VERY sour."
+	description = "Este suco está muito azedo."
 	color = "#ebeb9e" // rgb: 235, 235, 158
 	taste_description = "sourness"
 	ph = 2
@@ -115,7 +115,7 @@
 
 /datum/reagent/consumable/banana
 	name = "Banana Juice"
-	description = "The raw essence of a banana. HONK"
+	description = "A essência crua de uma banana. HONK"
 	color = "#FFFCB9" // rgb: 255, 252, 185
 	taste_description = "banana"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -130,7 +130,7 @@
 
 /datum/reagent/consumable/nothing
 	name = "Nothing"
-	description = "Absolutely nothing."
+	description = "Absolutamente nada."
 	taste_description = "nothing"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -148,7 +148,7 @@
 
 /datum/reagent/consumable/laughter
 	name = "Laughter"
-	description = "Some say that this is the best medicine, but recent studies have proven that to be untrue."
+	description = "Alguns dizem que este é o melhor remédio, mas estudos recentes provaram que não é verdade."
 	metabolization_rate = INFINITY
 	color = "#FF4DD2"
 	taste_description = "laughter"
@@ -162,7 +162,7 @@
 
 /datum/reagent/consumable/superlaughter
 	name = "Super Laughter"
-	description = "Funny until you're the one laughing."
+	description = "Engraçado até ser você quem está rindo."
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
 	color = "#FF4DD2"
 	taste_description = "laughter"
@@ -172,25 +172,25 @@
 /datum/reagent/consumable/superlaughter/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
 	if(SPT_PROB(16, seconds_per_tick))
-		affected_mob.visible_message(span_danger("[affected_mob] bursts out into a fit of uncontrollable laughter!"), span_userdanger("You burst out in a fit of uncontrollable laughter!"))
+		affected_mob.visible_message(span_danger("[affected_mob]Estourou em um ataque de risadas incontroláveis!"), span_userdanger("Você explodiu em um ataque de risadas incontroláveis!"))
 		affected_mob.Stun(5)
 		affected_mob.add_mood_event("chemical_laughter", /datum/mood_event/chemical_superlaughter)
 
 /datum/reagent/consumable/potato_juice
 	name = "Potato Juice"
-	description = "Juice of the potato. Bleh."
+	description = "Suco de batata. Bleh."
 	nutriment_factor = 2
 	color = "#E8A856" // rgb: 234, 157, 58
-	taste_description = "irish sadness"
+	taste_description = "Tristeza irlandesa."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/pickle
 	name = "Pickle Juice"
-	description = "More accurately, this is the brine the pickle was floating in"
+	description = "Mais precisamente, esta é a salmoura em que o picles estava flutuando"
 	nutriment_factor = 2
 	color = "#cde65e" // rgb: 205, 230, 94
-	taste_description = "vinegar brine"
+	taste_description = "salmoura de vinagre"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -203,15 +203,15 @@
 
 /datum/reagent/consumable/grapejuice
 	name = "Grape Juice"
-	description = "The juice of a bunch of grapes. Guaranteed non-alcoholic."
+	description = "O suco de um cacho de uvas. Garantido sem álcool."
 	color = "#290029" // dark purple
-	taste_description = "grape soda"
+	taste_description = "Soda de uva"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/plumjuice
 	name = "Plum Juice"
-	description = "Refreshing and slightly acidic beverage."
+	description = "Bebidas refrescantes e ligeiramente ácidas."
 	color = "#b6062c"
 	taste_description = "plums"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -219,7 +219,7 @@
 
 /datum/reagent/consumable/milk
 	name = "Milk"
-	description = "An opaque white liquid produced by the mammary glands of mammals."
+	description = "Um líquido branco opaco produzido pelas glândulas mamárias dos mamíferos."
 	color = "#DFDFDF" // rgb: 223, 223, 223
 	taste_description = "milk"
 	ph = 6.5
@@ -252,9 +252,9 @@
 
 /datum/reagent/consumable/soymilk
 	name = "Soy Milk"
-	description = "An opaque white liquid made from soybeans."
+	description = "Um líquido branco opaco feito de soja."
 	color = "#DFDFC7" // rgb: 223, 223, 199
-	taste_description = "soy milk"
+	taste_description = "Leite de soja"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	default_container = /obj/item/reagent_containers/condiment/soymilk
@@ -267,9 +267,9 @@
 
 /datum/reagent/consumable/cream
 	name = "Cream"
-	description = "The fatty, still liquid part of milk. Why don't you mix this with sum scotch, eh?"
+	description = "O gordo, ainda líquido parte do leite. Por que não mistura isso com sum scotch?"
 	color = "#DFD7AF" // rgb: 223, 215, 175
-	taste_description = "creamy milk"
+	taste_description = "Leite cremoso."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	default_container = /obj/item/reagent_containers/cup/glass/bottle/juice/cream
@@ -281,7 +281,7 @@
 
 /datum/reagent/consumable/coffee
 	name = "Coffee"
-	description = "Coffee is a brewed drink prepared from roasted seeds, commonly called coffee beans, of the coffee plant."
+	description = "O café é uma bebida preparada a partir de sementes assadas, comumente chamadas grãos de café, da planta de café."
 	color = "#482000" // rgb: 72, 32, 0
 	nutriment_factor = 0
 	overdose_threshold = 80
@@ -307,10 +307,10 @@
 
 /datum/reagent/consumable/tea
 	name = "Tea"
-	description = "Tasty black tea, it has antioxidants, it's good for you!"
+	description = "Chá preto saboroso, tem antioxidantes, é bom para você!"
 	color = "#101000" // rgb: 16, 16, 0
 	nutriment_factor = 0
-	taste_description = "tart black tea"
+	taste_description = "Chá preto de torta"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_STOCK
@@ -333,7 +333,7 @@
 		if(SPT_PROB(10, seconds_per_tick))
 			var/helped = iter_wound.tea_life_process()
 			if(!to_chatted && helped)
-				to_chat(affected_mob, span_notice("A calm, relaxed feeling suffuses you. Your wounds feel a little healthier."))
+				to_chat(affected_mob, span_notice("Uma sensação calma e relaxada te sufoca. Suas feridas parecem mais saudáveis."))
 			to_chatted = TRUE
 
 // Different handling, different name.
@@ -360,21 +360,21 @@
 
 /datum/reagent/consumable/lemonade
 	name = "Lemonade"
-	description = "Sweet, tangy lemonade. Good for the soul."
+	description = "Limonada doce e picante. Bom para a alma."
 	color = "#FFE978"
 	quality = DRINK_NICE
-	taste_description = "sunshine and summertime"
+	taste_description = "Sol e verão"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
 
 /datum/reagent/consumable/tea/arnold_palmer
 	name = "Arnold Palmer"
-	description = "Encourages the patient to go golfing."
+	description = "Encoraja o paciente a jogar golfe."
 	color = "#FFB766"
 	quality = DRINK_NICE
 	nutriment_factor = 10
-	taste_description = "bitter tea"
+	taste_description = "Chá amargo."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -385,11 +385,11 @@
 
 /datum/reagent/consumable/icecoffee
 	name = "Iced Coffee"
-	description = "Coffee and ice, refreshing and cool."
+	description = "Café e gelo, refrescante e fresco."
 	color = "#462b15" // rgb: 70, 43, 21
 	nutriment_factor = 0
 	overdose_threshold = 80
-	taste_description = "bitter coldness"
+	taste_description = "Frieza amarga"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -407,11 +407,11 @@
 
 /datum/reagent/consumable/hot_ice_coffee
 	name = "Hot Ice Coffee"
-	description = "Coffee with pulsing ice shards"
+	description = "Café com pedaços de gelo pulsantes"
 	color = "#462b15" // rgb: 70, 43, 21
 	nutriment_factor = 0
 	overdose_threshold = 80
-	taste_description = "bitter coldness and a hint of smoke"
+	taste_description = "Frieza amarga e uma pitada de fumaça"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -431,10 +431,10 @@
 
 /datum/reagent/consumable/icetea
 	name = "Iced Tea"
-	description = "No relation to a certain rap artist/actor."
+	description = "Nenhuma relação com um artista/ator de rap."
 	color = "#104038" // rgb: 16, 64, 56
 	nutriment_factor = 0
-	taste_description = "sweet tea"
+	taste_description = "Chá doce"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -451,7 +451,7 @@
 
 /datum/reagent/consumable/space_cola
 	name = "Cola"
-	description = "A refreshing beverage."
+	description = "Uma bebida refrescante."
 	color = "#100800" // rgb: 16, 8, 0
 	taste_description = "cola"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -464,10 +464,10 @@
 
 /datum/reagent/consumable/roy_rogers
 	name = "Roy Rogers"
-	description = "A sweet fizzy drink."
+	description = "Uma bebida com gás."
 	color = "#53090B"
 	quality = DRINK_GOOD
-	taste_description = "fruity overlysweet cola"
+	taste_description = "Cola frutado super doce"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -479,10 +479,10 @@
 
 /datum/reagent/consumable/nuka_cola
 	name = "Nuka Cola"
-	description = "Cola, cola never changes."
+	description = "Cola, cola nunca muda."
 	color = "#100800" // rgb: 16, 8, 0
 	quality = DRINK_VERYGOOD
-	taste_description = "the future"
+	taste_description = "O futuro"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -507,12 +507,12 @@
 
 /datum/reagent/consumable/rootbeer
 	name = "Root Beer"
-	description = "A delightfully bubbly root beer, filled with so much sugar that it can actually speed up the user's trigger finger."
+	description = "Uma deliciosa cerveja espumante, cheia de tanto açúcar que pode acelerar o dedo gatilho do usuário."
 	color = "#181008" // rgb: 24, 16, 8
 	quality = DRINK_VERYGOOD
 	nutriment_factor = 10
 	metabolization_rate = 2 * REAGENTS_METABOLISM
-	taste_description = "a monstrous sugar rush"
+	taste_description = "Uma monstruosa corrida de açúcar."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	/// If we activated the effect
@@ -522,14 +522,14 @@
 	. = ..()
 	REMOVE_TRAIT(affected_mob, TRAIT_DOUBLE_TAP, type)
 	if(current_cycle > 10)
-		to_chat(affected_mob, span_warning("You feel kinda tired as your sugar rush wears off..."))
+		to_chat(affected_mob, span_warning("Você se sente um pouco cansado com o efeito do açúcar..."))
 		affected_mob.adjust_stamina_loss(min(80, current_cycle * 3), required_biotype = affected_biotype)
 		affected_mob.adjust_drowsiness((current_cycle-1) * 2 SECONDS)
 
 /datum/reagent/consumable/rootbeer/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
 	if(current_cycle > 3 && !effect_enabled) // takes a few seconds for the bonus to kick in to prevent microdosing
-		to_chat(affected_mob, span_notice("You feel your trigger finger getting itchy..."))
+		to_chat(affected_mob, span_notice("Sente o dedo do gatilho coçando..."))
 		ADD_TRAIT(affected_mob, TRAIT_DOUBLE_TAP, type)
 		effect_enabled = TRUE
 
@@ -541,10 +541,10 @@
 
 /datum/reagent/consumable/grey_bull
 	name = "Grey Bull"
-	description = "Grey Bull, it gives you gloves!"
+	description = "Grey Bull, te dá luvas!"
 	color = "#EEFF00" // rgb: 238, 255, 0
 	quality = DRINK_VERYGOOD
-	taste_description = "carbonated oil"
+	taste_description = "Óleo carbonatado"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_SHOCKIMMUNE)
@@ -566,9 +566,9 @@
 
 /datum/reagent/consumable/spacemountainwind
 	name = "SM Wind"
-	description = "Blows right through you like a space wind."
+	description = "Sopra através de você como um vento espacial."
 	color = "#102000" // rgb: 16, 32, 0
-	taste_description = "sweet citrus soda"
+	taste_description = "doce refrigerante cítrico"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -582,9 +582,9 @@
 
 /datum/reagent/consumable/dr_gibb
 	name = "Dr. Gibb"
-	description = "A delicious blend of 42 different flavours."
+	description = "Uma deliciosa mistura de 42 sabores diferentes."
 	color = "#102000" // rgb: 16, 32, 0
-	taste_description = "cherry soda" // FALSE ADVERTISING
+	taste_description = "refrigerante de cereja" // FALSE ADVERTISING
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -595,9 +595,9 @@
 
 /datum/reagent/consumable/space_up
 	name = "Space-Up"
-	description = "Tastes like a hull breach in your mouth."
+	description = "Tem gosto de quebra de casco na boca."
 	color = COLOR_VIBRANT_LIME // rgb: 0, 255, 0
-	taste_description = "cherry soda"
+	taste_description = "refrigerante de cereja"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -607,9 +607,9 @@
 
 /datum/reagent/consumable/lemon_lime
 	name = "Lemon Lime"
-	description = "A tangy substance made of 0.5% natural citrus!"
+	description = "Uma substância picante feita de 0,5% de citrinos naturais!"
 	color = "#8CFF00" // rgb: 135, 255, 0
-	taste_description = "tangy lime and lemon soda"
+	taste_description = "limão e limão soda"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -619,9 +619,9 @@
 
 /datum/reagent/consumable/pwr_game
 	name = "Pwr Game"
-	description = "The only drink with the PWR that true gamers crave."
+	description = "A única bebida que os verdadeiros jogadores desejam."
 	color = "#9385bf" // rgb: 58, 52, 75
-	taste_description = "sweet and salty tang"
+	taste_description = "Doce e salgado"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -629,8 +629,7 @@
 	. = ..()
 	if(exposed_mob?.mind?.get_skill_level(/datum/skill/gaming) >= SKILL_LEVEL_LEGENDARY && (methods & INGEST) && !HAS_TRAIT(exposed_mob, TRAIT_GAMERGOD))
 		ADD_TRAIT(exposed_mob, TRAIT_GAMERGOD, "pwr_game")
-		to_chat(exposed_mob, span_nicegreen("As you imbibe the Pwr Game, your gamer third eye opens... \
-		You feel as though a great secret of the universe has been made known to you..."))
+		to_chat(exposed_mob, span_nicegreen("Enquanto você bebe o jogo Pwr, seu terceiro olho de jogador abre... Você sente como se um grande segredo do universo tivesse sido dado a você..."))
 
 /datum/reagent/consumable/pwr_game/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
@@ -640,9 +639,9 @@
 
 /datum/reagent/consumable/shamblers
 	name = "Shambler's Juice"
-	description = "~Shake me up some of that Shambler's Juice!~"
+	description = "Agite-me um pouco daquele suco de Shambler!"
 	color = "#f00060" // rgb: 94, 0, 38
-	taste_description = "carbonated metallic soda"
+	taste_description = "refrigerante metálico carbonatado."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -652,9 +651,9 @@
 
 /datum/reagent/consumable/sodawater
 	name = "Soda Water"
-	description = "A can of club soda. Why not make a scotch and soda?"
+	description = "Uma lata de refrigerante. Por que não fazer um uísque com soda?"
 	color = "#619494" // rgb: 97, 148, 148
-	taste_description = "carbonated water"
+	taste_description = "Água carbonatada."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -672,9 +671,9 @@
 
 /datum/reagent/consumable/tonic
 	name = "Tonic Water"
-	description = "It tastes strange but at least the quinine keeps the Space Malaria at bay."
+	description = "Tem um gosto estranho, mas pelo menos o quinino mantém a Malária Espacial longe."
 	color = "#0064C8" // rgb: 0, 100, 200
-	taste_description = "tart and fresh"
+	taste_description = "Tart e fresco"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -687,9 +686,9 @@
 
 /datum/reagent/consumable/wellcheers
 	name = "Wellcheers"
-	description = "A strange purple drink, smelling of saltwater. Somewhere in the distance, you hear seagulls."
+	description = "Uma bebida roxa estranha, cheirando a água salgada. Em algum lugar distante, você ouve gaivotas."
 	color = "#762399" // rgb: 118, 35, 153
-	taste_description = "grapes and the fresh open sea"
+	taste_description = "uvas e o mar aberto fresco"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -709,10 +708,10 @@
 
 /datum/reagent/consumable/monkey_energy
 	name = "Monkey Energy"
-	description = "The only drink that will make you unleash the ape."
+	description = "A única bebida que fará você soltar o macaco."
 	color = "#f39b03" // rgb: 243, 155, 3
 	overdose_threshold = 60
-	taste_description = "barbecue and nostalgia"
+	taste_description = "churrasco e nostalgia"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -741,7 +740,7 @@
 
 /datum/reagent/consumable/ice
 	name = "Ice"
-	description = "Frozen water, your dentist wouldn't like you chewing this."
+	description = "Água congelada, seu dentista não gostaria que mastigasse isso."
 	color = "#619494" // rgb: 97, 148, 148
 	taste_description = "ice"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -755,11 +754,11 @@
 
 /datum/reagent/consumable/soy_latte
 	name = "Soy Latte"
-	description = "A nice and tasty beverage while you are reading your hippie books."
+	description = "Uma bebida saborosa enquanto lê seus livros hippies."
 	color = "#cc6404" // rgb: 204,100,4
 	overdose_threshold = 80
 	quality = DRINK_NICE
-	taste_description = "creamy coffee"
+	taste_description = "Café cremoso."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
@@ -783,11 +782,11 @@
 
 /datum/reagent/consumable/cafe_latte
 	name = "Cafe Latte"
-	description = "A nice, strong and tasty beverage while you are reading."
+	description = "Uma bebida agradável, forte e saborosa enquanto você está lendo."
 	color = "#cc6404" // rgb: 204,100,4
 	overdose_threshold = 80
 	quality = DRINK_NICE
-	taste_description = "bitter cream"
+	taste_description = "Creme amargo"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_EASY
@@ -811,10 +810,10 @@
 
 /datum/reagent/consumable/doctor_delight
 	name = "The Doctor's Delight"
-	description = "A gulp a day keeps the Medibot away! A mixture of juices that heals most damage types fairly quickly at the cost of hunger."
+	description = "Um gole por dia mantém o Medibot longe! Uma mistura de sucos que cura a maioria dos tipos de danos rapidamente ao custo da fome."
 	color = "#FF8CFF" // rgb: 255, 140, 255
 	quality = DRINK_VERYGOOD
-	taste_description = "homely fruit"
+	taste_description = "Fruta caseira"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -835,10 +834,10 @@
 
 /datum/reagent/consumable/cinderella
 	name = "Cinderella"
-	description = "Most definitely a fruity alcohol cocktail to have while partying with your friends."
+	description = "Definitivamente um coquetel de álcool frutado para ter enquanto festeja com seus amigos."
 	color = "#FF6A50"
 	quality = DRINK_VERYGOOD
-	taste_description = "sweet tangy fruit"
+	taste_description = "doce fruta picante"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -848,88 +847,88 @@
 
 /datum/reagent/consumable/cherryshake
 	name = "Cherry Shake"
-	description = "A cherry flavored milkshake."
+	description = "Um milkshake com sabor de cereja."
 	color = "#FFB6C1"
 	quality = DRINK_VERYGOOD
 	nutriment_factor = 8
-	taste_description = "creamy tart cherry"
+	taste_description = "Cereja de torta cremosa"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
 
 /datum/reagent/consumable/bluecherryshake
 	name = "Blue Cherry Shake"
-	description = "An exotic milkshake."
+	description = "Um milkshake exótico."
 	color = "#00F1FF"
 	quality = DRINK_VERYGOOD
 	nutriment_factor = 8
-	taste_description = "creamy blue cherry"
+	taste_description = "Cereja azul cremosa"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/vanillashake
 	name = "Vanilla Shake"
-	description = "A vanilla flavored milkshake. The basics are still good."
+	description = "Um milk-shake com sabor de baunilha. O básico ainda está bom."
 	color = "#E9D2B2"
 	quality = DRINK_VERYGOOD
 	nutriment_factor = 8
-	taste_description = "sweet creamy vanilla"
+	taste_description = "Doce baunilha cremosa"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
 
 /datum/reagent/consumable/caramelshake
 	name = "Caramel Shake"
-	description = "A caramel flavored milkshake. Your teeth hurt looking at it."
+	description = "Um milk-shake com sabor de caramelo. Seus dentes doem olhando para ele."
 	color = "#E17C00"
 	quality = DRINK_GOOD
 	nutriment_factor = 10
-	taste_description = "sweet rich creamy caramel"
+	taste_description = "doce rico caramelo cremoso"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
 
 /datum/reagent/consumable/choccyshake
 	name = "Chocolate Shake"
-	description = "A frosty chocolate milkshake."
+	description = "Um milkshake de chocolate gelado."
 	color = "#541B00"
 	quality = DRINK_VERYGOOD
 	nutriment_factor = 8
-	taste_description = "sweet creamy chocolate"
+	taste_description = "doce chocolate cremoso"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
 
 /datum/reagent/consumable/strawberryshake
 	name = "Strawberry Shake"
-	description = "A strawberry milkshake."
+	description = "Um milkshake de morango."
 	color = "#ff7b7b"
 	quality = DRINK_VERYGOOD
 	nutriment_factor = 8
-	taste_description = "sweet strawberries and milk"
+	taste_description = "morangos doces e leite"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
 
 /datum/reagent/consumable/bananashake
 	name = "Banana Shake"
-	description = "A banana milkshake. Stuff that clowns drink at their honkday parties."
+	description = "Um milkshake de banana. Coisas que os palhaços bebem nas festas."
 	color = "#f2d554"
 	quality = DRINK_VERYGOOD
 	nutriment_factor = 8
-	taste_description = "thick banana"
+	taste_description = "Banana grossa."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_MEDIUM
 
 /datum/reagent/consumable/pumpkin_latte
 	name = "Pumpkin Latte"
-	description = "A mix of pumpkin juice and coffee."
+	description = "Uma mistura de suco de abóbora e café."
 	color = "#F4A460"
 	overdose_threshold = 80
 	quality = DRINK_VERYGOOD
 	nutriment_factor = 3
-	taste_description = "creamy pumpkin"
+	taste_description = "Abóbora cremosa"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -952,17 +951,17 @@
 
 /datum/reagent/consumable/gibbfloats
 	name = "Gibb Floats"
-	description = "Ice cream on top of a Dr. Gibb glass."
+	description = "Sorvete em cima de um copo do Dr. Gibb."
 	color = "#B22222"
 	quality = DRINK_NICE
 	nutriment_factor = 3
-	taste_description = "creamy cherry"
+	taste_description = "Cereja cremosa"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/pumpkinjuice
 	name = "Pumpkin Juice"
-	description = "Juiced from real pumpkin."
+	description = "Sugado de abóbora de verdade."
 	color = "#FFA500"
 	taste_description = "pumpkin"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -970,26 +969,26 @@
 
 /datum/reagent/consumable/blumpkinjuice
 	name = "Blumpkin Juice"
-	description = "Juiced from real blumpkin."
+	description = "Sugado de carne de verdade."
 	color = "#00BFFF"
-	taste_description = "a mouthful of pool water"
+	taste_description = "Uma boca cheia de água da piscina."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/triple_citrus
 	name = "Triple Citrus"
-	description = "A solution."
+	description = "Uma solução."
 	color = "#EEFF00"
 	quality = DRINK_NICE
-	taste_description = "extreme bitterness"
+	taste_description = "extrema amargura"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/grape_soda
 	name = "Grape Soda"
-	description = "Beloved by children and teetotalers."
+	description = "Amado por crianças e abstêmios."
 	color = "#E6CDFF"
-	taste_description = "grape soda"
+	taste_description = "Soda de uva"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -999,19 +998,19 @@
 
 /datum/reagent/consumable/milk/chocolate_milk
 	name = "Chocolate Milk"
-	description = "Milk for cool kids."
+	description = "Leite para crianças legais."
 	color = "#7D4E29"
 	quality = DRINK_NICE
-	taste_description = "chocolate milk"
+	taste_description = "Leite de chocolate"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/hot_coco
 	name = "Hot Coco"
-	description = "Made with love! And coco beans."
+	description = "Feito com amor! E feijão de coco."
 	nutriment_factor = 4
 	color = "#3b240e" // rgb: 59, 36, 14
-	taste_description = "creamy chocolate"
+	taste_description = "Chocolate cremoso"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1026,11 +1025,11 @@
 
 /datum/reagent/consumable/italian_coco
 	name = "Italian Hot Chocolate"
-	description = "Made with love! You can just imagine a happy Nonna from the smell."
+	description = "Feito com amor! Pode imaginar uma Nonna feliz pelo cheiro."
 	nutriment_factor = 8
 	color = "#57372A"
 	quality = DRINK_VERYGOOD
-	taste_description = "thick creamy chocolate"
+	taste_description = "chocolate cremoso espesso"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1040,7 +1039,7 @@
 
 /datum/reagent/consumable/menthol
 	name = "Menthol"
-	description = "Alleviates coughing symptoms one might have."
+	description = "Alivia sintomas de tosse que alguém pode ter."
 	color = "#80AF9C"
 	taste_description = "mint"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -1053,16 +1052,16 @@
 
 /datum/reagent/consumable/grenadine
 	name = "Grenadine"
-	description = "Not cherry flavored!"
+	description = "Não tem sabor de cereja!"
 	color = "#EA1D26"
-	taste_description = "sweet pomegranates"
+	taste_description = "Romãs doces"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/grenadine/on_mob_metabolize(mob/living/drinker)
 	. = ..()
 	if(IS_REVOLUTIONARY(drinker))
-		to_chat(drinker, span_warning("Antioxidants are weakening your radical spirit!"))
+		to_chat(drinker, span_warning("Antioxidantes estão enfraquecendo seu espírito radical!"))
 
 /datum/reagent/consumable/grenadine/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, metabolization_ratio)
 	. = ..()
@@ -1081,7 +1080,7 @@
 
 /datum/reagent/consumable/pineapplejuice
 	name = "Pineapple Juice"
-	description = "Tart, tropical, and hotly debated."
+	description = "Tart, tropical, e intensamente debatido."
 	color = "#F7D435"
 	taste_description = "pineapple"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -1090,7 +1089,7 @@
 
 /datum/reagent/consumable/peachjuice //Intended to be extremely rare due to being the limiting ingredients in the blazaam drink
 	name = "Peach Juice"
-	description = "Just peachy."
+	description = "Muito bem."
 	color = "#E78108"
 	taste_description = "peaches"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -1098,10 +1097,10 @@
 
 /datum/reagent/consumable/cream_soda
 	name = "Cream Soda"
-	description = "A classic space-American vanilla flavored soft drink."
+	description = "Um clássico refrigerante com sabor de baunilha."
 	color = "#dcb137"
 	quality = DRINK_VERYGOOD
-	taste_description = "fizzy vanilla"
+	taste_description = "Baunilha com gás"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1111,10 +1110,10 @@
 
 /datum/reagent/consumable/sol_dry
 	name = "Sol Dry"
-	description = "A soothing, mellow drink made from ginger."
+	description = "Uma bebida calmante e suave feita de gengibre."
 	color = "#f7d26a"
 	quality = DRINK_NICE
-	taste_description = "sweet ginger spice"
+	taste_description = "Tempero doce de gengibre"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1124,10 +1123,10 @@
 
 /datum/reagent/consumable/shirley_temple
 	name = "Shirley Temple"
-	description = "Here you go little girl, now you can drink like the adults."
+	description = "Aqui está, garotinha, agora pode beber como os adultos."
 	color = "#F43724"
 	quality = DRINK_GOOD
-	taste_description = "sweet cherry syrup and ginger spice"
+	taste_description = "Xarope de cereja doce e especiarias de gengibre"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1137,7 +1136,7 @@
 
 /datum/reagent/consumable/red_queen
 	name = "Red Queen"
-	description = "DRINK ME."
+	description = "Beba-me."
 	color = "#e6ddc3"
 	quality = DRINK_GOOD
 	taste_description = "wonder"
@@ -1165,15 +1164,15 @@
 /datum/reagent/consumable/bungojuice
 	name = "Bungo Juice"
 	color = "#F9E43D"
-	description = "Exotic! You feel like you are on vacation already."
-	taste_description = "succulent bungo"
+	description = "Exótico! Parece que já está de férias."
+	taste_description = "Bungo suculento"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/prunomix
 	name = "Pruno Mixture"
 	color = "#E78108"
-	description = "Fruit, sugar, yeast, and water pulped together into a pungent slurry."
+	description = "Frutas, açúcar, fermento e água juntos em uma pasta pungente."
 	taste_description = "garbage"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1181,7 +1180,7 @@
 /datum/reagent/consumable/aloejuice
 	name = "Aloe Juice"
 	color = "#b3c5a7" // rgb: 179, 197, 167
-	description = "A healthy and refreshing juice."
+	description = "Um suco saudável e refrescante."
 	taste_description = "vegetable"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
@@ -1194,10 +1193,10 @@
 
 /datum/reagent/consumable/agua_fresca
 	name = "Agua Fresca"
-	description = "A refreshing watermelon agua fresca. Perfect on a day at the holodeck."
+	description = "Uma melancia refrescante agua fresca. Perfeito em um dia no holodeck."
 	color = "#D25B66"
 	quality = DRINK_VERYGOOD
-	taste_description = "cool refreshing watermelon"
+	taste_description = "Melancia refrescante."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1210,7 +1209,7 @@
 
 /datum/reagent/consumable/mushroom_tea
 	name = "Mushroom Tea"
-	description = "A savoury glass of tea made from polypore mushroom shavings, originally native to Tizira."
+	description = "Um copo salgado de chá feito de aparas de cogumelos poliporos, originalmente nativo de Tizira."
 	color = "#674945" // rgb: 16, 16, 0
 	nutriment_factor = 0
 	taste_description = "mushrooms"
@@ -1226,90 +1225,90 @@
 //Moth Stuff
 /datum/reagent/consumable/toechtauese_juice
 	name = "Töchtaüse Juice"
-	description = "An unpleasant juice made from töchtaüse berries. Best made into a syrup, unless you enjoy pain."
+	description = "Um suco desagradável feito de bagas. Melhor fazer um xarope, a menos que goste de dor."
 	color = "#554862" // rgb: 85, 72, 98
 	nutriment_factor = 0
-	taste_description = "fiery itchy pain"
+	taste_description = "dor ardente coceira"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/toechtauese_syrup
 	name = "Töchtaüse Syrup"
-	description = "A harsh spicy and bitter syrup, made from töchtaüse berries. Useful as an ingredient, both for food and cocktails."
+	description = "Um xarope picante e amargo, feito de bagas. Útil como ingrediente, para comida e coquetéis."
 	color = "#554862" // rgb: 85, 72, 98
 	nutriment_factor = 0
-	taste_description = "sugar, spice, and nothing nice"
+	taste_description = "açúcar, especiarias, e nada agradável."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/strawberry_banana
 	name = "Strawberry Banana Smoothie"
-	description = "A classic smoothie made from strawberries and bananas."
+	description = "Um smoothie clássico feito de morangos e bananas."
 	color = "#FF9999"
 	nutriment_factor = 0
-	taste_description = "strawberry and banana"
+	taste_description = "morango e banana"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/berry_blast
 	name = "Berry Blast Smoothie"
-	description = "A classic smoothie made from mixed berries."
+	description = "Um smoothie clássico feito de bagas mistas."
 	color = "#A76DC5"
 	nutriment_factor = 0
-	taste_description = "mixed berry"
+	taste_description = "Bagas mistas"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/funky_monkey
 	name = "Funky Monkey Smoothie"
-	description = "A classic smoothie made from chocolate and bananas."
+	description = "Um smoothie clássico feito de chocolate e bananas."
 	color = COLOR_BROWNER_BROWN
 	nutriment_factor = 0
-	taste_description = "chocolate and banana"
+	taste_description = "chocolate e banana"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/green_giant
 	name = "Green Giant Smoothie"
-	description = "A green vegetable smoothie, made without vegetables."
+	description = "Um smoothie vegetal verde, feito sem vegetais."
 	color = COLOR_VERY_DARK_LIME_GREEN
 	nutriment_factor = 0
-	taste_description = "green, just green"
+	taste_description = "Verde, apenas verde"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/melon_baller
 	name = "Melon Baller Smoothie"
-	description = "A classic smoothie made from melons."
+	description = "Um clássico smoothie feito de melões."
 	color = "#D22F55"
 	nutriment_factor = 0
-	taste_description = "fresh melon"
+	taste_description = "Melão fresco"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/vanilla_dream
 	name = "Vanilla Dream Smoothie"
-	description = "A classic smoothie made from vanilla and fresh cream."
+	description = "Uma vitamina clássica feita de baunilha e creme fresco."
 	color = "#FFF3DD"
 	nutriment_factor = 0
-	taste_description = "creamy vanilla"
+	taste_description = "Baunilha cremosa"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/cucumberjuice
 	name = "Cucumber Juice"
-	description = "Ordinary cucumber juice, nothing from the fantasy world."
+	description = "Suco comum de pepino, nada do mundo da fantasia."
 	color = "#B1D861" // rgb: 177, 216, 97
-	taste_description = "light cucumber"
+	taste_description = "Pepino leve"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/cucumberlemonade
 	name = "Cucumber Lemonade"
-	description = "Cucumber juice, sugar, and soda; what else do I need?"
+	description = "Suco de pepino, açúcar e refrigerante. O que mais preciso?"
 	color = "#cbe248" // rgb: 203, 226, 72
 	quality = DRINK_GOOD
-	taste_description = "citrus soda with cucumber"
+	taste_description = "Soda cítrica com pepino"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	glass_price = DRINK_PRICE_HIGH
@@ -1323,9 +1322,9 @@
 
 /datum/reagent/consumable/mississippi_queen
 	name = "Mississippi Queen"
-	description = "If you think you're so hot, how about a victory drink?"
+	description = "Se acha que é tão gostosa, que tal uma bebida da vitória?"
 	color = "#d4422f" // rgb: 212,66,47
-	taste_description = "sludge seeping down your throat"
+	taste_description = "lodo escorrendo pela sua garganta."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1342,9 +1341,9 @@
 
 /datum/reagent/consumable/t_letter
 	name = "T"
-	description = "You expected to find this in a soup, but this is fine too."
+	description = "Você esperava encontrar isso em uma sopa, mas isso também está bom."
 	color = "#583d09" // rgb: 88, 61, 9
-	taste_description = "one of your 26 favorite letters"
+	taste_description = "Uma de suas 26 cartas favoritas."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -1362,33 +1361,33 @@
 
 /datum/reagent/consumable/hakka_mate
 	name = "Hakka-Mate"
-	description = "A Martian-made yerba mate soda, dragged straight out of the pits of a hacking convention."
+	description = "Um refrigerante de erva-mate feito por marciano, arrastado direto para fora dos poços de uma convenção de hackers."
 	color = "#c4b000"
-	taste_description = "bubbly yerba mate"
+	taste_description = "Bubbly yerba mate"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/coconut_milk
 	name = "Coconut Milk"
-	description = "A versatile milk substitute that's perfect for everything from cooking to making cocktails."
+	description = "Um substituto de leite versátil que é perfeito para tudo, desde cozinhar até fazer coquetéis."
 	color = "#DFDFDF"
-	taste_description = "milky coconut"
+	taste_description = "Coco leitoso"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/melon_soda
 	name = "Melon Soda"
-	description = "A neon green hit of nostalgia."
+	description = "Um ataque de nostalgia verde neon."
 	color = "#6FEB48"
-	taste_description = "fizzy melon"
+	taste_description = "Melancia felpuda"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
 /datum/reagent/consumable/volt_energy
 	name = "24-Volt Energy"
-	description = "An artificially coloured and flavoured electric energy drink, in lanternfruit flavour. Made for ethereals, by ethereals."
+	description = "Uma bebida de energia elétrica de cor artificial e sabor, com sabor de lamparina. Feito para etéreos, por etéreos."
 	color = "#99E550"
-	taste_description = "sour pear"
+	taste_description = "Pêra azeda"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -1405,10 +1404,9 @@
 
 /datum/reagent/consumable/fruit_punch
 	name = "fruit punch"
-	description = "Impossibly sweet fruit punch. Nobody knows what fruits were used to make it, not even it's creators... \
-		It's unique recipe heals and rejuvinates the drinker, but is unsafe to consume without the support of a nearby watercooler."
+	description = "Impossível ponche de fruta doce. Ninguém sabe quais frutas foram usadas para fazer isso, nem mesmo os criadores... É uma receita única cura e rejuvenesce o bebedor, mas não é seguro consumir sem o apoio de um refrigerador de água próximo."
 	color = "#f7b2e3"
-	taste_description = "dangerously sweet fruit"
+	taste_description = "Fruta perigosamente doce"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	quality = DRINK_VERYGOOD
@@ -1438,7 +1436,7 @@
 		affected_mob.add_movespeed_modifier(/datum/movespeed_modifier/punch_punishment)
 		if(SPT_PROB(10, seconds_per_tick))
 			affected_mob.Knockdown(3 SECONDS, 6 SECONDS) //Gives daze effect. Using the cooler is a commitment and if you get jumped during it or have to run away to fight something, you should be vulnerable.
-			to_chat(affected_mob, span_warning("The overwhelming sweetness of the fruit punch disorients and confounds you!"))
+			to_chat(affected_mob, span_warning("A doçura esmagadora do ponche de frutas desorienta e confunde você!"))
 	if(need_mob_update)
 		return UPDATE_MOB_HEALTH
 
@@ -1453,23 +1451,23 @@
 
 /atom/movable/screen/alert/fruit_punch_good
 	name = "Fruit Punch Blessing"
-	desc = "The sweetness of the fruit punch and the friendly company of the liquid cooler are slowly restoring your health..."
+	desc = "A doçura do ponche de frutas e a companhia amigável do líquido refrigerador estão lentamente restaurando sua saúde..."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "punch_blessing"
 
 /atom/movable/screen/alert/fruit_punch_bad
 	name = "Fruit Punishment"
-	desc = "The unbearable sweetness of the fruit punch is too much to bear without the soothing aura of a liquid cooler! Your body is going into shock!"
+	desc = "A doçura insuportável do ponche de frutas é demais para suportar sem a aura calmante de um líquido refrigerador! Seu corpo está entrando em choque!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "punch_punishment"
 
 /datum/reagent/consumable/ethanol/bitters_soda
 	name = "Bitters and Soda"
-	description = "A simple beverage of soda water flavored with aromatic bitters. Soothes upset stomachs."
+	description = "Uma simples bebida de água com sabor aromático. Acalma o estômago."
 	boozepwr = 0
 	color = "#f1c1b3"
 	quality = DRINK_NICE
-	taste_description = "mild aromatics"
+	taste_description = "Aromas suaves"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 
@@ -1479,10 +1477,10 @@
 
 /datum/reagent/consumable/lean
 	name = "Lean"
-	description = "The drank that makes you go wheezy."
+	description = "A bebida que faz você ficar tonto."
 	color = "#DE55ED"
 	quality = DRINK_GOOD
-	taste_description = "purple and a hint of opioid."
+	taste_description = "roxo e uma pitada de opioide."
 	addiction_types = list(/datum/addiction/opioids = 200)
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS

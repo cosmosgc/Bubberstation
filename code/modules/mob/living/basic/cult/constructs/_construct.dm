@@ -15,7 +15,7 @@
 	unique_name = TRUE
 	can_buckle_to = FALSE
 	initial_language_holder = /datum/language_holder/construct
-	death_message = "collapses in a shattered heap."
+	death_message = "cai em uma pilha de pedaços."
 
 	speak_emote = list("hisses")
 	response_help_continuous = "thinks better of touching"
@@ -65,24 +65,9 @@
 	if(smashes_walls)
 		AddElement(/datum/element/wall_tearer, allow_reinforced = FALSE)
 	if(can_repair)
-		AddComponent(\
-			/datum/component/healing_touch,\
-			heal_brute = 5,\
-			heal_burn = 0,\
-			heal_time = 0,\
-			valid_targets_typecache = typecacheof(list(/mob/living/basic/construct, /mob/living/basic/shade)),\
-			valid_biotypes = MOB_MINERAL | MOB_SPIRIT,\
-			self_targeting = can_repair_self ? HEALING_TOUCH_ANYONE : HEALING_TOUCH_NOT_SELF,\
-			action_text = "%SOURCE% begins repairing %TARGET%'s dents.",\
-			complete_text = "%TARGET%'s dents are repaired.",\
-			show_health = TRUE,\
-			heal_color = COLOR_CULT_RED,\
-		)
+		AddComponent(			/datum/component/healing_touch,			heal_brute = 5,			heal_burn = 0,			heal_time = 0,			valid_targets_typecache = typecacheof(list(/mob/living/basic/construct, /mob/living/basic/shade)),			valid_biotypes = MOB_MINERAL | MOB_SPIRIT,			self_targeting = can_repair_self ? HEALING_TOUCH_ANYONE : HEALING_TOUCH_NOT_SELF,			action_text = "%SOURCE% begins repairing %TARGET%'s dents.",			complete_text = "%TARGET%'s dents are repaired.",			show_health = TRUE,			heal_color = COLOR_CULT_RED,		)
 		var/static/list/structure_types = typecacheof(list(/obj/structure/destructible/cult))
-		AddElement(\
-			/datum/element/structure_repair,\
-			structure_types_typecache = structure_types,\
-			)
+		AddElement(			/datum/element/structure_repair,			structure_types_typecache = structure_types,			)
 	add_traits(list(TRAIT_HEALS_FROM_CULT_PYLONS, TRAIT_SPACEWALK), INNATE_TRAIT)
 	grant_actions_by_list(construct_spells)
 
@@ -126,9 +111,9 @@
 	. = list()
 	if(health < maxHealth)
 		if(health >= maxHealth/2)
-			. += span_warning("[p_They()] look[p_s()] slightly dented.")
+			. += span_warning("[p_They()]Veja.[p_s()]Levemente amassado.")
 		else
-			. += span_warning(span_bold("[p_They()] look[p_s()] severely dented!"))
+			. += span_warning(span_bold("[p_They()]Veja.[p_s()]Muito bem!"))
 
 	return .
 
@@ -141,4 +126,4 @@
 /// Construct ectoplasm. Largely a placeholder, since the death drop element needs a unique list.
 /obj/item/ectoplasm/construct
 	name = "blood-red ectoplasm"
-	desc = "Has a pungent metallic smell."
+	desc = "Tem um cheiro metálico pungente."

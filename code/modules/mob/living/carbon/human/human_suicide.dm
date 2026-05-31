@@ -60,12 +60,7 @@
 	var/suicide_message = ""
 	switch(message_type)
 		if(HUMAN_BRAIN_DAMAGE_SUICIDE_MESSAGE) // god damn this message is fucking stupid
-			suicide_message = "[src] pulls both arms outwards in front of [p_their()] chest and pumps them behind [p_their()] back, repeats this motion in a smaller range of motion \
-			down to [p_their()] hips two times once more all while sliding [p_their()] legs in a faux walking motion, claps [p_their()] hands together \
-			in front of [p_them()] while both [p_their()] knees knock together, pumps [p_their()] arms downward, pronating [p_their()] wrists and abducting \
-			[p_their()] fingers outward while crossing [p_their()] legs back and forth, repeats this motion again two times while keeping [p_their()] shoulders low \
-			and hunching over, does finger guns with right hand and left hand bent on [p_their()] hip while looking directly forward and putting [p_their()] left leg forward then \
-			crossing [p_their()] arms and leaning back a little while bending [p_their()] knees at an angle! It looks like [p_theyre()] trying to commit suicide."
+			suicide_message = "[src]Puxa ambos os braços para fora na frente de[p_their()]peito e bombeá-los para trás[p_their()]volta, repete este movimento em uma menor amplitude de movimento até[p_their()]hips duas vezes mais uma vez enquanto desliza[p_their()]Pernas em um movimento de andar falso, palmas[p_their()]Mãos juntas na frente de[p_them()]Encontre as ambulâncias.[p_their()]Joelhos batem juntas, bombas[p_their()]braços para baixo, pronando[p_their()]Pulsos e Seguimento[p_their()]Dedos para fora enchanto cruz[p_their()]pernas para trás e para frente, repete este movimento novamente duas vezes enquanto mantém[p_their()]ombros baixos e curvando-se sobre, faz pistolas de dedo com a mão direita e mão esquerda dobrada sobre[p_their()]hip enquanto olha diretamente para frente e colocando[p_their()]Perna esquerda para frente e cruzando[p_their()]braços e inclinando para trás um pouco enquanto dobra[p_their()]Joelhos em ângulo! Parece que...[p_theyre()]Tentando cometer suicídio."
 
 		if(HUMAN_COMBAT_MODE_SUICIDE_MESSAGE)
 			suicide_message = pick(list(

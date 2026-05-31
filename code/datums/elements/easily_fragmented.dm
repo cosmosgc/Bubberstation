@@ -33,5 +33,5 @@
 
 /datum/element/easily_fragmented/proc/try_break(obj/item/source, mob/user)
 	if(prob(break_chance))
-		user.visible_message(span_danger("[user]'s [source.name] snap[source.p_s()] into tiny pieces in [user.p_their()] hand."))
+		user.visible_message(span_danger("[user]'s[source.name]Snap[source.p_s()]Em pequenos pedaços dentro[user.p_their()]Mão."))
 		source.deconstruct(disassembled = FALSE)

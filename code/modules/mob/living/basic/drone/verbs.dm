@@ -7,7 +7,7 @@
 	set category = "Drone"
 	set name = "Check Laws"
 
-	to_chat(src, "<b>Drone Laws</b>")
+	to_chat(src, "<b>Leis de drones</b>")
 	to_chat(src, laws)
 
 /**
@@ -25,10 +25,10 @@
 	set category = "Drone"
 	set name = "Drone ping"
 
-	var/alert_s = input(src,"Alert severity level","Drone ping",null) as null|anything in list("Low","Medium","High","Critical")
+	var/alert_s = input(src,"Alertar nível de gravidade.","Drone ping",null) as null|anything in list("Low","Medium","High","Critical")
 
 	var/area/A = get_area(loc)
 
 	if(alert_s && A && stat != DEAD)
-		var/msg = span_big("DRONE PING: [name]: [alert_s] priority alert in [A.name]!")
+		var/msg = span_big("DRONE PING:[name]: [alert_s]Alerta de prioridade em[A.name]!")
 		alert_drones(msg)

@@ -1,7 +1,7 @@
 //reforming
 /obj/item/ectoplasm/revenant
 	name = "glimmering residue"
-	desc = "A pile of fine blue dust. Small tendrils of violet mist swirl around it."
+	desc = "Uma pilha de pó azul fino. Pequenos tentáculos de névoa violeta giram em torno dele."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "revenantEctoplasm"
 	w_class = WEIGHT_CLASS_SMALL
@@ -27,8 +27,8 @@
 	if(!reforming || inert)
 		return ..()
 	user.visible_message(
-		span_notice("[user] scatters [src] in all directions."),
-		span_notice("You scatter [src] across the area. The particles slowly fade away."),
+		span_notice("[user]dispersões[src]em todas as direções."),
+		span_notice("Você se espalha[src]através da área. As partículas desaparecem lentamente."),
 	)
 	user.dropItemToGround(src)
 	qdel(src)
@@ -37,18 +37,18 @@
 	. = ..()
 	if(inert)
 		return
-	visible_message(span_notice("[src] breaks into particles upon impact, which fade away to nothingness."))
+	visible_message(span_notice("[src]Entra em partículas no impacto, que desaparecem para o nada."))
 	qdel(src)
 
 /obj/item/ectoplasm/revenant/examine(mob/user)
 	. = ..()
 	if(inert)
-		. += span_revennotice("It seems inert.")
+		. += span_revennotice("Parece inerte.")
 	else if(reforming)
-		. += span_revenwarning("It is shifting and distorted. It would be wise to destroy this.")
+		. += span_revenwarning("Está mudando e distorcido. Seria sábio destruir isso.")
 
 /obj/item/ectoplasm/revenant/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is inhaling [src]! It looks like [user.p_theyre()] trying to visit the shadow realm!"))
+	user.visible_message(span_suicide("[user]está inalando.[src]! Parece que...[user.p_theyre()]Tentando visitar o reino das sombras!"))
 	qdel(src)
 	return OXYLOSS
 
@@ -58,7 +58,7 @@
 		reform()
 	else
 		inert = TRUE
-		visible_message(span_warning("[src] settles down and seems lifeless."))
+		visible_message(span_warning("[src]Se acalma e parece sem vida."))
 
 /// Actually moves the revenant out of ourself
 /obj/item/ectoplasm/revenant/proc/reform()
@@ -77,7 +77,7 @@
 
 	message_admins("[user_name] has been [old_ckey == user_name ? "re":""]made into a revenant by reforming ectoplasm.")
 	revenant.log_message("was [old_ckey == user_name ? "re":""]made as a revenant by reforming ectoplasm.", LOG_GAME)
-	visible_message(span_revenboldnotice("[src] suddenly rises into the air before fading away."))
+	visible_message(span_revenboldnotice("[src]de repente sobe ao ar antes de desaparecer."))
 
 	revenant.death_reset()
 	revenant = null
@@ -90,7 +90,7 @@
 	if(isnull(chosen_one))
 		message_admins("No candidates were found for the new revenant.")
 		inert = TRUE
-		visible_message(span_revenwarning("[src] settles down and seems lifeless."))
+		visible_message(span_revenwarning("[src]Se acalma e parece sem vida."))
 		qdel(revenant)
 		return null
 	return chosen_one

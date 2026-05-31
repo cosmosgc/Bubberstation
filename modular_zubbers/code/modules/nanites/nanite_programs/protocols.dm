@@ -1,8 +1,7 @@
 //Replication Protocols
 /datum/nanite_program/protocol/kickstart
 	name = "Kickstart Protocol"
-	desc = "Replication Protocol: the nanites focus on early growth, heavily boosting replication rate for a few minutes after the initial implantation, \
-			resulting in an additional 420 nanite volume being produced during the first two minutes."
+	desc = "Protocolo de Replicação: os nanites focam no crescimento precoce, aumentando fortemente a taxa de replicação por alguns minutos após a implantação inicial, resultando em um volume adicional de 420 nanites sendo produzido durante os dois primeiros minutos."
 	use_rate = 0
 	rogue_types = list(/datum/nanite_program/necrotic)
 	protocol_class = NANITE_PROTOCOL_REPLICATION
@@ -18,9 +17,7 @@
 
 /datum/nanite_program/protocol/factory
 	name = "Factory Protocol"
-	desc = "Replication Protocol: the nanites build a factory matrix within the host, gradually increasing replication speed over time, \
-			granting a maximum of 2 additional nanite production after roughly 17 minutes. \
-			The factory decays if the protocol is not active, or if the nanites are disrupted by shocks or EMPs."
+	desc = "Protocolo de Replicação: os nanites constroem uma matriz de fábrica dentro do hospedeiro, aumentando gradualmente a velocidade de replicação ao longo do tempo, concedendo um máximo de 2 produção adicional de nanites após aproximadamente 17 minutos. A fábrica decai se o protocolo não estiver ativo, ou se os nanites forem interrompidos por choques ou PEMs."
 	use_rate = 0
 	rogue_types = list(/datum/nanite_program/necrotic)
 	protocol_class = NANITE_PROTOCOL_REPLICATION
@@ -50,8 +47,7 @@
 
 /datum/nanite_program/protocol/pyramid
 	name = "Pyramid Protocol"
-	desc = "Replication Protocol: the nanites implement an alternate cooperative replication protocol that is active as long as the nanite saturation level is above 80%, \
-			resulting in an additional volume production of 1.2 per second."
+	desc = "Protocolo de Replicação: os nanites implementam um protocolo de replicação cooperativa alternativo que está ativo desde que o nível de saturação nanite esteja acima de 80%, resultando em uma produção de volume adicional de 1,2 por segundo."
 	use_rate = 0
 	rogue_types = list(/datum/nanite_program/necrotic)
 	protocol_class = NANITE_PROTOCOL_REPLICATION
@@ -68,7 +64,7 @@
 
 /datum/nanite_program/protocol/offline
 	name = "Eclipse Protocol"
-	desc = "Replication Protocol: while the host is asleep or otherwise unconcious, the nanites exploit the reduced interference to replicate more quickly."
+	desc = "Protocolo de Replicação: enquanto o hospedeiro está dormindo ou de outra forma inconsciente, os nanites exploram a interferência reduzida para se replicar mais rapidamente."
 	use_rate = 0
 	rogue_types = list(/datum/nanite_program/necrotic)
 	protocol_class = NANITE_PROTOCOL_REPLICATION
@@ -86,7 +82,7 @@
 
 /datum/nanite_program/protocol/hive
 	name = "Hive Protocol"
-	desc = "Storage Protocol: the nanites use a more efficient grid arrangment for volume storage, increasing maximum volume to 750."
+	desc = "Protocolo de armazenamento: os nanites usam um arranjo de grade mais eficiente para armazenamento de volume, aumentando o volume máximo para 750."
 	use_rate = 0
 	rogue_types = list(/datum/nanite_program/necrotic)
 	protocol_class = NANITE_PROTOCOL_STORAGE
@@ -102,7 +98,7 @@
 
 /datum/nanite_program/protocol/zip
 	name = "Zip Protocol"
-	desc = "Storage Protocol: the nanites are disassembled and compacted when unused, increasing the maximum volume to 1000. However, the process slows down their replication rate slightly."
+	desc = "Protocolo de armazenamento: os nanites são desmontados e compactados quando não utilizados, aumentando o volume máximo para 1000. No entanto, o processo diminui sua taxa de replicação ligeiramente."
 	use_rate = 0.2
 	rogue_types = list(/datum/nanite_program/necrotic)
 	protocol_class = NANITE_PROTOCOL_STORAGE
@@ -118,7 +114,7 @@
 
 /datum/nanite_program/protocol/free_range
 	name = "Free-range Protocol"
-	desc = "Storage Protocol: the nanites discard their default storage protocols in favour of a cheaper and more organic approach. Reduces maximum volume to 250, but increases the replication rate by 0.5."
+	desc = "Protocolo de armazenamento: os nanites descartam seus protocolos de armazenamento padrão em favor de uma abordagem mais barata e orgânica. Reduz o volume máximo para 250, mas aumenta a taxa de replicação em 0,5."
 	use_rate = 0
 	rogue_types = list(/datum/nanite_program/necrotic)
 	protocol_class = NANITE_PROTOCOL_STORAGE
@@ -138,8 +134,7 @@
 
 /datum/nanite_program/protocol/unsafe_storage
 	name = "S.L.O. Protocol"
-	desc = "Storage Protocol: 'S.L.O.P.', or Storage Level Override Protocol, completely disables the safety measures normally present in nanites, \
-			allowing them to reach a whopping maximum volume level of 2000, but at the risk of causing damage to the host at nanite concentrations above the standard limit of 500."
+	desc = "Protocolo de Armazenamento: S.L.O.P., ou Protocolo de Sobreposição de Nível de Armazenamento, desativa completamente as medidas de segurança normalmente presentes nos nanites, permitindo que atinjam um volume máximo de 2000 mas sob o risco de causar danos ao hospedeiro em concentrações de nanites acima do limite padrão de 500."
 	use_rate = 0
 	rogue_types = list(/datum/nanite_program/necrotic)
 	protocol_class = NANITE_PROTOCOL_STORAGE

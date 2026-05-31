@@ -40,12 +40,12 @@ export const ModularShieldGen = (props) => {
   } = data;
 
   return (
-    <Window title="Modular Shield Generator" width={690} height={225}>
+    <Window title="Gerador de escudos modulares" width={690} height={225}>
       <Window.Content>
         <Stack fill>
           <Stack.Item grow={2}>
             <Section
-              title="Shield Strength"
+              title="Força do escudo"
               color={recovering ? 'red' : 'white'}
             >
               <ProgressBar
@@ -60,7 +60,7 @@ export const ModularShieldGen = (props) => {
                 {current_strength}/{max_strength}
               </ProgressBar>
             </Section>
-            <Section title="Regeneration and Radius">
+            <Section title="Regeneração e Raio">
               <ProgressBar
                 value={current_regeneration}
                 maxValue={max_regeneration}
@@ -110,14 +110,14 @@ export const ModularShieldGen = (props) => {
                     disabled={active}
                     onClick={() => act('toggle_exterior')}
                   >
-                    {exterior_only ? 'External only' : 'Internal & External'}
+                    {exterior_only ? 'Apenas externa' : 'INTERNA E EXTERNA'}
                   </Button>
                 </LabeledList.Item>
               </LabeledList>
             </Section>
             <Section>
               <LabeledList>
-                <LabeledList.Item label="Toggle Power">
+                <LabeledList.Item label="Alternar o Poder">
                   <Button
                     bold
                     disabled={recovering || initiating_field}

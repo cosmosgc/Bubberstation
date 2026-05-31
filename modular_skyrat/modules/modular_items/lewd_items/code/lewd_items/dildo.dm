@@ -6,7 +6,7 @@
 
 /obj/item/clothing/sextoy/dildo
 	name = "dildo"
-	desc = "A large plastic penis, much like the one in your mother's bedside drawer."
+	desc = "Um pênis de plástico grande, muito parecido com o da gaveta da sua mãe."
 	icon_state = "dildo_human"
 	base_icon_state = "dildo"
 	inhand_icon_state = "dildo_human"
@@ -44,7 +44,7 @@
 /obj/item/clothing/sextoy/dildo/examine(mob/user)
 	. = ..()
 	if(!color_changed && change_sprite)
-		. += span_notice("Alt-click to change it's designs.")
+		. += span_notice("Alt-click para mudar seus projetos.")
 
 /obj/item/clothing/sextoy/dildo/click_alt(mob/user)
 	if(color_changed)
@@ -102,7 +102,7 @@
 		return
 
 	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
-		to_chat(user, span_danger("[target] doesn't want you to do that."))
+		to_chat(user, span_danger("[target]Não quer que faça isso."))
 		return
 
 	var/message = ""
@@ -114,13 +114,12 @@
 		if(BODY_ZONE_PRECISE_GROIN)
 			var/obj/item/organ/genital/vagina = target.get_organ_slot(ORGAN_SLOT_VAGINA)
 			if(!vagina?.is_exposed())
-				to_chat(user, span_danger("Looks like [target]'s groin is covered!"))
+				to_chat(user, span_danger("Parece que sim.[target]A virilha está coberta!"))
 				return FALSE
 
 			message = (user == target) ? pick("rubs [target.p_their()] vagina with [src]",
 					"gently jams [target.p_their()] pussy with [src]",
-					"fucks [target.p_their()] vagina with [src]") \
-				: pick("delicately rubs [target]'s vagina with [src]",
+					"fucks [target.p_their()] vagina with [src]") 				: pick("delicately rubs [target]'s vagina with [src]",
 					"shoves [src] deep into [target]'s vagina",
 					"jams [src] into [target]'s pussy",
 					"teases [target]'s pussy with [src]")
@@ -144,12 +143,11 @@
 
 		if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
 			if(target.is_mouth_covered())
-				to_chat(user, span_danger("Looks like [target]'s mouth is covered!"))
+				to_chat(user, span_danger("Parece que sim.[target]A boca está coberta!"))
 				return FALSE
 
 			message = (user == target) ? pick("licks [src] seductively",
-					"sucks on [src], slowly inserting it into [target.p_their()] throat") \
-				: pick("fucks [target]'s mouth with [src]",
+					"sucks on [src], slowly inserting it into [target.p_their()] throat") 				: pick("fucks [target]'s mouth with [src]",
 					"shoves [src] into [target]'s throat, choking [target.p_them()]",
 					"forces [target] to suck [src]",
 					"inserts [src] into [target]'s throat")
@@ -161,12 +159,11 @@
 		else
 			var/obj/item/organ/genital/anus = target.get_organ_slot(ORGAN_SLOT_ANUS)
 			if(!anus?.is_exposed())
-				to_chat(user, span_danger("Looks like [target]'s anus is covered!"))
+				to_chat(user, span_danger("Parece que sim.[target]O ânus está coberto!"))
 				return FALSE
 
 			message = (user == target) ? pick("puts [src] into [target.p_their()] anus",
-					"slowly inserts [src] into [target.p_their()] ass") \
-				: pick("fucks [target]'s ass with [src]",
+					"slowly inserts [src] into [target.p_their()] ass") 				: pick("fucks [target]'s ass with [src]",
 					"uses [src] to fuck [target]'s anus",
 					"jams [target]'s ass with [src]",
 					"fucks [target]'s ass with [src], making [target.p_their()] eyes roll back")
@@ -208,7 +205,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/dildo/custom_dildo
 	name = "custom dildo"
-	desc = "A dildo that can be customized to your specification."
+	desc = "Um vibrador que pode ser personalizado de acordo com sua especificação."
 	icon_state = "polydildo_small"
 	base_icon_state = "polydildo"
 	inhand_icon_state = "polydildo_small"
@@ -230,7 +227,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /obj/item/clothing/sextoy/dildo/custom_dildo/examine(mob/user)
 	. = ..()
 	if(!size_changed && color_changed && change_sprite)
-		. += span_notice("Alt-click to change it's size.")
+		. += span_notice("Alt-click para mudar seu tamanho.")
 
 /obj/item/clothing/sextoy/dildo/custom_dildo/click_alt(mob/living/user)
 	if(!color_changed)
@@ -282,7 +279,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/dildo/double_dildo
 	name = "double dildo"
-	desc = "You'll have to be a real glizzy gladiator to contend with this."
+	desc = "Você terá que ser um gladiador brilhante para enfrentar isso."
 	icon_state = "dildo_double"
 	inhand_icon_state = "dildo_double"
 	worn_icon_state = "dildo_side"
@@ -327,7 +324,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 //button stuff
 /datum/action/item_action/take_dildo
 	name = "Take the other side of the double dildo in hand"
-	desc = "You can feel one side inside you, time to share this feeling with someone..."
+	desc = "Você pode sentir um lado dentro de você, tempo para compartilhar esse sentimento com alguém..."
 
 /datum/action/item_action/take_dildo/Trigger(trigger_flags)
 	if(!..())
@@ -342,9 +339,9 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	if(src == user.vagina)
 		toggle(user)
 	else if(src == user.anus)
-		to_chat(user, span_warning("You can't use [src] from this angle!"))
+		to_chat(user, span_warning("Você não pode usar[src]deste ângulo!"))
 	else
-		to_chat(user, span_warning("You need to equip [src] before you can use it!"))
+		to_chat(user, span_warning("Você precisa de equipamento.[src]Antes que você possa usá-lo!"))
 
 //dumb way to fix organs overlapping with toys, but WHY NOT. Find a better way if you're not lazy as me.
 /obj/item/clothing/sextoy/dildo/double_dildo/lewd_equipped(mob/living/carbon/human/user, slot)
@@ -420,7 +417,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	if(end_piece)
 		end_piece.moveToNullspace()
 		QDEL_NULL(other_end)
-		user.visible_message(span_notice("[user] releases their grip on one end of the [src]."))
+		user.visible_message(span_notice("[user]Libera sua aderência em uma ponta do[src]."))
 		end_in_hand = FALSE
 		return
 
@@ -429,17 +426,17 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	other_end = new /obj/item/clothing/sextoy/dildo/double_dildo_end
 
 	if(!user.put_in_hands(other_end))
-		user.visible_message(span_notice("[user] tries to hold one end of [src] in [user.p_their()] hand, but [user.p_their()] hand isn't empty!"))
+		user.visible_message(span_notice("[user]Tenta segurar uma ponta de[src]em[user.p_their()]Mão, mas[user.p_their()]A mão não está vazia!"))
 		return FALSE
 
 	other_end.parent_end = WEAKREF(src)
-	user.visible_message(span_notice("[user] holds one end of [src] in [user.p_their()] hand."))
+	user.visible_message(span_notice("[user]Segura uma ponta de[src]em[user.p_their()]Mão."))
 	end_in_hand = TRUE
 	return TRUE
 
 /obj/item/clothing/sextoy/dildo/double_dildo_end
 	name = "dildo side"
-	desc = "You looking so hot!"
+	desc = "Você está tão gostosa!"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	icon_state = "dildo_side"
 	inhand_icon_state = null

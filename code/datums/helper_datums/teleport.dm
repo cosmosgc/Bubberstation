@@ -42,7 +42,7 @@
 				precision = max(rand(1,100)*bagholding.len,100)
 				if(isliving(teleatom))
 					var/mob/living/MM = teleatom
-					to_chat(MM, span_warning("The bluespace interface on your bag of holding interferes with the teleport!"))
+					to_chat(MM, span_warning("A interface do espaço azul na sua bolsa de espera interfere com o teletransporte!"))
 
 			// if effects are not specified and not explicitly disabled, sparks
 			if((!effectin || !effectout) && !no_effects)
@@ -70,7 +70,7 @@
 	if(!forced)
 		if(!check_teleport_valid(teleatom, destturf, channel, original_destination = destination))
 			if(ismob(teleatom))
-				teleatom.balloon_alert(teleatom, "something holds you back!")
+				teleatom.balloon_alert(teleatom, "Algo te prende!")
 			return FALSE
 
 	if(SEND_SIGNAL(teleatom, COMSIG_MOVABLE_TELEPORTING, destination, channel))
@@ -112,7 +112,7 @@
 				continue
 
 			if(get_turf(rider) != destturf) //precision made them teleport somewhere else
-				to_chat(rider, span_warning("As you reorient your senses, you realize you aren't riding [teleatom] anymore!"))
+				to_chat(rider, span_warning("Como você reorienta seus sentidos, você percebe que você não está montando[teleatom]Mais!"))
 				continue
 
 			// [mob/living].forceMove() forces mobs to unbuckle, so we need to buckle them again
@@ -255,8 +255,7 @@
 		return FALSE
 
 	// prevent unprecise teleports from landing you outside of the destination's reserved area
-	if(is_reserved_level(destination_turf.z) && istype(original_destination) \
-		&& SSmapping.get_reservation_from_turf(destination_turf) != SSmapping.get_reservation_from_turf(get_turf(original_destination)))
+	if(is_reserved_level(destination_turf.z) && istype(original_destination) 		&& SSmapping.get_reservation_from_turf(destination_turf) != SSmapping.get_reservation_from_turf(get_turf(original_destination)))
 		return FALSE
 
 	if((origin_area.area_flags & NOTELEPORT) || (destination_area.area_flags & NOTELEPORT))

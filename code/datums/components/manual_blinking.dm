@@ -37,14 +37,14 @@
 	START_PROCESSING(SSdcs, src)
 	last_blink = world.time
 	if (display_message)
-		to_chat(carbon_parent, span_notice("You suddenly realize you're blinking manually."))
+		to_chat(carbon_parent, span_notice("De repente você percebe que está piscando manualmente."))
 
 /datum/component/manual_blinking/Destroy(force)
 	REMOVE_TRAIT(parent, TRAIT_PREVENT_BLINK_LOOPS, REF(src))
 	parent_eyes = null
 	STOP_PROCESSING(SSdcs, src)
 	if (display_message)
-		to_chat(parent, span_notice("You revert back to automatic blinking."))
+		to_chat(parent, span_notice("Você volta a piscar automaticamente."))
 	var/mob/living/carbon/carbon_parent = parent
 	carbon_parent.cure_blind(REF(src))
 	carbon_parent.update_body()
@@ -74,12 +74,12 @@
 /datum/component/manual_blinking/process()
 	if(world.time > (last_blink + warning_delay + grace_period))
 		if(!warn_dying)
-			to_chat(parent, span_userdanger("Your eyes begin to wither, you need to blink!"))
+			to_chat(parent, span_userdanger("Seus olhos começam a murchar, você precisa piscar!"))
 			warn_dying = TRUE
 		parent_eyes.apply_organ_damage(damage_rate)
 	else if(world.time > (last_blink + warning_delay))
 		if(!warn_grace)
-			to_chat(parent, span_danger("You feel a need to blink!"))
+			to_chat(parent, span_danger("Você sente necessidade de piscar!"))
 			warn_grace = TRUE
 
 /datum/component/manual_blinking/proc/check_added_organ(mob/who_cares, obj/item/organ/added_organ)

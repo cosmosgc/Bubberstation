@@ -132,15 +132,15 @@
 		return
 
 	if(terror_buildup >= TERROR_BUILDUP_HEART_ATTACK)
-		examine_list += span_danger("[source.p_They()] [source.p_are()] seizing up, about to collapse in fear!")
+		examine_list += span_danger("[source.p_They()] [source.p_are()]Esto prestes a cair de medo!")
 	else if(terror_buildup > TERROR_BUILDUP_PANIC)
-		examine_list += span_boldwarning("[source.p_They()] [source.p_are()] trembling and shaking, barely standing upright!")
+		examine_list += span_boldwarning("[source.p_They()] [source.p_are()]Tremendo e tremendo, mal de pé!")
 	else if(terror_buildup >= TERROR_BUILDUP_TERROR)
-		examine_list += span_boldwarning("[source] is visibly trembling and twitching. [source.p_They()] [source.p_are()] clearly in distress!")
+		examine_list += span_boldwarning("[source]é visivelmente tremendo e tremendo.[source.p_They()] [source.p_are()]Claramente em perigo!")
 	else if(terror_buildup >= TERROR_BUILDUP_FEAR)
-		examine_list += span_warning("[source] looks very worried about something. [capitalize(source.p_are())] [source.p_they()] alright?")
+		examine_list += span_warning("[source]Parece muito preocupado com algo.[capitalize(source.p_are())] [source.p_they()]Certo?")
 	else if (terror_buildup)
-		examine_list += span_smallnotice("[source] looks rather anxious. [source.p_They()] could probably use a hug...")
+		examine_list += span_smallnotice("[source]Parece ansioso.[source.p_They()]Eu poderia usar um abraço...")
 
 /datum/component/fearful/proc/comfort_owner(mob/living/carbon/source, mob/living/hugger)
 	SIGNAL_HANDLER
@@ -163,9 +163,9 @@
 			source.Knockdown(0.5 SECONDS)
 			terror_buildup += HUG_TERROR_AMOUNT
 			source.visible_message(
-				span_warning("[source] recoils in fear as [hugger] waves [hugger.p_their()] arms and shrieks at [source.p_them()]!"),
-				span_boldwarning("The shadows lash out at you, and you drop to the ground in fear!"),
-				span_hear("You hear someone shriek in fear. How embarassing!"),
+				span_warning("[source]Recua no medo como[hugger]Ondas[hugger.p_their()]Braços e gritos em[source.p_them()]!"),
+				span_boldwarning("As sombras atacam você, e você cai no chão com medo!"),
+				span_hear("Você ouve alguém gritando de medo. Que vergonha!"),
 				)
 			return COMPONENT_BLOCK_MISC_HELP
 
@@ -176,17 +176,17 @@
 	if (hug_buildup > 0)
 		terror_buildup += hug_buildup
 		source.visible_message(
-			span_warning("[source] recoils in fear as [hugger] attempts to hug [source.p_them()]!"),
-			span_boldwarning("You recoil in terror as [hugger] attempts to hug you!"),
-			span_hear("You hear someone shriek in fear. How embarassing!"),
+			span_warning("[source]Recua no medo como[hugger]Tentando abraçar[source.p_them()]!"),
+			span_boldwarning("Você recua em terror como[hugger]Tenta te abraçar!"),
+			span_hear("Você ouve alguém gritando de medo. Que vergonha!"),
 			)
 		return COMPONENT_BLOCK_MISC_HELP
 
 	terror_buildup -= HUG_TERROR_AMOUNT
 	source.visible_message(
-		span_notice("[source] seems to relax as [hugger] gives [source.p_them()] a comforting hug."),
-		span_nicegreen("You feel yourself calm down as [hugger] gives you a reassuring hug."),
-		span_hear("You hear shuffling and a sigh of relief."),
+		span_notice("[source]Parece relaxa como[hugger]dá[source.p_them()]Um abraço reconfortante."),
+		span_nicegreen("Você se sente calmo como[hugger]te dá um abraço reconfortante."),
+		span_hear("Você ouve baralhar e um suspiro de alívio."),
 	)
 
 /// Remove all terror buildup when we become fearless
@@ -198,12 +198,12 @@
 	SIGNAL_HANDLER
 
 	if(terror_buildup >= TERROR_BUILDUP_HEART_ATTACK)
-		mood_list += span_boldwarning("You are about to collapse in fear!")
+		mood_list += span_boldwarning("Você está prestes a cair de medo!")
 	else if(terror_buildup > TERROR_BUILDUP_PANIC)
-		mood_list += span_boldwarning("You are shaking in fear!")
+		mood_list += span_boldwarning("Você está tremendo de medo!")
 	else if(terror_buildup >= TERROR_BUILDUP_TERROR)
-		mood_list += span_warning("You are trembling in fear.")
+		mood_list += span_warning("Você está tremendo de medo.")
 	else if(terror_buildup >= TERROR_BUILDUP_FEAR)
-		mood_list += span_warning("You feel scared.")
+		mood_list += span_warning("Você está com medo.")
 	else if (terror_buildup)
-		mood_list += span_notice("You feel on the edge.")
+		mood_list += span_notice("Você se sente no limite.")

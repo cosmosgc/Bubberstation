@@ -9,8 +9,7 @@
 	icon = 'modular_skyrat/modules/delam_emergency_stop/icons/scram.dmi'
 	icon_state = "dispenser-idle"
 	name = "\improper delamination suppression system"
-	desc = "The latest model in Nakamura Engineering's line of delamination suppression systems.<br>You don't want to be in the chamber when it's activated!<br>\
-		Come to think of it, CentCom would rather you didn't activate it at all.<br>These things are expensive!"
+	desc = "O último modelo na linha de sistemas de supressão de delaminação da Engenharia Nakamura.<br>Você não quer estar na câmara quando estiver ativada!<br>Pensando bem, a CentCom preferiria que você não a ativasse.<br>Essas coisas são caras!"
 	use_power = IDLE_POWER_USE
 	can_unwrench = FALSE // comedy option, what if unwrenching trying to steal it throws you into the crystal for a nice dusting
 	shift_underlay_only = FALSE
@@ -116,17 +115,17 @@
 			use_reverb = TRUE,
 			falloff_distance = 10,
 		)
-		radio.talk_into(src, "Suppression system fault! Unable to trigger, software integrity check failed.", warning_channel, list(SPAN_COMMAND))
-		audible_message(span_danger("[src] makes a series of sad beeps. Someone has corrupted its software!"))
+		radio.talk_into(src, "Falha no sistema de supressão! Incapaz de disparar, a verificação de integridade do software falhou.", warning_channel, list(SPAN_COMMAND))
+		audible_message(span_danger("[src]faz uma série de sons tristes. Alguém corrompeu seu software!"))
 		return FALSE
 
 	if(trigger_reason == SCRAM_DIVINE_INTERVENTION)
 		return TRUE
 
 	if(world.time - SSticker.round_start_time > SCRAM_TIME_RESTRICTION)
-		audible_message(span_danger("[src] makes a series of sad beeps. The internal gas buffer is past its 30 minute expiry... what a feat of engineering!"))
+		audible_message(span_danger("[src]faz uma série de sons tristes. O buffer de gás interno passou dos 30 minutos de expiração... que feito de engenharia!"))
 		investigate_log("Delam SCRAM signal was received but failed precondition check. (Round time or trigger reason)", INVESTIGATE_ENGINE)
-		radio.talk_into(src, "Supermatter delam suppression system fault! Unable to trigger, internal gas mix integrity check failed.", emergency_channel, list(SPAN_COMMAND))
+		radio.talk_into(src, "Falha no sistema de supressão de supermatéria! Incapaz de disparar, a verificação da integridade da mistura de gás interno falhou.", emergency_channel, list(SPAN_COMMAND))
 		return FALSE
 
 	return TRUE
@@ -137,12 +136,12 @@
 	notify_ghosts(
 		"[src] has been activated!",
 		source = src,
-		header = trigger_reason == SCRAM_DIVINE_INTERVENTION ? "Divine Intervention" : "Mistakes Were Made",
+		header = trigger_reason == SCRAM_DIVINE_INTERVENTION ? "Intervenção Divina" : "Erros foram cometidos",
 		ghost_sound = 'sound/machines/warning-buzzer.ogg',
 		notify_volume = 75,
 	)
 
-	radio.talk_into(src, "Supermatter delamination suppression system triggered!", emergency_channel, list(SPAN_COMMAND))
+	radio.talk_into(src, "Sistema de supressão de delaminação de supermatéria ativado!", emergency_channel, list(SPAN_COMMAND))
 
 	// fight fire with ~~gasoline~~ freon
 	addtimer(CALLBACK(src, PROC_REF(put_on_a_show)), 4 SECONDS)
@@ -205,7 +204,7 @@
 		use_reverb = TRUE,
 		falloff_distance = 10,
 	)
-	visible_message(span_danger("[src] beeps a sorrowful melody and collapses into a pile of twisted metal and foam!"), blind_message = span_danger("[src] beeps a sorrowful melody!"))
+	visible_message(span_danger("[src]Apita uma melodia triste e colapsa em uma pilha de metal retorcido e espuma!"), blind_message = span_danger("[src]Apita uma melodia triste!"))
 	deconstruct(FALSE)
 
 /// Drain the internal energy, if the crystal damage is above 100 we heal it a bit. Not much, but should be good to let them recover.
@@ -240,9 +239,7 @@
 /// A big red button you can smash to stop the supermatter engine, oh how tempting!
 /obj/machinery/button/delam_scram
 	name = "\proper the supermatter emergency stop button"
-	desc = "Your last hope to try and save the crystal during a delamination.<br>\
-		While it is indeed a big red button, pressing it outside of an emergency \
-		will probably get the engineering department out for your blood."
+	desc = "Sua última esperança de tentar salvar o cristal durante uma delaminação.<br>Embora seja de fato um grande botão vermelho, pressioná-lo fora de uma emergência provavelmente vai tirar o departamento de engenharia para o seu sangue."
 	icon = 'modular_skyrat/modules/delam_emergency_stop/icons/scram.dmi'
 	can_alter_skin = FALSE
 	silicon_access_disabled = TRUE
@@ -282,7 +279,7 @@
 		return
 
 	if(!COOLDOWN_FINISHED(src, scram_button))
-		balloon_alert(user, "em recarga!")
+		balloon_alert(user, "Em recarga!")
 		return
 
 	if(!validate_suppression_status())
@@ -294,7 +291,7 @@
 			extrarange = 7,
 			falloff_distance = 7,
 		)
-		audible_message(span_danger("[src] makes a sad buzz and goes dark. Did someone activate it already?")) // Look through the window, buddy
+		audible_message(span_danger("[src]Faz um zumbido triste e fica escuro. Alguém já a ativou?")) // Look through the window, buddy
 		burn_out()
 		return
 
@@ -303,7 +300,7 @@
 
 	// Give them a cheeky instructions card. But only one! If you lost it, question your engineering prowess in this moment
 	if(button_stage == BUTTON_IDLE)
-		visible_message(span_danger("A plastic card falls out of [src]!"))
+		visible_message(span_danger("Um cartão de plástico cai de[src]!"))
 		user.put_in_hands(new /obj/item/paper/paperslip/corporate/fluff/delam_procedure(get_turf(user)))
 		button_stage = BUTTON_AWAKE
 		return
@@ -314,8 +311,8 @@
 	COOLDOWN_START(src, scram_button, 15 SECONDS)
 	button_stage = BUTTON_ARMED // You thought you could sneak this one by your coworkers?
 	update_appearance()
-	radio.talk_into(src, "Supermatter delamination suppression system armed!", RADIO_CHANNEL_ENGINEERING, list(SPAN_COMMAND))
-	visible_message(span_danger("[user] swings open the plastic cover on [src]!"))
+	radio.talk_into(src, "Sistema de eliminação de supermatéria armado!", RADIO_CHANNEL_ENGINEERING, list(SPAN_COMMAND))
+	visible_message(span_danger("[user]balança abre a tampa de plástico sobre[src]!"))
 
 	// Let the admins know someone's fucked up
 	message_admins("[ADMIN_LOOKUPFLW(user)] just uncovered [src].")
@@ -325,9 +322,9 @@
 
 /// Confirms with the user that they really want to push the red button. Do it, you won't!
 /obj/machinery/button/delam_scram/proc/confirm_action(mob/user, list/modifiers)
-	if(tgui_alert(usr, "Are you really sure that you want to push this?", "It looked scarier on HBO.", list("No", "Yes")) != "Yes")
+	if(tgui_alert(usr, "Tem certeza que quer forçar isso?", "It looked scarier on HBO.", list("No", "Yes")) != "Yes")
 		button_stage = BUTTON_AWAKE
-		visible_message(span_danger("[user] slowly closes the plastic cover on [src]!"))
+		visible_message(span_danger("[user]lentamente fecha a tampa plástica sobre[src]!"))
 		update_appearance()
 		return
 
@@ -343,7 +340,7 @@
 		falloff_distance = 7,
 	)
 	button_stage = BUTTON_PUSHED
-	visible_message(span_danger("[user] smashes [src] with their hand!"))
+	visible_message(span_danger("[user]Esmaga.[src]Com a mão deles!"))
 	message_admins("[ADMIN_LOOKUPFLW(user)] pushed [src]!")
 	investigate_log("[key_name(user)] pushed [src]!", INVESTIGATE_ENGINE)
 	if(world.time - SSticker.round_start_time > SCRAM_TIME_RESTRICTION)
@@ -355,7 +352,7 @@
 			extrarange = 7,
 			falloff_distance = 7,
 		)
-		audible_message(span_danger("[src] makes a series of sad beeps. Looks like it's all on you to save the day!"))
+		audible_message(span_danger("[src]faz uma série de sons tristes. Parece que tudo depende de você para salvar o dia!"))
 		burn_out()
 		return
 
@@ -373,7 +370,7 @@
 /// When the button is pushed but it's too late to save you!
 /obj/machinery/button/delam_scram/proc/burn_out()
 	if(!(machine_stat & BROKEN))
-		src.desc += span_warning("The light is off, indicating it is not currently functional.")
+		src.desc += span_warning("A luz está apagada, indicando que não está funcional.")
 		set_machine_stat(machine_stat | BROKEN)
 		update_appearance()
 
@@ -403,7 +400,7 @@
 
 /obj/item/paper/paperslip/corporate/fluff/delam_procedure/Initialize(mapload)
 	name = "NT-approved delam emergency procedure"
-	desc = "Now you're a REAL engineer!"
+	desc = "Agora você é um engenheiro real!"
 	return ..()
 
 /obj/item/paper/paperslip/corporate/fluff/delam_procedure/examine(mob/user)
@@ -428,7 +425,7 @@
 
 /obj/structure/sign/delam_procedure
 	name = "Safety Moth - Delamination Emergency Procedure"
-	desc = "This informational sign uses Safety Moth™ to tell the viewer how to use the emergency stop button if the Supermatter Crystal is delaminating."
+	desc = "Este sinal informacional usa Safety MothTM para dizer ao espectador como usar o botão de parada de emergência se o cristal de supermatéria está se deflamando."
 	icon = 'modular_skyrat/modules/delam_emergency_stop/icons/scram.dmi'
 	icon_state = "moff-poster"
 	pixel_y = 4

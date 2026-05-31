@@ -12,7 +12,7 @@
  */
 /obj/structure/filingcabinet
 	name = "filing cabinet"
-	desc = "A large cabinet with drawers."
+	desc = "Um armário grande com gavetas."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "filingcabinet"
 	density = TRUE
@@ -25,7 +25,7 @@
 
 /obj/structure/filingcabinet/chestdrawer/wheeled
 	name = "rolling chest drawer"
-	desc = "A small cabinet with drawers. This one has wheels!"
+	desc = "Um pequeno armário com gavetas. Este tem rodas!"
 	anchored = FALSE
 
 /obj/structure/filingcabinet/white
@@ -45,19 +45,19 @@
 
 /obj/structure/filingcabinet/attackby(obj/item/P, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(P.tool_behaviour == TOOL_WRENCH && LAZYACCESS(modifiers, RIGHT_CLICK))
-		to_chat(user, span_notice("You begin to [anchored ? "unwrench" : "wrench"] [src]."))
+		to_chat(user, span_notice("Você começa[anchored ? "unwrench" : "wrench"] [src]."))
 		if(P.use_tool(src, user, 20, volume=50))
-			to_chat(user, span_notice("You successfully [anchored ? "unwrench" : "wrench"] [src]."))
+			to_chat(user, span_notice("Você com sucesso.[anchored ? "unwrench" : "wrench"] [src]."))
 			set_anchored(!anchored)
 	else if(P.w_class < WEIGHT_CLASS_NORMAL)
 		if(!user.transferItemToLoc(P, src))
 			return
-		to_chat(user, span_notice("You put [P] in [src]."))
+		to_chat(user, span_notice("Você colocou[P]Em[src]."))
 		icon_state = "[initial(icon_state)]-open"
 		sleep(0.5 SECONDS)
 		icon_state = initial(icon_state)
 	else if(!user.combat_mode || (P.item_flags & NOBLUDGEON))
-		to_chat(user, span_warning("You can't put [P] in [src]!"))
+		to_chat(user, span_warning("Você não pode colocar[P]Em[src]!"))
 	else
 		return ..()
 
@@ -111,9 +111,9 @@
 			I.forceMove(loc)
 			if(prob(25))
 				step_rand(I)
-			to_chat(user, span_notice("You pull \a [I] out of [src] at random."))
+			to_chat(user, span_notice("Você puxa.\a [I]Fora[src]Ao caso."))
 			return
-	to_chat(user, span_notice("You find nothing in [src]."))
+	to_chat(user, span_notice("Você não encontra nada em[src]."))
 
 /*
  * Security Record Cabinets

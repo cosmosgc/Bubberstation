@@ -3,7 +3,7 @@
 // *************************************
 
 /obj/item/reagent_containers/spray/weedspray // -- Skie
-	desc = "It's a toxic mixture, in spray form, to kill small weeds."
+	desc = "É uma mistura tóxica, em forma de spray, para matar ervas daninhas pequenas."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	name = "weed spray"
 	icon_state = "weedspray"
@@ -15,11 +15,11 @@
 	list_reagents = list(/datum/reagent/toxin/plantbgone/weedkiller = 100)
 
 /obj/item/reagent_containers/spray/weedspray/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is huffing [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Está ofegante[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return TOXLOSS
 
 /obj/item/reagent_containers/spray/pestspray // -- Skie
-	desc = "It's some pest eliminator spray! <I>Do not inhale!</I>"
+	desc = "É um spray para eliminar pragas!<I>Não inale!</I>"
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	name = "pest spray"
 	icon_state = "pestspray"
@@ -31,12 +31,12 @@
 	list_reagents = list(/datum/reagent/toxin/pestkiller = 100)
 
 /obj/item/reagent_containers/spray/pestspray/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is huffing [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Está ofegante[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return TOXLOSS
 
 /obj/item/cultivator
 	name = "cultivator"
-	desc = "It's used for removing weeds or scratching your back."
+	desc = "É usado para remover ervas daninhas ou coçar suas costas."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "cultivator"
 	inhand_icon_state = "cultivator"
@@ -53,7 +53,7 @@
 	hitsound = 'sound/items/weapons/bladeslice.ogg'
 
 /obj/item/cultivator/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is scratching [user.p_their()] back as hard as [user.p_they()] can with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Está coçando.[user.p_their()]De volta tão forte quanto[user.p_they()]Pode com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/cultivator/rake
@@ -84,8 +84,7 @@
 		H.set_confusion_if_lower(10 SECONDS)
 		H.Stun(20)
 		playsound(src, 'sound/items/weapons/punch4.ogg', 50, TRUE)
-		H.visible_message(span_warning("[H] steps on [src] causing the handle to hit [H.p_them()] right in the face!"), \
-						  span_userdanger("You step on [src] causing the handle to hit you right in the face!"))
+		H.visible_message(span_warning("[H]Vamos lá.[src]fazendo o cabo bater[H.p_them()]bem na cara!"), 						  span_userdanger("Você pisa[src]fazendo com que o cabo te acertasse na cara!"))
 
 /obj/item/cultivator/cyborg
 	name = "cyborg cultivator"
@@ -95,7 +94,7 @@
 
 /obj/item/hatchet
 	name = "hatchet"
-	desc = "A very sharp axe blade upon a short fibremetal handle. It has a long history of chopping things, but now it is used for chopping wood."
+	desc = "Uma lâmina de machado muito afiada em um cabo de fibra de metal curto. Tem uma longa história de cortar coisas, mas agora é usado para cortar madeira."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "hatchet"
 	inhand_icon_state = "hatchet"
@@ -122,18 +121,15 @@
 
 /obj/item/hatchet/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/butchering, \
-	speed = 7 SECONDS, \
-	effectiveness = 100, \
-	)
+	AddComponent(/datum/component/butchering, 	speed = 7 SECONDS, 	effectiveness = 100, 	)
 
 /obj/item/hatchet/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is chopping at [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Está cortando em[user.p_them()]ego com[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	playsound(src, 'sound/items/weapons/bladeslice.ogg', 50, TRUE, -1)
 	return BRUTELOSS
 
 /obj/item/hatchet/wooden
-	desc = "A crude axe blade upon a short wooden handle."
+	desc = "Uma lâmina de machado em um cabo de madeira curto."
 	icon_state = "woodhatchet"
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 1)
 	resistance_flags = FLAMMABLE
@@ -148,7 +144,7 @@
 /* Skyrat Edit Start - Modularization and New Scythes
 /obj/item/scythe
 	name = "scythe"
-	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
+	desc = "Uma lâmina afiada e curva em um cabo de fibra de metal longo, esta ferramenta torna fácil colher o que você semeia."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "scythe0"
 	inhand_icon_state = "scythe0"
@@ -173,14 +169,11 @@
 
 /obj/item/scythe/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/butchering, \
-	speed = 9 SECONDS, \
-	effectiveness = 105, \
-	)
+	AddComponent(/datum/component/butchering, 	speed = 9 SECONDS, 	effectiveness = 105, 	)
 	AddElement(/datum/element/bane, mob_biotypes = MOB_PLANT, damage_multiplier = 0.5, requires_combat_mode = FALSE)
 
 /obj/item/scythe/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is beheading [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Está decapitando.[user.p_them()]ego com[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		var/obj/item/bodypart/BP = C.get_bodypart(BODY_ZONE_HEAD)
@@ -212,7 +205,7 @@
 
 /obj/item/secateurs
 	name = "secateurs"
-	desc = "It's a tool for cutting grafts off plants or changing podperson looks."
+	desc = "É uma ferramenta para cortar enxertos de plantas ou mudar de aparência."
 	desc_controls = "Right-click to stylize podperson hair or other plant features!"
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "secateurs"
@@ -251,7 +244,7 @@
 
 /obj/item/geneshears
 	name = "botanogenetic plant shears"
-	desc = "A high tech, high fidelity pair of plant shears, capable of cutting genetic traits out of a plant."
+	desc = "Um par de tesouras de plantas de alta fidelidade, capaz de cortar traços genéticos de uma planta."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "genesheers"
 	inhand_icon_state = null
@@ -287,17 +280,17 @@
 
 /obj/item/reagent_containers/cup/bottle/nutrient/ez
 	name = "bottle of E-Z-Nutrient"
-	desc = "Contains a fertilizer that causes mild mutations and gradual plant growth with each harvest."
+	desc = "Contém um fertilizante que causa mutações leves e crescimento gradual das plantas em cada colheita."
 	list_reagents = list(/datum/reagent/plantnutriment/eznutriment = 50)
 
 /obj/item/reagent_containers/cup/bottle/nutrient/l4z
 	name = "bottle of Left 4 Zed"
-	desc = "Contains a fertilizer that lightly heals the plant but causes significant mutations in plants over generations."
+	desc = "Contém um fertilizante que cura levemente a planta, mas causa mutações significativas nas plantas ao longo de gerações."
 	list_reagents = list(/datum/reagent/plantnutriment/left4zednutriment = 50)
 
 /obj/item/reagent_containers/cup/bottle/nutrient/rh
 	name = "bottle of Robust Harvest"
-	desc = "Contains a fertilizer that increases the yield of a plant while gradually preventing mutations."
+	desc = "Contém um fertilizante que aumenta o rendimento de uma planta enquanto gradualmente evita mutações."
 	list_reagents = list(/datum/reagent/plantnutriment/robustharvestnutriment = 50)
 
 /obj/item/reagent_containers/cup/bottle/nutrient/empty
@@ -310,10 +303,10 @@
 
 /obj/item/reagent_containers/cup/bottle/killer/weedkiller
 	name = "bottle of weed killer"
-	desc = "Contains a herbicide."
+	desc = "Contém um herbicida."
 	list_reagents = list(/datum/reagent/toxin/plantbgone/weedkiller = 30)
 
 /obj/item/reagent_containers/cup/bottle/killer/pestkiller
 	name = "bottle of pest spray"
-	desc = "Contains a pesticide."
+	desc = "Contém um pesticida."
 	list_reagents = list(/datum/reagent/toxin/pestkiller = 30)

@@ -46,7 +46,7 @@
 		if(!electrocute_mob(user, shock_source, src, siemens_coeff = 1, dist_check = TRUE))//People with insulated gloves just attack the APC normally. They're just short of magical anyway
 			return NONE
 		do_sparks(5, TRUE, src)
-		user.visible_message(span_notice("[user.name] shoves [tool] into the internal components of [src], erupting into a cascade of sparks!"))
+		user.visible_message(span_notice("[user.name]Empurra.[tool]nos componentes internos de[src], entrando em erupção em uma cascata de faíscas!"))
 		if(shock_source == cell)//If the shock is coming from the cell just fully discharge it, because it's funny
 			cell.use(cell.charge)
 		return ITEM_INTERACT_SUCCESS
@@ -57,16 +57,16 @@
 		return NONE
 
 	if(cell)
-		balloon_alert(user, "cell already installed!")
+		balloon_alert(user, "O celular já está instalado!")
 		return ITEM_INTERACT_BLOCKING
 	if(machine_stat & MAINT)
-		balloon_alert(user, "no connector for a cell!")
+		balloon_alert(user, "Sem conector para uma célula!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(new_cell, src))
 		return ITEM_INTERACT_BLOCKING
 	cell = new_cell
-	user.visible_message(span_notice("[user.name] inserts the power cell to [src.name]!"))
-	balloon_alert(user, "cell inserted")
+	user.visible_message(span_notice("[user.name]insere a célula de energia para[src.name]!"))
+	balloon_alert(user, "célula inserida")
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
@@ -77,23 +77,23 @@
 	var/turf/host_turf = get_turf(src)
 	if(host_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE)
 		if(!silent && user)
-			balloon_alert(user, "remove the floor plating!")
+			balloon_alert(user, "Remova o revestimento do chão!")
 		return FALSE
 	if(!isnull(terminal))
 		if(!silent && user)
-			balloon_alert(user, "already wired!")
+			balloon_alert(user, "Já está ligado!")
 		return FALSE
 	if(!has_electronics)
 		if(!silent && user)
-			balloon_alert(user, "no board to wire!")
+			balloon_alert(user, "Sem placa para grampear!")
 		return FALSE
 	if(panel_open)
 		if(!silent && user)
-			balloon_alert(user, "wires prevent placing a terminal!")
+			balloon_alert(user, "Os fios impedem a colocação de um terminal!")
 		return FALSE
 	if(installing_cable.get_amount() < 10)
 		if(!silent && user)
-			balloon_alert(user, "need ten lengths of cable!")
+			balloon_alert(user, "Preciso de dez comprimentos de cabo!")
 		return FALSE
 	return TRUE
 
@@ -107,17 +107,12 @@
 	var/terminal_cable_layer = cable_layer // Default to machine's cable layer
 	if(is_right_clicking)
 		var/choice = tgui_input_list(user, "Select Power Input Cable Layer", "Select Cable Layer", GLOB.cable_name_to_layer)
-		if(isnull(choice) \
-			|| !user.is_holding(installing_cable) \
-			|| !user.Adjacent(src) \
-			|| user.incapacitated \
-			|| !can_place_terminal(user, installing_cable, silent = TRUE) \
-		)
+		if(isnull(choice) 			|| !user.is_holding(installing_cable) 			|| !user.Adjacent(src) 			|| user.incapacitated 			|| !can_place_terminal(user, installing_cable, silent = TRUE) 		)
 			return ITEM_INTERACT_BLOCKING
 		terminal_cable_layer = GLOB.cable_name_to_layer[choice]
 
-	user.visible_message(span_notice("[user.name] starts addding cables to the APC frame."))
-	balloon_alert(user, "adicionando cabos...")
+	user.visible_message(span_notice("[user.name]começa a adicionar cabos ao quadro APC."))
+	balloon_alert(user, "Adicionando cabos...")
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 
 	if(!do_after(user, 2 SECONDS, target = src))
@@ -130,8 +125,8 @@
 		do_sparks(5, TRUE, src)
 		return ITEM_INTERACT_BLOCKING
 	installing_cable.use(10)
-	user.visible_message(span_notice("[user.name] adds cables to the APC frame."))
-	balloon_alert(user, "cables added")
+	user.visible_message(span_notice("[user.name]Adiciona cabos ao quadro APC."))
+	balloon_alert(user, "Cabos adicionados")
 	make_terminal(terminal_cable_layer)
 	terminal.connect_to_network()
 	return ITEM_INTERACT_SUCCESS
@@ -142,15 +137,15 @@
 		return NONE
 
 	if(has_electronics)
-		balloon_alert(user, "there is already a board!")
+		balloon_alert(user, "Já tem um tabuleiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(machine_stat & BROKEN)
-		balloon_alert(user, "the frame is damaged!")
+		balloon_alert(user, "O quadro está danificado!")
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user.name] inserts the power control board into [src]."))
-	balloon_alert(user, "inserting the board...")
+	user.visible_message(span_notice("[user.name]insere a placa de controle de energia em[src]."))
+	balloon_alert(user, "Inserindo o tabuleiro...")
 	playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 
 	if(!do_after(user, 1 SECONDS, target = src) || has_electronics)
@@ -158,7 +153,7 @@
 
 	has_electronics = APC_ELECTRONICS_INSTALLED
 	locked = FALSE
-	balloon_alert(user, "board installed")
+	balloon_alert(user, "Placa instalada")
 	qdel(installing_board)
 	return ITEM_INTERACT_SUCCESS
 
@@ -166,13 +161,13 @@
 /obj/machinery/power/apc/proc/pseudocircuit_act(mob/living/user, obj/item/electroadaptive_pseudocircuit/pseudocircuit)
 	if(!has_electronics)
 		if(machine_stat & BROKEN)
-			balloon_alert(user, "frame is too damaged!")
+			balloon_alert(user, "O quadro está muito danificado!")
 			return ITEM_INTERACT_BLOCKING
 		if(!pseudocircuit.adapt_circuit(user, circuit_cost = 0.05 * STANDARD_CELL_CHARGE))
 			return ITEM_INTERACT_BLOCKING
 		user.visible_message(
-			span_notice("[user] fabricates a circuit and places it into [src]."),
-			span_notice("You adapt a power control board and click it into place in [src]'s guts."),
+			span_notice("[user]Fabrica um circuito e coloca-o em[src]."),
+			span_notice("Você adapta uma placa de controle de energia e clica no lugar em[src]É coragem."),
 		)
 		has_electronics = APC_ELECTRONICS_INSTALLED
 		locked = FALSE
@@ -180,7 +175,7 @@
 
 	if(!cell)
 		if(machine_stat & MAINT)
-			balloon_alert(user, "no board for a cell!")
+			balloon_alert(user, "Sem tábua para uma cela!")
 			return ITEM_INTERACT_BLOCKING
 		if(!pseudocircuit.adapt_circuit(user, circuit_cost = 0.5 * STANDARD_CELL_CHARGE))
 			return ITEM_INTERACT_BLOCKING
@@ -188,13 +183,13 @@
 		bad_cell.forceMove(src)
 		cell = bad_cell
 		user.visible_message(
-			span_notice("[user] fabricates a weak power cell and places it into [src]."),
-			span_warning("Your [pseudocircuit.name] whirrs with strain as you create a weak power cell and place it into [src]!"),
+			span_notice("[user]Fabrica uma célula de energia fraca e a coloca em[src]."),
+			span_warning("Sua[pseudocircuit.name]Quando você cria uma célula de energia fraca e a coloca em[src]!"),
 		)
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
-	balloon_alert(user, "has both board and cell!")
+	balloon_alert(user, "Tem placa e celular!")
 	return ITEM_INTERACT_BLOCKING
 
 /// Called when we interact with the APC with and APC frame, used for replacing a damaged cover/frame
@@ -203,14 +198,14 @@
 		return NONE
 
 	if(!(machine_stat & BROKEN || opened == APC_COVER_REMOVED || atom_integrity < max_integrity)) // There is nothing to repair
-		balloon_alert(user, "no reason for repairs!")
+		balloon_alert(user, "Não há motivo para reparos!")
 		return ITEM_INTERACT_BLOCKING
 	if((machine_stat & BROKEN) && opened == APC_COVER_REMOVED && has_electronics && terminal) // Cover is the only thing broken, we do not need to remove elctronicks to replace cover
-		user.visible_message(span_notice("[user.name] replaces missing APC's cover."))
-		balloon_alert(user, "replacing APC's cover...")
+		user.visible_message(span_notice("[user.name]Substitui o disfarce da APC desaparecida."))
+		balloon_alert(user, "Substituindo o disfarce da APC...")
 		if(!do_after(user, 2 SECONDS, target = src)) // replacing cover is quicker than replacing whole frame
 			return ITEM_INTERACT_BLOCKING
-		balloon_alert(user, "cover replaced")
+		balloon_alert(user, "Capa substituída.")
 		qdel(wallframe)
 		update_integrity(30) //needs to be welded to fully repair but can work without
 		set_machine_stat(machine_stat & ~(BROKEN|MAINT))
@@ -218,13 +213,13 @@
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 	if(has_electronics)
-		balloon_alert(user, "remove the board inside!")
+		balloon_alert(user, "Remova o tabuleiro para dentro!")
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user.name] replaces the damaged APC frame with a new one."))
-	balloon_alert(user, "replacing damaged frame...")
+	user.visible_message(span_notice("[user.name]Substitui o quadro APC danificado por um novo."))
+	balloon_alert(user, "Substituindo o quadro danificado...")
 	if(!do_after(user, 5 SECONDS, target = src))
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "replaced frame")
+	balloon_alert(user, "Quadro substituído.")
 	qdel(wallframe)
 	set_machine_stat(machine_stat & ~BROKEN)
 	atom_integrity = max_integrity
@@ -243,17 +238,17 @@
 		if(!crowbar.use_tool(src, user, 5 SECONDS))
 			return
 		opened = APC_COVER_REMOVED
-		balloon_alert(user, "cover removed")
+		balloon_alert(user, "Capa removida.")
 		update_appearance()
 		return
 
 	//Opening and closing cover
 	if((!opened && opened != APC_COVER_REMOVED) && !(machine_stat & BROKEN))
 		if(coverlocked && !(machine_stat & MAINT)) // locked...
-			balloon_alert(user, "cover is locked!")
+			balloon_alert(user, "A cobertura está trancada!")
 			return
 		else if(panel_open)
-			balloon_alert(user, "wires prevents opening it!")
+			balloon_alert(user, "Os fios impedem a abertura!")
 			return
 		else
 			opened = APC_COVER_OPENED
@@ -263,7 +258,7 @@
 	if((opened && has_electronics == APC_ELECTRONICS_SECURED) && !(machine_stat & BROKEN))
 		opened = APC_COVER_CLOSED
 		coverlocked = TRUE //closing cover relocks it
-		balloon_alert(user, "locking the cover")
+		balloon_alert(user, "Trancando a tampa.")
 		update_appearance()
 		return
 
@@ -271,7 +266,7 @@
 	if(!opened || has_electronics != APC_ELECTRONICS_INSTALLED)
 		return
 	if(terminal)
-		balloon_alert(user, "disconnect wires first!")
+		balloon_alert(user, "Desligue os fios primeiro!")
 		return
 	crowbar.play_tool_sound(src)
 	if(!crowbar.use_tool(src, user, 50))
@@ -280,23 +275,22 @@
 		return
 	has_electronics = APC_ELECTRONICS_MISSING
 	if(machine_stat & BROKEN)
-		user.visible_message(span_notice("[user.name] breaks the power control board inside [name]!"), \
-			span_hear("You hear a crack."))
-		balloon_alert(user, "charred board breaks")
+		user.visible_message(span_notice("[user.name]quebra a placa de controle de energia dentro[name]!"), 			span_hear("Você ouve uma batida."))
+		balloon_alert(user, "Quebras de tábua carbonizadas")
 		return
 	else if(obj_flags & EMAGGED)
 		obj_flags &= ~EMAGGED
-		user.visible_message(span_notice("[user.name] discards an emagged power control board from [name]!"))
-		balloon_alert(user, "emagged board discarded")
+		user.visible_message(span_notice("[user.name]Descarta uma placa de controle de energia de[name]!"))
+		balloon_alert(user, "Descartado.")
 		return
 	else if(malfhack)
-		user.visible_message(span_notice("[user.name] discards a strangely programmed power control board from [name]!"))
-		balloon_alert(user, "reprogrammed board discarded")
+		user.visible_message(span_notice("[user.name]Descarta uma estranha placa de controle de energia programada de[name]!"))
+		balloon_alert(user, "Placa reprogramada descartada.")
 		malfai = null
 		malfhack = 0
 		return
-	user.visible_message(span_notice("[user.name] removes the power control board from [name]!"))
-	balloon_alert(user, "removed the board")
+	user.visible_message(span_notice("[user.name]Remove a placa de controle de energia de[name]!"))
+	balloon_alert(user, "Removeu o tabuleiro.")
 	new /obj/item/electronics/apc(loc)
 	return
 
@@ -307,16 +301,16 @@
 
 	if(!opened)
 		if(obj_flags & EMAGGED)
-			balloon_alert(user, "interface is broken!")
+			balloon_alert(user, "A interface está quebrada!")
 			return
 		toggle_panel_open()
-		balloon_alert(user, "wires [panel_open ? "exposed" : "unexposed"]")
+		balloon_alert(user, "Fios.[panel_open ? "exposed" : "unexposed"]")
 		W.play_tool_sound(src)
 		update_appearance()
 		return
 
 	if(cell)
-		user.visible_message(span_notice("[user] removes \the [cell] from [src]!"))
+		user.visible_message(span_notice("[user]Remove\the [cell]De[src]!"))
 		balloon_alert(user, "célula removida")
 		var/turf/user_turf = get_turf(user)
 		cell.forceMove(user_turf)
@@ -330,14 +324,14 @@
 			has_electronics = APC_ELECTRONICS_SECURED
 			set_machine_stat(machine_stat & ~MAINT)
 			W.play_tool_sound(src)
-			balloon_alert(user, "board fastened")
+			balloon_alert(user, "Tábua presa")
 		if(APC_ELECTRONICS_SECURED)
 			has_electronics = APC_ELECTRONICS_INSTALLED
 			set_machine_stat(machine_stat | MAINT)
 			W.play_tool_sound(src)
-			balloon_alert(user, "board unfastened")
+			balloon_alert(user, "Tábua solta.")
 		else
-			balloon_alert(user, "no board to fasten!")
+			balloon_alert(user, "Sem tábua para apertar!")
 			return
 	update_appearance()
 
@@ -353,10 +347,10 @@
 	//repairing the cover
 	if((atom_integrity < max_integrity) && has_electronics)
 		if(opened == APC_COVER_REMOVED)
-			balloon_alert(user, "no cover to repair!")
+			balloon_alert(user, "Sem cobertura para consertar!")
 			return
 		if (machine_stat & BROKEN)
-			balloon_alert(user, "too damaged to repair!")
+			balloon_alert(user, "Muito danificado para reparar!")
 			return
 		if(!welder.tool_start_check(user, amount=1))
 			return
@@ -371,19 +365,18 @@
 		return
 	if(!welder.tool_start_check(user, amount=1))
 		return
-	user.visible_message(span_notice("[user.name] welds [src]."), \
-						span_hear("You hear welding."))
-	balloon_alert(user, "welding the APC frame")
+	user.visible_message(span_notice("[user.name]soldas[src]."), 						span_hear("Você ouve solda."))
+	balloon_alert(user, "soldando o quadro APC")
 	if(!welder.use_tool(src, user, 50, volume=50))
 		return
 	if((machine_stat & BROKEN) || opened == APC_COVER_REMOVED)
 		new /obj/item/stack/sheet/iron(loc)
-		user.visible_message(span_notice("[user.name] cuts [src] apart with [welder]."))
-		user.balloon_alert(user, "disassembled the broken frame")
+		user.visible_message(span_notice("[user.name]Cortes[src]Separado com[welder]."))
+		user.balloon_alert(user, "Desmontou a moldura quebrada.")
 	else
 		new /obj/item/wallframe/apc(loc)
-		user.visible_message(span_notice("[user.name] cuts [src] from the wall with [welder]."))
-		user.balloon_alert(user, "cut the frame from the wall")
+		user.visible_message(span_notice("[user.name]Cortes[src]Da parede com[welder]."))
+		user.balloon_alert(user, "Corte a moldura da parede.")
 	qdel(src)
 	return TRUE
 
@@ -393,17 +386,17 @@
 
 	if(!has_electronics)
 		if(machine_stat & BROKEN)
-			balloon_alert(user, "frame is too damaged!")
+			balloon_alert(user, "O quadro está muito danificado!")
 			return FALSE
 		return list("delay" = 2 SECONDS, "cost" = 1)
 
 	if(!cell)
 		if(machine_stat & MAINT)
-			balloon_alert(user, "no board for a cell!")
+			balloon_alert(user, "Sem tábua para uma cela!")
 			return FALSE
 		return list("delay" = 5 SECONDS, "cost" = 10)
 
-	balloon_alert(user, "has both board and cell!")
+	balloon_alert(user, "Tem placa e celular!")
 	return FALSE
 
 /obj/machinery/power/apc/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, list/rcd_data)
@@ -412,25 +405,25 @@
 
 	if(!has_electronics)
 		if(machine_stat & BROKEN)
-			balloon_alert(user, "frame is too damaged!")
+			balloon_alert(user, "O quadro está muito danificado!")
 			return
-		balloon_alert(user, "control board placed")
+		balloon_alert(user, "Placa de controle colocada.")
 		has_electronics = TRUE
 		locked = TRUE
 		return TRUE
 
 	if(!cell)
 		if(machine_stat & MAINT)
-			balloon_alert(user, "no board for a cell!")
+			balloon_alert(user, "Sem tábua para uma cela!")
 			return FALSE
 		var/obj/item/stock_parts/power_store/battery/crap/empty/C = new(src)
 		C.forceMove(src)
 		cell = C
-		balloon_alert(user, "power cell installed")
+		balloon_alert(user, "Célula de energia instalada.")
 		update_appearance()
 		return TRUE
 
-	balloon_alert(user, "has both board and cell!")
+	balloon_alert(user, "Tem placa e celular!")
 	return FALSE
 
 /obj/machinery/power/apc/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -438,20 +431,20 @@
 		return FALSE
 
 	if(opened)
-		balloon_alert(user, "close the cover first!")
+		balloon_alert(user, "Feche a tampa primeiro!")
 		return FALSE
 	else if(panel_open)
-		balloon_alert(user, "close the panel first!")
+		balloon_alert(user, "Feche o painel primeiro!")
 		return FALSE
 	else if(machine_stat & (BROKEN|MAINT))
-		balloon_alert(user, "nada acontece!")
+		balloon_alert(user, "Nada mesmo!")
 		return FALSE
 	else
 		flick("apc-spark", src)
 		playsound(src, SFX_SPARKS, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		obj_flags |= EMAGGED
 		locked = FALSE
-		balloon_alert(user, "interface damaged")
+		balloon_alert(user, "interface danificada.")
 		update_appearance()
 		flicker_hacked_icon()
 		return TRUE
@@ -475,13 +468,13 @@
 
 /obj/machinery/power/apc/proc/togglelock(mob/living/user)
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "interface is broken!")
+		balloon_alert(user, "A interface está quebrada!")
 	else if(opened)
-		balloon_alert(user, "close the cover first!")
+		balloon_alert(user, "Feche a tampa primeiro!")
 	else if(panel_open)
-		balloon_alert(user, "close the panel first!")
+		balloon_alert(user, "Feche o painel primeiro!")
 	else if(machine_stat & (BROKEN|MAINT))
-		balloon_alert(user, "nada acontece!")
+		balloon_alert(user, "Nada mesmo!")
 	else
 		if(allowed(usr) && !wires.is_cut(WIRE_IDSCAN) && ((!malfhack && !remote_control_user) || (malfhack && (malfai == user || (user in malfai.connected_robots)))))
 			locked = !locked

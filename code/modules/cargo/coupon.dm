@@ -47,7 +47,7 @@
 
 /obj/item/coupon
 	name = "coupon"
-	desc = "It doesn't matter if you didn't want it before, what matters now is that you've got a coupon for it!"
+	desc = "Não importa se você não queria antes, o que importa agora é que você tem um cupom para isso!"
 	icon_state = "data_1"
 	icon = 'icons/obj/card.dmi'
 	item_flags = NOBLUDGEON
@@ -75,19 +75,19 @@
 		return
 
 	name = "coupon - fuck you"
-	desc = "The small text reads, 'You will be slaughtered'... That doesn't sound right, does it?"
+	desc = "O pequeno texto diz: 'Você será massacrado'... Isso não parece certo, não é?"
 
 	var/mob/cursed = user || loc
 	if(!ismob(cursed))
 		return FALSE
 
-	to_chat(cursed, span_warning("The coupon reads '<b>fuck you</b>' in large, bold text... is- is that a prize, or?"))
+	to_chat(cursed, span_warning("O cupom lê.<b>Foda-se.</b>Em texto grande e ousado... é um prêmio, ou?"))
 
 	if(!cursed.GetComponent(/datum/component/omen))
 		cursed.AddComponent(/datum/component/omen, src, 1)
 		return TRUE
 	if(HAS_TRAIT(cursed, TRAIT_CURSED))
-		to_chat(cursed, span_warning("What a horrible night... To have a curse!"))
+		to_chat(cursed, span_warning("Que noite horrível... Ter uma maldição!"))
 	addtimer(CALLBACK(src, PROC_REF(curse_heart), cursed), 5 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 
 /obj/item/coupon/update_name()
@@ -103,20 +103,20 @@
 
 	var/mob/living/carbon/player = cursed
 	INVOKE_ASYNC(player, TYPE_PROC_REF(/mob, emote), "scream")
-	to_chat(player, span_mind_control("What could that coupon mean?"))
-	to_chat(player, span_userdanger("...The suspense is killing you!"))
+	to_chat(player, span_mind_control("O que esse copo pode significar?"))
+	to_chat(player, span_userdanger("O suspense está te matando!"))
 	player.set_heartattack(status = TRUE)
 	burn_evilly()
 
 /obj/item/coupon/proc/burn_evilly()
-	visible_message(span_warning("[src] burns up in a sinister flash, taking an evil energy with it..."))
+	visible_message(span_warning("[src]Queima em um sinistro flash, tomando uma energia maligna com ele..."))
 	burn()
 
 /obj/item/coupon/attack_atom(obj/attacked_obj, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(!istype(attacked_obj, /obj/machinery/computer/cargo))
 		return ..()
 	if(discount_pct_off == COUPON_OMEN)
-		to_chat(user, span_warning("\The [attacked_obj] validates the coupon as authentic, but refuses to accept it..."))
+		to_chat(user, span_warning("\The [attacked_obj]valida o cupom como autêntico, mas se recusa a aceitá-lo..."))
 		attacked_obj.say("Coupon fulfillment already in progress...")
 		return
 

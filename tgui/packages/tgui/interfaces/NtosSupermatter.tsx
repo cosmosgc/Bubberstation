@@ -28,7 +28,7 @@ export const NtosSupermatter = (props) => {
           />
         ) : (
           <Section
-            title="Detected Supermatters"
+            title="Supermatérias Detectadas"
             buttons={
               <Button
                 icon="sync"

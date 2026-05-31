@@ -12,7 +12,7 @@
  */
 /mob/living/basic/carp
 	name = "space carp"
-	desc = "A ferocious, fang-bearing creature that resembles a fish."
+	desc = "Uma criatura feroz que se parece com um peixe."
 	icon = 'icons/mob/simple/carp.dmi'
 	icon_state = "base"
 	icon_living = "base"
@@ -148,7 +148,7 @@
 	if (!feedback)
 		return
 	spin(spintime = 10, speed = 1)
-	visible_message("[src] spins in a circle as it seems to bond with [tamer].")
+	visible_message("[src]gira em um círculo como parece se ligar com[tamer].")
 
 /// Teleport when you right click away from you
 /mob/living/basic/carp/ranged_secondary_attack(atom/atom_target, modifiers)
@@ -219,7 +219,7 @@
 /mob/living/basic/carp/pet/lia
 	name = "Lia"
 	real_name = "Lia"
-	desc = "A failed experiment of Nanotrasen to create weaponised carp technology. This less than intimidating carp now serves as the Head of Security's pet."
+	desc = "Um experimento fracassado de Nanotrasen para criar tecnologia de carpa armada. Esta carpa menos intimidante agora serve como animal de estimação do Chefe da Segurança."
 	faction = list(FACTION_NEUTRAL)
 	maxHealth = 200
 	health = 200
@@ -240,7 +240,7 @@
 /mob/living/basic/carp/pet/cayenne
 	name = "Cayenne"
 	real_name = "Cayenne"
-	desc = "A failed Syndicate experiment in weaponized space carp technology, it now serves as a lovable mascot."
+	desc = "Um experimento fracassado do Sindicato em tecnologia de carpa espacial armada, agora serve como uma mascote adorável."
 	faction = list(ROLE_SYNDICATE)
 	/// Overlay to apply to display the disk
 	var/mutable_appearance/disk_overlay
@@ -286,7 +286,7 @@
 /mob/living/basic/carp/ella
 	name = "Ella"
 	real_name = "Ella"
-	desc = "It came out of someone."
+	desc = "Veio de alguém."
 	gold_core_spawnable = NO_SPAWN
 
 /mob/living/basic/carp/ella/Initialize(mapload)
@@ -296,7 +296,7 @@
 ///Wild carp that just vibe ya know
 /mob/living/basic/carp/passive
 	name = "false carp"
-	desc = "A close relative of the space carp which is entirely toothless and feeds by stealing its cousin's leftovers."
+	desc = "Um parente próximo da carpa espacial que é totalmente sem dentes e se alimenta roubando as sobras de seu primo."
 	icon_state = "base_friend"
 	icon_living = "base_friend"
 	icon_dead = "base_friend_dead"

@@ -33,7 +33,7 @@ export const NifSoulPoem = (props) => {
                 <b>{message.sender_name} </b>
                 <Button
                   icon="trash"
-                  tooltip={'Delete this message'}
+                  tooltip={'Apague esta mensagem'}
                   onClick={() =>
                     act('remove_message', { message_to_remove: message })
                   }
@@ -48,7 +48,7 @@ export const NifSoulPoem = (props) => {
         </Section>
         <Section title="Settings">
           <LabeledList>
-            <LabeledList.Item label={'Display Name'}>
+            <LabeledList.Item label={'Mostrar Nome'}>
               <Input
                 value={name_to_send}
                 onInput={(e, value) => act('change_name', { new_name: value })}
@@ -64,7 +64,7 @@ export const NifSoulPoem = (props) => {
                 width="100%"
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Toggle transmitting">
+            <LabeledList.Item label="Comuta a transmissão">
               <Button
                 fluid
                 onClick={() => act('toggle_transmitting', {})}
@@ -73,7 +73,7 @@ export const NifSoulPoem = (props) => {
                 {transmitting_data ? 'True' : 'False'}
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Toggle receiving">
+            <LabeledList.Item label="Alternar a recepção">
               <Button
                 fluid
                 onClick={() => act('toggle_receiving', {})}

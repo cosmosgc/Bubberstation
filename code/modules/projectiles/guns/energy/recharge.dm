@@ -2,7 +2,7 @@
 /obj/item/gun/energy/recharge
 	icon_state = "kineticgun"
 	base_icon_state = "kineticgun"
-	desc = "A self recharging gun. Holds one shot at a time."
+	desc = "Uma arma de recarga. Segura um tiro de cada vez."
 	automatic_charge_overlays = FALSE
 	cell_type = /obj/item/stock_parts/power_store/cell/emproof
 	/// If set to something, instead of an overlay, sets the icon_state directly.
@@ -84,7 +84,7 @@
 	if(!suppressed && recharge_sound)
 		playsound(src.loc, recharge_sound, 60, TRUE)
 	else
-		to_chat(loc, span_warning("[src] silently charges up."))
+		to_chat(loc, span_warning("[src]Silênciosamente carrega."))
 	update_appearance()
 
 /obj/item/gun/energy/recharge/update_overlays()
@@ -102,7 +102,7 @@
 
 /obj/item/gun/energy/recharge/ebow
 	name = "mini energy crossbow"
-	desc = "A weapon favored by syndicate stealth specialists."
+	desc = "Uma arma preferida por especialistas secretos."
 	icon_state = "crossbow"
 	base_icon_state = "crossbow"
 	inhand_icon_state = "crossbow"
@@ -125,7 +125,7 @@
 
 /obj/item/gun/energy/recharge/ebow/halloween
 	name = "candy corn crossbow"
-	desc = "A weapon favored by Syndicate trick-or-treaters."
+	desc = "Uma arma favorecida por pessoas que tratam de doces."
 	icon_state = "crossbow_halloween"
 	base_icon_state = "crossbow_halloween"
 	no_charge_state = "crossbow_halloween_empty"
@@ -133,7 +133,7 @@
 
 /obj/item/gun/energy/recharge/ebow/large
 	name = "energy crossbow"
-	desc = "A reverse engineered weapon using syndicate technology."
+	desc = "Uma arma de engenharia reversa usando tecnologia do pecado."
 	icon_state = "crossbowlarge"
 	base_icon_state = "crossbowlarge"
 	no_charge_state = "crossbowlarge_empty"
@@ -150,10 +150,7 @@
 /// A silly gun that does literally zero damage, but disrupts electrical sources of light, like flashlights.
 /obj/item/gun/energy/recharge/fisher
 	name = "\improper SC/FISHER disruptor"
-	desc = "A self-recharging, integrally suppressed, modified kinetic accelerator that does no damage, \
-		but disrupts electronics like lights, APCs, and security cameras. \
-		Can fire twice before requiring a recharge. \
-		Bolts can be fired around machinery, but the precise nature of shooting light fixtures demands a skillful hand."
+	desc = "Um auto-recarregador, totalmente suprimido, acelerador cinético modificado que não causa danos, mas interrompe eletrônicos como luzes, APCs e câmeras de segurança. Pode atirar duas vezes antes de precisar de recarga. Parafusos podem ser disparados em torno de máquinas, mas a natureza precisa de atirar luminárias exige uma mão habilidosa."
 	icon_state = "fisher"
 	base_icon_state = "fisher"
 	dry_fire_sound_volume = 10
@@ -165,21 +162,7 @@
 
 /obj/item/gun/energy/recharge/fisher/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/examine_lore, \
-		lore = "The SC/FISHER is an illegally-modified kinetic accelerator that's been cut down and refit into a miniature energy gun chassis, \
-			optimized for temporary, but effective, electronic warfare.<br>\
-			<br>\
-			The reengineered kinetic accelerator central to the SC/FISHER's functionality has been modified for its kinetic bolts to \
-			<b>temporarily disrupt flashlights, cameras, APCs, and pAI speech modules</b>, in return for dealing no damage. \
-			This effect works longer against targets struck with the SC/FISHER either in melee or by having it thrown at them, but \
-			you probably shouldn't be throwing it at people.<br>\
-			<br>\
-			While some would argue that sacrificing damage for a light-disrupting, fixture-breaking gimmick \
-			makes the SC/FISHER a dead-end in equipment development, others argue that it is both amusing and tactically sound \
-			to be able to shoot at light sources and pesky pAIs to disrupt their function.<br>\
-			<br>\
-			Caveat emptor." \
-	)
+	AddElement(/datum/element/examine_lore, 		lore = "The SC/FISHER is an illegally-modified kinetic accelerator that's been cut down and refit into a miniature energy gun chassis, 			optimized for temporary, but effective, electronic warfare.<br>			<br>			The reengineered kinetic accelerator central to the SC/FISHER's functionality has been modified for its kinetic bolts to 			<b>temporarily disrupt flashlights, cameras, APCs, and pAI speech modules</b>, in return for dealing no damage. 			This effect works longer against targets struck with the SC/FISHER either in melee or by having it thrown at them, but 			you probably shouldn't be throwing it at people.<br>			<br>			While some would argue that sacrificing damage for a light-disrupting, fixture-breaking gimmick 			makes the SC/FISHER a dead-end in equipment development, others argue that it is both amusing and tactically sound 			to be able to shoot at light sources and pesky pAIs to disrupt their function.<br>			<br>			Caveat emptor." 	)
 
 /obj/item/gun/energy/recharge/fisher/attack(mob/living/target_mob, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()

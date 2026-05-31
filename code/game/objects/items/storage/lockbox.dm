@@ -1,6 +1,6 @@
 /obj/item/storage/lockbox
 	name = "lockbox"
-	desc = "A locked box."
+	desc = "Uma caixa trancada."
 	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "lockbox+l"
 	inhand_icon_state = "lockbox"
@@ -72,16 +72,16 @@
 	if(!broken)
 		broken = TRUE
 		atom_storage.set_locked(STORAGE_NOT_LOCKED)
-		balloon_alert(user, "lock destroyed")
+		balloon_alert(user, "Trava destruída.")
 		if (emag_card && user)
-			user.visible_message(span_warning("[user] swipes [emag_card] over [src], breaking it!"))
+			user.visible_message(span_warning("[user]Slips[emag_card]Câmbio.[src]Quebrando!"))
 		return TRUE
 	return FALSE
 
 /obj/item/storage/lockbox/examine(mob/user)
 	. = ..()
 	if(broken)
-		. += span_notice("It appears to be broken.")
+		. += span_notice("Parece estar quebrado.")
 
 /obj/item/storage/lockbox/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
@@ -104,7 +104,7 @@
 
 /obj/item/storage/lockbox/clusterbang
 	name = "lockbox of clusterbangs"
-	desc = "You have a bad feeling about opening this."
+	desc = "Você tem um mau pressentimento sobre abrir isso."
 	req_access = list(ACCESS_SECURITY)
 
 /obj/item/storage/lockbox/clusterbang/PopulateContents()
@@ -112,7 +112,7 @@
 
 /obj/item/storage/lockbox/medal
 	name = "medal box"
-	desc = "A locked box used to store medals of honor."
+	desc = "Uma caixa trancada usada para guardar medalhas de honra."
 	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "medalbox+l"
 	inhand_icon_state = "syringe_kit"
@@ -129,7 +129,7 @@
 /obj/item/storage/lockbox/medal/examine(mob/user)
 	. = ..()
 	if(!atom_storage.locked)
-		. += span_notice("Alt-click to [open ? "close":"open"] it.")
+		. += span_notice("Alt-click para[open ? "close":"open"]Ele.")
 
 /obj/item/storage/lockbox/medal/click_alt(mob/user)
 	if(!atom_storage.locked)
@@ -166,7 +166,7 @@
 
 /obj/item/storage/lockbox/medal/hop
 	name = "Head of Personnel medal box"
-	desc = "A locked box used to store medals to be given to those exhibiting excellence in management."
+	desc = "Uma caixa trancada usada para guardar medalhas para aqueles que exibem excelência em gestão."
 	req_access = list(ACCESS_HOP)
 	icon_state = "hopbox+l"
 	icon_locked = "hopbox+l"
@@ -179,7 +179,7 @@
 
 /obj/item/storage/lockbox/medal/sec
 	name = "security medal box"
-	desc = "A locked box used to store medals to be given to members of the security department."
+	desc = "Uma caixa trancada costumava guardar medalhas para ser dada aos membros do departamento de segurança."
 	req_access = list(ACCESS_HOS)
 	icon_state = "secbox+l"
 	icon_locked = "secbox+l"
@@ -187,7 +187,7 @@
 
 /obj/item/storage/lockbox/medal/med
 	name = "medical medal box"
-	desc = "A locked box used to store medals to be given to members of the medical department."
+	desc = "Uma caixa trancada costumava guardar medalhas para ser dada aos membros do departamento médico."
 	req_access = list(ACCESS_CMO)
 	icon_state = "medbox+l"
 	icon_locked = "medbox+l"
@@ -205,7 +205,7 @@
 
 /obj/item/storage/lockbox/medal/cargo
 	name = "cargo award box"
-	desc = "A locked box used to store awards to be given to members of the cargo department."
+	desc = "Uma caixa trancada costumava guardar prêmios para os membros do departamento de carga."
 	req_access = list(ACCESS_QM)
 	icon_state = "cargobox+l"
 	icon_locked = "cargobox+l"
@@ -216,7 +216,7 @@
 
 /obj/item/storage/lockbox/medal/service
 	name = "service award box"
-	desc = "A locked box used to store awards to be given to members of the service department."
+	desc = "Uma caixa trancada costumava guardar prêmios para os membros do departamento de serviço."
 	req_access = list(ACCESS_HOP)
 	icon_state = "srvbox+l"
 	icon_locked = "srvbox+l"
@@ -227,7 +227,7 @@
 
 /obj/item/storage/lockbox/medal/sci
 	name = "science medal box"
-	desc = "A locked box used to store medals to be given to members of the science department."
+	desc = "Uma caixa trancada costumava guardar medalhas para ser dada aos membros do departamento de ciências."
 	req_access = list(ACCESS_RD)
 	icon_state = "scibox+l"
 	icon_locked = "scibox+l"
@@ -240,7 +240,7 @@
 
 /obj/item/storage/lockbox/medal/engineering
 	name = "engineering medal box"
-	desc = "A locked box used to store awards to be given to members of the engineering department."
+	desc = "Uma caixa trancada costumava guardar prêmios para ser dada aos membros do departamento de engenharia."
 	req_access = list(ACCESS_CE)
 	icon_state = "engbox+l"
 	icon_locked = "engbox+l"
@@ -253,7 +253,7 @@
 
 /obj/item/storage/lockbox/order
 	name = "order lockbox"
-	desc = "A box used to secure small cargo orders from being looted by those who didn't order it. Yeah, cargo tech, that means you."
+	desc = "Uma caixa usada para garantir pequenas encomendas de serem saqueadas por quem não pediu. Sim, tecnologia de carga, isso significa você."
 	icon_state = "secure"
 	icon_closed = "secure"
 	icon_locked = "secure_locked"
@@ -283,8 +283,8 @@
 /obj/item/storage/lockbox/order/examine(mob/user)
 	. = ..()
 	if(department_purchase)
-		. += span_notice("This crate was purchased with departmental funds from [department_account.account_holder], and can be opened by anyone who has an ID linked to an account with a paycheck from that department.")
-		. += span_notice("Or overriden by someone with captain access.")
+		. += span_notice("Esta caixa foi comprada com fundos departamentais de[department_account.account_holder], e pode ser aberto por qualquer um que tem uma identidade ligada a uma conta com um pagamento desse departamento.")
+		. += span_notice("Ou substituído por alguém com acesso ao capitão.")
 // BUBBER EDIT END
 
 /obj/item/storage/lockbox/order/can_unlock(mob/living/user, obj/item/card/id/id_card, silent = FALSE)
@@ -299,17 +299,17 @@
 			return TRUE
 
 		if(!silent)
-			balloon_alert(user, "incorrect bank account!")
+			balloon_alert(user, "Conta bancária incorreta!")
 		return FALSE
 	//SKYRAT EDIT ADDITION END
 
 	if(!silent)
-		balloon_alert(user, "incorrect bank account!")
+		balloon_alert(user, "Conta bancária incorreta!")
 	return FALSE
 
 /obj/item/storage/lockbox/dueling
 	name = "dueling pistol case"
-	desc = "Let's solve this like gentlespacemen."
+	desc = "Vamos resolver isso como homens do espaço."
 	icon_state = "medalbox+l"
 	inhand_icon_state = "syringe_kit"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
@@ -331,7 +331,7 @@
 
 /obj/item/storage/lockbox/bitrunning
 	name = "base class curiosity"
-	desc = "Talk to a coder."
+	desc = "Fale com um programador."
 	req_access = list(ACCESS_INACCESSIBLE)
 	icon_state = "bitrunning+l"
 	inhand_icon_state = "bitrunning"
@@ -343,7 +343,7 @@
 
 /obj/item/storage/lockbox/bitrunning/encrypted
 	name = "encrypted curiosity"
-	desc = "Needs to be decrypted at the safehouse to be opened."
+	desc = "Precisa ser decodificado no esconderijo para ser aberto."
 	resistance_flags =  INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	/// Path for the loot we are assigned
 	var/loot_path
@@ -353,7 +353,7 @@
 
 /obj/item/storage/lockbox/bitrunning/decrypted
 	name = "decrypted curiosity"
-	desc = "Compiled from the virtual domain. An extra reward of a successful bitrunner."
+	desc = "Compilado do domínio virtual. Uma recompensa extra de um bitrunner bem sucedido."
 	storage_type = /datum/storage/lockbox/bitrunning_decrypted
 
 	/// What virtual domain did we come from.

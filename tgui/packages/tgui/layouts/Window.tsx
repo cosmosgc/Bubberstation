@@ -88,7 +88,7 @@ export function Window(props: Props) {
         Byond.winset(Byond.windowId, {
           'is-visible': true,
         });
-        logger.log('set to visible');
+        logger.log('definido para visível');
       };
 
       Byond.winset(Byond.windowId, {

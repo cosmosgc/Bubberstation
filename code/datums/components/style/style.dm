@@ -200,11 +200,11 @@
 
 			if((rank < hotswap_rank) && (rank_changed >= hotswap_rank))
 				var/mob/mob_parent = parent
-				mob_parent.balloon_alert(mob_parent, "hotswapping enabled")
+				mob_parent.balloon_alert(mob_parent, "Troca quente ativada.")
 
 			else if((rank >= hotswap_rank) && (rank_changed < hotswap_rank))
 				var/mob/mob_parent = parent
-				mob_parent.balloon_alert(mob_parent, "hotswapping disabled")
+				mob_parent.balloon_alert(mob_parent, "Hotswapping desativado")
 
 			rank = rank_changed
 
@@ -323,13 +323,13 @@
 /datum/component/style/proc/hotswap_interact(mob/living/source, obj/item/weapon, atom/target, list/modifiers)
 	var/datum/storage/atom_storage = target.loc.atom_storage
 	if(!atom_storage.can_insert(weapon, source, messages = FALSE))
-		source.balloon_alert(source, "unable to hotswap!")
+		source.balloon_alert(source, "Incapaz de bater!")
 		return
 
 	if (atom_storage.attempt_insert(weapon, source, override = TRUE) && source.put_in_hands(target))
-		source.visible_message(span_notice("[source] quickly swaps [weapon] out with [target]!"), span_notice("You quickly swap [weapon] with [target]."))
+		source.visible_message(span_notice("[source]Trocas rápidas[weapon]Fora com[target]!"), span_notice("Você troca rapidamente.[weapon]com[target]."))
 	else
-		source.balloon_alert(source, "unable to hotswap!")
+		source.balloon_alert(source, "Incapaz de bater!")
 
 // Point givers
 /datum/component/style/proc/on_punch(mob/living/carbon/human/punching_person, atom/attacked_atom, proximity)

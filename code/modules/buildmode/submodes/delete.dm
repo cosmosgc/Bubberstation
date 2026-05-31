@@ -3,8 +3,7 @@
 
 /datum/buildmode_mode/delete/show_help(client/builder)
 	to_chat(builder, span_purple(boxed_message(
-		"[span_bold("Delete an object")] -> Left Mouse Button on obj/turf/mob\n\
-		[span_bold("Delete all objects of a type")] -> Right Mouse Button on obj/turf/mob"))
+		"[span_bold("Delete an object")] -> Left Mouse Button on obj/turf/mob\n		[span_bold("Delete all objects of a type")] -> Right Mouse Button on obj/turf/mob"))
 	)
 
 /datum/buildmode_mode/delete/handle_click(client/c, params, object)
@@ -22,14 +21,14 @@
 			if(isturf(object))
 				return
 			var/atom/deleting = object
-			var/action_type = tgui_alert(usr,"Strict type ([deleting.type]) or type and all subtypes?",,list("Strict type","Type and subtypes","Cancel"))
+			var/action_type = tgui_alert(usr,"Tipo rigoroso.[deleting.type]) ou tipo e todos os subtipos?",,list("Strict type","Type and subtypes","Cancel"))
 			if(action_type == "Cancel" || !action_type)
 				return
 
-			if(tgui_alert(usr,"Are you really sure you want to delete all instances of type [deleting.type]?",,list("Yes","No")) != "Yes")
+			if(tgui_alert(usr,"Tem certeza que quer apagar todas as instâncias do tipo[deleting.type]?",,list("Yes","No")) != "Yes")
 				return
 
-			if(tgui_alert(usr,"Second confirmation required. Delete?",,list("Yes","No")) != "Yes")
+			if(tgui_alert(usr,"Segunda confirmação necessária. Deletar?",,list("Yes","No")) != "Yes")
 				return
 
 			var/O_type = deleting.type
@@ -42,7 +41,7 @@
 							qdel(Obj)
 						CHECK_TICK
 					if(!i)
-						to_chat(usr, "No instances of this type exist")
+						to_chat(usr, "Não existem casos deste tipo.")
 						return
 					log_admin("[key_name(usr)] deleted all instances of type [O_type] ([i] instances deleted) ")
 					message_admins(span_notice("[key_name(usr)] deleted all instances of type [O_type] ([i] instances deleted) "))
@@ -54,7 +53,7 @@
 							qdel(Obj)
 						CHECK_TICK
 					if(!i)
-						to_chat(usr, "No instances of this type exist")
+						to_chat(usr, "Não existem casos deste tipo.")
 						return
 					log_admin("[key_name(usr)] deleted all instances of type or subtype of [O_type] ([i] instances deleted) ")
 					message_admins(span_notice("[key_name(usr)] deleted all instances of type or subtype of [O_type] ([i] instances deleted) "))

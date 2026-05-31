@@ -112,7 +112,7 @@ export const Puzzgrid = (props) => {
           <Box
             color="red"
             style={{
-              textShadow: '1px 1px 1px #222',
+              textShadow: '1px 1px 1px #22',
               fontSize: '30px',
               position: 'absolute',
               top: '0',
@@ -128,7 +128,7 @@ export const Puzzgrid = (props) => {
         {data.time_left && (
           <Box
             style={{
-              textShadow: '1px 1px 1px #222',
+              textShadow: '1px 1px 1px #22',
               textAlign: 'right',
               fontSize: '15px',
               pointerEvents: 'none',

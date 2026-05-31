@@ -1,6 +1,6 @@
 /obj/item/seeds/cotton
 	name = "cotton seed pack"
-	desc = "A pack of seeds that'll grow into a cotton plant. Assistants make good free labor if neccesary."
+	desc = "Um pacote de sementes que vai crescer em uma planta de algodão. Assistentes fazem um bom trabalho de parto se necessário."
 	icon_state = "seed-cotton"
 	species = "cotton"
 	plantname = "Cotton"
@@ -21,7 +21,7 @@
 /obj/item/grown/cotton
 	seed = /obj/item/seeds/cotton
 	name = "cotton bundle"
-	desc = "A fluffy bundle of cotton."
+	desc = "Um pacote fofo de algodão."
 	icon_state = "cotton"
 	force = 0
 	throwforce = 0
@@ -38,7 +38,7 @@
 	if(seed)
 		cotton_count += round(seed.potency / 25)
 
-	user.balloon_alert(user, "pulled [cotton_count] piece\s")
+	user.balloon_alert(user, "puxado.[cotton_count]peça")
 	new cotton_type(user.drop_location(), cotton_count)
 	qdel(src)
 
@@ -46,7 +46,7 @@
 //reinforced mutated variant
 /obj/item/seeds/cotton/durathread
 	name = "durathread seed pack"
-	desc = "A pack of seeds that'll grow into an extremely durable thread that could easily rival plasteel if woven properly."
+	desc = "Um pacote de sementes que vai crescer em um fio extremamente durável que poderia facilmente rivalizar com o plasteel se tecido corretamente."
 	icon_state = "seed-durathread"
 	species = "durathread"
 	plantname = "Durathread"
@@ -66,7 +66,7 @@
 /obj/item/grown/cotton/durathread
 	seed = /obj/item/seeds/cotton/durathread
 	name = "durathread bundle"
-	desc = "A tough bundle of durathread, good luck unraveling this."
+	desc = "Um pacote duro de Durathread, boa sorte para desvendar isso."
 	icon_state = "durathread"
 	force = 5
 	throwforce = 5

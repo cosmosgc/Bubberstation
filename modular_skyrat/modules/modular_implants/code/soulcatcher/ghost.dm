@@ -36,7 +36,7 @@
 		rooms_to_join += carrier_rooms
 
 	if(!length(joinable_soulcatchers) || !length(rooms_to_join))
-		to_chat(src, span_warning("No soulcatchers are joinable."))
+		to_chat(src, span_warning("Nenhum pescador de almas é unível."))
 		return FALSE
 
 	var/datum/component/carrier/soulcatcher/soulcatcher_to_join = tgui_input_list(src, "Choose a soulcatcher to join", "Enter a soulcatcher", joinable_soulcatchers)
@@ -46,7 +46,7 @@
 	rooms_to_join = soulcatcher_to_join.get_open_rooms(TRUE)
 	var/datum/carrier_room/soulcatcher/room_to_join = tgui_input_list(src, "Choose a room to enter", "Enter a room", rooms_to_join)
 	if(!room_to_join)
-		to_chat(src, span_warning("There no rooms that you can join."))
+		to_chat(src, span_warning("Não há quartos para você se juntar."))
 		return FALSE
 
 	if(soulcatcher_to_join.require_approval)
@@ -55,7 +55,7 @@
 			ghost_name = "unknown"
 
 		if(!soulcatcher_to_join.get_approval(ghost_name))
-			to_chat(src, span_warning("The owner of [soulcatcher_to_join.name] declined your request to join."))
+			to_chat(src, span_warning("O dono de[soulcatcher_to_join.name]Recusou seu pedido de adesão."))
 			return FALSE
 
 	room_to_join.add_soul_from_ghost(src)

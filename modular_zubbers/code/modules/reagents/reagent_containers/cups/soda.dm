@@ -3,13 +3,13 @@
 
 /obj/item/reagent_containers/cup/soda_cans/bubber/blood_tea
 	name = "Hemoglobin Iced Tea"
-	desc = "Kinda like that rich golfer, but it's actually blood!"
+	desc = "Como aquele golfista rico, mas na verdade é sangue!"
 	icon_state = "blood_tea"
 	list_reagents = list(/datum/reagent/consumable/icetea/blood_tea = 25, /datum/reagent/consumable/ethanol/bloodshot = 5)
 
 /obj/item/reagent_containers/cup/soda_cans/bubber/tangorine_soda
 	name = "Tang-O-Rine"
-	desc = "A refreshing blend of tangerine juice with a bubbly fizz. The soda can features a vibrant orange and green Teshari mascot."
+	desc = "Uma mistura refrescante de suco de tangerina com espumante. O refrigerante tem uma mascote Teshari verde e laranja vibrante."
 	icon_state = "tangorine_soda"
 	drink_type = SUGAR | FRUIT
 	list_reagents = list(/datum/reagent/consumable/orangejuice = 20, /datum/reagent/consumable/sodawater = 10)
@@ -36,9 +36,9 @@
 /obj/item/reagent_containers/cup/soda_cans/bubber/attack(mob/M, mob/living/user)
 	if(istype(M, /mob/living/carbon) && !reagents.total_volume && user.combat_mode && user.zone_selected == BODY_ZONE_HEAD)
 		if(M == user)
-			user.visible_message(span_warning("[user] crushes the can of [src] on [user.p_their()] forehead!"), span_notice("You crush the can of [src] on your forehead."))
+			user.visible_message(span_warning("[user]Esmaga a lata de[src]Vamos.[user.p_their()]testa!"), span_notice("Você esmaga a lata de[src]Na sua testa."))
 		else
-			user.visible_message(span_warning("[user] crushes the can of [src] on [M]'s forehead!"), span_notice("You crush the can of [src] on [M]'s forehead."))
+			user.visible_message(span_warning("[user]Esmaga a lata de[src]Vamos.[M]A testa!"), span_notice("Você esmaga a lata de[src]Vamos.[M]Na testa."))
 		playsound(M,'sound/items/weapons/pierce.ogg', rand(10,50), TRUE)
 		var/obj/item/trash/can/bubber/crushed_can = new /obj/item/trash/can/bubber(M.loc)
 		crushed_can.icon_state = icon_state
@@ -78,7 +78,7 @@
 		return
 
 	burst_soda(hit_atom, hide_message = TRUE)
-	visible_message(span_danger("[src]'s impact with [hit_atom] causes it to rupture, spilling everywhere!"))
+	visible_message(span_danger("[src]O impacto com[hit_atom]causa a ruptura, derramando em todo lugar!"))
 	var/obj/item/trash/can/bubber/crushed_can = new /obj/item/trash/can/bubber(src.loc)
 	crushed_can.icon_state = icon_state
 	moveToNullspace()

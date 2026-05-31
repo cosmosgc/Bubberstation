@@ -10,7 +10,7 @@
 	icon = 'icons/obj/wind_turbine.dmi'
 	icon_state = "icon"
 	base_icon_state = "icon"
-	desc = "A portable wind turbine that can charge attached energy based weaponry, PDAs, and other devices. As a safety mechanism after an unprecedented amount of amputations, only charges when attached to your back / the floor."
+	desc = "Uma turbina eólica portátil que pode carregar armamento baseado em energia, PDAs e outros dispositivos. Como um mecanismo de segurança depois de uma quantidade sem precedentes de amputações, apenas cargas quando preso em suas costas / no chão."
 	worn_icon = 'icons/obj/wind_turbine.dmi'
 	worn_icon_state = "base_turbine"
 	inhand_icon_state = "wind_turbine"
@@ -177,7 +177,7 @@
 		return
 	user.Paralyze(5)
 	user.Knockdown(10)
-	user.visible_message(span_danger("[user] gets whacked in the head by the [src]'s spinning blades!"), span_userdanger("You get hit in the head by the [src] and fall over!"))
+	user.visible_message(span_danger("[user]é golpeado na cabeça pelo[src]Está girando lâminas!"), span_userdanger("Você é atingido na cabeça pelo[src]E cair!"))
 	// imaginary friends call sleep in their emotes
 	// even though imaginary friends can't put on a wind turbine I still have to do this
 	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/, emote), "scream")
@@ -197,15 +197,15 @@
 	. = ..()
 
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += span_warning("You're too far away to examine [src]'s contents! You can still watch it spin so wonderfully though...")
+		. += span_warning("Você está muito longe para examinar.[src]O conteúdo! Você ainda pode vê-lo girar tão maravilhosamente embora...")
 		if (charging && istype(charging,/obj/item/melee/baton/security/))
-			. += span_info("You can see the [charging] hanging precariously off the charging port...")
+			. += span_info("Você pode ver o[charging]Pendurando precariamente no porto de carga...")
 		return
 
 	if(cap)
-		. += span_info("Click it with a screwdriver to eject the [cap].")
-	. += span_info("Wrench it on a tile to anchor it and harness space wind.")
-	. += span_info("The wind turbine is currently storing [floor(available_power / 100) / 10]kJ.")
+		. += span_info("Clique com uma chave de fenda para ejetar o[cap].")
+	. += span_info("Esmagá-lo em uma telha para ancorar e aproveitar o vento espacial.")
+	. += span_info("A turbina eólica está armazenando[floor(available_power / 100) / 10]KJ.")
 	if(charging)
 		. += {"[span_notice("\The [src] contains:")]
 		[span_notice("- \A [charging].")]"}
@@ -213,17 +213,17 @@
 /obj/item/portable_wind_turbine/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(charging)
-		user.balloon_alert(user, "remove the [charging] first!")
+		user.balloon_alert(user, "Remova o[charging]Primeiro!")
 		return FALSE
 	if(cap)
 		tool.play_tool_sound(src, 50)
-		user.balloon_alert(user, "capacitor removed")
+		user.balloon_alert(user, "Condensador removido.")
 		cap.forceMove(drop_location())
 		available_power = 0
 		cap = null
 		return TRUE
 	else
-		user.balloon_alert(user, "no capacitor!")
+		user.balloon_alert(user, "Sem capacitor!")
 		return FALSE
 
 /obj/item/portable_wind_turbine/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
@@ -246,24 +246,24 @@
 /obj/item/portable_wind_turbine/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/stock_parts/capacitor))
 		if (cap)
-			balloon_alert(user, "already has a capacitor!")
+			balloon_alert(user, "Já tem um capacitor!")
 			return TRUE
 		user.transferItemToLoc(attacking_item, src)
 		cap = attacking_item
-		balloon_alert(user, "inserted the [attacking_item]")
+		balloon_alert(user, "inserido o[attacking_item]")
 		return TRUE
 	if(!is_type_in_typecache(attacking_item, allowed_devices))
 		return ..()
 	if(isnull(cap))
-		balloon_alert(user, "no capacitor inserted!")
+		balloon_alert(user, "Nenhum capacitor inserido!")
 		return TRUE
 	if(charging)
-		balloon_alert(user, "already charging something!")
+		balloon_alert(user, "Já está carregando alguma coisa!")
 		return TRUE
 	if(istype(attacking_item, /obj/item/gun/energy))
 		var/obj/item/gun/energy/energy_gun = attacking_item
 		if(!energy_gun.can_charge)
-			balloon_alert(user, "not rechargable!")
+			balloon_alert(user, "Não é recarregável!")
 			return TRUE
 	user.transferItemToLoc(attacking_item, src)
 	charging = attacking_item

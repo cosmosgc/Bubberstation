@@ -49,7 +49,7 @@ const SelfServePage = (props) => {
   } = data;
 
   return (
-    <Section title="Enterprise Resource Planning">
+    <Section title="Planejamento de Recursos Corporativos">
       <Section title={`Welcome ${authIDName}`}>
         <Stack wrap="wrap">
           <Stack.Item width="100%" mt={1} ml={0}>
@@ -59,7 +59,7 @@ const SelfServePage = (props) => {
             Job Title: {authIDRank || '-----'}
           </Stack.Item>
           <Stack.Item width="100%" mt={1} ml={0}>
-            Current Status: {trimClockedOut ? 'Off-Duty' : 'Active Duty'}
+            Current Status: {trimClockedOut ? 'Off-Duty' : 'Dever Activo'}
           </Stack.Item>
           <Stack.Item width="100%" mt={1} ml={0}>
             Station Alert Level: {capitalizeFirst(stationAlertLevel) || '-----'}
@@ -67,7 +67,7 @@ const SelfServePage = (props) => {
         </Stack>
       </Section>
 
-      <Section title="Punch Clock">
+      <Section title="Relógio de soco">
         <Stack wrap="wrap">
           <Stack.Item width="100%" mt={1} ml={0}>
             <Stack>
@@ -81,8 +81,8 @@ const SelfServePage = (props) => {
                 >
                   <center>
                     {trimClockedOut
-                      ? 'Return to Job Assignment'
-                      : 'Punch Out from Job Assignment'}
+                      ? 'Volte para a atribuição de emprego.'
+                      : 'ATRIBUIÇÃO DE TRABALHO'}
                   </center>
                 </Button>
               </Stack.Item>
@@ -98,7 +98,7 @@ const SelfServePage = (props) => {
           </Stack.Item>
         </Stack>
       </Section>
-      <Section title="Assignment Information">
+      <Section title="Informação de atribuição">
         <Stack wrap="wrap">
           {!trimClockedOut ? (
             <Stack.Item width="100%" mt={0} ml={0}>

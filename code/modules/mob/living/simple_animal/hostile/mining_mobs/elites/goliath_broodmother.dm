@@ -18,7 +18,7 @@
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother
 	name = "goliath broodmother"
-	desc = "An example of sexual dimorphism, this female goliath looks much different than the males of her species.  She is, however, just as dangerous, if not more."
+	desc = "Um exemplo de dimorfismo sexual, esta fêmea Golias parece muito diferente dos machos de sua espécie. Ela é, no entanto, tão perigosa, se não mais."
 	gender = FEMALE
 	icon = 'icons/mob/simple/lavaland/lavaland_elites_64.dmi'
 	icon_state = "broodmother"
@@ -37,12 +37,12 @@
 	attack_verb_continuous = "beats down on"
 	attack_verb_simple = "beat down on"
 	attack_sound = 'sound/items/weapons/punch1.ogg'
-	throw_message = "does nothing to the rocky hide of the"
+	throw_message = "Não faz nada à pele rochosa do"
 	speed = 2
 	move_to_delay = 5
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST|MOB_MINING
 	mouse_opacity = MOUSE_OPACITY_ICON
-	death_message = "explodes into gore!"
+	death_message = "Explodir em sangue!"
 	loot_drop = /obj/item/crusher_trophy/broodmother_tongue
 
 	attack_action_types = list(/datum/action/innate/elite_attack/tentacle_patch,
@@ -60,25 +60,25 @@
 /datum/action/innate/elite_attack/tentacle_patch
 	name = "Tentacle Patch"
 	button_icon_state = "tentacle_patch"
-	chosen_message = span_boldwarning("You are now attacking with a patch of tentacles.")
+	chosen_message = span_boldwarning("Agora você está atacando com um pedaço de tentáculos.")
 	chosen_attack_num = TENTACLE_PATCH
 
 /datum/action/innate/elite_attack/spawn_children
 	name = "Spawn Children"
 	button_icon_state = "spawn_children"
-	chosen_message = span_boldwarning("You will spawn two children at your location to assist you in combat. You can have up to 8.")
+	chosen_message = span_boldwarning("Você vai gerar duas crianças em seu local para ajudá-lo em combate. Você pode ter até 8.")
 	chosen_attack_num = SPAWN_CHILDREN
 
 /datum/action/innate/elite_attack/rage
 	name = "Rage"
 	button_icon_state = "rage"
-	chosen_message = span_boldwarning("You will temporarily increase your movement speed.")
+	chosen_message = span_boldwarning("Aumentará temporariamente sua velocidade de movimento.")
 	chosen_attack_num = RAGE
 
 /datum/action/innate/elite_attack/call_children
 	name = "Call Children"
 	button_icon_state = "call_children"
-	chosen_message = span_boldwarning("You will summon your children to your location.")
+	chosen_message = span_boldwarning("Você convocará seus filhos para sua localização.")
 	chosen_attack_num = CALL_CHILDREN
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother/OpenFire()
@@ -124,19 +124,19 @@
 	var/tturf = get_turf(target)
 	if(!isturf(tturf))
 		return
-	visible_message(span_warning("[src] digs its tentacles under [target]!"))
+	visible_message(span_warning("[src]Cava seus tentáculos sob[target]!"))
 	new /obj/effect/goliath_tentacle/broodmother/patch(tturf, src)
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/spawn_children(target)
 	ranged_cooldown = world.time + 40
-	visible_message(span_boldwarning("The ground churns behind [src]!"))
+	visible_message(span_boldwarning("O chão gira para trás[src]!"))
 	for(var/i in 1 to 2)
 		if(children_list.len >= 8)
 			return
 		var/mob/living/simple_animal/hostile/asteroid/elite/broodmother_child/new_child = new /mob/living/simple_animal/hostile/asteroid/elite/broodmother_child(loc)
 		new_child.GiveTarget(target)
 		SET_FACTION_AND_ALLIES_FROM(new_child, src)
-		visible_message(span_boldwarning("[new_child] appears below [src]!"))
+		visible_message(span_boldwarning("[new_child]aparece abaixo.[src]!"))
 		register_child(new_child)
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/register_child(atom/child)
@@ -157,7 +157,7 @@
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/rage()
 	ranged_cooldown = world.time + 100
 	playsound(src,'sound/misc/insane_low_laugh.ogg', 200, 1)
-	visible_message(span_warning("[src] starts picking up speed!"))
+	visible_message(span_warning("[src]Começa a ganhar velocidade!"))
 	color = COLOR_RED
 	set_varspeed(0)
 	move_to_delay = 3
@@ -170,7 +170,7 @@
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/call_children()
 	ranged_cooldown = world.time + 60
-	visible_message(span_warning("The ground shakes near [src]!"))
+	visible_message(span_warning("O chão treme perto[src]!"))
 	var/list/directions = GLOB.cardinals.Copy() + GLOB.diagonals.Copy()
 	for(var/mob/child in children_list)
 		var/spawndir = pick_n_take(directions)
@@ -182,7 +182,7 @@
 //The goliath's children.  Pretty weak, simple mobs which are able to put a single tentacle under their target when at range.
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother_child
 	name = "baby goliath"
-	desc = "A young goliath recently born from its mother.  While they hatch from eggs, said eggs are incubated in the mother until they are ready to be born."
+	desc = "Um jovem golias recém nascido de sua mãe. Enquanto eclodem dos ovos, os ovos são incubados na mãe até estarem prontos para nascer."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	icon_state = "goliath_baby"
 	icon_living = "goliath_baby"
@@ -196,14 +196,14 @@
 	attack_verb_continuous = "bashes against"
 	attack_verb_simple = "bash against"
 	attack_sound = 'sound/items/weapons/punch1.ogg'
-	throw_message = "does nothing to the rocky hide of the"
+	throw_message = "Não faz nada à pele rochosa do"
 	speed = 2
 	move_to_delay = 5
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	mouse_opacity = MOUSE_OPACITY_ICON
 	butcher_results = list()
 	guaranteed_butcher_results = list(/obj/item/stack/sheet/animalhide/goliath_hide = 1)
-	death_message = "falls to the ground."
+	death_message = "Cai no chão."
 	status_flags = CANPUSH
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother_child/Initialize(mapload)
@@ -216,12 +216,12 @@
 	if(!isturf(tturf))
 		return
 	if(get_dist(src, target) <= 7)//Screen range check, so it can't attack people off-screen
-		visible_message(span_warning("[src] digs one of its tentacles under [target]!"))
+		visible_message(span_warning("[src]Cava um de seus tentáculos debaixo[target]!"))
 		new /obj/effect/goliath_tentacle/broodmother(tturf, src)
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother_child/death()
 	. = ..()
-	visible_message(span_warning("[src] explodes!"))
+	visible_message(span_warning("[src]Explodir!"))
 	explosion(src, flame_range = 3, adminlog = FALSE)
 	gib(DROP_ALL_REMAINS)
 

@@ -76,7 +76,7 @@ export const FishCatalog = (props) => {
                   <LabeledList.Item label="Description">
                     {currentFish.desc}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Water type">
+                  <LabeledList.Item label="Tipo de água">
                     {currentFish.fluid}
                   </LabeledList.Item>
                   <LabeledList.Item label="Temperature">
@@ -88,24 +88,24 @@ export const FishCatalog = (props) => {
                   <LabeledList.Item label="Acquisition">
                     {currentFish.source}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Average size">
+                  <LabeledList.Item label="Tamanho médio">
                     {currentFish.size} cm
                   </LabeledList.Item>
-                  <LabeledList.Item label="Average weight">
+                  <LabeledList.Item label="Peso médio">
                     {currentFish.weight} kiloclam
                   </LabeledList.Item>
-                  <LabeledList.Item label="Aquarium Beauty Score">
+                  <LabeledList.Item label="Aquário Beleza Score">
                     {currentFish.beauty}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Fishing and Aquarium tips">
+                  <LabeledList.Item label="Pontas de pesca e aquário">
                     <LabeledList>
-                      <LabeledList.Item label="Fishing locations">
+                      <LabeledList.Item label="Locais de Pesca">
                         {currentFish.fishing_tips.spots}
                       </LabeledList.Item>
-                      <LabeledList.Item label="Favourite bait">
+                      <LabeledList.Item label="Isca favorita">
                         {currentFish.fishing_tips.favorite_bait}
                       </LabeledList.Item>
-                      <LabeledList.Item label="Disliked bait">
+                      <LabeledList.Item label="Isca dessagradada">
                         {currentFish.fishing_tips.disliked_bait}
                       </LabeledList.Item>
                       <LabeledList.Item label="Behavior">

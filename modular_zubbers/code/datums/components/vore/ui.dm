@@ -98,10 +98,10 @@
 	switch(action)
 		if("create_belly")
 			if(!COOLDOWN_FINISHED(src, rate_limit_belly_creation))
-				to_chat(living_parent, span_warning("You cannot create more bellies right now, please try again in [COOLDOWN_TIMELEFT(src, rate_limit_belly_creation) / 10] seconds."))
+				to_chat(living_parent, span_warning("Você não pode criar mais barrigas agora, por favor tente novamente[COOLDOWN_TIMELEFT(src, rate_limit_belly_creation) / 10]segundos."))
 				return
 			if(LAZYLEN(vore_bellies) >= MAX_BELLIES)
-				to_chat(living_parent, span_warning("You can only have [MAX_BELLIES] bellies."))
+				to_chat(living_parent, span_warning("Você só pode ter[MAX_BELLIES]barrigas."))
 				return TRUE
 			create_default_belly()
 			COOLDOWN_START(src, rate_limit_belly_creation, BELLY_CREATION_COOLDOWN)
@@ -110,7 +110,7 @@
 			var/obj/vore_belly/new_selected = locate(params["ref"])
 			if(istype(new_selected) && new_selected.owner == src)
 				selected_belly = new_selected
-				to_chat(living_parent, span_notice("Prey will now go into [selected_belly]."))
+				to_chat(living_parent, span_notice("Prey vai entrar em[selected_belly]."))
 			. = TRUE
 		if("click_prey")
 			var/mob/prey = locate(params["ref"])
@@ -140,7 +140,7 @@
 		if("set_pref")
 			var/datum/vore_preferences/vore_prefs = living_parent.get_vore_prefs()
 			if(!vore_prefs)
-				to_chat(living_parent, span_danger("You cannot save your vore preferences as they cannot be loaded."))
+				to_chat(living_parent, span_danger("Você não pode salvar suas preferências de vore porque elas não podem ser carregadas."))
 				return
 
 			var/key = params["key"]
@@ -178,7 +178,7 @@
 			if(target.owner != src)
 				return
 			if(LAZYLEN(vore_bellies) == 1)
-				to_chat(living_parent, span_danger("You can't delete your last belly, modify it or make a new one to take it's place."))
+				to_chat(living_parent, span_danger("Não pode deletar sua última barriga, modificá-la ou fazer uma nova para tomar o lugar dela."))
 				return
 
 			qdel(target)
@@ -186,13 +186,13 @@
 			. = TRUE
 		if("belly_backups")
 			if(living_parent.ckey != our_owner_ckey)
-				to_chat(living_parent, span_warning("This is not available on vore components you do not own."))
+				to_chat(living_parent, span_warning("Isso não está disponível em componentes que você não possui."))
 				return
 			download_belly_backup()
 			. = TRUE
 		if("load_slot")
 			if(living_parent.ckey != our_owner_ckey)
-				to_chat(living_parent, span_warning("This is not available on vore components you do not own."))
+				to_chat(living_parent, span_warning("Isso não está disponível em componentes que você não possui."))
 				return
 			var/datum/vore_preferences/vore_prefs = living_parent.get_vore_prefs()
 			if(!vore_prefs)
@@ -205,7 +205,7 @@
 			. = TRUE
 		if("set_slot_name")
 			if(living_parent.ckey != our_owner_ckey)
-				to_chat(living_parent, span_warning("This is not available on vore components you do not own."))
+				to_chat(living_parent, span_warning("Isso não está disponível em componentes que você não possui."))
 				return
 			var/datum/vore_preferences/vore_prefs = living_parent.get_vore_prefs()
 			if(!vore_prefs)
@@ -216,7 +216,7 @@
 			. = TRUE
 		if("copy_to_slot")
 			if(living_parent.ckey != our_owner_ckey)
-				to_chat(living_parent, span_warning("This is not available on vore components you do not own."))
+				to_chat(living_parent, span_warning("Isso não está disponível em componentes que você não possui."))
 				return
 			var/datum/vore_preferences/vore_prefs = living_parent.get_vore_prefs()
 			if(!vore_prefs)
@@ -225,18 +225,18 @@
 			var/slot_to_save_over = vore_prefs.copy_to_slot()
 			if(slot_to_save_over != null)
 				save_bellies(slot_to_save_over)
-				to_chat(living_parent, span_notice("Copied belly loadout to slot [slot_to_save_over]."))
+				to_chat(living_parent, span_notice("Copiado barriga carga para a fenda[slot_to_save_over]."))
 			. = TRUE
 		if("toggle_lookup_data")
 			if(living_parent.ckey != our_owner_ckey)
-				to_chat(living_parent, span_warning("This is not available on vore components you do not own."))
+				to_chat(living_parent, span_warning("Isso não está disponível em componentes que você não possui."))
 				return
 			ui_editing_lookuptable = !ui_editing_lookuptable
 			update_static_data(living_parent, ui)
 			. = TRUE
 		if("set_lookup_table_entry")
 			if(living_parent.ckey != our_owner_ckey)
-				to_chat(living_parent, span_warning("This is not available on vore components you do not own."))
+				to_chat(living_parent, span_warning("Isso não está disponível em componentes que você não possui."))
 				return
 			var/datum/vore_preferences/vore_prefs = living_parent.get_vore_prefs()
 			if(!vore_prefs)
@@ -254,7 +254,7 @@
 			. = TRUE
 		if("delete_lookup_table_entry")
 			if(living_parent.ckey != our_owner_ckey)
-				to_chat(living_parent, span_warning("This is not available on vore components you do not own."))
+				to_chat(living_parent, span_warning("Isso não está disponível em componentes que você não possui."))
 				return
 			var/datum/vore_preferences/vore_prefs = living_parent.get_vore_prefs()
 			if(!vore_prefs)
@@ -269,7 +269,7 @@
 			. = TRUE
 		if("import_bellies")
 			if(!COOLDOWN_FINISHED(src, rate_limit_belly_creation))
-				to_chat(living_parent, span_warning("You cannot create more bellies right now, please try again in [COOLDOWN_TIMELEFT(src, rate_limit_belly_creation) / 10] seconds."))
+				to_chat(living_parent, span_warning("Você não pode criar mais barrigas agora, por favor tente novamente[COOLDOWN_TIMELEFT(src, rate_limit_belly_creation) / 10]segundos."))
 				return
 
 			// Nearly straight from CHOMP
@@ -297,7 +297,7 @@
 
 				var/is_vrdb = detect_vrdb(input_data)
 				if(is_vrdb)
-					to_chat(living_parent, span_danger("WARNING: This file will be parsed as a VRDB file. This conversion is best-effort only, and may not produce satisfactory results."))
+					to_chat(living_parent, span_danger("Este arquivo será analisado como um arquivo VRDB. Esta conversão é apenas o melhor esforço, e pode não produzir resultados satisfatórios."))
 				else
 					if(input_data["db_repo"] != VORE_DB_REPO)
 						CRASH("Unable to load file - db_repo was expected to be '[VORE_DB_REPO]' but was '[input_data["db_repo"]]'")
@@ -328,7 +328,7 @@
 				var/current_belly_count = LAZYLEN(vore_bellies)
 				var/amount_to_import = min(LAZYLEN(bellies_to_import), MAX_BELLIES - LAZYLEN(current_belly_count))
 				if(amount_to_import != LAZYLEN(bellies_to_import))
-					to_chat(living_parent, span_warning("You have selected too many bellies to import. Only the first [amount_to_import] will be imported."))
+					to_chat(living_parent, span_warning("Você escolheu muitas barrigas para importar. Apenas o primeiro[amount_to_import]Será importado."))
 
 				for(var/i in 1 to amount_to_import)
 					var/list/belly = bellies_to_import[i]
@@ -338,16 +338,16 @@
 
 				// Directly scale cooldown with how much they're creating
 				COOLDOWN_START(src, rate_limit_belly_creation, BELLY_CREATION_COOLDOWN * amount_to_import)
-				to_chat(living_parent, span_notice("All done importing bellies!"))
+				to_chat(living_parent, span_notice("Tudo feito importando barrigas!"))
 				save_bellies()
 			catch(var/exception/e)
-				tgui_alert(living_parent, "The supplied file contains errors: [e]", "Error!")
+				tgui_alert(living_parent, "O arquivo fornecido contém erros:[e]", "Error!")
 				return FALSE
 
 			. = TRUE
 		if("export_bellies")
 			if(living_parent.ckey != our_owner_ckey)
-				to_chat(living_parent, span_warning("This is not available on vore components you do not own."))
+				to_chat(living_parent, span_warning("Isso não está disponível em componentes que você não possui."))
 				return
 			var/datum/vore_preferences/vore_prefs = get_parent_vore_prefs()
 			if(!vore_prefs)
@@ -356,10 +356,10 @@
 			. = TRUE
 		if("test_fullscreen")
 			if(living_parent.screens["vore"])
-				to_chat(living_parent, span_warning("You can't preview belly fullscreens when you already have one visible."))
+				to_chat(living_parent, span_warning("Você não pode visualizar telas de barriga quando já tem uma visível."))
 				return
 			if(!living_parent.wants_vore_fullscreen())
-				to_chat(living_parent, span_warning("You can't preview belly fullscreens when your preference is turned off."))
+				to_chat(living_parent, span_warning("Você não pode visualizar telas de barriga quando sua preferência é desligada."))
 				return
 			// We need a belly for this to be relative to, for recoloring
 			var/obj/vore_belly/target = locate(params["ref"])
@@ -404,7 +404,7 @@
 	if(!HAS_TRAIT_FROM(prey, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE) && !HAS_TRAIT_FROM(living_parent, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE))
 		options += list("Interact", "Help Out")
 
-	var/what_to_do = tgui_alert(living_parent, "What do you want to do to [prey]?", "Prey Options", options)
+	var/what_to_do = tgui_alert(living_parent, "O que você quer fazer com[prey]?", "Prey Options", options)
 	// We have to check all of the conditions inside each of these branches because things could have changed while the
 	// dialog was open.
 	switch(what_to_do)
@@ -412,38 +412,38 @@
 			living_parent.examinate(prey)
 		if("Interact")
 			if(HAS_TRAIT_FROM(prey, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE))
-				to_chat(living_parent, "[prey] is absorbed, you can't help them.")
+				to_chat(living_parent, "[prey]é absorvido, você não pode ajudá-los.")
 				return
 			if(HAS_TRAIT_FROM(living_parent, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE))
-				to_chat(living_parent, "You're absorbed, you can't help someone out.")
+				to_chat(living_parent, "Está absorto, não pode ajudar alguém.")
 				return
 			living_parent.CtrlShiftClickOn(prey)
 		if("Help Out")
 			if(HAS_TRAIT_FROM(living_parent, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE))
-				to_chat(living_parent, "You're absorbed, you can't help someone out.")
+				to_chat(living_parent, "Está absorto, não pode ajudar alguém.")
 				return
 			if(HAS_TRAIT_FROM(prey, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE))
-				to_chat(living_parent, "[prey] is absorbed, you can't help them.")
+				to_chat(living_parent, "[prey]é absorvido, você não pode ajudá-los.")
 				return
 			// If they're otherwise incapacitated
 			if(living_parent.incapacitated)
 				return
 
-			to_chat(living_parent, span_notice(span_green("You begin to push [prey] to freedom!")))
-			to_chat(prey, span_notice("[living_parent] begins to push you to freedom!"))
-			to_chat(pred, span_warning("Someone is trying to escape from inside you!"))
+			to_chat(living_parent, span_notice(span_green("Você começa a empurrar[prey]À liberdade!")))
+			to_chat(prey, span_notice("[living_parent]Começa a empurrar você para a liberdade!"))
+			to_chat(pred, span_warning("Alguém está tentando escapar de dentro de você!"))
 
 			if(do_after(living_parent, 5 SECONDS, pred, timed_action_flags = IGNORE_TARGET_LOC_CHANGE) && prob(33))
 				if(prey.loc != prey_loc)
 					return
 				prey_loc.release(prey)
-				to_chat(living_parent, span_notice(span_green("You manage to help [prey] to safety!")))
-				to_chat(prey,  span_notice(span_green("[living_parent] pushes you free!")))
-				to_chat(pred, span_alert("[prey] forces free of the confines of your body!"))
+				to_chat(living_parent, span_notice(span_green("Você consegue ajudar.[prey]Em segurança!")))
+				to_chat(prey,  span_notice(span_green("[living_parent]te liberta!")))
+				to_chat(pred, span_alert("[prey]forças livres dos confins de seu corpo!"))
 			else
-				to_chat(living_parent, span_alert("[prey] slips back down inside despite your efforts."))
-				to_chat(prey, span_alert("Even with [living_parent]'s help, you slip back inside again."))
-				to_chat(pred, span_notice(span_green("Your body efficiently shoves [prey] back where they belong.")))
+				to_chat(living_parent, span_alert("[prey]Desliza de volta para dentro apesar de seus esforços."))
+				to_chat(prey, span_alert("Mesmo com[living_parent]Por ajuda, você volta para dentro de novo."))
+				to_chat(pred, span_notice(span_green("Seu corpo empurra eficientemente[prey]De volta ao seu lugar.")))
 
 /datum/component/vore/proc/click_our_prey(mob/living/prey)
 	var/obj/vore_belly/prey_loc = prey.loc
@@ -466,51 +466,51 @@
 			living_parent.examinate(prey)
 		if("Eject")
 			if(HAS_TRAIT_FROM(prey, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE))
-				to_chat(living_parent, span_warning("You cannot eject absorbed prey."))
+				to_chat(living_parent, span_warning("Você não pode ejetar presas absorvidas."))
 				return
 			#ifdef VORE_EJECT_DELAY
-			to_chat(living_parent, span_notice("You start to work [prey] out of your [LOWER_TEXT(prey_loc.name)]..."))
-			to_chat(prey, span_notice("[living_parent] starts to work you out of their [LOWER_TEXT(prey_loc.name)]..."))
+			to_chat(living_parent, span_notice("Você começa a trabalhar.[prey]fora de seu[LOWER_TEXT(prey_loc.name)]..."))
+			to_chat(prey, span_notice("[living_parent]Começa a te tirar do trabalho deles.[LOWER_TEXT(prey_loc.name)]..."))
 			if(!do_after(living_parent, VORE_EJECT_DELAY, interaction_key = "vore_eject"))
 				return
 			#endif
 			prey_loc.release(prey)
 		if("Transfer")
 			if(HAS_TRAIT_FROM(prey, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE))
-				to_chat(living_parent, span_warning("You cannot transfer absorbed prey."))
+				to_chat(living_parent, span_warning("Você não pode transferir presa absorvida."))
 				return
 			var/obj/vore_belly/which_belly = tgui_input_list(living_parent, "Which belly do you want to transfer them to?", "Belly Transfer", vore_bellies)
 			if(which_belly && prey.loc == prey_loc)
 				prey.forceMove(which_belly)
 		if("Digest")
 			if(HAS_TRAIT_FROM(prey, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE))
-				to_chat(living_parent, span_warning("You cannot digest absorbed prey."))
+				to_chat(living_parent, span_warning("Você não pode digerir presas absorvidas."))
 				return
 			if(!REQUIRES_PLAYER && !prey.mind)
 				prey_loc.digestion_death(prey)
 				return
 			var/datum/vore_preferences/prey_vore_prefs = prey.get_vore_prefs()
 			if(!prey_vore_prefs)
-				to_chat(living_parent, span_warning("[prey] isn't interested in being digested."))
+				to_chat(living_parent, span_warning("[prey]Não está interessado em ser digerido."))
 				return
 			if(!prey_vore_prefs.read_preference(/datum/vore_pref/toggle/digestion) || !prey_vore_prefs.read_preference(/datum/vore_pref/toggle/digestion_qdel))
-				to_chat(living_parent, span_warning("[prey] isn't interested in being digested."))
+				to_chat(living_parent, span_warning("[prey]Não está interessado em ser digerido."))
 				return
 
-			var/consents = tgui_alert(prey, "[living_parent] wants to instantly digest you, is this okay?", "Instant Gurgle", list("No", "Yes"))
+			var/consents = tgui_alert(prey, "[living_parent]Quer digerir você instantaneamente, está bem?", "Instant Gurgle", list("No", "Yes"))
 			if(consents == "Yes")
 				if(!prey_loc.digestion_death(prey))
-					to_chat(living_parent, span_warning("[prey] isn't interested in being fully digested."))
+					to_chat(living_parent, span_warning("[prey]não está interessado em ser completamente digerido."))
 			else
-				to_chat(living_parent, span_warning("[prey] did not consent to the popup."))
+				to_chat(living_parent, span_warning("[prey]Não consentiu com o popup."))
 		if("Absorb")
 			if(HAS_TRAIT_FROM(prey, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE))
-				to_chat(living_parent, span_warning("[prey] is already absorbed!"))
+				to_chat(living_parent, span_warning("[prey]Já está absorvido!"))
 				return
 			if(!prey.vore_can_absorb())
-				to_chat(living_parent, "[prey] isn't interested in absorption.")
+				to_chat(living_parent, "[prey]Não está interessado em absorção.")
 				return
-			var/consents = tgui_alert(prey, "[living_parent] wants to instantly absorb you, is this okay?", "Instant Absorb", list("No", "Yes"))
+			var/consents = tgui_alert(prey, "[living_parent]Quer absorvê-lo instantaneamente, está bem?", "Instant Absorb", list("No", "Yes"))
 			if(consents == "Yes")
 				// Get the nutrition
 				var/nutrition = prey.nutrition - ABSORB_NUTRITION_BARRIER
@@ -518,27 +518,27 @@
 					prey.set_nutrition(ABSORB_NUTRITION_BARRIER)
 					living_parent.adjust_nutrition(nutrition)
 				if(!prey_loc.absorb(prey))
-					to_chat(living_parent, "[prey] isn't interested in absorption.")
+					to_chat(living_parent, "[prey]Não está interessado em absorção.")
 			else
-				to_chat(living_parent, span_warning("[prey] did not consent to the popup."))
+				to_chat(living_parent, span_warning("[prey]Não consentiu com o popup."))
 		if("Unabsorb")
 			if(!HAS_TRAIT_FROM(prey, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE))
-				to_chat(living_parent, span_warning("[prey] is not absorbed!"))
+				to_chat(living_parent, span_warning("[prey]Não é absorvido!"))
 				return
 			if(living_parent.nutrition < ABSORB_NUTRITION_BARRIER)
-				to_chat(living_parent, span_warning("You are too hungry to reform [prey]."))
+				to_chat(living_parent, span_warning("Você está com muita fome para se reformar.[prey]."))
 				return
 			living_parent.adjust_nutrition(-ABSORB_NUTRITION_BARRIER)
 			prey_loc.unabsorb(prey)
 		if("Put In Charge")
 			if(living_parent.ckey != our_owner_ckey)
-				to_chat(living_parent, span_warning("This is not available on vore components you do not own."))
+				to_chat(living_parent, span_warning("Isso não está disponível em componentes que você não possui."))
 				return
 
 			if(!HAS_TRAIT_FROM(prey, TRAIT_RESTRAINED, TRAIT_SOURCE_VORE))
-				to_chat(living_parent, span_warning("[prey] must be absorbed to be able to be put in control."))
+				to_chat(living_parent, span_warning("[prey]deve ser absorvido para ser capaz de ser colocado no controle."))
 				return
 
-			var/consents = tgui_alert(prey, "[living_parent] wants to let you take control of their body, is this okay?", "Prey Control", list("No", "Yes"))
+			var/consents = tgui_alert(prey, "[living_parent]Quer que você assuma o controle do corpo deles, está bem?", "Prey Control", list("No", "Yes"))
 			if(consents == "Yes")
 				living_parent.AddComponent(/datum/component/absorb_control, prey)

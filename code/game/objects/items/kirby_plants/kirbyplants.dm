@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi' // SKYRAT EDIT CHANGE
 	icon_state = "plant-01"
 	base_icon_state = "plant-01"
-	desc = "A little bit of nature contained in a pot."
+	desc = "Um pouco de natureza contada em uma tela."
 	layer = ABOVE_MOB_LAYER
 	w_class = WEIGHT_CLASS_HUGE
 	force = 10
@@ -43,7 +43,7 @@
 
 /obj/item/kirbyplants/update_desc(updates)
 	. = ..()
-	desc = dead ? "The unidentifiable plant remnants make you feel like planting something new in the pot." : initial(desc)
+	desc = dead ? "Os restos de plantas não identificáveis fazem você querer plantar algo novo no pote." : initial(desc)
 
 /obj/item/kirbyplants/vv_edit_var(vname, vval)
 	. = ..()
@@ -57,12 +57,12 @@
 /obj/item/kirbyplants/attackby(obj/item/I, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()
 	if(!dead && trimmable && HAS_TRAIT(user,TRAIT_BONSAI) && isturf(loc) && I.get_sharpness())
-		to_chat(user,span_notice("You start trimming [src]."))
+		to_chat(user,span_notice("Você começa a aparar[src]."))
 		if(do_after(user,3 SECONDS,target=src))
-			to_chat(user,span_notice("You finish trimming [src]."))
+			to_chat(user,span_notice("Você termina de aparar[src]."))
 			change_visual()
 	if(dead && istype(I, /obj/item/seeds))
-		to_chat(user,span_notice("You start planting a new seed into the pot."))
+		to_chat(user,span_notice("Você começa a plantar uma nova semente no pote."))
 		if(do_after(user,3 SECONDS,target=src))
 			qdel(I)
 			dead = FALSE
@@ -118,11 +118,11 @@
 
 /obj/item/kirbyplants/random/dead/update_desc(updates)
 	. = ..()
-	desc = "A gift from the botanical staff, presented after the RD's reassignment. There's a tag on it that says \"Y'all come back now, y'hear?\"[dead ? "\nIt doesn't look very healthy...":null]"
+	desc = "Um presente da equipe botânica, apresentado após a transferência da RD. Há uma etiqueta que diz\"Voltam agora, ouviram?\"[dead ? "\nIt doesn't look very healthy...":null]"
 
 /obj/item/kirbyplants/random/fullysynthetic
 	name = "plastic potted plant"
-	desc = "A fake, cheap looking, plastic tree. Perfect for people who kill every plant they touch."
+	desc = "Uma árvore falsa, barata, de plástico. Perfeito para pessoas que matam cada planta que tocam."
 	icon_state = "plant-26"
 	custom_materials = (list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 4))
 	trimmable = FALSE
@@ -135,21 +135,21 @@
 //SKYRAT EDIT ADDITION START
 /obj/item/kirbyplants/monkey
 	name = "monkey plant"
-	desc = "Something that seems to have been made by the Nanotrasen science division, one might call it an abomination. It's heads seem... alive."
+	desc = "Algo que parece ter sido feito pela divisão científica Nanotrasen, pode-se chamar de abominação. As cabeças parecem... vivas."
 	icon_state = "monkeyplant"
 	trimmable = FALSE
 //SKYRAT EDIT ADDITION END
 
 /obj/item/kirbyplants/photosynthetic
 	name = "photosynthetic potted plant"
-	desc = "A bioluminescent plant."
+	desc = "Uma planta bioluminescente."
 	icon_state = "plant-09"
 	light_color = COLOR_BRIGHT_BLUE
 	light_range = 3
 
 /obj/item/kirbyplants/potty
 	name = "Potty the Potted Plant"
-	desc = "A secret agent staffed in the station's bar to protect the mystical cakehat."
+	desc = "Um agente secreto do bar da estação para proteger o misterioso bolo."
 	icon_state = "potty"
 	base_icon_state = "potty"
 	custom_plant_name = TRUE
@@ -184,7 +184,7 @@
 
 /obj/item/kirbyplants/fern
 	name = "neglected fern"
-	desc = "An old botanical research sample collected on a long forgotten jungle planet."
+	desc = "Uma velha amostra de pesquisa botânica coletada em um planeta da selva há muito esquecido."
 	icon_state = "fern"
 	trimmable = FALSE
 

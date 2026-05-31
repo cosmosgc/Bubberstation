@@ -40,6 +40,6 @@
 		if (language_port.value in circuit_languages) //if user selected language is an [item] in the list then...
 			shell_language = circuit_languages[language_port.value] //selects the [value] for the specified [item]
 		else shell_language = /datum/language/common //if it is not in an [item] in the list then it defaults to common
-		shell.say(message.value, language = shell_language, forced = "circuit speech | [parent.get_creator()]", message_range = quietmode.value > 0 ? WHISPER_RANGE : MESSAGE_RANGE, spans = list(GLOB.component_span_color_list[color_input.value]))
+		shell.say(message.value, language = shell_language, forced = "Circuito de fala[parent.get_creator()]", message_range = quietmode.value > 0 ? WHISPER_RANGE : MESSAGE_RANGE, spans = list(GLOB.component_span_color_list[color_input.value]))
 		TIMER_COOLDOWN_START(shell, COOLDOWN_CIRCUIT_SPEECH, speech_cooldown)
 

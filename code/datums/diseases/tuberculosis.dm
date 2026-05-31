@@ -8,9 +8,7 @@
 	agent = "Fungal Tubercle Bacillus Cosmosis"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	cure_chance = 2.5 //like hell are you getting out of hell
-	desc = "A rare and highly transmissible virulent fungus. \
-		Few samples exist, rumoured to be carefully grown and cultured by clandestine bio-weapon specialists. \
-		Causes fever, blood vomiting, lung damage, weight loss, fatigue, and eventually death."
+	desc = "Um fungo virulento raro e altamente transmissível. Poucas amostras existem, rumores de serem cuidadosamente cultivadas e cultivadas por especialistas clandestinos em armas biológicas. Causa febre, vômito no sangue, danos nos pulmões, perda de peso, fadiga, e eventualmente morte."
 	required_organ = ORGAN_SLOT_LUNGS
 	severity = DISEASE_SEVERITY_BIOHAZARD
 	bypasses_immunity = TRUE // TB primarily impacts the lungs; it's also bacterial or fungal in nature; viral immunity should do nothing.
@@ -22,25 +20,25 @@
 
 	if(SPT_PROB(stage * 2, seconds_per_tick))
 		affected_mob.emote("cough")
-		to_chat(affected_mob, span_danger("Your chest hurts."))
+		to_chat(affected_mob, span_danger("Seu peito dói."))
 
 	switch(stage)
 		if(2)
 			if(SPT_PROB(1, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Your stomach violently rumbles!"))
+				to_chat(affected_mob, span_danger("Seu estômago é violento!"))
 			if(SPT_PROB(2.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You feel a cold sweat form."))
+				to_chat(affected_mob, span_danger("Você sente um suor frio."))
 		if(4)
 			var/need_mob_update = FALSE
 			if(SPT_PROB(1, seconds_per_tick))
-				to_chat(affected_mob, span_userdanger("You see four of everything!"))
+				to_chat(affected_mob, span_userdanger("Você vê quatro de tudo!"))
 				affected_mob.set_dizzy_if_lower(10 SECONDS)
 			if(SPT_PROB(1, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You feel a sharp pain from your lower chest!"))
+				to_chat(affected_mob, span_danger("Você sente uma dor aguda no seu peito!"))
 				need_mob_update += affected_mob.adjust_oxy_loss(5, updating_health = FALSE)
 				affected_mob.emote("gasp")
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You feel air escape from your lungs painfully."))
+				to_chat(affected_mob, span_danger("Sente que o ar escapa dos pulmões dolorosamente."))
 				need_mob_update += affected_mob.adjust_oxy_loss(25, updating_health = FALSE)
 				affected_mob.emote("gasp")
 			if(need_mob_update)
@@ -52,10 +50,10 @@
 				need_mob_update += affected_mob.adjust_stamina_loss(70, updating_stamina = FALSE)
 			if(SPT_PROB(5, seconds_per_tick))
 				need_mob_update += affected_mob.adjust_stamina_loss(100, updating_stamina = FALSE)
-				affected_mob.visible_message(span_warning("[affected_mob] faints!"), span_userdanger("You surrender yourself and feel at peace..."))
+				affected_mob.visible_message(span_warning("[affected_mob]Desmaios!"), span_userdanger("Você se entrega e se sente em paz..."))
 				affected_mob.AdjustSleeping(10 SECONDS)
 			if(SPT_PROB(1, seconds_per_tick))
-				to_chat(affected_mob, span_userdanger("You feel your mind relax and your thoughts drift!"))
+				to_chat(affected_mob, span_userdanger("Sente sua mente relaxada e seus pensamentos à deriva!"))
 				affected_mob.adjust_confusion_up_to(8 SECONDS, 100 SECONDS)
 			if(SPT_PROB(5, seconds_per_tick))
 				affected_mob.vomit(VOMIT_CATEGORY_DEFAULT, lost_nutrition = 20)
@@ -68,7 +66,7 @@
 					var/mob/living/carbon/human/human_victim = affected_mob
 					to_chat(human_victim, span_danger("[human_victim.w_uniform? pick("You feel uncomfortably hot...", "You feel like unzipping your jumpsuit...", "You feel like taking off some clothes...") : "You feel uncomfortably hot..."]"))
 				else
-					to_chat(affected_mob, span_danger("You feel uncomfortably hot..."))
+					to_chat(affected_mob, span_danger("Você se sente desconfortavelmente quente..."))
 				affected_mob.adjust_bodytemperature(40)
 			if(need_mob_update)
 				affected_mob.updatehealth()

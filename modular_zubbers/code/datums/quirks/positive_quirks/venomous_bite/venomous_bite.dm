@@ -4,7 +4,7 @@
 
 /datum/action/cooldown/mob_cooldown/venomous_bite
 	name = "Inject Venom"
-	desc = "Sink your fangs into another and inject them with your venom. Ineffective against those wearing armor."
+	desc = "Afunde suas presas em outra e injete seu veneno. Ineficiente contra aqueles que usam armadura."
 
 	button_icon = 'modular_zubbers/icons/mob/actions/quirks/venomous_bite.dmi'
 	button_icon_state = "venom"
@@ -32,27 +32,27 @@
 	. = ..()
 	if (!.)
 		return
-	owner.visible_message(span_warning("[owner] bares [owner.p_their()] fangs..."), span_notice("You bare your fangs..."))
+	owner.visible_message(span_warning("[owner]nus[owner.p_their()]Fangs..."), span_notice("Você desnuda suas presas..."))
 
 /datum/action/cooldown/mob_cooldown/venomous_bite/Activate(atom/target_atom)
 	if (!isliving(target_atom))
 		return FALSE
 
 	if (astype(owner, /mob/living/carbon)?.is_mouth_covered())
-		owner.balloon_alert(owner, "boca coberta!")
+		owner.balloon_alert(owner, "Boa coberta!")
 		return FALSE
 
 	if (!owner.Adjacent(target_atom))
-		owner.balloon_alert(owner, "longe demais!")
+		owner.balloon_alert(owner, "Longe demais!")
 		return FALSE
 
 	if (target_atom == owner)
-		owner.balloon_alert(owner, "can't bite yourself!")
+		owner.balloon_alert(owner, "Não pode se morder!")
 		return FALSE
 
 	log_combat(owner, target_atom, "started to bite", null, "with venom: [reagent_typepath::name]")
-	owner.visible_message(span_warning("[owner] starts to bite [target_atom]!"), span_warning("You start to bite [target_atom]!"), ignored_mobs = target_atom)
-	to_chat(target_atom, span_userdanger("[owner] starts to bite you!"))
+	owner.visible_message(span_warning("[owner]Começa a morder[target_atom]!"), span_warning("Você começa a morder[target_atom]!"), ignored_mobs = target_atom)
+	to_chat(target_atom, span_userdanger("[owner]Começa a te morder!"))
 	owner.balloon_alert_to_viewers("biting...")
 	if (!do_after(owner, 0.5 SECONDS, target_atom, IGNORE_HELD_ITEM))
 		return FALSE
@@ -80,8 +80,8 @@
 			if (iter_clothing.clothing_flags & THICKMATERIAL)
 				covered = TRUE
 				text = "[owner] tries to bite [target], but breaks [owner.p_their()] teeth on [target]'s clothing! Ouch!"
-				self_message = "You try to bite [target], but you break your teeth on [target.p_their()] clothing! Ouch!"
-				victim_message = "[owner] tries to bite you, but breaks [owner.p_their()] teeth on your clothing! Ouch!"
+				self_message = "Você tenta morder[target]Mas você quebra os dentes[target.p_their()]Roupa! Ouch!"
+				victim_message = "[owner]Tenta morder você, mas quebra[owner.p_their()]Dentes em suas calças! Ouch!"
 				owner.emote("scream")
 				astype(owner, /mob/living)?.apply_damage(1, BRUTE, BODY_ZONE_HEAD)
 				break

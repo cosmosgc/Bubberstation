@@ -1,7 +1,7 @@
 /// Basic machine used to paint PDAs and re-trim ID cards.
 /obj/machinery/pdapainter
 	name = "\improper Tablet & ID Painter"
-	desc = "A painting machine that can be used to paint PDAs and trim IDs. To use, simply insert the item and choose the desired preset."
+	desc = "Uma máquina de pintura que pode ser usada para pintar PDAs e aparar identidades. Para usar, basta inserir o item e escolher a predefinição desejada."
 	icon = 'icons/obj/machines/pda.dmi'
 	icon_state = "pdapainter"
 	base_icon_state = "pdapainter"
@@ -137,7 +137,7 @@
 
 /obj/machinery/pdapainter/welder_act(mob/living/user, obj/item/tool)
 	if(!(machine_stat & BROKEN) && (atom_integrity >= max_integrity))
-		balloon_alert(user, "isn't broken!")
+		balloon_alert(user, "Não está quebrado!")
 		return ITEM_INTERACT_BLOCKING
 	if(!tool.tool_start_check(user, amount = 1))
 		balloon_alert(user, "combustível insuficiente!")
@@ -218,9 +218,9 @@
  */
 /obj/machinery/pdapainter/proc/insert_id_card(obj/item/card/id/new_id_card, mob/living/user)
 	if(!new_id_card.trim_changeable)
-		balloon_alert(user, "rejected!")
+		balloon_alert(user, "Rejeitado!")
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, TRUE)
-		to_chat(user, span_warning("This ID card does not appear to be compatible with the ID Painter."))
+		to_chat(user, span_warning("Este cartão de identificação não parece ser compatível com o Pintor de Identificação."))
 		return FALSE
 
 	if(user && !user.transferItemToLoc(new_id_card, src, silent = FALSE))
@@ -360,7 +360,7 @@
 				if(SSid_access.apply_trim_to_card(stored_id_card, path, copy_access = FALSE))
 					return TRUE
 
-				to_chat(usr, span_warning("The trim you selected could not be added to \the [stored_id_card]. You will need a rarer ID card to imprint that trim data."))
+				to_chat(usr, span_warning("O corte que você escolheu não poderia ser adicionado a\the [stored_id_card]Precisará de um cartão de identidade mais raro para imprimir os dados."))
 
 			return TRUE
 		if("reset_card")

@@ -25,7 +25,7 @@ type MergeInput<TObj> = {
  *   b: z.number(),
  * });
  *
- * const source = { a: 'hello', b: 'not a number', c: true };
+ * const source = { a: 'hello', b: 'Não um número.', c: true };
  * const target = { a: 'default', b: 42 };
  *
  * const result = smoothMerge({ schema, source, target });

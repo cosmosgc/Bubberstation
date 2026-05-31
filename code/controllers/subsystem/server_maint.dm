@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(server_maint)
 			var/cmob = C.mob
 			if (!isnewplayer(cmob) || !SSticker.queued_players.Find(cmob))
 				log_access("AFK: [key_name(C)]")
-				to_chat(C, span_userdanger("You have been inactive for more than [DisplayTimeText(afk_period)] and have been disconnected.</span><br><span class='danger'>You may reconnect via the button in the file menu or by <b><u><a href='byond://winset?command=.reconnect'>clicking here to reconnect</a></u></b>."))
+				to_chat(C, span_userdanger("Você está inativa há mais de[DisplayTimeText(afk_period)]e foram desconectados.</span><br><span class='danger'>Você pode reconectar através do botão no menu de arquivos ou por<b><u><a href='byond://winset?command=.reconnect'>clicando aqui para reconectar</a></u></b>."))
 				QDEL_IN(C, 1) //to ensure they get our message before getting disconnected
 				continue
 
@@ -86,7 +86,7 @@ SUBSYSTEM_DEF(server_maint)
 /datum/controller/subsystem/server_maint/Shutdown()
 	if (fexists("tmp/"))
 		fdel("tmp/")
-	kick_clients_in_lobby(span_boldannounce("The round came to an end with you in the lobby."), TRUE) //second parameter ensures only afk clients are kicked
+	kick_clients_in_lobby(span_boldannounce("A rodada terminou com você no saguão."), TRUE) //second parameter ensures only afk clients are kicked
 	var/server = CONFIG_GET(string/server)
 	for(var/thing in GLOB.clients)
 		if(!thing)

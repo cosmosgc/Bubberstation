@@ -6,7 +6,7 @@ const subscribers: Messenger[] = [];
 
 function ensureConnection() {
   if (socket) return;
-  console.log('Creating a connection');
+  console.log('Criando uma conexão');
 
   socket = new WebSocket('ws://127.0.0.1:3000');
 
@@ -28,7 +28,7 @@ function ensureConnection() {
   };
 
   socket.onerror = (err) => {
-    console.log('WebSocket error:', err);
+    console.log('Erro WebSocket:', err);
   };
 
   window.addEventListener('unload', () => socket?.close());
@@ -128,7 +128,7 @@ function serializeObject(obj: Record<string, any>): string {
 
 export function setupHotReloading(): void {
   if (process.env.NODE_ENV === 'development' && window.WebSocket) {
-    console.log('Setting up hot reloading...');
+    console.log('Preparando recarga quente...');
     if (socket) {
       socket.close();
       socket = undefined;
@@ -147,20 +147,20 @@ export function setupHotReloading(): void {
             ignoreErrored: true,
           })
           .then((modules) => {
-            console.log('outdated modules:', modules);
+            console.log('Módulos ultrapassados:', modules);
           })
           .catch((err) => {
             console.log(import.meta.webpackHot?.status());
-            console.error('Hot reload error:', err);
+            console.error('Erro de recarga:', err);
           });
       } else if (status === 'idle') {
         import.meta.webpackHot
           ?.check(true)
           .then((updatedModules) => {
-            console.log('Updated modules:', updatedModules);
+            console.log('Módulos atualizados:', updatedModules);
           })
           .catch((err) => {
-            console.error('Hot reload error:', err);
+            console.error('Erro de recarga:', err);
           });
       }
     });

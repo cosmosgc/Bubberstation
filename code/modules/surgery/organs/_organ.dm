@@ -87,14 +87,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	blood_dna_info = list("Unknown DNA" = get_blood_type(BLOOD_TYPE_O_PLUS))
 	if(organ_flags & ORGAN_EDIBLE)
 		AddComponentFrom(
-			SOURCE_EDIBLE_INNATE, \
-			/datum/component/edible, \
-			initial_reagents = food_reagents, \
-			foodtypes = foodtype_flags, \
-			volume = reagent_vol, \
-			tastes = food_tastes, \
-			after_eat = CALLBACK(src, PROC_REF(OnEatFrom)), \
-		)
+			SOURCE_EDIBLE_INNATE, 			/datum/component/edible, 			initial_reagents = food_reagents, 			foodtypes = foodtype_flags, 			volume = reagent_vol, 			tastes = food_tastes, 			after_eat = CALLBACK(src, PROC_REF(OnEatFrom)), 		)
 		RegisterSignal(src, COMSIG_FOOD_ATTEMPT_EAT, PROC_REF(block_nom))
 
 	if(bodypart_overlay)
@@ -203,7 +196,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 
 	if(HAS_MIND_TRAIT(user, TRAIT_ENTRAILS_READER) || isobserver(user))
 		if(HAS_TRAIT(src, TRAIT_CLIENT_STARTING_ORGAN))
-			. += span_info("Lived in and homely. Proven to work. This should fetch a high price on the market.")
+			. += span_info("Vivia em casa. Provado a trabalhar. Isso deve trazer um preço alto no mercado.")
 
 	if(organ_flags & ORGAN_FAILING)
 		. += span_warning("[src] [failing_desc]")
@@ -211,19 +204,19 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 
 	if(damage > high_threshold)
 		if(IS_ROBOTIC_ORGAN(src))
-			. += span_warning("[src] seems to be malfunctioning.")
+			. += span_warning("[src]Parece estar com defeito.")
 			return
-		. += span_warning("[src] is starting to look discolored.")
+		. += span_warning("[src]está começando a parecer descolorido.")
 
 /// Returns a line to be displayed regarding valid insertion zones
 /obj/item/organ/proc/zones_tip()
 	if (!valid_zones)
-		return span_notice("It should be inserted in the [parse_zone(zone)].")
+		return span_notice("Deve ser inserido no[parse_zone(zone)].")
 
 	var/list/fit_zones = list()
 	for (var/valid_zone in valid_zones)
 		fit_zones += parse_zone(valid_zone)
-	return span_notice("It should be inserted in the [english_list(fit_zones, and_text = " or ")].")
+	return span_notice("Deve ser inserido no[english_list(fit_zones, and_text = " or ")].")
 
 ///Used as callbacks by object pooling
 /obj/item/organ/proc/exit_wardrobe()
@@ -451,7 +444,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 
 	var/tech_text = ""
 	if(owner.has_reagent(/datum/reagent/inverse/technetium))
-		tech_text = "[round((damage / maxHealth) * 100, 1)]% damaged"
+		tech_text = "[round((damage / maxHealth) * 100, 1)]% danificado"
 
 	if(organ_flags & ORGAN_FAILING)
 		return conditional_tooltip("[colored ? "<font color='#cc3333'>" : ""][tech_text || "Non-Functional"][colored ? "</font>" : ""]", "Repair or replace surgically.", add_tooltips)
@@ -495,8 +488,8 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	if(damage < low_threshold)
 		return ""
 	if(damage < high_threshold)
-		return span_warning("[self_aware ? "[capitalize(slot)]" : "It"] feels a bit off.")
-	return span_boldwarning("[self_aware ? "[capitalize(slot)]" : "It"] feels terrible!")
+		return span_warning("[self_aware ? "[capitalize(slot)]" : "It"]Parece um pouco fora.")
+	return span_boldwarning("[self_aware ? "[capitalize(slot)]" : "It"]Sinto-me terrível!")
 
 /// Tries to replace the existing organ on the passed mob with this one, with special handling for replacing a brain without ghosting target
 /obj/item/organ/proc/replace_into(mob/living/carbon/new_owner)
@@ -510,9 +503,9 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	if(!HAS_TRAIT(eater, TRAIT_READY_TO_OPERATE))
 		return NONE
 	if(eater == feeder)
-		to_chat(feeder, span_warning("You feel it unwise to eat [source] while you're undergoing surgery."))
+		to_chat(feeder, span_warning("Você sente que é imprudente comer[source]enquanto você está em cirurgia."))
 	else
-		to_chat(feeder, span_warning("The only thing you could think of doing with [source] right now is feeding it to [eater], but that doesn't seem right."))
+		to_chat(feeder, span_warning("A única coisa que você poderia pensar em fazer com[source]Agora é alimentá-lo para[eater]Mas isso não parece certo."))
 	return BLOCK_EAT_ATTEMPT
 
 /// Get all possible organ slots by checking every organ, and then store it and give it whenever needed

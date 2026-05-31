@@ -66,7 +66,7 @@ const SatelliteDisplay = (props) => {
   const { satellites = [] } = data;
 
   return (
-    <Section title="Satellite Controls">
+    <Section title="Controles de satélite">
       <Box mr={-1}>
         {satellites.map((satellite) => (
           <Button.Checkbox

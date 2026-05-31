@@ -1,19 +1,19 @@
 /datum/quirk/overweight
 	name = "Overweight"
-	desc = "You weigh more than an average person of your size. Being fat from food still bothers you."
-	gain_text = span_notice("Your body feels heavy.")
-	lose_text = span_notice("Your suddenly feel lighter!")
+	desc = "Você pesa mais do que uma pessoa normal do seu tamanho. Ser gordo por comida ainda te incomoda."
+	gain_text = span_notice("Seu corpo está pesado.")
+	lose_text = span_notice("Você de repente se sente mais leve!")
 	value = -4
 	icon = FA_ICON_BOWL_RICE
-	medical_record_text = "Patient weighs higher than average."
+	medical_record_text = "O paciente pesa mais que a média."
 	mob_trait = null
 
 /datum/quirk/obese
 	name = "Obese"
-	desc = "You weigh much much more than the average person of your size, and are always fat no matter what. Being fat from food no longer bothers you."
-	gain_text = span_notice("Your body feels <b>very</b> heavy.")
-	lose_text = span_notice("Your suddenly feel much lighter!")
+	desc = "Você pesa muito mais do que a pessoa normal do seu tamanho, e sempre é gorda, não importa o que aconteça. Ser gorda por comida não te incomoda mais."
+	gain_text = span_notice("Seu corpo sente<b>Muito.</b>Pesado.")
+	lose_text = span_notice("Você de repente se sente muito mais leve!")
 	value = -6
 	icon = FA_ICON_HAMBURGER
-	medical_record_text = "Patient is considered obese by 101% of medical textbooks, with a 1% margin of error."
+	medical_record_text = "O paciente é considerado obeso por 101% dos livros médicos, com uma margem de erro de 1%."
 	mob_trait = TRAIT_FAT

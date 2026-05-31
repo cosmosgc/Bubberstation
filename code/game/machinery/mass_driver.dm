@@ -1,6 +1,6 @@
 /obj/machinery/mass_driver
 	name = "mass driver"
-	desc = "The finest in spring-loaded piston toy technology, now on a space station near you."
+	desc = "O melhor em tecnologia de pistão de mola, agora em uma estação espacial perto de você."
 	icon = 'icons/obj/machines/floor.dmi'
 	icon_state = "mass_driver"
 	base_icon_state = "mass_driver"
@@ -49,7 +49,7 @@
 				continue
 			O_limit++
 			if(O_limit >= 20)
-				audible_message(span_notice("[src] lets out a screech, it doesn't seem to be able to handle the load."))
+				audible_message(span_notice("[src]Sai um grito, não parece ser capaz de lidar com a carga."))
 				break
 			use_energy(power_per_obj)
 			O.throw_at(target, drive_range * power, power)

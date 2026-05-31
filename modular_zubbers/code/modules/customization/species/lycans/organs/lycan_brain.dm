@@ -1,6 +1,6 @@
 /obj/item/organ/brain/lycan
 	name = "lupine brain"
-	desc = "A larger than average, albeit slightly smoother brain. The hypothalamus seems larger than normal." // I read in a random medical artical that the hypothalamus controls aggression.
+	desc = "Um cérebro maior que a média, embora ligeiramente suave. O hipotálamo parece maior que o normal." // I read in a random medical artical that the hypothalamus controls aggression.
 	actions_types = list(/datum/action/cooldown/spell/beast_form)
 	var/last_slot
 

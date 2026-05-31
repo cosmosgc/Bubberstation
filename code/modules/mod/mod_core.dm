@@ -1,6 +1,6 @@
 /obj/item/mod/core
 	name = "MOD core"
-	desc = "A non-functional MOD core. Inform the admins if you see this."
+	desc = "Um núcleo de MOD não funcional. Informe os administradores se vir isso."
 	icon = 'icons/obj/clothing/modsuit/mod_construction.dmi'
 	icon_state = "mod-core"
 	inhand_icon_state = "electronic"
@@ -62,14 +62,12 @@
 /obj/item/mod/core/proc/get_chargebar_string()
 	var/charge_amount = charge_amount()
 	var/max_charge_amount = max_charge_amount()
-	return "[display_energy(charge_amount)] of [display_energy(max_charge_amount())] \
-		([round((100 * charge_amount) / max_charge_amount, 1)]%)"
+	return "[display_energy(charge_amount)] of [display_energy(max_charge_amount())] 		([round((100 * charge_amount) / max_charge_amount, 1)]%)"
 
 /obj/item/mod/core/infinite
 	name = "MOD infinite core"
 	icon_state = "mod-core-infinite"
-	desc = "A fusion core using the rare Fixium to sustain enough energy for the lifetime of the MOD's user. \
-		This might be because of the slowly killing poison inside, but those are just rumors."
+	desc = "Um núcleo de fusão usando o Fíxium raro para sustentar energia suficiente para a vida do usuário do MOD. Isso pode ser por causa do veneno que mata lentamente, mas são apenas rumores."
 
 /obj/item/mod/core/infinite/charge_source()
 	return src
@@ -101,11 +99,7 @@
 /obj/item/mod/core/standard
 	name = "MOD standard core"
 	icon_state = "mod-core-standard"
-	desc = "Growing in the most lush, fertile areas of the planet Sprout, there is a crystal known as the Heartbloom. \
-		These rare, organic piezoelectric crystals are of incredible cultural significance to the artist castes of the \
-		Ethereals, owing to their appearance; which is exactly similar to that of an Ethereal's heart.\n\
-		Which one you have in your suit is unclear, but either way, \
-		it's been repurposed to be an internal power source for a Modular Outerwear Device."
+	desc = "Crescendo nas áreas mais exuberantes e férteis do planeta Sprout, há um cristal conhecido como Heartbloom. Estes raros cristais piezoelétricos orgânicos são de incrível significado cultural para as castas artísticas dos Eterais, devido à sua aparência, que é exatamente semelhante à de um coração Etereal.\nQual você tem em seu terno não é claro, mas de qualquer forma, foi reaproveitado para ser uma fonte de energia interna para um dispositivo modular."
 	/// Installed cell.
 	var/obj/item/stock_parts/power_store/cell
 
@@ -238,9 +232,9 @@
 	if(!cell)
 		mod.balloon_alert(user, "sem célula!")
 		return
-	mod.balloon_alert(user, "removing cell...")
+	mod.balloon_alert(user, "removendo a célula...")
 	if(!do_after(user, 1.5 SECONDS, target = mod))
-		mod.balloon_alert(user, "interrompido!")
+		mod.balloon_alert(user, "Interrompido!")
 		return
 	mod.balloon_alert(user, "célula removida")
 	playsound(mod, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
@@ -260,15 +254,15 @@
 	if(!istype(attacking_item, /obj/item/stock_parts/power_store/cell))
 		return FALSE
 	if(!mod.open)
-		mod.balloon_alert(user, "cobertura fechada!")
+		mod.balloon_alert(user, "Cobertura fechada!")
 		playsound(mod, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 	if(cell)
-		mod.balloon_alert(user, "already has cell!")
+		mod.balloon_alert(user, "Já tem celular!")
 		playsound(mod, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 	install_cell(attacking_item)
-	mod.balloon_alert(user, "cell installed")
+	mod.balloon_alert(user, "Célula instalada")
 	playsound(mod, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 	return TRUE
 
@@ -297,10 +291,7 @@
 /obj/item/mod/core/ethereal
 	name = "MOD ethereal core"
 	icon_state = "mod-core-ethereal"
-	desc = "A reverse engineered core of a Modular Outerwear Device. Using natural liquid electricity from Ethereals, \
-		preventing the need to use external sources to convert electric charge. As the suits are naturally charged by \
-		liquid electricity, this core makes it much more efficient, running all soft, hard, and wetware with several \
-		times less energy usage."
+	desc = "Um núcleo de engenharia reversa de um dispositivo modular. Usando eletricidade líquida natural de Ethereals, impedindo a necessidade de usar fontes externas para converter carga elétrica. Como os trajes são carregados naturalmente pela eletricidade líquida, este núcleo o torna muito mais eficiente, rodando todo macio, duro, e molhado com várias vezes menos uso de energia."
 	/// A modifier to all charge we use, ethereals don't need to spend as much energy as normal suits.
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.15, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 1.05)
 	var/charge_modifier = 0.1
@@ -362,8 +353,7 @@
 /obj/item/mod/core/plasma
 	name = "MOD plasma core"
 	icon_state = "mod-core-plasma"
-	desc = "Nanotrasen's attempt at capitalizing on their plasma research. These plasma cores are refueled \
-		through plasma fuel, allowing for easy continued use by their mining squads."
+	desc = "A tentativa de Nanotrasen de capitalizar sua pesquisa de plasma. Esses núcleos de plasma são reabastecidos através de combustível de plasma, permitindo fácil uso contínuo por seus esquadrões de mineração."
 	/// How much charge we can store.
 	var/maxcharge = 10 * STANDARD_CELL_CHARGE
 	/// How much charge we are currently storing.
@@ -438,7 +428,7 @@
 	if(uses_needed <= 0 || !plasma.use(uses_needed))
 		return FALSE
 	add_charge(uses_needed * charge_given)
-	balloon_alert(user, "core refueled")
+	balloon_alert(user, "Núcleo reabastecido")
 	return TRUE
 
 #undef PLASMA_CORE_ORE_CHARGE
@@ -447,8 +437,7 @@
 /obj/item/mod/core/plasma/lavaland
 	name = "MOD plasma flower core"
 	icon_state = "mod-core-plasma-flower"
-	desc = "A strange flower from the desolate wastes of lavaland. It pulses with a strange purple glow.  \
-		The wires coming out of it could be hooked into a MODsuit."
+	desc = "Uma estranha flor dos desolados resíduos de lavalândia. Ele pulsa com um estranho brilho roxo. Os fios que saem dele podem ser ligados a um traje."
 	light_system = OVERLAY_LIGHT
 	light_color = "#cc00cc"
 	light_range = 2.5
@@ -500,7 +489,7 @@
 
 /obj/item/mod/core/soul
 	name = "MOD soul shard core"
-	desc = "A soul shard haphazardly jammed into a hand-crafted MOD core frame."
+	desc = "Um fragmento de alma acidentalmente preso em um corpo de MOD feito à mão."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/mod/core/soul"
 	post_init_icon_state = "mod-core-soul"
@@ -546,7 +535,7 @@
 	set_theme(stone.theme)
 	for(var/mob/living/basic/shade/shade in stone)
 		shade.forceMove(get_turf(src))
-		shade.visible_message(span_warning("[shade] is ejected from [stone] as it is inserted into [src]!"), span_warning("You are ejected from [stone] as it is inserted into [src]!"))
+		shade.visible_message(span_warning("[shade]é expulso de[stone]como é inserido em[src]!"), span_warning("Você está expulso de[stone]como é inserido em[src]!"))
 	return ..()
 
 /obj/item/mod/core/soul/proc/set_theme(new_theme)
@@ -642,20 +631,20 @@
 		update_greyscale()
 
 /datum/mood_event/soul_core_torment
-	description = "IT BURNS!! IT BURNS!! THE DEEPEST DEPTHS OF MY BEING!! IT BURNS!!"
+	description = "Ele explode! Ele explode! Como profundidades mais profundas do meu ser! Ele explode!"
 	mood_change = -20
 	timeout = 10 SECONDS
 
 /datum/mood_event/soul_core_torment/heretic
-	description = "GET OUT OF MY HEAD GET OUT OF MY HEAD GET OUT OF MY HEAD!!"
+	description = "Saia da minha cabeça, saia da minha cabeça!"
 
 /datum/mood_event/soul_core_discomfort
-	description = "I'm no fan of these divine powers breathing down my neck."
+	description = "Eu não sou fã desses poderes divinos respirando no meu pescoço."
 	mood_change = -3
 	timeout = 10 SECONDS
 
 /datum/mood_event/soul_core_warning
-	description = "I can feel my modsuit siphoning my energy. I'd better keep my spirits high."
+	description = "Posso sentir meu modsuit sugando minha energia. É melhor eu manter meu espírito animado."
 	mood_change = 0
 	timeout = 10 SECONDS
 

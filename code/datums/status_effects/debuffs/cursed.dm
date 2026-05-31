@@ -42,7 +42,7 @@
 		return SLOT_MACHINE_USE_CANCEL
 
 	if(monologuing)
-		to_chat(owner, span_warning("Your arm is resisting your attempts to pull the lever!")) // listening to kitschy monologues to postpone your powergaming is the true curse here.
+		to_chat(owner, span_warning("Seu braço está resistindo suas tentativas de puxar a alavanca!")) // listening to kitschy monologues to postpone your powergaming is the true curse here.
 		return SLOT_MACHINE_USE_POSTPONE
 
 /// Handles the debuffs of this status effect and incrementing the number of curses we have.
@@ -70,39 +70,39 @@
 				branded_hand = affecting
 				affecting.force_wound_upwards(/datum/wound/burn/flesh/severe/cursed_brand, wound_source = "curse of the slot machine")
 
-			messages += span_boldwarning("Your hand burns, and you quickly let go of the lever! You feel a little sick as the nerves deaden in your hand...")
-			messages += span_boldwarning("Some smoke appears to be coming out of your hand now, but it's not too bad...")
-			messages += span_boldwarning("Fucking stupid machine.")
+			messages += span_boldwarning("Sua mão queima, e você rapidamente solta a alavanca! Você se sente um pouco doente como os nervos amortecem em sua mão...")
+			messages += span_boldwarning("Parece que tem fumaça saindo da sua mão agora, mas não é tão ruim...")
+			messages += span_boldwarning("Maldita máquina estúpida.")
 
 		if(2)
-			messages += span_boldwarning("The machine didn't burn you this time, it must be some arcane work of the brand recognizing a source...")
-			messages += span_boldwarning("Blisters and boils start to appear over your skin. Each one hissing searing hot steam out of its own pocket...")
-			messages += span_boldwarning("You understand that the machine tortures you with its simplistic allure. It can kill you at any moment, but it derives a sick satisfaction at forcing you to keep going.")
-			messages += span_boldwarning("If you could get away from here, you might be able to live with some medical supplies. Is it too late to stop now?")
-			messages += span_boldwarning("As you shut your eyes to dwell on this conundrum, the brand surges in pain. You shudder to think what might happen if you go unconscious.")
+			messages += span_boldwarning("A máquina não queimou você desta vez, deve ser algum trabalho obscuro da marca reconhecendo uma fonte...")
+			messages += span_boldwarning("Bolhas e furúnculos começam a aparecer sobre sua pele. Cada um assobiando vapor quente do seu próprio bolso...")
+			messages += span_boldwarning("Você entende que a máquina tortura você com seu encanto simplista. Pode te matar a qualquer momento, mas tem uma satisfação doentia em te forçar a continuar.")
+			messages += span_boldwarning("Se pudesse sair daqui, poderia viver com suprimentos médicos. É tarde demais para parar agora?")
+			messages += span_boldwarning("Ao fechar os olhos para ficar neste enigma, a marca aumenta de dor. Você treme ao pensar o que pode acontecer se ficar inconsciente.")
 
 		if(3)
 			owner.emote("cough")
-			messages += span_boldwarning("Your throat becomes to feel like it's slowly caking up with sand and dust. You eject the contents of the back of your throat onto your sleeve.")
-			messages += span_boldwarning("It is sand. Crimson red. You've never felt so thirsty in your life, yet you don't trust your own hand to carry the glass to your lips.")
-			messages += span_boldwarning("You get the sneaking feeling that if someone else were to win, that it might clear your curse too. Saving your life is a noble cause.")
-			messages += span_boldwarning("Of course, you might have to not speak on the nature of this machine, in case they scamper off to leave you to die.")
-			messages += span_boldwarning("Is it truly worth it to condemn someone to this fate to cure the manifestation of your own hedonistic urges? You'll have to decide quickly.")
+			messages += span_boldwarning("Sua garganta se torna como se estivesse lentamente caindo com areia e poeira. Você ejeta o conteúdo da parte de trás da garganta na manga.")
+			messages += span_boldwarning("É areia. Vermelho carmesim. Você nunca sentiu tanta sede em sua vida, mas não confia em sua própria mão para carregar o copo para seus lábios.")
+			messages += span_boldwarning("Você tem a sensação de que se outra pessoa ganhasse, poderia limpar sua maldição também. Salvar sua vida é uma causa nobre.")
+			messages += span_boldwarning("Claro, você pode não ter que falar sobre a natureza desta máquina, no caso de eles fugirem para deixá-lo para morrer.")
+			messages += span_boldwarning("Vale a pena condenar alguém a este destino para curar a manifestação de seus próprios impulsos hedonísticos? Você terá que decidir rápido.")
 
 		if(4)
-			messages += span_boldwarning("A migraine swells over your head as your thoughts become hazy. Your hand desperately inches closer towards the slot machine for one final pull...")
-			messages += span_boldwarning("The ultimate test of mind over matter. You can jerk your own muscle back in order to prevent a terrible fate, but your life already is worth so little now.")
-			messages += span_boldwarning("This is what they want, is it not? To witness your failure against itself? The compulsion carries you forward as a sinking feeling of dread fills your stomach.")
-			messages += span_boldwarning("Paradoxically, where there is hopelessness, there is elation. Elation at the fact that there's still enough power in you for one more pull.")
-			messages += span_boldwarning("Your legs desperate wish to jolt away on the thought of running away from this wretched machination, but your own arm remains complacent in the thought of seeing spinning wheels.")
-			messages += span_userdanger("The toll has already been exacted. There is no longer death on 'your' terms. Is your dignity worth more than your life?")
+			messages += span_boldwarning("Uma enxaqueca incha sua cabeça enquanto seus pensamentos ficam confusos. Sua mão está desesperadamente mais perto da slot machine para uma última puxada...")
+			messages += span_boldwarning("O teste final da mente sobre a matéria. Você pode se esforçar para evitar um destino terrível, mas sua vida já vale tão pouco agora.")
+			messages += span_boldwarning("É isso que eles querem, não é? Para testemunhar seu fracasso contra si mesmo? A compulsão leva você para frente como uma sensação de medo enche seu estômago.")
+			messages += span_boldwarning("Paradoxalmente, onde há desesperança, há euforia. Elogio pelo fato de que ainda há poder suficiente em você para mais uma atração.")
+			messages += span_boldwarning("Suas pernas desesperadas desejam se livrar da idéia de fugir dessa máquina miserável, mas seu próprio braço permanece complacente ao pensar em ver rodas girando.")
+			messages += span_userdanger("O pedágio já foi exigido. Não há mais morte em seus termos. Sua dignidade vale mais que sua vida?")
 
 		if(5 to INFINITY)
 			if(max_curse_count != DEFAULT_MAX_CURSE_COUNT) // this probably will only happen through admin schenanigans letting people stack up infinite curses or something
-				to_chat(owner, span_boldwarning("Do you <i>still</i> think you're in control?"))
+				to_chat(owner, span_boldwarning("Você quer?<i>Ainda.</i>Acha que está no controle?"))
 				return
 
-			to_chat(owner, span_userdanger("Why couldn't I get one more try?!"))
+			to_chat(owner, span_userdanger("Por que não pude tentar mais uma vez?"))
 			owner.investigate_log("has been gibbed by the cursed status effect after accumulating [curse_count] curses.", INVESTIGATE_DEATHS)
 			owner.gib(DROP_ALL_REMAINS)
 			qdel(src)
@@ -122,8 +122,8 @@
 		brand?.remove_wound()
 
 	owner.visible_message(
-		span_notice("The smoke slowly clears from [owner.name]..."),
-		span_notice("Your skin finally settles down and your throat no longer feels as dry... The brand disappearing confirms that the curse has been lifted."),
+		span_notice("A fumaça sai lentamente de[owner.name]..."),
+		span_notice("Sua pele finalmente se acalma e sua garganta não parece mais seca... O desaparecimento da marca confirma que a maldição foi levantada."),
 	)
 	qdel(src)
 
@@ -134,7 +134,7 @@
 		damage_chance = initial(damage_chance)
 		return
 
-	to_chat(owner, span_userdanger("As your body crumbles, you feel the curse of the slot machine surge through your body!"))
+	to_chat(owner, span_userdanger("Enquanto seu corpo se desfaz, você sente a maldição da máquina de fenda passar pelo seu corpo!"))
 	damage_chance += 75 //ruh roh raggy
 
 /// If our owner dies without getting gibbed (as in of other causes), stop smoking because we've "expended all the life energy".
@@ -177,7 +177,7 @@
 
 /atom/movable/screen/alert/status_effect/cursed
 	name = "Cursed!"
-	desc = "The brand on your hand reminds you of your greed, yet you seem to be okay otherwise."
+	desc = "A marca na sua mão lembra sua ganância, mas parece estar bem de outra forma."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "cursed_by_slots"
 
@@ -187,10 +187,10 @@
 	var/curses = linked_effect?.curse_count
 	switch(curses)
 		if(2)
-			desc = "Your greed is catching up to you..."
+			desc = "Sua ganância está te alcançando..."
 		if(3)
-			desc = "You really don't feel good right now... But why stop now?"
+			desc = "Você realmente não se sente bem agora... Mas por que parar agora?"
 		if(4 to INFINITY)
-			desc = "Real winners quit before they reach the ultimate prize."
+			desc = "Ganhadores de verdade desistem antes de alcançarem o prêmio final."
 
 #undef DEFAULT_MAX_CURSE_COUNT

@@ -2,7 +2,7 @@
 
 /obj/item/clothing/shoes/clown_shoes/banana_shoes
 	name = "mk-honk prototype shoes"
-	desc = "Lost prototype of advanced clown tech. Powered by bananium, these shoes leave a trail of chaos in their wake."
+	desc = "Um protótipo perdido de tecnologia avançada de palhaço. Alimentados pelo banânio, estes sapatos deixam um rastro de caos em seu rastro."
 	icon_state = "clown_prototype_off"
 	actions_types = list(/datum/action/item_action/toggle)
 	/// Whether the clown shoes are active (spawning bananas)
@@ -22,12 +22,7 @@
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 	bananium = new (
-		src, \
-		list(/datum/material/bananium), \
-		100 * SHEET_MATERIAL_AMOUNT, \
-		MATCONTAINER_EXAMINE | MATCONTAINER_ANY_INTENT | MATCONTAINER_SILENT, \
-		allowed_items = /obj/item/stack, \
-	)
+		src, 		list(/datum/material/bananium), 		100 * SHEET_MATERIAL_AMOUNT, 		MATCONTAINER_EXAMINE | MATCONTAINER_ANY_INTENT | MATCONTAINER_SILENT, 		allowed_items = /obj/item/stack, 	)
 	AddComponent(/datum/component/squeak, list('sound/items/bikehorn.ogg'=1), 75, falloff_exponent = 20)
 	RegisterSignal(src, COMSIG_SHOES_STEP_ACTION, PROC_REF(on_step))
 
@@ -58,25 +53,25 @@
 		return
 
 	toggle_clowning_action()
-	to_chat(wearer, span_warning("You ran out of bananium!"))
+	to_chat(wearer, span_warning("Acabou o banânio!"))
 
 /obj/item/clothing/shoes/clown_shoes/banana_shoes/attack_self(mob/user)
 	var/sheet_amount = bananium.retrieve_all()
 	if(sheet_amount)
-		to_chat(user, span_notice("You retrieve [sheet_amount] sheets of bananium from the prototype shoes."))
+		to_chat(user, span_notice("Você recupera.[sheet_amount]folhas de banânio dos protótipos de sapatos."))
 	else
-		to_chat(user, span_warning("You cannot retrieve any bananium from the prototype shoes!"))
+		to_chat(user, span_warning("Você não pode recuperar nenhum banânio dos sapatos protótipos!"))
 
 /obj/item/clothing/shoes/clown_shoes/banana_shoes/examine(mob/user)
 	. = ..()
-	. += span_notice("The shoes are [on ? "enabled" : "disabled"].")
+	. += span_notice("Os sapatos são[on ? "enabled" : "disabled"].")
 
 /obj/item/clothing/shoes/clown_shoes/banana_shoes/ui_action_click(mob/user)
 	if(bananium.get_material_amount(/datum/material/bananium) >= material_per_banana)
 		toggle_clowning_action()
-		to_chat(user, span_notice("You [on ? "activate" : "deactivate"] the prototype shoes."))
+		to_chat(user, span_notice("Você.[on ? "activate" : "deactivate"]Os sapatos protótipos."))
 	else
-		to_chat(user, span_warning("You need bananium to turn the prototype shoes on!"))
+		to_chat(user, span_warning("Você precisa de banânio para ligar os sapatos protótipos!"))
 
 /obj/item/clothing/shoes/clown_shoes/banana_shoes/update_icon_state()
 	icon_state = "clown_prototype_[on ? "on" : "off"]"

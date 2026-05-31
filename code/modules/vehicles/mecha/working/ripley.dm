@@ -1,5 +1,5 @@
 /obj/vehicle/sealed/mecha/ripley
-	desc = "Autonomous Power Loader Unit MK-I. Designed primarily around heavy lifting, the Ripley can be outfitted with utility equipment to fill a number of roles."
+	desc = "Unidade de Carregador de Energia Autônoma MK-I. Projetado principalmente em torno de levantamento pesado, o Ripley pode ser equipado com equipamentos utilitários para preencher vários papéis."
 	name = "\improper APLU MK-I \"Ripley\""
 	icon_state = "ripley"
 	base_icon_state = "ripley"
@@ -66,7 +66,7 @@
 	laser = 5
 
 /obj/vehicle/sealed/mecha/ripley/mk2
-	desc = "Autonomous Power Loader Unit MK-II. This prototype Ripley is refitted with a pressurized cabin, trading its prior speed for atmospheric protection and armor."
+	desc = "Unidade de Carregador de Energia Autônoma MK-II. Este protótipo Ripley está equipado com uma cabine pressurizada, trocando sua velocidade prévia por proteção atmosférica e armadura."
 	name = "\improper APLU MK-II \"Ripley\""
 	icon_state = "ripleymkii"
 	base_icon_state = "ripleymkii"
@@ -92,7 +92,7 @@
 	acid = 100
 
 /obj/vehicle/sealed/mecha/ripley/paddy
-	desc = "Autonomous Power Loader Unit Subtype Paddy. A Modified MK-I Ripley design intended for light security use."
+	desc = "Unidade de Carregador de Energia Autônoma Subtipo Paddy. Um projeto modificado MK-I Ripley destinado para uso de segurança leve."
 	name = "\improper APLU \"Paddy\""
 	icon_state = "paddy"
 	base_icon_state = "paddy"
@@ -185,7 +185,7 @@
 	)
 
 /obj/vehicle/sealed/mecha/ripley/deathripley
-	desc = "OH SHIT IT'S THE DEATHSQUAD WE'RE ALL GONNA DIE"
+	desc = "Merda, é o quartel da morte que todos vamos morrer."
 	name = "\improper DEATH-RIPLEY"
 	icon_state = "deathripley"
 	base_icon_state = "deathripley"
@@ -207,7 +207,7 @@
 	)
 
 /obj/vehicle/sealed/mecha/ripley/deathripley/real
-	desc = "OH SHIT IT'S THE DEATHSQUAD WE'RE ALL GONNA DIE. FOR REAL"
+	desc = "Merda, é o quartel da morte que todos vamos morrer. De verdade"
 	equip_by_category = list(
 		MECHA_L_ARM = /obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/kill,
 		MECHA_R_ARM = null,
@@ -217,7 +217,7 @@
 	)
 
 /obj/vehicle/sealed/mecha/ripley/mining
-	desc = "An old, dusty mining Ripley."
+	desc = "Um velho e empoeirado Ripley."
 	name = "\improper APLU \"Miner\""
 
 /obj/vehicle/sealed/mecha/ripley/mining/Initialize(mapload)
@@ -247,7 +247,7 @@ GLOBAL_DATUM(cargo_ripley, /obj/vehicle/sealed/mecha/ripley/cargo)
 
 /obj/vehicle/sealed/mecha/ripley/cargo
 	name = "\improper APLU \"Big Bess\""
-	desc = "An ailing, old, repurposed cargo hauler. Most of its equipment wires are frayed or missing and its frame is rusted."
+	desc = "Um cargueiro doente, velho e reaproveitado. A maioria de seus fios de equipamento estão desgastados ou desaparecidos e seu quadro está enferrujado."
 	icon_state = "hauler"
 	base_icon_state = "hauler"
 	silicon_icon_state = "hauler-empty"
@@ -280,7 +280,7 @@ GLOBAL_DATUM(cargo_ripley, /obj/vehicle/sealed/mecha/ripley/cargo)
 
 /obj/item/mecha_parts/mecha_equipment/ejector
 	name = "cargo compartment"
-	desc = "Holds cargo loaded with a hydraulic clamp."
+	desc = "Mantém a carga carregada com uma pinça hidráulica."
 	icon_state = "mecha_bin"
 	equipment_slot = MECHA_UTILITY
 	detachable = FALSE
@@ -325,15 +325,15 @@ GLOBAL_DATUM(cargo_ripley, /obj/vehicle/sealed/mecha/ripley/cargo)
 			step_rand(stored)
 
 /obj/item/mecha_parts/mecha_equipment/ejector/relay_container_resist_act(mob/living/user, obj/container)
-	to_chat(user, span_notice("You lean on the back of [container] and start pushing so it falls out of [src]."))
+	to_chat(user, span_notice("Você se apoia na parte de trás de[container]e começar a empurrar para que ele caia[src]."))
 	if(do_after(user, 30 SECONDS, target = container))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || container.loc != src )
 			return
-		to_chat(user, span_notice("You successfully pushed [container] out of [src]!"))
+		to_chat(user, span_notice("Você empurrou com sucesso.[container]Fora[src]!"))
 		container.forceMove(drop_location())
 	else
 		if(user.loc == src) //so we don't get the message if we resisted multiple times and succeeded.
-			to_chat(user, span_warning("You fail to push [container] out of [src]!"))
+			to_chat(user, span_warning("Você não consegue empurrar.[container]Fora[src]!"))
 
 /obj/item/mecha_parts/mecha_equipment/ejector/get_snowflake_data()
 	var/list/data = list(
@@ -366,7 +366,7 @@ GLOBAL_DATUM(cargo_ripley, /obj/vehicle/sealed/mecha/ripley/cargo)
 
 /obj/item/mecha_parts/mecha_equipment/ejector/seccage
 	name = "holding cell"
-	desc = "Holds suspects loaded with a hydraulic claw."
+	desc = "Mantém suspeitos carregados com uma garra hidráulica."
 	cargo_capacity = 4
 
 /obj/item/mecha_parts/mecha_equipment/ejector/seccage/Initialize(mapload)
@@ -389,7 +389,7 @@ GLOBAL_DATUM(cargo_ripley, /obj/vehicle/sealed/mecha/ripley/cargo)
 
 /obj/item/mecha_parts/mecha_equipment/ejector/seccage/proc/stop_cuff_removal(datum/source, obj/item/cuffs)
 	SIGNAL_HANDLER
-	to_chat(source, span_warning("You don't have the room to remove [cuffs]!"))
+	to_chat(source, span_warning("Você não tem espaço para remover.[cuffs]!"))
 	return COMSIG_MOB_BLOCK_CUFF_REMOVAL
 
 /obj/item/mecha_parts/mecha_equipment/ejector/seccage/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -411,15 +411,15 @@ GLOBAL_DATUM(cargo_ripley, /obj/vehicle/sealed/mecha/ripley/cargo)
 	if (user.mob_size > MOB_SIZE_HUMAN)
 		breakout_time = 6 SECONDS
 
-	to_chat(user, span_notice("You begin attempting a breakout. (This will take around [DisplayTimeText(breakout_time)] and [chassis] needs to remain stationary.)"))
+	to_chat(user, span_notice("Você começa a tentar uma fuga. (Isso vai levar ao redor[DisplayTimeText(breakout_time)]e[chassis]Precisa permanecer parado."))
 	if(!do_after(user, breakout_time, target = chassis))
 		return
-	to_chat(user, span_notice("You break out of the [src]."))
+	to_chat(user, span_notice("Você foge do[src]."))
 	playsound(chassis, 'sound/items/tools/crowbar.ogg', 100, TRUE)
 	cheese_it(user)
 	for(var/mob/freebird in contents)
 		if(user != freebird)
-			to_chat(freebird, span_warning("[user] has managed to open the hatch, and you fall out with him. You're free!"))
+			to_chat(freebird, span_warning("[user]Conseguiu abrir a escotilha, e você caiu com ele. Você está livre!"))
 			cheese_it(freebird)
 
 /obj/item/mecha_parts/mecha_equipment/ejector/seccage/proc/cheese_it(mob/living/escapee)

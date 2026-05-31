@@ -1,6 +1,6 @@
 /obj/structure/sacrificealtar
 	name = "sacrificial altar"
-	desc = "An altar designed to perform blood sacrifice for a deity. Alt-click it to sacrifice a buckled creature."
+	desc = "Um altar projetado para fazer sacrifício de sangue por uma divindade. Alt-clique para sacrificar uma criatura fivela."
 	icon = 'icons/obj/service/hand_of_god_structures.dmi'
 	icon_state = "sacrificealtar"
 	anchored = TRUE
@@ -13,7 +13,7 @@
 	var/mob/living/buckled_mob = locate() in buckled_mobs
 	if(!buckled_mob)
 		return CLICK_ACTION_BLOCKING
-	to_chat(user, span_notice("Invoking the sacred ritual, you sacrifice [buckled_mob]."))
+	to_chat(user, span_notice("Invocando o ritual sagrado, você sacrifica[buckled_mob]."))
 	buckled_mob.investigate_log("has been sacrificially gibbed on an altar.", INVESTIGATE_DEATHS)
 	buckled_mob.gib(DROP_ALL_REMAINS)
 	message_admins("[ADMIN_LOOKUPFLW(user)] has sacrificed [key_name_admin(buckled_mob)] on the sacrificial altar at [AREACOORD(src)].")
@@ -21,7 +21,7 @@
 
 /obj/structure/healingfountain
 	name = "healing fountain"
-	desc = "A fountain containing the waters of life."
+	desc = "Uma fonte contendo as águas da vida."
 	icon = 'icons/obj/service/hand_of_god_structures.dmi'
 	icon_state = "fountain"
 	anchored = TRUE
@@ -34,10 +34,10 @@
 	if(.)
 		return
 	if(last_process + time_between_uses > world.time)
-		to_chat(user, span_notice("The fountain appears to be empty."))
+		to_chat(user, span_notice("A fonte parece estar vazia."))
 		return
 	last_process = world.time
-	to_chat(user, span_notice("The water feels warm and soothing as you touch it. The fountain immediately dries up shortly afterwards."))
+	to_chat(user, span_notice("A água parece quente e calmante ao tocá-la. A fonte seca imediatamente pouco depois."))
 	user.reagents.add_reagent(/datum/reagent/medicine/omnizine/godblood,20)
 	update_appearance()
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/, update_appearance)), time_between_uses)

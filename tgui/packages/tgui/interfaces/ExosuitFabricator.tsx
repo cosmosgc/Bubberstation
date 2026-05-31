@@ -29,7 +29,7 @@ export const ExosuitFabricator = (props) => {
   }
 
   return (
-    <Window title="Exosuit Fabricator" width={1100} height={600}>
+    <Window title="Fabricador de Exosuítas" width={1100} height={600}>
       <Window.Content>
         <Stack fill>
           <Stack.Item grow>
@@ -143,7 +143,7 @@ const Recipe = (props: RecipeProps) => {
         </div>
       </Tooltip>
 
-      <Tooltip content={'Add to Queue'} position="right">
+      <Tooltip content={'Adicionar à fila'} position="right">
         <div
           className={classes([
             'FabricatorRecipe__Button',
@@ -157,7 +157,7 @@ const Recipe = (props: RecipeProps) => {
         </div>
       </Tooltip>
 
-      <Tooltip content={'Build Now'} position="right">
+      <Tooltip content={'Construir agora'} position="right">
         <div
           className={classes([
             'FabricatorRecipe__Button',
@@ -214,7 +214,7 @@ const Queue = (props: QueueProps) => {
                   disabled={!queue.length}
                   color="bad"
                   icon="minus-circle"
-                  content="Clear Queue"
+                  content="Limpar fila"
                   onClick={() => act('clear_queue')}
                 />
                 {(!!processing && (
@@ -227,7 +227,7 @@ const Queue = (props: QueueProps) => {
                 )) || (
                   <Button
                     disabled={!queue.length}
-                    content="Build Queue"
+                    content="Construir fila"
                     icon="play"
                     onClick={() => act('build_queue')}
                   />
@@ -351,7 +351,7 @@ const QueueList = (props: QueueListProps) => {
                   });
                 }}
               >
-                <Tooltip content={'Remove from Queue'}>
+                <Tooltip content={'Retirar da fila'}>
                   <Icon name="minus-circle" />
                 </Tooltip>
               </div>

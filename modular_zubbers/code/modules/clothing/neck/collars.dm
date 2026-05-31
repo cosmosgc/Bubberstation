@@ -1,6 +1,6 @@
 /obj/item/clothing/neck/human_petcollar/locked/ringbell
 	name = "ringing bell collar"
-	desc = "A soft collar that chimes for your little pet!"
+	desc = "Um colarinho macio que soa para seu bichinho!"
 	icon_state = "/obj/item/clothing/neck/human_petcollar/locked/ringbell"
 	post_init_icon_state = "ringbell"
 	greyscale_config = /datum/greyscale_config/collar/ringbell
@@ -13,7 +13,7 @@
 
 /obj/item/clothing/neck/kink_collar/locked/gps
 	name = "tracking collar"
-	desc = "A collar that lets you find your pet anywhere with GPS!"
+	desc = "Uma coleira que te permite encontrar seu animal de estimação em qualquer lugar com GPS!"
 	icon_state = "/obj/item/clothing/neck/kink_collar/locked/gps"
 	var/datum/component/gps/gps
 	post_init_icon_state = "gps"
@@ -44,7 +44,7 @@
 
 /obj/item/clothing/neck/kink_collar/locked/gps/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to [gps.tracking ? "disable":"enable"] tracking.")
+	. += span_notice("Alt-click para[gps.tracking ? "disable":"enable"]Rastreando.")
 
 ///Calls toggletracking
 /obj/item/clothing/neck/kink_collar/locked/gps/click_alt(mob/user)
@@ -53,7 +53,7 @@
 		playsound(src, 'sound/items/click.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 	else
 		toggletracking(user)
-		balloon_alert(user, "tracking [gps.tracking ? "enabled":"disabled"]")
+		balloon_alert(user, "Rastreando[gps.tracking ? "enabled":"disabled"]")
 		playsound(src, 'sound/machines/click.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 	return CLICK_ACTION_SUCCESS
 

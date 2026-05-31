@@ -67,7 +67,7 @@
 	if(!istype(attacking_item, /obj/item/clothing/neck/petcollar))
 		return NONE
 	if(locate(/obj/item/clothing/neck/petcollar) in source)
-		user.balloon_alert(source, "already wearing a collar!")
+		user.balloon_alert(source, "Já está usando uma coleira!")
 		return NONE
 	attacking_item.forceMove(source)
 	return COMPONENT_NO_AFTERATTACK

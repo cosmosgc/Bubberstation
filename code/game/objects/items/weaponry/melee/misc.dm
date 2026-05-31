@@ -5,7 +5,7 @@
 
 /obj/item/melee/synthetic_arm_blade
 	name = "synthetic arm blade"
-	desc = "A grotesque blade that on closer inspection seems to be made out of synthetic flesh, it still feels like it would hurt very badly as a weapon."
+	desc = "Uma lâmina grotesca que em inspeção mais próxima parece ser feita de carne sintética, ainda parece que machucaria muito como uma arma."
 	icon = 'icons/obj/weapons/changeling_items.dmi'
 	icon_state = "arm_blade"
 	inhand_icon_state = "arm_blade"
@@ -27,15 +27,12 @@
 	alt_continuous = string_list(alt_continuous)
 	alt_simple = string_list(alt_simple)
 	AddComponent(/datum/component/alternative_sharpness, SHARP_POINTY, alt_continuous, alt_simple, -5)
-	AddComponent(/datum/component/butchering, \
-	speed = 6 SECONDS, \
-	effectiveness = 80, \
-	)
+	AddComponent(/datum/component/butchering, 	speed = 6 SECONDS, 	effectiveness = 80, 	)
 	//very imprecise
 
 /obj/item/melee/beesword
 	name = "The Stinger"
-	desc = "Taken from a giant bee and folded over one thousand times in pure honey. Can sting through anything."
+	desc = "Tirado de uma abelha gigante e dobrado mais de mil vezes em mel puro. Pode ser qualquer coisa."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "beesword"
 	inhand_icon_state = "stinger"
@@ -67,13 +64,13 @@
 		carbon_target.reagents.add_reagent(/datum/reagent/toxin, 4)
 
 /obj/item/melee/beesword/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is stabbing [user.p_them()]self in the throat with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Está esfaqueando.[user.p_them()]Ego na gigante com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	playsound(get_turf(src), hitsound, 75, TRUE, -1)
 	return TOXLOSS
 
 /obj/item/melee/curator_whip
 	name = "curator's whip"
-	desc = "Somewhat eccentric and outdated, it still stings like hell to be hit by."
+	desc = "Um pouco excêntrico e ultrapassado, ainda dói para ser atingido."
 	icon = 'icons/obj/weapons/whip.dmi'
 	icon_state = "whip"
 	inhand_icon_state = "chain"
@@ -93,11 +90,11 @@
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
 		human_target.drop_all_held_items()
-		human_target.visible_message(span_danger("[user] disarms [human_target]!"), span_userdanger("[user] disarmed you!"))
+		human_target.visible_message(span_danger("[user]Desarmar.[human_target]!"), span_userdanger("[user]Desarmei você!"))
 
 /obj/item/melee/roastingstick
 	name = "advanced roasting stick"
-	desc = "A telescopic roasting stick with a miniature shield generator designed to ensure entry into various high-tech shielded cooking ovens and firepits."
+	desc = "Um bastão de torrefação telescópica com um gerador de escudo miniatura projetado para garantir a entrada em vários fornos de cozinha de alta tecnologia blindados e fogueiras."
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "roastingstick"
 	inhand_icon_state = null
@@ -120,12 +117,7 @@
 	. = ..()
 	if (!ovens)
 		ovens = typecacheof(list(/obj/singularity, /obj/energy_ball, /obj/machinery/power/supermatter_crystal, /obj/structure/bonfire))
-	AddComponent( \
-		/datum/component/transforming, \
-		hitsound_on = hitsound, \
-		clumsy_check = FALSE, \
-		inhand_icon_change = FALSE, \
-	)
+	AddComponent( 		/datum/component/transforming, 		hitsound_on = hitsound, 		clumsy_check = FALSE, 		inhand_icon_change = FALSE, 	)
 	RegisterSignal(src, COMSIG_TRANSFORMING_PRE_TRANSFORM, PROC_REF(attempt_transform))
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
@@ -138,7 +130,7 @@
 	SIGNAL_HANDLER
 
 	if(held_sausage)
-		to_chat(user, span_warning("You can't retract [src] while [held_sausage] is attached!"))
+		to_chat(user, span_warning("Você não pode se retratar.[src]entanto[held_sausage]Está preso!"))
 		return COMPONENT_BLOCK_TRANSFORM
 
 /*
@@ -159,15 +151,15 @@
 	..()
 	if (istype(target, /obj/item/food/sausage))
 		if (!HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
-			to_chat(user, span_warning("You must extend [src] to attach anything to it!"))
+			to_chat(user, span_warning("Você deve estender[src]Para prender qualquer coisa a ele!"))
 			return
 		if (held_sausage)
-			to_chat(user, span_warning("[held_sausage] is already attached to [src]!"))
+			to_chat(user, span_warning("[held_sausage]Já está ligado a[src]!"))
 			return
 		if (user.transferItemToLoc(target, src))
 			held_sausage = target
 		else
-			to_chat(user, span_warning("[target] doesn't seem to want to get on [src]!"))
+			to_chat(user, span_warning("[target]Não parece querer entrar[src]!"))
 	update_appearance()
 
 /obj/item/melee/roastingstick/attack_hand(mob/user, list/modifiers)
@@ -192,7 +184,7 @@
 	if (!is_type_in_typecache(interacting_with, ovens))
 		return NONE
 	if (istype(interacting_with, /obj/singularity) || istype(interacting_with, /obj/energy_ball) && get_dist(user, interacting_with) < 10)
-		to_chat(user, span_notice("You send [held_sausage] towards [interacting_with]."))
+		to_chat(user, span_notice("Você manda[held_sausage]em direção[interacting_with]."))
 		playsound(src, 'sound/items/tools/rped.ogg', 50, TRUE)
 		beam = user.Beam(interacting_with, icon_state = "rped_upgrade", time = 10 SECONDS)
 		finish_roasting(user, interacting_with)
@@ -204,14 +196,14 @@
 		return NONE
 	if (!is_type_in_typecache(interacting_with, ovens))
 		return NONE
-	to_chat(user, span_notice("You extend [src] towards [interacting_with]."))
+	to_chat(user, span_notice("Você se estende.[src]em direção[interacting_with]."))
 	playsound(src, 'sound/items/weapons/batonextend.ogg', 50, TRUE)
 	finish_roasting(user, interacting_with)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/melee/roastingstick/proc/finish_roasting(user, atom/target)
 	if(do_after(user, 10 SECONDS, target = user))
-		to_chat(user, span_notice("You finish roasting [held_sausage]."))
+		to_chat(user, span_notice("Você termina de assar[held_sausage]."))
 		playsound(src, 'sound/items/tools/welder2.ogg', 50, TRUE)
 		held_sausage.add_atom_colour(rgb(103, 63, 24), FIXED_COLOUR_PRIORITY)
 		held_sausage.name = "[target.name]-roasted [held_sausage.name]"
@@ -220,11 +212,11 @@
 	else
 		QDEL_NULL(beam)
 		playsound(src, 'sound/items/weapons/batonextend.ogg', 50, TRUE)
-		to_chat(user, span_notice("You put [src] away."))
+		to_chat(user, span_notice("Você colocou[src]Vamos."))
 
 /obj/item/melee/cleric_mace
 	name = "cleric mace"
-	desc = "The grandson of the club, yet the grandfather of the baseball bat. Most notably used by holy orders in days past."
+	desc = "O neto do clube, ainda o avô do taco de beisebol. Mais notavelmente usado por ordens sagradas em dias passados."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/melee/cleric_mace"
 	post_init_icon_state = "default"
@@ -261,7 +253,7 @@
 	. = ..()
 	var/datum/material/material = get_material_from_slot(/datum/material_slot/handle)
 	if (material)
-		desc = "[initial(desc)] Its handle is made of [material.name]."
+		desc = "[initial(desc)]Sua alça é feita de[material.name]."
 
 /obj/item/melee/cleric_mace/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	// Don't bring a...mace to a gunfight, and also you aren't going to really block someone full body tackling you with a mace.
@@ -276,7 +268,7 @@
 
 /obj/item/sord
 	name = "\improper SORD"
-	desc = "This thing is so unspeakably shitty you are having a hard time even holding it."
+	desc = "Essa coisa é tão indescritivelmente uma merda que você está tendo dificuldade em segurá-la."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "sord"
 	inhand_icon_state = "sord"
@@ -292,8 +284,7 @@
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 
 /obj/item/sord/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is trying to impale [user.p_them()]self with [src]! It might be a suicide attempt if it weren't so shitty."), \
-	span_suicide("You try to impale yourself with [src], but it's USELESS..."))
+	user.visible_message(span_suicide("[user]Está tentando empalar[user.p_them()]ego com[src]! Seria uma tentativa de suicídio se não fosse tão ruim."), 	span_suicide("Você tenta empalar-se com[src], mas é inútil ..."))
 	return SHAME
 
 /obj/item/carpenter_hammer
@@ -305,7 +296,7 @@
 	icon_angle = -45
 	lefthand_file = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
-	desc = "Uncanny looking hammer."
+	desc = "Martelo incrível."
 	force = 17
 	throwforce = 14
 	throw_range = 4
@@ -317,19 +308,14 @@
 /obj/item/carpenter_hammer/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/kneejerk)
-	AddComponent(/datum/component/item_killsound, \
-	allowed_mobs = list(/mob/living/carbon/human), \
-	killsound = 'sound/items/weapons/hammer_death_scream.ogg', \
-	replace_default_death_sound = TRUE, \
-	)
+	AddComponent(/datum/component/item_killsound, 	allowed_mobs = list(/mob/living/carbon/human), 	killsound = 'sound/items/weapons/hammer_death_scream.ogg', 	replace_default_death_sound = TRUE, 	)
 
 /obj/item/carpenter_hammer/examine(mob/user)
 	. = ..()
 	. += ""
 	. += "Real World Tip:"
 	. += pick(
-		"Every building, from hospitals to homes, has a room that serves as the heart of the building \
-		and carries blood and nutrients to its extremities. Try to find the heart of your home!",
+		"Every building, from hospitals to homes, has a room that serves as the heart of the building 		and carries blood and nutrients to its extremities. Try to find the heart of your home!",
 		"All the food you've tried is rotten. You've never eaten fresh food.",
 		"Viruses do not exist. Illness is simply your body punishing you for what you have done wrong.",
 		"Space stations must have at least 50 mammalian teeth embedded in the north walls for structural safety reasons.",
@@ -338,7 +324,7 @@
 
 /obj/item/phone
 	name = "red phone"
-	desc = "Should anything ever go wrong..."
+	desc = "Se algo der errado..."
 	icon = 'icons/obj/devices/voice.dmi'
 	icon_state = "red_phone"
 	force = 3
@@ -352,14 +338,14 @@
 
 /obj/item/phone/suicide_act(mob/living/user)
 	if(locate(/obj/structure/chair/stool) in user.loc)
-		user.visible_message(span_suicide("[user] begins to tie a noose with [src]'s cord! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user]começa a amarrar uma corda com[src]Cordão! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	else
-		user.visible_message(span_suicide("[user] is strangling [user.p_them()]self with [src]'s cord! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user]Está estrangulando[user.p_them()]ego com[src]Cordão! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/bambostaff
 	name = "bamboo staff"
-	desc = "A long bamboo-made staff with steel-capped ends. It is rumoured that initiates of Spider Clan train with such before getting to learn how to use a katana."
+	desc = "Um longo bastão de bambu com pontas de aço. Dizem que os iniciados do Clã Aranha treinam com eles antes de aprender a usar uma katana."
 	force = 10
 	block_chance = 45
 	block_sound = 'sound/items/weapons/genhit.ogg'
@@ -382,10 +368,7 @@
 	. = ..()
 	// there are too many puns to choose from. ('Bo' is the 'real' name for this kind of weapon.)
 	name = pick("bamboo staff", "bambo staff", "bam-Bo staff", "bam boo staff", "bam-boo staff", "bam Bo", "bambo", "bam-Bo", "bamboo-Bo")
-	AddComponent(/datum/component/two_handed, \
-		force_unwielded = 10, \
-		force_wielded = 14, \
-	)
+	AddComponent(/datum/component/two_handed, 		force_unwielded = 10, 		force_wielded = 14, 	)
 
 /obj/item/bambostaff/update_icon_state()
 	icon_state = inhand_icon_state = "[base_icon_state][HAS_TRAIT(src, TRAIT_WIELDED)]"
@@ -398,7 +381,7 @@
 
 /obj/item/staff
 	name = "wizard staff"
-	desc = "Apparently a staff used by the wizard."
+	desc = "Aparentemente um bastão usado pelo mago."
 	icon = 'icons/obj/weapons/guns/magic.dmi'
 	icon_state = "staff"
 	inhand_icon_state = "staff"
@@ -416,21 +399,21 @@
 
 /obj/item/staff/broom
 	name = "broom"
-	desc = "Used for sweeping, and flying into the night while cackling. Black cat not included."
+	desc = "Usado para varrer, e voar pela noite enquanto cacareja. Gato preto não incluído."
 	icon_state = "broom"
 	inhand_icon_state = "broom"
 	resistance_flags = FLAMMABLE
 
 /obj/item/staff/tape
 	name = "tape staff"
-	desc = "A roll of tape snugly attached to a stick."
+	desc = "Um rolo de fita grudada em um pau."
 	icon_state = "tapestaff"
 	inhand_icon_state = "tapestaff"
 	resistance_flags = FLAMMABLE
 
 /obj/item/staff/stick
 	name = "stick"
-	desc = "A great tool to drag someone else's drinks across the bar."
+	desc = "Uma ótima ferramenta para arrastar as bebidas de outra pessoa pelo bar."
 	icon = 'icons/obj/weapons/staff.dmi'
 	icon_state = "cane"
 	inhand_icon_state = "stick"
@@ -445,7 +428,7 @@
 
 /obj/item/tailclub
 	name = "tail club"
-	desc = "For the beating to death of lizards with their own tails."
+	desc = "Pelo espancamento de lagartos com suas próprias caudas."
 	icon = 'icons/obj/weapons/club.dmi'
 	icon_state = "tailclub"
 	icon_angle = -25
@@ -459,7 +442,7 @@
 
 /obj/item/melee/flyswatter
 	name = "flyswatter"
-	desc = "Useful for killing pests of all sizes."
+	desc = "Útil para matar pragas de todos os tamanhos."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "flyswatter"
 	inhand_icon_state = "flyswatter"
@@ -492,7 +475,7 @@
 
 /obj/item/melee/flyswatter/afterattack(atom/target, mob/user, list/modifiers, list/attack_modifiers)
 	if(is_type_in_typecache(target, splattable))
-		to_chat(user, span_warning("You easily splat [target]."))
+		to_chat(user, span_warning("Você facilmente escorregou[target]."))
 		if(QDELETED(target))
 			return
 		if(isliving(target))
@@ -510,7 +493,7 @@
 
 /obj/item/gohei
 	name = "gohei"
-	desc = "A wooden stick with white streamers at the end. Originally used by shrine maidens to purify things. Now used by the station's valued weeaboos."
+	desc = "Uma vara de madeira com serpentinas brancas no final. Originalmente usado por donzelas de santuário para purificar as coisas. Agora usado pelos valiosos Weeaboos da estação."
 	resistance_flags = FLAMMABLE
 	force = 5
 	throwforce = 5
@@ -526,7 +509,7 @@
 
 /obj/item/melee/moonlight_greatsword
 	name = "moonlight greatsword"
-	desc = "Don't tell anyone you put any points into dex, though."
+	desc = "Não diga a ninguém que colocou pontos no Dex."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "swordon"
 	inhand_icon_state = "swordon"

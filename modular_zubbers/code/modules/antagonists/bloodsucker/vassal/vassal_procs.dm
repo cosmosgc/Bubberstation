@@ -72,6 +72,6 @@
 	ghouldatum.silent = FALSE
 
 	//send alerts of completion
-	to_chat(master, span_danger("You have turned [ghoul_owner.current] into your [ghouldatum.name]! They will no longer be deconverted upon Mindshielding!"))
-	to_chat(ghoul_owner, span_notice("As Blood drips over your body, you feel closer to your Master... You are now the [ghouldatum.name]!"))
+	to_chat(master, span_danger("Você se transformou[ghoul_owner.current]em seu[ghouldatum.name]Eles não serão mais desconvertidos em Mindshielding!"))
+	to_chat(ghoul_owner, span_notice("Enquanto o sangue escorre sobre seu corpo, você se sente mais perto de seu Mestre... Agora você é o[ghouldatum.name]!"))
 	ghoul_owner.current.playsound_local(null, 'sound/effects/magic/mutate.ogg', 75, FALSE, pressure_affected = FALSE)

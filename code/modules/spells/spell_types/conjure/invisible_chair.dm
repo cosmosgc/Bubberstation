@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/conjure/invisible_chair
 	name = "Invisible Chair"
-	desc = "The mime's performance transmutates a chair into physical reality."
+	desc = "O desempenho do mímico transmuta uma cadeira para a realidade física."
 	background_icon_state = "bg_mime"
 	overlay_icon_state = "bg_mime_border"
 	button_icon = 'icons/mob/actions/actions_mime.dmi'
@@ -11,7 +11,7 @@
 	school = SCHOOL_MIME
 	cooldown_time = 30 SECONDS
 	invocation = span_notice("<b>%CASTER</b> pulls out an invisible chair and sits down.")
-	invocation_self_message = span_notice("You conjure an invisible chair and sit down.")
+	invocation_self_message = span_notice("Você invoca uma cadeira invisível e se senta.")
 	invocation_type = INVOCATION_EMOTE
 
 	spell_requirements = SPELL_REQUIRES_HUMAN|SPELL_REQUIRES_MIME_VOW

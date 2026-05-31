@@ -2,7 +2,7 @@
 import { type Feature, FeatureNumberInput } from '../../base';
 
 export const chrono_age: Feature<number> = {
-  name: 'Age (Chronological)',
+  name: 'Idade (Cronológica)',
   description:
     'Chronological age represents how long your character has actually existed in the universe since birth.\
     Includes time spent in cryo-sleep and/or in areas of gravity/speed-induced time dilation.',

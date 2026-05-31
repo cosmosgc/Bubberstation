@@ -199,22 +199,22 @@
 		// Way too much blood!
 		if(BLOOD_VOLUME_EXCESS to BLOOD_VOLUME_MAX_LETHAL)
 			if(SPT_PROB(7.5, seconds_per_tick))
-				to_chat(src, span_userdanger("Blood starts to tear your skin apart. You're going to burst!"))
+				to_chat(src, span_userdanger("O sangue começa a rasgar sua pele. Você vai estourar!"))
 				investigate_log("has been gibbed by having too much blood.", INVESTIGATE_DEATHS)
 				inflate_gib()
 		// Too much blood
 		if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(src, span_warning("You feel terribly bloated."))
+				to_chat(src, span_warning("Você se sente terrivelmente inchado."))
 		// Low blood but not a big deal in the immediate
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 			if(SPT_PROB(2.5, seconds_per_tick))
 				set_eye_blur_if_lower(2 SECONDS * determined_mod)
 				if(prob(50))
-					to_chat(src, span_danger("You feel [word]. It's getting a bit hard to breathe."))
+					to_chat(src, span_danger("Você sente[word]Está ficando difícil respirar."))
 					losebreath += 0.5 * determined_mod * seconds_per_tick
 				else if(get_stamina_loss() < 25 * determined_mod)
-					to_chat(src, span_danger("You feel [word]. It's getting a bit hard to focus."))
+					to_chat(src, span_danger("Você sente[word]Está ficando um pouco difícil de focar."))
 					adjust_stamina_loss(5 * determined_mod * seconds_per_tick)
 		// Pretty low blood, getting dangerous!
 		if(BLOOD_VOLUME_RISKY to BLOOD_VOLUME_OKAY)
@@ -222,10 +222,10 @@
 				set_eye_blur_if_lower(2 SECONDS * determined_mod)
 				set_dizzy_if_lower(2 SECONDS * determined_mod)
 				if(prob(50))
-					to_chat(src, span_bolddanger("You feel very [word]. It's getting hard to breathe!"))
+					to_chat(src, span_bolddanger("Você se sente muito.[word]Está ficando difícil respirar!"))
 					losebreath += 1 * determined_mod
 				else if(get_stamina_loss() < 40 * determined_mod)
-					to_chat(src, span_bolddanger("You feel very [word]. It's getting hard to stay awake!"))
+					to_chat(src, span_bolddanger("Você se sente muito.[word]Está ficando difícil ficar acordado!"))
 					adjust_stamina_loss(7.5 * determined_mod)
 		// Very low blood, danger!!
 		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_RISKY)
@@ -233,16 +233,16 @@
 				set_eye_blur_if_lower(4 SECONDS * determined_mod)
 				set_dizzy_if_lower(4 SECONDS * determined_mod)
 				if(prob(50))
-					to_chat(src, span_userdanger("You feel extremely [word]! It's getting very hard to breathe!"))
+					to_chat(src, span_userdanger("Você se sente extremamente[word]Está ficando muito difícil respirar!"))
 					losebreath += 1.5 * determined_mod
 				else if(get_stamina_loss() < 80 * determined_mod)
-					to_chat(src, span_userdanger("You feel extremely [word]! It's getting very hard to stay awake!"))
+					to_chat(src, span_userdanger("Você se sente extremamente[word]Está ficando muito difícil ficar acordado!"))
 					adjust_stamina_loss(10 * determined_mod)
 		// Critically low blood, death is near! Adrenaline won't help you here.
 		if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 			if(SPT_PROB(7.5, seconds_per_tick))
 				Unconscious(rand(1 SECONDS, 2 SECONDS))
-				to_chat(src, span_userdanger("You black out for a moment!"))
+				to_chat(src, span_userdanger("Você apagou por um momento!"))
 		// Instantly die upon this threshold
 		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
 			if(!HAS_TRAIT(src, TRAIT_NODEATH))

@@ -24,7 +24,7 @@
 /// Adds text to the examine text of the parent item, explaining that the item can be used to enable the use of NIFSoft HUDs
 /datum/component/carrier/soulcatcher/attachable/proc/on_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
-	examine_text += span_cyan("[source] has a soulcatcher attached to it, <b>Ctrl+Shift+Click</b> to use it.")
+	examine_text += span_cyan("[source]Tem um panhador de almas ligada a ele,<b>Ctrl+Shift+ Clique.</b>para usá-lo.")
 
 /datum/component/carrier/soulcatcher/attachable/proc/bring_up_ui(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -53,7 +53,7 @@
 
 /obj/item/attachable_soulcatcher
 	name = "Poltergeist-Type RSD"
-	desc = "This device, a polymorphic nanomachine net, wraps around objects of most sizes and allows them to function as a container for Resonance. The soul in question within the vessel is imbued much like it would be in a body or a normal Soulcatcher, perceiving the world and even speaking out of their new form. The nanomachine net of the device allows for the consciousness to somewhat manipulate their container, but any large-scale movement is out of the question."
+	desc = "Este dispositivo, uma rede de nanomáquinas polimórfica, envolve objetos da maioria dos tamanhos e permite que eles funcionem como um recipiente para ressonância. A alma em questão dentro do vaso está imbuída como se estivesse em um corpo ou um caça-almas normal, percebendo o mundo e até mesmo falando de sua nova forma. A rede de nanomáquinas do dispositivo permite que a consciência manipule um pouco seu recipiente, mas qualquer movimento em grande escala está fora de questão."
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
 	icon_state = "attachable-soulcatcher"
 	w_class = WEIGHT_CLASS_SMALL
@@ -86,7 +86,7 @@
 		return NONE
 
 	if(interacting_with.GetComponent(/datum/component/carrier/soulcatcher))
-		balloon_alert(user, "already attached!")
+		balloon_alert(user, "Já está preso!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/datum/component/carrier/soulcatcher/new_soulcatcher = interacting_with.AddComponent(/datum/component/carrier/soulcatcher/attachable)

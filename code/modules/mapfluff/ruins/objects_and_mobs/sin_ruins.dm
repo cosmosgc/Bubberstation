@@ -2,7 +2,7 @@
 
 /obj/effect/gluttony //Gluttony's wall: Used in the Gluttony ruin. Only lets the overweight through.
 	name = "gluttony's wall"
-	desc = "Only those who truly indulge may pass."
+	desc = "Só aqueles que realmente se entregam podem passar."
 	anchored = TRUE
 	density = TRUE
 	icon_state = "blob"
@@ -14,10 +14,10 @@
 	if(ishuman(mover))
 		var/mob/living/carbon/human/H = mover
 		if(H.nutrition >= NUTRITION_LEVEL_FAT)
-			H.visible_message(span_warning("[H] pushes through [src]!"), span_notice("You've seen and eaten worse than this."))
+			H.visible_message(span_warning("[H]Empurra através[src]!"), span_notice("Você já viu e comeu pior do que isso."))
 			return TRUE
 		else
-			to_chat(H, span_warning("You're repulsed by even looking at [src]. Only a pig could force themselves to go through it."))
+			to_chat(H, span_warning("Você é repelido por olhar[src]Só um porco poderia se forçar a passar por isso."))
 	if(istype(mover, /mob/living/basic/morph))
 		return TRUE
 
@@ -25,7 +25,7 @@
 
 /obj/item/knife/envy //Envy's knife: Found in the Envy ruin. Attackers take on the appearance of whoever they strike.
 	name = "envy's knife"
-	desc = "Their success will be yours."
+	desc = "O sucesso deles será seu."
 	icon = 'icons/obj/weapons/stabby.dmi'
 	icon_state = "envyknife"
 	inhand_icon_state = "envyknife"
@@ -49,5 +49,4 @@
 	H.dna.copy_dna(user.dna, COPY_DNA_SE|COPY_DNA_SPECIES)
 	user.updateappearance(mutcolor_update=1)
 	user.domutcheck()
-	user.visible_message(span_warning("[user]'s appearance shifts into [H]'s!"), \
-	span_bolddanger("[H.p_They()] think[H.p_s()] [H.p_theyre()] <i>sooo</i> much better than you. Not anymore, [H.p_they()] won't."))
+	user.visible_message(span_warning("[user]A aparência muda para[H]É!"), 	span_bolddanger("[H.p_They()]Pense.[H.p_s()] [H.p_theyre()] <i>Então</i>Muito melhor que você. Não mais.[H.p_they()]Não vai."))

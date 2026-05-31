@@ -13,7 +13,7 @@ import type { CargoData } from './types';
 
 enum TAB {
   Catalog = 'catalog',
-  Requests = 'active requests',
+  Requests = 'Pedidos ativos',
   Cart = 'cart',
   Help = 'help',
 }

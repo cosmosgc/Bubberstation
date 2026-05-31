@@ -9,12 +9,12 @@ describe('ChatHistory', () => {
     chatHistory = new ChatHistory();
   });
 
-  it('should add a message to the history', () => {
+  it('deve adicionar uma mensagem para a história', () => {
     chatHistory.add('Hello');
     expect(chatHistory.getOlderMessage()).toEqual('Hello');
   });
 
-  it('should retrieve older and newer messages', () => {
+  it('deve recuperar mensagens mais antigas e novas.', () => {
     chatHistory.add('Hello');
     chatHistory.add('World');
     expect(chatHistory.getOlderMessage()).toEqual('World');
@@ -24,25 +24,25 @@ describe('ChatHistory', () => {
     expect(chatHistory.getOlderMessage()).toEqual('World');
   });
 
-  it('should limit the history to 5 messages', () => {
+  it('deve limitar o histórico para 5 mensagens', () => {
     for (let i = 1; i <= 6; i++) {
       chatHistory.add(`Message ${i}`);
     }
 
-    expect(chatHistory.getOlderMessage()).toEqual('Message 6');
+    expect(chatHistory.getOlderMessage()).toEqual('Mensagem 6');
     for (let i = 5; i >= 2; i--) {
       expect(chatHistory.getOlderMessage()).toEqual(`Message ${i}`);
     }
     expect(chatHistory.getOlderMessage()).toBeNull();
   });
 
-  it('should handle temp message correctly', () => {
-    chatHistory.saveTemp('Temp message');
-    expect(chatHistory.getTemp()).toEqual('Temp message');
+  it('deve lidar com a mensagem temporária corretamente.', () => {
+    chatHistory.saveTemp('Mensagem temporária.');
+    expect(chatHistory.getTemp()).toEqual('Mensagem temporária.');
     expect(chatHistory.getTemp()).toBeNull();
   });
 
-  it('should reset correctly', () => {
+  it('Deve ser reiniciado corretamente.', () => {
     chatHistory.add('Hello');
     chatHistory.getOlderMessage();
     chatHistory.reset();

@@ -1,6 +1,6 @@
 /obj/item/tank/rbmk2_rod
 	name = "\improper RB-MK2 reactor rod"
-	desc = "A rod for the RB-MK2 reactor. Usually filled with a mix of tritium and an inert gas, such as nitrogen."
+	desc = "Uma haste para o reator RB-MK2. Geralmente cheio com uma mistura de trítio e um gás inerte, como nitrogênio."
 	icon = 'modular_zubbers/icons/obj/equipment/burger_reactor.dmi'
 	icon_state = "platform_rod"
 	inhand_icon_state = null
@@ -61,4 +61,4 @@
 
 /obj/item/tank/rbmk2_rod/examine(user)
 	. = ..()
-	. += span_notice("A sticker on its side says <b>MAX SAFE PRESSURE: [siunit_pressure(pressure_limit, 0)]; MAX SAFE TEMPERATURE: [siunit(temperature_limit, "K", 0)]</b>.")
+	. += span_notice("Um adesivo de seu lado diz<b>Max Safe Pressure:[siunit_pressure(pressure_limit, 0)]Temperatura Max Safe:[siunit(temperature_limit, "K", 0)]</b>.")

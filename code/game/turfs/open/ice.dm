@@ -1,6 +1,6 @@
 /turf/open/misc/ice
 	name = "ice sheet"
-	desc = "A sheet of solid ice. Looks slippery."
+	desc = "Uma folha de gelo sólido. Parece escorregadio."
 	icon = 'icons/turf/floors/ice_turf.dmi'
 	icon_state = "ice_turf-0"
 	base_icon_state = "ice_turf-0"
@@ -40,7 +40,7 @@
 /turf/open/misc/ice/examine(mob/user)
 	. = ..()
 	if(can_make_hole)
-		. += span_info("You could use a [EXAMINE_HINT("shovel")] or a [EXAMINE_HINT("pick")] to dig a fishing hole here.")
+		. += span_info("Você poderia usar um[EXAMINE_HINT("shovel")]ou um[EXAMINE_HINT("pick")]para cavar um buraco de pesca aqui.")
 
 /turf/open/misc/ice/attack_animal(mob/living/animal, list/modifiers)
 	. = ..()
@@ -59,7 +59,7 @@
 	playsound(src, 'sound/effects/shovel_dig.ogg', 50, TRUE)
 	if(!do_after(user, 5 SECONDS, src))
 		return FALSE
-	balloon_alert(user, "dug hole")
+	balloon_alert(user, "Buraco escavado")
 	spawn_hole()
 	return TRUE
 
@@ -95,12 +95,12 @@
 
 /turf/open/misc/ice/temperate
 	baseturfs = /turf/open/misc/ice/temperate
-	desc = "Somehow, it is not melting under these conditions. Must be some very thick ice. Just as slippery too."
+	desc = "De alguma forma, não está derretendo nessas condições. Deve ser gelo muito grosso. E escorregadio também."
 	initial_gas_mix = COLD_ATMOS //it works with /turf/open/misc/asteroid/snow/temperatre
 
 //For when you want real, genuine ice in your kitchen's cold room.
 /turf/open/misc/ice/coldroom
-	desc = "Somehow, it is not melting under these conditions. Must be some very thick ice. Just as slippery too."
+	desc = "De alguma forma, não está derretendo nessas condições. Deve ser gelo muito grosso. E escorregadio também."
 	baseturfs = /turf/open/misc/ice/coldroom
 	initial_gas_mix = KITCHEN_COLDROOM_ATMOS
 	planetary_atmos = FALSE

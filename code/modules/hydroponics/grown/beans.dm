@@ -1,7 +1,7 @@
 // Soybeans
 /obj/item/seeds/soya
 	name = "soybean seed pack"
-	desc = "These seeds grow into soybean plants."
+	desc = "Estas sementes crescem em plantas de soja."
 	icon_state = "seed-soybean"
 	species = "soybean"
 	plantname = "Soybean Plants"
@@ -20,7 +20,7 @@
 /obj/item/food/grown/soybeans
 	seed = /obj/item/seeds/soya
 	name = "soybeans"
-	desc = "It's pretty bland, but oh the possibilities..."
+	desc = "É bem sem graça, mas as possibilidades..."
 	gender = PLURAL
 	icon_state = "soybeans"
 	foodtypes = VEGETABLES
@@ -33,7 +33,7 @@
 // Koibean
 /obj/item/seeds/soya/koi
 	name = "koibean seed pack"
-	desc = "These seeds grow into koibean plants."
+	desc = "Estas sementes crescem em plantas koibean."
 	icon_state = "seed-koibean"
 	species = "koibean"
 	plantname = "Koibean Plants"
@@ -46,7 +46,7 @@
 /obj/item/food/grown/koibeans
 	seed = /obj/item/seeds/soya/koi
 	name = "koibean"
-	desc = "Something about these seems fishy, they seem really soft, almost squeezable!"
+	desc = "Algo sobre isso parece suspeito, eles parecem reino macios, quase estrementes!"
 	icon_state = "koibeans"
 	foodtypes = VEGETABLES
 	tastes = list("koi" = 1)
@@ -54,7 +54,7 @@
 
 //Now squeezable for imitation carpmeat
 /obj/item/food/grown/koibeans/attack_self(mob/living/user)
-	user.visible_message(span_notice("[user] crushes [src] into a slab of carplike meat."), span_notice("You crush [src] into something that resembles a slab of carplike meat."))
+	user.visible_message(span_notice("[user]Quedas.[src]em um pedaço de carne carpa."), span_notice("Você esmaga[src]em algo que se parece com um pedaço de carne carpa."))
 	playsound(user, 'sound/effects/blob/blobattack.ogg', 50, TRUE)
 	var/obj/item/food/fishmeat/carp/imitation/fishie = new(null)
 	fishie.reagents.set_all_reagents_purity(seed.get_reagent_purity())
@@ -66,7 +66,7 @@
 // Butterbeans! - Squeeze for a single butter slice!
 /obj/item/seeds/soya/butter
 	name = "butterbean seed pack"
-	desc = "These seeds grow into butterbean plants."
+	desc = "Estas sementes crescem em plantas de butterbean."
 	icon_state = "seed-butterbean"
 	species = "butterbean"
 	plantname = "butterbean Plants"
@@ -79,14 +79,14 @@
 /obj/item/food/grown/butterbeans
 	seed = /obj/item/seeds/soya/butter
 	name = "butterbean"
-	desc = "Soft, creamy and milky... You could almost smear them over toast."
+	desc = "Macio, cremoso e leitoso... Você poderia quase manchar eles sobre torradas."
 	icon_state = "butterbeans"
 	foodtypes = VEGETABLES | DAIRY
 	tastes = list("creamy butter" = 1)
 	distill_reagent = /datum/reagent/consumable/yoghurt
 
 /obj/item/food/grown/butterbeans/attack_self(mob/living/user)
-	user.visible_message(span_notice("[user] crushes [src] into a pat of butter."), span_notice("You crush [src] into something that resembles butter."))
+	user.visible_message(span_notice("[user]Quedas.[src]em um tapinha de manteiga."), span_notice("Você esmaga[src]em algo que se parece com manteiga."))
 	playsound(user, 'sound/effects/blob/blobattack.ogg', 50, TRUE)
 	var/obj/item/food/butterslice/butties = new(null)
 	butties.reagents.set_all_reagents_purity(seed.get_reagent_purity())
@@ -97,7 +97,7 @@
 // Green Beans
 /obj/item/seeds/greenbean
 	name = "green bean seed pack"
-	desc = "These seeds grow into green bean plants."
+	desc = "Estas sementes crescem em plantas de feijão verde."
 	icon_state = "seed-greenbean"
 	species = "greenbean"
 	plantname = "Green Bean Plants"
@@ -117,7 +117,7 @@
 /obj/item/food/grown/greenbeans
 	seed = /obj/item/seeds/greenbean
 	name = "green beans"
-	desc = "Simple and healthy, what more do you need?"
+	desc = "Simples e saudável, o que mais você precisa?"
 	gender = PLURAL
 	icon_state = "greenbean"
 	foodtypes = FRUIT
@@ -126,7 +126,7 @@
 // Jumping Bean
 /obj/item/seeds/greenbean/jump
 	name = "jumping bean seed pack"
-	desc = "These seeds grow into jumping bean plants."
+	desc = "Estas sementes crescem em plantas de feijão pulando."
 	icon_state = "seed-jumpingbean"
 	species = "jumpingbean"
 	plantname = "Jumping Bean Plants"
@@ -145,7 +145,7 @@
 /obj/item/food/grown/jumpingbeans
 	seed = /obj/item/seeds/greenbean/jump
 	name = "jumping bean"
-	desc = "Umm, what's causing it to move like that?"
+	desc = "Por que se mover assim?"
 	icon_state = "jumpingbean"
 	foodtypes = FRUIT | BUGS
 	tastes = list("bugs" = 1)

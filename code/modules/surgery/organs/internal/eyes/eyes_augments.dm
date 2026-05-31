@@ -1,11 +1,11 @@
 /obj/item/organ/eyes/robotic
 	name = "robotic eyes"
-	desc = "Your vision is augmented."
+	desc = "Sua visão está aumentada."
 	icon_state = "eyes_cyber"
 	organ_flags = ORGAN_ROBOTIC
-	failing_desc = "seems to be broken."
+	failing_desc = "Parece estar quebrado."
 	pupils_name = "apertures"
-	penlight_message = "are cybernetic, click-whirring as they refocus"
+	penlight_message = "são cibernéticos, girando enquanto se concentram."
 
 /obj/item/organ/eyes/robotic/emp_act(severity)
 	. = ..()
@@ -13,18 +13,18 @@
 		return
 	if(prob(10 * severity))
 		return
-	to_chat(owner, span_warning("Static obfuscates your vision!"))
+	to_chat(owner, span_warning("Estática ofusca sua visão!"))
 	owner.flash_act(visual = 1)
 
 /obj/item/organ/eyes/robotic/basic
 	name = "basic robotic eyes"
-	desc = "A pair of basic cybernetic eyes that restore vision, but at some vulnerability to light."
+	desc = "Um par de olhos cibernéticos básicos que restauram a visão, mas em alguma vulnerabilidade à luz."
 	icon_state = "eyes_cyber_basic"
 	iris_overlay = null
 	eye_color_left = "#2f3032"
 	eye_color_right = "#2f3032"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
-	penlight_message = "are low grade cybernetics, poorly compensating for the light"
+	penlight_message = "são cibernéticos de baixa qualidade, pouco compensadores para a luz"
 
 /obj/item/organ/eyes/robotic/basic/emp_act(severity)
 	. = ..()
@@ -32,13 +32,13 @@
 		return
 	if(prob(10 * severity))
 		apply_organ_damage(20 * severity)
-		to_chat(owner, span_warning("Your eyes start to fizzle in their sockets!"))
+		to_chat(owner, span_warning("Seus olhos começam a falhar!"))
 		do_sparks(2, TRUE, owner)
 		owner.emote("scream")
 
 /obj/item/organ/eyes/robotic/xray
 	name = "x-ray eyes"
-	desc = "These cybernetic eyes will give you X-ray vision. Blinking is futile."
+	desc = "Esses olhos cibernéticos lhe darão visão de raio-X. Piscar é inútil."
 	icon_state = "eyes_cyber_xray"
 	iris_overlay = null
 	eye_color_left = "#3cb8a5"
@@ -46,11 +46,11 @@
 	sight_flags = SEE_MOBS | SEE_OBJS | SEE_TURFS
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	organ_traits = list(TRAIT_XRAY_VISION)
-	penlight_message = "are replaced by small radiation emitters and detectors"
+	penlight_message = "são substituídos por pequenos emissores de radiação e detectores"
 
 /obj/item/organ/eyes/robotic/thermals
 	name = "thermal eyes"
-	desc = "These cybernetic eye implants will give you thermal vision. Vertical slit pupil included."
+	desc = "Esses implantes oculares cibernéticos lhe darão visão térmica. Pupila de corte vertical incluída."
 	icon_state = "eyes_cyber_thermal"
 	iris_overlay = null
 	eye_color_left = "#ce2525"
@@ -60,11 +60,11 @@
 	sight_flags = SEE_MOBS
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	pupils_name = "slit aperatures"
-	penlight_message = "are cybernetic, with vertically slit metalic lenses."
+	penlight_message = "são cibernéticos, com lentes metálicas cortadas verticalmente."
 
 /obj/item/organ/eyes/robotic/flashlight
 	name = "flashlight eyes"
-	desc = "It's two flashlights rigged together with some wire. Why would you put these in someone's head?"
+	desc = "São duas lanternas com arame. Por que colocaria isso na cabeça de alguém?"
 	icon_state = "flashlight_eyes"
 	eye_color_left = "#fee5a3"
 	eye_color_right = "#fee5a3"
@@ -75,7 +75,7 @@
 	var/obj/item/flashlight/eyelight/eye
 	light_reactive = FALSE
 	pupils_name = "flashlights"
-	penlight_message = "are actually two flashlights taped together. ...why"
+	penlight_message = "são duas lanternas juntas. ...por quê?"
 
 /obj/item/organ/eyes/robotic/flashlight/Initialize(mapload)
 	. = ..()
@@ -100,14 +100,14 @@
 // Welding shield implant
 /obj/item/organ/eyes/robotic/shield
 	name = "shielded robotic eyes"
-	desc = "These reactive micro-shields will protect you from welders and flashes without obscuring your vision."
+	desc = "Esses micro escudos reativos irão protegê-lo de soldadores e flashes sem obscurecer sua visão."
 	icon_state = "eyes_cyber_shield"
 	iris_overlay = null
 	eye_color_left = "#353845"
 	eye_color_right = "#353845"
 	flash_protect = FLASH_PROTECTION_WELDER
 	pupils_name = "flash shields"
-	penlight_message = "have polarized cybernetic lenses, blocking bright lights"
+	penlight_message = "têm lentes cibernéticas polarizadas, bloqueando luzes brilhantes"
 
 /obj/item/organ/eyes/robotic/shield/Initialize(mapload)
 	. = ..()
@@ -121,7 +121,7 @@
 
 /obj/item/organ/eyes/robotic/glow
 	name = "high luminosity eyes"
-	desc = "Special glowing eyes, used by snowflakes who want to be special."
+	desc = "Olhos brilhantes especiais, usados por flocos de neve que querem ser especiais."
 	icon_state = "eyes_cyber_glow"
 	iris_overlay = "eyes_cyber_glow_iris"
 	eye_color_left = "#19191a"
@@ -139,7 +139,7 @@
 	var/left_eye_color_string
 	/// The custom selected eye color for the right eye. Defaults to the mob's natural eye color
 	var/right_eye_color_string
-	penlight_message = "shine back with cybernetic LEDs"
+	penlight_message = "Brilhe de volta com LEDs cibernéticos"
 
 /obj/item/organ/eyes/robotic/glow/Initialize(mapload)
 	. = ..()
@@ -393,12 +393,12 @@
 
 /obj/item/organ/eyes/robotic/moth
 	name = "robotic moth eyes"
-	desc = "Your vision is augmented. Much like actual moth eyes, very sensitive to bright lights."
+	desc = "Sua visão está aumentada. Como olhos de traça, muito sensíveis a luzes brilhantes."
 	icon_state = "eyes_moth_cyber"
 	eye_icon_state = "motheyes_cyber"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	pupils_name = "aperture clusters"
-	penlight_message = "are metal hemispheres, resembling insect eyes"
+	penlight_message = "são hemisférios metálicos, lembrando olhos de insetos."
 
 /obj/item/organ/eyes/robotic/basic/moth
 	name = "basic robotic moth eyes"
@@ -409,11 +409,11 @@
 	blink_animation = FALSE
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	pupils_name = "aperture clusters"
-	penlight_message = "are metal hemispheres, resembling insect eyes"
+	penlight_message = "são hemisférios metálicos, lembrando olhos de insetos."
 
 /obj/item/organ/eyes/robotic/xray/moth
 	name = "moth x-ray eyes"
-	desc = "These cybernetic imitation moth eyes will give you X-ray vision. Blinking is futile. Much like actual moth eyes, very sensitive to bright lights."
+	desc = "Essa imitação cibernética de olhos de mariposa lhe dará visão de raio-X. Piscar é inútil. Como olhos de traça, muito sensíveis a luzes brilhantes."
 	icon_state = "eyes_moth_cyber_xray"
 	eye_icon_state = "motheyes_white"
 	eye_color_left = "#3c4e52"
@@ -430,18 +430,18 @@
 	eye_color_right = "#353845"
 	blink_animation = FALSE
 	pupils_name = "aperture clusters"
-	penlight_message = "have shutters, protecting insectoid compound eyes."
+	penlight_message = "Tem persianas, protegendo olhos compostos de insetos."
 
 /obj/item/organ/eyes/robotic/glow/moth
 	name = "high luminosity moth eyes"
-	desc = "Special glowing eyes, to be one with the lamp. Much like actual moth eyes, very sensitive to bright lights."
+	desc = "Olhos brilhantes especiais, para ser um com a lâmpada. Como olhos de traça, muito sensíveis a luzes brilhantes."
 	icon_state = "eyes_moth_cyber_glow"
 	eye_icon_state = "motheyes_cyber"
 	iris_overlay = "eyes_moth_cyber_glow_iris"
 	blink_animation = FALSE
 	base_eye_state = "eyes_mothglow"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
-	penlight_message = "are bulbous clusters of LEDs and cameras"
+	penlight_message = "são aglomerados de LEDs e câmeras"
 	pupils_name = "aperture clusters"
 
 /obj/item/organ/eyes/robotic/thermals/moth
@@ -453,12 +453,12 @@
 	blink_animation = FALSE
 	flash_protect = FLASH_PROTECTION_HYPER_SENSITIVE
 	pupils_name = "sensor clusters"
-	penlight_message = "are two clustered hemispheres of thermal sensors"
+	penlight_message = "são dois hemisférios agrupados de sensores térmicos."
 
 // Chaplain's special boy
 /obj/item/organ/eyes/night_vision/maintenance_adapted
 	name = "adapted eyes"
-	desc = "These red eyes look like two foggy marbles. They give off a particularly worrying glow in the dark."
+	desc = "Esses olhos vermelhos parecem duas bolas de gude. Eles dão um brilho particularmente preocupante no escuro."
 	icon_state = "eyes_adapted"
 	eye_color_left = "#f74a4d"
 	eye_color_right = "#f74a4d"
@@ -469,17 +469,17 @@
 	low_light_cutoff = list(5, 12, 20)
 	medium_light_cutoff = list(15, 20, 30)
 	high_light_cutoff = list(30, 35, 50)
-	penlight_message = "glow a foggy red, sizzling under the light!"
+	penlight_message = "Brilhe um vermelho enevoado, cintilando soluçando a luz!"
 
 /obj/item/organ/eyes/night_vision/maintenance_adapted/penlight_examine(mob/living/viewer, obj/item/examtool)
 	if(!owner.is_blind())
-		to_chat(owner, span_danger("Your eyes sizzle agonizingly as light is shone on them!"))
+		to_chat(owner, span_danger("Seus olhos brilham agonizantemente como a luz brilha neles!"))
 		apply_organ_damage(20 * examtool.light_power) //that's 0.5 lightpower for a penlight, so one penlight shining is equivalent to two seconds in a lit area
-	return span_danger("[owner.p_Their()] eyes [penlight_message]")
+	return span_danger("[owner.p_Their()]Olhos.[penlight_message]")
 
 /obj/item/organ/eyes/night_vision/maintenance_adapted/on_life(seconds_per_tick)
 	if(owner.get_eye_protection() <= FLASH_PROTECTION_SENSITIVE && !owner.is_blind() && isturf(owner.loc) && owner.has_light_nearby(light_amount=0.5)) //we allow a little more than usual so we can produce light from the adapted eyes
-		to_chat(owner, span_danger("Your eyes! They burn in the light!"))
+		to_chat(owner, span_danger("Seus olhos! Eles queimam na luz!"))
 		apply_organ_damage(10) //blind quickly
 		playsound(owner, 'sound/machines/grill/grillsizzle.ogg', 50)
 	else
@@ -503,7 +503,7 @@
 
 /obj/item/organ/eyes/robotic/tacvisor
 	name = "tactical EFF visor"
-	desc = "A failed attempt at integrating IFF systems directly into soldiers' prefrontal cortex, this complex sensor array has proved to be impractical as the additional load impared the user's ability to recognize people's appearances or voices. The screen is there just for intimidation."
+	desc = "Uma tentativa falhada de integrar sistemas IFF diretamente no córtex pré-frontal dos soldados, esta complexa matriz de sensores provou ser impraticável, pois a carga adicional imparou a capacidade do usuário de reconhecer as aparências ou vozes das pessoas. A tela está lá apenas para intimidação."
 	icon_state = "eyes_tacvisor"
 	eye_icon_state = "eyes_tacvisor"
 	blink_animation = FALSE
@@ -514,7 +514,7 @@
 	flash_protect = FLASH_PROTECTION_WELDER
 	lighting_cutoff = LIGHTING_CUTOFF_MEDIUM
 	pupils_name = "faceplate"
-	penlight_message = "are a wide reinforced faceplate with an inbuilt screen and a multitude of combat sensors"
+	penlight_message = "são uma placa frontal larga reforçada com uma tela integrada e uma infinidade de sensores de combate"
 	light_reactive = FALSE
 	actions_types = list(/datum/action/item_action/organ_action/use)
 	/// Used to detect when unmasked mobs enter range
@@ -583,7 +583,7 @@
 	if(obj_flags & EMAGGED)
 		return FALSE
 	obj_flags |= EMAGGED
-	balloon_alert(user, "perceptual scanners overriden")
+	balloon_alert(user, "Escâneres perceptivos sobrepostos.")
 	return TRUE
 
 /obj/item/organ/eyes/robotic/tacvisor/on_mob_insert(mob/living/carbon/receiver, special, movement_flags)
@@ -761,7 +761,7 @@
 	if (target == owner || !iscarbon(target) && !(isliving(target) && (obj_flags & EMAGGED)))
 		return
 
-	var/list/override_strings = list(span_warning("You're struggling to make out any details..."))
+	var/list/override_strings = list(span_warning("Você está lutando para entender qualquer detalhe..."))
 
 	if (!threat_flags && !(obj_flags & EMAGGED))
 		examine_overrides[EXAMINE_OVERRIDE_PRIORITY_IFF] = override_strings
@@ -777,13 +777,13 @@
 	var/threat_level = victim.assess_threat(threat_flags, lasercolor)
 	switch (threat_level)
 		if (THREAT_ASSESS_MAXIMUM to INFINITY)
-			override_strings += span_boldwarning("Assessed threat level of [threat_level]! Extreme danger of criminal activity!")
+			override_strings += span_boldwarning("Avaliado nível de ameaça de[threat_level]Extremo perigo de atividade criminosa!")
 		if (THREAT_ASSESS_DANGEROUS to THREAT_ASSESS_MAXIMUM)
-			override_strings += span_warning("Assessed threat level of [threat_level]. Criminal scum detected!")
+			override_strings += span_warning("Avaliado nível de ameaça de[threat_level]Escória criminosa detectada!")
 		if (1 to THREAT_ASSESS_DANGEROUS)
-			override_strings += span_notice("Assessed threat level of [threat_level]. Probably not dangerous... yet.")
+			override_strings += span_notice("Avaliado nível de ameaça de[threat_level]Provavelmente não é perigoso... ainda.")
 		else
-			override_strings += span_notice("Seems to be a trustworthy individual.")
+			override_strings += span_notice("Parece ser um indivíduo confiável.")
 
 	examine_overrides[EXAMINE_OVERRIDE_PRIORITY_IFF] = override_strings
 
@@ -866,7 +866,7 @@
 
 /obj/item/organ/eyes/robotic/tacvisor/screwdriver_act(mob/living/user, obj/item/tool)
 	user_controls = !user_controls
-	balloon_alert(user, "user controls [user_controls ? "enabled" : "disabled"]")
+	balloon_alert(user, "Controles do usuário[user_controls ? "enabled" : "disabled"]")
 	if (user_controls)
 		add_item_action(/datum/action/item_action/organ_action/use)
 	else
@@ -876,8 +876,8 @@
 
 /obj/item/organ/eyes/robotic/tacvisor/examine(mob/user)
 	. = ..()
-	. += span_notice("Its settings can be changed with a [EXAMINE_HINT("multitool")].")
-	. += span_notice("User configuration switch is currently in the [user_controls ? "on" : "off"] position, and could be flipped wtih a [EXAMINE_HINT("screwdriver")].")
+	. += span_notice("Suas configurações podem ser alteradas com[EXAMINE_HINT("multitool")].")
+	. += span_notice("O interruptor de configuração do usuário está no momento.[user_controls ? "on" : "off"]posição, e poderia ser virado para[EXAMINE_HINT("screwdriver")].")
 
 /obj/item/organ/eyes/robotic/tacvisor/proc/on_entered(mob/living/source)
 	if (source in direct_view_tracking)

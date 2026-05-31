@@ -11,7 +11,7 @@
 
 /obj/machinery/brm
 	name = "boulder retrieval matrix"
-	desc = "A teleportation matrix used to retrieve boulders excavated by mining NODEs from ore vents."
+	desc = "Uma matriz de teletransporte usada para recuperar pedregulhos escavados pela mineração de NODEs de respiradouros de minério."
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "brm"
 	base_icon_state = "brm"
@@ -58,19 +58,19 @@
 
 /obj/machinery/brm/examine(mob/user)
 	. = ..()
-	. += span_notice("The small screen reads there are [span_boldnotice("[SSore_generation.available_boulders.len] boulders")] available to teleport.")
-	. += span_notice("Can collect up to <b>[boulders_processing_max] boulders</b> at a time.")
-	. += span_notice("Automatic boulder retrieval can be toggled [EXAMINE_HINT("[toggled_on ? "Off" : "On"]")] with [EXAMINE_HINT("Right Click")].")
+	. += span_notice("A pequena tela diz que há[span_boldnotice("[SSore_generation.available_boulders.len] boulders")]disponível para teletransporte.")
+	. += span_notice("Pode pegar até<b>[boulders_processing_max]Pedras.</b>De uma vez.")
+	. += span_notice("Recuperação automática de pedras pode ser trocada.[EXAMINE_HINT("[toggled_on ? "Off" : "On"]")]Com[EXAMINE_HINT("Right Click")].")
 
 	if(anchored)
-		. += span_notice("It's [EXAMINE_HINT("anchored")] in place.")
+		. += span_notice("É...[EXAMINE_HINT("anchored")]Nenhum lugar.")
 	else
-		. += span_warning("It needs to be [EXAMINE_HINT("anchored")] to start operations.")
+		. += span_warning("Precisa ser[EXAMINE_HINT("anchored")]para iniciar operações.")
 
-	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
+	. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
 
 	if(panel_open)
-		. += span_notice("The whole machine can be [EXAMINE_HINT("pried")] apart.")
+		. += span_notice("A máquina inteira pode ser[EXAMINE_HINT("pried")]Separados.")
 
 /obj/machinery/brm/update_icon_state()
 	icon_state = base_icon_state
@@ -143,10 +143,10 @@
 	if(!COOLDOWN_FINISHED(src, manual_teleport_cooldown))
 		return FALSE
 	if(panel_open)
-		balloon_alert(user, "feche o painel primeiro!")
+		balloon_alert(user, "Feche o painel primeiro!")
 		return FALSE
 	if(batch_processing)
-		balloon_alert(user, "batch still processing!")
+		balloon_alert(user, "O lote ainda está processando!")
 		return FALSE
 	playsound(src, MANUAL_TELEPORT_SOUND, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	return TRUE
@@ -190,7 +190,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN || panel_open)
 		return
 	if(!anchored)
-		balloon_alert(user, "ancore primeiro!")
+		balloon_alert(user, "Ancore primeiro!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	toggle_auto_on(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -206,10 +206,10 @@
 	PRIVATE_PROC(TRUE)
 
 	if(panel_open)
-		balloon_alert(user, "feche o painel primeiro!")
+		balloon_alert(user, "Feche o painel primeiro!")
 		return
 	if(!anchored)
-		balloon_alert(user, "ancore primeiro!")
+		balloon_alert(user, "Ancore primeiro!")
 		return
 	if(!is_operational || machine_stat & (BROKEN | NOPOWER))
 		return
@@ -226,7 +226,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN || panel_open)
 		return
 	if(!anchored)
-		balloon_alert(user, "unanchored!")
+		balloon_alert(user, "Sem ancoração!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	toggle_auto_on(user)
@@ -239,7 +239,7 @@
 	if(!user.can_perform_action(src, ALLOW_SILICON_REACH | FORBID_TELEKINESIS_REACH))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(!anchored)
-		balloon_alert(user, "unanchored!")
+		balloon_alert(user, "Sem ancoração!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	toggle_auto_on(user)

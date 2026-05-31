@@ -3,7 +3,7 @@
 	filedesc = "NT Shopping Network"
 	downloader_category = PROGRAM_CATEGORY_SUPPLY
 	program_open_overlay = "request"
-	extended_desc = "Nanotrasen Shopping Network interface for purchasing supplies from the cargo catalogue using a department budget account."
+	extended_desc = "Nanotrasen Shopping Network interface para comprar suprimentos do catálogo de carga usando uma conta de orçamento do departamento."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	can_run_on_flags = PROGRAM_LAPTOP | PROGRAM_PDA
 	size = 10
@@ -18,9 +18,7 @@
 	///Can this console approve purchase requests?
 	var/can_approve_requests = FALSE
 	///What do we say when the shuttle moves with living beings on it.
-	var/safety_warning = "For safety and ethical reasons, the automated supply shuttle cannot transport live organisms, \
-		human remains, classified nuclear weaponry, mail, undelivered departmental order crates, syndicate bombs, \
-		homing beacons, unstable eigenstates, or machinery housing any form of artificial intelligence."
+	var/safety_warning = "For safety and ethical reasons, the automated supply shuttle cannot transport live organisms, 		human remains, classified nuclear weaponry, mail, undelivered departmental order crates, syndicate bombs, 		homing beacons, unstable eigenstates, or machinery housing any form of artificial intelligence."
 	///If you're being raided by pirates, what do you tell the crew?
 	var/blockade_warning = "Bluespace instability detected. Shuttle movement impossible."
 	///The name of the shuttle template being used as the cargo shuttle. 'cargo' is default and contains critical code. Don't change this unless you know what you're doing.
@@ -264,7 +262,7 @@
 			if(id_card_customer?.registered_account?.account_job && !self_paid) //Find a budget to pull from
 				personal_department = SSeconomy.get_dep_account(id_card_customer.registered_account.account_job.paycheck_department)
 				if(!(personal_department.account_holder == "Cargo Budget"))
-					var/dept_choice = tgui_alert(user, "Which department are you requesting this for?", "Choose request department", list("Cargo Budget", "[personal_department.account_holder]"))
+					var/dept_choice = tgui_alert(user, "Para que departamento está pedindo isso?", "Choose request department", list("Cargo Budget", "[personal_department.account_holder]"))
 					if(!dept_choice)
 						return
 					if(dept_choice == "Cargo Budget")

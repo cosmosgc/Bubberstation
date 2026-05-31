@@ -2,7 +2,7 @@
 /obj/item/fish/emulsijack
 	name = "toxic emulsijack"
 	fish_id = "emulsijack"
-	desc = "Ah, the terrifying emulsijack. Created in a laboratory, the only real use of this slimey, scaleless fish is for completely ruining a tank."
+	desc = "Ah, o terrível emulsijack. Criado em um laboratório, o único uso real deste peixe viscoscos, sem escala é para arruinar completamente um tanque."
 	icon_state = "emulsijack"
 	random_case_rarity = FISH_RARITY_GOOD_LUCK_FINDING_THIS
 	required_fluid_type = AQUARIUM_FLUID_ANADROMOUS
@@ -20,7 +20,7 @@
 /obj/item/fish/donkfish
 	name = "donk co. company patent donkfish"
 	fish_id = "donkfish"
-	desc = "A lab-grown donkfish. Its invention was an accident for the most part, as it was intended to be consumed in donk pockets. Unfortunately, it tastes horrible, so it has now become a pseudo-mascot."
+	desc = "Um donkfish criado no laboratório. Sua invenção foi um acidente para a maior parte, como era destinado a ser consumido em bolsos de donk. Infelizmente, tem um gosto horrível, então agora se tornou um pseudo mascote."
 	icon_state = "donkfish"
 	random_case_rarity = FISH_RARITY_VERY_RARE
 	stable_population = 4
@@ -33,7 +33,7 @@
 	beauty = FISH_BEAUTY_EXCELLENT
 
 /obj/item/fish/donkfish/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] swallows [src] whole! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Andorinhas[src]Inteiro! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	if(!ishuman(user))
 		return TOXLOSS
 
@@ -47,8 +47,7 @@
 /obj/item/fish/jumpercable
 	name = "monocloning jumpercable"
 	fish_id = "jumpercable"
-	desc = "A surprisingly useful if nasty looking creation from the syndicate fish labs. Drop one in a tank, and \
-		watch it self-feed and multiply. Generates more and more power as a growing swarm!"
+	desc = "Uma criação surpreendentemente útil se de aparência desagradável dos laboratórios de peixes do sindicato. Jogue um em um tanque, e veja se auto-alimenta e se multiplica. Gera mais e mais poder como um enxame crescente!"
 	icon_state = "jumpercable"
 	sprite_width = 16
 	sprite_height = 5
@@ -72,7 +71,7 @@
 	return ..() * 0.04
 
 /obj/item/fish/jumpercable/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] hooks both ends of [src] to their chest! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Ganchos em ambas como extensões.[src]Sem pito deles! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	electrocute_mob(user, power_source = get_area(src), source = src, siemens_coeff = 1, dist_check = FALSE)
 	tesla_zap(source = user, zap_range = 4, power = electrogenesis_power, cutoff = 1e3, zap_flags = ZAP_LOW_POWER_GEN|ZAP_MOB_DAMAGE)
 	playsound(user, 'sound/items/weapons/zapbang.ogg', 75)
@@ -81,7 +80,7 @@
 /obj/item/fish/chainsawfish
 	name = "chainsawfish"
 	fish_id = "chainsawfish"
-	desc = "A very, very angry bioweapon, whose sole purpose is to rip and tear."
+	desc = "Uma arma biológica muito furiosa, cujo único propósito é rasgar e rasgar."
 	icon = 'icons/obj/aquarium/wide.dmi'
 	icon_state = "chainsawfish"
 	inhand_icon_state = "chainsawfish"
@@ -203,11 +202,11 @@
 // you suicide like a real chainsaw
 /obj/item/fish/chainsawfish/suicide_act(mob/living/carbon/user)
 	if(status == FISH_DEAD)
-		user.visible_message(span_suicide("[user] smashes [src] into [user.p_their()] neck, destroying [user.p_their()] esophagus! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user]Esmaga.[src]Em[user.p_their()]pescoço, destruindo[user.p_their()]Esófago! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 		playsound(src, 'sound/items/weapons/genhit1.ogg', 100, TRUE)
 		return BRUTELOSS
 
-	user.visible_message(span_suicide("[user] begins to tear [user.p_their()] head off with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Começa a rasgar[user.p_their()]cabeça fora com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	playsound(src, 'sound/items/weapons/chainsawhit.ogg', 100, TRUE)
 	var/obj/item/bodypart/head/myhead = user.get_bodypart(BODY_ZONE_HEAD)
 	if(myhead)
@@ -217,7 +216,7 @@
 /obj/item/fish/pike/armored
 	name = "armored pike"
 	fish_id = "armored_pike"
-	desc = "A long-bodied, metal-clad predator with a snout that almost looks like a halberd. Definitely a weapon to swing around."
+	desc = "Um predador encorpado de metal com um focinho que quase parece uma alabarda. Definitivamente uma arma para girar."
 	icon_state = "armored_pike"
 	inhand_icon_state = "armored_pike"
 	attack_verb_continuous = list("attacks", "pokes", "jabs", "tears", "lacerates", "gores")

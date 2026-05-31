@@ -1,8 +1,5 @@
 /obj/machinery/microwave/frontier_printed
-	desc = "A plastic-paneled microwave oven, capable of doing anything a standard microwave could do. \
-		This one is special designed to be tightly packed into a shape that can be easily re-assembled \
-		later from the factory. There don't seem to be included instructions on getting it folded back \
-		together, though..."
+	desc = "Um forno de microondas de painéis plásticos, capaz de fazer qualquer coisa que um micro-ondas padrão pudesse fazer. Este é especial projetado para ser firmemente embalado em uma forma que pode ser facilmente montado mais tarde da fábrica. Parece que não há instruções para dobrá-lo de volta."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/kitchen_stuff/microwave.dmi'
 	circuit = null
 	max_n_of_items = 5
@@ -21,7 +18,7 @@
 
 /obj/machinery/microwave/frontier_printed/examine(mob/user)
 	. = ..()
-	. += span_notice("It cannot be repacked, but can be deconstructed normally.")
+	. += span_notice("Não pode ser reembalado, mas pode ser desconstruído normalmente.")
 
 /obj/machinery/microwave/frontier_printed/unanchored
 	anchored = FALSE

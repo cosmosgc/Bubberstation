@@ -10,7 +10,7 @@
 /obj/structure/flora/ocean/glowweed
 	name = "glow weed"
 	icon_state = "glowweed"
-	desc = "A plant with glowing bulbs at the end of it."
+	desc = "Uma planta com lâmpadas brilhantes no final."
 	random_variants = 3
 	light_color = LIGHT_COLOR_CYAN
 	light_range = 1.5
@@ -18,19 +18,19 @@
 /obj/structure/flora/ocean/seaweed
 	name = "sea weed"
 	icon_state = "seaweed"
-	desc = "Just your regular seaweed."
+	desc = "Apenas suas algas normais."
 	random_variants = 5
 
 /obj/structure/flora/ocean/longseaweed
 	name ="sea weed"
 	icon_state = "longseaweed"
-	desc = "Less so regular seaweed. This one is very long."
+	desc = "Menos algas normais. Este é muito longo."
 	random_variants = 4
 
 /obj/structure/flora/ocean/coral
 	name = "coral"
 	icon_state = "coral"
-	desc = "Beautiful coral."
+	desc = "Coral Lindo."
 	random_variants = 3
 	density = TRUE
 
@@ -42,7 +42,7 @@
 
 /obj/structure/flora/scrap
 	name = "scrap metal"
-	desc = "A huge chunk of metal, rusted and worn. Perhaps it can still be salvaged into something useful."
+	desc = "Um enorme pedaço de metal, enferrujado e desgastado. Talvez ainda possa ser recuperado em algo útil."
 	icon = 'modular_skyrat/modules/liquids/icons/obj/flora/scrap.dmi'
 	icon_state = "scrap"
 	anchored = FALSE
@@ -63,11 +63,11 @@
 
 	playsound(src, 'sound/items/tools/welder2.ogg', 50, TRUE)
 	if(first)
-		to_chat(user, span_notice("You start slicing the [src]..."))
+		to_chat(user, span_notice("Você começa a cortar o[src]..."))
 	if(I.use_tool(src, user, 2 SECONDS))
 		welds_remaining--
 		if(welds_remaining <= 0)
-			to_chat(user, span_notice("You successfully salvage [src]."))
+			to_chat(user, span_notice("Você salvou com sucesso.[src]."))
 			new /obj/item/stack/sheet/iron(get_turf(src), rand(SCRAP_METAL_YIELD_LOW, SCRAP_METAL_YIELD_HIGH))
 			qdel(src)
 		else

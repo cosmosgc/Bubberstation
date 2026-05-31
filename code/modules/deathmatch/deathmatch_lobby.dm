@@ -60,7 +60,7 @@
 	if (playing)
 		return
 	if(map.template_in_use)
-		to_chat(get_mob_by_ckey(host), span_warning("This map is currently loading for another lobby. Please wait until that other map finishes loading. It would be a disaster if these two mixed up."))
+		to_chat(get_mob_by_ckey(host), span_warning("Este mapa está carregando para outro saguão. Por favor, espere até o outro mapa terminar de carregar. Seria um desastre se estes dois se misturassem."))
 		return
 	playing = DEATHMATCH_PRE_PLAYING
 
@@ -68,7 +68,7 @@
 	RegisterSignal(map, COMSIG_LAZY_TEMPLATE_LOADED, PROC_REF(find_spawns_and_start_delay))
 	location = map.lazy_load()
 	if (!location)
-		to_chat(get_mob_by_ckey(host), span_warning("Couldn't reserve/load a map location (all locations used?), try again later, or contact a coder."))
+		to_chat(get_mob_by_ckey(host), span_warning("Não poderia reservar ou carregar um mapa (todos os locais usados?), tentar novamente mais tarde, ou contactar um codificador."))
 		playing = FALSE
 		map.template_in_use = FALSE
 		UnregisterSignal(map, COMSIG_LAZY_TEMPLATE_LOADED)
@@ -116,12 +116,12 @@
 	playing = DEATHMATCH_PLAYING
 	addtimer(CALLBACK(src, PROC_REF(game_took_too_long)), initial(map.automatic_gameend_time))
 	log_game("Deathmatch game [host] started.")
-	announce(span_reallybig("GO!"))
+	announce(span_reallybig("Vai!"))
 	if(length(modifiers))
 		var/list/modifier_names = list()
 		for(var/datum/deathmatch_modifier/modifier as anything in modifiers)
 			modifier_names += uppertext(initial(modifier.name))
-		announce(span_boldnicegreen("THIS MATCH MODIFIERS: [english_list(modifier_names, and_text = " ,")]."))
+		announce(span_boldnicegreen("ESTE MATERIAL MODIFICA:[english_list(modifier_names, and_text = " ,")]."))
 	return TRUE
 
 /datum/deathmatch_lobby/proc/spawn_observer_as_player(ckey, loc)
@@ -144,10 +144,7 @@
 	new_player.updateappearance(icon_update = TRUE, mutcolor_update = TRUE, mutations_overlay_update = TRUE)
 	new_player.add_traits(list(TRAIT_CANNOT_CRYSTALIZE, TRAIT_PERMANENTLY_MORTAL, TRAIT_TEMPORARY_BODY), INNATE_TRAIT)
 	if(observer.mind)
-		new_player.AddComponent( \
-			/datum/component/temporary_body, \
-			old_mind = observer.mind, \
-		)
+		new_player.AddComponent( 			/datum/component/temporary_body, 			old_mind = observer.mind, 		)
 	new_player.equipOutfit(loadout) // Loadout
 	new_player.PossessByPlayer(ckey)
 	players_info["mob"] = new_player
@@ -175,13 +172,13 @@
 /datum/deathmatch_lobby/proc/game_took_too_long()
 	if (!location || QDELING(src))
 		return
-	announce(span_reallybig("The players have took too long! Game ending!"))
+	announce(span_reallybig("Os jogadores demoraram muito! Fim do jogo!"))
 	end_game()
 
 /datum/deathmatch_lobby/proc/lobby_afk_probably()
 	if (QDELING(src) || playing)
 		return
-	announce(span_warning("Lobby ([host]) was closed due to not starting after 5 minutes, being potentially AFK. Please be faster next time."))
+	announce(span_warning("Lobby ([host]) foi fechado devido a não começar após 5 minutos, sendo potencialmente AFK. Por favor, seja mais rápido da próxima vez."))
 	GLOB.deathmatch_game.remove_lobby(host)
 
 /datum/deathmatch_lobby/proc/end_game()
@@ -193,7 +190,7 @@
 		if(!isnull(winner_info["mob"]))
 			winner = winner_info["mob"] //only one should remain anyway but incase of a draw
 
-	announce(span_reallybig("THE GAME HAS ENDED.<BR>THE WINNER IS: [winner ? winner.real_name : "no one"]."))
+	announce(span_reallybig("O jogo terminou.<BR>O vencedor é:[winner ? winner.real_name : "no one"]."))
 
 	for(var/ckey in players)
 		var/mob/loser = players[ckey]["mob"]
@@ -238,7 +235,7 @@
 	var/mob/dead/observer/ghost = !player.client ? player.get_ghost() : player.ghostize() //this doesnt work on those who used the ghost verb
 	if(!isnull(ghost))
 		add_observer(ghost, (host == ckey))
-	announce(span_reallybig("[player.real_name] HAS DIED.<br>[players.len] REMAIN."))
+	announce(span_reallybig("[player.real_name]Morreu.<br>[players.len]Mantenha-se firme."))
 
 	//Bubber Edit - retain respawn timer
 	var/mob/dead_player_mob = get_mob_by_ckey(ckey)
@@ -431,7 +428,7 @@
 			if (usr.ckey != host)
 				return FALSE
 			if (map.min_players > players.len)
-				to_chat(usr, span_warning("Not enough players to start yet."))
+				to_chat(usr, span_warning("Ainda não há jogadores suficientes para começar."))
 				return FALSE
 			start_game()
 			return TRUE

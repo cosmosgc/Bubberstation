@@ -12,7 +12,7 @@
  */
 /obj/machinery/armament_station
 	name = "Armament Outfitting Station"
-	desc = "A versatile station for equipping your weapons."
+	desc = "Uma estação versátil para equipar suas armas."
 	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "liberationstation"
 	density = TRUE
@@ -35,7 +35,7 @@
  */
 /obj/item/armament_points_card
 	name = "armament points card"
-	desc = "A points card that can be used at an Armaments Station or Armaments Dealer."
+	desc = "Um cartão de pontos que pode ser usado em uma Estação de Armamentos ou Vendedor de Armamentos."
 	icon = 'modular_skyrat/modules/armaments/icons/armaments.dmi'
 	icon_state = "armament_card"
 	w_class = WEIGHT_CLASS_TINY
@@ -48,7 +48,7 @@
 
 /obj/item/armament_points_card/examine(mob/user)
 	. = ..()
-	. += span_notice("It has [points] points left.")
+	. += span_notice("Tem.[points]Pontos à esquerda.")
 
 /obj/item/armament_points_card/proc/use_points(points_to_use)
 	if(points_to_use > points)
@@ -68,7 +68,7 @@
 	if(istype(attacking_item, /obj/item/armament_points_card))
 		var/obj/item/armament_points_card/attacking_card = attacking_item
 		if(!attacking_card.points)
-			to_chat(user, span_warning("No points left on [attacking_card]!"))
+			to_chat(user, span_warning("Não há mais pontos.[attacking_card]!"))
 			return
 		var/points_to_transfer = clamp(tgui_input_number(user, "How many points do you want to transfer?", "Transfer Points", 1, attacking_card.points, 1), 0, attacking_card.points)
 
@@ -81,4 +81,4 @@
 		if(attacking_card.use_points(points_to_transfer))
 			points += points_to_transfer
 			update_maptext()
-			to_chat(user, span_notice("You transfer [points_to_transfer] onto [src]!"))
+			to_chat(user, span_notice("Você se transferiu.[points_to_transfer]em frente[src]!"))

@@ -212,13 +212,13 @@
 
 /obj/structure/closet/secure_closet/brig/genpop
 	name = "genpop storage locker"
-	desc = "Used for storing the belongings of genpop's tourists visiting the locals."
+	desc = "Usado para armazenar os pertences dos turistas do Genpop visitando os locais."
 	access_choices = FALSE
 	paint_jobs = null
 
 /obj/structure/closet/secure_closet/brig/genpop/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Right-click</b> with a Security-level ID to reset [src]'s registered ID.")
+	. += span_notice("<b>Botão direito</b>com uma identificação de nível de segurança para reiniciar[src]Identidade registrada.")
 
 /obj/structure/closet/secure_closet/brig/genpop/attackby(obj/item/card/id/advanced/prisoner/user_id, mob/user, list/modifiers, list/attack_modifiers)
 	if(!secure || !istype(user_id))

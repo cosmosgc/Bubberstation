@@ -54,7 +54,7 @@ const GeneticMakeupBufferInfo = (props) => {
             }
           >
             Transfer
-            {!isViableSubject && ' (Delayed)'}
+            {!isViableSubject && '(Atrasado)'}
           </Button>
         </LabeledList.Item>
         <LabeledList.Item label="Identity">
@@ -79,7 +79,7 @@ const GeneticMakeupBufferInfo = (props) => {
             }
           >
             Transfer
-            {!isViableSubject && ' (Delayed)'}
+            {!isViableSubject && '(Atrasado)'}
           </Button>
         </LabeledList.Item>
         <LabeledList.Item label="Features">
@@ -104,10 +104,10 @@ const GeneticMakeupBufferInfo = (props) => {
             }
           >
             Transfer
-            {!isViableSubject && ' (Delayed)'}
+            {!isViableSubject && '(Atrasado)'}
           </Button>
         </LabeledList.Item>
-        <LabeledList.Item label="Full Makeup">
+        <LabeledList.Item label="Maquiagem completa">
           <Button
             icon="syringe"
             disabled={!isInjectorReady}
@@ -129,14 +129,14 @@ const GeneticMakeupBufferInfo = (props) => {
             }
           >
             Transfer
-            {!isViableSubject && ' (Delayed)'}
+            {!isViableSubject && '(Atrasado)'}
           </Button>
         </LabeledList.Item>
         <LabeledList.Item>
           <Button
             icon="save"
             disabled={!hasDisk || diskReadOnly}
-            content="Export To Disk"
+            content="Exportar para Disco"
             onClick={() =>
               act('save_makeup_disk', {
                 index,
@@ -208,7 +208,7 @@ const GeneticMakeupBuffers = (props) => {
     elements.push(element);
   }
   return (
-    <Section title="Genetic Makeup Buffers">
+    <Section title="Buffers de maquiagem genética">
       {!!geneticMakeupCooldown && (
         <Dimmer fontSize="14px" textAlign="center">
           <Icon mr={1} name="spinner" spin />
@@ -289,9 +289,9 @@ const PulseSettings = (props) => {
   const { data, act } = useBackend();
   const { pulseStrength, pulseDuration } = data;
   return (
-    <Section title="Emitter Configuration" minHeight="100%">
+    <Section title="Configuração do emissor" minHeight="100%">
       <LabeledList>
-        <LabeledList.Item label="Output level">
+        <LabeledList.Item label="Nível de saída">
           <NumberInput
             animated
             tickWhileDragging
@@ -308,7 +308,7 @@ const PulseSettings = (props) => {
             }
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Pulse duration">
+        <LabeledList.Item label="Duração do pulso">
           <NumberInput
             animated
             tickWhileDragging

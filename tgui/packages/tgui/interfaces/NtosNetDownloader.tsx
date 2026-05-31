@@ -101,7 +101,7 @@ export const NtosNetDownloader = (props) => {
         <Section>
           <LabeledList>
             <LabeledList.Item
-              label="Hard drive"
+              label="Disco rígido"
               buttons={
                 (!!downloading && (
                   <Button
@@ -140,7 +140,7 @@ export const NtosNetDownloader = (props) => {
           <Input
             autoFocus
             height="23px"
-            placeholder="Search program name..."
+            placeholder="Procurar o nome do programa..."
             fluid
             value={searchItem}
             onChange={setSearchItem}
@@ -220,7 +220,7 @@ const Program = (props) => {
                   content="Download"
                   disabled={downloading}
                   tooltipPosition="left"
-                  tooltip={!!downloading && 'Awaiting download completion...'}
+                  tooltip={!!downloading && 'Esperando a finalização do download...'}
                   onClick={() =>
                     act('PRG_downloadfile', {
                       filename: program.filename,
@@ -244,8 +244,8 @@ const Program = (props) => {
                     : !program.compatible
                       ? 'Incompatible'
                       : !program.access
-                        ? 'No Access'
-                        : 'No Space'
+                        ? 'Sem acesso.'
+                        : 'Sem espaço.'
                 }
               />
             )}

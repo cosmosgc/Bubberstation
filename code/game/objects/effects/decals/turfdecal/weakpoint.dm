@@ -6,7 +6,7 @@
 
 /obj/effect/weakpoint
 	name = "weakpoint crack"
-	desc = "A suspicious crack runs along the ground."
+	desc = "Uma rachadura suspeita corre pelo chão."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "weakpoint"
 	base_icon_state = "weakpoint"
@@ -65,10 +65,10 @@
 	qdel(src)
 
 /obj/effect/weakpoint/welder_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("You begin to strengthen [src]..."))
+	to_chat(user, span_notice("Você começa a fortalecer[src]..."))
 	if(!tool.use_tool(src, user, 4 SECONDS, amount = 1, volume=50))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("\The [src] is fully sealed, eliminating the risk of the weakpoint growing."))
+	to_chat(user, span_notice("\The [src]está totalmente selado, eliminando o risco de o ponto fraco crescer."))
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
@@ -77,7 +77,7 @@
 		var/obj/item/stack/medical/wrap/sticky_tape/duct_tape = tool
 		if(!duct_tape.use(1))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("\The [src] is sealed with a little elbow grease and a mound of [duct_tape]."))
+		to_chat(user, span_notice("\The [src]é selado com um pouco de graxa de cotovelo e um monte de[duct_tape]."))
 		qdel(src)
 		return ITEM_INTERACT_SUCCESS
 	return ..()
@@ -91,8 +91,8 @@
 
 /obj/effect/weakpoint/examine(mob/user)
 	. = ..()
-	. += span_notice("\The [src] could be repaired with a welder.")
-	. += span_warning("A strong enough explosion will cause [src] to expand.")
+	. += span_notice("\The [src]Pode ser consertado com um soldador.")
+	. += span_warning("Uma explosão suficientemente forte causará[src]Para expandir.")
 
 /**
  * Generates a list of turfs from the start location meandering along a randomized set of turns.
@@ -179,13 +179,13 @@
 	notify_ghosts(
 		"A new crack has been spawned in [get_area(src)].",
 		source = pick(new_cracks),
-		header = "Weakpoint created",
+		header = "Fraqueza criada",
 		ghost_sound = 'sound/effects/hit_kick.ogg',
 	)
 
 /obj/effect/weakpoint/big
 	name = "dangerous weakpoint"
-	desc = "A suspicious crack runs along the ground. This one makes you feel particuarly uneasy."
+	desc = "Uma rachadura suspeita corre pelo chão. Este faz você se sentir particularmente desconfortável."
 	icon_state = "weakpoint"
 	crack_length = 15
 	crack_split_count = 6

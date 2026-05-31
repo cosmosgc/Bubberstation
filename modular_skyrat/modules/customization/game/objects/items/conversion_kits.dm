@@ -1,6 +1,6 @@
 /obj/item/device/custom_kit
 	name = "modification kit"
-	desc = "A box of parts for modifying a certain object."
+	desc = "Uma caixa de peças para modificar um objeto."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
 	icon_state = "partskit"
 	/// The base object to be converted.
@@ -12,12 +12,12 @@
 	if(isturf(interacting_with)) //This shouldn't be needed, but apparently it throws runtimes otherwise.
 		return NONE
 	if(interacting_with.type != from_obj) //Checks whether the item is eligible to be converted
-		to_chat(user, span_warning("It looks like this kit won't work on [interacting_with]..."))
+		to_chat(user, span_warning("Parece que este kit não vai funcionar.[interacting_with]..."))
 		return ITEM_INTERACT_BLOCKING
 	if(!pre_convert_check(interacting_with, user))
 		return ITEM_INTERACT_BLOCKING
 	var/obj/item/converted_item = new to_obj
-	user.visible_message(span_notice("[user] modifies [interacting_with] into [converted_item]."), span_notice("You modify [interacting_with] into [converted_item]."))
+	user.visible_message(span_notice("[user]modifica[interacting_with]em[converted_item]."), span_notice("Você modifica.[interacting_with]em[converted_item]."))
 	qdel(interacting_with)
 	qdel(src)
 	user.put_in_hands(converted_item)

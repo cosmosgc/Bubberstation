@@ -1,6 +1,6 @@
 /datum/action/cooldown/fly
 	name = "Toggle fly"
-	desc = "Grand you ability to move freely and cross the space."
+	desc = "Grande habilidade de se mover livremente e atravessar o espaço."
 
 	button_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "lintel"
@@ -25,7 +25,7 @@
 	owner.movement_type = FLYING
 	owner.plane += 2
 	enabled = TRUE
-	owner.visible_message(span_notice("[owner.name], takes off over the ground."), span_notice("You going fly."))
+	owner.visible_message(span_notice("[owner.name], decola sobre o chão."), span_notice("Você vai voar."))
 	playsound(owner, 'sound/effects/gravhit.ogg', 25)
 	ADD_TRAIT(owner, TRAIT_FORCED_GRAVITY, REF(src))
 	animate(owner, 5 SECONDS, alpha = 100)
@@ -36,7 +36,7 @@
 	owner.movement_type = initial(owner.movement_type)
 	owner.plane = initial(owner.plane)
 	enabled = FALSE
-	owner.visible_message(span_notice("[owner.name], has landed on the ground."), span_notice("You land on the ground."))
+	owner.visible_message(span_notice("[owner.name], pousou no chão."), span_notice("Você pousa no chão."))
 	playsound(owner, 'sound/effects/gravhit.ogg', 25)
 	REMOVE_TRAIT(owner, TRAIT_FORCED_GRAVITY, REF(src))
 	owner.alpha = initial(owner.alpha)

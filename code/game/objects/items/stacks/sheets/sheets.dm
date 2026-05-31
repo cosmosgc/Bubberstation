@@ -43,7 +43,7 @@
 /obj/item/stack/sheet/examine(mob/user)
 	. = ..()
 	if (manufactured && gulag_valid)
-		. += span_notice("It has been embossed with a manufacturer's mark of guaranteed quality.")
+		. += span_notice("Foi gravado com uma marca do fabricante de qualidade garantida.")
 
 	var/datum/material/material = get_master_material()
 	if (!HAS_TRAIT(user, TRAIT_RESEARCH_SCANNER) || !material)
@@ -61,7 +61,7 @@
 			material_string += span_tooltip("[property]: [tooltip_hint]", descriptor)
 
 	if (length(material_string))
-		. += span_info("[capitalize(material.name)] is [english_list(material_string)].")
+		. += span_info("[capitalize(material.name)]É[english_list(material_string)].")
 
 /obj/item/stack/sheet/add(_amount)
 	. = ..()
@@ -96,7 +96,7 @@
 	if(!shards.len)
 		return FALSE
 	if(!use(1))
-		to_chat(user, is_cyborg ? span_warning("There is not enough material in the synthesizer to produce a shard!") : span_warning("Somehow, there is not enough of [src] to shatter!"))
+		to_chat(user, is_cyborg ? span_warning("Não há material suficiente no sintetizador para produzir um fragmento!") : span_warning("De alguma forma, não há o suficiente de[src]Para quebrar!"))
 		if(!is_cyborg)
 			stack_trace("A stack of sheet material was attempted to be shattered into shards while having less than 1 sheets remaining.")
 		return FALSE
@@ -107,7 +107,6 @@
 		var/obj/item/new_shard = new shard_to_create(target)
 		new_shard.add_fingerprint(user)
 		shards_created += "[new_shard.name]"
-	user.visible_message(span_notice("[user] shatters the sheet of [name] on [target], leaving [english_list(shards_created)]."), \
-		span_notice("You shatter the sheet of [name] on [target], leaving [english_list(shards_created)]."))
+	user.visible_message(span_notice("[user]Quebre a folha de[name]Vamos.[target], deixando[english_list(shards_created)]."), 		span_notice("Você quebrou o lençol de[name]Vamos.[target], deixando[english_list(shards_created)]."))
 	return TRUE
 

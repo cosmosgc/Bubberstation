@@ -1,6 +1,6 @@
 /datum/quirk/death_consequences
 	name = DEATH_CONSEQUENCES_QUIRK_NAME
-	desc = "Every time you die, your body suffers long-term damage that can't easily be repaired."
+	desc = "Toda vez que você morre, seu corpo sofre danos a longo prazo que não podem ser facilmente reparados."
 	medical_record_text = DEATH_CONSEQUENCES_QUIRK_DESC
 	icon = FA_ICON_DNA
 	value = 0 // due to its high customization, you can make it really inconsequential
@@ -20,11 +20,7 @@
 	if (!isnull(added_trauma))
 		added_trauma.update_variables(client_source)
 
-	to_chat(human_holder, span_danger("You suffer from [src]. By default, you will \
-		degrade every time you die, and recover very slowly while alive. This may be expedited by resting, sleeping, being buckled \
-		to something cozy, or using rezadone.\n\
-		As your degradation rises, so too will negative effects, such as stamina damage or a worsened crit threshold.\n\
-		You can alter your degradation on the fly via the Adjust death degradation verb, and change your settings via the Refresh death consequence variables verb."))
+	to_chat(human_holder, span_danger("Você sofre de[src]Por padrão, você degradará cada vez que morrer, e se recuperará lentamente enquanto estiver vivo. Isso pode ser acelerado por descansar, dormir, ser amarrado a algo aconchegante, ou usar Rezadone.\nÀ medida que sua degradação aumenta, também os efeitos negativos, como danos na resistência ou um limiar de hematócrito pior.\nVocê pode alterar sua degradação na mosca através do verbo Ajustar a degradação da morte, e mudar suas configurações através do verbo Atualizar as variáveis da consequência da morte."))
 
 /datum/quirk/death_consequences/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder
@@ -37,26 +33,25 @@
 	set instant = TRUE
 
 	if (isnull(mind))
-		to_chat(usr, span_warning("You have no mind!"))
+		to_chat(usr, span_warning("Você não tem mente!"))
 		return
 
 	var/datum/brain_trauma/severe/death_consequences/linked_trauma = get_death_consequences_trauma()
 	var/mob/living/carbon/trauma_holder = linked_trauma?.owner
 	if (isnull(linked_trauma) || isnull(trauma_holder) || trauma_holder != mind.current) // sanity
-		to_chat(usr, span_warning("You don't have a body with death consequences!"))
+		to_chat(usr, span_warning("Você não tem um corpo com consequências de morte!"))
 		return
 
 	if (!isnum(increment))
-		to_chat(usr, span_warning("You can artificially change the current level of your death degradation with this verb. \
-		You can use this to cause degradation in ways the customization cannot. <b>You need to enter a number to use this verb.</b>"))
+		to_chat(usr, span_warning("Você pode mudar artificialmente o nível atual da sua degradação com este verbo. Você pode usar isso para causar degradação de maneiras que a personalização não pode.<b>Você precisa digitar um número para usar esse verbo.</b>"))
 		return
 
 	if (linked_trauma.permakill_if_at_max_degradation && ((linked_trauma.current_degradation + increment) >= linked_trauma.max_degradation))
-		if (tgui_alert(usr, "This will put you over/at your maximum degradation threshold and PERMANENTLY KILL YOU!!! Are you SURE you want to do this?", "WARNING", list("Yes", "No"), timeout = 7 SECONDS) != "Yes")
+		if (tgui_alert(usr, "Isso vai colocá-lo sobre / em seu limite máximo de degradação e sempre matá-lo!! Tem certeza que quer fazer isso?", "WARNING", list("Yes", "No"), timeout = 7 SECONDS) != "Yes")
 			return
 
 	linked_trauma.adjust_degradation(increment)
-	to_chat(usr, span_notice("Degradation successfully adjusted!"))
+	to_chat(usr, span_notice("Degradação ajustada com sucesso!"))
 
 /// Calls update_variables() on this mob's linked death consequences trauma. See that proc for further info.
 /mob/verb/refresh_death_consequences()
@@ -65,17 +60,17 @@
 	set instant = TRUE
 
 	if (isnull(mind))
-		to_chat(usr, span_warning("You have no mind!"))
+		to_chat(usr, span_warning("Você não tem mente!"))
 		return
 
 	var/datum/brain_trauma/severe/death_consequences/linked_trauma = get_death_consequences_trauma()
 	var/mob/living/carbon/trauma_holder = linked_trauma?.owner
 	if (isnull(linked_trauma) || isnull(trauma_holder) || trauma_holder != mind.current) // sanity
-		to_chat(usr, span_warning("You don't have a body with death consequences!"))
+		to_chat(usr, span_warning("Você não tem um corpo com consequências de morte!"))
 		return
 
 	linked_trauma.update_variables(client)
-	to_chat(usr, span_notice("Variables successfully updated!"))
+	to_chat(usr, span_notice("Variáveis atualizadas com sucesso!"))
 
 /// Searches mind.current for a death_consequences trauma. Allows this proc to be used on both ghosts and living beings to find their linked trauma.
 /mob/proc/get_death_consequences_trauma()

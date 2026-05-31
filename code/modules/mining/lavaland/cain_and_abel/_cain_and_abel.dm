@@ -3,7 +3,7 @@
 
 /obj/item/cain_and_abel
 	name = "Cain & Abel"
-	desc = "I cry I pray mon Dieu."
+	desc = "Eu choro, eu rezo, mon Dieu."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
@@ -92,7 +92,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if(!length(current_wisps))
-		user.balloon_alert(user, "no wisps!")
+		user.balloon_alert(user, "Nada de Wisps!")
 		return ITEM_INTERACT_BLOCKING
 
 	for(var/index in 0 to (length(current_wisps) - 1))
@@ -125,7 +125,7 @@
 	if(.)
 		return TRUE
 	throw_mode = (throw_mode == THROW_MODE_CRYSTALS) ? THROW_MODE_LAUNCH : THROW_MODE_CRYSTALS
-	user.balloon_alert(user, "crystals [throw_mode == THROW_MODE_CRYSTALS ? "activated" : "deactivated"]")
+	user.balloon_alert(user, "Cristais[throw_mode == THROW_MODE_CRYSTALS ? "activated" : "deactivated"]")
 	return TRUE
 
 /obj/item/cain_and_abel/proc/set_combo(new_value, mob/living/user, instant = FALSE)

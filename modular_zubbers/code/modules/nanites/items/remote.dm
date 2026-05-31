@@ -6,7 +6,7 @@
 
 /obj/item/nanite_remote
 	name = "nanite remote control"
-	desc = "A device that can remotely control active nanites through wireless signals."
+	desc = "Um dispositivo que pode controlar remotamente os nanites ativos através de sinais sem fio."
 	w_class = WEIGHT_CLASS_SMALL
 	req_access = list(ACCESS_ROBOTICS)
 	icon = 'modular_zubbers/icons/obj/devices/nanite_devices.dmi'
@@ -23,7 +23,7 @@
 /obj/item/nanite_remote/examine(mob/user)
 	. = ..()
 	if(locked)
-		. += span_notice("Alt-click to unlock.")
+		. += span_notice("Alt-click para desbloquear.")
 
 /obj/item/nanite_remote/click_alt(mob/user)
 	. = ..()
@@ -31,16 +31,16 @@
 		return
 	if(locked)
 		if(allowed(user))
-			to_chat(user, span_notice("You unlock [src]."))
+			to_chat(user, span_notice("Você abre.[src]."))
 			locked = FALSE
 			update_appearance()
 		else
-			to_chat(user, span_warning("Access denied."))
+			to_chat(user, span_warning("Acesso negado."))
 
 /obj/item/nanite_remote/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	to_chat(user, span_warning("You override [src]'s ID lock."))
+	to_chat(user, span_warning("Você sobrepõe[src]Trava de identificação."))
 	obj_flags |= EMAGGED
 	if(locked)
 		locked = FALSE
@@ -62,23 +62,23 @@
 /obj/item/nanite_remote/proc/trigger_nanites(atom/interacting_with, mob/living/user, list/modifiers)
 	switch(mode)
 		if(REMOTE_MODE_SELF)
-			to_chat(user, span_notice("You activate [src], signaling the nanites in your bloodstream."))
+			to_chat(user, span_notice("Você ativa.[src]sinalizando os nanites em sua corrente sanguínea."))
 			signal_mob(user, code, key_name(user))
 			return ITEM_INTERACT_SUCCESS
 		if(REMOTE_MODE_TARGET)
 			if(!istype(interacting_with, /mob/living))
 				return NONE
 			if(isliving(interacting_with) && (get_dist(interacting_with, get_turf(src)) <= 7))
-				to_chat(user, span_notice("You activate [src], signaling the nanites inside [interacting_with]."))
+				to_chat(user, span_notice("Você ativa.[src], sinalizando os nanites dentro[interacting_with]."))
 				signal_mob(interacting_with, code, key_name(user))
 			return ITEM_INTERACT_SUCCESS
 		if(REMOTE_MODE_AOE)
-			to_chat(user, span_notice("You activate [src], signaling the nanites inside every host around you."))
+			to_chat(user, span_notice("Você ativa.[src], sinalizando os nanites dentro de cada hospedeiro ao seu redor."))
 			for(var/mob/living/L in view(user, 7))
 				signal_mob(L, code, key_name(user))
 			return ITEM_INTERACT_SUCCESS
 		if(REMOTE_MODE_RELAY)
-			to_chat(user, span_notice("You activate [src], signaling all connected relay nanites."))
+			to_chat(user, span_notice("Você ativa.[src], sinalizando todos os nanites conectados."))
 			signal_relay(code, relay_code, key_name(user))
 			return ITEM_INTERACT_SUCCESS
 	return NONE
@@ -182,7 +182,7 @@
 
 /obj/item/nanite_remote/comm
 	name = "nanite communication remote"
-	desc = "A device that can send text messages to specific programs."
+	desc = "Um dispositivo que pode enviar mensagens de texto para programas específicos."
 	icon_state = "nanite_comm_remote"
 	var/comm_message = ""
 
@@ -191,18 +191,18 @@
 		if(REMOTE_MODE_OFF)
 			return
 		if(REMOTE_MODE_SELF)
-			to_chat(user, span_notice("You activate [src], signaling the nanites in your bloodstream."))
+			to_chat(user, span_notice("Você ativa.[src]sinalizando os nanites em sua corrente sanguínea."))
 			signal_mob(user, code, key_name(user))
 		if(REMOTE_MODE_TARGET)
 			if(isliving(target) && (get_dist(target, get_turf(src)) <= 7))
-				to_chat(user, span_notice("You activate [src], signaling the nanites inside [target]."))
+				to_chat(user, span_notice("Você ativa.[src], sinalizando os nanites dentro[target]."))
 				signal_mob(target, code, key_name(user))
 		if(REMOTE_MODE_AOE)
-			to_chat(user, span_notice("You activate [src], signaling the nanites inside every host around you."))
+			to_chat(user, span_notice("Você ativa.[src], sinalizando os nanites dentro de cada hospedeiro ao seu redor."))
 			for(var/mob/living/L in view(user, 7))
 				signal_mob(L, code, key_name(user))
 		if(REMOTE_MODE_RELAY)
-			to_chat(user, span_notice("You activate [src], signaling all connected relay nanites."))
+			to_chat(user, span_notice("Você ativa.[src], sinalizando todos os nanites conectados."))
 			signal_relay(code, relay_code, key_name(user))
 
 /obj/item/nanite_remote/comm/signal_mob(mob/living/M, code, source)

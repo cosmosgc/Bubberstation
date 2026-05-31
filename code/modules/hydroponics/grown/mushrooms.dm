@@ -13,7 +13,7 @@
 // Reishi
 /obj/item/seeds/reishi
 	name = "reishi mycelium pack"
-	desc = "This mycelium grows into something medicinal and relaxing."
+	desc = "Este micélio cresce em algo medicinal e relaxante."
 	icon_state = "mycelium-reishi"
 	species = "reishi"
 	plantname = "Reishi"
@@ -34,13 +34,13 @@
 /obj/item/food/grown/mushroom/reishi
 	seed = /obj/item/seeds/reishi
 	name = "reishi"
-	desc = "<I>Ganoderma lucidum</I>: A special fungus known for its medicinal and stress relieving properties."
+	desc = "<I>Ganoderma lucidum</I>Um fungo especial conhecido por suas propriedades medicinais e de alívio de estresse."
 	icon_state = "reishi"
 
 // Fly Amanita
 /obj/item/seeds/amanita
 	name = "fly amanita mycelium pack"
-	desc = "This mycelium grows into something horrible."
+	desc = "Este micélio se transforma em algo horrível."
 	icon_state = "mycelium-amanita"
 	species = "amanita"
 	plantname = "Fly Amanitas"
@@ -61,13 +61,13 @@
 /obj/item/food/grown/mushroom/amanita
 	seed = /obj/item/seeds/amanita
 	name = "fly amanita"
-	desc = "<I>Amanita Muscaria</I>: Learn poisonous mushrooms by heart. Only pick mushrooms you know."
+	desc = "<I>Amanita Muscaria</I>Aprenda cogumelos venenosos de cor. Só colhe cogumelos que conhece."
 	icon_state = "amanita"
 
 // Destroying Angel
 /obj/item/seeds/angel
 	name = "destroying angel mycelium pack"
-	desc = "This mycelium grows into something devastating."
+	desc = "Este micélio se transforma em algo devastador."
 	icon_state = "mycelium-angel"
 	species = "angel"
 	plantname = "Destroying Angels"
@@ -88,14 +88,14 @@
 /obj/item/food/grown/mushroom/angel
 	seed = /obj/item/seeds/angel
 	name = "destroying angel"
-	desc = "<I>Amanita Virosa</I>: Deadly poisonous basidiomycete fungus filled with alpha amatoxins."
+	desc = "<I>Amanita Virosa</I>Fungo basidiomiceto mortalmente venenoso cheio de alfa-amatoxinas."
 	icon_state = "angel"
 	wine_power = 60
 
 // Liberty Cap
 /obj/item/seeds/liberty
 	name = "liberty-cap mycelium pack"
-	desc = "This mycelium grows into liberty-cap mushrooms."
+	desc = "Este micélio se transforma em cogumelos."
 	icon_state = "mycelium-liberty"
 	species = "liberty"
 	plantname = "Liberty-Caps"
@@ -114,14 +114,14 @@
 /obj/item/food/grown/mushroom/libertycap
 	seed = /obj/item/seeds/liberty
 	name = "liberty-cap"
-	desc = "<I>Psilocybe Semilanceata</I>: Liberate yourself!"
+	desc = "<I>Psilocybe Semilanceata</I>Liberte-se!"
 	icon_state = "libertycap"
 	wine_power = 80
 
 // Plump Helmet
 /obj/item/seeds/plump
 	name = "plump-helmet mycelium pack"
-	desc = "This mycelium grows into helmets... maybe."
+	desc = "Este micélio cresce em capacetes... talvez."
 	icon_state = "mycelium-plump"
 	species = "plump"
 	plantname = "Plump-Helmet Mushrooms"
@@ -140,14 +140,14 @@
 /obj/item/food/grown/mushroom/plumphelmet
 	seed = /obj/item/seeds/plump
 	name = "plump-helmet"
-	desc = "<I>Plumus Hellmus</I>: Plump, soft and s-so inviting~"
+	desc = "<I>Plumus Hellmus</I>Plump, macio e tão convidativo"
 	icon_state = "plumphelmet"
 	distill_reagent = /datum/reagent/consumable/ethanol/manly_dorf
 
 // Walking Mushroom
 /obj/item/seeds/plump/walkingmushroom
 	name = "walking mushroom mycelium pack"
-	desc = "This mycelium will grow into huge stuff!"
+	desc = "Este micélio vai se tornar uma coisa enorme!"
 	icon_state = "mycelium-walkingmushroom"
 	species = "walkingmushroom"
 	plantname = "Walking Mushrooms"
@@ -166,14 +166,14 @@
 /obj/item/food/grown/mushroom/walkingmushroom
 	seed = /obj/item/seeds/plump/walkingmushroom
 	name = "walking mushroom"
-	desc = "<I>Plumus Locomotus</I>: The beginning of the great walk."
+	desc = "<I>Plumus Locomotus</I>O começo da grande caminhada."
 	icon_state = "walkingmushroom"
 	can_distill = FALSE
 
 // Chanterelle
 /obj/item/seeds/chanter
 	name = "chanterelle mycelium pack"
-	desc = "This mycelium grows into chanterelle mushrooms."
+	desc = "Este micélio cresce em cogumelos chanterelle."
 	icon_state = "mycelium-chanter"
 	species = "chanter"
 	plantname = "Chanterelle Mushrooms"
@@ -195,7 +195,7 @@
 /obj/item/food/grown/mushroom/chanterelle
 	seed = /obj/item/seeds/chanter
 	name = "chanterelle cluster"
-	desc = "<I>Cantharellus Cibarius</I>: These jolly yellow little shrooms sure look tasty!"
+	desc = "<I>Cantharellus Cibarius</I>Esses cogumelos amarelos parecem deliciosos!"
 	icon_state = "chanterelle"
 
 /obj/item/food/grown/mushroom/chanterelle/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
@@ -204,7 +204,7 @@
 	if(seed.potency < 95)
 		return ..()
 
-	to_chat(user, span_notice("You hollow up the chanterelle with [I]."))
+	to_chat(user, span_notice("Você esconde a cantora com[I]."))
 	remove_item_from_storage(user)
 	if(seed.resistance_flags & FIRE_PROOF)
 		user.put_in_hands(new /obj/item/clothing/head/wizard/chanterelle/fr())
@@ -215,7 +215,7 @@
 //Jupiter Cup
 /obj/item/seeds/chanter/jupitercup
 	name = "jupiter cup mycelium pack"
-	desc = "This mycelium grows into jupiter cups. Zeus would be envious at the power at your fingertips."
+	desc = "Este micélio cresce em copos jupiter. Zeus teria inveja do poder ao seu alcance."
 	icon_state = "mycelium-jupitercup"
 	species = "jupitercup"
 	plantname = "Jupiter Cups"
@@ -234,13 +234,13 @@
 /obj/item/food/grown/mushroom/jupitercup
 	seed = /obj/item/seeds/chanter/jupitercup
 	name = "jupiter cup"
-	desc = "A strange red mushroom, its surface is moist and slick. You wonder how many tiny worms have met their fate inside."
+	desc = "Um estranho cogumelo vermelho, sua superfície é úmida e escorregadia. Você se pergunta quantos pequenos vermes tiveram seu destino lá dentro."
 	icon_state = "jupitercup"
 
 // Glowshroom
 /obj/item/seeds/glowshroom
 	name = "glowshroom mycelium pack"
-	desc = "This mycelium -glows- into mushrooms!"
+	desc = "Esse micélio brilha em cogumelos!"
 	icon_state = "mycelium-glowshroom"
 	species = "glowshroom"
 	plantname = "Glowshrooms"
@@ -263,7 +263,7 @@
 /obj/item/food/grown/mushroom/glowshroom
 	seed = /obj/item/seeds/glowshroom
 	name = "glowshroom cluster"
-	desc = "<I>Mycena Bregprox</I>: This species of mushroom glows in the dark."
+	desc = "<I>Mycena Bregprox</I>Esta espécie de cogumelo brilha no escuro."
 	icon_state = "glowshroom"
 	var/effect_path = /obj/structure/glowshroom
 	wine_power = 50
@@ -272,7 +272,7 @@
 	if(isspaceturf(user.loc))
 		return FALSE
 	if(!isturf(user.loc))
-		to_chat(user, span_warning("You need more space to plant [src]."))
+		to_chat(user, span_warning("Você precisa de mais espaço para plantar[src]."))
 		return FALSE
 	var/count = 0
 	var/maxcount = 1
@@ -283,10 +283,10 @@
 	for(var/obj/structure/glowshroom/G in user.loc)
 		count++
 	if(count >= maxcount)
-		to_chat(user, span_warning("There are too many shrooms here to plant [src]."))
+		to_chat(user, span_warning("Há muitos cogumelos aqui para plantar.[src]."))
 		return FALSE
 	new effect_path(user.loc, seed)
-	to_chat(user, span_notice("You plant [src]."))
+	to_chat(user, span_notice("Você planta.[src]."))
 	seed = null // We pass our seed to our planted shroom, null it here
 	qdel(src)
 	return TRUE
@@ -295,7 +295,7 @@
 // Glowcap
 /obj/item/seeds/glowshroom/glowcap
 	name = "glowcap mycelium pack"
-	desc = "This mycelium -powers- into mushrooms!"
+	desc = "Este micélio - pode - em cogumelos!"
 	icon_state = "mycelium-glowcap"
 	species = "glowcap"
 	icon_harvest = "glowcap-harvest"
@@ -310,7 +310,7 @@
 /obj/item/food/grown/mushroom/glowshroom/glowcap
 	seed = /obj/item/seeds/glowshroom/glowcap
 	name = "glowcap cluster"
-	desc = "<I>Mycena Ruthenia</I>: This species of mushroom glows in the dark, but isn't actually bioluminescent. They're warm to the touch..."
+	desc = "<I>Mycena Ruthenia</I>Esta espécie de cogumelo brilha no escuro, mas não é realmente bioluminescente. Estão quentes ao toque..."
 	icon_state = "glowcap"
 	effect_path = /obj/structure/glowshroom/glowcap
 	tastes = list("glowcap" = 1)
@@ -319,7 +319,7 @@
 //Shadowshroom
 /obj/item/seeds/glowshroom/shadowshroom
 	name = "shadowshroom mycelium pack"
-	desc = "This mycelium will grow into something shadowy."
+	desc = "Este micélio se tornará algo sombrio."
 	icon_state = "mycelium-shadowshroom"
 	species = "shadowshroom"
 	icon_grow = "shadowshroom-grow"
@@ -335,7 +335,7 @@
 /obj/item/food/grown/mushroom/glowshroom/shadowshroom
 	seed = /obj/item/seeds/glowshroom/shadowshroom
 	name = "shadowshroom cluster"
-	desc = "<I>Mycena Umbra</I>: This species of mushroom emits shadow instead of light."
+	desc = "<I>Mycena Umbra</I>Esta espécie de cogumelo emite sombra em vez de luz."
 	icon_state = "shadowshroom"
 	effect_path = /obj/structure/glowshroom/shadowshroom
 	tastes = list("shadow" = 1, "mushroom" = 1)
@@ -348,7 +348,7 @@
 
 /obj/item/seeds/odious_puffball
 	name = "odious pullball spore pack"
-	desc = "These spores reek! Disgusting."
+	desc = "Esses esporos fedem! Nojento."
 	icon_state = "seed-odiouspuffball"
 	species = "odiouspuffball"
 	growing_icon = 'icons/obj/service/hydroponics/growing_mushrooms.dmi'
@@ -370,7 +370,7 @@
 /obj/item/food/grown/mushroom/odious_puffball
 	seed = /obj/item/seeds/odious_puffball
 	name = "odious puffball"
-	desc = "<I>Lycoperdon Faetidus</I>: This puffball is considered a great nuisance not only because of the highly irritating nature of its spores, but also because of its considerable size and unsightly appearance."
+	desc = "<I>Lycoperdon Faetidus</I>Esta bola é considerada um grande incômodo não só por causa da natureza altamente irritante de seus esporos, mas também por causa de seu tamanho considerável e aparência desagradável."
 	icon_state = "odious_puffball"
 	tastes = list("rotten garlic" = 2, "mushroom" = 1, "spores" = 1)
 	wine_power = 50

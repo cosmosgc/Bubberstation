@@ -37,7 +37,7 @@ export function SettingsStatPanel(props) {
                 </Button>
               ))}
             </LabeledList.Item>
-            <LabeledList.Item label="Font size">
+            <LabeledList.Item label="Tamanho da fonte">
               <Stack.Item grow>
                 {statLinked ? (
                   <LinkedToChat />
@@ -68,7 +68,7 @@ export function SettingsStatPanel(props) {
             color={statLinked ? 'bad' : 'good'}
             onClick={() => updateSettings({ statLinked: !statLinked })}
           >
-            {statLinked ? 'Unlink from chat' : 'Link to chat'}
+            {statLinked ? 'Desligo do chat' : 'Link para conversar'}
           </Button>
         </Stack.Item>
       </Stack>

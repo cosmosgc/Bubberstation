@@ -1,6 +1,6 @@
 /obj/machinery/computer/station_alert
 	name = "station alert console"
-	desc = "Used to access the station's automated alert system."
+	desc = "Usado para acessar o sistema de alerta automático da estação."
 	icon_screen = "alert:0"
 	icon_keyboard = "atmos_key"
 	circuit = /obj/item/circuitboard/computer/station_alert

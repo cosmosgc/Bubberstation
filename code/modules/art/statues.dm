@@ -4,7 +4,7 @@
 
 /obj/structure/statue
 	name = "statue"
-	desc = "Placeholder. Yell at Firecage if you SOMEHOW see this."
+	desc = "Positivo. Grite em Firecage se você vir isso."
 	icon = 'icons/obj/art/statue.dmi'
 	icon_state = ""
 	/// Abstract root type
@@ -40,7 +40,7 @@
 	if(W.tool_behaviour == TOOL_WELDER)
 		if(!W.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 			return FALSE
-		user.balloon_alert(user, "slicing apart...")
+		user.balloon_alert(user, "Cortando...")
 		if(W.use_tool(src, user, 40, volume=50))
 			deconstruct(TRUE)
 		return
@@ -59,7 +59,7 @@
 
 /obj/structure/statue/drake
 	name = "drake statue"
-	desc = "Statue of a lesser drake. Its carved eye sockets glow slightly."
+	desc = "Estátua de um Drake menor. Suas cavidades esculpidas brilham ligeiramente."
 	icon_state = "drake"
 	anchored = TRUE
 
@@ -67,7 +67,7 @@
 	. = ..()
 	if (prob(25))
 		icon_state = "drake_headless"
-		desc = "Statue of a lesser drake. Time has not been kind."
+		desc = "Estátua de um Drake menor. O tempo não tem sido bom."
 	update_appearance(UPDATE_OVERLAYS)
 
 /obj/structure/statue/drake/update_overlays()
@@ -77,7 +77,7 @@
 
 /obj/structure/statue/dragonman
 	name = "dragonman statue"
-	desc = "Statue of a draconic humanoid warrior. Its glittering eyes seem to follow you around the room."
+	desc = "Estátua de um guerreiro humanoide dracônico. Seus olhos brilhantes parecem te seguir pela sala."
 	icon_state = "dragonman"
 	anchored = TRUE
 
@@ -103,12 +103,12 @@
 
 /obj/structure/statue/uranium/nuke
 	name = "statue of a nuclear fission explosive"
-	desc = "This is a grand statue of a Nuclear Explosive. It has a sickening green colour."
+	desc = "Esta é uma grande estátua de um Explosivo Nuclear. Tem uma cor verde doentia."
 	icon_state = "nuke"
 
 /obj/structure/statue/uranium/eng
 	name = "Statue of an engineer"
-	desc = "This statue has a sickening green colour."
+	desc = "Esta estátua tem uma cor verde doentia."
 	icon_state = "eng"
 
 ////////////////////////////plasma///////////////////////////////////////////////////////////////////////
@@ -116,7 +116,7 @@
 /obj/structure/statue/plasma
 	max_integrity = 200
 	impressiveness = 20
-	desc = "This statue is suitably made from plasma."
+	desc = "Esta estátua é feita adequadamente de plasma."
 	custom_materials = list(/datum/material/plasma=SHEET_MATERIAL_AMOUNT*5)
 	abstract_type = /obj/structure/statue/plasma
 
@@ -133,7 +133,7 @@
 /obj/structure/statue/gold
 	max_integrity = 300
 	impressiveness = 25
-	desc = "This is a highly valuable statue made from gold."
+	desc = "Esta é uma estátua muito valiosa feita de ouro."
 	custom_materials = list(/datum/material/gold=SHEET_MATERIAL_AMOUNT*5)
 	abstract_type = /obj/structure/statue/gold
 
@@ -166,7 +166,7 @@
 /obj/structure/statue/silver
 	max_integrity = 300
 	impressiveness = 25
-	desc = "This is a valuable statue made from silver."
+	desc = "Esta é uma estátua valiosa feita de prata."
 	custom_materials = list(/datum/material/silver=SHEET_MATERIAL_AMOUNT*5)
 	abstract_type = /obj/structure/statue/silver
 
@@ -195,7 +195,7 @@
 /obj/structure/statue/diamond
 	max_integrity = 1000
 	impressiveness = 50
-	desc = "This is a very expensive diamond statue."
+	desc = "Esta é uma estátua de diamante muito cara."
 	custom_materials = list(/datum/material/diamond=SHEET_MATERIAL_AMOUNT*5)
 	abstract_type = /obj/structure/statue/diamond
 
@@ -216,7 +216,7 @@
 /obj/structure/statue/bananium
 	max_integrity = 300
 	impressiveness = 50
-	desc = "A bananium statue with a small engraving:'HOOOOOOONK'."
+	desc = "Uma estátua de banânio com uma pequena gravura:"
 	custom_materials = list(/datum/material/bananium=SHEET_MATERIAL_AMOUNT*5)
 	abstract_type = /obj/structure/statue/bananium
 
@@ -234,13 +234,13 @@
 
 /obj/structure/statue/sandstone/assistant
 	name = "statue of an assistant"
-	desc = "A cheap statue of sandstone for a greyshirt."
+	desc = "Uma estátua barata de arenito para uma camisa cinza."
 	icon_state = "assist"
 
 
 /obj/structure/statue/sandstone/venus //call me when we add marble i guess
 	name = "statue of a pure maiden"
-	desc = "An ancient marble statue. The subject is depicted with a floor-length braid and is wielding a toolbox. By Jove, it's easily the most gorgeous depiction of a woman you've ever seen. The artist must truly be a master of his craft. Shame about the broken arm, though."
+	desc = "Uma antiga estátua de mármore. O sujeito é retratado com uma trança no chão e está empunhando uma caixa de ferramentas. Por Deus, é a representação mais linda de uma mulher que você já viu. O artista deve ser realmente um mestre de sua arte. Mas é uma pena o braço quebrado."
 	icon = 'icons/obj/art/statuelarge.dmi'
 	icon_state = "venus"
 
@@ -253,12 +253,12 @@
 
 /obj/structure/statue/snow/snowman
 	name = "snowman"
-	desc = "Several lumps of snow put together to form a snowman."
+	desc = "Vários pedaços de neve juntos para formar um boneco de neve."
 	icon_state = "snowman"
 
 /obj/structure/statue/snow/snowlegion
 	name = "snowlegion"
-	desc = "Looks like that weird kid with the tiger plushie has been round here again."
+	desc = "Parece que aquele garoto estranho com o plushie tigre esteve por aqui de novo."
 	icon_state = "snowlegion"
 
 ///////////////////////////////bronze///////////////////////////////////
@@ -269,7 +269,7 @@
 
 /obj/structure/statue/bronze/marx
 	name = "\improper Karl Marx bust"
-	desc = "A bust depicting a certain 19th century economist. You get the feeling a specter is haunting the station."
+	desc = "Um busto retratando um certo economista do século 19. Você sente que um espectro está assombrando a estação."
 	icon_state = "marx"
 	art_type = /datum/element/art/rev
 
@@ -277,7 +277,7 @@
 
 /obj/structure/statue/elder_atmosian
 	name = "Elder Atmosian"
-	desc = "A statue of an Elder Atmosian, capable of bending the laws of thermodynamics to their will."
+	desc = "Uma estátua de um Ancião Atmosiano, capaz de dobrar as leis da termodinâmica à sua vontade."
 	icon_state = "eng"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 30, /datum/material/metalhydrogen = SHEET_MATERIAL_AMOUNT * 20, /datum/material/zaukerite = SHEET_MATERIAL_AMOUNT * 15)
 	max_integrity = 1000
@@ -286,7 +286,7 @@
 
 ///////////Goliath//////////////////////////////////////////////////
 /obj/structure/statue/goliath
-	desc = "A lifelike statue of a horrifying monster."
+	desc = "Uma estátua de um monstro horrível."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters_wide.dmi'
 	icon_state = "goliath"
 	pixel_x = -12
@@ -296,7 +296,7 @@
 ///////////Other Stuff//////////////////////////////////////////////
 /obj/item/chisel
 	name = "chisel"
-	desc = "Breaking and making art since 4000 BC. This one uses advanced technology to allow the creation of lifelike moving statues."
+	desc = "Quebrando e fazendo arte desde 4000 a.C. Este usa tecnologia avançada para permitir a criação de estátuas móveis."
 	icon = 'icons/obj/art/statue.dmi'
 	icon_state = "chisel"
 	inhand_icon_state = "screwdriver_nuke"
@@ -379,7 +379,7 @@ Moving interrupts
 
 /// Starts or continues the sculpting action on the carving block material
 /obj/item/chisel/proc/start_sculpting(mob/living/user)
-	user.balloon_alert(user, "sculpting block...")
+	user.balloon_alert(user, "Bloco de escultura...")
 	playsound(src, pick(usesound), 75, TRUE)
 	sculpting = TRUE
 	//How long whole process takes
@@ -403,7 +403,7 @@ Moving interrupts
 	total_progress_bar.end_progress()
 	if(!interrupted && !QDELETED(prepared_block))
 		prepared_block.create_statue()
-		user.balloon_alert(user, "statue finished")
+		user.balloon_alert(user, "Estátua terminada.")
 		if(HAS_PERSONALITY(user, /datum/personality/creative))
 			user.add_mood_event("creative_sculpting", /datum/mood_event/creative_sculpting)
 		if(HAS_PERSONALITY(user, /datum/personality/unimaginative))
@@ -416,7 +416,7 @@ Moving interrupts
 	tracked_user = user
 	RegisterSignal(tracked_user, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
 	if(!silent)
-		user.balloon_alert(user, "select sculpt target")
+		user.balloon_alert(user, "Selecione esculpir o Alvo")
 
 /obj/item/chisel/dropped(mob/user, silent)
 	. = ..()
@@ -430,7 +430,7 @@ Moving interrupts
 	prepared_block = null
 
 	if(!silent && tracked_user)
-		tracked_user.balloon_alert(tracked_user, "sculpting cancelled!")
+		tracked_user.balloon_alert(tracked_user, "Esculpir cancelado!")
 
 	if(tracked_user)
 		UnregisterSignal(tracked_user, COMSIG_MOVABLE_MOVED)
@@ -448,18 +448,18 @@ Moving interrupts
 		choices[statue_path] = image(icon = initial(abstract_statue.icon), icon_state = initial(abstract_statue.icon_state))
 
 	if(!choices.len)
-		user.balloon_alert(user, "no statues for material!")
+		user.balloon_alert(user, "Sem estátuas para o material!")
 
 	var/choice = show_radial_menu(user, prepared_block, choices, require_near = TRUE)
 	if(choice)
 		prepared_block.current_preset_type = choice
 		var/image/chosen_looks = choices[choice]
 		prepared_block.current_target = chosen_looks.appearance
-		user.balloon_alert(user, "statue selected")
+		user.balloon_alert(user, "estátua selecionada")
 
 /obj/structure/carving_block
 	name = "block"
-	desc = "Ready for sculpting."
+	desc = "Pronto para esculpir."
 	icon = 'icons/obj/art/statue.dmi'
 	icon_state = "block"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS | MATERIAL_ADD_PREFIX
@@ -493,7 +493,7 @@ Moving interrupts
 	else
 		current_target = target.appearance
 	var/mutable_appearance/ma = current_target
-	user.balloon_alert(user, "sculpt target is [ma.name]")
+	user.balloon_alert(user, "Esculpir o alvo é[ma.name]")
 
 /obj/structure/carving_block/proc/reset_target()
 	current_target = null
@@ -511,12 +511,12 @@ Moving interrupts
 /obj/structure/carving_block/proc/is_viable_target(mob/living/user, atom/movable/target)
 	//Only things on turfs
 	if(!isturf(target.loc))
-		user.balloon_alert(user, "no sculpt target!")
+		user.balloon_alert(user, "Sem esculpir Alvo!")
 		return FALSE
 	//No big icon things
 	var/list/icon_dimensions = get_icon_dimensions(target.icon)
 	if(icon_dimensions["width"] != ICON_SIZE_X || icon_dimensions["height"] != ICON_SIZE_Y)
-		user.balloon_alert(user, "sculpt target is too big!")
+		user.balloon_alert(user, "Esculpir alvo é muito grande!")
 		return FALSE
 	return TRUE
 

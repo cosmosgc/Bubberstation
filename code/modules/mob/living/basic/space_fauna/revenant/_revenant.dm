@@ -6,7 +6,7 @@
 /// Admin-spawn or random event
 /mob/living/basic/revenant
 	name = "revenant"
-	desc = "A malevolent spirit."
+	desc = "Um espírito malévolo."
 	icon = 'icons/mob/simple/mob.dmi'
 	icon_state = "revenant_idle"
 	mob_biotypes = MOB_SPIRIT | MOB_UNDEAD
@@ -203,7 +203,7 @@
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, span_boldwarning("You cannot send IC messages (muted)."))
+			to_chat(src, span_boldwarning("Você não pode enviar mensagens de IC."))
 			return
 		if (!(ignore_spam || forced) && client.handle_spam_prevention(message, MUTE_IC))
 			return
@@ -212,7 +212,7 @@
 		message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 
 	log_talk(message, LOG_SAY)
-	var/rendered = span_deadsay("<b>UNDEAD: [src]</b> says, \"[message]\"")
+	var/rendered = span_deadsay("<b>Não.[src]</b>diz,\"[message]\"")
 	relay_to_list_and_observers(rendered, GLOB.revenant_relay_mobs, src)
 
 /mob/living/basic/revenant/ClickOn(atom/A, params) //revenants can't interact with the world directly, so we gotta do some wacky override stuff
@@ -237,10 +237,7 @@
 
 	// This is probably the most cringe place I could put this but whatever -
 	// Revenants can click on spirit boards for seances like ghosts
-	if(istype(A, /obj/structure/spirit_board) \
-		&& !HAS_TRAIT(src, TRAIT_REVENANT_REVEALED) \
-		&& !HAS_TRAIT(src, TRAIT_NO_TRANSFORM) \
-		&& !HAS_TRAIT(src, TRAIT_REVENANT_INHIBITED))
+	if(istype(A, /obj/structure/spirit_board) 		&& !HAS_TRAIT(src, TRAIT_REVENANT_REVEALED) 		&& !HAS_TRAIT(src, TRAIT_NO_TRANSFORM) 		&& !HAS_TRAIT(src, TRAIT_REVENANT_INHIBITED))
 
 		var/obj/structure/spirit_board/board = A
 		board.spirit_board_pick_letter(src)
@@ -330,8 +327,8 @@
 	update_mob_action_buttons()
 
 	visible_message(
-		span_warning("[src] lets out a waning screech as violet mist swirls around its dissolving body!"),
-		span_revendanger("NO! No... it's too late, you can feel your essence [pick("breaking apart", "drifting away")]..."),
+		span_warning("[src]deixa sair um grito minguante como a névoa violeta gira em torno de seu corpo dissolvente!"),
+		span_revendanger("Não! Não... é tarde demais, você pode sentir sua essência.[pick("breaking apart", "drifting away")]..."),
 	)
 
 	SetInvisibility(INVISIBILITY_NONE, id=type)
@@ -346,7 +343,7 @@
 	if(QDELETED(src) || !dormant) // something fucky happened, abort. we MUST be dormant to go inside the ectoplasm.
 		return
 
-	visible_message(span_danger("[src]'s body breaks apart into a fine pile of blue dust."))
+	visible_message(span_danger("[src]O corpo se divide em uma pilha de pó azul."))
 
 	var/obj/item/ectoplasm/revenant/goop = new(get_turf(src)) // the ectoplasm will handle moving us out of dormancy
 	goop.old_ckey = client.ckey
@@ -370,13 +367,13 @@
 /mob/living/basic/revenant/proc/create_login_string()
 	RETURN_TYPE(/list)
 	var/list/returnable_list = list()
-	returnable_list += span_deadsay(span_boldbig("You are a revenant."))
-	returnable_list += span_bold("Your formerly mundane spirit has been infused with alien energies and empowered into a revenant.")
-	returnable_list += span_bold("You are not dead, not alive, but somewhere in between. You are capable of limited interaction with both worlds.")
-	returnable_list += span_bold("You are invincible and invisible to everyone but other ghosts. Most abilities will reveal you, rendering you vulnerable.")
-	returnable_list += span_bold("To function, you are to drain the life essence from humans. This essence is a resource, as well as your health, and will power all of your abilities.")
-	returnable_list += span_bold("<i>You do not remember anything of your past lives, nor will you remember anything about this one after your death.</i>")
-	returnable_list += span_bold("Be sure to read <a href=\"https://tgstation13.org/wiki/Revenant\">the wiki page</a> to learn more.")
+	returnable_list += span_deadsay(span_boldbig("Você é um retornado."))
+	returnable_list += span_bold("Seu antigo espírito mundano foi infundido com energias alienígenas e empoderado em um retornado.")
+	returnable_list += span_bold("Você não está morto, não vivo, mas em algum lugar no meio. Você é capaz de interação limitada com ambos os mundos.")
+	returnable_list += span_bold("Você é invencível e invisível para todos, menos para outros fantasmas. A maioria das habilidades o revelarão, tornando-o vulnerável.")
+	returnable_list += span_bold("Para funcionar, você deve drenar a essência da vida dos humanos. Essa essência é um recurso, assim como sua saúde, e vai alimentar todas as suas habilidades.")
+	returnable_list += span_bold("<i>Vocês não se lembram de nada de suas vidas passadas, nem lembrarão de nada sobre isso depois de sua morte.</i>")
+	returnable_list += span_bold("Certifique-se de ler.<a href=\"https://tgstation13.org/wiki/Revenant\">A página wiki</a>para aprender mais.")
 	return returnable_list
 
 /mob/living/basic/revenant/generate_random_mob_name()
@@ -390,8 +387,8 @@
 /mob/living/basic/revenant/proc/on_baned(obj/item/weapon, mob/living/user)
 	SIGNAL_HANDLER
 	visible_message(
-		span_warning("[src] violently flinches!"),
-		span_revendanger("As [weapon] passes through you, you feel your essence draining away!"),
+		span_warning("[src]violentamente hesita!"),
+		span_revendanger("Como[weapon]passa por você, sente sua essência drenando!"),
 	)
 	apply_status_effect(/datum/status_effect/revenant/inhibited, 3 SECONDS)
 
@@ -402,17 +399,17 @@
 		return TRUE // what? whatever let it happen
 
 	if(step_turf.turf_flags & NOJAUNT)
-		to_chat(src, span_warning("Some strange aura is blocking the way."))
+		to_chat(src, span_warning("Alguma aura estranha está bloqueando o caminho."))
 		return FALSE
 
 	if(locate(/obj/effect/decal/cleanable/food/salt) in step_turf)
-		balloon_alert(src, "blocked by salt!")
+		balloon_alert(src, "Bloqueado pelo sal!")
 		apply_status_effect(/datum/status_effect/revenant/revealed, 2 SECONDS)
 		apply_status_effect(/datum/status_effect/incapacitating/paralyzed/revenant, 2 SECONDS)
 		return FALSE
 
 	if(locate(/obj/effect/blessing) in step_turf)
-		to_chat(src, span_warning("Holy energies block your path!"))
+		to_chat(src, span_warning("As energias sagradas bloqueiam seu caminho!"))
 		return FALSE
 
 	return TRUE
@@ -425,31 +422,31 @@
 
 	if(isclosedturf(current))
 		if(!silent)
-			to_chat(src, span_revenwarning("You cannot use abilities from inside of a wall."))
+			to_chat(src, span_revenwarning("Você não pode usar habilidades de dentro de uma parede."))
 		return FALSE
 
 	for(var/obj/thing in current)
 		if(!thing.density || thing.CanPass(src, get_dir(current, src)))
 			continue
 		if(!silent)
-			to_chat(src, span_revenwarning("You cannot use abilities inside of a dense object."))
+			to_chat(src, span_revenwarning("Você não pode usar habilidades dentro de um objeto denso."))
 		return FALSE
 
 	if(dormant)
 		if(!silent)
-			to_chat(src, span_revenwarning("Your powers lie dormant right now!"))
+			to_chat(src, span_revenwarning("Seus poderes estão dormentes agora!"))
 		return SPELL_CANCEL_CAST
 
 	if(HAS_TRAIT(src, TRAIT_REVENANT_INHIBITED))
 		if(!silent)
-			to_chat(src, span_revenwarning("Your powers have been suppressed by a nullifying energy!"))
+			to_chat(src, span_revenwarning("Seus poderes foram suprimidos por uma energia anuladora!"))
 		return FALSE
 
 	essence_cost = abs(essence_cost) * -1
 	var/has_essence = deduct_essence ? change_essence_amount(essence_cost, silent = TRUE) : (essence + essence_cost >= 0)
 	if(!has_essence)
 		if(!silent)
-			to_chat(src, span_revenwarning("You lack the essence to use that ability!"))
+			to_chat(src, span_revenwarning("Você não tem a essência para usar essa habilidade!"))
 		return FALSE
 
 	return TRUE
@@ -492,9 +489,9 @@
 	update_mob_action_buttons()
 	if(!silent)
 		if(essence_to_change_by > 0)
-			to_chat(src, span_revennotice("Gained [essence_to_change_by]E [source ? "from [source]":""]."))
+			to_chat(src, span_revennotice("Ganhado[essence_to_change_by]E.[source ? "from [source]":""]."))
 		else
-			to_chat(src, span_revenminor("Lost [essence_to_change_by]E [source ? "from [source]":""]."))
+			to_chat(src, span_revenminor("Perdido[essence_to_change_by]E.[source ? "from [source]":""]."))
 	return TRUE
 
 /mob/living/basic/revenant/mob_negates_gravity()

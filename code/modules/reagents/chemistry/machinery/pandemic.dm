@@ -1,7 +1,7 @@
 
 /obj/machinery/computer/pandemic
 	name = "PanD.E.M.I.C 2200"
-	desc = "Used to work with viruses."
+	desc = "Trabalhava com vírus."
 	density = TRUE
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "pandemic0"
@@ -36,11 +36,7 @@
 
 	AddElement(/datum/element/contextual_screentip_item_typechecks, hovering_item_typechecks)
 
-	AddElement( \
-		/datum/element/contextual_screentip_bare_hands, \
-		lmb_text = "Open interface", \
-		rmb_text = "Remove beaker", \
-	)
+	AddElement( 		/datum/element/contextual_screentip_bare_hands, 		lmb_text = "Open interface", 		rmb_text = "Remove beaker", 	)
 
 
 /obj/machinery/computer/pandemic/Destroy()
@@ -56,7 +52,7 @@
 			is_close = TRUE
 		else
 			. += "It has a beaker inside it."
-		. += span_info("Alt-click to eject [is_close ? beaker : "the beaker"].")
+		. += span_info("Alt-click para ejetar[is_close ? beaker : "the beaker"].")
 
 /obj/machinery/computer/pandemic/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
@@ -84,7 +80,7 @@
 	//Advanced science! Precision instruments (eg droppers and syringes) are precise enough to modify the loaded sample!
 	if(istype(held_item, /obj/item/reagent_containers/dropper) || istype(held_item, /obj/item/reagent_containers/syringe))
 		if(!beaker)
-			balloon_alert(user, "no beaker!")
+			balloon_alert(user, "Nada de béquer!")
 			return ..()
 		if(istype(held_item, /obj/item/reagent_containers/syringe) && LAZYACCESS(modifiers, RIGHT_CLICK))
 			held_item.interact_with_atom_secondary(beaker, user)
@@ -99,10 +95,10 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		return ..()
 	if(beaker)
-		balloon_alert(user, "beaker swapped")
+		balloon_alert(user, "Beker trocado.")
 		try_put_in_hand(beaker, usr)
 	else
-		balloon_alert(user, "beaker loaded")
+		balloon_alert(user, "béquer carregado")
 	user.transferItemToLoc(held_item, src)
 	beaker = held_item
 	update_appearance()
@@ -197,7 +193,7 @@
 	var/datum/disease/advance/adv_disease = SSdisease.archive_diseases[id]
 
 	if(!istype(adv_disease) || !adv_disease.mutable)
-		to_chat(usr, span_warning("ERROR: Cannot replicate virus strain."))
+		to_chat(usr, span_warning("Não pode replicar a estirpe do vírus."))
 		return FALSE
 	use_energy(active_power_usage)
 	adv_disease = adv_disease.Copy()

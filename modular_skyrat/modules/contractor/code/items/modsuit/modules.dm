@@ -1,8 +1,6 @@
 /obj/item/mod/module/baton_holster
 	name = "MOD baton holster module"
-	desc = "A module installed into the chest of a MODSuit, this allows you \
-		to retrieve an inserted baton from the suit at will. Insert a baton \
-		by hitting the module, while it is removed from the suit, with the baton."
+	desc = "Um módulo instalado no peito de um MODSuit, isso permite que você recupere uma batuta inserida do terno à vontade. Insira um bastão batendo no módulo, enquanto é removido do terno, com o bastão."
 	icon_state = "holster"
 	icon = 'modular_skyrat/modules/contractor/icons/modsuit_modules.dmi'
 	module_type = MODULE_ACTIVE
@@ -20,7 +18,7 @@
 	. = ..()
 	if(!istype(attacking_item, /obj/item/melee/baton/telescopic/contractor_baton) || eaten_baton)
 		return
-	balloon_alert(user, "[attacking_item] inserted")
+	balloon_alert(user, "[attacking_item]inserido")
 	eaten_baton = TRUE
 	for(var/obj/item/melee/baton/telescopic/contractor_baton/device_baton as anything in src)
 		for(var/obj/item/baton_upgrade/original_upgrade in attacking_item)
@@ -32,7 +30,7 @@
 
 /obj/item/mod/module/baton_holster/on_activation()
 	if(!eaten_baton)
-		balloon_alert(mod.wearer, "no baton inserted")
+		balloon_alert(mod.wearer, "Nenhum bastão inserido.")
 		return
 	return ..()
 
@@ -48,8 +46,7 @@
 
 /obj/item/mod/module/springlock/contractor
 	name = "MOD magnetic deployment module"
-	desc = "A much more modern version of a springlock system. \
-	This is a module that uses magnets to speed up the deployment and retraction time of your MODsuit."
+	desc = "Uma versão muito mais moderna de um sistema Springlock. Este é um módulo que usa ímãs para acelerar o tempo de implantação e retração do seu MODsuit."
 	icon_state = "magnet"
 	icon = 'modular_skyrat/modules/contractor/icons/modsuit_modules.dmi'
 
@@ -65,10 +62,7 @@
 
 /obj/item/mod/module/scorpion_hook
 	name = "MOD SCORPION hook module"
-	desc = "A module installed in the wrist of a MODSuit, this highly \
-			illegal module uses a hardlight hook to forcefully pull \
-			a target towards you at high speed, knocking them down and \
-			partially exhausting them."
+	desc = "Um módulo instalado no pulso de um MODSuit, este módulo altamente ilegal usa um gancho de luz dura para puxar um alvo para você em alta velocidade, derrubá-los e esgotá-los parcialmente."
 	icon_state = "hook"
 	icon = 'modular_skyrat/modules/contractor/icons/modsuit_modules.dmi'
 	incompatible_modules = list(/obj/item/mod/module/scorpion_hook)

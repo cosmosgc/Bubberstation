@@ -3,8 +3,7 @@
 /datum/surgery_operation/limb/incise_skin
 	name = "make skin incision"
 	// rnd_name = "Laparotomy / Craniotomy / Myotomy (Make Incision)" // Maybe we keep this one simple
-	desc = "Make an incision in the patient's skin to access internal organs. \
-		Causes \"cut skin\" surgical state."
+	desc = "Faça uma incisão na pele do paciente para acessar órgãos internos. Causas\"Pele Cortada\"estado cirúrgico."
 	required_bodytype = (~BODYTYPE_ROBOTIC & ~BODYTYPE_SYNTHETIC) // NOVA EDIT CHANGE - SYNTH FLAGS  -Original: required_bodytype = (~BODYTYPE_ROBOTIC & ~BODYTYPE_SYNTHETIC) // NOVA EDIT CHANGE - SYNTH FLAGS  -Original: required_bodytype = ~BODYTYPE_ROBOTIC
 	replaced_by = /datum/surgery_operation/limb/incise_skin/abductor
 	implements = list(
@@ -47,9 +46,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to make an incision in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to make an incision in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to make an incision in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a fazer uma incisão em[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]começa a fazer uma incisão em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]começa a fazer uma incisão em[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a stabbing in your [limb.plaintext_zone].")
 
@@ -69,9 +68,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("[blood_name] pools around the incision in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[blood_name] pools around the incision in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[blood_name] pools around the incision in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[blood_name]Poças ao redor da incisão em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[blood_name]Poças ao redor da incisão em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[blood_name]Poças ao redor da incisão em[FORMAT_LIMB_OWNER(limb)]."),
 	)
 
 /// Subtype for thick skinned creatures (Xenomorphs)
@@ -100,8 +99,7 @@
 /// Pulls the skin back to access internals
 /datum/surgery_operation/limb/retract_skin
 	name = "retract skin"
-	desc = "Retract the patient's skin to access their internal organs. \
-		Causes \"skin open\" surgical state."
+	desc = "Retraia a pele do paciente para acessar os órgãos internos. Causas\"PELE ABERTA\"estado cirúrgico."
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	required_bodytype = (~BODYTYPE_ROBOTIC & ~BODYTYPE_SYNTHETIC) // NOVA EDIT CHANGE - SYNTH FLAGS  -Original: required_bodytype = ~BODYTYPE_ROBOTIC
 	replaced_by = /datum/surgery_operation/limb/retract_skin/abductor
@@ -125,9 +123,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to retract the skin in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to retract the skin in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to retract the skin in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a retrair a pele[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]começa a retrair a pele[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]começa a retrair a pele[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a severe stinging pain spreading across your [limb.plaintext_zone] as the skin is pulled back.")
 
@@ -145,8 +143,7 @@
 /// Closes the skin
 /datum/surgery_operation/limb/close_skin
 	name = "mend skin incision"
-	desc = "Mend the incision in the patient's skin, closing it up. \
-		Clears most surgical states."
+	desc = "Conserte a incisão na pele do paciente, fechando. Limpa a maioria dos estados cirúrgicos."
 	required_bodytype = (~BODYTYPE_ROBOTIC & ~BODYTYPE_SYNTHETIC) // NOVA EDIT CHANGE - SYNTH FLAGS  -Original: required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	replaced_by = /datum/surgery_operation/limb/close_skin/abductor
@@ -195,9 +192,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to mend the incision in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to mend the incision in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to mend the incision in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a consertar a incisão[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]Começa a consertar a incisão em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Começa a consertar a incisão em[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "Your [limb.plaintext_zone] is being [istype(tool, /obj/item/stack/medical/suture) ? "pinched" : "burned"]!")
 
@@ -214,8 +211,7 @@
 /// Clamps bleeding blood vessels to prevent blood loss
 /datum/surgery_operation/limb/clamp_bleeders
 	name = "clamp bleeders"
-	desc = "Clamp bleeding blood vessels in the patient's body to prevent blood loss. \
-		Causes \"vessels clamped\" surgical state."
+	desc = "Braçadeira sangrando vasos sanguíneos no corpo do paciente para evitar perda de sangue. Causas\"Vasos presos.\"estado cirúrgico."
 	required_bodytype = (~BODYTYPE_ROBOTIC & ~BODYTYPE_SYNTHETIC) // NOVA EDIT CHANGE - SYNTH FLAGS  -Original: required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	replaced_by = /datum/surgery_operation/limb/clamp_bleeders/abductor
@@ -237,9 +233,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to clamp bleeders in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to clamp bleeders in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to clamp bleeders in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a grampear os sangramentos[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]Começa a clampear hemorragias.[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Começa a clampear hemorragias.[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a pinch as the bleeding in your [limb.plaintext_zone] is slowed.")
 
@@ -258,8 +254,7 @@
 /// Unclamps blood vessels to allow blood flow again
 /datum/surgery_operation/limb/unclamp_bleeders
 	name = "unclamp bleeders"
-	desc = "Unclamp blood vessels in the patient's body to allow blood flow again. \
-		Clears \"vessels clamped\" surgical state."
+	desc = "Desapertar os vasos sanguíneos no corpo do paciente para permitir o fluxo sanguíneo novamente. Limpa.\"Vasos presos.\"estado cirúrgico."
 	required_bodytype = (~BODYTYPE_ROBOTIC & ~BODYTYPE_SYNTHETIC) // NOVA EDIT CHANGE - SYNTH FLAGS  -Original: required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	replaced_by = /datum/surgery_operation/limb/unclamp_bleeders/abductor
@@ -287,9 +282,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to unclamp bleeders in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to unclamp bleeders in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to unclamp bleeders in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a desapertar hemorragias.[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]Começa a desapertar os sangramentos.[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Começa a desapertar os sangramentos.[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a pressure release as blood starts flowing in your [limb.plaintext_zone] again.")
 
@@ -305,8 +300,7 @@
 /// Saws through bones to access organs
 /datum/surgery_operation/limb/saw_bones
 	name = "saw limb bone"
-	desc = "Saw through the patient's bones to access their internal organs. \
-		Causes \"bone sawed\" surgical state."
+	desc = "Vi através dos ossos do paciente para acessar seus órgãos internos. Causas\"Osso serrado\"estado cirúrgico."
 	required_bodytype = (~BODYTYPE_ROBOTIC & ~BODYTYPE_SYNTHETIC) // NOVA EDIT CHANGE - SYNTH FLAGS  -Original: required_bodytype = ~BODYTYPE_ROBOTIC
 	implements = list(
 		TOOL_SAW = 1,
@@ -346,9 +340,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to saw through the bone in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to saw through the bone in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to saw through the bone in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a ver através do osso dentro[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]começa a serrar através do osso[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]começa a serrar através do osso[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a horrid ache spread through the inside of your [limb.plaintext_zone]!")
 
@@ -359,17 +353,16 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You saw [FORMAT_LIMB_OWNER(limb)] open."),
-		span_notice("[surgeon] saws [FORMAT_LIMB_OWNER(limb)] open!"),
-		span_notice("[surgeon] saws [FORMAT_LIMB_OWNER(limb)] open!"),
+		span_notice("Você viu.[FORMAT_LIMB_OWNER(limb)]Abra."),
+		span_notice("[surgeon]Serras.[FORMAT_LIMB_OWNER(limb)]Abra!"),
+		span_notice("[surgeon]Serras.[FORMAT_LIMB_OWNER(limb)]Abra!"),
 	)
 	display_pain(limb.owner, "It feels like something just broke in your [limb.plaintext_zone]!")
 
 /// Fixes sawed bones back together
 /datum/surgery_operation/limb/fix_bones
 	name = "fix limb bone"
-	desc = "Repair a patient's cut or broken bones. \
-		Clears \"bone sawed\" and \"bone drilled\" surgical states."
+	desc = "Reparar os ossos de um paciente. Limpa.\"Osso serrado\"E\"Osso perfurado\"estados cirúrgicos."
 	required_bodytype = (~BODYTYPE_ROBOTIC & ~BODYTYPE_SYNTHETIC) // NOVA EDIT CHANGE - SYNTH FLAGS  -Original: required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
@@ -410,9 +403,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to fix the bones in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to fix the bones in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to fix the bones in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a fixar os ossos[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]começa a fixar os ossos[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]começa a fixar os ossos[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a grinding sensation in your [limb.plaintext_zone] as the bones are set back in place.")
 
@@ -423,8 +416,7 @@
 
 /datum/surgery_operation/limb/drill_bones
 	name = "drill limb bone"
-	desc = "Drill through a patient's bones. \
-		Causes \"bone drilled\" surgical state."
+	desc = "Perfurar os ossos de um paciente. Causas.\"Osso perfurado\"estado cirúrgico."
 	required_bodytype = (~BODYTYPE_ROBOTIC & ~BODYTYPE_SYNTHETIC) // NOVA EDIT CHANGE - SYNTH FLAGS  -Original: required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
@@ -456,9 +448,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to drill into the bone in [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to drill into the bone in [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to drill into the bone in [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a perfurar o osso[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]começa a perfurar o osso dentro[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]começa a perfurar o osso dentro[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a horrible piercing pain in your [limb.plaintext_zone]!")
 
@@ -468,15 +460,14 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You drill into [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] drills into [FORMAT_LIMB_OWNER(limb)]!"),
-		span_notice("[surgeon] drills into [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você perfura[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Perfura em[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("[surgeon]Perfura em[FORMAT_LIMB_OWNER(limb)]!"),
 	)
 
 /datum/surgery_operation/limb/incise_organs
 	name = "incise organs"
-	desc = "Make an incision in the patient's internal organ tissue to allow for manipulation or repair. \
-		Causes \"organs cut\" surgical state."
+	desc = "Faça uma incisão no tecido interno do paciente para permitir manipulação ou reparo. Causas\"órgãos cortados\"estado cirúrgico."
 	required_bodytype = (~BODYTYPE_ROBOTIC & ~BODYTYPE_SYNTHETIC) // NOVA EDIT CHANGE - SYNTH FLAGS  -Original: required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	replaced_by = /datum/surgery_operation/limb/incise_organs/abductor
@@ -509,9 +500,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to make an incision in the organs within [FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon] begins to make an incision in the organs within [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] begins to make an incision in the organs within [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a fazer uma incisão nos órgãos dentro[FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon]começa a fazer uma incisão nos órgãos dentro[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]começa a fazer uma incisão nos órgãos dentro[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a stabbing in your [limb.plaintext_zone].")
 
@@ -522,9 +513,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You make an incision in the organs within [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] makes an incision in the organs within [FORMAT_LIMB_OWNER(limb)]!"),
-		span_notice("[surgeon] makes an incision in the organs within [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você faz uma incisão nos órgãos dentro[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]faz uma incisão nos órgãos dentro[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("[surgeon]faz uma incisão nos órgãos dentro[FORMAT_LIMB_OWNER(limb)]!"),
 	)
 	display_pain(limb.owner, "You feel a sharp pain from inside your [limb.plaintext_zone]!")
 

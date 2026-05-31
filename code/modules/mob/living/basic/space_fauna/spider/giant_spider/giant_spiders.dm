@@ -7,7 +7,7 @@
  */
 /mob/living/basic/spider/giant
 	name = "giant spider"
-	desc = "Furry and black, it makes you shudder to look at it. This one has deep red eyes."
+	desc = "Peludo e preto, faz você tremer de olhar para ele. Este tem olhos vermelhos profundos."
 	icon_state = "guard"
 	icon_living = "guard"
 	icon_dead = "guard_dead"
@@ -35,7 +35,7 @@
  */
 /mob/living/basic/spider/giant/ambush
 	name = "ambush spider"
-	desc = "Furry and white, it makes you shudder to look at it. This one has sparkling pink eyes."
+	desc = "Peludo e branco, faz você tremer para olhar para ele. Este tem olhos rosa brilhantes."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "ambush"
 	icon_living = "ambush"
@@ -49,7 +49,7 @@
 	melee_damage_upper = 30
 	speed = 5
 	player_speed_modifier = -3.1
-	menu_description = "Slow spider, with a strong disarming pull and above average health and damage."
+	menu_description = "Uma aranha lenta, com uma forte força de desarmar e saúde e danos acima da média."
 	innate_actions = list(/datum/action/cooldown/mob_cooldown/sneak/spider)
 
 /mob/living/basic/spider/giant/ambush/Initialize(mapload)
@@ -65,7 +65,7 @@
  */
 /mob/living/basic/spider/giant/guard
 	name = "guard spider"
-	desc = "Furry and black, it makes you shudder to look at it. This one has deep red eyes."
+	desc = "Peludo e preto, faz você tremer de olhar para ele. Este tem olhos vermelhos profundos."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "guard"
 	icon_living = "guard"
@@ -78,7 +78,7 @@
 	obj_damage = 45
 	speed = 5
 	player_speed_modifier = -4
-	menu_description = "Tanky and strong able to shed a carcass for protection."
+	menu_description = "Tanky e forte capaz de derramar uma carcaça para proteção."
 	innate_actions = list(/datum/action/cooldown/mob_cooldown/web_effigy)
 
 /mob/living/basic/spider/giant/guard/Initialize(mapload)
@@ -92,7 +92,7 @@
  */
 /mob/living/basic/spider/giant/hunter
 	name = "hunter spider"
-	desc = "Furry and black, it makes you shudder to look at it. This one has sparkling purple eyes."
+	desc = "Peludo e preto, faz você tremer de olhar para ele. Este tem olhos roxos brilhantes."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "hunter"
 	icon_living = "hunter"
@@ -104,7 +104,7 @@
 	poison_per_bite = 5
 	speed = 3
 	player_speed_modifier = -3.1
-	menu_description = "Fast spider with toxin injection, but has less health and damage."
+	menu_description = "Uma aranha rápida com injeção de toxina, mas tem menos saúde e danos."
 
 /mob/living/basic/spider/giant/hunter/Initialize(mapload)
 	. = ..()
@@ -117,7 +117,7 @@
  */
 /mob/living/basic/spider/giant/scout
 	name = "scout spider"
-	desc = "Furry and blueish black, it makes you shudder to look at it. This one has sparkling blue eyes."
+	desc = "Peludo e azulado, faz você tremer de olhar para ele. Este tem olhos azuis brilhantes."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "scout"
 	icon_living = "scout"
@@ -132,7 +132,7 @@
 	speed = 2.8
 	player_speed_modifier = -3.1
 	sight = SEE_SELF|SEE_MOBS
-	menu_description = "Fast spider able to see enemies through walls, send messages to the nest and the ability to travel in vents."
+	menu_description = "Uma aranha rápida capaz de ver inimigos através das paredes, enviar mensagens para o ninho e a capacidade de viajar em respiradouros."
 	innate_actions = list(/datum/action/cooldown/mob_cooldown/command_spiders/communication_spiders)
 
 /mob/living/basic/spider/giant/scout/Initialize(mapload)
@@ -148,7 +148,7 @@
  */
 /mob/living/basic/spider/giant/nurse
 	name = "nurse spider"
-	desc = "Furry and black, it makes you shudder to look at it. This one has brilliant green eyes."
+	desc = "Peludo e preto, faz você tremer de olhar para ele. Este tem olhos verdes brilhantes."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "nurse"
 	icon_living = "nurse"
@@ -163,21 +163,13 @@
 	player_speed_modifier = -3.1
 	web_speed = 0.25
 	web_type = /datum/action/cooldown/mob_cooldown/lay_web/sealer
-	menu_description = "Avarage speed spider able to heal other spiders and itself together with a fast web laying capability, has low damage and health."
+	menu_description = "Uma aranha de velocidade avarage capaz de curar outras aranhas e a si mesma junto com uma rápida capacidade de teia, tem baixos danos e saúde."
 
 /mob/living/basic/spider/giant/nurse/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_MEDICAL_HUD, INNATE_TRAIT)
 
-	AddComponent(/datum/component/healing_touch,\
-		heal_brute = 10,\
-		heal_burn = 10,\
-		heal_time = 2.5 SECONDS,\
-		interaction_key = DOAFTER_SOURCE_SPIDER,\
-		valid_targets_typecache = typecacheof(list(/mob/living/basic/spider/giant)),\
-		action_text = "%SOURCE% begins wrapping the wounds of %TARGET%.",\
-		complete_text = "%SOURCE% wraps the wounds of %TARGET%.",\
-	)
+	AddComponent(/datum/component/healing_touch,		heal_brute = 10,		heal_burn = 10,		heal_time = 2.5 SECONDS,		interaction_key = DOAFTER_SOURCE_SPIDER,		valid_targets_typecache = typecacheof(list(/mob/living/basic/spider/giant)),		action_text = "%SOURCE% begins wrapping the wounds of %TARGET%.",		complete_text = "%SOURCE% wraps the wounds of %TARGET%.",	)
 
 	AddElement(/datum/element/web_walker, /datum/movespeed_modifier/average_web)
 
@@ -190,7 +182,7 @@
  */
 /mob/living/basic/spider/giant/tangle
 	name = "tangle spider"
-	desc = "Furry and brown, it makes you shudder to look at it. This one has dim brown eyes."
+	desc = "Peludo e marrom, faz você tremer ao olhar para ele. Este tem olhos castanhos escuros."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "tangle"
 	icon_living = "tangle"
@@ -208,7 +200,7 @@
 	speed = 4
 	player_speed_modifier = -3.1
 	web_type = /datum/action/cooldown/mob_cooldown/lay_web/sealer
-	menu_description = "Average speed spider with self healing abilities and multiple web types to reinforce the nest with little to no damage and low health."
+	menu_description = "Uma aranha de velocidade média com habilidades de auto-cura e vários tipos de teia para reforçar o ninho com pouco ou nenhum dano e baixa saúde."
 	innate_actions = list(
 		/datum/action/cooldown/mob_cooldown/lay_web/solid_web,
 		/datum/action/cooldown/mob_cooldown/lay_web/sticky_web,
@@ -221,22 +213,12 @@
 
 	AddElement(/datum/element/web_walker, /datum/movespeed_modifier/average_web)
 
-	AddComponent(/datum/component/healing_touch,\
-		heal_brute = 15,\
-		heal_burn = 15,\
-		heal_time = 3 SECONDS,\
-		self_targeting = HEALING_TOUCH_SELF_ONLY,\
-		interaction_key = DOAFTER_SOURCE_SPIDER,\
-		valid_targets_typecache = typecacheof(list(/mob/living/basic/spider/growing/young/tangle, /mob/living/basic/spider/giant/tangle)),\
-		extra_checks = CALLBACK(src, PROC_REF(can_mend)),\
-		action_text = "%SOURCE% begins mending themselves...",\
-		complete_text = "%SOURCE%'s wounds mend together.",\
-	)
+	AddComponent(/datum/component/healing_touch,		heal_brute = 15,		heal_burn = 15,		heal_time = 3 SECONDS,		self_targeting = HEALING_TOUCH_SELF_ONLY,		interaction_key = DOAFTER_SOURCE_SPIDER,		valid_targets_typecache = typecacheof(list(/mob/living/basic/spider/growing/young/tangle, /mob/living/basic/spider/giant/tangle)),		extra_checks = CALLBACK(src, PROC_REF(can_mend)),		action_text = "%SOURCE% begins mending themselves...",		complete_text = "%SOURCE%'s wounds mend together.",	)
 
 /// Prevent you from healing other tangle spiders, or healing when on fire
 /mob/living/basic/spider/giant/tangle/proc/can_mend(mob/living/source, mob/living/target)
 	if (on_fire)
-		balloon_alert(src, "pegando fogo!")
+		balloon_alert(src, "Pegando nevoeiro!")
 		return FALSE
 	return TRUE
 
@@ -247,7 +229,7 @@
  */
 /mob/living/basic/spider/giant/tank
 	name = "tank spider"
-	desc = "Furry and Purple with a white top, it makes you shudder to look at it. This one has bright yellow eyes."
+	desc = "Furry e Purple com um top branco, faz você tremer para olhar para ele. Este tem olhos amarelos brilhantes."
 	icon_state = "tank"
 	icon_living = "tank"
 	icon_dead = "tank_dead"
@@ -259,7 +241,7 @@
 	obj_damage = 15
 	speed = 5
 	player_speed_modifier = -4
-	menu_description = "Extremely tanky with very poor offence. Able to self heal and lay reflective silk screens."
+	menu_description = "Extremamente abafado com uma má ofensa. Capaz de se curar e colocar telas reflexivas de seda."
 
 /mob/living/basic/spider/giant/tank/Initialize(mapload)
 	. = ..()
@@ -271,22 +253,12 @@
 
 	AddElement(/datum/element/web_walker, /datum/movespeed_modifier/below_average_web)
 
-	AddComponent(/datum/component/healing_touch,\
-		heal_brute = 50,\
-		heal_burn = 50,\
-		heal_time = 5 SECONDS,\
-		self_targeting = HEALING_TOUCH_SELF_ONLY,\
-		interaction_key = DOAFTER_SOURCE_SPIDER,\
-		valid_targets_typecache = typecacheof(list(/mob/living/basic/spider/growing/young/tank, /mob/living/basic/spider/giant/tank)),\
-		extra_checks = CALLBACK(src, PROC_REF(can_mend)),\
-		action_text = "%SOURCE% begins mending themselves...",\
-		complete_text = "%SOURCE%'s wounds mend together.",\
-	)
+	AddComponent(/datum/component/healing_touch,		heal_brute = 50,		heal_burn = 50,		heal_time = 5 SECONDS,		self_targeting = HEALING_TOUCH_SELF_ONLY,		interaction_key = DOAFTER_SOURCE_SPIDER,		valid_targets_typecache = typecacheof(list(/mob/living/basic/spider/growing/young/tank, /mob/living/basic/spider/giant/tank)),		extra_checks = CALLBACK(src, PROC_REF(can_mend)),		action_text = "%SOURCE% begins mending themselves...",		complete_text = "%SOURCE%'s wounds mend together.",	)
 
 /// Prevent you from healing when on fire
 /mob/living/basic/spider/giant/tank/proc/can_mend(mob/living/source, mob/living/target)
 	if (on_fire)
-		balloon_alert(src, "pegando fogo!")
+		balloon_alert(src, "Pegando nevoeiro!")
 		return FALSE
 	return TRUE
 
@@ -297,7 +269,7 @@
  */
 /mob/living/basic/spider/giant/breacher
 	name = "breacher spider"
-	desc = "Furry and light brown with dark brown and red highlights, it makes you shudder to look at it. This one has bright red eyes."
+	desc = "Peludos e castanhos claros com tons castanhos escuros e vermelhos, faz você tremer para olhar para ele. Este tem olhos vermelhos brilhantes."
 	icon_state = "breacher"
 	icon_living = "breacher"
 	icon_dead = "breacher_dead"
@@ -318,7 +290,7 @@
 	speed = 5
 	player_speed_modifier = -4
 	sight = SEE_TURFS
-	menu_description = "Has the ability to destroy walls and limbs, and to send warnings to the nest."
+	menu_description = "Tem a capacidade de destruir paredes e membros, e enviar avisos para o ninho."
 
 /mob/living/basic/spider/giant/breacher/Initialize(mapload)
 	. = ..()
@@ -339,7 +311,7 @@
  */
 /mob/living/basic/spider/giant/tarantula
 	name = "tarantula"
-	desc = "Furry and black, it makes you shudder to look at it. This one has abyssal red eyes."
+	desc = "Peludo e preto, faz você tremer de olhar para ele. Este tem olhos vermelhos abissais."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "tarantula"
 	icon_living = "tarantula"
@@ -356,7 +328,7 @@
 	gold_core_spawnable = NO_SPAWN
 	web_speed = 0.7
 	web_type = /datum/action/cooldown/mob_cooldown/lay_web/sealer
-	menu_description = "Tank spider variant with an enormous amount of health and damage, but is very slow when not on webbing. It also has a charge ability to close distance with a target after a small windup."
+	menu_description = "Variante aranha tanque com uma enorme quantidade de saúde e danos, mas é muito lento quando não na teia. Ele também tem uma capacidade de carga para fechar distância com um alvo após um pequeno encerramento."
 	innate_actions = list(
 		/datum/action/cooldown/mob_cooldown/charge/basic_charge,
 		/datum/action/cooldown/mob_cooldown/lay_web/solid_web,
@@ -388,7 +360,7 @@
  */
 /mob/living/basic/spider/giant/viper
 	name = "viper spider"
-	desc = "Furry and black, it makes you shudder to look at it. This one has effervescent purple eyes."
+	desc = "Peludo e preto, faz você tremer de olhar para ele. Este tem olhos roxos efervescentes."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "viper"
 	icon_living = "viper"
@@ -402,7 +374,7 @@
 	speed = 2
 	player_speed_modifier = -2.5
 	gold_core_spawnable = NO_SPAWN
-	menu_description = "Assassin spider variant with an unmatched speed and very deadly poison, but has very low amount of health and damage."
+	menu_description = "Assassinar aranha variante com uma velocidade incomparável e veneno muito mortal, mas tem muito baixa quantidade de saúde e danos."
 	innate_actions = list(
 		/datum/action/cooldown/mob_cooldown/defensive_mode,
 	)
@@ -421,7 +393,7 @@
  */
 /mob/living/basic/spider/giant/midwife
 	name = "broodmother spider"
-	desc = "Furry and black, it makes you shudder to look at it. This one has scintillating green eyes. Might also be hiding a real knife somewhere."
+	desc = "Peludo e preto, faz você tremer de olhar para ele. Este tem brilhantes olhos verdes. Pode estar escondendo uma faca de verdade em algum lugar."
 	gender = FEMALE
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "midwife"
@@ -436,7 +408,7 @@
 	gold_core_spawnable = NO_SPAWN
 	web_speed = 0.5
 	web_type = /datum/action/cooldown/mob_cooldown/lay_web/sealer
-	menu_description = "Royal spider variant specializing in reproduction and leadership, deals low damage."
+	menu_description = "Variante aranha real especializada em reprodução e liderança, causa baixo dano."
 	innate_actions = list(
 		/datum/action/cooldown/mob_cooldown/command_spiders,
 		/datum/action/cooldown/mob_cooldown/lay_eggs,
@@ -468,7 +440,7 @@
 	maximum_survivable_temperature = 1500
 	color = rgb(114,228,250)
 	gold_core_spawnable = NO_SPAWN
-	menu_description = "Versatile ice spider variant for frontline combat with high health and damage. Immune to temperature damage."
+	menu_description = "Versátil variante aranha de gelo para combate de frente com alta saúde e danos. Imunes para danos à temperatura."
 
 /**
  * ### Ice Nurse Spider
@@ -482,7 +454,7 @@
 	maximum_survivable_temperature = 1500
 	poison_type = /datum/reagent/consumable/frostoil
 	color = rgb(114,228,250)
-	menu_description = "Support ice spider variant specializing in healing their brethren and placing webbings very swiftly, but has very low amount of health and deals low damage. Immune to temperature damage."
+	menu_description = "Apoiar a variante aranha de gelo especializada em curar seus irmãos e colocar teias muito rapidamente, mas tem muito baixa quantidade de saúde e causa baixos danos. Imunes para danos à temperatura."
 
 /**
  * ### Ice Hunter Spider
@@ -497,7 +469,7 @@
 	poison_type = /datum/reagent/consumable/frostoil
 	color = rgb(114,228,250)
 	gold_core_spawnable = NO_SPAWN
-	menu_description = "Fast ice spider variant specializing in catching running prey and frost oil injection, but has less health and damage. Immune to temperature damage."
+	menu_description = "Variante de aranha de gelo rápida especializada em pegar presas e injeção de óleo de gelo, mas tem menos saúde e danos. Imunes para danos à temperatura."
 
 /**
  * ### Scrawny Hunter Spider
@@ -511,8 +483,8 @@
 	maxHealth = 60
 	melee_damage_lower = 5
 	melee_damage_upper = 10
-	desc = "Furry and black, it makes you shudder to look at it. This one has sparkling purple eyes, and looks abnormally thin and frail."
-	menu_description = "Fast spider variant specializing in catching running prey and toxin injection, but has less damage than a normal hunter spider at the cost of a little more health."
+	desc = "Peludo e preto, faz você tremer de olhar para ele. Este tem olhos roxos brilhantes, e parece anormalmente fino e frágil."
+	menu_description = "Variante rápida de aranha especializada em pegar presas e injeção de toxina, mas tem menos danos do que uma aranha caçadora normal ao custo de um pouco mais de saúde."
 	ai_controller = /datum/ai_controller/basic_controller/giant_spider/weak
 
 /**
@@ -527,8 +499,8 @@
 	maxHealth = 150
 	melee_damage_lower = 20
 	melee_damage_upper = 25
-	desc = "Furry and black, it makes you shudder to look at it. This one has abyssal red eyes, and looks abnormally thin and frail."
-	menu_description = "A weaker variant of the tarantula with reduced amount of health and damage, very slow when not on webbing. It also has a charge ability to close distance with a target after a small windup."
+	desc = "Peludo e preto, faz você tremer de olhar para ele. Este tem olhos vermelhos abismais, e parece anormalmente magro e frágil."
+	menu_description = "Uma variante mais fraca da tarântula com reduzida quantidade de saúde e danos, muito lenta quando não está na teia. Ele também tem uma capacidade de carga para fechar distância com um alvo após um pequeno encerramento."
 	ai_controller = /datum/ai_controller/basic_controller/giant_spider/weak
 
 /**
@@ -542,8 +514,8 @@
 	name = "scrawny nurse spider"
 	health = 30
 	maxHealth = 30
-	desc = "Furry and black, it makes you shudder to look at it. This one has brilliant green eyes, and looks abnormally thin and frail."
-	menu_description = "Weaker version of the nurse spider, specializing in healing their brethren and placing webbings very swiftly, but has very low amount of health and deals low damage."
+	desc = "Peludo e preto, faz você tremer de olhar para ele. Este tem olhos verdes brilhantes, e parece anormalmente magro e frágil."
+	menu_description = "Versão mais fraca da aranha enfermeira, especializada em curar seus irmãos e colocar teias muito rapidamente, mas tem muito baixa quantidade de saúde e causa baixos danos."
 	ai_controller = /datum/ai_controller/basic_controller/giant_spider/weak
 
 /**
@@ -553,7 +525,7 @@
  */
 /mob/living/basic/spider/giant/viper/wizard
 	name = "water spider"
-	desc = "Furry and black, it makes you shudder to look at it. This one has effervescent orange eyes."
+	desc = "Peludo e preto, faz você tremer de olhar para ele. Este tem olhos laranjas efervescentes."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "water"
 	icon_living = "water"
@@ -564,7 +536,7 @@
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, STAMINA = 1, OXY = 1)
 	unsuitable_cold_damage = 1
 	unsuitable_heat_damage = 1
-	menu_description = "Stronger assassin spider variant with an unmatched speed, high amount of health and very deadly poison, but deals very low amount of damage. It also has ability to ventcrawl."
+	menu_description = "Variante de aranha assassina mais forte com uma velocidade incomparável, alta quantidade de saúde e veneno muito mortal, mas causa muito pouco dano. Ele também tem capacidade de ventrawl."
 	apply_spider_antag = FALSE
 	innate_actions = list(
 		/datum/action/cooldown/mob_cooldown/lay_web/sticky_web,
@@ -583,7 +555,7 @@
 /mob/living/basic/spider/giant/sgt_araneus
 	name = "Sergeant Araneus"
 	real_name = "Sergeant Araneus"
-	desc = "A fierce companion of the Head of Security, this spider has been carefully trained by Nanotrasen specialists. Its beady, staring eyes send shivers down your spine."
+	desc = "Uma companheira feroz do Chefe de Segurança, esta aranha foi cuidadosamente treinada por especialistas em Nanotrasen. Seus olhos encarando fazem tremer sua espinha."
 	faction = list(FACTION_SPIDER)
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 250

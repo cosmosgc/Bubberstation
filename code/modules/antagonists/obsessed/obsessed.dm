@@ -38,10 +38,10 @@
 /datum/antagonist/obsessed/admin_add(datum/mind/new_owner,mob/admin)
 	var/mob/living/carbon/C = new_owner.current
 	if(!istype(C))
-		to_chat(admin, "[roundend_category] come from a brain trauma, so they need to at least be a carbon!")
+		to_chat(admin, "[roundend_category]Vem de um trauma cerebral, então eles precisam pelo menos ser um carbono!")
 		return
 	if(!C.get_organ_by_type(/obj/item/organ/brain)) // If only I had a brain
-		to_chat(admin, "[roundend_category] come from a brain trauma, so they need to HAVE A BRAIN.")
+		to_chat(admin, "[roundend_category]Eles precisam ter um cérebro.")
 		return
 	message_admins("[key_name_admin(admin)] made [key_name_admin(new_owner)] into [name].")
 	log_admin("[key_name(admin)] made [key_name(new_owner)] into [name].")
@@ -144,7 +144,7 @@
 		O.update_explanation_text()
 
 /datum/antagonist/obsessed/roundend_report_header()
-	return span_header("Someone became obsessed!<br>")
+	return span_header("Alguém ficou obcecado!<br>")
 
 /datum/antagonist/obsessed/roundend_report()
 	var/list/report = list()
@@ -163,11 +163,11 @@
 				break
 	if(trauma)
 		if(trauma.total_time_creeping > 0)
-			report += span_greentext("The [name] spent a total of [DisplayTimeText(trauma.total_time_creeping)] being near [trauma.obsession]!")
+			report += span_greentext("O[name]gastou um total de[DisplayTimeText(trauma.total_time_creeping)]Estar perto[trauma.obsession]!")
 		else
-			report += span_redtext("The [name] did not go near their obsession the entire round! That's extremely impressive!")
+			report += span_redtext("O[name]Não se aproximou de sua obsessão durante todo o round! Isso é extremamente impressionante!")
 	else
-		report += span_redtext("The [name] had no trauma attached to their antagonist ways! Either it bugged out or an admin incorrectly gave this good samaritan antag and it broke! You might as well show yourself!!")
+		report += span_redtext("O[name]Não tinha nenhum trauma ligado a seus modos antagonistas! Ou ele furou ou um administrador deu incorretamente este bom antag samaritano e quebrou! Você pode muito bem aparecer!")
 
 	if(objectives.len == 0 || objectives_complete)
 		report += "<span class='greentext big'>The [name] was successful!</span>"
@@ -185,10 +185,10 @@
 /datum/objective/assassinate/obsessed/update_explanation_text()
 	..()
 	if(target?.current)
-		explanation_text = "Murder [target.name], the [!target_role_type ? target.assigned_role.title : english_list(target.get_special_roles())]."
+		explanation_text = "Assassinato[target.name], o[!target_role_type ? target.assigned_role.title : english_list(target.get_special_roles())]."
 	else
 		message_admins("WARNING! [ADMIN_LOOKUPFLW(owner)] obsessed objectives forged without an obsession!")
-		explanation_text = "Free Objective"
+		explanation_text = "Objetivo Livre"
 
 /datum/objective/assassinate/jealous //assassinate, but it changes the target to someone else in the previous target's department. cool, right?
 	var/datum/mind/old //the target the coworker was picked from.
@@ -197,9 +197,9 @@
 	..()
 	old = find_coworker(target)
 	if(target?.current && old)
-		explanation_text = "Assassinate [target.name], [old]'s coworker, ONCE." // ZUBBER EDIT | org: explanation_text = "Murder [target.name], the [!target_role_type ? target.assigned_role.title : target.special_role]."
+		explanation_text = "Assassinar[target.name], [old]É colega de trabalho, uma vez." // ZUBBER EDIT | org: explanation_text = "Assassinato[target.name], o[!target_role_type ? target.assigned_role.title : target.special_role]."
 	else
-		explanation_text = "Free Objective"
+		explanation_text = "Objetivo Livre"
 
 
 /datum/objective/assassinate/jealous/proc/find_coworker(datum/mind/oldmind)//returning null = free objective
@@ -235,9 +235,9 @@
 	var/datum/antagonist/obsessed/creeper = owner.has_antag_datum(/datum/antagonist/obsessed)
 	if(target?.current && creeper)
 		creeper.trauma.attachedobsessedobj = src
-		explanation_text = "Spend [DisplayTimeText(timer)] around [target.name] while they're alive."
+		explanation_text = "Gaste[DisplayTimeText(timer)]Por aí.[target.name]enquanto estão vivos."
 	else
-		explanation_text = "Free Objective"
+		explanation_text = "Objetivo Livre"
 
 /datum/objective/spendtime/check_completion()
 	return timer <= 0 || explanation_text == "Free Objective"
@@ -253,9 +253,9 @@
 		hugs_needed = rand(4,6)
 	var/datum/antagonist/obsessed/creeper = owner.has_antag_datum(/datum/antagonist/obsessed)
 	if(target?.current && creeper)
-		explanation_text = "Hug [target.name] [hugs_needed] times while they're alive."
+		explanation_text = "Abraço[target.name] [hugs_needed]vezes enquanto estão vivos."
 	else
-		explanation_text = "Free Objective"
+		explanation_text = "Objetivo Livre"
 
 /datum/objective/hug/check_completion()
 	var/datum/antagonist/obsessed/creeper = owner.has_antag_datum(/datum/antagonist/obsessed)
@@ -269,9 +269,9 @@
 /datum/objective/polaroid/update_explanation_text()
 	..()
 	if(target?.current)
-		explanation_text = "Take a photo of [target.name] while they're alive, and keep it in your bag."
+		explanation_text = "Tire uma foto de[target.name]enquanto estão vivos, e guarde na sua bolsa."
 	else
-		explanation_text = "Free Objective"
+		explanation_text = "Objetivo Livre"
 
 /datum/objective/polaroid/check_completion()
 	var/list/datum/mind/owners = get_owners()
@@ -293,9 +293,9 @@
 /datum/objective/steal/heirloom_thief/update_explanation_text()
 	..()
 	if(steal_target)
-		explanation_text = "Steal [target.name]'s family heirloom, [steal_target] they cherish."
+		explanation_text = "Roubar[target.name]A herança da família,[steal_target]Eles apreciam."
 	else
-		explanation_text = "Free Objective"
+		explanation_text = "Objetivo Livre"
 
 #undef OBSESSED_OBJECTIVE_SPEND_TIME
 #undef OBSESSED_OBJECTIVE_POLAROID

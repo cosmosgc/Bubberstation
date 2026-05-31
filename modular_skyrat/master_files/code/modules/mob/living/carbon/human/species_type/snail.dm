@@ -97,7 +97,7 @@
 	if(!istype(core, /obj/item/assembly/signaler/anomaly/bluespace))
 		return ..()
 
-	to_chat(user, span_notice("You insert [core] into your shell, and it starts to glow blue with expanded storage potential!"))
+	to_chat(user, span_notice("Você insere[core]E começa a brilhar azul com potencial de armazenamento expandido!"))
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	add_filter("bluespace_shell", 2, list("type" = "outline", "color" = COLOR_BLUE_LIGHT, "size" = 1))
 	storage_core = TRUE
@@ -136,49 +136,49 @@
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "home",
 			SPECIES_PERK_NAME = "Shellback",
-			SPECIES_PERK_DESC = "Snails have a shell fused to their back. It offers great storage and most importantly gives them 50% brute damage reduction from behind, or while resting. Alt click to change the sprite!",
+			SPECIES_PERK_DESC = "Caracóis têm uma concha fundida nas costas. Oferece grande armazenamento e, mais importante, dá 50% de redução de danos brutos por trás, ou enquanto descansa. Alt clique para mudar a imagem!",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "wine-glass",
 			SPECIES_PERK_NAME = "Poison Resistance",
-			SPECIES_PERK_DESC = "Snails have a higher tolerance for poison owing to their robust livers.",
+			SPECIES_PERK_DESC = "Caracóis têm maior tolerância ao veneno devido aos fígados robustos.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "heart",
 			SPECIES_PERK_NAME = "Double Hearts",
-			SPECIES_PERK_DESC = "Snails have two hearts, meaning it'll take more to break theirs.",
+			SPECIES_PERK_DESC = "Caracóis têm dois corações, o que significa que será preciso mais para quebrar o deles.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "water",
 			SPECIES_PERK_NAME = "Water Breathing",
-			SPECIES_PERK_DESC = "Snails can breathe underwater.",
+			SPECIES_PERK_DESC = "Caracóis podem respirar debaixo d'água.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "bone",
 			SPECIES_PERK_NAME = "Boneless",
-			SPECIES_PERK_DESC = "Snails are invertebrates, meaning they don't take bone wounds, but are easier to delimb.",
+			SPECIES_PERK_DESC = "Caracóis são invertebrados, ou seja, não levam feridas ósseas, mas são mais fáceis de diminuir.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "crutch",
 			SPECIES_PERK_NAME = "Sheer Mollusk Speed",
-			SPECIES_PERK_DESC = "Snails move incredibly slow while standing. They move much faster while crawling, and can stick to the floors when the gravity is out.",
+			SPECIES_PERK_DESC = "Caracóis se movem incrivelmente devagar enquanto estão de pé. Eles se movem muito mais rápido enquanto rastejam, e podem ficar no chão quando a gravidade está fora.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "frown",
 			SPECIES_PERK_NAME = "Weak Fighter",
-			SPECIES_PERK_DESC = "Snails punch half as hard as a human.",
+			SPECIES_PERK_DESC = "Caracóis batem metade do que um humano.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "skull",
 			SPECIES_PERK_NAME = "Salt Weakness",
-			SPECIES_PERK_DESC = "Salt burns snails, and salt piles will block their path.",
+			SPECIES_PERK_DESC = "Sal queima caracóis, e pilhas de sal bloquearão seu caminho.",
 		),
 	)
 

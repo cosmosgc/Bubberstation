@@ -5,16 +5,16 @@
 /datum/skill/fishing
 	name = "Fishing"
 	title = "Angler"
-	desc = "How empty and alone you are on this barren Earth."
+	desc = "Como você está vazio e sozinho nesta Terra estéril."
 	modifiers = list(SKILL_VALUE_MODIFIER = list(1, 0, -1, -3, -5, -7, -10))
 	skill_item_path = /obj/item/clothing/head/soft/fishing_hat
 
 /datum/skill/fishing/New()
 	. = ..()
-	levelUpMessages[SKILL_LEVEL_NOVICE] = span_nicegreen("I'm starting to figure out what [name] really is! I can guess a fish size and weight at a glance.")
-	levelUpMessages[SKILL_LEVEL_APPRENTICE] = span_nicegreen("I'm getting a little better at [name]! I can tell if a fish is hungry, dying and otherwise.")
-	levelUpMessages[SKILL_LEVEL_JOURNEYMAN] = span_nicegreen("I feel like I've become quite proficient at [name]! I can tell what fishes I can catch at any given fishing spot.")
-	levelUpMessages[SKILL_LEVEL_MASTER] = span_nicegreen("I've begun to truly understand the surprising depth behind [name]. As a master [title], I can guess what I'm going to catch now!")
+	levelUpMessages[SKILL_LEVEL_NOVICE] = span_nicegreen("Estou começando a descobrir o que[name]Realmente é! Posso adivinhar o tamanho e o peso de um peixe.")
+	levelUpMessages[SKILL_LEVEL_APPRENTICE] = span_nicegreen("Estou ficando um pouco melhor em[name]Posso dizer se um peixe está com fome, morrendo ou não.")
+	levelUpMessages[SKILL_LEVEL_JOURNEYMAN] = span_nicegreen("Sinto que me tornei bastante eficiente em[name]Posso dizer que peixes posso pegar em qualquer ponto de pesca.")
+	levelUpMessages[SKILL_LEVEL_MASTER] = span_nicegreen("Comecei a entender a surpreendente profundidade por trás.[name]Como um mestre[title]Posso adivinhar o que vou pegar agora!")
 
 /datum/skill/fishing/level_gained(datum/mind/mind, new_level, old_level, silent)
 	. = ..()

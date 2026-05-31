@@ -18,11 +18,11 @@
 	switch (action_key)
 		if ("entombed_emergency_reactivate")
 			if (!entombed_suit.active)
-				user.visible_message(span_info("[user] begins initiating emergency reactivation procedures on [entombed_suit]..."))
+				user.visible_message(span_info("[user]Iniciando procedimentos de reativação de emergência.[entombed_suit]..."))
 				if (do_after(user, 3 SECONDS, entombed_suit.wearer))
 					// deploy all our parts so activation actually works
 					for (var/obj/item/part as anything in entombed_suit.mod_parts)
 						entombed_suit.deploy(user, part)
 					entombed_suit.toggle_activate(user, TRUE)
 			else
-				user.balloon_alert(usr, "their suit is already online!")
+				user.balloon_alert(usr, "O terno deles já está online!")

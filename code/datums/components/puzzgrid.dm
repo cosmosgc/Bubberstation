@@ -291,16 +291,16 @@ ADMIN_VERB(validate_puzzgrids, R_DEBUG, "Validate Puzzgrid Config", "Validate th
 
 		var/line_json_decoded = safe_json_decode(line)
 		if (isnull(line_json_decoded))
-			to_chat(user, span_warning("Line [line_number] in puzzgrids.txt is not a JSON: [line]"))
+			to_chat(user, span_warning("Linha[line_number]Em Puzzgrids.[line]"))
 			continue
 
 		var/datum/puzzgrid/puzzgrid = new
 		var/populate_result = puzzgrid.populate(line_json_decoded)
 
 		if (populate_result != TRUE)
-			to_chat(user, span_warning("Line [line_number] in puzzgrids.txt is not formatted correctly: [populate_result]"))
+			to_chat(user, span_warning("Linha[line_number]em puzzgrids.txt não está formatado corretamente:[populate_result]"))
 
-	to_chat(user, span_notice("Validated. If you did not see any errors, you're in the clear."))
+	to_chat(user, span_notice("Validado. Se não viu nenhum erro, está limpo."))
 
 #undef PUZZGRID_CONFIG
 #undef PUZZGRID_GROUP_COUNT

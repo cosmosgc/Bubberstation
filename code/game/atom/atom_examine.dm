@@ -42,15 +42,15 @@
 						for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
 							. += "&bull; [round(current_reagent.volume, CHEMICAL_VOLUME_ROUNDING)] units of [current_reagent.name]"
 						if(reagents.is_reacting)
-							. += span_warning("It is currently reacting!")
-						. += span_notice("The solution's pH is [round(reagents.ph, 0.01)] and has a temperature of [reagents.chem_temp]K.")
+							. += span_warning("Está reagindo agora!")
+						. += span_notice("O pH da solução é[round(reagents.ph, 0.01)]e tem uma temperatura de[reagents.chem_temp]K.")
 				else
 					. += "It contains:<br>Nothing."
 			else if(reagents.flags & AMOUNT_VISIBLE)
 				if(reagents.total_volume)
-					. += span_notice("It has [reagents.total_volume] unit\s left.")
+					. += span_notice("Tem.[reagents.total_volume]Unidade esquerda.")
 				else
-					. += span_danger("It's empty.")
+					. += span_danger("Está vazio.")
 
 		if(HAS_TRAIT(user, TRAIT_KEEN_NOSE))
 			var/sniff_text = get_sniff_examine(user)
@@ -70,10 +70,10 @@
 	if(!sniffer.get_bodypart(BODY_ZONE_HEAD)) // Need a nose to smell
 		return
 	if(sniffer.is_mouth_covered())
-		return span_warning("You can't get a whiff of [src] with your face covered.")
+		return span_warning("Você não pode sentir o cheiro de[src]Com seu rosto coberto.")
 
 	var/smell_message = generate_reagents_taste_message(reagents.reagent_list, sniffer, 10)
-	return span_notice("You catch a whiff of [src]. It smells like [smell_message].")
+	return span_notice("Você sente o cheiro[src]Cheira como[smell_message].")
 
 /**
  * A list of "tags" displayed after atom's description in examine.
@@ -98,7 +98,7 @@
 /atom/proc/examine_tags(mob/user)
 	. = list()
 	if(abstract_type == type)
-		.[span_hypnophrase("abstract")] = "This is an abstract concept, you should report this to a strange entity called GITHUB!"
+		.[span_hypnophrase("abstract")] = "Este é um conceito abstrato, você deve relatar isso para uma entidade estranha chamada GITHUB!"
 
 	if(resistance_flags & INDESTRUCTIBLE)
 		.["indestructible"] = "It is extremely robust! It'll probably withstand anything that could happen to it!"
@@ -135,7 +135,7 @@
 	var/mats_list = list()
 	for(var/custom_material in custom_materials)
 		var/datum/material/current_material = SSmaterials.get_material(custom_material)
-		mats_list += span_tooltip("It is made out of [current_material.name].", current_material.name)
+		mats_list += span_tooltip("É feito de[current_material.name].", current_material.name)
 	. += "made of [english_list(mats_list)]"
 
 /**
@@ -170,7 +170,7 @@
 				material_string += span_tooltip("[property]: [tooltip_hint]", descriptor)
 
 		if (length(material_string))
-			. += span_info("[capitalize(material.name)] is [english_list(material_string)].")
+			. += span_info("[capitalize(material.name)]É[english_list(material_string)].")
 
 /**
  * Get the name of this object for examine

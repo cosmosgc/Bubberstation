@@ -39,18 +39,12 @@
 		var/obj/item/real_path = istext(path) ? text2path(path) : path
 		if(!ispath(real_path, /obj/item))
 			if(optional_loadout_owner)
-				to_chat(optional_loadout_owner, span_boldnotice("The following invalid item path was found \
-					in your character loadout: [real_path || "null"]. \
-					It has been removed, renamed, or is otherwise missing - \
-					You may want to check your loadout settings."))
+				to_chat(optional_loadout_owner, span_boldnotice("O seguinte caminho de itens inválidos foi encontrado no carregamento do seu personagem:[real_path || "null"]Ele foi removido, renomeado ou está faltando."))
 			continue
 
 		else if(!istype(GLOB.all_loadout_datums[real_path], /datum/loadout_item))
 			if(optional_loadout_owner)
-				to_chat(optional_loadout_owner, span_boldnotice("The following invalid loadout item was found \
-					in your character loadout: [real_path || "null"]. \
-					It has been removed, renamed, or is otherwise missing - \
-					You may want to check your loadout settings."))
+				to_chat(optional_loadout_owner, span_boldnotice("O seguinte item inválido foi encontrado em seu personagem:[real_path || "null"]Ele foi removido, renomeado ou está faltando."))
 			continue
 
 		var/datum/loadout_item/loadout_item = GLOB.all_loadout_datums[real_path]

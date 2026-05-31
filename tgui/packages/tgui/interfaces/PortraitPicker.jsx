@@ -17,14 +17,14 @@ export const PortraitPicker = (props) => {
     got_paintings && `paintings_${paintings[listIndex].md5}`;
 
   return (
-    <Window theme="ntos" title="Portrait Picker" width={400} height={406}>
+    <Window theme="ntos" title="Retrato Picker" width={400} height={406}>
       <Window.Content>
         <Flex height="100%" direction="column">
           <Flex.Item mb={1}>
             <Section title="Search">
               <Input
                 fluid
-                placeholder="Search Paintings..."
+                placeholder="Procurar pinturas..."
                 value={search_string}
                 onBlur={(value) => {
                   act('search', {
@@ -99,7 +99,7 @@ export const PortraitPicker = (props) => {
                     <Flex.Item grow={3}>
                       <Button
                         icon="check"
-                        content="Select Portrait"
+                        content="Selecione Retrato"
                         disabled={!got_paintings}
                         onClick={() =>
                           act('select', {

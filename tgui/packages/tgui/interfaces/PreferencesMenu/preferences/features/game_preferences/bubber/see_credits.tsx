@@ -1,8 +1,8 @@
 import { CheckboxInput, type FeatureToggle } from '../../base';
 
 export const see_credits: FeatureToggle = {
-  name: 'See Roundend Credits',
+  name: 'Veja créditos Roundend',
   category: 'GAMEPLAY',
-  description: 'When enabled, you will see the credits sequence at roundend.',
+  description: 'Quando habilitado, você verá a sequência de créditos em roundend.',
   component: CheckboxInput,
 };

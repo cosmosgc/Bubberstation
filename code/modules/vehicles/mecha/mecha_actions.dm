@@ -34,7 +34,7 @@
 /datum/action/vehicle/sealed/mecha/mech_toggle_cabin_seal
 	name = "Toggle Cabin Airtight"
 	button_icon_state = "mech_cabin_open"
-	desc = "Airtight cabin preserves internal air and can be pressurized with a mounted air tank."
+	desc = "Cabine hermética preserva ar interno e pode ser pressurizada com um tanque de ar montado."
 
 /datum/action/vehicle/sealed/mecha/mech_toggle_cabin_seal/Trigger(mob/clicker, trigger_flags)
 	. = ..()
@@ -110,13 +110,13 @@
 
 /obj/vehicle/sealed/mecha/proc/toggle_strafe()
 	if(!(mecha_flags & CAN_STRAFE))
-		to_chat(occupants, "this mecha doesn't support strafing!")
+		to_chat(occupants, "Este mecha não apoia o roubo!")
 		return
 
 	strafe = !strafe
 
 	for(var/mob/occupant in occupants)
-		balloon_alert(occupant, "strafing [strafe?"on":"off"]")
+		balloon_alert(occupant, "strafing[strafe?"on":"off"]")
 		occupant.playsound_local(src, 'sound/machines/terminal/terminal_eject.ogg', 50, TRUE)
 	log_message("Toggled strafing mode [strafe?"on":"off"].", LOG_MECHA)
 
@@ -137,23 +137,23 @@
 		return
 
 	if(chassis.occupants.len == chassis.max_occupants)
-		chassis.balloon_alert(owner, "other seat occupied!")
+		chassis.balloon_alert(owner, "Outro parecer ocupado!")
 		return
 	var/list/drivers = chassis.return_drivers()
-	chassis.balloon_alert(owner, "moving to other seat...")
+	chassis.balloon_alert(owner, "indo para outro lugar...")
 	chassis.is_currently_ejecting = TRUE
 	if(!do_after(owner, chassis.has_gravity() ? chassis.exit_delay : 0 , target = chassis))
-		chassis.balloon_alert(owner, "interrompido!")
+		chassis.balloon_alert(owner, "Interrompido!")
 		chassis.is_currently_ejecting = FALSE
 		return
 	chassis.is_currently_ejecting = FALSE
 	if(owner in drivers)
-		chassis.balloon_alert(owner, "controlling gunner seat")
+		chassis.balloon_alert(owner, "Controlando o parecer do agitador.")
 		chassis.remove_control_flags(owner, VEHICLE_CONTROL_DRIVE|VEHICLE_CONTROL_SETTINGS)
 		chassis.add_control_flags(owner, VEHICLE_CONTROL_MELEE|VEHICLE_CONTROL_EQUIPMENT)
 		chassis.remove_all_equipment_actions(owner)
 	else
-		chassis.balloon_alert(owner, "controlling pilot seat")
+		chassis.balloon_alert(owner, "assisto piloto controlador")
 		chassis.remove_control_flags(owner, VEHICLE_CONTROL_MELEE|VEHICLE_CONTROL_EQUIPMENT)
 		chassis.add_control_flags(owner, VEHICLE_CONTROL_DRIVE|VEHICLE_CONTROL_SETTINGS)
 		chassis.generate_equipment_actions(owner)
@@ -161,7 +161,7 @@
 
 /datum/action/vehicle/sealed/mecha/mech_overclock
 	name = "Toggle Overclocking"
-	desc = "Increases mech speed and power at the cost of heat generation."
+	desc = "Aumenta a velocidade e a potência do mech ao custo da geração de calor."
 	button_icon_state = "mech_overload_off"
 
 /datum/action/vehicle/sealed/mecha/mech_overclock/siren/New()
@@ -238,7 +238,7 @@
 			cargo_radial[cargo_item] = cargo_item.appearance
 
 		if(!length(cargo_radial))
-			chassis.balloon_alert(owner, "cargo hold empty!")
+			chassis.balloon_alert(owner, "Carregamento vazio!")
 			return
 
 		var/atom/movable/picked_item = show_radial_menu(owner, chassis, cargo_radial, require_near = TRUE)
@@ -263,7 +263,7 @@
 		playsound(chassis, 'sound/items/weapons/tap.ogg', 50, TRUE)
 		cargo_hold.log_message("Unloaded [first_item]. Cargo compartment capacity: [cargo_hold.cargo_capacity - cargo_hold.contents.len]", LOG_MECHA)
 	else
-		chassis.balloon_alert(owner, "cargo hold empty!")
+		chassis.balloon_alert(owner, "Carregamento vazio!")
 
 /datum/action/vehicle/sealed/mecha/equipment/extinguisher_action
 	name = "Extinguisher"
@@ -288,7 +288,7 @@
 
 	// Left click - spray
 	if(extinguisher.reagents.total_volume < extinguisher.required_amount)
-		chassis.balloon_alert(owner, "not enough water!")
+		chassis.balloon_alert(owner, "Não há água suficiente!")
 		return
 
 	extinguisher.spray_extinguisher(owner)

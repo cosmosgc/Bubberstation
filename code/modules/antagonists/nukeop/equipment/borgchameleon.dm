@@ -49,29 +49,29 @@
 		if (isturf(user.loc))
 			toggle(user)
 		else
-			to_chat(user, span_warning("You can't use [src] while inside something!"))
+			to_chat(user, span_warning("Você não pode usar[src]dentro de alguma coisa!"))
 	else
-		to_chat(user, span_warning("You need at least [display_energy(ACTIVATION_COST)] of charge in your cell to use [src]!"))
+		to_chat(user, span_warning("Você precisa pelo menos[display_energy(ACTIVATION_COST)]de carga em sua cela para usar[src]!"))
 
 /obj/item/borg_chameleon/proc/toggle(mob/living/silicon/robot/user)
 	if(active)
 		playsound(src, 'sound/effects/pop.ogg', 100, TRUE, -6)
-		to_chat(user, span_notice("You deactivate \the [src]."))
+		to_chat(user, span_notice("Você desativa.\the [src]."))
 		deactivate(user)
 	else
 		if(animation_playing)
-			to_chat(user, span_notice("\the [src] is recharging."))
+			to_chat(user, span_notice("\the [src]está recarregando."))
 			return
 		animation_playing = TRUE
-		to_chat(user, span_notice("You activate \the [src]."))
+		to_chat(user, span_notice("Você ativa.\the [src]."))
 		playsound(src, 'sound/effects/seedling_chargeup.ogg', 100, TRUE, -6)
 		apply_wibbly_filters(user)
 		if (do_after(user, 5 SECONDS, target = user, hidden = TRUE) && user.cell.use(ACTIVATION_COST))
 			playsound(src, 'sound/effects/bamf.ogg', 100, TRUE, -6)
-			to_chat(user, span_notice("You are now disguised as the Nanotrasen engineering borg \"[friendlyName]\"."))
+			to_chat(user, span_notice("Agora você está disfarçado de borg de engenharia Nanotrasen.\"[friendlyName]\"."))
 			activate(user)
 		else
-			to_chat(user, span_warning("The chameleon field fizzles."))
+			to_chat(user, span_warning("O campo camaleão falha."))
 			do_sparks(3, FALSE, user)
 		remove_wibbly_filters(user)
 		animation_playing = FALSE
@@ -118,7 +118,7 @@
 /obj/item/borg_chameleon/proc/disrupt(mob/living/silicon/robot/user)
 	SIGNAL_HANDLER
 	if(active)
-		to_chat(user, span_danger("Your chameleon field deactivates."))
+		to_chat(user, span_danger("Seu campo camaleão desativa."))
 		deactivate(user)
 
 #undef ACTIVATION_COST

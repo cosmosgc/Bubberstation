@@ -42,15 +42,15 @@ export function render(component: ReactNode) {
   // Report rendering time
   if (process.env.NODE_ENV !== 'production') {
     if (initialRender === 'resumed') {
-      logger.log('rendered in', perf.measure(Render.Start, Render.Finish));
+      logger.log('renderizado em', perf.measure(Render.Start, Render.Finish));
     } else if (initialRender) {
-      logger.debug('serving from:', location.href);
-      logger.debug('bundle entered in', perf.measure('inception', 'init'));
-      logger.debug('initialized in', perf.measure('init', Render.Start));
-      logger.log('rendered in', perf.measure(Render.Start, Render.Finish));
-      logger.log('fully loaded in', perf.measure('inception', Render.Finish));
+      logger.debug('Servindo de:', location.href);
+      logger.debug('O pacote entrou.', perf.measure('inception', 'init'));
+      logger.debug('inicializado em', perf.measure('init', Render.Start));
+      logger.log('renderizado em', perf.measure(Render.Start, Render.Finish));
+      logger.log('totalmente carregado em', perf.measure('inception', Render.Finish));
     } else {
-      logger.debug('rendered in', perf.measure(Render.Start, Render.Finish));
+      logger.debug('renderizado em', perf.measure(Render.Start, Render.Finish));
     }
   }
 

@@ -6,7 +6,7 @@
 	icon = 'icons/obj/vending_restock.dmi'
 	icon_state = "refill_snack"
 	inhand_icon_state = "restock_unit"
-	desc = "A vending machine restock cart."
+	desc = "Um carrinho de recarga de máquinas."
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	obj_flags = CONDUCTS_ELECTRICITY
@@ -40,11 +40,11 @@
 
 	var/num = get_part_rating()
 	if (!num)
-		. += span_notice("It's empty!")
+		. += span_notice("Está vazio!")
 	else if(num == INFINITY)
-		. += span_notice("It's full of supplies!")
+		. += span_notice("Está cheio de suprimentos!")
 	else
-		. += span_notice("It can restock [num] item\s.")
+		. += span_notice("Pode reabastecer.[num]item.")
 
 /obj/item/vending_refill/get_part_rating()
 	. = 0

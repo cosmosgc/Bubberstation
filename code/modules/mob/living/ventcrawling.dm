@@ -4,7 +4,7 @@
 	var/ventcrawler = HAS_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS) || HAS_TRAIT(src, TRAIT_VENTCRAWLER_NUDE)
 	if(!ventcrawler)
 		return
-	to_chat(src, span_notice("You can ventcrawl! Use alt+click on vents to quickly travel about the station."))
+	to_chat(src, span_notice("Você pode ventrawl! Use alt+clique nas saídas para viajar rapidamente sobre a estação."))
 
 /mob/living/carbon/human/notify_ventcrawler_on_login()
 	if(!ismonkey(src))
@@ -30,40 +30,40 @@
 	// BUBBER ADDITION END - VENTCRAWLING SIGNAL
 	if(stat)
 		if(provide_feedback)
-			to_chat(src, span_warning("You must be conscious to do this!"))
+			to_chat(src, span_warning("Você deve estar consciente para fazer isso!"))
 		return
 	if(HAS_TRAIT(src, TRAIT_IMMOBILIZED))
 		if(provide_feedback)
-			to_chat(src, span_warning("You currently can't move into the vent!"))
+			to_chat(src, span_warning("Você não pode entrar na ventilação!"))
 		return
 	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
 		if(provide_feedback)
-			to_chat(src, span_warning("You need to be able to use your hands to ventcrawl!"))
+			to_chat(src, span_warning("Você precisa ser capaz de usar suas mãos para ventrawl!"))
 		return
 	if(has_buckled_mobs())
 		if(provide_feedback)
-			to_chat(src, span_warning("You can't vent crawl with other creatures on you!"))
+			to_chat(src, span_warning("Você não pode desabafar rastejando com outras criaturas em você!"))
 		return
 	if(buckled)
 		if(provide_feedback)
-			to_chat(src, span_warning("You can't vent crawl while buckled!"))
+			to_chat(src, span_warning("Você não pode ventilar rastejar enquanto dobrado!"))
 		return
 	if(iscarbon(src) && required_nudity && !signal_result) // BUBBER CHANGE - VENTCRAWLING SIGNAL
 		if(length(get_equipped_items(INCLUDE_POCKETS|INCLUDE_HELD)))
 			if(provide_feedback)
-				to_chat(src, span_warning("You can't crawl around in the ventilation ducts with items!"))
+				to_chat(src, span_warning("Você não pode rastejar pelos dutos de ventilação com itens!"))
 			return
 	if(ventcrawl_target.welded)
 		if(provide_feedback)
 			// Add cooldown to prevent welded vent message spam during movement
 			if(COOLDOWN_FINISHED(src, welded_vent_message_cd))
-				to_chat(src, span_warning("You can't crawl around a welded vent!"))
+				to_chat(src, span_warning("Você não pode rastejar em torno de uma ventilação soldada!"))
 				COOLDOWN_START(src, welded_vent_message_cd, 2 SECONDS)
 		return
 
 	if(!(vent_movement & VENTCRAWL_ENTRANCE_ALLOWED))
 		if(provide_feedback)
-			to_chat(src, span_warning("You can't enter this vent!"))
+			to_chat(src, span_warning("Não pode entrar nesta ventilação!"))
 		return
 
 	return TRUE
@@ -82,16 +82,16 @@
 		if(!exit_time)
 			exit_time = 1 SECONDS
 		// BUBBER ADDITION END - VENTCRAWLING SIGNAL
-		to_chat(src, span_notice("You begin climbing out from the ventilation system..."))
+		to_chat(src, span_notice("Você começa a sair do sistema de ventilação..."))
 		if(has_client && isnull(client))
 			return
 		if(!do_after(src, exit_time, target = ventcrawl_target)) // BUBBER CHANGE - VENTCRAWLING SIGNAL
 			SEND_SIGNAL(src, COMSIG_VENTCRAWL_PRE_CANCEL, ventcrawl_target) // BUBBER ADDITION - VENTCRAWLING SIGNAL
 			return
 		if(ventcrawl_target.welded) // in case it got welded during our sleep
-			to_chat(src, span_warning("You can't crawl around a welded vent!"))
+			to_chat(src, span_warning("Você não pode rastejar em torno de uma ventilação soldada!"))
 			return
-		visible_message(span_notice("[src] scrambles out from the ventilation ducts!"), span_notice("You scramble out from the ventilation ducts."))
+		visible_message(span_notice("[src]Sai dos dutos de ventilação!"), span_notice("Você sai dos dutos de ventilação."))
 		forceMove(ventcrawl_target.loc)
 		REMOVE_TRAIT(src, TRAIT_MOVE_VENTCRAWLING, VENTCRAWLING_TRAIT)
 		update_pipe_vision()
@@ -107,26 +107,26 @@
 				enter_time = 2.5 SECONDS // Default time if the signal doesn't return anything
 			// BUBBER ADDITION END - VENTCRAWLING SIGNAL
 			ventcrawl_target.flick_overlay_static(image('icons/effects/vent_indicator.dmi', "arrow", ABOVE_MOB_LAYER, dir = get_dir(src.loc, ventcrawl_target.loc)), 2 SECONDS)
-			visible_message(span_notice("[src] begins climbing into the ventilation system...") ,span_notice("You begin climbing into the ventilation system..."))
+			visible_message(span_notice("[src]Começa a subir no sistema de ventilação...") ,span_notice("Você começa a subir no sistema de ventilação..."))
 			if(!do_after(src, enter_time, target = ventcrawl_target, extra_checks = CALLBACK(src, PROC_REF(can_enter_vent), ventcrawl_target))) // BUBBER CHANGE - VENTCRAWLING SIGNAL
 				SEND_SIGNAL(src, COMSIG_VENTCRAWL_PRE_CANCEL, ventcrawl_target) // BUBBER ADDITION - VENTCRAWLING SIGNAL
 				return
 			if(has_client && isnull(client))
 				return
 			if(ventcrawl_target.welded) // in case it got welded during our sleep
-				to_chat(src, span_warning("You can't crawl around a welded vent!"))
+				to_chat(src, span_warning("Você não pode rastejar em torno de uma ventilação soldada!"))
 				return
 			ventcrawl_target.flick_overlay_static(image('icons/effects/vent_indicator.dmi', "insert", ABOVE_MOB_LAYER), 1 SECONDS)
-			visible_message(span_notice("[src] scrambles into the ventilation ducts!"), span_notice("You climb into the ventilation ducts."))
+			visible_message(span_notice("[src]Entra nos dutos de ventilação!"), span_notice("Você entra nos dutos de ventilação."))
 			move_into_vent(ventcrawl_target)
 			SEND_SIGNAL(src, COMSIG_VENTCRAWL_ENTER, ventcrawl_target) // BUBBER ADDITION - VENTCRAWLING SIGNAL
 		else
-			to_chat(src, span_warning("This ventilation duct is not connected to anything!"))
+			to_chat(src, span_warning("Este duto de ventilação não está ligado a nada!"))
 
 /mob/living/basic/slime/can_enter_vent(obj/machinery/atmospherics/components/ventcrawl_target, provide_feedback = TRUE)
 	if(buckled)
 		if(provide_feedback)
-			to_chat(src, span_warning("You can't vent crawl while feeding!"))
+			to_chat(src, span_warning("Você não pode desabafar rastejando enquanto se alimenta!"))
 		return
 	return ..()
 

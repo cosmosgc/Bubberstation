@@ -96,22 +96,22 @@ export const RADIO_CHANNELS = [
     color: '#8f4a4b',
   },
   {
-    name: 'Red Team',
+    name: 'Equipe Vermelha',
     freq: 1215,
     color: '#ff4444',
   },
   {
-    name: 'Blue Team',
+    name: 'Equipe Azul',
     freq: 1217,
     color: '#3434fd',
   },
   {
-    name: 'Green Team',
+    name: 'Equipe Verde',
     freq: 1219,
     color: '#34fd34',
   },
   {
-    name: 'Yellow Team',
+    name: 'Equipe Amarela',
     freq: 1221,
     color: '#fdfd34',
   },
@@ -172,21 +172,21 @@ const GASES = [
     id: 'o2',
     path: '/datum/gas/oxygen',
     name: 'Oxygen',
-    label: 'O₂',
+    label: 'O2',
     color: 'blue',
   },
   {
     id: 'n2',
     path: '/datum/gas/nitrogen',
     name: 'Nitrogen',
-    label: 'N₂',
+    label: 'N2',
     color: 'yellow',
   },
   {
     id: 'co2',
     path: '/datum/gas/carbon_dioxide',
-    name: 'Carbon Dioxide',
-    label: 'CO₂',
+    name: 'Dióxido de Carbono',
+    label: 'CO2',
     color: 'grey',
   },
   {
@@ -199,8 +199,8 @@ const GASES = [
   {
     id: 'water_vapor',
     path: '/datum/gas/water_vapor',
-    name: 'Water Vapor',
-    label: 'H₂O',
+    name: 'Vapor de Água',
+    label: 'H2O',
     color: 'lightsteelblue',
   },
   {
@@ -213,8 +213,8 @@ const GASES = [
   {
     id: 'n2o',
     path: '/datum/gas/nitrous_oxide',
-    name: 'Nitrous Oxide',
-    label: 'N₂O',
+    name: 'Óxido nitroso',
+    label: 'N2O',
     color: 'bisque',
   },
   {
@@ -263,7 +263,7 @@ const GASES = [
     id: 'hydrogen',
     path: '/datum/gas/hydrogen',
     name: 'Hydrogen',
-    label: 'H₂',
+    label: 'H2',
     color: 'white',
   },
   {
@@ -276,7 +276,7 @@ const GASES = [
   {
     id: 'proto_nitrate',
     path: '/datum/gas/proto_nitrate',
-    name: 'Proto Nitrate',
+    name: 'Nitrato de proto',
     label: 'Proto-Nitrate',
     color: 'greenyellow',
   },

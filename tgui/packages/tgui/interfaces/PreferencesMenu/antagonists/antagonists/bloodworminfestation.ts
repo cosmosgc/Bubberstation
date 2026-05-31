@@ -2,7 +2,7 @@ import { type Antagonist, Category } from '../base';
 
 const BloodWormInfestation: Antagonist = {
   key: 'bloodworminfestation',
-  name: 'Blood Worm Infestation',
+  name: 'Infestação do verme sanguíneo',
   description: [
     `
       Become a giant, parasitic blood worm. Start as a hatchling, take hosts,

@@ -13,4 +13,4 @@
 	alert_type = null
 
 /datum/status_effect/sensitivesnout/get_examine_text()
-	return span_warning("[owner.p_Their()] snout is rather bappable...")
+	return span_warning("[owner.p_Their()]O focinho é bastante baptável...")

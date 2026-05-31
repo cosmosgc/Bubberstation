@@ -16,9 +16,9 @@ export const createStackAugmentor =
 
     return (
       stack +
-      '\nUser Agent: ' +
+      '\nAgente Usuário:' +
       navigator.userAgent +
-      '\nState: ' +
+      '\nEstado:' +
       JSON.stringify({
         ckey: config?.client?.ckey,
         interface: config?.interface,

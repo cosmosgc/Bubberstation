@@ -54,12 +54,12 @@
 		return
 	vampire.adjust_blood_volume(-0.125 * seconds_per_tick)
 	if(vampire.get_blood_volume(apply_modifiers = TRUE) <= BLOOD_VOLUME_SURVIVE)
-		to_chat(vampire, span_danger("You ran out of blood!"))
+		to_chat(vampire, span_danger("Você ficou sem sangue!"))
 		vampire.investigate_log("has been dusted by a lack of blood (vampire).", INVESTIGATE_DEATHS)
 		vampire.dust()
 	var/area/A = get_area(vampire)
 	if(istype(A, /area/station/service/chapel))
-		to_chat(vampire, span_warning("You don't belong here!"))
+		to_chat(vampire, span_warning("Você não pertence aqui!"))
 		vampire.adjust_fire_loss(10 * seconds_per_tick)
 		vampire.adjust_fire_stacks(3 * seconds_per_tick)
 		vampire.ignite_mob()
@@ -76,17 +76,14 @@
 		MODIFY_ATTACK_FORCE_MULTIPLIER(attack_modifiers, 2)
 
 /datum/species/human/vampire/get_physical_attributes()
-	return "Vampires are afflicted with the Thirst, needing to sate it by draining the blood out of another living creature. However, they do not need to breathe or eat normally. \
-		They will instantly turn into dust if they run out of blood or enter a holy area. However, coffins stabilize and heal them, and they can transform into bats!"
+	return "Vampires are afflicted with the Thirst, needing to sate it by draining the blood out of another living creature. However, they do not need to breathe or eat normally. 		They will instantly turn into dust if they run out of blood or enter a holy area. However, coffins stabilize and heal them, and they can transform into bats!"
 
 /datum/species/human/vampire/get_species_description()
 	return "A classy Vampire! They descend upon Space Station Thirteen Every year to spook the crew! \"Bleeg!!\""
 
 /datum/species/human/vampire/get_species_lore()
 	return list(
-		"Vampires are unholy beings blessed and cursed with The Thirst. \
-		The Thirst requires them to feast on blood to stay alive, and in return it gives them many bonuses. \
-		Because of this, Vampires have split into two clans, one that embraces their powers as a blessing and one that rejects it.",
+		"Vampires are unholy beings blessed and cursed with The Thirst. 		The Thirst requires them to feast on blood to stay alive, and in return it gives them many bonuses. 		Because of this, Vampires have split into two clans, one that embraces their powers as a blessing and one that rejects it.",
 	)
 
 /datum/species/human/vampire/create_pref_unique_perks()
@@ -97,21 +94,19 @@
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "bed",
 			SPECIES_PERK_NAME = "Coffin Brooding",
-			SPECIES_PERK_DESC = "Vampires can delay The Thirst and heal by resting in a coffin. So THAT'S why they do that!",
+			SPECIES_PERK_DESC = "Vampiros podem atrasar a sede e curar descansando em um caixão. Então é por isso que eles fazem isso!",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 			SPECIES_PERK_ICON = "book-dead",
 			SPECIES_PERK_NAME = "Vampire Clans",
-			SPECIES_PERK_DESC = "Vampires belong to one of two clans - the Inoculated, and the Outcast. The Outcast \
-				don't follow many vampiric traditions, while the Inoculated are given unique names and flavor.",
+			SPECIES_PERK_DESC = "Vampiros pertencem a um dos dois clãs, os inoculados e os excluídos. Os excluídos não seguem muitas tradições vampíricas, enquanto os inoculados recebem nomes únicos e sabor.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "cross",
 			SPECIES_PERK_NAME = "Against God and Nature",
-			SPECIES_PERK_DESC = "Almost all higher powers are disgusted by the existence of \
-				Vampires, and entering the Chapel is essentially suicide. Do not do it!",
+			SPECIES_PERK_DESC = "Quase todos os poderes superiores são enojados pela existência de vampiros, e entrar na Capela é essencialmente suicídio. Não faça isso!",
 		),
 	)
 
@@ -125,11 +120,7 @@
 		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 		SPECIES_PERK_ICON = "tint",
 		SPECIES_PERK_NAME = "The Thirst",
-		SPECIES_PERK_DESC = "In place of eating, Vampires suffer from The Thirst. \
-			Thirst of what? Blood! Their tongue allows them to grab people and drink \
-			their blood, and they will die if they run out. As a note, it doesn't \
-			matter whose blood you drink, it will all be converted into your blood \
-			type when consumed.",
+		SPECIES_PERK_DESC = "Em vez de comer, os vampiros sofrem da Sede. Sede de quê? Sangue! Sua língua permite que agarrem as pessoas e bebam seu sangue, e elas morrerão se acabarem. Como nota, não importa de quem você bebe, tudo será convertido em seu tipo sanguíneo quando consumido.",
 	))
 
 	return to_add
@@ -142,17 +133,14 @@
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "skull",
 		SPECIES_PERK_NAME = "Minor Undead",
-		SPECIES_PERK_DESC = "[name] are minor undead. \
-			Minor undead enjoy some of the perks of being dead, like \
-			not needing to breathe or eat, but do not get many of the \
-			environmental immunities involved with being fully undead.",
+		SPECIES_PERK_DESC = "[name]são mortos-vivos menores. Mortos-vivos menores apreciam algumas das vantagens de estar mortos, como não precisar respirar ou comer, mas não obter muitas das imunidades ambientais envolvidas em ser totalmente mortos-vivos.",
 	))
 
 	return to_add
 
 /obj/item/organ/tongue/vampire
 	name = "vampire teeth"
-	desc = "The only thing with which it's acceptable to say \"I will suck you dry!\""
+	desc = "A única coisa com a qual é aceitável dizer\"Vou te chupar até secar!\""
 	icon_state = "tongue_vampire"
 	actions_types = list(/datum/action/item_action/organ_action/vampire)
 	organ_traits = list(
@@ -180,13 +168,13 @@
 	if(!istype(used_item, /obj/item/reagent_containers/blood))
 		return NONE
 	if(used_item.reagents?.total_volume <= 0)
-		to_chat(user, span_warning("[src] is empty!"))
+		to_chat(user, span_warning("[src]Está vazio!"))
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_notice("[user] stabs [used_item] with [user.p_their()] sharp teeth and drains its contents!"),
-		span_notice("You stab [used_item] with your sharp teeth and drain its contents!"),
-		span_hear("You hear a stabbing sound! ... Followed by slurping?"),
+		span_notice("[user]Apunhalamentos[used_item]Com[user.p_their()]dentes afiados e drena seu conteúdo!"),
+		span_notice("Você esfaqueia.[used_item]Com seus dentes afiados e drenar seu conteúdo!"),
+		span_hear("Você ouve um som de esfaqueamento! Seguido por um deslize?"),
 		COMBAT_MESSAGE_RANGE,
 	)
 	INVOKE_ASYNC(src, PROC_REF(async_stab_bloodbag), user, used_item)
@@ -196,7 +184,7 @@
 	if(!do_after(user, time, bloodbag))
 		return
 
-	to_chat(user, span_notice("You swallow a gulp of [src]."))
+	to_chat(user, span_notice("Você engoliu um gole de[src]."))
 	playsound(bloodbag, 'sound/items/drink.ogg', 50, TRUE) //slurp
 	bloodbag.reagents.trans_to(user, bloodbag.reagents.maximum_volume * 0.05, transferred_by = user, methods = INGEST)
 	if(bloodbag.reagents.total_volume > 0)
@@ -204,7 +192,7 @@
 
 /datum/action/item_action/organ_action/vampire
 	name = "Drain Victim"
-	desc = "Leech blood from any carbon victim you are passively grabbing."
+	desc = "Sangue de sangue de qualquer vítima de carbono que esteja pegando passivamente."
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "drain_victim"
 	background_icon_state = "bg_vampire"
@@ -216,7 +204,7 @@
 	var/mob/living/carbon/user = owner
 	var/obj/item/organ/tongue/vampire/licker_drinker = target
 	if(!COOLDOWN_FINISHED(licker_drinker, drain_cooldown))
-		to_chat(user, span_warning("You just drained blood, wait a few seconds!"))
+		to_chat(user, span_warning("Acabou de dranar sangue, espere alguns segundos!"))
 		return FALSE
 
 	if(!iscarbon(user.pulling))
@@ -224,32 +212,32 @@
 
 	var/mob/living/carbon/victim = user.pulling
 	if(user.get_blood_volume() >= BLOOD_VOLUME_MAXIMUM)
-		to_chat(user, span_warning("You're already full!"))
+		to_chat(user, span_warning("Você já está cheio!"))
 		return FALSE
 	if(victim.stat == DEAD)
-		to_chat(user, span_warning("You need a living victim!"))
+		to_chat(user, span_warning("Você precisa de uma vítima viva!"))
 		return FALSE
 	var/blood_name = LOWER_TEXT(user.get_bloodtype()?.get_blood_name())
 	if(!victim.get_blood_volume() || victim.get_blood_reagent() != user.get_blood_reagent())
 		if (blood_name)
-			to_chat(user, span_warning("[victim] doesn't have [blood_name]!"))
+			to_chat(user, span_warning("[victim]não tem[blood_name]!"))
 		else
-			to_chat(user, span_warning("[victim] doesn't have anything inside of them you could stomach!"))
+			to_chat(user, span_warning("[victim]Não tem nada dentro deles que você possa comer!"))
 		return FALSE
 	COOLDOWN_START(licker_drinker, drain_cooldown, 3 SECONDS)
 	if(victim.can_block_magic(MAGIC_RESISTANCE_HOLY, charge_cost = 0))
-		victim.show_message(span_warning("[user] tries to bite you, but stops before touching you!"))
-		to_chat(user, span_warning("[victim] is blessed! You stop just in time to avoid catching fire."))
+		victim.show_message(span_warning("[user]Tenta te morder, mas pára antes de te tocar!"))
+		to_chat(user, span_warning("[victim]É abençoado! Pare bem na hora para evitar pegar fogo."))
 		return FALSE
 	if(victim.has_reagent(/datum/reagent/consumable/garlic))
-		victim.show_message(span_warning("[user] tries to bite you, but recoils in disgust!"))
-		to_chat(user, span_warning("[victim] reeks of garlic! you can't bring yourself to drain such tainted blood."))
+		victim.show_message(span_warning("[user]Tenta mordê-lo, mas se enoja!"))
+		to_chat(user, span_warning("[victim]Fede a alho! Você não pode drenar esse sangue contaminado."))
 		return FALSE
 	if(!do_after(user, 3 SECONDS, target = victim, hidden = TRUE))
 		return FALSE
 
-	victim.show_message(span_danger("[user] is draining your blood!"))
-	to_chat(user, span_notice("You drain some blood!"))
+	victim.show_message(span_danger("[user]Está drenando seu sangue!"))
+	to_chat(user, span_notice("Você drena sangue!"))
 	playsound(user, 'sound/items/drink.ogg', 30, TRUE, -2)
 
 	// Since we adjust the user first, we need to take the victim's blood volume into account.
@@ -261,13 +249,13 @@
 	victim.adjust_blood_volume(-amount_drained)
 
 	if(!victim.get_blood_volume())
-		to_chat(user, span_notice("You finish off [victim]'s [blood_name] supply."))
+		to_chat(user, span_notice("Você termina.[victim]'s[blood_name]Fornecimento."))
 	return TRUE
 
 /obj/item/organ/heart/vampire
 	name = "vampire heart"
 	icon_state = "heart_vampire"
-	desc = "Some guy stabbed his brother 6,000 years ago so now you have this."
+	desc = "Um cara esfaqueou o irmão há 6 mil anos, então agora você tem isso."
 
 #undef VAMPIRES_PER_HOUSE
 #undef VAMP_DRAIN_AMOUNT

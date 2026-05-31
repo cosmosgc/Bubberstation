@@ -5,8 +5,7 @@
 // Performed by feeding a slime 10 of an    //
 // extract color.                           //
 //////////////////////////////////////////////
-/*==========================================*\
-To add a crossbreed:
+/*==========================================*To add a crossbreed:
 	The file name is automatically selected
 	by the crossbreeding effect, which uses
 	the format slimecross/[modifier]/[color].
@@ -26,7 +25,7 @@ To add a crossbreed:
 
 /obj/item/slimecross //The base type for crossbred extracts. Mostly here for posterity, and to set base case things.
 	name = "crossbred slime extract"
-	desc = "An extremely potent slime extract, formed through crossbreeding."
+	desc = "Um extrato de lodo extremo potente, formado por cruzeiros."
 	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "base"
 	var/colour = "null"
@@ -92,7 +91,7 @@ To add a crossbreed:
 
 /obj/item/slimecrossbeaker //To be used as a result for extract reactions that make chemicals.
 	name = "result extract"
-	desc = "You shouldn't see this."
+	desc = "Você não deveria ver isso."
 	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "base"
 	var/del_on_empty = TRUE
@@ -113,24 +112,24 @@ To add a crossbreed:
 
 /obj/item/slimecrossbeaker/process()
 	if(!reagents.total_volume)
-		visible_message(span_notice("[src] has been drained completely, and melts away."))
+		visible_message(span_notice("[src]Foi completamente dranado, e derrete."))
 		qdel(src)
 
 /obj/item/slimecrossbeaker/bloodpack //Pack of 50u blood. Deletes on empty.
 	name = "blood extract"
-	desc = "A sphere of liquid blood, somehow managing to stay together."
+	desc = "Uma esfera de sangue líquido, de alguma forma conseguindo ficar juntos."
 	color = COLOR_RED
 	list_reagents = list(/datum/reagent/blood = 50)
 
 /obj/item/slimecrossbeaker/pax //5u synthpax.
 	name = "peace-inducing extract"
-	desc = "A small blob of synthetic pax."
+	desc = "Uma pequena bolha de pax sintético."
 	color = "#FFCCCC"
 	list_reagents = list(/datum/reagent/pax/peaceborg = 5)
 
 /obj/item/slimecrossbeaker/omnizine //15u omnizine.
 	name = "healing extract"
-	desc = "A gelatinous extract of pure omnizine."
+	desc = "Um extrato gelatinoso de omnizina pura."
 	color = COLOR_MAGENTA
 	list_reagents = list(/datum/reagent/medicine/omnizine = 15)
 
@@ -147,27 +146,27 @@ To add a crossbreed:
 		return NONE
 	var/mob/living/carbon/injecting_mob = interacting_with
 	if(!reagents.total_volume)
-		to_chat(user, span_warning("[src] is empty!"))
+		to_chat(user, span_warning("[src]Está vazio!"))
 		return ITEM_INTERACT_BLOCKING
 	if(self_use_only && injecting_mob != user)
-		to_chat(user, span_warning("This can only be used on yourself."))
+		to_chat(user, span_warning("Isso só pode ser usado em si mesmo."))
 		return ITEM_INTERACT_BLOCKING
 	if(reagents.total_volume && (ignore_flags || injecting_mob.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE)))
 		reagents.trans_to(injecting_mob, reagents.total_volume, transferred_by = user)
 		if(user != injecting_mob)
-			to_chat(injecting_mob, span_warning("[user] presses [src] against you!"))
-			to_chat(user, span_notice("You press [src] against [injecting_mob], injecting [injecting_mob.p_them()]."))
+			to_chat(injecting_mob, span_warning("[user]Pressiona[src]Contra você!"))
+			to_chat(user, span_notice("Você pressiona.[src]Contra[injecting_mob], injetando[injecting_mob.p_them()]."))
 		else
-			to_chat(user, span_notice("You press [src] against yourself, and it flattens against you!"))
+			to_chat(user, span_notice("Você pressiona.[src]contra você mesmo, e ele achata contra você!"))
 		return ITEM_INTERACT_SUCCESS
 	else
-		to_chat(user, span_warning("There's no place to stick [src]!"))
+		to_chat(user, span_warning("Não há lugar para ficar[src]!"))
 		return ITEM_INTERACT_BLOCKING
 
 /obj/item/slimecrossbeaker/autoinjector/regenpack
 	ignore_flags = TRUE //It is, after all, intended to heal.
 	name = "mending solution"
-	desc = "A strange glob of sweet-smelling semifluid, which seems to stick to skin rather easily."
+	desc = "Um bando de seres semifluidos, que parece ficar na pele facilita."
 	color = COLOR_MAGENTA
 	list_reagents = list(/datum/reagent/medicine/regen_jelly = 20)
 
@@ -175,13 +174,13 @@ To add a crossbreed:
 	self_use_only = TRUE
 	ignore_flags = TRUE
 	name = "slime jelly bubble"
-	desc = "A sphere of slime jelly. It seems to stick to your skin, but avoids other surfaces."
+	desc = "Uma esfera de geléia de lodo. Parece grudar na sua pele, mas evita outras superfícies."
 	color = COLOR_VIBRANT_LIME
 	list_reagents = list(/datum/reagent/toxin/slimejelly = 50)
 
 /obj/item/slimecrossbeaker/autoinjector/peaceandlove
 	name = "peaceful distillation"
-	desc = "A light pink gooey sphere. Simply touching it makes you a little dizzy."
+	desc = "Uma esfera leve e rosa. Só de tocar, fica um pouco tonto."
 	color = "#DDAAAA"
 	list_reagents = list(/datum/reagent/pax/peaceborg = 10, /datum/reagent/drug/space_drugs = 15) //Peace, dudes
 
@@ -191,6 +190,6 @@ To add a crossbreed:
 
 /obj/item/slimecrossbeaker/autoinjector/slimestimulant
 	name = "invigorating gel"
-	desc = "A bubbling purple mixture, designed to heal and boost movement."
+	desc = "Uma mistura roxa borbulhante, projetada para curar e aumentar o movimento."
 	color = COLOR_MAGENTA
 	list_reagents = list(/datum/reagent/medicine/regen_jelly = 30, /datum/reagent/drug/methamphetamine = 9)

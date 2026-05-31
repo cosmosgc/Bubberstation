@@ -52,12 +52,12 @@
 
 	var/mob/living/carbon/human/to_curse = potential_targets[chosen_mob]
 	if(QDELETED(to_curse))
-		loc.balloon_alert(user, "ritual failed, invalid choice!")
+		loc.balloon_alert(user, "ritual falhou, escolha inválida!")
 		return FALSE
 
 	// Yes, you COULD curse yourself, not sure why but you could
 	if(to_curse == user)
-		var/are_you_sure = tgui_alert(user, "Are you sure you want to curse yourself?", name, list("Yes", "No"))
+		var/are_you_sure = tgui_alert(user, "Tem certeza que quer se amaldiçoar?", name, list("Yes", "No"))
 		if(are_you_sure != "Yes")
 			return FALSE
 
@@ -66,21 +66,21 @@
 
 	var/turf/curse_turf = get_turf(to_curse)
 	if(!is_valid_z_level(curse_turf, loc) || get_dist(curse_turf, loc) > max_range * 1.5) // Give a bit of leeway on max range for people moving around
-		loc.balloon_alert(user, "ritual failed, too far!")
+		loc.balloon_alert(user, "Oh, ritual falhou, muito longe!")
 		return FALSE
 
 	if(IS_HERETIC(to_curse) && to_curse != user)
-		to_chat(user, span_warning("[to_curse.p_their()] ties to the Mansus are too strong. You are unable to curse [to_curse]."))
+		to_chat(user, span_warning("[to_curse.p_their()]Os laços com o Mansus são muito fortes. Você é incapaz de amaldiçoar[to_curse]."))
 		return TRUE
 
 	if(to_curse.can_block_magic(MAGIC_RESISTANCE|MAGIC_RESISTANCE_HOLY, charge_cost = 0))
-		to_chat(to_curse, span_warning("A ghastly chill envelops you for a moment, but then it passes."))
+		to_chat(to_curse, span_warning("Um frio horrível te envolve por um momento, mas depois passa."))
 		return TRUE
 
 	log_combat(user, to_curse, "cursed via heretic ritual", addition = "([name])")
 	var/obj/item/codex_cicatrix/morbus/cursed_book = locate() in selected_atoms
 	curse(to_curse, cursed_book)
-	to_chat(user, span_hierophant("You cast a [name] upon [to_curse.real_name]."))
+	to_chat(user, span_hierophant("Você lançou um[name]Sobre[to_curse.real_name]."))
 
 	fingerprints = null
 	blood_samples = null
@@ -136,10 +136,8 @@
 /datum/heretic_knowledge/curse/paralysis
 	abstract_type = /datum/heretic_knowledge/curse/paralysis
 	name = "Curse of Paralysis"
-	desc = "Allows you to transmute a hatchet and both a left and right leg to cast a curse of immobility on a crew member. \
-		While cursed, the victim will be unable to walk. You can additionally supply an item that a victim has touched \
-		or is covered in the victim's blood to make the curse last longer."
-	gain_text = "The flesh of humanity is weak. Make them bleed. Show them their fragility."
+	desc = "Permite que transmute um machado e uma perna esquerda e direita para lançar uma maldição de imobilidade em um membro da tripulação. Enquanto amaldiçoada, a vítima será incapaz de andar. Você pode fornecer um item que uma vítima tocou ou está coberto de sangue da vítima para fazer a maldição durar mais tempo."
+	gain_text = "A carne da humanidade é fraca. Faça-os sangrar. Mostre-lhes sua fragilidade."
 
 	duration = 5 MINUTES
 	curse_color = "#f19a9a"
@@ -150,10 +148,10 @@
 
 /datum/heretic_knowledge/curse/paralysis/curse(mob/living/carbon/human/chosen_mob)
 	if(chosen_mob.usable_legs <= 0) // What're you gonna do, curse someone who already can't walk?
-		to_chat(chosen_mob, span_notice("You feel a slight pain for a moment, but it passes shortly. Odd."))
+		to_chat(chosen_mob, span_notice("Você sente uma leve dor por um momento, mas passa logo. Estranho."))
 		return
 
-	to_chat(chosen_mob, span_danger("You suddenly lose feeling in your leg[chosen_mob.usable_legs == 1 ? "":"s"]!"))
+	to_chat(chosen_mob, span_danger("Você de repente perde a sensação em sua perna[chosen_mob.usable_legs == 1 ? "":"s"]!"))
 	chosen_mob.add_traits(list(TRAIT_PARALYSIS_L_LEG, TRAIT_PARALYSIS_R_LEG), type)
 	return ..()
 
@@ -163,7 +161,7 @@
 
 	chosen_mob.remove_traits(list(TRAIT_PARALYSIS_L_LEG, TRAIT_PARALYSIS_R_LEG), type)
 	if(chosen_mob.usable_legs > 1)
-		to_chat(chosen_mob, span_green("You regain feeling in your leg[chosen_mob.usable_legs == 1 ? "":"s"]!"))
+		to_chat(chosen_mob, span_green("Você recupera o sentimento em sua perna[chosen_mob.usable_legs == 1 ? "":"s"]!"))
 	return ..()
 
 //---- Curse of Corrosion
@@ -171,10 +169,8 @@
 /datum/heretic_knowledge/curse/corrosion
 	abstract_type = /datum/heretic_knowledge/curse/corrosion
 	name = "Curse of Corrosion"
-	desc = "Allows you to transmute wirecutters, a pool of vomit, and a heart to cast a curse of sickness on a crew member. \
-		While cursed, the victim will repeatedly vomit while their organs will take constant damage. You can additionally supply an item \
-		that a victim has touched or is covered in the victim's blood to make the curse last longer."
-	gain_text = "The body of humanity is temporary. Their weaknesses cannot be stopped, like iron falling to rust. Show them all."
+	desc = "Permite que transmute grampeadores, uma poça de vômito, e um coração para lançar uma maldição de doença em um membro da tripulação. Enquanto amaldiçoada, a vítima vomitará repetidamente enquanto seus órgãos sofrerão danos constantes. Você pode fornecer um item que uma vítima tocou ou está coberto de sangue da vítima para fazer a maldição durar mais tempo."
+	gain_text = "O corpo da humanidade é temporário. Suas fraquezas não podem ser paradas, como ferro caindo em ferrugem. Mostre a todos."
 
 	duration = 3 MINUTES
 	curse_color = "#c1ffc9"
@@ -183,7 +179,7 @@
 	research_tree_icon_state = "curse_corrosion"
 
 /datum/heretic_knowledge/curse/corrosion/curse(mob/living/carbon/human/chosen_mob)
-	to_chat(chosen_mob, span_danger("You feel very ill..."))
+	to_chat(chosen_mob, span_danger("Você se sente muito mal..."))
 	chosen_mob.apply_status_effect(/datum/status_effect/corrosion_curse)
 	return ..()
 
@@ -192,7 +188,7 @@
 		return
 
 	chosen_mob.remove_status_effect(/datum/status_effect/corrosion_curse)
-	to_chat(chosen_mob, span_green("You start to feel better."))
+	to_chat(chosen_mob, span_green("Você começa a se sentir melhor."))
 	return ..()
 
 //---- Curse of Transmutation
@@ -219,11 +215,11 @@
 
 /datum/heretic_knowledge/curse/transmutation/curse(mob/living/carbon/human/chosen_mob, obj/item/codex_cicatrix/morbus/cursing_book)
 	if(chosen_mob.dna.species == chosen_species)
-		to_chat(chosen_mob, span_warning("You feel your body morph into... itself?"))
+		to_chat(chosen_mob, span_warning("Você sente seu corpo se transformar... em si mesmo?"))
 		return
 	chosen_mob.apply_status_effect(/datum/status_effect/race_swap, chosen_species)
 	cursing_book.transmuted_victims += WEAKREF(chosen_mob)
-	to_chat(chosen_mob, span_danger("You feel your body morph into a new shape"))
+	to_chat(chosen_mob, span_danger("Você sente seu corpo se transformar em uma nova forma"))
 	return ..()
 
 /datum/heretic_knowledge/curse/transmutation/uncurse(mob/living/carbon/human/chosen_mob)

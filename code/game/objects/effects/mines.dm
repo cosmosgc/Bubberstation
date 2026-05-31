@@ -1,6 +1,6 @@
 /obj/effect/mine
 	name = "dummy mine"
-	desc = "Better stay away from that thing."
+	desc = "\"Melhor Ficar Longe Daquela Coisa\"."
 	density = FALSE
 	anchored = TRUE
 	icon = 'icons/obj/weapons/grenade.dmi'
@@ -34,13 +34,13 @@
 /obj/effect/mine/examine(mob/user)
 	. = ..()
 	if(!armed)
-		. += span_info("It appears to be inactive...")
+		. += span_info("Parece está inativo...")
 
 	var/atom/movable/unlucky_sod = foot_on_mine?.resolve()
 	if(user == unlucky_sod)
-		. += span_bolddanger("The pressure plate is depressed. Any movement you make will set it off now.")
+		. += span_bolddanger("A placa de pressão está depressiva. Qualquer movimento que fizer vai detoná-lo agora.")
 	else if(!isnull(unlucky_sod))
-		. += span_danger("The pressure plate is depressed by [unlucky_sod]. Any move they make'll set it off now.")
+		. += span_danger("A placa de pressão está deprimida.[unlucky_sod]Qualquer movimento que fizerem vai detoná-lo agora.")
 
 /obj/effect/mine/update_icon_state()
 	. = ..()
@@ -58,7 +58,7 @@
 	armed = TRUE
 	update_appearance(UPDATE_ICON_STATE)
 	playsound(src, 'sound/machines/nuke/angry_beep.ogg', 40, FALSE, -2)
-	visible_message(span_danger("\The [src] beeps softly, indicating it is now active."), vision_distance = COMBAT_MESSAGE_RANGE)
+	visible_message(span_danger("\The [src]Apita suavemente, indicando que está ativo."), vision_distance = COMBAT_MESSAGE_RANGE)
 
 /// Can this mine trigger on the passed movable?
 /obj/effect/mine/proc/can_trigger(atom/movable/on_who)
@@ -95,7 +95,7 @@
 		else
 			return //it didn't actually touch the mine, don't blow
 
-	visible_message(span_danger("[icon2html(src, viewers(src))] *click*"))
+	visible_message(span_danger("[icon2html(src, viewers(src))]Clique."))
 	playsound(src, 'sound/machines/click.ogg', 60, TRUE)
 	if(gonna_blow)
 		RegisterSignal(arrived, COMSIG_MOVABLE_MOVED, PROC_REF(triggermine)) //wait for it to finish the movement before blowing so it takes proper damage
@@ -112,7 +112,7 @@
 
 	if(!foot_on_mine && gone.flags_1 & ON_BORDER_1)
 		if(gone.dir == REVERSE_DIR(direction)) //see if a north facing border atom (ie window) travels south (and other directions as needed)
-			visible_message(span_danger("[icon2html(src, viewers(src))] *click*"))
+			visible_message(span_danger("[icon2html(src, viewers(src))]Clique."))
 			playsound(src, 'sound/machines/click.ogg', 60, TRUE)
 			triggermine() //it "passed" over the mine briefly, triggering it in the process
 		return //either it blew up the mine, or it didn't and we don't have to worry about anything else.
@@ -134,9 +134,9 @@
 	if(triggered) //too busy detonating to detonate again
 		return
 	if(triggerer)
-		visible_message(span_danger("[triggerer] sets off [icon2html(src, viewers(src))] [src]!"))
+		visible_message(span_danger("[triggerer]Decolar[icon2html(src, viewers(src))] [src]!"))
 	else
-		visible_message(span_danger("[icon2html(src, viewers(src))] [src] detonates!"))
+		visible_message(span_danger("[icon2html(src, viewers(src))] [src]Detona!"))
 
 	do_sparks(3, TRUE, src)
 	mineEffect(triggerer)
@@ -191,7 +191,7 @@
 
 /obj/effect/mine/kickmine/mineEffect(mob/victim)
 	if(isliving(victim) && victim.client && Adjacent(victim))
-		to_chat(victim, span_userdanger("You have been kicked FOR NO REISIN!"))
+		to_chat(victim, span_userdanger("Você foi chutado por nenhuma resina!"))
 		qdel(victim.client)
 
 /obj/effect/mine/gas
@@ -249,7 +249,7 @@
 
 /obj/effect/mine/shrapnel/capspawn
 	name = "\improper AP mine"
-	desc = "A defensive landmine filled with 'AP shrapnel', good for defending cramped spaces without breaching hulls. The AP stands for 'Asset Protection', though it's still plenty nasty against any fool who sets it off."
+	desc = "Uma mina defensiva cheia de estilhaços, boa para defender espaços apertados sem romper cascos. O AP significa 'Proteção de Ativos', embora ainda seja muito desagradável contra qualquer idiota que o detone."
 	shrapnel_type = /obj/projectile/bullet/pellet/capmine
 	shrapnel_magnitude = 4
 	shred_triggerer = TRUE
@@ -264,7 +264,7 @@
 
 /obj/item/minespawner
 	name = "landmine deployment device"
-	desc = "When activated, will deploy an Asset Protection landmine after 3 seconds passes, perfect for high ranking NT officers looking to cover their assets from afar."
+	desc = "Quando ativado, irá implantar uma mina de proteção de ativos após 3 segundos de passagem, perfeito para oficiais de alto escalão do NT que querem cobrir seus bens de longe."
 	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "beacon"
 
@@ -277,7 +277,7 @@
 		return
 
 	playsound(src, 'sound/items/weapons/armbomb.ogg', 70, TRUE)
-	to_chat(user, span_warning("You arm \the [src], causing it to shake! It will deploy in 3 seconds."))
+	to_chat(user, span_warning("Seu braço.\the [src], fazendo tremer! Ele partirá em 3 segundos."))
 	active = TRUE
 	addtimer(CALLBACK(src, PROC_REF(deploy_mine)), 3 SECONDS)
 
@@ -286,7 +286,7 @@
 	do_alert_animation()
 	playsound(loc, 'sound/machines/chime.ogg', 30, FALSE, -3)
 	var/obj/effect/mine/new_mine = new mine_type(get_turf(src))
-	visible_message(span_danger("\The [src] releases a puff of smoke, revealing \a [new_mine]!"))
+	visible_message(span_danger("\The [src]libera uma fumaça, revelando\a [new_mine]!"))
 	var/obj/effect/particle_effect/fluid/smoke/poof = new (get_turf(src))
 	poof.lifetime = 3
 	qdel(src)

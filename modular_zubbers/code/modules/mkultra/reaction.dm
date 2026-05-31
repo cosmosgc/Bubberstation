@@ -2,7 +2,7 @@
 	results = list(/datum/reagent/mkultra = 5)
 	required_reagents = list(/datum/reagent/consumable/coco = 1, /datum/reagent/bluespace = 1, /datum/reagent/toxin/mindbreaker = 1, /datum/reagent/medicine/psicodine = 1, /datum/reagent/drug/happiness = 1)
 	required_catalysts = list(/datum/reagent/blood = 1)
-	mix_message = "the reaction gives off a burgundy plume of smoke!"
+	mix_message = "A reação emite uma camada borgona de fumaça!"
 	//FermiChem vars:
 	required_temp 			= 780
 	optimal_temp			= 820
@@ -25,7 +25,7 @@
 	if(!mob_blood || !enthrall_chem)
 		return
 	if(!mob_blood.data)
-		my_atom.visible_message("<span class='warning'>The reaction splutters and fails to react properly.</span>") //Just in case
+		my_atom.visible_message("<span class='warning'>A reação se espalha e não reage corretamente.</span>") //Just in case
 		enthrall_chem.purity = 0
 		return
 	if (mob_blood.data["gender"] == "female")

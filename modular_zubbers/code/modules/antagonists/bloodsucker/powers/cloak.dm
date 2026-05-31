@@ -3,15 +3,9 @@
 
 /datum/action/cooldown/bloodsucker/cloak
 	name = "Cloak of Darkness"
-	desc = "Blend into the shadows and become invisible to the untrained and Artificial eye."
+	desc = "Misturar-se nas sombras e tornar-se invisível para o olho não treinado e artificial."
 	button_icon_state = "power_cloak"
-	power_explanation = "Cloak of Darkness:\n\
-		Activate this Power in the shadows and you will slowly turn nearly invisible.\n\
-		While using Cloak of Darkness, attempting to run will crush you.\n\
-		Additionally, while Cloak is active, you are completely invisible to the AI.\n\
-		Higher levels will increase how invisible you are.\n\
-		At level 2, you will no longer need to be unseen to activate this power.\n\
-		At level 4, you will be able to run while cloaked."
+	power_explanation = "Cloak of Darkness:\n		Activate this Power in the shadows and you will slowly turn nearly invisible.\n		While using Cloak of Darkness, attempting to run will crush you.\n		Additionally, while Cloak is active, you are completely invisible to the AI.\n		Higher levels will increase how invisible you are.\n		At level 2, you will no longer need to be unseen to activate this power.\n		At level 4, you will be able to run while cloaked."
 	power_flags = BP_CONTINUOUS_EFFECT
 	check_flags = AB_CHECK_CONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY|GHOUL_CAN_BUY
@@ -33,7 +27,7 @@
 				continue
 			if(IS_BLOODSUCKER(watcher) || IS_GHOUL(watcher))
 				continue
-			owner.balloon_alert(owner, "you can only vanish unseen.")
+			owner.balloon_alert(owner, "Você só pode desaparecer invisível.")
 			return FALSE
 	return TRUE
 
@@ -43,7 +37,7 @@
 	if(level_current < USE_RUN_CLOAK_LEVEL && was_running)
 		user.toggle_move_intent()
 	user.AddElement(/datum/element/digitalcamo)
-	user.balloon_alert(user, "cloak turned on.")
+	user.balloon_alert(user, "A camuflagem ligou.")
 	return TRUE
 
 /datum/action/cooldown/bloodsucker/cloak/process(seconds_per_tick)
@@ -57,7 +51,7 @@
 	animate(user, alpha = max(25, owner.alpha - min(75, 10 + 5 * level_current)), time = 1.5 SECONDS)
 	// Prevents running while on Cloak of Darkness
 	if(level_current < USE_RUN_CLOAK_LEVEL && user.move_intent != MOVE_INTENT_WALK)
-		owner.balloon_alert(owner, "you attempt to run, crushing yourself.")
+		owner.balloon_alert(owner, "Tenta correr, esmagar-se.")
 		user.toggle_move_intent()
 		user.adjust_brute_loss(rand(5, 15))
 
@@ -67,7 +61,7 @@
 		return FALSE
 	/// Must be CONSCIOUS
 	if(user.stat != CONSCIOUS)
-		to_chat(owner, span_warning("Your cloak failed due to you falling unconcious!"))
+		to_chat(owner, span_warning("Sua capa falhou devido a você cair inconsciente!"))
 		return FALSE
 	return TRUE
 
@@ -80,7 +74,7 @@
 	user.RemoveElement(/datum/element/digitalcamo)
 	if(level_current < USE_RUN_CLOAK_LEVEL && was_running && user.move_intent == MOVE_INTENT_WALK)
 		user.toggle_move_intent()
-	user.balloon_alert(user, "cloak turned off.")
+	user.balloon_alert(user, "A camuflagem desligou.")
 
 #undef USE_SEEN_CLOAK_LEVEL
 #undef USE_RUN_CLOAK_LEVEL

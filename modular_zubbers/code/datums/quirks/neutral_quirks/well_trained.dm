@@ -1,11 +1,11 @@
 /datum/quirk/well_trained
 	name = "Well-Trained"
-	desc = "You absolutely love being dominated. The thought of someone with a stronger character than yours is enough to make you act up. They can snap their fingers to send you to the floor."
+	desc = "Você adora ser dominado. Pensar em alguém com um caráter mais forte que o seu é o suficiente para fazê-lo agir. Podem estalar os dedos para mandá-lo para o chão."
 	icon = "fa-sort-down"
-	medical_record_text = "Patient can be easily swayed by a sufficiently assertive individual."
+	medical_record_text = "O paciente pode ser facilmente influenciado por um indivíduo suficientemente assertivo."
 	value = 0
-	gain_text = "<span class='notice'>You feel like being someone's pet.</span>"
-	lose_text = "<span class='notice'>You no longer feel like being a pet...</span>"
+	gain_text = "<span class='notice'>Você se sente como um animal de estimação.</span>"
+	lose_text = "<span class='notice'>Você não quer mais ser um animal de estimação...</span>"
 	quirk_flags = QUIRK_HIDE_FROM_SCAN | QUIRK_PROCESSES
 	erp_quirk = TRUE
 	var/mob/living/last_dom
@@ -116,10 +116,10 @@
 		return
 	if(HAS_TRAIT(quirk_holder, TRAIT_QUICKREFLEXES))
 		return
-	examine_list += span_purple("You can't look at <b>[dom]</b> for long before flustering away.")
+	examine_list += span_purple("Você não pode olhar<b>[dom]</b>por muito tempo antes de ir embora.")
 
 	if(TIMER_COOLDOWN_FINISHED(dom, DOMINANT_COOLDOWN_EXAMINE))
-		to_chat(dom, span_purple("<b>[source]</b> tries to look at you but immediately looks away with a red face..."))
+		to_chat(dom, span_purple("<b>[source]</b>Tenta olhar para você mas imediatamente olha para o lado com uma cara vermelha..."))
 		TIMER_COOLDOWN_START(dom, DOMINANT_COOLDOWN_EXAMINE, 15 SECONDS)
 		INVOKE_ASYNC(quirk_holder, TYPE_PROC_REF(/mob, emote), "blush") // Needs to be aynsc because of the cooldown.
 		quirk_holder.dir = turn(get_dir(quirk_holder, dom), pick(-90, 90))

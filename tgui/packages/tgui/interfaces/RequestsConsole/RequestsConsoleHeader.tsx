@@ -32,7 +32,7 @@ const EmergencyBox = (props) => {
               fluid
               color="red"
               icon="shield"
-              content="Call Security"
+              content="Chame a segurança."
               onClick={() =>
                 act('set_emergency', {
                   emergency: 'Security',
@@ -45,7 +45,7 @@ const EmergencyBox = (props) => {
               fluid
               color="red"
               icon="screwdriver-wrench"
-              content="Call Engineering"
+              content="Chame a Engenharia."
               onClick={() =>
                 act('set_emergency', {
                   emergency: 'Engineering',
@@ -58,7 +58,7 @@ const EmergencyBox = (props) => {
               fluid
               color="red"
               icon="suitcase-medical"
-              content="Call Medical"
+              content="Chame o médico."
               onClick={() =>
                 act('set_emergency', {
                   emergency: 'Medical',
@@ -74,7 +74,7 @@ const EmergencyBox = (props) => {
 
 const ErrorNoticeBox = (props) => {
   return (
-    <NoticeBox danger>{'Error occured while sending a message!'}</NoticeBox>
+    <NoticeBox danger>{'Ocorreu um erro ao enviar uma mensagem!'}</NoticeBox>
   );
 };
 
@@ -83,9 +83,9 @@ const MessageNoticeBox = (props) => {
   const { new_message_priority } = data;
   return (
     <NoticeBox>
-      {'You have new unread '}
+      {'Você tem novo não lido'}
       {new_message_priority === RequestPriority.HIGH && 'PRIORITY '}
-      {new_message_priority === RequestPriority.EXTREME && 'EXTREME PRIORITY '}
+      {new_message_priority === RequestPriority.EXTREME && 'PRIORIDADE EXTREMA'}
       {'messages'}
     </NoticeBox>
   );

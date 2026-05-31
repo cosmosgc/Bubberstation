@@ -39,7 +39,7 @@ export const ColorPickerModal: React.FC<ColorPickerModalProps> = () => {
   }, [default_color]);
 
   if (!title) {
-    title = 'Colour Editor';
+    title = 'Editor de Cores';
   }
 
   return (

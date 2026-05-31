@@ -29,7 +29,7 @@ export function ReconnectButton() {
       <Button
         color="white"
         icon="power-off"
-        tooltip="Relaunch game"
+        tooltip="Release jogo"
         tooltipPosition="bottom-end"
         onClick={() => {
           location.href = `byond://${url}`;

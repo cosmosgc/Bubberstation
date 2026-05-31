@@ -17,12 +17,12 @@
 
 /datum/element/skill_reward/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_notice("You notice a powerful aura about this item, suggesting that only the truly experienced may wield it.")
+	examine_list += span_notice("Você nota uma poderosa aura sobre este item, sugerindo que apenas os verdadeiramente experientes podem empunhar.")
 
 /datum/element/skill_reward/proc/on_attack_hand(datum/source, mob/living/user, list/modifiers)
 	SIGNAL_HANDLER
 	if(!LAZYACCESS(modifiers, CTRL_CLICK) && !check_equippable(user)) //Allows other players to drag it around at least.
-		to_chat(user, span_warning("You feel completely and utterly unworthy to even touch \the [source]."))
+		to_chat(user, span_warning("Você se sente completamente e totalmente indigno de tocar\the [source]."))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 	return NONE
 
@@ -31,7 +31,7 @@
 	SIGNAL_HANDLER
 	if(check_equippable(user) || !(source in user.get_equipped_items(INCLUDE_POCKETS | INCLUDE_ACCESSORIES)))
 		return NONE
-	to_chat(user, span_warning("You feel completely and utterly unworthy to even touch \the [source]."))
+	to_chat(user, span_warning("Você se sente completamente e totalmente indigno de tocar\the [source]."))
 	user.dropItemToGround(source, TRUE)
 	return COMPONENT_EQUIPPED_FAILED
 

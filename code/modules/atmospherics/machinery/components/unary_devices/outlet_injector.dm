@@ -2,7 +2,7 @@
 	icon_state = "inje_map-3"
 
 	name = "air injector"
-	desc = "Has a valve and pump attached to it."
+	desc = "Tem uma válvula e uma bomba."
 
 	use_power = IDLE_POWER_USE
 	can_unwrench = TRUE
@@ -41,7 +41,7 @@
 
 /obj/machinery/atmospherics/components/unary/outlet_injector/examine(mob/user)
 	. = ..()
-	. += span_notice("You can link it with an air sensor using a multitool.")
+	. += span_notice("Você pode ligá-lo com um sensor de ar usando uma multitool.")
 
 /obj/machinery/atmospherics/components/unary/outlet_injector/multitool_act(mob/living/user, obj/item/multitool/multi_tool)
 	if(istype(multi_tool.buffer, /obj/machinery/air_sensor))
@@ -50,14 +50,14 @@
 		sensor.multitool_act(user, multi_tool)
 		return ITEM_INTERACT_SUCCESS
 
-	balloon_alert(user, "injector saved in buffer")
+	balloon_alert(user, "Injetor salvo em tampão")
 	multi_tool.set_buffer(src)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/atmospherics/components/unary/outlet_injector/click_ctrl(mob/user)
 	if(is_operational)
 		set_on(!on)
-		balloon_alert(user, "turned [on ? "on" : "off"]")
+		balloon_alert(user, "Virado.[on ? "on" : "off"]")
 		investigate_log("was turned [on ? "on" : "off"] by [key_name(user)]", INVESTIGATE_ATMOS)
 		return CLICK_ACTION_BLOCKING
 	return CLICK_ACTION_SUCCESS
@@ -68,7 +68,7 @@
 
 	volume_rate = MAX_TRANSFER_RATE
 	investigate_log("was set to [volume_rate] L/s by [key_name(user)]", INVESTIGATE_ATMOS)
-	balloon_alert(user, "volume output set to [volume_rate] L/s")
+	balloon_alert(user, "volume de saída definido para[volume_rate]L/s")
 	update_appearance(UPDATE_ICON)
 	return CLICK_ACTION_SUCCESS
 
@@ -149,7 +149,7 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		to_chat(user, span_warning("Você não pode destrancar[src]Desligue isso primeiro!"))
 		return FALSE
 
 // mapping

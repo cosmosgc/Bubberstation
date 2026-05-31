@@ -3,7 +3,7 @@
 
 /obj/item/cautery/prt //it's a subtype of cauteries so that it inherits the cautery sprites and behavior and stuff, because I'm too lazy to make sprites for this thing
 	name = "plating repair tool"
-	desc = "A tiny heating device that's powered by a cyborg's excess heat. Its intended purpose is to repair burnt or damaged hull platings, but it can also be used as a crude lighter or cautery."
+	desc = "Um pequeno dispositivo de aquecimento que é alimentado pelo excesso de calor de um cyborg. Seu objetivo é reparar revestimentos de casco queimados ou danificados, mas também pode ser usado como um isqueiro ou cautério bruto."
 	toolspeed = 1.5 //it's not designed to be used as a cautery (although it's close enough to one to be considered to be a proper cautery instead of just a hot object for the purposes of surgery)
 	heat = 3800 //this thing is intended for metal-shaping, so it's the same temperature as a lit welder
 	resistance_flags = FIRE_PROOF //if it's channeling a cyborg's excess heat, it's probably fireproof
@@ -15,7 +15,7 @@
 //Peacekeeper Cyborg Projectile Dampenening Field
 /obj/item/borg/projectile_dampen
 	name = "\improper Hyperkinetic Dampening projector"
-	desc = "A device that projects a dampening field that weakens kinetic energy above a certain threshold. <span class='boldnotice'>Projects a field that drains power per second while active, that will weaken and slow damaging projectiles inside its field.</span> Still being a prototype, it tends to induce a charge on ungrounded metallic surfaces."
+	desc = "Um dispositivo que projeta um campo de amortecimento que enfraquece a energia cinética acima de um certo limite.<span class='boldnotice'>Projeta um campo que drena energia por segundo enquanto ativo, que enfraquecerá e diminuirá os projéteis prejudiciais dentro de seu campo.</span>Ainda sendo um protótipo, tende a induzir uma carga em superfícies metálicas não aterradas."
 	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "shield0"
 	base_icon_state = "shield"
@@ -69,18 +69,18 @@
 
 /obj/item/borg/projectile_dampen/attack_self(mob/user)
 	if (!COOLDOWN_FINISHED(src, cycle_cooldown))
-		to_chat(user, span_boldwarning("[src] is still recycling its projectors!"))
+		to_chat(user, span_boldwarning("[src]Ainda está reciclando seus projetores!"))
 		return
 	COOLDOWN_START(src, cycle_cooldown, PKBORG_DAMPEN_CYCLE_DELAY)
 	if(!active)
 		if(!user.has_buckled_mobs())
 			activate_field()
 		else
-			to_chat(user, span_warning("[src]'s safety cutoff prevents you from activating it due to living beings being ontop of you!"))
+			to_chat(user, span_warning("[src]O corte de segurança o impede de ativá-lo devido aos seres vivos estarem em cima de você!"))
 	else
 		deactivate_field()
 	update_appearance()
-	to_chat(user, span_boldnotice("You [active ? "activate":"deactivate"] [src]."))
+	to_chat(user, span_boldnotice("Você.[active ? "activate":"deactivate"] [src]."))
 
 /obj/item/borg/projectile_dampen/update_icon_state()
 	icon_state = "[base_icon_state][active]"
@@ -98,7 +98,7 @@
 
 /obj/item/borg/projectile_dampen/proc/deactivate_field()
 	QDEL_NULL(dampening_field)
-	visible_message(span_warning("\The [src] shuts off!"))
+	visible_message(span_warning("\The [src]Desliga!"))
 	tracked_bullet_cost.Cut()
 	active = FALSE
 
@@ -138,7 +138,7 @@
 	energy = clamp(energy - usage, 0, maxenergy)
 	if(energy <= 0)
 		deactivate_field()
-		visible_message(span_warning("[src] blinks \"ENERGY DEPLETED\"."))
+		visible_message(span_warning("[src]Blinks\"ENERGIA DEPLEIDA\"."))
 
 /obj/item/borg/projectile_dampen/proc/process_recharge(seconds_per_tick)
 	if(!istype(host))
@@ -164,7 +164,7 @@
 //bare minimum omni-toolset for modularity
 /obj/item/borg/cyborg_omnitool
 	name = "cyborg omni-toolset"
-	desc = "You shouldn't see this in-game normally."
+	desc = "Você não deveria ver isso no jogo normalmente."
 	icon = 'icons/mob/silicon/robot_items.dmi'
 	icon_state = "toolkit_medborg"
 
@@ -296,7 +296,7 @@
 
 /obj/item/borg/cyborg_omnitool/medical
 	name = "surgical omni-toolset"
-	desc = "A set of surgical tools used by cyborgs to operate on various surgical operations."
+	desc = "Um conjunto de ferramentas cirúrgicas usadas por ciborgues para operar várias operações cirúrgicas."
 
 	omni_toolkit = list(
 		/obj/item/surgical_drapes/cyborg,
@@ -312,7 +312,7 @@
 //Toolset for engineering cyborgs, this is all of the tools except for the welding tool. since it's quite hard to implement (read:can't be arsed to)
 /obj/item/borg/cyborg_omnitool/engineering
 	name = "engineering omni-toolset"
-	desc = "A set of engineering tools used by cyborgs to conduct various engineering tasks."
+	desc = "Um conjunto de ferramentas de engenharia usadas por cyborgs para realizar várias tarefas de engenharia."
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "toolkit_engiborg"
 
@@ -334,7 +334,7 @@
 
 /obj/item/borg/cyborg_omnitool/botany
 	name = "botanical omni-toolset"
-	desc = "A set of botanical tools used by cyborgs to do gardening."
+	desc = "Um conjunto de ferramentas botânicas usadas por cyborgs para jardinagem."
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "sili"
 

@@ -5,7 +5,7 @@
 	name = "unattached transit tube"
 	icon = 'icons/obj/pipes_n_cables/transit_tube.dmi'
 	icon_state = "straight"
-	desc = "An unattached segment of transit tube."
+	desc = "Um segmento de tubo de trânsito."
 	density = FALSE
 	layer = LOW_ITEM_LAYER //same as the built tube
 	anchored = FALSE
@@ -42,10 +42,10 @@
 	..()
 	if(!can_wrench_in_loc(user))
 		return
-	to_chat(user, span_notice("You start attaching \the [src]..."))
+	to_chat(user, span_notice("Você começa a anexar\the [src]..."))
 	add_fingerprint(user)
 	if(I.use_tool(src, user, 2 SECONDS, volume=50, extra_checks=CALLBACK(src, PROC_REF(can_wrench_in_loc), user)))
-		to_chat(user, span_notice("You attach \the [src]."))
+		to_chat(user, span_notice("Você anexa\the [src]."))
 		var/obj/structure/transit_tube/R = new build_type(loc, dir)
 		transfer_fingerprints_to(R)
 		qdel(src)
@@ -160,6 +160,6 @@
 	name = "unattached transit tube pod"
 	icon = 'icons/obj/pipes_n_cables/transit_tube.dmi'
 	icon_state = "pod"
-	desc = "Could probably be <b>dragged</b> into an open Transit Tube."
+	desc = "Poderia ser...<b>Arrastado</b>em um tubo de trânsito aberto."
 	anchored = FALSE
 	density = FALSE

@@ -4,14 +4,14 @@
 /* ----------------- ID Cards ----------------- */
 /obj/item/card/id/away/old/salvagepod	//Used for salvagepost ruin access	-- NOT WORKING YET REE
 	name = "Cutter's Pod access card"
-	desc = "An ancient access card with the words \"Cutter's Pod\" printed on in big bold letters. It'll be a miracle if this still works."
+	desc = "Um antigo cartão de acesso com as palavras\"Cutter's Pod\"impresso em letras grandes e ousadas. Será um milagre se ainda funcionar."
 	trim = /datum/id_trim/away/old/eng
 
 /* ----------------- Lore ----------------- */
 //Tape subtype for adding ruin lore -- the variables below are the ones you need to change
 /obj/item/tape/ruins
 	name = "tape"
-	desc = "A magnetic tape that can hold up to ten minutes of content on either side."
+	desc = "Uma fita magnética que pode conter até dez minutos de conteúdo de cada lado."
 	icon_state = "tape_white"   //Options are white, blue, red, yellow, purple, greyscale, or you can chose one randomly (see tape/ruins/random below)
 
 	max_capacity = 10 MINUTES
@@ -31,7 +31,7 @@
 
 /obj/item/tape/ruins/salvagepost	//End of the cutters shift and he done goofed, left a message for the next one - who never arrived
 	icon_state = "tape_yellow"
-	desc = "The tape is lazily labelled with \"Msg for my replacement\""
+	desc = "A fita está vagamente etiquetada com\"Msg para meu substituto.\""
 
 	used_capacity = 380
 	storedinfo = list(
@@ -56,7 +56,7 @@
 	)
 /obj/item/tape/ruins/ghostship	//An early 'AI' that gained self-awareness, praising the Machine God. Yes, this whole map is a Hardspace Shipbreaker reference.
 	icon_state = "tape_blue"
-	desc = "The tape, aside from some grime, has a... binary label? \"01001101 01100001 01100011 01101000 01101001 01101110 01100101 01000111 01101111 01100100 01000011 01101111 01101101 01100101 01110011\""
+	desc = "A fita, além de alguma sujeira, tem uma etiqueta binária?\"01001101 01100001 01100011 01101000 01101001 01101110 01100101 01000111 01101111 01100100 01000011 01101111 01101101 01100101 01110011\""
 
 	used_capacity = 380
 	storedinfo = list(
@@ -84,7 +84,7 @@
 /obj/structure/decorative/fluff/ai_node //Budding AI's way of interfacing with stuff it couldn't normally do so with. Needed to be placed by a willing human, before borgs were created. Used in any ruins regarding pre-bluespace, self-aware AIs
 	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff.dmi'
 	name = "ai node"
-	desc = "A mysterious, blinking device, attached straight to a surface. It's function is beyond you."
+	desc = "Um misterioso dispositivo piscando, ligado direto à superfície. Sua função está além de você."
 	icon_state = "ai_node"	//credit to @Hay#7679 on the SR Discord
 
 	max_integrity = 100
@@ -96,7 +96,7 @@
 	if(atom_integrity >= 50)	//breaks it a bit earlier than it should, but still takes a few hits to kill it
 		return
 	else if(. && !QDELETED(src))
-		visible_message(span_notice("[src] sparks and explodes! You hear a faint, buzzy scream..."), span_hear("You hear a loud pop, followed by a faint, buzzy scream."))
+		visible_message(span_notice("[src]faíscas e explosões! Você ouve um grito fraco e barulhento..."), span_hear("Você ouve um som alto, seguido de um grito fraco e barulhento."))
 		playsound(src.loc, 'modular_skyrat/modules/mapping/sounds/MachineDeath.ogg', 75, TRUE)	//Credit to @yungfunnyman#3798 on the SR Discord
 		do_sparks(2, TRUE, src)
 		qdel(src)
@@ -108,7 +108,7 @@
 /obj/structure/fluff/metalpole
 	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff.dmi'
 	name = "metal pole"
-	desc = "A metal pole, the likes of which are commonly used as an antennae, structural support, or simply to maneuver in zero-g."
+	desc = "Um poste metálico, que é comumente usado como antena, suporte estrutural, ou simplesmente para manobrar em zero-g."
 	icon_state = "pole"
 	layer = ABOVE_OPEN_TURF_LAYER
 	plane = FLOOR_PLANE
@@ -129,7 +129,7 @@
 
 /obj/structure/fluff/empty_sleeper/bloodied
 	name = "Occupied Sleeper"
-	desc = "A closed, occupied sleeper, bloodied handprints are seen on the inside, along with an odd, redish blur. It seems sealed shut."
+	desc = "Uma pegada de mão fechada, ocupada, ensanguentada, é vista por dentro, junto com um borrão estranho e avermelhado. Parece fechado."
 	icon_state = "sleeper-o"
 
 /obj/structure/curtain/cloth/prison
@@ -145,7 +145,7 @@
 
 /obj/structure/fluff/standalone_wooden_post
 	name = "wooden post"
-	desc = "A sturdy space-wood post; upright, on it's lonesome. Ominous."
+	desc = "Um forte poste de madeira espacial, em pé, é solitário. Ominosa."
 	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff.dmi'
 	icon_state = "wooden_post"
 	can_buckle = TRUE

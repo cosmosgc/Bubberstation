@@ -61,7 +61,7 @@
 				log_admin("The admin [ckey] has been allowed to bypass the whitelist")
 				if (message)
 					message_admins(span_adminnotice("The admin [ckey] has been allowed to bypass the whitelist"))
-					addclientmessage(ckey,span_adminnotice("You have been allowed to bypass the whitelist"))
+					addclientmessage(ckey,span_adminnotice("Você foi autorizado a ignorar a lista branca."))
 			else
 				log_access("Failed Login: [ckey] - Not on whitelist")
 				return list("reason"="whitelist", "desc" = "\nReason: You are not on the white list for this server")
@@ -104,7 +104,7 @@
 						log_admin(msg)
 						if (message)
 							message_admins(msg)
-							addclientmessage(ckey,span_adminnotice("Admin [ckey] has been allowed to bypass a matching non-admin ban on [i["key"]] [i["ip"]]-[i["computerid"]]."))
+							addclientmessage(ckey,span_adminnotice("Administrador.[ckey]foi autorizado a contornar uma proibição de não-admin correspondente em[i["key"]] [i["ip"]]-[i["computerid"]]."))
 						continue
 				var/expires = "This is a permanent ban."
 				var/global_ban = "This is a global ban from all of our servers." //SKYRAT EDIT ADDITION - MULTISERVER
@@ -184,11 +184,7 @@
 			newmatches[ckey] = ckey
 
 
-			if (\
-				newmatches.len+pendingmatches.len > STICKYBAN_MAX_MATCHES || \
-				newmatches_connected.len > STICKYBAN_MAX_EXISTING_USER_MATCHES || \
-				newmatches_admin.len > STICKYBAN_MAX_ADMIN_MATCHES \
-			)
+			if (				newmatches.len+pendingmatches.len > STICKYBAN_MAX_MATCHES || 				newmatches_connected.len > STICKYBAN_MAX_EXISTING_USER_MATCHES || 				newmatches_admin.len > STICKYBAN_MAX_ADMIN_MATCHES 			)
 
 				var/action
 				if (ban["fromdb"])
@@ -243,11 +239,11 @@
 			log_admin("The admin [ckey] has been allowed to bypass a matching host/sticky ban on [bannedckey]")
 			if (message)
 				message_admins(span_adminnotice("The admin [ckey] has been allowed to bypass a matching host/sticky ban on [bannedckey]"))
-				addclientmessage(ckey,span_adminnotice("You have been allowed to bypass a matching host/sticky ban on [bannedckey]"))
+				addclientmessage(ckey,span_adminnotice("Você foi autorizado a ignorar uma proibição de hospedeira e pegajosa.[bannedckey]"))
 			return null
 
 		if (C) //user is already connected!.
-			to_chat(C, span_redtext("You are about to get disconnected for matching a sticky ban after you connected. If this turns out to be the ban evasion detection system going haywire, we will automatically detect this and revert the matches. if you feel that this is the case, please wait EXACTLY 6 seconds then reconnect using file -> reconnect to see if the match was automatically reversed."), confidential = TRUE)
+			to_chat(C, span_redtext("Você está prestes a ser desconectado por igualar uma proibição pegajosa depois de se conectar. Se este for o sistema de detecção de evasão interditando, detectaremos isso e reverteremos os fósforos. Se você acha que este é o caso, por favor espere exatamente 6 segundos então reconecte usando o arquivo -> reconectar para ver se a partida foi automaticamente revertida."), confidential = TRUE)
 
 		var/desc = "\nReason:(StickyBan) You, or another user of this computer or connection ([bannedckey]) is banned from playing here. The ban reason is:\n[ban["message"]]\nThis ban was applied by [ban["admin"]]\nThis is a BanEvasion Detection System ban, if you think this ban is a mistake, please wait EXACTLY 6 seconds, then try again before filing an appeal.\n"
 		. = list("reason" = "Stickyban", "desc" = desc)

@@ -39,7 +39,7 @@
 	SIGNAL_HANDLER
 
 	if(item.force >= 5 || item.throwforce >= 5 || item.override_notes || item.offensive_notes || attached_proc) /// Only show this tag for items that could feasibly be weapons, shields, or those that have special notes
-		examine_texts += span_notice("<a href='byond://?src=[REF(item)];examine=1'>See combat information.</a>")
+		examine_texts += span_notice("<a href='byond://?src=[REF(item)];examine=1'>Veja informações de combate.</a>")
 
 /**
  *
@@ -79,16 +79,16 @@
 			readout += "It's pointy and could cause piercing wounds."
 		// Make sure not to divide by 0 on accident
 		if(source.force > 0)
-			readout += "It takes about [span_warning("[HITS_TO_CRIT(source.force)] melee hit\s")] to take down an enemy."
+			readout += "É preciso cerca de[span_warning("[HITS_TO_CRIT(source.force)] melee hit\s")]Derrubar um inimigo."
 		else
 			readout += "It does not deal noticeable melee damage."
 
 		if(source.throwforce > 0)
-			readout += "It takes about [span_warning("[HITS_TO_CRIT(source.throwforce)] throwing hit\s")] to take down an enemy."
+			readout += "É preciso cerca de[span_warning("[HITS_TO_CRIT(source.throwforce)] throwing hit\s")]Derrubar um inimigo."
 		else
 			readout += "It does not deal noticeable throwing damage."
 		if(source.armour_penetration > 0 || source.block_chance > 0)
-			readout += "It has [span_warning("[weapon_tag_convert(source.armour_penetration)]")] armor-piercing capability and [span_warning("[weapon_tag_convert(source.block_chance)]")] blocking capability."
+			readout += "Tem.[span_warning("[weapon_tag_convert(source.armour_penetration)]")]Capacidade de perfurar armas e[span_warning("[weapon_tag_convert(source.block_chance)]")]Capacidade de Bloqueio."
 	// Custom manual notes
 	if(source.offensive_notes)
 		readout += source.offensive_notes

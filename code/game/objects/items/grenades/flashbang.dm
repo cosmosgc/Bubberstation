@@ -120,7 +120,7 @@
 		if(bodypart)
 			forceMove(get_turf(user))
 			var/did_dismember = bodypart.dismember()
-			user.visible_message("<b>[span_danger("[src] goes off in [user]'s hand[did_dismember ? ", blowing [user.p_their()] [bodypart.plaintext_zone] to bloody shreds" : ""]!")]</b>", span_userdanger("[src] goes off in your hand[did_dismember ? ", blowing your [bodypart.plaintext_zone] to bloody shreds" : ""]!"))
+			user.visible_message("<b>[span_danger("[src] goes off in [user]'s hand[did_dismember ? ", blowing [user.p_their()] [bodypart.plaintext_zone] to bloody shreds" : ""]!")]</b>", span_userdanger("[src]Sai na sua mão.[did_dismember ? ", blowing your [bodypart.plaintext_zone] to bloody shreds" : ""]!"))
 
 	. = ..()
 	if(!.)
@@ -154,14 +154,14 @@
 		living_mob.Knockdown(20 SECONDS)
 		living_mob.soundbang_act(SOUNDBANG_NORMAL, 200, 10, 15)
 		if(living_mob.apply_damages(brute = 10, burn = 10))
-			to_chat(living_mob, span_userdanger("The blast from \the [src] bruises and burns you!"))
+			to_chat(living_mob, span_userdanger("A explosão de\the [src]Machuca e queima você!"))
 
 	// only checking if they're on top of the tile, cause being one tile over will be its own punishment
 
 // Grenade that releases more shrapnel the more times you use it in hand between priming and detonation (sorta like the 9bang from MW3), for admin goofs
 /obj/item/grenade/primer
 	name = "rotfrag grenade"
-	desc = "A grenade that generates more shrapnel the more you rotate it in your hand after pulling the pin. This one releases shrapnel shards."
+	desc = "Uma granada que gera mais estilhaços quanto mais você gira em sua mão depois de puxar o pino. Este aqui libera estilhaços."
 	icon_state = "timeg_locked"
 	base_icon_state = "timeg"
 	inhand_icon_state = "flashbang"
@@ -188,7 +188,7 @@
 
 /obj/item/grenade/primer/stingbang
 	name = "rotsting"
-	desc = "A grenade that generates more shrapnel the more you rotate it in your hand after pulling the pin. This one releases stingballs."
+	desc = "Uma granada que gera mais estilhaços quanto mais você gira em sua mão depois de puxar o pino. Este aqui libera arranhões."
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
 	rots_per_mag = 2

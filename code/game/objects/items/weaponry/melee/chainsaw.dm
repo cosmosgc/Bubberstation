@@ -2,7 +2,7 @@
 // CHAINSAW
 /obj/item/chainsaw
 	name = "chainsaw"
-	desc = "A versatile power tool. Useful for limbing trees and delimbing humans."
+	desc = "Uma ferramenta elétrica versátil. Útil para cortar árvores e rebaixar humanos."
 	icon = 'icons/obj/weapons/chainsaw.dmi'
 	icon_state = "chainsaw"
 	base_icon_state = "chainsaw"
@@ -34,22 +34,8 @@
 /obj/item/chainsaw/Initialize(mapload)
 	. = ..()
 	chainsaw_loop = new(src)
-	AddComponent( \
-		/datum/component/transforming, \
-		force_on = force_on, \
-		throwforce_on = force_on, \
-		throw_speed_on = throw_speed, \
-		sharpness_on = SHARP_EDGED, \
-		hitsound_on = 'sound/items/weapons/chainsawhit.ogg', \
-		w_class_on = w_class, \
-	)
-	AddComponent(/datum/component/butchering, \
-		speed = 3 SECONDS, \
-		effectiveness = 100, \
-		bonus_modifier = 0, \
-		butcher_sound = 'sound/items/weapons/chainsawhit.ogg', \
-		disabled = TRUE, \
-	)
+	AddComponent( 		/datum/component/transforming, 		force_on = force_on, 		throwforce_on = force_on, 		throw_speed_on = throw_speed, 		sharpness_on = SHARP_EDGED, 		hitsound_on = 'sound/items/weapons/chainsawhit.ogg', 		w_class_on = w_class, 	)
+	AddComponent(/datum/component/butchering, 		speed = 3 SECONDS, 		effectiveness = 100, 		bonus_modifier = 0, 		butcher_sound = 'sound/items/weapons/chainsawhit.ogg', 		disabled = TRUE, 	)
 	AddElement(/datum/element/prosthetic_icon, "mounted", 180, TRUE)
 	AddComponent(/datum/component/two_handed, require_twohands = TRUE)
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
@@ -59,7 +45,7 @@
 /obj/item/chainsaw/proc/on_transform(obj/item/source, mob/user, active)
 	SIGNAL_HANDLER
 
-	to_chat(user, span_notice("As you pull the starting cord dangling from [src], [active ? "it begins to whirr" : "the chain stops moving"]."))
+	to_chat(user, span_notice("Enquanto você puxa o cordão inicial pendurado de[src], [active ? "it begins to whirr" : "the chain stops moving"]."))
 	var/datum/component/butchering/butchering = GetComponent(/datum/component/butchering)
 	butchering.butchering_enabled = active
 	if (active)
@@ -87,14 +73,14 @@
 
 /obj/item/chainsaw/suicide_act(mob/living/carbon/user)
 	if(!HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
-		user.visible_message(span_suicide("[user] smashes [src] into [user.p_their()] neck, destroying [user.p_their()] esophagus! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user]Esmaga.[src]Em[user.p_their()]pescoço, destruindo[user.p_their()]Esófago! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 		playsound(src, 'sound/items/weapons/genhit1.ogg', 100, TRUE)
 		return BRUTELOSS
 
-	user.visible_message(span_suicide("[user] begins to tear [user.p_their()] head off with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Começa a rasgar[user.p_their()]cabeça fora com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	var/obj/item/bodypart/head/myhead = user.get_bodypart(BODY_ZONE_HEAD)
 	if(!myhead)
-		visible_message(span_suicide("[user] realises that [user.p_they()] cannot cut off [user.p_their()] head because [user.p_they()] don't have one!"))
+		visible_message(span_suicide("[user]Percebe é assim?[user.p_they()]Não pode cortar[user.p_their()]cabeça porque[user.p_they()]Não tenho um!"))
 		return SHAME
 
 	playsound(src, 'sound/items/weapons/chainsawhit.ogg', 100, TRUE)
@@ -103,7 +89,7 @@
 
 	var/datum/wound/slash/crit_wound = new ()
 	crit_wound.apply_wound(myhead)
-	visible_message(span_suicide("[user] tries in vain to cut off [user.p_their()] head but perishes in the attempt!"))
+	visible_message(span_suicide("[user]Tenta em vão cortar[user.p_their()]cabeça, mas morre na tentativa!"))
 	return BRUTELOSS
 
 /obj/item/chainsaw/attack(mob/living/target_mob, mob/living/user, list/modifiers, list/attack_modifiers)
@@ -119,7 +105,7 @@
 
 	playsound(user, 'sound/items/weapons/slice.ogg', vol = 80, vary = TRUE)
 
-	target_mob.balloon_alert(user, "cutting off head...")
+	target_mob.balloon_alert(user, "Cortar a cabeça...")
 	if (!do_after(user, behead_time, target_mob, extra_checks = CALLBACK(src, PROC_REF(has_same_head), target_mob, head)))
 		return TRUE
 
@@ -140,14 +126,14 @@
 
 /obj/item/chainsaw/doomslayer
 	name = "THE GREAT COMMUNICATOR"
-	desc = span_warning("VRRRRRRR!!!")
+	desc = span_warning("VRRRRR!")
 	armour_penetration = 100
 	force_on = 30
 	behead_time = 2 SECONDS
 
 /obj/item/chainsaw/doomslayer/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	if(attack_type == PROJECTILE_ATTACK)
-		owner.visible_message(span_danger("Ranged attacks just make [owner] angrier!"))
+		owner.visible_message(span_danger("Ataques ranged só fazem[owner]Mais Zangado!"))
 		playsound(src, SFX_BULLET_MISS, 75, TRUE)
 		return TRUE
 	return FALSE

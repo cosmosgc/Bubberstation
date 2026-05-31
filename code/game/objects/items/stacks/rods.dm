@@ -1,24 +1,9 @@
-GLOBAL_LIST_INIT(rod_recipes, list ( \
-	new/datum/stack_recipe("grille", /obj/structure/grille, 2, time = 1 SECONDS, crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("table frame", /obj/structure/table_frame, 2, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_FURNITURE), \
-	new/datum/stack_recipe("scooter frame", /obj/item/scooter_frame, 10, time = 2.5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY, category = CAT_ENTERTAINMENT), \
-	new/datum/stack_recipe("linen bin", /obj/structure/bedsheetbin/empty, 2, time = 0.5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY, category = CAT_CONTAINERS), \
-	new/datum/stack_recipe("railing", /obj/structure/railing, 2, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_CHECK_DIRECTION, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("railing corner", /obj/structure/railing/corner, 1, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_CHECK_DIRECTION, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("railing end", /obj/structure/railing/corner/end, 1, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_CHECK_DIRECTION, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("railing end (flipped)", /obj/structure/railing/corner/end/flip, 1, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_CHECK_DIRECTION, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("tank holder", /obj/structure/tank_holder, 2, time = 0.5 SECONDS, crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_FURNITURE), \
-	new/datum/stack_recipe("ladder", /obj/structure/ladder/crafted, 15, time = 15 SECONDS, crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("catwalk floor tile", /obj/item/stack/tile/catwalk_tile, 1, 4, 20, category = CAT_TILES), \
-	new/datum/stack_recipe("stairs frame", /obj/structure/stairs_frame, 10, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("probing cane", /obj/item/cane/white, 3, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_SKIP_MATERIALS_PARITY, category = CAT_TOOLS), \
-	new/datum/stack_recipe("sharpened iron rod", /obj/item/ammo_casing/rebar, 1, time = 0.2 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY, category = CAT_WEAPON_AMMO), \
-	))
+GLOBAL_LIST_INIT(rod_recipes, list ( 	new/datum/stack_recipe("grille", /obj/structure/grille, 2, time = 1 SECONDS, crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_STRUCTURE), 	new/datum/stack_recipe("table frame", /obj/structure/table_frame, 2, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_FURNITURE), 	new/datum/stack_recipe("scooter frame", /obj/item/scooter_frame, 10, time = 2.5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY, category = CAT_ENTERTAINMENT), 	new/datum/stack_recipe("linen bin", /obj/structure/bedsheetbin/empty, 2, time = 0.5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY, category = CAT_CONTAINERS), 	new/datum/stack_recipe("railing", /obj/structure/railing, 2, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_CHECK_DIRECTION, category = CAT_STRUCTURE), 	new/datum/stack_recipe("railing corner", /obj/structure/railing/corner, 1, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_CHECK_DIRECTION, category = CAT_STRUCTURE), 	new/datum/stack_recipe("railing end", /obj/structure/railing/corner/end, 1, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_CHECK_DIRECTION, category = CAT_STRUCTURE), 	new/datum/stack_recipe("railing end (flipped)", /obj/structure/railing/corner/end/flip, 1, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_CHECK_DIRECTION, category = CAT_STRUCTURE), 	new/datum/stack_recipe("tank holder", /obj/structure/tank_holder, 2, time = 0.5 SECONDS, crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_FURNITURE), 	new/datum/stack_recipe("ladder", /obj/structure/ladder/crafted, 15, time = 15 SECONDS, crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_STRUCTURE), 	new/datum/stack_recipe("catwalk floor tile", /obj/item/stack/tile/catwalk_tile, 1, 4, 20, category = CAT_TILES), 	new/datum/stack_recipe("stairs frame", /obj/structure/stairs_frame, 10, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, category = CAT_STRUCTURE), 	new/datum/stack_recipe("probing cane", /obj/item/cane/white, 3, time = 1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_SKIP_MATERIALS_PARITY, category = CAT_TOOLS), 	new/datum/stack_recipe("sharpened iron rod", /obj/item/ammo_casing/rebar, 1, time = 0.2 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY, category = CAT_WEAPON_AMMO), 	))
 
 /obj/item/stack/rods
 	name = "iron rod"
-	desc = "Some rods. Can be used for building or something."
-	singular_name = "iron rod"
+	desc = "Algumas barras. Pode ser usado para construir ou algo assim."
+	singular_name = "Vara de ferro"
 	icon_state = "rods"
 	inhand_icon_state = "rods"
 	obj_flags = CONDUCTS_ELECTRICITY
@@ -48,7 +33,7 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 	embed_chance = 50
 
 /obj/item/stack/rods/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins to stuff \the [src] down [user.p_their()] throat! It looks like [user.p_theyre()] trying to commit suicide!"))//it looks like theyre ur mum
+	user.visible_message(span_suicide("[user]Começa a fazer coisas.\the [src]Para baixo.[user.p_their()]Garganta! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))//it looks like theyre ur mum
 	return BRUTELOSS
 
 /obj/item/stack/rods/Initialize(mapload, new_amount, merge = TRUE, list/mat_override=null, mat_amt=1)
@@ -66,9 +51,7 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/spear, /datum/crafting_recipe/stunprod, /datum/crafting_recipe/teleprod, /datum/crafting_recipe/wireprod) // snatcher prod isn't here as a spoopy secret
 
 	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
+		/datum/element/slapcrafting,		slapcraft_recipes = slapcraft_recipe_list,	)
 
 /obj/item/stack/rods/handle_openspace_click(turf/target, mob/user, list/modifiers)
 	target.attackby(src, user, list2params(modifiers))
@@ -87,13 +70,13 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 
 /obj/item/stack/rods/welder_act(mob/living/user, obj/item/tool)
 	if(get_amount() < 2)
-		balloon_alert(user, "not enough rods!")
+		balloon_alert(user, "Não há bastões suficientes!")
 		return
 	if(tool.use_tool(src, user, delay = 0, volume = 40))
 		var/obj/item/stack/sheet/iron/new_item = new(user.loc)
 		user.visible_message(
-			span_notice("[user.name] shaped [src] into iron sheets with [tool]."),
-			blind_message = span_hear("You hear welding."),
+			span_notice("[user.name]Em forma[src]em chapas de ferro com[tool]."),
+			blind_message = span_hear("Você ouve solda."),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			ignored_mobs = user
 		)
@@ -105,8 +88,8 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 	if(tool.use_tool(src, user, delay = 0, volume = 40))
 		var/obj/item/stack/tile/iron/two/new_item = new(user.loc)
 		user.visible_message(
-			span_notice("[user.name] shaped [src] into floor tiles with [tool]."),
-			blind_message = span_hear("You hear welding."),
+			span_notice("[user.name]Em forma[src]em telhas do chão com[tool]."),
+			blind_message = span_hear("Você ouve solda."),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			ignored_mobs = user
 		)
@@ -132,8 +115,8 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 
 /obj/item/stack/rods/lava
 	name = "heat resistant rod"
-	desc = "Treated, specialized iron rods. When exposed to the vacuum of space their coating breaks off, but they can hold up against the extreme heat of active lava."
-	singular_name = "heat resistant rod"
+	desc = "Barras de ferro especializadas tratadas. Quando expostos ao vácuo do espaço seu revestimento se rompe, mas eles podem resistir ao calor extremo da lava ativa."
+	singular_name = "Vara resistinte ao calor"
 	icon_state = "lavarods"
 	inhand_icon_state = "rods"
 	color = "#5286b9ff"
@@ -149,8 +132,8 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 
 /obj/item/stack/rods/shuttle
 	name = "shuttle frame rods"
-	desc = "Treated, specialized iron rods suitable for the construction of shuttle frames or the expansion of existing shuttles."
-	singular_name = "shuttle frame rod"
+	desc = "Barras de ferro tratadas e especializadas adequadas para a construção de estruturas de transporte ou a expansão de naves existentes."
+	singular_name = "Transportador haste de armação"
 	icon_state = "shuttlerods"
 	mats_per_unit = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT,  /datum/material/titanium=SMALL_MATERIAL_AMOUNT)
 	merge_type = /obj/item/stack/rods/shuttle

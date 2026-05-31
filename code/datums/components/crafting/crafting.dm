@@ -359,7 +359,7 @@
 		for(var/direction in GLOB.cardinals)
 			nearby_turf = get_step(dest_turf, direction)
 			if(locate(recipe.result) in nearby_turf)
-				to_chat(crafter, span_warning("\The [recipe.name] must not be built directly adjacent to another!"))
+				to_chat(crafter, span_warning("\The [recipe.name]Não deve ser construído diretamente adjacente a outro!"))
 				return ", can't be adjacent to another!"
 
 	if(recipe.placement_checks & STACK_CHECK_ADJACENT)
@@ -577,14 +577,14 @@
 /datum/component/personal_crafting/proc/make_action(datum/crafting_recipe/recipe, mob/user)
 	var/atom/result = construct_item(user, recipe)
 	if(istext(result)) //We failed to make an item and got a fail message
-		to_chat(user, span_warning("Construction failed[result]"))
+		to_chat(user, span_warning("A construção falhou.[result]"))
 		return FALSE
 	if(ismob(user) && isitem(result)) //In case the user is actually possessing a non mob like a machine
 		user.put_in_hands(result)
 	else if(ismovable(result) && !istype(result, /obj/effect/spawner))
 		var/atom/movable/movable = result
 		movable.forceMove(user.drop_location())
-	to_chat(user, span_notice("[recipe.name] crafted."))
+	to_chat(user, span_notice("[recipe.name]Feito."))
 	user.investigate_log("crafted [recipe]", INVESTIGATE_CRAFTING)
 	return TRUE
 
@@ -604,7 +604,7 @@
 				while(make_action(crafting_recipe, user))
 					crafted_items++
 				if(crafted_items)
-					to_chat(user, span_notice("You made [crafted_items] item\s."))
+					to_chat(user, span_notice("Você fez[crafted_items]item."))
 			else
 				make_action(crafting_recipe, user)
 			busy = FALSE

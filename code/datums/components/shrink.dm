@@ -22,22 +22,17 @@
 		if(iscarbon(L))
 			var/mob/living/carbon/C = L
 			C.unequip_everything()
-			C.visible_message(span_warning("[C]'s belongings fall off of [C.p_them()] as they shrink down!"),
-			span_userdanger("Your belongings fall away as everything grows bigger!"))
+			C.visible_message(span_warning("[C]Os pertences caem de[C.p_them()]enquanto encolhem!"),
+			span_userdanger("Seus pertences caem enquanto tudo cresce!"))
 			if(ishuman(C))
 				var/mob/living/carbon/human/H = C
 				H.physiology.damage_resistance -= 100//carbons take double damage while shrunk
 		if(!L.GetComponent(/datum/component/squashable))
-			newsquash = L.AddComponent( \
-				/datum/component/squashable, \
-				squash_chance = 75, \
-				squash_damage = 10, \
-				squash_flags = SQUASHED_ALWAYS_IF_DEAD|SQUASHED_DONT_SQUASH_IN_CONTENTS, \
-			)
+			newsquash = L.AddComponent( 				/datum/component/squashable, 				squash_chance = 75, 				squash_damage = 10, 				squash_flags = SQUASHED_ALWAYS_IF_DEAD|SQUASHED_DONT_SQUASH_IN_CONTENTS, 			)
 	else
 		parent_atom.set_density(FALSE) // this is handled by the UNDENSE trait on mobs
-	parent_atom.visible_message(span_warning("[parent_atom] shrinks down to a tiny size!"),
-	span_userdanger("Everything grows bigger!"))
+	parent_atom.visible_message(span_warning("[parent_atom]encolhe para um tamanho minúsculo!"),
+	span_userdanger("Tudo cresce!"))
 	if(shrink_time >= 0) // negative shrink time is permanent
 		QDEL_IN(src, shrink_time)
 

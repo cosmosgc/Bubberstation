@@ -1,6 +1,6 @@
 /obj/machinery/computer/shuttle/ferry
 	name = "transport ferry console"
-	desc = "A console that controls the transport ferry."
+	desc = "Um console que controla a balsa de transporte."
 	circuit = /obj/item/circuitboard/computer/ferry
 	shuttleId = "ferry"
 	possible_destinations = "ferry_home;ferry_away;ferry_ntf" //SKYRAT EDIT CHANGE
@@ -10,7 +10,7 @@
 
 /obj/machinery/computer/shuttle/ferry/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(!allow_emag)
-		balloon_alert(user, "firewall too powerful!")
+		balloon_alert(user, "Firewall muito poderoso!")
 		return FALSE
 	return ..()
 

@@ -21,9 +21,9 @@
 	play_stinger()
 	var/mob/living/current_mob = owner.current
 	if (current_mob)
-		to_chat(current_mob, span_big("You are [current_mob.real_name]."))
-		to_chat(current_mob, span_hypnophrase("You are the <b>only</b> [current_mob.real_name]."))
-		to_chat(current_mob, span_boldwarning("Anyone else pretending to be [current_mob.real_name] must be punished."))
+		to_chat(current_mob, span_big("Você é.[current_mob.real_name]."))
+		to_chat(current_mob, span_hypnophrase("Você é o<b>Apenas</b> [current_mob.real_name]."))
+		to_chat(current_mob, span_boldwarning("Qualquer outra pessoa fingindo ser[current_mob.real_name]Deve ser punido."))
 	owner.announce_objectives()
 
 /datum/antagonist/evil_clone/forge_objectives()
@@ -35,7 +35,7 @@
 /// Kill everyone with the same name as you
 /datum/objective/accept_no_substitutes
 	name = "kill all clones"
-	explanation_text = "Ensure that nobody with a particular name that you don't remember remains alive."
+	explanation_text = "Certifique-se de que ninguém com um nome em particular que não se lembre permaneça vivo."
 	admin_grantable = TRUE
 	/// What name do we want to expunge?
 	var/target_name
@@ -43,7 +43,7 @@
 /// Set the name to check for
 /datum/objective/accept_no_substitutes/proc/set_target_name(new_name)
 	target_name = new_name
-	explanation_text = "Ensure that nobody with the name [target_name] remains alive."
+	explanation_text = "Certifique-se de que ninguém com o nome[target_name]permanece vivo."
 
 /datum/objective/accept_no_substitutes/check_completion()
 	if (!target_name)

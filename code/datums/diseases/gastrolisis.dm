@@ -1,6 +1,6 @@
 /datum/disease/gastrolosis
 	name = "Invasive Gastrolosis"
-	desc = "A bizarre disease that causes the host to grow snail-like features, eventually turning into a human-snail hybrid."
+	desc = "Uma doença bizarra que faz o hospedeiro crescer caracóis, eventualmente se transformando em um híbrido humano."
 	max_stages = 4
 	spread_text = "None"
 	spread_flags = DISEASE_SPREAD_SPECIAL
@@ -42,8 +42,7 @@
 			if(!eyes && SPT_PROB(2.5, seconds_per_tick))
 				var/obj/item/organ/eyes/snail/new_eyes = new()
 				new_eyes.Insert(affected_mob)
-				affected_mob.visible_message(span_warning("[affected_mob]'s eyes fall out, with snail eyes taking its place!"), \
-				span_userdanger("You scream in pain as your eyes are pushed out by your new snail eyes!"))
+				affected_mob.visible_message(span_warning("[affected_mob]Os olhos caem, com olhos de caracol tomando seu lugar!"), 				span_userdanger("Você grita de dor enquanto seus olhos são empurrados pelos seus novos olhos de caracol!"))
 				affected_mob.emote("scream")
 				return
 
@@ -53,8 +52,7 @@
 			if(!shell && SPT_PROB(2.5, seconds_per_tick))
 				if(affected_mob.dropItemToGround(affected_mob.get_item_by_slot(ITEM_SLOT_BACK)))
 					affected_mob.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(affected_mob), ITEM_SLOT_BACK)
-					affected_mob.visible_message(span_warning("[affected_mob] grows a grotesque shell on their back!"), \
-					span_userdanger("You scream in pain as a shell pushes itself out from under your skin!"))
+					affected_mob.visible_message(span_warning("[affected_mob]cresce uma concha grotesca em suas costas!"), 					span_userdanger("Você grita de dor como uma concha se empurra para fora de sua pele!"))
 					affected_mob.emote("scream")
 					return
 
@@ -62,14 +60,13 @@
 			if(!tongue && SPT_PROB(2.5, seconds_per_tick))
 				var/obj/item/organ/tongue/snail/new_tongue = new()
 				new_tongue.Insert(affected_mob)
-				to_chat(affected_mob, span_userdanger("You feel your speech slow down..."))
+				to_chat(affected_mob, span_userdanger("Sente seu discurso mais devagar..."))
 				return
 
 			if(shell && eyes && tongue && SPT_PROB(2.5, seconds_per_tick))
 				affected_mob.set_species(/datum/species/snail)
 				affected_mob.client?.give_award(/datum/award/achievement/jobs/snail, affected_mob)
-				affected_mob.visible_message(span_warning("[affected_mob] turns into a snail!"), \
-				span_boldnotice("You turned into a snail person! You feel an urge to cccrrraaawwwlll..."))
+				affected_mob.visible_message(span_warning("[affected_mob]Se transformar em um caracol!"), 				span_boldnotice("Você se transformou em uma pessoa caracol! Você sente um impulso para cccrraaawwwll..."))
 				cure()
 				return FALSE
 

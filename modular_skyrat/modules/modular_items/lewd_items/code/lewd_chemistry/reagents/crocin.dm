@@ -1,7 +1,7 @@
 // Crocin. Basic aphrodisiac with no consequences
 /datum/reagent/drug/aphrodisiac/crocin
 	name = "crocin"
-	description = "Naturally found in the crocus and gardenia flowers, this drug acts as a natural and safe aphrodisiac."
+	description = "Naturalmente encontrado nas flores de crocus e gardênia, esta droga age como um afrodisíaco natural e seguro."
 	taste_description = "strawberries"
 	color = "#FFADFF"
 	life_pref_datum = /datum/preference/toggle/erp/aphro
@@ -49,5 +49,5 @@
 	results = list(/datum/reagent/drug/aphrodisiac/crocin = 6)
 	required_reagents = list(/datum/reagent/carbon = 2, /datum/reagent/hydrogen = 2, /datum/reagent/oxygen = 2, /datum/reagent/water = 1)
 	required_temp = 400
-	mix_message = "The mixture boils off a pink vapor..."
+	mix_message = "A mistura ferve um vapor rosa..."
 	erp_reaction = TRUE

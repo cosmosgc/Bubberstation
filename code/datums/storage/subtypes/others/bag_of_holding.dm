@@ -26,21 +26,14 @@
 
 /datum/storage/bag_of_holding/proc/confirm_recursive_insertion(obj/item/to_insert, mob/living/user)
 	var/area/bag_area = get_area(user)
-	var/safety = tgui_alert(user, "Doing this will have extremely dire consequences for the station and its crew. Be sure you know what you're doing.", "Put in [to_insert.name]?", list("Proceed", "Abort"))
-	return safety == "Proceed" \
-		&& !QDELETED(to_insert) \
-		&& !QDELETED(parent) \
-		&& !QDELETED(real_location) \
-		&& !QDELETED(user) \
-		&& user.can_perform_action(parent, NEED_DEXTERITY) \
-		&& can_insert(to_insert, user) \
-		&& !(bag_area.area_flags & NO_BOH)
+	var/safety = tgui_alert(user, "Fazer isso terá consequências extremamente terríveis para a estação e sua tripulação. Certifique-se de saber o que está fazendo.", "Put in [to_insert.name]?", list("Proceed", "Abort"))
+	return safety == "Proceed" 		&& !QDELETED(to_insert) 		&& !QDELETED(parent) 		&& !QDELETED(real_location) 		&& !QDELETED(user) 		&& user.can_perform_action(parent, NEED_DEXTERITY) 		&& can_insert(to_insert, user) 		&& !(bag_area.area_flags & NO_BOH)
 
 /datum/storage/bag_of_holding/proc/create_rift(obj/item/inserted, mob/living/user)
 	var/turf/rift_loc = get_turf(parent)
 	user.visible_message(
-		span_userdanger("The Bluespace interfaces of the two devices catastrophically malfunction!"),
-		span_danger("The Bluespace interfaces of the two devices catastrophically malfunction!"),
+		span_userdanger("As interfaces do espaço azul dos dois dispositivos falham catastróficamente!"),
+		span_danger("As interfaces do espaço azul dos dois dispositivos falham catastróficamente!"),
 	)
 
 	message_admins("[ADMIN_LOOKUPFLW(user)] detonated a bag of holding at [ADMIN_VERBOSEJMP(rift_loc)].")

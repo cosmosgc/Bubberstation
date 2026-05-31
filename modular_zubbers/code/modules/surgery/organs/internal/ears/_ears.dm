@@ -1,7 +1,7 @@
 //Copy and paste of monkey's super kitty ears
 /obj/item/organ/ears/cat/super
 	name = "Super Kitty Ears"
-	desc = "A pair of kitty ears that harvest the true energy of cats. Mrow!"
+	desc = "Um par de orelhas de gatinho que colhem a verdadeira energia dos gatos. Srow!"
 	icon = 'modular_zubbers/icons/obj/clothing/head/costume.dmi'
 	icon_state = "superkitty"
 	decay_factor = 0
@@ -43,14 +43,14 @@
 	if(!iscarbon(user) || !user.is_holding(src))
 		return FALSE
 	user.visible_message(
-		span_warning("[user] raises \the [src] to [user.p_their()] head and gently places it on [user.p_their()] head!"),
-		span_danger("A strange feline comes over you. You place \the [src] on your head!"),
+		span_warning("[user]Aumentos\the [src]para[user.p_their()]cabeça e gentilmente coloca em[user.p_their()]Cabeça!"),
+		span_danger("Um estranho felino vem sobre você. Seu lugar.\the [src]Na sua cabeça!"),
 	)
 	playsound(user, 'sound/effects/meow1.ogg', 50, TRUE)
 
 	user.visible_message(
-		span_warning("\The [src] melt into [user]'s head!"),
-		span_userdanger("Everything is so much louder!"),
+		span_warning("\The [src]Derreter em[user]A cabeça!"),
+		span_userdanger("Tudo é muito mais alto!"),
 	)
 
 	user.temporarilyRemoveItemFromInventory(src, force = TRUE)

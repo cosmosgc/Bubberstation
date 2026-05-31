@@ -1,7 +1,7 @@
 //after a delay, creates a rune below you. for constructs creating runes.
 /datum/action/innate/cult/create_rune
 	name = "Summon Rune"
-	desc = "Summons a rune"
+	desc = "Convoca uma runa"
 	background_icon_state = "bg_demon"
 	overlay_icon_state = "bg_demon_border"
 
@@ -25,13 +25,13 @@
 	if(!T)
 		return FALSE
 	if(isspaceturf(T))
-		to_chat(owner, span_warning("You cannot scribe runes in space!"))
+		to_chat(owner, span_warning("Você não pode escrever runas no espaço!"))
 		return FALSE
 	if(locate(/obj/effect/rune) in T)
-		to_chat(owner, span_cult("There is already a rune here."))
+		to_chat(owner, span_cult("Já tem uma runa aqui."))
 		return FALSE
 	if(!is_station_level(T.z) && !is_mining_level(T.z))
-		to_chat(owner, span_warning("The veil is not weak enough here."))
+		to_chat(owner, span_warning("O véu não é suficientemente fraco aqui."))
 		return FALSE
 	return TRUE
 
@@ -84,7 +84,7 @@
 //teleport rune
 /datum/action/innate/cult/create_rune/tele
 	name = "Summon Teleport Rune"
-	desc = "Summons a teleport rune to your location, as though it has been there all along..."
+	desc = "Chama uma runa de teletransporte para sua localização, como se estivesse lá o tempo todo..."
 	button_icon_state = "telerune"
 	rune_type = /obj/effect/rune/teleport
 	rune_word_type = /obj/effect/temp_visual/cult/rune_spawn/rune2
@@ -94,7 +94,7 @@
 
 /datum/action/innate/cult/create_rune/wall
 	name = "Summon Barrier Rune"
-	desc = "Summons an active barrier rune to your location, as though it has been there all along..."
+	desc = "Chama uma runa de barreira ativa para sua localização, como se estivesse lá o tempo todo..."
 	button_icon_state = "barrier"
 	rune_type = /obj/effect/rune/wall
 	rune_word_type = /obj/effect/temp_visual/cult/rune_spawn/rune4
@@ -104,7 +104,7 @@
 
 /datum/action/innate/cult/create_rune/revive
 	name = "Summon Revive Rune"
-	desc = "Summons a revive rune to your location, as though it has been there all along..."
+	desc = "Convoca uma runa para sua localização, como se estivesse lá o tempo todo..."
 	button_icon_state = "revive"
 	rune_type = /obj/effect/rune/raise_dead
 	rune_word_type = /obj/effect/temp_visual/cult/rune_spawn/rune1

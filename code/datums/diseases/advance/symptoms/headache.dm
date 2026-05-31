@@ -8,7 +8,7 @@
 */
 /datum/symptom/headache
 	name = "Headache"
-	desc = "The virus causes inflammation inside the brain, causing constant headaches."
+	desc = "O vírus causa inflamação dentro do cérebro, causando dores de cabeça constantes."
 	illness = "Brain Freeze"
 	stealth = -1
 	resistance = 4

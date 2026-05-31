@@ -1,6 +1,6 @@
 /obj/structure/stripper_pole
 	name = "stripper pole"
-	desc = "A pole fastened to the ceiling and floor, used to show of one's goods to company."
+	desc = "Um poste preso no teto e no chão, usado para mostrar os bens à companhia."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
 	icon_state = "pole_purple_off"
 	base_icon_state = "pole"
@@ -63,7 +63,7 @@
 // Alt-click to turn the lights on or off.
 /obj/structure/stripper_pole/click_alt(mob/user)
 	lights_enabled = !lights_enabled
-	balloon_alert(user, "lights [lights_enabled ? "on" : "off"]")
+	balloon_alert(user, "Luzes[lights_enabled ? "on" : "off"]")
 	playsound(user, lights_enabled ? 'sound/items/weapons/magin.ogg' : 'sound/items/weapons/magout.ogg', 40, TRUE)
 	update_icon_state()
 	update_icon()
@@ -106,7 +106,7 @@
 	user.setDir(SOUTH)
 	user.Stun(10 SECONDS)
 	user.forceMove(loc)
-	user.visible_message(pick(span_purple("[user] dances on [src]!"), span_purple("[user] flexes their hip-moving skills on [src]!")))
+	user.visible_message(pick(span_purple("[user]Dançando[src]!"), span_purple("[user]flexiona suas habilidades hip-moving em[src]!")))
 	dance_animate(user)
 	pole_in_use = FALSE
 	dancer = null
@@ -153,7 +153,7 @@
 	add_fingerprint(user)
 	balloon_alert(user, "desmontando...")
 	if(!do_after(user, 8 SECONDS, src))
-		balloon_alert(user, "disassembly interrupted!")
+		balloon_alert(user, "Desmontagem interrompida!")
 		return
 
 	balloon_alert(user, "disassembled")
@@ -162,4 +162,4 @@
 
 /obj/structure/stripper_pole/examine(mob/user)
 	. = ..()
-	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")
+	. += span_purple("[src]Pode ser desmontado usando Ctrl+Shift. Clique.")

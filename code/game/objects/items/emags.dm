@@ -8,7 +8,7 @@
  * EMAG AND SUBTYPES
  */
 /obj/item/card/emag
-	desc = "It's a card with a magnetic strip attached to some circuitry."
+	desc = "É um cartão com uma tira magnética ligada a alguns circuitos."
 	name = "cryptographic sequencer"
 	icon_state = "emag"
 	item_flags = NO_MAT_REDEMPTION | NOBLUDGEON
@@ -22,7 +22,7 @@
 
 /obj/item/card/emag/attack_self(mob/user) //for traitors with balls of plastitanium
 	if(Adjacent(user))
-		user.visible_message(span_notice("[user] shows you: [icon2html(src, viewers(user))] [name]."), span_notice("You show [src]."))
+		user.visible_message(span_notice("[user]Mostra-lhe:[icon2html(src, viewers(user))] [name]."), span_notice("Você mostra[src]."))
 	add_fingerprint(user)
 
 /obj/item/card/emag/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -39,9 +39,8 @@
 		return FALSE
 
 	user.visible_message(
-		span_notice("[user] holds [emag_card] to [src], getting the two cards stuck together!"),
-		span_notice("As you hold [emag_card] to [src], [emag_card.p_their()] magnets attract to one another, \
-			and [emag_card.p_they()] become stuck together!"),
+		span_notice("[user]Segura.[emag_card]Para[src],Juntando como duas cartas!"),
+		span_notice("Enquanto você segura[emag_card]Para[src], [emag_card.p_their()]ímãs se atraem uns aos outros, e[emag_card.p_they()]Fiquem junto!"),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
 	playsound(src, 'sound/effects/bang.ogg', 33, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
@@ -64,9 +63,9 @@
 	if(QDELETED(user))
 		return
 	if(QDELETED(src))
-		to_chat(user, span_notice("Oh, well."))
+		to_chat(user, span_notice("Oh, bem."))
 	else
-		to_chat(user, span_warning("Well, shit. Those are never coming apart now."))
+		to_chat(user, span_warning("Merda. Eles nunca vão se separar agora."))
 
 /obj/item/card/emag/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -82,18 +81,18 @@
 
 /obj/item/card/emag/bluespace
 	name = "bluespace cryptographic sequencer"
-	desc = "It's a blue card with a magnetic strip attached to some circuitry. It appears to have some sort of transmitter attached to it."
+	desc = "É um cartão azul com uma tira magnética ligada a alguns circuitos. Parece ter algum tipo de transmissor ligado a ele."
 	color = rgb(40, 130, 255)
 	prox_check = FALSE
 
 /obj/item/card/emag/halloween
 	name = "hack-o'-lantern"
-	desc = "It's a pumpkin with a cryptographic sequencer sticking out."
+	desc = "É uma abóbora com um sequenciador criptográfico saindo."
 	icon_state = "hack_o_lantern"
 
 /obj/item/card/emagfake
 	name = /obj/item/card/emag::name
-	desc = /obj/item/card/emag::desc + " Closer inspection shows that this card is a poorly made replica, with a \"Donk Co.\" logo stamped on the back."
+	desc = /obj/item/card/emag::desc + "Inspeção mais próxima mostra que este cartão é uma réplica mal feita, com\"Donk Co.\"Logotipo estampado na parte de trás."
 	icon = /obj/item/card/emag::icon
 	icon_state = /obj/item/card/emag::icon_state
 	worn_icon_state = /obj/item/card/emag::worn_icon_state
@@ -106,7 +105,7 @@
 
 /obj/item/card/emagfake/attack_self(mob/user) //for assistants with balls of plasteel
 	if(Adjacent(user))
-		user.visible_message(span_notice("[user] shows you: [icon2html(src, viewers(user))] [name]."), span_notice("You show [src]."))
+		user.visible_message(span_notice("[user]Mostra-lhe:[icon2html(src, viewers(user))] [name]."), span_notice("Você mostra[src]."))
 	add_fingerprint(user)
 
 /obj/item/card/emagfake/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -114,7 +113,7 @@
 		playsound(src, 'sound/items/bikehorn.ogg', 50, TRUE, frequency = 2)
 	else if(obj_flags & EMAGGED)
 		log_bomber(user, "triggered", src, "(rigged/emagged)")
-		visible_message(span_boldwarning("[src] begins to heat up!"))
+		visible_message(span_boldwarning("[src]Começa a aquecer!"))
 		playsound(src, 'sound/items/bikehorn.ogg', 100, TRUE, frequency = 0.25)
 		addtimer(CALLBACK(src, PROC_REF(blow_up)), 1 SECONDS, TIMER_DELETE_ME)
 		exploding = TRUE
@@ -123,7 +122,7 @@
 	return ITEM_INTERACT_SKIP_TO_ATTACK // So it does the attack animation.
 
 /obj/item/card/emagfake/proc/blow_up()
-	visible_message(span_boldwarning("[src] explodes!"))
+	visible_message(span_boldwarning("[src]Explodir!"))
 	explosion(src, light_impact_range = 1, explosion_cause = src)
 	qdel(src)
 
@@ -134,7 +133,7 @@
 	desc = /obj/item/card/emag::desc
 	obj_flags |= EMAGGED
 	if(user)
-		balloon_alert(user, "rigged to blow")
+		balloon_alert(user, "Armado para explodir")
 		log_bomber(user, "rigged to blow", src, "(emagging)")
 	return TRUE
 
@@ -159,7 +158,7 @@
 /obj/item/card/emag/proc/can_emag(atom/target, mob/user)
 	for (var/subtypelist in type_blacklist)
 		if (target.type in subtypelist)
-			to_chat(user, span_warning("The [target] cannot be affected by the [src]! A more specialized hacking device is required."))
+			to_chat(user, span_warning("O[target]Não pode ser afetado pelo[src]Um dispositivo de hacker mais especializado é necessário."))
 			return FALSE
 	return TRUE
 
@@ -167,7 +166,7 @@
  * DOORMAG
  */
 /obj/item/card/emag/doorjack
-	desc = "Commonly known as a \"doorjack\", this device is a specialized cryptographic sequencer specifically designed to override station airlock access codes. Uses self-refilling charges to hack airlocks."
+	desc = "Comumente consciente como um\"Portinhola.\"Este dispositivo é um sequenciador criptográfico especializado projetado especificamente para substituir os códigos de acesso da câmara de ar da estação. Usa cargas auto-preenchimento para hackear câmaras de ar."
 	name = "modified ID card"
 	icon_state = "doorjack"
 	worn_icon_state = "doorjack"
@@ -189,7 +188,7 @@
 
 /obj/item/card/emag/doorjack/proc/use_charge(mob/user)
 	charges --
-	to_chat(user, span_notice("You use [src]. It now has [charges] charge[charges == 1 ? "" : "s"] remaining."))
+	to_chat(user, span_notice("Você usa[src]Agora tem[charges]Carregar.[charges == 1 ? "" : "s"]Restaurando."))
 	charge_timers.Add(addtimer(CALLBACK(src, PROC_REF(recharge)), charge_time, TIMER_STOPPABLE))
 
 /obj/item/card/emag/doorjack/proc/recharge(mob/user)
@@ -199,7 +198,7 @@
 
 /obj/item/card/emag/doorjack/examine(mob/user)
 	. = ..()
-	. += span_notice("It has [charges] charges remaining.")
+	. += span_notice("Tem.[charges]Acusações restantes.")
 	if (length(charge_timers))
 		. += "[span_notice("<b>A small display on the back reads:")]</b>"
 	for (var/i in 1 to length(charge_timers))
@@ -209,12 +208,12 @@
 
 /obj/item/card/emag/doorjack/can_emag(atom/target, mob/user)
 	if (charges <= 0)
-		to_chat(user, span_warning("[src] is recharging!"))
+		to_chat(user, span_warning("[src]Está recarregando!"))
 		return FALSE
 	for (var/list/subtypelist in type_whitelist)
 		if (target.type in subtypelist)
 			return TRUE
-	to_chat(user, span_warning("[src] is unable to interface with this. It only seems to fit into airlock electronics."))
+	to_chat(user, span_warning("[src]é incapaz de se conectar com isso. Só parece caber na câmara eletrônica."))
 	return FALSE
 
 /*
@@ -222,8 +221,7 @@
  */
 /obj/item/card/emag/battlecruiser
 	name = "battlecruiser coordinates upload card"
-	desc = "An ominous card that contains the location of the station, and when applied to a communications console, \
-	the ability to long-distance contact the Syndicate fleet."
+	desc = "Um cartão sinistro que contém a localização da estação, e quando aplicado a um console de comunicação, a capacidade de contatar a frota do Sindicato."
 	icon_state = "battlecruisercaller"
 	worn_icon_state = "emag"
 	///whether we have called the battlecruiser
@@ -233,17 +231,17 @@
 
 /obj/item/card/emag/battlecruiser/proc/use_charge(mob/user)
 	used = TRUE
-	to_chat(user, span_boldwarning("You use [src], and it interfaces with the communication console. No going back..."))
+	to_chat(user, span_boldwarning("Você usa[src], e ele se conecta com o console de comunicação. Sem voltar..."))
 
 /obj/item/card/emag/battlecruiser/examine(mob/user)
 	. = ..()
-	. += span_notice("It can only be used on the communications console.")
+	. += span_notice("Só pode ser usado no console de comunicação.")
 
 /obj/item/card/emag/battlecruiser/can_emag(atom/target, mob/user)
 	if(used)
-		to_chat(user, span_warning("[src] is used up."))
+		to_chat(user, span_warning("[src]é usado para cima."))
 		return FALSE
 	if(!istype(target, /obj/machinery/computer/communications))
-		to_chat(user, span_warning("[src] is unable to interface with this. It only seems to interface with the communication console."))
+		to_chat(user, span_warning("[src]é incapaz de se conectar com isso. Só parece interagir com o console de comunicação."))
 		return FALSE
 	return TRUE

@@ -52,7 +52,7 @@ export const RBMK2 = (props) => {
           <LabeledList>
             <LabeledList.Item
               label="Activity"
-              tooltip="If the reactor is considered active or not."
+              tooltip="Se o reator for considerado ativo ou não."
             >
               <NoticeBox
                 danger
@@ -64,7 +64,7 @@ export const RBMK2 = (props) => {
             </LabeledList.Item>
             <LabeledList.Item
               label="Stability"
-              tooltip="If the reactor is considered stable or not."
+              tooltip="Se o reator for considerado estável ou não."
             >
               <NoticeBox
                 danger
@@ -76,7 +76,7 @@ export const RBMK2 = (props) => {
             </LabeledList.Item>
             <LabeledList.Item
               label="Connection"
-              tooltip="The physical connection of the reactor. Jammed connections may result in problems."
+              tooltip="A conexão física do reator. Conexões bloqueadas podem causar problemas."
             >
               <NoticeBox
                 danger
@@ -87,8 +87,8 @@ export const RBMK2 = (props) => {
               </NoticeBox>
             </LabeledList.Item>
             <LabeledList.Item
-              label="Power Generation"
-              tooltip="Power generation is influenced by rod temperature and quality of parts. It is possible to generate bonus power when going over the safety limit, but that is not recommended."
+              label="Geração de Energia"
+              tooltip="A geração de energia é influenciada pela temperatura da haste e qualidade das peças. É possível gerar poder de bônus ao ultrapassar o limite de segurança, mas isso não é recomendado."
             >
               <ProgressBar
                 value={data.raw_last_power_output}
@@ -121,8 +121,8 @@ export const RBMK2 = (props) => {
               </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item
-              label="Rod Pressure"
-              tooltip="Pressures above 4500 kPa begin to increasingly slow down the reaction, with the slowest speed by 18,000 kPa. Safety systems will trigger at pressures exceeding 9000 kPa."
+              label="Pressão da Vara"
+              tooltip="Pressões acima de 4500 kPa começam a diminuir a reação, com a velocidade mais lenta em 18.000 kPa. Sistemas de segurança irão desencadear pressões superiores a 9000 kPa."
             >
               <ProgressBar
                 value={data.rod_mix_pressure}
@@ -151,8 +151,8 @@ export const RBMK2 = (props) => {
               </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item
-              label="Core Temperature"
-              tooltip="The general estimate of the core temperature, based on core reactivity. Generally speaking, you should never let this get over 9000 Kelvin."
+              label="Temperatura do núcleo"
+              tooltip="A estimativa geral da temperatura do núcleo, baseada na reatividade do núcleo. Em geral, você nunca deveria deixar isso passar de 9000 Kelvin."
             >
               <ProgressBar
                 value={data.magic_number}
@@ -185,8 +185,8 @@ export const RBMK2 = (props) => {
               </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item
-              label="Rod Temperature"
-              tooltip="As the temperature of the mix increases, fuel consumption rises, leading to greater power generation."
+              label="Temperatura da Vara"
+              tooltip="À medida que a temperatura da mistura aumenta, o consumo de combustível aumenta, levando a uma maior geração de energia."
             >
               <ProgressBar
                 value={data.rod_mix_temperature}
@@ -215,8 +215,8 @@ export const RBMK2 = (props) => {
               </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item
-              label="Remaining Fuel"
-              tooltip="Amount of tritium remaining in the current rod."
+              label="Combustível restante"
+              tooltip="Quantidade de trítio restante na haste atual."
             >
               <ProgressBar // Changes color based on rate of consumption while giving you a total reading.
                 value={data.fuel_time_left}
@@ -232,12 +232,12 @@ export const RBMK2 = (props) => {
                 {data.rod_trit_moles} Moles ({data.fuel_time_left_text})
               </ProgressBar>
             </LabeledList.Item>
-            <LabeledList.Item label="Tritium Usage">
+            <LabeledList.Item label="Uso de Trítio">
               {data.last_tritium_consumption}μmol/s
             </LabeledList.Item>
             <LabeledList.Item
               label="Criticality"
-              tooltip="During meltdowns, criticality levels rise significantly. As criticality rises, the risk of explosive integrity failure intensifies (as does the blast radius.) Exceeding 100% criticality poses a severe risk of spontaneous reactor explosion. Kindly don't let this happen planetside; we don't want another incident."
+              tooltip="Durante os colapsos, os níveis de criticidade aumentam significativamente. À medida que a criticidade aumenta, o risco de falha de integridade explosiva se intensifica (assim como o raio de explosão). Exceder 100% de criticidade representa um grave risco de explosão espontânea do reator. Por favor, não deixe isso acontecer, não queremos outro incidente."
             >
               <ProgressBar
                 value={data.criticality}
@@ -255,7 +255,7 @@ export const RBMK2 = (props) => {
             </LabeledList.Item>
             <LabeledList.Item
               label="Integrity"
-              tooltip="Estimated structural integrity of the reactor. Don't let this fall below 0%."
+              tooltip="Integridade estrutural estimada do reator. Não deixe isso cair abaixo de 0%."
             >
               <ProgressBar
                 value={data.health_percent}
@@ -276,11 +276,11 @@ export const RBMK2 = (props) => {
         <Section title="Controls" textAlign="center">
           <LabeledList>
             <Button.Confirm
-              tooltip="Reactor Activation/Deactivation Button"
+              tooltip="Botão de ativação/desativação do reator"
               textAlign="center"
               width="100%"
               icon="fa-power-off"
-              confirmContent="Are you sure?"
+              confirmContent="Tem certeza?"
               color={data.active ? 'average' : 'good'}
               onClick={() => act('activate')}
             >
@@ -288,7 +288,7 @@ export const RBMK2 = (props) => {
             </Button.Confirm>
             {data.rod ? (
               <Button.Confirm
-                tooltip="Ejects currently inserted rod. NOTE: We haven't been able to consistently recreate this in testing, but this button can (rarely) unjam the rod. It's better to use a crowbar."
+                tooltip="Ejeções atualmente inseridas. Não conseguimos recriar isso consistentemente nos testes, mas este botão pode (raramente) desapertar a haste. É melhor usar um pé de cabra."
                 textAlign="center"
                 width="100%"
                 icon="fa-eject"
@@ -303,21 +303,21 @@ export const RBMK2 = (props) => {
               </NoticeBox>
             )}
           </LabeledList>
-          <Section title="Vent Controls" textAlign="center">
+          <Section title="Controles de ventilação" textAlign="center">
             NOTICE: The vents must be off to change directions.
             <br />
             <i>(This is a cost saving measure - do not print this part.)</i>
           </Section>
           <LabeledList>
             <LabeledList.Item
-              label="Vent Power"
+              label="Potência de ventilação"
               buttons={
                 <>
                   <Box inline mx={2} color={data.venting ? 'good' : 'orange'}>
                     {data.venting ? 'ONLINE' : 'OFFLINE'}
                   </Box>
                   <Button.Confirm
-                    tooltip="Toggle the vents On/Off."
+                    tooltip="Activar/desligar a ventilação."
                     textAlign="center"
                     icon="fa-fan"
                     color={data.venting ? 'orange' : 'good'}
@@ -329,28 +329,28 @@ export const RBMK2 = (props) => {
               }
             />
             <LabeledList.Item
-              label="Vent Direction"
+              label="Direção de Vent"
               buttons={
                 <>
                   <Box inline mx={5.68} color={data.vent_dir ? 'orange' : 'good'}>
                     {data.vent_dir ? 'PULLING' : 'PUSHING'}
                   </Box>
                   <Button
-                    tooltip="Adjust the vents to draw air from the surrounding environment into the internal chamber of the RBMK2."
+                    tooltip="Ajuste as aberturas para tirar ar do ambiente circundante para a câmara interna da RBMK2."
                     icon="fa-clock-rotate-left"
                     disabled={data.venting}
                     color={data.vent_dir ? 'caution' : 'blue'}
                     onClick={() => act('ventpull')}
                   />
                   <Button
-                    tooltip="Adjust the vents to release the contents of the RBMK2's internal chamber into the surrounding environment."
-                    icon="fa-clock-rotate-left fa-flip-horizontal"
+                    tooltip="Ajuste as aberturas para liberar o conteúdo da câmara interna do RBMK2 no ambiente circundante."
+                    icon="Fa-clock-rotate-esquerda fa-flip-horizontal"
                     disabled={data.venting}
                     color={data.vent_dir ? 'blue' : 'good'}
                     onClick={() => act('ventpush')}
                   />
                   <Button
-                    tooltip="Set the vents to automatically open when too hot, and close when too cold. Requires auto-vent upgrade disk."
+                    tooltip="Ajuste as saídas para abrir automaticamente quando muito quente, e feche quando muito frio. Requer um disco de atualização automática."
                     icon="fa-balance-scale"
 					disabled={!data.auto_vent_upgrade}
                     color={data.auto_vent ? 'good' : 'blue'}
@@ -360,7 +360,7 @@ export const RBMK2 = (props) => {
               }
             />
           </LabeledList>
-          <Section title="Adv. Controls" textAlign="center">
+          <Section title="Controles." textAlign="center">
             WARNING: Settings within this section may explosively void your
             warranty.
           </Section>
@@ -373,7 +373,7 @@ export const RBMK2 = (props) => {
                     {data.overclocked ? 'ONLINE' : 'OFFLINE'}
                   </Box>
                   <Button.Confirm
-                    tooltip="Increases power output at the cost of more tritium consumed and more heat generated. Requires overlock upgrade disk."
+                    tooltip="Aumenta a potência ao custo de mais trítio consumido e mais calor gerado. Requer overlock do disco de atualização."
                     icon="exclamation-triangle"
                     color={data.overclocked ? 'average' : 'good'}
 					disabled={!data.overclocked_upgrade}

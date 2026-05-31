@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/cup/vial
 	name = "broken hypovial"
-	desc = "You probably shouldn't be seeing this. Shout at a coder."
+	desc = "Você provavelmente não deveria estar vendo isso. Grite com um codificador."
 	icon = 'modular_skyrat/modules/hyposprays/icons/vials.dmi'
 	icon_state = "hypovial"
 	greyscale_config = /datum/greyscale_config/hypovial
@@ -70,7 +70,7 @@
 
 /obj/item/reagent_containers/cup/vial/examine(mob/user)
 	. = ..()
-	. += span_notice("Ctrl-Shift-Click to reskin or set a custom color.")
+	. += span_notice("Ctrl-Shift-Clique para reeskin ou definir uma cor personalizada.")
 
 /obj/item/reagent_containers/cup/vial/click_ctrl_shift(mob/user, obj/item/held_item)
 	var/datum/component/reskinable_item/reskin_component = GetComponent(/datum/component/reskinable_item)
@@ -119,7 +119,7 @@
 //Fit in all hypos
 /obj/item/reagent_containers/cup/vial/small
 	name = "hypovial"
-	desc = "A small, 50u capacity vial compatible with most hyposprays."
+	desc = "Um pequeno frasco de 50u compatível com a maioria dos hiposprays."
 	volume = 50
 	possible_transfer_amounts = list(1,2,5,10,15,25,50)
 
@@ -147,7 +147,7 @@
 	name = "large hypovial"
 	icon_state = "hypoviallarge"
 	fill_icon_state = "hypoviallarge_fill"
-	desc = "A large, 100u capacity vial that fits only in the most deluxe hyposprays."
+	desc = "Um grande frasco de capacidade 100u que se encaixa apenas nos hiposprays mais de luxo."
 	volume = 100
 	possible_transfer_amounts = list(1,2,5,10,20,30,40,50,100)
 	type_suffix = "-l"

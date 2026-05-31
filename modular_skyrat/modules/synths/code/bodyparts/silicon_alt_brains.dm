@@ -2,7 +2,7 @@
 
 /obj/item/mmi/posibrain/circuit
 	name = "compact AI circuit"
-	desc = "A compact circuit, perfectly dimensioned to fit in the same slot as a cyborg's positronic brain."
+	desc = "Um circuito compacto, perfeitamente dimensionado para caber no mesmo espaço que o cérebro positrônico de um cyborg."
 	icon = 'modular_skyrat/master_files/icons/obj/alt_silicon_brains.dmi'
 	icon_state = "circuit"
 	base_icon_state = "circuit"
@@ -11,11 +11,11 @@
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 
 	// It pains me to copy-paste so much, but I can't do it any other way
-	begin_activation_message = span_notice("You carefully locate the manual activation switch and start the compact AI circuit's boot process.")
-	success_message = span_notice("The compact AI circuit pings, and its lights start flashing. Success!")
-	fail_message = span_notice("The compact AI circuit buzzes quietly, and the golden lights fade away. Perhaps you could try again?")
-	new_mob_message = span_notice("The compact AI circuit chimes quietly.")
-	recharge_message = span_warning("The compact AI circuit isn't ready to activate again yet! Give it some time to recharge.")
+	begin_activation_message = span_notice("Você cuidadosamente localizar o interruptor de ativação manual e iniciar o processo de inicialização do circuito de IA compacto.")
+	success_message = span_notice("O circuito de IA compacto pings, e suas luzes começam a piscar. Sucesso!")
+	fail_message = span_notice("O circuito compacto de IA zumbi silenciosamente, e as luzes douradas desaparecem. Talvez você possa tentar de novo?")
+	new_mob_message = span_notice("O circuito compacto de IA soa silencioso.")
+	recharge_message = span_warning("O circuito de IA compacto não está pronto para ativar novamente! Dê algum tempo para recarregar.")
 
 // CODE THAT ACTUALLY APPLIES THE BRAINS.
 // See modular_skyrat/master_files/code/modules/client/preferences/brain.dm for Synth/IPC application.

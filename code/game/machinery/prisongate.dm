@@ -2,7 +2,7 @@
 
 /obj/machinery/prisongate
 	name = "prison gate scanner"
-	desc = "A hardlight gate with an ID scanner attached to the side. Good at deterring even the most persistent temporarily embarrassed employee."
+	desc = "Um portão de luz dura com um scanner de identificação ligado ao lado. Bom em deter até mesmo o funcionário mais persistente temporariamente envergonhado."
 	icon = 'icons/obj/machines/sec.dmi'
 	icon_state = "prisongate_on"
 	/// roughly the same health/armor as an airlock
@@ -30,14 +30,14 @@
 /obj/machinery/prisongate/power_change()
 	. = ..()
 	if(!powered())
-		visible_message(span_notice("[src] momentarily flickers before the hardlight barrier loses cohesion and dissipates into thin air!"))
+		visible_message(span_notice("[src]Momentaneamente treme antes da barreira da luz dura perder coesão e se dissipa no ar!"))
 		gate_active = FALSE
 		flick("prisongate_turningoff", src)
 		icon_state = "prisongate_off"
 		update_use_power(IDLE_POWER_USE)
 	else
 		gate_active = TRUE
-		visible_message(span_notice("[src] whirrs back to life as its hardlight barrier fills the space between it."))
+		visible_message(span_notice("[src]Quando sua barreira de luz dura enche o espaço entre ela."))
 		flick("prisongate_turningon", src)
 		icon_state = "prisongate_on"
 		update_use_power(ACTIVE_POWER_USE)
@@ -86,7 +86,7 @@
 			COOLDOWN_START(src, spam_cooldown_time, SPAM_CD)
 		return FALSE
 	if(COOLDOWN_FINISHED(src, spam_cooldown_time))
-		to_chat(the_toucher, span_warning("You try to push through the hardlight barrier with little effect."))
+		to_chat(the_toucher, span_warning("Você tenta atravessar a barreira da luz dura com pouco efeito."))
 		COOLDOWN_START(src, spam_cooldown_time, SPAM_CD)
 	return FALSE
 

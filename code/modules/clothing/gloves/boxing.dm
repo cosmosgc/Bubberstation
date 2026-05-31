@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/boxing
 	name = "boxing gloves"
-	desc = "Because you really needed another excuse to punch your crewmates."
+	desc = "Porque precisava de outra desculpa para socar seus colegas."
 	icon_state = "boxing"
 	greyscale_colors = "#f32110"
 	equip_delay_other = 6 SECONDS
@@ -17,9 +17,7 @@
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/extendohand_l, /datum/crafting_recipe/extendohand_r)
 
 	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
+		/datum/element/slapcrafting,		slapcraft_recipes = slapcraft_recipe_list,	)
 
 	AddComponent(/datum/component/martial_art_giver, style_to_give)
 	AddElement(/datum/element/adjust_fishing_difficulty, 19)
@@ -27,7 +25,7 @@
 
 /obj/item/clothing/gloves/boxing/proc/on_mail_unwrap(atom/source, mob/user, obj/item/mail/traitor/letter)
 	SIGNAL_HANDLER
-	to_chat(user, span_danger("As you open [letter], boxing gloves spring out and deliver you a swift uppercut!"))
+	to_chat(user, span_danger("Enquanto você abre[letter], luvas de boxe sair e entregar-lhe um rápido uppercut!"))
 	var/mob/living/userasliving = user
 	playsound(user, SFX_PUNCH, 25, TRUE)
 	userasliving.Knockdown((extrapower ? 2 : 4) SECONDS, (extrapower ? 4 : 6) SECONDS)
@@ -37,7 +35,7 @@
 
 /obj/item/clothing/gloves/boxing/evil
 	name = "evil boxing gloves"
-	desc = "These strange gloves radiate an unusually evil aura."
+	desc = "Essas luvas estranhas irradiam uma aura maléfica."
 	greyscale_colors = "#21211f"
 	style_to_give = /datum/martial_art/boxing/evil
 	extrapower = TRUE
@@ -56,7 +54,7 @@
 
 /obj/item/clothing/gloves/boxing/golden
 	name = "golden gloves"
-	desc = "The reigning champ of the station!"
+	desc = "O atual campeão da estação!"
 	icon_state = "boxinggold"
 	custom_materials = list(/datum/material/gold = SHEET_MATERIAL_AMOUNT*1)  //LITERALLY GOLD
 	material_flags = MATERIAL_EFFECTS | MATERIAL_AFFECT_STATISTICS

@@ -17,7 +17,7 @@
 
 /datum/reagent/medicine/system_cleaner
 	name = "System Cleaner"
-	description = "Neutralizes harmful chemical compounds inside synthetic systems and refreshes system software."
+	description = "Neutraliza compostos químicos nocivos dentro de sistemas sintéticos e atualiza o software do sistema."
 	color = "#F1C40F"
 	taste_description = "ethanol"
 	metabolization_rate = 2 * REAGENTS_METABOLISM
@@ -37,7 +37,7 @@
 
 /datum/reagent/medicine/liquid_solder
 	name = "Liquid Solder"
-	description = "Repairs organ damage in synthetics."
+	description = "Repara danos de órgãos em sintéticos."
 	color = "#727272"
 	taste_description = "metal"
 	process_flags = REAGENT_SYNTHETIC
@@ -51,7 +51,7 @@
 
 /datum/reagent/medicine/nanite_slurry
 	name = "Nanite Slurry"
-	description = "A localized swarm of nanomachines specialized in repairing mechanical parts. Concentrated amounts in a synthetic host will rapidly repair organ damage, damaging their exterior and overheating them. Otherwise they will safely purge from an organic host"
+	description = "Um enxame localizado de nanomáquinas especializadas em reparar peças mecânicas. Quantidades concentradas em um hospedeiro sintético repararão rapidamente danos nos órgãos, danificando seu exterior e superaquecendo-os. Caso contrário, eles vão remover com segurança de um hospedeiro orgânico."
 	color = "#cccccc"
 	overdose_threshold = 15
 	metabolization_rate = 1.25 * REAGENTS_METABOLISM
@@ -70,9 +70,9 @@
 
 /datum/reagent/medicine/nanite_slurry/overdose_start(mob/living/affected_mob)
 	if(affected_mob.mob_biotypes & MOB_ROBOTIC)
-		to_chat(affected_mob, span_danger("Your interior systems are overheating as they're being repaired!"))
+		to_chat(affected_mob, span_danger("Seus sistemas interiores estão superaquecendo enquanto estão sendo reparados!"))
 	else
-		to_chat(affected_mob, span_danger("Your stomach lurches as concentrations of nanites begin disposing of themselves."))
+		to_chat(affected_mob, span_danger("Seu estômago dói quando concentrações de nanites começam a se eliminar."))
 
 /datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/affected_mob, seconds_per_tick, times_fired) // Mostly to treat a synthetic being EMP'd
 	if(affected_mob.mob_biotypes & MOB_ROBOTIC)
@@ -91,7 +91,7 @@
 
 /datum/reagent/medicine/taste_suppressor
 	name = "Taste Suppressor"
-	description = "A colorless medicine aimed to dull the sense of taste of those that consumed it, as long as it's in their system."
+	description = "Uma medicina incolor tinha como objetivo entorpecer o paladar daqueles que a consumiam, desde que estivesse em seu sistema."
 	color = "#AAAAAA77"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED

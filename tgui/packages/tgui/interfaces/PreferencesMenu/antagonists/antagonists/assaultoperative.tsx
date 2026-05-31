@@ -9,7 +9,7 @@ export const OPERATIVE_MECHANICAL_DESCRIPTION = `
 
 const AssaultOperative: Antagonist = {
   key: 'assaultoperative',
-  name: 'Assault Operative',
+  name: 'Agressão Operativa',
   description: [
     `
       Good afternoon 0013, you have been selected to join an elite strike team

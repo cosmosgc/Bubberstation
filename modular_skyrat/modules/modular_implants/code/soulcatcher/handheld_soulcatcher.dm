@@ -2,7 +2,7 @@
 
 /obj/item/handheld_soulcatcher
 	name = "\improper Evoker-type RSD"
-	desc = "The Evoker-Type Resonance Simulation Device is a sort of 'Soulcatcher' instrument that's been designated for handheld usage. These RSDs were designed with the Medical field in mind, a tool meant to offer comfort to the temporarily-departed while their bodies are being repaired, healed, or produced. The Evoker is essentially a very specialized handheld NIF, still using the same nanomachinery for the software and hardware. This careful instrument is able to host a virtual space for a great number of Engrams for an essentially indefinite amount of time in an unlimited variety of simulations, even able to transfer them to and from a NIF. However, it's best Medical practice to not lollygag."
+	desc = "O Dispositivo de Simulação de Ressonância do Tipo Evoker é uma espécie de instrumento de captura de almas que foi designado para uso manual. Esses DSRs foram projetados com o campo médico em mente, uma ferramenta destinada a oferecer conforto aos temporariamente separados enquanto seus corpos estão sendo reparados, curados ou produzidos. O Evoker é essencialmente um NIF portátil muito especializado, ainda usando a mesma nanomáquina para o software e hardware. Este instrumento cuidadoso é capaz de hospedar um espaço virtual para um grande número de Engrams por uma quantidade essencialmente indefinida de tempo em uma variedade ilimitada de simulações, mesmo capaz de transferi-los de e para um NIF. No entanto, é a melhor prática médica para não lollygag."
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
 	icon_state = "soulcatcher-device"
 	inhand_icon_state = "electronic"
@@ -44,19 +44,19 @@
 		return TRUE
 
 	if(!target_mob.mind)
-		to_chat(user, span_warning("You are unable to remove a mind from an empty body."))
+		to_chat(user, span_warning("Você é incapaz de remover uma mente de um corpo vazio."))
 		return FALSE
 
 	if(!COOLDOWN_FINISHED(src, rsd_scan_cooldown))
 		var/time_left = round((COOLDOWN_TIMELEFT(src, rsd_scan_cooldown)) / (1 MINUTES), 0.01)
-		to_chat(user, span_warning("You are currently unable to grab the soul of [target_mob], please wait [time_left] minutes before trying again."))
+		to_chat(user, span_warning("Você está atualmente incapaz de agarrar a alma de[target_mob]Por favor, espere.[time_left]minutos antes de tentar novamente."))
 		return FALSE
 
 	if(target_mob.stat == DEAD) //We can temporarily store souls of dead mobs.
 		target_mob.ghostize(TRUE) //Incase they are staying in the body.
 		var/mob/dead/observer/target_ghost = target_mob.get_ghost(TRUE, TRUE)
 		if(!target_ghost)
-			to_chat(user, span_warning("You are unable to get the soul of [target_mob]!"))
+			to_chat(user, span_warning("Você é incapaz de obter a alma de[target_mob]!"))
 			return FALSE
 
 		var/datum/carrier_room/soulcatcher/target_room = tgui_input_list(user, "Choose a room to send [target_mob]'s soul to.", name, linked_soulcatcher.carrier_rooms, timeout = 30 SECONDS)
@@ -66,8 +66,8 @@
 		SEND_SOUND(target_ghost, 'sound/announcer/notice/notice2.ogg')
 		window_flash(target_ghost.client)
 
-		if(tgui_alert(target_ghost, "[user] wants to transfer you to [target_room] inside of a soulcatcher, do you accept?", name, list("Yes", "No"), 30 SECONDS, autofocus = FALSE) != "Yes")
-			to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
+		if(tgui_alert(target_ghost, "[user]Quer transferir-lo para[target_room]dentro de um caça-almas, você aceita?", name, list("Yes", "No"), 30 SECONDS, autofocus = FALSE) != "Yes")
+			to_chat(user, span_warning("[target_mob]Não parece querer entrar."))
 			COOLDOWN_START(src, rsd_scan_cooldown, RSD_ATTEMPT_COOLDOWN)
 			return FALSE
 
@@ -89,9 +89,9 @@
 	SEND_SOUND(target_mob, 'sound/announcer/notice/notice2.ogg')
 	window_flash(target_mob.client)
 
-	if((tgui_alert(target_mob, "Do you wish to enter [target_room]? This will remove you from your body until you leave.", name, list("Yes", "No"), 30 SECONDS, FALSE) != "Yes") || (tgui_alert(target_mob, "Are you sure about this?", name, list("Yes", "No"), 30 SECONDS, FALSE) != "Yes"))
+	if((tgui_alert(target_mob, "Quer entrar?[target_room]? Isso irá removê-lo de seu corpo até que você saia.", name, list("Yes", "No"), 30 SECONDS, FALSE) != "Yes") || (tgui_alert(target_mob, "Tem certeza disso?", name, list("Yes", "No"), 30 SECONDS, FALSE) != "Yes"))
 		COOLDOWN_START(src, rsd_scan_cooldown, RSD_ATTEMPT_COOLDOWN)
-		to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
+		to_chat(user, span_warning("[target_mob]Não parece querer entrar."))
 		return FALSE
 
 	if(!target_mob.mind)
@@ -99,7 +99,7 @@
 
 	target_room.add_soul_from_mind(target_mob.mind, FALSE)
 	playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
-	visible_message(span_notice("[src] beeps: [target_mob]'s mind transfer is now complete."))
+	visible_message(span_notice("[src]BIPS:[target_mob]A transferência mental está completa."))
 
 	if(!target_mob.GetComponent(/datum/component/previous_body))
 		return FALSE
@@ -117,15 +117,15 @@
 
 	var/obj/item/organ/brain/target_brain = target_mob.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(!istype(target_brain))
-		to_chat(user, span_warning("[target_mob] lacks a brain!"))
+		to_chat(user, span_warning("[target_mob]Falta um cérebro!"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	if(!HAS_TRAIT(target_brain, TRAIT_RSD_COMPATIBLE))
-		to_chat(user, span_warning("[target_mob]'s brain isn't compatible."))
+		to_chat(user, span_warning("[target_mob]O cérebro não é compatível."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	if(target_mob.mind || target_mob.ckey || GetComponent(/datum/component/previous_body))
-		to_chat(user, span_warning("[target_mob] is not able to receive a soul"))
+		to_chat(user, span_warning("[target_mob]não é capaz de receber uma alma"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	var/list/soul_list = list()
@@ -137,7 +137,7 @@
 			soul_list += soul
 
 	if(!length(soul_list))
-		to_chat(user, span_warning("There are no souls that can be transferred to [target_mob]."))
+		to_chat(user, span_warning("Nenhuma alma pode ser transferida para[target_mob]."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	var/mob/living/soulcatcher_soul/chosen_soul = tgui_input_list(user, "Choose a soul to transfer into the body", name, soul_list)
@@ -153,7 +153,7 @@
 
 	chosen_soul.mind.transfer_to(target_mob, TRUE)
 	playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
-	visible_message(span_notice("[src] beeps: Body transfer complete."))
+	visible_message(span_notice("[src]Transferência corporal completa."))
 	log_admin("[src] was used by [user] to transfer [chosen_soul]'s soulcatcher soul to [target_mob].")
 
 	qdel(chosen_soul)

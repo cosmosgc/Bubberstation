@@ -20,17 +20,14 @@
 ///Machine that lets you play roulette. Odds are pre-defined to be the same as European Roulette without the "En Prison" rule
 /obj/machinery/roulette
 	name = "Roulette Table"
-	desc = "A computerized roulette table. Swipe your ID to play or register yourself as owner!"
+	desc = "Uma mesa de roleta computadorizada. Troque sua identidade para jogar ou se registre como dono!"
 	icon = 'icons/obj/machines/roulette.dmi'
 	icon_state = "idle"
 	density = TRUE
 	anchored = FALSE
 	max_integrity = 500
 	armor_type = /datum/armor/machinery_roulette
-	var/static/list/numbers = list("0" = "green", "1" = "red", "3" = "red", "5" = "red", "7" = "red", "9" = "red", "12" = "red", "14" = "red", "16" = "red",\
-	"18" = "red", "19" = "red", "21" = "red", "23" = "red", "25" = "red", "27" = "red", "30" = "red", "32" = "red", "34" = "red", "36" = "red",\
-	"2" = "black", "4" = "black", "6" = "black", "8" = "black", "10" = "black", "11" = "black", "13" = "black", "15" = "black", "17" = "black", "20" = "black",\
-	"22" = "black", "24" = "black", "26" = "black", "28" = "black", "29" = "black", "31" = "black", "33" = "black", "35" = "black")
+	var/static/list/numbers = list("0" = "green", "1" = "red", "3" = "red", "5" = "red", "7" = "red", "9" = "red", "12" = "red", "14" = "red", "16" = "red",	"18" = "red", "19" = "red", "21" = "red", "23" = "red", "25" = "red", "27" = "red", "30" = "red", "32" = "red", "34" = "red", "36" = "red",	"2" = "black", "4" = "black", "6" = "black", "8" = "black", "10" = "black", "11" = "black", "13" = "black", "15" = "black", "17" = "black", "20" = "black",	"22" = "black", "24" = "black", "26" = "black", "28" = "black", "29" = "black", "31" = "black", "33" = "black", "35" = "black")
 
 	var/chosen_bet_amount = 10
 	var/chosen_bet_type = "0"
@@ -130,7 +127,7 @@
 			playsound(src, 'sound/machines/terminal/terminal_success.ogg', 50, TRUE)
 
 		if(machine_stat & MAINT || !on || locked)
-			to_chat(user, span_notice("The machine appears to be disabled."))
+			to_chat(user, span_notice("A máquina parece estar desativada."))
 			return FALSE
 
 		if(!player_card.registered_account)
@@ -191,10 +188,10 @@
 			if(!msg)
 				return
 			name = msg
-			desc = "Owned by [player_card.registered_account.account_holder], draws directly from [user.p_their()] account."
+			desc = "Propriedade de[player_card.registered_account.account_holder], tira diretamente de[user.p_their()]Conta."
 			my_card = player_card
 			RegisterSignal(my_card, COMSIG_QDELETING, PROC_REF(on_my_card_deleted))
-			to_chat(user, span_notice("You link the wheel to your account."))
+			to_chat(user, span_notice("Você liga a roda à sua conta."))
 			power_change()
 			return
 	return ..()
@@ -429,15 +426,15 @@
 /obj/machinery/roulette/welder_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(machine_stat & MAINT)
-		to_chat(user, span_notice("You start re-attaching the top section of [src]..."))
+		to_chat(user, span_notice("Você começa a re-ligar a seção superior de[src]..."))
 		if(I.use_tool(src, user, 30, volume=50))
-			to_chat(user, span_notice("You re-attach the top section of [src]."))
+			to_chat(user, span_notice("Você recolocou a parte de cima do[src]."))
 			set_machine_stat(machine_stat & ~MAINT)
 			icon_state = "idle"
 	else
-		to_chat(user, span_notice("You start welding the top section from [src]..."))
+		to_chat(user, span_notice("Você começa a soldar a seção superior de[src]..."))
 		if(I.use_tool(src, user, 30, volume=50))
-			to_chat(user, span_notice("You removed the top section of [src]."))
+			to_chat(user, span_notice("Você removeu a parte de cima de[src]."))
 			set_machine_stat(machine_stat | MAINT)
 			icon_state = "open"
 
@@ -448,7 +445,7 @@
 
 /obj/item/roulette_wheel_beacon
 	name = "roulette wheel beacon"
-	desc = "N.T. approved roulette wheel beacon, toss it down and you will have a complementary roulette wheel delivered to you."
+	desc = "A N.T. aprovou o farol da roleta, jogue-o para baixo e terá uma roleta complementar entregue a você."
 	icon = 'icons/obj/machines/floor.dmi'
 	icon_state = "floor_beacon"
 	var/used
@@ -456,7 +453,7 @@
 /obj/item/roulette_wheel_beacon/attack_self()
 	if(used)
 		return
-	loc.visible_message(span_warning("\The [src] begins to beep loudly!"))
+	loc.visible_message(span_warning("\The [src]Começa a tocar alto!"))
 	used = TRUE
 	addtimer(CALLBACK(src, PROC_REF(launch_payload)), 4 SECONDS)
 

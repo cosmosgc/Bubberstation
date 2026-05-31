@@ -6,13 +6,13 @@ import {
 import { FeatureDropdownInput } from '../../dropdowns';
 
 export const hypnotic_quirk_text: Feature<string> = {
-  name: 'Hypnotic Text Examine',
+  name: 'Texto Hipnótico Examine',
   description:
-    'The examine text portrayed from your character. Use third person (Their, He, She, etc)',
+    'O texto de exame retratado de seu personagem. Use a terceira pessoa.',
   component: FeatureShortTextInput,
 };
 
 export const flashy_text: FeatureChoiced = {
-  name: 'Text Color Selection',
+  name: 'Seleção de Cores de Texto',
   component: FeatureDropdownInput,
 };

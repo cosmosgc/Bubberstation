@@ -1,13 +1,12 @@
 /datum/quirk/hypersensitive
 	name = "Hypersensitive"
-	desc = "For better or worse, everything seems to affect your mood more than it should."
+	desc = "Para melhor ou pior, tudo parece afetar seu humor mais do que deveria."
 	icon = FA_ICON_FLUSHED
 	value = -2
-	gain_text = span_danger("You seem to make a big deal out of everything.")
-	lose_text = span_notice("You don't seem to make a big deal out of everything anymore.")
-	medical_record_text = "Patient demonstrates a high level of emotional volatility."
-	medical_symptom_text = "Exhibits heightened emotional responses to stimuli, \
-		leading to greatly increased sensitivity and reactivity in social situations."
+	gain_text = span_danger("Você parece fazer um grande negócio com tudo.")
+	lose_text = span_notice("Você não parece mais fazer um grande negócio com tudo.")
+	medical_record_text = "O paciente demonstra um alto nível de volatilidade emocional."
+	medical_symptom_text = "Expõe respostas emocionais aumentadas aos estímulos, levando a um aumento da sensibilidade e reatividade em situações sociais."
 	hardcore_value = 3
 	mail_goodies = list(/obj/effect/spawner/random/entertainment/plushie_delux)
 	quirk_flags = QUIRK_TRAUMALIKE

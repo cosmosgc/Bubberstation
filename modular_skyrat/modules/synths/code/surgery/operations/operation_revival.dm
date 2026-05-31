@@ -1,7 +1,7 @@
 /datum/surgery_operation/basic/revive_synth
 	name = "reboot neural network"
 	rnd_name = "Restart Neural Network (Revival)"
-	desc = "A mechanical surgical procedure that restarts an android's neural network."
+	desc = "Um procedimento cirúrgico mecânico que reinicia a rede neural de um andróide."
 	implements = list(
 		TOOL_MULTITOOL = 1,
 		/obj/item/shockpaddles = 1.43,
@@ -62,9 +62,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You begin to force a reboot in [patient]'s [brain_type]..."),
-		span_notice("[surgeon] begins to force a reboot in [patient]'s [brain_type]."),
-		span_notice("[surgeon] begins to force a reboot in [patient]'s [brain_type].")
+		span_notice("Você começa a forçar uma reinicialização[patient]'s[brain_type]..."),
+		span_notice("[surgeon]Começa a forçar uma reinicialização.[patient]'s[brain_type]."),
+		span_notice("[surgeon]Começa a forçar uma reinicialização.[patient]'s[brain_type].")
 	)
 
 	patient.notify_revival("Someone is trying to reboot your [brain_type].", source = patient)
@@ -76,9 +76,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You successfully shock [patient]'s [brain_type] with [tool]..."),
-		span_notice("[surgeon] sends a powerful shock to [patient]'s [brain_type] with [tool]..."),
-		span_notice("[surgeon] sends a powerful shock to [patient]'s [brain_type]..."),
+		span_notice("Você choca com sucesso.[patient]'s[brain_type]Com[tool]..."),
+		span_notice("[surgeon]Tenho que ir.[patient]'s[brain_type]Com[tool]..."),
+		span_notice("[surgeon]Tenho que ir.[patient]'s[brain_type]..."),
 	)
 	patient.grab_ghost()
 	if(iscarbon(patient))
@@ -93,12 +93,12 @@
 /// Call when successfully revived
 /datum/surgery_operation/basic/revive_synth/proc/on_revived(mob/living/surgeon, mob/living/patient)
 	if (patient.stat < DEAD)
-		patient.visible_message(span_notice("...[patient] is completely unaffected! Seems like they're already active!"))
+		patient.visible_message(span_notice("...[patient]é completamente não afetado! Parece que eles já estão ativos!"))
 		return TRUE
 	patient.grab_ghost()
 	if(patient.revive())
 		patient.emote("chime")
-		patient.visible_message(span_notice("...[patient] reactivates, their chassis coming online!"))
+		patient.visible_message(span_notice("...[patient]Reativado, o chassis deles está online!"))
 		if(HAS_MIND_TRAIT(surgeon, TRAIT_MORBID)) // Contrary to their typical hatred of resurrection, it wouldn't be very thematic if morbid people didn't love playing god
 			surgeon.add_mood_event("morbid_revival_success", /datum/mood_event/morbid_revival_success)
 		to_chat(patient, span_danger("[CONFIG_GET(string/blackoutpolicy)]"))
@@ -107,7 +107,7 @@
 /// Called when revival fails
 /datum/surgery_operation/basic/revive_synth/proc/on_no_revive(mob/living/surgeon, mob/living/patient)
 	patient.emote("buzz")
-	patient.visible_message(span_warning("...[patient.p_they()] convulses, then goes offline."))
+	patient.visible_message(span_warning("...[patient.p_they()]Convulsões, então fica offline."))
 	patient.adjust_organ_loss(ORGAN_SLOT_BRAIN, 50, 199) // MAD SCIENCE
 
 /// Flavor for failure
@@ -118,9 +118,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_warning("You shock [patient]'s [brain_type] with [tool], but [patient.p_they()] don't react."),
-		span_warning("[surgeon] shocks [patient]'s [brain_type] with [tool], but [patient.p_they()] don't react."),
-		span_warning("[surgeon] shocks [patient]'s [brain_type] with [tool], but [patient.p_they()] don't react."),
+		span_warning("Você choca.[patient]'s[brain_type]Com[tool], mas[patient.p_they()]Não reaja."),
+		span_warning("[surgeon]Choques.[patient]'s[brain_type]Com[tool], mas[patient.p_they()]Não reaja."),
+		span_warning("[surgeon]Choques.[patient]'s[brain_type]Com[tool], mas[patient.p_they()]Não reaja."),
 	)
 /datum/surgery_operation/basic/revive_synth/brain_check(obj/item/organ/brain/synth/brain)
 	return !..()

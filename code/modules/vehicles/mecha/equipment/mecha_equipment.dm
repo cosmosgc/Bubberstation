@@ -57,7 +57,7 @@
 		if(special_attaching_interaction(attach_right, M, user))
 			return ITEM_INTERACT_SUCCESS //The rest is handled in the special interactions proc
 		attach(M, attach_right)
-		user.visible_message(span_notice("[user] attaches [src] to [M]."), span_notice("You attach [src] to [M]."))
+		user.visible_message(span_notice("[user]APENAS[src]Para[M]."), span_notice("Você anexa[src]Para[M]."))
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING
 
@@ -77,11 +77,11 @@
 			. = TRUE
 		if("repair")
 			ui.close() // allow watching for baddies and the ingame effects
-			chassis.balloon_alert(usr, "starting repair")
+			chassis.balloon_alert(usr, "Iniciando reparo")
 			while(do_after(usr, 1 SECONDS, chassis) && get_integrity() < max_integrity)
 				repair_damage(30)
 			if(get_integrity() == max_integrity)
-				balloon_alert(usr, "repair complete")
+				balloon_alert(usr, "reparação completa")
 			. = FALSE
 	var/result = handle_ui_act(action,params,ui,state)
 	if(result) //if handle_ui_act returned anything at all lets just return that instead
@@ -109,10 +109,10 @@
 	if(chassis.is_currently_ejecting)
 		return FALSE
 	if(chassis.equipment_disabled)
-		to_chat(chassis.occupants, span_warning("Error -- Equipment control unit is unresponsive."))
+		to_chat(chassis.occupants, span_warning("Erro, a unidade de controle não responde."))
 		return FALSE
 	if(get_integrity() <= 1)
-		to_chat(chassis.occupants, span_warning("Error -- Equipment critically damaged."))
+		to_chat(chassis.occupants, span_warning("Erro... equipamento grave danificado."))
 		return FALSE
 	if(TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_MECHA_EQUIPMENT(type)))
 		return FALSE
@@ -161,28 +161,28 @@
 
 /obj/item/mecha_parts/mecha_equipment/proc/default_can_attach(obj/vehicle/sealed/mecha/mech, attach_right = FALSE, mob/user)
 	if(!(mech_flags & mech.mech_type))
-		to_chat(user, span_warning("\The [src] is incompatible with [mech]!"))
+		to_chat(user, span_warning("\The [src]É incompatível com[mech]!"))
 		return FALSE
 	if(equipment_slot == MECHA_WEAPON)
 		if(attach_right)
 			// We need to check for length in case a mech doesn't support any arm attachments at all
 			if((!isnull(mech.equip_by_category[MECHA_R_ARM]) || !mech.max_equip_by_category[MECHA_R_ARM]) && (!special_attaching_interaction(attach_right, mech, user, checkonly = TRUE)))
-				to_chat(user, span_warning("\The [mech]'s right arm is full![mech.equip_by_category[MECHA_L_ARM] || !mech.max_equip_by_category[MECHA_L_ARM] ? "" : " Try left arm!"]"))
+				to_chat(user, span_warning("\The [mech]O braço direito está cheio![mech.equip_by_category[MECHA_L_ARM] || !mech.max_equip_by_category[MECHA_L_ARM] ? "" : " Try left arm!"]"))
 				return FALSE
 		else
 			if((!isnull(mech.equip_by_category[MECHA_L_ARM]) || !mech.max_equip_by_category[MECHA_L_ARM]) && (!special_attaching_interaction(attach_right, mech, user, checkonly = TRUE)))
-				to_chat(user, span_warning("\The [mech]'s left arm is full![mech.equip_by_category[MECHA_R_ARM] || !mech.max_equip_by_category[MECHA_R_ARM] ? "" : " Try right arm!"]"))
+				to_chat(user, span_warning("\The [mech]O braço esquerdo está cheio![mech.equip_by_category[MECHA_R_ARM] || !mech.max_equip_by_category[MECHA_R_ARM] ? "" : " Try right arm!"]"))
 				return FALSE
 		return TRUE
 	if(unstackable)
 		var/list/obj/item/mecha_parts/mecha_equipment/contents = mech.equip_by_category[equipment_slot]
 		for(var/obj/equipment as anything in contents)
 			if(src.type == equipment.type)
-				to_chat(user, span_warning("You can't stack more of this item ontop itself!"))
+				to_chat(user, span_warning("Você não pode empilhar mais deste item em cima de si mesmo!"))
 				return FALSE
 
 	if(length(mech.equip_by_category[equipment_slot]) == mech.max_equip_by_category[equipment_slot])
-		to_chat(user, span_warning("This equipment slot is already full!"))
+		to_chat(user, span_warning("Este lugar já está cheio!"))
 		return FALSE
 	return TRUE
 

@@ -1,6 +1,6 @@
 /obj/item/melee/sabre
 	name = "officer's sabre"
-	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
+	desc = "Uma arma elegante, sua borda monomolecular é capaz de cortar carne e osso com facilidade."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "sabre"
 	inhand_icon_state = "sabre"
@@ -28,11 +28,7 @@
 	AddElement(/datum/element/cuffable_item) //closed sword guard
 	AddComponent(/datum/component/jousting)
 	//fast and effective, but as a sword, it might damage the results.
-	AddComponent(/datum/component/butchering, \
-		speed = 3 SECONDS, \
-		effectiveness = 95, \
-		bonus_modifier = 5, \
-	)
+	AddComponent(/datum/component/butchering, 		speed = 3 SECONDS, 		effectiveness = 95, 		bonus_modifier = 5, 	)
 	// The weight of authority comes down on the tider's crimes.
 	AddElement(/datum/element/bane, target_type = /mob/living/carbon/human, damage_multiplier = 0.35)
 	RegisterSignal(src, COMSIG_OBJECT_PRE_BANING, PROC_REF(attempt_bane))
@@ -53,8 +49,8 @@
 /obj/item/melee/sabre/proc/bane_effects(element_owner, mob/living/carbon/human/baned_target)
 	SIGNAL_HANDLER
 	baned_target.visible_message(
-		span_warning("[src] tears through [baned_target] with unnatural ease!"),
-		span_userdanger("As [src] tears into your body, you feel the weight of authority collapse into your wounds!"),
+		span_warning("[src]Lágrimas através[baned_target]com facilidade não natural!"),
+		span_userdanger("Como[src]lágrimas em seu corpo, você sente o peso da autoridade cair em suas feridas!"),
 	)
 	INVOKE_ASYNC(baned_target, TYPE_PROC_REF(/mob/living/carbon/human, emote), "scream")
 
@@ -70,7 +66,7 @@
 	playsound(container.parent, 'sound/items/sheath.ogg', 25, TRUE)
 
 /obj/item/melee/sabre/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is trying to cut off all [user.p_their()] limbs with [src]! it looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]está tentando cortar tudo[user.p_their()]Membros com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	var/i = 0
 	ADD_TRAIT(src, TRAIT_NODROP, SABRE_SUICIDE_TRAIT)
 	if(iscarbon(user))
@@ -115,7 +111,7 @@
 
 /obj/item/melee/parsnip_sabre
 	name = "parsnip sabre"
-	desc = "A weird, yet elegant weapon. Surprisingly sharp for something made from a parsnip."
+	desc = "Uma arma estranha, mas elegante. Surpreendentemente afiado para algo feito de um parsnip."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "parsnip_sabre"
 	inhand_icon_state = "parsnip_sabre"

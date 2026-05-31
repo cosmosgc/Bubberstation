@@ -2,7 +2,7 @@ import { type Feature, FeatureNumberInput } from '../base';
 
 export const age: Feature<number> = {
   // name: 'Age', // ORIGINAL
-  name: 'Age (Physical)', // SKYRAT EDIT CHANGE - Chronological age
+  name: 'Idade (física)', // SKYRAT EDIT CHANGE - Chronological age
   // SKYRAT EDIT ADDITION BEGIN - Chronological age
   description:
     "Physical age represents how far your character has grown physically and mentally.\

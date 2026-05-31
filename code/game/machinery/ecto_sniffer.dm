@@ -1,6 +1,6 @@
 /obj/machinery/ecto_sniffer
 	name = "ectoscopic sniffer"
-	desc = "A highly sensitive parascientific instrument calibrated to detect the slightest whiff of ectoplasm."
+	desc = "Um instrumento paracientífico altamente sensível calibrado para detectar o menor cheiro de ectoplasma."
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "ecto_sniffer"
 	base_icon_state = "ecto_sniffer"
@@ -43,7 +43,7 @@
 	. = ..()
 	add_fingerprint(user)
 	on = !on
-	balloon_alert(user, "sniffer turned [on ? "on" : "off"]")
+	balloon_alert(user, "Sniffer virou[on ? "on" : "off"]")
 	update_appearance()
 
 /obj/machinery/ecto_sniffer/update_icon_state()
@@ -61,7 +61,7 @@
 /obj/machinery/ecto_sniffer/wrench_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src, 15)
 	set_anchored(!anchored)
-	balloon_alert(user, "sniffer [anchored ? "anchored" : "unanchored"]")
+	balloon_alert(user, "Sniffer[anchored ? "anchored" : "unanchored"]")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/ecto_sniffer/screwdriver_act(mob/living/user, obj/item/screwdrivertool)
@@ -76,8 +76,7 @@
 
 /obj/machinery/ecto_sniffer/examine(mob/user)
 	. = ..()
-	. += span_notice("Any active ghost can leave a layer of ectoplasm on the ectoscopic sniffer, causing a small, audible blip, \
-	indicating they wish to enter the world as a positronic personality.")
+	. += span_notice("Qualquer fantasma ativo pode deixar uma camada de ectoplasma no farejador ectoscópico, causando um pequeno blip audível, indicando que eles desejam entrar no mundo como uma personalidade positrônica.")
 
 ///Removes the ghost from the ectoplasmic_residues list and lets them know they are free to activate the sniffer again.
 /obj/machinery/ecto_sniffer/proc/clear_residue(ghost_ckey)
@@ -85,4 +84,4 @@
 	var/mob/ghost = get_mob_by_ckey(ghost_ckey)
 	if(!ghost || isliving(ghost))
 		return
-	to_chat(ghost, "[FOLLOW_LINK(ghost, src)] <span class='nicegreen'>The coating of ectoplasmic residue you left on [src]'s sensors has decayed.</span>")
+	to_chat(ghost, "[FOLLOW_LINK(ghost, src)] <span class='nicegreen'>O revestimento do resíduo ectoplasmático que você deixou.[src]Os sensores decaíram.</span>")

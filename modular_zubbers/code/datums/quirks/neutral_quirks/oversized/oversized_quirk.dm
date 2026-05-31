@@ -5,10 +5,10 @@
 
 /datum/quirk/oversized
 	name = "Oversized"
-	desc = "You, for whatever reason, are FAR too tall, and will encounter some rough situations because of it."
-	gain_text = span_notice("That airlock looks small...")
-	lose_text = span_notice("Is it still the same size...?") //Lol
-	medical_record_text = "Patient is abnormally tall."
+	desc = "Você, por alguma razão, é muito alto, e vai encontrar algumas situações difíceis por causa disso."
+	gain_text = span_notice("Aquela câmara de ar parece pequena...")
+	lose_text = span_notice("Ainda é do mesmo tamanho?") //Lol
+	medical_record_text = "O paciente é anormalmente alto."
 	value = 0
 	mob_trait = TRAIT_OVERSIZED
 	icon = FA_ICON_EXPAND_ARROWS_ALT
@@ -42,11 +42,11 @@
 	if(issynthetic(human_holder))
 		var/obj/item/organ/stomach/synth/oversized/new_synth_stomach = new //YOU LOOK HUGE, THAT MUST MEAN YOU HAVE HUGE reactor! RIP AND TEAR YOUR HUGE reactor!
 		new_synth_stomach.Insert(human_holder, special = TRUE)
-		to_chat(human_holder, span_warning("You feel your massive engine rumble!"))
+		to_chat(human_holder, span_warning("Você sente seu enorme barulho motor!"))
 	else
 		var/obj/item/organ/stomach/oversized/new_stomach = new //YOU LOOK HUGE, THAT MUST MEAN YOU HAVE HUGE GUTS! RIP AND TEAR YOUR HUGE GUTS!
 		new_stomach.Insert(human_holder, special = TRUE)
-		to_chat(human_holder, span_warning("You feel your massive stomach rumble!"))
+		to_chat(human_holder, span_warning("Você sente seu estômago enorme rugir!"))
 
 	// Grant the self-view action
 	self_view_action = new(human_holder)

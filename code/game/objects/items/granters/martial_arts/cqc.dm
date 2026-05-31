@@ -2,7 +2,7 @@
 	martial = /datum/martial_art/cqc
 	name = "old manual"
 	martial_name = "close quarters combat"
-	desc = "A small, black manual. There are drawn instructions of tactical hand-to-hand combat."
+	desc = "Um pequeno manual preto. Há instruções de combate táctico."
 	greet = span_bolddanger("You've mastered the basics of CQC.")
 	icon_state = "cqcmanual"
 	remarks = list(
@@ -18,10 +18,10 @@
 /obj/item/book/granter/martial/cqc/on_reading_finished(mob/living/carbon/user)
 	. = ..()
 	if(uses <= 0)
-		to_chat(user, span_warning("[src] beeps ominously..."))
+		to_chat(user, span_warning("[src]Apita ameaçadoramente..."))
 
 /obj/item/book/granter/martial/cqc/recoil(mob/living/user)
-	to_chat(user, span_warning("[src] explodes!"))
+	to_chat(user, span_warning("[src]Explode!"))
 	playsound(src,'sound/effects/explosion/explosion1.ogg',40,TRUE)
 	user.flash_act(1, 1)
 	user.adjust_brute_loss(6)

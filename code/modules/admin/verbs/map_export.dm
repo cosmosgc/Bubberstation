@@ -9,7 +9,7 @@ ADMIN_VERB(map_export, R_DEBUG, "Map Export", "Select a part of the map by coord
 	var/end_y = tgui_input_number(user, "End Y?", "Map Exporter", user_y || 1, world.maxy, 1)
 	var/date = time2text(world.timeofday, "YYYY-MM-DD_hh-mm-ss", TIMEZONE_UTC)
 	var/file_name = sanitize_filename(tgui_input_text(user, "Filename?", "Map Exporter", "exported_map_[date]"))
-	var/confirm = tgui_alert(user, "Are you sure you want to do this? This will cause extreme lag!", "Map Exporter", list("Yes", "No"))
+	var/confirm = tgui_alert(user, "Tem certeza que quer fazer isso? Isso causará um atraso extremo!", "Map Exporter", list("Yes", "No"))
 
 	if(confirm != "Yes")
 		return

@@ -7,7 +7,7 @@ GLOBAL_VAR(department_cd_override)
 	can_run_on_flags = PROGRAM_CONSOLE
 	downloader_category = PROGRAM_CATEGORY_SUPPLY
 	program_open_overlay = "request"
-	extended_desc = "Allows for departments to order supplied from Cargo for free, with a cooldown between orders."
+	extended_desc = "Permite que os departamentos peçam de graça, com uma refrigeração entre as ordens."
 	size = 10
 	tgui_id = "NtosDeptOrder"
 	program_icon = FA_ICON_CART_FLATBED
@@ -144,7 +144,7 @@ GLOBAL_VAR(department_cd_override)
 
 		var/new_dept_type = find_department_to_link(computer.stored_id)
 		if(isnull(new_dept_type))
-			computer.physical.balloon_alert(orderer, "no department found!")
+			computer.physical.balloon_alert(orderer, "Nenhum departamento encontrado!")
 			playsound(computer, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 		else
 			computer.physical.balloon_alert(orderer, "linked")
@@ -159,7 +159,7 @@ GLOBAL_VAR(department_cd_override)
 	var/list/id_card_access = id_card?.GetAccess() || list()
 
 	if(length(use_access & id_card_access) <= 0)
-		computer.physical.balloon_alert(orderer, "access denied!")
+		computer.physical.balloon_alert(orderer, "Acesso negado!")
 		playsound(computer, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 		return TRUE
 
@@ -167,7 +167,7 @@ GLOBAL_VAR(department_cd_override)
 		if(isnull(department_order) || !(department_order in SSshuttle.shopping_list))
 			return TRUE
 		if(LAZYLEN(download_access & id_card_access) <= 0)
-			computer.physical.balloon_alert(orderer, "requires head of staff access!")
+			computer.physical.balloon_alert(orderer, "requer acesso do chefe de equipe!")
 			playsound(computer, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 			return TRUE
 

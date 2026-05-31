@@ -5,7 +5,7 @@
  */
 /obj/machinery/bouldertech/refinery
 	name = "boulder refinery"
-	desc = "BR for short. Accepts boulders and refines non-metallic ores into sheets using internal chemicals."
+	desc = "BR para abreviar. Aceita pedras e refina minérios não metálicos em folhas usando produtos químicos internos."
 	icon_state = "stacker"
 	base_icon_state = "stacker"
 	circuit = /obj/item/circuitboard/machine/refinery
@@ -44,7 +44,7 @@
  */
 /obj/machinery/bouldertech/refinery/smelter
 	name = "boulder smelter"
-	desc = "BS for short. Accept boulders and refines metallic ores into sheets."
+	desc = "BS para abreviar. Aceite pedras e refine minérios metálicos em folhas."
 	icon_state = "smelter"
 	base_icon_state = "smelter"
 	light_system = OVERLAY_LIGHT
@@ -84,6 +84,6 @@
 	update_light_value()
 
 /obj/machinery/bouldertech/refinery/smelter/maim_golem(mob/living/carbon/human/rockman)
-	rockman.visible_message(span_warning("[rockman] is processed by [src]!"), span_userdanger("You get melted into rock by [src]!"))
+	rockman.visible_message(span_warning("[rockman]é processado por[src]!"), span_userdanger("Você se derrete em rocha por[src]!"))
 	rockman.investigate_log("was melted by [src] for being a golem", INVESTIGATE_DEATHS)
 	rockman.dust()

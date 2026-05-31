@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/conjure/invisible_wall
 	name = "Invisible Wall"
-	desc = "The mime's performance transmutates a wall into physical reality."
+	desc = "A performance do mímico transmuta uma parede em realidade física."
 	background_icon_state = "bg_mime"
 	overlay_icon_state = "bg_mime_border"
 	button_icon = 'icons/mob/actions/actions_mime.dmi'
@@ -11,7 +11,7 @@
 	school = SCHOOL_MIME
 	cooldown_time = 30 SECONDS
 	invocation = span_notice("<b>%CASTER</b> looks as if a wall is in front of %PRONOUN_them.")
-	invocation_self_message = span_notice("You form a wall in front of yourself.")
+	invocation_self_message = span_notice("Você forma uma parede na sua frente.")
 	invocation_type = INVOCATION_EMOTE
 
 	spell_requirements = SPELL_REQUIRES_HUMAN|SPELL_REQUIRES_MIME_VOW

@@ -52,7 +52,7 @@
 	AddElement(/datum/element/eyestab)
 
 /obj/item/kitchen/fork/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] stabs \the [src] into [user.p_their()] chest! It looks like [user.p_theyre()] trying to take a bite out of [user.p_them()]self!"))
+	user.visible_message(span_suicide("[user]Apunhalamentos\the [src]em[user.p_their()]Baú! Parece que...[user.p_theyre()]Tentando dar uma mordida[user.p_them()]Eu!"))
 	playsound(src, 'sound/items/eatfood.ogg', 50, TRUE)
 	return BRUTELOSS
 
@@ -62,10 +62,10 @@
 
 	if(forkload)
 		if(M == user)
-			M.visible_message(span_notice("[user] eats a delicious forkful of omelette!"))
+			M.visible_message(span_notice("[user]come um delicioso garfo de omelete!"))
 			M.reagents.add_reagent(forkload.type, 1)
 		else
-			M.visible_message(span_notice("[user] feeds [M] a delicious forkful of omelette!"))
+			M.visible_message(span_notice("[user]ração[M]Um delicioso garfo de omelete!"))
 			M.reagents.add_reagent(forkload.type, 1)
 		icon_state = "fork"
 		forkload = null
@@ -74,7 +74,7 @@
 
 /obj/item/kitchen/fork/plastic
 	name = "plastic fork"
-	desc = "Really takes you back to highschool lunch."
+	desc = "Realmente te leva de volta ao almoço do colegial."
 	icon_state = "plastic_fork"
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
@@ -90,13 +90,13 @@
 
 /obj/item/knife/kitchen
 	name = "kitchen knife"
-	desc = "A general purpose Chef's Knife made by SpaceCook Incorporated. Guaranteed to stay sharp for years to come."
+	desc = "Faca de Chef de propósito geral feita pela SpaceCook Incorporated. Garantido para ficar afiado por anos."
 
 /obj/item/knife/plastic
 	name = "plastic knife"
 	icon_state = "plastic_knife"
 	inhand_icon_state = "knife"
-	desc = "A very safe, barely sharp knife made of plastic. Good for cutting food and not much else."
+	desc = "Uma faca muito segura, mal afiada feita de plástico. Bom para cortar comida e não muito mais."
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 0
@@ -118,7 +118,7 @@
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "sili_knife"
 	icon_angle = 0
-	desc = "A breakthrough in synthetic engineering, this tool is a knife programmed to dull when not used for cooking purposes, and can exchange the blade for a rolling pin"
+	desc = "Um avanço na engenharia sintética, esta ferramenta é uma faca programada para embotar quando não é usada para cozinhar, e pode trocar a lâmina por um rolo de rolo"
 	force = 0
 	throwforce = 0
 	sharpness = SHARP_EDGED
@@ -138,7 +138,7 @@
 	playsound(get_turf(user), 'sound/items/tools/change_drill.ogg', 50, TRUE)
 	if(tool_behaviour != TOOL_ROLLINGPIN)
 		tool_behaviour = TOOL_ROLLINGPIN
-		to_chat(user, span_notice("You attach the rolling pin bit to the [src]."))
+		to_chat(user, span_notice("Você prende a parte do rolo ao[src]."))
 		icon_state = "sili_rolling_pin"
 		force = 8
 		sharpness = NONE
@@ -148,7 +148,7 @@
 
 	else
 		tool_behaviour = TOOL_KNIFE
-		to_chat(user, span_notice("You attach the knife bit to the [src]."))
+		to_chat(user, span_notice("Você coloca a faca no[src]."))
 		icon_state = "sili_knife"
 		force = 0
 		sharpness = SHARP_EDGED
@@ -158,7 +158,7 @@
 
 /obj/item/kitchen/rollingpin
 	name = "rolling pin"
-	desc = "Used to knock out the Bartender."
+	desc = "Costumava derrubar o garçom."
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "rolling_pin"
 	worn_icon_state = "rolling_pin"
@@ -181,7 +181,7 @@
 
 /obj/item/kitchen/rollingpin/illegal
 	name = "metal rolling pin"
-	desc = "A heavy metallic rolling pin used to bash in those annoying ingredients."
+	desc = "Um pesado rolo metálico usado para bater nesses ingredientes irritantes."
 	icon_state = "metal_rolling_pin"
 	inhand_icon_state = "metal_rolling_pin"
 	force = 12
@@ -191,13 +191,13 @@
 	exposed_wound_bonus = 14
 
 /obj/item/kitchen/rollingpin/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins flattening [user.p_their()] head with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Começa a achatar.[user.p_their()]cabeça com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return BRUTELOSS
 /* Trays  moved to /obj/item/storage/bag */
 
 /obj/item/kitchen/spoon
 	name = "spoon"
-	desc = "Just be careful your food doesn't melt the spoon first."
+	desc = "Tenha cuidado para não derreter a colher primeiro."
 	icon_state = "spoon"
 	base_icon_state = "spoon"
 	icon_angle = -90
@@ -257,28 +257,28 @@
 
 	if(target_mob.is_mouth_covered(ITEM_SLOT_HEAD) || target_mob.is_mouth_covered(ITEM_SLOT_MASK))
 		if(target_mob == user)
-			target_mob.balloon_alert(user, "can't eat with mouth covered!")
+			target_mob.balloon_alert(user, "Não posso comer com a boca coberta!")
 		else
-			target_mob.balloon_alert(user, "[target_mob.p_their()] mouth is covered!")
+			target_mob.balloon_alert(user, "[target_mob.p_their()]A boca está coberta!")
 		return TRUE
 
 	if(target_mob == user)
 		user.visible_message(
-			span_notice("[user] scoops a spoonful into [user.p_their()] mouth."),
-			span_notice("You scoop a spoonful into your mouth.")
+			span_notice("[user]Colhe uma colher em[user.p_their()]Boca."),
+			span_notice("Enfia uma colher na boca.")
 		)
 
 	else
-		to_chat(target_mob, span_userdanger("[target_mob.is_blind() ? "Someone" : "[user]"] forces a spoon into your face!"))
-		target_mob.balloon_alert(user, "feeding spoonful...")
+		to_chat(target_mob, span_userdanger("[target_mob.is_blind() ? "Someone" : "[user]"]Força uma colher em seu rosto!"))
+		target_mob.balloon_alert(user, "alimentando colheres...")
 		if(!do_after(user, 3 SECONDS, target_mob))
-			target_mob.balloon_alert(user, "interrompido!")
+			target_mob.balloon_alert(user, "Interrompido!")
 			return TRUE
 
-		to_chat(target_mob, span_userdanger("[target_mob.is_blind() ? "You are forced to" : "[user] forces you to"] swallow a spoonful of something!"))
+		to_chat(target_mob, span_userdanger("[target_mob.is_blind() ? "You are forced to" : "[user] forces you to"]Engolir uma colher cheia de algo!"))
 		user.visible_message(
-			span_danger("[user] scoops a spoonful into [target_mob]'s mouth."),
-			span_notice("You scoop a spoonful into [target_mob]'s mouth.")
+			span_danger("[user]Colhe uma colher em[target_mob]A boca."),
+			span_notice("Você pega uma colher em[target_mob]A boca.")
 		)
 
 	playsound(target_mob, 'sound/items/drink.ogg', rand(10,50), vary = TRUE)
@@ -298,9 +298,9 @@
 
 	var/amount_given = reagents.trans_to(attacked_atom, reagents.maximum_volume)
 	if(amount_given >= reagents.total_volume)
-		attacked_atom.balloon_alert(user, "spoon emptied")
+		attacked_atom.balloon_alert(user, "colher vazia")
 	else if(amount_given > 0)
-		attacked_atom.balloon_alert(user, "spoon partially emptied")
+		attacked_atom.balloon_alert(user, "colher parcialmente esvaziada")
 	else
 		attacked_atom.balloon_alert(user, "está cheio!")
 	return TRUE
@@ -318,9 +318,9 @@
 		return SECONDARY_ATTACK_CALL_NORMAL
 
 	if(attacked_atom.reagents.trans_to(src, reagents.maximum_volume))
-		attacked_atom.balloon_alert(user, "grabbed spoonful")
+		attacked_atom.balloon_alert(user, "Peguei uma colherada.")
 	else
-		attacked_atom.balloon_alert(user, "spoon is full!")
+		attacked_atom.balloon_alert(user, "A colher está cheia!")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/kitchen/spoon/plastic
@@ -343,7 +343,7 @@
 
 /obj/item/kitchen/spoon/soup_ladle
 	name = "ladle"
-	desc = "What is a ladle but a comically large spoon?"
+	desc = "O que é uma concha além de uma colher comicamente grande?"
 	icon_state = "ladle"
 	base_icon_state = "ladle"
 	inhand_icon_state = "spoon"
@@ -358,7 +358,7 @@
 /// Tongs, let you pick up and feed people food from further away.
 /obj/item/kitchen/tongs
 	name = "tongs"
-	desc = "So you never have to touch anything with your dirty, unwashed hands."
+	desc = "Então você nunca tem que tocar em nada com suas mãos sujas e sujas."
 	reach = 2
 	icon_state = "tongs"
 	base_icon_state = "tongs"
@@ -382,7 +382,7 @@
 /obj/item/kitchen/tongs/examine(mob/user)
 	. = ..()
 	if (!isnull(tonged))
-		. += span_notice("It is holding [tonged].")
+		. += span_notice("Está segurando.[tonged].")
 
 /obj/item/kitchen/tongs/dropped(mob/user, silent)
 	. = ..()
@@ -397,7 +397,7 @@
 		return TRUE
 	if (!COOLDOWN_FINISHED(src, clack_cooldown))
 		return TRUE
-	user.visible_message(span_notice("[user] clacks [user.p_their()] [name] together like a crab. Click clack!"))
+	user.visible_message(span_notice("[user]clacs[user.p_their()] [name]Juntos como um caranguejo. Click clack!"))
 	click_clack()
 	return TRUE
 
@@ -405,7 +405,7 @@
 /obj/item/kitchen/tongs/proc/drop_tonged()
 	if (isnull(tonged))
 		return
-	visible_message(span_notice("[tonged] falls to the ground!"))
+	visible_message(span_notice("[tonged]Cai no chão!"))
 	var/turf/location = drop_location()
 	tonged.forceMove(location)
 	tonged.do_drop_animation(location)

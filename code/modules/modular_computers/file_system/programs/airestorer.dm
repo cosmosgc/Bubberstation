@@ -3,7 +3,7 @@
 	filedesc = "AI Manager & Restorer"
 	downloader_category = PROGRAM_CATEGORY_SCIENCE
 	program_open_overlay = "generic"
-	extended_desc = "Firmware Restoration Kit, capable of reconstructing damaged AI systems. Requires direct AI connection via intellicard slot."
+	extended_desc = "Firmware Restauration Kit, capaz de reconstruir sistemas de IA danificados. Requer conexão direta com IA através de um slot intellicard."
 	size = 12
 	can_run_on_flags = PROGRAM_CONSOLE | PROGRAM_LAPTOP
 	download_access = list(ACCESS_RD)
@@ -25,7 +25,7 @@
 		examine_text += "It has a slot installed for an intelliCard which contains: [stored_card.name]"
 	else
 		examine_text += "It has a slot installed for an intelliCard, which appears to be occupied."
-	examine_text += span_info("Alt-click to eject the intelliCard.")
+	examine_text += span_info("Alt-clique para ejetar o cartão intelli.")
 	return examine_text
 
 /datum/computer_file/program/ai_restorer/kill_program(mob/user)
@@ -65,28 +65,28 @@
 	if(!computer)
 		return NONE
 	if(stored_card)
-		to_chat(user, span_warning("You try to insert \the [used_aicard] into \the [computer.name], but the slot is occupied."))
+		to_chat(user, span_warning("Você tenta inserir\the [used_aicard]Em\the [computer.name]Mas a vaga está ocupada."))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(used_aicard, computer))
 		return ITEM_INTERACT_BLOCKING
 
 	stored_card = used_aicard
-	to_chat(user, span_notice("You insert \the [used_aicard] into \the [computer.name]."))
+	to_chat(user, span_notice("Você insere\the [used_aicard]Em\the [computer.name]."))
 	return ITEM_INTERACT_SUCCESS
 
 /datum/computer_file/program/ai_restorer/try_eject(mob/living/user, forced = FALSE)
 	if(!stored_card)
 		if(user)
-			to_chat(user, span_warning("There is no card in \the [computer.name]."))
+			to_chat(user, span_warning("Não tem cartão.\the [computer.name]."))
 		return FALSE
 
 	if(restoring && !forced)
 		if(user)
-			to_chat(user, span_warning("Safeties prevent you from removing the card until reconstruction is complete..."))
+			to_chat(user, span_warning("Seguranças impedem que você remova o cartão até que a reconstrução esteja completa..."))
 		return FALSE
 
 	if(user && computer.Adjacent(user))
-		to_chat(user, span_notice("You remove [stored_card] from [computer.name]."))
+		to_chat(user, span_notice("Você tira.[stored_card]De[computer.name]."))
 		user.put_in_hands(stored_card)
 	else
 		stored_card.forceMove(computer.drop_location())

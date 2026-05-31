@@ -76,32 +76,32 @@ const Traits = (props) => {
   return (
     <Section title="Modifiers">
       <LabeledList>
-        <Tooltip content="Rarity of the symptom.">
+        <Tooltip content="Raridade do sintoma.">
           <LabeledList.Item color={getColor(level)} label="Level">
             {level}
           </LabeledList.Item>
         </Tooltip>
-        <Tooltip content="Protection from cures and natural recovery.">
+        <Tooltip content="Proteção contra curas e recuperação natural.">
           <LabeledList.Item color={getColor(resistance)} label="Resistance">
             {resistance}
           </LabeledList.Item>
         </Tooltip>
-        <Tooltip content="Symptomic progression.">
-          <LabeledList.Item color={getColor(stage_speed)} label="Stage Speed">
+        <Tooltip content="Progressão sintomática.">
+          <LabeledList.Item color={getColor(stage_speed)} label="Velocidade do palco">
             {stage_speed}
           </LabeledList.Item>
         </Tooltip>
-        <Tooltip content="Detection difficulty from medical equipment.">
+        <Tooltip content="Dificuldade de detecção de equipamentos médicos.">
           <LabeledList.Item color={getColor(stealth)} label="Stealth">
             {stealth}
           </LabeledList.Item>
         </Tooltip>
-        <Tooltip content="Decides the spread type.">
+        <Tooltip content="Decide o tipo de espalhamento.">
           <LabeledList.Item color={getColor(transmission)} label="Transmission">
             {transmission}
           </LabeledList.Item>
         </Tooltip>
-        <Tooltip content="What reagent remedies this symptom.">
+        <Tooltip content="Que remédio reagente esse sintoma.">
           <LabeledList.Item color={cure_color} label="Cure">
             {symptom_cure}
           </LabeledList.Item>

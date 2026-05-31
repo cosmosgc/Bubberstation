@@ -2,9 +2,7 @@
 /// Teleports you to where you click!
 /obj/item/teleport_rod
 	name = "Telegram Scepter"
-	desc = "A magical rod that teleports you to the location you point it. \
-		Using it puts you in a state of flux, removing some of your reagents and \
-		causing you to take damage from further uses until you stabilize once more."
+	desc = "Uma vara mágica que te teleporta para o local que você aponta. Usar isso te coloca em um estado de fluxo, removendo alguns de seus reagentes e causando danos de usos adicionais até estabilizar mais uma vez."
 	icon_state = "tele_wand_er"
 	inhand_icon_state = "tele_wand_er"
 	icon = 'icons/obj/weapons/guns/magic.dmi'
@@ -29,7 +27,7 @@
 // Admin only version which just teleports you, so spam it all you want
 /obj/item/teleport_rod/admin
 	name = "Harmonious " + parent_type::name
-	desc = "A magical rod that teleports you anywhere, no questions asked."
+	desc = "Uma vara mágica que te teleporta em qualquer lugar, sem perguntas."
 	apply_debuffs = FALSE
 	max_tp_range = INFINITY
 
@@ -60,7 +58,7 @@
 	var/turf/start_turf = get_turf(user)
 	var/turf/target_turf = get_turf(interacting_with)
 	if(get_dist(start_turf, target_turf) > max_tp_range)
-		user.balloon_alert(user, "longe demais!")
+		user.balloon_alert(user, "Longe demais!")
 		return .
 
 	if(!(target_turf in view(user, user.client?.view || world.view)))
@@ -68,7 +66,7 @@
 		return .
 
 	if(target_turf.is_blocked_turf(exclude_mobs = TRUE, source_atom = user))
-		user.balloon_alert(user, "obstructed!")
+		user.balloon_alert(user, "Obstruído!")
 		return .
 
 	var/tp_result = do_teleport(
@@ -80,7 +78,7 @@
 	)
 
 	if(!tp_result)
-		user.balloon_alert(user, "teleport failed!")
+		user.balloon_alert(user, "O teletransporte falhou!")
 		return .
 
 	. = ITEM_INTERACT_SUCCESS
@@ -109,7 +107,7 @@
 
 	if(user.has_status_effect(/datum/status_effect/teleport_flux))
 		// The status effect handles the damage, but we'll add a special pop up for rod usage specifically
-		user.balloon_alert(user, "too soon!")
+		user.balloon_alert(user, "Muito cedo!")
 
 	user.apply_status_effect(/datum/status_effect/teleport_flux)
 	return .
@@ -213,13 +211,13 @@
 /// Alert for the Teleport Flux status effect
 /atom/movable/screen/alert/status_effect/teleport_flux
 	name = "Teleport Flux"
-	desc = "Your body exists in a state of flux, making further teleportation dangerous."
+	desc = "Seu corpo existe em um estado de fluxo, rasgando o teletransporte mais perigoso."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "flux"
 
 /atom/movable/screen/alert/status_effect/teleport_flux/perma
 	name = "Permanent " + parent_type::name
-	desc = "Your lack of magical talent has left you in a state of flux, making further teleportation dangerous."
+	desc = "Sua falta de talento mágico deixou você em um estado de fluxo, tornando mais perigoso o teletransporte."
 
 /// Particles for Teleport Flux and other similar effects
 /particles/teleport_flux

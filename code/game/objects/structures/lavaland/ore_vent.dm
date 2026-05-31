@@ -7,7 +7,7 @@
 
 /obj/structure/ore_vent
 	name = "ore vent"
-	desc = "An ore vent, brimming with underground ore. Scan with an advanced mining scanner to start extracting ore from it."
+	desc = "Uma abertura de minério, cheia de minério subterrâneo. Escaneie com um scanner avançado para começar a extrair minério dele."
 	icon = 'icons/obj/mining_zones/terrain.dmi'
 	icon_state = "ore_vent"
 	base_icon_state = "ore_vent"
@@ -126,15 +126,15 @@
 	if(!HAS_TRAIT(user, TRAIT_BOULDER_BREAKER))
 		return
 	if(!discovered)
-		to_chat(user, span_notice("You can't quite find the weakpoint of [src]... Perhaps it needs to be scanned first?"))
+		to_chat(user, span_notice("Você não consegue encontrar o ponto fraco de[src]Talvez precisa ser escalado primeiro."))
 		return
-	to_chat(user, span_notice("You start striking [src] with your golem's fist, attempting to dredge up a boulder..."))
+	to_chat(user, span_notice("Você começa a atacar.[src]com o punho do seu Golem, tentando desenterrar uma pedra..."))
 	for(var/i in 1 to 3)
 		if(do_after(user, boulder_size * 1 SECONDS, src))
 			user.apply_damage(20, STAMINA)
 			playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 	produce_boulder(TRUE)
-	visible_message(span_notice("You've successfully produced a boulder! Boy are your arms tired."))
+	visible_message(span_notice("Você produziu uma pedra com sucesso! Os seus braços estão cansados."))
 
 /obj/structure/ore_vent/attack_basic_mob(mob/user, list/modifiers)
 	. = ..()
@@ -228,7 +228,7 @@
  * This confirms that the user wants to start the wave defense event, and that they can start it.
  */
 /obj/structure/ore_vent/proc/pre_wave_defense(mob/user, spawn_drone = TRUE, mech_scan = FALSE)
-	if(tgui_alert(user, excavation_warning, "Begin defending ore vent?", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, excavation_warning, "Começar a defender a ventilação de minério?", list("Yes", "No")) != "Yes")
 		return FALSE
 	if(!can_interact(user) && !mech_scan)
 		return FALSE
@@ -283,16 +283,7 @@
  * Will summon a number of waves of mobs, ending in the vent being tapped after the final wave.
  */
 /obj/structure/ore_vent/proc/start_wave_defense()
-	AddComponent(\
-		/datum/component/spawner, \
-		spawn_types = defending_mobs, \
-		spawn_time = (10 SECONDS + (5 SECONDS * (boulder_size/5))), \
-		max_spawned = 10, \
-		max_spawn_per_attempt = (1 + (boulder_size/5)), \
-		spawn_text = "emerges to assault", \
-		spawn_distance = 4, \
-		spawn_distance_exclude = 3, \
-	)
+	AddComponent(		/datum/component/spawner, 		spawn_types = defending_mobs, 		spawn_time = (10 SECONDS + (5 SECONDS * (boulder_size/5))), 		max_spawned = 10, 		max_spawn_per_attempt = (1 + (boulder_size/5)), 		spawn_text = "emerges to assault", 		spawn_distance = 4, 		spawn_distance_exclude = 3, 	)
 	COOLDOWN_START(src, wave_cooldown, wave_timer)
 	addtimer(CALLBACK(src, PROC_REF(handle_wave_conclusion)), wave_timer)
 	update_appearance(UPDATE_ICON_STATE)
@@ -475,7 +466,7 @@
 		return
 	if(!discovered)
 		if(DOING_INTERACTION_WITH_TARGET(user, src))
-			balloon_alert(user, "already scanning!")
+			balloon_alert(user, "Já está escaneando!")
 			return
 		balloon_alert(user, "escaneando...")
 		playsound(src, 'sound/items/timer.ogg', 30, TRUE)
@@ -483,7 +474,7 @@
 			return
 
 		discovered = TRUE
-		balloon_alert(user, "vent scanned!")
+		balloon_alert(user, "Ventilação escaneada!")
 		generate_description(user)
 		AddComponent(/datum/component/gps, name)
 		var/obj/item/card/id/user_id_card = user.get_idcard(TRUE)
@@ -635,7 +626,7 @@
 //comes with the station, and is already tapped.
 /obj/structure/ore_vent/starter_resources
 	name = "active ore vent"
-	desc = "An ore vent, brimming with underground ore. It's already supplying the station with iron and glass."
+	desc = "Uma abertura de minério, cheia de minério subterrâneo. Já está fornecendo ferro e vidro à estação."
 	tapped = TRUE
 	discovered = TRUE
 	unique_vent = TRUE
@@ -688,7 +679,7 @@
 
 /obj/structure/ore_vent/boss
 	name = "menacing ore vent"
-	desc = "An ore vent, brimming with underground ore. This one has an evil aura about it. Better be careful."
+	desc = "Uma abertura de minério, cheia de minério subterrâneo. Este tem uma aura maligna. É melhor ter cuidado."
 	unique_vent = TRUE
 	spawn_drone_on_tap = FALSE
 	boulder_size = BOULDER_SIZE_LARGE
@@ -731,7 +722,7 @@
 			boss_string = "A bloody drillmark"
 		if(/mob/living/simple_animal/hostile/megafauna/wendigo/noportal)
 			boss_string = "A chilling skull"
-	. += span_notice("[boss_string] is etched onto the side of the vent.")
+	. += span_notice("[boss_string]está gravado no lado da ventilação.")
 
 /obj/structure/ore_vent/boss/start_wave_defense()
 	if(!COOLDOWN_FINISHED(src, wave_cooldown))

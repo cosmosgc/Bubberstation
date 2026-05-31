@@ -58,7 +58,7 @@
 		return
 
 	if(buckled)
-		to_chat(src, span_notice("You are no longer sitting on [human_target]."))
+		to_chat(src, span_notice("Você não está mais sentado[human_target]."))
 		buckled.unbuckle_mob(src, TRUE)
 		manual_emote("squawks and hops off of [human_target], flying away.")
 

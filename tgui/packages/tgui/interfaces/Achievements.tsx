@@ -75,8 +75,8 @@ export const Achievements = (props) => {
             </Tabs.Tab>
           ))}
           <Tabs.Tab
-            selected={selectedCategory === 'High Scores'}
-            onClick={() => setSelectedCategory('High Scores')}
+            selected={selectedCategory === 'Alta pontuação.'}
+            onClick={() => setSelectedCategory('Alta pontuação.')}
           >
             High Scores
           </Tabs.Tab>
@@ -87,7 +87,7 @@ export const Achievements = (props) => {
             Progress
           </Tabs.Tab>
         </Tabs>
-        {(selectedCategory === 'High Scores' && <HighScoreTable />) ||
+        {(selectedCategory === 'Alta pontuação.' && <HighScoreTable />) ||
           (selectedCategory === 'Progress' && <ProgressTable />) || (
             <AchievementTable category={selectedCategory} />
           )}

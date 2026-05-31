@@ -50,10 +50,10 @@
 	. = ..()
 	if(can_change_cable_layer)
 		if(!QDELETED(powernet))
-			. += span_notice("It's operating on the [LOWER_TEXT(GLOB.cable_layer_to_name["[cable_layer]"])].")
+			. += span_notice("Está operando no[LOWER_TEXT(GLOB.cable_layer_to_name["[cable_layer]"])].")
 		else
-			. += span_warning("It's disconnected from the [LOWER_TEXT(GLOB.cable_layer_to_name["[cable_layer]"])].")
-		. += span_notice("Its power line can be changed with a [EXAMINE_HINT("multitool")].")
+			. += span_warning("Está desconectado do[LOWER_TEXT(GLOB.cable_layer_to_name["[cable_layer]"])].")
+		. += span_notice("Sua linha de energia pode ser alterada com um[EXAMINE_HINT("multitool")].")
 
 /obj/machinery/power/multitool_act(mob/living/user, obj/item/tool)
 	if(can_change_cable_layer)
@@ -69,7 +69,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	cable_layer = GLOB.cable_name_to_layer[choice]
-	balloon_alert(user, "now operating on the [choice]")
+	balloon_alert(user, "agora operando no[choice]")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/power/proc/add_avail(amount)

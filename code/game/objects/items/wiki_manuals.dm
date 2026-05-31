@@ -40,8 +40,7 @@
 
 // A book that links to the wiki
 /obj/item/book/manual/wiki
-	starting_content = "Nanotrasen presently does not have any resources on this topic. \
-		If you would like to know more, contact your local Central Command representative." // safety
+	starting_content = "Nanotrasen presently does not have any resources on this topic. 		If you would like to know more, contact your local Central Command representative." // safety
 	abstract_type = /obj/item/book/manual/wiki
 	/// The ending URL of the page that we link to.
 	var/page_link = ""
@@ -49,11 +48,11 @@
 /obj/item/book/manual/wiki/display_content(mob/living/user)
 	var/wiki_url = CONFIG_GET(string/wikiurl)
 	if(!wiki_url)
-		user.balloon_alert(user, "this book is empty!")
+		user.balloon_alert(user, "Este livro está vazio!")
 		return
 	credit_book_to_reader(user)
 	if(user.client.byond_version < 516) //Remove this once 516 is stable
-		if(tgui_alert(user, "This book's page will open in your browser. Are you sure?", "Open The Wiki", list("Yes", "No")) != "Yes")
+		if(tgui_alert(user, "A página deste livro será aberta no seu navegador. Tem certeza?", "Open The Wiki", list("Yes", "No")) != "Yes")
 			return
 		DIRECT_OUTPUT(user, link("[wiki_url]/[page_link]"))
 	else
@@ -82,14 +81,14 @@
 
 /obj/item/book/manual/wiki/security_space_law
 	name = "Space Law"
-	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
+	desc = "Um conjunto de diretrizes Nanotrasen para manter a lei e a ordem em suas estações espaciais."
 	icon_state = "bookSpaceLaw"
 	starting_author = "Nanotrasen"
 	starting_title = "Space Law"
 	page_link = "Space_Law"
 
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] pretends to read \the [src] intently... then promptly dies of laughter!"))
+	user.visible_message(span_suicide("[user]Finge Ler.\the [src]Intencionalmente... então morre logo de rir!"))
 	return OXYLOSS
 
 /obj/item/book/manual/wiki/infections
@@ -150,7 +149,7 @@
 
 /obj/item/book/manual/wiki/cooking_to_serve_man
 	name = "To Serve Man"
-	desc = "It's a cookbook!"
+	desc = "É um livro de receitas!"
 	icon_state ="cooked_book"
 	starting_author = "the Kanamitan Empire"
 	starting_title = "To Serve Man"
@@ -200,7 +199,7 @@
 
 /obj/item/book/manual/wiki/ordnance/suicide_act(mob/living/user)
 	var/mob/living/carbon/human/H = user
-	user.visible_message(span_suicide("[user] starts dancing to the Rhumba Beat! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Começa a dançar à batida de Rhumba! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	playsound(loc, 'sound/effects/spray.ogg', 10, TRUE, -3)
 	if(QDELETED(H))
 		return

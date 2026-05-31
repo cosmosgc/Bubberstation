@@ -8,7 +8,7 @@
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	worn_icon_state = "radio"
-	desc = "A basic handheld radio that communicates with local telecommunication networks."
+	desc = "Um rádio de mão básico que se comunica com redes de telecomunicações locais."
 	dog_fashion = /datum/dog_fashion/back
 	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_ALLOW_USER_LOCATION | INTERACT_ATOM_IGNORE_MOBILITY
 	sound_vary = TRUE
@@ -574,11 +574,11 @@
 /obj/item/radio/examine(mob/user)
 	. = ..()
 	if (frequency && in_range(src, user))
-		. += span_notice("It is set to broadcast over the [span_radio("[frequency/10]")] frequency.")
+		. += span_notice("Está programado para transmitir sobre o[span_radio("[frequency/10]")]Frequência.")
 	if (unscrewed)
-		. += span_notice("It can be attached and modified.")
+		. += span_notice("Pode ser anexado e modificado.")
 	else
-		. += span_notice("It cannot be modified or attached.")
+		. += span_notice("Não pode ser modificado ou anexado.")
 
 /obj/item/radio/update_overlays()
 	. = ..()
@@ -601,27 +601,27 @@
 	unscrewed = !unscrewed
 	tool.play_tool_sound(src, 10)
 	if(unscrewed)
-		to_chat(user, span_notice("[src] can now be attached and modified!"))
+		to_chat(user, span_notice("[src]Agora pode ser anexado e modificado!"))
 	else
-		to_chat(user, span_notice("[src] can no longer be modified or attached!"))
+		to_chat(user, span_notice("[src]Não pode mais ser modificado ou anexado!"))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/radio/screwdriver_act(mob/living/user, obj/item/tool)
 	switch(keylock)
 		if(RADIO_KEYSLOT_LOCKED)
-			to_chat(user, span_warning("The screws locking [src]'s keyslot are stripped, and can't be removed."))
+			to_chat(user, span_warning("Os parafusos travando[src]As chaves estão despojadas e não podem ser removidas."))
 			return ITEM_INTERACT_BLOCKING
 		if(RADIO_KEYSLOT_EMAGGABLE_LOCK)
-			to_chat(user, span_warning("The screws locking [src]'s keyslot are fastened tight, and likely can't be removed without some kind of magnet..."))
+			to_chat(user, span_warning("Os parafusos travando[src]As chaves estão apertadas, e provavelmente não podem ser removidas sem algum tipo de ímã..."))
 			return ITEM_INTERACT_BLOCKING
 
 	var/list/removed_keys = remove_keys(user)
 	if(length(removed_keys) > 1)
-		to_chat(user, span_notice("You remove the encryption keys from [src]."))
+		to_chat(user, span_notice("Você remove as chaves de criptografia de[src]."))
 	else if(length(removed_keys) == 1)
-		to_chat(user, span_notice("You remove [removed_keys[1]] from [src]."))
+		to_chat(user, span_notice("Você tira.[removed_keys[1]]De[src]."))
 	else
-		to_chat(user, span_warning("[src] doesn't have any unique encryption keys! How useless..."))
+		to_chat(user, span_warning("[src]Não tem nenhuma chave de criptografia única! Que inútil..."))
 	tool.play_tool_sound(src, 10)
 	return TRUE
 
@@ -645,20 +645,20 @@
 /// Attempts to install the given encryption key into the radio
 /obj/item/radio/proc/install_key(mob/living/user, obj/item/encryptionkey/key)
 	if(keyslot)
-		loc.balloon_alert(user, "cannot hold a second key!")
+		loc.balloon_alert(user, "Não pode segurar uma segunda chave!")
 		return ITEM_INTERACT_BLOCKING
 	if(freqlock || keylock)
-		loc.balloon_alert(user, "keyslot is locked!")
+		loc.balloon_alert(user, "Keyslot está trancado!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(key, src))
-		loc.balloon_alert(user, "cannot install!")
+		loc.balloon_alert(user, "Não posso instalar!")
 		return ITEM_INTERACT_BLOCKING
 
 	keyslot = key
 	recalculateChannels()
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
-	loc.balloon_alert(user, "encryption key installed")
+	loc.balloon_alert(user, "Chave de Criptografia Instalada")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/radio/emp_act(severity)
@@ -668,14 +668,14 @@
 	emped++ //There's been an EMP; better count it
 	var/curremp = emped //Remember which EMP this was
 	if (listening && ismob(loc)) // if the radio is turned on and on someone's person they notice
-		to_chat(loc, span_warning("\The [src] overloads."))
+		to_chat(loc, span_warning("\The [src]Sobrecargas."))
 	for (var/ch_name in channels)
 		channels[ch_name] = 0
 	set_on(FALSE)
 	addtimer(CALLBACK(src, PROC_REF(end_emp_effect), curremp), 20 SECONDS)
 
 /obj/item/radio/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] starts bouncing [src] off [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Começa a saltar[src]Fora.[user.p_their()]Cabeça! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/radio/proc/end_emp_effect(curremp)
@@ -688,7 +688,7 @@
 /obj/item/radio/proc/make_silly()
 	name = "\improper Little-Crew: Assistant's First Radio"
 	icon_state = "walkieian"
-	desc = "A Little-Crew branded toy radio in the shape of a lovable pet. After Little-Crew HQ was hit with a Donksoft Nuke, these have become collector's items!"
+	desc = "Um rádio de brinquedo de marca Little-Crew na forma de um animal de estimação adorável. Depois que o QG Little Crew foi atingido com um Nuke Donksoft, eles se tornaram itens de colecionador!"
 	overlay_speaker_idle = null
 	overlay_speaker_active = null
 	overlay_mic_idle = null
@@ -731,7 +731,7 @@
 
 // RADIOS USED BY BROADCASTING
 /obj/item/radio/entertainment
-	desc = "You should not hold this."
+	desc = "Você não deveria segurar isso."
 	canhear_range = 7
 	freerange = TRUE
 	freqlock = RADIO_FREQENCY_LOCKED
@@ -761,7 +761,7 @@
 
 /obj/item/radio/entertainment/speakers/physical // Can be used as a physical item
 	name = "entertainment radio"
-	desc = "A portable one-way radio permanently tuned into entertainment frequency."
+	desc = "Um rádio portátil de sentido único permanentemente sintonizado na frequência de entretenimento."
 	icon_state = "radio"
 	inhand_icon_state = "radio"
 	worn_icon_state = "radio"
@@ -782,7 +782,7 @@
 
 /obj/item/radio/entertainment/microphone/physical // Can be used as a physical item
 	name = "microphone"
-	desc = "No comments."
+	desc = "Sem comentários."
 	icon = 'icons/obj/service/broadcast.dmi'
 	icon_state = "microphone"
 	inhand_icon_state = "microphone"

@@ -12,7 +12,7 @@
 
 /obj/item/xenoarch/strange_rock
 	name = "strange rock"
-	desc = "A mysterious, strange rock that has the potential to have a wonderful item. Also possible for it to have our disposed garbage."
+	desc = "Uma rocha misteriosa e estranha que tem potencial para ter um item maravilhoso. Também é possível ter nosso lixo descartado."
 	icon_state = "rock"
 
 	///The max depth a strange rock can be
@@ -45,11 +45,11 @@
 	. = ..()
 	. += span_notice("[scanned ? "This item has been scanned. Max Depth: [max_depth] cm. Safe Depth: [safe_depth] cm." : "This item has not been scanned."]")
 	if(adv_scanned)
-		. += span_notice("The item depth is [item_depth] cm.")
+		. += span_notice("O item profundidade é[item_depth]cm.")
 
 	. += span_notice("[measured ? "This item has been measured. Dug Depth: [dug_depth]." : "This item has not been measured."]")
 	if(measured && dug_depth > item_depth)
-		. += span_warning("The rock is crumbling, even just brushing it will destroy it!")
+		. += span_warning("A rocha está desmoronando, até mesmo escovando-a vai destruí-la!")
 
 /obj/item/xenoarch/strange_rock/proc/create_item()
 	choose_tier = rand(1,100)
@@ -123,9 +123,9 @@
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/research, SKILL_SPEED_MODIFIER)
 	if(istype(attacking_item, /obj/item/xenoarch/hammer))
 		var/obj/item/xenoarch/hammer/xeno_hammer = attacking_item
-		to_chat(user, span_notice("You begin carefully using your hammer."))
+		to_chat(user, span_notice("Você começa com cuidado usando seu martelo."))
 		if(!do_after(user, xeno_hammer.dig_speed * skill_modifier, target = src))
-			to_chat(user, span_warning("You interrupt your careful planning, damaging the rock in the process!"))
+			to_chat(user, span_warning("Você interrompe seu planejamento cuidadoso, danificando a rocha no processo!"))
 			dug_depth += rand(1,5)
 			return
 
@@ -135,65 +135,65 @@
 				return
 
 			if(DIG_DELETE)
-				to_chat(user, span_warning("The rock crumbles, leaving nothing behind."))
+				to_chat(user, span_warning("A rocha desmorona, não deixando nada para trás."))
 				return
 
 			if(DIG_ROCK)
-				to_chat(user, span_notice("You successfully dig around the item."))
+				to_chat(user, span_notice("Você cava com sucesso em torno do item."))
 				user.mind.adjust_experience(/datum/skill/research, xeno_hammer.dig_amount)
 
 	if(istype(attacking_item, /obj/item/xenoarch/brush))
 		var/obj/item/xenoarch/brush/xeno_brush = attacking_item
-		to_chat(user, span_notice("You begin carefully using your brush."))
+		to_chat(user, span_notice("Você começa com cuidado usando sua escova."))
 		if(!do_after(user, xeno_brush.dig_speed * skill_modifier, target = src))
-			to_chat(user, span_warning("You interrupt your careful planning, damaging the rock in the process!"))
+			to_chat(user, span_warning("Você interrompe seu planejamento cuidadoso, danificando a rocha no processo!"))
 			dug_depth += rand(1,5)
 			return
 
 		switch(try_uncover())
 			if(BRUSH_DELETE)
-				to_chat(user, span_warning("The rock crumbles, leaving nothing behind."))
+				to_chat(user, span_warning("A rocha desmorona, não deixando nada para trás."))
 				return
 
 			if(BRUSH_UNCOVER)
-				to_chat(user, span_notice("You successfully brush around the item, fully revealing the item!"))
+				to_chat(user, span_notice("Você escova com sucesso em torno do item, revelando completamente o item!"))
 				user.mind.adjust_experience(/datum/skill/research, 20)
 				return
 
 			if(BRUSH_NONE)
-				to_chat(user, span_notice("You brush around the item, but it wasn't revealed... hammer some more."))
+				to_chat(user, span_notice("Você escova em torno do item, mas não foi revelado ... martelo um pouco mais."))
 
 	if(istype(attacking_item, /obj/item/xenoarch/tape_measure))
-		to_chat(user, span_notice("You begin carefully using your measuring tape."))
+		to_chat(user, span_notice("Você começa com cuidado usando sua fita métrica."))
 		if(!do_after(user, 4 SECONDS * skill_modifier, target = src))
-			to_chat(user, span_warning("You interrupt your careful planning, damaging the rock in the process!"))
+			to_chat(user, span_warning("Você interrompe seu planejamento cuidadoso, danificando a rocha no processo!"))
 			dug_depth += rand(1,5)
 			return
 
 		if(get_measured())
-			to_chat(user, span_notice("You successfully attach a holo measuring tape to the strange rock; the strange rock will now report its dug depth always!"))
+			to_chat(user, span_notice("Você com sucesso anexa uma fita métrica holo na estranha rocha, a estranha rocha agora relatará sua profundidade cavada sempre!"))
 			user.mind.adjust_experience(/datum/skill/research, 5)
 			return
 
-		to_chat(user, span_warning("The strange rock was already marked with a holo measuring tape."))
+		to_chat(user, span_warning("A estranha rocha já estava marcada com uma fita métrica holográfica."))
 
 	if(istype(attacking_item, /obj/item/xenoarch/handheld_scanner))
 		var/obj/item/xenoarch/handheld_scanner/item_scanner = attacking_item
-		to_chat(user, span_notice("You begin to scan [src] using [item_scanner]."))
+		to_chat(user, span_notice("Você começa a escanear[src]Usando[item_scanner]."))
 		if(!do_after(user, item_scanner.scanning_speed * skill_modifier, target = src))
-			to_chat(user, span_warning("You interrupt your scanning, damaging the rock in the process!"))
+			to_chat(user, span_warning("Você interrompe sua varredura, danificando a rocha no processo!"))
 			dug_depth += rand(1,5)
 			return
 
 		if(get_scanned(item_scanner.scan_advanced))
-			to_chat(user, span_notice("You successfully attach a holo scanning module to the strange rock; the strange rock will now report its depth information always!"))
+			to_chat(user, span_notice("Você com sucesso anexa um módulo de varredura holo na estranha rocha, a estranha rocha agora irá relatar suas informações de profundidade sempre!"))
 			user.mind.adjust_experience(/datum/skill/research, 5)
 			if(adv_scanned)
-				to_chat(user, span_notice("The rock's item depth is being reported!"))
+				to_chat(user, span_notice("A profundidade do item da rocha está sendo relatada!"))
 
 			return
 
-		to_chat(user, span_warning("The strange rock was already marked with a holo scanning module."))
+		to_chat(user, span_warning("A estranha rocha já estava marcada com um módulo de varredura holográfica."))
 
 //turfs
 /turf/closed/mineral/strange_rock

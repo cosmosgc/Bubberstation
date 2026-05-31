@@ -29,7 +29,7 @@
 		return
 	if((car_traits & CAN_KIDNAP) && isliving(dropping) && M != dropping)
 		var/mob/living/kidnapped = dropping
-		kidnapped.visible_message(span_warning("[M] starts forcing [kidnapped] into [src]!"))
+		kidnapped.visible_message(span_warning("[M]Começa a forçar[kidnapped]Em[src]!"))
 		mob_try_forced_enter(M, kidnapped)
 	return ..()
 
@@ -38,10 +38,10 @@
 		mob_exit(future_pedestrian, silent)
 		return TRUE
 	if (escape_time > 0)
-		to_chat(user, span_notice("You push against the back of \the [src]'s trunk to try and get out."))
+		to_chat(user, span_notice("Você empurra contra a parte de trás de\the [src]É o porta-malas para tentar sair."))
 		if(!do_after(user, escape_time, target = src))
 			return FALSE
-	to_chat(user,span_danger("[user] gets out of [src]."))
+	to_chat(user,span_danger("[user]Sai daqui.[src]."))
 	mob_exit(future_pedestrian, silent)
 	return TRUE
 
@@ -49,14 +49,14 @@
 	. = ..()
 	if(!(car_traits & CAN_KIDNAP))
 		return
-	to_chat(user, span_notice("You start opening [src]'s trunk."))
+	to_chat(user, span_notice("Você começa a abrir[src]O porta-malas."))
 	if(!do_after(user, 30))
 		return
 	if(return_amount_of_controllers_with_flag(VEHICLE_CONTROL_KIDNAPPED))
-		to_chat(user, span_notice("The people stuck in [src]'s trunk all come tumbling out."))
+		to_chat(user, span_notice("Como pesoas ficaram presas[src]O porta-malas caiu."))
 		dump_specific_mobs(VEHICLE_CONTROL_KIDNAPPED)
 		return
-	to_chat(user, span_notice("It seems [src]'s trunk was empty."))
+	to_chat(user, span_notice("Parece.[src]O porta-malas estava vazio."))
 
 ///attempts to force a mob into the car
 /obj/vehicle/sealed/car/proc/mob_try_forced_enter(mob/forcer, mob/kidnapped, silent = FALSE)
@@ -76,7 +76,7 @@
 ///Proc called when someone is forcefully stuffedd into a car
 /obj/vehicle/sealed/car/proc/mob_forced_enter(mob/kidnapped, silent = FALSE)
 	if(!silent)
-		kidnapped.visible_message(span_warning("[kidnapped] is forced into \the [src]!"))
+		kidnapped.visible_message(span_warning("[kidnapped]é forçado a\the [src]!"))
 		if(forced_enter_sound)
 			playsound(src, forced_enter_sound, 70, TRUE, MEDIUM_RANGE_SOUND_EXTRARANGE)
 	kidnapped.forceMove(src)

@@ -1,6 +1,6 @@
 /obj/item/tourniquet
 	name = "tourniquet"
-	desc = "A medical device used to stop severe bleeding from a limb."
+	desc = "Um dispositivo médico usado para parar o sangramento de um membro."
 	icon = 'icons/obj/medical/firstaid.dmi'
 	icon_state = "tourniquet"
 
@@ -12,12 +12,7 @@
 
 /obj/item/tourniquet/Initialize(mapload)
 	. = ..()
-	AddComponent( \
-		/datum/component/limb_applicable, \
-		valid_zones = GLOB.limb_zones.Copy() + BODY_ZONE_HEAD, \
-		apply_category = LIMB_ITEM_TOURNIQUET, \
-		do_apply = CALLBACK(src, PROC_REF(do_apply_tourniquet)), \
-	)
+	AddComponent( 		/datum/component/limb_applicable, 		valid_zones = GLOB.limb_zones.Copy() + BODY_ZONE_HEAD, 		apply_category = LIMB_ITEM_TOURNIQUET, 		do_apply = CALLBACK(src, PROC_REF(do_apply_tourniquet)), 	)
 	RegisterSignal(src, COMSIG_ITEM_APPLIED_TO_LIMB, PROC_REF(on_applied_to_limb))
 	RegisterSignal(src, COMSIG_ITEM_UNAPPLIED_FROM_LIMB, PROC_REF(on_removed_from_limb))
 
@@ -26,7 +21,7 @@
 	return ..()
 
 /obj/item/tourniquet/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] begins to wrap [src] around [p_their()] neck too tight! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Começa a embrulhar[src]Por aí.[p_their()]O pescoço está muito apertado! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	if(!do_after(user, 5 SECONDS, user))
 		return SHAME
 	var/obj/item/bodypart/head = user.get_bodypart(BODY_ZONE_HEAD)
@@ -97,44 +92,44 @@
 
 	if(limb.body_zone == BODY_ZONE_HEAD)
 		user.visible_message(
-			span_warning("[user] begins applying [src] to [user == patient ? p_their() : "[patient]'s"] neck..."),
-			span_userdanger("You begin applying [src] to [user == patient ? "your" : "[patient]'s"] neck, though you begin wonder if this is a good idea...?"),
+			span_warning("[user]começa a aplicar[src]Para[user == patient ? p_their() : "[patient]'s"]pescoço..."),
+			span_userdanger("Você começa a aplicar[src]Para[user == patient ? "your" : "[patient]'s"]pescoço, embora você comece a pensar se isso é uma boa idéia...?"),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			ignored_mobs = patient,
 		)
 		if(user != patient)
 			patient.show_message(
-				span_userdanger("[user] begins applying [src] to your neck! That can't be a good idea...!"),
+				span_userdanger("[user]começa a aplicar[src]No seu pescoço! Não pode ser uma boa ideia!"),
 				MSG_VISUAL,
-				span_userdanger("You feel [user] start wrapping something tight around your neck! That can't be a good idea...!"),
+				span_userdanger("Você sente[user]Comece a embrulhar algo apertado no pescoço! Não pode ser uma boa ideia!"),
 			)
 
 	else if(speed_boosted)
 		user.visible_message(
-			span_notice("[user] begins expertly applying [src] to [user == patient ? p_their() : "[patient]'s"] own [limb.plaintext_zone]..."),
-			span_notice("You begin expertly applying [src] to [user == patient ? "your" : "[patient]'s"] own [limb.plaintext_zone], keeping the holo-image indications in mind..."),
+			span_notice("[user]começa a aplicar-se habilmente.[src]Para[user == patient ? p_their() : "[patient]'s"]Mesmo.[limb.plaintext_zone]..."),
+			span_notice("Você começa a aplicar habilmente[src]Para[user == patient ? "your" : "[patient]'s"]Mesmo.[limb.plaintext_zone], mantendo as indicações de holo-imagem em mente ..."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			ignored_mobs = patient,
 		)
 		if(user != patient)
 			patient.show_message(
-				span_notice("[user] begins expertly applying [src] to your [limb.plaintext_zone]..."),
+				span_notice("[user]começa a aplicar-se habilmente.[src]para o seu[limb.plaintext_zone]..."),
 				MSG_VISUAL,
-				span_notice("You feel [user] start wrapping something around your [limb.plaintext_zone] with expert precision..."),
+				span_notice("Você sente[user]Comece a embrulhar algo ao redor do seu[limb.plaintext_zone]Com precisão..."),
 			)
 
 	else
 		user.visible_message(
-			span_warning("[user] begins applying [src] to [user == patient ? p_their() : "[patient]'s"] [limb.plaintext_zone]..."),
-			span_warning("You begin applying [src] to [user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone]..."),
+			span_warning("[user]começa a aplicar[src]Para[user == patient ? p_their() : "[patient]'s"] [limb.plaintext_zone]..."),
+			span_warning("Você começa a aplicar[src]Para[user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone]..."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			ignored_mobs = patient,
 		)
 		if(user != patient)
 			patient.show_message(
-				span_warning("[user] begins applying [src] to your [limb.plaintext_zone]..."),
+				span_warning("[user]começa a aplicar[src]para o seu[limb.plaintext_zone]..."),
 				MSG_VISUAL,
-				span_warning("You feel [user] start wrapping something around your [limb.plaintext_zone]..."),
+				span_warning("Você sente[user]Comece a embrulhar algo ao redor do seu[limb.plaintext_zone]..."),
 			)
 
 	if(!do_after(user, 5 SECONDS * speed_multiplier, patient))

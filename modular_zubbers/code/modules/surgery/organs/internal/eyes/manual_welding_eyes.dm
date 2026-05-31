@@ -1,11 +1,11 @@
 //Eyes that you can close
 /obj/item/organ/eyes/robotic/manuallyshield
 	name = "manually shielded robotic eyes"
-	desc = "These eyes will protect you from going blind while welding after you manually activate them."
+	desc = "Esses olhos vão protegê-lo de ficar cego enquanto solda depois de ativá-los manualmente."
 	icon_state = "eyes_cyber_shield"
 	flash_protect = FLASH_PROTECTION_NONE
 	pupils_name = "manual shields"
-	penlight_message = "have toggleable metal eyelids that are blocking all vision when active"
+	penlight_message = "tem pálpebras de metal amovíveis que estão bloqueando toda visão quando ativa"
 	actions_types = list(/datum/action/item_action/organ_action/toggle)
 	var/active = FALSE
 	var/toggle_sound = 'sound/vehicles/mecha/mechmove03.ogg'
@@ -18,7 +18,7 @@
 	currently_toggled = TRUE
 
 	if(!do_after(owner, 1 SECONDS))
-		to_chat(owner, span_notice("You fail to concentrate on the vision shield toggle."))
+		to_chat(owner, span_notice("Você não consegue se concentrar no escudo de visão."))
 		currently_toggled = FALSE
 		return
 
@@ -51,7 +51,7 @@
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	blink_animation = FALSE
 	pupils_name = "aperture clusters"
-	penlight_message = "have collapsible shields, protecting insectoid compound eyes."
+	penlight_message = "têm escudos dobráveis, protegendo olhos compostos de insetos."
 
 /obj/item/organ/eyes/robotic/manuallyshield/moth/ui_action_click()
 	if(currently_toggled)
@@ -60,7 +60,7 @@
 	currently_toggled = TRUE
 
 	if(!do_after(owner, 1 SECONDS))
-		to_chat(owner, span_notice("You fail to concentrate on the vision shield toggle."))
+		to_chat(owner, span_notice("Você não consegue se concentrar no escudo de visão."))
 		currently_toggled = FALSE
 		return
 

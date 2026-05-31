@@ -85,9 +85,9 @@
  */
 /obj/machinery/atmospherics/components/unary/hypertorus/core/proc/activate(mob/living/user)
 	if(active)
-		to_chat(user, span_notice("You already activated the machine."))
+		to_chat(user, span_notice("Você já ativou a máquina."))
 		return
-	to_chat(user, span_notice("You link all parts toghether."))
+	to_chat(user, span_notice("Você liga todas as partes ao outro."))
 	active = TRUE
 	update_appearance(UPDATE_ICON)
 	linked_interface.active = TRUE
@@ -412,15 +412,14 @@
 
 	var/critical = selected_fuel.meltdown_flags & HYPERTORUS_FLAG_CRITICAL_MELTDOWN
 	if(critical)
-		priority_announce("WARNING - The explosion will likely cover a big part of the station and the coming EMP will wipe out most of the electronics. \
-				Get as far away as possible from the reactor or find a way to shut it down.", "Alert", 'sound/announcer/notice/notice3.ogg')
+		priority_announce("WARNING - The explosion will likely cover a big part of the station and the coming EMP will wipe out most of the electronics. 				Get as far away as possible from the reactor or find a way to shut it down.", "Alert", 'sound/announcer/notice/notice3.ogg')
 	var/speaking = "[emergency_alert] The Hypertorus fusion reactor has reached critical integrity failure. Emergency magnetic dampeners online."
 	radio.talk_into(src, speaking, common_channel)
 
 	notify_ghosts(
 		"The [src] has begun melting down!",
 		source = src,
-		header = "Meltdown Incoming",
+		header = "Derretimento Vindo",
 		ghost_sound = 'sound/machines/warning-buzzer.ogg',
 		notify_volume = 75,
 	)

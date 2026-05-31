@@ -1,13 +1,9 @@
 /datum/bloodsucker_clan/tremere
 	name = CLAN_TREMERE
-	description = "The Tremere Clan is extremely weak to True Faith, and will burn when entering areas considered such, like the Chapel. \n\
-		Additionally, a whole new moveset is learned, built on Blood magic rather than Blood abilities, which are upgraded overtime. \n\
-		More ranks can be gained by Ghoulizing crewmembers. \n\
-		The Favorite Ghoul gains the Batform spell, being able to morph themselves at will."
+	description = "O Clã Tremere é extremamente fraco para a Verdadeira Fé, e queimará ao entrar em áreas consideradas como a Capela.\nAlém disso, um novo movimento é aprendido, construído com magia de sangue em vez de habilidades de sangue, que são atualizados horas extras.\nMais filas podem ser ganhas por membros da tripulação.\nO Ghoul Favorito ganha o feitiço Batform, sendo capaz de se transformar à vontade."
 	clan_objective = /datum/objective/bloodsucker/tremere_power
 	join_icon_state = "tremere"
-	join_description = "You will burn if you enter the Chapel, lose all default powers, \
-		but gain Blood Magic instead, stronger powers you level up overtime."
+	join_description = "Você vai queimar se entrar na Capela, perder todos os poderes padrão, mas ganhar magia de sangue em vez disso, poderes mais fortes você nivelar horas extras."
 	buy_power_flags = TREMERE_CAN_BUY|CAN_BUY_OWNED
 
 /datum/bloodsucker_clan/tremere/New(mob/living/carbon/user)
@@ -27,7 +23,7 @@
 	. = ..()
 	var/area/current_area = get_area(bloodsuckerdatum.owner.current)
 	if(istype(current_area, /area/station/service/chapel))
-		to_chat(bloodsuckerdatum.owner.current, span_warning("You don't belong in holy areas! The Faith burns you!"))
+		to_chat(bloodsuckerdatum.owner.current, span_warning("Você não pertence a áreas sagradas! A Fé te queima!"))
 		bloodsuckerdatum.owner.current.adjust_fire_loss(10)
 		bloodsuckerdatum.owner.current.adjust_fire_stacks(2)
 		bloodsuckerdatum.owner.current.ignite_mob()
@@ -37,8 +33,8 @@
 
 /datum/bloodsucker_clan/tremere/level_message(power_name)
 	var/mob/living/carbon/human/human_user = bloodsuckerdatum.owner.current
-	human_user.balloon_alert(human_user, "upgraded [power_name]!")
-	to_chat(human_user, span_notice("You have upgraded [power_name]!"))
+	human_user.balloon_alert(human_user, "atualizado[power_name]!")
+	to_chat(human_user, span_notice("Você melhorou.[power_name]!"))
 
 // redefine the default args
 /datum/bloodsucker_clan/tremere/list_available_powers(already_known, powers_list)
@@ -59,5 +55,5 @@
 
 /datum/bloodsucker_clan/tremere/on_ghoul_made(datum/antagonist/bloodsucker/source, mob/living/user, mob/living/target)
 	. = ..()
-	to_chat(bloodsuckerdatum.owner.current, span_danger("You have now gained an additional Rank to spend!"))
+	to_chat(bloodsuckerdatum.owner.current, span_danger("Você ganhou agora uma patente adicional para gastar!"))
 	bloodsuckerdatum.AdjustUnspentRank(1)

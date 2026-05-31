@@ -252,7 +252,7 @@ function mapPlanes(planes: PlaneData[]) {
     const plane = planeGraph[key];
     widthPerDepth[plane.depth] = Math.max(
       widthPerDepth[plane.depth] || 0,
-      textWidth(plane.name, 'Verdana, Geneva', 12) + 30,
+      textWidth(plane.name, 'Verdana, Genebra', 12) + 30,
     );
 
     const newHeight =
@@ -539,7 +539,7 @@ export function PlaneMasterDebug() {
             <Stack.Item>
               <Dropdown
                 options={planes.map((plane) => plane.name).sort()}
-                placeholder="Find Plane"
+                placeholder="Encontre o avião"
                 selected={zoomToPlane}
                 onSelected={(value) => {
                   setZoomToPlane(value);
@@ -557,7 +557,7 @@ export function PlaneMasterDebug() {
             </Stack.Item>
             {!!enable_group_view && (
               <Tooltip
-                content="Plane masters are stored in groups, based off where they came from. MAIN is the main group, but if you open something that displays atoms in a new window, it'll show up here."
+                content="Mestres de aviões são armazenados em grupos, baseados de onde vieram. PRINCIPAL é o grupo principal, mas se você abrir algo que exibe átomos em uma nova janela, ele vai aparecer aqui."
                 position="right"
               >
                 <Dropdown
@@ -572,7 +572,7 @@ export function PlaneMasterDebug() {
             <Stack.Item>
               <Button
                 color="transparent"
-                tooltip="Debugger Documentation"
+                tooltip="Documentação do depurador"
                 icon="question"
                 selected={infoOpen}
                 onClick={() => setInfoOpen(true)}
@@ -591,7 +591,7 @@ export function PlaneMasterDebug() {
             <Stack.Item>
               <Button
                 color="transparent"
-                tooltip="View Mirroring"
+                tooltip="Ver Espelhando"
                 icon={our_ref !== mob_ref ? 'ghost' : 'eye'}
                 selected={tracking_active}
                 onClick={() => act('toggle_mirroring')}
@@ -600,7 +600,7 @@ export function PlaneMasterDebug() {
             <Stack.Item>
               <Button
                 color="transparent"
-                tooltip="View Mob Variables"
+                tooltip="Ver Variáveis da Máfia"
                 icon="pen"
                 onClick={() => act('vv_mob')}
               />
@@ -608,7 +608,7 @@ export function PlaneMasterDebug() {
             <Stack.Item>
               <Button
                 color="transparent"
-                tooltip="Rebuild Plane Masters"
+                tooltip="Reconstruir Mestres do Avião"
                 icon="recycle"
                 onClick={() => act('rebuild')}
               />

@@ -1,10 +1,9 @@
 /datum/quirk/prosthetic_organ
 	name = "Prosthetic Organ"
-	desc = "An accident caused you to lose one of your organs. Because of this, you now have a surplus prosthetic!"
+	desc = "Um acidente fez você perder um de seus órgãos. Por causa disso, você agora tem uma prótese excedente!"
 	icon = FA_ICON_LUNGS
 	value = -3
-	medical_record_text = "During physical examination, patient was found to have a low-budget prosthetic organ. \
-		<b>Removal of these organs is known to be dangerous to the patient as well as the practitioner.</b>"
+	medical_record_text = "Durante o exame físico, o paciente tinha um órgão protético de baixo orçamento.<b>A remoção desses órgãos é conhecida por ser perigosa tanto para o paciente quanto para o médico.</b>"
 	hardcore_value = 3
 	mail_goodies = list(/obj/item/storage/organbox)
 	/// The slot to replace, in string form
@@ -57,16 +56,14 @@
 		if(ORGAN_SLOT_STOMACH)
 			prosthetic = new /obj/item/organ/stomach/cybernetic/surplus
 			slot_string = "stomach"
-	medical_record_text = "During physical examination, patient was found to have a low-budget prosthetic [slot_string]. \
-		Removal of these organs is known to be dangerous to the patient as well as the practitioner."
+	medical_record_text = "Durante o exame físico, o paciente teve uma prótese de baixo orçamento.[slot_string]A remoção desses órgãos é conhecida por ser perigosa para o paciente, bem como para o praticante."
 	old_organ = human_holder.get_organ_slot(organ_slot)
 	prosthetic.Insert(human_holder, special = TRUE)
 	old_organ.moveToNullspace()
 	STOP_PROCESSING(SSobj, old_organ)
 
 /datum/quirk/prosthetic_organ/post_add()
-	to_chat(quirk_holder, span_bolddanger("Your [slot_string] has been replaced with a surplus organ. It is weak and highly unstable. \
-	Additionally, any EMP will make it stop working entirely."))
+	to_chat(quirk_holder, span_bolddanger("Sua[slot_string]foi substituído por um órgão excedente. É fraco e altamente instável. Além disso, qualquer PEM fará com que pare de funcionar completamente."))
 
 /datum/quirk/prosthetic_organ/remove()
 	if(old_organ)

@@ -4,7 +4,7 @@
 
 /obj/structure/ai_core/welder_act(mob/living/user, obj/item/tool)
 	if(state != CORE_STATE_EMPTY)
-		balloon_alert(user, "frame has to be empty!")
+		balloon_alert(user, "A moldura tem que estar vazia!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!tool.tool_start_check(user, 1))
@@ -19,7 +19,7 @@
 /obj/structure/ai_core/wrench_act(mob/living/user, obj/item/tool)
 	if(state >= CORE_STATE_FINISHED)
 		set_anchored(TRUE) //teehee
-		balloon_alert(user, "can't unanchor!")
+		balloon_alert(user, "Não consigo desancorar!")
 		return ITEM_INTERACT_BLOCKING
 
 	default_unfasten_wrench(user, tool)
@@ -28,31 +28,31 @@
 /obj/structure/ai_core/screwdriver_act(mob/living/user, obj/item/tool)
 	switch(state)
 		if(CORE_STATE_EMPTY)
-			balloon_alert(user, "nothing to screw in there!")
+			balloon_alert(user, "Nada para foder lá dentro!")
 			return ITEM_INTERACT_BLOCKING
 		if(CORE_STATE_CIRCUIT)
 			if(!tool.use_tool(src, user, 0 SECONDS, 0, 50, CHECK_STATE_CALLBACK(CORE_STATE_CIRCUIT)))
 				return ITEM_INTERACT_BLOCKING
-			balloon_alert(user, "board secured")
+			balloon_alert(user, "Placa segura.")
 			UPDATE_STATE(CORE_STATE_SCREWED)
 			return ITEM_INTERACT_SUCCESS
 		if(CORE_STATE_SCREWED)
 			if(!tool.use_tool(src, user, 0 SECONDS, 0, 50, CHECK_STATE_CALLBACK(CORE_STATE_SCREWED)))
 				return ITEM_INTERACT_BLOCKING
-			balloon_alert(user, "board unsecured")
+			balloon_alert(user, "A placa não está segura.")
 			UPDATE_STATE(CORE_STATE_CIRCUIT)
 			return ITEM_INTERACT_SUCCESS
 		if(CORE_STATE_CABLED)
-			balloon_alert(user, "can't reach the board!")
+			balloon_alert(user, "Não consigo alcançar o tabuleiro!")
 			return ITEM_INTERACT_BLOCKING
 		if(CORE_STATE_GLASSED)
 			if(!anchored)
-				balloon_alert(user, "isn't anchored!")
+				balloon_alert(user, "Não está ancorado!")
 				return ITEM_INTERACT_BLOCKING
 			if(!tool.use_tool(src, user, 0 SECONDS, 0, 50, CHECK_STATE_CALLBACK(CORE_STATE_GLASSED)))
 				return ITEM_INTERACT_BLOCKING
 			if(suicide_check())
-				balloon_alert(user, "processor is completely useless!")
+				balloon_alert(user, "O processador é completamente inútil!")
 				return ITEM_INTERACT_BLOCKING
 
 			var/atom/movable/alert_source = src
@@ -60,33 +60,33 @@
 				alert_source = ai_structure_to_mob() || alert_source
 			else
 				UPDATE_STATE(CORE_STATE_FINISHED)
-			alert_source.balloon_alert(user, "connected monitor[core_mmi?.brainmob?.mind ? " and neural network" : ""]")
+			alert_source.balloon_alert(user, "Monitor conectado.[core_mmi?.brainmob?.mind ? " and neural network" : ""]")
 			return ITEM_INTERACT_SUCCESS
 		if(CORE_STATE_FINISHED)
 			if(!core_mmi?.brainmob?.mind || suicide_check())
-				balloon_alert(user, "processor is inactive!")
+				balloon_alert(user, "O processador está inativo!")
 				return ITEM_INTERACT_BLOCKING
 
 			if(!anchored)
-				balloon_alert(user, "ancore primeiro!")
+				balloon_alert(user, "Ancore primeiro!")
 				return ITEM_INTERACT_BLOCKING
 
-			balloon_alert(user, "connecting neural network...")
+			balloon_alert(user, "Conectando rede neural...")
 			if(!tool.use_tool(src, user, 10 SECONDS, 0, 50, CHECK_STATE_CALLBACK(CORE_STATE_FINISHED)))
 				return ITEM_INTERACT_BLOCKING
 
 			var/atom/movable/alert_source = ai_structure_to_mob()
 			if(!alert_source)
-				balloon_alert(user, "processor is inactive!")
+				balloon_alert(user, "O processador está inativo!")
 				return ITEM_INTERACT_BLOCKING
 
-			alert_source.balloon_alert(user, "connected neural network")
+			alert_source.balloon_alert(user, "Rede neural conectada")
 			return ITEM_INTERACT_SUCCESS
 
 /obj/structure/ai_core/crowbar_act(mob/living/user, obj/item/tool)
 	switch(state)
 		if(CORE_STATE_EMPTY)
-			balloon_alert(user, "nothing to pry out!")
+			balloon_alert(user, "Nada para bisbilhotar!")
 			return ITEM_INTERACT_BLOCKING
 		if(CORE_STATE_CIRCUIT)
 			if(!tool.use_tool(src, user, 0 SECONDS, 0, 50, CHECK_STATE_CALLBACK(CORE_STATE_CIRCUIT)))
@@ -96,11 +96,11 @@
 			UPDATE_STATE(CORE_STATE_EMPTY)
 			return ITEM_INTERACT_SUCCESS
 		if(CORE_STATE_SCREWED)
-			balloon_alert(user, "won't budge!")
+			balloon_alert(user, "Não se mexa!")
 			return ITEM_INTERACT_BLOCKING
 		if(CORE_STATE_CABLED)
 			if(!core_mmi)
-				balloon_alert(user, "nothing to pry out!")
+				balloon_alert(user, "Nada para bisbilhotar!")
 				return ITEM_INTERACT_BLOCKING
 			if(!tool.use_tool(src, user, 0 SECONDS, 0, 50, CHECK_STATE_CALLBACK(CORE_STATE_CABLED)) || !core_mmi)
 				return ITEM_INTERACT_BLOCKING
@@ -116,17 +116,17 @@
 			UPDATE_STATE(CORE_STATE_CABLED)
 			return ITEM_INTERACT_SUCCESS
 		if(CORE_STATE_FINISHED)
-			balloon_alert(user, "display is on!")
+			balloon_alert(user, "A exibição está ligada!")
 			return ITEM_INTERACT_SUCCESS
 
 /obj/structure/ai_core/wirecutter_act(mob/living/user, obj/item/tool)
 	switch(state)
 		if(CORE_STATE_EMPTY to CORE_STATE_CIRCUIT)
-			balloon_alert(user, "nothing to cut!")
+			balloon_alert(user, "Nada para cortar!")
 			return ITEM_INTERACT_BLOCKING
 		if(CORE_STATE_CABLED)
 			if(core_mmi)
-				balloon_alert(user, "[AI_CORE_BRAIN(core_mmi)] in the way!")
+				balloon_alert(user, "[AI_CORE_BRAIN(core_mmi)]Sem caminho!")
 				return ITEM_INTERACT_BLOCKING
 
 			if(!tool.use_tool(src, user, 0 SECONDS, 0, 50, CHECK_STATE_CALLBACK(CORE_STATE_CABLED)) || core_mmi)
@@ -136,7 +136,7 @@
 			UPDATE_STATE(CORE_STATE_SCREWED)
 			return ITEM_INTERACT_SUCCESS
 		if(CORE_STATE_GLASSED)
-			balloon_alert(user, "nothing left to cut!")
+			balloon_alert(user, "Nada mais para cortar!")
 			return ITEM_INTERACT_BLOCKING
 		if(CORE_STATE_FINISHED)
 			if(!tool.use_tool(src, user, 0 SECONDS, 0, 50, CHECK_STATE_CALLBACK(CORE_STATE_FINISHED)))
@@ -178,10 +178,10 @@
 		return FALSE
 
 	if(cable.get_amount() < 5)
-		balloon_alert(user, "not enough [cable::name]!")
+		balloon_alert(user, "Não é o suficiente.[cable::name]!")
 		return FALSE
 
-	balloon_alert(user, "adding cable...")
+	balloon_alert(user, "Adicionando cabo...")
 	if(!cable.use_tool(src, user, 2 SECONDS, 5, 50, CHECK_STATE_CALLBACK(CORE_STATE_SCREWED)))
 		return FALSE
 
@@ -193,19 +193,19 @@
 		return FALSE
 
 	if(!mmi.brain_check(user))
-		var/wants_install = (tgui_alert(user, "This [AI_CORE_BRAIN(mmi)] is inactive, would you like to make an inactive AI?", "Installing AI [AI_CORE_BRAIN(mmi)]", list("Yes", "No")) == "Yes")
+		var/wants_install = (tgui_alert(user, "Isto.[AI_CORE_BRAIN(mmi)]Está inativo, gostaria de fazer uma IA inativa?", "Installing AI [AI_CORE_BRAIN(mmi)]", list("Yes", "No")) == "Yes")
 		if(!wants_install)
 			return FALSE
 		if(QDELETED(src) || QDELETED(user) || QDELETED(mmi) || !user.is_holding(mmi) || !Adjacent(user))
 			return FALSE
 		if(mmi.brainmob && HAS_TRAIT(mmi.brainmob, TRAIT_SUICIDED))
-			balloon_alert(user, "[AI_CORE_BRAIN(mmi)] is useless!")
+			balloon_alert(user, "[AI_CORE_BRAIN(mmi)]é inútil!")
 			return FALSE
 	else
 		var/mob/living/brain/mmi_brainmob = mmi.brainmob
 		if(!CONFIG_GET(flag/allow_ai) || (mmi_brainmob && is_banned_from(mmi_brainmob.ckey, JOB_AI)))
 			if(!QDELETED(src) && !QDELETED(user) && !QDELETED(mmi) && user.is_holding(mmi) && Adjacent(user))
-				balloon_alert(user, "[mmi] won't fit!")
+				balloon_alert(user, "[mmi]Não cabe!")
 			return FALSE
 
 	if(state != CORE_STATE_CABLED)
@@ -219,13 +219,13 @@
 
 /obj/structure/ai_core/proc/update_laws(mob/living/user, obj/item/ai_module/module)
 	if(!core_mmi)
-		balloon_alert(user, "no brain installed!")
+		balloon_alert(user, "Nenhum cérebro instalado!")
 		return FALSE
 	if(!core_mmi.brainmob || !core_mmi.brainmob?.mind || suicide_check())
-		balloon_alert(user, "[AI_CORE_BRAIN(core_mmi)] is inactive!")
+		balloon_alert(user, "[AI_CORE_BRAIN(core_mmi)]Está inativo!")
 		return FALSE
 	if(core_mmi.laws.id != DEFAULT_AI_LAWID)
-		balloon_alert(user, "[AI_CORE_BRAIN(core_mmi)] already has set laws!")
+		balloon_alert(user, "[AI_CORE_BRAIN(core_mmi)]Já estabeleceu leis!")
 		return FALSE
 
 	module.install(laws, user)
@@ -236,10 +236,10 @@
 		return FALSE
 
 	if(!core_mmi)
-		balloon_alert(user, "needs a processor!")
+		balloon_alert(user, "Precisa de um processador!")
 		return FALSE
 	if(glass.get_amount() < 2)
-		balloon_alert(user, "not enough [glass::name]!")
+		balloon_alert(user, "Não é o suficiente.[glass::name]!")
 		return FALSE
 
 	if(!glass.use_tool(src, user, 2 SECONDS, 2, 50, CHECK_STATE_CALLBACK(CORE_STATE_CABLED)) || !core_mmi)

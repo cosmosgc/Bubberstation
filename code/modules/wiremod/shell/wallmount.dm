@@ -1,6 +1,6 @@
 /obj/structure/wallmount_circuit
 	name = "circuit box"
-	desc = "A wall-mounted box suitable for the installation of integrated circuits."
+	desc = "Uma caixa montada em parede adequada para instalação de circuitos integrados."
 	icon = 'icons/obj/science/circuits.dmi'
 	icon_state = "wallmount"
 	layer = BELOW_OBJ_LAYER
@@ -15,18 +15,18 @@
 /obj/structure/wallmount_circuit/wrench_act(mob/living/user, obj/item/tool)
 	var/datum/component/shell/shell_comp = GetComponent(/datum/component/shell)
 	if(shell_comp.locked)
-		balloon_alert(user, "trancado!")
+		balloon_alert(user, "Trancado!")
 		return ITEM_INTERACT_FAILURE
-	to_chat(user, span_notice("You start unsecuring the circuit box..."))
+	to_chat(user, span_notice("Você começa a insegurar a caixa de circuito..."))
 	if(tool.use_tool(src, user, 40, volume=50))
-		to_chat(user, span_notice("You unsecure the circuit box."))
+		to_chat(user, span_notice("Você não protege a caixa de circuito."))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 		deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/wallframe/circuit
 	name = "circuit box frame"
-	desc = "A box that can be mounted on a wall and have circuits installed."
+	desc = "Uma caixa que pode ser montada em uma parede e ter circuitos instalados."
 	icon = 'icons/obj/science/circuits.dmi'
 	icon_state = "wallmount_assembly"
 	result_path = /obj/structure/wallmount_circuit

@@ -8,7 +8,7 @@
 
 /obj/item/forging/tongs
 	name = "forging tongs"
-	desc = "A set of tongs specifically crafted for use in forging. A wise man once said 'I lift things up and put them down.'"
+	desc = "Um conjunto de pinças especificamente concebidas para uso na forja. Um sábio disse uma vez: \"Levantei as coisas e as larguei\"."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	icon_state = "tong_empty"
 	tool_behaviour = TOOL_TONG
@@ -28,7 +28,7 @@
 
 /obj/item/forging/hammer
 	name = "forging mallet"
-	desc = "A mallet specifically crafted for use in forging. Used to slowly shape metal; careful, you could break something with it!"
+	desc = "Um martelo especificamente feito para forjar. Usado para moldar metal lentamente; cuidado, você poderia quebrar algo com ele!"
 	icon_state = "hammer"
 	inhand_icon_state = "hammer"
 	worn_icon_state = "hammer_back"
@@ -45,7 +45,7 @@
 
 /obj/item/forging/billow
 	name = "forging billow"
-	desc = "A billow specifically crafted for use in forging. Used to stoke the flames and keep the forge lit."
+	desc = "Uma onda especificamente criada para ser usada na forja. Costumava acender as chamas e manter a forja acesa."
 	icon_state = "billow"
 	tool_behaviour = TOOL_BILLOW
 
@@ -57,7 +57,7 @@
 //incomplete pre-complete items
 /obj/item/forging/incomplete
 	name = "parent dev item"
-	desc = "An incomplete forge item, continue to work hard to be rewarded for your efforts."
+	desc = "Um item de forja incompleto, continue trabalhando duro para ser recompensado por seus esforços."
 	//the time remaining that you can hammer before too cool
 	COOLDOWN_DECLARE(heating_remainder)
 	//the time between each strike
@@ -78,7 +78,7 @@
 /obj/item/forging/incomplete/tong_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(length(tool.contents) > 0)
-		user.balloon_alert(user, "tongs are full already!")
+		user.balloon_alert(user, "As pinças já estão cheias!")
 		return
 	forceMove(tool)
 	tool.icon_state = "tong_full"
@@ -180,99 +180,99 @@
 /obj/item/forging/complete/examine(mob/user)
 	. = ..()
 	if(spawning_item)
-		. += span_notice("<br>In order to finish this item, a workbench will be necessary!")
+		. += span_notice("<br>Para terminar este item, uma bancada será necessária!")
 
 /obj/item/forging/complete/chain
 	name = "chain"
-	desc = "A singular chain, best used in combination with multiple chains."
+	desc = "Uma corrente singular, melhor usada em combinação com várias correntes."
 	icon_state = "chain"
 
 /obj/item/forging/complete/plate
 	name = "plate"
-	desc = "A plate, best used in combination with multiple plates."
+	desc = "Uma placa, melhor usada em combinação com várias placas."
 	icon_state = "plate"
 
 /obj/item/forging/complete/sword
 	name = "sword blade"
-	desc = "A sword blade, ready to get some wood for completion."
+	desc = "Uma lâmina de espada, pronta para pegar madeira para a conclusão."
 	icon_state = "blade"
 	spawning_item = /obj/item/forging/reagent_weapon/sword
 
 /obj/item/forging/complete/katana
 	name = "katana blade"
-	desc = "A katana blade, ready to get some wood for completion."
+	desc = "Uma lâmina katana, pronta para pegar madeira para a conclusão."
 	icon_state = "katanablade"
 	spawning_item = /obj/item/forging/reagent_weapon/katana
 
 /obj/item/forging/complete/rapier
 	name = "rapier blade"
-	desc = "A rapier blade, ready to get some wood for completion."
+	desc = "Uma lâmina rapier, pronta para pegar madeira para a conclusão."
 	icon_state = "rapierblade"
 	spawning_item = /obj/item/forging/reagent_weapon/rapier
 
 /obj/item/forging/complete/dagger
 	name = "dagger blade"
-	desc = "A dagger blade, ready to get some wood for completion."
+	desc = "Uma lâmina de adaga, pronta para pegar madeira para a conclusão."
 	icon_state = "daggerblade"
 	spawning_item = /obj/item/forging/reagent_weapon/dagger
 
 /obj/item/forging/complete/staff
 	name = "staff head"
-	desc = "A staff head, ready to get some wood for completion."
+	desc = "Uma cabeça de bastão, pronta para pegar lenha para a conclusão."
 	icon_state = "staffhead"
 	spawning_item = /obj/item/forging/reagent_weapon/staff
 
 /obj/item/forging/complete/spear
 	name = "spear head"
-	desc = "A spear head, ready to get some wood for completion."
+	desc = "Uma cabeça de lança, pronta para pegar lenha para a conclusão."
 	icon_state = "spearhead"
 	spawning_item = /obj/item/forging/reagent_weapon/spear
 
 /obj/item/forging/complete/axe
 	name = "axe head"
-	desc = "An axe head, ready to get some wood for completion."
+	desc = "Uma cabeça de machado, pronta para pegar lenha para a conclusão."
 	icon_state = "axehead"
 	spawning_item = /obj/item/forging/reagent_weapon/axe
 
 /obj/item/forging/complete/hammer
 	name = "hammer head"
-	desc = "A hammer head, ready to get some wood for completion."
+	desc = "Uma cabeça de martelo, pronta para pegar madeira para a conclusão."
 	icon_state = "hammerhead"
 	spawning_item = /obj/item/forging/reagent_weapon/hammer
 
 /obj/item/forging/complete/pickaxe
 	name = "pickaxe head"
-	desc = "A pickaxe head, ready to get some wood for completion."
+	desc = "Uma cabeça de picareta, pronta para pegar lenha para a conclusão."
 	icon_state = "pickaxehead"
 	spawning_item = /obj/item/pickaxe/reagent_weapon
 
 /obj/item/forging/complete/shovel
 	name = "shovel head"
-	desc = "A shovel head, ready to get some wood for completion."
+	desc = "Uma cabeça de pá, pronta para pegar madeira para a conclusão."
 	icon_state = "shovelhead"
 	spawning_item = /obj/item/shovel/reagent_weapon
 
 /obj/item/forging/complete/arrowhead
 	name = "arrowhead"
-	desc = "An arrowhead, ready to get some wood for completion."
+	desc = "Uma ponta de flecha, pronta para pegar lenha para a conclusão."
 	icon_state = "arrowhead"
 	spawning_item = /obj/item/arrow_spawner
 
 /obj/item/forging/complete/rail_nail
 	name = "rail nail"
-	desc = "A nail, ready to be used with some wood in order to make tracks."
+	desc = "Um prego, pronto para ser usado com madeira para fazer trilhas."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
 	icon_state = "nail"
 	spawning_item = /obj/item/stack/rail_track/ten
 
 /obj/item/forging/coil
 	name = "coil"
-	desc = "A simple coil, comprised of coiled iron rods."
+	desc = "Uma simples bobina, composta de barras de ferro enroladas."
 	icon_state = "coil"
 
 /obj/item/forging/incomplete_bow
 	name = "incomplete longbow"
-	desc = "A wooden bow that has yet to be strung."
+	desc = "Um arco de madeira que ainda não foi amarrado."
 	icon_state = "nostring_bow"
 
 /obj/item/forging/incomplete_bow/attackby(obj/item/attacking_item, mob/user, params)
@@ -285,7 +285,7 @@
 
 /obj/item/arrow_spawner
 	name = "arrow spawner"
-	desc = "You shouldn't see this."
+	desc = "Você não deveria ver isso."
 	/// the amount of arrows that are spawned from the spawner
 	var/spawning_amount = 4
 
@@ -309,10 +309,10 @@
 /obj/item/stack/tong_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(length(tool.contents) > 0)
-		user.balloon_alert(user, "tongs are full already!")
+		user.balloon_alert(user, "As pinças já estão cheias!")
 		return FALSE
 	if(!material_type && !custom_materials)
-		user.balloon_alert(user, "invalid material!")
+		user.balloon_alert(user, "Material inválido!")
 		return
 	forceMove(tool)
 	tool.icon_state = "tong_full"
@@ -320,7 +320,7 @@
 /obj/tong_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(length(tool.contents))
-		user.balloon_alert(user, "tongs are full already!")
+		user.balloon_alert(user, "As pinças já estão cheias!")
 		return FALSE
 	if(skyrat_obj_flags & ANVIL_REPAIR)
 		forceMove(tool)
@@ -328,7 +328,7 @@
 
 /obj/item/empty_circuit
 	name = "empty circuit"
-	desc = "This is a circuit that is close to being finished; it just requires some forethought and gold."
+	desc = "Este é um circuito que está perto de ser terminado, só requer algumas previsões e ouro."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	icon_state = "circuit"
 	var/static/recycleable_circuits = typecacheof(list(
@@ -342,21 +342,21 @@
 		var/obj/item/stack/attacking_stack = attacking_item
 
 		if(user.mind.get_skill_level(/datum/skill/research) < SKILL_LEVEL_JOURNEYMAN)
-			to_chat(user, span_warning("You are not skilled enough in research to create a circuit!"))
+			to_chat(user, span_warning("Você não tem habilidade suficiente em pesquisa para criar um circuito!"))
 			return
 
 		var/choice = tgui_input_list(user, "Which circuit are you thinking about?", "Circuit Creation", recycleable_circuits)
 		if(!choice)
-			to_chat(user, span_notice("You decide against creating the circuit..."))
+			to_chat(user, span_notice("Você decide contra a criação do circuito..."))
 			return
 
 		if(!do_after(user, 5 SECONDS, src))
-			to_chat(user, span_warning("You moved around, destroying the circuit!"))
+			to_chat(user, span_warning("Você se moveu, destruindo o circuito!"))
 			qdel(src)
 			return
 
 		if(!attacking_stack.use(1))
-			to_chat(user, span_warning("You weren't able to use the gold, destroying the circuit!"))
+			to_chat(user, span_warning("Você não conseguiu usar o ouro, destruindo o circuito!"))
 			qdel(src)
 			return
 

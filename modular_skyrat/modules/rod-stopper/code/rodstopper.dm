@@ -9,7 +9,7 @@
 
 /obj/machinery/rodstopper
 	name = "rodstopper"
-	desc = "An advanced machine which can halt immovable rods."
+	desc = "Uma máquina avançada que pode parar hastes imóveis."
 	icon = 'modular_skyrat/modules/rod-stopper/icons/rodstopper.dmi'
 	icon_state = "rodstopper"
 	density = TRUE
@@ -19,7 +19,7 @@
 
 /obj/machinery/rodstopper/examine(mob/user)
 	. = ..()
-	. += span_warning("It will create a localized reality-collapse when stopping a rod, keep your distance!")
+	. += span_warning("Vai criar um colapso de realidade localizado quando parar uma haste, manter a distância!")
 
 /obj/machinery/rodstopper/Initialize(mapload)
 	. = ..()

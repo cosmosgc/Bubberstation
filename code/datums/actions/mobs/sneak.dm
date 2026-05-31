@@ -1,6 +1,6 @@
 /datum/action/cooldown/mob_cooldown/sneak
 	name = "Sneak"
-	desc = "Blend into the environment."
+	desc = "Misturar-se ao meio ambiente."
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "sniper_zoom"
 	background_icon_state = "bg_alien"
@@ -25,12 +25,12 @@
 		// It's safest to go to the initial alpha of the mob.
 		// Otherwise we get permanent invisbility exploits.
 		animate(owner, alpha = initial(owner.alpha), time = animation_time)
-		owner.balloon_alert(owner, "you reveal yourself")
+		owner.balloon_alert(owner, "Você se revela.")
 		REMOVE_TRAIT(owner, TRAIT_SNEAK, ACTION_TRAIT)
 
 	else
 		animate(owner, alpha = sneak_alpha, time = animation_time)
-		owner.balloon_alert(owner, "you blend into the environment")
+		owner.balloon_alert(owner, "Você se mistura ao meio ambiente.")
 		ADD_TRAIT(owner, TRAIT_SNEAK, ACTION_TRAIT)
 
 	return TRUE

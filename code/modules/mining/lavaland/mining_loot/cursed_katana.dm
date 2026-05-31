@@ -7,7 +7,7 @@
 
 /obj/item/organ/cyberimp/arm/toolkit/shard
 	name = "dark spoon shard"
-	desc = "An eerie metal shard surrounded by dark energies...of soup drinking. You probably don't think you should have been able to find this."
+	desc = "Um fragmento de metal assustador cercado por energias escuras... de beber sopa. Você provavelmente não acha que deveria ter encontrado isso."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "cursed_katana_organ"
 	organ_flags = ORGAN_ORGANIC | ORGAN_FROZEN | ORGAN_UNREMOVABLE
@@ -17,7 +17,7 @@
 
 /obj/item/organ/cyberimp/arm/toolkit/shard/attack_self(mob/user, modifiers)
 	. = ..()
-	to_chat(user, span_userdanger("The mass goes up your arm and goes inside it!"))
+	to_chat(user, span_userdanger("A massa sobe seu braço e entra nele!"))
 	playsound(user, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 	var/index = user.get_held_index_of_item(src)
 	swap_zone(IS_LEFT_INDEX(index) ? BODY_ZONE_L_ARM : BODY_ZONE_R_ARM)
@@ -29,7 +29,7 @@
 
 /obj/item/organ/cyberimp/arm/toolkit/shard/katana
 	name = "dark shard"
-	desc = "An eerie metal shard surrounded by dark energies."
+	desc = "Um fragmento de metal assustado cercado por energia escuras."
 	items_to_create = list(/obj/item/cursed_katana)
 
 /obj/item/organ/cyberimp/arm/toolkit/shard/katana/Retract()
@@ -37,7 +37,7 @@
 	if(!katana || katana.shattered)
 		return FALSE
 	if(!katana.drew_blood)
-		to_chat(owner, span_userdanger("[katana] lashes out at you in hunger!"))
+		to_chat(owner, span_userdanger("[katana]Bate em você com fome!"))
 		playsound(owner, 'sound/effects/magic/demon_attack1.ogg', 50, TRUE)
 		owner.apply_damage(25, BRUTE, hand, wound_bonus = 10, sharpness = SHARP_EDGED)
 	katana.drew_blood = FALSE
@@ -46,8 +46,7 @@
 
 /obj/item/cursed_katana
 	name = "cursed katana"
-	desc = "A katana used to seal something vile away long ago. \
-	Even with the weapon destroyed, all the pieces containing the creature have coagulated back together to find a new host."
+	desc = "Uma katana costumava selar algo vil há muito tempo. Mesmo com a arma destruída, todas as peças contendo a criatura coagularam para encontrar um novo hospedeiro."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "cursed_katana"
 	icon_angle = -45
@@ -81,18 +80,11 @@
 	alt_continuous = string_list(alt_continuous)
 	alt_simple = string_list(alt_simple)
 	AddComponent(/datum/component/alternative_sharpness, SHARP_POINTY, alt_continuous, alt_simple)
-	AddComponent( \
-		/datum/component/combo_attacks, \
-		combos = combo_list, \
-		max_combo_length = 4, \
-		examine_message = span_notice("<i>There seem to be inscriptions on it... you could examine them closer?</i>"), \
-		reset_message = "you return to neutral stance", \
-		can_attack_callback = CALLBACK(src, PROC_REF(can_combo_attack)) \
-	)
+	AddComponent( 		/datum/component/combo_attacks, 		combos = combo_list, 		max_combo_length = 4, 		examine_message = span_notice("<i>Parece que há inscrições nele... você poderia examiná-las mais de perto?</i>"), 		reset_message = "Você volta à posição neutra.", 		can_attack_callback = CALLBACK(src, PROC_REF(can_combo_attack)) 	)
 
 /obj/item/cursed_katana/examine(mob/user)
 	. = ..()
-	. += drew_blood ? span_nicegreen("It's sated... for now.") : span_danger("It will not be sated until it tastes blood.")
+	. += drew_blood ? span_nicegreen("Está satisfeito... por enquanto.") : span_danger("Não será saciado até provar sangue.")
 
 /obj/item/cursed_katana/dropped(mob/user)
 	. = ..()
@@ -115,15 +107,15 @@
 	return target.stat != DEAD && target != user
 
 /obj/item/cursed_katana/proc/strike(mob/living/target, mob/user)
-	user.visible_message(span_warning("[user] strikes [target] with [src]'s hilt!"),
-		span_notice("You hilt strike [target]!"))
-	to_chat(target, span_userdanger("You've been struck by [user]!"))
+	user.visible_message(span_warning("[user]Strikes[target]Com[src]É o cabo!"),
+		span_notice("Você ataca[target]!"))
+	to_chat(target, span_userdanger("Você foi atingido por[user]!"))
 	playsound(src, 'sound/items/weapons/genhit3.ogg', 50, TRUE)
 	RegisterSignal(target, COMSIG_MOVABLE_IMPACT, PROC_REF(strike_throw_impact))
 	var/atom/throw_target = get_edge_target_turf(target, user.dir)
 	target.throw_at(throw_target, 5, 3, user, FALSE, gentle = TRUE)
 	target.apply_damage(damage = 17, exposed_wound_bonus = 10)
-	to_chat(target, span_userdanger("You've been struck by [user]!"))
+	to_chat(target, span_userdanger("Você foi atingido por[user]!"))
 	user.do_attack_animation(target, ATTACK_EFFECT_PUNCH)
 
 /obj/item/cursed_katana/proc/strike_throw_impact(mob/living/source, atom/hit_atom, datum/thrownthing/thrownthing)
@@ -141,8 +133,8 @@
 	return NONE
 
 /obj/item/cursed_katana/proc/slice(mob/living/target, mob/user)
-	user.visible_message(span_warning("[user] does a wide slice!"),
-		span_notice("You do a wide slice!"))
+	user.visible_message(span_warning("[user]Faz uma fatia larga!"),
+		span_notice("Você faz uma fatia larga!"))
 	playsound(src, 'sound/items/weapons/bladeslice.ogg', 50, TRUE)
 	user.do_item_attack_animation(target, used_item = src, animation_type = ATTACK_ANIMATION_SLASH)
 	var/turf/user_turf = get_turf(user)
@@ -154,15 +146,15 @@
 		for(var/mob/living/additional_target in turf)
 			if(user.Adjacent(additional_target) && additional_target.density)
 				additional_target.apply_damage(damage = 15, sharpness = SHARP_EDGED, exposed_wound_bonus = 10)
-				to_chat(additional_target, span_userdanger("You've been sliced by [user]!"))
+				to_chat(additional_target, span_userdanger("Você foi fatiado por[user]!"))
 	target.apply_damage(damage = 5, sharpness = SHARP_EDGED, wound_bonus = 10)
 
 /obj/item/cursed_katana/proc/cloak(mob/living/target, mob/user)
 	user.alpha = 150
 	user.SetInvisibility(INVISIBILITY_OBSERVER, id=type) // so hostile mobs cant see us or target us
 	user.add_sight(SEE_SELF) // so we can see us
-	user.visible_message(span_warning("[user] vanishes into thin air!"),
-		span_notice("You enter the dark cloak."))
+	user.visible_message(span_warning("[user]Desapareça no ar!"),
+		span_notice("Você entra no manto escuro."))
 	new /obj/effect/temp_visual/mook_dust(get_turf(src))
 	playsound(src, 'sound/effects/magic/smoke.ogg', 50, TRUE)
 	if(ishostile(target))
@@ -175,15 +167,15 @@
 	user.alpha = 255
 	user.RemoveInvisibility(type)
 	user.clear_sight(SEE_SELF)
-	user.visible_message(span_warning("[user] appears from thin air!"),
-		span_notice("You exit the dark cloak."))
+	user.visible_message(span_warning("[user]Aparece não fazer nada!"),
+		span_notice("Você sai do manto escuro."))
 	playsound(src, 'sound/effects/magic/summonitems_generic.ogg', 50, TRUE)
 	new /obj/effect/temp_visual/mook_dust(get_turf(src))
 
 /obj/item/cursed_katana/proc/cut(mob/living/target, mob/user)
-	user.visible_message(span_warning("[user] cuts [target]'s tendons!"),
-		span_notice("You tendon cut [target]!"))
-	to_chat(target, span_userdanger("Your tendons have been cut by [user]!"))
+	user.visible_message(span_warning("[user]Cortes.[target]Tendões!"),
+		span_notice("Você cortou o tendão.[target]!"))
+	to_chat(target, span_userdanger("Seus tendões foram cortados por[user]!"))
 	user.do_item_attack_animation(target, used_item = src, animation_type = ATTACK_ANIMATION_SLASH)
 	target.apply_damage(damage = 15, sharpness = SHARP_EDGED, wound_bonus = 15)
 	user.do_attack_animation(target, ATTACK_EFFECT_DISARM)
@@ -195,9 +187,9 @@
 		status.add_stacks(6)
 
 /obj/item/cursed_katana/proc/dash(mob/living/target, mob/user)
-	user.visible_message(span_warning("[user] dashes through [target]!"),
-		span_notice("You dash through [target]!"))
-	to_chat(target, span_userdanger("[user] dashes through you!"))
+	user.visible_message(span_warning("[user]Atravesse[target]!"),
+		span_notice("Você corre[target]!"))
+	to_chat(target, span_userdanger("[user]Corre através de você!"))
 	playsound(src, 'sound/effects/magic/blink.ogg', 50, TRUE)
 	target.apply_damage(damage = 17, sharpness = SHARP_POINTY, exposed_wound_bonus = 10)
 	var/turf/dash_target = get_turf(target)
@@ -213,19 +205,19 @@
 	do_teleport(user, dash_target, channel = TELEPORT_CHANNEL_MAGIC)
 
 /obj/item/cursed_katana/proc/shatter(mob/living/target, mob/user)
-	user.visible_message(span_warning("[user] shatters [src] over [target]!"),
-		span_notice("You shatter [src] over [target]!"))
-	to_chat(target, span_userdanger("[user] shatters [src] over you!"))
+	user.visible_message(span_warning("[user]Estilhaços[src]Câmbio.[target]!"),
+		span_notice("Você quebra[src]Câmbio.[target]!"))
+	to_chat(target, span_userdanger("[user]Estilhaços[src]sobre você!"))
 	target.apply_damage(damage = ismining(target) ? 75 : 35, wound_bonus = 20)
 	user.do_attack_animation(target, ATTACK_EFFECT_SMASH)
 	playsound(src, 'sound/effects/glass/glassbr3.ogg', 100, TRUE)
 	shattered = TRUE
 	moveToNullspace()
-	balloon_alert(user, "katana shattered")
+	balloon_alert(user, "Katana se desfez.")
 	addtimer(CALLBACK(src, PROC_REF(coagulate), user), 45 SECONDS)
 
 /obj/item/cursed_katana/proc/coagulate(mob/user)
-	balloon_alert(user, "katana coagulated")
+	balloon_alert(user, "Katana coagulado.")
 	shattered = FALSE
 	playsound(src, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 

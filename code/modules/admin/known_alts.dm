@@ -9,7 +9,7 @@ GLOBAL_DATUM_INIT(known_alts, /datum/known_alts, new)
 		return
 
 	if (!SSdbcore.Connect())
-		to_chat(usr, span_warning("Couldn't connect to the database."))
+		to_chat(usr, span_warning("Não consegui conectar ao banco de dados."))
 		return
 
 	var/datum/admins/holder = usr.client?.holder
@@ -21,11 +21,11 @@ GLOBAL_DATUM_INIT(known_alts, /datum/known_alts, new)
 
 	switch (href_list["action"])
 		if ("add")
-			var/ckey1 = input(usr, "Put in the name of the main ckey") as null|text
+			var/ckey1 = input(usr, "Coloque em nome do diretor.") as null|text
 			if (!ckey1)
 				return
 
-			var/ckey2 = input(usr, "Put in the name of their alt") as null|text
+			var/ckey2 = input(usr, "Coloquem em nome de seu alt") as null|text
 			if (!ckey2)
 				return
 
@@ -51,7 +51,7 @@ GLOBAL_DATUM_INIT(known_alts, /datum/known_alts, new)
 			QDEL_NULL(query_already_exists)
 
 			if (already_exists_row)
-				alert(usr, "Those two are already in the list of known alts!")
+				alert(usr, "Esses dois já estão na lista de alts conhecidos!")
 				return
 
 			var/datum/db_query/query_add_known_alt = SSdbcore.NewQuery({"
@@ -75,7 +75,7 @@ GLOBAL_DATUM_INIT(known_alts, /datum/known_alts, new)
 			show_panel(usr.client)
 
 			if (!is_banned_from(ckey2, "Server"))
-				var/ban_choice = alert("[ckey2] is not banned from the server. Do you want to open up the ban panel as well?",,"Yes", "No")
+				var/ban_choice = alert("[ckey2]Não é banido do servidor. Você quer abrir o painel de proibição também?",,"Yes", "No")
 				if (ban_choice == "Yes")
 					holder.ban_panel(ckey2, role = "Server", duration = BAN_PANEL_PERMANENT)
 		if ("delete")
@@ -96,14 +96,14 @@ GLOBAL_DATUM_INIT(known_alts, /datum/known_alts, new)
 				return
 
 			if (!query_known_alt_info.NextRow())
-				alert("Couldn't find the known alt with the ID [id]")
+				alert("Não achei o Alt conhecido com a identificação.[id]")
 				qdel(query_known_alt_info)
 				return
 
 			var/list/result = query_known_alt_info.item
 			QDEL_NULL(query_known_alt_info)
 
-			if (alert("Are you sure you want to delete the alt connection between [result[1]] and [result[2]]?",,"Yes", "No") != "Yes")
+			if (alert("Tem certeza que quer apagar a conexão entre[result[1]]E[result[2]]?",,"Yes", "No") != "Yes")
 				return
 
 			var/datum/db_query/query_delete_known_alt = SSdbcore.NewQuery({"
@@ -162,7 +162,7 @@ GLOBAL_DATUM_INIT(known_alts, /datum/known_alts, new)
 		return
 
 	if (!SSdbcore.Connect())
-		to_chat(usr, span_warning("Couldn't connect to the database."))
+		to_chat(usr, span_warning("Não consegui conectar ao banco de dados."))
 		return
 
 	var/list/known_alts_html = list()

@@ -1,6 +1,6 @@
 /obj/item/rwd
 	name = "rapid wiring device"
-	desc = "A device used to rapidly lay cable & pick up stray cable pieces laying around."
+	desc = "Um dispositivo usado para colocar rapidamente cabos e pegar peças de cabos perdidos por aí."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rcl-0"
 	inhand_icon_state = "rcl-0"
@@ -63,7 +63,7 @@
 
 /obj/item/rwd/attack_self_secondary(mob/user, modifiers)
 	if(current_amount <= 0)
-		balloon_alert(user, "nothing to dispense!")
+		balloon_alert(user, "Nada para dispensar!")
 		return
 
 	var/amount = tgui_input_number(user = user, message = "Enter amount to dispense", title = "Custom cable", default = 0, max_value = min(30, current_amount), min_value = min(1, current_amount), timeout = 0, round_value = TRUE)
@@ -89,7 +89,7 @@
 	//spawn the cable. if it merged with the stak below then you pick that up else put it in the user's hand
 	var/obj/item/stack/cable_coil/new_cable = new(user.drop_location(), amount)
 	if(QDELETED(new_cable))
-		balloon_alert(user, "merged with stack below!")
+		balloon_alert(user, "Fundida com uma pilha abaixo!")
 	else
 		user.put_in_active_hand(modify_cable(new_cable))
 
@@ -150,7 +150,7 @@
 	if(!istype(user))
 		return FALSE
 	if(!ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("Você não tem a destreza de fazer isso!"))
 		return FALSE
 	if(user.incapacitated || !user.Adjacent(src))
 		return FALSE
@@ -159,7 +159,7 @@
 /// insert cable into the rwd
 /obj/item/rwd/proc/add_cable(mob/user, obj/item/stack/cable_coil/cable)
 	if(current_amount == max_amount)
-		balloon_alert(user, "device is full!")
+		balloon_alert(user, "O dispositivo está cheio!")
 		return
 
 	var/insert_amount = min(cable.amount, max_amount - current_amount)
@@ -168,7 +168,7 @@
 
 	delta_cable(insert_amount, decrement = FALSE)
 	update_appearance(UPDATE_ICON_STATE)
-	balloon_alert(user, "inserted [insert_amount] cable")
+	balloon_alert(user, "Inserido[insert_amount]Cabo.")
 
 /// modify cable properties according to its layer
 /obj/item/rwd/proc/modify_cable(obj/item/stack/cable_coil/target_cable)

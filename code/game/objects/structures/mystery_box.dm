@@ -114,7 +114,7 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 
 /obj/structure/mystery_box
 	name = "mystery box"
-	desc = "A wooden crate that seems equally magical and mysterious, capable of granting the user all kinds of different pieces of gear."
+	desc = "Uma caixa de madeira que parece igualmente mágica e misteriosa, capaz de conceder ao usuário todos os tipos de diferentes peças de engrenagem."
 	icon = 'icons/obj/storage/crates.dmi'
 	icon_state = "wooden"
 	pixel_y = -4
@@ -199,7 +199,7 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 
 /// The box has finished choosing, mark it as available for grabbing
 /obj/structure/mystery_box/proc/present_weapon()
-	visible_message(span_notice("[src] presents [presented_item]!"), vision_distance = COMBAT_MESSAGE_RANGE)
+	visible_message(span_notice("[src]Presentes[presented_item]!"), vision_distance = COMBAT_MESSAGE_RANGE)
 	box_state = MYSTERY_BOX_PRESENTING
 	box_expire_timer = addtimer(CALLBACK(src, PROC_REF(start_expire_offer)), MBOX_DURATION_PRESENTING, TIMER_STOPPABLE)
 
@@ -220,7 +220,7 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 	box_expire_timer = null
 	addtimer(CALLBACK(src, PROC_REF(ready_again)), MBOX_DURATION_STANDBY)
 	if(uses_left <= 0)
-		visible_message("[src] breaks down.")
+		visible_message("[src]Derruba.")
 		deconstruct(disassembled = FALSE)
 
 /// The cooldown between activations has finished, shake to show that
@@ -233,7 +233,7 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 /// Someone attacked the box with an empty hand, spawn the shown prize and give it to them, then close the box
 /obj/structure/mystery_box/proc/grant_weapon(mob/living/user)
 	var/atom/movable/instantiated_weapon = new presented_item.selected_path(loc)
-	user.visible_message(span_notice("[user] takes [presented_item] from [src]."), span_notice("You take [presented_item] from [src]."), vision_distance = COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_notice("[user]Toma.[presented_item]De[src]."), span_notice("Você pega.[presented_item]De[src]."), vision_distance = COMBAT_MESSAGE_RANGE)
 	playsound(src, grant_sound, 70, FALSE, channel = current_sound_channel, falloff_exponent = 10)
 	close_box()
 
@@ -254,25 +254,25 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 		user.put_in_hands(extra_mag)
 
 /obj/structure/mystery_box/guns
-	desc = "A wooden crate that seems equally magical and mysterious, capable of granting the user all kinds of different pieces of gear. This one seems focused on firearms."
+	desc = "Uma caixa de madeira que parece igualmente mágica e misteriosa, capaz de conceder ao usuário todos os tipos de diferentes peças de engrenagem. Este parece focado em armas de fogo."
 
 /obj/structure/mystery_box/guns/generate_valid_types()
 	valid_types = GLOB.summoned_guns
 
 /obj/structure/mystery_box/tdome
-	desc = "A wooden crate that seems equally magical and mysterious, capable of granting the user all kinds of different pieces of gear. This one has an extended array of weaponry."
+	desc = "Uma caixa de madeira que parece igualmente mágica e misteriosa, capaz de conceder ao usuário todos os tipos de diferentes peças de engrenagem. Este tem uma grande variedade de armas."
 
 /obj/structure/mystery_box/tdome/generate_valid_types()
 	valid_types = GLOB.mystery_box_guns + GLOB.mystery_box_extended
 
 /obj/structure/mystery_box/wands
-	desc = "A wooden crate that seems equally magical and mysterious, capable of granting the user all kinds of different magical items."
+	desc = "Uma caixa de madeira que parece igualmente mágica e misteriosa, capaz de conceder ao usuário todos os tipos de diferentes itens mágicos."
 
 /obj/structure/mystery_box/wands/generate_valid_types()
 	valid_types = GLOB.mystery_magic
 
 /obj/structure/mystery_box/wildcard
-	desc = "A wooden crate that seems equally magical and mysterious, capable of granting the user all kinds of different pieces of gear. This one has an EXTREAMLY extended array of weaponry."
+	desc = "Uma caixa de madeira que parece igualmente mágica e misteriosa, capaz de conceder ao usuário todos os tipos de diferentes peças de engrenagem. Este tem uma grande variedade de armas."
 
 /obj/structure/mystery_box/wildcard/generate_valid_types()
 	valid_types = GLOB.summoned_all_guns
@@ -280,7 +280,7 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 ///A fishing and pirate-themed mystery box, rarely found by fishing in the ocean, then another cannot be caught for the next 30 minutes.
 /obj/structure/mystery_box/fishing
 	name = "treasure chest"
-	desc = "A piratey coffer equally magical and mysterious, capable of granting different pieces of gear to whoever opens it."
+	desc = "Um cofre pirata igualmente mágico e misterioso, capaz de conceder diferentes peças de equipamento a quem o abrir."
 	icon_state = "treasure"
 	uses_left = 18
 	max_integrity = 100
@@ -297,14 +297,14 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 
 /obj/structure/mystery_box/fishing/activate(mob/living/user)
 	if(user.mind && minds_that_opened_us?[WEAKREF(user.mind)] >= 3)
-		to_chat(user, span_warning("[src] refuses to open to you anymore. Perhaps you should present it to someone else..."))
+		to_chat(user, span_warning("[src]se recusa a abrir para você mais. Talvez devesse apresentá-lo a outra pessoa..."))
 		return
 	return ..()
 
 /// This represents the item that comes out of the box and is constantly changing before the box finishes deciding. Can probably be just an /atom or /movable.
 /obj/effect/abstract/mystery_box_item
 	name = "???"
-	desc = "Who knows what it'll be??"
+	desc = "Quem sabe o que vai ser?"
 	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	icon_state = "revolver"
 	pixel_z = -4

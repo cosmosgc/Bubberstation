@@ -28,7 +28,7 @@
 
 	var/datum/carrier_room/room_to_send_to = get_current_carrier_room()
 	if(!istype(room_to_send_to))
-		to_chat(src, span_warning("You do not have a carrier you can send messages to!"))
+		to_chat(src, span_warning("Você não tem um portador para quem possa enviar mensagens!"))
 		return FALSE
 
 	var/message_to_send = tgui_input_text(usr, "Input the message you want to send", "Carrier", multiline = TRUE)
@@ -52,7 +52,7 @@
 
 	var/datum/carrier_room/room_to_send_to = get_current_carrier_room()
 	if(!istype(room_to_send_to))
-		to_chat(src, span_warning("You do not have a carrier you can send emotes to!"))
+		to_chat(src, span_warning("Você não tem um porta-aviões para enviar emotes!"))
 		return FALSE
 
 	var/message_to_send = tgui_input_text(usr, "Input the emote you want to send", "Soulcatcher", multiline = TRUE)

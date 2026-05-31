@@ -1,6 +1,6 @@
 /obj/machinery/vending/dorms
 	name = "LustWish"
-	desc = "A vending machine with various toys. Not for the faint of heart."
+	desc = "Uma máquina com vários brinquedos. Não para os fracos de coração."
 	icon_state = "lustwish"
 	base_icon_state = "lustwish"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/lustwish.dmi'
@@ -202,7 +202,7 @@
 	if(!istype(used_item, /obj/item/lustwish_discount))
 		return ..()
 
-	user.visible_message(span_boldnotice("Something changes in [src] with a loud clunk."))
+	user.visible_message(span_boldnotice("Alguma coisa muda[src]com uma barulheira alta."))
 	card_used = !card_used
 
 	if(card_used)

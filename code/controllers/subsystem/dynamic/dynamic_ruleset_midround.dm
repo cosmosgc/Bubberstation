@@ -161,7 +161,7 @@
 	if(chosen_gang.paid_off)
 		return
 
-	var/list/candidates = SSpolling.poll_ghost_candidates("Do you wish to be considered for a [span_notice("pirate crew of [chosen_gang.name]?")]", check_jobban = ROLE_TRAITOR, alert_pic = /obj/item/claymore/cutlass, role_name_text = "pirate crew")
+	var/list/candidates = SSpolling.poll_ghost_candidates("Você deseja ser considerado para um[span_notice("pirate crew of [chosen_gang.name]?")]", check_jobban = ROLE_TRAITOR, alert_pic = /obj/item/claymore/cutlass, role_name_text = "tripulação pirata")
 	shuffle_inplace(candidates)
 
 	var/template_key = "pirate_[chosen_gang.ship_template_id]"
@@ -185,13 +185,13 @@
 				notify_ghosts(
 					"The [chosen_gang.ship_name] has an object of interest: [spawned_mob]!",
 					source = spawned_mob,
-					header = "Pirates!",
+					header = "Piratas!",
 				)
 			else
 				notify_ghosts(
 					"The [chosen_gang.ship_name] has an object of interest: [spawner]!",
 					source = spawner,
-					header = "Pirate Spawn Here!",
+					header = "Pirata Spawn aqui!",
 				)
 
 	priority_announce(chosen_gang.arrival_announcement, sender_override = chosen_gang.ship_name)
@@ -926,7 +926,7 @@
 	addtimer(CALLBACK(src, PROC_REF(check_spawn_hunters), remaining_time - 1 MINUTES), 1 MINUTES)
 
 /datum/dynamic_ruleset/midround/from_ghosts/fugitives/proc/spawn_hunters()
-	var/list/candidates = SSpolling.poll_ghost_candidates("Do you wish to be considered for a group of [span_notice(hunter_backstory)]?", check_jobban = list(ROLE_FUGITIVE_HUNTER, ROLE_SYNDICATE), alert_pic = /obj/machinery/sleeper, role_name_text = hunter_backstory)
+	var/list/candidates = SSpolling.poll_ghost_candidates("Você deseja ser considerado para um grupo de[span_notice(hunter_backstory)]?", check_jobban = list(ROLE_FUGITIVE_HUNTER, ROLE_SYNDICATE), alert_pic = /obj/machinery/sleeper, role_name_text = hunter_backstory)
 	shuffle_inplace(candidates)
 
 	var/datum/map_template/shuttle/hunter/ship
@@ -960,13 +960,13 @@
 				notify_ghosts(
 					"[spawner.prompt_name] has awoken: [spawned_mob]!",
 					source = spawned_mob,
-					header = "Come look!",
+					header = "Venha ver!",
 				)
 			else
 				notify_ghosts(
 					"[spawner.prompt_name] spawner has been created!",
 					source = spawner,
-					header = "Spawn Here!",
+					header = "Aqui é Spawn!",
 				)
 
 	var/list/announcement_text_list = list()
@@ -1185,7 +1185,7 @@
 	notify_ghosts(
 		"[candidate.current.real_name] has become a blob host!",
 		source = candidate.current,
-		header = "So Bulbous...",
+		header = "Então Bulbous...",
 	)
 
 /datum/dynamic_ruleset/midround/from_living/obsesed
@@ -1216,5 +1216,5 @@
 	notify_ghosts(
 		"[candidate.current.real_name] has developed an obsession with someone!",
 		source = candidate.current,
-		header = "Love Can Bloom",
+		header = "O amor pode florescer",
 	)

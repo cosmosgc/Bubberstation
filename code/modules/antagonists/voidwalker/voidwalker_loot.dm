@@ -1,7 +1,7 @@
 /// Gives someone the stable voided trauma and then self destructs
 /obj/item/clothing/head/helmet/skull/cosmic
 	name = "cosmic skull"
-	desc = "You can see and feel the surrounding space pulsing through it..."
+	desc = "Você pode ver e sentir o espaço ao redor pulsando através dele..."
 	icon = 'icons/obj/weapons/voidwalker_items.dmi'
 	icon_state = "cosmic_skull_charged"
 
@@ -17,13 +17,13 @@
 	. = ..()
 
 	if(istype(user, /mob/living/basic/voidwalker))
-		to_chat(user, span_bolddanger("OH GOD NOO!!!! WHYYYYYYYYY??!!! WHO WOULD DO THIS?!!"))
+		to_chat(user, span_bolddanger("Meu Deus, não! Por quê?! Quem faria isso?"))
 		return
 
 	if(!uses || !ishuman(user))
 		return
 
-	to_chat(user, span_purple("You begin staring into \the [src]..."))
+	to_chat(user, span_purple("Você começa a olhar\the [src]..."))
 
 	if(!do_after(user, 10 SECONDS, src))
 		return
@@ -42,7 +42,7 @@
 		starer.cure_trauma_type(/datum/brain_trauma/voided) //this wouldn't make much sense to have anymore
 		starer.gain_trauma(/datum/brain_trauma/voided/stable)
 
-	to_chat(user, span_purple("And a whole world opens up to you."))
+	to_chat(user, span_purple("E um mundo inteiro se abre para você."))
 	playsound(get_turf(user), 'sound/effects/curse/curse5.ogg', 60)
 
 /**
@@ -50,7 +50,7 @@
  */
 /obj/item/void_eater
 	name = "void eater" //as opposed to full eater
-	desc = "A deformed appendage, capable of shattering any glass and any flesh."
+	desc = "Um apêndice deformado, capaz de quebrar qualquer copo e qualquer carne."
 	icon = 'icons/obj/weapons/voidwalker_items.dmi'
 	icon_state = "tentacle"
 	inhand_icon_state = "tentacle"

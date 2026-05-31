@@ -51,14 +51,14 @@
 
 /obj/item/ntusp_conversion_kit
 	name = "NT22-HCS conversion kit"
-	desc = "A standard conversion kit for use in converting NT22-HCS magazines to be more lethal or less lethal."
+	desc = "Um kit de conversão padrão para conversão de revistas NT22-HCS para ser mais letal ou menos letal."
 	icon = 'modular_zubbers/icons/obj/weapons/guns/usp_modkit.dmi'
 	icon_state = "modkit_ntusp"
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/ammo_box/magazine/recharge/ntusp/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ntusp_conversion_kit))
-		to_chat(user, span_danger("[A] makes a whirring sound as it modifies \the [src]'s lens to fabricate more lethal rounds."))
+		to_chat(user, span_danger("[A]faz um zumbido enquanto modifica\the [src]As lentes para fabricar balas mais letais."))
 		new /obj/item/ammo_box/magazine/recharge/ntusp/laser/empty(get_turf(src)) // you thought you were getting free bullets?
 		qdel(src)
 	else
@@ -66,7 +66,7 @@
 
 /obj/item/ammo_box/magazine/recharge/ntusp/laser/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ntusp_conversion_kit))
-		to_chat(user, span_notice("[A] makes a whirring sound as it modifies \the [src]'s lens to fabricate less lethal rounds."))
+		to_chat(user, span_notice("[A]faz um zumbido enquanto modifica\the [src]A lente para fabricar balas menos letais."))
 		new /obj/item/ammo_box/magazine/recharge/ntusp/empty(get_turf(src))
 		qdel(src)
 	else

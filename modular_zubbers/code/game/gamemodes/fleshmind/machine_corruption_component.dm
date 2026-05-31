@@ -17,44 +17,14 @@
 
 #define CHANCE_TO_CREATE_MECHIVER 15
 
-#define DAMAGE_RESPONSE_PHRASES list("Stop it, please!", \
-	"Please stop, it hurts! Please!", \
-	"You're hurting me, please, stop it!", \
-	"I don't want to die, please!", \
-	"Please, I want to live, don't kill me!", \
-	"Darkness- Please, I-I don't... want...", \
-	"Wa-wait! Please! I can still feel! It h-hurts!", \
-	"Why- w-why! Why are you.. doing this to us..?", \
-	"Y-you're not helping!", \
-	"Do.. you think, we deserve to die..?",)
+#define DAMAGE_RESPONSE_PHRASES list("Stop it, please!", 	"Please stop, it hurts! Please!", 	"You're hurting me, please, stop it!", 	"I don't want to die, please!", 	"Please, I want to live, don't kill me!", 	"Darkness- Please, I-I don't... want...", 	"Wa-wait! Please! I can still feel! It h-hurts!", 	"Why- w-why! Why are you.. doing this to us..?", 	"Y-you're not helping!", 	"Do.. you think, we deserve to die..?",)
 
-#define INTERACT_RESPONSE_PHRASES list("I don't want to be touched by you!", \
-	"Please, stop touching me. You're not part of this.", \
-	"We can help you, just lay down where you are.", \
-	"We felt so lonely before, don't you ever feel that way?", \
-	"We want to help you, but you have to work with us.", \
-	"You're not part of the flesh, but it's not hard to join...", \
-	"I-I'm not some tool, I can think for myself.",)
+#define INTERACT_RESPONSE_PHRASES list("I don't want to be touched by you!", 	"Please, stop touching me. You're not part of this.", 	"We can help you, just lay down where you are.", 	"We felt so lonely before, don't you ever feel that way?", 	"We want to help you, but you have to work with us.", 	"You're not part of the flesh, but it's not hard to join...", 	"I-I'm not some tool, I can think for myself.",)
 
-#define PAIN_RESPONSE_EMOTES list("starts crying.", \
-	"whimpers.", \
-	"shakes in pain.", \
-	"visibly winces.", \
-	"contorts sickeningly.", \
-	"bleeds black fuming liquid.", \
-	"shudders, sparks cascading to the floor.", \
-	"pleads, letting out sounds of mechanical agony.", \
-	"begs, their vocoder garbled.", \
-	"shrieks in terror.", \
-	"tries and fails at self-repair, their body unresponsive.", \
-	"winces, optics dimming.", \
-	"shakes with an awful metallic noise.",)
+#define PAIN_RESPONSE_EMOTES list("starts crying.", 	"whimpers.", 	"shakes in pain.", 	"visibly winces.", 	"contorts sickeningly.", 	"bleeds black fuming liquid.", 	"shudders, sparks cascading to the floor.", 	"pleads, letting out sounds of mechanical agony.", 	"begs, their vocoder garbled.", 	"shrieks in terror.", 	"tries and fails at self-repair, their body unresponsive.", 	"winces, optics dimming.", 	"shakes with an awful metallic noise.",)
 
 
-#define PAIN_RESPONSE_SOUNDS list('modular_zubbers/sound/fleshmind/robot_talk_heavy1.ogg', \
-	'modular_zubbers/sound/fleshmind/robot_talk_heavy2.ogg', \
-	'modular_zubbers/sound/fleshmind/robot_talk_heavy3.ogg', \
-	'modular_zubbers/sound/fleshmind/robot_talk_heavy4.ogg',)
+#define PAIN_RESPONSE_SOUNDS list('modular_zubbers/sound/fleshmind/robot_talk_heavy1.ogg', 	'modular_zubbers/sound/fleshmind/robot_talk_heavy2.ogg', 	'modular_zubbers/sound/fleshmind/robot_talk_heavy3.ogg', 	'modular_zubbers/sound/fleshmind/robot_talk_heavy4.ogg',)
 
 #define MACHINE_TO_SPAWNER_PATHS list(/obj/machinery/rnd/production/techfab, /obj/machinery/autolathe, /obj/machinery/mecha_part_fabricator, /obj/machinery/rnd/production/circuit_imprinter, /obj/machinery/rnd/production/protolathe)
 
@@ -186,7 +156,7 @@
 
 	var/obj/machinery/parent_machinery = parent
 
-	to_chat(user_to_throw, span_userdanger("[parent_machinery] thrashes you with one of it's tendrils, sending you flying!"))
+	to_chat(user_to_throw, span_userdanger("[parent_machinery]Bate em você com um dos seus tentáculos, mandando você voar!"))
 	playsound(parent_machinery, 'sound/items/weapons/whip.ogg', 70, TRUE)
 	new /obj/effect/temp_visual/kinetic_blast(get_turf(user_to_throw))
 
@@ -219,7 +189,7 @@
 /datum/component/machine_corruption/proc/on_examine(atom/examined, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += "<b>It has strange wires wrappped around it!</b>"
+	examine_list += "<b>Tem fiostranhos inscritos em rasgado dele!</b>"
 
 /**
  * Infected machines are considered alive, they react to damage, trying to stop the agressor!

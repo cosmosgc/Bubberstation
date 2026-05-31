@@ -2,7 +2,7 @@
 
 /obj/item/sparkler
 	name = "sparkler"
-	desc = "A little stick coated with metal powder and barium nitrate, burns with a pleasing sparkle."
+	desc = "Uma pequena vara revestida com pó de metal e nitrato de bário, queima com um brilho agradável."
 	icon = 'icons/obj/holiday/holiday_misc.dmi'
 	icon_state = "sparkler"
 	w_class = WEIGHT_CLASS_TINY
@@ -52,7 +52,7 @@
 	return ..()
 
 /obj/item/sparkler/ignition_effect(atom/atom, mob/user)
-	. = span_notice("[user] gracefully lights [atom] with [src].")
+	. = span_notice("[user]graciosamente luzes[atom]com[src].")
 
 /obj/item/sparkler/get_temperature()
 	return lit * heat
@@ -61,7 +61,7 @@
 
 /obj/item/grenade/firecracker
 	name = "large firecracker"
-	desc = "Outlawed in most of the sector. Doubles as an excellent finger remover."
+	desc = "Fora da lei na maior parte do setor. Duplos como um excelente removedor de dedos."
 	icon = 'icons/obj/holiday/holiday_misc.dmi'
 	icon_state = "firecracker"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
@@ -91,19 +91,19 @@
 		return
 	if(det_time)
 		det_time -= 10
-		to_chat(user, span_notice("You shorten the fuse of [src] with [item]."))
+		to_chat(user, span_notice("Você encurta o fusível de[src]com[item]."))
 		playsound(src, 'sound/items/tools/wirecutter.ogg', 20, TRUE)
 		icon_state = initial(icon_state) + "_[det_time]"
 		update_appearance()
 	else
-		to_chat(user, span_danger("You've already removed all of the fuse!"))
+		to_chat(user, span_danger("Você já removeu todo o fusível!"))
 
 /obj/item/grenade/firecracker/arm_grenade(mob/user, delayoverride, msg = TRUE, volume = 80)
 	log_grenade(user)
 	if(user)
 		add_fingerprint(user)
 		if(msg)
-			to_chat(user, span_warning("You prime [src]! [capitalize(DisplayTimeText(det_time))]!"))
+			to_chat(user, span_warning("Você prime[src]! [capitalize(DisplayTimeText(det_time))]!"))
 	playsound(src, 'sound/effects/fuse.ogg', volume, TRUE)
 	active = TRUE
 	icon_state = initial(icon_state) + "_active"

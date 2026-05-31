@@ -1,6 +1,6 @@
 /obj/item/spanking_pad
 	name = "spanking pad"
-	desc = "A leather pad with a handle."
+	desc = "Uma almofada de couro com alça."
 	icon_state = "spankpad_pink"
 	base_icon_state = "spankpad"
 	inhand_icon_state = "spankpad_pink"
@@ -46,7 +46,7 @@
 /obj/item/spanking_pad/examine(mob/user)
 	. = ..()
 	if(!color_changed)
-		. += span_notice("Alt-click to change it's color.")
+		. += span_notice("Alt-click para mudar sua cor.")
 
 /obj/item/spanking_pad/click_alt(mob/user)
 	if(color_changed)
@@ -72,16 +72,15 @@
 		return
 
 	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
-		to_chat(user, span_danger("[target] doesn't want you to do that."))
+		to_chat(user, span_danger("[target]Não quer que faça isso."))
 		return
 
 	if(carbon_target && !carbon_target.is_bottomless())
-		to_chat(user, span_danger("[target]'s butt is covered!"))
+		to_chat(user, span_danger("[target]A bunda está coberta!"))
 		return
 
 	var/message = (user == target) ? pick("spanks themselves with [src]",
-			"uses [src] to slap their hips") \
-		: pick("slaps [target]'s hips with [src]",
+			"uses [src] to slap their hips") 		: pick("slaps [target]'s hips with [src]",
 			"uses [src] to slap [target]'s butt",
 			"spanks [target] with [src], making a loud slapping noise",
 			"slaps [target]'s thighs with [src]")

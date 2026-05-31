@@ -16,7 +16,7 @@ export const ShuttleManipulator = (props) => {
   const [tab, setTab] = useState(1);
 
   return (
-    <Window title="Shuttle Manipulator" width={800} height={600} theme="admin">
+    <Window title="Manipulador de ônibus" width={800} height={600} theme="admin">
       <Window.Content scrollable>
         <Tabs>
           <Tabs.Tab selected={tab === 1} onClick={() => setTab(1)}>
@@ -78,7 +78,7 @@ export const ShuttleManipulatorStatus = (props) => {
                 <>
                   ({shuttle.timeleft})
                   <Button
-                    content="Fast Travel"
+                    content="Viagem Rápida"
                     key={shuttle.id}
                     disabled={!shuttle.can_fast_travel}
                     onClick={() =>
@@ -153,7 +153,7 @@ export const ShuttleManipulatorTemplates = (props) => {
                       </LabeledList.Item>
                     )}
                     {!!actualTemplate.admin_notes && (
-                      <LabeledList.Item label="Admin Notes">
+                      <LabeledList.Item label="Notas de Administração">
                         {actualTemplate.admin_notes}
                       </LabeledList.Item>
                     )}
@@ -185,7 +185,7 @@ export const ShuttleManipulatorModification = (props) => {
                   </LabeledList.Item>
                 )}
                 {!!selected.admin_notes && (
-                  <LabeledList.Item label="Admin Notes">
+                  <LabeledList.Item label="Notas de Administração">
                     {selected.admin_notes}
                   </LabeledList.Item>
                 )}
@@ -202,7 +202,7 @@ export const ShuttleManipulatorModification = (props) => {
                   label="Status"
                   buttons={
                     <Button
-                      content="Jump To"
+                      content="Pule para"
                       onClick={() =>
                         act('jump_to', {
                           type: 'mobile',
@@ -218,7 +218,7 @@ export const ShuttleManipulatorModification = (props) => {
               </LabeledList>
             </Section>
           ) : (
-            <Section level={2} title="Existing Shuttle: None" />
+            <Section level={2} title="Transporte existente:" />
           )}
           <Section level={2} title="Status">
             <Button
@@ -250,7 +250,7 @@ export const ShuttleManipulatorModification = (props) => {
           </Section>
         </>
       ) : (
-        'No shuttle selected'
+        'Nenhuma nave auxiliar selecionada.'
       )}
     </Section>
   );

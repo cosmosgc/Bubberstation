@@ -77,7 +77,7 @@
  */
 /datum/mold_type/proc/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
 	SHOULD_CALL_PARENT(TRUE) //  don't skip the message brah...
-	bulb.visible_message(span_warning("[bulb] ruptures!"))
+	bulb.visible_message(span_warning("[bulb]Rupturas!"))
 	return
 
 /**
@@ -105,7 +105,7 @@
  * * amount_of_reagent - how much of the reagent to add to the reagents datum. Defaults to 30.
  */
 /datum/mold_type/proc/spew_foam(obj/structure/mold/structure/source, range, reagent_capacity, reagent_to_add, amount_of_reagent = 30)
-	source.visible_message(span_warning("[source] spews out foam!"))
+	source.visible_message(span_warning("[source]Vomite espuma!"))
 	var/datum/reagents/spewed_reagents = new /datum/reagents(reagent_capacity)
 	spewed_reagents.my_atom = source
 	spewed_reagents.add_reagent(reagent_to_add, amount_of_reagent)
@@ -123,13 +123,13 @@
 	name = "fire"
 	mold_color = "#e04000"
 	structure_light_color = LIGHT_COLOR_FIRE
-	examine_text = "It feels hot to the touch."
+	examine_text = "Parece quente ao toque."
 	mob_types = list(/mob/living/basic/mold/oil_shambler)
 	preferred_atmos_conditions = "co2=30;TEMP=400"
 	resistance_flags = FIRE_PROOF
 
 /datum/mold_type/fire/core_defense(obj/structure/mold/structure/core/core)
-	core.visible_message(span_warning("[core] puffs out a cloud of flames!"))
+	core.visible_message(span_warning("[core]Incha uma nuvem de chamas!"))
 	spawn_atmos(core)
 
 /datum/mold_type/fire/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
@@ -152,13 +152,13 @@
 	tier = MOLD_TIER_HIGH_THREAT
 	mold_color = "#6e5100"
 	structure_light_color = LIGHT_COLOR_BROWN
-	examine_text = "It looks like it's rotting."
+	examine_text = "Parece que está podre."
 	mob_types = list(/mob/living/basic/mold/diseased_rat)
 	spawn_cooldown = 5 SECONDS
 	preferred_atmos_conditions = "miasma=10;TEMP=296"
 
 /datum/mold_type/disease/core_defense(obj/structure/mold/structure/core/core)
-	core.visible_message(span_warning("[core] emits a cloud!"))
+	core.visible_message(span_warning("[core]Emite uma nuvem!"))
 	fungal_puff(core, DISEASE_PUFF_RANGE_CORE)
 
 /datum/mold_type/disease/bulb_discharge(obj/structure/mold/structure/bulb/bulb)
@@ -188,13 +188,13 @@
 	name = "EMP"
 	mold_color = "#00caa5"
 	structure_light_color = LIGHT_COLOR_ELECTRIC_CYAN
-	examine_text = "You can notice small sparks travelling in the vines."
+	examine_text = "Você pode notar pequenas faíscas viajando nas videiras."
 	mob_types = list(/mob/living/basic/mold/electric_mosquito)
 	spawn_cooldown = 5 SECONDS
 	preferred_atmos_conditions = "n2=30;TEMP=150"
 
 /datum/mold_type/emp/core_defense(obj/structure/mold/structure/core/core)
-	core.visible_message(span_warning("[core] sends out electrical discharges!"))
+	core.visible_message(span_warning("[core]envia descargas elétricas!"))
 	electrical_discharge(
 		source = core,
 		heavy_emp_range = ELECTRICAL_DISCHARGE_HEAVY_RANGE,
@@ -254,7 +254,7 @@
 	name = "toxic"
 	mold_color = "#cb37f5"
 	structure_light_color = LIGHT_COLOR_LAVENDER
-	examine_text = "It feels damp and smells of rat poison."
+	examine_text = "Parece úmido e cheira a veneno de rato."
 	mob_types = list(/mob/living/basic/spider/giant/hunter)
 	preferred_atmos_conditions = "co2=80;TEMP=296"
 	resistance_flags = UNACIDABLE | ACID_PROOF
@@ -287,13 +287,13 @@
 	name = "radioactive"
 	mold_color = "#80ff00"
 	structure_light_color = LIGHT_COLOR_ELECTRIC_GREEN
-	examine_text = "It's glowing a soft green."
+	examine_text = "Está brilhando um verde suave."
 	mob_types = list(/mob/living/basic/mold/centaur)
 	preferred_atmos_conditions = "tritium=2;TEMP=296"
 	resistance_flags = ACID_PROOF | FIRE_PROOF
 
 /datum/mold_type/radioactive/core_defense(obj/structure/mold/structure/core/core)
-	core.visible_message(span_warning("[core] emits a strong radiation pulse!"))
+	core.visible_message(span_warning("[core]emite um forte pulso de radiação!"))
 	irradiate(core, threshold = RAD_IRRADIATE_THRESHOLD_CORE)
 	spew_foam(
 		core,

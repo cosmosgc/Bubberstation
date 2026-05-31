@@ -1,6 +1,6 @@
 /mob/living/simple_animal/bot/secbot/grievous //This bot is powerful. If you managed to get 4 eswords somehow, you deserve this horror. Emag him for best results.
 	name = "General Beepsky"
-	desc = "Is that a secbot with four eswords in its arms...?"
+	desc = "É um secbot com quatro espadas nos braços?"
 	icon = 'icons/mob/silicon/aibots.dmi'
 	icon_state = "grievous"
 	health = 150
@@ -18,7 +18,7 @@
 
 /mob/living/simple_animal/bot/secbot/grievous/toy //A toy version of general beepsky!
 	name = "Genewul Bweepskee"
-	desc = "An adorable looking secbot with four toy swords taped to its arms"
+	desc = "Um adorável secbot com quatro espadas de brinquedo coladas em seus braços."
 	health = 50
 	maxHealth = 50
 	baton_type = /obj/item/toy/sword
@@ -30,14 +30,14 @@
 	if(stat != CONSCIOUS)
 		return NONE
 
-	visible_message(span_warning("[source] deflects [hitting_projectile] with its energy swords!"))
+	visible_message(span_warning("[source]Desvios.[hitting_projectile]com suas espadas de energia!"))
 	playsound(source, 'sound/items/weapons/blade1.ogg', 50, TRUE)
 	return COMPONENT_BULLET_BLOCKED
 
 /mob/living/simple_animal/bot/secbot/grievous/on_entered(datum/source, atom/movable/AM)
 	. = ..()
 	if(ismob(AM) && AM == target)
-		visible_message(span_warning("[src] flails his swords and cuts [AM]!"))
+		visible_message(span_warning("[src]Apunhala suas espadas e corta[AM]!"))
 		playsound(src,'sound/mobs/non-humanoids/beepsky/beepskyspinsabre.ogg',100,TRUE,-1)
 		INVOKE_ASYNC(src, PROC_REF(stun_attack), AM)
 
@@ -53,7 +53,7 @@
 	if(mode != BOT_HUNT)
 		return
 	if(prob(block_chance))
-		visible_message(span_warning("[src] deflects [user]'s attack with his energy swords!"))
+		visible_message(span_warning("[src]Desvios.[user]Ataque com suas espadas de energia!"))
 		playsound(src, 'sound/items/weapons/blade1.ogg', 50, TRUE, -1)
 		return TRUE
 
@@ -130,9 +130,9 @@
 			'sound/mobs/non-humanoids/beepsky/freeze.ogg',
 		), 50, FALSE)
 		playsound(src,'sound/items/weapons/saberon.ogg',50,TRUE,-1)
-		visible_message(span_warning("[src] ignites his energy swords!"))
+		visible_message(span_warning("[src]Incendeia suas espadas de energia!"))
 		icon_state = "grievous-c"
-		visible_message("<b>[src]</b> points at [C.name]!")
+		visible_message("<b>[src]</b>Pontos em[C.name]!")
 		mode = BOT_HUNT
 		INVOKE_ASYNC(src, PROC_REF(handle_automated_action))
 		break

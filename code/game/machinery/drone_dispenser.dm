@@ -4,7 +4,7 @@
 
 /obj/machinery/drone_dispenser //Most customizable machine 2015
 	name = "drone shell dispenser"
-	desc = "A hefty machine that, when supplied with iron and glass, will periodically create a drone shell. Does not need to be manually operated."
+	desc = "Uma máquina pesada que, quando fornecida com ferro e vidro, periodicamente criará uma concha de drone. Não precisa ser operado manualmente."
 
 	icon = 'icons/obj/machines/drone_dispenser.dmi'
 	icon_state = "on"
@@ -70,13 +70,7 @@
 
 /obj/machinery/drone_dispenser/Initialize(mapload)
 	. = ..()
-	materials = new ( \
-		src, \
-		list(/datum/material/iron, /datum/material/glass), \
-		SHEET_MATERIAL_AMOUNT * MAX_STACK_SIZE * 2, \
-		MATCONTAINER_EXAMINE, \
-		allowed_items = /obj/item/stack \
-	)
+	materials = new ( 		src, 		list(/datum/material/iron, /datum/material/glass), 		SHEET_MATERIAL_AMOUNT * MAX_STACK_SIZE * 2, 		MATCONTAINER_EXAMINE, 		allowed_items = /obj/item/stack 	)
 	materials.insert_amount_mat(starting_amount, /datum/material/iron)
 	materials.insert_amount_mat(starting_amount, /datum/material/glass)
 	materials.precise_insertion = TRUE
@@ -92,25 +86,25 @@
 
 /obj/machinery/drone_dispenser/syndrone //Please forgive me
 	name = "syndrone shell dispenser"
-	desc = "A suspicious machine that will create Syndicate exterminator drones when supplied with iron and glass. Disgusting."
+	desc = "Uma máquina suspeita que criará drones exterminadores de Syndicate quando fornecido com ferro e vidro. Nojento."
 	dispense_type = list(/obj/effect/mob_spawn/ghost_role/drone/syndrone)
 	//If we're gonna be a jackass, go the full mile - 10 second recharge timer
 	cooldownTime = 10 SECONDS
-	end_create_message = "dispenses a suspicious drone shell."
+	end_create_message = "Dispensa um drone suspeito."
 	starting_amount = SHEET_MATERIAL_AMOUNT * 12.5
 
 /obj/machinery/drone_dispenser/syndrone/badass //Please forgive me
 	name = "badass syndrone shell dispenser"
-	desc = "A suspicious machine that will create Syndicate exterminator drones when supplied with iron and glass. Disgusting. This one seems ominous."
+	desc = "Uma máquina suspeita que criará drones exterminadores de Syndicate quando fornecido com ferro e vidro. Nojento. Este parece ameaçador."
 	dispense_type = list(/obj/effect/mob_spawn/ghost_role/drone/syndrone/badass)
-	end_create_message = "dispenses an ominous suspicious drone shell."
+	end_create_message = "Dispensa uma ameaçadora cápsula suspeita de drone."
 
 // I don't need your forgiveness, this is awesome.
 /obj/machinery/drone_dispenser/snowflake
 	name = "snowflake drone shell dispenser"
-	desc = "A hefty machine that, when supplied with iron and glass, will periodically create a snowflake drone shell. Does not need to be manually operated."
+	desc = "Uma máquina pesada que, quando fornecida com ferro e vidro, periodicamente criará uma casca de drone floco de neve. Não precisa ser operado manualmente."
 	dispense_type = list(/obj/effect/mob_spawn/ghost_role/drone/snowflake)
-	end_create_message = "dispenses a snowflake drone shell."
+	end_create_message = "Dispensa uma cápsula de drone de floco de neve."
 	// Those holoprojectors aren't cheap
 	iron_cost = SHEET_MATERIAL_AMOUNT
 	glass_cost = SHEET_MATERIAL_AMOUNT
@@ -120,9 +114,9 @@
 // If the derelict gets lonely, make more friends.
 /obj/machinery/drone_dispenser/derelict
 	name = "derelict drone shell dispenser"
-	desc = "A rusty machine that, when supplied with iron and glass, will periodically create a derelict drone shell. Does not need to be manually operated."
+	desc = "Uma máquina enferrujada que, quando fornecida com ferro e vidro, periodicamente criará uma casca de drone abandonada. Não precisa ser operado manualmente."
 	dispense_type = list(/obj/effect/mob_spawn/ghost_role/drone/derelict)
-	end_create_message = "dispenses a derelict drone shell."
+	end_create_message = "Dispensa uma casca de drone abandonada."
 	iron_cost = SHEET_MATERIAL_AMOUNT * 5
 	glass_cost = SHEET_MATERIAL_AMOUNT * 2.5
 	starting_amount = 0
@@ -130,15 +124,15 @@
 
 /obj/machinery/drone_dispenser/classic
 	name = "classic drone shell dispenser"
-	desc = "A hefty machine that, when supplied with iron and glass, will periodically create a classic drone shell. Does not need to be manually operated."
+	desc = "Uma máquina pesada que, quando fornecida com ferro e vidro, periodicamente criará uma clássica concha de drone. Não precisa ser operado manualmente."
 	dispense_type = list(/obj/effect/mob_spawn/ghost_role/drone/classic)
-	end_create_message = "dispenses a classic drone shell."
+	end_create_message = "Dispensa uma clássica concha de drone."
 
 // An example of a custom drone dispenser.
 // This one requires no materials and creates basic hivebots
 /obj/machinery/drone_dispenser/hivebot
 	name = "hivebot fabricator"
-	desc = "A large, bulky machine that whirs with activity, steam hissing from vents in its sides."
+	desc = "Uma grande e volumosa máquina que assobia com atividade, a vapor assobiando de aberturas em seus lados."
 	icon = 'icons/obj/machines/hivebot_fabricator.dmi'
 	icon_state = "hivebot_fab"
 	icon_off = "hivebot_fab"
@@ -150,15 +144,15 @@
 	energy_used = 0
 	cooldownTime = 1 SECONDS //Only 1 second - hivebots are extremely weak
 	dispense_type = list(/mob/living/basic/hivebot)
-	begin_create_message = "closes and begins fabricating something within."
-	end_create_message = "slams open, revealing a hivebot!"
+	begin_create_message = "fecha e começa a fabricar algo dentro."
+	end_create_message = "Bate Alberto, revelando um hivebot!"
 	recharge_sound = null
 	recharge_message = null
 
 // A dispenser that produces binoculars, for the MediSim shuttle.
 /obj/machinery/drone_dispenser/binoculars
 	name = "binoculars fabricator"
-	desc = "A hefty machine that periodically creates a pair of binoculars. Really, Nanotrasen? We're getting this lazy?"
+	desc = "Uma máquina pesada que periodicamente cria um par de binóculos. Sério, Nanotrasen? Estamos ficando preguiçosos?"
 	dispense_type = list(/obj/item/binoculars)
 	starting_amount = SHEET_MATERIAL_AMOUNT * 2.5 //Redudant
 	maximum_idle = 1
@@ -166,7 +160,7 @@
 	iron_cost = 0
 	glass_cost = 0
 	energy_used = 0
-	end_create_message = "dispenses a pair of binoculars."
+	end_create_message = "dispensa um par de binóculos."
 
 /obj/machinery/drone_dispenser/examine(mob/user)
 	. = ..()
@@ -257,27 +251,27 @@
 /obj/machinery/drone_dispenser/crowbar_act(mob/living/user, obj/item/tool)
 	materials.retrieve_all()
 	tool.play_tool_sound(src)
-	to_chat(user, span_notice("You retrieve the materials from [src]."))
+	to_chat(user, span_notice("Você recupera os materiais de[src]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/drone_dispenser/welder_act(mob/living/user, obj/item/tool)
 	if(!(machine_stat & BROKEN))
-		to_chat(user, span_warning("[src] doesn't need repairs."))
+		to_chat(user, span_warning("[src]Não precisa de reparos."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!tool.tool_start_check(user, amount=1))
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_notice("[user] begins patching up [src] with [tool]."),
-		span_notice("You begin restoring the damage to [src]..."))
+		span_notice("[user]Começa a se remendar.[src]Com[tool]."),
+		span_notice("Você começa a restaurar o dano para[src]..."))
 
 	if(!tool.use_tool(src, user, 40, volume=50))
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_notice("[user] fixes [src]!"),
-		span_notice("You restore [src] to operation."))
+		span_notice("[user]Consertos[src]!"),
+		span_notice("Você restaura.[src]à operação."))
 
 	set_machine_stat(machine_stat & ~BROKEN)
 	atom_integrity = max_integrity

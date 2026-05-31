@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_bets, /datum/active_bet)
 	filedesc = "SpaceBet"
 	downloader_category = PROGRAM_CATEGORY_GAMES
 	program_open_overlay = "gambling"
-	extended_desc = "A multi-platform network for placing requests across the station, with payment across the network being possible."
+	extended_desc = "Uma rede multiplataforma para fazer pedidos através da estação, com o pagamento através da rede sendo possível."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	can_run_on_flags = PROGRAM_PDA
 	size = 4
@@ -64,7 +64,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_bets, /datum/active_bet)
 	. = ..()
 	var/mob/user = ui.user
 	if(isnull(computer.stored_id))
-		to_chat(user, span_danger("\The [computer] flashes an \"RFID Error - Unable to scan ID\" warning."))
+		to_chat(user, span_danger("\The [computer]Esclarece um\"Erro RFID - Incapaz de digitalizar ID\"Aviso."))
 		return
 	switch(action)
 		if("create_bet")
@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_bets, /datum/active_bet)
 				options += option
 				option = reject_bad_name(option, allow_numbers = TRUE, max_length = MAX_LENGTH_TITLE, cap_after_symbols = FALSE)
 			if(length(options) < 2)
-				to_chat(user, span_danger("2 options minimum required to start a bet."))
+				to_chat(user, span_danger("Duas opções mínimas necessárias para começar uma aposta."))
 				return
 			created_bet = new(user, title, description, options)
 			return TRUE
@@ -94,7 +94,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_bets, /datum/active_bet)
 			if(isnull(bet_placed_on))
 				return
 			if(bet_placed_on == created_bet)
-				to_chat(user, span_danger("You can't bet on your own poll!"))
+				to_chat(user, span_danger("Você não pode apostar em sua própria pesquisa!"))
 				return
 			var/money_betting = params["money_betting"]
 			if(!isnum(money_betting))
@@ -184,14 +184,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_bets, /datum/active_bet)
 		return
 	// We'll only advertise it on the first bet of the round, as to not make this overly annoying.
 	var/should_alert = !length(betting_channel.messages)
-	newscaster_message = GLOB.news_network.submit_article("The bet [name] has started, place your bets now!", "NtOS Space Betting App", NEWSCASTER_SPACE_BETTING, null, update_alert = should_alert)
+	newscaster_message = GLOB.news_network.submit_article("A aposta.[name]Já começou, façam suas apostas agora!", "Aplicativo de apostas espaciais da NTOS", NEWSCASTER_SPACE_BETTING, null, update_alert = should_alert)
 
 /// Reply to our previously placed advertisement feed article.
 /datum/active_bet/proc/reply_to_feed(winning_option)
 	if(isnull(newscaster_message))
 		return
 	GLOB.news_network.submit_comment(
-		comment_text = "The bet [name] has ended, the winner was [winning_option]!",
+		comment_text = "A aposta.[name]terminou, o vencedor foi[winning_option]!",
 		newscaster_username = "NtOS Betting Results",
 		current_message = newscaster_message,
 	)

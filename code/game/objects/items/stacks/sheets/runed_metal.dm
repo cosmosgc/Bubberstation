@@ -1,76 +1,12 @@
 // Note, the order these in are deliberate, as it affects
 // the order they are shown via radial.
-GLOBAL_LIST_INIT(runed_metal_recipes, list( \
-	new /datum/stack_recipe/radial( \
-		title = "pylon", \
-		result_type = /obj/structure/destructible/cult/pylon, \
-		req_amount = 4, \
-		time = 4 SECONDS, \
-		crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, \
-		desc = span_cult_bold("Pylon: Heals and regenerates the blood of nearby blood cultists and constructs, and also \
-			converts nearby floor tiles into engraved flooring, which allows blood cultists to scribe runes faster."), \
-		required_noun = "runed metal sheet", \
-		category = CAT_CULT, \
-	), \
-	new /datum/stack_recipe/radial( \
-		title = "altar", \
-		result_type = /obj/structure/destructible/cult/item_dispenser/altar, \
-		req_amount = 3, \
-		time = 4 SECONDS, \
-		crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, \
-		desc = span_cult_bold("Altar: Can make Eldritch Whetstones, Construct Shells, and Flasks of Unholy Water."), \
-		required_noun = "runed metal sheet", \
-		category = CAT_CULT, \
-	), \
-	new /datum/stack_recipe/radial( \
-		title = "archives", \
-		result_type = /obj/structure/destructible/cult/item_dispenser/archives, \
-		req_amount = 3, \
-		time = 4 SECONDS, \
-		crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, \
-		desc = span_cult_bold("Archives: Can make Zealot's Blindfolds, Shuttle Curse Orbs, \
-			and Veil Walker equipment. Emits Light."), \
-		required_noun = "runed metal sheet", \
-		category = CAT_CULT, \
-	), \
-	new /datum/stack_recipe/radial( \
-		title = "daemon forge", \
-		result_type = /obj/structure/destructible/cult/item_dispenser/forge, \
-		req_amount = 3, \
-		time = 4 SECONDS, \
-		crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, \
-		desc = span_cult_bold("Daemon Forge: Can make Nar'Sien Hardened Armor, Flagellant's Robes, \
-			and Eldritch Longswords. Emits Light."), \
-		required_noun = "runed metal sheet", \
-		category = CAT_CULT, \
-	), \
-	new /datum/stack_recipe/radial( \
-		title = "runed door", \
-		result_type = /obj/machinery/door/airlock/cult, \
-		time = 5 SECONDS, \
-		crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, \
-		desc = span_cult_bold("Runed Door: A weak door which stuns non-blood cultists who touch it."), \
-		required_noun = "runed metal sheet", \
-		category = CAT_CULT, \
-	), \
-	new /datum/stack_recipe/radial( \
-		title = "runed girder", \
-		result_type = /obj/structure/girder/cult, \
-		time = 5 SECONDS, \
-		crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, \
-		desc = span_cult_bold("Runed Girder: A weak girder that can be instantly destroyed by ritual daggers. \
-			Not a recommended usage of runed metal."), \
-		required_noun = "runed metal sheet", \
-		category = CAT_CULT, \
-	), \
-
-	new /datum/stack_recipe("runed stone platform", /obj/structure/platform/cult, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), \
-))
+GLOBAL_LIST_INIT(runed_metal_recipes, list( 	new /datum/stack_recipe/radial( 		title = "pylon", 		result_type = /obj/structure/destructible/cult/pylon, 		req_amount = 4, 		time = 4 SECONDS, 		crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, 		desc = span_cult_bold("Cura e regenera o sangue de cultistas de sangue próximos e constrói, e também converte azulejos de chão próximos em pisos gravados, o que permite que cultistas de sangue escriba runas mais rápido."), 		required_noun = "Folha de metal em runa", 		category = CAT_CULT, 	), 	new /datum/stack_recipe/radial( 		title = "altar", 		result_type = /obj/structure/destructible/cult/item_dispenser/altar, 		req_amount = 3, 		time = 4 SECONDS, 		crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, 		desc = span_cult_bold("Pode fazer Eldritch Whetstones, Construct Shells, e Flasks of Unholy Water."), 		required_noun = "Folha de metal em runa", 		category = CAT_CULT, 	), 	new /datum/stack_recipe/radial( 		title = "archives", 		result_type = /obj/structure/destructible/cult/item_dispenser/archives, 		req_amount = 3, 		time = 4 SECONDS, 		crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, 		desc = span_cult_bold("Arquivos: podem fazer as vendas de Zelot, a maldição do ônibus espacial Orbs, e equipamentos Veil Walker. Emits Light."), 		required_noun = "Folha de metal em runa", 		category = CAT_CULT, 	), 	new /datum/stack_recipe/radial( 		title = "Daemon Forge", 		result_type = /obj/structure/destructible/cult/item_dispenser/forge, 		req_amount = 3, 		time = 4 SECONDS, 		crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, 		desc = span_cult_bold("Daemon Forge: pode fazer Nar'Sien Hardened Armor, Flagellant's Robes, e Eldritch Longswords. Emits Light."), 		required_noun = "Folha de metal em runa", 		category = CAT_CULT, 	), 	new /datum/stack_recipe/radial( 		title = "Correndo porta", 		result_type = /obj/machinery/door/airlock/cult, 		time = 5 SECONDS, 		crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, 		desc = span_cult_bold("Uma porta fraca que atordoa cultistas não sanguinários que a tocam."), 		required_noun = "Folha de metal em runa", 		category = CAT_CULT, 	), 	new /datum/stack_recipe/radial( 		title = "Cinta de Correr", 		result_type = /obj/structure/girder/cult, 		time = 5 SECONDS, 		crafting_flags = CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, 		desc = span_cult_bold("Uma viga fraca que pode ser instantaneamente destruída por punhais rituais. Não é um uso recomendado de metal fundido."), 		required_noun = "Folha de metal em runa", 		category = CAT_CULT, 	), 
+	new /datum/stack_recipe("runed stone platform", /obj/structure/platform/cult, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), ))
 
 /obj/item/stack/sheet/runed_metal
 	name = "runed metal"
-	desc = "Sheets of cold metal with shifting inscriptions writ upon them."
-	singular_name = "runed metal sheet"
+	desc = "Folhas de metal frio com inscrições trocadas escritas sobre eles."
+	singular_name = "Folha de metal em runa"
 	icon_state = "sheet-runed"
 	inhand_icon_state = "sheet-runed"
 	icon = 'icons/obj/stack_objects.dmi'
@@ -86,7 +22,7 @@ GLOBAL_LIST_INIT(runed_metal_recipes, list( \
 
 /obj/item/stack/sheet/runed_metal/interact(mob/user)
 	if(!IS_CULTIST(user))
-		to_chat(user, span_warning("Only one with forbidden knowledge could hope to work this metal..."))
+		to_chat(user, span_warning("Só um com conhecimento proibido poderia esperar trabalhar este metal..."))
 		return FALSE
 
 	var/turf/user_turf = get_turf(user)
@@ -96,7 +32,7 @@ GLOBAL_LIST_INIT(runed_metal_recipes, list( \
 	var/is_valid_area = user_area && (user_area.area_flags & CULT_PERMITTED)
 
 	if(!is_valid_turf || !is_valid_area)
-		to_chat(user, span_warning("The veil is not weak enough here."))
+		to_chat(user, span_warning("O véu não é suficientemente fraco aqui."))
 		return FALSE
 
 	return ..()

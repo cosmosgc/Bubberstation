@@ -2,7 +2,7 @@
 
 /obj/item/drake_remains
 	name = "drake remains"
-	desc = "The gathered remains of a drake. It still crackles with heat, and smells distinctly of brimstone."
+	desc = "Os restos de um dragão. Ainda estala com calor, e cheira claramente a enxofre."
 	icon = 'icons/obj/clothing/head/helmet.dmi'
 	icon_state = "dragon"
 	custom_materials = list(/datum/material/bone = SHEET_MATERIAL_AMOUNT * 10)
@@ -18,7 +18,7 @@
 /obj/item/clothing/suit/hooded/cloak/drake
 	name = "drake armour"
 	icon_state = "dragon"
-	desc = "A suit of armour fashioned from the remains of an ash drake."
+	desc = "Uma armadura feita dos restos de um dragão de cinzas."
 	armor_type = /datum/armor/cloak_drake
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/drake
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -50,7 +50,7 @@
 	icon = 'icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	icon_state = "dragon"
-	desc = "The skull of a dragon."
+	desc = "O crânio de um dragão."
 	armor_type = /datum/armor/cloak_drake
 	clothing_flags = SNUG_FIT
 	cold_protection = HEAD
@@ -63,7 +63,7 @@
 
 /obj/item/melee/ghost_sword
 	name = "\improper spectral blade"
-	desc = "A rusted and dulled blade. It doesn't look like it'd do much damage. It glows weakly."
+	desc = "Uma lâmina enferrujada e entorpecida. Não parece que causaria muito dano. Brilha fracamente."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "spectral"
 	inhand_icon_state = "spectral"
@@ -93,11 +93,7 @@
 	alt_continuous = string_list(alt_continuous)
 	alt_simple = string_list(alt_simple)
 	AddComponent(/datum/component/alternative_sharpness, SHARP_POINTY, alt_continuous, alt_simple)
-	AddComponent(\
-		/datum/component/butchering, \
-		speed = 15 SECONDS, \
-		effectiveness = 90, \
-	)
+	AddComponent(		/datum/component/butchering, 		speed = 15 SECONDS, 		effectiveness = 90, 	)
 
 /obj/item/melee/ghost_sword/Destroy()
 	for(var/mob/dead/observer/ghost in spirits)
@@ -108,16 +104,16 @@
 
 /obj/item/melee/ghost_sword/attack_self(mob/user)
 	if(!COOLDOWN_FINISHED(src, summon_cooldown))
-		to_chat(user, span_warning("You just recently called out for aid. You don't want to annoy the spirits!"))
+		to_chat(user, span_warning("Você recentemente pediu ajuda. Você não quer irritar os espíritos!"))
 		return
 
 	COOLDOWN_START(src, summon_cooldown, 60 SECONDS)
-	to_chat(user, span_notice("You call out for aid, attempting to summon spirits to your side."))
+	to_chat(user, span_notice("Você pede ajuda, tentando chamar espíritos para o seu lado."))
 	notify_ghosts(
 		"[user.real_name] is raising [user.p_their()] [name], calling for your help!",
 		source = user,
 		ignore_key = POLL_IGNORE_SPECTRAL_BLADE,
-		header = "Spectral blade",
+		header = "Lâmina espectral",
 	)
 
 /obj/item/melee/ghost_sword/process()
@@ -145,20 +141,20 @@
 
 /obj/item/melee/ghost_sword/attack(mob/living/target, mob/living/carbon/human/user)
 	var/ghost_counter = ghost_check()
-	user.visible_message(span_danger("[user] strikes with the force of [ghost_counter] vengeful spirits!"))
+	user.visible_message(span_danger("[user]Ataques com a força de[ghost_counter]Espíritos vingativos!"))
 	. = ..()
 
 /obj/item/melee/ghost_sword/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	var/ghost_counter = ghost_check()
 	final_block_chance += clamp((ghost_counter * 5), 0, 75)
-	owner.visible_message(span_danger("[owner] is protected by a ring of [ghost_counter] ghosts!"))
+	owner.visible_message(span_danger("[owner]é protegido por um anel de[ghost_counter]Fantasmas!"))
 	return ..()
 
 // Dragon's blood
 
 /obj/item/dragons_blood
 	name = "bottle of dragons blood"
-	desc = "You're not actually going to drink this, are you?"
+	desc = "Você não vai beber isso, vai?"
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "vial"
 
@@ -171,7 +167,7 @@
 
 	switch(random)
 		if(1)
-			to_chat(user, span_danger("Your appearance morphs to that of a very small humanoid ash dragon! You get to look like a freak without the cool abilities."))
+			to_chat(user, span_danger("Sua aparência se transforma na de um pequeno dragão de cinzas humanóide! Você pode parecer uma aberração sem as habilidades legais."))
 
 			// BUBBER EDIT CHANGE BEGIN
 			// consumer.dna.features = list(
@@ -225,14 +221,14 @@
 			wings.Insert(consumer)
 
 		if(2)
-			to_chat(user, span_danger("Your flesh begins to melt! Miraculously, you seem fine otherwise."))
+			to_chat(user, span_danger("Sua carne começa a derreter! Milagrosamente, você parece bem de outra forma."))
 			consumer.set_species(/datum/species/skeleton)
 		if(3)
-			to_chat(user, span_danger("Power courses through you! You can now shift your form at will."))
+			to_chat(user, span_danger("O poder passa por você! Agora pode mudar sua forma à vontade."))
 			var/datum/action/cooldown/spell/shapeshift/dragon/dragon_shapeshift = new(user.mind || user)
 			dragon_shapeshift.Grant(user)
 		if(4)
-			to_chat(user, span_danger("You feel like you could walk straight through lava now."))
+			to_chat(user, span_danger("Você acha que pode andar direto pela lava agora."))
 			ADD_TRAIT(user, TRAIT_LAVA_IMMUNE, type)
 
 	playsound(user,'sound/items/drink.ogg', 30, TRUE)
@@ -242,7 +238,7 @@
 
 /obj/item/lava_staff
 	name = "staff of lava"
-	desc = "The ability to fill the emergency shuttle with lava. What more could you want out of life?"
+	desc = "A capacidade de encher a nave de emergência com lava. O que mais você poderia querer da vida?"
 	icon_state = "lavastaff"
 	inhand_icon_state = "lavastaff"
 	icon_angle = -45
@@ -293,18 +289,18 @@
 			return ITEM_INTERACT_FAILURE
 
 		COOLDOWN_START(src, use_cooldown, reset_cooldown)
-		user.visible_message(span_danger("[user] turns \the [old_name] into [reset_string]!"))
+		user.visible_message(span_danger("[user]Vira.\the [old_name]em[reset_string]!"))
 		playsound(target_turf,'sound/effects/magic/fireball.ogg', 200, TRUE)
 		return ITEM_INTERACT_SUCCESS
 
 	var/obj/effect/temp_visual/lavastaff/lava_visual = new /obj/effect/temp_visual/lavastaff(target_turf)
 	lava_visual.alpha = 0
 	animate(lava_visual, alpha = 255, time = create_delay)
-	user.visible_message(span_danger("[user] points [src] at [target_turf]!"))
+	user.visible_message(span_danger("[user]Pontos[src]em[target_turf]!"))
 	COOLDOWN_START(src, use_cooldown, create_delay + 1)
 
 	if(!do_after(user, create_delay, target_turf))
-		balloon_alert(user, "interrompido!")
+		balloon_alert(user, "Interrompido!")
 		COOLDOWN_RESET(src, use_cooldown)
 		qdel(lava_visual)
 		return ITEM_INTERACT_FAILURE
@@ -314,7 +310,7 @@
 		qdel(lava_visual)
 		return ITEM_INTERACT_FAILURE
 
-	user.visible_message(span_danger("[user] turns \the [old_name] into [transform_string]!"))
+	user.visible_message(span_danger("[user]Vira.\the [old_name]em[transform_string]!"))
 	message_admins("[ADMIN_LOOKUPFLW(user)] fired the lava staff at [ADMIN_VERBOSEJMP(target_turf)]")
 	user.log_message("fired the lava staff at [AREACOORD(target_turf)].", LOG_ATTACK)
 	COOLDOWN_START(src, use_cooldown, create_cooldown)

@@ -489,7 +489,7 @@
 		return
 	if(buckle_message_cooldown <= world.time)
 		buckle_message_cooldown = world.time + 25
-		balloon_alert(user, "can't move while buckled!")
+		balloon_alert(user, "Não consigo me mover enquanto estou preso!")
 	return
 
 /**
@@ -665,7 +665,7 @@
 /atom/proc/StartProcessingAtom(mob/living/user, obj/item/process_item, list/chosen_option)
 	var/processing_time = chosen_option[TOOL_PROCESSING_TIME]
 	var/sound_to_play = chosen_option[TOOL_PROCESSING_SOUND]
-	to_chat(user, span_notice("You start working on [src]."))
+	to_chat(user, span_notice("Você começa a trabalhar em[src]."))
 	if(sound_to_play)
 		playsound(src, sound_to_play, 50, TRUE)
 	if(!process_item.use_tool(src, user, processing_time, volume=50))
@@ -684,7 +684,7 @@
 			created_atom.pixel_x += rand(-8,8)
 			created_atom.pixel_y += rand(-8,8)
 		created_atoms.Add(created_atom)
-	to_chat(user, span_notice("You manage to create [amount_to_create] [initial(atom_to_create.gender) == PLURAL ? "[initial(atom_to_create.name)]" : "[initial(atom_to_create.name)][plural_s(initial(atom_to_create.name))]"] from [src]."))
+	to_chat(user, span_notice("Você consegue criar[amount_to_create] [initial(atom_to_create.gender) == PLURAL ? "[initial(atom_to_create.name)]" : "[initial(atom_to_create.name)][plural_s(initial(atom_to_create.name))]"]De[src]."))
 	SEND_SIGNAL(src, COMSIG_ATOM_PROCESSED, user, process_item, created_atoms)
 	UsedforProcessing(user, process_item, chosen_option, created_atoms)
 
@@ -898,9 +898,7 @@
 		if (flags_1 & HAS_CONTEXTUAL_SCREENTIPS_1 || held_item?.item_flags & ITEM_HAS_CONTEXTUAL_SCREENTIPS)
 			var/list/context = list()
 
-			var/contextual_screentip_returns = \
-				SEND_SIGNAL(src, COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM, context, held_item, user) \
-				| (held_item && SEND_SIGNAL(held_item, COMSIG_ITEM_REQUESTING_CONTEXT_FOR_TARGET, context, src, user))
+			var/contextual_screentip_returns = 				SEND_SIGNAL(src, COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM, context, held_item, user) 				| (held_item && SEND_SIGNAL(held_item, COMSIG_ITEM_REQUESTING_CONTEXT_FOR_TARGET, context, src, user))
 
 			if (contextual_screentip_returns & CONTEXTUAL_SCREENTIP_SET)
 				var/screentip_images = active_hud.screentip_images

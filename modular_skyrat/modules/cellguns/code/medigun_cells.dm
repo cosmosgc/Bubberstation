@@ -409,10 +409,10 @@
 	var/obj/item/clothing/gown = new /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
 
 	if(wearer.equip_to_slot_if_possible(gown, ITEM_SLOT_OCLOTHING, 1, 1, 1))
-		wearer.visible_message(span_notice("The [gown] covers [wearer] body"), span_notice("The [gown] wraps around your body, covering you"))
+		wearer.visible_message(span_notice("O[gown]Capas[wearer]Corpo"), span_notice("O[gown]envolve seu corpo, cobrindo você"))
 		return
 	else
-		wearer.visible_message(span_notice("The [gown] fails to fit on [wearer], instantly disentagrating away"), span_notice("The [gown] unable to fit on you, disentagrates into nothing"))
+		wearer.visible_message(span_notice("O[gown]Não se encaixa.[wearer], instantanemante desentando-se"), span_notice("O[gown]incapaz de caber em você, desagrega em nada."))
 		return FALSE
 
 //Salve Medicell
@@ -488,7 +488,7 @@
 	body.forceMove(firer.loc)
 	teleport_effect(body.loc)
 
-	body.visible_message(span_notice("[body]'s body teleports to [firer]!"))
+	body.visible_message(span_notice("[body]O corpo se teletransporta para[firer]!"))
 
 /obj/projectile/energy/medical/utility/body_teleporter/proc/teleport_effect(location)
 	do_sparks(5, 1, get_turf(location))
@@ -496,7 +496,7 @@
 //Objects Used by medicells.
 /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
 	name = "hardlight hospital gown"
-	desc = "A hospital gown made out of hardlight - you can barely feel it on your body, especially with all the anesthetics."
+	desc = "Um vestido de hospital feito de luz forte - você mal pode senti-lo em seu corpo, especialmente com todos os anestésicos."
 	icon_state = "/obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight"
 	greyscale_colors = "#B2D3CA#B2D3CA#B2D3CA#B2D3CA"
 
@@ -505,14 +505,14 @@
 	var/mob/living/carbon/wearer = user
 
 	if((wearer.get_item_by_slot(ITEM_SLOT_OCLOTHING)) == src && !QDELETED(src))
-		to_chat(wearer, span_notice("The [src] disappeared after being removed"))
+		to_chat(wearer, span_notice("O[src]Desapareça depois de ser removido."))
 		qdel(src)
 		return
 
 //Salve Globule
 /obj/item/mending_globule/hardlight
 	name = "salve globule"
-	desc = "A ball of regenerative synthetic plant matter, contained within a soft hardlight field."
+	desc = "Uma bola de matéria sintética regenerativa, contida num campo de luz forte."
 	embed_type = /datum/embedding/salve_globule
 	icon = 'modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/misc.dmi'
 	icon_state = "globule"
@@ -533,7 +533,7 @@
 //Hardlight Emergency Bed.
 /obj/structure/bed/medical/medigun
 	name = "hardlight medical bed"
-	desc = "A medical bed made out of Hardlight"
+	desc = "Uma cama médica feita de Hardlight"
 	icon = 'modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/misc.dmi'
 	icon_state = "hardlight_down"
 	base_icon_state = "hardlight"
@@ -568,7 +568,7 @@
 		if(has_buckled_mobs())
 			return FALSE
 
-		user.visible_message(span_notice("[user] deactivates \the [src]."), span_notice("You deactivate \the [src]."))
+		user.visible_message(span_notice("[user]Desativa\the [src]."), span_notice("Você desativa.\the [src]."))
 		qdel(src)
 
 //Oppressive Force Relocation
@@ -630,7 +630,7 @@
 		return FALSE
 
 	if(grace_period)
-		to_chat(teleportee, span_warning("You have [(time_allowance / 10)] seconds to leave, if you do not leave in this time, you will be forcibly teleported outside."))
+		to_chat(teleportee, span_warning("Você tem[(time_allowance / 10)]segundos para sair, se você não sair desta vez, você será teleportado para fora à força."))
 		teleportee.AddComponent(/datum/component/medigun_relocation, time_allowance, destination_area, area_locked, teleport_areas)
 		return TRUE
 
@@ -642,7 +642,7 @@
 			if(!turf_in_area.is_blocked_turf())
 				turf_list += turf_in_area
 
-	teleportee.visible_message(span_notice("[teleportee] is teleported away!"))
+	teleportee.visible_message(span_notice("[teleportee]é teletransportado!"))
 
 	do_teleport(teleportee, pick(turf_list), no_effects = FALSE, channel = TELEPORT_CHANNEL_QUANTUM)
 
@@ -685,7 +685,7 @@
 			if(!turf_in_area.is_blocked_turf())
 				turf_list += turf_in_area
 
-	teleportee.visible_message(span_notice("[teleportee] is teleported away!"))
+	teleportee.visible_message(span_notice("[teleportee]é teletransportado!"))
 
 	do_teleport(teleportee, pick(turf_list), no_effects = FALSE, channel = TELEPORT_CHANNEL_QUANTUM)
 

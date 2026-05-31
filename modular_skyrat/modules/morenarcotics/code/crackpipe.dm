@@ -1,6 +1,6 @@
 /obj/item/cigarette/pipe/crackpipe
 	name = "crack pipe"
-	desc = "A slick glass pipe made for smoking one thing: crack."
+	desc = "Um tubo de vidro liso feito para fumar uma coisa: crack."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	worn_icon = 'modular_skyrat/modules/morenarcotics/icons/mask.dmi'
 	icon_state = "glass_pipeoff" //it seems like theres some unused crack pipe sprite in masks.dmi, sweet!
@@ -13,7 +13,7 @@
 	if(smoketime <= 0)
 		if(ismob(loc))
 			var/mob/living/smoking_mob = loc
-			to_chat(smoking_mob, span_notice("Your [name] goes out."))
+			to_chat(smoking_mob, span_notice("Sua[name]Sai."))
 			lit = FALSE
 			icon_state = icon_off
 			inhand_icon_state = icon_off
@@ -29,7 +29,7 @@
 
 /obj/item/cigarette/pipe/crackpipe/attackby(obj/item/used_item, mob/user, params)
 	if(is_type_in_list(used_item, list(/obj/item/reagent_containers/crack,/obj/item/reagent_containers/blacktar)))
-		to_chat(user, span_notice("You stuff [used_item] into [src]."))
+		to_chat(user, span_notice("Sua coisa.[used_item]em[src]."))
 		smoketime = 2 * 60
 		name = "[used_item.name]-packed [initial(name)]"
 		if(used_item.reagents)
@@ -41,6 +41,6 @@
 			if(smoketime > 0)
 				light(lighting_text)
 			else
-				to_chat(user, span_warning("There is nothing to smoke!"))
+				to_chat(user, span_warning("Não há nada para fumar!"))
 		else
 			return ..()

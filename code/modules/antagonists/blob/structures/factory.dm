@@ -2,7 +2,7 @@
 	name = "factory blob"
 	icon = 'icons/mob/nonhuman-player/blob.dmi'
 	icon_state = "blob_factory"
-	desc = "A thick spire of tendrils."
+	desc = "Um espesso de tentáculos."
 	max_integrity = BLOB_FACTORY_MAX_HP
 	health_regen = BLOB_FACTORY_HP_REGEN
 	point_return = BLOB_REFUND_FACTORY_COST
@@ -80,7 +80,7 @@
 		return
 
 	modify_max_integrity(initial(max_integrity) * 0.25) //factories that produced a blobbernaut have much lower health
-	visible_message(span_boldwarning("The blobbernaut [pick("rips", "tears", "shreds")] its way out of the factory blob!"))
+	visible_message(span_boldwarning("O Blobbernaut[pick("rips", "tears", "shreds")]Sua saída da bolha da fábrica!"))
 	playsound(loc, 'sound/effects/splat.ogg', 50, TRUE)
 
 	blobbernaut = new_naut

@@ -1,8 +1,6 @@
 /datum/action/cooldown/spell/conjure/simian
 	name = "Summon Simians"
-	desc = "This spell reaches deep into the elemental plane of bananas (the monkey one, not the clown one), and \
-		summons monkeys and gorillas that will promptly flip out and attack everything in sight. Fun! \
-		Their lesser, easily manipulable minds will be convinced you are one of their allies, but only for a minute. Unless you also are a monkey."
+	desc = "Este feitiço atinge profundamente o plano elementar das bananas (o macaco, não o palhaço), e convoca macacos e gorilas que prontamente vão pirar e atacar tudo à vista. Divertido! Suas mentes menores e facilmente manipuláveis estarão convencidas de que você é um dos aliados deles, mas só por um minuto. A menos que você também seja um macaco."
 	button_icon_state = "simian"
 	sound = 'sound/music/antag/monkey.ogg'
 
@@ -35,7 +33,7 @@
 		gorilla_transformation = new(owner)
 		gorilla_transformation.Grant(owner)
 		spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC // Max level lets you cast it naked, for monkey larp.
-		to_chat(owner, span_notice("Your simian power has reached maximum capacity! You can now cast this spell naked, and have additionally been granted a gorilla transformation spell!"))
+		to_chat(owner, span_notice("Seu poder símio atingiu a máxima capacidade! Agora você pode lançar este feitiço nu, e também foi concedido um feitiço de transformação gorila!"))
 
 /datum/action/cooldown/spell/conjure/simian/cast(atom/cast_on)
 	. = ..()

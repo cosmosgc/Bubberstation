@@ -1,6 +1,6 @@
 /datum/mutation/adrenaline_rush
 	name = "Adrenaline Rush"
-	desc = "Allows the host to trigger their body's adrenaline response at will."
+	desc = "Permite que o hospedeiro acione a resposta de adrenalina do corpo à vontade."
 	quality = POSITIVE
 	text_gain_indication = span_notice("You feel pumped up!")
 	instability = POSITIVE_INSTABILITY_MODERATE
@@ -21,7 +21,7 @@
 
 /datum/action/cooldown/adrenaline
 	name = "Adrenaline!"
-	desc = "Energize yourself, pushing your body to its limits!"
+	desc = "Energize-se, empurrando seu corpo para seus limites!"
 	button_icon = 'icons/mob/actions/actions_genetic.dmi'
 	button_icon_state = "adrenaline"
 
@@ -35,7 +35,7 @@
 
 /datum/action/cooldown/adrenaline/Activate(mob/living/carbon/cast_on)
 	. = ..()
-	to_chat(cast_on, span_userdanger("You feel pumped up! It's time to GO!"))
+	to_chat(cast_on, span_userdanger("Você se sente animado! É hora de ir!"))
 	cast_on.reagents.add_reagent(/datum/reagent/drug/pumpup, adrenaline_amount)
 	cast_on.reagents.add_reagent(/datum/reagent/medicine/synaptizine, adrenaline_amount)
 	cast_on.reagents.add_reagent(/datum/reagent/determination, adrenaline_amount)
@@ -43,7 +43,7 @@
 	return TRUE
 
 /datum/action/cooldown/adrenaline/proc/get_tired(mob/living/carbon/cast_on)
-	to_chat(cast_on, span_danger("Your adrenaline rush makes way for a bout of nausea and a deep feeling of exhaustion in your muscles."))
+	to_chat(cast_on, span_danger("Sua adrenalina abre caminho para uma náusea e uma profunda sensação de exaustão nos músculos."))
 	cast_on.reagents.add_reagent(/datum/reagent/peaceborg/tire, comedown_amount)
 	cast_on.reagents.add_reagent(/datum/reagent/peaceborg/confuse, comedown_amount)
 	cast_on.set_dizzy_if_lower(10 SECONDS)

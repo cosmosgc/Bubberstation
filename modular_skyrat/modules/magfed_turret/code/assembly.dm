@@ -11,7 +11,7 @@
 	name = "turret plate assembly"
 	icon = 'modular_skyrat/modules/magfed_turret/icons/assembly.dmi'
 	icon_state = "turret_assembly"
-	desc = "A set of assembly parts for a magazine-fed turret, requiring a receiver, servo and sensor along with construction. This one seems to be for a basic outpost defense turret."
+	desc = "Um conjunto de peças de montagem para uma torre alimentada por revista, requerendo um receptor, servo e sensor junto com a construção. Este parece ser para uma torre de defesa do posto avançado."
 	/// modular receiver
 	var/obj/item/receiver
 	/// proximity sensor
@@ -28,21 +28,21 @@
 	var/display_text
 	switch(step)
 		if(TURRET_ASSEMBLY_START)
-			display_text = "The turret head is missing a <b>modular receiver</b>..."
+			display_text = "Falta a cabeça da torre.<b>Receptor modular</b>..."
 		if(TURRET_ASSEMBLY_RECEIVER)
-			display_text = "The turret head's connecting bolts are <b>loose</b>..."
+			display_text = "Os parafusos de ligação da cabeça da torre são<b>Soltar</b>..."
 		if(TURRET_ASSEMBLY_SEC_1)
-			display_text = "It looks like it's missing a <b>servo</b>..."
+			display_text = "Parece que está faltando um<b>servo</b>..."
 		if(TURRET_ASSEMBLY_SERVO)
-			display_text = "It looks like its main chassis is <b>unsecured</b>..."
+			display_text = "Parece que seu chassi principal é<b>Não está seguro.</b>..."
 		if(TURRET_ASSEMBLY_SEC_2)
-			display_text = "It looks like it's missing a <b>proximity sensor</b>..."
+			display_text = "Parece que está faltando um<b>Sensor de proximidade</b>..."
 		if(TURRET_ASSEMBLY_SENSOR)
-			display_text = "The sensor seems <b>unsecured</b>..."
+			display_text = "O sensor parece<b>Não está seguro.</b>..."
 		if(TURRET_ASSEMBLY_SEC_3)
-			display_text = "The supports' bolts seem <b>loose</b>..."
+			display_text = "Os parafusos dos suportes pares<b>Soltar</b>..."
 		if(TURRET_ASSEMBLY_WRAPUP)
-			display_text = "The circuitboard's CPU needs to be <b>activated</b>..."
+			display_text = "A CPU do circuito precisa ser<b>Ativado</b>..."
 	. += span_notice(display_text)
 
 /obj/item/turret_assembly/attackby(obj/item/part, mob/user, params)
@@ -52,30 +52,30 @@
 			if(!istype(part, /obj/item/weaponcrafting/receiver))
 				return
 			if(!user.transferItemToLoc(part, src))
-				balloon_alert(user, "core stuck to your hand!")
+				balloon_alert(user, "Núcleo preso em sua mão!")
 				return
 			playsound(src, 'sound/machines/click.ogg', 30, TRUE)
-			balloon_alert(user, "receiver inserted")
+			balloon_alert(user, "receptor inserido")
 			receiver = part
 			step = TURRET_ASSEMBLY_RECEIVER
 
 		if(TURRET_ASSEMBLY_SEC_1)
 			if(istype(part, /obj/item/stock_parts/servo)) //Construct
 				if(!user.transferItemToLoc(part, src))
-					balloon_alert(user, "servo stuck to your hand!")
+					balloon_alert(user, "servo preso em sua mão!")
 					return
 				playsound(src, 'sound/machines/click.ogg', 30, TRUE)
-				balloon_alert(user, "servo added")
+				balloon_alert(user, "servo adicionado.")
 				servo = part
 				step = TURRET_ASSEMBLY_SERVO
 
 		if(TURRET_ASSEMBLY_SEC_2)
 			if(istype(part, /obj/item/assembly/prox_sensor)) //Construct
 				if(!user.transferItemToLoc(part, src))
-					balloon_alert(user, "sensor stuck to your hand!")
+					balloon_alert(user, "Sensor preso em sua mão!")
 					return
 				playsound(src, 'sound/machines/click.ogg', 30, TRUE)
-				balloon_alert(user, "sensor added")
+				balloon_alert(user, "sensor adicionado")
 				sensor = part
 				step = TURRET_ASSEMBLY_SENSOR
 
@@ -86,18 +86,18 @@
 			var/obj/item/turretling = new design(drop_location())
 			qdel(src)
 			user.put_in_hands(turretling)
-			turretling.balloon_alert(user, "suit finished")
+			turretling.balloon_alert(user, "Terno terminado.")
 
 /obj/item/turret_assembly/wrench_act(mob/living/user, obj/item/tool)
 	switch(step)
 		if(TURRET_ASSEMBLY_SEC_3)
 			if(tool.use_tool(src, user, 0, volume=30))
-				balloon_alert(user, "assembly secured")
+				balloon_alert(user, "Montagem segura")
 				step = TURRET_ASSEMBLY_WRAPUP
 				return // Last step leads to the next step
 		if(TURRET_ASSEMBLY_WRAPUP)
 			if(tool.use_tool(src, user, 0, volume=30))
-				balloon_alert(user, "assembly unsecured")
+				balloon_alert(user, "Montagem sem segurança")
 				step = TURRET_ASSEMBLY_SEC_3
 				return
 
@@ -105,32 +105,32 @@
 	switch(step)
 		if(TURRET_ASSEMBLY_RECEIVER) //Construct
 			if(tool.use_tool(src, user, 0, volume=30))
-				balloon_alert(user, "receiver secured")
+				balloon_alert(user, "Receptor seguro.")
 				step = TURRET_ASSEMBLY_SEC_1
 				return //same as wrench
 		if(TURRET_ASSEMBLY_SEC_1) //Deconstruct
 			if(tool.use_tool(src, user, 0, volume=30))
-				balloon_alert(user, "receiver unsecured")
+				balloon_alert(user, "Receptor não seguro.")
 				step = TURRET_ASSEMBLY_RECEIVER
 				return
 		if(TURRET_ASSEMBLY_SERVO) //Construct
 			if(tool.use_tool(src, user, 0, volume=30))
-				balloon_alert(user, "servo secured")
+				balloon_alert(user, "servo seguro.")
 				step = TURRET_ASSEMBLY_SEC_2
 				return
 		if(TURRET_ASSEMBLY_SEC_2) //Deconstruct
 			if(tool.use_tool(src, user, 0, volume=30))
-				balloon_alert(user, "sensor unsecured")
+				balloon_alert(user, "Sensor não seguro.")
 				step = TURRET_ASSEMBLY_SERVO
 				return
 		if(TURRET_ASSEMBLY_SENSOR)//Construct
 			if(tool.use_tool(src, user, 0, volume=30))
-				balloon_alert(user, "sensor secured")
+				balloon_alert(user, "Sensor Seguro.")
 				step = TURRET_ASSEMBLY_SEC_3
 				return
 		if(TURRET_ASSEMBLY_SEC_3) //Deconstruct
 			if(tool.use_tool(src, user, 0, volume=30))
-				balloon_alert(user, "sensor unsecured")
+				balloon_alert(user, "Sensor não seguro.")
 				step = TURRET_ASSEMBLY_SENSOR
 				return
 
@@ -139,21 +139,21 @@
 		if(TURRET_ASSEMBLY_RECEIVER)
 			if(tool.use_tool(src, user, 0, volume=30))
 				receiver.forceMove(drop_location())
-				balloon_alert(user, "receiver taken out")
+				balloon_alert(user, "Receptor aposentado.")
 				receiver = null
 				step = TURRET_ASSEMBLY_START
 				return
 		if(TURRET_ASSEMBLY_SERVO)
 			if(tool.use_tool(src, user, 0, volume=30))
 				servo.forceMove(drop_location())
-				balloon_alert(user, "servo removed")
+				balloon_alert(user, "servo removido.")
 				servo = null
 				step = TURRET_ASSEMBLY_SEC_1
 				return
 		if(TURRET_ASSEMBLY_SENSOR)
 			if(tool.use_tool(src, user, 0, volume=30))
 				sensor.forceMove(drop_location())
-				balloon_alert(user, "sensor removed")
+				balloon_alert(user, "sensor removido.")
 				sensor = null
 				step = TURRET_ASSEMBLY_SEC_2
 				return
@@ -177,14 +177,14 @@
 	name = "twin_fang plate assembly"
 	icon = 'modular_skyrat/modules/magfed_turret/icons/assembly.dmi'
 	icon_state = "twinfang_assembly"
-	desc = "A set of assembly parts for a magazine-fed turret, requiring a receiver, servo and sensor along with construction. This one is for a \"Twin-Fang\" model of the \"Spider\" turret type."
+	desc = "Um conjunto de peças de montagem para uma torre alimentada por revista, requerendo um receptor, servo e sensor junto com a construção. Este é para um\"Twin-Fang\"Modelo do\"Aranha.\"Tipo Torre."
 	design = /obj/item/storage/toolbox/emergency/turret/mag_fed/spider/twin_fang
 
 /obj/item/turret_assembly/duster
 	name = "duster plate assembly"
 	icon = 'modular_skyrat/modules/magfed_turret/icons/assembly.dmi'
 	icon_state = "duster_assembly"
-	desc = "A set of assembly parts for a magazine-fed turret, requiring a receiver, servo and sensor along with construction. This one is for a \"Duster\" model of the \"Emergent\" turret type."
+	desc = "Um conjunto de peças de montagem para uma torre alimentada por revista, requerendo um receptor, servo e sensor junto com a construção. Este é para um\"Duster.\"Modelo do\"Emergente.\"Tipo Torre."
 	design = /obj/item/storage/toolbox/emergency/turret/mag_fed/duster
 
 #undef TURRET_ASSEMBLY_START

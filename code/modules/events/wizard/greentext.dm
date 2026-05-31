@@ -4,7 +4,7 @@
 	typepath = /datum/round_event/wizard/greentext
 	max_occurrences = 1
 	earliest_start = 0 MINUTES
-	description = "The Green Text appears on the station, tempting people to try and pick it up."
+	description = "O texto verde aparece na estação, tentando as pessoas para tentar pegá-lo."
 	min_wizard_trigger_potency = 5
 	max_wizard_trigger_potency = 7
 
@@ -19,12 +19,12 @@
 
 	var/mob/living/carbon/human/H = pick(holder_canadates)
 	new /obj/item/greentext(H.loc)
-	to_chat(H, "<font color='green'>The mythical greentext appear at your feet! Pick it up if you dare...</font>")
+	to_chat(H, "<font color='green'>O mítico texto verde aparece aos seus pés! Pegue-o se você se atrever...</font>")
 
 
 /obj/item/greentext
 	name = "greentext"
-	desc = "No one knows what this massive tome does, but it feels <i><font color='green'>desirable</font></i> all the same..."
+	desc = "Ninguém sabe o que esse grande tomo faz, mas parece<i><font color='green'>desejável</font></i>Mesmo assim..."
 	w_class = WEIGHT_CLASS_BULKY
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "greentext"
@@ -49,9 +49,9 @@
 
 /obj/item/greentext/equipped(mob/user, slot, initial = FALSE)
 	. = ..()
-	to_chat(user, span_green("So long as you leave this place with greentext in hand you know will be happy..."))
+	to_chat(user, span_green("Desde que saia daqui com o texto verde na mão, sabe que será feliz..."))
 	if(user.mind && length(user.mind.get_all_objectives()) > 0)
-		to_chat(user, span_warning("... so long as you still perform your other objectives that is!"))
+		to_chat(user, span_warning("... contanto que você ainda realize seus outros objetivos!"))
 	holder = user
 	if(!HAS_TRAIT(user, TRAIT_GREENTEXT_CURSED))
 		LAZYOR(color_altered_mobs, WEAKREF(user))
@@ -60,7 +60,7 @@
 
 /obj/item/greentext/dropped(mob/user, silent = FALSE)
 	if(HAS_TRAIT(user, TRAIT_GREENTEXT_CURSED))
-		to_chat(user, span_warning("A sudden wave of failure washes over you..."))
+		to_chat(user, span_warning("Uma onda repentina de fracasso se lava sobre você..."))
 		user.add_atom_colour("#ff0000", ADMIN_COLOUR_PRIORITY) //ya blew it
 	holder = null
 	return ..()
@@ -81,9 +81,9 @@
 
 	var/list/announce_list = quiet ? victims : GLOB.player_list
 	for(var/mob/player as anything in announce_list)
-		var/list/messages = list(span_warning("A dark temptation has passed from this world!"))
+		var/list/messages = list(span_warning("Uma tentação sombria passou deste mundo!"))
 		if(HAS_TRAIT(player, TRAIT_GREENTEXT_CURSED))
-			messages += span_green("You're finally able to forgive yourself...")
+			messages += span_green("Você finalmente é capaz de se perdoar...")
 		to_chat(player, messages.Join("\n"))
 	for(var/mob/player as anything in victims)
 		REMOVE_TRAIT(player, TRAIT_GREENTEXT_CURSED, REF(src))
@@ -100,7 +100,7 @@
 
 	REMOVE_TRAIT(holder, TRAIT_GREENTEXT_CURSED, REF(src))
 	release_victims()
-	to_chat(holder, span_green("At last it feels like victory is assured!"))
+	to_chat(holder, span_green("Finalmente parece que a vitória está garantida!"))
 	holder.mind.add_antag_datum(/datum/antagonist/greentext)
 	holder.log_message("won with greentext!!!", LOG_ATTACK, color = "green")
 	resistance_flags |= ON_FIRE

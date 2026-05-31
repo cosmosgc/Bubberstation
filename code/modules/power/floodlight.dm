@@ -6,7 +6,7 @@
 
 /obj/structure/floodlight_frame
 	name = "floodlight frame"
-	desc = "A metal frame that requires wiring and a light tube to become a flood light."
+	desc = "Um quadro de metal que requer fiação e um tubo de luz para se tornar uma luz de inundação."
 	max_integrity = 100
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "floodlight_c1"
@@ -55,14 +55,14 @@
 /obj/structure/floodlight_frame/examine(mob/user)
 	. = ..()
 	if(state == FLOODLIGHT_NEEDS_WIRES)
-		. += span_notice("It can be wired with [EXAMINE_HINT("5 cable pieces")].")
-		. += span_notice("The frame can be deconstructed by [EXAMINE_HINT("unwrenching")].")
+		. += span_notice("Pode ser grampeado com[EXAMINE_HINT("5 cable pieces")].")
+		. += span_notice("O quadro pode ser desconstruído por[EXAMINE_HINT("unwrenching")].")
 	else if(state == FLOODLIGHT_NEEDS_SECURING)
-		. += span_notice("The cable needs to be [EXAMINE_HINT("screwed")] on to the frame.")
-		. += span_notice("The hanging cable could be [EXAMINE_HINT("cut")] apart.")
+		. += span_notice("O cabo precisa ser[EXAMINE_HINT("screwed")]Para a moldura.")
+		. += span_notice("O cabo suspenso pode ser[EXAMINE_HINT("cut")]Separados.")
 	else if(state == FLOODLIGHT_NEEDS_LIGHTS)
-		. += span_notice("It needs a [EXAMINE_HINT("light tube")] to finish it.")
-		. += span_notice("The cable could be [EXAMINE_HINT("unscrewed")] from the frame.")
+		. += span_notice("Precisa de um...[EXAMINE_HINT("light tube")]Para terminar.")
+		. += span_notice("O cabo pode ser[EXAMINE_HINT("unscrewed")]Da modura.")
 
 /obj/structure/floodlight_frame/screwdriver_act(mob/living/user, obj/item/O)
 	. = ..()
@@ -106,12 +106,12 @@
 			state = FLOODLIGHT_NEEDS_SECURING
 			return
 		else
-			balloon_alert(user, "need 5 cable pieces!")
+			balloon_alert(user, "Preciso de 5 peças de cabo!")
 			return
 
 	if(istype(O, /obj/item/light/tube))
 		if(state != FLOODLIGHT_NEEDS_LIGHTS)
-			balloon_alert(user, "construction not completed!")
+			balloon_alert(user, "Construção não concluída!")
 			return
 		var/obj/item/light/tube/L = O
 		if(L.status != LIGHT_BROKEN) // light tube not broken.
@@ -120,19 +120,19 @@
 			qdel(O)
 			return
 		else //A minute of silence for all the accidentally broken light tubes.
-			balloon_alert(user, "light tube is broken!")
+			balloon_alert(user, "O tubo de luz está quebrado!")
 			return
 	..()
 
 /obj/structure/floodlight_frame/completed
 	name = "floodlight frame"
-	desc = "A bare metal frame that looks like a floodlight. Requires a light tube to complete."
+	desc = "Um quadro de metal nu que parece um holofote. Requer um tubo de luz para completar."
 	icon_state = "floodlight_c3"
 	state = FLOODLIGHT_NEEDS_LIGHTS
 
 /obj/machinery/power/floodlight
 	name = "floodlight"
-	desc = "A pole with powerful mounted lights on it. Due to its high power draw, it must be powered by a direct connection to a wire node."
+	desc = "Um poste com poderosas luzes montadas nele. Devido a sua alta potência, ele deve ser alimentado por uma conexão direta com um nó de arame."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "floodlight"
 	density = TRUE
@@ -207,14 +207,14 @@
 /obj/machinery/power/floodlight/examine(mob/user)
 	. = ..()
 	if(!anchored)
-		. += span_notice("It needs to be wrenched on top of a wire.")
+		. += span_notice("Precisa ser punida em cima de um fio.")
 	else
-		. += span_notice("It's at power level [setting].")
+		. += span_notice("Está no nível de potência.[setting].")
 	if(panel_open)
-		. += span_notice("Its maintenance hatch is open but can be [EXAMINE_HINT("screwed")] closed.")
-		. += span_notice("You can remove the light tube by [EXAMINE_HINT("hand")].")
+		. += span_notice("Sua escotilha de manutenção está aberta, mas pode ser[EXAMINE_HINT("screwed")]Fechado.")
+		. += span_notice("Você pode remover o tubo de luz por[EXAMINE_HINT("hand")].")
 	else
-		. += span_notice("Its maintenance hatch can be [EXAMINE_HINT("screwed")] open.")
+		. += span_notice("Sua escotilha de manutenção pode ser[EXAMINE_HINT("screwed")]Abra.")
 
 /obj/machinery/power/floodlight/process()
 	var/turf/T = get_turf(src)
@@ -247,17 +247,17 @@
 		if(FLOODLIGHT_OFF)
 			setting_text = "OFF"
 		if(FLOODLIGHT_LOW)
-			setting_text = "low power"
+			setting_text = "baixa potência"
 		if(FLOODLIGHT_MED)
-			setting_text = "standard lighting"
+			setting_text = "Iluminação padrão"
 		if(FLOODLIGHT_HIGH)
-			setting_text = "high power"
+			setting_text = "Alta potência."
 	if(user)
-		to_chat(user, span_notice("You set [src] to [setting_text]."))
+		to_chat(user, span_notice("Você está pronto.[src]Para[setting_text]."))
 
 /obj/machinery/power/floodlight/cable_layer_act(mob/living/user, obj/item/tool)
 	if(anchored)
-		balloon_alert(user, "desancore primeiro!")
+		balloon_alert(user, "Desancore primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	return ..()
 
@@ -275,7 +275,7 @@
 	. = ..()
 	change_setting(FLOODLIGHT_OFF)
 	panel_open = TRUE
-	balloon_alert(user, "opened panel")
+	balloon_alert(user, "Painel Aberto")
 	return TRUE
 
 /obj/machinery/power/floodlight/attack_hand(mob/user, list/modifiers)

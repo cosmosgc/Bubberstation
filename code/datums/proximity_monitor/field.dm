@@ -166,7 +166,7 @@
 //DEBUG FIELD ITEM
 /obj/item/multitool/field_debug
 	name = "strange multitool"
-	desc = "Seems to project a colored field!"
+	desc = "Parece projeta um campo colorido!"
 	apc_scanner = FALSE
 	var/operating = FALSE
 	var/range_to_use = 5
@@ -184,7 +184,7 @@
 
 /obj/item/multitool/field_debug/attack_self(mob/user)
 	operating = !operating
-	to_chat(user, span_notice("You turn [src] [operating? "on":"off"]."))
+	to_chat(user, span_notice("Você vira.[src] [operating? "on":"off"]."))
 	if(!istype(current) && operating)
 		setup_debug_field()
 	else if(!operating)

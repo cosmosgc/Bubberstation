@@ -1,6 +1,6 @@
 /obj/item/bodypart
 	name = "limb"
-	desc = "Why is it detached..."
+	desc = "Por que está separado..."
 	abstract_type = /obj/item/bodypart
 	force = 3
 	throwforce = 3
@@ -346,9 +346,9 @@
 
 	. = ..()
 	if(brute_dam > DAMAGE_PRECISION)
-		. += span_warning("This limb has [brute_dam > 30 ? "severe" : "minor"] bruising.")
+		. += span_warning("Este membro tem[brute_dam > 30 ? "severe" : "minor"]Equimoses.")
 	if(burn_dam > DAMAGE_PRECISION)
-		. += span_warning("This limb has [burn_dam > 30 ? "severe" : "minor"] burns.")
+		. += span_warning("Este membro tem[burn_dam > 30 ? "severe" : "minor"]Queimaduras.")
 
 	for(var/datum/wound/wound as anything in wounds)
 		var/wound_desc = wound.get_limb_examine_description()
@@ -455,22 +455,21 @@
 			else
 				check_list += span_warning(tourniquet_text)
 		if(current_gauze)
-			check_list += span_notice("\tThere is some [current_gauze.name] wrapped around it.")
+			check_list += span_notice("\tHá alguns[current_gauze.name]Em volta dele.")
 	else if(can_bleed())
 		var/bleed_text = ""
 		switch(cached_bleed_rate)
 			if(0.2 to 1)
-				bleed_text = span_warning("It's lightly bleeding.")
+				bleed_text = span_warning("Está sangrando levemente.")
 			if(1 to 2)
-				bleed_text = span_warning("It's bleeding.")
+				bleed_text = span_warning("Está sangrando.")
 			if(3 to 4)
-				bleed_text = span_warning("It's bleeding heavily!")
+				bleed_text = span_warning("Está sangrando muito!")
 			if(4 to INFINITY)
-				bleed_text = span_warning("It's bleeding profusely!")
+				bleed_text = span_warning("Está sangrando profusamente!")
 
 		if(bleed_text)
-			check_list += "\t[span_tooltip("You are loosing blood. You should wrap your limb in gauze \
-				or apply pressure to it by grabbing yourself (while targeting the limb) to stem the flow.", bleed_text)]"
+			check_list += "\t[span_tooltip("You are loosing blood. You should wrap your limb in gauze 				or apply pressure to it by grabbing yourself (while targeting the limb) to stem the flow.", bleed_text)]"
 
 	return jointext(check_list, "<br>")
 
@@ -523,8 +522,7 @@
 		surgery_message += "chest cavity is wide open"
 
 	if(length(surgery_message))
-		return span_tooltip("Your limb is undergoing surgery. If no doctors are around, \
-			you could suture or cauterize yourself to cancel it.", span_smalldanger("Its [english_list(surgery_message)]!"))
+		return span_tooltip("Seu membro está sendo operado. Se nenhum médico estiver por perto, pode se suturar ou cauterizar para cancelar.", span_smalldanger("Sua[english_list(surgery_message)]!"))
 	return ""
 
 /// Returns surgery examine information for this bodypart
@@ -537,42 +535,42 @@
 
 	if(HAS_SURGERY_STATE(reported_state, SURGERY_SKIN_CUT))
 		sub_messages += "skin has been incised"
-		single_message = "The skin on [lowercase_zone] has been incised."
+		single_message = "A pele[lowercase_zone]Foi incisado."
 	if(HAS_SURGERY_STATE(reported_state, SURGERY_SKIN_OPEN))
 		sub_messages += "skin is opened"
-		single_message = "The skin on [lowercase_zone] is opened."
+		single_message = "A pele[lowercase_zone]Está aberto."
 
 	// We can only see these if the skin is open
 	// And we check the real state rather than reported_state
 	if(LIMB_HAS_ANY_SURGERY_STATE(src, ALL_SURGERY_SKIN_STATES))
 		if(HAS_SURGERY_STATE(reported_state, SURGERY_VESSELS_UNCLAMPED))
 			sub_messages += "blood vessels are unclamped[cached_bleed_rate ? " and bleeding" : ""]"
-			single_message = "The blood vessels in [lowercase_zone] are unclamped[cached_bleed_rate ? " and bleeding!" : "."]"
+			single_message = "Os vasos sanguíneos dentro[lowercase_zone]estão desapertados.[cached_bleed_rate ? " and bleeding!" : "."]"
 		if(HAS_SURGERY_STATE(reported_state, SURGERY_VESSELS_CLAMPED))
 			sub_messages += "blood vessels are clamped shut"
-			single_message = "The blood vessels in [lowercase_zone] are clamped shut."
+			single_message = "Os vasos sanguíneos dentro[lowercase_zone]Estão presos."
 		if(HAS_SURGERY_STATE(reported_state, SURGERY_ORGANS_CUT))
 			sub_messages += "the organs within have been incised"
-			single_message = "The organs in [lowercase_zone] have been incised."
+			single_message = "Os órgãos dentro[lowercase_zone]foram incisados."
 		if(HAS_SURGERY_STATE(reported_state, SURGERY_BONE_SAWED))
 			sub_messages += "the bones within have been sawed apart"
-			single_message = "The bones in [lowercase_zone] have been sawed apart."
+			single_message = "Os ossos dentro[lowercase_zone]foram serrados separados."
 		if(HAS_SURGERY_STATE(reported_state, SURGERY_BONE_DRILLED))
 			sub_messages += "the bones within have been drilled through"
-			single_message = "The bones in [lowercase_zone] have been drilled through."
+			single_message = "Os ossos dentro[lowercase_zone]foram perfurados."
 
 	if(HAS_SURGERY_STATE(reported_state, SURGERY_PROSTHETIC_UNSECURED))
 		sub_messages += "prosthetic item is unsecured"
-		single_message = "[capital_zone] is unsecured and loose!"
+		single_message = "[capital_zone]não está seguro e solto!"
 	if(HAS_SURGERY_STATE(reported_state, SURGERY_PLASTIC_APPLIED))
 		sub_messages += "got a layer of plastic applied to it"
-		single_message = "A layer of plastic has been applied to [lowercase_zone]."
+		single_message = "Uma camada de plástico foi aplicada a[lowercase_zone]."
 	if(HAS_SURGERY_STATE(reported_state, SURGERY_CAVITY_WIDENED))
 		sub_messages += "the chest cavity is wide open"
-		single_message = "[owner?.p_Their() || "The"] chest cavity is wide open!"
+		single_message = "[owner?.p_Their() || "The"]A cavidade torácica está aberta!"
 
 	if(length(sub_messages) >= 2)
-		return span_smalldanger("[capital_zone]'s [english_list(sub_messages)].")
+		return span_smalldanger("[capital_zone]'s[english_list(sub_messages)].")
 	if(single_message)
 		return span_smalldanger(single_message)
 	return ""
@@ -593,17 +591,15 @@
 			if(!human_victim.get_bodypart(body_zone))
 				user.temporarilyRemoveItemFromInventory(src, TRUE)
 				if(!try_attach_limb(victim))
-					to_chat(user, span_warning("[human_victim]'s body rejects [src]!"))
+					to_chat(user, span_warning("[human_victim]O corpo rejeita.[src]!"))
 					forceMove(human_victim.loc)
 					return
 				if(check_for_frankenstein(victim))
 					bodypart_flags |= BODYPART_IMPLANTED
 				if(human_victim == user)
-					human_victim.visible_message(span_warning("[human_victim] jams [src] into [human_victim.p_their()] empty socket!"),\
-					span_notice("You force [src] into your empty socket, and it locks into place!"))
+					human_victim.visible_message(span_warning("[human_victim]Compotas[src]em[human_victim.p_their()]Tomada vazia!"),					span_notice("Você força[src]em seu soquete vazio, e ele tranca no lugar!"))
 				else
-					human_victim.visible_message(span_warning("[user] jams [src] into [human_victim]'s empty socket!"),\
-					span_notice("[user] forces [src] into your empty socket, and it locks into place!"))
+					human_victim.visible_message(span_warning("[user]Compotas[src]em[human_victim]O soquete está vazio!"),					span_notice("[user]forças[src]em seu soquete vazio, e ele tranca no lugar!"))
 				return
 	return ..()
 
@@ -633,7 +629,7 @@
 		operation_zone = body_zone
 	for(var/datum/surgery_operation/operation as anything in operations)
 		if ((operation.operation_flags & OPERATION_NO_PATIENT_REQUIRED) && operation.show_as_next_step(src, operation_zone))
-			. += span_notice("You could perform [operation] on [src] with \a [operation.get_recommended_tool()]...")
+			. += span_notice("Você poderia se apresentar.[operation]Vamos.[src]com\a [operation.get_recommended_tool()]...")
 
 //empties the bodypart from its organs and other things inside it
 /obj/item/bodypart/proc/drop_organs(mob/user, violent_removal)
@@ -1559,8 +1555,7 @@
 	generic_bleedstacks = max(generic_bleedstacks + adjust_by, minimum)
 
 	// If we've started or stopped bleeding, we need to refresh our bleed rate
-	if((old_bleedstacks <= 0 && generic_bleedstacks > 0) \
-		|| old_bleedstacks > 0 && generic_bleedstacks <= 0)
+	if((old_bleedstacks <= 0 && generic_bleedstacks > 0) 		|| old_bleedstacks > 0 && generic_bleedstacks <= 0)
 		refresh_bleed_rate()
 
 /obj/item/bodypart/proc/on_owner_nobleed_loss(datum/source)
@@ -1741,7 +1736,7 @@
 		return FALSE
 	current_gauze.absorption_capacity -= seep_amt
 	if(current_gauze.absorption_capacity <= 0)
-		owner.visible_message(span_danger("\The [current_gauze.name] on [owner]'s [name] falls away in rags."), span_warning("\The [current_gauze.name] on your [name] falls away in rags."), vision_distance=COMBAT_MESSAGE_RANGE)
+		owner.visible_message(span_danger("\The [current_gauze.name]Vamos.[owner]'s[name]cai em trapos."), span_warning("\The [current_gauze.name]Na sua[name]cai em trapos."), vision_distance=COMBAT_MESSAGE_RANGE)
 		qdel(current_gauze)
 	return TRUE
 
@@ -1823,7 +1818,7 @@
 	if(can_be_disabled && (get_damage() / max_damage) >= robotic_emp_paralyze_damage_percent_threshold)
 		ADD_TRAIT(src, TRAIT_PARALYSIS, EMP_TRAIT)
 		addtimer(TRAIT_CALLBACK_REMOVE(src, TRAIT_PARALYSIS, EMP_TRAIT), time_needed)
-		owner?.visible_message(span_danger("[owner]'s [plaintext_zone] seems to malfunction!"))
+		owner?.visible_message(span_danger("[owner]'s[plaintext_zone]Parece avariar!"))
 
 	return TRUE
 

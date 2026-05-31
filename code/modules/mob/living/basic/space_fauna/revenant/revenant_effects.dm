@@ -44,7 +44,7 @@
 	ADD_TRAIT(owner, TRAIT_REVENANT_INHIBITED, TRAIT_STATUS_EFFECT(id))
 	owner.update_appearance(UPDATE_ICON)
 
-	owner.balloon_alert(owner, "inhibited!")
+	owner.balloon_alert(owner, "Inibido!")
 
 /datum/status_effect/revenant/inhibited/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_REVENANT_INHIBITED, TRAIT_STATUS_EFFECT(id))
@@ -70,6 +70,6 @@
 /datum/status_effect/incapacitating/paralyzed/revenant/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_NO_TRANSFORM, TRAIT_STATUS_EFFECT(id))
 	owner.update_mob_action_buttons()
-	owner.balloon_alert(owner, "can move again")
+	owner.balloon_alert(owner, "pode se mover novamente.")
 
 	return ..()

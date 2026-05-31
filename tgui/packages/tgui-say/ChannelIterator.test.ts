@@ -9,7 +9,7 @@ describe('ChannelIterator', () => {
     channelIterator = new ChannelIterator();
   });
 
-  it('should cycle through channels properly', () => {
+  it('deve circular através de canais corretamente', () => {
     expect(channelIterator.current()).toBe('Say');
     expect(channelIterator.next()).toBe('Radio');
     expect(channelIterator.next()).toBe('Me');
@@ -23,32 +23,32 @@ describe('ChannelIterator', () => {
     expect(channelIterator.next()).toBe('Say'); // Admin is blacklisted so it should be skipped
   });
 
-  it('should set a channel properly', () => {
+  it('deve definir um canal corretamente', () => {
     channelIterator.set('OOC');
     expect(channelIterator.current()).toBe('OOC');
   });
 
-  it('should return true when current channel is "Say"', () => {
+  it('deve retornar verdadeiro quando o canal atual é "Diga"', () => {
     channelIterator.set('Say');
     expect(channelIterator.isSay()).toBe(true);
   });
 
-  it('should return false when current channel is not "Say"', () => {
+  it('Deve voltar falso quando o canal atual não é "Diga"', () => {
     channelIterator.set('Radio');
     expect(channelIterator.isSay()).toBe(false);
   });
 
-  it('should return true when current channel is visible', () => {
+  it('deve retornar verdadeiro quando o canal atual é visível', () => {
     channelIterator.set('Say');
     expect(channelIterator.isVisible()).toBe(true);
   });
 
-  it('should return false when current channel is not visible', () => {
+  it('Deve retornar falso quando o canal atual não estiver visível.', () => {
     channelIterator.set('OOC');
     expect(channelIterator.isVisible()).toBe(false);
   });
 
-  it('should not leak a message from a blacklisted channel', () => {
+  it('Não deve vazar uma mensagem de um canal na lista negra.', () => {
     channelIterator.set('Admin');
     expect(channelIterator.next()).toBe('Admin');
   });

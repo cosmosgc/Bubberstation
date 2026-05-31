@@ -72,11 +72,11 @@ export const AntagInfoWizard = (props) => {
                 <Stack.Item>
                   <ObjectivePrintout
                     objectives={objectives}
-                    titleMessage="The Space Wizard Federation has given you the following tasks:"
+                    titleMessage="A Federação Feiticeira Espacial lhe deu as seguintes tarefas:"
                     objectiveFollowup={
                       <ReplaceObjectivesButton
                         can_change_objective={can_change_objective}
-                        button_title={'Declare Personal Quest'}
+                        button_title={'Declare busca pessoal'}
                         button_colour={'violet'}
                       />
                     }

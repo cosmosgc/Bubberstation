@@ -3,7 +3,7 @@
 	name = "imp"
 	real_name = "imp"
 	unique_name = TRUE
-	desc = "A large, menacing creature covered in armored black scales."
+	desc = "Uma grande criatura ameaçadora coberta de escamas pretas blindadas."
 
 	speak_emote = list("cackles","screeches")
 	response_help_continuous = "thinks better of touching"
@@ -33,7 +33,7 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 15
 	melee_attack_cooldown = CLICK_CD_MELEE
-	death_message = "screams in agony as it sublimates into a sulfurous smoke."
+	death_message = "grita em agonia enquanto sublima em uma fumaça sulfurosa."
 	death_sound = 'sound/effects/magic/demon_dies.ogg'
 
 	habitable_atmos = null
@@ -72,4 +72,4 @@
 	mind.add_antag_datum(antag_type)
 
 	SEND_SOUND(src, 'sound/effects/magic/demon_dies.ogg')
-	to_chat(src, span_bold("You are currently not currently in the same plane of existence as the station. Use your Blood Crawl ability near a pool of blood to manifest and wreak havoc."))
+	to_chat(src, span_bold("Você não está atualmente no mesmo plano de existência da estação. Use sua habilidade de Rastejar Sangue perto de uma poça de sangue para se manifestar e causar estragos."))

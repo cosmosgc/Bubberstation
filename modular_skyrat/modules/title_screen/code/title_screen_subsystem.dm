@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(title)
 /datum/controller/subsystem/title/Initialize()
 	var/dat
 	if(!fexists("[global.config.directory]/bubbers/bubbers_title.txt"))
-		to_chat(world, span_boldwarning("CRITICAL ERROR: Unable to read bubbers_title.txt, reverting to backup title html, please check your server config and ensure this file exists."))
+		to_chat(world, span_boldwarning("Incapaz de ler bubbers title.txt, revertendo para título de backup html, por favor verifique sua configuração do servidor e certifique-se de que este arquivo exista."))
 		dat = DEFAULT_TITLE_HTML
 	else
 		dat = file2text("[global.config.directory]/bubbers/bubbers_title.txt")

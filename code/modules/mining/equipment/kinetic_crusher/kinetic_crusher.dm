@@ -7,9 +7,7 @@
  */
 /obj/item/kinetic_crusher
 	name = "proto-kinetic crusher"
-	desc = "An early design of the proto-kinetic accelerator, it is little more than a combination of various mining tools cobbled together, \
-		forming a high-tech club. While it is an effective mining tool, it did little to aid any but the most skilled and/or \
-		suicidal miners against local fauna."
+	desc = "Um projeto inicial do acelerador protocinético, é pouco mais do que uma combinação de várias ferramentas de mineração juntas, formando um clube de alta tecnologia. Enquanto é uma ferramenta de mineração eficaz, ele fez pouco para ajudar qualquer, exceto os mineiros mais qualificados e/ou suicidas contra a fauna local."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "crusher"
 	base_icon_state = "crusher"
@@ -68,11 +66,7 @@
 
 /obj/item/kinetic_crusher/Initialize(mapload)
 	. = ..()
-	AddComponent( \
-		/datum/component/butchering, \
-		speed = 6 SECONDS, \
-		effectiveness = 110, \
-	)
+	AddComponent( 		/datum/component/butchering, 		speed = 6 SECONDS, 		effectiveness = 110, 	)
 	update_reskin(null)
 	//technically it's huge and bulky, but this provides an incentive to use it
 	update_wielding()
@@ -86,13 +80,7 @@
  * If a supplied skin is blacklisted, it will be un-blacklisted.
  */
 /obj/item/kinetic_crusher/proc/update_reskin(datum/atom_skin/crusher_skin/default_skin_typepath)
-	AddComponent( \
-		/datum/component/reskinable_item, \
-		/datum/atom_skin/crusher_skin, \
-		infinite = TRUE, \
-		initial_skin = default_skin_typepath ? default_skin_typepath::preview_name : null, \
-		blacklisted_subtypes = subtypesof(/datum/atom_skin/crusher_skin/locked) - default_skin_typepath, \
-	)
+	AddComponent( 		/datum/component/reskinable_item, 		/datum/atom_skin/crusher_skin, 		infinite = TRUE, 		initial_skin = default_skin_typepath ? default_skin_typepath::preview_name : null, 		blacklisted_subtypes = subtypesof(/datum/atom_skin/crusher_skin/locked) - default_skin_typepath, 	)
 
 /obj/item/kinetic_crusher/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -114,10 +102,10 @@
 
 /obj/item/kinetic_crusher/examine(mob/living/user)
 	. = ..()
-	. += span_notice("Mark a large creature with a destabilizing force with right-click, then hit them in melee to do <b>[force_wielded + detonation_damage]</b> damage.")
-	. += span_notice("Does <b>[force_wielded + detonation_damage + backstab_bonus]</b> damage if the target is backstabbed, instead of <b>[force_wielded + detonation_damage]</b>.")
+	. += span_notice("Marcar uma grande criatura com uma força desestabilizadora com o botão direito, em seguida, acertá-los em mim para fazer<b>[force_wielded + detonation_damage]</b>Dano.")
+	. += span_notice("Sim.<b>[force_wielded + detonation_damage + backstab_bonus]</b>Danos se o alvo for esfaqueado, em vez de<b>[force_wielded + detonation_damage]</b>.")
 	for(var/obj/item/crusher_trophy/crusher_trophy as anything in trophies)
-		. += span_notice("It has \a [crusher_trophy] attached, which causes [crusher_trophy.effect_desc()].")
+		. += span_notice("Tem.\a [crusher_trophy]Apegado, que causa[crusher_trophy.effect_desc()].")
 
 /obj/item/kinetic_crusher/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(attacking_item, /obj/item/crusher_trophy))
@@ -129,9 +117,9 @@
 /obj/item/kinetic_crusher/crowbar_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(!LAZYLEN(trophies))
-		user.balloon_alert(user, "no trophies!")
+		user.balloon_alert(user, "Sem troféus!")
 		return ITEM_INTERACT_BLOCKING
-	user.balloon_alert(user, "trophies removed")
+	user.balloon_alert(user, "Troféus removidos")
 	tool.play_tool_sound(src)
 	for(var/obj/item/crusher_trophy/crusher_trophy as anything in trophies)
 		crusher_trophy.remove_from(src, user)
@@ -182,7 +170,7 @@
 	if(.)
 		return TRUE
 	if(!HAS_TRAIT(src, TRAIT_WIELDED))
-		user.balloon_alert(user, "must be wielded!")
+		user.balloon_alert(user, "Deve ser usado!")
 		return TRUE
 	return .
 
@@ -237,10 +225,10 @@
 
 /obj/item/kinetic_crusher/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!HAS_TRAIT(src, TRAIT_WIELDED))
-		balloon_alert(user, "wield it first!")
+		balloon_alert(user, "Empreste primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	if(interacting_with == user)
-		balloon_alert(user, "can't aim at yourself!")
+		balloon_alert(user, "Não consegue mirar em si mesmo!")
 		return ITEM_INTERACT_BLOCKING
 	fire_kinetic_blast(interacting_with, user, modifiers)
 	user.changeNext_move(CLICK_CD_MELEE)

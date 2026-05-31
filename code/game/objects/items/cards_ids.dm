@@ -20,7 +20,7 @@
 
 /obj/item/card
 	name = "card"
-	desc = "Does card things."
+	desc = "Faz cartões de coisas."
 	icon = 'icons/obj/card.dmi'
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
@@ -36,7 +36,7 @@
 	var/honorific_title
 
 /obj/item/card/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins to swipe [user.p_their()] neck with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Começa a deslizar[user.p_their()]pescoço com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/card/update_overlays()
@@ -61,7 +61,7 @@
 /// "Retro" ID card that renders itself as the icon state with no overlays.
 /obj/item/card/id
 	name = "retro identification card"
-	desc = "A card used to provide ID and determine access across the station."
+	desc = "Um cartão usado para identificar e determinar o acesso através da estação."
 	icon_state = "card_grey"
 	worn_icon_state = "nothing"
 	slot_flags = ITEM_SLOT_ID
@@ -565,7 +565,7 @@
 		var/minor
 		if(registered_name && registered_age && registered_age < AGE_MINOR)
 			minor = " <b>[registered_age]</b>" //SKYRAT EDIT CHANGE
-		user.visible_message(span_notice("[user] shows you: [icon2html(src, viewers(user))] [src.name][minor]."), span_notice("You show \the [src.name][minor]."))
+		user.visible_message(span_notice("[user]mostra-lhe:[icon2html(src, viewers(user))] [src.name][minor]."), span_notice("Você mostra\the [src.name][minor]."))
 	add_fingerprint(user)
 
 /obj/item/card/id/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
@@ -609,11 +609,11 @@
 
 /obj/item/card/id/proc/try_project_paystand(mob/user, turf/target)
 	if(!COOLDOWN_FINISHED(src, last_holopay_projection))
-		balloon_alert(user, "still recharging")
+		balloon_alert(user, "Ainda recarregando.")
 		return
 	if(!can_be_used_in_payment(user))
-		balloon_alert(user, "no account!")
-		to_chat(user, span_warning("You need a valid bank account to do this."))
+		balloon_alert(user, "Nenhuma conta!")
+		to_chat(user, span_warning("Precisa de uma conta bancária válida para isso."))
 		return
 	/// Determines where the holopay will be placed based on tile contents
 	var/turf/projection
@@ -626,8 +626,8 @@
 	else if(can_proj_holopay(user_loc))
 		projection = user_loc
 	if(!projection)
-		balloon_alert(user, "no space")
-		to_chat(user, span_warning("You need to be standing on or near an open tile to do this."))
+		balloon_alert(user, "Sem espaço.")
+		to_chat(user, span_warning("Você precisa estar em pé ou perto de um azulejo aberto para fazer isso."))
 		return
 	/// Success: Valid tile for holopay placement
 	if(my_store)
@@ -694,7 +694,7 @@
  */
 /obj/item/card/id/proc/set_holopay_name(name)
 	if(length(name) < 3 || length(name) > MAX_NAME_LEN)
-		to_chat(usr, span_warning("Must be between 3 - 42 characters."))
+		to_chat(usr, span_warning("Deve ter entre 3 e 42 caracteres."))
 	else
 		holopay_name = html_encode(trim(name, MAX_NAME_LEN))
 
@@ -712,7 +712,7 @@
 
 /obj/item/card/id/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/rupee))
-		to_chat(user, span_warning("Your ID smartly rejects the strange shard of glass. Who knew, apparently it's not ACTUALLY valuable!"))
+		to_chat(user, span_warning("Sua identidade rejeita o estranho pedaço de vidro. Quem diria, aparentemente não é realmente valioso!"))
 		return ITEM_INTERACT_BLOCKING
 	else if(iscash(tool))
 		return insert_money(tool, user) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
@@ -722,7 +722,7 @@
 		var/money_added = mass_insert_money(money_contained, user)
 		if(!money_added)
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("You stuff the contents into the card! They disappear in a puff of bluespace smoke, adding [money_added] worth of [MONEY_NAME] to the linked account."))
+		to_chat(user, span_notice("Você coloca o conteúdo no cartão! Eles desaparecem em um sopro de fumaça do espaço azul, acrescentando[money_added]Vale a pena.[MONEY_NAME]para a conta ligada."))
 		return ITEM_INTERACT_SUCCESS
 	/// SKYRAT EDIT BEGINS - Trim Tokens - Proc defined in modular_skyrat/modules/trim_tokens/code/cards_id.dm
 	else if(istype(tool, /obj/item/trim_token))
@@ -746,21 +746,21 @@
 		physical_currency = TRUE
 
 	if(!registered_account)
-		to_chat(user, span_warning("[src] doesn't have a linked account to deposit [money] into!"))
+		to_chat(user, span_warning("[src]não tem uma conta ligada ao depósito[money]dentro!"))
 		return FALSE
 	var/cash_money = money.get_item_credit_value()
 	if(!cash_money)
-		to_chat(user, span_warning("[money] doesn't seem to be worth anything!"))
+		to_chat(user, span_warning("[money]Não parece valer nada!"))
 		return FALSE
 	registered_account.adjust_money(cash_money, "System: Deposit")
 	SSblackbox.record_feedback("amount", "credits_inserted", cash_money)
 	log_econ("[cash_money] [MONEY_NAME] were inserted into [src] owned by [src.registered_name]")
 	if(physical_currency)
-		to_chat(user, span_notice("You stuff [money] into [src]. It disappears in a small puff of bluespace smoke, adding [cash_money] [MONEY_NAME] to the linked account."))
+		to_chat(user, span_notice("Sua coisa.[money]em[src]Ele desaparece em um pequeno sopro de fumaça do espaço azul, acrescentando[cash_money] [MONEY_NAME]para a conta ligada."))
 	else
-		to_chat(user, span_notice("You insert [money] into [src], adding [cash_money] [MONEY_NAME] to the linked account."))
+		to_chat(user, span_notice("Você insere[money]em[src], acrescentando[cash_money] [MONEY_NAME]para a conta ligada."))
 
-	to_chat(user, span_notice("The linked account now reports a balance of [registered_account.account_balance] [MONEY_SYMBOL]."))
+	to_chat(user, span_notice("A conta ligada agora relata um saldo de[registered_account.account_balance] [MONEY_SYMBOL]."))
 	qdel(money)
 	return TRUE
 
@@ -773,7 +773,7 @@
  */
 /obj/item/card/id/proc/mass_insert_money(list/money, mob/user)
 	if(!registered_account)
-		to_chat(user, span_warning("[src] doesn't have a linked account to deposit into!"))
+		to_chat(user, span_warning("[src]Não tem uma conta ligada para depositar!"))
 		return FALSE
 
 	if (!money || !length(money))
@@ -802,7 +802,7 @@
 /obj/item/card/id/proc/set_new_account(mob/living/user)
 	. = FALSE
 	if(loc != user)
-		to_chat(user, span_warning("You must be holding the ID to continue!"))
+		to_chat(user, span_warning("Você deve estar segurando a identidade para continuar!"))
 		return FALSE
 	var/list/user_memories = user.mind.memories
 	var/datum/memory/key/account/user_key = user_memories[/datum/memory/key/account]
@@ -811,14 +811,14 @@
 	if(!new_bank_id || QDELETED(user) || QDELETED(src) || issilicon(user) || !alt_click_can_use_id(user) || loc != user)
 		return FALSE
 	if(registered_account?.account_id == new_bank_id)
-		to_chat(user, span_warning("The account ID was already assigned to this card."))
+		to_chat(user, span_warning("A identificação da conta já estava neste cartão."))
 		return FALSE
 	var/datum/bank_account/account = SSeconomy.bank_accounts_by_id["[new_bank_id]"]
 	if(isnull(account))
-		to_chat(user, span_warning("The account ID number provided is invalid."))
+		to_chat(user, span_warning("O número de identificação da conta é inválido."))
 		return FALSE
 	set_account(account, transfer_funds = TRUE)
-	to_chat(user, span_notice("The provided account has been linked to this ID card. It contains [account.account_balance] [MONEY_NAME]."))
+	to_chat(user, span_notice("A conta fornecida foi ligada a este cartão de identidade. Ele contém[account.account_balance] [MONEY_NAME]."))
 	return TRUE
 
 /obj/item/card/id/click_alt(mob/living/user)
@@ -828,17 +828,17 @@
 		registered_account.bank_card_talk(span_warning("内部服务器错误"), TRUE)
 		return CLICK_ACTION_SUCCESS
 	if(registered_account.account_debt)
-		var/choice = tgui_alert(user, "Choose An Action", "Bank Account", list("Withdraw", "Pay Debt"))
+		var/choice = tgui_alert(user, "Escolha uma ação", "Bank Account", list("Withdraw", "Pay Debt"))
 		if(!choice || QDELETED(user) || QDELETED(src) || !alt_click_can_use_id(user) || loc != user)
 			return CLICK_ACTION_BLOCKING
 		if(choice == "Pay Debt")
 			pay_debt(user)
 			return CLICK_ACTION_SUCCESS
 	if(loc != user)
-		to_chat(user, span_warning("You must be holding the ID to continue!"))
+		to_chat(user, span_warning("Você deve estar segurando a identidade para continuar!"))
 		return CLICK_ACTION_BLOCKING
 	if(registered_account.replaceable && !registered_account.account_balance)
-		var/choice = tgui_alert(user, "This card's account is unassigned. Would you like to link a bank account?", "Bank Account", list("Link Account", "Leave Unassigned"))
+		var/choice = tgui_alert(user, "A conta deste cartão não foi atribuída. Gostaria de ligar uma conta bancária?", "Bank Account", list("Link Account", "Leave Unassigned"))
 		if(!choice || QDELETED(user) || QDELETED(src) || !alt_click_can_use_id(user) || loc != user)
 			return CLICK_ACTION_BLOCKING
 		if(choice == "Link Account")
@@ -851,11 +851,11 @@
 		return CLICK_ACTION_BLOCKING
 	if(!registered_account.adjust_money(-amount_to_remove, "System: Withdrawal"))
 		var/difference = amount_to_remove - registered_account.account_balance
-		registered_account.bank_card_talk(span_warning("ERROR: The linked account requires [difference] more [MONEY_NAME_AUTOPURAL(difference)] to perform that withdrawal."), TRUE)
+		registered_account.bank_card_talk(span_warning("A conta ligada requer[difference]Mais[MONEY_NAME_AUTOPURAL(difference)]para realizar essa retirada."), TRUE)
 		return CLICK_ACTION_BLOCKING
 	var/obj/item/holochip/holochip = new (user.drop_location(), amount_to_remove)
 	user.put_in_hands(holochip)
-	to_chat(user, span_notice("You withdraw [amount_to_remove] [MONEY_NAME] into a holochip."))
+	to_chat(user, span_notice("Você se retira.[amount_to_remove] [MONEY_NAME]em um holochip."))
 	SSblackbox.record_feedback("amount", "credits_removed", amount_to_remove)
 	log_econ("[amount_to_remove] [MONEY_NAME] were removed from [src] owned by [registered_name]")
 	return CLICK_ACTION_SUCCESS
@@ -874,7 +874,7 @@
 	var/prev_debt = registered_account.account_debt
 	var/amount_paid = registered_account.pay_debt(amount_to_pay)
 	if(amount_paid)
-		var/message = span_notice("You pay [amount_to_pay] [MONEY_NAME] of a [prev_debt] [MONEY_SYMBOL] debt. [registered_account.account_debt] [MONEY_SYMBOL] to go.")
+		var/message = span_notice("Você paga.[amount_to_pay] [MONEY_NAME]de uma[prev_debt] [MONEY_SYMBOL]Dívida.[registered_account.account_debt] [MONEY_SYMBOL]Para ir.")
 		if(!registered_account.account_debt)
 			message = span_nicegreen("You pay the last [amount_to_pay] [MONEY_NAME] of your debt, extinguishing it. Congratulations!")
 		to_chat(user, message)
@@ -890,20 +890,20 @@
 			var/datum/bank_account/linked_dept = SSeconomy.get_dep_account(registered_account.account_job.paycheck_department)
 			. += "The [linked_dept.account_holder] linked to the ID reports a balance of [linked_dept.account_balance] [MONEY_SYMBOL]."
 	else
-		. += span_notice("Alt-Right-Click the ID to set the linked bank account.")
+		. += span_notice("Alt-Right-Clique na identificação para definir a conta bancária vinculada.")
 
 	if(HAS_TRAIT(user, TRAIT_ID_APPRAISER))
-		. += HAS_TRAIT(src, TRAIT_JOB_FIRST_ID_CARD) ? span_boldnotice("Hmm... yes, this ID was issued from Central Command!") : span_boldnotice("This ID was created in this sector, not by Central Command.")
+		. += HAS_TRAIT(src, TRAIT_JOB_FIRST_ID_CARD) ? span_boldnotice("Sim, essa identificação foi emitida do Comando Central!") : span_boldnotice("Esta identificação foi criada neste setor, não pelo Comando Central.")
 		if(HAS_TRAIT(src, TRAIT_TASTEFULLY_THICK_ID_CARD) && (user.is_holding(src) || (IsReachableBy(user) && user.put_in_hands(src, ignore_animation = FALSE))))
 			ADD_TRAIT(src, TRAIT_NODROP, "psycho")
-			. += span_hypnophrase("Look at that subtle coloring... The tasteful thickness of it. Oh my God, it even has a watermark...")
+			. += span_hypnophrase("Olha essa cor sutil... A espessura de bom gosto. Meu Deus, até tem uma marca d'água...")
 			var/sound/slowbeat = sound('sound/effects/health/slowbeat.ogg', repeat = TRUE)
 			user.playsound_local(get_turf(src), slowbeat, 40, 0, channel = CHANNEL_HEARTBEAT, use_reverb = FALSE)
 			if(isliving(user))
 				var/mob/living/living_user = user
 				living_user.adjust_jitter(10 SECONDS)
 			addtimer(CALLBACK(src, PROC_REF(drop_card), user), 10 SECONDS)
-	. += span_notice("<i>There's more information below, you can look again to take a closer look...</i>")
+	. += span_notice("<i>Há mais informações abaixo, você pode olhar novamente para dar uma olhada mais de perto...</i>")
 
 /obj/item/card/id/proc/drop_card(mob/user)
 	user.stop_sound_channel(CHANNEL_HEARTBEAT)
@@ -921,33 +921,33 @@
 	if(!user.can_read(src))
 		return
 
-	. += span_notice("<i>You examine [src] closer, and note the following...</i>")
+	. += span_notice("<i>Você examina.[src]Mais perto, e note o seguinte...</i>")
 
 	if(registered_age)
-		. += "The card indicates that the holder is [registered_age] years old. [(registered_age < AGE_MINOR) ? "There's a holographic stripe that reads <b>[span_danger("'MINOR: DO NOT SERVE ALCOHOL OR TOBACCO'")]</b> along the bottom of the card." : ""]"
+		. += "O cartão indica que o titular é[registered_age]Tem anos.[(registered_age < AGE_MINOR) ? "There's a holographic stripe that reads <b>[span_danger("'MINOR: DO NOT SERVE ALCOHOL OR TOBACCO'")]</b> along the bottom of the card." : ""]"
 	if(registered_account)
 		if(registered_account.mining_points)
 			. += "There's [registered_account.mining_points] mining point\s loaded onto the card's bank account."
 		. += "The account linked to the ID belongs to '[registered_account.account_holder]' and reports a balance of [registered_account.account_balance] [MONEY_SYMBOL]."
 		if(registered_account.account_debt)
-			. += span_warning("The account is currently indebted for [registered_account.account_debt] [MONEY_SYMBOL]. [100*DEBT_COLLECTION_COEFF]% of all earnings will go towards extinguishing it.")
+			. += span_warning("A conta está atualmente em dívida para[registered_account.account_debt] [MONEY_SYMBOL]. [100*DEBT_COLLECTION_COEFF]% de todos os ganhos irá para extingui-lo.")
 		if(registered_account.account_job)
 			var/datum/bank_account/D = SSeconomy.get_dep_account(registered_account.account_job.paycheck_department)
 			if(D)
 				. += "The [D.account_holder] reports a balance of [D.account_balance] [MONEY_SYMBOL]."
-		. += span_info("Alt-Click the ID to pull money from the linked account in the form of holochips.")
-		. += span_info("You can insert [MONEY_NAME] into the linked account by pressing holochips, cash, or coins against the ID.")
+		. += span_info("Alt-Clique na identificação para pegar dinheiro da conta ligada na forma de holochips.")
+		. += span_info("Você pode inserir[MONEY_NAME]na conta ligada pressionando holochips, dinheiro, ou moedas contra a identificação.")
 		if(registered_account.replaceable)
-			. += span_info("Alt-Right-Click the ID to change the linked bank account.")
+			. += span_info("Alt-Right-Clique na identificação para mudar a conta bancária vinculada.")
 		if(registered_account.civilian_bounty)
-			. += span_info("<b>There is an active civilian bounty.</b>")
+			. += span_info("<b>Há uma recompensa civil ativa.</b>")
 			. += span_info("<i>[registered_account.bounty_text()]</i>")
-			. += span_info("Quantity: [registered_account.bounty_num()]")
-			. += span_info("Reward: [registered_account.bounty_value()]")
+			. += span_info("Quantidade:[registered_account.bounty_num()]")
+			. += span_info("Recompensa:[registered_account.bounty_value()]")
 		if(registered_account.account_holder == user.real_name)
-			. += span_boldnotice("If you lose this ID card, you can reclaim your account by Alt-Clicking a blank ID card while holding it and entering your account ID number.")
+			. += span_boldnotice("Se perder esse cartão de identidade, pode recuperar sua conta clicando em um cartão de identidade em branco enquanto segura e digitando o número da sua conta.")
 	else
-		. += span_info("There is no registered account linked to this card. Alt-Click to add one.")
+		. += span_info("Não há nenhuma conta registrada ligada a este cartão. Alt-Click para adicionar um.")
 
 	return .
 
@@ -1037,11 +1037,11 @@
 		return
 
 	if(!trim)
-		balloon_alert(user, "card has no trim!")
+		balloon_alert(user, "O cartão não tem corte!")
 		return
 
 	if(!length(trim.honorifics))
-		balloon_alert(user, "card has no honorific to use!")
+		balloon_alert(user, "O cartão não tem honra para usar!")
 		return
 
 	var/list/choices = list()
@@ -1059,7 +1059,7 @@
 	honorific_title = null //We reset this regardless so that we don't stack titles on accident.
 
 	if(honorific_position_to_use & HONORIFIC_POSITION_NONE)
-		balloon_alert(user, "honorific disabled")
+		balloon_alert(user, "Deficiente honorífico")
 	else
 		var/new_honorific = tgui_input_list(user, "What honorific do you want to use?", "Flair!!!", trim.honorifics)
 		if(!new_honorific || user.incapacitated || !in_contents_of(user))
@@ -1068,29 +1068,29 @@
 		switch(honorific_position_to_use)
 			if(HONORIFIC_POSITION_FIRST)
 				honorific_position = HONORIFIC_POSITION_FIRST
-				balloon_alert(user, "honorific set: display first name")
+				balloon_alert(user, "Set honorífico: exibir primeiro nome")
 			if(HONORIFIC_POSITION_LAST)
 				honorific_position = HONORIFIC_POSITION_LAST
-				balloon_alert(user, "honorific set: display last name")
+				balloon_alert(user, "Set honorífico: exibir o sobrenome")
 			if(HONORIFIC_POSITION_FIRST_FULL)
 				honorific_position = HONORIFIC_POSITION_FIRST_FULL
-				balloon_alert(user, "honorific set: start of full name")
+				balloon_alert(user, "Set honorífico: início do nome completo")
 			if(HONORIFIC_POSITION_LAST_FULL)
 				honorific_position = HONORIFIC_POSITION_LAST_FULL
-				balloon_alert(user, "honorific set: end of full name")
+				balloon_alert(user, "Set honorífico: fim do nome completo.")
 
 	update_label()
 
 /obj/item/card/id/away
 	name = "\proper a perfectly generic identification card"
-	desc = "A perfectly generic identification card. Looks like it could use some flavor."
+	desc = "Um cartão de identificação perfeitamente genérico. Parece que precisa de sabor."
 	trim = /datum/id_trim/away
 	icon_state = "retro"
 	registered_age = null
 
 /obj/item/card/id/away/hotel
 	name = "Staff ID"
-	desc = "A staff ID used to access the hotel's doors."
+	desc = "Uma identificação usada para acessar as portas do hotel."
 	trim = /datum/id_trim/away/hotel
 
 /obj/item/card/id/away/hotel/security
@@ -1099,31 +1099,31 @@
 
 /obj/item/card/id/away/old
 	name = "\proper a perfectly generic identification card"
-	desc = "A perfectly generic identification card. Looks like it could use some flavor."
+	desc = "Um cartão de identificação perfeitamente genérico. Parece que precisa de sabor."
 
 /obj/item/card/id/away/old/sec
 	name = "Charlie Station Security Officer's ID card"
-	desc = "A faded Charlie Station ID card. You can make out the rank \"Security Officer\"."
+	desc = "Um cartão de identidade da estação Charlie. Você pode ver o posto\"Oficial de Segurança.\"."
 	trim = /datum/id_trim/away/old/sec
 
 /obj/item/card/id/away/old/sci
 	name = "Charlie Station Scientist's ID card"
-	desc = "A faded Charlie Station ID card. You can make out the rank \"Scientist\"."
+	desc = "Um cartão de identidade da estação Charlie. Você pode ver o posto\"Cientista.\"."
 	trim = /datum/id_trim/away/old/sci
 
 /obj/item/card/id/away/old/eng
 	name = "Charlie Station Engineer's ID card"
-	desc = "A faded Charlie Station ID card. You can make out the rank \"Station Engineer\"."
+	desc = "Um cartão de identidade da estação Charlie. Você pode ver o posto\"Engenheiro de Estação.\"."
 	trim = /datum/id_trim/away/old/eng
 
 /obj/item/card/id/away/old/equipment
 	name = "Engineering Equipment Access"
-	desc = "A special ID card that allows access to engineering equipment."
+	desc = "Uma identificação especial que permite acesso a equipamentos de engenharia."
 	trim = /datum/id_trim/away/old/equipment
 
 /obj/item/card/id/away/old/robo
 	name = "Delta Station Roboticist's ID card"
-	desc = "An ID card that allows access to bots maintenance protocols."
+	desc = "Um cartão de identificação que permite acesso a protocolos de manutenção de robôs."
 	trim = /datum/id_trim/away/old/robo
 
 /obj/item/card/id/away/deep_storage //deepstorage.dmm space ruin
@@ -1131,11 +1131,11 @@
 
 /obj/item/card/id/away/filmstudio
 	name = "Film Studio ID"
-	desc = "An ID card that allows access to the variety of airlocks present in the film studio"
+	desc = "Um cartão de identificação que permite o acesso à variedade de comportas presentes no estúdio de cinema."
 
 /obj/item/card/id/departmental_budget
 	name = "departmental card (ERROR)"
-	desc = "Provides access to the departmental budget."
+	desc = "Fornece acesso ao orçamento do departamento."
 	icon_state = "budgetcard"
 	var/department_ID = ACCOUNT_CIV
 	var/department_name = ACCOUNT_CIV_NAME
@@ -1147,7 +1147,7 @@
 	if(department_account)
 		set_account(department_account)
 		name = "departmental card ([department_name])"
-		desc = "Provides access to the [department_name]."
+		desc = "Fornece acesso ao[department_name]."
 	SSeconomy.dep_cards += src
 
 /obj/item/card/id/departmental_budget/Destroy()
@@ -1163,12 +1163,12 @@
 	icon_state = "car_budget" //saving up for a new tesla
 
 /obj/item/card/id/departmental_budget/click_alt(mob/living/user)
-	registered_account.bank_card_talk(span_warning("Withdrawing is not compatible with this card design."), TRUE) //prevents the vault bank machine being useless and putting money from the budget to your card to go over personal crates
+	registered_account.bank_card_talk(span_warning("Retirar não é compatível com este design de cartão."), TRUE) //prevents the vault bank machine being useless and putting money from the budget to your card to go over personal crates
 	return CLICK_ACTION_BLOCKING
 
 /obj/item/card/id/advanced
 	name = "identification card"
-	desc = "A card used to provide ID and determine access across the station. Has an integrated digital display and advanced microchips."
+	desc = "Um cartão usado para identificar e determinar o acesso através da estação. Tem um display digital integrado e microchips avançados."
 	icon_state = "card_grey"
 
 	wildcard_slots = WILDCARD_LIMIT_GREY
@@ -1228,16 +1228,10 @@
 
 /obj/item/card/id/advanced/proc/recolor_id(mob/living/user, obj/item/toy/crayon/our_crayon)
 	if(our_crayon.is_capped)
-		balloon_alert(user, "take the cap off first!")
+		balloon_alert(user, "Tire o boné primeiro!")
 		return ITEM_INTERACT_BLOCKING
-	var/choice = tgui_alert(usr, "Recolor Department or Subdepartment?", "Recoloring ID...", list("Department", "Subdepartment"))
-	if(isnull(choice) \
-		|| QDELETED(user) \
-		|| QDELETED(src) \
-		|| QDELETED(our_crayon) \
-		|| !usr.can_perform_action(src, ALLOW_RESTING) \
-		|| !usr.can_perform_action(our_crayon, ALLOW_RESTING) \
-	)
+	var/choice = tgui_alert(usr, "Recolorir Departamento ou Subdepartamento?", "Recoloring ID...", list("Department", "Subdepartment"))
+	if(isnull(choice) 		|| QDELETED(user) 		|| QDELETED(src) 		|| QDELETED(our_crayon) 		|| !usr.can_perform_action(src, ALLOW_RESTING) 		|| !usr.can_perform_action(our_crayon, ALLOW_RESTING) 	)
 		return ITEM_INTERACT_BLOCKING
 
 	switch(choice)
@@ -1349,12 +1343,12 @@
 
 /obj/item/card/id/advanced/rainbow
 	name = "rainbow identification card"
-	desc = "A rainbow card, promoting fun in a 'business proper' sense!"
+	desc = "Um cartão arco-íris, promovendo diversão no sentido de \"negócio próprio\"!"
 	icon_state = "card_rainbow"
 
 /obj/item/card/id/advanced/silver
 	name = "silver identification card"
-	desc = "A silver card which shows honour and dedication."
+	desc = "Um cartão de prata que mostra honra e dedicação."
 	icon_state = "card_silver"
 	inhand_icon_state = "silver_id"
 	assigned_icon_state = "assigned_silver"
@@ -1362,7 +1356,7 @@
 
 /obj/item/card/id/advanced/robotic
 	name = "magnetic identification card"
-	desc = "An integrated card which shows the work poured into opening doors."
+	desc = "Um cartão integrado que mostra o trabalho derramado em portas abertas."
 	icon_state = "card_carp" //im not a spriter
 	inhand_icon_state = "silver_id"
 	assigned_icon_state = "assigned_silver"
@@ -1380,7 +1374,7 @@
 
 /obj/item/card/id/advanced/platinum
 	name = "platinum identification card"
-	desc = "A platinum card which shows the highest level of dedication."
+	desc = "Um cartão de platina que mostra o mais alto nível de dedicação."
 	icon_state = "card_platinum"
 	inhand_icon_state = "platinum_id"
 	assigned_icon_state = "assigned_silver"
@@ -1392,7 +1386,7 @@
 
 /obj/item/card/id/advanced/gold
 	name = "gold identification card"
-	desc = "A golden card which shows power and might."
+	desc = "Uma carta dourada que mostra poder e poder."
 	icon_state = "card_gold"
 	inhand_icon_state = "gold_id"
 	assigned_icon_state = "assigned_silver"
@@ -1404,7 +1398,7 @@
 
 /obj/item/card/id/advanced/gold/captains_spare
 	name = "captain's spare ID"
-	desc = "The spare ID of the High Lord himself."
+	desc = "A identidade extra do próprio Senhor."
 	registered_name = "Captain"
 	trim = /datum/id_trim/job/captain
 	registered_age = null
@@ -1412,7 +1406,7 @@
 
 /obj/item/card/id/advanced/centcom
 	name = "\improper CentCom ID"
-	desc = "An ID straight from Central Command."
+	desc = "Uma identificação do Comando Central."
 	icon_state = "card_centcom"
 	assigned_icon_state = "assigned_centcom"
 	registered_name = JOB_CENTCOM
@@ -1422,7 +1416,7 @@
 
 /obj/item/card/id/advanced/centcom/ert
 	name = "\improper CentCom ID"
-	desc = "An ERT ID card."
+	desc = "Um cartão de identidade da ERT."
 	registered_age = null
 	registered_name = "Emergency Response Intern"
 	trim = /datum/id_trim/centcom/ert
@@ -1465,21 +1459,21 @@
 
 /obj/item/card/id/advanced/black
 	name = "black identification card"
-	desc = "This card is telling you one thing and one thing alone. The person holding this card is an utter badass."
+	desc = "Este cartão está dizendo uma coisa e uma coisa só. A pessoa que está com esse cartão é uma fodão."
 	icon_state = "card_black"
 	assigned_icon_state = "assigned_syndicate"
 	wildcard_slots = WILDCARD_LIMIT_GOLD
 
 /obj/item/card/id/advanced/black/deathsquad
 	name = "\improper Death Squad ID"
-	desc = "A Death Squad ID card."
+	desc = "Um cartão de identificação do Esquadrão da Morte."
 	registered_name = JOB_ERT_DEATHSQUAD
 	trim = /datum/id_trim/centcom/deathsquad
 	wildcard_slots = WILDCARD_LIMIT_DEATHSQUAD
 
 /obj/item/card/id/advanced/black/syndicate_command
 	name = "syndicate ID card"
-	desc = "An ID straight from the Syndicate."
+	desc = "Uma identificação direto do Sindicato."
 	registered_name = "Syndicate"
 	registered_age = null
 	trim = /datum/id_trim/syndicom
@@ -1487,27 +1481,27 @@
 
 /obj/item/card/id/advanced/black/syndicate_command/crew_id
 	name = "syndicate ID card"
-	desc = "An ID straight from the Syndicate."
+	desc = "Uma identificação direto do Sindicato."
 	registered_name = "Syndicate"
 	trim = /datum/id_trim/syndicom/crew
 
 /obj/item/card/id/advanced/black/syndicate_command/captain_id
 	name = "syndicate captain ID card"
-	desc = "An ID straight from the Syndicate."
+	desc = "Uma identificação direto do Sindicato."
 	registered_name = "Syndicate"
 	trim = /datum/id_trim/syndicom/captain
 
 
 /obj/item/card/id/advanced/black/syndicate_command/captain_id/syndie_spare
 	name = "syndicate captain's spare ID"
-	desc = "The spare ID of the Dark Lord himself."
+	desc = "A identidade reserva do Senhor das Trevas."
 	registered_name = "Captain"
 	registered_age = null
 	inherent_assigned_name = "Captain"
 
 /obj/item/card/id/advanced/debug
 	name = "\improper Debug ID"
-	desc = "A debug ID card. Has ALL the all access and a boatload of money, you really shouldn't have this."
+	desc = "Um cartão de identificação de depuração. Tem todo o acesso e um barco cheio de dinheiro, você realmente não deveria ter isso."
 	icon_state = "card_centcom"
 	assigned_icon_state = "assigned_centcom"
 	trim = /datum/id_trim/admin
@@ -1523,7 +1517,7 @@
 /obj/item/card/id/advanced/debug/alt_click_can_use_id(mob/living/user)
 	. = ..()
 	if(!. || isnull(user.client?.holder)) // admins only as a safety so people don't steal all the dollars. spawn in a holochip if you want them to get some dosh
-		registered_account.bank_card_talk(span_warning("Only authorized representatives of Nanotrasen may use this card."), force = TRUE)
+		registered_account.bank_card_talk(span_warning("Só representantes autorizados de Nanotrasen podem usar este cartão."), force = TRUE)
 		return FALSE
 
 	return TRUE
@@ -1531,14 +1525,14 @@
 /obj/item/card/id/advanced/debug/can_be_used_in_payment(mob/living/user)
 	. = ..()
 	if(!. || isnull(user.client?.holder))
-		registered_account.bank_card_talk(span_warning("Only authorized representatives of Nanotrasen may use this card."), force = TRUE)
+		registered_account.bank_card_talk(span_warning("Só representantes autorizados de Nanotrasen podem usar este cartão."), force = TRUE)
 		return FALSE
 
 	return TRUE
 
 /obj/item/card/id/advanced/prisoner
 	name = "prisoner ID card"
-	desc = "You are a number, you are not a free man."
+	desc = "Você é um número, não um homem livre."
 	icon_state = "card_prisoner"
 	inhand_icon_state = "orange-id"
 	registered_name = "Scum"
@@ -1578,7 +1572,7 @@
 		balloon_alert(user, "acesso negado!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.is_holding(src))
-		to_chat(user, span_warning("You must be holding the ID to continue!"))
+		to_chat(user, span_warning("Você deve estar segurando a identidade para continuar!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(timed) // If we already have a time set, reset the card
@@ -1586,14 +1580,14 @@
 		time_to_assign = initial(time_to_assign)
 		registered_name = initial(registered_name)
 		STOP_PROCESSING(SSobj, src)
-		to_chat(user, "Resetting prisoner ID to default parameters.")
+		to_chat(user, "Reiniciando a identificação do prisioneiro para parâmetros padrão.")
 		return ITEM_INTERACT_SUCCESS
 
 	var/choice = tgui_input_number(user, "Sentence time in seconds", "Sentencing")
 	if(isnull(choice) || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH) || !user.is_holding(src))
 		return ITEM_INTERACT_BLOCKING
 	time_to_assign = choice
-	to_chat(user, "You set the sentence time to [DisplayTimeText(time_to_assign * 10)].")
+	to_chat(user, "Você define o tempo da sentença para[DisplayTimeText(time_to_assign * 10)].")
 	timed = TRUE
 	return ITEM_INTERACT_SUCCESS
 
@@ -1608,14 +1602,14 @@
 
 	if(timed)
 		if(time_to_assign > 0)
-			. += span_notice("The digital timer on the card is set to [DisplayTimeText(time_to_assign * 10)]. The timer will start once the prisoner passes through the prison gate scanners.")
+			. += span_notice("O temporizador digital no cartão está definido para[DisplayTimeText(time_to_assign * 10)]O temporizador começará assim que o prisioneiro passar pelo portal da prisão.")
 		else if(time_left <= 0)
-			. += span_notice("The digital timer on the card has zero seconds remaining. You leave a changed man, but a free man nonetheless.")
+			. += span_notice("O temporizador digital no cartão tem zero segundos restantes. Você deixa um homem diferente, mas um homem livre.")
 		else
-			. += span_notice("The digital timer on the card has [DisplayTimeText(time_left * 10)] remaining. Don't do the crime if you can't do the time.")
+			. += span_notice("O temporizador digital no cartão tem[DisplayTimeText(time_left * 10)]Restando. Não cometa o crime se não puder cumprir a pena.")
 
-	. += span_notice("[EXAMINE_HINT("Swipe")] a security ID on the card to [timed ? "re" : ""]set the genpop sentence time.")
-	. += span_notice("Remember to [EXAMINE_HINT("swipe")] the card on a genpop locker to link it.")
+	. += span_notice("[EXAMINE_HINT("Swipe")]uma identificação de segurança no cartão para[timed ? "re" : ""]Ajuste o tempo da sentença do Genpop.")
+	. += span_notice("Lembre-se[EXAMINE_HINT("swipe")]o cartão de um armário Genpop para ligá-lo.")
 
 /obj/item/card/id/advanced/prisoner/process(seconds_per_tick)
 	if(!timed)
@@ -1626,7 +1620,7 @@
 		STOP_PROCESSING(SSobj, src)
 
 /obj/item/card/id/advanced/prisoner/attack_self(mob/user)
-	to_chat(usr, span_notice("You have accumulated [points] out of the [goal] points you need for freedom."))
+	to_chat(usr, span_notice("Você acumulou[points]fora da[goal]Pontos que você precisa para a liberdade."))
 
 /obj/item/card/id/advanced/prisoner/one
 	name = "Prisoner #13-001"
@@ -1670,7 +1664,7 @@
 /obj/item/card/id/advanced/highlander
 	name = "highlander ID"
 	registered_name = "Highlander"
-	desc = "There can be only one!"
+	desc = "Só pode haver um!"
 	icon_state = "card_black"
 	assigned_icon_state = "assigned_syndicate"
 	trim = /datum/id_trim/highlander
@@ -1691,9 +1685,9 @@
 /obj/item/card/id/advanced/plainclothes/examine(mob/user)
 	. = ..()
 	if(trim_assignment_override)
-		. += span_smallnotice("it's currently under plainclothes identity.")
+		. += span_smallnotice("Está atualmente sob identidade à paisana.")
 	else
-		. += span_smallnotice("flip it to switch to the plainclothes identity.")
+		. += span_smallnotice("Vire para mudar para a identidade à paisana.")
 
 /obj/item/card/id/advanced/plainclothes/attack_self(mob/user)
 	var/popup_input = tgui_input_list(user, "Choose Action", "Two-Sided ID", list("Show", "Flip"))
@@ -1718,8 +1712,7 @@
 
 /obj/item/card/id/advanced/chameleon
 	name = "agent card"
-	desc = "An advanced chameleon ID card. Swipe this card on another ID card, or a person wearing one, to copy access. \
-		Has special magnetic properties which force it to the front of wallets."
+	desc = "Um cartão de identificação camaleão avançado. Passe este cartão em outro cartão de identidade, ou uma pessoa usando um, para copiar o acesso. Tem propriedades magnéticas especiais que forçam na frente das carteiras."
 	trim = /datum/id_trim/chameleon
 	trim_changeable = FALSE
 	actions_types = list(/datum/action/item_action/chameleon/change/id, /datum/action/item_action/chameleon/change/id_trim)
@@ -1762,21 +1755,21 @@
 	// to sneakily steal their accesses by swiping our agent ID card near them. As a result, we
 	// return ITEM_INTERACT_BLOCKING to cancel any part of the following the attack chain.
 	if(ishuman(interacting_with))
-		interacting_with.balloon_alert(user, "scanning ID card...")
+		interacting_with.balloon_alert(user, "digitalizando o cartão de identificação...")
 
 		if(!do_after(user, 2 SECONDS, interacting_with, hidden = TRUE))
-			interacting_with.balloon_alert(user, "interrompido!")
+			interacting_with.balloon_alert(user, "Interrompido!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/mob/living/carbon/human/human_target = interacting_with
 		var/list/target_id_cards = human_target.get_all_contents_type(/obj/item/card/id)
 
 		if(!length(target_id_cards))
-			interacting_with.balloon_alert(user, "no IDs!")
+			interacting_with.balloon_alert(user, "Sem identidades!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/selected_id = pick(target_id_cards)
-		interacting_with.balloon_alert(user, UNLINT("IDs synced"))
+		interacting_with.balloon_alert(user, UNLINT("IDs sincronizados"))
 		theft_target = WEAKREF(selected_id)
 		ui_interact(user)
 		return ITEM_INTERACT_SUCCESS
@@ -1784,7 +1777,7 @@
 	if(isitem(interacting_with))
 		var/obj/item/target_item = interacting_with
 
-		interacting_with.balloon_alert(user, "scanning ID card...")
+		interacting_with.balloon_alert(user, "digitalizando o cartão de identificação...")
 
 		var/list/target_id_cards = target_item.get_all_contents_type(/obj/item/card/id)
 		var/target_item_id = target_item.GetID()
@@ -1793,11 +1786,11 @@
 			target_id_cards |= target_item_id
 
 		if(!length(target_id_cards))
-			interacting_with.balloon_alert(user, "no IDs!")
+			interacting_with.balloon_alert(user, "Sem identidades!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/selected_id = pick(target_id_cards)
-		interacting_with.balloon_alert(user, UNLINT("IDs synced"))
+		interacting_with.balloon_alert(user, UNLINT("IDs sincronizados"))
 		theft_target = WEAKREF(selected_id)
 		ui_interact(user)
 		return ITEM_INTERACT_SUCCESS
@@ -1874,7 +1867,7 @@
 
 	var/obj/item/card/id/target_card = theft_target?.resolve()
 	if(QDELETED(target_card))
-		to_chat(usr, span_notice("The ID card you were attempting to scan is no longer in range."))
+		to_chat(usr, span_notice("O cartão de identidade que estava tentando escanear não está mais ao alcance."))
 		target_card = null
 		return TRUE
 
@@ -1882,7 +1875,7 @@
 	var/turf/our_turf = get_turf(src)
 	var/turf/target_turf = get_turf(target_card)
 	if(!our_turf.Adjacent(target_turf))
-		to_chat(usr, span_notice("The ID card you were attempting to scan is no longer in range."))
+		to_chat(usr, span_notice("O cartão de identidade que estava tentando escanear não está mais ao alcance."))
 		target_card = null
 		return TRUE
 
@@ -1896,17 +1889,17 @@
 				return TRUE
 
 			if(!(access_type in target_card.access))
-				to_chat(usr, span_notice("ID error: ID card rejected your attempted access modification."))
+				to_chat(usr, span_notice("Erro de identificação: cartão de identificação rejeitou sua modificação de acesso."))
 				LOG_ID_ACCESS_CHANGE(usr, src, "failed to add [SSid_access.get_access_desc(access_type)][try_wildcard ? " with wildcard [try_wildcard]" : ""]")
 				return TRUE
 
 			if(!can_add_wildcards(list(access_type), try_wildcard))
-				to_chat(usr, span_notice("ID error: ID card rejected your attempted access modification."))
+				to_chat(usr, span_notice("Erro de identificação: cartão de identificação rejeitou sua modificação de acesso."))
 				LOG_ID_ACCESS_CHANGE(usr, src, "failed to add [SSid_access.get_access_desc(access_type)][try_wildcard ? " with wildcard [try_wildcard]" : ""]")
 				return TRUE
 
 			if(!add_access(list(access_type), try_wildcard))
-				to_chat(usr, span_notice("ID error: ID card rejected your attempted access modification."))
+				to_chat(usr, span_notice("Erro de identificação: cartão de identificação rejeitou sua modificação de acesso."))
 				LOG_ID_ACCESS_CHANGE(usr, src, "failed to add [SSid_access.get_access_desc(access_type)][try_wildcard ? " with wildcard [try_wildcard]" : ""]")
 				return TRUE
 
@@ -1938,7 +1931,7 @@
 		update_label()
 		update_appearance()
 		forged = FALSE
-		to_chat(user, span_notice("You successfully reset the ID card."))
+		to_chat(user, span_notice("Você reiniciou com sucesso o cartão de identidade."))
 		return
 
 	///forge the ID if not forged.s
@@ -1968,7 +1961,7 @@
 	if(!after_input_check(user))
 		return TRUE
 
-	var/wallet_spoofing = tgui_alert(user, "Activate wallet ID spoofing, allowing this card to force itself to occupy the visible ID slot in wallets?", "Wallet ID Spoofing", list("Yes", "No"))
+	var/wallet_spoofing = tgui_alert(user, "Ativar furação de identidade de carteira, permitindo que este cartão se force a ocupar o espaço de identificação visível em carteiras?", "Wallet ID Spoofing", list("Yes", "No"))
 	if(!after_input_check(user))
 		return
 
@@ -1983,7 +1976,7 @@
 	update_label()
 	update_appearance()
 	forged = TRUE
-	to_chat(user, span_notice("You successfully forge the ID card."))
+	to_chat(user, span_notice("Você forjou com sucesso o cartão de identidade."))
 	user.log_message("forged \the [initial(name)] with name \"[registered_name]\", occupation \"[assignment]\" and trim \"[trim?.assignment]\".", LOG_GAME)
 
 	if(!ishuman(user) || registered_account)
@@ -1993,7 +1986,7 @@
 	var/datum/bank_account/account = SSeconomy.bank_accounts_by_id["[owner.account_id]"]
 	if(account)
 		set_account(account)
-		to_chat(user, span_notice("Your account number has been automatically assigned."))
+		to_chat(user, span_notice("Seu número de conta foi automaticamente atribuído."))
 
 /obj/item/card/id/advanced/chameleon/add_item_context(obj/item/source, list/context, atom/target, mob/living/user,)
 	. = ..()
@@ -2017,8 +2010,7 @@
 
 /// Upgraded variant of agent id, can hold unlimited amount of accesses.
 /obj/item/card/id/advanced/chameleon/elite
-	desc = "A highly advanced chameleon ID card. Swipe this card on another ID card, or a person wearing one, to copy access. \
-		Has special magnetic properties which force it to the front of wallets, and an embedded high-end microchip to hold unlimited access codes."
+	desc = "Um cartão de identificação camaleão altamente avançado. Passe este cartão em outro cartão de identidade, ou uma pessoa usando um, para copiar o acesso. Tem propriedades magnéticas especiais que o forçam na frente das carteiras, e um microchip de ponta embutido para conter códigos de acesso ilimitados."
 	wildcard_slots = WILDCARD_LIMIT_GOLD
 
 /obj/item/card/id/advanced/chameleon/elite/black
@@ -2027,33 +2019,33 @@
 
 /obj/item/card/id/advanced/engioutpost
 	registered_name = "George 'Plastic' Miller"
-	desc = "A card used to provide ID and determine access across the station. There's blood dripping from the corner. Ew."
+	desc = "Um cartão usado para identificar e determinar o acesso através da estação. Há sangue pingando da esquina. Eca."
 	trim = /datum/id_trim/engioutpost
 	registered_age = 47
 
 /obj/item/card/id/advanced/simple_bot
 	name = "simple bot ID card"
-	desc = "An internal ID card used by the station's non-sentient bots. You should report this to a coder if you're holding it."
+	desc = "Uma identificação interna usada pelos robôs não-sensíveis da estação. Deveria relatar isso a um codificador se estiver segurando."
 	wildcard_slots = WILDCARD_LIMIT_ADMIN
 
 /obj/item/card/id/red
 	name = "Red Team identification card"
-	desc = "A card used to identify members of the red team for CTF"
+	desc = "Um cartão usado para identificar membros da equipe vermelha para CTF"
 	icon_state = "ctf_red"
 
 /obj/item/card/id/blue
 	name = "Blue Team identification card"
-	desc = "A card used to identify members of the blue team for CTF"
+	desc = "Um cartão usado para identificar membros da equipe azul para CTF"
 	icon_state = "ctf_blue"
 
 /obj/item/card/id/yellow
 	name = "Yellow Team identification card"
-	desc = "A card used to identify members of the yellow team for CTF"
+	desc = "Um cartão usado para identificar membros da equipe amarela para CTF."
 	icon_state = "ctf_yellow"
 
 /obj/item/card/id/green
 	name = "Green Team identification card"
-	desc = "A card used to identify members of the green team for CTF"
+	desc = "Um cartão usado para identificar membros da equipe verde para CTF"
 	icon_state = "ctf_green"
 
 #undef INTERN_THRESHOLD_FALLBACK_HOURS
@@ -2071,7 +2063,7 @@
  */
 /obj/item/card/cardboard
 	name = "cardboard identification card"
-	desc = "A card used to provide ID and det- Heeeey, wait a second, this is just a piece of cut cardboard!"
+	desc = "Um cartão usado para fornecer identidade e... Heeeey, espere um segundo, isso é apenas um pedaço de papelão cortado!"
 	icon_state = "cardboard_id"
 	inhand_icon_state = "cardboard-id"
 	worn_icon_state = "nothing"
@@ -2161,7 +2153,7 @@
 /obj/item/card/cardboard/attack_self(mob/user)
 	if(!Adjacent(user))
 		return
-	user.visible_message(span_notice("[user] shows you: [icon2html(src, viewers(user))] [name]."), span_notice("You show \the [name]."))
+	user.visible_message(span_notice("[user]mostra-lhe:[icon2html(src, viewers(user))] [name]."), span_notice("Você mostra\the [name]."))
 	add_fingerprint(user)
 
 /obj/item/card/cardboard/update_name()
@@ -2198,7 +2190,7 @@
 
 /obj/item/card/cardboard/examine(mob/user)
 	. = ..()
-	. += span_notice("You could use a pen or crayon to forge a name, assignment or trim.")
+	. += span_notice("Você poderia usar uma caneta ou lápis de cor para forjar um nome, tarefa ou corte.")
 
 /obj/item/card/cardboard/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()

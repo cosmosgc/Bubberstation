@@ -1,6 +1,6 @@
 /obj/machinery/mech_bay_recharge_port
 	name = "mech bay power port"
-	desc = "This port recharges a mech's internal power cell."
+	desc = "Esta porta recarrega a célula de energia interna de um mech."
 	icon = 'icons/obj/machines/mech_bay.dmi'
 	icon_state = "recharge_port"
 	base_icon_state = "recharge_port"
@@ -52,7 +52,7 @@
 /obj/machinery/mech_bay_recharge_port/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Recharge power <b>[siunit(recharge_power, "W", 1)]</b>.")
+		. += span_notice("A exibição de status diz:<b>[siunit(recharge_power, "W", 1)]</b>.")
 
 /obj/machinery/mech_bay_recharge_port/process(seconds_per_tick)
 	if(machine_stat & NOPOWER || !recharge_console)
@@ -93,7 +93,7 @@
 
 /obj/machinery/computer/mech_bay_power_console
 	name = "mech bay power control console"
-	desc = "Displays the status of mechs connected to the recharge station."
+	desc = "Mostra o status dos mechs conectados à estação de recarga."
 	icon_screen = "recharge_comp"
 	icon_keyboard = "rd_key"
 	circuit = /obj/item/circuitboard/computer/mech_bay_power_console

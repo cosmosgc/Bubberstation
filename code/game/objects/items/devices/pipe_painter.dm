@@ -1,6 +1,6 @@
 /obj/item/pipe_painter
 	name = "pipe painter"
-	desc = "Used for coloring pipes, unsurprisingly."
+	desc = "Usado para colorir canos, sem surpresa."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "labeler1"
 	inhand_icon_state = null
@@ -14,7 +14,7 @@
 		var/obj/machinery/atmospherics/target_pipe = interacting_with
 		target_pipe.paint(GLOB.pipe_paint_colors[paint_color])
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE)
-		balloon_alert(user, "painted in [paint_color] color")
+		balloon_alert(user, "Pintado em[paint_color]cor")
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(interacting_with, /obj/item/pipe))
@@ -23,7 +23,7 @@
 		target_pipe.pipe_color = color
 		target_pipe.add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE)
-		balloon_alert(user, "painted in [paint_color] color")
+		balloon_alert(user, "Pintado em[paint_color]cor")
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
@@ -33,4 +33,4 @@
 
 /obj/item/pipe_painter/examine(mob/user)
 	. = ..()
-	. += span_notice("It is set to [paint_color].")
+	. += span_notice("Está definido para[paint_color].")

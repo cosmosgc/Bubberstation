@@ -5,7 +5,7 @@
 
 /obj/item/frog_statue
 	name = "frog statue"
-	desc = "Are they really comfortable living in this thing?"
+	desc = "Eles estão realmente confortáveis vivendo nessa coisa?"
 	icon = 'icons/obj/weapons/guns/magic.dmi'
 	icon_state = "frog_statue"
 	item_flags = NOBLUDGEON
@@ -21,12 +21,12 @@
 		return TRUE
 
 	if(!COOLDOWN_FINISHED(src, summon_cooldown))
-		user.balloon_alert(user, "recarregando!")
+		user.balloon_alert(user, "Recarregando!")
 		return TRUE
 
 	COOLDOWN_START(src, summon_cooldown, 30 SECONDS)
 	if(isnull(contained_frog))
-		user.balloon_alert(user, "no frog linked!")
+		user.balloon_alert(user, "Nenum sapo ligado!")
 		return TRUE
 	if(contained_frog.loc == src)
 		release_frog(user)
@@ -39,9 +39,9 @@
 	if(!IS_WIZARD(user))
 		return
 	if(isnull(contained_frog))
-		. += span_notice("There are currently no frogs linked to this statue!")
+		. += span_notice("Atualmente não há sapos ligados a esta estátua!")
 	else
-		. += span_notice("Using it will [(contained_frog in src) ? "release" : "recall"] the beast!")
+		. += span_notice("Usando-o vai[(contained_frog in src) ? "release" : "recall"]Um besta!")
 
 ///resummon the frog into its home
 /obj/item/frog_statue/proc/recall_frog(mob/user)
@@ -112,7 +112,7 @@
 
 /obj/item/frog_contract
 	name = "frog contract"
-	desc = "Create a pact with an elder frog! This great beast will be your mount, protector, but most importantly your friend."
+	desc = "Faça um pacto com um sapo mais velho! Essa grande besta será sua montaria, protetora, mas o mais importante, sua amiga."
 	icon = 'icons/obj/scrolls.dmi'
 	icon_state = "scroll"
 
@@ -140,7 +140,7 @@
 /obj/item/frog_contract/proc/select_frog_name(mob/user, mob/new_frog)
 	var/frog_name = sanitize_name(tgui_input_text(user, "Choose your frog's name!", "Name pet toad", "leaper", MAX_NAME_LEN), allow_numbers = TRUE)
 	if(!frog_name)
-		to_chat(user, span_warning("Please enter a valid name."))
+		to_chat(user, span_warning("Por favor, insira um nome válido."))
 		select_frog_name(user, new_frog)
 		return
 	new_frog.name = frog_name
@@ -148,12 +148,12 @@
 /obj/item/frog_contract/proc/select_frog_color(mob/user, mob/living/basic/leaper/new_frog)
 	var/frog_color = tgui_color_picker(user, "Select your frog's color!" , "Pet toad color", COLOR_GREEN)
 	if(isnull(frog_color))
-		to_chat(user, span_warning("Please choose a valid color."))
+		to_chat(user, span_warning("Por favor, escolha uma cor válida."))
 		select_frog_color(user, new_frog)
 		return
 	var/list/hsv_frog = rgb2hsv(frog_color)
 	if(hsv_frog[3] < MINIMUM_COLOR_VALUE)
-		to_chat(user, span_danger("This color is too dark!"))
+		to_chat(user, span_danger("Esta cor é muito escura!"))
 		select_frog_color(user, new_frog)
 		return
 	new_frog.set_color_overlay(frog_color)

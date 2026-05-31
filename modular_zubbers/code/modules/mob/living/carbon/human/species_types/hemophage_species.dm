@@ -20,7 +20,7 @@
 
 // BLOODSUCKER SPECIFIC FIXES
 /datum/species/hemophage/on_bloodsucker_gain(mob/living/carbon/human/target)
-	to_chat(target, span_warning("Your hemophage features have been removed, your nature as a bloodsucker abates the hemophage virus."))
+	to_chat(target, span_warning("Suas características hemofágicas foram removidas, sua natureza como um sanguessuga elimina o vírus hemofágico."))
 	// Without this any new organs would get corrupted again.
 	target.RemoveElement(/datum/element/tumor_corruption)
 	for(var/obj/item/organ/organ in target.organs)
@@ -32,6 +32,4 @@
 
 
 /datum/species/hemophage/get_species_description()
-	return list("Oftentimes feared or pushed out of society for the predatory nature of their condition, \
-		Hemophages are typically mixed around various Frontier populations, keeping their true nature hidden while \
-		reaping both the benefits and easy access to prey, enjoying unpursued existences on the Frontier.",)
+	return list("Oftentimes feared or pushed out of society for the predatory nature of their condition, 		Hemophages are typically mixed around various Frontier populations, keeping their true nature hidden while 		reaping both the benefits and easy access to prey, enjoying unpursued existences on the Frontier.",)

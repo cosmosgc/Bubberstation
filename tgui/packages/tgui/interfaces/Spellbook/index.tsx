@@ -88,7 +88,7 @@ export function Spellbook(props) {
                 <Stack.Item>
                   <Input
                     width={15}
-                    placeholder="Search for a spell..."
+                    placeholder="Procure um feitiço..."
                     onChange={setSpellSearch}
                   />
                 </Stack.Item>

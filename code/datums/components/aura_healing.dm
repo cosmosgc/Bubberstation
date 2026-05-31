@@ -167,6 +167,6 @@
 
 /atom/movable/screen/alert/aura_healing/update_desc(updates)
 	. = ..()
-	desc = "You are being healed by [master_ref?.resolve()]."
+	desc = "Você está sendo curado por[master_ref?.resolve()]."
 
 #undef HEAL_EFFECT_COOLDOWN

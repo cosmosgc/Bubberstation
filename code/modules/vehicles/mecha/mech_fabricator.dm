@@ -3,7 +3,7 @@
 	icon_state = "fab-idle"
 	base_icon_state = "fab"
 	name = "exosuit fabricator"
-	desc = "Nothing is being built."
+	desc = "Nada está sendo construído."
 	density = TRUE
 	req_access = list(ACCESS_ROBOTICS)
 	circuit = /obj/item/circuitboard/machine/mechfab
@@ -136,20 +136,20 @@
 /obj/machinery/mecha_part_fabricator/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Storing up to <b>[rmat.local_size]</b> material units.<br>Material consumption at <b>[component_coeff*100]%</b>.<br>Build time reduced by <b>[100-time_coeff*100]%</b>.")
-		. += span_notice("Currently configured to drop printed objects <b>[dir2text(drop_direction)]</b>.")
+		. += span_notice("A exibição de status diz:<b>[rmat.local_size]</b>Unidades materiais.<br>Consumo de material em<b>[component_coeff*100]%</b>.<br>Construir tempo reduzido por<b>[100-time_coeff*100]%</b>.")
+		. += span_notice("Atualmente configurado para soltar objetos impressos<b>[dir2text(drop_direction)]</b>.")
 
 /obj/machinery/mecha_part_fabricator/mouse_drop_dragged(atom/over, mob/user, src_location, over_location, params)
 	if(!can_interact(user) || (!HAS_SILICON_ACCESS(user) && !isAdminGhostAI(user)) && !Adjacent(user))
 		return
 	if(being_built)
-		balloon_alert(user, "printing started!")
+		balloon_alert(user, "A impressão começou!")
 		return
 	var/direction = get_dir(src, over_location)
 	if(!direction)
 		return
 	drop_direction = direction
-	balloon_alert(user, "dropping [dir2text(drop_direction)]")
+	balloon_alert(user, "Deixando cair.[dir2text(drop_direction)]")
 
 /**
  * Updates the `final_sets` and `buildable_parts` for the current mecha fabricator.
@@ -243,7 +243,7 @@
 	being_built = D
 	build_finish = world.time + get_construction_time_w_coeff(initial(D.construction_time))
 	build_start = world.time
-	desc = "It's building \a [D.name]."
+	desc = "Está construindo.\a [D.name]."
 
 	return TRUE
 
@@ -291,7 +291,7 @@
 	var/turf/exit = get_step(src, drop_direction)
 	if(exit.density)
 		say("Error! The part outlet is obstructed.")
-		desc = "It's trying to dispense the fabricated [dispensed_design.name], but the part outlet is obstructed."
+		desc = "Está tentando dispensar o fabricado.[dispensed_design.name]Mas a tomada está obstruída."
 		stored_part = built_part
 		return FALSE
 
@@ -505,14 +505,14 @@
 
 /obj/machinery/mecha_part_fabricator/screwdriver_act(mob/living/user, obj/item/I)
 	if(being_built)
-		to_chat(user, span_warning("\The [src] is currently processing! Please wait until completion."))
+		to_chat(user, span_warning("\The [src]está atualmente processando! Por favor, espere até a conclusão."))
 		return NONE
 
 	return default_deconstruction_screwdriver(user, I)
 
 /obj/machinery/mecha_part_fabricator/crowbar_act(mob/living/user, obj/item/I)
 	if(being_built)
-		to_chat(user, span_warning("\The [src] is currently processing! Please wait until completion."))
+		to_chat(user, span_warning("\The [src]está atualmente processando! Por favor, espere até a conclusão."))
 		return NONE
 
 	return default_deconstruction_crowbar(user, I)

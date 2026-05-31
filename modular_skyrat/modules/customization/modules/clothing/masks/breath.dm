@@ -1,5 +1,5 @@
 /obj/item/clothing/mask/breath/vox
-	desc = "A close-fitting mask that can be connected to an air supply. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
+	desc = "Uma máscara que pode ser conectada a um suprimento de ar. Este tem um porto de alimentação de fácil acesso para ser mais adequado para os membros da tripulação Vox."
 	name = "vox breath mask"
 	actions_types = list()
 	flags_cover = NONE
@@ -7,7 +7,7 @@
 
 /obj/item/clothing/mask/balaclavaadjust
 	name = "adjustable balaclava"
-	desc = "Wider eyed and made of an elastic based material, this one seems like it can contort more."
+	desc = "Olhos mais largos e feitos de um material elástico, este parece que pode contorcer mais."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "balaclava"
@@ -26,17 +26,17 @@
 			if (0)
 				flags_inv = HIDEHAIR
 				icon_state = initial(icon_state) + "_open"
-				to_chat(user, "You put the balaclava away, revealing your face.")
+				to_chat(user, "Guarde a balaclava, revelando seu rosto.")
 				open = 1
 			if (1)
 				flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 				icon_state = initial(icon_state) + "_mouth"
-				to_chat(user, "You adjust the balaclava up to cover your mouth.")
+				to_chat(user, "Ajuste a balaclava para cobrir a boca.")
 				open = 2
 			else
 				flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDEHAIR
 				icon_state = initial(icon_state)
-				to_chat(user, "You pull the balaclava up to cover your whole head.")
+				to_chat(user, "Você puxa a balaclava para cobrir toda a sua cabeça.")
 				open = 0
 		user.update_body_parts()
 		user.update_worn_ears()
@@ -54,7 +54,7 @@
 
 /obj/item/clothing/mask/balaclava/threehole
 	name = "three hole balaclava"
-	desc = "Tiocfaidh ar la."
+	desc = "Tiofaidh ar la."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "balaclavam"
@@ -64,7 +64,7 @@
 
 /obj/item/clothing/mask/balaclava/threehole/green
 	name = "three hole green balaclava"
-	desc = "Tiocfaidh ar la."
+	desc = "Tiofaidh ar la."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "swatclavam"
@@ -72,14 +72,14 @@
 
 /obj/item/clothing/mask/muzzle/ball
 	name = "ballgag"
-	desc = "I'm pretty fuckin far from okay."
+	desc = "Estou bem longe de estar bem."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "ballgag"
 
 /obj/item/clothing/mask/muzzle/ring
 	name = "ring gag"
-	desc = "A mouth wrap seemingly designed to hold the mouth open."
+	desc = "Um envoltório de boca aparentemente projetado para manter a boca aberta."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "ringgag"

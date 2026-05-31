@@ -80,19 +80,14 @@
 	// we're both great apes, or something..
 
 /datum/species/monkey/get_physical_attributes()
-	return "Monkeys are slippery, can crawl into vents, and are more dextrous than humans.. but only when stealing things. \
-		Natural monkeys cannot operate machinery or most tools with their paws, but unusually clever monkeys or those that were once something else can."
+	return "Monkeys are slippery, can crawl into vents, and are more dextrous than humans.. but only when stealing things. 		Natural monkeys cannot operate machinery or most tools with their paws, but unusually clever monkeys or those that were once something else can."
 
 /datum/species/monkey/get_species_description()
-	return "Monkeys are a type of primate that exist between humans and animals on the evolutionary chain. \
-		Every year, on Monkey Day, Nanotrasen shows their respect for the little guys by allowing them to roam the station freely."
+	return "Monkeys are a type of primate that exist between humans and animals on the evolutionary chain. 		Every year, on Monkey Day, Nanotrasen shows their respect for the little guys by allowing them to roam the station freely."
 
 /datum/species/monkey/get_species_lore()
 	return list(
-		"Monkeys are commonly used as test subjects on board Space Station Thirteen. \
-		But what if... for one day... the Monkeys were allowed to be the scientists? \
-		What experiments would they come up it? Would they (stereotypically) be related to bananas somehow? \
-		There's only one way to find out.",
+		"Monkeys are commonly used as test subjects on board Space Station Thirteen. 		But what if... for one day... the Monkeys were allowed to be the scientists? 		What experiments would they come up it? Would they (stereotypically) be related to bananas somehow? 		There's only one way to find out.",
 	)
 
 /datum/species/monkey/create_pref_unique_perks()
@@ -103,15 +98,13 @@
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "spider",
 			SPECIES_PERK_NAME = "Vent Crawling",
-			SPECIES_PERK_DESC = "Monkeys can crawl through the vent and scrubber networks while wearing no clothing. \
-				Stay out of the kitchen!",
+			SPECIES_PERK_DESC = "Macacos podem rastejar pelas redes de ventilação e limpeza sem roupas. Fique fora da cozinha!",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "paw",
 			SPECIES_PERK_NAME = "Primal Primate",
-			SPECIES_PERK_DESC = "Monkeys are primitive humans, and can't do most things a human can do. Computers are impossible, \
-				complex machines are right out, and most clothes don't fit your smaller form.",
+			SPECIES_PERK_DESC = "Macacos são humanos primitivos, e não podem fazer a maioria das coisas que um humano pode fazer. Computadores são impossíveis, máquinas complexas estão fora, e a maioria das roupas não se encaixam na sua forma menor.",
 		),
 	)
 
@@ -127,15 +120,14 @@
 		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 		SPECIES_PERK_ICON = "comment",
 		SPECIES_PERK_NAME = "Primitive Tongue",
-		SPECIES_PERK_DESC = "You may be able to understand [initial(common_language.name)], but you can't speak it. \
-			You can only speak [initial(monkey_language.name)].",
+		SPECIES_PERK_DESC = "Talvez você possa entender.[initial(common_language.name)]Mas você não pode falar. Você só pode falar[initial(monkey_language.name)].",
 	))
 
 	return to_add
 
 /obj/item/organ/brain/primate //Ook Ook
 	name = "Primate Brain"
-	desc = "This wad of meat is small, but has enlarged occipital lobes for spotting bananas."
+	desc = "Este maço de carne é pequeno, mas tem lóbulos occipitais aumentados para manchar bananas."
 	organ_traits = list(TRAIT_CAN_STRIP, TRAIT_PRIMITIVE, TRAIT_GUN_NATURAL) // No literacy or advanced tool usage.
 	actions_types = list(/datum/action/item_action/organ_action/toggle_trip)
 	/// Will this monkey stumble if they are crossed by a simple mob or a carbon in combat mode? Toggable by monkeys with clients, and is messed automatically set to true by monkey AI.
@@ -153,11 +145,11 @@
 	if(monkey_brain.tripping)
 		monkey_brain.tripping = FALSE
 		background_icon_state = "bg_default"
-		to_chat(monkey_brain.owner, span_notice("You will now avoid stumbling while colliding with people who are in combat mode."))
+		to_chat(monkey_brain.owner, span_notice("Agora evitarão tropeçar enquanto colidem com pessoas que estão em modo de combate."))
 	else
 		monkey_brain.tripping = TRUE
 		background_icon_state = "bg_default_on"
-		to_chat(monkey_brain.owner, span_notice("You will now stumble while colliding with people who are in combat mode."))
+		to_chat(monkey_brain.owner, span_notice("Agora você tropeçará ao colidir com pessoas que estão em modo de combate."))
 	build_all_button_icons()
 	return TRUE
 

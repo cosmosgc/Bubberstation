@@ -1,6 +1,6 @@
 /obj/structure/spirit_board
 	name = "spirit board"
-	desc = "A wooden board with letters etched into it, used in seances."
+	desc = "Uma tábua de madeira com letras gravadas nela, usada em sessões espíritas."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "spirit_board"
 	resistance_flags = FLAMMABLE
@@ -32,9 +32,9 @@
 /obj/structure/spirit_board/examine()
 	. = ..()
 	if(planchette)
-		. += span_notice("The planchette is currently at the letter \"[planchette]\".")
+		. += span_notice("A planchette está na carta.\"[planchette]\".")
 	else
-		. += span_notice("The planchette is in the middle of the board on no particular letter.")
+		. += span_notice("A planchette está no meio do quadro em nenhuma carta em particular.")
 
 /obj/structure/spirit_board/attack_hand(mob/user, list/modifiers)
 	. = ..()
@@ -59,7 +59,7 @@
 		notify_ghosts(
 			"Someone has begun playing with \a [src] in [get_area(src)]!",
 			source = src,
-			header = "Spirit board",
+			header = "Tabuleiro espiritual.",
 		)
 
 	var/new_planchette = tgui_input_list(ghost, "Choose the letter.", "Seance!", ghosty_options)
@@ -77,9 +77,9 @@
 		if(viewer.stat != CONSCIOUS && viewer.stat != DEAD) // You gotta be awake or dead to pay the toll
 			continue
 		if(viewer.is_blind())
-			to_chat(viewer, span_hear("You hear a scraping sound..."))
+			to_chat(viewer, span_hear("Você ouve um som de raspagem..."))
 		else
-			to_chat(viewer, span_notice("The planchette slowly moves... and stops at the letter \"[planchette]\"."))
+			to_chat(viewer, span_notice("A planchete se move lentamente... e pára na carta.\"[planchette]\"."))
 
 /obj/structure/spirit_board/proc/spirit_board_checks(mob/ghost)
 	var/cd_penalty = (ghost.ckey == lastuser) ? 1 SECONDS : 0 SECONDS //Give some other people a chance, hog.
@@ -89,7 +89,7 @@
 
 	var/turf/play_turf = get_turf(src)
 	if(play_turf?.get_lumcount() > 0.2)
-		to_chat(ghost, span_warning("It's too bright here to use [src]!"))
+		to_chat(ghost, span_warning("É muito brilhante aqui para usar.[src]!"))
 		return FALSE
 
 	if(required_user_count > 0)
@@ -99,13 +99,13 @@
 				continue
 
 			if(player.client?.is_afk() || player.stat != CONSCIOUS || HAS_TRAIT(player, TRAIT_HANDS_BLOCKED))//no playing with braindeads or corpses or handcuffed dudes.
-				to_chat(ghost, span_warning("[player] doesn't seem to be paying attention..."))
+				to_chat(ghost, span_warning("[player]Não parece estar prestando atenção..."))
 				continue
 
 			users_in_range++
 
 		if(users_in_range < required_user_count)
-			to_chat(ghost, span_warning("There aren't enough people around to use [src]!"))
+			to_chat(ghost, span_warning("Não há pessoas suficientes para usar.[src]!"))
 			return FALSE
 
 	return TRUE

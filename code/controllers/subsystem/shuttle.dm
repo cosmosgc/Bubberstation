@@ -279,7 +279,7 @@ SUBSYSTEM_DEF(shuttle)
 		emergency_no_recall = TRUE
 		priority_announce(
 			text = "Catastrophic casualties detected: crisis shuttle protocols activated - jamming recall signals across all frequencies.",
-			title = "Emergency Shuttle Dispatched",
+			title = "Transporte de emergência enviado.",
 			sound = ANNOUNCER_SHUTTLECALLED,
 			sender_override = "Emergency Shuttle Uplink Alert",
 			color_override = "orange",
@@ -293,7 +293,7 @@ SUBSYSTEM_DEF(shuttle)
 	if(admin_emergency_no_recall)
 		priority_announce(
 			text = "Emergency shuttle uplink interference detected, shuttle call disabled while the system reinitializes. Estimated restore in [DisplayTimeText(lockout_timer, round_seconds_to = 60)].",
-			title = "Uplink Interference",
+			title = "Interferência Uplink",
 			sound = ANNOUNCER_SHUTTLE, // SKYRAT EDIT CHANGE - Announcer Sounds - ORIGINAL: sound = 'sound/announcer/announcement/announce_dig.ogg',
 			sender_override = "Emergency Shuttle Uplink Alert",
 			color_override = "grey",
@@ -307,7 +307,7 @@ SUBSYSTEM_DEF(shuttle)
 	if(admin_emergency_no_recall)
 		priority_announce(
 			text= "Emergency shuttle uplink services are now back online.",
-			title = "Uplink Restored",
+			title = "Uplink restaurado",
 			sound = ANNOUNCER_SHUTTLE, // SKYRAT EDIT CHANGE - Announcer Sounds - ORIGINAL: sound = 'sound/announcer/announcement/announce_dig.ogg',
 			sender_override = "Emergency Shuttle Uplink Alert",
 			color_override = "green",
@@ -354,17 +354,10 @@ SUBSYSTEM_DEF(shuttle)
 	if(emergency)
 		return TRUE
 
-	WARNING("check_backup_emergency_shuttle(): There is no emergency shuttle, but the \
-		shuttle was called. Using the backup shuttle instead.")
+	WARNING("check_backup_emergency_shuttle(): There is no emergency shuttle, but the 		shuttle was called. Using the backup shuttle instead.")
 
 	if(!backup_shuttle)
-		CRASH("check_backup_emergency_shuttle(): There is no emergency shuttle, \
-		or backup shuttle! The game will be unresolvable. This is \
-		possibly a mapping error, more likely a bug with the shuttle \
-		manipulation system, or badminry. It is possible to manually \
-		resolve this problem by loading an emergency shuttle template \
-		manually, and then calling register() on the mobile docking port. \
-		Good luck.")
+		CRASH("check_backup_emergency_shuttle(): There is no emergency shuttle, 		or backup shuttle! The game will be unresolvable. This is 		possibly a mapping error, more likely a bug with the shuttle 		manipulation system, or badminry. It is possible to manually 		resolve this problem by loading an emergency shuttle template 		manually, and then calling register() on the mobile docking port. 		Good luck.")
 	emergency = backup_shuttle
 
 	return TRUE
@@ -386,14 +379,14 @@ SUBSYSTEM_DEF(shuttle)
 		return
 
 	if(length(trim(call_reason)) < CALL_SHUTTLE_REASON_LENGTH && SSsecurity_level.get_current_level_as_number() > SEC_LEVEL_GREEN)
-		to_chat(user, span_alert("You must provide a reason."))
+		to_chat(user, span_alert("Você deve fornecer uma razão."))
 		return
 
 	var/area/signal_origin = get_area(user)
 	call_evac_shuttle(call_reason, signal_origin)
 
 	log_shuttle("[key_name(user)] has called the emergency shuttle.")
-	deadchat_broadcast(" has called the shuttle at [span_name("[signal_origin.name]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
+	deadchat_broadcast("Chamem a nave auxiliar.[span_name("[signal_origin.name]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
 	if(call_reason)
 		SSblackbox.record_feedback("text", "shuttle_reason", 1, "[call_reason]")
 		log_shuttle("Shuttle call reason: [call_reason]")
@@ -435,17 +428,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	if(!admiral_message)
 		admiral_message = pick(GLOB.admiral_messages)
-	var/intercepttext = "<font size = 3><b>Nanotrasen Update</b>: Request For Shuttle.</font><hr>\
-						To whom it may concern:<br><br>\
-						We have taken note of the situation upon [station_name()] and have come to the \
-						conclusion that it does not warrant the abandonment of the station.<br>\
-						If you do not agree with our opinion we suggest that you open a direct \
-						line with us and explain the nature of your crisis.<br><br>\
-						<i>This message has been automatically generated based upon readings from long \
-						range diagnostic tools. To assure the quality of your request every finalized report \
-						is reviewed by an on-call rear admiral.<br>\
-						<b>Rear Admiral's Notes:</b> \
-						[admiral_message]"
+	var/intercepttext = "<font size = 3><b>Nanotrasen Update</b>: Request For Shuttle.</font><hr>						To whom it may concern:<br><br>						We have taken note of the situation upon [station_name()] and have come to the 						conclusion that it does not warrant the abandonment of the station.<br>						If you do not agree with our opinion we suggest that you open a direct 						line with us and explain the nature of your crisis.<br><br>						<i>This message has been automatically generated based upon readings from long 						range diagnostic tools. To assure the quality of your request every finalized report 						is reviewed by an on-call rear admiral.<br>						<b>Rear Admiral's Notes:</b> 						[admiral_message]"
 	print_command_report(intercepttext, announce = TRUE)
 
 	return TRUE
@@ -468,7 +451,7 @@ SUBSYSTEM_DEF(shuttle)
 	log_shuttle("[key_name(user)] has recalled the shuttle.")
 	message_admins("[ADMIN_LOOKUPFLW(user)] has recalled the shuttle.")
 	if(!hide_origin)
-		deadchat_broadcast(" has recalled the shuttle from [span_name("[get_area_name(user, TRUE)]")].", span_name("[user.real_name]"), user, message_type = DEADCHAT_ANNOUNCEMENT)
+		deadchat_broadcast("Recuperou a nave auxiliar de[span_name("[get_area_name(user, TRUE)]")].", span_name("[user.real_name]"), user, message_type = DEADCHAT_ANNOUNCEMENT)
 	return TRUE
 
 /// Can this user recall the emergency shuttle? Returns TRUE if they can, otherwise returns FALSE.
@@ -616,7 +599,7 @@ SUBSYSTEM_DEF(shuttle)
 		emergency.sound_played = FALSE
 		priority_announce(
 			text = "Departure has been postponed indefinitely pending conflict resolution.",
-			title = "Hostile Environment Detected",
+			title = "Ambiente hostil Detectado",
 			sound = 'sound/announcer/notice/notice1.ogg',
 			sender_override = "Emergency Shuttle Uplink Alert",
 			color_override = "grey",
@@ -626,7 +609,7 @@ SUBSYSTEM_DEF(shuttle)
 		emergency.setTimer(emergency_dock_time)
 		priority_announce(
 			text = "You have [DisplayTimeText(emergency_dock_time)] to board the emergency shuttle.",
-			title = "Hostile Environment Resolved",
+			title = "Ambiente hostil resolvido",
 			sound = 'sound/announcer/announcement/announce_dig.ogg',
 			sender_override = "Emergency Shuttle Uplink Alert",
 			color_override = "green",
@@ -917,8 +900,7 @@ SUBSYSTEM_DEF(shuttle)
 	hidden_shuttle_turf_images -= remove_images
 	hidden_shuttle_turf_images += add_images
 
-	for(var/obj/machinery/computer/camera_advanced/shuttle_docker/docking_computer \
-		as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/computer/camera_advanced/shuttle_docker))
+	for(var/obj/machinery/computer/camera_advanced/shuttle_docker/docking_computer 		as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/computer/camera_advanced/shuttle_docker))
 		docking_computer.update_hidden_docking_ports(remove_images, add_images)
 
 	QDEL_LIST(remove_images)
@@ -1203,9 +1185,7 @@ SUBSYSTEM_DEF(shuttle)
 		if("replace")
 			if(existing_shuttle == backup_shuttle)
 				// TODO make the load button disabled
-				WARNING("The shuttle that the selected shuttle will replace \
-					is the backup shuttle. Backup shuttle is required to be \
-					intact for round sanity.")
+				WARNING("The shuttle that the selected shuttle will replace 					is the backup shuttle. Backup shuttle is required to be 					intact for round sanity.")
 			else if(S && !shuttle_loading)
 				. = TRUE
 				shuttle_loading = TRUE
@@ -1218,7 +1198,7 @@ SUBSYSTEM_DEF(shuttle)
 					SSblackbox.record_feedback("text", "shuttle_manipulator", 1, "[mdp.name]")
 				shuttle_loading = FALSE
 				if(emergency == mdp) //you just changed the emergency shuttle, there are events in game + captains that can change your snowflake choice.
-					var/set_purchase = tgui_alert(usr, "Do you want to also disable shuttle purchases/random events that would change the shuttle?", "Butthurt Admin Prevention", list("Yes, disable purchases/events", "No, I want to possibly get owned"))
+					var/set_purchase = tgui_alert(usr, "Você também quer desativar compras de transporte e eventos aleatórios que mudariam a nave?", "Butthurt Admin Prevention", list("Yes, disable purchases/events", "No, I want to possibly get owned"))
 					if(set_purchase == "Yes, disable purchases/events")
 						SSshuttle.shuttle_purchased = SHUTTLEPURCHASE_FORCED
 

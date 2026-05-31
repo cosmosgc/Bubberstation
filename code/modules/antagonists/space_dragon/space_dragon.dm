@@ -33,11 +33,8 @@
 
 /datum/antagonist/space_dragon/greet()
 	. = ..()
-	to_chat(owner, "<b>Through endless time and space we have moved. We do not remember from where we came, we do not know where we will go.  All of space belongs to us.\n\
-					It is an empty void, of which our kind was the apex predator, and there was little to rival our claim to this title.\n\
-					But now, we find intruders spread out amongst our claim, willing to fight our teeth with magics unimaginable, their dens like lights flickering in the depths of space.\n\
-					Today, we will snuff out one of those lights.</b>")
-	to_chat(owner, span_boldwarning("You have five minutes to find a safe location to place down the first rift.  If you take longer than five minutes to place a rift, you will be returned from whence you came."))
+	to_chat(owner, "<b>Através do tempo e espaço intermináveis nos movemos. Não lembramos de onde viemos, não sabemos para onde iremos. Todo o espaço nos pertence.\nÉ um vazio vazio, do qual nosso tipo era o predador do ápice, e havia pouco a rivalizar com nossa reivindicação a este título.\nMas agora, encontramos intrusos espalhados entre nossas reivindicações, dispostos a lutar contra nossos dentes com magias inimagináveis, suas tocas como luzes piscando nas profundezas do espaço.\nHoje, vamos apagar uma dessas luzes.</b>")
+	to_chat(owner, span_boldwarning("Você tem cinco minutos para encontrar um local seguro para colocar a primeira fenda. Se você demorar mais de cinco minutos para colocar uma fenda, você será devolvido de onde você veio."))
 	owner.announce_objectives()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/effects/magic/demon_attack1.ogg', 80)
 
@@ -84,14 +81,7 @@
 	// Give the ability over if we have one
 	rift_ability?.Grant(antag)
 	locate_rift_ability?.Grant(antag)
-	wavespeak = antag.AddComponent( \
-		/datum/component/mind_linker, \
-		network_name = "Wavespeak", \
-		chat_color = "#635BAF", \
-		signals_which_destroy_us = list(COMSIG_LIVING_DEATH), \
-		speech_action_icon = 'icons/mob/actions/actions_space_dragon.dmi', \
-		speech_action_icon_state = "wavespeak", \
-	)
+	wavespeak = antag.AddComponent( 		/datum/component/mind_linker, 		network_name = "Wavespeak", 		chat_color = "#635BAF", 		signals_which_destroy_us = list(COMSIG_LIVING_DEATH), 		speech_action_icon = 'icons/mob/actions/actions_space_dragon.dmi', 		speech_action_icon_state = "wavespeak", 	)
 	RegisterSignal(wavespeak, COMSIG_QDELETING, PROC_REF(clear_wavespeak))
 
 /datum/antagonist/space_dragon/remove_innate_effects(mob/living/mob_override)
@@ -141,11 +131,11 @@
 		return
 	riftTimer = min(riftTimer + 1, maxRiftTimer + 1)
 	if(riftTimer == (maxRiftTimer - 60))
-		to_chat(owner.current, span_boldwarning("You have a minute left to summon the rift! Get to it!"))
+		to_chat(owner.current, span_boldwarning("Você tem um minuto para invocar a fenda! Vá em frente!"))
 		return
 	if(riftTimer >= maxRiftTimer)
 		// BUBBER CHANGE START: dragons don't die to not summoning a rift
-		to_chat(owner.current, span_boldwarning("You've failed to summon the rift in a timely manner! You will be slowed down until you do so!"))
+		to_chat(owner.current, span_boldwarning("Você falhou em invocar a fenda em tempo hábil! Você ficará mais lento até que faça isso!"))
 		owner.current.add_movespeed_modifier(/datum/movespeed_modifier/dragon_depression)
 		riftTimer = -1
 		// BUBBER CHANGE END
@@ -167,7 +157,7 @@
 	if(rifts_charged != 3 && !objective_complete) // BUBBER ADDITION
 		if(owner.current.stat == DEAD)
 			return
-		to_chat(owner.current, span_warning("You will be able to make a new rift in 5 minutes."))
+		to_chat(owner.current, span_warning("Você será capaz de fazer uma nova fenda em 5 minutos."))
 		addtimer(CALLBACK(src, PROC_REF(give_rift_ability)), 5 MINUTES)
 	SEND_SOUND(owner.current, sound('sound/vehicles/rocketlaunch.ogg'))
 	for(var/obj/structure/carp_rift/rift as anything in rift_list)
@@ -195,8 +185,7 @@
 	permanant_empower()
 	var/datum/objective/summon_carp/main_objective = locate() in objectives
 	main_objective?.completed = TRUE
-	priority_announce("A large amount of lifeforms have been detected approaching [station_name()] at extreme speeds. \
-		Remaining crew are advised to evacuate as soon as possible.", "[command_name()] Wildlife Observations", has_important_message = TRUE)
+	priority_announce("A large amount of lifeforms have been detected approaching [station_name()] at extreme speeds. 		Remaining crew are advised to evacuate as soon as possible.", "[command_name()] Wildlife Observations", has_important_message = TRUE)
 	sound_to_playing_players('sound/mobs/non-humanoids/space_dragon/space_dragon_roar.ogg', volume = 75)
 	for(var/obj/structure/carp_rift/rift as anything in rift_list)
 		rift.carp_stored = 999999
@@ -238,7 +227,7 @@
 	owner.current.remove_movespeed_modifier(/datum/movespeed_modifier/dragon_rage)
 
 /datum/objective/summon_carp
-	explanation_text = "Summon 3 rifts in order to flood the station with carp."
+	explanation_text = "Invoque 3 fendas para inundar a estação com carpa."
 
 /datum/objective/summon_carp/update_explanation_text()
 	var/datum/antagonist/space_dragon/dragon_owner = owner.has_antag_datum(/datum/antagonist/space_dragon)
@@ -271,7 +260,7 @@
 		parts += "<span class='redtext big'>The [name] has failed!</span>"
 
 	if(length(carp))
-		parts += span_header("<br>The [name] was assisted by:")
+		parts += span_header("<br>O[name]foi assistido por:")
 		parts += "<ul class='playerlist'>"
 		var/list/players_to_carp_taken = list()
 		for(var/datum/mind/carpy as anything in carp)

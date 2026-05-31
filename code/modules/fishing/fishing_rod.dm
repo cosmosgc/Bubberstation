@@ -1,6 +1,6 @@
 /obj/item/fishing_rod
 	name = "fishing rod"
-	desc = "You can fish with this."
+	desc = "Você pode pescar com isso."
 	icon = 'icons/obj/fishing.dmi'
 	icon_state = "fishing_rod"
 	icon_angle = -45
@@ -126,20 +126,20 @@
 	if(bait)
 		equipped_stuff += "[icon2html(bait, user)] <b>[bait]</b>"
 	if(length(equipped_stuff))
-		. += span_notice("It has \a [english_list(equipped_stuff)] equipped.")
+		. += span_notice("Tem.\a [english_list(equipped_stuff)]Equipado.")
 	if(!bait)
-		. += span_warning("It doesn't have a bait attached to it. Fishing will be more tedious!")
+		. += span_warning("Não tem uma isca presa nela. Pescar será mais tedioso!")
 	if(HAS_MIND_TRAIT(user, TRAIT_EXAMINE_FISH))
 		. += "" //add a new line
-		. += span_notice("Thanks to your fishing skills, you can examine it again for more in-depth information.")
+		. += span_notice("Graças a suas habilidades de pesca, você pode examiná-lo novamente para informações mais aprofundadas.")
 		return
 	if(HAS_TRAIT(src, TRAIT_ROD_MANSUS_INFUSED))
 		if(IS_HERETIC(user))
-			. += span_purple("This rod has been <b>infused</b> by a heretic, improving its ability to catch glimpses of the Mansus. And fish.")
+			. += span_purple("Esta vara tem sido<b>Infundido</b>por um herege, melhorando sua capacidade de vislumbrar o Mansus. E pixe.")
 		else
-			. += span_purple("It's glowing an eerie purple...")
+			. += span_purple("Está brilhando um roxo assustador...")
 	else if(IS_HERETIC(user))
-		. += span_purple("As a Heretic, you can infuse this fishing rod with your <b>Mansus Grasp</b> by activating the spell while wielding it, to enhance its fishing power.")
+		. += span_purple("Como um herege, você pode infundir esta vara de pesca com seu<b>Mansus Grasp</b>ativando o feitiço enquanto o empunha, para aumentar seu poder de pesca.")
 
 /obj/item/fishing_rod/examine_more(mob/user)
 	. = ..()
@@ -148,35 +148,35 @@
 
 	var/list/block = list()
 	var/get_percent = HAS_MIND_TRAIT(user, TRAIT_EXAMINE_DEEPER_FISH)
-	block += span_info("You think you can cast it up to [get_cast_range()] tiles away.")
+	block += span_info("Você acha que pode fazer isso[get_cast_range()]Tiles de distância.")
 	block += get_stat_info(get_percent, difficulty_modifier * 0.01, "Fishing will be", "easier", "harder", "with this fishing rod")
 	block += get_stat_info(get_percent, experience_multiplier - 1, "You will gain experience", "faster", "slower")
 	block += get_stat_info(get_percent, completion_speed_mult - 1, "The minigame completion speed is", "faster", "slower")
 	block += get_stat_info(get_percent, bait_speed_mult - 1, "Reeling is", "faster", "slower")
 	block += get_stat_info(get_percent, deceleration_mult - 1, "Deceleration is", "faster", "slower")
 	block += get_stat_info(get_percent, bounciness_mult - 1, "This fishing rod is ", "bouncier", "less bouncy", "than a normal one", less_is_better = TRUE)
-	block += get_stat_info(get_percent, gravity_mult - 1, "The lure will sink", "faster", "slower", span_info = TRUE)
+	block += get_stat_info(get_percent, gravity_mult - 1, "A isca vai financiar", "faster", "slower", span_info = TRUE)
 
 	list_clear_nulls(block)
 	. += boxed_message(block.Join("\n"))
 
 	if(get_percent && (material_flags & MATERIAL_EFFECTS) && length(custom_materials))
-		. += boxed_message(span_info("Right now, fish caught by this fishing rod have a [get_material_fish_chance(user)]% of being made of its same materials."))
+		. += boxed_message(span_info("Agora, peixes capturados por esta vara de pesca têm um[get_material_fish_chance(user)]% de ser feito de seus mesmos materiais."))
 
 	block = list()
 	if(HAS_TRAIT(src, TRAIT_ROD_ATTRACT_SHINY_LOVERS))
-		block += span_info("This fishing rod will attract shiny-loving fish.")
+		block += span_info("Esta vara de pesca atrairá peixes brilhantes.")
 	if(HAS_TRAIT(src, TRAIT_ROD_IGNORE_ENVIRONMENT))
-		block += span_info("Environment and light shouldn't be an issue with this rod.")
+		block += span_info("Meio ambiente e luz não devem ser problemas com esta vara.")
 	if(HAS_TRAIT_NOT_FROM(src, TRAIT_ROD_REMOVE_FISHING_DUD, INNATE_TRAIT)) // Duds are innately removed by baits, we all know that.
-		block += span_info("You won't catch duds with this rod.")
+		block += span_info("Você não vai pegar trapos com esta vara.")
 	if(HAS_TRAIT(src, TRAIT_ROD_LAVA_USABLE))
-		block += span_info("This fishing rod can be used to fish on lava.")
+		block += span_info("Esta vara de pesca pode ser usada para pescar na lava.")
 	if(length(block))
 		. += boxed_message(block.Join("\n"))
 
 ///Used in examine_more to reduce all the copypasta when getting more information about the various stats of the fishing rod.
-/obj/item/fishing_rod/proc/get_stat_info(get_percent, value, prefix, easier, harder, suffix = "with this fishing rod", span_info = FALSE, less_is_better = FALSE)
+/obj/item/fishing_rod/proc/get_stat_info(get_percent, value, prefix, easier, harder, suffix = "Com esta vara de pesca", span_info = FALSE, less_is_better = FALSE)
 	if(!value)
 		return
 	var/percent = get_percent ? "[abs(value * 100)]% " : ""
@@ -287,7 +287,7 @@
 		return
 
 	if(currently_hooked.anchored || currently_hooked.move_resist >= MOVE_FORCE_STRONG)
-		balloon_alert(user, "[currently_hooked.p_they()] won't budge!")
+		balloon_alert(user, "[currently_hooked.p_they()]Não se mexa!")
 		return
 
 	//About thirty minutes of non-stop reeling to get from zero to master... not worth it but hey, you do what you do.
@@ -405,7 +405,7 @@
 
 /obj/item/fishing_rod/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!hook)
-		balloon_alert(user, "install a hook first!")
+		balloon_alert(user, "Instale um Gancho Primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	// Reel in if able
@@ -431,7 +431,7 @@
 	if(casting || currently_hooked)
 		return
 	if(!hook)
-		balloon_alert(user, "install a hook first!")
+		balloon_alert(user, "Instale um Gancho Primeiro!")
 		return
 	if(!COOLDOWN_FINISHED(src, casting_cd))
 		return
@@ -615,16 +615,16 @@
 	// Trying to remove the item
 	if(!new_item && current_item)
 		user.put_in_hands(current_item)
-		balloon_alert(user, "[slot] removed")
+		balloon_alert(user, "[slot]Removido")
 	// Trying to insert item into empty slot
 	else if(new_item && !current_item)
 		if(!slot_check(new_item, slot))
 			return
 		if(user.transferItemToLoc(new_item,src))
 			set_slot(new_item, slot)
-			balloon_alert(user, "[slot] installed")
+			balloon_alert(user, "[slot]Instalado")
 		else
-			balloon_alert(user, "stuck to your hands!")
+			balloon_alert(user, "Preso em suas mãos!")
 			return
 	/// Trying to swap item
 	else if(new_item && current_item)
@@ -633,9 +633,9 @@
 		if(user.transferItemToLoc(new_item, src))
 			user.put_in_hands(current_item)
 			set_slot(new_item, slot)
-			balloon_alert(user, "[slot] swapped")
+			balloon_alert(user, "[slot]Trocado.")
 		else
-			balloon_alert(user, "stuck to your hands!")
+			balloon_alert(user, "Preso em suas mãos!")
 			return
 
 	update_icon()
@@ -691,8 +691,8 @@
 
 /obj/item/fishing_rod/bone
 	name = "bone fishing rod"
-	desc = "A humble rod, made with whatever happened to be on hand."
-	ui_description = "A fishing rod crafted with leather, sinew and bones."
+	desc = "Uma vara humilde, feita com o que quer que tenha acontecido."
+	ui_description = "Uma vara de pesca feita com couro, tendões e ossos."
 	icon_state = "fishing_rod_bone"
 	reel_overlay = "reel_bone"
 	default_line_color = "red"
@@ -704,13 +704,13 @@
 /obj/item/fishing_rod/telescopic
 	name = "telescopic fishing rod"
 	icon_state = "fishing_rod_telescopic"
-	desc = "A lightweight, ergonomic, easy to store telescopic fishing rod. "
+	desc = "Uma vara de pesca leve, ergonômica, fácil de armazenar telescópica."
 	inhand_icon_state = null
 	custom_price = PAYCHECK_CREW * 9
 	force = 0
 	w_class = WEIGHT_CLASS_NORMAL
-	ui_description = "A collapsible fishing rod that can fit within a backpack."
-	wiki_description = "<b>It has to be bought from Cargo</b>."
+	ui_description = "Uma vara de pesca que pode caber dentro de uma mochila."
+	wiki_description = "<b>Tem que ser comprado de carga.</b>."
 	reel_overlay = "reel_telescopic"
 	frame_state = "frame_telescopic"
 	completion_speed_mult = 1.1
@@ -735,7 +735,7 @@
 /obj/item/fishing_rod/telescopic/cast_line(atom/target, mob/user, proximity_flag)
 	if(!HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
 		if(!proximity_flag)
-			balloon_alert(user, "extend the rod first!")
+			balloon_alert(user, "Estenda a pressa primeiro!")
 		return
 	return ..()
 
@@ -776,9 +776,9 @@
 
 /obj/item/fishing_rod/telescopic/master
 	name = "master fishing rod"
-	desc = "The mythical rod of a lost fisher king. Said to be imbued with unparalleled fishing power. There's writing on the back of the pole. \"中国航天制造\""
+	desc = "A vara mítica de um rei pescador perdido. Diz-se que está imbuído de um poder de pesca sem paralelo. Está escrito atrás do poste.\"中国航天制造\""
 	difficulty_modifier = -10
-	ui_description = "A mythical telescopic fishing rod that makes fishing quite easier."
+	ui_description = "Uma vara de pesca telescópica mítica que facilita a pesca."
 	wiki_description = null
 	icon_state = "fishing_rod_master"
 	reel_overlay = "reel_master"
@@ -797,9 +797,9 @@
 
 /obj/item/fishing_rod/tech
 	name = "advanced fishing rod"
-	desc = "An embedded universal constructor along with micro-fusion generator makes this marvel of technology never run out of bait. Interstellar treaties prevent using it outside of recreational fishing. And you can fish with this. "
-	ui_description = "A rod with an infinite supply of synthetic bait. Doubles as an Experi-Scanner for fish."
-	wiki_description = "<b>It requires the Advanced Fishing Technology Node to be researched to be printed.</b>"
+	desc = "Um construtor universal embutido junto com o gerador de micro-fusão faz essa maravilha da tecnologia nunca ficar sem isca. Tratados interestelares impedem usá-lo fora da pesca recreativa. E você pode pescar com isso."
+	ui_description = "Uma vara com um suprimento infinito de isca sintética. Duplas como Experi-Scanner para peixes."
+	wiki_description = "<b>Requer que o Nó de Tecnologia de Pesca Avançada seja pesquisado para ser impresso.</b>"
 	icon_state = "fishing_rod_science"
 	reel_overlay = "reel_science"
 	frame_state = "frame_science"
@@ -818,16 +818,11 @@
 		COMSIG_ITEM_PRE_ATTACK = TYPE_PROC_REF(/datum/component/experiment_handler, try_run_handheld_experiment),
 		COMSIG_ITEM_AFTERATTACK = TYPE_PROC_REF(/datum/component/experiment_handler, ignored_handheld_experiment_attempt),
 	)
-	AddComponent(/datum/component/experiment_handler, \
-		config_mode = EXPERIMENT_CONFIG_ALTCLICK, \
-		allowed_experiments = list(/datum/experiment/scanning/fish), \
-		config_flags = EXPERIMENT_CONFIG_SILENT_FAIL|EXPERIMENT_CONFIG_IMMEDIATE_ACTION, \
-		experiment_signals = fishing_signals, \
-	)
+	AddComponent(/datum/component/experiment_handler, 		config_mode = EXPERIMENT_CONFIG_ALTCLICK, 		allowed_experiments = list(/datum/experiment/scanning/fish), 		config_flags = EXPERIMENT_CONFIG_SILENT_FAIL|EXPERIMENT_CONFIG_IMMEDIATE_ACTION, 		experiment_signals = fishing_signals, 	)
 
 /obj/item/fishing_rod/tech/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Alt-Click</b> to access the Experiment Configuration UI")
+	. += span_notice("<b>Alt-Click</b>para acessar a configuração da experiência UI")
 
 /obj/item/fishing_rod/tech/use_slot(slot, mob/user, obj/item/new_item)
 	if(slot == ROD_SLOT_BAIT)
@@ -836,12 +831,12 @@
 
 /obj/item/fishing_rod/material
 	name = "material fishing rod" //name shown on the autowiki.
-	desc = "A custom fishing rod from your local autolathe."
+	desc = "Uma vara de pesca personalizada do seu autolathe local."
 	icon_state = "fishing_rod_material"
 	reel_overlay = "reel_material"
 	frame_state = "frame_material"
-	ui_description = "An autolathe-printable fishing rod made of some material."
-	wiki_description = "Different materials can have different effects. They also catch fish made of the same material used to print the rod."
+	ui_description = "Uma vara de pesca auto-imprimível feita de algum material."
+	wiki_description = "Materiais diferentes podem ter efeitos diferentes. Eles também pegam peixes feitos do mesmo material usado para imprimir a haste."
 	material_flags = MATERIAL_EFFECTS|MATERIAL_AFFECT_STATISTICS|MATERIAL_COLOR|MATERIAL_ADD_PREFIX
 
 /obj/item/fishing_rod/material/Initialize(mapload)

@@ -15,16 +15,16 @@
 		break
 
 	if(!data_tracker && !user.can_dominate_mechs)
-		to_chat(user, span_warning("You cannot interface this exosuit without tracking beacons installed."))
+		to_chat(user, span_warning("Você não pode conectar este exosuit sem rastrear sinais instalados."))
 		return
 
 	if(data_tracker || user.can_dominate_mechs)
-		output += span_notice("[icon2html(src, user)] [name] Exosuit Status Report\n")
+		output += span_notice("[icon2html(src, user)] [name]Relatório de Estado do Exosuit\n")
 		output += data_tracker?.get_mecha_info()
 
 	if(user.can_dominate_mechs)
 		if(data_tracker)
-			output += span_danger("\nWarning: Tracking detected. Enter at your own risk.")
+			output += span_danger("\nAtenção, rastreamento detectado. Entre por sua conta e risco.")
 
 	if(user.can_dominate_mechs)
 		output += "\n<a href='byond://?src=[REF(user)];ai_take_control=[REF(src)]'>[span_warning("\[INITIALIZE CONTROL OVERRIDE\]")]</a>"
@@ -46,13 +46,13 @@
 	switch(interaction)
 		if(AI_TRANS_TO_CARD) //Upload AI from mech to AI card.
 			if(!(mecha_flags & PANEL_OPEN)) //Mech must be in maint mode to allow carding.
-				to_chat(user, span_warning("[name] must have maintenance protocols active in order to allow a transfer."))
+				to_chat(user, span_warning("[name]Devem ter protocolos de manutenção ativos para permitir uma transferência."))
 				return
 			var/list/ai_pilots = list()
 			for(var/mob/living/silicon/ai/aipilot in occupants)
 				ai_pilots += aipilot
 			if(!length(ai_pilots)) //Mech does not have an AI for a pilot
-				to_chat(user, span_warning("No AI detected in \the [src]'s onboard computer."))
+				to_chat(user, span_warning("Nenhuma IA detetada em\the [src]Está a bordo do computador."))
 				return
 			if(length(ai_pilots) > 1) //Input box for multiple AIs, but if there's only one we'll default to them.
 				AI = tgui_input_list(user, "Which AI do you wish to card?", "AI Selection", sort_list(ai_pilots))
@@ -73,33 +73,33 @@
 			card.AI = AI
 			AI.controlled_equipment = null
 			AI.remote_control = null
-			to_chat(AI, span_notice("You have been downloaded to a mobile storage device. Wireless connection offline."))
+			to_chat(AI, span_notice("Você foi baixado para um dispositivo de armazenamento móvel. Conexão sem fio offline."))
 			to_chat(user, "[span_boldnotice("Transfer successful")]: [AI.name] ([rand(1000,9999)].exe) removed from [name] and stored within local memory.")
 			return
 
 		if(AI_MECH_HACK) //Called by AIs on the mech
 			AI.create_core_link(new /obj/structure/ai_core(AI.loc, CORE_STATE_FINISHED, AI.make_mmi()))
 			if(AI.can_dominate_mechs && LAZYLEN(occupants)) //Oh, I am sorry, were you using that?
-				to_chat(AI, span_warning("Occupants detected! Forced ejection initiated!"))
-				to_chat(occupants, span_danger("You have been forcibly ejected!"))
+				to_chat(AI, span_warning("Ocupantes detectados! Ejeção forçada iniciada!"))
+				to_chat(occupants, span_danger("Você foi expulso à força!"))
 				for(var/ejectee in occupants)
 					mob_exit(ejectee, silent = TRUE, randomstep = TRUE, forced = TRUE) //IT IS MINE, NOW. SUCK IT, RD!
 
 		if(AI_TRANS_FROM_CARD) //Using an AI card to upload to a mech.
 			AI = card.AI
 			if(!AI)
-				to_chat(user, span_warning("There is no AI currently installed on this device."))
+				to_chat(user, span_warning("Não há IA instalada neste dispositivo."))
 				return
 			if(!(mecha_flags & AI_COMPATIBLE)) //If the mech isn't compatible with an AI transfer, early return.
-				to_chat(user, span_warning("An AI cannot be installed into [src]."))
+				to_chat(user, span_warning("Um IA não pode ser instalado em[src]."))
 				return
 			if(AI.deployed_shell) //Recall AI if shelled so it can be checked for a client
 				AI.disconnect_shell()
 			if(AI.stat || !AI.client)
-				to_chat(user, span_warning("[AI.name] is currently unresponsive, and cannot be uploaded."))
+				to_chat(user, span_warning("[AI.name]está sem resposta e não pode ser carregado."))
 				return
 			if((LAZYLEN(occupants) >= max_occupants) || dna_lock) //Normal AIs cannot steal mechs!
-				to_chat(user, span_warning("Access denied. [name] is [LAZYLEN(occupants) >= max_occupants ? "currently fully occupied" : "secured with a DNA lock"]."))
+				to_chat(user, span_warning("Acesso negado.[name]É[LAZYLEN(occupants) >= max_occupants ? "currently fully occupied" : "secured with a DNA lock"]."))
 				return
 			AI.set_control_disabled(FALSE)
 			AI.radio_enabled = TRUE
@@ -119,7 +119,7 @@
 	add_occupant(AI)
 
 	var/list/output = list()
-	output += span_bold("You have been uploaded to the exosuits onboard computer.\n")
+	output += span_bold("Você foi carregado para os exosuits a bordo do computador.\n")
 	output += "• Press the middle mouse button or the action button on your HUD panel to toggle equipment safety."
 	output += "• Clicks with safety enabled will pass AI commands as usual."
 

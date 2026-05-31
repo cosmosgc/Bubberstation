@@ -17,12 +17,12 @@
 	var/obj/item/I = parent
 	if(container.contents.len)
 		if(user)
-			to_chat(user, span_warning("There's already something in [container]."))
+			to_chat(user, span_warning("Já tem algo dentro[container]."))
 		return TRUE
 	if(user)
 		if(!user.transferItemToLoc(I, container))
 			return TRUE
-		to_chat(user, span_notice("You put [I] into [container]."))
+		to_chat(user, span_notice("Você colocou[I]em[container]."))
 	else
 		I.forceMove(container)
 	container.tank = I

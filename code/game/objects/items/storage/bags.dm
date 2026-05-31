@@ -26,7 +26,7 @@
 
 /obj/item/storage/bag/trash
 	name = "trash bag"
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"
+	desc = "É o tipo de polímero preto pesado. Hora de tirar o lixo!"
 	icon = 'icons/obj/service/janitor.dmi'
 	icon_state = "trashbag"
 	inhand_icon_state = "trashbag"
@@ -52,13 +52,13 @@
 	// Otherwise, we're gonna dump into the dest object
 	var/turf/dump_onto = get_turf(dest_object)
 	user.visible_message(
-		span_notice("[user] dumps the contents of [src] all out on \the [dump_onto]"),
-		span_notice("The remaining trash in \the [src] falls out onto \the [dump_onto]"),
+		span_notice("[user]Descarta o conteúdo de[src]Todos para fora\the [dump_onto]"),
+		span_notice("O resto do lixo em\the [src]cai em cima\the [dump_onto]"),
 	)
 	source.remove_all(dump_onto)
 
 /obj/item/storage/bag/trash/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] puts [src] over [user.p_their()] head and starts chomping at the insides! Disgusting!"))
+	user.visible_message(span_suicide("[user]coloca[src]Câmbio.[user.p_their()]cabeça e começa a mastigar por dentro! Nojento!"))
 	playsound(loc, 'sound/items/eatfood.ogg', 50, TRUE, -1)
 	return TOXLOSS
 
@@ -82,7 +82,7 @@
 
 /obj/item/storage/bag/trash/bluespace
 	name = "trash bag of holding"
-	desc = "The latest and greatest in custodial convenience, a trashbag that is capable of holding vast quantities of garbage."
+	desc = "O mais recente e maior em conveniência de custódia, um saco de lixo que é capaz de armazenar grandes quantidades de lixo."
 	icon_state = "bluetrashbag"
 	worn_icon_state = "bluetrashbag"
 	inhand_icon_state = "bluetrashbag"
@@ -94,7 +94,7 @@
 
 /obj/item/storage/bag/ore
 	name = "mining satchel"
-	desc = "This little bugger can be used to store and transport ores."
+	desc = "Este pequeno idiota pode ser usado para armazenar e transportar minérios."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "satchel"
 	worn_icon_state = "satchel"
@@ -141,8 +141,7 @@
 
 /obj/item/storage/bag/ore/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/boulder))
-		to_chat(user, span_warning("You can't fit [tool] into [src]. \
-			Perhaps you should break it down first, or find an ore box."))
+		to_chat(user, span_warning("Você não cabe.[tool]em[src]Talvez você deva quebrar primeiro, ou encontrar uma caixa de minério."))
 		return ITEM_INTERACT_BLOCKING
 	return NONE
 
@@ -187,16 +186,16 @@
 	COOLDOWN_START(src, ore_bag_balloon_cooldown, ORE_BAG_BALOON_COOLDOWN)
 
 	if (box)
-		balloon_alert(user, "scoops ore into box")
+		balloon_alert(user, "colheres de minério em caixa")
 		user.visible_message(
-			span_notice("[user] offloads the ores beneath [user.p_them()] into [box]."),
+			span_notice("[user]Descarrega os minérios abaixo[user.p_them()]em[box]."),
 			ignored_mobs = user
 		)
 		return
 
-	balloon_alert(user, "scoops ore into bag")
+	balloon_alert(user, "colheres de minério em saco")
 	user.visible_message(
-		span_notice("[user] scoops up the ores beneath [user.p_them()]."),
+		span_notice("[user]Recolhe os minérios abaixo[user.p_them()]."),
 		ignored_mobs = user
 	)
 
@@ -221,7 +220,7 @@
 		return TRUE
 
 	if (!spam_protection)
-		balloon_alert(user, "bag full!")
+		balloon_alert(user, "Saco cheio!")
 		spam_protection = TRUE
 	return FALSE
 
@@ -240,7 +239,7 @@
 
 /obj/item/storage/bag/ore/holding //miners, your messiah has arrived
 	name = "mining satchel of holding"
-	desc = "A revolution in convenience, this satchel allows for huge amounts of ore storage. It's been outfitted with anti-malfunction safety measures."
+	desc = "Uma revolução de conveniência, esta bolsa permite grandes quantidades de minério armazenado. Foi equipado com medidas de segurança anti-mal funcionamento."
 	icon_state = "satchel_bspace"
 	storage_type = /datum/storage/bag/ore/holding
 
@@ -254,7 +253,7 @@
 
 /obj/item/storage/bag/plants/portaseeder
 	name = "portable seed extractor"
-	desc = "For the enterprising botanist on the go. Less efficient than the stationary model, it creates one seed per plant."
+	desc = "Para o botânico empreendedor em movimento. Menos eficiente que o modelo estacionário, cria uma semente por planta."
 	icon_state = "portaseeder"
 
 /obj/item/storage/bag/plants/portaseeder/Initialize(mapload)
@@ -273,7 +272,7 @@
 
 /obj/item/storage/bag/plants/portaseeder/examine(mob/user)
 	. = ..()
-	. += span_notice("Ctrl-click to activate seed extraction.")
+	. += span_notice("Ctrl-click para ativar extração de sementes.")
 
 /obj/item/storage/bag/plants/portaseeder/item_ctrl_click(mob/user)
 	for(var/obj/item/plant in contents)
@@ -285,7 +284,7 @@
 
 /obj/item/storage/bag/sheetsnatcher
 	name = "sheet snatcher"
-	desc = "A patented Nanotrasen storage system designed for any kind of mineral sheet."
+	desc = "Um sistema patenteado de armazenamento Nanotrasen projetado para qualquer tipo de folha mineral."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "sheetsnatcher"
 	worn_icon_state = "satchel"
@@ -298,7 +297,7 @@
 
 /obj/item/storage/bag/sheetsnatcher/debug
 	name = "sheet snatcher EXTREME EDITION"
-	desc = "A Nanotrasen storage system designed which has been given post-market alterations to hold any type of sheet. Comes pre-populated with "
+	desc = "Um sistema de armazenamento Nanotrasen projetado que recebeu alterações pós-mercado para manter qualquer tipo de folha. Vem pré-populado com"
 	color = "#ff3737" // I'm too lazy to make a unique sprite
 	w_class = WEIGHT_CLASS_TINY
 	storage_type = /datum/storage/bag/sheet_snatcher_debug
@@ -338,7 +337,7 @@
 
 /obj/item/storage/bag/books
 	name = "book bag"
-	desc = "A bag for books."
+	desc = "Um saco para livros."
 	icon = 'icons/obj/service/library.dmi'
 	icon_state = "bookbag"
 	worn_icon_state = "bookbag"
@@ -350,7 +349,7 @@
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "tray"
 	worn_icon_state = "tray"
-	desc = "A metal tray to lay food on."
+	desc = "Uma bandeja de metal para colocar comida."
 	force = 5
 	throwforce = 10
 	throw_speed = 3
@@ -420,20 +419,20 @@
 	name = "cafeteria tray"
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "foodtray"
-	desc = "A cheap metal tray to pile today's meal onto."
+	desc = "Uma bandeja de metal barata para encher a refeição de hoje."
 
 /obj/item/storage/bag/chemistry
 	name = "chemistry bag"
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bag"
 	worn_icon_state = "chembag"
-	desc = "A bag for storing pills, patches, and bottles."
+	desc = "Um saco para guardar pílulas, remendos e garrafas."
 	resistance_flags = FLAMMABLE
 	storage_type = /datum/storage/bag/chemistry
 
 /obj/item/storage/bag/money
 	name = "money bag"
-	desc = "A bag for storing your profits."
+	desc = "Um saco para armazenar seus lucros."
 	icon_state = "moneybag"
 	worn_icon_state = "moneybag"
 	force = 10
@@ -470,7 +469,7 @@
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "biobag"
 	worn_icon_state = "biobag"
-	desc = "A bag for the safe transportation and disposal of biowaste and other virulent materials."
+	desc = "Um saco para transporte e eliminação de resíduos biológicos e outros materiais virulentos."
 	resistance_flags = FLAMMABLE
 	storage_type = /datum/storage/bag/bio
 
@@ -479,7 +478,7 @@
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "xenobag"
 	worn_icon_state = "xenobag"
-	desc = "A bag for the storage and transport of anomalous materials."
+	desc = "Um saco para o armazenamento e transporte de materiais anômalos."
 	resistance_flags = FLAMMABLE
 	storage_type = /datum/storage/bag/xeno
 
@@ -488,14 +487,14 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "construction_bag"
 	worn_icon_state = "construction_bag"
-	desc = "A bag for storing small construction components."
+	desc = "Um saco para armazenar pequenos componentes de construção."
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_POCKETS
 	resistance_flags = FLAMMABLE
 	storage_type = /datum/storage/bag/construction
 
 /obj/item/storage/bag/harpoon_quiver
 	name = "harpoon quiver"
-	desc = "A quiver for holding harpoons."
+	desc = "Uma aljava para segurar arpões."
 	icon = 'icons/obj/weapons/bows/quivers.dmi'
 	icon_state = "quiver"
 	inhand_icon_state = null
@@ -512,7 +511,7 @@
 	icon_state = "rebar_quiver"
 	worn_icon_state = "rebar_quiver"
 	inhand_icon_state = "rebar_quiver"
-	desc = "A oxygen tank cut in half, used for holding sharpened rods for the rebar crossbow."
+	desc = "Um tanque de oxigênio cortado ao meio, usado para segurar hastes afiadas para a besta."
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_SUITSTORE|ITEM_SLOT_NECK
 	resistance_flags = FLAMMABLE
 	storage_type = /datum/storage/bag/rebar_quiver
@@ -522,8 +521,7 @@
 	icon_state = "syndie_quiver_0"
 	worn_icon_state = "syndie_quiver_0"
 	inhand_icon_state = "holyquiver"
-	desc = "A specialized quiver meant to hold any kind of bolts intended for use with the rebar crossbow. \
-		Clearly a better design than a cut up oxygen tank..."
+	desc = "Uma aljava especializada significava segurar qualquer tipo de parafuso destinado a ser usado com a besta. Claramente um projeto melhor que um tanque de oxigênio cortado..."
 	slot_flags = ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
@@ -556,15 +554,15 @@
 
 /obj/item/storage/bag/rebar_quiver/syndicate/proc/reload_held_rebar(mob/user)
 	if(!contents.len)
-		user.balloon_alert(user, "no bolts left!")
+		user.balloon_alert(user, "Não sobrou nenhum parafuso!")
 		return
 	var/obj/held_item = user.get_active_held_item()
 	if(!held_item || !istype(held_item, /obj/item/gun/ballistic/rifle/rebarxbow))
-		user.balloon_alert(user, "no held crossbow!")
+		user.balloon_alert(user, "Nenhuma besta segura!")
 		return
 	var/obj/item/gun/ballistic/rifle/rebarxbow/held_crossbow = held_item
 	if(held_crossbow.magazine.contents.len >= held_crossbow.magazine.max_ammo)
-		user.balloon_alert(user, "no more room!")
+		user.balloon_alert(user, "Não há mais espaço!")
 		return
 	if(!do_after(user, 1.2 SECONDS, user))
 		return
@@ -574,7 +572,7 @@
 
 /obj/item/storage/bag/quiver
 	name = "quiver"
-	desc = "Holds arrows for your bow. Good, because while pocketing arrows is possible, it surely can't be pleasant."
+	desc = "Segura flechas para seu arco. Bom, porque enquanto embolsar flechas é possível, certamente não pode ser agradável."
 	icon = 'icons/obj/weapons/bows/quivers.dmi'
 	icon_state = "quiver"
 	inhand_icon_state = null
@@ -595,7 +593,7 @@
 
 /obj/item/storage/bag/quiver/holy
 	name = "divine quiver"
-	desc = "Holds arrows for your divine bow, where they wait to find their target."
+	desc = "Segura flechas para seu arco divino, onde esperam para encontrar seu alvo."
 	icon_state = "holyquiver"
 	inhand_icon_state = "holyquiver"
 	worn_icon_state = "holyquiver"
@@ -608,7 +606,7 @@
 
 /obj/item/storage/bag/quiver/endless
 	name = "endless quiver"
-	desc = "Holds arrows for your bow. A deep digital void is contained within."
+	desc = "Segura flechas para seu arco. Um profundo vazio digital está contido dentro."
 	storage_type = /datum/storage/bag/quiver/endless
 
 /obj/item/storage/bag/quiver/endless/PopulateContents()

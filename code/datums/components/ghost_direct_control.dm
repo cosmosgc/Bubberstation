@@ -71,7 +71,7 @@
 	var/mob/living/our_mob = parent
 	if (our_mob.stat == DEAD || our_mob.key || awaiting_ghosts)
 		return
-	examine_text += span_boldnotice("You could take control of this mob by clicking on it.")
+	examine_text += span_boldnotice("Você poderia assumir o controle dessa multidão clicando nela.")
 
 /// Send out a request for a brain
 /datum/component/ghost_direct_control/proc/request_ghost_control(poll_question, role_name, poll_length, poll_ignore_key, poll_announce_chosen, poll_chat_border_icon)
@@ -103,20 +103,20 @@
 	if (!hopeful_ghost.client)
 		return
 	if (!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER))
-		to_chat(hopeful_ghost, span_warning("Ghost roles have been temporarily disabled!"))
+		to_chat(hopeful_ghost, span_warning("Os papéis dos fantasmas foram temporariamente desativados!"))
 		return
 	if (awaiting_ghosts)
-		to_chat(hopeful_ghost, span_warning("Ghost candidate selection currently in progress!"))
+		to_chat(hopeful_ghost, span_warning("Seleção de candidatos fantasmas em andamento!"))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 	if (!SSticker.HasRoundStarted())
-		to_chat(hopeful_ghost, span_warning("You cannot assume control of this until after the round has started!"))
+		to_chat(hopeful_ghost, span_warning("Você não pode assumir o controle disso até que a rodada comece!"))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 	INVOKE_ASYNC(src, PROC_REF(attempt_possession), our_mob, hopeful_ghost)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /// We got far enough to establish that this mob is a valid target, let's try to posssess it
 /datum/component/ghost_direct_control/proc/attempt_possession(mob/our_mob, mob/dead/observer/hopeful_ghost)
-	var/ghost_asked = tgui_alert(usr, "Become [our_mob]?", "Are you sure?", list("Yes", "No"))
+	var/ghost_asked = tgui_alert(usr, "Torne-se[our_mob]?", "Are you sure?", list("Yes", "No"))
 	if (ghost_asked != "Yes" || QDELETED(our_mob))
 		return
 	assume_direct_control(hopeful_ghost)
@@ -124,20 +124,20 @@
 /// Grant possession of our mob, component is now no longer required
 /datum/component/ghost_direct_control/proc/assume_direct_control(mob/harbinger)
 	if (QDELETED(src))
-		to_chat(harbinger, span_warning("Offer to possess creature has expired!"))
+		to_chat(harbinger, span_warning("A oferta de possuir criatura expirou!"))
 		return
 	if (is_banned_from(harbinger.ckey, list(ban_type)))
-		to_chat(harbinger, span_warning("You are banned from playing as this role!"))
+		to_chat(harbinger, span_warning("Você está proibido de desempenhar esse papel!"))
 		return
 	if (!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER))
-		to_chat(harbinger, span_warning("Ghost roles have been temporarily disabled!"))
+		to_chat(harbinger, span_warning("Os papéis dos fantasmas foram temporariamente desativados!"))
 		return
 	var/mob/living/new_body = parent
 	if (new_body.stat == DEAD)
-		to_chat(harbinger, span_warning("This body has passed away, it is of no use!"))
+		to_chat(harbinger, span_warning("Este corpo morreu, é inútil!"))
 		return
 	if (new_body.key)
-		to_chat(harbinger, span_warning("[parent] has already become sapient!"))
+		to_chat(harbinger, span_warning("[parent]Já se tornou sapiente!"))
 		qdel(src)
 		return
 	if (extra_control_checks && !extra_control_checks.Invoke(harbinger))

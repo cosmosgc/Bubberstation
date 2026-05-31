@@ -1,6 +1,6 @@
 /datum/action/changeling/regenerate
 	name = "Regenerate"
-	desc = "Allows us to regrow and restore missing external limbs and vital internal organs, as well as removing shrapnel, healing major wounds, and restoring blood volume. Costs 10 chemicals."
+	desc = "Permite-nos refazer e restaurar membros externos desaparecidos e órgãos internos vitais, bem como remover estilhaços, curar grandes feridas, e restaurar o volume de sangue. Custa 10 produtos químicos."
 	helptext = "Will alert nearby crew if any external limbs are regenerated. Can be used while unconscious."
 	button_icon_state = "regenerate"
 	chemical_cost = 10
@@ -9,11 +9,11 @@
 
 /datum/action/changeling/regenerate/sting_action(mob/living/user)
 	if(!iscarbon(user))
-		user.balloon_alert(user, "nothing missing!")
+		user.balloon_alert(user, "Nada faltando!")
 		return FALSE
 
 	..()
-	to_chat(user, span_notice("You feel an itching, both inside and outside as your tissues knit and reknit."))
+	to_chat(user, span_notice("Você sente uma coceira, dentro e fora, enquanto seus tecidos tricotam e retricotam."))
 	var/mob/living/carbon/carbon_user = user
 	var/got_limbs_back = length(carbon_user.get_missing_limbs()) >= 1
 	carbon_user.fully_heal(HEAL_BODY)
@@ -21,9 +21,9 @@
 	if(got_limbs_back)
 		playsound(user, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 		carbon_user.visible_message(
-			span_warning("[user]'s missing limbs reform, making a loud, grotesque sound!"),
-			span_userdanger("Your limbs regrow, making a loud, crunchy sound and giving you great pain!"),
-			span_hear("You hear organic matter ripping and tearing!"),
+			span_warning("[user]Os membros desaparecidos reformam, fazendo um som alto e grotesco!"),
+			span_userdanger("Seus membros cresceram, fazendo um som alto, crocante e dando-lhe uma grande dor!"),
+			span_hear("Você ouve matéria orgânica rasgando e rasgando!"),
 		)
 		carbon_user.emote("scream")
 

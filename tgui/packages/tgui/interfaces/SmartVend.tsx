@@ -54,7 +54,7 @@ export const SmartVend = (props) => {
                     icon={data.drying ? 'stop' : 'tint'}
                     onClick={() => act('Dry')}
                   >
-                    {data.drying ? 'Stop drying' : 'Dry'}
+                    {data.drying ? 'Pare de secar.' : 'Dry'}
                   </Button>
                 </Stack.Item>
               ) : (
@@ -131,9 +131,9 @@ const ItemTile = ({ item }) => {
         )
       }
       buttonsAlt={
-        <Stack bold color="rgb(185, 185, 185)" fontSize={0.8}>
+        <Stack bold color="Rgb (185, 185, 185)" fontSize={0.8}>
           <Stack.Item grow />
-          <Stack.Item style={{ textShadow: '0 1px 1px black' }}>
+          <Stack.Item style={{ textShadow: '0 1px 1px preto' }}>
             x{item.amount}
           </Stack.Item>
         </Stack>
@@ -170,7 +170,7 @@ const ItemList = ({ item }) => {
       buttons={
         <Stack
           opacity={disabled && 0.5}
-          backgroundColor={'rgba(175, 175, 175, 0.1)'}
+          backgroundColor={'Rgba (175, 175, 175, 0,1)'}
           style={{ pointerEvents: disabled ? 'none' : 'auto' }}
         >
           <NumberInput

@@ -18,26 +18,26 @@ export const CrossingSignal = (props) => {
     data;
 
   return (
-    <Window title="Crossing Signal" width={400} height={175} theme="dark">
+    <Window title="Sinal de cruzamento" width={400} height={175} theme="dark">
       <Window.Content>
-        <Section title="System Status">
+        <Section title="Estado do Sistema">
           <LabeledList>
             <LabeledList.Item
-              label="Operating Status"
+              label="Estado Operacional"
               color={operatingStatus ? 'bad' : 'good'}
             >
               {operatingStatus ? 'Degraded' : 'Normal'}
             </LabeledList.Item>
             <LabeledList.Item
-              label="Sensor Status"
+              label="Estado do sensor"
               color={sensorStatus ? 'good' : 'bad'}
             >
               {sensorStatus ? 'Connected' : 'Error'}
             </LabeledList.Item>
-            <LabeledList.Item label="Inbound Platform">
+            <LabeledList.Item label="Plataforma de entrada">
               {inboundPlatform}
             </LabeledList.Item>
-            <LabeledList.Item label="Outbound Platform">
+            <LabeledList.Item label="Plataforma de saída">
               {outboundPlatform}
             </LabeledList.Item>
           </LabeledList>

@@ -27,7 +27,7 @@
 	if(ishuman(user) && !isskeleton(user)) //this weapon wasn't meant for mortals.
 		var/mob/living/carbon/human/human_user = user
 		if(rattle_bones(human_user, stam_dam_mult = stam_damage_mult * 2))
-			to_chat(human_user, span_userdanger("Your ears weren't meant for this spectral sound."))
+			to_chat(human_user, span_userdanger("Seus ouvidos não foram feitos para este som espectral."))
 			INVOKE_ASYNC(src, PROC_REF(spectral_change), human_user, user, source)
 		return
 
@@ -69,17 +69,15 @@
 		return
 
 	if(single_use)
-		to_chat(user, span_warning("You feel like [source] has lost its spookiness..."))
+		to_chat(user, span_warning("Você sente como[source]perdeu seu medo..."))
 		Detach(source)
 
 	human.Paralyze(2 SECONDS)
 	human.set_species(/datum/species/skeleton)
-	human.visible_message(span_warning("[human] has given up on life as a mortal."))
-	to_chat(human, span_boldnotice("You are a spooky skeleton!"))
+	human.visible_message(span_warning("[human]desistiu da vida como mortal."))
+	to_chat(human, span_boldnotice("Você é um esqueleto assustador!"))
 	to_chat(human,
-		span_boldnotice("A new life and identity has begun.\
-		[too_spooky ? "Help your fellow skeletons into bringing out the spooky-pocalypse." : ""] \
-		You haven't forgotten your past life, and are still beholden to past loyalties.")
+		span_boldnotice("Uma nova vida e identidade começou.[too_spooky ? "Help your fellow skeletons into bringing out the spooky-pocalypse." : ""]Você não esqueceu sua vida passada, e ainda está em dívida com lealdades passadas.")
 	)
 	INVOKE_ASYNC(src, PROC_REF(change_name), human) //time for a new name!
 
@@ -87,7 +85,7 @@
 		return
 	var/turf/turf = get_turf(human)
 	if(!prob(90))
-		to_chat(human, span_boldwarning("The spooky gods forgot to ship your instrument. Better luck next unlife."))
+		to_chat(human, span_boldwarning("Os deuses assustadores esqueceram de enviar seu instrumento. Melhor sorte na próxima vida."))
 		return
 	var/obj/item/instrument = pick(
 		/obj/item/instrument/saxophone/spectral,

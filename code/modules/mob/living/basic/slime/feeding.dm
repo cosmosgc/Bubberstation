@@ -14,7 +14,7 @@
 
 	if(hunger_disabled)
 		if(!silent)
-			balloon_alert(src, "not hungry!")
+			balloon_alert(src, "Não estou com fome!")
 		return FALSE
 
 	if(check_friendship && has_faction(REF(meal)))
@@ -30,34 +30,34 @@
 
 	if(meal.stat == DEAD)
 		if(!silent)
-			balloon_alert(src, "no life energy!")
+			balloon_alert(src, "Sem energia vital!")
 		return FALSE
 
 	if(locate(/mob/living/basic/slime) in meal.buckled_mobs)
 		if(!silent)
-			balloon_alert(src, "another slime in the way!")
+			balloon_alert(src, "Outra gosma no caminho!")
 		return FALSE
 
 	if(issilicon(meal) || meal.mob_biotypes & MOB_ROBOTIC || meal.flags_1 & HOLOGRAM_1)
-		balloon_alert(src, "no life energy!")
+		balloon_alert(src, "Sem energia vital!")
 		return FALSE
 
 	if(isslime(meal))
 		if(!silent)
-			balloon_alert(src, "can't eat slime!")
+			balloon_alert(src, "Não posso comer lodo!")
 		return FALSE
 
 	if(isanimal(meal))
 		var/mob/living/simple_animal/simple_meal = meal
 		if(simple_meal.damage_coeff[TOX] <= 0 && simple_meal.damage_coeff[BRUTE] <= 0) //The creature wouldn't take any damage, it must be too weird even for us.
 			if(!silent)
-				balloon_alert(src, "not food!")
+				balloon_alert(src, "Não comida!")
 			return FALSE
 	else if(isbasicmob(meal))
 		var/mob/living/basic/basic_meal = meal
 		if(basic_meal.damage_coeff[TOX] <= 0 && basic_meal.damage_coeff[BRUTE] <= 0)
 			if (!silent)
-				balloon_alert(src, "not food!")
+				balloon_alert(src, "Não comida!")
 			return FALSE
 
 	return TRUE
@@ -72,14 +72,14 @@
 		layer = MOB_ABOVE_PIGGYBACK_LAYER //appear above the target mob
 		target_mob.apply_status_effect(/datum/status_effect/slime_leech, src)
 		target_mob.visible_message(
-			span_danger("[name] latches onto [target_mob]!"),
-			span_userdanger("[name] latches onto [target_mob]!"),
+			span_danger("[name]Encaixotar[target_mob]!"),
+			span_userdanger("[name]Encaixotar[target_mob]!"),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
-		to_chat(src, span_notice("<i>I start feeding on [target_mob]...</i>"))
-		balloon_alert(src, "feeding started")
+		to_chat(src, span_notice("<i>Eu começo a me alimentar[target_mob]...</i>"))
+		balloon_alert(src, "A alimentação começou.")
 	else
-		balloon_alert(src, "latch failed!")
+		balloon_alert(src, "A trava falhou!")
 
 ///The slime will stop feeding
 /mob/living/basic/slime/proc/stop_feeding(silent = FALSE)
@@ -87,8 +87,8 @@
 		return
 
 	if(!silent)
-		visible_message(span_warning("[src] lets go of [buckled]!"), span_notice("You let go of [buckled]"))
-		balloon_alert(src, "feeding stopped")
+		visible_message(span_warning("[src]Vamos.[buckled]!"), span_notice("Solte-me.[buckled]"))
+		balloon_alert(src, "A alimentação parou.")
 	remove_offsets(FEEDING_OFFSET)
 	layer = initial(layer)
 	buckled.unbuckle_mob(src,force=TRUE)

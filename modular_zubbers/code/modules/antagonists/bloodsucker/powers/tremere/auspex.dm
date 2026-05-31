@@ -23,7 +23,7 @@
 	cooldown_time = 12 SECONDS
 	target_range = 2
 	power_activates_immediately = FALSE
-	prefire_message = "Right click to teleport"
+	prefire_message = "Clique direto para teletransportar."
 
 /datum/action/cooldown/bloodsucker/targeted/tremere/auspex/on_power_upgrade()
 	// 1 + for default, the other + is for the upgrade that hasn't been added yet.
@@ -92,7 +92,7 @@
 /datum/action/cooldown/bloodsucker/targeted/tremere/auspex/proc/auspex_blink(mob/living/user, turf/targeted_turf)
 	var/blood_cost = AUSPEX_BLOOD_COST_PER_TILE * get_dist(user, targeted_turf)
 	if(!can_pay_blood(blood_cost))
-		owner.balloon_alert(owner, "sangue insuficiente!")
+		owner.balloon_alert(owner, "Insuficiência de sangue!")
 		return
 	playsound(user, 'sound/effects/magic/summon_karp.ogg', 60)
 	playsound(targeted_turf, 'sound/effects/magic/summon_karp.ogg', 60)

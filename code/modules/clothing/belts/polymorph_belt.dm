@@ -1,7 +1,7 @@
 /// Belt which can turn you into a beast, once an anomaly core is inserted
 /obj/item/polymorph_belt
 	name = "polymorphic field inverter"
-	desc = "This device can scan and store DNA from other life forms."
+	desc = "Este dispositivo pode escanear e armazenar DNA de outras formas de vida."
 	slot_flags = ITEM_SLOT_BELT
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "polybelt_inactive"
@@ -27,9 +27,9 @@
 	. = ..()
 	if (stored_mob_type)
 		var/mob/living/will_become = stored_mob_type
-		. += span_notice("It contains digitised [initial(will_become.name)] DNA.")
+		. += span_notice("Ele contém digitalizado[initial(will_become.name)]DNA.")
 	if (!active)
-		. += span_warning("It requires a Bioscrambler Anomaly Core in order to function.")
+		. += span_warning("Requer um Núcleo de Anomalia Bioescrambler para funcionar.")
 
 /obj/item/polymorph_belt/update_icon_state()
 	icon_state = base_icon_state + (active ? "" : "_inactive")
@@ -41,17 +41,17 @@
 		return NONE
 
 	if (active)
-		balloon_alert(user, "core already inserted!")
+		balloon_alert(user, "núcleo já inserido!")
 		return ITEM_INTERACT_BLOCKING
 
 	balloon_alert(user, "inserting...")
 
 	if (!do_after(user, delay = 3 SECONDS, target = src))
-		balloon_alert(user, "interrompido!")
+		balloon_alert(user, "Interrompido!")
 		return ITEM_INTERACT_BLOCKING
 
 	if (active)
-		balloon_alert(user, "core already inserted!")
+		balloon_alert(user, "núcleo já inserido!")
 		return ITEM_INTERACT_BLOCKING
 
 	active = TRUE
@@ -68,25 +68,25 @@
 	if (!isliving(target_mob))
 		return
 	if (!isanimal_or_basicmob(target_mob))
-		balloon_alert(user, "target too complex!")
+		balloon_alert(user, "Alvo muito complexo!")
 		return TRUE
 	if (target_mob.mob_biotypes & (MOB_HUMANOID|MOB_ROBOTIC|MOB_SPECIAL|MOB_SPIRIT|MOB_UNDEAD))
 		balloon_alert(user, "incompatível!")
 		return TRUE
 	if (!target_mob.compare_sentience_type(SENTIENCE_ORGANIC))
-		balloon_alert(user, "target too intelligent!")
+		balloon_alert(user, "Alvo muito inteligente!")
 		return TRUE
 	if (stored_mob_type == target_mob.type)
-		balloon_alert(user, "already scanned!")
+		balloon_alert(user, "Já está escaneado!")
 		return TRUE
 	if (DOING_INTERACTION_WITH_TARGET(user, target_mob))
-		balloon_alert(user, "ocupado!")
+		balloon_alert(user, "Ocupado!")
 		return TRUE
 	balloon_alert(user, "escaneando...")
-	visible_message(span_notice("[user] begins scanning [target_mob] with [src]."))
+	visible_message(span_notice("[user]começa a varredura[target_mob]Com[src]."))
 	if (!do_after(user, delay = 5 SECONDS, target = target_mob))
 		return TRUE
-	visible_message(span_notice("[user] scans [target_mob] with [src]."))
+	visible_message(span_notice("[user]scans[target_mob]Com[src]."))
 	stored_mob_type = target_mob.type
 	update_transform_action()
 	playsound(src, 'sound/machines/ping.ogg', 50, FALSE)
@@ -155,7 +155,7 @@
 		animate(cast_on, transform = matrix(), time = 0, easing = SINE_EASING)
 		cast_on.transform = old_transform
 		return . | SPELL_CANCEL_CAST
-	cast_on.visible_message(span_warning("[cast_on]'s body rearranges itself with a horrible crunching sound!"))
+	cast_on.visible_message(span_warning("[cast_on]O corpo se reorganiza com um som horrível!"))
 	playsound(cast_on, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 
 /datum/action/cooldown/spell/shapeshift/polymorph_belt/after_cast(atom/cast_on)
@@ -171,7 +171,7 @@
 	shapeshift_type = transform_type
 	possible_shapes = list(transform_type)
 	var/mob/living/will_become = transform_type
-	desc = "Assume your [initial(will_become.name)] form!"
+	desc = "Assumir o seu[initial(will_become.name)]Formar!"
 	build_all_button_icons(update_flags = UPDATE_BUTTON_NAME)
 
 /// Subtype of the polymorph status effect which tracks arbitrary mob transformation

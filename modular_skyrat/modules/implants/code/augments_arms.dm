@@ -16,7 +16,7 @@
 
 /obj/item/melee/implantarmblade
 	name = "implanted arm blade"
-	desc = "A long, sharp, mantis-like blade implanted into someones arm. Cleaves through flesh like its particularly strong butter."
+	desc = "Uma longa, afiada, lâmina de louva-deus implantada no braço de alguém. Cleaves através da carne como sua manteiga particularmente forte."
 	icon = 'modular_skyrat/modules/implants/icons/implanted_blade.dmi'
 	righthand_file = 'modular_skyrat/modules/implants/icons/implanted_blade_righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/implants/icons/implanted_blade_lefthand.dmi'
@@ -31,7 +31,7 @@
 
 /obj/item/melee/implantarmblade/energy
 	name = "energy arm blade"
-	desc = "A long mantis-like blade made entirely of blazing-hot energy. Stylish and EXTRA deadly!"
+	desc = "Uma longa lâmina de louva-a-deus feita inteiramente de energia ardente. Elegante e mortal!"
 	icon_state = "energy_mantis_blade"
 	force = 30
 	armour_penetration = 10 //Energy isn't as good at going through armor as it is through flesh alone.
@@ -39,7 +39,7 @@
 
 /obj/item/organ/cyberimp/arm/toolkit/armblade
 	name = "arm blade implant"
-	desc = "An integrated blade implant designed to be installed into a persons arm. Stylish and deadly; Although, being caught with this without proper permits is sure to draw unwanted attention."
+	desc = "Um implante de lâmina integrado projetado para ser instalado em um braço de pessoas. Elegante e mortal; Embora, ser pego com isso sem permissão adequada é certo para chamar a atenção indesejada."
 	items_to_create = list(/obj/item/melee/implantarmblade)
 	icon = 'modular_skyrat/modules/implants/icons/implanted_blade.dmi'
 	icon_state = "mantis_blade"
@@ -47,14 +47,14 @@
 /obj/item/organ/cyberimp/arm/toolkit/armblade/emag_act()
 	if(obj_flags & EMAGGED)
 		return FALSE
-	to_chat(usr, span_notice("You unlock [src]'s integrated energy arm blade! You madman!"))
+	to_chat(usr, span_notice("Você abre.[src]A lâmina de braço de energia integrada! Seu louco!"))
 	items_list += WEAKREF(new /obj/item/melee/implantarmblade/energy(src))
 	obj_flags |= EMAGGED
 	return TRUE
 
 /obj/item/knife/razor_claws
 	name = "implanted razor claws"
-	desc = "A set of sharp, retractable claws built into the fingertips, five double-edged blades sure to turn people into mincemeat. Capable of shifting into 'Precision' mode to act similar to wirecutters."
+	desc = "Um conjunto de garras afiadas e retráteis construídas na ponta dos dedos, cinco lâminas de dois gumes com certeza transformarão as pessoas em carne picada. Capaz de mudar para o modo \"Precisão\" para agir como cortadores de arame."
 	icon = 'modular_skyrat/modules/implants/icons/razorclaws.dmi'
 	righthand_file = 'modular_skyrat/modules/implants/icons/razorclaws_righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/implants/icons/razorclaws_lefthand.dmi'
@@ -74,7 +74,7 @@
 	playsound(get_turf(user), 'sound/items/tools/change_drill.ogg', 50, TRUE)
 	if(tool_behaviour != TOOL_WIRECUTTER)
 		tool_behaviour = TOOL_WIRECUTTER
-		to_chat(user, span_notice("You shift [src] into Precision mode, for wirecutting."))
+		to_chat(user, span_notice("Você muda.[src]no modo Precisão, para corte de arame."))
 		icon_state = "precision_wolverine"
 		inhand_icon_state = "precision_wolverine"
 		force = cutter_force
@@ -87,7 +87,7 @@
 		attack_verb_simple = CUTTER_ATTACK_VERB_SIMPLE
 	else
 		tool_behaviour = TOOL_KNIFE
-		to_chat(user, span_notice("You shift [src] into Killing mode, for slicing."))
+		to_chat(user, span_notice("Você muda.[src]em modo de matar, para cortar."))
 		icon_state = "wolverine"
 		inhand_icon_state = "wolverine"
 		force = knife_force
@@ -112,15 +112,15 @@
 		wound_bonus = knife_wound_bonus
 
 	name = "enhanced razor claws"
-	desc += span_warning("\n\nThese have undergone a special honing process; they'll kill people even faster than they used to.")
-	user.visible_message(span_warning("[user] sharpens [src], [stone] disintegrating!"), span_warning("You sharpen [src], making it much more deadly than before, but [stone] disintegrates under the stress."))
+	desc += span_warning("\n\nEstes passaram por um processo especial de aperfeiçoamento, eles vão matar pessoas ainda mais rápido do que costumavam fazer.")
+	user.visible_message(span_warning("[user]Aguçados[src], [stone]Desintegrando-se!"), span_warning("Você afiou.[src], rasgando-o muito mais mortal do que antes, mas[stone]Se desintegrar sob o estresse."))
 	playsound(src, 'sound/items/unsheath.ogg', 25, TRUE)
 	qdel(stone)
 	return ..()
 
 /obj/item/organ/cyberimp/arm/toolkit/razor_claws
 	name = "razor claws implant"
-	desc = "A set of hidden, retractable blades built into the fingertips; cyborg mercenary approved."
+	desc = "Um conjunto de lâminas retráteis escondidas nas pontas dos dedos, o mercenário cyborg aprovado."
 	items_to_create = list(/obj/item/knife/razor_claws)
 	actions_types = list(/datum/action/item_action/organ_action/toggle/razor_claws)
 	icon = 'modular_skyrat/modules/implants/icons/razorclaws.dmi'
@@ -140,25 +140,25 @@
 
 /datum/action/item_action/organ_action/toggle/razor_claws
 	name = "Extend Claws"
-	desc = "You can also activate the claws in your hand to change their mode."
+	desc = "Você também pode ativar as garras em sua mão para mudar o modo deles."
 	button_icon = 'modular_skyrat/master_files/icons/hud/actions.dmi'
 	button_icon_state = "wolverine"
 
 /obj/item/organ/cyberimp/arm/toolkit/hacker
 	name = "hacking arm implant"
-	desc = "An small arm implant containing an advanced screwdriver, wirecutters, and multitool designed for engineers and on-the-field machine modification. Actually legal, despite what the name may make you think."
+	desc = "Um pequeno implante de braço contendo uma chave de fenda avançada, corta-fios, e multitool projetado para engenheiros e modificação de máquina em campo. Realmente legal, apesar do que o nome pode fazer você pensar."
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "toolkit_engiborg_multitool"
 	items_to_create = list(/obj/item/screwdriver/cyborg, /obj/item/wirecutters/cyborg, /obj/item/multitool/abductor/implant)
 
 /obj/item/organ/cyberimp/arm/toolkit/botany
 	name = "botany arm implant"
-	desc = "A rather simple arm implant containing tools used in gardening and botanical research."
+	desc = "Um simples implante de braço contendo ferramentas usadas na jardinagem e pesquisa botânica."
 	items_to_create = list(/obj/item/cultivator, /obj/item/shovel/spade, /obj/item/hatchet, /obj/item/gun/energy/floragun, /obj/item/plant_analyzer, /obj/item/geneshears, /obj/item/secateurs, /obj/item/storage/bag/plants, /obj/item/storage/bag/plants/portaseeder)
 
 /obj/item/implant_mounted_chainsaw
 	name = "integrated chainsaw"
-	desc = "A chainsaw that conceals inside your arm."
+	desc = "Uma motosserra que esconde dentro do seu braço."
 	icon = 'icons/obj/weapons/chainsaw.dmi'
 	icon_state = "chainsaw_on"
 	inhand_icon_state = "mounted_chainsaw"
@@ -178,26 +178,26 @@
 /obj/item/organ/cyberimp/arm/toolkit/botany/emag_act()
 	if(obj_flags & EMAGGED)
 		return FALSE
-	to_chat(usr, span_notice("You unlock [src]'s deluxe landscaping equipment!"))
+	to_chat(usr, span_notice("Você abre.[src]É equipamento de luxo de paisagismo!"))
 	items_list += WEAKREF(new /obj/item/implant_mounted_chainsaw(src)) //time to landscape the station
 	obj_flags |= EMAGGED
 	return TRUE
 
 /obj/item/multitool/abductor/implant
 	name = "multitool"
-	desc = "An optimized, highly advanced stripped-down multitool able to interface with electronics far better than its standard counterpart."
+	desc = "Um otimizado, altamente avançado despojado multitool capaz de interagir com eletrônica muito melhor do que seu equivalente padrão."
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "toolkit_engiborg_multitool"
 
 /obj/item/organ/cyberimp/arm/toolkit/janitor
 	name = "janitorial tools implant"
-	desc = "A set of janitorial tools on the user's arm."
+	desc = "Um conjunto de ferramentas de limpeza no braço do usuário."
 	items_to_create = list(/obj/item/lightreplacer, /obj/item/holosign_creator, /obj/item/soap/nanotrasen, /obj/item/reagent_containers/spray/cyborg_drying, /obj/item/mop/advanced, /obj/item/paint/paint_remover, /obj/item/reagent_containers/cup/beaker/large, /obj/item/reagent_containers/spray/cleaner) //Beaker if for refilling sprays
 
 /obj/item/organ/cyberimp/arm/toolkit/janitor/emag_act()
 	if(obj_flags & EMAGGED)
 		return FALSE
-	to_chat(usr, span_notice("You unlock [src]'s integrated deluxe cleaning supplies!"))
+	to_chat(usr, span_notice("Você abre.[src]São suprimentos de limpeza de luxo integrados!"))
 	items_list += WEAKREF(new /obj/item/soap/syndie(src)) //We add not replace.
 	items_list += WEAKREF(new /obj/item/reagent_containers/spray/cyborg_lube(src))
 	obj_flags |= EMAGGED
@@ -205,13 +205,13 @@
 
 /obj/item/organ/cyberimp/arm/toolkit/lighter
 	name = "lighter implant"
-	desc = "A... implanted lighter. Incredibly useless."
+	desc = "Um isqueiro implantado. Incrivelmente inútil."
 	items_to_create = list(/obj/item/lighter/greyscale) //Hilariously useless.
 
 /obj/item/organ/cyberimp/arm/toolkit/lighter/emag_act()
 	if(obj_flags & EMAGGED)
 		return FALSE
-	to_chat(usr, span_notice("You unlock [src]'s integrated Zippo lighter! Finally, classy smoking!"))
+	to_chat(usr, span_notice("Você abre.[src]É um isqueiro Zippo integrado! Finalmente, fumando com classe!"))
 	items_list += WEAKREF(new /obj/item/lighter(src)) //Now you can choose between bad and worse!
 	obj_flags |= EMAGGED
 	return TRUE

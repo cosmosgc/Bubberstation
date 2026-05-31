@@ -2,17 +2,17 @@
 
 /datum/quirk/alexithymia
 	name = "Alexithymia"
-	desc = "You cannot accurately assess your feelings."
+	desc = "Você não pode avaliar seus sentimentos com precisão."
 	value = -4
 	mob_trait = TRAIT_MOOD_NOEXAMINE
-	medical_record_text = "Patient is incapable of communicating their emotions."
+	medical_record_text = "O paciente é incapaz de comunicar suas emoções."
 	icon = FA_ICON_QUESTION_CIRCLE
 
 /datum/quirk/fragile
 	name = "Fragility"
-	desc = "You feel incredibly fragile. Burns and bruises hurt you more than the average person!"
+	desc = "Você se sente incrivelmente frágil. Queimaduras e hematomas machucam mais do que a pessoa normal!"
 	value = -6
-	medical_record_text = "Patient's body has adapted to low gravity. Sadly low-gravity environments are not conducive to strong bone development."
+	medical_record_text = "O corpo do paciente se adaptou à baixa gravidade. Infelizmente, ambientes de baixa gravidade não levam ao forte desenvolvimento ósseo."
 	icon = FA_ICON_TIRED
 
 /datum/quirk_constant_data/fragile
@@ -70,11 +70,11 @@
 
 /datum/quirk/monophobia
 	name = "Monophobia"
-	desc = "You will become increasingly stressed when not in company of others, triggering panic reactions ranging from sickness to heart attacks."
+	desc = "Você ficará cada vez mais estressado quando não estiver em companhia de outros, desencadeando reações de pânico que vão desde doenças até ataques cardíacos."
 	value = -6
-	gain_text = span_danger("You feel really lonely...")
-	lose_text = span_notice("You feel like you could be safe on your own.")
-	medical_record_text = "Patient feels sick and distressed when not around other people, leading to potentially lethal levels of stress."
+	gain_text = span_danger("Você se sente muito só...")
+	lose_text = span_notice("Você sente que pode estar segura sozinha.")
+	medical_record_text = "O paciente se sente doente e angustiado quando não está perto de outras pessoas, levando a níveis potencialmente letais de estresse."
 	icon = FA_ICON_PEOPLE_ARROWS_LEFT_RIGHT
 
 /datum/quirk/monophobia/post_add()
@@ -89,10 +89,10 @@
 
 /datum/quirk/no_guns
 	name = "No Guns"
-	desc = "For whatever reason, you are unable to use guns. The reasoning may vary, but is up to you to decide."
-	gain_text = span_notice("You feel like you won't be able to use guns anymore...")
-	lose_text = span_notice("You suddenly feel like you can use guns again!")
-	medical_record_text = "Patient is unable to use firearms. Reasoning unknown."
+	desc = "Por alguma razão, você é incapaz de usar armas. O raciocínio pode variar, mas cabe a você decidir."
+	gain_text = span_notice("Você sente que não poderá mais usar armas...")
+	lose_text = span_notice("De repente você sente que pode usar armas de novo!")
+	medical_record_text = "O paciente não pode usar armas de fogo. Raciocínio desconhecido."
 	value = -6
 	mob_trait = TRAIT_NOGUNS
 	icon = FA_ICON_GUN

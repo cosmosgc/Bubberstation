@@ -8,7 +8,7 @@
 
 /obj/structure/detectiveboard
 	name = "detective notice board"
-	desc = "A board for linking evidence to crimes."
+	desc = "Um conselho para ligar evidências a crimes."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "noticeboard"
 	density = FALSE
@@ -44,11 +44,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 /obj/structure/detectiveboard/attackby(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(item, /obj/item/paper) || istype(item, /obj/item/photo))
 		if(!cases.len)
-			to_chat(user, "There are no cases!")
+			to_chat(user, "Não há casos!")
 			return
 
 		if(attaching_evidence)
-			to_chat(user, "You already attaching evidence!")
+			to_chat(user, "Você já está anexando evidências!")
 			return
 		attaching_evidence = TRUE
 		var/name = tgui_input_text(user, "Please enter the evidence name", "Detective's Board", max_length = MAX_NAME_LEN)
@@ -64,7 +64,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 		cases[current_case].notices++
 		var/datum/evidence/evidence = new (name, desc, item)
 		cases[current_case].evidences += evidence
-		to_chat(user, span_notice("You pin the [item] to the detective board."))
+		to_chat(user, span_notice("Você prende o[item]Para o conselho de defesa."))
 		attaching_evidence = FALSE
 		update_appearance(UPDATE_ICON)
 		return
@@ -72,11 +72,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 
 /obj/structure/detectiveboard/wrench_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
-	balloon_alert(user, "[anchored ? "un" : ""]securing...")
+	balloon_alert(user, "[anchored ? "un" : ""]Segurando...")
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 6 SECONDS))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
-		balloon_alert(user, "[anchored ? "un" : ""]secured")
+		balloon_alert(user, "[anchored ? "un" : ""]Seguro.")
 		deconstruct()
 		return TRUE
 
@@ -189,10 +189,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 			var/paper_text = ""
 			for(var/datum/paper_input/text_input as anything in paper.raw_text_inputs)
 				paper_text += text_input.raw_text
-			user << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>[paper.name]</title></head>" \
-				+ "<body style='overflow:hidden;padding:5px'>" \
-				+ "[paper_text]" \
-				+ "</body></html>", "window=photo_showing;size=480x608")
+			user << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>[paper.name]</title></head>" 				+ "<body style='overflow:hidden;padding:5px'>" 				+ "[paper_text]" 				+ "</body></html>", "window=photo_showing;size=480x608")
 			onclose(user, "[name]")
 		if("remove_evidence")
 			var/datum/case/case = cases[current_case]
@@ -245,7 +242,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 	item.forceMove(drop_location())
 	if(user)
 		user.put_in_hands(item)
-		balloon_alert(user, "removed from board")
+		balloon_alert(user, "Removido do tabuleiro.")
 	cases[current_case].notices--
 	update_appearance(UPDATE_ICON)
 
@@ -259,7 +256,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 
 /obj/item/wallframe/detectiveboard
 	name = "detective notice board"
-	desc = "A board for linking evidence to crimes."
+	desc = "Um conselho para ligar evidências a crimes."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "noticeboard"
 	custom_materials = list(

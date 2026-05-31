@@ -104,9 +104,9 @@
 /obj/machinery/chem_recipe_debug/examine(mob/user)
 	. = ..()
 	if(!QDELETED(container))
-		. += span_notice("A container of [container.reagents.maximum_volume]u capacity is inside.")
+		. += span_notice("Um destinatário de[container.reagents.maximum_volume]A capacidade está dentro.")
 	else
-		. += span_notice("No container is present. A new will be created when ejecting.")
+		. += span_notice("Nenhum contêiner está presente. Um novo será criado quando ejetar.")
 
 /obj/machinery/chem_recipe_debug/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -449,7 +449,7 @@
 			return TRUE
 
 		if("pick_reaction")
-			var/mode = tgui_alert(usr, "Play all or a specific reaction?","Select Reaction", list("All", "Specific"))
+			var/mode = tgui_alert(usr, "Jogar tudo ou uma reação específica?","Select Reaction", list("All", "Specific"))
 			if(mode == "All")
 				reactions_to_test.Cut()
 				for(var/reaction in all_reaction_list)
@@ -661,7 +661,7 @@
 
 			var/dest = "[GLOB.log_directory]/chem_parse.txt"
 			text2file(export, dest)
-			tgui_alert(ui.user, "Saved to [dest]")
+			tgui_alert(ui.user, "Salvo para[dest]")
 
 		if("eject")
 			//initialize a new container for us

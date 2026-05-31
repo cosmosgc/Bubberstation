@@ -3,14 +3,14 @@
 
 /datum/quirk/dirty
 	name = "Dirty"
-	desc = "You haven't taken a shower in a loooong time, and as a result, you are caked in an everpresent layer of grime and track it everywhere."
+	desc = "Você não toma banho há muito tempo, e como resultado, você está em uma camada sempre presente de sujeira e rastreá-lo em todo lugar."
 	icon = FA_ICON_TRASH_ALT
 	value = -2
 	mob_trait = TRAIT_DIRTY
 	quirk_flags = QUIRK_PROCESSES
-	gain_text = span_danger("You feel dirty!")
-	lose_text = span_notice("You're finally clean...")
-	medical_record_text = "Patient has atrocious hygiene standards."
+	gain_text = span_danger("Você se sente sujo!")
+	lose_text = span_notice("Você finalmente está limpo...")
+	medical_record_text = "O paciente tem padrões de higiene atrozes."
 	hardcore_value = 2
 	mail_goodies = list(
 		/obj/item/soap
@@ -78,8 +78,7 @@
 	dirty_text = quirk_holder.client.prefs.read_preference(/datum/preference/text/dirty_text)
 	dirt_color = quirk_holder.client.prefs.read_preference(/datum/preference/color/dirty_color)
 
-	to_chat(quirk_holder, span_notice("You're dirty! You'll spread dirt when you walk. \
-	Being cleaned will remove your filth - rummage through a trash pile to get it back."))
+	to_chat(quirk_holder, span_notice("Você está sujo! Você vai espalhar sujeira quando andar. Ser limpo removerá sua sujeira. Vasculhe uma pilha de lixo para recuperá-la."))
 
 	return ..()
 
@@ -87,21 +86,21 @@
 	SIGNAL_HANDLER
 
 	if (!cloud_charged)
-		to_chat(quirk_holder, span_notice("You find yourself covered in a thick layer of grime - a solid impact might knock it off in a cloud."))
+		to_chat(quirk_holder, span_notice("Você se encontra coberto por uma grossa camada de sujeira - um impacto sólido pode derrubá-lo em uma nuvem."))
 		cloud_charged = TRUE
 
 	if (!cleaned)
 		return
 
 	if (!prob(REDIRTY_CHANCE))
-		to_chat(quirk_holder, span_warning("You didn't manage to scrounge enough filth to right this wrong. Try again."))
+		to_chat(quirk_holder, span_warning("Você não conseguiu arranjar sujeira suficiente para corrigir esse erro. Tente de novo."))
 		return
 
 	set_cleaned(FALSE)
 
 /obj/effect/decal/cleanable/blood/footprints/dirty
 	name = "dirty footprints"
-	desc = "Footprints caked in grime. They smell awful."
+	desc = "Pegadas cravadas em sujeira. Cheiram mal."
 	dried = TRUE
 	bloodiness = 0
 
@@ -160,8 +159,8 @@
 	if (!cloud_charged || cleaned)
 		return
 	quirk_holder.visible_message(
-		span_warning("The impact knocks a cloud of grime and dust off [quirk_holder]!"),
-		span_notice("The impact knocks a cloud of grime and dust off you!")
+		span_warning("O impacto derraba uma vez de sujeira e poeira.[quirk_holder]!"),
+		span_notice("O impacto derruba uma nuvem de sujeira e poeira de você!")
 	)
 
 	do_smoke(0, quirk_holder, get_turf(quirk_holder), smoke_type = /datum/effect_system/fluid_spread/smoke/dirty)
@@ -191,15 +190,15 @@
 
 	if (cleaned && !new_cleaned)
 		quirk_holder.visible_message(
-			span_warning("[quirk_holder] is once again covered in filth, [quirk_holder.p_their()] hygiene forever accursed."),
-			span_notice("Your find yourself lathered in filth once again. A sense of relief washes over you.")
+			span_warning("[quirk_holder]está novamente coberto de sujeira,[quirk_holder.p_their()]Higiene para sempre amaldiçoada."),
+			span_notice("Você se encontra ensanguentado de novo. Uma sensação de alívio se lava sobre você.")
 		)
 		quirk_holder.clear_mood_event("dirty_quirk_washed")
 		ADD_TRAIT(quirk_holder, TRAIT_DIRTY, QUIRK_TRAIT)
 	else if (!cleaned && new_cleaned)
 		quirk_holder.visible_message(
-			span_warning("[quirk_holder] squirms and writhes, fighting against the cleansing!"),
-			span_userdanger("No! NO! Your filth! It's gone!")
+			span_warning("[quirk_holder]contorce e contorce, lutando contra uma limpeza!"),
+			span_userdanger("Não! Não! Sua sujeira! Desapareceu!")
 		)
 		quirk_holder.add_mood_event("dirty_quirk_washed", /datum/mood_event/dirty_washed)
 		REMOVE_TRAIT(quirk_holder, TRAIT_DIRTY, QUIRK_TRAIT)
@@ -207,7 +206,7 @@
 	cleaned = new_cleaned
 
 /datum/mood_event/dirty_washed
-	description = "What is this smell...? Lavender soap? A hint of citrus?! ELDERBERRIES?! DISGUSTING! I need to wash myself in dirt!"
+	description = "Que cheiro é esse? Sabonete de lavanda? Uma pitada de citrinos? Alderberries? Nojento! Preciso me lavar na sujeira!"
 	mood_change = -6
 
 #undef DIRTY_TILE_CHANCE

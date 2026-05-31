@@ -4,7 +4,7 @@
 
 /obj/item/crusher_trophy
 	name = "tail spike"
-	desc = "A strange spike with no usage."
+	desc = "Um pico estranho sem uso."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "tail_spike"
 	/// if it has a bonus effect, this is how much that effect is
@@ -18,7 +18,7 @@
 
 /obj/item/crusher_trophy/examine(mob/living/user)
 	. = ..()
-	. += span_notice("Causes [effect_desc()] when attached to a kinetic crusher.")
+	. += span_notice("Causas[effect_desc()]quando ligado a um triturador cinético.")
 
 /// Returns a string to get added to the examine
 /obj/item/crusher_trophy/proc/effect_desc()
@@ -29,12 +29,12 @@
 /obj/item/crusher_trophy/proc/add_to(obj/item/kinetic_crusher/crusher, mob/living/user)
 	for(var/obj/item/crusher_trophy/trophy as anything in crusher.trophies)
 		if(istype(trophy, denied_type) || istype(src, trophy.denied_type))
-			to_chat(user, span_warning("You can't seem to attach [src] to [crusher]. Maybe remove a few trophies?"))
+			to_chat(user, span_warning("Você não consegue se conectar.[src]para[crusher]Talvez remover alguns troféus?"))
 			return FALSE
 	if(!user.transferItemToLoc(src, crusher))
 		return
 	crusher.trophies += src
-	to_chat(user, span_notice("You attach [src] to [crusher]."))
+	to_chat(user, span_notice("Você anexa[src]para[crusher]."))
 	return TRUE
 
 /// Removes the trophy from our crusher

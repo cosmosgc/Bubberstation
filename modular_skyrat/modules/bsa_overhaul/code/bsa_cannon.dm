@@ -23,25 +23,25 @@
 
 /obj/machinery/bsa/back
 	name = "Bluespace Artillery Generator"
-	desc = "Generates cannon pulse. Needs to be linked with a fusor."
+	desc = "Gera pulso de canhão. Precisa ser ligado a um fusor."
 	icon_state = "power_box"
 
 /obj/machinery/bsa/back/multitool_act(mob/living/user, obj/item/multitool/tool)
 	tool.buffer = src
-	to_chat(user, span_notice("You store linkage information in [tool]'s buffer."))
+	to_chat(user, span_notice("Você armazena informações de ligação em[tool]É um amortecedor."))
 
 /obj/machinery/bsa/front
 	name = "Bluespace Artillery Bore"
-	desc = "Do not stand in front of cannon during operation. Needs to be linked with a fusor."
+	desc = "Não fique na frente do canhão durante a operação. Precisa ser ligado a um fusor."
 	icon_state = "emitter_center"
 
 /obj/machinery/bsa/front/multitool_act(mob/living/user, obj/item/multitool/tool)
 	tool.buffer = src
-	to_chat(user, span_notice("You store linkage information in [tool]'s buffer."))
+	to_chat(user, span_notice("Você armazena informações de ligação em[tool]É um amortecedor."))
 
 /obj/machinery/bsa/middle
 	name = "Bluespace Artillery Fusor"
-	desc = "Contents classified by Nanotrasen Naval Command. Needs to be linked with the other BSA parts using a multitool."
+	desc = "Conteúdo classificado pelo Comando Naval Nanotrasen. Precisa ser ligado com as outras peças da BSA usando uma multitool."
 	icon_state = "fuel_chamber"
 	/// Our linked back piece
 	var/datum/weakref/back_piece
@@ -52,14 +52,14 @@
 	if(tool.buffer)
 		if(istype(tool.buffer, /obj/machinery/bsa/back))
 			back_piece = WEAKREF(tool.buffer)
-			to_chat(user, span_notice("You link [src] with [tool.buffer]."))
+			to_chat(user, span_notice("Você liga.[src]Com[tool.buffer]."))
 			tool.buffer = null
 		else if(istype(tool.buffer, /obj/machinery/bsa/front))
 			front_piece = WEAKREF(tool.buffer)
-			to_chat(user, span_notice("You link [src] with [tool.buffer]."))
+			to_chat(user, span_notice("Você liga.[src]Com[tool.buffer]."))
 			tool.buffer = null
 	else
-		to_chat(user, span_warning("[tool]'s data buffer is empty!"))
+		to_chat(user, span_warning("[tool]O buffer de dados está vazio!"))
 	return TRUE
 
 /obj/machinery/bsa/middle/proc/check_completion()
@@ -110,7 +110,7 @@
  */
 /obj/machinery/bsa/full
 	name = "Bluespace Artillery"
-	desc = "Long range bluespace artillery."
+	desc = "Artilharia de longo alcance no espaço azul."
 	icon = 'icons/obj/machines/cannon.dmi'
 	icon_state = "cannon_west"
 	use_power = NO_POWER_USE // We use power when we're fired.

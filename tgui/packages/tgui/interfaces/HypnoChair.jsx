@@ -20,10 +20,10 @@ export const HypnoChair = (props) => {
           using the implanted trigger phrase, the authorities are able to ensure
           immediate and complete obedience and truthfulness.
         </Section>
-        <Section title="Occupant Information" textAlign="center">
+        <Section title="Informação Ocupante" textAlign="center">
           <LabeledList>
             <LabeledList.Item label="Name">
-              {data.occupant.name ? data.occupant.name : 'No Occupant'}
+              {data.occupant.name ? data.occupant.name : 'Nenhum Ocupante'}
             </LabeledList.Item>
             {!!data.occupied && (
               <LabeledList.Item
@@ -55,7 +55,7 @@ export const HypnoChair = (props) => {
                 onClick={() => act('door')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Trigger Phrase">
+            <LabeledList.Item label="Frase do gatilho">
               <Input
                 value={data.trigger}
                 onBlur={(value) =>
@@ -65,13 +65,13 @@ export const HypnoChair = (props) => {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Interrogate Occupant">
+            <LabeledList.Item label="Interrogar Ocupante">
               <Button
                 icon="code-branch"
                 content={
                   data.interrogating
-                    ? 'Interrupt Interrogation'
-                    : 'Begin Enhanced Interrogation'
+                    ? 'Interrogatório interrompido.'
+                    : 'Comece o interrogatório melhorado.'
                 }
                 onClick={() => act('interrogate')}
               />

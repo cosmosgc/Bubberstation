@@ -12,7 +12,7 @@
 	icon_state = "sheater-off"
 	base_icon_state = "sheater"
 	name = "space heater"
-	desc = "Made by Space Amish using traditional space techniques, this heater/cooler is guaranteed not to set the station on fire. Warranty void if used in engines."
+	desc = "Feito pela Space Amish usando técnicas espaciais tradicionais, este aquecedor / refrigerador é garantido para não incendiar a estação. Garantia nula se usada em motores."
 	max_integrity = 250
 	armor_type = /datum/armor/machinery_space_heater
 	circuit = /obj/item/circuitboard/machine/space_heater
@@ -56,10 +56,7 @@
 	update_appearance()
 	SSair.start_processing_machine(src)
 
-	AddElement( \
-		/datum/element/contextual_screentip_bare_hands, \
-		rmb_text = "Toggle power", \
-	)
+	AddElement( 		/datum/element/contextual_screentip_bare_hands, 		rmb_text = "Toggle power", 	)
 
 	var/static/list/tool_behaviors = list(
 		TOOL_SCREWDRIVER = list(
@@ -100,17 +97,17 @@
 	if(cell)
 		. += "The charge meter reads [cell ? round(cell.percent(), 1) : 0]%."
 	else
-		. += span_warning("There is no power cell installed.")
+		. += span_warning("Não há nenhuma célula de energia instalada.")
 	if(in_range(user, src) || isobserver(user))
 		. += heating_examine()
-		. += span_notice("<b>Right-click</b> to toggle [on ? "off" : "on"].")
+		. += span_notice("<b>Botão direito</b>para alternar[on ? "off" : "on"].")
 
 ///Returns the heating power of this machine as an examine
 /obj/machinery/space_heater/proc/heating_examine()
 	var/target_temp = round(target_temperature - T0C, 1)
 	var/min_temp = max(settable_temperature_median - settable_temperature_range, TCMB) - T0C
 	var/max_temp = settable_temperature_median + settable_temperature_range - T0C
-	return span_notice("The status display reads:<br>Heating power: <b>[display_power(heating_energy, convert = TRUE, scheduler = SSair)] at [(efficiency / 20) * 100]% efficiency.</b><br>Target temperature: <b>[target_temp]°C [min_temp]°C - [max_temp]°C]</b>\n")
+	return span_notice("A exibição de status diz:<br>Poder de aquecimento:<b>[display_power(heating_energy, convert = TRUE, scheduler = SSair)]em[(efficiency / 20) * 100]Eficiência em %.</b><br>Temperatura do alvo:<b>[target_temp]°C[min_temp]°C...[max_temp]°C]</b>\n")
 
 /obj/machinery/space_heater/update_icon_state()
 	. = ..()
@@ -208,8 +205,8 @@
 /obj/machinery/space_heater/screwdriver_act(mob/living/user, obj/item/tool)
 	. = default_deconstruction_screwdriver(user, tool)
 	user.visible_message(
-		span_notice("[user] [panel_open ? "opens" : "closes"] the hatch on [src]."),
-		span_notice("You [panel_open ? "open" : "close"] the hatch on [src]."),
+		span_notice("[user] [panel_open ? "opens" : "closes"]A escotilha está ligada.[src]."),
+		span_notice("Você.[panel_open ? "open" : "close"]A escotilha está ligada.[src]."),
 	)
 	return .
 
@@ -220,18 +217,18 @@
 	if(istype(tool, /obj/item/stock_parts/power_store/cell))
 		add_fingerprint(user)
 		if(!panel_open)
-			to_chat(user, span_warning("The hatch must be open to insert a power cell!"))
+			to_chat(user, span_warning("A escotilha deve estar aberta para inserir uma célula de energia!"))
 			return ITEM_INTERACT_BLOCKING
 		if(cell)
-			to_chat(user, span_warning("There is already a power cell inside!"))
+			to_chat(user, span_warning("Já tem uma célula de energia lá dentro!"))
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
 		cell = tool
 		tool.add_fingerprint(usr)
 		user.visible_message(
-			span_notice("[user] inserts [tool] into [src]."),
-			span_notice("You insert [tool] into [src]."),
+			span_notice("[user]Inserções[tool]em[src]."),
+			span_notice("Você insere[tool]em[src]."),
 		)
 		SStgui.update_uis(src)
 		return ITEM_INTERACT_SUCCESS
@@ -311,11 +308,11 @@
 		if(QDELETED(cell))
 			balloon_alert(user, "sem célula!")
 		else if(!cell.charge())
-			balloon_alert(user, "sem carga!")
+			balloon_alert(user, "Sem carga!")
 		else if(!is_operational)
-			balloon_alert(user, "not operational!")
+			balloon_alert(user, "Não está operacional!")
 		else
-			balloon_alert(user, "turned [on ? "on" : "off"]")
+			balloon_alert(user, "Virado.[on ? "on" : "off"]")
 	update_appearance()
 	if(on)
 		SSair.start_processing_machine(src)
@@ -323,7 +320,7 @@
 ///For use with heating reagents in a ghetto way
 /obj/machinery/space_heater/improvised_chem_heater
 	name = "improvised chem heater"
-	desc = "A space heater fashioned to reroute heating to a water bath on top."
+	desc = "Um aquecedor feito para redirecionar o aquecimento para um banho de água em cima."
 	panel_open = TRUE //This is always open - since we've injected wires in the panel
 	//We inherit the cell from the heater prior
 	cell = null
@@ -362,7 +359,7 @@
 	// Conducted energy per joule of thermal energy difference in a tick.
 	var/conduction_energy = beaker_conduction_power * (set_mode == HEATER_MODE_AUTO ? 0.5 : 1) * our_subsystem.wait / (1 SECONDS)
 	// This accounts for the timestep inaccuracy.
-	. += span_notice("Reagent conduction power: <b>[conduction_energy < 1 ? display_power(-log(1 - conduction_energy) SECONDS / our_subsystem.wait, convert = FALSE) : "∞W"]/J</b>")
+	. += span_notice("Poder de condução reagente:<b>[conduction_energy < 1 ? display_power(-log(1 - conduction_energy) SECONDS / our_subsystem.wait, convert = FALSE) : "∞W"]/J</b>")
 
 /obj/machinery/space_heater/improvised_chem_heater/toggle_power(user)
 	. = ..()
@@ -427,14 +424,14 @@
 		return
 	if(istype(item, /obj/item/stock_parts/power_store/cell))
 		if(cell)
-			to_chat(user, span_warning("There is already a power cell inside!"))
+			to_chat(user, span_warning("Já tem uma célula de energia lá dentro!"))
 			return
 		else if(!user.transferItemToLoc(item, src))
 			return
 		cell = item
 		item.add_fingerprint(usr)
 
-		user.visible_message(span_notice("\The [user] inserts a power cell into \the [src]."), span_notice("You insert the power cell into \the [src]."))
+		user.visible_message(span_notice("\The [user]insere uma célula de energia em\the [src]."), span_notice("Você insere a célula de energia em\the [src]."))
 		SStgui.update_uis(src)
 	//reagent containers
 	if(is_reagent_container(item) && !(item.item_flags & ABSTRACT) && item.is_open_container())
@@ -443,7 +440,7 @@
 		if(!user.transferItemToLoc(container, src))
 			return
 		replace_beaker(user, container)
-		to_chat(user, span_notice("You add [container] to [src]'s water bath."))
+		to_chat(user, span_notice("Você acrescenta[container]para[src]É um banho de água."))
 		ui_interact(user)
 		return
 	//Dropper tools

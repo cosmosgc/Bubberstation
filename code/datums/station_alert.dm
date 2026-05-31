@@ -97,7 +97,7 @@
 					return
 			var/obj/machinery/camera/selected_camera = named_cameras[chosen_camera]
 			if(!selected_camera.can_use())
-				to_chat(ai, span_warning("Camera is unavailable!"))
+				to_chat(ai, span_warning("A câmera não está disponível!"))
 				return
 			ai.switchCamera(selected_camera)
 			return TRUE

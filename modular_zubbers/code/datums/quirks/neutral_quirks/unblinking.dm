@@ -1,11 +1,11 @@
 /datum/quirk/unblinking
 	name = "Unblinking"
-	desc = "For whatever reason, you do not need to blink to keep your eyes (or equivalent visual apparatus) functional."
+	desc = "Por alguma razão, você não precisa piscar para manter seus olhos (ou aparelho visual equivalente) funcional."
 	icon = FA_ICON_FACE_FLUSHED
 	value = 0
-	gain_text = span_danger("You no longer feel the need to blink.")
-	lose_text = span_notice("You feel the need to blink again.")
-	medical_record_text = "Patient is incapable of blinking."
+	gain_text = span_danger("Você não sente mais a necessidade de piscar.")
+	lose_text = span_notice("Você sente a necessidade de piscar novamente.")
+	medical_record_text = "O paciente é incapaz de piscar."
 	mob_trait = TRAIT_NO_EYELIDS //Also prevents eye shutting in knockout state and death.
 
 /datum/quirk/unblinking/add(client/client_source)

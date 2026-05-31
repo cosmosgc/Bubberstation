@@ -111,11 +111,11 @@
 
 	if(cameraticks < CAMERA_TICK_LIMIT)
 		if(!cameraticks)
-			to_chat(tracking_holder, span_warning("Target is not near any active cameras. Attempting to reacquire..."))
+			to_chat(tracking_holder, span_warning("O alvo não está perto de nenhuma câmera ativa. Tentando recuperar..."))
 		cameraticks++
 		return
 
-	to_chat(tracking_holder, span_warning("Unable to reacquire, cancelling track..."))
+	to_chat(tracking_holder, span_warning("Incapaz de recuperar, cancelar uma faixa..."))
 	reset_tracking()
 
 /// Tries to track onto our target mob. Returns true if it succeeds, false otherwise
@@ -159,7 +159,7 @@
 		return
 	var/datum/weakref/mob_ref = isnull(humans[target_name]) ? others[target_name] : humans[target_name]
 	if(isnull(mob_ref))
-		to_chat(tracker, span_notice("Target is not on or near any active cameras. Tracking failed."))
+		to_chat(tracker, span_notice("O alvo não está nem perto de nenhuma câmera ativa. O rastreamento falhou."))
 		return
 	set_tracked_mob(mob_ref.resolve())
 
@@ -178,9 +178,9 @@
 	find_trackable_mobs() //this is in case the tracked mob is newly/no-longer in camera field of view.
 	var/datum/weakref/mob_ref = isnull(humans[tracked_mob_name]) ? others[tracked_mob_name] : humans[tracked_mob_name]
 	if(isnull(mob_ref))
-		to_chat(tracker, span_notice("Target is not on or near any active cameras. Tracking failed."))
+		to_chat(tracker, span_notice("O alvo não está nem perto de nenhuma câmera ativa. O rastreamento falhou."))
 		return
-	to_chat(tracker, span_notice("Now tracking [tracked_mob_name] on camera."))
+	to_chat(tracker, span_notice("Agora rastreando[tracked_mob_name]na câmera."))
 	set_tracked_mob(mob_ref.resolve())
 
 /**

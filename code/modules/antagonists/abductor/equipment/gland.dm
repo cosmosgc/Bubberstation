@@ -1,6 +1,6 @@
 /obj/item/organ/heart/gland
 	name = "fleshy mass"
-	desc = "A nausea-inducing hunk of twisting flesh and metal."
+	desc = "Um pedaço de carne e metal que provoca náuseas."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "gland"
 	organ_flags = ORGAN_ROBOTIC | ORGAN_PROMINENT // weird?
@@ -30,7 +30,7 @@
 /obj/item/organ/heart/gland/examine(mob/user)
 	. = ..()
 	if(HAS_MIND_TRAIT(user, TRAIT_ABDUCTOR_SCIENTIST_TRAINING) || isobserver(user))
-		. += span_notice("It is \a [abductor_hint]")
+		. += span_notice("É sim.\a [abductor_hint]")
 
 /obj/item/organ/heart/gland/Stop()
 	return FALSE
@@ -60,8 +60,8 @@
 	if(!ownerCheck() || !mind_control_uses || active_mind_control)
 		return FALSE
 	mind_control_uses--
-	owner.balloon_alert(owner, "new compulsion")
-	to_chat(owner, span_userdanger("You suddenly feel an irresistible compulsion to follow an order..."))
+	owner.balloon_alert(owner, "nova compulsão")
+	to_chat(owner, span_userdanger("Você de repente sente uma compulsão irresistível para seguir uma ordem..."))
 	to_chat(owner, span_mind_control("[command]"))
 	active_mind_control = TRUE
 	message_admins("[key_name(user)] sent an abductor mind control message to [key_name(owner)]: [command]")
@@ -75,8 +75,8 @@
 /obj/item/organ/heart/gland/proc/clear_mind_control()
 	if(!ownerCheck() || !active_mind_control)
 		return FALSE
-	owner.balloon_alert(owner, "compulsion forgotten")
-	to_chat(owner, span_userdanger("You feel the compulsion fade, and you <i>completely forget</i> about your previous orders."))
+	owner.balloon_alert(owner, "Compulsão esquecida.")
+	to_chat(owner, span_userdanger("Você sente a compulsão desaparecer, e você<i>Esquecer completamente</i>sobre suas ordens anteriores."))
 	owner.clear_alert(ALERT_MIND_CONTROL)
 	active_mind_control = FALSE
 	return TRUE

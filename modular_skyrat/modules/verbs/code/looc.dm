@@ -14,7 +14,7 @@
 
 /client/proc/looc_message(msg, wall_pierce)
 	if(GLOB.say_disabled)
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("A fala está desativada."))
 		return
 
 	if(!mob)
@@ -26,25 +26,25 @@
 
 	if(!holder)
 		if(!GLOB.looc_allowed)
-			to_chat(src, span_danger("LOOC is globally muted."))
+			to_chat(src, span_danger("LOOC é globalmente silenciado."))
 			return
 		if(handle_spam_prevention(msg, MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, span_boldannounce("<B>Advertising other servers is not allowed.</B>"))
+			to_chat(src, span_boldannounce("<B>Publicidade de outros servidores não é permitido.</B>"))
 			log_admin("[key_name(src)] has attempted to advertise in LOOC: [msg]")
 			return
 		if(prefs.muted & MUTE_LOOC)
-			to_chat(src, span_danger("You cannot use LOOC (muted)."))
+			to_chat(src, span_danger("Não pode usar o LOOC."))
 			return
 		if(is_banned_from(ckey, BAN_LOOC))
-			to_chat(src, span_warning("You are LOOC banned!"))
+			to_chat(src, span_warning("Você está proibido!"))
 			return
 		if(mob.stat == DEAD)
-			to_chat(src, span_danger("You cannot use LOOC while dead."))
+			to_chat(src, span_danger("Você não pode usar LOOC enquanto estiver morto."))
 			return
 		if(istype(mob, /mob/dead))
-			to_chat(src, span_danger("You cannot use LOOC while ghosting."))
+			to_chat(src, span_danger("Você não pode usar LOOC enquanto fantasma."))
 			return
 
 	msg = emoji_parse(msg)

@@ -65,7 +65,7 @@
 	SIGNAL_HANDLER
 	// if the world time hasn't yet passed the time required for evolution
 	if(world.time < (evo_time + stage_time))
-		to_chat(human_target, span_warning("More time is necessary to evolve-- twenty minutes between each evolution..."))
+		to_chat(human_target, span_warning("Mais tempo é necessário para evoluir... 20 minutos entre cada evolução..."))
 		return
 	// since it was time, go up a stage and now we check what to add
 	current_stage++
@@ -75,10 +75,10 @@
 	switch(current_stage)
 		if(1)
 			ADD_TRAIT(human_target, TRAIT_ASHSTORM_IMMUNE, REF(src))
-			to_chat(human_target, span_notice("The biting wind seems to sting less..."))
+			to_chat(human_target, span_notice("O vento mordendo parece picar menos..."))
 		if(2)
 			species_target.damage_modifier += 10
-			to_chat(human_target, span_notice("Your body seems to be sturdier..."))
+			to_chat(human_target, span_notice("Seu corpo é mais resistente..."))
 		if(3)
 			var/obj/item/bodypart/arm/left/left_arm = human_target.get_bodypart(BODY_ZONE_L_ARM)
 			if(left_arm)
@@ -90,22 +90,22 @@
 				right_arm.unarmed_damage_low += 5
 				right_arm.unarmed_damage_high += 5
 
-			to_chat(human_target, span_notice("Your arms seem denser..."))
+			to_chat(human_target, span_notice("Seus braços parecem mais densos..."))
 		if(4)
 			ADD_TRAIT(human_target, TRAIT_LAVA_IMMUNE, REF(src))
-			to_chat(human_target, span_notice("Your body feels hotter..."))
+			to_chat(human_target, span_notice("Seu corpo está mais quente..."))
 		if(5)
 			var/datum/action/cooldown/mob_cooldown/fire_breath/granted_action
 			granted_action = new(human_target)
 			granted_action.Grant(human_target)
-			to_chat(human_target, span_notice("Your throat feels larger..."))
+			to_chat(human_target, span_notice("Sua garganta parece maior..."))
 		if(6 to INFINITY)
-			to_chat(human_target, span_warning("You have already reached the pinnacle of your current body!"))
+			to_chat(human_target, span_warning("Você já chegou ao topo do seu corpo atual!"))
 
 
 /datum/component/ash_age/proc/on_examine(atom/target_atom, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	if(world.time < (evo_time + stage_time))
-		examine_list += span_notice("[human_target] has not yet reached the age for evolving.")
+		examine_list += span_notice("[human_target]Ainda não atingiu a idade para evoluir.")
 		return
-	examine_list += span_warning("[human_target] has reached the age for evolving!")
+	examine_list += span_warning("[human_target]Chegou a idade para evoluir!")

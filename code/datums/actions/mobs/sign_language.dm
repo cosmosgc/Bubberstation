@@ -13,7 +13,7 @@
 	name = "Sign Language"
 	button_icon = 'icons/hud/actions.dmi'
 	button_icon_state = "sign_language"
-	desc = "Allows you to communicate via sign language."
+	desc = "Permite que você se comunique através da linguagem de sinais."
 	owner_has_control = FALSE
 
 /datum/action/innate/sign_language/is_action_active(atom/movable/screen/movable/action_button/current_button)
@@ -48,13 +48,13 @@
 /datum/action/innate/sign_language/Activate()
 	active = TRUE
 	ADD_TRAIT(owner, TRAIT_SIGN_LANG, ACTION_TRAIT)
-	to_chat(owner, span_green("You are now communicating with sign language."))
+	to_chat(owner, span_green("Agora você está se comunicando com a linguagem de sinais."))
 	build_all_button_icons(UPDATE_BUTTON_BACKGROUND)
 
 /datum/action/innate/sign_language/Deactivate()
 	active = FALSE
 	REMOVE_TRAIT(owner, TRAIT_SIGN_LANG, ACTION_TRAIT)
-	to_chat(owner, span_green("You have stopped using sign language."))
+	to_chat(owner, span_green("Você parou de usar linguagem de sinais."))
 	build_all_button_icons(UPDATE_BUTTON_BACKGROUND)
 
 /// Shows the linked action to the owner Carbon.

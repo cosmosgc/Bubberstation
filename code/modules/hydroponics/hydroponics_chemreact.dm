@@ -39,10 +39,10 @@
 	switch(rand(0, 50))
 		if(41 to 50)
 			adjust_plant_health(round(-5 * modifier))
-			visible_message(span_warning("\The [myseed.plantname] starts to wilt and burn!"))
+			visible_message(span_warning("\The [myseed.plantname]Começa a murchar e queimar!"))
 
 		if(21 to 40)
-			visible_message(span_notice("\The [myseed.plantname] appears unusually reactive..."))
+			visible_message(span_notice("\The [myseed.plantname]Parece anormalmente reativo..."))
 
 		if(11 to 20)
 			if(modifier >= 0.5)

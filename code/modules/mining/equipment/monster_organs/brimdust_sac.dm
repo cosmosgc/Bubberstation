@@ -15,7 +15,7 @@
  */
 /obj/item/organ/monster_core/brimdust_sac
 	name = "brimdust sac"
-	desc = "A strange organ from a brimdemon. You can shake it out to coat yourself in explosive powder."
+	desc = "Um órgão estranho de um brimdemon. Pode sacudir para se vestir em pó explosivo."
 	icon_state = "brim_sac"
 	icon_state_preserved = "brim_sac_stable"
 	icon_state_inert = "brim_sac_decayed"
@@ -90,9 +90,7 @@
 
 /atom/movable/screen/alert/status_effect/brimdust_coating
 	name = "Brimdust Coating"
-	desc = "You %STACKS% explosive dust, kinetic impacts will cause it to detonate! \
-		The explosion will not harm you as long as you're not under atmospheric pressure. \
-		Click this alert to shake off the dust."
+	desc = "Sua poeira explosiva, impactos cinéticos farão com que detone! A explosão não vai prejudicá-lo enquanto não estiver sob pressão atmosférica. Clique neste alerta para sacudir a poeira."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "brimdemon_1"
 
@@ -108,7 +106,7 @@
 		if (1)
 			dust_amount_string = "are lightly sprinkled with"
 
-	desc = replacetext(desc, "%STACKS%", dust_amount_string)
+	desc = replacetext(desc, "STARKS", dust_amount_string)
 	return ..()
 
 /atom/movable/screen/alert/status_effect/brimdust_coating/Click(location, control, params)
@@ -117,7 +115,7 @@
 		return
 	if(!owner.can_resist())
 		return
-	owner.balloon_alert(owner, "shaking off the dust...")
+	owner.balloon_alert(owner, "Sacudindo a poeira...")
 	var/datum/status_effect/stacking/brimdust_coating/dust = attached_effect
 	if (!do_after(owner, dust.stacks * 1.5 SECONDS, owner))
 		return
@@ -196,7 +194,7 @@
 		return
 	if(!COOLDOWN_FINISHED(src, explosion_cooldown))
 		return
-	owner.visible_message(span_boldwarning("The brimstone dust surrounding [owner] ignites!"))
+	owner.visible_message(span_boldwarning("O pó de enxofre ao redor[owner]Fogo!"))
 	addtimer(CALLBACK(src, PROC_REF(explode)), 0.25 SECONDS)
 	COOLDOWN_START(src, explosion_cooldown, delay_between_explosions)
 
@@ -232,17 +230,17 @@
 /datum/status_effect/brimdust_concussion/on_apply()
 	. = ..()
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/status_effect/brimdust_concussion)
-	to_chat(owner, span_warning("You are knocked off balance by the explosion!"))
+	to_chat(owner, span_warning("Você perdeu o equilíbrio com a explosão!"))
 
 /datum/status_effect/brimdust_concussion/on_remove()
 	. = ..()
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/status_effect/brimdust_concussion)
-	to_chat(owner, span_notice("You find your balance."))
+	to_chat(owner, span_notice("Você encontra seu equilíbrio."))
 
 /// Action used by the brimdust sac
 /datum/action/cooldown/monster_core_action/exhale_brimdust
 	name = "Exhale Brimdust"
-	desc = "Cough out a choking cloud of explosive brimdust to coat those nearby."
+	desc = "Tossir uma nuvem sufocante de enxofre explosivo para cobrir os próximos."
 	button_icon_state = "brim_sac_stable"
 	cooldown_time = 90 SECONDS
 

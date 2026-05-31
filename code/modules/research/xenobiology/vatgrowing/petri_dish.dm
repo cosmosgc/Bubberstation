@@ -1,7 +1,7 @@
 ///Holds a biological sample which can then be put into the growing vat
 /obj/item/petri_dish
 	name = "petri dish"
-	desc = "This makes you feel well-cultured."
+	desc = "Isso faz você se sentir bem educado."
 	icon = 'icons/obj/science/vatgrowing.dmi'
 	icon_state = "petri_dish"
 	w_class = WEIGHT_CLASS_TINY
@@ -21,7 +21,7 @@
 	. = ..()
 	if(!sample)
 		return
-	. += span_notice("You can see the following micro-organisms:")
+	. += span_notice("Você pode ver os seguintes microrganismos:")
 	for(var/i in sample.micro_organisms)
 		var/datum/micro_organism/MO = i
 		. += MO.get_details()
@@ -30,7 +30,7 @@
 	. = ..()
 	if(!sample || !istype(A, /obj/structure/sink))
 		return FALSE
-	to_chat(user, span_notice("You wash the sample out of [src]."))
+	to_chat(user, span_notice("Você lava a amostra de[src]."))
 	sample = null
 	update_appearance()
 
@@ -47,7 +47,7 @@
 
 /obj/item/petri_dish/proc/deposit_sample(user, datum/biological_sample/deposited_sample)
 	sample = deposited_sample
-	to_chat(user, span_notice("You deposit a sample into [src]."))
+	to_chat(user, span_notice("Você deposita uma amostra em[src]."))
 	update_appearance()
 
 /// Petri dish with random sample already in it.

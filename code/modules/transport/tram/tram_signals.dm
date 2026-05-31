@@ -1,7 +1,7 @@
 /// Pedestrian crossing signal for tram
 /obj/machinery/transport/crossing_signal
 	name = "crossing signal"
-	desc = "Indicates to pedestrians if it's safe to cross the tracks. Connects to sensors down the track."
+	desc = "Indica aos pedestres se é seguro atravessar os trilhos. Liga-se aos sensores na pista."
 	icon = 'icons/obj/tram/crossing_signal.dmi'
 	icon_state = "crossing-inbound"
 	base_icon_state = "crossing-inbound"
@@ -69,7 +69,7 @@
 
 /obj/machinery/static_signal
 	name = "crossing signal"
-	desc = "Indicates to pedestrians if it's safe to cross the tracks."
+	desc = "Indica aos pedestres se é seguro atravessar os trilhos."
 	icon = 'icons/obj/tram/crossing_signal.dmi'
 	icon_state = "crossing-inbound"
 	layer = TRAM_SIGNAL_LAYER
@@ -137,29 +137,29 @@
 
 /obj/machinery/transport/crossing_signal/examine(mob/user)
 	. = ..()
-	. += span_notice("The maintenance panel is [panel_open ? "open" : "closed"].")
+	. += span_notice("O painel de manutenção é[panel_open ? "open" : "closed"].")
 	if(panel_open)
-		. += span_notice("It can be flipped or rotated with a [EXAMINE_HINT("wrench.")]")
+		. += span_notice("Pode ser virado ou rodado com um[EXAMINE_HINT("wrench.")]")
 	switch(operating_status)
 		if(TRANSPORT_REMOTE_WARNING)
-			. += span_notice("The orange [EXAMINE_HINT("remote warning")] light is on.")
-			. += span_notice("The status display reads: Check track sensor.")
+			. += span_notice("Um Laranja.[EXAMINE_HINT("remote warning")]A luz está acesa.")
+			. += span_notice("A exibição de status diz: verifique o sensor de trilha.")
 		if(TRANSPORT_REMOTE_FAULT)
-			. += span_notice("The blue [EXAMINE_HINT("telecoms failure")] light is on.")
-			. += span_notice("The status display reads: Check telecommunications network.")
+			. += span_notice("O azul[EXAMINE_HINT("telecoms failure")]A luz está acesa.")
+			. += span_notice("A exibição de status diz: verifique a rede de telecomunicações.")
 		if(TRANSPORT_LOCAL_FAULT)
-			. += span_notice("The red [EXAMINE_HINT("local fault")] light is on.")
-			. += span_notice("The status display reads: Repair required.")
+			. += span_notice("O vermelho[EXAMINE_HINT("local fault")]A luz está acesa.")
+			. += span_notice("A exibição de status diz: \"Reparo necessário\".")
 	switch(dir)
 		if(NORTH, SOUTH)
-			. += span_notice("The tram configuration display shows EAST/WEST.")
+			. += span_notice("O monitor de configuração do bonde mostra o leste/oeste.")
 		if(EAST, WEST)
-			. += span_notice("The tram configuration display shows NORTH/SOUTH.")
+			. += span_notice("A configuração do bonde mostra o norte/sudoeste.")
 
 /obj/machinery/transport/crossing_signal/emag_act(mob/living/user)
 	if(obj_flags & EMAGGED)
 		return FALSE
-	balloon_alert(user, "disabled motion sensors")
+	balloon_alert(user, "sensores de movimento desativados.")
 	operating_status = TRANSPORT_LOCAL_FAULT
 	obj_flags |= EMAGGED
 	return TRUE
@@ -185,7 +185,7 @@
 			if(OUTBOUND)
 				sign_dir = INBOUND
 
-		to_chat(user, span_notice("You flip directions on [src]."))
+		to_chat(user, span_notice("Você vira as direções[src]."))
 		update_appearance()
 
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -466,7 +466,7 @@
 	name = "guideway sensor"
 	icon = 'icons/obj/tram/tram_sensor.dmi'
 	icon_state = "sensor-base"
-	desc = "Uses an infrared beam to detect passing trams. Works when paired with a sensor on the other side of the track."
+	desc = "Usa um raio infravermelho para detectar os bondes que passam. Funciona quando emparelhado com um sensor do outro lado da pista."
 	layer = TRAM_RAIL_LAYER
 	plane = FLOOR_PLANE
 	use_power = NO_POWER_USE
@@ -498,19 +498,19 @@
 
 /obj/machinery/transport/guideway_sensor/examine(mob/user)
 	. = ..()
-	. += span_notice("The maintenance panel is [panel_open ? "open" : "closed"].")
+	. += span_notice("O painel de manutenção é[panel_open ? "open" : "closed"].")
 	if(panel_open)
-		. += span_notice("It can be rotated with a [EXAMINE_HINT("wrench.")]")
+		. += span_notice("Pode ser girado com um[EXAMINE_HINT("wrench.")]")
 	switch(operating_status)
 		if(TRANSPORT_REMOTE_WARNING)
-			. += span_notice("The orange [EXAMINE_HINT("remote warning")] light is on.")
-			. += span_notice("The status display reads: Check paired sensor.")
+			. += span_notice("Um Laranja.[EXAMINE_HINT("remote warning")]A luz está acesa.")
+			. += span_notice("A tela de status diz: verifique o sensor emparelhado.")
 		if(TRANSPORT_REMOTE_FAULT)
-			. += span_notice("The blue [EXAMINE_HINT("remote fault")] light is on.")
-			. += span_notice("The status display reads: Paired sensor not found.")
+			. += span_notice("O azul[EXAMINE_HINT("remote fault")]A luz está acesa.")
+			. += span_notice("A exibição de status diz: sensor emparelhado não encontrado.")
 		if(TRANSPORT_LOCAL_FAULT)
-			. += span_notice("The red [EXAMINE_HINT("local fault")] light is on.")
-			. += span_notice("The status display reads: Repair required.")
+			. += span_notice("O vermelho[EXAMINE_HINT("local fault")]A luz está acesa.")
+			. += span_notice("A exibição de status diz: \"Reparo necessário\".")
 
 /obj/machinery/transport/guideway_sensor/screwdriver_act(mob/living/user, obj/item/tool)
 	return default_deconstruction_screwdriver(user, tool)

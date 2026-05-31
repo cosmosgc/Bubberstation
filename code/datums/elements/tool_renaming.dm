@@ -49,10 +49,10 @@
 			if(QDELETED(renamed_obj) || !user.can_perform_action(renamed_obj))
 				return
 			if(input == old_name || !input)
-				to_chat(user, span_notice("You changed [renamed_obj] to... well... [renamed_obj]."))
+				to_chat(user, span_notice("Você mudou.[renamed_obj]Bem...[renamed_obj]."))
 				return
 			renamed_obj.AddComponent(/datum/component/rename, renamed_obj.nameformat(input, user), renamed_obj.desc)
-			to_chat(user, span_notice("You have successfully renamed \the [old_name] to [renamed_obj]."))
+			to_chat(user, span_notice("Você rebatizou com sucesso.\the [old_name]para[renamed_obj]."))
 			renamed_obj.update_appearance(UPDATE_NAME)
 
 		if(OPTION_DESCRIPTION)
@@ -61,15 +61,15 @@
 			if(QDELETED(renamed_obj) || !user.can_perform_action(renamed_obj))
 				return
 			if(input == old_desc || !input)
-				to_chat(user, span_notice("You decide against changing [renamed_obj]'s description."))
+				to_chat(user, span_notice("Você decide contra mudar[renamed_obj]A descrição."))
 				return
 			renamed_obj.AddComponent(/datum/component/rename, renamed_obj.name, renamed_obj.descformat(input, user))
-			to_chat(user, span_notice("You have successfully changed [renamed_obj]'s description."))
+			to_chat(user, span_notice("Você mudou com sucesso.[renamed_obj]A descrição."))
 			renamed_obj.update_appearance(UPDATE_DESC)
 
 		if(OPTION_RESET)
 			qdel(renamed_obj.GetComponent(/datum/component/rename))
-			to_chat(user, span_notice("You have successfully reset [renamed_obj]'s name[renamed_obj.obj_flags & RENAME_NO_DESC? "." : " and description."]"))
+			to_chat(user, span_notice("Você reiniciou com sucesso.[renamed_obj]O nome[renamed_obj.obj_flags & RENAME_NO_DESC? "." : " and description."]"))
 			renamed_obj.rename_reset()
 			renamed_obj.update_appearance(UPDATE_NAME | UPDATE_DESC)
 

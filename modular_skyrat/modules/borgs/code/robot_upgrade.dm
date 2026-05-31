@@ -7,7 +7,7 @@
 /// Advanced Surgery Tools
 /obj/item/borg/upgrade/surgerytools
 	name = "medical cyborg advanced surgery tools"
-	desc = "An upgrade to the Medical model cyborg's surgery loadout, replacing non-advanced tools with their advanced counterpart."
+	desc = "Uma atualização para a cirurgia do cyborg modelo médico, substituindo ferramentas não avançadas por sua contraparte avançada."
 	icon_state = "module_medical"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/medical)
@@ -57,7 +57,7 @@
 
 /obj/item/borg/upgrade/advanced_materials
 	name = "engineering advanced materials processor"
-	desc = "allows a cyborg to synthesize and store advanced materials"
+	desc = "permite a um cyborg sintetizar e armazenar materiais avançados"
 	icon_state = "module_engineer"
 	model_type = list(/obj/item/robot_model/engineering)
 	model_flags = BORG_MODEL_ENGINEERING
@@ -80,7 +80,7 @@
 /// Welder
 /obj/item/borg/upgrade/welder
 	name = "mining cyborg welder upgrade"
-	desc = "A normal welder with a larger tank for cyborgs."
+	desc = "Um soldador normal com um tanque maior para ciborgues."
 	icon_state = "module_miner"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/miner)
@@ -107,7 +107,7 @@
 
 /obj/item/borg/upgrade/better_clamp
 	name = "improved integrated hydraulic clamp"
-	desc = "An improved hydraulic clamp to allow for bigger packages to be picked up as well!"
+	desc = "Uma pinça hidráulica melhorada para permitir que pacotes maiores sejam pegos também!"
 	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
 	icon_state = "module_cargo"
 	require_model = TRUE
@@ -129,7 +129,7 @@
 
 /obj/item/borg/upgrade/cargo_tele
 	name = "cargo teleporter module"
-	desc = "Allows you to upgrade a cargo cyborg with the cargo teleporter"
+	desc = "Permite atualizar um cyborg de carga com o teletransportador."
 	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
 	icon_state = "module_cargo"
 	require_model = TRUE
@@ -151,7 +151,7 @@
 
 /obj/item/borg/upgrade/forging
 	name = "cyborg forging module"
-	desc = "Allows you to upgrade a cargo cyborg with forging gear"
+	desc = "Permite ativar um cyborg de carga com equipamento de forja"
 	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
 	icon_state = "module_cargo"
 	require_model = TRUE
@@ -182,7 +182,7 @@
 
 /obj/item/borg/upgrade/artistic
 	name = "borg artistic module"
-	desc = "Allows you to upgrade a cyborg with tools for creating art."
+	desc = "Permite atualizar um ciborgue com ferramentas para criar arte."
 	icon_state = "module_general"
 	items_to_add = list(
 			/obj/item/pen,
@@ -200,7 +200,7 @@
 /// ShapeShifter
 /obj/item/borg/upgrade/borg_shapeshifter
 	name = "cyborg shapeshifter module"
-	desc = "An experimental device which allows a cyborg to disguise themself into another type of cyborg."
+	desc = "Um dispositivo experimental que permite que um ciborgue se disfarce em outro tipo de ciborgue."
 	icon_state = "module_general"
 
 	items_to_add = list(/obj/item/borg_shapeshifter)
@@ -208,7 +208,7 @@
 /// Quadborg time
 /obj/item/borg/upgrade/affectionmodule
 	name = "borg affection module"
-	desc = "A module that upgrades the ability of borgs to display affection."
+	desc = "Um módulo que melhora a capacidade dos borgs de demonstrar afeição."
 	icon_state = "module_peace"
 
 	items_to_add = list(/obj/item/quadborg_tongue,
@@ -220,22 +220,22 @@
 	if(!istype(mob))
 		return ITEM_INTERACT_BLOCKING
 	if(HAS_TRAIT(interacting_with, TRAIT_AFFECTION_AVERSION)) // Checks for Affection Aversion trait
-		to_chat(user, span_warning("ERROR: [interacting_with] is on the Do Not Lick registry!"))
+		to_chat(user, span_warning("ERRO:[interacting_with]está no registro Do Not Lick!"))
 		return ITEM_INTERACT_BLOCKING
 	if(check_zone(borg.zone_selected) == "head")
-		borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]'s face!"), span_notice("You affectionally lick \the [mob]'s face!"))
+		borg.visible_message(span_warning("\the [borg]Afetivamente lambe\the [mob]Ó rosto!"), span_notice("Você amavelmente lambe\the [mob]Ó rosto!"))
 	else
-		borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]!"), span_notice("You affectionally lick \the [mob]!"))
+		borg.visible_message(span_warning("\the [borg]Afetivamente lambe\the [mob]!"), span_notice("Você amavelmente lambe\the [mob]!"))
 	playsound(borg, 'sound/effects/blob/attackblob.ogg', 50, 1)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/quadborg_nose/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(HAS_TRAIT(interacting_with, TRAIT_AFFECTION_AVERSION)) // Checks for Affection Aversion trait
-		to_chat(user, span_warning("ERROR: [interacting_with] is on the No Nosing registry!"))
+		to_chat(user, span_warning("ERRO:[interacting_with]está no registro Sem Nosing!"))
 		return ITEM_INTERACT_BLOCKING
 
 	do_attack_animation(interacting_with, null, src)
-	user.visible_message(span_notice("[user] [pick("nuzzles", "pushes", "boops")] \the [interacting_with.name] with their nose!"))
+	user.visible_message(span_notice("[user] [pick("nuzzles", "pushes", "boops")] \the [interacting_with.name]Com nariz!"))
 	return ITEM_INTERACT_SUCCESS
 
 /// The Shrinkening
@@ -245,18 +245,18 @@
 // Added checks for borg models who come from the Zoolander Center for Borgs Who Can't Upgrade Good
 /obj/item/borg/upgrade/expand/action(mob/living/silicon/robot/borg, mob/living/user = usr)
 	if(TRAIT_R_EXPANDER_BLOCKED in borg.model.model_features)
-		to_chat(usr, span_warning("This unit is unable to equip an expand module!"))
+		to_chat(usr, span_warning("Esta unidade é incapaz de equipar um módulo de expansão!"))
 		return FALSE
 
 	if(borg.model.type == /obj/item/robot_model)
-		to_chat(usr, span_warning("This unit is still in factory default configuration!"))
+		to_chat(usr, span_warning("Esta unidade ainda está na configuração padrão da fábrica!"))
 		return FALSE
 
 	return ..()
 
 /obj/item/borg/upgrade/shrink
 	name = "borg shrinker"
-	desc = "A cyborg resizer, it makes a cyborg small."
+	desc = "Um cyborg resizer, faz um cyborg pequeno."
 	icon_state = "module_general"
 
 /obj/item/borg/upgrade/shrink/action(mob/living/silicon/robot/borg, user = usr)
@@ -265,15 +265,15 @@
 		return FALSE
 
 	if(borg.model.type == /obj/item/robot_model)
-		to_chat(usr, span_warning("This unit is still in factory default configuration!"))
+		to_chat(usr, span_warning("Esta unidade ainda está na configuração padrão da fábrica!"))
 		return FALSE
 
 	if(borg.hasShrunk)
-		to_chat(usr, span_warning("This unit already has a shrink module installed!"))
+		to_chat(usr, span_warning("Esta unidade já tem um módulo de psiquiatra instalado!"))
 		return FALSE
 
 	if(TRAIT_R_SMALL in borg.model.model_features)
-		to_chat(usr, span_warning("This unit's chassis cannot be shrunk any further."))
+		to_chat(usr, span_warning("O chassi desta unidade não pode ser encolhido mais."))
 		return FALSE
 
 	ADD_TRAIT(borg, TRAIT_NO_TRANSFORM, REF(src))
@@ -308,7 +308,7 @@
 /// Syndijack
 /obj/item/borg/upgrade/transform/syndicatejack
 	name = "borg module picker (Syndicate)"
-	desc = "Allows you to to turn a cyborg into a experimental syndicate cyborg."
+	desc = "Permite transformar um ciborgue em um pecado experimental."
 	icon_state = "module_illegal"
 	new_model = /obj/item/robot_model/syndicatejack
 
@@ -319,7 +319,7 @@
 /// Dominatrix time
 /obj/item/borg/upgrade/dominatrixmodule
 	name = "borg dominatrix module"
-	desc = "A module that greatly upgrades the ability of borgs to display affection."
+	desc = "Um módulo que melhora muito a habilidade dos borgs em demonstrar afeto."
 	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
 	icon_state = "module_lust"
 	custom_price = 0

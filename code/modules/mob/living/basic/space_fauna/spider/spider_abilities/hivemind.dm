@@ -4,7 +4,7 @@
  */
 /datum/action/cooldown/mob_cooldown/set_spider_directive
 	name = "Set Directive"
-	desc = "Set a directive for your future children to follow."
+	desc = "Defina uma diretiva para seus futuros filhos seguirem."
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "directive"
 	background_icon_state = "bg_alien"
@@ -32,7 +32,7 @@
  */
 /datum/action/cooldown/mob_cooldown/command_spiders
 	name = "Command"
-	desc = "Send a command to all living spiders."
+	desc = "Envie um comando para todas as aranhas vivas."
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "command"
 	background_icon_state = "bg_alien"
@@ -71,29 +71,29 @@
  * Formats the string to have an appropiate size and text color
  */
 /datum/action/cooldown/mob_cooldown/command_spiders/proc/format_message(mob/living/user, message)
-	return span_spiderbroodmother("<b>Command from [user]:</b> [message]")
+	return span_spiderbroodmother("<b>Comando de[user]:</b> [message]")
 
 /**
  * Sends a small message to all currently living spiders.
  */
 /datum/action/cooldown/mob_cooldown/command_spiders/communication_spiders
 	name = "Communication"
-	desc = "Send a report to all living spiders."
+	desc = "Envie um relatório para todas as aranhas vivas."
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "message"
 
 /datum/action/cooldown/mob_cooldown/command_spiders/communication_spiders/format_message(mob/living/user, message)
-	return span_spiderscout("<b>Report from [user]:</b> [message]")
+	return span_spiderscout("<b>Relatório de[user]:</b> [message]")
 
 /**
  * Sends a smaller message to all currently living spiders.
  */
 /datum/action/cooldown/mob_cooldown/command_spiders/warning_spiders
 	name = "Warning"
-	desc = "Send a warning to all living spiders."
+	desc = "Mande um aviso para todas as aranhas vivas."
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "warning"
 
 /datum/action/cooldown/mob_cooldown/command_spiders/warning_spiders/format_message(mob/living/user, message)
-	return span_spiderbreacher("<b>Warning from [user]:</b> [message]")
+	return span_spiderbreacher("<b>Aviso de[user]:</b> [message]")
 

@@ -14,7 +14,7 @@ ADMIN_VERB(toggledchat, R_ADMIN, "Toggle Dead Chat", "Toggle dis bitch.", ADMIN_
 			return
 	else // otherwise just toggle it
 		GLOB.dchat_allowed = !GLOB.dchat_allowed
-	to_chat(world, span_oocplain("<B>The dead chat channel has been globally [GLOB.dchat_allowed ? "enabled" : "disabled"].</B>"))
+	to_chat(world, span_oocplain("<B>O canal de bate-papo morto tem sido global.[GLOB.dchat_allowed ? "enabled" : "disabled"].</B>"))
 
 /datum/admin_help
 	/// Have we requested this ticket to stop being part of the Ticket Ping subsystem?
@@ -41,11 +41,11 @@ ADMIN_VERB(toggledchat, R_ADMIN, "Toggle Dead Chat", "Toggle dis bitch.", ADMIN_
 		return TRUE
 
 	if(handler && handler != usr.ckey)
-		var/response = tgui_alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", list("Yes", "No"))
+		var/response = tgui_alert(usr, "Este bilhete já está sendo tratado por[handler]Você quer continuar?", "Ticket already assigned", list("Yes", "No"))
 		if(!response || response == "No")
 			return FALSE
 
-	var/msg = span_adminhelp("Your ticket is now being handled by [usr?.client?.holder?.fakekey ? usr?.client?.holder?.fakekey : "an administrator"]! Please wait while they type their response and/or gather relevant information.")
+	var/msg = span_adminhelp("Sua passagem está sendo manipulada por[usr?.client?.holder?.fakekey ? usr?.client?.holder?.fakekey : "an administrator"]Por favor, espere enquanto eles digitam sua resposta e/ou recolhem informações relevantes.")
 
 	if(initiator)
 		to_chat(initiator, msg)
@@ -65,13 +65,13 @@ ADMIN_VERB(toggledchat, R_ADMIN, "Toggle Dead Chat", "Toggle dis bitch.", ADMIN_
 		return FALSE
 
 	if(handler && handler != usr.ckey)
-		var/response = tgui_alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", list("Yes", "No"))
+		var/response = tgui_alert(usr, "Este bilhete já está sendo tratado por[handler]Você quer continuar?", "Ticket already assigned", list("Yes", "No"))
 		if(!response || response == "No")
 			return FALSE
 
 	add_verb(initiator, /client/verb/mentorhelp) // Way to override mentorhelp cooldown.
 
-	to_chat(initiator, span_adminhelp("Your ticket was converted to Mentorhelp"))
+	to_chat(initiator, span_adminhelp("Seu bilhete foi convertido em Mentorhelp."))
 	initiator.mentorhelp(full_text)
 	initiator.giveadminhelpverb()
 

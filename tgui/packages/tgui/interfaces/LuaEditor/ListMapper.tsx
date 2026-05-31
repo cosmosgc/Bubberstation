@@ -158,7 +158,7 @@ export const ListMapper = (props: ListMapperProps) => {
         case 'ref':
           return (
             <Button
-              tooltip="Click to VV"
+              tooltip="Clique em VV"
               onClick={vvAct && (() => vvAct(path))}
               {...thing.props}
             />
@@ -167,7 +167,7 @@ export const ListMapper = (props: ListMapperProps) => {
           if (canCall && setToCall && setModal) {
             return (
               <Button
-                tooltip="Click to call"
+                tooltip="Clique para ligar."
                 onClick={() => {
                   setToCall({
                     type: 'callFunction',
@@ -237,13 +237,13 @@ export const ListMapper = (props: ListMapperProps) => {
                 <Button
                   icon="arrow-up"
                   disabled={i === 0}
-                  tooltip="Move Up"
+                  tooltip="Subir"
                   onClick={() => act('moveArgUp', { path: entryPath })}
                 />
                 <Button
                   icon="arrow-down"
                   disabled={i === list.length - 1}
-                  tooltip="Move Down"
+                  tooltip="Desça."
                   onClick={() => act('moveArgDown', { path: entryPath })}
                 />
                 <Button
@@ -276,7 +276,7 @@ export const ListMapper = (props: ListMapperProps) => {
   );
 
   const buttons = vvAct && list?.length > 0 && (
-    <Button icon="search" tooltip="VV List" onClick={() => vvAct(path ?? [])} />
+    <Button icon="search" tooltip="Lista VV" onClick={() => vvAct(path ?? [])} />
   );
 
   return collapsible ? (

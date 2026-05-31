@@ -1,7 +1,7 @@
 
 /obj/item/bodypart/chest
 	name = BODY_ZONE_CHEST
-	desc = "It's impolite to stare at a person's chest."
+	desc = "É falta de educação olhar para o peito de uma pessoa."
 	icon_state = "default_human_chest"
 	max_damage = LIMB_MAX_HP_CORE
 	body_zone = BODY_ZONE_CHEST
@@ -151,7 +151,7 @@
 /obj/item/bodypart/arm
 	abstract_type = /obj/item/bodypart/arm
 	name = "arm"
-	desc = "Hey buddy give me a HAND and report this to the github because you shouldn't be seeing this."
+	desc = "Ei amigo me dê uma mão e informe isso para o github porque você não deveria estar vendo isso."
 	abstract_type = /obj/item/bodypart/arm
 	attack_verb_continuous = list("slaps", "punches")
 	attack_verb_simple = list("slap", "punch")
@@ -242,7 +242,7 @@
 		if(bodypart_disabled)
 			owner.set_usable_hands(owner.usable_hands - 1)
 			if(owner.stat < UNCONSCIOUS)
-				to_chat(owner, span_userdanger("You lose control of your [plaintext_zone]!"))
+				to_chat(owner, span_userdanger("Você perde o controle de seu[plaintext_zone]!"))
 			if(held_index)
 				owner.dropItemToGround(owner.get_item_for_held_index(held_index))
 	else if(!bodypart_disabled)
@@ -311,10 +311,7 @@
 
 /obj/item/bodypart/arm/left
 	name = "left arm"
-	desc = "Did you know that the word 'sinister' stems originally from the \
-		Latin 'sinestra' (left hand), because the left hand was supposed to \
-		be possessed by the devil? This arm appears to be possessed by no \
-		one though."
+	desc = "Você sabia que a palavra 'sinister' deriva originalmente do latim 'sinestra' (mão esquerda), porque a mão esquerda deveria ser possuída pelo diabo? Este braço parece estar possuído por ninguém."
 	icon_state = "default_human_l_arm"
 	body_zone = BODY_ZONE_L_ARM
 	body_part = ARM_LEFT
@@ -395,8 +392,7 @@
 
 /obj/item/bodypart/arm/right
 	name = "right arm"
-	desc = "Over 87% of humans are right handed. That figure is much lower \
-		among humans missing their right arm."
+	desc = "Mais de 87% dos humanos são destros. Esse número é muito menor entre os humanos sem o braço direito."
 	body_zone = BODY_ZONE_R_ARM
 	body_part = ARM_RIGHT
 	icon_state = "default_human_r_arm"
@@ -480,7 +476,7 @@
 /obj/item/bodypart/leg
 	abstract_type = /obj/item/bodypart/leg
 	name = "leg"
-	desc = "This item shouldn't exist. Talk about breaking a leg. Badum-Tss!"
+	desc = "Este item não deveria existir. Fala em quebrar uma perna. Badum-Tss!"
 	abstract_type = /obj/item/bodypart/leg
 	attack_verb_continuous = list("kicks", "stomps")
 	attack_verb_simple = list("kick", "stomp")
@@ -519,8 +515,7 @@
 			FOOTSTEP_MOB_SHOE,
 		)
 		if(!(footstep_type in supported_types))
-			stack_trace("Invalid footstep type set on leg: \[[footstep_type]\] \
-				If you want to use this type, you will need to create a global footstep index for it.")
+			stack_trace("Invalid footstep type set on leg: \[[footstep_type]\] 				If you want to use this type, you will need to create a global footstep index for it.")
 
 /obj/item/bodypart/leg/Destroy()
 	QDEL_NULL(worn_foot_offset)
@@ -535,7 +530,7 @@
 		if(bodypart_disabled)
 			owner.set_usable_legs(owner.usable_legs - 1)
 			if(owner.stat < UNCONSCIOUS)
-				to_chat(owner, span_userdanger("You lose control of your [plaintext_zone]!"))
+				to_chat(owner, span_userdanger("Você perde o controle de seu[plaintext_zone]!"))
 	else if(!bodypart_disabled)
 		owner.set_usable_legs(owner.usable_legs + 1)
 
@@ -558,8 +553,7 @@
 
 /obj/item/bodypart/leg/left
 	name = "left leg"
-	desc = "Some athletes prefer to tie their left shoelaces first for good \
-		luck. In this instance, it probably would not have helped."
+	desc = "Alguns atletas preferem amarrar os cadarços esquerdos primeiro para dar sorte. Neste caso, provavelmente não teria ajudado."
 	icon_state = "default_human_l_leg"
 	body_zone = BODY_ZONE_L_LEG
 	body_part = LEG_LEFT
@@ -637,9 +631,7 @@
 
 /obj/item/bodypart/leg/right
 	name = "right leg"
-	desc = "You put your right leg in, your right leg out. In, out, in, out, \
-		shake it all about. And apparently then it detaches.\n\
-		The hokey pokey has certainly changed a lot since space colonisation."
+	desc = "Você coloca sua perna direita, sua perna direita para fora. Dentro, fora, dentro, fora, agitar tudo. E, aparentemente, se desprende.\nO hokey pokey certamente mudou muito desde a colonização espacial."
 	// alternative spellings of 'pokey' are available
 	icon_state = "default_human_r_leg"
 	body_zone = BODY_ZONE_R_LEG

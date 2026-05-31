@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/hypospray
 	name = "hypospray"
-	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients."
+	desc = "A DeForest Medical Corporation hipospray é um autoinjetor estéril para administração rápida de drogas a pacientes."
 	icon = 'icons/obj/medical/syringe.dmi'
 	inhand_icon_state = "hypo"
 	worn_icon_state = "hypo"
@@ -33,7 +33,7 @@
 ///Handles all injection checks, injection and logging.
 /obj/item/reagent_containers/hypospray/proc/inject(mob/living/affected_mob, mob/user)
 	if(used_up)
-		to_chat(user, span_warning("[src] tip is broken and is now unusable!"))
+		to_chat(user, span_warning("[src]A ponta está quebrada e agora é inutilizável!"))
 		return FALSE
 	if(!iscarbon(affected_mob))
 		return FALSE
@@ -47,8 +47,8 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 
 	if(!used_up && (ignore_flags || affected_mob.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE))) // Ignore flag should be checked first or there will be an error message.
-		to_chat(affected_mob, span_warning("You feel a tiny prick!"))
-		to_chat(user, span_notice("You inject [affected_mob] with [src]."))
+		to_chat(affected_mob, span_warning("Você sente um pinto minúsculo!"))
+		to_chat(user, span_notice("Você injeta.[affected_mob]com[src]."))
 		if(!stealthy)
 			playsound(affected_mob, 'sound/items/hypospray.ogg', 50, TRUE)
 		var/fraction = min(amount_per_transfer_from_this/reagents.total_volume, 1)
@@ -61,7 +61,7 @@
 			else
 				reagents.expose(affected_mob, INJECT, fraction)
 				trans = reagents.trans_to(affected_mob, amount_per_transfer_from_this, methods = INJECT, copy_only = TRUE)
-			to_chat(user, span_notice("[trans] unit\s injected. [reagents.total_volume] unit\s remaining in [src]."))
+			to_chat(user, span_notice("[trans]Unidade injetada.[reagents.total_volume]Unidade permanecendo em[src]."))
 			log_combat(user, affected_mob, "injected", src, "([contained])")
 		return TRUE
 	return FALSE
@@ -77,7 +77,7 @@
 
 /obj/item/reagent_containers/hypospray/combat
 	name = "combat stimulant injector"
-	desc = "A modified air-needle autoinjector, used by support operatives to quickly heal injuries in combat."
+	desc = "Um autoinjetor de agulha de ar modificado, usado por agentes de apoio para curar lesões em combate."
 	amount_per_transfer_from_this = 10
 	inhand_icon_state = "combat_hypo"
 	icon_state = "combat_hypo"
@@ -91,7 +91,7 @@
 
 /obj/item/reagent_containers/hypospray/combat/nanites
 	name = "experimental combat stimulant injector"
-	desc = "A modified air-needle autoinjector for use in combat situations. Prefilled with experimental medical nanites and a stimulant for rapid healing and a combat boost."
+	desc = "Um autoinjetor de agulha de ar modificado para uso em situações de combate. Preenchido com nanites médicos experimentais e um estimulante para uma cura rápida e um impulso de combate."
 	inhand_icon_state = "nanite_hypo"
 	icon_state = "nanite_hypo"
 	base_icon_state = "nanite_hypo"
@@ -104,7 +104,7 @@
 
 /obj/item/reagent_containers/hypospray/combat/heresypurge
 	name = "holy water piercing injector"
-	desc = "A modified air-needle autoinjector for use in combat situations. Prefilled with 5 doses of a holy water and pacifier mixture. Not for use on your teammates."
+	desc = "Um autoinjetor de agulha de ar modificado para uso em situações de combate. Preenchido com 5 doses de água benta e mistura de chupeta. Não para usar em seus companheiros de equipe."
 	inhand_icon_state = "holy_hypo"
 	icon_state = "holy_hypo"
 	volume = 250
@@ -116,7 +116,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen
 	name = "epinephrine medipen"
-	desc = "A rapid and safe way to stabilize patients in critical condition for personnel without advanced medical knowledge. Contains a powerful preservative that can delay decomposition when applied to a dead body, and stop the production of histamine during an allergic reaction."
+	desc = "Uma maneira rápida e segura de estabilizar pacientes em estado crítico para pessoal sem conhecimento médico avançado. Contém um poderoso conservante que pode atrasar a decomposição quando aplicado a um corpo morto, e parar a produção de histamina durante uma reação alérgica."
 	icon_state = "medipen"
 	inhand_icon_state = "medipen"
 	worn_icon_state = "medipen"
@@ -136,7 +136,7 @@
 	var/label_text
 
 /obj/item/reagent_containers/hypospray/medipen/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins to choke on \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Começa a engasgar-se.\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return OXYLOSS//ironic. he could save others from oxyloss, but not himself.
 
 /obj/item/reagent_containers/hypospray/medipen/inject(mob/living/affected_mob, mob/user)
@@ -157,20 +157,20 @@
 /obj/item/reagent_containers/hypospray/medipen/Initialize(mapload)
 	. = ..()
 	if(!no_sticker) // BUBBER EDIT CHANGE: for pen_medipens, allows for medipens without the warning label
-		label_text = span_notice("There is a sticker pasted onto the side which reads, 'WARNING: This medipen contains [pretty_string_from_reagent_list(reagents.reagent_list, names_only = TRUE, join_text = ", ", final_and = TRUE, capitalize_names = TRUE)], do not use if allergic to any listed chemicals.")
+		label_text = span_notice("Há um adesivo colado no lado que diz:[pretty_string_from_reagent_list(reagents.reagent_list, names_only = TRUE, join_text = ", ", final_and = TRUE, capitalize_names = TRUE)], não usar se alérgico a qualquer produto químico listado.")
 
 /obj/item/reagent_containers/hypospray/medipen/examine()
 	. = ..()
 	if (label_examine)
 		. += label_text
 	if(length(reagents?.reagent_list))
-		. += span_notice("It is loaded.")
+		. += span_notice("Está carregada.")
 	else
-		. += span_notice("It is spent.")
+		. += span_notice("Está gasto.")
 
 /obj/item/reagent_containers/hypospray/medipen/stimpack //goliath kiting
 	name = "stimpack medipen"
-	desc = "A rapid way to stimulate your body's adrenaline, allowing for freer movement in restrictive armor."
+	desc = "Uma maneira rápida de estimular a adrenalina do seu corpo, permitindo um movimento mais livre em armadura restritiva."
 	icon_state = "stimpen"
 	inhand_icon_state = "stimpen"
 	base_icon_state = "stimpen"
@@ -179,13 +179,13 @@
 	list_reagents = list(/datum/reagent/medicine/ephedrine = 10, /datum/reagent/consumable/coffee = 10)
 
 /obj/item/reagent_containers/hypospray/medipen/stimpack/traitor
-	desc = "A modified stimulants autoinjector for use in combat situations. Has a mild healing effect."
+	desc = "Um autoinjetor de estimulantes modificado para uso em situações de combate. Tem um leve efeito cicatrizante."
 	list_reagents = list(/datum/reagent/medicine/stimulants = 10, /datum/reagent/medicine/omnizine = 10)
 	volume = 20
 
 /obj/item/reagent_containers/hypospray/medipen/stimulants
 	name = "stimulant medipen"
-	desc = "Contains a very large amount of an incredibly powerful stimulant, vastly increasing your movement speed and reducing stuns by a very large amount for around five minutes. Do not take if pregnant."
+	desc = "Contém uma quantidade muito grande de um estimulante incrivelmente poderoso, aumentando imensamente sua velocidade de movimento e reduzindo os atordoamentos em uma quantidade muito grande por cerca de cinco minutos. Não tome se estiver grávida."
 	icon_state = "syndipen"
 	inhand_icon_state = "tbpen"
 	base_icon_state = "syndipen"
@@ -197,12 +197,12 @@
 	name = "methamphetamine medipen"
 	volume = 24
 	amount_per_transfer_from_this = 24
-	desc = "Contains a relatively safe quantity of methamphetamine, along with mannitol to ensure that brain damage is kept at a minimum."
+	desc = "Contém uma quantidade relativamente segura de metanfetamina, juntamente com manitol para garantir que os danos cerebrais sejam mantidos no mínimo."
 	list_reagents = list(/datum/reagent/drug/methamphetamine = 10, /datum/reagent/medicine/mannitol = 14)
 
 /obj/item/reagent_containers/hypospray/medipen/morphine
 	name = "morphine medipen"
-	desc = "A rapid way to get you out of a tight situation and fast! You'll feel rather drowsy, though."
+	desc = "Uma maneira rápida de tirá-lo de uma situação apertada e rápido! Mas vai se sentir sonolento."
 	icon_state = "morphen"
 	inhand_icon_state = "morphen"
 	base_icon_state = "morphen"
@@ -211,7 +211,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/oxandrolone
 	name = "oxandrolone medipen"
-	desc = "An autoinjector containing oxandrolone, used to treat severe burns."
+	desc = "Um autoinjector contendo oxandrolona, usado para tratar queimaduras graves."
 	icon_state = "oxapen"
 	inhand_icon_state = "oxapen"
 	base_icon_state = "oxapen"
@@ -220,7 +220,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/penacid
 	name = "pentetic acid medipen"
-	desc = "An autoinjector containing pentetic acid, used to reduce high levels of radiations and moderate toxins."
+	desc = "Um autoinjector contendo ácido pentético, usado para reduzir altos níveis de radiação e toxinas moderadas."
 	icon_state = "penacid"
 	inhand_icon_state = "penacid"
 	base_icon_state = "penacid"
@@ -229,7 +229,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/salacid
 	name = "salicylic acid medipen"
-	desc = "An autoinjector containing salicylic acid, used to treat severe brute damage."
+	desc = "Um autoinjector contendo ácido salicílico, usado para tratar danos graves."
 	icon_state = "salacid"
 	inhand_icon_state = "salacid"
 	base_icon_state = "salacid"
@@ -238,7 +238,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/salbutamol
 	name = "salbutamol medipen"
-	desc = "An autoinjector containing salbutamol, used to heal oxygen damage quickly."
+	desc = "Um autoinjector contendo salbutamol, usado para curar danos de oxigênio rapidamente."
 	icon_state = "salpen"
 	inhand_icon_state = "salpen"
 	base_icon_state = "salpen"
@@ -247,7 +247,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/tuberculosiscure
 	name = "BVAK autoinjector"
-	desc = "Bio Virus Antidote Kit autoinjector. Has a two use system for yourself, and someone else. Inject when infected."
+	desc = "Auto-injetor do Bio Virus Antidote Kit. Tem um sistema de dois usos para você e outra pessoa. Injete quando estiver infectado."
 	icon_state = "tbpen"
 	inhand_icon_state = "tbpen"
 	base_icon_state = "tbpen"
@@ -264,7 +264,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/survival
 	name = "survival emergency medipen"
-	desc = "A medipen for surviving in the harsh environments, heals most common damage sources. WARNING: May cause organ damage."
+	desc = "Um remédio para sobreviver nos ambientes severos, cura as fontes de danos mais comuns. Pode causar danos nos órgãos."
 	icon_state = "stimpen"
 	inhand_icon_state = "stimpen"
 	base_icon_state = "stimpen"
@@ -278,10 +278,10 @@
 		return ..()
 
 	if(DOING_INTERACTION(user, DOAFTER_SOURCE_SURVIVALPEN))
-		to_chat(user,span_notice("You are too busy to use \the [src]!"))
+		to_chat(user,span_notice("Você está muito ocupado para usar\the [src]!"))
 		return
 
-	to_chat(user,span_notice("You start manually releasing the low-pressure gauge..."))
+	to_chat(user,span_notice("Você começa a liberar manualmente o medidor de baixa pressão..."))
 	if(!do_after(user, 10 SECONDS, affected_mob, interaction_key = DOAFTER_SOURCE_SURVIVALPEN))
 		return
 
@@ -291,7 +291,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/survival/luxury
 	name = "luxury medipen"
-	desc = "Cutting edge bluespace technology allowed Nanotrasen to compact 60u of volume into a single medipen. Contains rare and powerful chemicals used to aid in exploration of very hard environments. WARNING: DO NOT MIX WITH EPINEPHRINE OR ATROPINE."
+	desc = "Tecnologia do espaço azul de ponta permitiu que Nanotrasen compactasse 60u de volume em um único medipen. Contém químicos raros e poderosos usados para ajudar na exploração de ambientes muito difíceis. Aviso: não misture com epinefrina ou atropina."
 	icon_state = "luxpen"
 	inhand_icon_state = "atropen"
 	base_icon_state = "luxpen"
@@ -301,7 +301,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/atropine
 	name = "atropine autoinjector"
-	desc = "A rapid way to save a person from a critical injury state! Additionally contains a powerful coagulant to prevent blood loss."
+	desc = "Uma maneira rápida de salvar uma pessoa de um estado crítico de lesão! Além disso, contém um poderoso coagulante para evitar perda de sangue."
 	icon_state = "atropen"
 	inhand_icon_state = "atropen"
 	base_icon_state = "atropen"
@@ -310,7 +310,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/snail
 	name = "snail shot"
-	desc = "All-purpose snail medicine! Do not use on non-snails!"
+	desc = "Medicina para caracol! Não use em nada!"
 	icon_state = "snail"
 	inhand_icon_state = "snail"
 	base_icon_state = "snail"
@@ -320,7 +320,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/magillitis
 	name = "experimental autoinjector"
-	desc = "A custom-frame needle injector with a small single-use reservoir, containing an experimental serum. Unlike the more common medipen frame, it cannot pierce through protective armor or space suits, nor can the chemical inside be extracted."
+	desc = "Um injetor de agulha personalizado com um pequeno reservatório de uso único, contendo um soro experimental. Ao contrário do quadro mais comum de medipen, ele não pode perfurar através de armadura protetora ou trajes espaciais, nem o químico dentro pode ser extraído."
 	icon_state = "gorillapen"
 	inhand_icon_state = "gorillapen"
 	base_icon_state = "gorillapen"
@@ -330,7 +330,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/pumpup
 	name = "maintenance pump-up"
-	desc = "A ghetto looking autoinjector filled with a cheap adrenaline shot... Great for shrugging off the effects of stunbatons."
+	desc = "Um auto-injetor do gueto cheio de adrenalina barata... Ótimo para dar de ombros os efeitos dos choques."
 	volume = 15
 	amount_per_transfer_from_this = 15
 	list_reagents = list(/datum/reagent/drug/pumpup = 15)
@@ -340,7 +340,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/ekit
 	name = "emergency first-aid autoinjector"
-	desc = "An epinephrine medipen with extra coagulant and antibiotics to help stabilize bad cuts and burns."
+	desc = "Um remédio de epinefrina com coagulante extra e antibióticos para ajudar a estabilizar cortes ruins e queimaduras."
 	icon_state = "firstaid"
 	base_icon_state = "firstaid"
 	volume = 15
@@ -349,7 +349,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/blood_loss
 	name = "hypovolemic-response autoinjector"
-	desc = "A medipen designed to stabilize and rapidly reverse severe bloodloss."
+	desc = "Um remédio projetado para estabilizar e reverter rapidamente severa perda de sangue."
 	icon_state = "hypovolemic"
 	base_icon_state = "hypovolemic"
 	volume = 15
@@ -358,7 +358,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/mutadone
 	name = "mutadone autoinjector"
-	desc = "A mutadone medipen to assist in curing genetic errors in one single injector."
+	desc = "Um medipen mutadona para ajudar na cura de erros genéticos em um único injetor."
 	icon_state = "penacid"
 	inhand_icon_state = "penacid"
 	base_icon_state = "penacid"
@@ -368,7 +368,7 @@
 
 /obj/item/reagent_containers/hypospray/medipen/penthrite
 	name = "penthrite autoinjector"
-	desc = "Experimental heart medication."
+	desc = "Remédio experimental para o coração."
 	icon_state = "atropen"
 	inhand_icon_state = "atropen"
 	base_icon_state = "atropen"

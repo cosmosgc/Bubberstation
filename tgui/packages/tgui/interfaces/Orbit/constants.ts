@@ -1,16 +1,16 @@
 export const ANTAG2COLOR = {
   Abductors: 'pink',
-  'Ash Walkers': 'olive',
+  'Ash Walkers.': 'olive',
   Biohazards: 'brown',
-  'Bounty Hunters': 'yellow',
+  'Caçadores de recompensas': 'yellow',
   CentCom: 'teal',
-  'Digital Anomalies': 'teal',
-  'Emergency Response Team': 'teal',
-  'Escaped Fugitives': 'orange',
-  'Xenomorph Infestation': 'violet',
-  'Spacetime Aberrations': 'white',
-  'Deviant Crew': 'white',
-  'Invasive Overgrowth': 'green',
+  'Anomalias digitais': 'teal',
+  'Equipe de Resposta de Emergência': 'teal',
+  'Fugitivos Escapados': 'orange',
+  'Infestação Xenomorph': 'violet',
+  'Aberrações no espaço-tempo': 'white',
+  'Equipe Disiant': 'white',
+  'Overgrowth invasivo': 'green',
 } as const;
 
 type Department = {
@@ -21,38 +21,38 @@ type Department = {
 export const DEPARTMENT2COLOR: Record<string, Department> = {
   cargo: {
     color: 'brown',
-    trims: ['Bitrunner', 'Cargo Technician', 'Shaft Miner', 'Quartermaster', 'Blacksmith', 'Customs Agent' ],
+    trims: ['Bitrunner', 'Técnico de Carga', 'Shaft Miner', 'Quartermaster', 'Blacksmith', 'Agente da Alfândega' ],
     // BUBBER EDIT ADDITION - Blacksmith, Customs Agent
   },
   command: {
     color: 'blue',
-    trims: ['Captain', 'Head of Personnel', 'Nanotrasen Consultant', 'Blueshield', 'Bridge Assistant'],
+    trims: ['Captain', 'Chefe de Pessoal', 'Consultor Nanotrasen', 'Blueshield', 'Assistente da Ponte.'],
     // BUBBER EDIT ADDITION - Nanotrasen Consultant, Blueshield, Bridge Assistant
   },
   engineering: {
     color: 'orange',
-    trims: ['Atmospheric Technician', 'Chief Engineer', 'Station Engineer', 'Telecomms Specialist', 'Engineering Guard'],
+    trims: ['Técnico Atmosférico', 'Engenheiro Chefe.', 'Engenheiro de Estação.', 'Especialista em Telecomms', 'Guarda de Engenharia.'],
     // BUBBER EDIT ADDITION - Telecomms Specialist, Engineering Guard
   },
   medical: {
     color: 'teal',
     trims: [
       'Chemist',
-      'Chief Medical Officer',
+      'Oficial Médico Chefe.',
       'Coroner',
-      'Medical Doctor',
+      'Médico',
       'Paramedic',
       'Orderly',  // BUBBER EDIT ADDITION
     ],
   },
   science: {
     color: 'pink',
-    trims: ['Geneticist', 'Research Director', 'Roboticist', 'Scientist', 'Science Guard'],
+    trims: ['Geneticist', 'Diretor de Pesquisa', 'Roboticist', 'Scientist', 'Guarda da Ciência'],
     // BUBBER EDIT ADDITION - Science Guard
   },
   security: {
     color: 'red',
-    trims: ['Detective', 'Head of Security', 'Security Officer', 'Warden', 'Security Medic', 'Corrections Officer'],
+    trims: ['Detective', 'Chefe de Segurança', 'Oficial de Segurança.', 'Warden', 'Médico de Segurança', 'Oficial de Correções.'],
     // BUBBER EDIT ADDITION - Security Medic, Corrections Officer
   },
   service: {

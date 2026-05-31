@@ -323,7 +323,7 @@
 /// Gets the message that shows up when spawning as this job
 /datum/job/proc/get_spawn_message(alt_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: /datum/job/proc/get_spawn_message()
 	SHOULD_NOT_OVERRIDE(TRUE)
-	return boxed_message(span_infoplain(jointext(get_spawn_message_information(alt_title), "\n&bull; "))) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLED - ORIGINAL: return boxed_message(span_infoplain(jointext(get_spawn_message_information(), "\n&bull; ")))
+	return boxed_message(span_infoplain(jointext(get_spawn_message_information(alt_title), "\n&bull;"))) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLED - ORIGINAL: return boxed_message(span_infoplain(jointext(get_spawn_message_information(), "\n&bull;")))
 
 /// Returns a list of strings that correspond to chat messages sent to this mob when they join the round.
 /datum/job/proc/get_spawn_message_information(alt_title = title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - ORIGINAL: /datum/job/proc/get_spawn_message_information()
@@ -339,16 +339,13 @@
 	if(radio_info)
 		info += radio_info
 	if(req_admin_notify)
-		info += "<b>You are playing a job that is important for Game Progression. \
-			If you have to disconnect, please notify the admins via adminhelp.</b>"
+		info += "<b>You are playing a job that is important for Game Progression. 			If you have to disconnect, please notify the admins via adminhelp.</b>"
 	if(CONFIG_GET(number/minimal_access_threshold))
-		info += span_boldnotice("As this station was initially staffed with a \
-			[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
-			have been added to your ID card.")
+		info += span_boldnotice("Como esta estação foi inicialmente com um[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"]foram adicionados ao seu cartão de identidade.")
 	//SKYRAT EDIT ADDITION START - ALTERNATIVE_JOB_TITLES
 	if(alt_title != title)
-		info += span_warning("Remember that alternate titles are purely for flavor and roleplay.")
-		info += span_doyourjobidiot("Do not use your \"[alt_title]\" alt title as an excuse to forego your duties as a [title].")
+		info += span_warning("Lembre-se que títulos alternativos são puramente para sabor e roleplay.")
+		info += span_doyourjobidiot("Não use o seu\"[alt_title]\"O título é uma desculpa para renunciar aos seus deveres.[title].")
 	//SKYRAT EDIT END
 
 	return info

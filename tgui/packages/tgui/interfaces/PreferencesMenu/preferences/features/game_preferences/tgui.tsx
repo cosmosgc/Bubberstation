@@ -1,43 +1,43 @@
 import { CheckboxInput, type FeatureToggle } from '../base';
 
 export const tgui_input: FeatureToggle = {
-  name: 'Input: Enable TGUI',
+  name: 'Entrada: habilitar TGUI',
   category: 'UI',
-  description: 'Renders input boxes in TGUI.',
+  description: 'Rende caixas de entrada na TGUI.',
   component: CheckboxInput,
 };
 
 export const tgui_input_large: FeatureToggle = {
-  name: 'Input: Larger buttons',
+  name: 'Entrada: botões maiores',
   category: 'UI',
-  description: 'Makes TGUI buttons less traditional, more functional.',
+  description: 'Torna os botões TGUI menos tradicionais, mais funcionais.',
   component: CheckboxInput,
 };
 
 export const tgui_input_swapped: FeatureToggle = {
-  name: 'Input: Swap Submit/Cancel buttons',
+  name: 'Entrada: Trocar os botões Enviar/Cancel',
   category: 'UI',
-  description: 'Makes TGUI buttons less traditional, more functional.',
+  description: 'Torna os botões TGUI menos tradicionais, mais funcionais.',
   component: CheckboxInput,
 };
 
 export const tgui_lock: FeatureToggle = {
-  name: 'Lock TGUI to main monitor',
+  name: 'Bloquear TGUI para monitor principal.',
   category: 'UI',
-  description: 'Locks TGUI windows to your main monitor.',
+  description: 'Fecha janelas TGUI para seu monitor principal.',
   component: CheckboxInput,
 };
 
 export const ui_scale: FeatureToggle = {
-  name: 'Toggle UI scaling',
+  name: 'Alternar escala de UI',
   category: 'UI',
-  description: 'If UIs should scale up to match your monitor scaling.',
+  description: 'Se a UI aumentar para igualar a escala do monitor.',
   component: CheckboxInput,
 };
 
 export const tgui_say_light_mode: FeatureToggle = {
-  name: 'Say: Light mode',
+  name: 'Diga: modo de luz',
   category: 'UI',
-  description: 'Sets TGUI Say to use a light mode.',
+  description: 'Set TGUI Diga para usar um modo leve.',
   component: CheckboxInput,
 };

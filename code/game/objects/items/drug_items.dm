@@ -1,6 +1,6 @@
 /obj/item/food/drug
 	name = "generic drug"
-	desc = "I am error"
+	desc = "Eu sou um erro."
 	icon = 'icons/obj/medical/drugs.dmi'
 	abstract_type = /obj/item/food/drug
 	foodtypes = GROSS
@@ -15,7 +15,7 @@
 
 /obj/item/food/drug/saturnx
 	name = "saturnX glob"
-	desc = "A congealed glob of pure saturnX.\nThis compound was first discovered during the infancy of cloaking technology and at the time thought to be a promising candidate agent. It was withdrawn for consideration after the researchers discovered a slew of associated safety issues including thought disorders and hepatoxicity.\nIt has since attained some limited popularity as a street drug."
+	desc = "Um globo de saturno puro.\nEste composto foi descoberto pela primeira vez durante a infância da tecnologia de camuflagem e na época considerado um promissor agente candidato. Foi retirado para consideração depois que os pesquisadores descobriram uma série de problemas de segurança associados, incluindo transtornos mentais e hepatoxicidade.\nDesde então, alcançou popularidade limitada como droga de rua."
 	icon_state = "saturnx_glob" //tell kryson to sprite two more variants in the future.
 	food_reagents = list(/datum/reagent/drug/saturnx = 10)
 
@@ -25,7 +25,7 @@
 
 /obj/item/food/drug/moon_rock
 	name = "moon rock"
-	desc = "A small hard lump of kronkaine freebase.\nIt is said the average kronkaine addict causes as much criminal damage as four cat burglars, two arsonists and one rabid pit bull terrier combined.\n\nNotorious in the medical community for causing dangerous interactions with purging meds!"
+	desc = "Um pequeno pedaço de kronkaine freebase.\nDizem que o viciado em coroas causa tanto dano criminal quanto quatro ladrões, dois incendiários e um pit bull terrier combinado.\n\nNotorious na comunidade médica por causar interações perigosas com remédios de purga!"
 	icon_state = "moon_rock1"
 	food_reagents = list(/datum/reagent/drug/kronkaine = 10)
 
@@ -37,7 +37,7 @@
 
 /obj/item/reagent_containers/cup/blastoff_ampoule
 	name = "bLaSToFF ampoule" //stylized name
-	desc = "A small ampoule. The liquid inside appears to be boiling violently.\nYou suspect it contains bLasSToFF; the drug thought to be the cause of the infamous Luna nightclub mass casualty incident."
+	desc = "Uma pequena ampola. O líquido dentro parece estar fervendo violentamente.\nVocê suspeita que contém bLasSToFF, a droga pensa ser a causa do infame incidente de baixas em massa da Luna."
 	icon = 'icons/obj/medical/drugs.dmi'
 	icon_state = "blastoff_ampoule"
 	base_icon_state = "blastoff_ampoule"
@@ -81,7 +81,7 @@
 
 /obj/item/food/drug/meth_crystal
 	name = "crystal meth"
-	desc = "A clear, sad, fake looking crystal substance."
+	desc = "Uma substância cristalina clara, triste e falsa."
 	icon_state = "meth_crystal1"
 	tastes = list("awfulness", "burning")
 	force = 3
@@ -121,8 +121,7 @@
 
 /obj/item/food/drug/opium
 	name = "opium"
-	desc = "A little of it, taken as much as a grain of ervum is a pain-easer, and a sleep-causer, and a digester... \
-	but being drank too much it hurts, making spacemen lethargical, and it kills."
+	desc = "Um pouco disso, tomado tanto quanto um grão de ervum é um analgésico, e um causador de sono, e um digestor... mas sendo bebido demais dói, tornando os homens do espaço letárgicos, e mata."
 	icon_state = "opium1"
 	tastes = list("amber", "a bitter vanilla")
 	food_reagents = list(
@@ -133,9 +132,9 @@
 /obj/item/food/drug/opium/examine()
 	. = ..()
 	if(reagents.get_reagent_amount(/datum/reagent/medicine/morphine) >= 10)
-		. += span_notice("The opium is large and rich in fragrance; it needs no further refinement.")
+		. += span_notice("O ópio é grande e rico em fragrância, não precisa de mais refinamento.")
 	else
-		. += span_notice("The opium is still small, and can be pressed together with more to increase its potency and richness.")
+		. += span_notice("O ópio ainda é pequeno, e pode ser pressionado junto com mais para aumentar sua potência e riqueza.")
 
 /obj/item/food/drug/opium/Initialize(mapload) // For narcotics and black market purchases, pure and proper.
 	. = ..()
@@ -155,7 +154,7 @@
 
 		var/current = reagents.get_reagent_amount(/datum/reagent/medicine/morphine)
 		if(current >= 10)
-			to_chat(user, span_notice("This chunk can't hold any more."))
+			to_chat(user, span_notice("Este pedaço não aguenta mais."))
 			return TRUE
 
 		var/capacity_left = 10 - current
@@ -166,11 +165,11 @@
 			if(overflow > 0)
 				reagents.trans_to(other, overflow)
 
-			to_chat(user, span_notice("You press the chunks of opium together, enriching them."))
+			to_chat(user, span_notice("Você aperta os pedaços de ópio juntos, enriquecendo-os."))
 			if(!other.reagents.total_volume)
 				qdel(other)
 		else
-			to_chat(user, span_notice("The opium cannot be pressed together further."))
+			to_chat(user, span_notice("O ópio não pode ser pressionado."))
 
 		return TRUE
 

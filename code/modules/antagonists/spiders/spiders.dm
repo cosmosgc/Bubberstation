@@ -21,12 +21,12 @@
 	owner.announce_objectives()
 
 /datum/objective/spider
-	explanation_text = "Spread the infestation."
+	explanation_text = "Espalhe a infestação."
 
 /datum/objective/spider/New(directive)
 	..()
 	if(directive)
-		explanation_text = "Your queen has given you a directive! Follow it at all costs: [directive]"
+		explanation_text = "Sua rainha lhe deu uma diretriz! Siga-o a todo o custo.[directive]"
 
 /datum/objective/spider/check_completion()
 	return owner.current && owner.current.stat != DEAD
@@ -52,6 +52,4 @@
 
 /datum/antagonist/spider/flesh/greet()
 	. = ..()
-	to_chat(owner, span_boldwarning("An abomination of flesh set upon the station by changelings, \
-		you are aggressive to all living beings outside of your species and know no loyalties... even to your creator. \
-		<br>Your malleable flesh quickly regenerates if you can avoid taking damage for a few seconds."))
+	to_chat(owner, span_boldwarning("Uma abominação da carne colocada sobre a estação por metamorfos, você é agressivo para todos os seres vivos fora de sua espécie e não conhece lealdades... mesmo para seu criador.<br>Sua carne maleável regenera-se rapidamente se puder evitar danos por alguns segundos."))

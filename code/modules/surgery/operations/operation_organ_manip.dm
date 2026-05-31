@@ -155,9 +155,9 @@
 			display_results(
 				surgeon,
 				limb.owner,
-				span_notice("You begin to remove [organ.name] from [FORMAT_LIMB_OWNER(limb)]..."),
-				span_notice("[surgeon] begins to remove [organ.name] from [limb.owner || limb]."),
-				span_notice("[surgeon] begins to remove something from [limb.owner || limb]."),
+				span_notice("Você começa a remover[organ.name]De[FORMAT_LIMB_OWNER(limb)]..."),
+				span_notice("[surgeon]começa a remover[organ.name]De[limb.owner || limb]."),
+				span_notice("[surgeon]Começa a remover algo de[limb.owner || limb]."),
 			)
 			display_pain(limb.owner, "You feel a tugging sensation in your [limb.plaintext_zone]!")
 		if("insert")
@@ -165,9 +165,9 @@
 			display_results(
 				surgeon,
 				limb.owner,
-				span_notice("You begin to insert [tool.name] into [FORMAT_LIMB_OWNER(limb)]..."),
-				span_notice("[surgeon] begins to insert [tool.name] into [limb.owner || limb]."),
-				span_notice("[surgeon] begins to insert something into [limb.owner || limb]."),
+				span_notice("Você começa a inserir[tool.name]em[FORMAT_LIMB_OWNER(limb)]..."),
+				span_notice("[surgeon]começa a inserir[tool.name]em[limb.owner || limb]."),
+				span_notice("[surgeon]começa a inserir algo em[limb.owner || limb]."),
 			)
 			display_pain(limb.owner, "You can feel something being placed in your [limb.plaintext_zone]!")
 
@@ -186,9 +186,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You successfully extract [organ.name] from [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] successfully extracts [organ.name] from [FORMAT_LIMB_OWNER(limb)]!"),
-		span_notice("[surgeon] successfully extracts something from [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você extrai com sucesso[organ.name]De[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]Com sucesso extrai[organ.name]De[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("[surgeon]com sucesso extrai algo de[FORMAT_LIMB_OWNER(limb)]!"),
 	)
 	display_pain(limb.owner, "Your [limb.plaintext_zone] throbs with pain, you can't feel your [organ.name] anymore!")
 	log_combat(surgeon, limb.owner || limb, "surgically removed [organ.name] from")
@@ -210,15 +210,15 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You successfully insert [organ.name] into [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] successfully inserts [organ.name] into [FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon] successfully inserts something into [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você inseriu com sucesso[organ.name]em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]com sucesso insere[organ.name]em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon]com sucesso insere algo em[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "Your [limb.plaintext_zone] throbs with pain as your new [organ.name] comes to life!")
 
 /datum/surgery_operation/limb/organ_manipulation/internal
 	name = "internal organ manipulation"
-	desc = "Manipulate a patient's internal organs."
+	desc = "Manipular os órgãos internos de um paciente."
 	replaced_by = /datum/surgery_operation/limb/organ_manipulation/internal/abductor
 	all_surgery_states_required = SURGERY_SKIN_OPEN|SURGERY_ORGANS_CUT
 
@@ -262,7 +262,7 @@
 // All external organ manipulation requires bones sawed
 /datum/surgery_operation/limb/organ_manipulation/external
 	name = "feature manipulation"
-	desc = "Manipulate features of the patient, such as a moth's wings or a lizard's tail."
+	desc = "Manipular características do paciente, como asas de traça ou cauda de lagarto."
 	replaced_by = /datum/surgery_operation/limb/organ_manipulation/external/abductor
 	all_surgery_states_required = SURGERY_SKIN_OPEN|SURGERY_BONE_SAWED
 	any_surgery_states_blocked = SURGERY_VESSELS_UNCLAMPED

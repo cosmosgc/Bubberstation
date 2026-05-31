@@ -13,7 +13,7 @@
 
 /obj/item/gas_filter
 	name = "atmospheric gas filter"
-	desc = "A piece of filtering cloth to be used with atmospheric gas masks and emergency gas masks."
+	desc = "Um pedaço de tecido filtrante para ser usado com máscaras de gás atmosférico e máscaras de gás de emergência."
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "gas_atmos_filter"
 	w_class = WEIGHT_CLASS_TINY
@@ -53,7 +53,7 @@
 
 /obj/item/gas_filter/examine(mob/user)
 	. = ..()
-	. += span_notice("[src] is at <b>[filter_status]%</b> durability.")
+	. += span_notice("[src]Está em<b>[filter_status]%</b>Durabilidade.")
 
 /**
  * called by the gas mask where the filter is installed, lower the filter_status depending on the breath gas composition and by the strength of the filter
@@ -98,7 +98,7 @@
 
 /obj/item/gas_filter/damaged
 	name = "damaged gas filter"
-	desc = "A piece of filtering cloth to be used with atmospheric gas masks and emergency gas masks, it seems damaged."
+	desc = "Um pedaço de tecido filtrante para ser usado com máscaras de gás atmosférico e máscaras de gás de emergência, parece danificado."
 	filter_status = 50 //override on initialize
 
 /obj/item/gas_filter/damaged/Initialize(mapload)

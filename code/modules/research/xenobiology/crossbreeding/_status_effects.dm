@@ -1,6 +1,6 @@
 /atom/movable/screen/alert/status_effect/rainbow_protection
 	name = "Rainbow Protection"
-	desc = "You are defended from harm, but so are those you might seek to injure!"
+	desc = "Você está defendido do mal, mas também aqueles que você pode querer ferir!"
 	icon_state = "slime_rainbowshield"
 
 /datum/status_effect/rainbow_protection
@@ -11,8 +11,8 @@
 
 /datum/status_effect/rainbow_protection/on_apply()
 	owner.add_traits(list(TRAIT_GODMODE, TRAIT_PACIFISM), TRAIT_STATUS_EFFECT(id))
-	owner.visible_message(span_warning("[owner] shines with a brilliant rainbow light."),
-		span_notice("You feel protected by an unknown force!"))
+	owner.visible_message(span_warning("[owner]Brilha com uma brilhante luz arco-íris."),
+		span_notice("Você se sente protegido por uma força desconhecida!"))
 	return ..()
 
 /datum/status_effect/rainbow_protection/tick(seconds_between_ticks)
@@ -22,12 +22,12 @@
 /datum/status_effect/rainbow_protection/on_remove()
 	owner.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY)
 	owner.remove_traits(list(TRAIT_GODMODE, TRAIT_PACIFISM), TRAIT_STATUS_EFFECT(id))
-	owner.visible_message(span_notice("[owner] stops glowing, the rainbow light fading away."),
-		span_warning("You no longer feel protected..."))
+	owner.visible_message(span_notice("[owner]Para de brilhar, a luz do arco-íris desaparece."),
+		span_warning("Você não se sente mais protegido..."))
 
 /atom/movable/screen/alert/status_effect/slimeskin
 	name = "Adamantine Slimeskin"
-	desc = "You are covered in a thick, non-Newtonian gel."
+	desc = "Você está coberto de um gel grosso e não-newtoniano."
 	icon_state = "slime_stoneskin"
 
 /datum/status_effect/slimeskin
@@ -41,8 +41,8 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		H.physiology.damage_resistance += 10
-	owner.visible_message(span_warning("[owner] is suddenly covered in a strange, blue-ish gel!"),
-		span_notice("You are covered in a thick, rubbery gel."))
+	owner.visible_message(span_warning("[owner]de repente está coberto de um estranho gel azul!"),
+		span_notice("Você está coberto de um gel grosso e de borracha."))
 	return ..()
 
 /datum/status_effect/slimeskin/on_remove()
@@ -50,8 +50,8 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		H.physiology.damage_resistance -= 10
-	owner.visible_message(span_warning("[owner]'s gel coating liquefies and dissolves away."),
-		span_notice("Your gel second-skin dissolves!"))
+	owner.visible_message(span_warning("[owner]O renascimento de gel liquefies e dissolver."),
+		span_notice("Sua pele gel se dissolve!"))
 
 /datum/status_effect/slimerecall
 	id = "slime_recall"
@@ -64,8 +64,8 @@
 
 /datum/status_effect/slimerecall/on_apply()
 	RegisterSignal(owner, COMSIG_LIVING_RESIST, PROC_REF(resistField))
-	to_chat(owner, span_danger("You feel a sudden tug from an unknown force, and feel a pull to bluespace!"))
-	to_chat(owner, span_notice("Resist if you wish avoid the force!"))
+	to_chat(owner, span_danger("Você sente um repentino puxão de uma força desconhecida, e sente uma atração para o espaço azul!"))
+	to_chat(owner, span_notice("Resista se quiser evitar a força!"))
 	bluespace = icon('icons/effects/effects.dmi',"chronofield")
 	owner.add_overlay(bluespace)
 	return ..()
@@ -79,15 +79,15 @@
 	UnregisterSignal(owner, COMSIG_LIVING_RESIST)
 	owner.cut_overlay(bluespace)
 	if(interrupted || !ismob(target))
-		to_chat(owner, span_warning("The bluespace tug fades away, and you feel that the force has passed you by."))
+		to_chat(owner, span_warning("O rebocador do espaço azul desaparece, e você sente que a força passou por você."))
 		return
 	var/turf/old_location = get_turf(owner)
 	if(do_teleport(owner, target.loc, channel = TELEPORT_CHANNEL_QUANTUM)) //despite being named a bluespace teleportation method the quantum channel is used to preserve precision teleporting with a bag of holding
-		old_location.visible_message(span_warning("[owner] disappears in a flurry of sparks!"))
-		to_chat(owner, span_warning("The unknown force snatches briefly you from reality, and deposits you next to [target]!"))
+		old_location.visible_message(span_warning("[owner]desaparece em uma explosão de faíscas!"))
+		to_chat(owner, span_warning("A força desconhecida o arrebata brevemente da realidade, e o deposita ao lado de[target]!"))
 
 /atom/movable/screen/alert/status_effect/freon/stasis
-	desc = "You're frozen inside of a protective ice cube! While inside, you can't do anything, but are immune to harm! Resist to get out."
+	desc = "Você está congelado dentro de um cubo de gelo protetor! Lá dentro, você não pode fazer nada, mas é imune ao mal! Resista para sair."
 
 /datum/status_effect/frozenstasis
 	id = "slime_frozen"
@@ -172,7 +172,7 @@
 
 /atom/movable/screen/alert/status_effect/clone_decay
 	name = "Clone Decay"
-	desc = "You are simply a construct, and cannot maintain this form forever. You will be returned to your original body if you should fall."
+	desc = "Você é simplesmente uma construção, e não pode manter esta forma para sempre. Será devolvido ao seu corpo original se cair."
 	icon_state = "slime_clonedecay"
 
 /datum/status_effect/slime_clone_decay
@@ -196,7 +196,7 @@
 
 /atom/movable/screen/alert/status_effect/bloodchill
 	name = "Bloodchilled"
-	desc = "You feel a shiver down your spine after getting hit with a glob of cold blood. You'll move slower and get frostbite for a while!"
+	desc = "Você sente um calafrio na espinha depois de ser atingido com sangue frio. Você vai se mover mais devagar e ficar congelado por um tempo!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "bloodchill"
 
@@ -239,7 +239,7 @@
 
 /atom/movable/screen/alert/status_effect/bonechill
 	name = "Bonechilled"
-	desc = "You feel a shiver down your spine after hearing the haunting noise of bone rattling. You'll move slower and get frostbite for a while!"
+	desc = "Você sente um tremor na sua coluna depois de ouvir o barulho assombroso de bater os ossos. Você vai se mover mais devagar e ficar congelado por um tempo!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "bloodchill"
 
@@ -368,7 +368,7 @@
 			huggables += L
 	if(length(huggables))
 		var/mob/living/carbon/hugged = pick(huggables)
-		owner.visible_message(span_notice("[owner] hugs [hugged]!"), span_notice("You hug [hugged]!"))
+		owner.visible_message(span_notice("[owner]Abraços[hugged]!"), span_notice("Você se abraça.[hugged]!"))
 
 /datum/status_effect/tarcookie
 	id = "tarcookie"
@@ -472,7 +472,7 @@
 		return
 	if(linked_extract.get_held_mob() == owner)
 		return
-	owner.balloon_alert(owner, "[colour] extract faded!")
+	owner.balloon_alert(owner, "[colour]Extrato desbotado!")
 	if(!QDELETED(linked_extract))
 		linked_extract.linked_effect = null
 		START_PROCESSING(SSobj,linked_extract)
@@ -490,7 +490,7 @@
 /datum/status_effect/stabilized/grey/tick(seconds_between_ticks)
 	for(var/mob/living/basic/slime/slimes_in_range in range(1, get_turf(owner)))
 		if(!slimes_in_range.has_ally(owner))
-			to_chat(owner, span_notice("[linked_extract] pulses gently as it communicates with [slimes_in_range]."))
+			to_chat(owner, span_notice("[linked_extract]Pulsa suavemente enquanto se comunica com[slimes_in_range]."))
 			slimes_in_range.befriend(owner)
 	return ..()
 
@@ -549,7 +549,7 @@
 
 /datum/status_effect/stabilized/purple/get_examine_text()
 	if(healed_last_tick)
-		return span_warning("[owner.p_They()] [owner.p_are()] regenerating slowly, purplish goo filling in small injuries!")
+		return span_warning("[owner.p_They()] [owner.p_are()]Regenerando lentamente, requeando pequenos fermentos!")
 
 	return null
 
@@ -583,7 +583,7 @@
 		if(sheets.len)
 			var/obj/item/stack/sheet/S = pick(sheets)
 			S.add(1)
-			to_chat(owner, span_notice("[linked_extract] adds a layer of slime to [S], which metamorphosizes into another sheet of material!"))
+			to_chat(owner, span_notice("[linked_extract]adiciona uma camada de lodo para[S], que metamorfosize em outra folha de material!"))
 	return ..()
 
 
@@ -594,7 +594,7 @@
 	var/max_cooldown = 10
 
 /datum/status_effect/stabilized/yellow/get_examine_text()
-	return span_warning("Nearby electronics seem just a little more charged wherever [owner.p_they()] go[owner.p_es()].")
+	return span_warning("Os eletrônicos próximos parecem um pouco mais carregados em qualquer lugar.[owner.p_they()]Vá.[owner.p_es()].")
 
 /datum/status_effect/stabilized/yellow/tick(seconds_between_ticks)
 	if(cooldown > 0)
@@ -612,7 +612,7 @@
 
 /obj/item/hothands
 	name = "burning fingertips"
-	desc = "You shouldn't see this."
+	desc = "Você não deveria ver isso."
 
 /obj/item/hothands/get_temperature()
 	return 290 //Below what's required to ignite plasma.
@@ -631,7 +631,7 @@
 	var/obj/item/item = owner.get_active_held_item()
 	if(item)
 		if(IS_EDIBLE(item) && (item.microwave_act(microwaver = owner) & COMPONENT_MICROWAVE_SUCCESS))
-			to_chat(owner, span_warning("[linked_extract] flares up brightly, and your hands alone are enough cook [item]!"))
+			to_chat(owner, span_warning("[linked_extract]flares brilhando, e suas mãos sozinhas são suficientes cozinheiros[item]!"))
 		else
 			item.attackby(fire, owner)
 	return ..()
@@ -641,7 +641,7 @@
 	qdel(fire)
 
 /datum/status_effect/stabilized/darkpurple/get_examine_text()
-	return span_notice("[owner.p_Their()] fingertips burn brightly!")
+	return span_notice("[owner.p_Their()]As pontas dos dedos estão brilhando!")
 
 /datum/status_effect/stabilized/darkblue
 	id = "stabilizeddarkblue"
@@ -651,25 +651,25 @@
 	if(owner.fire_stacks > 0 && prob(80))
 		owner.adjust_wet_stacks(1)
 		if(owner.fire_stacks <= 0)
-			to_chat(owner, span_notice("[linked_extract] coats you in a watery goo, extinguishing the flames."))
+			to_chat(owner, span_notice("[linked_extract]Cobri-lo em uma gosma aguada, extinguindo como chama."))
 	var/obj/O = owner.get_active_held_item()
 	if(O)
 		O.extinguish() //All shamelessly copied from water's expose_obj, since I didn't seem to be able to get it here for some reason.
 		O.wash(CLEAN_TYPE_ACID)
 	// Monkey cube
 	if(istype(O, /obj/item/food/monkeycube))
-		to_chat(owner, span_warning("[linked_extract] kept your hands wet! It makes [O] expand!"))
+		to_chat(owner, span_warning("[linked_extract]Mantenha as mãos molhadas! Faz[O]Expandir!"))
 		var/obj/item/food/monkeycube/cube = O
 		cube.Expand()
 
 	// Dehydrated carp
 	else if(istype(O, /obj/item/toy/plush/carpplushie/dehy_carp))
-		to_chat(owner, span_warning("[linked_extract] kept your hands wet! It makes [O] expand!"))
+		to_chat(owner, span_warning("[linked_extract]Mantenha as mãos molhadas! Faz[O]Expandir!"))
 		var/obj/item/toy/plush/carpplushie/dehy_carp/dehy = O
 		dehy.Swell() // Makes a carp
 
 	else if(istype(O, /obj/item/stack/sheet/hairlesshide))
-		to_chat(owner, span_warning("[linked_extract] kept your hands wet! It wets [O]!"))
+		to_chat(owner, span_warning("[linked_extract]Mantenha as mãos molhadas! Molha.[O]!"))
 		var/obj/item/stack/sheet/hairlesshide/HH = O
 		new /obj/item/stack/sheet/wethide(get_turf(HH), HH.amount)
 		qdel(HH)
@@ -693,7 +693,7 @@
 //Bluespace has an icon because it's kinda active.
 /atom/movable/screen/alert/status_effect/bluespaceslime
 	name = "Stabilized Bluespace Extract"
-	desc = "You shouldn't see this, since we set it to change automatically!"
+	desc = "Você não deveria ver isso, já que ajustamos para mudar automaticamente!"
 	icon_state = "slime_bluespace_on"
 
 /datum/status_effect/bluespacestabilization
@@ -717,7 +717,7 @@
 		linked_alert.icon_state = "slime_bluespace_on"
 
 	if(healthcheck && (healthcheck - owner.health) > 5)
-		owner.visible_message(span_warning("[linked_extract] notices the sudden change in [owner]'s physical health, and activates!"))
+		owner.visible_message(span_warning("[linked_extract]nota a mudança repentina em[owner]A saúde física e ativa!"))
 		do_sparks(5,FALSE,owner)
 		var/turf/emergency_turf = find_safe_turf(owner.z, extended_safety_checks = TRUE)
 		var/range = 0
@@ -725,7 +725,7 @@
 			emergency_turf = get_turf(owner)
 			range = 50
 		if(do_teleport(owner, emergency_turf, range, channel = TELEPORT_CHANNEL_BLUESPACE))
-			to_chat(owner, span_notice("[linked_extract] will take some time to re-align you on the bluespace axis."))
+			to_chat(owner, span_notice("[linked_extract]Levará algum tempo para realinhá-lo no eixo do espaço azul."))
 			do_sparks(5,FALSE,owner)
 			owner.apply_status_effect(/datum/status_effect/bluespacestabilization)
 	healthcheck = owner.health
@@ -774,20 +774,20 @@
 /datum/status_effect/stabilized/cerulean/tick(seconds_between_ticks)
 	if(owner.stat == DEAD)
 		if(clone && clone.stat != DEAD)
-			owner.visible_message(span_warning("[owner] blazes with brilliant light, [linked_extract] whisking [owner.p_their()] soul away."),
-				span_notice("You feel a warm glow from [linked_extract], and you open your eyes... elsewhere."))
+			owner.visible_message(span_warning("[owner]Arde com luz brilhante,[linked_extract]Batendo.[owner.p_their()]A alma está longe."),
+				span_notice("Você sente um brilho quente de[linked_extract]E você abre os olhos... em outro lugar."))
 			if(owner.mind)
 				owner.mind.transfer_to(clone)
 			clone = null
 			qdel(linked_extract)
 		if(!clone || clone.stat == DEAD)
-			to_chat(owner, span_notice("[linked_extract] desperately tries to move your soul to a living body, but can't find one!"))
+			to_chat(owner, span_notice("[linked_extract]desesperadamente tenta mover sua alma para um corpo vivo, mas não consegue encontrar um!"))
 			qdel(linked_extract)
 	..()
 
 /datum/status_effect/stabilized/cerulean/on_remove()
 	if(clone)
-		clone.visible_message(span_warning("[clone] dissolves into a puddle of goo!"))
+		clone.visible_message(span_warning("[clone]Se dissolve em uma poça de gosma!"))
 		clone.unequip_everything()
 		qdel(clone)
 
@@ -821,7 +821,7 @@
 	var/originalname
 
 /datum/status_effect/stabilized/green/on_apply()
-	to_chat(owner, span_warning("You feel different..."))
+	to_chat(owner, span_warning("Você se sente diferente..."))
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		originalDNA = new H.dna.type
@@ -833,12 +833,12 @@
 // Only occasionally give examiners a warning.
 /datum/status_effect/stabilized/green/get_examine_text()
 	if(prob(50))
-		return span_warning("[owner.p_They()] look[owner.p_s()] a bit green and gooey...")
+		return span_warning("[owner.p_They()]Veja.[owner.p_s()]Um pouco verde e pegajoso...")
 
 	return null
 
 /datum/status_effect/stabilized/green/on_remove()
-	to_chat(owner, span_notice("You feel more like yourself."))
+	to_chat(owner, span_notice("Você se sente mais como você."))
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human = owner
 		originalDNA.copy_dna(human.dna, COPY_DNA_SE|COPY_DNA_SPECIES|COPY_DNA_MUTATIONS)
@@ -874,7 +874,7 @@
 /datum/status_effect/stabilized/pink/on_apply()
 	faction_name = FACTION_PINK_EXTRACT(owner)
 	owner.add_ally(faction_name)
-	to_chat(owner, span_notice("[linked_extract] pulses, generating a fragile aura of peace."))
+	to_chat(owner, span_notice("[linked_extract]pulsos, gerando uma frágil aura de paz."))
 	return ..()
 
 /datum/status_effect/stabilized/pink/tick(seconds_between_ticks)
@@ -883,9 +883,9 @@
 	if(has_ally)
 		if(owner.has_status_effect(/datum/status_effect/brokenpeace))
 			owner.remove_ally(faction_name)
-			to_chat(owner, span_userdanger("The peace has been broken! Hostile creatures will now react to you!"))
+			to_chat(owner, span_userdanger("A paz foi quebrada! Criaturas hostis agora reagirão a você!"))
 	else if(!owner.has_status_effect(/datum/status_effect/brokenpeace))
-		to_chat(owner, span_notice("[linked_extract] pulses, generating a fragile aura of peace."))
+		to_chat(owner, span_notice("[linked_extract]pulsos, gerando uma frágil aura de paz."))
 		owner.add_ally(faction_name)
 	return ..()
 
@@ -940,7 +940,7 @@
 	return ..()
 
 /datum/status_effect/stabilized/oil/get_examine_text()
-	return span_warning("[owner.p_They()] smell[owner.p_s()] of sulfur and oil!")
+	return span_warning("[owner.p_They()]Cheiro.[owner.p_s()]de enxofre e óleo!")
 
 /// How much damage is dealt per healing done for the stabilized back.
 /// This multiplier is applied to prevent two people from converting each other's damage away.
@@ -975,15 +975,15 @@
 		return
 
 	draining_ref = WEAKREF(draining)
-	to_chat(owner, span_boldnotice("You feel your hands melt around [draining]'s neck as you start to drain [draining.p_them()] of [draining.p_their()] life!"))
-	to_chat(draining, span_userdanger("[owner]'s hands melt around your neck as you can feel your life starting to drain away!"))
+	to_chat(owner, span_boldnotice("Você sente suas mãos derretendo[draining]O pescoço quando você começa a drenar[draining.p_them()]De[draining.p_their()]Vida!"))
+	to_chat(draining, span_userdanger("[owner]As mãos derretem ao redor do pescoço, como você pode sentir sua vida começando a desaparecer!"))
 
 /datum/status_effect/stabilized/black/get_examine_text()
 	var/mob/living/draining = draining_ref?.resolve()
 	if(!draining)
 		return null
 
-	return span_warning("[owner.p_They()] [owner.p_are()] draining health from [draining]!")
+	return span_warning("[owner.p_They()] [owner.p_are()]drenando a saúde de[draining]!")
 
 /datum/status_effect/stabilized/black/tick(seconds_between_ticks)
 	if(owner.grab_state < GRAB_KILL || !IS_WEAKREF_OF(owner.pulling, draining_ref))
@@ -991,7 +991,7 @@
 
 	var/mob/living/drained = draining_ref.resolve()
 	if(drained.stat == DEAD)
-		to_chat(owner, span_warning("[drained] is dead, you cannot drain anymore life from them!"))
+		to_chat(owner, span_warning("[drained]Está morto, você não pode mais drenar a vida deles!"))
 		draining_ref = null
 		return
 
@@ -1024,7 +1024,7 @@
 /datum/status_effect/stabilized/lightpink/tick(seconds_between_ticks)
 	for(var/mob/living/carbon/human/H in range(1, get_turf(owner)))
 		if(H != owner && H.stat != DEAD && H.health <= 0 && !H.reagents.has_reagent(/datum/reagent/medicine/epinephrine))
-			to_chat(owner, "[linked_extract] pulses in sync with [H]'s heartbeat, trying to keep [H.p_them()] alive.")
+			to_chat(owner, "[linked_extract]Pulsos em sincronia com[H]O batimento cardíaco, tentando manter[H.p_them()]Vivo.")
 			H.reagents.add_reagent(/datum/reagent/medicine/epinephrine,5)
 	return ..()
 
@@ -1037,7 +1037,7 @@
 	colour = SLIME_TYPE_ADAMANTINE
 
 /datum/status_effect/stabilized/adamantine/get_examine_text()
-	return span_warning("[owner.p_They()] [owner.p_have()] strange metallic coating on [owner.p_their()] skin.")
+	return span_warning("[owner.p_They()] [owner.p_have()]revestimento metálico estranho sobre[owner.p_their()]Pelé.")
 
 /datum/status_effect/stabilized/gold
 	id = "stabilizedgold"
@@ -1090,7 +1090,7 @@
 			if(X.regencore)
 				X.regencore.interact_with_atom(owner, owner)
 				X.regencore = null
-				owner.visible_message(span_warning("[owner] flashes a rainbow of colors, and [owner.p_their()] skin is coated in a milky regenerative goo!"))
+				owner.visible_message(span_warning("[owner]brilha um arco-íris de cores, e[owner.p_their()]A pele está coberta de uma gosma regenerativa leitosa!"))
 				qdel(src)
 				qdel(linked_extract)
 	return ..()

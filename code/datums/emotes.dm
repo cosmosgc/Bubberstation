@@ -154,7 +154,7 @@
 			else if(is_audible && is_visual)
 				viewer.show_message(
 					span_emote("<b>[user]</b> [msg]"), MSG_AUDIBLE,
-					span_emote("You see how <b>[user]</b> [msg]"), MSG_VISUAL,
+					span_emote("Você vê como<b>[user]</b> [msg]"), MSG_VISUAL,
 				)
 			else if(is_audible)
 				viewer.show_message(span_emote("<b>[user]</b> [msg]"), MSG_AUDIBLE)
@@ -181,7 +181,7 @@
 	else if(is_visual && is_audible)
 		user.audible_message(
 			message = msg,
-			deaf_message = span_emote("You see how <b>[user]</b> [msg]"),
+			deaf_message = span_emote("Você vê como<b>[user]</b> [msg]"),
 			self_message = msg,
 			audible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE|additional_message_flags,
 			separation = space, // SKYRAT EDIT ADDITION
@@ -219,7 +219,7 @@
 		else if(is_visual && is_audible)
 			hologram.audible_message(
 				message = msg,
-				deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>",
+				deaf_message = "<span class='emote'>Você vê como<b>[user]</b> [msg]</span>",
 				self_message = msg,
 				audible_message_flags = EMOTE_MESSAGE|ALWAYS_SHOW_SELF_MESSAGE,
 				separation = space,
@@ -280,7 +280,7 @@
 		var/datum/emote/default_emote = /datum/emote
 		if(cooldown > initial(default_emote.cooldown)) // only worry about longer-than-normal emotes
 			// Original: to_chat(user, span_danger("You must wait another [DisplayTimeText(user.emotes_used[src] - world.time + cooldown)] before using that emote."))
-			user.balloon_alert(user, "em recarga!") // BUBBER EDIT CHANGE
+			user.balloon_alert(user, "Em recarga!") // BUBBER EDIT CHANGE
 		return FALSE
 	if(!user.emotes_used)
 		user.emotes_used = list()
@@ -400,16 +400,16 @@
 				return FALSE
 			switch(user.stat)
 				if(SOFT_CRIT)
-					to_chat(user, span_warning("You cannot [key] while in a critical condition!"))
+					to_chat(user, span_warning("Você não pode.[key]enquanto em estado crítico!"))
 				if(UNCONSCIOUS, HARD_CRIT)
-					to_chat(user, span_warning("You cannot [key] while unconscious!"))
+					to_chat(user, span_warning("Você não pode.[key]Enquanto estava inconsciente!"))
 				if(DEAD)
-					to_chat(user, span_warning("You cannot [key] while dead!"))
+					to_chat(user, span_warning("Você não pode.[key]Enquanto estava morto!"))
 			return FALSE
 		if(hands_use_check && HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 			if(!intentional)
 				return FALSE
-			to_chat(user, span_warning("You cannot use your hands to [key] right now!"))
+			to_chat(user, span_warning("Você não pode usar suas mãos para[key]Agora!"))
 			return FALSE
 
 	if(HAS_TRAIT(user, TRAIT_EMOTEMUTE))

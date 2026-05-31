@@ -324,10 +324,9 @@
 
 		var/study_length = 1 SECONDS * floor(min(photo.picture.psize_x, photo.picture.psize_y) / 32)
 		if(study_length >= 4 SECONDS)
-			to_chat(user, span_notice("<i>You squint [photo]... Hey, there's blueprints in the frame! Really wish the photo was zoomed in, though. \
-				It's rather difficult to make out the wires.</i>"))
+			to_chat(user, span_notice("<i>Você espreme[photo]Há plantas na moldura! Queria que a foto fosse ampliada. É difícil entender os fios.</i>"))
 		else
-			to_chat(user, span_notice("<i>You glance at [photo], looking for wires in the pictured blueprints.</i>"))
+			to_chat(user, span_notice("<i>Você olha[photo]Procurando fios nas plantas.</i>"))
 
 		if(do_after(user, study_length, holder, interaction_key = STUDY_INTERACTION_KEY, hidden = TRUE))
 			LAZYSET(studied_photos, REF(user.mind), REF(photo))
@@ -388,7 +387,7 @@
 				cut_color(target_wire, source = L)
 				. = TRUE
 			else
-				to_chat(L, span_warning("You need wirecutters!"))
+				to_chat(L, span_warning("Você precisa de cortadores de arame!"))
 		if("pulse")
 			I = L.is_holding_tool_quality(TOOL_MULTITOOL)
 			if(I || isAdminGhostAI(usr))
@@ -397,7 +396,7 @@
 				pulse_color(target_wire, L)
 				. = TRUE
 			else
-				to_chat(L, span_warning("You need a multitool!"))
+				to_chat(L, span_warning("Você precisa de uma multitool!"))
 		if("attach")
 			if(is_attached(target_wire))
 				I = detach_assembly(target_wire)
@@ -415,6 +414,6 @@
 							A.forceMove(L.drop_location())
 						. = TRUE
 					else
-						to_chat(L, span_warning("You cannot attach this assembly to these wires!"))
+						to_chat(L, span_warning("Você não pode ligar esta montagem a estes fios!"))
 
 #undef MAXIMUM_EMP_WIRES

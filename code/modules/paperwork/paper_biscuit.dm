@@ -1,6 +1,6 @@
 /obj/item/folder/biscuit
 	name = "biscuit card"
-	desc = "A biscuit card. On the back, <b>DO NOT DIGEST</b> is printed in large lettering."
+	desc = "Um cartão de biscoito. Lá atrás,<b>NÃO DIGITAR</b>é impresso em letras grandes."
 	icon_state = "paperbiscuit"
 	bg_color = "#ffffff"
 	w_class = WEIGHT_CLASS_TINY
@@ -36,7 +36,7 @@
 		contained_slip = arrived
 
 /obj/item/folder/biscuit/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] tries to eat [src]! [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Tenta comer[src]! [user.p_theyre()]Tentando cometer suicídio!"))
 	playsound(get_turf(user), 'sound/effects/wounds/crackandbleed.ogg', 40, TRUE) //Don't eat plastic cards kids, they get really sharp if you chew on them.
 	return BRUTELOSS
 
@@ -49,15 +49,15 @@
 /obj/item/folder/biscuit/proc/crack_check(mob/user)
 	if (cracked)
 		return TRUE
-	balloon_alert(user, "open first!")
+	balloon_alert(user, "Abra primeiro!")
 	return FALSE
 
 /obj/item/folder/biscuit/examine()
 	. = ..()
 	if(cracked)
-		. += span_notice("It's been cracked open.")
+		. += span_notice("Foi aberto.")
 	else
-		. += span_notice("You'll need to crack it open to access its contents.")
+		. += span_notice("Precisa abri-lo para acessar o conteúdo.")
 		if(contained_slip)
 			. += "This one contains [contained_slip.name]."
 
@@ -93,7 +93,7 @@
 /obj/item/folder/biscuit/attack_self(mob/user)
 	add_fingerprint(user)
 	if (!cracked)
-		if (tgui_alert(user, "Do you want to crack it open?", "Biscuit Cracking", list("Yes", "No")) != "Yes")
+		if (tgui_alert(user, "Querbrir?", "Biscuit Cracking", list("Yes", "No")) != "Yes")
 			return
 		cracked = TRUE
 		contents_hidden = FALSE
@@ -106,8 +106,7 @@
 //Corporate "confidential" biscuit cards
 /obj/item/folder/biscuit/confidential
 	name = "confidential biscuit card"
-	desc = "A confidential biscuit card. The tasteful blue color and NT logo on the front makes it look a little like a chocolate bar. \
-		On the back, <b>DO NOT DIGEST</b> is printed in large lettering."
+	desc = "Um cartão de biscoito confidencial. A cor azul de bom gosto e o logotipo NT na frente fazem parecer uma barra de chocolate. Lá atrás,<b>NÃO DIGITAR</b>é impresso em letras grandes."
 	icon_state = "paperbiscuit_secret"
 	bg_color = "#355e9f"
 
@@ -122,7 +121,7 @@
 //Biscuits which start open. Used for crafting, printing, and such
 /obj/item/folder/biscuit/unsealed
 	name = "biscuit card"
-	desc = "A biscuit card. On the back, <b>DO NOT DIGEST</b> is printed in large lettering."
+	desc = "Um cartão de biscoito. Lá atrás,<b>NÃO DIGITAR</b>é impresso em letras grandes."
 	icon_state = "paperbiscuit_cracked"
 	contents_hidden = FALSE
 	cracked = TRUE
@@ -134,7 +133,7 @@
 /obj/item/folder/biscuit/unsealed/examine()
 	. = ..()
 	if(!has_been_sealed)
-		. += span_notice("This one could be sealed <b>in hand</b>. Once sealed, the contents are inaccessible until cracked open again - but once opened this is irreversible.")
+		. += span_notice("Este pode ser selado.<b>na mão</b>Uma vez selado, o conteúdo fica inacessível até que se abra novamente, mas uma vez aberto isso é irreversível.")
 
 /obj/item/folder/biscuit/unsealed/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = ..()
@@ -147,7 +146,7 @@
 	add_fingerprint(user)
 	if(!cracked)
 		return ..()
-	if(tgui_alert(user, "Do you want to seal it? This can only be done once.", "Biscuit Sealing", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "Quer selar? Isso só pode ser feito uma vez.", "Biscuit Sealing", list("Yes", "No")) != "Yes")
 		return
 	cracked = FALSE
 	has_been_sealed = TRUE
@@ -158,7 +157,7 @@
 
 /obj/item/folder/biscuit/unsealed/confidential
 	name = "confidential biscuit card"
-	desc = "A confidential biscuit card. The tasteful blue color and NT logo on the front makes it look a little like a chocolate bar. On the back, <b>DO NOT DIGEST</b> is printed in large lettering."
+	desc = "Um cartão de biscoito confidencial. A cor azul de bom gosto e o logotipo NT na frente fazem parecer uma barra de chocolate. Lá atrás,<b>NÃO DIGITAR</b>é impresso em letras grandes."
 	icon_state = "paperbiscuit_secret_cracked"
 	bg_color = "#355e9f"
 	sealed_icon = "paperbiscuit_secret"

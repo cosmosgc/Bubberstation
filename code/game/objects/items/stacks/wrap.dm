@@ -6,7 +6,7 @@
 
 /obj/item/stack/wrapping_paper
 	name = "wrapping paper"
-	desc = "Wrap packages with this festive paper to make gifts."
+	desc = "Embrulhe pacotes com este papel festivo para fazer presentes."
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "wrap_paper"
 	inhand_icon_state = "wrap_paper"
@@ -15,7 +15,7 @@
 	max_amount = 25
 	resistance_flags = FLAMMABLE
 	merge_type = /obj/item/stack/wrapping_paper
-	singular_name = "wrapping paper"
+	singular_name = "Papel de Embrulho."
 	throwforce = 0
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
@@ -29,8 +29,8 @@
 /obj/item/stack/wrapping_paper/attack(mob/living/target_mob, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()
 	user.visible_message(
-		span_warning("[user] baps [target_mob] on the head with [src]!"),
-		span_warning("You bap [target_mob] on the head with [src]!"),
+		span_warning("[user]Baps[target_mob]na cabeça com[src]!"),
+		span_warning("Seu bap.[target_mob]na cabeça com[src]!"),
 	)
 	target_mob.add_mood_event("roll", /datum/mood_event/bapped)
 
@@ -75,7 +75,7 @@
 		new /obj/item/c_tube(T)
 
 /obj/item/stack/wrapping_paper/small
-	desc = "Wrap packages with this festive paper to make gifts. This roll looks a bit skimpy."
+	desc = "Embrulhe pacotes com este papel festivo para fazer presentes. Este rolo parece um pouco magro."
 	amount = 10
 	merge_type = /obj/item/stack/wrapping_paper/small
 
@@ -85,8 +85,8 @@
 
 /obj/item/stack/package_wrap
 	name = "package wrapper"
-	singular_name = "wrapping sheet"
-	desc = "You can use this to wrap items in."
+	singular_name = "Folha de embrulho"
+	desc = "Pode usar isso para embrulhar itens."
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "deliveryPaper"
 	item_flags = NOBLUDGEON
@@ -99,7 +99,7 @@
 	return list(/datum/reagent/cellulose = 5)
 
 /obj/item/stack/package_wrap/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] begins wrapping [user.p_them()]self in \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Começa a embrulhar[user.p_them()]Eu estou dentro\the [src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	if(use(3))
 		var/obj/item/delivery/big/parcel = new(get_turf(user.loc))
 		parcel.base_icon_state = "deliverypackage5"
@@ -109,7 +109,7 @@
 		parcel.add_fingerprint(user)
 		return OXYLOSS
 	else
-		balloon_alert(user, "not enough paper!")
+		balloon_alert(user, "Não há papel suficiente!")
 		return SHAME
 
 /obj/item/proc/can_be_package_wrapped() //can the item be wrapped with package wrapper into a delivery package
@@ -139,7 +139,7 @@
 		if(!item.can_be_package_wrapped())
 			if(SHOULD_SKIP_INTERACTION(interacting_with, src, user))
 				return NONE // put it in the bag instead of yelling
-			balloon_alert(user, "can't be wrapped!")
+			balloon_alert(user, "Não pode ser embrulhado!")
 			return ITEM_INTERACT_BLOCKING
 		if(user.is_holding(item))
 			if(!user.dropItemToGround(item))
@@ -169,10 +169,10 @@
 	else if(istype(interacting_with, /obj/structure/closet))
 		var/obj/structure/closet/closet = interacting_with
 		if(closet.opened)
-			balloon_alert(user, "can't wrap while open!")
+			balloon_alert(user, "Não pode embrulhar enquanto abre!")
 			return ITEM_INTERACT_BLOCKING
 		if(!closet.delivery_icon) //no delivery icon means unwrappable closet (e.g. body bags)
-			balloon_alert(user, "can't wrap!")
+			balloon_alert(user, "Não posso embrulhar!")
 			return ITEM_INTERACT_BLOCKING
 		if(use(3))
 			var/obj/item/delivery/big/parcel = new(get_turf(closet.loc))
@@ -191,12 +191,12 @@
 					break
 			// SKYRAT EDIT END
 		else
-			balloon_alert(user, "not enough paper!")
+			balloon_alert(user, "Não há papel suficiente!")
 			return ITEM_INTERACT_BLOCKING
 	else if(istype(interacting_with,  /obj/machinery/portable_atmospherics))
 		var/obj/machinery/portable_atmospherics/portable_atmospherics = interacting_with
 		if(portable_atmospherics.anchored)
-			balloon_alert(user, "can't wrap while anchored!")
+			balloon_alert(user, "Não pode enrolar enquanto ancorado!")
 			return ITEM_INTERACT_BLOCKING
 		if(use(3))
 			var/obj/item/delivery/big/parcel = new(get_turf(portable_atmospherics.loc))
@@ -207,14 +207,14 @@
 			parcel.add_fingerprint(user)
 			portable_atmospherics.add_fingerprint(user)
 		else
-			balloon_alert(user, "not enough paper!")
+			balloon_alert(user, "Não há papel suficiente!")
 			return ITEM_INTERACT_BLOCKING
 
 	else
-		balloon_alert(user, "can't wrap!")
+		balloon_alert(user, "Não posso embrulhar!")
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user] wraps [interacting_with]."))
+	user.visible_message(span_notice("[user]Envoltório[interacting_with]."))
 	user.log_message("has used [name] on [key_name(interacting_with)]", LOG_ATTACK, color="blue")
 	return ITEM_INTERACT_SUCCESS
 
@@ -225,7 +225,7 @@
 		new /obj/item/c_tube(T)
 
 /obj/item/stack/package_wrap/small
-	desc = "You can use this to wrap items in. This roll looks a bit skimpy."
+	desc = "Pode usar isso para embrulhar itens. Este rolo parece um pouco magro."
 	w_class = WEIGHT_CLASS_SMALL
 	amount = 5
 	merge_type = /obj/item/stack/package_wrap/small
@@ -235,7 +235,7 @@
 
 /obj/item/c_tube
 	name = "cardboard tube"
-	desc = "A tube... of cardboard."
+	desc = "Um tubo de papelão."
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "c_tube"
 	inhand_icon_state = "c_tube"
@@ -252,7 +252,7 @@
 /obj/item/c_tube/attack(mob/living/target_mob, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()
 	user.visible_message(
-		span_warning("[user] baps [target_mob] on the head with [src]!"),
-		span_warning("You bap [target_mob] on the head with [src]!"),
+		span_warning("[user]Baps[target_mob]na cabeça com[src]!"),
+		span_warning("Seu bap.[target_mob]na cabeça com[src]!"),
 	)
 	target_mob.add_mood_event("roll", /datum/mood_event/bapped)

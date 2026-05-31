@@ -15,8 +15,7 @@
 	hud_icon = 'modular_zubbers/icons/mob/huds/czombie.dmi'
 	antag_hud_name = "zombie"
 
-	antag_memory = "You are a mutated experiment, or a victim of one. Your mind is torn apart, you do not remember who you are. \
-	All you know is that you must infect."
+	antag_memory = "You are a mutated experiment, or a victim of one. Your mind is torn apart, you do not remember who you are. 	All you know is that you must infect."
 
 	default_custom_objective = "Infect as many crewmembers as possible!"
 
@@ -41,12 +40,12 @@
 	. = ..()
 
 /datum/objective/changeling_zombie_infect
-	explanation_text = "Infect at least 5 other victims."
+	explanation_text = "Infecte pelo menos 5 outras vítimas."
 	var/required_infections = 5
 	var/total_infections = 0
 
 /datum/objective/changeling_zombie_infect/update_explanation_text()
-	explanation_text = "Infect at least [required_infections] other victims."
+	explanation_text = "Infectar pelo menos[required_infections]Outras vítimas."
 
 /datum/objective/changeling_zombie_infect/check_completion()
 	return total_infections >= required_infections

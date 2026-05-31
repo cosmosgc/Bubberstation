@@ -5,7 +5,7 @@
 
 /obj/item/mod/module/hypno_visor
 	name = "\improper MOD hypnotic visor module"
-	desc = "A module inserted into the visor of a suit in which commands can be processed."
+	desc = "Um módulo inserido na viseira de um terno no qual os comandos podem ser processados."
 	icon = 'modular_zubbers/icons/mob/clothing/modsuit/mod_modules.dmi'
 	icon_state = "module_hypno"
 	complexity = 0
@@ -22,13 +22,9 @@
 
 /obj/item/mod/module/hypno_visor/examine(mob/user)
 	. = ..()
-	. += span_info("It's currently programmed with the following directive: \"[hypno_message]\" Use it in-hand to rewrite it.")
-	. += span_info("Its visor will [visor_effect ? "" : "<b>not</b> "]display an external hypnotic effect. Use a screwdriver to toggle.")
-	. += span_info("Its control wire is currently [(module_type == MODULE_TOGGLE) ? \
-						"<b>intact,</b> allowing for on-the-fly configuration via the MOD UI." \
-						: \
-						"<b>snipped,</b> forcing the module to be always-on when the helmet is activated."] \
-					Use wirecutters to toggle.")
+	. += span_info("Está programado com a seguinte diretiva:\"[hypno_message]\"Use-o na mão para reescrevê-lo.")
+	. += span_info("Seu visor vai[visor_effect ? "" : "<b>not</b> "]Mostrar um efeito hipnótico externo. Use uma chave de fenda para alternar.")
+	. += span_info("Seu fio de controle está atualmente[(module_type == MODULE_TOGGLE) ? 						"<b>intact,</b> allowing for on-the-fly configuration via the MOD UI." 						: 						"<b>snipped,</b> forcing the module to be always-on when the helmet is activated."]Use cortadores de arame para alternar.")
 
 /obj/item/mod/module/hypno_visor/attack_self(mob/user)
 	. = ..()
@@ -41,8 +37,8 @@
 /obj/item/mod/module/hypno_visor/screwdriver_act(mob/living/user, obj/item/tool)
 	visor_effect = !visor_effect
 	playsound(src, 'sound/machines/click.ogg', 30, TRUE)
-	to_chat(user, span_notice("You turn the visor display of [src] [visor_effect ? "on" : "off"]."))
-	balloon_alert(user, "visor effect [visor_effect ? "on" : "off"]")
+	to_chat(user, span_notice("Você vira a viseira de[src] [visor_effect ? "on" : "off"]."))
+	balloon_alert(user, "Efeito de Viseira[visor_effect ? "on" : "off"]")
 	return TRUE
 
 /obj/item/mod/module/hypno_visor/wirecutter_act(mob/living/user, obj/item/tool)
@@ -51,8 +47,8 @@
 	else
 		module_type = MODULE_TOGGLE
 	playsound(src, 'sound/items/tools/wirecutter.ogg', 30, TRUE)
-	to_chat(user, span_notice("You [(module_type == MODULE_TOGGLE) ? "mend" : "snip"] the control wire on [src]."))
-	balloon_alert(user, "control wire [(module_type == MODULE_TOGGLE) ? "mend" : "snipp"]ed")
+	to_chat(user, span_notice("Você.[(module_type == MODULE_TOGGLE) ? "mend" : "snip"]O fio de controle ligado.[src]."))
+	balloon_alert(user, "Fio de controle[(module_type == MODULE_TOGGLE) ? "mend" : "snipp"]Ed.")
 	return TRUE
 
 /obj/item/mod/module/hypno_visor/on_install()
@@ -62,11 +58,11 @@
 		addtimer(CALLBACK(src, PROC_REF(say_visor_no_worky), usr), 0.5 SECONDS)
 
 /obj/item/mod/module/hypno_visor/proc/say_visor_no_worky(user)
-		balloon_alert(user, "visor effect unavailable for this plating!")
+		balloon_alert(user, "Efeito de viseira indisponível para este revestimento!")
 
 /obj/item/mod/module/hypno_visor/proc/apply_hypnosis()
 	if(!(mod.wearer.client?.prefs?.read_preference(/datum/preference/toggle/erp/hypnosis) && mod.wearer.client.prefs.read_preference(/datum/preference/toggle/erp/sex_toy)))
-		return to_chat(mod.wearer, span_warning("Mind resilient to hypnotic effects: Shutting down"))
+		return to_chat(mod.wearer, span_warning("Mente resistente aos efeitos hipnóticos:"))
 	if(hypno_message == "" || isnull(hypno_message))
 		hypno_message = "Obey"
 	mod.wearer.gain_trauma(new /datum/brain_trauma/very_special/induced_hypnosis(hypno_message), TRAUMA_RESILIENCE_MAGIC)
@@ -111,15 +107,15 @@
 /obj/item/mod/module/hypno_visor/configure_edit(key, value)
 	switch(key)
 		if("hypno_message")
-			hypno_message = tgui_input_text(usr, "Change the hypnotic phrase.", default = hypno_message, max_length = MAX_MESSAGE_LEN)
+			hypno_message = tgui_input_text(usr, "Mude a frase hipnótica.", default = hypno_message, max_length = MAX_MESSAGE_LEN)
 			if(active)
-				balloon_alert(usr, "restart to finalize changes")
+				balloon_alert(usr, "Reinicie para finalizar as mudanças")
 		if("visor_effect")
 			if(mod.skin != "lustwish")
-				return balloon_alert(usr, "visor effect unavailable for this plating!")
+				return balloon_alert(usr, "Efeito de viseira indisponível para este revestimento!")
 			visor_effect = text2num(value)
 			if(active)
-				balloon_alert(usr, "restart to finalize changes")
+				balloon_alert(usr, "Reinicie para finalizar as mudanças")
 
 
 /datum/storage/pockets/small/remote_module
@@ -131,7 +127,7 @@
 
 /obj/item/mod/module/remote_control
 	name = "modsuit remote module"
-	desc = "A module, once inserted, will allow anyone with its linked remote to control all functionality of the suit."
+	desc = "Um módulo, uma vez inserido, permitirá que qualquer um com seu controle remoto ligado para controlar toda a funcionalidade do terno."
 	icon = 'modular_zubbers/icons/mob/clothing/modsuit/mod_modules.dmi'
 	icon_state = "module_remote"
 	module_type = MODULE_PASSIVE
@@ -151,7 +147,7 @@
 
 /obj/item/mod/module/remote_control/can_install(obj/item/mod/control/mod)
 	if(locate(/obj/item/remote_controller) in contents)
-		balloon_alert(usr, "remove remote from storage")
+		balloon_alert(usr, "Remova o controle remoto do armamento")
 		return FALSE
 	return TRUE
 
@@ -161,7 +157,7 @@
 
 /obj/item/remote_controller
 	name = "modsuit remote"
-	desc = "A remote that allows control of a modsuit once its paired module is inserted."
+	desc = "Um controle remoto que permite o controle de um modsuit quando o módulo emparelhado é inserido."
 	icon = 'modular_zubbers/icons/mob/clothing/modsuit/mod_modules.dmi'
 	icon_state = "remote_item"
 	w_class = WEIGHT_CLASS_SMALL

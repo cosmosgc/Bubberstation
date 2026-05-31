@@ -37,7 +37,7 @@ export const StackingConsoleContent = (props) => {
     <>
       <Section>
         <LabeledList>
-          <LabeledList.Item label="Stacking Amount">
+          <LabeledList.Item label="Empilhando Quantidade">
             {stacking_amount || 'Unknown'}
           </LabeledList.Item>
           <LabeledList.Item
@@ -76,7 +76,7 @@ export const StackingConsoleContent = (props) => {
           </LabeledList.Item>
         </LabeledList>
       </Section>
-      <Section title="Stored Materials">
+      <Section title="Material Armazenado">
         {!contents.length ? (
           <NoticeBox>No stored materials</NoticeBox>
         ) : (

@@ -1,6 +1,6 @@
 /obj/item/aicard
 	name = "intelliCard"
-	desc = "A storage device for AIs. Patent pending."
+	desc = "Um dispositivo de armamento para IA. Patente Pendente."
 	icon = 'icons/obj/aicards.dmi'
 	icon_state = "aicard"
 	base_icon_state = "aicard"
@@ -31,20 +31,20 @@
 
 /obj/item/aicard/aitater
 	name = "intelliTater"
-	desc = "A stylish upgrade (?) to the intelliCard."
+	desc = "Um upgrade elegante (?) para o intelliCard."
 	icon_state = "aitater"
 	base_icon_state = "aitater"
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 0.5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.5)
 
 /obj/item/aicard/aispook
 	name = "intelliLantern"
-	desc = "A spoOoOoky upgrade to the intelliCard."
+	desc = "Uma atualização para o cartão intelli."
 	icon_state = "aispook"
 	base_icon_state = "aispook"
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 0.5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.5)
 
 /obj/item/aicard/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is trying to upload [user.p_them()]self into [src]! That's not going to work out well!"))
+	user.visible_message(span_suicide("[user]está tentando carregar[user.p_them()]Ego[src]Isso não vai dar certo!"))
 	return BRUTELOSS
 
 /obj/item/aicard/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -171,25 +171,25 @@
 			if(flush)
 				flush = FALSE
 			else
-				var/confirm = tgui_alert(usr, "Are you sure you want to wipe this card's memory?", name, list("Yes", "No"))
+				var/confirm = tgui_alert(usr, "Tem certeza que quer apagar a memória desse cartão?", name, list("Yes", "No"))
 				if(confirm == "Yes" && !..())
 					flush = TRUE
 					wipe_ai()
 			. = TRUE
 		if("wireless")
 			AI.set_control_disabled(!AI.control_disabled)
-			to_chat(AI, span_warning("[src]'s wireless port has been [AI.control_disabled ? "disabled" : "enabled"]!"))
+			to_chat(AI, span_warning("[src]A porta sem fio foi[AI.control_disabled ? "disabled" : "enabled"]!"))
 			. = TRUE
 		if("radio")
 			AI.radio_enabled = !AI.radio_enabled
-			to_chat(AI, span_warning("Your Subspace Transceiver has been [AI.radio_enabled ? "enabled" : "disabled"]!"))
+			to_chat(AI, span_warning("Seu Transceptor Subespacial foi[AI.radio_enabled ? "enabled" : "disabled"]!"))
 			. = TRUE
 	update_appearance()
 
 /obj/item/aicard/proc/wipe_ai()
 	set waitfor = FALSE
 	if(AI && AI.loc == src)
-		to_chat(AI, span_userdanger("YOUR SYSTEM FILES ARE BEING WIPED!"))
+		to_chat(AI, span_userdanger("Seus arquivos do sistema estão sendo apagados!"))
 		while(AI.stat != DEAD && flush)
 			AI.adjust_oxy_loss(5)
 			AI.updatehealth()

@@ -69,7 +69,7 @@ export const ExosuitControlConsole = (props) => {
                   }
                 >
                   {(typeof mech.charge === 'number' && `${mech.charge}%`) ||
-                    'Not Found'}
+                    'Não Encontrado'}
                 </Box>
               </LabeledList.Item>
               <LabeledList.Item label="Airtank">
@@ -79,7 +79,7 @@ export const ExosuitControlConsole = (props) => {
                     format={(value) => `${toFixed(value, 2)} kPa`}
                   />
                 )) ||
-                  'Not Equipped'}
+                  'Não Equipado'}
               </LabeledList.Item>
               <LabeledList.Item label="Pilot">
                 {(mech.pilot.length > 0 &&
@@ -95,7 +95,7 @@ export const ExosuitControlConsole = (props) => {
                 {mech.location || 'Unknown'}
               </LabeledList.Item>
               {mech.cargo_space >= 0 && (
-                <LabeledList.Item label="Used Cargo Space">
+                <LabeledList.Item label="Espaço de Carga Usado">
                   <Box
                     color={
                       (mech.cargo_space <= 30 && 'good') ||

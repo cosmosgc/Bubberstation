@@ -14,20 +14,20 @@ export const language: FeatureChoiced = {
 };
 
 export const language_speakable: FeatureToggle = {
-  name: 'Language Speakable',
+  name: 'Linguagem Falavel',
   description: `If unchecked, you'll only be able to understand the language,
     but not speak it.`,
   component: CheckboxInput,
 };
 
 export const language_skill: FeatureChoiced = {
-  name: 'Language Skill',
-  description: 'The percentage of the language you can understand.',
+  name: 'Habilidade Linguagem',
+  description: 'A porcentagem da linguagem que você pode entender.',
   component: FeatureDropdownInput,
 };
 
 export const csl_strength: FeatureChoiced = {
-  name: 'Language Skill',
-  description: 'The percentage of Common you can understand.',
+  name: 'Habilidade Linguagem',
+  description: 'A porcentagem de Common você pode entender.',
   component: FeatureDropdownInput,
 };

@@ -1,6 +1,6 @@
 /obj/structure/scanner_gate_shell
 	name = "circuit scanner gate"
-	desc = "A gate able to perform mid-depth scans on any organisms who pass under it."
+	desc = "Um portal capaz de fazer varreduras de profundidade em qualquer organismo que passe por baixo dele."
 	icon = 'icons/obj/machines/scangate.dmi'
 	icon_state = "scangate_black"
 	var/locked = FALSE
@@ -38,7 +38,7 @@
 
 /obj/item/circuit_component/scanner_gate
 	display_name = "Scanner Gate"
-	desc = "A gate able to perform mid-depth scans on any object that pass through it."
+	desc = "Um portal capaz de realizar varreduras de profundidade em qualquer objeto que passe por ele."
 
 	var/datum/port/output/scanned
 

@@ -18,7 +18,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 /obj/machinery/power/supermatter_crystal
 	name = "supermatter crystal"
-	desc = "A strangely translucent and iridescent crystal."
+	desc = "Um cristal estranhamente translúcido e iridescente."
 	icon = 'icons/obj/machines/engine/supermatter.dmi'
 	density = TRUE
 	anchored = TRUE
@@ -231,11 +231,11 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			if(1)
 				icon = 'modular_zubbers/icons/obj/machines/festive_supermatter.dmi'
 				name = "festive supermatter crystal"
-				desc = "A strangely translucent and festive crystal. If you stare at it long enough, some say you can hallucinate the distilled essence of the holidays staring back at you."
+				desc = "Um cristal estranhamente translúcido e festivo. Se você olhar para ele por muito tempo, alguns dizem que você pode alucinar a essência destilada dos feriados olhando para você."
 			if(2)
 				icon = 'modular_zubbers/icons/obj/machines/wintergreen_supermatter.dmi'
 				name = "wintergreen supermatter crystal"
-				desc = "A strangely translucent and iridescent crystal. Green doesn't make it run cooler."
+				desc = "Um cristal estranhamente translúcido e iridescente. Verde não faz com que seja mais legal."
 			if(3)
 				icon = 'icons/obj/machines/engine/supermatter.dmi'
 		// BUBBER EDIT ADDITION END
@@ -275,15 +275,15 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	var/immune = HAS_MIND_TRAIT(user, TRAIT_MADNESS_IMMUNE)
 	if(isliving(user))
 		if (!immune && (get_dist(user, src) < SM_HALLUCINATION_RANGE(internal_energy)))
-			. += span_danger("You get headaches just from looking at it.")
+			. += span_danger("Você tem dores de cabeça só de olhar para ele.")
 		var/mob/living/living_user = user
 		if (HAS_TRAIT(user, TRAIT_REMOTE_TASTING))
-			to_chat(user, span_warning("The taste is overwhelming and indescribable!"))
+			to_chat(user, span_warning("O sabor é esmagador e indescritível!"))
 			living_user.electrocute_act(shock_damage = 15, source = src, flags = SHOCK_KNOCKDOWN | SHOCK_NOGLOVES)
-			. += span_notice("It could use a little more Sodium Chloride...")
+			. += span_notice("Poderia usar um pouco mais de cloreto de sódio...")
 
 	if(holiday_lights)
-		. += span_notice("Radiating both festive cheer and actual radiation, it has a dazzling spectacle lights wrapped lovingly around the base transforming it from a potential doomsday device into a cosmic yuletide centerpiece.")
+		. += span_notice("Radiando a alegria festiva e a radiação real, ela tem um deslumbrante espetáculo de luzes enroladas amorosamente ao redor da base transformando-a de um potencial dispositivo do Dia do Juízo Final em uma peça central de Natal cósmica.")
 
 	. += delamination_strategy.examine(src)
 	return .
@@ -299,7 +299,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	if(isclosedturf(local_turf))
 		var/turf/did_it_melt = local_turf.Melt()
 		if(!isclosedturf(did_it_melt)) //In case some joker finds way to place these on indestructible walls
-			visible_message(span_warning("[src] melts through [local_turf]!"))
+			visible_message(span_warning("[src]Derrete através[local_turf]!"))
 		return
 
 	// PART 2: GAS PROCESSING
@@ -596,7 +596,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	notify_ghosts(
 		"[src] has begun the delamination process!",
 		source = src,
-		header = "Meltdown Incoming",
+		header = "Derretimento vindo",
 	)
 
 	var/list/count_down_messages = delamination_strategy.count_down_messages()
@@ -614,8 +614,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		delamination_countdown_time = SUPERMATTER_SLIVER_REMOVED_COUNTDOWN_TIME
 		radio.talk_into(
 			src,
-			"WARNING: Projected time until full crystal delamination significantly lower than expected. \
-			Please inspect crystal for structural abnormalities or sabotage!",
+			"WARNING: Projected time until full crystal delamination significantly lower than expected. 			Please inspect crystal for structural abnormalities or sabotage!",
 			emergency_channel,
 			list(SPAN_COMMAND)
 			)
@@ -1128,7 +1127,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 /// Adds the hat flavor text when examined
 /obj/machinery/power/supermatter_crystal/proc/holiday_hat_examine(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_info("There's a santa hat placed atop it. How it got there without being dusted is a mystery.")
+	examine_list += span_info("Tem um chapéu de Papai Noel em cima. Como chegou lá sem ser limpo é um mistério.")
 
 // Warp Effect //
 

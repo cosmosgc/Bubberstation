@@ -20,7 +20,7 @@
 
 /obj/item/pipe_dispenser
 	name = "rapid pipe dispenser"
-	desc = "A device used to rapidly pipe things."
+	desc = "Um dispositivo usado para controlar coisas rápidas."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rpd"
 	worn_icon_state = "RPD"
@@ -98,8 +98,8 @@
 
 /obj/item/pipe_dispenser/examine(mob/user)
 	. = ..()
-	. += span_notice("You can scroll your <b>mouse wheel</b> to change the piping layer.")
-	. += span_notice("You can <b>right click</b> a pipe to set the RPD to its color and layer.")
+	. += span_notice("Você pode rolar seu<b>Roda do rato</b>mudar a camada de tubulação.")
+	. += span_notice("Você pode.<b>\"Clique Direito\"</b>um tubo para colocar o RPD em sua cor e camada.")
 
 /obj/item/pipe_dispenser/add_item_context(obj/item/source, list/context, atom/target, mob/living/user)
 	. = NONE
@@ -125,7 +125,7 @@
 	ui_interact(user)
 
 /obj/item/pipe_dispenser/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] points the end of the RPD down [user.p_their()] throat and presses a button! It looks like [user.p_theyre()] trying to commit suicide..."))
+	user.visible_message(span_suicide("[user]Aponta o fim do RPD para baixo.[user.p_their()]Garganta e aperta um botão! Parece que...[user.p_theyre()]Tentando cometer suicídio..."))
 	playsound(get_turf(user), SFX_TOOL_SWITCH, 20, TRUE)
 	playsound(get_turf(user), RPD_USE_SOUND, 50, TRUE)
 	return BRUTELOSS
@@ -275,7 +275,7 @@
 			if (ISNOTSTUB(target_dir))
 				p_init_dir = target_dir
 			else
-				to_chat(ui.user, span_warning("\The [src]'s screen flashes a warning: Can't configure a pipe to only connect in one direction."))
+				to_chat(ui.user, span_warning("\The [src]A tela pisca um aviso: não pode configurar um tubo para se conectar apenas em uma direção."))
 				return FALSE
 
 		if("init_reset")
@@ -302,7 +302,7 @@
 		// Adds the upgrade from the disk and then deletes the disk
 		upgrade_flags |= rpd_disk.upgrade_flags
 		playsound(loc, 'sound/machines/click.ogg', 50, vary = TRUE)
-		balloon_alert(user, "upgrade installed")
+		balloon_alert(user, "atualização instalada")
 		qdel(rpd_disk)
 		return ITEM_INTERACT_SUCCESS
 
@@ -344,16 +344,16 @@
 		var/obj/machinery/atmospherics/pipe/smart/target_smart_pipe = attack_target
 		if(istype(target_smart_pipe))
 			if(target_smart_pipe.dir == ALL_CARDINALS)
-				balloon_alert(user, "has no unconnected directions!")
+				balloon_alert(user, "Não tem direções desconectadas!")
 				return ITEM_INTERACT_FAILURE
 			var/old_init_dir = target_smart_pipe.get_init_directions()
 			if(old_init_dir == p_init_dir)
-				balloon_alert(user, "already configured!")
+				balloon_alert(user, "Já está configurado!")
 				return ITEM_INTERACT_FAILURE
 			// Check for differences in unconnected directions
 			var/target_differences = (p_init_dir ^ old_init_dir) & ~target_smart_pipe.connections
 			if(!target_differences)
-				balloon_alert(user, "already configured for its directions!")
+				balloon_alert(user, "Já configurado para suas direções!")
 				return ITEM_INTERACT_FAILURE
 
 			playsound(get_turf(src), SFX_TOOL_SWITCH, 20, TRUE)
@@ -363,7 +363,7 @@
 
 			// Double check to make sure that nothing has changed. If anything we were about to change was connected during do_after, abort
 			if(target_differences & target_smart_pipe.connections)
-				balloon_alert(user, "can't configure for its direction!")
+				balloon_alert(user, "Não consigo configurar sua direção!")
 				return ITEM_INTERACT_FAILURE
 			// Grab the current initializable directions, which may differ from old_init_dir if someone else was working on the same pipe at the same time
 			var/current_init_dir = target_smart_pipe.get_init_directions()
@@ -372,7 +372,7 @@
 			var/new_init_dir = (current_init_dir & ~target_differences) | (p_init_dir & target_differences)
 			// Don't make a smart pipe with only one connection
 			if(ISSTUB(new_init_dir))
-				balloon_alert(user, "no one directional pipes allowed!")
+				balloon_alert(user, "Não são permitidos canos direcionais!")
 				return ITEM_INTERACT_FAILURE
 			target_smart_pipe.set_init_directions(new_init_dir)
 			// We're now reconfigured.
@@ -398,7 +398,7 @@
 				SSair.add_to_rebuild_queue(target_smart_pipe)
 			// Finally, update our internal state - update_pipe_icon also updates dir and connections
 			target_smart_pipe.update_pipe_icon()
-			user.visible_message(span_notice("[user] reprograms \the [target_smart_pipe]."), span_notice("You reprogram \the [target_smart_pipe]."))
+			user.visible_message(span_notice("[user]reprogramações\the [target_smart_pipe]."), span_notice("Você reprograma\the [target_smart_pipe]."))
 			return ITEM_INTERACT_SUCCESS
 
 		// If this is an unplaced smart pipe, try to reprogram it
@@ -419,7 +419,7 @@
 					return ITEM_INTERACT_FAILURE
 				attack_target = get_turf(attack_target)
 				if(isclosedturf(attack_target))
-					balloon_alert(user, "target is blocked!")
+					balloon_alert(user, "Alvobloqueado!")
 					return ITEM_INTERACT_FAILURE
 				playsound(get_turf(src), SFX_TOOL_SWITCH, 20, TRUE)
 
@@ -446,12 +446,12 @@
 					return ITEM_INTERACT_FAILURE
 				attack_target = get_turf(attack_target)
 				if(isclosedturf(attack_target))
-					balloon_alert(user, "algo no caminho!")
+					balloon_alert(user, "Algo no caminho!")
 					return ITEM_INTERACT_FAILURE
 
 				var/turf/target_turf = get_turf(attack_target)
 				if(target_turf.is_blocked_turf(exclude_mobs = TRUE))
-					balloon_alert(user, "algo no caminho!")
+					balloon_alert(user, "Algo no caminho!")
 					return ITEM_INTERACT_FAILURE
 
 				playsound(get_turf(src), SFX_TOOL_SWITCH, 20, TRUE)
@@ -487,7 +487,7 @@
 	if(target.pipe_color && target.piping_layer)
 		paint_color = GLOB.pipe_color_name[target.pipe_color]
 		pipe_layers = PIPE_LAYER(target.piping_layer)
-		balloon_alert(user, "color/layer copied")
+		balloon_alert(user, "Cor/camada copiada")
 		return ITEM_INTERACT_SUCCESS
 
 /**
@@ -539,7 +539,7 @@
 		if(!do_after(user, atmos_build_speed, target = atom_to_target))
 			return FALSE
 		if(!recipe.all_layers && (layer_to_build == 1 || layer_to_build == MAX_PIPE_LAYERS))
-			balloon_alert(user, "can't build on layer [layer_to_build]!")
+			balloon_alert(user, "não pode construir sobre camada[layer_to_build]!")
 			if(multi_layer)
 				continue
 			return FALSE
@@ -577,7 +577,7 @@
 /obj/item/pipe_dispenser/proc/mouse_wheeled(mob/source_mob, atom/A, delta_x, delta_y, params)
 	SIGNAL_HANDLER
 	if(multi_layer)
-		balloon_alert(source_mob, "turn off multi layer!")
+		balloon_alert(source_mob, "Desligador multicamada!")
 		return
 	if(INCAPACITATED_IGNORING(source_mob, INCAPABLE_RESTRAINTS|INCAPABLE_STASIS))
 		return
@@ -591,12 +591,12 @@
 	else //mice with side-scrolling wheels are apparently a thing and fuck this up
 		return
 	SStgui.update_uis(src)
-	balloon_alert(source_mob, "set pipe layer to [get_active_pipe_layers()[1]]")
+	balloon_alert(source_mob, "Definir cama de tubo para[get_active_pipe_layers()[1]]")
 
 
 /obj/item/rpd_upgrade
 	name = "RPD advanced design disk"
-	desc = "It seems to be empty."
+	desc = "Parece estar vazio."
 	icon = 'icons/obj/devices/floppy_disks.dmi'
 	icon_state = "datadisk3"
 	/// Bitflags for upgrades
@@ -604,7 +604,7 @@
 
 /obj/item/rpd_upgrade/unwrench
 	name = "RPD advanced upgrade: wrench mode"
-	desc = "Adds reverse wrench mode to the RPD. Attention, due to budget cuts, the mode is hard linked to the destroy mode control button."
+	desc = "Adiciona o modo chave reversa ao RPD. Atenção, devido aos cortes no orçamento, o modo é difícil ligado ao botão de controle de modo de destruição."
 	icon_state = "datadisk1"
 	upgrade_flags = RPD_UPGRADE_UNWRENCH
 

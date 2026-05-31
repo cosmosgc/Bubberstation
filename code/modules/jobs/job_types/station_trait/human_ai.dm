@@ -1,6 +1,6 @@
 /datum/job/human_ai
 	title = JOB_HUMAN_AI
-	description = "Assist the crew, open airlocks, follow your lawset, and coordinate your cyborgs."
+	description = "Auxilie a tripulação, abra as comportas, siga suas leis, e coordene seus cyborgs."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SILICON
 	faction = FACTION_STATION
 	total_positions = 0
@@ -135,7 +135,7 @@
 
 /obj/item/paper/default_lawset_list
 	name = "Lawset Note"
-	desc = "A note explaining the lawset, quickly written yet everso important."
+	desc = "Uma nota explicando o conjunto de leis, escrita rápida, mas muito importante."
 
 /obj/item/paper/default_lawset_list/Initialize(mapload)
 	var/datum/ai_laws/temp_laws = new
@@ -152,7 +152,7 @@
 
 /obj/item/secure_camera_console_pod
 	name = "pre-packaged advanced camera control"
-	desc = "A pre-packaged camera console used for all your AI stuff, programmed to only active in the SAT."
+	desc = "Um console de câmera pré-embalado usado para todas as suas coisas de IA, programado para apenas ativo no SAT."
 	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "botpad_controller"
 	inhand_icon_state = "radio"
@@ -164,7 +164,7 @@
 	var/area/current_area = get_area(user)
 	var/static/list/allowed_areas = typecacheof(list(/area/station/ai/satellite/chamber))
 	if(!is_type_in_typecache(current_area, allowed_areas))
-		user.balloon_alert(user, "not in the sat!")
+		user.balloon_alert(user, "Não no satélite!")
 		return
 	user.balloon_alert(user, "unpacking...")
 	if(!do_after(user, 5 SECONDS, src))

@@ -62,7 +62,7 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	switch(length(csa))
 		if(0)
 			remove_verb(src, /mob/dead/proc/server_hop)
-			to_chat(src, span_notice("Server Hop has been disabled."))
+			to_chat(src, span_notice("O servidor Hop foi desativado."))
 		if(1)
 			pick = csa[1]
 		else
@@ -73,11 +73,11 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 
 	var/addr = csa[pick]
 
-	if(tgui_alert(usr, "Jump to server [pick] ([addr])?", "Server Hop", list("Yes", "No")) != "Yes")
+	if(tgui_alert(usr, "Ir para o servidor[pick] ([addr])?", "Server Hop", list("Yes", "No")) != "Yes")
 		return
 
 	var/client/hopper = client
-	to_chat(hopper, span_notice("Sending you to [pick]."))
+	to_chat(hopper, span_notice("Enviando você para[pick]."))
 	var/atom/movable/screen/splash/fade_in = new(null, null, hopper, FALSE)
 	fade_in.fade(FALSE)
 

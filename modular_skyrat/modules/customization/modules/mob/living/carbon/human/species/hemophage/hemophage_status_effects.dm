@@ -59,7 +59,7 @@
 	if(!owner || !ishuman(owner))
 		return FALSE
 
-	to_chat(owner, span_notice("You feel the tumor inside you pulse faster as the absence of light eases its work, allowing it to knit your flesh and reconstruct your body."))
+	to_chat(owner, span_notice("Você sente o tumor dentro de você pulsar mais rápido como a ausência de luz facilita seu trabalho, permitindo-lhe tricotar sua carne e reconstruir seu corpo."))
 
 	return TRUE
 
@@ -95,7 +95,7 @@
 	if(!owner)
 		return
 
-	to_chat(owner, span_notice("You feel the pulse of the tumor in your chest returning back to normal."))
+	to_chat(owner, span_notice("Sente o pulso do tumor no peito voltando ao normal."))
 
 
 /datum/status_effect/blood_regen_active/tick(seconds_between_ticks)
@@ -147,14 +147,14 @@
 
 /atom/movable/screen/alert/status_effect/blood_thirst_satiated
 	name = "Thirst Satiated"
-	desc = "Substitutes and taste-thin imitations keep your pale body standing, but nothing abates eternal thirst and slakes the infection quite like the real thing: Hot blood from a real sentient being."
+	desc = "Substitutos e imitações de gosto fino mantêm seu corpo pálido de pé, mas nada diminui a sede eterna e sufoca a infecção como a coisa real: Sangue quente de um verdadeiro ser senciente."
 	icon = 'icons/effects/bleed.dmi'
 	icon_state = "bleed10"
 
 
 /atom/movable/screen/alert/status_effect/blood_regen_active
 	name = "Enhanced Regeneration"
-	desc = "Being in a sufficiently dark location allows your tumor to allocate more energy to enhancing your body's natural regeneration, at the cost of blood volume proportional to the damage healed."
+	desc = "Estar em um local suficientemente escuro permite que seu tumor aloque mais energia para melhorar a regeneração natural do seu corpo, ao custo do volume sanguíneo proporcional ao dano curado."
 	icon = 'icons/hud/screen_alert.dmi'
 	icon_state = "template"
 

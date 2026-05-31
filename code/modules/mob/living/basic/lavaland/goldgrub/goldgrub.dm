@@ -1,7 +1,7 @@
 //An ore-devouring but easily scared creature
 /mob/living/basic/mining/goldgrub
 	name = "goldgrub"
-	desc = "A worm that grows fat from eating everything in its sight. Seems to enjoy precious metals and other shiny things, hence the name."
+	desc = "Um verme que engorda ao comer tudo que vê. Parece gostar de metais preciosos e outras coisas brilhantes, daí o nome."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters_wide.dmi'
 	icon_state = "goldgrub"
 	icon_living = "goldgrub"
@@ -22,7 +22,7 @@
 	attack_sound = 'sound/items/weapons/punch1.ogg'
 	combat_mode = FALSE
 	speak_emote = list("screeches")
-	death_message = "stops moving as green liquid oozes from the carcass!"
+	death_message = "Pare de se mover como líquido verde escorre da carcaça!"
 	status_flags = CANPUSH
 	gold_core_spawnable = HOSTILE_SPAWN
 	ai_controller = /datum/ai_controller/basic_controller/goldgrub
@@ -60,11 +60,7 @@
 	AddElement(/datum/element/basic_eating, food_types = food_types, add_to_contents = TRUE)
 	AddElement(/datum/element/wall_tearer, allow_reinforced = FALSE)
 	AddComponent(/datum/component/ai_listen_to_weather)
-	AddComponent(\
-		/datum/component/appearance_on_aggro,\
-		overlay_icon = 'icons/mob/simple/lavaland/lavaland_monsters_wide.dmi',\
-		overlay_state = "goldgrub_alert",\
-	)
+	AddComponent(		/datum/component/appearance_on_aggro,		overlay_icon = 'icons/mob/simple/lavaland/lavaland_monsters_wide.dmi',		overlay_state = "goldgrub_alert",	)
 
 	if(can_tame)
 		make_tameable(food_types)
@@ -87,7 +83,7 @@
 	if(prob(hitting_projectile.armour_penetration))
 		return NONE
 
-	visible_message(span_danger("[hitting_projectile] is repelled by [source]'s girth!"))
+	visible_message(span_danger("[hitting_projectile]é repelido por[source]Uma Cintura!"))
 	return COMPONENT_BULLET_BLOCKED
 
 /mob/living/basic/mining/goldgrub/proc/barf_contents(gibbed)
@@ -96,7 +92,7 @@
 		ore.forceMove(loc)
 
 	if(!gibbed)
-		visible_message(span_danger("[src] spits out its consumed ores!"))
+		visible_message(span_danger("[src]Cuspiu seus minérios consumidos!"))
 
 /mob/living/basic/mining/goldgrub/proc/generate_loot()
 	var/loot_amount = rand(1,3)
@@ -124,15 +120,7 @@
 	AddComponent(/datum/component/obeys_commands, pet_commands)
 
 /mob/living/basic/mining/goldgrub/proc/make_egg_layer()
-	AddComponent(\
-		/datum/component/egg_layer,\
-		/obj/item/food/egg/green/grub_egg,\
-		list(/obj/item/stack/ore/bluespace_crystal),\
-		lay_messages = EGG_LAYING_MESSAGES,\
-		eggs_left = 0,\
-		eggs_added_from_eating = 1,\
-		max_eggs_held = 1,\
-	)
+	AddComponent(		/datum/component/egg_layer,		/obj/item/food/egg/green/grub_egg,		list(/obj/item/stack/ore/bluespace_crystal),		lay_messages = EGG_LAYING_MESSAGES,		eggs_left = 0,		eggs_added_from_eating = 1,		max_eggs_held = 1,	)
 
 /mob/living/basic/mining/goldgrub/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
@@ -168,33 +156,16 @@
 
 /mob/living/basic/mining/goldgrub/baby/Initialize(mapload)
 	. = ..()
-	AddComponent(\
-		/datum/component/growth_and_differentiation,\
-		growth_time = 5 MINUTES,\
-		growth_path = /mob/living/basic/mining/goldgrub,\
-		growth_probability = 100,\
-		lower_growth_value = 0.5,\
-		upper_growth_value = 1,\
-		signals_to_kill_on = list(COMSIG_MOB_CLIENT_LOGIN),\
-		optional_checks = CALLBACK(src, PROC_REF(ready_to_grow)),\
-	)
+	AddComponent(		/datum/component/growth_and_differentiation,		growth_time = 5 MINUTES,		growth_path = /mob/living/basic/mining/goldgrub,		growth_probability = 100,		lower_growth_value = 0.5,		upper_growth_value = 1,		signals_to_kill_on = list(COMSIG_MOB_CLIENT_LOGIN),		optional_checks = CALLBACK(src, PROC_REF(ready_to_grow)),	)
 
 /mob/living/basic/mining/goldgrub/baby/proc/ready_to_grow()
 	return (stat == CONSCIOUS && !is_jaunting(src))
 
 /obj/item/food/egg/green/grub_egg
 	name = "grub egg"
-	desc = "Covered in disgusting fluid."
+	desc = "Coberto de líquido nojento."
 
 
 /obj/item/food/egg/green/grub_egg/Initialize(mapload)
 	. = ..()
-	AddComponent(\
-		/datum/component/fertile_egg,\
-		embryo_type = /mob/living/basic/mining/goldgrub/baby,\
-		minimum_growth_rate = 1,\
-		maximum_growth_rate = 2,\
-		total_growth_required = 100,\
-		current_growth = 0,\
-		location_allowlist = typecacheof(list(/turf)),\
-	)
+	AddComponent(		/datum/component/fertile_egg,		embryo_type = /mob/living/basic/mining/goldgrub/baby,		minimum_growth_rate = 1,		maximum_growth_rate = 2,		total_growth_required = 100,		current_growth = 0,		location_allowlist = typecacheof(list(/turf)),	)

@@ -1,7 +1,7 @@
 /// A wall mounted machine that heals chip damage for a price
 /obj/machinery/wall_healer
 	name = "\improper DeForest first aid station"
-	desc = "A wall-mounted first aid station, designed to treat minor injuries - just stick your hand in and try to relax."
+	desc = "Uma estação de primeiros socorros montada na parede, projetada para tratar ferimentos menores, basta enfiar a mão e tentar relaxar."
 	icon = 'icons/obj/machines/wall_healer.dmi'
 	icon_state = "wall_healer"
 	base_icon_state = "wall_healer"
@@ -118,10 +118,9 @@
 /obj/machinery/wall_healer/examine(mob/user)
 	. = ..()
 	var/total_bandages = num_bandages + LAZYLEN(stocked_bandages)
-	. += span_notice("It has [total_bandages] bandage\s stocked.\
-		[total_bandages ? " [is_free(user) ? "Purchase" : "Retrieve"] a bandage with [EXAMINE_HINT("right-click")]." : ""]")
+	. += span_notice("Tem.[total_bandages]Ataduras abastecidas.[total_bandages ? " [is_free(user) ? "Purchase" : "Retrieve"] a bandage with [EXAMINE_HINT("right-click")]." : ""]")
 	if(current_user)
-		. += span_notice("[current_user] currently [current_hand ? "has [current_user.p_their()] [current_hand.plaintext_zone] in" : "is using"] it.")
+		. += span_notice("[current_user]Atualmente[current_hand ? "has [current_user.p_their()] [current_hand.plaintext_zone] in" : "is using"]Ele.")
 
 /obj/machinery/wall_healer/update_overlays()
 	. = ..()
@@ -159,8 +158,8 @@
 		return FALSE
 
 	playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	visible_message(span_warning("Sparks fly out of [src]!"))
-	balloon_alert(user, "travas desativadas")
+	visible_message(span_warning("As faíscas voam para fora[src]!"))
+	balloon_alert(user, "Travas desativadas")
 	obj_flags |= EMAGGED
 	return TRUE
 
@@ -183,7 +182,7 @@
 	var/mob/living/who_put_user_in = user
 	var/mob/living/new_user = dropped
 	if(!loc_check(new_user))
-		balloon_alert(who_put_user_in, "[new_user == who_put_user_in ? "get" : "bring [new_user.p_them()]"] closer!")
+		balloon_alert(who_put_user_in, "[new_user == who_put_user_in ? "get" : "bring [new_user.p_them()]"]Mais preto!")
 		return FALSE
 
 	if(do_after(user, 1 SECONDS, src))
@@ -198,7 +197,7 @@
 		balloon_alert(user, "incompatível!")
 		return FALSE
 	if(!loc_check(user))
-		balloon_alert(user, "get closer!")
+		balloon_alert(user, "Chegue mais perto!")
 		return FALSE
 	if(do_after(user, 0.5 SECONDS, src))
 		user_put_in_own_hand(user)
@@ -209,18 +208,18 @@
 		clear_using_mob()
 		if(user.get_active_hand() == current_hand)
 			user.visible_message(
-				span_notice("[user] removes [user.p_their()] hand from [src]."),
-				span_notice("You remove your hand from [src]."),
-				span_hear("You hear a click."),
+				span_notice("[user]Remover[user.p_their()]Mão de[src]."),
+				span_notice("Você tira sua mão de[src]."),
+				span_hear("Você ouve um clique."),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 				vision_distance = 5,
 			)
 		else
 			add_fingerprint(user)
 			user.visible_message(
-				span_notice("[user] removes [user.p_their()] hand from [src] and puts it in [user.p_their()] other hand."),
-				span_notice("You remove your hand from [src] and put it in your other hand."),
-				span_hear("You hear a click."),
+				span_notice("[user]Remover[user.p_their()]Mão de[src]e colocá-lo em[user.p_their()]A outra mão."),
+				span_notice("Você tira sua mão de[src]e coloque na outra mão."),
+				span_hear("Você ouve um clique."),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 				vision_distance = 5,
 			)
@@ -228,8 +227,8 @@
 		return
 	else if(current_user)
 		user.visible_message(
-			span_notice("[user] tries to put [user.p_their()] hand in [src], but [current_user] is already using it."),
-			span_notice("You try to put your hand in [src], but [current_user] is already using it."),
+			span_notice("[user]Tenta colocar[user.p_their()]De mãos dadas.[src], mas[current_user]Já está usando."),
+			span_notice("Você tenta colocar sua mão[src], mas[current_user]Já está usando."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			vision_distance = 5,
 		)
@@ -238,16 +237,16 @@
 	add_fingerprint(user)
 	if(is_operational)
 		user.visible_message(
-			span_notice("[user] puts [user.p_their()] hand in [src], and immediately some kind of sensor scans [user.p_their()] arm."),
-			span_notice("You put your hand in [src], and immediately some kind of sensor scans your arm."),
-			span_hear("You hear a click."),
+			span_notice("[user]coloca[user.p_their()]De mãos dadas.[src], e imediatamente algo tipo de varredura de sensores[user.p_their()]Braço."),
+			span_notice("Você colocou sua mão[src]E imediatamente algum tipo de sensor escaneia seu braço."),
+			span_hear("Você ouve um clique."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			vision_distance = 5,
 		)
 	else
 		user.visible_message(
-			span_notice("[user] puts [user.p_their()] hand in [src], but it doesn't respond. Seems to be out of order."),
-			span_notice("You put your hand in [src], but it doesn't respond."),
+			span_notice("[user]coloca[user.p_their()]De mãos dadas.[src]Mas não responde. Parece estar fora de ordem."),
+			span_notice("Você colocou sua mão[src]Mas não responde."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			vision_distance = 5,
 		)
@@ -260,21 +259,21 @@
 	if(current_user == user)
 		clear_using_mob()
 		if(user.get_active_hand() == current_hand)
-			to_chat(who_put_user_in, span_notice("You remove [user]'s hand from [src]."))
+			to_chat(who_put_user_in, span_notice("Você tira.[user]A mão de[src]."))
 			user.visible_message(
-				span_notice("[who_put_user_in] removes [user]'s hand from [src]."),
-				span_notice("[who_put_user_in] remove your hand from [src]."),
-				span_hear("You hear a click."),
+				span_notice("[who_put_user_in]Remover[user]A mão de[src]."),
+				span_notice("[who_put_user_in]Tire sua mão de[src]."),
+				span_hear("Você ouve um clique."),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 				vision_distance = 5,
 				ignored_mobs = who_put_user_in,
 			)
 		else
-			to_chat(who_put_user_in, span_notice("You remove [user]'s hand from [src] and put it in [user.p_their()] other hand."))
+			to_chat(who_put_user_in, span_notice("Você tira.[user]A mão de[src]e colocá-lo em[user.p_their()]A outra mão."))
 			user.visible_message(
-				span_notice("[who_put_user_in] removes [user.p_their()] hand from [src] and puts it in [user.p_their()] other hand."),
-				span_notice("[who_put_user_in] removes your hand from [src] and puts it in your other hand."),
-				span_hear("You hear a click."),
+				span_notice("[who_put_user_in]Remover[user.p_their()]Mão de[src]e colocá-lo em[user.p_their()]A outra mão."),
+				span_notice("[who_put_user_in]remove sua mão de[src]e coloca na outra mão."),
+				span_hear("Você ouve um clique."),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 				vision_distance = 5,
 				ignored_mobs = who_put_user_in,
@@ -284,10 +283,10 @@
 		return
 
 	if(current_user)
-		to_chat(who_put_user_in, span_notice("You try to put [user]'s hand in [src], but [current_user] is already using it."))
+		to_chat(who_put_user_in, span_notice("Você tenta colocar[user]Está de mãos dadas.[src], mas[current_user]Já está usando."))
 		user.visible_message(
-			span_notice("[who_put_user_in] tries to put [user]'s hand in [src], but [current_user] is already using it."),
-			span_notice("[who_put_user_in] tries to put your hand in [src], but [current_user] is already using it."),
+			span_notice("[who_put_user_in]Tenta colocar[user]Está de mãos dadas.[src], mas[current_user]Já está usando."),
+			span_notice("[who_put_user_in]Tente colocar sua mão[src], mas[current_user]Já está usando."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			vision_distance = 5,
 			ignored_mobs = who_put_user_in,
@@ -296,20 +295,20 @@
 
 	add_fingerprint(who_put_user_in)
 	if(is_operational)
-		to_chat(who_put_user_in, span_notice("You put [user]'s hand in [src], and immediately some kind of sensor scans [user.p_their()] arm."))
+		to_chat(who_put_user_in, span_notice("Você colocou[user]Está de mãos dadas.[src], e imediatamente algo tipo de varredura de sensores[user.p_their()]Braço."))
 		user.visible_message(
-			span_notice("[who_put_user_in] puts [user.p_their()] hand in [src], and immediately some kind of sensor scans [user.p_their()] arm."),
-			span_notice("[who_put_user_in] puts your hand in [src], and immediately some kind of sensor scans your arm."),
-			span_hear("You hear a click."),
+			span_notice("[who_put_user_in]coloca[user.p_their()]De mãos dadas.[src], e imediatamente algo tipo de varredura de sensores[user.p_their()]Braço."),
+			span_notice("[who_put_user_in]Coloque sua mão em[src]E imediatamente algum tipo de sensor escaneia seu braço."),
+			span_hear("Você ouve um clique."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			vision_distance = 5,
 			ignored_mobs = who_put_user_in,
 		)
 	else
-		to_chat(who_put_user_in, span_notice("You put [user]'s hand in [src], but it doesn't respond. Seems to be out of order."))
+		to_chat(who_put_user_in, span_notice("Você colocou[user]Está de mãos dadas.[src]Mas não responde. Parece estar fora de ordem."))
 		user.visible_message(
-			span_notice("[who_put_user_in] puts [user.p_their()] hand in [src], but it doesn't respond. Seems to be out of order."),
-			span_notice("[who_put_user_in] puts your hand in [src], but it doesn't respond."),
+			span_notice("[who_put_user_in]coloca[user.p_their()]De mãos dadas.[src]Mas não responde. Parece estar fora de ordem."),
+			span_notice("[who_put_user_in]Coloque sua mão em[src]Mas não responde."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			vision_distance = 5,
 			ignored_mobs = who_put_user_in,
@@ -322,17 +321,17 @@
 		return .
 	var/mob/living/living_user = user
 	if(!is_operational)
-		to_chat(user, span_warning("You try to retrieve some gauze, but [src] doesn't respond."))
+		to_chat(user, span_warning("Você tenta recuperar gaze, mas[src]não responde."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(num_bandages + LAZYLEN(stocked_bandages) <= 0)
-		to_chat(user, span_warning("You try to retrieve some gauze, but [src] seems to be out of stock."))
+		to_chat(user, span_warning("Você tenta recuperar gaze, mas[src]Parece estar sem estoque."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(attempt_charge(src, user, extra_fees = floor(per_bandage_cost)) & COMPONENT_OBJ_CANCEL_CHARGE)
 		if(!living_user.get_idcard())
-			to_chat(user, span_warning("No ID card found. Aborting."))
+			to_chat(user, span_warning("Nenhuma identificação encontrada. Abortando."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if((obj_flags & EMAGGED) && prob(99))
-		to_chat(user, span_warning("You try to retrieve some gauze, but it gets all jammed up in the access port."))
+		to_chat(user, span_warning("Você tenta recuperar gaze, mas fica tudo preso na porta de acesso."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	var/obj/item/stack/medical/wrap/gauze/bandage = LAZYACCESS(stocked_bandages, 1)
@@ -341,9 +340,9 @@
 		bandage = new(user.drop_location(), 1)
 	user.put_in_hands(bandage)
 	user.visible_message(
-		span_notice("[user] retrieves [bandage] from [src]."),
-		span_notice("You retrieve [bandage] from [src]."),
-		span_hear("You hear a click."),
+		span_notice("[user]Recupera[bandage]De[src]."),
+		span_notice("Você recupera.[bandage]De[src]."),
+		span_hear("Você ouve um clique."),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		vision_distance = 5,
 	)
@@ -360,12 +359,12 @@
 	if(!istype(tool, /obj/item/stack/medical/wrap/gauze))
 		return NONE
 	if(!user.temporarilyRemoveItemFromInventory(tool))
-		to_chat(user, span_warning("You try to restock [src] with [tool], but it seems stuck to your hand."))
+		to_chat(user, span_warning("Você tenta reabastecer[src]Com[tool]Mas parece preso em sua mão."))
 		return ITEM_INTERACT_BLOCKING
 	user.visible_message(
-		span_notice("[user] restocks [src] with [tool]."),
-		span_notice("You restock [src] with [tool]."),
-		span_hear("You hear a click."),
+		span_notice("[user]Restocks[src]Com[tool]."),
+		span_notice("Você reabastece.[src]Com[tool]."),
+		span_hear("Você ouve um clique."),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		vision_distance = 5,
 	)
@@ -415,9 +414,9 @@
 		return
 	if(!QDELING(current_user))
 		current_user.visible_message(
-			span_notice("[current_user] removes [current_user.p_their()] hand from [src]."),
-			span_notice("You remove your hand from [src]."),
-			span_hear("You hear a click."),
+			span_notice("[current_user]Remover[current_user.p_their()]Mão de[src]."),
+			span_notice("Você tira sua mão de[src]."),
+			span_hear("Você ouve um clique."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			vision_distance = 5,
 		)
@@ -469,20 +468,20 @@
 	if(!arm_check)
 		playsound(src, 'sound/machines/defib/defib_saftyOff.ogg', 50, FALSE, SHORT_RANGE_SOUND_EXTRARANGE)
 		if(antispam_counter % 3 == 1)
-			to_chat(current_user, span_notice("Nothing happens. Seems [src] doesn't recognize non-organic [current_hand ? "limbs" : "beings"]."))
+			to_chat(current_user, span_notice("Nada de descontece. Parece.[src]não reconhece não-orgânico[current_hand ? "limbs" : "beings"]."))
 		return
 
 	if(!current_user.can_inject(null, current_hand))
 		playsound(src, 'sound/machines/defib/defib_saftyOff.ogg', 50, FALSE, SHORT_RANGE_SOUND_EXTRARANGE)
 		if(antispam_counter % 3 == 1)
-			to_chat(current_user, span_notice("Nothing happens. Seems [src] can't find any exposed flesh to work on."))
+			to_chat(current_user, span_notice("Nada de descontece. Parece.[src]Não encontro nenhuma carne exposta para trabalhar."))
 		return
 
 	if(obj_flags & EMAGGED)
 		current_user.apply_damage(33, BRUTE, current_hand, sharpness = SHARP_POINTY)
 		playsound(src, 'sound/machines/defib/defib_failed.ogg', 50, FALSE, SHORT_RANGE_SOUND_EXTRARANGE)
 		if(antispam_counter % 2 == 1)
-			to_chat(current_user, span_warning("You feel a sharp pain as the machine malfunctions, stabbing you with several instruments and needles!"))
+			to_chat(current_user, span_warning("Você sente uma dor aguda quando a máquina falha, esfaqueando você com vários instrumentos e agulhas!"))
 		use_energy(500 JOULES)
 		add_mob_blood(current_user)
 		return
@@ -497,7 +496,7 @@
 		playsound(src, 'sound/machines/defib/defib_saftyOff.ogg', 50, FALSE, SHORT_RANGE_SOUND_EXTRARANGE)
 		// attempt charge sends a chat message on fail, except if the user has no ID card
 		if((antispam_counter % 3 == 1) && !current_user.get_idcard())
-			to_chat(current_user, span_warning("No ID card found. Aborting."))
+			to_chat(current_user, span_warning("Nenhuma identificação encontrada. Abortando."))
 		return
 
 	var/amount_healed = 0
@@ -519,7 +518,7 @@
 	if(amount_healed)
 		playsound(src, 'sound/machines/defib/defib_SaftyOn.ogg', 50, FALSE, SHORT_RANGE_SOUND_EXTRARANGE)
 		if(antispam_counter % 2 == 1)
-			to_chat(current_user, span_notice("Several instruments and syringes work on your [current_hand?.plaintext_zone || "body"]. You feel a bit better."))
+			to_chat(current_user, span_notice("Vários instrumentos e seringas funcionam em seu[current_hand?.plaintext_zone || "body"]Você se sente um pouco melhor."))
 		update_appearance()
 		use_energy(200 JOULES) // just some background power drain. we don't really care about whether this is actually successful
 		return
@@ -532,9 +531,9 @@
 	var/missed_tox_healing = tox_healing_now > 0 && !current_user.get_tox_loss()
 	var/missed_blood_healing = blood_healing_now > 0 && current_user.get_blood_volume() >= BLOOD_VOLUME_OKAY
 	if(missed_brute_healing || missed_burn_healing || missed_tox_healing || missed_blood_healing)
-		to_chat(current_user, span_notice("Nothing happens. Seems like [src] needs to recharge."))
+		to_chat(current_user, span_notice("Nada de descontece. Parece que sim.[src]Precisa recarregar."))
 		return
-	to_chat(current_user, span_notice("Nothing happens. Seems like you're in good enough shape."))
+	to_chat(current_user, span_notice("Nada acontece. Parece que está em boa forma."))
 
 /// Subtype of progress bar used by the wall healer to show time until next injection
 /// This subtype only exists so we can shove fastprocess processing off of the machine itself

@@ -25,7 +25,7 @@
 
 	var/obj/item/mod/control/pre_equipped/protean/suit = species.species_modsuit
 	species.species_modsuit.toggle_lock()
-	to_chat(src, span_notice("You [suit.modlocked ? "<b>lock</b>" : "<b>unlock</b>"] the suit [isprotean(suit.wearer) || loc == suit ? "" : "onto [suit.wearer]"]"))
+	to_chat(src, span_notice("Você.[suit.modlocked ? "<b>lock</b>" : "<b>unlock</b>"]O terno.[isprotean(suit.wearer) || loc == suit ? "" : "onto [suit.wearer]"]"))
 	playsound(src, 'sound/machines/click.ogg', 25)
 
 /mob/living/carbon/proc/suit_transformation(forced = FALSE)
@@ -48,13 +48,13 @@
 		return
 	var/obj/item/organ/stomach/protean/stomach = get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(!istype(stomach))
-		to_chat(src, span_warning("You are missing a stomach and can't turn on low power mode"))
+		to_chat(src, span_warning("Você está perdendo um estômago e não pode ligar o modo de baixa potência"))
 		return
 	if(loc == species.species_modsuit)
-		to_chat(src, span_notice("You can't toggle low power when in a suit form!"))
+		to_chat(src, span_notice("Você não pode alternar baixo poder quando em uma forma de terno!"))
 		return
 	if(!do_after(src, 2.5 SECONDS)) // Long enough to where our stomach can process inbetween activations
-		src.loc.balloon_alert(src, "toggle interrupted")
+		src.loc.balloon_alert(src, "alternância interrompida")
 		return
 	var/datum/status_effect/protean_low_power_mode/effect = /datum/status_effect/protean_low_power_mode/low_power
 	if(istype(has_status_effect(effect), effect))

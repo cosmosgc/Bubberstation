@@ -1,7 +1,7 @@
 /obj/item/organ/stomach/golem
 	name = "silicate grinder"
 	icon_state = "stomach-p"
-	desc = "A rocklike organ which grinds and processes nutrition from minerals."
+	desc = "Um órgão rocklike que moe e processa nutrição de minerais."
 	color = COLOR_GOLEM_GRAY
 	organ_flags = ORGAN_MINERAL
 	organ_traits = list(TRAIT_ROCK_EATER)
@@ -26,7 +26,7 @@
 	SIGNAL_HANDLER
 	if(istype(eating, /obj/item/food/golem_food))
 		return
-	source.balloon_alert(source, "minerals only!")
+	source.balloon_alert(source, "Só minerais!")
 	return BLOCK_EAT_ATTEMPT
 
 /// Golem stomach cannot process nutriment except from minerals
@@ -62,7 +62,7 @@
 
 /atom/movable/screen/alert/status_effect/golem_statued
 	name = "Statued"
-	desc = "You no longer have the energy to move your body!"
+	desc = "Você não tem mais energia para mover seu corpo!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "golem_statued"
 
@@ -70,14 +70,14 @@
 	. = ..()
 	if (!.)
 		return FALSE
-	owner.visible_message(span_warning("[owner] siezes up and becomes as rigid as a statue!"), span_warning("Your limbs fall still. You no longer have enough energy to move!"))
+	owner.visible_message(span_warning("[owner]Ficam tão rígidos como uma estátua!"), span_warning("Seus membros ainda caem. Você não tem mais energia suficiente para se mover!"))
 	owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_FORCED_STANDING, TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED), TRAIT_STATUS_EFFECT(id))
 	return TRUE
 
 /datum/status_effect/golem_statued/get_examine_text()
-	return span_warning("[owner.p_They()] [owner.p_are()] as still as a statue!")
+	return span_warning("[owner.p_They()] [owner.p_are()]Como uma estátua!")
 
 /datum/status_effect/golem_statued/on_remove()
-	owner.visible_message(span_notice("[owner] slowly stirs back into motion!"), span_notice("You have gathered enough strength to move your body once more."))
+	owner.visible_message(span_notice("[owner]lentamente se move de volta ao movimento!"), span_notice("Você reuniu força suficiente para mover seu corpo mais uma vez."))
 	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_FORCED_STANDING, TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED), TRAIT_STATUS_EFFECT(id))
 	return ..()

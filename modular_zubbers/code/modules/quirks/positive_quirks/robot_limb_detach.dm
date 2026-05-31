@@ -1,9 +1,9 @@
 /datum/quirk/robot_limb_detach
 	name = "Cybernetic Limb Mounts"
-	desc = "You are able to detach and reattach any installed robotic limbs with very little effort, as long as they're in good condition. Right Click yourself while targeting a limb to remove it."
-	gain_text = span_notice("Internal sensors report limb disengagement protocols are ready and waiting.")
-	lose_text = span_notice("ERROR: LIMB DISENGAGEMENT PROTOCOLS OFFLINE.")
-	medical_record_text = "Patient bears quick-attach and release limb joint cybernetics."
+	desc = "Você é capaz de separar e recolocar qualquer membro robótico instalado com muito pouco esforço, contanto que eles estejam em boas condições. Clique em si mesmo enquanto mira em um membro para removê-lo."
+	gain_text = span_notice("Os sensores internos reportam que os protocolos estão prontos e esperando.")
+	lose_text = span_notice("ERRO: PROTOCOLOS DE DESENGAGAMENTO DE LIMB OFFLINE.")
+	medical_record_text = "O paciente tem acesso rápido e liberação de cibernética articular."
 	value = 4
 	mob_trait = TRAIT_ROBOTIC_LIMBATTACHMENT
 	icon = FA_ICON_HANDSHAKE_SIMPLE_SLASH
@@ -58,36 +58,36 @@
 		return
 
 	if(HAS_TRAIT(amputee, TRAIT_NODISMEMBER))
-		to_chat(amputee, span_warning("ERROR: LIMB DISENGAGEMENT PROTOCOLS OFFLINE. Seek out a maintenance technician."))
+		to_chat(amputee, span_warning("ERRO: PROTOCOLOS DE DESENGAGAMENTO DE LIMB OFFLINE. Procure um técnico de manutenção."))
 		return
 
 	if (amputee.handcuffed)
-		to_chat(amputee, span_alert("You can't get a good enough grip with your hands bound."))
+		to_chat(amputee, span_alert("Você não consegue segurar bem as mãos."))
 		return
 
 	if (length(targeted_limb.wounds) >= 1)
-		amputee.balloon_alert(amputee, "can't detach wounded limbs!")
+		amputee.balloon_alert(amputee, "Não podemos separar membros feridos!")
 		playsound(amputee, 'sound/machines/buzz/buzz-sigh.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(self_amputate), amputee, targeted_limb)
 
 /datum/element/robot_self_amputation/proc/self_amputate(mob/living/carbon/amputee, obj/item/bodypart/targeted_limb)
-	amputee.balloon_alert(amputee, "detaching limb...")
+	amputee.balloon_alert(amputee, "Tirando o membro...")
 	playsound(amputee, 'sound/items/tools/rped.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	amputee.visible_message(span_notice("[amputee] shuffles [amputee.p_their()] [targeted_limb.name] forward, actuators hissing and whirring as [amputee.p_they()] disengage[amputee.p_s()] the limb from its mount..."))
+	amputee.visible_message(span_notice("[amputee]Embaralha.[amputee.p_their()] [targeted_limb.name]para a frente, atuadores assobiando e sussurrando como[amputee.p_they()]desengatar[amputee.p_s()]o membro de sua montagem..."))
 
 	if(!do_after(amputee, 10 SECONDS))
-		amputee.balloon_alert(amputee, "interrompido!")
+		amputee.balloon_alert(amputee, "Interrompido!")
 		return
 	if(amputee.handcuffed) //Prevents removing your arms if you get handcuffed part way through
 		return
 
 	playsound(amputee, 'sound/machines/buzz/buzz-sigh.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	amputee.visible_message(span_notice("With a gentle twist, [amputee] finally prises [amputee.p_their()] [targeted_limb.name] free from its socket."))
+	amputee.visible_message(span_notice("Com um toque suave,[amputee]Finalmente as empresas[amputee.p_their()] [targeted_limb.name]livre de sua tomada."))
 	targeted_limb.drop_limb()
 	amputee.put_in_hands(targeted_limb)
-	amputee.balloon_alert(amputee, "limb detached!")
+	amputee.balloon_alert(amputee, "membro afastado!")
 	if(prob(5))
 		playsound(amputee, 'sound/items/champagne_pop.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	else

@@ -6,7 +6,7 @@
  */
 /obj/machinery/photobooth
 	name = "photobooth"
-	desc = "A machine with some drapes and a camera, used to update security record photos. Requires Law Office access to use."
+	desc = "Uma máquina com cortinas e uma câmera, usada para atualizar as fotos de segurança. Requer acesso ao escritório de advocacia."
 	icon = 'icons/obj/machines/photobooth.dmi'
 	icon_state = "booth_open"
 	base_icon_state = "booth"
@@ -33,7 +33,7 @@
  */
 /obj/machinery/photobooth/security
 	name = "security photobooth"
-	desc = "A machine with some drapes and a camera, used to update security record photos. Requires Security access to use, and adds a height chart to the person."
+	desc = "Uma máquina com cortinas e uma câmera, usada para atualizar as fotos de segurança. Requer acesso de segurança para usar, e adiciona um gráfico de altura para a pessoa."
 	circuit = /obj/item/circuitboard/machine/photobooth/security
 	req_one_access = list(ACCESS_SECURITY)
 	color = COLOR_LIGHT_GRAYISH_RED
@@ -47,7 +47,7 @@
 /obj/machinery/photobooth/interact(mob/living/user, list/modifiers)
 	. = ..()
 	if(taking_pictures)
-		balloon_alert(user, "machine busy!")
+		balloon_alert(user, "Máquina ocupada!")
 		return
 	if(state_open)
 		close_machine()
@@ -56,7 +56,7 @@
 
 /obj/machinery/photobooth/attack_hand_secondary(mob/user, list/modifiers)
 	if(taking_pictures)
-		balloon_alert(user, "machine busy!")
+		balloon_alert(user, "Máquina ocupada!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(occupant)
 		if(allowed(user))
@@ -78,7 +78,7 @@
 
 /obj/machinery/photobooth/close_machine(mob/user, density_to_set = TRUE)
 	if(panel_open)
-		balloon_alert(user, "feche o painel primeiro!")
+		balloon_alert(user, "Feche o painel primeiro!")
 		return
 	playsound(src, 'sound/effects/curtain.ogg', 50, TRUE)
 	return ..()
@@ -112,7 +112,7 @@
 		return FALSE
 	req_access = list() //in case someone sets this to something
 	req_one_access = list()
-	balloon_alert(user, "beeps softly")
+	balloon_alert(user, "Apita suavemente.")
 	obj_flags |= EMAGGED
 	return TRUE
 
@@ -152,9 +152,9 @@
 /obj/machinery/photobooth/proc/finish_taking_pictures()
 	taking_pictures = FALSE
 	if(!GLOB.manifest.change_pictures(occupant.name, occupant, add_height_chart = add_height_chart))
-		balloon_alert(occupant, "record not found!")
+		balloon_alert(occupant, "Disco não encontrado!")
 		return
-	balloon_alert(occupant, "records updated")
+	balloon_alert(occupant, "Registros atualizados")
 	open_machine()
 
 ///Mimicing the camera, gives a flash effect by turning the light on and calling flash_end.
@@ -169,7 +169,7 @@
 
 /obj/machinery/button/photobooth
 	name = "photobooth control button"
-	desc = "Operates the photobooth from a distance, allowing people to update their security record photos."
+	desc = "Opera a foto de longe, permitindo que as pessoas atualizem suas fotos de segurança."
 	device_type = /obj/item/assembly/control/photobooth_control
 	req_one_access = list(ACCESS_SECURITY, ACCESS_LAWYER)
 	id = "photobooth_machine_default"
@@ -188,11 +188,11 @@
 	controller.booth_machine_ref = WEAKREF(tool.buffer)
 	id = null
 	controller.id = null
-	balloon_alert(user, "linked to [tool.buffer]")
+	balloon_alert(user, "Ligado.[tool.buffer]")
 
 /obj/item/assembly/control/photobooth_control
 	name = "photobooth controller"
-	desc = "A remote controller for the HoP's photobooth."
+	desc = "Um controle remoto para a foto do Hop."
 	///Weakref to the photobooth we're connected to.
 	var/datum/weakref/booth_machine_ref
 
@@ -219,6 +219,6 @@
 	if(!machine)
 		return
 	if(machine.taking_pictures)
-		balloon_alert(activator, "machine busy!")
+		balloon_alert(activator, "Máquina ocupada!")
 		return
 	machine.start_taking_pictures()

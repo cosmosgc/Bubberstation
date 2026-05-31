@@ -4,9 +4,9 @@
 
 /datum/reagent/consumable/moth_milk
 	name = "Moth Milk"
-	description = "Whoever thought that milking moths is a good idea was totally wrong. Is it even milk?"
+	description = "Quem achou que ordenhar mariposas era uma boa ideia estava totalmente errado. É mesmo leite?"
 	color = "#F0E9DA" // rgb: 240, 233, 218
-	taste_description = "salty and oily substance"
+	taste_description = "substância salgada e oleosa"
 	ph = 6.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
@@ -25,10 +25,10 @@
 
 /datum/reagent/consumable/icetea/blood_tea
 	name = "Hemoglobin Iced Tea"
-	description = "A mix of blood and iced tea, with a slice of juicy blood tomato as a garnish."
+	description = "Uma mistura de sangue e chá gelado, com uma fatia de tomate suculento como um enfeite."
 	color = "#B85D52"//rgb(184, 93, 82)
 	quality = DRINK_GOOD
-	taste_description = "chilly sweet tea with an iron bite"
+	taste_description = "Chá doce com uma mordida de ferro."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
 
@@ -46,15 +46,15 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "bloodteaglass"
 	name = "cup of hemoglobin iced tea"
-	desc = "Delicious sweet ice tea flavored with blood."
+	desc = "Delicioso chá gelado com sabor de sangue."
 
 
 /datum/reagent/consumable/coffee/blood_coffee
 	name = "Blood Coffee"
-	description = "Hot black coffee mixed with rich blood, a hemophage's favorite!"
+	description = "Café preto quente misturado com sangue rico, o favorito de um hemofago!"
 	color = "#8E272B"//rgb(142, 39, 43)
 	quality = DRINK_GOOD
-	taste_description = "bitter iron"
+	taste_description = "Ferro amargo."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
 
@@ -72,15 +72,15 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "bloodcoffeeglass"
 	name = "mug of blood coffee"
-	desc = "A mug of hot black coffee mixed with fresh blood."
+	desc = "Uma caneca de café preto quente misturado com sangue fresco."
 
 
 /datum/reagent/consumable/intraverde
 	name = "Intraverde"
-	description = "A melon soda float topped with blood-infused whipped cream."
+	description = "Um refrigerante de melão cheio de chantilly."
 	color = "#40e729"
 	quality = DRINK_GOOD
-	taste_description = "tart sugar and a bit lip."
+	taste_description = "Açúcar e um pouco de lábio."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
 
@@ -98,16 +98,16 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "intraverde"
 	name = "Intraverde"
-	desc = "A fang-rotting float, often requested by hemophage fledglings who have yet grown the taste for ichor. The whipped cream top is infused with blood."
+	desc = "Um carro alegórico, muitas vezes solicitado por hemofármacos que ainda têm o gosto por ichor. A blusa de chantilly está cheia de sangue."
 
 
 /datum/reagent/consumable/ethanol/venetian_waltz
 	name = "Venetian Waltz"
-	description = "A chocolate-caramel dessert cocktail, made for blood-drinkers."
+	description = "Um coquetel de sobremesa de chocolate, feito para bebedores de sangue."
 	color = "#38210b"
 	boozepwr = 15
 	quality = DRINK_GOOD
-	taste_description = "dark and bloody chocolate"
+	taste_description = "Chocolate escuro e sangrento"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
 
@@ -125,16 +125,16 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "venetian_waltz"
 	name = "Venetian Waltz"
-	desc = "Despite the presentation, its scoffed at by older generations for its dessert-like flavour, and is relegated to the tables of sororities and heemoboos as punishment."
+	desc = "Apesar da apresentação, é ridicularizado pelas gerações mais velhas por seu sabor de sobremesa, e é relegado para as mesas de irmandades e heemoboos como punição."
 
 
 /datum/reagent/consumable/ethanol/cranberry_cadillac
 	name = "Cranberry Cadillac"
-	description = "A bubbly, candy-rimmed cocktail."
+	description = "Um coquetel borbulhante, recheado de doces."
 	color = "#ac1e2a"
 	boozepwr = 45
 	quality = DRINK_GOOD
-	taste_description = "a hit-and-run made of candy"
+	taste_description = "Um atropelamento e fuga feito de doces"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
 
@@ -152,16 +152,16 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "cranberry_cadillac"
 	name = "Cranberry Cadillac"
-	desc = "The sugar crystals that rim the glass are red with real blood, inviting the hungry to lick it clean. Served with half a lemon slice to counter the sweetness."
+	desc = "Os cristais de açúcar que bordam o vidro são vermelhos com sangue real, convidando os famintos a lambê-lo limpo. Serviu com meia fatia de limão para contrariar a doçura."
 
 
 /datum/reagent/consumable/ethanol/jubokko
 	name = "Jubokko"
-	description = "A drink set of sake, and yukake mixed with blood."
+	description = "Uma bebida de saquê, e Yukake misturado com sangue."
 	color = "#ac1e2a"
 	boozepwr = 30
 	quality = DRINK_GOOD
-	taste_description = "danger looming above you"
+	taste_description = "O perigo se aproxima acima de você"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
 
@@ -179,17 +179,17 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "jubokko"
 	name = "Jubokko"
-	desc = "The martian, blood-drinking chaebol serve this to their guests. Tasteful as it appears, any good poet knows foreshadowing when it's put in front of them."
+	desc = "O chaebol marciano, que bebe sangue, serve isso aos convidados. Por mais de bom gosto que pareça, qualquer bom poeta sabe prefigurar quando é colocado na frente deles."
 
 
 /datum/reagent/consumable/ethanol/morocco_coffin
 	name = "Morocco Coffin"
-	description = "A cold pressed coffee with a tinge of iron."
+	description = "Um café frio com um toque de ferro."
 	color = "#200608"
 	boozepwr = 20
 	overdose_threshold = 75
 	quality = DRINK_GOOD
-	taste_description = "waking up at midnight"
+	taste_description = "Acordar à meia-noite"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
 	metabolized_traits = list(TRAIT_STIMULATED)
@@ -219,17 +219,17 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "morocco_coffin"
 	name = "Morocco Coffin"
-	desc = "For waking up when the sun goes down. Cools you down and wakes you up."
+	desc = "Por acordar quando o sol se põe. Te acalma e te acorda."
 
 
 /datum/reagent/consumable/ethanol/bat_outta_hell
 	name = "Bat Outta' Hell"
-	description = "Brave bull mixed with blood, with an absinthe 'varnish' sitting on top."
+	description = "Touro corajoso misturado com sangue, com um absinto \"Verniz\"Sentido em Cima."
 	color = "#3d1013"
 	boozepwr = 70
 	overdose_threshold = 47
 	quality = DRINK_VERYGOOD
-	taste_description = "the blinding thrill of a HOME RUN, BABY!!"
+	taste_description = "A emoção ofuscante de um Home Run, baby!"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
 	metabolization_rate = 1.2 * REAGENTS_METABOLISM
@@ -265,18 +265,18 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "bat_outta_hell"
 	name = "Bat Outta' Hell"
-	desc = "Strong enough to send you flyin' out of the park! Or maybe stumbling..."
+	desc = "Forte o suficiente para te mandar voar para fora do parque! Ou talvez tropeçar..."
 
 //Ethereal Drinks
 
 /datum/reagent/consumable/ethanol/karakrak
 	name = "Karakrak"
-	description = "A lightly charged ration made with filtered wine"
+	description = "Uma ração levemente carregada feita com vinho filtrado"
 	color = "#5c0b12"
 	boozepwr = 0
 	quality = DRINK_NICE
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	taste_description = "bitter, watered down energy"
+	taste_description = "amargo, diluído energia"
 
 /datum/reagent/consumable/ethanol/karakrak/expose_mob(mob/living/affected_mob, methods=TOUCH, reac_volume)
 	. = ..()
@@ -293,16 +293,16 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "karakrak"
 	name = "Karakrak"
-	desc = "A sort of electric, alcohol-stripped wine served to the lowest castes of the ethereal masses, typically distributed by the clergy. Served on a rubber coaster to keep what very little charge exists from dissipating into the table."
+	desc = "Uma espécie de vinho elétrico e com álcool servia para as castas mais baixas das massas etéreas, tipicamente distribuídas pelo clero. Serviu em uma montanha-russa de borracha para manter a pouca carga de se dissipar na mesa."
 
 
 /datum/reagent/consumable/ethanol/szzszz
 	name = "Szz Szz"
-	description = "A bootlegged version of ethereal monastic wine"
+	description = "Uma versão pirata do vinho monástico etéreo"
 	color = "#5c0b12"
 	boozepwr = 25
 	quality = DRINK_GOOD
-	taste_description = "bitter-sweet sin"
+	taste_description = "Pecado amargo-doce"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	metabolized_traits = list(TRAIT_STIMULATED)
 	var/obj/effect/light_holder
@@ -340,15 +340,15 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "szzszz"
 	name = "Szz Szz"
-	desc = "A bootlegged version of the Divine Conduit's exclusive monastic wine. The flavour has been approximated by a thousand different tongues, who for at threat of persecution, have never actually tasted it."
+	desc = "Uma versão do vinho monástico exclusivo do Conduit Divino. O sabor foi aproximado por milhares de línguas diferentes, que por ameaça de perseguição, nunca realmente provou."
 
 
 /datum/reagent/consumable/blumpkin_compot
 	name = "Blumpkin Compot"
-	description = "Stewed fruit, sugar, and yerba leaf. An ethereal energy drink."
+	description = "Fruta cozida, açúcar e folha de erva. Um energético etéreo."
 	color = "#3cc6e9"
 	quality = DRINK_VERYGOOD
-	taste_description = "clean, reliable energy"
+	taste_description = "Energia limpa e confiável."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	metabolized_traits = list(TRAIT_STIMULATED)
 
@@ -374,16 +374,16 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "blumpkin_compot"
 	name = "Blumpkin Compot"
-	desc = "A drink created by ethereal expats made of stewed blumpkin flesh and whole berries. Sugar helps to draws out the conductive elements, making for a politely energizing beverage that's safe to drink, and also doesnt taste like window cleaner."
+	desc = "Uma bebida criada por expatriados etéreos feitos de carne ensopada e frutas inteiras. Açúcar ajuda a extrair os elementos condutores, fazendo para uma bebida educadamente energizante que é segura para beber, e também não tem gosto de limpador de janelas."
 
 
 /datum/reagent/consumable/ethanol/storm_over_avon
 	name = "Storm-Over-Avon"
-	description = "A ginny, minty cocktail for ethereal artisans."
+	description = "Um coquetel de menta para artesãos etéreos."
 	color = "#ffca37"
 	boozepwr = 50
 	quality = DRINK_VERYGOOD
-	taste_description = "energetic snobbery"
+	taste_description = "Esnobe energético"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	metabolized_traits = list(TRAIT_STIMULATED)
 	var/obj/effect/light_holder
@@ -403,7 +403,7 @@
 		affected_mob.set_jitter_if_lower(5 SECONDS * REM * reac_volume)
 		unluckyshock = rand(1, 15)
 		if(unluckyshock == 1)
-			to_chat(affected_mob, span_userdanger("You feel a sharp jolt of energy spark off your tongue!"))
+			to_chat(affected_mob, span_userdanger("Você sente um forte abalo de energia saindo da sua língua!"))
 			affected_mob.electrocute_act(rand(1, 5), "Storm-Over-Avon shock", 1, SHOCK_NOGLOVES)
 			playsound(affected_mob, 'sound/machines/defib/defib_zap.ogg', 30, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
@@ -433,16 +433,16 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "storm_over_avon"
 	name = "Storm-Over-Avon"
-	desc = "A complicated cocktail preferred by devotees of the Everlasting Note. While its original ingredients are impossible to source off of Sprout, this drink-alike still resonates with the pretention that only a musical ecclesiarchy can hone. Known to rarely shock non-ethereals."
+	desc = "Um coquetel complicado preferido pelos devotos da Nota Eterna. Embora seus ingredientes originais sejam impossíveis de obter de Sprout, este tipo de bebida ainda ressoa com a intenção de que apenas uma eclesiarquia musical possa melhorar. Conhecido por raramente chocar não-eterais."
 
 
 /datum/reagent/consumable/ethanol/coilhouse_cocktail
 	name = "Coilhouse Cocktail"
-	description = "A citrusy, electrified drink with orange juice and lemon."
+	description = "Uma bebida eletrificada com suco de laranja e limão."
 	color = "#d6ff21"
 	boozepwr = 30
 	quality = DRINK_VERYGOOD
-	taste_description = "a disco ball in your mouth"
+	taste_description = "Uma bola de discoteca na sua boca."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	metabolized_traits = list(TRAIT_STIMULATED)
 	metabolization_rate = 1.1 * REAGENTS_METABOLISM
@@ -463,7 +463,7 @@
 		affected_mob.set_jitter_if_lower(10 SECONDS * REM * reac_volume)
 		unluckyshock = rand(1, 6)
 		if(unluckyshock == 1)
-			to_chat(affected_mob, span_userdanger("You feel a sharp jolt of energy spark off your tongue!"))
+			to_chat(affected_mob, span_userdanger("Você sente um forte abalo de energia saindo da sua língua!"))
 			affected_mob.electrocute_act(rand(2, 8), "Coilhouse Cocktail shock", 1, SHOCK_NOGLOVES)
 			playsound(affected_mob, 'sound/machines/defib/defib_zap.ogg', 40, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
@@ -488,16 +488,16 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "coilhouse_cocktail"
 	name = "Coilhouse Cocktail"
-	desc = "An ethereal cocktail too bombastic to have been born inside Soatii space. Also known as a Shocktown Jitter to those not made of electricity, for reasons that will become quickly apparent."
+	desc = "Um coquetel etéreo muito bombástico para ter nascido no espaço de Soatii. Também conhecido como um jitter de Shocktown para aqueles não feitos de eletricidade, por razões que se tornarão rapidamente aparentes."
 
 
 /datum/reagent/consumable/ethanol/electric_avenue
 	name = "Electric Avenue"
-	description = "A cocktail made of goldschlager and citrus, with salt."
+	description = "Um coquetel feito de ouro e citrinos, com sal."
 	color = "#d37810"
 	boozepwr = 25
 	quality = DRINK_VERYGOOD
-	taste_description = "a sour, electric chair"
+	taste_description = "uma cadeira azeda e elétrica."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	metabolized_traits = list(TRAIT_STIMULATED)
 	metabolization_rate = 1.6 * REAGENTS_METABOLISM
@@ -518,7 +518,7 @@
 		affected_mob.set_jitter_if_lower(10 SECONDS * REM * reac_volume)
 		unluckyshock = rand(1, 3)
 		if(unluckyshock == 1)
-			to_chat(affected_mob, span_userdanger("You feel a violent jolt of energy spark off your tongue!"))
+			to_chat(affected_mob, span_userdanger("Você sente uma violenta sacudida de energia disparando sua língua!"))
 			affected_mob.electrocute_act(rand(15, 35), "Electric avenue shock", 1, SHOCK_NOGLOVES)
 			playsound(affected_mob, 'sound/machines/defib/defib_zap.ogg', 55, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
@@ -543,16 +543,16 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "electric_avenue"
 	name = "Electric Avenue"
-	desc = "Named after a mythical location in the Sol System, this drink is meant to be sipped slowly through the narrow copper straw, representing the long but brisk taste of life. But to non-ethereals, it's a warp lane to the emergency room."
+	desc = "Com o nome de uma localização mítica no Sistema Sol, esta bebida deve ser tomada lentamente através da palha estreita de cobre, representando o sabor longo mas rápido da vida. Mas para não-etéreos, é uma pista de dobra para a sala de emergência."
 
 
 /datum/reagent/consumable/ethanol/ira_de_zeus
 	name = "Ira de Zeus"
-	description = "A deep blue cocktail made by harnessing electricity and fire."
+	description = "Um coquetel azul fundo feito usando eletricidade e nevoeiro."
 	color = "#3e1ef1"
 	boozepwr = 60
 	quality = DRINK_VERYGOOD
-	taste_description = "sharp, spiced hypocracy"
+	taste_description = "Hipocracia afiada e temperada."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	metabolized_traits = list(TRAIT_STIMULATED)
 	metabolization_rate = 1.1 * REAGENTS_METABOLISM
@@ -573,7 +573,7 @@
 		affected_mob.set_jitter_if_lower(5 SECONDS * REM * reac_volume)
 		unluckyshock = rand(1, 8)
 		if(unluckyshock == 1)
-			to_chat(affected_mob, span_userdanger("You feel a violent jolt of energy spark off your tongue!"))
+			to_chat(affected_mob, span_userdanger("Você sente uma violenta sacudida de energia disparando sua língua!"))
 			affected_mob.electrocute_act(rand(10, 25), "Ira de Zeus shock", 1, SHOCK_NOGLOVES)
 			playsound(affected_mob, 'sound/machines/defib/defib_zap.ogg', 40, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
@@ -599,14 +599,14 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "ira_de_zeus"
 	name = "Ira De Zeus"
-	desc = "A radiant ethereal drink that warms the body and tickles the tongue. The original recipie, fabled to have originated from the tables of Sprout's upper-caste clergy, would imply heresy of the highest order. Good thing it's only a fable... May shock non-ethereals."
+	desc = "Uma bebida etérea radiante que aquece o corpo e faz cócegas na língua. O recipiente original, fábulado de se originar das mesas do clero de Sprout, implicaria heresia da mais alta ordem. Ainda bem que é só uma fábula... Pode chocar não-eterais."
 
 /datum/reagent/consumable/ethanol/orange_creamsicle
 	name = "Orange Creamsicle"
 	color = "#f8dd64" //(248, 221, 100)
-	description = "A sweet, tangy, and fruity orange drink with a creamy finish."
+	description = "Uma bebida doce, picante e frutada com um final cremoso."
 	boozepwr = 40
-	taste_description = "sweet creamy citrus and nostalgia"
+	taste_description = "Doces citrinos cremosos e nostalgia"
 	quality = DRINK_VERYGOOD
 
 /datum/glass_style/drinking_glass/orange_creamsicle
@@ -614,4 +614,4 @@
 	icon = 'modular_zubbers/icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "orange_creamsicle"
 	name = "Orange Creamsicle"
-	desc = "A refreshing orange creamsicle drink in a glass, topped with a swirl of whipped cream and a slice of orange. The perfect drink for a hot station day, or whenever you want to feel like you're on a tropical vacation."
+	desc = "Uma bebida refrescante de sorvete de laranja em um copo, coberto com um redemoinho de chantilly e uma fatia de laranja. A bebida perfeita para um dia de estação quente, ou quando quiser sentir que está em férias tropicais."

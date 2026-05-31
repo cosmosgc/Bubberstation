@@ -60,7 +60,7 @@ export const MineBot = (props) => {
     possibleColorList[bot_color],
   );
   return (
-    <Window title="Minebot Settings" width={625} height={328} theme="hackerman">
+    <Window title="Configurações do Minebot" width={625} height={328} theme="hackerman">
       <Window.Content>
         <Stack>
           <Stack.Item width="50%">
@@ -89,7 +89,7 @@ export const MineBot = (props) => {
                     style={{
                       verticalAlign: 'middle',
                       borderRadius: '1em',
-                      border: '1px solid green',
+                      border: '1px verde sólido',
                     }}
                   />
                 </Stack.Item>
@@ -152,7 +152,7 @@ export const MineBot = (props) => {
                     {repair_node_drone ? 'Repair' : 'Ignore'}
                   </Button>
                 </LabeledList.Item>
-                <LabeledList.Item label="Plant Mines">
+                <LabeledList.Item label="Minas de Plantas">
                   <Button
                     textAlign="center"
                     width="50%"
@@ -162,7 +162,7 @@ export const MineBot = (props) => {
                     {plant_mines ? 'On' : 'Off'}
                   </Button>
                 </LabeledList.Item>
-                <LabeledList.Item label="Auto protect">
+                <LabeledList.Item label="Auto-proteger">
                   <Button
                     textAlign="center"
                     width="50%"
@@ -172,7 +172,7 @@ export const MineBot = (props) => {
                     {auto_defend ? 'On' : 'Off'}
                   </Button>
                 </LabeledList.Item>
-                <LabeledList.Item label="Distance To Maintain">
+                <LabeledList.Item label="Distância Para Manter">
                   <NumberInput
                     width="50%"
                     value={selectedDistance}

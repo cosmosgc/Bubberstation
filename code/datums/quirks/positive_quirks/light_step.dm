@@ -1,10 +1,10 @@
 /datum/quirk/light_step
 	name = "Light Step"
-	desc = "You walk with a gentle step; footsteps and stepping on sharp objects is quieter and less painful. Also, your hands and clothes will not get messed in case of stepping in blood."
+	desc = "Você anda com um passo suave, passos e pisar em objetos afiados é mais silencioso e menos doloroso. Além disso, suas mãos e roupas não vão ficar bagunçadas em caso de pisar em sangue."
 	icon = FA_ICON_SHOE_PRINTS
 	value = 4
 	mob_trait = TRAIT_LIGHT_STEP
-	gain_text = span_notice("You walk with a little more litheness.")
-	lose_text = span_danger("You start tromping around like a barbarian.")
-	medical_record_text = "Patient's dexterity belies a strong capacity for stealth."
+	gain_text = span_notice("Você anda com um pouco mais de lithness.")
+	lose_text = span_danger("Você começa a andar como um bárbaro.")
+	medical_record_text = "A destreza do paciente desmente uma forte capacidade de furtividade."
 	mail_goodies = list(/obj/item/clothing/shoes/sandal)

@@ -54,7 +54,7 @@
 /// A mushpersons mushroom cap organ
 /obj/item/organ/mushroom_cap
 	name = "mushroom cap"
-	desc = "These are yummie, no cap."
+	desc = "São gostosos, sem boné."
 
 	use_mob_sprite_as_obj_sprite = TRUE
 
@@ -84,7 +84,7 @@
 	if(QDELETED(victim))
 		return //can't leave spores if there's no shroom to spore
 
-	victim.visible_message(span_notice("Spores start growing around [victim]."), ignored_mobs = victim)
+	victim.visible_message(span_notice("Esporos começam a crescer[victim]."), ignored_mobs = victim)
 	var/atom/particle_holder = victim.add_shared_particles(/particles/pollen/mushroom)
 	particle_holder.appearance_flags |= RESET_TRANSFORM
 	addtimer(CALLBACK(src, PROC_REF(create_spores), victim), MUSHROOM_SPORE_COOLDOWN)
@@ -97,7 +97,7 @@
 		return //can't leave more spores if there's no spores to spore
 
 	victim.remove_shared_particles(/particles/pollen/mushroom)
-	victim.visible_message(span_notice("Mushrooms sprout up around [victim]."), ignored_mobs = victim)
+	victim.visible_message(span_notice("Cogumelos brotam ao redor[victim]."), ignored_mobs = victim)
 	new /obj/structure/glowshroom/brownshroom(get_turf(victim))
 
 /// Bodypart overlay for the mushroom cap organ

@@ -30,7 +30,7 @@
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
 
 	if(GLOB.admin_notice)
-		to_chat(src, span_notice("<b>Admin Notice:</b>\n \t [GLOB.admin_notice]"))
+		to_chat(src, span_notice("<b>Aviso administrativo:</b>\n \t [GLOB.admin_notice]"))
 
 	//SKYRAT EDIT ADDITION
 	var/soft_player_cap = CONFIG_GET(number/player_soft_cap)
@@ -40,7 +40,7 @@
 
 	var/spc = CONFIG_GET(number/soft_popcap)
 	if(spc && living_player_count() >= spc)
-		to_chat(src, span_notice("<b>Server Notice:</b>\n \t [CONFIG_GET(string/soft_popcap_message)]"))
+		to_chat(src, span_notice("<b>Aviso do servidor:</b>\n \t [CONFIG_GET(string/soft_popcap_message)]"))
 
 	add_sight(SEE_TURFS)
 
@@ -60,13 +60,11 @@
 
 	if(SSticker.current_state < GAME_STATE_SETTING_UP)
 		var/tl = SSticker.GetTimeLeft()
-		to_chat(src, "Please set up your character and select \"Ready\". The game will start [tl > 0 ? "in about [DisplayTimeText(tl)]" : "soon"].")
+		to_chat(src, "Por favor, configure seu personagem e selecione\"Pronto.\"O jogo vai começar.[tl > 0 ? "in about [DisplayTimeText(tl)]" : "soon"].")
 
 	if(GLOB.unrecommended_builds[num2text(client.byond_build)])
 		INVOKE_ASYNC(src, PROC_REF(unrcommended_build_alert))
 
 /mob/dead/new_player/proc/unrcommended_build_alert()
-	var/warning = "Hey! The build of byond you are running ([client.byond_build]) has one or more potential issues that may cause major gameplay disruptions.\n\n\
-		You may continue to play, but be aware you may encounter the following issue while playing:\n\"[GLOB.unrecommended_builds[num2text(client.byond_build)]]\"\n\n\
-		If possible, we recommend updating your BYOND version.\nIf you are on the latest version, download an earlier release instead from www.byond.com/download/build."
-	alert(src, warning, "Bad BYOND Build", "OK")
+	var/warning = "Hey! The build of byond you are running ([client.byond_build]) has one or more potential issues that may cause major gameplay disruptions.\n\n		You may continue to play, but be aware you may encounter the following issue while playing:\n\"[GLOB.unrecommended_builds[num2text(client.byond_build)]]\"\n\n		If possible, we recommend updating your BYOND version.\nIf you are on the latest version, download an earlier release instead from www.byond.com/download/build."
+	alert(src, warning, "BONDA Má Construção", "OK")

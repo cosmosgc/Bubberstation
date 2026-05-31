@@ -2,7 +2,7 @@
 //Currently works for head and hands.
 /obj/item/mob_holder
 	name = "bugged mob"
-	desc = "Yell at coderbrush."
+	desc = "Grite em coderbrush."
 	icon = null
 	icon_state = ""
 	slot_flags = NONE
@@ -61,7 +61,7 @@
 	if((item_flags & ABSTRACT) || HAS_TRAIT(src, TRAIT_NODROP))
 		return
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_notice("You set [src] down gently on the ground."))
+		to_chat(user, span_notice("Você está pronto.[src]Deite-se suavemente no chão."))
 		release()
 		return
 
@@ -83,13 +83,13 @@
 	if(isliving(loc))
 		var/mob/living/captor = loc
 		if(display_messages)
-			to_chat(captor, span_warning("[released_mob] wriggles free!"))
+			to_chat(captor, span_warning("[released_mob]Se contorcer livre!"))
 		captor.dropItemToGround(src)
 	released_mob.forceMove(drop_location())
 	released_mob.reset_perspective()
 	released_mob.setDir(SOUTH)
 	if(display_messages)
-		released_mob.visible_message(span_warning("[released_mob] uncurls!"))
+		released_mob.visible_message(span_warning("[released_mob]Desembucha!"))
 	if(!QDELETED(src))
 		qdel(src)
 	return TRUE
@@ -107,8 +107,8 @@
 
 /obj/item/mob_holder/on_found(mob/finder)
 	if(held_mob?.will_escape_storage())
-		to_chat(finder, span_warning("\A [held_mob.name] pops out! "))
-		finder.visible_message(span_warning("\A [held_mob.name] pops out of the container [finder] is opening!"), ignored_mobs = finder)
+		to_chat(finder, span_warning("\A [held_mob.name]Sai!"))
+		finder.visible_message(span_warning("\A [held_mob.name]Sai do receptor.[finder]Está abrindo!"), ignored_mobs = finder)
 		release(display_messages = FALSE)
 		return
 
@@ -124,7 +124,7 @@
 		qdel(src)
 		return
 	name = "drone (hiding)"
-	desc = "This drone is scared and has curled up into a ball!"
+	desc = "Este drone está assustado e enrolou-se em uma bola!"
 
 /obj/item/mob_holder/drone/update_visuals(mob/living/contained)
 	var/mob/living/basic/drone/drone = contained

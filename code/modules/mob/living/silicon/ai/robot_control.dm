@@ -10,7 +10,7 @@
 	if(user != owner || owner.incapacitated)
 		return FALSE
 	if(owner.control_disabled)
-		to_chat(user, span_warning("Wireless control is disabled."))
+		to_chat(user, span_warning("Controle sem fio está desativado."))
 		return FALSE
 	return TRUE
 
@@ -95,7 +95,7 @@
 
 			owner.bot_ref = WEAKREF(bot)
 			owner.setting_waypoint = TRUE
-			to_chat(our_user, span_notice("Set your waypoint by clicking on a valid location free of obstructions."))
+			to_chat(our_user, span_notice("Defina seu point clicando em um local válido livre de obstruções."))
 		if("interface") //Remotely connect to a bot!
 			owner.bot_ref = WEAKREF(bot)
 			if(isbasicbot(bot))

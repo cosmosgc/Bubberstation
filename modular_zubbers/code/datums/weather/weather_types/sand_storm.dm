@@ -2,18 +2,18 @@
 
 /datum/weather/sand_storm_moon
 	name = "sand storm"
-	desc = "An intense atmospheric storm lifts sand off of the planet's surface and billows it down across the area, dealing intense burn damage to the unprotected."
+	desc = "Uma intensa tempestade atmosférica levanta areia da superfície do planeta e a espalha pela área, causando intensos danos às queimaduras dos desprotegidos."
 
-	telegraph_message = "<span class='boldwarning'>Stacks of dark clouds and cloudy sand cover the horizon. Seek shelter.</span>"
+	telegraph_message = "<span class='boldwarning'>Pilha de nuvenscuras e areia nublada cobrem o horizonte. Procuram Abrigo.</span>"
 	telegraph_duration = 60 SECONDS
 	telegraph_overlay = "sandstorm_light"
 
-	weather_message = "<span class='userdanger'><i>Smoldering particles of sand billow down around you! Get inside!</i></span>"
+	weather_message = "<span class='userdanger'><i>Partículas fumegantes de areia ao seu redor! Entre!</i></span>"
 	weather_duration_lower = 1 MINUTES
 	weather_duration_upper = 3 MINUTES
 	weather_overlay = "sandstorm"
 
-	end_message = "<span class='boldannounce'>The shrieking wind whips away the last of the sand and falls to its usual murmur. It should be safe to go outside now.</span>"
+	end_message = "<span class='boldannounce'>O vento gritante tira o resto da areia e cai em seu murmúrio habitual. Deve ser seguro sair agora.</span>"
 	end_duration = 30 SECONDS
 	end_overlay = "sandstorm_light"
 

@@ -7,7 +7,7 @@ RSF
 #define OBJECT_OR_LIST_ELEMENT(from, input) (islist(input) ? from[input] : input)
 /obj/item/rsf
 	name = "\improper Rapid-Service-Fabricator"
-	desc = "A device used to rapidly deploy service items."
+	desc = "Um dispositivo usado para implantar rapidamente itens de serviço."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rsf"
 	inhand_icon_state = "rsf"
@@ -67,7 +67,7 @@ RSF
 
 /obj/item/rsf/examine(mob/user)
 	. = ..()
-	. += span_notice("It currently holds [matter]/[max_matter] [discriptor].")
+	. += span_notice("Ele atualmente detém[matter]/[max_matter] [discriptor].")
 
 /obj/item/rsf/cyborg
 	matter = 30
@@ -76,7 +76,7 @@ RSF
 	if(is_type_in_list(W,matter_by_item))//If the thing we got hit by is in our matter list
 		var/tempMatter = matter_by_item[W.type] + matter
 		if(tempMatter > max_matter)
-			to_chat(user, span_warning("\The [src] can't hold any more [discriptor]!"))
+			to_chat(user, span_warning("\The [src]Não aguento mais.[discriptor]!"))
 			return
 		if(isstack(W))
 			var/obj/item/stack/stack = W
@@ -85,7 +85,7 @@ RSF
 			qdel(W)
 		matter = tempMatter //We add its value
 		playsound(src.loc, 'sound/machines/click.ogg', 10, TRUE)
-		to_chat(user, span_notice("\The [src] now holds [matter]/[max_matter] [discriptor]."))
+		to_chat(user, span_notice("\The [src]Agora segura[matter]/[max_matter] [discriptor]."))
 		icon_state = base_icon_state//and set the icon state to the base state
 	else
 		return ..()
@@ -144,18 +144,18 @@ RSF
 		var/mob/living/silicon/robot/R = user
 		var/end_charge = R.cell.charge - charge
 		if(end_charge < 0)
-			to_chat(user, span_warning("You do not have enough power to use [src]."))
+			to_chat(user, span_warning("Você não tem poder suficiente para usar.[src]."))
 			icon_state = spent_icon_state
 			return FALSE
 		R.cell.charge = end_charge
 		return TRUE
 	else
 		if(matter - 1 < 0)
-			to_chat(user, span_warning("\The [src] doesn't have enough [discriptor] left."))
+			to_chat(user, span_warning("\The [src]não tem o suficiente[discriptor]Esquerda."))
 			icon_state = spent_icon_state
 			return FALSE
 		matter--
-		to_chat(user, span_notice("\The [src] now holds [matter]/[max_matter] [discriptor]."))
+		to_chat(user, span_notice("\The [src]Agora segura[matter]/[max_matter] [discriptor]."))
 		return TRUE
 
 ///Helper proc that iterates through all the things we are allowed to spawn on, and sees if the passed atom is one of them
@@ -164,7 +164,7 @@ RSF
 
 /obj/item/rsf/cookiesynth
 	name = "Cookie Synthesizer"
-	desc = "A self-recharging device used to rapidly deploy cookies."
+	desc = "Um dispositivo de auto-recarregamento usado para implantar cookies rápidamente."
 	icon_state = "rcd"
 	base_icon_state = "rcd"
 	spent_icon_state = "rcd"
@@ -180,9 +180,9 @@ RSF
 /obj/item/rsf/cookiesynth/emag_act(mob/user, obj/item/card/emag/emag_card)
 	obj_flags ^= EMAGGED
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "reagent safety checker shorted out")
+		balloon_alert(user, "Verificador de segurança reagente curtou.")
 	else
-		balloon_alert(user, "reagent safety checker reset")
+		balloon_alert(user, "Reagente de segurança reset")
 	return TRUE
 
 /obj/item/rsf/cookiesynth/attack_self(mob/user)
@@ -192,10 +192,10 @@ RSF
 	if(((obj_flags & EMAGGED) || (P?.emagged)) && !toxin)
 		toxin = TRUE
 		to_dispense = /obj/item/food/cookie/sleepy
-		to_chat(user, span_alert("Cookie Synthesizer hacked."))
+		to_chat(user, span_alert("Sintetizador de biscoitos hackeado."))
 	else
 		toxin = FALSE
 		to_dispense = /obj/item/food/cookie
-		to_chat(user, span_notice("Cookie Synthesizer reset."))
+		to_chat(user, span_notice("Sintetizador de biscoitos reiniciado."))
 
 #undef OBJECT_OR_LIST_ELEMENT

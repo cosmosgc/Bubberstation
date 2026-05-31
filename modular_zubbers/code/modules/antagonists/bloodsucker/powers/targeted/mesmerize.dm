@@ -20,7 +20,7 @@
 	target_range = 4
 	power_activates_immediately = FALSE
 	unset_after_click = FALSE
-	prefire_message = "Whom will you subvert to your will?"
+	prefire_message = "Quem você vai subverter à sua vontade?"
 	///Our mesmerized target - Prevents several mesmerizes.
 	var/datum/weakref/target_ref
 	/// How long it takes us to mesmerize our target.
@@ -70,11 +70,11 @@
 		return FALSE
 	if(!user.get_organ_slot(ORGAN_SLOT_EYES))
 		// Cant use balloon alert, they've got no eyes!
-		to_chat(user, span_warning("You have no eyes with which to mesmerize."))
+		to_chat(user, span_warning("Você não tem olhos para hipnotizar."))
 		return FALSE
 	// Check: Eyes covered?
 	if(blocked_by_glasses && istype(user) && (user.is_eyes_covered() && level_current <= 2) || !isturf(user.loc))
-		user.balloon_alert(user, "your eyes are concealed from sight.")
+		user.balloon_alert(user, "Seus olhos estão escondidos.")
 		return FALSE
 	return TRUE
 
@@ -92,32 +92,32 @@
 	// No mind
 #ifndef BLOODSUCKER_TESTING
 	if(!current_target.mind)
-		owner.balloon_alert(owner, "[current_target] is mindless.")
+		owner.balloon_alert(owner, "[current_target]é descuidado.")
 		return FALSE
 #endif
 	// Bloodsucker
 	if(IS_BLOODSUCKER(current_target))
-		owner.balloon_alert(owner, "bloodsuckers are immune to [src].")
+		owner.balloon_alert(owner, "Sanguessugas são imunes a[src].")
 		return FALSE
 	// Dead/Unconscious
 	if(current_target.stat > CONSCIOUS)
-		owner.balloon_alert(owner, "[current_target] is not [(current_target.stat == DEAD || HAS_TRAIT(current_target, TRAIT_FAKEDEATH)) ? "alive" : "conscious"].")
+		owner.balloon_alert(owner, "[current_target]Não é.[(current_target.stat == DEAD || HAS_TRAIT(current_target, TRAIT_FAKEDEATH)) ? "alive" : "conscious"].")
 		return FALSE
 	// Target has eyes?
 	if(!current_target.get_organ_slot(ORGAN_SLOT_EYES) && !issilicon(current_target))
-		owner.balloon_alert(owner, "[current_target] has no eyes.")
+		owner.balloon_alert(owner, "[current_target]Não tem olhos.")
 		return FALSE
 	// Target blind?
 	if(current_target.is_blind() && !issilicon(current_target))
-		owner.balloon_alert(owner, "[current_target] is blind.")
+		owner.balloon_alert(owner, "[current_target]é cego.")
 		return FALSE
 	// Facing target?
 	if(requires_facing_target && !is_source_facing_target(owner, current_target)) // in unsorted.dm
-		owner.balloon_alert(owner, "you must be facing [current_target].")
+		owner.balloon_alert(owner, "Você deve estar encarando[current_target].")
 		return FALSE
 	// Target facing me? (On the floor, they're facing everyone)
 	if(((current_target.mobility_flags & MOBILITY_STAND) && requires_facing_target && !is_source_facing_target(current_target, owner) && level_current <= MESMERIZE_FACING_LEVEL))
-		owner.balloon_alert(owner, "[current_target] must be facing you.")
+		owner.balloon_alert(owner, "[current_target]Deve estar de frente para você.")
 		return FALSE
 
 	// Gone through our checks, let's mark our guy.
@@ -137,7 +137,7 @@
 	if(issilicon(mesmerized_target))
 		var/mob/living/silicon/mesmerized = mesmerized_target
 		mesmerized.emp_act(EMP_HEAVY)
-		owner.balloon_alert(owner, "temporarily shut [mesmerized] down.")
+		owner.balloon_alert(owner, "temporariamente fechado[mesmerized]Abaixe-se.")
 		PowerActivatedSuccesfully() // PAY COST! BEGIN COOLDOWN!
 		return
 	// slow them down during the mesmerize
@@ -150,12 +150,12 @@
 	// Can't quite time it here, but oh well
 	to_chat(mesmerized_target, "[user]'s eyes look into yours, and [span_hypnophrase("you feel your mind slipping away")]...")
 	/*if(IS_MONSTERHUNTER(mesmerized_target))
-		to_chat(mesmerized_target, span_notice("You feel your eyes burn for a while, but it passes."))
+		to_chat(mesmerized_target, span_notice("Você sente seus olhos queimando por um tempo, mas passa."))
 		return*/
 	if(HAS_TRAIT_FROM_ONLY(mesmerized_target, TRAIT_NO_TRANSFORM, MESMERIZE_TRAIT))
-		owner.balloon_alert(owner, "[mesmerized_target] is already in a hypnotic gaze.")
+		owner.balloon_alert(owner, "[mesmerized_target]já está em um olhar hipnótico.")
 		return
-	owner.balloon_alert(owner, "successfully mesmerized [mesmerized_target].")
+	owner.balloon_alert(owner, "Com sucesso hipnotizado[mesmerized_target].")
 	mesmerize_effects(user, mesmerized_target)
 	PowerActivatedSuccesfully() // PAY COST! BEGIN COOLDOWN!
 
@@ -166,7 +166,7 @@
 		return
 	COOLDOWN_START(src, mesmerize_cooldown, 2 SECONDS)
 	var/mob/living/mesmerized_target = target
-	owner.balloon_alert(owner, "gazing [mesmerized_target]...")
+	owner.balloon_alert(owner, "Olhando.[mesmerized_target]...")
 	perform_indicators(mesmerized_target, 3 SECONDS)
 	timer = addtimer(CALLBACK(src, PROC_REF(combat_mesmerize_effects), owner, mesmerized_target), 2 SECONDS)
 
@@ -181,7 +181,7 @@
 /datum/action/cooldown/bloodsucker/targeted/mesmerize/proc/combat_mesmerize_effects(mob/living/user, mob/living/mesmerized_target)
 	if(!ContinueActive(user, mesmerized_target))
 		StartCooldown(cooldown_time * 0.5)
-		owner.balloon_alert(owner, "failed!")
+		owner.balloon_alert(owner, "Falhou!")
 		return
 	to_chat(mesmerized_target, "[src]'s eyes look into yours, and [span_hypnophrase("your head becomes fuzzy for a moment")]...")
 	var/effect_time = combat_mesmerize_time()
@@ -220,7 +220,7 @@
 	target.cure_blind(MESMERIZE_TRAIT)
 	// They Woke Up! (Notice if within view)
 	if(istype(user) && target.stat == CONSCIOUS && (target in view(target_range, get_turf(user))))
-		target.balloon_alert(owner, "[target] snapped out of their trance.")
+		target.balloon_alert(owner, "[target]Saiu de seu transe.")
 
 /datum/action/cooldown/bloodsucker/targeted/mesmerize/ContinueActive(mob/living/user, mob/living/target)
 	return ..() && can_use(user) && CheckCanTarget(target)

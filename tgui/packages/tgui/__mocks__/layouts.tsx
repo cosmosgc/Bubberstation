@@ -7,7 +7,7 @@ type WindowProps = Partial<{
 }>;
 
 function Window(props: PropsWithChildren<WindowProps>) {
-  const { title = 'Test UI', children } = props;
+  const { title = 'Teste de UI.', children } = props;
 
   return (
     <div className="Window">

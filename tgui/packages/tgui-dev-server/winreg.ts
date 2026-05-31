@@ -28,19 +28,19 @@ export async function regQuery(
     const indexOfKey = stdout.indexOf(keyPattern);
 
     if (indexOfKey === -1) {
-      logger.error('could not find the registry key');
+      logger.error('Não encontrei a chave do registro.');
       return;
     }
 
     const indexOfEol = stdout.indexOf('\r\n', indexOfKey);
     if (indexOfEol === -1) {
-      logger.error('could not find the end of the line');
+      logger.error('Não consegui encontrar o fim da linha.');
       return;
     }
 
     const indexOfValue = stdout.indexOf('    ', indexOfKey + keyPattern.length);
     if (indexOfValue === -1) {
-      logger.error('could not find the start of the key value');
+      logger.error('não foi possível encontrar o início do valor chave');
       return;
     }
 

@@ -30,7 +30,7 @@ export const Portagrav = (props) => {
             ? `${percentage}%`
             : wiremode
               ? 'WIRE POWERED'
-              : 'NO CELL'}
+              : 'Nenhuma célula'}
           {` - ${gravity}G`}
         </Box>
         <Box
@@ -52,8 +52,8 @@ export const Portagrav = (props) => {
                   <Button
                     width="64px"
                     height="64px"
-                    className="NuclearBomb__Button NuclearBomb__Button--keypad"
-                    tooltip="Toggles if to take power from cable."
+                    className="Botão Nuclear Bomba Botão Nuclear Bomba"
+                    tooltip="Alterna se tira energia do cabo."
                     onClick={() => act('toggle_wire')}
                   >
                     <Icon name="plug" size={3} mt="0.5rem" ml="0.1rem" />
@@ -63,7 +63,7 @@ export const Portagrav = (props) => {
                   <Button
                     width="64px"
                     height="64px"
-                    className="NuclearBomb__Button NuclearBomb__Button--keypad"
+                    className="Botão Nuclear Bomba Botão Nuclear Bomba"
                     onClick={() => act('toggle_power')}
                   >
                     <Icon name="power-off" size={3} mt="0.5rem" ml="0.1rem" />
@@ -79,7 +79,7 @@ export const Portagrav = (props) => {
                   <Button
                     width="100%"
                     height="100%"
-                    className="NuclearBomb__Button NuclearBomb__Button--keypad"
+                    className="Botão Nuclear Bomba Botão Nuclear Bomba"
                     onClick={() => act('adjust_grav', { adjustment: 1 })}
                   >
                     <Icon name="arrow-up" size={3} mt="0.5rem" ml="1.2rem" />
@@ -90,7 +90,7 @@ export const Portagrav = (props) => {
                   <Button
                     width="100%"
                     height="100%"
-                    className="NuclearBomb__Button NuclearBomb__Button--keypad"
+                    className="Botão Nuclear Bomba Botão Nuclear Bomba"
                     onClick={() => act('adjust_grav', { adjustment: -1 })}
                   >
                     <Icon name="arrow-down" size={3} mt="0.5rem" ml="1.2rem" />
@@ -107,7 +107,7 @@ export const Portagrav = (props) => {
                   <Button
                     width="100%"
                     height="100%"
-                    className="NuclearBomb__Button NuclearBomb__Button--keypad"
+                    className="Botão Nuclear Bomba Botão Nuclear Bomba"
                     onClick={() => act('adjust_range', { adjustment: 1 })}
                   >
                     <Icon name="arrow-up" size={3} mt="0.5rem" ml="1rem" />
@@ -118,7 +118,7 @@ export const Portagrav = (props) => {
                   <Button
                     width="100%"
                     height="100%"
-                    className="NuclearBomb__Button NuclearBomb__Button--keypad"
+                    className="Botão Nuclear Bomba Botão Nuclear Bomba"
                     onClick={() => act('adjust_range', { adjustment: -1 })}
                   >
                     <Icon name="arrow-down" size={3} mt="0.5rem" ml="1rem" />

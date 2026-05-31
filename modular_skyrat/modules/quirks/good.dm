@@ -2,31 +2,31 @@
 
 /datum/quirk/hard_soles
 	name = "Hardened Soles"
-	desc = "You're used to walking barefoot, and won't receive the negative effects of doing so."
+	desc = "Você está acostumado a andar descalço, e não receberá os efeitos negativos de fazê-lo."
 	value = 2
 	mob_trait = TRAIT_HARD_SOLES
-	gain_text = span_notice("The ground doesn't feel so rough on your feet anymore.")
-	lose_text = span_danger("You start feeling the ridges and imperfections on the ground.")
-	medical_record_text = "Patient's feet are more resilient against traction."
+	gain_text = span_notice("O chão não parece mais tão duro com seus pés.")
+	lose_text = span_danger("Você começa a sentir os cumes e imperfeições no chão.")
+	medical_record_text = "Os pés do paciente são mais resistentes contra tração."
 	icon = FA_ICON_SHAPES
 
 /datum/quirk/linguist
 	name = "Linguist"
-	desc = "You're a student of numerous languages and come with an additional language point."
+	desc = "Você é um estudante de inúmeras línguas e vem com um ponto adicional de linguagem."
 	value = 2
 	mob_trait = TRAIT_LINGUIST
-	gain_text = span_notice("Your brain seems more equipped to handle different modes of conversation.")
-	lose_text = span_danger("Your grasp of the finer points of Draconic idioms fades away.")
-	medical_record_text = "Patient demonstrates a high brain plasticity in regards to language learning."
+	gain_text = span_notice("Seu cérebro parece mais equipado para lidar com diferentes modos de conversa.")
+	lose_text = span_danger("Sua compreensão dos pontos mais finos da linguagem dracônica desaparece.")
+	medical_record_text = "O paciente demonstra uma alta plasticidade cerebral em relação ao aprendizado de línguas."
 	icon = FA_ICON_BOOK_ATLAS
 
 /datum/quirk/sharpclaws
 	name = "Sharp Claws"
-	desc = "Whether it's a hunter's inherent biology, or your stubborn refusal to clip your nails ahead of your Jiu-Jitsu classes, your unarmed attacks are sharper and will make people bleed."
+	desc = "Seja a biologia inerente de um caçador, ou sua recusa teimosa de cortar as unhas antes das aulas de Jiu-Jitsu, seus ataques desarmados são mais afiados e farão as pessoas sangrarem."
 	value = 2
-	gain_text = span_notice("Your palms hurt a bit from the sharpness of your nails.")
-	lose_text = span_danger("You feel a distinct emptiness as your nails dull; good luck scratching that itch.")
-	medical_record_text = "Patient ended up scratching through the examination table's cushions; recommended they look into clipping their claws."
+	gain_text = span_notice("Suas palmas fazem um pouco pela nitidez das Unhas.")
+	lose_text = span_danger("Você sente um vazio distinto como suas unhas maçam, boa sorte coçando essa coceira.")
+	medical_record_text = "O paciente acabou arranhando as almofadas da mesa de exame, recomendou que olhassem para cortar as garras."
 	icon = FA_ICON_LINES_LEANING
 
 /datum/quirk/sharpclaws/add(client/client_source)
@@ -70,73 +70,73 @@
 
 /datum/quirk/water_breathing
 	name = "Water breathing"
-	desc = "You are able to breathe underwater!"
+	desc = "Você consegue respirar debaixo d'água!"
 	value = 2
 	mob_trait = TRAIT_WATER_BREATHING
-	gain_text = span_notice("You become acutely aware of the moisture in your lungs and in the air. It feels nice.")
-	lose_text = span_danger("You suddenly realize the moisture in your lungs feels <i>really weird</i>, and you almost choke on it!")
-	medical_record_text = "Patient possesses biology compatible with aquatic respiration."
+	gain_text = span_notice("Você se torna consciente da umidade em seus pulmões e no ar. É bom.")
+	lose_text = span_danger("Você de repente percebe que a umidade em seus pulmões sente<i>Muito estranho.</i>E você quase se engasgou!")
+	medical_record_text = "Paciente possui biologia compatível com respiração aquática."
 	icon = FA_ICON_FISH
 
 // AdditionalEmotes *turf quirks
 /datum/quirk/water_aspect
 	name = "Water aspect (Emotes)"
-	desc = "(Aquatic innate) Underwater societies are home to you, space ain't much different. (Say *turf to cast)"
+	desc = "Sociedades subterrâneas são o lar para você, espaço não é muito diferente. (Diga *turf para lançar)"
 	value = 0
 	mob_trait = TRAIT_WATER_ASPECT
-	gain_text = span_notice("You feel like you can control water.")
-	lose_text = span_danger("Somehow, you've lost your ability to control water!")
-	medical_record_text = "Patient holds a collection of nanobots designed to synthesize H2O."
+	gain_text = span_notice("Você sente que pode controlar a água.")
+	lose_text = span_danger("De alguma forma, você perdeu sua capacidade de controlar a água!")
+	medical_record_text = "O paciente tem uma coleção de nanobots projetados para sintetizar H2O."
 	icon = FA_ICON_WATER
 
 /datum/quirk/webbing_aspect
 	name = "Webbing aspect (Emotes)"
-	desc = "(Insect innate) Insect folk capable of weaving aren't unfamiliar with receiving envy from those lacking a natural 3D printer. (Say *turf to cast)"
+	desc = "As pessoas de insetos capazes de tecer não são desconhecidas por receber inveja daqueles que não possuem uma impressora 3D natural. (Diga *turf para lançar)"
 	value = 0
 	mob_trait = TRAIT_WEBBING_ASPECT
-	gain_text = span_notice("You could easily spin a web.")
-	lose_text = span_danger("Somehow, you've lost your ability to weave.")
-	medical_record_text = "Patient has the ability to weave webs with naturally synthesized silk."
+	gain_text = span_notice("Você poderia facilmente girar uma teia.")
+	lose_text = span_danger("De alguma forma, você perdeu sua habilidade de tecer.")
+	medical_record_text = "O paciente tem a habilidade de tecer teias com seda naturalmente sintetizada."
 	icon = FA_ICON_STICKY_NOTE
 
 /datum/quirk/floral_aspect
 	name = "Floral aspect (Emotes)"
-	desc = "(Podperson innate) Kudzu research isn't pointless, rapid photosynthesis technology is here! (Say *turf to cast)"
+	desc = "A pesquisa de Kudzu não é inútil, a tecnologia de fotossíntese rápida está aqui! (Diga *turf para lançar)"
 	value = 0
 	mob_trait = TRAIT_FLORAL_ASPECT
-	gain_text = span_notice("You feel like you can grow vines.")
-	lose_text = span_danger("Somehow, you've lost your ability to rapidly photosynthesize.")
-	medical_record_text = "Patient can rapidly photosynthesize to grow vines."
+	gain_text = span_notice("Você sente que pode cultivar videiras.")
+	lose_text = span_danger("De alguma forma, você perdeu sua habilidade de fotografar rapidamente.")
+	medical_record_text = "O paciente pode rapidamente fazer fotossíntese para cultivar videiras."
 	icon = FA_ICON_PLANT_WILT
 
 /datum/quirk/ash_aspect
 	name = "Ash aspect (Emotes)"
-	desc = "(Lizard innate) The ability to forge ash and flame, a mighty power - yet mostly used for theatrics. (Say *turf to cast)"
+	desc = "(Lizard innate) A habilidade de forjar cinzas e chamas, um poderoso poder, mas usado principalmente para teatro. (Diga *turf para lançar)"
 	value = 0
 	mob_trait = TRAIT_ASH_ASPECT
-	gain_text = span_notice("There is a forge smouldering inside of you.")
-	lose_text = span_danger("Somehow, you've lost your ability to breathe fire.")
-	medical_record_text = "Patients possess a fire breathing gland commonly found in lizard folk."
+	gain_text = span_notice("Há uma forja queimando dentro de você.")
+	lose_text = span_danger("De alguma forma, você perdeu sua habilidade de respirar fogo.")
+	medical_record_text = "Pacientes possuem uma glândula de respiração de fogo comumente encontrada em lagartos."
 	icon = FA_ICON_FIRE
 
 /datum/quirk/sparkle_aspect
 	name = "Sparkle aspect (Emotes)"
-	desc = "(Moth innate) Sparkle like the dust off of a moth's wing, or like a cheap red-light hook-up. (Say *turf to cast)"
+	desc = "Brilha como o pó da asa de uma mariposa, ou como um gancho de luz vermelha barato. (Diga *turf para lançar)"
 	value = 0
 	mob_trait = TRAIT_SPARKLE_ASPECT
-	gain_text = span_notice("You're covered in sparkling dust!")
-	lose_text = span_danger("Somehow, you've completely cleaned yourself of glitter..")
-	medical_record_text = "Patient seems to be looking fabulous."
+	gain_text = span_notice("Você está coberto de poeira brilhante!")
+	lose_text = span_danger("De alguma forma, você se limpou completamente de glitter.")
+	medical_record_text = "O paciente parece estrela fabuloso."
 	icon = FA_ICON_HAND_SPARKLES
 
 /datum/quirk/no_appendix
 	name = "Appendicitis Survivor"
-	desc = "You had a run in with appendicitis in the past and no longer have an appendix."
+	desc = "Você teve uma apendicite no passado e não tem mais um apêndice."
 	icon = FA_ICON_NOTES_MEDICAL
 	value = 2
-	gain_text = span_notice("You no longer have an appendix.")
-	lose_text = span_danger("Your appendix has magically.. regrown?")
-	medical_record_text = "Patient had appendicitis in the past and has had their appendix surgically removed."
+	gain_text = span_notice("Você não tem mais um apêndice.")
+	lose_text = span_danger("Seu apêndice tem magicamente... recreado?")
+	medical_record_text = "O paciente teve apendicite no passado e teve seu apêndice removido cirurgicamente."
 	/// The mob's original appendix
 	var/obj/item/organ/appendix/old_appendix
 

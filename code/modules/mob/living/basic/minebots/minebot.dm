@@ -1,6 +1,6 @@
 /mob/living/basic/mining_drone
 	name = "\improper Nanotrasen minebot"
-	desc = "The instructions printed on the side read: This is a small robot used to support miners, can be set to search and collect loose ore, or to help fend off wildlife."
+	desc = "As instruções impressas no lado diziam: Este é um pequeno robô usado para apoiar mineiros, pode ser definido para procurar e coletar minério solto, ou para ajudar a proteger a vida selvagem."
 	gender = NEUTER
 	icon = 'icons/mob/silicon/aibots.dmi'
 	icon_state = "mining_drone"
@@ -23,7 +23,7 @@
 	speak_emote = list("states")
 	mob_biotypes = MOB_ROBOTIC
 	faction = list(FACTION_STATION, FACTION_NEUTRAL)
-	death_message = "blows apart!"
+	death_message = "Vai pelos são!"
 	light_system = OVERLAY_LIGHT
 	light_range = 6
 	// I want this to be a bit more dim, for vibes
@@ -69,11 +69,7 @@
 	AddElement(/datum/element/death_drops, /obj/effect/decal/cleanable/blood/gibs/robot_debris/old)
 	add_traits(list(TRAIT_LAVA_IMMUNE, TRAIT_ASHSTORM_IMMUNE, TRAIT_SNOWSTORM_IMMUNE, TRAIT_MINING_AOE_IMMUNE), INNATE_TRAIT)
 	AddElement(/datum/element/footstep, FOOTSTEP_OBJ_ROBOT, 1, -6, sound_vary = TRUE)
-	AddComponent(/datum/component/defaceable, \
-		icon = 'icons/mob/silicon/aibot_faces.dmi', \
-		icon_states = list("minebot" = FALSE, "minebot_highlight" = TRUE), \
-		drawing_of = "a face", \
-	)
+	AddComponent(/datum/component/defaceable, 		icon = 'icons/mob/silicon/aibot_faces.dmi', 		icon_states = list("minebot" = FALSE, "minebot_highlight" = TRUE), 		drawing_of = "a face", 	)
 
 	var/static/list/innate_actions = list(
 		/datum/action/cooldown/mob_cooldown/missile_launcher = BB_MINEBOT_MISSILE_ABILITY,
@@ -93,15 +89,15 @@
 /mob/living/basic/mining_drone/set_combat_mode(new_mode, silent = TRUE)
 	. = ..()
 	icon_state = combat_mode ? "mining_drone_offense" : "mining_drone"
-	balloon_alert(src, "now [combat_mode ? "attacking" : "collecting"]")
+	balloon_alert(src, "Agora.[combat_mode ? "attacking" : "collecting"]")
 
 /mob/living/basic/mining_drone/examine(mob/user)
 	. = ..()
 	if(health < maxHealth)
 		if(health >= maxHealth * 0.5)
-			. += span_warning("[p_They()] look slightly dented.")
+			. += span_warning("[p_They()]Parece levemente acumulado.")
 		else
-			. += span_boldwarning("[p_They()] look severely dented!")
+			. += span_boldwarning("[p_They()]Parece separamente amassado!")
 
 	if(isnull(stored_gun) || !stored_gun.max_mod_capacity)
 		return
@@ -109,7 +105,7 @@
 	. += "<b>[stored_gun.get_remaining_mod_capacity()]%</b> mod capacity remaining."
 
 	for(var/obj/item/borg/upgrade/modkit/modkit as anything in stored_gun.modkits)
-		. += span_notice("There is \a [modkit] installed, using <b>[modkit.cost]%</b> capacity.")
+		. += span_notice("Há\a [modkit]Estalado, usando<b>[modkit.cost]%</b>Capacidade.")
 	if(ai_controller && ai_controller.ai_status == AI_STATUS_IDLE)
 		. += "The [src] appears to be in <b>sleep mode</b>. You can restore normal functions by <b>tapping</b> it."
 
@@ -118,14 +114,14 @@
 	if(user.combat_mode)
 		return FALSE
 	if(combat_mode)
-		user.balloon_alert(user, "can't repair in attack mode!")
+		user.balloon_alert(user, "Não posso reparar em modo de ataque!")
 		return TRUE
 	if(maxHealth == health)
-		user.balloon_alert(user, "at full integrity!")
+		user.balloon_alert(user, "Com integridade total!")
 		return TRUE
 	if(welder.use_tool(src, user, 0, volume=40))
 		adjust_brute_loss(-15)
-		user.balloon_alert(user, "successfully repaired!")
+		user.balloon_alert(user, "Com sucesso reparado!")
 	return TRUE
 
 /mob/living/basic/mining_drone/attackby(obj/item/item_used, mob/user, list/modifiers, list/attack_modifiers)
@@ -215,7 +211,7 @@
 	if(user.combat_mode)
 		return CLICK_ACTION_BLOCKING
 	set_combat_mode(!combat_mode)
-	balloon_alert(user, "now [combat_mode ? "attacking wildlife" : "collecting loose ore"]")
+	balloon_alert(user, "Agora.[combat_mode ? "attacking wildlife" : "collecting loose ore"]")
 	return CLICK_ACTION_SUCCESS
 
 /mob/living/basic/mining_drone/RangedAttack(atom/target, list/modifiers)
@@ -234,7 +230,7 @@
 		target_ore.forceMove(src)
 
 /mob/living/basic/mining_drone/proc/drop_ore()
-	to_chat(src, span_notice("You dump your stored ore."))
+	to_chat(src, span_notice("Você joga seu minério armazenado."))
 	for(var/obj/item/stack/ore/dropped_item in contents)
 		dropped_item.forceMove(get_turf(src))
 

@@ -1,18 +1,18 @@
 /obj/item/clothing/mask/whistle/minigame
 	name = "referee whistle"
-	desc = "A referee whistle used to call fouls against players."
+	desc = "Um apito de árbitro costumava chamar faltas contra os jogadores."
 	actions_types = list(/datum/action/innate/timeout)
 	action_slots = ALL
 
 // should be /datum/action/item_action but it doesn't support InterceptClickOn()
 /datum/action/innate/timeout
 	name = "Call foul"
-	desc = "Puts a person in a timeout for a few seconds."
+	desc = "Coloca uma pessoa em um intervalo por alguns segundos."
 	button_icon = 'icons/obj/clothing/masks.dmi'
 	button_icon_state = "whistle"
 	click_action = TRUE
-	enable_text = span_cult("You prepare to call a foul on someone...")
-	disable_text = span_cult("You decide it was a bad call...")
+	enable_text = span_cult("Você se prepara para chamar uma falta em alguém...")
+	disable_text = span_cult("Você decide que foi uma má decisão...")
 	COOLDOWN_DECLARE(whistle_cooldown_minigame)
 
 /datum/action/innate/timeout/InterceptClickOn(mob/living/clicker, params, atom/clicked_on)
@@ -27,7 +27,7 @@
 		return FALSE
 
 	if(!COOLDOWN_FINISHED(src, whistle_cooldown_minigame))
-		clicker.balloon_alert(clicker, "cant cast for [COOLDOWN_TIMELEFT(src, whistle_cooldown_minigame) *0.1] seconds!")
+		clicker.balloon_alert(clicker, "Não posso lançar para[COOLDOWN_TIMELEFT(src, whistle_cooldown_minigame) *0.1]segundos!")
 		unset_ranged_ability(clicker)
 		return FALSE
 
@@ -42,6 +42,6 @@
 	COOLDOWN_START(src, whistle_cooldown_minigame, 1 MINUTES)
 	unset_ranged_ability(clicker)
 
-	to_chat(target, span_bold("[clicker] has given you a timeout for a foul!"))
-	to_chat(clicker, span_bold("You put [target] in a timeout!"))
+	to_chat(target, span_bold("[clicker]deu-lhe um tempo para uma falta!"))
+	to_chat(clicker, span_bold("Você colocou[target]Em um intervalo!"))
 	return TRUE

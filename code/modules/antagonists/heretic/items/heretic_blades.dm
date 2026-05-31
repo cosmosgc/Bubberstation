@@ -1,7 +1,7 @@
 
 /obj/item/melee/sickly_blade
 	name = "\improper sickly blade"
-	desc = "A sickly green crescent blade, decorated with an ornamental eye. You feel like you're being watched..."
+	desc = "Uma lâmina crescente verde doente, decorada com um olho ornamental. Você sente que está sendo vigiado..."
 	icon = 'icons/obj/weapons/khopesh.dmi'
 	icon_state = "eldritch_blade"
 	inhand_icon_state = "eldritch_blade"
@@ -35,7 +35,7 @@
 	if(!check_usability(user))
 		return
 
-	. += span_notice("You can shatter the blade to teleport to a random, (mostly) safe location by <b>activating it in-hand</b>.")
+	. += span_notice("Você pode quebrar a lâmina para se teletransportar para um local aleatório, (principalmente) seguro por<b>ativando na mão.</b>.")
 
 /// Checks if the passed mob can use this blade without being stunned
 /obj/item/melee/sickly_blade/proc/check_usability(mob/living/user)
@@ -46,7 +46,7 @@
 	if(.)
 		return .
 	if(!check_usability(user))
-		to_chat(user, span_danger("You feel a pulse of alien intellect lash out at your mind!"))
+		to_chat(user, span_danger("Você sente um pulso de intelecto alienígena atacando sua mente!"))
 		var/mob/living/carbon/human/human_user = user
 		human_user.AdjustParalyzed(5 SECONDS)
 		return TRUE
@@ -58,9 +58,9 @@
 	if(heretic_datum?.unlimited_blades)
 		return
 	if(HAS_TRAIT(user, TRAIT_ELDRITCH_ARENA_PARTICIPANT))
-		user.balloon_alert(user, "can't escape!")
+		user.balloon_alert(user, "Não posso escapar!")
 		if(escape_attempts > 2)
-			to_chat(user, span_hypnophrase(span_big("Cowardly sheep will be slaughtered!")))
+			to_chat(user, span_hypnophrase(span_big("Ovelhas covardes serão massacradas!")))
 			playsound(src, SFX_SHATTER, 70, TRUE)
 			var/obj/item/bodypart/to_remove = user.get_active_hand()
 			to_remove.dismember()
@@ -71,7 +71,7 @@
 		escape_timer = addtimer(CALLBACK(src, PROC_REF(reset_attempts)), 2 SECONDS, TIMER_STOPPABLE)
 		return
 	if(HAS_TRAIT(user, TRAIT_NO_TELEPORT))
-		user.balloon_alert(user, "can't break!")
+		user.balloon_alert(user, "Não posso quebrar!")
 		return
 	seek_safety(user)
 
@@ -84,11 +84,11 @@
 	var/turf/safe_turf = find_safe_turf(z, extended_safety_checks = TRUE)
 	if(check_usability(user))
 		if(do_teleport(user, safe_turf, channel = TELEPORT_CHANNEL_MAGIC))
-			to_chat(user, span_warning("As you shatter [src], you feel a gust of energy flow through your body. [after_use_message]"))
+			to_chat(user, span_warning("Enquanto você quebra[src]Você sente uma rajada de energia fluindo pelo seu corpo.[after_use_message]"))
 		else
-			to_chat(user, span_warning("You shatter [src], but your plea goes unanswered."))
+			to_chat(user, span_warning("Você quebra[src]Mas seu pedido não foi respondido."))
 	else
-		to_chat(user,span_warning("You shatter [src]."))
+		to_chat(user,span_warning("Você quebra[src]."))
 	playsound(src, SFX_SHATTER, 70, TRUE) //copied from the code for smashing a glass sheet onto the ground to turn it into a shard
 	qdel(src)
 
@@ -102,65 +102,54 @@
 // Path of Rust's blade
 /obj/item/melee/sickly_blade/rust
 	name = "\improper rusted blade"
-	desc = "This crescent blade is decrepit, wasting to rust. \
-		Yet still it bites, ripping flesh and bone with jagged, rotten teeth."
+	desc = "Esta lâmina crescente está decrépita, desperdiçando para enferrujar. Mas ainda morde, rasgando carne e osso com dentes podres."
 	icon_state = "rust_blade"
 	inhand_icon_state = "rust_blade"
-	after_use_message = "The Rusted Hills hear your call..."
+	after_use_message = "As Colinas Rusted ouvem seu chamado..."
 
 // Path of Ash's blade
 /obj/item/melee/sickly_blade/ash
 	name = "\improper ashen blade"
-	desc = "Molten and unwrought, a hunk of metal warped to cinders and slag. \
-		Unmade, it aspires to be more than it is, and shears soot-filled wounds with a blunt edge."
+	desc = "Derretido e em bruto, um pedaço de metal dobrado em cinzas e escória. Desfeito, aspira ser mais do que é, e tesouras feridas cheias de fuligem com uma borda contundente."
 	icon_state = "ash_blade"
 	inhand_icon_state = "ash_blade"
-	after_use_message = "The Nightwatcher hears your call..."
+	after_use_message = "O Observador da Noite ouve seu chamado..."
 	resistance_flags = FIRE_PROOF
 
 // Path of Flesh's blade
 /obj/item/melee/sickly_blade/flesh
 	name = "\improper bloody blade"
-	desc = "A crescent blade born from a fleshwarped creature. \
-		Keenly aware, it seeks to spread to others the suffering it has endured from its dreadful origins."
+	desc = "Uma lâmina crescente nascida de uma criatura de carne. Conscientes, ele procura espalhar para os outros o sofrimento que ele suportou de suas terríveis origens."
 	icon_state = "flesh_blade"
 	inhand_icon_state = "flesh_blade"
-	after_use_message = "The Marshal hears your call..."
+	after_use_message = "O Marechal ouve sua chamada..."
 
 /obj/item/melee/sickly_blade/flesh/Initialize(mapload)
 	. = ..()
 
 	AddComponent(
-		/datum/component/blood_walk,\
-		blood_type = /obj/effect/decal/cleanable/blood,\
-		blood_spawn_chance = 66.6,\
-		max_blood = INFINITY,\
-	)
+		/datum/component/blood_walk,		blood_type = /obj/effect/decal/cleanable/blood,		blood_spawn_chance = 66.6,		max_blood = INFINITY,	)
 
 	AddComponent(
-		/datum/component/bloody_spreader,\
-		blood_dna = list("Alien DNA" = get_blood_type(BLOOD_TYPE_XENO)),\
-	)
+		/datum/component/bloody_spreader,		blood_dna = list("Alien DNA" = get_blood_type(BLOOD_TYPE_XENO)),	)
 
 // Path of Void's blade
 /obj/item/melee/sickly_blade/void
 	name = "\improper void blade"
-	desc = "Devoid of any substance, this blade reflects nothingness. \
-		It is a real depiction of purity, and chaos that ensues after its implementation."
+	desc = "Devoto de qualquer substância, esta lâmina reflete nada. É uma verdadeira representação da pureza, e caos que se segue após sua implementação."
 	icon_state = "void_blade"
 	inhand_icon_state = "void_blade"
-	after_use_message = "The Aristocrat hears your call..."
+	after_use_message = "O Aristocrata ouve seu chamado..."
 
 // Path of the Blade's... blade.
 // Opting for /dark instead of /blade to avoid "sickly_blade/blade".
 /obj/item/melee/sickly_blade/dark
 	name = "\improper sundered blade"
-	desc = "A galliant blade, sundered and torn. \
-		Furiously, the blade cuts. Silver scars bind it forever to its dark purpose."
+	desc = "Uma lâmina galiante, enfeitada e rasgada. Furiosamente, a lâmina corta. Cicatrizes de prata a ligam para sempre ao seu propósito sombrio."
 	icon_state = "dark_blade"
 	base_icon_state = "dark_blade"
 	inhand_icon_state = "dark_blade"
-	after_use_message = "The Torn Champion hears your call..."
+	after_use_message = "O Campeão da Tortura ouve seu chamado..."
 	///If our blade is currently infused with the mansus grasp
 	var/infused = FALSE
 
@@ -187,7 +176,7 @@
 	// We're officially behind them, apply effects
 	living_target.AdjustParalyzed(1.5 SECONDS)
 	living_target.apply_damage(10, BRUTE, wound_bonus = CANT_WOUND)
-	living_target.balloon_alert(user, "backstab!")
+	living_target.balloon_alert(user, "Apunhalar as costas!")
 	playsound(living_target, 'sound/items/weapons/guillotine.ogg', 100, TRUE)
 
 /obj/item/melee/sickly_blade/dark/dropped(mob/user, silent)
@@ -208,39 +197,35 @@
 // Path of Cosmos's blade
 /obj/item/melee/sickly_blade/cosmic
 	name = "\improper cosmic blade"
-	desc = "A mote of celestial resonance, shaped into a star-woven blade. \
-		An iridescent exile, carving radiant trails, desperately seeking unification."
+	desc = "Um mote de ressonância celestial, moldado em uma lâmina tecida por estrelas. Um exílio iridescente, esculpindo trilhas radiantes, buscando desesperadamente a unificação."
 	icon_state = "cosmic_blade"
 	inhand_icon_state = "cosmic_blade"
-	after_use_message = "The Stargazer hears your call..."
+	after_use_message = "O Stargazer ouve seu chamado..."
 
 // Path of Knock's blade
 /obj/item/melee/sickly_blade/lock
 	name = "\improper key blade"
-	desc = "A blade and a key, a key to what? \
-		What grand gates does it open?"
+	desc = "Uma lâmina e uma chave, uma chave para o quê? Que grandes portões ele abre?"
 	icon_state = "key_blade"
 	inhand_icon_state = "key_blade"
-	after_use_message = "The Stewards hear your call..."
+	after_use_message = "Os Stewards ouvem seu chamado..."
 	tool_behaviour = TOOL_CROWBAR
 	toolspeed = 1.3
 
 // Path of Moon's blade
 /obj/item/melee/sickly_blade/moon
 	name = "\improper moon blade"
-	desc = "A blade of iron, reflecting the truth of the earth: All join the troupe one day. \
-		A troupe bringing joy, carving smiles on their faces if they want one or not."
+	desc = "Uma lâmina de ferro, refletindo a verdade da terra, todos se unam à trupe um dia. Uma trupe trazendo alegria, esculpindo sorrisos em seus rostos se quiserem ou não."
 	icon_state = "moon_blade"
 	inhand_icon_state = "moon_blade"
-	after_use_message = "The Moon hears your call..."
+	after_use_message = "A Lua ouve seu chamado..."
 
 // Path of Nar'Sie's blade
 // What!? This blade is given to cultists as an altar item when they sacrifice a heretic.
 // It is also given to the heretic themself if they sacrifice a cultist.
 /obj/item/melee/sickly_blade/cursed
 	name = "\improper cursed blade"
-	desc = "A dark blade, cursed to bleed forever. In constant struggle between the eldritch and the dark, it is forced to accept any wielder as its master. \
-		Its eye's cornea drips blood endlessly into the ground, yet its piercing gaze remains on you."
+	desc = "Uma lâmina escura, amaldiçoada para sangrar para sempre. Em constante luta entre o eldritch e o escuro, é forçado a aceitar qualquer empunhador como seu mestre. A córnea do olho pinga sangue para o chão, mas seu olhar penetrante permanece em você."
 	force = 25
 	throwforce = 15
 	block_chance = 35
@@ -272,22 +257,22 @@
 	if(IS_HERETIC_OR_MONSTER(user) || IS_CULTIST(user))
 		return TRUE
 	if(prob(15))
-		to_chat(user, span_cult_large(pick("\"An untouched mind? Amusing.\"", "\" I suppose it isn't worth the effort to stop you.\"", "\"Go ahead. I don't care.\"", "\"You'll be mine soon enough.\"")))
+		to_chat(user, span_cult_large(pick("\"Uma mente intocada? Divertido.\"", "\"Suponho que não vale a pena o esforço para impedi-lo.\"", "\"Vá em frente. Não me importo.\"", "\"Você será meu em breve.\"")))
 		user.apply_damage(5, BURN, user.get_active_hand())
 		playsound(src, SFX_SEAR, 25, TRUE)
-		to_chat(user, span_danger("Your hand sizzles.")) // Nar nar might not care but their essence still doesn't like you
+		to_chat(user, span_danger("Sua mão se cala.")) // Nar nar might not care but their essence still doesn't like you
 	else if(prob(15))
 		to_chat(user, span_big(span_hypnophrase("LW'NAFH'NAHOR UH'ENAH'YMG EPGOKA AH NAFL MGEMPGAH'EHYE")))
-		to_chat(user, span_danger("Horrible, unintelligible utterances flood your mind!"))
+		to_chat(user, span_danger("Horríveis e ininteligíveis declarações inundam sua mente!"))
 		user.adjust_organ_loss(ORGAN_SLOT_BRAIN, 15) // This can kill you if you ignore it
 	return TRUE
 
 /obj/item/melee/sickly_blade/cursed/equipped(mob/user, slot)
 	. = ..()
 	if(IS_HERETIC_OR_MONSTER(user))
-		after_use_message = "The Mansus hears your call..."
+		after_use_message = "O Mansus ouve seu chamado..."
 	else if(IS_CULTIST(user))
-		after_use_message = "Nar'Sie hears your call..."
+		after_use_message = "Nar'Sie ouve seu chamado..."
 	else
 		after_use_message = null
 
@@ -312,8 +297,7 @@
 // Weaker blade variant given to people so they can participate in the heretic arena spell
 /obj/item/melee/sickly_blade/training
 	name = "\improper imperfect blade"
-	desc = "A blade given to those who cannot accept the truth, out of pity. \
-		May it act as a blessing in the short time it remains alongside you."
+	desc = "Uma lâmina dada àqueles que não podem aceitar a verdade, por pena. Que aja como uma bênção no curto espaço de tempo que permanece ao seu lado."
 	force = 17
 	armour_penetration = 0
 

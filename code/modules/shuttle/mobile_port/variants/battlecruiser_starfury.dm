@@ -71,7 +71,7 @@
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/fighter
 	name = "syndicate fighter navigation computer"
-	desc = "Used to pilot syndicate fighters to commence precision strikes."
+	desc = "Costumava pilotar caças do sindicato para iniciar ataques de precisão."
 	x_offset = 0
 	y_offset = 3
 
@@ -95,7 +95,7 @@
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/corvette
 	name = "syndicate corvette navigation computer"
-	desc = "Used to pilot the syndicate corvette to board enemy stations and ships."
+	desc = "Costumava pilotar o sindicato Corvette para embarcar em estações inimigas e navios."
 	shuttleId = "SBC_corvette"
 	shuttlePortId = "SBC_corvette_custom"
 	jump_to_ports = list("syndicate_ne" = 1, "syndicate_nw" = 1, "syndicate_n" = 1, "syndicate_se" = 1, "syndicate_sw" = 1, "syndicate_s" = 1, "SBC_corvette_bay" = 1)
@@ -104,7 +104,7 @@
 
 /obj/machinery/computer/shuttle/starfury/fighter
 	name = "syndicate fighter control console"
-	desc = "A control computer which controls a shuttle which operates from the SBC Starfury.."
+	desc = "Um computador de controle que controla uma nave que opera a partir da SBC Starfury."
 	req_access = list(ACCESS_SYNDICATE)
 
 /obj/machinery/computer/shuttle/starfury/fighter/fighter_one
@@ -124,7 +124,7 @@
 
 /obj/machinery/computer/shuttle/starfury/corvette
 	name = "syndicate corvette control console"
-	desc = "A control computer which controls a shuttle which operates from the SBC Starfury.."
+	desc = "Um computador de controle que controla uma nave que opera a partir da SBC Starfury."
 	shuttleId = "SBC_corvette"
 	possible_destinations = "SBC_corvette_custom;SBC_corvette_bay;syndicate_ne;syndicate_nw;syndicate_n;syndicate_se;syndicate_sw;syndicate_s"
 	req_access = list(ACCESS_SYNDICATE)
@@ -135,7 +135,7 @@
  */
 /proc/summon_battlecruiser(datum/team/battlecruiser/team)
 
-	var/list/candidates = SSpolling.poll_ghost_candidates("Do you wish to be considered for [span_notice("battlecruiser crew")]?", check_jobban = ROLE_TRAITOR, alert_pic = /obj/machinery/sleeper/syndie, role_name_text = "battlecruiser crew")
+	var/list/candidates = SSpolling.poll_ghost_candidates("Do you wish to be considered for [span_notice("battlecruiser crew")]?", check_jobban = ROLE_TRAITOR, alert_pic = /obj/machinery/sleeper/syndie, role_name_text = "Equipe de Cruzador de Batalha")
 	shuffle_inplace(candidates)
 
 	var/datum/map_template/ship = SSmapping.map_templates["battlecruiser_starfury.dmm"]

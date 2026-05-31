@@ -1,6 +1,6 @@
 /obj/item/slime_scanner
 	name = "slime scanner"
-	desc = "A device that analyzes a slime's internal composition and measures its stats."
+	desc = "Um dispositivo que analisa a composição interna de um lodo e mede suas estatísticas."
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "slime_scanner"
 	inhand_icon_state = "analyzer"
@@ -19,7 +19,7 @@
 	if(!user.can_read(src)) //SKYRAT EDIT CHANGE - Blind People Can Analyze Again - ORIGINAL : if(!user.can_read(src) || user.is_blind())
 		return ITEM_INTERACT_BLOCKING
 	if (!isslime(interacting_with))
-		to_chat(user, span_warning("This device can only scan slimes!"))
+		to_chat(user, span_warning("Este dispositivo só pode escanear lodos!"))
 		return ITEM_INTERACT_BLOCKING
 	var/mob/living/basic/slime/scanned_slime = interacting_with
 	playsound(src, SFX_INDUSTRIAL_SCAN, 20, TRUE, -2, TRUE, FALSE)
@@ -27,9 +27,7 @@
 	return ITEM_INTERACT_SUCCESS
 
 /proc/slime_scan(mob/living/basic/slime/scanned_slime, mob/living/user)
-	var/to_render = "<b>Slime scan results:</b>\
-					\n[span_notice("[scanned_slime.slime_type.colour] [scanned_slime.life_stage] slime")]\
-					\nNutrition: [scanned_slime.nutrition]/[SLIME_MAX_NUTRITION]"
+	var/to_render = "<b>Resultados de slime scan:</b>					\n[span_notice("[scanned_slime.slime_type.colour] [scanned_slime.life_stage] slime")]					\nNutrição:[scanned_slime.nutrition]/[SLIME_MAX_NUTRITION]"
 
 	if (scanned_slime.nutrition < SLIME_STARVE_NUTRITION)
 		to_render += "\n[span_warning("Warning: slime is starving!")]"
@@ -54,7 +52,6 @@
 	to_render += "\nGrowth progress: [scanned_slime.amount_grown]/[SLIME_EVOLUTION_THRESHOLD]"
 
 	if(scanned_slime.crossbreed_modification)
-		to_render += "\n[span_notice("Core mutation in progress: [scanned_slime.crossbreed_modification]")]\
-					  \n[span_notice("Progress in core mutation: [scanned_slime.applied_crossbreed_amount] / [SLIME_EXTRACT_CROSSING_REQUIRED]")]"
+		to_render += "\n[span_notice("Core mutation in progress: [scanned_slime.crossbreed_modification]")]					  \n[span_notice("Progress in core mutation: [scanned_slime.applied_crossbreed_amount] / [SLIME_EXTRACT_CROSSING_REQUIRED]")]"
 
 	to_chat(user, boxed_message(jointext(to_render,"")))

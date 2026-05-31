@@ -28,8 +28,7 @@
 		return
 
 	if(HAS_TRAIT(src, TRAIT_NEVERBONER) || has_status_effect(/datum/status_effect/climax_cooldown) || (!has_vagina() && !has_penis()))
-		visible_message(span_purple("[src] twitches, trying to cum, but with no result."), \
-			span_purple("You can't have an orgasm!"))
+		visible_message(span_purple("[src]Treme, tentando gozar, mas sem resultado."), 			span_purple("Você não pode ter um orgasmo!"))
 		return TRUE
 
 	// Reduce pop-ups and make it slightly more frictionless (lewd).
@@ -65,19 +64,16 @@
 	if(climax_choice == CLIMAX_PENIS || climax_choice == CLIMAX_BOTH)
 		var/obj/item/organ/genital/penis/penis = get_organ_slot(ORGAN_SLOT_PENIS)
 		if(!testicles || testicles.reagents.total_volume < MIN_CUM_THRESHOLD) //If we have no god damn balls, we can't cum anywhere... GET BALLS! , OR theres so little in your balls that nothing comes out...
-			visible_message(span_userlove("[src] orgasms, but nothing comes out of [self_their] penis!"), \
-				span_userlove("You orgasm, it feels great, but nothing comes out of your penis!"))
+			visible_message(span_userlove("[src]orgasmos, mas nada sai de[self_their]Pênis!"), 				span_userlove("Seu orgasmo é ótimo, mas nada sai do seu pênis!"))
 
 		else if(is_wearing_condom())
 			var/obj/item/clothing/sextoy/condom/condom = src.penis // bruh 💀⚰️💀⚰️💀⚰️💀⚰️💀
 			condom.condom_use() // condoms probably should become reagent containers at some point
-			visible_message(span_userlove("[src] shoots [self_their] load into the [condom], filling it up!"), \
-				span_userlove("You shoot your thick load into the [condom] and it catches it all!"))
+			visible_message(span_userlove("[src]Atira[self_their]Carregar na[condom]Enchendo!"), 				span_userlove("Você atira sua carga grossa no[condom]E pega tudo!"))
 			testicles.reagents.remove_all(testicles.cumshot_size)
 
 		else if(!is_bottomless() && penis.visibility_preference != GENITAL_ALWAYS_SHOW)
-			visible_message(span_userlove("[src] cums inside [self_their] clothes!"), \
-				span_userlove("You shoot your load, but you weren't naked, so you mess up your clothes!"))
+			visible_message(span_userlove("[src]Cums dentro[self_their]Roupas!"), 				span_userlove("Você atira na sua carga, mas não estava nua, então você estraga suas roupas!"))
 			self_orgasm = TRUE
 			testicles.reagents.remove_all(testicles.cumshot_size)
 
@@ -106,22 +102,20 @@
 			if(istype(portal, /obj/structure/lewd_portal))
 				buttons += CLIMAX_PORTAL
 
-			var/penis_climax_choice = tgui_alert(src, "Choose where to shoot your load.", "Load preference!", buttons)
+			var/penis_climax_choice = tgui_alert(src, "Escolha onde atirar.", "Load preference!", buttons)
 
 			var/create_cum_decal = FALSE
 
 			if(!penis_climax_choice || penis_climax_choice == CLIMAX_ON_FLOOR)
 				create_cum_decal = TRUE
-				visible_message(span_userlove("[src] shoots [self_their] sticky load onto the floor!"), \
-					span_userlove("You shoot string after string of hot cum, hitting the floor!"))
+				visible_message(span_userlove("[src]Atira[self_their]Carga pegajosa no chão!"), 					span_userlove("Você atira fio após fio de esperma quente, batendo no chão!"))
 				testicles.reagents.remove_all(testicles.cumshot_size)
 
 			else if(penis_climax_choice == CLIMAX_OPEN_CONTAINER)
 				var/target_choice = tgui_input_list(src, "Choose a container to cum into.", "Choose target!", interactable_inrange_open_containers)
 				if(!target_choice)
 					create_cum_decal = TRUE
-					visible_message(span_userlove("[src] shoots [self_their] sticky load onto the floor!"), \
-						span_userlove("You shoot string after string of hot cum, hitting the floor!"))
+					visible_message(span_userlove("[src]Atira[self_their]Carga pegajosa no chão!"), 						span_userlove("Você atira fio após fio de esperma quente, batendo no chão!"))
 					testicles.reagents.remove_all(testicles.cumshot_size)
 				else
 					var/obj/item/reagent_containers/cup/target_open_container = interactable_inrange_open_containers[target_choice]
@@ -133,36 +127,31 @@
 						if(target_open_container.reagents.holder_full())
 							// its full already
 							add_cum_splatter_floor(get_turf(target_open_container))
-							visible_message(span_userlove("[src] tries to cum into the [target_open_container], but it's already full, spilling their hot load onto the floor!"), \
-								span_userlove("You try to cum into the [target_open_container], but it's already full, so it all hits the floor instead!"))
+							visible_message(span_userlove("[src]Tenta gozar no[target_open_container]Mas já está cheio, derramando sua carga quente no chão!"), 								span_userlove("Você tenta gozar no[target_open_container], mas já está cheio, então tudo bate no chão em vez disso!"))
 						else
 							testicles.reagents.trans_to(target_open_container, testicles.cumshot_size, transferred_by = src)
 							if(total_volume_w_cum > target_open_container.volume)
 								// overflow, make the decal
 								add_cum_splatter_floor(get_turf(target_open_container))
-								visible_message(span_userlove("[src] shoots [self_their] sticky load into the [target_open_container], it's so full that it overflows!"), \
-									span_userlove("You shoot string after string of hot cum into the [target_open_container], making it overflow!"))
+								visible_message(span_userlove("[src]Atira[self_their]carga pegajosa na[target_open_container]Está tão cheio que transborda!"), 									span_userlove("Você atira fio após fio de esperma quente no[target_open_container]Fazendo transbordar!"))
 							else
-								visible_message(span_userlove("[src] shoots [self_their] sticky load into the [target_open_container]!"), \
-									span_userlove("You shoot string after string of hot cum into the [target_open_container]!"))
+								visible_message(span_userlove("[src]Atira[self_their]carga pegajosa na[target_open_container]!"), 									span_userlove("Você atira fio após fio de esperma quente no[target_open_container]!"))
 					else
 						// cum fail
 						create_cum_decal = TRUE
-						visible_message(span_userlove("[src] shoots [self_their] sticky load onto the floor!"), \
-							span_userlove("You shoot string after string of hot cum, hitting the floor!"))
+						visible_message(span_userlove("[src]Atira[self_their]Carga pegajosa no chão!"), 							span_userlove("Você atira fio após fio de esperma quente, batendo no chão!"))
 						testicles.reagents.remove_all(testicles.cumshot_size)
 
 			else if(penis_climax_choice == CLIMAX_PORTAL)
-				to_chat(src, "You shoot string after string of hot cum, hitting whatever is on the other side!")
-				portal.relayed_body.visible_message("[portal.relayed_body] shoots its sticky load onto the floor!")
+				to_chat(src, "Você atira fio após fio de esperma quente, batendo o que estiver do outro lado!")
+				portal.relayed_body.visible_message("[portal.relayed_body]Atira sua carga pegajosa no chão!")
 				add_cum_splatter_floor(get_turf(portal.relayed_body))
 
 			else
 				var/target_choice = tgui_input_list(src, "Choose a person to cum in or on.", "Choose target!", interactable_inrange_humans)
 				if(!target_choice)
 					create_cum_decal = TRUE
-					visible_message(span_userlove("[src] shoots [self_their] sticky load onto the floor!"), \
-						span_userlove("You shoot string after string of hot cum, hitting the floor!"))
+					visible_message(span_userlove("[src]Atira[self_their]Carga pegajosa no chão!"), 						span_userlove("Você atira fio após fio de esperma quente, batendo no chão!"))
 				else
 					var/mob/living/carbon/human/target_human = interactable_inrange_humans[target_choice]
 					var/target_human_them = target_human.p_them()
@@ -185,17 +174,15 @@
 
 					if(!climax_into_choice)
 						create_cum_decal = TRUE
-						visible_message(span_userlove("[src] shoots their sticky load onto the floor!"), \
-							span_userlove("You shoot string after string of hot cum, hitting the floor!"))
+						visible_message(span_userlove("[src]Atira sua carga pegajosa no chão!"), 							span_userlove("Você atira fio após fio de esperma quente, batendo no chão!"))
 					else if(climax_into_choice == "On [target_human_them]")
 						create_cum_decal = TRUE
-						visible_message(span_userlove("[src] shoots their sticky load onto [target_human]!"), \
-							span_userlove("You shoot string after string of hot cum onto [target_human]!"))
+						visible_message(span_userlove("[src]Atira sua carga pegajosa sobre[target_human]!"), 							span_userlove("Você atira fio após fio de esperma quente em[target_human]!"))
 					else
 						visible_message(
-							span_userlove("[src] hilts [self_their] cock into [target_human]'s [climax_into_choice], shooting cum into [target_human_them]!"),
-							span_userlove("You hilt your cock into [target_human]'s [climax_into_choice], shooting cum into [target_human_them]!"))
-						to_chat(target_human, span_userlove("Your [climax_into_choice] fills with warm cum as [src] shoots [self_their] load into it."))
+							span_userlove("[src]Hilts[self_their]Pisc em[target_human]'s[climax_into_choice], atirando esperma em[target_human_them]!"),
+							span_userlove("Você segura seu pau[target_human]'s[climax_into_choice], atirando esperma em[target_human_them]!"))
+						to_chat(target_human, span_userlove("Sua[climax_into_choice]enche-se de esperma quente como[src]Atira[self_their]Carregar nele."))
 
 						if(climax_into_choice == "mouth")
 							testicles.reagents.trans_to(target_human, testicles.cumshot_size, transferred_by = src, methods = INGEST)
@@ -219,20 +206,20 @@
 		var/obj/item/organ/genital/vagina/vagina = get_organ_slot(ORGAN_SLOT_VAGINA)
 		if(is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
 			visible_message(
-				span_userlove("[src] twitches and moans as [p_they()] climax from their vagina!"),
-				span_userlove("You twitch and moan as you climax from your vagina!"))
+				span_userlove("[src]Treme e geme como[p_they()]clímax de sua vagina!"),
+				span_userlove("Você se contorce e geme como um clímax de sua vagina!"))
 			if(vagina.reagents.total_volume >= MIN_VAGINA_WETNESS_THRESHOLD)
 				add_cum_splatter_floor(get_turf(src), female = TRUE)
 		else
 			if(vagina.reagents.total_volume >= MIN_VAGINA_WETNESS_THRESHOLD)
 				visible_message(
-					span_userlove("[src] cums in [self_their] underwear from [self_their] vagina!"),
-					span_userlove("You cum in your underwear from your vagina! Eww."))
+					span_userlove("[src]Esporra dentro[self_their]Cueca de[self_their]Vagina!"),
+					span_userlove("Você goza de cueca da sua vagina! Eca."))
 				self_orgasm = TRUE
 			else
 				visible_message(
-					span_userlove("[src] cums in [self_their] underwear from [self_their] vagina!"),
-					span_userlove("You cum in your underwear from your vagina, but you aren't wet enough to mess it up."))
+					span_userlove("[src]Esporra dentro[self_their]Cueca de[self_their]Vagina!"),
+					span_userlove("Você goza de cueca da vagina, mas não está molhada o suficiente para estragar tudo."))
 
 	apply_status_effect(/datum/status_effect/climax)
 	apply_status_effect(/datum/status_effect/climax_cooldown)

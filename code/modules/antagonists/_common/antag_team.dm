@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(antagonist_teams)
 	report += printplayerlist(members)
 
 	if(objectives.len)
-		report += span_header("Team had following objectives:")
+		report += span_header("A equipe tinha os seguintes objetivos:")
 		var/win = TRUE
 		var/objective_count = 1
 		for(var/datum/objective/objective as anything in objectives)
@@ -63,9 +63,9 @@ GLOBAL_LIST_EMPTY(antagonist_teams)
 			report += "<B>Objective #[objective_count]</B>: [objective.explanation_text] [objective.get_roundend_success_suffix()]"
 			objective_count++
 		if(win)
-			report += span_greentext("The [name] was successful!")
+			report += span_greentext("O[name]foi bem sucedido!")
 		else
-			report += span_redtext("The [name] have failed!")
+			report += span_redtext("O[name]Falhou!")
 
 
 	return "<div class='panel redborder'>[report.Join("<br>")]</div>"

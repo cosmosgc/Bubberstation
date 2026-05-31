@@ -5,7 +5,7 @@
 
 /obj/structure/butterchurn
 	name = "butter churn"
-	desc = "A small wooden barrel with a stick that thickens milk into a rich cream, or even butter. Just add an absolutely inordinate amount of effort."
+	desc = "Um pequeno barril de madeira com uma vara que engrossa leite em um creme rico, ou até manteiga. Basta adicionar uma quantidade absolutamente excessiva de esforço."
 	icon = 'modular_zubbers/icons/obj/structures/butterchurn.dmi'
 	icon_state = "butterchurn"
 	density = TRUE
@@ -36,8 +36,8 @@
 
 /obj/structure/butterchurn/examine(mob/user)
 	. = ..()
-	. += span_notice("You can [anchored ? "un" : ""]secure [src] with <b>CTRL-Shift-Click</b>.")
-	. += span_notice("With a <b>prying tool</b> of some sort, you could take [src] apart.")
+	. += span_notice("Você pode.[anchored ? "un" : ""]Seguro.[src]Com<b>CTRL-Shift-Click</b>.")
+	. += span_notice("Comum<b>Ferramenta intrometida</b>de algum tipo, você poderia levar[src]Separados.")
 
 /obj/structure/butterchurn/atom_deconstruct(disassembled)
 	var/obj/item/stack/sheet/mineral/wood/plank = new (drop_location())
@@ -62,19 +62,19 @@
 		return
 
 	if(busy)
-		to_chat(user, span_warning("Someone's already using \the [src]!"))
+		to_chat(user, span_warning("Alguém já está usando\the [src]!"))
 		return
 
 	if(user.get_stamina_loss() > CHURN_STAMINA_MINIMUM)
-		balloon_alert(user, "too tired")
+		balloon_alert(user, "Muito bem.")
 		return
 
 	if(!reagents.has_reagent(/datum/reagent/consumable/milk) && !reagents.has_reagent(/datum/reagent/consumable/cream))
-		balloon_alert(user, "nothing to churn")
+		balloon_alert(user, "Nada para fazer")
 		return
 
 	if(!reagents.has_reagent(/datum/reagent/consumable/milk) && reagents.has_reagent(/datum/reagent/consumable/cream) && reagents.get_reagent_amount(/datum/reagent/consumable/cream) < CHURN_BUTTER_RATIO)
-		balloon_alert(user, "not enough cream")
+		balloon_alert(user, "Não tem creme suficiente.")
 		return
 
 	balloon_alert_to_viewers("churning...")
@@ -94,7 +94,7 @@
 		stamina_use *= 0.5 //so it uses half the amount of stamina (25 instead of 50)
 	user.adjust_stamina_loss(stamina_use) // Prevents spamming it
 	busy = FALSE
-	user.visible_message(span_notice("[user] churns \the [src]."), span_notice("You finish churning \the [src]."))
+	user.visible_message(span_notice("[user]Churns.\the [src]."), span_notice("Você termina de agitar\the [src]."))
 	var/cream_amt = reagents.get_reagent_amount(/datum/reagent/consumable/milk) / CHURN_CREAM_RATIO
 	var/cream_purity = reagents.get_reagent_purity(/datum/reagent/consumable/milk)
 	var/butter_amt = FLOOR(reagents.get_reagent_amount(/datum/reagent/consumable/cream) / CHURN_BUTTER_RATIO, 1)

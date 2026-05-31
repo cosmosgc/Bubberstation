@@ -89,12 +89,12 @@
 		return FALSE
 	// Cooldown?
 	if(!COOLDOWN_FINISHED(src, next_use_time))
-		owner.balloon_alert(owner, "power unavailable!")
+		owner.balloon_alert(owner, "Energia indisponível!")
 		return FALSE
 	if(!bloodsuckerdatum_power)
 		var/mob/living/living_owner = owner
 		if(!HAS_TRAIT(living_owner, TRAIT_NOBLOOD) && living_owner.blood_volume <= bloodcost)
-			to_chat(owner, span_warning("You need at least [bloodcost] blood to activate [name]"))
+			to_chat(owner, span_warning("Você precisa pelo menos[bloodcost]Sangue para ativar[name]"))
 			return FALSE
 		return TRUE
 
@@ -102,7 +102,7 @@
 	if(bloodsuckerdatum_power.frenzied)
 		return TRUE
 	if(bloodsuckerdatum_power.GetBloodVolume() < bloodcost)
-		to_chat(owner, span_warning("You need at least [bloodcost] blood to activate [name]"))
+		to_chat(owner, span_warning("Você precisa pelo menos[bloodcost]Sangue para ativar[name]"))
 		return FALSE
 	return TRUE
 
@@ -132,29 +132,29 @@
 	if(!isliving(user))
 		return FALSE
 	if(!(bloodsucker_check_flags & BP_CAN_USE_HEARTLESS) && bloodsuckerdatum_power && !owner.get_organ_slot(ORGAN_SLOT_HEART))
-		to_chat(user, span_warning("To channel your powers you need a heart!"))
+		to_chat(user, span_warning("Para canalizar seus poderes você precisa de um coração!"))
 		return FALSE
 	if(isbrain(user))
-		to_chat(user, span_warning("What are you going to do, jump on someone and suck their blood? You're just a head."))
+		to_chat(user, span_warning("O que vai fazer, pular em cima de alguém e chupar seu sangue? Você é só uma cabeça."))
 		return FALSE
 	// Torpor?
 	if((bloodsucker_check_flags & BP_CANT_USE_IN_TORPOR) && bloodsuckerdatum_power?.is_in_torpor())
-		to_chat(user, span_warning("Not while you're in Torpor."))
+		to_chat(user, span_warning("Não enquanto estiver em Torpor."))
 		return FALSE
 	if(!(bloodsucker_check_flags & BP_CAN_USE_TRANSFORMED) && (user.has_status_effect(/datum/status_effect/shapechange_mob/from_spell) || user.has_status_effect(/datum/status_effect/shapechange_mob)))
-		to_chat(user, span_warning("You can't do this while transformed!"))
+		to_chat(user, span_warning("Você não pode fazer isso enquanto se transforma!"))
 		return FALSE
 	// Frenzy?
 	if((bloodsucker_check_flags & BP_CANT_USE_IN_FRENZY) && (bloodsuckerdatum_power?.frenzied))
-		to_chat(user, span_warning("You cannot use powers while in a Frenzy!"))
+		to_chat(user, span_warning("Você não pode usar poderes em um Frenzy!"))
 		return FALSE
 	// Stake?
 	if(!(bloodsucker_check_flags & BP_CAN_USE_WHILE_STAKED) && user.am_staked())
-		to_chat(user, span_warning("You have a stake in your chest! Your powers are useless."))
+		to_chat(user, span_warning("Você tem uma estaca no peito! Seus poderes são inúteis."))
 		return FALSE
 	// Constant Cost (out of blood)
 	if(constant_bloodcost > 0 && !can_pay_blood(user))
-		to_chat(user, span_warning("You don't have the blood to upkeep [src]."))
+		to_chat(user, span_warning("Você não tem sangue para manter[src]."))
 		return FALSE
 	return TRUE
 

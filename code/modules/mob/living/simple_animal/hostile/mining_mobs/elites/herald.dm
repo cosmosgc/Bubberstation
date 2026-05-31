@@ -18,7 +18,7 @@
 
 /mob/living/simple_animal/hostile/asteroid/elite/herald
 	name = "herald"
-	desc = "A monstrous beast which fires deadly projectiles at threats and prey."
+	desc = "Uma besta monstruosa que dispara projéteis mortais em ameaças e presas."
 	icon = 'icons/mob/simple/lavaland/lavaland_elites_64.dmi'
 	icon_state = "herald"
 	icon_living = "herald"
@@ -36,12 +36,12 @@
 	attack_verb_continuous = "preaches to"
 	attack_verb_simple = "preach to"
 	attack_sound = 'sound/effects/magic/clockwork/ratvar_attack.ogg'
-	throw_message = "doesn't affect the purity of"
+	throw_message = "não afeta a pureza de"
 	speed = 2
 	move_to_delay = 10
 	mouse_opacity = MOUSE_OPACITY_ICON
 	death_sound = 'sound/effects/magic/demon_dies.ogg'
-	death_message = "begins to shudder as it becomes transparent..."
+	death_message = "Começa a tremer à medida que se torna transparente..."
 	loot_drop = /obj/item/clothing/neck/cloak/herald_cloak
 
 	can_talk = 1
@@ -73,25 +73,25 @@
 /datum/action/innate/elite_attack/herald_trishot
 	name = "Triple Shot"
 	button_icon_state = "herald_trishot"
-	chosen_message = span_boldwarning("You are now firing three shots in your chosen direction.")
+	chosen_message = span_boldwarning("Agora você está atirando três tiros em sua direção escolhida.")
 	chosen_attack_num = HERALD_TRISHOT
 
 /datum/action/innate/elite_attack/herald_directionalshot
 	name = "Circular Shot"
 	button_icon_state = "herald_directionalshot"
-	chosen_message = span_boldwarning("You are firing projectiles in all directions.")
+	chosen_message = span_boldwarning("Você está atirando projéteis em todas as direções.")
 	chosen_attack_num = HERALD_DIRECTIONALSHOT
 
 /datum/action/innate/elite_attack/herald_teleshot
 	name = "Teleport Shot"
 	button_icon_state = "herald_teleshot"
-	chosen_message = span_boldwarning("You will now fire a shot which teleports you where it lands.")
+	chosen_message = span_boldwarning("Agora você vai disparar um tiro que te teleporta para onde ele pousa.")
 	chosen_attack_num = HERALD_TELESHOT
 
 /datum/action/innate/elite_attack/herald_mirror
 	name = "Summon Mirror"
 	button_icon_state = "herald_mirror"
-	chosen_message = span_boldwarning("You will spawn a mirror which duplicates your attacks.")
+	chosen_message = span_boldwarning("Você criará um espelho que duplica seus ataques.")
 	chosen_attack_num = HERALD_MIRROR
 
 /mob/living/simple_animal/hostile/asteroid/elite/herald/OpenFire()
@@ -200,14 +200,14 @@
 
 /mob/living/simple_animal/hostile/asteroid/elite/herald/mirror
 	name = "herald's mirror"
-	desc = "This fiendish work of magic copies the herald's attacks.  Seems logical to smash it."
+	desc = "Esta obra diabólica de mágica copia os ataques do arauto. Parece lógico esmagá-lo."
 	health = 60
 	maxHealth = 60
 	icon_state = "herald_mirror"
 	icon_aggro = "herald_mirror"
 	pixel_x = -16
 	base_pixel_x = -16
-	death_message = "shatters violently!"
+	death_message = "Quebre violentamente!"
 	death_sound = 'sound/effects/glass/glassbr1.ogg'
 	del_on_death = TRUE
 	is_mirror = TRUE
@@ -262,7 +262,7 @@
 
 /obj/item/clothing/neck/cloak/herald_cloak
 	name = "cloak of the prophet"
-	desc = "A cloak which protects you from the heresy of the world."
+	desc = "Uma capa que te protege da heresia do mundo."
 	icon = 'icons/obj/mining_zones/elite_trophies.dmi'
 	icon_state = "herald_cloak"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -285,7 +285,7 @@
 	. = ..()
 	if(prob(hit_reaction_chance))
 		return
-	owner.visible_message(span_danger("[owner]'s [src] emits a loud noise as [owner] is struck!"))
+	owner.visible_message(span_danger("[owner]'s[src]emite um barulho alto como[owner]É atingido!"))
 	var/static/list/directional_shot_angles = list(0, 45, 90, 135, 180, 225, 270, 315)
 	playsound(get_turf(owner), 'sound/effects/magic/clockwork/invoke_general.ogg', 20, TRUE)
 	addtimer(CALLBACK(src, PROC_REF(reactionshot), owner), 1 SECONDS)

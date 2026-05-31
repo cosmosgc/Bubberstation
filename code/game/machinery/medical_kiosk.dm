@@ -12,7 +12,7 @@
 
 /obj/machinery/medical_kiosk
 	name = "medical kiosk"
-	desc = "A freestanding medical kiosk, which can provide a wide range of medical analysis for diagnosis."
+	desc = "Um quiosque médico independente, que pode fornecer uma ampla gama de análises médicas para o diagnóstico."
 	icon = 'icons/obj/machines/medical_kiosk.dmi'
 	icon_state = "kiosk"
 	base_icon_state = "kiosk"
@@ -124,20 +124,20 @@
 
 	var/obj/item/scanner_wand/wand = tool
 	if(scanner_wand)
-		balloon_alert(user, "already has a wand!")
+		balloon_alert(user, "Já tem uma varinha!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
 		balloon_alert(user, "preso na sua mão!")
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user] snaps [tool] onto [src]!"))
-	balloon_alert(user, "wand returned")
+	user.visible_message(span_notice("[user]Snaps[tool]em frente[src]!"))
+	balloon_alert(user, "Varinha de volta")
 	//This will be the scanner returning scanner_wand's selected_target variable and assigning it to the altPatient var
 	if(wand.selected_target)
 		var/datum/weakref/target_ref = WEAKREF(wand.return_patient())
 		if(patient_ref != target_ref)
 			clearScans()
 		patient_ref = target_ref
-		user.visible_message(span_notice("[wand.return_patient()] has been set as the current patient."))
+		user.visible_message(span_notice("[wand.return_patient()]foi definido como o paciente atual."))
 		wand.selected_target = null
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	scanner_wand = tool
@@ -150,14 +150,14 @@
 	if(!ishuman(user) || !user.can_perform_action(src))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(!scanner_wand)
-		balloon_alert(user, "no scanner wand!")
+		balloon_alert(user, "Sem varinha de scanner!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(!user.put_in_hands(scanner_wand))
-		balloon_alert(user, "scanner wand falls!")
+		balloon_alert(user, "Varinha de scanner cai!")
 		scanner_wand = null
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	user.visible_message(span_notice("[user] unhooks the [scanner_wand] from [src]."))
-	balloon_alert(user, "scanner pulled")
+	user.visible_message(span_notice("[user]Soltem o[scanner_wand]De[src]."))
+	balloon_alert(user, "scanner puxado")
 	playsound(src, 'sound/machines/click.ogg', 60, TRUE)
 	scanner_wand = null
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -172,8 +172,8 @@
 		return
 	if(user)
 		if (emag_card)
-			user.visible_message(span_warning("[user] waves a suspicious card by the [src]'s biometric scanner!"))
-		balloon_alert(user, "sensors overloaded")
+			user.visible_message(span_warning("[user]Acende um cartão suspeito pela[src]É um scanner biométrico!"))
+		balloon_alert(user, "Sensores sobrecarregados.")
 	obj_flags |= EMAGGED
 	var/obj/item/circuitboard/board = circuit
 	board.obj_flags |= EMAGGED //Mirrors emag status onto the board as well.
@@ -183,14 +183,14 @@
 /obj/machinery/medical_kiosk/examine(mob/user)
 	. = ..()
 	if(scanner_wand == null)
-		. += span_notice("\The [src] is missing its scanner.")
+		. += span_notice("\The [src]Está faltando o scanner.")
 	else
-		. += span_notice("\The [src] has its scanner clipped to the side. Right Click to remove.")
+		. += span_notice("\The [src]tem seu scanner cortado para o lado. Clique para remover.")
 
 /obj/machinery/medical_kiosk/ui_interact(mob/user, datum/tgui/ui)
 	var/patient_distance = 0
 	if(!ishuman(user))
-		to_chat(user, span_warning("[src] is unable to interface with non-humanoids!"))
+		to_chat(user, span_warning("[src]é incapaz de interagir com não-humanóides!"))
 		if (ui)
 			ui.close()
 		return

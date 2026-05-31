@@ -47,12 +47,12 @@
 
 /datum/component/crank_recharge/proc/crank(obj/source, mob/user)
 	if(charging_cell.charge >= charging_cell.maxcharge)
-		source.balloon_alert(user, "already charged!")
+		source.balloon_alert(user, "Já está carregado!")
 		return
 	if(is_charging)
 		return
 	if(spin_to_win && !HAS_TRAIT(user, TRAIT_GUNFLIP))
-		source.balloon_alert(user, "need holster to spin!")
+		source.balloon_alert(user, "Precisa de coldre para girar!")
 		return
 
 	is_charging = TRUE

@@ -3,7 +3,7 @@
  * Bitrunning tech disks which let you load full loadouts into the vdom on first avatar generation.
  */
 /obj/item/disk/bitrunning/gimmick
-	desc = "A disk containing source code. It can be used to preload gimmick loadouts into the virtual domain."
+	desc = "Um disco contendo código fonte. Ele pode ser usado para pré-carregar peças no domínio virtual."
 	/// The selected loadout that this grants
 	var/datum/bitrunning_gimmick/granted_loadout
 	/// The list of loadouts that this can grant

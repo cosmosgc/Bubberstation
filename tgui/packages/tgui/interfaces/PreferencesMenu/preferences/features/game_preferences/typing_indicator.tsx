@@ -1,8 +1,8 @@
 import { CheckboxInput, type FeatureToggle } from '../base';
 
 export const typingIndicator: FeatureToggle = {
-  name: 'Enable typing indicators for self',
+  name: 'Activar indicadores de digitação para si mesmo.',
   category: 'GAMEPLAY',
-  description: "Enable typing indicators that show you're typing a message.",
+  description: "Habilite indicadores de digitação que mostrem que está digitando uma mensagem.",
   component: CheckboxInput,
 };

@@ -8,7 +8,7 @@
 ///Base CTF machines, if spawned in creates a CTF game with the provided game_id unless one already exists. If one exists associates itself with it.
 /obj/machinery/ctf
 	name = "CTF Controller"
-	desc = "Used for running friendly games of capture the flag."
+	desc = "Usado para correr jogos amigáveis de capturar a bandeira."
 	icon = 'icons/obj/machines/beacon.dmi'
 	icon_state = "syndbeacon"
 	density = TRUE
@@ -85,18 +85,18 @@
 /obj/machinery/ctf/spawner/attack_ghost(mob/user)
 	if(ctf_game.ctf_enabled == FALSE)
 		if(user.client && user.client.holder)
-			var/response = tgui_alert(user, "Enable this CTF game?", "CTF", list("Yes", "No"))
+			var/response = tgui_alert(user, "Activar este jogo CTF?", "CTF", list("Yes", "No"))
 			if(response == "Yes")
 				toggle_id_ctf(user, game_id)
 			return
 
 		if(!(GLOB.ghost_role_flags & GHOSTROLE_MINIGAME))
-			to_chat(user, span_warning("CTF has been temporarily disabled by admins."))
+			to_chat(user, span_warning("CTF foi temporariamente desativado por administradores."))
 			return
 		get_ctf_voting_controller(game_id).vote(user)
 		return
 	if(!SSticker.HasRoundStarted())
-		to_chat(user, span_warning("Please wait until the round has started."))
+		to_chat(user, span_warning("Por favor, espere até a rodada começar."))
 		return
 	if(user.ckey in ctf_game.get_players(team))
 		var/datum/component/ctf_player/ctf_player_component = ctf_game.get_player_component(team, user.ckey)
@@ -107,10 +107,10 @@
 			if(ctf_player_component.can_respawn)
 				spawn_team_member(new_team_member, ctf_player_component)
 			else
-				to_chat(user, span_warning("You cannot respawn yet!"))
+				to_chat(user, span_warning("Você ainda não pode reavivar!"))
 		return
 	if(ctf_game.team_valid_to_join(team, user))
-		to_chat(user, span_userdanger("You are now a member of [src.team]. Get the enemy flag and bring it back to your team's controller!"))
+		to_chat(user, span_userdanger("Agora você é um membro de[src.team]Pegue a bandeira inimiga e traga de volta para o controle da sua equipe!"))
 		ctf_game.add_player(team, user.ckey)
 		var/client/new_team_member = user.client
 		spawn_team_member(new_team_member)
@@ -154,10 +154,7 @@
 
 	var/datum/mind/new_member_mind = new_team_member.mob.mind
 	if(new_member_mind)
-		player_mob.AddComponent( \
-			/datum/component/temporary_body, \
-			old_mind = new_member_mind, \
-		)
+		player_mob.AddComponent( 			/datum/component/temporary_body, 			old_mind = new_member_mind, 		)
 
 	player_mob.ckey = new_team_member.ckey
 	if(isnull(ctf_player_component))
@@ -185,7 +182,7 @@
 	inhand_icon_state = "banner"
 	lefthand_file = 'icons/mob/inhands/equipment/banners_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/banners_righthand.dmi'
-	desc = "A banner with Nanotrasen's logo on it."
+	desc = "Uma faixa com o logotipo da Nanotrasen."
 	slowdown = 2
 	throw_speed = 0
 	throw_range = 1
@@ -246,16 +243,16 @@
 /obj/item/ctf_flag/attack_hand(mob/living/user, list/modifiers)
 	//pre normal check item stuff, this is for our special flag checks
 	if(!is_ctf_target(user) && !anyonecanpickup)
-		to_chat(user, span_warning("Non-players shouldn't be moving the flag!"))
+		to_chat(user, span_warning("Não-jogadores não deveriam estar movendo a bandeira!"))
 		return
 	if(user.has_faction(team))
-		to_chat(user, span_warning("You can't move your own flag!"))
+		to_chat(user, span_warning("Você não pode mover sua própria bandeira!"))
 		return
 	if(loc == user)
 		if(!user.dropItemToGround(src))
 			return
 	if(!isnull(ctf_game))
-		ctf_game.message_all_teams(span_userdanger("\The [initial(name)] has been taken!"))
+		ctf_game.message_all_teams(span_userdanger("\The [initial(name)]Foi tomada!"))
 	STOP_PROCESSING(SSobj, src)
 	anchored = FALSE // Hacky usage that bypasses set_anchored(), because normal checks need this to be FALSE to pass
 	. = ..() //this is the actual normal item checks
@@ -263,7 +260,7 @@
 		anchored = TRUE // Avoid directly assigning to anchored and prefer to use set_anchored() on normal circumstances.
 		return
 	//passing means the user picked up the flag so we can now apply this
-	to_chat(user, span_userdanger("Take \the [initial(name)] to your team's controller!"))
+	to_chat(user, span_userdanger("Tome.\the [initial(name)]Para o controle da sua equipe!"))
 	user.set_anchored(TRUE)
 	user.status_flags &= ~CANPUSH
 
@@ -273,7 +270,7 @@
 
 	var/obj/item/ctf_flag/flag = item
 	if(flag.team != team)
-		to_chat(user, span_userdanger("Take \the [initial(flag.name)] to your team's controller!"))
+		to_chat(user, span_userdanger("Tome.\the [initial(flag.name)]Para o controle da sua equipe!"))
 		user.playsound_local(get_turf(user), 'sound/machines/buzz/buzz-sigh.ogg', 100, vary = FALSE, use_reverb = FALSE)
 
 /obj/item/ctf_flag/dropped(mob/user)
@@ -283,35 +280,35 @@
 	reset_cooldown = world.time + 20 SECONDS
 	START_PROCESSING(SSobj, src)
 	if(!isnull(ctf_game))
-		ctf_game.message_all_teams(span_userdanger("\The [initial(name)] has been dropped!"))
+		ctf_game.message_all_teams(span_userdanger("\The [initial(name)]Foi derrubado!"))
 	anchored = TRUE // Avoid directly assigning to anchored and prefer to use set_anchored() on normal circumstances.
 
 /obj/item/ctf_flag/red
 	name = "red flag"
 	icon_state = "banner-red"
 	inhand_icon_state = "banner-red"
-	desc = "A red banner used to play capture the flag."
+	desc = "Uma faixa vermelha usada para capturar a bandeira."
 	team = RED_TEAM
 
 /obj/item/ctf_flag/blue
 	name = "blue flag"
 	icon_state = "banner-blue"
 	inhand_icon_state = "banner-blue"
-	desc = "A blue banner used to play capture the flag."
+	desc = "Um banner azul costumava tocar para capturar a bandeira."
 	team = BLUE_TEAM
 
 /obj/item/ctf_flag/green
 	name = "green flag"
 	icon_state = "banner-green"
 	inhand_icon_state = "banner-green"
-	desc = "A green banner used to play capture the flag."
+	desc = "Um banner verde usado para capturar a bandeira."
 	team = GREEN_TEAM
 
 /obj/item/ctf_flag/yellow
 	name = "yellow flag"
 	icon_state = "banner-yellow"
 	inhand_icon_state = "banner-yellow"
-	desc = "A yellow banner used to play capture the flag."
+	desc = "Uma faixa amarela costumava tocar para capturar a bandeira."
 	team = YELLOW_TEAM
 
 /obj/effect/ctf
@@ -325,7 +322,7 @@
 	name = "banner landmark"
 	icon = 'icons/obj/banner.dmi'
 	icon_state = "banner"
-	desc = "This is where a CTF flag will respawn."
+	desc = "Aqui é onde uma bandeira da CTF vai ressurgir."
 	layer = LOW_ITEM_LAYER
 	var/obj/item/ctf_flag/flag
 
@@ -338,7 +335,7 @@
 ///Control point used for CTF for king of the hill or control point game modes. Teams need to maintain control of the point for a set time to win.
 /obj/machinery/ctf/control_point
 	name = "control point"
-	desc = "You should capture this"
+	desc = "Você deveria capturar isso."
 	icon = 'icons/obj/machines/dominator.dmi'
 	icon_state = "dominator"
 	///Team that is currently controlling this point.
@@ -380,7 +377,7 @@
 	if(do_after(user, 3 SECONDS, target = src))
 		var/datum/component/ctf_player/ctf_player = user.mind.GetComponent(/datum/component/ctf_player)
 		if(isnull(ctf_player))
-			to_chat(user, span_warning("Non-players shouldn't be capturing control points"))
+			to_chat(user, span_warning("Não-jogadores não deveriam capturar pontos de controle."))
 			return
 		controlling_team = ctf_player.team
 		icon_state = "dominator-[controlling_team]"
@@ -393,7 +390,7 @@
 ///A trap that when stepped on kills anyone who is not part of the associated CTF team.
 /obj/structure/trap/ctf
 	name = "Spawn protection"
-	desc = "Stay outta the enemy spawn!"
+	desc = "Fique longe da desova inimiga!"
 	icon_state = "trap"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/team = WHITE_TEAM
@@ -408,7 +405,7 @@
 	if(!is_ctf_target(living))
 		return
 	if(!living.has_faction(team))
-		to_chat(living, span_bolddanger("Stay out of the enemy spawn!"))
+		to_chat(living, span_bolddanger("Fique longe da desova inimiga!"))
 		living.investigate_log("has died from entering the enemy spawn in CTF.", INVESTIGATE_DEATHS)
 		living.apply_damage(200) //Damage instead of instant death so we trigger the damage signal.
 
@@ -431,14 +428,14 @@
 ///A type of barricade that can be destroyed by CTF weapons and respawns at the end of CTF matches.
 /obj/structure/barricade/security/ctf
 	name = "barrier"
-	desc = "A barrier. Provides cover in fire fights."
+	desc = "Uma barreira. Fornece cobertura em combates de incêndio."
 
 /obj/structure/barricade/security/ctf/make_debris()
 	new /obj/effect/ctf/dead_barricade(get_turf(src))
 
 /obj/effect/ctf/dead_barricade
 	name = "dead barrier"
-	desc = "It provided cover in fire fights. And now it's gone."
+	desc = "Deu cobertura em combates de incêndio. E agora se foi."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "barrier0"
 	var/game_id = CTF_GHOST_CTF_GAME_ID
@@ -481,9 +478,9 @@
 		log_admin("[key_name_admin(user)] is attempting to unload CTF.")
 		message_admins("[key_name_admin(user)] is attempting to unload CTF.")
 		if(loading == CTF_LOADING_UNLOADED)
-			to_chat(user, span_warning("CTF cannot be unloaded if it was not loaded in the first place"))
+			to_chat(user, span_warning("A CTF não pode ser descarregada se não foi carregada."))
 			return
-		to_chat(user, span_warning("CTF is being unloaded"))
+		to_chat(user, span_warning("CTF está sendo descarregado."))
 		ctf_controller.unload_ctf()
 		log_admin("[key_name_admin(user)] has unloaded CTF.")
 		message_admins("[key_name_admin(user)] has unloaded CTF.")
@@ -492,20 +489,20 @@
 	switch (loading)
 		if (CTF_LOADING_UNLOADED)
 			if (isnull(GLOB.ctf_spawner))
-				to_chat(user, span_boldwarning("Couldn't find a CTF spawner. Call a maintainer!"))
+				to_chat(user, span_boldwarning("Não achei uma desova da CTF. Chame um mantenedor!"))
 				return
 
-			to_chat(user, span_notice("Loading CTF..."))
+			to_chat(user, span_notice("Carregando CTF..."))
 
 			loading = CTF_LOADING_LOADING
 			if(activated_id == CTF_GHOST_CTF_GAME_ID) //Only ghost CTF supports map loading, if CTF is started by an admin elsewhere the map loader should not be used.
 				if(!GLOB.ctf_spawner.load_map(user))
-					to_chat(user, span_warning("CTF loading was cancelled"))
+					to_chat(user, span_warning("O carregamento CTF foi cancelado."))
 					loading = CTF_LOADING_UNLOADED
 					return
 			loading = CTF_LOADING_LOADED
 		if (CTF_LOADING_LOADING)
-			to_chat(user, span_warning("CTF is loading!"))
+			to_chat(user, span_warning("CTF está carregando!"))
 
 			return
 
@@ -521,7 +518,7 @@
 		notify_ghosts(
 			"CTF has automatically restarted after a round finished in [initial(ctf_area.name)]!",
 			ghost_sound = 'sound/effects/ghost2.ogg',
-			header = "CTF Restarted"
+			header = "CTF reiniciado"
 		)
 	else
 		message_admins("The players have spoken! Voting has enabled CTF!")
@@ -529,7 +526,7 @@
 		notify_ghosts(
 			"CTF has been [ctf_enabled? "enabled" : "disabled"] in [initial(ctf_area.name)]!",
 			ghost_sound = 'sound/effects/ghost2.ogg',
-			header = "CTF [ctf_enabled? "Enabled" : "Disabled"]"
+			header = "CTF[ctf_enabled? "Enabled" : "Disabled"]"
 		)
 
 #undef CTF_LOADING_UNLOADED

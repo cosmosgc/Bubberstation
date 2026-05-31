@@ -2,7 +2,7 @@
 
 /obj/item/spear
 	name = "spear"
-	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
+	desc = "Uma arma ainda mortal de design antigo."
 	icon = 'icons/obj/weapons/spear.dmi'
 	icon_state = "spearglass0"
 	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
@@ -54,19 +54,10 @@
 	. = ..()
 	force = force_unwielded
 	//decent in a pinch, but pretty bad.
-	AddComponent(/datum/component/jousting, \
-		max_tile_charge = 9, \
-		min_tile_charge = 6, \
-		)
+	AddComponent(/datum/component/jousting, 		max_tile_charge = 9, 		min_tile_charge = 6, 		)
 
 	AddComponent(/datum/component/butchering, speed = 10 SECONDS, effectiveness = 30)
-	AddComponent(/datum/component/two_handed, \
-		force_unwielded = force_unwielded, \
-		force_wielded = force_wielded, \
-		icon_wielded = "[icon_prefix]1", \
-		wield_callback = CALLBACK(src, PROC_REF(on_wield)), \
-		unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), \
-	)
+	AddComponent(/datum/component/two_handed, 		force_unwielded = force_unwielded, 		force_wielded = force_wielded, 		icon_wielded = "[icon_prefix]1", 		wield_callback = CALLBACK(src, PROC_REF(on_wield)), 		unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), 	)
 	add_headpike_component()
 	update_appearance()
 
@@ -75,9 +66,7 @@
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/headpike)
 
 	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
+		/datum/element/slapcrafting,		slapcraft_recipes = slapcraft_recipe_list,	)
 
 /obj/item/spear/update_icon_state()
 	icon_state = "[icon_prefix]0"
@@ -88,7 +77,7 @@
 	return ..()
 
 /obj/item/spear/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins to sword-swallow \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Começa a espadartear\the [src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	if (!do_after(user, 4 SECONDS, target = src))
 		return SHAME
 	var/obj/item/bodypart/head/head = user.get_bodypart(BODY_ZONE_HEAD)
@@ -137,11 +126,7 @@
 		else
 			icon_prefix = SPEAR_CUSTOM_TIP_PREFIX
 
-	AddComponent(/datum/component/two_handed, \
-		icon_wielded = "[icon_prefix]1", \
-		wield_callback = CALLBACK(src, PROC_REF(on_wield)), \
-		unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), \
-	)
+	AddComponent(/datum/component/two_handed, 		icon_wielded = "[icon_prefix]1", 		wield_callback = CALLBACK(src, PROC_REF(on_wield)), 		unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), 	)
 	update_appearance()
 
 /obj/item/spear/finalize_material_effects(list/materials)
@@ -187,7 +172,7 @@
 	playsound(src, 'sound/effects/grillehit.ogg', 50)
 	new spear_leftovers(get_turf(src))
 	if(isliving(loc))
-		loc.balloon_alert(loc, "spear broken!")
+		loc.balloon_alert(loc, "Lança quebrada!")
 	return ..()
 
 /obj/item/spear/get_material_prefixes(list/materials)
@@ -260,7 +245,7 @@
 
 /obj/item/wireprod
 	name = "wireprod"
-	desc = "A metal rod with some wire attached to one of the ends, waiting for something sharp."
+	desc = "Uma haste de metal com um fio preso em uma das extremidades, esperando por algo afiado."
 	icon = 'icons/obj/weapons/spear.dmi'
 	icon_state = "wireprod"
 	inhand_icon_state = "spearblank0"
@@ -292,7 +277,7 @@
 	spear.set_material_slot(/datum/material_slot/handle/spear, get_master_material())
 	spear.set_material_slot(/datum/material_slot/weapon_head/speartip, shard_mat)
 	spear.set_custom_materials(list((rod_material) = custom_materials[rod_material], (shard_mat) = tool.custom_materials[shard_mat]))
-	to_chat(user, span_notice("You attach [tool] to [src]'s tip."))
+	to_chat(user, span_notice("Você anexa[tool]Para[src]É gorjeta."))
 
 	if (istype(tool, /obj/item/stack))
 		var/obj/item/stack/stack = tool
@@ -325,7 +310,7 @@
 		QDEL_NULL(explosive)
 	G.forceMove(src)
 	explosive = G
-	desc = "A makeshift spear with [G] attached to it"
+	desc = "Uma lança improvisada com[G]Apegado a ele"
 
 /obj/item/spear/explosive/on_craft_completion(list/components, datum/crafting_recipe/current_recipe, atom/crafter)
 	var/obj/item/grenade/nade = locate() in components
@@ -337,7 +322,7 @@
 	return ..()
 
 /obj/item/spear/explosive/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins to sword-swallow \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Começa a espadartear\the [src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	user.say("[war_cry]", forced="spear warcry")
 	explosive.forceMove(user)
 	explosive.detonate()
@@ -347,7 +332,7 @@
 
 /obj/item/spear/explosive/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to set your war cry.")
+	. += span_notice("Alt-clique para definir seu grito de guerra.")
 
 /obj/item/spear/explosive/click_alt(mob/user)
 	var/input = tgui_input_text(user, "What do you want your war cry to be? You will shout it when you hit someone in melee.", "War Cry", max_length = 50)
@@ -379,7 +364,7 @@
 //GREY TIDE
 /obj/item/spear/grey_tide
 	name = "\improper Grey Tide"
-	desc = "Recovered from the aftermath of a revolt aboard Defense Outpost Theta Aegis, in which a seemingly endless tide of Assistants caused heavy casualties among Nanotrasen military forces."
+	desc = "Recuperado do rescaldo de uma revolta a bordo do Posto de Defesa Theta Aegis, em que uma maré aparentemente interminável de assistentes causou pesadas baixas entre as forças militares de Nanotrasen."
 	attack_verb_continuous = list("gores")
 	attack_verb_simple = list("gore")
 	force_unwielded = 15
@@ -403,7 +388,7 @@
 	base_icon_state = "military_spear0"
 	icon_prefix = "military_spear"
 	name = "military javelin"
-	desc = "A stick with a seemingly blunt spearhead on its end. Looks like it might break bones easily."
+	desc = "Uma vara com uma ponta de lança aparentemente contundente na ponta. Parece que pode quebrar ossos facilmente."
 	attack_verb_continuous = list("attacks", "pokes", "jabs")
 	attack_verb_simple = list("attack", "poke", "jab")
 	throwforce = 30
@@ -420,9 +405,7 @@
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/headpikemilitary)
 
 	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
+		/datum/element/slapcrafting,		slapcraft_recipes = slapcraft_recipe_list,	)
 
 /*
  * Anti-big monster spear
@@ -430,7 +413,7 @@
  */
 /obj/item/spear/dragonator
 	name = "giantslayer spear"
-	desc = "An oversized multi-bladed spear designed to kill large hostile xenoforms such as space dragons or the creatures of Indecipheres. Capable of being launched from a ballista."
+	desc = "Uma lança multi-espinhada projetada para matar grandes xenoformas hostis, como dragões espaciais ou criaturas de Indecipheres. Capaz de ser lançado de um balista."
 	icon = 'icons/obj/weapons/48x.dmi'
 	icon_state = "speardragon0"
 	icon_prefix = "speardragon"
@@ -466,7 +449,7 @@
  */
 /obj/item/spear/dragonator_untreated
 	name = "unfired giantslayer spear"
-	desc = "A half-finished giantslayer spear, needs to be thrown in lava to forge the metals to a killing edge."
+	desc = "Uma lança semi-acabada de matador de gigantes, precisa ser jogada em lava para forjar os metais em uma borda mortal."
 	icon = 'icons/obj/weapons/48x.dmi'
 	icon_state = "speardragonraw0"
 	icon_prefix = "speardragonraw"
@@ -497,7 +480,7 @@
  */
 /obj/item/spear/bonespear //Blatant imitation of spear, but made out of bone. Not valid for explosive modification.
 	name = "bone spear"
-	desc = "A haphazardly-constructed yet still deadly weapon. The pinnacle of modern technology."
+	desc = "Uma arma ainda mortal, construída por acaso. O auge da tecnologia moderna."
 	icon_state = "bone_spear0"
 	base_icon_state = "bone_spear0"
 	icon_prefix = "bone_spear"
@@ -514,9 +497,7 @@
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/headpikebone)
 
 	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
+		/datum/element/slapcrafting,		slapcraft_recipes = slapcraft_recipe_list,	)
 
 /*
  * Bamboo Spear
@@ -526,7 +507,7 @@
 	base_icon_state = "bamboo_spear0"
 	icon_prefix = "bamboo_spear"
 	name = "bamboo spear"
-	desc = "A haphazardly-constructed bamboo stick with a sharpened tip, ready to poke holes into unsuspecting people."
+	desc = "Uma vara de bambu mal construída com uma ponta afiada, pronta para abrir buracos em pessoas inocentes."
 
 	throwforce = 23	//Better to throw
 	custom_materials = list(/datum/material/bamboo = SHEET_MATERIAL_AMOUNT * 25)
@@ -538,9 +519,7 @@
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/headpikebamboo)
 
 	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
+		/datum/element/slapcrafting,		slapcraft_recipes = slapcraft_recipe_list,	)
 
 /**
  * Skybulge
@@ -550,7 +529,7 @@
  */
 /obj/item/spear/skybulge
 	name = "\improper Sky Bulge"
-	desc = "A legendary stick with a very pointy tip. Takes you to the skies!"
+	desc = "Uma vara lendária com uma ponta pontuda. Te leva para o céu!"
 	icon_state = "dragoonpole0"
 	icon_prefix = "dragoonpole"
 	attack_verb_continuous = list("attacks", "pokes", "jabs", "tears", "gores", "lances")
@@ -570,7 +549,7 @@
 ///The action button the spear gives, usable once a minute.
 /datum/action/item_action/skybulge
 	name = "Dragoon Strike"
-	desc = "Jump up into the skies and fall down upon your opponents to deal double damage."
+	desc = "Saltar para o céu e cair sobre seus oponentes para lidar com danos duplos."
 	check_flags = parent_type::check_flags | AB_CHECK_IMMOBILE | AB_CHECK_PHASED
 	///Ref to the addtimer we have between jumping up and falling down, used to cancel early if you're incapacitated mid-jump.
 	var/jump_timer
@@ -585,17 +564,17 @@
 
 /datum/action/item_action/skybulge/do_effect(trigger_flags)
 	if(!HAS_TRAIT(target, TRAIT_WIELDED))
-		owner.balloon_alert(owner, "not dual-wielded!")
+		owner.balloon_alert(owner, "Não é duplo!")
 		return
 	var/time_left = S_TIMER_COOLDOWN_TIMELEFT(target, COOLDOWN_SKYBULGE_JUMP)
 	if(time_left)
-		owner.balloon_alert(owner, "[FLOOR(time_left * 0.1, 0.1)]s cooldown!")
+		owner.balloon_alert(owner, "[FLOOR(time_left * 0.1, 0.1)]Acalme-se!")
 		return
 	//do after shows the progress bar as feedback, so nothing here.
 	if(LAZYACCESS(owner.do_afters, target))
 		return
 
-	owner.balloon_alert(owner, "charging up...")
+	owner.balloon_alert(owner, "Carregando...")
 	ADD_TRAIT(target, TRAIT_NEEDS_TWO_HANDS, ACTION_TRAIT)
 	INVOKE_ASYNC(src, PROC_REF(jump_up))
 

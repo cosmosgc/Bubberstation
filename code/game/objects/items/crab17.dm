@@ -1,6 +1,6 @@
 /obj/item/suspiciousphone
 	name = "suspicious phone"
-	desc = "This device raises pink levels to unknown highs."
+	desc = "Este dispositivo eleva os níveis de rosa para altos desconhecidos."
 	icon = 'icons/obj/antags/syndicate_tools.dmi'
 	icon_state = "suspiciousphone"
 	w_class = WEIGHT_CLASS_SMALL
@@ -11,12 +11,12 @@
 
 /obj/item/suspiciousphone/attack_self(mob/living/user)
 	if(!ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("This device is too advanced for you!"))
+		to_chat(user, span_warning("Este dispositivo é muito avançado para você!"))
 		return
 	if(dumped)
-		to_chat(user, span_warning("You already activated Protocol CRAB-17."))
+		to_chat(user, span_warning("Você já ativou o Protocolo CRAB-17."))
 		return FALSE
-	if(tgui_alert(user, "Are you sure you want to crash this market with no survivors?", "Protocol CRAB-17", list("Yes", "No")) == "Yes")
+	if(tgui_alert(user, "Tem certeza que quer invadir o mercado sem sobreviventes?", "Protocol CRAB-17", list("Yes", "No")) == "Yes")
 		if(dumped || QDELETED(src)) //Prevents fuckers from cheesing alert
 			return FALSE
 		var/turf/targetturf = get_safe_random_station_turf_equal_weight()
@@ -31,7 +31,7 @@
 			B.dumpeet()
 		new /obj/effect/dumpeet_target(targetturf, L)
 
-		to_chat(user, span_notice("You have activated Protocol CRAB-17."))
+		to_chat(user, span_notice("Você ativou o Protocolo CRAB-17."))
 		user.log_message("activated Protocol CRAB-17.", LOG_GAME)
 
 		dumped = TRUE
@@ -39,7 +39,7 @@
 
 /obj/structure/checkoutmachine
 	name = "\improper Nanotrasen Space-Coin Market"
-	desc = "This is good for spacecoin because"
+	desc = "Isso é bom para a Spacecoin porque"
 	icon = 'icons/obj/machines/money_machine.dmi'
 	icon_state = "bogdanoff"
 	layer = ABOVE_ALL_MOB_LAYER
@@ -59,7 +59,7 @@
 
 /obj/structure/checkoutmachine/examine(mob/living/user)
 	. = ..()
-	. += span_info("It has a flashing <b>ID card reader</b> for convenient cashing out.")
+	. += span_info("Tem um flashing<b>Leitor de cartões de identidade</b>Por dinheiro conveniente.")
 
 /**
  * Check whether any accounts in the accounts_to_rob list are still being drained.
@@ -73,7 +73,7 @@
 
 /obj/structure/checkoutmachine/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(!canwalk)
-		balloon_alert(user, "not ready to accept transactions!")
+		balloon_alert(user, "Não estou pronto para aceitar transações!")
 		return
 
 	if(check_if_finished())
@@ -82,7 +82,7 @@
 
 	var/obj/item/card/id/card = attacking_item.GetID()
 	if(!card)
-		balloon_alert(user, "your [attacking_item.name] gets repelled by the id card reader")
+		balloon_alert(user, "Sua[attacking_item.name]É repelido pelo leitor de cartões")
 
 		var/throwtarget = get_step(user, get_dir(src, user))
 		user.safe_throw_at(throwtarget, 1, 1, force = MOVE_FORCE_EXTREMELY_STRONG)
@@ -91,14 +91,14 @@
 		return
 
 	if(!card.registered_account)
-		balloon_alert(user, "card has no registered account!")
+		balloon_alert(user, "O cartão não tem conta registrada!")
 		return
 
 	if(!card.registered_account.being_dumped)
-		balloon_alert(user, "funds are already safe!")
+		balloon_alert(user, "Os fundos já estão seguros!")
 		return
 
-	to_chat(user, span_warning("You quickly cash out your funds to a more secure banking location. Funds are safu.")) // This is a reference and not a typo
+	to_chat(user, span_warning("Você rapidamente desconta seus fundos para um local bancário mais seguro. Os fundos são safú.")) // This is a reference and not a typo
 	accounts_to_rob -= card.registered_account
 	card.registered_account.stop_dump()
 
@@ -254,7 +254,7 @@
 	name = ""
 	icon = 'icons/obj/machines/money_machine_64.dmi'
 	pixel_z = 300
-	desc = "Get out of the way!"
+	desc = "Sai do caminho!"
 	layer = FLY_LAYER//that wasn't flying, that was falling with style!
 	plane = ABOVE_GAME_PLANE
 	icon_state = "missile_blur"
@@ -262,7 +262,7 @@
 
 /obj/effect/dumpeet_target
 	name = "Landing Zone Indicator"
-	desc = "A holographic projection designating the landing zone of something. It's probably best to stand back."
+	desc = "Uma projeção holográfica designando a zona de pouso de algo. É melhor se afastar."
 	icon = 'icons/mob/telegraphing/telegraph_holographic.dmi'
 	icon_state = "target_circle"
 	layer = PROJECTILE_HIT_THRESHHOLD_LAYER

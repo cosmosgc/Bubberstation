@@ -116,9 +116,9 @@
 	var/scope = isgun(parent) ? "scope in" : "zoom out"
 	switch(zoom_method)
 		if(ZOOM_METHOD_RIGHT_CLICK)
-			examine_list += span_notice("You can [scope] with <b>right-click</b>.")
+			examine_list += span_notice("Você pode.[scope]Com<b>botão direito</b>.")
 		if(ZOOM_METHOD_WIELD)
-			examine_list += span_notice("You can [scope] by wielding it with both hands.")
+			examine_list += span_notice("Você pode.[scope]usando-a com as duas mãos.")
 
 /**
  * We find and return the best target to hit on a given turf.
@@ -162,7 +162,7 @@
 	if(isnull(user.client))
 		return
 	if(HAS_TRAIT(user, TRAIT_USER_SCOPED))
-		user.balloon_alert(user, "already zoomed!")
+		user.balloon_alert(user, "Já fez zoom!")
 		return
 	user.playsound_local(parent, 'sound/items/weapons/scope.ogg', 75, TRUE)
 	tracker = user.overlay_fullscreen("scope", /atom/movable/screen/fullscreen/cursor_catcher/scope, isgun(parent))

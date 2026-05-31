@@ -1,6 +1,6 @@
 /obj/item/stamp
 	name = "rubber stamp"
-	desc = "A rubber stamp for stamping important documents."
+	desc = "Um carimbo de borracha para carimbar documentos importantes."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	abstract_type = /obj/item/stamp
 	worn_icon_state = "nothing"
@@ -15,7 +15,7 @@
 	attack_verb_simple = list("stamp")
 
 /obj/item/stamp/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] stamps 'VOID' on [user.p_their()] forehead, then promptly falls over, dead."))
+	user.visible_message(span_suicide("[user]Selos 'VOID' em[user.p_their()]testa, então imediatamente cai, morto."))
 	playsound(src, 'sound/items/handling/standard_stamp.ogg', 50, vary = TRUE)
 	return OXYLOSS
 

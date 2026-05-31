@@ -47,10 +47,10 @@ const NAMES = [
 ] as const;
 
 const SUFFIXES = [
-  'the Red',
-  'the Soulless',
-  'the Master',
-  'the Lord of all things',
+  'O Vermelho',
+  'O Sem Alma',
+  'O Mestre',
+  'O Senhor de todas as coisas',
   'Jr.',
 ] as const;
 

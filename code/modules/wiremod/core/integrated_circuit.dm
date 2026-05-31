@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
  */
 /obj/item/integrated_circuit
 	name = "integrated circuit"
-	desc = "By inserting components and a cell into this, wiring them up, and putting them into a shell, anyone can pretend to be a programmer."
+	desc = "Inserindo componentes e uma célula nisso, colocando-os em uma concha, qualquer um pode fingir ser um programador."
 	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	icon_state = "integrated_circuit"
 	inhand_icon_state = "electronic"
@@ -118,9 +118,9 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 /obj/item/integrated_circuit/examine(mob/user)
 	. = ..()
 	if(cell)
-		. += span_notice("The charge meter reads [cell ? round(cell.percent(), 1) : 0]%.")
+		. += span_notice("O médico de carga diz[cell ? round(cell.percent(), 1) : 0]%.")
 	else
-		. += span_notice("There is no power cell installed.")
+		. += span_notice("Não há nenhuma célula de energia instalada.")
 
 /obj/item/integrated_circuit/drop_location()
 	if(shell)
@@ -153,7 +153,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 
 	if(istype(tool, /obj/item/stock_parts/power_store/cell))
 		if(cell)
-			balloon_alert(user, "there already is a cell inside!")
+			balloon_alert(user, "Já tem uma cela lá dentro!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.transferItemToLoc(tool, src))
@@ -161,11 +161,11 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 
 		set_cell(tool)
 		tool.add_fingerprint(user)
-		user.visible_message(span_notice("[user] inserts a power cell into [src]."), span_notice("You insert the power cell into [src]."))
+		user.visible_message(span_notice("[user]insere uma célula de energia em[src]."), span_notice("Você insere a célula de energia em[src]."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(isidcard(tool))
-		balloon_alert(user, "owner id set for [tool]")
+		balloon_alert(user, "ID do proprietário definido para[tool]")
 		owner_id = WEAKREF(tool)
 		return ITEM_INTERACT_SUCCESS
 		
@@ -173,11 +173,11 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 
 /obj/item/integrated_circuit/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!cell)
-		balloon_alert(user, "power cell missing!")
+		balloon_alert(user, "Célula de energia desaparecida!")
 		return ITEM_INTERACT_BLOCKING
 
 	tool.play_tool_sound(src)
-	user.visible_message(span_notice("[user] unscrews the power cell from [src]."), span_notice("You unscrew the power cell from [src]."))
+	user.visible_message(span_notice("[user]Desenrosca a célula de energia de[src]."), span_notice("Você desaparafusa a célula de energia de[src]."))
 	cell.forceMove(drop_location())
 	set_cell(null)
 	return ITEM_INTERACT_SUCCESS
@@ -266,13 +266,13 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 
 	if(to_add.circuit_flags & CIRCUIT_NO_DUPLICATES)
 		if(is_duplicate(to_add))
-			to_chat(user, span_danger("You can't insert multiple instances of this component into the same circuit!"))
+			to_chat(user, span_danger("Você não pode inserir várias instâncias deste componente no mesmo circuito!"))
 			return FALSE
 
 	// SKYRAT ADDITION BEGIN - This is required since we have two reagent components, and the BCI only allows one active
 	if(to_add.circuit_flags & CIRCUIT_REAGENT_CONTAINER_TYPE)
 		if(shell && shell.reagents)
-			to_chat(user, span_danger("You can't insert multiple reagent containers into the same circuit!"))
+			to_chat(user, span_danger("Você não pode inserir vários recipientes reagentes no mesmo circuito!"))
 			return FALSE
 	// SKYRAT ADDITION END
 
@@ -558,7 +558,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 					if(!marked_atom)
 						return TRUE
 					port.set_input(marked_atom)
-					balloon_alert(usr, "updated [port.name]'s value to marked object.")
+					balloon_alert(usr, "Atualizado[port.name]O valor do objeto marcado.")
 					return TRUE
 				if(!marker.marked_atom)
 					port.set_input(null)
@@ -591,7 +591,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 			var/string_form = copytext("[value]", 1, PORT_MAX_STRING_DISPLAY)
 			if(length(string_form) >= PORT_MAX_STRING_DISPLAY-1)
 				string_form += "..."
-			balloon_alert(usr, "[port.name] value: [string_form]")
+			balloon_alert(usr, "[port.name]Valor:[string_form]")
 			. = TRUE
 		if("set_display_name")
 			var/new_name = params["display_name"]
@@ -655,7 +655,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 			. = TRUE
 		if("add_setter_or_getter")
 			if(setter_and_getter_count >= max_setters_and_getters)
-				balloon_alert(usr, "setter and getter count at maximum capacity")
+				balloon_alert(usr, "Contagem de setter e getter na capacidade máxima")
 				return
 			var/designated_type = /obj/item/circuit_component/variable/getter
 			if(params["is_setter"])
@@ -686,11 +686,11 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 			if((!admin_only && !isAdminGhostAI(ui.user)) || !check_rights_for(ui.user.client, R_SPAWN))
 				var/obj/machinery/component_printer/printer = linked_component_printer?.resolve()
 				if(!printer)
-					balloon_alert(ui.user, "linked printer not found!")
+					balloon_alert(ui.user, "Impressora conectada não encontrada!")
 					return
 				component = printer.print_component(component_path, user_data = ID_DATA(usr))
 				if(!component)
-					balloon_alert(ui.user, "failed to make the component!")
+					balloon_alert(ui.user, "Não conseguiu fazer o componente!")
 					return
 			else
 				if(!ispath(component_path, /obj/item/circuit_component))
@@ -719,7 +719,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 
 /obj/item/integrated_circuit/proc/on_atom_usb_cable_try_attach(datum/source, obj/item/usb_cable/usb_cable, mob/user)
 	SIGNAL_HANDLER
-	usb_cable.balloon_alert(user, "circuit needs to be in a compatible shell")
+	usb_cable.balloon_alert(user, "O circuito precisa estar em uma concha compatível.")
 	return COMSIG_CANCEL_USB_CABLE_ATTACK
 
 /// Sets the display name that appears on the shell.
@@ -772,6 +772,6 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 
 /obj/item/integrated_circuit/admin
 	name = "administrative circuit"
-	desc = "The components installed in here are far beyond your comprehension."
+	desc = "Os componentes instalados aqui estão muito além de sua compreensão."
 
 	admin_only = TRUE

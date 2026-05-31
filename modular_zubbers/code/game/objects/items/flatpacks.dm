@@ -12,7 +12,7 @@
 	if(isturf(loc))
 		var/turf/location = loc
 		if(!locate(/obj/machinery/conveyor) in location)
-			balloon_alert(user, "needs conveyor belt!")
+			balloon_alert(user, "Precisa de correia transportadora!")
 			return ITEM_INTERACT_BLOCKING
 
 	return ..()

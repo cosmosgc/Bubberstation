@@ -3,7 +3,7 @@
 
 /obj/reality_tear
 	name = "tear in the fabric of reality"
-	desc = "As you gaze into the abyss, the only thing you can think is... \"Should I really be this close to it?\""
+	desc = "Enquanto você olha para o abismo, a única coisa que você pode pensar é...\"Eu deveria estar tão perto?\""
 	anchored = TRUE
 	appearance_flags = LONG_GLIDE
 	density = TRUE
@@ -29,12 +29,7 @@
 	apply_wibbly_filters(src)
 	playsound(loc, 'sound/effects/clockcult_gateway_disrupted.ogg', vary = 200, extrarange = 3, falloff_exponent = 1, frequency = 0.33, pressure_affected = FALSE, ignore_walls = TRUE, falloff_distance = 7)
 	AddComponent(
-		/datum/component/singularity, \
-		consume_range = singularity_consume_range, \
-		grav_pull = singularity_grav_pull, \
-		roaming = FALSE, \
-		singularity_size = STAGE_SIX, \
-	)
+		/datum/component/singularity, 		consume_range = singularity_consume_range, 		grav_pull = singularity_grav_pull, 		roaming = FALSE, 		singularity_size = STAGE_SIX, 	)
 	addtimer(CALLBACK(src, PROC_REF(reality_collapse)), collapse_spawn_time, TIMER_DELETE_ME)
 	animate(src, time = 7.5 SECONDS, transform = transform.Scale(2), flags = ANIMATION_PARALLEL)
 	animate(time = 2 SECONDS, transform = transform.Scale(0.25), easing = ELASTIC_EASING)
@@ -51,7 +46,7 @@
 	if(!isliving(user))
 		return
 	var/mob/living/jedi = user
-	to_chat(jedi, span_userdanger("You don't feel like you are real anymore."))
+	to_chat(jedi, span_userdanger("Não se sente mais real."))
 	jedi.dust(just_ash = TRUE)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
@@ -59,7 +54,7 @@
 
 /obj/reality_tear/temporary
 	name = "puncture in the fabric of reality"
-	desc = "Count your lucky stars that this wasn't anywhere near you."
+	desc = "Conte suas estrelas da sorte que isso não estava perto de você."
 	singularity_consume_range = 2
 	singularity_grav_pull = 3
 	collapse_spawn_time = 2 SECONDS

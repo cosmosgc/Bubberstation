@@ -1,8 +1,8 @@
 /datum/disease/fake_gbs
 	name = "GBS"
-	desc = "An extremely rare and dangerous disease that has been researched little due to its potentially apocalyptic nature."
+	desc = "Uma doença extremamente rara e perigosa que tem sido pesquisada pouco devido à sua natureza potencialmente apocalíptica."
 	max_stages = 5
-	spread_text = "Skin contact"
+	spread_text = "Contato com a pele"
 	spread_flags = DISEASE_SPREAD_BLOOD | DISEASE_SPREAD_CONTACT_SKIN | DISEASE_SPREAD_CONTACT_FLUIDS
 	cure_text = /datum/reagent/medicine/synaptizine::name + " & " + /datum/reagent/sulfur::name
 	cures = list(/datum/reagent/medicine/synaptizine,/datum/reagent/sulfur)
@@ -26,7 +26,7 @@
 			else if(SPT_PROB(2.5, seconds_per_tick))
 				affected_mob.emote("gasp")
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You're starting to feel very weak..."))
+				to_chat(affected_mob, span_danger("Você está começando a se sentir muito fraco..."))
 		if(4)
 			if(SPT_PROB(5, seconds_per_tick))
 				affected_mob.emote("cough")

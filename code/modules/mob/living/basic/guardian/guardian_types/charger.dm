@@ -9,7 +9,7 @@
 	damage_coeff = list(BRUTE = 0.75, BURN = 0.75, TOX = 0.75, STAMINA = 0, OXY = 0.75)
 	playstyle_string = span_holoparasite("As a <b>charger</b> type you do medium damage, have light damage resistance, move very fast, can be ridden, and can charge at a location, damaging any target hit and forcing them to drop any items they are holding.")
 	creator_name = "Charger"
-	creator_desc = "Moves very fast, does medium damage on attack, can be ridden and can charge at targets, damaging the first target hit and forcing them to drop any items they are holding."
+	creator_desc = "Move-se muito rápido, faz danos médios no ataque, pode ser montado e pode atacar os alvos, danificando o primeiro alvo atingido e forçando-os a largar qualquer item que eles estão segurando."
 	creator_icon = "charger"
 	toggle_button_type = /datum/action/cooldown/mob_cooldown/charge/basic_charge/guardian
 

@@ -41,9 +41,9 @@
 /datum/component/spirit_holding/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	if(!bound_spirit)
-		examine_list += span_notice("[parent] sleeps.[allow_channeling ? " Use [parent] in your hands to attempt to awaken it." : ""]")
+		examine_list += span_notice("[parent]Dorme.[allow_channeling ? " Use [parent] in your hands to attempt to awaken it." : ""]")
 		return
-	examine_list += span_notice("[parent] is alive.")
+	examine_list += span_notice("[parent]está vivo.")
 
 ///signal fired on self attacking parent
 /datum/component/spirit_holding/proc/on_attack_self(datum/source, mob/user)
@@ -53,14 +53,14 @@
 /datum/component/spirit_holding/proc/get_ghost(mob/user)
 	var/atom/thing = parent
 	if(attempting_awakening)
-		thing.balloon_alert(user, "already channeling!")
+		thing.balloon_alert(user, "Já está canalizando!")
 		return
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_STATION_SENTIENCE))
-		thing.balloon_alert(user, "spirits are unwilling!")
-		to_chat(user, span_warning("Anomalous otherworldly energies block you from awakening [parent]!"))
+		thing.balloon_alert(user, "Espíritos não estão dispostos!")
+		to_chat(user, span_warning("Energias anômalas de outro mundo te impedem de acordar[parent]!"))
 		return
 	if(!allow_channeling && bound_spirit)
-		to_chat(user, span_warning("Try as you might, the spirit within slumbers."))
+		to_chat(user, span_warning("Tente como quiser, o espírito dentro do sono."))
 		return
 	attempting_awakening = TRUE
 	thing.balloon_alert(user, "channeling...")
@@ -71,7 +71,7 @@
 		checked_target = thing,
 		ignore_category = POLL_IGNORE_POSSESSED_BLADE,
 		alert_pic = thing,
-		role_name_text = "possessed blade",
+		role_name_text = "Lâmina possuída",
 		chat_text_border_icon = thing,
 	)
 	affix_spirit(user, chosen_one)
@@ -89,7 +89,7 @@
 	// Immediately unregister to prevent making a new spirit
 	UnregisterSignal(parent, COMSIG_ITEM_ATTACK_SELF)
 	if(QDELETED(parent)) //if the thing that we're conjuring a spirit in has been destroyed, don't create a spirit
-		to_chat(ghost, span_userdanger("The new vessel for your spirit has been destroyed! You remain an unbound ghost."))
+		to_chat(ghost, span_userdanger("A nova nave para o seu espírito foi destruída! Você continua um fantasma livre."))
 		return
 
 	bind_the_soule(ghost.mind, awakener)
@@ -124,7 +124,7 @@
 		return "indecision" // The spirit of indecision
 	var/chosen_name = sanitize_name(tgui_input_text(bound_spirit, "What are you named?", "Spectral Nomenclature", max_length = MAX_NAME_LEN))
 	if(!chosen_name) // with the way that sanitize_name works, it'll actually send the error message to the awakener as well.
-		to_chat(awakener, span_warning("Your blade did not select a valid name! Please wait as they try again.")) // more verbose than what sanitize_name might pass in it's error message
+		to_chat(awakener, span_warning("Sua lâmina não escolheu um nome válido! Por favor, espere enquanto tentam novamente.")) // more verbose than what sanitize_name might pass in it's error message
 		return custom_name(awakener, iteration++)
 	return chosen_name
 
@@ -148,22 +148,21 @@
 	if(!allow_exorcism)
 		return // just in case
 	var/atom/movable/exorcised_movable = parent
-	to_chat(exorcist, span_notice("You begin to exorcise [parent]..."))
+	to_chat(exorcist, span_notice("Você começa a exorcizar[parent]..."))
 	playsound(parent, 'sound/effects/hallucinations/veryfar_noise.ogg',40,TRUE)
 	if(!do_after(exorcist, 4 SECONDS, target = exorcised_movable))
 		return
 	playsound(parent, 'sound/effects/pray_chaplain.ogg',60,TRUE)
 	UnregisterSignal(exorcised_movable, list(COMSIG_ATOM_RELAYMOVE, COMSIG_BIBLE_SMACKED))
 	RegisterSignal(exorcised_movable, COMSIG_ITEM_ATTACK_SELF, PROC_REF(on_attack_self))
-	to_chat(bound_spirit, span_userdanger("You were exorcised!"))
+	to_chat(bound_spirit, span_userdanger("Você foi exorcizado!"))
 	QDEL_NULL(bound_spirit)
 	exorcised_movable.name = initial(exorcised_movable.name)
-	exorcist.visible_message(span_notice("[exorcist] exorcises [exorcised_movable]!"), \
-						span_notice("You successfully exorcise [exorcised_movable]!"))
+	exorcist.visible_message(span_notice("[exorcist]Exorcises[exorcised_movable]!"), 						span_notice("Você exorcizou com sucesso.[exorcised_movable]!"))
 	return COMSIG_END_BIBLE_CHAIN
 
 ///signal fired from parent being destroyed
 /datum/component/spirit_holding/proc/on_destroy(datum/source)
 	SIGNAL_HANDLER
-	to_chat(bound_spirit, span_userdanger("You were destroyed!"))
+	to_chat(bound_spirit, span_userdanger("Você foi destruído!"))
 	QDEL_NULL(bound_spirit)

@@ -299,11 +299,11 @@
 				return
 			for(var/datum/opposing_force_objective/objective as anything in objectives)
 				if(objective.status == OPFOR_OBJECTIVE_STATUS_NOT_REVIEWED)
-					to_chat(usr, custom_boxed_message("purple_box", span_command_headset(span_pink("OPFOR: ERROR, some objectives have not been reviewed. Please approve/deny all objectives."))))
+					to_chat(usr, custom_boxed_message("purple_box", span_command_headset(span_pink("ERRO, alguns objetivos não foram revistos. Aprovar/negar todos os objetivos."))))
 					return
 			for(var/datum/opposing_force_selected_equipment/equipment as anything in selected_equipment)
 				if(equipment.status == OPFOR_EQUIPMENT_STATUS_NOT_REVIEWED)
-					to_chat(usr, custom_boxed_message("purple_box", span_command_headset(span_pink("OPFOR: ERROR, some equipment requests have not been reviewed. Please approve/deny all equipment requests."))))
+					to_chat(usr, custom_boxed_message("purple_box", span_command_headset(span_pink("ERRO, alguns pedidos de equipamentos não foram revistos. Aprovar/negar todos os pedidos de equipamentos."))))
 					return
 			SSopposing_force.approve(src, usr)
 		if("approve_all")
@@ -375,11 +375,11 @@
 
 /datum/opposing_force/proc/handle(mob/user)
 	if(handling_admin)
-		var/choice = tgui_alert(user, "Another admin is currently handling this application, do you want to override them?", "Admin Handling", list("Yes", "No"))
+		var/choice = tgui_alert(user, "Outro administrador está lidando com essa aplicação, quer substituí-los?", "Admin Handling", list("Yes", "No"))
 		if(choice == "No")
 			return
 	handling_admin = get_admin_ckey(user)
-	to_chat(mind_reference.current, custom_boxed_message("green_box", span_nicegreen("Your OPFOR application is now being handled by [handling_admin].")))
+	to_chat(mind_reference.current, custom_boxed_message("green_box", span_nicegreen("Sua aplicação da OPFOR está agora sendo tratada por[handling_admin].")))
 	send_admins_opfor_message("HANDLE: [ADMIN_LOOKUPFLW(user)] is handling [mind_reference.key]'s OPFOR application.")
 	send_system_message("[handling_admin] has assigned themselves to this application")
 	add_log(user.ckey, "Assigned self to application")
@@ -441,7 +441,7 @@
 	if(!can_edit)
 		return
 	if(LAZYLEN(selected_equipment) >= OPFOR_EQUIPMENT_LIMIT)
-		to_chat(user, span_warning("You have too many items, please remove one!"))
+		to_chat(user, span_warning("Você tem muitos itens, por favor, remova um!"))
 		return
 	var/datum/opposing_force_selected_equipment/new_selected = new(incoming_equipment)
 	selected_equipment += new_selected
@@ -470,12 +470,12 @@
 
 /datum/opposing_force/proc/request_update(mob/user)
 	if(request_updates_muted)
-		to_chat(user, span_warning("You are currently blocked from requesting updates!"))
+		to_chat(user, span_warning("Você está bloqueado de solicitar atualizações!"))
 		return
 	if(status != OPFOR_STATUS_AWAITING_APPROVAL || !COOLDOWN_FINISHED(src, request_update_cooldown))
 		return
 
-	send_admins_opfor_message(span_command_headset("UPDATE REQUEST: [ADMIN_LOOKUPFLW(user)] has requested an update on their OPFOR application!"))
+	send_admins_opfor_message(span_command_headset("PEDIDO DE ATUALIZAÇÃO:[ADMIN_LOOKUPFLW(user)]Pediu uma atualização em sua aplicação OPFOR!"))
 	add_log(user.ckey, "Requested an update")
 
 	for(var/client/staff as anything in GLOB.admins)
@@ -487,14 +487,14 @@
 
 /datum/opposing_force/proc/submit_to_subsystem(mob/user)
 	if(blocked)
-		to_chat(user, span_warning("You are currently blocked from submitting new requests!"))
+		to_chat(user, span_warning("Você está atualmente impedido de apresentar novos pedidos!"))
 		return
 	if(status != OPFOR_STATUS_NOT_SUBMITTED && status != OPFOR_STATUS_CHANGES_REQUESTED)
 		return FALSE
 	// Subsystem checks, no point in bloating the system if it's not accepting more.
 	var/availability = SSopposing_force.check_availability()
 	if(availability != OPFOR_SUBSYSTEM_READY)
-		to_chat(usr, span_warning("Error, the OPFOR subsystem rejected your request. Reason: <b>[availability]</b>"))
+		to_chat(usr, span_warning("Erro, o subsistema OPFOR rejeitou seu pedido. Razão:<b>[availability]</b>"))
 		return FALSE
 
 	var/queue_position = SSopposing_force.add_to_queue(src)
@@ -509,13 +509,13 @@
 	can_edit = FALSE
 	add_log(user.ckey, "Submitted to the OPFOR subsystem")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has submitted the application for review")
-	send_admins_opfor_message(span_command_headset("SUBMISSION: [ADMIN_LOOKUPFLW(user)] has submitted their OPFOR application. They are number [queue_position] in the queue."))
-	to_chat(usr, custom_boxed_message("green_box", span_nicegreen(("You have been added to the queue for the OPFOR subsystem. You are number <b>[queue_position]</b> in line."))))
+	send_admins_opfor_message(span_command_headset("SUBMISSÃO:[ADMIN_LOOKUPFLW(user)]apresentou seu pedido de OPFOR. São números.[queue_position]Na fila."))
+	to_chat(usr, custom_boxed_message("green_box", span_nicegreen(("Você foi adicionado à fila para o subsistema OPFOR. Você é o número.<b>[queue_position]</b>Na fila."))))
 
 /datum/opposing_force/proc/modify_request(mob/user)
 	if(status == OPFOR_STATUS_CHANGES_REQUESTED)
 		return
-	var/choice = tgui_alert(user, "Are you sure you want to request changes? This will unapprove all objectives.", "Confirm", list("Yes", "No"))
+	var/choice = tgui_alert(user, "Tem certeza que quer pedir mudanças? Isso desaprovará todos os objetivos.", "Confirm", list("Yes", "No"))
 	if(choice != "Yes")
 		return
 	if(status == OPFOR_STATUS_CHANGES_REQUESTED) // The alert is not async, so this could change, thus being spammed.
@@ -543,7 +543,7 @@
 		opfor.status = OPFOR_OBJECTIVE_STATUS_DENIED
 	SEND_SOUND(mind_reference.current, sound('modular_skyrat/modules/opposing_force/sound/denied.ogg'))
 	add_log(denier.ckey, "Denied application")
-	to_chat(mind_reference.current, custom_boxed_message("red_box", span_redtext("Your OPFOR application has been denied by [denier ? get_admin_ckey(denier) : "the OPFOR subsystem"]!")))
+	to_chat(mind_reference.current, custom_boxed_message("red_box", span_redtext("Seu pedido foi negado por[denier ? get_admin_ckey(denier) : "the OPFOR subsystem"]!")))
 	send_system_message(get_admin_ckey(denier) + " has denied the application with the following reason: [reason]")
 	send_admins_opfor_message("[span_red("DENIED")]: [ADMIN_LOOKUPFLW(denier)] has denied [ckey]'s application([reason ? reason : "No reason specified"])")
 	ticket_counter_add_handled(denier.ckey, 1)
@@ -562,7 +562,7 @@
 			continue
 		objective_denied = TRUE
 		break
-	to_chat(mind_reference.current, custom_boxed_message("green_box", span_greentext("Your OPFOR application has been [objective_denied ? span_bold("partially approved (please view your OPFOR for details)") : span_bold("fully approved")] by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
+	to_chat(mind_reference.current, custom_boxed_message("green_box", span_greentext("Sua aplicação OPFOR foi[objective_denied ? span_bold("partially approved (please view your OPFOR for details)") : span_bold("fully approved")]Por que[approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
 	send_system_message("[approver ? get_admin_ckey(approver) : "The OPFOR subsystem"] has approved the application")
 	send_admins_opfor_message("[span_green("APPROVED")]: [ADMIN_LOOKUPFLW(approver)] has approved [ckey]'s application")
 	ticket_counter_add_handled(approver.ckey, 1)
@@ -570,7 +570,7 @@
 /datum/opposing_force/proc/close_application(mob/user)
 	if(status == OPFOR_STATUS_NOT_SUBMITTED)
 		return
-	var/choice = tgui_alert(user, "Are you sure you want withdraw your application?", "Confirm", list("Yes", "No"))
+	var/choice = tgui_alert(user, "Tem certeza que quer retirar seu pedido?", "Confirm", list("Yes", "No"))
 	if(choice != "Yes")
 		return
 	if(status == OPFOR_STATUS_NOT_SUBMITTED) // The alert is not async, so this could change, thus being spammed.
@@ -664,7 +664,7 @@
 	if(!can_edit)
 		return
 	if(LAZYLEN(objectives) >= OPFOR_MAX_OBJECTIVES)
-		to_chat(user, span_warning("You have too many objectives, please remove one!"))
+		to_chat(user, span_warning("Você tem muitos objetivos, por favor, remova um!"))
 		return
 	var/datum/opposing_force_objective/opfor_objective = new
 	objectives += opfor_objective
@@ -686,13 +686,13 @@
 	opposing_force_objective.denied_reason = deny_reason
 	add_log(user.ckey, "Denied objective([opposing_force_objective.title]) WITH REASON: [deny_reason]")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has denied objective '[opposing_force_objective.title]' with the reason '[deny_reason]'")
-	to_chat(mind_reference?.current, span_warning("Your OPFOR objective [span_bold("[opposing_force_objective.title]")] has been denied."))
+	to_chat(mind_reference?.current, span_warning("Seu objetivo OPFOR[span_bold("[opposing_force_objective.title]")]Foi negado."))
 
 /datum/opposing_force/proc/approve_objective(mob/user, datum/opposing_force_objective/opposing_force_objective)
 	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_APPROVED
 	add_log(user.ckey, "Approved objective([opposing_force_objective.title])")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has approved objective '[opposing_force_objective.title]'")
-	to_chat(mind_reference?.current, span_warning("Your OPFOR objective [span_bold("[opposing_force_objective.title]")] has been approved."))
+	to_chat(mind_reference?.current, span_warning("Seu objetivo OPFOR[span_bold("[opposing_force_objective.title]")]Foi provado."))
 
 /**
  * System procs
@@ -735,7 +735,7 @@
 
 /datum/opposing_force/proc/broadcast_queue_change()
 	var/queue_number = SSopposing_force.get_queue_position(src)
-	to_chat(mind_reference.current, custom_boxed_message("green_box", span_nicegreen("Your OPFOR application is now number [queue_number] in the queue.")))
+	to_chat(mind_reference.current, custom_boxed_message("green_box", span_nicegreen("Sua aplicação OPFOR é agora número[queue_number]Na fila.")))
 	send_system_message("Application is now number [queue_number] in the queue")
 
 /datum/opposing_force/proc/send_message(mob/user, message)
@@ -838,7 +838,7 @@
 		send_system_message("ERROR: You are muted.")
 		return
 	if(user.ckey != handling_admin && GLOB.directory[handling_admin])
-		to_chat(GLOB.directory[handling_admin], span_pink("OPFOR: [user] has pinged their OPFOR admin chat! (<a href='byond://?src=[REF(src)];admin_pref=show_panel'>Show Panel</a>)"))
+		to_chat(GLOB.directory[handling_admin], span_pink("OPFOR:[user]Temos uma conversa de administração da OPFOR!<a href='byond://?src=[REF(src)];admin_pref=show_panel'>Show Panel</a>)"))
 		SEND_SOUND(GLOB.directory[handling_admin], sound('sound/misc/bloop.ogg'))
 		send_system_message("Handling admin pinged.")
 		COOLDOWN_START(src, ping_cooldown, OPFOR_PING_COOLDOWN)
@@ -850,7 +850,7 @@
 		send_system_message("ERROR: You do not have permission to do that.")
 		return
 	send_system_message("User pinged.")
-	to_chat(mind_reference.current, span_pink("OPFOR: [get_admin_ckey(user)] has pinged your OPFOR chat, check it!"))
+	to_chat(mind_reference.current, span_pink("OPFOR:[get_admin_ckey(user)]Rastreou seu bate-papo, veja!"))
 	SEND_SOUND(mind_reference.current, sound('sound/misc/bloop.ogg'))
 
 /datum/opposing_force/proc/roundend_report()
@@ -888,11 +888,11 @@
 
 /// Allows a user to import an OPFOR from json
 /datum/opposing_force/proc/json_import(mob/importer)
-	var/file_uploaded = input(importer, "Choose a .json file to upload. (This WILL override your inputted data)", "Upload JSON template") as null|file
+	var/file_uploaded = input(importer, "Escolha um arquivo Json para carregar. (Isto irá substituir seus dados inseridos)", "Envie o modelo JSON") as null|file
 	if(!file_uploaded)
 		return
 	if(copytext("[file_uploaded]", -5) != ".json") //5 == length(".json")
-		to_chat(importer, span_warning("Filename must end in '.json': [file_uploaded]"))
+		to_chat(importer, span_warning("O nome do arquivo deve terminar em 'Json':[file_uploaded]"))
 		return
 
 	QDEL_LIST(objectives)
@@ -926,14 +926,11 @@
 						// If there isn't category data / a given equipment type, OR if either of those don't fit within certain perameters, it continues
 						var/list/equipment = opfor_data["selected_equipment"][iter_num]
 
-						if(\
-						!equipment["equipment_parent_category"]|| !(equipment["equipment_parent_category"] in SSopposing_force.equipment_list) \
-						|| !equipment["equipment_parent_type"] || !ispath(text2path(equipment["equipment_parent_type"]), /datum/opposing_force_equipment))
+						if(						!equipment["equipment_parent_category"]|| !(equipment["equipment_parent_category"] in SSopposing_force.equipment_list) 						|| !equipment["equipment_parent_type"] || !ispath(text2path(equipment["equipment_parent_type"]), /datum/opposing_force_equipment))
 							continue
 
 						// creates a new selected equipment datum using a type gotten from the given equipment type via SSopposing_force.equipment_list
-						var/datum/opposing_force_selected_equipment/opfor_equipment = select_equipment(importer, \
-						locate(text2path(equipment["equipment_parent_type"])) in SSopposing_force.equipment_list[equipment["equipment_parent_category"]])
+						var/datum/opposing_force_selected_equipment/opfor_equipment = select_equipment(importer, 						locate(text2path(equipment["equipment_parent_type"])) in SSopposing_force.equipment_list[equipment["equipment_parent_category"]])
 
 						if(!opfor_equipment)
 							continue
@@ -945,7 +942,7 @@
 		QDEL_LIST(objectives)
 		QDEL_LIST(selected_equipment)
 		set_backstory = null
-		to_chat(importer, span_warning("JSON file is corrupted in some form. Please correct and reupload."))
+		to_chat(importer, span_warning("O arquivo JSON está corrompido de alguma forma. Por favor corrija e recarregue."))
 		add_log(importer.ckey, "Attempted to upload a corrupted JSON, purging leftover data...")
 
 

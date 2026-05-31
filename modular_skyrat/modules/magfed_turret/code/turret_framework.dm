@@ -28,7 +28,7 @@
 ////// Toolbox Handling //////
 /obj/item/storage/toolbox/emergency/turret/mag_fed
 	name = "mag-fed turret kit"
-	desc = "A discreet kit for a magazine fed turret."
+	desc = "Um kit discreto para uma torre de revista."
 	has_latches = FALSE
 	////// Whether the turret's settings can be adjusted.
 	var/setting_change = TRUE //we'll default this to true because... well- You'll mostly get these AFTER destroying or constructing them, and should be able to. Exceptions will be made per-item.
@@ -64,15 +64,15 @@
 
 /obj/item/storage/toolbox/emergency/turret/mag_fed/examine(mob/user)
 	. = ..()
-	. += span_notice("The targeting safety is [turret_safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].")
-	. += span_notice("The turret is [flags_on ? "<font color='#00ff15'>OBEYING LAWS</font>" : "<font color='#ff0000'>FREE TARGETING</font>"].")
+	. += span_notice("A segurança do alvo é[turret_safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].")
+	. += span_notice("A torre é[flags_on ? "<font color='#00ff15'>OBEYING LAWS</font>" : "<font color='#ff0000'>FREE TARGETING</font>"].")
 	if(!easy_deploy)
-		. += span_notice("You can deploy this by clicking in <b>combat mode</b> with a <b>wrenching tool.</b>")
+		. += span_notice("Você pode implantar isso clicando em<b>Modo de combate</b>Comum<b>Ferramenta Chaveadora.</b>")
 	else
-		. += span_notice("You can deploy this by <b>using it</b> or using a <b>wrenching tool</b> in <b>combat mode</b>")
+		. += span_notice("Você pode implantar isso por<b>Usando-o.</b>U usando um<b>Ferramenta Chaveadora</b>Em<b>Modo de combate</b>")
 	if(setting_change)
-		. += span_notice("You can toggle the targeting safety with a <b>screwdriving bit.</b>")
-		. += span_notice("You can change if the turret obeys flags with a <b>multitool.</b>")
+		. += span_notice("Você pode mudar a segurança do alvo com um<b>Um pouco parafusado.</b>")
+		. += span_notice("Você pode mudar se a torre obedecer bandeiras com um<b>Multitool.</b>")
 
 /obj/item/storage/toolbox/emergency/turret/mag_fed/PopulateContents()
 
@@ -128,10 +128,10 @@
 		if(!tool.use_tool(src, user, 2 SECONDS, volume = 20))
 			return ITEM_INTERACT_BLOCKING
 
-		balloon_alert(user, "constructed!")
+		balloon_alert(user, "Construído!")
 		user.visible_message(
-			span_danger("[user] bashes [src] with [tool]!"),
-			span_danger("You bash [src] with [tool]!"),
+			span_danger("[user]Bache.[src]Com[tool]!"),
+			span_danger("Você bate[src]Com[tool]!"),
 			null,
 			COMBAT_MESSAGE_RANGE,
 		)
@@ -146,7 +146,7 @@
 		return
 	var/turf/chosen_spot = get_step(user, user.dir) //find spot infront of person and places it there
 	if(chosen_spot.is_blocked_turf(TRUE, src))
-		balloon_alert(user, "area is unfit for deployment.")
+		balloon_alert(user, "A área não é adequada para a implantação.")
 		return
 	balloon_alert(user, "deploying...")
 	playsound(src, 'sound/items/tools/ratchet.ogg', 50, TRUE)
@@ -159,7 +159,7 @@
 	if(!chosen_spot)
 		target_area = loc
 	if(target_area.is_blocked_turf(TRUE, src))
-		balloon_alert(user, "deployment area is unfit for deploying.")
+		balloon_alert(user, "A área de implantação é inadequada para a implantação.")
 		return
 	playsound(src, 'sound/items/tools/drill_use.ogg', 80, TRUE, -1)
 	var/obj/machinery/porta_turret/syndicate/toolbox/mag_fed/turret = new turret_type(target_area)
@@ -186,7 +186,7 @@
 
 /obj/item/target_designator
 	name = "\improper Turret Target Designator"
-	desc = "A simple target designation system used to let someone over-ride a turrets targeting software and focus on one entity, or designate someone as a \"Friend\"."
+	desc = "Um simples sistema de designação de alvos usado para deixar alguém ultrapassar uma torre mirando em software e focar em uma entidade, ou designar alguém como um\"Amigo.\"."
 	icon = 'modular_skyrat/modules/magfed_turret/icons/designator.dmi'
 	icon_state = "designator"
 	inhand_icon_state = "designator"
@@ -218,13 +218,13 @@
 
 /obj/item/target_designator/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>[length(linked_turrets)]/[turret_limit]</b> turrets linked.")
-	. += span_notice("<b>Right click</b> an entity to designate it as an ally.")
-	. += span_notice("<b>Left click</b> a spot or entity to designate it as a target.")
-	. += span_notice("<b>Use</b> this item to toggle human targeting.")
-	. += span_notice("Targeting of non-authorized personnel is [target_all ? "<font color='#ff0000'>ENABLED</font>" : "<font color='#00ff15'>DISABLED</font>"].")
-	. += span_notice("<b>Shift-click</b> this item to toggle flag following.")
-	. += span_notice("Turrets are [follow_flags ? "<font color='#00ff15'>OBEYING LAWS</font>" : "<font color='#ff0000'>FREE TARGETING</font>"].")
+	. += span_notice("<b>[length(linked_turrets)]/[turret_limit]</b>Torres ligadas.")
+	. += span_notice("<b>Clique em direito.</b>uma entidade para designá-lo como um aliado.")
+	. += span_notice("<b>Clique esquerdo</b>Um local ou entidade para designá-lo como um alvo.")
+	. += span_notice("<b>Use</b>Este item para mudar o mundo humano.")
+	. += span_notice("Alvo de pessoal não autorizado é[target_all ? "<font color='#ff0000'>ENABLED</font>" : "<font color='#00ff15'>DISABLED</font>"].")
+	. += span_notice("<b>Shift-click</b>Este item para alternar bandeira segundo.")
+	. += span_notice("Torres são[follow_flags ? "<font color='#00ff15'>OBEYING LAWS</font>" : "<font color='#ff0000'>FREE TARGETING</font>"].")
 
 /obj/item/target_designator/attack_self(mob/user, modifiers)
 	. = ..()
@@ -269,7 +269,7 @@
 	for(var/obj/machinery/porta_turret/syndicate/toolbox/mag_fed/turret in linked_turrets)
 		for(var/turret_to_control in 1 to length(linked_turrets))
 			turret.override_target(acquired_target?.resolve())
-		balloon_alert(user, "target designated!")
+		balloon_alert(user, "Alvo designado!")
 
 /// clears manual target acquisition
 /obj/item/target_designator/proc/clear_target(user)
@@ -277,7 +277,7 @@
 	for(var/obj/machinery/porta_turret/syndicate/toolbox/mag_fed/turret in linked_turrets)
 		for(var/turret_to_control in 1 to length(linked_turrets))
 			turret.clear_override()
-		balloon_alert(user, "designation cleared!")
+		balloon_alert(user, "Designação liberada!")
 
 /// Sets all turrets to the same state as the controller.
 /obj/item/target_designator/proc/sync_turrets()
@@ -300,7 +300,7 @@
 
 /obj/machinery/porta_turret/syndicate/toolbox/mag_fed
 	name = "Mag-fed Turret"
-	desc = "A turret designed to feed from an attatched magazine system."
+	desc = "Uma torre projetada para se alimentar de um sistema de revistas."
 	integrity_failure = 0
 	max_integrity = 200
 	////// delay between shots. Affects burst fire.
@@ -430,20 +430,20 @@
 
 /obj/machinery/porta_turret/syndicate/toolbox/mag_fed/examine(mob/user) //If this breaks i'm gonna have to go to further seperate its examination text to allow better editing.
 	. = ..()
-	. -= span_notice("You can repair it by <b>left-clicking</b> with a combat wrench.")
-	. -= span_notice("You can fold it by <b>right-clicking</b> with a combat wrench.")
+	. -= span_notice("Você pode consertá-lo.<b>Clique com o botão esquerdo.</b>com uma chave inglesa.")
+	. -= span_notice("Você pode dobrar por<b>com o botão direito</b>com uma chave inglesa.")
 	if(FAST_FACTION_CHECK(faction, user.get_faction(), null, null, FALSE) || has_ally(user))
-		. += span_notice("You can unlock it by <b>left-clicking</b> with an <b>id card.</b>")
-		. += span_notice("You can repair it by <b>left-clicking</b> with a <b>wrench.</b>")
-		. += span_notice("You can fold it by <b>right-clicking</b> with a <b>wrench.</b>")
-		. += span_notice("You can feed it by <b>left-clicking</b> with a <b>magazine.</b>")
-		. += span_notice("You can link it by <b>left-clicking</b> with a <b>target designator.</b>")
-		. += span_notice("You can unlink it by <b>right-clicking</b> with a <b>target designator.</b>")
-		. += span_notice("You can force it to load a cartridge by <b>right-clicking</b> with an empty hand")
+		. += span_notice("Você pode destravá-lo por<b>Clique com o botão esquerdo.</b>com uma<b>Cartão de identidade.</b>")
+		. += span_notice("Você pode consertá-lo.<b>Clique com o botão esquerdo.</b>Comum<b>Chave Inglesa.</b>")
+		. += span_notice("Você pode dobrar por<b>com o botão direito</b>Comum<b>Chave Inglesa.</b>")
+		. += span_notice("Você pode alimentá-lo<b>Clique com o botão esquerdo.</b>Comum<b>Revista.</b>")
+		. += span_notice("Você pode ligá-lo por<b>Clique com o botão esquerdo.</b>Comum<b>Designador de Alvos.</b>")
+		. += span_notice("Você pode desligá-lo por<b>com o botão direito</b>Comum<b>Designador de Alvos.</b>")
+		. += span_notice("Você pode forçá-lo a carregar um cartucho<b>com o botão direito</b>com uma mão vazia")
 		if(quick_retract)
-			. += span_notice ("You can retract it manually with <b>alt + right-click</b>!")
+			. += span_notice ("Você pode retrair manualmente com<b>Alt + botão direito</b>!")
 		if(linkage)
-			. += span_notice("<b><i>This turret is currently linked!</i></b>")
+			. += span_notice("<b><i>Esta torre está ligada!</i></b>")
 
 /obj/machinery/porta_turret/syndicate/toolbox/mag_fed/on_deconstruction(disassembled, mob/user) // Full re-write, to stop the toolbox var from being a runtimer
 	var/obj/item/ammo_box/magazine/mag = magazine_ref?.resolve()
@@ -590,9 +590,9 @@
 	if(isnull(auto_loader))
 		mag_box = null
 	if(!(magaroni.type in auto_loader.atom_storage.can_hold))
-		balloon_alert(guy_with_mag, "can't fit!")
+		balloon_alert(guy_with_mag, "Não cabe!")
 		return
-	balloon_alert(guy_with_mag, "magazine inserted!")
+	balloon_alert(guy_with_mag, "Revista inserida!")
 	auto_loader?.atom_storage.attempt_insert(magaroni, guy_with_mag, TRUE)
 	toggle_on(TRUE)
 	return
@@ -818,9 +818,9 @@
 	if(isnull(auto_loader))
 		mag_box = null
 	if(attacking_item.type in auto_loader.atom_storage.can_hold)
-		balloon_alert(user, "attempting to load...")
+		balloon_alert(user, "Tentando Carregar...")
 		if(!do_after(user, 1 SECONDS, src))
-			balloon_alert(user, "failed to load!")
+			balloon_alert(user, "Não conseguiu carregar!")
 		insert_mag(attacking_item, user)
 		return
 
@@ -833,15 +833,15 @@
 		if(istype(attacking_item, /obj/item/target_designator))
 			var/obj/item/target_designator/controller = attacking_item
 			if(length(controller.linked_turrets) >= controller.turret_limit)
-				balloon_alert(user, "turret limit reached!")
+				balloon_alert(user, "O limite da torre foi atingido!")
 				return
 			if(linkage) //should help both preventing dual-controlling AND double-linking causing odd issues with ally system
-				balloon_alert(user, "turret already linked!")
+				balloon_alert(user, "Torre já ligada!")
 				return
 			linkage = WEAKREF(controller)
 			controller.linked_turrets += src
 			RegisterSignal(controller, COMSIG_QDELETING, PROC_REF(on_qdeleted), TRUE) //True otherwise it causes a runtime for overwriting parent qdeling. Dont know where to go elsewise.
-			balloon_alert(user, "turret linked!")
+			balloon_alert(user, "Torre Ligada!")
 			return
 
 	if(attacking_item.tool_behaviour != TOOL_WRENCH)
@@ -853,7 +853,7 @@
 	else
 		if(atom_integrity == max_integrity)
 			if(!claptrap_moment)
-				balloon_alert(user, "already repaired!")
+				balloon_alert(user, "Já está consertado!")
 			return
 
 		if(!claptrap_moment)
@@ -865,7 +865,7 @@
 			repair_damage(25)
 
 		if(!claptrap_moment)
-			balloon_alert(user, "repaired!")
+			balloon_alert(user, "Consertado!")
 
 /obj/machinery/porta_turret/syndicate/toolbox/mag_fed/attackby_secondary(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers) //IM TIRED OF MISMATCHED VAR NAMES. IT'S ATTACK_ITEM ON MAIN, WHY WEAPON HERE?
 	. = ..()
@@ -875,12 +875,12 @@
 		if(istype(attacking_item, /obj/item/target_designator))
 			var/obj/item/target_designator/owner_check = linkage?.resolve()
 			if(attacking_item != owner_check) //cant unlink if not the same one
-				balloon_alert(user, "turret not linked!")
+				balloon_alert(user, "Torre não ligada!")
 				return
 			var/obj/item/target_designator/controller = attacking_item
 			linkage = null
 			controller.linked_turrets -= src
-			balloon_alert(user, "turret unlinked!")
+			balloon_alert(user, "Torre Desvinculada!")
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	if(attacking_item.tool_behaviour != TOOL_WRENCH)

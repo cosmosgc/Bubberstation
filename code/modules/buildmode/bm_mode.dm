@@ -38,7 +38,7 @@
 	CRASH("No help defined, yell at a coder")
 
 /datum/buildmode_mode/proc/change_settings(client/c)
-	to_chat(c, span_warning("There is no configuration available for this mode"))
+	to_chat(c, span_warning("Não há nenhuma configuração disponível para este modo"))
 	return
 
 /datum/buildmode_mode/proc/Reset()
@@ -82,12 +82,12 @@
 				return
 			if(cornerA && !cornerB)
 				cornerB = select_tile(get_turf(object), AREASELECT_CORNERB)
-				to_chat(c, span_boldwarning("Region selected, if you're happy with your selection left click again, otherwise right click."))
+				to_chat(c, span_boldwarning("Região selecionada, se você está feliz com sua seleção clique esquerdo novamente, caso contrário clique direito."))
 				return
 			handle_selected_area(c, params)
 			deselect_region()
 		else
-			to_chat(c, span_notice("Region selection canceled!"))
+			to_chat(c, span_notice("Seleção da região cancelada!"))
 			deselect_region()
 	return
 

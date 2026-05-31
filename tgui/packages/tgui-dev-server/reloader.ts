@@ -37,7 +37,7 @@ export async function findCacheRoot(): Promise<string | undefined> {
   if (cacheRoot) {
     return cacheRoot;
   }
-  logger.log('looking for byond cache');
+  logger.log('Procurando por um tesouro único.');
   // Find BYOND cache folders
 
   for (const pattern of SEARCH_LOCATIONS) {
@@ -55,9 +55,9 @@ export async function findCacheRoot(): Promise<string | undefined> {
 
   // Query the Windows Registry
   if (process.platform === 'win32') {
-    logger.log('querying windows registry');
+    logger.log('pesquisando registro de janelas');
     const userpath = await regQuery(
-      'HKCU\\Software\\Dantom\\BYOND',
+      'HKCU\\Software\\Dantom.\\BOND',
       'userpath',
     );
     if (userpath) {
@@ -66,7 +66,7 @@ export async function findCacheRoot(): Promise<string | undefined> {
       return cacheRoot;
     }
   }
-  logger.log('found no cache directories');
+  logger.log('não encontrei nenhum diretório de cache');
 }
 
 async function onCacheRootFound(cacheRoot: string): Promise<void> {
@@ -80,9 +80,9 @@ export async function reloadByondCache(bundleDir: string): Promise<void> {
   if (!cacheRoot) return;
 
   // Find tmp folders in cache
-  const cacheDirs = await resolveGlob(cacheRoot, 'tmp*');
+  const cacheDirs = await resolveGlob(cacheRoot, 'Tmp');
   if (cacheDirs.length === 0) {
-    logger.log('found no tmp folder in cache');
+    logger.log('encontrado nenhuma pasta tmp no cache');
     return;
   }
 

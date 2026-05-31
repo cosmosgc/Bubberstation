@@ -8,45 +8,45 @@ import { FeatureDropdownInput } from '../dropdowns';
 
 // BUBBER EDIT ADDITION START
 export const use_tgui_player_panel: FeatureToggle = {
-  name: 'Use modern player panel',
+  name: 'Use o painel do jogador moderno.',
   category: 'ADMIN',
-  description: 'Whether to use the new TGUI player panel or the old HTML one.',
+  description: 'Use o novo painel de jogadores do TGUI ou o antigo HTML.',
   component: CheckboxInput,
 };
 // BUBBER EDIT ADDITION END
 
 export const asaycolor: Feature<string> = {
-  name: 'Admin chat color',
+  name: 'Cor do chat administrativo',
   category: 'ADMIN',
-  description: 'The color of your messages in Adminsay.',
+  description: 'A cor de suas mensagens em Adminsay.',
   component: FeatureColorInput,
 };
 
 export const brief_outfit: Feature<string> = {
-  name: 'Brief outfit',
+  name: 'Roupa curta.',
   category: 'ADMIN',
-  description: 'The outfit to gain when spawning as the briefing officer.',
+  description: 'A roupa a ganhar quando desovar como oficial de instrução.',
   component: FeatureDropdownInput,
 };
 
 export const bypass_deadmin_in_centcom: FeatureToggle = {
-  name: 'Bypass deadmin options when in CentCom',
+  name: 'Passar por opções de deadmin quando em CentCom',
   category: 'ADMIN',
   description:
-    'Whether or not to always remain an admin when spawned in CentCom.',
+    'Se deve ou não permanecer como administrador quando criado na CentCom.',
   component: CheckboxInput,
 };
 
 export const fast_mc_refresh: FeatureToggle = {
-  name: 'Enable fast MC stat panel refreshes',
+  name: 'Activar rápida actualização do painel de estatísticas MC',
   category: 'ADMIN',
   description:
-    'Whether or not the MC tab of the Stat Panel refreshes fast. This is expensive so make sure you need it.',
+    'Se a guia MC do Painel Stat se atualiza rápido. Isso é caro, então certifique-se de precisar.',
   component: CheckboxInput,
 };
 
 export const ghost_roles_as_admin: FeatureToggle = {
-  name: 'Get ghost roles while adminned',
+  name: 'Obter papéis fantasmas enquanto administrado',
   category: 'ADMIN',
   description: `
     If you de-select this, you will not get any ghost role pop-ups while
@@ -58,13 +58,13 @@ export const ghost_roles_as_admin: FeatureToggle = {
 };
 
 export const comms_notification: FeatureToggle = {
-  name: 'Enable comms console sound',
+  name: 'Activar o som do console das comunicações',
   category: 'ADMIN',
   component: CheckboxInput,
 };
 
 export const auto_deadmin_on_ready_or_latejoin: FeatureToggle = {
-  name: 'Auto deadmin - Ready or Latejoin',
+  name: 'Auto Deadmin - Pronto ou Latejoin',
   category: 'ADMIN',
   description: `
     When enabled, you will automatically deadmin when you click to ready up or latejoin a round.

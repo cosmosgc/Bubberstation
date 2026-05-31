@@ -12,7 +12,7 @@
  */
 /obj/machinery/research/anomaly_refinery
 	name = "anomaly refinery"
-	desc = "An advanced machine capable of implosion-compressing raw anomaly cores into finished artifacts. Also equipped with state of the art bomb prediction software."
+	desc = "Uma máquina avançada capaz de implosão comprimindo núcleos de anomalia em artefatos acabados. Também equipado com software de previsão de bomba de última geração."
 	circuit = /obj/item/circuitboard/machine/anomaly_refinery
 	icon = 'icons/obj/machines/research.dmi'
 	base_icon_state = "explosive_compressor"
@@ -45,7 +45,7 @@
 /obj/machinery/research/anomaly_refinery/examine_more(mob/user)
 	. = ..()
 	if (obj_flags & EMAGGED)
-		. += span_notice("A small panel on [p_their()] side is dislaying a notice. Something about firmware?")
+		. += span_notice("Um pequeno painel sobre[p_their()]O lado está dissipando um aviso. Algo sobre firmware?")
 
 
 /obj/machinery/research/anomaly_refinery/assume_air(datum/gas_mixture/giver)
@@ -75,16 +75,16 @@
 
 /obj/machinery/research/anomaly_refinery/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(active)
-		to_chat(user, span_warning("You can't insert [tool] into [src] while [p_theyre()] currently active."))
+		to_chat(user, span_warning("Você não pode inserir[tool]em[src]enquanto[p_theyre()]atualmente ativo."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(tool, /obj/item/raw_anomaly_core))
 		if(inserted_core)
-			to_chat(user, span_warning("There is already a core in [src]."))
+			to_chat(user, span_warning("Já existe um núcleo em[src]."))
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.transferItemToLoc(tool, src))
-			to_chat(user, span_warning("[tool] is stuck to your hand."))
+			to_chat(user, span_warning("[tool]está preso em sua mão."))
 			return ITEM_INTERACT_BLOCKING
 
 		var/obj/item/raw_anomaly_core/raw_core = tool
@@ -93,28 +93,28 @@
 			return ITEM_INTERACT_BLOCKING
 
 		inserted_core = raw_core
-		to_chat(user, span_notice("You insert [raw_core] into [src]."))
+		to_chat(user, span_notice("Você insere[raw_core]em[src]."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!istype(tool, /obj/item/transfer_valve))
 		return NONE
 
 	if(inserted_bomb)
-		to_chat(user, span_warning("There is already a bomb in [src]."))
+		to_chat(user, span_warning("Já há uma bomba em[src]."))
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/transfer_valve/valve = tool
 	if(!valve.ready())
-		to_chat(user, span_warning("[valve] is incomplete."))
+		to_chat(user, span_warning("[valve]está incompleto."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(tool, src))
-		to_chat(user, span_warning("[tool] is stuck to your hand."))
+		to_chat(user, span_warning("[tool]está preso em sua mão."))
 		return ITEM_INTERACT_BLOCKING
 
 	inserted_bomb = tool
 	tank_to_target = inserted_bomb.tank_two
-	to_chat(user, span_notice("You insert [tool] into [src]"))
+	to_chat(user, span_notice("Você insere[tool]em[src]"))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/research/anomaly_refinery/update_icon_state()
@@ -135,7 +135,7 @@
 /obj/machinery/research/anomaly_refinery/emag_act(mob/user, obj/item/card/emag/emag_card)
 	. = ..()
 	if (obj_flags & EMAGGED)
-		balloon_alert(user, "already hacked!")
+		balloon_alert(user, "Já hackeou!")
 		return
 
 	obj_flags |= EMAGGED
@@ -274,7 +274,7 @@
 		return
 	if(user)
 		user.put_in_hands(inserted_bomb)
-		to_chat(user, span_notice("You remove [inserted_bomb] from [src]."))
+		to_chat(user, span_notice("Você tira.[inserted_bomb]De[src]."))
 	else
 		inserted_bomb.forceMove(drop_location())
 	combined_gasmix = null
@@ -285,7 +285,7 @@
 		return
 	if(user)
 		user.put_in_hands(inserted_core)
-		to_chat(user, span_notice("You remove [inserted_core] from [src]."))
+		to_chat(user, span_notice("Você tira.[inserted_core]De[src]."))
 	else
 		inserted_core.forceMove(drop_location())
 

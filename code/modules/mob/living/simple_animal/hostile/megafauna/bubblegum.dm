@@ -29,7 +29,7 @@ Difficulty: Hard
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum
 	name = "bubblegum"
-	desc = "In what passes for a hierarchy among slaughter demons, this one is king."
+	desc = "No que passa por uma hierarquia entre demônios assassinos, este é rei."
 	health = 2500
 	maxHealth = 2500
 	attack_verb_continuous = "rends"
@@ -66,7 +66,7 @@ Difficulty: Hard
 	achievement_type = /datum/award/achievement/boss/bubblegum_kill
 	crusher_achievement_type = /datum/award/achievement/boss/bubblegum_crusher
 	score_achievement_type = /datum/award/score/bubblegum_score
-	death_message = "sinks into a pool of blood, fleeing the battle. You've won, for now... "
+	death_message = "Afunda em uma poça de sangue, fugindo da batalha. Você ganhou, por enquanto..."
 	death_sound = 'sound/effects/magic/enter_blood.ogg'
 	faction = list(FACTION_MINING, FACTION_BOSS, FACTION_HELL)
 	summon_line = "GRAAAAAAAHHHHHHHHH!"
@@ -101,10 +101,7 @@ Difficulty: Hard
 	RegisterSignal(src, COMSIG_BLOOD_WARP, PROC_REF(blood_enrage))
 	RegisterSignal(src, COMSIG_FINISHED_CHARGE, PROC_REF(after_charge))
 	if(spawn_blood)
-		AddComponent(/datum/component/blood_walk, \
-			blood_type = /obj/effect/decal/cleanable/blood/bubblegum, \
-			sound_played = 'sound/effects/meteorimpact.ogg', \
-			sound_volume = 200)
+		AddComponent(/datum/component/blood_walk, 			blood_type = /obj/effect/decal/cleanable/blood/bubblegum, 			sound_played = 'sound/effects/meteorimpact.ogg', 			sound_volume = 200)
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/Destroy()
 	triple_charge = null
@@ -204,7 +201,7 @@ Difficulty: Hard
 	SLEEP_CHECK_DEATH(4, src)
 	for(var/mob/living/L in T)
 		if(!faction_check_atom(L))
-			to_chat(L, span_userdanger("[src] rends you!"))
+			to_chat(L, span_userdanger("[src]Render você!"))
 			playsound(T, attack_sound, 100, TRUE, -1)
 			var/limb_to_hit = L.get_bodypart(L.get_random_valid_zone(even_weights = TRUE))
 			L.apply_damage(10, BRUTE, limb_to_hit, L.run_armor_check(limb_to_hit, MELEE, null, null, armour_penetration), wound_bonus = CANT_WOUND)
@@ -221,7 +218,7 @@ Difficulty: Hard
 	for(var/mob/living/L in T)
 		if(!faction_check_atom(L))
 			if(L.stat != CONSCIOUS)
-				to_chat(L, span_userdanger("[src] drags you through the blood!"))
+				to_chat(L, span_userdanger("[src]te arrasta pelo sangue!"))
 				playsound(T, 'sound/effects/magic/enter_blood.ogg', 100, TRUE, -1)
 				var/turf/targetturf = get_step(src, dir)
 				L.forceMove(targetturf)
@@ -300,7 +297,7 @@ Difficulty: Hard
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/projectile_hit(obj/projectile/hitting_projectile, def_zone, piercing_hit, blocked)
 	if(BUBBLEGUM_IS_ENRAGED)
-		visible_message(span_danger("[src] deflects the [hitting_projectile]! [p_They()] can't be hit with ranged weapons while enraged!"), span_userdanger("You deflect the projectile!"))
+		visible_message(span_danger("[src]desviou o[hitting_projectile]! [p_They()]Não pode ser atingido com as armas enquanto enfurecido!"), span_userdanger("Você desvia o projétil!"))
 		playsound(src, SFX_BULLET_MISS, 300, TRUE)
 		return BULLET_ACT_BLOCK
 	return ..()
@@ -318,7 +315,7 @@ Difficulty: Hard
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination
 	name = "bubblegum's hallucination"
-	desc = "Is that really just a hallucination?"
+	desc = "Isso é mesmo uma alucinação?"
 	health = 1
 	maxHealth = 1
 	alpha = 127.5
@@ -327,7 +324,7 @@ Difficulty: Hard
 	achievement_type = null
 	crusher_achievement_type = null
 	score_achievement_type = null
-	death_message = "Explodes into a pool of blood!"
+	death_message = "Explode em uma poça de sangue!"
 	death_sound = 'sound/effects/splat.ogg'
 	true_spawn = FALSE
 	var/move_through_mob
@@ -364,7 +361,7 @@ Difficulty: Hard
 
 /obj/effect/decal/cleanable/blood/gibs/bubblegum
 	name = "thick blood"
-	desc = "Thick, splattered blood."
+	desc = "Sangue grosso e espalhado."
 	random_icon_states = list("gib3", "gib5", "gib6")
 	bloodiness = 20
 

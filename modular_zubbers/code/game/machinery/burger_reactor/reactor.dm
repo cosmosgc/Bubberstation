@@ -2,9 +2,7 @@ GLOBAL_VAR_INIT(active_rbmk_machines, list())
 
 /obj/machinery/power/rbmk2
 	name = "\improper RB-MK2 reactor"
-	desc = "Radioscopical Bluespace Mark 2 reactor, or RB-MK2 for short, is a new state-of-the-art power generation technology that uses \"bluespace magic\" \
-	to directly convert small amounts of tritium atoms into large amounts of electrical energy with minimal heat generation. \
-	Note that having more than 4 RB-MK machines in close proximity increases tritium consumption."
+	desc = "O reator Bluespace 2 radioscópico, ou RB-MK2, é uma nova tecnologia de geração de energia de última geração que usa\"Magia do espaço azul\"converter diretamente pequenas quantidades de átomos de trítio em grandes quantidades de energia elétrica com mínima geração de calor. Observe que ter mais de 4 máquinas RB-MK próximas aumenta o consumo de trítio."
 	icon = 'modular_zubbers/icons/obj/equipment/burger_reactor.dmi'
 	icon_state = "platform"
 	base_icon_state = "platform"
@@ -210,7 +208,7 @@ GLOBAL_VAR_INIT(active_rbmk_machines, list())
 /obj/machinery/power/rbmk2/exchange_parts(mob/user, obj/item/storage/part_replacer/replacer_tool)
 
 	if(active)
-		balloon_alert(user, "turn off before upgrading!")
+		balloon_alert(user, "Desligue antes de atualizar!")
 		return FALSE
 
 	. = ..()
@@ -228,12 +226,12 @@ GLOBAL_VAR_INIT(active_rbmk_machines, list())
 	if(attacking_item.use_tool(src, user, 4 SECONDS, volume = 50) && jam(user,FALSE))
 		if(prob(100-atom_integrity))
 			take_damage(damage_to_deal*0.5,armour_penetration=100)
-			balloon_alert(user, "unjam failed!")
+			balloon_alert(user, "Deslizo falhou!")
 			return TRUE
 		take_damage(damage_to_deal,armour_penetration=100)
 		if(atom_integrity > 0)
 			src.Shake(duration=0.5 SECONDS)
-			balloon_alert(user, "unjammed!")
+			balloon_alert(user, "Sem problemas!")
 			if(meltdown) //You turned it off, but at what cost?
 				radiation_pulse(src,max_range=6,threshold = RAD_FULL_INSULATION, chance = 100)
 			toggle_active(user,FALSE,disable_jam=TRUE)
@@ -247,7 +245,7 @@ GLOBAL_VAR_INIT(active_rbmk_machines, list())
 		src.add_fingerprint(user)
 		stored_rod.add_fingerprint(user)
 		if(remove_rod(user))
-			balloon_alert(user, "rod removed!")
+			balloon_alert(user, "Vara Removida!")
 		return TRUE
 
 /obj/machinery/power/rbmk2/proc/remove_rod(mob/living/user,do_throw=FALSE)
@@ -395,7 +393,7 @@ GLOBAL_VAR_INIT(active_rbmk_machines, list())
 
 	if(venting) //Can't change when they're already on.
 		if(user)
-			balloon_alert(user, "turn vents off first")
+			balloon_alert(user, "Desligue as saídas primeiro.")
 		return FALSE
 
 	vent_reverse_direction = desired_state
@@ -403,7 +401,7 @@ GLOBAL_VAR_INIT(active_rbmk_machines, list())
 	if(user)
 		user.log_message("had vents set to [vent_reverse_direction ? "reverse" : "normal"] by [src]", LOG_GAME)
 		investigate_log("had vents set to [vent_reverse_direction ? "reverse" : "normal"] by [key_name(user)] at [AREACOORD(src)].", INVESTIGATE_ENGINE)
-		balloon_alert(user, "vents switched to [vent_reverse_direction ? "pulling" : "pushing"]")
+		balloon_alert(user, "Ventilações trocadas para[vent_reverse_direction ? "pulling" : "pushing"]")
 	else
 		var/turf/our_turf = get_turf(src)
 		log_game("[src] had vents set to [vent_reverse_direction ? "reverse" : "normal"] at [AREACOORD(our_turf)]")
@@ -511,7 +509,7 @@ GLOBAL_VAR_INIT(active_rbmk_machines, list())
 		if("autovent")
 			if(auto_vent_upgrade)
 				auto_vent = !auto_vent
-				balloon_alert(user, "auto venting is [auto_vent ? "on" : "off"]")
+				balloon_alert(user, "Auto ventilação é[auto_vent ? "on" : "off"]")
 			. = TRUE
 		if("activate")
 			toggle_active(user)
@@ -532,7 +530,7 @@ GLOBAL_VAR_INIT(active_rbmk_machines, list())
 			if(overclocked_upgrade)
 				var/turf/machine_turf = get_turf(src)
 				overclocked = !overclocked
-				balloon_alert(user, "overclocking is [overclocked ? "on" : "off"]")
+				balloon_alert(user, "Overclock é[overclocked ? "on" : "off"]")
 				investigate_log("had the overclock turned [overclocked ? "on" : "off"] by [key_name(user)] at [AREACOORD(machine_turf)].", INVESTIGATE_ENGINE)
 				user.log_message("turned the overclock [overclocked ? "on" : "off"] of [src]", LOG_GAME)
 			. = TRUE
@@ -542,43 +540,43 @@ GLOBAL_VAR_INIT(active_rbmk_machines, list())
 
 	. = ..()
 
-	. += span_notice("A digital display on the side side says <b>MAX SAFE POWER: [display_power(safeties_max_power_generation)], WARRANTY VOID IF EXCEEDED</b>.")
+	. += span_notice("Um display digital sem lado diz<b>Max Poder Seguro:[display_power(safeties_max_power_generation)], A GARANTIA VODE SE EXCEDEU</b>.")
 
 
 	if(active)
-		. += span_notice("It's running.")
+		. += span_notice("Está funcionando.")
 		if(HAS_TRAIT(user, TRAIT_CLUMSY))
-			. += span_clown("I better go catch it!")
+			. += span_clown("É melhor eu pegar!")
 	else
-		. += span_warning("It isn't running.")
+		. += span_warning("Não está correndo.")
 
 	if(linked_supermatter)
-		. += span_notice("It is currently linked to an adjacent supermatter crystal, feeding power directly into it at high efficiency.")
+		. += span_notice("Atualmente está ligado a um cristal de supermatéria adjacente, alimentando energia diretamente nele em alta eficiência.")
 	else if(!power || !powernet)
-		. += span_warning("It is not connected to a power cable.")
+		. += span_warning("Não está conectado a um cabo elétrico.")
 
 	if(!venting)
-		. += span_warning("The vents are closed.")
+		. += span_warning("As saídas estão fechadas.")
 
 	if(!stored_rod)
-		. += span_warning("It it is missing an RB-MK2 reactor rod.")
+		. += span_warning("Está faltando um reator RB-MK2.")
 	else if(jammed)
-		. += span_danger("The reactor rod is jammed! <b>Pry</b> the rod back in to unjam in!")
+		. += span_danger("O reator está travado!<b>Pry.</b>A variedade de volta para desespero!")
 	else if(meltdown)
-		. += span_danger("The reactor rod is leaping erractically! Lower the power output!")
+		. += span_danger("A haste do reator está saltando erroneamente! Abaixe a potência!")
 	else
-		. += span_notice("There is an RB-MK2 reactor rod installed. <b>Bolt</b> it down to activate, or remove it with ALT+CLICK.")
+		. += span_notice("Há uma haste de reator RB-MK2 instalada.<b>Bolt.</b>para ativar ou remover com ALT+CLICK.")
 
 
 /obj/machinery/power/rbmk2/examine_more(mob/user)
 	. = ..()
-	. += span_notice("It is running at <b>[power_efficiency*100]%</b> power efficiency.")
-	. += span_notice("It can output in environments up to <b>[vent_pressure]kPa</b>.")
-	. += span_notice("It can handle an estimated power load of <b>[display_power(max_power_generation)]</b> before going critical.")
+	. += span_notice("Ele está correndo em<b>[power_efficiency*100]%</b>eficiência de energia.")
+	. += span_notice("Ele pode sair em ambientes até<b>[vent_pressure]kPa</b>.")
+	. += span_notice("Ele pode lidar com uma carga de energia estimada de<b>[display_power(max_power_generation)]</b>Antes de ficar crítico.")
 	if(!linked_supermatter)
-		. += span_notice("Is is not currently linked to an adjacent supermatter crystal.")
-		. += span_notice("Building an RB-MK2 reactor directly adjacent to a normal-sized supermatter crystal will link them together and supply energy to the supermatter crystal.")
-		. += span_notice("Doing this requires at least 30 moles of Hyper-Noblium present in the reactor rod, along with the normal tritium as fuel.")
+		. += span_notice("Não está ligado a um cristal de supermatéria adjacente.")
+		. += span_notice("Construir um reator RB-MK2 diretamente adjacente a um cristal de supermatéria de tamanho normal irá ligá-los e fornecer energia ao cristal de supermatéria.")
+		. += span_notice("Fazer isso requer pelo menos 30 moles de Hyper-Noblium presentes na haste do reator, juntamente com o tritium normal como combustível.")
 
 
 

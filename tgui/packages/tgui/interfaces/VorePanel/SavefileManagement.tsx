@@ -159,7 +159,7 @@ export const SlotLookupTable = (props) => {
 
   return (
     <Section
-      title="Character-Layout Associations"
+      title="Associações de Layout de Personagens"
       buttons={
         <>
           <Button

@@ -1,7 +1,6 @@
 /datum/action/cooldown/spell/aoe/wave_of_desperation
 	name = "Wave Of Desperation"
-	desc = "Removes your restraints, repels and knocks down adjacent people, and applies certain effects of the Mansus Grasp upon everything nearby. \
-		Cannot be cast unless you are restrained. (Can be casted without a focus)"
+	desc = "Remove suas amarras, repele e derrube pessoas adjacentes, e aplica certos efeitos do Mansus Grasp em tudo o que está por perto. Não pode ser lançado a menos que esteja contido. (Pode ser lançado sem foco)"
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -27,10 +26,10 @@
 		return
 
 	if(cast_on.handcuffed)
-		cast_on.visible_message(span_danger("[cast_on.handcuffed] on [cast_on] shatter!"))
+		cast_on.visible_message(span_danger("[cast_on.handcuffed]Vamos.[cast_on]Quebre!"))
 		QDEL_NULL(cast_on.handcuffed)
 	if(cast_on.legcuffed)
-		cast_on.visible_message(span_danger("[cast_on.legcuffed] on [cast_on] shatters!"))
+		cast_on.visible_message(span_danger("[cast_on.legcuffed]Vamos.[cast_on]Quebras!"))
 		QDEL_NULL(cast_on.legcuffed)
 
 	cast_on.apply_status_effect(/datum/status_effect/heretic_lastresort)

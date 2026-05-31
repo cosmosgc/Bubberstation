@@ -22,7 +22,7 @@ export const InterfaceLockNoticeBox = (props) => {
     siliconUser = data.siliconUser,
     locked = data.locked,
     onLockStatusChange = () => act('lock'),
-    accessText = 'an ID card',
+    accessText = 'Um cartão de identidade.',
     preventLocking = data.preventLocking,
   } = props;
   // For silicon users

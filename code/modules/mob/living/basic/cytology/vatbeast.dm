@@ -1,7 +1,7 @@
 /// A mob that slaps people around and can be tamed as a mount
 /mob/living/basic/vatbeast
 	name = "vatbeast"
-	desc = "A strange molluscoidal creature carrying a busted growing vat.\nYou wonder if this burden is a voluntary undertaking in order to achieve comfort and protection, or simply because the creature is fused to its metal shell?"
+	desc = "Uma estranha criatura moluscoidal carregando um pouco de crescimento quebrado.\nVocê se pergunta se este fardo é um compromisso voluntário para alcançar conforto e proteção, ou simplesmente porque a criatura está fundida à sua concha de metal?"
 	icon = 'icons/mob/vatgrowing.dmi'
 	icon_state = "vat_beast"
 	icon_living = "vat_beast"
@@ -97,7 +97,7 @@
 /// For vatbeats, this ability is shared with the rider.
 /datum/action/cooldown/tentacle_slap
 	name = "Tentacle slap"
-	desc = "Slap a creature with your tentacles."
+	desc = "Bata em uma criatura com seus tentáculos."
 	background_icon_state = "bg_revenant"
 	overlay_icon_state = "bg_revenant_border"
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
@@ -120,14 +120,14 @@
 	. = ..()
 	if (!.)
 		return
-	to_chat(on_who, span_notice("You prepare your [on_who == owner ? "":"steed's "]pimp-tentacle. <b>Left-click to slap a target!</b>"))
+	to_chat(on_who, span_notice("Você prepara o seu[on_who == owner ? "":"steed's "]-Cafetão.<b>Clique em esquerdo para acertar um Alvo!</b>"))
 
 /datum/action/cooldown/tentacle_slap/unset_click_ability(mob/on_who, refund_cooldown = TRUE)
 	. = ..()
 	if (!.)
 		return
 	if(refund_cooldown)
-		to_chat(on_who, span_notice("You stop preparing your [on_who == owner ? "":"steed's "]pimp-tentacle."))
+		to_chat(on_who, span_notice("Pare de se preparar.[on_who == owner ? "":"steed's "]-Cafetão."))
 
 /datum/action/cooldown/tentacle_slap/InterceptClickOn(mob/living/clicker, params, atom/target)
 	// Check if we can slap
@@ -135,7 +135,7 @@
 		return FALSE
 
 	if (!owner.Adjacent(target))
-		owner.balloon_alert(clicker, "longe demais!")
+		owner.balloon_alert(clicker, "Longe demais!")
 		return FALSE
 
 	// Do the slap
@@ -146,7 +146,7 @@
 	// Give feedback from the slap.
 	// Additional feedback for if a rider did it
 	if (clicker != owner)
-		to_chat(clicker, span_notice("You command [owner] to slap [target] with its tentacles."))
+		to_chat(clicker, span_notice("Você comanda.[owner]Para bater[target]com seus tentáculos."))
 
 	return TRUE
 
@@ -154,8 +154,8 @@
 	var/mob/living/living_to_slap = to_slap
 
 	owner.visible_message(
-		span_warning("[owner] slaps [to_slap] with its tentacle!"),
-		span_notice("You slap [to_slap] with your tentacle."),
+		span_warning("[owner]tapas[to_slap]com seu tentáculo!"),
+		span_notice("Você bate.[to_slap]com seu tentáculo."),
 	)
 	playsound(owner, 'sound/effects/emotes/assslap.ogg', 90)
 	var/atom/throw_target = get_edge_target_turf(to_slap, owner.dir)

@@ -38,12 +38,12 @@ ADMIN_VERB(view_all_circuits, R_ADMIN, "View All Circuits", "List all circuits i
 
 	var/obj/item/integrated_circuit/circuit = locate(params["circuit"])
 	if (!istype(circuit))
-		to_chat(usr, span_warning("That circuit no longer exists."))
+		to_chat(usr, span_warning("Esse circuito não existe mais."))
 		return FALSE
 
 	switch (action)
 		if ("duplicate_circuit")
-			if (alert(usr, "This will spawn the new circuit at where you are, are you sure?", "Confirm", "Yes", "No") != "Yes")
+			if (alert(usr, "Isso vai gerar o novo circuito onde você está, tem certeza?", "Confirm", "Yes", "No") != "Yes")
 				return FALSE
 
 			var/list/errors = list()
@@ -52,7 +52,7 @@ ADMIN_VERB(view_all_circuits, R_ADMIN, "View All Circuits", "List all circuits i
 			new_circuit.load_circuit_data(circuit.convert_to_json(), errors)
 
 			if (length(errors))
-				to_chat(usr, span_warning("Somehow, duplicating the circuit failed:"))
+				to_chat(usr, span_warning("De alguma forma, duplicar o circuito falhou."))
 				for (var/error in errors)
 					to_chat(usr, span_warning(error))
 		if ("follow_circuit")

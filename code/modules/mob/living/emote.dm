@@ -23,7 +23,7 @@
 /datum/emote/living/tongue/run_emote(mob/user, params, type_override, intentional)
 	var/mob/living/carbon/human/human_user = user
 	if(istype(human_user) && !human_user.get_organ_slot(ORGAN_SLOT_TONGUE))
-		to_chat(human_user, span_warning("You don't have a tongue!"))
+		to_chat(human_user, span_warning("Você não tem língua!"))
 		return
 	. = ..()
 	QDEL_IN(human_user.give_emote_overlay(/datum/bodypart_overlay/simple/emote/tongue), 5.2 SECONDS)
@@ -290,12 +290,12 @@
 
 	var/obj/item/kiss_blower = new kiss_type(user)
 	if(user.put_in_hands(kiss_blower))
-		to_chat(user, span_notice("You ready your kiss-blowing hand."))
+		to_chat(user, span_notice("Prepare sua mão de beijar."))
 		ink_action?.StartCooldown()
 		return
 
 	qdel(kiss_blower)
-	to_chat(user, span_warning("You're incapable of blowing a kiss in your current state."))
+	to_chat(user, span_warning("Você é incapaz de chupar um beijo no seu estado atual."))
 
 /datum/emote/living/laugh
 	key = "laugh"
@@ -708,14 +708,14 @@
 		return FALSE
 
 	if(!isnull(user.ckey) && is_banned_from(user.ckey, "Emote"))
-		to_chat(user, span_boldwarning("You cannot send custom emotes (banned)."))
+		to_chat(user, span_boldwarning("Você não pode enviar emotes personalizados (proibidos)."))
 		return FALSE
 
 	if(QDELETED(user))
 		return FALSE
 
 	if(user.client && user.client.prefs.muted & MUTE_IC)
-		to_chat(user, span_boldwarning("You cannot send IC messages (muted)."))
+		to_chat(user, span_boldwarning("Você não pode enviar mensagens de IC."))
 		return FALSE
 
 /datum/emote/living/custom/proc/emote_is_valid(mob/user, input)
@@ -729,13 +729,13 @@
 
 	var/static/regex/stop_bad_mime = regex(@"says|exclaims|yells|asks")
 	if(stop_bad_mime.Find(input, 1, 1))
-		to_chat(user, span_danger("Invalid emote."))
+		to_chat(user, span_danger("Emote inválido."))
 		return FALSE
 
 	var/list/filter_result = is_ic_filtered(input)
 
 	if(filter_result)
-		to_chat(user, span_warning("That emote contained a word prohibited in IC emotes! Consider reviewing the server rules."))
+		to_chat(user, span_warning("Esse emote contatinha uma palavra proibida em emotes de IC! Considere Rever como Regras do Servidor."))
 		to_chat(user, span_warning("\"[input]\""))
 		REPORT_CHAT_FILTER_TO_USER(user, filter_result)
 		log_filter("IC Emote", input, filter_result)
@@ -745,7 +745,7 @@
 	filter_result = is_soft_ic_filtered(input)
 
 	if(filter_result)
-		if(tgui_alert(user,"Your emote contains \"[filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to emote it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(user,"Seu emote contém\"[filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[filter_result[CHAT_FILTER_INDEX_REASON]]\"Tem certeza que quer emocionar?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 			SSblackbox.record_feedback("tally", "soft_ic_blocked_words", 1, LOWER_TEXT(config.soft_ic_filter_regex.match))
 			log_filter("Soft IC Emote", input, filter_result)
 			return FALSE
@@ -762,10 +762,10 @@
 	return .|WITH_EMPHASIS_MESSAGE
 
 /datum/emote/living/custom/proc/get_custom_emote_from_user()
-	return stripped_multiline_input(usr, "Choose an emote to display.", "Me" , null, MAX_MESSAGE_LEN) // SKYRAT EDIT CHANGE - ORIGINAL : return copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
+	return stripped_multiline_input(usr, "Escolha um emote para exibir.", "Me" , null, MAX_MESSAGE_LEN) // SKYRAT EDIT CHANGE - ORIGINAL : return copytext(sanitize(input("Escolha um emote para exibir.") as text|null), 1, MAX_MESSAGE_LEN)
 
 /datum/emote/living/custom/proc/get_custom_emote_type_from_user()
-	var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable", "Both")
+	var/type = input("É um emote visível ou ouvivel?") as null|anything in list("Visible", "Hearable", "Both")
 
 	switch(type)
 		if("Visible")
@@ -775,7 +775,7 @@
 		if("Both")
 			return EMOTE_VISIBLE | EMOTE_AUDIBLE
 		else
-			tgui_alert(usr,"Unable to use this emote, must be either hearable or visible.")
+			tgui_alert(usr,"Incapaz de usar este emote, deve ser ouvivel ou visível.")
 			return FALSE
 
 /datum/emote/living/custom/run_emote(mob/user, params, type_override = null, intentional = FALSE)

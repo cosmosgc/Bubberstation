@@ -61,8 +61,8 @@
 	valid_biotypes = MOB_ORGANIC | MOB_MINERAL,
 	required_bodytype = BODYTYPE_ORGANIC,
 	self_targeting = HEALING_TOUCH_NOT_SELF,
-	action_text = "%SOURCE% begins healing %TARGET%",
-	complete_text = "%SOURCE% finishes healing %TARGET%",
+	action_text = "FONTE começa a curar",
+	complete_text = "CERTIFICADO DE ORIGINALMENTO",
 	show_health = FALSE,
 	heal_color = COLOR_HEALING_CYAN,
 	required_modifier = null,
@@ -131,30 +131,30 @@
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if (DOING_INTERACTION(healer, interaction_key))
-		healer.balloon_alert(healer, "ocupado!")
+		healer.balloon_alert(healer, "Ocupado!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	switch (self_targeting)
 		if (HEALING_TOUCH_NOT_SELF)
 			if (target == healer)
-				healer.balloon_alert(healer, "can't heal yourself!")
+				healer.balloon_alert(healer, "Não pode se curar!")
 				return COMPONENT_CANCEL_ATTACK_CHAIN
 		if (HEALING_TOUCH_SELF_ONLY)
 			if (target != healer)
-				healer.balloon_alert(healer, "can only heal yourself!")
+				healer.balloon_alert(healer, "Só pode se curar!")
 				return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	var/mob/living/living_target = target
 	if (living_target.health >= living_target.maxHealth)
-		target.balloon_alert(healer, "not hurt!")
+		target.balloon_alert(healer, "Não dói!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if (!has_healable_damage(living_target))
-		target.balloon_alert(healer, "can't heal that!")
+		target.balloon_alert(healer, "Não posso curar isso!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if (living_target.stat == DEAD)
-		target.balloon_alert(healer, "they're dead!")
+		target.balloon_alert(healer, "Eles estão mortos!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	INVOKE_ASYNC(src, PROC_REF(heal_target), healer, target)
@@ -188,7 +188,7 @@
 		healer.visible_message(span_notice("[format_string(action_text, healer, target)]"))
 
 	if (heal_time && !do_after(healer, heal_time, target = target, interaction_key = interaction_key))
-		healer.balloon_alert(healer, "interrompido!")
+		healer.balloon_alert(healer, "Interrompido!")
 		return
 
 	if (complete_text)

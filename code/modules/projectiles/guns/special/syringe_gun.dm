@@ -1,6 +1,6 @@
 /obj/item/gun/syringe
 	name = "medical syringe gun"
-	desc = "A spring loaded gun designed to fit syringes, used to incapacitate unruly patients from a distance."
+	desc = "Uma arma carregada de mola projetada para caber seringas, usada para incapacitar pacientes indisciplinados à distância."
 	icon = 'icons/obj/weapons/guns/syringegun.dmi'
 	icon_state = "medicalsyringegun"
 	lefthand_file = 'icons/mob/inhands/weapons/64x_guns_left.dmi'
@@ -68,12 +68,12 @@
 
 /obj/item/gun/syringe/examine(mob/user)
 	. = ..()
-	. += span_notice("Can hold [max_syringes] syringe\s. Has [syringes.len] syringe\s remaining.")
+	. += span_notice("Pode esperar.[max_syringes]Seringa. Tem.[syringes.len]Seringa Restante.")
 	if (low_power)
-		. += span_notice("Its pressure regulator is set to low power mode, making sure that syringes shot will embed and slowly bleed their reagents into their target.")
+		. += span_notice("Seu regulador de pressão está ajustado para o modo de baixa potência, certificando-se que as seringas injetadas irão incorporar e lentamente sangrar seus reagentes em seu alvo.")
 	else
-		. += span_notice("Its pressure regulator is cranked to the max, instantly injecting the reagents at the cost of breaking the syringes fired.")
-	. += span_notice("Right-click [src] in-hand to switch it to [low_power ? "full" : "low"] power.")
+		. += span_notice("Seu regulador de pressão é ativado ao máximo, injetando instantaneamente os reagentes ao custo de quebrar as seringas disparadas.")
+	. += span_notice("Botão direito[src]Na mão para mudar para[low_power ? "full" : "low"]Poder.")
 
 /obj/item/gun/syringe/attack_self(mob/living/user, list/modifiers)
 	if (!syringes.len)
@@ -87,7 +87,7 @@
 	user.put_in_hands(syringe)
 
 	syringes.Remove(syringe)
-	balloon_alert(user, "[syringe.name] unloaded")
+	balloon_alert(user, "[syringe.name]Descarregado")
 	update_appearance()
 	return TRUE
 
@@ -98,17 +98,17 @@
 
 	low_power = !low_power
 	if (low_power)
-		balloon_alert(user, "enabled low power mode")
-		to_chat(user, span_notice("You carefully lower the pressure regulator setting, ensuring that fired syringes embed in your target."))
+		balloon_alert(user, "Modo de baixa potência ativado")
+		to_chat(user, span_notice("Você diminui cuidadosamente a regulação do regulador de pressão, garantindo que seringas disparadas incorporem seu alvo."))
 	else
-		balloon_alert(user, "enabled high power mode")
-		to_chat(user, span_notice("You crank the pressure regulator to the max, making sure that fired syringes inject their contents instantly."))
+		balloon_alert(user, "Modo de alta potência ativado.")
+		to_chat(user, span_notice("Você aciona o regulador de pressão ao máximo, certificando-se que seringas disparadas injetem seu conteúdo instantaneamente."))
 	playsound(user, 'sound/machines/click.ogg', 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/gun/syringe/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/reagent_containers/syringe/bluespace))
-		balloon_alert(user, "[tool.name] is too big!")
+		balloon_alert(user, "[tool.name]É muito grande!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!istype(tool, /obj/item/reagent_containers/syringe))
@@ -121,7 +121,7 @@
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "[tool.name] loaded")
+	balloon_alert(user, "[tool.name]Carregado.")
 	syringes += tool
 	recharge_newshot()
 	update_appearance()
@@ -137,7 +137,7 @@
 
 /obj/item/gun/syringe/rapidsyringe
 	name = "compact rapid syringe gun"
-	desc = "A modification of the syringe gun design to be more compact and use a rotating cylinder to store up to six syringes."
+	desc = "Uma modificação do projeto da arma da seringa para ser mais compacta e usar um cilindro rotativo para armazenar até seis seringas."
 	icon_state = "rapidsyringegun"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
@@ -154,7 +154,7 @@
 
 /obj/item/gun/syringe/syndicate
 	name = "dart pistol"
-	desc = "A small spring-loaded sidearm that functions identically to a syringe gun."
+	desc = "Uma pequena arma que funciona de forma idêntica à de uma seringa."
 	icon_state = "dartsyringegun"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
@@ -173,7 +173,7 @@
 
 /obj/item/gun/syringe/dna
 	name = "modified compact syringe gun"
-	desc = "A syringe gun that has been modified to be compact and fit DNA injectors instead of normal syringes."
+	desc = "Uma arma de seringa que foi modificada para ser compacta e encaixar injetores de DNA em vez de seringas normais."
 	icon_state = "dnasyringegun"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
@@ -195,24 +195,24 @@
 	if(istype(tool, /obj/item/dnainjector))
 		var/obj/item/dnainjector/D = tool
 		if(D.used)
-			balloon_alert(user, "[D.name] is used up!")
+			balloon_alert(user, "[D.name]Está esgotado!")
 			return ITEM_INTERACT_BLOCKING
 		if(syringes.len < max_syringes)
 			if(!user.transferItemToLoc(D, src))
 				return ITEM_INTERACT_BLOCKING
-			balloon_alert(user, "[D.name] loaded")
+			balloon_alert(user, "[D.name]Carregado.")
 			syringes += D
 			recharge_newshot()
 			update_appearance()
 			playsound(loc, load_sound, 40)
 			return ITEM_INTERACT_SUCCESS
-		balloon_alert(user, "it's already full!")
+		balloon_alert(user, "Já está cheio!")
 		return ITEM_INTERACT_BLOCKING
 	return NONE
 
 /obj/item/gun/syringe/blowgun
 	name = "blowgun"
-	desc = "Fire syringes at a short distance."
+	desc = "Disparar seringas a curta distância."
 	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	icon_state = "blowgun"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
@@ -230,12 +230,12 @@
 	force = 4
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
 	custom_materials = list(/datum/material/bamboo = SHEET_MATERIAL_AMOUNT * 10)
-	about_to_shoot_inside_mail_text = "The air in the envelope is rushing out!"
+	about_to_shoot_inside_mail_text = "O ar no envelope está saindo correndo!"
 
 /obj/item/gun/syringe/blowgun/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	. = ..()
 	if(!.)
 		return
-	visible_message(span_danger("[user] shoots the blowgun!"))
+	visible_message(span_danger("[user]Átira na Arma!"))
 	user.adjust_stamina_loss(20, updating_stamina = FALSE)
 	user.adjust_oxy_loss(20)

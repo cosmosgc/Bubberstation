@@ -32,9 +32,9 @@
 /datum/fish_source/chasm/on_start_fishing(obj/item/fishing_rod/rod, mob/fisherman, atom/parent)
 	. = ..()
 	if(istype(rod.hook, /obj/item/fishing_hook/rescue))
-		to_chat(fisherman, span_notice("The rescue hook falls straight down the chasm! Hopefully it catches a corpse."))
+		to_chat(fisherman, span_notice("O gancho de resgate cai direto no abismo! Espero que pegue um cadáver."))
 		return
-	to_chat(fisherman, span_danger("Your fishing hook makes a soft 'thud' noise as it gets stuck on the wall of the chasm. It doesn't look like it's going to catch much of anything, except maybe some detritus."))
+	to_chat(fisherman, span_danger("Seu gancho de pesca faz um barulho suave quando fica preso na parede do abismo. Não parece que vai pegar muita coisa, exceto talvez algum detrito."))
 
 /datum/fish_source/chasm/roll_reward(obj/item/fishing_rod/rod, mob/fisherman)
 	var/rolled_reward = ..()

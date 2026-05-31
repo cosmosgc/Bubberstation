@@ -67,7 +67,7 @@
 /datum/status_effect/cuffed_item/proc/on_examine_more(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_warning("[cuffed.examine_title(user)] is bound to [owner.p_their()] [owner.get_held_index_name(owner.get_held_index_of_item(cuffed))] by [cuffs.examine_title(user)]")
+	examine_list += span_warning("[cuffed.examine_title(user)]é obrigado a[owner.p_their()] [owner.get_held_index_name(owner.get_held_index_of_item(cuffed))]Por que[cuffs.examine_title(user)]")
 
 ///What happens if one of the items is moved away from the mob
 /datum/status_effect/cuffed_item/proc/on_displaced(datum/source)
@@ -79,7 +79,7 @@
 	SIGNAL_HANDLER
 
 	if(user == owner)
-		examine_texts += span_notice("[item.p_Theyre()] cuffed to you by \a [cuffs]. You can <a href='byond://?src=[REF(item)];remove_cuffs_item=1'>remove them</a>.")
+		examine_texts += span_notice("[item.p_Theyre()]Algemado a você por\a [cuffs]Você pode.<a href='byond://?src=[REF(item)];remove_cuffs_item=1'>Remova-os.</a>.")
 
 /// This mainly exists as a fallback in the rare case the alert icon is not reachable (too many alerts?). You should be somewhat able to examine items while blind so all good.
 /datum/status_effect/cuffed_item/proc/topic_handler(atom/source, user, href_list)
@@ -110,27 +110,27 @@
 		return FALSE
 
 	if(!(user.mobility_flags & MOBILITY_USE) || (user != owner && !owner.IsReachableBy(user)))
-		owner.balloon_alert(user, "can't do it right now!")
+		owner.balloon_alert(user, "Não posso fazer isso agora!")
 		return FALSE
 
 	if(user != owner)
-		owner.visible_message(span_notice("[user] tries to remove [cuffs] binding [cuffed] to [owner]"), span_warning("[user] is trying to remove [cuffs] binding [cuffed] to you."))
+		owner.visible_message(span_notice("[user]Removedor Tenta.[cuffs]Ligando.[cuffed]Para[owner]"), span_warning("[user]está tentando remover[cuffs]Ligando.[cuffed]para você."))
 
-	owner.balloon_alert(user, "removing cuffs...")
+	owner.balloon_alert(user, "Removendo algemas...")
 	playsound(owner, cuffs.cuffsound, 30, TRUE, -2)
 	if(!do_after(user, cuffs.get_handcuff_time(user) * 1.5, owner, interaction_key = interaction_key) || QDELETED(src))
-		owner.balloon_alert(user, "interrompido!")
+		owner.balloon_alert(user, "Interrompido!")
 		return FALSE
 
 	if(user != owner)
-		owner.visible_message(span_notice("[user] removes [cuffs] binding [cuffed] to [owner]"), span_warning("[user] removes [cuffs] binding [cuffed] to you."))
+		owner.visible_message(span_notice("[user]Remover[cuffs]Ligando.[cuffed]Para[owner]"), span_warning("[user]Remover[cuffs]Ligando.[cuffed]para você."))
 
 	log_combat(user, owner, "removed restraints binding [cuffed] to")
 
 	var/obj/item/restraints/handcuffs/ref_cuffs = cuffs
 	ref_cuffs.forceMove(owner.drop_location()) //This will cause the status effect to delete itself, which unsets the 'cuffs' var
 	user.put_in_hands(ref_cuffs)
-	owner.balloon_alert(user, "cuffs removed from item")
+	owner.balloon_alert(user, "Algemas removidas fazem item")
 
 	return TRUE
 
@@ -142,7 +142,7 @@
 ///The status alert linked to the cuffed_item status effect
 /atom/movable/screen/alert/status_effect/cuffed_item
 	name = "Cuffed Item"
-	desc = "You've an item firmly cuffed to your arm. You probably won't be accidentally dropping it somewhere anytime soon."
+	desc = "Você tem um item firmemente algemado ao seu braço. Provavelmente não o deixará cair em algum lugar tão cedo."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	clickable_glow = TRUE
 	click_master = FALSE

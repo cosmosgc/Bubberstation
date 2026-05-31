@@ -151,7 +151,7 @@
 	remove_traits(list(TRAIT_INCAPACITATED, TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), POWER_LACK_TRAIT)
 	set_light_on(bot_mode_flags & BOT_MODE_ON ? TRUE : FALSE)
 	update_appearance()
-	balloon_alert(src, "turned on")
+	balloon_alert(src, "Ligado.")
 	diag_hud_set_botstat()
 	return TRUE
 
@@ -224,19 +224,12 @@
 /// Allows this bot to be controlled by a ghost, who will become its mind
 /mob/living/simple_animal/bot/proc/enable_possession(user, mapload = FALSE)
 	if (paicard)
-		balloon_alert(user, "already sapient!")
+		balloon_alert(user, "Já sapient!")
 		return
 	can_be_possessed = TRUE
 	var/can_announce = !mapload && COOLDOWN_FINISHED(src, offer_ghosts_cooldown)
 	AddComponent(
-		/datum/component/ghost_direct_control, \
-		ban_type = ROLE_BOT, \
-		poll_candidates = can_announce, \
-		poll_ignore_key = POLL_IGNORE_BOTS, \
-		assumed_control_message = (bot_cover_flags & BOT_COVER_EMAGGED) ? get_emagged_message() : possessed_message, \
-		extra_control_checks = CALLBACK(src, PROC_REF(check_possession)), \
-		after_assumed_control = CALLBACK(src, PROC_REF(post_possession)), \
-	)
+		/datum/component/ghost_direct_control, 		ban_type = ROLE_BOT, 		poll_candidates = can_announce, 		poll_ignore_key = POLL_IGNORE_BOTS, 		assumed_control_message = (bot_cover_flags & BOT_COVER_EMAGGED) ? get_emagged_message() : possessed_message, 		extra_control_checks = CALLBACK(src, PROC_REF(check_possession)), 		after_assumed_control = CALLBACK(src, PROC_REF(post_possession)), 	)
 	if (can_announce)
 		COOLDOWN_START(src, offer_ghosts_cooldown, 30 SECONDS)
 
@@ -253,7 +246,7 @@
 		return
 	if (user)
 		log_combat(user, src, "ejected [key_name(src)] from control of [src] ([initial(src.name)]).")
-	to_chat(src, span_warning("You feel yourself fade as your personality matrix is reset!"))
+	to_chat(src, span_warning("Você se sente desbotado quando sua matriz de personalidade é reiniciada!"))
 	ghostize(can_reenter_corpse = FALSE)
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	speak("Personality matrix reset!")
@@ -262,7 +255,7 @@
 /// Returns true if this mob can be controlled
 /mob/living/simple_animal/bot/proc/check_possession(mob/potential_possessor)
 	if (!can_be_possessed)
-		to_chat(potential_possessor, span_warning("The bot's personality download has been disabled!"))
+		to_chat(potential_possessor, span_warning("O download da personalidade do robô foi desativado!"))
 	return can_be_possessed
 
 /// Fired after something takes control of this mob
@@ -277,7 +270,7 @@
 		reject_bad_text(tgui_input_text(
 			user = user,
 			message = "This machine is designated [real_name]. Would you like to update its registration?",
-			title = "Name change",
+			title = "Mudança de nome",
 			default = real_name,
 			max_length = MAX_NAME_LEN,
 		)),
@@ -289,7 +282,7 @@
 		var/accepted = tgui_alert(
 			src,
 			message = "Do you wish to be renamed to [new_name]?",
-			title = "Name change",
+			title = "Mudança de nome",
 			buttons = list("Yes", "No"),
 		)
 		if (accepted != "Yes" || QDELETED(src))
@@ -311,7 +304,7 @@
 	return ..()
 
 /mob/living/simple_animal/bot/proc/explode()
-	visible_message(span_boldnotice("[src] blows apart!"))
+	visible_message(span_boldnotice("[src]Vai pelos ares!"))
 	do_sparks(3, TRUE, src)
 	var/atom/location_destroyed = drop_location()
 	if(prob(50))
@@ -321,7 +314,7 @@
 	. = ..()
 	if(bot_cover_flags & BOT_COVER_LOCKED) //First emag application unlocks the bot's interface. Apply a screwdriver to use the emag again.
 		bot_cover_flags &= ~BOT_COVER_LOCKED
-		balloon_alert(user, "cover unlocked")
+		balloon_alert(user, "Capa destrancada")
 		return TRUE
 	if(!(bot_cover_flags & BOT_COVER_LOCKED) && bot_cover_flags & BOT_COVER_MAINTS_OPEN) //Bot panel is unlocked by ID or emag, and the panel is screwed open. Ready for emagging.
 		bot_cover_flags |= BOT_COVER_EMAGGED
@@ -329,13 +322,13 @@
 		bot_mode_flags &= ~BOT_MODE_REMOTE_ENABLED //Manually emagging the bot also locks the AI from controlling it.
 		bot_reset()
 		turn_on() //The bot automatically turns on when emagged, unless recently hit with EMP.
-		to_chat(src, span_userdanger("(#$*#$^^( OVERRIDE DETECTED"))
+		to_chat(src, span_userdanger("##$####^^(Override Detected"))
 		to_chat(src, span_boldnotice(get_emagged_message()))
 		if(user)
 			log_combat(user, src, "emagged")
 		return TRUE
 	else //Bot is unlocked, but the maint panel has not been opened with a screwdriver (or through the UI) yet.
-		balloon_alert(user, "open maintenance panel first!")
+		balloon_alert(user, "Abra o painel de manutenção primeiro!")
 		return FALSE
 
 /mob/living/simple_animal/bot/examine(mob/user)
@@ -347,17 +340,17 @@
 			. += "[src]'s parts look very loose!"
 	else
 		. += "[src] is in pristine condition."
-	. += span_notice("[p_Their()] maintenance panel is [bot_cover_flags & BOT_COVER_MAINTS_OPEN ? "open" : "closed"].")
-	. += span_info("You can use a <b>screwdriver</b> to [bot_cover_flags & BOT_COVER_MAINTS_OPEN ? "close" : "open"] it.")
+	. += span_notice("[p_Their()]painel de manutenção é[bot_cover_flags & BOT_COVER_MAINTS_OPEN ? "open" : "closed"].")
+	. += span_info("Você pode usar um<b>Chave de fenda</b>para[bot_cover_flags & BOT_COVER_MAINTS_OPEN ? "close" : "open"]Ele.")
 	if(bot_cover_flags & BOT_COVER_MAINTS_OPEN)
-		. += span_notice("[p_Their()] control panel is [bot_cover_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"].")
+		. += span_notice("[p_Their()]painel de controle é[bot_cover_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"].")
 		var/is_sillycone = HAS_SILICON_ACCESS(user)
 		if(!(bot_cover_flags & BOT_COVER_EMAGGED) && (is_sillycone || user.Adjacent(src)))
-			. += span_info("Alt-click [is_sillycone ? "" : "or use your ID on "]it to [bot_cover_flags & BOT_COVER_LOCKED ? "un" : ""]lock [p_their()] control panel.")
+			. += span_info("Alt-click[is_sillycone ? "" : "or use your ID on "]Ele para[bot_cover_flags & BOT_COVER_LOCKED ? "un" : ""]Trava[p_their()]Painel de controle.")
 	if(paicard)
-		. += span_notice("[p_They()] has a pAI device installed.")
+		. += span_notice("[p_They()]tem um dispositivo PAI instalado.")
 		if(!(bot_cover_flags & BOT_COVER_MAINTS_OPEN))
-			. += span_info("You can use a <b>hemostat</b> to remove it.")
+			. += span_info("Você pode usar um<b>hemostat</b>para removê-lo.")
 	if(access_card)
 		. += "There appears to be [icon2html(access_card, user)] \a [access_card] pinned to [p_them()]."
 
@@ -418,7 +411,7 @@
 	if(!topic_denied(user))
 		ui_interact(user)
 	else
-		to_chat(user, span_warning("[src]'s interface is not responding!"))
+		to_chat(user, span_warning("[src]A interface não está respondendo!"))
 
 /mob/living/simple_animal/bot/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -435,23 +428,23 @@
 		to_chat(user, span_danger("ERROR"))
 		return
 	if(bot_cover_flags & BOT_COVER_MAINTS_OPEN)
-		to_chat(user, span_warning("Please close the access panel before [bot_cover_flags & BOT_COVER_LOCKED ? "un" : ""]locking it."))
+		to_chat(user, span_warning("Por favor, feche o painel de acesso antes.[bot_cover_flags & BOT_COVER_LOCKED ? "un" : ""]Trancando."))
 		return
 	if(!allowed(user))
-		to_chat(user, span_warning("Access denied."))
+		to_chat(user, span_warning("Acesso negado."))
 		return
 	bot_cover_flags ^= BOT_COVER_LOCKED
-	to_chat(user, span_notice("Controls are now [bot_cover_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"]."))
+	to_chat(user, span_notice("Os controles estão agora.[bot_cover_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"]."))
 	return TRUE
 
 /mob/living/simple_animal/bot/screwdriver_act(mob/living/user, obj/item/tool)
 	if(bot_cover_flags & BOT_COVER_LOCKED)
-		to_chat(user, span_warning("The maintenance panel is locked!"))
+		to_chat(user, span_warning("O painel de manutenção está trancado!"))
 		return ITEM_INTERACT_SUCCESS
 
 	tool.play_tool_sound(src)
 	bot_cover_flags ^= BOT_COVER_MAINTS_OPEN
-	to_chat(user, span_notice("The maintenance panel is now [bot_cover_flags & BOT_COVER_MAINTS_OPEN ? "opened" : "closed"]."))
+	to_chat(user, span_notice("O painel de manutenção está agora.[bot_cover_flags & BOT_COVER_MAINTS_OPEN ? "opened" : "closed"]."))
 	return ITEM_INTERACT_SUCCESS
 
 /mob/living/simple_animal/bot/welder_act(mob/living/user, obj/item/tool)
@@ -460,15 +453,15 @@
 		return FALSE
 
 	if(health >= maxHealth)
-		to_chat(user, span_warning("[src] does not need a repair!"))
+		to_chat(user, span_warning("[src]Não precisa de reparo!"))
 		return ITEM_INTERACT_SUCCESS
 	if(!(bot_cover_flags & BOT_COVER_MAINTS_OPEN))
-		to_chat(user, span_warning("Unable to repair with the maintenance panel closed!"))
+		to_chat(user, span_warning("Incapaz de reparar com o painel de manutenção fechado!"))
 		return ITEM_INTERACT_SUCCESS
 
 	if(tool.use_tool(src, user, 0 SECONDS, volume=40))
 		adjustHealth(-10)
-		user.visible_message(span_notice("[user] repairs [src]!"),span_notice("You repair [src]."))
+		user.visible_message(span_notice("[user]reparos[src]!"),span_notice("Você conserta.[src]."))
 		return ITEM_INTERACT_SUCCESS
 
 /mob/living/simple_animal/bot/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers)
@@ -480,12 +473,12 @@
 		return
 	if(attacking_item.tool_behaviour == TOOL_HEMOSTAT && paicard)
 		if(bot_cover_flags & BOT_COVER_MAINTS_OPEN)
-			balloon_alert(user, "open the access panel!")
+			balloon_alert(user, "Abra o painel de acesso!")
 		else
-			balloon_alert(user, "removing pAI...")
+			balloon_alert(user, "removendo PAI...")
 			if(!do_after(user, 3 SECONDS, target = src) || !paicard)
 				return
-			user.visible_message(span_notice("[user] uses [attacking_item] to pull [paicard] out of [initial(src.name)]!"),span_notice("You pull [paicard] out of [initial(src.name)] with [attacking_item]."))
+			user.visible_message(span_notice("[user]usa[attacking_item]Para puxar[paicard]Fora[initial(src.name)]!"),span_notice("Você puxa.[paicard]Fora[initial(src.name)]com[attacking_item]."))
 			ejectpai(user)
 		return
 	return ..()
@@ -515,7 +508,7 @@
 	new /obj/effect/temp_visual/emp(loc)
 	if(paicard)
 		paicard.emp_act(severity)
-		src.visible_message(span_notice("[paicard] is flies out of [initial(src.name)]!"), span_warning("You are forcefully ejected from [initial(src.name)]!"))
+		src.visible_message(span_notice("[paicard]É voar para fora[initial(src.name)]!"), span_warning("Você foi expulso com força.[initial(src.name)]!"))
 		ejectpai()
 
 	if (QDELETED(src))
@@ -718,15 +711,15 @@ Pass a positive integer as an argument to override a bot's default speed.
 		access_card.set_access(REGION_ACCESS_ALL_STATION) //Give the bot all-access while under the AI's command.
 		if(client)
 			reset_access_timer_id = addtimer(CALLBACK (src, PROC_REF(bot_reset)), 60 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE) //if the bot is player controlled, they get the extra access for a limited time
-			to_chat(src, span_notice("[span_big("Priority waypoint set by [icon2html(calling_ai, src)] <b>[summoner]</b>. Proceed to <b>[end_area]</b>.")]<br>[path.len-1] meters to destination. You have been granted additional door access for 60 seconds."))
+			to_chat(src, span_notice("[span_big("Priority waypoint set by [icon2html(calling_ai, src)] <b>[summoner]</b>. Proceed to <b>[end_area]</b>.")]<br>[path.len-1]metros para o destino. Você recebeu acesso adicional por 60 segundos."))
 		if(message)
-			to_chat(calling_ai, span_notice("[icon2html(src, calling_ai)] [name] called to [end_area]. [path.len-1] meters to destination."))
+			to_chat(calling_ai, span_notice("[icon2html(src, calling_ai)] [name]Chamado para[end_area]. [path.len-1]metros para o destino."))
 		pathset = TRUE
 		mode = BOT_RESPONDING
 		tries = 0
 	else
 		if(message)
-			to_chat(calling_ai, span_danger("Failed to calculate a valid route. Ensure destination is clear of obstructions and within range."))
+			to_chat(calling_ai, span_danger("Não calculou uma rota válida. Certifique-se que o destino está livre de obstruções e dentro do alcance."))
 		calling_ai = null
 		set_path(null)
 
@@ -743,7 +736,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 
 /mob/living/simple_animal/bot/proc/bot_reset()
 	if(calling_ai) //Simple notification to the AI if it called a bot. It will not know the cause or identity of the bot.
-		to_chat(calling_ai, span_danger("Call command to a bot has been reset."))
+		to_chat(calling_ai, span_danger("O comando de um robô foi reiniciado."))
 		calling_ai = null
 	if(reset_access_timer_id)
 		deltimer(reset_access_timer_id)
@@ -903,21 +896,21 @@ Pass a positive integer as an argument to override a bot's default speed.
 		if("patroloff")
 			to_chat(src, "<span class='warning big'>STOP PATROL</span>")
 		if("patrolon")
-			to_chat(src, "<span class='warning big'>START PATROL</span>")
+			to_chat(src, "<span class='warning big'>Iniciar PATROL</span>")
 		if("summon")
-			to_chat(src, "<span class='warning big'>PRIORITY ALERT:[user] in [get_area_name(user)]!</span>")
+			to_chat(src, "<span class='warning big'>Priority Alert:[user]em[get_area_name(user)]!</span>")
 		if("stop")
-			to_chat(src, "<span class='warning big'>STOP!</span>")
+			to_chat(src, "<span class='warning big'>Pare!</span>")
 
 		if("go")
-			to_chat(src, "<span class='warning big'>GO!</span>")
+			to_chat(src, "<span class='warning big'>Vai!</span>")
 
 		if("home")
-			to_chat(src, "<span class='warning big'>RETURN HOME!</span>")
+			to_chat(src, "<span class='warning big'>Voltem para casa!</span>")
 		if("ejectpai")
 			return
 		else
-			to_chat(src, span_warning("Unidentified control sequence received:[command]"))
+			to_chat(src, span_warning("Sequência de controle não identificada recebida:[command]"))
 
 // calculates a path to the current destination
 // given an optional turf to avoid
@@ -994,7 +987,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 		return
 	var/mob/user = ui.user
 	if(!allowed(user))
-		to_chat(user, span_warning("Access denied."))
+		to_chat(user, span_warning("Acesso negado."))
 		return
 
 	if(action == "lock")
@@ -1018,26 +1011,26 @@ Pass a positive integer as an argument to override a bot's default speed.
 				return
 			if(!(bot_cover_flags & BOT_COVER_EMAGGED))
 				bot_cover_flags |= (BOT_COVER_EMAGGED|BOT_COVER_HACKED|BOT_COVER_LOCKED)
-				to_chat(user, span_warning("You overload [src]'s [hackables]."))
+				to_chat(user, span_warning("Você está sobrecarregado.[src]'s[hackables]."))
 				message_admins("Safety lock of [ADMIN_LOOKUPFLW(src)] was disabled by [ADMIN_LOOKUPFLW(user)] in [ADMIN_VERBOSEJMP(src)]")
 				user.log_message("disabled safety lock of [src]", LOG_GAME)
 				bot_reset()
-				to_chat(src, span_userdanger("(#$*#$^^( OVERRIDE DETECTED"))
+				to_chat(src, span_userdanger("##$####^^(Override Detected"))
 				to_chat(src, span_boldnotice(get_emagged_message()))
 				return
 			if(!(bot_cover_flags & BOT_COVER_HACKED))
-				to_chat(user, span_bolddanger("You fail to repair [src]'s [hackables]."))
+				to_chat(user, span_bolddanger("Você não consegue consertar.[src]'s[hackables]."))
 				return
 			bot_cover_flags &= ~(BOT_COVER_EMAGGED|BOT_COVER_HACKED)
-			to_chat(user, span_notice("You reset the [src]'s [hackables]."))
+			to_chat(user, span_notice("Você redefiniu o[src]'s[hackables]."))
 			user.log_message("re-enabled safety lock of [src]", LOG_GAME)
 			bot_reset()
-			to_chat(src, span_userdanger("Software restored to standard."))
+			to_chat(src, span_userdanger("Software restaurado ao padrão."))
 			to_chat(src, span_boldnotice(possessed_message))
 		if("eject_pai")
 			if(!paicard)
 				return
-			to_chat(user, span_notice("You eject [paicard] from [initial(src.name)]."))
+			to_chat(user, span_notice("Você ejeta.[paicard]De[initial(src.name)]."))
 			ejectpai(user)
 		if("toggle_personality")
 			if (can_be_possessed)
@@ -1066,19 +1059,19 @@ Pass a positive integer as an argument to override a bot's default speed.
 /// Places a pAI in control of this mob
 /mob/living/simple_animal/bot/proc/insertpai(mob/user, obj/item/pai_card/card)
 	if(paicard)
-		balloon_alert(user, "slot occupied!")
+		balloon_alert(user, "slot ocupado!")
 		return
 	if(key)
-		balloon_alert(user, "personality already present!")
+		balloon_alert(user, "personalidade já presente!")
 		return
 	if(bot_cover_flags & BOT_COVER_LOCKED || !(bot_cover_flags & BOT_COVER_MAINTS_OPEN))
-		balloon_alert(user, "slot inaccessible!")
+		balloon_alert(user, "slot inacessível!")
 		return
 	if(!(bot_mode_flags & BOT_MODE_CAN_BE_SAPIENT))
-		balloon_alert(user, "incompatible firmware!")
+		balloon_alert(user, "firmware incompatível!")
 		return
 	if(!card.pai || !card.pai.mind)
-		balloon_alert(user, "pAI is inactive!")
+		balloon_alert(user, "PAI está inativa!")
 		return
 	if(!user.transferItemToLoc(card, src))
 		return
@@ -1088,9 +1081,9 @@ Pass a positive integer as an argument to override a bot's default speed.
 		paicard.pai.fold_in()
 	copy_languages(paicard.pai, source_override = LANGUAGE_PAI)
 	set_active_language(paicard.pai.get_selected_language())
-	user.visible_message(span_notice("[user] inserts [card] into [src]!"), span_notice("You insert [card] into [src]."))
+	user.visible_message(span_notice("[user]Inserções[card]em[src]!"), span_notice("Você insere[card]em[src]."))
 	paicard.pai.mind.transfer_to(src)
-	to_chat(src, span_notice("You sense your form change as you are uploaded into [src]."))
+	to_chat(src, span_notice("Você sente sua mudança de forma como você é carregado em[src]."))
 	name = paicard.pai.name
 	original_faction = get_faction()
 	original_allies = allies
@@ -1121,7 +1114,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 	else
 		log_combat(src, paicard.pai, "ejected")
 	if(announce)
-		to_chat(paicard.pai, span_notice("You feel your control fade as [paicard] ejects from [initial(src.name)]."))
+		to_chat(paicard.pai, span_notice("Você sente seu controle desaparecer como[paicard]Ejeta de[initial(src.name)]."))
 	paicard = null
 	name = initial(src.name)
 	set_faction(original_faction)

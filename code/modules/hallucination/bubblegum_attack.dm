@@ -62,12 +62,7 @@
 	if(QDELETED(src))
 		return
 
-	if(QDELETED(hallucinator) \
-		|| QDELETED(fake_bubbles) \
-		|| !landing_turf \
-		|| fake_bubbles.z != hallucinator.z \
-		|| fake_bubbles.z != landing_turf.z \
-	)
+	if(QDELETED(hallucinator) 		|| QDELETED(fake_bubbles) 		|| !landing_turf 		|| fake_bubbles.z != hallucinator.z 		|| fake_bubbles.z != landing_turf.z 	)
 		qdel(src)
 		return
 
@@ -86,8 +81,8 @@
 		step_away(hallucinator, fake_bubbles)
 		shake_camera(hallucinator, 4, 3)
 		hallucinator.visible_message(
-			span_warning("[hallucinator] jumps backwards, falling on the ground!"),
-			span_userdanger("[fake_bubbles] slams into you!"),
+			span_warning("[hallucinator]Salta para trás, caindo no chão!"),
+			span_userdanger("[fake_bubbles]Bate em você!"),
 		)
 		QDEL_IN(src, 3 SECONDS)
 

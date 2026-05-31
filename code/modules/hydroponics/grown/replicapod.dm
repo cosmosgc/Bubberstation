@@ -3,7 +3,7 @@
 // Yes, i'm talking about cabbage, baby! No, just kidding, but cabbages are the precursor to replica pods, so they are here as well.
 /obj/item/seeds/cabbage
 	name = "cabbage seed pack"
-	desc = "These seeds grow into cabbages."
+	desc = "Estas sementes crescem em repolhos."
 	icon_state = "seed-cabbage"
 	species = "cabbage"
 	plantname = "Cabbages"
@@ -24,7 +24,7 @@
 /obj/item/food/grown/cabbage
 	seed = /obj/item/seeds/cabbage
 	name = "cabbage"
-	desc = "Ewwwwwwwwww. Cabbage."
+	desc = "Ewwwwwwwwww. Repolho."
 	icon_state = "cabbage"
 	foodtypes = VEGETABLES
 	wine_power = 20
@@ -32,7 +32,7 @@
 ///The actual replica pods themselves!
 /obj/item/seeds/replicapod
 	name = "replica pod seed pack"
-	desc = "These seeds grow into replica pods. They say these are used to harvest humans."
+	desc = "Essas sementes crescem em vagens réplicas. Dizem que são usados para colher humanos."
 	icon_state = "seed-replicapod"
 	plant_icon_offset = 2
 	species = "replicapod"
@@ -74,7 +74,7 @@
 		return
 
 	if(!blood.data["mind"] || !blood.data["cloneable"])
-		visible_message(span_warning("The [src] rejects the sample!"))
+		visible_message(span_warning("O[src]Rejeita a amostra!"))
 		return
 
 	mind = blood.data["mind"]
@@ -87,7 +87,7 @@
 	quirks = blood.data["quirks"]
 	sampleDNA = blood.data["blood_DNA"]
 	contains_sample = TRUE
-	visible_message(span_notice("The [src] is injected with a fresh blood sample."))
+	visible_message(span_notice("O[src]é injetado com uma amostra de sangue fresco."))
 	investigate_log("[key_name(mind)]'s cloning record was added to [src]", INVESTIGATE_BOTANY)
 
 /// Handles reagents being deleted from these seeds.
@@ -156,19 +156,19 @@
 	if(!make_podman)
 		// Prevent accidental harvesting. Make sure the user REALLY wants to do this if there's a chance of this coming from a living creature.
 		if(user.client && (mind || ckey))
-			var/choice = tgui_alert(user, "The pod is currently devoid of soul. There is a possibility that a soul could claim this creature, or you could harvest it for seeds.", "Harvest Seeds?", list("Harvest Seeds", "Cancel"))
+			var/choice = tgui_alert(user, "A cápsula está sem alma. Há uma possibilidade de que uma alma possa reivindicar esta criatura, ou você poderia colhê-la por sementes.", "Harvest Seeds?", list("Harvest Seeds", "Cancel"))
 			if(choice != "Harvest Seeds")
 				return result
 
 		// If this plant has already been harvested, return early.
 		// parent.update_tray() qdels this seed.
 		if(QDELETED(src))
-			to_chat(user, text = "This pod has already had its seeds harvested!", type = MESSAGE_TYPE_INFO)
+			to_chat(user, text = "Esta vagem já teve suas sementes colhidas!", type = MESSAGE_TYPE_INFO)
 			return result
 
 		// Make sure they can still interact with the parent hydroponics tray.
 		if(!user.can_perform_action(parent))
-			to_chat(user, text = "You are no longer able to harvest the seeds from [parent]!", type = MESSAGE_TYPE_INFO)
+			to_chat(user, text = "Você não é mais capaz de colher as sementes de[parent]!", type = MESSAGE_TYPE_INFO)
 			return result
 
 		var/seed_count = 1

@@ -1,22 +1,22 @@
 /datum/weather/snow_storm
 	name = "snow storm"
-	desc = "Harsh snowstorms roam the topside of this arctic planet, burying any area unfortunate enough to be in its path."
+	desc = "Tempestades de neve duras percorrem o topo deste planeta ártico, enterrando qualquer área infeliz o suficiente para estar em seu caminho."
 	probability = 90
 
-	telegraph_message = span_warning("Drifting particles of snow begin to dust the surrounding area..")
+	telegraph_message = span_warning("Partículas flutuantes de neve começam a limpar a área circundante.")
 	telegraph_duration = 30 SECONDS
 	telegraph_overlay = "light_snow"
 	telegraph_sound = 'sound/ambience/weather/snowstorm/snow_start.ogg'
 	telegraph_sound_vol = /datum/looping_sound/snowstorm::volume + 10
 
-	weather_message = span_userdanger("<i>Harsh winds pick up as dense snow begins to fall from the sky! Seek shelter!</i>")
+	weather_message = span_userdanger("<i>Ventos fortes se acumulam enquanto a neve densa começa a cair do céu! Procurem abrigo!</i>")
 	weather_overlay = "snow_storm"
 	weather_duration_lower = 1 MINUTES
 	weather_duration_upper = 2.5 MINUTES
 	use_glow = FALSE
 
 	end_duration = 10 SECONDS
-	end_message = span_bolddanger("The snowfall dies down, it should be safe to go outside again.")
+	end_message = span_bolddanger("A neve cai, deve ser seguro sair de novo.")
 	end_sound = 'sound/ambience/weather/snowstorm/snow_end.ogg'
 	end_sound_vol = /datum/looping_sound/snowstorm::volume + 10
 

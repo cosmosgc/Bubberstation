@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 		log_combat(throwingdatum.thrower, target, "shattered", addition = "from being thrown due to [target] being frozen.")
 	else
 		log_combat(throwingdatum.thrower, target, "launched", addition = "shattering it due to being frozen.")
-	obj_target.visible_message(span_danger("[obj_target] shatters into a million pieces!"))
+	obj_target.visible_message(span_danger("[obj_target]Estilhaços em milhões de pedaços!"))
 	obj_target.obj_flags |= NO_DEBRIS_AFTER_DECONSTRUCTION	// disable item spawning
 	obj_target.deconstruct(FALSE)			// call pre-deletion specialized code -- internals release gas etc
 

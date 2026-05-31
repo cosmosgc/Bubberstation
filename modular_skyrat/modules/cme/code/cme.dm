@@ -19,7 +19,7 @@
 	max_occurrences = 0
 	earliest_start = 45 MINUTES
 	category = EVENT_CATEGORY_SPACE
-	description = "Spawns a CME event of varied severities"
+	description = "Spawns um evento CME de gravidades variadas"
 
 /datum/round_event/cme
 	start_when = 6
@@ -36,7 +36,7 @@
 	weight = 15
 	min_players = 75
 	max_occurrences = 1
-	description = "Spawns a CME event of a unknown severity"
+	description = "Spawns um evento CME de uma gravidade desconhecida"
 
 /datum/round_event/cme/unknown
 	cme_intensity = CME_UNKNOWN
@@ -46,7 +46,7 @@
 	typepath = /datum/round_event/cme/minimal
 	weight = 0
 	max_occurrences = 0
-	description = "Spawns a CME event of minimum severity"
+	description = "Spawns um evento CME de gravidade mínima"
 
 /datum/round_event/cme/minimal
 	cme_intensity = CME_MINIMAL
@@ -56,7 +56,7 @@
 	typepath = /datum/round_event/cme/moderate
 	weight = 0
 	max_occurrences = 0
-	description = "Spawns a CME event of moderate severity"
+	description = "Um evento CME de gravidade moderada."
 
 /datum/round_event/cme/moderate
 	cme_intensity = CME_MODERATE
@@ -67,7 +67,7 @@
 	weight = 0
 	min_players = 75
 	max_occurrences = 0
-	description = "Spawns a CME event of extreme severity"
+	description = "Spawns um evento CME de extrema gravidade"
 
 /datum/round_event/cme/extreme
 	cme_intensity = CME_EXTREME
@@ -77,7 +77,7 @@
 	typepath = /datum/round_event/cme/armageddon
 	weight = 0
 	max_occurrences = 0
-	description = "Spawns a CME event of Arnageddon severity. WARNING this is round ending severe."
+	description = "Spawns um evento CME de gravidade de Arnagedon. AVISO que esta rodada termina severa."
 
 /datum/round_event/cme/armageddon
 	cme_intensity = CME_ARMAGEDDON
@@ -122,32 +122,21 @@
 
 /datum/round_event/cme/announce(fake)
 	if(fake)
-		priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [rand(200, 300)] seconds. \
-		All synthetic and non-organic lifeforms should seek shelter immediately! \
-		Ensure all sensitive equipment is shielded.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
+		priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [rand(200, 300)] seconds. 		All synthetic and non-organic lifeforms should seek shelter immediately! 		Ensure all sensitive equipment is shielded.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 	else
 		switch(cme_intensity)
 			if(CME_UNKNOWN)
-				priority_announce("Coronal mass ejection detected! Expected intensity: UNKNOWN. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
-				All synthetic and non-organic lifeforms should seek shelter immediately! \
-				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
+				priority_announce("Coronal mass ejection detected! Expected intensity: UNKNOWN. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. 				All synthetic and non-organic lifeforms should seek shelter immediately! 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_MINIMAL)
-				priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
-				All synthetic and non-organic lifeforms should seek shelter immediately! \
-				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
+				priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. 				All synthetic and non-organic lifeforms should seek shelter immediately! 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_MODERATE)
-				priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
-				All synthetic and non-organic lifeforms should seek shelter immediately! \
-				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
+				priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. 				All synthetic and non-organic lifeforms should seek shelter immediately! 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_EXTREME)
 				addtimer(CALLBACK(src, PROC_REF(cme_level_callback), SEC_LEVEL_ORANGE, TRUE, FALSE), (round((start_when * SSevents.wait) * 0.1, 0.1)) SECONDS)
-				priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
-				All synthetic and non-organic lifeforms should seek shelter immediately! \
-				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
+				priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. 				All synthetic and non-organic lifeforms should seek shelter immediately! 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_ARMAGEDDON)
 				addtimer(CALLBACK(src, PROC_REF(cme_level_callback), SEC_LEVEL_GAMMA, TRUE, TRUE), (round((start_when * SSevents.wait) * 0.1, 0.1)) SECONDS)
-				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
-				All personnel should proceed to their nearest warpgate for evacuation, the Terran Government has issued this mandatory alert.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
+				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. 				All personnel should proceed to their nearest warpgate for evacuation, the Terran Government has issued this mandatory alert.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 
 /datum/round_event/cme/tick(seconds_between_ticks)
 	if(ISMULTIPLE(activeFor, rand(cme_frequency_lower, cme_frequency_upper)))
@@ -189,7 +178,7 @@
 */
 
 /obj/effect/cme
-	desc = "A solar ejection projection."
+	desc = "Uma projeção de ejeção solar."
 	name = "MINIMAL SOLAR EJECTION"
 	icon = 'modular_skyrat/modules/cme/icons/cme_effect.dmi'
 	icon_state = "cme_effect"
@@ -251,7 +240,7 @@
 
 /obj/effect/cme/proc/burst()
 	if(neutralized)
-		visible_message(span_notice("[src] fizzles out into nothingness."))
+		visible_message(span_notice("[src]Encaixou no nada."))
 		new /obj/effect/particle_effect/fluid/smoke/bad(loc)
 		qdel(src)
 		return
@@ -265,7 +254,7 @@
 
 /obj/effect/cme/armageddon/burst()
 	if(neutralized)
-		visible_message(span_notice("[src] fizzles out into nothingness."))
+		visible_message(span_notice("[src]Encaixou no nada."))
 		new /obj/effect/particle_effect/fluid/smoke/bad(loc)
 		qdel(src)
 		return

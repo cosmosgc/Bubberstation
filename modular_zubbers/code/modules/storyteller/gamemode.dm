@@ -739,7 +739,7 @@ SUBSYSTEM_DEF(gamemode)
 		vote_message += "[storyboy.desc]"
 		vote_message += ""
 	var/finalized_message = "[vote_message.Join("\n")]"
-	to_chat(world, vote_font(fieldset_block("Storyteller Vote", "[finalized_message]", "boxed_message purple_box")))
+	to_chat(world, vote_font(fieldset_block("Voto do contador de histórias", "[finalized_message]", "Caixa de mensagens roxas")))
 	return choices
 
 /datum/controller/subsystem/gamemode/proc/storyteller_vote_result(winner_name)
@@ -769,7 +769,7 @@ SUBSYSTEM_DEF(gamemode)
 		var/serialized_vote_results = "[vote_results.Join("\n")]"
 		var/list/vote_result_message = list("Method: Ranked Vote\n\nElimination order:\n[serialized_vote_results]")
 		to_chat(world, custom_boxed_message("purple_box", vote_font("[vote_result_message.Join("\n")]")))
-	to_chat(world, vote_font(fieldset_block("Storyteller: [storyteller.name]", "[storyteller.welcome_text]", "boxed_message purple_box")))
+	to_chat(world, vote_font(fieldset_block("Contador de histórias:[storyteller.name]", "[storyteller.welcome_text]", "Caixa de mensagens roxas")))
 
 	if(vote_datum)
 		QDEL_NULL(vote_datum)

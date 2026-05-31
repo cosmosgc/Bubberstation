@@ -1,6 +1,6 @@
 /datum/phystool_mode/build_mode
 	name = "Build mode"
-	desc = "Use LMB for build mode, RMB for remover and in hands to choose between structures."
+	desc = "Use LMB para construir modo, RMB para remover e em mãos para escolher entre estruturas."
 
 	var/atom/selected_atom
 
@@ -14,7 +14,7 @@
 	)
 	var/choised_mode = show_radial_menu(user, user, choise, require_near = TRUE)
 	if(!choised_mode)
-		user.balloon_alert(user, "select one!")
+		user.balloon_alert(user, "Selecione um!")
 		return FALSE
 	var/list/pick = list()
 	if(choised_mode == "Wall mode")
@@ -43,14 +43,14 @@
 	. = ..()
 
 	if(!selected_atom)
-		user.balloon_alert(user, "select atom first!")
+		user.balloon_alert(user, "Selecione o átomo primeiro!")
 		return FALSE
 	if(!isopenturf(target))
-		user.balloon_alert(user, "bloqueado!")
+		user.balloon_alert(user, "Bloqueado!")
 		return FALSE
 	var/turf/T = target
 	if(T.is_blocked_turf())
-		user.balloon_alert(user, "bloqueado!")
+		user.balloon_alert(user, "Bloqueado!")
 		return FALSE
 	if(!isturf(selected_atom))
 		T.place_on_top(selected_atom)

@@ -161,11 +161,11 @@
 /datum/emote/living/carbon/bonk/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(!length(user.get_empty_held_indexes()))
-		to_chat(user, span_warning("You don't have any free hands to bonk someone with."))
+		to_chat(user, span_warning("Você não tem mãos livres para bater em alguém."))
 		return
 	var/obj/item/hand_item/bonkinghand/bonk = new(user)
 	if(user.put_in_hands(bonk))
-		to_chat(user, span_notice("You ready your hand to bonk someone."))
+		to_chat(user, span_notice("Prepare sua mão para bater em alguém."))
 
 /datum/emote/living/kweh
 	key = "kweh"

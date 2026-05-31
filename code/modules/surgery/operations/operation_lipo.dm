@@ -1,7 +1,7 @@
 /datum/surgery_operation/limb/lipoplasty
 	name = "excise excess fat"
 	rnd_name = "Lipoplasty (Excise Fat)"
-	desc = "Remove excess fat from a patient's body."
+	desc = "Remova o excesso de gordura do corpo de um paciente."
 	operation_flags = OPERATION_NOTABLE | OPERATION_AFFECTS_MOOD
 	implements = list(
 		TOOL_SAW = 1,
@@ -51,9 +51,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to cut away [limb.owner]'s excess fat..."),
-		span_notice("[surgeon] begins to cut away [limb.owner]'s excess fat."),
-		span_notice("[surgeon] begins to cut [limb.owner]'s [limb.plaintext_zone] with [tool]."),
+		span_notice("Você começa a cortar[limb.owner]É excesso de gordura..."),
+		span_notice("[surgeon]Começa a cortar[limb.owner]É excesso de gordura."),
+		span_notice("[surgeon]Começa a cortar[limb.owner]'s[limb.plaintext_zone]Com[tool]."),
 	)
 	display_pain(limb.owner, "You feel a stabbing in your [limb.plaintext_zone]!")
 
@@ -61,9 +61,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You successfully remove excess fat from [limb.owner]'s body!"),
-		span_notice("[surgeon] successfully removes excess fat from [limb.owner]'s body!"),
-		span_notice("[surgeon] finishes cutting away excess fat from [limb.owner]'s [limb.plaintext_zone]."),
+		span_notice("Você remove com sucesso o excesso de gordura de[limb.owner]Ó corpo!"),
+		span_notice("[surgeon]com sucesso remova o excesso de gordura de[limb.owner]Ó corpo!"),
+		span_notice("[surgeon]Termina de Cortar o excesso de Gordura de[limb.owner]'s[limb.plaintext_zone]."),
 	)
 	var/removednutriment = limb.owner.nutrition
 	limb.owner.overeatduration = 0 //patient is unfatted

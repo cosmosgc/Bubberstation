@@ -81,16 +81,15 @@
 	if(IS_WIZARD(user) || isobserver(user))
 		if(user.mind == lich_mind)
 			var/time_to_revive = base_respawn_time + (num_resurrections * time_per_resurrection)
-			examine_list += span_green("Your phylactery. The next time you meet an untimely demise, \
-				you will revive at this object in <b>[time_to_revive / 10 / 60] minute\s</b>.")
+			examine_list += span_green("Sua filacteria. A próxima vez que você encontrar uma morte prematura, você vai reviver neste objeto em<b>[time_to_revive / 10 / 60]minutos.</b>.")
 		else
-			examine_list += span_green("A lich's phylactery. This one belongs to [lich_mind].")
+			examine_list += span_green("Filarquia de um lich. Esta pertence a[lich_mind].")
 
 		if(num_resurrections > 0)
-			examine_list += span_green("<i>There's [num_resurrections] notches in the side of it.</i>")
+			examine_list += span_green("<i>Tem.[num_resurrections]Entalhes no lado dele.</i>")
 
 	else
-		examine_list += span_green("A terrible aura surrounds this item. Its very existence is offensive to life itself...")
+		examine_list += span_green("Uma aura terrível cerca este item. Sua própria existência é ofensiva para a própria vida...")
 
 /**
  * Signal proc for [COMSIG_QDELETING] registered on the lich's mind.
@@ -133,8 +132,7 @@
 	// Start revival
 	var/time_to_revive = base_respawn_time + (num_resurrections * time_per_resurrection)
 	revive_timer = addtimer(CALLBACK(src, PROC_REF(revive_lich), died), time_to_revive, TIMER_UNIQUE|TIMER_STOPPABLE)
-	to_chat(died, span_green("You feel your soul being dragged back to this world... \
-		<b>you will revive at your phylactery in [time_to_revive / 10 / 60] minute\s.</b>"))
+	to_chat(died, span_green("Você sente sua alma sendo arrastada de volta para este mundo...<b>Você vai reviver em seu filactério em[time_to_revive / 10 / 60]Minutos.</b>"))
 
 /**
  * Signal proc for [COMSIG_LIVING_REVIVE].
@@ -190,7 +188,7 @@
 	lich.set_species(/datum/species/skeleton)
 	lich.dna.generate_unique_enzymes()
 
-	to_chat(lich, span_green("Your bones clatter and shudder as you are pulled back into this world!"))
+	to_chat(lich, span_green("Seus ossos tremem e tremem quando você é puxado de volta para este mundo!"))
 	num_resurrections++
 	lich.Paralyze(stun_per_resurrection * num_resurrections)
 
@@ -211,7 +209,7 @@
 		var/turf/body_turf = get_turf(corpse)
 		var/wheres_wizdo = dir2text(get_dir(body_turf, parent_turf))
 		if(wheres_wizdo)
-			corpse.visible_message(span_warning("Suddenly, [corpse.name]'s corpse falls to pieces! You see a strange energy rise from the remains, and speed off towards the [wheres_wizdo]!"))
+			corpse.visible_message(span_warning("De arrependimento,[corpse.name]O cadáver cai em pedaços! Você vê uma energia estranha subir dos restos mortais, e acelerar para o[wheres_wizdo]!"))
 			body_turf.Beam(parent_turf, icon_state = "lichbeam", time = 1 SECONDS * (num_resurrections + 1))
 		//BUBBERSTATION CHANGE START: MORE PRECISE LOCATION AFTER 3 REVIVES.
 		if(body_turf && num_resurrections >= 3)

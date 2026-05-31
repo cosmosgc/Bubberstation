@@ -1,8 +1,8 @@
 import { type Feature, FeatureShortTextInput } from '../../base';
 
 export const nameless_quirk_name: Feature<string> = {
-  name: 'Prefix Name',
+  name: 'Nome Prefixo',
   description:
-    'Example: (Prefix) #1334. Leave blank to default to job title. Minimum 3 characters.',
+    'Exemplo: #1334. Deixe em branco para o título do trabalho. No mínimo 3 caracteres.',
   component: FeatureShortTextInput,
 };

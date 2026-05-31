@@ -1,7 +1,7 @@
 /datum/computer_file/program/contract_uplink
 	filename = "contractor uplink"
 	filedesc = "Syndicate Contractor Uplink"
-	extended_desc = "A standard, Syndicate issued system for handling important contracts while on the field."
+	extended_desc = "Um sistema padrão do Sindicato para lidar com contratos importantes no campo."
 	program_open_overlay = "contractor-assign"
 	program_icon = "tasks"
 	size = 10
@@ -88,9 +88,9 @@
 				if(ishuman(user))
 					var/mob/living/carbon/human/H = user
 					if(H.put_in_hands(crystals))
-						to_chat(H, span_notice("Your payment materializes into your hands!"))
+						to_chat(H, span_notice("Seu pagamento se materializa em suas mãos!"))
 					else
-						to_chat(user, span_notice("Your payment materializes onto the floor."))
+						to_chat(user, span_notice("Seu pagamento se materializa no chão."))
 
 				traitor_data.uplink_handler.contractor_hub.contract_TC_payed_out += traitor_data.uplink_handler.contractor_hub.contract_TC_to_redeem
 				traitor_data.uplink_handler.contractor_hub.contract_TC_to_redeem = 0

@@ -34,7 +34,7 @@
 /// Turns mobs into other mobs
 /obj/item/gun/magic/staff/change
 	name = "staff of change"
-	desc = "An artefact that spits bolts of coruscating energy which cause the target's very form to reshape itself."
+	desc = "Um artefato que cospe raios de energia que fazem o alvo se remodelar."
 	fire_sound = 'sound/effects/magic/staff_change.ogg'
 	ammo_type = /obj/item/ammo_casing/magic/change
 	icon_state = "staffofchange"
@@ -51,8 +51,8 @@
 /obj/item/gun/magic/staff/change/pickup(mob/user)
 	. = ..()
 	if(!is_wizard_or_friend(user))
-		to_chat(user, span_hypnophrase("<span style='font-size: 24px'>You don't feel strong enough to properly wield this staff!</span>"))
-		balloon_alert(user, "you feel weak holding this staff")
+		to_chat(user, span_hypnophrase("<span style='font-size: 24px'>Você não se sente forte o suficiente para empunhar adequadamente esta equipe!</span>"))
+		balloon_alert(user, "Você se sente fraco segurando este bastão")
 
 /// Transforms the user
 /obj/item/gun/magic/staff/change/proc/transform_self(mob/living/user)
@@ -61,7 +61,7 @@
 	var/mob/living/new_body = user.wabbajack(wabbajack_into, preset_wabbajack_changeflag)
 	if(!new_body)
 		return
-	balloon_alert(new_body, "wabbajack, wabbajack!")
+	balloon_alert(new_body, "Wabbajack, wabbajack!")
 	return new_body
 
 /obj/item/gun/magic/staff/change/on_intruder_use(mob/living/user, atom/target)
@@ -77,7 +77,7 @@
 /// Brings objects to life
 /obj/item/gun/magic/staff/animate
 	name = "staff of animation"
-	desc = "An artefact that spits bolts of life-force which causes objects which are hit by it to animate and come to life! This magic doesn't affect machines."
+	desc = "Um artefato que cospe parafusos de força vital que faz objetos que são atingidos por ele para animar e ganhar vida! Essa magia não afeta máquinas."
 	fire_sound = 'sound/effects/magic/staff_animation.ogg'
 	ammo_type = /obj/item/ammo_casing/magic/animate
 	icon_state = "staffofanimation"
@@ -116,7 +116,7 @@
 /// Heals people and even raises the dead
 /obj/item/gun/magic/staff/healing
 	name = "staff of healing"
-	desc = "An artefact that spits bolts of restoring magic which can remove ailments of all kinds and even raise the dead."
+	desc = "Um artefato que cospe raios de magia restaurando que pode remover doenças de todos os tipos e até mesmo ressuscitar os mortos."
 	fire_sound = 'sound/effects/magic/staff_healing.ogg'
 	ammo_type = /obj/item/ammo_casing/magic/heal
 	icon_state = "staffofhealing"
@@ -128,13 +128,13 @@
 /obj/item/gun/magic/staff/healing/pickup(mob/user)
 	. = ..()
 	if(!is_wizard_or_friend(user))
-		to_chat(user, span_hypnophrase("<span style='font-size: 24px'>The staff feels weaker as you touch it</span>"))
-		user.balloon_alert(user, "the staff feels weaker as you touch it")
+		to_chat(user, span_hypnophrase("<span style='font-size: 24px'>A equipe se sente mais fraca quando você toca nela.</span>"))
+		user.balloon_alert(user, "O bastão se sente mais fraco enquanto você toca.")
 
 /obj/item/gun/magic/staff/healing/examine(mob/user)
 	. = ..()
 	if(!is_wizard_or_friend(user))
-		. += span_notice("On the handle you notice a beautiful engraving in High Spaceman, \"Thou shalt not crosseth thy beams.\"")
+		. += span_notice("Na alça você nota uma bela gravura em High Spaceman,\"Não atravessarás as tuas vigas.\"")
 
 /obj/item/gun/magic/staff/healing/Initialize(mapload)
 	. = ..()
@@ -166,13 +166,13 @@
 	if(user.mob_biotypes & MOB_UNDEAD)
 		user.dust(drop_items = TRUE)
 		return MANUAL_SUICIDE
-	user.visible_message(span_suicide("...but nothing happens."))
+	user.visible_message(span_suicide("...mas nada acontece."))
 	return SHAME
 
 /// Does random shit when fired
 /obj/item/gun/magic/staff/chaos
 	name = "staff of chaos"
-	desc = "An artefact that spits bolts of chaotic magic that can potentially do anything."
+	desc = "Um artefato que cospe raios de magia caótica que pode fazer qualquer coisa."
 	fire_sound = 'sound/effects/magic/staff_chaos.ogg'
 	ammo_type = /obj/item/ammo_casing/magic/chaos
 	icon_state = "staffofchaos"
@@ -215,12 +215,12 @@
 
 /obj/item/gun/magic/staff/chaos/on_intruder_use(mob/living/user)
 	if(!user.can_cast_magic()) // Don't let people with antimagic use the staff of chaos.
-		balloon_alert(user, "the staff refuses to fire!")
+		balloon_alert(user, "A equipe se recusa a atirar!")
 		return FALSE
 
 	if(prob(95)) // You have a 5% chance of hitting yourself when using the staff of chaos.
 		return TRUE
-	balloon_alert(user, "chaos!")
+	balloon_alert(user, "Caos!")
 	user.dropItemToGround(src, TRUE)
 	process_fire(user, user, FALSE)
 	return FALSE
@@ -244,7 +244,7 @@
  */
 /obj/item/gun/magic/staff/chaos/true_wabbajack
 	name = "\proper Wabbajack"
-	desc = "If there is some deity out there, they've definitely skipped their psych appointment before creating this."
+	desc = "Se há alguma divindade lá fora, eles definitivamente pularam sua consulta psicológica antes de criar isso."
 	icon_state = "the_wabbajack"
 	inhand_icon_state = "the_wabbajack"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF //fuck you
@@ -279,7 +279,7 @@
 /// Creates and opens doors
 /obj/item/gun/magic/staff/door
 	name = "staff of door creation"
-	desc = "An artefact that spits bolts of transformative magic that can create doors in walls."
+	desc = "Um artefato que cospe raios de magia transformadora que pode criar portas nas paredes."
 	fire_sound = 'sound/effects/magic/staff_door.ogg'
 	ammo_type = /obj/item/ammo_casing/magic/door
 	icon_state = "staffofdoor"
@@ -316,17 +316,13 @@
 /obj/item/gun/magic/staff/honk/do_suicide(mob/living/user)
 	. = ..()
 	new /obj/effect/decal/cleanable/food/pie_smudge(user.drop_location())
-	user.AddComponent(\
-		/datum/component/face_decal/splat,\
-		icon_state = "creampie",\
-		layers = EXTERNAL_FRONT,\
-	)
+	user.AddComponent(		/datum/component/face_decal/splat,		icon_state = "creampie",		layers = EXTERNAL_FRONT,	)
 	return SHAME
 
 /// Dismembers people, and is a passable melee weapon
 /obj/item/gun/magic/staff/spellblade
 	name = "spellblade"
-	desc = "A deadly combination of laziness and bloodlust, this blade allows the user to dismember their enemies without all the hard work of actually swinging the sword."
+	desc = "Uma combinação mortal de preguiça e sede de sangue, esta lâmina permite que o usuário desmember seus inimigos sem todo o trabalho duro de realmente balançar a espada."
 	fire_sound = 'sound/effects/magic/fireball.ogg'
 	ammo_type = /obj/item/ammo_casing/magic/spellblade
 	icon_state = "spellblade"
@@ -345,12 +341,7 @@
 
 /obj/item/gun/magic/staff/spellblade/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/butchering, \
-		speed = 1.5 SECONDS, \
-		effectiveness = 125, \
-		bonus_modifier = 0, \
-		butcher_sound = hitsound, \
-	)
+	AddComponent(/datum/component/butchering, 		speed = 1.5 SECONDS, 		effectiveness = 125, 		bonus_modifier = 0, 		butcher_sound = hitsound, 	)
 
 /obj/item/gun/magic/staff/spellblade/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	if(attack_type == PROJECTILE_ATTACK || attack_type == LEAP_ATTACK || attack_type == OVERWHELMING_ATTACK)
@@ -371,7 +362,7 @@
 /// Welds people into flying lockers
 /obj/item/gun/magic/staff/locker
 	name = "staff of the locker"
-	desc = "An artefact that expels encapsulating bolts, for incapacitating thy enemy."
+	desc = "Um artefato que expulsa parafusos de encapsulamento, por incapacitar teu inimigo."
 	fire_sound = 'sound/effects/magic/staff_change.ogg'
 	ammo_type = /obj/item/ammo_casing/magic/locker
 	icon_state = "locker"
@@ -392,7 +383,7 @@
 /// Makes targets "fly" by throwing them away
 /obj/item/gun/magic/staff/flying
 	name = "staff of flying"
-	desc = "An artefact that spits bolts of graceful magic that can make something fly."
+	desc = "Um artefato que cospe raios de mágica graciosa que pode fazer algo voar."
 	fire_sound = 'sound/effects/magic/staff_healing.ogg'
 	ammo_type = /obj/item/ammo_casing/magic/flying
 	icon_state = "staffofflight"
@@ -409,7 +400,7 @@
 /// Scrambles languages
 /obj/item/gun/magic/staff/babel
 	name = "staff of babel"
-	desc = "An artefact that spits bolts of confusion magic that can make something depressed and incoherent."
+	desc = "Um artefato que cospe raios de magia confusa que pode fazer algo deprimido e incoerente."
 	fire_sound = 'sound/effects/magic/staff_change.ogg'
 	ammo_type = /obj/item/ammo_casing/magic/babel
 	icon_state = "staffofbabel"
@@ -426,7 +417,7 @@
 /// Deals damage to the target and recharges their spells if they have any
 /obj/item/gun/magic/staff/necropotence
 	name = "staff of necropotence"
-	desc = "An artefact that spits bolts of death magic that can repurpose the soul."
+	desc = "Um artefato que cospe raios da magia da morte que pode reaproveitar a alma."
 	fire_sound = 'sound/effects/magic/staff_change.ogg'
 	ammo_type = /obj/item/ammo_casing/magic/necropotence
 	icon_state = "staffofnecropotence"
@@ -445,7 +436,7 @@
 /// Asks a ghost to start playing as the poor victim
 /obj/item/gun/magic/staff/wipe
 	name = "staff of possession"
-	desc = "An artefact that spits bolts of mind-unlocking magic that can let ghosts invade the victim's mind."
+	desc = "Um artefato que cospe raios de magia que pode deixar fantasmas invadirem a mente da vítima."
 	fire_sound = 'sound/effects/magic/staff_change.ogg'
 	ammo_type = /obj/item/ammo_casing/magic/wipe
 	icon_state = "staffofwipe"
@@ -461,7 +452,7 @@
 /// Makes the target really small
 /obj/item/gun/magic/staff/shrink
 	name = "staff of shrinking"
-	desc = "An artefact that spits bolts of tiny magic that makes things small. It's easily mistaken for a wand."
+	desc = "Um artefato que cospe raios de mágica que torna as coisas pequenas. É facilmente confundido com uma varinha."
 	fire_sound = 'sound/effects/magic/staff_shrink.ogg'
 	ammo_type = /obj/item/ammo_casing/magic/shrink
 	icon_state = "shrinkstaff"
@@ -477,7 +468,7 @@
 	. = ..()
 	playsound(user, fire_sound, 50, TRUE)
 	user.unequip_everything()
-	user.visible_message(span_suicide("[user] shrinks into nothing!"), span_suicide("You shrink into nothing!"))
+	user.visible_message(span_suicide("[user]encolhe em nada!"), span_suicide("Você não encolhe em nada!"))
 	user.Stun(20 SECONDS, ignore_canstun = TRUE)
 	user.set_suicide(TRUE)
 	user.ghostize()

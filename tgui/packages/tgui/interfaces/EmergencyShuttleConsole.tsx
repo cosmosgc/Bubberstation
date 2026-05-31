@@ -45,7 +45,7 @@ export function EmergencyShuttleConsole(props) {
             </Box>
           </Box>
           <Section
-            title="Early Launch Authorization"
+            title="Autorização de Lançamento Precoce"
             buttons={
               <Button
                 color="bad"

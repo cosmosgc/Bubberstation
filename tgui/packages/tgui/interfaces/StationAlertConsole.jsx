@@ -63,7 +63,7 @@ export const StationAlertConsoleContent = (props) => {
                           ? `${alert.cameras} Camera`
                           : alert.cameras > 1
                             ? `${alert.cameras} Cameras`
-                            : 'No Camera'
+                            : 'Sem câmera.'
                       }
                       onClick={() =>
                         act('select_camera', {

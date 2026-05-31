@@ -1,6 +1,6 @@
 /obj/machinery/griddle
 	name = "griddle"
-	desc = "Because using pans is for pansies."
+	desc = "Porque usar panelas é para maricas."
 	icon = 'icons/obj/machines/kitchen.dmi'
 	icon_state = "griddle1_off"
 	density = TRUE
@@ -63,13 +63,13 @@
 		AddToGrill(new_pancake)
 		if(griddled_objects.len >= max_items)
 			break
-	visible_message(span_notice("[exposing_reagent] begins to cook on [src]."))
+	visible_message(span_notice("[exposing_reagent]Começa a cozinhar[src]."))
 	return NONE
 
 /obj/machinery/griddle/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
 
 	if(griddled_objects.len >= max_items)
-		to_chat(user, span_notice("[src] can't fit more items!"))
+		to_chat(user, span_notice("[src]Não cabem mais itens!"))
 		return
 	//Center the icon where the user clicked.
 	if(!LAZYACCESS(modifiers, ICON_X) || !LAZYACCESS(modifiers, ICON_Y))
@@ -78,7 +78,7 @@
 		//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
 		I.pixel_x = clamp(text2num(LAZYACCESS(modifiers, ICON_X)) - 16, -(ICON_SIZE_X/2), ICON_SIZE_X/2)
 		I.pixel_y = clamp(text2num(LAZYACCESS(modifiers, ICON_Y)) - 16, -(ICON_SIZE_Y/2), ICON_SIZE_Y/2)
-		to_chat(user, span_notice("You place [I] on [src]."))
+		to_chat(user, span_notice("Seu lugar.[I]Vamos.[src]."))
 		AddToGrill(I, user)
 	else
 		return ..()
@@ -101,7 +101,7 @@
 
 	if(!istype(item, /obj/item/storage/bag/tray))
 		// Non-tray dumping requires a do_after
-		to_chat(user, span_notice("You start dumping out the contents of [item] into [src]..."))
+		to_chat(user, span_notice("Você começa a despejar o conteúdo de[item]Em[src]..."))
 		if(!do_after(user, 2 SECONDS, target = item))
 			return ITEM_INTERACT_BLOCKING
 
@@ -115,7 +115,7 @@
 			loaded++
 			AddToGrill(tray_item, user)
 	if(loaded)
-		to_chat(user, span_notice("You insert [loaded] item\s into [src]."))
+		to_chat(user, span_notice("Você insere[loaded]item 's em[src]."))
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING
@@ -202,7 +202,7 @@
 		to_dump.pixel_y = to_dump.base_pixel_y + rand(-5, 5)
 		AddToGrill(to_dump, user)
 
-	to_chat(user, span_notice("You dump out [storage.parent] onto [src]."))
+	to_chat(user, span_notice("Você despejou.[storage.parent]em frente[src]."))
 	return STORAGE_DUMP_HANDLED
 
 /obj/machinery/griddle/process(seconds_per_tick)
@@ -211,7 +211,7 @@
 			continue
 		griddled_item.fire_act(1000) //Hot hot hot!
 		if(prob(10))
-			visible_message(span_danger("[griddled_item] doesn't seem to be doing too great on the [src]!"))
+			visible_message(span_danger("[griddled_item]não parece estar indo muito bem no[src]!"))
 
 		use_energy(active_power_usage)
 
@@ -225,7 +225,7 @@
 
 /obj/machinery/griddle/stand
 	name = "griddle stand"
-	desc = "A more commercialized version of your traditional griddle. What happened to the good old days where people griddled with passion?"
+	desc = "Uma versão mais comercializada do seu tradicional griddle. O que aconteceu com os bons velhos tempos onde as pessoas se apegavam à paixão?"
 	variant = "stand"
 
 /obj/machinery/griddle/stand/update_overlays()

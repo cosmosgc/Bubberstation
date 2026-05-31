@@ -17,7 +17,7 @@ export const TimeClock = (props) => {
   } = data;
 
   return (
-    <Window title={'Time Clock'} width={500} height={250} resizable>
+    <Window title={'Relógio do Tempo'} width={500} height={250} resizable>
       <Window.Content>
         <Section>
           <Box textAlign="center" fontSize="15px">
@@ -31,10 +31,10 @@ export const TimeClock = (props) => {
           <>
             <Section title={false}>
               <LabeledList>
-                <LabeledList.Item label="ID Holder">
+                <LabeledList.Item label="RG Holder">
                   {id_holder_name}
                 </LabeledList.Item>
-                <LabeledList.Item label="Current Job">
+                <LabeledList.Item label="Trabalho atual">
                   {id_job_title}
                 </LabeledList.Item>
               </LabeledList>
@@ -45,7 +45,7 @@ export const TimeClock = (props) => {
                 disabled={insert_id_cooldown}
                 onClick={() => act('clock_in_or_out')}
               >
-                <center>{clock_status ? 'Clock In' : 'Clock Out'} </center>
+                <center>{clock_status ? 'Relógio In' : 'Clock Out'} </center>
               </Button>
               <Button icon="eject" onClick={() => act('eject_id')} />
             </Box>

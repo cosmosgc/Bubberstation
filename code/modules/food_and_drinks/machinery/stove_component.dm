@@ -147,13 +147,12 @@
 	if(!attacking_item.is_open_container())
 		return
 	if(!isnull(container))
-		to_chat(user, span_warning("You wouldn't dare try to cook two things on the same stove simultaneously. \
-			What if it cross contaminates?"))
+		to_chat(user, span_warning("Você não ousaria tentar cozinhar duas coisas no mesmo fogão simultaneamente. E se a cruz contaminar?"))
 		return COMPONENT_NO_AFTERATTACK
 
 	if(user.transferItemToLoc(attacking_item, parent))
 		add_container(attacking_item, user)
-		to_chat(user, span_notice("You put [attacking_item] onto [parent]."))
+		to_chat(user, span_notice("Você colocou[attacking_item]em frente[parent]."))
 	return COMPONENT_NO_AFTERATTACK
 
 /datum/component/stove/proc/on_exited(obj/machinery/source, atom/movable/gone, direction)
@@ -203,7 +202,7 @@
 /datum/component/stove/proc/on_examine(obj/machinery/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_notice("You can turn the stovetop burners [on ? "off" : "on"] with <i>right click</i>.")
+	examine_list += span_notice("Você pode virar os queimadores de fogão[on ? "off" : "on"]Com<i>\"Clique Direito\"</i>.")
 
 /datum/component/stove/proc/on_refresh_parts(obj/machinery/source)
 	SIGNAL_HANDLER

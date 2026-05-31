@@ -2,7 +2,7 @@
 	filename = "robotact"
 	filedesc = "RoboTact"
 	downloader_category = PROGRAM_CATEGORY_SCIENCE
-	extended_desc = "A built-in app for cyborg self-management and diagnostics."
+	extended_desc = "Um aplicativo integrado para auto-gestão e diagnósticos de cyborgs."
 	ui_header = "robotact.gif" //DEBUG -- new icon before PR
 	program_open_overlay = "command"
 	program_flags = PROGRAM_HEADER
@@ -14,7 +14,7 @@
 
 /datum/computer_file/program/robotact/on_start(mob/living/user)
 	if(!istype(computer, /obj/item/modular_computer/pda/silicon))
-		to_chat(user, span_warning("A warning flashes across \the [computer]: Device Incompatible."))
+		to_chat(user, span_warning("Um olhar passa\the [computer]Dispositivo Incompatível."))
 		return FALSE
 	. = ..()
 	if(.)
@@ -153,8 +153,7 @@
 		if("alertPower")
 			if(cyborg.stat == CONSCIOUS)
 				if(!cyborg.cell || !cyborg.cell.charge)
-					cyborg.visible_message(span_notice("The power warning light on [span_name("[cyborg]")] flashes urgently."), \
-						"You announce you are operating in low power mode.")
+					cyborg.visible_message(span_notice("A luz de visão de energia ligada.[span_name("[cyborg]")]flashes urgente."), 						"Você anuncia que está operando em modo de baixa potência.")
 					playsound(cyborg, 'sound/machines/buzz/buzz-two.ogg', 50, FALSE)
 
 		if("toggleSensors")

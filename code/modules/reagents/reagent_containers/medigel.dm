@@ -28,7 +28,7 @@
 
 /obj/item/reagent_containers/medigel
 	name = "medical gel"
-	desc = "A medical gel applicator bottle, designed for precision application, with an unscrewable cap."
+	desc = "Um frasco aplicador de gel médico, projetado para aplicação de precisão, com uma tampa inescrevível."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "medigel"
 	inhand_icon_state = "spraycan"
@@ -58,38 +58,38 @@
 
 /obj/item/reagent_containers/medigel/mode_change_message(mob/user)
 	var/squirt_mode = amount_per_transfer_from_this == initial(amount_per_transfer_from_this)
-	to_chat(user, span_notice("You will now apply the medigel's contents in [squirt_mode ? "extended sprays":"short bursts"]. You'll now use [amount_per_transfer_from_this] units per use."))
+	to_chat(user, span_notice("Agora você vai aplicar o conteúdo do Medigel em[squirt_mode ? "extended sprays":"short bursts"]Agora você vai usar[amount_per_transfer_from_this]Unidades por uso."))
 
 /obj/item/reagent_containers/medigel/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))
 		return NONE
 	if(!reagents || !reagents.total_volume)
-		to_chat(user, span_warning("[src] is empty!"))
+		to_chat(user, span_warning("[src]Está vazio!"))
 		return ITEM_INTERACT_BLOCKING
 
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(interacting_with == user)
-		interacting_with.visible_message(span_notice("[user] attempts to [apply_method] [src] on [user.p_them()]self."))
+		interacting_with.visible_message(span_notice("[user]Tentando[apply_method] [src]Vamos.[user.p_them()]Eu."))
 		if(self_delay)
 			if(!do_after(user, self_delay, interacting_with))
 				return ITEM_INTERACT_BLOCKING
 			if(!reagents || !reagents.total_volume)
 				return ITEM_INTERACT_BLOCKING
-		to_chat(interacting_with, span_notice("You [apply_method] yourself with [src]."))
+		to_chat(interacting_with, span_notice("Você.[apply_method]você mesmo com[src]."))
 
 	else
 		log_combat(user, interacting_with, "attempted to apply", src, reagents.get_reagent_log_string())
 		interacting_with.visible_message(
-			span_danger("[user] attempts to [apply_method] [src] on [interacting_with]."),
-			span_userdanger("[user] attempts to [apply_method] [src] on you."),
+			span_danger("[user]Tentando[apply_method] [src]Vamos.[interacting_with]."),
+			span_userdanger("[user]Tentando[apply_method] [src]Você."),
 		)
 		if(!do_after(user, CHEM_INTERACT_DELAY(3 SECONDS, user), interacting_with))
 			return ITEM_INTERACT_BLOCKING
 		if(!reagents || !reagents.total_volume)
 			return ITEM_INTERACT_BLOCKING
 		interacting_with.visible_message(
-			span_danger("[user] [apply_method]s [interacting_with] down with [src]."),
-			span_userdanger("[user] [apply_method]s you down with [src]."),
+			span_danger("[user] [apply_method]S[interacting_with]Abaixo com[src]."),
+			span_userdanger("[user] [apply_method]Você está com[src]."),
 		)
 
 	log_combat(user, interacting_with, "applied", src, reagents.get_reagent_log_string())
@@ -99,19 +99,19 @@
 
 /obj/item/reagent_containers/medigel/libital
 	name = "medical gel (libital)"
-	desc = "A medical gel applicator bottle, designed for precision application, with an unscrewable cap. This one contains libital, for treating cuts and bruises. Libital does minor liver damage. Diluted with granibitaluri."
+	desc = "Um frasco aplicador de gel médico, projetado para aplicação de precisão, com uma tampa inescrevível. Este contém libital, para tratar cortes e hematomas. Libital causa pequenos danos no fígado. Diluída com granibitaluri."
 	icon_state = "brutegel"
 	list_reagents = list(/datum/reagent/medicine/c2/libital = 24, /datum/reagent/medicine/granibitaluri = 36)
 
 /obj/item/reagent_containers/medigel/aiuri
 	name = "medical gel (aiuri)"
-	desc = "A medical gel applicator bottle, designed for precision application, with an unscrewable cap. This one contains aiuri, useful for treating burns. Aiuri does minor eye damage. Diluted with granibitaluri."
+	desc = "Um frasco aplicador de gel médico, projetado para aplicação de precisão, com uma tampa inescrevível. Este contém aiuri, útil para tratar queimaduras. Aiuri causa danos oculares menores. Diluída com granibitaluri."
 	icon_state = "burngel"
 	list_reagents = list(/datum/reagent/medicine/c2/aiuri = 24, /datum/reagent/medicine/granibitaluri = 36)
 
 /obj/item/reagent_containers/medigel/synthflesh
 	name = "medical gel (synthflesh)"
-	desc = "A medical gel applicator bottle, designed for precision application, with an unscrewable cap. This one contains synthflesh, a slightly toxic medicine capable of healing bruises, burns, and husks."
+	desc = "Um frasco aplicador de gel médico, projetado para aplicação de precisão, com uma tampa inescrevível. Este contém carne sintética, um medicamento ligeiramente tóxico capaz de curar hematomas, queimaduras e cascas."
 	icon_state = "synthgel"
 	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 60)
 	list_reagents_purity = 1
@@ -122,20 +122,20 @@
 /obj/item/reagent_containers/medigel/synthflesh/examine(mob/user)
 	. = ..()
 	if(reagents.total_volume >= 60)
-		. += span_info("One full bottle can restore a corpse husked by burns.")
+		. += span_info("Uma garrafa cheia pode restaurar um cadáver descascado por queimaduras.")
 
 /obj/item/reagent_containers/medigel/synthflesh/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(iscarbon(interacting_with) && reagents?.total_volume)
 		var/mob/living/carbon/carbies = interacting_with
 		if(HAS_TRAIT_FROM(carbies, TRAIT_HUSK, BURN) && carbies.get_fire_loss() > UNHUSK_DAMAGE_THRESHOLD * 2.5)
 			// give them a warning if the mob is a husk but synthflesh won't unhusk yet
-			carbies.visible_message(span_boldwarning("[carbies]'s burns need to be repaired first before synthflesh will unhusk it!"))
+			carbies.visible_message(span_boldwarning("[carbies]As queimaduras precisam ser reparadas antes que o Synthflesh desperte!"))
 
 	return ..()
 
 /obj/item/reagent_containers/medigel/sterilizine
 	name = "sterilizer gel"
-	desc = "gel bottle loaded with non-toxic sterilizer. Useful in preparation for surgery."
+	desc = "Garrafa de gel carregada com esterilizador não tóxico. Útil em preparação para cirurgia."
 	icon_state = "medigel_blue"
 	list_reagents = list(/datum/reagent/space_cleaner/sterilizine = 60)
 	custom_price = PAYCHECK_CREW * 2

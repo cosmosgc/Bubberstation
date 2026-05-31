@@ -1,6 +1,6 @@
 /obj/machinery/cell_charger
 	name = "cell charger"
-	desc = "It charges power cells."
+	desc = "Carrega células de energia."
 	icon = 'icons/obj/machines/cell_charger.dmi'
 	icon_state = "ccharger"
 	power_channel = AREA_USAGE_EQUIP
@@ -33,7 +33,7 @@
 	if(charging)
 		. += "Current charge: [round(charging.percent(), 1)]%."
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Charging power: <b>[display_power(charge_rate, convert = FALSE)]</b>.")
+		. += span_notice("A exibição de status diz:<b>[display_power(charge_rate, convert = FALSE)]</b>.")
 
 /obj/machinery/cell_charger/wrench_act(mob/living/user, obj/item/tool)
 	if(charging)
@@ -56,28 +56,28 @@
 		return NONE
 
 	if(machine_stat & BROKEN)
-		to_chat(user, span_warning("[src] is broken!"))
+		to_chat(user, span_warning("[src]Está quebrado!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!anchored)
-		to_chat(user, span_warning("[src] isn't attached to the ground!"))
+		to_chat(user, span_warning("[src]Não está preso ao chão!"))
 		return ITEM_INTERACT_BLOCKING
 	if(charging)
-		to_chat(user, span_warning("There is already a cell in the charger!"))
+		to_chat(user, span_warning("Já tem uma cela no carregador!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/area/charge_area = get_area(src)
 	if(!isarea(charge_area))
 		return ITEM_INTERACT_BLOCKING
 	if(!charge_area.power_equip) // There's no APC in this area, don't try to cheat power!
-		to_chat(user, span_warning("[src] blinks red as you try to insert the cell!"))
+		to_chat(user, span_warning("[src]Pisca vermelho enquanto tenta inserir a célula!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING
 
 	charging = tool
 	user.visible_message(
-		span_notice("[user] inserts a cell into [src]."),
-		span_notice("You insert a cell into [src]."),
+		span_notice("[user]insere uma célula em[src]."),
+		span_notice("Você insere uma célula em[src]."),
 	)
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -107,14 +107,14 @@
 		return
 
 	charging.add_fingerprint(user)
-	user.visible_message(span_notice("[user] removes [charging] from [src]."), span_notice("You remove [charging] from [src]."))
+	user.visible_message(span_notice("[user]Remover[charging]De[src]."), span_notice("Você tira.[charging]De[src]."))
 	user.put_in_hands(removecell(drop_location()))
 
 /obj/machinery/cell_charger/attack_tk(mob/user)
 	if(!charging)
 		return
 
-	to_chat(user, span_notice("You telekinetically remove [charging] from [src]."))
+	to_chat(user, span_notice("Você remove telecinicamente.[charging]De[src]."))
 	removecell(drop_location())
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 

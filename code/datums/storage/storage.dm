@@ -279,7 +279,7 @@
 		return
 
 	if(href_list["show_valid_pocket_items"])
-		to_chat(user, span_notice("[source] can hold: [can_hold_description]"))
+		to_chat(user, span_notice("[source]Pode segurar:[can_hold_description]"))
 
 /datum/storage/proc/handle_examination(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
@@ -287,7 +287,7 @@
 	if(isnull(can_hold_description))
 		return
 
-	examine_list += span_notice("You can examine this further to check what kind of extra items it can hold.")
+	examine_list += span_notice("Você pode examinar isso mais para verificar que tipo de itens extras ele pode segurar.")
 
 /datum/storage/proc/handle_extra_examination(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
@@ -295,7 +295,7 @@
 	if(isnull(can_hold_description))
 		return
 
-	examine_list += span_notice("[source] can hold: [can_hold_description]")
+	examine_list += span_notice("[source]Pode segurar:[can_hold_description]")
 
 /// Almost 100% of the time the lists passed into set_holdable are reused for each instance
 /// Just fucking cache it 4head
@@ -401,7 +401,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	if(locked > force)
 		if(messages && user)
-			user.balloon_alert(user, "fechado!")
+			user.balloon_alert(user, "Fechado!")
 		return FALSE
 
 	if((to_insert == parent) || (to_insert == real_location))
@@ -410,7 +410,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	if(to_insert.w_class > max_specific_storage)
 		if(!is_type_in_typecache(to_insert, exception_hold))
 			if(messages && user)
-				user.balloon_alert(user, "grande demais!")
+				user.balloon_alert(user, "Grandes demais!")
 			return FALSE
 		if(exception_max <= get_exception_count())
 			if(messages && user)
@@ -452,7 +452,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		var/datum/storage/smaller_fish = to_insert.atom_storage
 		if(smaller_fish && !allow_big_nesting && to_insert.w_class >= item_parent.w_class)
 			if(messages && user)
-				user.balloon_alert(user, "grande demais!")
+				user.balloon_alert(user, "Grandes demais!")
 			return FALSE
 
 	return TRUE
@@ -580,10 +580,10 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		playsound(parent, rustle_sound, 50, rustle_vary, -5)
 
 	if(!silent_for_user)
-		to_chat(user, span_notice("Você coloca [thing] [insert_preposition]em [parent]."))
+		to_chat(user, span_notice("Você coloca [thing] [insert_preposition]Em.[parent]."))
 	for(var/mob/viewing in oviewers(user))
 		if(in_range(user, viewing) || (thing?.w_class >= WEIGHT_CLASS_NORMAL))
-			viewing.show_message(span_notice("[user] coloca [thing] [insert_preposition]em [parent]."), MSG_VISUAL)
+			viewing.show_message(span_notice("[user]coloca[thing] [insert_preposition]Em.[parent]."), MSG_VISUAL)
 
 
 /**
@@ -771,7 +771,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	var/amount = length(pick_up)
 	if(!amount)
-		parent.balloon_alert(user, "nada para pegar!")
+		parent.balloon_alert(user, "Nada para pegar!")
 		return
 
 	var/datum/progressbar/progress = new(user, amount, thing.loc)
@@ -848,7 +848,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
  */
 /datum/storage/proc/dump_content_at(atom/dest_object, dump_loc, mob/user)
 	if(locked)
-		user.balloon_alert(user, "fechado!")
+		user.balloon_alert(user, "Fechado!")
 		return
 	if(!parent.IsReachableBy(user) || !dest_object.IsReachableBy(user))
 		return
@@ -858,7 +858,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	// Storage to storage transfer is instant
 	if(dest_object.atom_storage)
-		to_chat(user, span_notice("Você despeja o conteúdo de [parent] em [dest_object]."))
+		to_chat(user, span_notice("Você despeja o conteúdo de [parent]Em.[dest_object]."))
 
 		if(do_rustle && rustle_sound)
 			playsound(parent, rustle_sound, 50, TRUE, -5)
@@ -870,7 +870,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		return
 
 	// Storage to loc transfer requires a do_after
-	to_chat(user, span_notice("Você começa a despejar o conteúdo de [parent] em [dest_object]..."))
+	to_chat(user, span_notice("Você começa a despejar o conteúdo de [parent]Em.[dest_object]..."))
 	if(!do_after(user, 2 SECONDS, target = dest_object))
 		return
 
@@ -973,7 +973,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	if(locked)
 		if(!silent)
-			parent.balloon_alert(to_show, "fechado!")
+			parent.balloon_alert(to_show, "Fechado!")
 		return FALSE
 
 	// If we're quickdrawing boys
@@ -986,8 +986,8 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 			INVOKE_ASYNC(src, PROC_REF(put_in_hands_async), to_show, to_remove)
 			if(!silent)
 				to_show.visible_message(
-					span_warning("[to_show] draws [to_remove] from [parent]!"),
-					span_notice("You draw [to_remove] from [parent]."),
+					span_warning("[to_show]\"Desejos\"[to_remove]De[parent]!"),
+					span_notice("Você desenha.[to_remove]De[parent]."),
 				)
 			return TRUE
 
@@ -1008,7 +1008,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 /datum/storage/proc/put_in_hands_async(mob/to_show, obj/item/toremove)
 	if(!to_show.put_in_hands(toremove))
 		if(!silent)
-			toremove.balloon_alert(to_show, "deixou cair!")
+			toremove.balloon_alert(to_show, "Deixou Cair!")
 		return TRUE
 
 /// Signal handler for whenever a mob walks away with us, close if they can't reach us.
@@ -1205,7 +1205,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	if(!attempt_remove(changed, parent.drop_location()))
 		return
 
-	changed.visible_message(span_warning("[changed] falls out of [parent]!"), vision_distance = COMBAT_MESSAGE_RANGE)
+	changed.visible_message(span_warning("[changed]Cai fora.[parent]!"), vision_distance = COMBAT_MESSAGE_RANGE)
 
 ///Assign a new value to the locked variable. If it's higher than NOT_LOCKED, close the UIs and update the appearance of the parent.
 /datum/storage/proc/set_locked(new_locked)

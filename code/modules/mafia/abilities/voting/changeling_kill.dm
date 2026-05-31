@@ -30,8 +30,8 @@
 
 	ling_sent = TRUE
 	if(target_role.kill(game, host_role, FALSE))
-		target_role.send_message_to_player(span_userdanger("You have been killed by a Changeling!"))
-	game.send_message(span_danger("[host_role.body.real_name] was selected to attack [target_role.body.real_name] tonight!"), MAFIA_TEAM_MAFIA)
+		target_role.send_message_to_player(span_userdanger("Você foi morto por um metamorfo!"))
+	game.send_message(span_danger("[host_role.body.real_name]foi selecionado para atacar.[target_role.body.real_name]Esta noite!"), MAFIA_TEAM_MAFIA)
 	return TRUE
 
 /datum/mafia_ability/changeling_kill/set_target(datum/mafia_role/new_target)

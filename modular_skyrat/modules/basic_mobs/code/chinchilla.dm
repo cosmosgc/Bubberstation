@@ -1,6 +1,6 @@
 /mob/living/basic/pet/chinchilla
 	name = "chinchilla"
-	desc = "They're like a mouse, but Australian."
+	desc = "São como ratos, mas australianos."
 
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	held_lh = 'modular_skyrat/master_files/icons/mob/inhands/pets_held_lh.dmi'
@@ -81,7 +81,7 @@
 	hunt_cooldown = 20 SECONDS
 
 /datum/ai_behavior/hunt_target/dust_roll/target_caught(mob/living/basic/pet/hunter, obj/effect/decal/cleanable/dust)
-	hunter.visible_message(span_notice("[hunter] starts taking a dust bath in [dust]."))
+	hunter.visible_message(span_notice("[hunter]Começa a tomar banho de poeira.[dust]."))
 	hunter.spin(10, 1)
 	qdel(dust)
 

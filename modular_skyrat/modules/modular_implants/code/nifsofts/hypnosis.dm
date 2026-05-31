@@ -4,7 +4,7 @@
 
 /datum/nifsoft/action_granter/hypnosis
 	name = "Libidine Eye"
-	program_desc = "Based on the hypnotic equipment provided by the LustWish vendor, the Libidine Eye NIFSoft allows the user to ensnare others in a hypnotic trance. ((This is intended as a tool for ERP, don't use this for gameplay reasons.))"
+	program_desc = "Baseado no equipamento hipnótico fornecido pelo vendedor LustWish, a Libidina Eye NIFSoft permite que o usuário enlace outros em transe hipnótico. (Isto é destinado como uma ferramenta para ERP, não use isso por razões de jogo.)"
 	buying_category = NIFSOFT_CATEGORY_FUN
 	lewd_nifsoft = TRUE
 	purchase_price = 150
@@ -27,40 +27,40 @@
 
 	var/mob/living/carbon/human/target_human = user.pulling
 	if(!istype(target_human) || user.grab_state < GRAB_AGGRESSIVE)
-		to_chat(user, span_warning("You need to aggressively grab someone to hypnotize them."))
+		to_chat(user, span_warning("Precisa pegar alguém agressivamente para hipnotizá-los."))
 		return FALSE
 
 	if(!target_human.client?.prefs?.read_preference(/datum/preference/toggle/erp/hypnosis))
-		to_chat(user, span_warning("[target_human] doesn't want to be hypnotized."))
+		to_chat(user, span_warning("[target_human]Não quer ser hipnotizado."))
 		return FALSE
 
-	to_chat(user, span_notice("You begin to place [target_human] into a hypnotic trance."))
+	to_chat(user, span_notice("Você começa a colocar[target_human]em um transe hipnótico."))
 
 	if(!do_after(user, 12 SECONDS, target_human))
 		return FALSE
 
-	var/choice = tgui_alert(target_human, "Do you believe in hypnosis? (This will allow [user] to issue hypnotic suggestions.)", "Hypnosis", list("Yes", "No"))
+	var/choice = tgui_alert(target_human, "Acredita em hipnose? (Isso permitirá[user]para dar sugestões hipnóticas.", "Hypnosis", list("Yes", "No"))
 	if(choice != "Yes")
-		to_chat(user, span_warning("[target_human]'s attention breaks despite your efforts. They clearly don't seem interested!"))
-		to_chat(target_human, span_warning("Your attention breaks as you realize that you don't want to listen to [user]'s suggestions."))
+		to_chat(user, span_warning("[target_human]A atenção se rompe apesar de seus esforços. Eles claramente não parecem interessados!"))
+		to_chat(target_human, span_warning("Sua atenção quebra quando percebe que não quer ouvir[user]São sugestões."))
 		return FALSE
 
-	user.visible_message(span_purple("[target_human] falls into a deep, hypnotic slumber right at the snap of your fingers."), span_purple("You suddenly fall limp at the snap of [user]'s fingers."))
+	user.visible_message(span_purple("[target_human]cai em um sono profundo e hipnótico bem no estalo de seus dedos."), span_purple("Você de repente fica mancando no estalo de[user]Dedos."))
 	user.emote("snap")
 	target_human.SetSleeping(60 SECONDS)
 	target_human.log_message("[target_human] was placed into a hypnotic sleep by [user].", LOG_GAME)
 
-	var/secondary_choice = tgui_alert(user, "Would you like to give [target_human] a hypnotic suggestion or release them?", "Hypnosis", list("Suggestion", "Release"))
+	var/secondary_choice = tgui_alert(user, "Gostaria de dar[target_human]Uma sugestão hipnótica ou liberá-los?", "Hypnosis", list("Suggestion", "Release"))
 	while(secondary_choice == "Suggestion" && target_human.IsSleeping())
 		if(!in_range(user, target_human))
-			to_chat(user, span_warning("You must be in whisper range to [target_human] in order to give hypnotic suggestions."))
+			to_chat(user, span_warning("Você deve estar em alcance de sussurros para[target_human]para dar sugestões hipnóticas."))
 			target_human.SetSleeping(0)
 			return FALSE
 
 		var/input_text = tgui_input_text(user, "What would you like to suggest?", "Hypnotic Suggestion")
-		to_chat(user, span_purple("You whisper into [target_human]'s ears in a soothing voice."))
+		to_chat(user, span_purple("Você sussurra em[target_human]É uma voz calmante."))
 		to_chat(target_human, span_hypnophrase("[input_text]"))
 		secondary_choice = tgui_alert(user, "Would you like to give [target_human] an additional hypnotic suggestion or release them?", "Hypnosis", list("Suggestion", "Release"))
 
-	user.visible_message(span_purple("You wake up from your deep, hypnotic slumber. The suggestions from [user] now settled into your mind."), span_purple("[target_human] wakes up from their slumber."))
+	user.visible_message(span_purple("Você acorda de seu sono profundo e hipnótico. As sugestões de[user]Agora se acomodou em sua mente."), span_purple("[target_human]Acorda de seu sono."))
 	target_human.SetSleeping(0)

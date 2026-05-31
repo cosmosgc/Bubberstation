@@ -1,7 +1,7 @@
 /// Dress the crew as magical clowns
 /datum/grand_finale/clown
 	name = "Jubilation"
-	desc = "The ultimate use of your gathered power! Rewrite time so that everyone went to clown college! Now they'll prank each other for you!"
+	desc = "O uso final de seu poder acumulado! Reescreva o tempo para que todos fossem para a faculdade de palhaços! Agora vão brincar um com o outro!"
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "clown"
 	glow_colour = "#ffff0048"
@@ -22,13 +22,7 @@
 			continue
 		if (HAS_TRAIT(victim, TRAIT_CLOWN_ENJOYER))
 			victim.add_mood_event("clown_world", /datum/mood_event/clown_world)
-		to_chat(victim, span_notice("The world spins and dissolves. Your past flashes before your eyes, backwards.\n\
-			Life strolls back into the ocean and shrinks into nothingness, planets explode into storms of solar dust, \
-			the stars rush back to greet each other at the beginning of things and then... you snap back to the present. \n\
-			Everything is just as it was and always has been. \n\n\
-			A stray thought sticks in the forefront of your mind. \n\
-			[span_hypnophrase("I'm so glad that I work at Clown Research Station [station_name()]!")] \n\
-			Is... that right?"))
+		to_chat(victim, span_notice("O mundo gira e se dissolve. Seu passado brilha diante de seus olhos, para trás.\nA vida volta para o oceano e encolhe em nada, planetas explodem em tempestades de poeira solar, as estrelas voltam a se cumprimentar no início das coisas e então... você volta para o presente.\nTudo é como era e sempre foi.\n\nUm pensamento perdoado fica na frente de sua mente.\n			[span_hypnophrase("I'm so glad that I work at Clown Research Station [station_name()]!")] \nEstá certo?"))
 		if (is_clown_job(victim.mind.assigned_role))
 			var/datum/action/cooldown/spell/conjure_item/clown_pockets/new_spell = new(victim)
 			new_spell.Grant(victim)
@@ -47,7 +41,7 @@
 	mood_change = 4
 
 /datum/mood_event/clown_world/add_effects(param)
-	description = "I LOVE working at Clown Research Station [station_name()]!!"
+	description = "Eu adoro trabalhar na Estação de Pesquisa de Palhaços.[station_name()]!!"
 
 /// Dress the passed mob as a magical clown, self-explanatory
 /datum/grand_finale/clown/proc/dress_as_magic_clown(mob/living/carbon/human/victim)

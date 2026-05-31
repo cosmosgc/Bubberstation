@@ -1,10 +1,10 @@
 /obj/item/electronics/firealarm
 	name = "fire alarm electronics"
-	desc = "A fire alarm circuit. Can handle heat levels up to 40 degrees celsius."
+	desc = "Um circuito de alarme de incêndio. Pode lidar com níveis de calor até 40 graus Celsius."
 
 /obj/item/wallframe/firealarm
 	name = "fire alarm frame"
-	desc = "Used for building fire alarms."
+	desc = "Usado para construir alarmes de incêndio."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "fire_bitem"
 	result_path = /obj/machinery/firealarm
@@ -19,7 +19,7 @@
 
 /obj/machinery/firealarm
 	name = "fire alarm"
-	desc = "Pull this in case of emergency. Thus, keep pulling it forever."
+	desc = "Puxe isso em caso de emergência. Assim, continue puxando para sempre."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "fire0"
 	max_integrity = 250
@@ -74,13 +74,7 @@
 
 	AddComponent(/datum/component/usb_port, typecacheof(list(/obj/item/circuit_component/firealarm), only_root_path = TRUE))
 
-	AddComponent( \
-		/datum/component/redirect_attack_hand_from_turf, \
-		screentip_texts = list( \
-			lmb_text = "Turn on alarm", \
-			rmb_text = "Turn off alarm", \
-		), \
-	)
+	AddComponent( 		/datum/component/redirect_attack_hand_from_turf, 		screentip_texts = list( 			lmb_text = "Turn on alarm", 			rmb_text = "Turn off alarm", 		), 	)
 
 	register_context()
 	if(mapload)
@@ -219,9 +213,9 @@
 		return FALSE
 	obj_flags |= EMAGGED
 	update_appearance()
-	visible_message(span_warning("Sparks fly out of [src]!"))
+	visible_message(span_warning("As faíscas voam para fora[src]!"))
 	if(user)
-		balloon_alert(user, "circuitry fried")
+		balloon_alert(user, "Circuito Frito")
 		user.log_message("emagged [src].", LOG_ATTACK)
 	playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	set_status()
@@ -255,7 +249,7 @@
 		firelock.activate(FIRELOCK_ALARM_TYPE_GENERIC)
 	if(user)
 		if(!silent)
-			balloon_alert(user, "triggered alarm!")
+			balloon_alert(user, "Alarme disparado!")
 		user.log_message("triggered a fire alarm.", LOG_GAME)
 	my_area.fault_status = AREA_FAULT_MANUAL
 	my_area.fault_location = name
@@ -279,7 +273,7 @@
 		firelock.crack_open()
 	if(user)
 		if(!silent)
-			balloon_alert(user, "reset alarm")
+			balloon_alert(user, "Reiniciar alarme.")
 		user.log_message("reset a fire alarm.", LOG_GAME)
 	soundloop.stop()
 	SEND_SIGNAL(src, COMSIG_FIREALARM_ON_RESET)
@@ -375,7 +369,7 @@
 	if(!panel_open)
 		return NONE
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "already in good condition!")
+		balloon_alert(user, "Já em boas condições!")
 		return ITEM_INTERACT_BLOCKING
 	if(!tool.tool_start_check(user, amount = 1))
 		return ITEM_INTERACT_BLOCKING
@@ -390,7 +384,7 @@
 	if(!panel_open)
 		return NONE
 	if(buildstage != FIRE_ALARM_BUILD_SECURED)
-		balloon_alert(user, "no wires to cut!")
+		balloon_alert(user, "Sem fios para cortar!")
 		return ITEM_INTERACT_BLOCKING
 
 	tool.play_tool_sound(src)
@@ -426,7 +420,7 @@
 	if(!panel_open)
 		return NONE
 	if(buildstage != FIRE_ALARM_BUILD_NO_CIRCUIT)
-		balloon_alert(user, "remove [buildstage == FIRE_ALARM_BUILD_SECURED ? "wires" : "circuit"] first!")
+		balloon_alert(user, "Remova[buildstage == FIRE_ALARM_BUILD_SECURED ? "wires" : "circuit"]Primero!")
 		return ITEM_INTERACT_BLOCKING
 
 	loc.balloon_alert_to_viewers("[/obj/item/wallframe/firealarm::name] removed")
@@ -445,7 +439,7 @@
 	if(!is_wire_tool(tool))
 		return NONE
 	if(!panel_open)
-		balloon_alert(user, "expose wires first!")
+		balloon_alert(user, "Exponha os fios primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	wires.interact(user)
 	return ITEM_INTERACT_SUCCESS
@@ -454,7 +448,7 @@
 	if(buildstage != FIRE_ALARM_BUILD_NO_WIRES)
 		return NONE
 	if(!coil.use(5))
-		balloon_alert(user, "need 5 cables!")
+		balloon_alert(user, "Preciso de 5 cabos!")
 		return ITEM_INTERACT_BLOCKING
 
 	balloon_alert_to_viewers("wires installed")
@@ -466,7 +460,7 @@
 	if(buildstage != FIRE_ALARM_BUILD_NO_CIRCUIT)
 		return NONE
 	if(!user.transferItemToLoc(circuit, src))
-		balloon_alert(user, "can't install!")
+		balloon_alert(user, "Não posso instalar!")
 		return ITEM_INTERACT_BLOCKING
 
 	balloon_alert_to_viewers("circuit installed")
@@ -502,8 +496,7 @@
 	return NONE
 
 /obj/machinery/firealarm/proc/state_callback(desired_build_state, desired_panel_state)
-	return (isnull(desired_build_state) || buildstage == desired_build_state) \
-		&& (isnull(desired_panel_state) || panel_open == desired_panel_state)
+	return (isnull(desired_build_state) || buildstage == desired_build_state) 		&& (isnull(desired_panel_state) || panel_open == desired_panel_state)
 
 /obj/machinery/firealarm/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	if((buildstage == FIRE_ALARM_BUILD_NO_CIRCUIT) && (the_rcd.construction_upgrades & RCD_UPGRADE_SIMPLE_CIRCUITS))
@@ -580,7 +573,7 @@
 
 /obj/machinery/firealarm/AICtrlClick(mob/living/silicon/robot/user)
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "control circuitry malfunctioning!")
+		balloon_alert(user, "Circuitos de controle com defeito!")
 		return
 	toggle_fire_detect(user)
 
@@ -588,14 +581,14 @@
 /obj/machinery/firealarm/proc/toggle_fire_detect(mob/user, silent = FALSE)
 	if(!can_toggle_detection)
 		if(user && !silent)
-			balloon_alert(user, "thermal sensors unresponsive!")
+			balloon_alert(user, "Sensores térmicos sem resposta!")
 		return
 	if(my_area.fire_detect)
 		disable_fire_detect(user)
 	else
 		enable_fire_detect(user)
 	if (user && !silent)
-		balloon_alert(user, "thermal sensors [my_area.fire_detect ? "enabled" : "disabled"]")
+		balloon_alert(user, "sensores térmicos[my_area.fire_detect ? "enabled" : "disabled"]")
 
 /// Stops the area from automatically activating firelocks
 /obj/machinery/firealarm/proc/disable_fire_detect(mob/user)
@@ -632,7 +625,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/firealarm, 26)
 
 /obj/machinery/firealarm/partyalarm
 	name = "\improper PARTY BUTTON"
-	desc = "Cuban Pete is in the house!"
+	desc = "O Pete cubano está na casa!"
 	var/static/party_overlay
 
 /obj/machinery/firealarm/partyalarm/reset(mob/user, silent = FALSE)
@@ -651,8 +644,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/firealarm, 26)
 	my_area.add_overlay(party_overlay)
 
 /obj/item/circuit_component/firealarm
-	display_name = "Fire Alarm"
-	desc = "Allows you to interface with the Fire Alarm."
+	display_name = "Alarme de Fogo"
+	desc = "Permite que você interfira com o alarme de incêndio."
 
 	var/datum/port/input/alarm_trigger
 	var/datum/port/input/reset_trigger

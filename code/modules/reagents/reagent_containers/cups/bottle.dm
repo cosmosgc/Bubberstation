@@ -2,7 +2,7 @@
 
 /obj/item/reagent_containers/cup/bottle
 	name = "bottle"
-	desc = "A small bottle."
+	desc = "Uma garrafa pequena."
 	icon_state = "bottle"
 	fill_icon_state = "bottle"
 	inhand_icon_state = "atoxinbottle"
@@ -22,111 +22,109 @@
 
 /obj/item/reagent_containers/cup/bottle/epinephrine
 	name = "epinephrine bottle"
-	desc = "A small bottle. Contains epinephrine - used to stabilize patients."
+	desc = "Uma garrafa pequena. Contém epinefrina usada para estabilizar os pacientes."
 	list_reagents = list(/datum/reagent/medicine/epinephrine = 30)
 
 /obj/item/reagent_containers/cup/bottle/toxin
 	name = "toxin bottle"
-	desc = "A small bottle of toxins. Do not drink, it is poisonous."
+	desc = "Uma pequena garrafa de toxinas. Não beba, é venenoso."
 	list_reagents = list(/datum/reagent/toxin = 30)
 
 /obj/item/reagent_containers/cup/bottle/cyanide
 	name = "cyanide bottle"
-	desc = "A small bottle of cyanide. Bitter almonds?"
+	desc = "Uma pequena garrafa de cianeto. Amêndoas amargas?"
 	list_reagents = list(/datum/reagent/toxin/cyanide = 30)
 
 /obj/item/reagent_containers/cup/bottle/anacea
 	name = "anacea bottle"
-	desc = "A small bottle of anacea."
+	desc = "Uma pequena garrafa de Anacea."
 	list_reagents = list(/datum/reagent/toxin/anacea = 30)
 
 /obj/item/reagent_containers/cup/bottle/spewium
 	name = "spewium bottle"
-	desc = "A small bottle of spewium."
+	desc = "Uma pequena garrafa de spewium."
 	list_reagents = list(/datum/reagent/toxin/spewium = 30)
 
 /obj/item/reagent_containers/cup/bottle/syndol
 	name = "syndol bottle"
-	desc = "A small bottle of syndol."
+	desc = "Uma pequena garrafa de sindol."
 	list_reagents = list(/datum/reagent/drug/syndol = 30)
 
 /obj/item/reagent_containers/cup/bottle/morphine
 	name = "morphine bottle"
-	desc = "A small bottle of morphine."
+	desc = "Uma pequena garrafa de morfina."
 	icon = 'icons/obj/medical/chemical.dmi'
 	list_reagents = list(/datum/reagent/medicine/morphine = 30)
 
 /obj/item/reagent_containers/cup/bottle/chloralhydrate
 	name = "chloral hydrate bottle"
-	desc = "A small bottle of Choral Hydrate. Mickey's Favorite!"
+	desc = "Uma pequena garrafa de coral Hydrate. Mickey's Favorite!"
 	icon_state = "bottle20"
 	list_reagents = list(/datum/reagent/toxin/chloralhydrate = 15)
 
 /obj/item/reagent_containers/cup/bottle/mannitol
 	name = "mannitol bottle"
-	desc = "A small bottle of Mannitol. Useful for healing brain damage."
+	desc = "Uma pequena garrafa de manitol. Útil para curar danos cerebrais."
 	list_reagents = list(/datum/reagent/medicine/mannitol = 30)
 
 /obj/item/reagent_containers/cup/bottle/multiver
 	name = "multiver bottle"
-	desc = "A small bottle of multiver, which removes toxins and other chemicals from the bloodstream but causes shortness of breath. All effects scale with the amount of reagents in the patient."
+	desc = "Uma pequena garrafa de multiver, que remove toxinas e outros produtos químicos da corrente sanguínea, mas causa falta de ar. Todos os efeitos escalam com a quantidade de reagentes no paciente."
 	list_reagents = list(/datum/reagent/medicine/c2/multiver = 30)
 
 /obj/item/reagent_containers/cup/bottle/calomel
 	name = "calomel bottle"
-	desc = "A small bottle of calomel, a toxic drug which quickly removes chemicals from the bloodstream. Does not cause additional harm in heavily-injured people."
+	desc = "Uma pequena garrafa de calomel, uma droga tóxica que rapidamente remove substâncias químicas da corrente sanguínea. Não causa danos adicionais em pessoas gravemente feridas."
 	list_reagents = list(/datum/reagent/medicine/calomel = 30)
 
 /obj/item/reagent_containers/cup/bottle/phlogiston
 	name = "Phlogiston bottle"
-	desc = "A small bottle of Phlogiston, that will set you on fire if used."
+	desc = "Uma pequena garrafa de Phlogiston, que vai incendiá-lo se usado."
 	list_reagents = list(/datum/reagent/phlogiston = 30)
 
 /obj/item/reagent_containers/cup/bottle/ammoniated_mercury
 	name = "ammoniated mercury bottle"
-	desc = "Quickly purges the body of toxic chemicals. Heals toxin damage when in a good condition someone has \
-		no brute and fire damage. When hurt with brute or fire damage, it can deal a great amount of toxin damage. \
-		When there are no toxins present, it starts slowly purging itself."
+	desc = "Expurga rapidamente o corpo de produtos químicos tóxicos. Ferimento da toxina quando em boas condições alguém não tem nenhum dano bruto e fogo. Quando ferido com dano bruto ou fogo, pode causar uma grande quantidade de dano toxina. Quando não há toxinas presentes, começa lentamente a se purgar."
 	list_reagents = list(/datum/reagent/medicine/ammoniated_mercury = 30)
 
 /obj/item/reagent_containers/cup/bottle/syriniver
 	name = "syriniver bottle"
-	desc = "A small bottle of syriniver."
+	desc = "Uma Pequena Garrafa de Syriniver."
 	list_reagents = list(/datum/reagent/medicine/c2/syriniver = 30)
 
 /obj/item/reagent_containers/cup/bottle/mutagen
 	name = "unstable mutagen bottle"
-	desc = "A small bottle of unstable mutagen. Randomly changes the DNA structure of whoever comes in contact."
+	desc = "Uma pequena garrafa de mutagênico instável. Muda aleatoriamente a estrutura de DNA de quem entra em contato."
 	list_reagents = list(/datum/reagent/toxin/mutagen = 30)
 
 /obj/item/reagent_containers/cup/bottle/plasma
 	name = "liquid plasma bottle"
-	desc = "A small bottle of liquid plasma. Extremely toxic and reacts with micro-organisms inside blood."
+	desc = "Uma pequena garrafa de plasma líquido. Extremamente tóxico e reage com micro-organismos dentro do sangue."
 	list_reagents = list(/datum/reagent/toxin/plasma = 30)
 
 /obj/item/reagent_containers/cup/bottle/synaptizine
 	name = "synaptizine bottle"
-	desc = "A small bottle of synaptizine."
+	desc = "Uma pequena garrafa de sinaptizina."
 	list_reagents = list(/datum/reagent/medicine/synaptizine = 30)
 
 /obj/item/reagent_containers/cup/bottle/ammonia
 	name = "ammonia bottle"
-	desc = "A small bottle of ammonia."
+	desc = "Uma pequena garrafa de amônia."
 	list_reagents = list(/datum/reagent/ammonia = 30)
 
 /obj/item/reagent_containers/cup/bottle/diethylamine
 	name = "diethylamine bottle"
-	desc = "A small bottle of diethylamine."
+	desc = "Um pequeno frasco de dietilamina."
 	list_reagents = list(/datum/reagent/diethylamine = 30)
 
 /obj/item/reagent_containers/cup/bottle/facid
 	name = "Fluorosulfuric Acid Bottle"
-	desc = "A small bottle. Contains a small amount of fluorosulfuric acid."
+	desc = "Uma garrafa pequena. Contém uma pequena quantidade de ácido fluorossulfúrico."
 	list_reagents = list(/datum/reagent/toxin/acid/fluacid = 30)
 
 /obj/item/reagent_containers/cup/bottle/adminordrazine
 	name = "Adminordrazine Bottle"
-	desc = "A small bottle. Contains the liquid essence of the gods."
+	desc = "Uma garrafa pequena. Contém a essência líquida dos deuses."
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "holyflask"
 	inhand_icon_state = "holyflask"
@@ -134,27 +132,27 @@
 
 /obj/item/reagent_containers/cup/bottle/capsaicin
 	name = "Capsaicin Bottle"
-	desc = "A small bottle. Contains hot sauce."
+	desc = "Uma garrafa pequena. Contém molho picante."
 	list_reagents = list(/datum/reagent/consumable/capsaicin = 30)
 
 /obj/item/reagent_containers/cup/bottle/frostoil
 	name = "Frost Oil Bottle"
-	desc = "A small bottle. Contains cold sauce."
+	desc = "Uma garrafa pequena. Contém molho frio."
 	list_reagents = list(/datum/reagent/consumable/frostoil = 30)
 
 /obj/item/reagent_containers/cup/bottle/strange_reagent
 	name = "Strange Reagent Bottle"
-	desc = "A small bottle. May be used to revive people."
+	desc = "Uma garrafa pequena. Pode ser usado para reviver as pessoas."
 	list_reagents = list(/datum/reagent/medicine/strange_reagent = 30)
 
 /obj/item/reagent_containers/cup/bottle/fishy_reagent
 	name = "Fishy Reagent Bottle"
-	desc = "A small bottle. May be used to revive fish."
+	desc = "Uma garrafa pequena. Pode ser usado para reviver peixes."
 	list_reagents = list(/datum/reagent/medicine/strange_reagent/fishy_reagent = 30)
 
 /obj/item/reagent_containers/cup/bottle/traitor
 	name = "syndicate bottle"
-	desc = "A small bottle. Contains a random nasty chemical."
+	desc = "Uma garrafa pequena. Contém um químico desagradável aleatório."
 	icon = 'icons/obj/medical/chemical.dmi'
 	var/extra_reagent = null
 
@@ -165,200 +163,199 @@
 
 /obj/item/reagent_containers/cup/bottle/polonium
 	name = "polonium bottle"
-	desc = "A small bottle. Contains Polonium."
+	desc = "Uma garrafa pequena. Contém Polônio."
 	list_reagents = list(/datum/reagent/toxin/polonium = 30)
 
 /obj/item/reagent_containers/cup/bottle/magillitis
 	name = "magillitis bottle"
-	desc = "A small bottle. Contains a serum known only as 'magillitis'."
+	desc = "Uma garrafa pequena. Contém um soro conhecido apenas como \"magilite\"."
 	list_reagents = list(/datum/reagent/magillitis = 5)
 
 /obj/item/reagent_containers/cup/bottle/venom
 	name = "venom bottle"
-	desc = "A small bottle. Contains Venom."
+	desc = "Uma garrafa pequena. Contém Venom."
 	list_reagents = list(/datum/reagent/toxin/venom = 30)
 
 /obj/item/reagent_containers/cup/bottle/fentanyl
 	name = "fentanyl bottle"
-	desc = "A small bottle. Contains Fentanyl."
+	desc = "Uma garrafa pequena. Contém Fentanyl."
 	list_reagents = list(/datum/reagent/toxin/fentanyl = 30)
 
 /obj/item/reagent_containers/cup/bottle/formaldehyde
 	name = "formaldehyde bottle"
-	desc = "A small bottle. Contains formaldehyde, a chemical that prevents organs from decaying."
+	desc = "Uma garrafa pequena. Contém formaldeído, um produto químico que previne a decomposição dos órgãos."
 	list_reagents = list(/datum/reagent/toxin/formaldehyde = 30)
 
 /obj/item/reagent_containers/cup/bottle/initropidril
 	name = "initropidril bottle"
-	desc = "A small bottle. Contains initropidril."
+	desc = "Uma garrafa pequena. Contém initropidril."
 	list_reagents = list(/datum/reagent/toxin/initropidril = 30)
 
 /obj/item/reagent_containers/cup/bottle/pancuronium
 	name = "pancuronium bottle"
-	desc = "A small bottle. Contains pancuronium."
+	desc = "Uma garrafa pequena. Contém pancurônio."
 	list_reagents = list(/datum/reagent/toxin/pancuronium = 30)
 
 /obj/item/reagent_containers/cup/bottle/sodium_thiopental
 	name = "sodium thiopental bottle"
-	desc = "A small bottle. Contains sodium thiopental."
+	desc = "Uma garrafa pequena. Contém tiopental sódico."
 	list_reagents = list(/datum/reagent/toxin/sodium_thiopental = 30)
 
 /obj/item/reagent_containers/cup/bottle/coniine
 	name = "coniine bottle"
-	desc = "A small bottle. Contains coniine."
+	desc = "Uma garrafa pequena. Contém coniine."
 	list_reagents = list(/datum/reagent/toxin/coniine = 30)
 
 /obj/item/reagent_containers/cup/bottle/curare
 	name = "curare bottle"
-	desc = "A small bottle. Contains curare."
+	desc = "Uma garrafa pequena. Contém curare."
 	list_reagents = list(/datum/reagent/toxin/curare = 30)
 
 /obj/item/reagent_containers/cup/bottle/amanitin
 	name = "amanitin bottle"
-	desc = "A small bottle. Contains amanitin."
+	desc = "Uma garrafa pequena. Contém amanitina."
 	list_reagents = list(/datum/reagent/toxin/amanitin = 30)
 
 /obj/item/reagent_containers/cup/bottle/histamine
 	name = "histamine bottle"
-	desc = "A small bottle. Contains Histamine."
+	desc = "Uma garrafa pequena. Contém histamina."
 	list_reagents = list(/datum/reagent/toxin/histamine = 30)
 
 /obj/item/reagent_containers/cup/bottle/diphenhydramine
 	name = "antihistamine bottle"
-	desc = "A small bottle of diphenhydramine."
+	desc = "Uma pequena garrafa de difenidramina."
 	list_reagents = list(/datum/reagent/medicine/diphenhydramine = 30)
 
 /obj/item/reagent_containers/cup/bottle/potass_iodide
 	name = "anti-radiation bottle"
-	desc = "A small bottle of potassium iodide."
+	desc = "Uma pequena garrafa de iodeto de potássio."
 	list_reagents = list(/datum/reagent/medicine/potass_iodide = 30)
 
 /obj/item/reagent_containers/cup/bottle/salglu_solution
 	name = "saline-glucose solution bottle"
-	desc = "A small bottle of saline-glucose solution."
+	desc = "Um pequeno frasco de solução salina."
 	list_reagents = list(/datum/reagent/medicine/salglu_solution = 30)
 
 /obj/item/reagent_containers/cup/bottle/atropine
 	name = "atropine bottle"
-	desc = "A small bottle of atropine."
+	desc = "Uma pequena garrafa de atropina."
 	list_reagents = list(/datum/reagent/medicine/atropine = 30)
 
 /obj/item/reagent_containers/cup/bottle/random_buffer
 	name = "Buffer bottle"
-	desc = "A small bottle of chemical buffer."
+	desc = "Uma pequena garrafa de tampão químico."
 
 /obj/item/reagent_containers/cup/bottle/random_buffer/Initialize(mapload)
 	. = ..()
 	if(prob(50))
 		name = "Acidic buffer bottle"
-		desc = "A small bottle of acidic buffer."
+		desc = "Uma pequena garrafa de tampão ácido."
 		reagents.add_reagent(/datum/reagent/reaction_agent/acidic_buffer, 30)
 	else
 		name = "Basic buffer bottle"
-		desc = "A small bottle of basic buffer."
+		desc = "Uma pequena garrafa de tampão básico."
 		reagents.add_reagent(/datum/reagent/reaction_agent/basic_buffer, 30)
 
 /obj/item/reagent_containers/cup/bottle/acidic_buffer
 	name = "Acidic buffer bottle"
-	desc = "A small bottle of acidic buffer."
+	desc = "Uma pequena garrafa de tampão ácido."
 	list_reagents = list(/datum/reagent/reaction_agent/acidic_buffer = 30)
 
 /obj/item/reagent_containers/cup/bottle/basic_buffer
 	name = "Basic buffer bottle"
-	desc = "A small bottle of basic buffer."
+	desc = "Uma pequena garrafa de tampão básico."
 	list_reagents = list(/datum/reagent/reaction_agent/basic_buffer = 30)
 
 /obj/item/reagent_containers/cup/bottle/inversing_buffer
 	name = "Chiral inversing buffer bottle"
-	desc = "A small bottle of chiral inversing buffer."
+	desc = "Uma pequena garrafa de tampão de inserção quiral."
 	list_reagents = list(/datum/reagent/reaction_agent/inversing_buffer = 30)
 
 /obj/item/reagent_containers/cup/bottle/romerol
 	name = "romerol bottle"
-	desc = "A small bottle of Romerol. The REAL zombie powder."
+	desc = "Uma pequena garrafa de Romerol. O pó de zumbi real."
 	list_reagents = list(/datum/reagent/romerol = 30)
 
 /obj/item/reagent_containers/cup/bottle/moltobeso
 	name = "Molt'Obeso bottle"
-	desc = "The revolutionary new sauce from Syndicate's culinary experts, designed to instantly reshape your figure! \
-			The key to the effectiveness of this product lies in its unique formulation, which combines carefully selected ingredients to stimulate appetite and enhance the absorption of calories."
+	desc = "O novo molho revolucionário dos especialistas em culinária do Syndicate, projetado para remodelar instantaneamente sua figura! A chave para a eficácia deste produto está em sua formulação única, que combina ingredientes cuidadosamente selecionados para estimular o apetite e aumentar a absorção de calorias."
 	list_reagents = list(/datum/reagent/consumable/moltobeso = 50)
 
 /obj/item/reagent_containers/cup/bottle/random_virus
 	name = "Experimental disease culture bottle"
-	desc = "A small bottle. Contains an untested viral culture in synthblood medium."
+	desc = "Uma garrafa pequena. Contém uma cultura viral não testada em meio sintético."
 	spawned_disease = /datum/disease/advance/random
 
 /obj/item/reagent_containers/cup/bottle/pierrot_throat
 	name = "Pierrot's Throat culture bottle"
-	desc = "A small bottle. Contains H0NI<42 virion culture in synthblood medium."
+	desc = "Uma garrafa pequena. Contém cultura de virion H0NI<42 em meio sintético."
 	spawned_disease = /datum/disease/pierrot_throat
 
 /obj/item/reagent_containers/cup/bottle/cold
 	name = "Rhinovirus culture bottle"
-	desc = "A small bottle. Contains XY-rhinovirus culture in synthblood medium."
+	desc = "Uma garrafa pequena. Contém cultura XY-rhinovirus em meio sintético."
 	spawned_disease = /datum/disease/advance/cold
 
 /obj/item/reagent_containers/cup/bottle/flu_virion
 	name = "Flu virion culture bottle"
-	desc = "A small bottle. Contains H13N1 flu virion culture in synthblood medium."
+	desc = "Uma garrafa pequena. Contém cultura de vírus da gripe H13N1 em meio sintético."
 	spawned_disease = /datum/disease/advance/flu
 
 /obj/item/reagent_containers/cup/bottle/retrovirus
 	name = "Retrovirus culture bottle"
-	desc = "A small bottle. Contains a retrovirus culture in a synthblood medium."
+	desc = "Uma garrafa pequena. Contém uma cultura de retrovírus em um meio de sangue sintético."
 	spawned_disease = /datum/disease/dna_retrovirus
 
 /obj/item/reagent_containers/cup/bottle/gbs
 	name = "GBS culture bottle"
-	desc = "A small bottle. Contains Gravitokinetic Bipotential SADS+ culture in synthblood medium."//Or simply - General BullShit
+	desc = "Uma garrafa pequena. Contém cultura Bipotencial Gravitocinética SADS+ em meio sintético."//Or simply - General BullShit
 	amount_per_transfer_from_this = 5
 	spawned_disease = /datum/disease/gbs
 
 /obj/item/reagent_containers/cup/bottle/fake_gbs
 	name = "GBS culture bottle"
-	desc = "A small bottle. Contains Gravitokinetic Bipotential SADS- culture in synthblood medium."//Or simply - General BullShit
+	desc = "Uma garrafa pequena. Contém cultura biopotencial gravitocinética SADS em meio sanguíneo sintético."//Or simply - General BullShit
 	spawned_disease = /datum/disease/fake_gbs
 
 /obj/item/reagent_containers/cup/bottle/brainrot
 	name = "Brainrot culture bottle"
-	desc = "A small bottle. Contains Cryptococcus Cosmosis culture in synthblood medium."
+	desc = "Uma garrafa pequena. Contém Cryptococcus Cosmosis em meio sintético."
 	icon_state = "bottle3"
 	spawned_disease = /datum/disease/brainrot
 
 /obj/item/reagent_containers/cup/bottle/magnitis
 	name = "Magnitis culture bottle"
-	desc = "A small bottle. Contains a small dosage of Fukkos Miracos."
+	desc = "Uma garrafa pequena. Contém uma pequena dose de Fukkos Miracos."
 	spawned_disease = /datum/disease/magnitis
 
 /obj/item/reagent_containers/cup/bottle/wizarditis
 	name = "Wizarditis culture bottle"
-	desc = "A small bottle. Contains a sample of Rincewindus Vulgaris."
+	desc = "Uma garrafa pequena. Contém uma amostra de Rincewindus Vulgaris."
 	spawned_disease = /datum/disease/wizarditis
 
 /obj/item/reagent_containers/cup/bottle/anxiety
 	name = "Severe Anxiety culture bottle"
-	desc = "A small bottle. Contains a sample of Lepidopticides."
+	desc = "Uma garrafa pequena. Contém uma amostra de Lepidoptidides."
 	spawned_disease = /datum/disease/anxiety
 
 /obj/item/reagent_containers/cup/bottle/beesease
 	name = "Beesease culture bottle"
-	desc = "A small bottle. Contains a sample of invasive Apidae."
+	desc = "Uma garrafa pequena. Contém uma amostra de Apidae invasivo."
 	spawned_disease = /datum/disease/beesease
 
 /obj/item/reagent_containers/cup/bottle/fluspanish
 	name = "Spanish flu culture bottle"
-	desc = "A small bottle. Contains a sample of Inquisitius."
+	desc = "Uma garrafa pequena. Contém uma amostra de Inquisitius."
 	spawned_disease = /datum/disease/fluspanish
 
 /obj/item/reagent_containers/cup/bottle/tuberculosis
 	name = "Fungal Tuberculosis culture bottle"
-	desc = "A small bottle. Contains a sample of Fungal Tubercle bacillus."
+	desc = "Uma garrafa pequena. Contém uma amostra de Bacilo Tubercular Fungal."
 	spawned_disease = /datum/disease/tuberculosis
 
 /obj/item/reagent_containers/cup/bottle/tuberculosiscure
 	name = "BVAK bottle"
-	desc = "A small bottle containing Bio Virus Antidote Kit."
+	desc = "Uma pequena garrafa contendo Bio vírus Antidote Kit."
 	list_reagents = list(/datum/reagent/vaccine/fungal_tb = 30)
 
 //Oldstation.dmm chemical storage bottles
@@ -471,32 +468,32 @@
 
 /obj/item/reagent_containers/cup/bottle/clownstears
 	name = "bottle of distilled clown misery"
-	desc = "A small bottle. Contains a mythical liquid used by sublime bartenders; made from the unhappiness of clowns."
+	desc = "Uma garrafa pequena. Contém um líquido mítico usado por bartenders sublimes, feito da infelicidade dos palhaços."
 	list_reagents = list(/datum/reagent/consumable/nutriment/soup/clown_tears = 30)
 
 /obj/item/reagent_containers/cup/bottle/saltpetre
 	name = "saltpetre bottle"
-	desc = "A small bottle. Contains saltpetre."
+	desc = "Uma garrafa pequena. Contém salitre."
 	list_reagents = list(/datum/reagent/saltpetre = 30)
 
 /obj/item/reagent_containers/cup/bottle/flash_powder
 	name = "flash powder bottle"
-	desc = "A small bottle. Contains flash powder."
+	desc = "Uma garrafa pequena. Contém pó de flash."
 	list_reagents = list(/datum/reagent/flash_powder = 30)
 
 /obj/item/reagent_containers/cup/bottle/exotic_stabilizer
 	name = "exotic stabilizer bottle"
-	desc = "A small bottle. Contains exotic stabilizer."
+	desc = "Uma garrafa pequena. Contém estabilizador exótico."
 	list_reagents = list(/datum/reagent/exotic_stabilizer = 30)
 
 /obj/item/reagent_containers/cup/bottle/leadacetate
 	name = "lead acetate bottle"
-	desc = "A small bottle. Contains lead acetate."
+	desc = "Uma garrafa pequena. Contém acetato de chumbo."
 	list_reagents = list(/datum/reagent/toxin/leadacetate = 30)
 
 /obj/item/reagent_containers/cup/bottle/caramel
 	name = "bottle of caramel"
-	desc = "A bottle containing caramelized sugar, also known as caramel. Do not lick."
+	desc = "Uma garrafa contendo açúcar caramelizado, também conhecido como caramelo. Não lamba."
 	list_reagents = list(/datum/reagent/consumable/caramel = 30)
 
 /*
@@ -505,7 +502,7 @@
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle
 	name = "syrup bottle"
-	desc = "A bottle with a syrup pump to dispense the delicious substance directly into your coffee cup."
+	desc = "Uma garrafa com uma bomba de xarope para distribuir a deliciosa substância diretamente em sua xícara de café."
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "syrup"
 	fill_icon_state = "syrup"
@@ -522,8 +519,8 @@
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to toggle the pump cap.")
-	. += span_notice("Use a pen on it to rename it.")
+	. += span_notice("Alt-click para alternar a tampa da bomba.")
+	. += span_notice("Use uma caneta para renomeá-la.")
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = ..()
@@ -549,15 +546,15 @@
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/proc/refillable_act(mob/user, obj/item/tool)
 	if(!reagents.total_volume)
-		balloon_alert(user, "bottle empty!")
+		balloon_alert(user, "Garrafa vazia!")
 		return ITEM_INTERACT_BLOCKING
 	if(tool.reagents.holder_full())
-		balloon_alert(user, "container full!")
+		balloon_alert(user, "Contêiner cheio!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/transfer_amount = round(reagents.trans_to(tool, amount_per_transfer_from_this, transferred_by = user), CHEMICAL_VOLUME_ROUNDING)
 	if(transfer_amount)
-		balloon_alert(user, "transferred [transfer_amount] unit\s")
+		balloon_alert(user, "Transferido.[transfer_amount]Unidade")
 	flick("syrup_anim",src)
 	tool.update_appearance()
 	update_appearance()
@@ -572,10 +569,10 @@
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/click_alt(mob/user)
 	if(is_open_container())
-		balloon_alert(user, "put pump cap on")
+		balloon_alert(user, "Coloque tampa de bomba.")
 		update_container_flags(SEALED_CONTAINER | TRANSPARENT)
 	else
-		balloon_alert(user, "removed pump cap")
+		balloon_alert(user, "Tampa de bomba removida")
 		reset_container_flags()
 
 	update_appearance()
@@ -585,21 +582,21 @@
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/caramel
 	name = "bottle of caramel syrup"
-	desc = "A pump bottle containing caramelized sugar, also known as caramel. Do not lick."
+	desc = "Uma garrafa de bomba contendo açúcar caramelizado, também conhecido como caramelo. Não lamba."
 	list_reagents = list(/datum/reagent/consumable/caramel = 50)
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/liqueur
 	name = "bottle of coffee liqueur syrup"
-	desc = "A pump bottle containing mexican coffee-flavoured liqueur syrup. In production since 1936, HONK."
+	desc = "Uma garrafa de bomba contendo xarope de licor sabor café mexicano. Em produção desde 1936, HONK."
 	list_reagents = list(/datum/reagent/consumable/ethanol/kahlua = 50)
 
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/korta_nectar
 	name = "bottle of korta syrup"
-	desc = "A pump bottle containing korta syrup. A sweet, sugary substance made from crushed sweet korta nuts."
+	desc = "Uma garrafa de bomba contendo xarope korta. Uma substância doce e açucarada feita de nozes de korta."
 	list_reagents = list(/datum/reagent/consumable/korta_nectar = 50)
 
 //secret syrup
 /obj/item/reagent_containers/cup/bottle/syrup_bottle/laughsyrup
 	name = "bottle of laugh syrup"
-	desc = "A pump bottle containing laugh syrup. The product of juicing Laughin' Peas. Fizzy, and seems to change flavour based on what it's used with!"
+	desc = "Uma garrafa de bomba contendo xarope de riso. O produto de juicin' Peas. Fizzy, e parece mudar o sabor baseado no que é usado!"
 	list_reagents = list(/datum/reagent/consumable/laughsyrup = 50)

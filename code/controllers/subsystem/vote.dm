@@ -210,7 +210,7 @@ SUBSYSTEM_DEF(vote)
 	// No valid vote found? No vote
 	if(!istype(to_vote))
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("Invalid voting choice."))
+			to_chat(vote_initiator, span_warning("Escolha de voto inválida."))
 		return FALSE
 
 	// Vote can't be initiated in our circumstances? No vote
@@ -236,9 +236,7 @@ SUBSYSTEM_DEF(vote)
 	var/to_display = current_vote.initiate_vote(vote_initiator_name, duration)
 
 	log_vote(to_display)
-	to_chat(world, custom_boxed_message("purple_box center", span_infoplain(vote_font("[span_bold(to_display)]<br>\
-		Type <b>vote</b> or click <a href='byond://winset?command=vote'>here</a> to place your votes.\n\
-		You have [DisplayTimeText(duration)] to vote."))))
+	to_chat(world, custom_boxed_message("Centro da caixa roxa", span_infoplain(vote_font("[span_bold(to_display)]<br>Tipo<b>Votação</b>ou clique<a href='byond://winset?command=vote'>Aqui.</a>Para colocar seus votos.\nVocê tem[DisplayTimeText(duration)]para votar."))))
 
 	// And now that it's going, give everyone a voter action
 	for(var/client/new_voter as anything in GLOB.clients)
@@ -265,7 +263,7 @@ SUBSYSTEM_DEF(vote)
 	// Even if it's forced we can't vote before we're set up
 	if(!MC_RUNNING(init_stage))
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("You cannot start a vote now, the server is not done initializing."))
+			to_chat(vote_initiator, span_warning("Você não pode começar uma votação agora, o servidor ainda não acabou de inicializar."))
 		return FALSE
 
 	if(forced)
@@ -274,12 +272,12 @@ SUBSYSTEM_DEF(vote)
 	var/next_allowed_time = last_vote_time + CONFIG_GET(number/vote_delay)
 	if(next_allowed_time > world.time)
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("A vote was initiated recently. You must wait [DisplayTimeText(next_allowed_time - world.time)] before a new vote can be started!"))
+			to_chat(vote_initiator, span_warning("Um voto foi iniciado recentemente. Você deve esperar.[DisplayTimeText(next_allowed_time - world.time)]Antes que uma nova votação possa ser iniciada!"))
 		return FALSE
 
 	if(current_vote)
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("There is already a vote in progress! Please wait for it to finish."))
+			to_chat(vote_initiator, span_warning("Já há uma votação em andamento! Por favor, espere que termine."))
 		return FALSE
 
 	return TRUE
@@ -375,8 +373,7 @@ SUBSYSTEM_DEF(vote)
 	switch(action)
 		if("cancel")
 			if(!voter.client?.holder)
-				message_admins("[key_name(voter)] tried to cancel the current vote while having no admin holder, \
-					this is potentially a malicious exploit and worth noting.")
+				message_admins("[key_name(voter)] tried to cancel the current vote while having no admin holder, 					this is potentially a malicious exploit and worth noting.")
 				return
 
 			voter.log_message("cancelled a vote.", LOG_ADMIN)
@@ -387,8 +384,7 @@ SUBSYSTEM_DEF(vote)
 
 		if("endNow")
 			if(!voter.client?.holder)
-				message_admins("[key_name(voter)] tried to end the current vote while having no admin holder, \
-					this is potentially a malicious exploit and worth noting.")
+				message_admins("[key_name(voter)] tried to end the current vote while having no admin holder, 					this is potentially a malicious exploit and worth noting.")
 				return
 
 			voter.log_message("ended the current vote early", LOG_ADMIN)
@@ -398,8 +394,7 @@ SUBSYSTEM_DEF(vote)
 
 		if("toggleDeadVote")
 			if(!check_rights_for(voter.client, R_ADMIN))
-				message_admins("[key_name(voter)] tried to toggle vote abillity for ghosts while having improper rights, \
-					this is potentially a malicious exploit and worth noting.")
+				message_admins("[key_name(voter)] tried to toggle vote abillity for ghosts while having improper rights, 					this is potentially a malicious exploit and worth noting.")
 				return
 
 			toggle_dead_voting(voter)
@@ -410,8 +405,7 @@ SUBSYSTEM_DEF(vote)
 			if(!istype(selected))
 				return
 			if(!check_rights_for(voter.client, R_ADMIN))
-				message_admins("[key_name(voter)] tried to toggle vote availability while having improper rights, \
-					this is potentially a malicious exploit and worth noting.")
+				message_admins("[key_name(voter)] tried to toggle vote availability while having improper rights, 					this is potentially a malicious exploit and worth noting.")
 				return
 
 			return selected.toggle_votable()
@@ -438,8 +432,7 @@ SUBSYSTEM_DEF(vote)
 
 		if("resetCooldown")
 			if(!voter.client.holder)
-				message_admins("[key_name(voter)] tried to reset the vote cooldown while having no admin holder, \
-					this is potentially a malicious exploit and worth noting.")
+				message_admins("[key_name(voter)] tried to reset the vote cooldown while having no admin holder, 					this is potentially a malicious exploit and worth noting.")
 				return
 
 			last_vote_time = -INFINITY
@@ -454,7 +447,7 @@ SUBSYSTEM_DEF(vote)
 	set name = "Vote"
 
 	if(!SSvote.initialized)
-		to_chat(usr, span_notice("<i>Voting is not set up yet!</i>"))
+		to_chat(usr, span_notice("<i>A votação ainda não está pronta!</i>"))
 		return
 
 	SSvote.ui_interact(usr)

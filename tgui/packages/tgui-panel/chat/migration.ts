@@ -183,7 +183,7 @@ export function normalizeChatSettings(loaded: StoredChatSettings): {
 export function startChatStateMigration(state: StoredChatSettings): void {
   const parsed = storedSettingsSchema.safeParse(state);
   if (!parsed.success) {
-    console.error('Failed to parse stored chat settings:', parsed.error);
+    console.error('Falha ao analisar as configurações de chat armazenadas:', parsed.error);
     return;
   }
   const { settings: loaded, dirty: wasInconsistent } = normalizeChatSettings(
@@ -191,8 +191,8 @@ export function startChatStateMigration(state: StoredChatSettings): void {
   );
 
   if (wasInconsistent) {
-    console.error('Chat settings were inconsistent, rewriting to storage');
-    console.log('Comparison, stored vs update:', state, loaded);
+    console.error('As configurações de bate-papo eram inconsistentes, reescrevendo para armazenamento.');
+    console.log('Comparação, armazenada vs atualização:', state, loaded);
   }
 
   store.set(versionAtom, loaded.version);
@@ -203,5 +203,5 @@ export function startChatStateMigration(state: StoredChatSettings): void {
   chatRenderer.changePage(loaded.pageById[loaded.currentPageId]);
 
   saveChatState(loaded);
-  console.log('Restored chat settings:', loaded);
+  console.log('Configurações de chat restauradas:', loaded);
 }

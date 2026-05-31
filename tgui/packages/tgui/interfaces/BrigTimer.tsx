@@ -18,7 +18,7 @@ export const BrigTimer = (props) => {
     <Window width={300} height={138}>
       <Window.Content scrollable>
         <Section
-          title="Cell Timer"
+          title="Temporizador de celas"
           buttons={
             <>
               <Button

@@ -8,7 +8,7 @@
 
 /obj/effect/sunbeam
 	name = "\improper ICARUS Sunbeam"
-	desc = "A beam of light from the sun."
+	desc = "Um rio de luz do sol."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/sunbeam.dmi'
 	icon_state = "sunray_splash"
 	throwforce = 100
@@ -59,7 +59,7 @@
 		transform = our_matrix
 	notify_ghosts("An ICARUS sunbeam has been launched! [target_atom ? "Towards: [target_atom.name]" : ""]",
 		source = src,
-		header = "Somethings burning!",
+		header = "Algo está queimando!",
 	)
 	soundloop = new(src, TRUE)
 
@@ -135,7 +135,7 @@
 	if(!target_mob)
 		return
 
-	var/edit_ranges = tgui_alert(usr, "Change beam specifications?", "Beam Specifications", list("Yes", "No"))
+	var/edit_ranges = tgui_alert(usr, "Mudar as especificações do feixe?", "Beam Specifications", list("Yes", "No"))
 
 	if(edit_ranges == "Yes")
 		var/edit_range_fire = tgui_input_number(usr, "Fire range in tiles", "Fire Range", SUNBEAM_OBLITERATION_RANGE_FIRE, 20, 0)
@@ -157,7 +157,7 @@
 	max_occurrences = 0
 	weight = 0
 	category = EVENT_CATEGORY_SPACE
-	description = "Forces the ICARUS weapons system to fire a sunbeam at a random location. Causing massive devistation to the station."
+	description = "Força o sistema de armas ICARUS a disparar um raio de sol em um local aleatório. Causando uma grande destruição para a estação."
 
 /datum/round_event/icarus_sunbeam
 	announce_when = 1 // Instant announcement

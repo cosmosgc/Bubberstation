@@ -16,7 +16,7 @@ export const LaunchpadRemote = (props) => {
 
   return (
     <Window
-      title="Briefcase Launchpad Remote"
+      title="Plataforma de lançamento remota"
       width={300}
       height={240}
       theme="syndicate"

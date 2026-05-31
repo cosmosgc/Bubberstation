@@ -100,4 +100,4 @@
 /// See it there
 /datum/component/defaceable/proc/on_examined(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_notice("Someone has crudely drawn [drawing_of] on [source.p_them()].")
+	examine_list += span_notice("Alguém tem puxado grosseiramente[drawing_of]Vamos.[source.p_them()].")

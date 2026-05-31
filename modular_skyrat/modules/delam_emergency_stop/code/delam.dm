@@ -16,7 +16,7 @@
 
 	SSsecurity_level.minimum_security_level(SEC_LEVEL_ORANGE, TRUE, FALSE)
 	var/obj/machinery/announcement_system/system = pick(GLOB.announcement_systems)
-	system.broadcast("Danger! Crystal hyperstructure integrity faltering! Integrity: [round(sm.get_integrity_percent(), 0.01)]%", list(RADIO_CHANNEL_COMMAND), list(SPAN_COMMAND))
+	system.broadcast("Perigo! Integridade de hiperestrutura de cristal falhando! Integridade:[round(sm.get_integrity_percent(), 0.01)]%", list(RADIO_CHANNEL_COMMAND), list(SPAN_COMMAND))
 	sm.station_notified = TRUE
 
 	if(world.time - SSticker.round_start_time > 30 MINUTES)

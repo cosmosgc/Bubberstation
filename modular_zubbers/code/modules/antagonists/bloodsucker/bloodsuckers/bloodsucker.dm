@@ -311,15 +311,15 @@
 /datum/antagonist/bloodsucker/greet()
 	. = ..()
 	var/fullname = return_full_name()
-	to_chat(owner, span_userdanger("You are [fullname], a strain of vampire known as a Bloodsucker!"))
+	to_chat(owner, span_userdanger("Você é.[fullname]Uma espécie de vampiro conhecido como Bloodsucker!"))
 	owner.announce_objectives()
 	if(bloodsucker_level_unspent >= 2)
-		to_chat(owner, span_announce("As a latejoiner, you have [bloodsucker_level_unspent] bonus Ranks, entering your claimed coffin allows you to spend a Rank."))
+		to_chat(owner, span_announce("Como membro tardio, você tem[bloodsucker_level_unspent]Bônus, entrar no seu caixão, permite que você gaste uma patente."))
 	owner.current.playsound_local(null, 'modular_zubbers/sound/bloodsucker/BloodsuckerAlert.ogg', 100, FALSE, pressure_affected = FALSE)
 	antag_memory += "Although you were born a mortal, in undeath you earned the name <b>[fullname]</b>.<br>"
 
 /datum/antagonist/bloodsucker/farewell()
-	to_chat(owner.current, span_userdanger("<FONT size = 3>With a snap, your curse has ended. You are no longer a Bloodsucker. You live once more!</FONT>"))
+	to_chat(owner.current, span_userdanger("<FONT size = 3>Com um estalo, sua maldição acabou. Você não é mais um Bloodsucker. Você vive mais uma vez!</FONT>"))
 	// Refill with Blood so they don't instantly die.
 	if(!HAS_TRAIT(owner.current, TRAIT_NOBLOOD))
 		owner.current.blood_volume = max(owner.current.blood_volume, BLOOD_VOLUME_NORMAL)

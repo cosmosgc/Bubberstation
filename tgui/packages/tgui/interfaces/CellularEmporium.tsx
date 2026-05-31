@@ -119,8 +119,8 @@ export const CellularEmporium = (props) => {
                   disabled={!can_readapt}
                   tooltip={
                     can_readapt
-                      ? 'Un-evolve all abilities and refund genetic points.'
-                      : 'Need more DNA to readapt.'
+                      ? 'Des-evoluir todas as habilidades e reembolsar pontos genéticos.'
+                      : 'Preciso de mais DNA para reajustar.'
                   }
                   onClick={() => act('readapt')}
                 >
@@ -148,7 +148,7 @@ export const CellularEmporium = (props) => {
                     lineHeight={2}
                     textAlign="center"
                     icon={compactMode ? 'maximize' : 'minimize'}
-                    tooltip={compactMode ? 'Detailed view' : 'Compact view'}
+                    tooltip={compactMode ? 'Vista detalhada' : 'Vista compacta.'}
                     onClick={() => setCompactMode(!compactMode)}
                   />
                 </Stack.Item>
@@ -177,8 +177,8 @@ export const CellularEmporium = (props) => {
                 {filteredItems.length === 0 ? (
                   <NoticeBox>
                     {searchText
-                      ? 'No abilities found.'
-                      : 'No abilities in this category.'}
+                      ? 'Nenhuma habilidade encontrada.'
+                      : 'Nenhuma habilidade nesta categoria.'}
                   </NoticeBox>
                 ) : (
                   <ItemList

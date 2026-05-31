@@ -12,7 +12,7 @@ ADMIN_VERB(spawn_liquid, R_ADMIN, "Spawn Liquid", "Spawns an amount of chosen li
 		else
 			valid_id = TRUE
 		if(!valid_id)
-			to_chat(user, span_warning("A reagent with that ID doesn't exist!"))
+			to_chat(user, span_warning("Um reagente com essa identidade não existe!"))
 	if(!choice)
 		return
 	var/volume = tgui_input_number(user, "Volume:", "Choose volume")

@@ -1,7 +1,7 @@
 
 /obj/effect/meteor/meaty/changeling
 	name = "unsettlingly meaty meteor"
-	desc = "A tightly packed knit of flesh and skin, pulsating with life."
+	desc = "Uma malha apertada de carne e pele, pulsando com vida."
 	icon_state = "changeling"
 	heavy = FALSE
 	hits = 1 //Instantly splatters apart when it hits anything.
@@ -38,7 +38,7 @@
 	for(var/atom/movable/changeling in contents)
 		changeling.forceMove(get_turf(src))
 		changeling.throw_at(landing_target, 2, 2)
-		changeling.visible_message(span_warning("[changeling] is launched out from inside of \the [src]!"), span_changeling("Sensing that something is terribly wrong, we forcibly eject ourselves from \the [src]!"))
+		changeling.visible_message(span_warning("[changeling]é lançado de dentro de\the [src]!"), span_changeling("Sentindo que algo está terrivelmente errado, nós nos ejetamos à força.\the [src]!"))
 		playsound(changeling, 'sound/effects/splat.ogg', 50, pressure_affected = FALSE)
 
 	return ..()

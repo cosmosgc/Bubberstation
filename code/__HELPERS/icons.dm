@@ -153,7 +153,7 @@ mob
 
 		Output_Icon()
 			set name = "2. Output Icon"
-			to_chat(src, "Icon is: [icon2base64html(getFlatIcon(src))]")
+			to_chat(src, "Ícone é:[icon2base64html(getFlatIcon(src))]")
 
 		Label_Icon()
 			set name = "3. Label Icon"
@@ -392,35 +392,7 @@ world
 /// Only the first argument is required.
 /proc/getFlatIcon(image/appearance, defdir, deficon, defstate, defblend, start = TRUE, no_anim = FALSE, parentcolor)
 	// Loop through the underlays, then overlays, sorting them into the layers list
-	#define PROCESS_OVERLAYS_OR_UNDERLAYS(flat, process, base_layer) \
-		for (var/i in 1 to process.len) { \
-			var/image/current = process[i]; \
-			if (!current) { \
-				continue; \
-			} \
-			if (current.plane != FLOAT_PLANE && current.plane != appearance.plane) { \
-				continue; \
-			} \
-			var/current_layer = current.layer; \
-			if (current_layer < 0) { \
-				if (current_layer <= -1000) { \
-					return flat; \
-				} \
-				current_layer = base_layer + appearance.layer + current_layer / 1000; \
-			} \
-			/* If we are using topdown rendering, chop that part off so things layer together as expected */ \
-			if((current_layer >= TOPDOWN_LAYER && current_layer < EFFECTS_LAYER) || current_layer > TOPDOWN_LAYER + EFFECTS_LAYER) { \
-				current_layer -= TOPDOWN_LAYER; \
-			} \
-			for (var/index_to_compare_to in 1 to layers.len) { \
-				var/compare_to = layers[index_to_compare_to]; \
-				if (current_layer < layers[compare_to]) { \
-					layers.Insert(index_to_compare_to, current); \
-					break; \
-				} \
-			} \
-			layers[current] = current_layer; \
-		}
+	#define PROCESS_OVERLAYS_OR_UNDERLAYS(flat, process, base_layer) 		for (var/i in 1 to process.len) { 			var/image/current = process[i]; 			if (!current) { 				continue; 			} 			if (current.plane != FLOAT_PLANE && current.plane != appearance.plane) { 				continue; 			} 			var/current_layer = current.layer; 			if (current_layer < 0) { 				if (current_layer <= -1000) { 					return flat; 				} 				current_layer = base_layer + appearance.layer + current_layer / 1000; 			} 			/* If we are using topdown rendering, chop that part off so things layer together as expected */ 			if((current_layer >= TOPDOWN_LAYER && current_layer < EFFECTS_LAYER) || current_layer > TOPDOWN_LAYER + EFFECTS_LAYER) { 				current_layer -= TOPDOWN_LAYER; 			} 			for (var/index_to_compare_to in 1 to layers.len) { 				var/compare_to = layers[index_to_compare_to]; 				if (current_layer < layers[compare_to]) { 					layers.Insert(index_to_compare_to, current); 					break; 				} 			} 			layers[current] = current_layer; 		}
 
 	var/static/icon/flat_template = icon('icons/blanks/32x32.dmi', "nothing")
 	var/icon/flat = icon(flat_template)
@@ -539,11 +511,7 @@ world
 			addY2 = max(flatY2, layer_image.pixel_y + layer_image.pixel_z + add.Height())
 
 			if (
-				addX1 != flatX1 \
-				&& addX2 != flatX2 \
-				&& addY1 != flatY1 \
-				&& addY2 != flatY2 \
-			)
+				addX1 != flatX1 				&& addX2 != flatX2 				&& addY1 != flatY1 				&& addY2 != flatY2 			)
 				// Resize the flattened icon so the new icon fits
 				flat.Crop(
 					addX1 - flatX1 + 1,

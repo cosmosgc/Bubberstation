@@ -1,6 +1,6 @@
 /obj/item/clothing/strapon
 	name = "strapon"
-	desc = "Sometimes you need a special way to humiliate someone."
+	desc = "Às vezes você precisa de um jeito especial de humilhar alguém."
 	icon_state = "strapon_human"
 	base_icon_state = "strapon"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
@@ -105,7 +105,7 @@
 //button stuff
 /datum/action/item_action/take_strapon
 	name = "Put strapon in hand"
-	desc = "Put the strapon in your hand in order to use it properly."
+	desc = "Coloque a alça na mão para usá-la corretamente."
 
 /datum/action/item_action/take_strapon/Trigger(trigger_flags)
 	if(!..())
@@ -119,7 +119,7 @@
 	if(src == user.belt)
 		toggle(user)
 	else
-		to_chat(user, span_warning("You need to put the strapon around your waist before you can use it!"))
+		to_chat(user, span_warning("Precisa colocar o cinto na cintura antes de poder usá-lo!"))
 
 /obj/item/clothing/strapon/proc/toggle(mob/living/carbon/human/user)
 	conditional_pref_sound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
@@ -129,13 +129,13 @@
 	if(in_hands == TRUE)
 		if(istype(held, /obj/item/strapon_dildo))
 			qdel(held)
-			user.visible_message(span_notice("[user] puts the strapon back."))
+			user.visible_message(span_notice("[user]Coloque o cinto de volta."))
 			in_hands = FALSE
 			return
 
 		else if(istype(unheld, /obj/item/strapon_dildo))
 			qdel(unheld)
-			user.visible_message(span_notice("[user] puts the strapon back."))
+			user.visible_message(span_notice("[user]Coloque o cinto de volta."))
 			in_hands = FALSE
 			return
 
@@ -149,11 +149,11 @@
 					strapon_item.strapon_type = strapon_type
 					strapon_item.update_icon_state()
 					strapon_item.update_icon()
-					user.visible_message(span_notice("[user] holds the strapon in their hand menacingly."))
+					user.visible_message(span_notice("[user]Segura o cinto em suas mãos ameaçadoramente."))
 					in_hands = TRUE
 					return
 		else
-			user.visible_message(span_notice("[user] tries to hold the strapon in their hand, but their hand isn't empty!"))
+			user.visible_message(span_notice("[user]Tenta segurar a alça em suas mãos, mas sua mão não está vazia!"))
 			return
 	else
 		strapon_item = new()
@@ -161,13 +161,13 @@
 		strapon_item.strapon_type = strapon_type
 		strapon_item.update_icon_state()
 		strapon_item.update_icon()
-		user.visible_message(span_notice("[user] holds the strapon in their hand menacingly."))
+		user.visible_message(span_notice("[user]Segura o cinto em suas mãos ameaçadoramente."))
 		in_hands = TRUE
 		return
 
 /obj/item/strapon_dildo
 	name = "strapon"
-	desc = "An item with which to be menacing and merciless."
+	desc = "Um item com o qual ser ameaçador e impiedoso."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	icon_state = "dildo_human"
 	base_icon_state = "dildo"
@@ -214,10 +214,10 @@
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
 					else
-						to_chat(user, span_danger("[hit_mob]'s groin is covered!"))
+						to_chat(user, span_danger("[hit_mob]A virilha está coberta!"))
 						return
 				else
-					to_chat(user, span_danger("[hit_mob] doesn't have suitable genitalia for that!"))
+					to_chat(user, span_danger("[hit_mob]Não tem genitália adequada para isso!"))
 					return
 
 			if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
@@ -237,7 +237,7 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
 
 				else
-					to_chat(user, span_danger("[hit_mob]'s mouth is covered!"))
+					to_chat(user, span_danger("[hit_mob]A boca está coberta!"))
 					return
 
 			else
@@ -256,8 +256,8 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
 
 				else
-					to_chat(user, span_danger("[hit_mob]'s anus is covered!"))
+					to_chat(user, span_danger("[hit_mob]O ânus está coberto!"))
 					return
 	else
-		to_chat(user, span_danger("[hit_mob] doesn't want you to do that."))
+		to_chat(user, span_danger("[hit_mob]Não quer que faça isso."))
 		return

@@ -1,6 +1,6 @@
 /obj/effect/lock_portal
 	name = "crack in reality"
-	desc = "A crack in space, impossibly deep and painful to the eyes. Definitely not safe."
+	desc = "Uma fenda no espaço, incrivelmente profunda e dolorosa aos olhos. Definitivamente não é seguro."
 	icon = 'icons/effects/eldritch.dmi'
 	icon_state = "realitycrack"
 	light_system = COMPLEX_LIGHT
@@ -68,7 +68,7 @@
 
 	if(!IS_HERETIC_OR_MONSTER(teleportee))
 		teleportee.apply_damage(20, BRUTE) //so they dont roll it like a jackpot machine to see if they can land in the armory
-		to_chat(teleportee, span_userdanger("You stumble through [src], battered by forces beyond your comprehension, landing anywhere but where you thought you were going."))
+		to_chat(teleportee, span_userdanger("Você tropeça[src], agredido por forças além de sua compreensão, aterrissando em qualquer lugar, mas onde você pensou que estava indo."))
 
 	INVOKE_ASYNC(src, PROC_REF(async_opendoor), doorstination)
 
@@ -110,11 +110,11 @@
 	. = ..()
 	if(!IS_HERETIC_OR_MONSTER(user))
 		return
-	. += span_hypnophrase("Enchanted by the Mansus!")
-	. += span_hypnophrase("Using an ID on this or using this ID on another ID will consume it and allow you to copy its accesses.")
-	. += span_hypnophrase("<b>Using this in-hand</b> allows you to change its appearance.")
-	. += span_hypnophrase("<b>Using this on a pair of doors</b>, allows you to link them together. Entering one door will transport you to the other, while heathens are instead teleported to a random airlock.")
-	. += span_hypnophrase("<b>Ctrl-clicking the ID</b>, makes the ID make inverted portals instead, which teleport you onto a random airlock onstation, while heathens are teleported to the destination.")
+	. += span_hypnophrase("Encantado pelo Mansus!")
+	. += span_hypnophrase("Usando uma identificação nisso ou usando essa identidade em outra identidade vai consumi-la e permitir que você copie seus acessos.")
+	. += span_hypnophrase("<b>Usando isso na mão</b>permite que você mude sua aparência.")
+	. += span_hypnophrase("<b>Usando iso em um par de portas</b>, permite que você as ligue. Entrar em uma porta irá transportá-lo para a outra, enquanto pagãos são teletransportados para uma câmara de ar aleatória.")
+	. += span_hypnophrase("<b>Ctrl-clique na ID</b>, faz com que a identificação faça portais invertidos em vez disso, que te teleportam para uma instalação aleatória, enquanto os pagãos são teletransportados para o destino.")
 
 /obj/item/card/id/advanced/heretic/attack_self(mob/user)
 	. = ..()
@@ -122,7 +122,7 @@
 		return
 	var/cardname = tgui_input_list(user, "Shapeshift into?", "Shapeshift", fused_ids)
 	if(!cardname)
-		balloon_alert(user, "no options!")
+		balloon_alert(user, "Sem opções!")
 		return ..()
 	var/obj/item/card/id/card = fused_ids[cardname]
 	shapeshift(card)
@@ -131,7 +131,7 @@
 	if(!IS_HERETIC(user))
 		return CLICK_ACTION_BLOCKING
 	inverted = !inverted
-	balloon_alert(user, "[inverted ? "now" : "no longer"] creating inverted rifts")
+	balloon_alert(user, "[inverted ? "now" : "no longer"]\"Criando Fendas Invertidas\"")
 	return CLICK_ACTION_SUCCESS
 
 ///Changes our appearance to the passed ID card
@@ -188,7 +188,7 @@
 	access |= card.access
 	if(!isnull(user))
 		playsound(drop_location(), 'sound/items/eatfood.ogg', rand(10,30), TRUE)
-		balloon_alert(user, "consumed card")
+		balloon_alert(user, "cartão consumido")
 
 /obj/item/card/id/advanced/heretic/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	if(!IS_HERETIC(user))
@@ -209,9 +209,9 @@
 
 	if(reference_resolved)
 		make_portal(user, reference_resolved, target)
-		to_chat(user, span_notice("You use [src], to link [reference_resolved] and [target] together."))
+		to_chat(user, span_notice("Você usa[src], para ligar[reference_resolved]E[target]Juntas."))
 		link = null
-		balloon_alert(user, "link 2/2")
+		balloon_alert(user, "Ligação 2/2")
 	else
 		link = WEAKREF(target)
 		balloon_alert(user, "link 1/2")

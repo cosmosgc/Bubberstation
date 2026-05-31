@@ -2,9 +2,8 @@
 	martial = /datum/martial_art/plasma_fist
 	name = "frayed scroll"
 	martial_name = "plasma fist"
-	desc = "An aged and frayed scrap of paper written in shifting runes. There are hand-drawn illustrations of pugilism."
-	greet = span_bolddanger("You have learned the ancient martial art of Plasma Fist. Your combos are extremely hard to pull off, but include some of the most deadly moves ever seen including \
-		the plasma fist, which when pulled off will make someone violently explode.")
+	desc = "Um pedaço velho e desgastado de papel escrito em runas em mudança. Há ilustrações de pugilismo desenhadas à mão."
+	greet = span_bolddanger("You have learned the ancient martial art of Plasma Fist. Your combos are extremely hard to pull off, but include some of the most deadly moves ever seen including 		the plasma fist, which when pulled off will make someone violently explode.")
 	icon = 'icons/obj/scrolls.dmi'
 	icon_state ="plasmafist"
 	remarks = list(
@@ -24,7 +23,7 @@
 	. = ..()
 	if(uses <= 0)
 		name = "empty scroll"
-		desc = "It's completely blank."
+		desc = "Está completamente em branco."
 		icon_state = "blankscroll"
 	else
 		name = initial(name)

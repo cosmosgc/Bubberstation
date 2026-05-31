@@ -6,7 +6,7 @@
 	damage_coeff = list(BRUTE = 0.75, BURN = 0.75, TOX = 0.75, STAMINA = 0, OXY = 0.75)
 	playstyle_string = span_holoparasite("As a <b>dextrous</b> type you can hold items, store an item within yourself, and have medium damage resistance, but do low damage on attacks. Recalling and leashing will force you to drop unstored items!")
 	creator_name = "Dextrous"
-	creator_desc = "Does low damage on attack, but is capable of holding items and storing a single item within it. It will drop items held in its hands when it recalls, but it will retain the stored item."
+	creator_desc = "Faz baixo dano no ataque, mas é capaz de segurar itens e armazenar um único item dentro dele. Ele vai deixar itens em suas mãos quando se lembrar, mas ele vai manter o item armazenado."
 	creator_icon = "dextrous"
 	hud_type = /datum/hud/dextrous/guardian
 	held_items = list(null, null)
@@ -41,7 +41,7 @@
 	. = ..()
 	if(isnull(internal_storage) || (internal_storage.item_flags & ABSTRACT))
 		return
-	. += span_info("It is holding [internal_storage.examine_title(user)] in its internal storage.")
+	. += span_info("Está segurando.[internal_storage.examine_title(user)]Em seu armamento interno.")
 
 /mob/living/basic/guardian/dextrous/manifest_effects()
 	. = ..()
@@ -81,7 +81,7 @@
 
 /mob/living/basic/guardian/dextrous/equip_to_slot(obj/item/equipping, slot, initial = FALSE, redraw_mob = FALSE, indirect_action = FALSE)
 	if (slot != ITEM_SLOT_DEX_STORAGE)
-		to_chat(src, span_danger("You are trying to equip this item to an unsupported inventory slot. Report this to a coder!"))
+		to_chat(src, span_danger("Você está tentando equipar este item para um estoque não suportado. Informe isso a um programador!"))
 		return FALSE
 
 	var/index = get_held_index_of_item(equipping)

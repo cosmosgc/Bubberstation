@@ -1,7 +1,6 @@
 /obj/machinery/computer/arcade/amputation
 	name = "Mediborg's Amputation Adventure"
-	desc = "A picture of a blood-soaked medical cyborg flashes on the screen. \
-		The mediborg has a speech bubble that says, \"Put your hand in the machine if you aren't a <b>coward!</b>\""
+	desc = "Uma foto de um cyborg médico encharcado de sangue pisca na tela. O mediborg tem uma bolha de discurso que diz,\"Coloque sua mão na máquina se você não é um<b>Covarde!</b>\""
 	icon_state = "arcade"
 	circuit = /obj/item/circuitboard/computer/arcade/amputation
 	interaction_flags_machine = NONE //borgs can't play, but the illiterate can.
@@ -13,12 +12,12 @@
 	. = ..()
 	if(!iscarbon(user))
 		return
-	to_chat(user, span_warning("You move your hand towards the machine, and begin to hesitate as a bloodied guillotine emerges from inside of it..."))
+	to_chat(user, span_warning("Você move sua mão para a máquina, e começa a hesitar como uma guilhotina ensanguentada emerge de dentro dela..."))
 	user.played_game()
 	var/obj/item/bodypart/chopchop = user.get_active_hand()
 	if(do_after(user, 5 SECONDS, target = src, extra_checks = CALLBACK(src, PROC_REF(do_they_still_have_that_hand), user, chopchop)))
 		playsound(src, 'sound/items/weapons/slice.ogg', 25, TRUE, -1)
-		to_chat(user, span_userdanger("The guillotine drops on your arm, and the machine sucks it in!"))
+		to_chat(user, span_userdanger("A guilhotina cai em seu braço, e a máquina suga!"))
 		chopchop.dismember()
 		qdel(chopchop)
 		user.mind?.adjust_experience(/datum/skill/gaming, 100)
@@ -26,10 +25,10 @@
 		victory_tickets(rand(6,10))
 		return
 	if(!do_they_still_have_that_hand(user, chopchop))
-		to_chat(user, span_warning("The guillotine drops, but your hand seems to be gone already!"))
+		to_chat(user, span_warning("A guilhotina cai, mas sua mão já se foi!"))
 		playsound(src, 'sound/items/weapons/slice.ogg', 25, TRUE, -1)
 	else
-		to_chat(user, span_notice("You (wisely) decide against putting your hand in the machine."))
+		to_chat(user, span_notice("Você (sábia) decide contra colocar sua mão na máquina."))
 	user.lost_game()
 
 ///Makes sure the user still has their starting hand, preventing the user from pulling the arm out and still getting prizes.
@@ -41,5 +40,5 @@
 ///Dispenses wrapped gifts instead of arcade prizes, also known as the ancap christmas tree
 /obj/machinery/computer/arcade/amputation/festive
 	name = "Mediborg's Festive Amputation Adventure"
-	desc = "A picture of a blood-soaked medical cyborg wearing a Santa hat flashes on the screen. The mediborg has a speech bubble that says, \"Put your hand in the machine if you aren't a <b>coward!</b>\""
+	desc = "Uma foto de um ciborgue médico encharcado de sangue usando um chapéu de Papai Noel pisca na tela. O mediborg tem uma bolha de discurso que diz,\"Coloque sua mão na máquina se você não é um<b>Covarde!</b>\""
 	prize_override = list(/obj/item/gift/anything = 1)

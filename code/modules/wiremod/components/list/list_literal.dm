@@ -4,8 +4,8 @@
  * Return a list literal.
  */
 /obj/item/circuit_component/list_literal
-	display_name = "List Literal"
-	desc = "A component that creates a list from whatever input you give it."
+	display_name = "Lista Literal"
+	desc = "Um componente que cria uma lista de qualquer entrada que você dê."
 	category = "List"
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
@@ -35,15 +35,7 @@
 			port_to_set.set_datatype(new_datatype)
 
 /obj/item/circuit_component/list_literal/populate_ports()
-	AddComponent(/datum/component/circuit_component_add_port, \
-		port_list = entry_ports, \
-		add_action = "add", \
-		remove_action = "remove", \
-		port_type = PORT_TYPE_ANY, \
-		prefix = "Index", \
-		minimum_amount = 1, \
-		maximum_amount = 20 \
-	)
+	AddComponent(/datum/component/circuit_component_add_port, 		port_list = entry_ports, 		add_action = "add", 		remove_action = "remove", 		port_type = PORT_TYPE_ANY, 		prefix = "Index", 		minimum_amount = 1, 		maximum_amount = 20 	)
 	list_output = add_output_port("Value", PORT_TYPE_LIST(PORT_TYPE_ANY), order = 1.1)
 
 /obj/item/circuit_component/list_literal/input_received(datum/port/input/port)
@@ -53,7 +45,7 @@
 		var/value = entry_port.value
 		// To prevent people from infinitely making lists to crash the server
 		if(islist(value) && get_list_count(value, max_list_count) >= max_list_count)
-			visible_message("[src] begins to overheat!")
+			visible_message("[src]Começa a superaquecer!")
 			return
 		var/value_to_add = handler.convert_value(list_output, value)
 		if(isdatum(value_to_add))

@@ -3,7 +3,7 @@
 
 /obj/structure/votebox
 	name = "voting box"
-	desc = "An automatic voting box."
+	desc = "Uma caixa de votação automática."
 
 	icon = 'icons/obj/storage/box.dmi'
 	icon_state = "votebox_maint"
@@ -28,7 +28,7 @@
 		if(voting_active)
 			apply_vote(I,user)
 		else
-			to_chat(user,span_warning("[src] is in maintenance mode. Voting is not possible at the moment."))
+			to_chat(user,span_warning("[src]está em modo de manutenção. A votação não é possível no momento."))
 		return
 	return ..()
 
@@ -64,7 +64,7 @@
 	if(!can_interact(user))
 		return
 	if(!is_operator(user))
-		to_chat(user,span_warning("Voting box operator authorization required!"))
+		to_chat(user,span_warning("Autorização do operador da caixa de votação necessária!"))
 		return
 
 	if(href_list["act"])
@@ -77,7 +77,7 @@
 			if("reset_voted")
 				if(voted)
 					voted.Cut()
-				to_chat(user,span_notice("You reset the voter buffer. Everyone can vote again."))
+				to_chat(user,span_notice("Você redefiniu o buffer do eleitor. Todos podem votar novamente."))
 			if("raffle")
 				raffle(user)
 			if("shred")
@@ -90,7 +90,7 @@
 
 /obj/structure/votebox/proc/register_owner(obj/item/card/id/I,mob/living/user)
 	owner = I
-	to_chat(user,span_notice("You register [src] to your ID card."))
+	to_chat(user,span_notice("Você se registra.[src]ao seu cartão de identidade."))
 	ui_interact(user)
 
 /obj/structure/votebox/proc/set_description(mob/user)
@@ -105,16 +105,16 @@
 	var/obj/item/card/id/voter_card = user.get_idcard()
 	if(id_auth)
 		if(!voter_card)
-			to_chat(user,span_warning("[src] requires a valid ID card to vote!"))
+			to_chat(user,span_warning("[src]requer um cartão de identidade válido para votar!"))
 			return
 		if(voted && (voter_card in voted))
-			to_chat(user,span_warning("[src] allows only one vote per person."))
+			to_chat(user,span_warning("[src]Permita um voto por pessoa."))
 			return
 	if(user.transferItemToLoc(I,src))
 		if(!voted)
 			voted = list()
 		voted += voter_card
-		to_chat(user,span_notice("You cast your vote."))
+		to_chat(user,span_notice("Você votou."))
 
 /obj/structure/votebox/proc/valid_vote(obj/item/paper/voting_slip)
 	if(voting_slip.get_total_length() > VOTE_TEXT_LIMIT)
@@ -128,7 +128,7 @@
 /obj/structure/votebox/proc/shred(mob/user)
 	for(var/obj/item/paper/P in contents)
 		qdel(P)
-	to_chat(user,span_notice("You shred the current votes."))
+	to_chat(user,span_notice("Você destrói os votos atuais."))
 
 /obj/structure/votebox/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -138,10 +138,10 @@
 /obj/structure/votebox/crowbar_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(voting_active)
-		to_chat(user,span_warning("You can only retrieve votes if maintenance mode is active!"))
+		to_chat(user,span_warning("Você só pode recuperar votos se o modo de manutenção estiver ativo!"))
 		return FALSE
 	dump_contents()
-	to_chat(user,span_notice("You open vote retrieval hatch and dump all the votes."))
+	to_chat(user,span_notice("Você abre a escotilha de recuperação de votos e larga todos os votos."))
 	return TRUE
 
 /obj/structure/votebox/dump_contents()
@@ -157,11 +157,11 @@
 	for(var/obj/item/paper/P in contents)
 		options += P
 	if(!length(options))
-		to_chat(user, span_warning("[src] is empty!"))
+		to_chat(user, span_warning("[src]Está vazio!"))
 	else
 		var/obj/item/paper/P = pick(options)
 		user.put_in_hands(P)
-		to_chat(user, span_notice("[src] pops out random vote."))
+		to_chat(user, span_notice("[src]O voto é aleatório."))
 
 /obj/structure/votebox/proc/print_tally(mob/user)
 	var/list/results = list()
@@ -214,7 +214,7 @@
 	vote_tally_paper.name = "Voting Results"
 	vote_tally_paper.update_appearance()
 	user.put_in_hands(vote_tally_paper)
-	to_chat(user,span_notice("[src] prints out the voting tally."))
+	to_chat(user,span_notice("[src]Imprima a contagem de votos."))
 
 /obj/structure/votebox/update_icon_state()
 	icon_state = "votebox_[voting_active ? "active" : "maint"]"

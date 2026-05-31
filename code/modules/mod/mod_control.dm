@@ -1,13 +1,13 @@
 /// MODsuits, trade-off between armor and utility
 /obj/item/mod
 	name = "Base MOD"
-	desc = "You should not see this, yell at a coder!"
+	desc = "Você não deveria ver isso, gritar com um codificador!"
 	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
 	worn_icon = 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 
 /obj/item/mod/control
 	name = "MOD control unit"
-	desc = "The control unit of a Modular Outerwear Device, a powered suit that protects against various environments."
+	desc = "A unidade de controle de um dispositivo modular Outerwear, um terno que protege contra vários ambientes."
 	icon_state = "standard-control"
 	inhand_icon_state = "mod_control"
 	base_icon_state = "control"
@@ -133,7 +133,7 @@
 	var/atom/visible_atom = wearer || src
 	if(wearer)
 		clean_up()
-	visible_atom.visible_message(span_bolddanger("[src] fall[p_s()] apart, completely destroyed!"), vision_distance = COMBAT_MESSAGE_RANGE)
+	visible_atom.visible_message(span_bolddanger("[src]Queda.[p_s()]Separados, completamente destruídos!"), vision_distance = COMBAT_MESSAGE_RANGE)
 	for(var/obj/item/mod/module/module as anything in modules)
 		uninstall(module)
 	if(ai_assistant)
@@ -149,28 +149,28 @@
 /obj/item/mod/control/examine(mob/user)
 	. = ..()
 	if(active)
-		. += span_notice("Charge: [core ? "[get_charge_percent()]%" : "No core"].")
-		. += span_notice("Selected module: [selected_module || "None"].")
+		. += span_notice("Carga:[core ? "[get_charge_percent()]%" : "No core"].")
+		. += span_notice("Módulo selecionado:[selected_module || "None"].")
 	if(!open && !active)
 		if(!wearer)
-			. += span_notice("You could equip it to turn it on.")
-		. += span_notice("You could open the cover with a <b>screwdriver</b>.")
+			. += span_notice("Você poderia equipá-lo para ligá-lo.")
+		. += span_notice("Você poderia abrir a capa com um<b>Chave de Fenda</b>.")
 	else if(open)
-		. += span_notice("You could close the cover with a <b>screwdriver</b>.")
-		. += span_notice("You could use <b>modules</b> on it to install them.")
-		. += span_notice("You could remove modules with a <b>crowbar</b>.")
-		. += span_notice("You could update the access lock with an <b>ID</b>.")
-		. += span_notice("You could access the wire panel with a <b>wire tool</b>.")
+		. += span_notice("Você poderia fechar a capa com um<b>Chave de Fenda</b>.")
+		. += span_notice("Você poderia usar<b>módulos</b>nele para instalá-los.")
+		. += span_notice("Você poderia remover módulos com um<b>Pé de cabra.</b>.")
+		. += span_notice("Você poderia atualizar o bloqueio de acesso com um<b>ID</b>.")
+		. += span_notice("Você poderia acessar o painel de arame com um<b>Ferramenta de arame</b>.")
 		if(core)
-			. += span_notice("You could remove [core] with a <b>wrench</b>.")
+			. += span_notice("Você poderia remover[core]Comum<b>Chave Inglesa.</b>.")
 		else
-			. += span_notice("You could use a <b>MOD core</b> on it to install one.")
+			. += span_notice("Você poderia usar um<b>Núcleo MOD</b>bele para instalar um.")
 		if(isnull(ai_assistant))
-			. += span_notice("You could install an AI or pAI using their <b>storage card</b>.")
+			. += span_notice("Você poderia instalar uma IA ou uma IAP usando o seu<b>Cartão de armazenamento</b>.")
 		else if(isAI(ai_assistant))
-			. += span_notice("You could remove [ai_assistant] with an <b>intellicard</b>.")
-	. += span_notice("You could copy/set link frequency with a <b>multitool</b>.")
-	. += span_notice("<i>You could examine it more thoroughly...</i>")
+			. += span_notice("Você poderia remover[ai_assistant]com uma<b>Intellicard</b>.")
+	. += span_notice("Você poderia copiar / definir frequência de ligação com um<b>Multitool</b>.")
+	. += span_notice("<i>Você poderia examiná-lo mais detalhadamente...</i>")
 
 /obj/item/mod/control/examine_more(mob/user)
 	. = ..()
@@ -226,13 +226,13 @@
 		return ..()
 
 	if(active)
-		balloon_alert(wearer, "unidade ativa!")
+		balloon_alert(wearer, "Unidade Ativa!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 
 	for(var/obj/item/part as anything in get_parts())
 		if(part.loc != src)
-			balloon_alert(user, "parts extended!")
+			balloon_alert(user, "Peças estendidas!")
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 			return FALSE
 
@@ -245,42 +245,42 @@
 		if(!core)
 			balloon_alert(user, "sem núcleo!")
 			return ITEM_INTERACT_BLOCKING
-		balloon_alert(user, "removing core...")
+		balloon_alert(user, "removendo o núcleo...")
 		wrench.play_tool_sound(src, 100)
 		if(!wrench.use_tool(src, user, 3 SECONDS) || !open)
-			balloon_alert(user, "interrompido!")
+			balloon_alert(user, "Interrompido!")
 			return ITEM_INTERACT_BLOCKING
 		wrench.play_tool_sound(src, 100)
-		balloon_alert(user, "core removed")
+		balloon_alert(user, "núcleo removido")
 		core.forceMove(drop_location())
 		return ITEM_INTERACT_SUCCESS
 	return NONE
 
 /obj/item/mod/control/screwdriver_act(mob/living/user, obj/item/screwdriver)
 	if(active || activating || ai_controller)
-		balloon_alert(user, "unidade ativa!")
+		balloon_alert(user, "Unidade Ativa!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "[open ? "closing" : "opening"] cover...")
+	balloon_alert(user, "[open ? "closing" : "opening"]Cubra...")
 	screwdriver.play_tool_sound(src, 100)
 	if(screwdriver.use_tool(src, user, 1 SECONDS))
 		if(active || activating)
-			balloon_alert(user, "unidade ativa!")
+			balloon_alert(user, "Unidade Ativa!")
 			return ITEM_INTERACT_SUCCESS
 		screwdriver.play_tool_sound(src, 100)
-		balloon_alert(user, "cover [open ? "closed" : "opened"]")
+		balloon_alert(user, "Capa.[open ? "closed" : "opened"]")
 		open = !open
 	else
-		balloon_alert(user, "interrompido!")
+		balloon_alert(user, "Interrompido!")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/mod/control/crowbar_act(mob/living/user, obj/item/crowbar)
 	if(!open)
-		balloon_alert(user, "cobertura fechada!")
+		balloon_alert(user, "Cobertura fechada!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return ITEM_INTERACT_BLOCKING
 	if(!allowed(user))
-		balloon_alert(user, "acesso insuficiente!")
+		balloon_alert(user, "Acessível!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return ITEM_INTERACT_BLOCKING
 	if(SEND_SIGNAL(src, COMSIG_MOD_MODULE_REMOVAL, user) & MOD_CANCEL_REMOVAL)
@@ -300,7 +300,7 @@
 		crowbar.play_tool_sound(src, 100)
 		SEND_SIGNAL(src, COMSIG_MOD_MODULE_REMOVED, user)
 		return ITEM_INTERACT_SUCCESS
-	balloon_alert(user, "no modules!")
+	balloon_alert(user, "Sem módulos!")
 	playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 	return ITEM_INTERACT_BLOCKING
 
@@ -309,18 +309,18 @@
 	if(istype(tool, /obj/item/pai_card))
 		// Bubber Edit Start - Proteans can't interface with AIs
 		if(istype(src, /obj/item/mod/control/pre_equipped/protean))
-			balloon_alert(user, "unable to interface")
+			balloon_alert(user, "Incapaz de interagir")
 			return NONE
 		// Bubber Edit End
 		if(!open)
-			balloon_alert(user, "cobertura fechada!")
+			balloon_alert(user, "Cobertura fechada!")
 			return NONE // shoves the card in the storage anyways
 		insert_pai(user, tool)
 		return ITEM_INTERACT_SUCCESS
 	if(istype(tool, /obj/item/mod/paint))
 		var/obj/item/mod/paint/paint_kit = tool
 		if(active || activating)
-			balloon_alert(user, "unidade ativa!")
+			balloon_alert(user, "Unidade Ativa!")
 			return ITEM_INTERACT_BLOCKING
 		if(LAZYACCESS(modifiers, RIGHT_CLICK)) // Right click
 			if(paint_kit.editing_mod == src)
@@ -338,7 +338,7 @@
 			return ITEM_INTERACT_SUCCESS
 	if(istype(tool, /obj/item/mod/module))
 		if(!open)
-			balloon_alert(user, "cobertura fechada!")
+			balloon_alert(user, "Cobertura fechada!")
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return ITEM_INTERACT_BLOCKING
 		install(tool, user)
@@ -346,16 +346,16 @@
 		return ITEM_INTERACT_SUCCESS
 	if(istype(tool, /obj/item/mod/core))
 		if(!open)
-			balloon_alert(user, "cobertura fechada!")
+			balloon_alert(user, "Cobertura fechada!")
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return ITEM_INTERACT_BLOCKING
 		if(core)
-			balloon_alert(user, "already has core!")
+			balloon_alert(user, "Já tem núcleo!")
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/mod/core/attacking_core = tool
 		attacking_core.install(src)
-		balloon_alert(user, "core installed")
+		balloon_alert(user, "núcleo instalado")
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return ITEM_INTERACT_SUCCESS
 	if(open)
@@ -382,19 +382,19 @@
 
 /obj/item/mod/control/emag_act(mob/user, obj/item/card/emag/emag_card)
 	locked = !locked
-	balloon_alert(user, "access [locked ? "trancado" : "destrancado"]")
+	balloon_alert(user, "Acesso[locked ? "trancado" : "destrancado"]")
 	return TRUE
 
 /obj/item/mod/control/emp_act(severity)
 	. = ..()
 	if(!active || !wearer)
 		return
-	to_chat(wearer, span_notice("[severity > 1 ? "Light" : "Strong"] electromagnetic pulse detected!"))
+	to_chat(wearer, span_notice("[severity > 1 ? "Light" : "Strong"]Pulso eletromagnético detectado!"))
 	if(. & EMP_PROTECT_CONTENTS)
 		return
 	selected_module?.deactivate(display_message = TRUE)
 	wearer.apply_damage(5 / severity, BURN, spread_damage=TRUE)
-	to_chat(wearer, span_danger("You feel [src] heat up from the EMP, burning you slightly."))
+	to_chat(wearer, span_danger("Você sente[src]esquentar do PEM, queimando você ligeiramente."))
 	if(wearer.stat < UNCONSCIOUS && prob(10))
 		wearer.emote("scream")
 
@@ -435,9 +435,9 @@
 
 		if("deploy", "undeploy")
 			owner.visible_message(
-				span_warning("[user] tries to [action_key] [owner]'s [src]..."),
-				span_userdanger("[user] is trying to [action_key] your [src]!"),
-				blind_message = span_hear("You hear rustling."),
+				span_warning("[user]Tenta.[action_key] [owner]'s[src]..."),
+				span_userdanger("[user]está tentando[action_key]Sua[src]!"),
+				blind_message = span_hear("Você ouve barulho."),
 				ignored_mobs = user,
 			)
 			INVOKE_ASYNC(src, PROC_REF(attempt_strip_deploy), owner, user, action_key)
@@ -445,9 +445,9 @@
 
 		if("activate_mod", "deactivate_mod")
 			owner.visible_message(
-				span_warning("[user] tries to press [owner]'s [src]'s power button..."),
-				span_userdanger("[user] is trying to press your [src]'s power button!"),
-				blind_message = span_hear("You hear rustling."),
+				span_warning("[user]\"Tenta pressionar\"[owner]'s[src]O botão de energia..."),
+				span_userdanger("[user]está tentando pressionar seu[src]O botão de energia!"),
+				blind_message = span_hear("Você ouve barulho."),
 				ignored_mobs = user,
 			)
 			INVOKE_ASYNC(src, PROC_REF(attempt_strip_activate), owner, user)
@@ -460,8 +460,8 @@
 	if(!do_after(user, strip_delay, owner))
 		return
 	owner.visible_message(
-		span_warning("[user] [message]s [owner]'s [src]."),
-		span_userdanger("[user] [message]s your [src]!"),
+		span_warning("[user] [message]S[owner]'s[src]."),
+		span_userdanger("[user] [message]É o seu[src]!"),
 		ignored_mobs = user,
 	)
 	quick_deploy(user)
@@ -470,8 +470,8 @@
 	if(!do_after(user, strip_delay, owner))
 		return
 	owner.visible_message(
-		span_warning("[user] presses [owner]'s [src]'s power button."),
-		span_userdanger("[user] presses your [src]'s power button!"),
+		span_warning("[user]Pressiona[owner]'s[src]O botão de energia."),
+		span_userdanger("[user]Pressiona o seu[src]O botão de energia!"),
 		ignored_mobs = user,
 	)
 	toggle_activate(user)
@@ -629,24 +629,24 @@
 	for(var/obj/item/mod/module/old_module as anything in modules)
 		if(is_type_in_list(new_module, old_module.incompatible_modules) || is_type_in_list(old_module, new_module.incompatible_modules))
 			if(user && !silent) // Bubber Edit: Silent arg
-				balloon_alert(user, "incompatible with [old_module]!")
+				balloon_alert(user, "incompatível com[old_module]!")
 				playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return FALSE //Bubber Edit: Return False
 	var/complexity_with_module = complexity
 	complexity_with_module += new_module.complexity
 	if(complexity_with_module > complexity_max)
 		if(user && !silent) // Bubber Edit: Silent arg
-			balloon_alert(user, "above complexity max!")
+			balloon_alert(user, "Acima da complexidade máxima!")
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE //Bubber Edit: Return False
 	if(!new_module.has_required_parts(mod_parts))
 		if(user && !silent) // Bubber Edit: Silent arg
-			balloon_alert(user, "lacking required parts!")
+			balloon_alert(user, "Faltam peças necessárias!")
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE //Bubber Edit:
 	if(!new_module.can_install(src))
 		if(user && !silent) // Bubber Edit: Silent arg
-			balloon_alert(user, "can't install!")
+			balloon_alert(user, "Não posso instalar!")
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE // Bubber edit: Return False
 	if(SEND_SIGNAL(src, COMSIG_MOD_TRY_INSTALL_MODULE, new_module, user) & MOD_ABORT_INSTALL)
@@ -667,7 +667,7 @@
 		new_module.on_part_activation()
 		new_module.part_activated = TRUE
 	if(user) // Bubber Edit: Silent Arg
-		balloon_alert(user, "[new_module] added")
+		balloon_alert(user, "[new_module]Adicionado.")
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 	return TRUE // Bubber Edit: Return True
 /obj/item/mod/control/proc/uninstall(obj/item/mod/module/old_module, deleting = FALSE)
@@ -689,11 +689,11 @@
 
 /obj/item/mod/control/proc/update_access(mob/user, obj/item/card/id/card)
 	if(!allowed(user))
-		balloon_alert(user, "acesso insuficiente!")
+		balloon_alert(user, "Acessível!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
 	req_access = card.access.Copy()
-	balloon_alert(user, "access updated")
+	balloon_alert(user, "Acesso atualizado")
 
 /obj/item/mod/control/proc/get_charge_source()
 	return core?.charge_source()
@@ -759,7 +759,7 @@
 	wearer?.update_equipment_speed_mods()
 
 /obj/item/mod/control/proc/power_off()
-	balloon_alert(wearer, "sem energia!")
+	balloon_alert(wearer, "Sem energia!")
 	toggle_activate(wearer, force_deactivate = TRUE)
 
 /obj/item/mod/control/proc/set_mod_color(new_color)
@@ -814,14 +814,14 @@
 	SIGNAL_HANDLER
 
 	if(HAS_TRAIT(src, TRAIT_SPEED_POTIONED))
-		to_chat(user, span_warning("[src] has already been coated with red, that's as fast as it'll go!"))
+		to_chat(user, span_warning("[src]Já foi revestido de vermelho, que é o mais rápido que vai!"))
 		return SPEED_POTION_STOP
 
 	if(active)
-		to_chat(user, span_warning("It's too dangerous to smear [speed_potion] on [src] while it's active!"))
+		to_chat(user, span_warning("É muito perigoso manchar[speed_potion]Vamos.[src]Enquanto está ativo!"))
 		return SPEED_POTION_STOP
 
-	to_chat(user, span_notice("You slather the red gunk over [src], making it faster."))
+	to_chat(user, span_notice("Você desfaz a gosma vermelha[src], tornando mais rápido."))
 	set_mod_color(color_transition_filter(COLOR_RED))
 	ADD_TRAIT(src, TRAIT_SPEED_POTIONED, SLIME_POTION_TRAIT)
 	update_speed()

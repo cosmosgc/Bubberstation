@@ -169,7 +169,7 @@
 	if(who_placed_us)
 		ADD_TRAIT(grilled_result, TRAIT_FOOD_CHEF_MADE, who_placed_us)
 
-	grill_source.visible_message("<span class='[positive_result ? "notice" : "warning"]'>[parent] turns into \a [grilled_result]!</span>")
+	grill_source.visible_message("<span class='[positive_result ? "notice" : "warning"]'>[parent]Se transformar em\a [grilled_result]!</span>")
 	grilled_result.pixel_x = original_object.pixel_x
 	grilled_result.pixel_y = original_object.pixel_y
 	qdel(parent)
@@ -188,11 +188,11 @@
 
 	if(positive_result)
 		if(current_cook_time <= required_cook_time * 0.75)
-			examine_list += span_notice("[parent] probably needs to be cooked a bit longer!")
+			examine_list += span_notice("[parent]Provavelmente precisa ser cozido um pouco mais!")
 		else if(current_cook_time <= required_cook_time)
-			examine_list += span_notice("[parent] seems to be almost finished cooking!")
+			examine_list += span_notice("[parent]Parece estar quase terminando de cozinhar!")
 	else
-		examine_list += span_danger("[parent] should probably not be put on the grill.")
+		examine_list += span_danger("[parent]Provavelmente não deveria ser colocado na grelha.")
 
 /datum/component/grillable/proc/add_grilled_item_overlay(datum/source, list/overlays)
 	SIGNAL_HANDLER

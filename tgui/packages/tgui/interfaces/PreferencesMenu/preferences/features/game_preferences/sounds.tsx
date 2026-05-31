@@ -8,63 +8,63 @@ import {
 import { FeatureDropdownInput } from '../dropdowns';
 
 export const sound_ambience_volume: Feature<number> = {
-  name: 'Ambience volume',
+  name: 'Volume de ambiente',
   category: 'SOUND',
   description: `Ambience refers to the more noticeable ambient sounds that play on occasion.`,
   component: FeatureSliderInput,
 };
 
 export const sound_breathing: FeatureToggle = {
-  name: 'Enable breathing sounds',
+  name: 'Activar sons respiratórios',
   category: 'SOUND',
-  description: 'When enabled, hear breathing sounds when using internals.',
+  description: 'Quando habilitado, ouvir sons de respiração quando usar internos.',
   component: CheckboxInput,
 };
 
 export const sound_announcements: FeatureToggle = {
-  name: 'Enable announcement sounds',
+  name: 'Activar sons de anúncio',
   category: 'SOUND',
-  description: 'When enabled, hear sounds for command reports, notices, etc.',
+  description: 'Quando habilitado, ouvir sons de relatórios de comando, avisos, etc.',
   component: CheckboxInput,
 };
 
 export const sound_ghost_poll_prompt: FeatureChoiced = {
-  name: 'Ghost poll prompt',
+  name: 'Chamada de pesquisa fantasma.',
   category: 'SOUND',
-  description: 'Choose which sound prompt to play on getting ghost polls.',
+  description: 'Escolha qual é o sinal de som para fazer pesquisas fantasmas.',
   component: FeatureDropdownInput,
 };
 
 export const sound_ghost_poll_prompt_volume: Feature<number> = {
-  name: 'Ghost poll prompt volume',
+  name: 'Volume da sondagem fantasma.',
   category: 'SOUND',
-  description: 'The volume that ghost poll prompts will play at.',
+  description: 'O volume em que a pesquisa fantasma vai tocar.',
   component: FeatureSliderInput,
 };
 
 export const sound_combatmode: FeatureToggle = {
-  name: 'Enable combat mode sound',
+  name: 'Activar o som do modo de combate',
   category: 'SOUND',
-  description: 'When enabled, hear sounds when toggling combat mode.',
+  description: 'Quando habilitado, ouvir sons quando alternando modo de combate.',
   component: CheckboxInput,
 };
 
 export const sound_instruments: Feature<number> = {
-  name: 'Instruments volume',
+  name: 'Volume de instrumentos',
   category: 'SOUND',
-  description: 'Volume of instruments.',
+  description: 'Volume de instrumentos.',
   component: FeatureSliderInput,
 };
 
 export const sound_jukebox: Feature<number> = {
-  name: 'Jukebox volume',
+  name: 'Volume Jukebox',
   category: 'SOUND',
-  description: 'Volume of jukebox tracks.',
+  description: 'Volume de rastros de jukebox.',
   component: FeatureSliderInput,
 };
 
 export const sound_tts: FeatureChoiced = {
-  name: 'Enable TTS',
+  name: 'Activar TTS',
   category: 'SOUND',
   description: `
     When enabled, be able to hear text-to-speech sounds in game.
@@ -74,34 +74,34 @@ export const sound_tts: FeatureChoiced = {
 };
 
 export const sound_tts_volume: Feature<number> = {
-  name: 'TTS Volume',
+  name: 'Volume TTS',
   category: 'SOUND',
-  description: 'The volume that the text-to-speech sounds will play at.',
+  description: 'O volume em que o texto vai tocar.',
   component: FeatureSliderInput,
 };
 
 export const sound_lobby_volume: Feature<number> = {
-  name: 'Lobby music volume',
+  name: 'Lobby, volume de música.',
   category: 'SOUND',
   component: FeatureSliderInput,
 };
 
 export const sound_midi: Feature<number> = {
-  name: 'Admin music volume',
+  name: 'Volume de música do administrador',
   category: 'SOUND',
-  description: 'Volume of admin musics.',
+  description: 'Volume de músicas administrativas.',
   component: FeatureSliderInput,
 };
 
 export const sound_ship_ambience_volume: Feature<number> = {
-  name: 'Ship ambience volume',
+  name: 'Volume de ambiente da nave',
   category: 'SOUND',
   description: `Ship ambience refers to the low ambient buzz that plays on loop.`,
   component: FeatureSliderInput,
 };
 
 export const sound_achievement: FeatureChoiced = {
-  name: 'Achievement unlock sound',
+  name: 'A conquista destrava o som',
   category: 'SOUND',
   description: `
     The sound that's played when unlocking an achievement.
@@ -111,8 +111,8 @@ export const sound_achievement: FeatureChoiced = {
 };
 
 export const sound_ai_vox: Feature<number> = {
-  name: 'AI VOX announcements volume',
+  name: 'AI VOX anuncia volume',
   category: 'SOUND',
-  description: 'Volume of vocal AI announcements (also known as "VOX").',
+  description: 'Volume de anúncios vocais de IA (também conhecido como "VOX").',
   component: FeatureSliderInput,
 };

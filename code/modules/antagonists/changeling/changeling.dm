@@ -245,7 +245,7 @@
 
 /datum/antagonist/changeling/farewell()
 	if(owner.current)
-		to_chat(owner.current, span_userdanger("You grow weak and lose your powers! You are no longer a changeling and are stuck in your current form!"))
+		to_chat(owner.current, span_userdanger("Você fica fraco e perde seus poderes! Você não é mais um metamorfo e está preso em sua forma atual!"))
 
 /*
  * Instantiate the cellular emporium for the changeling.
@@ -404,28 +404,28 @@
 		CRASH("Changeling purchase_power attempted to purchase an invalid typepath! (got: [sting_path])")
 
 	if(purchased_powers[sting_path])
-		to_chat(owner.current, span_warning("We have already evolved this ability!"))
+		to_chat(owner.current, span_warning("Nós já evoluímos essa habilidade!"))
 		return FALSE
 
 	if(genetic_points < initial(sting_path.dna_cost))
-		to_chat(owner.current, span_warning("We have reached our capacity for abilities!"))
+		to_chat(owner.current, span_warning("Alcançamos nossa capacidade de habilidades!"))
 		return FALSE
 
 	if(absorbed_count < initial(sting_path.req_dna))
-		to_chat(owner.current, span_warning("We lack the DNA to evolve this ability!"))
+		to_chat(owner.current, span_warning("Falta-nos o DNA para evoluir esta habilidade!"))
 		return FALSE
 
 	if(true_absorbs < initial(sting_path.req_absorbs))
-		to_chat(owner.current, span_warning("We lack the absorbed DNA to evolve this ability!"))
+		to_chat(owner.current, span_warning("Fala o DNA absorvido para evoluir essa habilidade!"))
 		return FALSE
 
 	if(initial(sting_path.dna_cost) < 0)
-		to_chat(owner.current, span_warning("We cannot evolve this ability!"))
+		to_chat(owner.current, span_warning("Não podemos evoluir essa habilidade!"))
 		return FALSE
 
 	//To avoid potential exploits by buying new powers while in stasis, which clears your verblist. // Probably not a problem anymore, but whatever.
 	if(HAS_TRAIT(owner.current, TRAIT_DEATHCOMA))
-		to_chat(owner.current, span_warning("We lack the energy to evolve new abilities right now!"))
+		to_chat(owner.current, span_warning("Falta-nos energia para desenvolver novas habilidades agora!"))
 		return FALSE
 
 	var/success = give_power(sting_path)
@@ -447,7 +447,7 @@
 	var/datum/action/changeling/new_action = new power_path()
 
 	if(!new_action)
-		to_chat(owner.current, "This is awkward. Changeling power purchase failed, please report this bug to a coder!")
+		to_chat(owner.current, "Isso é estranho. A troca de energia falhou, por favor, relate este bug para um codificador!")
 		CRASH("Changeling give_power was unable to grant a new changeling action for path [power_path]!")
 
 	purchased_powers[power_path] = new_action
@@ -462,18 +462,18 @@
  */
 /datum/antagonist/changeling/proc/readapt()
 	if(!ishuman(owner.current) || ismonkey(owner.current))
-		to_chat(owner.current, span_warning("We can't remove our evolutions in this form!"))
+		to_chat(owner.current, span_warning("Não podemos remover nossas evoluções desta forma!"))
 		return FALSE
 
 	if(HAS_TRAIT_FROM(owner.current, TRAIT_DEATHCOMA, CHANGELING_TRAIT))
-		to_chat(owner.current, span_warning("We are too busy reforming ourselves to readapt right now!"))
+		to_chat(owner.current, span_warning("Estamos muito ocupados reformando-nos para readaptar agora!"))
 		return FALSE
 
 	if(!can_respec)
-		to_chat(owner.current, span_warning("You lack the power to readapt your evolutions!"))
+		to_chat(owner.current, span_warning("Falta-lhe o poder de readaptar suas evoluções!"))
 		return FALSE
 
-	to_chat(owner.current, span_notice("We have removed our evolutions from this form, and are now ready to readapt."))
+	to_chat(owner.current, span_notice("Removemos nossas evoluções desta forma, e agora estamos prontos para reajustar."))
 	remove_changeling_powers()
 	can_respec -= 1
 	SSblackbox.record_feedback("tally", "changeling_power_purchase", 1, "Readapt")
@@ -513,32 +513,32 @@
 		var/datum/changeling_profile/top_profile = stored_profiles[1]
 		if(top_profile.dna.is_same_as(user.dna) && stored_profiles.len > dna_max)
 			if(verbose)
-				to_chat(user, span_warning("We have reached our capacity to store genetic information! We must transform before absorbing more."))
+				to_chat(user, span_warning("Alcançamos nossa capacidade de armazenar informações genéticas! Devemos nos transformar antes de absorver mais."))
 			return FALSE
 
 	if(!target.has_dna())
 		if(verbose)
-			to_chat(user, span_warning("[target] is not compatible with our biology."))
+			to_chat(user, span_warning("[target]Não é compatível com nossa biologia."))
 		return FALSE
 	if(has_profile_with_dna(target.dna))
 		if(verbose)
-			to_chat(user, span_warning("We already have this DNA in storage!"))
+			to_chat(user, span_warning("Já temos esse DNA armazenado!"))
 		return FALSE
 	if(HAS_TRAIT(target, TRAIT_NO_DNA_COPY))
 		if(verbose)
-			to_chat(user, span_warning("[target] is not compatible with our biology."))
+			to_chat(user, span_warning("[target]Não é compatível com nossa biologia."))
 		return FALSE
 	if(HAS_TRAIT(target, TRAIT_BADDNA))
 		if(verbose)
-			to_chat(user, span_warning("[target]'s DNA is ruined beyond usability!"))
+			to_chat(user, span_warning("[target]O DNA está arruinado além da usabilidade!"))
 		return FALSE
 	if(HAS_TRAIT(target, TRAIT_HUSK))
 		if(verbose)
-			to_chat(user, span_warning("[target]'s body is ruined beyond usability!"))
+			to_chat(user, span_warning("[target]O corpo está arruinado além da usabilidade!"))
 		return FALSE
 	if(!ishuman(target) || ismonkey(target))//Absorbing monkeys is entirely possible, but it can cause issues with transforming. That's what lesser form is for anyway!
 		if(verbose)
-			to_chat(user, span_warning("We could gain no benefit from absorbing a lesser creature."))
+			to_chat(user, span_warning("Não poderíamos nos beneficiar de absorver uma criatura menor."))
 		return FALSE
 
 	return TRUE
@@ -787,7 +787,7 @@
  */
 /datum/antagonist/changeling/proc/admin_restore_appearance(mob/admin)
 	if(!stored_profiles.len || !iscarbon(owner.current))
-		to_chat(admin, span_danger("Resetting DNA failed!"))
+		to_chat(admin, span_danger("Repor o DNA falhou!"))
 		return
 
 	var/mob/living/carbon/carbon_owner = owner.current
@@ -1121,9 +1121,9 @@
 	// SKYRAT EDIT REMOVAL START - No greentext
 	/*
 	if(changeling_win)
-		parts += span_greentext("The changeling was successful!")
+		parts += span_greentext("O metamorfo foi bem sucedido!")
 	else
-		parts += span_redtext("The changeling has failed.")
+		parts += span_redtext("O metamorfo falhou.")
 	*/
 	// SKYRAT EDIT REMOVAL END - No greentext
 
@@ -1172,8 +1172,7 @@
 
 /datum/antagonist/changeling/headslug/greet()
 	play_stinger()
-	to_chat(owner, span_bolddanger("You are a fresh changeling birthed from a headslug! \
-		You aren't as strong as a normal changeling, as you are newly born."))
+	to_chat(owner, span_bolddanger("Você é um metamorfo recém nascido de um headslug! Você não é tão forte como um metamorfo normal, como você é recém-nascido."))
 
 
 /datum/antagonist/changeling/space
@@ -1185,7 +1184,7 @@
 
 /datum/antagonist/changeling/space/greet()
 	play_stinger()
-	to_chat(src, span_changeling("Our mind stirs to life, from the depths of an endless slumber..."))
+	to_chat(src, span_changeling("Nossa mente se move para a vida, das profundezas de um sono sem fim..."))
 
 /datum/outfit/changeling
 	name = "Changeling"

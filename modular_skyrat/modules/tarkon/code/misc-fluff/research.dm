@@ -13,8 +13,8 @@
 
 /datum/techweb_node/tarkon
 	id = "tarkontech"
-	display_name = "Tarkon Industries Technology"
-	description = "Tools used by Tarkon Industries."
+	display_name = "Tecnologia das Indústrias Tarkon"
+	description = "Ferramentas usadas pelas Indústrias Tarkon."
 	required_items_to_unlock = list(
 		/obj/item/mod/construction/plating/tarkon,
 		/obj/item/construction/rcd/arcd/tarkon,
@@ -35,8 +35,8 @@
 
 /datum/techweb_node/tarkonturret
 	id = "tarkondefence"
-	display_name = "Tarkon Industries Defensive Technology"
-	description = "Tarkon Industries Blackrust Salvage division's defense designs."
+	display_name = "Indústrias Tarkon Tecnologia Defensiva"
+	description = "Indústrias Tarkon Blackrust Salvage projetos de defesa."
 	prereq_ids = list(TECHWEB_NODE_TARKON, TECHWEB_NODE_BASIC_ARMS, TECHWEB_NODE_AI)
 	required_items_to_unlock = list(
 		/obj/item/mod/construction/plating/tarkon,
@@ -53,7 +53,7 @@
 
 /datum/design/hoplite_assembly
 	name = "Hoplite Turret Assembly"
-	desc = "A deployable turret kit designed for basic construct defense. This one makes the \"Hoplite\" model."
+	desc = "Um kit de torret implantável projetado para defesa de construção básica. Este faz o\"Hoplita.\"Modelo."
 	id = "hoplite_assembly"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(
@@ -69,7 +69,7 @@
 	)
 /datum/design/cerberus_assembly
 	name = "Cerberus Turret Assembly"
-	desc = "A deployable turret kit designed for basic construct defense. This one makes the \"Cerberus\" model."
+	desc = "Um kit de torret implantável projetado para defesa de construção básica. Este faz o\"Cerberus.\"Modelo."
 	id = "cerberus_assembly"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(
@@ -85,7 +85,7 @@
 	)
 /datum/design/target_designator
 	name = "Turret Target Designator"
-	desc = "A basic target designator designed to control magazine-fed turrets."
+	desc = "Um designador de alvo básico projetado para controlar torres alimentadas por revistas."
 	id = "target_designator"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(
@@ -134,7 +134,7 @@
 
 /datum/design/tarkonrcd
 	name = "Tarkon R.C.D"
-	desc = "A Rapid Construction Device made by Tarkon Industries. Capable of ranged construction."
+	desc = "Um dispositivo de construção rápida feito pelas Indústrias Tarkon. Capaz de construção variada."
 	id = "rcd_tarkon"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(
@@ -152,7 +152,7 @@
 
 /datum/design/tarkonhackc
 	name = "Tarkon Hack-C Signaller"
-	desc = "A small device that signals a 'Hack-C' drone to repair specialized machinery."
+	desc = "Um pequeno dispositivo que sinaliza um drone\"Hack... C\" para reparar máquinas especializadas."
 	id = "hackc"
 	build_path = /obj/item/hackc
 	category = list(
@@ -190,7 +190,7 @@
 	. = ..()
 	if(!in_range(user, src) && !isobserver(user))
 		return
-	. += span_notice("Insert [EXAMINE_HINT("Research Notes")] to generate points.")
+	. += span_notice("Inserir[EXAMINE_HINT("Research Notes")]Para gerar pontos.")
 
 /obj/machinery/rnd/server/tarkon/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/research_notes) && stored_research)
@@ -203,7 +203,7 @@
 
 /obj/machinery/rnd/production/protolathe/tarkon
 	name = "Tarkon Industries Protolathe"
-	desc = "Converts raw materials into useful objects. Refurbished and updated from its previous, limited capabilities."
+	desc = "Transforma matérias-primas em objetos úteis. Renovado e atualizado de suas capacidades anteriores, limitadas."
 	circuit = /obj/item/circuitboard/machine/protolathe/tarkon
 	stripe_color = "#350f04"
 

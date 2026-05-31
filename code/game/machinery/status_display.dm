@@ -44,7 +44,7 @@ GLOBAL_DATUM_INIT(status_font, /datum/font, new /datum/font/tiny_unicode/size_12
 
 /obj/item/wallframe/status_display
 	name = "status display frame"
-	desc = "Used to build status displays, just secure to the wall."
+	desc = "Usado para construção mostra status, apenas seguro na parede."
 	icon_state = "unanchoredstatusdisplay"
 	custom_materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT * 7)
 	result_path = /obj/machinery/status_display/evac
@@ -57,11 +57,11 @@ GLOBAL_DATUM_INIT(status_font, /datum/font, new /datum/font/tiny_unicode/size_12
 
 /obj/machinery/status_display/wrench_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
-	balloon_alert(user, "[anchored ? "un" : ""]securing...")
+	balloon_alert(user, "[anchored ? "un" : ""]Segurando...")
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 6 SECONDS))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
-		balloon_alert(user, "[anchored ? "un" : ""]secured")
+		balloon_alert(user, "[anchored ? "un" : ""]Seguro.")
 		deconstruct()
 		return TRUE
 
@@ -177,11 +177,7 @@ GLOBAL_LIST_EMPTY(key_to_status_display)
 
 /obj/machinery/status_display/update_appearance(updates=ALL)
 	. = ..()
-	if( \
-		(machine_stat & (NOPOWER|BROKEN)) || \
-		(current_mode == SD_BLANK) || \
-		(current_mode != SD_PICTURE && message1 == "" && message2 == "") \
-	)
+	if( 		(machine_stat & (NOPOWER|BROKEN)) || 		(current_mode == SD_BLANK) || 		(current_mode != SD_PICTURE && message1 == "" && message2 == "") 	)
 		set_light(0)
 		return
 	set_light(1.5, 0.7, LIGHT_COLOR_FAINT_CYAN) // blue light
@@ -253,14 +249,14 @@ GLOBAL_LIST_EMPTY(key_to_status_display)
 /obj/machinery/status_display/examine(mob/user)
 	. = ..()
 	if(LAZYLEN(active_displays))
-		. += span_notice("<hr>It's currently broadcasting. You can see...")
+		. += span_notice("<hr>Está transmitindo. Você pode ver...")
 		var/has_any = FALSE
 		for(var/obj/effect/abstract/greenscreen_display/display as anything in active_displays)
 			for(var/atom/movable/thing as anything in display.displaying)
-				. += span_notice("&bull; \A [thing.name]")
+				. += span_notice("&bull;\A [thing.name]")
 				has_any = TRUE
 		if(!has_any)
-			. += span_notice("&bull; Nothing.")
+			. += span_notice("Nada.")
 
 	var/obj/effect/overlay/status_display_text/message1_overlay = get_status_text(message_key_1)
 	var/obj/effect/overlay/status_display_text/message2_overlay = get_status_text(message_key_2)
@@ -729,7 +725,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 /// Pictograph display which the AI can use to emote.
 /obj/machinery/status_display/ai
 	name = "\improper AI display"
-	desc = "A small screen which the AI can use to present itself."
+	desc = "Uma pequena tela que a IA pode usar para se apresentar."
 	current_mode = SD_PICTURE
 	var/emotion = AI_DISPLAY_DONT_GLOW
 	var/frequency = FREQ_STATUS_DISPLAYS
@@ -795,8 +791,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
 			update_appearance()
 
 /obj/item/circuit_component/status_display
-	display_name = "Status Display"
-	desc = "Output text and pictures to a status display."
+	display_name = "Visualização do Estado"
+	desc = "Texto de saída e imagens para uma exibição de status."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	var/datum/port/input/option/command
@@ -1011,8 +1007,7 @@ GLOBAL_LIST_EMPTY_TYPED(greenscreen_displays, /obj/effect/abstract/greenscreen_d
 /// A stationary object which "records" anyone who is in front of it and broadcasts them to all status displays
 /obj/machinery/greenscreen_camera
 	name = "captain-caster"
-	desc = "A camera that can be used to display whomever is in front of it across all status displays. \
-		Pair with a greenscreen for best results."
+	desc = "Uma câmera que pode ser usada para exibir quem estiver na frente dela em todas as telas de status. Emparelhe com uma tela verde para melhores resultados."
 	density = FALSE
 	icon = 'icons/obj/machines/stationary_camera.dmi'
 	icon_state = "camera"
@@ -1042,7 +1037,7 @@ GLOBAL_LIST_EMPTY_TYPED(greenscreen_displays, /obj/effect/abstract/greenscreen_d
 
 /obj/machinery/greenscreen_camera/examine(mob/user)
 	. = ..()
-	. += span_notice("It's currently [isnull(display) ? "not " : ""]broadcasting. <i>Click it to change that.</i>")
+	. += span_notice("É atualmente[isnull(display) ? "not " : ""]transmissão.<i>Clique para mudar isso.</i>")
 
 /obj/machinery/greenscreen_camera/interact(mob/user)
 	. = ..()

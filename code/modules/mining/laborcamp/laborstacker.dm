@@ -4,7 +4,7 @@
 
 /obj/machinery/mineral/labor_claim_console
 	name = "point claim console"
-	desc = "A stacking console with an electromagnetic writer, used to track ore mined by prisoners."
+	desc = "Um console de empilhamento com um escritor eletromagnético, usado para rastrear minério minado por prisioneiros."
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "console"
 	density = FALSE
@@ -163,8 +163,8 @@
 		return FALSE
 
 	obj_flags |= EMAGGED
-	balloon_alert(user, "id authenticator short-circuited")
-	visible_message(span_warning("[src] lets out a few sparks!"))
+	balloon_alert(user, "id autornticador curto-circuito")
+	visible_message(span_warning("[src]solta algumas faíscas!"))
 	do_sparks(2, TRUE, src)
 	return TRUE
 
@@ -202,7 +202,7 @@
 
 /obj/machinery/mineral/labor_points_checker
 	name = "points checking console"
-	desc = "A console used by prisoners to check the progress on their quotas. Simply swipe a prisoner ID."
+	desc = "Um console usado pelos prisioneiros para verificar o progresso de suas cotas. Basta roubar uma identidade de prisioneiro."
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "console"
 	density = FALSE

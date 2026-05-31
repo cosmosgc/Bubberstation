@@ -24,7 +24,7 @@
 	SET_PLANE_EXPLICIT(ice_overlay, ABOVE_GAME_PLANE, hallucinator)
 	hallucinator.client?.images |= ice_overlay
 	ADD_TRAIT(hallucinator, TRAIT_IMMOBILIZED, HALLUCINATION_TRAIT)
-	to_chat(hallucinator, span_userdanger("You become frozen in a cube!"))
+	to_chat(hallucinator, span_userdanger("Você fica congelado em um cubo!"))
 	hallucinator.cause_hallucination(/datum/hallucination/fake_alert/cold, "ice hallucination", duration = (ice_duration + 6 SECONDS))
 	if(play_ice_sound)
 		hallucinator.cause_hallucination(/datum/hallucination/fake_sound/weird/ice_crack, "ice hallucination")

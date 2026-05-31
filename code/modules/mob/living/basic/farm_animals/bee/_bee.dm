@@ -7,7 +7,7 @@
 
 /mob/living/basic/bee
 	name = "bee"
-	desc = "Buzzy buzzy bee, stingy sti- Ouch!"
+	desc = "Abelhas zunidas, mesquinhas..."
 	icon_state = ""
 	icon_living = ""
 	icon = 'icons/mob/simple/bees.dmi'
@@ -81,7 +81,7 @@
 		reee[beegent.type] = 5
 	holder.AddComponentFrom(SOURCE_EDIBLE_INNATE, /datum/component/edible, reee, null, BEE_FOODGROUPS, 10, 0, list("bee"), null, 10)
 	SEND_SIGNAL(src, COMSIG_LIVING_SCOOPED_UP, picker, holder)
-	picker.visible_message(span_warning("[picker] scoops up [src]!"))
+	picker.visible_message(span_warning("[picker]Pegamos.[src]!"))
 	picker.put_in_hands(holder)
 
 /mob/living/basic/bee/will_escape_storage()
@@ -91,7 +91,7 @@
 	. = ..()
 
 	if(isnull(beehome))
-		. += span_warning("This bee is homeless!")
+		. += span_warning("Esta abelha é sem-teto!")
 
 /mob/living/basic/bee/Destroy()
 	if(beehome)
@@ -209,7 +209,7 @@
 
 /mob/living/basic/bee/queen
 	name = "queen bee"
-	desc = "She's the queen of bees, BZZ BZZ!"
+	desc = "Ela é a rainha das abelhas, BZZ BZZ!"
 	icon_base = "queen"
 	is_queen = TRUE
 	ai_controller = /datum/ai_controller/basic_controller/queen_bee
@@ -218,7 +218,7 @@
 	return FALSE
 
 /mob/living/basic/bee/toxin
-	desc = "This bee is holding some sort of fluid."
+	desc = "Esta abelha está segurando algum tipo de fluido."
 
 /mob/living/basic/bee/toxin/Initialize(mapload)
 	. = ..()
@@ -241,7 +241,7 @@
 
 /obj/item/queen_bee
 	name = "queen bee"
-	desc = "She's the queen of bees, BZZ BZZ!"
+	desc = "Ela é a rainha das abelhas, BZZ BZZ!"
 	icon_state = "queen_item"
 	inhand_icon_state = ""
 	icon = 'icons/mob/simple/bees.dmi'
@@ -279,28 +279,28 @@
 		if(queen?.beegent)
 			new_bee.queen.assign_reagent(queen.beegent) //Bees use the global singleton instances of reagents, so we don't need to worry about one bee being deleted and her copies losing their reagents.
 		user.put_in_active_hand(new_bee)
-		user.visible_message(span_notice("[user] injects [src] with royal bee jelly, causing it to split into two bees, MORE BEES!"),span_warning("You inject [src] with royal bee jelly, causing it to split into two bees, MORE BEES!"))
+		user.visible_message(span_notice("[user]Injeções[src]com geléia de abelha real, fazendo com que ela se dividisse em duas abelhas, mais abelhas!"),span_warning("Você injeta.[src]com geléia de abelha real, fazendo com que ela se dividisse em duas abelhas, mais abelhas!"))
 		return
 	var/datum/reagent/chemical = needle.reagents.get_master_reagent()
 	if(isnull(chemical))
 		return
 	if(!(chemical.chemical_flags & REAGENT_CAN_BE_SYNTHESIZED))
-		to_chat(user, span_warning("[chemical.name] cannot be inserted into a bee's genome!"))
+		to_chat(user, span_warning("[chemical.name]Não pode ser inserido no genoma de uma abelha!"))
 		return
 	if(chemical.type == queen.beegent?.type)
-		to_chat(user, span_warning("[queen] already has this chemical!"))
+		to_chat(user, span_warning("[queen]Já tem este químico!"))
 		return
 	if(!(needle.reagents.has_reagent(chemical.type, 5)))
-		to_chat(user, span_warning("You don't have enough units of that chemical to modify the bee's DNA!"))
+		to_chat(user, span_warning("Você não tem unidades suficientes para modificar o DNA da abelha!"))
 		return
 	needle.reagents.remove_reagent(chemical.type, 5)
 	var/datum/reagent/bee_chem = GLOB.chemical_reagents_list[chemical.type]
 	queen.assign_reagent(bee_chem)
-	user.visible_message(span_warning("[user] injects [src]'s genome with [chemical.name], mutating its DNA!"),span_warning("You inject [src]'s genome with [chemical.name], mutating its DNA!"))
+	user.visible_message(span_warning("[user]Injeções[src]É o genoma com[chemical.name]Mutando seu DNA!"),span_warning("Você injeta.[src]É o genoma com[chemical.name]Mutando seu DNA!"))
 	name = queen.name
 
 /obj/item/queen_bee/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] eats [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]come[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	user.say("IT'S HIP TO EAT BEES!")
 	qdel(src)
 	return TOXLOSS
@@ -313,7 +313,7 @@
 
 /obj/item/trash/bee
 	name = "bee"
-	desc = "No wonder the bees are dying out, you monster."
+	desc = "Não admira que as abelhas estejam morrendo, seu monstro."
 	icon = 'icons/mob/simple/bees.dmi'
 	icon_state = "bee_item"
 	///the reagent the bee carry

@@ -1,7 +1,7 @@
 /// The Greatest (animal) Of All Time. Cud chewing, shin-kicking, kitchen-dwelling nuisance.
 /mob/living/basic/goat
 	name = "goat"
-	desc = "Not known for their pleasant disposition."
+	desc = "Não são conhecidos por sua disposição agradável."
 	icon_state = "goat"
 	icon_living = "goat"
 	icon_dead = "goat_dead"
@@ -83,8 +83,8 @@
 		edible_bodypart.dismember()
 
 	living_target.visible_message(
-		span_warning("[src] takes a big chomp out of [living_target]!"),
-		span_userdanger("[src] takes a big chomp out of your [edible_bodypart || "body"]!"),
+		span_warning("[src]Tira uma grande coceira de[living_target]!"),
+		span_userdanger("[src]Tira uma grande coceira do seu[edible_bodypart || "body"]!"),
 	)
 
 	return COMPONENT_HOSTILE_NO_ATTACK
@@ -94,7 +94,7 @@
 	if (!COOLDOWN_FINISHED(src, gleam_cooldown))
 		return
 	visible_message(
-		span_danger("[src] gets an evil-looking gleam in [p_their()] eye."),
+		span_danger("[src]tem um brilho de aparência maligna em[p_their()]Olho."),
 	)
 	COOLDOWN_START(src, gleam_cooldown, gleam_delay)
 

@@ -24,7 +24,7 @@ export const VaultController = (props) => {
     <Window width={300} height={120}>
       <Window.Content>
         <Section
-          title="Lock Status: "
+          title="Estado de bloqueio:"
           buttons={
             <Button
               content={doorstatus ? 'Locked' : 'Unlocked'}

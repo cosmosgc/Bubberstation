@@ -9,7 +9,7 @@
  */
 /obj/machinery/rnd/destructive_analyzer
 	name = "destructive analyzer"
-	desc = "Learn science by destroying things!"
+	desc = "Aprenda ciência destruindo coisas!"
 	icon_state = "d_analyzer"
 	base_icon_state = "d_analyzer"
 	circuit = /obj/item/circuitboard/machine/destructive_analyzer
@@ -34,9 +34,9 @@
 		return
 
 	if(loaded_item)
-		. += span_notice("[EXAMINE_HINT("Left-Click")] to remove loaded item inside.")
+		. += span_notice("[EXAMINE_HINT("Left-Click")]Para remover o item carro dentro.")
 	else
-		. += span_notice("An item can be loaded inside via [EXAMINE_HINT("Left-Click")].")
+		. += span_notice("Um item pode ser tratado por dentro.[EXAMINE_HINT("Left-Click")].")
 
 /obj/machinery/rnd/destructive_analyzer/base_item_interaction(mob/living/user, obj/item/weapon, list/modifiers)
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
@@ -46,12 +46,12 @@
 	if(!is_insertion_ready(user))
 		return ..()
 	if(!user.transferItemToLoc(weapon, src))
-		to_chat(user, span_warning("\The [weapon] is stuck to your hand, you cannot put it in \the [src]!"))
+		to_chat(user, span_warning("\The [weapon]está preso em sua mão, você não pode colocá-lo em\the [src]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	busy = TRUE
 	loaded_item = weapon
-	to_chat(user, span_notice("You place \the [weapon] inside \the [src]."))
+	to_chat(user, span_notice("Seu lugar.\the [weapon]Dentro.\the [src]."))
 	flick("[base_icon_state]_la", src)
 	addtimer(CALLBACK(src, PROC_REF(finish_loading)), 1 SECONDS)
 	return ITEM_INTERACT_SUCCESS
@@ -111,7 +111,7 @@
 	switch(action)
 		if("eject_item")
 			if(busy)
-				balloon_alert(user, "already busy!")
+				balloon_alert(user, "Já está ocupado!")
 				return TRUE
 			if(loaded_item)
 				unload_item()

@@ -1,7 +1,6 @@
 /obj/item/wallframe/status_display/vitals
 	name = "vitals display frame"
-	desc = "Used to build vitals displays. Secure on a wall nearby a stasis bed, operating table, \
-		or another machine that can hold patients such as cryo cells or sleepers."
+	desc = "Usado para criar sinais vitais. Segura em uma parede perto de uma cama de estase, mesa de operação, ou outra máquina que pode segurar pacientes como células criogênicas ou adormecidos."
 	custom_materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 4,
 		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 2,
@@ -11,7 +10,7 @@
 
 /obj/item/wallframe/status_display/vitals/advanced
 	name = "advanced vitals display frame"
-	desc = "Used to build advanced vitals displays. Performs a more detailed scan of the patient than the basic display."
+	desc = "Costumava construir sinais vitais avançados. Faz uma varredura mais detalhada do paciente do que a tela básica."
 	custom_materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 4,
 		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 2,
@@ -23,7 +22,7 @@
 /// A wall mounted screen that showcases the vitals of a patient nearby.
 /obj/machinery/vitals_reader
 	name = "vitals display"
-	desc = "A screen that displays the vitals of a patient."
+	desc = "Uma tela que mostra os sinais vitais de um paciente."
 	icon = 'icons/obj/machines/vitals_monitor.dmi'
 	icon_state = "frame"
 	verb_say = "beeps"
@@ -77,8 +76,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/vitals_reader, 32)
 
 /obj/machinery/vitals_reader/advanced
 	name = "advanced vitals display"
-	desc = "A screen that displays the vitals of a patient. \
-		Performs a more detailed scan of the patient than a basic display."
+	desc = "Uma tela que mostra os sinais vitais de um paciente. Faz uma varredura mais detalhada do paciente do que uma exibição básica."
 	frame = /obj/item/wallframe/status_display/vitals/advanced
 	advanced = TRUE
 
@@ -165,16 +163,16 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/vitals_reader/advanced, 32)
 
 	if(isnull(connected))
 		if(find_machine())
-			balloon_alert(user, "connected to [connected.name]")
+			balloon_alert(user, "Conectados a[connected.name]")
 		else
-			balloon_alert(user, "no connectable machines nearby!")
+			balloon_alert(user, "Não há máquinas conectáveis por perto!")
 		return ITEM_INTERACT_SUCCESS
 
 	balloon_alert(user, "disconnecting...")
 	if(!do_after(user, 2 SECONDS, target = src))
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "disconnected from [connected.name]")
+	balloon_alert(user, "Desligado de[connected.name]")
 	set_connection(null)
 	return ITEM_INTERACT_SUCCESS
 
@@ -210,21 +208,20 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/vitals_reader/advanced, 32)
 		return
 
 	if(isnull(connected))
-		. += span_notice("The display is currently not connected to anything. \
-			Use a [EXAMINE_HINT("multitool")] to connect it to a neighboring machine.")
+		. += span_notice("O display não está conectado a nada. Use um.[EXAMINE_HINT("multitool")]para ligá-lo a uma máquina vizinha.")
 		return
 
 	if(isnull(patient) || user.is_blind())
 		return
 
 	if(machine_stat & EMPED)
-		. += span_warning("The display is flickering erratically!")
+		. += span_warning("A tela está piscando erraticamente!")
 		return
 
 	if(!issilicon(user) && !isobserver(user) && get_dist(src, user) > 2)
-		. += span_notice("<i>You are too far away to read the display.</i>")
+		. += span_notice("<i>Você está muito longe para ler a exibição.</i>")
 	else if(HAS_TRAIT(user, TRAIT_DUMB) || !user.can_read(src, reading_check_flags = READING_CHECK_LITERACY, silent = TRUE))
-		. += span_warning("You try to comprehend the display, but it's too complex for you to understand.")
+		. += span_warning("Você tenta entender a exibição, mas é muito complexo para você entender.")
 	else
 		. += healthscan(user, patient, mode = SCANNER_CONDENSED, advanced = src.advanced, tochat = FALSE)
 		. += chemscan(user, patient, tochat = FALSE)
@@ -530,8 +527,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/vitals_reader/advanced, 32)
 			playsound(src, 'sound/items/tools/welder.ogg', 100, TRUE)
 
 /obj/item/circuit_component/vitals_monitor
-	display_name = "Vitals Monitor"
-	desc = "Allows you to interface with a vitals monitor to read a patient's status."
+	display_name = "Monitor de sinos vitais."
+	desc = "Permite que você interage com um monitor de sinais vitais para ler o estado de um paciente."
 
 	/// Reference to the linked vitals monitor
 	var/obj/machinery/vitals_reader/linked_monitor
@@ -619,8 +616,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/vitals_reader/advanced, 32)
 	addtimer(CALLBACK(src, PROC_REF(delayed_reading)), 1 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
 
 /// Reads a patient value and applies a random amount of error if the monitor is emped or emagged
-#define GET_PATIENT_VALUE(monitor, value_to_get) \
-	round(monitor.patient.##value_to_get * ((monitor.machine_stat & (EMPED|EMAGGED)) ? rand(0, 100) * 0.01 : 1), DAMAGE_PRECISION)
+#define GET_PATIENT_VALUE(monitor, value_to_get) 	round(monitor.patient.##value_to_get * ((monitor.machine_stat & (EMPED|EMAGGED)) ? rand(0, 100) * 0.01 : 1), DAMAGE_PRECISION)
 
 /obj/item/circuit_component/vitals_monitor/process(seconds_per_tick)
 	if(isnull(linked_monitor?.patient))

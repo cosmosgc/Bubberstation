@@ -62,16 +62,16 @@ export const BountyBoardContent = (props) => {
     bountyText,
     user,
   } = data;
-  const color = 'rgba(13, 13, 213, 0.7)';
-  const backColor = 'rgba(50, 50, 170, 0.5)';
+  const color = '[13, 13, 213, 0,7]';
+  const backColor = '(50, 50, 170, 0.5)';
   return (
     <>
       <Section
-        title={'User Details'}
+        title={'Detalhes do usuário'}
         buttons={
           <Button
             icon="power-off"
-            content="Reset Account"
+            content="Reiniciar Conta"
             onClick={() => act('clear')}
           />
         }
@@ -118,7 +118,7 @@ export const BountyBoardContent = (props) => {
                 <BlockQuote pt={1} align="center">
                   <i>&quot;{request.description}&quot;</i>
                 </BlockQuote>
-                <Section title="Request Applicants">
+                <Section title="Candidatos Solicitadores">
                   {applicants?.map(
                     (applicant) =>
                       applicant.request_id === request.acc_number && (
@@ -140,7 +140,7 @@ export const BountyBoardContent = (props) => {
                               fluid
                               p={1}
                               icon="cash-register"
-                              tooltip="Pay out to this applicant."
+                              tooltip="Pague para este candidato."
                               onClick={() =>
                                 act('payApplicant', {
                                   applicant: applicant.requestee_id,
@@ -158,7 +158,7 @@ export const BountyBoardContent = (props) => {
           ))}
         </Flex.Item>
         <Flex.Item>
-          <Collapsible title="New Bounty" width="220px" color="green">
+          <Collapsible title="Nova recompensa" width="220px" color="green">
             <Section>
               <TextArea
                 height="150px"
@@ -186,7 +186,7 @@ export const BountyBoardContent = (props) => {
                 />
                 <Button
                   icon="print"
-                  content="Submit bounty"
+                  content="Submeter recompensa"
                   disabled={user.name === 'Unknown'}
                   onClick={() => act('createBounty')}
                 />

@@ -37,7 +37,7 @@
 
 /obj/structure/alien/gelpod
 	name = "gelatinous mound"
-	desc = "A mound of jelly-like substance encasing something inside."
+	desc = "Um monte de substância gelatinosa envolvendo algo dentro."
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "gelmound"
 
@@ -49,7 +49,7 @@
  */
 /obj/structure/alien/resin
 	name = "resin"
-	desc = "Looks like some kind of thick resin."
+	desc = "Parece um tipo de resina grossa."
 	icon = 'icons/obj/smooth_structures/alien/resin_wall.dmi'
 	icon_state = "resin_wall-0"
 	base_icon_state = "resin_wall"
@@ -80,7 +80,7 @@
 
 /obj/structure/alien/resin/wall
 	name = "resin wall"
-	desc = "Thick resin solidified into a wall."
+	desc = "Resina grossa solidificada em uma parede."
 	icon = 'icons/obj/smooth_structures/alien/resin_wall.dmi'
 	icon_state = "resin_wall-0"
 	base_icon_state = "resin_wall"
@@ -93,17 +93,17 @@
 
 /// meant for one lavaland ruin or anywhere that has simplemobs who can push aside structures
 /obj/structure/alien/resin/wall/immovable
-	desc = "Dense resin solidified into a wall."
+	desc = "Resina densa solidificada em uma parede."
 	move_resist = MOVE_FORCE_VERY_STRONG
 
 /obj/structure/alien/resin/wall/creature
 	name = "gelatinous wall"
-	desc = "Thick material shaped into a wall. Yuck."
+	desc = "Material grosso em forma de parede. Eca."
 	color = "#8EC127"
 
 /obj/structure/alien/resin/membrane
 	name = "resin membrane"
-	desc = "Resin just thin enough to let light pass through."
+	desc = "Resina fina o suficiente para deixar a luz passar."
 	icon = 'icons/obj/smooth_structures/alien/resin_membrane.dmi'
 	icon_state = "resin_membrane-0"
 	base_icon_state = "resin_membrane"
@@ -119,7 +119,7 @@
 ///Used in the big derelict ruin exclusively.
 /obj/structure/alien/resin/membrane/creature
 	name = "gelatinous membrane"
-	desc = "A strange combination of thin, gelatinous material."
+	desc = "Uma estranha combinação de material fino e gelatinoso."
 	color = "#4BAE56"
 
 /*
@@ -131,7 +131,7 @@
 /obj/structure/alien/weeds
 	gender = PLURAL
 	name = "resin floor"
-	desc = "A thick resin surface covers the floor."
+	desc = "Uma espessa superfície de resina cobre o chão."
 	anchored = TRUE
 	density = FALSE
 	layer = ABOVE_OPEN_TURF_LAYER
@@ -253,7 +253,7 @@
 
 /obj/structure/alien/weeds/node
 	name = "glowing resin"
-	desc = "Blue bioluminescence shines from beneath the surface."
+	desc = "A bioluminescência azul brilha debaixo da superfície."
 	icon = 'icons/obj/smooth_structures/alien/weednode.dmi'
 	icon_state = "weednode-0"
 	base_icon_state = "weednode"
@@ -310,7 +310,7 @@
 
 /obj/structure/alien/weeds/creature
 	name = "gelatinous floor"
-	desc = "A thick gelatinous surface covers the floor.  Someone get the galoshes."
+	desc = "Uma espessa superfície gelatinosa cobre o chão. Alguém pegue as galochas."
 	color = "#4BAE56"
 
 
@@ -332,7 +332,7 @@
 
 /obj/structure/alien/egg
 	name = "egg"
-	desc = "A large mottled egg."
+	desc = "Um grande ovo mottled."
 	icon_state = "egg_growing"
 	base_icon_state = "egg"
 	density = FALSE
@@ -389,22 +389,22 @@
 	if(user.get_organ_by_type(/obj/item/organ/alien/plasmavessel))
 		switch(status)
 			if(BURSTING)
-				to_chat(user, span_notice("The child is hatching out."))
+				to_chat(user, span_notice("A criança está nascendo."))
 				return
 			if(BURST)
-				to_chat(user, span_notice("You clear the hatched egg."))
+				to_chat(user, span_notice("Você limpa o ovo."))
 				playsound(loc, 'sound/effects/blob/attackblob.ogg', 100, TRUE)
 				qdel(src)
 				return
 			if(GROWING)
-				to_chat(user, span_notice("The child is not developed yet."))
+				to_chat(user, span_notice("A criança ainda não está desenvolvida."))
 				return
 			if(GROWN)
-				to_chat(user, span_notice("You retrieve the child."))
+				to_chat(user, span_notice("Você recupera a criança."))
 				Burst(kill=FALSE)
 				return
 	else
-		to_chat(user, span_notice("It feels slimy."))
+		to_chat(user, span_notice("Parece viscoso."))
 		user.changeNext_move(CLICK_CD_MELEE)
 
 

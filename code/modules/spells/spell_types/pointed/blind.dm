@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/blind
 	name = "Blind"
-	desc = "This spell temporarily blinds a single target."
+	desc = "Este feitiço cega temporariamente um único alvo."
 	button_icon_state = "blind"
 	ranged_mousepointer = 'icons/effects/mouse_pointers/blind_target.dmi'
 
@@ -33,11 +33,11 @@
 /datum/action/cooldown/spell/pointed/blind/cast(mob/living/carbon/human/cast_on)
 	. = ..()
 	if(cast_on.can_block_magic(antimagic_flags))
-		to_chat(cast_on, span_notice("Your eye itches, but it passes momentarily."))
-		to_chat(owner, span_warning("The spell had no effect!"))
+		to_chat(cast_on, span_notice("Seu olho coça, mas passa momentaneamente."))
+		to_chat(owner, span_warning("O feitiço não teve efeito!"))
 		return FALSE
 
-	to_chat(cast_on, span_warning("Your eyes cry out in pain!"))
+	to_chat(cast_on, span_warning("Seus olhos gritam de dor!"))
 	cast_on.adjust_temp_blindness(eye_blind_duration)
 	cast_on.set_eye_blur_if_lower(eye_blur_duration)
 	return TRUE

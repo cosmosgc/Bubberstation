@@ -1,6 +1,6 @@
 /obj/item/storage/briefcase
 	name = "briefcase"
-	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
+	desc = "É feito de couro falso AUTENTIC e ainda tem uma etiqueta de preço anexado. Seu dono deve ser um verdadeiro profissional."
 	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "briefcase"
 	inhand_icon_state = "briefcase"
@@ -49,17 +49,17 @@
 		if(istype(potentially_paper, /obj/item/paper) || istype(potentially_paper, /obj/item/paperplane))
 			papers_found += potentially_paper
 	if(!papers_found.len || !item_loc)
-		user.visible_message(span_suicide("[user] bashes [user.p_them()]self in the head with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user]Bache.[user.p_them()]eu mesmo na cabeça com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 		return BRUTELOSS
 
-	user.visible_message(span_suicide("[user] opens [src] and all of [user.p_their()] papers fly out!"))
+	user.visible_message(span_suicide("[user]Abre.[src]e tudo de[user.p_their()]Os papéis voam!"))
 	for(var/obj/item/paper as anything in papers_found)	//Throws the papers in a random direction
 		var/turf/turf_to_throw_at = prob(20) ? item_loc : get_ranged_target_turf(item_loc, pick(GLOB.alldirs))
 		paper.throw_at(turf_to_throw_at, 2)
 
 	stoplag(1 SECONDS)
 	user.say("ARGGHH, HOW WILL I GET THIS WORK DONE NOW?!!")
-	user.visible_message(span_suicide("[user] looks overwhelmed with paperwork! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Parece sobrecarregado com papelada! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return OXYLOSS
 
 // Empty subtype
@@ -67,7 +67,7 @@
 	return
 
 /obj/item/storage/briefcase/sniper
-	desc = "Its label reads \"genuine hardened Captain leather\", but suspiciously has no other tags or branding. Smells like L'Air du Temps."
+	desc = "Seu rótulo diz\"genuíno endurecido Capitão couro\"Mas suspeitamente não tem outras marcas ou marcas. Cheira a L'Air du Temps."
 	force = 10
 
 /obj/item/storage/briefcase/sniper/PopulateContents()
@@ -85,7 +85,7 @@
  */
 /obj/item/storage/briefcase/secure
 	name = "secure briefcase"
-	desc = "A large briefcase with a digital locking system."
+	desc = "Uma maleta grande com um sistema de bloqueio digital."
 	icon_state = "secure"
 	base_icon_state = "secure"
 	inhand_icon_state = "sec-case"
@@ -104,7 +104,7 @@
 /// Base container used for gimmick disks.
 /obj/item/storage/briefcase/secure/digital_storage
 	name = "digi-case"
-	desc = "It's made of AUTHENTIC digital leather and has a price-tag still attached. Its owner must be a real professional."
+	desc = "É feito de couro digital AUTENTIC e ainda tem uma etiqueta de preço. Seu dono deve ser um verdadeiro profissional."
 	icon_state = "secure"
 	base_icon_state = "secure"
 	inhand_icon_state = "sec-case"
@@ -162,7 +162,7 @@
 	if(!isturf(user.loc)) //no setting up in a locker
 		return
 	add_fingerprint(user)
-	user.visible_message(span_notice("[user] starts setting down [src]..."), span_notice("You start setting up [pad]..."))
+	user.visible_message(span_notice("[user]Começa a se estabelecer.[src]..."), span_notice("Você começa a montar[pad]..."))
 	if(do_after(user, 3 SECONDS, target = user))
 		pad.forceMove(get_turf(src))
 		pad.update_indicator()
@@ -177,7 +177,7 @@
 	if(remote.pad == WEAKREF(src.pad))
 		return ..()
 	remote.pad = WEAKREF(src.pad)
-	to_chat(user, span_notice("You link [pad] to [remote]."))
+	to_chat(user, span_notice("Você liga.[pad]Para[remote]."))
 	return ITEM_INTERACT_BLOCKING
 
 /obj/item/storage/briefcase/gun
@@ -191,7 +191,7 @@
 /obj/item/storage/briefcase/gun/examine_more(mob/user)
 	. = ..()
 	if(user.is_holding(src))
-		. += span_notice("Upon closer inspection, you notice a hole in the side of the briefcase.")
+		. += span_notice("Após uma inspeção mais próxima, nota-se um buraco no lado da maleta.")
 
 /obj/item/storage/briefcase/gun/preloaded
 

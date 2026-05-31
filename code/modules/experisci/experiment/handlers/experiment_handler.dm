@@ -94,7 +94,7 @@
 	if ((isnull(selected_experiment) && !(config_flags & EXPERIMENT_CONFIG_ALWAYS_ACTIVE)) || (config_flags & EXPERIMENT_CONFIG_SILENT_FAIL))
 		return
 	playsound(user, 'sound/machines/buzz/buzz-sigh.ogg', 25)
-	to_chat(user, span_notice("[target] is not related to your currently selected experiment."))
+	to_chat(user, span_notice("[target]Não está relacionado com seu experimento atualmente selecionado."))
 
 /**
  * Checks that an experiment can be run using the provided target, used for preventing the cancellation of the attack chain inappropriately
@@ -122,7 +122,7 @@
 /datum/component/experiment_handler/proc/try_run_handheld_experiment_async(datum/source, atom/target, mob/user)
 	if (selected_experiment == null && !(config_flags & EXPERIMENT_CONFIG_ALWAYS_ACTIVE))
 		if(!(config_flags & EXPERIMENT_CONFIG_SILENT_FAIL))
-			to_chat(user, span_notice("You do not have an experiment selected!"))
+			to_chat(user, span_notice("Você não tem um experimento selecionado!"))
 		return
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/research, SKILL_SPEED_MODIFIER) //SKYRAT EDIT: Research Skill (simple research)
 	if(!(config_flags & EXPERIMENT_CONFIG_IMMEDIATE_ACTION) && !do_after(user, 1 SECONDS * skill_modifier, target = target)) //SKYRAT EDIT: Research Skill (simple research)
@@ -133,11 +133,11 @@
 			user.Beam(target, icon_state = "rped_upgrade", time = 0.5 SECONDS)
 		// BUBBERSTATION EDIT END
 		playsound(user, 'sound/machines/ping.ogg', 25)
-		to_chat(user, span_notice("You scan [target]."))
+		to_chat(user, span_notice("Você verifica.[target]."))
 		user.mind.adjust_experience(/datum/skill/research, 5) //SKYRAT EDIT: Research Skill (simple research)
 	else if(!(config_flags & EXPERIMENT_CONFIG_SILENT_FAIL))
 		playsound(user, 'sound/machines/buzz/buzz-sigh.ogg', 25)
-		to_chat(user, span_notice("[target] is not related to your currently selected experiment."))
+		to_chat(user, span_notice("[target]Não está relacionado com seu experimento atualmente selecionado."))
 
 /**
  * Hooks on destructive scans to try and run an experiment (When using a handheld handler)
@@ -148,7 +148,7 @@
 	if (selected_experiment == null)
 		if(!(config_flags & EXPERIMENT_CONFIG_SILENT_FAIL))
 			playsound(our_scanner, 'sound/machines/buzz/buzz-sigh.ogg', 25)
-			to_chat(our_scanner, span_notice("No experiment selected!"))
+			to_chat(our_scanner, span_notice("Nenhum experimento selecionado!"))
 		return
 	var/successful_scan
 	for(var/scan_target in scanned_atoms)
@@ -156,7 +156,7 @@
 			successful_scan = TRUE
 	if(successful_scan)
 		playsound(our_scanner, 'sound/machines/ping.ogg', 25)
-		to_chat(our_scanner, span_notice("The scan succeeds."))
+		to_chat(our_scanner, span_notice("A varredura tem sucesso."))
 	else if(!(config_flags & EXPERIMENT_CONFIG_SILENT_FAIL))
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 25)
 		our_scanner.say("The scan did not result in anything.")

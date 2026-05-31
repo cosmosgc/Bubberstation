@@ -10,7 +10,7 @@
 /datum/surgery_operation/organ/repair/coronary_bypass/mechanic/synth
 	name = "access hydraulic pump internals"
 	rnd_name = "Hydraulic Pump Maintenance"
-	desc = "A mechanical surgery procedure designed to repair an androids internal hydraulic pump."
+	desc = "Um procedimento cirúrgico mecânico projetado para reparar uma bomba hidráulica interna dos andróides."
 	implements = list(
 		TOOL_CROWBAR = 0.8,
 		TOOL_SCALPEL = 1.5,
@@ -34,9 +34,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You begin to tighten the clamps around [FORMAT_ORGAN_OWNER(organ)]'s hydraulic pump..."),
-		span_notice("[surgeon] begins to repair [FORMAT_ORGAN_OWNER(organ)]'s hydraulic pump with [tool]!"),
-		span_notice("[surgeon] begins to repair [FORMAT_ORGAN_OWNER(organ)]'s hydraulic pump!"),
+		span_notice("Você começa a apertar as pinças ao redor[FORMAT_ORGAN_OWNER(organ)]Bomba hidráulica..."),
+		span_notice("[surgeon]começa a reparar[FORMAT_ORGAN_OWNER(organ)]Bomba hidráulica com[tool]!"),
+		span_notice("[surgeon]começa a reparar[FORMAT_ORGAN_OWNER(organ)]Bomba hidráulica!"),
 	)
 	display_pain(organ.owner, "The pain in your chest is unbearable! You can barely take it anymore!")
 
@@ -46,9 +46,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You successfully graft a bypass channel onto [FORMAT_ORGAN_OWNER(organ)]'s hydraulic pump"),
-		span_notice("[surgeon] finishes clamping tubing down around [FORMAT_ORGAN_OWNER(organ)]'s hydraulic pump with [tool]."),
-		span_notice("[surgeon] finishes clamping tubing down around [FORMAT_ORGAN_OWNER(organ)]'s hydraulic pump"),
+		span_notice("Você enxertou com sucesso um canal de desvio em[FORMAT_ORGAN_OWNER(organ)]Bomba hidráulica"),
+		span_notice("[surgeon]Termina a fixação dos tubos ao redor.[FORMAT_ORGAN_OWNER(organ)]Bomba hidráulica com[tool]."),
+		span_notice("[surgeon]Termina a fixação dos tubos ao redor.[FORMAT_ORGAN_OWNER(organ)]Bomba hidráulica"),
 	)
 	display_pain(organ.owner, "The pain in your chest throbs, but your heart feels better than ever!")
 
@@ -59,9 +59,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("You screw up and slip your [tool] into their pump, tearing tubing off the pump!"),
-		span_warning("[surgeon] screws up, causing high pressure [blood_name] to spurt out of [FORMAT_ORGAN_OWNER(organ)]'s chest profusely!"),
-		span_warning("[surgeon] completes the surgery, but is that [blood_name] supposed to be squirting out of [FORMAT_ORGAN_OWNER(organ)]'s chest like that?"),
+		span_warning("Você estraga tudo e desliza o seu[tool]em sua bomba, rasgando tubos da bomba!"),
+		span_warning("[surgeon]Estraga tudo, causando alta pressão.[blood_name]para sair de[FORMAT_ORGAN_OWNER(organ)]É peito profusamente!"),
+		span_warning("[surgeon]completa a cirurgia, mas é que[blood_name]Deveria estar esguichando para fora[FORMAT_ORGAN_OWNER(organ)]O peito é assim?"),
 	)
 	display_pain(organ.owner, "Your chest burns; you feel like you're going insane!")
 
@@ -75,7 +75,7 @@
 /datum/surgery_operation/organ/repair/hepatectomy/mechanic/synth
 	name = "perform reagent processor maintenance"
 	rnd_name = "Reagent Processor Maintenance (Reagent Processor Repair)"
-	desc = "A mechanical surgery procedure designed to repair an android's reagent processor."
+	desc = "Uma cirurgia mecânica projetada para reparar o processador reagente de um andróide."
 	implements = list(
 		TOOL_WRENCH = 0.8,
 		TOOL_SCALPEL = 1.5,
@@ -99,9 +99,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You start to descale minerals built up in [FORMAT_ORGAN_OWNER(organ)]'s reagent processor..."),
-		span_notice("[surgeon] begins to make an incision in [FORMAT_ORGAN_OWNER(organ)]'s reagent processor with [tool]."),
-		span_notice("[surgeon] begins to make an incision in [FORMAT_ORGAN_OWNER(organ)]'s reagent processor."),
+		span_notice("Você começa a descamar minerais construídos em[FORMAT_ORGAN_OWNER(organ)]O processador de reagente..."),
+		span_notice("[surgeon]começa a fazer uma incisão em[FORMAT_ORGAN_OWNER(organ)]É o processador de reagente com[tool]."),
+		span_notice("[surgeon]começa a fazer uma incisão em[FORMAT_ORGAN_OWNER(organ)]É o processador de reagente."),
 	)
 	display_pain(organ.owner, "Your systems disconnect from your reagent processor, avoiding unnecessary errors.")
 
@@ -111,9 +111,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You successfully descale [FORMAT_ORGAN_OWNER(organ)]'s reagent processor, restoring factory settings and removing built up minerals."),
-		span_notice("[surgeon] successfully descales [FORMAT_ORGAN_OWNER(organ)]'s reagent processor, restoring factory settings and removing built up minerals."),
-		span_notice("[surgeon] successfully resets [FORMAT_ORGAN_OWNER(organ)]'s reagent processor."),
+		span_notice("Você descalça com sucesso.[FORMAT_ORGAN_OWNER(organ)]O processador reagente, restaurando as configurações da fábrica e removendo minerais construídos."),
+		span_notice("[surgeon]Com sucesso descala[FORMAT_ORGAN_OWNER(organ)]O processador reagente, restaurando as configurações da fábrica e removendo minerais construídos."),
+		span_notice("[surgeon]com sucesso reiniciado[FORMAT_ORGAN_OWNER(organ)]É o processador de reagente."),
 	)
 	display_pain(organ.owner, "Flow rate restored.")
 
@@ -123,9 +123,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("You cut the wrong part of [FORMAT_ORGAN_OWNER(organ)]'s reagent processor out of spec!"),
-		span_warning("[surgeon] follows the wrong diagram for [FORMAT_ORGAN_OWNER(organ)]'s reagent processor!"),
-		span_warning("[surgeon] finishes adjusting [FORMAT_ORGAN_OWNER(organ)]'s reagent processor... wait that isn't right..."),
+		span_warning("Você cortou a parte errada de[FORMAT_ORGAN_OWNER(organ)]O processador de reagente está fora de controle!"),
+		span_warning("[surgeon]segue o diagrama errado para[FORMAT_ORGAN_OWNER(organ)]O processador de reagente!"),
+		span_warning("[surgeon]Termina de se ajustar[FORMAT_ORGAN_OWNER(organ)]O processador de reagente... espere que não está certo..."),
 	)
 	display_pain(organ.owner, "You see errors flow across your vision!")
 
@@ -139,7 +139,7 @@
 /datum/surgery_operation/organ/repair/lobectomy/mechanic/synth
 	name = "heatsink maintenance"
 	rnd_name = "Heatsink Diagnostic (Heatsink Repair)"
-	desc = "A mechanical surgery procedure designed to repair an android's internal heatsink."
+	desc = "Um procedimento cirúrgico mecânico projetado para reparar o dissipador interno de um andróide."
 	implements = list(
 		TOOL_WRENCH = 1.05,
 		TOOL_RETRACTOR = 1.5,
@@ -160,9 +160,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You begin to tighten the bolts on [FORMAT_ORGAN_OWNER(organ)]'s heatsink..."),
-		span_notice("[surgeon] begins to tighten the bolts on [FORMAT_ORGAN_OWNER(organ)]'s heatsink using [tool]."),
-		span_notice("[surgeon] begins to tighten the bolts on [FORMAT_ORGAN_OWNER(organ)]'s heatsink."),
+		span_notice("Você começa a apertar os parafusos[FORMAT_ORGAN_OWNER(organ)]É o dissipador de calor..."),
+		span_notice("[surgeon]Começa a apertar os parafusos.[FORMAT_ORGAN_OWNER(organ)]É o dissipador de calor usando[tool]."),
+		span_notice("[surgeon]Começa a apertar os parafusos.[FORMAT_ORGAN_OWNER(organ)]É o dissipador de calor."),
 	)
 	display_pain(organ.owner, "You feel a metal clank inside your chest as [surgeon] starts to work.")
 
@@ -172,9 +172,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You successfully tighten [FORMAT_ORGAN_OWNER(organ)]'s bolts on their heatsink."),
-		span_notice("[surgeon] successfully tightened [FORMAT_ORGAN_OWNER(organ)]'s heatsink using [tool]."),
-		span_notice("[surgeon] finishes tightening [FORMAT_ORGAN_OWNER(organ)]'s heatsink."),
+		span_notice("Você aperta com sucesso.[FORMAT_ORGAN_OWNER(organ)]São parafusos no dissipador de calor."),
+		span_notice("[surgeon]Com sucesso apertado[FORMAT_ORGAN_OWNER(organ)]É o dissipador de calor usando[tool]."),
+		span_notice("[surgeon]Termina o aperto.[FORMAT_ORGAN_OWNER(organ)]É o dissipador de calor."),
 	)
 	display_pain(organ.owner, "Your internal errors clear for your temperature regulation.")
 
@@ -184,9 +184,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("You slip and barely catch the [tool] before it falls, failing to tighten [FORMAT_ORGAN_OWNER(organ)]'s heatsink down!"),
-		span_warning("[surgeon] 's butterfingers barely catches the [tool] before it falls into [FORMAT_ORGAN_OWNER(organ)]'s chest!"),
-		span_warning("[surgeon] screws up, nearly dropping the [tool] into [FORMAT_ORGAN_OWNER(organ)]'s chest!"),
+		span_warning("Você escorrega e mal pega o[tool]antes de cair, falhando em apertar[FORMAT_ORGAN_OWNER(organ)]O calor está caindo!"),
+		span_warning("[surgeon]Os dedos de manteiga mal pegam[tool]antes que caia em[FORMAT_ORGAN_OWNER(organ)]O peito!"),
+		span_warning("[surgeon]Estraga tudo, quase derrubando o[tool]em[FORMAT_ORGAN_OWNER(organ)]O peito!"),
 	)
 	display_pain(organ.owner, "You feel a dull thud in your chest; it feels like a [tool] fell into your chest cavity!")
 
@@ -200,7 +200,7 @@
 /datum/surgery_operation/organ/repair/gastrectomy/mechanic/synth
 	name = "fuel cell maintenance"
 	rnd_name = "Fuel Cell Diagnostic (Fuel Cell Repair)"
-	desc = "A mechanical surgery procedure designed to repair an android's internal fuel cell."
+	desc = "Um procedimento mecânico para reparar a célula de combustível interna de um andróide."
 	implements = list(
 		TOOL_SCREWDRIVER = 1.05,
 		TOOL_SCALPEL = 1.5,
@@ -225,9 +225,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You begin to patch the damaged section of [FORMAT_ORGAN_OWNER(organ)]'s fuel cell..."),
-		span_notice("[surgeon] begins to delicately repair [FORMAT_ORGAN_OWNER(organ)]'s fuel cell using [tool]."),
-		span_notice("[surgeon] begins to delicately repair[FORMAT_ORGAN_OWNER(organ)]'s fuel cell."),
+		span_notice("Você começa a remendar a seção danificada de[FORMAT_ORGAN_OWNER(organ)]A célula de combustível..."),
+		span_notice("[surgeon]Começa a delicadamente reparar[FORMAT_ORGAN_OWNER(organ)]Célula de combustível usando[tool]."),
+		span_notice("[surgeon]Começa a delicadamente reparar[FORMAT_ORGAN_OWNER(organ)]A célula de combustível."),
 	)
 	display_pain(organ.owner, "You feel a horrible stab in your gut!")
 
@@ -237,9 +237,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You successfully remove the damaged part of [FORMAT_ORGAN_OWNER(organ)]'s fuel cell."),
-		span_notice("[surgeon] successfully repairs the damaged part of [FORMAT_ORGAN_OWNER(organ)]'s fuel cell using [tool]."),
-		span_notice("[surgeon] successfully repairs the damaged part of [FORMAT_ORGAN_OWNER(organ)]'s fuel cell."),
+		span_notice("Você removeu com sucesso a parte danificada de[FORMAT_ORGAN_OWNER(organ)]A célula de combustível."),
+		span_notice("[surgeon]Conserta com sucesso a parte danificada de[FORMAT_ORGAN_OWNER(organ)]Célula de combustível usando[tool]."),
+		span_notice("[surgeon]Conserta com sucesso a parte danificada de[FORMAT_ORGAN_OWNER(organ)]A célula de combustível."),
 	)
 	display_pain(organ.owner, "The errors clear from your fuel cell.")
 
@@ -249,9 +249,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("You slip and puncture [FORMAT_ORGAN_OWNER(organ)]'s fuel cell!"),
-		span_warning("[surgeon] slips and punctures [FORMAT_ORGAN_OWNER(organ)]'s fuel cell with the [tool]!"),
-		span_warning("[surgeon] slips and punctures [FORMAT_ORGAN_OWNER(organ)]'s fuel cell!"),
+		span_warning("Você escorrega e perfura[FORMAT_ORGAN_OWNER(organ)]Célula de combustível!"),
+		span_warning("[surgeon]Escorregas e furos[FORMAT_ORGAN_OWNER(organ)]É a célula de combustível com o[tool]!"),
+		span_warning("[surgeon]Escorregas e furos[FORMAT_ORGAN_OWNER(organ)]Célula de combustível!"),
 	)
 	display_pain(organ.owner, "Your midsection throws additional errors; that's not right!")
 
@@ -265,7 +265,7 @@
 /datum/surgery_operation/organ/repair/brain/mechanic/synth
 	name = "perform neural debugging"
 	rnd_name = "Reset Logic Core (Posi Repair)"
-	desc = "A surgical procedure that restores the default behavior logic and personality matrix of an synthetic humanoid's neural network."
+	desc = "Um procedimento cirúrgico que restaura a lógica de comportamento padrão e a matriz de personalidade da rede neural de um humanóide sintético."
 	implements = list(
 		TOOL_MULTITOOL = 1.05,
 		TOOL_SCREWDRIVER = 4.85,
@@ -291,9 +291,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You begin to clear system corruption from [FORMAT_ORGAN_OWNER(organ)]'s [brain_type]..."),
-		span_notice("[surgeon] begins to fix [FORMAT_ORGAN_OWNER(organ)]'s [brain_type]"),
-		span_notice("[surgeon] begins to perform surgery on [FORMAT_ORGAN_OWNER(organ)]'s [brain_type]."),
+		span_notice("Você começa a limpar a corrupção do sistema de[FORMAT_ORGAN_OWNER(organ)]'s[brain_type]..."),
+		span_notice("[surgeon]Começa a consertar.[FORMAT_ORGAN_OWNER(organ)]'s[brain_type]"),
+		span_notice("[surgeon]Começa a operar em[FORMAT_ORGAN_OWNER(organ)]'s[brain_type]."),
 	)
 	display_pain(organ.owner, "You start to have fragmented thoughts!")
 
@@ -307,9 +307,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You succeed in clearing system corruption from [FORMAT_ORGAN_OWNER(organ)]'s [brain_type]."),
-		span_notice("[surgeon] successfully fixes [FORMAT_ORGAN_OWNER(organ)]'s [brain_type]."),
-		span_notice("[surgeon] completes the surgery on [FORMAT_ORGAN_OWNER(organ)]'s [brain_type]."),
+		span_notice("Você consegue limpar a corrupção do sistema.[FORMAT_ORGAN_OWNER(organ)]'s[brain_type]."),
+		span_notice("[surgeon]Conserta com sucesso.[FORMAT_ORGAN_OWNER(organ)]'s[brain_type]."),
+		span_notice("[surgeon]completa a cirurgia em[FORMAT_ORGAN_OWNER(organ)]'s[brain_type]."),
 	)
 	display_pain(organ.owner, "The fragmentation errors start clearing.")
 	if (organ.owner)
@@ -318,7 +318,7 @@
 		organ.brainmob.mind?.remove_antag_datum(/datum/antagonist/brainwashed)
 	organ.cure_all_traumas(TRAUMA_RESILIENCE_SURGERY)
 	if(organ.damage > organ.maxHealth * 0.1)
-		to_chat(surgeon, "[FORMAT_ORGAN_OWNER(organ)]'s [brain_type] still has some lasting system damage that can be cleared.")
+		to_chat(surgeon, "[FORMAT_ORGAN_OWNER(organ)]'s[brain_type]Ainda tem algum dano no sistema que pode ser limpo.")
 
 // flavor text - failure
 /datum/surgery_operation/organ/repair/brain/mechanic/synth/on_failure(obj/item/organ/brain/synth/organ, mob/living/surgeon, obj/item/tool, list/operation_args)
@@ -330,9 +330,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("You screw up, fragmenting their data!"),
-		span_warning("[surgeon] screws up, causing damage to the circuits!"),
-		span_notice("[surgeon] completes the surgery on [FORMAT_ORGAN_OWNER(organ)]'s [brain_type]. Or so they thought."),
+		span_warning("Você estraga tudo, fragmentando os dados deles!"),
+		span_warning("[surgeon]Estraga tudo, causando danos nos circuitos!"),
+		span_notice("[surgeon]completa a cirurgia em[FORMAT_ORGAN_OWNER(organ)]'s[brain_type]Ou foi o que eles pensaram."),
 	)
 	display_pain(organ.owner, "Your vision floods with errors; something is wrong!")
 	organ.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_LOBOTOMY)
@@ -347,7 +347,7 @@
 /datum/surgery_operation/organ/repair/ears/synth
 	name = "ear repair"
 	rnd_name = "Repair Auditory Microphones (Hearing Repair)" // source: i made it up
-	desc = "Repair a patient's damaged ears to restore hearing."
+	desc = "Reparar as orelhas danificadas do paciente para restaurar a audição."
 	implements = list(
 		TOOL_MULTITOOL = 1.15,
 		TOOL_SCREWDRIVER = 4.85,
@@ -376,9 +376,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You begin to repair [FORMAT_ORGAN_OWNER(organ)]'s microphones..."),
-		span_notice("[surgeon] begins to fix [FORMAT_ORGAN_OWNER(organ)]'s microphones."),
-		span_notice("[surgeon] begins to perform maintenance on [FORMAT_ORGAN_OWNER(organ)]'s microphones."),
+		span_notice("Você começa a reparar[FORMAT_ORGAN_OWNER(organ)]Os microfones..."),
+		span_notice("[surgeon]Começa a consertar.[FORMAT_ORGAN_OWNER(organ)]Os microfones."),
+		span_notice("[surgeon]começa a realizar manutenção em[FORMAT_ORGAN_OWNER(organ)]Os microfones."),
 	)
 	display_pain(organ.owner, "Your auditory input starts to crackle loudly!")
 
@@ -389,9 +389,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You successfully repair [FORMAT_ORGAN_OWNER(organ)]'s microphones."),
-		span_notice("[surgeon] successfully repair [FORMAT_ORGAN_OWNER(organ)]'s microphones."),
-		span_notice("[surgeon] successfully repair [FORMAT_ORGAN_OWNER(organ)]'s microphones."),
+		span_notice("Você reparou com sucesso.[FORMAT_ORGAN_OWNER(organ)]Os microfones."),
+		span_notice("[surgeon]Consertar com sucesso[FORMAT_ORGAN_OWNER(organ)]Os microfones."),
+		span_notice("[surgeon]Consertar com sucesso[FORMAT_ORGAN_OWNER(organ)]Os microfones."),
 	)
 	display_pain(organ.owner, "Your sensors call out in protest, but it seems like your microphones are coming back online!")
 
@@ -401,17 +401,17 @@
 		display_results(
 			surgeon,
 			organ.owner,
-			span_warning("You accidentally stab [FORMAT_ORGAN_OWNER(organ)] right in the posibrain! Or would have, if [FORMAT_ORGAN_OWNER(organ)] had a posibrain."),
-			span_warning("[surgeon] accidentally stabs [FORMAT_ORGAN_OWNER(organ)] right in the posibrain! Or would have, if [FORMAT_ORGAN_OWNER(organ)] had a posibrain."),
-			span_warning("[surgeon] accidentally stabs [FORMAT_ORGAN_OWNER(organ)] right in the posibrain!"),
+			span_warning("Você acidentalmente esfaqueou.[FORMAT_ORGAN_OWNER(organ)]bem no vasocérebro! Ou teria, se[FORMAT_ORGAN_OWNER(organ)]tinha um vasocérebro."),
+			span_warning("[surgeon]Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)]bem no vasocérebro! Ou teria, se[FORMAT_ORGAN_OWNER(organ)]tinha um vasocérebro."),
+			span_warning("[surgeon]Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)]bem no vasocérebro!"),
 		)
 		return
 
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("You accidentally stab [FORMAT_ORGAN_OWNER(organ)] right in the posibrain!"),
-		span_warning("[surgeon] accidentally stabs [FORMAT_ORGAN_OWNER(organ)] right in the posibrain!"),
-		span_warning("[surgeon] accidentally stabs [FORMAT_ORGAN_OWNER(organ)] right in the posibrain!"),
+		span_warning("Você acidentalmente esfaqueou.[FORMAT_ORGAN_OWNER(organ)]bem no vasocérebro!"),
+		span_warning("[surgeon]Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)]bem no vasocérebro!"),
+		span_warning("[surgeon]Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)]bem no vasocérebro!"),
 	)
 	display_pain(organ.owner, "You sudden are jolted by something shorting your insides!")

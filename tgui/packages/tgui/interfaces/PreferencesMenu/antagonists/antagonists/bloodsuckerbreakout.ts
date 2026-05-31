@@ -8,7 +8,7 @@ Scrape by Space Station 13, or take over it, ghoulizing your way.
 
 const BloodsuckerBreakout: Antagonist = {
   key: 'bloodsuckerlatejoin',
-  name: 'Bloodsucker (Latejoin)',
+  name: 'Sanguessuga (Latejoin)',
   description: [VAMPIRE_MECHANICAL_DESCRIPTION],
   category: Category.Latejoin,
 };

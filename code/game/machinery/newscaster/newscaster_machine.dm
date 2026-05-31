@@ -2,7 +2,7 @@
 
 /obj/machinery/newscaster
 	name = "newscaster"
-	desc = "A standard Nanotrasen-licensed newsfeed handler for use in commercial space stations. All the news you absolutely have no use for, in one place!"
+	desc = "Um atendente padrão licenciado em Nanotrasen para uso em estações espaciais comerciais. Todas as notícias que você não precisa, em um só lugar!"
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "newscaster_off"
 	base_icon_state = "newscaster"
@@ -304,7 +304,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 
 		if("createStory")
 			if(!current_channel)
-				balloon_alert(user, "select a channel first!")
+				balloon_alert(user, "Selecione um canal primeiro!")
 				return TRUE
 			var/current_channel_id = params["current"]
 			create_story(user, channel_id = current_channel_id)
@@ -495,7 +495,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 		if(!user.temporarilyRemoveItemFromInventory(attacking_item))
 			return
 		paper_remaining++
-		to_chat(user, span_notice("You insert [attacking_item] into [src]! It now holds [paper_remaining] sheet\s of paper."))
+		to_chat(user, span_notice("Você insere[attacking_item]Em[src]Ele agora segura[paper_remaining]Folhas de papel."))
 		qdel(attacking_item)
 		return
 	return ..()
@@ -509,12 +509,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 		return
 	. = ITEM_INTERACT_SUCCESS
 	if(!(machine_stat & BROKEN))
-		to_chat(user, span_notice("[src] does not need repairs."))
+		to_chat(user, span_notice("[src]Não precisa de reparos."))
 		return
 	if(!tool.tool_start_check(user, amount=1))
 		return
 	user.balloon_alert_to_viewers("started welding...", "started repairing...")
-	audible_message(span_hear("You hear welding."))
+	audible_message(span_hear("Você ouve solda."))
 	if(!tool.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(needs_repair))))
 		user.balloon_alert_to_viewers("stopped welding!", "interrupted the repair!")
 		return
@@ -523,17 +523,17 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 	set_machine_stat(machine_stat & ~BROKEN)
 
 /obj/machinery/newscaster/wrench_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("You start [anchored ? "un" : ""]securing [src]..."))
+	to_chat(user, span_notice("Você começa.[anchored ? "un" : ""]Segurando[src]..."))
 	if(!tool.use_tool(src, user, 60, volume=50))
 		return
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 	if((machine_stat & BROKEN))
-		to_chat(user, span_warning("The broken remains of [src] fall on the ground."))
+		to_chat(user, span_warning("Os restos quebrados de[src]Caia no chão."))
 		new /obj/item/stack/sheet/iron(loc, 5)
 		new /obj/item/shard(loc)
 		new /obj/item/shard(loc)
 	else
-		to_chat(user, span_notice("You [anchored ? "un" : ""]secure [src]."))
+		to_chat(user, span_notice("Você.[anchored ? "un" : ""]Seguro.[src]."))
 		new /obj/item/wallframe/newscaster(loc)
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
@@ -562,7 +562,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 
 /obj/machinery/newscaster/attack_paw(mob/living/user, list/modifiers)
 	if(!user.combat_mode)
-		to_chat(user, span_warning("The newscaster controls are far too complicated for your tiny brain!"))
+		to_chat(user, span_warning("Os controles dos repórteres são complicados demais para seu cérebro!"))
 	else
 		take_damage(5, BRUTE, MELEE)
 
@@ -602,9 +602,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 			else
 				targetcam = R.aicamera
 		else
-			to_chat(user, span_warning("You cannot interface with silicon photo uploading!"))
+			to_chat(user, span_warning("Você não pode se conectar com upload de fotos de silicone!"))
 		if(!targetcam.stored.len)
-			to_chat(user, span_bolddanger("No images saved."))
+			to_chat(user, span_bolddanger("Nenhuma imagem salva."))
 			return
 		var/datum/picture/selection = targetcam.selectpicture(user)
 		if(selection)
@@ -666,15 +666,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 
 	var/datum/feed_channel/potential_channel = GLOB.news_network.network_channels_by_name[channel_name]
 	if(potential_channel)
-		tgui_alert(user, "ERROR: Feed channel with that name already exists on the Network.", list("Okay"))
+		tgui_alert(user, "Canal de alimentação com esse nome já existe na rede.", list("Okay"))
 		return TRUE
 
 	var/list/hard_filter_result = is_ic_filtered(channel_name)
 	if(hard_filter_result)
-		tgui_alert(user, "Your channel name contains: (\"[hard_filter_result[CHAT_FILTER_INDEX_WORD]]\"), which is not allowed on this server.")
+		tgui_alert(user, "Seu nome de canal contém:\"[hard_filter_result[CHAT_FILTER_INDEX_WORD]]\"), que não é permitido neste servidor.")
 		return TRUE
 
-	var/choice = tgui_alert(user, "Please confirm feed channel creation","Network Channel Handler", list("Confirm", "Cancel"))
+	var/choice = tgui_alert(user, "Por favor, confirme a criação do canal de alimentação.","Network Channel Handler", list("Confirm", "Cancel"))
 	creating_channel = FALSE
 	if(choice != "Confirm")
 		update_static_data(user)
@@ -683,12 +683,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 	var/approval_time = CROSS_SECTOR_CANCEL_TIME
 	var/list/soft_filter_result = is_soft_ooc_filtered(channel_name)
 	if(soft_filter_result)
-		if(tgui_alert(user,"Your channel name contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to use it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(user,"Seu nome de canal contém\"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\"Tem certeza que quer usá-lo?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 			return
-		message_admins("[ADMIN_LOOKUPFLW(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \
-			They may be using a disallowed term for a cross-station newscaster channel. Increasing delay time to reject.\n\n Channel name: \"[html_encode(channel_name)]\"")
-		log_admin_private("[key_name(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \
-			They may be using a disallowed term for a cross-station newscaster channel. Increasing delay time to reject.\n\n Channel name: \"[channel_name]\"")
+		message_admins("[ADMIN_LOOKUPFLW(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". 			They may be using a disallowed term for a cross-station newscaster channel. Increasing delay time to reject.\n\n Channel name: \"[html_encode(channel_name)]\"")
+		log_admin_private("[key_name(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". 			They may be using a disallowed term for a cross-station newscaster channel. Increasing delay time to reject.\n\n Channel name: \"[channel_name]\"")
 		approval_time = EXTENDED_CROSS_SECTOR_CANCEL_TIME
 
 	if(!cross_sector)
@@ -700,11 +698,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 	user.log_message("is about to create a cross-sector newscaster channel with the following name: [channel_name]", LOG_GAME)
 	to_chat(
 		GLOB.admins,
-		span_adminnotice( \
-			"<b color='orange'>Cross-sector channel creation (OUTGOING):</b> [ADMIN_LOOKUPFLW(user)] is about to create a cross-sector \
-			newscaster channel \"[html_encode(channel_name)]\" (will autoapprove in [DisplayTimeText(approval_time)]): \
-			<b><a href='byond://?src=[REF(src)];reject_channel_creation=1'>REJECT</a></b>"\
-		)
+		span_adminnotice( 			"<b color='orange'>Criação de canais intersetoriais.</b> [ADMIN_LOOKUPFLW(user)]está prestes a criar um canal intersetorial de televisão.\"[html_encode(channel_name)]\"(vai auto-aprovar[DisplayTimeText(approval_time)]): 			<b><a href='byond://?src=[REF(src)];reject_channel_creation=1'>REJEITO</a></b>"		)
 	)
 	channel_approval_timer = addtimer(CALLBACK(src, PROC_REF(finish_channel_creation), user, channel_locked, TRUE, approval_time), approval_time, TIMER_STOPPABLE)
 
@@ -725,7 +719,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 		return
 
 	if (isnull(channel_approval_timer))
-		to_chat(usr, span_warning("It's too late!"))
+		to_chat(usr, span_warning("É tarde demais!"))
 		return
 
 	deltimer(channel_approval_timer)
@@ -763,7 +757,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 			existing_authors += iterated_feed_channel.author
 	if(!newscaster_username || (newscaster_username in existing_authors))
 		creating_channel = FALSE
-		tgui_alert(user, "ERROR: User cannot be found or already has an owned feed channel.", list("Okay"))
+		tgui_alert(user, "Usuário não pode ser encontrado ou já tem um canal de alimentação próprio.", list("Okay"))
 		return TRUE
 	creating_channel = TRUE
 	return TRUE
@@ -800,15 +794,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
  */
 /obj/machinery/newscaster/proc/toggle_photo(mob/user)
 	if(current_image)
-		balloon_alert(user, "current photo cleared.")
+		balloon_alert(user, "A foto atual está limpa.")
 		current_image = null
 		return TRUE
 
 	attach_photo(user)
 	if(current_image)
-		balloon_alert(user, "photo selected.")
+		balloon_alert(user, "Foto selecionada.")
 	else
-		balloon_alert(user, "no photo identified.")
+		balloon_alert(user, "Nenhuma foto identificada.")
 
 /obj/machinery/newscaster/proc/clear_wanted_issue(mob/user)
 	var/obj/item/card/id/id_card
@@ -884,7 +878,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 
 /obj/item/wallframe/newscaster
 	name = "newscaster frame"
-	desc = "Used to build newscasters, just secure to the wall."
+	desc = "Costumava construir repórteres, apenas seguros na parede."
 	icon_state = "newscaster_assembly"
 	custom_materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT * 7)
 	result_path = /obj/machinery/newscaster

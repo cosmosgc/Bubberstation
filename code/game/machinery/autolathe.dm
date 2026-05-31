@@ -1,6 +1,6 @@
 /obj/machinery/autolathe
 	name = "autolathe"
-	desc = "It produces items using iron, glass, plastic and maybe some more."
+	desc = "Produz itens usando ferro, vidro, plástico e talvez mais."
 	icon = 'icons/obj/machines/lathes.dmi'
 	icon_state = "autolathe"
 	base_icon_state = "autolathe"
@@ -35,13 +35,7 @@
 
 /obj/machinery/autolathe/Initialize(mapload)
 	print_sound = new(src,  FALSE)
-	materials = new ( \
-		src, \
-		SSmaterials.flat_materials, \
-		0, \
-		MATCONTAINER_EXAMINE|MATCONTAINER_ACCEPT_ALLOYS, \
-		container_signals = list(COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/autolathe, AfterMaterialInsert)) \
-	)
+	materials = new ( 		src, 		SSmaterials.flat_materials, 		0, 		MATCONTAINER_EXAMINE|MATCONTAINER_ACCEPT_ALLOYS, 		container_signals = list(COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/autolathe, AfterMaterialInsert)) 	)
 	. = ..()
 
 	set_wires(new /datum/wires/autolathe(src))
@@ -61,16 +55,16 @@
 	if(!in_range(user, src) && !isobserver(user))
 		return
 
-	. += span_notice("Material usage cost at <b>[creation_efficiency * 100]%</b>.")
+	. += span_notice("Custo de uso de material em<b>[creation_efficiency * 100]%</b>.")
 	if(drop_direction)
-		. += span_notice("Currently configured to drop printed objects <b>[dir2text(drop_direction)]</b>.")
-		. += span_notice("[EXAMINE_HINT("Alt-click")] to reset.")
+		. += span_notice("Atualmente configurado para soltar objetos impressos<b>[dir2text(drop_direction)]</b>.")
+		. += span_notice("[EXAMINE_HINT("Alt-click")]para reiniciar.")
 	else
-		. += span_notice("[EXAMINE_HINT("Drag")] towards a direction (while next to it) to change drop direction.")
+		. += span_notice("[EXAMINE_HINT("Drag")]Em direção a uma direção (enquanto ao lado) para mudar de direção.")
 
-	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
+	. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
 	if(panel_open)
-		. += span_notice("The machine can be [EXAMINE_HINT("pried")] apart.")
+		. += span_notice("A máquina pode ser[EXAMINE_HINT("pried")]Separados.")
 
 /obj/machinery/autolathe/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	if(drop_direction)
@@ -436,21 +430,21 @@
 	if(!can_interact(user) || (!HAS_SILICON_ACCESS(user) && !isAdminGhostAI(user)) && !Adjacent(user))
 		return
 	if(busy)
-		balloon_alert(user, "printing started!")
+		balloon_alert(user, "A impressão começou!")
 		return
 	var/direction = get_dir(src, over_location)
 	if(!direction)
 		return
 	drop_direction = direction
-	balloon_alert(user, "dropping [dir2text(drop_direction)]")
+	balloon_alert(user, "Deixando cair.[dir2text(drop_direction)]")
 
 /obj/machinery/autolathe/click_alt(mob/user)
 	if(!drop_direction)
 		return CLICK_ACTION_BLOCKING
 	if(busy)
-		balloon_alert(user, "busy printing!")
+		balloon_alert(user, "Impressão ocupada!")
 		return CLICK_ACTION_SUCCESS
-	balloon_alert(user, "drop direction reset")
+	balloon_alert(user, "Reset da direção de queda")
 	drop_direction = 0
 	return CLICK_ACTION_SUCCESS
 
@@ -459,7 +453,7 @@
 		return ..()
 
 	if(busy)
-		balloon_alert(user, "it's busy!")
+		balloon_alert(user, "Está ocupado!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(panel_open && is_wire_tool(tool))
@@ -473,18 +467,18 @@
 		return ..()
 
 	if(panel_open)
-		balloon_alert(user, "close the panel first!")
+		balloon_alert(user, "Feche o painel primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user] begins to load \the [tool] in \the [src]..."),
-		balloon_alert(user, "uploading design..."),
-		span_hear("You hear the chatter of a floppy drive."))
+	user.visible_message(span_notice("[user]começa a carregar\the [tool]em\the [src]..."),
+		balloon_alert(user, "Carregando design..."),
+		span_hear("Você ouve a conversa de um drive flexível."))
 	busy = TRUE
 
 	if(!do_after(user, 1.5 SECONDS, target = src))
 		busy = FALSE
 		update_static_data_for_all_viewers()
-		balloon_alert(user, "interrompido!")
+		balloon_alert(user, "Interrompido!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/disk/design_disk/disky = tool
@@ -498,7 +492,7 @@
 			LAZYADD(not_imported, blueprint.name)
 
 	if(not_imported)
-		to_chat(user, span_warning("The following design[length(not_imported) > 1 ? "s" : ""] couldn't be imported: [english_list(not_imported)]"))
+		to_chat(user, span_warning("O seguinte desenho[length(not_imported) > 1 ? "s" : ""]Não poderia ser importado.[english_list(not_imported)]"))
 
 	busy = FALSE
 	update_static_data_for_all_viewers()

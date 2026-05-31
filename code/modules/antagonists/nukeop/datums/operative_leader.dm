@@ -24,10 +24,10 @@
 
 /datum/antagonist/nukeop/leader/greet()
 	play_stinger()
-	to_chat(owner, "<span class='warningplain'><B>You are the Syndicate [title] for this mission. You are responsible for guiding your team.</B></span>")
-	to_chat(owner, "<span class='warningplain'><B>If you feel you are not up to this task, trade your headset with another operative.</B></span>")
+	to_chat(owner, "<span class='warningplain'><B>Você é o Sindicato[title]para esta missão. Você é responsável por guiar sua equipe.</B></span>")
+	to_chat(owner, "<span class='warningplain'><B>Se acha que não está à altura dessa tarefa, troque seu fone de ouvido com outro agente.</B></span>")
 	if(!CONFIG_GET(flag/disable_warops))
-		to_chat(owner, "<span class='warningplain'><B>In your hand you will find a special item capable of triggering a greater challenge for your team. Examine it carefully and consult with your fellow operatives before activating it.</B></span>")
+		to_chat(owner, "<span class='warningplain'><B>Em sua mão você encontrará um item especial capaz de desencadear um desafio maior para sua equipe. Examine com cuidado e consulte seus colegas antes de ativá-lo.</B></span>")
 	owner.announce_objectives()
 
 /datum/antagonist/nukeop/leader/on_gain()

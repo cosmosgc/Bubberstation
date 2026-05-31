@@ -25,7 +25,7 @@ export const NtosPortraitPrinter = (props) => {
   const current_portrait_ratio = got_paintings && paintings[listIndex].ratio;
 
   return (
-    <NtosWindow title="Art Galaxy" width={400} height={460}>
+    <NtosWindow title="Arte Galáxia" width={400} height={460}>
       <NtosWindow.Content>
         <Stack vertical fill>
           <Stack.Item>
@@ -34,7 +34,7 @@ export const NtosPortraitPrinter = (props) => {
                 <Stack.Item grow>
                   <Input
                     fluid
-                    placeholder="Search Paintings..."
+                    placeholder="Procurar pinturas..."
                     value={search_string}
                     onBlur={(value) => {
                       act('search', {
@@ -116,7 +116,7 @@ export const NtosPortraitPrinter = (props) => {
                           <Stack.Item>
                             <Button
                               icon="print"
-                              content="Print Portrait"
+                              content="Imprimer Retrato"
                               disabled={!got_paintings}
                               onClick={() =>
                                 act('print', {

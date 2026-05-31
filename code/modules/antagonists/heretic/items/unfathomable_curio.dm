@@ -2,7 +2,7 @@
 
 /obj/item/storage/belt/unfathomable_curio
 	name = "Unfathomable Curio"
-	desc = "It. It looks backs. It looks past. It looks in. It sees. It hides. It opens."
+	desc = "Ele. Olha para trás. Parece passado. Olha para dentro. Ele vê. Ele se esconde. Abre."
 	icon_state = "unfathomable_curio"
 	worn_icon_state = "unfathomable_curio"
 	content_overlays = FALSE
@@ -20,8 +20,7 @@
 /obj/item/storage/belt/unfathomable_curio/Initialize(mapload)
 	. = ..()
 
-	AddComponent(/datum/component/shielded, max_charges = max_charges, recharge_start_delay = recharge_start_delay, charge_increment_delay = charge_increment_delay, \
-	charge_recovery = charge_recovery, shield_icon = heretic_shield_icon, run_hit_callback = CALLBACK(src, PROC_REF(shield_damaged)))
+	AddComponent(/datum/component/shielded, max_charges = max_charges, recharge_start_delay = recharge_start_delay, charge_increment_delay = charge_increment_delay, 	charge_recovery = charge_recovery, shield_icon = heretic_shield_icon, run_hit_callback = CALLBACK(src, PROC_REF(shield_damaged)))
 
 
 /obj/item/storage/belt/unfathomable_curio/equipped(mob/user, slot, initial)
@@ -32,7 +31,7 @@
 	RegisterSignal(user, COMSIG_LIVING_CHECK_BLOCK, PROC_REF(shield_reaction))
 
 	if(!IS_HERETIC(user))
-		to_chat(user, span_warning("The curio wraps around you, and you feel the beating of something dark inside it..."))
+		to_chat(user, span_warning("A curiosidade envolve você, e você sente a batida de algo escuro dentro dela..."))
 
 /obj/item/storage/belt/unfathomable_curio/dropped(mob/user)
 	. = ..()
@@ -42,7 +41,7 @@
 /obj/item/storage/belt/unfathomable_curio/proc/shield_reaction(mob/living/carbon/human/owner,
 	atom/movable/hitby,
 	damage = 0,
-	attack_text = "the attack",
+	attack_text = "O ataque.",
 	attack_type = MELEE_ATTACK,
 	armour_penetration = 0,
 	damage_type = BRUTE,
@@ -60,11 +59,11 @@
 		/datum/brain_trauma/severe/paralysis,
 		/datum/brain_trauma/severe/monophobia
 	)
-	wearer.visible_message(span_danger("[wearer]'s veil makes [attack_text] miss, but the force behind the blow causes it to disperse!"))
+	wearer.visible_message(span_danger("[wearer]O véu faz[attack_text]Senhorita, mas a força por trás do golpe faz com que se espalhe!"))
 	if(IS_HERETIC(wearer))
 		return
 
-	to_chat(wearer, span_warning("Laughter echoes in your mind...."))
+	to_chat(wearer, span_warning("Riso ecoa em sua mente..."))
 	wearer.adjust_organ_loss(ORGAN_SLOT_BRAIN, 40)
 	wearer.dropItemToGround(src, TRUE)
 	wearer.gain_trauma(pick(brain_traumas), TRAUMA_RESILIENCE_MAGIC)
@@ -76,6 +75,6 @@
 
 	user.adjust_organ_loss(ORGAN_SLOT_BRAIN, 10, 160)
 	user.adjust_temp_blindness(5 SECONDS)
-	. += span_notice("It. It looked. IT WRAPS ITSELF AROUND ME.")
+	. += span_notice("Ele. Parecia. Ela se contorna a mim mesma.")
 
 

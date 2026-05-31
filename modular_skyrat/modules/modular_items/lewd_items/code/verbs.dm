@@ -3,14 +3,14 @@
 	set category = "IC"
 
 	if(!has_status_effect(/datum/status_effect/climax_cooldown))
-		if(tgui_alert(usr, "Are you sure you want to cum?", "Climax", list("Yes", "No")) == "Yes")
+		if(tgui_alert(usr, "Tem certeza que quer gozar?", "Climax", list("Yes", "No")) == "Yes")
 			if(stat != CONSCIOUS)
-				to_chat(usr, span_warning("You can't climax right now..."))
+				to_chat(usr, span_warning("Você não pode clímax agora..."))
 				return
 			else
 				climax(TRUE)
 	else
-		to_chat(src, span_warning("You can't cum right now!"))
+		to_chat(src, span_warning("Você não pode gozar agora!"))
 
 /mob/living/verb/reflexes_verb()
 	set name = "Toggle Reflexes"
@@ -81,11 +81,11 @@
 
 	var/taste = target?.dna?.features["taste"]
 	if(!taste)
-		to_chat(src, span_warning("[target] doesn't seem to have a taste."))
+		to_chat(src, span_warning("[target]Não parece ter um gosto."))
 		return FALSE
 
-	to_chat(src, span_notice("[target] tastes like [taste]."))
-	to_chat(target, span_notice("[src] licks you."))
+	to_chat(src, span_notice("[target]Tem gosto de[taste]."))
+	to_chat(target, span_notice("[src]lambe você."))
 
 /mob/living/carbon/human/verb/smell(mob/living/carbon/human/target in get_adjacent_humans())
 	set name = "Smell"
@@ -96,10 +96,10 @@
 
 	var/smell = target?.dna?.features["smell"]
 	if(!smell)
-		to_chat(src, span_warning("[target] doesn't seem to have a smell."))
+		to_chat(src, span_warning("[target]Não parece ter cheiro."))
 		return FALSE
 
-	to_chat(src, span_notice("[target] smells like [smell]."))
+	to_chat(src, span_notice("[target]Cheira como[smell]."))
 
 /// Returns a list containing all of the humans adjacent to the user.
 /mob/living/proc/get_adjacent_humans()

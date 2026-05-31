@@ -1,7 +1,7 @@
 /// Place some grappling tentacles underfoot
 /datum/action/cooldown/mob_cooldown/goliath_tentacles
 	name = "Unleash Tentacles"
-	desc = "Unleash burrowed tentacles at a targeted location, grappling targets after a delay."
+	desc = "Solte tentáculos enterrados em um local alvo, atacando alvos após um atraso."
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "goliath_tentacle_wiggle"
 	background_icon_state = "bg_demon"
@@ -29,14 +29,14 @@
 			new /obj/effect/goliath_tentacle(adjacent_target)
 
 	if (isliving(target))
-		owner.visible_message(span_warning("[owner] digs its tentacles under [target]!"))
+		owner.visible_message(span_warning("[owner]Cava seus tentáculos sob[target]!"))
 	StartCooldown()
 	return TRUE
 
 /// Place grappling tentacles around you to grab attackers
 /datum/action/cooldown/mob_cooldown/tentacle_burst
 	name = "Tentacle Burst"
-	desc = "Unleash burrowed tentacles in an area around you, grappling targets after a delay."
+	desc = "Solte tentáculos enterrados em uma área ao seu redor, atacando alvos após um atraso."
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "goliath_tentacle_wiggle"
 	background_icon_state = "bg_demon"
@@ -52,14 +52,14 @@
 		var/turf/adjacent_target = get_step(target, dir)
 		if(adjacent_target)
 			new /obj/effect/goliath_tentacle(adjacent_target)
-	owner.visible_message(span_warning("[owner] unleashes tentacles from the ground around it!"))
+	owner.visible_message(span_warning("[owner]Solta tentáculos do chão ao redor!"))
 	StartCooldown()
 	return TRUE
 
 /// Summon a line of tentacles towards the target
 /datum/action/cooldown/mob_cooldown/tentacle_grasp
 	name = "Tentacle Grasp"
-	desc = "Unleash burrowed tentacles in a line towards a targeted location, grappling targets after a delay."
+	desc = "Solte tentáculos enterrados em uma linha em direção a um local alvo, atacando alvos após um atraso."
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "goliath_tentacle_wiggle"
 	background_icon_state = "bg_demon"
@@ -72,7 +72,7 @@
 /datum/action/cooldown/mob_cooldown/tentacle_grasp/Activate(atom/target)
 	new /obj/effect/temp_visual/effect_trail/burrowed_tentacle(owner.loc, target)
 	if (isliving(target))
-		owner.visible_message(span_warning("[owner] reaches for [target] with its tentacles!"))
+		owner.visible_message(span_warning("[owner]Chega para[target]Com seus tentáculos!"))
 	StartCooldown()
 	return TRUE
 

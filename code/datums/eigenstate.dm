@@ -23,11 +23,11 @@ GLOBAL_DATUM_INIT(closet_teleport_controller, /datum/closet_teleport_controller,
 			continue
 		if(length(eigen_targets[already_linked]) > 1) //Eigenstates are notorious for having cliques!
 			if(!subtle)
-				target.visible_message("[target] fizzes, it's already linked to something else!")
+				target.visible_message("[target]Fizzes, já está ligado a outra coisa!")
 			targets -= target
 			continue
 		if(!subtle)
-			target.visible_message("[target] fizzes, collapsing its unique wavefunction into the others!") //If we're in a eigenlink all on our own and are open to new friends
+			target.visible_message("[target]Esfregando sua única função de onda nos outros!") //If we're in a eigenlink all on our own and are open to new friends
 		remove_eigen_entry(target) //clearup for new stuff
 	//Do we still have targets?
 	if(!length(targets))
@@ -35,7 +35,7 @@ GLOBAL_DATUM_INIT(closet_teleport_controller, /datum/closet_teleport_controller,
 	var/atom/visible_atom = targets[1] //The object that'll handle the messages
 	if(length(targets) == 1)
 		if(!subtle)
-			visible_atom.visible_message("[targets[1]] fizzes, there's nothing it can link to!")
+			visible_atom.visible_message("[targets[1]]Fizzes, não há nada que possa ligar!")
 		return FALSE
 
 	var/subtle_keyword = subtle ? "subtle" : ""
@@ -53,7 +53,7 @@ GLOBAL_DATUM_INIT(closet_teleport_controller, /datum/closet_teleport_controller,
 			target.alpha = 200
 			do_sparks(3, FALSE, target)
 
-	visible_atom.visible_message("The items shimmer and fizzle, turning a shade of violet blue.")
+	visible_atom.visible_message("Os itens brilham e falham, virando um tom de azul violeta.")
 	id_counter++
 	return TRUE
 
@@ -110,7 +110,7 @@ GLOBAL_DATUM_INIT(closet_teleport_controller, /datum/closet_teleport_controller,
 		thing_to_send.forceMove(eigen_target)
 	else
 		if(!subtle)
-			object_sent_from.balloon_alert(thing_to_send, "nada acontece!")
+			object_sent_from.balloon_alert(thing_to_send, "Nada mesmo!")
 		return FALSE
 	//Create ONE set of sparks for ALL times in iteration
 	if(!subtle && spark_time != world.time)
@@ -122,7 +122,7 @@ GLOBAL_DATUM_INIT(closet_teleport_controller, /datum/closet_teleport_controller,
 ///Prevents tool use on the item
 /datum/closet_teleport_controller/proc/tool_interact(atom/source, mob/user, obj/item/item)
 	SIGNAL_HANDLER
-	to_chat(user, span_notice("The unstable nature of [source] makes it impossible to use [item] on [source.p_them()]!"))
+	to_chat(user, span_notice("A natureza instável de[source]torna impossível de usar.[item]Vamos.[source.p_them()]!"))
 	return ITEM_INTERACT_BLOCKING
 
 // For testing purposes, primarily
@@ -136,8 +136,7 @@ GLOBAL_DATUM_INIT(closet_teleport_controller, /datum/closet_teleport_controller,
 	if(mapload)
 		// i'm making no effort to ensure these link properly for mappers.
 		// add a mapping helper which uses editable ids if you want that
-		log_mapping("Don't map in [type], it likely won't link properly as it is intended for debug. \
-			If you want this on your map you will need to add a mapping helper.")
+		log_mapping("Don't map in [type], it likely won't link properly as it is intended for debug. 			If you want this on your map you will need to add a mapping helper.")
 		return INITIALIZE_HINT_QDEL
 
 	var/obj/structure/closet/other = GLOB.closet_teleport_controller.admin_link?.resolve()

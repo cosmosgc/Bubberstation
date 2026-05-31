@@ -118,7 +118,7 @@
 
 	var/datum/admin_help/current_ticket = target.current_ticket
 	if (!current_ticket)
-		to_chat(admin, span_warning("[key_name(target)] had no active ahelp, aborting."))
+		to_chat(admin, span_warning("[key_name(target)]Não teve ajuda ativa, abortando."))
 		return
 
 	admin.cmd_admin_pm(target, message)

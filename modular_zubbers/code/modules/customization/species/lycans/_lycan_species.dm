@@ -82,38 +82,37 @@
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = FA_ICON_ROBOT,
 			SPECIES_PERK_NAME = "Inorganic rejection",
-			SPECIES_PERK_DESC = "The curse afflicting the cursekin prevents their bodies from being augmented with cybernetic organs \
-			or implants."
+			SPECIES_PERK_DESC = "A maldição que aflige a maldição impede que seus corpos sejam aumentados com órgãos cibernéticos ou implantes."
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = FA_ICON_CLOUD_MOON,
 			SPECIES_PERK_NAME = "Silver weakness",
-			SPECIES_PERK_DESC = "You are burnt by silver, including silver weaponry."
+			SPECIES_PERK_DESC = "Você é queimado por prata, incluindo armamento de prata."
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = FA_ICON_GUN,
 			SPECIES_PERK_NAME = "Chunky fingers",
-			SPECIES_PERK_DESC = "While in Lycan form, you cannot use guns without special trigger-guards, nor batons.",
+			SPECIES_PERK_DESC = "Enquanto em Lycan, você não pode usar armas sem armas especiais, nem bastões.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = FA_ICON_SHIRT,
 			SPECIES_PERK_NAME = "Unclothable",
-			SPECIES_PERK_DESC = "While in Lycan form, you drop all your clothing to the floor.",
+			SPECIES_PERK_DESC = "Enquanto está em forma de Lycan, você joga toda sua roupa no chão.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = FA_ICON_MOON,
 			SPECIES_PERK_NAME = "Lycan strength",
-			SPECIES_PERK_DESC = "While in Lycan form, your claws deal significant damage - about circular saw level.",
+			SPECIES_PERK_DESC = "Enquanto em forma de Lycan, suas garras causam danos significativos sobre o nível da serra circular.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = FA_ICON_SHIELD,
 			SPECIES_PERK_NAME = "Lycan resilience",
-			SPECIES_PERK_DESC = "While in Lycan form, you take 50% less brute and 20% less burn.",
+			SPECIES_PERK_DESC = "Enquanto em Lycan, você toma 50% menos bruto e 20% menos queimado.",
 		),
 	)
 
@@ -159,15 +158,7 @@
 	ADD_TRAIT(gainer, TRAIT_MARTIAL_ARTS_UNUSABLE, SPECIES_TRAIT)
 
 	gainer.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	gainer.AddComponent( \
-		/datum/component/regenerator, \
-		regeneration_delay = 5 SECONDS, \
-		brute_per_second = 5, \
-		burn_per_second = 1, \
-		tox_per_second = 0.5, \
-		oxy_per_second = 0.5, \
-		ignore_damage_types = list(), \
-	)
+	gainer.AddComponent( 		/datum/component/regenerator, 		regeneration_delay = 5 SECONDS, 		brute_per_second = 5, 		burn_per_second = 1, 		tox_per_second = 0.5, 		oxy_per_second = 0.5, 		ignore_damage_types = list(), 	)
 
 /datum/species/lycan/proc/handle_gaian_physique_loss(mob/living/carbon/human/loser)
 	REMOVE_TRAIT(loser, TRAIT_BATON_RESISTANCE, SPECIES_TRAIT)
@@ -188,6 +179,6 @@
 /datum/species/lycan/proc/on_baned(mob/living/carbon/human/baned, mob/user)
 	SIGNAL_HANDLER
 
-	baned.visible_message(span_warning("[baned] seems to react negatively to the silver, [baned.p_their()] flesh scorching and burning on contact!"), ignored_mobs = list(baned))
-	to_chat(baned, span_bolddanger("The sister moon casts its light on you, and you feel your flesh scorch!"))
+	baned.visible_message(span_warning("[baned]Parece reagir negativamente à prata,[baned.p_their()]Carne queimando e queimando em contato!"), ignored_mobs = list(baned))
+	to_chat(baned, span_bolddanger("A lua irmã lança sua luz sobre você, e você sente sua carne queimar!"))
 	INVOKE_ASYNC(baned, TYPE_PROC_REF(/mob, emote), "scream")

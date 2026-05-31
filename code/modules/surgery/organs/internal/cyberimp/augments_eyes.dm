@@ -1,6 +1,6 @@
 /obj/item/organ/cyberimp/eyes
 	name = "cybernetic eye implant"
-	desc = "Implants for your eyes."
+	desc = "Implantes para seus olhos."
 	icon_state = "eye_implant"
 	slot = ORGAN_SLOT_EYES
 	zone = BODY_ZONE_PRECISE_EYES
@@ -9,7 +9,7 @@
 // HUD implants
 /obj/item/organ/cyberimp/eyes/hud
 	name = "HUD implant"
-	desc = "These cybernetic eyes will display a HUD over everything you see. Maybe."
+	desc = "Esses olhos cibernéticos mostrarão um HUD sobre tudo que você vê. Talvez."
 	slot = ORGAN_SLOT_HUD
 	actions_types = list(/datum/action/item_action/organ_action/toggle_hud)
 	var/HUD_traits = list()
@@ -29,14 +29,14 @@
 		toggled_on = FALSE
 		for(var/hud_trait in HUD_traits)
 			remove_organ_trait(hud_trait)
-		balloon_alert(eye_owner, "hud disabled")
+		balloon_alert(eye_owner, "Hud desativado.")
 		if(hud_color)
 			eye_owner.remove_eye_color(EYE_COLOR_HUD_PRIORITY)
 		return
 	toggled_on = TRUE
 	for(var/hud_trait in HUD_traits)
 		add_organ_trait(hud_trait)
-	balloon_alert(eye_owner, "hud enabled")
+	balloon_alert(eye_owner, "Hud ativado.")
 	if(hud_color)
 		eye_owner.add_eye_color_right(hud_color, EYE_COLOR_HUD_PRIORITY)
 
@@ -52,28 +52,28 @@
 
 /obj/item/organ/cyberimp/eyes/hud/medical
 	name = "medical HUD implant"
-	desc = "These cybernetic eye implants will display a medical HUD over everything you see."
+	desc = "Esses implantes oculares cibernéticos mostrarão um HUD médico sobre tudo que você vê."
 	icon_state = "eye_implant_medical"
 	HUD_traits = list(TRAIT_MEDICAL_HUD)
 	hud_color = "#1D8FEC"
 
 /obj/item/organ/cyberimp/eyes/hud/security
 	name = "security HUD implant"
-	desc = "These cybernetic eye implants will display a security HUD over everything you see."
+	desc = "Esses implantes oculares cibernéticos mostrarão um HUD de segurança sobre tudo que você vê."
 	icon_state = "eye_implant_security"
 	HUD_traits = list(TRAIT_SECURITY_HUD)
 	hud_color = "#9A151E"
 
 /obj/item/organ/cyberimp/eyes/hud/diagnostic
 	name = "diagnostic HUD implant"
-	desc = "These cybernetic eye implants will display a diagnostic HUD over everything you see."
+	desc = "Esses implantes oculares cibernéticos mostrarão um HUD diagnóstico sobre tudo que você vê."
 	icon_state = "eye_implant_diagnostic"
 	HUD_traits = list(TRAIT_DIAGNOSTIC_HUD, TRAIT_BOT_PATH_HUD)
 	hud_color = "#CC6E33"
 
 /obj/item/organ/cyberimp/eyes/hud/security/syndicate
 	name = "contraband security HUD implant"
-	desc = "A Cybersun Industries brand Security HUD Implant. These illicit cybernetic eye implants will display a security HUD over everything you see."
+	desc = "A Cybersun Industries marca segurança HUD Implant. Esses implantes oculares cibernéticos ilícitos mostrarão um HUD de segurança sobre tudo que você vê."
 	icon_state = "eye_implant_syndicate"
 	organ_flags = ORGAN_ROBOTIC | ORGAN_HIDDEN
 	hud_color = null

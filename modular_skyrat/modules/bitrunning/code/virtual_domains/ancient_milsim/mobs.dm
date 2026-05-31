@@ -1,6 +1,6 @@
 /mob/living/basic/trooper/cin_soldier
 	name = "Coalition Operative"
-	desc = "Death to SolFed."
+	desc = "Morte ao Solfed."
 	melee_damage_lower = 15
 	melee_damage_upper = 20
 	ai_controller = /datum/ai_controller/basic_controller/trooper/calls_reinforcements/ancient_milsim
@@ -42,7 +42,7 @@
 
 /mob/living/basic/trooper/cin_soldier/melee/bullet_act(obj/projectile/projectile)
 	if(prob(projectile_deflect_chance))
-		visible_message(span_danger("[src] blocks [projectile] with their shield!"))
+		visible_message(span_danger("[src]Blocos[projectile]com seu escudo!"))
 		return BULLET_ACT_BLOCK
 	return ..()
 
@@ -63,13 +63,7 @@
 
 /mob/living/basic/trooper/cin_soldier/ranged/Initialize(mapload)
 	. = ..()
-	AddComponent(\
-		/datum/component/ranged_attacks,\
-		casing_type = casingtype,\
-		projectile_sound = projectilesound,\
-		cooldown_time = ranged_cooldown,\
-		burst_shots = burst_shots,\
-	)
+	AddComponent(		/datum/component/ranged_attacks,		casing_type = casingtype,		projectile_sound = projectilesound,		cooldown_time = ranged_cooldown,		burst_shots = burst_shots,	)
 
 /mob/living/basic/trooper/cin_soldier/ranged/shotgun_revolver
 	r_hand = /obj/item/gun/ballistic/revolver/shotgun_revolver
@@ -83,7 +77,7 @@
 
 /mob/living/basic/trooper/cin_soldier/ranged/shotgun_revolver/bullet_act(obj/projectile/projectile)
 	if(prob(projectile_deflect_chance))
-		visible_message(span_danger("[src] blocks [projectile] with their shield!"))
+		visible_message(span_danger("[src]Blocos[projectile]com seu escudo!"))
 		return BULLET_ACT_BLOCK
 	return ..()
 

@@ -17,14 +17,12 @@
 
 /datum/buildmode_mode/boom/show_help(client/builder)
 	to_chat(builder, span_purple(boxed_message(
-		"[span_bold("Set explosion destructiveness")] -> Right Mouse Button on buildmode button\n\
-		[span_bold("Kaboom")] -> Mouse Button on obj\n\n\
-		[span_warning("NOTE:")] Using the \"Config/Launch Supplypod\" verb allows you to do this in an IC way (i.e., making a cruise missile come down from the sky and explode wherever you click!)"))
+		"[span_bold("Set explosion destructiveness")] -> Right Mouse Button on buildmode button\n		[span_bold("Kaboom")] -> Mouse Button on obj\n\n		[span_warning("NOTE:")] Using the \"Config/Launch Supplypod\" verb allows you to do this in an IC way (i.e., making a cruise missile come down from the sky and explode wherever you click!)"))
 	)
 
 /datum/buildmode_mode/boom/change_settings(client/c)
 	for (var/explosion_level in explosions)
-		explosions[explosion_level] = input(c, "Range of total [explosion_level]. 0 to none", "Input") as num|null
+		explosions[explosion_level] = input(c, "Alcance total[explosion_level]. 0 a nenhum", "Input") as num|null
 		if(explosions[explosion_level] == null || explosions[explosion_level] < 0)
 			explosions[explosion_level] = 0
 

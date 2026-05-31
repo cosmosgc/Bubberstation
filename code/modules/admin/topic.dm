@@ -31,7 +31,7 @@
 		if(AH)
 			AH.Action(href_list["ahelp_action"])
 		else
-			to_chat(usr, "Ticket [ahelp_ref] has been deleted!", confidential = TRUE)
+			to_chat(usr, "Bilhete[ahelp_ref]Foi deletado!", confidential = TRUE)
 
 	else if(href_list["ahelp_tickets"])
 		GLOB.ahelp_tickets.BrowseTickets(text2num(href_list["ahelp_tickets"]))
@@ -44,7 +44,7 @@
 			return
 		var/mob/M = locate(href_list["getplaytimewindow"]) in GLOB.mob_list
 		if(!M)
-			to_chat(usr, span_danger("ERROR: Mob not found."), confidential = TRUE)
+			to_chat(usr, span_danger("Máfia não encontrada."), confidential = TRUE)
 			return
 		cmd_show_exp_panel(M.client)
 
@@ -120,7 +120,7 @@
 		if(!check_rights(R_SERVER))
 			return
 
-		var/timer = input("Enter new shuttle duration (seconds):","Edit Shuttle Timeleft", SSshuttle.emergency.timeLeft() ) as num|null
+		var/timer = input("Introduza nova duração da nave auxiliar (segundos):","Edit Shuttle Timeleft", SSshuttle.emergency.timeLeft() ) as num|null
 		if(!timer)
 			return
 		SSshuttle.emergency.setTimer(timer SECONDS)
@@ -150,7 +150,7 @@
 		if(!shuttle_console)
 			return
 		shuttle_console.admin_controlled = !shuttle_console.admin_controlled
-		to_chat(usr, "[shuttle_console] was [shuttle_console.admin_controlled ? "trancado" : "destrancado"].", confidential = TRUE)
+		to_chat(usr, "[shuttle_console]era[shuttle_console.admin_controlled ? "trancado" : "destrancado"].", confidential = TRUE)
 
 	else if(href_list["delay_round_end"])
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/delay_round_end)
@@ -159,7 +159,7 @@
 		if(!check_rights(R_SERVER))
 			return
 
-		if(tgui_alert(usr, "Really cancel current round end delay? The reason for the current delay is: \"[SSticker.admin_delay_notice]\"", "Undelay round end", list("Yes", "No")) == "No")
+		if(tgui_alert(usr, "Realmente cancelar o atraso atual? A razão do atraso atual é:\"[SSticker.admin_delay_notice]\"", "Undelay round end", list("Yes", "No")) == "No")
 			return
 
 		SSticker.admin_delay_notice = null
@@ -175,8 +175,8 @@
 			return
 
 		message_admins(span_adminnotice("[key_name_admin(usr)] is considering ending the round."))
-		if(tgui_alert(usr, "This will end the round, are you SURE you want to do this?", "Confirmation", list("Yes", "No")) == "Yes")
-			if(tgui_alert(usr, "Final Confirmation: End the round NOW?", "Confirmation", list("Yes", "No")) == "Yes")
+		if(tgui_alert(usr, "Isso vai acabar com o round, tem certeza que quer fazer isso?", "Confirmation", list("Yes", "No")) == "Yes")
+			if(tgui_alert(usr, "Confirmação final:", "Confirmation", list("Yes", "No")) == "Yes")
 				message_admins(span_adminnotice("[key_name_admin(usr)] has ended the round."))
 				SSticker.force_ending = ADMIN_FORCE_END_ROUND //Yeah there we go APC destroyed mission accomplished
 				return
@@ -191,12 +191,12 @@
 
 		var/mob/M = locate(href_list["mob"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.", confidential = TRUE)
+			to_chat(usr, "Isso só pode ser usado em casos de tipo / mob.", confidential = TRUE)
 			return
 
 		var/delmob = TRUE
 		if(!isobserver(M))
-			switch(tgui_alert(usr,"Delete old mob?","Message",list("Yes","No","Cancel")))
+			switch(tgui_alert(usr,"Apagar a velha máfia?","Message",list("Yes","No","Cancel")))
 				if("Cancel")
 					return
 				if("No")
@@ -229,17 +229,17 @@
 		var/mob/M = locate(href_list["boot2"])
 		if(ismob(M))
 			if(!check_if_greater_rights_than(M.client))
-				to_chat(usr, span_danger("Error: They have more rights than you do."), confidential = TRUE)
+				to_chat(usr, span_danger("Eles têm mais direitos do que você."), confidential = TRUE)
 				return
-			if(tgui_alert(usr, "Kick [key_name(M)]?", "Confirm", list("Yes", "No")) != "Yes")
+			if(tgui_alert(usr, "Chute.[key_name(M)]?", "Confirm", list("Yes", "No")) != "Yes")
 				return
 			if(!M)
-				to_chat(usr, span_danger("Error: [M] no longer exists!"), confidential = TRUE)
+				to_chat(usr, span_danger("Erro:[M]Não existe mais!"), confidential = TRUE)
 				return
 			if(!M.client)
-				to_chat(usr, span_danger("Error: [M] no longer has a client!"), confidential = TRUE)
+				to_chat(usr, span_danger("Erro:[M]Não tem mais um cliente!"), confidential = TRUE)
 				return
-			to_chat(M, span_danger("You have been kicked from the server by [usr.client.holder.fakekey ? "an Administrator" : "[usr.client.key]"]."), confidential = TRUE)
+			to_chat(M, span_danger("Você foi chutado do servidor por[usr.client.holder.fakekey ? "an Administrator" : "[usr.client.key]"]."), confidential = TRUE)
 			log_admin("[key_name(usr)] kicked [key_name(M)].")
 			message_admins(span_adminnotice("[key_name_admin(usr)] kicked [key_name_admin(M)]."))
 			qdel(M.client)
@@ -285,7 +285,7 @@
 	else if(href_list["deletemessage"])
 		if(!check_rights(R_ADMIN))
 			return
-		var/safety = tgui_alert(usr,"Delete message/note?",,list("Yes","No"));
+		var/safety = tgui_alert(usr,"Apagar mensagem/nota?",,list("Yes","No"));
 		if (safety == "Yes")
 			var/message_id = href_list["deletemessage"]
 			delete_message(message_id)
@@ -293,7 +293,7 @@
 	else if(href_list["deletemessageempty"])
 		if(!check_rights(R_ADMIN))
 			return
-		var/safety = tgui_alert(usr,"Delete message/note?",,list("Yes","No"));
+		var/safety = tgui_alert(usr,"Apagar mensagem/nota?",,list("Yes","No"));
 		if (safety == "Yes")
 			var/message_id = href_list["deletemessageempty"]
 			delete_message(message_id, browse = TRUE)
@@ -410,9 +410,9 @@
 
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
-			to_chat(usr, "this can only be used on instances of type /mob.", confidential = TRUE)
+			to_chat(usr, "Isso só pode ser usado em casos de tipo /mob.", confidential = TRUE)
 			return
-		var/speech = input("What will [key_name(M)] say?", "Force speech", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
+		var/speech = input("O que vai[key_name(M)]Diga?", "Discurso de força", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech)
 			return
 		M.say(speech, forced = "admin speech")
@@ -426,10 +426,10 @@
 
 		var/mob/living/carbon/human/target = locate(href_list["applyquirks"])
 		if(!istype(target))
-			to_chat(usr, "this can only be used on instances of type /mob/living/carbon/human.", confidential = TRUE)
+			to_chat(usr, "isso só pode ser usado em casos de tipo /mob / vivo / carbono / humano.", confidential = TRUE)
 			return
 		if(!target.client)
-			to_chat(usr, "[target] has no client!", confidential = TRUE)
+			to_chat(usr, "[target]Não tem cliente!", confidential = TRUE)
 			return
 		SSquirks.AssignQuirks(target, target.client)
 		log_admin("[key_name(usr)] applied client quirks to [key_name(target)].")
@@ -441,20 +441,20 @@
 
 		var/mob/M = locate(href_list["sendtoprison"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.", confidential = TRUE)
+			to_chat(usr, "Isso só pode ser usado em casos de tipo / mob.", confidential = TRUE)
 			return
 		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.", confidential = TRUE)
+			to_chat(usr, "Isso não pode ser usado em casos do tipo Mob/Viver/Silicon/ai.", confidential = TRUE)
 			return
 
-		if(tgui_alert(usr, "Send [key_name(M)] to Prison?", "Message", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr, "Enviar[key_name(M)]Para a prisão?", "Message", list("Yes", "No")) != "Yes")
 			return
 
 		// BUBBER EDIT - START - Immersion-friendly Admin Prison
 		do_sparks(10, TRUE, M, spark_type = /datum/effect_system/basic/spark_spread/quantum)
 		// BUBBER EDIT - END
 
-		to_chat(M, span_adminnotice("You have been sent to Prison!"), confidential = TRUE)
+		to_chat(M, span_adminnotice("Você foi enviado para a prisão!"), confidential = TRUE)
 
 		log_admin("[key_name(usr)] has sent [key_name(M)] to Prison!")
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to Prison!")
@@ -466,14 +466,14 @@
 		var/mob/M = locate(href_list["sendbacktolobby"])
 
 		if(!isobserver(M))
-			to_chat(usr, span_notice("You can only send ghost players back to the Lobby."), confidential = TRUE)
+			to_chat(usr, span_notice("Você só pode mandar jogadores fantasmas de volta para o lobby."), confidential = TRUE)
 			return
 
 		if(!M.client)
-			to_chat(usr, span_warning("[M] doesn't seem to have an active client."), confidential = TRUE)
+			to_chat(usr, span_warning("[M]Não parece ter um cliente ativo."), confidential = TRUE)
 			return
 
-		if(tgui_alert(usr, "Send [key_name(M)] back to Lobby?", "Message", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr, "Enviar[key_name(M)]De volta ao Lobby?", "Message", list("Yes", "No")) != "Yes")
 			return
 
 		log_admin("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
@@ -487,15 +487,15 @@
 		if(!check_rights(R_FUN))
 			return
 
-		if(tgui_alert(usr, "Confirm?", "Message", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr, "Confirmado?", "Message", list("Yes", "No")) != "Yes")
 			return
 
 		var/mob/M = locate(href_list["tdome1"])
 		if(!isliving(M))
-			to_chat(usr, "This can only be used on instances of type /mob/living.", confidential = TRUE)
+			to_chat(usr, "Isso só pode ser usado em casos de tipo / mob / vida.", confidential = TRUE)
 			return
 		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.", confidential = TRUE)
+			to_chat(usr, "Isso não pode ser usado em casos do tipo Mob/Viver/Silicon/ai.", confidential = TRUE)
 			return
 		var/mob/living/L = M
 
@@ -505,7 +505,7 @@
 		L.Unconscious(100)
 		sleep(0.5 SECONDS)
 		L.forceMove(pick(GLOB.tdome1))
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), L, span_adminnotice("You have been sent to the Thunderdome.")), 5 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), L, span_adminnotice("Você foi enviado para o Thunderdome.")), 5 SECONDS)
 		log_admin("[key_name(usr)] has sent [key_name(L)] to the thunderdome. (Team 1)")
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(L)] to the thunderdome. (Team 1)")
 
@@ -513,15 +513,15 @@
 		if(!check_rights(R_FUN))
 			return
 
-		if(tgui_alert(usr, "Confirm?", "Message", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr, "Confirmado?", "Message", list("Yes", "No")) != "Yes")
 			return
 
 		var/mob/M = locate(href_list["tdome2"])
 		if(!isliving(M))
-			to_chat(usr, "This can only be used on instances of type /mob/living.", confidential = TRUE)
+			to_chat(usr, "Isso só pode ser usado em casos de tipo / mob / vida.", confidential = TRUE)
 			return
 		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.", confidential = TRUE)
+			to_chat(usr, "Isso não pode ser usado em casos do tipo Mob/Viver/Silicon/ai.", confidential = TRUE)
 			return
 		var/mob/living/L = M
 
@@ -531,7 +531,7 @@
 		L.Unconscious(100)
 		sleep(0.5 SECONDS)
 		L.forceMove(pick(GLOB.tdome2))
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), L, span_adminnotice("You have been sent to the Thunderdome.")), 5 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), L, span_adminnotice("Você foi enviado para o Thunderdome.")), 5 SECONDS)
 		log_admin("[key_name(usr)] has sent [key_name(L)] to the thunderdome. (Team 2)")
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(L)] to the thunderdome. (Team 2)")
 
@@ -539,22 +539,22 @@
 		if(!check_rights(R_FUN))
 			return
 
-		if(tgui_alert(usr, "Confirm?", "Message", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr, "Confirmado?", "Message", list("Yes", "No")) != "Yes")
 			return
 
 		var/mob/M = locate(href_list["tdomeadmin"])
 		if(!isliving(M))
-			to_chat(usr, "This can only be used on instances of type /mob/living.", confidential = TRUE)
+			to_chat(usr, "Isso só pode ser usado em casos de tipo / mob / vida.", confidential = TRUE)
 			return
 		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.", confidential = TRUE)
+			to_chat(usr, "Isso não pode ser usado em casos do tipo Mob/Viver/Silicon/ai.", confidential = TRUE)
 			return
 		var/mob/living/L = M
 
 		L.Unconscious(100)
 		sleep(0.5 SECONDS)
 		L.forceMove(pick(GLOB.tdomeadmin))
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), L, span_adminnotice("You have been sent to the Thunderdome.")), 5 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), L, span_adminnotice("Você foi enviado para o Thunderdome.")), 5 SECONDS)
 		log_admin("[key_name(usr)] has sent [key_name(L)] to the thunderdome. (Admin.)")
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(L)] to the thunderdome. (Admin.)")
 
@@ -562,15 +562,15 @@
 		if(!check_rights(R_FUN))
 			return
 
-		if(tgui_alert(usr, "Confirm?", "Message", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr, "Confirmado?", "Message", list("Yes", "No")) != "Yes")
 			return
 
 		var/mob/M = locate(href_list["tdomeobserve"])
 		if(!isliving(M))
-			to_chat(usr, "This can only be used on instances of type /mob/living.", confidential = TRUE)
+			to_chat(usr, "Isso só pode ser usado em casos de tipo / mob / vida.", confidential = TRUE)
 			return
 		if(isAI(M))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.", confidential = TRUE)
+			to_chat(usr, "Isso não pode ser usado em casos do tipo Mob/Viver/Silicon/ai.", confidential = TRUE)
 			return
 		var/mob/living/L = M
 
@@ -585,7 +585,7 @@
 		L.Unconscious(100)
 		sleep(0.5 SECONDS)
 		L.forceMove(pick(GLOB.tdomeobserve))
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), L, span_adminnotice("You have been sent to the Thunderdome.")), 5 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), L, span_adminnotice("Você foi enviado para o Thunderdome.")), 5 SECONDS)
 		log_admin("[key_name(usr)] has sent [key_name(L)] to the thunderdome. (Observer.)")
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(L)] to the thunderdome. (Observer.)")
 
@@ -595,7 +595,7 @@
 
 		var/mob/living/L = locate(href_list["revive"])
 		if(!istype(L))
-			to_chat(usr, "This can only be used on instances of type /mob/living.", confidential = TRUE)
+			to_chat(usr, "Isso só pode ser usado em casos de tipo / mob / vida.", confidential = TRUE)
 			return
 
 		L.revive(ADMIN_HEAL_ALL)
@@ -610,17 +610,17 @@
 		if(!istype(our_mob))
 			return
 		if(isAI(our_mob))
-			to_chat(usr, "That's already an AI.", confidential = TRUE)
+			to_chat(usr, "Isso já é uma IA.", confidential = TRUE)
 			return
 
 		var/move = TRUE
-		switch(tgui_alert(usr,"Move new AI to AI spawn location?","Move AI?", list("Yes", "No","Cancel")))
+		switch(tgui_alert(usr,"Mudar a nova IA para o local de criação da IA?","Move AI?", list("Yes", "No","Cancel")))
 			if("Cancel", null)
 				return
 			if("No")
 				move = FALSE
 		if(QDELETED(our_mob))
-			to_chat(usr, span_danger("Subject was deleted already. Transform canceled."))
+			to_chat(usr, span_danger("O sujeito já foi apagado. Transformação cancelada."))
 			return
 		message_admins(span_danger("Admin [key_name_admin(usr)] AIized [key_name_admin(our_mob)]!"))
 		log_admin("[key_name(usr)] AIized [key_name(our_mob)].")
@@ -637,14 +637,14 @@
 		var/mob/original_mob = locate(href_list["ppbyckeyorigmob"]) in GLOB.mob_list
 		var/mob/target_mob = get_mob_by_ckey(target_ckey)
 		if(!target_mob)
-			to_chat(usr, span_warning("No mob found with that ckey."))
+			to_chat(usr, span_warning("Nenhuma multidão foi encontrada com aquele ckey."))
 			return
 
 		if(original_mob == target_mob)
-			to_chat(usr, span_warning("[target_ckey] is still in their original mob: [original_mob]."))
+			to_chat(usr, span_warning("[target_ckey]Ainda está em sua máfia original:[original_mob]."))
 			return
 
-		to_chat(usr, span_notice("Jumping to [target_ckey]'s new mob: [target_mob]!"))
+		to_chat(usr, span_notice("Saltando para[target_ckey]Nova multidão:[target_mob]!"))
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/show_player_panel, target_mob)
 
 	else if(href_list["adminplayerobservefollow"])
@@ -678,7 +678,7 @@
 	else if(href_list["adminmoreinfo"])
 		var/mob/subject = locate(href_list["adminmoreinfo"]) in GLOB.mob_list
 		if(!ismob(subject))
-			to_chat(usr, "This can only be used on instances of type /mob.", confidential = TRUE)
+			to_chat(usr, "Isso só pode ser usado em casos de tipo / mob.", confidential = TRUE)
 			return
 
 		var/location_description = ""
@@ -690,13 +690,13 @@
 		//Location
 		if(isturf(position))
 			if(isarea(position.loc))
-				location_description = "[subject.loc == position ? "at coordinates" : "in [position.loc] at coordinates"] [position.x], [position.y], [position.z] in area <b>[position.loc]</b>"
+				location_description = "[subject.loc == position ? "at coordinates" : "in [position.loc] at coordinates"] [position.x], [position.y], [position.z]na área<b>[position.loc]</b>"
 			else
 				location_description = "[subject.loc == position ? "at coordinates" : "in [subject.loc] at coordinates"] [position.x], [position.y], [position.z]"
 
 		//Job + antagonist
 		if(subject.mind)
-			special_role_description = "Role: <b>[subject.mind.assigned_role.title]</b>; Antagonist: <font color='red'><b>"
+			special_role_description = "Papel:<b>[subject.mind.assigned_role.title]</b>Antagonista:<font color='red'><b>"
 
 			if(subject.mind.antag_datums)
 				var/iterable = 0
@@ -709,7 +709,7 @@
 			else
 				special_role_description += "None</b></font>"
 		else
-			special_role_description = "Role: <i>Mind datum missing</i> Antagonist: <i>Mind datum missing</i>"
+			special_role_description = "Papel:<i>O dado da mente desapareceu.</i>Antagonista:<i>O dado da mente desapareceu.</i>"
 
 		//Health
 		if(isliving(subject))
@@ -726,11 +726,11 @@
 					status = "<font color='orange'><b>Unconscious and Dying</b></font>"
 				if(DEAD)
 					status = "<font color='red'><b>Dead</b></font>"
-			health_description = "Status: [status]"
+			health_description = "Status:[status]"
 			health_description += "<br>Brute: [lifer.get_brute_loss()] - Burn: [lifer.get_fire_loss()] - Toxin: [lifer.get_tox_loss()] - Suffocation: [lifer.get_oxy_loss()]"
 			health_description += "<br>Brain: [lifer.get_organ_loss(ORGAN_SLOT_BRAIN)] - Stamina: [lifer.get_stamina_loss()]"
 		else
-			health_description = "This mob type has no health to speak of."
+			health_description = "Este tipo de multidão não tem saúde para falar."
 
 		//Gender
 		switch(subject.gender)
@@ -741,11 +741,11 @@
 
 		//Full Output
 		var/exportable_text = "[span_bold("Info about [subject.name]:")]<br>"
-		exportable_text += "Key - [span_bold(subject.key)]<br>"
+		exportable_text += "Chave...[span_bold(subject.key)]<br>"
 		exportable_text += "Mob Type - [subject.type]<br>"
 		exportable_text += "Gender - [gender_description]<br>"
 		exportable_text += "[health_description]<br>"
-		exportable_text += "Name: [span_bold(subject.name)] - Real Name: [subject.real_name] - Mind Name: [subject.mind?"[subject.mind.name]":""]<br>"
+		exportable_text += "Nome:[span_bold(subject.name)]- Nome verdadeiro:[subject.real_name]- Nome da mente:[subject.mind?"[subject.mind.name]":""]<br>"
 		exportable_text += "Location is [location_description]<br>"
 		exportable_text += "[special_role_description]<br>"
 		exportable_text += ADMIN_FULLMONTY_NONAME(subject)
@@ -778,7 +778,7 @@
 				var/newslots = null
 				newslots = input(usr, "How many job slots do you want?", "Add job slots", "[newslots]") as num|null
 				if(!isnull(newslots))
-					to_chat(src.owner, "Job slots for [job.title] set to [newslots]" , confidential = TRUE)
+					to_chat(src.owner, "Espaços de trabalho para[job.title]Pronto para[newslots]" , confidential = TRUE)
 					job.total_positions = newslots
 					log_job_debug("[key_name(usr)] set the job cap for [job.title] to [newslots]")
 					break
@@ -834,7 +834,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["adminspawncookie"])
 		if(!ishuman(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.", confidential = TRUE)
+			to_chat(usr, "Isto só pode ser usado em casos de tipo / mob / vivo / carbono / humano.", confidential = TRUE)
 			return
 		var/obj/item/new_item = new H.dna.species.species_cookie(H)
 		if(H.put_in_hands(new_item))
@@ -848,21 +848,21 @@
 		log_admin("[key_name(H)] got their [new_item], spawned by [key_name(src.owner)].")
 		message_admins("[key_name(H)] got their [new_item], spawned by [key_name(src.owner)].")
 		SSblackbox.record_feedback("amount", "admin_cookies_spawned", 1)
-		to_chat(H, span_adminnotice("Your prayers have been answered!! You received the <b>best [new_item.name]!</b>"), confidential = TRUE)
+		to_chat(H, span_adminnotice("Suas preces foram atendidas! Você recebeu o<b>Melhor.[new_item.name]!</b>"), confidential = TRUE)
 		SEND_SOUND(H, sound('sound/effects/pray_chaplain.ogg'))
 
 	else if (href_list["adminpopup"])
 		if (!check_rights(R_ADMIN))
 			return
 
-		var/message = input(owner, "As well as a popup, they'll also be sent a message to reply to. What do you want that to be?", "Message") as text|null
+		var/message = input(owner, "Além de um popup, eles também serão enviados uma mensagem para responder. O que você quer que seja?", "Message") as text|null
 		if (!message)
-			to_chat(owner, span_notice("Popup cancelled."))
+			to_chat(owner, span_notice("Popup cancelado."))
 			return
 
 		var/client/target = locate(href_list["adminpopup"])
 		if (!istype(target))
-			to_chat(owner, span_notice("The mob doesn't exist anymore!"))
+			to_chat(owner, span_notice("A máfia não existe mais!"))
 			return
 
 		give_admin_popup(target, owner, message)
@@ -918,7 +918,7 @@
 			return
 
 		var/mob/M = locate(href_list["playsoundto"])
-		var/S = input("", "Select a sound file",) as null|sound
+		var/S = input("", "Selecione um arquivo de som",) as null|sound
 		if(S)
 			SSadmin_verbs.dynamic_invoke_verb(usr.client, /datum/admin_verb/play_direct_mob_sound, S, M)
 
@@ -928,7 +928,7 @@
 
 		var/mob/M = locate(href_list["individuallog"]) in GLOB.mob_list
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.", confidential = TRUE)
+			to_chat(usr, "Isso só pode ser usado em casos de tipo / mob.", confidential = TRUE)
 			return
 
 		show_individual_logging_panel(M, href_list["log_src"], href_list["log_type"])
@@ -938,7 +938,7 @@
 
 		var/mob/M = locate(href_list["languagemenu"]) in GLOB.mob_list
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.", confidential = TRUE)
+			to_chat(usr, "Isso só pode ser usado em casos de tipo / mob.", confidential = TRUE)
 			return
 		M.get_language_holder().open_language_menu(usr)
 
@@ -957,14 +957,14 @@
 			return
 
 		if(!SSticker.HasRoundStarted())
-			tgui_alert(usr,"The game hasn't started yet!")
+			tgui_alert(usr,"O jogo ainda não começou!")
 			return
 
 		var/mob/M = locate(href_list["traitor"])
 		if(!ismob(M))
 			var/datum/mind/D = M
 			if(!istype(D))
-				to_chat(usr, "This can only be used on instances of type /mob and /mind", confidential = TRUE)
+				to_chat(usr, "Isto só pode ser usado em casos de tipo / mob e / mente", confidential = TRUE)
 				return
 			else
 				D.traitor_panel()
@@ -977,7 +977,7 @@
 			return
 
 		if(!SSticker.HasRoundStarted())
-			tgui_alert(usr,"The game hasn't started yet!")
+			tgui_alert(usr,"O jogo ainda não começou!")
 			return
 
 		var/target = locate(href_list["skill"])
@@ -988,7 +988,7 @@
 		else if (istype(target, /datum/mind))
 			target_mind = target
 		else
-			to_chat(usr, "This can only be used on instances of type /mob and /mind", confidential = TRUE)
+			to_chat(usr, "Isto só pode ser usado em casos de tipo / mob e / mente", confidential = TRUE)
 			return
 		SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/show_skill_panel, target_mind)
 		return
@@ -1001,7 +1001,7 @@
 			return
 		var/mob/M = locate(href_list["initmind"])
 		if(!ismob(M) || M.mind)
-			to_chat(usr, "This can only be used on instances on mindless mobs", confidential = TRUE)
+			to_chat(usr, "Isso só pode ser usado em casos em multidões sem cérebro.", confidential = TRUE)
 			return
 		M.mind_initialize()
 
@@ -1031,9 +1031,9 @@
 		if(SSticker.IsRoundInProgress())
 			var/afkonly = text2num(href_list["afkonly"])
 			if(tgui_alert(usr,"Are you sure you want to kick all [afkonly ? "AFK" : ""] clients from the lobby??","Message",list("Yes","Cancel")) != "Yes")
-				to_chat(usr, "Kick clients from lobby aborted", confidential = TRUE)
+				to_chat(usr, "Chute clientes do lobby abortado.", confidential = TRUE)
 				return
-			var/list/listkicked = kick_clients_in_lobby(span_danger("You were kicked from the lobby by [usr.client.holder.fakekey ? "an Administrator" : "[usr.client.key]"]."), afkonly)
+			var/list/listkicked = kick_clients_in_lobby(span_danger("Você foi chutado do saguão por[usr.client.holder.fakekey ? "an Administrator" : "[usr.client.key]"]."), afkonly)
 
 			var/strkicked = ""
 			for(var/name in listkicked)
@@ -1041,7 +1041,7 @@
 			message_admins("[key_name_admin(usr)] has kicked [afkonly ? "all AFK" : "all"] clients from the lobby. [length(listkicked)] clients kicked: [strkicked ? strkicked : "--"]")
 			log_admin("[key_name(usr)] has kicked [afkonly ? "all AFK" : "all"] clients from the lobby. [length(listkicked)] clients kicked: [strkicked ? strkicked : "--"]")
 		else
-			to_chat(usr, "You may only use this when the game is running.", confidential = TRUE)
+			to_chat(usr, "Você só pode usar isso quando o jogo estiver funcionando.", confidential = TRUE)
 
 	else if(href_list["set_selfdestruct_code"])
 		if(!check_rights(R_ADMIN))
@@ -1049,8 +1049,7 @@
 		var/code = random_nukecode()
 		for(var/obj/machinery/nuclearbomb/selfdestruct/SD as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/nuclearbomb/selfdestruct))
 			SD.r_code = code
-		message_admins("[key_name_admin(usr)] has set the self-destruct \
-			code to \"[code]\".")
+		message_admins("[key_name_admin(usr)] has set the self-destruct 			code to \"[code]\".")
 
 	else if(href_list["add_station_goal"])
 		if(!check_rights(R_ADMIN))
@@ -1061,11 +1060,11 @@
 			return
 		var/datum/station_goal/G = new picked()
 		if(picked == /datum/station_goal)
-			var/newname = input("Enter goal name:") as text|null
+			var/newname = input("Digite o nome do gol:") as text|null
 			if(!newname)
 				return
 			G.name = newname
-			var/description = input("Enter CentCom message contents:") as message|null
+			var/description = input("Digite o conteúdo da mensagem CentCom:") as message|null
 			if(!description)
 				return
 			G.report_message = description
@@ -1088,7 +1087,7 @@
 			else
 				var/switch_index = text2num(href_list["change_lag_switch"])
 				if(!SSlag_switch.set_measure(switch_index, !LAZYACCESS(SSlag_switch.measures, switch_index)))
-					to_chat(src, span_danger("Something went wrong when trying to toggle that Lag Switch. Check runtimes for more info."), confidential = TRUE)
+					to_chat(src, span_danger("Algo deu errado ao tentar trocar aquele interruptor. Verifique os horários de execução para mais informações."), confidential = TRUE)
 				else
 					log_admin("[key_name(usr)] turned a Lag Switch measure at index ([switch_index]) [LAZYACCESS(SSlag_switch.measures, switch_index) ? "ON" : "OFF"]")
 					message_admins("[key_name_admin(usr)] turned a Lag Switch measure [LAZYACCESS(SSlag_switch.measures, switch_index) ? "ON" : "OFF"]")
@@ -1110,13 +1109,13 @@
 				log_admin("[key_name(usr)] toggled automatic Lag Switch activation [SSlag_switch.auto_switch ? "ON" : "OFF"].")
 				message_admins("[key_name_admin(usr)] toggled automatic Lag Switch activation [SSlag_switch.auto_switch ? "ON" : "OFF"].")
 			if("NUM")
-				var/new_num = input("Enter new threshold value:", "Num") as null|num
+				var/new_num = input("Digite o novo valor do limiar:", "Num") as null|num
 				if(!isnull(new_num))
 					SSlag_switch.trigger_pop = new_num
 					log_admin("[key_name(usr)] set the Lag Switch automatic trigger pop to [new_num].")
 					message_admins("[key_name_admin(usr)] set the Lag Switch automatic trigger pop to [new_num].")
 			if("SLOWCOOL")
-				var/new_num = input("Enter new cooldown in seconds:", "Num") as null|num
+				var/new_num = input("Introduza novo arrefecimento em segundos:", "Num") as null|num
 				if(!isnull(new_num))
 					SSlag_switch.change_slowmode_cooldown(new_num)
 					log_admin("[key_name(usr)] set the Lag Switch slowmode cooldown to [new_num] seconds.")
@@ -1127,7 +1126,7 @@
 	else if(href_list["viewruntime"])
 		var/datum/error_viewer/error_viewer = locate(href_list["viewruntime"])
 		if(!istype(error_viewer))
-			to_chat(usr, span_warning("That runtime viewer no longer exists."), confidential = TRUE)
+			to_chat(usr, span_warning("Aquele espectador em tempo de execução não existe mais."), confidential = TRUE)
 			return
 
 		if(href_list["viewruntime_backto"])
@@ -1170,8 +1169,8 @@
 		var/data = list("key" = usr.key)
 		var/answer = href_list["slowquery"]
 		if(answer == "yes")
-			if(tgui_alert(usr, "Did you just press any admin buttons?", "Query server hang report", list("Yes", "No")) == "Yes")
-				var/response = input(usr,"What were you just doing?","Query server hang report") as null|text
+			if(tgui_alert(usr, "Você apertou algum botão de administração?", "Query server hang report", list("Yes", "No")) == "Yes")
+				var/response = input(usr,"O que estava fazendo?","Relatório do servidor de perguntas.") as null|text
 				if(response)
 					data["response"] = response
 			logger.Log(LOG_CATEGORY_DEBUG_SQL, "server hang", data)
@@ -1350,10 +1349,10 @@
 	else if(href_list["admincommend"])
 		var/mob/heart_recepient = locate(href_list["admincommend"])
 		if(!heart_recepient?.ckey)
-			to_chat(usr, span_warning("This mob either no longer exists or no longer is being controlled by someone!"))
+			to_chat(usr, span_warning("Esta multidão ou não existe mais ou não está sendo controlada por alguém!"))
 			return
 
-		switch(tgui_alert(usr, "Would you like the effects to apply immediately or at the end of the round? Applying them now will make it clear it was an admin commendation.", "<3?", list("Apply now", "Apply at round end", "Cancel")))
+		switch(tgui_alert(usr, "Gostaria que os efeitos se aplicassem imediatamente ou no final da rodada? Aplicá-los agora deixará claro que foi um elogio administrativo.", "<3?", list("Apply now", "Apply at round end", "Cancel")))
 			if("Apply now")
 				heart_recepient.receive_heart(usr, instant = TRUE)
 			if("Apply at round end")

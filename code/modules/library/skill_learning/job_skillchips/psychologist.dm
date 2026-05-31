@@ -1,9 +1,9 @@
 /obj/item/skillchip/job/psychology
 	name = "HYPERG1G4 skillchip"
-	desc = "Learn to bend the abyss to your will."
+	desc = "Aprenda a dobrar o abismo à sua vontade."
 	auto_traits = list(TRAIT_SUPERMATTER_SOOTHER, TRAIT_MADNESS_IMMUNE)
 	skill_name = "Supermatter Cognition Theory"
-	skill_description = "Understand the correct mental patterns to keep in mind around matter in a hyperfractal state, causing immunity to visions and making the matter in question \"calmer\"."
+	skill_description = "Entender os padrões mentais corretos para ter em mente em torno da matéria em um estado hiperfractal, causando imunidade às visões e tornando o assunto em questão\"Mais calma.\"."
 	skill_icon = "spa"
-	activate_message = span_notice("You start thinking in patterns that will render you immune to visions from, and act as a calming influence for, matter in a hyperfractal state.")
-	deactivate_message = span_notice("Your thoughts become more disordered and jumbled. You are no longer immune to the abyss.")
+	activate_message = span_notice("Você começa a pensar em padrões que vão torná-lo imune a visões de, e agir como uma influência calmante para, matéria em um estado hiperfractal.")
+	deactivate_message = span_notice("Seus pensamentos ficam mais desordenados e confusos. Você não é mais imune ao abismo.")

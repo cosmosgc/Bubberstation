@@ -1,6 +1,6 @@
 /obj/item/beacon
 	name = "\improper tracking beacon"
-	desc = "A beacon used by a teleporter."
+	desc = "Um farol usado por um teletransportador."
 	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "beacon"
 	inhand_icon_state = "beacon"
@@ -41,7 +41,7 @@
 		GLOB.teleportbeacons += src
 	else
 		turn_off()
-	to_chat(user, span_notice("You [enabled ? "enable" : "disable"] the beacon."))
+	to_chat(user, span_notice("Você.[enabled ? "enable" : "disable"]O farol."))
 	return
 
 /obj/item/beacon/attack_hand_secondary(mob/user, list/modifiers)

@@ -13,7 +13,7 @@
 		SetStun(0, ignore_canstun = TRUE)
 
 	if(client && admin)
-		to_chat(src, span_userdanger("An admin has [!admin_frozen ? "un" : ""]frozen you."))
+		to_chat(src, span_userdanger("Um administrador tem[!admin_frozen ? "un" : ""]Congelou você."))
 		log_admin("[key_name(admin)] toggled admin-freeze on [key_name(src)].")
 		message_admins("[key_name_admin(admin)] toggled admin-freeze on [key_name_admin(src)].")
 
@@ -27,6 +27,6 @@
 		SetSleeping(0)
 
 	if(client && admin)
-		to_chat(src, span_userdanger("An admin has [!admin_sleeping ? "un": ""]slept you."))
+		to_chat(src, span_userdanger("Um administrador tem[!admin_sleeping ? "un": ""]Eu dormi com você."))
 		log_admin("[key_name(admin)] toggled admin-sleep on [key_name(src)].")
 		message_admins("[key_name_admin(admin)] toggled admin-sleep on [key_name_admin(src)].")

@@ -12,7 +12,7 @@
  */
 /obj/item/pen
 	name = "pen"
-	desc = "It's a normal black ink pen."
+	desc = "É uma caneta preta normal."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "pen"
 	inhand_icon_state = "pen"
@@ -42,13 +42,7 @@
 
 /obj/item/pen/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/dart_insert, \
-		dart_insert_icon, \
-		dart_insert_casing_icon_state, \
-		dart_insert_icon, \
-		dart_insert_projectile_icon_state, \
-		CALLBACK(src, PROC_REF(get_dart_var_modifiers))\
-	)
+	AddComponent(/datum/component/dart_insert, 		dart_insert_icon, 		dart_insert_casing_icon_state, 		dart_insert_icon, 		dart_insert_projectile_icon_state, 		CALLBACK(src, PROC_REF(get_dart_var_modifiers))	)
 	AddElement(/datum/element/tool_renaming)
 	RegisterSignal(src, COMSIG_DART_INSERT_ADDED, PROC_REF(on_inserted_into_dart))
 	RegisterSignal(src, COMSIG_DART_INSERT_REMOVED, PROC_REF(on_removed_from_dart))
@@ -62,12 +56,7 @@
 
 /// Proc that child classes can override to have custom transforms, like edaggers or pendrivers
 /obj/item/pen/proc/create_transform_component()
-	AddComponent( \
-		/datum/component/transforming, \
-		sharpness_on = NONE, \
-		inhand_icon_change = FALSE, \
-		w_class_on = w_class, \
-	)
+	AddComponent( 		/datum/component/transforming, 		sharpness_on = NONE, 		inhand_icon_change = FALSE, 		w_class_on = w_class, 	)
 
 /*
  * Signal proc for [COMSIG_TRANSFORMING_ON_TRANSFORM].
@@ -103,27 +92,27 @@
 	SIGNAL_HANDLER
 
 /obj/item/pen/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is scribbling numbers all over [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit sudoku..."))
+	user.visible_message(span_suicide("[user]Está rabiscando números por toda parte.[user.p_them()]ego com[src]Parece que...[user.p_theyre()]Tentando comer sudoku..."))
 	return BRUTELOSS
 
 /obj/item/pen/blue
-	desc = "It's a normal blue ink pen."
+	desc = "É uma caneta azul normal."
 	icon_state = "pen_blue"
 	colour = COLOR_BLUE
 
 /obj/item/pen/red
-	desc = "It's a normal red ink pen."
+	desc = "É uma caneta vermelha normal."
 	icon_state = "pen_red"
 	colour = COLOR_RED
 	throw_speed = 4 // red ones go faster (in this case, fast enough to embed!)
 
 /obj/item/pen/invisible
-	desc = "It's an invisible pen marker."
+	desc = "É uma caneta invisível."
 	icon_state = "pen"
 	colour = COLOR_WHITE
 
 /obj/item/pen/fourcolor
-	desc = "It's a fancy four-color ink pen, set to black."
+	desc = "É uma caneta de tinta de quatro cores, preta."
 	name = "four-color pen"
 	icon_state = "pen_4color"
 	colour = COLOR_BLACK
@@ -146,14 +135,14 @@
 			chosen_color = "blue"
 		else
 			colour = COLOR_BLACK
-	to_chat(user, span_notice("\The [src] will now write in [chosen_color]."))
-	desc = "It's a fancy four-color ink pen, set to [chosen_color]."
+	to_chat(user, span_notice("\The [src]Agora vai escrever em[chosen_color]."))
+	desc = "É uma caneta de tinta de quatro cores, pronta para[chosen_color]."
 	balloon_alert(user, "clicked")
 	playsound(src, 'sound/machines/click.ogg', 30, TRUE, -3)
 
 /obj/item/pen/fountain
 	name = "fountain pen"
-	desc = "It's a common fountain pen, with a faux wood body. Rumored to work in zero gravity situations."
+	desc = "É uma caneta comum, com um corpo falso de madeira. Rumores de trabalhar em situações de gravidade zero."
 	icon_state = "pen-fountain"
 	font = FOUNTAIN_PEN_FONT
 	requires_gravity = FALSE // fancy spess pens
@@ -163,7 +152,7 @@
 
 /obj/item/pen/charcoal
 	name = "charcoal stylus"
-	desc = "It's just a wooden stick with some compressed ash on the end. At least it can write."
+	desc = "É só uma vara de madeira com cinzas comprimidas na ponta. Pelo menos pode escrever."
 	icon_state = "pen-charcoal"
 	colour = "#696969"
 	font = CHARCOAL_FONT
@@ -216,7 +205,7 @@
 
 /obj/item/pen/fountain/captain
 	name = "captain's fountain pen"
-	desc = "It's an expensive Oak fountain pen. The nib is quite sharp."
+	desc = "É uma caneta de fonte de carvalho cara. A ponta é bem afiada."
 	icon_state = "pen-fountain-o"
 	force = 5
 	throwforce = 5
@@ -240,11 +229,7 @@
 
 /obj/item/pen/fountain/captain/Initialize(mapload)
 	. = ..()
-	AddComponent( \
-		/datum/component/butchering, \
-		speed = 20 SECONDS, \
-		effectiveness = 115, \
-	)
+	AddComponent( 		/datum/component/butchering, 		speed = 20 SECONDS, 		effectiveness = 115, 	)
 	//the pen is mightier than the sword
 	RegisterSignal(src, COMSIG_DART_INSERT_PARENT_RESKINNED, PROC_REF(reskin_dart_insert))
 
@@ -260,13 +245,13 @@
 
 /obj/item/pen/item_ctrl_click(mob/living/carbon/user)
 	if(loc != user)
-		to_chat(user, span_warning("You must be holding the pen to continue!"))
+		to_chat(user, span_warning("Você deve estar segurando a caneta para continuar!"))
 		return CLICK_ACTION_BLOCKING
 	var/deg = tgui_input_number(user, "What angle would you like to rotate the pen head to? (0-360)", "Rotate Pen Head", max_value = 360)
 	if(isnull(deg) || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH) || loc != user)
 		return CLICK_ACTION_BLOCKING
 	degrees = deg
-	to_chat(user, span_notice("You rotate the top of the pen to [deg] degrees."))
+	to_chat(user, span_notice("Você gira o topo da caneta para[deg]Graus."))
 	SEND_SIGNAL(src, COMSIG_PEN_ROTATED, deg, user)
 	return CLICK_ACTION_SUCCESS
 
@@ -275,8 +260,8 @@
 		return ..()
 	if(!M.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE))
 		return FALSE
-	to_chat(user, span_warning("You stab [M] with the pen."))
-	to_chat(M, span_danger("You feel a tiny prick!"))
+	to_chat(user, span_warning("Você esfaqueia.[M]com uma cana."))
+	to_chat(M, span_danger("Você sente um pinto minúsculo!"))
 	log_combat(user, M, "stabbed", src)
 	return TRUE
 
@@ -359,22 +344,11 @@
 	alt_continuous = string_list(alt_continuous)
 	alt_simple = string_list(alt_simple)
 	AddComponent(/datum/component/alternative_sharpness, SHARP_POINTY, alt_continuous, alt_simple, -5, TRAIT_TRANSFORM_ACTIVE)
-	AddComponent(/datum/component/butchering, \
-	speed = 6 SECONDS, \
-	butcher_sound = 'sound/items/weapons/blade1.ogg', \
-	)
+	AddComponent(/datum/component/butchering, 	speed = 6 SECONDS, 	butcher_sound = 'sound/items/weapons/blade1.ogg', 	)
 	RegisterSignal(src, COMSIG_DETECTIVE_SCANNED, PROC_REF(on_scan))
 
 /obj/item/pen/edagger/create_transform_component()
-	AddComponent( \
-		/datum/component/transforming, \
-		force_on = 18, \
-		throwforce_on = 35, \
-		throw_speed_on = 4, \
-		sharpness_on = SHARP_EDGED, \
-		w_class_on = WEIGHT_CLASS_NORMAL, \
-		inhand_icon_change = FALSE, \
-	)
+	AddComponent( 		/datum/component/transforming, 		force_on = 18, 		throwforce_on = 35, 		throw_speed_on = 4, 		sharpness_on = SHARP_EDGED, 		w_class_on = WEIGHT_CLASS_NORMAL, 		inhand_icon_change = FALSE, 	)
 
 /obj/item/pen/edagger/on_inserted_into_dart(datum/source, obj/item/ammo_casing/dart, mob/user)
 	. = ..()
@@ -427,16 +401,16 @@
 	UnregisterSignal(source, list(COMSIG_ITEM_UNEMBEDDED, COMSIG_ITEM_FAILED_EMBED))
 	victim.visible_message(
 		message = span_warning("The blade of the [hidden_name] retracts as \the [source] is removed from [victim]!"),
-		self_message = span_warning("The blade of the [hidden_name] retracts as \the [source] is removed from you!"),
-		blind_message = span_warning("You hear an energy blade retract!"),
+		self_message = span_warning("A lâmina do[hidden_name]Retrai como\the [source]é removido de você!"),
+		blind_message = span_warning("Você ouve uma lâmina de energia se retirar!"),
 		vision_distance = 1
 	)
 
 /obj/item/pen/edagger/suicide_act(mob/living/user)
 	if(HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
-		user.visible_message(span_suicide("[user] forcefully rams the pen into their mouth!"))
+		user.visible_message(span_suicide("[user]com força, enfia a caneta em sua boca!"))
 	else
-		user.visible_message(span_suicide("[user] is holding a pen up to their mouth! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user]Está segurando uma caneta na boca deles! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 		attack_self(user)
 	return BRUTELOSS
 
@@ -480,7 +454,7 @@
 
 /obj/item/pen/survival
 	name = "survival pen"
-	desc = "The latest in portable survival technology, this pen was designed as a miniature diamond pickaxe. Watchers find them very desirable for their diamond exterior."
+	desc = "A última tecnologia de sobrevivência portátil, esta caneta foi projetada como uma picareta de diamantes em miniatura. Observadores os acham muito desejáveis para o exterior de diamantes."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "digging_pen"
 	inhand_icon_state = "pen"
@@ -519,7 +493,7 @@
 
 /obj/item/pen/destroyer
 	name = "Fine Tipped Pen"
-	desc = "A pen with an infinitely-sharpened tip. Capable of striking the weakest point of a strucutre or robot and annihilating it instantly. Good at putting holes in people too."
+	desc = "Uma caneta com uma ponta infinitamente afiada. Capaz de atingir o ponto mais fraco de um strucutre ou robô e aniquilá-lo instantaneamente. Bom em fazer buracos nas pessoas também."
 	force = 5
 	wound_bonus = 100
 	demolition_mod = 9000
@@ -527,7 +501,7 @@
 // screwdriver pen!
 
 /obj/item/pen/screwdriver
-	desc = "A pen with an extendable screwdriver tip. This one has a yellow cap."
+	desc = "Uma caneta com uma chave de fenda extensível. Este tem uma tampa amarela."
 	icon_state = "pendriver"
 	toolspeed = 1.2  // gotta have some downside
 	dart_insert_projectile_icon_state = "overlay_pendriver"
@@ -540,13 +514,7 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/pen/screwdriver/create_transform_component()
-	AddComponent( \
-		/datum/component/transforming, \
-		throwforce_on = 5, \
-		w_class_on = WEIGHT_CLASS_SMALL, \
-		sharpness_on = TRUE, \
-		inhand_icon_change = FALSE, \
-	)
+	AddComponent( 		/datum/component/transforming, 		throwforce_on = 5, 		w_class_on = WEIGHT_CLASS_SMALL, 		sharpness_on = TRUE, 		inhand_icon_change = FALSE, 	)
 
 /obj/item/pen/screwdriver/on_transform(obj/item/source, mob/user, active)
 	if(user)
@@ -571,13 +539,13 @@
 //The Security holopen
 /obj/item/pen/red/security
 	name = "security pen"
-	desc = "This is a red ink pen exclusively provided to members of the Security Department. Its opposite end features a built-in holographic projector designed for issuing arrest prompts to individuals."
+	desc = "Esta é uma caneta de tinta vermelha fornecida exclusivamente para membros do Departamento de Segurança. Seu lado oposto apresenta um projetor holográfico construído para emitir alertas de prisão para indivíduos."
 	icon_state = "pen_sec"
 	COOLDOWN_DECLARE(holosign_cooldown)
 
 /obj/item/pen/red/security/examine(mob/user)
 	. = ..()
-	. += span_notice("To initiate the surrender prompt, simply click on an individual within your proximity.")
+	. += span_notice("Para iniciar a rendição, basta clicar em um indivíduo próximo.")
 
 //Code from the medical penlight
 /obj/item/pen/red/security/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -592,14 +560,14 @@
 		return ITEM_INTERACT_BLOCKING
 
 	living_target.apply_status_effect(/datum/status_effect/surrender_timed)
-	to_chat(living_target, span_userdanger("[user] requests your immediate surrender! You are given 30 seconds to comply!"))
+	to_chat(living_target, span_userdanger("[user]solicita sua rendição imediata! Você tem 30 segundos para obedecer!"))
 	new /obj/effect/temp_visual/security_holosign(target_turf, user) //produce a holographic glow
 	COOLDOWN_START(src, holosign_cooldown, 30 SECONDS)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/effect/temp_visual/security_holosign
 	name = "security holosign"
-	desc = "A small holographic glow that indicates you're under arrest."
+	desc = "Um pequeno brilho holográfico que indica que você está preso."
 	icon_state = "sec_holo"
 	duration = 60
 
@@ -607,4 +575,4 @@
 	. = ..()
 	playsound(loc, 'sound/machines/chime.ogg', 50, FALSE) //make some noise!
 	if(creator)
-		visible_message(span_danger("[creator] created a security hologram!"))
+		visible_message(span_danger("[creator]Criou um holograma de segurança!"))

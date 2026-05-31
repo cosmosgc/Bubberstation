@@ -1,11 +1,11 @@
 /datum/quirk/floating_items
 	name = "Psionic Holding"
-	desc = "You find holding items with your hands so inconvenient, and use your mind powers to do so instead."
+	desc = "Você acha os itens com as mãos tão inconvenientes, e usa seus poderes mentais para fazê-lo."
 	value = 0
 	icon = FA_ICON_METEOR
-	medical_record_text = "Subject's mind is capable of extremely limited telekinesis."
-	gain_text = "Your mind feels like it can lift weights!"
-	lose_text = "Your mind feels like it took a cheat day."
+	medical_record_text = "A mente do sujeito é capaz de telecinese extremamente limitada."
+	gain_text = "Sua mente parece que pode levantar pesos!"
+	lose_text = "Sua mente parece que levou um dia de trapaça."
 	mob_trait = TRAIT_FLOATING_HELD
 
 /datum/quirk_constant_data/floating_items
@@ -44,11 +44,11 @@
 			if(ishuman(owner))
 				var/mob/living/carbon/human/owner_human = owner
 				owner_human.update_held_items()
-			to_chat(owner, span_notice("You stop focusing on moving objects with your mind."))
+			to_chat(owner, span_notice("Pare de se concentrar em mover objetos com sua mente."))
 		else
 			ADD_TRAIT(owner, TRAIT_FLOATING_HELD, QUIRK_TRAIT)
 			if(ishuman(owner))
 				var/mob/living/carbon/human/owner_human = owner
 				owner_human.update_held_items()
-			to_chat(owner, span_notice("You feel ready to move objects with your mind."))
+			to_chat(owner, span_notice("Você se sente pronto para mover objetos com sua mente."))
 	return TRUE

@@ -33,7 +33,7 @@
 	mob_react = FALSE
 	required_container_accepts_subtypes = TRUE
 	required_container = /obj/item/reagent_containers/cup/soup_pot
-	mix_message = "You smell something good coming from the steaming pot of soup."
+	mix_message = "Você cheira bem vindo da panela de sopa."
 	reaction_tags = REACTION_TAG_FOOD | REACTION_TAG_EASY
 
 	// General soup guideline:
@@ -202,7 +202,7 @@
 
 		// Uh oh we reached the top of the pot, the soup's gonna boil over.
 		if(holder.total_volume >= holder.maximum_volume * 0.95)
-			below_pot.visible_message(span_warning("[pot] starts to boil over!"))
+			below_pot.visible_message(span_warning("[pot]Começa a ferver!"))
 			// Create a spread of dirty foam
 			do_foam(1, pot, below_pot, carry = holder, foam_type = /datum/effect_system/fluid_spread/foam/dirty, stop_reactions = TRUE, reagent_scale = 0.1)
 			// Loses a bit from the foam
@@ -326,7 +326,7 @@
 /datum/glass_style/has_foodtype/soup/watery_soup
 	required_drink_type = /datum/reagent/water
 	name = "Bowl of water"
-	desc = "A very wet bowl."
+	desc = "Uma tigela muito molhada."
 	icon_state = "wishsoup"
 
 /datum/glass_style/has_foodtype/soup/watery_soup/set_name(obj/item/thing)
@@ -349,7 +349,7 @@
 	optimal_temp = SOUP_BURN_TEMP + 50
 	overheat_temp = SOUP_BURN_TEMP + 60
 	thermic_constant = 0
-	mix_message = span_warning("You smell something gross coming from the pot of soup.")
+	mix_message = span_warning("Você sente algo nojento vindo da sopa.")
 	required_reagents = list(/datum/reagent/water = 30)
 	results = list(/datum/reagent/water = 10)
 	ingredient_reagent_multiplier = 1
@@ -377,7 +377,7 @@
 // Meatball Soup
 /datum/reagent/consumable/nutriment/soup/meatball_soup
 	name = "Meatball Soup"
-	description = "You've got balls kid, BALLS!"
+	description = "Você tem coragem, garoto, bolas!"
 	data = list("meat" = 1)
 	glass_price = FOOD_PRICE_NORMAL
 	color = "#FFFDCF"
@@ -405,7 +405,7 @@
 // Vegetable Soup
 /datum/reagent/consumable/nutriment/soup/vegetable_soup
 	name = "Vegetable Soup"
-	description = "A true vegan meal."
+	description = "Uma verdadeira refeição vegana."
 	data = list("vegetables" = 1)
 	glass_price = FOOD_PRICE_NORMAL
 	color = "#FAA810"
@@ -431,7 +431,7 @@
 // Nettle soup - gains some omnizine to offset the acid damage
 /datum/reagent/consumable/nutriment/soup/nettle
 	name = "Nettle Soup"
-	description = "To think, the botanist would've beat you to death with one of these."
+	description = "E pensar, o botânico teria te batido até a morte com um desses."
 	data = list("nettles" = 1)
 	glass_price = FOOD_PRICE_NORMAL
 	color = "#C1E212"
@@ -462,7 +462,7 @@
 // Wing Fang Chu
 /datum/reagent/consumable/nutriment/soup/wingfangchu
 	name = "Wing Fang Chu"
-	description = "A savory dish of alien wing wang in soy."
+	description = "Um prato salgado de ala alienígena wang em soja."
 	data = list("soy" = 1)
 	color = "#C1E212"
 
@@ -487,7 +487,7 @@
 // Chili (Hot, not cold)
 /datum/reagent/consumable/nutriment/soup/hotchili
 	name = "Hot Chili"
-	description = "A five alarm Texan Chili!"
+	description = "Um cinco alarme Texan Chili!"
 	data = list("hot peppers" = 1)
 	glass_price = FOOD_PRICE_NORMAL
 	color = "#E23D12"
@@ -523,7 +523,7 @@
 // Chili (Cold)
 /datum/reagent/consumable/nutriment/soup/coldchili
 	name = "Cold Chili"
-	description = "This slush is barely a liquid!"
+	description = "Essa lama mal é um líquido!"
 	data = list("tomato" = 1, "mint" = 1)
 	glass_price = FOOD_PRICE_NORMAL
 	color = "#3861C2"
@@ -551,7 +551,7 @@
 // Chili (Clownish)
 /datum/reagent/consumable/nutriment/soup/clownchili
 	name = "Chili Con Carnival"
-	description = "A delicious stew of meat, chiles, and salty, salty clown tears."
+	description = "Um delicioso guisado de carne, chiles e lágrimas de palhaço salgado e salgado."
 	data = list(
 		"tomato" = 1,
 		"hot peppers" = 2,
@@ -586,7 +586,7 @@
 // Vegan Chili
 /datum/reagent/consumable/nutriment/soup/chili_sin_carne
 	name = "Chili Sin Carne"
-	description = "For the hombres who don't want carne."
+	description = "Para os hombres que não querem carne."
 	data = list("bitterness" = 1, "sourness" = 1)
 	color = "#E23D12"
 
@@ -612,7 +612,7 @@
 // Tomato soup
 /datum/reagent/consumable/nutriment/soup/tomato
 	name = "Tomato Soup"
-	description = "Drinking this feels like being a vampire! A tomato vampire..."
+	description = "Beber parece ser um vampiro! Um vampiro de tomate..."
 	data = list("tomato" = 1)
 	color = COLOR_RED
 
@@ -644,7 +644,7 @@
 // Tomato-eyeball soup
 /datum/reagent/consumable/nutriment/soup/eyeball
 	name = "Eyeball Soup"
-	description = "It looks back at you..."
+	description = "Olha para você..."
 	data = list("tomato" = 1, "squirming" = 1)
 	color = "#FF1C1C"
 
@@ -673,7 +673,7 @@
 // Miso soup
 /datum/reagent/consumable/nutriment/soup/miso
 	name = "Miso Soup"
-	description = "The universes best soup! Yum!!!"
+	description = "A melhor sopa do universo! Yum!!"
 	data = list("miso" = 1)
 	glass_price = FOOD_PRICE_NORMAL
 	color = "#E2BD12"
@@ -701,7 +701,7 @@
 /datum/glass_style/has_foodtype/soup/tomato/blood
 	required_drink_type = /datum/reagent/blood
 	name = "Tomato Soup"
-	desc = "Smells like copper."
+	desc = "Cheira a cobre."
 	drink_type = GROSS
 
 /datum/chemical_reaction/food/soup/bloodsoup
@@ -725,7 +725,7 @@
 // Can also be created by mixing water and slime jelly.
 /datum/reagent/consumable/nutriment/soup/slime
 	name = "Slime Soup"
-	description = "If no water is available, you may substitute tears."
+	description = "Se não houver água disponível, pode substituir as lágrimas."
 	data = list("slime" = 1)
 	glass_price = FOOD_PRICE_NORMAL
 	color = "#41C0C0"
@@ -768,7 +768,7 @@
 // Clown Tear soup
 /datum/reagent/consumable/nutriment/soup/clown_tears
 	name = "Clown's Tears"
-	description = "The sorrow and melancholy of a thousand bereaved clowns, forever denied their Honkmechs."
+	description = "A tristeza e melancolia de mil palhaços enlutados, para sempre negaram seus Honkmechs."
 	nutriment_factor = 5
 	ph = 9.2
 	data = list("a bad joke" = 1, "mournful honking" = 1)
@@ -777,7 +777,7 @@
 /datum/glass_style/has_foodtype/soup/clown_tears
 	required_drink_type = /datum/reagent/consumable/nutriment/soup/clown_tears
 	name = "clown's tears"
-	desc = "Not very funny."
+	desc = "Não é muito engraçado."
 	icon_state = "clownstears"
 	drink_type = FRUIT | SUGAR
 
@@ -801,7 +801,7 @@
 // Acts a little funny, because when it's mixed it gains a new random reagent as well
 /datum/reagent/consumable/nutriment/soup/mystery
 	name = "Mystery Soup"
-	description = "The mystery is, why aren't you eating it?"
+	description = "O mistério é, por que não está comendo?"
 	data = list("chaos" = 1)
 	color = "#4C2A18"
 
@@ -851,7 +851,7 @@
 // Monkey Soup
 /datum/reagent/consumable/nutriment/soup/monkey
 	name = "Monkey's Delight"
-	description = "A delicious soup with dumplings and hunks of monkey meat simmered to perfection, in a broth that tastes faintly of bananas."
+	description = "Uma deliciosa sopa com bolinhos e pedaços de carne de macaco ferveu até a perfeição, em um caldo que tem um gosto fraco de bananas."
 	data = list("the jungle" = 1, "banana" = 1)
 	glass_price = FOOD_PRICE_NORMAL
 	color = "#4C2A18"
@@ -888,7 +888,7 @@
 // Cream of mushroom soup
 /datum/reagent/consumable/nutriment/soup/mushroom
 	name = "Chantrelle Soup"
-	description = "A delicious and hearty mushroom soup."
+	description = "Uma sopa de cogumelos deliciosa e saudável."
 	data = list("mushroom" = 1)
 	color = "#CEB1B0"
 
@@ -916,7 +916,7 @@
 // This has a gimmick where it randomizes its name based on common mispellings on Borsch
 /datum/reagent/consumable/nutriment/soup/white_beet
 	name = "Beet Soup"
-	description = "Wait, how do you spell it again..?"
+	description = "Espere, como se escreve de novo?"
 	data = list("beet" = 1)
 	color = "#E00000"
 
@@ -959,7 +959,7 @@
 // Stew
 /datum/reagent/consumable/nutriment/soup/stew
 	name = "Stew"
-	description = "A nice and warm stew. Healthy and strong."
+	description = "Um guisado agradável e quente. Saudável e forte."
 	data = list("tomato" = 1, "carrot" = 1)
 	glass_price = FOOD_PRICE_NORMAL
 	color = "#EB7C82"
@@ -991,7 +991,7 @@
 // Sweet potato soup
 /datum/reagent/consumable/nutriment/soup/sweetpotato
 	name = "Sweet Potato Soup"
-	description = "Delicious sweet potato in soup form."
+	description = "Batata doce deliciosa em forma de sopa."
 	data = list("sweet potato" = 1)
 	color = "#903E22"
 
@@ -1019,7 +1019,7 @@
 // Red beet soup
 /datum/reagent/consumable/nutriment/soup/red_beet
 	name = "Red Beet Soup"
-	description = "Quite a delicacy."
+	description = "Que delícia."
 	data = list("beet" = 1)
 	color = "#851127"
 
@@ -1043,7 +1043,7 @@
 // French Onion soup
 /datum/reagent/consumable/nutriment/soup/french_onion
 	name = "French Onion Soup"
-	description = "Good enough to make a grown mime cry."
+	description = "O suficiente para fazer um mímico chorar."
 	data = list("caramelized onions" = 1)
 	color = "#E1C47F"
 
@@ -1069,7 +1069,7 @@
 // Bisque / Crab soup
 /datum/reagent/consumable/nutriment/soup/bisque
 	name = "Bisque"
-	description = "A classic entree from Space-France."
+	description = "Uma entrada clássica da Space-France."
 	data = list("creamy texture" = 1, "crab" = 4)
 	glass_price = FOOD_PRICE_EXOTIC
 	color = "#C8682F"
@@ -1095,7 +1095,7 @@
 // Bungo Tree Curry
 /datum/reagent/consumable/nutriment/soup/bungo
 	name = "Bungo Curry"
-	description = "A spicy vegetable curry made with the humble bungo fruit, Exotic!"
+	description = "Um curry vegetal picante feito com a humilde fruta de bungo, Exótico!"
 	data = list("bungo" = 2, "hot curry" = 4, "tropical sweetness" = 1)
 	glass_price = FOOD_PRICE_NORMAL
 	color = "#E6BC32"
@@ -1124,7 +1124,7 @@
 // Special soup for Ethereals to consume to gain nutrition (energy) from.
 /datum/reagent/consumable/nutriment/soup/electrons
 	name = "Electron Soup"
-	description = "A gastronomic curiosity of ethereal origin. It is famed for the miniature weather system formed over a properly prepared soup."
+	description = "Uma curiosidade gastronômica de origem etérea. É famosa pelo sistema meteorológico em miniatura formado sobre uma sopa devidamente preparada."
 	data = list("mushroom" = 1, "electrons" = 4)
 	glass_price = FOOD_PRICE_EXOTIC
 	color = "#E60040"
@@ -1153,7 +1153,7 @@
 // Pea Soup
 /datum/reagent/consumable/nutriment/soup/pea
 	name = "Pea Soup"
-	description = "A humble split pea soup."
+	description = "Uma sopa de ervilhas."
 	data = list("creamy peas" = 2, "parsnip" = 1)
 	color = "#9D7B20"
 
@@ -1177,7 +1177,7 @@
 // Indian curry
 /datum/reagent/consumable/nutriment/soup/indian_curry
 	name = "Indian Chicken Curry"
-	description = "A mild, creamy curry from the old subcontinent. Liked by the Space-British, because it reminds them of the Raj."
+	description = "Um caril suave e cremoso do velho subcontinente. Gostado pelo espaço-britânico, porque lembra o Raj."
 	data = list("chicken" = 2, "creamy curry" = 4, "earthy heat" = 1)
 	glass_price = FOOD_PRICE_NORMAL
 	color = "#BB2D1A"
@@ -1208,7 +1208,7 @@
 // Oatmeal (Soup like)
 /datum/reagent/consumable/nutriment/soup/oatmeal
 	name = "Oatmeal"
-	description = "A nice bowl of oatmeal."
+	description = "Uma bela tigela de aveia."
 	data = list("oats" = 1, "milk" = 1)
 	color = "#FFD7B4"
 
@@ -1233,7 +1233,7 @@
 // Zurek, a Polish soup
 /datum/reagent/consumable/nutriment/soup/zurek
 	name = "Zurek"
-	description = "A traditional Polish soup composed of vegetables, meat, and an egg. Goes great with bread."
+	description = "Uma sopa tradicional polonesa composta de vegetais, carne e um ovo. Fica ótimo com pão."
 	data = list("creamy vegetables" = 2, "sausage" = 1)
 	color = "#F1CB6D"
 
@@ -1262,7 +1262,7 @@
 // Cullen Skink, a Scottish soup with a funny name
 /datum/reagent/consumable/nutriment/soup/cullen_skink
 	name = "Cullen Skink"
-	description = "A thick Scottish soup made of smoked fish, potatoes and onions."
+	description = "Uma grossa sopa escocesa feita de peixe defumado, batatas e cebolas."
 	data = list("creamy broth" = 1, "fish" = 1, "vegetables" = 1)
 	color = "#F6F664"
 
@@ -1295,7 +1295,7 @@
 // Chicken Noodle Soup
 /datum/reagent/consumable/nutriment/soup/chicken_noodle_soup
 	name = "Chicken Noodle Soup"
-	description = "A hearty bowl of chicken noodle soup, perfect for when you're stuck at home and sick."
+	description = "Uma tigela de sopa de macarrão de frango, perfeita para quando você está preso em casa e doente."
 	data = list("broth" = 1, "chicken" = 1, "noodles" = 1, "carrots" = 1)
 	color = "#DDB23E"
 
@@ -1321,7 +1321,7 @@
 // Corn Cowder
 /datum/reagent/consumable/nutriment/soup/corn_chowder
 	name = "Corn Chowder"
-	description = "A creamy bowl of corn chowder, with bacon bits and mixed vegetables. One bowl is never enough."
+	description = "Uma tigela cremosa de sopa de milho, com pedaços de bacon e vegetais misturados. Uma tigela nunca é suficiente."
 	data = list("creamy broth" = 1, "bacon" = 1, "mixed vegetables" = 1)
 	color = COLOR_CRAYON_YELLOW
 
@@ -1352,7 +1352,7 @@
 // Atrakor Dumpling soup
 /datum/reagent/consumable/nutriment/soup/atrakor_dumplings
 	name = "\improper Atrakor dumpling soup"
-	description = "A bowl of rich, meaty dumpling soup, traditionally served during the festival of Atrakor's Might on Tizira. The dumplings are shaped like the Night Sky Lord himself."
+	description = "Uma tigela de sopa de bolinho carnudo, tradicionalmente servido durante o festival de Atrakor's Might em Tizira. Os bolinhos têm a forma do próprio Senhor do Céu Noturno."
 	data = list("bone broth" = 1, "onion" = 1, "potato" = 1)
 	color = "#7B453B"
 
@@ -1382,7 +1382,7 @@
 // Meatball Soup, but lizard-like
 /datum/reagent/consumable/nutriment/soup/meatball_noodles
 	name = "Meatball Noodle Soup"
-	description = "A hearty noodle soup made from meatballs and nizaya in a rich broth. Commonly topped with a handful of chopped nuts."
+	description = "Uma sopa de macarrão feita de almôndegas e nizaya em um caldo rico. Com um punhado de nozes picadas."
 	data = list("bone broth" = 1, "meat" = 1, "gnocchi" = 1, "peanuts" = 1)
 	color = "#915145"
 
@@ -1411,7 +1411,7 @@
 // Black Broth
 /datum/reagent/consumable/nutriment/soup/black_broth
 	name = "\improper Tiziran black broth"
-	description = "A bowl of sausage, onion, blood and vinegar, served ice cold. Every bit as rough as it sounds."
+	description = "Uma tigela de salsicha, cebola, sangue e vinagre, servida gelada. Tão duro quanto parece."
 	data = list("vinegar" = 1, "iron" = 1)
 	color = "#340010"
 
@@ -1444,7 +1444,7 @@
 // Jellyfish Stew
 /datum/reagent/consumable/nutriment/soup/jellyfish
 	name = "Jellyfish Stew"
-	description = "A slimy bowl of jellyfish stew. It jiggles if you shake it."
+	description = "Uma tigela viscosa de ensopado de água-viva. Ele balança se você sacudir."
 	data = list("slime" = 1)
 	color = "#3FAA7E"
 
@@ -1484,7 +1484,7 @@
 // Rootbread Soup
 /datum/reagent/consumable/nutriment/soup/rootbread
 	name = "Rootbread Soup"
-	description = "A big bowl of spicy, savoury soup made with rootbread. Heavily seasoned, and very tasty."
+	description = "Uma grande tigela de sopa picante e saborosa feita com pão de raiz. Fortemente temperado, e muito saboroso."
 	data = list("bread" = 1, "egg" = 1, "chili" = 1, "garlic" = 1)
 	color = "#AC3232"
 
@@ -1516,7 +1516,7 @@
 // Cotton Soup
 /datum/reagent/consumable/nutriment/soup/cottonball
 	name = "Flöfrölenmæsch" //flöf = cotton, rölen = ball, mæsch = soup
-	description = "A soup made from raw cotton in a flavourful vegetable broth. Enjoyed only by moths and the criminally tasteless."
+	description = "Uma sopa feita de algodão cru em um caldo vegetal saborosa. Apreciado apenas por mariposas e criminosos sem gosto."
 	data = list("cotton" = 1, "broth" = 1)
 	color = "#E6A625"
 
@@ -1545,8 +1545,7 @@
 // Cheese Soup
 /datum/reagent/consumable/nutriment/soup/cheese
 	name = "Ælosterrmæsch" //ælo = cheese, sterr = melt, mæsch = soup
-	description = "A simple and filling soup made from homemade cheese and sweet potato. \
-		The curds provide texture while the whey provides volume- and they both provide deliciousness!"
+	description = "Uma sopa simples e recheada feita de queijo caseiro e batata doce. As coalhadas fornecem textura enquanto o soro de leite fornece volume e ambos fornecem delícia!"
 	data = list("cheese" = 1, "cream" = 1, "sweet potato" = 1)
 	color = "#F3CE3A"
 
@@ -1577,8 +1576,7 @@
 // Seed Soup
 /datum/reagent/consumable/nutriment/soup/seed
 	name = "Misklmæsch" //miskl = seed, mæsch = soup
-	description = "A seed based soup, made by germinating seeds and then boiling them. \
-		Produces a particularly bitter broth which is usually balanced by the addition of vinegar."
+	description = "Uma sopa à base de sementes, feita por germinar sementes e depois fervê-las. Produz um caldo particularmente amargo que geralmente é equilibrado pela adição de vinagre."
 	data = list("bitterness" = 1, "sourness" = 1)
 	color = "#4F6F31"
 
@@ -1610,7 +1608,7 @@
 // Bean Soup
 /datum/reagent/consumable/nutriment/soup/beans
 	name = "Prickeldröndolhaskl" //prickeld = spicy, röndol = bean, haskl = stew
-	description = "A spicy bean stew with lots of veggies, commonly served aboard the fleet as a filling and satisfying meal with rice or bread."
+	description = "Um ensopado de feijão picante com muitos vegetais, comumente servido a bordo da frota como uma refeição recheada e satisfatória com arroz ou pão."
 	data = list("beans" = 1, "cabbage" = 1, "spicy sauce" = 1)
 	color = "#DF7126"
 
@@ -1642,7 +1640,7 @@
 // Oat Soup, but not oatmeal
 /datum/reagent/consumable/nutriment/soup/moth_oats
 	name = "Häfmisklhaskl" //häfmiskl = oat (häf from German hafer meaning oat, miskl meaning seed), haskl = stew
-	description = "A spicy bean stew with lots of veggies, commonly served aboard the fleet as a filling and satisfying meal with rice or bread."
+	description = "Um ensopado de feijão picante com muitos vegetais, comumente servido a bordo da frota como uma refeição recheada e satisfatória com arroz ou pão."
 	data = list("oats" = 1, "sweet potato" = 1, "carrot" = 1, "parsnip" = 1, "pumpkin" = 1)
 	color = "#CAA94E"
 
@@ -1669,8 +1667,7 @@
 // Fire Soup
 /datum/reagent/consumable/nutriment/soup/fire_soup
 	name = "Tömpröttkrakklmæsch" //tömprött = heart (tömp = thump, rött = muscle), krakkl = fire, mæsch = soup
-	description = "Tömpröttkrakklmæsch, or heartburn soup, is a cold soup dish that originated amongst the jungle moths, \
-		and is named for two things- its rosy pink colour, and its scorchingly hot chili heat."
+	description = "Tömpröttkrakklmæsch, ou sopa de azia, é um prato de sopa fria que se originou entre as mariposas da selva, e tem o nome de duas coisas: sua cor rosa rosada, e seu calor quente escaldante."
 	data = list("love" = 1, "hate" = 1)
 	color = "#FBA8F3"
 
@@ -1702,8 +1699,7 @@
 // Rice Porridge (Soup-ish)
 /datum/reagent/consumable/nutriment/soup/rice_porridge
 	name = "Rice Porridge"
-	description = "A plate of rice porridge. It's mostly flavourless, but it does fill a spot. \
-		To the Chinese it's congee, and moths call it höllflöfmisklsløsk." //höllflöfmiskl = rice (höllflöf = cloud, miskl = seed), sløsk = porridge
+	description = "Um prato de mingau de arroz. Não tem sabor, mas preenche um ponto. Para os chineses é congee, e mariposas chamam de höllflöfmiskløsk." //höllflöfmiskl = rice (höllflöf = cloud, miskl = seed), sløsk = porridge
 	data = list("nothing" = 1)
 	color = "#EDE3E3"
 
@@ -1732,7 +1728,7 @@
 // Also, pretty much just a normal chemical reaction. Used in other stuff
 /datum/reagent/consumable/nutriment/soup/cornmeal_porridge
 	name = "Cornmeal Porridge"
-	description = "A plate of cornmeal porridge. It's more flavourful than most porridges, and makes a good base for other flavours, too."
+	description = "Um prato de mingau de milho. É mais saborosa do que a maioria dos mingaus, e faz uma boa base para outros sabores, também."
 	data = list("cornmeal" = 1)
 	color = "#ECDA7B"
 
@@ -1758,7 +1754,7 @@
 // Cheese Porridge (Soup-ish)
 /datum/reagent/consumable/nutriment/soup/cheese_porridge
 	name = "Cheesy Porridge" //milk, polenta, firm cheese, curd cheese, butter
-	description = "A rich and creamy bowl of cheesy cornmeal porridge."
+	description = "Uma tigela rica e cremosa de mingau de milho."
 	data = list("cornmeal" = 1, "cheese" = 1, "more cheese" = 1, "lots of cheese" = 1)
 	color = "#F0DD5A"
 
@@ -1789,7 +1785,7 @@
 // Rice Porridge again but with Toechtause
 /datum/reagent/consumable/nutriment/soup/toechtauese_rice_porridge
 	name = "Töchtaüse Rice Porridge"
-	description = "Commonly served aboard the mothic fleet, rice porridge with töchtaüse syrup is more palatable than the regular stuff, if even just because it's spicier than normal."
+	description = "Geralmente servidos a bordo da frota de mariposa, mingau de arroz com xarope de töchtaüse é mais palatável do que o normal, mesmo que seja mais picante do que o normal."
 	data = list("sugar" = 1, "spice" = 1)
 	color = "#D8CFCC"
 
@@ -1819,7 +1815,7 @@
 // Red Porridge
 /datum/reagent/consumable/nutriment/soup/red_porridge
 	name = "Eltsløsk ül a priktæolk" //eltsløsk = red porridge, ül a = with, prikt = sour, æolk = cream
-	description = "Red porridge with yoghurt. The name and vegetable ingredients obscure the sweet nature of the dish, which is commonly served as a dessert aboard the fleet."
+	description = "mingau vermelho com iogurte. O nome e ingredientes vegetais obscurecem a doce natureza do prato, que é comumente servido como sobremesa a bordo da frota."
 	data = list("sweet beets" = 1, "sugar" = 1, "sweetened yoghurt" = 1)
 	color = "#FF858B"
 
@@ -1868,7 +1864,7 @@
 // Dashi Broth
 /datum/reagent/consumable/nutriment/soup/dashi
 	name = "Dashi"
-	description = "Made with kombu and katsuobushi, this mother stock forms the basis for a large number of Japanese dishes."
+	description = "Feito com kombu e katsuobushi, este estoque mãe forma a base para um grande número de pratos japoneses."
 	data = list("umami" = 1)
 	color = "#D49D26"
 
@@ -1889,7 +1885,7 @@
 // Teriyaki Sauce
 /datum/reagent/consumable/nutriment/soup/teriyaki
 	name = "Teriyaki Sauce"
-	description = "A Japanese sauce that's heavy on umami."
+	description = "Um molho japonês que é pesado em umami."
 	data = list("umami" = 1)
 	color = "#3F0D02"
 
@@ -1911,7 +1907,7 @@
 // Curry Sauce
 /datum/reagent/consumable/nutriment/soup/curry_sauce
 	name = "Curry Sauce"
-	description = "A basic curry sauce that goes well on a wide range of foods."
+	description = "Um molho básico de curry que vai bem em uma grande variedade de alimentos."
 	data = list("curry" = 1)
 	color = "#F6C800"
 
@@ -1934,7 +1930,7 @@
 // Shoyu Ramen
 /datum/reagent/consumable/nutriment/soup/shoyu_ramen
 	name = "Shōyu Ramen"
-	description = "A soy-sauce based ramen, with noodles, fishcake, barbecued meat and a boiled egg."
+	description = "Um ramen à base de molho de soja, com macarrão, bolo de peixe, carne grelhada e um ovo cozido."
 	data = list("egg" = 1, "fish" = 1, "noodles" = 1, "meat" = 1, "broth" = 1)
 	color = "#442621"
 
@@ -1966,7 +1962,7 @@
 // Gyuramen
 /datum/reagent/consumable/nutriment/soup/gyuramen
 	name = "Gyuramen Miy Käzu"
-	description = "A rich beef and onion ramen with cheese, blending several cultural influences seemlessly into one tasty dish."
+	description = "Uma carne rica e ramen de cebola com queijo, misturando várias influências culturais aparentemente em um prato saboroso."
 	data = list("beef broth" = 1, "onion" = 1, "cheese" = 1)
 	color = "#442621"
 
@@ -1998,7 +1994,7 @@
 // New Osaka Sunrise
 /datum/reagent/consumable/nutriment/soup/new_osaka_sunrise
 	name = "New Osaka Sunrise Soup"
-	description = "A bright, flavourful miso soup with tofu that commonly forms part of a traditional Martian breakfast, at least in the capital."
+	description = "Uma sopa de miso brilhante e saborosa com tofu que normalmente faz parte de um café da manhã tradicional marciano, pelo menos na capital."
 	data = list("miso" = 1, "tofu" = 1, "onion" = 1, "eggplant" = 1)
 	color = "#EAB26E"
 
@@ -2029,7 +2025,7 @@
 // Satsuma Black
 /datum/reagent/consumable/nutriment/soup/satsuma_black
 	name = "Satsuma Black Soup"
-	description = "A rich, heavy seafood and noodle soup from Mars, employing squid ink to give a strong taste of the sea."
+	description = "Uma rica e pesada sopa de marisco e macarrão de Marte, usando tinta de lula para dar um forte sabor ao mar."
 	data = list("seafood" = 1, "tofu" = 1, "noodles" = 1)
 	color = "#171221"
 
@@ -2060,7 +2056,7 @@
 // Dragon Style
 /datum/reagent/consumable/nutriment/soup/dragon_ramen
 	name = "Dragon Style Ramen"
-	description = "For the ramen fan who hates their tastebuds and digestive tract. Traditionally made with seven different chilis, although after two or so the point sorta gets lost."
+	description = "Para o fã de ramen que odeia seus paladares e trato digestivo. Tradicionalmente feito com sete chilis diferentes, embora depois de dois ou assim o ponto se perde."
 	data = list("meat" = 1, "liquid hot magma" = 1, "noodles" = 1)
 	color = "#980F00"
 
@@ -2094,7 +2090,7 @@
 // Hong Kong Borscht
 /datum/reagent/consumable/nutriment/soup/hong_kong_borscht
 	name = "Hong Kong Borscht"
-	description = "Also known as luo song tang or Russian soup, this dish bears little to no resemblance to Eastern European borscht; indeed, it's a tomato-based soup with no beets in sight."
+	description = "Também conhecido como tang canção luo ou sopa russa, este prato tem pouca ou nenhuma semelhança com borscht da Europa Oriental, de fato, é uma sopa à base de tomate sem beterrabas à vista."
 	data = list("tomato" = 1, "meat" = 1, "cabbage" = 1)
 	color = "#CA4810"
 
@@ -2127,7 +2123,7 @@
 // Huotui Tong Fen
 /datum/reagent/consumable/nutriment/soup/hong_kong_macaroni
 	name = "Hong Kong Macaroni Soup"
-	description = "A favourite from Hong Kong's Cha Chaan Tengs, this macaroni soup came to Mars with Cantonese settlers under Cybersun Industries, and has become as much of a breakfast staple there as it is in its homeland."
+	description = "Um favorito de Cha Chaan Tengs de Hong Kong, esta sopa de macarrão veio para Marte com colonos cantoneses sob as Indústrias Cybersun, e se tornou tanto de um grampo de café da manhã lá quanto em sua terra natal."
 	data = list("cream" = 1, "chicken" = 1, "pasta" = 1, "ham" = 1)
 	color = "#FFFAB5"
 
@@ -2157,7 +2153,7 @@
 // Fox's Prize Soup
 /datum/reagent/consumable/nutriment/soup/foxs_prize_soup
 	name = "Fox's Prize Soup"
-	description = "Originally based on the Chinese classic of egg-drop soup, fox's prize soup iterated on the concept via the addition of aburaage and dashi, making a dish that would truly appeal to any hungry fox."
+	description = "Originalmente baseado no clássico chinês de sopa de gota de ovo, sopa prêmio de raposa iterated no conceito através da adição de aburaage e dashi, fazendo um prato que realmente apelaria para qualquer raposa faminta."
 	data = list("egg" = 1, "chicken" = 1, "fried tofu" = 1, "umami broth" = 1)
 	color = "#E9B200"
 
@@ -2185,7 +2181,7 @@
 // Secret Noodle Soup
 /datum/reagent/consumable/nutriment/soup/secret_noodle_soup
 	name = "Secret Noodle Soup"
-	description = "Made to a secret family recipe (that's in several cookbooks). What is the secret ingredient, you ask? Well, let's just say it could be anything..."
+	description = "Feito com uma receita secreta de família (que está em vários livros de receitas). Qual é o ingrediente secreto? Digamos que pode ser qualquer coisa..."
 	data = list("noodles" = 1, "chicken" = 1, "aromatic broth" = 1)
 	color = "#D9BB79"
 
@@ -2213,7 +2209,7 @@
 // Budae-Jjigae
 /datum/reagent/consumable/nutriment/soup/budae_jjigae
 	name = "Budae-Jjigae"
-	description = "A dish born of the American presence in South Korea, made with ingredients typical to the 1960s American army base- hot dogs, chap, and baked beans, as well as a number of native Korean ingredients such as gochujang and kimchi."
+	description = "Um prato nascido da presença americana na Coreia do Sul, feito com ingredientes típicos da base do exército americano de 1960 - cachorros-quentes, cap, e feijão cozido, bem como uma série de ingredientes nativos coreanos, como gochujang e kimchi."
 	data = list("hot dog" = 1, "pork" = 1, "beans" = 1, "kimchi" = 1, "noodles" = 1)
 	color = "#C8400E"
 
@@ -2253,4 +2249,4 @@
 	)
 	resulting_food_path = /obj/item/food/volt_fish
 	ingredient_reagent_multiplier = 0
-	mix_message = "The air fills with a hellish mix of fish and artificial flavouring."
+	mix_message = "O ar se enche de uma mistura infernal de peixes e aroma artificial."

@@ -3,8 +3,8 @@
 //These cards certainly won't tell the future, but you can play some nice games with them.
 /obj/item/toy/cards/deck/tarot
 	name = "tarot game deck"
-	desc = "A full 78 card game deck of tarot cards. Complete with 4 suites of 14 cards, and a full suite of trump cards."
-	cardgame_desc = "tarot card reading"
+	desc = "Um baralho completo de 78 cartas de cartas de tarô. Completo com 4 suítes de 14 cartas, e uma suíte cheia de cartas de trunfo."
+	cardgame_desc = "Leitura de cartas de tarô"
 	icon_state = "deck_tarot_full"
 	deckstyle = "tarot"
 
@@ -47,22 +47,17 @@
 
 /obj/item/toy/cards/deck/tarot/haunted
 	name = "haunted tarot game deck"
-	desc = "A spooky looking tarot deck. You can sense a supernatural presence linked to the cards..."
+	desc = "Um deck de tarô assustador. Você pode sentir uma presença sobrenatural ligada às cartas..."
 	/// ghost notification cooldown
 	COOLDOWN_DECLARE(ghost_alert_cooldown)
 
 /obj/item/toy/cards/deck/tarot/haunted/Initialize(mapload)
 	. = ..()
-	AddComponent( \
-		/datum/component/two_handed, \
-		attacksound = 'sound/items/cards/cardflip.ogg', \
-		wield_callback = CALLBACK(src, PROC_REF(on_wield)), \
-		unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), \
-	)
+	AddComponent( 		/datum/component/two_handed, 		attacksound = 'sound/items/cards/cardflip.ogg', 		wield_callback = CALLBACK(src, PROC_REF(on_wield)), 		unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), 	)
 
 /obj/item/toy/cards/deck/tarot/haunted/proc/on_wield(obj/item/source, mob/living/carbon/user)
 	ADD_TRAIT(user, TRAIT_SIXTHSENSE, MAGIC_TRAIT)
-	to_chat(user, span_notice("The veil to the underworld is opened. You can sense the dead souls calling out..."))
+	to_chat(user, span_notice("O véu para o submundo está aberto. Você pode sentir as almas mortas chamando..."))
 
 	if(!COOLDOWN_FINISHED(src, ghost_alert_cooldown))
 		return
@@ -71,13 +66,13 @@
 	notify_ghosts(
 		"Someone has begun playing with a [name] in [get_area(src)]!",
 		source = src,
-		header = "Haunted Tarot Deck",
+		header = "Deck de Tarot Assombrado",
 		ghost_sound = 'sound/effects/ghost2.ogg',
 		notify_volume = 75,
 	)
 
 /obj/item/toy/cards/deck/tarot/haunted/proc/on_unwield(obj/item/source, mob/living/carbon/user)
 	REMOVE_TRAIT(user, TRAIT_SIXTHSENSE, MAGIC_TRAIT)
-	to_chat(user, span_notice("The veil to the underworld closes shut. You feel your senses returning to normal."))
+	to_chat(user, span_notice("O véu do submundo fecha. Sente seus sentidos voltando ao normal."))
 
 #undef TAROT_GHOST_TIMER

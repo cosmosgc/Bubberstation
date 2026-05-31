@@ -77,10 +77,10 @@ export const Aquarium = (props) => {
                         ml={1}
                         key={fish.fish_ref}
                         style={{
-                          background: 'rgba(36, 50, 67, 0.5)',
+                          background: '(36, 50, 67, 0.5)',
                           padding: '5px 5px',
                           borderRadius: '1em',
-                          border: '3px solid #574e82',
+                          border: '3px sólido #574e82',
                         }}
                       >
                         <FishInfo fish={fish} />
@@ -332,7 +332,7 @@ const Settings = (props) => {
         <Section fill title="Settings">
           <Box mt={2}>
             <LabeledList>
-              <LabeledList.Item label="Aquarium Mode">
+              <LabeledList.Item label="Modo Aquário">
                 <Dropdown
                   width="80%"
                   selected={currentMode}
@@ -350,7 +350,7 @@ const Settings = (props) => {
                   />
                 </Tooltip>
               </LabeledList.Item>
-              <LabeledList.Item label="Feeding Interval">
+              <LabeledList.Item label="Intervalo de alimentação">
                 <NumberInput
                   width="15px"
                   value={feedingInterval}

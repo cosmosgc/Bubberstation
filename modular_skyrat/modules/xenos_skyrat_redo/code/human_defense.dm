@@ -14,26 +14,23 @@
 			if(check_block(user, damage = 0, attack_text = "[user.name]"))
 				playsound(loc, 'sound/items/weapons/parry.ogg', 25, TRUE, -1) //Audio feedback to the fact you just got blocked
 				apply_damage(disarm_damage / 2, STAMINA)
-				visible_message(span_danger("[user] attempts to touch [src]!"), \
-					span_danger("[user] attempts to touch you!"), span_hear("You hear a swoosh!"), null, user)
-				to_chat(user, span_warning("You attempt to touch [src]!"))
+				visible_message(span_danger("[user]Tentando tocar[src]!"), 					span_danger("[user]Tenta tocar em você!"), span_hear("Você ouve um shoosh!"), null, user)
+				to_chat(user, span_warning("Você tenta tocar[src]!"))
 				return FALSE
 
 			playsound(loc, 'sound/items/weapons/thudswoosh.ogg', 25, TRUE, -1) //The sounds of these are changed so the xenos can actually hear they are being non-lethal
 			Knockdown(3 SECONDS)
 			apply_damage(disarm_damage, STAMINA)
-			visible_message(span_danger("[user] knocks [src] down!"), \
-				span_userdanger("[user] knocks you down!"), span_hear("You hear aggressive shuffling follow by a loud thud!"), null, user)
-			to_chat(user, span_danger("You knock [src] down!"))
+			visible_message(span_danger("[user]Bate.[src]Abaixe-se!"), 				span_userdanger("[user]Derruba você!"), span_hear("Você ouve um barulho agressivo!"), null, user)
+			to_chat(user, span_danger("Você bate.[src]Abaixe-se!"))
 			return TRUE
 
 		else
 			playsound(loc, 'sound/effects/hit_kick.ogg', 25, TRUE, -1)
 			apply_damage(disarm_damage, STAMINA)
 			log_combat(user, src, "tackled")
-			visible_message(span_danger("[user] tackles [src] down!"), \
-							span_userdanger("[user] tackles you down!"), span_hear("You hear aggressive shuffling!"), null, user)
-			to_chat(user, span_danger("You tackle [src] down!"))
+			visible_message(span_danger("[user]Tackles[src]Abaixe-se!"), 							span_userdanger("[user]Derruba você!"), span_hear("Você ouve baralhar agressivo!"), null, user)
+			to_chat(user, span_danger("Você joga[src]Abaixe-se!"))
 
 		return TRUE
 
@@ -50,9 +47,8 @@
 		var/armor_block = run_armor_check(affecting, MELEE,"","",10)
 
 		playsound(loc, 'sound/items/weapons/slice.ogg', 25, TRUE, -1)
-		visible_message(span_danger("[user] slashes at [src]!"), \
-						span_userdanger("[user] slashes at you!"), span_hear("You hear a sickening sound of a slice!"), null, user)
-		to_chat(user, span_danger("You slash at [src]!"))
+		visible_message(span_danger("[user]Cortes em[src]!"), 						span_userdanger("[user]Corta em você!"), span_hear("Você ouve um som doentio de uma fatia!"), null, user)
+		to_chat(user, span_danger("Você corta em[src]!"))
 		log_combat(user, src, "attacked")
 
 		if(!dismembering_strike(user, user.zone_selected)) //Dismemberment successful

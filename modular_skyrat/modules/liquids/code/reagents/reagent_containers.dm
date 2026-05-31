@@ -22,16 +22,16 @@
 		return FALSE
 
 	if(liquids.fire_state) //Use an extinguisher first
-		to_chat(user, span_warning("You can't scoop up anything while it's on fire!"))
+		to_chat(user, span_warning("Não pode pegar nada enquanto está pegando fogo!"))
 		return TRUE
 
 	if(liquids.height == 1)
-		to_chat(user, span_warning("The puddle is too shallow to scoop anything up!"))
+		to_chat(user, span_warning("A poça é muito rasa para pegar qualquer coisa!"))
 		return TRUE
 
 	var/free_space = reagents.maximum_volume - reagents.total_volume
 	if(free_space <= 0)
-		to_chat(user, span_warning("You can't fit any more liquids inside [src]!"))
+		to_chat(user, span_warning("Não cabe mais líquidos dentro.[src]!"))
 		return TRUE
 
 	var/desired_transfer = amount_per_transfer_from_this
@@ -40,7 +40,7 @@
 
 	var/datum/reagents/tempr = liquids.take_reagents_flat(desired_transfer)
 	tempr.trans_to(reagents, tempr.total_volume)
-	to_chat(user, span_notice("You scoop up around [amount_per_transfer_from_this] units of liquids with [src]."))
+	to_chat(user, span_notice("Você pega por aí[amount_per_transfer_from_this]unidades de líquidos com[src]."))
 	qdel(tempr)
 	user.changeNext_move(CLICK_CD_MELEE)
 	return TRUE

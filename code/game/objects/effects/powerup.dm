@@ -54,11 +54,11 @@
 
 /obj/effect/powerup/health
 	name = "health pickup"
-	desc = "Blessing from the havens."
+	desc = "Bênção dos paraísos."
 	icon = 'icons/obj/storage/backpack.dmi'
 	icon_state = "backpack-medical"
 	respawn_time = 30 SECONDS
-	pickup_message = "Health restored!"
+	pickup_message = "Saúde restaurada!"
 	pickup_sound = 'sound/effects/magic/staff_healing.ogg'
 	/// How much the pickup heals when picked up
 	var/heal_amount = 50
@@ -78,17 +78,17 @@
 
 /obj/effect/powerup/health/full
 	name = "mega health pickup"
-	desc = "Now this is what I'm talking about."
+	desc = "É disso que estou falando."
 	icon_state = "duffel-medical"
 	full_heal = TRUE
 
 /obj/effect/powerup/ammo
 	name = "ammo pickup"
-	desc = "You like revenge, right? Everybody likes revenge! Well, let's go get some!"
+	desc = "Você gosta de vingança, certo? Todos gostam de vingança! Bem, vamos pegar!"
 	icon = 'icons/obj/storage/toolbox.dmi'
 	icon_state = "ammobox"
 	respawn_time = 30 SECONDS
-	pickup_message = "Ammunition reloaded!"
+	pickup_message = "Munição recarregada!"
 	pickup_sound = 'sound/items/weapons/gun/shotgun/rack.ogg'
 
 /obj/effect/powerup/ammo/trigger(mob/living/target)
@@ -108,7 +108,7 @@
 
 /obj/effect/powerup/speed
 	name = "Lightning Orb"
-	desc = "You feel faster just looking at it."
+	desc = "Você se sente mais rápido só de olhar para ele."
 	icon_state = "speed"
 	pickup_sound = 'sound/effects/magic/lightningshock.ogg'
 
@@ -120,7 +120,7 @@
 
 /obj/effect/powerup/mayhem
 	name = "Orb of Mayhem"
-	desc = "You feel angry just looking at it."
+	desc = "Você sente raiva só de olhar para ele."
 	icon_state = "impact_laser"
 
 /obj/effect/powerup/mayhem/trigger(mob/living/target)

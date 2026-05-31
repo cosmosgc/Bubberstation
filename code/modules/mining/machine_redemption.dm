@@ -3,7 +3,7 @@
 
 /obj/machinery/mineral/ore_redemption
 	name = "ore redemption machine"
-	desc = "A machine that accepts ore and instantly transforms it into workable material sheets. Points for ore are generated based on type and can be redeemed at a mining equipment vendor."
+	desc = "Uma máquina que aceita minério e instantaneamente a transforma em folhas de material praticáveis. Pontos para minério são gerados com base no tipo e podem ser resgatados em um fornecedor de equipamentos de mineração."
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "ore_redemption"
 	base_icon_state = "ore_redemption"
@@ -60,11 +60,7 @@
 		local_signals = list(
 			COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/mineral/ore_redemption, local_redeem_points)
 		)
-	materials = new ( \
-		src, \
-		mapload, \
-		mat_container_signals = local_signals \
-	)
+	materials = new ( 		src, 		mapload, 		mat_container_signals = local_signals 	)
 
 	//for reedeming points from items inserted into ore silo
 	RegisterSignal(src, COMSIG_SILO_ITEM_CONSUMED, TYPE_PROC_REF(/obj/machinery/mineral/ore_redemption, silo_redeem_points))
@@ -77,7 +73,7 @@
 /obj/machinery/mineral/ore_redemption/examine(mob/user)
 	. = ..()
 	if(panel_open)
-		. += span_notice("Alt-click to rotate the input and output direction.")
+		. += span_notice("Alt-clique para girar a entrada e direção de saída.")
 
 
 /obj/machinery/mineral/ore_redemption/proc/silo_redeem_points(obj/machinery/mineral/ore_redemption/machine, container, obj/item/stack/ore/gathered_ore)
@@ -232,7 +228,7 @@
 		return CLICK_ACTION_BLOCKING
 	input_dir = turn(input_dir, -90)
 	output_dir = turn(output_dir, -90)
-	to_chat(user, span_notice("You change [src]'s I/O settings, setting the input to [dir2text(input_dir)] and the output to [dir2text(output_dir)]."))
+	to_chat(user, span_notice("Você muda.[src]'s configurações de I/O, definindo a entrada para[dir2text(input_dir)]E a saída para[dir2text(output_dir)]."))
 	unregister_input_turf() // someone just rotated the input and output directions, unregister the old turf
 	register_input_turf() // register the new one
 	update_appearance(UPDATE_OVERLAYS)
@@ -337,7 +333,7 @@
 			if(!materials.can_use_resource(user_data = ID_DATA(usr)))
 				return
 			else if(!allowed(usr)) //Check the ID inside, otherwise check the user
-				to_chat(usr, span_warning("Required access not found."))
+				to_chat(usr, span_warning("Acesso necessário não encontrado."))
 			else
 				var/datum/material/mat = locate(params["id"])
 
@@ -376,7 +372,7 @@
 					output = alloy.create_result(src)
 				unload_mineral(output)
 			else
-				to_chat(usr, span_warning("Required access not found."))
+				to_chat(usr, span_warning("Acesso necessário não encontrado."))
 			return TRUE
 
 /obj/machinery/mineral/ore_redemption/ex_act(severity, target)

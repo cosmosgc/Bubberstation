@@ -30,7 +30,7 @@ export const MODsuitremote = (props) => {
       theme={ui_theme}
       width={550}
       height={350}
-      title="MOD Remote Interface"
+      title="MOD Interface Remota"
     >
       <Window.Content scrollable>
         <RemoteMODsuitContent />
@@ -44,9 +44,9 @@ const RemoteSection = () => {
   const { erp_pref_check } = data;
   const [emote, setEmote] = useState('');
   return (
-    <Section title="Remote Control">
+    <Section title="Controle Remoto">
       <LabeledList>
-        <LabeledList.Item label="Force Emote">
+        <LabeledList.Item label="Força emote">
           <Input
             fluid
             selfClear

@@ -9,7 +9,7 @@
  */
 /obj/structure/bonfire
 	name = "bonfire"
-	desc = "For grilling, broiling, charring, smoking, heating, roasting, toasting, simmering, searing, melting, and occasionally burning things."
+	desc = "Para Grelhar, Grelhar, carbonizar, fumar, aquecer, assar, torrar, ferver, derreter e, ocasionalmente, queimar coisas."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "bonfire"
 	light_color = LIGHT_COLOR_FIRE
@@ -43,7 +43,7 @@
 /obj/structure/bonfire/attackby(obj/item/used_item, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(istype(used_item, /obj/item/stack/rods) && !can_buckle && !grill)
 		var/obj/item/stack/rods/rods = used_item
-		var/choice = tgui_alert(user, "What would you like to construct?", "Bonfire", list("Stake","Grill"))
+		var/choice = tgui_alert(user, "O que está fazendo?", "Bonfire", list("Stake","Grill"))
 		if(isnull(choice))
 			return
 		rods.use(1)
@@ -51,13 +51,13 @@
 			if("Stake")
 				can_buckle = TRUE
 				buckle_requires_restraints = TRUE
-				to_chat(user, span_notice("You add a rod to \the [src]."))
+				to_chat(user, span_notice("Você adiciona uma vara para\the [src]."))
 				var/mutable_appearance/rod_underlay = mutable_appearance('icons/obj/service/hydroponics/equipment.dmi', "bonfire_rod")
 				rod_underlay.pixel_z = 16
 				underlays += rod_underlay
 			if("Grill")
 				grill = TRUE
-				to_chat(user, span_notice("You add a grill to \the [src]."))
+				to_chat(user, span_notice("Você adiciona uma grelha para\the [src]."))
 				add_overlay("bonfire_grill")
 			else
 				return ..()
@@ -83,7 +83,7 @@
 	if(.)
 		return
 	if(burning)
-		to_chat(user, span_warning("You need to extinguish [src] before removing the logs!"))
+		to_chat(user, span_warning("Você precisa extinguir.[src]Antes de remover os troncos!"))
 		return
 	if(!has_buckled_mobs() && do_after(user, 5 SECONDS, target = src))
 		for(var/obj/item/grown/log/bonfire_log in contents)
@@ -131,11 +131,11 @@
 		var/mob/living/burning_body = entered
 		if(burning_body.on_fire)
 			start_burning()
-			visible_message(span_notice("[entered] runs over [src], starting its fire!"))
+			visible_message(span_notice("[entered]Atropela.[src], começando seu fogo!"))
 
 	else if(entered.resistance_flags & ON_FIRE)
 		start_burning()
-		visible_message(span_notice("[entered]'s fire spreads to [src], setting it ablaze!"))
+		visible_message(span_notice("[entered]O nevoeiro se espalha para[src], colocando nevoeiro!"))
 
 /obj/structure/bonfire/proc/bonfire_burn(seconds_per_tick = 2)
 	var/turf/current_location = get_turf(src)

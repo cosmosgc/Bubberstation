@@ -20,8 +20,8 @@
 			being_drunk = FALSE
 			return
 		attacker.visible_message(
-			span_notice("[attacker] forces [victim] to drink from the [src]."),
-			span_notice("You put the [src] up to [victim]'s mouth."))
+			span_notice("[attacker]forças[victim]para beber da[src]."),
+			span_notice("Você colocou o[src]até[victim]A boca."))
 		reagents.trans_to(victim, BLOODBAG_GULP_SIZE, transferred_by = attacker, methods = INGEST)
 		playsound(victim.loc, 'sound/items/drink.ogg', 30, 1)
 		being_drunk = FALSE
@@ -29,8 +29,8 @@
 
 	while(do_after(victim, 1 SECONDS, timed_action_flags = IGNORE_USER_LOC_CHANGE, extra_checks = CALLBACK(src, PROC_REF(can_drink), attacker, victim)))
 		victim.visible_message(
-			span_notice("[victim] puts the [src] up to their mouth."),
-			span_notice("You take a sip from the [src]."),
+			span_notice("[victim]coloca o[src]Até a boca deles."),
+			span_notice("Você toma um gole do[src]."),
 		)
 		reagents.trans_to(victim, BLOODBAG_GULP_SIZE, transferred_by = attacker, methods = INGEST)
 		playsound(victim.loc, 'sound/items/drink.ogg', 30, 1)
@@ -43,7 +43,7 @@
 	if(!canconsume(victim, attacker))
 		return FALSE
 	if(!reagents || !reagents.total_volume)
-		to_chat(victim, span_warning("[src] is empty!"))
+		to_chat(victim, span_warning("[src]Está vazio!"))
 		return FALSE
 	return TRUE
 
@@ -56,7 +56,7 @@
 /obj/item/reagent_containers/blood/o_minus/bloodsucker/examine(mob/user)
 	. = ..()
 	if(user.mind.has_antag_datum(/datum/antagonist/ex_ghoul) || user.mind.has_antag_datum(/datum/antagonist/ghoul/revenge))
-		. += span_notice("Seems to be just about the same color as your Master's...")
+		. += span_notice("Parece ser da mesma cor do seu mestre...")
 
 //////////////////////
 //      STAKES      //
@@ -65,9 +65,9 @@
 	if(!item.get_sharpness())
 		return ..()
 	user.visible_message(
-		span_notice("[user] begins whittling [src] into a pointy object."),
-		span_notice("You begin whittling [src] into a sharp point at one end."),
-		span_hear("You hear wood carving."),
+		span_notice("[user]Começa a roçar[src]em um objeto pontudo."),
+		span_notice("Você começa a roçar[src]em um ponto afiado em uma extremidade."),
+		span_hear("Você ouve madeira esculpindo."),
 	)
 	// 5 Second Timer
 	if(!do_after(user, 5 SECONDS, src, NONE, TRUE))
@@ -75,8 +75,8 @@
 	// Make Stake
 	var/obj/item/stake/new_item = new(user.loc)
 	user.visible_message(
-		span_notice("[user] finishes carving a stake out of [src]."),
-		span_notice("You finish carving a stake out of [src]."),
+		span_notice("[user]termina de esculpir uma estaca de[src]."),
+		span_notice("Você termina de esculpir uma estaca[src]."),
 	)
 	// Prepare to Put in Hands (if holding wood)
 	var/obj/item/stack/sheet/mineral/wood/wood_stack = src
@@ -109,7 +109,7 @@
 
 /obj/item/stake
 	name = "wooden stake"
-	desc = "A simple wooden stake carved to a sharp point."
+	desc = "Uma simples estaca de madeira esculpida até um ponto afiado."
 	icon = 'modular_zubbers/icons/obj/equipment/stakes.dmi'
 	icon_state = "wood"
 	inhand_icon_state = "wood"
@@ -133,9 +133,9 @@
 
 /obj/item/stake/examine_more(mob/user)
 	. = ..()
-	. += span_notice("You can use [src] to stake someone in the chest, if they are laying down or grabbed by the neck.")
+	. += span_notice("Você pode usar[src]Para enfiar alguém no peito, se estiver deitado ou agarrado pelo pescoço.")
 	if(IS_BLOODSUCKER(user))
-		. += span_warning("You feel a sense of dread as you look at the [src]...")
+		. += span_warning("Você sente uma sensação de medo enquanto olha para o[src]...")
 
 /obj/item/stake/attack(mob/living/target, mob/living/user, params)
 	. = ..()
@@ -147,20 +147,20 @@
 	if(target == user)
 		return
 	if(!target.can_be_staked()) // Oops! Can't.
-		to_chat(user, span_danger("You can't stake [target] when they are moving about! They have to be laying down or grabbed by the neck!"))
+		to_chat(user, span_danger("Você não pode apostar[target]Quando eles estão se movendo! Eles têm que estar deitados ou agarrados pelo pescoço!"))
 		return
 	if(HAS_TRAIT(target, TRAIT_PIERCEIMMUNE))
-		to_chat(user, span_danger("[target]'s chest resists the stake. It won't go in."))
+		to_chat(user, span_danger("[target]O peito resiste à estaca. Não vai entrar."))
 		return
 
-	to_chat(user, span_notice("You put all your weight into embedding the stake into [target]'s chest..."))
+	to_chat(user, span_notice("Você colocou todo o seu peso em incorporar a estaca em[target]O peito..."))
 	playsound(user, 'sound/effects/magic/Demon_consume.ogg', 50, 1)
 	if(!do_after(user, staketime, target, extra_checks = CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon, can_be_staked)))) // user / target / time / uninterruptable / show progress bar / extra checks
 		return
 	// Drop & Embed Stake
 	user.visible_message(
-		span_danger("[user.name] drives the [src] into [target]'s chest!"),
-		span_danger("You drive the [src] into [target]'s chest!"),
+		span_danger("[user.name]Dirige o[src]em[target]O peito!"),
+		span_danger("Você dirige o[src]em[target]O peito!"),
 	)
 	playsound(get_turf(target), 'sound/effects/splat.ogg', 40, 1)
 	if(force_embed(target, target.get_bodypart(BODY_ZONE_CHEST))) //and if it embeds successfully in their chest, cause a lot of pain
@@ -175,8 +175,8 @@
 	if(!heart)
 		return
 	target.visible_message(
-		span_danger("The [src.name] pierces [target]'s chest, destroying their [heart.name]!"),
-		span_userdanger("You feel a HORRIBLE pain as the [src.name] pierces your chest, destroying your [heart.name]!"),
+		span_danger("O[src.name]Pierces[target]O peito, destruindo o[heart.name]!"),
+		span_userdanger("Você sente uma dor horrível como o[src.name]perfura seu peito, destruindo seu[heart.name]!"),
 	)
 	qdel(heart)
 
@@ -204,7 +204,7 @@
 /// Created by welding and acid-treating a simple stake.
 /obj/item/stake/hardened
 	name = "hardened stake"
-	desc = "A wooden stake carved to a sharp point and hardened by fire."
+	desc = "Uma estaca de madeira esculpida num ponto afiado e endurecida pelo fogo."
 	icon_state = "hardened"
 	force = 8
 	throwforce = 12
@@ -215,7 +215,7 @@
 
 /obj/item/stake/hardened/examine_more(mob/user)
 	. = ..()
-	. += span_notice("The [src] won't fall out by itself, if embedded in someone.")
+	. += span_notice("O[src]Não vai cair sozinho, se estiver embutido em alguém.")
 
 /datum/embedding/stake/silver
 	embed_chance = 0 // we want it to only be embeddable manually
@@ -223,7 +223,7 @@
 
 /obj/item/stake/hardened/silver
 	name = "silver stake"
-	desc = "Polished and sharp at the end. For when some mofo is always trying to iceskate uphill."
+	desc = "Polido e afiado no final. Para quando algum mofo está sempre tentando iceskate uphill."
 	icon_state = "silver"
 	inhand_icon_state = "silver"
 	siemens_coefficient = 1
@@ -235,7 +235,7 @@
 
 /obj/item/stake/hardened/silver/examine_more(mob/user)
 	. = ..()
-	. += span_notice("You think that the [src] could destroy someone's heart if you really slam it in someone's ribs properly.")
+	. += span_notice("Você acha que o[src]Pode destruir o coração de alguém se você realmente bater nas costelas de alguém corretamente.")
 
 //////////////////////
 //     ARCHIVES     //
@@ -255,7 +255,7 @@
 /obj/item/book/kindred
 	name = "\improper Book of Nod"
 	starting_title = "the Book of Nod"
-	desc = "Cryptic documents explaining hidden truths behind Undead beings. It is said only Curators can decipher what they really mean."
+	desc = "Documentos criptográficos explicando verdades escondidas atrás de seres mortos-vivos. Dizem que só os curadores podem decifrar o que realmente significam."
 	icon = 'modular_zubbers/icons/obj/structures/vamp_obj.dmi'
 	lefthand_file = 'modular_zubbers/icons/mob/inhands/weapons/bloodsucker_lefthand.dmi'
 	righthand_file = 'modular_zubbers/icons/mob/inhands/weapons/bloodsucker_righthand.dmi'
@@ -274,7 +274,7 @@
 	SSpoints_of_interest.make_point_of_interest(src)
 
 /obj/item/book/kindred/carving_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("You feel the gentle whispers of a Librarian telling you not to cut [starting_title]."))
+	to_chat(user, span_notice("Você sente os suaves sussurros de um Bibliotecário dizendo para não cortar[starting_title]."))
 	return ITEM_INTERACT_BLOCKING
 
 ///Attacking someone with the book.
@@ -284,36 +284,36 @@
 		return
 	if(!HAS_TRAIT(user.mind, TRAIT_BLOODSUCKER_HUNTER))
 		if(IS_BLOODSUCKER(user))
-			to_chat(user, span_notice("[src] seems to be too complicated for you. It would be best to leave this for someone else to take."))
+			to_chat(user, span_notice("[src]Parece muito complicado para você. Seria melhor deixar isso para outra pessoa pegar."))
 			return
-		to_chat(user, span_warning("[src] burns your hands as you try to use it!"))
+		to_chat(user, span_warning("[src]Queima suas mãos enquanto tenta usá-la!"))
 		user.apply_damage(3, BURN, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
 		return
 
 	if(!COOLDOWN_FINISHED(src, bloodsucker_check_cooldown))
-		user.balloon_alert(user, "your head hurts, wait a minute ")
+		user.balloon_alert(user, "Sua cabeça dói, espere um minuto.")
 		addtimer(CALLBACK(user, TYPE_PROC_REF(/atom, balloon_alert), user, "You feel your head clear up."), cooldown_time)
 		return
 	user.balloon_alert_to_viewers(user, "reading book...")
-	user.balloon_alert(target, "looks at you and checks their [src]...")
+	user.balloon_alert(target, "Olhe para você e verifique o seu[src]...")
 	if(!do_after(user, 3 SECONDS, target, timed_action_flags = NONE, progress = TRUE))
-		to_chat(user, span_notice("You quickly close [src]."))
+		to_chat(user, span_notice("Você rapidamente fecha.[src]."))
 		return
 	COOLDOWN_START(src, bloodsucker_check_cooldown, cooldown_time)
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum = IS_BLOODSUCKER(target)
 	// Are we a Bloodsucker | Are we on Masquerade. If one is true, they will fail.
 	if(IS_BLOODSUCKER(target) && !HAS_TRAIT(target, TRAIT_MASQUERADE))
 		if(bloodsuckerdatum.broke_masquerade)
-			to_chat(user, span_warning("[target], also known as '[bloodsuckerdatum.return_full_name()]', is indeed a Bloodsucker, but you already knew this."))
+			to_chat(user, span_warning("[target], também conhecido como '[bloodsuckerdatum.return_full_name()]', é realmente um Bloodsucker, mas você já sabia disso."))
 			return
-		to_chat(user, span_warning("[target], also known as '[bloodsuckerdatum.return_full_name()]', [bloodsuckerdatum.my_clan ? "is part of the [bloodsuckerdatum.my_clan]!" : "is not part of a clan."] You quickly note this information down, memorizing it."))
+		to_chat(user, span_warning("[target], também conhecido como '[bloodsuckerdatum.return_full_name()]', [bloodsuckerdatum.my_clan ? "is part of the [bloodsuckerdatum.my_clan]!" : "is not part of a clan."]Você rapidamente anota essa informação, memorizando-a."))
 		bloodsuckerdatum.break_masquerade()
 	else
-		to_chat(user, span_notice("You fail to draw any conclusions to [target] being a Bloodsucker."))
+		to_chat(user, span_notice("Você não tira conclusões para[target]sendo um Bloodsucker."))
 
 /obj/item/book/kindred/attack_self(mob/living/user)
 	if(user.mind && !(HAS_TRAIT(user.mind, TRAIT_BLOODSUCKER_HUNTER) || IS_BLOODSUCKER(user)))
-		to_chat(user, span_warning("You feel your eyes unable to read the boring texts..."))
+		to_chat(user, span_warning("Você sente seus olhos incapazes de ler os textos chatos..."))
 		user.set_eye_blur_if_lower(10 SECONDS)
 		return
 	ui_interact(user)
@@ -336,7 +336,7 @@
 	return data
 
 /obj/structure/displaycase/curator
-	desc = "This book was found inside a coffin of a long dead Curator. It is said to be able to reveal the true nature of those who feed upon mankind."
+	desc = "Este livro foi encontrado dentro de um caixão de um curador morto. Dizem que pode revelar a verdadeira natureza daqueles que se alimentam da humanidade."
 	start_showpiece_type = /obj/item/book/kindred
 	req_access = list(ACCESS_LIBRARY)
 
@@ -353,6 +353,6 @@
 	if(!heart_thief)
 		return
 	if(heart_thief.check_if_valid_item(src))
-		. += span_notice("This [src.name] will do for your purposes...")
+		. += span_notice("Isto.[src.name]fará para seus propósitos...")
 	else
-		. += span_notice("This [src.name] is of lesser quality, it won't do...")
+		. += span_notice("Isto.[src.name]é de menor qualidade, não vai fazer...")

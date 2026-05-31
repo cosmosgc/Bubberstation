@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/map_config/old_config = current_map
 		current_map = config.defaultmap
 		if(!current_map || current_map.defaulted)
-			to_chat(world, span_boldannounce("Unable to load next or default map config, defaulting to [old_config.map_name]."))
+			to_chat(world, span_boldannounce("Incapaz de carregar a configuração do mapa seguinte ou padrão, predefinida para[old_config.map_name]."))
 			current_map = old_config
 	plane_offset_to_true = list()
 	true_to_offset_planes = list()
@@ -584,29 +584,29 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away mission for the station.", ADMIN_CATEGORY_EVENTS)
 	if(!GLOB.the_gateway)
-		if(tgui_alert(user, "There's no home gateway on the station. You sure you want to continue ?", "Uh oh", list("Yes", "No")) != "Yes")
+		if(tgui_alert(user, "Não há portão de entrada na estação. Tem certeza que quer continuar?", "Uh oh", list("Yes", "No")) != "Yes")
 			return
 
 	var/list/possible_options = GLOB.potentialRandomZlevels + "Custom"
 	var/away_name
 	var/datum/space_level/away_level
 	var/secret = FALSE
-	if(tgui_alert(user, "Do you want your mission secret? (This will prevent ghosts from looking at your map in any way other than through a living player's eyes.)", "Are you $$$ekret?", list("Yes", "No")) == "Yes")
+	if(tgui_alert(user, "Você quer sua missão secreta? Isso impedirá fantasmas de olhar para o seu mapa de qualquer maneira que não seja através dos olhos de um jogador vivo.", "Are you $$$ekret?", list("Yes", "No")) == "Yes")
 		secret = TRUE
-	var/answer = input(user, "What kind?","Away") as null|anything in possible_options
+	var/answer = input(user, "De que tipo?","Away") as null|anything in possible_options
 	switch(answer)
 		if("Custom")
-			var/mapfile = input(user, "Pick file:", "File") as null|file
+			var/mapfile = input(user, "Escolha o arquivo:", "File") as null|file
 			if(!mapfile)
 				return
 			away_name = "[mapfile] custom"
-			to_chat(user, span_notice("Loading [away_name]..."), MESSAGE_TYPE_DEBUG)
+			to_chat(user, span_notice("Carregando[away_name]..."), MESSAGE_TYPE_DEBUG)
 			var/datum/map_template/template = new(mapfile, "Away Mission")
 			away_level = template.load_new_z(secret)
 		else
 			if(answer in GLOB.potentialRandomZlevels)
 				away_name = answer
-				to_chat(user, span_notice("Loading [away_name]..."), MESSAGE_TYPE_DEBUG)
+				to_chat(user, span_notice("Carregando[away_name]..."), MESSAGE_TYPE_DEBUG)
 				var/datum/map_template/template = new(away_name, "Away Mission")
 				away_level = template.load_new_z(secret)
 			else
@@ -910,7 +910,7 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 			return
 
 		var/current_wait_time = CONFIG_GET(number/gateway_delay)
-		switch(tgui_alert(usr, "Do you want to zero out the cooldown for access to these maps? Currently [DisplayTimeText(current_wait_time)]", "OH FUCK!!!", list("Yes", "No", "Cancel")))
+		switch(tgui_alert(usr, "Quer eliminar a refrigeração para ter acesso a esses mapas? Atualmente.[DisplayTimeText(current_wait_time)]", "OH FUCK!!!", list("Yes", "No", "Cancel")))
 			if("No")
 				new_wait = current_wait_time
 			if("Cancel")

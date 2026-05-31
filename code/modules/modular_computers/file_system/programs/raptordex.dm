@@ -3,7 +3,7 @@
 	filedesc = "RaptorDex"
 	downloader_category = PROGRAM_CATEGORY_DEVICE
 	program_open_overlay = "bountyboard"
-	extended_desc = "Scan and analyze raptor genes."
+	extended_desc = "Analisar e analisar genes de raptor."
 	size = 2
 	tgui_id = "NtosRaptorDex"
 	program_icon = "crow"

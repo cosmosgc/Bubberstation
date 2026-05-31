@@ -1,7 +1,7 @@
 /datum/storage/fish_case
 	max_slots = 1
 	max_specific_storage = WEIGHT_CLASS_GIGANTIC
-	can_hold_description = "Fish and aquarium equipment"
+	can_hold_description = "Equipamentos de peixes e aquários"
 
 /datum/storage/fish_case/can_insert(obj/item/to_insert, mob/user, messages, force)
 	. = ..()
@@ -10,7 +10,7 @@
 
 	if(!HAS_TRAIT(to_insert, TRAIT_AQUARIUM_CONTENT))
 		if(messages && user)
-			user.balloon_alert(user, "can't hold!")
+			user.balloon_alert(user, "Não consigo segurar!")
 		return FALSE
 	return .
 

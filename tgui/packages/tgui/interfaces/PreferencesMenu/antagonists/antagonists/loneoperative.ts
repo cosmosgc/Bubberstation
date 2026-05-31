@@ -3,7 +3,7 @@ import { OPERATIVE_MECHANICAL_DESCRIPTION } from './operative';
 
 const LoneOperative: Antagonist = {
   key: 'loneoperative',
-  name: 'Lone Operative',
+  name: 'Operário Solitário',
   description: [
     `
       A solo nuclear operative that has a higher chance of spawning the longer

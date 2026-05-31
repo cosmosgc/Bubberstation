@@ -2,7 +2,7 @@
 
 /obj/machinery/atmospherics/components/tank
 	name = "pressure tank"
-	desc = "A large vessel containing pressurized gas."
+	desc = "Um grande recipiente contendo gás pressurizado."
 
 	icon = 'icons/map_icons/objects.dmi'
 	icon_state = "/obj/machinery/atmospherics/components/tank"
@@ -123,10 +123,10 @@
 	. = ..()
 	var/wrench_hint = EXAMINE_HINT("wrench")
 	if(!initialize_directions)
-		. += span_notice("A pipe port can be opened with a [wrench_hint].")
+		. += span_notice("Um tubo pode ser aberto com um[wrench_hint].")
 	else
-		. += span_notice("The pipe port can be moved or closed with a [wrench_hint].")
-	. += span_notice("A holographic sticker on it says that its maximum safe pressure is: [siunit_pressure(max_pressure, 0)].")
+		. += span_notice("O tubo pode ser movido ou fechado com um[wrench_hint].")
+	. += span_notice("Um adesivo holográfico diz que sua pressão máxima é:[siunit_pressure(max_pressure, 0)].")
 
 /obj/machinery/atmospherics/components/tank/finalize_material_effects(list/materials)
 	. = ..()
@@ -162,9 +162,7 @@
 // Port stuff
 
 /**
- * Enables/Disables a port direction in var/open_ports. \
- * Use this, then call set_init_directions() instead of setting initialize_directions directly \
- * This system exists because tanks not having all initialize_directions set correctly breaks shuttle rotations
+ * Enables/Disables a port direction in var/open_ports.  * Use this, then call set_init_directions() instead of setting initialize_directions directly  * This system exists because tanks not having all initialize_directions set correctly breaks shuttle rotations
  */
 /obj/machinery/atmospherics/components/tank/proc/set_portdir_relative(relative_port_dir, enable)
 	ASSERT(!isnull(enable), "Did not receive argument enable")
@@ -183,9 +181,7 @@
 		open_ports &= ~port_dir
 
 /**
- * Toggles a port direction in var/open_ports \
- * Use this, then call set_init_directions() instead of setting initialize_directions directly \
- * This system exists because tanks not having all initialize_directions set correctly breaks shuttle rotations
+ * Toggles a port direction in var/open_ports  * Use this, then call set_init_directions() instead of setting initialize_directions directly  * This system exists because tanks not having all initialize_directions set correctly breaks shuttle rotations
  */
 /obj/machinery/atmospherics/components/tank/proc/toggle_portdir_relative(relative_port_dir)
 	var/toggle = ((initialize_directions & relative_port_dir) ? FALSE : TRUE)
@@ -368,18 +364,18 @@
 		return
 	if(!tool.tool_start_check(user, amount = 0, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return
-	to_chat(user, span_notice("You begin to repair the cracks in the gas tank..."))
+	to_chat(user, span_notice("Você começa a reparar as rachaduras no tanque de gasolina..."))
 	var/repair_amount = max_integrity / 10
 	do
 		if(!tool.use_tool(src, user, 2.5 SECONDS, volume = 40))
 			return
 	while(repair_damage(repair_amount))
-	to_chat(user, span_notice("The gas tank has been fully repaired and all cracks sealed."))
+	to_chat(user, span_notice("O tanque de gasolina foi totalmente reparado e todas as rachaduras seladas."))
 
 /obj/machinery/atmospherics/components/tank/welder_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
 	. = TRUE
-	to_chat(user, span_notice("You begin cutting open the gas tank..."))
+	to_chat(user, span_notice("Você começa a abrir o tanque de gasolina..."))
 	var/turf/current_location = get_turf(src)
 	var/datum/gas_mixture/airmix = current_location.return_air()
 
@@ -389,7 +385,7 @@
 	var/internal_pressure = air_contents.return_pressure() - airmix.return_pressure()
 	if(internal_pressure > 2 * ONE_ATMOSPHERE)
 		time_taken *= 2
-		to_chat(user, span_warning("The tank seems to be pressurized, are you sure this is a good idea?"))
+		to_chat(user, span_warning("O tanque parece estar pressurizado, tem certeza que é uma boa ideia?"))
 		unsafe = TRUE
 
 	if(!tool.use_tool(src, user, time_taken, volume = 60))
@@ -398,7 +394,7 @@
 	if(unsafe)
 		unsafe_pressure_release(user, internal_pressure)
 	deconstruct(disassembled=TRUE)
-	to_chat(user, span_notice("You finish cutting open the sealed gas tank, revealing the innards."))
+	to_chat(user, span_notice("Você termina de abrir o tanque de gás selado, revelando as entranhas."))
 
 /obj/machinery/atmospherics/components/tank/on_deconstruction(disassembled)
 	var/turf/location = drop_location()
@@ -541,19 +537,19 @@
 	var/wrenched_hint = EXAMINE_HINT("wrenched")
 
 	if(!anchored)
-		. += span_notice("[src] has not been [wrenched_hint] to the floor yet.")
+		. += span_notice("[src]não foi[wrenched_hint]Para o chão ainda.")
 	else
-		. += span_notice("[src] is [wrenched_hint] to the floor.")
+		. += span_notice("[src]É[wrenched_hint]Para o chão.")
 
 	switch(construction_state)
 		if(TANK_FRAME)
 			var/screwed_hint = EXAMINE_HINT("screwed")
 			var/plating_hint = EXAMINE_HINT("metal plating")
-			. += span_notice("[src] is [screwed_hint] together and now just needs some [plating_hint].")
+			. += span_notice("[src]É[screwed_hint]juntos e agora só precisa de alguns[plating_hint].")
 		if(TANK_PLATING_UNSECURED)
 			var/crowbar_hint = EXAMINE_HINT("crowbar")
 			var/welder_hint = EXAMINE_HINT("welder")
-			. += span_notice("The plating has been firmly attached and would need a [crowbar_hint] to detach, but still needs to be sealed by a [welder_hint].")
+			. += span_notice("O chapeamento foi firme ligado e precisa de um[crowbar_hint]Mas ainda precisa ser selada por um[welder_hint].")
 
 /obj/structure/tank_frame/atom_deconstruct(disassembled)
 	if(disassembled)
@@ -583,23 +579,23 @@
 	if(construction_state != TANK_FRAME)
 		return
 	. = TRUE
-	to_chat(user, span_notice("You begin taking apart [src]."))
+	to_chat(user, span_notice("Você começa a desmontar[src]."))
 	if(!tool.use_tool(src, user, 1 SECONDS))
 		return
 	deconstruct(TRUE)
-	to_chat(user, span_notice("[src] has been taken apart."))
+	to_chat(user, span_notice("[src]Foi desmontado."))
 
 /obj/structure/tank_frame/proc/add_plating(mob/living/user, obj/item/stack/stack)
 	. = FALSE
 	if(!stack.material_type)
-		balloon_alert(user, "invalid material!")
+		balloon_alert(user, "Material inválido!")
 	var/datum/material/stack_mat = SSmaterials.get_material(stack.material_type)
 	if(!(stack_mat.mat_flags & MATERIAL_CLASS_RIGID))
-		to_chat(user, span_notice("This material doesn't seem rigid enough to hold the shape of a tank..."))
+		to_chat(user, span_notice("Este material não parece rígido o suficiente para manter a forma de um tanque..."))
 		return
 
 	. = TRUE
-	to_chat(user, span_notice("You begin adding [stack] to [src]..."))
+	to_chat(user, span_notice("Você começa a adicionar[stack]Para[src]..."))
 	if(!stack.use_tool(src, user, 3 SECONDS))
 		return
 	if(!stack.use(TANK_PLATING_SHEETS))
@@ -617,20 +613,20 @@
 				amount_more = "just a bit more"
 			else
 				amount_more = "an indeterminate amount more"
-		to_chat(user, span_notice("You don't have enough [stack] to add all the plating. Maybe [amount_more]."))
+		to_chat(user, span_notice("Você não tem o suficiente.[stack]para adicionar todo o renascimento. Talvez.[amount_more]."))
 		return
 
 	material_end_product = stack_mat
 	construction_state = TANK_PLATING_UNSECURED
 	update_appearance(UPDATE_ICON)
-	to_chat(user, span_notice("You finish attaching [stack] to [src]."))
+	to_chat(user, span_notice("Termine de acoplar.[stack]Para[src]."))
 
 /obj/structure/tank_frame/crowbar_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
 	if(construction_state != TANK_PLATING_UNSECURED)
 		return
 	. = TRUE
-	to_chat(user, span_notice("You start prying off the outer plating..."))
+	to_chat(user, span_notice("Você começa a bisbilhotar o revestimento exterior..."))
 	if(!tool.use_tool(src, user, 2 SECONDS))
 		return
 	construction_state = TANK_FRAME
@@ -644,11 +640,11 @@
 		return
 	. = TRUE
 	if(!anchored)
-		to_chat(user, span_notice("You need to <b>wrench</b> [src] to the floor before finishing."))
+		to_chat(user, span_notice("Você precisa.<b>Chave Inglesa.</b> [src]para o chão antes de terminar."))
 		return
 	if(!tool.tool_start_check(user, amount = 0, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return
-	to_chat(user, span_notice("You begin sealing the outer plating with the welder..."))
+	to_chat(user, span_notice("Você começa a selar o revestimento exterior com o soldador..."))
 	if(!tool.use_tool(src, user, 2 SECONDS, volume = 60))
 		return
 
@@ -659,7 +655,7 @@
 	var/list/new_custom_materials = list((material_end_product) = TANK_PLATING_SHEETS * SHEET_MATERIAL_AMOUNT)
 	new_tank.set_custom_materials(new_custom_materials)
 	new_tank.on_construction(user, new_tank.pipe_color, new_tank.piping_layer)
-	to_chat(user, span_notice("[new_tank] has been sealed and is ready to accept gases."))
+	to_chat(user, span_notice("[new_tank]foi selado e está pronto para aceitar gases."))
 	qdel(src)
 
 #undef TANK_PLATING_SHEETS

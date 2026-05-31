@@ -3,7 +3,7 @@
 
 /obj/item/relic
 	name = "strange object"
-	desc = "What mysteries could this hold? Maybe Research & Development could find out."
+	desc = "Que mistérios isso poderia conter? Talvez Pesquisa e Desenvolvimento possam descobrir."
 	icon = 'icons/obj/devices/artefacts.dmi'
 	icon_state = "debug_artefact"
 	/// The name this artefact will have when it's activated.
@@ -97,10 +97,10 @@
 
 /obj/item/relic/attack_self(mob/user)
 	if(!activated)
-		to_chat(user, span_notice("You aren't quite sure what this is. Maybe R&D knows what to do with it?"))
+		to_chat(user, span_notice("Você não tem certeza do que é isso. Talvez P&D saiba o que fazer com isso?"))
 		return
 	if(!COOLDOWN_FINISHED(src, cooldown))
-		to_chat(user, span_warning("[src] does not react!"))
+		to_chat(user, span_warning("[src]Não reaja!"))
 		return
 	if(loc != user)
 		return
@@ -116,9 +116,7 @@
 	var/atom/message_source = ismob(loc) ? loc : src
 	message_source.visible_message(message)
 
-// Artefact Powers \\
-
-/// Throws a corgi somewhere
+// Artefact Powers /// Throws a corgi somewhere
 /obj/item/relic/proc/corgi_cannon(mob/user)
 	playsound(src, SFX_SPARKS, rand(25,50), TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	var/mob/living/basic/pet/dog/corgi/sad_corgi = new(get_turf(user))
@@ -141,7 +139,7 @@
 	qdel(spawned_foamer)
 	warn_admins(user, "Acid Foam", TRUE)
 	if(prob(80))
-		to_chat(user, span_warning("[src] melts apart!"))
+		to_chat(user, span_warning("[src]Derrete!"))
 		acid_melt()
 
 /// Flashbangs anyone nearby
@@ -153,7 +151,7 @@
 
 /// Summon a bunch of random animals, some of which are dangerous
 /obj/item/relic/proc/summon_animals(mob/user)
-	var/message = span_danger("[src] begins to shake, and in the distance the sound of rampaging animals arises!")
+	var/message = span_danger("[src]Começa a tremer, e à distância surge o som de animais furiosos!")
 	visible_message(message)
 	to_chat(user, message)
 	var/static/list/valid_animals = list(
@@ -176,12 +174,12 @@
 		ADD_TRAIT(animal, TRAIT_SPAWNED_MOB, INNATE_TRAIT)
 	warn_admins(user, "Mass Mob Spawn")
 	if(prob(60))
-		relic_message(span_warning("[src] falls apart!"))
+		relic_message(span_warning("[src]Se desfaz!"))
 		deconstruct(FALSE)
 
 /// Version of summon_animals that spawns mostly lavaland monsters
 /obj/item/relic/proc/summon_animals_monsters(mob/user)
-	var/message = span_danger("[src] begins to shake, and in the distance the sound of roaring arises!")
+	var/message = span_danger("[src]Começa a tremer, e à distância o som do rugido surge!")
 	visible_message(message)
 	to_chat(user, message)
 	var/static/list/valid_monsters = list(
@@ -210,7 +208,7 @@
 		ADD_TRAIT(animal, TRAIT_SPAWNED_MOB, INNATE_TRAIT)
 	warn_admins(user, "Mass Mob Spawn (Monster)")
 	if(prob(80))
-		relic_message(span_warning("[src] falls apart!"))
+		relic_message(span_warning("[src]Se desfaz!"))
 		deconstruct(FALSE)
 
 /// Spawns a bunch of mimics of the relic which also can spawn relics, but despawn shortly
@@ -231,19 +229,19 @@
 
 /// Explodes after a few seconds
 /obj/item/relic/proc/heat_and_explode(mob/user)
-	to_chat(user, span_danger("[src] begins to heat up!"))
+	to_chat(user, span_danger("[src]Começa a aquecer!"))
 	addtimer(CALLBACK(src, PROC_REF(blow_up), user), rand(3.5 SECONDS, 10 SECONDS))
 
 /obj/item/relic/proc/blow_up(mob/user)
 	if(loc == user)
-		visible_message(span_notice("\The [src]'s top opens, releasing a powerful blast!"))
+		visible_message(span_notice("\The [src]O topo abre, liberando uma explosão poderosa!"))
 		explosion(src, heavy_impact_range = rand(1,5), light_impact_range = rand(1,5), flame_range = 2, flash_range = rand(1,5), adminlog = TRUE)
 		warn_admins(user, "Explosion")
 		deconstruct(FALSE) //Comment this line to produce a light grenade (the bomb that keeps on exploding when used)!!
 
 /// Teleports the relic, and anyone holding it, to a random location nearby
 /obj/item/relic/proc/uncontrolled_teleport(mob/user)
-	to_chat(user, span_notice("[src] begins to vibrate!"))
+	to_chat(user, span_notice("[src]Começa a vibrar!"))
 
 	var/teleport_time = rand(1 SECONDS, 3 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(do_the_teleport), user), teleport_time)
@@ -255,7 +253,7 @@
 	if(is_centcom_level(userturf.z))
 		return
 	var/to_teleport = ismovable(loc) ? loc : src
-	visible_message(span_notice("[to_teleport] twists and bends, relocating itself!"))
+	visible_message(span_notice("[to_teleport]Torções e curvas, se deslocando!"))
 	throw_smoke(get_turf(to_teleport))
 	do_teleport(to_teleport, userturf, 8, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
 	throw_smoke(get_turf(to_teleport))
@@ -263,14 +261,14 @@
 
 /// Version of uncontrolled_teleport with cult theming, and that affects all nearby movables rather than just the relic
 /obj/item/relic/proc/uncontrolled_aoe_teleport(mob/user)
-	to_chat(user, span_notice("[src] begins to vibrate intensely!"))
+	to_chat(user, span_notice("[src]Começa a vibrar intensamente!"))
 
 	var/teleport_time = rand(1 SECONDS, 3 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(do_the_aoe_teleport), user), teleport_time)
 	Shake(2, 2, teleport_time, 0.03 SECONDS)
 
 /obj/item/relic/proc/do_the_aoe_teleport(mob/user)
-	visible_message(span_notice("[src] twists and bends, relocating anything nearby!"))
+	visible_message(span_notice("[src]Torções e curvas, deslocando qualquer coisa por perto!"))
 	var/turf/teleturf = get_turf(src)
 	for(var/atom/movable/nearby in view(2, teleturf))
 		if(nearby.anchored || nearby.invisibility || HAS_TRAIT(nearby, TRAIT_UNDERFLOOR))
@@ -298,7 +296,7 @@
 
 	warn_admins(user, "AOE Teleport")
 	if(prob(30))
-		relic_message(span_warning("[src] teleports away, never to be seen again!"))
+		relic_message(span_warning("[src]teletransporta-se, para nunca mais ser visto!"))
 		qdel(src)
 
 // Creates a glass and fills it up with a drink.
@@ -316,7 +314,7 @@
 /// Scrambles your organs. 33% chance to delete after use.
 /obj/item/relic/proc/tummy_ache(mob/user)
 	new /obj/effect/temp_visual/circle_wave/bioscrambler/light(get_turf(src))
-	to_chat(user, span_notice("Your stomach starts growling..."))
+	to_chat(user, span_notice("Seu estômago começa a rosnar..."))
 	addtimer(CALLBACK(src, PROC_REF(scrambliticus), user), rand(1 SECONDS, 3 SECONDS)) // throw it away!
 
 /obj/item/relic/proc/scrambliticus(mob/user)
@@ -326,14 +324,14 @@
 		nearby.bioscramble(name)
 		playsound(nearby, SFX_SPARKS, rand(25,50), TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		throw_smoke(get_turf(nearby))
-		to_chat(nearby, span_notice("You feel weird."))
+		to_chat(nearby, span_notice("Você se sente estranho."))
 	if(prob(33))
-		relic_message(span_warning("[src] falls apart!"))
+		relic_message(span_warning("[src]Se desfaz!"))
 		deconstruct(FALSE)
 
 /// Charges an item or two in your inventory. Also yourself.
 /obj/item/relic/proc/charger(mob/living/user)
-	to_chat(user, span_danger("You're recharged!"))
+	to_chat(user, span_danger("Você está recarregado!"))
 	var/stunner = 1.25 SECONDS
 	if(iscarbon(user))
 		var/mob/living/carbon/carboner = user
@@ -347,7 +345,7 @@
 	lightning_fx(user, stunner)
 	var/recharges = rand(1, 2)
 	if(!length(chargeable_items))
-		to_chat(user, span_notice("You have a strange feeling for a moment, but then it passes."))
+		to_chat(user, span_notice("Você tem uma sensação estranha por um momento, mas depois passa."))
 		return
 	while(length(chargeable_items) && recharges)
 		recharges--
@@ -355,7 +353,7 @@
 		var/obj/item/stock_parts/power_store/to_charge = chargeable_items[to_charge_base]
 		to_charge.charge = to_charge.maxcharge
 		to_charge_base.update_appearance(UPDATE_ICON|UPDATE_OVERLAYS)
-		to_chat(user, span_notice("[to_charge_base] feels energized!"))
+		to_chat(user, span_notice("[to_charge_base]Sente-se energizado!"))
 		lightning_fx(to_charge_base, 0.8 SECONDS)
 
 /obj/item/relic/proc/lightning_fx(atom/shocker, time)
@@ -373,9 +371,9 @@
 		victim.help_shake_act(user, force_friendly = TRUE)
 		new /obj/effect/temp_visual/heart(victim.loc)
 	if(length(huggeds))
-		to_chat(user, span_nicegreen("You feel friendly!"))
+		to_chat(user, span_nicegreen("Você se sente amigável!"))
 	else
-		to_chat(user, pick(span_notice("You hug yourself, for some reason."), span_notice("You have a strange feeling for a moment, but then it passes.")))
+		to_chat(user, pick(span_notice("Você se abraça, por alguma razão."), span_notice("Você tem uma sensação estranha por um momento, mas depois passa.")))
 
 /// Converts a 3x3 area into a random dimensional theme.
 /obj/item/relic/proc/dimensional_shift(mob/user)
@@ -391,7 +389,7 @@
 /// TODO: make them part of the same kit (lobster hat, lobster suit)
 /obj/item/relic/proc/disguiser(mob/user)
 	if(!iscarbon(user))
-		to_chat(user, span_notice("You have a strange feeling for a moment, but then it passes."))
+		to_chat(user, span_notice("Você tem uma sensação estranha por um momento, mas depois passa."))
 		return
 
 	if(prob(80)) // >:)
@@ -408,7 +406,7 @@
 	carbonius.dropItemToGround(carbonius.head)
 	carbonius.equip_to_slot_or_del(disguise_hat, ITEM_SLOT_HEAD)
 	if(!ishuman(carbonius))
-		to_chat(user, span_notice("You have a peculiar feeling for a moment, but then it passes."))
+		to_chat(user, span_notice("Você tem um sentimento peculiar por um momento, mas então passa."))
 		return
 
 	var/mob/living/carbon/human/humerus = carbonius
@@ -455,68 +453,36 @@
 
 /// Makes the relic holder have a shield that blocks 3 common attacks
 /obj/item/relic/proc/t1_shield_holder(mob/user)
-	var/datum/component/shield = AddComponent( \
-		/datum/component/shielded, \
-		max_charges = 3, \
-		recharge_start_delay = 0, \
-		shield_inhand = TRUE, \
-		show_charge_as_alpha = TRUE, \
-		can_block_overwhelming = FALSE, \
-		shield_icon_file = 'icons/effects/effects.dmi', \
-		shield_icon = "at_shield1", \
-		run_hit_callback = CALLBACK(src, PROC_REF(shield_hit)), \
-	)
+	var/datum/component/shield = AddComponent( 		/datum/component/shielded, 		max_charges = 3, 		recharge_start_delay = 0, 		shield_inhand = TRUE, 		show_charge_as_alpha = TRUE, 		can_block_overwhelming = FALSE, 		shield_icon_file = 'icons/effects/effects.dmi', 		shield_icon = "at_shield1", 		run_hit_callback = CALLBACK(src, PROC_REF(shield_hit)), 	)
 	light_system = OVERLAY_LIGHT
-	var/datum/component/light = AddComponent( \
-		/datum/component/overlay_lighting, \
-		_range = 2.5, \
-		_power = 1.5, \
-		_color = COLOR_BIOLUMINESCENCE_YELLOW, \
-		starts_on = TRUE, \
-	)
+	var/datum/component/light = AddComponent( 		/datum/component/overlay_lighting, 		_range = 2.5, 		_power = 1.5, 		_color = COLOR_BIOLUMINESCENCE_YELLOW, 		starts_on = TRUE, 	)
 
 	addtimer(CALLBACK(src, PROC_REF(remove_shield), list(shield, light)), cooldown_timer * 0.5)
 	add_filter("block_shield", 1, outline_filter(0, COLOR_BIOLUMINESCENCE_YELLOW), shield)
 	transition_filter("block_shield", outline_filter(2, COLOR_BIOLUMINESCENCE_YELLOW), cooldown_timer * 0.5)
 
-	relic_message(span_notice("[src] starts to glow a bright yellow!"))
+	relic_message(span_notice("[src]Começa a brilhar um amarelo brilhante!"))
 	warn_admins(user, "Shield", FALSE)
 
 /// Makes the relic holder have a shield that blocks 1 powerful attack
 /obj/item/relic/proc/t2_shield_holder(mob/user)
-	var/datum/component/shield = AddComponent( \
-		/datum/component/shielded, \
-		max_charges = 1, \
-		recharge_start_delay = 0, \
-		shield_inhand = TRUE, \
-		show_charge_as_alpha = TRUE, \
-		can_block_overwhelming = TRUE, \
-		shield_icon_file = 'icons/effects/effects.dmi', \
-		shield_icon = "at_shield2", \
-		run_hit_callback = CALLBACK(src, PROC_REF(shield_hit)), \
-	)
+	var/datum/component/shield = AddComponent( 		/datum/component/shielded, 		max_charges = 1, 		recharge_start_delay = 0, 		shield_inhand = TRUE, 		show_charge_as_alpha = TRUE, 		can_block_overwhelming = TRUE, 		shield_icon_file = 'icons/effects/effects.dmi', 		shield_icon = "at_shield2", 		run_hit_callback = CALLBACK(src, PROC_REF(shield_hit)), 	)
 	light_system = OVERLAY_LIGHT
-	var/datum/component/light = AddComponent( \
-		/datum/component/overlay_lighting, \
-		_range = 3, \
-		_power = 1.5, \
-		_color = COLOR_BIOLUMINESCENCE_YELLOW, \
-		starts_on = TRUE, \
-	)
+	var/datum/component/light = AddComponent( 		/datum/component/overlay_lighting, 		_range = 3, 		_power = 1.5, 		_color = COLOR_BIOLUMINESCENCE_YELLOW, 		starts_on = TRUE, 	)
 
 	addtimer(CALLBACK(src, PROC_REF(remove_shield), list(shield, light)), cooldown_timer * 0.5)
 	add_filter("block_shield", 1, outline_filter(0, COLOR_BIOLUMINESCENCE_YELLOW), shield)
 	transition_filter("block_shield", outline_filter(2, COLOR_BIOLUMINESCENCE_YELLOW), cooldown_timer * 0.5)
 
-	relic_message(span_notice("[src] starts to glow a bright yellow!"))
+	relic_message(span_notice("[src]Começa a brilhar um amarelo brilhante!"))
 	warn_admins(user, "Shield", FALSE)
 
 /obj/item/relic/proc/shield_hit(mob/living/owner, attack_text, current_charges)
 	playsound(src, 'sound/items/weapons/marauder.ogg', 20, TRUE, frequency = 1.25)
-	owner.visible_message(span_danger("[owner]'s holds [src] up, blocking [attack_text] with a projected shield!"))
+	owner.visible_message(span_danger("[owner]'s holds[src]Para cima, bloqueando.[attack_text]Com um escudo projetado!"))
 	if(current_charges <= 0)
 		set_light_on(FALSE)
-		relic_message(span_notice("[src] stops glowing."))
+		relic_message(span_notice("[src]Pare de brilhar."))
 		remove_filter("block_shield")
 
 /obj/item/relic/proc/remove_shield(list/cleanup_components)
@@ -524,12 +490,12 @@
 		qdel(comp)
 	light_system = initial(light_system)
 	if(light_on)
-		relic_message(span_notice("[src] stops glowing."))
+		relic_message(span_notice("[src]Pare de brilhar."))
 	remove_filter("block_shield")
 
 /// Places rock turfs around the relic
 /obj/item/relic/proc/place_rocks(mob/user)
-	relic_message(span_notice("A spire of rock erupts from the ground beneath [src]!"))
+	relic_message(span_notice("Uma torrente de rocha irrompe do chão abaixo[src]!"))
 	playsound(src, 'sound/effects/rock/rock_break.ogg', 50, TRUE)
 	var/turf/spawnloc = get_turf(src)
 	for(var/turf/open/open_turf in RANGE_TURFS(rand(1, 2), spawnloc))
@@ -543,10 +509,10 @@
 			within_rock.Paralyze(1 SECONDS)
 			within_rock.Knockdown(3 SECONDS)
 			within_rock.apply_damage(10, BRUTE, BODY_ZONE_CHEST, blocked = within_rock.getarmor(BODY_ZONE_CHEST, MELEE), wound_bonus = 10, exposed_wound_bonus = 10)
-			to_chat(within_rock, span_danger("You are smashed by [rock]!"))
+			to_chat(within_rock, span_danger("Você está esmagado por[rock]!"))
 	warn_admins(user, "Rocks", FALSE)
 	if(prob(20))
-		relic_message(span_warning("[src] crumbles into dust!"))
+		relic_message(span_warning("[src]Se desfaz em pó!"))
 		deconstruct(FALSE)
 
 /// User sprays out blood in all directions
@@ -556,9 +522,9 @@
 	add_filter("blood_outgoing", 1, outline_filter(0, COLOR_DARK))
 	transition_filter("blood_outgoing", outline_filter(2, BLOOD_COLOR_RED), yeet_time)
 	if(istype(user) && CAN_HAVE_BLOOD(user))
-		to_chat(user, span_danger("[src] starts glowing an ominous red!"))
+		to_chat(user, span_danger("[src]Começa a brilhar um vermelho sinistro!"))
 	else
-		to_chat(user, span_danger("[src] starts glowing an ominous red..."))
+		to_chat(user, span_danger("[src]começa a brilhar um vermelho sinistro..."))
 
 	addtimer(CALLBACK(src, PROC_REF(actually_yeet_blood)), yeet_time)
 
@@ -575,13 +541,13 @@
 			splatcount += strength
 
 	if(splatcount > 0)
-		relic_message(span_warning("Blood sprays out from [src]!"))
+		relic_message(span_warning("O sangue sai de[src]!"))
 		warn_admins(user, "Blood Dispersal", FALSE)
 		playsound(src, 'sound/effects/wounds/blood3.ogg', 50, TRUE)
 		if(prob(20))
 			hidden_power = PROC_REF(suck_blood)
 	else
-		relic_message(span_warning("[src] pulses ominously, but nothing happens!"))
+		relic_message(span_warning("[src]Pulsa ominosamente, mas nada ao mesmo tempo!"))
 
 	transition_filter("blood_outgoing", outline_filter(0, COLOR_DARK), 1 SECONDS)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum, remove_filter), "blood_outgoing"), 2 SECONDS)
@@ -593,9 +559,9 @@
 	add_filter("blood_incoming", 1, outline_filter(0, COLOR_DARK))
 	transition_filter("blood_incoming", outline_filter(2, BLOOD_COLOR_RED), suck_time)
 	if(istype(user) && CAN_HAVE_BLOOD(user))
-		to_chat(user, span_danger("[src] starts glowing an ominous red!"))
+		to_chat(user, span_danger("[src]Começa a brilhar um vermelho sinistro!"))
 	else
-		to_chat(user, span_danger("[src] starts glowing an ominous red..."))
+		to_chat(user, span_danger("[src]começa a brilhar um vermelho sinistro..."))
 
 	addtimer(CALLBACK(src, PROC_REF(actually_suck_blood)), suck_time)
 
@@ -607,19 +573,19 @@
 			if(nearby == user || !CAN_HAVE_BLOOD(nearby) || nearby.can_block_magic(MAGIC_RESISTANCE_HOLY, 1))
 				continue
 			nearby.transfer_blood_to(user, rand(6, 10), ignore_low_blood = TRUE, ignore_incompatibility = TRUE, transfer_viruses = FALSE)
-			to_chat(nearby, span_danger("You feel a sudden weakness as blood is drawn out of you [nearby.is_blind() ? "" : " and into [user]"]!"))
+			to_chat(nearby, span_danger("Você sente uma fraqueza repentina enquanto o sangue é tirado de você.[nearby.is_blind() ? "" : " and into [user]"]!"))
 			any_affected = TRUE
 			nearby.Beam(user, icon_state = "blood", time = 1 SECONDS)
 			new /obj/effect/temp_visual/cult/sparks(nearby.loc)
 
 	if(any_affected)
 		playsound(src, 'sound/effects/magic/enter_blood.ogg', 50, TRUE)
-		relic_message(span_warning("Blood from nearby creatures is drawn towards [src], and into [user]!"))
+		relic_message(span_warning("Sangue de criaturas próximas é atraído para[src], e em[user]!"))
 		warn_admins(user, "Blood Suck")
 		if(prob(10))
 			hidden_power = PROC_REF(yeet_blood)
 	else
-		relic_message(span_warning("[src] pulses ominously, but nothing happens!"))
+		relic_message(span_warning("[src]Pulsa ominosamente, mas nada ao mesmo tempo!"))
 
 	transition_filter("blood_incoming", outline_filter(0, COLOR_DARK), 1 SECONDS)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum, remove_filter), "blood_incoming"), 2 SECONDS)

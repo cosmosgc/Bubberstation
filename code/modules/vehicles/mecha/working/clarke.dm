@@ -1,6 +1,6 @@
 ///Lavaproof, fireproof, fast mech with low armor and higher energy consumption and has an internal ore box.
 /obj/vehicle/sealed/mecha/clarke
-	desc = "Combining man and machine for a better, stronger miner. Can even resist lava! Due to its tracks it cannot strafe."
+	desc = "Combinando homem e máquina para um mineiro melhor e mais forte. Pode até resistir à lava! Devido aos seus rastros, não pode ser roubado."
 	name = "\improper Clarke"
 	icon_state = "clarke"
 	base_icon_state = "clarke"
@@ -62,7 +62,7 @@
 ///Special equipment for the Clarke mech, handles moving ore without giving the mech a hydraulic clamp and cargo compartment.
 /obj/item/mecha_parts/mecha_equipment/orebox_manager
 	name = "ore storage module"
-	desc = "An automated ore box management device, complete with a built-in boulder processor."
+	desc = "Um dispositivo automático de gerenciamento de caixa de minério, completo com um processador de pedra embutido."
 	icon_state = "mecha_bin"
 	equipment_slot = MECHA_UTILITY
 	detachable = FALSE
@@ -116,7 +116,7 @@
 
 /datum/action/vehicle/sealed/mecha/clarke_scoop_body
 	name = "Pick up body"
-	desc = "Activate to pick up a nearby body"
+	desc = "Ative para pegar um corpo próximo."
 	button_icon = 'icons/obj/devices/mecha_equipment.dmi'
 	button_icon_state = "mecha_sleeper_miner"
 
@@ -147,7 +147,7 @@
 	if(!chassis || !(owner in chassis.occupants))
 		return
 	if(!COOLDOWN_FINISHED(src, search_cooldown))
-		chassis.balloon_alert(owner, "em recarga!")
+		chassis.balloon_alert(owner, "Em recarga!")
 		return
 	if(!isliving(owner))
 		return
@@ -164,12 +164,12 @@
 		if(!pinpointed_ruin || get_dist(ruin_landmark, chassis) < get_dist(pinpointed_ruin, chassis))
 			pinpointed_ruin = ruin_landmark
 	if(!pinpointed_ruin)
-		chassis.balloon_alert(living_owner, "no ruins!")
+		chassis.balloon_alert(living_owner, "Sem ruínas!")
 		return
 	var/datum/status_effect/agent_pinpointer/ruin_pinpointer = living_owner.apply_status_effect(/datum/status_effect/agent_pinpointer/ruin)
 	ruin_pinpointer.RegisterSignal(living_owner, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/datum/status_effect/agent_pinpointer/ruin, cancel_self))
 	ruin_pinpointer.scan_target = pinpointed_ruin
-	chassis.balloon_alert(living_owner, "pinpointing nearest ruin")
+	chassis.balloon_alert(living_owner, "Identificando a ruína mais próxima")
 
 /datum/status_effect/agent_pinpointer/ruin
 	duration = SEARCH_COOLDOWN * 0.5
@@ -189,6 +189,6 @@
 
 /atom/movable/screen/alert/status_effect/agent_pinpointer/ruin
 	name = "Ruin Target"
-	desc = "Searching for valuables..."
+	desc = "Procurando por objetivos de valor..."
 
 #undef SEARCH_COOLDOWN

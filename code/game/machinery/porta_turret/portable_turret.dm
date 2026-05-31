@@ -31,7 +31,7 @@ DEFINE_BITFIELD(turret_flags, list(
 	layer = OBJ_LAYER
 	invisibility = INVISIBILITY_OBSERVER //the turret is invisible if it's inside its cover
 	density = TRUE
-	desc = "A covered turret that shoots at its enemies."
+	desc = "Uma torre coberta que atira em seus inimigos."
 	req_access = list(ACCESS_SECURITY) /// Only people with Security access
 	power_channel = AREA_USAGE_EQUIP //drains power from the EQUIPMENT channel
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.15
@@ -283,7 +283,7 @@ DEFINE_BITFIELD(turret_flags, list(
 				toggle_on(!on)
 				return TRUE
 			else
-				to_chat(usr, span_warning("It has to be secured first!"))
+				to_chat(usr, span_warning("Tem que ser seguro primeiro!"))
 		if("authweapon")
 			turret_flags ^= TURRET_FLAG_AUTH_WEAPONS
 			return TRUE
@@ -331,7 +331,7 @@ DEFINE_BITFIELD(turret_flags, list(
 		return
 
 	tool.set_buffer(src)
-	balloon_alert(user, "salvo no buffer da multitool")
+	balloon_alert(user, "Salvo nenhum buffer da multitool")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/porta_turret/crowbar_act(mob/living/user, obj/item/tool)
@@ -340,20 +340,20 @@ DEFINE_BITFIELD(turret_flags, list(
 
 	//If the turret is destroyed, you can remove it with a crowbar to
 	//try and salvage its components
-	to_chat(user, span_notice("You begin prying the metal coverings off..."))
+	to_chat(user, span_notice("Você começa a bisbilhotar os revestimentos de metal..."))
 	if(!tool.use_tool(src, user, 20))
 		return ITEM_INTERACT_BLOCKING
 	if(prob(70))
 		if(stored_gun)
 			stored_gun.forceMove(loc)
 			stored_gun = null
-		to_chat(user, span_notice("You remove the turret and salvage some components."))
+		to_chat(user, span_notice("Você remove a torre e salva alguns componentes."))
 		if(prob(50))
 			new /obj/item/stack/sheet/iron(loc, rand(1,4))
 		if(prob(50))
 			new /obj/item/assembly/prox_sensor(loc)
 	else
-		to_chat(user, span_notice("You remove the turret but did not manage to salvage anything."))
+		to_chat(user, span_notice("Você removeu a torre mas não conseguiu salvar nada."))
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
@@ -366,13 +366,13 @@ DEFINE_BITFIELD(turret_flags, list(
 		set_anchored(TRUE)
 		RemoveInvisibility(id=type)
 		update_appearance()
-		to_chat(user, span_notice("You secure the exterior bolts on the turret."))
+		to_chat(user, span_notice("Você protege os parafusos exteriores na torre."))
 		if(has_cover)
 			cover = new /obj/machinery/porta_turret_cover(loc) //create a new turret. While this is handled in process(), this is to workaround a bug where the turret becomes invisible for a split second
 			cover.parent_turret = src //make the cover's parent src
 	else if(anchored)
 		set_anchored(FALSE)
-		to_chat(user, span_notice("You unsecure the exterior bolts on the turret."))
+		to_chat(user, span_notice("Você não segura os parafusos exteriores na torre."))
 		power_change()
 		SetInvisibility(INVISIBILITY_NONE, id=type)
 		qdel(cover) //deletes the cover, and the turret instance itself becomes its own cover.
@@ -384,17 +384,17 @@ DEFINE_BITFIELD(turret_flags, list(
 
 	//Behavior lock/unlock mangement
 	if(!allowed(user))
-		to_chat(user, span_alert("Access denied."))
+		to_chat(user, span_alert("Acesso negado."))
 		return ITEM_INTERACT_BLOCKING
 	locked = !locked
-	to_chat(user, span_notice("Controls are now [locked ? "trancado" : "destrancado"]."))
+	to_chat(user, span_notice("Os controles estão agora.[locked ? "trancado" : "destrancado"]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/porta_turret/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return FALSE
-	balloon_alert(user, "threat assessment circuits shorted")
-	audible_message(span_hear("[src] hums oddly..."))
+	balloon_alert(user, "Circuitos de avaliação de ameaças encurtados.")
+	audible_message(span_hear("[src]Humsstranhamente..."))
 	obj_flags |= EMAGGED
 	controllock = TRUE
 	set_disabled(6 SECONDS)
@@ -739,7 +739,7 @@ DEFINE_BITFIELD(turret_flags, list(
 		return FALSE
 	if(remote_controller)
 		if(warning_message)
-			to_chat(remote_controller, span_warning("Your uplink to [src] has been severed!"))
+			to_chat(remote_controller, span_warning("Seu uplink para[src]Foi cortado!"))
 		quit_action.Remove(remote_controller)
 		toggle_action.Remove(remote_controller)
 		remote_controller.click_intercept = null
@@ -776,7 +776,7 @@ DEFINE_BITFIELD(turret_flags, list(
 	base_icon_state = "syndie"
 	faction = list(ROLE_SYNDICATE)
 	turret_flags = TURRET_FLAG_SHOOT_CRIMINALS | TURRET_FLAG_SHOOT_ANOMALOUS | TURRET_FLAG_SHOOT_BORGS
-	desc = "A ballistic machine gun auto-turret."
+	desc = "Uma metralhadora balística automática."
 
 /obj/machinery/porta_turret/syndicate/Initialize(mapload)
 	. = ..()
@@ -796,7 +796,7 @@ DEFINE_BITFIELD(turret_flags, list(
 	stun_projectile_sound = 'sound/items/weapons/taser.ogg'
 	lethal_projectile = /obj/projectile/beam/laser
 	lethal_projectile_sound = 'sound/items/weapons/laser.ogg'
-	desc = "An energy blaster auto-turret."
+	desc = "Um jato de energia automático."
 	armor_type = /datum/armor/syndicate_turret
 
 /obj/machinery/porta_turret/syndicate/energy/ruin/assess_perp(mob/living/carbon/human/perp)
@@ -820,7 +820,7 @@ DEFINE_BITFIELD(turret_flags, list(
 	stun_projectile_sound = 'sound/items/weapons/taser.ogg'
 	lethal_projectile = /obj/projectile/beam/laser/heavylaser
 	lethal_projectile_sound = 'sound/items/weapons/lasercannonfire.ogg'
-	desc = "An energy blaster auto-turret."
+	desc = "Um jato de energia automático."
 
 /obj/machinery/porta_turret/syndicate/energy/raven
 	stun_projectile = /obj/projectile/beam/laser
@@ -877,7 +877,7 @@ DEFINE_BITFIELD(turret_flags, list(
 
 /obj/machinery/porta_turret/aux_base
 	name = "perimeter defense turret"
-	desc = "A plasma beam turret calibrated to defend outposts against non-humanoid fauna. It is more effective when exposed to the environment."
+	desc = "Uma torre de feixe de plasma calibrada para defender postos avançados contra fauna não humanóide. É mais eficaz quando exposto ao ambiente."
 	installation = null
 	uses_stored = FALSE
 	lethal_projectile = /obj/projectile/plasma/turret
@@ -929,7 +929,7 @@ DEFINE_BITFIELD(turret_flags, list(
 	max_integrity = 120
 	integrity_failure = 0.5
 	name = "Old Laser Turret"
-	desc = "A turret built with substandard parts and run down further with age. Still capable of delivering lethal lasers to the odd space carp, but not much else."
+	desc = "Uma torre construída com peças de baixo padrão e corre mais longe com a idade. Ainda é capaz de entregar lasers letais na carpa espacial, mas não muito mais."
 	stun_projectile = /obj/projectile/beam/weak/penetrator
 	lethal_projectile = /obj/projectile/beam/weak/penetrator
 	faction = list(FACTION_NEUTRAL,FACTION_SILICON,FACTION_TURRET)

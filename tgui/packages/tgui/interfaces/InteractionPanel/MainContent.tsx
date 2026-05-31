@@ -26,10 +26,10 @@ export const MainContent = () => {
   const { erp_interaction } = data;
   const placeholder =
     tabIndex === 0
-      ? 'Search for an interaction'
+      ? 'Procure uma interação.'
       : tabIndex === 1
-        ? 'Search for an item'
-        : 'Searching is unavailable for this tab';
+        ? 'Procure por um item.'
+        : 'Procurar não está disponível para esta aba.';
 
   return (
     <Section fill>
@@ -68,7 +68,7 @@ export const MainContent = () => {
                   icon={showCategories ? 'folder' : 'list'}
                   color="green"
                   tooltip={
-                    showCategories ? 'Hide Categories' : 'Show Categories'
+                    showCategories ? 'Esconder as Categorias' : 'Mostrar as Categorias'
                   }
                   onClick={() => setShowCategories(!showCategories)}
                 />

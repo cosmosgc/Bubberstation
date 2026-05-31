@@ -1,8 +1,7 @@
 // Realignment. It's like Fleshmend but solely for stamina damage and stuns. Sec meta
 /datum/action/cooldown/spell/realignment
 	name = "Realignment"
-	desc = "Realign yourself, rapidly regenerating stamina and reducing any stuns or knockdowns. \
-		You cannot attack while realigning. Can be casted multiple times in short succession, but each cast lengthens the cooldown."
+	desc = "Realinhar-se, regenerar rapidamente resistência e reduzir qualquer atordoamento ou nocaute. Você não pode atacar enquanto realinha. Pode ser lançado várias vezes em curta sucessão, mas cada elenco alonga o resfriamento."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/hud/implants.dmi'
@@ -24,7 +23,7 @@
 /datum/action/cooldown/spell/realignment/cast(mob/living/cast_on)
 	. = ..()
 	cast_on.apply_status_effect(/datum/status_effect/realignment)
-	to_chat(cast_on, span_notice("We begin to realign ourselves."))
+	to_chat(cast_on, span_notice("Começamos a nos realinhar."))
 
 /datum/action/cooldown/spell/realignment/after_cast(atom/cast_on)
 	. = ..()
@@ -58,7 +57,7 @@
 	var/list/realignment_traits = list(TRAIT_BATON_RESISTANCE, TRAIT_PACIFISM)
 
 /datum/status_effect/realignment/get_examine_text()
-	return span_notice("[owner.p_Theyre()] glowing a soft white.")
+	return span_notice("[owner.p_Theyre()]Brilhando um branco suave.")
 
 /datum/status_effect/realignment/on_apply()
 	owner.add_traits(realignment_traits, TRAIT_STATUS_EFFECT(id))
@@ -78,5 +77,5 @@
 
 /atom/movable/screen/alert/status_effect/realignment
 	name = "Realignment"
-	desc = "You're realignment yourself. You cannot attack, but are rapidly regenerating stamina."
+	desc = "Você está se realinhando. Você não pode atacar, mas está regenerando rapidamente resistência."
 	icon_state = "realignment"

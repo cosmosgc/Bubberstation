@@ -39,7 +39,7 @@
 		if(5)
 			var/datum/species/species_type = race
 			affected_mob.set_species(species_type, icon_update = TRUE, pref_load = FALSE)
-			to_chat(affected_mob, span_warning("You've become \a [LOWER_TEXT(initial(species_type.name))]!"))
+			to_chat(affected_mob, span_warning("Você se tornou\a [LOWER_TEXT(initial(species_type.name))]!"))
 			cure()
 
 /datum/disease/transformation_race/hemophage
@@ -47,7 +47,7 @@
 	cure_text = "Garlic"
 	cures = list(/datum/reagent/consumable/garlic)
 	agent = "Hemophagic Viral Infection"
-	desc = "A gift of the night"
+	desc = "Um presente da noite"
 	cure_chance = 2.5
 	severity = DISEASE_SEVERITY_BIOHAZARD
 	visibility_flags = NONE
@@ -61,19 +61,19 @@
 
 /datum/disease/transformation_race/synthetic
 	name = "Synthetic Conversion Nanites"
-	cure_text = "An injection of copper."
+	cure_text = "Uma injeção de cobre."
 	cures = list(/datum/reagent/copper)
 	cure_chance = 2.5
 	agent = "C3P0 Nanomachines"
-	desc = "A acute nanomachine infection that converts the victim into a synthetic lifeform"
+	desc = "Uma infecção aguda que converte a vítima em uma forma de vida sintética."
 	severity = DISEASE_SEVERITY_BIOHAZARD
 	visibility_flags = NONE
 	stage1 = list()
 	stage2 = list(span_danger ("Your joints feel stiff."))
 	stage3 = list(
-		span_danger("You can feel something move...inside."),
-		span_danger("Your joints feel very stiff."),
-		span_warning("Your skin feels loose."),
+		span_danger("Você pode sentir algo se movendo... dentro."),
+		span_danger("Suas articulações estão muito rígidas."),
+		span_warning("Sua pele está solta."),
 	)
 	stage4 = list(span_danger("You can feel... something...inside you."), span_danger("Your skin feels very loose."),)
 	stage5 = list(span_danger("Your skin feels as if it's about to burst off!"))
@@ -82,19 +82,19 @@
 
 /datum/disease/transformation_race/android
 	name = "Android Conversion Nanites"
-	cure_text = "An injection of copper."
+	cure_text = "Uma injeção de cobre."
 	cures = list(/datum/reagent/copper)
 	cure_chance = 2.5
 	agent = "BB-8 Nanomachines"
-	desc = "A acute nanomachine infection that converts the victim into an android"
+	desc = "Uma infecção aguda por nanomáquina que converte a vítima em um andróide."
 	severity = DISEASE_SEVERITY_BIOHAZARD
 	visibility_flags = NONE
 	stage1 = list()
 	stage2 = list(span_danger ("Your joints feel stiff."))
 	stage3 = list(
-		span_danger("You can feel something move...inside."),
-		span_danger("Your joints feel very stiff."),
-		span_warning("Your skin feels loose."),
+		span_danger("Você pode sentir algo se movendo... dentro."),
+		span_danger("Suas articulações estão muito rígidas."),
+		span_warning("Sua pele está solta."),
 	)
 	stage4 = list(span_danger("You can feel... something...inside you."), span_danger("Your skin feels very loose."),)
 	stage5 = list(span_danger("Your skin feels as if it's about to burst off!"))

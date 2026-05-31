@@ -16,7 +16,7 @@
 
 /obj/structure/statue/bone/rib
 	name = "colossal rib"
-	desc = "It's staggering to think that something this big could have lived, let alone died."
+	desc = "É impressionante pensar que algo tão grande poderia ter vivido, quanto mais morrido."
 	custom_materials = list(/datum/material/bone=SHEET_MATERIAL_AMOUNT * 10)
 	icon = 'icons/obj/art/statuelarge.dmi'
 	icon_state = "rib"
@@ -25,7 +25,7 @@
 
 /obj/structure/statue/bone/skull
 	name = "colossal skull"
-	desc = "The gaping maw of a dead, titanic monster."
+	desc = "O vazio de um monstro morto e titânico."
 	custom_materials = list(/datum/material/bone=SHEET_MATERIAL_AMOUNT * 6)
 	icon = 'icons/obj/art/statuelarge.dmi'
 	icon_state = "skull"
@@ -33,7 +33,7 @@
 	icon_state_preview = "skull"
 
 /obj/structure/statue/bone/skull/half
-	desc = "The gaping maw of a dead, titanic monster. This one is cracked in half."
+	desc = "O vazio de um monstro morto e titânico. Este está rachado ao meio."
 	custom_materials = list(/datum/material/bone=SHEET_MATERIAL_AMOUNT * 3)
 	icon = 'icons/obj/art/statuelarge.dmi'
 	icon_state = "skull-half"
@@ -86,7 +86,7 @@
 //***Oil well puddles.
 /obj/structure/sink/oil_well //You're not going to enjoy bathing in this...
 	name = "oil well"
-	desc = "A bubbling pool of oil. This would probably be valuable, had bluespace technology not destroyed the need for fossil fuels 200 years ago."
+	desc = "Uma piscina borbulhante de óleo. Isso provavelmente seria valioso, se a tecnologia do espaço azul não tivesse destruído a necessidade de combustíveis fósseis há 200 anos."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "puddle-oil"
 	capacity = 20
@@ -105,7 +105,7 @@
 /obj/structure/sink/oil_well/attack_hand(mob/user, list/modifiers)
 	flick("puddle-oil-splash",src)
 	reagents.expose(user, TOUCH, 20) //Covers target in 20u of oil.
-	to_chat(user, span_notice("You touch the pool of oil, only to get oil all over yourself. It would be wise to wash this off with water."))
+	to_chat(user, span_notice("Você toca na piscina de óleo, só para sujar o óleo. Seria sábio lavar isso com água."))
 
 /obj/structure/sink/oil_well/wrench_act(mob/living/user, obj/item/tool)
 	//we deconstruct with a shovel
@@ -114,7 +114,7 @@
 /obj/structure/sink/oil_well/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	flick("puddle-oil-splash",src)
 	if(tool.tool_behaviour == TOOL_SHOVEL) //attempt to deconstruct the puddle with a shovel
-		to_chat(user, "You fill in the oil well with soil.")
+		to_chat(user, "Você enche o poço de óleo com solo.")
 		tool.play_tool_sound(src)
 		deconstruct(TRUE)
 		return ITEM_INTERACT_SUCCESS
@@ -128,7 +128,7 @@
 /// has no items inside unless you use the filled subtype
 /obj/structure/closet/crate/grave
 	name = "burial mound"
-	desc = "A marked patch of soil, showing signs of a burial long ago. You wouldn't disturb a grave... right?"
+	desc = "Uma mancha marcada de solo, mostrando sinais de um enterro há muito tempo. Você não perturbaria uma sepultura, certo?"
 	icon = 'icons/obj/storage/crates.dmi'
 	icon_state = "grave"
 	base_icon_state = "grave"
@@ -174,7 +174,7 @@
 
 /obj/structure/closet/crate/grave/examine(mob/user)
 	. = ..()
-	. += span_notice("It can be [EXAMINE_HINT((opened ? "closed" : "dug open"))] with a shovel.")
+	. += span_notice("Pode ser.[EXAMINE_HINT((opened ? "closed" : "dug open"))]com uma pá.")
 
 /obj/structure/closet/crate/grave/filled
 	affect_mood = TRUE
@@ -217,7 +217,7 @@
 		return FALSE
 
 	if(!force)
-		to_chat(user, span_notice("The ground here is too hard to dig up with your bare hands. You'll need a shovel."))
+		to_chat(user, span_notice("O chão aqui é muito difícil de cavar com suas próprias mãos. Vai precisar de uma pá."))
 		return FALSE
 
 	return TRUE
@@ -228,7 +228,7 @@
 		return FALSE
 
 	if(!dug_closed)
-		to_chat(user, span_notice("You'll need a shovel to cover it up."))
+		to_chat(user, span_notice("Vai precisar de uma pá para cobrir."))
 		return FALSE
 
 	dug_closed = FALSE
@@ -242,8 +242,8 @@
 	//player is attempting to open/close the grave with a shovel
 	if(!user.combat_mode)
 		user.visible_message(
-			span_notice("[user] Is attempting to [opened ? "close" : "dig open"] [src]."),
-			span_notice("You start [opened ? "closing" : "digging open"] [src]."),
+			span_notice("[user]Está tentando[opened ? "close" : "dig open"] [src]."),
+			span_notice("Você começa.[opened ? "closing" : "digging open"] [src]."),
 		)
 		if(!weapon.use_tool(src, user, delay = 15, volume = 40))
 			return TRUE
@@ -256,10 +256,10 @@
 			user.add_mood_event("graverobbing", is_chill_with_robbing ? /datum/mood_event/morbid_graverobbing : /datum/mood_event/graverobbing)
 			if(lead_tomb && first_open)
 				if(is_chill_with_robbing)
-					to_chat(user, span_notice("Did someone say something? I'm sure it was nothing."))
+					to_chat(user, span_notice("Alguém disse alguma coisa? Tenho certeza que não foi nada."))
 				else
 					user.gain_trauma(/datum/brain_trauma/magic/stalker)
-					to_chat(user, span_boldwarning("Oh no, no no no, THEY'RE EVERYWHERE! EVERY ONE OF THEM IS EVERYWHERE!"))
+					to_chat(user, span_boldwarning("Não, não, não, eles estão em todos os lugares! Cada um deles está em todos os lugares!"))
 				first_open = FALSE
 
 		return TRUE
@@ -270,13 +270,13 @@
 			return TRUE
 
 		user.visible_message(
-			span_notice("[user] Is attempting to remove [src]."),
-			span_notice("You start removing [src]."),
+			span_notice("[user]Está tentando remover[src]."),
+			span_notice("Você começa a remover[src]."),
 		)
 		if(!weapon.use_tool(src, user, delay = 15, volume = 40) || !opened)
 			return TRUE
 
-		to_chat(user, span_notice("You remove \the [src] completely."))
+		to_chat(user, span_notice("Você tira.\the [src]Completamente."))
 		user.add_mood_event("graverobbing", /datum/mood_event/graverobbing)
 		deconstruct(TRUE)
 		return TRUE
@@ -288,25 +288,25 @@
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
 	user.visible_message(
-		span_warning("[src]'s dirt begins to shift and rumble!"),
-		span_notice("You desperately begin to claw at the dirt around you, trying to force yourself upwards through the soil... (this will take about [DisplayTimeText(breakout_time)].)"),
-		span_hear("You hear the sound of shifting dirt from [src]."),
+		span_warning("[src]A sujeira começa a mudar e a rugir!"),
+		span_notice("Você desesperadamente começa a arranhar a sujeira em torno de você, tentando forçar-se para cima através do solo...[DisplayTimeText(breakout_time)].)"),
+		span_hear("Você ouve o som de mover sujeira de[src]."),
 	)
 	if(do_after(user, breakout_time, target = src))
 		if(opened)
 			return
 		user.visible_message(
-			span_danger("[user] emerges from [src], scattering dirt everywhere!"),
-			span_notice("You triumphantly surface out of [src], scattering dirt all around the grave!"),
+			span_danger("[user]emerge de[src]Espalhando sujeira por toda parte!"),
+			span_notice("Você triunfante superfície para fora[src], espalhando terra ao redor do túmulo!"),
 		)
 		bust_open()
 	else
 		if(user.loc == src)
-			to_chat(user, span_warning("You fail to dig yourself out of [src]!"))
+			to_chat(user, span_warning("Você não consegue se retirar.[src]!"))
 
 /obj/structure/closet/crate/grave/fresh
 	name = "makeshift grave"
-	desc = "A hastily-dug grave. This is definitely not six feet deep, but it'll hold a body."
+	desc = "Um túmulo apressado. Com certeza não tem dois metros de profundidade, mas vai segurar um corpo."
 	icon = 'icons/obj/storage/crates.dmi'
 	icon_state = "grave_fresh"
 	base_icon_state = "grave_fresh"
@@ -314,7 +314,7 @@
 
 /obj/structure/closet/crate/grave/filled/lead_researcher
 	name = "ominous burial mound"
-	desc = "Even in a place filled to the brim with graves, this one shows a level of preparation and planning that fills you with dread."
+	desc = "Mesmo em um lugar cheio de túmulos, este mostra um nível de preparação e planejamento que enche você de medo."
 	icon = 'icons/obj/storage/crates.dmi'
 	icon_state = "grave_lead"
 	lead_tomb = TRUE
@@ -336,26 +336,26 @@
 //***Fluff items for lore/intrigue
 /obj/item/paper/crumpled/muddy/fluff/elephant_graveyard
 	name = "posted warning"
-	desc = "It seems to be smudged with mud and... oil?"
-	default_raw_text = "<B>TO WHOM IT MAY CONCERN</B><BR><BR>This area is property of the Nanotrasen Mining Division.<BR><BR>Trespassing in this area is illegal, highly dangerous, and subject to several NDAs.<br><br>Please turn back now, under intergalactic law section 48-R."
+	desc = "Parece estar manchado de lama e óleo?"
+	default_raw_text = "<B>A quem possa interessar</B><BR><BR>Esta área é propriedade da Divisão de Mineração Nanotrasen.<BR><BR>Invadir nesta área é ilegal, altamente perigoso, e sujeito a várias NDAs.<br><br>Por favor, volte agora, sob lei intergaláctica seção 48-R."
 
 /obj/item/paper/crumpled/muddy/fluff/elephant_graveyard/rnd_notes
 	name = "Research Findings: Day 26"
-	desc = "Huh, this one page looks like it was torn out of a full book. How odd."
+	desc = "Esta página parece que foi arrancada de um livro completo. Que estranho."
 	icon_state = "docs_part"
-	default_raw_text = "<b>Researcher name:</b> B--*--* J--*s.<BR><BR>Detailed findings:<i>Today the camp site's cond-tion has wor--ene*. The ashst--ms keep blocking us off from le-ving the sit* for m-re supplies, and it's lo-king like we're out of pl*sma to p-wer the ge-erat*r. Can't rea-*y study c-*bon *ating with no li--ts, ya know? Da-*y's been going -*f again and ag-*n a-*ut h*w the company's left us to *ie here, but I j-s* keep tell-ng him to stop che*-in* out these damn graves. We m-y b*  archaeologists, but -e sho*ld have t-e dec-**cy to know these grav-s are *-l NEW.</i><BR><BR><b>The rest of the page is just semantics about carbon dating methods.</b>"
+	default_raw_text = "<b>Nome do pesquisador:</b>B-*--* J--*s.<BR><BR>Achados detalhados:<i>Hoje a condição do acampamento está... O cinzeiro--ms nos impede de deixar a mesa de suprimentos m-re, e é lo-king como se estivéssemos sem pl*sma para p-wer o ge-erat*r. Não dá pra estudar sem... A empresa nos deixou aqui, mas eu continuo dizendo a ele para parar de entrar nessas malditas sepulturas. Nós, arqueólogos, mas temos que ter a certeza de que estes grav-s são novos.</i><BR><BR><b>O resto da página é apenas semântica sobre métodos de datação por carbono.</b>"
 
 /obj/item/paper/crumpled/muddy/fluff/elephant_graveyard/mutiny
 	name = "hastily scribbled note"
-	desc = "Seems like someone was in a hurry."
-	default_raw_text = "Alright, we all know that stuck up son a bitch is just doing this to keep us satisifed. Who the hell does he think he is, taking extra rations? We're OUT OF FOOD, CARL. Tomorrow at noon, we're going to try and take the ship by force. He HAS to be lying about the engine cooling down. He HAS TO BE. I'm tellin ya, with this implant I lifted off that last supply ship, I got the smarts to get us offa this shithole. Keep your knife handy carl."
+	desc = "Parece que alguém estava com pressa."
+	default_raw_text = "Todos sabemos que o filho da puta está fazendo isso para nos manter satisfeitos. Quem diabos ele pensa que é, tomando rações extras? Estamos sem comida, Carl. Amanhã ao meio-dia, vamos tentar pegar a nave à força. Ele tem que estar mentindo sobre o motor esfriando. Ele tem que ser. Estou dizendo, com este implante que tirei da última nave de suprimentos, consegui a inteligência para nos tirar dessa merda. Mantenha sua faca à mão, Carl."
 
 /obj/item/paper/fluff/ruins/elephant_graveyard/hypothesis
 	name = "research document"
-	desc = "Standard Nanotrasen typeface for important research documents."
-	default_raw_text = "<b>Day 9: Tenative Conclusions</b><BR><BR>While the area appears to be of significant cultural importance to the lizard race, outside of some sparce contact with native wildlife, we're yet to find any exact reasoning for the nature of this phenomenon. It seems that organic life is communally drawn to this planet as though it functions as a final resting place for intelligent life. As per company guidelines, this site shall be given the following classification: 'LZ-0271 - Elephant Graveyard' <BR><BR><u>Compiled list of Artifact findings (Currently Sent Offsite)</u><BR>Cultist Blade Fragments: x8<BR>Brass Multiplicative Ore Sample: x105<BR>Syndicate Revolutionary Leader Implant (Broken) x1<BR>Extinct Cortical Borer Tissue Sample x1<BR>Space Carp Fossil x3"
+	desc = "Tipo padrão Nanotrasen para documentos de pesquisa importantes."
+	default_raw_text = "<b>Dia 9: Conclusões Tenativas</b><BR><BR>Embora a área pareça ser de significativa importância cultural para a corrida de lagartos, fora de algum contato de luta com a vida selvagem nativa, ainda não encontramos qualquer razão exata para a natureza deste fenômeno. Parece que a vida orgânica é popularmente atraída para este planeta como se funcionasse como um lugar de descanso final para a vida inteligente. De acordo com as diretrizes da empresa, este site receberá a seguinte classificação:<BR><BR><u>Lista compilada de descobertas de artefatos</u><BR>Fragmentos de lâmina de culto: x8<BR>Amostra multiplicativa de latão: x105<BR>Sindicate Revolutionary Leader Implant (Broken) x1<BR>Extinto Cortical Borer Tissue Sample x1<BR>Carpa Espacial Fóssil x3"
 
 /obj/item/paper/fluff/ruins/elephant_graveyard/final_message
 	name = "important-looking note"
-	desc = "This note is well written, and seems to have been put here so you'd find it."
-	default_raw_text = "If you find this... you don't need to know who I am.<BR><BR>You need to leave this place. I dunno what shit they did to me out here, but I don't think I'm going to be making it out of here.<BR><BR>This place... it wears down your psyche. The other researchers out here laughed it off but... They were the first to go.<BR><BR>One by one they started turning on each other. The more they found out, the more they started fighting and arguing...<BR>As I speak now, I had to... I wound up having to put most of my men down. I know what I had to do, and I know there's no way left for me to live with myself.<BR> If anyone ever finds this, just don't touch the graves.<BR><BR>DO NOT. TOUCH. THE GRAVES. Don't be a dumbass, like we all were."
+	desc = "Este bilhete está bem escrito, e parece ter sido colocado aqui para que você o encontrasse."
+	default_raw_text = "Se encontrar isso... não precisa saber quem eu sou.<BR><BR>Precisa sair daqui. Não sei o que fizeram comigo aqui, mas acho que não vou sair daqui.<BR><BR>Este lugar... desgasta sua psique. Os outros pesquisadores riram, mas... Eles foram os primeiros a ir.<BR><BR>Um por um começaram a se virar uns contra os outros. Quanto mais descobrem, mais brigam e discutem...<BR>Enquanto eu falava agora, eu tinha que... Acabei tendo que matar a maioria dos meus homens. Eu sei o que tinha que fazer, e sei que não há como eu viver comigo mesmo.<BR>Se alguém encontrar isso, não toque nos túmulos.<BR><BR>Não. Não seja idiota, como todos nós."

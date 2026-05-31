@@ -37,11 +37,11 @@
 	var/udder_filled_percentage = PERCENT(udder.reagents.total_volume / udder.reagents.maximum_volume)
 	switch(udder_filled_percentage)
 		if(0 to 10)
-			examine_list += span_notice("[parent]'s [udder.name] is dry.")
+			examine_list += span_notice("[parent]'s[udder.name]está seco.")
 		if(11 to 99)
-			examine_list += span_notice("[parent]'s [udder.name] can be milked if you have something to contain it.")
+			examine_list += span_notice("[parent]'s[udder.name]Pode ser ordenhada se tiver algo para contê-lo.")
 		if(100)
-			examine_list += span_notice("[parent]'s [udder.name] is round and full, and can be milked if you have something to contain it.")
+			examine_list += span_notice("[parent]'s[udder.name]é redonda e cheia, e pode ser ordenhada se você tiver algo para contê-lo.")
 
 
 ///signal called on parent being attacked with an item
@@ -115,7 +115,7 @@
 			user.balloon_alert(user, "já cheio!")
 		return
 	playsound(udder_mob.loc,'sound/items/eatfood.ogg', 50, TRUE)
-	udder_mob.visible_message(span_notice("[udder_mob] gobbles up [food]!"), span_notice("You gobble up [food]!"))
+	udder_mob.visible_message(span_notice("[udder_mob]Engolir[food]!"), span_notice("Você engoliu[food]!"))
 	var/atom/movable/final_food = food
 	if(isstack(food)) //if stack, only consume 1
 		var/obj/item/stack/food_stack = food
@@ -177,13 +177,13 @@
  */
 /obj/item/udder/proc/milk(obj/item/reagent_containers/cup/milk_holder, mob/user)
 	if(milk_holder.reagents.total_volume >= milk_holder.volume)
-		to_chat(user, span_warning("[milk_holder] is full."))
+		to_chat(user, span_warning("[milk_holder]Está cheio."))
 		return
 	var/transferred = reagents.trans_to(milk_holder, rand(5,10))
 	if(transferred)
-		user.visible_message(span_notice("[user] milks [udder_mob] using \the [milk_holder]."), span_notice("You milk [udder_mob] using \the [milk_holder]."))
+		user.visible_message(span_notice("[user]Leites.[udder_mob]Usando\the [milk_holder]."), span_notice("Seu leite.[udder_mob]Usando\the [milk_holder]."))
 	else
-		to_chat(user, span_warning("The udder is dry. Wait a bit longer..."))
+		to_chat(user, span_warning("O úbere está seco. Espere um pouco mais..."))
 
 /**
  * # gutlunch udder subtype

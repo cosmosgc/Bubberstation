@@ -41,7 +41,7 @@ export const SpecimenDisplay = (props) => {
             <Button
               icon="flask"
               disabled={!is_ready || !virus}
-              tooltip={virus ? '' : 'No virus culture found.'}
+              tooltip={virus ? '' : 'Nenhuma cultura viral encontrada.'}
               onClick={() =>
                 act('create_culture_bottle', {
                   index: virus.index,

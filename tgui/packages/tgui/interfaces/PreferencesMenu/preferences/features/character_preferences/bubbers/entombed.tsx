@@ -9,30 +9,30 @@ import {
 import { FeatureDropdownInput } from '../../dropdowns';
 
 export const entombed_deploy_lock: FeatureToggle = {
-  name: 'MODsuit Stays Deployed (Soft DNR)',
+  name: 'MODsuit Permanece Implantado',
   description:
-    'Prevents anyone from retracting any of your MODsuit, except your helmet. Even you. WARNING: this may make you extremely difficult to revive, and can be considered a soft DNR. Choose wisely.',
+    'Impede que alguém retraia seu traje, exceto seu capacete. Até você. ATENÇÃO: isso pode torná-lo extremamente difícil de reviver, e pode ser considerado um NR suave. Escolha sabiamente.',
   component: CheckboxInput,
 };
 
 export const entombed_skin: FeatureChoiced = {
-  name: 'MODsuit Skin',
+  name: 'Pele de madrasta',
   component: FeatureDropdownInput,
 };
 
 export const entombed_mod_name: Feature<string> = {
-  name: 'MODsuit Control Unit Name',
+  name: 'Nome da unidade de controle do MODsuit',
   component: FeatureShortTextInput,
 };
 
 export const entombed_mod_desc: Feature<string> = {
-  name: 'MODsuit Control Unit Description',
+  name: 'Unidade de Controle do MODsuit Descrição',
   component: FeatureShortTextInput,
 };
 
 export const entombed_mod_prefix: Feature<string> = {
-  name: 'MODsuit Deployed Prefix',
+  name: 'MODsuit lançou Prefix',
   description:
-    "This is appended to any deployed pieces of MODsuit gear, like the chest, helmet, etc. The default is 'fused' - try to use an adjective, if you can.",
+    "Isto é anexado a qualquer peça de equipamento MODsuit, como o peito, capacete, etc. O padrão é 'fundido' - tente usar um adjetivo, se puder.",
   component: FeatureShortTextInput,
 };

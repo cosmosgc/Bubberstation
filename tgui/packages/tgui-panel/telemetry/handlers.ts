@@ -27,12 +27,12 @@ let wasRequestedWithPayload;
 export function telemetryRequest(payload: TelemetryRequestPayload): void {
   // Defer telemetry request until we have the actual telemetry
   if (!telemetry) {
-    logger.debug('deferred telemetry');
+    logger.debug('Telemetria diferida.');
     wasRequestedWithPayload = payload;
     return;
   }
 
-  logger.debug('sending telemetry');
+  logger.debug('enviando telemetria');
   const limits = payload?.limits?.connections;
   // Trim connections according to the server limit
   const connections = telemetry.connections.slice(0, limits);
@@ -59,7 +59,7 @@ export async function handleTelemetryData(
   // Extract client data
   const client = payload?.config?.client;
   if (!client) {
-    logger.error('backend/update payload is missing client data!');
+    logger.error('backend/update carga útil está faltando dados do cliente!');
     return;
   }
 
@@ -69,7 +69,7 @@ export async function handleTelemetryData(
     telemetry = {
       connections: stored?.connections ?? [],
     };
-    logger.debug('Retrieved telemetry from storage', telemetry);
+    logger.debug('Telemetria recuperada do armazenamento.', telemetry);
   }
 
   // Append a connection record
@@ -89,7 +89,7 @@ export async function handleTelemetryData(
 
   // Save telemetry
   if (telemetryMutated) {
-    logger.debug('Saving telemetry to storage', telemetry);
+    logger.debug('Salvando telemetria para armazenamento.', telemetry);
     storage.set('telemetry', telemetry);
   }
 

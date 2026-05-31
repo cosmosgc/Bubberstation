@@ -158,7 +158,7 @@ const NtosNotepadMenuBar = (props: MenuBarProps) => {
       >
         <MenuBar.Dropdown.MenuItemToggle
           checked={wordWrap}
-          {...getMenuItemProps('wordWrap', 'Word Wrap')}
+          {...getMenuItemProps('wordWrap', 'Mudança de Linha')}
         />
       </MenuBar.Dropdown>
       <MenuBar.Dropdown
@@ -169,7 +169,7 @@ const NtosNotepadMenuBar = (props: MenuBarProps) => {
       >
         <MenuBar.Dropdown.MenuItemToggle
           checked={showStatusBar}
-          {...getMenuItemProps('statusBar', 'Status Bar')}
+          {...getMenuItemProps('statusBar', 'Barra de status')}
         />
       </MenuBar.Dropdown>
       <MenuBar.Dropdown
@@ -179,7 +179,7 @@ const NtosNotepadMenuBar = (props: MenuBarProps) => {
         {...itemProps}
       >
         <MenuBar.Dropdown.MenuItem
-          {...getMenuItemProps('aboutNotepad', 'About Notepad')}
+          {...getMenuItemProps('aboutNotepad', 'Sobre o Notepad')}
         />
       </MenuBar.Dropdown>
     </MenuBar>
@@ -268,7 +268,7 @@ function NotePadTextArea(props: NotePadTextAreaProps) {
       spellCheck={false}
       style={{
         whiteSpace: wordWrap ? 'normal' : 'nowrap',
-        overflow: wordWrap ? 'hidden auto' : 'scroll hidden',
+        overflow: wordWrap ? 'Auto escondido' : 'Pergaminho escondido',
       }}
       value={text}
     />
@@ -283,10 +283,10 @@ const AboutDialog = (props: AboutDialogProps) => {
   const { close } = props;
   const { data } = useBackend<NTOSData>();
   const { show_imprint, login } = data;
-  const paragraphStyle = { padding: '.5rem 1rem 0 2rem' };
+  const paragraphStyle = { padding: '.5rem 1rem 02rem' };
 
   return (
-    <Dialog title="About Notepad" onClose={close} width={'500px'}>
+    <Dialog title="Sobre o Notepad" onClose={close} width={'500px'}>
       <div className="Dialog__body">
         <span className="NtosNotepad__AboutDialog__logo">NtOS</span>
         <Divider />
@@ -349,7 +349,7 @@ export const NtosNotepad = (props) => {
     act('UpdateNote', { newnote: text });
     setOriginalText(text);
     setDocumentName(newDocumentName);
-    logger.log('Attempting to retry previous action');
+    logger.log('Tentando tentar novamente a ação anterior.');
     setActiveDialog(Dialogs.NONE);
 
     // Retry the previous action now that we've saved. The previous action could be to
@@ -367,7 +367,7 @@ export const NtosNotepad = (props) => {
     // This is a guard function that throws up the "unsaved changes" dialog if the user is
     // attempting to do something that will make them lose data
     if (!retrying && originalText !== text) {
-      logger.log('Unsaved changes. Asking client to save');
+      logger.log('Mudanças não salvas. Pedindo ao cliente para salvar');
       setRetryAction(() => action);
       setActiveDialog(Dialogs.UNSAVED_CHANGES);
       return true;
@@ -379,7 +379,7 @@ export const NtosNotepad = (props) => {
     if (ensureUnsavedChangesAreHandled(exit, retrying)) {
       return;
     }
-    logger.log('Exiting Notepad');
+    logger.log('Saindo do bloco de notas');
     act('PC_exit');
   };
   const newNote = (retrying = false) => {

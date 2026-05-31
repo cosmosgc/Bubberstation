@@ -3,7 +3,7 @@
 	name = "blob"
 	icon = 'icons/mob/nonhuman-player/blob.dmi'
 	light_range = 2
-	desc = "A thick wall of writhing tendrils."
+	desc = "Uma espessa parede de tentáculos contorcidos."
 	density = TRUE
 	opacity = FALSE
 	anchored = TRUE
@@ -175,7 +175,7 @@
 	if(isspaceturf(T) && !(locate(/obj/structure/lattice) in T) && prob(80))
 		make_blob = FALSE
 		playsound(src.loc, 'sound/effects/splat.ogg', 50, TRUE) //Let's give some feedback that we DID try to spawn in space, since players are used to it
-		balloon_alert(controller, "failed to expand!")
+		balloon_alert(controller, "Não conseguiu expandir!")
 
 	ConsumeTile() //hit the tile we're in, making sure there are no border objects blocking us
 	if(!T.CanPass(src, get_dir(T, src))) //is the target turf impassable
@@ -201,7 +201,7 @@
 			if(Ablob.area_flags & BLOBS_ALLOWED) //Is this area allowed for winning as blob?
 				overmind.blobs_legit += B
 			else if(controller)
-				B.balloon_alert(overmind, "off-station, won't count!")
+				B.balloon_alert(overmind, "Off-station, não conta!")
 			B.update_appearance()
 			if(B.overmind && expand_reaction)
 				B.overmind.blobstrain.expand_reaction(src, B, T, controller)
@@ -245,13 +245,13 @@
 /obj/structure/blob/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
 	if(I.tool_behaviour == TOOL_ANALYZER)
 		user.changeNext_move(CLICK_CD_MELEE)
-		to_chat(user, "<b>The analyzer beeps once, then reports:</b><br>")
+		to_chat(user, "<b>O analisador apita uma vez e depois relata:</b><br>")
 		SEND_SOUND(user, sound('sound/machines/ping.ogg'))
 		if(overmind)
-			to_chat(user, "<b>Progress to Critical Mass:</b> [span_notice("[overmind.blobs_legit.len]/[overmind.blobwincount].")]")
+			to_chat(user, "<b>Progresso para a massa crítica:</b> [span_notice("[overmind.blobs_legit.len]/[overmind.blobwincount].")]")
 			to_chat(user, chemeffectreport(user).Join("\n"))
 		else
-			to_chat(user, "<b>Blob core neutralized. Critical mass no longer attainable.</b>")
+			to_chat(user, "<b>Núcleo do bloco neutralizado. Massa crítica não mais alcançável.</b>")
 		to_chat(user, typereport(user).Join("\n"))
 	else
 		return ..()
@@ -260,17 +260,17 @@
 	RETURN_TYPE(/list)
 	. = list()
 	if(overmind)
-		. += list("<b>Material: <font color=\"[overmind.blobstrain.color]\">[overmind.blobstrain.name]</font>[span_notice(".")]</b>",
-		"<b>Material Effects:</b> [span_notice("[overmind.blobstrain.analyzerdescdamage]")]",
-		"<b>Material Properties:</b> [span_notice("[overmind.blobstrain.analyzerdesceffect || "N/A"]")]")
+		. += list("<b>Material:<font color=\"[overmind.blobstrain.color]\">[overmind.blobstrain.name]</font>[span_notice(".")]</b>",
+		"<b>Efeitos materiais:</b> [span_notice("[overmind.blobstrain.analyzerdescdamage]")]",
+		"<b>Propriedades materiais:</b> [span_notice("[overmind.blobstrain.analyzerdesceffect || "N/A"]")]")
 	else
 		. += "<b>No Material Detected!</b>"
 
 /obj/structure/blob/proc/typereport(mob/user)
 	RETURN_TYPE(/list)
-	return list("<b>Blob Type:</b> [span_notice("[uppertext(initial(name))]")]",
-							"<b>Health:</b> [span_notice("[atom_integrity]/[max_integrity]")]",
-							"<b>Effects:</b> [span_notice("[scannerreport()]")]")
+	return list("<b>Tipo:</b> [span_notice("[uppertext(initial(name))]")]",
+							"<b>Saúde:</b> [span_notice("[atom_integrity]/[max_integrity]")]",
+							"<b>Efeitos:</b> [span_notice("[scannerreport()]")]")
 
 
 /obj/structure/blob/attack_animal(mob/living/simple_animal/user, list/modifiers)
@@ -373,11 +373,11 @@
 /obj/structure/blob/normal/update_desc()
 	. = ..()
 	if(atom_integrity <= 15)
-		desc = "A thin lattice of slightly twitching tendrils."
+		desc = "Uma fina rede de tentáculos ligeiramente agitados."
 	else if(overmind)
-		desc = "A thick wall of writhing tendrils."
+		desc = "Uma espessa parede de tentáculos contorcidos."
 	else
-		desc = "A thick wall of lifeless tendrils."
+		desc = "Uma parede de tentáculos sem vida."
 
 /obj/structure/blob/normal/update_icon_state()
 	icon_state = "blob[(atom_integrity <= 15) ? "_damaged" : null]"

@@ -2,9 +2,7 @@
 
 /obj/item/gun/ballistic/automatic/miecz
 	name = "\improper Miecz Submachine Gun"
-	desc = "A short barrel, further compacted conversion of the 'Lanca' rifle to fire pistol caliber .27-54 cartridges. \
-		Due to the intended purpose of the weapon, and less than optimal ranged performance of the projectile, it has \
-		nothing more than basic glow-sights as opposed to the ranged scope Lanca users might be used to."
+	desc = "Um pequeno barril, mais compactado conversão do rifle 'Lanca' para disparar cartuchos calibre 27-54. Devido ao propósito pretendido da arma, e menor que o ideal desempenho variado do projétil, ele não tem nada mais do que visão de brilho básico em oposição ao alcance variado que os usuários Lanca podem estar acostumados."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_48.dmi'
 	icon_state = "miecz"
@@ -44,17 +42,12 @@
 
 /obj/item/gun/ballistic/automatic/miecz/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/miecz/examine_more(mob/user)
 	. = ..()
 
-	. += "The Meicz is one of the newest weapons to come out of CIN member state hands and \
-		into the wild, typically the frontier. It was built alongside the round it fires, the \
-		.27-54 Cesarzawa pistol round. Based on the proven Lanca design, it seeks to bring that \
-		same reliable weapon design into the factor of a submachinegun. While it is significantly \
-		larger than many comparable weapons in TerraGov use, it more than makes up for it with ease \
-		of control and significant firerate."
+	. += "The Meicz is one of the newest weapons to come out of CIN member state hands and 		into the wild, typically the frontier. It was built alongside the round it fires, the 		.27-54 Cesarzawa pistol round. Based on the proven Lanca design, it seeks to bring that 		same reliable weapon design into the factor of a submachinegun. While it is significantly 		larger than many comparable weapons in TerraGov use, it more than makes up for it with ease 		of control and significant firerate."
 
 	return .
 

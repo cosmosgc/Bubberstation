@@ -2,7 +2,7 @@ import { type Antagonist, Category } from '../base';
 
 const SpaceNinja: Antagonist = {
   key: 'spaceninja',
-  name: 'Space Ninja',
+  name: 'Ninja do Espaço',
   description: [
     `
       The Spider Clan practice a sort of augmentation of human flesh in order to

@@ -3,7 +3,7 @@
 // Hard-ish to fix
 /datum/wound/electrical_damage/pierce
 	heat_differential_healing_mult = 0.01
-	simple_desc = "Electrical conduits have been pierced open, resulting in a fault that <b>slowly</b> intensifies, but with <b>extreme</b> maximum voltage!"
+	simple_desc = "Conduítes elétricos foram perfurados, resultando em uma falha que<b>Devagar.</b>Intensifica, mas com<b>Extremo</b>Tensão máxima!"
 
 /datum/wound_pregen_data/electrical_damage/pierce
 	abstract = TRUE
@@ -11,15 +11,14 @@
 	required_wounding_type = WOUND_PIERCE
 
 /datum/wound/burn/electrical_damage/pierce/get_limb_examine_description()
-	return span_warning("The metal on this limb is pierced open.")
+	return span_warning("O metal neste membro está perfurado.")
 
 /datum/wound/electrical_damage/pierce/moderate
 	name = "Punctured Capacitor"
-	desc = "A major capacitor has been broken open, causing slow but noticable electrical damage."
-	occur_text = "shoots out a short stream of sparks"
-	examine_desc = "is shuddering gently, movements a little weak"
-	treat_text = "Replacing of damaged wiring, though repairs via wirecutting instruments or sutures may suffice, albeit at limited efficiency. In case of emergency, \
-				subject may be subjected to high temperatures to allow solder to reset."
+	desc = "Um grande capacitor foi quebrado, causando danos elétricos lentos, mas notáveis."
+	occur_text = "Lança um pequeno fluxo de faíscas"
+	examine_desc = "Está tremendo suavemente, movimentos um pouco fracos"
+	treat_text = "Substituindo a fiação danificada, embora reparos através de instrumentos de corte ou suturas possam ser suficientes, embora com eficiência limitada. Em caso de emergência, o sujeito pode ser submetido a altas temperaturas para permitir que a solda reinicie."
 	treat_text_short = "Replace damaged wiring."
 
 	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T1.ogg'
@@ -60,10 +59,10 @@
 
 /datum/wound/electrical_damage/pierce/severe
 	name = "Penetrated Transformer"
-	desc = "A major transformer has been pierced, causing slow-to-progess but eventually intense electrical damage."
-	occur_text = "sputters and goes limp for a moment as it ejects a stream of sparks"
-	examine_desc = "is shuddering significantly, its servos briefly giving way in a rythmic pattern"
-	treat_text = "Containment of damaged wiring via gauze, then application of fresh wiring/sutures, or resetting of displaced wiring via wirecutter/retractor."
+	desc = "Um grande transformador foi perfurado, causando lentos processos, mas eventualmente intensos danos elétricos."
+	occur_text = "Esvoaça e manca por um momento enquanto ejeta um fluxo de faíscas."
+	examine_desc = "está estremecendo significativamente, seus servos brevemente cedem em um padrão rítmico"
+	treat_text = "Contenção de fiação danificada via gaze, aplicação de fiação/suturas frescas, ou redefinição de fiação deslocada via grampeador/retrator."
 	treat_text_short = "Apply gauze and replace wires."
 
 	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T2.ogg'
@@ -104,11 +103,10 @@
 
 /datum/wound/electrical_damage/pierce/critical
 	name = "Ruptured PSU"
-	desc = "The local PSU of this limb has suffered a core rupture, causing a progressive power failure that will slowly intensify into massive electrical damage."
-	occur_text = "flashes with radiant blue, emitting a noise not unlike a Jacob's Ladder"
-	examine_desc = "'s PSU is visible, with a sizable hole in the center"
-	treat_text = "Immediate securing via gauze, followed by emergency cable replacement and securing via wirecutters or hemostat. \
-		If the fault has become uncontrollable, extreme heat therapy is recommended."
+	desc = "O PSU local deste membro sofreu uma ruptura do núcleo, causando uma falha progressiva de energia que lentamente se intensificará em danos elétricos maciços."
+	occur_text = "brilha com azul radiante, emitindo um ruído não diferente de uma Escada de Jacob"
+	examine_desc = "O PSU é visível, com um grande buraco no centro."
+	treat_text = "Segurança imediata via gaze, seguida por substituição de cabos de emergência e segurança via cortadores de arame ou hemostat. Se a falha se tornou incontrolável, terapia de calor extrema é recomendada."
 	treat_text_short = "Apply gauze, replace wires, and use wirecutters or a hemostat."
 
 	severity = WOUND_SEVERITY_CRITICAL

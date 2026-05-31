@@ -20,7 +20,7 @@ GLOBAL_LIST(whitelist)
 	. = (ckey in GLOB.whitelist)
 
 ADMIN_VERB(whitelist_player, R_BAN, "Whitelist CKey", "Adds a ckey to the Whitelist file.", ADMIN_CATEGORY_MAIN)
-	var/input_ckey = input("CKey to whitelist: (Adds CKey to the whitelist.txt)") as null|text
+	var/input_ckey = input("CKey para lista branca:") as null|text
 	// The ckey proc "santizies" it to be its "true" form
 	var/canon_ckey = ckey(input_ckey)
 	if(!input_ckey || !canon_ckey)

@@ -51,7 +51,7 @@ ADMIN_VERB(trophy_manager, R_ADMIN, "Trophy Manager", "View all trophies.", ADMI
 			if(!new_path)
 				return
 			if(!text2path(new_path))
-				to_chat(user, span_warning("Invalid path selected"))
+				to_chat(user, span_warning("Caminho inválido selecionado"))
 				return
 			trophy.path = new_path
 			log_admin("[key_name(user)] has edited the item path of trophy made by [trophy.placer_key] from \"[old_path]\" to \"[new_path]\".")

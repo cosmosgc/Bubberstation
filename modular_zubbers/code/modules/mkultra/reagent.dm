@@ -128,9 +128,9 @@ Creating a chem with a low purity will make you permanently fall in love with so
 
 /datum/reagent/mkultra
 	name = "MKUltra"
-	description = "A forbidden deep red mixture that increases a person's succeptability to another's words. When taken by the creator, it will enhance the draw of their voice to those affected by it."
+	description = "Uma mistura vermelha profunda proibida que aumenta a sucessibilidade de uma pessoa às palavras de outra pessoa. Quando tomado pelo criador, ele vai melhorar o desenho de sua voz para aqueles afetados por ele."
 	color = "#660015" // rgb: , 0, 255
-	taste_description = "synthetic chocolate, a base tone of alcohol, and high notes of roses"
+	taste_description = "chocolate sintético, um tom básico de álcool, e notas altas de rosas"
 	overdose_threshold = 100 //If this is too easy to get 100u of this, then double it please.
 	metabolization_rate = REAGENTS_METABOLISM * 0.4 // It has to be slow, so there's time for the effect.
 	data = list("enthrall_ckey" = null, "enthrall_gender" = null, "enthrall_name" = null)
@@ -162,7 +162,7 @@ Creating a chem with a low purity will make you permanently fall in love with so
 			enthrall_chem.enthrall_ckey = enthrall_ckey
 			enthrall_chem.enthrall_gender = enthrall_gender
 			enthrall_chem.enthrall_mob = get_mob_by_key(enthrall_ckey)
-			to_chat(mob_affected, "<span class='big love'><i>Your addled, plastic, mind bends under the chemical influence of a new [(enthrall_chem.lewd?"enthrall_mob":"leader")]. Your highest priority is now to stay by [enthrall_name]'s side, following and aiding them at all costs.</i></span>") //THIS SHOULD ONLY EVER APPEAR IF YOU MINDBREAK YOURSELF AND THEN GET INJECTED FROM SOMEONE ELSE.
+			to_chat(mob_affected, "<span class='big love'><i>Sua mente se dobra sob a influência química de um novo[(enthrall_chem.lewd?"enthrall_mob":"leader")]Sua maior prioridade agora é ficar[enthrall_name]'s lado, seguindo e ajudando-os a todo custo.</i></span>") //THIS SHOULD ONLY EVER APPEAR IF YOU MINDBREAK YOURSELF AND THEN GET INJECTED FROM SOMEONE ELSE.
 			return
 	if((mob_affected.ckey == enthrall_ckey) && (enthrall_name == mob_affected.real_name)) //same name AND same player - same instance of the player. (should work for clones?)
 		var/obj/item/organ/vocal_cords/vocal_cords = mob_affected.get_organ_slot(ORGAN_SLOT_VOICE)
@@ -171,7 +171,7 @@ Creating a chem with a low purity will make you permanently fall in love with so
 			vocal_cords.Remove()
 		new_vocal_cords.Insert(mob_affected)
 		qdel(vocal_cords)
-		to_chat(mob_affected, "<span class='notice'><i>You feel your vocal chords tingle you speak in a more charasmatic and sultry tone.</i></span>")
+		to_chat(mob_affected, "<span class='notice'><i>Você sente suas cordas vocais formigar você fala em um tom mais charasmático e sensual.</i></span>")
 	else
 		mob_affected.apply_status_effect(/datum/status_effect/chem/enthrall)
 
@@ -224,7 +224,7 @@ Creating a chem with a low purity will make you permanently fall in love with so
 	metabolization_rate = 1//Mostly to manage brain damage and reduce server stress
 	if (mob_affected.ckey == enthrall_ckey && enthrall_name == mob_affected.real_name)//If the creator drinks 100u, then you get the status for someone random (They don't have the vocal chords though, so it's limited.)
 		if (!mob_affected.has_status_effect(/datum/status_effect/chem/enthrall))
-			to_chat(mob_affected, "<span class='love'><i>You are unable to resist your own charms anymore, and become a full blown narcissist.</i></span>")
+			to_chat(mob_affected, "<span class='love'><i>Você é incapaz de resistir a seus próprios encantos e se tornar um narcisista.</i></span>")
 	ADD_TRAIT(mob_affected, TRAIT_PACIFISM, "MKUltra")
 	var/datum/status_effect/chem/enthrall/enthrall_chem
 	if (!mob_affected.has_status_effect(/datum/status_effect/chem/enthrall))
@@ -236,9 +236,9 @@ Creating a chem with a low purity will make you permanently fall in love with so
 	else
 		enthrall_chem = mob_affected.has_status_effect(/datum/status_effect/chem/enthrall)
 	if(enthrall_chem.lewd)
-		to_chat(mob_affected, "<span class='big love'><i>Your mind shatters under the volume of the mind altering chem inside of you, breaking all will and thought completely. Instead the only force driving you now is the instinctual desire to obey and follow [enthrall_name]. Your highest priority is now to stay by their side and protect them at all costs.</i></span>")
+		to_chat(mob_affected, "<span class='big love'><i>Sua mente se despedaça sob o volume da mente alterando química dentro de você, quebrando toda a vontade e pensamento completamente. Em vez disso, a única força que o leva agora é o desejo instintivo de obedecer e seguir.[enthrall_name]Sua maior prioridade agora é ficar ao lado deles e protegê-los a todo custo.</i></span>")
 	else
-		to_chat(mob_affected, "<span class='big warning'><i>The might volume of chemicals in your system overwhelms your mind, and you suddenly agree with what [enthrall_name] has been saying. Your highest priority is now to stay by their side and protect them at all costs.</i></span>")
+		to_chat(mob_affected, "<span class='big warning'><i>O volume de substâncias químicas em seu sistema sobrecarrega sua mente, e você de repente concorda com o que[enthrall_name]tem dito. Sua maior prioridade agora é ficar ao lado deles e protegê-los a todo custo.</i></span>")
 	mob_affected.adjust_slurring(60 SECONDS)
 	mob_affected.adjust_confusion(60 SECONDS)
 	enthrall_chem.phase = 4
@@ -252,10 +252,10 @@ Creating a chem with a low purity will make you permanently fall in love with so
 
 /datum/reagent/mkultra/proc/FallInLove(mob/living/carbon/Lover, mob/living/carbon/Love)
 	if(Lover.has_status_effect(/datum/status_effect/in_love))
-		to_chat(Lover, "<span class='warning'>You are already fully devoted to someone else!</span>")
+		to_chat(Lover, "<span class='warning'>Você já é totalmente dedicado a outra pessoa!</span>")
 		return
 	var/lewd = (Lover.client?.prefs?.read_preference(/datum/preference/toggle/erp/hypnosis)) && (Love.client?.prefs?.read_preference(/datum/preference/toggle/erp/hypnosis))
-	to_chat(Lover, "[(lewd?"<span class='love'>":"<span class='warning'>")]You develop a deep and sudden bond with [Love][(lewd?", your heart beginning to race as your mind filles with thoughts about them.":".")] You are determined to keep them safe and happy, and feel drawn towards them.</span>")
+	to_chat(Lover, "[(lewd?"<span class='love'>":"<span class='warning'>")]Você desenvolve uma ligação profunda e repentina com[Love][(lewd?", your heart beginning to race as your mind filles with thoughts about them.":".")]Você está determinado a mantê-los seguros e felizes, e se sentir atraídos por eles.</span>")
 	Lover.add_faction("[REF(Love)]")
 	Lover.apply_status_effect(/datum/status_effect/in_love, Love)
 	SSblackbox.record_feedback("tally", "fermi_chem", 1, "Times people have become infatuated.")

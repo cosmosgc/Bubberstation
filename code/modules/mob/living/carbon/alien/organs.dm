@@ -101,9 +101,7 @@
 	items += "Plasma Stored: [stored_plasma]/[max_plasma]"
 
 /obj/item/organ/alien/plasmavessel/proc/update_plasma_display()
-	owner.hud_used?.screen_objects[HUD_ALIEN_PLASMA_DISPLAY]?.maptext = MAPTEXT( \
-		"<div align='center' valign='middle' style='position:relative; top:0px; left:6px'><font color='magenta'>[round(owner.getPlasma())]</font></div>" \
-	)
+	owner.hud_used?.screen_objects[HUD_ALIEN_PLASMA_DISPLAY]?.maptext = MAPTEXT( 		"<div align='center' valign='middle' style='position:relative; top:0px; left:6px'><font color='magenta'>[round(owner.getPlasma())]</font></div>" 	)
 
 #define QUEEN_DEATH_DEBUFF_DURATION 2400
 
@@ -132,13 +130,13 @@
 	if(!owner || owner.stat == DEAD)
 		return
 	if(isalien(owner)) //Different effects for aliens than humans
-		to_chat(owner, span_userdanger("Your Queen has been struck down!"))
-		to_chat(owner, span_danger("You are struck with overwhelming agony! You feel confused, and your connection to the hivemind is severed."))
+		to_chat(owner, span_userdanger("Sua rainha foi derrubada!"))
+		to_chat(owner, span_danger("Você é atingido com agonia esmagadora! Você se sente confuso, e sua conexão com a colmeia é cortada."))
 		owner.emote("roar")
 		owner.Stun(200) //Actually just slows them down a bit.
 
 	else if(ishuman(owner)) //Humans, being more fragile, are more overwhelmed by the mental backlash.
-		to_chat(owner, span_danger("You feel a splitting pain in your head, and are struck with a wave of nausea. You cannot hear the hivemind anymore!"))
+		to_chat(owner, span_danger("Você sente uma dor na cabeça, e é atingido com uma onda de náuseas. Você não pode mais ouvir a colmeia!"))
 		owner.emote("scream")
 		owner.Paralyze(100)
 
@@ -157,7 +155,7 @@
 	recent_queen_death = FALSE
 	if(!owner) //In case the xeno is butchered or subjected to surgery after death.
 		return
-	to_chat(owner, span_noticealien("The pain of the queen's death is easing. You begin to hear the hivemind again."))
+	to_chat(owner, span_noticealien("A dor da morte da rainha está aliviando. Você começa a ouvir a colmeia novamente."))
 	owner.clear_alert(ALERT_XENO_NOQUEEN)
 
 #undef QUEEN_DEATH_DEBUFF_DURATION
@@ -242,9 +240,7 @@
 	var/atom/play_from = owner || src
 	var/stomach_text = owner ? "\the [owner]'s stomach" : "\the [src]"
 	if(prob(25))
-		play_from.audible_message(span_warning("You hear something rumbling inside [stomach_text]..."), \
-			span_warning("You hear something rumbling."), 4,\
-			self_message = span_userdanger("Something is rumbling inside your stomach!"))
+		play_from.audible_message(span_warning("Você ouve algo rugindo por dentro[stomach_text]..."), 			span_warning("Você ouve algo rugindo."), 4,			self_message = span_userdanger("Algo está rugindo dentro do seu estômago!"))
 
 	if(user.client)
 		user.client.move_delay = world.time + 1.5 SECONDS
@@ -275,8 +271,7 @@
 		if(damage_ratio < part_dam_ratio)
 			damage_ratio = part_dam_ratio
 
-	play_from.visible_message(span_danger("[user] [attack_verb] [stomach_text] wall with the [attack_name]!"), \
-			span_userdanger("[user] [attack_verb] your stomach wall with the [attack_name]!"))
+	play_from.visible_message(span_danger("[user] [attack_verb] [stomach_text]parede com o[attack_name]!"), 			span_userdanger("[user] [attack_verb]sua parede do estômago com o[attack_name]!"))
 
 	// At 100% damage, the stomach burts
 	// Otherwise, we give them a -50% -> 50% chance scaling with damage dealt
@@ -303,11 +298,9 @@
 		return
 	// Failure condition
 	if(isalienadult(user))
-		play_from.visible_message(span_danger("[user] blows a hole in [stomach_text] and escapes!"), \
-			span_userdanger("As your hive's food bursts out of your stomach, one thought fills your mind. \"Oh, so this is how the other side feels\""))
+		play_from.visible_message(span_danger("[user]Explode um buraco[stomach_text]E escapa!"), 			span_userdanger("Enquanto a comida da sua colmeia sai do seu estômago, um pensamento enche sua mente.\"Então é assim que o outro lado se sente\""))
 	else // Just to be safe ya know?
-		play_from.visible_message(span_danger("[user] blows a hole in [stomach_text] and escapes!"), \
-			span_userdanger("[user] escapes from your [stomach_text]. Hell, that hurts."))
+		play_from.visible_message(span_danger("[user]Explode um buraco[stomach_text]E escapa!"), 			span_userdanger("[user]escapa de seu[stomach_text]Diabos, isso dói."))
 
 	playsound(get_turf(play_from), 'sound/mobs/non-humanoids/alien/alien_explode.ogg', 100, extrarange = 4)
 	eject_stomach(border_diamond_range_turfs(play_from, 6), 5, 1.5, 1, 8)

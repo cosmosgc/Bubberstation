@@ -8,7 +8,7 @@ Difficulty: Hard
 
 /mob/living/simple_animal/hostile/megafauna/wendigo
 	name = "wendigo"
-	desc = "A mythological man-eating legendary creature, the sockets of its eyes track you with an unsatiated hunger."
+	desc = "Uma criatura lendária comedora de homens mitológicos, as órbitas de seus olhos te perseguem com uma fome insaciada."
 	health = 2500
 	maxHealth = 2500
 	icon_state = "wendigo"
@@ -42,7 +42,7 @@ Difficulty: Hard
 	achievement_type = /datum/award/achievement/boss/wendigo_kill
 	crusher_achievement_type = /datum/award/achievement/boss/wendigo_crusher
 	score_achievement_type = /datum/award/score/wendigo_score
-	death_message = "falls to the ground in a bloody heap, shaking the arena."
+	death_message = "cai no chão em um monte de sangue, balançando a arena."
 	death_sound = 'sound/effects/gravhit.ogg'
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	summon_line = "GwaHOOOOOOOOOOOOOOOOOOOOO"
@@ -155,7 +155,7 @@ Difficulty: Hard
 	animate(pixel_z = -pixel_shift, time = 1, flags = ANIMATION_RELATIVE)
 	for(var/mob/living/dizzy_target in get_hearers_in_view(7, owner) - owner)
 		dizzy_target.set_dizzy_if_lower(12 SECONDS)
-		to_chat(dizzy_target, span_danger("[owner] screams loudly!"))
+		to_chat(dizzy_target, span_danger("[owner]Grita alto!"))
 	SLEEP_CHECK_DEATH(1 SECONDS, owner)
 
 /proc/wendigo_slam(mob/owner, range, delay, throw_range)
@@ -172,7 +172,7 @@ Difficulty: Hard
 			for(var/mob/living/hit_mob in stomp_turf)
 				if(hit_mob == owner || hit_mob.throwing)
 					continue
-				to_chat(hit_mob, span_userdanger("[owner]'s ground slam shockwave sends you flying!"))
+				to_chat(hit_mob, span_userdanger("[owner]A onda de choque em terra te faz voar!"))
 				var/turf/thrownat = get_ranged_target_turf_direct(owner, hit_mob, throw_range, rand(-10, 10))
 				hit_mob.throw_at(thrownat, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
 				hit_mob.apply_damage(20, BRUTE, wound_bonus=CANT_WOUND)

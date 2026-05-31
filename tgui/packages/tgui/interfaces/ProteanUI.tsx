@@ -38,7 +38,7 @@ export const Protean = () => {
   return (
     <Section
       fill
-      title="Suit Lock"
+      title="Trava de terno"
       buttons={
         <Button
           style={{ flex: 0.2 }}
@@ -52,7 +52,7 @@ export const Protean = () => {
       <NoticeBox color={lock ? 'bad' : 'good'} />
       <Divider />
       <LabeledList>
-        <LabeledList.Item label="Metal Storage">
+        <LabeledList.Item label="Armazenamento de metal">
           <ProgressBar
             value={metal / metal_max}
             ranges={{

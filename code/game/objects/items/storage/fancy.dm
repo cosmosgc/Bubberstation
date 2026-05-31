@@ -141,7 +141,7 @@
 	lefthand_file = 'icons/mob/inhands/items/food_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/food_righthand.dmi'
 	name = "egg box"
-	desc = "A carton for containing eggs."
+	desc = "Uma caixa para conter ovos."
 	spawn_type = /obj/item/food/egg
 	spawn_count = 12
 	contents_tag = "egg"
@@ -153,7 +153,7 @@
 
 /obj/item/storage/fancy/egg_box/fertile
 	name = "fertile egg box"
-	desc = "Only one thing here is fertile, and it's not the eggs."
+	desc = "Só uma coisa aqui é fértil, e não são os ovos."
 	spawn_type = /obj/item/food/egg/fertile
 	spawn_count = 6
 
@@ -163,7 +163,7 @@
 
 /obj/item/storage/fancy/candle_box
 	name = "candle pack"
-	desc = "A pack of red candles."
+	desc = "Um maço de velas vermelhas."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candlebox5"
 	base_icon_state = "candlebox"
@@ -182,7 +182,7 @@
 ////////////
 /obj/item/storage/fancy/cigarettes
 	name = "\improper Space Cigarettes packet"
-	desc = "The most popular brand of cigarettes, sponsors of the Space Olympics. On the back it advertises to be the only brand that can be smoked in the vacuum of space."
+	desc = "A marca mais popular de cigarros, patrocinadores das Olimpíadas Espaciais. Na parte de trás ele anuncia ser a única marca que pode ser fumada no vácuo do espaço."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cig"
 	inhand_icon_state = "cigpacket"
@@ -217,14 +217,14 @@
 
 	playsound(src, storage_type.rustle_sound, 50, TRUE)
 
-	balloon_alert(user, "ooh, free coupon")
+	balloon_alert(user, "Ooh, cupom grátis")
 	var/obj/item/coupon/attached_coupon = new
 	user.put_in_hands(attached_coupon)
 	attached_coupon.generate(rigged_omen ? COUPON_OMEN : null, null, user)
 	attached_coupon = null
 	spawn_coupon = FALSE
 	name = "discarded cigarette packet"
-	desc = "An old cigarette packet with the back torn off, worth less than nothing now."
+	desc = "Um velho maço de cigarros com as costas arrancadas, vale menos que nada agora."
 	atom_storage.max_slots = 0
 
 /obj/item/storage/fancy/cigarettes/Initialize(mapload)
@@ -264,7 +264,7 @@
 	. = ..()
 
 	if(spawn_coupon)
-		. += span_notice("There's a coupon on the back of the pack! You can tear it off once it's empty.")
+		. += span_notice("Há um cupom na parte de trás do pacote! Pode rasgá-lo quando estiver vazio.")
 
 /obj/item/storage/fancy/cigarettes/update_icon_state()
 	. = ..()
@@ -306,7 +306,7 @@
 
 /obj/item/storage/fancy/cigarettes/dromedaryco
 	name = "\improper DromedaryCo packet"
-	desc = "A packet of six imported DromedaryCo cancer sticks. A label on the packaging reads, \"Wouldn't a slow death make a change?\""
+	desc = "Um pacote de seis varas importadas de câncer DromedaryCo. Um rótulo na embalagem diz,\"Uma morte lenta não mudaria?\""
 	icon_state = "dromedary"
 	base_icon_state = "dromedary"
 	spawn_type = /obj/item/cigarette/dromedary
@@ -318,7 +318,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_uplift
 	name = "\improper Uplift Smooth packet"
-	desc = "Your favorite brand, now menthol flavored."
+	desc = "Sua marca favorita, agora sabor mentol."
 	icon_state = "uplift"
 	base_icon_state = "uplift"
 	spawn_type = /obj/item/cigarette/uplift
@@ -330,7 +330,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_robust
 	name = "\improper Robust packet"
-	desc = "Smoked by the robust."
+	desc = "Fumado pelo robusto."
 	icon_state = "robust"
 	base_icon_state = "robust"
 	spawn_type = /obj/item/cigarette/robust
@@ -342,7 +342,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_robustgold
 	name = "\improper Robust Gold packet"
-	desc = "Smoked by the truly robust."
+	desc = "Fumado pelos verdadeiramente robustos."
 	icon_state = "robustg"
 	base_icon_state = "robustg"
 	spawn_type = /obj/item/cigarette/robustgold
@@ -354,7 +354,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_greytide
 	name = "\improper Mainthol Grey packet"
-	desc = "The thin grey line."
+	desc = "A linha cinza fina."
 	icon_state = "greytide"
 	base_icon_state = "greytide"
 	spawn_type = /obj/item/cigarette/greytide
@@ -366,7 +366,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_carp
 	name = "\improper Carp Classic packet"
-	desc = "Since 2313."
+	desc = "Desde 2313."
 	icon_state = "carp"
 	base_icon_state = "carp"
 	spawn_type = /obj/item/cigarette/carp
@@ -378,7 +378,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_syndicate
 	name = "cigarette packet"
-	desc = "An obscure brand of cigarettes."
+	desc = "Uma marca obscura de cigarros."
 	icon_state = "syndie"
 	base_icon_state = "syndie"
 	spawn_type = /obj/item/cigarette/syndicate
@@ -390,7 +390,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_midori
 	name = "\improper Midori Tabako packet"
-	desc = "You can't understand the runes, but the packet smells funny."
+	desc = "Você não entende as runas, mas o pacote cheira estranho."
 	icon_state = "midori"
 	base_icon_state = "midori"
 	spawn_type = /obj/item/cigarette/rollie/nicotine
@@ -402,7 +402,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_candy
 	name = "\improper Timmy's First Candy Smokes packet"
-	desc = "Unsure about smoking? Want to bring your children safely into the family tradition? Look no more with this special packet! Includes 100%* Nicotine-Free candy cigarettes."
+	desc = "Não sabe fumar? Quer trazer seus filhos em segurança para a tradição da família? Não olhe mais com este pacote especial! Inclui 100% de cigarros sem nicotina."
 	icon_state = "candy"
 	base_icon_state = "candy"
 	contents_tag = "candy cigarette"
@@ -422,7 +422,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_shadyjims
 	name = "\improper Shady Jim's Super Slims packet"
-	desc = "Is your weight slowing you down? Having trouble running away from gravitational singularities? Can't stop stuffing your mouth? Smoke Shady Jim's Super Slims and watch all that fat burn away. Guaranteed results!"
+	desc = "Seu peso está te atrasando? Problemas para fugir das singularidades gravitacionais? Não consegue parar de encher a boca? Smoke Shady Jim's Super Slims e veja toda aquela gordura queimar. Resultados garantidos!"
 	icon_state = "shadyjim"
 	base_icon_state = "shadyjim"
 	spawn_type = /obj/item/cigarette/shadyjims
@@ -434,7 +434,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_xeno
 	name = "\improper Xeno Filtered packet"
-	desc = "Loaded with 100% pure slime. And also nicotine."
+	desc = "Carregado com 100% de limo puro. E também nicotina."
 	icon_state = "slime"
 	base_icon_state = "slime"
 	spawn_type = /obj/item/cigarette/xeno
@@ -446,7 +446,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_cannabis
 	name = "\improper Freak Brothers' Special packet"
-	desc = "A label on the packaging reads, \"Endorsed by Phineas, Freddy and Franklin.\""
+	desc = "Um rótulo na embalagem diz,\"Apoiado por Phineas, Freddy e Franklin.\""
 	icon_state = "midori"
 	base_icon_state = "midori"
 	spawn_type = /obj/item/cigarette/rollie/cannabis
@@ -458,7 +458,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigpack_mindbreaker
 	name = "\improper Leary's Delight packet"
-	desc = "Banned in over 36 galaxies."
+	desc = "Banida em mais de 36 galáxias."
 	icon_state = "shadyjim"
 	base_icon_state = "shadyjim"
 	spawn_type = /obj/item/cigarette/rollie/mindbreaker
@@ -473,7 +473,7 @@
 
 /obj/item/storage/fancy/rollingpapers
 	name = "rolling paper pack"
-	desc = "A pack of Nanotrasen brand rolling papers."
+	desc = "Um pacote de papéis de rolo da marca Nanotrasen."
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cig_paper_pack"
@@ -505,7 +505,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigars
 	name = "\improper premium cigar case"
-	desc = "A case of premium cigars. Very expensive."
+	desc = "Uma caixa de charutos premium. Muito caro."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cigarcase"
 	base_icon_state = "cigarcase"
@@ -537,7 +537,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigars/cohiba
 	name = "\improper Cohiba Robusto cigar case"
-	desc = "A case of imported Cohiba cigars, renowned for their strong flavor."
+	desc = "Um caso de charutos Cohiba importados, conhecidos por seu forte sabor."
 	icon_state = "cohibacase"
 	base_icon_state = "cohibacase"
 	spawn_type = /obj/item/cigarette/cigar/cohiba
@@ -548,7 +548,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigars/havana
 	name = "\improper premium Havanian cigar case"
-	desc = "A case of classy Havanian cigars."
+	desc = "Um caso de charutos Havanianos elegantes."
 	icon_state = "havanacase"
 	base_icon_state = "havanacase"
 	spawn_type = /obj/item/cigarette/cigar/havana
@@ -567,7 +567,7 @@
 
 /obj/item/storage/fancy/heart_box
 	name = "heart-shaped box"
-	desc = "A heart-shaped box for holding tiny chocolates."
+	desc = "Uma caixa em forma de coração para segurar pequenos chocolates."
 	icon = 'icons/obj/food/containers.dmi'
 	inhand_icon_state = "chocolatebox"
 	icon_state = "chocolatebox"
@@ -587,7 +587,7 @@
 
 /obj/item/storage/fancy/nugget_box
 	name = "nugget box"
-	desc = "A cardboard box used for holding chicken nuggies."
+	desc = "Uma caixa de papelão usada para segurar pepitas de frango."
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "nuggetbox"
 	base_icon_state = "nuggetbox"
@@ -613,7 +613,7 @@
 
 /obj/item/storage/fancy/wing_box
 	name = "red wing box"
-	desc = "A cardboard box used for holding chicken wangs."
+	desc = "Uma caixa de papelão usada para segurar frangos."
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "redwingbox5"
 	base_icon_state = "redwingbox"
@@ -629,7 +629,7 @@
 
 /obj/item/storage/fancy/fry_box
 	name = "red fry box"
-	desc = "A cardboard box used for holding fries."
+	desc = "Uma caixa de papelão usada para segurar fritas."
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "redfrybox2"
 	base_icon_state = "redfrybox"
@@ -652,7 +652,7 @@
 	icon_state = "pickles"
 	base_icon_state = "pickles"
 	name = "pickles"
-	desc = "A jar for containing pickles."
+	desc = "Um frasco para conter picles."
 	spawn_type = /obj/item/food/pickle
 	spawn_count = 10
 	contents_tag = "pickle"
@@ -681,7 +681,7 @@
 	icon_state = "coffee_condi_display"
 	base_icon_state = "coffee_condi_display"
 	name = "coffee condiments display"
-	desc = "A neat small wooden box, holding all your favorite coffee condiments."
+	desc = "Uma pequena caixa de madeira, segurando todos os seus condimentos de café favoritos."
 	contents_tag = "coffee condiment"
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT/2)
 	resistance_flags = FLAMMABLE

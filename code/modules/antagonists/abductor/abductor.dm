@@ -42,7 +42,7 @@
 	sub_role = "Agent"
 	outfit = /datum/outfit/abductor/agent
 	landmark_type = /obj/effect/landmark/abductor/agent
-	greet_text = "Use your stealth technology and equipment to incapacitate humans for your scientist to retrieve."
+	greet_text = "Use sua tecnologia furtiva e equipamento para incapacitar humanos para que seu cientista recupere."
 	show_in_antagpanel = TRUE
 
 /datum/antagonist/abductor/scientist
@@ -50,7 +50,7 @@
 	sub_role = "Scientist"
 	outfit = /datum/outfit/abductor/scientist
 	landmark_type = /obj/effect/landmark/abductor/scientist
-	greet_text = "Use your experimental console and surgical equipment to monitor your agent and experiment upon abducted humans."
+	greet_text = "Use seu console experimental e equipamento cirúrgico para monitorar seu agente e experimentar humanos sequestrados."
 	show_in_antagpanel = TRUE
 	role_job = /datum/job/abductor_scientist
 
@@ -83,7 +83,7 @@
 
 /datum/antagonist/abductor/greet()
 	. = ..()
-	to_chat(owner.current, span_notice("With the help of your teammate, kidnap and experiment on station crew members!"))
+	to_chat(owner.current, span_notice("Com a ajuda de seu colega de equipe, sequestro e experimento em membros da equipe da estação!"))
 	to_chat(owner.current, span_notice("[greet_text]"))
 	owner.announce_objectives()
 
@@ -162,7 +162,7 @@
 	var/choice = tgui_input_list(admin,"Add to which team ?", "Abductor Teams", current_teams + "new team")
 	if (choice == "new team")
 		team = new
-		if(tgui_alert(admin, "Use a Custom Skin Color?", "Alien Spraypainter", list("Yes", "No")) == "Yes")
+		if(tgui_alert(admin, "Usar uma cor de pele personalizada?", "Alien Spraypainter", list("Yes", "No")) == "Yes")
 			// Keep in mind the darker colors don't look all that great, but it's easier to just reference an existing color list than make a new one
 			var/colorchoice = tgui_input_list(admin, "Select Which Color?", "Alien Spraypainter", GLOB.color_list_ethereal + "Custom Color")
 			if(colorchoice == "Custom Color")
@@ -184,10 +184,10 @@
 
 /datum/antagonist/abductor/proc/admin_equip(mob/admin)
 	if(!ishuman(owner.current))
-		to_chat(admin, span_warning("This only works on humans!"))
+		to_chat(admin, span_warning("Isso só funciona com humanos!"))
 		return
 	var/mob/living/carbon/human/new_abductor = owner.current
-	var/gear = tgui_alert(admin,"Agent or Scientist Gear", "Gear", list("Agent", "Scientist"))
+	var/gear = tgui_alert(admin,"Agente ou Equipamento Cientista", "Gear", list("Agent", "Scientist"))
 	if(gear)
 		if(gear == "Agent")
 			new_abductor.equipOutfit(/datum/outfit/abductor/agent)
@@ -224,7 +224,7 @@
 	else
 		result += "<span class='redtext big'>[name] team failed its mission.</span>"
 
-	result += span_header("The abductors of [name] were:")
+	result += span_header("Os sequestradores de[name]Foram:")
 	for(var/datum/mind/abductor_mind in members)
 		result += printplayer(abductor_mind)
 	result += printobjectives(objectives)
@@ -245,7 +245,7 @@
 	target_amount = 6
 
 /datum/objective/experiment/New()
-	explanation_text = "Experiment on [target_amount] humans."
+	explanation_text = "Experimentar em[target_amount]Humanos."
 
 /datum/objective/experiment/check_completion()
 	for(var/obj/machinery/abductor/experiment/E as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/abductor/experiment))

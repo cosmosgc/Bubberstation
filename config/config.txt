@@ -23,10 +23,10 @@ $include map_vote.txt
 # There are various options which are hard-locked for security reasons.
 
 ## Server name: This appears at the top of the screen in-game and in the BYOND hub. Uncomment and replace 'tgstation' with the name of your choice.
-# SERVERNAME tgstation
+ SERVERNAME [BR]Estação Cosmica
 
 ## Server tagline: This will appear right below the server's title.
-# SERVERTAGLINE A generic TG-based server
+ SERVERTAGLINE Baixa latencia para brasileiros
 
 ## Discord Link: This is the link to Skyrat's discord server
 # DISCORD_LINK https://discord.gg/hGpZ4Z3
@@ -78,7 +78,7 @@ ENABLE_LOCALHOST_RANK
 #USE_ACCOUNT_AGE_FOR_JOBS
 
 ## Unhash this to track player playtime in the database. Requires database to be enabled.
-#USE_EXP_TRACKING
+USE_EXP_TRACKING
 ## Unhash this to enable playtime requirements for head jobs.
 #USE_EXP_RESTRICTIONS_HEADS
 ## Unhash this to override head jobs' playtime requirements with this number of hours.
@@ -154,7 +154,7 @@ ALLOW_RESPAWN 0
 RESPAWN_DELAY 0
 
 ## set a hosted by name for unix platforms
-HOSTEDBY Yournamehere
+HOSTEDBY Cosmos
 
 ## Uncomment this to stop people connecting to your server without a registered ckey. (i.e. guest-* are all blocked from connecting).
 ## You probably want this enabled for a production server.
@@ -184,7 +184,7 @@ IPINTEL_REJECT_BAD
 #IPINTEL_EXEMPT_PLAYTIME_LIVING 0
 
 ## Uncomment to allow web client connections
-#ALLOW_WEBCLIENT
+ALLOW_WEBCLIENT
 
 ## Uncomment to restrict web client connections to byond members
 ## This makes for a nice pay gate to cut down on ban evading, as the webclient's cid system isn't that great
@@ -240,7 +240,7 @@ IPINTEL_REJECT_BAD
 ## from https://github.com/yt-dlp/yt-dlp/releases
 ## or your package manager
 ## The default value assumes yt-dlp is in your system PATH
-# INVOKE_YOUTUBEDL yt-dlp
+ INVOKE_YOUTUBEDL yt-dlp
 
 ## Comment this out to disable users ability to use the request internet sounds to be played.
 REQUEST_INTERNET_SOUND

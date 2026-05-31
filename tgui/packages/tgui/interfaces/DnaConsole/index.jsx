@@ -28,7 +28,7 @@ export const DnaConsole = (props) => {
   const { consoleMode } = data.view;
 
   return (
-    <Window title="DNA Console" width={539} height={710}>
+    <Window title="Consola de DNA" width={539} height={710}>
       {!!isPulsing && (
         <Dimmer fontSize="14px" textAlign="center">
           <Icon mr={1} name="spinner" spin />
@@ -76,7 +76,7 @@ const DnaConsoleCommands = (props) => {
 
   return (
     <Section
-      title="DNA Console"
+      title="Consola de DNA"
       buttons={
         !isInjectorReady && (
           <Box lineHeight="20px" color="label">

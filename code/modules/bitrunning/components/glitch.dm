@@ -39,7 +39,7 @@
 		return
 
 	var/mob/living/owner = parent
-	to_chat(owner, span_userdanger("You feel a strange sensation..."))
+	to_chat(owner, span_userdanger("Você sente uma sensação estranha..."))
 
 	var/obj/machinery/byteforge/forge = forge_ref?.resolve()
 	forge?.setup_particles()
@@ -63,7 +63,7 @@
 		return
 
 	player.add_movespeed_modifier(/datum/movespeed_modifier/status_effect/glitch_slowdown)
-	to_chat(player, span_danger("Your body feels sluggish..."))
+	to_chat(player, span_danger("Seu corpo está lento..."))
 
 /// Power restored
 /datum/component/glitch/proc/on_forge_power_restored(datum/source)

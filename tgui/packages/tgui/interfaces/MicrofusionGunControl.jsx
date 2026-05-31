@@ -34,13 +34,13 @@ export const MicrofusionGunControl = (props) => {
       <Window.Content>
         <Stack vertical grow>
           <Stack.Item>
-            <Section title={'Gun Info'}>
+            <Section title={'Informações sobre armas'}>
               <LabeledList>
                 <LabeledList.Item label="Name">{gun_name}</LabeledList.Item>
                 <LabeledList.Item label="Description">
                   {gun_desc}
                 </LabeledList.Item>
-                <LabeledList.Item label="Active Heat Dissipation">
+                <LabeledList.Item label="Dissipação de calor ativa">
                   {`${gun_heat_dissipation} C/s`}
                 </LabeledList.Item>
               </LabeledList>
@@ -48,11 +48,11 @@ export const MicrofusionGunControl = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Section
-              title="Power Cell"
+              title="Célula de Energia"
               buttons={
                 <Button
                   icon="eject"
-                  content="Eject Cell"
+                  content="Ejetar Célula"
                   disabled={!has_cell}
                   onClick={() => act('eject_cell')}
                 />
@@ -60,13 +60,13 @@ export const MicrofusionGunControl = (props) => {
             >
               {has_cell ? (
                 <LabeledList>
-                  <LabeledList.Item label="Cell Type">
+                  <LabeledList.Item label="Tipo de Célula">
                     {cell_data.type}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Cell Status">
+                  <LabeledList.Item label="Status da célula">
                     {cell_data.status ? 'ERROR' : 'Nominal'}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Cell Charge">
+                  <LabeledList.Item label="Carga de Células">
                     <ProgressBar
                       value={cell_data.charge}
                       minValue={0}
@@ -101,11 +101,11 @@ export const MicrofusionGunControl = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Section
-              title="Phase Emitter"
+              title="Emissário de Fase"
               buttons={
                 <Button
                   icon="eject"
-                  content="Eject Emitter"
+                  content="Emissário Ejetar"
                   disabled={!has_emitter}
                   onClick={() => act('eject_emitter')}
                 />
@@ -116,7 +116,7 @@ export const MicrofusionGunControl = (props) => {
                   <NoticeBox color="bad">Phase emitter is damaged!</NoticeBox>
                 ) : (
                   <LabeledList>
-                    <LabeledList.Item label="Emitter Type">
+                    <LabeledList.Item label="Emissário Tipo">
                       {phase_emitter_data.type}
                     </LabeledList.Item>
                     <LabeledList.Item label="Temperature">
@@ -143,10 +143,10 @@ export const MicrofusionGunControl = (props) => {
                           '%)'}
                       </ProgressBar>
                     </LabeledList.Item>
-                    <LabeledList.Item label="Maximum Temperature">
+                    <LabeledList.Item label="Temperatura máxima">
                       {`${phase_emitter_data.max_heat} C`}
                     </LabeledList.Item>
-                    <LabeledList.Item label="Temperature Throttle Percent">
+                    <LabeledList.Item label="Percentagem de temperatura">
                       {`${phase_emitter_data.throttle_percentage}% `}
                       <Button
                         icon="wrench"
@@ -156,10 +156,10 @@ export const MicrofusionGunControl = (props) => {
                         onClick={() => act('overclock_emitter')}
                       />
                     </LabeledList.Item>
-                    <LabeledList.Item label="Passive Heat Dissipation">
+                    <LabeledList.Item label="Dissipação de calor passivo">
                       {`${phase_emitter_data.heat_dissipation_per_tick} C/s`}
                     </LabeledList.Item>
-                    <LabeledList.Item label="Cooling System">
+                    <LabeledList.Item label="Sistema de Resfriamento">
                       <Button
                         icon="snowflake"
                         content={
@@ -173,11 +173,11 @@ export const MicrofusionGunControl = (props) => {
                         disabled={!has_cell}
                         onClick={() => act('toggle_cooling_system')}
                       />
-                      {' Cooling System Rate: ' +
+                      {'Taxa do sistema de refrigeração:' +
                         phase_emitter_data.cooling_system_rate +
                         ' C/s'}
                     </LabeledList.Item>
-                    <LabeledList.Item label="Total Heat Dissipation">
+                    <LabeledList.Item label="Total dissipação de calor">
                       {phase_emitter_data.cooling_system
                         ? phase_emitter_data.heat_dissipation_per_tick +
                           gun_heat_dissipation +
@@ -201,7 +201,7 @@ export const MicrofusionGunControl = (props) => {
                         {`${phase_emitter_data.integrity}%`}
                       </ProgressBar>
                     </LabeledList.Item>
-                    <LabeledList.Item label="Process Time Per Shot">
+                    <LabeledList.Item label="Processo de tempo por tiro">
                       <ProgressBar
                         value={phase_emitter_data.process_time}
                         minValue={0}
@@ -246,7 +246,7 @@ export const MicrofusionGunControl = (props) => {
                     buttons={
                       <Button
                         icon="eject"
-                        content="Eject Attachment"
+                        content="Ejetar o Anexo"
                         onClick={() =>
                           act('remove_attachment', {
                             attachment_ref: attachment.ref,

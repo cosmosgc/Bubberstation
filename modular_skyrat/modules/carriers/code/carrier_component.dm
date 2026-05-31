@@ -140,7 +140,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!carrier_owner)
 		return FALSE
 
-	if(tgui_alert(carrier_owner, "Do you wish to allow [joiner_name] into your soulcatcher?", name, list("Yes", "No"), autofocus = FALSE) != "Yes")
+	if(tgui_alert(carrier_owner, "Você deseja permitir[joiner_name]em seu caça-almas?", name, list("Yes", "No"), autofocus = FALSE) != "Yes")
 		return FALSE
 
 	return TRUE
@@ -198,7 +198,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	target_room.current_mobs += target_soul
 
 	target_soul.clear_fullscreen("carrier", FALSE)
-	to_chat(target_soul, span_cyan("you've been transferred to [target_room]!"))
+	to_chat(target_soul, span_cyan("Você foi transferido para[target_room]!"))
 	to_chat(target_soul, span_notice(target_room.room_description))
 
 	return TRUE
@@ -269,7 +269,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	carrier_component.current_room = WEAKREF(src)
 	mob_to_add.forceMove(parent_carrier.parent)
 
-	to_chat(mob_to_add, span_cyan("You find yourself now inside of: [name]"))
+	to_chat(mob_to_add, span_cyan("Você se encontra agora dentro de:[name]"))
 	to_chat(mob_to_add, span_notice(room_description))
 
 	var/atom/parent_atom = parent_object
@@ -369,7 +369,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/owner_message = ""
 	if(!emote)
 		message = "<font color=[room_color]>\ [soulcatcher_icon] <b>[sender_name]</b> says, \"[message_to_send]\"</font>"
-		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b> says, \"[message_to_send]\"</font>"
+		owner_message = "<font color=[room_color]>\ <b>([first_room_name_word[1]])</b> [soulcatcher_icon] <b>[sender_name]</b>diz,\"[message_to_send]\"</font>"
 		log_say("[sender_mob] in [name] carrier room said: [message_to_send]")
 	else
 		message = "<font color=[room_color]>\ [soulcatcher_icon] <b>[sender_name]</b> [message_to_send]</font>"

@@ -282,7 +282,7 @@ export class IntegratedCircuit extends Component {
   handleVarClicked(event, variable, is_setter) {
     const component = {
       name: is_setter ? 'Setter' : 'Getter',
-      description: 'This is a component',
+      description: 'Este é um componente',
       color: 'blue',
       input_ports: [],
       output_ports: [],
@@ -470,7 +470,7 @@ export class IntegratedCircuit extends Component {
             <Stack.Item>
               <Button
                 color="transparent"
-                tooltip="Show Variables Menu"
+                tooltip="Mostrar o Menu Variáveis"
                 icon="cog"
                 selected={variableMenuOpen}
                 onClick={() =>
@@ -483,7 +483,7 @@ export class IntegratedCircuit extends Component {
             <Stack.Item>
               <Button
                 color="transparent"
-                tooltip="Show Components Menu"
+                tooltip="Menu Mostrar Componentes"
                 icon="plus"
                 selected={componentMenuOpen}
                 onClick={() =>
@@ -496,7 +496,7 @@ export class IntegratedCircuit extends Component {
             <Stack.Item>
               <Button
                 color="transparent"
-                tooltip="Enable Grid Aligning"
+                tooltip="Activar Alinhamento da Grelha"
                 icon="th-large"
                 selected={grid_mode}
                 onClick={() => act('toggle_grid_mode')}
@@ -580,8 +580,8 @@ export class IntegratedCircuit extends Component {
               minWidth="600px"
               width="50%"
               style={{
-                borderRadius: '0px 32px 0px 0px',
-                backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                borderRadius: '0px 32px 0px 0px 0px',
+                backgroundColor: 'Rgba (0, 0, 0, 0,3)',
                 '-ms-user-select': 'none',
               }}
               unselectable="on"
@@ -606,7 +606,7 @@ export class IntegratedCircuit extends Component {
                 handleMouseDownSetter={this.onVarClickedSetter}
                 handleMouseDownGetter={this.onVarClickedGetter}
                 style={{
-                  borderRadius: '0px 32px 0px 0px',
+                  borderRadius: '0px 32px 0px 0px 0px',
                 }}
               />
             </Box>
@@ -619,7 +619,7 @@ export class IntegratedCircuit extends Component {
               height="100%"
               width="300px"
               style={{
-                backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                backgroundColor: 'Rgba (0, 0, 0, 0,3)',
                 '-ms-user-select': 'none',
               }}
               unselectable="on"

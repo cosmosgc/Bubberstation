@@ -4,11 +4,7 @@
 
 /obj/item/clothing/suit/armor/nerd
 	name = "\improper D.O.T.A. suit"
-	desc = "The Defenseless Operator Traversal Assistance suit is a highly experimental Nanotrasen designed \
-		protective full body harness designed to prolong the lifespan (and thus productivity) of an employee \
-		via surplus medical technology found in the abandoned part of maintenance no one seems to want to talk about. \
-		Unfortunately the research department couldn't design a helmet before the third quarter so this is definitely not spaceproof. \
-		One size fits most."
+	desc = "O fato de assistência Traversal do operador indefeso é um equipamento de proteção de Nanotrasen projetado para prolongar a vida útil (e, portanto, produtividade) de um funcionário através de tecnologia médica excedente encontrado na parte abandonada da manutenção que ninguém parece querer falar. Infelizmente o departamento de pesquisa não poderia projetar um capacete antes do terceiro trimestre então isso definitivamente não é à prova de espaço. Um tamanho se encaixa mais."
 	icon = 'modular_zubbers/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/suits/armor.dmi'
 	worn_icon_digi = 'modular_zubbers/icons/mob/clothing/suits/armor_digi.dmi'
@@ -97,7 +93,7 @@
 		balloon_alert(user, "já emagado!")
 		return FALSE
 	if(owner)
-		balloon_alert(user, "take it off first!")
+		balloon_alert(user, "Pneu-o primeiro!")
 		return FALSE
 	obj_flags |= EMAGGED
 	do_sparks(8, FALSE, get_turf(src))

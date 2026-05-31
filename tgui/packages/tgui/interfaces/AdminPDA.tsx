@@ -32,7 +32,7 @@ export function AdminPDA(props) {
   const invisibleState = useState<BooleanLike>(0);
 
   return (
-    <Window title="Send PDA Message" width={300} height={575} theme="admin">
+    <Window title="Enviar mensagem PDA" width={300} height={575} theme="admin">
       <Window.Content>
         <ReceiverChoice
           invisibleState={invisibleState}
@@ -75,12 +75,12 @@ function ReceiverChoice(props: ReceiverProps) {
     }));
 
   return (
-    <Section title="To Who?" textAlign="center">
+    <Section title="Para quem?" textAlign="center">
       <Dropdown
         disabled={spam}
         selected={user}
         displayText={users[user]?.username}
-        placeholder="Pick a user..."
+        placeholder="Escolha um usuário..."
         options={dropdownOptions}
         width="275px"
         mb={1}
@@ -114,12 +114,12 @@ function SenderInfo(props: SenderInfoProps) {
   const [_job, setJob] = props.jobState;
 
   return (
-    <Section title="From Who?" textAlign="center">
+    <Section title="De quem?" textAlign="center">
       <Box fontSize="14px">
-        <Input placeholder="Sender name..." fluid onChange={setName} />
+        <Input placeholder="Nome do remetente..." fluid onChange={setName} />
       </Box>
       <Box fontSize="14px" pt="10px">
-        <Input placeholder="Sender's job..." fluid onChange={setJob} />
+        <Input placeholder="Trabalho de Remetente..." fluid onChange={setJob} />
       </Box>
     </Section>
   );
@@ -143,7 +143,7 @@ function getErrorText(
   if (!target) reasonList.push('target');
   if (!name) reasonList.push('name');
   if (!job) reasonList.push('job');
-  if (!message) reasonList.push('message text');
+  if (!message) reasonList.push('Mensagem de texto');
   return reasonList.join(', ');
 }
 
@@ -166,7 +166,7 @@ function MessageInput(props: MessageInputProps) {
       <Box>
         <TextArea
           fluid
-          placeholder="Type the message you want to send..."
+          placeholder="Digite a mensagem que você quer enviar..."
           height="200px"
           mb={1}
           onChange={setMessageText}
@@ -177,7 +177,7 @@ function MessageInput(props: MessageInputProps) {
           fluid
           checked={force}
           tooltip={
-            'This will immediately broadcast the message, bypassing telecomms altogether.'
+            'Isso irá transmitir imediatamente a mensagem, ignorando telecomms completamente.'
           }
           onClick={() => setForce(!force)}
         >
@@ -186,9 +186,9 @@ function MessageInput(props: MessageInputProps) {
         <Button
           tooltip={
             blocked
-              ? 'Fill in the following lines: ' +
+              ? 'Preencha as seguintes linhas:' +
                 getErrorText(name, job, messageText, spam || !!user)
-              : 'Send message to user(s)'
+              : 'Envie mensagem para o usuário.'
           }
           fluid
           disabled={blocked}

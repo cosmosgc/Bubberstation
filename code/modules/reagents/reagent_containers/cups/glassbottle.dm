@@ -6,7 +6,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle
 	name = "glass bottle"
-	desc = "This blank bottle is unyieldingly anonymous, offering no clues to its contents."
+	desc = "Esta garrafa em branco é inequivocamente anônima, não oferecendo pistas sobre seu conteúdo."
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "glassbottle"
 	worn_icon_state = "bottle"
@@ -72,9 +72,9 @@
 /obj/item/reagent_containers/cup/glass/bottle/examine(mob/user)
 	. = ..()
 	if(message_in_a_bottle)
-		. += span_info("there's \a [message_in_a_bottle] inside it. Break it to take it out, or find a beach or ocean and toss it with [EXAMINE_HINT("right-click")].")
+		. += span_info("Tem.\a [message_in_a_bottle]dentro dele. Quebre-o para tirá-lo, ou encontrar uma praia ou oceano e jogá-lo com[EXAMINE_HINT("right-click")].")
 	else if(isGlass)
-		. += span_tinynoticeital("you could place a paper, photo or space cash inside it...")
+		. += span_tinynoticeital("Você poderia colocar um papel, foto ou dinheiro espacial dentro dele...")
 
 /obj/item/reagent_containers/cup/glass/bottle/update_overlays()
 	. = ..()
@@ -89,7 +89,7 @@
 	if(!user.temporarilyRemoveItemFromInventory(src))
 		balloon_alert(user, "está preso na sua mão!")
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user] tosses [src] in [target]"), span_notice("You toss [src] in [target]"), span_notice("you hear a splash."))
+	user.visible_message(span_notice("[user]Atirar[src]Em[target]"), span_notice("Você joga[src]Em[target]"), span_notice("Você ouve um barulho."))
 	SSpersistence.save_message_bottle(message_in_a_bottle, type)
 	playsound(target, 'sound/effects/bigsplash.ogg', 70)
 	qdel(src)
@@ -101,12 +101,12 @@
 	if(!istype(item, /obj/item/paper) && !istype(item, /obj/item/stack/spacecash) && !istype(item, /obj/item/photo))
 		return NONE
 	if(message_in_a_bottle)
-		balloon_alert(user, "has a message already!")
+		balloon_alert(user, "Já tem uma mensagem!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(item, src))
 		balloon_alert(user, "está preso na sua mão!")
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "message inserted")
+	balloon_alert(user, "mensagem inserida")
 	message_in_a_bottle = item
 	update_icon(UPDATE_OVERLAYS)
 	return ITEM_INTERACT_SUCCESS
@@ -121,7 +121,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/small
 	name = "small glass bottle"
-	desc = "This blank bottle is unyieldingly anonymous, offering no clues to its contents."
+	desc = "Esta garrafa em branco é inequivocamente anônima, não oferecendo pistas sobre seu conteúdo."
 	icon_state = "glassbottlesmall"
 	volume = 50
 	custom_price = PAYCHECK_CREW * 0.9
@@ -164,14 +164,14 @@
 	// Displays a custom message which follows the attack
 	if(target == user)
 		user.visible_message(
-			span_warning("[user] smashes [src] [head_hitter ? "over [user.p_their()] head" : "against [user.p_them()]selves"]!"),
-			span_warning("You smash [src] [head_hitter ? "over your head" : "against yourself"]!"),
+			span_warning("[user]Esmaga.[src] [head_hitter ? "over [user.p_their()] head" : "against [user.p_them()]selves"]!"),
+			span_warning("Você quebra[src] [head_hitter ? "over your head" : "against yourself"]!"),
 		)
 
 	else
 		user.visible_message(
-			span_warning("[user] smashes [src] [head_hitter ? "over [target]'s head" : "against [target]"]!"),
-			span_warning("[user] smashes [src] [head_hitter ? "over your head" : "against you"]!"),
+			span_warning("[user]Esmaga.[src] [head_hitter ? "over [target]'s head" : "against [target]"]!"),
+			span_warning("[user]Esmaga.[src] [head_hitter ? "over your head" : "against you"]!"),
 		)
 
 	// Finally, smash the bottle. This kills (del) the bottle and also does all the logging for us
@@ -194,7 +194,7 @@
 	var/amount_lost = intensity * 5
 	reagents.remove_all(amount_lost)
 
-	visible_message(span_warning("Some of [name]'s contents are let loose!"))
+	visible_message(span_warning("Alguns de[name]O conteúdo está solto!"))
 	var/intensity_state = null
 	switch(intensity)
 		if(1)
@@ -213,7 +213,7 @@
 //Keeping this here for now, I'll ask if I should keep it here.
 /obj/item/broken_bottle
 	name = "broken bottle"
-	desc = "A bottle with a sharp broken bottom."
+	desc = "Uma garrafa com um fundo bem quebrado."
 	icon = 'icons/obj/drinks/drink_effects.dmi'
 	icon_state = "broken_bottle"
 	force = 9
@@ -238,10 +238,7 @@
 /obj/item/broken_bottle/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/caltrop, min_damage = force)
-	AddComponent(/datum/component/butchering, \
-		speed = 20 SECONDS, \
-		effectiveness = 55, \
-	)
+	AddComponent(/datum/component/butchering, 		speed = 20 SECONDS, 		effectiveness = 55, 	)
 
 /// Mimics the appearance and properties of the passed in bottle.
 /// Takes the broken bottle to mimic, and the thing the bottle was broken agaisnt as args
@@ -249,7 +246,7 @@
 	icon_state = to_mimic.icon_state
 	var/icon/drink_icon = new(to_mimic.icon, icon_state)
 	if(break_top) //if the bottle breaks its top off instead of the bottom
-		desc = "A bottle with its neck smashed off."
+		desc = "Uma garrafa com o pescoço quebrado."
 		drink_icon.Blend(flipped_broken_outline, ICON_OVERLAY, rand(5), 0)
 	else
 		drink_icon.Blend(broken_outline, ICON_OVERLAY, rand(5), 1)
@@ -259,7 +256,7 @@
 	if(istype(to_mimic, /obj/item/reagent_containers/cup/glass/bottle/juice))
 		force = 0
 		throwforce = 0
-		desc = "A carton with the bottom half burst open. Might give you a papercut."
+		desc = "Uma caixa com a metade inferior aberta. Pode te dar um corte de papel."
 	else
 		if(prob(33))
 			new /obj/item/shard(to_mimic.drop_location())
@@ -269,7 +266,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/beer
 	name = "space beer"
-	desc = "Beer. In space."
+	desc = "Cerveja. No espaço."
 	icon_state = "beer"
 	volume = 30
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer = 30)
@@ -281,14 +278,14 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/beer/light
 	name = "Carp Lite"
-	desc = "Brewed with \"Pure Ice Asteroid Spring Water\"."
+	desc = "Brewed com\"Puro Asteroide de Gelo Água de Primavera\"."
 	icon_state = "litebeer"
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/light = 30)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/rootbeer
 	name = "Two-Time root beer"
-	desc = "A popular, old-fashioned brand of root beer, known for its extremely sugary formula. Might make you want a nap afterwards."
+	desc = "Uma popular, antiquada marca de cerveja root, conhecida por sua fórmula extremamente açucarada. Pode fazer você querer uma soneca depois."
 	icon_state = "twotime"
 	volume = 30
 	list_reagents = list(/datum/reagent/consumable/rootbeer = 30)
@@ -298,7 +295,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/ale
 	name = "Magm-Ale"
-	desc = "A true dorf's drink of choice."
+	desc = "Uma verdadeira irmã de Escolha."
 	icon_state = "alebottle"
 	volume = 30
 	list_reagents = list(/datum/reagent/consumable/ethanol/ale = 30)
@@ -307,82 +304,82 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/gin
 	name = "Griffeater gin"
-	desc = "A bottle of high quality gin, produced in the New London Space Station."
+	desc = "Uma garrafa de gin de alta qualidade, produzida na Estação Espacial de Nova Londres."
 	icon_state = "ginbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/gin = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/whiskey
 	name = "Uncle Git's special reserve"
-	desc = "A premium single-malt whiskey, gently matured inside the tunnels of a nuclear shelter. TUNNEL WHISKEY RULES."
+	desc = "Um uísque de malte premium, gentilmente maduro dentro dos túneis de um abrigo nuclear. TUNNEL WISKEY REGRAS."
 	icon_state = "whiskeybottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/whiskey = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/kong
 	name = "Kong"
-	desc = "Makes You Go Ape!&#174;"
+	desc = "Faz você virar macaco!"
 	list_reagents = list(/datum/reagent/consumable/ethanol/whiskey/kong = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/candycornliquor
 	name = "candy corn liquor"
-	desc = "Like they drank in 2D speakeasies."
+	desc = "Como se tivessem bebido em dois episódios."
 	list_reagents = list(/datum/reagent/consumable/ethanol/whiskey/candycorn = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/vodka
 	name = "Tunguska triple distilled"
-	desc = "Aah, vodka. Prime choice of drink AND fuel by Russians worldwide."
+	desc = "Vodca. Primeira escolha de bebida e combustível por russos em todo o mundo."
 	icon_state = "vodkabottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/vodka = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/vodka/badminka
 	name = "Badminka vodka"
-	desc = "The label's written in Cyrillic. All you can make out is the name and a word that looks vaguely like 'Vodka'."
+	desc = "O rótulo está escrito em cirílico. Tudo que você pode entender é o nome e uma palavra que parece vagamente com 'Vodka'."
 	icon_state = "badminka"
 	list_reagents = list(/datum/reagent/consumable/ethanol/vodka = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/tequila
 	name = "Caccavo guaranteed quality tequila"
-	desc = "Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!"
+	desc = "Feito de destilados de petróleo premium, talidomida pura e outros ingredientes de excelente qualidade!"
 	icon_state = "tequilabottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/tequila = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/bottleofnothing
 	name = "bottle of nothing"
-	desc = "A bottle filled with nothing."
+	desc = "Uma garrafa cheia de nada."
 	icon_state = "bottleofnothing"
 	list_reagents = list(/datum/reagent/consumable/nothing = 100)
 	age_restricted = FALSE
 
 /obj/item/reagent_containers/cup/glass/bottle/patron
 	name = "Wrapp Artiste Patron"
-	desc = "Silver laced tequila, served in space night clubs across the galaxy."
+	desc = "Tequila de prata, servida em clubes noturnos espaciais através da galáxia."
 	icon_state = "patronbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/patron = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/rum
 	name = "Captain Pete's Cuban spiced rum"
-	desc = "This isn't just rum, oh no. It's practically GRIFF in a bottle."
+	desc = "Não é só rum. É praticamente GRIFF em uma garrafa."
 	icon_state = "rumbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/rum = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/rum/aged
 	name = "Captain Pete's Vintage spiced rum"
-	desc = "Shiver me timbers, a vintage edition of Captain Pete's rum. It's pratically GRIFF in a bottle from over 50 years ago."
+	desc = "Uma edição antiga do rum do Capitão Pete. É praticamente GRIFF em uma garrafa de mais de 50 anos atrás."
 	icon_state = "rumbottle_gold"
 	list_reagents = list(/datum/reagent/consumable/ethanol/rum/aged = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/maltliquor
 	name = "\improper Rabid Bear malt liquor"
-	desc = "A 40 full of malt liquor. Kicks stronger than, well, a rabid bear."
+	desc = "Um 40 cheio de licor de malte. Chuta mais forte que um urso risoso."
 	icon_state = "maltliquorbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/maltliquor = 100)
 	custom_price = PAYCHECK_CREW
@@ -390,7 +387,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/holywater
 	name = "flask of holy water"
-	desc = "A flask of the chaplain's holy water."
+	desc = "Um frasco de água benta do capelão."
 	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "holyflask"
 	inhand_icon_state = "holyflask"
@@ -401,41 +398,41 @@
 	return //looks too weird...
 
 /obj/item/reagent_containers/cup/glass/bottle/holywater/hell
-	desc = "A flask of holy water...it's been sitting in the Necropolis a while though."
+	desc = "Um frasco de água benta... está sentado na necrópole há algum tempo."
 	icon_state = "unholyflask"
 	list_reagents = list(/datum/reagent/hellwater = 100)
 
 /obj/item/reagent_containers/cup/glass/bottle/vermouth
 	name = "Goldeneye vermouth"
-	desc = "Sweet, sweet dryness~"
+	desc = "Doce, doce seca"
 	icon_state = "vermouthbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/vermouth = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/kahlua
 	name = "Robert Robust's coffee liqueur"
-	desc = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936, HONK."
+	desc = "Um licor mexicano com sabor a café. Em produção desde 1936, HONK."
 	icon_state = "kahluabottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/kahlua = 100)
 	drink_type = VEGETABLES
 
 /obj/item/reagent_containers/cup/glass/bottle/goldschlager
 	name = "College Girl goldschlager"
-	desc = "Because they are the only ones who will drink 100 proof cinnamon schnapps."
+	desc = "Porque eles são os únicos que vão beber 100 bebidas à prova de canela."
 	icon_state = "goldschlagerbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/goldschlager = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/cognac
 	name = "Chateau de Baton premium cognac"
-	desc = "A sweet and strongly alchoholic drink, made after numerous distillations and years of maturing. You might as well not scream 'SHITCURITY' this time."
+	desc = "Uma bebida doce e fortemente alcóolica, feita após inúmeras destilações e anos de maturação. Você pode muito bem não gritar \"CITTURIDADE\"Desta Vez."
 	icon_state = "cognacbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/cognac = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/wine
 	name = "Doublebeard's bearded special wine"
-	desc = "A faint aura of unease and asspainery surrounds the bottle."
+	desc = "Uma leve aura de mal-estar e asspanery cerca a garrafa."
 	icon_state = "winebottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/wine = 100)
 	drink_type = FRUIT | ALCOHOL
@@ -452,7 +449,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/wine/unlabeled
 	name = "unlabeled wine bottle"
-	desc = "There's no label on this wine bottle."
+	desc = "Não há rótulo nesta garrafa de vinho."
 
 /obj/item/reagent_containers/cup/glass/bottle/wine/unlabeled/generate_vintage()
 	var/year = rand(CURRENT_STATION_YEAR - 50, CURRENT_STATION_YEAR)
@@ -476,7 +473,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/absinthe
 	name = "Extra-strong absinthe"
-	desc = "A strong alcoholic drink brewed and distributed by"
+	desc = "Uma forte bebida alcoólica produzida e distribuída por"
 	icon_state = "absinthebottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/absinthe = 100)
 	drink_type = ALCOHOL
@@ -522,12 +519,12 @@
 
 	// Actually finally setting the new name and desc
 	name = "[shortname] [name]"
-	desc = "[desc] [fullname] Inc."
+	desc = "[desc] [fullname]Inc."
 
 
 /obj/item/reagent_containers/cup/glass/bottle/absinthe/premium
 	name = "Gwyn's premium absinthe"
-	desc = "A potent alcoholic beverage, almost makes you forget the ash in your lungs."
+	desc = "Uma bebida alcoólica potente, quase faz você esquecer as cinzas em seus pulmões."
 	icon_state = "absinthepremium"
 	drink_type = ALCOHOL
 
@@ -536,14 +533,14 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/lizardwine
 	name = "bottle of lizard wine"
-	desc = "An alcoholic beverage from Space China, made by infusing lizard tails in ethanol. Inexplicably popular among command staff."
+	desc = "Uma bebida alcoólica da China Espacial, feita por infundir caudas de lagarto em etanol. Inexplicavelmente popular entre a equipe de comando."
 	icon_state = "lizardwine"
 	list_reagents = list(/datum/reagent/consumable/ethanol/lizardwine = 100)
 	drink_type = FRUIT | ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/hcider
 	name = "Jian Hard Cider"
-	desc = "Apple juice for adults."
+	desc = "Suco de maçã para adultos."
 	icon_state = "hcider"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/ethanol/hcider = 50)
@@ -551,21 +548,21 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/amaretto
 	name = "Luini Amaretto"
-	desc = "A gentle, syrupy drink that tastes of almonds and apricots."
+	desc = "Uma bebida doce e xarope que tem gosto de amêndoas e damascos."
 	icon_state = "disaronno"
 	list_reagents = list(/datum/reagent/consumable/ethanol/amaretto = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/grappa
 	name = "Phillipes well-aged Grappa"
-	desc = "Bottle of Grappa."
+	desc = "Garrafa de Grappa."
 	icon_state = "grappabottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/grappa = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/sake
 	name = "Ryo's traditional sake"
-	desc = "Sweet as can be, and burns like fire going down."
+	desc = "Doce como pode ser, e queima como fogo caindo."
 	icon_state = "sakebottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/sake = 100)
 	drink_type = ALCOHOL
@@ -588,14 +585,14 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/fernet
 	name = "Fernet Bronca"
-	desc = "A bottle of pure Fernet Bronca, produced in Cordoba Space Station"
+	desc = "Uma garrafa de Fernet Bronca pura, produzida na Estação Espacial de Córdoba."
 	icon_state = "fernetbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/fernet = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/bitters
 	name = "Andromeda Bitters"
-	desc = "An aromatic addition to any drink. Made in New Trinidad, now and forever."
+	desc = "Uma adição aromática a qualquer bebida. Feito em Nova Trinidad, agora e para sempre."
 	icon_state = "bitters_bottle"
 	volume = 30
 	list_reagents = list(/datum/reagent/consumable/ethanol/bitters = 30)
@@ -616,14 +613,14 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/navy_rum
 	name = "Pride of the Union Navy-Strength Rum"
-	desc = "Ironically named, given it's made in Bermuda."
+	desc = "Ironicamente chamado, dado que é feito nas Bermudas."
 	icon_state = "navy_rum_bottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/navy_rum = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/grenadine
 	name = "Jester Grenadine"
-	desc = "Contains 0% real cherries!"
+	desc = "Contém 0% cerejas de verdade!"
 	custom_price = PAYCHECK_CREW
 	icon_state = "grenadine"
 	list_reagents = list(/datum/reagent/consumable/grenadine = 100)
@@ -632,7 +629,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/applejack
 	name = "Buckin' Bronco's Applejack"
-	desc = "Kicks like a horse, tastes like an apple!"
+	desc = "Chuta como um cavalo, tem gosto de maçã!"
 	custom_price = PAYCHECK_CREW
 	icon_state = "applejack_bottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/applejack = 100)
@@ -640,7 +637,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/wine_voltaic
 	name = "Voltaic Yellow Wine"
-	desc = "Electrically infused wine! Recharges ethereals, safe for consumption."
+	desc = "Vinho eletronicamente infundido! Recarrega etéreas, seguras para consumo."
 	custom_price = PAYCHECK_CREW
 	icon_state = "wine_voltaic_bottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/wine_voltaic = 100)
@@ -648,7 +645,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/champagne
 	name = "Eau d' Dandy Brut Champagne"
-	desc = "Finely sourced from only the most pretentious French vineyards."
+	desc = "Finmante provediente das vinhas francesas mais pretensiosas."
 	icon_state = "champagne_bottle"
 	base_icon_state = "champagne_bottle"
 	initial_reagent_flags = TRANSPARENT
@@ -668,7 +665,7 @@
 /obj/item/reagent_containers/cup/glass/bottle/champagne/attack_self(mob/user)
 	if(is_open_container())
 		return ..()
-	balloon_alert(user, "fiddling with cork...")
+	balloon_alert(user, "Mexendo com rolha...")
 	if(do_after(user, 1 SECONDS, src))
 		return pop_cork(user, sabrage = FALSE, froth_severity = pick(0, 1))
 
@@ -683,15 +680,15 @@
 		return NONE
 
 	if(tool != user.get_active_held_item()) //no TK allowed
-		to_chat(user, span_userdanger("Such a feat is beyond your skills of telekinesis!"))
+		to_chat(user, span_userdanger("Tal façanha está além de suas habilidades de telecinese!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(tool.force < 5)
-		balloon_alert(user, "not strong enough!")
+		balloon_alert(user, "Não forte o suficiente!")
 		return ITEM_INTERACT_BLOCKING
 
 	playsound(user, 'sound/items/unsheath.ogg', 25, TRUE)
-	balloon_alert(user, "preparing to swing...")
+	balloon_alert(user, "Preparando para balançar...")
 	if(!do_after(user, 2 SECONDS, src)) //takes longer because you are supposed to take the foil off the bottle first
 		return ITEM_INTERACT_BLOCKING
 
@@ -720,8 +717,8 @@
 		return pop_cork(user, sabrage = TRUE, froth_severity = severity_to_pass) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_danger("[user] fumbles the sabrage and cuts [src] in half, spilling it over themselves!"),
-		span_danger("You fail your stunt and cut [src] in half, spilling it over you!"),
+		span_danger("[user]Estraga o sabre e corta[src]Ao meio, derramando sobre si mesmos!"),
+		span_danger("Você falha no seu truque e corta[src]ao meio, derramando sobre você!"),
 		)
 	user.add_mood_event("sabrage_fail", /datum/mood_event/sabrage_fail)
 	return smash(target = user, break_top = TRUE) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
@@ -739,14 +736,14 @@
 /obj/item/reagent_containers/cup/glass/bottle/champagne/proc/pop_cork(mob/living/user, sabrage, froth_severity)
 	if(!sabrage)
 		user.visible_message(
-			span_danger("[user] loosens the cork of [src], causing it to pop out of the bottle with great force."),
-			span_nicegreen("You elegantly loosen the cork of [src], causing it to pop out of the bottle with great force."),
+			span_danger("[user]Solta a rolha de[src], fazendo-o sair da garrafa com grande força."),
+			span_nicegreen("Você elegantemente afrouxar a rolha de[src], fazendo-o sair da garrafa com grande força."),
 			)
 	else
 		sabraged = TRUE
 		user.visible_message(
-			span_danger("[user] cleanly slices off the cork of [src], causing it to fly off the bottle with great force."),
-			span_nicegreen("You elegantly slice the cork off of [src], causing it to fly off the bottle with great force."),
+			span_danger("[user]limpamente corta a rocha de[src], fazendo-o voar para fora da garrafa com grande força."),
+			span_nicegreen("Você elegantemente cortar a rolha fora[src], fazendo-o voar para fora da garrafa com grande força."),
 			)
 		for(var/mob/living/carbon/stunt_witness in view(7, user))
 			stunt_witness.clear_mood_event("sabrage_success")
@@ -805,14 +802,14 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/blazaam
 	name = "Ginbad's Blazaam"
-	desc = "You feel like you should give the bottle a good rub before opening."
+	desc = "Você acha que deveria esfregar a garrafa antes de abrir."
 	icon_state = "blazaambottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/blazaam = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/trappist
 	name = "Mont de Requin Trappistes Bleu"
-	desc = "Brewed in space-Belgium. Fancy!"
+	desc = "Cozinhado no espaço-Bélgica. Chique!"
 	icon_state = "trappistbottle"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/ethanol/trappist = 50)
@@ -820,7 +817,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/hooch
 	name = "hooch bottle"
-	desc = "A bottle of rotgut. Its owner has applied some street wisdom to cleverly disguise it as a brown paper bag."
+	desc = "Uma garrafa de vinho. Seu dono aplicou alguma sabedoria de rua para disfarçá-lo como um saco de papel marrom."
 	icon_state = "hoochbottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/hooch = 100)
 	drink_type = ALCOHOL
@@ -830,7 +827,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/moonshine
 	name = "moonshine jug"
-	desc = "It is said that the ancient Appalachians used these stoneware jugs to capture lightning in a bottle."
+	desc = "Dizem que os antigos Apalaches usaram estes jarros de pedra para capturar raios em uma garrafa."
 	icon_state = "moonshinebottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/moonshine = 100)
 	drink_type = ALCOHOL
@@ -840,7 +837,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/mushi_kombucha
 	name = "Solzara Brewing Company Mushi Kombucha"
-	desc = "Best drunk over ice to savour the mushroomy flavour."
+	desc = "Melhor beber com gelo para saborear o sabor de cogumelos."
 	icon_state = "shroomy_bottle"
 	volume = 30
 	list_reagents = list(/datum/reagent/consumable/ethanol/mushi_kombucha = 30)
@@ -849,48 +846,48 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/hakka_mate
 	name = "Hakka-Mate"
-	desc = "Hakka-Mate: it's an acquired taste."
+	desc = "Hakka-Mate: é um gosto adquirido."
 	icon_state = "hakka_mate_bottle"
 	list_reagents = list(/datum/reagent/consumable/hakka_mate = 30)
 
 /obj/item/reagent_containers/cup/glass/bottle/shochu
 	name = "Shu-Kouba Straight Shochu"
-	desc = "A boozier form of shochu designed for mixing. Comes straight from Mars' Dusty City itself, Shu-Kouba."
+	desc = "Uma forma boozier de shochu projetado para misturar. Vem direto da própria cidade de Marte, Shu-Kouba."
 	icon_state = "shochu_bottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/shochu = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/yuyake
 	name = "Moonlabor Yūyake"
-	desc = "The distilled essence of disco and flared pants, captured like lightning in a bottle."
+	desc = "A essência destilada da discoteca e calças flageladas, capturadas como um raio em uma garrafa."
 	icon_state = "yuyake_bottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/yuyake = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/coconut_rum
 	name = "Breezy Shoals Coconut Rum"
-	desc = "Live the breezy life with Breezy Shoals, made with only the *finest Caribbean rum."
+	desc = "Viva a vida alegre com Breezy Shoals, feito com apenas o *finest rum caribenho."
 	icon_state = "coconut_rum_bottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/coconut_rum = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/aperitivo
 	name = "Camillo Aperitivo Rosso"
-	desc = "The bottle that led to the creation of the modern Camillo Group beverage conglomerate. Despite what you might expect, there's a good chance that whoever makes your favorite liquor is at least in part owned by Camillo."
+	desc = "A garrafa que levou à criação do moderno conglomerado de bebidas Camillo Group. Apesar do que você pode esperar, há uma boa chance de que quem faz seu licor favorito seja pelo menos parte de Camillo."
 	icon_state = "aperitivo_bottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/aperitivo = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/herbal_liqueur
 	name = "Bellarmine D.O.P Herbal Liqueur"
-	desc = "An almost millenia old herbal liqueur made from a secret recipe passed down over generations of monks. It's not great to know that the herbs and spices used in this are a better-kept secret than the codes to Nanotrasen's nuclear arsenal."
+	desc = "Um licor de ervas quase milenar feito de uma receita secreta passada por gerações de monges. Não é bom saber que as ervas e especiarias usadas nisto são um segredo melhor guardado do que os códigos do arsenal nuclear de Nanotrasen."
 	icon_state = "herbal_liqueur_bottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/herbal_liqueur = 100)
 	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/maraschino
 	name = "Dalmazia Originale Maraschino Liqueur"
-	desc = "A small note on the back of the bottle instructs all customers who complain about a lack of cherry flavor to direct their concerns to what appears to be a defunct phone number."
+	desc = "Uma pequena nota na parte de trás da garrafa instrui todos os clientes que reclamam de uma falta de sabor cereja para direcionar suas preocupações para o que parece ser um número de telefone extinto."
 	icon_state = "maraschino_bottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/maraschino = 100)
 	drink_type = ALCOHOL
@@ -898,7 +895,7 @@
 ////////////////////////// MOLOTOV ///////////////////////
 /obj/item/reagent_containers/cup/glass/bottle/molotov
 	name = "molotov cocktail"
-	desc = "A throwing weapon used to ignite things, typically filled with an accelerant. Recommended highly by rioters and revolutionaries. Light and toss."
+	desc = "Uma arma de atirar usada para incendiar coisas, tipicamente cheia de um acelerador. Recomendado por manifestantes e revolucionários. Luz e lançamento."
 	icon_state = "vodkabottle"
 	list_reagents = list()
 	heatable = FALSE
@@ -948,7 +945,7 @@
 	active = TRUE
 	log_bomber(user, "has primed a", src, "for detonation")
 
-	to_chat(user, span_info("You light [src] on fire."))
+	to_chat(user, span_info("Você acende.[src]Está pegando fogo."))
 	add_overlay(custom_fire_overlay() || GLOB.fire_overlay)
 	if(!isGlass)
 		addtimer(CALLBACK(src, PROC_REF(explode)), 5 SECONDS)
@@ -969,9 +966,9 @@
 /obj/item/reagent_containers/cup/glass/bottle/molotov/attack_self(mob/user)
 	if(active)
 		if(!isGlass)
-			to_chat(user, span_danger("The flame's spread too far on it!"))
+			to_chat(user, span_danger("A chama se espalhou muito!"))
 			return
-		to_chat(user, span_info("You snuff out the flame on [src]."))
+		to_chat(user, span_info("Você apaga a chama[src]."))
 		cut_overlay(custom_fire_overlay() || GLOB.fire_overlay)
 		active = FALSE
 		return
@@ -979,7 +976,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/pruno
 	name = "pruno mix"
-	desc = "A trash bag filled with fruit, sugar, yeast, and water, pulped together into a pungent slurry to be fermented in an enclosed space, traditionally the toilet. Security would love to confiscate this, one of the many things wrong with them."
+	desc = "Um saco de lixo cheio de frutas, açúcar, fermento e água, juntos em uma pasta pungente para fermentar em um espaço fechado, tradicionalmente no banheiro. A segurança adoraria confiscar isso, uma das muitas coisas erradas com eles."
 	icon = 'icons/obj/service/janitor.dmi'
 	icon_state = "trashbag"
 	list_reagents = list(/datum/reagent/consumable/prunomix = 50)
@@ -1025,11 +1022,11 @@
 	else
 		reagents.add_reagent(/datum/reagent/consumable/ethanol/pruno, 50)
 	name = "bag of pruno"
-	desc = "Fermented prison wine made from fruit, sugar, and despair. You probably shouldn't drink this around Security."
+	desc = "Vinho fermentado feito de fruta, açúcar e desespero. Não deveria beber isso na segurança."
 	icon_state = "trashbag1" // pruno releases air as it ferments, we don't want to simulate this in atmos, but we can make it look like it did
 	for (var/mob/living/M in view(2, get_turf(src))) // letting people and/or narcs know when the pruno is done
 		if(HAS_TRAIT(M, TRAIT_ANOSMIA))
-			to_chat(M, span_info("A pungent smell emanates from [src], like fruit puking out its guts."))
+			to_chat(M, span_info("Um menino Pungente emana de[src]Como frutas vomitando suas entranhas."))
 		playsound(get_turf(src), 'sound/effects/bubbles/bubbles2.ogg', 25, TRUE)
 
 /**
@@ -1048,7 +1045,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/juice/orangejuice
 	name = "orange juice"
-	desc = "Full of vitamins and deliciousness!"
+	desc = "Cheio de vitaminas e delícias!"
 	icon = 'icons/obj/drinks/boxes.dmi'
 	icon_state = "orangejuice"
 	list_reagents = list(/datum/reagent/consumable/orangejuice = 100)
@@ -1056,7 +1053,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/juice/lemonjuice
 	name = "lemon juice"
-	desc = "Some like to pour a few drops of this over their fish."
+	desc = "Alguns gostam de derramar algumas gotas disso sobre seus peixes."
 	icon = 'icons/obj/drinks/boxes.dmi'
 	icon_state = "lemonjuice"
 	list_reagents = list(/datum/reagent/consumable/lemonjuice = 100)
@@ -1064,7 +1061,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/juice/cream
 	name = "milk cream"
-	desc = "It's cream. Made from milk. What else did you think you'd find in there?"
+	desc = "É creme. Feito de leite. O que mais achou que encontraria lá?"
 	icon = 'icons/obj/drinks/boxes.dmi'
 	icon_state = "cream"
 	list_reagents = list(/datum/reagent/consumable/cream = 100)
@@ -1072,7 +1069,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/juice/eggnog
 	name = "eggnog"
-	desc = "For enjoying the most wonderful time of the year."
+	desc = "Por aproveitar a época mais maravilhosa do ano."
 	icon = 'icons/obj/drinks/boxes.dmi'
 	icon_state = "nog2"
 	list_reagents = list(/datum/reagent/consumable/ethanol/eggnog = 100)
@@ -1080,7 +1077,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/juice/dreadnog
 	name = "eggnog"
-	desc = "For when you want some nondescript soda inside of your eggnog!"
+	desc = "Para quando você quiser um refrigerante não descrito dentro da sua gemada!"
 	icon = 'icons/obj/drinks/boxes.dmi'
 	icon_state = "dreadnog"
 	list_reagents = list(/datum/reagent/consumable/ethanol/dreadnog = 100)
@@ -1088,7 +1085,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/juice/tomatojuice
 	name = "tomato juice"
-	desc = "Well, at least it LOOKS like tomato juice. You can't tell with all that redness."
+	desc = "Pelo menos parece suco de tomate. Não dá para ver com toda essa vermelhidão."
 	icon = 'icons/obj/drinks/boxes.dmi'
 	icon_state = "tomatojuice"
 	list_reagents = list(/datum/reagent/consumable/tomatojuice = 100)
@@ -1096,7 +1093,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/juice/limejuice
 	name = "lime juice"
-	desc = "Sweet-sour goodness."
+	desc = "Doce Bondade."
 	icon = 'icons/obj/drinks/boxes.dmi'
 	icon_state = "limejuice"
 	list_reagents = list(/datum/reagent/consumable/limejuice = 100)
@@ -1104,7 +1101,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/juice/pineapplejuice
 	name = "pineapple juice"
-	desc = "Extremely tart, yellow juice."
+	desc = "Extremamente torta, suco amarelo."
 	icon = 'icons/obj/drinks/boxes.dmi'
 	icon_state = "pineapplejuice"
 	list_reagents = list(/datum/reagent/consumable/pineapplejuice = 100)
@@ -1112,7 +1109,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/juice/menthol
 	name = "menthol"
-	desc = "Tastes naturally minty, and imparts a very mild numbing sensation."
+	desc = "Tem gosto natural de menta, e transmite uma sensação de dormência muito leve."
 	list_reagents = list(/datum/reagent/consumable/menthol = 100)
 	age_restricted = TRUE
 

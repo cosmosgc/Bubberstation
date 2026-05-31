@@ -1,6 +1,6 @@
 /mob/living/basic/clown
 	name = "Clown"
-	desc = "A denizen of Clown Planet."
+	desc = "Um inimigo do Planeta Palhaço."
 	icon = 'icons/mob/simple/clown_mobs.dmi'
 	icon_state = "clown"
 	icon_living = "clown"
@@ -73,7 +73,7 @@
 
 /mob/living/basic/clown/lube
 	name = "Living Lube"
-	desc = "A puddle of lube brought to life by the Honkmother."
+	desc = "Uma poça de lubrificante trazida à vida pela Honkmother."
 	icon_state = "lube"
 	icon_living = "lube"
 	maxHealth = 50
@@ -100,7 +100,7 @@
 
 /mob/living/basic/clown/honkling
 	name = "Honkling"
-	desc = "A divine being sent by the Honkmother to spread joy. It's not dangerous, but it's a bit of a nuisance."
+	desc = "Um ser divino enviado pela Honkmother para espalhar alegria. Não é perigoso, mas é um pouco incômodo."
 	icon_state = "honkling"
 	icon_living = "honkling"
 	speed = -0.5
@@ -120,16 +120,11 @@
 	var/static/list/injection_range
 	if(!injection_range)
 		injection_range = string_numbers_list(list(1, 5))
-	AddElement(\
-		/datum/element/venomous,\
-		/datum/reagent/consumable/laughter,\
-		injection_range,\
-		injection_flags = INJECT_CHECK_PENETRATE_THICK | INJECT_CHECK_IGNORE_SPECIES,\
-	)
+	AddElement(		/datum/element/venomous,		/datum/reagent/consumable/laughter,		injection_range,		injection_flags = INJECT_CHECK_PENETRATE_THICK | INJECT_CHECK_IGNORE_SPECIES,	)
 
 /mob/living/basic/clown/fleshclown
 	name = "Fleshclown"
-	desc = "A being forged out of the pure essence of pranking, cursed into existence by a cruel maker."
+	desc = "Um ser forjado da pura essência de brincadeiras, amaldiçoado pela existência de um criador cruel."
 	icon_state = "fleshclown"
 	icon_living = "fleshclown"
 	response_help_continuous = "reluctantly pokes"
@@ -172,7 +167,7 @@
 
 /mob/living/basic/clown/longface
 	name = "Longface"
-	desc = "Often found walking into the bar."
+	desc = "Muitas vezes encontram-se no bar."
 	icon_state = "long face"
 	icon_living = "long face"
 	move_resist = INFINITY
@@ -207,7 +202,7 @@
 
 /mob/living/basic/clown/clownhulk
 	name = "Honk Hulk"
-	desc = "A cruel and fearsome clown. Don't make him angry."
+	desc = "Um palhaço cruel e temível. Não o deixe zangado."
 	icon_state = "honkhulk"
 	icon_living = "honkhulk"
 	move_resist = INFINITY
@@ -243,7 +238,7 @@
 
 /mob/living/basic/clown/clownhulk/chlown
 	name = "Chlown"
-	desc = "A real lunkhead who somehow gets all the girls."
+	desc = "Um verdadeiro idiota que de alguma forma pega todas as garotas."
 	icon_state = "chlown"
 	icon_living = "chlown"
 	gender = MALE
@@ -273,7 +268,7 @@
 
 /mob/living/basic/clown/clownhulk/honkmunculus
 	name = "Honkmunculus"
-	desc = "A slender wiry figure of alchemical origin."
+	desc = "Uma figura esbelta de origem alquímica."
 	icon_state = "honkmunculus"
 	icon_living = "honkmunculus"
 	response_help_continuous = "skeptically pokes"
@@ -302,16 +297,11 @@
 	var/static/list/injection_range
 	if(!injection_range)
 		injection_range = string_numbers_list(list(1, 5))
-	AddElement(\
-		/datum/element/venomous,\
-		/datum/reagent/peaceborg/confuse,\
-		injection_range,\
-		injection_flags = INJECT_CHECK_PENETRATE_THICK | INJECT_CHECK_IGNORE_SPECIES,\
-	) // I don't really know what a clown is using to inject people but let's assume it doesn't need to penetrate at all
+	AddElement(		/datum/element/venomous,		/datum/reagent/peaceborg/confuse,		injection_range,		injection_flags = INJECT_CHECK_PENETRATE_THICK | INJECT_CHECK_IGNORE_SPECIES,	) // I don't really know what a clown is using to inject people but let's assume it doesn't need to penetrate at all
 
 /mob/living/basic/clown/clownhulk/destroyer
 	name = "The Destroyer"
-	desc = "An ancient being born of arcane honking."
+	desc = "Um antigo ser nascido de buzinas arcanas."
 	icon_state = "destroyer"
 	icon_living = "destroyer"
 	response_disarm_continuous = "bounces off of"
@@ -342,7 +332,7 @@
 
 /mob/living/basic/clown/mutant
 	name = "Unknown"
-	desc = "Kill it for its own sake."
+	desc = "Companheiro por si mesmo."
 	icon_state = "mutant"
 	icon_living = "mutant"
 	move_resist = INFINITY
@@ -379,7 +369,7 @@
 
 /mob/living/basic/clown/mutant/glutton
 	name = "banana glutton"
-	desc = "Something that was once a clown."
+	desc = "Algo que já foi um palhaço."
 	icon_state = "glutton"
 	icon_living = "glutton"
 	health = 200
@@ -443,7 +433,7 @@
 
 	if(IS_EDIBLE(potential_food))
 		if(prank_pouch.len >= 8)
-			to_chat(src, span_warning("Your prank pouch is filled to the brim! You don't think you can swallow any more morsels right now."))
+			to_chat(src, span_warning("Sua bolsa de brincadeira está cheia até a borda! Você não acha que pode engolir mais pedaços agora."))
 			return FALSE
 		return TRUE
 
@@ -457,7 +447,7 @@
 		/obj/item/food/ink_sac,
 	)
 
-	visible_message(span_warning("[src] eats [eaten_atom]!"), span_notice("You eat [eaten_atom]."))
+	visible_message(span_warning("[src]Venha.[eaten_atom]!"), span_notice("Você come.[eaten_atom]."))
 	if(is_type_in_list(eaten_atom, funny_items))
 		eaten_atom.forceMove(src)
 		prank_pouch += eaten_atom
@@ -466,7 +456,7 @@
 		//Encourage gluttony RP by giving a litle bonus for each obj eaten.
 		foods_eaten++
 		if(!(foods_eaten % 5) && foods_eaten <= 100)
-			balloon_alert(src, "weight gained!")
+			balloon_alert(src, "Peso Ganho!")
 			maxHealth += 10
 			health += 10
 		if(istype(eaten_atom, /obj/item/food/grown/banana))
@@ -492,7 +482,7 @@
 ///This ability will let you fire one random item from your pouch,
 /datum/action/cooldown/regurgitate
 	name = "Regurgitate"
-	desc = "Regurgitates a single item from the depths of your pouch."
+	desc = "Regurgita um único item das profundezas de sua bolsa."
 	background_icon_state = "bg_changeling"
 	overlay_icon_state = "bg_changeling_border"
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
@@ -505,7 +495,7 @@
 	if(!.)
 		return
 
-	to_chat(on_who, span_notice("Your throat muscles tense up. <B>Left-click to regurgitate a funny morsel!</B>"))
+	to_chat(on_who, span_notice("Seus músculos da garganta estão tensos.<B>Click esquerdo para regurgitar um pedaço engraçado!</B>"))
 	on_who.icon_state = "glutton_tongue"
 	on_who.update_appearance(UPDATE_ICON)
 
@@ -515,7 +505,7 @@
 		return
 
 	if(refund_cooldown)
-		to_chat(on_who, span_notice("Your throat muscles relax."))
+		to_chat(on_who, span_notice("Seus músculos da garganta relaxam."))
 	on_who.icon_state = initial(on_who.icon_state)
 	on_who.update_appearance(UPDATE_ICON)
 
@@ -533,7 +523,7 @@
 	var/mob/living/basic/clown/mutant/glutton/pouch_owner = owner
 	if(!length(pouch_owner.prank_pouch))
 		pouch_owner.icon_state = initial(pouch_owner.icon_state)
-		to_chat(pouch_owner, span_notice("Your prank pouch is empty."))
+		to_chat(pouch_owner, span_notice("Sua bolsa de brincadeira está vazia."))
 		return TRUE
 
 	var/obj/item/projected_morsel = pick(pouch_owner.prank_pouch)
@@ -547,7 +537,7 @@
 
 /mob/living/basic/clown/banana
 	name = "Clownana"
-	desc = "A fusion of clown and banana DNA birthed from a botany experiment gone wrong."
+	desc = "Uma fusão de DNA de palhaço e banana nasceu de um experimento de botânica que deu errado."
 	icon_state = "banana tree"
 	icon_living = "banana tree"
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_PLANT
@@ -584,7 +574,7 @@
 ///drops peels around the mob when activated
 /datum/action/cooldown/rustle
 	name = "Rustle"
-	desc = "Shake loose a few banana peels."
+	desc = "Solte algumas cascas de banana."
 	cooldown_time = 8 SECONDS
 	button_icon_state = "rustle"
 	button_icon = 'icons/mob/actions/actions_clown.dmi'
@@ -615,7 +605,7 @@
 ///spawns a plumb bunch of bananas imbued with mystical power.
 /datum/action/cooldown/exquisite_bunch
 	name = "Exquisite Bunch"
-	desc = "Pluck your finest bunch of bananas from your head. This bunch is especially nutrious to monkeykind. A gentle tap will trigger an explosive ripening process."
+	desc = "Tire suas melhores bananas da cabeça. Esse bando é especialmente louco por macacos. Um toque suave desencadeará um processo explosivo de maturação."
 	button_icon = 'icons/obj/service/hydroponics/harvest.dmi'
 	cooldown_time = 60 SECONDS
 	button_icon_state = "banana_bunch"
@@ -633,7 +623,7 @@
 	if(!bunch_turf)
 		return
 	if(!bunch_turf.IsReachableBy(owner) || !isopenturf(bunch_turf))
-		owner.balloon_alert(owner, "can't do that here!")
+		owner.balloon_alert(owner, "Não posso fazer isso aqui!")
 		return
 	activating = TRUE
 	if(!do_after(owner, 1 SECONDS))

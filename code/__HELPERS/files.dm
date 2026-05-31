@@ -21,7 +21,7 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
 			choices.Insert(1,"/")
 		choices = sort_list(choices) + "Download Folder"
 
-		var/choice = input(src,"Choose a file to access:","Download",null) as null|anything in choices
+		var/choice = input(src,"Escolha um arquivo para acessar:","Download",null) as null|anything in choices
 		switch(choice)
 			if(null)
 				return
@@ -30,7 +30,7 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
 				continue
 			if("Download Folder")
 				var/list/comp_flist = flist(path)
-				var/confirmation = input(src, "Are you SURE you want to download all the files in this folder? (This will open [length(comp_flist)] prompt[length(comp_flist) == 1 ? "" : "s"])", "Confirmation") in list("Yes", "No")
+				var/confirmation = input(src, "Tem certeza que quer baixar todos os arquivos desta pasta? (Isto vai abrir[length(comp_flist)]Prompt[length(comp_flist) == 1 ? "" : "s"])", "Confirmation") in list("Yes", "No")
 				if(confirmation != "Yes")
 					continue
 				log_admin("[key_name(src)] is downloading [length(comp_flist)] files from [path]") // SKYRAT EDIT -- ADDITION
@@ -49,7 +49,7 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
 		extensions += "[i]"
 	var/regex/valid_ext = new("\\.([extensions])$", "i")
 	if( !fexists(path) || !(valid_ext.Find(path)) )
-		to_chat(src, "<font color='red'>Error: browse_files(): File not found/Invalid file([path]).</font>")
+		to_chat(src, "<font color='red'>Erro: Search files(): Arquivo não encontrado/inválido([path]).</font>")
 		return
 
 	return path
@@ -64,7 +64,7 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
 /client/proc/file_spam_check()
 	var/time_to_wait = GLOB.fileaccess_timer - world.time
 	if(time_to_wait > 0)
-		to_chat(src, "<font color='red'>Error: file_spam_check(): Spam. Please wait [DisplayTimeText(time_to_wait)].</font>")
+		to_chat(src, "<font color='red'>Erro: arquivo de verificação de spam. Por favor, espere.[DisplayTimeText(time_to_wait)].</font>")
 		return TRUE
 	var/delay = FTPDELAY
 	if(holder)

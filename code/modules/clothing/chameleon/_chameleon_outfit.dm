@@ -1,7 +1,6 @@
 /datum/action/chameleon_outfit
 	name = "Select Chameleon Outfit"
-	desc = "LMB: Select a job to update all of your chameleon items to.<br>\
-		RMB: Save your current chameleon setup as a custom outfit."
+	desc = "Selecione um trabalho para atualizar todos os seus itens camaleões.<br>Guarde seu camaleão atual como uma roupa personalizada."
 	button_icon_state = "chameleon_outfit"
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_INCAPACITATED|AB_CHECK_HANDS_BLOCKED
 
@@ -57,19 +56,19 @@
 
 /datum/action/chameleon_outfit/proc/save_outfit(mob/user, list/saved_paths)
 	if(!length(saved_paths))
-		owner.balloon_alert(user, "no outfit saved!")
+		owner.balloon_alert(user, "Nenhuma roupa salva!")
 		return
 
 	for(var/existing_outfit in custom_outfits)
 		if(custom_outfits[existing_outfit] ~= saved_paths)
-			owner.balloon_alert(user, "outfit already saved!")
+			owner.balloon_alert(user, "A roupa já está salva!")
 			return
 
 	if(next_custom_outfit > max_custom_oufits)
 		next_custom_outfit = 1
 
 	LAZYSET(custom_outfits, "Custom Outfit #[next_custom_outfit]", saved_paths)
-	owner.balloon_alert(user, "outfit saved in slot [next_custom_outfit]")
+	owner.balloon_alert(user, "Roupas salvas em slot[next_custom_outfit]")
 	next_custom_outfit += 1
 
 /datum/action/chameleon_outfit/proc/select_outfit(mob/user)

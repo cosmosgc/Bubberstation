@@ -1,6 +1,6 @@
 /obj/structure/statue/petrified
 	name = "statue"
-	desc = "An incredibly lifelike marble carving."
+	desc = "Uma escultura de mármore incrivelmente realista."
 	icon_state = "human_male"
 	density = TRUE
 	anchored = TRUE
@@ -26,7 +26,7 @@
 	petrified_mob = living
 	if(living.buckled)
 		living.buckled.unbuckle_mob(living, force = TRUE)
-	living.visible_message(span_warning("[living]'s skin rapidly turns to marble!"), span_userdanger("Your body freezes up! Can't... move... can't... think..."))
+	living.visible_message(span_warning("[living]A pele se transforma rapidamente em mármore!"), span_userdanger("Seu corpo congela! Não consigo... me mover... não consigo... pensar..."))
 	living.forceMove(src)
 	living.add_traits(list(TRAIT_GODMODE, TRAIT_MUTE, TRAIT_NOBLOOD), STATUE_MUTE)
 	living.add_faction(FACTION_MIMIC) //Stops mimics from instaqdeling people in statues
@@ -63,7 +63,7 @@
 		if(statue_mob.mind)
 			if(petrified_mob)
 				statue_mob.mind.transfer_to(petrified_mob)
-				to_chat(petrified_mob, span_notice("You slowly come back to your senses. You are in control of yourself again!"))
+				to_chat(petrified_mob, span_notice("Você lentamente volta aos seus sentidos. Você está no controle de si mesmo novamente!"))
 		qdel(statue_mob)
 
 	for(var/obj/statue_contents in src)
@@ -85,7 +85,7 @@
 				carbon_brain.name = "petrified [carbon_brain.name]"
 				carbon_brain.desc = "[carbon_brain.desc] This one seems a bit more... smooth than a normal brain. Probably'd still work."
 				carbon_brain.add_atom_colour(list(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0)), FIXED_COLOUR_PRIORITY)
-				destruction_message = "[src] shatters, a solid brain tumbling out!"
+				destruction_message = "[src]Quebras, um cérebro sólido caindo!"
 			petrified_mob.dust()
 	visible_message(span_danger(destruction_message))
 
@@ -103,7 +103,7 @@
 	new_statue.atom_colours = atom_colours.Copy()
 	new_statue.update_atom_colour()
 	petrified_mob.mind?.transfer_to(new_statue)
-	to_chat(new_statue, span_userdanger("You are an animate statue. You cannot move when monitored, but are nearly invincible and deadly when unobserved! [owner ? "Do not harm [owner], your creator" : ""]."))
+	to_chat(new_statue, span_userdanger("Você é uma estátua animada. Você não pode se mover quando monitorado, mas é quase invencível e mortal quando não observado![owner ? "Do not harm [owner], your creator" : ""]."))
 	forceMove(new_statue)
 	return new_statue
 

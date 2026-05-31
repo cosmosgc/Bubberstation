@@ -1,6 +1,6 @@
 /obj/item/organ/tongue
 	name = "tongue"
-	desc = "A fleshy muscle mostly used for lying."
+	desc = "Um músculo carnudo usado principalmente para mentir."
 	icon_state = "tongue"
 
 	zone = BODY_ZONE_PRECISE_MOUTH
@@ -59,11 +59,11 @@
 	. = ..()
 	if(HAS_MIND_TRAIT(user, TRAIT_ENTRAILS_READER)|| isobserver(user))
 		if(liked_foodtypes)
-			. += span_info("This tongue has an affinity for the taste of [english_list(bitfield_to_list(liked_foodtypes, FOOD_FLAGS_IC))].")
+			. += span_info("Esta língua tem uma afinidade pelo sabor de[english_list(bitfield_to_list(liked_foodtypes, FOOD_FLAGS_IC))].")
 		if(disliked_foodtypes)
-			. += span_info("This tongue has an aversion for the taste of [english_list(bitfield_to_list(disliked_foodtypes, FOOD_FLAGS_IC))].")
+			. += span_info("Esta língua tem uma aversão para o gosto de[english_list(bitfield_to_list(disliked_foodtypes, FOOD_FLAGS_IC))].")
 		if(toxic_foodtypes)
-			. += span_info("This tongue's physiology makes [english_list(bitfield_to_list(toxic_foodtypes, FOOD_FLAGS_IC))] toxic.")
+			. += span_info("A fisiologia desta língua faz[english_list(bitfield_to_list(toxic_foodtypes, FOOD_FLAGS_IC))]Tóxico.")
 
 /**
  * Used in setting up the "languages possible" list.
@@ -171,7 +171,7 @@
 
 /obj/item/organ/tongue/lizard
 	name = "forked tongue"
-	desc = "A thin and long muscle typically found in reptilian races, apparently moonlights as a nose."
+	desc = "Um músculo fino e longo tipicamente encontrado em raças reptilianas, aparentemente luar como um nariz."
 	icon_state = "tonguelizard"
 	say_mod = "hisses"
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
@@ -213,13 +213,13 @@
 
 /obj/item/organ/tongue/lizard/silver
 	name = "silver tongue"
-	desc = "A genetic branch of the high society Silver Scales that gives them their silverizing properties. To them, it is everything, and society traitors have their tongue forcibly revoked. Oddly enough, it itself is just blue."
+	desc = "Um ramo genético da alta sociedade Escalas de Prata que lhes dá suas propriedades prateadoras. Para eles, é tudo, e os traidores da sociedade têm sua língua forçadamente revogada. Estranhamente, é só azul."
 	icon_state = "silvertongue"
 	actions_types = list(/datum/action/cooldown/turn_to_statue)
 
 /datum/action/cooldown/turn_to_statue
 	name = "Become Statue"
-	desc = "Become an elegant silver statue. Its durability and yours are directly tied together, so make sure you're careful."
+	desc = "Torne-se uma estátua de prata elegante. Sua durabilidade e a sua estão diretamente ligadas, então tenha cuidado."
 	button_icon = 'icons/obj/medical/organs/organs.dmi'
 	button_icon_state = "silvertongue"
 	cooldown_time = 10 SECONDS
@@ -255,11 +255,11 @@
 
 	if(isnull(statue))
 		if(feedback)
-			owner.balloon_alert(owner, "you can't seem to statue-ize!")
+			owner.balloon_alert(owner, "Parece que não consegue estatuir!")
 		return FALSE // permanently bricked
 	if(owner.stat != CONSCIOUS)
 		if(feedback)
-			owner.balloon_alert(owner, "you're too weak!")
+			owner.balloon_alert(owner, "Você é muito fraco!")
 		return FALSE
 
 	return TRUE
@@ -270,13 +270,13 @@
 	var/is_statue = owner.loc == statue
 	if(!is_statue)
 		owner.visible_message(
-			span_notice("[owner] strikes a glorious pose."),
-			span_notice("You strike a glorious pose as you become a statue!"),
+			span_notice("[owner]Tem uma postura gloriosa."),
+			span_notice("Você faz uma bela pose quando se torna uma estátua!"),
 		)
 
-	owner.balloon_alert(owner, is_statue ? "breaking free..." : "striking a pose...")
+	owner.balloon_alert(owner, is_statue ? "Libertando..." : "Fazendo uma pose...")
 	if(!do_after(owner, (is_statue ? 0.5 SECONDS : 3 SECONDS), target = get_turf(owner)))
-		owner.balloon_alert(owner, "interrompido!")
+		owner.balloon_alert(owner, "Interrompido!")
 		return
 
 	StartCooldown()
@@ -285,15 +285,15 @@
 	statue.desc = "statue depicting [owner.real_name]"
 
 	if(is_statue)
-		statue.visible_message(span_danger("[statue] becomes animated!"))
+		statue.visible_message(span_danger("[statue]Fico animado!"))
 		owner.forceMove(get_turf(statue))
 		statue.moveToNullspace()
 		UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
 
 	else
 		owner.visible_message(
-			span_notice("[owner] hardens into a silver statue."),
-			span_notice("You have become a silver statue!"),
+			span_notice("[owner]endurece em uma estátua de prata."),
+			span_notice("Você se tornou uma estátua de prata!"),
 		)
 		statue.set_visuals(owner.appearance)
 		statue.forceMove(get_turf(owner))
@@ -320,7 +320,7 @@
 	var/mob/living/carbon/carbon_owner = owner
 	UnregisterSignal(carbon_owner, COMSIG_MOVABLE_MOVED)
 
-	to_chat(carbon_owner, span_userdanger("Your existence as a living creature snaps as your statue form crumbles!"))
+	to_chat(carbon_owner, span_userdanger("Sua existência como uma criatura viva se desfaz enquanto sua forma de estátua desmorona!"))
 	carbon_owner.forceMove(get_turf(statue))
 	carbon_owner.dust(just_ash = TRUE, drop_items = TRUE)
 	carbon_owner.investigate_log("has been dusted from having their Silverscale Statue deconstructed / destroyed.", INVESTIGATE_DEATHS)
@@ -362,7 +362,7 @@
 
 /obj/item/organ/tongue/ghost
 	name = "ghost tongue"
-	desc = "You feel spooked even thinking about someone talking through this."
+	desc = "Você se sente assustado pensando em alguém falando sobre isso."
 	icon_state = "tongue-ghost"
 	movement_type = PHASING
 	say_mod = "boos"
@@ -371,7 +371,7 @@
 
 /obj/item/organ/tongue/abductor
 	name = "superlingual matrix"
-	desc = "A mysterious structure that allows for instant communication between users. Pretty impressive until you need to eat something."
+	desc = "Uma estrutura misteriosa que permite comunicação instantânea entre usuários. Impressionante até precisar comer algo."
 	icon_state = "tongueayylmao"
 	say_mod = "gibbers"
 	sense_of_taste = FALSE
@@ -387,21 +387,21 @@
 		return
 
 	if(tongue.mothership == mothership)
-		to_chat(tongue_holder, span_notice("[src] is already attuned to the same channel as your own."))
+		to_chat(tongue_holder, span_notice("[src]Já está sintonizado com o mesmo canal que o seu."))
 
-	tongue_holder.visible_message(span_notice("[tongue_holder] holds [src] in their hands, and concentrates for a moment."), span_notice("You attempt to modify the attenuation of [src]."))
+	tongue_holder.visible_message(span_notice("[tongue_holder]Segura.[src]em suas mãos, e concentra-se por um momento."), span_notice("Você tenta modificar a atenuação de[src]."))
 	if(do_after(tongue_holder, delay=15, target=src))
-		to_chat(tongue_holder, span_notice("You attune [src] to your own channel."))
+		to_chat(tongue_holder, span_notice("Você atune[src]para o seu próprio canal."))
 		mothership = tongue.mothership
 
 /obj/item/organ/tongue/abductor/examine(mob/examining_mob)
 	. = ..()
 	if(HAS_MIND_TRAIT(examining_mob, TRAIT_ABDUCTOR_TRAINING) || isobserver(examining_mob))
-		. += span_notice("It can be attuned to a different channel by using it inhand.")
+		. += span_notice("Pode ser ajustado para um canal diferente usando-o em mãos.")
 		if(!mothership)
-			. += span_notice("It is not attuned to a specific mothership.")
+			. += span_notice("Não está ligado a uma nave-mãe específica.")
 		else
-			. += span_notice("It is attuned to [mothership].")
+			. += span_notice("Está em sintonia com[mothership].")
 
 /obj/item/organ/tongue/abductor/modify_speech(datum/source, list/speech_args)
 	//Hacks
@@ -424,7 +424,7 @@
 
 /obj/item/organ/tongue/zombie
 	name = "rotting tongue"
-	desc = "Between the decay and the fact that it's just lying there you doubt a tongue has ever seemed less sexy."
+	desc = "Entre a decadência e o fato de que é apenas deitado lá você duvida que uma língua nunca pareceu menos sexy."
 	icon_state = "tonguezombie"
 	say_mod = "moans"
 	modifies_speech = TRUE
@@ -490,7 +490,7 @@
 
 /obj/item/organ/tongue/alien
 	name = "alien tongue"
-	desc = "According to leading xenobiologists the evolutionary benefit of having a second mouth in your mouth is \"that it looks badass\"."
+	desc = "De acordo com os principais xenobiologistas o benefício evolutivo de ter uma segunda boca em sua boca é\"Que parece foda.\"."
 	icon_state = "tonguexeno"
 	say_mod = "hisses"
 	taste_sensitivity = 10 // LIZARDS ARE ALIENS CONFIRMED
@@ -516,7 +516,7 @@
 
 /obj/item/organ/tongue/bone
 	name = "bone \"tongue\""
-	desc = "Apparently skeletons alter the sounds they produce through oscillation of their teeth, hence their characteristic rattling."
+	desc = "Aparentemente esqueletos alteram os sons que produzem através da oscilação de seus dentes, daí sua característica chocalho."
 	icon_state = "tonguebone"
 	say_mod = "rattles"
 	attack_verb_continuous = list("bites", "chatters", "chomps", "enamelles", "bones")
@@ -548,7 +548,7 @@
 
 /obj/item/organ/tongue/bone/plasmaman
 	name = "plasma bone \"tongue\""
-	desc = "Like animated skeletons, Plasmamen vibrate their teeth in order to produce speech."
+	desc = "Como esqueletos animados, Plasmamen vibram seus dentes para produzir fala."
 	icon_state = "tongueplasma"
 	modifies_speech = FALSE
 	liked_foodtypes = VEGETABLES
@@ -557,8 +557,8 @@
 
 /obj/item/organ/tongue/robot
 	name = "robotic voicebox"
-	desc = "A voice synthesizer that can interface with organic lifeforms."
-	failing_desc = "seems to be broken."
+	desc = "Um sintetizador de voz que pode interagir com formas de vida orgânicas."
+	failing_desc = "Parece estar quebrado."
 	organ_flags = ORGAN_ROBOTIC
 	icon_state = "tonguerobot"
 	say_mod = "states"
@@ -578,18 +578,18 @@
 /obj/item/organ/tongue/robot/on_mob_insert(mob/living/carbon/receiver)
 	. = ..()
 	receiver.grant_language(/datum/language/machine, source = LANGUAGE_TONGUE)
-	to_chat(receiver, span_boldnotice("You gain a new understanding of [/datum/language/machine::name]."))
+	to_chat(receiver, span_boldnotice("Você ganha uma nova compreensão de[/datum/language/machine::name]."))
 
 /obj/item/organ/tongue/robot/on_mob_remove(mob/living/carbon/owner)
 	. = ..()
 	if(QDELING(owner))
 		return
 	owner.remove_language(/datum/language/machine, source = LANGUAGE_TONGUE)
-	to_chat(owner, span_boldnotice("You're not really sure what beeps and boops mean anymore."))
+	to_chat(owner, span_boldnotice("Você não tem mais certeza do que bips e boops significam."))
 
 /obj/item/organ/tongue/snail
 	name = "radula"
-	desc = "A minutely toothed, chitinous ribbon, which as a side effect, makes all snails talk IINNCCRREEDDIIBBLLYY SSLLOOWWLLYY."
+	desc = "Uma fita minúscula dentada, cintilante, que como efeito colateral, faz com que todos os caracóis falem mal."
 	color = "#96DB00" // TODO proper sprite, rather than recoloured pink tongue
 	modifies_speech = TRUE
 	voice_filter = "atempo=0.5" // makes them talk really slow
@@ -610,7 +610,7 @@
 
 /obj/item/organ/tongue/ethereal
 	name = "electric discharger"
-	desc = "A sophisticated ethereal organ, capable of synthesising speech via electrical discharge."
+	desc = "Um órgão etéreo sofisticado, capaz de sintetizar a fala via descarga elétrica."
 	icon_state = "electrotongue"
 	say_mod = "crackles"
 	taste_sensitivity = 10 // ethereal tongues function (very loosely) like a gas spectrometer: vaporising a small amount of the food and allowing it to pass to the nose, resulting in more sensitive taste
@@ -628,7 +628,7 @@
 
 /obj/item/organ/tongue/cat
 	name = "felinid tongue"
-	desc = "A fleshy muscle mostly used for meowing. Or biting."
+	desc = "Um músculo carnudo usado para miar. Ou mordendo."
 	say_mod = "meows"
 	liked_foodtypes = SEAFOOD | ORANGES | BUGS | GORE
 	disliked_foodtypes = GROSS | CLOTH | RAW
@@ -667,7 +667,7 @@
 
 /obj/item/organ/tongue/jelly
 	name = "jelly tongue"
-	desc = "Ah... That's not the sound I expected it to make. Sounds like a Space Autumn Bird."
+	desc = "Ah... Esse não é o som que eu esperava que fizesse. Parece um pássaro de outono espacial."
 	say_mod = "chirps"
 	liked_foodtypes = MEAT | BUGS
 	disliked_foodtypes = GROSS
@@ -682,7 +682,7 @@
 
 /obj/item/organ/tongue/monkey
 	name = "primitive tongue"
-	desc = "For aggressively chimpering. And consuming bananas."
+	desc = "Por chimperar agressivamente. E consumando bananas."
 	say_mod = "chimpers"
 	liked_foodtypes = MEAT | FRUIT | BUGS
 	disliked_foodtypes = CLOTH
@@ -690,7 +690,7 @@
 
 /obj/item/organ/tongue/moth
 	name = "moth tongue"
-	desc = "Moths don't have tongues. Someone get god on the phone, tell them I'm not happy."
+	desc = "As traças não têm línguas. Alguém ligue para Deus e diga que não estou feliz."
 	say_mod = "flutters"
 	liked_foodtypes = VEGETABLES | DAIRY | CLOTH
 	disliked_foodtypes = FRUIT | GROSS | BUGS | GORE
@@ -699,7 +699,7 @@
 
 /obj/item/organ/tongue/mush
 	name = "mush-tongue-room"
-	desc = "You poof with this. Got it?"
+	desc = "Você se mete com isso. Entendeu?"
 	icon = 'icons/obj/service/hydroponics/seeds.dmi'
 	icon_state = "mycelium-angel"
 	say_mod = "poofs"
@@ -707,7 +707,7 @@
 
 /obj/item/organ/tongue/pod
 	name = "pod tongue"
-	desc = "A plant-like organ used for speaking and eating."
+	desc = "Um órgão vegetal usado para falar e comer."
 	say_mod = "whistles"
 	liked_foodtypes = VEGETABLES | FRUIT | GRAIN
 	disliked_foodtypes = GORE | MEAT | DAIRY | SEAFOOD | BUGS
@@ -717,7 +717,7 @@
 
 /obj/item/organ/tongue/golem
 	name = "golem tongue"
-	desc = "This silicate plate doesn't seem particularly mobile, but golems use it to form sounds."
+	desc = "Esta placa de silicato não parece particularmente móvel, mas os Golems a usam para formar sons."
 	color = COLOR_WEBSAFE_DARK_GRAY
 	organ_flags = ORGAN_MINERAL
 	say_mod = "rumbles"

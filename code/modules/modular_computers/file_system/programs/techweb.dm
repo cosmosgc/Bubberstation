@@ -3,7 +3,7 @@
 	filedesc = "Nanotrasen Science Hub"
 	downloader_category = PROGRAM_CATEGORY_SCIENCE
 	program_open_overlay = "research"
-	extended_desc = "Connect to the internal science server in order to assist in station research efforts."
+	extended_desc = "Ligue-se ao servidor de ciência interna para ajudar na pesquisa da estação."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	size = 10
 	tgui_id = "NtosTechweb"
@@ -34,7 +34,7 @@
 	if(QDELETED(used_multitool.buffer) || !istype(used_multitool.buffer, /datum/techweb))
 		return ITEM_INTERACT_BLOCKING
 	stored_research = used_multitool.buffer
-	computer.balloon_alert(user, "buffer linked!")
+	computer.balloon_alert(user, "Tampão ligado!")
 	return ITEM_INTERACT_SUCCESS
 
 /datum/computer_file/program/science/ui_assets(mob/user)
@@ -101,12 +101,12 @@
 	switch (action)
 		if ("toggleLock")
 			if(computer.obj_flags & EMAGGED)
-				to_chat(usr, span_boldwarning("Security protocol error: Unable to access locking protocols."))
+				to_chat(usr, span_boldwarning("Erro de protocolo de segurança: não é possível acessar protocolos de bloqueio."))
 				return TRUE
 			if(lock_access in computer?.stored_id?.access)
 				locked = !locked
 			else
-				to_chat(usr, span_boldwarning("Unauthorized Access. Please insert research ID card."))
+				to_chat(usr, span_boldwarning("Acesso não autorizado. Por favor, insira o cartão de identificação da pesquisa."))
 			return TRUE
 		if ("researchNode")
 			research_node(params["node_id"], usr)

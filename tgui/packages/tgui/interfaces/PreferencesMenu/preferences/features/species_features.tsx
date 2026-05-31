@@ -8,17 +8,17 @@ import {
 import { FeatureDropdownInput } from './dropdowns';
 
 export const eye_color: Feature<string> = {
-  name: 'Eye color',
+  name: 'Cor dos olhos',
   component: FeatureColorInput,
 };
 
 export const facial_hair_color: Feature<string> = {
-  name: 'Facial hair color',
+  name: 'Cor do cabelo facial',
   component: FeatureColorInput,
 };
 
 export const facial_hair_gradient: FeatureChoiced = {
-  name: 'Facial hair gradient',
+  name: 'Gradiente de cabelo facial',
   component: (
     props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
@@ -27,17 +27,17 @@ export const facial_hair_gradient: FeatureChoiced = {
 };
 
 export const facial_hair_gradient_color: Feature<string> = {
-  name: 'Facial hair gradient color',
+  name: 'Cor do gradiente de cabelo facial',
   component: FeatureColorInput,
 };
 
 export const hair_color: Feature<string> = {
-  name: 'Hair color',
+  name: 'Cor do cabelo',
   component: FeatureColorInput,
 };
 
 export const hair_gradient: FeatureChoiced = {
-  name: 'Hair gradient',
+  name: 'Gradiente de cabelo',
   component: (
     props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
@@ -46,7 +46,7 @@ export const hair_gradient: FeatureChoiced = {
 };
 
 export const hair_gradient_color: Feature<string> = {
-  name: 'Hair gradient color',
+  name: 'Cor do gradiente de cabelo',
   component: FeatureColorInput,
 };
 
@@ -105,26 +105,26 @@ export const feature_lizard_tail: FeatureChoiced = {
 };
 
 export const feature_mcolor: Feature<string> = {
-  name: 'Mutant color',
+  name: 'Cor mutante',
   component: FeatureColorInput,
 };
 
 export const underwear_color: Feature<string> = {
-  name: 'Underwear color',
+  name: 'Cor das cuecas',
   component: FeatureColorInput,
 };
 
 export const bra_color: Feature<string> = {
-  name: 'Bra color',
+  name: 'Cor do sutiã',
   component: FeatureColorInput,
 };
 
 export const feature_vampire_status: Feature<string> = {
-  name: 'Vampire status',
+  name: 'Status de vampiro',
   component: FeatureDropdownInput,
 };
 
 export const heterochromatic: Feature<string> = {
-  name: 'Heterochromatic (Right Eye) color',
+  name: 'Cor heterocromática (Olho direito)',
   component: FeatureColorInput,
 };

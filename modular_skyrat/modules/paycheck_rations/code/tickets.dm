@@ -1,9 +1,9 @@
 /obj/item/paper/paperslip/ration_ticket
 	name = "ration ticket - standard"
-	desc = "A little slip of paper that'll slot right into any cargo console and put your alotted food ration on the next shuttle to the station."
+	desc = "Um pequeno pedaço de papel que vai entrar em qualquer console de carga e colocar sua ração de comida no próximo transporte para a estação."
 	icon = 'modular_skyrat/modules/paycheck_rations/icons/tickets.dmi'
 	icon_state = "ticket_food"
-	default_raw_text = "Redeem this ticket in the nearest supply console to receive benefits."
+	default_raw_text = "Resgate este bilhete no console de suprimentos mais próximo para receber benefícios."
 	color = COLOR_OFF_WHITE
 	show_written_words = FALSE
 	/// The finalized list of items we send once the ticket is used, don't define here, the procs will do it
@@ -122,12 +122,7 @@
 
 	items_we_deliver += /obj/item/reagent_containers/cup/glass/waterbottle
 
-	var/random_drink = pick( \
-		/obj/item/reagent_containers/cup/glass/waterbottle/tea, \
-		/obj/item/reagent_containers/cup/glass/waterbottle/tea/mushroom, \
-		/obj/item/reagent_containers/cup/glass/waterbottle/tea/astra, \
-		/obj/item/reagent_containers/cup/glass/coffee, \
-	)
+	var/random_drink = pick( 		/obj/item/reagent_containers/cup/glass/waterbottle/tea, 		/obj/item/reagent_containers/cup/glass/waterbottle/tea/mushroom, 		/obj/item/reagent_containers/cup/glass/waterbottle/tea/astra, 		/obj/item/reagent_containers/cup/glass/coffee, 	)
 	items_we_deliver += random_drink
 
 	make_the_actual_order(object_we_attack, user)
@@ -135,9 +130,7 @@
 /// Takes the list of things to deliver and puts it into a cargo order
 /obj/item/paper/paperslip/ration_ticket/proc/make_the_actual_order(obj/machinery/computer/cargo/object_we_attack, mob/user)
 	var/datum/supply_pack/custom/ration_pack/ration_pack = new(
-		purchaser = user, \
-		cost = 0, \
-		contains = items_we_deliver,
+		purchaser = user, 		cost = 0, 		contains = items_we_deliver,
 	)
 	var/datum/supply_order/new_order = new(
 		pack = ration_pack,
@@ -158,14 +151,14 @@
 
 /datum/supply_pack/custom/ration_pack
 	name = "rations order"
-	crate_name = "ration delivery crate"
+	crate_name = "Caixa de entrega de ração"
 	access = list()
 	crate_type = /obj/structure/closet/crate/cardboard
 
 /datum/supply_pack/custom/ration_pack/New(purchaser, cost, list/contains)
 	. = ..()
 	name = "[purchaser]'s Rations Order"
-	crate_name = "[purchaser]'s ration delivery crate"
+	crate_name = "[purchaser]Caixa de entrega de ração"
 	src.cost = cost
 	src.contains = contains
 
@@ -173,7 +166,7 @@
 
 /obj/item/paper/paperslip/ration_ticket/luxury
 	name = "ration ticket - luxury"
-	desc = "A little slip of paper that'll slot right into any cargo console and put your alotted ration of luxury goods on the next cargo shuttle to the station."
+	desc = "Um pequeno pedaço de papel que vai entrar em qualquer console de carga e colocar sua ração de bens de luxo no próximo transporte de carga para a estação."
 	icon_state = "ticket_luxury"
 
 /// Attempts to fill out the order list with items of the user's choosing, will stop in its tracks if it fails

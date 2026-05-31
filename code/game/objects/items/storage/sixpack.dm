@@ -1,6 +1,6 @@
 /obj/item/storage/cans
 	name = "can ring"
-	desc = "Holds up to six drink cans, and select bottles."
+	desc = "Segura até seis latas de bebida e seleciona garrafas."
 	icon = 'icons/obj/storage/storage.dmi'
 	icon_state = "canholder"
 	inhand_icon_state = "cola"
@@ -11,7 +11,7 @@
 	storage_type = /datum/storage/sixcan
 
 /obj/item/storage/cans/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins popping open a final cold one with the boys! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]começa a abrir um último frio com os meninos! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/storage/cans/update_icon_state()
@@ -24,7 +24,7 @@
 
 /obj/item/storage/cans/sixsoda
 	name = "soda bottle ring"
-	desc = "Holds six soda cans. Remember to recycle when you're done!"
+	desc = "Segura seis latas de refrigerante. Lembre-se de reciclar quando terminar!"
 
 /obj/item/storage/cans/sixsoda/PopulateContents()
 	for(var/i in 1 to 6)
@@ -32,7 +32,7 @@
 
 /obj/item/storage/cans/sixbeer
 	name = "beer can ring"
-	desc = "Holds six beers. Remember to recycle when you're done!"
+	desc = "Tem seis cervejas. Lembre-se de reciclar quando terminar!"
 
 /obj/item/storage/cans/sixbeer/PopulateContents()
 	for(var/i in 1 to 6)
@@ -40,7 +40,7 @@
 
 /obj/item/storage/cans/sixgamerdrink
 	name = "gamer drink bottle ring"
-	desc = "Holds six gamer drink cans. Remember to recycle when you're done!"
+	desc = "Tem seis latas de bebida. Lembre-se de reciclar quando terminar!"
 
 	/// Pool of gamer drinks tm we may add from
 	var/list/gamer_drink_options = list(
@@ -58,7 +58,7 @@
 
 /obj/item/storage/cans/sixenergydrink
 	name = "energy drink bottle ring"
-	desc = "Holds six energy drink cans. Remember to recycle when you're done!"
+	desc = "Tem seis latas de bebida energética. Lembre-se de reciclar quando terminar!"
 
 	/// Pool of energy drinks tm we may add from
 	var/list/energy_drink_options = list(

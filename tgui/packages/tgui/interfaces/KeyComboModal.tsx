@@ -141,7 +141,7 @@ export function KeyComboModal(props) {
                   setBinding(true);
                 }}
               >
-                {binding ? 'Awaiting input...' : `${input}`}
+                {binding ? 'Esperando entrada...' : `${input}`}
               </Button>
             </Stack.Item>
             <Stack.Item>

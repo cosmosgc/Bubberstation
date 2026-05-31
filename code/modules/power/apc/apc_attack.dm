@@ -50,13 +50,13 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), user, "draining power..."), ETHEREAL_APC_ALERT_DELAY)
 	while(do_after(user, ETHEREAL_APC_DRAIN_TIME, target = src))
 		if(isnull(used_stomach) || (used_stomach != user.get_organ_slot(ORGAN_SLOT_STOMACH)))
-			balloon_alert(user, "stomach removed!?")
+			balloon_alert(user, "estômago removido?")
 			return
 		if(isnull(cell))
-			balloon_alert(user, "cell removed!")
+			balloon_alert(user, "Removido celular!")
 			return
 		if(cell.charge() < half_max_charge)
-			balloon_alert(user, "safeties kicked in!")
+			balloon_alert(user, "Seguranças feitas!")
 			return
 
 		var/our_available_charge = cell.charge() - half_max_charge
@@ -67,10 +67,10 @@
 		used_stomach.adjust_charge(energy_drained)
 
 		if(stomach_cell.used_charge() <= 0)
-			balloon_alert(user, "your charge is full!")
+			balloon_alert(user, "Sua carga está cheia!")
 			return
 		if(cell.charge() <= 0)
-			balloon_alert(user, "apc is empty!")
+			balloon_alert(user, "Apc está vazia!")
 			return
 
 /// Handles charging our internal cell from an ethereal and their stomach
@@ -88,10 +88,10 @@
 	if(!do_after(user, ETHEREAL_APC_DRAIN_TIME, target = src))
 		return
 	if(isnull(used_stomach) || (used_stomach != user.get_organ_slot(ORGAN_SLOT_STOMACH)))
-		balloon_alert(user, "stomach removed!?")
+		balloon_alert(user, "estômago removido?")
 		return
 	if(isnull(cell))
-		balloon_alert(user, "cell removed!")
+		balloon_alert(user, "Removido celular!")
 		return
 
 	var/stomach_charge = stomach_cell.charge()
@@ -102,10 +102,10 @@
 	cell.give(-energy_drained)
 
 	if(cell.used_charge() <= 0)
-		balloon_alert(user, "apc is full!")
+		balloon_alert(user, "Apc está cheia!")
 		return
 	if(stomach_cell.charge() <= 0)
-		balloon_alert(user, "sem carga!")
+		balloon_alert(user, "Sem carga!")
 		return
 
 
@@ -117,7 +117,7 @@
 
 	if(opened && (!issilicon(user)))
 		if(cell)
-			user.visible_message(span_notice("[user] removes \the [cell] from [src]!"))
+			user.visible_message(span_notice("[user]Remover\the [cell]De[src]!"))
 			balloon_alert(user, "célula removida")
 			user.put_in_hands(cell)
 		return
@@ -152,7 +152,7 @@
 		else if(istype(malfai) && !(malfai == user || (user in malfai.connected_robots)))
 			. = FALSE
 	if (!. && !loud)
-		balloon_alert(user, "it's disabled!")
+		balloon_alert(user, "Está desativado!")
 	return .
 
 /obj/machinery/power/apc/shock(mob/living/shocking, chance, shock_source, siemens_coeff)

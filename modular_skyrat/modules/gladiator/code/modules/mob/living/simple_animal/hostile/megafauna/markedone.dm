@@ -16,7 +16,7 @@
  */
 /mob/living/simple_animal/hostile/megafauna/gladiator
 	name = "\proper The Marked One"
-	desc = "An ancient miner lost to time, chosen and changed by the Necropolis, encased in a suit of armor. Only a chosen few can match his speed and strength."
+	desc = "Um mineiro antigo perdeu ao tempo, escolhido e mudado pela necrópole, envolto em uma armadura. Apenas alguns escolhidos podem igualar sua velocidade e força."
 	icon = 'modular_skyrat/modules/gladiator/icons/markedone.dmi'
 	icon_state = "marked1"
 	icon_dead = "marked_dying"
@@ -24,7 +24,7 @@
 	attack_verb_continuous = "cleaves"
 	attack_sound = 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg'
 	death_sound = 'sound/mobs/non-humanoids/space_dragon/space_dragon_roar.ogg'
-	death_message = "falls on his sword, ash evaporating from every hole in his armor."
+	death_message = "Cai sobre sua espada, cinzas evaporando de cada buraco em sua armadura."
 	gps_name = "Forgotten Signal"
 	gender = MALE
 	rapid_melee = 1
@@ -107,10 +107,10 @@
 /mob/living/simple_animal/hostile/megafauna/gladiator/examine()
 	if(stat >= DEAD)
 		. = ..()
-		. += span_boldwarning("Unearthly energies bind the body to it's place of defeat. You cannot move it.")
+		. += span_boldwarning("Energias extraterrestres ligam o corpo ao seu lugar de derrota. Você não pode movê-lo.")
 	else
 		. = ..()
-		. += span_boldwarning("They are currently in Phase [phase].")
+		. += span_boldwarning("Eles estão em fase.[phase].")
 
 /// Gets him mad at you if you're a species he's not racist towards, and provides the 50% to block attacks in the first and fourth phases
 /mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced)
@@ -193,11 +193,11 @@
 	if(isliving(A))
 		var/mob/living/living_atom = A
 		forceMove(get_turf(living_atom))
-		visible_message(span_danger("[src] knocks [living_atom] down!"))
+		visible_message(span_danger("[src]Bate.[living_atom]Abaixe-se!"))
 		living_atom.Paralyze(20)
 		discharge()
 	else if(istype(A, /turf/closed))
-		visible_message(span_danger("[src] crashes headfirst into [A]!"))
+		visible_message(span_danger("[src]Bate de cabeça em[A]!"))
 		discharge(1.5)
 
 /// Makes the Marked One unhappy and more befitting of his "hostile" subtype status.
@@ -347,9 +347,9 @@
 			if(!faction_check(faction, slapped.faction) && !(slapped in hit_things))
 				playsound(src, 'modular_skyrat/modules/gladiator/Clang_cut.ogg', 75, 0)
 				if(slapped.apply_damage(40, BRUTE, BODY_ZONE_CHEST, slapped.run_armor_check(BODY_ZONE_CHEST), wound_bonus = CANT_WOUND))
-					visible_message(span_danger("[src] slashes through [slapped] with his spinning blade!"))
+					visible_message(span_danger("[src]Corta através[slapped]com sua lâmina giratória!"))
 				else
-					visible_message(span_danger("[src]'s spinning blade is stopped by [slapped]!"))
+					visible_message(span_danger("[src]A lâmina girante é parada por[slapped]!"))
 					spinning = FALSE
 				hit_things |= slapped
 		if(!spinning)
@@ -447,7 +447,7 @@
 			for(var/mob/living/target in stomp_turf)
 				if(target == src || target.throwing)
 					continue
-				to_chat(target, span_userdanger("[src]'s ground slam shockwave sends you flying!"))
+				to_chat(target, span_userdanger("[src]A onda de choque em terra te faz voar!"))
 				var/turf/thrownat = get_ranged_target_turf_direct(src, target, throw_range, rand(-10, 10))
 				target.throw_at(thrownat, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
 				target.apply_damage(20, BRUTE, wound_bonus=CANT_WOUND)

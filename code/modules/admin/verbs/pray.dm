@@ -3,7 +3,7 @@
 	set name = "Pray"
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."), confidential = TRUE)
+		to_chat(usr, span_danger("A fala está desativada."), confidential = TRUE)
 		return
 
 	msg = copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN)
@@ -12,7 +12,7 @@
 	log_prayer("[src.key]/([src.name]): [msg]")
 	if(usr.client)
 		if(usr.client.prefs.muted & MUTE_PRAY)
-			to_chat(usr, span_danger("You cannot pray (muted)."), confidential = TRUE)
+			to_chat(usr, span_danger("Você não pode rezar."), confidential = TRUE)
 			return
 		if(src.client.handle_spam_prevention(msg,MUTE_PRAY))
 			return
@@ -45,7 +45,7 @@
 	for(var/client/C in GLOB.admins)
 		if(get_chat_toggles(C) & CHAT_PRAYER)
 			to_chat(C, msg, type = MESSAGE_TYPE_PRAYER, confidential = TRUE)
-	to_chat(usr, span_info("You pray to the gods: \"[msg_tmp]\""), confidential = TRUE)
+	to_chat(usr, span_info("Você reza aos deuses:\"[msg_tmp]\""), confidential = TRUE)
 
 	BLACKBOX_LOG_ADMIN_VERB("Prayer")
 

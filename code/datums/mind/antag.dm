@@ -123,7 +123,7 @@
 	var/cant_speak = (HAS_TRAIT(traitor_mob, TRAIT_MUTE) || is_mime_job(assigned_role))
 	if(uplink_spawn_location == UPLINK_RADIO && cant_speak)
 		if(!silent)
-			to_chat(traitor_mob, span_warning("You have been deemed ineligible for a radio uplink. Supplying standard uplink instead."))
+			to_chat(traitor_mob, span_warning("Você foi considerado inelegível para um link de rádio. Fornecendo padrão uplink em vez disso."))
 		uplink_spawn_location = UPLINK_PDA
 
 	if(uplink_spawn_location != UPLINK_IMPLANT)
@@ -135,7 +135,7 @@
 		var/obj/item/implant/uplink/starting/new_implant = new(traitor_mob)
 		new_implant.implant(traitor_mob, null, silent = TRUE)
 		if(!silent)
-			to_chat(traitor_mob, span_boldnotice("Your Syndicate Uplink has been cunningly implanted in you, for a small TC fee. Simply trigger the uplink to access it."))
+			to_chat(traitor_mob, span_boldnotice("Seu link Syndicate Uplink foi habilmente implantado em você, por uma pequena taxa de TC. Simplesmente acionar o link para acessá-lo."))
 		add_memory(/datum/memory/key/traitor_uplink/implant, uplink_loc = "implant")
 		return new_implant
 
@@ -149,7 +149,7 @@
 	new_uplink.uplink_handler.assigned_role = traitor_mob.mind.assigned_role.title
 	new_uplink.uplink_handler.assigned_species = traitor_mob.dna.species.id
 
-	unlock_text = "Your Uplink is cunningly disguised as your [uplink_loc.name]. "
+	unlock_text = "Seu Uplink está astutamente disfarçado como seu[uplink_loc.name]. "
 	if(istype(uplink_loc, /obj/item/modular_computer/pda))
 		unlock_text += "Simply enter the code \"[new_uplink.unlock_code]\" into the ring tone selection to unlock its hidden features."
 		add_memory(/datum/memory/key/traitor_uplink, uplink_loc = "PDA", uplink_code = new_uplink.unlock_code)
@@ -198,7 +198,7 @@
 
 	if(creator.is_antag())
 		message_admins("[ADMIN_LOOKUPFLW(current)] has been created by [ADMIN_LOOKUPFLW(creator)], an antagonist.")
-		to_chat(current, span_userdanger("Despite your creator's current allegiances, your true master remains [creator.real_name]. If their loyalties change, so do yours. This will never change unless your creator's body is destroyed."))
+		to_chat(current, span_userdanger("Apesar das alianças atuais do seu criador, seu verdadeiro mestre permanece.[creator.real_name]Se a lealdade deles mudar, a sua também muda. Isso nunca mudará a menos que o corpo do seu criador seja destruído."))
 
 /datum/mind/proc/get_all_objectives()
 	var/list/all_objectives = list()
@@ -208,7 +208,7 @@
 
 /datum/mind/proc/announce_objectives()
 	var/obj_count = 1
-	to_chat(current, span_notice("Your current objectives:"))
+	to_chat(current, span_notice("Seus objetivos são:"))
 	for(var/datum/objective/objective as anything in get_all_objectives())
 		to_chat(current, "<B>[objective.objective_name] #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++

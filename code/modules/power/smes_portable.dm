@@ -2,7 +2,7 @@
 
 /obj/machinery/power/smes/connector
 	name = "power connector"
-	desc = "A user-safe high-current contact port, used for connecting and interfacing with portable power storage units. Practically useless without one."
+	desc = "Uma porta de contato de alta corrente, usada para conectar e interagir com unidades de armazenamento de energia portáteis. Praticamente inútil sem um."
 	icon_state = "battery_port"
 	base_icon_state = "battery_port"
 	circuit = /obj/item/circuitboard/machine/smes/connector
@@ -67,7 +67,7 @@
 	PRIVATE_PROC(TRUE)
 
 	if(connected_smes)
-		balloon_alert(user, "disconnect SMES first!")
+		balloon_alert(user, "Desligue o SME primeiro!")
 		return FALSE
 	return TRUE
 
@@ -97,7 +97,7 @@
 
 /obj/machinery/power/smes/connector/ui_interact(mob/user, datum/tgui/ui)
 	if(!connected_smes)
-		balloon_alert(user, "no power bank!")
+		balloon_alert(user, "Sem banco de energia!")
 		return FALSE
 
 	return ..()
@@ -108,7 +108,7 @@
 /// The actual portable part of the portable SMES system. Pretty useless without an actual connector.
 /obj/machinery/smesbank
 	name = "portable power storage unit"
-	desc = "A portable, high-capacity superconducting magnetic energy storage (SMES) unit. Requires a separate power connector port to actually interface with power networks."
+	desc = "Uma unidade portátil supercondutora de alta capacidade de armazenamento de energia magnética. Requer uma porta de conexão de energia separada para interagir com redes de energia."
 	icon = 'icons/obj/machines/engine/other.dmi'
 	icon_state = "port_smes"
 	base_icon_state = "port_smes"
@@ -175,13 +175,13 @@
 
 /obj/machinery/smesbank/examine(user)
 	. = ..()
-	. += span_notice("its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
+	. += span_notice("seu painel de manutenção pode ser[EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
 	if(connected_port)
-		. += span_notice("You need to [EXAMINE_HINT("unwrench")] from the port before deconstructing.")
+		. += span_notice("Você precisa.[EXAMINE_HINT("unwrench")]do porto antes de desconstruir.")
 	else
 		if(panel_open)
-			. += span_notice("It can be [EXAMINE_HINT("pried")] apart.")
-		. += span_notice("It should be [EXAMINE_HINT("wrenched")] onto a connector port to operate.")
+			. += span_notice("Pode ser.[EXAMINE_HINT("pried")]Separados.")
+		. += span_notice("Deveria ser.[EXAMINE_HINT("wrenched")]em uma porta de conexão para operar.")
 
 /obj/machinery/smesbank/Destroy()
 	disconnect_port()
@@ -208,10 +208,7 @@
 	if(connected_port)
 		if(!wrench.use_tool(src, user, 8 SECONDS))
 			return ITEM_INTERACT_BLOCKING
-		user.visible_message( \
-			"[user] disconnects [src].", \
-			span_notice("You unfasten [src] from [connected_port]."), \
-			span_hear("You hear a ratchet."))
+		user.visible_message( 			"[user]Desligador[src].", 			span_notice("Você desaperta.[src]De[connected_port]."), 			span_hear("Você ouve uma catraca."))
 		investigate_log("was disconnected from [connected_port] by [key_name(user)].", INVESTIGATE_ENGINE)
 		disconnect_port()
 		update_appearance(UPDATE_OVERLAYS)
@@ -222,10 +219,7 @@
 		return ITEM_INTERACT_BLOCKING
 	if(!connect_port(possible_connector, user))
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message( \
-		"[user] connects [src].", \
-		span_notice("You fasten [src] to [possible_connector]."), \
-		span_hear("You hear a ratchet."))
+	user.visible_message( 		"[user]conecta[src].", 		span_notice("Você aperta.[src]Para[possible_connector]."), 		span_hear("Você ouve uma catraca."))
 	update_appearance(UPDATE_OVERLAYS)
 	investigate_log("was connected to [possible_connector] by [key_name(user)].", INVESTIGATE_ENGINE)
 	return ITEM_INTERACT_SUCCESS
@@ -239,7 +233,7 @@
 
 /obj/machinery/smesbank/crowbar_act(mob/living/user, obj/item/tool)
 	if(connected_port)
-		balloon_alert(user, "disconnect from [connected_port] first!")
+		balloon_alert(user, "Desligador de[connected_port]Primero!")
 		return ITEM_INTERACT_FAILURE
 
 	return default_deconstruction_crowbar(user, tool)
@@ -257,13 +251,13 @@
 
 	if(QDELETED(possible_connector))
 		if(user)
-			balloon_alert(user, "no connector!")
+			balloon_alert(user, "Sem conector!")
 		return FALSE
 
 	//Make sure not already connected to something else
 	if(possible_connector.panel_open)
 		if(user)
-			balloon_alert(user, "close connector panel!")
+			balloon_alert(user, "Feche o painel de conexão!")
 		return FALSE
 
 	//Perform the connection
@@ -301,7 +295,7 @@
 
 /obj/machinery/smesbank/super
 	name = "super capacity power storage unit"
-	desc = "A portable, super-capacity, superconducting magnetic energy storage (SMES) unit. Relatively rare, and typically installed in long-range outposts where minimal maintenance is expected."
+	desc = "Uma unidade portátil, super-capacidade, supercondutora de armazenamento de energia magnética. Relativamente raro, e tipicamente instalado em postos avançados de longo alcance onde se espera manutenção mínima."
 	circuit = /obj/item/circuitboard/machine/smesbank/super
 
 /obj/machinery/smesbank/super/full

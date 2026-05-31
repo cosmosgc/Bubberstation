@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher
 	name = "\improper Kiboko Grenade Launcher"
-	desc = "A unique grenade launcher firing .980 grenades. A laser sight system allows its user to specify a range for the grenades it fires to detonate at."
+	desc = "Um lançador de granadas único disparando 980 granadas. Um sistema de visão laser permite que seu usuário especifique um alcance para as granadas que dispara para detonar."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/guns48x.dmi'
 	icon_state = "kiboko"
@@ -44,29 +44,20 @@
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/examine_more(mob/user)
 	. = ..()
 
-	. += "The Kiboko is one of the strangest weapons Carwo offers. A grenade launcher, \
-		though not in the standard grenade size. The much lighter .980 Tydhouer grenades \
-		developed for the weapon offered many advantages over standard grenade launching \
-		ammunition. For a start, it was significantly lighter, and easier to carry large \
-		amounts of. What it also offered, however, and the reason TerraGov funded the \
-		project: Variable time fuze. Using the large and expensive ranging sight on the \
-		launcher, its user can set an exact distance for the grenade to self detonate at. \
-		The dream of militaries for decades, finally realized. The smaller shells do not, \
-		however, make the weapon any more enjoyable to fire. The kick is only barely \
-		manageable thanks to the massive muzzle brake at the front."
+	. += "The Kiboko is one of the strangest weapons Carwo offers. A grenade launcher, 		though not in the standard grenade size. The much lighter .980 Tydhouer grenades 		developed for the weapon offered many advantages over standard grenade launching 		ammunition. For a start, it was significantly lighter, and easier to carry large 		amounts of. What it also offered, however, and the reason TerraGov funded the 		project: Variable time fuze. Using the large and expensive ranging sight on the 		launcher, its user can set an exact distance for the grenade to self detonate at. 		The dream of militaries for decades, finally realized. The smaller shells do not, 		however, make the weapon any more enjoyable to fire. The kick is only barely 		manageable thanks to the massive muzzle brake at the front."
 
 	return .
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/examine(mob/user)
 	. = ..()
 
-	. += span_notice("With <b>Right Click</b> you can set the range that shells will detonate at.")
-	. += span_notice("A small indicator in the sight notes the current detonation range is: <b>[target_range]</b>.")
+	. += span_notice("Com<b>Clique direito</b>Você pode definir o alcance que as conchas irão detonar.")
+	. += span_notice("Um pequeno indicador na visão observa que o atual alcance de detonação é:<b>[target_range]</b>.")
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/ranged_interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!interacting_with || !user)
@@ -74,11 +65,11 @@
 
 	var/distance_ranged = get_dist(user, interacting_with)
 	if(distance_ranged > maximum_target_range)
-		user.balloon_alert(user, "out of range")
+		user.balloon_alert(user, "fora de alcance")
 		return ITEM_INTERACT_BLOCKING
 
 	target_range = distance_ranged
-	user.balloon_alert(user, "range set: [target_range]")
+	user.balloon_alert(user, "intervalo definido:[target_range]")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/no_mag

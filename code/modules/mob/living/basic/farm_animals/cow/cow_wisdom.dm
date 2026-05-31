@@ -1,7 +1,7 @@
 ///Wisdom cow, gives XP to a random skill and speaks wisdoms
 /mob/living/basic/cow/wisdom
 	name = "wisdom cow"
-	desc = "Known for its wisdom, shares it with all."
+	desc = "Conhecida por sua sabedoria, compartilha-a com todos."
 	gold_core_spawnable = FALSE
 	ai_controller = /datum/ai_controller/basic_controller/cow/wisdom
 	///The type of wisdom this cow will grant
@@ -42,7 +42,7 @@
 ///Give intense wisdom to the attacker if they're being friendly about it
 /mob/living/basic/cow/wisdom/attack_hand(mob/living/carbon/user, list/modifiers)
 	if(!stat && !user.combat_mode)
-		to_chat(user, span_nicegreen("[src] whispers you some intense wisdoms and then disappears!"))
+		to_chat(user, span_nicegreen("[src]Sussurra sabedoria intensa e depois desaparece!"))
 		user.mind?.adjust_experience(granted_wisdom, granted_experience)
 		do_smoke(1, src, get_turf(src))
 		qdel(src)

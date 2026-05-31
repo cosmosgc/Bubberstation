@@ -1,6 +1,6 @@
 /datum/mutation/strong_legs
 	name = "Strong Legs"
-	desc = "Strengtens the calves of the subject, allowing them to leap across gaps."
+	desc = "Strengtens os bezerros do sujeito, permitindo-lhes saltar através de lacunas."
 	quality = POSITIVE
 	difficulty = 12
 	text_gain_indication = span_notice("Your leg muscles feel stronger.")
@@ -22,7 +22,7 @@
 
 /datum/action/cooldown/mob_cooldown/leap
 	name = "Leap"
-	desc = "You propel yourself into the air, allowing you to cross short gaps."
+	desc = "Você se impulsiona no ar, permitindo que cruze pequenas lacunas."
 	button_icon = 'icons/mob/actions/actions_spells.dmi'
 	button_icon_state = "lace"
 	cooldown_time = 10 SECONDS
@@ -74,7 +74,7 @@
 		var/turf/new_turf = get_turf(bumped_window)
 		bumped_window.deconstruct(disassembled = FALSE)
 		source.apply_damage(damage = 5, damagetype = BRUTE)
-		source.visible_message(span_warning("[source] slams [source.p_their()] body through the window!"))
+		source.visible_message(span_warning("[source]Slams[source.p_their()]Corpo pela janela!"))
 		for(var/obj/structure/grille/poorgrille in new_turf)
 			on_grille_bump(source, poorgrille, do_move = FALSE)
 		source.forceMove(new_turf)
@@ -87,7 +87,7 @@
 			harsh_crash = TRUE
 			var/obj/item/bodypart/affecting = source.get_bodypart(BODY_ZONE_HEAD)
 			affecting.force_wound_upwards(/datum/wound/blunt/bone/severe)
-		source.visible_message(span_warning("[source] smacks [source.p_their()] head against the window[harsh_crash ? " and cracks their skull open" : ""]! Ouch."))
+		source.visible_message(span_warning("[source]Strocks[source.p_their()]cabeça contra a janela[harsh_crash ? " and cracks their skull open" : ""]Ouch."))
 
 /datum/action/cooldown/mob_cooldown/leap/proc/on_grille_bump(mob/living/carbon/source, obj/structure/grille/bumped_grille, do_move = TRUE)
 	bumped_grille.shock(source, 70)
@@ -99,5 +99,5 @@
 
 /obj/item/dnainjector/strong_legs
 	name = "\improper DNA injector (Strong Legs)"
-	desc = "Makes you leap like a bunny."
+	desc = "Faz você pular como um coelho."
 	add_mutations = list(/datum/mutation/strong_legs)

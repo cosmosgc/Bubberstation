@@ -9,7 +9,7 @@
 
 /atom/movable/screen/alert/status_effect/woozy
 	name = "Woozy"
-	desc = "You feel a bit slower than usual, it seems doing things with your hands takes longer than it usually does."
+	desc = "Você se sente um pouco mais lento que o normal, parece que fazer coisas com as mãos leva mais tempo do que normalmente faz."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "woozy"
 
@@ -36,7 +36,7 @@
 
 /atom/movable/screen/alert/status_effect/high_blood_pressure
 	name = "High blood pressure"
-	desc = "Your blood pressure is real high right now ... You'd probably bleed like a stuck pig."
+	desc = "Sua pressão está muito alta agora... Você provavelmente sangraria como um porco preso."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "highbloodpressure"
 
@@ -53,13 +53,12 @@
 	duration = amplitude
 	owner.set_jitter_if_lower(100 SECONDS)
 	owner.Paralyze(duration)
-	owner.visible_message(span_warning("[owner] drops to the ground as [owner.p_they()] start seizing up."), \
-	span_warning("[pick("You can't collect your thoughts...", "You suddenly feel extremely dizzy...", "You can't think straight...","You can't move your face properly anymore...")]"))
+	owner.visible_message(span_warning("[owner]cai no chão como[owner.p_they()]Comece a convulsão."), 	span_warning("[pick("You can't collect your thoughts...", "You suddenly feel extremely dizzy...", "You can't think straight...","You can't move your face properly anymore...")]"))
 	return TRUE
 
 /atom/movable/screen/alert/status_effect/seizure
 	name = "Seizure"
-	desc = "FJOIWEHUWQEFGYUWDGHUIWHUIDWEHUIFDUWGYSXQHUIODSDBNJKVBNKDML <--- this is you right now"
+	desc = "FJOIWHUWQEFGYUWDGHUIWHUIDWHUIDWHUIFDUWGYSXQHUIODSDBNJKVBNKDML É você agora."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "paralysis"
 
@@ -92,5 +91,5 @@
 
 /atom/movable/screen/alert/status_effect/stoned
 	name = "Stoned"
-	desc = "Cannabis is impairing your speed, motor skills, and mental cognition."
+	desc = "Cannabis está prejudicando sua velocidade, habilidades motoras e cognição mental."
 	icon_state = "stoned"

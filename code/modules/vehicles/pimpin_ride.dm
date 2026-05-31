@@ -3,7 +3,7 @@
  */
 /obj/vehicle/ridden/janicart
 	name = "janicart (pimpin' ride)"
-	desc = "A brave janitor cyborg gave its life to produce such an amazing combination of speed and utility."
+	desc = "Um valente zelador Cyborg deu sua vida para produzir uma incrível combinação de velocidade e utilidade."
 	icon_state = "pussywagon"
 	key_type = /obj/item/key/janitor
 	movedelay = 1
@@ -40,12 +40,12 @@
 		return
 	if(istype(tool, /obj/item/storage/bag/trash))
 		if(trash_bag)
-			to_chat(user, span_warning("[src] already has a trashbag hooked!"))
+			to_chat(user, span_warning("[src]Já tem um lixo viciado!"))
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("You hook the trashbag onto [src]."))
+		to_chat(user, span_notice("Você prende o saco de lixo[src]."))
 		trash_bag = tool
 		RegisterSignal(trash_bag, COMSIG_QDELETING, PROC_REF(bag_deleted))
 		SEND_SIGNAL(src, COMSIG_VACUUM_BAG_ATTACH, tool)
@@ -54,13 +54,13 @@
 
 	if(istype(tool, /obj/item/janicart_upgrade))
 		if(installed_upgrade)
-			to_chat(user, span_warning("[src] already has an upgrade installed! Use a screwdriver to remove it."))
+			to_chat(user, span_warning("[src]Já tem uma atualização instalada! Use uma chave de fenda para removê-la."))
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/janicart_upgrade/new_upgrade = tool
 		new_upgrade.forceMove(src)
 		new_upgrade.install(src)
 		installed_upgrade = new_upgrade
-		to_chat(user, span_notice("You upgrade [src] with [new_upgrade]."))
+		to_chat(user, span_notice("Você se atualiza.[src]Com[new_upgrade]."))
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
@@ -76,7 +76,7 @@
 	installed_upgrade.uninstall(src)
 	installed_upgrade.forceMove(get_turf(user))
 	user.put_in_hands(installed_upgrade)
-	to_chat(user, span_notice("You remove [installed_upgrade] from [src]"))
+	to_chat(user, span_notice("Você tira.[installed_upgrade]De[src]"))
 	installed_upgrade = null
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -177,7 +177,7 @@
  */
 /obj/item/janicart_upgrade
 	name = "base upgrade"
-	desc = "An abstract upgrade for mobile janicarts."
+	desc = "Uma atualização abstrata para janicartes móveis."
 	icon = 'icons/obj/service/janicart_upgrade.dmi'
 	icon_state = "janicart_upgrade"
 	greyscale_config = /datum/greyscale_config/janicart_upgrade
@@ -204,7 +204,7 @@
 
 /obj/item/janicart_upgrade/buffer
 	name = "floor buffer upgrade"
-	desc = "An upgrade for mobile janicarts which adds a floor buffer functionality."
+	desc = "Uma atualização para janicats móveis que adiciona uma funcionalidade de buffer de piso."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/janicart_upgrade/buffer"
 	post_init_icon_state = "janicart_upgrade"
@@ -218,7 +218,7 @@
 
 /obj/item/janicart_upgrade/vacuum
 	name = "vacuum upgrade"
-	desc = "An upgrade for mobile janicarts which adds a vacuum functionality."
+	desc = "Uma atualização para janicats móveis que adiciona uma funcionalidade de vácuo."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/janicart_upgrade/vacuum"
 	post_init_icon_state = "janicart_upgrade"

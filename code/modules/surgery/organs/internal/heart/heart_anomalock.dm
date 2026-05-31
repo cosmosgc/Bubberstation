@@ -5,7 +5,7 @@
 
 /obj/item/organ/heart/cybernetic/anomalock
 	name = "voltaic combat cyberheart"
-	desc = "A cutting-edge cyberheart, originally designed for Nanotrasen killsquad usage but later declassified for normal research. Voltaic technology allows the heart to keep the body upright in dire circumstances, alongside redirecting anomalous flux energy to fully shield the user from shocks and electro-magnetic pulses. Requires a refined Flux core as a power source."
+	desc = "Um coração cibernético de ponta, originalmente projetado para Nanotrasen mata o grupo de uso, mas depois desclassificado para pesquisa normal. A tecnologia Voltaic permite que o coração mantenha o corpo ereto em circunstâncias terríveis, ao lado de redirecionar a energia anômala de fluxo para proteger totalmente o usuário de choques e pulsos eletromagnéticos. Requer um núcleo refinado como fonte de energia."
 	icon_state = "anomalock_heart"
 	beat_noise = "an astonishing <b>BZZZ</b> of immense electrical power"
 	bleed_prevention = TRUE
@@ -39,7 +39,7 @@
 
 /obj/item/organ/heart/cybernetic/anomalock/examine(mob/user)
 	. = ..()
-	. += span_info("The voltaic boost will avoid healing toxin damage at all in slime-based humanoids, to prevent harmful side effects.")
+	. += span_info("O impulso voltaico evitará danos na toxina curativa em humanóides baseados em lodo, para evitar efeitos colaterais nocivos.")
 
 /obj/item/organ/heart/cybernetic/anomalock/on_mob_insert(mob/living/carbon/organ_owner, special, movement_flags)
 	. = ..()
@@ -68,8 +68,8 @@
 
 	if(DOING_INTERACTION(user, DOAFTER_IMPLANTING_HEART))
 		return
-	user.balloon_alert(user, "this will hurt...")
-	to_chat(user, span_userdanger("Black cyberveins tear your skin apart, pulling the heart into your ribcage. This feels unwise.."))
+	user.balloon_alert(user, "Isso vai doer...")
+	to_chat(user, span_userdanger("Cyberveins negros rasgam sua pele, puxando o coração para sua caixa torácica. Isso parece imprudente."))
 	if(!do_after(user, 5 SECONDS, interaction_key = DOAFTER_IMPLANTING_HEART))
 		return ..()
 	playsound(target_mob, 'sound/items/weapons/slice.ogg', 100, TRUE)
@@ -142,19 +142,19 @@
 
 ///Alerts our owner that the organ is ready to do its thing again
 /obj/item/organ/heart/cybernetic/anomalock/proc/notify_cooldown(mob/living/carbon/organ_owner)
-	balloon_alert(organ_owner, "your heart strengthtens")
+	balloon_alert(organ_owner, "seu coração se fortalece.")
 	playsound(organ_owner, 'sound/items/eshield_recharge.ogg', 40)
 
 /obj/item/organ/heart/cybernetic/anomalock/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, required_anomaly))
 		return NONE
 	if(core)
-		balloon_alert(user, "core already in!")
+		balloon_alert(user, "Já está no núcleo!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING
 	core = tool
-	balloon_alert(user, "core installed")
+	balloon_alert(user, "núcleo instalado")
 	playsound(src, 'sound/machines/click.ogg', 30, TRUE)
 	add_organ_trait(TRAIT_SHOCKIMMUNE)
 	update_icon_state()
@@ -166,13 +166,13 @@
 		balloon_alert(user, "sem núcleo!")
 		return
 	if(!core_removable)
-		balloon_alert(user, "can't remove core!")
+		balloon_alert(user, "Não consigo remover o núcleo!")
 		return
-	balloon_alert(user, "removing core...")
+	balloon_alert(user, "removendo o núcleo...")
 	if(!do_after(user, 3 SECONDS, target = src))
-		balloon_alert(user, "interrompido!")
+		balloon_alert(user, "Interrompido!")
 		return
-	balloon_alert(user, "core removed")
+	balloon_alert(user, "núcleo removido")
 	core.forceMove(drop_location())
 	if(Adjacent(user) && !issilicon(user))
 		user.put_in_hands(core)
@@ -216,7 +216,7 @@
 	REMOVE_TRAIT(src, TRAIT_CRITICAL_CONDITION, STAT_TRAIT)
 	owner.reagents.add_reagent(/datum/reagent/medicine/coagulant, 5)
 	owner.add_filter("emp_shield", 2, outline_filter(1, "#639BFF"))
-	to_chat(owner, span_revendanger("You feel a burst of energy! It's do or die!"))
+	to_chat(owner, span_revendanger("Você sente uma explosão de energia! É fazer ou morrer!"))
 	owner.add_traits(list(TRAIT_NOSOFTCRIT, TRAIT_NOHARDCRIT, TRAIT_ANALGESIA), REF(src))
 
 /datum/status_effect/voltaic_overdrive/on_remove()
@@ -224,7 +224,7 @@
 	UnregisterSignal(owner, COMSIG_CARBON_LOSE_ORGAN)
 	owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 	owner.remove_filter("emp_shield")
-	owner.balloon_alert(owner, "your heart weakens")
+	owner.balloon_alert(owner, "Seu coração enfraquece.")
 	owner.remove_traits(list(TRAIT_NOSOFTCRIT, TRAIT_NOHARDCRIT, TRAIT_ANALGESIA), REF(src))
 
 /// Called when an organ is lost in the owner. In the event the owner just lost their voltaic (presumably, the one giving this effect), ends the buff and clears the overlay.
@@ -237,15 +237,15 @@
 	name = "voltaic overdrive"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "anomalock_heart"
-	desc = "Voltaic energy is flooding your muscles, keeping your body upright. You have 30 seconds before it falters!"
+	desc = "A energia voltaica está inundando seus músculos, mantendo seu corpo ereto. Você tem 30 segundos antes que ele vacile!"
 
 /obj/item/organ/heart/cybernetic/anomalock/hear_beat_noise(mob/living/hearer)
 	if(prob(1))
-		to_chat(hearer, span_danger("Yeah. Press a metal disk to the chest of a living arc flash hazard. See what that gets you.")) //the guy is LITERALLY sparking like a tesla coil.
+		to_chat(hearer, span_danger("Sim. Pressione um disco de metal no peito de um arco vivo de perigo. Veja o que isso te dá.")) //the guy is LITERALLY sparking like a tesla coil.
 	else
-		to_chat(hearer, span_danger("An electrical arc strikes your stethoscope, conducting into you!"))
+		to_chat(hearer, span_danger("Um arco elétrico atinge seu estetoscópio, conduzindo em você!"))
 	if(hearer.electrocute_act(15, "stethoscope", flags = SHOCK_NOGLOVES)) //the stethoscope is in your ears. (returns true if it does damage so we only scream in that case)
 		hearer.emote("scream")
-	return span_danger("[owner.p_Their()] heart produces [beat_noise].")
+	return span_danger("[owner.p_Their()]O coração produz[beat_noise].")
 
 #undef DOAFTER_IMPLANTING_HEART

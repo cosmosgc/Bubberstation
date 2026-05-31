@@ -12,11 +12,11 @@
 	if(!targName || !user.is_holding(src))
 		return
 	if(is_ic_filtered(targName))
-		to_chat(user, span_warning("Error: Law contains invalid text."))
+		to_chat(user, span_warning("Erro: lei contém texto inválido."))
 		return
 	var/list/soft_filter_result = is_soft_ooc_filtered(targName)
 	if(soft_filter_result)
-		if(tgui_alert(user,"Your law contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to use it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(user,"Sua lei contém\"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\"Tem certeza que quer usá-lo?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 			return
 		message_admins("[ADMIN_LOOKUPFLW(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term for an AI law. Law: \"[html_encode(targName)]\"")
 		log_admin_private("[key_name(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term for an AI law. Law: \"[targName]\"")
@@ -41,11 +41,11 @@
 	if(!targName || !user.is_holding(src))
 		return
 	if(is_ic_filtered(targName))
-		to_chat(user, span_warning("Error: Law contains invalid text.")) // AI LAW 2 SAY U W U WITHOUT THE SPACES
+		to_chat(user, span_warning("Erro: lei contém texto inválido.")) // AI LAW 2 SAY U W U WITHOUT THE SPACES
 		return
 	var/list/soft_filter_result = is_soft_ooc_filtered(targName)
 	if(soft_filter_result)
-		if(tgui_alert(user,"Your law contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to use it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(user,"Sua lei contém\"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\"Tem certeza que quer usá-lo?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 			return
 		message_admins("[ADMIN_LOOKUPFLW(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term for an AI law. Law: \"[html_encode(targName)]\"")
 		log_admin_private("[key_name(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term for an AI law. Law: \"[targName]\"")
@@ -63,6 +63,6 @@
 
 /obj/item/ai_module/supplied/freeform/install(datum/ai_laws/law_datum, mob/user)
 	if(laws[1] == "")
-		to_chat(user, span_alert("No law detected on module, please create one."))
+		to_chat(user, span_alert("Nenhuma lei detectada no módulo, por favor crie uma."))
 		return 0
 	..()

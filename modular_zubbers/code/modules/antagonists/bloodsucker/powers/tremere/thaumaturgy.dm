@@ -29,7 +29,7 @@
 	constant_bloodcost = 0
 	// 5 seconds per charge
 	cooldown_time = 10 SECONDS
-	prefire_message = "Right click where you wish to fire."
+	prefire_message = "Clique com o botão direito onde deseja atirar."
 	click_to_activate = TRUE // you pay to replenish charges
 	power_activates_immediately = FALSE
 	unset_after_click = FALSE // Lets us cast multiple times
@@ -95,11 +95,11 @@
 	if(blood_shield)
 		var/shield = blood_shield?.resolve()
 		owner.visible_message(
-			span_warning("[owner]\'s [blood_shield] loses its form and disappears into [owner.p_their()] hands "),
-			span_warning("We unform our Blood shield!"),
-			span_hear("You hear liquids sloshing around."),
+			span_warning("[owner]\'S[blood_shield]perde sua forma e desaparece em[owner.p_their()]mãos"),
+			span_warning("Desformamos nosso escudo sanguíneo!"),
+			span_hear("Você ouve líquidos andando por aí."),
 		)
-		owner.balloon_alert(owner, "you unform the [shield]")
+		owner.balloon_alert(owner, "Você desforma o[shield]")
 		qdel(shield)
 		blood_shield = null
 	else
@@ -107,14 +107,14 @@
 		blood_shield = WEAKREF(new_shield)
 		if(!owner.put_in_inactive_hand(new_shield))
 			QDEL_NULL(new_shield)
-			owner.balloon_alert(owner, "off hand is full!")
-			to_chat(owner, span_notice("[capitalize(src)] couldn't be activated as your off hand is full."))
+			owner.balloon_alert(owner, "A mão está cheia!")
+			to_chat(owner, span_notice("[capitalize(src)]Não pode ser ativado, pois sua mão está cheia."))
 			return FALSE
-		owner.balloon_alert(owner, "you form the [src]")
+		owner.balloon_alert(owner, "Você forma o[src]")
 		owner.visible_message(
-			span_warning("[owner]\'s hands begins to bleed and forms into a [src]!"),
-			span_warning("We form our [src]!"),
-			span_hear("You hear liquids forming together."),
+			span_warning("[owner]\'as mãos começam a sangrar e se formam em um[src]!"),
+			span_warning("Nós formamos nosso[src]!"),
+			span_hear("Você ouve líquidos se formando juntos."),
 		)
 
 /datum/action/cooldown/bloodsucker/targeted/tremere/thaumaturgy/DeactivatePower(deactivate_flags)
@@ -157,16 +157,16 @@
 	if(shot_cooldown > world.time)
 		return
 	if(!can_pay_blood(THAUMATURGY_BLOOD_COST_PER_CHARGE))
-		owner.balloon_alert(owner, "sangue insuficiente!")
+		owner.balloon_alert(owner, "Insuficiência de sangue!")
 		DeactivatePower()
 		return
 	shot_cooldown = world.time + get_shot_cooldown()
 	var/mob/living/user = owner
-	owner.balloon_alert(owner, "you fire a blood bolt!")
+	owner.balloon_alert(owner, "Dispare um raio de sangue!")
 	owner.visible_message(
-		span_warning("[owner] fires a blood bolt at [target]!"),
-		span_warning("You fire a blood bolt at [target]!"),
-		span_hear("You hear a loud crackling sound."),
+		span_warning("[owner]Dispara um raio de sangue em[target]!"),
+		span_warning("Você dispara um raio de sangue em[target]!"),
+		span_hear("Você ouve um barulho alto."),
 	)
 	user.changeNext_move(CLICK_CD_RANGE)
 	user.newtonian_move(get_dir(target, user))
@@ -259,7 +259,7 @@
 
 /obj/item/shield/bloodsucker
 	name = "blood shield"
-	desc = "A shield made out of blood, requiring blood to sustain hits."
+	desc = "Um escudo feito de sangue, que requer sangue para manter os ataques."
 	item_flags = ABSTRACT | DROPDEL
 	icon = 'modular_zubbers/icons/obj/structures/vamp_obj.dmi'
 	icon_state = "blood_shield"

@@ -7,8 +7,8 @@
  * Any changes made to those files should be copied over with discretion
  */
 /obj/item/circuit_component/list_literal/nfc_send
-	display_name = "NFC Transmitter List Literal"
-	desc = "Creates a list literal data package and sends it through NFC. If Encryption Key is set then transmitted data will be only picked up by receivers with the same Encryption Key."
+	display_name = "Lista de Transmissores NFC Literais"
+	desc = "Cria uma lista de dados literal e envia através da NFC. Se a Chave de Criptografia estiver definida, os dados transmitidos só serão captados por receptores com a mesma Chave de Criptografia."
 	category = "Utility"
 
 	/// Encryption key

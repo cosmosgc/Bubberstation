@@ -1,7 +1,7 @@
 /datum/surgery_operation/limb/filter_blood
 	name = "blood filtration"
 	rnd_name = "Hemodialysis (Blood Filtration)"
-	desc = "Remove unwanted chemicals from a patient's bloodstream."
+	desc = "Remova produtos químicos indesejados da corrente sanguínea de um paciente."
 	implements = list(/obj/item/blood_filter = 1)
 	time = 2.5 SECONDS
 	operation_flags = OPERATION_LOOPING
@@ -39,9 +39,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("[tool] completes a cycle filtering [limb.owner]'s blood."),
-		span_notice("[tool] whirrs as it filters [limb.owner]'s blood."),
-		span_notice("[tool] whirrs as it pumps."),
+		span_notice("[tool]completa uma filtragem de ciclo[limb.owner]É sangue."),
+		span_notice("[tool]Whirrrs enquanto filtra[limb.owner]É sangue."),
+		span_notice("[tool]Whirrrs enquanto bombeia."),
 	)
 
 	if(surgeon.is_holding_item_of_type(/obj/item/healthanalyzer))
@@ -51,9 +51,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_warning("You screw up, bruising [limb.owner]'s chest!"),
-		span_warning("[surgeon] screws up, bruising [limb.owner]'s chest!"),
-		span_warning("[surgeon] screws up!"),
+		span_warning("Você estraga tudo, contusões.[limb.owner]O peito!"),
+		span_warning("[surgeon]Estraga tudo, contusões[limb.owner]O peito!"),
+		span_warning("[surgeon]Estraga tudo!"),
 	)
 	limb.receive_damage(5, damage_source = tool)
 
@@ -63,7 +63,7 @@
 		return TRUE
 	// BUBBER EDIT ADDITION END
 	if(!length(target.reagents?.reagent_list))
-		bloodfilter.audible_message(span_notice("[bloodfilter] pings as it reports no chemicals detected in [target]'s blood."))
+		bloodfilter.audible_message(span_notice("[bloodfilter]Pings como não relata nenhum produto químico detectado em[target]É sangue."))
 		playsound(target, 'sound/machines/ping.ogg', 75, TRUE, falloff_exponent = 12, falloff_distance = 1)
 		return FALSE
 

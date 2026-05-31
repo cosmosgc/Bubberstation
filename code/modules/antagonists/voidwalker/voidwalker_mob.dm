@@ -4,7 +4,7 @@
 /// Voidwalker mob to void all over the place
 /mob/living/basic/voidwalker
 	name = "voidwalker"
-	desc = "A glass-like entity from the void between stars. You probably shouldn't stare."
+	desc = "Uma entidade de vidro do vazio entre as estrelas. Você provavelmente não deveria olhar."
 	icon = 'icons/mob/simple/voidwalker.dmi'
 	icon_state = "voidwalker"
 
@@ -96,9 +96,7 @@
 
 	AddElement(/datum/element/pick_and_drop_only)
 
-	AddComponent(/datum/component/debris_bleeder, \
-		list(/obj/effect/spawner/random/glass_shards = 20, /obj/effect/spawner/random/glass_debris = 0), \
-		BRUTE, SFX_SHATTER, sound_threshold = 20)
+	AddComponent(/datum/component/debris_bleeder, 		list(/obj/effect/spawner/random/glass_shards = 20, /obj/effect/spawner/random/glass_debris = 0), 		BRUTE, SFX_SHATTER, sound_threshold = 20)
 
 	charge = new charge(src)
 	charge.Grant(src)
@@ -154,7 +152,7 @@
 			return FALSE
 
 		if(hewmon.stat == HARD_CRIT && !hewmon.has_trauma_type(/datum/brain_trauma/voided))
-			hewmon.balloon_alert(src, "is in crit!")
+			hewmon.balloon_alert(src, "Está em crit!")
 			hewmon.Stun(5 SECONDS) // blocks some crit movement mechanics from a bunch of sources
 			return FALSE
 
@@ -211,20 +209,20 @@
 /// Start the kidnap interactions, including surprises for those who are already voided
 /mob/living/basic/voidwalker/proc/try_kidnap(mob/living/carbon/human/victim)
 	if(victim.has_trauma_type(/datum/brain_trauma/voided))
-		victim.balloon_alert(src, "already voided!")
+		victim.balloon_alert(src, "Já anulado!")
 		new /obj/effect/temp_visual/circle_wave/unsettle(get_turf(victim))
 		victim.SetSleeping(30 SECONDS)
 		return FALSE
 
 	if(victim.stat == DEAD)
-		victim.balloon_alert(src, "is dead!")
+		victim.balloon_alert(src, "Está morto!")
 		return FALSE
 
 	if(victim.stat == CONSCIOUS) //we're still beating them up!!
 		return TRUE
 
 	if(!istype(get_turf(victim), home_turf) && !(locate(kidnapping_decal) in get_turf(victim)))
-		victim.balloon_alert(src, "not in space!")
+		victim.balloon_alert(src, "Não no espaço!")
 		return FALSE
 
 	if(!kidnapping)
@@ -300,11 +298,11 @@
 /// Attempt to convert a wall into passable voidwalker windows
 /mob/living/basic/voidwalker/proc/try_convert_wall(turf/closed/wall/our_wall)
 	if(!conversions_remaining)
-		balloon_alert(src, "need more kidnaps!")
+		balloon_alert(src, "Precisa de mais sequestros!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if(!COOLDOWN_FINISHED(src, wall_conversion))
-		balloon_alert(src, "must wait [DisplayTimeText(COOLDOWN_TIMELEFT(src, wall_conversion))]!")
+		balloon_alert(src, "Devo esperar.[DisplayTimeText(COOLDOWN_TIMELEFT(src, wall_conversion))]!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if(!check_wall_validity(our_wall, src, silent = FALSE))
@@ -314,7 +312,7 @@
 
 	var/obj/particles = new /obj/effect/abstract/particle_holder (our_wall, /particles/void_wall)
 
-	balloon_alert(src, "opening window...")
+	balloon_alert(src, "Abrindo janela...")
 	if(!do_after(src, 8 SECONDS, our_wall, hidden = TRUE))
 		qdel(particles)
 		return COMPONENT_CANCEL_ATTACK_CHAIN
@@ -344,7 +342,7 @@
 /mob/living/basic/voidwalker/proc/check_wall_validity(turf/closed/wall/wall_to_check, silent = TRUE)
 	if(wall_to_check.hardness < WALL_CONVERT_STRENGTH)
 		if(!silent)
-			balloon_alert(src, "too strong!")
+			balloon_alert(src, "Muito forte!")
 		return FALSE
 	return TRUE
 

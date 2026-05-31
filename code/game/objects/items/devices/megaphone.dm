@@ -1,6 +1,6 @@
 /obj/item/megaphone
 	name = "megaphone"
-	desc = "A device used to project your voice. Loudly."
+	desc = "Um dispositivo usado para projetar sua voz. Alto."
 	icon = 'icons/obj/devices/voice.dmi'
 	icon_state = "megaphone"
 	inhand_icon_state = "megaphone"
@@ -12,7 +12,7 @@
 	var/list/voicespan = list(SPAN_COMMAND)
 
 /obj/item/megaphone/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] is uttering [user.p_their()] last words into \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]é pronunciando[user.p_their()]Últimas palavras em\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	spamcheck = 0//so they dont have to worry about recharging
 	user.say("AAAAAAAAAAAARGHHHHH", forced="megaphone suicide")//he must have died while coding this
 	return OXYLOSS
@@ -32,7 +32,7 @@
 	if(HAS_TRAIT(user, TRAIT_SIGN_LANG) || user.get_active_held_item() != src)
 		return
 	if(spamcheck > world.time)
-		to_chat(user, span_warning("\The [src] needs to recharge!"))
+		to_chat(user, span_warning("\The [src]Precisa recarregar!"))
 	else
 		playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
 		speech_args[SPEECH_SPANS] |= voicespan
@@ -54,7 +54,7 @@
 /obj/item/megaphone/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return FALSE
-	balloon_alert(user, "voice synthesizer overloaded")
+	balloon_alert(user, "sintetizador de voz sobrecarregado.")
 	obj_flags |= EMAGGED
 	voicespan = list(SPAN_REALLYBIG, "userdanger")
 	return TRUE
@@ -76,7 +76,7 @@
 
 /obj/item/megaphone/clown
 	name = "clown's megaphone"
-	desc = "Something that should not exist."
+	desc = "Algo que não deveria existir."
 	icon_state = "megaphone-clown"
 	inhand_icon_state = "megaphone-clown"
 	voicespan = list(SPAN_CLOWN)

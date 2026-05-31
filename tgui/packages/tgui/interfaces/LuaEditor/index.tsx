@@ -167,7 +167,7 @@ export const LuaEditor = () => {
         <input
           type="file"
           hidden
-          accept=".lua,.luau"
+          accept="Lua, luau"
           ref={fileInputRef}
           onChange={async (event) => {
             if (event.target.files?.length) {
@@ -194,7 +194,7 @@ export const LuaEditor = () => {
               onClick={closeMenuAndThen(() => fileInputRef.current?.click())}
             />
             <MenuBar.Dropdown.MenuItem
-              displayText="Upload and Run"
+              displayText="Enviar e Correr"
               onClick={closeMenuAndThen(() => act('runCodeFile'))}
             />
           </MenuBar.Dropdown>
@@ -209,7 +209,7 @@ export const LuaEditor = () => {
             <h1>Please select or create a lua state to get started.</h1>
           </Flex>
         ) : (
-          <Stack height="calc(100% - 16px)">
+          <Stack height="(100% - 16px)">
             <Stack.Item grow shrink basis="55%">
               <Stack fill vertical>
                 <Stack.Item grow>
@@ -278,7 +278,7 @@ export const LuaEditor = () => {
                     <Button.Checkbox
                       inline
                       checked={showGlobalTable}
-                      tooltip="WARNING: Displaying the global table can cause significant lag for the entire server, especially when there is a large number of global variables."
+                      tooltip="Mostrar a tabela global pode causar um atraso significativo para todo o servidor, especialmente quando há um grande número de variáveis globais."
                       onClick={() => {
                         if (showGlobalTable && activeTab === 'globals') {
                           setActiveTab('tasks');
@@ -310,7 +310,7 @@ export const LuaEditor = () => {
                             </Button.Checkbox>
                             <Button.Confirm
                               color="red"
-                              tooltip="Delete All Logs"
+                              tooltip="Apagar todos os registros"
                               icon="trash-alt"
                               confirmIcon="trash-alt"
                               confirmContent={null}

@@ -16,7 +16,7 @@ export const NtosSkillTracker = (props) => {
   return (
     <NtosWindow width={500} height={600}>
       <NtosWindow.Content scrollable>
-        <Section title="Skill Tracker">
+        <Section title="Rastreador de habilidades">
           {skills.map((skill, idx) => (
             <Section key={idx} level={2} title={skill.name}>
               <BlockQuote>{skill.desc}</BlockQuote>

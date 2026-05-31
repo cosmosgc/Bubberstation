@@ -2,7 +2,7 @@ import { type Antagonist, Category } from '../base';
 
 const SentientCreature: Antagonist = {
   key: 'sentiencepotionspawn',
-  name: 'Sentient Creature',
+  name: 'Criatura Senciente',
   description: [
     `
 		Either by cosmic happenstance, or due to crew's shenanigans, you have been

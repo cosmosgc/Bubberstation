@@ -9,30 +9,22 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 			continue
 		rods[nullrod_type] = nullrod_type::menu_description
 	//special non-nullrod subtyped shit
-	rods[/obj/item/toy/plush/carpplushie/nullrod] = "A plushie dealing a little less damage due to its cute form. \
-		Capable of blessing one person with the Carp-Sie favor, \
-		which grants friendship of all wild space carps. Fits in pockets. Can be worn on the belt."
+	rods[/obj/item/toy/plush/carpplushie/nullrod] = "A plushie dealing a little less damage due to its cute form. 		Capable of blessing one person with the Carp-Sie favor, 		which grants friendship of all wild space carps. Fits in pockets. Can be worn on the belt."
 	rods[/obj/item/gun/ballistic/bow/divine] = "A divine bow and 10 quivered holy arrows."
-	rods[/obj/item/organ/cyberimp/arm/toolkit/shard/scythe] = "A shard that implants itself into your arm, \
-		allowing you to conjure forth a vorpal scythe. \
-		Allows you to behead targets for empowered strikes. \
-		Harms you if you dismiss the scythe without first causing harm to a creature. \
-		The shard also causes you to become Morbid, shifting your interests towards the macabre."
+	rods[/obj/item/organ/cyberimp/arm/toolkit/shard/scythe] = "A shard that implants itself into your arm, 		allowing you to conjure forth a vorpal scythe. 		Allows you to behead targets for empowered strikes. 		Harms you if you dismiss the scythe without first causing harm to a creature. 		The shard also causes you to become Morbid, shifting your interests towards the macabre."
 	rods[/obj/item/melee/skateboard/holyboard] = "A skateboard that grants you flight and anti-magic abilities while ridden. Fits in your bag."
 	rods[/obj/item/storage/belt/sheath/hanzo_katana] = "A sharp katana which provides a low chance of blocking incoming melee attacks. Can be worn on the back or belt, wearing the sheath on belt allows for a swift counterattack."
 
 	for(var/obj/item/melee/energy/sword/nullrod/energy_nullrod_type as anything in typesof(/obj/item/melee/energy/sword/nullrod))
-		rods[energy_nullrod_type] = "An energy sword, but with a lower force, no armour penetration and a low chance of blocking. Can be switched on and off. \
-			Can be stored away easily while off, but impossible while on."
+		rods[energy_nullrod_type] = "An energy sword, but with a lower force, no armour penetration and a low chance of blocking. Can be switched on and off. 			Can be stored away easily while off, but impossible while on."
 	// BUBBER EDIT ADDITION BEGIN
-	rods[/obj/item/dualsaber/chaplain] = "A huge energy blade, it possesses the unique ability to block projectiles, but the unwieldy nature of it \
-	means that you'll be forced to move carefully while it's on. Fits in pockets, and can be worn on the belt when off."
+	rods[/obj/item/dualsaber/chaplain] = "A huge energy blade, it possesses the unique ability to block projectiles, but the unwieldy nature of it 	means that you'll be forced to move carefully while it's on. Fits in pockets, and can be worn on the belt when off."
 	// BUBBER EDIT ADDITION END
 	return rods
 
 /obj/item/nullrod
 	name = "null rod"
-	desc = "A rod of pure obsidian; its very presence disrupts and dampens 'magical forces'. That's what the guidebook says, anyway."
+	desc = "Uma vara de obsidiana pura, sua própria presença rompe e amortece \"forças mágicas\". É o que diz o guia."
 	icon = 'icons/obj/weapons/staff.dmi'
 	icon_state = "nullrod"
 	inhand_icon_state = "nullrod"
@@ -70,7 +62,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	SSblackbox.record_feedback("tally", "chaplain_weapon", 1, "[new_holy_weapon.name]")
 
 /obj/item/nullrod/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is killing [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to get closer to god!"))
+	user.visible_message(span_suicide("[user]está matando[user.p_them()]ego com[src]Parece que...[user.p_theyre()]Tentando chegar mais perto de Deus!"))
 	return (BRUTELOSS|FIRELOSS)
 
 
@@ -83,7 +75,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/claymore
 	name = "holy claymore"
-	desc = "A weapon fit for a crusade!"
+	desc = "Uma arma adequada para uma cruzada!"
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "claymore_gold"
 	inhand_icon_state = "claymore_gold"
@@ -99,7 +91,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	hitsound = 'sound/items/weapons/bladeslice.ogg'
 	attack_verb_continuous = list("attacks", "slashes", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "slice", "tear", "lacerate", "rip", "dice", "cut")
-	menu_description = "A sharp claymore which provides a low chance of blocking incoming melee attacks. Can be worn on the back or belt."
+	menu_description = "Um claymore afiado que proporciona uma baixa chance de bloquear ataques melee. Pode ser usado nas costas ou no cinto."
 	var/list/alt_continuous = list("stabs", "pierces", "impales")
 	var/list/alt_simple = list("stab", "pierce", "impale")
 
@@ -116,7 +108,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/claymore/darkblade
 	name = "dark blade"
-	desc = "Spread the glory of the dark gods!"
+	desc = "Espalhem a glória dos deuses das trevas!"
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "cultblade"
 	inhand_icon_state = "cultblade"
@@ -127,11 +119,11 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	hitsound = 'sound/effects/hallucinations/growl1.ogg'
-	menu_description = "A sharp blade which provides a low chance of blocking incoming melee attacks. Can be worn on the back or belt."
+	menu_description = "Uma lâmina afiada que proporciona uma baixa chance de bloquear ataques melee. Pode ser usado nas costas ou no cinto."
 
 /obj/item/nullrod/claymore/chainsaw_sword
 	name = "sacred chainsaw sword"
-	desc = "Suffer not a heretic to live."
+	desc = "Não sofra um herege para viver."
 	icon_state = "chainswordon"
 	inhand_icon_state = "chainswordon"
 	worn_icon_state = "chainswordon"
@@ -141,19 +133,19 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	hitsound = 'sound/items/weapons/chainsawhit.ogg'
 	tool_behaviour = TOOL_SAW
 	toolspeed = 1.5 //slower than a real saw
-	menu_description = "A sharp chainsaw sword which provides a low chance of blocking incoming melee attacks. Can be used as a slower saw tool. Can be worn on the belt."
+	menu_description = "Uma espada cortante que proporciona uma baixa chance de bloquear ataques de melee. Pode ser usado como uma ferramenta de serra mais lenta. Pode ser usado no cinto."
 
 /obj/item/nullrod/claymore/glowing
 	name = "force weapon"
-	desc = "The blade glows with the power of faith. Or possibly a battery."
+	desc = "A lâmina brilha com o poder da fé. Ou possivelmente uma bateria."
 	icon_state = "swordon"
 	inhand_icon_state = "swordon"
 	worn_icon_state = "swordon"
-	menu_description = "A sharp weapon which provides a low chance of blocking incoming melee attacks. Can be worn on the back or belt."
+	menu_description = "Uma arma afiada que proporciona baixa chance de bloquear ataques de melee. Pode ser usado nas costas ou no cinto."
 
 /obj/item/nullrod/claymore/katana
 	name = "\improper Hanzo steel"
-	desc = "Capable of cutting clean through a holy claymore."
+	desc = "Capaz de cortar através de um barro sagrado."
 	icon_state = "katana"
 	inhand_icon_state = "katana"
 	pickup_sound = 'sound/items/unsheath.ogg'
@@ -162,13 +154,13 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/claymore/multiverse
 	name = "extradimensional blade"
-	desc = "Once the harbinger of an interdimensional war, its sharpness fluctuates wildly."
+	desc = "Uma vez que o prenúncio de uma guerra interdimensional, sua nitidez flutua selvagemmente."
 	icon_state = "multiverse"
 	inhand_icon_state = "multiverse"
 	worn_icon_state = "multiverse"
 	slot_flags = ITEM_SLOT_BACK
 	force = 15
-	menu_description = "An odd sharp blade which provides a low chance of blocking incoming melee attacks and deals a random amount of damage, which can range from almost nothing to very high. Can be worn on the back."
+	menu_description = "Uma estranha lâmina afiada que proporciona uma baixa chance de bloquear ataques e causar uma quantidade aleatória de danos, que pode variar de quase nada a muito alto. Pode ser usado atrás."
 
 /obj/item/nullrod/claymore/multiverse/pre_attack(atom/target, mob/living/user, list/modifiers, list/attack_modifiers)
 	SET_ATTACK_FORCE(attack_modifiers, rand(max(force - 15, 1), force + 15))
@@ -176,7 +168,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/claymore/spellblade
 	name = "dormant spellblade"
-	desc = "The blade grants the wielder nearly limitless power...if they can figure out how to turn it on, that is."
+	desc = "A lâmina dá ao empunhador poder quase ilimitado... se eles podem descobrir como ligá-lo, isto é."
 	icon = 'icons/obj/weapons/guns/magic.dmi'
 	icon_state = "spellblade"
 	inhand_icon_state = "spellblade"
@@ -185,11 +177,11 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	worn_icon_state = "spellblade"
 	hitsound = 'sound/items/weapons/rapierhit.ogg'
-	menu_description = "A sharp blade which provides a low chance of blocking incoming melee attacks. Can be worn on the back."
+	menu_description = "Uma lâmina afiada que proporciona uma baixa chance de bloquear ataques melee. Pode ser usado atrás."
 
 /obj/item/nullrod/claymore/talking
 	name = "possessed blade"
-	desc = "When the station falls into chaos, it's nice to have a friend by your side."
+	desc = "Quando a estação cai no caos, é bom ter um amigo ao seu lado."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "talking_sword"
 	inhand_icon_state = "talking_sword"
@@ -201,7 +193,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	attack_verb_continuous = list("chops", "slices", "cuts")
 	attack_verb_simple= list("chop", "slice", "cut")
 	hitsound = 'sound/items/weapons/rapierhit.ogg'
-	menu_description = "A sharp blade which provides a low chance of blocking incoming melee attacks. Able to awaken a friendly spirit to provide guidance. Can be worn on the back."
+	menu_description = "Uma lâmina afiada que proporciona uma baixa chance de bloquear ataques melee. Capaz de despertar um espírito amigável para fornecer orientação. Pode ser usado atrás."
 
 /obj/item/nullrod/claymore/talking/Initialize(mapload)
 	. = ..()
@@ -209,7 +201,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/claymore/talking/chainsword
 	name = "possessed chainsaw sword"
-	desc = "Suffer not a heretic to live."
+	desc = "Não sofra um herege para viver."
 	icon_state = "chainswordon"
 	inhand_icon_state = "chainswordon"
 	worn_icon_state = "chainswordon"
@@ -226,14 +218,11 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	. = ..()
 	AddElement(/datum/element/cuffable_item) //Thanks goodness it cannot be selected by chappies
 	AddComponent(
-		/datum/component/butchering, \
-		speed = 7 SECONDS, \
-		effectiveness = 110, \
-	)
+		/datum/component/butchering, 		speed = 7 SECONDS, 		effectiveness = 110, 	)
 
 /obj/item/nullrod/claymore/heretic
 	name = "occultist's khopesh"
-	desc = "Steels your hand to slay foes beyond comprehension."
+	desc = "Faz sua mão matar inimigos além da compreensão."
 	icon = 'icons/obj/weapons/khopesh.dmi'
 	icon_state = "eldritch_blade"
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
@@ -242,7 +231,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	inhand_y_dimension = 64
 	inhand_icon_state = "eldritch_blade"
 	worn_icon_state = "eldritch_blade"
-	menu_description = "A sharp curved blade which provides a low chance of blocking incoming melee attacks. Can be worn on the back or belt."
+	menu_description = "Uma lâmina curva afiada que proporciona uma baixa chance de bloquear ataques de melee. Pode ser usado nas costas ou no cinto."
 
 /// Other Variants
 /// Not a special category on their own, but usually possess more unique mechanics
@@ -251,7 +240,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/vibro
 	name = "high frequency blade"
-	desc = "Bad references are the DNA of the soul."
+	desc = "Más referências são o DNA da alma."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "hfrequency0"
 	inhand_icon_state = "hfrequency0"
@@ -270,7 +259,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	attack_verb_simple = list("chop", "slice", "cut", "zandatsu")
 	hitsound = 'sound/items/weapons/rapierhit.ogg'
 	block_sound = 'sound/items/weapons/parry.ogg'
-	menu_description = "A sharp blade which partially penetrates armor. Unusualy adept at blocking melee attacks from exosuits. Very effective at butchering bodies. Can be worn on the back."
+	menu_description = "Uma lâmina afiada que penetra parcialmente na armadura. Incomum adepto em bloquear ataques melee de exossuits. Muito eficaz em massacrar corpos. Pode ser usado atrás."
 	var/list/alt_continuous = list("stabs", "pierces", "impales")
 	var/list/alt_simple = list("stab", "pierce", "impale")
 
@@ -279,19 +268,13 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	alt_continuous = string_list(alt_continuous)
 	alt_simple = string_list(alt_simple)
 	AddComponent(/datum/component/alternative_sharpness, SHARP_POINTY, alt_continuous, alt_simple, -3)
-	AddComponent(/datum/component/two_handed, \
-		force_unwielded = 10, \
-		force_wielded = 18, \
-	)
+	AddComponent(/datum/component/two_handed, 		force_unwielded = 10, 		force_wielded = 18, 	)
 	AddComponent(
-		/datum/component/butchering, \
-		speed = 7 SECONDS, \
-		effectiveness = 110, \
-	)
+		/datum/component/butchering, 		speed = 7 SECONDS, 		effectiveness = 110, 	)
 
 /obj/item/nullrod/vibro/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	if(prob(final_block_chance * (HAS_TRAIT(src, TRAIT_WIELDED) ? 2 : 1)) && attack_type == OVERWHELMING_ATTACK)
-		owner.visible_message(span_danger("[owner] parries [attack_text] with [src]!"))
+		owner.visible_message(span_danger("[owner]Parries[attack_text]Com[src]!"))
 		return TRUE
 	return FALSE
 
@@ -303,7 +286,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/godhand
 	name = "god hand"
-	desc = "This hand of yours glows with an awesome power!"
+	desc = "Essa sua mão brilha com um poder incrível!"
 	icon = 'icons/obj/weapons/hand.dmi'
 	icon_state = "disintegrate"
 	inhand_icon_state = "disintegrate"
@@ -317,7 +300,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	damtype = BURN
 	attack_verb_continuous = list("punches", "cross counters", "pummels")
 	attack_verb_simple = list(SFX_PUNCH, "cross counter", "pummel")
-	menu_description = "An undroppable god hand dealing burn damage. Disappears if the arm holding it is cut off."
+	menu_description = "Uma mão de Deus indestrutível que lida com danos. Desaparece se o braço que segura for cortado."
 
 /obj/item/nullrod/godhand/Initialize(mapload)
 	. = ..()
@@ -327,7 +310,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/staff
 	name = "red holy staff"
-	desc = "It has a mysterious, protective aura."
+	desc = "Tem uma misteriosa aura protetora."
 	icon = 'icons/obj/weapons/staff.dmi'
 	icon_state = "godstaff-red"
 	inhand_icon_state = "godstaff-red"
@@ -339,7 +322,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	slot_flags = ITEM_SLOT_BACK
 	block_chance = 50
 	block_sound = 'sound/items/weapons/genhit.ogg'
-	menu_description = "A red staff which provides a medium chance of blocking incoming attacks via a protective red aura around its user, but deals very low amount of damage. Can be worn only on the back."
+	menu_description = "Uma equipe vermelha que oferece uma chance média de bloquear ataques por uma aura vermelha protetora em torno de seu usuário, mas causa muito pouco dano. Pode ser usado apenas na parte de trás."
 	/// The icon which appears over the mob holding the item
 	var/shield_icon = "shield-red"
 
@@ -353,13 +336,13 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	icon_state = "godstaff-blue"
 	inhand_icon_state = "godstaff-blue"
 	shield_icon = "shield-old"
-	menu_description = "A blue staff which provides a medium chance of blocking incoming attacks via a protective blue aura around its user, but deals very low amount of damage. Can be worn only on the back."
+	menu_description = "Uma equipe azul que oferece uma chance média de bloquear ataques por uma aura azul protetora em torno de seu usuário, mas causa muito baixa quantidade de danos. Pode ser usado apenas na parte de trás."
 
 // SORD - It is unspeakably shitty.
 
 /obj/item/nullrod/sord
 	name = "\improper UNREAL SORD"
-	desc = "This thing is so unspeakably HOLY you are having a hard time even holding it."
+	desc = "Essa coisa é tão indescritivelmente sagrada que você está tendo dificuldade em segurá-la."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "sord"
 	inhand_icon_state = "sord"
@@ -373,18 +356,17 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	hitsound = 'sound/items/weapons/bladeslice.ogg'
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
-	menu_description = "An odd s(w)ord dealing a laughable amount of damage. Fits in pockets. Can be worn on the belt."
+	menu_description = "Um s (w)ord estranho traficando uma quantidade risível de danos. Encaixa nos bolsos. Pode ser usado no cinto."
 
 /obj/item/nullrod/sord/suicide_act(mob/living/user) //a near-exact copy+paste of the actual sord suicide_act()
-	user.visible_message(span_suicide("[user] is trying to impale [user.p_them()]self with [src]! It might be a suicide attempt if it weren't so HOLY."), \
-	span_suicide("You try to impale yourself with [src], but it's TOO HOLY..."))
+	user.visible_message(span_suicide("[user]Está tentando empalar[user.p_them()]ego com[src]! Poderia ser uma tentativa de suicídio se não fosse tão santo."), 	span_suicide("Você tenta empalar-se com[src], mas é muito santo ..."))
 	return SHAME
 
 // Relic War Hammer - Nothing special.
 
 /obj/item/nullrod/hammer
 	name = "relic war hammer"
-	desc = "This war hammer cost the chaplain forty thousand space dollars."
+	desc = "Este martelo de guerra custou 40 mil dólares ao capelão."
 	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "hammeron"
 	inhand_icon_state = "hammeron"
@@ -395,7 +377,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	w_class = WEIGHT_CLASS_BULKY
 	attack_verb_continuous = list("smashes", "bashes", "hammers", "crunches")
 	attack_verb_simple = list("smash", "bash", "hammer", "crunch")
-	menu_description = "A war hammer. Capable of tapping knees to measure brain health. Can be worn on the belt."
+	menu_description = "Um martelo de guerra. Capaz de bater nos joelhos para medir a saúde cerebral. Pode ser usado no cinto."
 
 /obj/item/nullrod/hammer/Initialize(mapload)
 	. = ..()
@@ -405,7 +387,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/chainsaw
 	name = "chainsaw hand"
-	desc = "Good? Bad? You're the guy with the chainsaw hand."
+	desc = "Bom? Ruim? Você é o cara com a motosserra."
 	icon = 'icons/obj/weapons/chainsaw.dmi'
 	icon_state = "chainsaw_on"
 	base_icon_state = "chainsaw_on"
@@ -421,24 +403,19 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	hitsound = 'sound/items/weapons/chainsawhit.ogg'
 	tool_behaviour = TOOL_SAW
 	toolspeed = 2 //slower than a real saw
-	menu_description = "An undroppable sharp chainsaw hand. Can be used as a very slow saw tool. Capable of slowly butchering bodies. Disappears if the arm holding it is cut off."
+	menu_description = "Uma mão de motosserra afiada. Pode ser usado como uma ferramenta de serra muito lenta. Capaz de matar corpos lentamente. Desaparece se o braço que segura for cortado."
 
 /obj/item/nullrod/chainsaw/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/prosthetic_icon, "mounted", 180)
-	AddComponent(/datum/component/butchering, \
-		speed = 3 SECONDS, \
-		effectiveness = 100, \
-		bonus_modifier = 0, \
-		butcher_sound = hitsound, \
-	)
+	AddComponent(/datum/component/butchering, 		speed = 3 SECONDS, 		effectiveness = 100, 		bonus_modifier = 0, 		butcher_sound = hitsound, 	)
 	RegisterSignal(src, COMSIG_ITEM_SUBTYPE_PICKER_SELECTED, PROC_REF(on_selected))
 
 /obj/item/nullrod/chainsaw/proc/on_selected(datum/source, obj/item/nullrod/old_weapon, mob/living/picker)
 	SIGNAL_HANDLER
 	if(!iscarbon(picker))
 		return
-	to_chat(picker, span_warning("[src] takes the place of your arm!"))
+	to_chat(picker, span_warning("[src]Tome o lugar do seu braço!"))
 	var/obj/item/bodypart/active = picker.get_active_hand()
 	var/mob/living/carbon/new_hero = picker
 	new_hero.make_item_prosthetic(src, active.body_zone)
@@ -449,7 +426,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 		return
 	if(!(slot & ITEM_SLOT_HANDS))
 		return
-	to_chat(user, span_warning("As you lay your hands on [src], it latches onto your arm!"))
+	to_chat(user, span_warning("Enquanto você coloca suas mãos[src], ele trava em seu braço!"))
 	var/obj/item/bodypart/active = user.get_active_hand()
 	user.make_item_prosthetic(src, active.body_zone)
 
@@ -457,7 +434,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/clown
 	name = "clown dagger"
-	desc = "Used for absolutely hilarious sacrifices."
+	desc = "Usado para sacrifícios hilários."
 	icon = 'icons/obj/weapons/khopesh.dmi'
 	icon_state = "clownrender"
 	inhand_icon_state = "cultdagger"
@@ -469,7 +446,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	sharpness = SHARP_EDGED
 	attack_verb_continuous = list("attacks", "slashes", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "slice", "tear", "lacerate", "rip", "dice", "cut")
-	menu_description = "A sharp dagger. Fits in pockets. Can be worn on the belt. Honk."
+	menu_description = "Uma adaga afiada. Encaixa em bolsos. Pode ser usado no cinto. Honk."
 
 // Pride-struck Hammer - Transfers reagents in your body to those you hit.
 
@@ -477,7 +454,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/pride_hammer
 	name = "Pride-struck Hammer"
-	desc = "It resonates an aura of Pride."
+	desc = "Ressoa uma aura do orgulho."
 	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "pride"
 	inhand_icon_state = "pride"
@@ -492,17 +469,13 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	attack_verb_continuous = list("attacks", "smashes", "crushes", "splatters", "cracks")
 	attack_verb_simple = list("attack", "smash", "crush", "splatter", "crack")
 	hitsound = 'sound/items/weapons/blade1.ogg'
-	menu_description = "A hammer dealing a little less damage due to its user's pride. Has a low chance of transferring some of the user's reagents to the target. Capable of tapping knees to measure brain health. Can be worn on the back."
+	menu_description = "Um martelo traficando menos danos devido ao orgulho de seu usuário. Tem poucas chances de transferir alguns reagentes para o alvo. Capaz de bater nos joelhos para medir a saúde cerebral. Pode ser usado atrás."
 
 /obj/item/nullrod/pride_hammer/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/kneejerk)
 	AddElement(
-		/datum/element/chemical_transfer,\
-		span_notice("Your pride reflects on %VICTIM."),\
-		span_userdanger("You feel insecure, taking on %ATTACKER's burden."),\
-		CHEMICAL_TRANSFER_CHANCE\
-	)
+		/datum/element/chemical_transfer,		span_notice("Seu orgulho reflete em %VICTIM."),		span_userdanger("Você se sente inseguro, assumindo o fardo do Attacker."),		CHEMICAL_TRANSFER_CHANCE	)
 
 #undef CHEMICAL_TRANSFER_CHANCE
 
@@ -510,7 +483,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/whip
 	name = "holy whip"
-	desc = "What a terrible night to be on Space Station 13."
+	desc = "Que noite terrível para estar na Estação Espacial 13."
 	icon = 'icons/obj/weapons/whip.dmi'
 	icon_state = "chain"
 	inhand_icon_state = "chain"
@@ -522,13 +495,13 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	attack_verb_continuous = list("whips", "lashes")
 	attack_verb_simple = list("whip", "lash")
 	hitsound = 'sound/items/weapons/chainhit.ogg'
-	menu_description = "A whip. Deals extra damage to vampires. Fits in pockets. Can be worn on the belt."
+	menu_description = "Um chicote. Dá dano extra a vampiros. Encaixa em bolsos. Pode ser usado no cinto."
 
 // Atheist's Fedora - Wear it on your head. No melee damage, massive throw force.
 
 /obj/item/nullrod/fedora
 	name = "atheist's fedora"
-	desc = "The brim of the hat is as sharp as your wit. The edge would hurt almost as much as disproving the existence of God."
+	desc = "A borda do chapéu é tão afiada quanto sua inteligência. A borda doeria quase tanto quanto refutar a existência de Deus."
 	icon_state = "fedora"
 	inhand_icon_state = "fedora"
 	slot_flags = ITEM_SLOT_HEAD
@@ -543,17 +516,17 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	sharpness = SHARP_EDGED
 	attack_verb_continuous = list("enlightens", "redpills")
 	attack_verb_simple = list("enlighten", "redpill")
-	menu_description = "A sharp fedora dealing a very high amount of throw damage, but none of melee. Fits in pockets. Can be worn on the head, obviously."
+	menu_description = "Um fedora afiada traficando uma grande quantidade de danos, mas nenhum de mime. Encaixa em bolsos. Pode ser usado na cabeça, obviamente."
 
 /obj/item/nullrod/fedora/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is killing [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to get further from god!"))
+	user.visible_message(span_suicide("[user]está matando[user.p_them()]ego com[src]Parece que...[user.p_theyre()]Tentando mais longe de Deus!"))
 	return (BRUTELOSS|FIRELOSS)
 
 // Dark Blessing - Replaces your arm with an armblade. Cannot be dropped.
 
 /obj/item/nullrod/armblade
 	name = "dark blessing"
-	desc = "Particularly twisted deities grant gifts of dubious value."
+	desc = "Deidades especialmente distorcidas dão presentes de valor duvidoso."
 	icon = 'icons/obj/weapons/changeling_items.dmi'
 	icon_state = "arm_blade"
 	inhand_icon_state = "arm_blade"
@@ -567,15 +540,12 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	sharpness = SHARP_EDGED
 	wound_bonus = -20
 	exposed_wound_bonus = 25
-	menu_description = "An undroppable sharp armblade capable of inflicting deep wounds. Capable of an ineffective butchering of bodies. Disappears if the arm holding it is cut off."
+	menu_description = "Uma lâmina afiada e sem gota capaz de causar ferimentos profundos. Capaz de um massacre ineficaz de corpos. Desaparece se o braço que segura for cortado."
 
 /obj/item/nullrod/armblade/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
-	AddComponent(/datum/component/butchering, \
-	speed = 8 SECONDS, \
-	effectiveness = 70, \
-	)
+	AddComponent(/datum/component/butchering, 	speed = 8 SECONDS, 	effectiveness = 70, 	)
 
 // Unholy Blessing - Just a reskinned dark blessing.
 
@@ -583,13 +553,13 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	name = "unholy blessing"
 	icon_state = "tentacle"
 	inhand_icon_state = "tentacle"
-	menu_description = "An undroppable sharp tentacle capable of inflicting deep wounds. Capable of an ineffective butchering of bodies. Disappears if the arm holding it is cut off."
+	menu_description = "Um tentáculo afiado e improvável capaz de causar feridas profundas. Capaz de um massacre ineficaz de corpos. Desaparece se o braço que segura for cortado."
 
 // Carp-sie Plushie - Gives you the carp faction so that you can be friends with carp.
 
 /obj/item/toy/plush/carpplushie/nullrod
 	name = "carp-sie plushie"
-	desc = "An adorable stuffed toy that resembles the god of all carp. The teeth look pretty sharp. Activate it to receive the blessing of Carp-Sie."
+	desc = "Um adorável brinquedo de pelúcia que se parece com o deus da carpa. Os dentes parecem bem afiados. Ative-o para receber a bênção da Carpa-Sie."
 	worn_icon_state = "nullrod"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
@@ -601,13 +571,13 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 /obj/item/toy/plush/carpplushie/nullrod/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/nullrod_core)
-	AddComponent(/datum/component/faction_granter, FACTION_CARP, holy_role_required = HOLY_ROLE_PRIEST, grant_message = span_boldnotice("You are blessed by Carp-Sie. Wild space carp will no longer attack you."))
+	AddComponent(/datum/component/faction_granter, FACTION_CARP, holy_role_required = HOLY_ROLE_PRIEST, grant_message = span_boldnotice("Você é abençoado pela Carp-Sie. A carpa espacial selvagem não vai mais te atacar."))
 
 // Monk's Staff - Good block, two-handed. Great for showing off.
 
 /obj/item/nullrod/bostaff
 	name = "monk's staff"
-	desc = "A long, tall staff made of polished wood. Traditionally used in ancient old-Earth martial arts, it is now used to harass the clown."
+	desc = "Um cajado longo e alto feito de madeira polida. Tradicionalmente usado em artes marciais antigas da Terra, agora é usado para assediar o palhaço."
 	force = 10
 	block_chance = 40
 	block_sound = 'sound/items/weapons/genhit.ogg'
@@ -624,14 +594,11 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	icon_angle = -135
 	lefthand_file = 'icons/mob/inhands/weapons/staves_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/staves_righthand.dmi'
-	menu_description = "A staff which provides a medium-low chance of blocking incoming melee attacks and deals less damage, unless dual-wielded. Can be worn on the back."
+	menu_description = "Uma equipe que oferece uma chance média baixa de bloquear ataques e causar menos danos, a menos que seja dupla. Pode ser usado atrás."
 
 /obj/item/nullrod/bostaff/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/two_handed, \
-		force_unwielded = 14, \
-		force_wielded = 18, \
-	)
+	AddComponent(/datum/component/two_handed, 		force_unwielded = 14, 		force_wielded = 18, 	)
 
 /obj/item/nullrod/bostaff/update_icon_state()
 	icon_state = inhand_icon_state = "[base_icon_state][HAS_TRAIT(src, TRAIT_WIELDED)]"
@@ -646,7 +613,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/tribal_knife
 	name = "arrhythmic knife"
-	desc = "They say fear is the true mind killer, but stabbing them in the head works too. Honour compels you to not sheathe it once drawn."
+	desc = "Dizem que o medo é o verdadeiro assassino mental, mas esfaqueá-los também funciona. A honra o obriga a não relembrar uma vez."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "crysknife"
 	inhand_icon_state = "crysknife"
@@ -660,7 +627,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	attack_verb_continuous = list("attacks", "slashes", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	item_flags = SLOWS_WHILE_IN_HAND
-	menu_description = "A sharp knife. Randomly speeds or slows its user at a regular intervals. Capable of butchering bodies. Cannot be worn anywhere."
+	menu_description = "Uma faca afiada. Aleatoriamente acelera ou retarda seu usuário em intervalos regulares. Capaz de matar corpos. Não pode ser usado em lugar algum."
 	var/list/alt_continuous = list("stabs", "pierces", "impales")
 	var/list/alt_simple = list("stab", "pierce", "impale")
 
@@ -670,10 +637,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	alt_continuous = string_list(alt_continuous)
 	alt_simple = string_list(alt_simple)
 	AddComponent(/datum/component/alternative_sharpness, SHARP_POINTY, alt_continuous, alt_simple, -3)
-	AddComponent(/datum/component/butchering, \
-	speed = 5 SECONDS, \
-	effectiveness = 100, \
-	)
+	AddComponent(/datum/component/butchering, 	speed = 5 SECONDS, 	effectiveness = 100, 	)
 
 /obj/item/nullrod/tribal_knife/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -690,7 +654,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/pitchfork
 	name = "unholy pitchfork"
-	desc = "Holding this makes you look absolutely devilish."
+	desc = "Segurar isso faz você parecer absolutamente diabólico."
 	icon = 'icons/obj/weapons/spear.dmi'
 	icon_state = "pitchfork0"
 	inhand_icon_state = "pitchfork0"
@@ -704,13 +668,13 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	attack_verb_simple = list("poke", "impale", "pierce", "jab")
 	hitsound = 'sound/items/weapons/bladeslice.ogg'
 	sharpness = SHARP_EDGED
-	menu_description = "A sharp pitchfork. Can be worn on the back."
+	menu_description = "Um garfo afiado. Pode ser usado atrás."
 
 // Egyptian Staff - Used as a tool for making mummy wraps.
 
 /obj/item/nullrod/egyptian
 	name = "egyptian staff"
-	desc = "A tutorial in mummification is carved into the staff. You could probably craft the wraps if you had some cloth."
+	desc = "Um tutorial de mumificação é esculpido na equipe. Você provavelmente poderia preparar os envoltórios se tivesse algum pano."
 	icon = 'icons/obj/weapons/guns/magic.dmi'
 	icon_state = "pharoah_sceptre"
 	inhand_icon_state = "pharoah_sceptre"
@@ -721,13 +685,13 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	slot_flags = ITEM_SLOT_BACK
 	attack_verb_continuous = list("bashes", "smacks", "whacks")
 	attack_verb_simple = list("bash", "smack", "whack")
-	menu_description = "A staff. Can be used as a tool to craft exclusive egyptian items. Easily stored. Can be worn on the back."
+	menu_description = "Uma equipe. Pode ser usado como ferramenta para criar itens egípcios exclusivos. Facilmente armazenado. Pode ser usado atrás."
 
 // Hypertool - It does brain damage rather than normal damage.
 
 /obj/item/nullrod/hypertool
 	name = "hypertool"
-	desc = "A tool so powerful even you cannot perfectly use it."
+	desc = "Uma ferramenta tão poderosa que nem você pode usá-la perfeitamente."
 	icon = 'icons/obj/weapons/club.dmi'
 	icon_state = "hypertool"
 	inhand_icon_state = "hypertool"
@@ -741,13 +705,13 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	attack_verb_continuous = list("pulses", "mends", "cuts")
 	attack_verb_simple = list("pulse", "mend", "cut")
 	hitsound = 'sound/effects/sparks/sparks4.ogg'
-	menu_description = "A tool dealing brain damage which partially penetrates armor. Fits in pockets. Can be worn on the belt."
+	menu_description = "Uma ferramenta que lida com danos cerebrais que penetra parcialmente na armadura. Encaixa nos bolsos. Pode ser usado no cinto."
 
 // Ancient Spear - Slight armor penetration, based on the Brass Spear from the Clockcult game mode.
 
 /obj/item/nullrod/spear
 	name = "ancient spear"
-	desc = "An ancient spear made of brass, I mean gold, I mean bronze. It looks highly mechanical."
+	desc = "Uma lança antiga feita de bronze, quero dizer ouro, quero dizer bronze. Parece altamente mecânico."
 	icon = 'icons/obj/weapons/spear.dmi'
 	icon_state = "ratvarian_spear"
 	inhand_icon_state = "ratvarian_spear"
@@ -761,13 +725,13 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	attack_verb_continuous = list("stabs", "pokes", "slashes", "clocks")
 	attack_verb_simple = list("stab", "poke", "slash", "clock")
 	hitsound = 'sound/items/weapons/bladeslice.ogg'
-	menu_description = "A pointy spear which penetrates armor a little. Can be worn only on the belt."
+	menu_description = "Uma lança pontuda que penetra um pouco na armadura. Só pode ser usado no cinto."
 
 // Unholy version of above, since the gamemode is dead in the water
 
 /obj/item/brass_spear
 	name = "dull brass spear"
-	desc = "An ancient spear made of brass. The point seems sharp, but it feels so dull.. you get a feeling brass isn't good nonmagical material for a weapon."
+	desc = "Uma lança antiga feita de bronze. O ponto parece afiado, mas parece tão chato... que você sente que latão não é bom material não mágico para uma arma."
 	icon = 'icons/obj/weapons/spear.dmi'
 	icon_state = "ratvarian_spear"
 	inhand_icon_state = "ratvarian_spear"
@@ -790,7 +754,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/nullblade
 	name = "nullblade"
-	desc = "Clerical assassins are not officially recognized by the collective faiths of Nanotrasen. And yet, here you are."
+	desc = "Assassinos não são oficialmente reconhecidos pelas crenças coletivas de Nanotrasen. E ainda assim, aqui está você."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "nullsword"
 	inhand_icon_state = "nullsword"
@@ -808,9 +772,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	hitsound = 'sound/items/weapons/bladeslice.ogg'
 	attack_verb_continuous = list("attacks", "slashes", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slashes", "slice", "tear", "lacerate", "rip", "dice", "cut")
-	menu_description = "A blade that deals variable, low amounts of damage, but does easily inflict wounds. \
-		The stronger your swinging arm is, the stronger the blade is, though only slightly. \
-		Against debilitated targets, can also deal additional sneak attack damage with a very high wound chance."
+	menu_description = "Uma lâmina que lida com danos variáveis, mas facilmente inflige ferimentos. Quanto mais forte seu braço oscilante é, mais forte é a lâmina, embora apenas ligeiramente. Contra alvos debilitados, também pode lidar com danos adicionais de ataque com uma grande chance de ferimentos."
 
 	var/list/alt_continuous = list("stabs", "pierces", "impales", "punctures")
 	var/list/alt_simple = list("stab", "pierce", "impale", "puncture")
@@ -910,7 +872,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	/// And so we return here if we are not entitled to a sneak attack.
 	if(!successful_sneak_attack)
 		if(sneak_attack_fail_message)
-			user.balloon_alert(living_target, "sneak attack avoided!")
+			user.balloon_alert(living_target, "Ataque furtivo evitado!")
 		return
 
 	/// And now we'll deal with sneak attack damage modifiers.
@@ -941,5 +903,5 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 	// We got a sneak attack!
 	living_target.apply_damage(round(sneak_attack_dice, DAMAGE_PRECISION), BRUTE, def_zone = affecting, blocked = armor_block, wound_bonus = exposed_wound_bonus, sharpness = SHARP_EDGED)
-	living_target.balloon_alert(user, "sneak attack!")
+	living_target.balloon_alert(user, "Ataque furtivo!")
 	playsound(living_target, 'sound/items/weapons/guillotine.ogg', 50, TRUE)

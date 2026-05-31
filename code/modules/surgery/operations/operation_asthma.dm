@@ -3,7 +3,7 @@
 	// google says the *actual* operation used to relieve asthma is called bronchial thermoplasty but this operation doesn't resemble that at all
 	// local doctors suggested "bronchial dilatation" instead
 	rnd_name = "Bronchial Dilatation (Asthmatic Bypass)"
-	desc = "Forcibly expand a patient's windpipe, relieving asthma symptoms."
+	desc = "Expandir a traqueia de um paciente, aliviando sintomas de asma."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP
 	implements = list(
 		TOOL_RETRACTOR = 1.25,
@@ -29,9 +29,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You begin to stretch [organ.owner]'s windpipe, trying your best to avoid nearby blood vessels..."),
-		span_notice("[surgeon] begins to stretch [organ.owner]'s windpipe, taking care to avoid any nearby blood vessels."),
-		span_notice("[surgeon] begins to stretch [organ.owner]'s windpipe."),
+		span_notice("Você começa a se esticar[organ.owner]Traqueia, tentando evitar vasos sanguíneos próximos..."),
+		span_notice("[surgeon]começa a esticar[organ.owner]Traqueia, evitando vasos sanguíneos próximos."),
+		span_notice("[surgeon]começa a esticar[organ.owner]É traqueia."),
 	)
 	display_pain(organ.owner, "You feel an agonizing stretching sensation in your neck!")
 
@@ -45,9 +45,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You stretch [organ.owner]'s windpipe with [tool], managing to avoid the nearby blood vessels."),
-		span_notice("[surgeon] succeeds at stretching [organ.owner]'s windpipe with [tool], avoiding the nearby blood vessels."),
-		span_notice("[surgeon] finishes stretching [organ.owner]'s windpipe.")
+		span_notice("Você se estica.[organ.owner]É a traqueia com[tool], conseguindo evitar os vasos sanguíneos próximos."),
+		span_notice("[surgeon]Tem sucesso no alongamento.[organ.owner]É a traqueia com[tool], evitando os vasos sanguíneos próximos."),
+		span_notice("[surgeon]termina de esticar[organ.owner]É traqueia.")
 	)
 
 /datum/surgery_operation/organ/asthmatic_bypass/on_failure(obj/item/organ/lungs/organ, mob/living/surgeon, obj/item/tool, list/operation_args)
@@ -60,9 +60,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("You stretch [organ.owner]'s windpipe with [tool], but accidentally clip a few arteries!"),
-		span_warning("[surgeon] succeeds at stretching [organ.owner]'s windpipe with [tool], but accidentally clips a few arteries!"),
-		span_warning("[surgeon] finishes stretching [organ.owner]'s windpipe, but screws up!"),
+		span_warning("Você se estica.[organ.owner]É a traqueia com[tool], mas acidentalmente cortar algumas artérias!"),
+		span_warning("[surgeon]Tem sucesso no alongamento.[organ.owner]É a traqueia com[tool]Mas acidentalmente corta algumas artérias!"),
+		span_warning("[surgeon]termina de esticar[organ.owner]É traqueia, mas estraga tudo!"),
 	)
 
 	organ.owner.losebreath++

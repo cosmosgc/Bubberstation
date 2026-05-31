@@ -95,7 +95,7 @@
 		if("id")
 			if(params["value"])
 				if(length(params["value"]) > 32)
-					to_chat(current_user, span_warning("Error: Machine ID too long!"))
+					to_chat(current_user, span_warning("Identificação da máquina muito longa!"))
 					playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, TRUE)
 					return
 				else
@@ -105,7 +105,7 @@
 		if("network")
 			if(params["value"])
 				if(length(params["value"]) > 15)
-					to_chat(current_user, span_warning("Error: Network name too long!"))
+					to_chat(current_user, span_warning("Nome de rede muito longo!"))
 					playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, TRUE)
 					return
 				else
@@ -120,7 +120,7 @@
 				tempfreq = text2num(params["value"]) * 10
 		if("freq")
 			if(tempfreq in banned_frequencies)
-				to_chat(current_user, span_warning("Error: Interference preventing filtering frequency: \"[tempfreq / 10] kHz\""))
+				to_chat(current_user, span_warning("Interferência impedindo a frequência de filtragem:\"[tempfreq / 10]kHz\""))
 				playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, TRUE)
 			else
 				if(!(tempfreq in freq_listening))

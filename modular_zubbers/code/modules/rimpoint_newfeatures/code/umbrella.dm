@@ -53,15 +53,7 @@
 	. = ..()
 	if(random_color)
 		set_greyscale(colors = list(pick(umbrella_colors)))
-	AddComponent( \
-		/datum/component/transforming, \
-		force_on = 7, \
-		hitsound_on = "sound/weapons/genhit1.ogg", \
-		w_class_on = WEIGHT_CLASS_BULKY, \
-		clumsy_check = FALSE, \
-		attack_verb_continuous_on = list("swooshes", "whacks", "fwumps"), \
-		attack_verb_simple_on = list("swoosh", "whack", "fwump"), \
-	)
+	AddComponent( 		/datum/component/transforming, 		force_on = 7, 		hitsound_on = "sound/weapons/genhit1.ogg", 		w_class_on = WEIGHT_CLASS_BULKY, 		clumsy_check = FALSE, 		attack_verb_continuous_on = list("swooshes", "whacks", "fwumps"), 		attack_verb_simple_on = list("swoosh", "whack", "fwump"), 	)
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
 /obj/item/umbrella/worn_overlays(mutable_appearance/standing, isinhands)
@@ -125,7 +117,7 @@
 
 /obj/item/umbrella/parasol
 	name = "parasol"
-	desc = "A black laced parsol, how intricate."
+	desc = "Um parsol redado preto, que intrincado."
 	icon = 'modular_zubbers/icons/obj/equipment/umbrella.dmi'
 	icon_state = "parasol"
 	inhand_icon_state = "parasol_closed"

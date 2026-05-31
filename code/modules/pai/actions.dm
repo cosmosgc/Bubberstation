@@ -85,7 +85,7 @@
 		return
 	var/obj/item/pai_card/pai_holder = owner.loc
 	if(!istype(pai_holder.loc, /obj/item/modular_computer))
-		owner.balloon_alert(owner, "not in a pda!")
+		owner.balloon_alert(owner, "Não em um PDA!")
 		return
 	var/obj/item/modular_computer/computer_host = pai_holder.loc
 	computer_host.interact(owner)

@@ -64,10 +64,8 @@
 ///Engine Breakdown - spend one engine part or wait 3 days (harmless emag effect)
 /datum/orion_event/engine_part
 	name = "Engine Breakdown"
-	text = "Oh no! The engine has broken down! \
-	You can repair it with an engine part, or you \
-	can make repairs for 3 days."
-	emag_message = span_warning("You hear some large object lurch to a halt right behind you! When you go to look, nothing's there...")
+	text = "Oh no! The engine has broken down! 	You can repair it with an engine part, or you 	can make repairs for 3 days."
+	emag_message = span_warning("Você ouve um objeto grande indo parar bem atrás de você! Quando você vai olhar, nada está lá...")
 	emag_sound = 'sound/effects/creak/creak1.ogg'
 	weight = 2
 	event_responses = list()
@@ -91,9 +89,7 @@
 ///Malfunction - spend one engine part or wait 3 days (emag effect randomizes some stats)
 /datum/orion_event/electronic_part
 	name = "Malfunction"
-	text = "The ship's systems are malfunctioning! \
-	You can replace the broken electronics with spares, \
-	or you can spend 3 days troubleshooting the AI."
+	text = "The ship's systems are malfunctioning! 	You can replace the broken electronics with spares, 	or you can spend 3 days troubleshooting the AI."
 	weight = 2
 	//set by select
 	event_responses = list()
@@ -114,7 +110,7 @@
 
 /datum/orion_event/electronic_part/emag_effect(obj/machinery/computer/arcade/orion_trail/game, mob/living/gamer)
 	playsound(game, 'sound/effects/empulse.ogg', 50, TRUE)
-	game.visible_message(span_danger("[game] malfunctions, randomizing in-game stats!"))
+	game.visible_message(span_danger("[game]Falhas, randomização de estatísticas no jogo!"))
 	var/oldfood = game.food
 	var/oldfuel = game.fuel
 	game.food = rand(10,80) / rand(1,2)
@@ -124,9 +120,9 @@
 
 /datum/orion_event/electronic_part/proc/revert_random(obj/machinery/computer/arcade/orion_trail/game, oldfood, oldfuel)
 	if(oldfuel > game.fuel && oldfood > game.food)
-		game.audible_message(span_danger("[game] lets out a somehow reassuring chime."))
+		game.audible_message(span_danger("[game]Deixa Sair Um Tom Confortante."))
 	else if(oldfuel < game.fuel || oldfood < game.food)
-		game.audible_message(span_danger("[game] lets out a somehow ominous chime."))
+		game.audible_message(span_danger("[game]Deixa Sair Um Tom Sinistro."))
 	game.food = oldfood
 	game.fuel = oldfuel
 	playsound(game, 'sound/machines/chime.ogg', 50, TRUE)
@@ -136,9 +132,7 @@
 ///Collision - spend one engine part or wait 3 days (has a nasty emag effect)
 /datum/orion_event/hull_part
 	name = "Collision"
-	text = "Something hit us! Looks like there's some hull damage. \
-	You can repair the damage with hull plates, or you can spend \
-	the next 3 days welding scrap together."
+	text = "Something hit us! Looks like there's some hull damage. 	You can repair the damage with hull plates, or you can spend 	the next 3 days welding scrap together."
 	weight = 2
 	event_responses = list()
 
@@ -179,8 +173,7 @@
 
 /datum/orion_event/old_ship
 	name = "Derelict Ship"
-	text = "Your crew spots an old ship floating through space. \
-	It might have some supplies, but then again it looks rather unsafe."
+	text = "Your crew spots an old ship floating through space. 	It might have some supplies, but then again it looks rather unsafe."
 	weight = 2
 	event_responses = list(BUTTON_EXPLORE_SHIP, BUTTON_LEAVE_THE_DERELICT)
 
@@ -212,8 +205,7 @@
 			var/oldfuel = rand(4,10)
 			game.food += oldfood
 			game.fuel += oldfuel
-			text = "As you look through it you find some supplies and a living person! \
-			[rescued] was rescued from the abandoned ship! You also found [oldfood] Food and [oldfuel] Fuel."
+			text = "As you look through it you find some supplies and a living person! 			[rescued] was rescued from the abandoned ship! You also found [oldfood] Food and [oldfuel] Fuel."
 			event_responses += BUTTON_WELCOME_ABOARD
 		if(15 to 35)
 			var/lostfuel = rand(4,7)
@@ -259,10 +251,10 @@
 
 /datum/orion_event/raiders/emag_effect(obj/machinery/computer/arcade/orion_trail/game, mob/living/gamer)
 	if(prob(50-gamer_skill))
-		to_chat(usr, span_userdanger("You hear battle shouts. The tramping of boots on cold metal. Screams of agony. The rush of venting air. Are you going insane?"))
+		to_chat(usr, span_userdanger("Você ouve gritos de batalha. O pisoteamento de botas em metal frio. Gritos de agonia. A correria do ar. Você está ficando louco?"))
 		gamer.adjust_hallucinations(60 SECONDS)
 	else
-		to_chat(usr, span_userdanger("Something strikes you from behind! It hurts like hell and feel like a blunt weapon, but nothing is there..."))
+		to_chat(usr, span_userdanger("Algo te atinge por trás! Dói como o inferno e se sente como uma arma brusca, mas nada está lá..."))
 		gamer.take_bodypart_damage(30)
 		playsound(game, 'sound/items/weapons/genhit2.ogg', 100, TRUE)
 
@@ -283,14 +275,14 @@
 		maxSeverity = 2 //part of gitting gud is rng mitigation
 	var/severity = rand(1,maxSeverity) //pray to RNGesus. PRAY, PIGS
 	if(severity == 1)
-		to_chat(gamer, span_userdanger("You suddenly feel slightly nauseated.") )
+		to_chat(gamer, span_userdanger("Você de repente se sente um pouco enjoada.") )
 		gamer.adjust_disgust(50)
 	if(severity == 2)
-		to_chat(usr, span_userdanger("You suddenly feel extremely nauseated and hunch over until it passes."))
+		to_chat(usr, span_userdanger("Você se sente extremamente enjoado e se curva até que passe."))
 		gamer.adjust_disgust(110)
 		gamer.Stun(60)
 	if(severity >= 3) //you didn't pray hard enough
-		to_chat(gamer, span_warning("An overpowering wave of nausea consumes over you. You hunch over, your stomach's contents preparing for a spectacular exit."))
+		to_chat(gamer, span_warning("Uma onda enorme de náusea consome sobre você. Você se curva, seu estômago está se preparando para uma saída espetacular."))
 		gamer.adjust_disgust(150) //max this bitch out so they barf a lot
 		gamer.Stun(100)
 
@@ -299,8 +291,7 @@
 
 /datum/orion_event/flux
 	name = "Flux"
-	text = "This region of space is highly turbulent. If we go \
-	slowly we may avoid more damage, but if we keep our speed we won't waste supplies."
+	text = "This region of space is highly turbulent. If we go 	slowly we may avoid more damage, but if we keep our speed we won't waste supplies."
 	weight = 1
 	event_responses = list(BUTTON_KEEP_SPEED, BUTTON_SLOW_DOWN)
 
@@ -316,7 +307,7 @@
 
 /datum/orion_event/flux/emag_effect(obj/machinery/computer/arcade/orion_trail/game, mob/living/gamer)
 	if(prob(25 + gamer_skill))//withstand the wind with your GAMER SKILL
-		to_chat(gamer, span_userdanger("A violent gale blows past you, and you barely manage to stay standing!"))
+		to_chat(gamer, span_userdanger("Uma tempestade violenta passa por você, e você mal consegue ficar de pé!"))
 		return
 	gamer.Paralyze(60)
 	game.say("A sudden gust of powerful wind slams [gamer] into the floor!")
@@ -366,8 +357,7 @@
 
 	var/chance2attack = game.alive*20
 	if(!prob(chance2attack))
-		text += " [pick("Sensing unfavorable odds", "After a failed attack", "Suddenly breaking nerve")], \
-		the changeling[ling2 ? "s":""] vanish[ling2 ? "" : "es"] into space through the airlocks! You're safe... for now."
+		text += " [pick("Sensing unfavorable odds", "After a failed attack", "Suddenly breaking nerve")], 		the changeling[ling2 ? "s":""] vanish[ling2 ? "" : "es"] into space through the airlocks! You're safe... for now."
 		if(ling2)
 			game.lings_aboard = max(0,game.lings_aboard-2)
 		else
@@ -378,9 +368,7 @@
 	if(prob(chancetokill))
 		var/deadguy = game.remove_crewmember()
 		var/murder_text = pick(
-			"The changeling[ling2 ? "s" : ""] bring[ling2 ? "" : "s"] down [deadguy] and disembowel[ling2 ? "" : "s"] them in a spray of gore!", \
-			"[ling2 ? pick(ling1, ling2) : ling1] corners [deadguy] and impales them through the stomach!", \
-			"[ling2 ? pick(ling1, ling2) : ling1] decapitates [deadguy] in a single cleaving arc!")
+			"The changeling[ling2 ? "s" : ""] bring[ling2 ? "" : "s"] down [deadguy] and disembowel[ling2 ? "" : "s"] them in a spray of gore!", 			"[ling2 ? pick(ling1, ling2) : ling1] corners [deadguy] and impales them through the stomach!", 			"[ling2 ? pick(ling1, ling2) : ling1] decapitates [deadguy] in a single cleaving arc!")
 		text += " [murder_text]"
 	else
 		text += " You valiantly fight off the changeling[ling2 ? "s":""]!"
@@ -390,8 +378,7 @@
 		else
 			game.food += 15
 			game.lings_aboard = max(0, game.lings_aboard - 1)
-		text += " Well, it's perfectly good food... \
-			You cut the changeling[ling2 ? "s" : ""] into meat, gaining [ling2 ? "30" : "15"] Food!"
+		text += " Well, it's perfectly good food... 			You cut the changeling[ling2 ? "s" : ""] into meat, gaining [ling2 ? "30" : "15"] Food!"
 
 #define BUTTON_SPEED_PAST "Speed Past"
 #define BUTTON_GO_AROUND "Go Around"
@@ -399,10 +386,7 @@
 ///Black Hole - final  (emag can spawn singulo, see death event)
 /datum/orion_event/black_hole
 	name = "Looming Black Hole"
-	text = "Sensors indicate that a black hole's gravitational field is \
-	affecting the region of space we were headed through. We could stay \
-	of course, but risk of being overcome by its gravity, or we could \
-	change course to go around, which will take longer."
+	text = "Sensors indicate that a black hole's gravitational field is 	affecting the region of space we were headed through. We could stay 	of course, but risk of being overcome by its gravity, or we could 	change course to go around, which will take longer."
 	event_responses = list(BUTTON_SPEED_PAST, BUTTON_GO_AROUND)
 
 /datum/orion_event/black_hole/response(obj/machinery/computer/arcade/orion_trail/game, choice)
@@ -422,10 +406,7 @@
 ///You died to a black hole, have some fluff text
 /datum/orion_event/black_hole_death
 	name = "Event Horizon"
-	text = "As you jet the shuttle forward, you realize you underestimated the \
-	pull of the black hole. Try as you may, you cannot escape its stellar force. \
-	It isn't long before you pass the event horizon, and you close your eyes, readying \
-	to be torn apart as your ship begins to buckle under the pull."
+	text = "As you jet the shuttle forward, you realize you underestimated the 	pull of the black hole. Try as you may, you cannot escape its stellar force. 	It isn't long before you pass the event horizon, and you close your eyes, readying 	to be torn apart as your ship begins to buckle under the pull."
 	event_responses = list(BUTTON_OH)
 
 /datum/orion_event/black_hole_death/response(obj/machinery/computer/arcade/orion_trail/game, choice)
@@ -446,9 +427,7 @@
 ///You found a space port!
 /datum/orion_event/space_port
 	name = "Space Port"
-	var/normal_arrival = "You have spotted a small pocket of civilization \
-	along the Orion Trail. A friendly hailing from the nearby space port \
-	assures that you can dock to rest and prepare for the travels ahead."
+	var/normal_arrival = "You have spotted a small pocket of civilization 	along the Orion Trail. A friendly hailing from the nearby space port 	assures that you can dock to rest and prepare for the travels ahead."
 	weight = 2
 	event_responses = list(BUTTON_DOCK)
 
@@ -458,9 +437,7 @@
 	if(game.fuel > 20 && game.food > 20) //but you don't need one
 		text = normal_arrival
 		return
-	text = "The workers at the Port are shocked at the state of \
-	your pioneers. With supplies that low, they take pity on you and \
-	your crew, generously giving you some free supplies! "
+	text = "The workers at the Port are shocked at the state of 	your pioneers. With supplies that low, they take pity on you and 	your crew, generously giving you some free supplies! "
 
 
 	var/pity_fuel = 10
@@ -484,9 +461,7 @@
 ///You found the midway mark!
 /datum/orion_event/space_port/tau_ceti
 	name = "Tau Ceti Beta"
-	normal_arrival = "You have reached the halfway point in your journey, the largest space port \
-	along the trail: Tau Ceti Beta. It bustles with activity and life. It gives you hope \
-	of finding your future at Orion."
+	normal_arrival = "You have reached the halfway point in your journey, the largest space port 	along the trail: Tau Ceti Beta. It bustles with activity and life. It gives you hope 	of finding your future at Orion."
 	//triggered by getting halfway
 	weight = 0
 

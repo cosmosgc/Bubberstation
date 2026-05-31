@@ -6,7 +6,7 @@
  */
 /obj/item/disk/bitrunning
 	name = "generic bitrunning program"
-	desc = "A disk containing source code."
+	desc = "Um disco contendo código fonte."
 	base_icon_state = "datadisk"
 	icon_state = "datadisk0"
 	sticker_icon_state = "o_code"
@@ -19,30 +19,28 @@
 	icon_state = "[base_icon_state][rand(0, 7)]"
 	update_icon()
 
-	AddComponent(/datum/component/loads_avatar_gear, \
-		load_callback = CALLBACK(src, PROC_REF(load_onto_avatar)), \
-	)
+	AddComponent(/datum/component/loads_avatar_gear, 		load_callback = CALLBACK(src, PROC_REF(load_onto_avatar)), 	)
 
 /obj/item/disk/bitrunning/setup_reskins()
 	return
 
 /obj/item/disk/bitrunning/examine(mob/user)
 	. = ..()
-	. += span_infoplain("This disk must be carried on your person into a netpod to be used.")
+	. += span_infoplain("Este disco deve ser carregado em sua pessoa em um netpod para ser usado.")
 
 	if(isnull(choice_made))
-		. += span_notice("To make a selection, toggle the disk in hand.")
+		. += span_notice("Para fazer uma seleção, alternar o disco na mão.")
 		return
 
-	. += span_info("It has been used to select: <b>[choice_made]</b>.")
-	. += span_notice("It cannot make another selection.")
+	. += span_info("Foi usado para selecionar:<b>[choice_made]</b>.")
+	. += span_notice("Não pode fazer outra seleção.")
 
 /// Handles loading our stuff onto avatars
 /obj/item/disk/bitrunning/proc/load_onto_avatar(mob/living/carbon/human/neo, mob/living/carbon/human/avatar, domain_flags)
 	return NONE
 
 /obj/item/disk/bitrunning/ability
-	desc = "A disk containing source code. It can be used to preload abilities into the virtual domain. Duplicate abilities will be ignored."
+	desc = "Um disco contendo código fonte. Pode ser usado para pré-carregar habilidades no domínio virtual. Habilidades duplicadas serão ignoradas."
 	/// The selected ability that this grants
 	var/datum/action/granted_action
 	/// The list of actions that this can grant
@@ -114,7 +112,7 @@
 
 
 /obj/item/disk/bitrunning/item
-	desc = "A disk containing source code. It can be used to preload items into the virtual domain."
+	desc = "Um disco contendo código fonte. Pode ser usado para pré-carregar itens no domínio virtual."
 	/// The selected item that this grants
 	var/obj/granted_item
 	/// The list of actions that this can grant

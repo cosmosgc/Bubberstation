@@ -31,9 +31,9 @@ export const Adminhelp = (props) => {
   const [currentlyInputting, setCurrentlyInputting] = useState(false);
   const [ahelpMessage, setAhelpMessage] = useState('');
 
-  const confirmationText = 'alert admins';
+  const confirmationText = 'Alerte os administradores.';
   return (
-    <Window title="Create Adminhelp" theme="admin" height={300} width={500}>
+    <Window title="Criar ajuda administrativa" theme="admin" height={300} width={500}>
       <Window.Content
         style={{
           backgroundImage: 'none',
@@ -45,7 +45,7 @@ export const Adminhelp = (props) => {
               autoFocus
               height="100%"
               fluid
-              placeholder="Admin help"
+              placeholder="Ajuda de administração."
               onChange={setAhelpMessage}
             />
           </Stack.Item>
@@ -65,7 +65,7 @@ export const Adminhelp = (props) => {
                   >
                     Input &apos;{confirmationText}&apos; to proceed.
                     <Input
-                      placeholder="Confirmation Prompt"
+                      placeholder="Promessa de confirmação"
                       autoFocus
                       fluid
                       onChange={(value) => {
@@ -91,7 +91,7 @@ export const Adminhelp = (props) => {
                     disabled={bannedFromUrgentAhelp}
                     tooltip={
                       bannedFromUrgentAhelp
-                        ? 'You are banned from using urgent ahelps.'
+                        ? 'Você está proibido de usar ajuda urgente.'
                         : undefined
                     }
                     fluid

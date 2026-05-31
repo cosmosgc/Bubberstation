@@ -1,7 +1,7 @@
 /// The common cardboard box.
 /obj/item/storage/box
 	name = "box"
-	desc = "It's just an ordinary box."
+	desc = "É só uma caixa comum."
 	icon = 'icons/obj/storage/box.dmi'
 	icon_state = "box"
 	inhand_icon_state = "syringe_kit"
@@ -26,12 +26,12 @@
 /obj/item/storage/box/suicide_act(mob/living/carbon/user)
 	var/obj/item/bodypart/head/myhead = user.get_bodypart(BODY_ZONE_HEAD)
 	if(myhead)
-		user.visible_message(span_suicide("[user] puts [user.p_their()] head into \the [src] and begins closing it! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user]coloca[user.p_their()]cabeça para dentro\the [src]e começa a fechar! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 		if (myhead.dismember())
 			myhead.forceMove(src) //force your enemies to kill themselves with your head collection box!
 		playsound(user, "desecration-01.ogg", 50, TRUE, -1)
 		return BRUTELOSS
-	user.visible_message(span_suicide("[user] is beating [user.p_them()]self with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]está batendo[user.p_them()]ego com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/storage/box/update_overlays()
@@ -45,7 +45,7 @@
 	if(!foldable_result || (flags_1 & HOLOGRAM_1))
 		return
 	if(contents.len)
-		balloon_alert(user, "items inside!")
+		balloon_alert(user, "Itens dentro!")
 		return
 	if(!ispath(foldable_result))
 		return

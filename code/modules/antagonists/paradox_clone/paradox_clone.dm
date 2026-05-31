@@ -58,7 +58,7 @@
 	original_mind.quick_copy_all_memories(owner)
 
 /datum/antagonist/paradox_clone/roundend_report_header()
-	return span_header("A paradox clone appeared on the station!<br>")
+	return span_header("Um clone paradoxo apareceu na estação!<br>")
 
 /datum/objective/paradox_clone_replace
 	name = "clone replace"
@@ -66,7 +66,7 @@
 	var/name_and_job
 
 /datum/objective/paradox_clone_replace/update_explanation_text()
-	explanation_text = "Take [name_and_job || "someone's"]'s place. Avoid collateral damage - remember, your mission is to blend in!"
+	explanation_text = "Tome.[name_and_job || "someone's"]É o lugar. Evite danos colaterais. Lembre-se, sua missão é se misturar!"
 
 /datum/objective/paradox_clone_replace/check_completion()
 	return completed || considered_alive(owner)

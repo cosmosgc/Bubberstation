@@ -23,7 +23,7 @@ export const PortableGenerator = (props) => {
         {!data.anchored && <NoticeBox>Generator not anchored.</NoticeBox>}
         <Section title="Status">
           <LabeledList>
-            <LabeledList.Item label="Power switch">
+            <LabeledList.Item label="Interruptor de energia.">
               <Button
                 icon={data.active ? 'power-off' : 'times'}
                 onClick={() => act('toggle_power')}
@@ -47,7 +47,7 @@ export const PortableGenerator = (props) => {
                 </Button>
               )}
             </LabeledList.Item>
-            <LabeledList.Item label="Current sheet level">
+            <LabeledList.Item label="Nível atual da folha">
               <ProgressBar
                 value={data.stack_percent / 100}
                 ranges={{
@@ -57,7 +57,7 @@ export const PortableGenerator = (props) => {
                 }}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Heat level">
+            <LabeledList.Item label="Nível de calor">
               {data.current_heat < 100 ? (
                 <Box inline color="good">
                   Nominal
@@ -76,10 +76,10 @@ export const PortableGenerator = (props) => {
         </Section>
         <Section title="Output">
           <LabeledList>
-            <LabeledList.Item label="Current output">
+            <LabeledList.Item label="Saída atual">
               {data.power_output}
             </LabeledList.Item>
-            <LabeledList.Item label="Adjust output">
+            <LabeledList.Item label="Ajustar saída">
               <Button icon="minus" onClick={() => act('lower_power')}>
                 {data.power_generated}
               </Button>
@@ -87,7 +87,7 @@ export const PortableGenerator = (props) => {
                 {data.power_generated}
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Power available">
+            <LabeledList.Item label="Energia disponível.">
               <Box inline color={!data.connected && 'bad'}>
                 {data.connected ? data.power_available : 'Unconnected'}
               </Box>

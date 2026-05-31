@@ -12,7 +12,7 @@
 ///Universal IV that can drain blood or feed reagents over a period of time from or to a replaceable container
 /obj/machinery/iv_drip
 	name = "\improper IV drip"
-	desc = "An IV drip with an advanced infusion pump that can both drain blood into and inject liquids from attached containers."
+	desc = "Um soro com uma bomba de infusão avançada que pode drenar sangue e injetar líquidos em recipientes anexados."
 	icon = 'icons/obj/medical/iv_drip.dmi'
 	icon_state = "iv_drip"
 	base_icon_state = "iv_drip"
@@ -171,19 +171,19 @@
 
 /obj/machinery/iv_drip/mouse_drop_dragged(atom/target, mob/user)
 	if(!isliving(user))
-		to_chat(user, span_warning("You can't do that!"))
+		to_chat(user, span_warning("Não pode fazer isso!"))
 		return
 	if(!get_reagents())
-		to_chat(user, span_warning("There's nothing attached to the IV drip!"))
+		to_chat(user, span_warning("Não há nada ligado ao soro!"))
 		return
 	if(!target.is_injectable(user))
-		to_chat(user, span_warning("Can't inject into this!"))
+		to_chat(user, span_warning("Não posso injetar isso!"))
 		return
 	if(attachment)
-		visible_message(span_warning("[attachment.attached_to] is detached from [src]."))
+		visible_message(span_warning("[attachment.attached_to]está separado de[src]."))
 		QDEL_NULL(attachment)
 		update_appearance(UPDATE_ICON)
-	user.visible_message(span_warning("[user] attaches [src] to [target]."), span_notice("You attach [src] to [target]."))
+	user.visible_message(span_warning("[user]APENAS[src]para[target]."), span_notice("Você anexa[src]para[target]."))
 	attach_iv(target, user)
 
 /obj/machinery/iv_drip/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -192,7 +192,7 @@
 	if(!is_type_in_typecache(tool, drip_containers) && !IS_EDIBLE(tool))
 		return NONE
 	if(reagent_container)
-		balloon_alert(user, "not empty!")
+		balloon_alert(user, "Não vazio!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING
@@ -206,10 +206,10 @@
 
 /obj/machinery/iv_drip/click_alt(mob/user)
 	if(transfer_rate > MIN_IV_TRANSFER_RATE)
-		balloon_alert(user, "flow minimized")
+		balloon_alert(user, "Fluxo minimizado")
 		set_transfer_rate(MIN_IV_TRANSFER_RATE)
 	else
-		balloon_alert(user, "flow maximized")
+		balloon_alert(user, "Fluxo maximizado")
 		set_transfer_rate(MAX_IV_TRANSFER_RATE)
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	return CLICK_ACTION_SUCCESS
@@ -226,13 +226,13 @@
 	if(!(get_dist(src, attached_to) <= 1 && isturf(attached_to.loc)))
 		if(isliving(attached_to))
 			var/mob/living/carbon/attached_mob = attached_to
-			to_chat(attached_to, span_userdanger("The IV drip needle is ripped out of you, leaving an open bleeding wound!"))
+			to_chat(attached_to, span_userdanger("A agulha intravenosa foi arrancada de você, deixando uma ferida aberta!"))
 			var/list/arm_zones = shuffle(list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM))
 			var/obj/item/bodypart/chosen_limb = attached_mob.get_bodypart(arm_zones[1]) || attached_mob.get_bodypart(arm_zones[2]) || attached_mob.get_bodypart(BODY_ZONE_CHEST)
 			attached_mob.apply_damage(3, BRUTE, chosen_limb, wound_bonus = CANT_WOUND)
 			attached_mob.cause_wound_of_type_and_severity(WOUND_PIERCE, chosen_limb, WOUND_SEVERITY_MODERATE, wound_source = "IV needle")
 		else
-			visible_message(span_warning("[attached_to] is detached from [src]."))
+			visible_message(span_warning("[attached_to]está separado de[src]."))
 		detach_iv()
 		return PROCESS_KILL
 
@@ -256,12 +256,12 @@
 		// If the beaker is full, ping
 		if(!amount)
 			set_transfer_rate(MIN_IV_TRANSFER_RATE)
-			audible_message(span_hear("[src] pings."))
+			audible_message(span_hear("[src]Pings."))
 			return
 
 		// If the human is losing too much blood, beep.
 		if(attached_mob.get_blood_volume(apply_modifiers = TRUE) < BLOOD_VOLUME_SAFE && prob(5))
-			audible_message(span_hear("[src] beeps loudly."))
+			audible_message(span_hear("[src]Apita alto."))
 			playsound(loc, 'sound/machines/beep/twobeep_high.ogg', 50, TRUE)
 		var/atom/movable/target = use_internal_storage ? src : reagent_container
 		attached_mob.transfer_blood_to(target, amount)
@@ -276,7 +276,7 @@
 
 /obj/machinery/iv_drip/proc/quick_toggle(mob/user)
 	if(attachment)
-		visible_message(span_notice("[attachment.attached_to] is detached from [src]."))
+		visible_message(span_notice("[attachment.attached_to]está separado de[src]."))
 		detach_iv()
 	else if(reagent_container)
 		eject_beaker(user)
@@ -287,12 +287,12 @@
 ///called when an IV is attached
 /obj/machinery/iv_drip/proc/attach_iv(atom/target, mob/user)
 	if(isliving(target))
-		user.visible_message(span_warning("[usr] begins attaching [src] to [target]..."), span_warning("You begin attaching [src] to [target]."))
+		user.visible_message(span_warning("[usr]Começa a anexar[src]para[target]..."), span_warning("Você começa a anexar[src]para[target]."))
 		if(!do_after(usr, 1 SECONDS, target))
 			return
 	else
 		mode = IV_INJECTING
-	usr.visible_message(span_warning("[usr] attaches [src] to [target]."), span_notice("You attach [src] to [target]."))
+	usr.visible_message(span_warning("[usr]APENAS[src]para[target]."), span_notice("Você anexa[src]para[target]."))
 	var/datum/reagents/container = get_reagents()
 	log_combat(usr, target, "fixado", src, "containing: ([container.get_reagent_log_string()])")
 	add_fingerprint(usr)
@@ -311,7 +311,7 @@
 ///Called when an iv is detached. doesnt include chat stuff because there's multiple options and its better handled by the caller
 /obj/machinery/iv_drip/proc/detach_iv()
 	if(attachment)
-		visible_message(span_notice("[attachment.attached_to] is detached from [src]."))
+		visible_message(span_notice("[attachment.attached_to]está separado de[src]."))
 		if(isliving(attachment.attached_to))
 			var/mob/living/attached_mob = attachment.attached_to
 			attached_mob.clear_alert(ALERT_IV_CONNECTED, /atom/movable/screen/alert/iv_connected)
@@ -328,7 +328,7 @@
 	set src in view(1)
 
 	if(!isliving(usr))
-		to_chat(usr, span_warning("You can't do that!"))
+		to_chat(usr, span_warning("Não pode fazer isso!"))
 		return
 	if(!usr.can_perform_action(src))
 		return
@@ -336,7 +336,7 @@
 		return
 	if(reagent_container)
 		if(attachment)
-			visible_message(span_warning("[attachment?.attached_to] is detached from [src]."))
+			visible_message(span_warning("[attachment?.attached_to]está separado de[src]."))
 			detach_iv()
 		reagent_container.forceMove(drop_location())
 		reagent_container = null
@@ -347,7 +347,7 @@
 	set src in view(1)
 
 	if(!isliving(usr))
-		to_chat(usr, span_warning("You can't do that!"))
+		to_chat(usr, span_warning("Não pode fazer isso!"))
 		return
 	if(!usr.can_perform_action(src) || usr.incapacitated)
 		return
@@ -360,7 +360,7 @@
 		return
 	mode = !mode
 	update_appearance(UPDATE_ICON)
-	to_chat(usr, span_notice("The IV drip is now [mode ? "injecting" : "taking blood"]."))
+	to_chat(usr, span_notice("O soro está agora.[mode ? "injecting" : "taking blood"]."))
 
 /obj/machinery/iv_drip/examine(mob/user)
 	. = ..()
@@ -369,14 +369,14 @@
 	. += "[src] is [mode ? "injecting" : "taking blood"]."
 	if(reagent_container)
 		if(reagent_container.reagents && reagent_container.reagents.reagent_list.len)
-			. += span_notice("Attached is \a [reagent_container] with [reagent_container.reagents.total_volume] units of liquid.")
+			. += span_notice("Anexado é\a [reagent_container]com[reagent_container.reagents.total_volume]Unidades de líquido.")
 		else
-			. += span_notice("Attached is an empty [reagent_container.name].")
+			. += span_notice("Anexado é um vazio[reagent_container.name].")
 	else if(use_internal_storage)
-		. += span_notice("It has an internal chemical storage.")
+		. += span_notice("Tem um depósito químico interno.")
 	else
-		. += span_notice("No chemicals are attached.")
-	. += span_notice("[attachment ? attachment.attached_to : "Nothing"] is connected.")
+		. += span_notice("Nenhum produto químico está ligado.")
+	. += span_notice("[attachment ? attachment.attached_to : "Nothing"]está conectado.")
 
 /// Information and effects about where an IV drip is attached to
 // Lifetime is managed by the iv_drip, which will delete the iv_drip_attachment after
@@ -435,7 +435,7 @@
 
 /obj/machinery/iv_drip/saline
 	name = "saline drip"
-	desc = "An all-you-can-drip saline canister designed to supply a hospital without running out, with a scary looking pump rigged to inject saline into containers, but filling people directly might be a bad idea."
+	desc = "Uma lata de soro para abastecer um hospital sem acabar, com uma bomba assustadora para injetar soro nos recipientes, mas encher as pessoas diretamente pode ser uma má ideia."
 	icon_state = "saline"
 	base_icon_state = "saline"
 	density = TRUE
@@ -451,7 +451,7 @@
 
 /atom/movable/screen/alert/iv_connected
 	name = "IV Connected"
-	desc = "You have an IV connected to your arm. Remember to remove it or drag the IV stand with you before moving, or else it will rip out!"
+	desc = "Você tem uma intravenosa ligada ao seu braço. Lembre-se de removê-lo ou arrastar o soro com você antes de se mover, ou então ele vai rasgar!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "iv_connected"
 

@@ -1,7 +1,7 @@
 
 /datum/action/cooldown/spell/pointed/abyssal_gaze
 	name = "Abyssal Gaze"
-	desc = "This spell instills a deep terror in your target, temporarily chilling and blinding it."
+	desc = "Este feitiço incutiu um profundo terror em seu alvo, temporariamente relaxando e o cegando."
 	ranged_mousepointer = 'icons/effects/mouse_pointers/cult_target.dmi'
 	background_icon_state = "bg_demon"
 	overlay_icon_state = "bg_demon_border"
@@ -29,11 +29,11 @@
 /datum/action/cooldown/spell/pointed/abyssal_gaze/cast(mob/living/carbon/cast_on)
 	. = ..()
 	if(cast_on.can_block_magic(antimagic_flags))
-		to_chat(owner, span_warning("The spell had no effect!"))
-		to_chat(cast_on, span_warning("You feel a freezing darkness closing in on you, but it rapidly dissipates."))
+		to_chat(owner, span_warning("O feitiço não teve efeito!"))
+		to_chat(cast_on, span_warning("Você sente uma escuridão gelada se aproximando de você, mas rapidamente se dissipa."))
 		return FALSE
 
-	to_chat(cast_on, span_userdanger("A freezing darkness surrounds you..."))
+	to_chat(cast_on, span_userdanger("Uma escuridão gelada te cerca..."))
 	cast_on.playsound_local(get_turf(cast_on), 'sound/effects/hallucinations/i_see_you1.ogg', 50, 1)
 	owner.playsound_local(get_turf(owner), 'sound/effects/ghost2.ogg', 50, 1)
 	cast_on.adjust_temp_blindness(blind_duration)

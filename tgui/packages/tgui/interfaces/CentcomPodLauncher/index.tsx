@@ -18,7 +18,7 @@ export function CentcomPodLauncher(props) {
   return (
     <Window
       height={compact ? 360 : 440}
-      title="Supply Pod Menu (Use against Helen Weinstein)"
+      title="Menu de suprimentos contra Helen Weinstein"
       width={compact ? 460 : 730}
     >
       <Window.Content>

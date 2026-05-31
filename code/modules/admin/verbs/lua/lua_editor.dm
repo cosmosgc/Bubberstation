@@ -110,11 +110,11 @@
 				if("value")
 					path_list = list_element["value"]
 				else
-					to_chat(usr, span_warning("invalid path element type \[[path_element["type"]]] for list traversal (expected \"key\" or \"value\""))
+					to_chat(usr, span_warning("elemento de caminho inválido tipo \[[path_element["type"]]]Para lista transversal\"chave\"UO\"valor\""))
 					return
 			// The element we are entering SHOULD be a list, unless we're at the end of the path
 			if(!islist(path_list) && LAZYLEN(path))
-				to_chat(usr, span_warning("invalid path element \[[path_list]] for list traversal (expected a list)"))
+				to_chat(usr, span_warning("elemento caminho inválido \[[path_list]]Para lista transversal (espera uma lista)"))
 				return
 			current_list = path_list
 		return current_list
@@ -138,7 +138,7 @@
 	if(!check_rights_for(user.client, R_DEBUG))
 		return
 	if(action == "runCodeFile")
-		params["code"] = file2text(input(user, "Input File") as null|file)
+		params["code"] = file2text(input(user, "Arquivo de Entrada") as null|file)
 		if(isnull(params["code"]))
 			return
 		action = "runCode"
@@ -167,7 +167,7 @@
 			run_code(params["code"])
 			return TRUE
 		if("runFile")
-			var/code_file = input(user, "Select a script to run.", "Lua") as file|null
+			var/code_file = input(user, "Selecione um roteiro para execução.", "Lua") as file|null
 			if(!code_file)
 				return TRUE
 			var/code = file2text(code_file)
@@ -216,7 +216,7 @@
 				var/list/variant_pair = current_variants[index]
 				var/key_variant = variant_pair["key"]
 				if(key_variant == "function" || key_variant == "thread" || key_variant == "userdata" || key_variant == "error_as_value")
-					to_chat(user, span_warning("invalid table key \[[key]] for function call (expected text, num, path, list, or ref, got [key_variant])"))
+					to_chat(user, span_warning("Chave de tabela inválida \[[key]]para chamada de função (texto esperado, num, caminho, lista, ou árbitro,[key_variant])"))
 					return
 				function += key
 				if(islist(value))
@@ -224,7 +224,7 @@
 					current_variants = variant_pair["value"]
 				else
 					if(variant_pair["value"] != "function")
-						to_chat(user, span_warning("invalid value \[[value]] for function call (expected list or function)"))
+						to_chat(user, span_warning("valor inválido \[[value]]para chamada de função (lista esperada ou função)"))
 						return
 			var/result = current_state.call_function(arglist(list(function) + arguments))
 			current_state.log_result(result)
@@ -287,5 +287,5 @@ ADMIN_VERB(lua_editor, R_DEBUG, "Open Lua Editor", "Its codin' time.", ADMIN_CAT
 	var/datum/lua_editor/editor = new
 	editor.ui_interact(user.mob)
 #else
-	to_chat(user, span_warning("Lua support has been disabled at compile-time."), type = MESSAGE_TYPE_ADMINLOG, confidential = TRUE) // doing this instead of just disabling the verb entirely so it's clear WHY it doesn't work.
+	to_chat(user, span_warning("O suporte Lua foi desativado na hora da compilação."), type = MESSAGE_TYPE_ADMINLOG, confidential = TRUE) // doing this instead of just disabling the verb entirely so it'Está claro porque faz't work.
 #endif

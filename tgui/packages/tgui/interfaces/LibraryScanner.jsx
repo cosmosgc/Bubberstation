@@ -5,7 +5,7 @@ import { Window } from '../layouts';
 
 export const LibraryScanner = (props) => {
   return (
-    <Window title="Library Scanner" width={350} height={150}>
+    <Window title="Scanner da Biblioteca" width={350} height={150}>
       <BookScanning />
     </Window>
   );

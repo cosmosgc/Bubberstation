@@ -4,7 +4,7 @@
 /mob/living/simple_animal/hostile/true_changeling
 	name = "true changeling"
 	real_name = "true changeling"
-	desc = "Holy shit, what the fuck is that thing?!"
+	desc = "Puta merda, que porra é essa?"
 	speak_emote = list("says with one of its faces")
 	emote_hear = list("says with one of its faces")
 	icon = 'modular_skyrat/modules/horrorform/icons/animal.dmi'
@@ -35,11 +35,7 @@
 	var/datum/action/innate/turn_to_human
 	var/transformed_time = 0
 
-	var/playstyle_string = span_infoplain("<b><font size=3 color='red'>We have entered our true form!</font> \
-	We are unbelievably powerful, and regenerate life at a steady rate. \
-	However, most of our abilities are useless in this form, and we must utilise the abilities that we have gained as a result of our transformation. \
-	Currently, we are incapable of returning to a human. After several minutes, we will once again be able to revert into a human. \
-	Taking too much damage will cause us to reach equilibrium and our cells will combust into a shower of gore, watch out!</b>")
+	var/playstyle_string = span_infoplain("<b><font size=3 color='red'>Entramos em nossa verdadeira forma!</font>Somos incrivelmente poderosos, e regeneramos a vida em ritmo constante. No entanto, a maioria de nossas habilidades são inúteis nesta forma, e devemos usar as habilidades que ganhamos como resultado de nossa transformação. Atualmente, somos incapazes de retornar a um humano. Depois de vários minutos, poderemos voltar a ser humanos. Levando muito dano nos fará alcançar o equilíbrio e nossas células irão queimar em um banho de sangue, cuidado!</b>")
 
 	var/mob/living/carbon/human/stored_changeling = null
 	var/devouring = FALSE
@@ -109,8 +105,7 @@
 	spawn_gibs()
 
 	if(stored_changeling && mind)
-		visible_message(span_warning("[src] lets out a furious scream as it reaches equilibrium, as it starts exploding into a shower of gore!"), \
-						span_userdanger("We lack the power to maintain our mass, we have reached critic-..."))
+		visible_message(span_warning("[src]deixa sair um grito furioso quando atinge o equilíbrio, quando começa a explodir em uma chuva de sangue!"), 						span_userdanger("Falta-nos o poder de manter a nossa massa, chegamos ao crítico..."))
 		anchored = TRUE
 
 		if(istype(turn_to_human))
@@ -119,14 +114,14 @@
 		AddComponent(/datum/component/pellet_cloud, projectile_type=/obj/projectile/bullet/pellet/bone_fragment, magnitude = 8)
 		addtimer(CALLBACK(src, PROC_REF(real_death)), rand(3 SECONDS, 6 SECONDS))
 	else
-		visible_message(span_warning("[src] lets out a waning scream as it falls, twitching, to the floor."))
+		visible_message(span_warning("[src]sai um grito de desvanecimento enquanto cai, se contorcendo, para o chão."))
 
 		addtimer(CALLBACK(src, PROC_REF(revive_from_death)), 45 SECONDS)
 
 /mob/living/simple_animal/hostile/true_changeling/proc/revive_from_death()
 	if(!src)
 		return
-	visible_message(span_warning("[src] stumbles upright and begins to move!"))
+	visible_message(span_warning("[src]tropeça na vertical e começa a se mover!"))
 	revive()
 	scream()
 
@@ -135,8 +130,7 @@
 		spawn_gibs()
 	scream()
 	icon_state = "horror_dead"
-	visible_message(span_warning("[src] has surpassed equilibrium and can no longer support itself, exploding in a shower of bone and gore!"), \
-					span_userdanger("ARRRRRRGHHHH!!!"))
+	visible_message(span_warning("[src]Superou o equilíbrio e não pode mais se sustentar, explodindo em um banho de osso e sangue!"), 					span_userdanger("ARRRRRGHHHH!!!"))
 
 	if(stored_changeling)
 		stored_changeling.loc = get_turf(src)
@@ -197,7 +191,7 @@
 
 /datum/action/innate/turn_to_human
 	name = "Re-Form Human Shell"
-	desc = "We turn back into a human. This takes considerable effort and will stun us for some time afterwards."
+	desc = "Voltamos a ser humanos. Isso requer um esforço considerável e vai nos atordoar por algum tempo depois."
 	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
 	background_icon_state = "bg_changeling"
 	button_icon_state = "change_to_human"
@@ -207,18 +201,17 @@
 		return FALSE
 	var/mob/living/simple_animal/hostile/true_changeling/horrorform = owner
 	if(!horrorform.stored_changeling)
-		horrorform.balloon_alert(horrorform, "our only form!")
+		horrorform.balloon_alert(horrorform, "Nossa única forma!")
 		return FALSE
 	if(horrorform.stored_changeling.stat == DEAD)
-		horrorform.balloon_alert(horrorform, "body is dead!")
+		horrorform.balloon_alert(horrorform, "O corpo está morto!")
 		return FALSE
 	if(world.time - horrorform.transformed_time < TRUE_CHANGELING_REFORM_THRESHOLD)
 		var/timeleft = (horrorform.transformed_time + TRUE_CHANGELING_REFORM_THRESHOLD) - world.time
-		horrorform.balloon_alert(horrorform, "wait [round(timeleft/600)+1] minutes!")
+		horrorform.balloon_alert(horrorform, "Espere.[round(timeleft/600)+1]minutos!")
 		return FALSE
 
-	horrorform.visible_message(span_warning("[horrorform] suddenly crunches and twists into a smaller form!"), \
-						span_danger("We return to our lesser form."))
+	horrorform.visible_message(span_warning("[horrorform]De arrependimento, se aperta e se transforma em uma forma menor!"), 						span_danger("Voltamos à nossa forma menor."))
 
 	horrorform.stored_changeling.loc = get_turf(horrorform)
 	horrorform.mind.transfer_to(horrorform.stored_changeling)
@@ -230,7 +223,7 @@
 
 /datum/action/innate/devour
 	name = "Devour"
-	desc = "We tear into the innards of a human. After some time, they will be significantly damaged and our health partially restored."
+	desc = "Nós rasgamos as entranhas de um humano. Depois de algum tempo, eles serão significativamente danificados e nossa saúde parcialmente restaurada."
 	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
 	background_icon_state = "bg_changeling"
 	button_icon_state = "devour"
@@ -241,7 +234,7 @@
 	var/mob/living/simple_animal/hostile/true_changeling/horrorform = owner
 
 	if(horrorform.devouring)
-		horrorform.balloon_alert(horrorform, "already eating!")
+		horrorform.balloon_alert(horrorform, "Já está comendo!")
 		return FALSE
 
 	var/list/potential_targets = list()
@@ -254,7 +247,7 @@
 		potential_targets.Add(victim)
 
 	if(!length(potential_targets))
-		horrorform.balloon_alert(horrorform, "no carbons!")
+		horrorform.balloon_alert(horrorform, "Sem carbonos!")
 		return FALSE
 
 	var/mob/living/carbon/human/lunch
@@ -267,13 +260,11 @@
 		return FALSE
 
 	if(lunch.get_brute_loss() + lunch.get_fire_loss() >= 200)
-		horrorform.visible_message(span_warning("[lunch] provides no further nutrients for [horrorform]!"), \
-						span_danger("[lunch] has no more useful flesh for us to consume!!"))
+		horrorform.visible_message(span_warning("[lunch]Não fornece mais nutrientes para[horrorform]!"), 						span_danger("[lunch]Não tem mais carne útil para consumir!"))
 		return FALSE
 
 	horrorform.devouring = TRUE
-	horrorform.visible_message(span_warning("[horrorform] begins ripping apart and feasting on [lunch]!"), \
-					span_danger("We begin to feast upon [lunch]..."))
+	horrorform.visible_message(span_warning("[horrorform]Começa a se desfazer e se banquetear.[lunch]!"), 					span_danger("Começamos a nos banquetear[lunch]..."))
 
 	if(!do_after(horrorform, 5 SECONDS, target = lunch))
 		horrorform.devouring = FALSE
@@ -282,9 +273,8 @@
 	horrorform.devouring = FALSE
 	lunch.adjust_brute_loss(60)
 
-	horrorform.visible_message(span_warning("[horrorform] tears a chunk from [lunch]'s flesh!"), \
-					span_danger("We tear a chunk of flesh from [lunch] and devour it!"))
-	to_chat(lunch, span_userdanger("[horrorform] takes a huge bite out of you!"))
+	horrorform.visible_message(span_warning("[horrorform]Rasga um pedaço de[lunch]É carne!"), 					span_danger("Rasgamos um pedaço de carne[lunch]E devore!"))
+	to_chat(lunch, span_userdanger("[horrorform]Dá uma grande mordida em você!"))
 	lunch.spawn_gibs()
 
 	var/dismembered = FALSE

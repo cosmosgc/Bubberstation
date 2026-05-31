@@ -1,7 +1,7 @@
 //spider webs
 /datum/mutation/webbing
 	name = "Webbing Production"
-	desc = "Allows the user to lay webbing, and travel through it."
+	desc = "Permite que o usuário coloque uma teia, e viaje através dela."
 	quality = POSITIVE
 	text_gain_indication = span_notice("Your skin feels webby.")
 	instability = POSITIVE_INSTABILITY_MODERATE // useful until you're lynched

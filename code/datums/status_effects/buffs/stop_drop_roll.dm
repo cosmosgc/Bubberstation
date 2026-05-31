@@ -11,7 +11,7 @@
 		return FALSE
 
 	if(!owner.Knockdown(tick_interval * 2, ignore_canstun = TRUE) || owner.body_position != LYING_DOWN)
-		to_chat(owner, span_warning("You try to stop, drop, and roll - but you can't get on the ground!"))
+		to_chat(owner, span_warning("Você tenta parar, cair, e rolar - mas você não pode ficar no chão!"))
 		return FALSE
 
 	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(stop_rolling))
@@ -37,8 +37,8 @@
 
 /datum/status_effect/stop_drop_roll/proc/start_rolling()
 	owner.visible_message(
-		span_danger("[owner] rolls on the floor, trying to put [owner.p_them()]self out!"),
-		span_notice("You stop, drop, and roll!"),
+		span_danger("[owner]Rola no chão, tentando colocar[owner.p_them()]Se auto-fora!"),
+		span_notice("Pare, solte e papel!"),
 	)
 	// Start with one weaker roll
 	reduce_firestacks(0.25)
@@ -69,14 +69,14 @@
 	SIGNAL_HANDLER
 
 	if(!QDELING(owner))
-		to_chat(owner, span_notice("You stop rolling around."))
+		to_chat(owner, span_notice("Pare de rolar."))
 	qdel(src)
 
 /// Called when we've successfully extinguished ourselves.
 /datum/status_effect/stop_drop_roll/proc/stop_rolling_successful()
 	owner.visible_message(
-		span_danger("[owner] successfully extinguishes [owner.p_them()]self!"),
-		span_notice("You extinguish yourself."),
+		span_danger("[owner]Com sucesso se apaga.[owner.p_them()]Eu!"),
+		span_notice("Você se extinguiu."),
 	)
 	qdel(src)
 
@@ -101,8 +101,8 @@
 
 /datum/status_effect/stop_drop_roll/hallucinating/start_rolling()
 	owner.visible_message(
-		span_danger("[owner] starts rolling around on the floor, flailing about!"),
-		span_notice("You stop, drop, and roll!"),
+		span_danger("[owner]Começa a rolar no chão, balançando!"),
+		span_notice("Pare, solte e papel!"),
 	)
 	reduce_firestacks(1) // more effective cause it's not real
 
@@ -124,7 +124,7 @@
 		hallucination.clear_fire()
 
 	owner.visible_message(
-		span_danger("[owner] stops flailing around on the ground."),
-		span_notice("You extinguish yourself."),
+		span_danger("[owner]Pare de vacilar no chão."),
+		span_notice("Você se extinguiu."),
 	)
 	qdel(src)

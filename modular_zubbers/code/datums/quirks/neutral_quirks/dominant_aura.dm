@@ -1,11 +1,11 @@
 /datum/quirk/dominant_aura
 	name = "Dominant Aura"
-	desc = "You are assertive enough to command your more obedient cohorts. At a snap of your fingers, you can compel their attention-- or send them to the floor."
+	desc = "Você é assertivo o suficiente para comandar seus grupos mais obedientes. Com um estalo de seus dedos, você pode compelir a atenção deles - ou enviá-los para o chão."
 	icon = "fa-sort-up"
-	medical_record_text = "Patient displays a highly assertive personality."
+	medical_record_text = "O paciente tem uma personalidade altamente assertiva."
 	value = 0
-	gain_text = span_notice("You feel like making someone your pet.")
-	lose_text = span_notice("You feel less assertive than before.")
+	gain_text = span_notice("Você quer fazer de alguém seu animal de estimação.")
+	lose_text = span_notice("Você se sente menos assertiva do que antes.")
 	quirk_flags = QUIRK_HIDE_FROM_SCAN
 	erp_quirk = TRUE // Disables on ERP config.
 
@@ -112,7 +112,7 @@
 		return
 	if(sub.stat == DEAD)
 		return
-	examine_list += span_purple("[sub.p_They()] seem[sub.p_s()] submissive towards you.")
+	examine_list += span_purple("[sub.p_They()]Parece.[sub.p_s()]Submisso a você.")
 
 /datum/quirk/dominant_aura/proc/on_snap(atom/source, datum/emote/emote_args)
 	SIGNAL_HANDLER
@@ -149,7 +149,7 @@
 				if(quirk_holder.client.prefs.read_preference(/datum/preference/toggle/dominant_aura/snap) && sub.client.prefs.read_preference(/datum/preference/toggle/well_trained/snap))
 					sub.dir = get_dir(sub, quirk_holder)
 					sub.emote("me", 1, "faces towards <b>[quirk_holder]</b> at attention!", TRUE)
-					to_chat(sub, span_purple("<b>[quirk_holder]</b>'s snap shoots down your spine and puts you at attention."))
+					to_chat(sub, span_purple("<b>[quirk_holder]</b>O snap derruba sua espinha e te coloca na atenção."))
 					. = TRUE
 
 			if("snap2")
@@ -157,7 +157,7 @@
 					sub.dir = get_dir(sub, quirk_holder)
 					sub.Immobilize(0.3 SECONDS)
 					sub.emote("me",1,"hunches down in response to <b>[quirk_holder]'s</b> snapping.", TRUE)
-					to_chat(sub, span_purple("You hunch down and freeze in place in response to <b>[quirk_holder]</b> snapping their fingers."))
+					to_chat(sub, span_purple("Você se curva e congela no lugar em resposta a<b>[quirk_holder]</b>Estalando os dedos."))
 					. = TRUE
 
 			if("snap3")
@@ -167,7 +167,7 @@
 					step(sub, get_dir(sub, quirk_holder))
 					sub.emote("me",1,"falls to the floor and crawls closer to <b>[quirk_holder]</b>, following their command.",TRUE)
 					sub.do_jitter_animation(0.1 SECONDS)
-					to_chat(sub, span_purple("You throw yourself on the floor like a pathetic beast and crawl towards <b>[quirk_holder]</b> like a good, submissive [good_x]."))
+					to_chat(sub, span_purple("Você se joga no chão como uma besta patética e rasteja em direção<b>[quirk_holder]</b>Como um bom, submisso[good_x]."))
 					. = TRUE
 
 
@@ -189,7 +189,7 @@
 				if(quirk_holder.client.prefs.read_preference(/datum/preference/toggle/dominant_aura/snap) && borg_sub.client.prefs.read_preference(/datum/preference/toggle/well_trained/snap))
 					borg_sub.dir = get_dir(borg_sub, quirk_holder)
 					borg_sub.emote("me", 1, "faces towards <b>[quirk_holder]</b> at attention!", TRUE)
-					to_chat(borg_sub, span_purple("<b>[quirk_holder]</b>'s snap shoots down your spine and puts you at attention."))
+					to_chat(borg_sub, span_purple("<b>[quirk_holder]</b>O snap derruba sua espinha e te coloca na atenção."))
 					. = TRUE
 
 			if("snap2")
@@ -198,7 +198,7 @@
 					borg_sub.robot_lay_down()
 					borg_sub.Stun(0.3 SECONDS)
 					borg_sub.emote("me",1,"hunches down in response to <b>[quirk_holder]'s</b> snapping.", TRUE)
-					to_chat(borg_sub, span_purple("You hunch down and freeze in place in response to <b>[quirk_holder]</b> snapping their fingers."))
+					to_chat(borg_sub, span_purple("Você se curva e congela no lugar em resposta a<b>[quirk_holder]</b>Estalando os dedos."))
 					. = TRUE
 
 			if("snap3")
@@ -208,7 +208,7 @@
 					borg_sub.Stun(0.3 SECONDS)
 					borg_sub.emote("me",1,"crawls closer to <b>[quirk_holder]</b> and lays down, following their command.",TRUE)
 					borg_sub.do_jitter_animation(0.1 SECONDS)
-					to_chat(borg_sub, span_purple("You crawl towards <b>[quirk_holder]</b> and lay down like a good, submissive [good_x]."))
+					to_chat(borg_sub, span_purple("Você rasteja em direção<b>[quirk_holder]</b>E deite-se como um bom, submisso[good_x]."))
 					. = TRUE
 
 	if(.)

@@ -1,7 +1,7 @@
 /// A cable that can connect integrated circuits to anything with a USB port, such as computers and machines.
 /obj/item/usb_cable
 	name = "usb cable"
-	desc = "A cable that can connect integrated circuits to anything with a USB port, such as computers and machines."
+	desc = "Um cabo que pode conectar circuitos integrados a qualquer coisa com uma porta USB, como computadores e máquinas."
 	icon = 'icons/obj/science/circuits.dmi'
 	icon_state = "usb_cable"
 	inhand_icon_state = "coil_yellow"
@@ -36,7 +36,7 @@
 	. = ..()
 
 	if (!isnull(attached_circuit))
-		. += span_notice("It is attached to [attached_circuit.shell || attached_circuit].")
+		. += span_notice("Está ligado a[attached_circuit.shell || attached_circuit].")
 
 /obj/item/usb_cable/pre_attack(atom/target, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()
@@ -44,7 +44,7 @@
 		return
 
 	if (prob(1))
-		balloon_alert(user, "wrong way, god damnit")
+		balloon_alert(user, "Caminho errado, droga.")
 		return TRUE
 
 	var/signal_result = SEND_SIGNAL(target, COMSIG_ATOM_USB_CABLE_TRY_ATTACH, src, user)
@@ -52,7 +52,7 @@
 	if (signal_result & COMSIG_USB_CABLE_CONNECTED_TO_CIRCUIT)
 		if (isnull(attached_circuit))
 			CRASH("Producers of COMSIG_USB_CABLE_CONNECTED_TO_CIRCUIT must set attached_circuit")
-		balloon_alert(user, "connected to circuit\nconnect to a port")
+		balloon_alert(user, "conectado ao circuito\nConectar a um porto")
 
 		playsound(src, 'sound/machines/pda_button/pda_button1.ogg', 20, TRUE)
 
@@ -66,7 +66,7 @@
 		else if (ismachinery(target))
 			connection_description = "machine"
 
-		balloon_alert(user, "connected to [connection_description]")
+		balloon_alert(user, "conectados a[connection_description]")
 		playsound(src, 'sound/items/tools/screwdriver2.ogg', 20, TRUE)
 
 		return TRUE
@@ -77,7 +77,7 @@
 	return FALSE
 
 /obj/item/usb_cable/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is wrapping [src] around [user.p_their()] neck! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]está embrulhando[src]Por aí.[user.p_their()]pescoço! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/usb_cable/proc/on_moved()

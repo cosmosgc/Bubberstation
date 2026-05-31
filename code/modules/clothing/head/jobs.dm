@@ -9,7 +9,7 @@
 	name = "chef's hat"
 	inhand_icon_state = "chefhat"
 	icon_state = "chef"
-	desc = "The commander in chef's head wear."
+	desc = "O comandante na cabeça do chef usar."
 	strip_delay = 1 SECONDS
 	equip_delay_other = 1 SECONDS
 	dog_fashion = /datum/dog_fashion/head/chef
@@ -23,7 +23,7 @@
 
 /// Admin variant of the chef hat where every mouse pilot input will always be transferred to the wearer
 /obj/item/clothing/head/utility/chefhat/i_am_assuming_direct_control
-	desc = "The commander in chef's head wear. Upon closer inspection, there seem to be dozens of tiny levers, buttons, dials, and screens inside of this hat. What the hell...?"
+	desc = "O comandante na cabeça do chef usar. Após inspeção mais próxima, parece haver dezenas de pequenas alavancas, botões, mostradores e telas dentro deste chapéu. Que diabos...?"
 	mouse_control_probability = 100
 
 /obj/item/clothing/head/utility/chefhat/Initialize(mapload)
@@ -88,10 +88,10 @@
 	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 
 /obj/item/clothing/head/utility/chefhat/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is donning [src]! It looks like [user.p_theyre()] trying to become a chef."))
+	user.visible_message(span_suicide("[user]Está donando.[src]Parece que...[user.p_theyre()]Tentando se rasgar um chef."))
 	user.say("Bork Bork Bork!", forced = "chef hat suicide")
 	sleep(2 SECONDS)
-	user.visible_message(span_suicide("[user] climbs into an imaginary oven!"))
+	user.visible_message(span_suicide("[user]sobe em um forno imaginário!"))
 	user.say("BOOORK!", forced = "chef hat suicide")
 	playsound(user, 'sound/machines/ding.ogg', 50, TRUE)
 	return FIRELOSS
@@ -99,7 +99,7 @@
 //Captain
 /obj/item/clothing/head/hats/caphat
 	name = "captain's hat"
-	desc = "It's good being the king."
+	desc = "É bom ser o rei."
 	icon_state = "captain"
 	inhand_icon_state = "that"
 	flags_inv = 0
@@ -120,13 +120,13 @@
 
 /obj/item/clothing/head/hats/caphat/parade
 	name = "captain's parade cap"
-	desc = "Worn only by Captains with an abundance of class."
+	desc = "Usado apenas por capitães com uma abundância de classe."
 	icon_state = "capcap"
 	dog_fashion = null
 
 /obj/item/clothing/head/caphat/beret
 	name = "captain's beret"
-	desc = "For the Captains known for their sense of fashion."
+	desc = "Para os capitães conhecidos por seu senso de moda."
 	icon = 'icons/map_icons/clothing/head/_head.dmi'
 	icon_state = "/obj/item/clothing/head/caphat/beret"
 	post_init_icon_state = "beret_badge"
@@ -139,7 +139,7 @@
 /obj/item/clothing/head/hats/hopcap
 	name = "head of personnel's cap"
 	icon_state = "hopcap"
-	desc = "The symbol of true bureaucratic micromanagement."
+	desc = "O símbolo da verdadeira microgestão burocrática."
 	armor_type = /datum/armor/hats_hopcap
 	dog_fashion = /datum/dog_fashion/head/hop
 
@@ -155,21 +155,21 @@
 
 /obj/item/clothing/head/chaplain/nun_hood
 	name = "nun hood"
-	desc = "Maximum piety in this star system."
+	desc = "Piedade máxima neste sistema estelar."
 	icon_state = "nun_hood"
 	flags_inv = HIDEHAIR
 	flags_cover = HEADCOVERSEYES
 
 /obj/item/clothing/head/chaplain/habit_veil
 	name = "nun veil"
-	desc = "No nunsene clothing."
+	desc = "Sem roupa de freira."
 	icon_state = "nun_hood_alt"
 	flags_inv = HIDEHAIR | HIDEEARS
 	clothing_flags = SNUG_FIT // can't be knocked off by throwing a paper hat.
 
 /obj/item/clothing/head/chaplain/bishopmitre
 	name = "bishop mitre"
-	desc = "An opulent hat that functions as a radio to God. Or as a lightning rod, depending on who you ask."
+	desc = "Um chapéu opulento que funciona como um rádio para Deus. Ou como pára-raios, dependendo de quem perguntar."
 	icon_state = "bishopmitre"
 
 #define CANDY_CD_TIME 2 MINUTES
@@ -177,7 +177,7 @@
 //Detective
 /obj/item/clothing/head/fedora/det_hat
 	name = "detective's fedora"
-	desc = "There's only one man who can sniff out the dirty stench of crime, and he's likely wearing this hat."
+	desc = "Só há um homem que pode farejar o fedor sujo do crime, e provavelmente está usando este chapéu."
 	armor_type = /datum/armor/fedora_det_hat
 	icon_state = "detective"
 	interaction_flags_click = NEED_DEXTERITY|NEED_HANDS|ALLOW_RESTING
@@ -209,7 +209,7 @@
 
 /obj/item/clothing/head/fedora/det_hat/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to take a candy corn.")
+	. += span_notice("Alt-clique para pegar um milhão doce.")
 
 
 /obj/item/clothing/head/fedora/det_hat/add_context(atom/source, list/context, obj/item/held_item, mob/user)
@@ -223,12 +223,12 @@
 /// Now to solve where all these keep coming from
 /obj/item/clothing/head/fedora/det_hat/click_alt(mob/user)
 	if(!COOLDOWN_FINISHED(src, candy_cooldown))
-		to_chat(user, span_warning("A candy corn was just taken! You should wait a couple minutes, lest you burn through the stash."))
+		to_chat(user, span_warning("Um doce de milho foi levado! Você deve esperar alguns minutos, para não queimar o estoque."))
 		return CLICK_ACTION_BLOCKING
 
 	var/obj/item/food/candy_corn/sweets = new /obj/item/food/candy_corn(src)
 	user.put_in_hands(sweets)
-	to_chat(user, span_notice("You slip a candy corn from \the [src]."))
+	to_chat(user, span_notice("Você tira um doce de milho\the [src]."))
 	COOLDOWN_START(src, candy_cooldown, CANDY_CD_TIME)
 
 	return CLICK_ACTION_SUCCESS
@@ -242,7 +242,7 @@
 ///Detectives Fedora, but like Inspector Gadget. Not a subtype to not inherit candy corn stuff
 /obj/item/clothing/head/fedora/inspector_hat
 	name = "inspector's fedora"
-	desc = "There's only one man can try to stop an evil villain."
+	desc = "Só um homem pode tentar deter um vilão mau."
 	armor_type = /datum/armor/fedora_det_hat
 	icon_state = "detective"
 	dog_fashion = /datum/dog_fashion/head/detective
@@ -288,12 +288,12 @@
 
 /obj/item/clothing/head/fedora/inspector_hat/examine(mob/user)
 	. = ..()
-	. += span_notice("You can put items inside, and get them out by saying a phrase, or using it in-hand!")
-	. += span_notice("The prefix is <b>[prefix]</b>, and you can change it with alt-click!\n")
+	. += span_notice("Você pode colocar itens dentro, e tirá-los dizendo uma frase, ou usando na mão!")
+	. += span_notice("O prefixo é<b>[prefix]</b>, e você pode mudá-lo com alt-click!\n")
 	for(var/found_regex in phrases_by_regex)
 		var/found_phrase = phrases_by_regex[found_regex]
 		var/obj/item/found_item = items_by_regex[found_regex]
-		. += span_notice("[icon2html(found_item, user)] You can remove [found_item] by saying <b>\"[prefix] [found_phrase]\"</b>!")
+		. += span_notice("[icon2html(found_item, user)]Você pode remover[found_item]Dizendo<b>\"[prefix] [found_phrase]\"</b>!")
 
 /obj/item/clothing/head/fedora/inspector_hat/Hear(atom/movable/speaker, message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range)
 	. = ..()
@@ -308,10 +308,10 @@
 			continue
 		var/obj/item/found_item = items_by_regex[found_regex]
 		if(wearer.put_in_hands(found_item))
-			wearer.visible_message(span_warning("[src] drops [found_item] into the hands of [wearer]!"))
+			wearer.visible_message(span_warning("[src]Gotas[found_item]nas mãos de[wearer]!"))
 			. = TRUE
 		else
-			balloon_alert(wearer, "can't put in hands!")
+			balloon_alert(wearer, "Não posso colocar em mãos!")
 			break
 
 	return .
@@ -320,10 +320,10 @@
 	. = ..()
 
 	if(LAZYLEN(contents) >= max_items)
-		balloon_alert(user, "cheio!")
+		balloon_alert(user, "Cheio!")
 		return
 	if(item.w_class > max_weight)
-		balloon_alert(user, "grande demais!")
+		balloon_alert(user, "Grandes demais!")
 		return
 
 	var/desired_phrase = tgui_input_text(user, "What is the activation phrase?", "Activation phrase", "gadget", max_length = 26)
@@ -333,7 +333,7 @@
 	if(item.loc != user || !user.transferItemToLoc(item, src))
 		return
 
-	to_chat(user, span_notice("You install [item] into the [thtotext(contents.len)] slot of [src]."))
+	to_chat(user, span_notice("Você instala.[item]Parao[thtotext(contents.len)]slot of[src]."))
 	playsound(src, 'sound/machines/click.ogg', 30, TRUE)
 	set_phrase(desired_phrase,item)
 
@@ -386,7 +386,7 @@
 //Mime
 /obj/item/clothing/head/beret
 	name = "beret"
-	desc = "A beret, a mime's favorite headwear."
+	desc = "Uma boina, a roupa favorita de um mímico."
 	dog_fashion = /datum/dog_fashion/head/beret
 	icon = 'icons/map_icons/clothing/head/beret.dmi'
 	icon_state = "/obj/item/clothing/head/beret"
@@ -400,27 +400,23 @@
 //Security
 /obj/item/clothing/head/hats/hos
 	name = "generic head of security hat"
-	desc = "Please contact the Nanotrasen Costuming Department if found."
+	desc = "Por favor, entre em contato com o Departamento de Costumes de Nanotrasen."
 	abstract_type = /obj/item/clothing/head/hats/hos
 	armor_type = /datum/armor/hats_hos
 	strip_delay = 8 SECONDS
 
 /obj/item/clothing/head/hats/hos/cap
 	name = "head of security cap"
-	desc = "The robust standard-issue cap of the Head of Security. For showing the officers who's in charge. Looks a bit stout."
+	desc = "A robusta tampa padrão do chefe de segurança. Por mostrar aos oficiais quem está no comando. Parece um pouco forte."
 	icon_state = "hoscap"
 
 /obj/item/clothing/head/hats/hos/cap/Initialize(mapload)
 	. = ..()
 	// Give it a little publicity
-	var/static/list/slapcraft_recipe_list = list(\
-		/datum/crafting_recipe/sturdy_shako,\
-		)
+	var/static/list/slapcraft_recipe_list = list(		/datum/crafting_recipe/sturdy_shako,		)
 
 	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
+		/datum/element/slapcrafting,		slapcraft_recipes = slapcraft_recipe_list,	)
 
 /datum/armor/hats_hos
 	melee = 40
@@ -435,11 +431,11 @@
 
 /obj/item/clothing/head/hats/hos/cap/syndicate
 	name = "syndicate cap"
-	desc = "A black cap fit for a high ranking syndicate officer."
+	desc = "Um boné preto para um alto oficial do sindicato."
 
 /obj/item/clothing/head/hats/hos/shako
 	name = "sturdy shako"
-	desc = "Wearing this makes you want to shout \"Down and give me twenty!\" at someone."
+	desc = "Usar isso faz você querer gritar\"Desça e me dê vinte!\"com alguém."
 	icon_state = "hosshako"
 	worn_icon = 'icons/mob/large-worn-icons/64x64/head.dmi'
 	worn_x_dimension = 64
@@ -448,7 +444,7 @@
 
 /obj/item/clothing/head/hats/hos/beret
 	name = "head of security's beret"
-	desc = "A robust beret for the Head of Security, for looking stylish while not sacrificing protection."
+	desc = "Uma boina robusta para o Chefe de Segurança, por parecer elegante e não sacrificar proteção."
 	icon = 'icons/map_icons/clothing/head/_head.dmi'
 	icon_state = "/obj/item/clothing/head/hats/hos/beret"
 	post_init_icon_state = "beret_badge"
@@ -459,17 +455,17 @@
 
 /obj/item/clothing/head/hats/hos/beret/navyhos
 	name = "head of security's formal beret"
-	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
+	desc = "Uma boina especial com a insígnia do Chefe de Segurança. Um símbolo de excelência, um distintivo de coragem, uma marca de distinção."
 	icon_state = "/obj/item/clothing/head/hats/hos/beret/navyhos"
 	greyscale_colors = "#638799#f0cc8f"
 
 /obj/item/clothing/head/hats/hos/beret/syndicate
 	name = "syndicate beret"
-	desc = "A black beret with thick armor padding inside. Stylish and robust."
+	desc = "Uma boina preta com armadura grossa dentro. Elegante e robusto."
 
 /obj/item/clothing/head/hats/warden
 	name = "warden's police hat"
-	desc = "It's a special armored hat issued to the Warden of a security force. Protects the head from impacts."
+	desc = "É um chapéu blindado especial emitido ao Diretor de uma força de segurança. Protege a cabeça de impactos."
 	icon_state = "policehelm"
 	armor_type = /datum/armor/hats_warden
 	strip_delay = 6 SECONDS
@@ -487,17 +483,17 @@
 
 /obj/item/clothing/head/hats/warden/police
 	name = "police officer's hat"
-	desc = "A police officer's hat. This hat emphasizes that you are THE LAW."
+	desc = "Um chapéu de policial. Este chapéu enfatiza que você é a lei."
 
 /obj/item/clothing/head/hats/warden/red
 	name = "warden's hat"
-	desc = "A warden's red hat. Looking at it gives you the feeling of wanting to keep people in cells for as long as possible."
+	desc = "Um chapéu vermelho do diretor. Olhar para ele dá a sensação de querer manter as pessoas nas celas o máximo possível."
 	icon_state = "wardenhat"
 	dog_fashion = /datum/dog_fashion/head/warden_red
 
 /obj/item/clothing/head/hats/warden/drill
 	name = "warden's campaign hat"
-	desc = "A special armored campaign hat with the security insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	desc = "Um chapéu especial com a insígnia de segurança. Usa tecido reforçado para oferecer proteção suficiente."
 	icon_state = "wardendrill"
 	inhand_icon_state = null
 	dog_fashion = null
@@ -508,22 +504,22 @@
 		return TRUE
 	switch(mode)
 		if(DRILL_DEFAULT)
-			to_chat(user, span_notice("You set the voice circuit to the middle position."))
+			to_chat(user, span_notice("Ajuste o circuito de voz para a posição central."))
 			mode = DRILL_SHOUTING
 		if(DRILL_SHOUTING)
-			to_chat(user, span_notice("You set the voice circuit to the last position."))
+			to_chat(user, span_notice("Ajuste o circuito de voz para a última posição."))
 			mode = DRILL_YELLING
 		if(DRILL_YELLING)
-			to_chat(user, span_notice("You set the voice circuit to the first position."))
+			to_chat(user, span_notice("Ajuste o circuito de voz para a primeira posição."))
 			mode = DRILL_DEFAULT
 		if(DRILL_CANADIAN)
-			to_chat(user, span_danger("You adjust voice circuit but nothing happens, probably because it's broken."))
+			to_chat(user, span_danger("Você ajusta o circuito de voz, mas nada acontece, provavelmente porque está quebrado."))
 	return TRUE
 
 /obj/item/clothing/head/hats/warden/drill/wirecutter_act(mob/living/user, obj/item/I)
 	..()
 	if(mode != DRILL_CANADIAN)
-		to_chat(user, span_danger("You broke the voice circuit!"))
+		to_chat(user, span_danger("Você quebrou o circuito de voz!"))
 		mode = DRILL_CANADIAN
 	return TRUE
 
@@ -566,7 +562,7 @@
 
 /obj/item/clothing/head/beret/sec
 	name = "security beret"
-	desc = "A robust beret with the security insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	desc = "Uma boina robusta com a insígnia de segurança. Usa tecido reforçado para oferecer proteção suficiente."
 	icon_state = "/obj/item/clothing/head/beret/sec"
 	post_init_icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
@@ -589,26 +585,26 @@
 
 /obj/item/clothing/head/beret/sec/navywarden
 	name = "warden's beret"
-	desc = "A special beret with the Warden's insignia emblazoned on it. For wardens with class."
+	desc = "Uma boina especial com a insígnia do diretor. Para diretores com classe."
 	icon_state = "/obj/item/clothing/head/beret/sec/navywarden"
 	greyscale_colors = "#638799#ebebeb"
 	strip_delay = 6 SECONDS
 
 /obj/item/clothing/head/beret/sec/navyofficer
-	desc = "A special beret with the security insignia emblazoned on it. For officers with class."
+	desc = "Uma boina especial com a insígnia de segurança. Para oficiais com classe."
 	icon_state = "/obj/item/clothing/head/beret/sec/navyofficer"
 	greyscale_colors = "#638799#a52f29"
 
 //Science
 /obj/item/clothing/head/beret/science
 	name = "science beret"
-	desc = "A science-themed beret for our hardworking scientists."
+	desc = "Uma boina temática científica para nossos cientistas trabalhadores."
 	icon_state = "/obj/item/clothing/head/beret/science"
 	greyscale_colors = "#8D008F"
 	flags_1 = NONE
 
 /obj/item/clothing/head/beret/science/rd
-	desc = "A purple badge with the insignia of the Research Director attached. For the paper-shuffler in you!"
+	desc = "Um distintivo roxo com a insígnia do diretor de pesquisa anexada. Para o embaralhador de papel em você!"
 	icon_state = "/obj/item/clothing/head/beret/science/rd"
 	post_init_icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
@@ -618,27 +614,27 @@
 //Medical
 /obj/item/clothing/head/beret/medical
 	name = "medical beret"
-	desc = "A medical-flavored beret for the doctor in you!"
+	desc = "Uma boina de sabor médico para o médico em você!"
 	icon_state = "/obj/item/clothing/head/beret/medical"
 	greyscale_colors = COLOR_WHITE
 	flags_1 = NONE
 
 /obj/item/clothing/head/beret/medical/paramedic
 	name = "paramedic beret"
-	desc = "For finding corpses in style!"
+	desc = "Por encontrar cadáveres em grande estilo!"
 	icon_state = "/obj/item/clothing/head/beret/medical/paramedic"
 	greyscale_colors = "#16313D"
 
 /obj/item/clothing/head/beret/medical/cmo
 	name = "chief medical officer beret"
-	desc = "A beret in a distinct surgical turquoise!"
+	desc = "Uma boina em uma distinta turquesa cirúrgica!"
 	icon_state = "/obj/item/clothing/head/beret/medical/cmo"
 	greyscale_colors = "#5EB8B8"
 
 /obj/item/clothing/head/utility/surgerycap
 	name = "blue surgery cap"
 	icon_state = "surgicalcap"
-	desc = "A blue medical surgery cap to prevent the surgeon's hair from entering the insides of the patient!"
+	desc = "Um boné médico azul para evitar que o cabelo do cirurgião entre no interior do paciente!"
 	flags_inv = HIDEHAIR //Cover your head doctor!
 	w_class = WEIGHT_CLASS_SMALL //surgery cap can be easily crumpled
 	pickup_sound = SFX_CLOTH_PICKUP
@@ -653,41 +649,40 @@
 	. = ..()
 	if(.)
 		return
-	balloon_alert(user, "[flags_inv & HIDEHAIR ? "loosening" : "tightening"] strings...")
+	balloon_alert(user, "[flags_inv & HIDEHAIR ? "loosening" : "tightening"]Cordas...")
 	if(!do_after(user, 3 SECONDS, src))
 		return
 	flags_inv ^= HIDEHAIR
-	balloon_alert(user, "[flags_inv & HIDEHAIR ? "tightened" : "loosened "] strings")
+	balloon_alert(user, "[flags_inv & HIDEHAIR ? "tightened" : "loosened "]Cordas.")
 	return TRUE
 
 /obj/item/clothing/head/utility/surgerycap/examine(mob/user)
 	. = ..()
-	. += span_notice("Use in hand to [flags_inv & HIDEHAIR ? "loosen" : "tighten"] the strings.")
+	. += span_notice("Use em mãos para[flags_inv & HIDEHAIR ? "loosen" : "tighten"]Como cordas.")
 
 /obj/item/clothing/head/utility/surgerycap/purple
 	name = "burgundy surgery cap"
 	icon_state = "surgicalcapwine"
-	desc = "A burgundy medical surgery cap to prevent the surgeon's hair from entering the insides of the patient!"
+	desc = "Um boné de cirurgia médica para impedir que o cabelo do cirurgião entre no interior do paciente!"
 
 /obj/item/clothing/head/utility/surgerycap/green
 	name = "green surgery cap"
 	icon_state = "surgicalcapgreen"
-	desc = "A green medical surgery cap to prevent the surgeon's hair from entering the insides of the patient!"
+	desc = "Um boné médico verde para evitar que o cabelo do cirurgião entre no interior do paciente!"
 
 /obj/item/clothing/head/utility/surgerycap/cmo
 	name = "turquoise surgery cap"
 	icon_state = "surgicalcapcmo"
-	desc = "The CMO's medical surgery cap to prevent their hair from entering the insides of the patient!"
+	desc = "O boné médico da OCM para impedir que o cabelo entre no interior do paciente!"
 
 /obj/item/clothing/head/utility/surgerycap/black
 	name = "black surgery cap"
 	icon_state = "surgicalcapblack"
-	desc = "A black medical surgery cap to prevent the surgeon's hair from entering the insides of the patient!"
+	desc = "Um boné médico preto para evitar que o cabelo do cirurgião entre no interior do paciente!"
 
 /obj/item/clothing/head/utility/head_mirror
 	name = "head mirror"
-	desc = "Used by doctors to look into a patient's eyes, ears, and mouth. \
-		A little useless now, given the technology available, but it certainly completes the look."
+	desc = "Usado por médicos para olhar nos olhos, ouvidos e boca de um paciente. Um pouco inútil agora, dada a tecnologia disponível, mas certamente completa o visual."
 	icon_state = "headmirror"
 	body_parts_covered = NONE
 	pickup_sound = null
@@ -700,7 +695,7 @@
 
 /obj/item/clothing/head/utility/head_mirror/examine(mob/user)
 	. = ..()
-	. += span_notice("In a properly lit room, you can use this to examine people's eyes, ears, and mouth <i>closer</i>.")
+	. += span_notice("Em uma sala bem iluminada, você pode usar isso para examinar os olhos, ouvidos e boca das pessoas.<i>Mais preto.</i>.")
 
 /obj/item/clothing/head/utility/head_mirror/equipped(mob/living/user, slot)
 	. = ..()
@@ -721,10 +716,10 @@
 	if(!human_examined.get_bodypart(BODY_ZONE_HEAD))
 		return
 	if(!examiner.has_light_nearby())
-		examine_list += span_warning("You attempt to use your [name] to examine [examining]'s head better... but it's too dark. Should've invested in a head lamp.")
+		examine_list += span_warning("Você tenta usar o seu[name]Para examinar[examining]A cabeça está melhor... mas está muito escuro. Devia ter investido em uma lâmpada.")
 		return
 	if(examiner.dir == examining.dir) // disallow examine from behind - every other dir is OK
-		examine_list += span_warning("You attempt to use your [name] to examine [examining]'s head better... but [examining.p_theyre()] facing the wrong way.")
+		examine_list += span_warning("Você tenta usar o seu[name]Para examinar[examining]A cabeça está melhor... mas...[examining.p_theyre()]De frente para o lado errado.")
 		return
 
 	var/list/final_message = list("You examine [examining]'s head closer with your [name], you notice [examining.p_they()] [examining.p_have()]...")
@@ -771,7 +766,7 @@
 //Engineering
 /obj/item/clothing/head/beret/engi
 	name = "engineering beret"
-	desc = "Might not protect you from radiation, but definitely will protect you from looking unfashionable!"
+	desc = "Pode não protegê-lo da radiação, mas definitivamente irá protegê-lo de parecer inexpugnável!"
 	icon_state = "/obj/item/clothing/head/beret/engi"
 	greyscale_colors = "#FFBC30"
 	flags_1 = NONE
@@ -779,7 +774,7 @@
 //Cargo
 /obj/item/clothing/head/beret/cargo
 	name = "cargo beret"
-	desc = "No need to compensate when you can wear this beret!"
+	desc = "Não precisa compensar quando pode usar esta boina!"
 	icon_state = "/obj/item/clothing/head/beret/cargo"
 	greyscale_colors = "#b7723d"
 	flags_1 = NONE
@@ -787,12 +782,12 @@
 //Curator
 /obj/item/clothing/head/fedora/curator
 	name = "treasure hunter's fedora"
-	desc = "You got red text today kid, but it doesn't mean you have to like it."
+	desc = "Recebeu uma mensagem vermelha hoje, mas não significa que tenha que gostar."
 	icon_state = "curator"
 
 /obj/item/clothing/head/beret/durathread
 	name = "durathread beret"
-	desc = "A beret made from durathread, its resilient fibers provide some protection to the wearer."
+	desc = "Uma boina feita de Durathread, suas fibras resilientes fornecem proteção ao usuário."
 	icon_state = "/obj/item/clothing/head/beret/durathread"
 	post_init_icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
@@ -811,7 +806,7 @@
 	wound = 5
 
 /obj/item/clothing/head/beret/highlander
-	desc = "That was white fabric. <i>Was.</i>"
+	desc = "Era tecido branco.<i>Era.</i>"
 	dog_fashion = null //THIS IS FOR SLAUGHTER, NOT PUPPIES
 
 /obj/item/clothing/head/beret/highlander/Initialize(mapload)
@@ -821,7 +816,7 @@
 //CentCom
 /obj/item/clothing/head/beret/centcom_formal
 	name = "\improper CentCom Formal Beret"
-	desc = "Sometimes, a compromise between fashion and defense needs to be made. Thanks to Nanotrasen's most recent nano-fabric durability enhancements, this time, it's not the case."
+	desc = "Às vezes, um compromisso entre moda e defesa precisa ser feito. Graças às mais recentes melhorias de durabilidade nano-fabricas de Nanotrasen, desta vez, não é o caso."
 	icon_state = "/obj/item/clothing/head/beret/centcom_formal"
 	post_init_icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
@@ -850,7 +845,7 @@
 //Independant Militia
 /obj/item/clothing/head/beret/militia
 	name = "\improper Militia General's Beret"
-	desc = "A rallying cry for the inhabitants of the Spinward Sector, the heroes that wear this keep the horrors of the galaxy at bay. Call them, and they'll be there in a minute!"
+	desc = "Um grito de protesto para os habitantes do Setor Spinward, os heróis que usam isso mantêm os horrores da galáxia à distância. Chame-os, e eles estarão lá em um minuto!"
 	icon_state = "/obj/item/clothing/head/beret/militia"
 	post_init_icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge

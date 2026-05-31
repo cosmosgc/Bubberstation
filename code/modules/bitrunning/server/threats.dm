@@ -53,7 +53,7 @@
 		alert.name = "Queue Deletion"
 		alert.desc = "The server is resetting. Oblivion awaits."
 
-		to_chat(baddie, span_userdanger("You have been flagged for deletion! Thank you for your service."))
+		to_chat(baddie, span_userdanger("Você foi marcado para a eliminação! Obrigado pelo seu serviço."))
 
 
 /// Removes a specific threat - used when station spawning
@@ -76,14 +76,13 @@
 	var/datum/antagonist/bitrunning_glitch/chosen_role = forced_role || get_antagonist_role()
 	var/role_name = initial(chosen_role.name)
 	var/mob/chosen_one = SSpolling.poll_ghosts_for_target(
-		question = "<span class='ooc'>A temporary antagonist role is spawning in the virtual domain.</span>\
-		\n<span class='boldnotice'>You will return to your previous body on conclusion.</span>",
+		question = "<span class='ooc'>A temporary antagonist role is spawning in the virtual domain.</span>		\n<span class='boldnotice'>You will return to your previous body on conclusion.</span>",
 		check_jobban = ROLE_GLITCH,
 		poll_time = 20 SECONDS,
 		checked_target = mutation_target,
 		ignore_category = POLL_IGNORE_GLITCH,
 		alert_pic = mutation_target,
-		role_name_text = "Malfunction: [role_name]",
+		role_name_text = "Mal funcionamento:[role_name]",
 	)
 	spawn_glitch(chosen_role, mutation_target, chosen_one)
 	return mutation_target
@@ -146,10 +145,7 @@
 		chosen_forge.setup_particles()
 		return
 
-	var/datum/component/glitch/effect = antag.AddComponent(/datum/component/glitch, \
-		server = src, \
-		forge = chosen_forge, \
-	)
+	var/datum/component/glitch/effect = antag.AddComponent(/datum/component/glitch, 		server = src, 		forge = chosen_forge, 	)
 
 	chosen_forge.flicker(angry = TRUE)
 	if(!do_after(antag, 1 SECONDS))

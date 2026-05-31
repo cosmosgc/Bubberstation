@@ -2,7 +2,7 @@
 
 /obj/machinery/airalarm
 	name = "air alarm"
-	desc = "A machine that monitors atmosphere levels. Goes off if the area is dangerous."
+	desc = "Uma máquina que monitora os níveis de atmosfera. Desaparece se a área for perigosa."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "alarmp"
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.05
@@ -125,14 +125,12 @@ GLOBAL_LIST_EMPTY_TYPED(air_alarms, /obj/machinery/airalarm)
 	select_mode(src, /datum/air_alarm_mode/filtering, should_apply = FALSE)
 
 	AddElement(/datum/element/connect_loc, atmos_connections)
-	AddComponent(/datum/component/usb_port, \
-		typecacheof(list(
+	AddComponent(/datum/component/usb_port, 		typecacheof(list(
 			/obj/item/circuit_component/air_alarm_general,
 			/obj/item/circuit_component/air_alarm,
 			/obj/item/circuit_component/air_alarm_scrubbers,
 			/obj/item/circuit_component/air_alarm_vents
-		), only_root_path = TRUE) \
-	)
+		), only_root_path = TRUE) 	)
 
 	GLOB.air_alarms += src
 	if(mapload)
@@ -200,15 +198,15 @@ GLOBAL_LIST_EMPTY_TYPED(air_alarms, /obj/machinery/airalarm)
 	. = ..()
 	switch(buildstage)
 		if(AIR_ALARM_BUILD_NO_CIRCUIT)
-			. += span_notice("It is missing air alarm electronics.")
+			. += span_notice("Está faltando eletrônica de alarme aéreo.")
 		if(AIR_ALARM_BUILD_NO_WIRES)
-			. += span_notice("It is missing wiring.")
+			. += span_notice("Está faltando fiação.")
 		if(AIR_ALARM_BUILD_COMPLETE)
-			. += span_notice("Right-click to [locked ? "unlock" : "lock"] the interface.")
+			. += span_notice("Botão direito para[locked ? "unlock" : "lock"]Uma interface.")
 
 /obj/machinery/airalarm/ui_status(mob/user, datum/ui_state/state)
 	if(HAS_SILICON_ACCESS(user) && aidisabled)
-		to_chat(user, "AI control has been disabled.")
+		to_chat(user, "O controle de IA foi desativado.")
 	else if(!shorted)
 		return ..()
 	return UI_CLOSE
@@ -223,14 +221,14 @@ GLOBAL_LIST_EMPTY_TYPED(air_alarms, /obj/machinery/airalarm)
 		var/obj/machinery/air_sensor/sensor = multi_tool.buffer
 
 		if(!allow_link_change)
-			balloon_alert(user, "linking disabled")
+			balloon_alert(user, "ligação desactivada")
 			return ITEM_INTERACT_BLOCKING
 		if(connected_sensor || sensor.connected_airalarm)
-			balloon_alert(user, "sensor already connected!")
+			balloon_alert(user, "Sensor já conectado!")
 			return ITEM_INTERACT_BLOCKING
 
 		connect_sensor(sensor)
-		balloon_alert(user, "connected sensor")
+		balloon_alert(user, "Sensor Conectado")
 		return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/airalarm/ui_interact(mob/user, datum/tgui/ui)
@@ -608,28 +606,28 @@ GLOBAL_LIST_EMPTY_TYPED(air_alarms, /obj/machinery/airalarm)
 		var/is_low_temp = tlv_collection["temperature"].hazard_min != TLV_VALUE_IGNORE && temp <= tlv_collection["temperature"].hazard_min
 
 		if(is_low_pressure && is_low_temp)
-			warning_message = "Danger! Low pressure and temperature detected."
+			warning_message = "Perigo! Baixa pressão e temperatura detectadas."
 			return
 		if(is_low_pressure && is_high_temp)
-			warning_message = "Danger! Low pressure and high temperature detected."
+			warning_message = "Perigo! Baixa pressão e alta temperatura detectadas."
 			return
 		if(is_high_pressure && is_high_temp)
-			warning_message = "Danger! High pressure and temperature detected."
+			warning_message = "Perigo! Alta pressão e temperatura detectadas."
 			return
 		if(is_high_pressure && is_low_temp)
-			warning_message = "Danger! High pressure and low temperature detected."
+			warning_message = "Perigo! Alta pressão e baixa temperatura detectadas."
 			return
 		if(is_low_pressure)
-			warning_message = "Danger! Low pressure detected."
+			warning_message = "Perigo! Baixa pressão detectada."
 			return
 		if(is_high_pressure)
-			warning_message = "Danger! High pressure detected."
+			warning_message = "Perigo! Alta pressão detectada."
 			return
 		if(is_low_temp)
-			warning_message = "Danger! Low temperature detected."
+			warning_message = "Perigo! Baixa temperatura detectada."
 			return
 		if(is_high_temp)
-			warning_message = "Danger! High temperature detected."
+			warning_message = "Perigo! Alta temperatura detectada."
 			return
 		else
 			warning_message = null
@@ -695,7 +693,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/airalarm, 27)
 ///Used for all_access air alarm helper, which set air alarm's required access to null.
 /obj/machinery/airalarm/proc/give_all_access()
 	name = "all-access air alarm"
-	desc = "This particular atmos control unit appears to have no access restrictions."
+	desc = "Esta unidade de controle parece não ter restrições de acesso."
 	locked = FALSE
 	req_access = null
 	req_one_access = null

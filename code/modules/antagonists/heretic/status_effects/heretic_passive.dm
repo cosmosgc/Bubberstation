@@ -131,7 +131,7 @@
 /datum/status_effect/heretic_passive/blade/proc/z_impact_react(datum/source, levels, turf/fell_on)
 	SIGNAL_HANDLER
 	new /obj/effect/temp_visual/mook_dust(fell_on)
-	owner.visible_message(span_notice("[owner] lands on [fell_on] safely, and quite stylishly on [p_their()] feet!"))
+	owner.visible_message(span_notice("[owner]Aterrissando[fell_on]Com segurança, e com muita elegância.[p_their()]Pés!"))
 	INVOKE_ASYNC(owner, TYPE_PROC_REF(/atom, SpinAnimation), 0.5 SECONDS, 0)
 	INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob/, emote), "flip")
 	return ZIMPACT_CANCEL_DAMAGE | ZIMPACT_NO_MESSAGE | ZIMPACT_NO_SPIN
@@ -141,7 +141,7 @@
 	mob/living/carbon/human/source,
 	atom/movable/hitby,
 	damage = 0,
-	attack_text = "the attack",
+	attack_text = "O ataque.",
 	attack_type = MELEE_ATTACK,
 	armour_penetration = 0,
 	damage_type = BRUTE,
@@ -196,18 +196,18 @@
 /// Does the actual counter-attack
 /datum/status_effect/heretic_passive/blade/proc/counter_attack(mob/living/carbon/human/source, mob/living/target, obj/item/melee/sickly_blade/weapon, attack_text)
 	playsound(get_turf(source), 'sound/items/weapons/parry.ogg', 100, TRUE)
-	source.balloon_alert(source, "riposte used")
+	source.balloon_alert(source, "Riposte Usado")
 	source.visible_message(
-		span_warning("[source] leans into [attack_text] and delivers a sudden riposte back at [target]!"),
-		span_warning("You lean into [attack_text] and deliver a sudden riposte back at [target]!"),
-		span_hear("You hear a clink, followed by a stab."),
+		span_warning("[source]Inclina-se em[attack_text]E faz uma repentina réplica em[target]!"),
+		span_warning("Você se inclina para[attack_text]e entregar uma repentina réplica em[target]!"),
+		span_hear("Você ouve um clink, seguido de uma facada."),
 	)
 	weapon.melee_attack_chain(source, target)
 
 /// Gives feedback to the user
 /datum/status_effect/heretic_passive/blade/proc/reset_riposte(mob/living/carbon/human/source)
 	riposte_ready = TRUE
-	source.balloon_alert(source, "riposte ready")
+	source.balloon_alert(source, "Riposte pronto.")
 
 //---- Cosmic Passive
 // Level 1 Cosmic fields will speed up the caster and provide stamina regen

@@ -124,7 +124,7 @@ export const MODpaint = (props) => {
                 icon="question"
                 color="average"
                 tooltipPosition="top"
-                tooltip="This is a color matrix. Think of it as editing the image in 3 layers, red, green, and blue, rather than editing the final image like with RGB."
+                tooltip="Esta é uma matriz colorida. Pense nisso como editar a imagem em 3 camadas, vermelho, verde e azul, em vez de editar a imagem final como com RGB."
               />
               <Button
                 height="50px"
@@ -132,7 +132,7 @@ export const MODpaint = (props) => {
                 icon="check"
                 color="good"
                 tooltipPosition="top"
-                tooltip="Confirm changes!"
+                tooltip="Confirmar mudanças!"
                 onClick={() => act('confirm')}
               />
             </Section>

@@ -20,16 +20,16 @@
 		mobs_with_special_messages += buckling
 		delay *= SADDLE_MOUNTING_OTHER_MULT
 
-	user.visible_message(span_warning("[user] starts to mount[ridee_string] [src]..."), span_notice("You start to mount[ridee_string] [src]..."), ignored_mobs = mobs_with_special_messages)
-	to_chat(src, span_warning("[user] starts to mount[ridee_string] you!"))
+	user.visible_message(span_warning("[user]Começa a montar[ridee_string] [src]..."), span_notice("Você começa a montar[ridee_string] [src]..."), ignored_mobs = mobs_with_special_messages)
+	to_chat(src, span_warning("[user]Começa a montar[ridee_string]Você!"))
 	if (buckling != user)
-		to_chat(buckling, span_boldwarning("[user] starts to mount you onto [src]!"))
+		to_chat(buckling, span_boldwarning("[user]Começa a montar em você[src]!"))
 
 	if (!do_after(user, SADDLE_MOUNTING_TIME, target = src))
-		user.visible_message(span_warning("[user] fails to mount[ridee_string] [src]!"), span_warning("You fail to mount[ridee_string] [src]!"), ignored_mobs = mobs_with_special_messages)
-		to_chat(src, span_warning("[user] fails to mount[ridee_string] you!"))
+		user.visible_message(span_warning("[user]Não consegue montar[ridee_string] [src]!"), span_warning("Você falhou em montar[ridee_string] [src]!"), ignored_mobs = mobs_with_special_messages)
+		to_chat(src, span_warning("[user]Não consegue montar[ridee_string]Você!"))
 		if (buckling != user)
-			to_chat(buckling, span_warning("[user] fails to mount you onto [src]!"))
+			to_chat(buckling, span_warning("[user]Não consegue montar em você.[src]!"))
 		return FALSE
 
 	if (!can_be_ridden_by(buckling, user)) // because we slept
@@ -64,17 +64,17 @@
 	/// Conditions that prevent riding, with a balloon alert
 	var/cant_buckle_message
 	if (to_buckle == src)
-		cant_buckle_message = "can't ride self!"
+		cant_buckle_message = "Não posso montar sozinho!"
 	else if (body_position == LYING_DOWN)
-		cant_buckle_message = "can't ride resting!"
+		cant_buckle_message = "Não posso cavalgar descansando!"
 	else if (incapacitated)
-		cant_buckle_message = "can't mount incapacitated mobs!"
+		cant_buckle_message = "Não pode montar multidões incapacitadas!"
 	else if (INCAPACITATED_IGNORING(user, INCAPABLE_GRAB))
-		cant_buckle_message = "you are incapacitated!"
+		cant_buckle_message = "Você está incapacitado!"
 	else if (INCAPACITATED_IGNORING(to_buckle, INCAPABLE_GRAB))
-		cant_buckle_message = "rider incapacitated!"
+		cant_buckle_message = "Piloto incapacitado!"
 	else if (length(buckled_mobs))
-		cant_buckle_message = "already being ridden!"
+		cant_buckle_message = "Já está sendo montado!"
 
 	if (cant_buckle_message)
 		if (!silent)

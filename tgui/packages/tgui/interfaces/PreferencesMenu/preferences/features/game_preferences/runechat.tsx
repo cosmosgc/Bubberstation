@@ -6,36 +6,36 @@ import {
 } from '../base';
 
 export const chat_on_map: FeatureToggle = {
-  name: 'Enable Runechat',
+  name: 'Activar o Runechat',
   category: 'RUNECHAT',
-  description: 'Chat messages will show above heads.',
+  description: 'Mensagens de bate-papo vão aparecer acima das cabeças.',
   component: CheckboxInput,
 };
 
 export const see_chat_non_mob: FeatureToggle = {
-  name: 'Enable Runechat on objects',
+  name: 'Activar o Runechat em objectos',
   category: 'RUNECHAT',
-  description: 'Chat messages will show above objects when they speak.',
+  description: 'Mensagens de bate-papo mostrarão objetos acima quando falarem.',
   component: CheckboxInput,
 };
 
 export const chat_on_ghosts: FeatureToggle = {
-  name: 'Enable Runechat on ghosts',
+  name: 'Active Runechat em fantasmas.',
   category: 'RUNECHAT',
-  description: 'Chat messages will show above ghosts when they speak.',
+  description: 'Mensagens de bate-papo mostrarão acima dos fantasmas quando falarem.',
   component: CheckboxInput,
 };
 
 export const see_rc_emotes: FeatureToggle = {
-  name: 'Enable Runechat emotes',
+  name: 'Activar emoções de Runechat',
   category: 'RUNECHAT',
-  description: 'Emotes will show above heads.',
+  description: 'Emotos aparecerão acima das cabeças.',
   component: CheckboxInput,
 };
 
 export const max_chat_length: FeatureNumeric = {
-  name: 'Max chat length',
+  name: 'Max bate-papo',
   category: 'RUNECHAT',
-  description: 'The maximum length a Runechat message will show as.',
+  description: 'O comprimento máximo que uma mensagem Runechat mostrará.',
   component: FeatureNumberInput,
 };

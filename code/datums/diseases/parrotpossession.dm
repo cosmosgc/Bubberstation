@@ -9,7 +9,7 @@
 	cure_chance = 10
 	agent = "Avian Vengence"
 	viable_mobtypes = list(/mob/living/carbon/human)
-	desc = "Subject is possessed by the vengeful spirit of a parrot. Call the Chaplain."
+	desc = "O sujeito está possuído pelo espírito vingativo de um papagaio. Chame o Capelão."
 	severity = DISEASE_SEVERITY_MEDIUM
 	infectable_biotypes = MOB_ORGANIC|MOB_UNDEAD|MOB_ROBOTIC|MOB_MINERAL
 	bypasses_immunity = TRUE //2spook
@@ -37,8 +37,8 @@
 		UnregisterSignal(inside_parrot, list(COMSIG_PREQDELETED, COMSIG_MOVABLE_MOVED))
 		inside_parrot.forceMove(affected_mob.drop_location())
 		affected_mob.visible_message(
-			span_danger("[inside_parrot] is violently driven out of [affected_mob]!"),
-			span_userdanger("[inside_parrot] bursts out of your chest!"),
+			span_danger("[inside_parrot]é violentamente expulso de[affected_mob]!"),
+			span_userdanger("[inside_parrot]Explode do seu peito!"),
 		)
 	parrot_controller = null
 	return ..()

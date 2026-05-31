@@ -62,7 +62,7 @@ function formatDuration(duration: number): string {
     'ms ' +
     '(' +
     durationInFrames.toFixed(2) +
-    ' frames)'
+    'Quadros)'
   );
 }
 

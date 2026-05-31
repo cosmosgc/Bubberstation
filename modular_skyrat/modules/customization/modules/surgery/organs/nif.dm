@@ -1,7 +1,7 @@
 // A surgery that repairs the patient's NIF
 /datum/surgery_operation/organ/repair_nif
 	name = "Repair NIF"
-	desc = "A surgical procedure that restores the integrity of an installed NIF."
+	desc = "Um procedimento cirúrgico que restaura a integridade de um NIF instalado."
 	implements = list(
 		TOOL_MULTITOOL = 1,
 		TOOL_HEMOSTAT = 2.85,
@@ -16,18 +16,18 @@
 	display_results(
 		surgeon,
 		installed_nif.owner,
-		span_notice("You begin to restore the integrity of [FORMAT_ORGAN_OWNER(installed_nif)]'s NIF..."),
-		span_notice("[surgeon] begins to fix [FORMAT_ORGAN_OWNER(installed_nif)]'s NIF."),
-		span_notice("[surgeon] begins to perform repairs on [FORMAT_ORGAN_OWNER(installed_nif)]'s NIF."),
+		span_notice("Você começa a restaurar a integridade de[FORMAT_ORGAN_OWNER(installed_nif)]NIF..."),
+		span_notice("[surgeon]Começa a consertar.[FORMAT_ORGAN_OWNER(installed_nif)]NIF."),
+		span_notice("[surgeon]Começa a realizar reparos em[FORMAT_ORGAN_OWNER(installed_nif)]NIF."),
 	)
 
 /datum/surgery_operation/organ/repair_nif/on_success(obj/item/organ/cyberimp/brain/nif/installed_nif, mob/living/surgeon, tool, list/operation_args)
 	display_results(
 		surgeon,
 		installed_nif.owner,
-		span_notice("You succeed in restoring the integrity of [FORMAT_ORGAN_OWNER(installed_nif)]'s NIF."),
-		span_notice("[surgeon] successfully repairs [FORMAT_ORGAN_OWNER(installed_nif)]'s NIF!"),
-		span_notice("[surgeon] completes the repair on [FORMAT_ORGAN_OWNER(installed_nif)]'s NIF."),
+		span_notice("Você consegue restaurar a integridade de[FORMAT_ORGAN_OWNER(installed_nif)]NIF."),
+		span_notice("[surgeon]Consertar com sucesso.[FORMAT_ORGAN_OWNER(installed_nif)]NIF!"),
+		span_notice("[surgeon]completa o reparo em[FORMAT_ORGAN_OWNER(installed_nif)]NIF."),
 	)
 	installed_nif.durability = installed_nif.max_durability
 	installed_nif.send_message("Restored to full integrity!")
@@ -38,9 +38,9 @@
 	display_results(
 		surgeon,
 		installed_nif.owner,
-		span_warning("You screw up, causing [FORMAT_ORGAN_OWNER(installed_nif)] brain damage!"),
-		span_warning("[surgeon] screws up, while trying to repair [FORMAT_ORGAN_OWNER(installed_nif)]'s NIF!"),
-		span_notice("[surgeon] completes the repair on [FORMAT_ORGAN_OWNER(installed_nif)]'s NIF."),
+		span_warning("Você estraga tudo, causando[FORMAT_ORGAN_OWNER(installed_nif)]Dano cerebral!"),
+		span_warning("[surgeon]Estraga tudo, enquanto tenta consertar[FORMAT_ORGAN_OWNER(installed_nif)]NIF!"),
+		span_notice("[surgeon]completa o reparo em[FORMAT_ORGAN_OWNER(installed_nif)]NIF."),
 	)
 	installed_nif.owner.adjust_organ_loss(ORGAN_SLOT_BRAIN, 20)
 	return FALSE

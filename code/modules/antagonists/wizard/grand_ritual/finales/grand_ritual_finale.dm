@@ -28,7 +28,7 @@
 		return
 	var/time_remaining_desc = ""
 	if (minimum_time >= world.time - SSticker.round_start_time)
-		time_remaining_desc = " <i>This ritual will be available to begin invoking in [DisplayTimeText(minimum_time - world.time - SSticker.round_start_time)]</i>"
+		time_remaining_desc = " <i>Este ritual estará disponível para começar a invocar[DisplayTimeText(minimum_time - world.time - SSticker.round_start_time)]</i>"
 	var/datum/radial_menu_choice/choice = new()
 	choice.name = name
 	choice.image = image(icon = icon, icon_state = icon_state)
@@ -60,7 +60,7 @@
 	wizard_murder.explanation_text = "Kill [wizard.current.name], the one who did this."
 	antag_datum.objectives += wizard_murder
 
-	to_chat(aggrieved_crewmate.current, span_warning("No! This isn't right!"))
+	to_chat(aggrieved_crewmate.current, span_warning("Não! Isso não está certo!"))
 	aggrieved_crewmate.announce_objectives()
 
 /**
@@ -79,7 +79,7 @@
 /// Give everyone magic items, its so simple it feels pointless to give it its own file
 /datum/grand_finale/magic
 	name = "Evolution"
-	desc = "The ultimate use of your gathered power! Give the crew their own magic, they'll surely realise that right and wrong have no meaning when you hold ultimate power!"
+	desc = "O uso final de seu poder acumulado! Dê à tripulação a sua própria magia, eles certamente perceberão que o certo e o errado não têm significado quando você tem o poder supremo!"
 	icon = 'icons/obj/scrolls.dmi'
 	icon_state = "scroll"
 

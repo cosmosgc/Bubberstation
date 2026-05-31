@@ -120,7 +120,7 @@ export function FeatureIconnedDropdownInput(props: IconnedDropdownInputProps) {
             <Stack.Item>
               <Box
                 className={classes(['preferences32x32', icons[choice]])}
-                style={{ transform: 'scale(0.8)' }}
+                style={{ transform: 'Escala (0,8)' }}
               />
             </Stack.Item>
             <Stack.Item grow>{displayText}</Stack.Item>

@@ -29,7 +29,7 @@
 	. = ..()
 	owner.announce_objectives()
 	if(!isovermind(owner.current))
-		to_chat(owner.current, span_notice("Use the pop ability to place your blob core! It is recommended you do this away from anyone else, as you'll be taking on the entire crew!"))
+		to_chat(owner.current, span_notice("Use a habilidade pop para colocar seu núcleo de bolhas! Recomenda-se que você faça isso longe de qualquer outra pessoa, como você vai enfrentar toda a tripulação!"))
 	else
 		has_already_popped = TRUE
 
@@ -85,12 +85,12 @@
 	pop_action.Grant(owner.current)
 
 /datum/objective/blob_takeover
-	explanation_text = "Reach critical mass!"
+	explanation_text = "Alcançar massa crítica!"
 
 //Non-overminds get this on blob antag assignment
 /datum/action/innate/blobpop
 	name = "Pop"
-	desc = "Unleash the blob!"
+	desc = "Solte uma bola!"
 	button_icon = 'icons/mob/nonhuman-player/blob.dmi'
 	button_icon_state = "blob"
 
@@ -101,7 +101,7 @@
 	. = ..()
 	if(owner)
 		addtimer(CALLBACK(src, PROC_REF(Activate), TRUE), autoplace_time, TIMER_UNIQUE|TIMER_OVERRIDE)
-		to_chat(owner, span_bolddanger("You will automatically pop and place your blob core in [DisplayTimeText(autoplace_time)]."))
+		to_chat(owner, span_bolddanger("Você vai automaticamente estourar e colocar seu núcleo de bolhas em[DisplayTimeText(autoplace_time)]."))
 
 /datum/action/innate/blobpop/Activate(timer_activated = FALSE)
 	var/mob/living/old_body = owner
@@ -116,11 +116,11 @@
 	. = TRUE
 	var/turf/target_turf = get_turf(owner)
 	if(target_turf.density)
-		to_chat(owner, span_warning("This spot is too dense to place a blob core on!"))
+		to_chat(owner, span_warning("Este lugar é muito denso para colocar um núcleo de bolhas!"))
 		. = FALSE
 	var/area/target_area = get_area(target_turf)
 	if(isspaceturf(target_turf) || !(target_area?.area_flags & BLOBS_ALLOWED) || !is_station_level(target_turf.z))
-		to_chat(owner, span_warning("You cannot place your core here!"))
+		to_chat(owner, span_warning("Você não pode colocar seu núcleo aqui!"))
 		. = FALSE
 
 	var/placement_override = BLOB_FORCE_PLACEMENT
@@ -128,7 +128,7 @@
 		if(!timer_activated)
 			return
 		placement_override = BLOB_RANDOM_PLACEMENT
-		to_chat(owner, span_warning("Because your current location is an invalid starting spot and you need to pop, you've been moved to a random location!"))
+		to_chat(owner, span_warning("Porque sua localização atual é um ponto de partida inválido e você precisa aparecer, você foi transferido para um local aleatório!"))
 
 	var/mob/eye/blob/blob_cam = new /mob/eye/blob(get_turf(old_body), blobtag.starting_points_human_blob)
 	owner.mind.transfer_to(blob_cam)
@@ -141,7 +141,7 @@
 		"A Blob host has burst in [get_area_name(blob_cam.blob_core)]",
 		source = blob_cam.blob_core,
 		ghost_sound = 'sound/music/antag/blobalert.ogg',
-		header = "Blob Awakening!",
+		header = "Acordem!",
 		notify_volume = 75,
 	)
 

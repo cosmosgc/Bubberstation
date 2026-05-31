@@ -61,13 +61,13 @@ const AiStatusDisplayPickerContent = () => {
   return (
     <Stack fill vertical>
       <Stack.Item>
-        <Section title="Current Display">
+        <Section title="Display atual">
           <Flex align="center" justify="center" direction="column">
             {current_icon && (
               <Flex.Item mb={2}>
                 <Box
                   style={{
-                    border: '2px solid #4a9eff',
+                    border: '2px sólido #4a9eff',
                     borderRadius: '4px',
                     backgroundColor: '#1a1a1a',
                     padding: '8px',
@@ -84,7 +84,7 @@ const AiStatusDisplayPickerContent = () => {
             )}
             <Flex.Item mb={1}>
               <Box fontSize="1.4em" textAlign="center" bold color="good">
-                {current_emotion || 'No Selection'}
+                {current_emotion || 'Sem Seleção'}
               </Box>
             </Flex.Item>
           </Flex>
@@ -95,7 +95,7 @@ const AiStatusDisplayPickerContent = () => {
         <Section>
           <Input
             fluid
-            placeholder="Search display options..."
+            placeholder="Procurar opções de exibição..."
             value={searchTerm}
             onChange={(value) => setSearchTerm(value)}
           />
@@ -106,7 +106,7 @@ const AiStatusDisplayPickerContent = () => {
         <Stack fill vertical>
           {originalOptions.length > 0 && (
             <Stack.Item>
-              <Section title="AI Emotions">
+              <Section title="AI Emoções">
                 <OptionsList options={originalOptions} />
               </Section>
             </Stack.Item>
@@ -114,7 +114,7 @@ const AiStatusDisplayPickerContent = () => {
 
           {newOptions.length > 0 && (
             <Stack.Item>
-              <Section title="Additional Status Display Options">
+              <Section title="Opções adicionais de exibição de status">
                 <OptionsList options={newOptions} />
               </Section>
             </Stack.Item>

@@ -3,7 +3,7 @@
 
 /obj/item/bdsm_candle
 	name = "soy candle"
-	desc = "A candle with low melting temperature."
+	desc = "Uma vela com baixa temperatura de fusão."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
@@ -111,9 +111,9 @@
 /obj/item/bdsm_candle/examine(mob/user)
 	. = ..()
 	if(!color_changed && !lit)
-		. += span_notice("Alt-click to change it's color.")
+		. += span_notice("Alt-click para mudar sua cor.")
 	else if(lit)
-		. += span_notice("Alt-click to snuff the flame out.")
+		. += span_notice("Alt-clique para apagar a chama.")
 
 /obj/item/bdsm_candle/click_alt(mob/user)
 	if(!lit && !color_changed)
@@ -129,7 +129,7 @@
 	else
 		if(!put_out_candle())
 			return CLICK_ACTION_BLOCKING
-		user.visible_message(span_notice("[user] snuffs [src]."))
+		user.visible_message(span_notice("[user]Snuffs[src]."))
 		return CLICK_ACTION_SUCCESS
 
 /*
@@ -145,24 +145,22 @@
 
 	var/message = ""
 	if(!attacked.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
-		to_chat(user, span_danger("It looks like [attacked] don't want you to do that."))
+		to_chat(user, span_danger("Parece que...[attacked]Não quero que faça isso."))
 		return
 	if(!lit)
-		to_chat(user, span_danger("[src] needs to be lit to produce wax!"))
+		to_chat(user, span_danger("[src]Precisa ser iluminado para produzir cera!"))
 		return
 	switch(user.zone_selected) //to let code know what part of body we gonna wax
 		if(BODY_ZONE_PRECISE_GROIN)
 			var/obj/item/organ/genital/penis = attacked.get_organ_slot(ORGAN_SLOT_PENIS)
 			var/obj/item/organ/genital/vagina = attacked.get_organ_slot(ORGAN_SLOT_VAGINA)
 			var/penis_message = (user == attacked) ? pick("drips some wax on [attacked.p_their()] penis, causing [attacked.p_them()] to moan in pleasure.",
-						"drips some wax on [attacked.p_them()]self, letting it reach [attacked.p_their()] penis.") \
-					: pick("drips wax right on [attacked]'s penis. It slightly itches.",
+						"drips some wax on [attacked.p_them()]self, letting it reach [attacked.p_their()] penis.") 					: pick("drips wax right on [attacked]'s penis. It slightly itches.",
 						"drips hot wax from [src] onto [attacked]'s penis, [attacked.p_they()] shivers slightly.",
 						"tilts the candle. Drops of wax, dripping from [src] onto [attacked]'s penis, made [attacked.p_them()] moan.")
 
 			var/vagina_message = (user == attacked) ? pick("drips some wax on [attacked.p_them()]self, letting it reach [attacked.p_their()] vagina.",
-						"drips some wax onto [attacked.p_their()] pussy as [attacked.p_they()] moan in pleasure") \
-					: pick("drips some wax on [attacked]'s vagina.",
+						"drips some wax onto [attacked.p_their()] pussy as [attacked.p_they()] moan in pleasure") 					: pick("drips some wax on [attacked]'s vagina.",
 						"tilts the candle as the wax slowly drops down, reaching [attacked]'s vagina.",
 						"tilts the candle. Drops of wax, dripping from [src] onto [attacked]'s pussy, made [attacked.p_them()] moan.")
 
@@ -174,12 +172,11 @@
 				message = vagina_message
 			else if(attacked.is_bottomless())
 				message = (user == attacked) ? pick("drips some wax on [attacked.p_them()]self, letting it reach [attacked.p_their()] belly as [attacked.p_they()] moan in pleasure.",
-						"drips some wax on [attacked]'s tummy") \
-					: pick("drips some wax on [attacked]'s belly",
+						"drips some wax on [attacked]'s tummy") 					: pick("drips some wax on [attacked]'s belly",
 						"tilts the candle as the wax slowly drops down, reaching [attacked]'s tummy.",
 						"tilts the candle. Drops of wax, dripping from [src] onto [attacked]'s groin, made [attacked.p_them()] moan.")
 			else
-				to_chat(user, span_danger("Looks like [attacked]'s groin is covered!"))
+				to_chat(user, span_danger("Parece que sim.[attacked]A virilha está coberta!"))
 				return
 			attacked.adjust_pain(PAIN_DEFAULT)
 
@@ -188,14 +185,13 @@
 			if(breasts?.is_exposed())
 				var/breasts_or_nipples = breasts ? ORGAN_SLOT_BREASTS : ORGAN_SLOT_NIPPLES
 				message = (user == attacked) ? pick("drips some wax on [attacked.p_their()] [breasts_or_nipples], releasing all [attacked.p_their()] lustness",
-						"drips some wax right on [attacked.p_their()] [breasts ? "tits" : "chest"], making [attacked.p_their()] feel faint.") \
-					: pick("pours the wax that is slowly dripping from [src] onto [attacked]'s [breasts_or_nipples], [attacked.p_they()] shows pure enjoyment.",
+						"drips some wax right on [attacked.p_their()] [breasts ? "tits" : "chest"], making [attacked.p_their()] feel faint.") 					: pick("pours the wax that is slowly dripping from [src] onto [attacked]'s [breasts_or_nipples], [attacked.p_they()] shows pure enjoyment.",
 						"tilts the candle. Right in the moment when wax drips on [attacked]'s [breasts_or_nipples], [attacked.p_they()] shivers",
 						"tilts the candle. Just when hot drops of wax fell on [attacked]'s [breasts_or_nipples], [attacked.p_they()] quietly moans in pleasure")
 				attacked.adjust_pain(PAIN_DEFAULT * 0.66)
 
 			else
-				to_chat(user, span_danger("Looks like [attacked]'s chest is covered!"))
+				to_chat(user, span_danger("Parece que sim.[attacked]O peito está coberto!"))
 				return
 		else
 			return

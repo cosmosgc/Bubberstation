@@ -2,7 +2,7 @@
 	filename = "mafia"
 	filedesc = "Mafia"
 	program_open_overlay = "mafia"
-	extended_desc = "A program that allows you to play the infamous Mafia game, straight from your Modular PC."
+	extended_desc = "Um programa que permite que você jogue o infame jogo da Máfia, direto do seu PC modular."
 	downloader_category = PROGRAM_CATEGORY_GAMES
 	size = 6
 	tgui_id = "NtosMafiaPanel"
@@ -21,7 +21,7 @@
 	var/datum/mafia_role/pda_role = game.get_role_player(computer)
 	if(!pda_role)
 		return ..()
-	game.send_message(span_notice("[pda_role.body] has deleted the game from their PDA, and therefore has left the game."))
+	game.send_message(span_notice("[pda_role.body]deletou o jogo de seu PDA, e, portanto, deixou o jogo."))
 	pda_role.kill(game)
 	return ..()
 

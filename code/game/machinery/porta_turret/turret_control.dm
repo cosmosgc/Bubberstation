@@ -1,6 +1,6 @@
 /obj/machinery/turretid
 	name = "turret control panel"
-	desc = "Used to control a room's automated defenses."
+	desc = "Usado para controlar as defesas automáticas de uma sala."
 	icon = 'icons/obj/machines/turret_control.dmi'
 	icon_state = "control"
 	base_icon_state = "control"
@@ -78,8 +78,8 @@
 /obj/machinery/turretid/examine(mob/user)
 	. += ..()
 	if(issilicon(user) && !(machine_stat & BROKEN))
-		. += span_notice("Ctrl-click [src] to [ enabled ? "disable" : "enable"] turrets.")
-		. += span_notice("Alt-click [src] to set turrets to [ lethal ? "stun" : "kill"].")
+		. += span_notice("Ctrl-click[src]Para[ enabled ? "disable" : "enable"]Torres.")
+		. += span_notice("Alt-click[src]para colocar torres para[ lethal ? "stun" : "kill"].")
 
 /obj/machinery/turretid/multitool_act(mob/living/user, obj/item/multitool/multi_tool)
 	. = NONE
@@ -88,7 +88,7 @@
 
 	if(multi_tool.buffer && istype(multi_tool.buffer, /obj/machinery/porta_turret))
 		turrets |= WEAKREF(multi_tool.buffer)
-		to_chat(user, span_notice("You link \the [multi_tool.buffer] with \the [src]."))
+		to_chat(user, span_notice("Você liga.\the [multi_tool.buffer]Com\the [src]."))
 		return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/turretid/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
@@ -105,18 +105,18 @@
 
 	if (check_access(id))
 		if(obj_flags & EMAGGED)
-			to_chat(user, span_warning("The turret control is unresponsive!"))
+			to_chat(user, span_warning("O controle da torre não responde!"))
 			return
 
 		locked = !locked
-		to_chat(user, span_notice("You [ locked ? "lock" : "unlock"] the panel."))
+		to_chat(user, span_notice("Você.[ locked ? "lock" : "unlock"]O painel."))
 	else
-		to_chat(user, span_alert("Access denied."))
+		to_chat(user, span_alert("Acesso negado."))
 
 /obj/machinery/turretid/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return FALSE
-	balloon_alert(user, "access analysis module shorted")
+	balloon_alert(user, "módulo de análise de acesso encurtado")
 	obj_flags |= EMAGGED
 	locked = FALSE
 	return TRUE
@@ -125,7 +125,7 @@
 	if(!ailock || isAdminGhostAI(user))
 		return attack_hand(user)
 	else
-		to_chat(user, span_warning("There seems to be a firewall preventing you from accessing this device!"))
+		to_chat(user, span_warning("Parece haver um firewall impedindo você de acessar este dispositivo!"))
 
 /obj/machinery/turretid/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -154,7 +154,7 @@
 			if(!HAS_SILICON_ACCESS(user))
 				return
 			if((obj_flags & EMAGGED) || (machine_stat & BROKEN))
-				to_chat(user, span_warning("The turret control is unresponsive!"))
+				to_chat(user, span_warning("O controle da torre não responde!"))
 				return
 			locked = !locked
 			return TRUE
@@ -172,7 +172,7 @@
 	lethal = !lethal
 	if (user)
 		var/enabled_or_disabled = lethal ? "disabled" : "enabled"
-		balloon_alert(user, "safeties [enabled_or_disabled]")
+		balloon_alert(user, "Seguranças[enabled_or_disabled]")
 		add_hiddenprint(user)
 		log_combat(user, src, "[enabled_or_disabled] lethals on")
 	updateTurrets()
@@ -206,7 +206,7 @@
 
 /obj/item/wallframe/turret_control
 	name = "turret control frame"
-	desc = "Used for building turret control panels."
+	desc = "Usado para construir painéis de controle de torre."
 	icon = 'icons/obj/machines/turret_control.dmi'
 	icon_state = "control_frame"
 	result_path = /obj/machinery/turretid

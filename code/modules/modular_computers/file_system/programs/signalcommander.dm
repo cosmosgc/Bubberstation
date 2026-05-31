@@ -3,7 +3,7 @@
 	filedesc = "SignalCommander"
 	downloader_category = PROGRAM_CATEGORY_EQUIPMENT
 	program_open_overlay = "signal"
-	extended_desc = "A small built-in frequency app that sends out signaller signals with the appropriate hardware."
+	extended_desc = "Um pequeno aplicativo de frequência integrado que envia sinais sinalizadores com o hardware apropriado."
 	size = 2
 	tgui_id = "NtosSignaler"
 	program_icon = "satellite-dish"
@@ -72,7 +72,7 @@
 
 	if(!COOLDOWN_FINISHED(src, signal_cooldown))
 		if(user)
-			computer.balloon_alert(user, "cooling down!")
+			computer.balloon_alert(user, "Esfriando!")
 		return
 
 	COOLDOWN_START(src, signal_cooldown, signal_cooldown_time)

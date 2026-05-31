@@ -25,5 +25,5 @@
 /datum/element/inorganic_rejection/proc/reject_now(mob/living/source, obj/item/organ/organ)
 	organ.Remove(source)
 	organ.forceMove(get_turf(source))
-	to_chat(source, span_danger("Your body rejected [organ]!"))
+	to_chat(source, span_danger("Seu corpo rejeitou.[organ]!"))
 	organ.balloon_alert_to_viewers("rejected!", vision_distance = 1)

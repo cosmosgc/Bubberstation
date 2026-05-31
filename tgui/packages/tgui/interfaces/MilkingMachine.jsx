@@ -69,7 +69,7 @@ const MilkingMachineContent = (props) => {
             {mobName && (
               <Button
                 icon="eject"
-                content="Eject creature"
+                content="Ejetar criatura"
                 textAlign="center"
                 backgroundColor={palette.ButtonBackGroundColor}
                 onClick={() => act('ejectCreature')}
@@ -78,7 +78,7 @@ const MilkingMachineContent = (props) => {
             {!mobName && (
               <Button
                 icon="eject"
-                content="Eject creature"
+                content="Ejetar criatura"
                 textAlign="center"
                 backgroundColor={palette.ButtonBackGroundColor}
                 disabled
@@ -196,7 +196,7 @@ const MilkingMachineContent = (props) => {
                       </Stack>
                       <Stack>
                         <Stack.Item grow>
-                          {current_selected_organ !== 'the breasts' &&
+                          {current_selected_organ !== 'Os seios' &&
                             current_breasts !== null && (
                               <Box as="div" m={1}>
                                 <Button
@@ -210,7 +210,7 @@ const MilkingMachineContent = (props) => {
                                 />
                               </Box>
                             )}
-                          {current_selected_organ === 'the breasts' && (
+                          {current_selected_organ === 'Os seios' && (
                             <Box as="div" m={1}>
                               <Button
                                 content="Breasts"
@@ -237,7 +237,7 @@ const MilkingMachineContent = (props) => {
                           )}
                         </Stack.Item>
                         <Stack.Item grow>
-                          {current_selected_organ !== 'the vagina' &&
+                          {current_selected_organ !== 'Uma vagina' &&
                             current_vagina !== null && (
                               <Box as="div" m={1}>
                                 <Button
@@ -251,7 +251,7 @@ const MilkingMachineContent = (props) => {
                                 />
                               </Box>
                             )}
-                          {current_selected_organ === 'the vagina' && (
+                          {current_selected_organ === 'Uma vagina' && (
                             <Box as="div" m={1}>
                               <Button
                                 content="Vagina"
@@ -278,7 +278,7 @@ const MilkingMachineContent = (props) => {
                           )}
                         </Stack.Item>
                         <Stack.Item grow>
-                          {current_selected_organ !== 'the testicles' &&
+                          {current_selected_organ !== 'Os testículos.' &&
                             current_testicles !== null && (
                               <Box as="div" m={1}>
                                 <Button
@@ -292,7 +292,7 @@ const MilkingMachineContent = (props) => {
                                 />
                               </Box>
                             )}
-                          {current_selected_organ === 'the testicles' && (
+                          {current_selected_organ === 'Os testículos.' && (
                             <Box as="div" m={1}>
                               <Button
                                 content="Testicles"
@@ -372,7 +372,7 @@ const MilkingMachineContent = (props) => {
                     {beaker !== null && (
                       <Button
                         icon="eject"
-                        content="Eject Beaker"
+                        content="Ejetar o copo"
                         textAlign="center"
                         backgroundColor={palette.ButtonBackGroundColor}
                         onClick={() => act('ejectBeaker')}
@@ -381,7 +381,7 @@ const MilkingMachineContent = (props) => {
                     {beaker === null && (
                       <Button
                         icon="eject"
-                        content="Eject Beaker"
+                        content="Ejetar o copo"
                         textAlign="center"
                         backgroundColor={palette.ButtonBackGroundColor}
                         disabled

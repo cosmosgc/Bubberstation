@@ -269,7 +269,7 @@
  */
 /mob/living/basic/fleshmind/slicer
 	name = "Slicer"
-	desc = "A small organic robot, it somewhat resembles a medibot, but it has a blade slashing around."
+	desc = "Um pequeno robô orgânico, parece um medibot, mas tem uma lâmina cortando ao redor."
 	icon_state = "slicer"
 	health = 30
 	maxHealth = 30
@@ -325,7 +325,7 @@
 
 /mob/living/basic/fleshmind/floater
 	name = "Floater"
-	desc = "A small organ robot. It has a fucking bomb on it."
+	desc = "Um robô de órgão pequeno. Tem uma bomba."
 	ai_controller = /datum/ai_controller/basic_controller/fleshmind/floater
 	icon_state = "bomber"
 	attack_speak = list(
@@ -398,7 +398,7 @@
 
 /datum/action/cooldown/mob_cooldown/floater_explode
 	name = "explode"
-	desc = "Detonate our internals."
+	desc = "Detone nossos internos."
 	button_icon = 'icons/obj/weapons/grenade.dmi'
 	button_icon_state = "frag"
 
@@ -423,7 +423,7 @@
  */
 /mob/living/basic/fleshmind/globber
 	name = "Globber"
-	desc = "A small robot that resembles a cleanbot, this one is dripping with acid."
+	desc = "Um pequeno robô que se parece com um robô limpo, este está gotejando ácido."
 	icon_state = "lobber"
 	ai_controller = /datum/ai_controller/basic_controller/fleshmind/globber
 	malfunction_chance = MALFUNCTION_CHANCE_MEDIUM
@@ -467,13 +467,7 @@
 	. = ..()
 	var/list/loot = string_list(list(/obj/item/bot_assembly/cleanbot, /obj/effect/gibspawner/robot))
 	AddElement(/datum/element/death_drops, loot)
-	AddComponent(\
-		/datum/component/ranged_attacks,\
-		cooldown_time = ranged_cooldown,\
-		projectile_type = projectile_type,\
-		projectile_sound = shoot_sound,\
-		burst_shots = 3,\
-	)
+	AddComponent(		/datum/component/ranged_attacks,		cooldown_time = ranged_cooldown,		projectile_type = projectile_type,		projectile_sound = shoot_sound,		burst_shots = 3,	)
 
 /obj/projectile/treader/weak
 	knockdown = 0
@@ -491,7 +485,7 @@
  */
 /mob/living/basic/fleshmind/stunner
 	name = "Stunner"
-	desc = "A small robot that resembles a secbot, it rumbles with hatred."
+	desc = "Um pequeno robô que se parece com um secbot, ele ruge de ódio."
 	icon_state = "stunner"
 	ai_controller = /datum/ai_controller/basic_controller/fleshmind/stunner
 	malfunction_chance = MALFUNCTION_CHANCE_MEDIUM
@@ -558,7 +552,7 @@
  */
 /mob/living/basic/fleshmind/hiborg
 	name = "Flesh Borg"
-	desc = "A robot that resembles a cyborg, it is covered in something alive."
+	desc = "Um robô que se assemelha a um cyborg, está coberto de algo vivo."
 	icon_state = "hiborg"
 	icon_dead = "hiborg-dead"
 	ai_controller = /datum/ai_controller/basic_controller/fleshmind
@@ -644,7 +638,7 @@
 	COOLDOWN_START(src, stun_attack, stun_attack_cooldown)
 
 /mob/living/basic/fleshmind/hiborg/proc/aoe_attack()
-	visible_message("[src] spins around violently!")
+	visible_message("[src]Roda violentamente!")
 	spin(20, 1)
 	for(var/mob/living/iterating_mob in view(aoe_attack_range, src))
 		if(iterating_mob == src)
@@ -659,7 +653,7 @@
 
 /datum/action/cooldown/hiborg_slash
 	name = "Slash (AOE)"
-	desc = "Whip everyone in a range."
+	desc = "Bata em todos em um campo."
 	button_icon = 'icons/obj/weapons/grenade.dmi'
 	button_icon_state = "slimebang_active"
 	cooldown_time = 20 SECONDS
@@ -693,7 +687,7 @@
 
 /mob/living/basic/fleshmind/himan
 	name = "Human"
-	desc = "Once a man, now metal plates and tubes weave in and out of their oozing sores."
+	desc = "Uma vez um homem, agora placas de metal e tubos tecer dentro e fora de suas feridas escorrendo."
 	icon_state = "himan"
 	icon_dead = "himan-dead"
 	base_icon_state = "himan"
@@ -794,7 +788,7 @@
 /mob/living/basic/fleshmind/himan/examine(mob/user)
 	. = ..()
 	if(faking_death)
-		. += span_deadsay("Upon closer examination, [p_they()] appear[p_s()] to be dead.")
+		. += span_deadsay("Após um exame mais detalhado,[p_they()]Aparecer[p_s()]Estar morto.")
 
 /mob/living/basic/fleshmind/himan/proc/scream()
 	COOLDOWN_START(src, scream_ability, scream_cooldown)
@@ -807,7 +801,7 @@
 			continue
 		iterating_mob.Knockdown(3 SECONDS)
 		iterating_mob.apply_status_effect(/datum/status_effect/jitter, 20 SECONDS)
-		to_chat(iterating_mob, span_userdanger("A terrible howl tears through your mind, the voice senseless, soulless."))
+		to_chat(iterating_mob, span_userdanger("Um uivo terrível atravessa sua mente, a voz sem sentido, sem alma."))
 
 /mob/living/basic/fleshmind/himan/proc/fake_our_death()
 	ai_controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
@@ -827,7 +821,7 @@
 
 /datum/action/cooldown/himan_fake_death
 	name = "Fake Death"
-	desc = "Fakes our own death."
+	desc = "Finge nossa própria morte."
 	button_icon = 'icons/obj/bed.dmi'
 	button_icon_state = "bed"
 	cooldown_time = 20 SECONDS
@@ -850,7 +844,7 @@
  */
 /mob/living/basic/fleshmind/treader
 	name = "Treader"
-	desc = "A strange tracked robot with an appendage, on the end of which is a human head, it is shrieking in pain."
+	desc = "Um estranho robô rastreado com um apêndice, no final do qual é uma cabeça humana, está gritando de dor."
 	icon_state = "treader"
 	ai_controller = /datum/ai_controller/basic_controller/fleshmind/treader
 	var/projectile_type = /obj/projectile/treader
@@ -896,12 +890,7 @@
 
 /mob/living/basic/fleshmind/treader/Initialize(mapload)
 	. = ..()
-	AddComponent(\
-		/datum/component/ranged_attacks,\
-		cooldown_time = ranged_cooldown,\
-		projectile_type = projectile_type,\
-		projectile_sound = shoot_sound,\
-	)
+	AddComponent(		/datum/component/ranged_attacks,		cooldown_time = ranged_cooldown,		projectile_type = projectile_type,		projectile_sound = shoot_sound,	)
 	var/list/loot = string_list(list(/obj/effect/gibspawner/robot))
 	AddElement(/datum/element/death_drops, loot)
 	nanites = new dispense_nanites_type(src)
@@ -920,7 +909,7 @@
 
 /datum/action/cooldown/mob_cooldown/treader_dispense_nanites
 	name = "Dispense Nanites"
-	desc = "Dispenses nanites healing all friendly mobs in a range."
+	desc = "Dispensa nanites curando todas as multidões amigáveis em uma escala."
 	button_icon = 'icons/obj/meteor.dmi'
 	button_icon_state = "dust"
 	cooldown_time = 20 SECONDS
@@ -1097,8 +1086,8 @@
 	forceMove(place)
 	for(var/mob/living/living_mob in place)
 		if(living_mob != src)
-			visible_message("[src] lands directly on top of [living_mob]!")
-			to_chat(living_mob, span_userdanger("[src] lands directly on top of you!"))
+			visible_message("[src]Aterra diretamente em cima de[living_mob]!")
+			to_chat(living_mob, span_userdanger("[src]Pousa diretamente em cima de você!"))
 			playsound(place, 'sound/effects/ghost2.ogg', 70, 1)
 			living_mob.Knockdown(10)
 
@@ -1143,7 +1132,7 @@
 
 /datum/action/cooldown/phaser_phase_ability
 	name = "Create Clones"
-	desc = "Creates phase copies of ourselves to move towards a set target."
+	desc = "Cria cópias de fase de nós mesmos para nos movermos em direção a um alvo definido."
 	button_icon = 'icons/obj/anomaly.dmi'
 	button_icon_state = "bhole2"
 	cooldown_time = 40 SECONDS
@@ -1413,8 +1402,8 @@
 	contained_mob = target_mob
 	target_mob.forceMove(src)
 
-	to_chat(target_mob, span_userdanger("[src] ensnares your limbs as it pulls you inside its compartment, metal tendrils sliding around you, squeezing tight."))
-	visible_message(span_danger("[src] consumes [target_mob]!"))
+	to_chat(target_mob, span_userdanger("[src]enlaça seus membros enquanto ele te puxa para dentro de seu compartimento, tendões de metal deslizando em torno de você, apertando apertado."))
+	visible_message(span_danger("[src]consome[target_mob]!"))
 	playsound(src, 'sound/effects/blob/blobattack.ogg', 70, 1)
 
 	addtimer(CALLBACK(src, PROC_REF(release_mob)), conversion_time)
@@ -1443,7 +1432,7 @@
 	if(ishuman(mob_to_convert))
 		mob_to_convert.AddComponent(/datum/component/human_corruption, incoming_controller = our_controller)
 		mob_to_convert.fully_heal(HEAL_ORGANS|HEAL_REFRESH_ORGANS|HEAL_BLOOD|HEAL_TRAUMAS|HEAL_WOUNDS)
-		mob_to_convert.heal_and_revive(0, span_danger("[mob_to_convert] jolts haphazardly as the machine rips them from the jaws of death!"))
+		mob_to_convert.heal_and_revive(0, span_danger("[mob_to_convert]A máquina os arranca das mandíbulas da morte!"))
 		contained_mob.forceMove(get_turf(src))
 		return
 
@@ -1485,7 +1474,7 @@
  */
 /mob/living/basic/fleshmind/mauler_monkey
 	name = "Mauler"
-	desc = "A mutated abomination, it resembles a monkey."
+	desc = "Uma abominação mutante, parece um macaco."
 	icon_state = "mauler_monkey"
 	ai_controller = /datum/ai_controller/monkey
 	speed = 2 // We want it to be quite fast.

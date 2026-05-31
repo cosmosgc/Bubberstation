@@ -9,7 +9,7 @@
 
 /datum/symptom/voice_change
 	name = "Voice Change"
-	desc = "The virus alters the pitch and tone of the host's vocal cords, changing how their voice sounds."
+	desc = "O vírus altera o tom das cordas vocais do hospedeiro, alterando a voz."
 	illness = "Mime Crisis"
 	stealth = 2
 	resistance = -1

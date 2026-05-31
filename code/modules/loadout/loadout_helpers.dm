@@ -44,31 +44,31 @@
 		// BUBBER EDIT ADDITION BEGIN
 		if(item.restricted_roles && equipping && !(equipping.title in item.restricted_roles))
 			if(preference_source.parent)
-				to_chat(preference_source.parent, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job restrictions!"))
+				to_chat(preference_source.parent, span_warning("Você não conseguiu um item de carga.[initial(item.item_path.name)]) devido às restrições de trabalho!"))
 			loadout_datums -= item
 			continue
 
 		if(item.blacklisted_roles && equipping && (equipping.title in item.blacklisted_roles))
 			if(preference_source.parent)
-				to_chat(preference_source.parent, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job blacklists!"))
+				to_chat(preference_source.parent, span_warning("Você não conseguiu um item de carga.[initial(item.item_path.name)]Devido ao trabalho lista negra!"))
 			loadout_datums -= item
 			continue
 
 		if(item.restricted_species && !(dna.species.id in item.restricted_species))
 			if(preference_source.parent)
-				to_chat(preference_source.parent, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to species restrictions!"))
+				to_chat(preference_source.parent, span_warning("Você foi incapaz de obter uma carga ([initial(item.item_path.name)]) devido às restrições de espécies!"))
 			loadout_datums -= item
 			continue
 
 		if(item.donator_only && !SSplayer_ranks.is_donator(preference_source?.parent))
 			if(preference_source.parent)
-				to_chat(preference_source.parent, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to donator restrictions!"))
+				to_chat(preference_source.parent, span_warning("Você foi incapaz de obter uma carga ([initial(item.item_path.name)]) devido a restrições de doador!"))
 			loadout_datums -= item
 			continue
 
 		if(item.ckeywhitelist && !(preference_source?.parent?.ckey in item.ckeywhitelist)) // Sanity checking
 			if(preference_source.parent)
-				to_chat(preference_source.parent, span_warning("You were unable to get a loadout item ([initial(item.item_path.name)]) due to CKEY restrictions!"))
+				to_chat(preference_source.parent, span_warning("Você foi incapaz de obter uma carga ([initial(item.item_path.name)]) devido a restrições CKEY!"))
 			loadout_datums -= item
 			continue
 

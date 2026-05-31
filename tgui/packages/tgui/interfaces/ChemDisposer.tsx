@@ -22,7 +22,7 @@ export function ChemDisposer() {
     <Window width={320} height={105}>
       <Window.Content>
         <Section
-          title="Control Panel"
+          title="Painel de controle"
           buttons={
             <Button
               icon="power-off"

@@ -1,7 +1,7 @@
 // Grass
 /obj/item/seeds/grass
 	name = "grass seed pack"
-	desc = "These seeds grow into grass. Yummy!"
+	desc = "Estas sementes crescem em grama. Delicioso!"
 	icon_state = "seed-grass"
 	species = "grass"
 	plantname = "Grass"
@@ -22,7 +22,7 @@
 /obj/item/food/grown/grass
 	seed = /obj/item/seeds/grass
 	name = "grass"
-	desc = "Green and lush."
+	desc = "Verde e exuberante."
 	icon_state = "grassclump"
 	bite_consumption_mod = 0.5 // Grazing on grass
 	var/stacktype = /obj/item/stack/tile/grass
@@ -30,7 +30,7 @@
 	wine_power = 15
 
 /obj/item/food/grown/grass/attack_self(mob/user)
-	to_chat(user, span_notice("You prepare the astroturf."))
+	to_chat(user, span_notice("Você prepara o astroturf."))
 	var/grassAmt = 1 + round(seed.potency * tile_coefficient) // The grass we're holding
 	for(var/obj/item/food/grown/grass/G in user.loc) // The grass on the floor
 		if(G.type != type)
@@ -46,7 +46,7 @@
 //Fairygrass
 /obj/item/seeds/grass/fairy
 	name = "fairygrass seed pack"
-	desc = "These seeds grow into a more mystical grass."
+	desc = "Estas sementes crescem em uma grama mais mística."
 	icon_state = "seed-fairygrass"
 	species = "fairygrass"
 	plantname = "Fairygrass"
@@ -61,7 +61,7 @@
 /obj/item/food/grown/grass/fairy
 	seed = /obj/item/seeds/grass/fairy
 	name = "fairygrass"
-	desc = "Blue, glowing, and smells faintly of mushrooms."
+	desc = "Azul, brilhante, e cheira levemente a cogumelos."
 	icon_state = "fairygrassclump"
 	bite_consumption_mod = 1
 	stacktype = /obj/item/stack/tile/fairygrass
@@ -69,7 +69,7 @@
 // Carpet
 /obj/item/seeds/grass/carpet
 	name = "carpet seed pack"
-	desc = "These seeds grow into stylish carpet samples."
+	desc = "Estas sementes crescem em elegantes amostras de carpete."
 	icon_state = "seed-carpet"
 	species = "carpet"
 	plantname = "Carpet"
@@ -80,7 +80,7 @@
 /obj/item/food/grown/grass/carpet
 	seed = /obj/item/seeds/grass/carpet
 	name = "carpet"
-	desc = "The textile industry's dark secret."
+	desc = "O segredo obscuro da indústria têxtil."
 	icon_state = "carpetclump"
 	stacktype = /obj/item/stack/tile/carpet
 	can_distill = FALSE

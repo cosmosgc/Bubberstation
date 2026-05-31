@@ -2,13 +2,13 @@
 
 /datum/scripture/marauder
 	name = "Summon Clockwork Marauder"
-	desc = "Summons a Clockwork Marauder, a powerful warrior that can deflect ranged attacks. Requires 100 vitality."
+	desc = "Invoca uma Marauder Clockwork, um poderoso guerreiro que pode desviar ataques variados. Requer 100 de vitalidade."
 	tip = "Use Clockwork Marauders as a powerful soldier to send into combat when the fighting gets rough."
 	button_icon_state = "Clockwork Marauder"
 	power_cost = 2000
 	vitality_cost = 100
 	invocation_time = 30 SECONDS
-	invocation_text = list("Through the fires and flames...", "nothing outshines Eng'Ine!")
+	invocation_text = list("Através dos fogos e chamas...", "Nada supera Eng'Ine!")
 	category = SPELLTYPE_PRESERVATION
 	cogs_required = 6
 	invokers_required = 3
@@ -27,7 +27,7 @@
 		selected = pick(candidates)
 
 	if(!selected)
-		to_chat(invoker, span_brass("<i>There are no ghosts willing to be a Clockwork Marauder!</i>"))
+		to_chat(invoker, span_brass("<i>Não há fantasmas dispostos a ser um Marauder Clockwork!</i>"))
 		invoke_fail()
 
 		if(invocation_chant_timer)
@@ -41,9 +41,9 @@
 
 /datum/scripture/marauder/invoke_success()
 	var/mob/living/basic/clockwork_marauder/new_mob = new (get_turf(invoker))
-	new_mob.visible_message(span_notice("[new_mob] flashes into existance!"))
+	new_mob.visible_message(span_notice("[new_mob]flashes na existência!"))
 	new_mob.key = selected.key
-	to_chat(new_mob, span_brass("You are a Clockwork Marauder! You have a [new_mob.shield_health]-hit shield that will protect you against any damage taken. Have a servant repair you with a welder, should you or your shield become too damaged."))
+	to_chat(new_mob, span_brass("Você é uma Marauder Clockwork! Você tem...[new_mob.shield_health]- hit escudo que irá protegê-lo contra qualquer dano sofrido. Peça para um servo consertar você com um soldador, caso você ou seu escudo fiquem muito danificados."))
 	selected = null
 
 
@@ -53,7 +53,7 @@
 		return FALSE
 
 	if(length(GLOB.clockwork_marauders) >= MAXIMUM_MARAUDERS)
-		to_chat(user, span_brass("Your limited power prevents you from creating more than [MAXIMUM_MARAUDERS] Clockwork Marauders."))
+		to_chat(user, span_brass("Seu poder limitado o impede de criar mais do que[MAXIMUM_MARAUDERS]Saqueadores de relógio."))
 		return FALSE
 
 	return TRUE

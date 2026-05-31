@@ -1,6 +1,6 @@
 /datum/ash_ritual/summon_staff
 	name = "Summon Ash Staff"
-	desc = "Summon a staff that is imbued with the power of the tendril. Requires permission from the mother tendril."
+	desc = "Chame um cajado que esteja imbuído do poder do tentáculo. Exige permissão da mãe tendil."
 	required_components = list(
 		"north" = /obj/item/stack/sheet/mineral/wood,
 		"south" = /obj/item/organ/monster_core/regenerative_core,
@@ -15,7 +15,7 @@
 
 /datum/ash_ritual/summon_necklace
 	name = "Summon Draconic Necklace"
-	desc = "Summons a necklace that imbues the wearer with the knowledge of our tongue."
+	desc = "Convoca um colar que imbui o usuário com o conhecimento de nossa língua."
 	required_components = list(
 		"north" = /obj/item/stack/sheet/bone,
 		"south" = /obj/item/organ/monster_core/regenerative_core,
@@ -33,7 +33,7 @@
 
 /datum/ash_ritual/summon_key
 	name = "Summon Skeleton Key"
-	desc = "Summons a key that opens the chests from fallen tendrils."
+	desc = "Invoca uma chave que abre o peito de tentáculos caídos."
 	required_components = list(
 		"north" = /obj/item/stack/sheet/bone,
 		"south" = /obj/item/stack/sheet/bone,
@@ -49,7 +49,7 @@
 
 /datum/ash_ritual/summon_cursed_knife
 	name = "Summon Cursed Ash Knife"
-	desc = "Summons a knife that places a tracking curse on unsuspecting miners who destroy our marked tendrils."
+	desc = "Invoca uma faca que coloca uma maldição em mineiros que destroem nossos tentáculos marcados."
 	required_components = list(
 		"north" = /obj/item/organ/monster_core/regenerative_core,
 		"south" = /obj/item/forging/reagent_weapon/dagger,
@@ -68,7 +68,7 @@
 
 /datum/ash_ritual/summon_cursed_carver
 	name = "Summon Cursed Ash Carver"
-	desc = "Summons a weapon that mimics the invader's tools, allowing us to collect trophies from the hunt."
+	desc = "Invoca uma arma que imita as ferramentas do invasor, permitindo-nos coletar troféus da caçada."
 	required_components = list(
 		"north" = /obj/item/organ/monster_core/regenerative_core,
 		"south" = /obj/item/cursed_dagger,
@@ -87,7 +87,7 @@
 
 /datum/ash_ritual/summon_tendril_seed
 	name = "Summon Tendril Seed"
-	desc = "Summons a seed that, when used in the hand, will cause a tendril to come through at your location."
+	desc = "Invoca uma semente que, quando usada na mão, fará com que um tentáculo apareça em sua localização."
 	required_components = list(
 		"north" = /obj/item/organ/monster_core/regenerative_core,
 		"south" = /obj/item/cursed_dagger,
@@ -106,7 +106,7 @@
 
 /datum/ash_ritual/incite_megafauna
 	name = "Incite Megafauna"
-	desc = "Causes a horrible, unrecognizable sound that will attract the large fauna from around the planet."
+	desc = "Causa um som horrível e irreconhecível que atrairá a grande fauna de todo o planeta."
 	required_components = list(
 		"north" = /mob/living/carbon/human,
 		"south" = /obj/item/tendril_seed,
@@ -124,7 +124,7 @@
 		if(select_mob.z != success_rune.z)
 			continue
 
-		to_chat(select_mob, span_userdanger("The planet stirs... another monster has arrived!"))
+		to_chat(select_mob, span_userdanger("O planeta mexe... outro monstro chegou!"))
 		playsound(get_turf(select_mob), 'sound/effects/magic/demon_attack1.ogg', 50, TRUE)
 		flash_color(select_mob, flash_color = "#FF0000", flash_time = 3 SECONDS)
 
@@ -154,7 +154,7 @@
 
 /datum/ash_ritual/ash_ceremony
 	name = "Ashen Age Ceremony"
-	desc = "Those who partake in the ceremony and are ready will age, increasing their value to the kin."
+	desc = "Aqueles que participam da cerimônia e estão prontos envelhecerão, aumentando seu valor para os parentes."
 	required_components = list(
 		"north" = /mob/living/carbon/human,
 		"south" = /obj/item/organ/monster_core/regenerative_core,
@@ -175,7 +175,7 @@
 
 /datum/ash_ritual/summon_lavaland_creature
 	name = "Summon Lavaland Creature"
-	desc = "Summons a random, wild monster from another region in space."
+	desc = "Chama um monstro selvagem de outra região do espaço."
 	required_components = list(
 		"north" = /obj/item/organ/monster_core/regenerative_core,
 		"south" = /mob/living/basic/mining/ice_whelp,
@@ -200,7 +200,7 @@
 
 /datum/ash_ritual/summon_icemoon_creature
 	name = "Summon Icemoon Creature"
-	desc = "Summons a random, wild monster from another region in space."
+	desc = "Chama um monstro selvagem de outra região do espaço."
 	required_components = list(
 		"north" = /obj/item/organ/monster_core/regenerative_core,
 		"south" = /obj/item/food/grown/surik,
@@ -225,7 +225,7 @@
 
 /datum/ash_ritual/uncover_rocks
 	name = "Uncover Strange Rocks"
-	desc = "All the mysterious rocks that are in the center of the rune will try to uncover themselves."
+	desc = "Todas as rochas misteriosas que estão no centro da runa tentarão se descobrir."
 	required_components = list(
 		"north" = /obj/item/stack/ore/bluespace_crystal,
 		"south" = /obj/item/stack/sheet/animalhide/goliath_hide,
@@ -248,7 +248,7 @@
 
 /datum/ash_ritual/share_damage
 	name = "Share Victim's Damage"
-	desc = "The damage from the central victim will be shared amongst the rest of the surrounding, living kin."
+	desc = "Os danos da vítima central serão compartilhados entre os outros parentes vivos."
 	required_components = list(
 		"north" = /obj/item/stack/sheet/bone,
 		"south" = /obj/item/stack/sheet/sinew,
@@ -288,7 +288,7 @@
 
 /datum/ash_ritual/banish_kin
 	name = "Banish Kin"
-	desc = "Some kin are not fit for the tribe, this can solve that issue through democracy."
+	desc = "Alguns parentes não são adequados para a tribo, isso pode resolver esse problema através da democracia."
 	required_components = list()
 	consumed_components = list()
 
@@ -332,7 +332,7 @@
 
 /datum/ash_ritual/revive_animal
 	name = "Revive Animal"
-	desc = "Revives a simple animal that will then become friendly."
+	desc = "Revive um simples animal que se tornará amigo."
 	required_components = list(
 		"north" = /obj/item/organ/monster_core/regenerative_core,
 		"south" = /obj/item/organ/monster_core/regenerative_core,

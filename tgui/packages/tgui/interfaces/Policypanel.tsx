@@ -28,7 +28,7 @@ export const Policypanel = () => {
   const [currentPolicy, setCurrentPolicy] = useState<string>('');
 
   return (
-    <Window title="Policy Panel" theme="admin" width={400} height={300}>
+    <Window title="Painel de Política" theme="admin" width={400} height={300}>
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item>

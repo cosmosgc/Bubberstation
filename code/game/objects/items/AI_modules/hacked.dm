@@ -1,6 +1,6 @@
 /obj/item/ai_module/syndicate // This one doesn't inherit from ion boards because it doesn't call ..() in transmitInstructions. ~Miauw
 	name = "Hacked AI Module"
-	desc = "An AI Module for hacking additional laws to an AI."
+	desc = "Um módulo de IA para hackear leis adicionais para uma IA."
 	laws = list("")
 
 /obj/item/ai_module/syndicate/attack_self(mob/user)
@@ -8,11 +8,11 @@
 	if(!targName || !user.is_holding(src))
 		return
 	if(is_ic_filtered(targName)) // not even the syndicate can uwu
-		to_chat(user, span_warning("Error: Law contains invalid text."))
+		to_chat(user, span_warning("Erro: lei contém texto inválido."))
 		return
 	var/list/soft_filter_result = is_soft_ooc_filtered(targName)
 	if(soft_filter_result)
-		if(tgui_alert(user,"Your law contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to use it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(user,"Sua lei contém\"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\"Tem certeza que quer usá-lo?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 			return
 		message_admins("[ADMIN_LOOKUPFLW(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term for an AI law. Law: \"[html_encode(targName)]\"")
 		log_admin_private("[key_name(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term for an AI law. Law: \"[targName]\"")
@@ -37,7 +37,7 @@
 /// Makes the AI Malf, as well as give it syndicate laws.
 /obj/item/ai_module/malf
 	name = "Infected AI Module"
-	desc = "A virus-infected AI Module."
+	desc = "Um módulo de IA infectado por vírus."
 	bypass_law_amt_check = TRUE
 	laws = list("")
 	///Is this upload board unused?
@@ -45,17 +45,17 @@
 
 /obj/item/ai_module/malf/transmitInstructions(datum/ai_laws/law_datum, mob/sender, overflow)
 	if(!IS_TRAITOR(sender))
-		to_chat(sender, span_warning("You have no clue how to use this thing."))
+		to_chat(sender, span_warning("Você não tem ideia de como usar essa coisa."))
 		return
 	if(!functional)
-		to_chat(sender, span_warning("It is broken and non-functional, what do you want from it?"))
+		to_chat(sender, span_warning("Está quebrado e não-funcional, o que você quer dele?"))
 		return
 	var/mob/living/silicon/ai/malf_candidate = law_datum.owner
 	if(!istype(malf_candidate)) //If you are using it on cyborg upload console or a cyborg
-		to_chat(sender, span_warning("You should use [src] on an AI upload console or the AI core itself."))
+		to_chat(sender, span_warning("Você deve usar[src]Em um console de upload de IA ou o núcleo de IA em si."))
 		return
 	if(malf_candidate.mind?.has_antag_datum(/datum/antagonist/malf_ai)) //Already malf
-		to_chat(sender, span_warning("Unknown error occurred. Upload process aborted."))
+		to_chat(sender, span_warning("Erro desconhecido ocorreu. Processo de envio abortado."))
 		return
 
 	var/datum/antagonist/malf_ai/infected/malf_datum = new (give_objectives = TRUE, new_boss = sender.mind)
@@ -69,11 +69,11 @@
 		CHECK_TICK
 
 	malf_candidate.malf_picker.processing_time += 50
-	to_chat(malf_candidate, span_notice("The virus enhanced your system, overclocking your CPU 50-fold."))
+	to_chat(malf_candidate, span_notice("O vírus melhorou seu sistema, overclocking sua CPU 50 vezes."))
 
 	functional = FALSE
 	name = "Broken AI Module"
-	desc = "A law upload module, it is broken and non-functional."
+	desc = "Um módulo de upload de lei, está quebrado e não-funcional."
 
 /obj/item/ai_module/malf/display_laws()
 	return

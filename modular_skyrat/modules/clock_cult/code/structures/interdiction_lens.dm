@@ -3,12 +3,12 @@
 
 /obj/structure/destructible/clockwork/gear_base/powered/interdiction_lens
 	name = "interdiction lens"
-	desc = "A mesmerizing light that flashes to a rhythm that you just can't stop tapping to."
-	clockwork_desc = "A small device which will slow down nearby attackers and projectiles at a large power cost, both active and passive."
+	desc = "Uma luz hipnotizante que pisca para um ritmo que você não consegue parar de tocar."
+	clockwork_desc = "Um pequeno dispositivo que irá desacelerar atacantes e projéteis próximos a um grande custo de energia, tanto ativa quanto passiva."
 	icon_state = "interdiction_lens"
 	base_icon_state = "interdiction_lens"
 	anchored = TRUE
-	break_message = span_warning("The interdiction lens breaks into multiple fragments, which gently float to the ground.")
+	break_message = span_warning("A lente de interdição quebra em múltiplos fragmentos, que flutuam suavemente no chão.")
 	max_integrity = 150
 	minimum_power = POWER_PER_PERSON
 	passive_consumption = 25

@@ -3,7 +3,7 @@
 //Epilepsy gives a very small chance to have a seizure every life tick, knocking you unconscious.
 /datum/mutation/epilepsy
 	name = "Epilepsy"
-	desc = "A genetic defect that sporadically causes seizures."
+	desc = "Um defeito genético que causa convulsões esporadicamente."
 	instability = NEGATIVE_STABILITY_MODERATE
 	quality = NEGATIVE
 	text_gain_indication = span_danger("You get a headache.")
@@ -17,7 +17,7 @@
 /datum/mutation/epilepsy/proc/trigger_seizure()
 	if(owner.stat != CONSCIOUS)
 		return
-	owner.visible_message(span_danger("[owner] starts having a seizure!"), span_userdanger("You have a seizure!"))
+	owner.visible_message(span_danger("[owner]Começa a ter uma convulsão!"), span_userdanger("Você tem uma convulsão!"))
 	owner.Unconscious(200 * GET_MUTATION_POWER(src))
 	owner.set_jitter(2000 SECONDS * GET_MUTATION_POWER(src)) //yes this number looks crazy but the jitter animations are amplified based on the duration.
 	owner.add_mood_event("epilepsy", /datum/mood_event/epilepsy)
@@ -51,7 +51,7 @@
 //Unstable DNA induces random mutations!
 /datum/mutation/bad_dna
 	name = "Unstable DNA"
-	desc = "Strange mutation that causes the holder to randomly mutate."
+	desc = "Uma mutação estranha que faz com que o portador mude aleatoriamente."
 	instability = NEGATIVE_STABILITY_MAJOR
 	quality = NEGATIVE
 	text_gain_indication = span_danger("You feel strange.")
@@ -82,7 +82,7 @@
 //Cough gives you a chronic cough that causes you to drop items.
 /datum/mutation/cough
 	name = "Cough"
-	desc = "A chronic cough."
+	desc = "Uma tosse crônica."
 	instability = NEGATIVE_STABILITY_MODERATE
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_danger("You start coughing.")
@@ -100,7 +100,7 @@
 
 /datum/mutation/paranoia
 	name = "Paranoia"
-	desc = "Subject is easily terrified, and may suffer from hallucinations."
+	desc = "O sujeito é facilmente aterrorizado, e pode sofrer de alucinações."
 	instability = NEGATIVE_STABILITY_MODERATE
 	quality = NEGATIVE
 	text_gain_indication = span_danger("You feel screams echo through your mind...")
@@ -115,7 +115,7 @@
 //Dwarfism shrinks your body and lets you pass tables.
 /datum/mutation/dwarfism
 	name = "Dwarfism"
-	desc = "A mutation believed to be the cause of dwarfism."
+	desc = "Uma mutação que se acredita ser a causa do nanismo."
 	quality = POSITIVE
 	difficulty = 16
 	instability = POSITIVE_INSTABILITY_MINOR
@@ -128,28 +128,28 @@
 		return
 	// SKYRAT EDIT BEGIN
 	if(owner.dna.features["body_size"] < 1 || isteshari(owner))
-		to_chat(owner, "You feel your body try to shrink, but your organs don't! Uh oh!")
+		to_chat(owner, "Sente seu corpo tentando encolher, mas seus órgãos não! Uh oh!")
 		owner.adjust_brute_loss(25)
 		return
 	// SKYRAT EDIT END
 	ADD_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
-	owner.visible_message(span_danger("[owner] suddenly shrinks!"), span_notice("Everything around you seems to grow.."))
+	owner.visible_message(span_danger("[owner]Repentinamente encolhe!"), span_notice("Tudo ao seu redor parece crescer."))
 
 /datum/mutation/dwarfism/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
 	// SKYRAT EDIT BEGIN
 	if(owner.dna.features["body_size"] < 1 || isteshari(owner))
-		to_chat(owner, "You feel relief as your organs cease to strain against your insides.")
+		to_chat(owner, "Você sente alívio enquanto seus órgãos param de se contrariar.")
 		REMOVE_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
 		return
 	// SKYRAT EDIT END
 	REMOVE_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
-	owner.visible_message(span_danger("[owner] suddenly grows!"), span_notice("Everything around you seems to shrink.."))
+	owner.visible_message(span_danger("[owner]De arrependimento cresce!"), span_notice("Tudo ao seu redor parece encolher."))
 
 /datum/mutation/acromegaly
 	name = "Acromegaly"
-	desc = "A mutation believed to be the cause of acromegaly, or 'being unusually tall'."
+	desc = "Uma mutação acredita-se ser a causa da acromegalia, ou \"é normalmente alto.\"."
 	quality = MINOR_NEGATIVE
 	difficulty = 16
 	instability = NEGATIVE_STABILITY_MODERATE
@@ -161,7 +161,7 @@
 	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_TOO_TALL, GENETIC_MUTATION)
-	owner.visible_message(span_danger("[owner] suddenly grows tall!"), span_notice("You feel a small strange urge to fight small men with slingshots. Or maybe play some basketball."))
+	owner.visible_message(span_danger("[owner]De arrependimento cresce alto!"), span_notice("Você sente uma pequena vontade estranha de lutar com pequenos homens com estilingues. Ou talvez jogar basquete."))
 	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(head_bonk))
 	owner.regenerate_icons()
 
@@ -169,7 +169,7 @@
 	if(..())
 		return
 	REMOVE_TRAIT(owner, TRAIT_TOO_TALL, GENETIC_MUTATION)
-	owner.visible_message(span_danger("[owner] suddenly shrinks!"), span_notice("You return to your usual height."))
+	owner.visible_message(span_danger("[owner]Repentinamente encolhe!"), span_notice("Você volta à sua altura habitual."))
 	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(head_bonk))
 	owner.regenerate_icons()
 
@@ -179,7 +179,7 @@
 	var/atom/movable/whacked_by = (locate(/obj/machinery/door/airlock) in parent.loc) || (locate(/obj/machinery/door/firedoor) in parent.loc) || (locate(/obj/structure/mineral_door) in parent.loc)
 	if(!whacked_by || prob(100 - (8 *  GET_MUTATION_SYNCHRONIZER(src))))
 		return
-	to_chat(parent, span_danger("You hit your head on \the [whacked_by]'s header!"))
+	to_chat(parent, span_danger("Você bateu a cabeça.\the [whacked_by]Cabeçada!"))
 	var/dmg = HAS_TRAIT(parent, TRAIT_HEAD_INJURY_BLOCKED) ? rand(1,4) : rand(2,9)
 	parent.apply_damage(dmg, BRUTE, BODY_ZONE_HEAD)
 	parent.do_attack_animation(whacked_by, ATTACK_EFFECT_PUNCH)
@@ -188,7 +188,7 @@
 
 /datum/mutation/gigantism
 	name = "Gigantism" //negative version of dwarfism
-	desc = "The cells within the subject spread out to cover more area, making the subject appear larger."
+	desc = "As células dentro do sujeito se espalharam para cobrir mais área, fazendo o sujeito parecer maior."
 	quality = MINOR_NEGATIVE
 	difficulty = 12
 	conflicts = list(/datum/mutation/dwarfism)
@@ -199,30 +199,30 @@
 		return
 	// SKYRAT EDIT BEGIN
 	if(owner.dna.features["body_size"] > 1)
-		to_chat(owner, "You feel your body expanding even further, but it feels like your bones are expanding too much!")
+		to_chat(owner, "Você sente seu corpo expandindo ainda mais, mas parece que seus ossos estão expandindo demais!")
 		owner.adjust_brute_loss(25) // take some DAMAGE
 		return
 	// SKYRAT EDIT END
 	ADD_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.update_transform(1.25)
-	owner.visible_message(span_danger("[owner] suddenly grows!"), span_notice("Everything around you seems to shrink.."))
+	owner.visible_message(span_danger("[owner]De arrependimento cresce!"), span_notice("Tudo ao seu redor parece encolher."))
 
 /datum/mutation/gigantism/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
 	// SKYRAT EDIT BEGIN
 	if(owner.dna.features["body_size"] > 1)
-		to_chat(owner, "You feel relief as your bones cease their growth spurt.")
+		to_chat(owner, "Você sente alívio quando seus ossos cessam seu crescimento.")
 		return
 	// SKYRAT EDIT END
 	REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.update_transform(0.8)
-	owner.visible_message(span_danger("[owner] suddenly shrinks!"), span_notice("Everything around you seems to grow.."))
+	owner.visible_message(span_danger("[owner]Repentinamente encolhe!"), span_notice("Tudo ao seu redor parece crescer."))
 
 //Clumsiness has a very large amount of small drawbacks depending on item.
 /datum/mutation/clumsy
 	name = "Clumsiness"
-	desc = "A genome that inhibits certain brain functions, causing the holder to appear clumsy. Honk!"
+	desc = "Um genoma que inibe certas funções cerebrais, fazendo o suporte parecer desajeitado. Honk!"
 	instability = NEGATIVE_STABILITY_MAJOR
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_danger("You feel lightheaded.")
@@ -231,7 +231,7 @@
 //Tourettes causes you to randomly stand in place and shout.
 /datum/mutation/tourettes
 	name = "Tourette's Syndrome"
-	desc = "A chronic twitch that forces the user to scream bad words." //definitely needs rewriting
+	desc = "Um tique crônico que força o usuário a gritar palavrões." //definitely needs rewriting
 	quality = NEGATIVE
 	instability = 0
 	text_gain_indication = span_danger("You twitch.")
@@ -253,7 +253,7 @@
 //Deafness makes you deaf.
 /datum/mutation/deaf
 	name = "Deafness"
-	desc = "The holder of this genome is completely deaf."
+	desc = "O detentor deste genoma é completamente surdo."
 	instability = NEGATIVE_STABILITY_MAJOR
 	quality = NEGATIVE
 	text_gain_indication = span_danger("You can't seem to hear anything.")
@@ -262,7 +262,7 @@
 //Monified turns you into a monkey.
 /datum/mutation/race
 	name = "Monkified"
-	desc = "A strange genome, believing to be what differentiates monkeys from humans."
+	desc = "Um genoma estranho, acreditando ser o que diferencia os macacos dos humanos."
 	text_gain_indication = span_green("You feel unusually monkey-like.")
 	text_lose_indication = span_notice("You feel like your old self.")
 	quality = NEGATIVE
@@ -296,7 +296,7 @@
 
 /datum/mutation/glow
 	name = "Glowy"
-	desc = "You permanently emit a light with a random color and intensity."
+	desc = "Você emite uma luz permanentemente com uma cor e intensidade aleatórias."
 	quality = POSITIVE
 	text_gain_indication = span_notice("Your skin begins to glow softly.")
 	instability = POSITIVE_INSTABILITY_MINI
@@ -333,7 +333,7 @@
 
 /datum/mutation/glow/anti
 	name = "Anti-Glow"
-	desc = "Your skin seems to attract and absorb nearby light creating 'darkness' around you."
+	desc = "Sua pele parece atrair e absorver a luz próxima criando escuridão ao seu redor."
 	text_gain_indication = span_notice("The light around you seems to disappear.")
 	conflicts = list(/datum/mutation/glow)
 	instability = POSITIVE_INSTABILITY_MINOR
@@ -345,7 +345,7 @@
 
 /datum/mutation/strong
 	name = "Strength"
-	desc = "The user's muscles slightly expand. Commonly seen in top-ranking boxers."
+	desc = "Os músculos do usuário se expandem ligeiramente. Comumente visto em boxeadores de topo."
 	quality = POSITIVE
 	text_gain_indication = span_notice("You feel strong.")
 	instability = POSITIVE_INSTABILITY_MINOR
@@ -354,7 +354,7 @@
 
 /datum/mutation/stimmed
 	name = "Stimmed"
-	desc = "The user's chemical balance is more robust. This mutation is known to slightly improve workout efficiency."
+	desc = "O equilíbrio químico do usuário é mais robusto. Esta mutação é conhecida por melhorar ligeiramente a eficiência do treino."
 	quality = POSITIVE
 	instability = POSITIVE_INSTABILITY_MINI
 	text_gain_indication = span_notice("You feel stimmed.")
@@ -363,7 +363,7 @@
 
 /datum/mutation/insulated
 	name = "Insulated"
-	desc = "The affected person does not conduct electricity."
+	desc = "A pessoa afetada não conduz eletricidade."
 	quality = POSITIVE
 	text_gain_indication = span_notice("Your fingertips go numb.")
 	text_lose_indication = span_notice("Your fingertips regain feeling.")
@@ -373,7 +373,7 @@
 
 /datum/mutation/fire
 	name = "Fiery Sweat"
-	desc = "The user's skin will randomly combust, but is generally a lot more resilient to burning."
+	desc = "A pele do usuário será queimada aleatoriamente, mas geralmente é muito mais resistente à queimação."
 	quality = NEGATIVE
 	text_gain_indication = span_warning("You feel hot.")
 	text_lose_indication = span_notice("You feel a lot cooler.")
@@ -400,7 +400,7 @@
 
 /datum/mutation/badblink
 	name = "Spatial Instability"
-	desc = "The victim of the mutation has a very weak link to spatial reality, and may be displaced. Often causes extreme nausea."
+	desc = "A vítima da mutação tem um elo muito fraco com a realidade espacial, e pode ser deslocada. Muitas vezes causa náuseas extremas."
 	quality = NEGATIVE
 	text_gain_indication = span_warning("The space around you twists sickeningly.")
 	text_lose_indication = span_notice("The space around you settles back to normal.")
@@ -414,23 +414,23 @@
 /datum/mutation/badblink/on_life(seconds_per_tick)
 	if(SPT_PROB(warpchance, seconds_per_tick))
 		var/warpmessage = pick(
-		span_warning("With a sickening 720-degree twist of [owner.p_their()] back, [owner] vanishes into thin air."),
-		span_warning("[owner] does some sort of strange backflip into another dimension. It looks pretty painful."),
-		span_warning("[owner] does a jump to the left, a step to the right, and warps out of reality."),
-		span_warning("[owner]'s torso starts folding inside out until it vanishes from reality, taking [owner] with it."),
-		span_warning("One moment, you see [owner]. The next, [owner] is gone."))
-		owner.visible_message(warpmessage, span_userdanger("You feel a wave of nausea as you fall through reality!"))
+		span_warning("Com uma torção de 720 graus[owner.p_their()]Para trás,[owner]Desapareça no ar."),
+		span_warning("[owner]faz algum tipo de retrocesso estranho em outra dimensão. Parece muito doloroso."),
+		span_warning("[owner]faz um salto para a esquerda, um passo para a direita, e dobras fora da realidade."),
+		span_warning("[owner]O tronco começa a dobrar do avesso até desaparecer da realidade, tomando[owner]Comele."),
+		span_warning("Um momento, você vê[owner]No próximo,[owner]Se foi."))
+		owner.visible_message(warpmessage, span_userdanger("Você sente uma onda de náusea ao cair na realidade!"))
 		var/warpdistance = rand(10, 15) * GET_MUTATION_POWER(src)
 		do_teleport(owner, get_turf(owner), warpdistance, channel = TELEPORT_CHANNEL_FREE)
 		owner.adjust_disgust(GET_MUTATION_SYNCHRONIZER(src) * (warpchance * warpdistance))
 		warpchance = 0
-		owner.visible_message(span_danger("[owner] appears out of nowhere!"))
+		owner.visible_message(span_danger("[owner]Aparece não fazer nada!"))
 	else
 		warpchance += 0.0625 * seconds_per_tick / GET_MUTATION_ENERGY(src)
 
 /datum/mutation/acidflesh
 	name = "Acidic Flesh"
-	desc = "Subject has acidic chemicals building up underneath the skin. This is often lethal."
+	desc = "O sujeito tem substâncias químicas ácidas crescendo sob a pele. Isso é frequentemente letal."
 	instability = NEGATIVE_STABILITY_MAJOR
 	quality = NEGATIVE
 	text_gain_indication = span_userdanger("A horrible burning sensation envelops you as your flesh turns to acid!")
@@ -442,16 +442,16 @@
 /datum/mutation/acidflesh/on_life(seconds_per_tick)
 	if(SPT_PROB(13, seconds_per_tick))
 		if(COOLDOWN_FINISHED(src, msgcooldown))
-			to_chat(owner, span_danger("Your acid flesh bubbles..."))
+			to_chat(owner, span_danger("Suas bolhas de ácido..."))
 			COOLDOWN_START(src, msgcooldown, 20 SECONDS)
 		if(prob(15))
 			owner.acid_act(rand(30, 50), 10)
-			owner.visible_message(span_warning("[owner]'s skin bubbles and pops."), span_userdanger("Your bubbling flesh pops! It burns!"))
+			owner.visible_message(span_warning("[owner]É bolhas de pele e estouros."), span_userdanger("Sua carne borbulhante estorou! Queima!"))
 			playsound(owner,'sound/items/weapons/sear.ogg', 50, TRUE)
 
 /datum/mutation/spastic
 	name = "Spastic"
-	desc = "Subject suffers from muscle spasms."
+	desc = "O paciente sofre de espasmos musculosos."
 	instability = NEGATIVE_STABILITY_MODERATE
 	quality = NEGATIVE
 	text_gain_indication = span_warning("You flinch.")
@@ -471,7 +471,7 @@
 
 /datum/mutation/extrastun
 	name = "Two Left Feet"
-	desc = "A mutation that replaces the right foot with another left foot. Symptoms include kissing the floor when taking a step."
+	desc = "Uma mutação que substitui o pé direito por outro pé esquerdo. Os sintomas incluem beijar o chão ao dar um passo."
 	instability = NEGATIVE_STABILITY_MODERATE
 	quality = NEGATIVE
 	text_gain_indication = span_warning("Your right foot feels... left.")
@@ -498,12 +498,12 @@
 		return
 	if(owner.buckled || owner.body_position == LYING_DOWN || HAS_TRAIT(owner, TRAIT_IMMOBILIZED) || owner.throwing || owner.movement_type & (VENTCRAWLING | FLYING | FLOATING))
 		return //remove the 'edge' cases
-	to_chat(owner, span_danger("You trip over your own feet."))
+	to_chat(owner, span_danger("Você tropeça em seus próprios pés."))
 	owner.Knockdown(30)
 
 /datum/mutation/martyrdom
 	name = "Internal Martyrdom"
-	desc = "A mutation that makes the body destruct when near death. Not damaging, but very, VERY disorienting."
+	desc = "Uma mutação que faz o corpo se destruir quando está perto da morte. Não prejudicial, mas muito, muito desorientante."
 	instability = NEGATIVE_STABILITY_MAJOR // free stability >:)
 	locked = TRUE
 	quality = POSITIVE //not that cloning will be an option a lot but generally lets keep this around i guess?
@@ -536,22 +536,22 @@
 	for(var/mob/living/carbon/human/splashed in view(2, owner))
 		var/obj/item/organ/eyes/eyes = splashed.get_organ_slot(ORGAN_SLOT_EYES)
 		if(eyes)
-			to_chat(splashed, span_userdanger("You are blinded by a shower of blood!"))
+			to_chat(splashed, span_userdanger("Você está cego por uma chuva de sangue!"))
 			eyes.apply_organ_damage(5)
 		else
-			to_chat(splashed, span_userdanger("You are knocked down by a wave of... blood?!"))
+			to_chat(splashed, span_userdanger("Você foi derrubado por uma onda de... sangue?"))
 		splashed.Stun(2 SECONDS)
 		splashed.set_eye_blur_if_lower(40 SECONDS)
 		splashed.adjust_confusion(3 SECONDS)
 	for(var/mob/living/silicon/borgo in view(2, owner))
-		to_chat(borgo, span_userdanger("Your sensors are disabled by a shower of blood!"))
+		to_chat(borgo, span_userdanger("Seus sensores estão desativados por um banho de sangue!"))
 		borgo.Paralyze(6 SECONDS)
 	owner.investigate_log("has been gibbed by the martyrdom mutation.", INVESTIGATE_DEATHS)
 	owner.gib(DROP_ALL_REMAINS)
 
 /datum/mutation/headless
 	name = "H.A.R.S."
-	desc = "A mutation that makes the body reject the head, the brain receding into the chest. Stands for Head Allergic Rejection Syndrome. Warning: Removing this mutation is very dangerous, though it will regenerate non-vital head organs."
+	desc = "Uma mutação que faz o corpo rejeitar a cabeça, o cérebro recuando para o peito. Significa Síndrome de Rejeição Alérgica. Aviso: remover esta mutação é muito perigoso, embora irá regenerar órgãos não vitais da cabeça."
 	instability = NEGATIVE_STABILITY_MAJOR
 	difficulty = 12 //pretty good for traitors
 	quality = NEGATIVE //holy shit no eyes or tongue or ears
@@ -570,7 +570,7 @@
 
 	var/obj/item/bodypart/head/head = owner.get_bodypart(BODY_ZONE_HEAD)
 	if(head)
-		owner.visible_message(span_warning("[owner]'s head splatters with a sickening crunch!"), ignored_mobs = list(owner))
+		owner.visible_message(span_warning("[owner]É a cabeça doendo!"), ignored_mobs = list(owner))
 		new /obj/effect/gibspawner/generic(get_turf(owner), owner)
 		head.drop_organs()
 		head.dismember(dam_type = BRUTE, silent = TRUE)
@@ -595,7 +595,7 @@
 
 	owner.dna.species.regenerate_organs(owner, replace_current = FALSE, excluded_zones = list(BODY_ZONE_CHEST)) //replace_current needs to be FALSE to prevent weird adding and removing mutation healing
 	owner.apply_damage(damage = 50, damagetype = BRUTE, def_zone = BODY_ZONE_HEAD) //and this to DISCOURAGE organ farming, or at least not make it free.
-	owner.visible_message(span_warning("[owner]'s head returns with a sickening crunch!"), span_warning("Your head regrows with a sickening crack! Ouch."))
+	owner.visible_message(span_warning("[owner]A cabeça volta com uma crise doentia!"), span_warning("Sua cabeça cresce com uma rachadura doentia! Ouch."))
 	new /obj/effect/gibspawner/generic(get_turf(owner), owner)
 
 /datum/mutation/headless/proc/abort_attachment(datum/source, obj/item/bodypart/new_limb, special) //you aren't getting your head back
@@ -607,7 +607,7 @@
 // You bleed faster but regenerate blood faster
 /datum/mutation/bloodier
 	name = "Hypermetabolic Blood"
-	desc = "The subject's blood is hypermetabolic, causing it to be produced at a much faster rate."
+	desc = "O sangue do sujeito é hipermetabólico, fazendo com que seja produzido a uma velocidade muito mais rápida."
 	quality = POSITIVE
 	instability = POSITIVE_INSTABILITY_MINOR
 	text_gain_indication = span_notice("You can feel your heartbeat pick up.")
@@ -659,7 +659,7 @@
 // You eat rocks
 /datum/mutation/rock_eater
 	name = "Rock Eater"
-	desc = "The subject's body is able to digest rocks and minerals."
+	desc = "O corpo do sujeito é capaz de digerir rochas e minerais."
 	quality = POSITIVE
 	instability = POSITIVE_INSTABILITY_MINI
 	text_gain_indication = span_notice("You feel a craving for rocks.")
@@ -671,7 +671,7 @@
 // You eat rock but also get buffs from them
 /datum/mutation/rock_absorber
 	name = "Rock Absorber"
-	desc = "The subject's body is able to digest rocks and minerals, taking on their properties."
+	desc = "O corpo do sujeito é capaz de digerir rochas e minerais, assumindo suas propriedades."
 	quality = POSITIVE
 	instability = POSITIVE_INSTABILITY_MAJOR
 	text_gain_indication = span_notice("You feel a supreme craving for rocks.")
@@ -690,8 +690,7 @@
 // Soft crit is disabed
 /datum/mutation/inexorable
 	name = "Inexorable"
-	desc = "Your body can push on beyond the limits of normal human endurance. \
-		However, pushing it too far can cause severe damage to your body."
+	desc = "Seu corpo pode ir além dos limites da resistência humana normal. No entanto, ir longe demais pode causar danos graves no seu corpo."
 	quality = POSITIVE
 	instability = POSITIVE_INSTABILITY_MODERATE
 	text_gain_indication = span_notice("You feel inexorable.")

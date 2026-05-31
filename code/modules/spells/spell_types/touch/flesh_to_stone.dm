@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/touch/flesh_to_stone
 	name = "Flesh to Stone"
-	desc = "This spell charges your hand with the power to turn victims into inert statues for a long period of time."
+	desc = "Este feitiço carrega sua mão com o poder de transformar vítimas em estátuas inertes por um longo período de tempo."
 	button_icon_state = "statue"
 	sound = 'sound/effects/magic/fleshtostone.ogg'
 
@@ -13,8 +13,8 @@
 	hand_path = /obj/item/melee/touch_attack/flesh_to_stone
 
 /datum/action/cooldown/spell/touch/flesh_to_stone/on_antimagic_triggered(obj/item/melee/touch_attack/hand, mob/living/victim, mob/living/carbon/caster)
-	to_chat(caster, span_warning("The spell can't seem to affect [victim]!"))
-	to_chat(victim, span_warning("You feel your flesh turn to stone for a moment, then revert back!"))
+	to_chat(caster, span_warning("O feitiço não parece afetar[victim]!"))
+	to_chat(victim, span_warning("Você sente sua carne virar pedra por um momento, e então volta atrás!"))
 
 /datum/action/cooldown/spell/touch/flesh_to_stone/cast_on_hand_hit(obj/item/melee/touch_attack/hand, mob/living/victim, mob/living/carbon/caster)
 	var/mob/living/living_victim = victim
@@ -27,7 +27,7 @@
 
 /obj/item/melee/touch_attack/flesh_to_stone
 	name = "\improper petrifying touch"
-	desc = "That's the bottom line, because flesh to stone said so!"
+	desc = "Essa é a linha de fundo, porque carne para pedra disse isso!"
 	icon = 'icons/obj/weapons/hand.dmi'
 	icon_state = "fleshtostone"
 	inhand_icon_state = "fleshtostone"

@@ -15,9 +15,9 @@ import {
 import { FeatureDropdownInput } from '../dropdowns';
 
 export const ghost_accs: FeatureChoiced = {
-  name: 'Ghost accessories',
+  name: 'Acessórios fantasmas.',
   category: 'GHOST',
-  description: 'Determines what adjustments your ghost will have.',
+  description: 'Determina quais ajustes seu fantasma terá.',
   component: FeatureDropdownInput,
 };
 
@@ -93,21 +93,21 @@ function GhostFormInput(
 }
 
 export const ghost_form: FeatureChoiced = {
-  name: 'Ghosts form',
+  name: 'Fantasmas se formam.',
   category: 'GHOST',
-  description: 'The appearance of your ghost. Requires BYOND membership.',
+  description: 'A aparência do seu fantasma. Requer a adesão de ByOND.',
   component: GhostFormInput,
 };
 
 export const ghost_hud: FeatureToggle = {
-  name: 'Ghost HUD',
+  name: 'HUD Fantasma',
   category: 'GHOST',
-  description: 'Enable HUD buttons for ghosts.',
+  description: 'Activar botões HUD para fantasmas.',
   component: CheckboxInput,
 };
 
 export const ghost_orbit: FeatureChoiced = {
-  name: 'Ghost orbit',
+  name: 'Órbita fantasma.',
   category: 'GHOST',
   description: `
     The shape in which your ghost will orbit.
@@ -125,7 +125,7 @@ export const ghost_orbit: FeatureChoiced = {
 };
 
 export const ghost_others: FeatureChoiced = {
-  name: 'Ghosts of others',
+  name: 'Fantasmas dos outros',
   category: 'GHOST',
   description: `
     Do you want the ghosts of others to show up as their own setting, as
@@ -135,14 +135,14 @@ export const ghost_others: FeatureChoiced = {
 };
 
 export const inquisitive_ghost: FeatureToggle = {
-  name: 'Ghost inquisitiveness',
+  name: 'Inquisição fantasma',
   category: 'GHOST',
-  description: 'Clicking on something as a ghost will examine it.',
+  description: 'Clicar em algo como um fantasma vai examiná-lo.',
   component: CheckboxInput,
 };
 
 export const ghost_roles: FeatureToggle = {
-  name: 'Get ghost roles',
+  name: 'Obter papéis fantasmas',
   category: 'GHOST',
   description: `
     If you de-select this, you will not get any ghost role pop-ups what-so-ever!

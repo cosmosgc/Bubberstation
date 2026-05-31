@@ -298,7 +298,7 @@
 	var/confirmed = tgui_alert(
 		owner.current,
 		message = "Are you sure? You will no longer be able to Ascend.",
-		title = "Reject the call?",
+		title = "Rejeitar a chamada?",
 		buttons = list("Yes", "No"),
 	) == "Yes"
 	if (!confirmed)
@@ -333,7 +333,7 @@
 
 /datum/antagonist/heretic/farewell()
 	if(!silent && owner.current)
-		to_chat(owner.current, span_userdanger("Your mind begins to flare as the otherwordly knowledge escapes your grasp!"))
+		to_chat(owner.current, span_userdanger("Sua mente começa a clarear enquanto o conhecimento de outra palavra escapa de sua compreensão!"))
 	return ..()
 
 /datum/antagonist/heretic/on_gain()
@@ -422,8 +422,8 @@
 		return
 	var/mob/heretic_mob = owner.current
 	unlimited_blades = TRUE
-	to_chat(heretic_mob, span_boldwarning("You have gained a lot of power, the mansus will no longer allow you to break your blades, but you can now make as many as you wish."))
-	heretic_mob.balloon_alert(heretic_mob, "blade breaking disabled!")
+	to_chat(heretic_mob, span_boldwarning("Você ganhou muito poder, o mansus não permitirá que quebre suas lâminas, mas agora pode fazer quantos quiser."))
+	heretic_mob.balloon_alert(heretic_mob, "Desativar a lâmina!")
 	update_heretic_aura()
 	var/datum/action/cooldown/spell/shadow_cloak/cloak_spell = locate() in heretic_mob.actions
 	cloak_spell.Remove(heretic_mob)
@@ -494,7 +494,7 @@
 		return
 
 	// We shouldn't be able to cast this! Cancel it.
-	source.balloon_alert(source, "you need a focus!")
+	source.balloon_alert(source, "Você precisa de um foco!")
 	return SPELL_CANCEL_CAST
 
 /*
@@ -530,15 +530,15 @@
 /datum/antagonist/heretic/proc/try_draw_rune(mob/living/user, turf/target_turf, drawing_time = 20 SECONDS, additional_checks)
 	for(var/turf/nearby_turf as anything in RANGE_TURFS(1, target_turf))
 		if(!isopenturf(nearby_turf) || is_type_in_typecache(nearby_turf, blacklisted_rune_turfs))
-			target_turf.balloon_alert(user, "invalid placement for rune!")
+			target_turf.balloon_alert(user, "Posição inválida para runa!")
 			return
 
 	if(locate(/obj/effect/heretic_rune) in range(3, target_turf))
-		target_turf.balloon_alert(user, "too close to another rune!")
+		target_turf.balloon_alert(user, "muito perto de outra runa!")
 		return
 
 	if(drawing_rune)
-		target_turf.balloon_alert(user, "already drawing a rune!")
+		target_turf.balloon_alert(user, "Já desenhando uma runa!")
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(draw_rune), user, target_turf, drawing_time, additional_checks)
@@ -556,7 +556,7 @@
 	drawing_rune = TRUE
 
 	var/rune_colour = GLOB.heretic_path_to_color[heretic_path?.route || PATH_START]
-	target_turf.balloon_alert(user, "drawing rune...")
+	target_turf.balloon_alert(user, "Desenhando runa...")
 	var/obj/effect/temp_visual/drawing_heretic_rune/drawing_effect
 	if (drawing_time < (10 SECONDS))
 		drawing_effect = new /obj/effect/temp_visual/drawing_heretic_rune/fast(target_turf, rune_colour)
@@ -564,14 +564,14 @@
 		drawing_effect = new(target_turf, rune_colour)
 
 	if(!do_after(user, drawing_time, target_turf, extra_checks = additional_checks, hidden = TRUE))
-		target_turf.balloon_alert(user, "interrompido!")
+		target_turf.balloon_alert(user, "Interrompido!")
 		new /obj/effect/temp_visual/drawing_heretic_rune/fail(target_turf, rune_colour)
 		qdel(drawing_effect)
 		drawing_rune = FALSE
 		return
 
 	qdel(drawing_effect)
-	target_turf.balloon_alert(user, "rune created")
+	target_turf.balloon_alert(user, "Rune criado")
 	new /obj/effect/heretic_rune/big(target_turf, rune_colour)
 	drawing_rune = FALSE
 
@@ -623,7 +623,7 @@
 	haunted_blade.gender_reveal(outline_color = null, ray_color = COLOR_HERETIC_GREEN)
 
 	for(var/mob/living/culto as anything in invokers)
-		to_chat(culto, span_cult_large("\"A follower of the forgotten gods! You must be rewarded for such a valuable sacrifice.\""))
+		to_chat(culto, span_cult_large("\"Um seguidor dos deuses esquecidos! Você deve ser recompensado por um sacrifício tão valioso.\""))
 
 	// Locate a cultist team (Is there a better way??)
 	var/mob/living/random_cultist = pick(invokers)
@@ -644,7 +644,7 @@
 		for(var/datum/mind/mind as anything in cult_team.members)
 			if(mind.current)
 				SEND_SOUND(mind.current, 'sound/effects/magic/clockwork/narsie_attack.ogg')
-				to_chat(mind.current, span_cult_large(span_warning("Arcane and forbidden knowledge floods your forges and archives. The cult has learned how to create the ")) + span_cult_large(span_hypnophrase("[result]!")))
+				to_chat(mind.current, span_cult_large(span_warning("Arcane e conhecimento proibido inunda suas forjas e arquivos. O culto aprendeu a criar o")) + span_cult_large(span_hypnophrase("[result]!")))
 
 	return SILENCE_SACRIFICE_MESSAGE|DUST_SACRIFICE
 
@@ -807,15 +807,15 @@
 	// SKYRAT EDIT START - No greentext
 	/*
 	if(feast_of_owls)
-		parts += span_greentext("Ascension Forsaken")
+		parts += span_greentext("A Ascensão Abandonada")
 	if(ascended)
-		parts += span_greentext(span_big("THE HERETIC ASCENDED!"))
+		parts += span_greentext(span_big("O herege se foi!"))
 
 	else
 		if(succeeded)
-			parts += span_greentext("The heretic was successful, but did not ascend!")
+			parts += span_greentext("O herege foi bem sucedido, mas não ascendeu!")
 		else
-			parts += span_redtext("The heretic has failed.")
+			parts += span_redtext("O herege falhou.")
 	*/
 	// SKYRAT EDIT END - No greentext
 
@@ -850,12 +850,12 @@
  */
 /datum/antagonist/heretic/proc/give_living_heart(mob/admin)
 	if(!admin.client?.holder)
-		to_chat(admin, span_warning("You shouldn't be using this!"))
+		to_chat(admin, span_warning("Você não deveria estar usando isso!"))
 		return
 
 	var/datum/heretic_knowledge/living_heart/heart_knowledge = get_knowledge(/datum/heretic_knowledge/living_heart)
 	if(!heart_knowledge)
-		to_chat(admin, span_warning("The heretic doesn't have a living heart knowledge for some reason. What?"))
+		to_chat(admin, span_warning("O herege não tem conhecimento de coração vivo por alguma razão. O quê?"))
 		return
 
 	heart_knowledge.on_research(owner.current, src)
@@ -865,17 +865,17 @@
  */
 /datum/antagonist/heretic/proc/add_marked_as_target(mob/admin)
 	if(!admin.client?.holder)
-		to_chat(admin, span_warning("You shouldn't be using this!"))
+		to_chat(admin, span_warning("Você não deveria estar usando isso!"))
 		return
 
 	var/mob/living/carbon/human/new_target = admin.client?.holder.marked_datum
 	if(!istype(new_target))
-		to_chat(admin, span_warning("You need to mark a human to do this!"))
+		to_chat(admin, span_warning("Você precisa marcar um humano para fazer isso!"))
 		return
 
-	if(tgui_alert(admin, "Let them know their targets have been updated?", "Whispers of the Mansus", list("Yes", "No")) == "Yes")
-		to_chat(owner.current, span_danger("The Mansus has modified your targets. Go find them!"))
-		to_chat(owner.current, span_danger("[new_target.real_name], the [new_target.mind?.assigned_role?.title || "human"]."))
+	if(tgui_alert(admin, "Avisar que os alvos foram atualizados?", "Whispers of the Mansus", list("Yes", "No")) == "Yes")
+		to_chat(owner.current, span_danger("O Mansus modificou seus alvos. Vá encontrá-los!"))
+		to_chat(owner.current, span_danger("[new_target.real_name], o[new_target.mind?.assigned_role?.title || "human"]."))
 
 	add_sacrifice_target(new_target)
 
@@ -884,7 +884,7 @@
  */
 /datum/antagonist/heretic/proc/remove_target(mob/admin)
 	if(!admin.client?.holder)
-		to_chat(admin, span_warning("You shouldn't be using this!"))
+		to_chat(admin, span_warning("Você não deveria estar usando isso!"))
 		return
 
 	var/list/removable = list()
@@ -899,18 +899,18 @@
 		return
 
 	if(!remove_sacrifice_target(chosen_target))
-		to_chat(admin, span_warning("Failed to remove [name_of_removed] from [owner]'s sacrifice list. Perhaps they're no longer in the list anyways."))
+		to_chat(admin, span_warning("Não foi possível remover[name_of_removed]De[owner]A lista de sacrifícios. Talvez eles não estejam mais na lista."))
 		return
 
-	if(tgui_alert(admin, "Let them know their targets have been updated?", "Whispers of the Mansus", list("Yes", "No")) == "Yes")
-		to_chat(owner.current, span_danger("The Mansus has modified your targets."))
+	if(tgui_alert(admin, "Avisar que os alvos foram atualizados?", "Whispers of the Mansus", list("Yes", "No")) == "Yes")
+		to_chat(owner.current, span_danger("O Mansus modificou seus alvos."))
 
 /**
  * Admin proc for easily adding / removing knowledge points.
  */
 /datum/antagonist/heretic/proc/admin_change_points(mob/admin)
 	if(!admin.client?.holder)
-		to_chat(admin, span_warning("You shouldn't be using this!"))
+		to_chat(admin, span_warning("Você não deveria estar usando isso!"))
 		return
 
 	var/change_num = tgui_input_number(admin, "Add or remove knowledge points", "Points", 0, 100, -100)
@@ -924,12 +924,12 @@
  */
 /datum/antagonist/heretic/proc/admin_give_focus(mob/admin)
 	if(!admin.client?.holder)
-		to_chat(admin, span_warning("You shouldn't be using this!"))
+		to_chat(admin, span_warning("Você não deveria estar usando isso!"))
 		return
 
 	var/mob/living/pawn = owner.current
 	pawn.equip_to_slot_if_possible(new /obj/item/clothing/neck/heretic_focus(get_turf(pawn)), ITEM_SLOT_NECK, TRUE, TRUE)
-	to_chat(pawn, span_hypnophrase("The Mansus has manifested you a focus."))
+	to_chat(pawn, span_hypnophrase("O Mansus manifestou-lhe um foco."))
 
 /datum/antagonist/heretic/antag_panel_data()
 	var/list/string_of_knowledge = list()
@@ -1110,7 +1110,7 @@
 
 /datum/objective/minor_sacrifice/update_explanation_text()
 	. = ..()
-	explanation_text = "Sacrifice at least [target_amount] crewmembers."
+	explanation_text = "Sacrifício pelo menos[target_amount]membros da tripulação."
 
 /datum/objective/minor_sacrifice/check_completion()
 	var/datum/antagonist/heretic/heretic_datum = owner?.has_antag_datum(/datum/antagonist/heretic)
@@ -1122,7 +1122,7 @@
 /datum/objective/major_sacrifice
 	name = "major sacrifice"
 	target_amount = 1
-	explanation_text = "Sacrifice 1 head of staff."
+	explanation_text = "Sacrifique um chefe de equipe."
 
 /datum/objective/major_sacrifice/check_completion()
 	var/datum/antagonist/heretic/heretic_datum = owner?.has_antag_datum(/datum/antagonist/heretic)
@@ -1160,7 +1160,7 @@
 
 /datum/objective/heretic_research/update_explanation_text()
 	. = ..()
-	explanation_text = "Research at least [target_amount] knowledge from the Mansus. You start with [length(GLOB.heretic_start_knowledge)] researched."
+	explanation_text = "Pesquisa pelo menos.[target_amount]Conhecimento do Mansus. Você começa com[length(GLOB.heretic_start_knowledge)]pesquisado."
 
 /datum/objective/heretic_research/check_completion()
 	var/datum/antagonist/heretic/heretic_datum = owner?.has_antag_datum(/datum/antagonist/heretic)
@@ -1171,7 +1171,7 @@
 /datum/objective/heretic_summon
 	name = "summon monsters"
 	target_amount = 2
-	explanation_text = "Summon 2 monsters from the Mansus into this realm."
+	explanation_text = "Chame dois monstros do Mansus para este reino."
 	/// The total number of summons the objective owner has done
 	var/num_summoned = 0
 

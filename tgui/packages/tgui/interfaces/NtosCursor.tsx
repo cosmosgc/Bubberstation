@@ -26,7 +26,7 @@ export const NtosCursor = () => {
 
   const NoticeBoxText = () => {
     if (numClicked <= 2) {
-      return `There's only one option... It's the sword.`;
+      return `There'É apenas uma opção... Ele.'s the sword.`;
     } else if (numClicked === 3) {
       return `You clicked the sword. It's still the sword.`;
     } else if (numClicked === 4) {
@@ -40,7 +40,7 @@ export const NtosCursor = () => {
   return (
     <NtosWindow width={350} height={300}>
       <NtosWindow.Content scrollable>
-        <Section title="Select Cursor">
+        <Section title="Selecione Cursor">
           <Stack vertical>
             <Stack.Item align={'center'}>
               <Button

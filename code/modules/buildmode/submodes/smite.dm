@@ -8,12 +8,11 @@
 
 /datum/buildmode_mode/smite/show_help(client/builder)
 	to_chat(builder, span_purple(boxed_message(
-		"[span_bold("Select smite to use")] -> Right Mouse Button on buildmode button\n\
-		[span_bold("Smite the mob")] -> Left Mouse Button on mob/living"))
+		"[span_bold("Select smite to use")] -> Right Mouse Button on buildmode button\n		[span_bold("Smite the mob")] -> Left Mouse Button on mob/living"))
 	)
 
 /datum/buildmode_mode/smite/change_settings(client/user)
-	var/punishment = input(user, "Choose a punishment", "DIVINE SMITING") as null|anything in GLOB.smites
+	var/punishment = input(user, "Escolha um castigo.", "SMITTING DIVINO") as null|anything in GLOB.smites
 	var/smite_path = GLOB.smites[punishment]
 	var/datum/smite/picking_smite = new smite_path
 	var/configuration_success = picking_smite.configure(user)
@@ -34,7 +33,7 @@
 		return
 
 	if (selected_smite == null)
-		to_chat(user, span_notice("No smite selected."))
+		to_chat(user, span_notice("Nenhum golpe selecionado."))
 		return
 
 	selected_smite.do_effect(user, object)

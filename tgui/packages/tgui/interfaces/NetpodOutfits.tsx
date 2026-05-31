@@ -53,7 +53,7 @@ export const NetpodOutfits = (props) => {
           <Stack.Item grow>
             <Section
               fill
-              title="Select an outfit"
+              title="Selecione uma roupa."
               buttons={
                 <Input
                   autoFocus

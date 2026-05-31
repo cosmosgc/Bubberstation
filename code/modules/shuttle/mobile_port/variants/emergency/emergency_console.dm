@@ -5,7 +5,7 @@
 
 /obj/machinery/computer/emergency_shuttle
 	name = "emergency shuttle console"
-	desc = "For shuttle control."
+	desc = "Para o controle da nave auxiliar."
 	icon_screen = "shuttle"
 	icon_keyboard = "tech_key"
 	resistance_flags = INDESTRUCTIBLE
@@ -35,12 +35,12 @@
 /obj/machinery/computer/emergency_shuttle/examine(mob/user)
 	. = ..()
 	if(hijack_announce)
-		. += span_danger("Security systems present on console. Any unauthorized tampering will result in an emergency announcement.")
+		. += span_danger("Sistemas de segurança presentes no console. Qualquer adulteração não autorizada resultará em um anúncio de emergência.")
 	if(user?.mind?.get_hijack_speed())
-		. += span_danger("Alt click on this to attempt to hijack the shuttle. This will take multiple tries (current: stage [SSshuttle.emergency.hijack_status]/[HIJACK_COMPLETED]).")
-		. += span_notice("It will take you [(hijack_stage_time * user.mind.get_hijack_speed()) / 10] seconds to reprogram a stage of the shuttle's navigational firmware, and the console will undergo automated timed lockout for [hijack_stage_cooldown/10] seconds after each stage.")
+		. += span_danger("Alt clique nisso para tentar sequestrar a nave auxiliar. Isso vai levar várias tentativas (atual: estágio)[SSshuttle.emergency.hijack_status]/[HIJACK_COMPLETED]).")
+		. += span_notice("Vai levá-lo.[(hijack_stage_time * user.mind.get_hijack_speed()) / 10]segundos para reprogramar uma fase do firmware de navegação da nave, e o console será submetido a bloqueio automático de tempo para[hijack_stage_cooldown/10]segundos após cada etapa.")
 		if(hijack_announce)
-			. += span_warning("It is probably best to fortify your position as to be uninterrupted during the attempt, given the automatic announcements..")
+			. += span_warning("É melhor fortalecer sua posição para ser ininterrupta durante a tentativa, dado os anúncios automáticos.")
 
 /obj/machinery/computer/emergency_shuttle/attackby(obj/item/I, mob/user,list/modifiers)
 	if(isidcard(I))
@@ -103,11 +103,11 @@
 	var/obj/item/card/id/ID = user.get_idcard(TRUE)
 
 	if(!ID)
-		to_chat(user, span_warning("You don't have an ID."))
+		to_chat(user, span_warning("Você não tem identificação."))
 		return .
 
 	if(!(ACCESS_COMMAND in ID.access))
-		to_chat(user, span_warning("The access level of your card is not high enough."))
+		to_chat(user, span_warning("O nível de acesso do seu cartão não é alto o suficiente."))
 		return .
 
 	if(user in acted_recently)
@@ -197,8 +197,7 @@
 		// shuttle timers use 1/10th seconds internally
 		SSshuttle.emergency.setTimer(ENGINE_START_TIME)
 		var/system_error = obj_flags & EMAGGED ? "SYSTEM ERROR:" : null
-		minor_announce("The emergency shuttle will launch in \
-			[TIME_LEFT] seconds", system_error, alert=TRUE)
+		minor_announce("The emergency shuttle will launch in 			[TIME_LEFT] seconds", system_error, alert=TRUE)
 		. = TRUE
 
 /obj/machinery/computer/emergency_shuttle/proc/increase_hijack_stage()
@@ -228,28 +227,28 @@
 	if(!IsReachableBy(user))
 		return
 	if(HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
-		to_chat(user, span_warning("You need your hands free before you can manipulate [src]."))
+		to_chat(user, span_warning("Você precisa de suas mãos livres antes de poder manipular[src]."))
 		return
 	var/area/my_area = get_area(src)
 	if(!istype(my_area, /area/shuttle/escape))
 		say("Error - Network connectivity: Console has lost connection to the shuttle.")
 		return
 	if(!user?.mind?.get_hijack_speed())
-		to_chat(user, span_warning("You manage to open a user-mode shell on [src], and hundreds of lines of debugging output fly through your vision. It is probably best to leave this alone."))
+		to_chat(user, span_warning("Você consegue abrir uma shell de modo de usuário em[src], e centenas de linhas de saída de depuração voar através de sua visão. É melhor deixar isso em paz."))
 		return
 	if(!EMERGENCY_AT_LEAST_DOCKED) // prevent advancing hijack stages on BYOS shuttles until the shuttle has "docked"
-		to_chat(user, span_warning("The flight plans for the shuttle haven't been loaded yet, you can't hack this right now."))
+		to_chat(user, span_warning("Os planos de voo da nave ainda não foram carregados, não pode hackear isso agora."))
 		return
 	if(hijack_hacking == TRUE)
 		return
 	if(SSshuttle.emergency.hijack_status >= HIJACK_COMPLETED)
-		to_chat(user, span_warning("The emergency shuttle is already loaded with a corrupt navigational payload. What more do you want from it?"))
+		to_chat(user, span_warning("A nave de emergência já está carregada com uma carga de navegação corrompida. O que mais você quer dele?"))
 		return
 	if(hijack_last_stage_increase >= world.time - hijack_stage_cooldown)
 		say("Error - Catastrophic software error detected. Input is currently on timeout.")
 		return
 	hijack_hacking = TRUE
-	to_chat(user, span_boldwarning("You [SSshuttle.emergency.hijack_status == HIJACK_NOT_BEGUN? "begin" : "continue"] to override [src]'s navigational protocols."))
+	to_chat(user, span_boldwarning("Você.[SSshuttle.emergency.hijack_status == HIJACK_NOT_BEGUN? "begin" : "continue"]para substituir[src]Protocolos de navegação."))
 	say("Software override initiated.")
 	var/turf/console_hijack_turf = get_turf(src)
 	message_admins("[src] is being overriden for hijack by [ADMIN_LOOKUPFLW(user)] in [ADMIN_VERBOSEJMP(console_hijack_turf)]")
@@ -261,10 +260,10 @@
 		message_admins("[ADMIN_LOOKUPFLW(user)] has hijacked [src] in [ADMIN_VERBOSEJMP(console_hijack_turf)].  Hijack stage increased to stage [SSshuttle.emergency.hijack_status] out of [HIJACK_COMPLETED].")
 		user.log_message("has hijacked [src]. Hijack stage increased to stage [SSshuttle.emergency.hijack_status] out of [HIJACK_COMPLETED].", LOG_GAME)
 		. = TRUE
-		to_chat(user, span_notice("You reprogram some of [src]'s programming, putting it on timeout for [hijack_stage_cooldown/10] seconds."))
+		to_chat(user, span_notice("Você reprograma um pouco de[src]Está programando, colocando-o em tempo limite para[hijack_stage_cooldown/10]segundos."))
 		visible_message(
-			span_warning("[user.name] appears to be tampering with [src]."),
-			blind_message = span_hear("You hear someone tapping computer keys."),
+			span_warning("[user.name]Parece estar adulterando[src]."),
+			blind_message = span_hear("Você ouve alguém tocando chaves do computador."),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			ignored_mobs = user
 		)
@@ -284,11 +283,7 @@
 		if(HIJACK_STAGE_4)
 			msg = "~ACS_directive module_load(cyberdyne.exploit.nanotrasen.shuttlenav)... NT key mismatch. Confirm load? Y...###Reboot complete. $SET transponder_state = 0; System link initiated with connected engines..."
 		if(HIJACK_COMPLETED)
-			msg = "SYSTEM OVERRIDE - Resetting course to \[[scramble_message_replace_chars("###########", 100)]\] \
-			([scramble_message_replace_chars("#######", 100)]/[scramble_message_replace_chars("#######", 100)]/[scramble_message_replace_chars("#######", 100)]) \
-			{AUTH - ROOT (uid: 0)}.</font>\
-			[SSshuttle.emergency.mode == SHUTTLE_ESCAPE ? "Diverting from existing route - Bluespace exit in \
-			[hijack_completion_flight_time_set >= INFINITY ? "[scramble_message_replace_chars("\[ERROR\]")]" : hijack_completion_flight_time_set/10] seconds." : ""]"
+			msg = "SYSTEM OVERRIDE - Resetting course to \[[scramble_message_replace_chars("###########", 100)]\] 			([scramble_message_replace_chars("#######", 100)]/[scramble_message_replace_chars("#######", 100)]/[scramble_message_replace_chars("#######", 100)]) 			{AUTH - ROOT (uid: 0)}.</font>			[SSshuttle.emergency.mode == SHUTTLE_ESCAPE ? "Diverting from existing route - Bluespace exit in 			[hijack_completion_flight_time_set >= INFINITY ? "[scramble_message_replace_chars("\[ERROR\]")]" : hijack_completion_flight_time_set/10] seconds." : ""]"
 	minor_announce(scramble_message_replace_chars(msg, replaceprob = 10), "Emergency Shuttle", TRUE)
 
 /obj/machinery/computer/emergency_shuttle/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -297,7 +292,7 @@
 		return FALSE
 
 	if((obj_flags & EMAGGED) || ENGINES_STARTED) //SYSTEM ERROR: THE SHUTTLE WILL LA-SYSTEM ERROR: THE SHUTTLE WILL LA-SYSTEM ERROR: THE SHUTTLE WILL LAUNCH IN 10 SECONDS
-		balloon_alert(user, "shuttle already about to launch!")
+		balloon_alert(user, "A nave já está prestes a lançar!")
 		return FALSE
 
 	var/time = TIME_LEFT

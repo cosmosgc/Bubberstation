@@ -1,6 +1,6 @@
 /datum/action/changeling/panacea
 	name = "Anatomic Panacea"
-	desc = "Expels impurities from our form: curing diseases, removing parasites, sobering us, purging toxins and radiation, curing traumas and brain damage, and resetting our genetic code completely. Costs 20 chemicals."
+	desc = "Expulsa impurezas de nossa forma: curar doenças, remover parasitas, nos sóbrios, purgar toxinas e radiação, curar traumas e danos cerebrais, e redefinir nosso código genético completamente. Custa 20 produtos químicos."
 	helptext = "Can be used while unconscious."
 	button_icon_state = "anatomic_panacea"
 	category = "utility"
@@ -10,7 +10,7 @@
 
 //Heals the things that the other regenerative abilities don't.
 /datum/action/changeling/panacea/sting_action(mob/user)
-	to_chat(user, span_notice("We cleanse impurities from our form."))
+	to_chat(user, span_notice("Limpamos impurezas de nossa forma."))
 	..()
 	var/list/bad_organs = list(
 		user.get_organ_by_type(/obj/item/organ/body_egg),

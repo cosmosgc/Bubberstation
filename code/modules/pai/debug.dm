@@ -11,12 +11,12 @@
 	if(isnull(choice))
 		return
 
-	var/chosen_name = input(choice, "Enter your pAI name:", "pAI Name", "Personal AI") as text|null
+	var/chosen_name = input(choice, "Introduza o seu nome.", "PAI Nome", "AI pessoal") as text|null
 	if (isnull(chosen_name))
 		return
 
 	if(!isobserver(choice))
-		var/confirm = tgui_alert(usr, "[choice.key] isn't ghosting right now. Are you sure you want to yank them out of their body and place them in this pAI?", "Spawn pAI Confirmation", list("Yes", "No"))
+		var/confirm = tgui_alert(usr, "[choice.key]Não é fantasma agora. Tem certeza que quer puxá-los do corpo e colocá-los nesse grupo?", "Spawn pAI Confirmation", list("Yes", "No"))
 		if(confirm != "Yes")
 			return
 	var/obj/item/pai_card/card = new(target)

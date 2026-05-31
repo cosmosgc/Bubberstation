@@ -1,7 +1,7 @@
 /datum/reagent/reaction_agent
 	abstract_type = /datum/reagent/reaction_agent
 	name = "Reaction Agent"
-	description = "Hello! I am a bugged reagent. Please report me for my crimes. Thank you!!"
+	description = "Olá! Sou um reagente grampeado. Por favor, me denuncie pelos meus crimes. Obrigado!"
 
 /datum/reagent/reaction_agent/intercept_reagents_transfer(datum/reagents/target, amount, copy_only)
 	if(!target)
@@ -19,7 +19,7 @@
 
 /datum/reagent/reaction_agent/acidic_buffer
 	name = "Strong Acidic Buffer"
-	description = "This reagent will consume itself and move the pH of a beaker towards acidity when added to another."
+	description = "Este reagente se consumirá e moverá o pH de um copo para acidez quando adicionado a outro."
 	color = "#fbc314"
 	ph = 0
 	inverse_chem = null
@@ -51,7 +51,7 @@
 
 /datum/reagent/reaction_agent/basic_buffer
 	name = "Strong Basic Buffer"
-	description = "This reagent will consume itself and move the pH of a beaker towards alkalinity when added to another."
+	description = "Este reagente se consumirá e moverá o pH de um copo em direção à alcalinidade quando adicionado a outro."
 	color = "#3853a4"
 	ph = 14
 	inverse_chem = null
@@ -84,17 +84,17 @@
 
 /datum/reagent/prefactor_a
 	name = "Interim Product Alpha"
-	description = "This reagent is a prefactor to the purity tester reagent, and will react with stable plasma to create it"
+	description = "Este reagente é um pré-fator para o reagente de teste de pureza, e irá reagir com plasma estável para criá-lo."
 	color = "#bafa69"
 
 /datum/reagent/prefactor_b
 	name = "Interim Product Beta"
-	description = "This reagent is a prefactor to the reaction speed agent reagent, and will react with stable plasma to create it"
+	description = "Este reagente é um pré-fator para o reagente do agente de velocidade de reação, e reagirá com plasma estável para criá-lo."
 	color = "#8a3aa9"
 
 /datum/reagent/reaction_agent/purity_tester
 	name = "Purity Tester"
-	description = "This reagent will consume itself and violently react if there is a highly impure reagent in the beaker."
+	description = "Este reagente se consumirá e reagirá violentamente se houver um reagente altamente impuro no copo."
 	ph = 3
 	color = "#ffffff"
 
@@ -108,10 +108,10 @@
 		if(reagent.purity <= reagent.inverse_chem_val)
 			is_inverse = TRUE
 	if(is_inverse)
-		target.my_atom.audible_message(span_warning("The beaker bubbles violently as the reagent is added!"))
+		target.my_atom.audible_message(span_warning("O copo borbulha violentamente enquanto o reagente é adicionado!"))
 		playsound(target.my_atom, 'sound/effects/chemistry/bufferadd.ogg', 50, TRUE)
 	else
-		target.my_atom.audible_message(span_warning("The added reagent doesn't seem to do much."))
+		target.my_atom.audible_message(span_warning("O reagente adicionado não parece fazer muito."))
 	if(!copy_only)
 		volume -= amount
 		holder.update_total()
@@ -121,7 +121,7 @@
 
 /datum/reagent/reaction_agent/speed_agent
 	name = "Tempomyocin"
-	description = "This reagent will consume itself and speed up an ongoing reaction, modifying the current reaction's purity by its own."
+	description = "Este reagente se consumirá e acelerará uma reação contínua, modificando a pureza da reação atual."
 	ph = 10
 	color = "#e61f82"
 
@@ -148,7 +148,7 @@
 
 /datum/reagent/reaction_agent/inversing_buffer
 	name = "Chiral Inversing Buffer"
-	description = "This reagent will consume itself and convert impure reagents into their inversed counterparts. Amount varies based on volume of added buffer."
+	description = "Este reagente irá se consumir e converter reagentes impuros em seus homólogos inversos. A quantidade varia com base no volume de tampão adicionado."
 	ph = 7
 	color = "#b60046"
 
@@ -176,10 +176,10 @@
 
 	//audible feedback
 	if(conversion_buffer < amount * 10)
-		target.my_atom.audible_message(span_warning("The beaker goes into a rolling boil as the contents begin inversing!"))
+		target.my_atom.audible_message(span_warning("O copo entra em furúnculo enquanto o conteúdo começa a inverter!"))
 		playsound(target.my_atom, 'sound/effects/chemistry/catalyst.ogg', 50, TRUE)
 	else
-		target.my_atom.audible_message(span_warning("The buffer fizzles with no effect."))
+		target.my_atom.audible_message(span_warning("O tampão falha sem efeito."))
 
 	//remove inversening reagent based on total buffer removed
 	var/volume_to_transfer = amount - (amount * (1 - (conversion_buffer / (amount * 10))))

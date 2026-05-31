@@ -1,6 +1,6 @@
 /datum/mutation/farsight
 	name = "Farsight"
-	desc = "The subject's eyes are able to see further than normal."
+	desc = "Os olhos do sujeito são capazes de ver além do normal."
 	quality = POSITIVE
 	instability = POSITIVE_INSTABILITY_MINOR
 	text_gain_indication = span_notice("You feel your eyes tingle.")
@@ -17,7 +17,7 @@
 
 /datum/action/cooldown/spell/farsight
 	name = "Farsight"
-	desc = "You can see further than normal."
+	desc = "Você pode ver mais do que o normal."
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
 	button_icon_state = "eye"
 

@@ -1,6 +1,6 @@
 /obj/machinery/door/firedoor
 	name = "emergency shutter"
-	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This one has a glass panel. It has a mechanism to open it with just your hands."
+	desc = "Obturador de emergência, capaz de selar áreas quebradas. Este tem um painel de vidro. Tem um mecanismo para abri-lo com apenas suas mãos."
 	icon = 'modular_zubbers/icons/obj/doors/doorfireglass.dmi'
 
 /obj/machinery/door/firedoor/click_alt(mob/user)
@@ -9,7 +9,7 @@
 
 /obj/machinery/door/firedoor/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click the door to use the manual override.")
+	. += span_notice("Alt-clique na porta para usar o controle manual.")
 
 /obj/machinery/door/firedoor/update_overlays()
 	. = ..()
@@ -38,7 +38,7 @@
 
 /obj/machinery/door/firedoor/solid
 	name = "solid emergency shutter"
-	desc = "Emergency air-tight shutter, capable of sealing off breached areas. It has a mechanism to open it with just your hands."
+	desc = "Obturador de emergência, capaz de selar áreas quebradas. Tem um mecanismo para abri-lo com apenas suas mãos."
 	icon = 'modular_zubbers/icons/obj/doors/doorfire.dmi'
 	glass = FALSE
 
@@ -50,7 +50,7 @@
 
 /obj/machinery/door/firedoor/heavy
 	name = "heavy emergency shutter"
-	desc = "Emergency air-tight shutter, capable of sealing off breached areas. It has a mechanism to open it with just your hands."
+	desc = "Obturador de emergência, capaz de selar áreas quebradas. Tem um mecanismo para abri-lo com apenas suas mãos."
 	icon = 'modular_zubbers/icons/obj/doors/doorfire.dmi'
 
 /obj/machinery/door/firedoor/heavy/closed

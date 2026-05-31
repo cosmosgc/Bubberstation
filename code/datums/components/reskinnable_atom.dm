@@ -153,8 +153,7 @@
 		if(reskin_type && isnull(reskin_type::greyscale_item_path)) // greyscale_item_path unset
 			stack_trace("[type] added to a greyscale item without setting the greyscale_item_path! In [reskin_type], add 'greyscale_item_path = [atom_parent::type]'.")
 		else if(atom_parent.type != reskin_type::greyscale_item_path) // greyscale_item_path set but doesn't match the item it's being added to
-			stack_trace("[type] added to an invalid item type, [atom_parent.type]. [reskin_type] is set up to only be added to: [reskin_type::greyscale_item_path]. \
-				Either fix its greyscale_item_path if this is incorrect, or apply a different skin.")
+			stack_trace("[type] added to an invalid item type, [atom_parent.type]. [reskin_type] is set up to only be added to: [reskin_type::greyscale_item_path]. 				Either fix its greyscale_item_path if this is incorrect, or apply a different skin.")
 #endif
 
 	src.base_reskin_type = base_reskin_type
@@ -267,7 +266,7 @@
 		return
 
 	set_skin_by_name(pick, user)
-	to_chat(user, span_info("[parent] is now skinned as '[pick].'"))
+	to_chat(user, span_info("[parent]está agora esfolado como '[pick].'"))
 
 	if(!infinite_reskin)
 		qdel(src)

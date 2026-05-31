@@ -133,7 +133,7 @@
 	AddComponent(/datum/component/obeys_commands, pet_commands)
 
 	AddElement(/datum/element/ai_retaliate)
-	AddElement(/datum/element/basic_health_examine, light_damage_message = "It has some punctures in its flesh!", heavy_damage_message = span_bold("It has severe punctures and tears in its flesh!"), heavy_threshold = 0.4)
+	AddElement(/datum/element/basic_health_examine, light_damage_message = "Tem alguns furos em sua carne!", heavy_damage_message = span_bold("Tem perfurações severas e lágrimas em sua carne!"), heavy_threshold = 0.4)
 	AddElement(/datum/element/footstep, footstep_type = FOOTSTEP_MOB_SLIME)
 	AddElement(/datum/element/soft_landing)
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_SLIME, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
@@ -246,9 +246,9 @@
 			. += "It is glowing alarmingly with high levels of electrical activity."
 
 		if(SLIME_MAX_POWER)
-			. += span_boldwarning("It is radiating with massive levels of electrical activity!")
+			. += span_boldwarning("Está irradiando com níveis maciços de atividade elétrica!")
 	if(overcrowded)
-		. += span_warning("It seems too overcroweded to properly reproduce!")
+		. += span_warning("Parece muito amassado para reproduzir corretamente!")
 
 ///Changes the slime's current life state
 /mob/living/basic/slime/proc/set_life_stage(new_life_stage = SLIME_LIFE_STAGE_BABY, initial = FALSE)
@@ -292,7 +292,7 @@
 		return COMPONENT_HOSTILE_NO_ATTACK
 
 	if(isAI(target)) //The aI is not tasty!
-		target.balloon_alert(our_slime, "not tasty!")
+		target.balloon_alert(our_slime, "Não é gostoso!")
 		return COMPONENT_HOSTILE_NO_ATTACK
 
 	if(our_slime.buckled == target) //If you try to attack the creature you are latched on, you instead cancel feeding
@@ -307,9 +307,9 @@
 		if(prob(stunprob) && our_slime.powerlevel >= SLIME_EXTRA_SHOCK_COST)
 			our_slime.powerlevel = clamp(our_slime.powerlevel - SLIME_EXTRA_SHOCK_COST, SLIME_MIN_POWER, SLIME_MAX_POWER)
 			borg_target.apply_damage(our_slime.powerlevel * rand(6, 10), BRUTE, spread_damage = TRUE, wound_bonus = CANT_WOUND)
-			borg_target.visible_message(span_danger("\The [our_slime] shocks [borg_target]!"), span_userdanger("\The [our_slime] shocks you!"))
+			borg_target.visible_message(span_danger("\The [our_slime]Choques[borg_target]!"), span_userdanger("\The [our_slime]Choca você!"))
 		else
-			borg_target.visible_message(span_danger("\The [our_slime] fails to hurt [borg_target]!"), span_userdanger("\The [our_slime] failed to hurt you!"))
+			borg_target.visible_message(span_danger("\The [our_slime]Não dói.[borg_target]!"), span_userdanger("\The [our_slime]Falhou em te machucar!"))
 
 		return COMPONENT_HOSTILE_NO_ATTACK
 
@@ -319,7 +319,7 @@
 		if(!prob(stunprob))
 			return NONE // normal attack
 
-		carbon_target.visible_message(span_danger("\The [our_slime] shocks [carbon_target]!"), span_userdanger("\The [our_slime] shocks you!"))
+		carbon_target.visible_message(span_danger("\The [our_slime]Choques[carbon_target]!"), span_userdanger("\The [our_slime]Choca você!"))
 
 		do_sparks(5, TRUE, carbon_target)
 		var/power = our_slime.powerlevel + rand(0,3)
@@ -336,8 +336,7 @@
 		var/mob/living/basic/slime/target_slime = target
 		if(target_slime.buckled)
 			target_slime.stop_feeding(silent = TRUE)
-			visible_message(span_danger("[our_slime] pulls [target_slime] off!"), \
-				span_danger("You pull [target_slime] off!"))
+			visible_message(span_danger("[our_slime]puxa[target_slime]Fora!"), 				span_danger("Você puxa.[target_slime]Fora!"))
 			return NONE // normal attack
 
 		var/is_adult_slime = our_slime.life_stage == SLIME_LIFE_STAGE_ADULT
@@ -352,7 +351,7 @@
 ///Spawns a crossed slimecore item
 /mob/living/basic/slime/proc/spawn_corecross()
 	var/static/list/crossbreeds = subtypesof(/obj/item/slimecross)
-	visible_message(span_danger("[src] shudders, its mutated core consuming the rest of its body!"))
+	visible_message(span_danger("[src]Estremece, seu núcleo mutante consumindo o resto de seu corpo!"))
 	playsound(src, 'sound/effects/magic/smoke.ogg', 50, TRUE)
 	var/selected_crossbreed_path
 	for(var/crossbreed_path in crossbreeds)
@@ -363,7 +362,7 @@
 	if(selected_crossbreed_path)
 		new selected_crossbreed_path(loc)
 	else
-		visible_message(span_warning("The mutated core shudders, and collapses into a puddle, unable to maintain its form."))
+		visible_message(span_warning("O núcleo mutado treme, e cai em uma poça, incapaz de manter sua forma."))
 	qdel(src)
 
 ///Proc for slime core removal surgery, tries to remove cores from a dead slime.

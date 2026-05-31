@@ -38,7 +38,7 @@
 /datum/element/wall_tearer/proc/on_attacked_wall(mob/living/tearer, atom/target, proximity_flag)
 	SIGNAL_HANDLER
 	if (DOING_INTERACTION_WITH_TARGET(tearer, target) || (!isnull(do_after_key) && DOING_INTERACTION(tearer, do_after_key)))
-		tearer.balloon_alert(tearer, "ocupado!")
+		tearer.balloon_alert(tearer, "Ocupado!")
 		return COMPONENT_HOSTILE_NO_ATTACK
 	var/is_valid = validate_target(target, tearer)
 	if (is_valid != WALL_TEAR_ALLOWED)
@@ -50,11 +50,11 @@
 	// We need to do this three times to actually destroy it
 	var/rip_time = (istype(target, /turf/closed/wall/r_wall) ? tear_time * reinforced_multiplier : tear_time) / 3
 	if (rip_time > 0)
-		tearer.visible_message(span_warning("[tearer] begins tearing through [target]!"))
+		tearer.visible_message(span_warning("[tearer]Começa a rasgar[target]!"))
 		playsound(tearer, 'sound/machines/airlock/airlock_alien_prying.ogg', vol = 100, vary = TRUE)
 		target.balloon_alert(tearer, "tearing...")
 		if (!do_after(tearer, delay = rip_time, target = target, interaction_key = do_after_key))
-			tearer.balloon_alert(tearer, "interrompido!")
+			tearer.balloon_alert(tearer, "Interrompido!")
 			return
 	// Might have been replaced, removed, or reinforced during our do_after
 	var/is_valid = validate_target(target, tearer)
@@ -73,7 +73,7 @@
 
 	var/reinforced = istype(target, /turf/closed/wall/r_wall)
 	if (!allow_reinforced && reinforced)
-		target.balloon_alert(tearer, "it's too strong!")
+		target.balloon_alert(tearer, "É muito forte!")
 		return WALL_TEAR_FAIL_CANCEL_CHAIN
 	return WALL_TEAR_ALLOWED
 

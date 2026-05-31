@@ -9,7 +9,7 @@
 
 /datum/symptom/beard
 	name = "Facial Hypertrichosis"
-	desc = "The virus increases hair production significantly, causing rapid beard growth."
+	desc = "O vírus aumenta significativamente a produção de cabelo, causando rápido crescimento da barba."
 	illness = "Man-Mouth"
 	stealth = 0
 	resistance = 3
@@ -32,5 +32,5 @@
 		var/mob/living/carbon/human/manly_man = manly_mob
 		var/index = min(max(beard_order.Find(manly_man.facial_hairstyle)+1, disease.stage-1), beard_order.len)
 		if(index > 0 && manly_man.facial_hairstyle != beard_order[index])
-			to_chat(manly_man, span_warning("Your chin itches."))
+			to_chat(manly_man, span_warning("Seu queixo coça."))
 			manly_man.set_facial_hairstyle(beard_order[index], update = TRUE)

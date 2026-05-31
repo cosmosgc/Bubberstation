@@ -9,7 +9,7 @@
  */
 /mob/living/basic/blackmesa/xen/headcrab
 	name = "headcrab"
-	desc = "Don't let it latch onto your hea-... hey, that's kinda cool."
+	desc = "Ei, isso é legal."
 	icon = 'modular_skyrat/modules/black_mesa/icons/mobs.dmi'
 	icon_state = "headcrab"
 	icon_living = "headcrab"
@@ -154,7 +154,7 @@
 
 	// Visual and sound feedback for zombie creation
 	playsound(new_zombie, 'modular_skyrat/modules/black_mesa/sound/mobs/headcrab/attack1.ogg', 100, FALSE)
-	visible_message(span_warning("The corpse of [target_human.name] suddenly rises, a headcrab controlling its lifeless body!"))
+	visible_message(span_warning("O cadáver de[target_human.name]De repente, levanta-se, um headcrab controlando seu corpo sem vida!"))
 
 	// Delete the original headcrab
 	qdel(src)
@@ -171,4 +171,4 @@
  */
 /mob/living/basic/blackmesa/xen/headcrab/fast
 	speed = -2
-	desc = "Don't let it latch onto your hea-... hey, that's kinda cool. This one looks faster than usual."
+	desc = "Ei, isso é legal. Este parece mais rápido que o normal."

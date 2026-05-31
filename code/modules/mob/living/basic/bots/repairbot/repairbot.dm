@@ -1,7 +1,7 @@
 
 /mob/living/basic/bot/repairbot
 	name = "\improper Repairbot"
-	desc = "I can fix it!"
+	desc = "Eu posso consertar!"
 	icon = 'icons/mob/silicon/aibots.dmi'
 	icon_state = "repairbot1"
 	base_icon_state = "repairbot"
@@ -21,7 +21,7 @@
 	additional_access = /datum/id_trim/job/station_engineer
 	ai_controller = /datum/ai_controller/basic_controller/bot/repairbot
 	mob_size = MOB_SIZE_SMALL
-	possessed_message = "You are a repairbot, cursed to prolong the swiss-cheesening of this death metal trap!"
+	possessed_message = "Você é um robô de reparo, amaldiçoado a prolongar o queijo suíço desta armadilha de metal mortal!"
 	///our iron stack
 	var/obj/item/stack/sheet/iron/our_iron
 	///our glass stack
@@ -117,10 +117,10 @@
 			balloon_alert(user, "inserido")
 			return
 		if(our_sheet.amount >= our_sheet.max_amount)
-			user?.balloon_alert(user, "cheio!")
+			user?.balloon_alert(user, "Cheio!")
 			return
 		if(!our_sheet.can_merge(potential_stack))
-			user?.balloon_alert(user, "not suitable!")
+			user?.balloon_alert(user, "Não é adequado!")
 			return
 		var/atom/movable/to_move = potential_stack.split_stack(min(our_sheet.max_amount - our_sheet.amount, potential_stack.amount))
 		to_move.forceMove(src)
@@ -208,7 +208,7 @@
 
 /mob/living/basic/bot/repairbot/proc/attempt_use_stack(obj/item/stack_to_use, atom/target)
 	if(!isdatum(stack_to_use))
-		to_chat(src, span_warning("You do not have anymore [stack_to_use]!"))
+		to_chat(src, span_warning("Você não tem mais[stack_to_use]!"))
 		return
 	stack_to_use.melee_attack_chain(src, target)
 
@@ -357,11 +357,11 @@
 	carried.set_bot(src)
 	if(carried.icon_state == "toolbox_default")
 		carried.add_atom_colour(toolbox_color, FIXED_COLOUR_PRIORITY)
-	user.visible_message(span_warning("[user] scoops up [src]!"))
+	user.visible_message(span_warning("[user]Pegamos.[src]!"))
 	user.put_in_hands(carried)
 
 /obj/item/carried_repairbot
-	desc = "A most robust bot!"
+	desc = "Um robô muito robusto!"
 	attack_verb_continuous = list("robusts")
 	attack_verb_simple = list("robust")
 	hitsound = 'sound/items/weapons/smash.ogg'

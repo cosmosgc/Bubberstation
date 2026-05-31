@@ -1,6 +1,6 @@
 /obj/item/holotool
 	name = "experimental holotool"
-	desc = "A highly experimental holographic tool projector. Less efficient than its physical counterparts."
+	desc = "Um projetor de ferramentas holográficas altamente experimental. Menos eficiente que seus homólogos físicos."
 	icon = 'modular_zubbers/icons/obj/holotool.dmi'
 	icon_state = "holotool"
 	inhand_icon_state = "holotool"
@@ -49,10 +49,10 @@
 
 /obj/item/holotool/examine(mob/user)
 	. = ..()
-	. += span_notice("It is currently set to the [current_tool ? current_tool.name : "off"] mode.")
+	. += span_notice("Está definido para o[current_tool ? current_tool.name : "off"]Modo.")
 	if(tool_behaviour == TOOL_MULTITOOL)
-		. += span_notice("Its buffer [buffer?.resolve() ? "contains [buffer.resolve()]." : "is empty."]")
-	. += span_info("Attack self to select tool modes.")
+		. += span_notice("Seu buffer[buffer?.resolve() ? "contains [buffer.resolve()]." : "is empty."]")
+	. += span_info("Atacar a si mesmo para selecionar modos de ferrarenta.")
 
 // Welding tool repair is currently hardcoded and not based on tool behavior
 /obj/item/holotool/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -74,8 +74,8 @@
 		balloon_alert(user, "membro não danificado")
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [affecting.name]."),
-		span_notice("You start fixing some of the dents on [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
+	user.visible_message(span_notice("[user]Começa a consertar alguns dos amassados.[attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [affecting.name]."),
+		span_notice("Você começa a consertar alguns amassados em[attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
 	var/use_delay = 1 SECONDS
 	if(user == attacked_humanoid)
 		use_delay = 5 SECONDS
@@ -166,7 +166,7 @@
 /obj/item/holotool/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return FALSE
-	to_chat(user, span_danger("ZZT- ILLEGAL BLUEPRINT UNLOCKED- CONTACT !#$@^%$# NANOTRASEN SUPPORT-@*%$^%!"))
+	to_chat(user, span_danger("ZZLEPRINT DESLOCADO- CONTACTO ZZT-ILEGAL!"))
 	do_sparks(5, FALSE, src)
 	obj_flags |= EMAGGED
 	return TRUE

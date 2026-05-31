@@ -51,9 +51,9 @@
 /obj/item/gun/ballistic/proc/handle_magazine(mob/user, obj/item/ammo_box/magazine/inserting_magazine)
 	if(magazine) // If we already have a magazine inserted, we're going to begin tactically reloading it.
 		if(reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) // Check if we have a reload time to tactical reloading, or if we have the instant reload trait.
-			to_chat(user, span_notice("You start to insert the magazine into [src]!"))
+			to_chat(user, span_notice("Você começa a inserir a revista em[src]!"))
 			if(!do_after(user, reload_time, src, IGNORE_USER_LOC_CHANGE)) // We are allowed to move while reloading.
-				to_chat(user, span_danger("You fail to insert the magazine into [src]!"))
+				to_chat(user, span_danger("Você não consegue inserir a revista em[src]!"))
 				return TRUE
 		eject_magazine(user, FALSE, inserting_magazine) // We eject the magazine then insert the new one, while putting the old one in hands.
 	else
@@ -67,8 +67,8 @@
 	if(istype(ammobox, /obj/item/ammo_box) && box_reload_penalty)
 		box_load = TRUE
 		user.changeNext_move(box_reload_delay) // cooldown to simulate having to fumble for another round
-		balloon_alert(user, "reload encumbered!")
-	to_chat(user, span_notice("You load [num_loaded] [cartridge_wording]\s into [src][box_load ?  ", but it takes some extra effort" : ""]."))
+		balloon_alert(user, "Recarregar sobrecarregado!")
+	to_chat(user, span_notice("Você carrega.[num_loaded] [cartridge_wording]\s em[src][box_load ?  ", but it takes some extra effort" : ""]."))
 
 /obj/effect/temp_visual/dir_setting/firing_effect
 	light_system = OVERLAY_LIGHT

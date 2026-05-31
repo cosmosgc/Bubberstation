@@ -2,18 +2,18 @@
 	name = "grandfather clock"
 	icon = 'modular_skyrat/modules/officestuff/icons/cowboyobh.dmi'
 	icon_state = "grandfather_clock"
-	desc = "Tick, tick, tick, tick. It stands tall and daunting, loudly and ominously ticking, yet the hands are stuck close to midnight, the closer you get, the louder a faint whisper becomes a scream, a plea, something, but whatever it is, it says 'I am the Master, and you will obey me.'"
+	desc = "Tic, tic, tic, tic. Ele fica alto e assustador, alto e ameaçador tiquetaque, mas as mãos estão presas perto da meia-noite, quanto mais perto você chegar, mais alto um sussurro fraco torna-se um grito, um apelo, alguma coisa, mas o que quer que seja, ele diz 'Eu sou o Mestre, e você vai me obedecer.'"
 	var/datum/looping_sound/grandfatherclock/soundloop
 
 // stolen from the wall clock
 /obj/structure/grandfatherclock/examine(mob/user)
 	. = ..()
-	. += span_info("The current CST (local) time is: [station_time_timestamp()].")
-	. += span_info("The current TCT (galactic) time is: [time2text(world.realtime, "hh:mm:ss")].")
+	. += span_info("A hora atual do CST (local) é:[station_time_timestamp()].")
+	. += span_info("O tempo atual do TCT (galáctico) é:[time2text(world.realtime, "hh:mm:ss")].")
 	if(soundloop)
-		. += span_notice("The hands of the clock are freely ticking away. They could be <b>screwed</b> down.")
+		. += span_notice("As mãos do relógio estão correndo livremente. Poderiam ser.<b>Está ferrado.</b>Abaixe-se.")
 	else
-		. += span_notice("The hands of the clock have been <b>screwed</b> tight.")
+		. += span_notice("As mãos do relógio foram<b>Está ferrado.</b>apertado.")
 
 
 // . += span_notice("The <b>screws</b> on the clock hands are loose, freely ticking away.")
@@ -34,22 +34,22 @@
 
 /obj/structure/grandfatherclock/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!soundloop)
-		balloon_alert(user, "unscrewing the hands...")
+		balloon_alert(user, "Desenroscando as mãos...")
 		if(do_after(user, 2 SECONDS, src))
 			soundloop = new(src, TRUE)
-			balloon_alert(user, "hands unscrewed!")
+			balloon_alert(user, "Mãos soltas!")
 			return ITEM_INTERACT_SUCCESS
 		return ..()
 
-	balloon_alert(user, "screwing the hands...")
+	balloon_alert(user, "Transando com as mãos...")
 	if(do_after(user, 2 SECONDS, src))
 		QDEL_NULL(soundloop)
-		balloon_alert(user, "hands screwed tight!")
+		balloon_alert(user, "Mãos apertadas!")
 		return ITEM_INTERACT_SUCCESS
 	return ..()
 /obj/structure/sign/painting/meat
 	name = "Figure With Meat"
-	desc = "A painting of a distorted figure, sitting between a cow cut in half."
+	desc = "Uma pintura de uma figura distorcida, sentada entre uma vaca cortada ao meio."
 	icon = 'modular_skyrat/modules/officestuff/icons/cowboyobh.dmi'
 	icon_state = "meat"
 	sign_change_name = "Painting - Meat"
@@ -57,7 +57,7 @@
 
 /obj/structure/sign/painting/parting
 	name = "Parting Waves"
-	desc = "A painting of a parting sea, the red sun washes over the blue ocean."
+	desc = "Uma pintura de um mar partido, o sol vermelho lava sobre o oceano azul."
 	icon = 'modular_skyrat/modules/officestuff/icons/cowboyobh.dmi'
 	icon_state = "jmwt4"
 	is_editable = TRUE
@@ -66,7 +66,7 @@
 
 /obj/structure/sign/paint
 	name = "painting"
-	desc = "you shouldn't be seeing this."
+	desc = "Você não deveria estar vendo isso."
 	icon = 'modular_skyrat/modules/officestuff/icons/cowboyobh.dmi'
 	icon_state = "gravestone"
 

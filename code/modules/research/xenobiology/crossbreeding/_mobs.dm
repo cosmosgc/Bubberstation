@@ -7,7 +7,7 @@ Slimecrossing Mobs
 /// Slime transformation power - from Burning Black
 /datum/action/cooldown/spell/shapeshift/slime_form
 	name = "Slime Transformation"
-	desc = "Transform from a human to a slime, or back again!"
+	desc = "Transforme de um humano para um lodo, ou volte novamente!"
 	button_icon_state = "transformslime"
 	cooldown_time = 0 SECONDS
 
@@ -33,14 +33,14 @@ Slimecrossing Mobs
 
 // Just in case.
 /mob/living/basic/slime/transformed_slime/reproduce()
-	to_chat(src, span_warning("I can't reproduce...")) // Mood
+	to_chat(src, span_warning("Não posso reproduzir...")) // Mood
 	return
 
 //Slime corgi - Chilling Pink
 /mob/living/basic/pet/dog/corgi/puppy/slime
 	name = "\improper slime corgi puppy"
 	real_name = "slime corgi puppy"
-	desc = "An unbearably cute pink slime corgi puppy."
+	desc = "Um filhote de cachorro corgi rosa insuportável."
 	icon_state = "slime_puppy"
 	icon_living = "slime_puppy"
 	icon_dead = "slime_puppy_dead"

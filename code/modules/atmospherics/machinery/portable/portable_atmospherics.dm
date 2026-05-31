@@ -118,7 +118,7 @@
 		if(atom_integrity >= max_integrity)
 			balloon_alert(user, "consertado")
 			return ITEM_INTERACT_SUCCESS
-		balloon_alert(user, "partially repaired...")
+		balloon_alert(user, "Parcialmente reparado...")
 
 	return ITEM_INTERACT_SUCCESS
 
@@ -215,7 +215,7 @@
 /obj/machinery/portable_atmospherics/click_alt(mob/living/user)
 	if(!holding)
 		return CLICK_ACTION_BLOCKING
-	to_chat(user, span_notice("You remove [holding] from [src]."))
+	to_chat(user, span_notice("Você tira.[holding]De[src]."))
 	replace_tank(user, TRUE)
 	return CLICK_ACTION_SUCCESS
 
@@ -223,8 +223,7 @@
 	. = ..()
 	if(!holding)
 		return
-	. += span_notice("\The [src] contains [holding]. Alt-click [src] to remove it.")+\
-		span_notice("Click [src] with another gas tank to hot swap [holding].")
+	. += span_notice("\The [src]contém[holding]Alt-click[src]para removê-lo.")+		span_notice("Clique.[src]com outro tanque de gasolina para troca quente[holding].")
 
 /**
  * Allow the player to place a tank inside the machine.
@@ -243,7 +242,7 @@
 
 	if(holding && new_tank)//for when we are actually switching tanks
 		investigate_log("had its internal [holding] swapped with [new_tank] by [key_name(user)].", INVESTIGATE_ATMOS)
-		to_chat(user, span_notice("In one smooth motion you pop [holding] out of [src]'s connector and replace it with [new_tank]."))
+		to_chat(user, span_notice("Em um movimento suave você pop[holding]Fora[src]É o conector e substituí-lo por[new_tank]."))
 		user.put_in_hands(holding)
 		UnregisterSignal(holding, COMSIG_QDELETING)
 		holding = new_tank
@@ -252,7 +251,7 @@
 		playsound(src, remove_sound, sound_vol)
 	else if(holding)//we remove a tank
 		investigate_log("had its internal [holding] removed by [key_name(user)].", INVESTIGATE_ATMOS)
-		to_chat(user, span_notice("You remove [holding] from [src]."))
+		to_chat(user, span_notice("Você tira.[holding]De[src]."))
 		if(Adjacent(user))
 			user.put_in_hands(holding)
 		else
@@ -262,7 +261,7 @@
 		holding = null
 	else if(new_tank)//we insert the tank
 		investigate_log("had [new_tank] inserted into it by [key_name(user)].", INVESTIGATE_ATMOS)
-		to_chat(user, span_notice("You insert [new_tank] into [src]."))
+		to_chat(user, span_notice("Você insere[new_tank]Em[src]."))
 		holding = new_tank
 		playsound(src, insert_sound, sound_vol)
 		RegisterSignal(holding, COMSIG_QDELETING, PROC_REF(unregister_holding))
@@ -283,24 +282,18 @@
 		investigate_log("was disconnected from [connected_port] by [key_name(user)].", INVESTIGATE_ATMOS)
 		disconnect()
 		wrench.play_tool_sound(src)
-		user.visible_message( \
-			"[user] disconnects [src].", \
-			span_notice("You unfasten [src] from the port."), \
-			span_hear("You hear a ratchet."))
+		user.visible_message( 			"[user]Desligador[src].", 			span_notice("Você desaperta.[src]Faça Porto."), 			span_hear("Você ouve uma catraca."))
 		update_appearance()
 		return TRUE
 	var/obj/machinery/atmospherics/components/unary/portables_connector/possible_port = locate(/obj/machinery/atmospherics/components/unary/portables_connector) in loc
 	if(!possible_port)
-		to_chat(user, span_notice("Nothing happens."))
+		to_chat(user, span_notice("Nada de descontece."))
 		return FALSE
 	if(!connect(possible_port))
-		to_chat(user, span_notice("[name] failed to connect to the port."))
+		to_chat(user, span_notice("[name]Não conseguiu se conectar ao porto."))
 		return FALSE
 	wrench.play_tool_sound(src)
-	user.visible_message( \
-		"[user] connects [src].", \
-		span_notice("You fasten [src] to the port."), \
-		span_hear("You hear a ratchet."))
+	user.visible_message( 		"[user]conecta[src].", 		span_notice("Você aperta.[src]Para o porto."), 		span_hear("Você ouve uma catraca."))
 	update_appearance()
 	investigate_log("was connected to [possible_port] by [key_name(user)].", INVESTIGATE_ATMOS)
 	return TRUE

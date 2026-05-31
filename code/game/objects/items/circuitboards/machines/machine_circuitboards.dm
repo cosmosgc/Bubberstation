@@ -180,7 +180,7 @@
 /obj/item/circuitboard/machine/tesla_coil
 	name = "Tesla Controller"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
-	desc = "Does not let you shoot lightning from your hands."
+	desc = "Não deixa você atirar raios de suas mãos."
 	build_path = /obj/machinery/power/energy_accumulator/tesla_coil
 	req_components = list(/datum/stock_part/capacitor = 1)
 	needs_anchored = FALSE
@@ -302,13 +302,13 @@
 /obj/item/circuitboard/machine/pacman/examine(mob/user)
 	. = ..()
 	var/message = high_production_profile ? "high-power uranium mode" : "medium-power plasma mode"
-	. += span_notice("It's set to [message].")
-	. += span_notice("You can switch the mode by using a screwdriver on [src].")
+	. += span_notice("Está definido para[message].")
+	. += span_notice("Você pode mudar o modo usando uma chave de fenda ligada[src].")
 
 /obj/item/circuitboard/machine/pacman/screwdriver_act(mob/living/user, obj/item/tool)
 	high_production_profile = !high_production_profile
 	var/message = high_production_profile ? "high-power uranium mode" : "medium-power plasma mode"
-	to_chat(user, span_notice("You set the board for [message]"))
+	to_chat(user, span_notice("Você colocou o tabuleiro para[message]"))
 
 /obj/item/circuitboard/machine/turbine_compressor
 	name = "Turbine - Inlet Compressor"
@@ -417,11 +417,11 @@
 /obj/item/circuitboard/machine/thermomachine/multitool_act(mob/living/user, obj/item/multitool/multitool)
 	. = ..()
 	pipe_layer = (pipe_layer >= PIPING_LAYER_MAX) ? PIPING_LAYER_MIN : (pipe_layer + 1)
-	to_chat(user, span_notice("You change the circuitboard to layer [pipe_layer]."))
+	to_chat(user, span_notice("Você muda o circuito para a camada[pipe_layer]."))
 
 /obj/item/circuitboard/machine/thermomachine/examine()
 	. = ..()
-	. += span_notice("It is set to layer [pipe_layer].")
+	. += span_notice("Está definido como camada.[pipe_layer].")
 
 /obj/item/circuitboard/machine/HFR_fuel_input
 	name = "HFR Fuel Input"
@@ -530,7 +530,7 @@
 	else
 		build_path = /obj/machinery/holopad/secure
 		secure = TRUE
-	to_chat(user, span_notice("You [secure? "en" : "dis"]able the security on [src]"))
+	to_chat(user, span_notice("Você.[secure? "en" : "dis"]Ative a segurança.[src]"))
 	return TRUE
 
 /obj/item/circuitboard/machine/holopad/examine(mob/user)
@@ -605,14 +605,14 @@
 	var/position = fridges_name_paths.Find(build_path, fridges_name_paths)
 	position = (position == length(fridges_name_paths)) ? 1 : (position + 1)
 	build_path = fridges_name_paths[position]
-	to_chat(user, span_notice("You set the board to [fridges_name_paths[build_path]]."))
+	to_chat(user, span_notice("Você colocou o tabuleiro para[fridges_name_paths[build_path]]."))
 	return TRUE
 
 /obj/item/circuitboard/machine/smartfridge/examine(mob/user)
 	. = ..()
 	if(is_special_type)
 		return
-	. += span_info("[src] is set to [fridges_name_paths[build_path]]. You can use a screwdriver to reconfigure it.")
+	. += span_info("[src]Está pronto para[fridges_name_paths[build_path]]Pode usar uma chave de fenda para reconfigurar.")
 
 /obj/item/circuitboard/machine/dehydrator
 	name = "Dehydrator"
@@ -658,7 +658,7 @@
 
 /obj/item/circuitboard/machine/vendor
 	name = "Custom Vendor"
-	desc = "You can turn the \"brand selection\" dial using a screwdriver."
+	desc = "Você pode virar o\"Seleção da marca\"Disque usando uma chave de fenda."
 	custom_premium_price = PAYCHECK_CREW * 1.5
 	build_path = /obj/machinery/vending/custom
 	req_components = list(/obj/item/vending_refill/custom = 1)
@@ -820,7 +820,7 @@
 	name = "ChemMaster 3000"
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/chem_master
-	desc = "You can turn the \"mode selection\" dial using a screwdriver."
+	desc = "Você pode virar o\"seleção de modo\"Disque usando uma chave de fenda."
 	req_components = list(
 		/obj/item/reagent_containers/cup/beaker = 2,
 		/datum/stock_part/servo = 1,
@@ -837,7 +837,7 @@
 
 	build_path = new_path
 	name = "[new_name] 3000"
-	to_chat(user, span_notice("You change the circuit board setting to \"[new_name]\"."))
+	to_chat(user, span_notice("Você muda a placa de circuito para\"[new_name]\"."))
 	return TRUE
 
 /obj/item/circuitboard/machine/cryo_tube
@@ -877,10 +877,10 @@
 	if(!new_cost || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	if(loc != user)
-		to_chat(user, span_warning("You must hold the circuitboard to change its cost!"))
+		to_chat(user, span_warning("Você deve segurar o circuito para mudar seu custo!"))
 		return
 	custom_cost = new_cost
-	to_chat(user, span_notice("The cost is now set to [custom_cost]."))
+	to_chat(user, span_notice("O custo está agora definido para[custom_cost]."))
 
 /obj/item/circuitboard/machine/medical_kiosk/examine(mob/user)
 	. = ..()
@@ -1284,16 +1284,16 @@
 
 /obj/item/circuitboard/machine/dish_drive/examine(mob/user)
 	. = ..()
-	. += span_notice("Its suction function is [suction ? "enabled" : "disabled"]. Use it in-hand to switch.")
-	. += span_notice("Its disposal auto-transmit function is [transmit ? "enabled" : "disabled"]. Alt-click it to switch.")
+	. += span_notice("Sua função de sucção é[suction ? "enabled" : "disabled"]Use na mão para trocar.")
+	. += span_notice("Sua função de auto-transmissão é[transmit ? "enabled" : "disabled"]Alt-clique para trocar.")
 
 /obj/item/circuitboard/machine/dish_drive/attack_self(mob/living/user)
 	suction = !suction
-	to_chat(user, span_notice("You [suction ? "enable" : "disable"] the board's suction function."))
+	to_chat(user, span_notice("Você.[suction ? "enable" : "disable"]A função de sucção do tabuleiro."))
 
 /obj/item/circuitboard/machine/dish_drive/click_alt(mob/living/user)
 	transmit = !transmit
-	to_chat(user, span_notice("You [transmit ? "enable" : "disable"] the board's automatic disposal transmission."))
+	to_chat(user, span_notice("Você.[transmit ? "enable" : "disable"]A transmissão automática da placa."))
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/circuitboard/machine/gibber
@@ -1360,11 +1360,11 @@
 	if(build_path == /obj/machinery/processor)
 		name = "Slime Processor"
 		build_path = /obj/machinery/processor/slime
-		to_chat(user, span_notice("Name protocols successfully updated."))
+		to_chat(user, span_notice("Protocolos de nome atualizados com sucesso."))
 	else
 		name = "Food Processor"
 		build_path = /obj/machinery/processor
-		to_chat(user, span_notice("Defaulting name protocols."))
+		to_chat(user, span_notice("Protocolos de nome padrão."))
 	return TRUE
 
 /obj/item/circuitboard/machine/protolathe/department/service
@@ -1525,14 +1525,14 @@
 		return ITEM_INTERACT_BLOCKING
 
 	venue_type = radial_results[choice]
-	to_chat(user, span_notice("You change [src]'s linked venue."))
+	to_chat(user, span_notice("Você muda.[src]É um local conectado."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/circuitboard/machine/restaurant_portal/examine(mob/user)
 	. = ..()
 	if (venue_type)
 		var/datum/venue/as_venue = venue_type
-		. += span_notice("[src] is linked to \a [initial(as_venue.name)] venue.")
+		. += span_notice("[src]está ligado a\a [initial(as_venue.name)]local.")
 
 /obj/item/circuitboard/machine/restaurant_portal/configure_machine(obj/machinery/restaurant_portal/machine)
 	if(!istype(machine))

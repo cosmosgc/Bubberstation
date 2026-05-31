@@ -1,12 +1,12 @@
 // Cult pylon. Heals nearby cultists and converts turfs to cult turfs.
 /obj/structure/destructible/cult/pylon
 	name = "pylon"
-	desc = "A floating crystal that slowly heals those faithful to Nar'Sie."
+	desc = "Um cristal flutuante que lentamente cura os fiéis a Nar'Sie."
 	icon_state = "pylon"
 	light_range = 1.5
 	light_color = COLOR_SOFT_RED
 	break_sound = 'sound/effects/glass/glassbr2.ogg'
-	break_message = span_warning("The blood-red crystal falls to the floor and shatters!")
+	break_message = span_warning("O cristal vermelho de sangue cai no chão e quebra!")
 	/// Length of the cooldown in between tile corruptions. Doubled if no turfs are found.
 	custom_materials = list(/datum/material/runedmetal = SHEET_MATERIAL_AMOUNT * 4)
 	var/corruption_cooldown_duration = 5 SECONDS
@@ -16,18 +16,7 @@
 /obj/structure/destructible/cult/pylon/Initialize(mapload)
 	. = ..()
 
-	AddComponent( \
-		/datum/component/aura_healing, \
-		range = 5, \
-		brute_heal = 0.4, \
-		burn_heal = 0.4, \
-		blood_heal = 0.4, \
-		simple_heal = 1.2, \
-		wound_clotting = 0.1, \
-		requires_visibility = FALSE, \
-		limit_to_trait = TRAIT_HEALS_FROM_CULT_PYLONS, \
-		healing_color = COLOR_CULT_RED, \
-	)
+	AddComponent( 		/datum/component/aura_healing, 		range = 5, 		brute_heal = 0.4, 		burn_heal = 0.4, 		blood_heal = 0.4, 		simple_heal = 1.2, 		wound_clotting = 0.1, 		requires_visibility = FALSE, 		limit_to_trait = TRAIT_HEALS_FROM_CULT_PYLONS, 		healing_color = COLOR_CULT_RED, 	)
 
 	START_PROCESSING(SSfastprocess, src)
 

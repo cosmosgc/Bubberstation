@@ -126,7 +126,7 @@
 
 	var/list/spawn_points = GLOB.emergencyresponseteamspawn
 
-	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates("Do you wish to be considered for [span_notice(ertemplate.polldesc)]?", check_jobban = "deathsquad", alert_pic = /obj/item/card/id/advanced/centcom/ert/commander, role_name_text = "emergency response team")
+	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates("Você deseja ser considerado para[span_notice(ertemplate.polldesc)]?", check_jobban = "deathsquad", alert_pic = /obj/item/card/id/advanced/centcom/ert/commander, role_name_text = "Equipe de emergência.")
 
 	if(!length(candidates))
 		message_admins("[key_name_admin(owner)] tried to create a CentCom response team but [owner.p_they()] didn't find any candidates.")
@@ -139,7 +139,7 @@
 	var/turf/brief_spawn
 
 	if(ertemplate.use_custom_shuttle && ertemplate.ert_template)
-		to_chat(usr, span_boldnotice("Attempting to spawn ERT custom shuttle, this may take a few seconds..."))
+		to_chat(usr, span_boldnotice("Tentando desovar o transporte personalizado da ERT, isso pode levar alguns segundos..."))
 		var/datum/map_template/shuttle/ship = new ertemplate.ert_template
 		var/x = rand(TRANSITIONEDGE, world.maxx - TRANSITIONEDGE - ship.width)
 		var/y = rand(TRANSITIONEDGE, world.maxy - TRANSITIONEDGE - ship.height)
@@ -178,7 +178,7 @@
 			admin_officer.PossessByPlayer(usr.key)
 
 		else
-			to_chat(usr, span_warning("Could not spawn you in as briefing officer as you are not a ghost!"))
+			to_chat(usr, span_warning("Não poderia desová-lo como oficial de instrução como você não é um fantasma!"))
 
 	//Pick the (un)lucky players
 	var/numagents = min(ertemplate.teamsize, length(candidates))

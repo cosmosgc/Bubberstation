@@ -28,8 +28,7 @@
 	return ..()
 
 /**
- * Returns a list of turfs visible to the client's viewsize. \
- * Note that this will return an empty list if the camera's loc is not a turf.
+ * Returns a list of turfs visible to the client's viewsize.  * Note that this will return an empty list if the camera's loc is not a turf.
  */
 /mob/eye/camera/ai/proc/get_visible_turfs()
 	RETURN_TYPE(/list/turf)
@@ -185,7 +184,7 @@
 		ai_tracking_tool.reset_tracking()
 
 	if(isturf(loc) && (QDELETED(eyeobj) || !eyeobj.loc))
-		to_chat(src, "ERROR: Eyeobj not found. Creating new eye...")
+		to_chat(src, "Eyeobj não foi encontrado. Criando um novo olho...")
 		stack_trace("AI eye object wasn't found! Location: [loc] / Eyeobj: [eyeobj] / QDELETED: [QDELETED(eyeobj)] / Eye loc: [eyeobj?.loc]")
 		QDEL_NULL(eyeobj)
 		create_eye()
@@ -218,7 +217,7 @@
 	if(incapacitated)
 		return
 	acceleration = !acceleration
-	to_chat(usr, "Camera acceleration has been toggled [acceleration ? "on" : "off"].")
+	to_chat(usr, "Aceleração da câmera foi trocada.[acceleration ? "on" : "off"].")
 
 /mob/eye/camera/ai/Hear(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range)
 	. = ..()

@@ -93,7 +93,7 @@ export const Log = (props: LogProps) => {
                 list={return_values}
                 variants={variants}
                 skipNulls
-                name="Return Values"
+                name="Retorno de Valores"
                 collapsible
                 vvAct={(path) =>
                   act('vvReturnValue', {
@@ -127,7 +127,7 @@ export const Log = (props: LogProps) => {
                   list={return_values}
                   variants={variants}
                   skipNulls
-                  name="Return Values"
+                  name="Retorno de Valores"
                   collapsible
                   vvAct={(path) =>
                     act('vvReturnValue', {

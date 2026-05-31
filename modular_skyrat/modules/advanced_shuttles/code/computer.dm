@@ -11,7 +11,7 @@
 		return FALSE
 	obj_flags |= EMAGGED
 	locked = FALSE
-	to_chat(user, span_warning("You fry the pod's alert level checking system."))
+	to_chat(user, span_warning("Você frita o sistema de alerta da cápsula."))
 	return TRUE
 
 /obj/machinery/computer/emergency_shuttle/advanced

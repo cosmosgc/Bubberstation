@@ -15,7 +15,7 @@
 
 /obj/item/food/salad/aesirsalad
 	name = "\improper Aesir salad"
-	desc = "Probably too incredible for mortal men to fully enjoy."
+	desc = "Provavelmente muito incrível para homens mortais desfrutarem completamente."
 	icon_state = "aesirsalad"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/consumable/nutriment/vitamin = 12)
 	tastes = list("leaves" = 1)
@@ -24,7 +24,7 @@
 
 /obj/item/food/salad/herbsalad
 	name = "herb salad"
-	desc = "A tasty salad with apples on top."
+	desc = "Uma salada saborosa com maçãs em cima."
 	icon_state = "herbsalad"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/consumable/nutriment/vitamin = 6)
 	tastes = list("leaves" = 1, "apple" = 1)
@@ -33,7 +33,7 @@
 
 /obj/item/food/salad/validsalad
 	name = "valid salad"
-	desc = "It's just an herb salad with meatballs and fried potato slices. Nothing suspicious about it."
+	desc = "É só uma salada de ervas com almôndegas e fatias de batata frita. Nada suspeito sobre isso."
 	icon_state = "validsalad"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/nutriment/protein = 5, /datum/reagent/consumable/doctor_delight = 8, /datum/reagent/consumable/nutriment/vitamin = 6)
 	tastes = list("leaves" = 1, "potato" = 1, "meat" = 1, "valids" = 1)
@@ -42,7 +42,7 @@
 
 /obj/item/food/salad/fruit
 	name = "fruit salad"
-	desc = "Your standard fruit salad."
+	desc = "Sua salada de frutas padrão."
 	icon_state = "fruitsalad"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 9, /datum/reagent/consumable/nutriment/vitamin = 5)
 	tastes = list("fruit" = 1)
@@ -51,7 +51,7 @@
 
 /obj/item/food/salad/jungle
 	name = "jungle salad"
-	desc = "Exotic fruits in a bowl."
+	desc = "Frutos exóticos em uma tigela."
 	icon_state = "junglesalad"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 11, /datum/reagent/consumable/banana = 5, /datum/reagent/consumable/nutriment/vitamin = 7)
 	tastes = list("fruit" = 1, "the jungle" = 1)
@@ -60,7 +60,7 @@
 
 /obj/item/food/salad/citrusdelight
 	name = "citrus delight"
-	desc = "Citrus overload!"
+	desc = "Sobrecarga de citrinos!"
 	icon_state = "citrusdelight"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 11,
@@ -72,7 +72,7 @@
 
 /obj/item/food/uncooked_rice
 	name = "uncooked rice"
-	desc = "A clump of raw rice."
+	desc = "Um grupo de arroz cru."
 	icon_state = "uncooked_rice"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4)
 	tastes = list("rice" = 1)
@@ -86,7 +86,7 @@
 
 /obj/item/food/boiledrice
 	name = "boiled rice"
-	desc = "A steaming cup of boiled rice. A bit bland by itself, but the basis for something delicious..."
+	desc = "Uma xícara de arroz cozido. Um pouco sem graça, mas a base para algo delicioso..."
 	icon_state = "cooked_rice"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -98,7 +98,7 @@
 
 /obj/item/food/salad/ricepudding
 	name = "rice pudding"
-	desc = "Everybody loves rice pudding!"
+	desc = "Todo mundo adora pudim de arroz!"
 	icon_state = "ricepudding"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 8,
@@ -111,7 +111,7 @@
 
 /obj/item/food/salad/ricepork
 	name = "rice and pork"
-	desc = "Well, it looks like pork..."
+	desc = "Bem, parece porco..."
 	icon_state = "riceporkbowl"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -125,7 +125,7 @@
 
 /obj/item/food/salad/risotto
 	name = "risotto"
-	desc = "Proof the Italians mastered every carb."
+	desc = "Prova que os italianos dominavam cada carboidrato."
 	icon_state = "risotto"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 10,
@@ -138,7 +138,7 @@
 
 /obj/item/food/salad/eggbowl
 	name = "egg bowl"
-	desc = "A bowl of rice with a fried egg."
+	desc = "Uma tigela de arroz com um ovo frito."
 	icon_state = "eggbowl"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 8,
@@ -151,7 +151,7 @@
 
 /obj/item/food/salad/edensalad
 	name = "\improper Salad of Eden"
-	desc = "A salad brimming with untapped potential."
+	desc = "Uma salada cheia de potencial inexplorado."
 	icon_state = "edensalad"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 7,
@@ -163,7 +163,7 @@
 
 /obj/item/food/salad/gumbo
 	name = "black eyed gumbo"
-	desc = "A spicy and savory meat and rice dish."
+	desc = "Um prato de carne e arroz picante e salgado."
 	icon_state = "gumbo"
 	food_reagents = list(
 		/datum/reagent/consumable/capsaicin = 2,
@@ -177,7 +177,7 @@
 
 /obj/item/reagent_containers/cup/bowl
 	name = "bowl"
-	desc = "A simple bowl, used for soups and salads."
+	desc = "Uma tigela simples, usada para sopas e saladas."
 	icon = 'icons/obj/food/soupsalad.dmi'
 	icon_state = "bowl"
 	base_icon_state = "bowl"
@@ -198,12 +198,7 @@
 	. = ..()
 	RegisterSignal(src, COMSIG_ATOM_REAGENT_EXAMINE, PROC_REF(reagent_special_examine))
 	AddComponent(/datum/component/ingredients_holder, /obj/item/food/salad/empty, CUSTOM_INGREDIENT_ICON_FILL, max_ingredients = 6)
-	AddComponent( \
-		/datum/component/takes_reagent_appearance, \
-		on_icon_changed = CALLBACK(src, PROC_REF(on_cup_change)), \
-		on_icon_reset = CALLBACK(src, PROC_REF(on_cup_reset)), \
-		base_container_type = /obj/item/reagent_containers/cup/bowl, \
-	)
+	AddComponent( 		/datum/component/takes_reagent_appearance, 		on_icon_changed = CALLBACK(src, PROC_REF(on_cup_change)), 		on_icon_reset = CALLBACK(src, PROC_REF(on_cup_reset)), 		base_container_type = /obj/item/reagent_containers/cup/bowl, 	)
 
 /obj/item/reagent_containers/cup/bowl/on_cup_change(datum/glass_style/style)
 	. = ..()
@@ -235,10 +230,10 @@
 		// There was no soup in the pot, do normal examine
 		return
 
-	examine_list += "Inside, you can see:"
+	examine_list += "Dentro, você pode ver:"
 	examine_list += soups_found
 	if(unknown_volume > 0)
-		examine_list += "&bull; [round(unknown_volume, 0.01)] units of unknown reagents"
+		examine_list += "&bull;[round(unknown_volume, 0.01)]unidades de reagentes desconhecidos"
 
 	return STOP_GENERIC_REAGENT_EXAMINE
 
@@ -248,11 +243,11 @@
 	foodtypes = NONE
 	tastes = list()
 	icon_state = "bowl"
-	desc = "A delicious customized salad."
+	desc = "Uma deliciosa salada personalizada."
 
 /obj/item/food/salad/kale_salad
 	name = "kale salad"
-	desc = "A healthy kale salad drizzled in oil, perfect for warm summer months."
+	desc = "Uma salada de couve saudável regada em óleo, perfeita para meses quentes de verão."
 	icon_state = "kale_salad"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/vitamin = 12,
@@ -264,7 +259,7 @@
 
 /obj/item/food/salad/greek_salad
 	name = "greek salad"
-	desc = "A popular salad made of tomatoes, onions, feta cheese, and olives all drizzled in olive oil. Though it feels like it's missing something..."
+	desc = "Uma salada popular feita de tomates, cebolas, queijo feta, e azeitonas todas regadas em azeite. Embora pareça que está faltando algo..."
 	icon_state = "greek_salad"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/vitamin = 13,
@@ -276,7 +271,7 @@
 
 /obj/item/food/salad/caesar_salad
 	name = "caesar salad"
-	desc = "A simple yet flavorful salad of onions, lettuce, croutons, and shreds of cheese dressed in oil. Comes with a slice of pita bread!"
+	desc = "Uma simples e saborosa salada de cebola, alface, croutons, e pedaços de queijo vestido com óleo. Vem com uma fatia de pão pita!"
 	icon_state = "caesar_salad"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/vitamin = 12,
@@ -288,7 +283,7 @@
 
 /obj/item/food/salad/spring_salad
 	name = "spring salad"
-	desc = "A simple salad of carrots, lettuce and peas drizzled in oil with a pinch of salt."
+	desc = "Uma simples salada de cenouras, alface e ervilhas regadas em óleo com uma pitada de sal."
 	icon_state = "spring_salad"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/vitamin = 12,
@@ -300,7 +295,7 @@
 
 /obj/item/food/salad/potato_salad
 	name = "potato salad"
-	desc = "A dish of boiled potatoes mixed with boiled eggs, onions, and mayonnaise. A staple of every self-respecting barbecue."
+	desc = "Um prato de batatas cozidas misturadas com ovos cozidos, cebola e maionese. Um grampo de cada churrasco auto-respeito."
 	icon_state = "potato_salad"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/vitamin = 12,
@@ -313,7 +308,7 @@
 
 /obj/item/food/salad/spinach_fruit_salad
 	name = "spinach fruit salad"
-	desc = "A vibrant fruit salad made of spinach, berries, and pineapple chunks all drizzled in oil. Yummy!"
+	desc = "Uma salada de frutas vibrante feita de espinafres, bagas, e pedaços de abacaxi todos molhados em óleo. Delicioso!"
 	icon_state = "spinach_fruit_salad"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/vitamin = 12,
@@ -325,7 +320,7 @@
 
 /obj/item/food/salad/antipasto_salad
 	name = "antipasto salad"
-	desc = "A traditional Italian salad made of salami, mozzarella cheese, olives, and tomatoes. Often served as a first course meal."
+	desc = "Uma salada italiana tradicional feita de salame, queijo mussarela, azeitonas e tomates. Muitas vezes servia como primeira refeição."
 	icon_state = "antipasto_salad"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/vitamin = 12,

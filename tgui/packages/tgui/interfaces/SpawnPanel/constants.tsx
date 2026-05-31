@@ -1,12 +1,12 @@
 export const spawnLocationOptions = [
-  'Current location',
-  'Current location (droppod)',
-  "In own mob's hand",
-  'At a marked object',
-  'In the marked object',
-  'Targeted location',
-  'Targeted location (droppod)',
-  "In targeted mob's hand",
+  'Localização atual',
+  'Localização atual (droppod)',
+  "Na mão da própria multidão",
+  'Em um objeto marcado',
+  'No objeto marcado',
+  'Localização do alvo',
+  'Localização do alvo.',
+  "Na mão da máfia",
 ];
 
 export const listTypes = {
@@ -16,20 +16,20 @@ export const listTypes = {
 };
 
 export const listNames = {
-  Objects: 'Search objects',
-  Turfs: 'Search turfs',
-  Mobs: 'Search mobs',
+  Objects: 'Procure objetos.',
+  Turfs: 'Procurem por território.',
+  Mobs: 'Pesquise multidões.',
 };
 
 export const spawnLocationIcons = {
-  'Current location': 'map-marker',
-  'Current location (droppod)': 'parachute-box',
-  "In own mob's hand": 'hand-holding',
-  'At a marked object': 'floppy-disk',
-  'In the marked object': 'floppy-disk',
-  'Targeted location': 'crosshairs',
-  'Targeted location (droppod)': 'crosshairs',
-  "In targeted mob's hand": 'crosshairs',
+  'Localização atual': 'map-marker',
+  'Localização atual (droppod)': 'parachute-box',
+  "Na mão da própria multidão": 'hand-holding',
+  'Em um objeto marcado': 'floppy-disk',
+  'No objeto marcado': 'floppy-disk',
+  'Localização do alvo': 'crosshairs',
+  'Localização do alvo.': 'crosshairs',
+  "Na mão da máfia": 'crosshairs',
 };
 
 export const directionRotation = {

@@ -1,6 +1,6 @@
 /datum/mutation/cindikinesis
 	name = "Cindikinesis"
-	desc = "Allows the user to concentrate nearby heat into a pile of ash. Wow. Very interesting."
+	desc = "Permite ao usuário concentrar calor próximo em uma pilha de cinzas. Uau. Muito interessante."
 	quality = POSITIVE
 	text_gain_indication = span_notice("Your hand feels warm.")
 	instability = POSITIVE_INSTABILITY_MINOR
@@ -11,7 +11,7 @@
 
 /datum/action/cooldown/spell/conjure_item/ash
 	name = "Create Ash"
-	desc = "Concentrates pyrokinetic forces to create ash, useful for basically nothing."
+	desc = "Concentra forças pirocinéticas para criar cinzas, úteis para basicamente nada."
 	button_icon_state = "ash"
 
 	cooldown_time = 5 SECONDS
@@ -23,7 +23,7 @@
 
 /datum/mutation/pyrokinesis
 	name = "Pyrokinesis"
-	desc = "Draws positive energy from the surroundings to heat surrounding temperatures at subject's will."
+	desc = "Atrai energia positiva do ambiente para aquecer as temperaturas ao redor à vontade do sujeito."
 	quality = POSITIVE
 	text_gain_indication = span_notice("Your hand feels hot!")
 	instability = POSITIVE_INSTABILITY_MODERATE
@@ -35,7 +35,7 @@
 
 /datum/action/cooldown/spell/pointed/projectile/pyro
 	name = "Pyrobeam"
-	desc = "This power fires a heated bolt at a target."
+	desc = "Esta energia dispara um parafuso aquecido em um alvo."
 	button_icon_state = "firebeam"
 	base_icon_state = "firebeam"
 	active_overlay_icon_state = "bg_spell_border_active_blue"

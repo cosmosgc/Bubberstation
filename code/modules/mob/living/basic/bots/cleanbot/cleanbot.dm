@@ -2,7 +2,7 @@
 //Cleanbot
 /mob/living/basic/bot/cleanbot
 	name = "\improper Cleanbot"
-	desc = "A little cleaning robot, he looks so excited!"
+	desc = "Um robô de limpeza, ele parece tão animado!"
 	icon = 'icons/mob/silicon/aibots.dmi'
 	icon_state = "cleanbot0"
 	health = 25
@@ -16,7 +16,7 @@
 	bot_type = CLEAN_BOT
 	hackables = "cleaning software"
 	additional_access = /datum/id_trim/job/janitor
-	possessed_message = "You are a cleanbot! Clean the station to the best of your ability!"
+	possessed_message = "Você é um robô limpo! Limpe a estação o melhor que puder!"
 	ai_controller = /datum/ai_controller/basic_controller/bot/cleanbot
 	path_image_color = "#993299"
 	facepaint_overlays = list("cleanbot" = FALSE, "cleanbot_highlight" = TRUE)
@@ -137,11 +137,7 @@
 
 	generate_ai_keys()
 	AddComponent(/datum/component/obeys_commands, pet_commands)
-	AddComponent(/datum/component/cleaner, \
-		base_cleaning_duration = 2 SECONDS, \
-		pre_clean_callback = CALLBACK(src, PROC_REF(update_bot_mode), BOT_CLEANING), \
-		on_cleaned_callback = CALLBACK(src, PROC_REF(update_bot_mode), BOT_IDLE), \
-	)
+	AddComponent(/datum/component/cleaner, 		base_cleaning_duration = 2 SECONDS, 		pre_clean_callback = CALLBACK(src, PROC_REF(update_bot_mode), BOT_CLEANING), 		on_cleaned_callback = CALLBACK(src, PROC_REF(update_bot_mode), BOT_IDLE), 	)
 
 	GLOB.janitor_devices += src
 
@@ -190,7 +186,7 @@
 		user.client.give_award(/datum/award/achievement/misc/cleanboss, user)
 	if(isnull(weapon))
 		return
-	. += span_warning("Is that \a [weapon] taped to it...?")
+	. += span_warning("É isso?\a [weapon]Gravado a ele?")
 
 /mob/living/basic/bot/cleanbot/update_icon_state()
 	. = ..()
@@ -204,8 +200,8 @@
 /mob/living/basic/bot/cleanbot/emag_effects(mob/user)
 	if(weapon)
 		weapon.force = initial(weapon.force)
-	balloon_alert(user, "travas desativadas")
-	audible_message(span_danger("[src] buzzes oddly!"))
+	balloon_alert(user, "Travas desativadas")
+	audible_message(span_danger("[src]Que estranho!"))
 
 /mob/living/basic/bot/cleanbot/explode()
 	var/atom/drop_loc = drop_location()
@@ -265,14 +261,14 @@
 	return COMPONENT_NO_AFTERATTACK
 
 /mob/living/basic/bot/cleanbot/proc/attach_knife(mob/living/user, obj/item/used_item)
-	balloon_alert(user, "attaching knife...")
+	balloon_alert(user, "Attaching faca...")
 	if(!do_after(user, 2.5 SECONDS, target = src))
 		return
 	deputize(used_item, user)
 
 /mob/living/basic/bot/cleanbot/proc/deputize(obj/item/knife, mob/user)
 	if(!in_range(src, user) || !user.transferItemToLoc(knife, src))
-		balloon_alert(user, "couldn't attach!")
+		balloon_alert(user, "Não consegui fixar!")
 		return FALSE
 	balloon_alert(user, "fixado")
 	if(!(bot_access_flags & BOT_COVER_EMAGGED))
@@ -329,7 +325,7 @@
 	if(!(iscarbon(target) && (bot_access_flags & BOT_COVER_EMAGGED)) && !is_type_in_typecache(target, huntable_trash))
 		return NONE
 
-	visible_message(span_danger("[src] sprays hydrofluoric acid at [target]!"))
+	visible_message(span_danger("[src]pulveriza ácido fluorídrico em[target]!"))
 	playsound(src, 'sound/effects/spray2.ogg', 50, TRUE, -6)
 	target.acid_act(75, 10)
 	return COMPONENT_CANCEL_ATTACK_CHAIN

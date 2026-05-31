@@ -77,7 +77,7 @@
 		if(!force && (other_implant.implant_flags & IMPLANT_TYPE_SECURITY))
 			security_implants++
 			if(security_implants >= SECURITY_IMPLANT_CAP) //We've found too many security implants in this mob, and will reject implantation by normal means
-				balloon_alert(user, "too many security implants!")
+				balloon_alert(user, "Muitos implantes de segurança!")
 				return FALSE
 		if(flags & COMPONENT_DELETE_NEW_IMPLANT)
 			UNSETEMPTY(target.implants)
@@ -214,13 +214,13 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(params["implant_action"] == "self_destruct")
-		var/warning = tgui_alert(user, "Activation will harmlessly self-destruct this implant. Proceed?", "You sure?", list("Yes", "No"))
+		var/warning = tgui_alert(user, "A ativação irá inofensivamente autodestruir este implante. Continuar?", "You sure?", list("Yes", "No"))
 		if(warning != "Yes" || QDELETED(src) || QDELETED(user) || QDELETED(console) || isnull(imp_in))
 			return TRUE
 		if(!console.is_operational || !user.can_perform_action(console, NEED_DEXTERITY|ALLOW_SILICON_REACH))
 			return TRUE
 
-		to_chat(imp_in, span_hear("You feel a tiny jolt from inside of you as one of your implants fizzles out."))
+		to_chat(imp_in, span_hear("Você sente um pequeno choque de dentro de você enquanto um de seus implantes falha."))
 		do_sparks(number = 2, cardinal_only = FALSE, source = imp_in)
 		deconstruct()
 		return TRUE

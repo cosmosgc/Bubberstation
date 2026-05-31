@@ -26,7 +26,7 @@ export const AiAirlock = (props) => {
   return (
     <Window width={500} height={390}>
       <Window.Content>
-        <Section title="Power Status">
+        <Section title="Estado de Poder">
           <LabeledList>
             <LabeledList.Item
               label="Main"
@@ -97,10 +97,10 @@ export const AiAirlock = (props) => {
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Access and Door Control">
+        <Section title="Acesso e Controle de Porta">
           <LabeledList>
             <LabeledList.Item
-              label="ID Scan"
+              label="Digitalização de IDs"
               color="bad"
               buttons={
                 <Button
@@ -115,7 +115,7 @@ export const AiAirlock = (props) => {
               {!data.wires.id_scanner && '[Wires have been cut!]'}
             </LabeledList.Item>
             <LabeledList.Item
-              label="Emergency Access"
+              label="Acesso de Emergência"
               buttons={
                 <Button
                   icon={data.emergency ? 'power-off' : 'times'}
@@ -127,7 +127,7 @@ export const AiAirlock = (props) => {
             />
             <LabeledList.Divider />
             <LabeledList.Item
-              label="Door Bolts"
+              label="Parafusos da porta"
               color="bad"
               buttons={
                 <Button
@@ -142,7 +142,7 @@ export const AiAirlock = (props) => {
               {!data.wires.bolts && '[Wires have been cut!]'}
             </LabeledList.Item>
             <LabeledList.Item
-              label="Door Feedback"
+              label="Feedback da porta"
               color="bad"
               buttons={
                 <Button
@@ -157,7 +157,7 @@ export const AiAirlock = (props) => {
               {!data.wires.feedback && '[Wires have been cut!]'}
             </LabeledList.Item>
             <LabeledList.Item
-              label="Door Force Sensors"
+              label="Sensores de força da porta"
               color="bad"
               buttons={
                 <Button
@@ -172,7 +172,7 @@ export const AiAirlock = (props) => {
               {!data.wires.safe && '[Wires have been cut!]'}
             </LabeledList.Item>
             <LabeledList.Item
-              label="Door Timing Safety"
+              label="Segurança na hora da porta"
               color="bad"
               buttons={
                 <Button
@@ -188,7 +188,7 @@ export const AiAirlock = (props) => {
             </LabeledList.Item>
             <LabeledList.Divider />
             <LabeledList.Item
-              label="Door Control"
+              label="Controle da porta"
               color="bad"
               buttons={
                 <Button

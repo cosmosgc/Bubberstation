@@ -4,20 +4,20 @@ import * as z from 'zod';
 import { smoothMerge } from './type-safety';
 
 describe('smoothMerge', () => {
-  it('merges valid fields from source into target', () => {
+  it('mescla campos válidos da fonte para o alvo', () => {
     const schema = z.object({
       a: z.string(),
       b: z.number(),
     });
 
-    const source = { a: 'hello', b: 'not a number', c: true };
+    const source = { a: 'hello', b: 'Não um número.', c: true };
     const target = { a: 'default', b: 42 };
 
     const result = smoothMerge({ schema, source, target });
     assert.deepEqual(result, { a: 'hello', b: 42 });
   });
 
-  it('returns target if source is empty', () => {
+  it('retorna o alvo se a fonte estiver vazia', () => {
     const schema = z.object({
       a: z.string(),
     });
@@ -28,7 +28,7 @@ describe('smoothMerge', () => {
     assert.deepEqual(result, target);
   });
 
-  it('completely ignores an object if its not in the schema', () => {
+  it('Ignora completamente um objeto se não estiver no esquema.', () => {
     const schema = z.object({
       a: z.string(),
       b: z.number(),

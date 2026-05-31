@@ -42,7 +42,7 @@
 	notify_user()
 
 /datum/component/slide_under_doors/proc/notify_user()
-	to_chat(parent, span_notice("You can slide under doors! <b>Right-click on a door to slide under it.</b>"))
+	to_chat(parent, span_notice("Pode deslizar por baixo das portas!<b>Clique com o botão direito em uma porta para deslizá-la.</b>"))
 
 /datum/component/slide_under_doors/proc/on_user_unarmed_attack(mob/living/user, atom/target, is_adjacent, modifiers)
 	SIGNAL_HANDLER
@@ -60,8 +60,8 @@
 
 	user.visible_message(
 		message = span_danger("\The [user] start[user.p_s()] sliding under \the [door]!"),
-		self_message = span_notice("You start sliding under \the [door]."),
-		blind_message = span_hear("You hear squeezing."),
+		self_message = span_notice("Você começa a deslizar\the [door]."),
+		blind_message = span_hear("Você ouve apertando."),
 	)
 
 	playsound(user, 'sound/effects/footstep/gib_step.ogg', vol = 50, vary = TRUE, ignore_walls = FALSE)
@@ -77,7 +77,7 @@
 	if (user.loc == door)
 		return FALSE
 	if (!isturf(user.loc))
-		user.balloon_alert(user, "not on the ground!")
+		user.balloon_alert(user, "Não no chão!")
 		return FALSE
 	if (!door.IsReachableBy(user))
 		user.balloon_alert(user, "não alcança!")
@@ -86,7 +86,7 @@
 		user.balloon_alert(user, "incapacitado!")
 		return FALSE
 	if (!(door.pass_flags_self & PASSDOORS))
-		door.balloon_alert(user, "impassable!")
+		door.balloon_alert(user, "Intransponível!")
 		return FALSE
 	if (!door.density)
 		door.balloon_alert(user, "já aberto!")
@@ -96,8 +96,8 @@
 /datum/component/slide_under_doors/proc/slide_under_door(mob/living/user, obj/machinery/door/door)
 	user.visible_message(
 		message = span_danger("\The [user] slide[user.p_s()] under \the [door] with a pop!"),
-		self_message = span_notice("You slide under \the [door] with a pop!"),
-		blind_message = span_hear("You hear a pop."),
+		self_message = span_notice("Você desliza para baixo\the [door]Comum pop!"),
+		blind_message = span_hear("Você ouve um estouro."),
 	)
 
 	playsound(user, 'sound/effects/meatslap.ogg', vol = 50, vary = TRUE, ignore_walls = FALSE)
@@ -115,13 +115,13 @@
 	if (visible_turf)
 		visible_turf.visible_message(
 			message = span_danger("Something starts sliding out from under \the [current_door]!"),
-			blind_message = span_hear("You hear squeezing."),
+			blind_message = span_hear("Você ouve apertando."),
 			ignored_mobs = current_user,
 		)
 
 		playsound(visible_turf, 'sound/effects/footstep/gib_step.ogg', vol = 50, vary = TRUE, ignore_walls = FALSE)
 
-	to_chat(current_user, span_notice("You start sliding out from under \the [current_door]."))
+	to_chat(current_user, span_notice("Você começa a deslizar por baixo\the [current_door]."))
 
 	if (!do_after(current_user, slide_out_delay, current_door, timed_action_flags = IGNORE_INCAPACITATED))
 		return
@@ -142,8 +142,8 @@
 
 	user.visible_message(
 		message = span_danger("\The [user] slide[user.p_s()] out from under \the [door] with a pop!"),
-		self_message = span_notice("You slide out from under \the [door] with a pop!"),
-		blind_message = span_hear("You hear a pop."),
+		self_message = span_notice("Você desliza para baixo\the [door]Comum pop!"),
+		blind_message = span_hear("Você ouve um estouro."),
 	)
 
 	playsound(user, 'sound/effects/meatslap.ogg', vol = 50, vary = TRUE, ignore_walls = FALSE)

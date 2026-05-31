@@ -1,30 +1,4 @@
-GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", \
-"tail", \
-"snout", \
-"horns", \
-"ears", \
-"wings", \
-"frills", \
-"spines", \
-"legs", \
-"caps", \
-"moth_antennae", \
-"moth_markings", \
-"fluff", \
-"head_acc", \
-MUTANT_SYNTH_SCREEN, \
-MUTANT_SYNTH_ANTENNA, \
-MUTANT_SYNTH_CHASSIS, \
-"neck_acc", \
-"skrell_hair", \
-"taur", \
-"xenodorsal", \
-"xenohead", \
-"penis", \
-"testicles", \
-"womb", \
-"vagina", \
-"breasts",))
+GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", "tail", "snout", "horns", "ears", "wings", "frills", "spines", "legs", "caps", "moth_antennae", "moth_markings", "fluff", "head_acc", MUTANT_SYNTH_SCREEN, MUTANT_SYNTH_ANTENNA, MUTANT_SYNTH_CHASSIS, "neck_acc", "skrell_hair", "taur", "xenodorsal", "xenohead", "penis", "testicles", "womb", "vagina", "breasts",))
 
 /datum/preferences/proc/migrate_skyrat(list/skyrat_data)
 	if(features["flavor_text"])
@@ -94,7 +68,7 @@ MUTANT_SYNTH_CHASSIS, \
 						write_preference(preference, colors)
 						continue
 
-	to_chat(parent, custom_boxed_message("green_box", span_greentext("Preference migration successful! You may safely interact with the preferences menu.")))
+	to_chat(parent, custom_boxed_message("green_box", span_greentext("Migração preferencial bem sucedida! Você pode interagir com o menu de preferências.")))
 	tgui_prefs_migration = TRUE
 	skyrat_data["tgui_prefs_migration"] = tgui_prefs_migration
 

@@ -1,6 +1,6 @@
 /obj/item/flamethrower
 	name = "flamethrower"
-	desc = "You are a firestarter!"
+	desc = "Você é um incendiário!"
 	icon = 'icons/obj/weapons/flamethrower.dmi'
 	icon_state = "flamethrowerbase"
 	inhand_icon_state = "flamethrower_0"
@@ -43,9 +43,7 @@
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/flamethrower)
 
 	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
+		/datum/element/slapcrafting,		slapcraft_recipes = slapcraft_recipe_list,	)
 
 /obj/item/flamethrower/Destroy()
 	if(weldtool)
@@ -85,7 +83,7 @@
 	if (!ptank)
 		return NONE
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("You can't bring yourself to fire \the [src]! You don't want to risk harming anyone..."))
+		to_chat(user, span_warning("Você não pode se levar ao fogo.\the [src]Você não quer arriscar machucar ninguém..."))
 		log_combat(user, interacting_with, "attempted to flamethrower", src, "with gas mixture: {[print_gas_mixture(ptank.return_analyzable_air())]}, flamethrower: \"[name]\" ([src]), igniter: \"[igniter.name]\", tank: \"[ptank.name]\" and tank distribution pressure: \"[siunit(1000 * ptank.distribute_pressure, unit = "Pa", maxdecimals = 9)]\"" + (lit ? " while lit" : "" + " but failed due to pacifism."))
 		return ITEM_INTERACT_BLOCKING
 	var/turf/target_turf = get_turf(interacting_with)
@@ -117,7 +115,7 @@
 	if(igniter && !lit)
 		tool.play_tool_sound(src)
 		status = !status
-		to_chat(user, span_notice("[igniter] is now [status ? "fixado" : "solto"]!"))
+		to_chat(user, span_notice("[igniter]é agora[status ? "fixado" : "solto"]!"))
 		update_appearance()
 		return TRUE
 
@@ -140,7 +138,7 @@
 				return ITEM_INTERACT_BLOCKING
 			ptank.forceMove(get_turf(src))
 			ptank = tool
-			to_chat(user, span_notice("You swap the plasma tank in [src]!"))
+			to_chat(user, span_notice("Você troca o tanque de plasma[src]!"))
 			return ITEM_INTERACT_SUCCESS
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
@@ -165,23 +163,23 @@
 
 	user.put_in_hands(ptank)
 	ptank = null
-	to_chat(user, span_notice("You remove the plasma tank from [src]!"))
+	to_chat(user, span_notice("Você remove o tanque de plasma de[src]!"))
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/flamethrower/examine(mob/user)
 	. = ..()
 	if(ptank)
-		. += span_notice("\The [src] has \a [ptank] attached. Alt-click to remove it.")
+		. += span_notice("\The [src]Tem.\a [ptank]Apegado. Alt-click para removê-lo.")
 
 /obj/item/flamethrower/proc/toggle_igniter(mob/user)
 	if(!ptank)
-		to_chat(user, span_notice("Attach a plasma tank first!"))
+		to_chat(user, span_notice("Coloque um tanque de plasma primeiro!"))
 		return
 	if(!status)
-		to_chat(user, span_notice("Secure the igniter first!"))
+		to_chat(user, span_notice("Segurem a ignição primeiro!"))
 		return
-	to_chat(user, span_notice("You [lit ? "extinguish" : "ignite"] [src]!"))
+	to_chat(user, span_notice("Você.[lit ? "extinguish" : "ignite"] [src]!"))
 	lit = !lit
 	if(lit)
 		playsound(loc, acti_sound, 50, TRUE)
@@ -239,14 +237,7 @@
 
 /obj/item/flamethrower/Initialize(mapload)
 	. = ..()
-	AddComponent(\
-	/datum/component/bullet_intercepting,\
-		block_chance = 15,\
-		on_intercepted = CALLBACK(src, PROC_REF(intercepted_bullet_reaction)),\
-		active_slots = ITEM_SLOT_HANDS,\
-		block_type = list(BULLET,LASER),\
-		is_blocking_check = CALLBACK(src, PROC_REF(check_tank)),\
-	)
+	AddComponent(	/datum/component/bullet_intercepting,		block_chance = 15,		on_intercepted = CALLBACK(src, PROC_REF(intercepted_bullet_reaction)),		active_slots = ITEM_SLOT_HANDS,		block_type = list(BULLET,LASER),		is_blocking_check = CALLBACK(src, PROC_REF(check_tank)),	)
 	if(create_full)
 		if(!weldtool)
 			weldtool = new /obj/item/weldingtool(src)
@@ -267,7 +258,7 @@
 	create_with_tank = TRUE
 
 /obj/item/flamethrower/proc/intercepted_bullet_reaction(mob/living/holder, obj/projectile/bullet)
-	holder.visible_message(span_danger("\The [bullet] hits the fuel tank on [holder]'s [name], rupturing it! What a shot!"))
+	holder.visible_message(span_danger("\The [bullet]Atinge o tanque de combustível.[holder]'s[name]Estragando! Que tira!"))
 	var/turf/target_turf = get_turf(holder)
 	holder.log_message("held a flamethrower tank detonated by a projectile ([bullet])", LOG_GAME)
 	igniter.ignite_turf(src,target_turf, release_amount = 100)

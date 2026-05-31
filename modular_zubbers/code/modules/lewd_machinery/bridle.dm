@@ -1,7 +1,7 @@
 
 /obj/item/clothing/mask/bridle
 	name = "bridle"
-	desc = "A Sunny Stables design of a leather horse bridle, complete with blinders and a bit. It's made of several leather straps and metal fittings. You can tighten or loosen the straps to make sure that the blinders and the bit stay in place."
+	desc = "Um projeto Sunny Stables de um freio de couro de cavalo, completo com ofuscantes e um pouco. É feito de várias tiras de couro e acessórios de metal. Você pode apertar ou afrouxar as alças para ter certeza de que as cegas e a parte ficam no lugar."
 	icon_state = "bridle"
 	inhand_icon_state = "sechailer"
 	icon = 'modular_zubbers/icons/obj/clothing/mask/mask.dmi'
@@ -63,9 +63,9 @@
 		return
 	straps_locked = !straps_locked
 	if(straps_locked)
-		to_chat(user, span_notice("You secure the bridle's straps."))
+		to_chat(user, span_notice("Você segura as correias do freio."))
 	else
-		to_chat(user, span_notice("You loosen the bridle's straps."))
+		to_chat(user, span_notice("Você solta as correias do freio."))
 
 /obj/item/clothing/mask/bridle/proc/get_wearer()
 	var/mob/living/carbon/wearer = istype(loc, /mob/living/carbon) ? loc : null
@@ -82,15 +82,15 @@
 	if(!user)
 		return
 	if(should_show_user_message(user))
-		to_chat(user, span_notice("The straps are too secure to adjust."))
+		to_chat(user, span_notice("As alças são muito seguras para ajustar."))
 	else
-		to_chat(user, span_warning("The straps are too secure!"))
+		to_chat(user, span_warning("As correias são muito seguras!"))
 
 /obj/item/clothing/mask/bridle/examine(mob/user)
 	. = ..()
 	var/blinders_state_text = blinders_enabled ? "down" : "up"
 	var/gag_state_text = gag_enabled ? "set" : "unset"
-	. += span_notice("The blinders are [blinders_state_text], and the bit is [gag_state_text].")
+	. += span_notice("Os cegos são[blinders_state_text], e a parte é[gag_state_text].")
 
 /obj/item/clothing/mask/bridle/proc/update_bridle_state(mob/user, notify_wearer = TRUE)
 	var/mob/living/carbon/wearer = get_wearer()
@@ -115,11 +115,11 @@
 					blinders_effect = "restoring your sight"
 					blinders_self = "raise, restoring your sight"
 				if(user && user != wearer)
-					to_chat(wearer, span_userdanger("[user] [blinders_action] the bridle's blinders, [blinders_effect]."))
+					to_chat(wearer, span_userdanger("[user] [blinders_action]O freio é cego,[blinders_effect]."))
 				else if(user)
-					to_chat(wearer, span_notice("You [blinders_action_self] the bridle's blinders, [blinders_effect]."))
+					to_chat(wearer, span_notice("Você.[blinders_action_self]O freio é cego,[blinders_effect]."))
 				else
-					to_chat(wearer, span_notice("The bridle's blinders [blinders_self]."))
+					to_chat(wearer, span_notice("O freio é cego[blinders_self]."))
 			last_blinders_enabled = blinders_enabled
 		if(gag_enabled != last_gag_enabled)
 			if(notify_wearer)
@@ -138,11 +138,11 @@
 					gag_effect = "letting you speak freely"
 					gag_self = "loosens, allowing you to speak freely"
 				if(user && user != wearer)
-					to_chat(wearer, span_userdanger("[user] [gag_action] the bridle's bit, [gag_effect]."))
+					to_chat(wearer, span_userdanger("[user] [gag_action]A parte do freio,[gag_effect]."))
 				else if(user)
-					to_chat(wearer, span_notice("You [gag_action_self] the bridle's bit, [gag_effect]."))
+					to_chat(wearer, span_notice("Você.[gag_action_self]A parte do freio,[gag_effect]."))
 				else
-					to_chat(wearer, span_notice("The bridle's bit [gag_self]."))
+					to_chat(wearer, span_notice("O freio é pouco[gag_self]."))
 			last_gag_enabled = gag_enabled
 		wearer.update_tint()
 		wearer.update_worn_mask()
@@ -162,7 +162,7 @@
 			blinders_action = "lower"
 		else
 			blinders_action = "raise"
-		to_chat(user, span_notice("You [blinders_action] the bridle's blinders."))
+		to_chat(user, span_notice("Você.[blinders_action]O freio é cego."))
 	update_bridle_state(user)
 
 /obj/item/clothing/mask/bridle/proc/toggle_gag(mob/user)
@@ -176,7 +176,7 @@
 			gag_action = "secure"
 		else
 			gag_action = "loosen"
-		to_chat(user, span_notice("You [gag_action] the bridle's bit."))
+		to_chat(user, span_notice("Você.[gag_action]O freio é um pouco."))
 	update_bridle_state(user)
 
 /obj/item/clothing/mask/bridle/proc/cycle_mode(mob/user)
@@ -211,18 +211,18 @@
 		else
 			balloon_state = "none"
 		if(should_show_user_message(user))
-			balloon_alert(user, "mode: [balloon_state]")
+			balloon_alert(user, "Modo:[balloon_state]")
 	if(should_show_user_message(user))
 		var/state_text
 		if(blinders_enabled && gag_enabled)
-			state_text = "blinders and bit"
+			state_text = "Cegos e bit"
 		else if(blinders_enabled)
 			state_text = "blinders"
 		else if(gag_enabled)
 			state_text = "bit"
 		else
 			state_text = "none"
-		to_chat(user, span_notice("Bridle set to: [state_text]."))
+		to_chat(user, span_notice("Bridle definido para:[state_text]."))
 	update_bridle_state(user, notify_wearer)
 
 /obj/item/clothing/mask/bridle/proc/strip_adjust(mob/living/carbon/wearer, mob/living/stripper)
@@ -260,7 +260,7 @@
 	if(old_gag != new_gag)
 		parts += (new_gag ? "set the bridle's bit" : "loosen the bridle's bit")
 	var/action_text = parts.len ? jointext(parts, " and ") : "adjust the bridle"
-	to_chat(stripper, span_notice("You [action_text]."))
+	to_chat(stripper, span_notice("Você.[action_text]."))
 	set_mode(new_blinders, new_gag, stripper, TRUE)
 
 /datum/strippable_item/mob_item_slot/mask/get_alternate_actions(atom/source, mob/user, obj/item/item)
@@ -323,7 +323,7 @@
 
 /datum/action/item_action/bridle_toggle_blinders
 	name = "Toggle blinders"
-	desc = "Adjust the bridle blinders."
+	desc = "Justo os obturadores de freio."
 
 /datum/action/item_action/bridle_toggle_blinders/Trigger(trigger_flags)
 	if(!..())
@@ -334,7 +334,7 @@
 
 /datum/action/item_action/bridle_toggle_gag
 	name = "Toggle gag"
-	desc = "Adjust the bridle bit."
+	desc = "Ajuste o freio."
 
 /datum/action/item_action/bridle_toggle_gag/Trigger(trigger_flags)
 	if(!..())

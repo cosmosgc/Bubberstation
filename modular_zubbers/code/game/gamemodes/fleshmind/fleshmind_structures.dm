@@ -7,7 +7,7 @@
  */
 /obj/structure/fleshmind/structure
 	name = "this shouldn't be here"
-	desc = "report me to coders"
+	desc = "Informe-me aos codificadores."
 	icon = 'modular_zubbers/icons/fleshmind/fleshmind_machines.dmi'
 	icon_state = "infected_machine"
 	base_icon_state = "infected_machine"
@@ -165,7 +165,7 @@
  */
 /obj/structure/fleshmind/structure/wireweed_wall
 	name = "wireweed wall"
-	desc = "A wall made of wireweed."
+	desc = "Uma Parede Feita de Algas."
 	icon = 'modular_zubbers/icons/fleshmind/fleshmind_structures.dmi'
 	icon_state = "wireweed_wall"
 	base_icon_state = "wireweed_wall"
@@ -194,7 +194,7 @@
  */
 /obj/structure/fleshmind/structure/wireweed_door
 	name = "wireweed door"
-	desc = "A door made of wireweed."
+	desc = "Uma porta feita de algas."
 	icon = 'modular_zubbers/icons/fleshmind/fleshmind_structures.dmi'
 	icon_state = "door"
 	base_icon_state = "door"
@@ -219,7 +219,7 @@
 	if(!user.can_interact_with(src))
 		return
 	toggle_door()
-	to_chat(user, span_notice("You [door_state ? "close" : "open"] [src]!"))
+	to_chat(user, span_notice("Você.[door_state ? "close" : "open"] [src]!"))
 
 /obj/structure/fleshmind/structure/wireweed_door/Bumped(atom/movable/bumped_atom)
 	. = ..()
@@ -258,7 +258,7 @@
  */
 /obj/structure/fleshmind/structure/core
 	name = "\improper UNASSIGNED Processor Unit"
-	desc = "This monsterous machine is definitely watching you."
+	desc = "Essa máquina monstruoso está te observando."
 	icon = 'modular_zubbers/icons/fleshmind/fleshmind_machines.dmi'
 	icon_state = "core"
 	base_icon_state = "core"
@@ -362,7 +362,7 @@
 
 	if(our_controller)
 		if(isliving(user))
-			. += span_notice("Your GPS tracks to this thing!")
+			. += span_notice("Seu GPS está nessa coisa!")
 		if(isobserver(user))
 			if(COOLDOWN_FINISHED(our_controller, level_up_cooldown) || level_calculation > 0)
 				. += "Level: [our_controller.level] | Progress to Next Level: [level_calculation]"
@@ -386,7 +386,7 @@
 		mecha_thing.take_damage(attack_damage, attack_damage_type, MELEE, 0, get_dir(mecha_thing, src))
 		has_attacked = TRUE
 	if(has_attacked)
-		thing.visible_message(span_warning("\The [src] strikes [thing]!"), span_userdanger("\The [src] strikes you!"))
+		thing.visible_message(span_warning("\The [src]Strikes[thing]!"), span_userdanger("\The [src]Te golpeia!"))
 		playsound(loc, 'sound/effects/blob/attackblob.ogg', 100, TRUE)
 		do_attack_animation(thing, ATTACK_EFFECT_PUNCH)
 		return TRUE
@@ -453,7 +453,7 @@
  */
 /obj/structure/fleshmind/structure/babbler
 	name = "\improper Babbler"
-	desc = "A column-like structure with lights."
+	desc = "Uma estrutura tipo coluna com luzes."
 	icon = 'modular_zubbers/icons/fleshmind/fleshmind_machines.dmi'
 	icon_state = "antenna"
 	base_icon_state = "antenna"
@@ -536,7 +536,7 @@
  */
 /obj/structure/fleshmind/structure/screamer
 	name = "\improper Tormented Head"
-	desc = "A head impaled on a metal tendril. Still twitching, still living, still screaming."
+	desc = "Uma cabeça empalada em um tentáculo de metal. Ainda se contorcendo, vivendo, gritando."
 	icon = 'modular_zubbers/icons/fleshmind/fleshmind_machines.dmi'
 	icon_state = "head"
 	base_icon_state = "head"
@@ -559,7 +559,7 @@
 			continue
 		iterating_mob.Knockdown(100)
 		iterating_mob.apply_status_effect(/datum/status_effect/jitter, 20 SECONDS)
-		to_chat(iterating_mob, span_userdanger("A terrible howl tears through your mind, the voice senseless, soulless."))
+		to_chat(iterating_mob, span_userdanger("Um uivo terrível atravessa sua mente, a voz sem sentido, sem alma."))
 
 /**
  * Whisperer
@@ -568,7 +568,7 @@
  */
 /obj/structure/fleshmind/structure/whisperer
 	name = "\improper Whisperer"
-	desc = "A small pulsating orb with no apparent purpose, it emits a slight hum."
+	desc = "Uma pequena esfera pulsante sem propósito aparente, emite um leve zumbido."
 	icon = 'modular_zubbers/icons/fleshmind/fleshmind_machines.dmi'
 	icon_state = "orb"
 	base_icon_state = "orb"
@@ -623,7 +623,7 @@
  */
 /obj/structure/fleshmind/structure/modulator
 	name = "\improper Psi-Modulator"
-	desc = "A strange pyramid shaped machine that eminates a soft hum and glow. Your head hurts just by looking at it."
+	desc = "Uma estranha máquina em forma de pirâmide que emina um suave zumbido e brilho. Sua cabeça dói só de olhar."
 	icon = 'modular_zubbers/icons/fleshmind/fleshmind_machines.dmi'
 	icon_state = "psy"
 	max_integrity = 100
@@ -639,7 +639,7 @@
 	if(!triggered_mob)
 		return
 	triggered_mob.adjust_hallucinations(10 SECONDS)
-	to_chat(triggered_mob, span_notice("You feel your brain tingle."))
+	to_chat(triggered_mob, span_notice("Sente seu cérebro formigando."))
 
 /**
  * The Assembler
@@ -648,7 +648,7 @@
  */
 /obj/structure/fleshmind/structure/assembler
 	name = "\improper Assembler"
-	desc = "This cylindrical machine whirrs and whispers, it has a small opening in the middle."
+	desc = "Esta máquina cilíndrica toca e sussurra, tem uma pequena abertura no meio."
 	icon = 'modular_zubbers/icons/fleshmind/fleshmind_machines.dmi'
 	icon_state = "spawner"
 	base_icon_state = "spawner"
@@ -714,7 +714,7 @@
 
 	RegisterSignal(spawned_mob, COMSIG_LIVING_DEATH, PROC_REF(mob_death))
 
-	visible_message(span_danger("[spawned_mob] emerges from [src]."))
+	visible_message(span_danger("[spawned_mob]emerge de[src]."))
 
 /obj/structure/fleshmind/structure/assembler/proc/mob_death(mob/living/dead_guy, gibbed)
 	SIGNAL_HANDLER
@@ -729,7 +729,7 @@
  */
 /obj/structure/fleshmind/structure/turret
 	name = "\improper Spiker"
-	desc = "A strange pod looking machine that twitches to your arrival."
+	desc = "Uma estranha máquina que se contorce até sua chegada."
 	icon_state = "turret"
 	base_icon_state = "turret"
 	activation_range = DEFAULT_VIEW_RANGE

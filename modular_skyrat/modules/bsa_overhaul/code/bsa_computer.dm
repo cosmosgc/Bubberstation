@@ -76,8 +76,8 @@
 	if(obj_flags & EMAGGED)
 		return FALSE
 	obj_flags |= EMAGGED
-	balloon_alert(user, "rigged to explode")
-	to_chat(user, span_warning("You emag [src] and hear the focusing crystal short out. You get the feeling it wouldn't be wise to stand near [src] when the BSA fires..."))
+	balloon_alert(user, "Armado para explodir.")
+	to_chat(user, span_warning("Você emagrece[src]e ouvir o cristal de foco curto para fora. Você tem a sensação que não seria sábio ficar perto[src]Quanto uma dispara BSA..."))
 	return TRUE
 
 /**

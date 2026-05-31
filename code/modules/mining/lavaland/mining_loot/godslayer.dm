@@ -1,7 +1,7 @@
 /obj/item/clothing/suit/hooded/cloak/godslayer
 	name = "godslayer armour"
 	icon_state = "godslayer"
-	desc = "A suit of armour fashioned from the remnants of a knight's armor, and parts of a wendigo."
+	desc = "Uma armadura feita dos restos da armadura de um cavaleiro, e partes de um Wendigo."
 	armor_type = /datum/armor/cloak_godslayer
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/godslayer
@@ -57,7 +57,7 @@
 	if(new_stat > CONSCIOUS && new_stat < DEAD && COOLDOWN_FINISHED(src, effect_cooldown))
 		COOLDOWN_START(src, effect_cooldown, effect_cooldown_time) //This needs to happen first, otherwise there's an infinite loop
 		user.heal_ordered_damage(heal_amount, damage_heal_order)
-		user.visible_message(span_notice("[user] suddenly revives, as their armor swirls with demonic energy!"), span_notice("You suddenly feel invigorated!"))
+		user.visible_message(span_notice("[user]Reanima de repente, como sua armadura gira com energia demoníaca!"), span_notice("Você de repente se sente revigorado!"))
 		playsound(user.loc, 'sound/effects/magic/clockwork/ratvar_attack.ogg', 50)
 
 /obj/item/clothing/head/hooded/cloakhood/godslayer
@@ -65,7 +65,7 @@
 	icon = 'icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	icon_state = "godslayer"
-	desc = "The horns and skull of a wendigo, held together by the remaining icy energy of a demonic miner."
+	desc = "Os chifres e o crânio de um Wendigo, mantidos juntos pela restante energia gelada de um mineiro demoníaco."
 	armor_type = /datum/armor/cloak_godslayer
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL | SNUG_FIT
 	cold_protection = HEAD

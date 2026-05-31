@@ -1,7 +1,7 @@
 //normal ball mittens
 /obj/item/clothing/gloves/ball_mittens
 	name = "ball mittens"
-	desc = "A nice, comfortable pair of inflatable ball gloves."
+	desc = "Um belo e confortável par de luvas infláveis."
 	icon_state = "ballmittens"
 	inhand_icon_state = null
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_gloves.dmi'
@@ -18,7 +18,7 @@
 	var/obj/item/clothing/gloves/ball_mittens_reinforced/reinforced_muffs = new
 	remove_item_from_storage(user)
 	user.put_in_hands(reinforced_muffs)
-	to_chat(user, span_notice("You reinforced the belts on [src] with [attacking_item]."))
+	to_chat(user, span_notice("Você reforçou os cintos.[src]com[attacking_item]."))
 	qdel(attacking_item)
 	qdel(src)
 	return TRUE
@@ -26,7 +26,7 @@
 //ball_mittens reinforced
 /obj/item/clothing/gloves/ball_mittens_reinforced //We getting this item by using handcuffs on normal ball mittens
 	name = "reinforced ball mittens"
-	desc = "Do not put these on, it's REALLY hard to take them off! But they look so comfortable..."
+	desc = "Não coloque isso, é muito difícil tirá-los! Mas eles parecem tão confortáveis..."
 	icon_state = "ballmittens"
 	inhand_icon_state = null
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_gloves.dmi'
@@ -37,7 +37,7 @@
 //latex gloves
 /obj/item/clothing/gloves/latex_gloves
 	name = "latex gloves"
-	desc = "Awesome looking gloves that are satisfying to the touch."
+	desc = "Luvas incríveis que são satisfatórias ao toque."
 	icon_state = "latexgloves"
 	inhand_icon_state = "latex_gloves"
 	w_class = WEIGHT_CLASS_SMALL

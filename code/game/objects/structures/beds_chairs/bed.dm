@@ -9,7 +9,7 @@
 /// Beds
 /obj/structure/bed
 	name = "bed"
-	desc = "This is used to lie in, sleep in or strap on."
+	desc = "Isto é usado para deitar, dormir ou amarrar."
 	icon_state = "bed"
 	icon = 'icons/obj/bed.dmi'
 	anchored = TRUE
@@ -45,14 +45,14 @@
 
 	if(being_buckled == buckler)
 		being_buckled.visible_message(
-			span_notice("[buckler] lays down on [src]."),
-			span_notice("You lay down on [src]."),
+			span_notice("[buckler]Deite-se em[src]."),
+			span_notice("Você se deita[src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_buckled.visible_message(
-			span_notice("[buckler] lays [being_buckled] down on [src]."),
-			span_notice("[buckler] lays you down on [src]."),
+			span_notice("[buckler]Deitados[being_buckled]Para baixo.[src]."),
+			span_notice("[buckler]Deita você em cima[src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -62,21 +62,21 @@
 
 	if(being_unbuckled == unbuckler)
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler] gets up from [src]."),
-			span_notice("You get up from [src]."),
+			span_notice("[unbuckler]levanta-se de[src]."),
+			span_notice("Você se levanta de[src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler] pulls [being_unbuckled] up from [src]."),
-			span_notice("[unbuckler] pulls you up from [src]."),
+			span_notice("[unbuckler]puxa[being_unbuckled]Para cima de[src]."),
+			span_notice("[unbuckler]te puxa de[src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
 /obj/structure/bed/examine(mob/user)
 	. = ..()
 	if (can_deconstruct)
-		. += span_notice("It's held together by a couple of <b>bolts</b>.")
+		. += span_notice("É mantido unido por alguns<b>parafusos</b>.")
 
 /obj/structure/bed/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(held_item)
@@ -116,7 +116,7 @@
 /obj/structure/bed/medical
 	name = "medical bed"
 	icon = 'icons/obj/medical/medical_bed.dmi'
-	desc = "A medical bed with wheels for assisted patient movement or medbay racing tournaments."
+	desc = "Uma cama médica com rodas para o movimento do paciente assistido ou torneios de corrida."
 	icon_state = "med_down"
 	base_icon_state = "med"
 	anchored = FALSE
@@ -136,7 +136,7 @@
 
 /obj/structure/bed/medical/emergency
 	name = "emergency medical bed"
-	desc = "A compact medical bed. This emergency version can be folded and carried for quick transport."
+	desc = "Uma cama médica compacta. Esta versão de emergência pode ser dobrada e transportada para transporte rápido."
 	icon_state = "emerg_down"
 	base_icon_state = "emerg"
 	foldable_type = /obj/item/emergency_bed
@@ -158,19 +158,19 @@
 /obj/structure/bed/medical/examine(mob/user)
 	. = ..()
 	if(anchored)
-		. += span_notice("The brakes are applied. They can be released with an Alt-click.")
+		. += span_notice("Os freios são aplicados. Eles podem ser liberados com um Alt-click.")
 	else
-		. += span_notice("The brakes can be applied with an Alt-click.")
+		. += span_notice("Os freios podem ser aplicados com um Alt-click.")
 
 	if(!isnull(foldable_type))
-		. += span_notice("You can fold it up with a Right-click.")
+		. += span_notice("Você pode dobrar com um botão direito.")
 
 /obj/structure/bed/medical/click_alt(mob/user)
 	if(has_buckled_mobs() && (user in buckled_mobs))
 		return CLICK_ACTION_BLOCKING
 
 	anchored = !anchored
-	balloon_alert(user, "brakes [anchored ? "applied" : "released"]")
+	balloon_alert(user, "freios[anchored ? "applied" : "released"]")
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
 
@@ -213,19 +213,19 @@
 	if(istype(item, /obj/item/emergency_bed/silicon))
 		var/obj/item/emergency_bed/silicon/silicon_bed = item
 		if(silicon_bed.loaded)
-			to_chat(user, span_warning("You already have a medical bed docked!"))
+			to_chat(user, span_warning("Você já tem uma cama médica atracada!"))
 			return
 
 		if(has_buckled_mobs())
 			if(buckled_mobs.len > 1)
 				unbuckle_all_mobs()
-				user.visible_message(span_notice("[user] unbuckles all creatures from [src]."))
+				user.visible_message(span_notice("[user]Solta todas as criaturas de[src]."))
 			else
 				user_unbuckle_mob(buckled_mobs[1],user)
 		else
 			silicon_bed.loaded = src
 			forceMove(silicon_bed)
-			user.visible_message(span_notice("[user] collects [src]."), span_notice("You collect [src]."))
+			user.visible_message(span_notice("[user]Coleta[src]."), span_notice("Você coleciona[src]."))
 		return TRUE
 	else
 		return ..()
@@ -239,7 +239,7 @@
 	if(has_buckled_mobs())
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-	user.visible_message(span_notice("[user] collapses [src]."), span_notice("You collapse [src]."))
+	user.visible_message(span_notice("[user]colapsos[src]."), span_notice("Você colapsa.[src]."))
 	var/obj/structure/bed/medical/emergency/folding_bed = new foldable_type(get_turf(src))
 	user.put_in_hands(folding_bed)
 	qdel(src)
@@ -247,7 +247,7 @@
 
 /obj/item/emergency_bed
 	name = "roller bed"
-	desc = "A collapsed medical bed that can be carried around."
+	desc = "Um leito médico em colapso que pode ser carregado."
 	icon = 'icons/obj/medical/medical_bed.dmi'
 	icon_state = "emerg_folded"
 	inhand_icon_state = "emergencybed"
@@ -259,10 +259,10 @@
 	if(istype(item, /obj/item/emergency_bed/silicon))
 		var/obj/item/emergency_bed/silicon/silicon_bed = item
 		if(silicon_bed.loaded)
-			to_chat(user, span_warning("[silicon_bed] already has a roller bed loaded!"))
+			to_chat(user, span_warning("[silicon_bed]Já tem uma cama carregada!"))
 			return
 
-		user.visible_message(span_notice("[user] loads [src]."), span_notice("You load [src] into [silicon_bed]."))
+		user.visible_message(span_notice("[user]Cargas[src]."), span_notice("Você carrega.[src]em[silicon_bed]."))
 		silicon_bed.loaded = new/obj/structure/bed/medical/emergency(silicon_bed)
 		qdel(src) //"Load"
 		return
@@ -287,7 +287,7 @@
 
 /obj/item/emergency_bed/silicon // ROLLER ROBO DA!
 	name = "emergency bed dock"
-	desc = "A collapsed medical bed that can be ejected for emergency use. Must be collected or replaced after use."
+	desc = "Um leito médico em colapso que pode ser ejetado para uso de emergência. Deve ser coletado ou substituído após o uso."
 	var/obj/structure/bed/medical/emergency/loaded = null
 
 /obj/item/emergency_bed/silicon/Initialize(mapload)
@@ -301,16 +301,16 @@
 /obj/item/emergency_bed/silicon/deploy_bed(mob/user, atom/location)
 	if(loaded)
 		loaded.forceMove(location)
-		user.visible_message(span_notice("[user] deploys [loaded]."), span_notice("You deploy [loaded]."))
+		user.visible_message(span_notice("[user]implante[loaded]."), span_notice("Você vai embora.[loaded]."))
 		loaded = null
 	else
-		to_chat(user, span_warning("The dock is empty!"))
+		to_chat(user, span_warning("A doca está vazia!"))
 
 /// Dog bed
 /obj/structure/bed/dogbed
 	name = "dog bed"
 	icon_state = "dogbed"
-	desc = "A comfy-looking dog bed. You can even strap your pet in, in case the gravity turns off."
+	desc = "Uma cama de cachorro confortável. Pode até amarrar seu animal de estimação, caso a gravidade desligue."
 	anchored = FALSE
 	build_stack_type = /obj/item/stack/sheet/mineral/wood
 	build_stack_amount = 10
@@ -319,36 +319,36 @@
 	var/owned = FALSE
 
 /obj/structure/bed/dogbed/ian
-	desc = "Ian's bed! Looks comfy."
+	desc = "A cama do Ian! Parece confortável."
 	name = "Ian's bed"
 	anchored = TRUE
 
 /obj/structure/bed/dogbed/cayenne
-	desc = "Seems kind of... fishy."
+	desc = "Parece meio suspeito."
 	name = "Cayenne's bed"
 	anchored = TRUE
 
 /obj/structure/bed/dogbed/misha
-	desc = "There is fur all over it, and some blood..."
+	desc = "Tem pêlo por toda parte, e sangue..."
 	name = "Misha's bed"
 	anchored = TRUE
 
 /obj/structure/bed/dogbed/lia
-	desc = "Seems kind of... fishy."
+	desc = "Parece meio suspeito."
 	name = "Lia's bed"
 	anchored = TRUE
 
 /obj/structure/bed/dogbed/renault
-	desc = "Renault's bed! Looks comfy. A foxy person needs a foxy pet."
+	desc = "Cama de Renault! Parece confortável. Uma raposa precisa de um animal de estimação."
 	name = "Renault's bed"
 	anchored = TRUE
 
 /obj/structure/bed/dogbed/mcgriff
-	desc = "McGriff's bed, because even crimefighters sometimes need a nap."
+	desc = "A cama do McGriff, porque até os combatentes do crime precisam de uma soneca."
 	name = "McGriff's bed"
 
 /obj/structure/bed/dogbed/runtime
-	desc = "A comfy-looking cat bed. You can even strap your pet in, in case the gravity turns off."
+	desc = "Uma cama de gato confortável. Pode até amarrar seu animal de estimação, caso a gravidade desligue."
 	name = "Runtime's bed"
 	anchored = TRUE
 
@@ -359,7 +359,7 @@
 
 	owned = TRUE
 	name = "[furball]'s bed"
-	desc = "[furball]'s bed! Looks comfy."
+	desc = "[furball]A cama! Parece confortável."
 	return TRUE // Let any callers know that this bed is ours now
 
 /obj/structure/bed/dogbed/buckle_mob(mob/living/furball, force, check_loc)
@@ -368,7 +368,7 @@
 
 /obj/structure/bed/maint
 	name = "dirty mattress"
-	desc = "An old grubby mattress. You try to not think about what could be the cause of those stains."
+	desc = "Um velho colchão sujo. Você tenta não pensar sobre qual poderia ser a causa dessas manchas."
 	icon_state = "dirty_mattress"
 	elevation = 7
 
@@ -379,7 +379,7 @@
 // Double Beds, for luxurious sleeping, i.e. the captain and maybe heads- if people use this for ERP, send them to skyrat
 /obj/structure/bed/double
 	name = "double bed"
-	desc = "A luxurious double bed, for those too important for small dreams."
+	desc = "Uma luxuosa cama de casal, para aqueles muito importantes para sonhos pequenos."
 	icon_state = "bed_double"
 	build_stack_amount = 4
 	max_buckled_mobs = 2

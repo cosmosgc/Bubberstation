@@ -8,14 +8,14 @@
 //We don't want these to hide - they're helpful!
 /datum/reagent/impurity/healing
 	name = "Healing Impure Reagent"
-	description = "Not all impure reagents are bad! Sometimes you might want to specifically make these!"
+	description = "Nem todos os reagentes impuros são ruins! Às vezes você pode querer especificamente fazer isso!"
 	chemical_flags = NONE
 	addiction_types = list(/datum/addiction/medicine = 350)
 	liver_damage = 0
 
 /datum/reagent/inverse/healing
 	name = "Healing Inverse Reagent"
-	description = "Not all impure reagents are bad! Sometimes you might want to specifically make these!"
+	description = "Nem todos os reagentes impuros são ruins! Às vezes você pode querer especificamente fazer isso!"
 	chemical_flags = NONE
 	addiction_types = list(/datum/addiction/medicine = 400)
 	tox_damage = 0
@@ -27,7 +27,7 @@
 //Catch all failed reaction for medicines - supposed to be non punishing
 /datum/reagent/impurity/healing/medicine_failure
 	name = "Insolvent Medicinal Precipitate"
-	description = "A viscous mess of various medicines. Will heal a damage type at random"
+	description = "Uma bagunça viscosa de vários medicamentos. Vai curar um tipo de dano ao acaso."
 	metabolization_rate = 2.5 * REAGENTS_METABOLISM
 	addiction_types = list(/datum/addiction/medicine = 400)
 	ph = 11
@@ -56,7 +56,7 @@
 //Inverse:
 /datum/reagent/inverse/helgrasp
 	name = "Helgrasp"
-	description = "This rare and forbidden concoction is thought to bring you closer to the grasp of the Norse goddess Hel."
+	description = "Pensa-se que esta rara e proibida mistura o aproxima do alcance da deusa nórdica Hel."
 	metabolization_rate = 2.5 * REAGENTS_METABOLISM
 	tox_damage = 0.25
 	ph = 14
@@ -68,7 +68,7 @@
 //Warns you about the impenting hands
 /datum/reagent/inverse/helgrasp/on_mob_add(mob/living/affected_mob, amount)
 	. = ..()
-	to_chat(affected_mob, span_hierophant("You hear laughter as malevolent hands apparate before you, eager to drag you down to hell...! Look out!"))
+	to_chat(affected_mob, span_hierophant("Você ouve risos como mãos malévolas se aplaudem diante de você, ansiosos para te arrastar para o inferno...! Cuidado!"))
 	playsound(affected_mob.loc, 'sound/effects/chemistry/ahaha.ogg', 80, TRUE, -1) //Very obvious tell so people can be ready
 
 //Sends hands after you for your hubris
@@ -115,7 +115,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/helgrasp/heretic
 	name = "Grasp of the Mansus"
-	description = "The Hand of the Mansus is at your neck."
+	description = "A Mão do Mansus está em seu pescoço."
 	metabolization_rate = 2.5 * REAGENTS_METABOLISM
 	tox_damage = 0
 
@@ -124,7 +124,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 //Simply reduces your alcohol tolerance, kinda simular to prohol
 /datum/reagent/inverse/libitoil
 	name = "Libitoil"
-	description = "Temporarily interferes with a patient's ability to process alcohol."
+	description = "Interfere temporariamente na capacidade de um paciente processar álcool."
 	chemical_flags = NONE
 	ph = 13.5
 	addiction_types = list(/datum/addiction/medicine = 300)
@@ -172,7 +172,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 //probital
 /datum/reagent/impurity/probital_failed//Basically crashed out failed metafactor
 	name = "Metabolic Inhibition Factor"
-	description = "This enzyme catalyzes crashes the conversion of nutritious food into healing peptides."
+	description = "Esta enzima catalisa a conversão de alimentos nutritivos em peptídeos curativos."
 	metabolization_rate = 0.0625  * REAGENTS_METABOLISM //slow metabolism rate so the patient can self heal with food even after the troph has metabolized away for amazing reagent efficency.
 	color = "#b3ff00"
 	overdose_threshold = 10
@@ -187,8 +187,8 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/peptides_failed
 	name = "Prion Peptides"
-	taste_description = "spearmint frosting"
-	description = "These inhibitory peptides drains nutrition and causes brain damage in the patient!"
+	taste_description = "glacê de hortelã"
+	description = "Esses peptídeos inibitórios drenam a nutrição e causam danos cerebrais no paciente!"
 	ph = 2.1
 
 /datum/reagent/peptides_failed/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
@@ -201,7 +201,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 //inverse
 /datum/reagent/inverse/lentslurri //Okay maybe I should outsource names for these
 	name = "Lentslurri"//This is a really bad name please replace
-	description = "A highly addictive muscle relaxant that is made when Lenturi reactions go wrong, this will cause the patient to move slowly."
+	description = "Um relaxante muscular altamente viciante que é feito quando as reações de Lenturi dão errado, isso fará o paciente se mover lentamente."
 	addiction_types = list(/datum/addiction/medicine = 150)
 	tox_damage = 0
 
@@ -217,7 +217,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 //inverse
 /datum/reagent/inverse/aiuri
 	name = "Aivime"
-	description = "This reagent is known to interfere with the eyesight of a patient."
+	description = "Este reagente é conhecido por interferir na visão de um paciente."
 	ph = 3.1
 	addiction_types = list(/datum/addiction/medicine = 800)
 	///The amount of blur applied per second. Given the average on_life interval is 2 seconds, that'd be 2.5s.
@@ -234,13 +234,13 @@ Basically, we fill the time between now and 2s from now with hands based off the
 //inverse
 /datum/reagent/inverse/hercuri
 	name = "Herignis"
-	description = "This reagent causes a dramatic raise in the patient's body temperature. Overdosing makes the effect even stronger and causes severe liver damage."
+	description = "Este reagente causa um aumento dramático na temperatura corporal do paciente. A overdose torna o efeito ainda mais forte e causa sérios danos no fígado."
 	ph = 0.8
 	tox_damage = 0
 	color = "#ff1818"
 	overdose_threshold = 25
 	reagent_weight = 0.6
-	taste_description = "heat! Ouch!"
+	taste_description = "Calor! Ouch!"
 	addiction_types = list(/datum/addiction/medicine = 480)
 
 /datum/reagent/inverse/hercuri/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
@@ -275,7 +275,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/healing/tirimol
 	name = "Super Melatonin"//It's melatonin, but super!
-	description = "This will send the patient to sleep, adding a bonus to the efficacy of all reagents administered."
+	description = "Isso fará o paciente dormir, adicionando um bônus à eficácia de todos os reagentes administrados."
 	ph = 12.5 //sleeping is a basic need of all lifeformsa
 	self_consuming = TRUE //No pesky liver shenanigans
 	chemical_flags = REAGENT_DEAD_PROCESS
@@ -311,7 +311,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 /datum/reagent/inverse/healing/tirimol/on_mob_delete(mob/living/affected_mob)
 	. = ..()
 	if(affected_mob.IsSleeping())
-		affected_mob.visible_message(span_notice("[icon2html(affected_mob, viewers(DEFAULT_MESSAGE_RANGE, src))] [affected_mob] lets out a hearty snore!"))//small way of letting people know the supersnooze is ended
+		affected_mob.visible_message(span_notice("[icon2html(affected_mob, viewers(DEFAULT_MESSAGE_RANGE, src))] [affected_mob]Vamos ressonar!"))//small way of letting people know the supersnooze is ended
 	for(var/datum/reagent/reagent as anything in cached_reagent_list)
 		if(!reagent)
 			continue
@@ -322,7 +322,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 //inverse
 /datum/reagent/inverse/healing/convermol
 	name = "Coveroli"
-	description = "This reagent is known to coat the inside of a patient's lungs, providing greater protection against hot or cold air."
+	description = "Este reagente é conhecido por cobrir o interior dos pulmões de um paciente, proporcionando maior proteção contra ar quente ou frio."
 	ph = 3.82
 	tox_damage = 0
 	addiction_types = list(/datum/addiction/medicine = 520)
@@ -396,7 +396,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 //Allows the scanner to detect organ health to the nearest 1% (similar use to irl) and upgrates the scan to advanced
 /datum/reagent/inverse/technetium
 	name = "Technetium 99"
-	description = "A radioactive tracer agent that can improve a scanner's ability to detect internal organ damage. Will poison the patient when present very slowly, purging or using a low dose is recommended after use."
+	description = "Um rastreador radioativo que pode melhorar a habilidade de um scanner de detectar danos nos órgãos internos. Vai envenenar o paciente quando presente muito lentamente, purgar ou usar uma dose baixa é recomendado após o uso."
 	metabolization_rate = 0.75 * REAGENTS_METABOLISM
 	chemical_flags = NONE //Do show this on scanner
 	tox_damage = 0
@@ -414,7 +414,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 //Kind of a healing effect, Presumably you're using syrinver to purge so this helps that
 /datum/reagent/inverse/healing/syriniver
 	name = "Syrinifergus"
-	description = "This reagent reduces the impurity of all non medicines within the patient, reducing their negative effects."
+	description = "Este reagente reduz a impureza de todos os não medicamentos dentro do paciente, reduzindo seus efeitos negativos."
 	self_consuming = TRUE //No pesky liver shenanigans
 	chemical_flags = REAGENT_DEAD_PROCESS
 	///The list of reagents we've affected
@@ -451,7 +451,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 //Reaction product when between 0.2 and 0.35 purity.
 /datum/reagent/inverse/healing/monover
 	name = "Monover"
-	description = "A toxin treating reagent, that only is effective if it's the only reagent present in the patient."
+	description = "Um reagente de tratamento de toxina, que só é eficaz se for o único reagente presente no paciente."
 	ph = 0.5
 	addiction_types = list(/datum/addiction/medicine = 350)
 
@@ -473,7 +473,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 ///If they OD, their heart explodes (if they were brought back from the dead)
 /datum/reagent/inverse/penthrite
 	name = "Nooartrium"
-	description = "A reagent that is known to stimulate the heart in a dead patient, temporarily bringing back recently dead patients at great cost to their heart."
+	description = "Um reagente que é conhecido por estimular o coração em um paciente morto, temporariamente trazendo de volta pacientes recentemente mortos a um grande custo para o coração."
 	ph = 14
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
 	// this one is also slightly misleading due to changing metabolism rate
@@ -547,7 +547,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	if(affected_mob.health < -500 || heart.organ_flags & ORGAN_FAILING)//Honestly commendable if you get -500
 		explosion(affected_mob, light_impact_range = 1, explosion_cause = src)
 		qdel(heart)
-		affected_mob.visible_message(span_boldwarning("[affected_mob]'s heart explodes!"))
+		affected_mob.visible_message(span_boldwarning("[affected_mob]O coração explode!"))
 
 /datum/reagent/inverse/penthrite/overdose_start(mob/living/carbon/affected_mob, metabolization_ratio)
 	. = ..()
@@ -560,7 +560,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 		return ..()
 	explosion(affected_mob, light_impact_range = 1, explosion_cause = src)
 	qdel(heart)
-	affected_mob.visible_message(span_boldwarning("[affected_mob]'s heart explodes!"))
+	affected_mob.visible_message(span_boldwarning("[affected_mob]O coração explode!"))
 	return..()
 
 /datum/reagent/inverse/penthrite/proc/remove_buffs(mob/living/carbon/affected_mob)
@@ -573,7 +573,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/impurity/mannitol
 	name = "Mannitoil"
-	description = "Gives the patient a temporary speech impediment."
+	description = "Dá ao paciente um impedimento de fala temporário."
 	color = "#CDCDFF"
 	addiction_types = list(/datum/addiction/medicine = 240)
 	ph = 12.4
@@ -615,7 +615,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/neurine
 	name = "Neruwhine"
-	description = "Induces a temporary brain trauma in the patient by redirecting neuron activity."
+	description = "Induz um trauma cerebral temporário no paciente redirecionando a atividade neuronal."
 	color = "#DCDCAA"
 	ph = 13.4
 	addiction_types = list(/datum/addiction/medicine = 10)
@@ -686,7 +686,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/corazargh
 	name = "Corazargh" //It's what you yell! Though, if you've a better name feel free. Also an homage to an older chem
-	description = "Interferes with the body's natural pacemaker, forcing the patient to manually beat their heart."
+	description = "Interfere com o marcapasso natural do corpo, forçando o paciente a bater o coração manualmente."
 	color = "#5F5F5F"
 	self_consuming = TRUE
 	ph = 13.5
@@ -714,7 +714,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/antihol
 	name = "Prohol"
-	description = "Promotes alcoholic substances within the patients body, making their effects more potent."
+	description = "Promove substâncias alcoólicas dentro do corpo dos pacientes, tornando seus efeitos mais potentes."
 	taste_description = "alcohol" //mostly for sneaky slips
 	chemical_flags = REAGENT_INVISIBLE
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
@@ -729,10 +729,10 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/oculine
 	name = "Oculater"
-	description = "Temporarily blinds the patient."
+	description = "Cega temporariamente o paciente."
 	color = "#DDDDDD"
 	addiction_types = list(/datum/addiction/medicine = 400)
-	taste_description = "funky toxin"
+	taste_description = "Toxina funky"
 	ph = 13
 	tox_damage = 0
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
@@ -745,21 +745,21 @@ Basically, we fill the time between now and 2s from now with hands based off the
 		return ..()
 	if(SPT_PROB(100 * creation_purity, seconds_per_tick))
 		affected_mob.become_blind(IMPURE_OCULINE)
-		to_chat(affected_mob, span_danger("You suddenly develop a pounding headache as your vision fluxuates."))
+		to_chat(affected_mob, span_danger("Você de repente desenvolve uma dor de cabeça forte enquanto sua visão flui."))
 		headache = TRUE
 
 /datum/reagent/inverse/oculine/on_mob_end_metabolize(mob/living/affected_mob)
 	. = ..()
 	affected_mob.cure_blind(IMPURE_OCULINE)
 	if(headache)
-		to_chat(affected_mob, span_notice("Your headache clears up!"))
+		to_chat(affected_mob, span_notice("Sua dor de cabeça está melhorando!"))
 
 /datum/reagent/impurity/inacusiate
 	name = "Tinacusiate"
-	description = "Makes the patient's hearing temporarily funky."
+	description = "Deixa a audição do paciente temporariamente estranha."
 	addiction_types = list(/datum/addiction/medicine = 20)
 	color = "#DDDDFF"
-	taste_description = "the heat evaporating from your mouth."
+	taste_description = "O calor evaporando de sua boca."
 	ph = 1
 	liver_damage = 0.1
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -770,12 +770,12 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	. = ..()
 	random_span = pick("clown", "small", "big", "hypnophrase", "alien", "cult", "alert", "danger", "emote", "yell", "brass", "sans", "papyrus", "robot", "his_grace", "phobia")
 	RegisterSignal(affected_mob, COMSIG_MOVABLE_HEAR, PROC_REF(owner_hear))
-	to_chat(affected_mob, span_warning("Your hearing seems to be a bit off[!HAS_TRAIT(affected_mob, TRAIT_DEAF) ? "!" : " - wait, that's normal."]"))
+	to_chat(affected_mob, span_warning("Sua audição parece um pouco ruim.[!HAS_TRAIT(affected_mob, TRAIT_DEAF) ? "!" : " - wait, that's normal."]"))
 
 /datum/reagent/impurity/inacusiate/on_mob_end_metabolize(mob/living/affected_mob)
 	. = ..()
 	UnregisterSignal(affected_mob, COMSIG_MOVABLE_HEAR)
-	to_chat(affected_mob, span_notice("You start hearing things normally again[!HAS_TRAIT(affected_mob, TRAIT_DEAF) ? "" : " - no, wait, no you don't"]."))
+	to_chat(affected_mob, span_notice("Você começa a ouvir as coisas normalmente novamente.[!HAS_TRAIT(affected_mob, TRAIT_DEAF) ? "" : " - no, wait, no you don't"]."))
 
 /datum/reagent/impurity/inacusiate/proc/owner_hear(mob/living/owner, list/hearing_args)
 	SIGNAL_HANDLER
@@ -795,7 +795,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/sal_acid
 	name = "Benzoic Acid"
-	description = "Robust fertilizer that provides a decent range of benefits for plant life."
+	description = "Fertilizante robusto que proporciona uma gama decente de benefícios para a vida vegetal."
 	taste_description = "flowers"
 	color = "#e6c843"
 	ph = 3.4
@@ -809,7 +809,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/oxandrolone
 	name = "Oxymetholone"
-	description = "Anabolic steroid that promotes the growth of muscle during and after exercise."
+	description = "Esteróide anabólico que promove o crescimento muscular durante e após o exercício."
 	color = "#520c23"
 	taste_description = "sweat"
 	overdose_threshold = 25
@@ -834,9 +834,9 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/salbutamol
 	name = "Bamethan"
-	description = "Blood thinner that drastically increases the chance of receiving bleeding wounds."
+	description = "O anticoagulante aumenta drasticamente a chance de receber feridas."
 	color = "#ecd4d6"
-	taste_description = "paint thinner"
+	taste_description = "Diluente de tinta"
 	ph = 4.5
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	tox_damage = 0
@@ -844,7 +844,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/pen_acid
 	name = "Pendetide"
-	description = "Purges basic toxin healing medications and increases the severity of radiation poisoning."
+	description = "Purga medicamentos básicos para cura de toxinas e aumenta a gravidade do envenenamento por radiação."
 	color = "#09ff00"
 	ph = 3.7
 	taste_description = "venom"
@@ -861,12 +861,12 @@ Basically, we fill the time between now and 2s from now with hands based off the
 		affected_mob.set_jitter_if_lower(10 SECONDS)
 		affected_mob.adjust_disgust(2.4 * metabolization_ratio * seconds_per_tick)
 		if(SPT_PROB(2.5, seconds_per_tick))
-			to_chat(affected_mob, span_warning("A horrible ache spreads in your insides!"))
+			to_chat(affected_mob, span_warning("Uma dor horrível se espalha por dentro!"))
 			affected_mob.adjust_confusion_up_to(10 SECONDS, 15 SECONDS)
 
 /datum/reagent/inverse/atropine
 	name = "Hyoscyamine"
-	description = "Slowly regenerates all damaged organs, but cannot restore non-functional organs."
+	description = "Regenera lentamente todos os órgãos danificados, mas não pode restaurar órgãos não funcionais."
 	color = "#273333"
 	ph = 13.6
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
@@ -901,7 +901,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/ammoniated_mercury
 	name = "Ammoniated Sludge"
-	description = "A ghastly looking mess of mercury by-product. Causes bursts of manic hysteria."
+	description = "Uma bagunça horrível de mercúrio subproduto. Causas de histeria maníaca."
 	color = "#353535"
 	ph = 10.2
 	tox_damage = 0
@@ -914,7 +914,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/rezadone
 	name = "Inreziniver"
-	description = "Makes the user horribly afraid of all things related to fish."
+	description = "Faz o usuário ter medo de todas as coisas relacionadas ao peixe."
 	color = "#c92eb4"
 	ph = 13.9
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
@@ -930,7 +930,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/spaceacillin
 	name = "Sepsisillin"
-	description = "Weakens the immune system, acclerating the effects of bacteria, viruses, and parasites while negating the effects of immunity boosters." //it's like spacacillin but evil muahaha
+	description = "Enfraquece o sistema imunológico, acrescendo os efeitos de bactérias, vírus e parasitas enquanto nega os efeitos de reforço de imunidade." //it's like spacacillin but evil muahaha
 	color = "#002f06" //Gross green-black. Seemed fitting.
 	ph = 8.1
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
@@ -939,7 +939,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/krokodil
 	name = "Permonid"
-	description = "Highly potent sedative that provides the best benefits for pain management and surgery. Extremely addictive."
+	description = "Sedativo altamente potente que proporciona os melhores benefícios para o tratamento da dor e cirurgia. Extremamente viciante."
 	color = "#15b5dd55"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = 20
@@ -966,15 +966,15 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	if(SPT_PROB(10, seconds_per_tick))
 		affected_mob.emote("drool")
 	if(SPT_PROB(5, seconds_per_tick))
-		to_chat(affected_mob, span_warning("You briefly lose control of your legs!"))
+		to_chat(affected_mob, span_warning("Você perde brevemente o controle das pernas!"))
 		affected_mob.Knockdown(5 SECONDS)
 	if(SPT_PROB(5, seconds_per_tick))
-		to_chat(affected_mob, span_warning("The muscles in your arms give out!"))
+		to_chat(affected_mob, span_warning("Os músculos em seus braços se desfazem!"))
 		affected_mob.drop_all_held_items()
 
 /datum/reagent/inverse/bath_salts
 	name = "Monkey Dust"
-	description = "Oop aak chee aak eek chee. Eek aak oop chee oop aak aak!!"
+	description = "Oop aak chee aak eek chee. Eek aak oop chee oop aak aak!"
 	color = "#7e3900"
 	ph = 14
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
@@ -1027,8 +1027,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/aranesp
 	name = "Epoetin Alfa"
-	description = "Synthetic medication that induces blood regeneration and wound clotting in patients. \
-		Causes adverse side effects, including arterial damage and migraines when excessively used over time."
+	description = "Remédio sintético que induz regeneração sanguínea e coagulação de feridas em pacientes. Causa efeitos colaterais adversos, incluindo danos arteriais e enxaquecas quando excessivamente usados ao longo do tempo."
 	color = "#dee4ff"
 	metabolization_rate = 0.625 * REAGENTS_METABOLISM
 	overdose_threshold = 20
@@ -1046,43 +1045,43 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 	switch(current_cycle)
 		if(10)
-			to_chat(affected_mob, span_warning("You feel a migraine coming on..."))
+			to_chat(affected_mob, span_warning("Você sente uma enxaqueca chegando..."))
 			affected_mob.adjust_eye_blur(0.16 SECONDS * metabolization_ratio * seconds_per_tick)
 
 		if(15 to 30)
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(affected_mob, span_warning("Your head aches as your vision blurs."))
+				to_chat(affected_mob, span_warning("Sua cabeça dói quando sua visão fica embaçada."))
 				affected_mob.adjust_eye_blur(4 SECONDS * metabolization_ratio)
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(affected_mob, span_warning("Your face contorts as a sudden pain forms in your head."))
+				to_chat(affected_mob, span_warning("Seu rosto se contorce como uma dor súbita na sua cabeça."))
 				affected_mob.Stun(1 SECONDS)
 
 		if(31 to 45)
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(affected_mob, span_warning("Intense pressure forms in your head, you can barely see!"))
+				to_chat(affected_mob, span_warning("Pressão intensa se forma em sua cabeça, você mal consegue ver!"))
 				affected_mob.adjust_eye_blur(8 SECONDS * metabolization_ratio)
 				affected_mob.adjust_confusion_up_to(5 SECONDS, 20 SECONDS)
 				affected_mob.adjust_hallucinations(10 SECONDS)
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(affected_mob, span_warning("You lose focus and stare ahead."))
+				to_chat(affected_mob, span_warning("Você perde o foco e olha para frente."))
 				affected_mob.Stun(3 SECONDS)
 				affected_mob.emote(pick("stare","drool","moan","look"))
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(affected_mob, span_warning("Your inhaling becomes more stressed, it's getting harder to breathe!"))
+				to_chat(affected_mob, span_warning("Sua inalação fica mais estressada, está ficando mais difícil respirar!"))
 				holder.add_reagent(/datum/reagent/toxin/histamine, 3.2 * metabolization_ratio)
 
 		if(46 to INFINITY)
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(affected_mob, span_warning("It feels like your head is going to implode!"))
+				to_chat(affected_mob, span_warning("Parece que sua cabeça vai implodir!"))
 				affected_mob.adjust_eye_blur(8 SECONDS * metabolization_ratio)
 				affected_mob.adjust_confusion_up_to(10 SECONDS, 20 SECONDS)
 				affected_mob.adjust_hallucinations(30 SECONDS)
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(affected_mob, span_warning("You can't bring yourself to focus at all!"))
+				to_chat(affected_mob, span_warning("Você não consegue se concentrar!"))
 				affected_mob.Stun(5 SECONDS)
 				affected_mob.emote(pick("stare","drool","tremble","shake"))
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(affected_mob, span_warning("Your breathing becomes weak and raspy, you can barely stay conscious!"))
+				to_chat(affected_mob, span_warning("Sua respiração fica fraca e raspiada, você mal consegue ficar consciente!"))
 				holder.add_reagent(/datum/reagent/toxin/histamine, 4.8 * metabolization_ratio)
 				affected_mob.losebreath += 3
 
@@ -1090,16 +1089,16 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	. = ..()
 	var/need_mob_update
 	if(SPT_PROB(10, seconds_per_tick))
-		to_chat(affected_mob, span_warning("It feels like your head is going to implode!"))
+		to_chat(affected_mob, span_warning("Parece que sua cabeça vai implodir!"))
 		affected_mob.adjust_eye_blur(8 SECONDS * metabolization_ratio)
 		affected_mob.adjust_confusion_up_to(10 SECONDS, 20 SECONDS)
 		affected_mob.adjust_hallucinations(30 SECONDS)
 	if(SPT_PROB(10, seconds_per_tick))
-		to_chat(affected_mob, span_warning("You can't bring yourself to focus at all!"))
+		to_chat(affected_mob, span_warning("Você não consegue se concentrar!"))
 		affected_mob.Stun(50)
 		affected_mob.emote(pick("stare","drool","tremble","shake"))
 	if(SPT_PROB(10, seconds_per_tick))
-		to_chat(affected_mob, span_warning("Your breathing becomes weak and raspy, you can barely stay conscious!"))
+		to_chat(affected_mob, span_warning("Sua respiração fica fraca e raspiada, você mal consegue ficar consciente!"))
 		holder.add_reagent(/datum/reagent/toxin/histamine, 4.8 * metabolization_ratio)
 		affected_mob.losebreath += 3
 		need_mob_update = TRUE
@@ -1109,7 +1108,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/happiness
 	name = "Sadness"
-	description = "Causes severe depressive behavior in users, and actively purges other antidepressants."
+	description = "Causa comportamento depressivo grave em usuários, e expurga ativamente outros antidepressivos."
 	color = "#0004ff"
 	ph = 12
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
@@ -1152,7 +1151,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/baldium
 	name = "Maldium"
-	description = "Potent psychotropic that causes intense anger within users."
+	description = "Psicotrópico potente que causa raiva intensa dentro dos usuários."
 	color = "#ff0000"
 	ph = 1
 	tox_damage = 0
@@ -1162,14 +1161,14 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	. = ..()
 	affected_mob.add_shared_particles(/particles/smoke/steam/mald)
 	affected_mob.manual_emote("inhales sharply.")
-	to_chat(affected_mob, span_warning("You can't help but find everything more irritating."))
+	to_chat(affected_mob, span_warning("Você não pode deixar de achar tudo mais irritante."))
 
 /datum/reagent/inverse/baldium/on_mob_end_metabolize(mob/living/carbon/affected_mob)
 	. = ..()
 	affected_mob.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, "#fe0000")
 	affected_mob.remove_shared_particles(/particles/smoke/steam/mald)
 	affected_mob.manual_emote("exhales sharply.")
-	to_chat(affected_mob, span_warning("You feel an intense burning sensation as your anger subsides!"))
+	to_chat(affected_mob, span_warning("Você sente uma intensa sensação de queimação enquanto sua raiva diminui!"))
 
 /datum/reagent/inverse/baldium/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
@@ -1184,11 +1183,11 @@ Basically, we fill the time between now and 2s from now with hands based off the
 			if(!HAS_TRAIT(affected_mob, TRAIT_PACIFISM))
 				var/turf/angery_blast = get_turf(affected_mob)
 				goonchem_vortex(angery_blast, 1, 4)
-				to_chat(affected_mob, span_warning("You can't control yourself as you yell out ANGRILY!!"))
+				to_chat(affected_mob, span_warning("Não pode se controlar enquanto grita!"))
 				affected_mob.emote("scream")
 				affected_mob.say(pick("RAGE!! UNLEASH THE RAGE!!","I'M SO ANGRY!!","WHY I OUGHTA...","AAARRRGGHH!!"), forced = type)
 			else
-				to_chat(affected_mob, span_warning("You calmly yet firmly state your discontent."))
+				to_chat(affected_mob, span_warning("Você calmamente e firmemente declara seu descontentamento."))
 				affected_mob.say(pick("Aaahhhh...","Rage, woo yeah...","I'm slightly upset...",), forced = type)
 
 		if(6 to INFINITY)
@@ -1202,7 +1201,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/colorful_reagent
 	name = "Dulling Reagent"
-	description = "Extremely drab coloring pigment that is favored by corporations who wish to maximize suffering."
+	description = "Pigmento de coloração extremamente sombrio que é favorecido por corporações que desejam maximizar o sofrimento."
 	color = COLOR_GRAY
 	ph = 10
 	metabolization_rate = REAGENTS_METABOLISM
@@ -1315,7 +1314,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 
 /datum/reagent/inverse/gravitum
 	name = "Newtonium"
-	description = "Experimental reagent that induces heavy gravokinetic effects on users."
+	description = "Reagente experimental que induz efeitos gravocinéticos pesados nos usuários."
 	color = "#4b0082"
 	ph = 2.3
 	metabolization_rate = 2.5 * REAGENTS_METABOLISM
@@ -1337,17 +1336,17 @@ Basically, we fill the time between now and 2s from now with hands based off the
 		if(10)
 			for(var/obj/item/bodypart/leg/leg in affected_mob.get_bodyparts())
 				affected_mob.cause_wound_of_type_and_severity(WOUND_BLUNT, leg, WOUND_SEVERITY_MODERATE)
-			to_chat(affected_mob, span_warning("Your legs start to cave in to your overwhelming gravity!"))
+			to_chat(affected_mob, span_warning("Suas pernas começam a ceder para sua gravidade esmagadora!"))
 
 		if(20)
 			for(var/obj/item/bodypart/leg/leg in affected_mob.get_bodyparts())
 				affected_mob.cause_wound_of_type_and_severity(WOUND_BLUNT, leg, WOUND_SEVERITY_SEVERE)
-			to_chat(affected_mob, span_warning("Your bones fragment horribly as the gravity pounds on you!"))
+			to_chat(affected_mob, span_warning("Seus ossos se fragmentam horrivelmente como os quilos de gravidade em você!"))
 
 		if(30)
 			for(var/obj/item/bodypart/leg/leg in affected_mob.get_bodyparts())
 				affected_mob.cause_wound_of_type_and_severity(WOUND_BLUNT, leg, WOUND_SEVERITY_CRITICAL)
-			to_chat(affected_mob, span_warning("The gravity of this situation makes your bones snap like popsicle sticks!"))
+			to_chat(affected_mob, span_warning("A gravidade desta situação faz seus ossos quebrarem como pauzinhos de picolé!"))
 
 /datum/reagent/inverse/gravitum/overdose_start(mob/living/carbon/affected_mob, metabolization_ratio)
 	. = ..()

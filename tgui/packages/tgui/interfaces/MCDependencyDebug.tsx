@@ -62,7 +62,7 @@ function GraphNode(props: GraphNodeProps) {
     <Box
       style={{
         borderRadius: '0px 0px 0px 0px',
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        backgroundColor: 'Rgba (0, 0, 0, 0,3)',
         msUserSelect: 'none',
         userSelect: 'none',
       }}
@@ -96,7 +96,7 @@ function GraphNode(props: GraphNodeProps) {
                 cy="50"
                 r="50"
                 fillOpacity="0"
-                transform="rotate(90, 50, 50)"
+                transform="(90, 50, 50)"
               />
               <circle cx="50" cy="50" r="50" className={`color-fill-blue`} />
             </svg>
@@ -126,7 +126,7 @@ function GraphNode(props: GraphNodeProps) {
                 cy="50"
                 r="50"
                 fillOpacity="0"
-                transform="rotate(90, 50, 50)"
+                transform="(90, 50, 50)"
               />
               <circle cx="50" cy="50" r="50" className={`color-fill-blue`} />
             </svg>
@@ -247,7 +247,7 @@ export function MCDependencyDebug(props) {
   }
 
   return (
-    <Window width={1200} height={800} title="Subsystem Dependency Graph">
+    <Window width={1200} height={800} title="Gráfico de Dependência do Subsistema">
       <Window.Content
         style={{
           backgroundImage: 'none',

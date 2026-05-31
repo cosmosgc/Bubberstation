@@ -8,7 +8,7 @@
 
 /obj/machinery/breath_machine
 	name = "portable breath machine"
-	desc = "A stand on wheels with a digital regulator, similar to an IV drip, that can hold a canister of gas along with a gas mask.<br>Is it N2 for humans and N2O for vox again? Other way? What's O2? I'm not the doctor here."
+	desc = "Um estande sobre rodas com um regulador digital, semelhante a um soro, que pode segurar um cilindro de gás junto com uma máscara de gás.<br>É N2 para humanos e N2O para vox de novo? Para o outro lado? O que é O2? Não sou o médico aqui."
 	icon = 'modular_zubbers/icons/obj/medical/breath_machine.dmi'
 	icon_state = "breath_machine"
 	anchored = FALSE
@@ -43,16 +43,16 @@
 		return ..()
 
 	if(mask_out)
-		to_chat(user, span_warning("There is someone currently attached to the [src]!"))
+		to_chat(user, span_warning("Há alguém atualmente ligado ao[src]!"))
 		return TRUE
 
 	if(attached_tank)
-		to_chat(user, span_warning("[attached_tank] must be removed from [src] first!"))
+		to_chat(user, span_warning("[attached_tank]Deve ser removido de[src]Primero!"))
 		return TRUE
 
 	new /obj/item/breath_machine_kit(get_turf(src))
 	tool.play_tool_sound(user)
-	to_chat(user, span_notice("You deconstruct the [src]."))
+	to_chat(user, span_notice("Você desconstrui o[src]."))
 	qdel(src)
 	return TRUE
 
@@ -93,7 +93,7 @@
 	. = ..()
 	if(!retract_mask())
 		return FALSE
-	visible_message(span_notice("[user] retracts [attached_mask] back into [src]."))
+	visible_message(span_notice("[user]Retrai[attached_mask]De volta para[src]."))
 
 /obj/machinery/breath_machine/attackby(obj/item/attacking_item, mob/user, params)
 	if(!istype(attacking_item, /obj/item/tank))
@@ -103,7 +103,7 @@
 		attached_tank.forceMove(loc)
 
 	attacking_item.forceMove(src) // Put new tank in, set it as attached tank
-	visible_message(span_notice("[user] inserts [attacking_item] into [src]."))
+	visible_message(span_notice("[user]Inserções[attacking_item]Em[src]."))
 	attached_tank = attacking_item
 	update_appearance(UPDATE_OVERLAYS)
 
@@ -112,7 +112,7 @@
 		return CLICK_ACTION_BLOCKING
 
 	attached_tank.forceMove(loc)
-	to_chat(user, span_notice("You remove the [attached_tank]."))
+	to_chat(user, span_notice("Você remove o[attached_tank]."))
 	attached_tank = null
 	update_appearance(UPDATE_OVERLAYS)
 	if(mask_out)
@@ -154,14 +154,14 @@
 		attached_mask = new /obj/item/clothing/mask/breath/machine(src)
 		update_appearance(UPDATE_OVERLAYS)
 
-	user.visible_message(span_warning("[user] attemps to attach the [attached_mask] to [target]."), span_notice("You attempt to attach the [attached_mask] to [target]"))
+	user.visible_message(span_warning("[user]Tentando anexar o[attached_mask]Para[target]."), span_notice("Você tenta anexar o[attached_mask]Para[target]"))
 	if(!do_after(user, 5 SECONDS, target))
 		return
 	if(!target.equip_to_appropriate_slot(attached_mask))
-		to_chat(user, span_warning("You are unable to attach the [attached_mask] to [target]!"))
+		to_chat(user, span_warning("Você é incapaz de anexar o[attached_mask]Para[target]!"))
 		return
 
-	user.visible_message(span_warning("[user] attaches the [attached_mask] to [target]."), span_notice("You attach the [attached_mask] to [target]"))
+	user.visible_message(span_warning("[user]Anexar o[attached_mask]Para[target]."), span_notice("Você anexa o[attached_mask]Para[target]"))
 
 	// Open the tank externally
 	target.open_internals(attached_tank, is_external = TRUE)
@@ -175,7 +175,7 @@
 
 	var/mob/living/carbon/carbon_target = attached_mask.loc
 	if(get_dist(src, get_turf(attached_mask)) > 1) // If too far away, detach
-		to_chat(carbon_target, span_warning("[attached_mask] is ripped off of your face!"))
+		to_chat(carbon_target, span_warning("[attached_mask]é arrancado do seu rosto!"))
 		retract_mask()
 		return PROCESS_KILL
 
@@ -214,8 +214,7 @@
 	if(!our_machine)
 		attached_machine = null
 		if(mapload)
-			stack_trace("Abstract, undroppable item [name] spawned at ([loc]) at [AREACOORD(src)] in \the [get_area(src)]. \
-				Please remove it. This item should only ever be created by the breath machine.")
+			stack_trace("Abstract, undroppable item [name] spawned at ([loc]) at [AREACOORD(src)] in \the [get_area(src)]. 				Please remove it. This item should only ever be created by the breath machine.")
 		return INITIALIZE_HINT_QDEL
 
 /obj/item/clothing/mask/breath/machine/Destroy()
@@ -236,7 +235,7 @@
 		return
 
 	if(loc != our_machine) //If it isn't in the machine, then it retracts when dropped
-		to_chat(user, span_notice("[src] retracts back into the [our_machine]."))
+		to_chat(user, span_notice("[src]Retrai de volta para o[our_machine]."))
 		our_machine.retract_mask()
 
 /obj/item/clothing/mask/breath/machine/adjust_visor(mob/living/carbon/user)
@@ -250,7 +249,7 @@
 /// A boxed version of the breath Machine. This is what is printed from the medical prolathe.
 /obj/item/breath_machine_kit
 	name = "breath stand parts kit"
-	desc = "Contains all of the parts needed to assemble a portable breath stand. Use in hand to construct."
+	desc = "Contém todas as peças necessárias para montar um suporte de respiração portátil. Use em mãos para construir."
 	w_class = WEIGHT_CLASS_BULKY
 	icon = 'icons/obj/storage/box.dmi'
 	icon_state = "plasticbox"

@@ -6,7 +6,7 @@
 
 /obj/machinery/mailsorter
 	name = "mail sorter"
-	desc = "A large mail sorting unit. Sorting mail since 1987!"
+	desc = "Uma grande unidade de triagem de correio. Ordenando correspondência desde 1987!"
 	icon = 'icons/obj/machines/mailsorter.dmi'
 	icon_state = "mailsorter"
 	base_icon_state = "mailsorter"
@@ -55,10 +55,10 @@
 
 /obj/machinery/mailsorter/examine(mob/user)
 	. = ..()
-	. += span_notice("There is[length(mail_list) < 100 ? " " : " no more "]space for <b>[length(mail_list) < 100 ? "[100 - length(mail_list)] " : ""]</b>envelope\s inside.")
-	. += span_notice("There [length(mail_list) >= 2 ? "are" : "is"] <b>[length(mail_list) ? length(mail_list) : "no"]</b> envelope\s inside.")
+	. += span_notice("Há[length(mail_list) < 100 ? " " : " no more "]espaço para<b>[length(mail_list) < 100 ? "[100 - length(mail_list)] " : ""]</b>Envelope dentro.")
+	. += span_notice("Ali.[length(mail_list) >= 2 ? "are" : "is"] <b>[length(mail_list) ? length(mail_list) : "no"]</b>Envelope dentro.")
 	if(panel_open)
-		. += span_notice("Alt-click to rotate the output direction.")
+		. += span_notice("Alt-clique para girar a direção de saída.")
 
 /obj/machinery/mailsorter/Destroy()
 	QDEL_LIST(mail_list)
@@ -100,7 +100,7 @@
 	if (currentstate != STATE_IDLE)
 		return
 	if (length(mail_list) == 0)
-		to_chat(user, span_warning("There's no mail inside!"))
+		to_chat(user, span_warning("Não tem correio dentro!"))
 		return
 	var/choice = show_radial_menu(
 		user,
@@ -116,7 +116,7 @@
 			pick_mail(user)
 		if ("Dump")
 			playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 20, TRUE)
-			to_chat(user, span_notice("[src] dumps [length(mail_list)] envelope\s on the floor."))
+			to_chat(user, span_notice("[src]lixões.[length(mail_list)]envelopes no chão."))
 			dump_all_mail()
 		if ("Sort")
 			sort_mail(user)
@@ -165,7 +165,7 @@
 		update_appearance(UPDATE_OVERLAYS)
 		say("[sorted] envelope\s sorted successfully.")
 		playsound(src, 'sound/machines/ping.ogg', 20, TRUE)
-		to_chat(user, span_notice("[src] ejects [length(sorted_mail)] envelope\s."))
+		to_chat(user, span_notice("[src]Ejetar[length(sorted_mail)]Envelope."))
 		var/turf/unload_turf = get_unload_turf()
 		for (var/obj/item/mail/mail_in_list in sorted_mail)
 			mail_in_list.forceMove(unload_turf)
@@ -190,36 +190,32 @@
 /obj/machinery/mailsorter/item_interaction(mob/user, obj/item/thingy, params)
 	if (istype(thingy, /obj/item/storage/bag/mail))
 		if (length(thingy.contents) < 1)
-			to_chat(user, span_warning("The [thingy] is empty!"))
+			to_chat(user, span_warning("O[thingy]Está vazio!"))
 			return
 		var/loaded = 0
 		for (var/obj/item/mail in thingy.contents)
-			if (!(mail.item_flags & ABSTRACT) && \
-				!(mail.flags_1 & HOLOGRAM_1) && \
-				accept_check(mail) \
-			)
+			if (!(mail.item_flags & ABSTRACT) && 				!(mail.flags_1 & HOLOGRAM_1) && 				accept_check(mail) 			)
 				if (length(mail_list) + 1 > MAIL_CAPACITY )
-					to_chat(user, span_warning("There is no space for more mail in [src]!"))
+					to_chat(user, span_warning("Não há espaço para mais correspondências.[src]!"))
 					return FALSE
 				else if (load(mail, user))
 					loaded++
 					mail_list += mail
 		if(loaded)
-			user.visible_message(span_notice("[user] loads \the [src] with \the [thingy]."), \
-			span_notice("You load \the [src] with \the [thingy]."))
+			user.visible_message(span_notice("[user]Cargas.\the [src]Com\the [thingy]."), 			span_notice("Você carrega.\the [src]Com\the [thingy]."))
 			if(length(thingy.contents))
-				to_chat(user, span_warning("Some items are refused."))
+				to_chat(user, span_warning("Alguns itens são recusados."))
 			return TRUE
 		else
-			to_chat(user, span_warning("There is nothing in \the [thingy] to put in the [src]!"))
+			to_chat(user, span_warning("Não há nada dentro\the [thingy]Para colocar no[src]!"))
 			return FALSE
 	else if (istype(thingy, /obj/item/mail))
 		if (length(mail_list) + 1 > MAIL_CAPACITY )
-			to_chat(user, span_warning("There is no space for more mail in [src]!"))
+			to_chat(user, span_warning("Não há espaço para mais correspondências.[src]!"))
 		else
 			thingy.forceMove(src)
 			mail_list += thingy
-			to_chat(user, span_notice("The [src] whizzles as it accepts the [thingy]."))
+			to_chat(user, span_notice("O[src]Assobia enquanto aceita o[thingy]."))
 
 /// Prompts the user to select an anvelope from the list of all the envelopes inside.
 /obj/machinery/mailsorter/proc/pick_mail(mob/user)
@@ -235,7 +231,7 @@
 
 /// Ejects a single envelope the player has picked onto the `unload_turf`.
 /obj/machinery/mailsorter/proc/pick_envelope(mob/user, obj/item/mail/mail_throw)
-	to_chat(user, span_notice("[src] reluctantly spits out [mail_throw]."))
+	to_chat(user, span_notice("[src]Relutante cospe para fora[mail_throw]."))
 	var/turf/unload_turf = get_unload_turf()
 	mail_throw.forceMove(unload_turf)
 	mail_throw.throw_at(unload_turf, 2, 3)
@@ -248,7 +244,7 @@
 	if(ismob(thingy.loc))
 		var/mob/owner = thingy.loc
 		if(!owner.transferItemToLoc(thingy, src))
-			to_chat(owner, span_warning("\the [thingy] is stuck to your hand, you cannot put it in \the [src]!"))
+			to_chat(owner, span_warning("\the [thingy]está preso em sua mão, você não pode colocá-lo em\the [src]!"))
 			return FALSE
 		return TRUE
 	else
@@ -262,7 +258,7 @@
 	if(!panel_open)
 		return CLICK_ACTION_BLOCKING
 	output_dir = turn(output_dir, -90)
-	to_chat(user, span_notice("You change [src]'s I/O settings, setting the output to [dir2text(output_dir)]."))
+	to_chat(user, span_notice("Você muda.[src]'s configurações de E/S, definindo a saída para[dir2text(output_dir)]."))
 	update_appearance(UPDATE_OVERLAYS)
 	return CLICK_ACTION_SUCCESS
 

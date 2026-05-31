@@ -51,7 +51,7 @@ export const PlayerTicketHistory = (props: any) => {
 
   if (!data.db_connected) {
     return (
-      <Window title="Player Ticket History" width={300} height={300}>
+      <Window title="História dos ingressos do jogador" width={300} height={300}>
         <Window.Content>
           <NoticeBox>The database is not connected.</NoticeBox>
         </Window.Content>

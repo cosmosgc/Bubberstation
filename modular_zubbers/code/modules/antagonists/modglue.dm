@@ -34,7 +34,7 @@
 		macro.modsuit_explosion()
 		owner.spasm_animation(600)
 	else
-		to_chat(user, "You feel safe knowing your modsuit did not blow up in your face.")
+		to_chat(user, "Você se sente segura sabendo que seu modsuit não explodiu na sua cara.")
 
 /obj/item/mod/control/pre_equipped/contractor/doStrip(mob/living/carbon/stripper, mob/owner)
 	if(!istype(stripper, /mob/living/carbon))

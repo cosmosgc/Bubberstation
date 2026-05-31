@@ -136,7 +136,7 @@
 
 /obj/item/organ/genital/penis
 	name = "penis"
-	desc = "A male reproductive organ."
+	desc = "Um órgão reprodutivo masculino."
 	icon_state = "penis"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/penis.dmi'
 	zone = BODY_ZONE_PRECISE_GROIN
@@ -294,7 +294,7 @@
 
 /obj/item/organ/genital/testicles
 	name = "testicles"
-	desc = "A male reproductive organ."
+	desc = "Um órgão reprodutivo masculino."
 	icon_state = "testicles"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/testicles.dmi'
 	mutantpart_key = ORGAN_SLOT_TESTICLES
@@ -417,7 +417,7 @@
 
 /obj/item/organ/genital/womb
 	name = "womb"
-	desc = "A female reproductive organ."
+	desc = "Um órgão reprodutivo feminino."
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/vagina.dmi'
 	icon_state = "womb"
 	mutantpart_key = ORGAN_SLOT_WOMB
@@ -440,7 +440,7 @@
 
 /obj/item/organ/genital/anus
 	name = "anus"
-	desc = "What do you want me to tell you?"
+	desc = "O que quer que eu diga?"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/anus.dmi'
 	icon_state = "anus"
 	mutantpart_key = ORGAN_SLOT_ANUS
@@ -469,7 +469,7 @@
 
 /obj/item/organ/genital/breasts
 	name = "breasts"
-	desc = "Female milk producing organs."
+	desc = "Órgãos produtores de leite feminino."
 	icon_state = "breasts"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/breasts.dmi'
 	genital_type = "pair"
@@ -492,11 +492,11 @@
 	var/translation = breasts_size_to_cup(genital_size)
 	switch(translation)
 		if(BREAST_SIZE_FLATCHESTED)
-			size_description = " They are small and flat, however."
+			size_description = "Eles são pequenos e planos, no entanto."
 		if(BREAST_SIZE_BEYOND_MEASUREMENT)
-			size_description = " Their size is enormous, you estimate they're around [genital_size] inches in diameter."
+			size_description = "Seu tamanho é enorme, você estima que eles estão ao redor[genital_size]polegadas de diâmetro."
 		else
-			size_description = " You estimate they are [translation]-cups."
+			size_description = "Você estima que eles são[translation]-Copos."
 	returned_string += size_description
 	if(aroused == AROUSAL_FULL)
 		if(lactates)
@@ -568,7 +568,7 @@
 	set desc = "Allows you to toggle which genitals should show through clothes or not."
 
 	if(stat != CONSCIOUS)
-		to_chat(usr, span_warning("You can't toggle genitals visibility right now..."))
+		to_chat(usr, span_warning("Você não pode mudar a visibilidade dos genitais agora..."))
 		return
 
 	var/list/genital_list = list("all")
@@ -585,7 +585,7 @@
 												"Hidden by clothes" = GENITAL_HIDDEN_BY_CLOTHES,
 												"Always show" = GENITAL_ALWAYS_SHOW
 												)
-		var/picked_visibility = input(src, "Choose visibility setting", "Expose/Hide genitals") as null|anything in gen_vis_trans
+		var/picked_visibility = input(src, "Escolha a configuração de visibilidade.", "Expor/Esconder genitais") as null|anything in gen_vis_trans
 		if(picked_visibility && picked_organ && (picked_organ in organs))
 			picked_organ.visibility_preference = gen_vis_trans[picked_visibility]
 			update_body()
@@ -611,7 +611,7 @@
 	set desc = "Allows you to toggle how aroused your private parts are."
 
 	if(stat != CONSCIOUS)
-		to_chat(usr, span_warning("You can't toggle arousal right now..."))
+		to_chat(usr, span_warning("Não pode se excitar agora..."))
 		return
 
 	var/arousal_target = tgui_input_number(src, "[AROUSAL_NONE]= No arousal, <[AROUSAL_LOW] Low/partial Arousal, [AROUSAL_LOW] - [AROUSAL_HIGH] Medium/full Arousal, >[AROUSAL_HIGH] Strong/full Arousal", "Set Arousal Amount", arousal, AROUSAL_LIMIT, AROUSAL_MINIMUM, 0)

@@ -47,7 +47,7 @@ export const MechpadControl = (props) => {
           fluid
           icon="upload"
           disabled={!pad_active}
-          content={mechonly ? 'Launch (Mech Only)' : 'Launch'}
+          content={mechonly ? 'Lançar (Apenas Mech)' : 'Launch'}
           color={mechonly ? 'default' : 'good'}
           textAlign="center"
           onClick={() => act('launch')}

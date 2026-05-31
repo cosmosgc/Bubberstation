@@ -13,7 +13,7 @@
  */
 /obj/item/wallframe/camera
 	name = "camera assembly"
-	desc = "The basic construction for Nanotrasen-Always-Watching-You cameras."
+	desc = "A construção básica para câmeras Nanotrasen-Sempre-Te observando."
 	icon = 'icons/obj/machines/camera.dmi'
 	icon_state = "cameracase"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
@@ -25,7 +25,7 @@
 
 /obj/machinery/camera
 	name = "security camera"
-	desc = "It's used to monitor rooms."
+	desc = "É usado para monitorar salas."
 	icon = 'icons/obj/machines/camera.dmi'
 	icon_state = "camera"
 	base_icon_state = "camera"
@@ -201,29 +201,29 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/xray, 0)
 	. = ..()
 
 	if(isEmpProof(TRUE)) //don't reveal it's upgraded if was done via MALF AI Upgrade Camera Network ability
-		. += span_info("It has electromagnetic interference shielding installed.")
+		. += span_info("Tem escudo de interferência eletromagnética instalado.")
 	else
-		. += span_info("It can be shielded against electromagnetic interference with some <b>plasma</b>.")
+		. += span_info("Ele pode ser protegido contra interferência eletromagnética com alguns<b>plasma</b>.")
 
 	if(isXRay(TRUE)) //don't reveal it's upgraded if was done via MALF AI Upgrade Camera Network ability
-		. += span_info("It has an X-ray photodiode installed.")
+		. += span_info("Tem um fotodíodo de raio-X instalado.")
 	else
-		. += span_info("It can be upgraded with an X-ray photodiode with an <b>analyzer</b>.")
+		. += span_info("Pode ser atualizado com um fotodiodo de raio-X com<b>Analisador</b>.")
 
 	if(isMotion())
-		. += span_info("It has a proximity sensor installed.")
+		. += span_info("Tem um sensor de proximidade instalado.")
 	else
-		. += span_info("It can be upgraded with a <b>proximity sensor</b>.")
+		. += span_info("Pode ser atualizado com<b>Sensor de proximidade</b>.")
 
 	if(!camera_enabled)
-		. += span_info("It's currently deactivated.")
+		. += span_info("Está desativado.")
 		if(!panel_open && powered())
-			. += span_notice("You'll need to open its maintenance panel with a <b>screwdriver</b> to turn it back on.")
+			. += span_notice("Você vai precisar abrir o painel de manutenção com um<b>Chave de fenda</b>para ligar de novo.")
 
 	if(panel_open)
-		. += span_info("Its maintenance panel is currently open.")
+		. += span_info("O painel de manutenção está aberto.")
 		if(!camera_enabled && powered())
-			. += span_info("It can reactivated with <b>wirecutters</b>.")
+			. += span_info("Pode ser reativado com<b>Cortadores de arame</b>.")
 
 /obj/machinery/camera/emp_act(severity, reset_time = 90 SECONDS)
 	. = ..()
@@ -244,7 +244,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/xray, 0)
 	for(var/mob/M as anything in GLOB.player_list)
 		if (M.client?.eye == src)
 			M.reset_perspective(null)
-			to_chat(M, span_warning("The screen bursts into static!"))
+			to_chat(M, span_warning("A tela explode em estática!"))
 
 /obj/machinery/camera/on_saboteur(datum/source, disrupt_duration)
 	. = ..()
@@ -276,8 +276,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/xray, 0)
 
 /obj/machinery/camera/proc/setViewRange(num = 7)
 	if(num > MAX_CAMERA_RANGE)
-		CRASH("Attempted to set camera view range to something ([num]) greater then we support ([MAX_CAMERA_RANGE]).\
-			This would break chunk updating. If you really need to do this, update MAX_CAMERA_RANGE")
+		CRASH("Attempted to set camera view range to something ([num]) greater then we support ([MAX_CAMERA_RANGE]).			This would break chunk updating. If you really need to do this, update MAX_CAMERA_RANGE")
 	src.view_range = num
 	SScameras.update_visibility(src)
 
@@ -386,7 +385,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/xray, 0)
 	for(var/mob/O as anything in GLOB.player_list)
 		if (O.client?.eye == src)
 			O.reset_perspective(null)
-			to_chat(O, span_warning("The screen bursts into static!"))
+			to_chat(O, span_warning("A tela explode em estática!"))
 
 /obj/machinery/camera/proc/triggerCameraAlarm()
 	alarm_on = TRUE

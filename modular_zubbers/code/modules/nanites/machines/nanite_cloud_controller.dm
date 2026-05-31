@@ -1,6 +1,6 @@
 /obj/machinery/computer/nanite_cloud_controller
 	name = "nanite cloud controller"
-	desc = "Stores and controls nanite cloud backups."
+	desc = "Lojas e controles de backups de nanites."
 	icon = 'modular_zubbers/icons/obj/machines/nanite_machines.dmi'
 	icon_state = "nanite_cloud_controller"
 	circuit = /obj/item/circuitboard/computer/nanite_cloud_controller
@@ -26,7 +26,7 @@
 
 /obj/machinery/computer/nanite_cloud_controller/examine(mob/user)
 	. = ..()
-	. += span_notice("Use with a linked multitool to link to a techweb server.")
+	. += span_notice("Use com uma multitool ligada para ligar a um servidor techweb.")
 
 /obj/machinery/computer/nanite_cloud_controller/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -46,7 +46,7 @@
 	var/obj/item/disk/nanite_program/new_disk = tool
 	if(!user.transferItemToLoc(new_disk, src))
 		return NONE
-	to_chat(user, span_notice("You insert [new_disk] into [src]"))
+	to_chat(user, span_notice("Você insere[new_disk]Em[src]"))
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 	if(disk)
 		eject(user)
@@ -56,7 +56,7 @@
 /obj/machinery/computer/nanite_cloud_controller/multitool_act(mob/living/user, obj/item/multitool/tool)
 	if(!QDELETED(tool.buffer) && istype(tool.buffer, /datum/techweb))
 		linked_techweb = tool.buffer
-		balloon_alert(user, "linked!")
+		balloon_alert(user, "Ligado!")
 		update_static_data_for_all_viewers()
 	return TRUE
 
@@ -65,7 +65,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	if(disk && user.can_perform_action(src, !issilicon(user)))
-		to_chat(user, span_notice("You take out [disk] from [src]."))
+		to_chat(user, span_notice("Você tira.[disk]De[src]."))
 		eject(user)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
@@ -84,7 +84,7 @@
 
 /obj/machinery/computer/nanite_cloud_controller/proc/generate_backup(cloud_id, mob/user)
 	if(SSnanites.get_cloud_backup(cloud_id, TRUE))
-		to_chat(user, span_warning("Cloud ID already registered."))
+		to_chat(user, span_warning("A identificação da nuvem já está registrada."))
 		return
 
 	var/datum/nanite_cloud_backup/backup = new(src)

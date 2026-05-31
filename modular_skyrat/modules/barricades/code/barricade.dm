@@ -46,9 +46,9 @@
 /obj/structure/deployable_barricade/examine(mob/user)
 	. = ..()
 	if(!is_wired && can_wire)
-		. += span_info("Barbed wire could be added with some <b>cable</b>.")
+		. += span_info("O arame farpado pode ser adicionado com alguns<b>Cabo.</b>.")
 	if(is_wired)
-		. += span_info("It has barbed wire along the top.")
+		. += span_info("Tem arame farpado ao longo do topo.")
 
 /obj/structure/deployable_barricade/proc/on_try_exit(datum/source, atom/movable/leaving, direction)
 	SIGNAL_HANDLER
@@ -117,15 +117,15 @@
 	if(!is_wired)
 		return FALSE
 
-	user.visible_message(span_notice("[user] begins to remove the barbed wire on [src]."),
-	span_notice("You start removing the barbed wire on [src]."))
+	user.visible_message(span_notice("[user]Começa a remover o arame farpado.[src]."),
+	span_notice("Você começa a remover o arame farpado[src]."))
 
 	if(!do_after(user, 2 SECONDS, src))
 		return TRUE
 
 	playsound(src, 'sound/items/tools/wirecutter.ogg', 25, TRUE)
-	user.visible_message(span_notice("[user] removed the barbed wire on [src]."),
-	span_notice("You removed the barbed wire on [src]."))
+	user.visible_message(span_notice("[user]Remova o arme farpado.[src]."),
+	span_notice("Você removeu o arame farpado.[src]."))
 	modify_max_integrity(max_integrity - 50)
 	can_wire = TRUE
 	is_wired = FALSE
@@ -147,7 +147,7 @@
 /obj/structure/deployable_barricade/ex_act(severity)
 	switch(severity)
 		if(EXPLODE_DEVASTATE)
-			visible_message(span_danger("[src] explodes!"))
+			visible_message(span_danger("[src]Explodir!"))
 			deconstruct(FALSE)
 			return
 		if(EXPLODE_HEAVY)
@@ -208,7 +208,7 @@
 	set src in oview(1)
 
 	if(anchored)
-		to_chat(usr, span_warning("It is secured to the floor, you can't turn it!"))
+		to_chat(usr, span_warning("Está preso no chão, você não pode virá-lo!"))
 		return FALSE
 
 	setDir(turn(dir, 90))
@@ -219,7 +219,7 @@
 	set src in oview(1)
 
 	if(anchored)
-		to_chat(usr, span_warning("It is secured to the floor, you can't turn it!"))
+		to_chat(usr, span_warning("Está preso no chão, você não pode virá-lo!"))
 		return FALSE
 
 	setDir(turn(dir, 270))
@@ -230,7 +230,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	if(anchored)
-		to_chat(usr, span_warning("It is secured to the floor, you can't turn it!"))
+		to_chat(usr, span_warning("Está preso no chão, você não pode virá-lo!"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	setDir(turn(dir, 270))
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -242,7 +242,7 @@
 
 /obj/structure/deployable_barricade/snow
 	name = "snow barricade"
-	desc = "A snowdrift, carefully rammed with palms up to a relatively solid state. The architect in your head believes that it is better than nothing. In principle, you agree with him."
+	desc = "Uma gota de neve, cuidadosamente batida com palmas até um estado relativamente sólido. O arquiteto em sua cabeça acredita que é melhor do que nada. Em princípio, você concorda com ele."
 	icon_state = "snow_0"
 	barricade_type = "snow"
 	max_integrity = 75
@@ -258,7 +258,7 @@
 
 /obj/structure/deployable_barricade/guardrail
 	name = "fencing"
-	desc = "A small barricade made from metal posting, designed to stop you from going places you aren't supposed to."
+	desc = "Uma barricada feita de metal para impedi-lo de ir a lugares que não deveria."
 	icon_state = "railing_0"
 	max_integrity = 150
 	armor_type = /datum/armor/deployable_barricade_guardrail
@@ -289,7 +289,7 @@
 
 /obj/structure/deployable_barricade/wooden
 	name = "wooden barricade"
-	desc = "A wall hammered out of wooden planks may not even look very strong, but it still provides some protection."
+	desc = "Uma parede martelada de tábuas de madeira pode nem parecer muito forte, mas ainda fornece alguma proteção."
 	icon = 'modular_skyrat/modules/barricades/icons/barricade.dmi'
 	icon_state = "wooden"
 	max_integrity = 100
@@ -310,10 +310,10 @@
 			return
 
 		if(D.get_amount() < 1)
-			to_chat(user, span_warning("You need at least one board to repair [src]!"))
+			to_chat(user, span_warning("Você precisa de pelo menos uma tábua para consertar[src]!"))
 			return
 
-		visible_message(span_notice("[user] begins to repair [src]."))
+		visible_message(span_notice("[user]começa a reparar[src]."))
 
 		if(!do_after(user,20, src) || get_integrity() >= max_integrity)
 			return
@@ -322,7 +322,7 @@
 			return
 
 		repair_damage(max_integrity)
-		visible_message(span_notice("[user] repairs [src]."))
+		visible_message(span_notice("[user]Reparos[src]."))
 
 
 /*----------------------*/
@@ -341,7 +341,7 @@
 
 /obj/structure/deployable_barricade/metal
 	name = "metal barricade"
-	desc = "A durable and easily mounted barricade made from metal plates, often used for rapid fortification. Repairing it requires a welder."
+	desc = "Uma barricada durável e facilmente montada feita de placas de metal, muitas vezes usada para fortificação rápida. Consertar requer um soldador."
 	icon_state = "metal_0"
 	max_integrity = 200
 	armor_type = /datum/armor/deployable_barricade_metal
@@ -370,28 +370,28 @@
 /obj/structure/deployable_barricade/metal/click_alt(mob/user)
 	if(portable_type)
 		if(anchored)
-			to_chat(user, span_warning("[src] cannot be folded up while anchored to the ground!"))
+			to_chat(user, span_warning("[src]Não pode ser dobrado enquanto ancorado no chão!"))
 			return CLICK_ACTION_BLOCKING
 		if(barricade_upgrade_type)
-			to_chat(user, span_warning("[src] cannot be folded up with upgrades attached, remove them first!"))
+			to_chat(user, span_warning("[src]Não pode ser dobrado com upgrades anexados, remova-os primeiro!"))
 			return CLICK_ACTION_BLOCKING
 		if(get_integrity() < max_integrity)
-			to_chat(user, span_warning("[src] cannot be folded up while damaged!"))
+			to_chat(user, span_warning("[src]Não pode ser dobrado enquanto está danificado!"))
 			return CLICK_ACTION_BLOCKING
-		user.visible_message(span_notice("[user] starts folding [src] up!"), span_notice("You start folding [src] up!"))
+		user.visible_message(span_notice("[user]Começa a dobrar[src]Levante-se!"), span_notice("Você começa a dobrar[src]Levante-se!"))
 		if(do_after(user, 5 SECONDS, src))
 			if(QDELETED(src)) //Copied encase we change states.
 				return
 			if(anchored)
-				to_chat(user, span_warning("[src] cannot be folded up while anchored to the ground!"))
+				to_chat(user, span_warning("[src]Não pode ser dobrado enquanto ancorado no chão!"))
 				return CLICK_ACTION_BLOCKING
 			if(barricade_upgrade_type)
-				to_chat(user, span_warning("[src] cannot be folded up with upgrades attached, remove them first!"))
+				to_chat(user, span_warning("[src]Não pode ser dobrado com upgrades anexados, remova-os primeiro!"))
 				return CLICK_ACTION_BLOCKING
 			if(get_integrity() < max_integrity)
-				to_chat(user, span_warning("[src] cannot be folded up while damaged!"))
+				to_chat(user, span_warning("[src]Não pode ser dobrado enquanto está danificado!"))
 				return CLICK_ACTION_BLOCKING
-			user.visible_message(span_notice("[user] folds [src] up!"), span_notice("You neatly fold [src] up!"))
+			user.visible_message(span_notice("[user]Dobras.[src]Levante-se!"), span_notice("Você dobra bem[src]Levante-se!"))
 			playsound(src, 'sound/items/tools/ratchet.ogg', 25, TRUE)
 			fold_up()
 			return CLICK_ACTION_SUCCESS
@@ -431,10 +431,10 @@
 			return attempt_barricade_upgrade(I, user, params)
 
 		if(metal_sheets.get_amount() < repair_amount)
-			to_chat(user, span_warning("You need at least two sheets of metal to repair [src]!"))
+			to_chat(user, span_warning("Você precisa de pelo menos duas folhas de metal para consertar[src]!"))
 			return FALSE
 
-		visible_message(span_notice("[user] begins to repair [src]."))
+		visible_message(span_notice("[user]começa a reparar[src]."))
 
 		if(!do_after(user, 2 SECONDS, src) || get_integrity() >= max_integrity)
 			return FALSE
@@ -443,26 +443,26 @@
 			return FALSE
 
 		repair_damage(max_integrity * 0.3)
-		visible_message(span_notice("[user] repairs [src]."))
+		visible_message(span_notice("[user]Reparos[src]."))
 	return ..()
 
 /obj/structure/deployable_barricade/metal/proc/attempt_barricade_upgrade(obj/item/stack/sheet/iron/metal_sheets, mob/user, params)
 	if(barricade_upgrade_type)
-		to_chat(user, span_warning("[src] is already upgraded."))
+		to_chat(user, span_warning("[src]Já está atualizado."))
 		return FALSE
 	if(get_integrity() < max_integrity)
-		to_chat(user, span_warning("You cannot upgrade [src] until it has been repaired!"))
+		to_chat(user, span_warning("Você não pode atualizar.[src]até que tenha sido reparado!"))
 		return FALSE
 
 	if(metal_sheets.get_amount() < BARRICADE_UPGRADE_REQUIRED_SHEETS)
-		to_chat(user, span_warning("You need at least <b>[BARRICADE_UPGRADE_REQUIRED_SHEETS]</b> to upgrade [src]!"))
+		to_chat(user, span_warning("Você precisa pelo menos<b>[BARRICADE_UPGRADE_REQUIRED_SHEETS]</b>Para atualizar[src]!"))
 		return FALSE
 
 	var/static/list/cade_types = list(BARRICADE_TYPE_BOMB = image(icon = 'modular_skyrat/modules/barricades/icons/barricade.dmi', icon_state = "explosive_obj"), BARRICADE_TYPE_MELEE = image(icon = 'modular_skyrat/modules/barricades/icons/barricade.dmi', icon_state = "brute_obj"), BARRICADE_TYPE_ACID = image(icon = 'modular_skyrat/modules/barricades/icons/barricade.dmi', icon_state = "burn_obj"))
 	var/choice = show_radial_menu(user, src, cade_types, require_near = TRUE, tooltips = TRUE)
 
-	user.visible_message(span_notice("[user] starts attaching [choice] to [src]."),
-		span_notice("You start attaching [choice] to [src]."))
+	user.visible_message(span_notice("[user]Começa a anexar[choice]Para[src]."),
+		span_notice("Você começa a anexar[choice]Para[src]."))
 	if(!do_after(user, 2 SECONDS, src))
 		return FALSE
 
@@ -479,8 +479,8 @@
 
 	barricade_upgrade_type = choice
 
-	user.visible_message(span_notice("[user] attaches[choice] to [src]."),
-		span_notice("You attach [choice] to [src]."))
+	user.visible_message(span_notice("[user]APENAS[choice]Para[src]."),
+		span_notice("Você anexa[choice]Para[src]."))
 
 	playsound(src, 'sound/items/tools/screwdriver.ogg', 25, TRUE)
 	update_icon()
@@ -489,17 +489,17 @@
 	. = ..()
 	switch(build_state)
 		if(BARRICADE_METAL_FIRM)
-			. += span_info("The cover plate is <b>screwed</b> in place.")
+			. += span_info("A placa de cobertura é<b>Está ferrado.</b>Nenhum lugar.")
 		if(BARRICADE_METAL_ANCHORED)
-			. += span_info("The cover plate is <i>unscrewed</i>, but it is <b>bolted</b> to the ground.")
+			. += span_info("A placa de cobertura é<i>\"Desenroso\".</i>, mas é<b>Aparafusado.</b>Para o chão.")
 		if(BARRICADE_METAL_LOOSE)
-			. += span_info("The anchor points are <i>unbolted</i>, use a <b>crowbar</b> to disassemble it.")
+			. += span_info("Os pontos de âncora são<i>Sem parafusos.</i>, use um<b>Pé de cabra.</b>Para desmontar.")
 
 	if(barricade_upgrade_type)
-		. += span_info("It has [barricade_upgrade_type] installed.")
+		. += span_info("Tem.[barricade_upgrade_type]Instalado.")
 
 	if(portable_type)
-		. += span_info("Alt+click to fold it up into it's portable form.")
+		. += span_info("Alt + clique para dobrá-lo em sua forma portátil.")
 
 /obj/structure/deployable_barricade/metal/welder_act(mob/living/user, obj/item/I)
 	var/obj/item/weldingtool/welding_tool = I
@@ -508,15 +508,15 @@
 		return FALSE
 
 	if(get_integrity() <= max_integrity * 0.3)
-		to_chat(user, span_warning("[src] is too damaged to be repaired with a welder!"))
+		to_chat(user, span_warning("[src]Está muito danificado para ser reparado com um soldador!"))
 		return TRUE
 
 	if(get_integrity() >= max_integrity)
-		to_chat(user, span_warning("[src] does not need repairing."))
+		to_chat(user, span_warning("[src]Não precisa de reparos."))
 		return TRUE
 
-	user.visible_message(span_notice("[user] starts welding the damage on [src]."),
-	span_notice("You start welding the damage on [src]."))
+	user.visible_message(span_notice("[user]Começa a soldar o dano.[src]."),
+	span_notice("Você começa a soldar os danos.[src]."))
 	playsound(src, 'sound/items/tools/welder2.ogg', 25, TRUE)
 
 	if(!do_after(user, 5 SECONDS, src))
@@ -529,8 +529,8 @@
 		to_chat(user, span_warning("combustível insuficiente!"))
 		return TRUE
 
-	user.visible_message(span_notice("[user] welds the damage on [src]."),
-	span_notice("You weld the damage on [src]."))
+	user.visible_message(span_notice("[user]Solda o dano em[src]."),
+	span_notice("Você solda o dano em[src]."))
 	repair_damage(150)
 	update_icon()
 	playsound(src, 'sound/items/tools/welder2.ogg', 25, TRUE)
@@ -543,8 +543,8 @@
 			playsound(src, 'sound/items/tools/screwdriver.ogg', 25, TRUE)
 			if(!do_after(user, 1 SECONDS, src))
 				return TRUE
-			user.visible_message (span_notice ("[user] secures the panel on [src]."),
-			span_notice ("You secure the panel on [src]."))
+			user.visible_message (span_notice ("[user]Proteger o Painel.[src]."),
+			span_notice ("Você protege o painel.[src]."))
 			build_state = BARRICADE_METAL_FIRM
 			return TRUE
 
@@ -554,8 +554,8 @@
 			if(!do_after(user, 1 SECONDS, src))
 				return TRUE
 
-			user.visible_message (span_notice ("[user] removes the panel from [src]."),
-			span_notice ("You remove the panel from [src], revealing some <b>bolts</b> beneath it."))
+			user.visible_message (span_notice ("[user]Remova o painel de[src]."),
+			span_notice ("Você remove o painel de[src], revelando alguns<b>Parafusos</b>Por baixo dele."))
 			build_state = BARRICADE_METAL_ANCHORED
 			return TRUE
 
@@ -566,8 +566,8 @@
 			playsound(src, 'sound/items/tools/ratchet.ogg', 25, TRUE)
 			if(!do_after(user, 1 SECONDS, src))
 				return TRUE
-			user.visible_message (span_notice ("[user] loosens the anchor bolts on [src]."),
-			span_notice ("You loosen the anchor bolts on [src]."))
+			user.visible_message (span_notice ("[user]Solta os parafusos da âncora.[src]."),
+			span_notice ("Você solta os parafusos da âncora[src]."))
 			build_state = BARRICADE_METAL_LOOSE
 			anchored = FALSE
 			modify_max_integrity(initial(max_integrity) * 0.5)
@@ -577,20 +577,20 @@
 		if(BARRICADE_METAL_LOOSE) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to resecure anchor bolts
 			var/turf/mystery_turf = get_turf(src)
 			if(!isopenturf(mystery_turf))
-				to_chat(user, span_warning("You cannot install [src] here!"))
+				to_chat(user, span_warning("Você não pode instalar.[src]Aqui!"))
 				return TRUE
 
 			for(var/obj/structure/deployable_barricade/B in loc)
 				if(B != src && B.dir == dir)
-					to_chat(user, span_warning("There is already a barricade here."))
+					to_chat(user, span_warning("Já há uma barricada aqui."))
 					return TRUE
 
 			playsound(src, 'sound/items/tools/ratchet.ogg', 25, TRUE)
 			if(!do_after(user, 1 SECONDS, src))
 				return TRUE
 
-			user.visible_message(span_notice("[user] tightens the anchor bolts on [src]."),
-			span_notice("You tighten the anchor bolts on [src]."))
+			user.visible_message(span_notice("[user]Aperta os parafusos da âncora.[src]."),
+			span_notice("Você aperta os parafusos da âncora.[src]."))
 			build_state = BARRICADE_METAL_ANCHORED
 			anchored = TRUE
 			modify_max_integrity(initial(max_integrity))
@@ -601,33 +601,33 @@
 /obj/structure/deployable_barricade/metal/crowbar_act(mob/living/user, obj/item/I)
 	switch(build_state)
 		if(BARRICADE_METAL_LOOSE) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to resecure anchor bolts
-			user.visible_message(span_notice("[user] begins to disassemble [src]."),
-			span_notice("You start to disassemble [src]."))
+			user.visible_message(span_notice("[user]Começa a desmontar[src]."),
+			span_notice("Você começa a desmontar[src]."))
 
 			playsound(src, 'sound/items/tools/crowbar.ogg', 25, 1)
 			if(!do_after(user, 5 SECONDS, src))
 				return TRUE
 
-			user.visible_message(span_notice("[user] disassembles [src]."),
-			span_notice("You disassemble [src]."))
+			user.visible_message(span_notice("[user]Desmonta[src]."),
+			span_notice("Você se desmonta.[src]."))
 			playsound(src, 'sound/items/deconstruct.ogg', 25, 1)
 			deconstruct(TRUE)
 			return TRUE
 
 		if(BARRICADE_METAL_FIRM)
 			if(!barricade_upgrade_type) //Check to see if we actually have upgrades to remove.
-				to_chat(user, span_warning("This barricade has no installed upgrades to remove!"))
+				to_chat(user, span_warning("Esta barricada não tem atualizações instaladas para remover!"))
 				return TRUE
 
-			user.visible_message(span_notice("[user] begins to detach the armor plates from [src]."),
-			span_notice("You begin to detach the armor plates from [src]."))
+			user.visible_message(span_notice("[user]começa a separar as placas de armadura de[src]."),
+			span_notice("Você começa a separar as placas de armadura de[src]."))
 
 			playsound(src, 'sound/items/tools/crowbar.ogg', 25, 1)
 			if(!do_after(user, 5 SECONDS, src))
 				return TRUE
 
-			user.visible_message(span_notice("[user] detaches the armor plates from [src]."),
-			span_notice("You detach the armor plates from [src]."))
+			user.visible_message(span_notice("[user]Detalha as placas de armadura de[src]."),
+			span_notice("Você retira as placas de armadura[src]."))
 			playsound(src, 'sound/items/deconstruct.ogg', 25, 1)
 
 			switch(barricade_upgrade_type)
@@ -666,7 +666,7 @@
 
 /obj/structure/deployable_barricade/metal/plasteel
 	name = "plasteel barricade"
-	desc = "A strong plasteel barricade, it can be lowered if necessary. Use a welder to repair it."
+	desc = "Uma barricada de plasteel forte, pode ser baixada se necessário. Use um soldador para repará-lo."
 	icon_state = "plasteel_closed_0"
 	max_integrity = 500
 	stack_type = /obj/item/stack/sheet/plasteel
@@ -684,22 +684,22 @@
 /obj/structure/deployable_barricade/metal/plasteel/crowbar_act(mob/living/user, obj/item/I)
 	switch(build_state)
 		if(BARRICADE_METAL_LOOSE) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to resecure anchor bolts
-			user.visible_message(span_notice("[user] begins to disassemble [src]."),
-			span_notice("You start to disassemble [src]."))
+			user.visible_message(span_notice("[user]Começa a desmontar[src]."),
+			span_notice("Você começa a desmontar[src]."))
 
 			playsound(src, 'sound/items/tools/crowbar.ogg', 25, 1)
 			if(!do_after(user, 5 SECONDS, src))
 				return TRUE
 
-			user.visible_message(span_notice("[user] disassembles [src]."),
-			span_notice("You disassemble [src]."))
+			user.visible_message(span_notice("[user]Desmonta[src]."),
+			span_notice("Você se desmonta.[src]."))
 			playsound(src, 'sound/items/deconstruct.ogg', 25, 1)
 			deconstruct(TRUE)
 			return TRUE
 		if(BARRICADE_METAL_FIRM)
 			linked = !linked
-			user.visible_message(span_notice("[user] has [linked ? "linked" : "unlinked" ] [src]."),
-			span_notice("You [linked ? "link" : "unlink" ] [src]."))
+			user.visible_message(span_notice("[user]Tem.[linked ? "linked" : "unlinked" ] [src]."),
+			span_notice("Você.[linked ? "link" : "unlink" ] [src]."))
 			for(var/direction in GLOB.cardinals)
 				for(var/obj/structure/deployable_barricade/metal/plasteel/cade in get_step(src, direction))
 					cade.update_icon()
@@ -723,7 +723,7 @@
 	density = !density
 
 	user?.visible_message(span_notice("[user] [closed ? "lowers" : "raises"] [src] ."),
-		span_notice("You [closed ? "lower" : "raise"] [src]."))
+		span_notice("Você.[closed ? "lower" : "raise"] [src]."))
 
 	if(!linked)
 		update_icon()
@@ -761,7 +761,7 @@
 //An item thats meant to be a template for quickly deploying stuff like barricades
 /obj/item/quickdeploy
 	name = "C.U.C.K.S"
-	desc = "Compact Universal Complex Kinetic Self-expanding Barricade. Great for deploying quick fortifications."
+	desc = "Compact Universal Complex Kinetic Auto-expansão Barricada. Ótimo para implantar fortificações rápidas."
 	icon = 'modular_skyrat/modules/barricades/icons/barricade.dmi'
 	w_class = WEIGHT_CLASS_SMALL //While this is small, normal 50 stacks of metal is NORMAL so this is a bit on the bad space to cade ratio
 	var/delay = 0 //Delay on deploying the thing
@@ -772,7 +772,7 @@
 	. += "This [src.name] is set up deploy [initial(thing_to_deploy.name)]." // initial() since thing_to_deploy is a typepath
 
 /obj/item/quickdeploy/attack_self(mob/user)
-	to_chat(user, span_notice("You start deploying [src] in front of you."))
+	to_chat(user, span_notice("Você começa a implantar[src]Na sua frente."))
 	playsound(src, 'sound/items/tools/ratchet.ogg', 25, 1)
 	if(!do_after(usr, delay, src))
 		return
@@ -784,7 +784,7 @@
 
 /obj/item/quickdeploy/proc/can_place(mob/user)
 	if(isnull(thing_to_deploy)) //Spaghetti or wrong type spawned
-		to_chat(user, span_warning("Nothing happens... [src] must be defective."))
+		to_chat(user, span_warning("Nada acontece...[src]Deve estrelar com defeito."))
 		return FALSE
 	return TRUE
 
@@ -800,25 +800,25 @@
 
 	var/turf/mystery_turf = user.loc
 	if(!isopenturf(mystery_turf))
-		to_chat(user, span_warning("You cannot deploy [src] here!"))
+		to_chat(user, span_warning("Você não pode ir.[src]Aqui!"))
 		return FALSE
 
 	var/turf/open/placement_loc = mystery_turf
 	if(placement_loc.density) //We shouldn't be building here.
-		to_chat(user, span_warning("You cannot deploy [src] here!"))
+		to_chat(user, span_warning("Você não pode ir.[src]Aqui!"))
 		return FALSE
 
 	for(var/obj/thing in user.loc)
 		if(!thing.density) //not dense, move on
 			continue
 		if(!(thing.flags_1 & ON_BORDER_1)) //dense and non-directional, end
-			to_chat(user, span_warning("There is no room deploy [src] here."))
+			to_chat(user, span_warning("Não há espaço disponível.[src]Aqui."))
 			return FALSE
 		if(thing.dir != user.dir)
 			continue
-		to_chat(user, span_warning("There is no room deploy [src] here."))
+		to_chat(user, span_warning("Não há espaço disponível.[src]Aqui."))
 		return FALSE
-	to_chat(user, span_notice("You start deploying [src]..."))
+	to_chat(user, span_notice("Você começa a implantar[src]..."))
 	return TRUE
 
 /obj/item/quickdeploy/barricade/plasteel
@@ -828,7 +828,7 @@
 /obj/item/storage/barricade
 	icon = 'modular_skyrat/modules/barricades/icons/barricade.dmi'
 	name = "C.U.C.K.S box"
-	desc = "Contains several deployable barricades."
+	desc = "Contém várias barricadas implantáveis."
 	icon_state = "box_metal"
 	w_class = WEIGHT_CLASS_NORMAL
 

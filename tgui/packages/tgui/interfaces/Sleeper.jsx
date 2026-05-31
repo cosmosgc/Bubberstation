@@ -47,7 +47,7 @@ export const Sleeper = (props) => {
     <Window width={310} height={465}>
       <Window.Content>
         <Section
-          title={occupant.name ? occupant.name : 'No Occupant'}
+          title={occupant.name ? occupant.name : 'Nenhum Ocupante'}
           minHeight="210px"
           buttons={
             !!occupant.stat && (

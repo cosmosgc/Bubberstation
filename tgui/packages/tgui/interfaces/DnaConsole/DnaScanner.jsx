@@ -32,7 +32,7 @@ const DnaScannerButtons = (props) => {
   if (!isScannerConnected) {
     return (
       <Button
-        content="Connect Scanner"
+        content="Conectar scanner"
         onClick={() => act('connect_scanner')}
       />
     );
@@ -41,7 +41,7 @@ const DnaScannerButtons = (props) => {
     <>
       {!!hasDelayedAction && (
         <Button
-          content="Cancel Delayed Action"
+          content="Cancelar Ação Atrasada"
           onClick={() => act('cancel_delay')}
         />
       )}
@@ -152,7 +152,7 @@ const DnaScannerContent = (props) => {
           {subjectHealth}%
         </ProgressBar>
       </LabeledList.Item>
-      <LabeledList.Item label="Genetic Damage">
+      <LabeledList.Item label="Dano Genético">
         <ProgressBar
           value={subjectDamage}
           minValue={0}
@@ -173,7 +173,7 @@ const DnaScannerContent = (props) => {
 
 export const DnaScanner = (props) => {
   return (
-    <Section title="DNA Scanner" buttons={<DnaScannerButtons />}>
+    <Section title="Scanner de DNA" buttons={<DnaScannerButtons />}>
       <DnaScannerContent />
     </Section>
   );

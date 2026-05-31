@@ -85,7 +85,7 @@ Doesn't work on other aliens/AI.*/
 /datum/action/cooldown/alien/make_structure/proc/check_for_duplicate()
 	var/obj/structure/existing_thing = locate(made_structure_type) in owner.loc
 	if(existing_thing)
-		to_chat(owner, span_warning("There is already \a [existing_thing] here!"))
+		to_chat(owner, span_warning("Já existe.\a [existing_thing]Aqui!"))
 		return FALSE
 
 	return TRUE
@@ -94,7 +94,7 @@ Doesn't work on other aliens/AI.*/
 /datum/action/cooldown/alien/make_structure/proc/check_for_vents()
 	var/obj/machinery/atmospherics/components/unary/atmos_thing = locate() in owner.loc
 	if(atmos_thing)
-		var/are_you_sure = tgui_alert(owner, "Laying eggs and shaping resin here would block access to [atmos_thing]. Do you want to continue?", "Blocking Atmospheric Component", list("Yes", "No"))
+		var/are_you_sure = tgui_alert(owner, "Colocar ovos e moldar resina aqui bloquearia o acesso a[atmos_thing]Você quer continuar?", "Blocking Atmospheric Component", list("Yes", "No"))
 		if(are_you_sure != "Yes")
 			return FALSE
 		if(QDELETED(src) || QDELETED(owner) || !check_for_duplicate())
@@ -104,18 +104,18 @@ Doesn't work on other aliens/AI.*/
 
 /datum/action/cooldown/alien/make_structure/plant_weeds
 	name = "Plant Weeds"
-	desc = "Plants some alien weeds."
+	desc = "Planta algumas ervas daninhas alienígenas."
 	button_icon_state = "alien_plant"
 	plasma_cost = 50
 	made_structure_type = /obj/structure/alien/weeds/node
 
 /datum/action/cooldown/alien/make_structure/plant_weeds/Activate(atom/target)
-	owner.visible_message(span_alertalien("[owner] plants some alien weeds!"))
+	owner.visible_message(span_alertalien("[owner]Planta algumas ervas daninhas alienígenas!"))
 	return ..()
 
 /datum/action/cooldown/alien/whisper
 	name = "Whisper"
-	desc = "Whisper to someone."
+	desc = "Sussurre para alguém."
 	button_icon_state = "alien_whisper"
 	plasma_cost = 10
 
@@ -125,7 +125,7 @@ Doesn't work on other aliens/AI.*/
 		possible_recipients += recipient
 
 	if(!length(possible_recipients))
-		to_chat(owner, span_noticealien("There's no one around to whisper to."))
+		to_chat(owner, span_noticealien("Não há ninguém para sussurrar."))
 		return FALSE
 
 	var/mob/living/chosen_recipient = tgui_input_list(owner, "Select whisper recipient", "Whisper", sort_names(possible_recipients))
@@ -136,12 +136,12 @@ Doesn't work on other aliens/AI.*/
 	if(QDELETED(chosen_recipient) || QDELETED(src) || QDELETED(owner) || !IsAvailable(feedback = TRUE) || !to_whisper)
 		return FALSE
 	if(chosen_recipient.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0))
-		to_chat(owner, span_warning("As you reach into [chosen_recipient]'s mind, you are stopped by a mental blockage. It seems you've been foiled."))
+		to_chat(owner, span_warning("Enquanto você alcança[chosen_recipient]Você é parado por um bloqueio mental. Parece que você foi frustrado."))
 		return FALSE
 
 	log_directed_talk(owner, chosen_recipient, to_whisper, LOG_SAY, tag = "alien whisper")
 	to_chat(chosen_recipient, "[span_noticealien("You hear a strange, alien voice in your head...")][to_whisper]")
-	to_chat(owner, span_noticealien("You said: \"[to_whisper]\" to [chosen_recipient]"))
+	to_chat(owner, span_noticealien("Você disse:\"[to_whisper]\"para[chosen_recipient]"))
 	for(var/mob/dead_mob as anything in GLOB.dead_mob_list)
 		if(!isobserver(dead_mob))
 			continue
@@ -153,7 +153,7 @@ Doesn't work on other aliens/AI.*/
 
 /datum/action/cooldown/alien/transfer
 	name = "Transfer Plasma"
-	desc = "Transfer Plasma to another alien."
+	desc = "Transfira Plasma para outro alienígena."
 	plasma_cost = 0
 	button_icon_state = "alien_transfer"
 
@@ -166,7 +166,7 @@ Doesn't work on other aliens/AI.*/
 		aliens_around += alien
 
 	if(!length(aliens_around))
-		to_chat(owner, span_noticealien("There are no other aliens around."))
+		to_chat(owner, span_noticealien("Não há outros alienígenas por perto."))
 		return FALSE
 
 	var/mob/living/carbon/donation_target = tgui_input_list(owner, "Target to transfer to", "Plasma Donation", sort_names(aliens_around))
@@ -178,14 +178,14 @@ Doesn't work on other aliens/AI.*/
 		return FALSE
 
 	if(get_dist(owner, donation_target) > 1)
-		to_chat(owner, span_noticealien("You need to be closer!"))
+		to_chat(owner, span_noticealien("Você precisa estar mais perto!"))
 		return FALSE
 
 	donation_target.adjustPlasma(amount)
 	carbon_owner.adjustPlasma(-amount)
 
-	to_chat(donation_target, span_noticealien("[owner] has transferred [amount] plasma to you."))
-	to_chat(owner, span_noticealien("You transfer [amount] plasma to [donation_target]."))
+	to_chat(donation_target, span_noticealien("[owner]Foi transferido.[amount]plasma para você."))
+	to_chat(owner, span_noticealien("Você se transferiu.[amount]plasma para[donation_target]."))
 	return TRUE
 
 /datum/action/cooldown/alien/acid
@@ -194,7 +194,7 @@ Doesn't work on other aliens/AI.*/
 
 /datum/action/cooldown/alien/acid/corrosion
 	name = "Corrosive Acid"
-	desc = "Drench an object in acid, destroying it over time."
+	desc = "Drenche um objeto em ácido, destruindo-o com o tempo."
 	button_icon_state = "alien_acid"
 	plasma_cost = 200
 	/// The acid power for the aliens acid corrosion, will ignore mobs
@@ -207,7 +207,7 @@ Doesn't work on other aliens/AI.*/
 	if(!.)
 		return
 
-	to_chat(on_who, span_noticealien("You prepare to vomit acid. <b>Click a target to acid it!</b>"))
+	to_chat(on_who, span_noticealien("Você se prepara para vomitar ácido.<b>Clique em um alvo para acidá-lo!</b>"))
 	on_who.update_icons()
 
 /datum/action/cooldown/alien/acid/corrosion/unset_click_ability(mob/on_who, refund_cooldown = TRUE)
@@ -216,14 +216,14 @@ Doesn't work on other aliens/AI.*/
 		return
 
 	if(refund_cooldown)
-		to_chat(on_who, span_noticealien("You empty your corrosive acid glands."))
+		to_chat(on_who, span_noticealien("Você esvazia suas glândulas ácidas corrosivas."))
 	on_who.update_icons()
 
 /datum/action/cooldown/alien/acid/corrosion/PreActivate(atom/target)
 	if(get_dist(owner, target) > 1)
 		return FALSE
 	if(ismob(target)) //If it could corrode mobs, it would one-shot them.
-		owner.balloon_alert(owner, "doesn't work on creatures!")
+		owner.balloon_alert(owner, "Não funciona com criaturas!")
 		return FALSE
 
 	return ..()
@@ -232,18 +232,18 @@ Doesn't work on other aliens/AI.*/
 	if(isturf(target))
 		target.AddComponent(/datum/component/acid, corrosion_acid_power, corrosion_acid_volume, GLOB.acid_overlay, /particles/acid, turf_acid_ignores_mobs = TRUE)
 	else if(!target.acid_act(corrosion_acid_power, corrosion_acid_volume))
-		to_chat(owner, span_noticealien("You cannot dissolve this object."))
+		to_chat(owner, span_noticealien("Você não pode dissolver este objeto."))
 		return FALSE
 
 	owner.visible_message(
-		span_alertalien("[owner] vomits globs of vile stuff all over [target]. It begins to sizzle and melt under the bubbling mess of acid!"),
-		span_noticealien("You vomit globs of acid over [target]. It begins to sizzle and melt."),
+		span_alertalien("[owner]Vómitos de coisas vis por toda parte.[target]Começa a ferver e derreter sob a bagunça borbulhante de ácido!"),
+		span_noticealien("Você vomita bolhas de ácido sobre[target]Começa a ferver e derreter."),
 	)
 	return TRUE
 
 /datum/action/cooldown/alien/acid/neurotoxin
 	name = "Spit Neurotoxin"
-	desc = "Spits neurotoxin at someone, dealing large amounts of stamina damage."
+	desc = "Cospe neurotoxina em alguém, lidando com grandes quantidades de resistência."
 	button_icon_state = "alien_neurotoxin_0"
 	plasma_cost = 50
 
@@ -260,7 +260,7 @@ Doesn't work on other aliens/AI.*/
 	if(!.)
 		return
 
-	to_chat(on_who, span_notice("You prepare your neurotoxin gland. <B>Left-click to fire at a target!</B>"))
+	to_chat(on_who, span_notice("Prepare sua glândula neurotoxina.<B>Click esquerdo para atirar em um alvo!</B>"))
 
 	button_icon_state = "alien_neurotoxin_1"
 	build_all_button_icons()
@@ -272,7 +272,7 @@ Doesn't work on other aliens/AI.*/
 		return
 
 	if(refund_cooldown)
-		to_chat(on_who, span_notice("You empty your neurotoxin gland."))
+		to_chat(on_who, span_notice("Você esvazia sua glândula neurotoxina."))
 
 	button_icon_state = "alien_neurotoxin_0"
 	build_all_button_icons()
@@ -289,8 +289,8 @@ Doesn't work on other aliens/AI.*/
 
 	var/modifiers = params2list(params)
 	clicker.visible_message(
-		span_danger("[clicker] spits neurotoxin!"),
-		span_alertalien("You spit neurotoxin."),
+		span_danger("[clicker]Cuspiu neurotoxina!"),
+		span_alertalien("Você cuspiu neurotoxina."),
 	)
 	var/obj/projectile/neurotoxin/neurotoxin = new /obj/projectile/neurotoxin(clicker.loc)
 	neurotoxin.aim_projectile(target, clicker, modifiers)
@@ -305,7 +305,7 @@ Doesn't work on other aliens/AI.*/
 
 /datum/action/cooldown/alien/make_structure/resin
 	name = "Secrete Resin"
-	desc = "Secrete tough malleable resin."
+	desc = "Secrete resina maleável resistente."
 	button_icon_state = "alien_resin"
 	plasma_cost = 55
 	/// A list of all structures we can make.
@@ -320,7 +320,7 @@ Doesn't work on other aliens/AI.*/
 	for(var/blocker_name in structures)
 		var/obj/structure/blocker_type = structures[blocker_name]
 		if(locate(blocker_type) in owner.loc)
-			to_chat(owner, span_warning("There is already a resin structure there!"))
+			to_chat(owner, span_warning("Já tem uma estrutura de resina lá!"))
 			return FALSE
 
 	return TRUE
@@ -335,12 +335,12 @@ Doesn't work on other aliens/AI.*/
 		return FALSE
 
 	owner.visible_message(
-		span_notice("[owner] vomits up a thick purple substance and begins to shape it."),
-		span_notice("You shape a [choice] out of resin."),
+		span_notice("[owner]vomita uma substância púrpura grossa e começa a moldá-la."),
+		span_notice("Você forma um[choice]Sem resina."),
 	)
 	//SKYRAT EDIT START - Roundstart xenohybrid organs
 	if(build_duration && !do_after(owner, build_duration))
-		owner.balloon_alert(owner, "interrompido!")
+		owner.balloon_alert(owner, "Interrompido!")
 		return
 	//SKYRAT EDIT END
 	new choice_path(owner.loc)
@@ -348,7 +348,7 @@ Doesn't work on other aliens/AI.*/
 
 /datum/action/cooldown/mob_cooldown/sneak/alien
 	name = "Alien Sentinel Sneak"
-	desc = "Blend into the shadows to stalk your prey."
+	desc = "Misture-se nas sombras para perseguir sua presa."
 	button_icon = 'icons/mob/actions/actions_xeno.dmi'
 	button_icon_state = "alien_sneak"
 	background_icon_state = "bg_alien"
@@ -357,7 +357,7 @@ Doesn't work on other aliens/AI.*/
 
 /datum/action/cooldown/alien/regurgitate
 	name = "Regurgitate"
-	desc = "Empties the contents of your stomach."
+	desc = "Esvazia o conteúdo do seu estômago."
 	button_icon_state = "alien_barf"
 	var/angle_delta = 45
 	var/mob_speed = 1.5
@@ -369,14 +369,13 @@ Doesn't work on other aliens/AI.*/
 	var/mob/living/carbon/alien/adult/alieninated_owner = owner
 	var/obj/item/organ/stomach/alien/melting_pot = alieninated_owner.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(!melting_pot)
-		owner.visible_message(span_clown("[src] gags, and spits up a bit of purple liquid. Ewwww."), \
-			span_alien("You feel a pain in your... chest? There's nothing there there's nothing there no no n-"))
+		owner.visible_message(span_clown("[src]Gags, e cospe um pouco de líquido roxo. Ewwww."), 			span_alien("Sente uma dor no seu peito? Não há nada lá não há nada lá não..."))
 		return
 
 	if(!length(melting_pot.stomach_contents))
-		to_chat(owner, span_alien("There's nothing in your stomach, what exactly do you plan on spitting up?"))
+		to_chat(owner, span_alien("Não tem nada no seu estômago, o que planeja cuspir?"))
 		return
-	owner.visible_message(span_danger("[owner] hurls out the contents of their stomach!"))
+	owner.visible_message(span_danger("[owner]Lança fora o conteúdo de seu estômago!"))
 	var/dir_angle = dir2angle(owner.dir)
 
 	playsound(owner, 'sound/mobs/non-humanoids/alien/alien_york.ogg', 100)

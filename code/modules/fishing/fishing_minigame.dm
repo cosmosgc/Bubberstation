@@ -211,7 +211,7 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 
 /datum/fishing_challenge/proc/on_spot_gone(datum/source)
 	SIGNAL_HANDLER
-	send_alert("fishing spot gone!")
+	send_alert("O ponto de pesca se foi!")
 	interrupt()
 
 /datum/fishing_challenge/proc/interrupt_challenge(datum/source, reason)
@@ -239,7 +239,7 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 	user.add_mood_event("fishing", /datum/mood_event/fishing)
 	RegisterSignal(user, COMSIG_MOB_CLICKON, PROC_REF(handle_click))
 	start_baiting_phase()
-	to_chat(user, span_notice("You start fishing..."))
+	to_chat(user, span_notice("Você começa a pescar..."))
 	playsound(location, 'sound/effects/splash.ogg', 100)
 
 ///Set the timers for lure that need to be spun at intervals.
@@ -269,35 +269,35 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 /datum/fishing_challenge/proc/missed_lure()
 	if(phase != WAIT_PHASE)
 		return
-	send_alert("miss!")
+	send_alert("Senhorita!")
 	start_baiting_phase(TRUE) //Add in another 3 to 5 seconds for not spinning the lure.
 
 /datum/fishing_challenge/proc/on_line_deleted(datum/source)
 	SIGNAL_HANDLER
 	fishing_line = null
 	///The float may be out of sight if the user has moed around a corner, so the message should be displayed over him instead.
-	user.balloon_alert(user, user.is_holding(used_rod) ? "line snapped" : "rod dropped")
+	user.balloon_alert(user, user.is_holding(used_rod) ? "Uma linha quebrou." : "Rod Caiu.")
 	interrupt()
 
 /datum/fishing_challenge/proc/on_float_or_user_move(datum/source)
 	SIGNAL_HANDLER
 
 	if(!location.IsReachableBy(user))
-		user.balloon_alert(user, "longe demais!")
+		user.balloon_alert(user, "Longe demais!")
 		interrupt()
 
 /datum/fishing_challenge/proc/on_hands_blocked(datum/source)
 	SIGNAL_HANDLER
 	if(completed) //the rod was dropped and therefore challenge already completed.
 		return
-	user.balloon_alert(user, "hands blocked!")
+	user.balloon_alert(user, "Mãos bloqueadas!")
 	interrupt()
 
 /datum/fishing_challenge/proc/no_longer_fishing(datum/source)
 	SIGNAL_HANDLER
 	if(completed) //we already won/lost
 		return
-	user.balloon_alert(user, "interrompido!")
+	user.balloon_alert(user, "Interrompido!")
 	interrupt()
 
 /datum/fishing_challenge/proc/handle_click(mob/living/source, atom/target, modifiers)
@@ -315,7 +315,7 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 			return COMSIG_MOB_CANCEL_CLICKON //Don't punish players if they accidentally double clicked.
 		if(float.spin_frequency)
 			if(!float.spin_ready)
-				send_alert("too early!")
+				send_alert("Muito cedo!")
 				start_baiting_phase(TRUE) //Add in another 3 to 5 seconds for that blunder.
 			else
 				send_alert("spun")
@@ -323,7 +323,7 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 			float.spin_ready = FALSE
 			set_lure_timers()
 		else
-			send_alert("miss!")
+			send_alert("Senhorita!")
 			start_baiting_phase(TRUE) //Add in another 3 to 5 seconds for that blunder.
 	else if(phase == BITING_PHASE)
 		start_minigame_phase()
@@ -342,7 +342,7 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 /datum/fishing_challenge/proc/stop_fishing(obj/item/rod, mob/living/user)
 	if((phase != MINIGAME_PHASE || do_after(user, 3 SECONDS, rod)) && !QDELETED(src) && !completed)
 		experience_multiplier *= 0.5
-		send_alert("stopped fishing")
+		send_alert("Pare de pescar.")
 		complete(FALSE)
 
 ///The multiplier of the fishing experience malus if the user's level is substantially above the difficulty.
@@ -434,37 +434,37 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 		fish_icon = possible_icon || FISH_ICON_DEF
 		switch(fish_icon)
 			if(FISH_ICON_DEF)
-				send_alert("fish!!!")
+				send_alert("Peixe!")
 			if(FISH_ICON_HOSTILE)
-				send_alert("hostile!!!")
+				send_alert("Hostis!")
 			if(FISH_ICON_STAR)
-				send_alert("starfish!!!")
+				send_alert("Estrela-do-mar!")
 			if(FISH_ICON_CHUNKY)
-				send_alert("round fish!!!")
+				send_alert("Peixe redondo!")
 			if(FISH_ICON_JELLYFISH)
-				send_alert("jellyfish!!!")
+				send_alert("Água-viva!")
 			if(FISH_ICON_SLIME)
-				send_alert("slime!!!")
+				send_alert("Lodo!")
 			if(FISH_ICON_COIN)
-				send_alert("valuable!!!")
+				send_alert("Valioso!")
 			if(FISH_ICON_GEM)
-				send_alert("ore!!!")
+				send_alert("Ore!")
 			if(FISH_ICON_CRAB)
-				send_alert("crustacean!!!")
+				send_alert("Crustáceo!")
 			if(FISH_ICON_BONE)
-				send_alert("bones!!!")
+				send_alert("Ossos!")
 			if(FISH_ICON_ELECTRIC)
-				send_alert("zappy!!!")
+				send_alert("Zappy!")
 			if(FISH_ICON_WEAPON)
-				send_alert("weapon!!!")
+				send_alert("Arma!")
 			if(FISH_ICON_CRITTER)
-				send_alert("critter!!!")
+				send_alert("Critter!")
 			if(FISH_ICON_SEED)
-				send_alert("seed!!!")
+				send_alert("Semente!")
 			if(FISH_ICON_BOTTLE)
-				send_alert("bottle!!!")
+				send_alert("Garrafa!")
 			if(FISH_ICON_ORGAN)
-				send_alert("organ!!!")
+				send_alert("órgão!")
 	else
 		send_alert("!!!")
 	animate(float, pixel_z = 3, time = 5, loop = -1, flags = ANIMATION_RELATIVE)
@@ -491,7 +491,7 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 
 /datum/fishing_challenge/proc/on_reward_removed(datum/source)
 	SIGNAL_HANDLER
-	send_alert("reward gone!")
+	send_alert("Recompensa se foi!")
 	interrupt()
 
 /datum/fishing_challenge/proc/on_fish_death(obj/item/fish/source)
@@ -785,7 +785,7 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 	else
 		completion -= completion_loss * seconds_per_tick
 		if(completion <= 0 && !(special_effects & FISHING_MINIGAME_RULE_NO_ESCAPE))
-			user.balloon_alert(user, "it got away!")
+			user.balloon_alert(user, "Ele fugiu!")
 			complete(FALSE)
 
 	completion = clamp(completion, 0, 100)

@@ -3,10 +3,7 @@
 ///Energy Shield - Gives you a rechargeable energy shield that nullifies attacks.
 /obj/item/mod/module/energy_shield
 	name = "MOD energy shield module"
-	desc = "A personal, protective forcefield typically seen in military applications. \
-		This advanced deflector shield is essentially a scaled down version of those seen on starships, \
-		and the power cost can be an easy indicator of this. However, it is capable of blocking nearly any incoming attack, \
-		but only once every few seconds; a grim reminder of the users mortality."
+	desc = "Um campo de força pessoal e protetor tipicamente visto em aplicações militares. Este escudo defletor avançado é essencialmente uma versão reduzida daqueles vistos em naves estelares, e o custo de energia pode ser um indicador fácil disso. No entanto, é capaz de bloquear quase qualquer ataque, mas apenas uma vez a cada poucos segundos, um lembrete sombrio da mortalidade dos usuários."
 	icon_state = "energy_shield"
 	complexity = 3
 	idle_power_cost = DEFAULT_CHARGE_DRAIN * 0.5
@@ -37,17 +34,7 @@
 	charges = max_charges
 
 /obj/item/mod/module/energy_shield/on_part_activation()
-	mod.AddComponent(\
-		/datum/component/shielded, \
-		max_charges = max_charges, \
-		recharge_start_delay = recharge_start_delay, \
-		charge_increment_delay = charge_increment_delay, \
-		charge_recovery = charge_recovery, \
-		lose_multiple_charges = lose_multiple_charges, \
-		starting_charges = charges, \
-		can_block_overwhelming = block_overwhelming_attacks, \
-		shield_icon_file = shield_icon_file, \
-		shield_icon = shield_icon)
+	mod.AddComponent(		/datum/component/shielded, 		max_charges = max_charges, 		recharge_start_delay = recharge_start_delay, 		charge_increment_delay = charge_increment_delay, 		charge_recovery = charge_recovery, 		lose_multiple_charges = lose_multiple_charges, 		starting_charges = charges, 		can_block_overwhelming = block_overwhelming_attacks, 		shield_icon_file = shield_icon_file, 		shield_icon = shield_icon)
 	RegisterSignal(mod.wearer, COMSIG_LIVING_CHECK_BLOCK, PROC_REF(shield_reaction))
 
 /obj/item/mod/module/energy_shield/on_part_deactivation(deleting = FALSE)
@@ -59,7 +46,7 @@
 /obj/item/mod/module/energy_shield/proc/shield_reaction(mob/living/carbon/human/owner,
 	atom/movable/hitby,
 	damage = 0,
-	attack_text = "the attack",
+	attack_text = "O ataque.",
 	attack_type = MELEE_ATTACK,
 	armour_penetration = 0,
 	damage_type = BRUTE
@@ -73,10 +60,7 @@
 
 /obj/item/mod/module/energy_shield/wizard
 	name = "MOD battlemage shield module"
-	desc = "The caster wielding this spell gains a visible barrier around them, channeling arcane power through \
-		specialized runes engraved onto the surface of the suit to generate a wall of force. \
-		This shield can perfectly nullify attacks ranging from high-caliber rifles to magic missiles, \
-		though can also be drained by more mundane attacks. It will not protect the caster from social ridicule."
+	desc = "O lançador empunhando este feitiço ganha uma barreira visível ao redor deles, canalizando energia arcana através de runas especializadas gravadas na superfície do traje para gerar uma parede de força. Este escudo pode anular ataques que vão de rifles de alto calibre a mísseis mágicos, embora também possam ser drenados por ataques mais mundanos. Não protegerá o lançador do ridículo social."
 	icon_state = "battlemage_shield"
 	idle_power_cost = 0 //magic
 	use_energy_cost = 0 //magic too
@@ -91,11 +75,7 @@
 ///Magic Nullifier - Protects you from magic.
 /obj/item/mod/module/anti_magic
 	name = "MOD magic nullifier module"
-	desc = "A series of obsidian rods installed into critical points around the suit, \
-		vibrated at a certain low frequency to enable them to resonate. \
-		This creates a low-range, yet strong, magic nullification field around the user, \
-		aided by a full replacement of the suit's normal coolant with holy water. \
-		Spells will spall right off this field, though it'll do nothing to help others believe you about all this."
+	desc = "Uma série de hastes obsidianas instaladas em pontos críticos ao redor do traje, vibradas em uma certa baixa frequência para permitir que eles ressoem. Isso cria um campo de anulação mágica de baixo alcance, mas forte, em torno do usuário, auxiliado por uma substituição completa do refrigerante normal do terno por água benta. Feitiços sairão deste campo, embora não faça nada para ajudar os outros a acreditar em você."
 	icon_state = "magic_nullifier"
 	removable = FALSE
 	incompatible_modules = list(/obj/item/mod/module/anti_magic)
@@ -109,10 +89,7 @@
 
 /obj/item/mod/module/anti_magic/wizard
 	name = "MOD magic neutralizer module"
-	desc = "The caster wielding this spell gains an invisible barrier around them, channeling arcane power through \
-		specialized runes engraved onto the surface of the suit to generate anti-magic field. \
-		The field will neutralize all magic that comes into contact with the user. \
-		It will not protect the caster from social ridicule."
+	desc = "O lançador que empunha este feitiço ganha uma barreira invisível ao redor deles, canalizando energia arcana através de runas especializadas gravadas na superfície do traje para gerar campo anti-mágico. O campo neutralizará toda magia que entrar em contato com o usuário. Não protegerá o lançador do ridículo social."
 	icon_state = "magic_neutralizer"
 	required_slots = list()
 
@@ -125,10 +102,7 @@
 ///Insignia - Gives you a skin specific stripe.
 /obj/item/mod/module/insignia
 	name = "MOD insignia module"
-	desc = "Despite the existence of IFF systems, radio communique, and modern methods of deductive reasoning involving \
-		the wearer's own eyes, colorful paint jobs remain a popular way for different factions in the galaxy to display who \
-		they are. This system utilizes a series of tiny moving paint sprayers to both apply and remove different \
-		color patterns to and from the suit."
+	desc = "Apesar da existência de sistemas IFF, rádio communique, e métodos modernos de raciocínio dedutivo envolvendo os próprios olhos do usuário, trabalhos coloridos de pintura permanecem uma forma popular para diferentes facções na galáxia para mostrar quem são. Este sistema utiliza uma série de pequenos pulverizadores de tinta em movimento para aplicar e remover diferentes padrões de cor de e para o terno."
 	icon_state = "insignia"
 	removable = FALSE
 	incompatible_modules = list(/obj/item/mod/module/insignia)
@@ -168,11 +142,7 @@
 ///Anti Slip - Prevents you from slipping on water.
 /obj/item/mod/module/noslip
 	name = "MOD anti slip module"
-	desc = "These are a modified variant of standard magnetic boots, utilizing piezoelectric crystals on the soles. \
-		The two plates on the bottom of the boots automatically extend and magnetize as the user steps; \
-		a pull that's too weak to offer them the ability to affix to a hull, but just strong enough to \
-		protect against the fact that you didn't read the wet floor sign. Honk Co. has come out numerous times \
-		in protest of these modules being legal."
+	desc = "Estas são uma variante modificada de botas magnéticas padrão, utilizando cristais piezoelétricos nas solas. As duas placas na parte inferior das botas se estendem automaticamente e magnetizam à medida que o usuário pisa, uma puxada fraca demais para oferecer-lhes a habilidade de afixar em um casco, mas forte o suficiente para proteger contra o fato de que você não leu o sinal do chão molhado. Honk Co. saiu várias vezes em protesto de que esses módulos são legais."
 	icon_state = "noslip"
 	complexity = 1
 	idle_power_cost = DEFAULT_CHARGE_DRAIN * 0.1
@@ -204,7 +174,7 @@
 ///Flamethrower - Launches fire across the area.
 /obj/item/mod/module/flamethrower
 	name = "MOD flamethrower module"
-	desc = "A custom-manufactured flamethrower, used to burn through your path. Burn well."
+	desc = "Um lança-chamas feito sob medida, usado para queimar seu caminho. Queime bem."
 	icon_state = "flamethrower"
 	module_type = MODULE_ACTIVE
 	complexity = 3
@@ -229,7 +199,7 @@
 ///Power kick - Lets the user launch themselves at someone to kick them.
 /obj/item/mod/module/power_kick
 	name = "MOD power kick module"
-	desc = "This module uses high-power myomer to generate an incredible amount of energy, transferred into the power of a kick."
+	desc = "Este módulo usa o miômero de alta potência para gerar uma incrível quantidade de energia, transferida para o poder de um chute."
 	icon_state = "power_kick"
 	module_type = MODULE_ACTIVE
 	removable = FALSE
@@ -248,10 +218,9 @@
 	. = ..()
 	if(!.)
 		return
-	mod.wearer.visible_message(span_warning("[mod.wearer] starts charging a kick!"), \
-		blind_message = span_hear("You hear a charging sound."))
+	mod.wearer.visible_message(span_warning("[mod.wearer]Começa a carregar um chute!"), 		blind_message = span_hear("Você ouve um som de carga."))
 	playsound(src, 'sound/items/modsuit/loader_charge.ogg', 75, TRUE)
-	balloon_alert(mod.wearer, "you start charging...")
+	balloon_alert(mod.wearer, "Você começa a carregar...")
 	animate(mod.wearer, 0.3 SECONDS, pixel_z = 16, flags = ANIMATION_RELATIVE, easing = SINE_EASING|EASE_OUT)
 	addtimer(CALLBACK(mod.wearer, TYPE_PROC_REF(/atom, SpinAnimation), 3, 2), 0.3 SECONDS)
 	if(!do_after(mod.wearer, 1 SECONDS, target = mod))
@@ -290,7 +259,7 @@
 ///Chameleon - lets the suit disguise as any item that would fit on that slot.
 /obj/item/mod/module/chameleon
 	name = "MOD chameleon module"
-	desc = "A module using chameleon technology to disguise the suit as another object."
+	desc = "Um módulo usando tecnologia camaleão para disfarçar o terno como outro objeto."
 	icon_state = "chameleon"
 	module_type = MODULE_USABLE
 	complexity = 2
@@ -320,7 +289,7 @@
 
 /obj/item/mod/module/chameleon/used(mob/activator)
 	if(mod.active || mod.activating)
-		balloon_alert(activator, "unidade ativa!")
+		balloon_alert(activator, "Unidade Ativa!")
 		return FALSE
 	return ..()
 
@@ -366,8 +335,7 @@
 ///Plate Compression - Compresses the suit to normal size
 /obj/item/mod/module/plate_compression
 	name = "MOD plate compression module"
-	desc = "A module that keeps the suit in a very tightly fit state, lowering the overall size. \
-		Due to the pressure on all the parts, typical storage modules do not fit."
+	desc = "Um módulo que mantém o terno em um estado bem adequado, diminuindo o tamanho geral. Devido à pressão em todas as peças, módulos de armazenamento típicos não se encaixam."
 	icon_state = "plate_compression"
 	complexity = 2
 	incompatible_modules = list(/obj/item/mod/module/plate_compression, /obj/item/mod/module/storage)
@@ -394,9 +362,7 @@
 
 /obj/item/mod/module/demoralizer
 	name = "MOD psi-echo demoralizer module"
-	desc = "One incredibly morbid member of the RND team at Roseus Galactic posed a question to her colleagues. \
-	'I desire the power to scar my enemies mentally as I murder them. Who will stop me implementing this in our next project?' \
-	And thus the Psi-Echo Demoralizer Device was reluctantly invented. The future of psychological warfare, today!"
+	desc = "Um membro incrivelmente mórbido da equipe RND da Roseus Galactic fez uma pergunta para seus colegas. Desejo o poder de ferir meus inimigos mentalmente enquanto os mato. Quem me impedirá de implementar isso em nosso próximo projeto? E assim o dispositivo de desmoralização Psi-Echo foi inventado relutantemente. O futuro da guerra psicológica, hoje!"
 	icon_state = "brain_hurties"
 	complexity = 0
 	idle_power_cost = DEFAULT_CHARGE_DRAIN * 0.1
@@ -413,9 +379,7 @@
 
 /obj/item/mod/module/infiltrator
 	name = "MOD infiltration core programs module"
-	desc = "The primary stealth systems operating within the suit. Utilizing electromagnetic signals, \
-		the wearer simply cannot be observed closely, or heard clearly by those around them.\
-		It also contains some dampening systems to help protect a user from blows to the head."
+	desc = "Os principais sistemas secretos operando dentro do traje. Utilizando sinais eletromagnéticos, o usuário simplesmente não pode ser observado de perto, ou ouvido claramente por aqueles ao seu redor. Também contém alguns sistemas de amortecimento para ajudar a proteger um usuário de golpes na cabeça."
 	icon_state = "infiltrator"
 	complexity = 0
 	removable = FALSE
@@ -463,7 +427,7 @@
 ///Medbeam - Medbeam but built into a modsuit
 /obj/item/mod/module/medbeam
 	name = "MOD medical beamgun module"
-	desc = "A wrist mounted variant of the medbeam gun, allowing the user to heal their allies without the risk of dropping it."
+	desc = "Uma variante montada no pulso da arma medbeam, permitindo que o usuário cure seus aliados sem o risco de derrubá-la."
 	icon_state = "chronogun"
 	module_type = MODULE_ACTIVE
 	complexity = 1
@@ -479,7 +443,7 @@
 
 /obj/item/mod/module/stealth/wraith
 	name = "MOD Wraith Cloaking Module"
-	desc = "A more destructive adaptation of the stealth module. Incompatible with armor modules"
+	desc = "Uma adaptação mais destrutiva do módulo furtivo. Incompatível com módulos de armadura."
 	icon_state = "cloak_traitor"
 	stealth_alpha = 30
 	module_type = MODULE_ACTIVE
@@ -495,10 +459,10 @@
 	if(!. || target == mod.wearer)
 		return
 	if(get_dist(mod.wearer, target) > 6)
-		balloon_alert(mod.wearer, "can't reach that!")
+		balloon_alert(mod.wearer, "Não consigo alcançar isso!")
 		return
 	if(istype(target, /obj/machinery/power/apc)) //Bit too strong for a module so this is blacklisted
-		balloon_alert(mod.wearer, "can't disable apc!")
+		balloon_alert(mod.wearer, "Não consigo desativar o Apc!")
 		return
 
 	var/list/things_to_disrupt = list(target)
@@ -548,12 +512,4 @@
 
 /obj/item/mod/module/stealth/wraith/examine_more(mob/user)
 	. = ..()
-	. += span_info( \
-		"The Wraith Module does not simply bend light around the user to obscure their visual pattern, \
-		but actively attacks and overloads surrounding light emitting objects, repurposing this energy to power the suit. \
-		It is possible that this technology has its origins in Spider Clan advancements, \
-		but the exact source of the Wraith Module is highly disputed. \
-		No group has stepped forward to claim it as their handiwork due to the political consequences of having stolen Spider Clan tech and their inevitable retaliation for such transgressions. \
-		Most point fingers at Cybersun Industries, but murmurs suggest it could even be even more clandestine organizations amongst the Syndicate branches. \
-		Whatever the case, if you are looking at one of these right now, don't show it to a space ninja." \
-	)
+	. += span_info( 		"O Módulo Wraith não simplesmente dobra a luz ao redor do usuário para obscurecer seu padrão visual, mas ativamente ataca e sobrecarrega em torno da luz que emite objetos, repurpondo esta energia para alimentar o traje. É possível que esta tecnologia tenha suas origens nos avanços do Clã Aranha, mas a fonte exata do Módulo Wraith é altamente contestada. Nenhum grupo avançou para reivindicar isso como seu trabalho devido às consequências políticas de ter roubado tecnologia do Clã Aranha e sua inevitável retaliação por tais transgressões. A maioria aponta dedos para as Indústrias Cybersun, mas murmúrios sugerem que poderia ser ainda mais organizações clandestinas entre os ramos do Sindicato. Seja qual for o caso, se estiver olhando para um desses agora, não mostre para um ninja espacial." 	)

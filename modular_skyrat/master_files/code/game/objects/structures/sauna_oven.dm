@@ -6,7 +6,7 @@
 
 /obj/structure/sauna_oven
 	name = "sauna oven"
-	desc = "A modest sauna oven with rocks. Add some fuel, pour some water and enjoy the moment."
+	desc = "Um modesto forno de sauna com pedras. Adicione um pouco de combustível, coloque um pouco de água e aproveite o momento."
 	icon = 'modular_skyrat/master_files/icons/obj/structures/sauna_oven.dmi'
 	icon_state = "sauna_oven"
 	density = TRUE
@@ -19,8 +19,8 @@
 
 /obj/structure/sauna_oven/examine(mob/user)
 	. = ..()
-	. += span_notice("The rocks are [water_amount ? "moist" : "dry"].")
-	. += span_notice("There's [fuel_amount ? "some fuel" : "no fuel"] in the oven.")
+	. += span_notice("As rochas são[water_amount ? "moist" : "dry"].")
+	. += span_notice("Tem.[fuel_amount ? "some fuel" : "no fuel"]Não forno.")
 
 /obj/structure/sauna_oven/Destroy()
 	if(lit)
@@ -35,11 +35,11 @@
 	if(lit)
 		lit = FALSE
 		STOP_PROCESSING(SSobj, src)
-		user.visible_message(span_notice("[user] turns off [src]."), span_notice("You turn off [src]."))
+		user.visible_message(span_notice("[user]Desliga.[src]."), span_notice("Você desliga.[src]."))
 	else if (fuel_amount)
 		lit = TRUE
 		START_PROCESSING(SSobj, src)
-		user.visible_message(span_notice("[user] turns on [src]."), span_notice("You turn on [src]."))
+		user.visible_message(span_notice("[user]Liga.[src]."), span_notice("Você liga.[src]."))
 	update_icon()
 
 /obj/structure/sauna_oven/update_overlays()
@@ -68,13 +68,11 @@
 			return ITEM_INTERACT_BLOCKING
 		if(reagent_container.reagents.has_reagent(/datum/reagent/water))
 			reagent_container.reagents.remove_reagent(/datum/reagent/water, 5)
-			user.visible_message(span_notice("[user] pours some \
-			water into [src]."), span_notice("You pour \
-			some water to [src]."))
+			user.visible_message(span_notice("[user]Derrama um pouco de água[src]."), span_notice("Você derrama um pouco de água para[src]."))
 			water_amount += 5 * SAUNA_WATER_PER_WATER_UNIT
 			return ITEM_INTERACT_SUCCESS
 		else
-			balloon_alert(user, "no water!")
+			balloon_alert(user, "Sem água!")
 			return ITEM_INTERACT_BLOCKING
 
 	else if(istype(tool, /obj/item/stack/sheet/mineral/wood))
@@ -84,24 +82,18 @@
 			return ITEM_INTERACT_BLOCKING
 		fuel_amount += SAUNA_LOG_FUEL * wood.amount
 		wood.use(wood.amount)
-		user.visible_message(span_notice("[user] tosses some \
-			wood into [src]."), span_notice("You add \
-			some fuel to [src]."))
+		user.visible_message(span_notice("[user]Atira um pouco de madeira[src]."), span_notice("Você adiciona algum combustível para[src]."))
 		return ITEM_INTERACT_SUCCESS
 
 	else if(istype(tool, /obj/item/paper_bin))
 		var/obj/item/paper_bin/paper_bin = tool
-		user.visible_message(span_notice("[user] throws [tool] into \
-			[src]."), span_notice("You add [tool] to [src].\
-			"))
+		user.visible_message(span_notice("[user]lança[tool]Em[src]."), span_notice("Você acrescenta[tool]Para[src].			"))
 		fuel_amount += SAUNA_PAPER_FUEL * paper_bin.total_paper
 		qdel(paper_bin)
 		return ITEM_INTERACT_SUCCESS
 
 	else if(istype(tool, /obj/item/paper))
-		user.visible_message(span_notice("[user] throws [tool] into \
-			[src]."), span_notice("You throw [tool] into [src].\
-			"))
+		user.visible_message(span_notice("[user]lança[tool]Em[src]."), span_notice("Você joga.[tool]Em[src].			"))
 		fuel_amount += SAUNA_PAPER_FUEL
 		qdel(tool)
 		return ITEM_INTERACT_SUCCESS

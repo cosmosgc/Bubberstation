@@ -1,7 +1,7 @@
 /// Actions that you can use to dash (teleport) to places in view.
 /datum/action/innate/dash
 	name = "Dash"
-	desc = "Teleport to the targeted location."
+	desc = "Teletransporte para o local alvo."
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "jetboot"
 	/// How many dash charges do we have?
@@ -29,7 +29,7 @@
 		return FALSE
 	if (current_charges <= 0)
 		if (feedback)
-			owner.balloon_alert(owner, "sem cargas!")
+			owner.balloon_alert(owner, "Sem cargas!")
 		return FALSE
 	return TRUE
 
@@ -51,7 +51,7 @@
 		user.balloon_alert(user, "fora da visão!")
 		return FALSE
 	if(target_turf.is_blocked_turf_ignore_climbable())
-		user.balloon_alert(user, "destino bloqueado!")
+		user.balloon_alert(user, "Destinobloqueado!")
 		return FALSE
 	if(!do_teleport(user, target_turf, no_effects = TRUE))
 		user.balloon_alert(user, "investida bloqueada!")
@@ -85,4 +85,4 @@
 	if(!owner)
 		return
 	owner.update_mob_action_buttons()
-	dashing_item.balloon_alert(owner, "[current_charges]/[max_charges] cargas de investida")
+	dashing_item.balloon_alert(owner, "[current_charges]/[max_charges]cargas de investida")

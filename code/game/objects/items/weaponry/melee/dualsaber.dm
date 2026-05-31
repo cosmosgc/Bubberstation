@@ -3,7 +3,7 @@
  */
 /obj/item/dualsaber
 	name = "double-bladed energy sword"
-	desc = "Handle with care."
+	desc = "Cuide com cuidado."
 	icon = 'icons/obj/weapons/transforming_energy.dmi'
 	icon_state = "dualsaber0"
 	inhand_icon_state = "dualsaber0"
@@ -32,7 +32,7 @@
 	wound_bonus = -10
 	exposed_wound_bonus = 20
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY // BUBBER EDIT ADDITION
-	special_desc = "A double bladed energy sword employed by the Syndicate in raids" // BUBBER EDIT ADDITION
+	special_desc = "Uma espada de energia de lâmina dupla empregada pelo Sindicato em ataques" // BUBBER EDIT ADDITION
 	demolition_mod = 1.5 //1.5x damage to objects, robots, etc.
 	item_flags = NO_BLOOD_ON_ITEM
 	var/w_class_on = WEIGHT_CLASS_BULKY
@@ -47,23 +47,16 @@
 
 /obj/item/dualsaber/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/two_handed, \
-		force_unwielded = force, \
-		force_wielded = two_hand_force, \
-		wieldsound = 'sound/items/weapons/saberon.ogg', \
-		unwieldsound = 'sound/items/weapons/saberoff.ogg', \
-		wield_callback = CALLBACK(src, PROC_REF(on_wield)), \
-		unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), \
-	)
+	AddComponent(/datum/component/two_handed, 		force_unwielded = force, 		force_wielded = two_hand_force, 		wieldsound = 'sound/items/weapons/saberon.ogg', 		unwieldsound = 'sound/items/weapons/saberoff.ogg', 		wield_callback = CALLBACK(src, PROC_REF(on_wield)), 		unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), 	)
 
 /// Triggered on wield of two handed item
 /// Specific hulk checks due to reflection chance for balance issues and switches hitsounds.
 /obj/item/dualsaber/proc/on_wield(obj/item/source, mob/living/carbon/user)
 	if(user && HAS_TRAIT(user, TRAIT_HULK))
-		to_chat(user, span_warning("You lack the grace to wield this!"))
+		to_chat(user, span_warning("Falta-lhe a graça para usar isso!"))
 		return COMPONENT_TWOHANDED_BLOCK_WIELD
 	if(HAS_TRAIT_FROM(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT))
-		to_chat(user, span_warning("You can't seem to hold [src] properly!"))
+		to_chat(user, span_warning("Você não consegue segurar[src]Bem!"))
 		return COMPONENT_TWOHANDED_BLOCK_WIELD
 	update_weight_class(w_class_on)
 	hitsound = 'sound/items/weapons/blade1.ogg'
@@ -89,7 +82,7 @@
 
 /obj/item/dualsaber/suicide_act(mob/living/carbon/user)
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
-		user.visible_message(span_suicide("[user] begins spinning way too fast! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user]Começa a girar muito rápido! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 
 		var/obj/item/bodypart/head/myhead = user.get_bodypart(BODY_ZONE_HEAD)//stole from chainsaw code
 		var/obj/item/organ/brain/B = user.get_organ_slot(ORGAN_SLOT_BRAIN)
@@ -104,11 +97,11 @@
 					myhead.drop_limb()
 				sleep(0.3 SECONDS)
 			else
-				user.visible_message(span_suicide("[user] panics and starts choking to death!"))
+				user.visible_message(span_suicide("[user]Entra em pânico e começa a sufocar até a morte!"))
 				return OXYLOSS
 
 	else
-		user.visible_message(span_suicide("[user] begins beating [user.p_them()]self to death with \the [src]'s handle! It probably would've been cooler if [user.p_they()] turned it on first!"))
+		user.visible_message(span_suicide("[user]Começa a bater[user.p_them()]e eu morrer com\the [src]É o cabo! Provavelmente teria sido mais legal se[user.p_they()]Ligou primeiro!"))
 	return BRUTELOSS
 
 /obj/item/dualsaber/Initialize(mapload)
@@ -131,7 +124,7 @@
 
 /obj/item/dualsaber/attack(mob/target, mob/living/carbon/human/user)
 	if(HAS_TRAIT(user, TRAIT_HULK))
-		to_chat(user, span_warning("You grip the blade too hard and accidentally drop it!"))
+		to_chat(user, span_warning("Você segura a lâmina muito forte e acidentalmente derrubá-la!"))
 		if(HAS_TRAIT(src, TRAIT_WIELDED))
 			user.dropItemToGround(src, force=TRUE)
 			return
@@ -149,7 +142,7 @@
 	dance_rotate(user, CALLBACK(user, TYPE_PROC_REF(/mob, dance_flip)))
 
 /obj/item/dualsaber/proc/impale(mob/living/user)
-	to_chat(user, span_warning("You twirl around a bit before losing your balance and impaling yourself on [src]."))
+	to_chat(user, span_warning("Você gira um pouco antes de perder o equilíbrio e empalar-se em[src]."))
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
 		user.take_bodypart_damage(20,25,check_armor = TRUE)
 	else
@@ -196,7 +189,7 @@
 		var/mob/living/carbon/C = user
 		if(C.wear_mask)
 			in_mouth = ", barely missing [user.p_their()] nose"
-	. = span_rose("[user] swings [user.p_their()] [name][in_mouth]. [user.p_They()] light[user.p_s()] [A.loc == user ? "[user.p_their()] [A.name]" : A] in the process.")
+	. = span_rose("[user]balanços[user.p_their()] [name][in_mouth]. [user.p_They()]luz[user.p_s()] [A.loc == user ? "[user.p_their()] [A.name]" : A]Sem processo.")
 	playsound(loc, hitsound, get_clamped_volume(), TRUE, -1)
 	add_fingerprint(user)
 	// Light your candles while spinning around the room
@@ -222,6 +215,6 @@
 			saber_color = "rainbow"
 			update_appearance()
 		else
-			to_chat(user, span_warning("It's starting to look like a triple rainbow - no, nevermind."))
+			to_chat(user, span_warning("Está começando a parecer um arco-íris triplo. Não, não importa."))
 	else
 		return ..()

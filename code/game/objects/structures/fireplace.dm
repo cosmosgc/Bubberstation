@@ -4,7 +4,7 @@
 
 /obj/structure/fireplace
 	name = "fireplace"
-	desc = "A large stone brick fireplace."
+	desc = "Uma grande lareira de tijolo de pedra."
 	icon = 'icons/obj/fluff/fireplace.dmi'
 	icon_state = "fireplace"
 	density = FALSE
@@ -47,10 +47,10 @@
 
 /obj/structure/fireplace/proc/try_light(obj/item/O, mob/user)
 	if(lit)
-		to_chat(user, span_warning("It's already lit!"))
+		to_chat(user, span_warning("Já está acesa!"))
 		return FALSE
 	if(!fuel_added)
-		to_chat(user, span_warning("[src] needs some fuel to burn!"))
+		to_chat(user, span_warning("[src]Precisa de combustível para queimar!"))
 		return FALSE
 	var/msg = O.ignition_effect(src, user)
 	if(msg)
@@ -64,24 +64,24 @@
 		var/space_remaining = MAXIMUM_BURN_TIMER - burn_time_remaining()
 		var/space_for_logs = round(space_remaining / LOG_BURN_TIMER)
 		if(space_for_logs < 1)
-			to_chat(user, span_warning("You can't fit any more of [tool] in [src]!"))
+			to_chat(user, span_warning("Você não pode caber mais[tool]Em[src]!"))
 			return ITEM_INTERACT_BLOCKING
 
 		var/logs_used = min(space_for_logs, wood.amount)
 		wood.use(logs_used)
 		adjust_fuel_timer(LOG_BURN_TIMER * logs_used)
-		user.visible_message(span_notice("[user] tosses some wood into [src]."), span_notice("You add some fuel to [src]."))
+		user.visible_message(span_notice("[user]Atira um pouco de madeira[src]."), span_notice("Você adiciona algum combustível para[src]."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/paper_bin))
 		var/obj/item/paper_bin/paper_bin = tool
-		user.visible_message(span_notice("[user] throws [tool] into [src]."), span_notice("You add [tool] to [src]."))
+		user.visible_message(span_notice("[user]lança[tool]Em[src]."), span_notice("Você acrescenta[tool]Para[src]."))
 		adjust_fuel_timer(PAPER_BURN_TIMER * paper_bin.total_paper)
 		qdel(paper_bin)
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/paper))
-		user.visible_message(span_notice("[user] throws [tool] into [src]."), span_notice("You throw [tool] into [src]."))
+		user.visible_message(span_notice("[user]lança[tool]Em[src]."), span_notice("Você joga.[tool]Em[src]."))
 		adjust_fuel_timer(PAPER_BURN_TIMER)
 		qdel(tool)
 		return ITEM_INTERACT_SUCCESS
@@ -164,7 +164,7 @@
 	START_PROCESSING(SSobj, src)
 	burning_loop.start()
 	lit = TRUE
-	desc = "A large stone brick fireplace, warm and cozy."
+	desc = "Uma grande lareira de tijolo de pedra, quente e aconchegante."
 	flame_expiry_timer = world.time + fuel_added
 	fuel_added = 0
 	update_appearance()

@@ -4,7 +4,7 @@
  */
 /mob/living/basic/blob_minion/blobbernaut
 	name = "blobbernaut"
-	desc = "A hulking, mobile chunk of blobmass."
+	desc = "Um pedaço de blobmass móvel."
 	icon_state = "blobbernaut"
 	base_icon_state = "blobbernaut"
 	icon_living = "blobbernaut"
@@ -168,9 +168,9 @@
 	SEND_SOUND(src, sound('sound/effects/blob/blobattack.ogg'))
 	SEND_SOUND(src, sound('sound/effects/blob/attackblob.ogg'))
 	to_chat(src, span_infoplain("You are powerful, hard to kill, and slowly regenerate near nodes and cores, [span_cult_large("but will slowly die if not near the blob")] or if the factory that made you is killed."))
-	to_chat(src, span_infoplain("You can communicate with other blobbernauts and overminds <b>telepathically</b> by attempting to speak normally"))
-	to_chat(src, span_infoplain("Your overmind's blob reagent is: <b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font>!"))
-	to_chat(src, span_infoplain("The <b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font> reagent [blobstrain.shortdesc ? "[blobstrain.shortdesc]" : "[blobstrain.description]"]"))
+	to_chat(src, span_infoplain("Você pode se comunicar com outros blobbernauts e overminds<b>telepaticamente</b>Tentando falar normalmente."))
+	to_chat(src, span_infoplain("O reagente blob da sua mente é:<b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font>!"))
+	to_chat(src, span_infoplain("O<b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font>Reagente[blobstrain.shortdesc ? "[blobstrain.shortdesc]" : "[blobstrain.description]"]"))
 
 /// Called by our factory to inform us that it's not going to support us financially any more
 /mob/living/basic/blob_minion/blobbernaut/minion/on_factory_destroyed()

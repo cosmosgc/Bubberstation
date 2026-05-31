@@ -21,7 +21,7 @@
 
 /obj/structure/tram
 	name = "tram wall"
-	desc = "A lightweight titanium composite structure with titanium silicate panels."
+	desc = "Uma estrutura composta de titânio leve com painéis de silicato de titânio."
 	icon = 'icons/obj/tram/tram_structure.dmi'
 	icon_state = "tram-part-0"
 	base_icon_state = "tram-part"
@@ -82,11 +82,11 @@
 	. = ..()
 	switch(state)
 		if(TRAM_SCREWED_TO_FRAME)
-			. += span_notice("The panel is [EXAMINE_HINT("screwed")] to the frame. To dismantle use a [EXAMINE_HINT("screwdriver.")]")
+			. += span_notice("O painel é[EXAMINE_HINT("screwed")]Para a moldura. Para desmontar usar um[EXAMINE_HINT("screwdriver.")]")
 		if(TRAM_IN_FRAME)
-			. += span_notice("The panel is [EXAMINE_HINT("unscrewed,")] but [EXAMINE_HINT("pried")] into the frame. To dismantle use a [EXAMINE_HINT("crowbar.")]")
+			. += span_notice("O painel é[EXAMINE_HINT("unscrewed,")]Mas...[EXAMINE_HINT("pried")]Na modura. Para desmontar usar um[EXAMINE_HINT("crowbar.")]")
 		if(TRAM_OUT_OF_FRAME)
-			. += span_notice("The panel is [EXAMINE_HINT("pried")] out of the frame, but still[EXAMINE_HINT("wired.")] To dismantle use [EXAMINE_HINT("wirecutters.")]")
+			. += span_notice("O painel é[EXAMINE_HINT("pried")]Fora do quadrado, mas ainda assim[EXAMINE_HINT("wired.")]Desmantelar o uso[EXAMINE_HINT("wirecutters.")]")
 
 /obj/structure/tram/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	if(held_item?.tool_behaviour == TOOL_WELDER && atom_integrity < max_integrity)
@@ -115,12 +115,10 @@
 	. = ..()
 
 	if(!user.combat_mode)
-		user.visible_message(span_notice("[user] knocks on [src]."), \
-			span_notice("You knock on [src]."))
+		user.visible_message(span_notice("[user]Bate na porta.[src]."), 			span_notice("Você bate.[src]."))
 		playsound(src, knock_sound, 50, TRUE)
 	else
-		user.visible_message(span_warning("[user] bashes [src]!"), \
-			span_warning("You bash [src]!"))
+		user.visible_message(span_warning("[user]Bache.[src]!"), 			span_warning("Você bate[src]!"))
 		playsound(src, bash_sound, 100, TRUE)
 
 /obj/structure/tram/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
@@ -152,14 +150,14 @@
 
 /obj/structure/tram/welder_act(mob/living/user, obj/item/tool)
 	if(atom_integrity >= max_integrity)
-		to_chat(user, span_warning("[src] is already in good condition!"))
+		to_chat(user, span_warning("[src]Já está em boas condições!"))
 		return ITEM_INTERACT_SUCCESS
 	if(!tool.tool_start_check(user, amount = 0, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return FALSE
-	to_chat(user, span_notice("You begin repairing [src]..."))
+	to_chat(user, span_notice("Você começa a reparar[src]..."))
 	if(tool.use_tool(src, user, 4 SECONDS, volume = 50))
 		atom_integrity = max_integrity
-		to_chat(user, span_notice("You repair [src]."))
+		to_chat(user, span_notice("Você conserta.[src]."))
 		update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
@@ -167,47 +165,47 @@
 	switch(state)
 		if(TRAM_SCREWED_TO_FRAME)
 			if(tool.tool_behaviour == TOOL_SCREWDRIVER)
-				user.visible_message(span_notice("[user] begins to unscrew the tram panel from the frame..."),
-				span_notice("You begin to unscrew the tram panel from the frame..."))
+				user.visible_message(span_notice("[user]começa a desaparafusar o painel do bonde da moldura..."),
+				span_notice("Você começa a desaparafusar o painel do bonde da moldura..."))
 				if(tool.use_tool(src, user, 1 SECONDS, volume = 50))
 					state = TRAM_IN_FRAME
-					to_chat(user, span_notice("The screws come out, and a gap forms around the edge of the pane."))
+					to_chat(user, span_notice("Os parafusos saem, e uma abertura se forma na borda do painel."))
 					return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 			if(tool.tool_behaviour)
-				to_chat(user, span_warning("The security screws need to be removed first!"))
+				to_chat(user, span_warning("Os parafusos de segurança precisam ser removidos primeiro!"))
 
 		if(TRAM_IN_FRAME)
 			if(tool.tool_behaviour == TOOL_CROWBAR)
-				user.visible_message(span_notice("[user] wedges \the [tool] into the tram panel's gap in the frame and starts prying..."),
-				span_notice("You wedge \the [tool] into the tram panel's gap in the frame and start prying..."))
+				user.visible_message(span_notice("[user]Cunhas.\the [tool]Na abertura do painel do bonde e começa a bisbilhotar..."),
+				span_notice("Sua cunha.\the [tool]na abertura do painel do bonde no quadro e começar a bisbilhotar..."))
 				if(tool.use_tool(src, user, 1 SECONDS, volume = 50))
 					state = TRAM_OUT_OF_FRAME
-					to_chat(user, span_notice("The panel pops out of the frame, exposing some cabling that look like they can be cut."))
+					to_chat(user, span_notice("O painel sai do quadro, expondo um cabeamento que parece que pode ser cortado."))
 					return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 			if(tool.tool_behaviour == TOOL_SCREWDRIVER)
-				user.visible_message(span_notice("[user] resecures the tram panel to the frame..."),
-				span_notice("You resecure the tram panel to the frame..."))
+				user.visible_message(span_notice("[user]Resegura o Painel do Bonde na Moldura..."),
+				span_notice("Você reassegura o painel do bonde para o quadro..."))
 				state = TRAM_SCREWED_TO_FRAME
 				return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 		if(TRAM_OUT_OF_FRAME)
 			if(tool.tool_behaviour == TOOL_WIRECUTTER)
-				user.visible_message(span_notice("[user] starts cutting the connective cabling on \the [src]..."),
-				span_notice("You start cutting the connective cabling on \the [src]"))
+				user.visible_message(span_notice("[user]Começa a cortar o cabeamento conjuntivo.\the [src]..."),
+				span_notice("Você começa a cortar o cabeamento conectivo em\the [src]"))
 				if(tool.use_tool(src, user, 1 SECONDS, volume = 50))
-					to_chat(user, span_notice("The panels falls out of the way exposing the frame backing."))
+					to_chat(user, span_notice("Os painéis saem do caminho expondo o suporte do quadro."))
 					deconstruct(disassembled = TRUE)
 
 			if(tool.tool_behaviour == TOOL_CROWBAR)
-				user.visible_message(span_notice("[user] snaps the tram panel into place."),
-				span_notice("You snap the tram panel into place..."))
+				user.visible_message(span_notice("[user]\"Coloca o painel faz bonde no lugar\"."),
+				span_notice("Você coloca o painel do bonde no lugar..."))
 				state = TRAM_IN_FRAME
 				return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 			if(tool.tool_behaviour)
-				to_chat(user, span_warning("The cabling need to be cut first!"))
+				to_chat(user, span_warning("O cabeamento preciso ser cortado primeiro!"))
 
 	return ..()
 
@@ -225,7 +223,7 @@
 
 /obj/structure/tram/alt/titanium
 	name = "solid tram"
-	desc = "A lightweight titanium composite structure. There is further solid plating where the panels usually attach to the frame."
+	desc = "Uma estrutura composta de titânio leve. Há mais revestimento sólido onde os painéis geralmente se ligam ao quadro."
 	icon = 'icons/turf/walls/shuttle_wall.dmi'
 	icon_state = "shuttle_wall-0"
 	base_icon_state = "shuttle_wall"
@@ -237,7 +235,7 @@
 
 /obj/structure/tram/alt/plastitanium
 	name = "reinforced tram"
-	desc = "An evil tram of plasma and titanium."
+	desc = "Um bonde maléfico de plasma e titânio."
 	icon = 'icons/turf/walls/plastitanium_wall.dmi'
 	icon_state = "plastitanium_wall-0"
 	base_icon_state = "plastitanium_wall"
@@ -249,7 +247,7 @@
 
 /obj/structure/tram/alt/gold
 	name = "gold tram"
-	desc = "A solid gold tram. Swag!"
+	desc = "Um laço de ouro. Swag!"
 	icon = 'icons/turf/walls/gold_wall.dmi'
 	icon_state = "gold_wall-0"
 	base_icon_state = "gold_wall"
@@ -262,7 +260,7 @@
 
 /obj/structure/tram/alt/silver
 	name = "silver tram"
-	desc = "A solid silver tram. Shiny!"
+	desc = "Um bonde prateado. Brilhante!"
 	icon = 'icons/turf/walls/silver_wall.dmi'
 	icon_state = "silver_wall-0"
 	base_icon_state = "silver_wall"
@@ -275,7 +273,7 @@
 
 /obj/structure/tram/alt/diamond
 	name = "diamond tram"
-	desc = "A composite structure with diamond-plated panels. Looks awfully sharp..."
+	desc = "Uma estrutura composta com painéis com diamantes. Parece muito afiado..."
 	icon = 'icons/turf/walls/diamond_wall.dmi'
 	icon_state = "diamond_wall-0"
 	base_icon_state = "diamond_wall"
@@ -290,7 +288,7 @@
 
 /obj/structure/tram/alt/bananium
 	name = "bananium tram"
-	desc = "A composite structure with bananium plating. Honk!"
+	desc = "Uma estrutura composta com revestimento de banânio. Honk!"
 	icon = 'icons/turf/walls/bananium_wall.dmi'
 	icon_state = "bananium_wall-0"
 	base_icon_state = "bananium_wall"
@@ -303,7 +301,7 @@
 
 /obj/structure/tram/alt/sandstone
 	name = "sandstone tram"
-	desc = "A composite structure with sandstone plating. Rough."
+	desc = "Uma estrutura composta com revestimento de arenito. Duro."
 	icon = 'icons/turf/walls/sandstone_wall.dmi'
 	icon_state = "sandstone_wall-0"
 	base_icon_state = "sandstone_wall"
@@ -318,7 +316,7 @@
 /obj/structure/tram/alt/uranium
 	article = "a"
 	name = "uranium tram"
-	desc = "A composite structure with uranium plating. This is probably a bad idea."
+	desc = "Uma estrutura composta com revestimento de urânio. Provavelmente é uma má ideia."
 	icon = 'icons/turf/walls/uranium_wall.dmi'
 	icon_state = "uranium_wall-0"
 	base_icon_state = "uranium_wall"
@@ -363,7 +361,7 @@
 
 /obj/structure/tram/alt/plasma
 	name = "plasma tram"
-	desc = "A composite structure with plasma plating. This is definitely a bad idea."
+	desc = "Uma estrutura composta com revestimento de plasma. Isso é definitivamente uma má ideia."
 	icon = 'icons/turf/walls/plasma_wall.dmi'
 	icon_state = "plasma_wall-0"
 	base_icon_state = "plasma_wall"
@@ -376,7 +374,7 @@
 
 /obj/structure/tram/alt/wood
 	name = "wooden tram"
-	desc = "A tram with wooden framing. Flammable. There's a reason we use metal now."
+	desc = "Um bonde com armação de madeira. Inflamável. Há uma razão para usarmos metal agora."
 	icon = 'icons/turf/walls/wood_wall.dmi'
 	icon_state = "wood_wall-0"
 	base_icon_state = "wood_wall"
@@ -394,7 +392,7 @@
 	var/duration = ((4.8 SECONDS) / tool.force) * 2 //In seconds, for now.
 	if(istype(tool, /obj/item/hatchet) || istype(tool, /obj/item/fireaxe))
 		duration /= 4 //Much better with hatchets and axes.
-	to_chat(user, span_notice("You begin breaking down [src]."))
+	to_chat(user, span_notice("Você começa a quebrar[src]."))
 	if(!do_after(user, duration * (1 SECONDS), target=src)) //Into deciseconds.
 		return ITEM_INTERACT_BLOCKING
 	deconstruct(disassembled = FALSE)
@@ -402,7 +400,7 @@
 
 /obj/structure/tram/alt/bamboo
 	name = "bamboo tram"
-	desc = "A tram with a bamboo framing."
+	desc = "Um bonde com uma moldura de bambu."
 	icon = 'icons/turf/walls/bamboo_wall.dmi'
 	icon_state = "bamboo_wall-0"
 	base_icon_state = "wall"
@@ -414,7 +412,7 @@
 
 /obj/structure/tram/alt/iron
 	name = "rough iron tram"
-	desc = "A composite structure with rough iron plating."
+	desc = "Uma estrutura composta com revestimento de ferro bruto."
 	icon = 'icons/turf/walls/iron_wall.dmi'
 	icon_state = "iron_wall-0"
 	base_icon_state = "iron_wall"
@@ -428,7 +426,7 @@
 
 /obj/structure/tram/alt/abductor
 	name = "alien tram"
-	desc = "A composite structure made of some kind of alien alloy."
+	desc = "Uma estrutura composta feita de algum tipo de liga alienígena."
 	icon = 'icons/turf/walls/abductor_wall.dmi'
 	icon_state = "abductor_wall-0"
 	base_icon_state = "abductor_wall"
@@ -446,7 +444,7 @@
 /obj/structure/tram/spoiler
 	name = "tram spoiler"
 	icon = 'icons/obj/tram/tram_structure.dmi'
-	desc = "Nanotrasen bought the luxury package under the impression titanium spoilers make the tram go faster. They're just for looks, or potentially stabbing anybody who gets in the way."
+	desc = "Nanotrasen comprou o pacote de luxo sob a impressão de spoilers de titânio fazer o bonde ir mais rápido. Eles são apenas para olhar, ou potencialmente esfaquear qualquer um que fique no caminho."
 	icon_state = "tram-spoiler-retracted"
 	max_integrity = 400
 	obj_flags = CAN_BE_HIT
@@ -484,12 +482,12 @@
 /obj/structure/tram/spoiler/examine(mob/user)
 	. = ..()
 	if(obj_flags & EMAGGED)
-		. += span_warning("The electronics panel is sparking occasionally. It can be reset with a [EXAMINE_HINT("multitool.")]")
+		. += span_warning("O painel eletrônico está brilhando ocasionalmente. Pode ser reiniciado com um[EXAMINE_HINT("multitool.")]")
 
 	if(locked)
-		. += span_warning("The spoiler is [EXAMINE_HINT("welded")] in place!")
+		. += span_warning("O spoiler é[EXAMINE_HINT("welded")]Sem lugar!")
 	else
-		. += span_notice("The spoiler can be locked in place with a [EXAMINE_HINT("welder.")]")
+		. += span_notice("O spoiler pode ser trancado no lugar com um[EXAMINE_HINT("welder.")]")
 
 /obj/structure/tram/spoiler/proc/set_spoiler(source, controller, controller_active, controller_status, travel_direction)
 	SIGNAL_HANDLER
@@ -499,7 +497,7 @@
 		if(!deployed)
 			// Bring out the blades
 			if(locked)
-				visible_message(span_danger("\the [src] locks up due to its servo overheating!"))
+				visible_message(span_danger("\the [src]Fecha devoto ao seu servo superaquecimento!"))
 			do_sparks(3, cardinal_only = FALSE, source = src)
 			deploy_spoiler()
 		return
@@ -542,7 +540,7 @@
 /obj/structure/tram/spoiler/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	to_chat(user, span_warning("You short-circuit the [src]'s servo to overheat!"), type = MESSAGE_TYPE_INFO)
+	to_chat(user, span_warning("Você faz curto-circuito.[src]É servo de superaquecimento!"), type = MESSAGE_TYPE_INFO)
 	playsound(src, SFX_SPARKS, 100, vary = TRUE, extrarange = SHORT_RANGE_SOUND_EXTRARANGE)
 	do_sparks(5, cardinal_only = FALSE, source = src)
 	obj_flags |= EMAGGED
@@ -552,7 +550,7 @@
 		return FALSE
 
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "electronics reset!")
+		balloon_alert(user, "Reset eletrônico!")
 		obj_flags &= ~EMAGGED
 		return TRUE
 
@@ -563,12 +561,11 @@
 		return FALSE
 
 	if(atom_integrity >= max_integrity)
-		to_chat(user, span_warning("You begin to weld \the [src], [locked ? "repairing damage" : "preventing retraction"]."))
+		to_chat(user, span_warning("Você começa a soldar\the [src], [locked ? "repairing damage" : "preventing retraction"]."))
 		if(!tool.use_tool(src, user, 4 SECONDS, volume = 50))
 			return
 		locked = !locked
-		user.visible_message(span_warning("[user] [locked ? "welds \the [src] in place" : "repairs \the [src]"] with [tool]."), \
-			span_warning("You finish welding \the [src], [locked ? "locking it in place." : "it can move freely again!"]"), null, COMBAT_MESSAGE_RANGE)
+		user.visible_message(span_warning("[user] [locked ? "welds \the [src] in place" : "repairs \the [src]"]Com[tool]."), 			span_warning("Você termina de soldar.\the [src], [locked ? "locking it in place." : "it can move freely again!"]"), null, COMBAT_MESSAGE_RANGE)
 
 		if(locked)
 			deploy_spoiler()
@@ -576,11 +573,11 @@
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_notice("You begin repairing [src]..."))
+	to_chat(user, span_notice("Você começa a reparar[src]..."))
 	if(!tool.use_tool(src, user, 4 SECONDS, volume = 50))
 		return
 	atom_integrity = max_integrity
-	to_chat(user, span_notice("You repair [src]."))
+	to_chat(user, span_notice("Você conserta.[src]."))
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
@@ -591,7 +588,7 @@
 
 /obj/structure/chair/sofa/bench/tram
 	name = "bench"
-	desc = "Perfectly designed to be comfortable to sit on, and hellish to sleep on."
+	desc = "Perfeitamente projetado para ser confortável para sentar, e infernal para dormir."
 	icon_state = "/obj/structure/chair/sofa/bench/tram"
 	post_init_icon_state = "bench_middle"
 	greyscale_config = /datum/greyscale_config/bench_middle

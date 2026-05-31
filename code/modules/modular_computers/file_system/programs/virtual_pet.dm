@@ -16,7 +16,7 @@ GLOBAL_LIST_EMPTY(virtual_pets_list)
 	filename = "virtualpet"
 	filedesc = "Virtual Pet"
 	downloader_category = PROGRAM_CATEGORY_GAMES
-	extended_desc = "Download your very own Orbie today!"
+	extended_desc = "Baixe seu próprio Orbie hoje!"
 	program_open_overlay = "generic"
 	program_flags = PROGRAM_ON_NTNET_STORE
 	size = 3
@@ -163,7 +163,7 @@ GLOBAL_LIST_EMPTY(virtual_pets_list)
 	SIGNAL_HANDLER
 
 	if(!COOLDOWN_FINISHED(src, on_clean_cooldown))
-		source.balloon_alert(user, "already clean!")
+		source.balloon_alert(user, "Já está limpo!")
 		return COMSIG_ATOM_CANCEL_CLEAN
 
 /datum/computer_file/program/virtual_pet/proc/on_playmate_find(datum/source)
@@ -503,7 +503,7 @@ GLOBAL_LIST_EMPTY(virtual_pets_list)
 			else if(hat_selections[chosen_type])
 				var/datum/award/required_cheevo = cheevo_hats[chosen_type]
 				if(length(SSachievements.achievements) && required_cheevo && !ui.user.client.get_award_status(required_cheevo))
-					to_chat(ui.user, span_info("This customization requires the \"[span_bold(initial(required_cheevo.name))]\ achievement to be unlocked."))
+					to_chat(ui.user, span_info("Esta personalização requer o\"[span_bold(initial(required_cheevo.name))]Uma conquista a ser desbloqueada."))
 				else
 					selected_hat["type"] = chosen_type
 					var/state_to_use = initial(chosen_type.worn_icon_state) || initial(chosen_type.icon_state)

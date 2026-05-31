@@ -7,7 +7,7 @@
 
 /obj/machinery/atmos_shield_gen
 	name = "atmospheric shield generator"
-	desc = "Produces an atmos shield in a line between itself and another generator with both facing the other, while active. Powered by APC. Field must not be obstructed by wall, or an atmos shield field. Will turn on after gaining power if turned off due to power loss."
+	desc = "Produz um escudo atmos em uma linha entre si e outro gerador com ambos voltados para o outro, enquanto ativos. Alimentado pela APC. Campo não deve ser obstruído por parede, ou um campo de escudo de Atmos. Vai ligar depois de ganhar energia se desligado devido à perda de energia."
 	icon = 'icons/obj/machines/atmosshieldgen.dmi'
 	base_icon_state = "atmosshield"
 	icon_state = "atmosshield"
@@ -80,15 +80,15 @@
 	if(!in_range(user, src) && !isobserver(user))
 		return
 
-	. += span_notice("The status display reads:")
-	. += span_notice("Currently [on ? "" : "in"]active.")
+	. += span_notice("A exibição de status diz:")
+	. += span_notice("Atualmente.[on ? "" : "in"]Ativo.")
 	if(locked)
 		. += span_boldwarning("LOCKED")
 		return
-	. += span_notice("Maximum field length: [max_range] tiles.")
-	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "close" : "open"].")
+	. += span_notice("Comprimento máximo do campo:[max_range]Azulejos.")
+	. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")] [panel_open ? "close" : "open"].")
 	if(panel_open)
-		. += span_notice("It can be [EXAMINE_HINT("pried")] apart.")
+		. += span_notice("Pode ser.[EXAMINE_HINT("pried")]Separados.")
 
 /obj/machinery/atmos_shield_gen/RefreshParts()
 	. = ..()
@@ -108,22 +108,22 @@
 
 /obj/machinery/atmos_shield_gen/screwdriver_act(mob/user, obj/item/tool)
 	if(!panel_open && locked)
-		balloon_alert(user, "trancado!")
+		balloon_alert(user, "Trancado!")
 		return ITEM_INTERACT_FAILURE
 	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/atmos_shield_gen/crowbar_act(mob/user, obj/item/tool)
 	if(on)
-		balloon_alert(user, "desligue primeiro!")
+		balloon_alert(user, "Desligue primeiro!")
 		return ITEM_INTERACT_FAILURE
 	return default_deconstruction_crowbar(user, tool)
 
 /obj/machinery/atmos_shield_gen/wrench_act(mob/living/user, obj/item/tool)
 	if(on)
-		balloon_alert(user, "desligue primeiro!")
+		balloon_alert(user, "Desligue primeiro!")
 		return ITEM_INTERACT_FAILURE
 	if(locked)
-		balloon_alert(user, "destranque primeiro!")
+		balloon_alert(user, "Destranque primeiro!")
 		return ITEM_INTERACT_FAILURE
 	if(default_unfasten_wrench(user, tool) && !anchored)
 		turn_off()
@@ -135,7 +135,7 @@
 		balloon_alert(user, "não ancorado!")
 		return
 	if(locked && !issilicon(user))
-		balloon_alert(user, "trancado!")
+		balloon_alert(user, "Trancado!")
 		return
 	toggle(user)
 
@@ -145,7 +145,7 @@
 		return
 	if(allowed(user))
 		locked = !locked
-		balloon_alert(user, "[locked ? "" : "un"]locked!")
+		balloon_alert(user, "[locked ? "" : "un"]Trancado!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	balloon_alert(user, "sem acesso!")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -158,7 +158,7 @@
 		return ITEM_INTERACT_SUCCESS
 	if(istype(tool, /obj/item/card/id) && check_access(tool))
 		locked = !locked
-		balloon_alert(user, "[locked ? "" : "un"]locked!")
+		balloon_alert(user, "[locked ? "" : "un"]Trancado!")
 		return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/atmos_shield_gen/process_early()
@@ -213,7 +213,7 @@
 		on = GENERATOR_WANTPOWER
 		update_appearance(UPDATE_OVERLAYS)
 	if(!isnull(user))
-		balloon_alert(user, "turned [on ? "on" : "off"]")
+		balloon_alert(user, "Virado.[on ? "on" : "off"]")
 
 /obj/machinery/atmos_shield_gen/proc/turn_off(power_failure = FALSE)
 	if(!on)

@@ -1,7 +1,7 @@
 /// A simple one-use beacon to activate a two-way portal to the anchored receiver it's linked to.
 /obj/item/permanent_portal_creator
 	name = "two-way bluespace entanglement device"
-	desc = "A device with a very complex name, that is only used to confirm the second location that's tied to a stationary entanglement anchor."
+	desc = "Um dispositivo com um nome muito complexo, que só é usado para confirmar o segundo local que está amarrado a uma âncora de emaranhamento estacionária."
 	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "hand_tele"
 	inhand_icon_state = "electronic"
@@ -33,29 +33,29 @@
 		return
 
 	if(!isweakref(linked_anchor))
-		balloon_alert(user, "invalid destination!")
+		balloon_alert(user, "Destino inválido!")
 		return
 
 	var/obj/item/permanent_portal_anchor/portal_anchor = linked_anchor.resolve()
 
 	if(!istype(portal_anchor) || !get_turf(portal_anchor))
-		balloon_alert(user, "invalid destination!")
+		balloon_alert(user, "Destino inválido!")
 		return
 
-	if(tgui_alert(user, "Are you sure that this is the place you want to have the portal located at? This action is permanent and cannot be undone.", "Are you sure?", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "Tem certeza que este é o lugar onde quer ter o portal localizado? Esta ação é permanente e não pode ser desfeita.", "Are you sure?", list("Yes", "No")) != "Yes")
 		return
 
-	balloon_alert(user, "begining entanglement process...")
+	balloon_alert(user, "Começando o processo de emaranhamento...")
 
 	if(!do_after(user, 5 SECONDS))
-		balloon_alert(user, "entanglement cancelled!")
+		balloon_alert(user, "Enredo cancelado!")
 		return
 
 	var/list/obj/effect/portal/created_portals = create_portal_pair(get_turf(src), get_turf(portal_anchor), _lifespan = NONE)
 	created_portals[1].name = beacon_portal_name
 	created_portals[2].name = anchor_portal_name
 
-	created_portals[1].balloon_alert(user, "entanglement successful!")
+	created_portals[1].balloon_alert(user, "Enredo bem sucedido!")
 
 	qdel(portal_anchor)
 	qdel(src)
@@ -74,7 +74,7 @@
 
 /obj/item/permanent_portal_anchor
 	name = "two-way bluespace entanglement anchor"
-	desc = "A device with a very complex name, that serves as the stationary target of a linked two-way bluespace entanglement device."
+	desc = "Um dispositivo com um nome muito complexo, que serve como o alvo estacionário de um dispositivo de emaranhamento bidirecional ligado."
 	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "beacon"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
@@ -99,14 +99,14 @@
 	balloon_alert(user, "deploying...")
 
 	if(!do_after(user, 5 SECONDS))
-		balloon_alert(user, "deployment failed!")
+		balloon_alert(user, "A implantação falhou!")
 		return
 
 	deploy(user)
 
 	playsound(src, 'modular_skyrat/modules/aesthetics/airlock/sound/bolts_down.ogg', 50, FALSE)
 
-	balloon_alert(user, "deployment successful!")
+	balloon_alert(user, "implantação bem sucedida!")
 
 
 /// Simple helper proc to deploy the anchor, with mob/user as an optional argument to make them drop it if they're holding it.
@@ -126,24 +126,24 @@
 		return ..()
 
 	if(!anchored)
-		balloon_alert(user, "needs to be deployed!")
+		balloon_alert(user, "Precisa ser destinada!")
 		return
 
 	var/obj/item/permanent_portal_creator/portal_maker = attacking_item
 	portal_maker.linked_anchor = WEAKREF(src)
 
-	balloon_alert(user, "linking successful!")
+	balloon_alert(user, "Ligando sucesso!")
 
 
 /obj/item/permanent_portal_anchor/space_hotel
 	name = "\improper Twin Nexus two-way bluespace entanglement anchor"
-	desc = "A device with a very complex name, that serves as the stationary target of a linked two-way bluespace entanglement device.\n\nIn your case, it serves to let your guests out."
+	desc = "Um dispositivo com um nome muito complexo, que serve como o alvo estacionário de um dispositivo de emaranhamento bidirecional ligado.\n\nNo seu caso, serve para libertar seus convidados."
 
 
 //Space Hotel Keycards and Room Doors
 /obj/item/key_card/hotel_room
 	name = "\improper Twin Nexus keycard"
-	desc = "A keycard, to open a keycard-locked hotel room."
+	desc = "Um cartão-chave, para abrir um quarto de hotel fechado."
 	access_id = "guest_room_"
 	/// The number of the room, so that it gets automatically handled by the code everywhere
 	/// it's relevant.
@@ -170,7 +170,7 @@
 
 /obj/item/key_card/hotel_room/master
 	name = "\improper Twin Nexus master keycard"
-	desc = "A master keycard, to open all the keycard-locked hotel rooms.\nIt has an engraving on it that reads: \"Master Access\""
+	desc = "Um cartão-chave para abrir todos os quartos de hotel.\nTem uma gravura nela que diz:\"Acesso Mestre\""
 	access_id = null
 	master_access = TRUE
 

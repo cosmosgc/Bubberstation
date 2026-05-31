@@ -17,7 +17,7 @@
 	// AIs cannot speak if silent AI is on.
 	// Unless forced is set, as that's probably stating laws or something.
 	if(!forced && CONFIG_GET(flag/silent_ai))
-		to_chat(src, span_danger("The ability for AIs to speak is currently disabled via server config."))
+		to_chat(src, span_danger("A habilidade de IA falar está atualmente desativada via configuração do servidor."))
 		return FALSE
 
 	return ..()
@@ -26,7 +26,7 @@
 	if(incapacitated)
 		return FALSE
 	if(!radio_enabled) //AI cannot speak if radio is disabled (via intellicard) or depowered.
-		to_chat(src, span_danger("Your radio transmitter is offline!"))
+		to_chat(src, span_danger("Seu transmissor de rádio está desligado!"))
 		return FALSE
 	. = ..()
 	if(.)
@@ -51,7 +51,7 @@
 	var/obj/machinery/holopad/active_pad = current
 	// Only continue if there is a hologram and its master is the user.
 	if(!istype(active_pad) || !active_pad.masters[src])
-		to_chat(src, span_alert("No holopad connected."))
+		to_chat(src, span_alert("Nenhuma holopade conectada."))
 		return
 
 	var/obj/effect/overlay/holo_pad_hologram/ai_holo = active_pad.masters[src]
@@ -100,7 +100,7 @@
 /mob/living/silicon/ai/proc/announcement()
 	var/static/announcing_vox = 0 // Stores the time of the last announcement
 	if(announcing_vox > world.time)
-		to_chat(src, span_notice("Please wait [DisplayTimeText(announcing_vox - world.time)]."))
+		to_chat(src, span_notice("Por favor, espere.[DisplayTimeText(announcing_vox - world.time)]."))
 		return
 
 	var/message = tgui_input_text(
@@ -120,7 +120,7 @@
 		return
 
 	if(control_disabled)
-		to_chat(src, span_warning("Wireless interface disabled, unable to interact with announcement PA."))
+		to_chat(src, span_warning("Interface sem fio desativada, incapaz de interagir com o anúncio PA."))
 		return
 
 	var/list/words = splittext(trim(message), " ")
@@ -138,7 +138,7 @@
 			incorrect_words += word
 
 	if(incorrect_words.len)
-		to_chat(src, span_notice("These words are not available on the announcement system: [english_list(incorrect_words)]."))
+		to_chat(src, span_notice("Estas palavras não estão disponíveis no sistema de anúncio:[english_list(incorrect_words)]."))
 		return
 
 	announcing_vox = world.time + VOX_DELAY

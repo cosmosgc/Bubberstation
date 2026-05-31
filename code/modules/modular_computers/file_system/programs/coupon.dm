@@ -6,7 +6,7 @@
 	filename = "couponmaster"
 	filedesc = "Coupon Master"
 	downloader_category = PROGRAM_CATEGORY_SUPPLY
-	extended_desc = "Program for receiving discounts for several cargo goodies. After redeeming a coupon, hit a photocopier with your PDA to print it."
+	extended_desc = "Programa para receber descontos para várias mercadorias. Depois de resgatar um cupom, acerte uma fotocopiadora com seu PDA para imprimi-lo."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	size = 5
 	tgui_id = "NtosCouponMaster"
@@ -93,7 +93,7 @@
 		return FALSE
 	var/obj/item/card/id/user_id = computer.stored_id
 	if(!(user_id?.registered_account))
-		computer.balloon_alert(user, "no bank account found!")
+		computer.balloon_alert(user, "Nenhuma conta bancária encontrada!")
 		return TRUE
 	var/obj/machinery/photocopier/copier = tapped_atom
 	if(copier.check_busy(user))
@@ -103,7 +103,7 @@
 		if(!coupon.printed)
 			num_coupons++
 	if(!num_coupons)
-		computer.balloon_alert(user, "no coupon available!")
+		computer.balloon_alert(user, "Nenhum cupom disponível!")
 		return TRUE
 	copier.do_copies(CALLBACK(src, PROC_REF(print_coupon), user_id.registered_account), user, COUPON_PAPER_USE, COUPON_TONER_USE, num_coupons)
 	return TRUE

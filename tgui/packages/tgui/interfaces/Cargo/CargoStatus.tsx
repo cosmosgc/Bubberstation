@@ -46,7 +46,7 @@ export function CargoStatus(props) {
               color={grocery ? 'orange' : 'green'}
               tooltip={
                 grocery
-                  ? 'The kitchen is waiting for their grocery supply delivery!'
+                  ? 'A cozinha está esperando a entrega do estoque!'
                   : ''
               }
               tooltipPosition="right"
@@ -58,7 +58,7 @@ export function CargoStatus(props) {
             String(location)
           )}
         </LabeledList.Item>
-        <LabeledList.Item label="CentCom Message">{message}</LabeledList.Item>
+        <LabeledList.Item label="Mensagem CentCom">{message}</LabeledList.Item>
         {!!loan && !requestonly && (
           <LabeledList.Item label="Loan">
             {!loan_dispatched ? (

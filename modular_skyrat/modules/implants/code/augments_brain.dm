@@ -2,7 +2,7 @@
 
 /obj/item/organ/cyberimp/brain/empathic_sensor
 	name = "empathic sensor implant"
-	desc = "This won't fix your social issues, but it may help you repress them better." //not final
+	desc = "Isso não vai resolver seus problemas sociais, mas pode ajudá-lo a reprimi-los melhor." //not final
 	icon_state = "brain_implant_antidrop"
 	var/active = FALSE
 	var/list/stored_items = list()
@@ -20,7 +20,7 @@
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
 	owner.remove_language(/datum/language/marish/empathy, source = LANGUAGE_IMPLANT)
 	addtimer(CALLBACK(src, PROC_REF(reboot)), 180 / severity)
-	to_chat(owner, span_warning("You feel overwhelmed!"))
+	to_chat(owner, span_warning("Você se sente oprimido!"))
 	switch(severity)
 		if (EMP_HEAVY)
 			owner.adjust_stutter(180 SECONDS)
@@ -34,7 +34,7 @@
 		return
 	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	owner.grant_language(/datum/language/marish/empathy, source = LANGUAGE_IMPLANT)
-	to_chat(owner, span_abductor("Your mind opens to others. You can hear the thoughts of those around you, but only faintly."))
+	to_chat(owner, span_abductor("Sua mente se abre para os outros. Você pode ouvir os pensamentos daqueles ao seu redor, mas apenas fracamente."))
 
 /obj/item/organ/cyberimp/brain/empathic_sensor/on_mob_remove(mob/living/carbon/implant_owner)
 	. = ..()
@@ -43,11 +43,11 @@
 	implant_owner.remove_language(/datum/language/marish/empathy, source = LANGUAGE_IMPLANT)
 	if(QDELETED(src))
 		return
-	to_chat(implant_owner, span_abductor("Your mind closes from others. It's quiet, now."))
+	to_chat(implant_owner, span_abductor("Sua mente se fecha dos outros. Está quieto, agora."))
 
 /obj/item/organ/cyberimp/brain/empathic_sensor/on_mob_insert(mob/living/carbon/receiver)
 	. = ..()
-	to_chat(receiver, span_abductor("You begin to feel an awareness of those around you."))
+	to_chat(receiver, span_abductor("Você começa a sentir uma consciência daqueles ao seu redor."))
 	addtimer(CALLBACK(src, PROC_REF(implant_ready)), 90)
 
 /obj/item/organ/cyberimp/brain/empathic_sensor/proc/reboot()
@@ -59,7 +59,7 @@
 /obj/item/organ/cyberimp/brain/empathic_sensor/proc/modify_speech(datum/source, list/speech_args)
 	ASYNC
 		if(organ_flags & ORGAN_FAILING) //just in case they somehow activate this while the implant is disabled...
-			to_chat(owner, span_abductor("You are unable to project your thoughts."))
+			to_chat(owner, span_abductor("Você é incapaz de projetar seus pensamentos."))
 			return
 		actually_modify_speech(source, speech_args)
 	speech_args[SPEECH_MESSAGE] = "" // Makes it not send to chat verbally

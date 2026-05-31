@@ -20,7 +20,7 @@ export const BorgPanel = (props) => {
   const ais = data.ais || [];
   const laws = data.laws || [];
   return (
-    <Window title="Borg Panel" theme="admin" width={700} height={700}>
+    <Window title="Painel Borg." theme="admin" width={700} height={700}>
       <Window.Content scrollable>
         <Section
           title={borg.name}
@@ -42,13 +42,13 @@ export const BorgPanel = (props) => {
               />
               <Button
                 icon={borg.lockdown ? 'check-square-o' : 'square-o'}
-                content="Locked Down"
+                content="Trancado"
                 selected={borg.lockdown}
                 onClick={() => act('toggle_lockdown')}
               />
               <Button
                 icon={borg.scrambledcodes ? 'check-square-o' : 'square-o'}
-                content="Scrambled Codes"
+                content="Códigos Mexidos"
                 selected={borg.scrambledcodes}
                 onClick={() => act('toggle_scrambledcodes')}
               />
@@ -79,7 +79,7 @@ export const BorgPanel = (props) => {
                 onClick={() => act('remove_cell')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Radio Channels">
+            <LabeledList.Item label="Canais de Rádio">
               {channels.map((channel) => (
                 <Button
                   key={channel.name}
@@ -128,7 +128,7 @@ export const BorgPanel = (props) => {
                 />
               ))}
             </LabeledList.Item>
-            <LabeledList.Item label="Master AI">
+            <LabeledList.Item label="Mestre AI">
               {ais.map((ai) => (
                 <Button
                   key={ai.ref}

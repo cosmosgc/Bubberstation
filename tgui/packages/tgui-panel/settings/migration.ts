@@ -90,7 +90,7 @@ export function startSettingsMigration(next: MergedSettings): void {
     };
     storage.set('panel-settings', initialized);
     store.set(settingsAtom, initialized);
-    console.log('Initialized settings with defaults.');
+    console.log('Configurações inicializadas com padrões.');
     return;
   }
 
@@ -109,7 +109,7 @@ export function startSettingsMigration(next: MergedSettings): void {
   generalSettingsHandler(draftSettings);
   setMusicVolume(draftSettings.adminMusicVolume);
   store.set(settingsAtom, draftSettings);
-  console.log('Migrated panel settings:', draftSettings);
+  console.log('Configurações do painel migrado:', draftSettings);
 
   const migratedHighlights = migrateHighlights(highlightPart);
 
@@ -124,5 +124,5 @@ export function startSettingsMigration(next: MergedSettings): void {
     migratedHighlights.highlightSettingById,
   );
   store.set(highlightsAtom, migratedHighlights);
-  console.log('Migrated panel highlight settings:', migratedHighlights);
+  console.log('Configurações de realce do painel migrado:', migratedHighlights);
 }

@@ -1,6 +1,6 @@
 /obj/item/radio/intercom //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "station intercom"
-	desc = "A trusty station intercom, ready to spring into action even when the headsets go silent."
+	desc = "Um porteiro da estação, pronto para entrar em ação mesmo quando os fones de ouvido ficam em silêncio."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "intercom"
 	anchored = TRUE
@@ -24,7 +24,7 @@
 
 /obj/item/radio/intercom/prison
 	name = "receive-only intercom"
-	desc = "A station intercom. It looks like it has been modified to not broadcast."
+	desc = "Um interfone da estação. Parece que foi modificado para não transmitir."
 	icon_state = "intercom_prison"
 	icon_off = "intercom_prison-p"
 
@@ -48,27 +48,26 @@
 
 /obj/item/radio/intercom/examine(mob/user)
 	. = ..()
-	. += span_notice("Use [MODE_TOKEN_INTERCOM] when nearby to speak into it.")
+	. += span_notice("Use[MODE_TOKEN_INTERCOM]Quando perto para falar sobre isso.")
 	if(!unscrewed)
-		. += span_notice("It's <b>screwed</b> and secured to the wall.")
+		. += span_notice("É...<b>Está ferrado.</b>e seguro na parede.")
 	else
-		. += span_notice("It's <i>unscrewed</i> from the wall, and can be <b>detached</b>.")
+		. += span_notice("É...<i>Desenroscado</i>da parede, e pode ser<b>Desconectado.</b>.")
 
 	if(anonymize)
-		. += span_notice("Speaking through this intercom will anonymize your voice.")
+		. += span_notice("Falando através deste interfone vai anonimizar sua voz.")
 
 	if(freqlock == RADIO_FREQENCY_UNLOCKED)
 		if((obj_flags & EMAGGED) && initial(freqlock) == RADIO_FREQENCY_EMAGGABLE_LOCK)
-			. += span_warning("Its frequency lock has been shorted...")
+			. += span_warning("Sua trava de frequência foi cortada...")
 	else
-		. += span_notice("It has a frequency lock set to [frequency/10].")
+		. += span_notice("Tem um bloqueio de frequência definido para[frequency/10].")
 
 	if(keylock == RADIO_KEYSLOT_UNLOCKED)
 		if((obj_flags & EMAGGED) && initial(keylock) == RADIO_KEYSLOT_EMAGGABLE_LOCK)
-			. += span_warning("Its keyslot's security screws have been uplifted...")
+			. += span_warning("Os parafusos de segurança do Keyslot foram levantados...")
 	else
-		. += span_notice("The screws in its keyslot are [keylock == RADIO_KEYSLOT_LOCKED ? "stripped" : "fastened tight"], \
-			preventing the removal of its encryption key[keylock == RADIO_KEYSLOT_LOCKED ? "" : " without some kind of magnet"].")
+		. += span_notice("Os parafusos em seu keyslot são[keylock == RADIO_KEYSLOT_LOCKED ? "stripped" : "fastened tight"], impedindo a remoção de sua chave de criptografia[keylock == RADIO_KEYSLOT_LOCKED ? "" : " without some kind of magnet"].")
 
 /obj/item/radio/intercom/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -84,15 +83,15 @@
 
 /obj/item/radio/intercom/screwdriver_act_secondary(mob/living/user, obj/item/tool)
 	if(unscrewed)
-		user.visible_message(span_notice("[user] starts tightening [src]'s screws..."), span_notice("You start screwing in [src]..."))
+		user.visible_message(span_notice("[user]Começa a apertar.[src]Os parafusos..."), span_notice("Você começa a ferrar[src]..."))
 		if(tool.use_tool(src, user, 30, volume=50))
-			user.visible_message(span_notice("[user] tightens [src]'s screws!"), span_notice("You tighten [src]'s screws."))
+			user.visible_message(span_notice("[user]aperta.[src]São parafusos!"), span_notice("Você aperta.[src]São parafusos."))
 			unscrewed = FALSE
 			update_appearance(UPDATE_OVERLAYS)
 	else
-		user.visible_message(span_notice("[user] starts loosening [src]'s screws..."), span_notice("You start unscrewing [src]..."))
+		user.visible_message(span_notice("[user]começa a afrouxar[src]Os parafusos..."), span_notice("Você começa a desenroscar[src]..."))
 		if(tool.use_tool(src, user, 40, volume=50))
-			user.visible_message(span_notice("[user] loosens [src]'s screws!"), span_notice("You unscrew [src], loosening it from the wall."))
+			user.visible_message(span_notice("[user]Solte-se.[src]São parafusos!"), span_notice("Você desaparafusa.[src], soltando-o da parede."))
 			unscrewed = TRUE
 			update_appearance(UPDATE_OVERLAYS)
 	return ITEM_INTERACT_SUCCESS
@@ -104,12 +103,12 @@
 
 /obj/item/radio/intercom/wrench_act(mob/living/user, obj/item/tool)
 	if(!unscrewed)
-		to_chat(user, span_warning("You need to unscrew [src] from the wall first!"))
+		to_chat(user, span_warning("Você precisa desaparafusar[src]Pela parede primeiro!"))
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user] starts unsecuring [src]..."), span_notice("You start unsecuring [src]..."))
+	user.visible_message(span_notice("[user]começa a insegurar[src]..."), span_notice("Você começa a se proteger.[src]..."))
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 80))
-		user.visible_message(span_notice("[user] unsecures [src]!"), span_notice("You detach [src] from the wall."))
+		user.visible_message(span_notice("[user]Inseguras[src]!"), span_notice("Você se desprende.[src]Da parede."))
 		playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 		deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
@@ -174,7 +173,7 @@
 		return .
 
 	if(!freqlock && !keylock)
-		balloon_alert(user, "no locks to break!")
+		balloon_alert(user, "Sem fechaduras para quebrar!")
 		return .
 
 	var/message = ""
@@ -186,11 +185,11 @@
 		message = "key lock"
 
 	if(!message)
-		balloon_alert(user, "can't break lock[(freqlock && keylock) ? "s" : ""]!")
+		balloon_alert(user, "Não consigo quebrar a fechadura.[(freqlock && keylock) ? "s" : ""]!")
 		playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, FALSE, SILENCED_SOUND_EXTRARANGE)
 		return .
 
-	balloon_alert(user, "[message] broken")
+	balloon_alert(user, "[message]Quebrado.")
 	playsound(src, SFX_SPARKS, 75, TRUE, SILENCED_SOUND_EXTRARANGE)
 	if(freqlock == RADIO_FREQENCY_EMAGGABLE_LOCK)
 		freqlock = RADIO_FREQENCY_UNLOCKED
@@ -228,7 +227,7 @@
 //Created through the autolathe or through deconstructing intercoms. Can be applied to wall to make a new intercom on it!
 /obj/item/wallframe/intercom
 	name = "intercom frame"
-	desc = "A ready-to-go intercom. Just slap it on a wall and screw it in!"
+	desc = "Um interfone pronto. Coloque na parede e enrole!"
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "intercom"
 	result_path = /obj/item/radio/intercom/unscrewed
@@ -238,7 +237,7 @@
 // Used in the confessional booth in the chapel, locked to the confessional frequency and hides voices
 /obj/item/radio/intercom/chapel
 	name = "Confessional intercom"
-	desc = "Talk through this... to confess your many sins. Conceals your voice, to keep them secret."
+	desc = "Fale sobre isso... para confessar seus muitos pecados. Esconde sua voz, para mantê-los em segredo."
 	anonymize = TRUE
 	freqlock = RADIO_FREQENCY_EMAGGABLE_LOCK
 
@@ -250,7 +249,7 @@
 // Special type of intercom for use in the bridge that can tune into any frequency and has loudmic (NOT FOR PUBLIC AREAS)
 /obj/item/radio/intercom/command
 	name = "command intercom"
-	desc = "The command's special free-frequency intercom. It's a versatile tool that can be tuned to any frequency, granting you access to channels you're not supposed to be on. Plus, it comes equipped with a built-in voice amplifier for crystal-clear communication."
+	desc = "O comando é um interfone especial de frequência livre. É uma ferramenta versátil que pode ser sintonizada em qualquer frequência, permitindo acesso a canais que você não deveria estar. Além disso, vem equipado com um amplificador de voz incorporado para comunicação cristalina."
 	icon_state = "intercom_command"
 	freerange = TRUE
 	command = TRUE
@@ -267,7 +266,7 @@
 	set_frequency(FREQ_INTERROGATION)
 
 /obj/item/radio/intercom/interrogation/inside
-	desc = "An intercom that broadcasts any ongoing interrogation to someone that's probably taking notes."
+	desc = "Um interfone que transmite qualquer interrogatório para alguém que provavelmente está tomando notas."
 
 /obj/item/radio/intercom/interrogation/inside/Initialize(mapload)
 	. = ..()
@@ -275,13 +274,13 @@
 	set_listening(FALSE)
 
 /obj/item/radio/intercom/interrogation/outside
-	desc = "An intercom that allows communication with the inside of the interrogation room, while scrambling voices for \"privacy\"."
+	desc = "Um interfone que permite a comunicação com o interior da sala de interrogatório, enquanto escandaliza vozes para\"privacidade\"."
 	anonymize = TRUE
 
 // Subtype that simply has freerange enabled
 /obj/item/radio/intercom/freerange
 	name = "free-range intercom"
-	desc = "A special intercom that can be tuned to any frequency, bypassing encryption."
+	desc = "Um interfone especial que pode ser sintonizado em qualquer frequência, ignorando criptografia."
 	freerange = TRUE
 
 // For use in the AI core to allow the AI to tune into any encrypted frequency if comms are down
@@ -295,24 +294,24 @@
 // Intercom with loudmic and innate syndicate channel access
 /obj/item/radio/intercom/syndicate
 	name = "syndicate intercom"
-	desc = "Talk smack through this."
+	desc = "Fale sobre isso."
 	command = TRUE
 	special_channels = RADIO_SPECIAL_SYNDIE
 
 // Syndicate intercom that also has freefrange on top of syndicate channel
 /obj/item/radio/intercom/syndicate/freerange
 	name = "syndicate wide-band intercom"
-	desc = "A custom-made Syndicate-issue intercom used to transmit on all Nanotrasen frequencies. Particularly expensive."
+	desc = "Um intercomunicador feito sob medida, usado para transmitir em todas as frequências de Nanotrasen. Particularmente caro."
 	freerange = TRUE
 
 /obj/item/radio/intercom/mi13
 	name = "intercom"
-	desc = "Talk through this to talk to whoever is in this facility with you."
+	desc = "Fale com quem está aqui com você."
 	freerange = TRUE
 
 /obj/item/radio/intercom/ai_private
 	name = "\improper AI private intercom"
-	desc = "An intercom primarily used for a private line directly to the station's AI."
+	desc = "Um interfone usado principalmente para uma linha privada diretamente para a IA da estação."
 
 /obj/item/radio/intercom/ai_private/Initialize(mapload)
 	. = ..()
@@ -327,7 +326,7 @@
 
 // For use in AI chambers: Tuned to AI private, free-range allowed, otherwise doesn't broadcast or relay
 /obj/item/radio/intercom/ai_private/freerange
-	desc = parent_type::desc + " This one can be tuned to any frequency, bypassing encryption."
+	desc = parent_type::desc + "Esta pode ser ajustada a qualquer frequência, ignorando criptografia."
 	freerange = TRUE
 
 /obj/item/radio/intercom/ai_private/freerange/Initialize(mapload)
@@ -343,7 +342,7 @@
 
 // Subtype that spawns with an encryption key and has a key lock
 /obj/item/radio/intercom/departmental
-	desc = "A station intercom primarily intended for speaking with members of a department."
+	desc = "Um intercomunicador da estação destinado principalmente a falar com membros de um departamento."
 	keylock = RADIO_KEYSLOT_EMAGGABLE_LOCK
 	abstract_type = /obj/item/radio/intercom/departmental
 

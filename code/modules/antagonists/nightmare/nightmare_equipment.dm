@@ -27,10 +27,7 @@
 /obj/item/light_eater/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
-	AddComponent(/datum/component/butchering, \
-	speed = 8 SECONDS, \
-	effectiveness = 70, \
-	)
+	AddComponent(/datum/component/butchering, 	speed = 8 SECONDS, 	effectiveness = 70, 	)
 	AddComponent(/datum/component/light_eater)
 
 /obj/item/light_eater/equipped(mob/user, slot, initial = FALSE)
@@ -54,12 +51,12 @@
 		return
 	playsound(target, 'sound/effects/wounds/crackandbleed.ogg', 100, TRUE)
 	if(target.stat == DEAD)
-		user.visible_message(span_warning("[user] gores [target] with [src]!"), span_warning("You gore [target] with [src], which doesn't accomplish much, but it does make you feel a little better."))
+		user.visible_message(span_warning("[user]Gores[target]com[src]!"), span_warning("Você vai.[target]com[src], o que não faz muito, mas faz você se sentir um pouco melhor."))
 	else if(!HAS_TRAIT(target, TRAIT_HULK) && (iscarbon(target) || issilicon(target)))
-		user.visible_message(span_boldwarning("[user] gores [target] with [src], bringing them to a halt!"), span_userdanger("You gore [target] with [src], bringing them to a halt!"))
+		user.visible_message(span_boldwarning("[user]Gores[target]com[src], fazendo-os parar!"), span_userdanger("Você vai.[target]com[src], fazendo-os parar!"))
 		target.Paralyze(issilicon(target) ? 2 SECONDS : 1 SECONDS)
 	else
-		user.visible_message(span_boldwarning("[user] gores [target] with [src], ripping into them!"), span_userdanger("You gore [target] with [src], ripping into them!"))
+		user.visible_message(span_boldwarning("[user]Gores[target]com[src], rasgando neles!"), span_userdanger("Você vai.[target]com[src], rasgando neles!"))
 		target.apply_damage(damage = force, forced = TRUE)
 	remove_crit()
 
@@ -75,7 +72,7 @@
 	has_crit = TRUE
 	add_filter("crit_glow", 3, list("type" = "outline", "color" = COLOR_CARP_RIFT_RED, "size" = 5))
 	if(ismob(loc))
-		loc.balloon_alert(loc, "critical strike ready")
+		loc.balloon_alert(loc, "Ataque crítico pronto.")
 
 /obj/item/light_eater/proc/remove_crit()
 	if(!has_crit)

@@ -205,11 +205,11 @@
 		var/obj/item/clothing/sextoy/existing_item = target.vars[item_index]
 
 		if(!existing_item && !new_item)
-			source.show_message(span_warning("No item to insert or remove!"))
+			source.show_message(span_warning("Nenhum item para inserir ou remover!"))
 			return
 
 		if(!existing_item && !istype(new_item))
-			source.show_message(span_warning("The item you're holding is not a toy!"))
+			source.show_message(span_warning("O item que está segurando não é um brinquedo!"))
 			return
 
 		if(can_lewd_strip(source, target, item_index) && is_toy_compatible(new_item, item_index))
@@ -218,11 +218,11 @@
 			var/into_or_onto = internal ? "into" : "onto"
 
 			if(existing_item)
-				source.visible_message(span_purple("[source.name] starts trying to remove something from [target.name]'s [item_index]."), span_purple("You start to remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone trying to remove something from someone nearby."), vision_distance = 1, ignored_mobs = list(target))
+				source.visible_message(span_purple("[source.name]começa a tentar remover algo de[target.name]'s[item_index]."), span_purple("Você começa a remover[existing_item.name]De[target.name]'s[item_index]."), span_purple("Você ouve alguém tentando remover algo de alguém próximo."), vision_distance = 1, ignored_mobs = list(target))
 			else if (new_item)
-				source.visible_message(span_purple("[source.name] starts trying to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You start to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone trying to [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1, ignored_mobs = list(target))
+				source.visible_message(span_purple("[source.name]Começa a tentar[insert_or_attach]O[new_item.name] [into_or_onto] [target.name]'s[item_index]."), span_purple("Você começa a[insert_or_attach]O[new_item.name] [into_or_onto] [target.name]'s[item_index]."), span_purple("Você ouve alguém tentando[insert_or_attach]Algo.[into_or_onto]Alguém por perto."), vision_distance = 1, ignored_mobs = list(target))
 			if (source != target)
-				target.show_message(span_warning("[source.name] is trying to [existing_item ? "remove the [existing_item.name] [internal ? "in" : "on"]" : new_item ? "is trying to [insert_or_attach] the [new_item.name] [into_or_onto]" : span_alert("What the fuck, impossible condition? interaction_component.dm!")] your [item_index]!"))
+				target.show_message(span_warning("[source.name]está tentando[existing_item ? "remove the [existing_item.name] [internal ? "in" : "on"]" : new_item ? "is trying to [insert_or_attach] the [new_item.name] [into_or_onto]" : span_alert("What the fuck, impossible condition? interaction_component.dm!")]Sua[item_index]!"))
 			if(do_after(
 				source,
 				5 SECONDS,
@@ -231,18 +231,18 @@
 				) && can_lewd_strip(source, target, item_index))
 
 				if(existing_item)
-					source.visible_message(span_purple("[source.name] removes [existing_item.name] from [target.name]'s [item_index]."), span_purple("You remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone remove something from someone nearby."), vision_distance = 1)
+					source.visible_message(span_purple("[source.name]Remove[existing_item.name]De[target.name]'s[item_index]."), span_purple("Você tira.[existing_item.name]De[target.name]'s[item_index]."), span_purple("Você ouve alguém remover algo de alguém próximo."), vision_distance = 1)
 					target.dropItemToGround(existing_item, force = TRUE) // Force is true, cause nodrop shouldn't affect lewd items.
 					target.vars[item_index] = null
 				else if (new_item)
-					source.visible_message(span_purple("[source.name] [internal ? "inserts" : "attaches"] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1)
+					source.visible_message(span_purple("[source.name] [internal ? "inserts" : "attaches"]O[new_item.name] [into_or_onto] [target.name]'s[item_index]."), span_purple("Você.[insert_or_attach]O[new_item.name] [into_or_onto] [target.name]'s[item_index]."), span_purple("Você ouve alguém[insert_or_attach]Algo.[into_or_onto]Alguém por perto."), vision_distance = 1)
 					target.vars[item_index] = new_item
 					new_item.forceMove(target)
 					new_item.lewd_equipped(target, item_index)
 				target.update_inv_lewd()
 
 		else
-			source.show_message(span_warning("Failed to adjust [target.name]'s toys!"))
+			source.show_message(span_warning("Não conseguiu se ajustar.[target.name]São brinquedos!"))
 
 		return TRUE
 

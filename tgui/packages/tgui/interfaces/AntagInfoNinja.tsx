@@ -65,7 +65,7 @@ export const AntagInfoNinja = (props) => {
                 objectiveFollowup={
                   <ReplaceObjectivesButton
                     can_change_objective={can_change_objective}
-                    button_title={'Adapt Mission Parameters'}
+                    button_title={'Adaptar parâmetros da missão'}
                     button_colour={'green'}
                   />
                 }

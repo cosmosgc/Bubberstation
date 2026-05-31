@@ -11,7 +11,7 @@ export const SecurityRecords = (props) => {
   const { authenticated } = data;
 
   return (
-    <Window title="Security Records" width={750} height={550}>
+    <Window title="Registros de segurança" width={750} height={550}>
       <Window.Content>
         <Stack fill>{!authenticated ? <RestrictedView /> : <AuthView />}</Stack>
       </Window.Content>

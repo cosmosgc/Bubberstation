@@ -121,7 +121,7 @@
 
 /obj/item/shuttle_blueprints
 	name = "shuttle blueprints"
-	desc = "A blank sheet of synthetic engineering-grade paper."
+	desc = "Uma folha em branco de papel de engenharia sintética."
 	icon = 'icons/obj/scrolls.dmi'
 	icon_state = "shuttle_blueprints0"
 	base_icon_state = "shuttle_blueprints"
@@ -175,17 +175,17 @@
 		return
 	. = COMPONENT_CANCEL_ATTACK_CHAIN
 	if(shuttle.master_blueprint?.resolve() != src)
-		to_chat(user, span_warning("Only the master blueprint for \the [shuttle] grants you the right to rechristen [shuttle.p_them()]!"))
+		to_chat(user, span_warning("Apenas a planta mestre para\the [shuttle]Ele admite o direito de recrisen.[shuttle.p_them()]!"))
 		return
 	var/turf/user_turf = get_turf(user)
 	if(user_turf && isshuttleturf(user_turf))
-		to_chat(user, span_warning("You can't rechristen \the [shuttle] from inside of [shuttle.p_them()]!"))
+		to_chat(user, span_warning("Você não pode rechristen\the [shuttle]De dentro de[shuttle.p_them()]!"))
 		return
 	if(!source.isGlass)
-		to_chat(user, span_warning("You can't break [source] against [attacked]!"))
+		to_chat(user, span_warning("Você não pode quebrar[source]Contra[attacked]!"))
 		return
 	if(source.reagents.total_volume < CHEMICAL_QUANTISATION_LEVEL)
-		to_chat(user, span_warning("You should put some christening fluid in [source]!"))
+		to_chat(user, span_warning("Você deveria colocar um pouco de fluido de batismo[source]!"))
 		return
 	INVOKE_ASYNC(src, PROC_REF(christen), user, shuttle, attacked, user.active_hand_index)
 
@@ -202,13 +202,13 @@
 	new_name = apply_text_macros(new_name)
 	var/obj/item/hitting_implement = (locate(/obj/item/reagent_containers/cup/glass/bottle) in user.held_items) || user.get_item_for_held_index(hand)
 	if(!attacked.IsReachableBy(user, hitting_implement.reach))
-		user.balloon_alert(user, "fora do alcance!")
+		user.balloon_alert(user, "Fora da Aliança!")
 		return
 	var/obj/item/reagent_containers/cup/glass/bottle/bottle = hitting_implement
 	bottle = istype(bottle) && bottle.isGlass && bottle
 	var/shuttle_exists = !QDELETED(shuttle)
 	if(!shuttle_exists)
-		to_chat(user, span_warning("Wasn't there supposed to be a shuttle here?"))
+		to_chat(user, span_warning("Não era para ter uma nave auxiliar aqui?"))
 	var/has_blueprints = !QDELETED(src) && (src in user.gather_belongings())
 	var/turf/attacked_turf = attacked
 	var/is_closed_turf = isclosedturf(attacked_turf)
@@ -277,9 +277,8 @@
 		user.visible_message(span_warning(msg), span_warning(self_msg))
 	else
 		user.visible_message(
-			span_notice("[user] christens the shuttle as <b>\the [new_name]</b> with [hitting_implement.get_examine_name()]\
-			[(bottle.reagents.total_volume < 30) ? "" : ", though the dearth of christening fluid makes for an unimpressive display"]."),
-			span_notice("You christen the shuttle as <b>\the [new_name]</b> with [hitting_implement.get_examine_name()].")
+			span_notice("[user]Batiza a nave como<b>\the [new_name]</b>Com[hitting_implement.get_examine_name()]			[(bottle.reagents.total_volume < 30) ? "" : ", though the dearth of christening fluid makes for an unimpressive display"]."),
+			span_notice("Você batiza a nave como<b>\the [new_name]</b>Com[hitting_implement.get_examine_name()].")
 		)
 		user.do_attack_animation(attacked, used_item = bottle)
 		bottle.smash(attacked, user)
@@ -428,15 +427,15 @@
 /obj/item/shuttle_blueprints/proc/get_shuttle_tip()
 	. = list()
 	if(!shuttle_ref)
-		. += span_notice("It can be used to construct a custom shuttle.")
+		. += span_notice("Pode ser usado para construir uma nave personalizada.")
 		return
 	var/obj/docking_port/mobile/custom/shuttle = shuttle_ref.resolve()
 	if(!shuttle)
-		. += span_notice("It has the plans for a shuttle that no longer exists. It can be reused to construct a new shuttle.")
+		. += span_notice("Tem planos para uma nave que não existe mais. Pode ser reutilizado para construir uma nova nave.")
 	else
-		. += span_notice("It has the plans for \the [shuttle] on it, and can be used to expand [shuttle.p_them()] or modify [shuttle.p_their()] areas.")
+		. += span_notice("Tem os planos para\the [shuttle]e pode ser usado para expandir[shuttle.p_them()]U modificar[shuttle.p_their()]áreas.")
 		if(shuttle.master_blueprint.resolve() == src)
-			. += span_notice("This is the master blueprint for \the [shuttle]. You can copy it to a blank set of blueprints, or to an engineering cyborg with a shuttle database module installed.")
+			. += span_notice("Esta é a planta principal para\the [shuttle]Você pode copiar para um conjunto em branco de plantas, ou para um cyborg de engenharia com um módulo de banco de dados de shuttle instalado.")
 
 /obj/item/shuttle_blueprints/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	. = ..()
@@ -450,9 +449,9 @@
 		var/obj/docking_port/mobile/other_shuttle = other_blueprints.shuttle_ref?.resolve()
 		if(istype(other_shuttle))
 			return
-		balloon_alert(user, "copying blueprints...")
+		balloon_alert(user, "Copiando Plantas...")
 		if(!do_after(user, 5 SECONDS, other_blueprints))
-			balloon_alert(user, "interrompido!")
+			balloon_alert(user, "Interrompido!")
 			return ITEM_INTERACT_FAILURE
 		other_blueprints.link_to_shuttle(shuttle)
 		balloon_alert(user, "copied")
@@ -463,8 +462,8 @@
 		if(!other_blueprints)
 			return
 		if(other_blueprints.shuttles.Find(shuttle_ref))
-			balloon_alert(user, "already has these blueprints!")
-		balloon_alert(user, "copying blueprints...")
+			balloon_alert(user, "Já tem essas plantas!")
+		balloon_alert(user, "Copiando Plantas...")
 		if(!do_after(user, 5 SECONDS, borg))
 			balloon_alert(user, "interrupted")
 			return ITEM_INTERACT_FAILURE
@@ -494,22 +493,22 @@
 			var/turf/shuttle_origin = get_turf(usr)
 			var/check_status = shuttle_build_check(shuttle_origin, shuttle_turfs, shuttle_areas)
 			if(check_status & ORIGIN_NOT_ON_SHUTTLE)
-				balloon_alert(usr, "not on shuttle frame!")
+				balloon_alert(usr, "Não na estrutura da nave!")
 				return TRUE
 			if(check_status & TOO_MANY_SHUTTLES)
-				balloon_alert(usr, "too many shuttles exist!")
+				balloon_alert(usr, "Há muitas naves auxiliares!")
 				return TRUE
 			if(check_status & ABOVE_MAX_SHUTTLE_SIZE)
-				balloon_alert(usr, "frame too big!")
+				balloon_alert(usr, "A moldura é muito grande!")
 				return TRUE
 			if(check_status & CUSTOM_AREA_NOT_COMPLETELY_CONTAINED)
-				balloon_alert(usr, "frame must completely enclose custom areas!")
+				balloon_alert(usr, "A moldura deve incluir áreas personalizadas!")
 				return TRUE
 			if(check_status & INTERSECTS_NON_WHITELISTED_AREA)
-				balloon_alert(usr, "frame overlaps disallowed areas!")
+				balloon_alert(usr, "A estrutura se sobrepõe a áreas proibidas!")
 				return TRUE
 			if(check_status & CONTAINS_APC_OF_NON_CUSTOM_AREA)
-				balloon_alert(usr, "frame contains apc of non-custom area!")
+				balloon_alert(usr, "O quadro contém Apc de área não-costume!")
 				return TRUE
 			var/obj/docking_port/mobile/custom/shuttle = create_shuttle(
 				usr,
@@ -528,14 +527,14 @@
 				return TRUE
 			var/obj/docking_port/mobile/custom/shuttle = SSshuttle.get_containing_shuttle(usr)
 			if(!shuttle)
-				balloon_alert(usr, "not on shuttle!")
+				balloon_alert(usr, "Não na nave auxiliar!")
 				return TRUE
 			if(!istype(shuttle))
-				balloon_alert(usr, "incompatible shuttle type!")
+				balloon_alert(usr, "Tipo de nave auxiliar incompatível!")
 				return TRUE
 			var/obj/item/shuttle_blueprints/master = shuttle.master_blueprint?.resolve()
 			if(master && (master != src))
-				balloon_alert(usr, "master blueprint already exists!")
+				balloon_alert(usr, "O projeto mestre já existe!")
 				return TRUE
 			link_to_shuttle(shuttle, TRUE)
 			return TRUE
@@ -546,7 +545,7 @@
 				return TRUE
 			var/obj/item/shuttle_blueprints/master = shuttle.master_blueprint?.resolve()
 			if(master)
-				balloon_alert(usr, "master blueprint already exists!")
+				balloon_alert(usr, "O projeto mestre já existe!")
 				return TRUE
 			shuttle.master_blueprint = WEAKREF(src)
 			return TRUE
@@ -557,16 +556,16 @@
 				return TRUE
 			var/area_name = params["name"]
 			if(!area_name)
-				balloon_alert(usr, "no name given!")
+				balloon_alert(usr, "Nenhum nome dado!")
 				return TRUE
 			var/area/current_area = get_area(usr)
 			var/area/default_area = shuttle.default_area
 			if(current_area != default_area)
-				balloon_alert(usr, "must be in default area!")
+				balloon_alert(usr, "Deve estar na área padrão!")
 				return TRUE
 			var/list/turfs = detect_room(get_turf(usr), max_size = CONFIG_GET(number/max_shuttle_size), extra_check = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(custom_shuttle_room_check), shuttle, null))
 			if(!length(turfs))
-				balloon_alert(usr, "invalid room!")
+				balloon_alert(usr, "Quarto inválido!")
 				return TRUE
 			var/area/shuttle/custom/new_area = new()
 			new_area.name = area_name
@@ -585,16 +584,16 @@
 				return TRUE
 			var/area/current_area = get_area(usr)
 			if(!shuttle.shuttle_areas[current_area])
-				balloon_alert(usr, "not on shuttle!")
+				balloon_alert(usr, "Não na nave auxiliar!")
 				return TRUE
 			var/area/default_area = shuttle.default_area
 			if(current_area == default_area)
-				balloon_alert(usr, "can't release default area!")
+				balloon_alert(usr, "Não posso liberar a área padrão!")
 				return TRUE
 			var/obj/machinery/power/apc/current_area_apc = current_area.apc
 			var/obj/machinery/power/apc/default_area_apc = default_area.apc
 			if(current_area_apc && default_area_apc)
-				balloon_alert(usr, "remove the apc first!")
+				balloon_alert(usr, "Tire o Apc primeiro!")
 				return TRUE
 			var/list/turfs = current_area.get_turfs_by_zlevel(shuttle.z)
 			set_turfs_to_area(turfs, default_area)
@@ -611,7 +610,7 @@
 			var/area/current_area = get_area(usr)
 			var/area/default_area = shuttle.default_area
 			if(current_area != default_area)
-				balloon_alert(usr, "must be in default area!")
+				balloon_alert(usr, "Deve estar na área padrão!")
 				return TRUE
 			var/area/merge_area = locate(params["area"])
 			if(!istype(merge_area))
@@ -623,13 +622,13 @@
 			var/list/actual_adjacent_areas = list()
 			var/list/turfs = detect_room(get_turf(usr), max_size = CONFIG_GET(number/max_shuttle_size), extra_check = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(custom_shuttle_room_check), shuttle, actual_adjacent_areas))
 			if(!length(turfs))
-				balloon_alert(usr, "invalid room!")
+				balloon_alert(usr, "Quarto inválido!")
 				return TRUE
 			if(!actual_adjacent_areas[merge_area])
-				balloon_alert(usr, "selected area not connected to room!")
+				balloon_alert(usr, "Área selecionada não conectada à sala!")
 				return TRUE
 			if(merge_area.apc && default_area.apc && turfs[get_turf(default_area.apc)])
-				balloon_alert(usr, "remove the apc first!")
+				balloon_alert(usr, "Tire o Apc primeiro!")
 				return TRUE
 			set_turfs_to_area(turfs, merge_area)
 			for(var/obj/machinery/door/firedoor/firelock as anything in merge_area.firedoors + default_area.firedoors)
@@ -642,15 +641,15 @@
 				return TRUE
 			var/area/current_area = get_area(usr)
 			if(!shuttle.shuttle_areas[current_area])
-				balloon_alert(usr, "not on shuttle!")
+				balloon_alert(usr, "Não na nave auxiliar!")
 				return TRUE
 			var/area/default_area = shuttle.default_area
 			if(current_area == default_area)
-				balloon_alert(usr, "can't rename default area!")
+				balloon_alert(usr, "Não pode mudar o nome da área padrão!")
 				return TRUE
 			var/new_name = params["name"]
 			if(!new_name)
-				balloon_alert(usr, "no name given!")
+				balloon_alert(usr, "Nenhum nome dado!")
 				return TRUE
 			rename_area(current_area, new_name)
 			return TRUE
@@ -664,22 +663,22 @@
 			var/turf/origin = get_turf(usr)
 			var/check_status = shuttle_expand_check(origin, shuttle, turfs, areas)
 			if(check_status & ORIGIN_NOT_ON_SHUTTLE)
-				balloon_alert(usr, "not on shuttle frame!")
+				balloon_alert(usr, "Não na estrutura da nave!")
 				return TRUE
 			if(check_status & FRAME_NOT_ADJACENT_TO_LINKED_SHUTTLE)
-				balloon_alert(usr, "not connected to linked shuttle!")
+				balloon_alert(usr, "Não conectado à nave auxiliar conectada!")
 				return TRUE
 			if(check_status & ABOVE_MAX_SHUTTLE_SIZE)
-				balloon_alert(usr, "frame too big!")
+				balloon_alert(usr, "A moldura é muito grande!")
 				return TRUE
 			if(check_status & CUSTOM_AREA_NOT_COMPLETELY_CONTAINED)
-				balloon_alert(usr, "frame must completely enclose custom areas!")
+				balloon_alert(usr, "A moldura deve incluir áreas personalizadas!")
 				return TRUE
 			if(check_status & INTERSECTS_NON_WHITELISTED_AREA)
-				balloon_alert(usr, "frame overlaps disallowed areas!")
+				balloon_alert(usr, "A estrutura se sobrepõe a áreas proibidas!")
 				return TRUE
 			if(check_status & CONTAINS_APC_OF_NON_CUSTOM_AREA)
-				balloon_alert(usr, "frame includes apc of non-custom area!")
+				balloon_alert(usr, "O quadro inclui apc de área não-costume!")
 				return TRUE
 			expand_shuttle(usr, shuttle, turfs, areas)
 			return TRUE
@@ -690,47 +689,47 @@
 				return TRUE
 			var/obj/item/shuttle_blueprints/master = shuttle.master_blueprint?.resolve()
 			if(master && master != src)
-				balloon_alert(usr, "not master blueprints!")
+				balloon_alert(usr, "Não são plantas mestre!")
 			clear_empty_shuttle_turfs(shuttle)
 
 /obj/item/shuttle_blueprints/crude
 	name = "crude shuttle blueprints"
-	desc = "This is just a sheet of paper thoroughly covered in what could either be crayon or spraypaint."
+	desc = "Isto é apenas uma folha de papel completamente coberta com o que poderia ser lápis de cor ou tinta spray."
 	icon_state = "shuttle_blueprints_crude0"
 	base_icon_state = "shuttle_blueprints_crude"
-	base_desc = "This is just a sheet of paper thoroughly covered in what could either be crayon or spraypaint."
-	linked_desc = "This is just a crude doodle of a shuttle drawn on a background of what could either be crayon or spraypaint."
+	base_desc = "Isto é apenas uma folha de papel completamente coberta com o que poderia ser lápis de cor ou tinta spray."
+	linked_desc = "Este é apenas um rabisco de um ônibus espacial desenhado em um fundo do que poderia ser lápis de cor ou spray de tinta."
 	custom_materials = list(/datum/material/paper = HALF_SHEET_MATERIAL_AMOUNT / 2)
 
 /obj/item/shuttle_blueprints/borg
 	name = "shuttle blueprint database"
-	desc = "A module designed to store the plans for one or more shuttles."
+	desc = "Um módulo projetado para armazenar os planos para uma ou mais naves."
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "shuttle_database0"
 	base_icon_state = "shuttle_database"
 	damtype = BURN // In case fantasy affixes or adminbus end up making this actually capable of hurting someone.
 	attack_verb_continuous = list("attacks", "scans", "analyzes")
 	attack_verb_simple = list("attack", "scan", "analyze")
-	base_desc = "A module designed to store the plans for one or more shuttles."
-	linked_desc = "A module designed to store the plans for one or more shuttles."
+	base_desc = "Um módulo projetado para armazenar os planos para uma ou mais naves."
+	linked_desc = "Um módulo projetado para armazenar os planos para uma ou mais naves."
 	var/list/shuttles = list()
 
 /obj/item/shuttle_blueprints/borg/get_shuttle_tip()
 	. = list()
 	if(!shuttle_ref)
 		if(!length(shuttles))
-			. += span_notice("It does not have any shuttle plans stored.")
+			. += span_notice("Não tem planos de transporte armazenados.")
 		else
-			. += span_notice("It does not currently have a shuttle plan loaded.")
-		. += span_notice("In this mode, it can be used to construct a custom shuttle.")
+			. += span_notice("Não tem um plano de transporte carregado.")
+		. += span_notice("Neste modo, pode ser usado para construir uma nave auxiliar personalizada.")
 		return
 	var/obj/docking_port/mobile/custom/shuttle = shuttle_ref.resolve()
 	if(!shuttle)
-		. += span_notice("The currently loaded plans are for a shuttle that no longer exists. It will default to shuttle construction mode.")
+		. += span_notice("Os planos atualmente carregados são para uma nave que não existe mais. Será padrão para o modo de construção.")
 	else
-		. += span_notice("It has the plans for \the [shuttle] currently loaded, and can be used to expand [shuttle.p_them()] or modify [shuttle.p_their()] areas.")
+		. += span_notice("Tem os planos para\the [shuttle]atualmente carregado, e pode ser usado para expandir[shuttle.p_them()]U modificar[shuttle.p_their()]áreas.")
 		if(shuttle.master_blueprint.resolve() == src)
-			. += span_notice("This is the master blueprint for \the [shuttle]. You can copy it to a blank set of blueprints, or to another engineering cyborg with a shuttle database module installed.")
+			. += span_notice("Esta é a planta principal para\the [shuttle]Você pode copiar para um conjunto em branco de plantas, ou para outro cyborg de engenharia com um módulo de banco de dados de shuttle instalado.")
 
 /obj/item/shuttle_blueprints/borg/unlink(removing)
 	if(removing)

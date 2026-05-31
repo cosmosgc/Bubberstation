@@ -3,7 +3,7 @@
 /// A raised platform you can stand on top of
 /obj/structure/platform
 	name = "platform"
-	desc = "A raised platform which can make you slightly taller."
+	desc = "Uma plataforma elevada que pode fazer você um pouco mais alto."
 	icon = 'icons/obj/smooth_structures/platform/window_frame_normal.dmi'
 	icon_state = "window_frame_normal-0"
 	base_icon_state = "window_frame_normal"
@@ -68,13 +68,13 @@
 	return . || NONE
 
 /obj/structure/platform/screwdriver_act_secondary(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("You start disassembling [src]..."))
+	to_chat(user, span_notice("Você começa a desmontar[src]..."))
 	if(tool.use_tool(src, user, 2 SECONDS, volume=50))
 		deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/platform/wrench_act_secondary(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("You start deconstructing [src]..."))
+	to_chat(user, span_notice("Você começa a desconstruir[src]..."))
 	if(tool.use_tool(src, user, 4 SECONDS, volume=50))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 		deconstruct(TRUE)
@@ -182,7 +182,7 @@
 
 /obj/structure/platform/uranium
 	name = "depleted uranium platform"
-	desc = "A heavy duty platform, thankfully not radioactive."
+	desc = "Uma plataforma pesada, felizmente não radioativa."
 	icon = 'icons/obj/smooth_structures/platform/window_frame_uranium.dmi'
 	frame_icon = 'icons/obj/smooth_structures/platform/frame_faces/window_frame_uranium.dmi'
 	icon_state = "window_frame_uranium-0"
@@ -209,7 +209,7 @@
 
 /obj/structure/platform/wood/stage
 	name = "wooden stage"
-	desc = "A raised platform you can perform upon."
+	desc = "Uma plataforma elevada que você pode executar."
 	icon = 'icons/obj/smooth_structures/platform/window_frame_hotel.dmi'
 	icon_state = "window_frame_hotel-0"
 	base_icon_state = "window_frame_hotel"
@@ -252,7 +252,7 @@
 
 /obj/structure/platform/pizza
 	name = "huge pizza"
-	desc = "Big enough to stand on, although possibly you shouldn't eat it after that."
+	desc = "Grande o bastante para ficar, embora talvez não deva comer depois disso."
 	icon = 'icons/obj/smooth_structures/platform/window_frame_pizza.dmi'
 	frame_icon = null
 	icon_state = "window_frame_pizza-0"

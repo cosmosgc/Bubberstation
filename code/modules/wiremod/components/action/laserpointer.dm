@@ -4,8 +4,8 @@
  * Points a laser at a tile or mob
  */
 /obj/item/circuit_component/laserpointer
-	display_name = "Laser Pointer"
-	desc = "A component that shines a high powered light at a target."
+	display_name = "Ponto Laser"
+	desc = "Um componente que ilumina uma luz de alta potência em um alvo."
 	category = "Action"
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
@@ -57,7 +57,7 @@
 		var/mob/living/silicon/silicon = target
 		log_combat(shell, silicon, "shone in the sensors", src)
 		silicon.flash_act(affect_silicon = TRUE) /// no stunning, just a blind
-		to_chat(silicon, span_danger("Your sensors were overloaded by a weakened laser shone by [shell]!"))
+		to_chat(silicon, span_danger("Seus sensores foram sobrecarregados por um laser enfraquecido.[shell]!"))
 
 	var/mutable_appearance/laser_location = mutable_appearance('icons/obj/weapons/guns/projectiles.dmi', "[pointer_icon_state]_laser")
 

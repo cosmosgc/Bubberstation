@@ -43,7 +43,7 @@
 
 /obj/machinery/seed_extractor
 	name = "seed extractor"
-	desc = "Extracts and bags seeds from produce."
+	desc = "Extratos e sacos de sêmen de produtos."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "sextractor"
 	base_icon_state = "sextractor"
@@ -87,7 +87,7 @@
 /obj/machinery/seed_extractor/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Extracting <b>[seed_multiplier] to [seed_multiplier * 4]</b> seed(s) per piece of produce.<br>Machine can store up to <b>[max_seeds]</b> seeds.")
+		. += span_notice("A exibição de status diz: Extraindo<b>[seed_multiplier]Para[seed_multiplier * 4]</b>Sementes por pedaço de produto.<br>A máquina pode armazenar até<b>[max_seeds]</b>Sementes.")
 
 /obj/machinery/seed_extractor/update_icon_state()
 	. = ..()
@@ -109,16 +109,16 @@
 		var/loaded = 0
 		for(var/obj/item/seeds/to_store in tool.contents)
 			if(contents.len >= max_seeds)
-				to_chat(user, span_warning("[src] is full."))
+				to_chat(user, span_warning("[src]Está cheio."))
 				break
 			if(!add_seed(to_store, tool))
 				continue
 			loaded += 1
 
 		if(loaded)
-			to_chat(user, span_notice("You put as many seeds from [tool] into [src] as you can."))
+			to_chat(user, span_notice("Você coloca tantas sementes como[tool]Em[src]Como você pode."))
 			return ITEM_INTERACT_SUCCESS
-		to_chat(user, span_warning("There are no seeds in [tool]."))
+		to_chat(user, span_warning("Não há sementes em[tool]."))
 		return ITEM_INTERACT_BLOCKING
 
 	var/list/generated_seeds = seedify(tool, -1, src, user)
@@ -128,27 +128,27 @@
 			for(var/obj/item/seeds/seed as anything in generated_seeds)
 				//machine is full
 				if(contents.len >= max_seeds)
-					to_chat(user, span_warning("[src] is full."))
+					to_chat(user, span_warning("[src]Está cheio."))
 					break
 				//add seed to machine. second argument is null which means just force move into the machine
 				add_seed(seed)
-		to_chat(user, span_notice("You extract some seeds."))
+		to_chat(user, span_notice("Você extrai algumas sementes."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/seeds))
 		if(contents.len >= max_seeds)
-			to_chat(user, span_warning("[src] is full."))
+			to_chat(user, span_warning("[src]Está cheio."))
 			return ITEM_INTERACT_BLOCKING
 
 		if(add_seed(tool, user))
-			to_chat(user, span_notice("You add [tool] to [src]."))
+			to_chat(user, span_notice("Você acrescenta[tool]Para[src]."))
 			return ITEM_INTERACT_SUCCESS
 
-		to_chat(user, span_warning("You can't seem to add [tool] to [src]."))
+		to_chat(user, span_warning("Você não consegue adicionar[tool]Para[src]."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!tool.tool_behaviour || !user.combat_mode) // Using the wrong tool shouldn't assume you want to turn it into seeds.
-		to_chat(user, span_warning("You can't extract any seeds from [tool]!"))
+		to_chat(user, span_warning("Você não pode extrair nenhuma semente de[tool]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	return NONE
@@ -300,12 +300,12 @@
 				if(usr)
 					var/mob/user = usr
 					if(user.put_in_hands(found_seed))
-						to_chat(user, span_notice("You take [found_seed] out of the slot."))
+						to_chat(user, span_notice("Você pega.[found_seed]Fora da área."))
 					else
-						to_chat(user, span_notice("[found_seed] falls onto the floor."))
+						to_chat(user, span_notice("[found_seed]cai no chão."))
 				else
 					found_seed.forceMove(drop_location())
-					visible_message(span_notice("[found_seed] falls onto the floor."), null, span_hear("You hear a soft clatter."), COMBAT_MESSAGE_RANGE)
+					visible_message(span_notice("[found_seed]cai no chão."), null, span_hear("Você ouve um barulho suave."), COMBAT_MESSAGE_RANGE)
 				. = TRUE
 
 /obj/machinery/seed_extractor/ui_assets(mob/user)

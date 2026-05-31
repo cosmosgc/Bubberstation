@@ -102,8 +102,7 @@
 
 	if(light_amount > 0.2) // If there's enough light, heal
 		var/need_mob_update = FALSE
-		need_mob_update += owner.heal_overall_damage(brute = 0.5 * bodypart_coefficient, \
-			burn = 0.5 * bodypart_coefficient, updating_health = FALSE, required_bodytype = BODYTYPE_PLANT)
+		need_mob_update += owner.heal_overall_damage(brute = 0.5 * bodypart_coefficient, 			burn = 0.5 * bodypart_coefficient, updating_health = FALSE, required_bodytype = BODYTYPE_PLANT)
 		need_mob_update += owner.adjust_tox_loss(-0.5 * bodypart_coefficient, updating_health = FALSE)
 		need_mob_update += owner.adjust_oxy_loss(-0.5 * bodypart_coefficient, updating_health = FALSE)
 		if(need_mob_update)
@@ -183,7 +182,7 @@
 
 	owner.adjust_fire_stacks(fire_stacks_per_second * seconds_between_ticks * length(bodyparts))
 	if(owner.ignite_mob())
-		owner.visible_message(span_danger("[owner]'s body reacts with the atmosphere and bursts into flames!"), span_userdanger("Your body reacts with the atmosphere and bursts into flame!"))
+		owner.visible_message(span_danger("[owner]O corpo reage com a atmosfera e explode em Chamas!"), span_userdanger("Seu corpo reage com a atmosfera e explode em chamas!"))
 
 #undef GET_BODYPART_COEFFICIENT
 #undef IS_FULL_BODY

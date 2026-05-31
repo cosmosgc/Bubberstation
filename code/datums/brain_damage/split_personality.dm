@@ -3,13 +3,11 @@
 
 /datum/brain_trauma/severe/split_personality
 	name = "Split Personality"
-	desc = "Patient's brain is split into two personalities, which randomly switch control of the body."
-	scan_desc = "complete lobe separation"
-	symptoms = "Exhibits two distinct personalities that alternate control over the same body, \
-		each with its own memories, behaviors, and preferences. While both personalities are aware of each other, \
-		they may have conflicting desires and actions, leading to confusion and disorientation for the host."
-	gain_text = span_warning("You feel like your mind was split in two.")
-	lose_text = span_notice("You feel alone again.")
+	desc = "O cérebro do paciente está dividido em duas personalidades, que mudam aleatoriamente o controle do corpo."
+	scan_desc = "completa separação do lobo"
+	symptoms = "Exhibits two distinct personalities that alternate control over the same body, 		each with its own memories, behaviors, and preferences. While both personalities are aware of each other, 		they may have conflicting desires and actions, leading to confusion and disorientation for the host."
+	gain_text = span_warning("Você sente como se sua mente estivesse dividida em dois.")
+	lose_text = span_notice("Você se sente sozinho novamente.")
 	var/current_controller = OWNER
 	var/initialized = FALSE //to prevent personalities deleting themselves while we wait for ghosts
 	var/mob/living/split_personality/stranger_backseat //there's two so they can swap without overwriting
@@ -99,8 +97,8 @@
 		return
 
 	current_backseat.log_message("assumed control of [key_name(owner)] due to [src]. (Original owner: [current_controller == OWNER ? owner.key : current_backseat.key])", LOG_GAME)
-	to_chat(owner, span_userdanger("You feel your control being taken away... your other personality is in charge now!"))
-	to_chat(current_backseat, span_userdanger("You manage to take control of your body!"))
+	to_chat(owner, span_userdanger("Você sente seu controle sendo tirado... sua outra personalidade está no comando agora!"))
+	to_chat(current_backseat, span_userdanger("Você consegue controlar seu corpo!"))
 
 	//Body to backseat
 
@@ -177,12 +175,12 @@
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, span_notice("As a split personality, you cannot do anything but observe. However, you will eventually gain control of your body, switching places with the current personality."))
-	to_chat(src, span_warning("<b>Do not commit suicide or put the body in a deadly position. Behave like you care about it as much as the owner.</b>"))
+	to_chat(src, span_notice("Como uma dupla personalidade, você não pode fazer nada além de observar. No entanto, você eventualmente ganhará o controle de seu corpo, trocando de lugar com a personalidade atual."))
+	to_chat(src, span_warning("<b>Não cometa suicídio ou coloque o corpo em uma posição mortal. Comporte-se como se se importasse tanto com isso quanto com o dono.</b>"))
 
 /mob/living/split_personality/try_speak(message, ignore_spam, forced, filterproof)
 	SHOULD_CALL_PARENT(FALSE)
-	to_chat(src, span_warning("You cannot speak, your other self is controlling your body!"))
+	to_chat(src, span_warning("Você não pode falar, seu outro eu está controlando seu corpo!"))
 	return FALSE
 
 /mob/living/split_personality/emote(act, type_override = NONE, message = null, intentional = FALSE, force_silence = FALSE, forced = FALSE)
@@ -192,10 +190,10 @@
 
 /datum/brain_trauma/severe/split_personality/brainwashing
 	name = "Split Personality"
-	desc = "Patient's brain is split into two personalities, which randomly switch control of the body."
-	scan_desc = "complete lobe separation"
+	desc = "O cérebro do paciente está dividido em duas personalidades, que mudam aleatoriamente o controle do corpo."
+	scan_desc = "completa separação do lobo"
 	gain_text = ""
-	lose_text = span_notice("You are free of your brainwashing.")
+	lose_text = span_notice("Está livre da lavagem cerebral.")
 	can_gain = FALSE
 	known_trauma = FALSE
 	var/codeword
@@ -206,12 +204,7 @@
 	if(_codeword)
 		codeword = _codeword
 	else
-		codeword = pick(strings("ion_laws.json", "ionabstract")\
-			| strings("ion_laws.json", "ionobjects")\
-			| strings("ion_laws.json", "ionadjectives")\
-			| strings("ion_laws.json", "ionthreats")\
-			| strings("ion_laws.json", "ionfood")\
-			| strings("ion_laws.json", "iondrinks"))
+		codeword = pick(strings("ion_laws.json", "ionabstract")			| strings("ion_laws.json", "ionobjects")			| strings("ion_laws.json", "ionadjectives")			| strings("ion_laws.json", "ionthreats")			| strings("ion_laws.json", "ionfood")			| strings("ion_laws.json", "iondrinks"))
 
 /datum/brain_trauma/severe/split_personality/brainwashing/on_gain()
 	. = ..()
@@ -225,7 +218,7 @@
 
 /datum/brain_trauma/severe/split_personality/brainwashing/get_ghost()
 	set waitfor = FALSE
-	var/mob/chosen_one = SSpolling.poll_ghosts_for_target("Do you want to play as [span_danger("[owner.real_name]'s")] brainwashed mind?", poll_time = 7.5 SECONDS, checked_target = stranger_backseat, alert_pic = owner, role_name_text = "brainwashed mind")
+	var/mob/chosen_one = SSpolling.poll_ghosts_for_target("Você quer jogar como[span_danger("[owner.real_name]'s")]Lavagem cerebral?", poll_time = 7.5 SECONDS, checked_target = stranger_backseat, alert_pic = owner, role_name_text = "Lavagem cerebral")
 	if(chosen_one)
 		stranger_backseat.PossessByPlayer(chosen_one.ckey)
 	else
@@ -257,20 +250,18 @@
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, span_notice("As a brainwashed personality, you cannot do anything yet but observe. However, you may gain control of your body if you hear the special codeword, switching places with the current personality."))
-	to_chat(src, span_notice("Your activation codeword is: <b>[codeword]</b>"))
+	to_chat(src, span_notice("Como uma personalidade lavagem cerebral, você não pode fazer nada além de observar. No entanto, você pode ganhar o controle de seu corpo se ouvir o código especial, trocando de lugar com a personalidade atual."))
+	to_chat(src, span_notice("Seu código de ativação é:<b>[codeword]</b>"))
 	if(objective)
-		to_chat(src, span_notice("Your master left you an objective: <b>[objective]</b>. Follow it at all costs when in control."))
+		to_chat(src, span_notice("Seu mestre te deixou um objetivo:<b>[objective]</b>Siga a todo custo quando estiver no controle."))
 
 /datum/brain_trauma/severe/split_personality/blackout
 	name = "Alcohol-Induced CNS Impairment"
-	desc = "Patient's CNS has been temporarily impaired by imbibed alcohol, blocking memory formation, and causing reduced cognition and stupefaction."
-	scan_desc = "alcohol-induced CNS impairment"
-	symptoms = "Excessive alcohol consumption leading to a temporary blackout, followed by confusion, disorientation, and an almost \
-		completely altered state of consciousness upon waking for several minutes - during which the individual may exhibit \
-		impaired fine motor skills, an incredible resistance to pain, and a complete lack of memory."
-	gain_text = span_warning("Crap, that was one drink too many. You black out...")
-	lose_text = "You wake up very, very confused and hungover. All you can remember is drinking a lot of alcohol... what happened?"
+	desc = "O SNC do paciente foi temporariamente prejudicado pelo álcool embebido, bloqueando a formação de memória, e causando redução da cognição e estupefação."
+	scan_desc = "Insuficiência do SNC induzida pelo álcool"
+	symptoms = "Excessive alcohol consumption leading to a temporary blackout, followed by confusion, disorientation, and an almost 		completely altered state of consciousness upon waking for several minutes - during which the individual may exhibit 		impaired fine motor skills, an incredible resistance to pain, and a complete lack of memory."
+	gain_text = span_warning("Droga, foi uma bebida demais. Você apagou...")
+	lose_text = "Você acorda muito, muito confuso e de ressaca. Só se lembra de beber muito álcool. O que aconteceu?"
 	poll_role = "blacked out drunkard"
 	random_gain = FALSE
 	poll_time = 10 SECONDS
@@ -287,7 +278,7 @@
 	notify_ghosts(
 		"[owner.real_name] is blacking out!",
 		source = owner,
-		header = "Bro I'm not even drunk right now",
+		header = "Mano, eu nem estou bêbado agora.",
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
 	)
 	var/datum/status_effect/inebriated/inebriation = owner.has_status_effect(/datum/status_effect/inebriated)
@@ -319,10 +310,10 @@
 		qdel(src)
 		return
 	else if(duration_in_seconds <= 60 && !(duration_in_seconds % 20))
-		to_chat(owner, span_warning("You have [duration_in_seconds] seconds left before sobering up!"))
+		to_chat(owner, span_warning("Você tem[duration_in_seconds]segundos para ficar sóbrio!"))
 	if(prob(10) && !HAS_TRAIT(owner, TRAIT_DISCOORDINATED_TOOL_USER))
 		ADD_TRAIT(owner, TRAIT_DISCOORDINATED_TOOL_USER, TRAUMA_TRAIT)
-		owner.balloon_alert(owner, "dexterity reduced temporarily!")
+		owner.balloon_alert(owner, "Destreza reduzida temporariamente!")
 		//We then send a callback to automatically re-add the trait
 		addtimer(TRAIT_CALLBACK_REMOVE(owner, TRAIT_DISCOORDINATED_TOOL_USER, TRAUMA_TRAIT), 10 SECONDS)
 		addtimer(CALLBACK(owner, TYPE_PROC_REF(/atom, balloon_alert), owner, "dexterity regained!"), 10 SECONDS)
@@ -343,8 +334,8 @@
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, span_notice("You're the incredibly inebriated leftovers of your host's consciousness! Make sure to act the part and leave a trail of confusion and chaos in your wake."))
-	to_chat(src, span_boldwarning("While you're drunk, you're not suicidal. Do not commit suicide or put the body in danger. You have a minor license to grief just like a clown, but do not kill anyone or create a situation leading to the body being put in danger or at risk of being harmed."))
+	to_chat(src, span_notice("Você é as sobras inebriadas da consciência do seu hospedeiro! Certifique-se de agir e deixar um rastro de confusão e caos em seu rastro."))
+	to_chat(src, span_boldwarning("Enquanto está bêbado, não é suicida. Não cometa suicídio ou coloque o corpo em perigo. Você tem licença para sofrer como um palhaço, mas não mate ninguém ou crie uma situação que leve o corpo a ser colocado em perigo ou em risco de ser ferido."))
 
 #undef OWNER
 #undef STRANGER

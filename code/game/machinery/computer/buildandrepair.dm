@@ -1,6 +1,6 @@
 /obj/structure/frame/computer
 	name = "computer frame"
-	desc = "A frame for constructing your own computer. Or console. Whichever name you prefer."
+	desc = "Uma moldura para construir seu próprio computador. Ou console. O nome que preferir."
 	icon_state = "0"
 	base_icon_state = ""
 	state = FRAME_COMPUTER_STATE_EMPTY
@@ -76,23 +76,23 @@
 
 	switch(state)
 		if(FRAME_STATE_EMPTY)
-			. += span_notice("It can be [EXAMINE_HINT("anchored")] [anchored ? "loose." : "into place."]")
+			. += span_notice("Pode ser.[EXAMINE_HINT("anchored")] [anchored ? "loose." : "into place."]")
 			if(anchored)
-				. += span_warning("It's missing a circuit board!")
+				. += span_warning("Falta uma placa de circuito!")
 			else
-				. += span_notice("It can be [EXAMINE_HINT("welded")] or [EXAMINE_HINT("screwed")] apart.")
+				. += span_notice("Pode ser.[EXAMINE_HINT("welded")]ou[EXAMINE_HINT("screwed")]Separados.")
 		if(FRAME_COMPUTER_STATE_BOARD_INSTALLED)
-			. += span_notice("The circuit board can be [EXAMINE_HINT("pried")] out.")
-			. += span_info("A circuit board is installed and should be [EXAMINE_HINT("screwed")] in place.")
+			. += span_notice("A placa de circuito pode ser[EXAMINE_HINT("pried")]Fora.")
+			. += span_info("Uma placa de circuito é instalada e deve ser[EXAMINE_HINT("screwed")]No lugar.")
 		if(FRAME_COMPUTER_STATE_BOARD_SECURED)
-			. += span_notice("The circuit board can be [EXAMINE_HINT("screwed")] loose.")
-			. += span_info("It should be [EXAMINE_HINT("wired")] with 5 cables.")
+			. += span_notice("A placa de circuito pode ser[EXAMINE_HINT("screwed")]Soltar.")
+			. += span_info("Deveria ser.[EXAMINE_HINT("wired")]com 5 cabos.")
 		if(FRAME_COMPUTER_STATE_WIRED)
-			. += span_notice("Its wires can be [EXAMINE_HINT("cut")].")
-			. += span_info("It should be [EXAMINE_HINT("fitted")] with 2 glass panels.")
+			. += span_notice("Seus fios podem ser[EXAMINE_HINT("cut")].")
+			. += span_info("Deveria ser.[EXAMINE_HINT("fitted")]com dois painéis de vidro.")
 		if(FRAME_COMPUTER_STATE_GLASSED)
-			. += span_notice("The screen can be [EXAMINE_HINT("pried")] out.")
-			. += span_info("The monitor should be [EXAMINE_HINT("screwed")] on to complete it.")
+			. += span_notice("A tela pode ser[EXAMINE_HINT("pried")]Fora.")
+			. += span_info("O monitor deve ser[EXAMINE_HINT("screwed")]Vamos completá-lo.")
 
 /obj/structure/frame/computer/circuit_added(obj/item/circuitboard/added)
 	state = FRAME_COMPUTER_STATE_BOARD_INSTALLED
@@ -104,7 +104,7 @@
 
 /obj/structure/frame/computer/install_board(mob/living/user, obj/item/circuitboard/computer/board, by_hand)
 	if(state != FRAME_COMPUTER_STATE_EMPTY)
-		balloon_alert(user, "circuit already installed!")
+		balloon_alert(user, "Circuito já instalado!")
 		return FALSE
 	. = ..()
 	if(. && !by_hand) // Installing via RPED auto-secures it
@@ -171,21 +171,21 @@
 	switch(state)
 		if(FRAME_COMPUTER_STATE_BOARD_INSTALLED)
 			tool.play_tool_sound(src)
-			balloon_alert(user, "circuit secured")
+			balloon_alert(user, "Circuito seguro.")
 			state = FRAME_COMPUTER_STATE_BOARD_SECURED
 			update_appearance(UPDATE_ICON_STATE)
 			return ITEM_INTERACT_SUCCESS
 
 		if(FRAME_COMPUTER_STATE_BOARD_SECURED)
 			tool.play_tool_sound(src)
-			balloon_alert(user, "circuit unsecured")
+			balloon_alert(user, "Circuito não seguro")
 			state = FRAME_COMPUTER_STATE_BOARD_INSTALLED
 			update_appearance(UPDATE_ICON_STATE)
 			return ITEM_INTERACT_SUCCESS
 
 		if(FRAME_COMPUTER_STATE_WIRED)
 			if(!user.combat_mode)
-				balloon_alert(user, "no glass!")
+				balloon_alert(user, "Sem vidro!")
 				return ITEM_INTERACT_BLOCKING
 
 		if(FRAME_COMPUTER_STATE_GLASSED)
@@ -200,22 +200,22 @@
 	switch(state)
 		if(FRAME_COMPUTER_STATE_BOARD_INSTALLED)
 			tool.play_tool_sound(src)
-			balloon_alert(user, "circuit removed")
+			balloon_alert(user, "circuito removido")
 			circuit.add_fingerprint(user)
 			circuit.forceMove(drop_location())
 			return ITEM_INTERACT_SUCCESS
 
 		if(FRAME_COMPUTER_STATE_BOARD_SECURED)
-			balloon_alert(user, "unsecure the circuit!")
+			balloon_alert(user, "Não protejam o circuito!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(FRAME_COMPUTER_STATE_WIRED)
-			balloon_alert(user, "remove the wiring!")
+			balloon_alert(user, "Remova a fiação!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(FRAME_COMPUTER_STATE_GLASSED)
 			tool.play_tool_sound(src)
-			balloon_alert(user, "glass removed")
+			balloon_alert(user, "vidro removido.")
 			state = FRAME_COMPUTER_STATE_WIRED
 			update_appearance(UPDATE_ICON_STATE)
 			var/obj/item/stack/sheet/glass/dropped_glass = new (drop_location(), 2)
@@ -231,7 +231,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	tool.play_tool_sound(src)
-	balloon_alert(user, "cables removed")
+	balloon_alert(user, "Cabos removidos")
 	state = FRAME_COMPUTER_STATE_BOARD_SECURED
 	update_appearance(UPDATE_ICON_STATE)
 
@@ -256,7 +256,7 @@
 	if(!cable.tool_start_check(user, amount = 5))
 		return FALSE
 	if(time > 0)
-		balloon_alert(user, "adicionando cabos...")
+		balloon_alert(user, "Adicionando cabos...")
 	if(!cable.use_tool(src, user, time, volume = 50, amount = 5) || state != FRAME_COMPUTER_STATE_BOARD_SECURED)
 		return FALSE
 
@@ -281,7 +281,7 @@
 		return FALSE
 	if(time > 0)
 		playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
-		balloon_alert(user, "adding glass...")
+		balloon_alert(user, "Adicionando vidro...")
 	if(!glass.use_tool(src, user, time, amount = 2) || state != FRAME_COMPUTER_STATE_WIRED)
 		return FALSE
 
@@ -291,12 +291,12 @@
 
 /obj/structure/frame/computer/finalize_construction(mob/living/user, obj/item/tool)
 	if(!anchored)
-		balloon_alert(user, "frame must be anchored!")
+		balloon_alert(user, "O quadro deve estar ancorado!")
 		return FALSE
 
 	tool.play_tool_sound(src)
 	var/obj/machinery/new_machine = new circuit.build_path(loc)
-	new_machine.balloon_alert(user, "monitor connected")
+	new_machine.balloon_alert(user, "monitor conectado")
 	new_machine.setDir(dir)
 	transfer_fingerprints_to(new_machine)
 	// SKYRAT EDIT ADDITION BEGIN - Connecting Computers

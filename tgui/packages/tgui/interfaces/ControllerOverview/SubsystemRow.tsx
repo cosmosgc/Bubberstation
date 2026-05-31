@@ -34,11 +34,11 @@ export function SubsystemRow(props: Props) {
   if (!initialized) {
     icon = 'circle-exclamation';
     color = 'darkgreen';
-    tooltip = 'Not initialized';
+    tooltip = 'Não inicializado.';
   } else if (doesnt_fire) {
     icon = 'check';
     color = 'grey';
-    tooltip = 'Does not fire';
+    tooltip = 'Não atire.';
   } else if (!can_fire) {
     icon = 'pause';
     color = 'grey';
@@ -96,7 +96,7 @@ export function SubsystemRow(props: Props) {
       <Table.Cell collapsing verticalAlign="top">
         <Button
           icon="wrench"
-          tooltip="View Variables"
+          tooltip="Ver Variáveis"
           onClick={() => {
             act('view_variables', { ref: ref });
           }}

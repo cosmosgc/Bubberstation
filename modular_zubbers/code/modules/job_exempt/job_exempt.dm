@@ -145,5 +145,5 @@ GLOBAL_LIST_INIT(job_exempt_cache, list())
 			// If a client whose job exemption is being modified, announce it to the player aswell
 			var/client/client = GLOB.directory[target_ckey]
 			if(client)
-				to_chat(client, span_boldnotice("Job exemption status for [job_title] has been [newstate ? "activated" : "deactivated"]"))
+				to_chat(client, span_boldnotice("Isenção de emprego para[job_title]Tem sido[newstate ? "activated" : "deactivated"]"))
 	show_job_exempt_menu(user, target_ckey)

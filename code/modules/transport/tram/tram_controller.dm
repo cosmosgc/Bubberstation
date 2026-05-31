@@ -212,7 +212,7 @@
 	SIGNAL_HANDLER
 
 	travel_remaining = 0
-	bumped_atom.visible_message(span_userdanger("\The [bumped_atom] crashes into the field violently!"))
+	bumped_atom.visible_message(span_userdanger("\The [bumped_atom]Bate no campo violentamente!"))
 	for(var/obj/structure/transport/linear/tram/transport_module as anything in transport_modules)
 		transport_module.set_travelling(FALSE)
 		for(var/explosive_target in transport_module.transport_contents)
@@ -483,7 +483,7 @@
  */
 /datum/transport_controller/linear/tram/proc/crash_fx()
 	playsound(source = nav_beacon, soundin = 'sound/vehicles/car_crash.ogg', vol = 100, vary = FALSE, falloff_distance = DEFAULT_TRAM_LENGTH)
-	nav_beacon.audible_message(span_userdanger("You hear metal grinding as the tram comes to a sudden, complete stop!"))
+	nav_beacon.audible_message(span_userdanger("Você ouve metal moendo quando o bonde chega a uma parada súbita e completa!"))
 	for(var/mob/living/tram_passenger in range(DEFAULT_TRAM_LENGTH - 2, nav_beacon))
 		if(tram_passenger.stat != CONSCIOUS)
 			continue
@@ -744,9 +744,7 @@
 	// Don't bother processing crossing signals, where this tram's going there are no signals
 	//for(var/obj/machinery/transport/crossing_signal/xing as anything in SStransport.crossing_signals)
 	//	xing.temp_malfunction()
-	priority_announce("In a turn of rather peculiar events, it appears that [GLOB.station_name] has struck an immovable rod. (Don't ask us where it came from.) This has led to a station brakes failure on one of the tram platforms.\n\n\
-		Our diligent team of engineers have been informed and they're rushing over - although not quite at the speed of our recently flying tram.\n\n\
-		So while we all look in awe at the universe's mysterious sense of humour, please stand clear of the tracks and remember to stand behind the yellow line.", "Braking News")
+	priority_announce("In a turn of rather peculiar events, it appears that [GLOB.station_name] has struck an immovable rod. (Don't ask us where it came from.) This has led to a station brakes failure on one of the tram platforms.\n\n		Our diligent team of engineers have been informed and they're rushing over - although not quite at the speed of our recently flying tram.\n\n		So while we all look in awe at the universe's mysterious sense of humour, please stand clear of the tracks and remember to stand behind the yellow line.", "Braking News")
 	set_active(TRUE)
 	set_status_code(CONTROLS_LOCKED, TRUE)
 	dispatch_transport(destination_platform = push_destination)
@@ -761,7 +759,7 @@
  */
 /obj/machinery/transport/tram_controller
 	name = "tram controller"
-	desc = "Makes the tram go, or something. Holds the tram's electronics, controls, and maintenance panel. A sticker above the card reader says 'Engineering access only.'"
+	desc = "Faz o bonde ir, ou algo assim. Segura os eletrônicos do bonde, controles e painel de manutenção. Um adesivo acima do leitor de cartões diz \"Acesso à engenharia somente\"."
 	icon = 'icons/obj/tram/tram_controllers.dmi'
 	icon_state = "tram-controller"
 	base_icon_state = "tram"
@@ -838,19 +836,19 @@
 /obj/machinery/transport/tram_controller/examine(mob/user)
 	. = ..()
 	if(has_cover)
-		. += span_notice("The door appears to be [cover_locked ? "locked. Swipe an ID card to unlock" : "unlocked. Swipe an ID card to lock"].")
+		. += span_notice("A porta parece ser[cover_locked ? "locked. Swipe an ID card to unlock" : "unlocked. Swipe an ID card to lock"].")
 		if(panel_open)
-			. += span_notice("It is secured to the tram wall with [EXAMINE_HINT("bolts.")]")
-			. += span_notice("The maintenance panel can be closed with a [EXAMINE_HINT("screwdriver.")]")
+			. += span_notice("Está seguro na parede do bonde com[EXAMINE_HINT("bolts.")]")
+			. += span_notice("O painel de manutenção pode ser fechado com um[EXAMINE_HINT("screwdriver.")]")
 		else
-			. += span_notice("The maintenance panel can be opened with a [EXAMINE_HINT("screwdriver.")]")
+			. += span_notice("O painel de manutenção pode ser aberto com um[EXAMINE_HINT("screwdriver.")]")
 
 	if(cover_open || !has_cover)
-		. += span_notice("The [EXAMINE_HINT("yellow reset button")] resets the tram controller if a problem occurs or needs to be restarted.")
-		. += span_notice("The [EXAMINE_HINT("red stop button")] immediately stops the tram, requiring a reset afterwards.")
-		. += span_notice("The cabinet can be closed with a [EXAMINE_HINT("Right-click.")]")
+		. += span_notice("O[EXAMINE_HINT("yellow reset button")]Reinicia o controlador de bonde se um problema ocorrer ou precisar ser reiniciado.")
+		. += span_notice("O[EXAMINE_HINT("red stop button")]imediatamente pára o bonde, exigindo um reset depois.")
+		. += span_notice("O armário pode ser fechado com um[EXAMINE_HINT("Right-click.")]")
 	else
-		. += span_notice("The cabinet can be opened with a [EXAMINE_HINT("Left-click.")]")
+		. += span_notice("O armário pode ser aberto com um[EXAMINE_HINT("Left-click.")]")
 
 
 /obj/machinery/transport/tram_controller/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -907,12 +905,12 @@
 	if(isnull(id_card))
 		id_card = user.get_idcard(TRUE)
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "access controller damaged!")
+		balloon_alert(user, "Controlador de acesso danificado!")
 		return FALSE
 
 	if(check_access(id_card))
 		cover_locked = !cover_locked
-		balloon_alert(user, "controls [cover_locked ? "trancado" : "destrancado"]")
+		balloon_alert(user, "Controles[cover_locked ? "trancado" : "destrancado"]")
 		update_appearance()
 		return TRUE
 
@@ -1047,17 +1045,17 @@
 
 /obj/machinery/transport/tram_controller/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "already fried!")
+		balloon_alert(user, "Já fritou!")
 		return FALSE
 	obj_flags |= EMAGGED
 	cover_locked = FALSE
 	playsound(src, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	balloon_alert(user, "controlador de acesso em curto")
+	balloon_alert(user, "Controlador de acesso em curto")
 	return TRUE
 
 /obj/machinery/transport/tram_controller/ui_status(mob/user, datum/ui_state/state)
 	if(HAS_SILICON_ACCESS(user) && (controller_datum.controller_status & SYSTEM_FAULT || controller_datum.controller_status & COMM_ERROR || !is_operational))
-		to_chat(user, span_warning("An error code flashes: Communications fault! The [src] is not responding to remote inputs!"))
+		to_chat(user, span_warning("Um código de erro pisca: falha de comunicação! O[src]Não está respondendo a entradas remotas!"))
 		return UI_CLOSE
 
 	return ..()
@@ -1115,7 +1113,7 @@
 		return
 
 	if(machine_stat & NOPOWER)
-		visible_message(span_warning("The button doesn't appear to do anything, the [src]'s power failure status is flashing!"), vision_distance = COMBAT_MESSAGE_RANGE)
+		visible_message(span_warning("O botão não parece fazer nada, o[src]O estado de falha de energia está piscando!"), vision_distance = COMBAT_MESSAGE_RANGE)
 		return
 
 	switch(action)
@@ -1157,7 +1155,7 @@
 /// Controller that sits in the telecoms room
 /obj/machinery/transport/tram_controller/tcomms
 	name = "tram central controller"
-	desc = "This semiconductor is half of the brains controlling the tram and its auxiliary equipment."
+	desc = "Este semicondutor é metade do cérebro controlando o bonde e seu equipamento auxiliar."
 	icon_state = "home-controller"
 	base_icon_state = "home"
 	density = TRUE
@@ -1197,7 +1195,7 @@
 
 /obj/item/wallframe/tram
 	name = "tram controller cabinet"
-	desc = "A box that contains the equipment to control a tram. Just secure to the tram wall."
+	desc = "Uma caixa que contém o equipamento para controlar um bonde. Apenas seguro na parede do bonde."
 	icon = 'icons/obj/tram/tram_controllers.dmi'
 	icon_state = "tram-controller"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 20)
@@ -1211,7 +1209,7 @@
 	var/turf/tram_turf = get_turf(user)
 	var/obj/structure/thermoplastic/tram_floor = locate() in tram_turf
 	if(!istype(tram_floor))
-		balloon_alert(user, "needs tram!")
+		balloon_alert(user, "Precisa de bonde!")
 		return FALSE
 
 	return ..()

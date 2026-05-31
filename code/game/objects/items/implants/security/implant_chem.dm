@@ -1,6 +1,6 @@
 /obj/item/implant/chem
 	name = "chem implant"
-	desc = "Injects things."
+	desc = "Injeta coisas."
 	icon_state = "reagents"
 	actions_types = null
 	implant_flags = IMPLANT_TYPE_SECURITY
@@ -13,15 +13,9 @@
 	var/code
 
 
-	implant_info = "Requires filling via syringe while in an implant case. Automatically activates upon implantation. \
-		Allows for remote release of reagents directly into implantee's bloodstream. Can be synced with a remote signalling device."
+	implant_info = "Requires filling via syringe while in an implant case. Automatically activates upon implantation. 		Allows for remote release of reagents directly into implantee's bloodstream. Can be synced with a remote signalling device."
 
-	implant_lore = "The Robust Corp MJ-420 Remote Chemical Release Implant is a remotely-controlled \
-		microcapsule network designed to be filled via syringe while still within an implant case. After implantation, \
-		the MJ-420 can be accessed via prisoner management console to release controlled amounts of reagents directly \
-		into the implantee's bloodstream, which is useful for controlled release of sedatives, antipsychotics, or, for \
-		particularly dangerous prisoners, lethal injections. Upon implantee's death, breaks down and releases all reagents \
-		into their bloodstream."
+	implant_lore = "The Robust Corp MJ-420 Remote Chemical Release Implant is a remotely-controlled 		microcapsule network designed to be filled via syringe while still within an implant case. After implantation, 		the MJ-420 can be accessed via prisoner management console to release controlled amounts of reagents directly 		into the implantee's bloodstream, which is useful for controlled release of sedatives, antipsychotics, or, for 		particularly dangerous prisoners, lethal injections. Upon implantee's death, breaks down and releases all reagents 		into their bloodstream."
 
 /obj/item/implant/chem/is_shown_on_console(obj/machinery/computer/prisoner/management/console)
 	return !frequency && is_valid_z_level(get_turf(console), get_turf(imp_in))
@@ -86,9 +80,9 @@
 	else
 		injectamount = cause
 	reagents.trans_to(R, injectamount)
-	to_chat(R, span_hear("You hear a faint beep."))
+	to_chat(R, span_hear("Você ouve um bip fraco."))
 	if(!reagents.total_volume)
-		to_chat(R, span_hear("You hear a faint click from your chest."))
+		to_chat(R, span_hear("Você ouve um leve clique do seu peito."))
 		qdel(src)
 
 /obj/item/implant/chem/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -98,7 +92,7 @@
 	return ..()
 
 /obj/item/implant/chem/proc/signaler_sync(obj/item/assembly/signaler/syncing_signaler, mob/living/user)
-	to_chat(user, "You sync \the [src] to \the [syncing_signaler]'s code & frequency[frequency ? "" : ", disabling other methods of activation"].")
+	to_chat(user, "Você sincroniza.\the [src]Para\the [syncing_signaler]Código e frequência[frequency ? "" : ", disabling other methods of activation"].")
 	code = syncing_signaler.code
 	SSradio.remove_object(src, frequency)
 	frequency = syncing_signaler.frequency
@@ -111,5 +105,5 @@
 
 /obj/item/implantcase/chem
 	name = "implant case - 'Remote Chemical'"
-	desc = "A glass case containing a remote chemical implant."
+	desc = "Uma caixa de vidro contendo um implante químico remoto."
 	imp_type = /obj/item/implant/chem

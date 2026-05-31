@@ -1,6 +1,6 @@
 /mob/living/basic/pet/dog/markus
 	name = "\proper Markus"
-	desc = "The supply department's overfed yet still beloved dog."
+	desc = "O departamento de suprimentos está alimentado demais, mas ainda é um cão amado."
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "markus"
 	icon_dead = "markus_dead"
@@ -24,11 +24,7 @@
 	. = ..()
 	if(!can_breed)
 		return
-	AddComponent(\
-		/datum/component/breed,\
-		can_breed_with = typecacheof(list(/mob/living/basic/pet/dog/corgi)),\
-		baby_paths = list(/mob/living/basic/pet/dog/corgi/puppy),\
-	) // no mixed breed puppies sadly
+	AddComponent(		/datum/component/breed,		can_breed_with = typecacheof(list(/mob/living/basic/pet/dog/corgi)),		baby_paths = list(/mob/living/basic/pet/dog/corgi/puppy),	) // no mixed breed puppies sadly
 
 /mob/living/basic/pet/dog/markus/treat_message(message)
 	if(client)
@@ -63,7 +59,7 @@
 
 /mob/living/basic/pet/dog/corgi/borgi
 	name = "E-N"
-	desc = "It's a borgi."
+	desc = "É um borgi."
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "borgi"
 	icon_living = "borgi"
@@ -77,7 +73,7 @@
 		/obj/item/clothing/head/costume/skyrat/en = 1,
 		/obj/item/clothing/suit/corgisuit/en = 1,
 	)
-	death_message = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
+	death_message = "Apita, suas partes mecânicas sinistram antes que o chassis desmorone em alto som."
 	gold_core_spawnable = NO_SPAWN
 	can_be_shaved = FALSE
 	ai_controller = /datum/ai_controller/basic_controller/dog/borgi
@@ -253,19 +249,19 @@
 
 	add_fingerprint(user, TRUE)
 	investigate_log("has been gibbed due to being emagged by [user].", INVESTIGATE_DEATHS)
-	visible_message(span_boldwarning("[user] swipes a card through [target]!"), span_notice("You overload [target]s internal reactor..."))
+	visible_message(span_boldwarning("[user]Passa um cartão através[target]!"), span_notice("Você está sobrecarregado.[target]O reator interno..."))
 
 	notify_ghosts("[user] has shortcircuited [target] to explode in 60 seconds!",
 		source = target,
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
-		header = "Borgi Emagged",
+		header = "Borgi Emagrou",
 	)
 	addtimer(CALLBACK(src, PROC_REF(explode_imminent)), 50 SECONDS)
 
 	return TRUE
 
 /mob/living/basic/pet/dog/corgi/borgi/proc/explode_imminent()
-	visible_message(span_bolddanger("[src] makes an odd whining noise!"))
+	visible_message(span_bolddanger("[src]Faz um barulho estranho!"))
 	do_jitter_animation(30)
 
 	addtimer(CALLBACK(src, PROC_REF(explode)), 10 SECONDS)
@@ -336,7 +332,7 @@
 
 /mob/living/basic/pet/dog/dobermann
 	name = "\improper dobermann"
-	desc = "A larger breed of dog."
+	desc = "Uma raça maior de cachorro."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "dobber"
 	icon_dead = "dobbydead"
@@ -344,7 +340,7 @@
 
 /mob/living/basic/pet/dog/pitbull
 	name = "\improper pitbull"
-	desc = "Lover of Blood. Hater of Toddlers"
+	desc = "Amante de Sangue. Ódio de crianças"
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "pitbull"
 	icon_dead = "pitbull_dead"

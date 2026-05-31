@@ -28,11 +28,11 @@ export const BankMachine = (props) => {
         <Section title={`${station_name} Vault`}>
           <LabeledList>
             <LabeledList.Item
-              label="Current Balance"
+              label="Balanço atual"
               buttons={
                 <Button
                   icon={siphoning ? 'times' : 'sync'}
-                  content={siphoning ? 'Stop Siphoning' : 'Siphon Credits'}
+                  content={siphoning ? 'Pare de seduzir.' : 'Créditos Sifônicos'}
                   selected={siphoning}
                   onClick={() => act(siphoning ? 'halt' : 'siphon')}
                 />

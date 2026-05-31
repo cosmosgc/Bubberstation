@@ -1,7 +1,7 @@
 
 /datum/action/cooldown/spell/touch/duffelbag
 	name = "Bestow Cursed Duffel Bag"
-	desc = "A spell that summons a duffel bag demon on the target, slowing them down and slowly eating them."
+	desc = "Um feitiço que invoca um demônio de saco no alvo, atrasando-os e lentamente comendo-os."
 	button_icon_state = "duffelbag_curse"
 	sound = 'sound/effects/magic/mm_hit.ogg'
 
@@ -29,8 +29,8 @@
 	return iscarbon(cast_on)
 
 /datum/action/cooldown/spell/touch/duffelbag/on_antimagic_triggered(obj/item/melee/touch_attack/hand, mob/living/carbon/victim, mob/living/carbon/caster)
-	to_chat(caster, span_warning("The spell can't seem to affect [victim]!"))
-	to_chat(victim, span_warning("You really don't feel like talking about your [pick(elaborate_backstory)] with complete strangers today."))
+	to_chat(caster, span_warning("O feitiço não parece afetar[victim]!"))
+	to_chat(victim, span_warning("Você realmente não sente vontade de falar sobre o seu[pick(elaborate_backstory)]com completos estranhos hoje."))
 
 /datum/action/cooldown/spell/touch/duffelbag/cast_on_hand_hit(obj/item/melee/touch_attack/hand, mob/living/carbon/victim, mob/living/carbon/caster)
 
@@ -42,15 +42,15 @@
 
 	// If someone's already cursed, don't try to give them another
 	if(istype(victim.back, /obj/item/storage/backpack/duffelbag/cursed))
-		to_chat(caster, span_warning("The burden of [victim]'s duffel bag becomes too much, shoving them to the floor!"))
-		to_chat(victim, span_warning("The weight of this bag becomes overburdening!"))
+		to_chat(caster, span_warning("O fardo de[victim]A mochila se torna demais, empurrando-os para o chão!"))
+		to_chat(victim, span_warning("O peso deste saco se torna sobrecarregador!"))
 		return TRUE
 
 	// However if they're uncursed, they're fresh for getting a cursed bag
 	var/obj/item/storage/backpack/duffelbag/cursed/conjured_duffel = new get_turf(victim)
 	victim.visible_message(
-		span_danger("A growling duffel bag appears on [victim]!"),
-		span_danger("You feel something attaching itself to you, and a strong desire to discuss your [pick(elaborate_backstory)] at length!"),
+		span_danger("Um saco rosnado aparece em[victim]!"),
+		span_danger("Você sente algo se prendendo a você, e um forte desejo de discutir seu[pick(elaborate_backstory)]De longe!"),
 	)
 
 	conjured_duffel.pickup(victim)
@@ -81,7 +81,7 @@
 
 /obj/item/melee/touch_attack/duffelbag
 	name = "\improper burdening touch"
-	desc = "Where is the bar from here?"
+	desc = "Onde fica o bar daqui?"
 	icon = 'icons/obj/weapons/hand.dmi'
 	icon_state = "duffelcurse"
 	inhand_icon_state = "duffelcurse"

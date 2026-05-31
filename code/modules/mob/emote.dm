@@ -24,7 +24,7 @@
 
 	if(!length(key_emotes))
 		if(intentional && !force_silence)
-			to_chat(src, span_notice("'[act]' emote does not exist. Say *help for a list."))
+			to_chat(src, span_notice("'[act]O emote não existe. Diga \"ajuda para uma lista\"."))
 		return FALSE
 	var/silenced = FALSE
 	for(var/datum/emote/emote in key_emotes)
@@ -41,7 +41,7 @@
 		SEND_SIGNAL(src, COMSIG_MOB_EMOTED(emote.key))
 		return TRUE
 	if(intentional && !silenced && !force_silence)
-		to_chat(src, span_notice("Unusable emote '[act]'. Say *help for a list."))
+		to_chat(src, span_notice("Emoção inutilizável[act]Diga.\"ajuda para uma lista\"."))
 	return FALSE
 
 /datum/emote/help
@@ -52,7 +52,7 @@
 	. = ..()
 	var/list/keys = list()
 	var/list/message = list("Available emotes, you can use them with say [span_bold("\"*emote\"")]: \n")
-	message += span_smallnoticeital("Note - emotes highlighted in blue play a sound \n\n")
+	message += span_smallnoticeital("Nota - emoções destacadas em azul tocam um som\n\n")
 
 	for(var/key in GLOB.emote_list)
 		for(var/datum/emote/emote_action in GLOB.emote_list[key])
@@ -110,15 +110,15 @@
 		if(prob(fall_over_prob))
 			flippy_mcgee.Knockdown(1 SECONDS)
 			flippy_mcgee.visible_message(
-				span_notice("[flippy_mcgee] attempts to do a flip and falls over, what a doofus!"),
-				span_notice("You attempt to do a flip while still off balance from the last flip and fall down!")
+				span_notice("[flippy_mcgee]Tenta fazer um giro e cair, que idiota!"),
+				span_notice("Você tenta fazer um giro enquanto ainda está fora de equilíbrio do último salto e cair!")
 			)
 			if(prob(fall_over_prob/2))
 				flippy_mcgee.adjust_brute_loss(1)
 		else
 			flippy_mcgee.visible_message(
-				span_notice("[flippy_mcgee] stumbles a bit after their flip."),
-				span_notice("You stumble a bit from still being off balance from your last flip.")
+				span_notice("[flippy_mcgee]tropeça um pouco depois da virada."),
+				span_notice("Você tropeça um pouco por ainda estar fora de equilíbrio do seu último lançamento.")
 			)
 */
 /datum/emote/flip/check_cooldown(mob/user, intentional)
@@ -136,13 +136,13 @@
 	if(prob(20))
 		flippy_mcgee.Knockdown(1.5 SECONDS)
 		flippy_mcgee.visible_message(
-			span_notice("[flippy_mcgee] attempts to do a flip and falls over, what a doofus!"),
-			span_notice("You attempt to do a flip while still off balance from the last flip and fall down!")
+			span_notice("[flippy_mcgee]Tenta fazer um giro e cair, que idiota!"),
+			span_notice("Você tenta fazer um giro enquanto ainda está fora de equilíbrio do último salto e cair!")
 		)
 	flippy_mcgee.set_dizzy_if_lower(BEYBLADE_DIZZINESS_DURATION)
 	flippy_mcgee.adjust_confusion_up_to(BEYBLADE_CONFUSION_INCREMENT, BEYBLADE_CONFUSION_LIMIT)
 	if(sickness > (BEYBLADE_PUKE_THRESHOLD * 0.5))
-		to_chat(user, span_warning("You feel woozy from flipping."))
+		to_chat(user, span_warning("Você se sente tonto por virar."))
 // BUBBER EDIT CHANGE END
 
 
@@ -181,7 +181,7 @@
 		return
 
 	if(prob(BEYBLADE_DIZZINESS_PROBABILITY))
-		to_chat(user, span_warning("You feel woozy from spinning."))
+		to_chat(user, span_warning("Você se sente tonto por girar."))
 		user.set_dizzy_if_lower(BEYBLADE_DIZZINESS_DURATION)
 		user.adjust_confusion_up_to(BEYBLADE_CONFUSION_INCREMENT, BEYBLADE_CONFUSION_LIMIT)
 

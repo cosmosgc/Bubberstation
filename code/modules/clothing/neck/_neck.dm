@@ -25,7 +25,7 @@
 
 /obj/item/clothing/neck/bowtie
 	name = "bow tie"
-	desc = "A small neosilk bowtie."
+	desc = "Um pequeno laço neosilk."
 	inhand_icon_state = "" //no inhands
 	w_class = WEIGHT_CLASS_SMALL
 	custom_price = PAYCHECK_CREW
@@ -39,7 +39,7 @@
 
 /obj/item/clothing/neck/bowtie/rainbow
 	name = "rainbow bow tie"
-	desc = "An extremely large neosilk rainbow-colored bowtie."
+	desc = "Um arco-íris extremamente grande."
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "bowtie_rainbow"
 	post_init_icon_state = null
@@ -49,7 +49,7 @@
 
 /obj/item/clothing/neck/tie
 	name = "slick tie"
-	desc = "A neosilk tie."
+	desc = "Uma gravata neo-silk."
 	inhand_icon_state = "" //no inhands
 	alternate_worn_layer = LOW_NECK_LAYER // So that it renders below suit jackets, MODsuits, etc
 	w_class = WEIGHT_CLASS_SMALL
@@ -76,18 +76,18 @@
 
 /obj/item/clothing/neck/tie/examine(mob/user)
 	. = ..()
-	. += span_notice("The tie can be worn above or below your suit. Alt-Right-click to toggle.")
+	. += span_notice("A gravata pode ser usada por cima ou por baixo do terno. Alt-Click para alternar.")
 	if(clip_on)
-		. += span_notice("Looking closely, you can see that it's actually a cleverly disguised clip-on.")
+		. += span_notice("Olhando de perto, dá para ver que é um clipe bem disfarçado.")
 	else if(!is_tied)
-		. += span_notice("The tie can be tied with Alt-Click.")
+		. += span_notice("A gravata pode ser amarrada com Alt-Click.")
 	else
-		. += span_notice("The tie can be untied with Alt-Click.")
+		. += span_notice("A gravata pode ser desamarrada com Alt-Click.")
 
 /obj/item/clothing/neck/tie/click_alt(mob/user)
 	if(clip_on)
 		return NONE
-	to_chat(user, span_notice("You concentrate as you begin [is_tied ? "untying" : "tying"] [src]..."))
+	to_chat(user, span_notice("Concentre-se enquanto começa[is_tied ? "untying" : "tying"] [src]..."))
 	var/tie_timer_actual = tie_timer
 	// Mirrors give you a boost to your tying speed. I realize this stacks and I think that's hilarious.
 	for(var/obj/structure/mirror/reflection in view(2, user))
@@ -97,17 +97,17 @@
 		tie_timer_actual *= 0.5
 	// Tie/Untie our tie
 	if(!do_after(user, tie_timer_actual))
-		to_chat(user, span_notice("Your fingers fumble away from [src] as your concentration breaks."))
+		to_chat(user, span_notice("Seus dedos se afastam[src]como sua concentração quebra."))
 		return CLICK_ACTION_BLOCKING
 	// Clumsy & Dumb people have trouble tying their ties.
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || HAS_TRAIT(user, TRAIT_DUMB)) && prob(50))
-		to_chat(user, span_notice("You just can't seem to get a proper grip on [src]!"))
+		to_chat(user, span_notice("Você não consegue se controlar direito.[src]!"))
 		return CLICK_ACTION_BLOCKING
 	// Success!
 	is_tied = !is_tied
 	user.visible_message(
-		span_notice("[user] adjusts [user.p_their()] tie[HAS_TRAIT(user, TRAIT_BALD) ? "" : " and runs a hand across [user.p_their()] head"]."),
-		span_notice("You successfully [is_tied ? "tied" : "untied"] [src]!"),
+		span_notice("[user]Ajustes[user.p_their()]Empatar[HAS_TRAIT(user, TRAIT_BALD) ? "" : " and runs a hand across [user.p_their()] head"]."),
+		span_notice("Você com sucesso.[is_tied ? "tied" : "untied"] [src]!"),
 	)
 	update_appearance(UPDATE_ICON)
 	user.update_clothing(ITEM_SLOT_NECK)
@@ -116,7 +116,7 @@
 /obj/item/clothing/neck/tie/click_alt_secondary(mob/user)
 	alternate_worn_layer = (alternate_worn_layer == initial(alternate_worn_layer) ? NONE : initial(alternate_worn_layer))
 	user.update_clothing(ITEM_SLOT_NECK)
-	balloon_alert(user, "wearing [alternate_worn_layer == initial(alternate_worn_layer) ? "below" : "above"] suits")
+	balloon_alert(user, "Usando[alternate_worn_layer == initial(alternate_worn_layer) ? "below" : "above"]Ternos.")
 
 /obj/item/clothing/neck/tie/update_icon()
 	. = ..()
@@ -193,7 +193,7 @@
 
 /obj/item/clothing/neck/tie/horrible
 	name = "horrible tie"
-	desc = "A neosilk tie. This one is disgusting."
+	desc = "Uma gravata neo-silk. Este é nojento."
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "horribletie"
 	post_init_icon_state = null
@@ -204,7 +204,7 @@
 
 /obj/item/clothing/neck/robe_cape
 	name = "robe cape"
-	desc = "A comfortable cape, draped down your back and held around your neck with a brooch."
+	desc = "Uma capa confortável, coberta pelas costas e segurada em volta do pescoço com um broche."
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "/obj/item/clothing/neck/robe_cape"
 	post_init_icon_state = "robe_cape"
@@ -222,7 +222,7 @@
 
 /obj/item/clothing/neck/tie/detective
 	name = "loose tie"
-	desc = "A loosely tied necktie, a perfect accessory for the over-worked detective."
+	desc = "Uma gravata amarrada, um acessório perfeito para o detetive sobrecarregado."
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "detective"
 	post_init_icon_state = null
@@ -233,7 +233,7 @@
 
 /obj/item/clothing/neck/stethoscope
 	name = "stethoscope"
-	desc = "An outdated medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
+	desc = "Um aparato médico ultrapassado para ouvir os sons do corpo humano. Também faz você parecer que sabe o que está fazendo."
 	icon_state = "stethoscope"
 
 /obj/item/clothing/neck/stethoscope/Initialize(mapload)
@@ -241,7 +241,7 @@
 	AddElement(/datum/element/adjust_fishing_difficulty, -3) //FISH DOCTOR?!
 
 /obj/item/clothing/neck/stethoscope/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] puts \the [src] to [user.p_their()] chest! It looks like [user.p_they()] won't hear much!"))
+	user.visible_message(span_suicide("[user]coloca\the [src]Para[user.p_their()]Baú! Parece que...[user.p_they()]Não vai ouvir muito!"))
 	return OXYLOSS
 
 /obj/item/clothing/neck/stethoscope/attack(mob/living/target, mob/living/user)
@@ -269,21 +269,16 @@
 	//determine what specific action we're taking
 	switch (body_part)
 		if(BODY_ZONE_CHEST)//Listening to the chest
-			user.visible_message(span_notice("[user] places [src] against [carbon_patient]'s [body_part] and listens attentively."), ignored_mobs = user)
+			user.visible_message(span_notice("[user]Lugares[src]Contra[carbon_patient]'s[body_part]Escuta iminente."), ignored_mobs = user)
 			if(HAS_TRAIT(user, TRAIT_DEAF))
-				to_chat(user, span_notice("You place [src] against [carbon_patient]'s [body_part]. Fat load of good it does you though, since you can't hear."))
+				to_chat(user, span_notice("Seu lugar.[src]Contra[carbon_patient]'s[body_part]Mas é muito bom, já que não consegue ouvir."))
 				return
 			else
-				render_list += span_info("You place [src] against [carbon_patient]'s [body_part]:\n")
+				render_list += span_info("Seu lugar.[src]Contra[carbon_patient]'s[body_part]:\n")
 
 			//assess breathing
 			var/lung_noises = TRUE
-			if(isnull(lungs) \
-				|| carbon_patient.stat == DEAD \
-				|| (HAS_TRAIT(carbon_patient, TRAIT_FAKEDEATH)) \
-				|| (HAS_TRAIT(carbon_patient, TRAIT_NOBREATH))\
-				|| carbon_patient.failed_last_breath \
-				|| carbon_patient.losebreath)//If pt is dead or otherwise not breathing
+			if(isnull(lungs) 				|| carbon_patient.stat == DEAD 				|| (HAS_TRAIT(carbon_patient, TRAIT_FAKEDEATH)) 				|| (HAS_TRAIT(carbon_patient, TRAIT_NOBREATH))				|| carbon_patient.failed_last_breath 				|| carbon_patient.losebreath)//If pt is dead or otherwise not breathing
 				render_list += "<span class='danger ml-1'>[target.p_Theyre()] not breathing!</span>\n"
 				lung_noises = FALSE
 
@@ -310,8 +305,8 @@
 					render_list += "<span class='notice ml-1'>[heart.hear_beat_noise(user)]</span>\n"
 
 		if(BODY_ZONE_PRECISE_GROIN)//If we're targeting the groin
-			render_list += span_info("You carefully press down on [carbon_patient]'s abdomen:\n")
-			user.visible_message(span_notice("[user] presses their hands against [carbon_patient]'s abdomen."), ignored_mobs = user)
+			render_list += span_info("Você pressiona com cuidado[carbon_patient]Abdômen:\n")
+			user.visible_message(span_notice("[user]Pressiona suas mãos contra[carbon_patient]Abdômen."), ignored_mobs = user)
 
 			//assess abdominal organs
 			var/appendix_okay = TRUE
@@ -335,20 +330,20 @@
 				render_list += "<span class='notice ml-1'>You don't find anything abnormal.</span>\n"//they're okay :D
 
 		if(BODY_ZONE_PRECISE_EYES)
-			balloon_alert(user, "can't do that!")
+			balloon_alert(user, "Não posso fazer isso!")
 			return
 
 		if(BODY_ZONE_PRECISE_MOUTH)
-			balloon_alert(user, "can't do that!")
+			balloon_alert(user, "Não posso fazer isso!")
 			return
 
 		else//targeting an extremity or the head
 			if(body_part ==  BODY_ZONE_HEAD)
-				render_list += span_info("You carefully press your fingers to [carbon_patient]'s neck:\n")
-				user.visible_message(span_notice("[user] presses their fingers against [carbon_patient]'s neck."), ignored_mobs = user)
+				render_list += span_info("Você cuidadosamente pressiona seus dedos para[carbon_patient]O pescoço:\n")
+				user.visible_message(span_notice("[user]Pressiona seus dedos contra[carbon_patient]O pescoço."), ignored_mobs = user)
 			else
-				render_list += span_info("You carefully press your fingers to [carbon_patient]'s [body_part]:\n")
-				user.visible_message(span_notice("[user] presses their fingers against [carbon_patient]'s [body_part]."), ignored_mobs = user)
+				render_list += span_info("Você cuidadosamente pressiona seus dedos para[carbon_patient]'s[body_part]:\n")
+				user.visible_message(span_notice("[user]Pressiona seus dedos contra[carbon_patient]'s[body_part]."), ignored_mobs = user)
 
 			var/cached_blood_volume = carbon_patient.get_blood_volume(apply_modifiers = TRUE)
 
@@ -379,7 +374,7 @@
 
 /obj/item/clothing/neck/scarf
 	name = "scarf"
-	desc = "A stylish scarf. The perfect winter accessory for those with a keen fashion sense, and those who just can't handle a cold breeze on their necks."
+	desc = "Um cachecol elegante. O acessório de inverno perfeito para aqueles com um senso de moda afiado, e aqueles que não conseguem lidar com uma brisa fria em seus pescoços."
 	icon = 'icons/map_icons/clothing/neck.dmi'
 	icon_state = "/obj/item/clothing/neck/scarf"
 	post_init_icon_state = "scarf"
@@ -474,7 +469,7 @@
 
 /obj/item/clothing/neck/large_scarf/syndie
 	name = "suspicious looking striped scarf"
-	desc = "Ready to operate."
+	desc = "Pronto para operar."
 	icon_state = "/obj/item/clothing/neck/large_scarf/syndie"
 	greyscale_colors = "#B40000#545350"
 	armor_type = /datum/armor/large_scarf_syndie
@@ -493,7 +488,7 @@
 
 /obj/item/clothing/neck/petcollar
 	name = "pet collar"
-	desc = "It's for pets."
+	desc = "É para animais de estimação."
 	icon_state = "petcollar"
 	var/tagname = null
 	var/human_wearable = FALSE
@@ -526,12 +521,12 @@
 
 /obj/item/clothing/neck/necklace/dope
 	name = "gold necklace"
-	desc = "Damn, it feels good to be a gangster."
+	desc = "Droga, é bom ser um gangster."
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "bling"
 
 /obj/item/clothing/neck/necklace/dope/merchant
-	desc = "Don't ask how it works, the proof is in the holochips!"
+	desc = "Não pergunte como funciona, a prova está nos holochips!"
 	/// scales the amount received in case an admin wants to emulate taxes/fees.
 	var/profit_scaling = 1
 	/// toggles between sell (TRUE) and get price post-fees (FALSE)
@@ -540,7 +535,7 @@
 /obj/item/clothing/neck/necklace/dope/merchant/attack_self(mob/user)
 	. = ..()
 	selling = !selling
-	to_chat(user, span_notice("[src] has been set to [selling ? "'Sell'" : "'Get Price'"] mode."))
+	to_chat(user, span_notice("[src]foi definido para[selling ? "'Sell'" : "'Get Price'"]Modo."))
 
 /obj/item/clothing/neck/necklace/dope/merchant/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	var/datum/export_report/ex = export_item_and_contents(interacting_with, delete_unsold = selling, dry_run = !selling)
@@ -551,17 +546,17 @@
 	if(price)
 		var/true_price = round(price*profit_scaling)
 		var/fee_display = round(price-true_price)
-		to_chat(user, span_notice("[selling ? "Sold" : "Getting the price of"] [interacting_with], value: <b>[true_price]</b> [MONEY_NAME][interacting_with.contents.len ? " (exportable contents included)" : ""].[profit_scaling < 1 && selling ? "<b>[fee_display]</b> [MONEY_NAME_AUTOPURAL(fee_display)] taken as processing fee\s." : ""]"))
+		to_chat(user, span_notice("[selling ? "Sold" : "Getting the price of"] [interacting_with], valor:<b>[true_price]</b> [MONEY_NAME][interacting_with.contents.len ? " (exportable contents included)" : ""].[profit_scaling < 1 && selling ? "<b>[fee_display]</b> [MONEY_NAME_AUTOPURAL(fee_display)] taken as processing fee\s." : ""]"))
 		if(selling)
 			new /obj/item/holochip(get_turf(user), true_price)
 	else
-		to_chat(user, span_warning("There is no export value for [interacting_with] or any items within it."))
+		to_chat(user, span_warning("Não há valor de exportação para[interacting_with]Ou qualquer item dentro dele."))
 
 	return ITEM_INTERACT_BLOCKING
 
 /obj/item/clothing/neck/beads
 	name = "plastic bead necklace"
-	desc = "A cheap, plastic bead necklace. Show team spirit! Collect them! Throw them away! The possibilities are endless!"
+	desc = "Um colar de contas de plástico barato. Mostre espírito de equipe! Recolha-os! Jogue-os fora! As possibilidades são infinitas!"
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "beads"
 	color = "#ffffff"
@@ -574,8 +569,7 @@
 
 /obj/item/clothing/neck/wreath
 	name = "\improper Watcher Wreath"
-	desc = "An elaborate crown made from the twisted flesh and sinew of a watcher. \
-		Wearing it makes you feel like you have eyes in the back of your head."
+	desc = "Uma coroa elaborada feita da carne deformada e tenaz de um vigia. Usar isso faz você sentir como se tivesse olhos na nuca."
 	icon_state = "watcher_wreath"
 	worn_y_offset = 10
 	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
@@ -589,7 +583,6 @@
 
 /obj/item/clothing/neck/wreath/icewing
 	name = "\improper Icewing Wreath"
-	desc = "An elaborate crown made from the twisted flesh and sinew of an icewing watcher. \
-		Wearing it sends shivers down your spine just from being near it."
+	desc = "Uma coroa elaborada feita da carne torcida e tenebroso de um vigia de asa de gelo. Vestí-lo faz arrepiar sua coluna só de estar perto dela."
 	icon_state = "icewing_wreath"
 	custom_materials = list(/datum/material/bone = SHEET_MATERIAL_AMOUNT, /datum/material/diamond = SHEET_MATERIAL_AMOUNT * 2)

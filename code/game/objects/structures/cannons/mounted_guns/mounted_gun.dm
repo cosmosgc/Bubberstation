@@ -3,7 +3,7 @@
 
 /obj/structure/mounted_gun
 	name = "Mounted Gun"
-	desc = "Default mounted gun for inheritance purposes."
+	desc = "Arma montada padrão para fins de herança."
 	density = TRUE
 	anchored = FALSE
 	icon = 'icons/obj/weapons/cannons.dmi'
@@ -86,7 +86,7 @@
 		return NONE
 
 	if(is_firing)
-		balloon_alert(user, "gun firing!")
+		balloon_alert(user, "Tiros!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/fully_loaded = shots_in_gun >= max_shots_per_fire
@@ -95,7 +95,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if (load_delay > 0)
-		user.visible_message(span_warning("[user] starts loading [src]."))
+		user.visible_message(span_warning("[user]Começa a carregar.[src]."))
 		if(!do_after(user, load_delay, target = src))
 			return ITEM_INTERACT_BLOCKING
 
@@ -109,7 +109,7 @@
 	if (.)
 		return
 	if (is_firing)
-		balloon_alert(user, "gun firing!")
+		balloon_alert(user, "Tiros!")
 		return
 	try_firing(user)
 
@@ -121,7 +121,7 @@
 /// Loop firing until we are done
 /obj/structure/mounted_gun/proc/fire_sequence(mob/living/user)
 	if (!shots_in_gun)
-		balloon_alert(user, "not loaded!")
+		balloon_alert(user, "Não está carregada!")
 		return
 
 	is_firing = TRUE
@@ -183,7 +183,7 @@
 /// Rapidly fires a barrage of random junk ammo
 /obj/structure/mounted_gun/organ_gun
 	name = "Pipe Organ Gun"
-	desc = "To become master over one who has killed, one must become a better killer. This engine of destruction is one of many things made to that end."
+	desc = "Para se tornar mestre sobre alguém que matou, é preciso se tornar um assassino melhor. Este motor de destruição é uma das muitas coisas feitas para esse fim."
 	icon_state = "pipeorgangun"
 	base_icon_state = "pipeorgangun"
 	anchored = FALSE
@@ -220,13 +220,13 @@
 
 /obj/structure/mounted_gun/organ_gun/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<b><i>Looking down at \the [src], you recall a tale told to you in some distant memory...</i></b>")
+	. += span_notice("<b><i>Olhando para baixo\the [src], você se lembra de uma história contada para você em alguma memória distante ...</i></b>")
 
-	. += span_info("To commit an act of vengeance is not unlike to enter a blood pact with a devil, ending the life of another, at the cost of your own.")
-	. += span_info("When humanity first spilled the blood of its own kind, with likely nothing more than a rock, the seal was broken. Vengeance was borne unto the world.")
-	. += span_info("However, vengeance alone is not enough to carry through the grim deed of murder. One must gain an advantage over their adversary.")
-	. += span_info("As such, the man who ended another's life with a stone, was in turn smote himself by another wielding a spear. After spears, bows. Swords. Guns. Tanks. Missiles. And on and on Vengeance fed. Growing stronger. Growing Worse.")
-	. += span_info("Vengeance persists to this day. It sometimes may slumber, seemingly content with having gorged itself, but in the end, its ceaseless hunger can be neither numbed nor sated.")
+	. += span_info("Cometer um ato de vingança não é diferente de entrar em um pacto de sangue com um diabo, acabando com a vida de outro, ao custo de seu próprio.")
+	. += span_info("Quando a humanidade derramou o sangue de sua própria espécie, provavelmente com nada mais que uma rocha, o selo foi quebrado. A vingança foi levada ao mundo.")
+	. += span_info("No entanto, vingança sozinha não é suficiente para levar a cabo o ato cruel de assassinato. Deve-se ganhar vantagem sobre seu adversário.")
+	. += span_info("Como tal, o homem que terminou a vida do outro com uma pedra, foi por sua vez golpeado por outro empunhando uma lança. Depois de lanças, arcos. Espadas. Armas. Tanques. Mísseis. E com comida de vingança. Crescendo mais forte. Crescendo Pior.")
+	. += span_info("A vingança persiste até hoje. Às vezes pode dormir, aparentemente satisfeito com ter-se deslumbrado, mas no final, sua fome incessante não pode ser entorpecido nem saciado.")
 
 /obj/structure/mounted_gun/organ_gun/get_fired_projectile()
 	var/random_type = pick_weight(list_of_projectiles)
@@ -235,7 +235,7 @@
 /// Rapidly sprays a large amount of bullets, used by pirates
 /obj/structure/mounted_gun/canister_gatling
 	name = "Canister Gatling Gun"
-	desc = "''Quantity has a quality of its own.''"
+	desc = "\"Quantidade tem uma qualidade própria.\""
 	icon_state = "canister_gatling"
 	base_icon_state = "canister_gatling"
 	anchored = FALSE
@@ -256,7 +256,7 @@
 
 /obj/item/ammo_casing/canister_shot
 	name = "Canister Shot"
-	desc = "A gigantic... well, canister of canister shot. Used for reloading the Canister Gatling Gun."
+	desc = "Um gigantesco... bem, recipiente de balas. Usado para recarregar o canhão Gatling Gun."
 	icon_state = "canister_shot"
 	obj_flags = CONDUCTS_ELECTRICITY
 	throwforce = 0
@@ -266,10 +266,10 @@
 /// Hand-cranked laser repeater which does not need to be reloaded
 /obj/structure/mounted_gun/ratvarian_repeater
 	name = "Ratvarian Repeater"
-	desc = "''Brains? Bronze? Why not both?''"
+	desc = "Brains? Bronze? Por que não os dois?"
 	icon_state = "ratvarian_repeater"
 	base_icon_state = "ratvarian_repeater"
-	loading_message = "gun charged"
+	loading_message = "Arma carregada."
 	anchored = FALSE
 	accepted_ammo_types = list() // We don't want any of that shit
 	load_delay = 3 SECONDS
@@ -315,7 +315,7 @@
 		return ..()
 
 	if (load_delay > 0)
-		user.visible_message(span_warning("[user] starts winding [src]."))
+		user.visible_message(span_warning("[user]Começa a enrolar.[src]."))
 		if(!do_after(user, load_delay, target = src))
 			return
 
@@ -328,7 +328,7 @@
 /// A makeshift structure for firing spears with increased force
 /obj/structure/mounted_gun/ballista
 	name = "Improvised Ballista"
-	desc = "''Engineers like to solve problems. If there are no problems handily available, they will create their own problems.''"
+	desc = "Os engenheiros gostam de resolver problemas. Se não houver problemas disponíveis, eles criarão seus próprios problemas.\""
 	icon_state = "improvised_ballista"
 	base_icon_state = "improvised_ballista"
 	throwforce = 30
@@ -373,7 +373,7 @@
 		return NONE
 
 	if(is_firing)
-		balloon_alert(user, "gun firing!")
+		balloon_alert(user, "Tiros!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(loaded_spear)
@@ -382,7 +382,7 @@
 
 	playsound(src, 'sound/items/weapons/draw_bow.ogg', 50, FALSE, 5)
 	if (load_delay > 0)
-		user.visible_message(span_warning("[user] starts loading [src]."))
+		user.visible_message(span_warning("[user]Começa a carregar.[src]."))
 		if (!do_after(user, load_delay, target = src))
 			return ITEM_INTERACT_BLOCKING
 

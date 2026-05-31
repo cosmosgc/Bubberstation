@@ -12,7 +12,7 @@
 
 /datum/action/cooldown/bloodsucker/masquerade
 	name = "Masquerade"
-	desc = "Feign the vital signs of a mortal, and escape both casual and medical notice as the monster you truly are."
+	desc = "Fingir os sinais vitais de um mortal, e escapar tanto casual quanto médico aviso como o monstro que você realmente é."
 	button_icon_state = "power_human"
 	power_flags = BP_CONTINUOUS_EFFECT|BP_AM_STATIC_COOLDOWN|BP_AM_COSTLESS_UNCONSCIOUS
 	check_flags = NONE
@@ -34,9 +34,9 @@
 
 /datum/action/cooldown/bloodsucker/masquerade/ActivatePower(atom/target)
 	var/mob/living/carbon/user = owner
-	owner.balloon_alert(owner, "masquerade turned on.")
-	to_chat(user, span_notice("Your heart beats falsely within your lifeless chest, and your eyes are no longer sensitive to the light. You may yet pass for a mortal."))
-	to_chat(user, span_warning("Your vampiric healing is halted while imitating life."))
+	owner.balloon_alert(owner, "Mascarada ligada.")
+	to_chat(user, span_notice("Seu coração bate falsamente dentro de seu peito sem vida, e seus olhos não são mais sensíveis à luz. Ainda pode passar por mortal."))
+	to_chat(user, span_warning("Sua cura vampírica é interrompida enquanto imita a vida."))
 
 	// Give status effect
 	user.apply_status_effect(/datum/status_effect/masquerade)
@@ -66,7 +66,7 @@
 	if(!.)
 		return
 	var/mob/living/carbon/user = owner
-	owner.balloon_alert(owner, "masquerade turned off.")
+	owner.balloon_alert(owner, "Mascarada desligada.")
 
 	// Remove status effect, mutations & diseases that you got while on masq.
 	user.remove_status_effect(/datum/status_effect/masquerade)
@@ -89,7 +89,7 @@
 		eyes.color_cutoffs = BLOODSUCKER_SIGHT_COLOR_CUTOFF
 		eyes.sight_flags = SEE_MOBS
 		user.update_sight()
-	to_chat(user, span_notice("Your heart beats one final time, while your skin dries out and your icy pallor returns."))
+	to_chat(user, span_notice("Seu coração bate uma última vez, enquanto sua pele seca e sua palidez gelada retorna."))
 
 /**
  * # Status effect
@@ -105,7 +105,7 @@
 
 /atom/movable/screen/alert/status_effect/masquerade
 	name = "Masquerade"
-	desc = "You are currently hiding your identity using the Masquerade power. This halts Vampiric healing."
+	desc = "Você está escondendo sua identidade usando o poder mascarado. Isso para a cura vampírica."
 	icon = 'modular_zubbers/icons/mob/actions/bloodsucker.dmi'
 	icon_state = "power_human"
 	alerttooltipstyle = "cult"

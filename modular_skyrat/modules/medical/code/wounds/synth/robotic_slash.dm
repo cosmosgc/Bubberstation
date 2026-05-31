@@ -27,9 +27,8 @@
 /datum/wound/electrical_damage
 	name = "Electrical (Wires) Wound"
 
-	simple_treat_text = "<b>Replacing</b> of broken wiring, or <b>repairing</b> via a wirecutter. <b>Bandaging</b> binds the wiring and reduces intensity buildup, \
-	as does <b>firmly grasping</b> the limb - both the victim and someone else can do this. <b>Roboticists/Engineers</b> get a bonus to treatment, as do <b>diagnostic HUDs</b>."
-	homemade_treat_text = "<b>Sutures</b> can repair the wiring at reduced efficiency, as can <b>retractors</b>. In a pinch, <b>high temperatures</b> can repair the wiring!"
+	simple_treat_text = "<b>Substituição</b>de fiação quebrada, ou<b>Consertando</b>através de um grampeador.<b>Enfaixamento</b>liga a fiação e reduz o acúmulo de intensidade, assim como<b>Agarrando firme</b>A vítima e outra pessoa podem fazer isso.<b>Roboticistas/Engenheiros</b>obter um bônus para o tratamento, como fazer<b>HUDs de diagnóstico</b>."
+	homemade_treat_text = "<b>Suturas.</b>pode reparar a fiação com eficiência reduzida, como pode<b>Retratos</b>Em um aperto,<b>Altas temperaturas</b>Pode consertar a fiação!"
 	treat_text_short = "Replace wiring or apply wirecutters."
 
 	wound_flags = (ACCEPTS_GAUZE|CAN_BE_GRASPED|SPLINT_OVERLAY)
@@ -113,7 +112,7 @@
 	return list("[BIO_METAL]") // wire scars dont exist so we can just use metal
 
 /datum/wound/burn/electrical_damage/slash/get_limb_examine_description()
-	return span_warning("The wiring on this limb is slashed open.")
+	return span_warning("A fiação deste membro está aberta.")
 
 /datum/wound/electrical_damage/handle_process(seconds_per_tick, times_fired)
 	. = ..()
@@ -236,7 +235,7 @@
 /datum/wound/electrical_damage/proc/get_heat_healing(do_message = prob(heat_heal_message_chance))
 	var/healing_amount = max((victim.bodytemperature - heat_thresh_to_heal), 0) * heat_differential_healing_mult
 	if (do_message && healing_amount)
-		to_chat(victim, span_notice("You feel the solder within your [limb.plaintext_zone] reform and repair your [name]..."))
+		to_chat(victim, span_notice("Você sente a solda dentro de seu[limb.plaintext_zone]Reformar e reparar seu[name]..."))
 
 	return healing_amount
 
@@ -295,7 +294,7 @@
 
 /// Returns a string with our fault intensity and threshold to removal for use in health analyzers.
 /datum/wound/electrical_damage/proc/get_wound_status_info()
-	return "Fault intensity is currently at [span_bold("[get_intensity_mult() * 100]")]%. It must be reduced to [span_blue("<b>[minimum_intensity]</b>")]% to remove the wound."
+	return "A intensidade da falha está atualmente em[span_bold("[get_intensity_mult() * 100]")]Deve ser reduzido a[span_blue("<b>[minimum_intensity]</b>")]Para remover a ferida."
 
 // this wound is unaffected by cryoxadone and pyroxadone
 /datum/wound/electrical_damage/on_xadone(power)
@@ -361,23 +360,20 @@
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 	var/replacing_or_suturing = (is_suture ? "repairing some" : "replacing")
 	while (suturing_item.tool_start_check())
-		user?.visible_message(span_danger("[user] begins [replacing_or_suturing] wiring within [their_or_other] [limb.plaintext_zone] with [suturing_item]..."), \
-			span_notice("You begin [replacing_or_suturing] wiring within [your_or_other] [limb.plaintext_zone] with [suturing_item]..."))
+		user?.visible_message(span_danger("[user]Começa[replacing_or_suturing]Fiação interna[their_or_other] [limb.plaintext_zone]Com[suturing_item]..."), 			span_notice("Você começa.[replacing_or_suturing]Fiação interna[your_or_other] [limb.plaintext_zone]Com[suturing_item]..."))
 		if (!suturing_item.use_tool(target = victim, user = user, delay = ELECTRICAL_DAMAGE_SUTURE_WIRE_BASE_DELAY * delay_mult, amount = 1, volume = 50, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 			return
 
 		if (user != victim && user.combat_mode)
-			user?.visible_message(span_danger("[user] mangles some of [their_or_other] [limb.plaintext_zone]'s wiring!"), \
-				span_danger("You mangle some of [your_or_other] [limb.plaintext_zone]'s wiring!"), ignored_mobs = victim)
-			to_chat(victim, span_userdanger("[capitalize(your_or_other)] mangles some of your [limb.plaintext_zone]'s wiring!"))
+			user?.visible_message(span_danger("[user]Estraga um pouco.[their_or_other] [limb.plaintext_zone]A fiação!"), 				span_danger("Você mutila um pouco[your_or_other] [limb.plaintext_zone]A fiação!"), ignored_mobs = victim)
+			to_chat(victim, span_userdanger("[capitalize(your_or_other)]Estraga alguns dos seus[limb.plaintext_zone]A fiação!"))
 			adjust_intensity(change * 2)
 		else
 			var/repairs_or_replaces = (is_suture ? "repairs" : "replaces")
 			var/repair_or_replace = (is_suture ? "repair" : "replace")
-			user?.visible_message(span_notice("[user] [repairs_or_replaces] some of [their_or_other] [limb.plaintext_zone]'s wiring!"), \
-				span_notice("You [repair_or_replace] some of [your_or_other] [limb.plaintext_zone]'s wiring!"))
+			user?.visible_message(span_notice("[user] [repairs_or_replaces]Alguns de[their_or_other] [limb.plaintext_zone]A fiação!"), 				span_notice("Você.[repair_or_replace]Alguns de[your_or_other] [limb.plaintext_zone]A fiação!"))
 			adjust_intensity(-change)
-			victim?.balloon_alert(user, "intensity reduced to [get_intensity_mult() * 100]%")
+			victim?.balloon_alert(user, "intensidade reduzida para[get_intensity_mult() * 100]%")
 
 		if (fixed())
 			return
@@ -425,21 +421,18 @@
 	var/their_or_other = (user == victim ? "[user.p_their()]" : "[victim]'s")
 	var/your_or_other = (user == victim ? "your" : "[victim]'s")
 	while (wirecutting_tool.tool_start_check())
-		user?.visible_message(span_danger("[user] begins resetting misplaced wiring within [their_or_other] [limb.plaintext_zone]..."), \
-			span_notice("You begin resetting misplaced wiring within [your_or_other] [limb.plaintext_zone]..."))
+		user?.visible_message(span_danger("[user]Começa a redefinir a fiação perdida dentro[their_or_other] [limb.plaintext_zone]..."), 			span_notice("Você começa a redefinir fiação perdida dentro[your_or_other] [limb.plaintext_zone]..."))
 		if (!wirecutting_tool.use_tool(target = victim, user = user, delay = ELECTRICAL_DAMAGE_WIRECUTTER_BASE_DELAY * delay_mult, volume = 50, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 			return
 
 		if (user != victim && user.combat_mode)
-			user?.visible_message(span_danger("[user] mangles some of [their_or_other] [limb.plaintext_zone]'s wiring!"), \
-				span_danger("You mangle some of [your_or_other] [limb.plaintext_zone]'s wiring!"), ignored_mobs = victim)
-			to_chat(victim, span_userdanger("[capitalize(your_or_other)] mangles some of your [limb.plaintext_zone]'s wiring!"))
+			user?.visible_message(span_danger("[user]Estraga um pouco.[their_or_other] [limb.plaintext_zone]A fiação!"), 				span_danger("Você mutila um pouco[your_or_other] [limb.plaintext_zone]A fiação!"), ignored_mobs = victim)
+			to_chat(victim, span_userdanger("[capitalize(your_or_other)]Estraga alguns dos seus[limb.plaintext_zone]A fiação!"))
 			adjust_intensity(change * 2)
 		else
-			user?.visible_message(span_notice("[user] resets some of [their_or_other] [limb.plaintext_zone]'s wiring!"), \
-				span_notice("You reset some of [your_or_other] [limb.plaintext_zone]'s wiring!"))
+			user?.visible_message(span_notice("[user]Reinicia alguns de[their_or_other] [limb.plaintext_zone]A fiação!"), 				span_notice("Você redefiniu um pouco de[your_or_other] [limb.plaintext_zone]A fiação!"))
 			adjust_intensity(-change)
-			victim?.balloon_alert(user, "intensity reduced to [get_intensity_mult() * 100]%")
+			victim?.balloon_alert(user, "intensidade reduzida para[get_intensity_mult() * 100]%")
 
 		if (fixed())
 			return
@@ -447,7 +440,7 @@
 /// If fixed() is true, we remove ourselves and return TRUE. FALSE otherwise.
 /datum/wound/electrical_damage/proc/remove_if_fixed()
 	if (fixed())
-		to_chat(victim, span_green("Your [limb.plaintext_zone] has recovered from its [name]!"))
+		to_chat(victim, span_green("Sua[limb.plaintext_zone]Se recuperar de sua[name]!"))
 		remove_wound()
 		return TRUE
 	return FALSE
@@ -486,7 +479,7 @@
 	if (!message)
 		flags |= SHOCK_SUPPRESS_MESSAGE
 		if (tell_victim_if_no_message && target == victim)
-			to_chat(target, span_warning("Your [limb.plaintext_zone] short-circuits and zaps you!"))
+			to_chat(target, span_warning("Sua[limb.plaintext_zone]curto-circuitos e zaps você!"))
 	if (ignore_immunity)
 		flags |= SHOCK_IGNORE_IMMUNITY
 	if (delay_stun)
@@ -504,15 +497,14 @@
 // Fast to rise, but lower damage overall
 // Also a bit easy to treat
 /datum/wound/electrical_damage/slash
-	simple_desc = "Wiring has been slashed open, resulting in a fault that <b>quickly</b> intensifies!"
+	simple_desc = "A escuta foi cortada, resultando em uma falha que<b>Rápido.</b>Intensifica!"
 
 /datum/wound/electrical_damage/slash/moderate
 	name = "Frayed Wiring"
-	desc = "Internal wiring has suffered a slight abrasion, causing a slow electrical fault that will intensify over time."
-	occur_text = "lets out a few sparks, as a few frayed wires stick out"
-	examine_desc = "has a few frayed wires sticking out"
-	treat_text = "Replacing of damaged wiring, though repairs via wirecutting instruments or sutures may suffice, albeit at limited efficiency. In case of emergency, \
-				subject may be subjected to high temperatures to allow solder to reset."
+	desc = "A fiação interna sofreu uma leve abrasão, causando uma falha elétrica lenta que se intensificará com o tempo."
+	occur_text = "solta algumas faíscas, como alguns fios desgastados se destacam."
+	examine_desc = "Tem alguns fio desgastados saindo"
+	treat_text = "Substituindo a fiação danificada, embora reparos através de instrumentos de corte ou suturas possam ser suficientes, embora com eficiência limitada. Em caso de emergência, o sujeito pode ser submetido a altas temperaturas para permitir que a solda reinicie."
 
 	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T1.ogg'
 
@@ -552,10 +544,10 @@
 
 /datum/wound/electrical_damage/slash/severe
 	name = "Severed Conduits"
-	desc = "A number of wires have been completely cut, resulting in electrical faults that will intensify at a worrying rate."
-	occur_text = "sends some electrical fiber in the direction of the blow, beginning to profusely spark"
-	examine_desc = "has multiple severed wires visible to the outside"
-	treat_text = "Containment of damaged wiring via gauze, then application of fresh wiring/sutures, or resetting of displaced wiring via wirecutter/retractor."
+	desc = "Vários fios foram completamente cortados, resultando em falhas elétricas que se intensificarão a uma taxa preocupante."
+	occur_text = "envia alguma fibra elétrica na direção do golpe, começando a faísca profusamente"
+	examine_desc = "tem vários fios cortados visíveis para fora"
+	treat_text = "Contenção de fiação danificada via gaze, aplicação de fiação/suturas frescas, ou redefinição de fiação deslocada via grampeador/retrator."
 	treat_text_short = "Apply gauze and replace wiring."
 
 	sound_effect = 'modular_skyrat/modules/medical/sound/robotic_slash_T2.ogg'
@@ -596,11 +588,10 @@
 
 /datum/wound/electrical_damage/slash/critical
 	name = "Systemic Fault"
-	desc = "A significant portion of the power distribution network has been cut open, resulting in massive power loss and runaway electrocution."
-	occur_text = "lets out a violent \"zhwarp\" sound as angry electric arcs attack the surrounding air"
-	examine_desc = "has lots of mauled wires sticking out"
-	treat_text = "Immediate securing via gauze, followed by emergency cable replacement and securing via wirecutters or retractor. \
-		If the fault has become uncontrollable, extreme heat therapy is recommended."
+	desc = "Uma parte significativa da rede de distribuição de energia foi cortada, resultando em perda maciça de energia e eletrocussão em fuga."
+	occur_text = "Deixa sair um violento\"zhwarp\"Parece que arcos elétricos atacam o ar ao redor."
+	examine_desc = "Tem muitos Fios Maltratados Saindo"
+	treat_text = "Segurança imediata via gaze, seguida de substituição de cabos de emergência e segurança via corta-fios ou afastador. Se a falha se tornou incontrolável, terapia de calor extrema é recomendada."
 	treat_text_short = "Apply gauze, replace wires, and use wirecutters or a retractor."
 
 	severity = WOUND_SEVERITY_CRITICAL

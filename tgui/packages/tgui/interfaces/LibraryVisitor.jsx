@@ -17,7 +17,7 @@ import { PageSelect } from './LibraryConsole/components/PageSelect';
 
 export const LibraryVisitor = (props) => {
   return (
-    <Window title="Library Lookup Console" width={702} height={421}>
+    <Window title="Console da biblioteca" width={702} height={421}>
       <BookListing />
     </Window>
   );

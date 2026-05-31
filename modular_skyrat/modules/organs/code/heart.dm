@@ -1,6 +1,6 @@
 /obj/item/organ/heart/snail
 	name = "twin gastropod hearts"
-	desc = "A primary heart normally nestled inside a gastropod's shell, and another in the owner's actual chest; necessary to maintain ample bloodflow through essentially two torsos."
+	desc = "Um coração primário normalmente aninhado dentro da concha de um gastrópode, e outro no peito real do dono, necessário para manter amplo fluxo sanguíneo através essencialmente de dois troncos."
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "heart-snail-on"
 	base_icon_state = "heart-snail"
@@ -56,7 +56,7 @@
 		return
 
 	if(COOLDOWN_FINISHED(src, shell_effect_cd))
-		source.visible_message(span_warning("[source]'s shell weathers the blow, absorbing most of the shock!"))
+		source.visible_message(span_warning("[source]O tempo da concha é o golpe, absorvendo a maior parte do choque!"))
 		playsound(source, 'sound/items/weapons/parry.ogg', 50, extrarange = SHORT_RANGE_SOUND_EXTRARANGE)
 
 	COOLDOWN_START(src, shell_effect_cd, 5 SECONDS) // Cooldown resets EVERY time we get hit

@@ -20,7 +20,7 @@
 /datum/antagonist/slaughter/greet()
 	. = ..()
 	owner.announce_objectives()
-	to_chat(owner, span_warning("You have a powerful alt-attack that slams people backwards that you can activate by right-clicking your target!"))
+	to_chat(owner, span_warning("Você tem um poderoso ataque que bate as pessoas para trás que você pode ativar clicando com o botão direito do mouse no seu alvo!"))
 
 /datum/antagonist/slaughter/forge_objectives()
 	if(summoner)
@@ -54,9 +54,9 @@
 		report += printobjectives(objectives)
 
 	if(consume_count > 0)
-		report += span_greentext("The [name] consumed a total of [consume_count] bodies!")
+		report += span_greentext("O[name]consumiu um total de[consume_count]Corpos!")
 	else
-		report += span_redtext("The [name] did not consume anyone! Shame!!")
+		report += span_redtext("O[name]Não consumiu ninguém! Vergonha!")
 
 	if(isnull(owner.current) || owner.current.stat == DEAD) //demons delete on death but if someone makes like a subtype that doesnt we also check for stat
 		report += "<span class='redtext big'>The [name] was vanquished!</span>"

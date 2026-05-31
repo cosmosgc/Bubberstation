@@ -5,7 +5,7 @@
 
 /obj/machinery/teleport/hub
 	name = "teleporter hub"
-	desc = "It's the hub of a teleporting machine."
+	desc = "É o centro de uma máquina de teletransporte."
 	icon_state = "tele0"
 	base_icon_state = "tele"
 	circuit = /obj/item/circuitboard/machine/teleporter_hub
@@ -33,7 +33,7 @@
 /obj/machinery/teleport/hub/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Success chance is <b>[70 + (accuracy * 10)]%</b>.")
+		. += span_notice("A exibição de status diz:<b>[70 + (accuracy * 10)]%</b>.")
 
 /obj/machinery/teleport/hub/proc/link_power_station()
 	if(power_station)
@@ -47,7 +47,7 @@
 
 /obj/machinery/teleport/hub/Bumped(atom/movable/AM)
 	if(is_centcom_level(z))
-		to_chat(AM, span_warning("You can't use this here!"))
+		to_chat(AM, span_warning("Não pode usar isso aqui!"))
 		return
 	if(is_ready())
 		teleport(AM)
@@ -72,7 +72,7 @@
 		target = com.target_ref.resolve()
 	if (!target)
 		com.target_ref = null
-		visible_message(span_alert("Cannot authenticate locked on coordinates. Please reinstate coordinate matrix."))
+		visible_message(span_alert("Não é possível autenticar as coordenadas. Por favor, restabeleça a matriz de coordenadas."))
 		return
 	if(!ismovable(M))
 		return
@@ -89,7 +89,7 @@
 			if(check_holidays(MOTH_WEEK))
 				species_to_transform = /datum/species/moth
 			if(human.dna && human.dna.species.id != initial(species_to_transform.id))
-				to_chat(M, span_hear("You hear a buzzing in your ears."))
+				to_chat(M, span_hear("Você ouve um zumbido em seus ouvidos."))
 				human.set_species(species_to_transform)
 				human.log_message("was turned into a [initial(species_to_transform.name)] through [src].", LOG_GAME)
 	calibrated = FALSE
@@ -108,7 +108,7 @@
 
 /obj/machinery/teleport/station
 	name = "teleporter station"
-	desc = "The power control station for a bluespace teleporter. Used for toggling power, and can activate a test-fire to prevent malfunctions."
+	desc = "A estação de controle de energia para um teletransportador do espaço azul. Usado para alternar energia, e pode ativar um fogo de teste para evitar falhas."
 	icon_state = "controller"
 	base_icon_state = "controller"
 	circuit = /obj/item/circuitboard/machine/teleporter_station
@@ -132,11 +132,11 @@
 /obj/machinery/teleport/station/examine(mob/user)
 	. = ..()
 	if(!panel_open)
-		. += span_notice("The panel is <i>screwed</i> in, obstructing the linking device and wiring panel.")
+		. += span_notice("O painel é<i>Está ferrado.</i>obstruindo o dispositivo de ligação e o painel de fiação.")
 	else
-		. += span_notice("The <i>linking</i> device is now able to be <i>scanned</i> with a multitool.")
+		. += span_notice("O<i>Ligando</i>dispositivo agora é capaz de ser<i>Escaneado.</i>com uma multitool.")
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: This station can be linked to <b>[efficiency]</b> other station(s).")
+		. += span_notice("A exibição de status diz: Esta estação pode ser ligada a<b>[efficiency]</b>outras estações.")
 
 /obj/machinery/teleport/station/proc/link_console_and_hub()
 	for(var/direction in GLOB.cardinals)
@@ -167,7 +167,7 @@
 
 	if(panel_open)
 		tool.set_buffer(src)
-		balloon_alert(user, "salvo no buffer da multitool")
+		balloon_alert(user, "Salvo nenhum buffer da multitool")
 		return ITEM_INTERACT_SUCCESS
 
 	if(!istype(tool.buffer, /obj/machinery/teleport/station) || tool.buffer == src)
@@ -176,7 +176,7 @@
 	if(linked_stations.len < efficiency)
 		linked_stations.Add(tool.buffer)
 		tool.set_buffer(null)
-		balloon_alert(user, "data uploaded from buffer")
+		balloon_alert(user, "Dados carregados fazem buffer")
 		return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/teleport/station/screwdriver_act(mob/living/user, obj/item/tool)
@@ -193,14 +193,14 @@
 		return
 	if (teleporter_console.target_ref?.resolve())
 		if(teleporter_hub.panel_open || teleporter_hub.machine_stat & (BROKEN|NOPOWER))
-			to_chat(user, span_alert("The teleporter hub isn't responding."))
+			to_chat(user, span_alert("O teletransporte não está respondendo."))
 		else
 			engaged = !engaged
 			use_energy(active_power_usage)
-			to_chat(user, span_notice("Teleporter [engaged ? "" : "dis"]engaged!"))
+			to_chat(user, span_notice("Teletransportador[engaged ? "" : "dis"]Noivo!"))
 	else
 		teleporter_console.target_ref = null
-		to_chat(user, span_alert("No target detected."))
+		to_chat(user, span_alert("Nenhum alvo detectado."))
 		engaged = FALSE
 	teleporter_hub.update_appearance()
 	add_fingerprint(user)

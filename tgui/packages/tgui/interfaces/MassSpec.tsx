@@ -70,7 +70,7 @@ export const MassSpec = (props) => {
           </Dimmer>
         )}
         <Section
-          title="Mass Spectroscopy"
+          title="Espectroscopia de massa"
           buttons={
             <Button
               icon="power-off"
@@ -79,12 +79,12 @@ export const MassSpec = (props) => {
               }
               tooltip={
                 !beaker_1_has_contents
-                  ? 'Missing input reagents!'
+                  ? 'Reagentes de entrada desaparecidos!'
                   : !beaker2
-                    ? 'Missing an output beaker!'
+                    ? 'Faltando um copo de saída!'
                     : eta <= 0
-                      ? 'No work to be done'
-                      : 'Begin purifying'
+                      ? 'Nenhum trabalho a ser feito'
+                      : 'Comece a purificar.'
               }
               tooltipPosition="left"
               onClick={() => act('activate')}
@@ -106,7 +106,7 @@ export const MassSpec = (props) => {
         </Section>
 
         <Section
-          title="Input beaker"
+          title="béquer de entrada"
           buttons={
             beaker1 ? (
               <>
@@ -126,7 +126,7 @@ export const MassSpec = (props) => {
                 }}
                 tooltip={
                   !hasBeakerInHand &&
-                  'You need to hold a container in your hand'
+                  'Você precisa segurar um contêiner em sua mão.'
                 }
                 tooltipPosition="bottom-start"
               >
@@ -145,7 +145,7 @@ export const MassSpec = (props) => {
           )}
         </Section>
         <Section
-          title="Output beaker"
+          title="béquer de saída"
           buttons={
             beaker2 ? (
               <>
@@ -165,7 +165,7 @@ export const MassSpec = (props) => {
                 }}
                 tooltip={
                   !hasBeakerInHand &&
-                  'You need to hold a container in your hand'
+                  'Você precisa segurar um contêiner em sua mão.'
                 }
                 tooltipPosition="bottom-start"
               >

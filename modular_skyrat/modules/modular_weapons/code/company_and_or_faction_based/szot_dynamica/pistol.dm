@@ -3,9 +3,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower
 	name = "\improper Słońce Plasma Projector"
-	desc = "An outdated sidearm rarely seen in use by some members of the CIN. \
-		Uses plasma power packs. \
-		Spews an inaccurate stream of searing plasma out the magnetic barrel so long as it has power and the trigger is pulled."
+	desc = "Uma arma desatualizada raramente vista em uso por alguns membros da CIN. Usa pacotes de plasma. Lança um fluxo impreciso de plasma saindo do barril magnético desde que tenha energia e o gatilho seja puxado."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_32.dmi'
 	icon_state = "slonce"
 
@@ -32,21 +30,12 @@
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower/examine_more(mob/user)
 	. = ..()
 
-	. += "The 'Słońce' started life as an experiment in advancing the field of accelerated \
-		plasma weaponry. Despite the design's obvious shortcomings in terms of accuracy and \
-		range, the CIN combined military command (which we'll call the CMC from now on) took \
-		interest in the weapon as a means to counter Sol's more advanced armor technology. \
-		As it would turn out, the plasma globules created by the weapon were really not \
-		as effective against armor as the CMC had hoped, quite the opposite actually. \
-		What the plasma did do well however was inflict grevious burns upon anyone unfortunate \
-		enough to get hit by it unprotected. For this reason, the 'Słońce' saw frequent use by \
-		army officers and ship crews who needed a backup weapon to incinerate the odd space \
-		pirate or prisoner of war."
+	. += "The 'Słońce' started life as an experiment in advancing the field of accelerated 		plasma weaponry. Despite the design's obvious shortcomings in terms of accuracy and 		range, the CIN combined military command (which we'll call the CMC from now on) took 		interest in the weapon as a means to counter Sol's more advanced armor technology. 		As it would turn out, the plasma globules created by the weapon were really not 		as effective against armor as the CMC had hoped, quite the opposite actually. 		What the plasma did do well however was inflict grevious burns upon anyone unfortunate 		enough to get hit by it unprotected. For this reason, the 'Słońce' saw frequent use by 		army officers and ship crews who needed a backup weapon to incinerate the odd space 		pirate or prisoner of war."
 
 	return .
 
@@ -55,9 +44,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman
 	name = "\improper Gwiazda Plasma Sharpshooter"
-	desc = "An outdated sidearm rarely seen in use by some members of the CIN. \
-		Uses plasma power packs. \
-		Fires relatively accurate globs of searing plasma."
+	desc = "Uma arma desatualizada raramente vista em uso por alguns membros da CIN. Usa pacotes de plasma. Incêndios de níveis relativamente precisos de plasma."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_32.dmi'
 	icon_state = "gwiazda"
 
@@ -92,18 +79,12 @@
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman/examine(mob/user, overclocking)
 	. = ..()
 	if(overclocking)
-		. += span_notice("The weapon is glowing red and steaming!")
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+		. += span_notice("A arma está brilhando vermelho e vaporizando!")
+	. += span_notice("Você pode.<b>Examine mais.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman/examine_more(mob/user)
 	. = ..()
-	. += "The 'Gwiazda' is a further refinement of the 'Słońce' design. with improved \
-		energy cycling, magnetic launchers built to higher precision, and an overall more \
-		ergonomic design. While it still fails to perform against armor, the weapon is \
-		significantly more accurate and higher power, at expense of a much lower firerate. \
-		Opinions on this weapon within military service were highly mixed, with many preferring \
-		the sheer stopping power a spray of plasma could produce, with others loving the new ability \
-		to hit something in front of you for once."
+	. += "The 'Gwiazda' is a further refinement of the 'Słońce' design. with improved 		energy cycling, magnetic launchers built to higher precision, and an overall more 		ergonomic design. While it still fails to perform against armor, the weapon is 		significantly more accurate and higher power, at expense of a much lower firerate. 		Opinions on this weapon within military service were highly mixed, with many preferring 		the sheer stopping power a spray of plasma could produce, with others loving the new ability 		to hit something in front of you for once."
 
 	return .
 
@@ -188,7 +169,7 @@
 	playsound(src, 'modular_zubbers/sound/weapons/plasma_explosion.ogg', 100, FALSE, 20, , , , TRUE)
 	for(var/mob/living/carbon/M in orange(20, src))
 		if(!HAS_TRAIT(M, TRAIT_DEAF))
-			to_chat(M, span_warning("You hear a distant pulse of energy, as if a miniature reactor blasting out a shockwave from afar..."))
+			to_chat(M, span_warning("Você ouve um pulso de energia distante, como se um reator miniatura explodindo uma onda de choque de longe..."))
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman/process(seconds_per_tick)
 	var/mob/living/carbon/wielder = ismob(loc) ? loc : null
@@ -199,7 +180,7 @@
 		return
 	if(wielder.is_holding(src))
 		wielder.apply_damage(2.5, BURN, affecting)
-		to_chat(wielder, span_warning("[src] burns your hand, it's too hot!"))
+		to_chat(wielder, span_warning("[src]Queima sua mão, está muito quente!"))
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman/emp_act(severity)
 	. = ..()
@@ -213,7 +194,7 @@
 
 /obj/item/gun/ballistic/revolver/shotgun_revolver
 	name = "\improper Bóbr 12 GA revolver"
-	desc = "An outdated sidearm rarely seen in use by some members of the CIN. A revolver type design with a four shell cylinder. That's right, shell, this one shoots twelve guage."
+	desc = "Uma arma desatualizada raramente vista em uso por alguns membros da CIN. Um tipo de revólver com quatro cilindros. Isso mesmo, shell, este atira doze guage."
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rev12ga
 	recoil = SAWN_OFF_RECOIL
 	weapon_weight = WEAPON_MEDIUM
@@ -228,12 +209,6 @@
 /obj/item/gun/ballistic/revolver/shotgun_revolver/examine_more(mob/user)
 	. = ..()
 
-	. += "The 'Bóbr' started development as a limited run sporting weapon before \
-		the military took interest. The market quickly changed from sport shooting \
-		targets, to sport shooting TerraGov strike teams once the conflict broke out. \
-		This pattern is different from the original civilian version, with a military \
-		standard pistol grip and weather resistant finish. While the 'Bóbr' was not \
-		a weapon standard issued to every CIN soldier, it was available for relatively \
-		cheap, and thus became rather popular among the ranks."
+	. += "The 'Bóbr' started development as a limited run sporting weapon before 		the military took interest. The market quickly changed from sport shooting 		targets, to sport shooting TerraGov strike teams once the conflict broke out. 		This pattern is different from the original civilian version, with a military 		standard pistol grip and weather resistant finish. While the 'Bóbr' was not 		a weapon standard issued to every CIN soldier, it was available for relatively 		cheap, and thus became rather popular among the ranks."
 
 	return .

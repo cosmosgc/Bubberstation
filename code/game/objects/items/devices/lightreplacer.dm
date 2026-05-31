@@ -33,7 +33,7 @@
 
 /obj/item/lightreplacer
 	name = "light replacer"
-	desc = "A device to automatically replace lights. Refill with broken or working light bulbs, or sheets of glass."
+	desc = "Um dispositivo para substituir automaticamente as luzes. Reencher com lâmpadas quebradas ou funcionando, ou folhas de vidro."
 	icon = 'icons/obj/service/janitor.dmi'
 	icon_state = "lightreplacer"
 	inhand_icon_state = "electronic"
@@ -86,17 +86,17 @@
 		var/obj/item/stack/sheet/glass/glass_to_insert = insert
 		if(glass_to_insert.use(LIGHTBULB_COST))
 			add_uses(GLASS_SHEET_USES)
-			user.balloon_alert(user, "glass inserted")
+			user.balloon_alert(user, "vidro inserido.")
 		else
-			user.balloon_alert(user, "need [LIGHTBULB_COST] glass sheets!")
+			user.balloon_alert(user, "Necessidade[LIGHTBULB_COST]Folhas de vidro!")
 		return TRUE
 
 	if(insert.type == /obj/item/shard) //we don't want to insert plasma, titanium or other types of shards
 		if(!user.temporarilyRemoveItemFromInventory(insert))
-			user.balloon_alert(user, "stuck in your hand!")
+			user.balloon_alert(user, "Preso em sua mão!")
 			return TRUE
 		if(!add_shard(user)) //add_shard will display a message if it created a bulb from the shard so only display message when that does not happen
-			user.balloon_alert(user, "shard inserted")
+			user.balloon_alert(user, "Shard inserido")
 		qdel(insert)
 		return TRUE
 
@@ -104,7 +104,7 @@
 		var/obj/item/light/light_to_insert = insert
 		//remove from player's hand
 		if(!user.temporarilyRemoveItemFromInventory(light_to_insert))
-			user.balloon_alert(user, "stuck in your hand!")
+			user.balloon_alert(user, "Preso em sua mão!")
 			return TRUE
 
 		//insert light. display message only if adding a shard did not create a new bulb else the messages will conflict
@@ -114,7 +114,7 @@
 		else if(add_shard(user))
 			display_msg = FALSE
 		if(display_msg)
-			user.balloon_alert(user, "light inserted")
+			user.balloon_alert(user, "Luz inserida")
 		qdel(light_to_insert)
 
 		return TRUE
@@ -156,10 +156,10 @@
 			if(uses == max_uses)
 				user.balloon_alert(user, "já cheio!")
 			else
-				user.balloon_alert(user, "nothing usable in [storage_to_empty]!")
+				user.balloon_alert(user, "Nada utilizável em[storage_to_empty]!")
 			return TRUE
 
-		user.balloon_alert(user, "lights inserted")
+		user.balloon_alert(user, "Luzes inseridas.")
 		return TRUE
 
 /obj/item/lightreplacer/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -168,7 +168,7 @@
 	obj_flags |= EMAGGED
 	playsound(loc, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	update_appearance()
-	to_chat(user, span_warning("[src]'s lights are now filled with plasma! Be careful to only install them in disabled light fixtures, lest they explode!"))
+	to_chat(user, span_warning("[src]As luzes estão cheias de plasma! Tenha cuidado para apenas instalá-los em dispositivos de luz desativados, para que não explodam!"))
 	return FALSE
 
 /obj/item/lightreplacer/update_name(updates)
@@ -205,7 +205,7 @@
 		replace_light(target, user)
 		on_a_light = TRUE
 	if(!on_a_light) //So we don't give a balloon alert when we just used replace_light
-		user.balloon_alert(user, "[uses] lights, [bulb_shards]/[BULB_SHARDS_REQUIRED] fragments")
+		user.balloon_alert(user, "[uses]Luzes,[bulb_shards]/[BULB_SHARDS_REQUIRED]Fragmentos")
 
 /**
  * attempts to fix lights, flood lights & lights on a turf
@@ -230,7 +230,7 @@
 			if(bluespace_toggle)
 				user.Beam(target, icon_state = "rped_upgrade", time = 0.5 SECONDS)
 				playsound(src, 'sound/items/pshoom/pshoom.ogg', 40, 1)
-			to_chat(user, span_notice("You finish \the [frame] with a light tube."))
+			to_chat(user, span_notice("Você termina.\the [frame]com um tubo de luz."))
 			qdel(frame)
 		return TRUE
 
@@ -269,7 +269,7 @@
 	if(bulb_shards >= BULB_SHARDS_REQUIRED)
 		bulb_shards = 0
 		add_uses(1)
-		to_chat(user, span_notice("\The [src] fabricates a new bulb from the broken glass it has stored. [status_string()]"))
+		to_chat(user, span_notice("\The [src]Fabrica uma nova lâmpada do vidro quebrado que armazenou.[status_string()]"))
 		playsound(src.loc, 'sound/machines/ding.ogg', 50, TRUE)
 		return TRUE
 	return FALSE
@@ -289,12 +289,12 @@
 		return FALSE
 	//If the light source is ok then what are we doing here
 	if(target.status == LIGHT_OK)
-		user.balloon_alert(user, "light already installed!")
+		user.balloon_alert(user, "Luz já instalada!")
 		return FALSE
 	//Were all out
 	if(!Use(user))
 		//This balloon alert text is a little redundant, but I want to avoid a new player "yeah i know the light is empty" moment
-		user.balloon_alert(user, "light replacer empty!")
+		user.balloon_alert(user, "Substituidor de luz vazio!")
 		return FALSE
 
 	//remove any broken light on the fixture & add it as a shard
@@ -319,7 +319,7 @@
 
 /obj/item/lightreplacer/advanced
 	name = "high capacity light replacer"
-	desc = "A higher capacity light replacer. Refill with broken or working lightbulbs, or sheets of glass."
+	desc = "Um substituto de luz de maior capacidade. Reencher com lâmpadas quebradas ou trabalhando, ou folhas de vidro."
 	icon_state = "lightreplacer_high"
 	max_uses = 50
 
@@ -329,7 +329,7 @@
 
 /obj/item/lightreplacer/blue
 	name = "bluespace light replacer"
-	desc = "A modified light replacer that zaps lights into place. Refill with broken or working lightbulbs, or sheets of glass."
+	desc = "Um substituto de luz modificado que acende luzes no lugar. Reencher com lâmpadas quebradas ou trabalhando, ou folhas de vidro."
 	icon_state = "lightreplacer_blue"
 	bluespace_toggle = TRUE
 	actions_types = list(/datum/action/item_action/lightreplacer_scan)
@@ -341,7 +341,7 @@
 
 /obj/item/lightreplacer/blue/ui_action_click(mob/user, actiontype)
 	if(!COOLDOWN_FINISHED(src, lightreplacer_spot_cooldown))
-		balloon_alert(user, "em recarga!")
+		balloon_alert(user, "Em recarga!")
 		return
 	COOLDOWN_START(src, lightreplacer_spot_cooldown, BLIGHTREPLACER_SPOT_COOLDOWN)
 	lightreplacer_scan()
@@ -357,7 +357,7 @@
 
 /datum/action/item_action/lightreplacer_scan
 	name = "Scan for broken lamps"
-	desc = "Scans the surrounding area for fixtures with broken light bulbs and marks them."
+	desc = "Escaneia a área ao redor procurando luminárias com lâmpadas quebradas e as marca."
 
 /obj/effect/temp_visual/blue_firefly
 	name = "bluespace firefly"

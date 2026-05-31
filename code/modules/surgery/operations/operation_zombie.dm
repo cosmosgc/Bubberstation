@@ -1,8 +1,8 @@
 /datum/surgery_operation/limb/bionecrosis
 	name = "induce bionecrosis"
 	rnd_name = "Bionecroplasty (Necrotic Revival)"
-	desc = "Inject reagents that stimulate the growth of a Romerol tumor inside the patient's brain."
-	rnd_desc = "An experimental procedure which induces the growth of a Romerol tumor inside the patient's brain."
+	desc = "Injete reagentes que estimulam o crescimento de um tumor de Romerol dentro do cérebro do paciente."
+	rnd_desc = "Um procedimento experimental que induz o crescimento de um tumor de Romerol dentro do cérebro do paciente."
 	implements = list(
 		/obj/item/reagent_containers/syringe = 1,
 		/obj/item/pen = 3.33,
@@ -51,9 +51,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin to grow a romerol tumor in [limb.owner]'s brain..."),
-		span_notice("[surgeon] begins to tinker with [limb.owner]'s brain..."),
-		span_notice("[surgeon] begins to perform surgery on [limb.owner]'s brain."),
+		span_notice("Você começa a crescer um tumor de romerol em[limb.owner]O cérebro..."),
+		span_notice("[surgeon]Começa a mexer com[limb.owner]O cérebro..."),
+		span_notice("[surgeon]Começa a operar em[limb.owner]É o cérebro."),
 	)
 	display_pain(limb.owner, "Your head pounds with unimaginable pain!") // Same message as other brain surgeries
 
@@ -61,9 +61,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You succeed in growing a romerol tumor in [limb.owner]'s brain."),
-		span_notice("[surgeon] successfully grows a romerol tumor in [limb.owner]'s brain!"),
-		span_notice("[surgeon] completes the surgery on [limb.owner]'s brain."),
+		span_notice("Você tem sucesso em desenvolver um tumor de romerol[limb.owner]É o cérebro."),
+		span_notice("[surgeon]Com sucesso cresce um tumor de romerol em[limb.owner]Cérebro!"),
+		span_notice("[surgeon]completa a cirurgia em[limb.owner]É o cérebro."),
 	)
 	display_pain(limb.owner, "Your head goes totally numb for a moment, the pain is overwhelming!")
 	if(locate(/obj/item/organ/zombie_infection) in limb) // they got another one mid surgery? whatever

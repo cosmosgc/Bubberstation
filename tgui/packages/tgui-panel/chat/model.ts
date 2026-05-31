@@ -23,7 +23,7 @@ export function createPage(obj: Record<string, unknown> = {}): Page {
   return {
     isMain: false,
     id: createUuid(),
-    name: 'New Tab',
+    name: 'Nova Página',
     acceptedTypes,
     unreadCount: 0,
     hideUnreadCount: false,

@@ -9,22 +9,22 @@
 	var/list/mob/living/carbon/human/broadcasted_mobs = list()
 
 /obj/item/organ/heart/gland/mindshock/activate()
-	to_chat(owner, span_notice("You get a headache."))
+	to_chat(owner, span_notice("Você fica com dor de cabeça."))
 
 	var/turf/owner_turf = get_turf(owner)
 	for(var/mob/living/carbon/target in orange(4,owner_turf))
 		if(target == owner)
 			continue
 		if(HAS_MIND_TRAIT(target, TRAIT_MINDSHIELD))
-			to_chat(target, span_notice("You hear a faint hum fill your ears, which quickly dies down."))
+			to_chat(target, span_notice("Você ouve um zumbido fraco encher seus ouvidos, que rapidamente morre."))
 			continue
 
 		switch(pick(1,3))
 			if(1)
-				to_chat(target, span_userdanger("You hear a loud buzz in your head, silencing your thoughts!"))
+				to_chat(target, span_userdanger("Você ouve um zumbido alto em sua cabeça, silenciando seus pensamentos!"))
 				target.Stun(50)
 			if(2)
-				to_chat(target, span_warning("You hear an annoying buzz in your head."))
+				to_chat(target, span_warning("Você ouve um zumbido irritante na sua cabeça."))
 				target.adjust_confusion(15 SECONDS)
 				target.adjust_organ_loss(ORGAN_SLOT_BRAIN, 10, 160)
 			if(3)
@@ -42,11 +42,11 @@
 			continue
 
 		if(HAS_MIND_TRAIT(target_human, TRAIT_UNCONVERTABLE))
-			to_chat(target_human, span_notice("You hear a low drone as something foreign attempts to enter your mind, but the noise fades after a few moments."))
+			to_chat(target_human, span_notice("Você ouve um drone baixo como algo estrangeiro tenta entrar em sua mente, mas o barulho desaparece após alguns momentos."))
 			continue
 
 		broadcasted_mobs += target_human
-		to_chat(target_human, span_userdanger("You suddenly feel an irresistible compulsion to follow an order..."))
+		to_chat(target_human, span_userdanger("Você de repente sente uma compulsão irresistível para seguir uma ordem..."))
 		to_chat(target_human, span_mind_control("[command]"))
 
 		message_admins("[key_name(user)] broadcasted an abductor mind control message from [key_name(owner)] to [key_name(target_human)]: [command]")
@@ -67,7 +67,7 @@
 		return FALSE
 	for(var/target_mob in broadcasted_mobs)
 		var/mob/living/carbon/human/target_human = target_mob
-		to_chat(target_human, span_userdanger("You feel the compulsion fade, and you <i>completely forget</i> about your previous orders."))
+		to_chat(target_human, span_userdanger("Você sente a compulsão desaparecer, e você<i>Esquecer completamente</i>sobre suas ordens anteriores."))
 		target_human.clear_alert(ALERT_MIND_CONTROL)
 	active_mind_control = FALSE
 	return TRUE

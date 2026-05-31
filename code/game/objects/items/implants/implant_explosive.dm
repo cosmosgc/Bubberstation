@@ -12,7 +12,7 @@
 
 /obj/item/implant/explosive
 	name = "microbomb implant"
-	desc = "And boom goes the weasel."
+	desc = "E boom vai a doninha."
 	icon_state = "explosive"
 	actions_types = list(/datum/action/item_action/explosive_implant) //Explosive implant action is always available.
 	///Whether the implant's explosion sequence has been activated or not
@@ -40,15 +40,9 @@
 	///Do we tell people when they activated it?
 	var/announce_activation = TRUE
 
-	implant_info = "Activates upon death or encoded signal. Triggers an electrically-detonated microexplosive. \
-		Can sync with other microbombs to increase explosive yield, but this makes detonation non-instant."
+	implant_info = "Activates upon death or encoded signal. Triggers an electrically-detonated microexplosive. 		Can sync with other microbombs to increase explosive yield, but this makes detonation non-instant."
 
-	implant_lore = "The Robust Corp RX-78 Employee Management Implant is an electrically-detonated microexplosive, \
-		designed to motivate employees (for organizations with questionable ethics) and/or prevent recovery of \
-		equipment and/or evidence (for non-state actors). \
-		The microexplosive arms upon cessation of vital signs or manual activation. \
-		Upon arming, attempts to sync with any other detected microexplosives for increased detonation yield; \
-		the handshake process between microbombs, however, takes a bit, and only gets longer as more microbombs are detected."
+	implant_lore = "The Robust Corp RX-78 Employee Management Implant is an electrically-detonated microexplosive, 		designed to motivate employees (for organizations with questionable ethics) and/or prevent recovery of 		equipment and/or evidence (for non-state actors). 		The microexplosive arms upon cessation of vital signs or manual activation. 		Upon arming, attempts to sync with any other detected microexplosives for increased detonation yield; 		the handshake process between microbombs, however, takes a bit, and only gets longer as more microbombs are detected."
 
 /obj/item/implant/explosive/proc/on_death(datum/source, gibbed)
 	SIGNAL_HANDLER
@@ -67,14 +61,14 @@
 		if(popup)
 			return FALSE
 		popup = TRUE
-		var/response = tgui_alert(imp_in, "Are you sure you want to activate your [name]? This will cause you to explode!", "[name] Confirmation", list("Yes", "No"))
+		var/response = tgui_alert(imp_in, "Tem certeza que quer ativar seu[name]Isso fará você explodir!", "[name] Confirmation", list("Yes", "No"))
 		popup = FALSE
 		if(response != "Yes")
 			return FALSE
 	if(cause == "death" && HAS_TRAIT(imp_in, TRAIT_PREVENT_IMPLANT_AUTO_EXPLOSION))
 		return FALSE
 	if(announce_activation)
-		to_chat(imp_in, span_notice("You activate your [name]."))
+		to_chat(imp_in, span_notice("Você ativa o seu[name]."))
 	active = TRUE
 	var/turf/boomturf = get_turf(imp_in)
 	message_admins("[ADMIN_LOOKUPFLW(imp_in)] has activated their [name] at [ADMIN_VERBOSEJMP(boomturf)], with cause of [cause].")
@@ -89,7 +83,7 @@
 		if(istype(target_implant, /obj/item/implant/explosive)) //we don't use our own type here, because macrobombs inherit this proc and need to be able to upgrade microbombs
 			var/obj/item/implant/explosive/other_implant = target_implant
 			if(other_implant.master_implant && master_implant) //we cant have two master implants at once
-				target.balloon_alert(user, "cannot fit implant!")
+				target.balloon_alert(user, "Não cabem implantes!")
 				return FALSE
 			if(master_implant)
 				merge_implants(src, other_implant)
@@ -124,14 +118,14 @@
  */
 /obj/item/implant/explosive/proc/timed_explosion()
 	if (isnull(imp_in))
-		visible_message(span_warning("[src] starts beeping ominously!"))
+		visible_message(span_warning("[src]Começa a apitar de forma ameaçadora!"))
 	else
-		imp_in.visible_message(span_warning("[imp_in] starts beeping ominously!"))
+		imp_in.visible_message(span_warning("[imp_in]Começa a apitar de forma ameaçadora!"))
 		if(notify_ghosts)
 			notify_ghosts(
 				"[imp_in.real_name] is about to detonate their explosive implant!",
 				source = src,
-				header = "Tick Tick Tick...",
+				header = "Tique-taque Tique-taque...",
 				notify_flags = NOTIFY_CATEGORY_NOFLASH,
 				ghost_sound = 'sound/machines/warning-buzzer.ogg',
 				notify_volume = 75,
@@ -141,7 +135,7 @@
 	if(!panic_beep_sound)
 		sleep(delay * 0.25)
 	if(imp_in && !imp_in.stat && !no_paralyze)
-		imp_in.visible_message(span_warning("[imp_in] doubles over in pain!"))
+		imp_in.visible_message(span_warning("[imp_in]Dobra com dor!"))
 		imp_in.Paralyze(14 SECONDS)
 
 	if(!panic_beep_sound)
@@ -176,39 +170,26 @@
 ///Macrobomb has the strength and delay of 10 microbombs
 /obj/item/implant/explosive/macro
 	name = "macrobomb implant"
-	desc = "And boom goes the weasel. And everything else nearby."
+	desc = "E boom vai a doninha. E todo o resto por peso."
 	icon_state = "explosive"
 	delay = 10 * MICROBOMB_DELAY
 	explosion_light = 10 * MICROBOMB_EXPLOSION_LIGHT
 	explosion_heavy = 10 * MICROBOMB_EXPLOSION_HEAVY
 	explosion_devastate = 10 * MICROBOMB_EXPLOSION_DEVASTATE
-	implant_lore = "The Robust Corp RX-78/M Employee Management Implant is an electrically-detonated explosive, \
-		designed to maximize the prevention of recovery of equipment and/or evidence by virtue of being ten microbombs all connected to one implant. \
-		Unfortunately, the handshake sequence between microbombs remains an issue. \
-		The microexplosives arm upon cessation of vital signs or manual activation. \
-		Upon arming, attempts to sync with any other detected microexplosives for increased detonation yield; \
-		the handshake process between microbombs, however, takes a bit, and only gets longer as more microbombs are detected."
+	implant_lore = "The Robust Corp RX-78/M Employee Management Implant is an electrically-detonated explosive, 		designed to maximize the prevention of recovery of equipment and/or evidence by virtue of being ten microbombs all connected to one implant. 		Unfortunately, the handshake sequence between microbombs remains an issue. 		The microexplosives arm upon cessation of vital signs or manual activation. 		Upon arming, attempts to sync with any other detected microexplosives for increased detonation yield; 		the handshake process between microbombs, however, takes a bit, and only gets longer as more microbombs are detected."
 
 ///Microbomb which prevents you from going into critical condition but also explodes after a timer when you reach critical condition in the first place.
 /obj/item/implant/explosive/deniability
 	name = "tactical deniability implant"
-	desc = "An enhanced version of the microbomb that directly plugs into the brain. No downsides, promise!"
+	desc = "Uma versão melhorada da microbomba que se conecta diretamente ao cérebro. Sem desvantagens, prometo!"
 	delay = 10 SECONDS
 	panic_beep_sound = TRUE
 	no_paralyze = TRUE
 	master_implant = TRUE
 
-	implant_info = parent_type::implant_info + "While implanted, prevents unconsciousness from excessive trauma. \
-		Does not prevent death from excessive trauma, nor being stunned. \
-		Also delays detonation of other implanted microbombs by ten seconds."
+	implant_info = parent_type::implant_info + "While implanted, prevents unconsciousness from excessive trauma. 		Does not prevent death from excessive trauma, nor being stunned. 		Also delays detonation of other implanted microbombs by ten seconds."
 
-	implant_lore = "The Robust Corp RX-78/T Tactical Deniability Implant is an electrically-detonated microexplosive and \
-		paired neural override lattice, designed to prevent recovery of equipment and/or evidence for non-state actors, \
-		and prevent the reception of pain signals upon excessive trauma (colloquially, \"entering critical condition\"). \
-		The microexplosive arms upon cessation of vital signs or manual activation. \
-		Upon arming, attempts to sync with any other detected microexplosives for increased detonation yield; \
-		the handshake process between microbombs, however, takes a bit, and only gets longer as more microbombs are detected. \
-		The tactical deniability implant introduces a ten-second delay by itself in order to allow operators one last hurrah before death."
+	implant_lore = "The Robust Corp RX-78/T Tactical Deniability Implant is an electrically-detonated microexplosive and 		paired neural override lattice, designed to prevent recovery of equipment and/or evidence for non-state actors, 		and prevent the reception of pain signals upon excessive trauma (colloquially, \"entering critical condition\"). 		The microexplosive arms upon cessation of vital signs or manual activation. 		Upon arming, attempts to sync with any other detected microexplosives for increased detonation yield; 		the handshake process between microbombs, however, takes a bit, and only gets longer as more microbombs are detected. 		The tactical deniability implant introduces a ten-second delay by itself in order to allow operators one last hurrah before death."
 
 /obj/item/implant/explosive/deniability/implant(mob/living/target, mob/user, silent = FALSE, force = FALSE)
 	. = ..()
@@ -241,7 +222,7 @@
 
 /obj/item/implantcase/explosive
 	name = "implant case - 'Explosive'"
-	desc = "A glass case containing an explosive implant."
+	desc = "Uma caixa de vidro contendo um implante explosivo."
 	imp_type = /obj/item/implant/explosive
 
 /obj/item/implanter/explosive_macro

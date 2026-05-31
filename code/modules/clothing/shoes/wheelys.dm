@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/wheelys
 	name = "Wheely-Heels"
-	desc = "Uses patented retractable wheel technology. Never sacrifice speed for style - not that this provides much of either." //Thanks Fel
+	desc = "Usa tecnologia de roda retrátil patenteada. Nunca sacrifique velocidade por estilo. Não que isso forneça muito de ambos." //Thanks Fel
 	icon = 'icons/map_icons/clothing/shoes.dmi'
 	worn_icon = 'icons/mob/large-worn-icons/64x64/feet.dmi'
 	icon_state = "/obj/item/clothing/shoes/wheelys"
@@ -30,7 +30,7 @@
 	if(!isliving(user))
 		return
 	if(!istype(user.get_item_by_slot(ITEM_SLOT_FEET), /obj/item/clothing/shoes/wheelys))
-		balloon_alert(user, "must be worn!")
+		balloon_alert(user, "Deve ser usado!")
 		return
 	if(!(wheels.is_occupant(user)))
 		wheelToggle = FALSE
@@ -63,7 +63,7 @@
 
 /obj/item/clothing/shoes/wheelys/rollerskates
 	name = "roller skates"
-	desc = "An EightO brand pair of roller skates. The wheels are retractable, though're quite bulky to walk in."
+	desc = "Um par de patins da marca 80. As rodas são retráteis, embora sejam bastante volumosas para entrar."
 	icon = 'icons/obj/clothing/shoes.dmi'
 	icon_state = "rollerskates"
 	post_init_icon_state = null
@@ -78,7 +78,7 @@
 
 /obj/item/clothing/shoes/wheelys/skishoes
 	name = "ski shoes"
-	desc = "A pair of shoes equipped with foldable skis! Very handy to move in snowy environments unimpeded."
+	desc = "Um par de sapatos equipados com esquis dobráveis! Muito útil para se mover em ambientes nevados sem obstáculos."
 	icon = 'icons/obj/clothing/shoes.dmi'
 	icon_state = "skishoes"
 	post_init_icon_state = null

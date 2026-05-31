@@ -70,11 +70,11 @@
 		return
 
 	if(!Adjacent(attack_target))
-		to_chat(src, span_warning("You are too far away to use your slam attack on [attack_target]!"))
+		to_chat(src, span_warning("Você está muito longe para usar seu ataque contra[attack_target]!"))
 		return
 
 	if(!COOLDOWN_FINISHED(src, slam_cooldown))
-		to_chat(src, span_warning("Your slam ability is still on cooldown!"))
+		to_chat(src, span_warning("Sua habilidade de bater ainda está em esfriamento!"))
 		return
 
 	face_atom(attack_target)
@@ -83,11 +83,11 @@
 	victim.take_bodypart_damage(brute = 20, wound_bonus = wound_bonus) // don't worry, there's more punishment when they hit something
 
 	visible_message(
-		span_danger("[src] slams into [victim] with monstrous strength!"),
-		span_danger("You slam into [victim] with monstrous strength!"),
+		span_danger("[src]Bate em[victim]com força monstruosa!"),
+		span_danger("Você bate em[victim]com força monstruosa!"),
 		ignored_mobs = victim,
 	)
-	to_chat(victim, span_userdanger("[src] slams into you with monstrous strength, sending you flying like a ragdoll!"))
+	to_chat(victim, span_userdanger("[src]Bate em você com força monstruosa, mandando você voar como uma boneca!"))
 
 	var/turf/yeet_target = get_edge_target_turf(victim, dir)
 	victim.throw_at(yeet_target, 10, 5, src)
@@ -120,7 +120,7 @@
 /mob/living/basic/demon/slaughter/laughter
 	name = "laughter demon"
 	real_name = "laughter demon"
-	desc = "A large, adorable creature covered in armor with pink bows."
+	desc = "Uma criatura grande e adorável coberta de armadura com arcos rosa."
 	speak_emote = list("giggles", "titters", "chuckles", "guffaws", "laughs")
 	response_help_continuous = "hugs"
 	attack_verb_continuous = "wildly tickles"
@@ -132,7 +132,7 @@
 
 	icon_state = "bow_demon"
 	icon_living = "bow_demon"
-	death_message = "fades out, as all of its friends are released from its prison of hugs."
+	death_message = "desaparece, como todos os seus amigos são libertados de sua prisão de abraços."
 
 	antag_type = /datum/antagonist/slaughter/laughter
 	crawl_type = /datum/action/cooldown/spell/jaunt/bloodcrawl/slaughter_demon/funny

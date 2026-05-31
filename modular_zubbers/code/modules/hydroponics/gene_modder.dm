@@ -1,6 +1,6 @@
 /obj/machinery/plantgenes
 	name = "plant DNA manipulator"
-	desc = "An advanced device designed to manipulate plant genetic makeup."
+	desc = "Um dispositivo avançado projetado para manipular maquiagem genética de plantas."
 	icon =  'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "dnamod"
 	base_icon_state = "dnamod"
@@ -87,23 +87,23 @@
 
 	if(istype(I, /obj/item/seeds))
 		if (operation)
-			to_chat(user, "<span class='notice'>Please complete current operation.</span>")
+			to_chat(user, "<span class='notice'>Por favor, complete a operação atual.</span>")
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
 		eject_seed()
 		insert_seed(I)
-		to_chat(user, "<span class='notice'>You add [I] to the machine.</span>")
+		to_chat(user, "<span class='notice'>Você acrescenta[I]Para a máquina.</span>")
 		interact(user)
 	else if(istype(I, /obj/item/disk/computer/plantgene))
 		if (operation)
-			to_chat(user, "<span class='notice'>Please complete current operation.</span>")
+			to_chat(user, "<span class='notice'>Por favor, complete a operação atual.</span>")
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
 		eject_disk()
 		disk = I
-		to_chat(user, "<span class='notice'>You add [I] to the machine.</span>")
+		to_chat(user, "<span class='notice'>Você acrescenta[I]Para a máquina.</span>")
 		interact(user)
 	else
 		..()
@@ -272,7 +272,7 @@
 				return
 			eject_seed()
 			insert_seed(I)
-			to_chat(usr, "<span class='notice'>You add [I] to the machine.</span>")
+			to_chat(usr, "<span class='notice'>Você acrescenta[I]Para a máquina.</span>")
 		else
 			eject_seed()
 	else if(href_list["eject_disk"] && !operation)
@@ -282,7 +282,7 @@
 				return
 			eject_disk()
 			disk = I
-			to_chat(usr, "<span class='notice'>You add [I] to the machine.</span>")
+			to_chat(usr, "<span class='notice'>Você acrescenta[I]Para a máquina.</span>")
 		else
 			eject_disk()
 	else if(href_list["op"] == "insert" && disk && disk.gene && seed)
@@ -336,7 +336,7 @@
 							else if(istype(G, /datum/plant_gene/core/weed_chance))
 								gene.value = max(gene.value, min_wchance)
 						disk.gene = gene
-						to_chat(usr, "<span class='notice'>You add [gene] to the disk.</span>")
+						to_chat(usr, "<span class='notice'>Você acrescenta[gene]Para o disco.</span>")
 						disk.update_disk_name()
 						qdel(seed)
 						seed = null
@@ -439,7 +439,7 @@
 
 /obj/item/disk/computer/plantgene
 	name = "plant data disk"
-	desc = "A disk for storing plant genetic data."
+	desc = "Um disco para armazenar dados genéticos de plantas."
 	icon_state = "datadisk4"
 	custom_materials = list(/datum/material/iron=30, /datum/material/glass=10)
 	var/datum/plant_gene/gene
@@ -460,7 +460,7 @@
 
 /obj/item/disk/computer/plantgene/attack_self(mob/user)
 	read_only = !read_only
-	to_chat(user, "<span class='notice'>You flip the write-protect tab to [src.read_only ? "protected" : "unprotected"].</span>")
+	to_chat(user, "<span class='notice'>Você vira a aba de proteção de escrita para[src.read_only ? "protected" : "unprotected"].</span>")
 
 /obj/item/disk/computer/plantgene/examine(mob/user)
 	. = ..()

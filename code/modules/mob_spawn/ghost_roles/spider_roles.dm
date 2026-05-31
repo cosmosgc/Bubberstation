@@ -1,7 +1,7 @@
 /obj/structure/spider/eggcluster
 	name = "egg cluster"
 	icon = 'icons/effects/effects.dmi'
-	desc = "There's something alive in there, and sooner or later it's going to find its way out."
+	desc = "Há algo vivo lá dentro, e cedo ou tarde ele vai encontrar sua saída."
 	icon_state = "eggs"
 	/// Mob spawner handling the actual spawn of the spider
 	var/obj/effect/mob_spawn/ghost_role/spider/spawner
@@ -27,15 +27,15 @@
 	if(istype(user, /mob/living/basic/spider/giant/midwife))
 		switch(spawner.amount_grown)
 			if(0 to 24)
-				. += span_info("These eggs look shrunken and dormant.")
+				. += span_info("Esses óvos paresm encolhidos e adormecidos.")
 			if(25 to 49)
-				. += span_info("These eggs have begun to move, pulsating, gestating...")
+				. += span_info("Esses ovos começaram a se mover, pulsando, gestando...")
 			if(50 to 74)
-				. += span_info("These eggs are rippling, unseen life stirring beneath its skin.")
+				. += span_info("Estes ovos estão ondulando, vida invisível mexendo sob sua pele.")
 			if(75 to 99)
-				. += span_info("These eggs swell with unseen life. They are almost ready to burst.")
+				. += span_info("Esses ovos incham com vida invisível. Estão quase prontos para explodir.")
 			if(100 to INFINITY)
-				. += span_info("These eggs are plump, teeming with life. Any moment now...")
+				. += span_info("Esses ovos são gordos, cheios de vida. A qualquer momento...")
 
 /obj/structure/spider/eggcluster/abnormal
 	name = "abnormal egg cluster"
@@ -55,15 +55,15 @@
 
 /obj/effect/mob_spawn/ghost_role/spider
 	name = "egg cluster"
-	desc = "They seem to pulse slightly with an inner life."
+	desc = "Eles parecem pulsar ligeiramente com uma vida interior."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "eggs"
 	move_resist = MOVE_FORCE_NORMAL
 	density = FALSE
 	show_flavor = FALSE
-	you_are_text = "You are a spider."
-	flavour_text = "For the hive! Choose a spider and fulfill your role to take over the station... if that is within your directives, of course."
-	important_text = "Follow your directives at all costs."
+	you_are_text = "Você é uma aranha."
+	flavour_text = "Pela colmeia! Escolha uma aranha e cumpra seu papel para assumir a estação... se isso estiver dentro de suas diretrizes, é claro."
+	important_text = "Siga suas dirige um custo total."
 	faction = list(FACTION_SPIDER)
 	spawner_job_path = /datum/job/spider
 	role_ban = ROLE_ALIEN
@@ -114,7 +114,7 @@
 		notify_ghosts(
 			"[src] is ready to hatch!",
 			source = src,
-			header = "Spider Infestation",
+			header = "Infestação Aranha",
 			click_interact = TRUE,
 			ignore_key = POLL_IGNORE_SPIDER,
 			notify_flags = notify_flags_to_pass,
@@ -137,7 +137,7 @@
 		return FALSE
 	if(!ready)
 		if(!silent)
-			to_chat(user, span_warning("\The [src] is not ready to hatch yet!"))
+			to_chat(user, span_warning("\The [src]Ainda não está pronto para eclodir!"))
 		return FALSE
 	return TRUE
 
@@ -163,7 +163,7 @@
 /obj/effect/mob_spawn/ghost_role/spider/enriched
 	name = "enriched egg cluster"
 	color = rgb(148, 0, 211)
-	you_are_text = "You are an enriched spider."
+	you_are_text = "Você é uma aranha enriquecida."
 	cluster_type = /obj/structure/spider/eggcluster/enriched
 	potentialspawns = list(
 		/mob/living/basic/spider/growing/spiderling/tarantula,
@@ -176,8 +176,8 @@
 	name = "bloody egg cluster"
 	icon = 'icons/mob/simple/meteor_heart.dmi'
 	icon_state = "eggs"
-	you_are_text = "You are a flesh spider."
-	flavour_text = "An abomination of nature set upon the station by changelings. Your only goal is to kill, terrorize, and survive."
+	you_are_text = "Você é uma aranha de carne."
+	flavour_text = "Uma abominação da natureza posta sobre a estação por metamorfos. Seu único objetivo é matar, aterrorizar e sobreviver."
 	faction = null
 	directive = null
 	cluster_type = /obj/structure/spider/eggcluster/bloody
@@ -189,8 +189,8 @@
 
 /obj/effect/mob_spawn/ghost_role/spider/midwife
 	name = "midwife egg cluster"
-	you_are_text = "You are a midwife spider."
-	flavour_text = "The crux of the spider horde. You have the ability to reproduce and create more spiders, and turn victims into special spider eggs."
+	you_are_text = "Você é uma aranha parteira."
+	flavour_text = "O ponto crucial da horda de aranha. Você tem a capacidade de reproduzir e criar mais aranhas, e transformar vítimas em ovos especiais de aranha."
 	directive = "Ensure the survival of the spider species and overtake whatever structure you find yourself in."
 	cluster_type = /obj/structure/spider/eggcluster/midwife
 	potentialspawns = list(

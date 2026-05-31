@@ -8,7 +8,7 @@
 
 /obj/item/clothing/suit/armor/vest/debug
 	name = "Bluespace Tech vest"
-	desc = "A sleek piece of armour designed for Bluespace agents."
+	desc = "Uma armadura elegante projetada para agentes do espaço azul."
 	armor_type = /datum/armor/vest_debug
 	w_class = WEIGHT_CLASS_TINY
 
@@ -67,7 +67,7 @@
 
 /obj/item/storage/part_replacer/bluespace/tier4/bst
 	name = "\improper Bluespace Tech RPED"
-	desc = "A specialized bluespace RPED for technicians that can manufacture stock parts on the fly. Alt-Right-Click to manufacture parts, change settings, or clear its internal storage."
+	desc = "Um RPED de espaço azul especializado para técnicos que podem fabricar peças de estoque. Alt-Right-Click para fabricar peças, mudar configurações ou limpar seu armazenamento interno."
 	/// Whether or not auto-clear is enabled
 	var/auto_clear = TRUE
 	/// List of valid types for pick_stock_part().
@@ -226,7 +226,7 @@
 
 		// If it's not a /datum/stock_part subtype either, something has gone wrong and devs should probably be alerted.
 		if(found_matching < parts_amount_required)
-			to_chat(user, span_notice("Something went wrong manufacturing [req_component]. Alert the devs, and let them know what machine it was!"))
+			to_chat(user, span_notice("Algo deu errado na fabricação.[req_component]Alerte os Devs, e deixe-os saber que máquina era!"))
 
 /// BSTs' special Bluespace RPED can manufacture parts on Alt-RMB, either cables, glass, machine boards, or stock parts.
 /obj/item/storage/part_replacer/bluespace/tier4/bst/click_alt_secondary(mob/user)
@@ -242,7 +242,7 @@
 			qdel(stored_item)
 	else if(spawn_selection == "Toggle Auto-Clear")
 		auto_clear = !auto_clear
-		to_chat(user, span_notice("The RPED will now [(auto_clear ? "destroy" : "keep")] items left-over after upgrades."))
+		to_chat(user, span_notice("O RPED vai agora.[(auto_clear ? "destroy" : "keep")]Itens que sobraram após atualizações."))
 	else if(spawn_selection == "Cables")
 		atom_storage.attempt_insert(new /obj/item/stack/cable_coil(src), user, TRUE)
 	else if(spawn_selection == "Glass")

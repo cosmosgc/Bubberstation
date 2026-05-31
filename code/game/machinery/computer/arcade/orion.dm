@@ -2,7 +2,7 @@
 
 /obj/machinery/computer/arcade/orion_trail
 	name = "The Orion Trail"
-	desc = "Learn how our ancestors got to Orion, and have fun in the process!"
+	desc = "Saiba como nossos ancestrais chegaram a Orion, e divirta-se no processo!"
 	icon_state = "arcade"
 	circuit = /obj/item/circuitboard/computer/arcade/orion_trail
 
@@ -50,7 +50,7 @@
 
 /obj/machinery/computer/arcade/orion_trail/kobayashi
 	name = "Kobayashi Maru control computer"
-	desc = "A test for cadets."
+	desc = "Um teste para cadetes."
 	icon = 'icons/obj/machines/particle_accelerator.dmi'
 	icon_keyboard = null
 	icon_screen = null
@@ -347,23 +347,23 @@
 			reason = "You ran out of food and starved."
 			if(obj_flags & EMAGGED)
 				gamer.set_nutrition(0) //yeah you pretty hongry
-				to_chat(gamer, span_userdanger("Your body instantly contracts to that of one who has not eaten in months. Agonizing cramps seize you as you fall to the floor."))
+				to_chat(gamer, span_userdanger("Seu corpo se contrai imediatamente ao de alguém que não come há meses. Cãibras agonizantes te prendem enquanto cai no chão."))
 		if(fuel <= 0)
 			reason = "You ran out of fuel, and drift, slowly, into a star."
 			if(obj_flags & EMAGGED)
 				gamer.adjust_fire_stacks(5)
 				gamer.ignite_mob() //flew into a star, so you're on fire
-				to_chat(gamer, span_userdanger("You feel an immense wave of heat emanate from the arcade machine. Your skin bursts into flames."))
+				to_chat(gamer, span_userdanger("Você sente uma imensa onda de calor emanada da máquina arcade. Sua pele explode em chamas."))
 
 	if(obj_flags & EMAGGED)
-		to_chat(gamer, span_userdanger("You're never going to make it to Orion..."))
+		to_chat(gamer, span_userdanger("Você nunca vai chegar a Orion..."))
 		gamer.investigate_log("has been killed by an emagged Orion Trail game.", INVESTIGATE_DEATHS)
 		gamer.death()
 		obj_flags &= ~EMAGGED //removes the emagged status after you lose
 		gamer.log_message("lost a Realism Mode Orion Trail game, changing the machine back to normal.", LOG_GAME)
 		gameStatus = ORION_STATUS_START
 		name = "The Orion Trail"
-		desc = "Learn how our ancestors got to Orion, and have fun in the process!"
+		desc = "Saiba como nossos ancestrais chegaram a Orion, e divirta-se no processo!"
 
 	gamer?.mind?.adjust_experience(/datum/skill/gaming, 10)//learning from your mistakes is the first rule of roguelikes
 	return reason
@@ -480,22 +480,22 @@
 		return FALSE
 
 	name = "The Orion Trail: Realism Edition"
-	desc = "Learn how our ancestors got to Orion, and try not to die in the process!"
+	desc = "Saiba como nossos ancestrais chegaram a Orion, e tente não morrer no processo!"
 	obj_flags |= EMAGGED
 
 	if (!user)
 		return TRUE
 
 	user.log_message("emagged [src], activating Realism Mode.", LOG_GAME)
-	balloon_alert(user, "realism mode enabled")
-	to_chat(user, span_notice("You override the cheat code menu and skip to Cheat #[rand(1, 50)]: Realism Mode."))
+	balloon_alert(user, "Modo realismo ativado")
+	to_chat(user, span_notice("Você sobrepõe o menu de código de fraude e passa para Cheat #[rand(1, 50)]Modo Realismo."))
 	newgame(user)
 	return TRUE
 
 ///A minibomb achieved from winning at emagged Orion.
 /obj/item/orion_ship
 	name = "model settler ship"
-	desc = "A model spaceship, it looks like those used back in the day when travelling to Orion! It even has a miniature FX-293 reactor, which was renowned for its instability and tendency to explode..."
+	desc = "Uma nave espacial modelo, parece que foi usada no dia em que viajou para Orion! Tem até um reator FX-293 em miniatura, que era conhecido por sua instabilidade e tendência de explodir..."
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "ship"
 	w_class = WEIGHT_CLASS_SMALL
@@ -507,16 +507,16 @@
 	if(!(in_range(user, src)))
 		return
 	if(active)
-		. += span_notice("There's a little switch on the bottom. It's flipped up.")
+		. += span_notice("Tem um interruptor no fundo. Está ligado.")
 		return
-	. += span_notice("There's a little switch on the bottom. It's flipped down.")
+	. += span_notice("Tem um interruptor no fundo. Caiu.")
 
 /obj/item/orion_ship/attack_self(mob/user)
 	if(active)
 		return
 
 	log_bomber(user, "primed an explosive", src, "for detonation")
-	to_chat(user, span_warning("You flip the switch on the underside of [src]."))
+	to_chat(user, span_warning("Você liga o interruptor na parte de baixo de[src]."))
 	active = TRUE
 	addtimer(CALLBACK(src, PROC_REF(commit_explosion)), 1 SECONDS)
 
@@ -535,7 +535,7 @@
 			playsound(loc, 'sound/machines/buzz/buzz-sigh.ogg', 25, TRUE)
 			time_for_next_level = 0.36 SECONDS
 		if(3 to INFINITY)
-			visible_message(span_userdanger("[src] explodes!"))
+			visible_message(span_userdanger("[src]Explode!"))
 			explosion(src, devastation_range = 2, heavy_impact_range = 4, light_impact_range = 8, flame_range = 16)
 			qdel(src)
 			return

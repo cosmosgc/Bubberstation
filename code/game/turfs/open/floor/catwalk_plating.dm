@@ -9,7 +9,7 @@
 	icon = 'icons/turf/floors/catwalk_plating.dmi'
 	icon_state = "maint_above"
 	name = "catwalk floor"
-	desc = "Flooring that shows its contents underneath. Engineers love it!"
+	desc = "Pisos que mostram seu conteúdo por baixo. Engenheiros adoram!"
 	baseturfs = /turf/open/floor/plating
 	floor_tile = /obj/item/stack/tile/catwalk_tile
 	layer = CATWALK_LAYER
@@ -29,10 +29,10 @@
 	. = ..()
 
 	if(covered)
-		. += span_notice("You can <b>unscrew</b> it to reveal the contents beneath.")
+		. += span_notice("Você pode.<b>Desembucha.</b>para revelar o conteúdo abaixo.")
 	else
-		. += span_notice("You can <b>screw</b> it to hide the contents beneath.")
-		. += span_notice("There's a <b>small crack</b> on the edge of it.")
+		. += span_notice("Você pode.<b>Foda-se.</b>para esconder o conteúdo por baixo.")
+		. += span_notice("Tem um...<b>pequena rachadura</b>no limite.")
 
 /turf/open/floor/catwalk_floor/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -60,7 +60,7 @@
 
 /turf/open/floor/catwalk_floor/crowbar_act(mob/user, obj/item/crowbar)
 	if(covered)
-		user.balloon_alert(user, "remove cover first!")
+		user.balloon_alert(user, "Retirem a cobertura primeiro!")
 		return FALSE
 	. = ..()
 

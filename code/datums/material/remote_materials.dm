@@ -93,14 +93,7 @@ handles linking back and forth.
 
 	silo = null
 
-	mat_container = new ( \
-		parent, \
-		SSmaterials.get_materials_by_flag(MATERIAL_SILO_STORED), \
-		local_size, \
-		mat_container_flags, \
-		container_signals = mat_container_signals, \
-		allowed_items = /obj/item/stack \
-	)
+	mat_container = new ( 		parent, 		SSmaterials.get_materials_by_flag(MATERIAL_SILO_STORED), 		local_size, 		mat_container_flags, 		container_signals = mat_container_signals, 		allowed_items = /obj/item/stack 	)
 
 /// Adds/Removes this connection from the silo
 /datum/remote_materials/proc/toggle_holding()
@@ -140,10 +133,10 @@ handles linking back and forth.
 	. = NONE
 	if (!QDELETED(M.buffer) && istype(M.buffer, /obj/machinery/ore_silo))
 		if (silo == M.buffer)
-			to_chat(user, span_warning("[parent] is already connected to [silo]!"))
+			to_chat(user, span_warning("[parent]Já está conectado a[silo]!"))
 			return ITEM_INTERACT_BLOCKING
 		if(!check_z_level(M.buffer))
-			to_chat(user, span_warning("[parent] is too far away to get a connection signal!"))
+			to_chat(user, span_warning("[parent]É muito longe para conseguir um sinal de conexão!"))
 			return ITEM_INTERACT_BLOCKING
 
 		var/obj/machinery/ore_silo/new_silo = M.buffer
@@ -164,7 +157,7 @@ handles linking back and forth.
 		if(!(mat_container_flags & MATCONTAINER_NO_INSERT))
 			RegisterSignal(parent, COMSIG_ATOM_ITEM_INTERACTION, PROC_REF(on_item_insert))
 			RegisterSignal(parent, COMSIG_ATOM_ITEM_INTERACTION_SECONDARY, PROC_REF(on_secondary_insert))
-		to_chat(user, span_notice("You connect [parent] to [silo] from the multitool's buffer."))
+		to_chat(user, span_notice("Você se conecta.[parent]Para[silo]Faça buffer da multitool."))
 		return ITEM_INTERACT_SUCCESS
 
 /datum/remote_materials/proc/on_item_insert(datum/source, mob/living/user, obj/item/target)

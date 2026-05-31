@@ -7,11 +7,11 @@ import {
 } from '../../base';
 
 export const echolocation_outline: Feature<string> = {
-  name: 'Echo outline color',
+  name: 'Cor do contorno do eco',
   component: FeatureColorInput,
 };
 
 export const echolocation_use_echo: FeatureToggle = {
-  name: 'Display echo overlay',
+  name: 'Mostrar sobreposição de eco',
   component: CheckboxInput,
 };

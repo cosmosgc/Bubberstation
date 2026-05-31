@@ -9,12 +9,11 @@ ADMIN_VERB(try_stop_delam, R_ADMIN, "Delam Emergency Stop", "Activate the delam 
 
 	// Warn them if they're intervening in the work of God
 	if(world.time - SSticker.round_start_time < SCRAM_TIME_RESTRICTION)
-		var/go_early = tgui_alert(user, "The [suppression_system.name] is set to automatically start at the programmed time. \
-			Are you sure you want to override this and fire it early? It's less scary that way.", "Suffering premature delamination?", list("No", "Yes"))
+		var/go_early = tgui_alert(user, "O[suppression_system.name]está programado para começar automaticamente no tempo programado. Tem certeza que quer sobrepor isso e disparar mais cedo? É menos assustador assim.", "Suffering premature delamination?", list("No", "Yes"))
 		if(go_early != "Yes")
 			return FALSE
 
-	var/double_check = tgui_alert(user, "You really sure that you want to push this?", "Reticulating Splines", list("No", "Yes"))
+	var/double_check = tgui_alert(user, "Tem certeza que quer forçar isso?", "Reticulating Splines", list("No", "Yes"))
 	if(double_check != "Yes")
 		return FALSE
 

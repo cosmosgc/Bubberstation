@@ -98,8 +98,8 @@ GLOBAL_LIST_INIT(valid_blobstrains, subtypesof(/datum/blobstrain) - list(/datum/
 		blob_mob.maxHealth *= max_mob_health_multiplier
 		blob_mob.health *= max_mob_health_multiplier
 		blob_mob.update_icons() //If it's getting a new strain, tell it what it does!
-		to_chat(blob_mob, "Your overmind's blob strain is now: <b><font color=\"[color]\">[name]</b></font>!")
-		to_chat(blob_mob, "The <b><font color=\"[color]\">[name]</b></font> strain [shortdesc ? "[shortdesc]" : "[description]"]")
+		to_chat(blob_mob, "A tensão da sua mente é agora:<b><font color=\"[color]\">[name]</b></font>!")
+		to_chat(blob_mob, "O<b><font color=\"[color]\">[name]</b></font>strain[shortdesc ? "[shortdesc]" : "[description]"]")
 
 /datum/blobstrain/proc/on_lose()
 	if(overmind.blob_core)
@@ -168,7 +168,7 @@ GLOBAL_LIST_INIT(valid_blobstrains, subtypesof(/datum/blobstrain) - list(/datum/
 	return
 
 /datum/blobstrain/proc/examine(mob/user)
-	return list("<b>Progress to Critical Mass:</b> [span_notice("[overmind.blobs_legit.len]/[overmind.blobwincount].")]")
+	return list("<b>Progresso para a massa crítica:</b> [span_notice("[overmind.blobs_legit.len]/[overmind.blobwincount].")]")
 
 /datum/blobstrain/proc/on_blobmob_atom_interacted(mob/living/minion, atom/interacted_atom, adjacent, modifiers)
 	return

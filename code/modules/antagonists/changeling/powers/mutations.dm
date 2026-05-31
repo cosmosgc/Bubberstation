@@ -13,7 +13,7 @@
 /datum/action/changeling/weapon
 	abstract_type = /datum/action/changeling/weapon
 	name = "Organic Weapon"
-	desc = "Go tell a coder if you see this"
+	desc = "Vá dizer a um programador se você ver isso."
 	helptext = "Yell at Miauw and/or Perakp"
 	chemical_cost = 1000
 	dna_cost = CHANGELING_POWER_UNOBTAINABLE
@@ -55,29 +55,29 @@
 		user.temporarilyRemoveItemFromInventory(hand_item, TRUE) //DROPDEL will delete the item
 		if(!silent)
 			playsound(user, 'sound/effects/blob/blobattack.ogg', 30, TRUE)
-			user.visible_message(span_warning("With a sickening crunch, [user] reforms [user.p_their()] [weapon_name_simple] into an arm!"), span_notice("We assimilate the [weapon_name_simple] back into our body."), span_italics("You hear organic matter ripping and tearing!"))
+			user.visible_message(span_warning("Com uma crise doentia,[user]Reformas[user.p_their()] [weapon_name_simple]Em um braço!"), span_notice("Nós assimilamos o[weapon_name_simple]De volta ao nosso corpo."), span_italics("Você ouve matéria orgânica rasgando e rasgando!"))
 		user.update_held_items()
 		return TRUE
 
 /datum/action/changeling/weapon/sting_action(mob/living/carbon/user)
 	var/obj/item/held = user.get_active_held_item()
 	if(held && !user.dropItemToGround(held))
-		user.balloon_alert(user, "hand occupied!")
+		user.balloon_alert(user, "Mão ocupada!")
 		return
 	if(!istype(user))
-		user.balloon_alert(user, "wrong shape!")
+		user.balloon_alert(user, "Formarrada!")
 		return
 	..()
 	var/limb_regen = 0
 	if(HAS_TRAIT_FROM_ONLY(user, TRAIT_PARALYSIS_L_ARM, CHANGELING_TRAIT) || HAS_TRAIT_FROM_ONLY(user, TRAIT_PARALYSIS_R_ARM, CHANGELING_TRAIT))
-		user.balloon_alert(user, "not enough muscle!") // no cheesing repuprosed glands
+		user.balloon_alert(user, "Pouco músculo!") // no cheesing repuprosed glands
 		return
 	if(IS_RIGHT_INDEX(user.active_hand_index)) //we regen the arm before changing it into the weapon
 		limb_regen = user.regenerate_limb(BODY_ZONE_R_ARM, 1)
 	else
 		limb_regen = user.regenerate_limb(BODY_ZONE_L_ARM, 1)
 	if(limb_regen)
-		user.visible_message(span_warning("[user]'s missing arm reforms, making a loud, grotesque sound!"), span_userdanger("Your arm regrows, making a loud, crunchy sound and giving you great pain!"), span_hear("You hear organic matter ripping and tearing!"))
+		user.visible_message(span_warning("[user]Está faltando reformas de braço, fazendo um som alto e grotesco!"), span_userdanger("Seu braço regride, fazendo um som alto e crocante e lhe dando muita dor!"), span_hear("Você ouve matéria orgânica rasgando e rasgando!"))
 		user.emote("scream")
 	var/obj/item/W = new weapon_type(user, silent)
 	user.put_in_hands(W)
@@ -90,7 +90,7 @@
 /datum/action/changeling/suit
 	abstract_type = /datum/action/changeling/suit
 	name = "Organic Suit"
-	desc = "Go tell a coder if you see this"
+	desc = "Vá dizer a um programador se você ver isso."
 	helptext = "Yell at Miauw and/or Perakp"
 	chemical_cost = 1000
 	dna_cost = CHANGELING_POWER_UNOBTAINABLE
@@ -133,7 +133,7 @@
 
 	if(istype(H.wear_suit, suit_type) || istype(H.head, helmet_type))
 		var/name_to_use = (isnull(suit_type) ? helmet_name_simple : suit_name_simple)
-		H.visible_message(span_warning("[H] casts off [H.p_their()] [name_to_use]!"), span_warning("We cast off our [name_to_use]."), span_hear("You hear the organic matter ripping and tearing!"))
+		H.visible_message(span_warning("[H]Arrematar[H.p_their()] [name_to_use]!"), span_warning("Nós abandonamos nosso[name_to_use]."), span_hear("Você ouve a matéria orgânica rasgando e rasgando!"))
 		if(!isnull(helmet_type))
 			H.temporarilyRemoveItemFromInventory(H.head, TRUE) //The qdel on dropped() takes care of it
 		if(!isnull(suit_type))
@@ -151,10 +151,10 @@
 
 /datum/action/changeling/suit/sting_action(mob/living/carbon/human/user)
 	if(!user.canUnEquip(user.wear_suit) && !isnull(suit_type))
-		user.balloon_alert(user, "body occupied!")
+		user.balloon_alert(user, "Corpo ocupado!")
 		return
 	if(!user.canUnEquip(user.head) && !isnull(helmet_type))
-		user.balloon_alert(user, "head occupied!")
+		user.balloon_alert(user, "Cabeça ocupada!")
 		return
 	..()
 	if(!isnull(suit_type))
@@ -170,12 +170,11 @@
 
 
 //fancy headers yo
-/***************************************\
-|***************ARM BLADE***************|
+/***************************************|***************ARM BLADE***************|
 \***************************************/
 /datum/action/changeling/weapon/arm_blade
 	name = "Arm Blade"
-	desc = "We reform one of our arms into a deadly blade. Costs 20 chemicals."
+	desc = "Transformamos um de nossos braços em uma lâmina mortal. Custa 20 produtos químicos."
 	helptext = "We may retract our armblade in the same manner as we form it. Cannot be used while in lesser form."
 	button_icon_state = "arm_blade"
 	category = "combat"
@@ -187,7 +186,7 @@
 
 /obj/item/melee/arm_blade
 	name = "arm blade"
-	desc = "A grotesque blade made out of bone and flesh that cleaves through people as a hot knife through butter."
+	desc = "Uma lâmina grotesca feita de osso e carne que atravessa as pessoas como uma faca quente através da manteiga."
 	icon = 'icons/obj/weapons/changeling_items.dmi'
 	icon_state = "arm_blade"
 	inhand_icon_state = "arm_blade"
@@ -216,16 +215,13 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CHANGELING_TRAIT)
 	if(ismob(loc) && !silent)
-		loc.visible_message(span_warning("A grotesque blade forms around [loc.name]\'s arm!"), span_warning("Our arm twists and mutates, transforming it into a deadly blade."), span_hear("You hear organic matter ripping and tearing!"))
+		loc.visible_message(span_warning("Uma lâmina grotesca se forma ao redor.[loc.name]\'Braço!"), span_warning("Nosso braço se torce e se transforma em uma lâmina mortal."), span_hear("Você ouve matéria orgânica rasgando e rasgando!"))
 	if(synthetic)
 		can_drop = TRUE
 	alt_continuous = string_list(alt_continuous)
 	alt_simple = string_list(alt_simple)
 	AddComponent(/datum/component/alternative_sharpness, SHARP_POINTY, alt_continuous, alt_simple, -5)
-	AddComponent(/datum/component/butchering, \
-	speed = 6 SECONDS, \
-	effectiveness = 80, \
-	)
+	AddComponent(/datum/component/butchering, 	speed = 6 SECONDS, 	effectiveness = 80, 	)
 
 /obj/item/melee/arm_blade/afterattack(atom/target, mob/user, list/modifiers, list/attack_modifiers)
 	if(QDELETED(target))
@@ -243,18 +239,16 @@
 		if((!opening.requiresID() || opening.allowed(user)) && opening.hasPower()) //This is to prevent stupid shit like hitting a door with an arm blade, the door opening because you have acces and still getting a "the airlocks motors resist our efforts to force it" message, power requirement is so this doesn't stop unpowered doors from being pried open if you have access
 			return
 		if(opening.locked)
-			opening.balloon_alert(user, "bolted!")
+			opening.balloon_alert(user, "Preso!")
 			return
 
 		if(opening.hasPower())
-			user.visible_message(span_warning("[user] jams [src] into the airlock and starts prying it open!"), span_warning("We start forcing the [opening] open."), \
-			span_hear("You hear a metal screeching sound."))
+			user.visible_message(span_warning("[user]Compotas[src]para a câmara de ar e começa a abri-la!"), span_warning("Nós começamos a forçar o[opening]Abra."), 			span_hear("Você ouve um barulho de metal."))
 			playsound(opening, 'sound/machines/airlock/airlock_alien_prying.ogg', 100, TRUE)
 			if(!do_after(user, 10 SECONDS, target = opening))
 				return
 		//user.say("Heeeeeeeeeerrre's Johnny!")
-		user.visible_message(span_warning("[user] forces the airlock to open with [user.p_their()] [src]!"), span_warning("We force the [opening] to open."), \
-		span_hear("You hear a metal screeching sound."))
+		user.visible_message(span_warning("[user]força a câmara a abrir com[user.p_their()] [src]!"), span_warning("Nós forçamos o[opening]Para abrir."), 		span_hear("Você ouve um barulho de metal."))
 		opening.open(BYPASS_DOOR_CHECKS)
 
 /obj/item/melee/arm_blade/dropped(mob/user)
@@ -262,17 +256,13 @@
 	if(can_drop)
 		new /obj/item/melee/synthetic_arm_blade(get_turf(user))
 
-/***************************************\
-|***********COMBAT TENTACLES*************|
+/***************************************|***********COMBAT TENTACLES*************|
 \***************************************/
 
 /datum/action/changeling/weapon/tentacle
 	name = "Tentacle"
-	desc = "We ready a tentacle to grab items or victims with. Costs 10 chemicals."
-	helptext = "We can use it once to retrieve a distant item. If used on living creatures, the effect depends on our combat mode: \
-	In our neutral stance, we will simply drag them closer; if we try to shove, we will grab whatever they're holding in their active hand instead of them; \
-	In our combat stance, we will put the victim in our hold after catching them, and we will pull them in and impale them if we're also holding a sharp weapon, or have an armblade. This pierces armor. \
-	Cannot be used while in lesser form."
+	desc = "Preparamos um tentáculo para pegar itens ou vítimas. Custa 10 produtos químicos."
+	helptext = "We can use it once to retrieve a distant item. If used on living creatures, the effect depends on our combat mode: 	In our neutral stance, we will simply drag them closer; if we try to shove, we will grab whatever they're holding in their active hand instead of them; 	In our combat stance, we will put the victim in our hold after catching them, and we will pull them in and impale them if we're also holding a sharp weapon, or have an armblade. This pierces armor. 	Cannot be used while in lesser form."
 	button_icon_state = "tentacle"
 	category = "combat"
 	chemical_cost = 10
@@ -284,7 +274,7 @@
 
 /obj/item/gun/magic/tentacle
 	name = "tentacle"
-	desc = "A fleshy tentacle that can stretch out and grab things or people."
+	desc = "Um tentáculo carnudo que pode se esticar e agarrar coisas ou pessoas."
 	icon = 'icons/obj/weapons/changeling_items.dmi'
 	icon_state = "tentacle"
 	inhand_icon_state = "tentacle"
@@ -312,9 +302,9 @@
 	ADD_TRAIT(src, TRAIT_NODROP, CHANGELING_TRAIT)
 	if(ismob(loc))
 		if(!silent)
-			loc.visible_message(span_warning("[loc.name]\'s arm starts stretching inhumanly!"), span_warning("Our arm twists and mutates, transforming it into a tentacle."), span_hear("You hear organic matter ripping and tearing!"))
+			loc.visible_message(span_warning("[loc.name]\'Seu braço começa a se esticar desumanamente!"), span_warning("Nosso braço se torce e se transforma em um tentáculo."), span_hear("Você ouve matéria orgânica rasgando e rasgando!"))
 		else
-			to_chat(loc, span_notice("You prepare to extend a tentacle."))
+			to_chat(loc, span_notice("Prepare-se para estender um tentáculo."))
 
 
 /obj/item/gun/magic/tentacle/shoot_with_empty_chamber(mob/living/user as mob|obj)
@@ -328,12 +318,12 @@
 		qdel(src)
 
 /obj/item/gun/magic/tentacle/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] coils [src] tightly around [user.p_their()] neck! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Bobinas.[src]Bem, eu sei.[user.p_their()]pescoço! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/ammo_casing/magic/tentacle
 	name = "tentacle"
-	desc = "A tentacle."
+	desc = "Um tentáculo."
 	projectile_type = /obj/projectile/tentacle
 	caliber = CALIBER_TENTACLE
 	firing_effect_type = null
@@ -388,7 +378,7 @@
 
 	for(var/obj/item/weapon in user.held_items)
 		if(weapon.get_sharpness())
-			victim.visible_message(span_danger("[user] impales [victim] with [user.p_their()] [weapon.name]!"), span_userdanger("[user] impales you with [user.p_their()] [weapon.name]!"))
+			victim.visible_message(span_danger("[user]Impales.[victim]Com[user.p_their()] [weapon.name]!"), span_userdanger("[user]Impales você com[user.p_their()] [weapon.name]!"))
 			victim.apply_damage(weapon.force, BRUTE, BODY_ZONE_CHEST, attacking_item = weapon)
 			user.do_item_attack_animation(victim, used_item = weapon, animation_type = ATTACK_ANIMATION_PIERCE)
 			user.add_blood_DNA_to_items(victim.get_blood_dna_list(), ITEM_SLOT_ICLOTHING|ITEM_SLOT_OCLOTHING)
@@ -409,7 +399,7 @@
 			return BULLET_ACT_BLOCK
 
 		var/mob/living/carbon/carbon_ling = ling
-		to_chat(carbon_ling, span_notice("You pull [catching] towards yourself."))
+		to_chat(carbon_ling, span_notice("Você puxa.[catching]para você mesmo."))
 		carbon_ling.throw_mode_on(THROW_MODE_TOGGLE)
 		catching.throw_at(
 			target = carbon_ling,
@@ -431,8 +421,8 @@
 
 	if(!iscarbon(victim) || !ishuman(ling) || !ling.combat_mode)
 		victim.visible_message(
-			span_danger("[victim] is grabbed by [ling]'s [src]]!"),
-			span_userdanger("\A [src] grabs you and pulls you towards [ling]!"),
+			span_danger("[victim]é agarrado por[ling]'s[src]]!"),
+			span_userdanger("\A [src]Pega você e puxa para você[ling]!"),
 		)
 		victim.throw_at(
 			target = get_step_towards(ling, victim),
@@ -449,21 +439,21 @@
 		if(!isnull(stealing))
 			if(victim.dropItemToGround(stealing))
 				victim.visible_message(
-					span_danger("[stealing] is yanked off [victim]'s hand by [src]!"),
-					span_userdanger("\A [src] pulls [stealing] away from you!"),
+					span_danger("[stealing]é arrancado[victim]'s mão por[src]!"),
+					span_userdanger("\A [src]Puxa.[stealing]Afaste-se de você!"),
 				)
 				return on_hit(stealing) //grab the item as if you had hit it directly with the tentacle
 
-			to_chat(ling, span_warning("You can't seem to pry [stealing] off [victim]'s hands!"))
+			to_chat(ling, span_warning("Você não consegue se intrometer.[stealing]Fora.[victim]Mãos!"))
 			return BULLET_ACT_BLOCK
 
-		to_chat(ling, span_danger("[victim] has nothing in hand to disarm!"))
+		to_chat(ling, span_danger("[victim]Não tem nada em mãos para desarmar!"))
 		return BULLET_ACT_HIT
 
 	if(ling.combat_mode)
 		victim.visible_message(
-			span_danger("[victim] is thrown towards [ling] by \a [src]!"),
-			span_userdanger("\A [src] grabs you and throws you towards [ling]!"),
+			span_danger("[victim]é jogado em direção[ling]Por que\a [src]!"),
+			span_userdanger("\A [src]Te agarra e te joga em direção[ling]!"),
 		)
 		victim.throw_at(
 			target = get_step_towards(ling, victim),
@@ -483,12 +473,11 @@
 	return ..()
 
 
-/***************************************\
-|****************SHIELD*****************|
+/***************************************|****************SHIELD*****************|
 \***************************************/
 /datum/action/changeling/weapon/shield
 	name = "Organic Shield"
-	desc = "We reform one of our arms into a hard shield. Costs 20 chemicals."
+	desc = "Transformamos um de nossos braços em um escudo duro. Custa 20 produtos químicos."
 	helptext = "Organic tissue cannot resist damage forever; the shield will break after it is hit too much. The more genomes we absorb, the stronger it is. Cannot be used while in lesser form."
 	button_icon_state = "organic_shield"
 	category = "combat"
@@ -510,7 +499,7 @@
 
 /obj/item/shield/changeling
 	name = "shield-like mass"
-	desc = "A mass of tough, boney tissue. You can still see the fingers as a twisted pattern in the shield."
+	desc = "Uma massa de tecido duro e ósseo. Você ainda pode ver os dedos como um padrão torcido no escudo."
 	item_flags = ABSTRACT | DROPDEL
 	icon = 'icons/obj/weapons/changeling_items.dmi'
 	icon_state = "ling_shield"
@@ -525,7 +514,7 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CHANGELING_TRAIT)
 	if(ismob(loc))
-		loc.visible_message(span_warning("The end of [loc.name]\'s hand inflates rapidly, forming a huge shield-like mass!"), span_warning("We inflate our hand into a strong shield."), span_hear("You hear organic matter ripping and tearing!"))
+		loc.visible_message(span_warning("O fim de[loc.name]\'A mão infla rapidamente, formando uma enorme massa de escudo!"), span_warning("Nós inflamos nossa mão em um escudo forte."), span_hear("Você ouve matéria orgânica rasgando e rasgando!"))
 
 /obj/item/shield/changeling/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	if(attack_type == OVERWHELMING_ATTACK)
@@ -534,19 +523,18 @@
 	if(remaining_uses < 1)
 		if(ishuman(loc))
 			var/mob/living/carbon/human/H = loc
-			H.visible_message(span_warning("With a sickening crunch, [H] reforms [H.p_their()] shield into an arm!"), span_notice("We assimilate our shield into our body"), span_italics("You hear organic matter ripping and tearing!"))
+			H.visible_message(span_warning("Com uma crise doentia,[H]Reformas[H.p_their()]escudo em um braço!"), span_notice("Nós assimilamos nosso escudo em nosso corpo"), span_italics("Você ouve matéria orgânica rasgando e rasgando!"))
 		qdel(src)
 		return 0
 	else
 		remaining_uses--
 		return ..()
 
-/***************************************\
-|*****************ARMOR*****************|
+/***************************************|*****************ARMOR*****************|
 \***************************************/
 /datum/action/changeling/suit/armor
 	name = "Chitinous Armor"
-	desc = "We turn our skin into tough chitin to protect us from damage. Costs 20 chemicals."
+	desc = "Transformamos nossa pele em um chitim duro para nos proteger de danos. Custa 20 produtos químicos."
 	helptext = "Upkeep of the armor requires a low expenditure of chemicals. The armor provides decent protection against brute force and energy weapons. Cannot be used in lesser form."
 	button_icon_state = "chitinous_armor"
 	category = "combat"
@@ -562,7 +550,7 @@
 
 /obj/item/clothing/suit/armor/changeling
 	name = "chitinous mass"
-	desc = "A tough, hard covering of black chitin."
+	desc = "Uma dura aberta de chitin preto."
 	icon_state = "lingarmor"
 	inhand_icon_state = null
 	item_flags = DROPDEL
@@ -586,11 +574,11 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CHANGELING_TRAIT)
 	if(ismob(loc))
-		loc.visible_message(span_warning("[loc.name]\'s flesh turns black, quickly transforming into a hard, chitinous mass!"), span_warning("We harden our flesh, creating a suit of armor!"), span_hear("You hear organic matter ripping and tearing!"))
+		loc.visible_message(span_warning("[loc.name]\'Uma carne Torna-se Negra, transformando-se rápidamente num massa dura e cintilante!"), span_warning("Nós endurecemos nossa carne, criando uma armadura!"), span_hear("Você ouve matéria orgânica rasgando e rasgando!"))
 
 /obj/item/clothing/head/helmet/changeling
 	name = "chitinous mass"
-	desc = "A tough, hard covering of black chitin with transparent chitin in front."
+	desc = "Uma dura cobertura de chitin preto com chitin transparente na frente."
 	icon_state = "lingarmorhelmet"
 	inhand_icon_state = null
 	item_flags = DROPDEL
@@ -613,7 +601,7 @@
 
 /datum/action/changeling/suit/hive_head
 	name = "Hive Head"
-	desc = "We coat our head in a waxy outing coating similar to a bee hive which can be used to manufacture bees to attack our enemies. Costs 15 chemicals."
+	desc = "Nós cobrimos nossa cabeça em um revestimento de saída de cera semelhante a uma colmeia de abelhas que pode ser usada para fabricar abelhas para atacar nossos inimigos. Custa 15 produtos químicos."
 	helptext = "While the hive head does not provide much in the ways of armor, it does allow the user to send bees out to attack targets. Reagents can poured inside the hive to cause all bees released to inject said reagents."
 	button_icon_state = "hive_head"
 	category = "combat"
@@ -627,7 +615,7 @@
 
 /obj/item/clothing/head/helmet/changeling_hivehead
 	name = "hive head"
-	desc = "A strange, waxy outer coating covering your head. Gives you tinnitus."
+	desc = "Um revestimento externo estranho e ceroso cobrindo sua cabeça. Dá zumbido."
 	icon_state = "hivehead"
 	inhand_icon_state = null
 	flash_protect = FLASH_PROTECTION_FLASH
@@ -657,7 +645,7 @@
 /obj/item/clothing/head/helmet/changeling_hivehead/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/organ/monster_core/regenerative_core/legion) || !holds_reagents)
 		return NONE
-	visible_message(span_boldwarning("As [user] shoves [tool] into [src], [src] begins to mutate."))
+	visible_message(span_boldwarning("Como[user]Empurra.[tool]Em[src], [src]Começa a sofrer mutação."))
 	var/mob/living/carbon/wearer = loc
 	playsound(wearer, 'sound/effects/blob/attackblob.ogg', 60, TRUE)
 	wearer.temporarilyRemoveItemFromInventory(wearer.head, TRUE)
@@ -667,7 +655,7 @@
 
 /datum/action/cooldown/hivehead_spawn_minions
 	name = "Release Bees"
-	desc = "Release a group of bees to attack all other lifeforms."
+	desc = "Liberte um grupo de abelhas para atacar todas as outras formas de vida."
 	background_icon_state = "bg_demon"
 	overlay_icon_state = "bg_demon_border"
 	button_icon = 'icons/mob/simple/bees.dmi'
@@ -680,7 +668,7 @@
 
 /datum/action/cooldown/hivehead_spawn_minions/PreActivate(atom/target)
 	if(owner.movement_type & VENTCRAWLING)
-		owner.balloon_alert(owner, "unavailable here")
+		owner.balloon_alert(owner, "Não está disponível aqui.")
 		return FALSE
 	return ..()
 
@@ -698,7 +686,7 @@
 
 ///Our tell that we're using this ability. Usually a sound and a visible message.area
 /datum/action/cooldown/hivehead_spawn_minions/proc/do_tell()
-	owner.visible_message(span_warning("[owner]'s head begins to buzz as bees begin to pour out!"), span_warning("We release the bees."), span_hear("You hear a loud buzzing sound!"))
+	owner.visible_message(span_warning("[owner]A cabeça começa a zumbir quando as abelhas começam a jorrar!"), span_warning("Libertamos como Abelhas."), span_hear("Você ouve um zumbido alto!"))
 	playsound(owner, 'sound/mobs/non-humanoids/bee/bee_swarm.ogg', 60, TRUE)
 
 ///Stuff we want to do to our minions. This is in its own proc so subtypes can override this behaviour.
@@ -710,14 +698,14 @@
 
 /obj/item/clothing/head/helmet/changeling_hivehead/legion
 	name = "legion hive head"
-	desc = "A strange, boney coating covering your head with a fleshy inside. Surprisingly comfortable."
+	desc = "Um revestimento estranho e ósseo cobrindo sua cabeça com uma carne dentro. Surpreendentemente confortável."
 	icon_state = "hivehead_legion"
 	actions_types = list(/datum/action/cooldown/hivehead_spawn_minions/legion)
 	holds_reagents = FALSE
 
 /datum/action/cooldown/hivehead_spawn_minions/legion
 	name = "Release Legion"
-	desc = "Release a group of legion to attack all other lifeforms."
+	desc = "Liberte um grupo de legião para atacar todas as outras formas de vida."
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "legion_head"
 	cooldown_time = 15 SECONDS
@@ -725,7 +713,7 @@
 	spawn_count = 4
 
 /datum/action/cooldown/hivehead_spawn_minions/legion/do_tell()
-	owner.visible_message(span_warning("[owner]'s head begins to shake as legion begin to pour out!"), span_warning("We release the legion."), span_hear("You hear a loud squishing sound!"))
+	owner.visible_message(span_warning("[owner]A cabeça começa a tremer enquanto a legião começa a jorrar!"), span_warning("Libertaremos a legião."), span_hear("Você ouve um som forte!"))
 	playsound(owner, 'sound/effects/blob/attackblob.ogg', 60, TRUE)
 
 /datum/action/cooldown/hivehead_spawn_minions/legion/minion_additional_changes(mob/living/basic/minion)

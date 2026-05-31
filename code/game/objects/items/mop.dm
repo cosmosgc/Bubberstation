@@ -1,5 +1,5 @@
 /obj/item/mop
-	desc = "The world of janitalia wouldn't be complete without a mop."
+	desc = "O mundo da Janitalia não estaria completo sem um esfregão."
 	name = "mop"
 	icon = 'icons/obj/service/janitor.dmi'
 	icon_state = "mop"
@@ -48,7 +48,7 @@
 	if(clean_blacklist[atom_to_clean.type])
 		return CLEAN_BLOCKED|CLEAN_DONT_BLOCK_INTERACTION
 	if(reagents.total_volume < 0.1)
-		cleaner.balloon_alert(cleaner, "mop is dry!")
+		cleaner.balloon_alert(cleaner, "O esfregão está seco!")
 		return CLEAN_BLOCKED
 	if(reagents.has_reagent(amount = 1, chemical_flags = REAGENT_CLEANS))
 		return CLEAN_ALLOWED
@@ -72,7 +72,7 @@
 	reagents.remove_all(val2remove) //reaction() doesn't use up the reagents
 
 /obj/item/mop/advanced
-	desc = "The most advanced tool in a custodian's arsenal, complete with a condenser for self-wetting! Just think of all the viscera you will clean up with this! Due to the self-wetting technology, it proves very inefficient for cleaning up spills." //SKYRAT EDIT
+	desc = "A ferramenta mais avançada no arsenal de um guardião, completa com um condensador para se molhar! Pense em todas as vísceras que vai limpar com isso! Devido à tecnologia de se molhar, ela é muito ineficiente para limpar derramamentos." //SKYRAT EDIT
 	name = "advanced mop"
 	max_reagent_volume = 100 // SKYRAT EDIT - ORIGINAL: 10
 	icon_state = "advmop"
@@ -98,7 +98,7 @@
 		START_PROCESSING(SSobj, src)
 	else
 		STOP_PROCESSING(SSobj,src)
-	user.balloon_alert(user, "condenser switch [refill_enabled ? "on" : "off"]")
+	user.balloon_alert(user, "Interruptor de condensador[refill_enabled ? "on" : "off"]")
 	playsound(user, 'sound/machines/click.ogg', 30, TRUE)
 
 /obj/item/mop/advanced/process(seconds_per_tick)
@@ -108,7 +108,7 @@
 
 /obj/item/mop/advanced/examine(mob/user)
 	. = ..()
-	. += span_notice("The condenser switch is set to <b>[refill_enabled ? "ON" : "OFF"]</b>.")
+	. += span_notice("O interruptor do condensador está definido para<b>[refill_enabled ? "ON" : "OFF"]</b>.")
 
 /obj/item/mop/advanced/Destroy()
 	STOP_PROCESSING(SSobj, src)

@@ -3,7 +3,7 @@
 
 /obj/vehicle/ridden/lavaboat
 	name = "lava boat"
-	desc = "A boat used for traversing lava."
+	desc = "Um barco usado para atravessar lava."
 	icon = 'icons/obj/mining_zones/dragonboat.dmi'
 	icon_state = "goliath_boat"
 	icon_preview = 'icons/obj/fluff/previews.dmi'
@@ -18,7 +18,7 @@
 
 /obj/item/oar
 	name = "oar"
-	desc = "Not to be confused with the kind Research hassles you for."
+	desc = "Não se confunda com o tipo de pesquisa que te incomoda."
 	icon = 'icons/mob/rideables/vehicles.dmi'
 	icon_state = "oar"
 	inhand_icon_state = "oar"
@@ -46,7 +46,7 @@
 
 /obj/vehicle/ridden/lavaboat/plasma
 	name = "plasma boat"
-	desc = "A boat used for traversing the streams of plasma without turning into an icecube."
+	desc = "Um barco usado para atravessar as correntes de plasma sem se transformar em um icecube."
 	icon = 'icons/obj/mining_zones/dragonboat.dmi'
 	icon_state = "goliath_boat"
 	resistance_flags = FREEZE_PROOF
@@ -62,19 +62,19 @@
 
 /obj/item/ship_in_a_bottle
 	name = "ship in a bottle"
-	desc = "A tiny ship inside a bottle."
+	desc = "Uma nave pequena dentro de uma garrafa."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "ship_bottle"
 
 /obj/item/ship_in_a_bottle/attack_self(mob/user)
-	to_chat(user, span_notice("You're not sure how they get the ships in these things, but you're pretty sure you know how to get it out."))
+	to_chat(user, span_notice("Não tem certeza de como eles colocam as naves nessas coisas, mas tem certeza que sabe como tirá-las."))
 	playsound(user.loc, 'sound/effects/glass/glassbr1.ogg', 100, TRUE)
 	new /obj/vehicle/ridden/lavaboat/dragon(get_turf(src))
 	qdel(src)
 
 /obj/vehicle/ridden/lavaboat/dragon
 	name = "mysterious boat"
-	desc = "This boat moves where you will it, without the need for an oar."
+	desc = "Este barco se move onde quiser, sem precisar de um remo."
 	icon_state = "dragon_boat"
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | FREEZE_PROOF
 	key_type = null

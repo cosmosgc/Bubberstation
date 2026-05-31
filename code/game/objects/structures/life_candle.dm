@@ -1,6 +1,6 @@
 /obj/structure/life_candle
 	name = "life candle"
-	desc = "You are dead. Insert quarter to continue."
+	desc = "Você está morto. Inserir quarto para continuar."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candle1"
 	light_system = OVERLAY_LIGHT
@@ -49,14 +49,14 @@
 	if(!user.mind)
 		return
 	if(user.mind in linked_minds)
-		user.visible_message(span_notice("[user] reaches out and pinches the flame of [src]."), span_warning("You sever the connection between yourself and [src]."))
+		user.visible_message(span_notice("[user]alcança e aperta a chama de[src]."), span_warning("Você cortou a conexão entre você e[src]."))
 		linked_minds -= user.mind
 		if(!linked_minds.len)
 			REMOVE_TRAIT(src, TRAIT_MOVE_FLOATING, LIFECANDLE_TRAIT)
 	else
 		if(!linked_minds.len)
 			ADD_TRAIT(src, TRAIT_MOVE_FLOATING, LIFECANDLE_TRAIT)
-		user.visible_message(span_notice("[user] touches [src]. It seems to respond to [user.p_their()] presence!"), span_warning("You create a connection between you and [src]."))
+		user.visible_message(span_notice("[user]toques[src]Parece responder a[user.p_their()]Presença!"), span_warning("Você cria uma conexão entre você e[src]."))
 		linked_minds |= user.mind
 
 	update_appearance()

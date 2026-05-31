@@ -22,14 +22,14 @@
 	if(!check_rights(R_SPAWN))
 		return
 
-	var/send_notice = tgui_alert(usr, "Add a paper notice about sending [name] into a cryopod?", "Leave a paper?", list("Yes", "No", "Cancel"))
+	var/send_notice = tgui_alert(usr, "Adicione um aviso sobre enviar[name]em um criópode?", "Leave a paper?", list("Yes", "No", "Cancel"))
 	if(send_notice != "Yes" && send_notice != "No")
 		return
 
 	//log/message
-	to_chat(usr, "Put [src] in cryopod.")
+	to_chat(usr, "Coloque[src]em criópode.")
 	log_admin("[key_name(usr)] has put [key_name(src)] into a cryopod.")
-	var/msg = span_notice("[key_name_admin(usr)] has put [key_name(src)] into a cryopod from [ADMIN_VERBOSEJMP(src)].")
+	var/msg = span_notice("[key_name_admin(usr)]Tem colocado[key_name(src)]em um criópode de[ADMIN_VERBOSEJMP(src)].")
 	message_admins(msg)
 	admin_ticket_log(src, msg)
 
@@ -44,19 +44,19 @@
 		return
 
 	if(!client)
-		to_chat(usr, span_warning("No client found!"))
+		to_chat(usr, span_warning("Nenhum cliente encontrado!"))
 		return
 
 	if(!ishuman(src))
-		to_chat(usr, span_warning("Mob is not human!"))
+		to_chat(usr, span_warning("A máfia não é humana!"))
 		return
 
-	var/notice = tgui_alert(usr, "Are you sure you want to load the clients current prefs onto their mob?", "Load Preferences", list("Yes", "No"))
+	var/notice = tgui_alert(usr, "Tem certeza que quer colocar os clientes atuais na máfia?", "Load Preferences", list("Yes", "No"))
 	if(notice != "Yes")
 		return
 
 	client?.prefs?.apply_prefs_to(src)
 	SSquirks.OverrideQuirks(src, client)
-	var/msg = span_notice("[key_name_admin(usr)] has loaded [key_name(src)]'s preferences onto their current mob [ADMIN_VERBOSEJMP(src)].")
+	var/msg = span_notice("[key_name_admin(usr)]Carregado.[key_name(src)]As preferências de sua atual multidão[ADMIN_VERBOSEJMP(src)].")
 	message_admins(msg)
 	admin_ticket_log(src, msg)

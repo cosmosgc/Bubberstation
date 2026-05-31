@@ -158,10 +158,10 @@ const RecipeListBox = (props: RecipeListProps) => {
               child_mt={0}
               childStyles={{
                 padding: '0.5em',
-                backgroundColor: 'rgba(62, 97, 137, 0.15)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                backgroundColor: 'Rgba (62, 97, 137, 0,15)',
+                border: 'Rgba sólido de 1px(255, 255, 0,1)',
                 borderTop: 'none',
-                borderRadius: '0 0 0.33em 0.33em',
+                borderRadius: '0 0 0,33em 0,33em',
               }}
             >
               <RecipeListBox recipes={recipe} />

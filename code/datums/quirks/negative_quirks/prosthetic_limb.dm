@@ -1,6 +1,6 @@
 /datum/quirk/prosthetic_limb
 	name = "Prosthetic Limb"
-	desc = "An accident caused you to lose one of your limbs. Because of this, you now have a surplus prosthetic!"
+	desc = "Um acidente fez você perder um de seus membros. Por causa disso, você agora tem uma prótese excedente!"
 	icon = "tg-prosthetic-leg"
 	value = -3
 	hardcore_value = 3
@@ -26,12 +26,11 @@
 	var/obj/item/bodypart/surplus = new limb_type()
 	slot_string = "[surplus.plaintext_zone]"
 
-	medical_record_text = "Patient uses a low-budget prosthetic on the [slot_string]."
+	medical_record_text = "O paciente usa uma prótese de baixo orçamento na[slot_string]."
 	human_holder.del_and_replace_bodypart(surplus, special = TRUE)
 
 /datum/quirk/prosthetic_limb/post_add()
-	to_chat(quirk_holder, span_bolddanger("Your [slot_string] has been replaced with a surplus prosthetic. It has almost no muscle force, and makes you unhealthier by just having it. Additionally, \
-	you need to use a welding tool and cables to repair it, instead of sutures and regenerative meshes."))
+	to_chat(quirk_holder, span_bolddanger("Sua[slot_string]foi substituído por uma prótese excedente. Ele quase não tem força muscular, e faz você não ser saudável só por tê-la. Além disso, você precisa usar uma ferramenta de solda e cabos para repará-lo, ao invés de suturas e malhas regenerativas."))
 
 /datum/quirk/prosthetic_limb/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder

@@ -2,7 +2,7 @@
 /obj/item/fish/mastodon
 	name = "unmarine mastodon"
 	fish_id = "mastodon"
-	desc = "A monster of exposed muscles and innards, wrapped in a fish-like skeleton. You don't remember ever seeing it on the catalog."
+	desc = "Um monstro de músculos expostos e vísceras, embrulhado em um esqueleto de peixe. Você não se lembra de ter visto no catálogo."
 	icon = 'icons/obj/aquarium/wide.dmi'
 	icon_state = "mastodon"
 	base_pixel_w = -16
@@ -22,7 +22,7 @@
 	breeding_timeout = 5 MINUTES
 	average_size = 180
 	average_weight = 5000
-	death_text = "%SRC stops moving."
+	death_text = "O SRC para se mover."
 	fish_traits = list(/datum/fish_trait/heavy, /datum/fish_trait/amphibious, /datum/fish_trait/revival, /datum/fish_trait/carnivore, /datum/fish_trait/predator, /datum/fish_trait/territorial)
 	beauty = FISH_BEAUTY_BAD
 
@@ -40,17 +40,17 @@
 	return ..() * 1.2 //This should push its soft-capped (it's pretty big) price a bit above the rest
 
 /obj/item/fish/mastodon/get_health_warnings(mob/user, always_deep = FALSE)
-	return list(span_deadsay("It's bones."))
+	return list(span_deadsay("São ossos."))
 
 /obj/item/fish/mastodon/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] swallows [src] whole (somehow)! It looks like user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Andorinhas[src]Tudo bem! Parece o usuário tentando cometer suicídio!"))
 	forceMove(user)
 	user.update_transform(1.25) // become BIG from eating BIG fish
 	addtimer(CALLBACK(src, PROC_REF(skeleton_appears), user), 2 SECONDS)
 	return MANUAL_SUICIDE_NONLETHAL // chance not to die
 
 /obj/item/fish/mastodon/proc/skeleton_appears(mob/living/user)
-	user.visible_message(span_warning("[user]'s skin melts off!"), span_boldwarning("Your skin melts off!"))
+	user.visible_message(span_warning("[user]Uma pele derrete!"), span_boldwarning("Sua pele derrete!"))
 	user.spawn_gibs()
 	user.drop_everything(del_on_drop = FALSE, force = FALSE, del_if_nodrop = FALSE)
 	user.set_species(/datum/species/skeleton)
@@ -65,7 +65,7 @@
 /obj/item/fish/soul
 	name = "soulfish"
 	fish_id = "soulfish"
-	desc = "A distant yet vaguely close critter, like a long lost relative. You feel your soul rejuvenated just from looking at it... Also, what the fuck is this shit?!"
+	desc = "Uma criatura distante, mas vagamente próxima, como um parente perdido. Você sente sua alma rejuvenescida só de olhar para ela... E que porra é essa?"
 	icon_state = "soulfish"
 	sprite_width = 7
 	sprite_height = 6
@@ -96,7 +96,7 @@
 	return list("cooked meat" = 2)
 
 /obj/item/fish/soul/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] swallows [src] whole! It looks like [user.p_theyre()] trying to commit soulcide!"))
+	user.visible_message(span_suicide("[user]Andorinhas[src]Inteiro! Parece que...[user.p_theyre()]Tentando cometer um suicídio!"))
 	src.forceMove(user)
 	addtimer(CALLBACK(src, PROC_REF(good_ending), user), 2.5 SECONDS)
 	for(var/i in 1 to 7)
@@ -106,11 +106,11 @@
 /obj/item/fish/soul/proc/good_ending(mob/living/user)
 	var/mob/living/basic/spaceman/soulman = new(get_turf(user))
 	soulman.fully_replace_character_name(user.real_name)
-	addtimer(CALLBACK(soulman, TYPE_PROC_REF(/atom, visible_message), span_notice("[soulman] was too pure for this world...")), 5 SECONDS, TIMER_DELETE_ME)
+	addtimer(CALLBACK(soulman, TYPE_PROC_REF(/atom, visible_message), span_notice("[soulman]Era puro demais para este mundo...")), 5 SECONDS, TIMER_DELETE_ME)
 	addtimer(CALLBACK(soulman, TYPE_PROC_REF(/mob/living, death)), 5 SECONDS, TIMER_DELETE_ME)
 	if(prob(80)) // the percentage is important.
 		soulman.PossessByPlayer(user.ckey)
-		to_chat(soulman, span_notice("You finally feel at peace."))
+		to_chat(soulman, span_notice("Finalmente se sente em paz."))
 	user.gib()
 	qdel(src)
 
@@ -132,7 +132,7 @@
 /obj/item/fish/skin_crab
 	name = "skin crab"
 	fish_id = "skin_crab"
-	desc = "<i>\"And on the eighth day, a demential mockery of both humanity and crabity was made.\"<i> Fascinating."
+	desc = "<i>\"E no oitavo dia, uma zombaria demente de humanidade e caranguejo foi feita.\"<i>Fascinante."
 	icon_state = "skin_crab"
 	sprite_width = 7
 	sprite_height = 6
@@ -157,13 +157,13 @@
 	return list("cooked crab" = 2)
 
 /obj/item/fish/skin_crab/suicide_act(mob/living/carbon/human/user)
-	user.visible_message(span_suicide("[user] puts [user.p_their()] hand on [src] and focuses intently! It looks like [user.p_theyre()] trying to transfer [user.p_their()] skin to [src]!"))
+	user.visible_message(span_suicide("[user]coloca[user.p_their()]Mão sobre[src]E se concentrar atentamente! Parece que...[user.p_theyre()]Tentando transferir[user.p_their()]Pele para[src]!"))
 	if(!ishuman(user) || HAS_TRAIT(user, TRAIT_UNHUSKABLE))
-		user.visible_message(span_suicide("[user] has no skin! How embarrassing!"))
+		user.visible_message(span_suicide("[user]Não tem pele! Que vergonha!"))
 		return SHAME
 
 	if(status == FISH_DEAD)
-		user.visible_message(span_suicide("[src] is dead! [user] just looks like a doofus!"))
+		user.visible_message(span_suicide("[src]Está morto![user]Parece um idiota!"))
 		return SHAME
 
 	var/skin_tone
@@ -178,7 +178,7 @@
 
 	// skin crab grows powerful
 	color = skin_tone //skintone2hex(skin_tone) //wait til smartkar's recolorwork
-	visible_message(span_danger("[user] starts glowing eerily..."))
+	visible_message(span_danger("[user]Começa a brilhar assustadoramente..."))
 	AddElement(/datum/element/haunted, haunt_color = skin_tone)
 
 	return BRUTELOSS

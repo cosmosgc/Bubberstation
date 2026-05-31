@@ -4,7 +4,7 @@
 
 /datum/nifsoft/scryer
 	name = "NIFLink Holocaller"
-	program_desc = "This ubiquitous NIFSoft adds Scryer functionality similar to MODSuits to the user's NIF; allowing for real-time communication through AR hologlass screens from a hardlight projector sat around the wearer's neck"
+	program_desc = "Este NIFSoft onipresente adiciona funcionalidade Scryer similar ao MODSuits ao NIF do usuário, permitindo comunicação em tempo real através de telas de hologlass AR de um projetor de luz dura sentado ao redor do pescoço do usuário"
 	active_mode = TRUE
 	active_cost = 1
 	activation_cost = 20
@@ -59,7 +59,7 @@
 
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft
 	name = "\improper NIFLink Holocaller"
-	desc = "A nanomachine construct working as a modified version of the MODlink scryer, conjured using a NIF; functionally the same, but able to carry out holocalls in a more portable format."
+	desc = "Uma construção nanomáquina que funciona como uma versão modificada do script MODlink, evocada usando um NIF, funcionalmente o mesmo, mas capaz de realizar holocaustos em um formato mais portátil."
 	custom_examine_controls = TRUE
 	/// A weakref of the parent NIFSoft that the scryer belongs to.
 	var/datum/weakref/parent_nifsoft
@@ -81,8 +81,8 @@
 
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft/examine(mob/user)
 	. = ..()
-	. += span_notice("The MODlink ID is [mod_link.id], frequency is [mod_link.frequency || "unset"]. <b>Right-click</b> with a multitool to copy/imprint the frequency.")
-	. += span_notice("<b>Right-click</b> with an empty hand to change the name.")
+	. += span_notice("A ID MODlink é[mod_link.id], frequência é[mod_link.frequency || "unset"]. <b>Botão direito</b>com uma multitool para copiar/imprimir a frequência.")
+	. += span_notice("<b>Botão direito</b>com uma mão vazia para mudar o nome.")
 
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft/equipped(mob/living/user, slot)
 	. = ..()
@@ -97,7 +97,7 @@
 	return TRUE
 
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft/screwdriver_act(mob/living/user, obj/item/tool)
-	balloon_alert(user, "cell non-removable!")
+	balloon_alert(user, "célula não removível!")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/clothing/neck/link_scryer/loaded/nifsoft/attack_hand_secondary(mob/user, list/modifiers)
@@ -106,15 +106,15 @@
 		return
 	var/new_label = reject_bad_text(tgui_input_text(user, "Change the visible name", "Set Name", label, MAX_NAME_LEN))
 	if(!new_label)
-		balloon_alert(user, "invalid name!")
+		balloon_alert(user, "Nome inválido!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	label = new_label
-	balloon_alert(user, "name set!")
+	balloon_alert(user, "Nome definido!")
 	update_name()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /// This cell is only meant for use in items temporarily created by a NIF. Do not let players extract this from devices.
 /obj/item/stock_parts/power_store/cell/infinite/nif_cell
 	name = "Nanite Cell"
-	desc = "If you see this, please make an issue on GitHub."
+	desc = "Se vir isso, por favor, faça um problema no GitHub."
 

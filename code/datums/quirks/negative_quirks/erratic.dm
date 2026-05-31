@@ -1,12 +1,12 @@
 /datum/quirk/erratic
 	name = "Erratic"
-	desc = "You mood swings like a pendulum, causing your personality to change on a whim every so often."
+	desc = "Você muda de humor como um pêndulo, fazendo sua personalidade mudar de vez em quando."
 	icon = FA_ICON_MASKS_THEATER
 	value = -3
-	gain_text = span_danger("You feel erratic.") // say that again?
-	lose_text = span_notice("You feel more stable.")
-	medical_record_text = "Patient has a bipolar personality disorder."
-	medical_symptom_text = "Exhibits sudden and unpredictable changes in personality, mood, and behavior, often swinging between extremes of emotion and demeanor."
+	gain_text = span_danger("Você se sente irregular.") // say that again?
+	lose_text = span_notice("Você se sente mais estável.")
+	medical_record_text = "O paciente tem transtorno bipolar de personalidade."
+	medical_symptom_text = "Expõe mudanças súbitas e imprevisíveis na personalidade, humor e comportamento, muitas vezes oscilando entre extremos de emoção e comportamento."
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_MOODLET_BASED|QUIRK_PROCESSES|QUIRK_TRAUMALIKE
 	hardcore_value = 3
 	mail_goodies = list(/obj/item/storage/pill_bottle/psicodine)
@@ -40,14 +40,14 @@
 	if(random_index % 2 == 0)
 		random_index = 0
 		replace_personalities(base_personalities)
-		to_chat(quirk_holder, span_notice("You feel... normal."))
+		to_chat(quirk_holder, span_notice("Você se sente... normal."))
 		announce_personality_change()
 		return
 
 	var/max = CONFIG_GET(number/max_personalities)
 	var/list/new_personality = prob(1) ? list() : SSpersonalities.select_random_personalities(max - 2, max + 1)
 	replace_personalities(new_personality)
-	to_chat(quirk_holder, span_notice("You feel... different."))
+	to_chat(quirk_holder, span_notice("Você se sente... diferente."))
 	announce_personality_change()
 
 /datum/quirk/erratic/proc/replace_personalities(list/new_personalities)
@@ -58,4 +58,4 @@
 	var/list/new_personality = list()
 	for(var/datum/personality/personality_type as anything in quirk_holder.personalities)
 		new_personality += initial(personality_type.name)
-	to_chat(quirk_holder, span_green("Your personality is now: [english_list(new_personality)]."))
+	to_chat(quirk_holder, span_green("Sua personalidade é agora:[english_list(new_personality)]."))

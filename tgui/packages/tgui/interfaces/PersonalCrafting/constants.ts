@@ -1,7 +1,7 @@
 import { Food } from '../PreferencesMenu/types';
 
 export const TYPE_ICONS = {
-  'Can Make': 'utensils',
+  'Pode fazer': 'utensils',
   [Food.Bloody]: 'tint', // BUBBER EDIT ADDITION - Hemophage Food
   [Food.Alcohol]: 'wine-glass',
   [Food.Breakfast]: 'sun',
@@ -28,10 +28,10 @@ export const TYPE_ICONS = {
 } as const;
 
 export const CATEGORY_ICONS_CRAFTING = {
-  'Can Make': 'hammer',
-  'Weapons Melee': 'hand-fist',
-  'Weapons Ranged': 'gun',
-  'Weapon Ammo': 'box',
+  'Pode fazer': 'hammer',
+  'Melee Armas': 'hand-fist',
+  'Armas Ranged': 'gun',
+  'Munição de armas': 'box',
   Robotics: 'robot',
   Misc: 'shapes',
   Tribal: 'campground',
@@ -49,11 +49,11 @@ export const CATEGORY_ICONS_CRAFTING = {
   Tools: 'screwdriver-wrench',
   Entertainment: 'masks-theater',
   Gardening: 'wheat-awn', // BUBBER EDIT ADDITION - Gardening Category
-  'Blood Cult': 'users',
+  'Cult de Sangue': 'users',
 } as const;
 
 export const CATEGORY_ICONS_COOKING = {
-  'Can Make': 'utensils',
+  'Pode fazer': 'utensils',
   Appetizer: 'bread-slice',
   Bread: 'bread-slice',
   Burger: 'burger',
@@ -84,7 +84,7 @@ export const CATEGORY_ICONS_COOKING = {
   Taco: 'circle-o',
   Terran: 'earth-europe',
   Uncategorized: 'shapes',
-  'Main Course': 'drumstick-bite',
+  'Curso Principal': 'drumstick-bite',
   Breakfast: 'sun',
   Snack: 'compress',
   Condiment: 'bottle-water',

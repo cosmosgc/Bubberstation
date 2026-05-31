@@ -72,7 +72,7 @@
 /datum/component/torn_wall/proc/try_repair(atom/source, mob/user, obj/item/tool)
 	source.balloon_alert(user, "consertando...")
 	if(!tool.use_tool(source, user, 5 SECONDS, amount = 2, volume = 50))
-		source.balloon_alert(user, "interrompido!")
+		source.balloon_alert(user, "Interrompido!")
 		return
 	current_stage--
 	if (current_stage < TORN_WALL_INITIAL)
@@ -85,8 +85,8 @@
 /datum/component/torn_wall/proc/on_examined(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	var/intensity = (current_stage == TORN_WALL_INITIAL) ? "slightly" : "badly"
-	examine_list += span_notice("It looks [intensity] damaged.")
-	examine_list += span_info("You may be able to repair it using a welding tool.")
+	examine_list += span_notice("Parece[intensity]Danificado.")
+	examine_list += span_info("Você pode ser capaz de repará-lo usando uma ferramenta de solda.")
 
 /// Show a little crack on here
 /datum/component/torn_wall/proc/on_update_overlays(turf/source, list/overlays)

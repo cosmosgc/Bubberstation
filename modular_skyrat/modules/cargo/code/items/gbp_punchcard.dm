@@ -5,9 +5,7 @@
 
 /obj/item/gbp_punchcard
 	name = "Good Assistant Points punchcard"
-	desc = "The Good Assistant Points program is designed to supplement the income of otherwise unemployed or unpaid individuals on board Nanotrasen vessels and colonies.<br>\
-	Simply get your punchcard stamped by a Head of Staff's PDA to earn 150 credits per punch upon turn-in at a Good Assistant Point machine!<br>\
-	Maximum of six punches per any given card. Card replaced upon redemption of existing card. Do not lose your punchcard."
+	desc = "O programa Good Assistant Points é projetado para complementar a renda de indivíduos desempregados ou não pagos a bordo de navios e colônias Nanotrasen.<br>Basta ter seu cartão carimbado pelo PDA de um Chefe de Estado-Maior para ganhar 150 créditos por soco em uma máquina Good Assistant Point!<br>No máximo seis socos por cada carta. Cartão substituído após a redenção do cartão existente. Não perca seu cartão de soco."
 	icon = 'modular_skyrat/modules/cargo/icons/punchcard.dmi'
 	icon_state = "punchcard_0"
 	w_class = WEIGHT_CLASS_TINY
@@ -33,7 +31,7 @@
 
 	if(is_valid_item)
 		if(!COOLDOWN_FINISHED(src, gbp_punch_cooldown))
-			balloon_alert(user, "cooldown! ([DisplayTimeText(COOLDOWN_TIMELEFT(src, gbp_punch_cooldown))])")
+			balloon_alert(user, "Calma![DisplayTimeText(COOLDOWN_TIMELEFT(src, gbp_punch_cooldown))])")
 			return
 		if(punches < max_punches)
 			punches++
@@ -49,14 +47,14 @@
 
 /obj/item/gbp_puncher
 	name = "Good Assistant Points puncher"
-	desc = "A puncher for use with the Good Assistant Points system. Use it on a punchcard to punch a hole. Expect to be hassled for punches by assistants."
+	desc = "Um soco para usar com o sistema de Pontos Assistentes Bons. Use em um cartão para fazer um buraco. Espero ser incomodado por socos por assistentes."
 	icon = 'modular_skyrat/modules/cargo/icons/punchcard.dmi'
 	icon_state = "puncher"
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/machinery/gbp_redemption
 	name = "Good Assistant Points Redemption Machine"
-	desc = "Turn your Good Assistant Points punchcards in here for a payout based on the amount of punches you have, and get a new card!"
+	desc = "Entregue seus cartões de pontos bons aqui para um pagamento baseado na quantidade de socos que você tem, e obter um novo cartão!"
 	icon = 'modular_skyrat/modules/cargo/icons/punchcard.dmi'
 	icon_state = "gbp_machine"
 	density = TRUE
@@ -94,7 +92,7 @@
 			return
 
 		if(!COOLDOWN_FINISHED(card_used, gbp_redeem_cooldown))
-			balloon_alert(user, "cooldown! [DisplayTimeText(COOLDOWN_TIMELEFT(card_used, gbp_redeem_cooldown))]")
+			balloon_alert(user, "Calma![DisplayTimeText(COOLDOWN_TIMELEFT(card_used, gbp_redeem_cooldown))]")
 			return
 
 		if(!card_used.registered_account || !istype(card_used.registered_account.account_job, /datum/job/assistant))
@@ -103,7 +101,7 @@
 			return
 
 		if(punchcard.punches < punchcard.max_punches)
-			if(tgui_alert(user, "You haven't finished the punchcard! Are you sure you want to redeem, starting the 15 minute timer?", "A real goof effort right here", list("No", "Yes")) != "Yes")
+			if(tgui_alert(user, "Você não terminou o cartão de soco! Tem certeza que quer redimir o temporizador de 15 minutos?", "A real goof effort right here", list("No", "Yes")) != "Yes")
 				return
 
 		if(!punchcard.punches) // check to see if someone left the dialog open to redeem a card twice
@@ -139,7 +137,7 @@
 
 /datum/design/board/gbp_machine
 	name = "Good Assistant Points Redemption Machine Board"
-	desc = "The circuit board for a Good Assistant Points Redemption Machine."
+	desc = "O circuito de uma boa máquina de resgate de pontos assistentes."
 	id = "gbp_machine"
 	build_path = /obj/item/circuitboard/machine/gbp_redemption
 	category = list(

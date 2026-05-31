@@ -1,8 +1,7 @@
 /// Weaker smite, not outright gibbing your target, but a lot more bloody, and Sanguine school, so doesn't get affected by splattercasting.
 /datum/action/cooldown/spell/touch/scream_for_me
 	name = "Scream For Me"
-	desc = "This wicked spell inflicts many severe wounds on your target, causing them to \
-		likely bleed to death unless they receive immediate medical attention."
+	desc = "Este feitiço cruel inflige muitas feridas graves no seu alvo, fazendo com que sangrem até a morte, a menos que recebam cuidados médicos imediatos."
 	button_icon_state = "scream_for_me"
 	sound = null //trust me, you'll hear their wounds
 
@@ -17,8 +16,8 @@
 
 /datum/action/cooldown/spell/touch/scream_for_me/on_antimagic_triggered(obj/item/melee/touch_attack/hand, mob/living/victim, mob/living/carbon/caster)
 	caster.visible_message(
-		span_warning("The feedback mutilates [caster]'s arm!"),
-		span_userdanger("The spell bounces from [victim]'s skin back into your arm!"),
+		span_warning("O feedback mutila[caster]O braço!"),
+		span_userdanger("O feitiço salta de[victim]A pele de volta ao seu braço!"),
 	)
 	var/obj/item/bodypart/to_wound = caster.get_holding_bodypart_of_item(hand)
 	caster.cause_wound_of_type_and_severity(WOUND_SLASH, to_wound, WOUND_SEVERITY_MODERATE, WOUND_SEVERITY_CRITICAL)
@@ -34,7 +33,7 @@
 
 /obj/item/melee/touch_attack/scream_for_me
 	name = "\improper bloody touch"
-	desc = "Guaranteed to make your victims scream, or your money back!"
+	desc = "Garantido para fazer suas vítimas gritarem, ou seu dinheiro de volta!"
 	icon = 'icons/obj/weapons/hand.dmi'
 	icon_state = "scream_for_me"
 	inhand_icon_state = "disintegrate"

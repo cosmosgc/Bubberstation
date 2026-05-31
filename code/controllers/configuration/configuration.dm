@@ -77,7 +77,7 @@
 
 /datum/controller/configuration/proc/PreConfigReload()
 	if(reload_in_progress)
-		to_chat(usr, span_warning("Another user is already reloading the config!"))
+		to_chat(usr, span_warning("Outro usuário já está recarregando a configuração!"))
 		return FALSE
 
 	reload_in_progress = TRUE
@@ -546,8 +546,7 @@ Example config:
 
 	if(!fexists(file(config_toml)))
 		SSjob.legacy_mode = TRUE
-		message += "jobconfig.toml not found, falling back to legacy mode (using jobs.txt). To suppress this warning, generate a jobconfig.toml by running the verb 'Generate Job Configuration' in the Server tab.\n\
-			From there, you can then add it to the /config folder of your server to have it take effect for future rounds."
+		message += "jobconfig.toml not found, falling back to legacy mode (using jobs.txt). To suppress this warning, generate a jobconfig.toml by running the verb 'Generate Job Configuration' in the Server tab.\n			From there, you can then add it to the /config folder of your server to have it take effect for future rounds."
 
 		if(!fexists(file(config_txt)))
 			message += "\n\nFailed to set up legacy mode, jobs.txt not found! Codebase defaults will be used. If you do not wish to use this system, please disable it by commenting out the LOAD_JOBS_FROM_TXT config flag."

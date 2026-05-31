@@ -73,10 +73,7 @@ GLOBAL_DATUM_INIT(lost_crew_manager, /datum/lost_crew_manager, new)
 
 	var/obj/item/organ/brain/hersens = new_body.get_organ_by_type(/obj/item/organ/brain)
 	hersens.AddComponent(
-		/datum/component/ghostrole_on_revive, \
-		/* refuse_revival_if_failed = */ TRUE, \
-		/*on_revival = */ CALLBACK(src, PROC_REF(on_successful_revive), hersens, scenario.death_lore, on_revive_and_player_occupancy) \
-	)
+		/datum/component/ghostrole_on_revive, 		/* refuse_revival_if_failed = */ TRUE, 		/*on_revival = */ CALLBACK(src, PROC_REF(on_successful_revive), hersens, scenario.death_lore, on_revive_and_player_occupancy) 	)
 
 /// Set a timer for awarding succes and drop some awesome deathlore
 /datum/lost_crew_manager/proc/on_successful_revive(obj/item/organ/brain/brain, list/death_lore, list/datum/callback/on_revive_and_player_occupancy)
@@ -121,7 +118,7 @@ GLOBAL_DATUM_INIT(lost_crew_manager, /datum/lost_crew_manager, new)
 /// A box for recovered items that can only be opened by the new crewmember
 /obj/item/storage/lockbox/mind
 	name = "mind lockbox"
-	desc = "A locked box, openable only by one mind."
+	desc = "Uma caixa trancada, aberta apenas por uma mente."
 
 	/// The mind needed to unlock the box
 	var/datum/mind/mind

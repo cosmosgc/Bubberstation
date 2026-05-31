@@ -1,7 +1,7 @@
 ///Mostly useless funny rite for forgiving someone, making them innocent once again.
 /datum/religion_rites/forgive
 	name = "Forgive"
-	desc = "Forgives someone, making them no longer considered guilty. A kind gesture, all things considered!"
+	desc = "Perdoa alguém, fazendo-o não mais ser considerado culpado. Um gesto gentil, considerando tudo!"
 	invoke_msg = "You are absolved of sin."
 	var/mob/living/who
 
@@ -12,7 +12,7 @@
 	if(!honor)
 		return FALSE
 	if(!length(honor.guilty))
-		to_chat(user, span_warning("[GLOB.deity] is holding no grudges to forgive."))
+		to_chat(user, span_warning("[GLOB.deity]não guarda rancor para perdoar."))
 		return FALSE
 	var/forgiven_choice = tgui_input_list(user, "Choose one of [GLOB.deity]'s guilty to forgive", "Forgive", honor.guilty)
 	if(isnull(forgiven_choice))
@@ -34,7 +34,7 @@
 
 /datum/religion_rites/summon_rules
 	name = "Summon Honorbound Rules"
-	desc = "Enscribes a paper with the honorbound rules and regulations."
+	desc = "Escreva um papel com as regras de honra."
 	invoke_msg = "Bring forth the holy writ!"
 	///paper to turn into holy writ
 	var/obj/item/paper/writ_target
@@ -47,7 +47,7 @@
 			continue
 		writ_target = could_writ //PLEASE SIGN MY AUTOGRAPH
 		return ..()
-	to_chat(user, span_warning("You need to place blank paper on [religious_tool] to do this!"))
+	to_chat(user, span_warning("Você precisa colocar papel em branco[religious_tool]Para fazer isso!"))
 	return FALSE
 
 /datum/religion_rites/summon_rules/invoke_effect(mob/living/user, atom/movable/religious_tool)
@@ -56,9 +56,9 @@
 	var/turf/tool_turf = get_turf(religious_tool)
 	writ_target = null
 	if(QDELETED(autograph) || !(tool_turf == autograph.loc)) //check if the paper is still there
-		to_chat(user, span_warning("Your target left the altar!"))
+		to_chat(user, span_warning("Seu alvo deixou o altar!"))
 		return FALSE
-	autograph.visible_message(span_notice("Words magically form on [autograph]!"))
+	autograph.visible_message(span_notice("Palavras mágicas se formam[autograph]!"))
 	playsound(tool_turf, 'sound/effects/pray.ogg', 50, TRUE)
 	new /obj/item/paper/holy_writ(tool_turf)
 	qdel(autograph)
@@ -117,8 +117,7 @@
  */
 /datum/religion_rites/deaconize/crusader
 	name = "Join Crusade"
-	desc = "Converts someone to your sect. They must be willing, so the first invocation will instead prompt them to join. \
-	They will become honorbound like you, and you will gain a massive favor boost!"
+	desc = "Converte alguém para sua seita. Devem estar dispostos, então a primeira invocação os levará a se juntarem. Eles se tornarão honrados como você, e você ganhará um enorme aumento de favor!"
 	ritual_length = 30 SECONDS
 	ritual_invocations = list(
 		"A good, honorable crusade against evil is required.",
@@ -136,12 +135,12 @@
 
 /datum/religion_rites/deaconize/crusader/is_valid_for_deacon(mob/living/carbon/human/possible_deacon, mob/living/user)
 	if((TRAIT_GENELESS in possible_deacon.dna.species.inherent_traits) && !issynthetic(possible_deacon)) // BUBBER EDIT CHANGE: Let synths join crusades. Original: if(TRAIT_GENELESS in possible_deacon.dna.species.inherent_traits)
-		to_chat(user, span_warning("This species disgusts [GLOB.deity]! They would never be allowed to join the crusade!"))
+		to_chat(user, span_warning("Esta espécie enoja.[GLOB.deity]Eles nunca poderiam se juntar à cruzada!"))
 		return FALSE
 	return ..()
 
 /datum/religion_rites/deaconize/crusader/invite_deacon(mob/living/carbon/human/invited)
-	var/ask = tgui_alert(invited, "Join [GLOB.deity]? You will be bound to a code of honor.", "Invitation", list("Yes", "No"), 60 SECONDS)
+	var/ask = tgui_alert(invited, "Junta-se.[GLOB.deity]Você será obrigado a um código de honra.", "Invitation", list("Yes", "No"), 60 SECONDS)
 	if(ask != "Yes")
 		return
 	potential_deacon = invited

@@ -110,7 +110,7 @@
 		if(!has_trait)
 			return
 
-	attacker.visible_message(span_warning("[attacker] dispells the ghostly energy from [source]!"), span_warning("You dispel the ghostly energy from [source]!"))
+	attacker.visible_message(span_warning("[attacker]Dispela a energia fantasmagórica de[source]!"), span_warning("Você dissipa a energia fantasmagórica de[source]!"))
 	clear_haunting()
 	return COMPONENT_NO_AFTERATTACK
 
@@ -130,10 +130,4 @@
 	for(var/obj/item/object_to_possess in range(range, epicenter))
 		if(!prob(haunt_chance))
 			continue
-		object_to_possess.AddComponent(/datum/component/haunted_item, \
-			haunt_color = "#52336e", \
-			haunt_duration = duration, \
-			aggro_radius = range, \
-			spawn_message = span_revenwarning("[object_to_possess] slowly rises upward, hanging menacingly in the air..."), \
-			despawn_message = span_revenwarning("[object_to_possess] settles to the floor, lifeless and unmoving."), \
-		)
+		object_to_possess.AddComponent(/datum/component/haunted_item, 			haunt_color = "#52336e", 			haunt_duration = duration, 			aggro_radius = range, 			spawn_message = span_revenwarning("[object_to_possess]lentamente sobe para cima, pendurando ameaçadoramente no ar..."), 			despawn_message = span_revenwarning("[object_to_possess]Fica no chão, sem vida e sem movimento."), 		)

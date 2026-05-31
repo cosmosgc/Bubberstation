@@ -1,7 +1,6 @@
 /datum/surgery_operation/basic/implant_removal
 	name = "implant removal"
-	desc = "Attempt to find and remove an implant from a patient. \
-		Any implant found will be destroyed unless an implant case is held or nearby."
+	desc = "Tente encontrar e remover um implante de um paciente. Qualquer implante encontrado será destruído a menos que uma caixa de implante seja mantida ou próxima."
 	operation_flags = OPERATION_NOTABLE
 	implements = list(
 		TOOL_HEMOSTAT = 1,
@@ -23,9 +22,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You search for implants in [patient]..."),
-		span_notice("[surgeon] searches for implants in [patient]."),
-		span_notice("[surgeon] searches for something in [patient]."),
+		span_notice("Você procura por implantes em[patient]..."),
+		span_notice("[surgeon]Procura por implantes em[patient]."),
+		span_notice("[surgeon]Procura por algo em[patient]."),
 	)
 	if(LAZYLEN(patient.implants))
 		display_pain(patient, "You feel a serious pain as [surgeon] digs around inside you!")
@@ -36,18 +35,18 @@
 		display_results(
 			surgeon,
 			patient,
-			span_warning("You find no implant to remove from [patient]."),
-			span_warning("[surgeon] finds no implant to remove from [patient]."),
-			span_warning("[surgeon] finds nothing to remove from [patient]."),
+			span_warning("Você não encontra nenhum implante para remover[patient]."),
+			span_warning("[surgeon]não encontra nenhum implante para remover de[patient]."),
+			span_warning("[surgeon]não encontra nada para remover[patient]."),
 		)
 		return
 
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You successfully remove [implant] from [patient]."),
-		span_notice("[surgeon] successfully removes [implant] from [patient]!"),
-		span_notice("[surgeon] successfully removes something from [patient]!"),
+		span_notice("Você remove com sucesso.[implant]De[patient]."),
+		span_notice("[surgeon]com sucesso remove[implant]De[patient]!"),
+		span_notice("[surgeon]com sucesso remove algo de[patient]!"),
 	)
 	display_pain(patient, "You can feel your [implant.name] pulled out of you!")
 	implant.removed(patient)
@@ -65,9 +64,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You place [implant] into [case]."),
-		span_notice("[surgeon] places [implant] into [case]."),
-		span_notice("[surgeon] places something into [case]."),
+		span_notice("Seu lugar.[implant]em[case]."),
+		span_notice("[surgeon]Lugares[implant]em[case]."),
+		span_notice("[surgeon]Coloca algo em[case]."),
 	)
 
 /datum/surgery_operation/basic/implant_removal/proc/get_case(mob/living/surgeon, mob/living/target)

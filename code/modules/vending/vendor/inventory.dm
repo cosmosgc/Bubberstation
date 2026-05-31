@@ -205,10 +205,10 @@
 	if(greyscale_colors)
 		vended_item.set_greyscale(colors=greyscale_colors)
 	if(IsReachableBy(user) && user.put_in_hands(vended_item))
-		to_chat(user, span_notice("You take [item_record.name] out of the slot."))
+		to_chat(user, span_notice("Você pega.[item_record.name]Fora da área."))
 		vended_item.do_pickup_animation(user, src)
 	else
-		to_chat(user, span_warning("[capitalize(format_text(item_record.name))] falls onto the floor!"))
+		to_chat(user, span_warning("[capitalize(format_text(item_record.name))]Cai no chão!"))
 	SSblackbox.record_feedback("nested tally", "vending_machine_usage", 1, list("[type]", "[item_record.product_path]"))
 
 /**

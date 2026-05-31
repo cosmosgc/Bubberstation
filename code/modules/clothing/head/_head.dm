@@ -26,33 +26,33 @@
 			var/obj/item/WH = H.head
 			///check if the item has NODROP
 			if(HAS_TRAIT(WH, TRAIT_NODROP))
-				H.visible_message(span_warning("[src] bounces off [H]'s [WH.name]!"), span_warning("[src] bounces off your [WH.name], falling to the floor."))
+				H.visible_message(span_warning("[src]Ele se mexe.[H]'s[WH.name]!"), span_warning("[src]rebate em seu[WH.name], caindo no chão."))
 				return
 			///check if the item is an actual clothing head item, since some non-clothing items can be worn
 			if(istype(WH, /obj/item/clothing/head))
 				var/obj/item/clothing/head/WHH = WH
 				///SNUG_FIT hats are immune to being knocked off
 				if(WHH.clothing_flags & SNUG_FIT)
-					H.visible_message(span_warning("[src] bounces off [H]'s [WHH.name]!"), span_warning("[src] bounces off your [WHH.name], falling to the floor."))
+					H.visible_message(span_warning("[src]Ele se mexe.[H]'s[WHH.name]!"), span_warning("[src]rebate em seu[WHH.name], caindo no chão."))
 					return
 			///if the hat manages to knock something off
 			if(H.dropItemToGround(WH))
-				H.visible_message(span_warning("[src] knocks [WH] off [H]'s head!"), span_warning("[WH] is suddenly knocked off your head by [src]!"))
+				H.visible_message(span_warning("[src]Bate.[WH]Off[H]A cabeça!"), span_warning("[WH]é de repente derrubado sua cabeça por[src]!"))
 		if(H.equip_to_slot_if_possible(src, ITEM_SLOT_HEAD, 0, 1, 1))
-			H.visible_message(span_notice("[src] lands neatly on [H]'s head!"), span_notice("[src] lands perfectly onto your head!"))
+			H.visible_message(span_notice("[src]Aterrissamos perfeitamente[H]A cabeça!"), span_notice("[src]Cai perfeitamente na sua cabeça!"))
 			H.update_held_items() //force update hands to prevent ghost sprites appearing when throw mode is on
 		return
 	if(iscyborg(hit_atom))
 		var/mob/living/silicon/robot/R = hit_atom
 		var/obj/item/worn_hat = R.hat
 		if(worn_hat && HAS_TRAIT(worn_hat, TRAIT_NODROP))
-			R.visible_message(span_warning("[src] bounces off [worn_hat], without an effect!"), span_warning("[src] bounces off your mighty [worn_hat.name], falling to the floor in defeat."))
+			R.visible_message(span_warning("[src]Ele se mexe.[worn_hat]Sem efeito!"), span_warning("[src]rebate seu poderoso[worn_hat.name], caindo no chão em derrota."))
 			return
 		if(is_type_in_typecache(src, GLOB.blacklisted_borg_hats))//hats in the borg's blacklist bounce off
-			R.visible_message(span_warning("[src] bounces off [R]!"), span_warning("[src] bounces off you, falling to the floor."))
+			R.visible_message(span_warning("[src]Ele se mexe.[R]!"), span_warning("[src]bate em você, caindo no chão."))
 			return
 		else
-			R.visible_message(span_notice("[src] lands neatly on top of [R]!"), span_notice("[src] lands perfectly on top of you."))
+			R.visible_message(span_notice("[src]Aterra em cima de tudo.[R]!"), span_notice("[src]Aterra perfeitamente em cima de você."))
 			R.place_on_head(src) //hats aren't designed to snugly fit borg heads or w/e so they'll always manage to knock eachother off
 
 /obj/item/clothing/head/worn_overlays(mutable_appearance/standing, isinhands = FALSE)

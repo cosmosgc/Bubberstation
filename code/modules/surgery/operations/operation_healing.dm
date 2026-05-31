@@ -8,7 +8,7 @@
 /datum/surgery_operation/basic/tend_wounds
 	name = "tend wounds"
 	rnd_name = "Tend Wounds"
-	desc = "Perform superficial wound care on a patient's bruises and burns."
+	desc = "Cuidados superficiais nas festas e animaduras de um paciente."
 	implements = list(
 		TOOL_HEMOSTAT = 1,
 		TOOL_SCREWDRIVER = 1.5,
@@ -120,9 +120,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You attempt to patch some of [patient]'s [woundtype]."),
-		span_notice("[surgeon] attempts to patch some of [patient]'s [woundtype]."),
-		span_notice("[surgeon] attempts to patch some of [patient]'s [woundtype]."),
+		span_notice("Você tenta consertar um pouco de[patient]'s[woundtype]."),
+		span_notice("[surgeon]Tenta remendar alguns dos[patient]'s[woundtype]."),
+		span_notice("[surgeon]Tenta remendar alguns dos[patient]'s[woundtype]."),
 	)
 	display_pain(patient, "Your [woundtype] sting like hell!")
 
@@ -219,9 +219,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_warning("You screwed up!"),
-		span_warning("[surgeon] screws up!"),
-		span_notice("[surgeon] fixes some of [patient]'s wounds."),
+		span_warning("Você estragou tudo!"),
+		span_warning("[surgeon]Estraga tudo!"),
+		span_notice("[surgeon]Conserta um pouco de[patient]São feridas."),
 		target_detailed = TRUE,
 	)
 	var/brute_dealt = operation_args[OPERATION_BRUTE_HEAL] * 0.8

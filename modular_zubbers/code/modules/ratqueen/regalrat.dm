@@ -39,7 +39,7 @@
 /// Regal rat swallows sludge to transform themselves into a different looking rat
 /datum/action/cooldown/rat_fashion
 	name = "Rat King's Transformation"
-	desc = "Assume your true form, whatever you decide it is at the moment."
+	desc = "Assuma sua verdadeira forma, seja lá o que decidir no momento."
 	check_flags = AB_CHECK_CONSCIOUS
 	cooldown_time = 10 SECONDS
 	melee_cooldown_time = 0 SECONDS
@@ -51,7 +51,7 @@
 /datum/action/cooldown/rat_fashion/Activate(atom/target)
 	var/mob/living/basic/regal_rat/rat_owner = owner
 	if (!istype(rat_owner))
-		owner.balloon_alert(owner, "not a rat!")
+		owner.balloon_alert(owner, "Não um rato!")
 		qdel(src)
 		return
 
@@ -70,14 +70,14 @@
 
 	var/datum/rat_fashion/chosen = picks_to_instances[pick]
 	if (rat_owner.current_look.name == chosen.name)
-		owner.balloon_alert(owner, "nothing to change!")
+		owner.balloon_alert(owner, "Nada para lamar!")
 		return
 
 	var/turf/origin = get_turf(owner)
 	owner.balloon_alert_to_viewers("shudders...")
 
 	if (!do_after(owner, 3 SECONDS, target = origin))
-		owner.balloon_alert(owner, "interrompido!")
+		owner.balloon_alert(owner, "Interrompido!")
 		return
 
 	rat_owner.current_look = chosen

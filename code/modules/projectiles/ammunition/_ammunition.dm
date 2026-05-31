@@ -1,6 +1,6 @@
 /obj/item/ammo_casing
 	name = "bullet casing"
-	desc = "A bullet casing."
+	desc = "Um carrinho de bala."
 	icon = 'icons/obj/weapons/guns/ammo.dmi'
 	icon_state = "s-casing"
 	worn_icon_state = "bullet"
@@ -101,12 +101,12 @@
 		proj_damage_mult = our_gun.projectile_damage_multiplier
 	var/list/readout = list()
 	if(proj_damage_mult <= 0 || (initial_damage <= 0 && initial_stamina <= 0))
-		return "Our legal team has determined the offensive nature of these [span_warning(caliber)] rounds to be esoteric."
+		return "Nossa equipe legal determinou uma naturalza ofensiva destes[span_warning(caliber)]rounds para ser esotérico."
 	// No dividing by 0
 	if(initial_damage)
-		readout += "Most monkeys our legal team subjected to these [span_warning(caliber)] rounds succumbed to their wounds after [span_warning("[HITS_TO_CRIT((initial(exam_proj.damage) * proj_damage_mult) * pellets)] shot\s")] at point-blank, taking [span_warning("[pellets] shot\s")] per round."
+		readout += "A maioria dos macacos que nossa equipe legal submeteu a estes[span_warning(caliber)]As balas sucumbiram às suas feridas depois.[span_warning("[HITS_TO_CRIT((initial(exam_proj.damage) * proj_damage_mult) * pellets)] shot\s")]à queima-roupa, tomando[span_warning("[pellets] shot\s")]Por rodada."
 	if(initial_stamina)
-		readout += "[!readout.len ? "Most monkeys" : "More fortunate monkeys"] collapsed from exhaustion after [span_warning("[HITS_TO_CRIT((initial(exam_proj.stamina) * proj_damage_mult) * pellets)] impact\s")] of these [span_warning("[caliber]")] rounds."
+		readout += "[!readout.len ? "Most monkeys" : "More fortunate monkeys"]colapso de exaustão depois[span_warning("[HITS_TO_CRIT((initial(exam_proj.stamina) * proj_damage_mult) * pellets)] impact\s")]Destes[span_warning("[caliber]")]Rodadas."
 	return readout.Join("\n") // Sending over a single string, rather than the whole list
 
 /obj/item/ammo_casing/update_icon_state()
@@ -149,9 +149,9 @@
 					continue
 			if (boolets > 0)
 				box.update_appearance()
-				to_chat(user, span_notice("You collect [boolets] [box.casing_phrasing]\s. [box] now contains [box.stored_ammo.len] [box.casing_phrasing]\s."))
+				to_chat(user, span_notice("Você coleciona[boolets] [box.casing_phrasing]\s.[box]agora contém[box.stored_ammo.len] [box.casing_phrasing]\s."))
 			else
-				to_chat(user, span_warning("You fail to collect anything!"))
+				to_chat(user, span_warning("Você não consegue coletar nada!"))
 	else
 		return ..()
 

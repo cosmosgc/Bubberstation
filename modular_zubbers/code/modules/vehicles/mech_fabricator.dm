@@ -21,7 +21,7 @@
 		update_static_data_for_all_viewers()
 		return TRUE
 	else
-		to_chat(user, span_warning("You try clicking and typing but don’t understand what to do with it"))
+		to_chat(user, span_warning("Você tenta clicar e digitar, mas não entende o que fazer com ele."))
 		return FALSE
 
 /obj/item/circuitboard/machine/mechfab/interdyne

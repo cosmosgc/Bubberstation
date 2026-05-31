@@ -121,9 +121,7 @@
 	weight = CLONER_FAILURE_RARE
 
 /datum/experimental_cloner_fuckup/monkey/post_emerged(mob/living/carbon/victim)
-	victim.visible_message(\
-		span_boldwarning("[victim]'s hair begins to grow rapidly!"),\
-		span_boldwarning("As you emerge from the pod, all the hair on your body starts to grow!"))
+	victim.visible_message(		span_boldwarning("[victim]O cabelo começa a crescer rapidamente!"),		span_boldwarning("Quando você sai da cápsula, todo o cabelo do seu corpo começa a crescer!"))
 	victim.monkeyize()
 
 /// No skin
@@ -132,9 +130,7 @@
 
 /datum/experimental_cloner_fuckup/skeletised/post_emerged(mob/living/victim)
 	victim.emote("scream")
-	victim.visible_message(\
-		span_boldwarning("[victim]'s flesh slithers off in a disgusting heap!"),\
-		span_boldwarning("As you emerge from the pod, your skin slithers off onto the ground!"))
+	victim.visible_message(		span_boldwarning("[victim]A carne se desliza em uma pilha nojenta!"),		span_boldwarning("Quando você sai da cápsula, sua pele desliza para o chão!"))
 	victim.set_species(/datum/species/skeleton)
 	new /obj/effect/gibspawner/human/bodypartless(victim.drop_location(), victim)
 
@@ -151,9 +147,7 @@
 
 /datum/experimental_cloner_fuckup/total_failure/post_emerged(mob/living/victim)
 	victim.emote("scream")
-	victim.visible_message(\
-		span_boldwarning("[victim] collapses bonelessly into a writhing heap of flesh!"),\
-		span_boldwarning("As you emerge from the pod, your boneless flesh collapses into a writhing heap!"))
+	victim.visible_message(		span_boldwarning("[victim]Cai sem osso em um montão de carne!"),		span_boldwarning("Quando você sai da cápsula, sua carne desossada cai em um montão de contorcedores!"))
 	var/mob/living/basic/fleshblob/blob = new(victim.drop_location())
 	blob.name = victim.real_name
 	blob.real_name = victim.real_name

@@ -10,14 +10,14 @@ Self-sustaining extracts:
 
 /obj/item/autoslime
 	name = "autoslime"
-	desc = "It resembles a normal slime extract, but seems filled with a strange, multi-colored fluid."
+	desc = "Parece um extrato normal de lodo, mas parece cheio de um estranho fluido multicolorido."
 	var/obj/item/slime_extract/extract
 	var/effect_desc = "A self-sustaining slime extract. When used, lets you choose which reaction you want."
 
 //Just divides into the actual item.
 /obj/item/slimecross/selfsustaining/Initialize(mapload)
 	..()
-	visible_message(span_warning("The [src] shudders, and splits into four smaller extracts."))
+	visible_message(span_warning("O[src]Estremece e se dividem em quatro extratos menores."))
 	for(var/i in 1 to 4)
 		var/obj/item/autoslime/A = new /obj/item/autoslime(src.loc)
 		var/obj/item/slime_extract/X = new extract_type(A)

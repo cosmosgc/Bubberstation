@@ -10,7 +10,7 @@
 
 /obj/item/powersink
 	name = "power sink"
-	desc = "A power sink which drains energy from electrical systems and converts it to heat. Ensure short workloads and ample time to cool down if used in high energy systems."
+	desc = "Um dissipador de energia que drena energia de sistemas elétricos e o converte em calor. Garanta cargas de trabalho curtas e tempo suficiente para esfriar se usado em sistemas de alta energia."
 	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "powersink0"
 	inhand_icon_state = "electronic"
@@ -39,7 +39,7 @@
 	if(mode)
 		. += "\The [src] is bolted to the floor."
 	if((in_range(user, src) || isobserver(user)) && internal_heat > max_heat * 0.5)
-		. += span_danger("[src] is warping the air above it. It must be very hot.")
+		. += span_danger("[src]Está deformando o ar acima dele. Deve estar muito quente.")
 
 /obj/item/powersink/set_anchored(anchorvalue)
 	. = ..()
@@ -81,26 +81,20 @@
 		if(isturf(T) && T.underfloor_accessibility >= UNDERFLOOR_INTERACTABLE)
 			attached = locate() in T
 			if(!attached)
-				to_chat(user, span_warning("\The [src] must be placed over an exposed, powered cable node!"))
+				to_chat(user, span_warning("\The [src]Deve ser colocado sobre um nó de cabo exposto e alimentado!"))
 			else
 				set_mode(CLAMPED_OFF)
-				user.visible_message( \
-					"[user] attaches \the [src] to the cable.", \
-					span_notice("You bolt \the [src] into the floor and connect it to the cable."),
-					span_hear("You hear some wires being connected to something."))
+				user.visible_message( 					"[user]APENAS\the [src]ao cabo.", 					span_notice("Você vai embora.\the [src]no chão e conectá-lo ao cabo."),
+					span_hear("Você ouve alguns fios sendo conectados a algo."))
 		else
-			to_chat(user, span_warning("\The [src] must be placed over an exposed, powered cable node!"))
+			to_chat(user, span_warning("\The [src]Deve ser colocado sobre um nó de cabo exposto e alimentado!"))
 	else
 		set_mode(DISCONNECTED)
-		user.visible_message( \
-			"[user] detaches \the [src] from the cable.", \
-			span_notice("You unbolt \the [src] from the floor and detach it from the cable."),
-			span_hear("You hear some wires being disconnected from something."))
+		user.visible_message( 			"[user]Detaches\the [src]Faça cabo.", 			span_notice("Você destranca.\the [src]do chão e separe-o do cabo."),
+			span_hear("Você ouve alguns fios sendo desconectados de algo."))
 
 /obj/item/powersink/screwdriver_act(mob/living/user, obj/item/tool)
-	user.visible_message( \
-		"[user] messes with \the [src] for a bit.", \
-		span_notice("You can't fit the screwdriver into \the [src]'s bolts! Try using a wrench."))
+	user.visible_message( 		"[user]Mexe com\the [src]Por um tempo.", 		span_notice("Você não pode colocar a chave de fenda\the [src]São parafusos! Tente usar uma chave inglesa."))
 	return TRUE
 
 /obj/item/powersink/attack_paw(mob/user, list/modifiers)
@@ -118,24 +112,20 @@
 			..()
 
 		if(CLAMPED_OFF)
-			user.visible_message( \
-				"[user] activates \the [src]!", \
-				span_notice("You activate \the [src]."),
-				span_hear("You hear a click."))
+			user.visible_message( 				"[user]Ativa.\the [src]!", 				span_notice("Você ativa.\the [src]."),
+				span_hear("Você ouve um clique."))
 			message_admins("Power sink activated by [ADMIN_LOOKUPFLW(user)] at [ADMIN_VERBOSEJMP(src)]")
 			user.log_message("activated a powersink", LOG_GAME)
 			notify_ghosts(
 				"[user.real_name] has activated a power sink!",
 				source = src,
-				header = "Shocking News!",
+				header = "Notícias chocantes!",
 			)
 			set_mode(OPERATING)
 
 		if(OPERATING)
-			user.visible_message( \
-				"[user] deactivates \the [src]!", \
-				span_notice("You deactivate \the [src]."),
-				span_hear("You hear a click."))
+			user.visible_message( 				"[user]Desativa\the [src]!", 				span_notice("Você desativa.\the [src]."),
+				span_hear("Você ouve um clique."))
 			user.log_message("deactivated the powersink", LOG_GAME)
 			set_mode(CLAMPED_OFF)
 
@@ -192,7 +182,7 @@
 			notify_ghosts(
 				"[src] is about to reach critical heat capacity!",
 				source = src,
-				header = "Power Sunk",
+				header = "Poder fundado",
 			)
 		playsound(src, 'sound/effects/screech.ogg', 100, TRUE, TRUE)
 

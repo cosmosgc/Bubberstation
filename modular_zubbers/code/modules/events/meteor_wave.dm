@@ -33,13 +33,13 @@ GLOBAL_LIST_INIT(meteors_candy_halloween, list(
 
 /datum/round_event/meteor_wave/meaty
 	announce_prefix = "Oh crap, get the mop."
-	announce_desc = "Meaty ores"
+	announce_desc = "Minérios carnudos"
 	announce_fluff = "Please refrain from eating the space meat. We know it's tempting, but this is not the time to test your culinary curiosity."
 
 /datum/round_event/meteor_wave/candy
 	wave_name = "candy"
 	announce_prefix = "2SPOOKY DELIVERY INCOMING"
-	announce_desc = "Spooky packages"
+	announce_desc = "Pacotes assustadores"
 	announce_fluff = "We're not responsible for what happens if you try to stick fragments in your mouth. Why do we even have to tell you that?"
 
 /datum/round_event/meteor_wave/New()
@@ -113,14 +113,14 @@ GLOBAL_LIST_INIT(meteors_candy_halloween, list(
 	name = "Meteor Wave: Candy"
 	typepath = /datum/round_event/meteor_wave/candy
 	weight = 0
-	description = "A meteor wave for the holidays, filled with candy."
+	description = "Uma onda de meteoros para as festas, cheia de doces."
 
 /obj/effect/meteor
 	lifetime = 45 SECONDS
 
 /obj/effect/meteor/candy
 	name = "debug candy meteor"
-	desc = "if you see this, shove a twink bar into your nearest coder"
+	desc = "Se você ver isso, coloque uma barra no seu codificador mais próximo."
 	dropamt = 8
 	meteordrop = list(
 		/obj/item/food/candy/hundred_credit_bar,
@@ -173,7 +173,7 @@ GLOBAL_LIST_INIT(meteors_candy_halloween, list(
 
 /obj/effect/meteor/candy/pumpkin
 	name = "cat-o-lantern"
-	desc = "A pumpkin-shaped meteor filled with candy. It's a bit spooky."
+	desc = "Um meteoro em forma de abóbora cheio de doces. É um pouco assustador."
 	icon_state = "spooky"
 	threat = 5
 
@@ -183,7 +183,7 @@ GLOBAL_LIST_INIT(meteors_candy_halloween, list(
 
 /obj/effect/meteor/candy/pumpking
 	name = "PUMPKING"
-	desc = "THE PUMPKING'S COMING!"
+	desc = "O pumpking está vindo!"
 	icon_state = "spooky"
 	hits = 6
 	heavy = TRUE
@@ -201,7 +201,7 @@ GLOBAL_LIST_INIT(meteors_candy_halloween, list(
 
 /obj/effect/meteor/candy/party_popper
 	name = "party popper"
-	desc = "A small device used for celebrations and annoying the janitor."
+	desc = "Um pequeno dispositivo usado para celebrações e irritar o zelador."
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "party_popper"
 	pass_flags = PASSTABLE | PASSGRILLE
@@ -216,7 +216,7 @@ GLOBAL_LIST_INIT(meteors_candy_halloween, list(
 
 /obj/effect/meteor/candy/corgi
 	name = "corgi pinata"
-	desc = "Who thought beating candy out of dogs was a fun activity anyways?"
+	desc = "Quem achou que bater em doces era uma atividade divertida?"
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "pinata"
 	threat = 5
@@ -227,7 +227,7 @@ GLOBAL_LIST_INIT(meteors_candy_halloween, list(
 
 /obj/effect/meteor/candy/syndie
 	name = "syndie pinata"
-	desc = "The red ones go faster... Now you know why."
+	desc = "Os vermelhos vão mais rápido... Agora você sabe por quê."
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "pinata_syndie"
 	hits = 12
@@ -251,7 +251,7 @@ GLOBAL_LIST_INIT(meteors_candy_halloween, list(
 
 /obj/effect/meteor/cocaine_brick
 	name = "cocaine brick fragment"
-	desc = "A fast-moving fragment of exploded... white powder."
+	desc = "Um fragmento rápido de pó branco explodido."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "cocainebrick"
 	dropamt = 7
@@ -260,7 +260,7 @@ GLOBAL_LIST_INIT(meteors_candy_halloween, list(
 
 /obj/effect/meteor/candy/bluespace
 	name = "bluespace chunk"
-	desc = "A large geode containing bluespace dust at its core, hurtling through space. That's the stuff the crew are here to research. How convenient for them."
+	desc = "Um grande geode contendo poeira do espaço azul em seu núcleo, atravessando o espaço. Essa é a coisa que a equipe está aqui para pesquisar. Que conveniente para eles."
 	icon_state = "bluespace"
 	dropamt = 9
 	hits = 12
@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(meteors_candy_halloween, list(
 
 /obj/effect/meteor/candy/banana
 	name = "bananium chunk"
-	desc = "Maybe it's a chunk blasted off of the legendary Clown Planet... How annoying."
+	desc = "Talvez seja um pedaço explodido do lendário Planeta Palhaço... Que chato."
 	icon_state = "bananium"
 	dropamt = 9
 	hits = 175 //Honks everything, including space tiles. Depending on the angle/how much stuff it hits, there's a fair chance that it will spare the station from the actual explosion
@@ -294,5 +294,5 @@ GLOBAL_LIST_INIT(meteors_candy_halloween, list(
 /obj/effect/meteor/banana/ram_turf(turf/bumped)
 	for(var/mob/living/slipped in get_turf(bumped))
 		slipped.slip(100, slipped.loc,- GALOSHES_DONT_HELP|SLIDE, 0, FALSE)
-		slipped.visible_message(span_warning("[src] honks [slipped] to the floor!"), span_userdanger("[src] harmlessly passes through you, knocking you over."))
+		slipped.visible_message(span_warning("[src]Buzina.[slipped]Para o chão!"), span_userdanger("[src]Inofensivamente passa por você, derrubando você."))
 	get_hit()

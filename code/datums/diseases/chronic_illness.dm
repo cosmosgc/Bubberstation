@@ -7,15 +7,12 @@
 	infectable_biotypes = MOB_ORGANIC | MOB_MINERAL | MOB_ROBOTIC
 	process_dead = TRUE
 	stage_prob = 0.25
-	cure_text = "Abated by " + /datum/reagent/medicine/sansufentanyl::name
+	cure_text = "Abatida por" + /datum/reagent/medicine/sansufentanyl::name
 	cures = list(/datum/reagent/medicine/sansufentanyl)
 	infectivity = 0
 	agent = "Quantum Entanglement"
 	viable_mobtypes = list(/mob/living/carbon/human)
-	desc = "A disease discovered in an Interdyne laboratory caused by subjection to timestream correction technology. \
-		It is completely uncurable - though it can be treated to reverse its progression - and non-contagious. \
-		If left untreated the subject will suffer from a variety of symptoms, \
-		including but not limited to dizziness, nausea, heart palpitations, and in the final stages, death."
+	desc = "Uma doença descoberta em um laboratório Interdyne causada pela sujeição à tecnologia de correção de fluxo temporal. É completamente incurável, embora possa ser tratado para reverter sua progressão e não contágio. Se não for tratado, o sujeito sofrerá de vários sintomas, incluindo, mas não limitado a tontura, náuseas, palpitações cardíacas, e nos estágios finais, morte."
 	bypasses_immunity = TRUE // BUBBER EDIT ADD
 	severity = DISEASE_SEVERITY_UNCURABLE
 	bypasses_immunity = TRUE
@@ -32,17 +29,17 @@
 			being_stealthy = TRUE // BUBBER EDIT ADD
 		if(2)
 			if(SPT_PROB(0.5, seconds_per_tick))
-				to_chat(affected_mob, span_warning("You feel dizzy."))
+				to_chat(affected_mob, span_warning("Você se sente tonta."))
 				affected_mob.adjust_confusion(6 SECONDS)
 				being_stealthy = FALSE // BUBBER EDIT ADD
 			if(SPT_PROB(0.5, seconds_per_tick))
-				to_chat(affected_mob, span_notice("You look at your hand. Your vision blurs."))
+				to_chat(affected_mob, span_notice("Olhe para sua mão. Sua visão está embaçada."))
 				affected_mob.set_eye_blur_if_lower(10 SECONDS)
 				being_stealthy = FALSE // BUBBER EDIT ADD
 		if(3)
 			var/need_mob_update = FALSE
 			if(SPT_PROB(0.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You feel a very sharp pain in your chest!"))
+				to_chat(affected_mob, span_danger("Você sente uma dor muito aguda no peito!"))
 				being_stealthy = FALSE // BUBBER EDIT ADD
 				if(prob(45))
 					affected_mob.vomit(VOMIT_CATEGORY_BLOOD, lost_nutrition = 20)
@@ -51,7 +48,7 @@
 				need_mob_update += affected_mob.adjust_stamina_loss(70, updating_stamina = FALSE)
 				being_stealthy = FALSE // BUBBER EDIT ADD
 			if(SPT_PROB(1, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You feel a buzzing in your brain."))
+				to_chat(affected_mob, span_danger("Você sente um zumbido no seu cérebro."))
 				SEND_SOUND(affected_mob, sound('sound/items/weapons/flash_ring.ogg'))
 				being_stealthy = FALSE // BUBBER EDIT ADD
 			if(SPT_PROB(0.5, seconds_per_tick))
@@ -63,14 +60,14 @@
 			if(prob(30))
 				affected_mob.playsound_local(affected_mob, 'sound/effects/singlebeat.ogg', 100, FALSE, use_reverb = FALSE)
 			if(SPT_PROB(1, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You feel a gruesome pain in your chest!"))
+				to_chat(affected_mob, span_danger("Você sente uma dor horrível no peito!"))
 				if(prob(75))
 					affected_mob.vomit(VOMIT_CATEGORY_BLOOD, lost_nutrition = 45)
 			if(SPT_PROB(1, seconds_per_tick))
 				need_mob_update += affected_mob.adjust_stamina_loss(100, updating_stamina = FALSE)
-				affected_mob.visible_message(span_warning("[affected_mob] collapses!"))
+				affected_mob.visible_message(span_warning("[affected_mob]Colapsos!"))
 				if(prob(30))
-					to_chat(affected_mob, span_danger("Your vision blurs as you faint!"))
+					to_chat(affected_mob, span_danger("Sua visão escurece enquanto desmaia!"))
 					affected_mob.AdjustSleeping(1 SECONDS)
 			if(SPT_PROB(0.5, seconds_per_tick))
 				to_chat(affected_mob, span_danger("[pick("You feel as though your atoms are accelerating in place.", "You feel like you're being torn apart!")]"))
@@ -81,10 +78,10 @@
 		if(5)
 			switch(rand(1,2))
 				if(1)
-					to_chat(affected_mob, span_notice("You feel your atoms begin to realign. You're safe. For now."))
+					to_chat(affected_mob, span_notice("Você sente que seus átomos começam a realinhar. Você está segura. Por enquanto."))
 					update_stage(1)
 				if(2)
-					to_chat(affected_mob, span_boldwarning("There is no place for you in this timeline."))
+					to_chat(affected_mob, span_boldwarning("Não há lugar para você nesta linha do tempo."))
 					affected_mob.adjust_stamina_loss(100, forced = TRUE)
 					playsound(affected_mob.loc, 'sound/effects/magic/repulse.ogg', 100, FALSE)
 					affected_mob.emote("scream")
@@ -92,7 +89,7 @@
 						viewers.flash_act()
 					new /obj/effect/decal/cleanable/plasma(affected_mob.loc)
 					new /obj/effect/decal/cleanable/ash(affected_mob.loc)
-					affected_mob.visible_message(span_warning("[affected_mob] is erased from the timeline!"), span_userdanger("You are ripped from the timeline!"))
+					affected_mob.visible_message(span_warning("[affected_mob]é apagado da linha do tempo!"), span_userdanger("Você está arrancado da linha do tempo!"))
 					affected_mob.investigate_log("has been dusted / deleted by [name].", INVESTIGATE_DEATHS)
 					affected_mob.ghostize(can_reenter_corpse = FALSE)
 					qdel(affected_mob)

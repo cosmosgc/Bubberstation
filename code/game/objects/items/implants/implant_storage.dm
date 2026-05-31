@@ -1,6 +1,6 @@
 /obj/item/implant/storage
 	name = "storage implant"
-	desc = "Stores up to two big items in a bluespace pocket."
+	desc = "Armazena até dois grandes itens no bolso do espaço azul."
 	icon_state = "storage"
 	implant_color = "r"
 	var/max_slot_stacking = 4
@@ -17,7 +17,7 @@
 	for (var/obj/item/stored in contents)
 		stored.add_mob_blood(implantee)
 	atom_storage.remove_all()
-	implantee.visible_message(span_warning("A bluespace pocket opens around [src] as it exits [implantee], spewing out its contents and rupturing the surrounding tissue!"))
+	implantee.visible_message(span_warning("Um bolso do espaço azul abre ao redor[src]como ele sai[implantee], vomitando seu conteúdo e rompendo o tecido circundante!"))
 	implantee.apply_damage(20, BRUTE, BODY_ZONE_CHEST)
 	QDEL_NULL(atom_storage)
 	return ..()
@@ -43,4 +43,4 @@
 	name = "implanter" // Skyrat edit , original was implanter (storage)
 	imp_type = /obj/item/implant/storage
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A Syndicate implanter used for a storage implant" // Skyrat edit
+	special_desc = "Um implante Syndicate usado para um implante de armazenamento" // Skyrat edit

@@ -1,9 +1,9 @@
 import { CheckboxInput, type FeatureToggle } from '../../base';
 
 export const ready_job: FeatureToggle = {
-  name: 'Toggle Job Readying',
+  name: 'Comutando o trabalho pronto',
   category: 'UI',
   description:
-    'Toggles whether your highest job shows in the pre-game Job Estimation panel.',
+    'Comuta se seu trabalho mais alto aparece no painel de estimativa de empregos pré-jogo.',
   component: CheckboxInput,
 };

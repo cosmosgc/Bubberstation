@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/summonitem
 	name = "Instant Summons"
-	desc = "This spell can be used to recall a previously marked item to your hand from anywhere in the universe."
+	desc = "Este feitiço pode ser usado para lembrar um item previamente marcado para sua mão de qualquer lugar do universo."
 	button_icon_state = "summons"
 
 	school = SCHOOL_TRANSMUTATION
@@ -53,7 +53,7 @@
 	SIGNAL_HANDLER
 
 	if(owner)
-		to_chat(owner, span_boldwarning("You sense your marked item has been destroyed!"))
+		to_chat(owner, span_boldwarning("Você sente que seu item marcado foi destruído!"))
 	unmark_item()
 
 /datum/action/cooldown/spell/summonitem/cast(mob/living/cast_on)
@@ -79,9 +79,9 @@
 	var/obj/item/potential_mark = caster.get_active_held_item()
 	if(!potential_mark)
 		if(caster.get_inactive_held_item())
-			to_chat(caster, span_warning("You must hold the desired item in your hands to mark it for recall!"))
+			to_chat(caster, span_warning("Você deve segurar o item desejado em suas mãos para marcar para se lembrar!"))
 		else
-			to_chat(caster, span_warning("You aren't holding anything that can be marked for recall!"))
+			to_chat(caster, span_warning("Você não está segurando nada que possa ser marcado para ser lembrado!"))
 		return FALSE
 
 	var/link_message = ""
@@ -99,12 +99,12 @@
 
 /// If we have a marked item and it's in our hand, we will try to unlink it
 /datum/action/cooldown/spell/summonitem/proc/try_unlink_item(mob/living/caster)
-	to_chat(caster, span_notice("You begin removing the mark on [marked_item]..."))
+	to_chat(caster, span_notice("Você começa a remover a marca.[marked_item]..."))
 	if(!do_after(caster, 5 SECONDS, marked_item))
-		to_chat(caster, span_notice("You decide to keep [marked_item] marked."))
+		to_chat(caster, span_notice("Você decide ficar[marked_item]Marcado."))
 		return FALSE
 
-	to_chat(caster, span_notice("You remove the mark on [marked_item] to use elsewhere."))
+	to_chat(caster, span_notice("Você remove a marca.[marked_item]Para usar em outro lugar."))
 	unmark_item()
 	return TRUE
 
@@ -133,9 +133,9 @@
 
 				// Items in silicons warp the whole silicon
 				var/mob/holding_mark = item_to_retrieve.loc
-				holding_mark.loc.visible_message(span_warning("[holding_mark] suddenly disappears!"))
+				holding_mark.loc.visible_message(span_warning("[holding_mark]De arrependimento desaparecer!"))
 				holding_mark.forceMove(caster.loc)
-				holding_mark.loc.visible_message(span_warning("[holding_mark] suddenly appears!"))
+				holding_mark.loc.visible_message(span_warning("[holding_mark]De arrependimento apareceu!"))
 				SEND_SIGNAL(holding_mark, COMSIG_MAGIC_RECALL, caster, item_to_retrieve)
 				playsound(holding_mark, 'sound/effects/magic/summonitems_generic.ogg', 50, TRUE)
 				return
@@ -166,20 +166,19 @@
 		if (!holder.dropItemToGround(item_to_retrieve, force = TRUE))
 			return
 
-	item_to_retrieve.loc?.visible_message(span_warning("[item_to_retrieve] suddenly disappears!"))
+	item_to_retrieve.loc?.visible_message(span_warning("[item_to_retrieve]De arrependimento desaparecer!"))
 
 	if(isitem(item_to_retrieve) && caster.put_in_hands(item_to_retrieve))
-		item_to_retrieve.loc.visible_message(span_warning("[item_to_retrieve] suddenly appears in [caster]'s hand!"))
+		item_to_retrieve.loc.visible_message(span_warning("[item_to_retrieve]De arrependimento apareceu em[caster]A mão!"))
 	else
 		item_to_retrieve.forceMove(caster.drop_location())
-		item_to_retrieve.loc.visible_message(span_warning("[item_to_retrieve] suddenly appears!"))
+		item_to_retrieve.loc.visible_message(span_warning("[item_to_retrieve]De arrependimento apareceu!"))
 
 	playsound(get_turf(item_to_retrieve), 'sound/effects/magic/summonitems_generic.ogg', 50, TRUE)
 
 /datum/action/cooldown/spell/summonitem/abductor
 	name =  "Baton Recall"
-	desc = "Activating this will trigger your baton's emergency translocation protocol, \
-		recalling it to your hand. Takes a long time for the translocation crystals to reset after use."
+	desc = "Ativar isso vai ativar o protocolo de translocação de emergência do seu bastão, lembrando-o na sua mão. Leva muito tempo para os cristais de translocação reiniciarem após o uso."
 	sound = 'sound/effects/phasein.ogg'
 
 	school = SCHOOL_UNSET
@@ -196,11 +195,11 @@
 		return .
 
 	if(!istype(potential_mark, /obj/item/melee/baton/abductor))
-		to_chat(caster, span_warning("[potential_mark] has no translocation crystals to link to!"))
+		to_chat(caster, span_warning("[potential_mark]Não tem cristais de translocação para ligar!"))
 		return FALSE
 
 	return TRUE
 
 /datum/action/cooldown/spell/summonitem/abductor/try_unlink_item(mob/living/caster)
-	to_chat(caster, span_warning("You can't unlink [marked_item]'s translocation crystals."))
+	to_chat(caster, span_warning("Você não pode desvincular[marked_item]Cristais de translocação."))
 	return FALSE

@@ -23,7 +23,7 @@
 	spawn_chance = 100,
 	max_mobs = 3,
 	spawn_delay = 10 SECONDS,
-	spawn_text = "appears out of nowhere",
+	spawn_text = "aparece do nada",
 	spawn_sound = 'sound/effects/magic/summon_magic.ogg',
 	list/faction,
 )

@@ -4,7 +4,7 @@
 			if(!tool.tool_start_check(user, amount = 1))
 				return ITEM_INTERACT_BLOCKING
 			user.balloon_alert_to_viewers("[camera_construction_state == CAMERA_STATE_WELDED ? "un" : null]welding...")
-			audible_message(span_hear("You hear welding."))
+			audible_message(span_hear("Você ouve solda."))
 			if(!tool.use_tool(src, user, 2 SECONDS, volume = 50))
 				user.balloon_alert_to_viewers("stopped [camera_construction_state == CAMERA_STATE_WELDED ? "un" : null]welding!")
 				return
@@ -17,11 +17,11 @@
 				return ITEM_INTERACT_BLOCKING
 			if(!tool.tool_start_check(user, amount=2))
 				return ITEM_INTERACT_BLOCKING
-			audible_message(span_hear("You hear welding."))
+			audible_message(span_hear("Você ouve solda."))
 			if(!tool.use_tool(src, user, 100, volume=50))
 				return ITEM_INTERACT_BLOCKING
-			user.visible_message(span_warning("[user] solda [src], deixando apenas um quadro parafusado na parede."),
-				span_warning("Você solda [src], deixando apenas um quadro parafusado na parede"))
+			user.visible_message(span_warning("[user]Solda.[src]Deixando apenas um quadrado parafusado na parede."),
+				span_warning("Você solda [src]Deixando apenas um quarto parafusado na parede"))
 			deconstruct(TRUE)
 			return ITEM_INTERACT_SUCCESS
 	return ..()
@@ -35,7 +35,7 @@
 				return ITEM_INTERACT_BLOCKING
 			var/list/tempnetwork = splittext(input, ",")
 			if(!length(tempnetwork))
-				to_chat(user, span_warning("Nenhuma rede encontrada, por favor desligue e tente novamente!"))
+				to_chat(user, span_warning("Nenhuma redecontrada, por favor desligue e tente novamente!"))
 				return ITEM_INTERACT_BLOCKING
 			for(var/i in tempnetwork)
 				tempnetwork -= i
@@ -73,7 +73,7 @@
 /obj/machinery/camera/wrench_act(mob/user, obj/item/tool)
 	if(camera_construction_state == CAMERA_STATE_WRENCHED)
 		tool.play_tool_sound(src)
-		to_chat(user, span_notice("Você desconecta [src] de seu lugar."))
+		to_chat(user, span_notice("Você desconecta [src]De seu lugar."))
 		deconstruct(TRUE)
 		return ITEM_INTERACT_SUCCESS
 	return ..()
@@ -96,7 +96,7 @@
 			return ITEM_INTERACT_BLOCKING
 		if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("Você remove [choice] de [src]."))
+		to_chat(user, span_notice("Você remove [choice]De[src]."))
 		if(choice == xray_module)
 			drop_upgrade(xray_module)
 			removeXRay()
@@ -126,38 +126,38 @@
 				if(!user.temporarilyRemoveItemFromInventory(attacking_item, newloc = src))
 					return
 				upgradeXRay(FALSE, TRUE)
-				to_chat(user, span_notice("You attach [attacking_item] into [name]'s inner circuits."))
+				to_chat(user, span_notice("Você anexa[attacking_item]Em[name]Os circuitos internos."))
 				qdel(attacking_item)
 			else
-				to_chat(user, span_warning("[src] already has that upgrade!"))
+				to_chat(user, span_warning("[src]Já tem essa atualização!"))
 			return
 		else if(istype(attacking_item, /obj/item/stack/sheet/mineral/plasma))
 			if(!isEmpProof(TRUE)) //don't reveal it was already upgraded if was done via MALF AI Upgrade Camera Network ability
 				if(attacking_item.use_tool(src, user, 0, amount=1))
 					upgradeEmpProof(FALSE, TRUE)
-					to_chat(user, span_notice("You attach [attacking_item] into [name]'s inner circuits."))
+					to_chat(user, span_notice("Você anexa[attacking_item]Em[name]Os circuitos internos."))
 			else
-				to_chat(user, span_warning("[src] already has that upgrade!"))
+				to_chat(user, span_warning("[src]Já tem essa atualização!"))
 			return
 		else if(isprox(attacking_item))
 			if(!isMotion())
 				if(!user.temporarilyRemoveItemFromInventory(attacking_item, newloc = src))
 					return
 				upgradeMotion()
-				to_chat(user, span_notice("You attach [attacking_item] into [name]'s inner circuits."))
+				to_chat(user, span_notice("Você anexa[attacking_item]Em[name]Os circuitos internos."))
 				qdel(attacking_item)
 			else
-				to_chat(user, span_warning("[src] already has that upgrade!"))
+				to_chat(user, span_warning("[src]Já tem essa atualização!"))
 			return
 	switch(camera_construction_state)
 		if(CAMERA_STATE_WELDED)
 			if(istype(attacking_item, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/attacking_cable = attacking_item
 				if(attacking_cable.use(2))
-					to_chat(user, span_notice("You add wires to [src]."))
+					to_chat(user, span_notice("Você adiciona fios para[src]."))
 					camera_construction_state = CAMERA_STATE_WIRED
 				else
-					to_chat(user, span_warning("You need two lengths of cable to wire a camera!"))
+					to_chat(user, span_warning("Você precisa de dois cabos para ligar uma câmera!"))
 				return
 		if(CAMERA_STATE_FINISHED)
 			if(istype(attacking_item, /obj/item/modular_computer))
@@ -175,7 +175,7 @@
 				itemname = computer.name
 				itemname = sanitize(itemname)
 				info = sanitize(info)
-				to_chat(user, span_notice("You hold \the [itemname] up to the camera..."))
+				to_chat(user, span_notice("Você espera.\the [itemname]até a câmera..."))
 				user.log_talk(itemname, LOG_GAME, log_globally=TRUE, tag="Pressed to camera")
 				user.changeNext_move(CLICK_CD_MELEE)
 
@@ -189,13 +189,13 @@
 						ai.last_tablet_note_seen = "<HTML><HEAD><TITLE>[itemname]</TITLE></HEAD><BODY><TT>[info]</TT></BODY></HTML>"
 
 						if(user.name == "Unknown")
-							to_chat(ai, "[span_name(user)] holds <a href='byond://?_src_=usr;show_tablet_note=1;'>\a [itemname]</a> up to one of your cameras ...")
+							to_chat(ai, "[span_name(user)]Segura.<a href='byond://?_src_=usr;show_tablet_note=1;'>\a [itemname]</a>até uma de suas câmeras...")
 						else
-							to_chat(ai, "<b><a href='byond://?src=[REF(ai)];track=[html_encode(user.name)]'>[user]</a></b> holds <a href='byond://?_src_=usr;show_tablet_note=1;'>\a [itemname]</a> up to one of your cameras ...")
+							to_chat(ai, "<b><a href='byond://?src=[REF(ai)];track=[html_encode(user.name)]'>[user]</a></b>Segura.<a href='byond://?_src_=usr;show_tablet_note=1;'>\a [itemname]</a>até uma de suas câmeras...")
 						continue
 
 					if (potential_viewer.client?.eye == src)
-						to_chat(potential_viewer, "[span_name("[user]")] holds \a [itemname] up to one of the cameras ...")
+						to_chat(potential_viewer, "[span_name("[user]")]Segura.\a [itemname]até uma das câmeras...")
 						potential_viewer.log_talk(itemname, LOG_VICTIM, tag="Pressed to camera from [key_name(user)]", log_globally=FALSE)
 						potential_viewer << browse("<HTML><HEAD><TITLE>[itemname]</TITLE></HEAD><BODY><TT>[info]</TT></BODY></HTML>", "window=[itemname]")
 				return
@@ -211,7 +211,7 @@
 				var/item_name = sanitize(last_shown_paper.name)
 
 				// Start the process of holding it up to the camera.
-				to_chat(user, span_notice("You hold \the [item_name] up to the camera..."))
+				to_chat(user, span_notice("Você espera.\the [item_name]até a câmera..."))
 				user.log_talk(item_name, LOG_GAME, log_globally=TRUE, tag="Pressed to camera")
 				user.changeNext_move(CLICK_CD_MELEE)
 
@@ -232,16 +232,16 @@
 						log_paper("[key_name(user)] held [last_shown_paper] up to [src], requesting [key_name(ai)] read it.")
 
 						if(user.name == "Unknown")
-							to_chat(ai, "[span_name(user.name)] holds <a href='byond://?_src_=usr;show_paper_note=[REF(last_shown_paper)];'>\a [item_name]</a> up to one of your cameras ...")
+							to_chat(ai, "[span_name(user.name)]Segura.<a href='byond://?_src_=usr;show_paper_note=[REF(last_shown_paper)];'>\a [item_name]</a>até uma de suas câmeras...")
 						else
-							to_chat(ai, "<b><a href='byond://?src=[REF(ai)];track=[html_encode(user.name)]'>[user]</a></b> holds <a href='byond://?_src_=usr;show_paper_note=[REF(last_shown_paper)];'>\a [item_name]</a> up to one of your cameras ...")
+							to_chat(ai, "<b><a href='byond://?src=[REF(ai)];track=[html_encode(user.name)]'>[user]</a></b>Segura.<a href='byond://?_src_=usr;show_paper_note=[REF(last_shown_paper)];'>\a [item_name]</a>até uma de suas câmeras...")
 						continue
 
 					// If it's not an AI, eye if the client's eye is set to the camera. I wonder if this even works anymore with tgui camera apps and stuff?
 					if (potential_viewer.client?.eye == src)
 						log_paper("[key_name(user)] held [last_shown_paper] up to [src], and [key_name(potential_viewer)] may read it.")
 						potential_viewer.log_talk(item_name, LOG_VICTIM, tag="Pressed to camera from [key_name(user)]", log_globally=FALSE)
-						to_chat(potential_viewer, "[span_name(user)] holds <a href='byond://?_src_=usr;show_paper_note=[REF(last_shown_paper)];'>\a [item_name]</a> up to your camera...")
+						to_chat(potential_viewer, "[span_name(user)]Segura.<a href='byond://?_src_=usr;show_paper_note=[REF(last_shown_paper)];'>\a [item_name]</a>até sua câmera...")
 				return
 
 	return ..()

@@ -35,7 +35,7 @@ export type DesignBrowserProps<T extends Design = Design> = {
   onPrintDesign?: (design: T, amount: number) => void;
 
   /**
-   * If present, dims out the recipe list with a "building items" animation.
+   * If present, dims out the recipe list with a "itens de construção" animation.
    */
   busy?: boolean;
 
@@ -69,7 +69,7 @@ export type DesignBrowserProps<T extends Design = Design> = {
 /**
  * A meta-category that, when selected, renders all designs to the output.
  */
-const ALL_CATEGORY = 'All Designs';
+const ALL_CATEGORY = 'Todos os Designs';
 
 /**
  * A meta-category that collects all designs without a single category.
@@ -259,7 +259,7 @@ export const DesignBrowser = <T extends Design = Design>(
             searchText.length > 0
               ? `Results for "${searchText}"`
               : selectedCategory === ALL_CATEGORY
-                ? 'All Designs'
+                ? 'Todos os Designs'
                 : selectedCategory
           }
           fill
@@ -271,7 +271,7 @@ export const DesignBrowser = <T extends Design = Design>(
                   expensive
                   query={searchText}
                   onSearch={setSearchText}
-                  placeholder={'Search all designs...'}
+                  placeholder={'Procure todos os projetos...'}
                 />
               </Section>
             </Stack.Item>
@@ -328,7 +328,7 @@ export const DesignBrowser = <T extends Design = Design>(
                 }}
               >
                 <Icon name="cog" spin />
-                {' Building items...'}
+                {'Itens de construção...'}
               </Dimmer>
             )}
           </Stack>

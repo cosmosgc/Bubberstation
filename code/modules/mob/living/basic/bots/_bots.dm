@@ -152,11 +152,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 		enable_possession(mapload = mapload)
 
 	if (length(facepaint_overlays))
-		AddComponent(/datum/component/defaceable, \
-			icon = 'icons/mob/silicon/aibot_faces.dmi', \
-			icon_states = facepaint_overlays, \
-			drawing_of = "a face", \
-		)
+		AddComponent(/datum/component/defaceable, 			icon = 'icons/mob/silicon/aibot_faces.dmi', 			icon_states = facepaint_overlays, 			drawing_of = "a face", 		)
 
 	pa_system = (isnull(announcement_type)) ? new(src, automated_announcements = generate_speak_list()) : new announcement_type(src, automated_announcements = generate_speak_list())
 	pa_system.Grant(src)
@@ -203,7 +199,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	remove_traits(list(TRAIT_INCAPACITATED, TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), POWER_LACK_TRAIT)
 	set_light_on(bot_mode_flags & BOT_MODE_ON ? TRUE : FALSE)
 	update_appearance()
-	balloon_alert(src, "turned on")
+	balloon_alert(src, "Ligado.")
 	diag_hud_set_botstat()
 	return TRUE
 
@@ -228,19 +224,12 @@ GLOBAL_LIST_INIT(command_strings, list(
 /// Allows this bot to be controlled by a ghost, who will become its mind
 /mob/living/basic/bot/proc/enable_possession(user, mapload = FALSE)
 	if (paicard)
-		balloon_alert(user, "already sapient!")
+		balloon_alert(user, "Já sapient!")
 		return
 	can_be_possessed = TRUE
 	var/can_announce = !mapload && COOLDOWN_FINISHED(src, offer_ghosts_cooldown)
 	AddComponent(
-		/datum/component/ghost_direct_control, \
-		ban_type = ROLE_BOT, \
-		poll_candidates = can_announce, \
-		poll_ignore_key = POLL_IGNORE_BOTS, \
-		assumed_control_message = (bot_access_flags & BOT_COVER_EMAGGED) ? get_emagged_message() : possessed_message, \
-		extra_control_checks = CALLBACK(src, PROC_REF(check_possession)), \
-		after_assumed_control = CALLBACK(src, PROC_REF(post_possession)), \
-	)
+		/datum/component/ghost_direct_control, 		ban_type = ROLE_BOT, 		poll_candidates = can_announce, 		poll_ignore_key = POLL_IGNORE_BOTS, 		assumed_control_message = (bot_access_flags & BOT_COVER_EMAGGED) ? get_emagged_message() : possessed_message, 		extra_control_checks = CALLBACK(src, PROC_REF(check_possession)), 		after_assumed_control = CALLBACK(src, PROC_REF(post_possession)), 	)
 	if (can_announce)
 		COOLDOWN_START(src, offer_ghosts_cooldown, 30 SECONDS)
 
@@ -256,7 +245,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 		return
 	if (user)
 		log_combat(user, src, "ejected [key_name(src)] from control of [src] ([initial(src.name)]).")
-	to_chat(src, span_warning("You feel yourself fade as your personality matrix is reset!"))
+	to_chat(src, span_warning("Você se sente desbotado quando sua matriz de personalidade é reiniciada!"))
 	ghostize(can_reenter_corpse = FALSE)
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	speak("Personality matrix reset!")
@@ -265,7 +254,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 /// Returns true if this mob can be controlled
 /mob/living/basic/bot/proc/check_possession(mob/potential_possessor)
 	if (!can_be_possessed)
-		to_chat(potential_possessor, span_warning("The bot's personality download has been disabled!"))
+		to_chat(potential_possessor, span_warning("O download da personalidade do robô foi desativado!"))
 	return can_be_possessed
 
 /// Fired after something takes control of this mob
@@ -280,7 +269,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 		reject_bad_text(tgui_input_text(
 			user = user,
 			message = "This machine is designated [real_name]. Would you like to update [p_their()] registration?",
-			title = "Name change",
+			title = "Mudança de nome",
 			default = real_name,
 			max_length = MAX_NAME_LEN,
 		)),
@@ -292,7 +281,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 		var/accepted = tgui_alert(
 			src,
 			message = "Do you wish to be renamed to [new_name]?",
-			title = "Name change",
+			title = "Mudança de nome",
 			buttons = list("Yes", "No"),
 		)
 		if (accepted != "Yes" || QDELETED(src))
@@ -314,7 +303,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	return ..()
 
 /mob/living/basic/bot/proc/explode()
-	visible_message(span_boldnotice("[src] blows apart!"))
+	visible_message(span_boldnotice("[src]Vai pelos são!"))
 	do_sparks(3, TRUE, src)
 	var/atom/location_destroyed = drop_location()
 	if(prob(50))
@@ -324,17 +313,17 @@ GLOBAL_LIST_INIT(command_strings, list(
 	. = ..()
 	if(bot_access_flags & BOT_COVER_LOCKED) //First emag application unlocks the bot's interface. Apply a screwdriver to use the emag again.
 		bot_access_flags &= ~BOT_COVER_LOCKED
-		balloon_alert(user, "cover unlocked")
+		balloon_alert(user, "Capa destrancada")
 		return TRUE
 	if((bot_access_flags & BOT_COVER_LOCKED) || !(bot_access_flags & BOT_COVER_MAINTS_OPEN)) //Bot panel is unlocked by ID or emag, and the panel is screwed open. Ready for emagging.
-		balloon_alert(user, "open maintenance panel first!")
+		balloon_alert(user, "Abra o painel de manutenção primeiro!")
 		return FALSE
 	bot_access_flags |= BOT_COVER_EMAGGED
 	bot_access_flags |= BOT_COVER_LOCKED
 	set_mode_flags(bot_mode_flags & ~BOT_MODE_REMOTE_ENABLED) //Manually emagging the bot also locks the AI from controlling it.
 	bot_reset()
 	turn_on() //The bot automatically turns on when emagged, unless recently hit with EMP.
-	to_chat(src, span_userdanger("(#$*#$^^( OVERRIDE DETECTED"))
+	to_chat(src, span_userdanger("#############"))
 	to_chat(src, span_boldnotice(get_emagged_message()))
 	if(user)
 		log_combat(user, src, "emagged")
@@ -351,18 +340,18 @@ GLOBAL_LIST_INIT(command_strings, list(
 	else
 		. += "[src] is in pristine condition."
 
-	. += span_notice("[p_Their()] maintenance panel is [bot_access_flags & BOT_COVER_MAINTS_OPEN ? "open" : "closed"].")
-	. += span_info("You can use a <b>screwdriver</b> to [bot_access_flags & BOT_COVER_MAINTS_OPEN ? "close" : "open"] [p_them()].")
+	. += span_notice("[p_Their()]painel de manutenção é[bot_access_flags & BOT_COVER_MAINTS_OPEN ? "open" : "closed"].")
+	. += span_info("Você pode usar um<b>Chave de Fenda</b>Para[bot_access_flags & BOT_COVER_MAINTS_OPEN ? "close" : "open"] [p_them()].")
 
 	if(bot_access_flags & BOT_COVER_MAINTS_OPEN)
-		. += span_notice("[p_Their()] control panel is [bot_access_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"].")
+		. += span_notice("[p_Their()]painel de controle é[bot_access_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"].")
 		if(!(bot_access_flags & BOT_COVER_EMAGGED) && (issilicon(user) || user.Adjacent(src)))
-			. += span_info("Alt-click [issilicon(user) ? "" : "or use your ID on "][p_them()] to [bot_access_flags & BOT_COVER_LOCKED ? "un" : ""]lock [p_their()] control panel.")
+			. += span_info("Alt-click[issilicon(user) ? "" : "or use your ID on "][p_them()]Para[bot_access_flags & BOT_COVER_LOCKED ? "un" : ""]Trava.[p_their()]Painel de controle.")
 	if(isnull(paicard))
 		return
-	. += span_notice("[p_They()] [p_have()] a pAI device installed.")
+	. += span_notice("[p_They()] [p_have()]Um dispositivo PAI instalado.")
 	if(!(bot_access_flags & BOT_COVER_MAINTS_OPEN))
-		. += span_info("You can use a <b>hemostat</b> to remove it.")
+		. += span_info("Você pode usar um<b>hemostat</b>para removê-lo.")
 
 /mob/living/basic/bot/updatehealth()
 	. = ..()
@@ -384,7 +373,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	if(!topic_denied(user))
 		ui_interact(user)
 		return
-	to_chat(user, span_warning("[src]'s interface is not responding!"))
+	to_chat(user, span_warning("[src]A interface não está respondendo!"))
 
 /mob/living/basic/bot/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -398,27 +387,27 @@ GLOBAL_LIST_INIT(command_strings, list(
 
 /mob/living/basic/bot/proc/unlock_with_id(mob/living/user)
 	if(bot_access_flags & BOT_COVER_EMAGGED)
-		balloon_alert(user, "error!")
+		balloon_alert(user, "Erro!")
 		return
 	if(bot_access_flags & BOT_COVER_MAINTS_OPEN)
-		balloon_alert(user, "access panel must be closed!")
+		balloon_alert(user, "O painel de acesso deve estar fechado!")
 		return
 	if(!allowed(user))
-		balloon_alert(user, "no access")
+		balloon_alert(user, "Sem acesso.")
 		return
 	bot_access_flags ^= BOT_COVER_LOCKED
-	to_chat(user, span_notice("Controls are now [bot_access_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"]."))
+	to_chat(user, span_notice("Os controles estão agora.[bot_access_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"]."))
 	return TRUE
 
 /mob/living/basic/bot/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ITEM_INTERACT_SUCCESS
 	if(bot_access_flags & BOT_COVER_LOCKED)
-		to_chat(user, span_warning("The maintenance panel is locked!"))
+		to_chat(user, span_warning("O painel de manutenção está trancado!"))
 		return
 
 	tool.play_tool_sound(src)
 	bot_access_flags ^= BOT_COVER_MAINTS_OPEN
-	to_chat(user, span_notice("The maintenance panel is now [bot_access_flags & BOT_COVER_MAINTS_OPEN ? "opened" : "closed"]."))
+	to_chat(user, span_notice("O painel de manutenção está agora.[bot_access_flags & BOT_COVER_MAINTS_OPEN ? "opened" : "closed"]."))
 
 /mob/living/basic/bot/welder_act(mob/living/user, obj/item/tool)
 	user.changeNext_move(CLICK_CD_MELEE)
@@ -428,18 +417,18 @@ GLOBAL_LIST_INIT(command_strings, list(
 	. = ITEM_INTERACT_SUCCESS
 
 	if(health >= maxHealth)
-		user.balloon_alert(user, "no repairs needed!")
+		user.balloon_alert(user, "Não precisa de reparos!")
 		return
 
 	if(!(bot_access_flags & BOT_COVER_MAINTS_OPEN))
-		user.balloon_alert(user, "maintenance panel closed!")
+		user.balloon_alert(user, "Painel de manutenção fechado!")
 		return
 
 	if(!tool.use_tool(src, user, 0 SECONDS, volume=40))
 		return
 
 	heal_overall_damage(10)
-	user.visible_message(span_notice("[user] repairs [src]!"),span_notice("You repair [src]."))
+	user.visible_message(span_notice("[user]Reparos[src]!"),span_notice("Você conserta.[src]."))
 
 /mob/living/basic/bot/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(attacking_item.GetID())
@@ -454,15 +443,14 @@ GLOBAL_LIST_INIT(command_strings, list(
 		return ..()
 
 	if(bot_access_flags & BOT_COVER_MAINTS_OPEN)
-		balloon_alert(user, "open the access panel!")
+		balloon_alert(user, "Abra o painel de acesso!")
 		return
 
-	balloon_alert(user, "removing pAI...")
+	balloon_alert(user, "Removendo PAI...")
 	if(!do_after(user, 3 SECONDS, target = src) || !paicard)
 		return
 
-	user.visible_message(span_notice("[user] uses [attacking_item] to pull [paicard] out of [initial(src.name)]!"), \
-		span_notice("You pull [paicard] out of [initial(src.name)] with [attacking_item]."))
+	user.visible_message(span_notice("[user]EUA[attacking_item]Para puxar[paicard]Fora[initial(src.name)]!"), 		span_notice("Você puxa.[paicard]Fora[initial(src.name)]Com[attacking_item]."))
 
 	ejectpai(user)
 
@@ -489,7 +477,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	new /obj/effect/temp_visual/emp(loc)
 	if(paicard)
 		paicard.emp_act(severity)
-		src.visible_message(span_notice("[paicard] flies out of [initial(src.name)]!"), span_warning("You are forcefully ejected from [initial(src.name)]!"))
+		src.visible_message(span_notice("[paicard]Voa para fora[initial(src.name)]!"), span_warning("Você foi expulso com força.[initial(src.name)]!"))
 		ejectpai()
 
 	if (QDELETED(src))
@@ -565,7 +553,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	var/mob/living/ai_caller = calling_ai_ref.resolve()
 	if(isnull(ai_caller))
 		return
-	to_chat(ai_caller, span_danger("Call command to a bot has been reset."))
+	to_chat(ai_caller, span_danger("O comando de um robô foi reiniciado."))
 	calling_ai_ref = null
 
 //PDA control. Some bots, especially MULEs, may have more parameters.
@@ -619,7 +607,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 		return
 	var/mob/the_user = ui.user
 	if(!allowed(the_user))
-		balloon_alert(the_user, "access denied!")
+		balloon_alert(the_user, "Acesso negado!")
 		return
 
 	if(action == "lock")
@@ -644,26 +632,26 @@ GLOBAL_LIST_INIT(command_strings, list(
 			if(!(bot_access_flags & BOT_COVER_EMAGGED))
 				bot_access_flags |= (BOT_COVER_LOCKED|BOT_COVER_EMAGGED|BOT_COVER_HACKED)
 				emag_effects(the_user)
-				to_chat(the_user, span_warning("You overload [src]'s [hackables]."))
+				to_chat(the_user, span_warning("Você está sobrecarregado.[src]'s[hackables]."))
 				message_admins("Safety lock of [ADMIN_LOOKUPFLW(src)] was disabled by [ADMIN_LOOKUPFLW(the_user)] in [ADMIN_VERBOSEJMP(the_user)]")
 				the_user.log_message("disabled safety lock of [the_user]", LOG_GAME)
 				bot_reset()
-				to_chat(src, span_userdanger("(#$*#$^^( OVERRIDE DETECTED"))
+				to_chat(src, span_userdanger("#############"))
 				to_chat(src, span_boldnotice(get_emagged_message()))
 				return
 			if(!(bot_access_flags & BOT_COVER_HACKED))
-				to_chat(the_user, span_bolddanger("You fail to repair [src]'s [hackables]."))
+				to_chat(the_user, span_bolddanger("Você não consegue consertar.[src]'s[hackables]."))
 				return
 			bot_access_flags &= ~(BOT_COVER_EMAGGED|BOT_COVER_HACKED)
-			to_chat(the_user, span_notice("You reset the [src]'s [hackables]."))
+			to_chat(the_user, span_notice("Você redefiniu o[src]'s[hackables]."))
 			the_user.log_message("re-enabled safety lock of [src]", LOG_GAME)
 			bot_reset()
-			to_chat(src, span_userdanger("Software restored to standard."))
+			to_chat(src, span_userdanger("Software restaurado ao padrão."))
 			to_chat(src, span_boldnotice(possessed_message))
 		if("eject_pai")
 			if(!paicard)
 				return
-			to_chat(the_user, span_notice("You eject [paicard] from [initial(src.name)]."))
+			to_chat(the_user, span_notice("Você ejeta.[paicard]De[initial(src.name)]."))
 			ejectpai(the_user)
 		if("toggle_personality")
 			if (can_be_possessed)
@@ -694,19 +682,19 @@ GLOBAL_LIST_INIT(command_strings, list(
 /// Places a pAI in control of this mob
 /mob/living/basic/bot/proc/insertpai(mob/user, obj/item/pai_card/card)
 	if(paicard)
-		balloon_alert(user, "slot occupied!")
+		balloon_alert(user, "Ocupado!")
 		return
 	if(key)
-		balloon_alert(user, "personality already present!")
+		balloon_alert(user, "personalidade já presente!")
 		return
 	if(!(bot_access_flags & BOT_COVER_MAINTS_OPEN))
-		balloon_alert(user, "slot inaccessible!")
+		balloon_alert(user, "slot inacessível!")
 		return
 	if(!(bot_mode_flags & BOT_MODE_CAN_BE_SAPIENT))
-		balloon_alert(user, "incompatible firmware!")
+		balloon_alert(user, "firmware incompatível!")
 		return
 	if(isnull(card.pai?.mind))
-		balloon_alert(user, "pAI is inactive!")
+		balloon_alert(user, "PAI está inativa!")
 		return
 	if(!user.transferItemToLoc(card, src))
 		return
@@ -715,9 +703,9 @@ GLOBAL_LIST_INIT(command_strings, list(
 	paicard.pai.fold_in()
 	copy_languages(paicard.pai, source_override = LANGUAGE_PAI)
 	set_active_language(paicard.pai.get_selected_language())
-	user.visible_message(span_notice("[user] inserts [card] into [src]!"), span_notice("You insert [card] into [src]."))
+	user.visible_message(span_notice("[user]Inserções[card]Em[src]!"), span_notice("Você insere[card]Em[src]."))
 	paicard.pai.mind.transfer_to(src)
-	to_chat(src, span_notice("You sense your form change as you are uploaded into [src]."))
+	to_chat(src, span_notice("Você sente sua mudança de forma como você é carregado em[src]."))
 	name = paicard.pai.name
 	original_faction = get_faction()
 	original_allies = allies
@@ -749,7 +737,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	var/to_log = user ? user : src
 	log_combat(to_log, paicard.pai, "ejected [user ? "from [initial(name)]" : ""].")
 	if(announce)
-		to_chat(paicard.pai, span_notice("You feel your control fade as [paicard] ejects from [initial(name)]."))
+		to_chat(paicard.pai, span_notice("Você sente seu controle desaparecer como[paicard]Ejeta de[initial(name)]."))
 	paicard = null
 	name = initial(name)
 	set_faction(original_faction)

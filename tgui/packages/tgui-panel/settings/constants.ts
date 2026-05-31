@@ -29,7 +29,7 @@ export const SETTINGS_TABS = [
 
   {
     id: 'textHighlight',
-    name: 'Text Highlights',
+    name: 'Destaques de texto',
   },
   {
     id: 'chatPage',
@@ -37,7 +37,7 @@ export const SETTINGS_TABS = [
   },
   {
     id: 'statPanel',
-    name: 'Stat Panel',
+    name: 'Painel Stat',
   },
 ] as const;
 
@@ -53,7 +53,7 @@ export const FONTS = [
   'Lucida Sans Unicode',
   'Tahoma',
   'Trebuchet MS',
-  'Courier New',
+  'Correio Novo',
   'Lucida Console',
 ] as const;
 

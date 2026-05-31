@@ -1,6 +1,6 @@
 /obj/machinery/computer/cargo
 	name = "supply console"
-	desc = "Used to order supplies, approve requests, and control the shuttle."
+	desc = "Costumava pedir suprimentos, aprovar pedidos e controlar a nave."
 	icon_screen = "supply"
 	circuit = /obj/item/circuitboard/computer/cargo
 	light_color = COLOR_BRIGHT_ORANGE
@@ -13,9 +13,7 @@
 	var/can_approve_requests = TRUE
 	var/contraband = FALSE
 	var/self_paid = FALSE
-	var/safety_warning = "For safety and ethical reasons, the automated supply shuttle cannot transport live organisms, \
-		human remains, classified nuclear weaponry, mail, undelivered departmental order crates, syndicate bombs, \
-		homing beacons, unstable eigenstates, fax machines, or machinery housing any form of artificial intelligence."
+	var/safety_warning = "For safety and ethical reasons, the automated supply shuttle cannot transport live organisms, 		human remains, classified nuclear weaponry, mail, undelivered departmental order crates, syndicate bombs, 		homing beacons, unstable eigenstates, fax machines, or machinery housing any form of artificial intelligence."
 	var/blockade_warning = "Bluespace instability detected. Shuttle movement impossible."
 	/// var that tracks message cooldown
 	var/message_cooldown
@@ -42,7 +40,7 @@
 
 /obj/machinery/computer/cargo/request
 	name = "supply request console"
-	desc = "Used to request supplies from cargo."
+	desc = "Costumava pedir suprimentos de carga."
 	icon_screen = "request"
 	circuit = /obj/item/circuitboard/computer/cargo/request
 	can_send = FALSE
@@ -61,8 +59,8 @@
 		return FALSE
 	if(user)
 		if (emag_card)
-			user.visible_message(span_warning("[user] swipes [emag_card] through [src]!"))
-		to_chat(user, span_notice("You adjust [src]'s routing and receiver spectrum, unlocking special supplies and contraband."))
+			user.visible_message(span_warning("[user]Slips[emag_card]através[src]!"))
+		to_chat(user, span_notice("Você se ajusta.[src]Roteamento e espectro receptor, desbloqueando suprimentos especiais e contrabando."))
 
 	obj_flags |= EMAGGED
 	contraband = TRUE
@@ -294,7 +292,7 @@
 		if(account?.account_job)
 			personal_department = SSeconomy.get_dep_account(account.account_job.paycheck_department)
 			if(!(personal_department.account_holder == "Cargo Budget"))
-				var/dept_choice = tgui_alert(user, "Which department are you requesting this for?", "Choose department to request from", list("Cargo Budget", "[personal_department.account_holder]"))
+				var/dept_choice = tgui_alert(user, "Para que departamento está pedindo isso?", "Choose department to request from", list("Cargo Budget", "[personal_department.account_holder]"))
 				if(!dept_choice)
 					return
 				if(dept_choice == "Cargo Budget")

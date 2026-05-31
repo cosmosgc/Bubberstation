@@ -37,7 +37,7 @@
 	else
 		user.Paralyze(20)
 		user.electrocute_act(25, src, 1, SHOCK_NOGLOVES|SHOCK_SUPPRESS_MESSAGE)
-		to_chat(user, span_warning("You feel a sudden jolt as you touch [src]!"))
+		to_chat(user, span_warning("Você sente um repentino choque como você toca[src]!"))
 		return FALSE
 
 

@@ -1,6 +1,6 @@
 /obj/item/grenade/c4
 	name = "C-4 charge"
-	desc = "Used to put holes in specific areas without too much extra hole. A saboteur's favorite."
+	desc = "Fazia buracos em áreas específicas sem muito furo extra. O favorito de um sabotador."
 	icon_state = "plastic-explosive0"
 	inhand_icon_state = "plastic-explosive"
 	worn_icon_state = "c4"
@@ -55,7 +55,7 @@
 	return ..()
 
 /obj/item/grenade/c4/screwdriver_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("The wire panel can be accessed without a screwdriver."))
+	to_chat(user, span_notice("O painel pode ser acessado sem chave de fenda."))
 	return TRUE
 
 /obj/item/grenade/c4/attackby(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
@@ -101,7 +101,7 @@
 	if(!newtime || QDELETED(user) || QDELETED(src) || !usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	det_time = newtime
-	to_chat(user, "Timer set for [det_time] seconds.")
+	to_chat(user, "Timer pronto para para[det_time]Segundos.")
 
 /obj/item/grenade/c4/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	// Here lies C4 ghosts. We hardly knew ye
@@ -112,10 +112,10 @@
 
 /obj/item/grenade/c4/proc/plant_c4(atom/bomb_target, mob/living/user)
 	if(bomb_target != user && HAS_TRAIT(user, TRAIT_PACIFISM) && isliving(bomb_target))
-		to_chat(user, span_warning("You don't want to harm other living beings!"))
+		to_chat(user, span_warning("Você não quer machucar outros seres vivos!"))
 		return FALSE
 
-	to_chat(user, span_notice("You start planting [src]. The timer is set to [det_time]..."))
+	to_chat(user, span_notice("Você começa a plantar[src]O temporizador está definido para[det_time]..."))
 
 	if(!do_after(user, 3 SECONDS, target = bomb_target))
 		return FALSE
@@ -132,7 +132,7 @@
 	notify_ghosts(
 		"[user.real_name] has planted \a [src] on [target] with a [det_time] second fuse!",
 		source = bomb_target,
-		header = "Explosive Planted",
+		header = "Explosivo plantado",
 		alert_overlay = bomb_target_image,
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
 	)
@@ -148,7 +148,7 @@
 		plastic_overlay.layer = FLOAT_LAYER
 
 	target.add_overlay(plastic_overlay)
-	to_chat(user, span_notice("You plant the bomb. Timer counting down from [det_time]."))
+	to_chat(user, span_notice("Você planta a bomba. Temporizador contando para baixo.[det_time]."))
 	addtimer(CALLBACK(src, PROC_REF(detonate)), det_time*10)
 	return TRUE
 
@@ -171,7 +171,7 @@
 	message_admins("[ADMIN_LOOKUPFLW(user)] suicided with [src] at [ADMIN_VERBOSEJMP(user)]")
 	user.log_message("suicided with [src].", LOG_ATTACK)
 	log_game("[key_name(user)] suicided with [src] at [AREACOORD(user)]")
-	user.visible_message(span_suicide("[user] activates [src] and holds it above [user.p_their()] head! It looks like [user.p_theyre()] going out with a bang!"))
+	user.visible_message(span_suicide("[user]Ativa.[src]e o segura acima[user.p_their()]Cabeça! Parece que...[user.p_theyre()]Saindo com um estrondo!"))
 	shout_syndicate_crap(user)
 	explosion(user, heavy_impact_range = 2, explosion_cause = src) //Cheap explosion imitation because putting detonate() here causes runtimes
 	user.gib(DROP_BODYPARTS)
@@ -183,7 +183,7 @@
 
 /obj/item/grenade/c4/x4
 	name = "X-4 charge"
-	desc = "A shaped high-explosive breaching charge. Designed to ensure user safety and wall nonsafety."
+	desc = "Um ataque de alta explosão. Projetado para garantir a segurança do usuário e a segurança da parede."
 	icon_state = "plasticx40"
 	inhand_icon_state = "plasticx4"
 	worn_icon_state = "x4"

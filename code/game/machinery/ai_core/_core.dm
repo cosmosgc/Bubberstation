@@ -2,7 +2,7 @@
 
 /obj/structure/ai_core
 	name = "\improper AI core"
-	desc = "The framework for an artificial intelligence core."
+	desc = "A estrutura para um núcleo de inteligência artificial."
 	icon = 'icons/mob/silicon/ai.dmi'
 	icon_state = "build_0"
 	base_icon_state = "build_"
@@ -91,27 +91,27 @@
 
 /obj/structure/ai_core/examine(mob/user)
 	. = ..()
-	. += span_notice("It has some <b>bolts</b> that look [anchored ? "tightened" : "loosened"].")
+	. += span_notice("Tem algo<b>Parafusos</b>Aquele olhar.[anchored ? "tightened" : "loosened"].")
 
 	switch(state)
 		if(CORE_STATE_EMPTY)
-			. += span_notice("There is a <b>slot</b> for a circuit board, the frame can be <b>melted</b> down.")
+			. += span_notice("Há um<b>slot</b>Para uma placa de circuito, o quadro pode ser<b>Derretido.</b>Abaixe-se.")
 		if(CORE_STATE_CIRCUIT)
-			. += span_notice("The circuit board can be <b>screwed</b> into place or <b>pried</b> out.")
+			. += span_notice("A placa de circuito pode ser<b>Está ferrado.</b>No lugar ou<b>Invadido</b>Fora.")
 		if(CORE_STATE_SCREWED)
-			. += span_notice("The frame can be <b>wired</b>, the circuit board can be <b>unfastened</b>.")
+			. += span_notice("A modura pode ser<b>com fio</b>A placa de circuito pode ser<b>Desapertado.</b>.")
 		if(CORE_STATE_CABLED)
 			if(!core_mmi)
-				. += span_notice("There are wires which could be hooked up to an <b>MMI or positronic brain</b>, or <b>cut</b>.")
+				. += span_notice("Há fios que podem ser ligados a um<b>MMI ou cérebro positrônico</b>, ou<b>Corta.</b>.")
 			else
 				var/accept_laws = TRUE
 				if(core_mmi.laws.id != DEFAULT_AI_LAWID || !core_mmi.brainmob || !core_mmi.brainmob?.mind)
 					accept_laws = FALSE
-				. += span_notice("There is a <b>slot</b> for a reinforced glass panel, the [AI_CORE_BRAIN(core_mmi)] could be <b>pried</b> out.[accept_laws ? " A law module can be <b>swiped</b> across." : ""]")
+				. += span_notice("Há um<b>slot</b>para um painel de vidro reforçado,[AI_CORE_BRAIN(core_mmi)]Poderia ser<b>Invadido</b>Fora.[accept_laws ? " A law module can be <b>swiped</b> across." : ""]")
 		if(CORE_STATE_GLASSED)
-			. += span_notice("The monitor [core_mmi?.brainmob?.mind && !suicide_check() ? "and neural interface " : ""]can be <b>screwed</b> in, the panel can be <b>pried</b> out.")
+			. += span_notice("O monitor.[core_mmi?.brainmob?.mind && !suicide_check() ? "and neural interface " : ""]Pode ser<b>Está ferrado.</b>O painel pode ser...<b>Invadido</b>Fora.")
 		if(CORE_STATE_FINISHED)
-			. += span_notice("The monitor's connection can be <b>cut</b>[core_mmi?.brainmob?.mind && !suicide_check() ? " the neural interface can be <b>screwed</b> in." : "."]")
+			. += span_notice("A conexão do monitor pode ser<b>Corta.</b>[core_mmi?.brainmob?.mind && !suicide_check() ? " the neural interface can be <b>screwed</b> in." : "."]")
 
 /obj/structure/ai_core/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(state < CORE_STATE_FINISHED)
@@ -125,7 +125,7 @@
 
 /obj/structure/ai_core/latejoin_inactive
 	name = "networked AI core"
-	desc = "This AI core is connected by bluespace transmitters to NTNet, allowing for an AI personality to be downloaded to it on the fly mid-shift."
+	desc = "Este núcleo de IA está conectado por transmissores de espaço azul para NTNet, permitindo que uma personalidade de IA seja baixada para ele no meio do turno."
 	anchored = TRUE
 	state = CORE_STATE_FINISHED
 	var/available = TRUE
@@ -143,7 +143,7 @@
 /obj/structure/ai_core/latejoin_inactive/examine(mob/user)
 	. = ..()
 	. += "Its transmitter seems to be <b>[active? "on" : "off"]</b>."
-	. += span_notice("You could [active? "deactivate" : "activate"] it with a multitool.")
+	. += span_notice("Você poderia.[active? "deactivate" : "activate"]com uma multitool.")
 
 /obj/structure/ai_core/latejoin_inactive/proc/is_available() //If people still manage to use this feature to spawn-kill AI latejoins ahelp them.
 	if(!available)
@@ -172,7 +172,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	active = !active
-	balloon_alert(user, "[active ? "activated" : "deactivated"] transmitters")
+	balloon_alert(user, "[active ? "activated" : "deactivated"]Transmissores")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/ai_core/proc/ai_structure_to_mob()
@@ -200,7 +200,7 @@
 	if(core_mmi.force_replace_ai_name)
 		ai_mob.fully_replace_character_name(ai_mob.name, core_mmi.replacement_ai_name())
 	ai_mob.posibrain_inside = core_mmi.braintype == "Android"
-	deadchat_broadcast(" has been brought online at <b>[get_area_name(ai_mob, format_text = TRUE)]</b>.", span_name("[ai_mob]"), follow_target = ai_mob, message_type = DEADCHAT_ANNOUNCEMENT)
+	deadchat_broadcast("Foi colocado online em<b>[get_area_name(ai_mob, format_text = TRUE)]</b>.", span_name("[ai_mob]"), follow_target = ai_mob, message_type = DEADCHAT_ANNOUNCEMENT)
 	qdel(src)
 	return ai_mob
 
@@ -222,7 +222,7 @@ That prevents a few funky behaviors.
 	SHOULD_CALL_PARENT(TRUE)
 	if(istype(card))
 		if(card.flush)
-			to_chat(user, span_alert("ERROR: AI flush is in progress, cannot execute transfer protocol."))
+			to_chat(user, span_alert("O AI Flush está em andamento, não pode executar o protocolo de transferência."))
 			return FALSE
 	return TRUE
 
@@ -231,24 +231,24 @@ That prevents a few funky behaviors.
 		return
 	if(core_mmi && core_mmi.brainmob)
 		if(core_mmi.brainmob.mind)
-			to_chat(user, span_warning("[src] already contains an active mind!"))
+			to_chat(user, span_warning("[src]Já contém uma mente ativa!"))
 			return
 		else if(suicide_check())
-			to_chat(user, span_warning("[AI_CORE_BRAIN(core_mmi)] installed in [src] is completely useless!"))
+			to_chat(user, span_warning("[AI_CORE_BRAIN(core_mmi)]Instalado em[src]é completamente inútil!"))
 			return
 	//Transferring a carded AI to a core.
 	if(interaction == AI_TRANS_FROM_CARD)
 		AI.set_control_disabled(FALSE)
 		AI.radio_enabled = TRUE
 		AI.forceMove(loc) // to replace the terminal.
-		to_chat(AI, span_notice("You have been uploaded to a stationary terminal. Remote device connection restored."))
+		to_chat(AI, span_notice("Você foi carregado para um terminal estacionário. Ligação remota restaurada."))
 		to_chat(user, "[span_boldnotice("Transfer successful")]: [AI.name] ([rand(1000,9999)].exe) installed and executed successfully. Local copy has been removed.")
 		card.AI = null
 		AI.battery = circuit.battery
 		AI.posibrain_inside = isnull(core_mmi) || core_mmi.braintype == "Android"
 		qdel(src)
 	else //If for some reason you use an empty card on an empty AI terminal.
-		to_chat(user, span_alert("There is no AI loaded on this terminal."))
+		to_chat(user, span_alert("Não há IA carregada neste terminal."))
 
 /obj/item/circuitboard/aicore
 	name = "AI core (AI Core Board)" //Well, duh, but best to be consistent

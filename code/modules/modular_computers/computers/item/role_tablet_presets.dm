@@ -333,14 +333,7 @@
 
 /obj/item/modular_computer/pda/clown/Initialize(mapload)
 	. = ..()
-	AddComponent(\
-		/datum/component/slippery,\
-		knockdown = 12 SECONDS,\
-		lube_flags = NO_SLIP_WHEN_WALKING,\
-		on_slip_callback = CALLBACK(src, PROC_REF(AfterSlip)),\
-		can_slip_callback = CALLBACK(src, PROC_REF(try_slip)),\
-		slot_whitelist = ITEM_SLOT_ID | ITEM_SLOT_BELT,\
-	)
+	AddComponent(		/datum/component/slippery,		knockdown = 12 SECONDS,		lube_flags = NO_SLIP_WHEN_WALKING,		on_slip_callback = CALLBACK(src, PROC_REF(AfterSlip)),		can_slip_callback = CALLBACK(src, PROC_REF(try_slip)),		slot_whitelist = ITEM_SLOT_ID | ITEM_SLOT_BELT,	)
 	AddComponent(/datum/component/wearertargeting/sitcomlaughter, CALLBACK(src, PROC_REF(after_sitcom_laugh)))
 
 /// Returns whether the PDA can slip or not, if we have a wearer then check if they are in a position to slip someone.
@@ -348,7 +341,7 @@
 	if(isnull(slipper))
 		return TRUE
 	if(!istype(slipper.get_item_by_slot(ITEM_SLOT_FEET), /obj/item/clothing/shoes/clown_shoes))
-		to_chat(slipper,span_warning("[src] failed to slip anyone. Perhaps I shouldn't have abandoned my legacy..."))
+		to_chat(slipper,span_warning("[src]Não conseguiu escapar de ninguém. Talvez eu não devesse ter abandonado meu legado..."))
 		return FALSE
 	return TRUE
 
@@ -364,7 +357,7 @@
 			playsound(src,'sound/machines/ping.ogg',30,TRUE)
 
 /obj/item/modular_computer/pda/clown/proc/after_sitcom_laugh(mob/victim)
-	victim.visible_message("[src] lets out a burst of laughter!")
+	victim.visible_message("[src]Deixa sair uma explosão de risadas!")
 
 /obj/item/modular_computer/pda/mime
 	name = "mime PDA"
@@ -385,7 +378,7 @@
 
 /obj/item/modular_computer/pda/curator
 	name = "curator PDA"
-	desc = "A small experimental microcomputer."
+	desc = "Um pequeno microcomputador experimental."
 	icon = 'icons/obj/devices/modular_pda.dmi'
 	icon_state = "pda-library"
 	post_init_icon_state = null

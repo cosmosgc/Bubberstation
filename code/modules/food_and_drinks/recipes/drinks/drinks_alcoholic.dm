@@ -344,24 +344,24 @@
 /datum/chemical_reaction/drink/whiskey_sour
 	results = list(/datum/reagent/consumable/ethanol/whiskey_sour = 3)
 	required_reagents = list(/datum/reagent/consumable/ethanol/whiskey = 1, /datum/reagent/consumable/lemonjuice = 1, /datum/reagent/consumable/sugar = 1)
-	mix_message = "The mixture darkens to a rich gold hue."
+	mix_message = "A mistura escurece para uma cor de ouro rica."
 
 /datum/chemical_reaction/drink/fetching_fizz
 	results = list(/datum/reagent/consumable/ethanol/fetching_fizz = 3)
 	required_reagents = list(/datum/reagent/consumable/nuka_cola = 1, /datum/reagent/iron = 1) //Manufacturable from only the mining station
-	mix_message = "The mixture slightly vibrates before settling."
+	mix_message = "A mistura vibra ligeiramente antes de se estabelecer."
 
 /datum/chemical_reaction/drink/hearty_punch
 	results = list(/datum/reagent/consumable/ethanol/hearty_punch = 1)  //Very little, for balance reasons
 	required_reagents = list(/datum/reagent/consumable/ethanol/brave_bull = 5, /datum/reagent/consumable/ethanol/syndicatebomb = 5, /datum/reagent/consumable/ethanol/absinthe = 5)
-	mix_message = "The mixture darkens to a healthy crimson."
+	mix_message = "A mistura escurece para um carmesim saudável."
 	required_temp = 315 //Piping hot!
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_BRUTE | REACTION_TAG_BURN | REACTION_TAG_TOXIN | REACTION_TAG_OXY
 
 /datum/chemical_reaction/drink/bacchus_blessing
 	results = list(/datum/reagent/consumable/ethanol/bacchus_blessing = 4)
 	required_reagents = list(/datum/reagent/consumable/ethanol/hooch = 1, /datum/reagent/consumable/ethanol/absinthe = 1, /datum/reagent/consumable/ethanol/manly_dorf = 1, /datum/reagent/consumable/ethanol/syndicatebomb = 1)
-	mix_message = span_warning("The mixture turns to a sickening froth.")
+	mix_message = span_warning("A mistura vira uma espuma doentia.")
 
 /datum/chemical_reaction/drink/eggnog
 	results = list(/datum/reagent/consumable/ethanol/eggnog = 15)
@@ -370,21 +370,21 @@
 /datum/chemical_reaction/drink/narsour
 	results = list(/datum/reagent/consumable/ethanol/narsour = 1)
 	required_reagents = list(/datum/reagent/blood = 1, /datum/reagent/consumable/lemonjuice = 1, /datum/reagent/consumable/ethanol/demonsblood = 1)
-	mix_message = "The mixture develops a sinister glow."
+	mix_message = "A mistura desenvolve um brilho sinistro."
 	mix_sound = 'sound/effects/singlebeat.ogg'
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
 
 /datum/chemical_reaction/drink/quadruplesec
 	results = list(/datum/reagent/consumable/ethanol/quadruple_sec = 15)
 	required_reagents = list(/datum/reagent/consumable/ethanol/triple_sec = 5, /datum/reagent/consumable/triple_citrus = 5, /datum/reagent/consumable/grenadine = 5)
-	mix_message = "The snap of a taser emanates clearly from the mixture as it settles."
+	mix_message = "O estalo de um taser emana claramente da mistura enquanto se estabelece."
 	mix_sound = 'sound/items/weapons/taser.ogg'
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
 
 /datum/chemical_reaction/drink/grasshopper
 	results = list(/datum/reagent/consumable/ethanol/grasshopper = 15)
 	required_reagents = list(/datum/reagent/consumable/cream = 5, /datum/reagent/consumable/ethanol/creme_de_menthe = 5, /datum/reagent/consumable/ethanol/creme_de_cacao = 5)
-	mix_message = "A vibrant green bubbles forth as the mixture emulsifies."
+	mix_message = "Uma vibrante bolha verde enquanto a mistura emulsiona."
 
 /datum/chemical_reaction/drink/stinger
 	results = list(/datum/reagent/consumable/ethanol/stinger = 15)
@@ -393,49 +393,49 @@
 /datum/chemical_reaction/drink/quintuplesec
 	results = list(/datum/reagent/consumable/ethanol/quintuple_sec = 15)
 	required_reagents = list(/datum/reagent/consumable/ethanol/quadruple_sec = 5, /datum/reagent/consumable/nutriment/soup/clown_tears = 5, /datum/reagent/consumable/ethanol/syndicatebomb = 5)
-	mix_message = "Judgement is upon you."
+	mix_message = "O julgamento está sobre você."
 	mix_sound = 'sound/items/airhorn/airhorn2.ogg'
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
 
 /datum/chemical_reaction/drink/bastion_bourbon
 	results = list(/datum/reagent/consumable/ethanol/bastion_bourbon = 2)
 	required_reagents = list(/datum/reagent/consumable/tea = 1, /datum/reagent/consumable/ethanol/creme_de_menthe = 1, /datum/reagent/consumable/triple_citrus = 1, /datum/reagent/consumable/berryjuice = 1) //herbal and minty, with a hint of citrus and berry
-	mix_message = "You catch an aroma of hot tea and fruits as the mix blends into a blue-green color."
+	mix_message = "Você pega um aroma de chá quente e frutas como a mistura se mistura em uma cor azul-verde."
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_BRUTE | REACTION_TAG_BURN | REACTION_TAG_TOXIN | REACTION_TAG_OXY
 
 /datum/chemical_reaction/drink/squirt_cider
 	results = list(/datum/reagent/consumable/ethanol/squirt_cider = 4)
 	required_reagents = list(/datum/reagent/water/salt = 2, /datum/reagent/consumable/tomatojuice = 2, /datum/reagent/consumable/nutriment = 1)
-	mix_message = "The mix swirls and turns a bright red that reminds you of an apple's skin."
+	mix_message = "A mistura gira e vira um vermelho brilhante que lembra a pele de uma maçã."
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
 
 /datum/chemical_reaction/drink/fringe_weaver
 	results = list(/datum/reagent/consumable/ethanol/fringe_weaver = 10)
 	required_reagents = list(/datum/reagent/consumable/ethanol = 9, /datum/reagent/consumable/sugar = 1) //9 karmotrine, 1 adelhyde
-	mix_message = "The mix turns a pleasant cream color and foams up."
+	mix_message = "A mistura torna uma cor creme agradável e espuma."
 
 /datum/chemical_reaction/drink/sugar_rush
 	results = list(/datum/reagent/consumable/ethanol/sugar_rush = 4)
 	required_reagents = list(/datum/reagent/consumable/sugar = 2, /datum/reagent/consumable/lemonjuice = 1, /datum/reagent/consumable/ethanol/wine = 1) //2 adelhyde (sweet), 1 powdered delta (sour), 1 karmotrine (alcohol)
-	mix_message = "The mixture bubbles and brightens into a girly pink."
+	mix_message = "A mistura de bolhas e brilha em um rosa feminino."
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
 
 /datum/chemical_reaction/drink/crevice_spike
 	results = list(/datum/reagent/consumable/ethanol/crevice_spike = 6)
 	required_reagents = list(/datum/reagent/consumable/limejuice = 2, /datum/reagent/consumable/capsaicin = 4) //2 powdered delta (sour), 4 flanergide (spicy)
-	mix_message = "The mixture stings your eyes as it settles."
+	mix_message = "A mistura pica seus olhos enquanto se acalma."
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
 
 /datum/chemical_reaction/drink/sake
 	results = list(/datum/reagent/consumable/ethanol/sake = 10)
 	required_reagents = list(/datum/reagent/consumable/rice = 10)
 	required_catalysts = list(/datum/reagent/consumable/enzyme = 5)
-	mix_message = "The rice grains ferment into a clear, sweet-smelling liquid."
+	mix_message = "Os grãos de arroz fermentam em um líquido claro e doce."
 
 /datum/chemical_reaction/drink/peppermint_patty
 	results = list(/datum/reagent/consumable/ethanol/peppermint_patty = 10)
 	required_reagents = list(/datum/reagent/consumable/hot_coco = 6, /datum/reagent/consumable/ethanol/creme_de_cacao = 1, /datum/reagent/consumable/ethanol/creme_de_menthe = 1, /datum/reagent/consumable/ethanol/vodka = 1, /datum/reagent/consumable/menthol = 1)
-	mix_message = "The coco turns mint green just as the strong scent hits your nose."
+	mix_message = "O coco fica verde de menta assim que o cheiro forte atinge seu nariz."
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
 
 /datum/chemical_reaction/drink/alexander
@@ -480,21 +480,21 @@
 /datum/chemical_reaction/drink/wizz_fizz
 	results = list(/datum/reagent/consumable/ethanol/wizz_fizz = 3)
 	required_reagents = list(/datum/reagent/consumable/ethanol/triple_sec = 1, /datum/reagent/consumable/sodawater = 1, /datum/reagent/consumable/ethanol/champagne = 1)
-	mix_message = "The beverage starts to froth with an almost mystical zeal!"
+	mix_message = "A bebida começa a espumar com um zelo quase místico!"
 	mix_sound = 'sound/effects/bubbles/bubbles2.ogg'
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
 
 /datum/chemical_reaction/drink/bug_spray
 	results = list(/datum/reagent/consumable/ethanol/bug_spray = 5)
 	required_reagents = list(/datum/reagent/consumable/ethanol/triple_sec = 2, /datum/reagent/consumable/lemon_lime = 1, /datum/reagent/consumable/ethanol/rum = 2, /datum/reagent/consumable/ethanol/vodka = 1)
-	mix_message = "The faint aroma of summer camping trips wafts through the air; but what's that buzzing noise?"
+	mix_message = "O fraco aroma de acampamentos de verão passa pelo ar, mas que barulho é esse?"
 	mix_sound = 'sound/mobs/non-humanoids/bee/bee.ogg'
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
 
 /datum/chemical_reaction/drink/jack_rose
 	results = list(/datum/reagent/consumable/ethanol/jack_rose = 4)
 	required_reagents = list(/datum/reagent/consumable/grenadine = 1, /datum/reagent/consumable/ethanol/applejack = 2, /datum/reagent/consumable/limejuice = 1)
-	mix_message = "As the grenadine incorporates, the beverage takes on a mellow, red-orange glow."
+	mix_message = "À medida que a grenadina se incorpora, a bebida toma um brilho suave, vermelho-laranja."
 
 /datum/chemical_reaction/drink/turbo
 	results = list(/datum/reagent/consumable/ethanol/turbo = 5)
@@ -528,7 +528,7 @@
 /datum/chemical_reaction/drink/planet_cracker
 	results = list(/datum/reagent/consumable/ethanol/planet_cracker = 20)
 	required_reagents = list(/datum/reagent/consumable/ethanol/champagne = 10, /datum/reagent/consumable/ethanol/lizardwine = 10, /datum/reagent/consumable/eggyolk = 2, /datum/reagent/gold = 5)
-	mix_message = "The liquid's color starts shifting as the nanogold is alternately corroded and redeposited."
+	mix_message = "A cor do líquido começa a mudar à medida que o nano ouro é alternadamente corroído e redepositado."
 
 /datum/chemical_reaction/drink/mauna_loa
 	results = list(/datum/reagent/consumable/ethanol/mauna_loa = 5)
@@ -554,17 +554,17 @@
 /datum/chemical_reaction/drink/the_juice
 	results = list(/datum/reagent/consumable/ethanol/the_juice = 5)
 	required_reagents = list(/datum/reagent/consumable/mushroom_tea = 1, /datum/reagent/bluespace = 1, /datum/reagent/toxin/mindbreaker = 1, /datum/reagent/consumable/ethanol/neurotoxin = 1, /datum/reagent/medicine/morphine = 1)
-	mix_message = "The liquids all swirl together into a deep purple."
+	mix_message = "Os líquidos giram em um roxo profundo."
 
 /datum/chemical_reaction/drink/helianthus
 	results = list(/datum/reagent/consumable/ethanol/helianthus = 5)
 	required_reagents = list(/datum/reagent/consumable/ethanol/absinthe = 1, /datum/reagent/consumable/sugar = 1, /datum/reagent/toxin/mindbreaker = 1)
-	mix_message = "The drink lets out a soft enlightening laughter..."
+	mix_message = "A bebida deixa sair uma suave risada esclarecedora..."
 
 /datum/chemical_reaction/drink/the_hat
 	results = list(/datum/reagent/consumable/ethanol/the_hat = 1)
 	required_reagents = list(/datum/reagent/consumable/ethanol = 1, /datum/reagent/water = 1, /datum/reagent/consumable/ethanol/plumwine = 1)
-	mix_message = "The drink starts to smell perfumy..."
+	mix_message = "A bebida começa a cheirar perfumada..."
 
 /datum/chemical_reaction/drink/gin_garden
 	results = list(/datum/reagent/consumable/ethanol/gin_garden = 15)
@@ -573,12 +573,12 @@
 /datum/chemical_reaction/drink/telepole
 	results = list(/datum/reagent/consumable/ethanol/telepole = 5)
 	required_reagents = list(/datum/reagent/consumable/ethanol/wine_voltaic = 1, /datum/reagent/consumable/ethanol/dark_and_stormy = 2, /datum/reagent/consumable/ethanol/sake = 1)
-	mix_message = "You swear you saw a spark fly from the glass..."
+	mix_message = "Você jura que viu uma faísca voar do vidro..."
 
 /datum/chemical_reaction/drink/pod_tesla
 	results = list(/datum/reagent/consumable/ethanol/pod_tesla = 15)
 	required_reagents = list(/datum/reagent/consumable/ethanol/telepole = 5, /datum/reagent/consumable/ethanol/brave_bull = 3, /datum/reagent/consumable/ethanol/admiralty = 5)
-	mix_message = "Arcs of lightning fly from the mixture."
+	mix_message = "Arcos de raios voam da mistura."
 	mix_sound = 'sound/items/weapons/zapbang.ogg'
 
 /datum/chemical_reaction/drink/yuyakita
@@ -660,7 +660,7 @@
 /datum/chemical_reaction/drink/boston_sour
 	results = list(/datum/reagent/consumable/ethanol/boston_sour = 15)
 	required_reagents = list(/datum/reagent/consumable/ethanol/whiskey_sour = 15, /datum/reagent/consumable/eggwhite = 2, /datum/reagent/consumable/ethanol/bitters = 1)
-	mix_message = "A frothy head forms over the mixture."
+	mix_message = "Uma cabeça espumante se forma sobre a mistura."
 
 /datum/chemical_reaction/drink/star
 	results = list(/datum/reagent/consumable/ethanol/star = 10)
@@ -669,23 +669,23 @@
 /datum/chemical_reaction/drink/old_fashioned
 	results = list(/datum/reagent/consumable/ethanol/old_fashioned = 30)
 	required_reagents = list(/datum/reagent/consumable/ethanol/whiskey = 25, /datum/reagent/consumable/sugar = 5, /datum/reagent/consumable/ethanol/bitters = 2)
-	mix_message = "The sugar dissolves into the bitters and whiskey."
+	mix_message = "O açúcar se dissolve em amargos e uísque."
 
 /datum/chemical_reaction/drink/sazerac
 	results = list(/datum/reagent/consumable/ethanol/sazerac = 10)
 	required_reagents = list(/datum/reagent/consumable/ethanol/old_fashioned = 10, /datum/reagent/consumable/ethanol/absinthe = 1)
-	mix_message = "The mixture takes on a pleasing pink hue."
+	mix_message = "A mistura assume uma cor rosa agradável."
 
 /datum/chemical_reaction/drink/amaretto_sour
 	results = list(/datum/reagent/consumable/ethanol/amaretto_sour = 15)
 	required_reagents = list(/datum/reagent/consumable/ethanol/amaretto = 10, /datum/reagent/consumable/lemonjuice = 5, /datum/reagent/consumable/eggwhite = 2)
-	mix_message = "A frothy head forms over the mixture."
+	mix_message = "Uma cabeça espumante se forma sobre a mistura."
 
 /datum/chemical_reaction/drink/ramos_gin_fizz
 	results = list(/datum/reagent/consumable/ethanol/ramos_gin_fizz = 25)
 	//yes, this is intentionally a pain in the ass
 	required_reagents = list(/datum/reagent/consumable/ethanol/ginfizz = 12, /datum/reagent/consumable/lemonjuice = 3, /datum/reagent/consumable/sugar = 3, /datum/reagent/consumable/eggwhite = 3, /datum/reagent/consumable/cream = 3, /datum/reagent/consumable/ethanol/triple_sec = 1)
-	mix_message = "The drink forms a rising head of foam that begins to creep out of the top of the glass."
+	mix_message = "A bebida forma uma cabeça de espuma que começa a sair do topo do vidro."
 
 /datum/chemical_reaction/drink/french_75
 	results = list(/datum/reagent/consumable/ethanol/french_75 = 10)
@@ -702,7 +702,7 @@
 /datum/chemical_reaction/drink/hot_toddy
 	results = list(/datum/reagent/consumable/ethanol/hot_toddy = 10)
 	required_reagents = list(/datum/reagent/water = 5, /datum/reagent/consumable/ethanol/cognac = 3, /datum/reagent/consumable/sugar = 1, /datum/reagent/consumable/lemonjuice = 1)
-	mix_message = "The scent of warm cognac fills the air."
+	mix_message = "O cheiro de conhaque quente enche o ar."
 	required_temp = 320 //Pour 100c water into other ingredients
 
 /datum/chemical_reaction/drink/tizirian_sour
@@ -716,12 +716,12 @@
 /datum/chemical_reaction/drink/flip_cocktail
 	results=list(/datum/reagent/consumable/ethanol/flip_cocktail = 25)
 	required_reagents = list(/datum/reagent/consumable/ethanol/cognac = 15, /datum/reagent/consumable/sugar = 5, /datum/reagent/consumable/eggwhite = 4, /datum/reagent/consumable/eggyolk = 2)
-	mix_message = "The egg emulsifies into a smooth mixture."
+	mix_message = "O ovo emulsiona em uma mistura suave."
 
 /datum/chemical_reaction/drink/blue_blazer
 	results=list(/datum/reagent/consumable/ethanol/blue_blazer = 9)
 	required_reagents = list(/datum/reagent/consumable/ethanol/whiskey = 4, /datum/reagent/water = 4, /datum/reagent/consumable/sugar = 1)
-	mix_message = "The whiskey ignites in a brilliant blue flame!"
+	mix_message = "O uísque acende em uma chama azul brilhante!"
 	required_temp = 365 //autoignition temp of ethanol
 
 /datum/chemical_reaction/drink/bartenders_handshake
@@ -767,7 +767,7 @@
 /datum/chemical_reaction/drink/nuclear_daiquiri_thermo
 	results=list(/datum/reagent/consumable/ethanol/nuclear_daiquiri_thermo = 10)
 	required_reagents = list(/datum/reagent/consumable/ethanol/nuclear_daiquiri = 10, /datum/reagent/uranium = 1, /datum/reagent/hydrogen = 9)
-	mix_message = "As the mixture begins to combine and glow, an ominous metallic taste fills your mouth."
+	mix_message = "Quando a mistura começa a se combinar e brilhar, um sabor metálico sinistro enche sua boca."
 
 /datum/chemical_reaction/drink/poets_dream
 	results=list(/datum/reagent/consumable/ethanol/poets_dream = 4)

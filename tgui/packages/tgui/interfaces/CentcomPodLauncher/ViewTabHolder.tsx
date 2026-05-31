@@ -27,7 +27,7 @@ export function ViewTabHolder(props) {
                 act('tabSwitch', { tabIndex: 2 });
               }}
               selected={tab === 2}
-              tooltip="View Dropoff Location"
+              tooltip="Ver Localização do Descarte"
             />
           )}
           <Button
@@ -39,7 +39,7 @@ export function ViewTabHolder(props) {
               act('tabSwitch', { tabIndex: 0 });
             }}
             selected={tab === 0}
-            tooltip="View Pod"
+            tooltip="Ver Pod"
           />
           <Button
             color="transparent"
@@ -50,7 +50,7 @@ export function ViewTabHolder(props) {
               act('tabSwitch', { tabIndex: 1 });
             }}
             selected={tab === 1}
-            tooltip="View Source Bay"
+            tooltip="Veja a baía da fonte"
           />
           <span style={POD_GREY}>|</span>
           <Button
@@ -61,7 +61,7 @@ export function ViewTabHolder(props) {
               setTab(tab);
               act('refreshView');
             }}
-            tooltip="Refresh view window in case it breaks"
+            tooltip="Atualizar janela de visualização no caso de quebrar"
           />
         </>
       }

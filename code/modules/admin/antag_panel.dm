@@ -46,11 +46,7 @@ GLOBAL_VAR(antag_prototypes)
 	else
 		var/obj_count = 1
 		for(var/datum/objective/objective as anything in objectives)
-			result += "<B>[obj_count]</B>: [objective.explanation_text] \
-				<a href='byond://?src=[REF(owner)];obj_edit=[REF(objective)]'>Edit</a> \
-				<a href='byond://?src=[REF(owner)];obj_delete=[REF(objective)]'>Delete</a> \
-				<a href='byond://?src=[REF(owner)];obj_completed=[REF(objective)]'><font color=[objective.check_completion() ? "green" : "red"]>[objective.completed ? "Mark as incomplete" : "Mark as complete"]</font></a> \
-				<br>"
+			result += "<B>[obj_count]</B>: [objective.explanation_text] 				<a href='byond://?src=[REF(owner)];obj_edit=[REF(objective)]'>Edit</a> 				<a href='byond://?src=[REF(owner)];obj_delete=[REF(objective)]'>Delete</a> 				<a href='byond://?src=[REF(owner)];obj_completed=[REF(objective)]'><font color=[objective.check_completion() ? "green" : "red"]>[objective.completed ? "Mark as incomplete" : "Mark as complete"]</font></a> 				<br>"
 			obj_count++
 	result += "<a href='byond://?src=[REF(owner)];obj_add=1;target_antag=[REF(src)]'>Add objective</a><br>"
 	result += "<a href='byond://?src=[REF(owner)];obj_prompt_custom=1;target_antag=[REF(src)]'>Prompt custom objective entry</a><br>"
@@ -81,7 +77,7 @@ GLOBAL_VAR(antag_prototypes)
 /datum/mind/proc/get_special_statuses()
 	var/list/result = LAZYCOPY(special_statuses)
 	if(!current)
-		result += span_bad("No body!")
+		result += span_bad("Nenhum corpo!")
 	if(current && HAS_TRAIT(current, TRAIT_MINDSHIELD))
 		result += span_good("Mindshielded")
 	if(current && HAS_MIND_TRAIT(current, TRAIT_UNCONVERTABLE))
@@ -101,10 +97,10 @@ GLOBAL_VAR(antag_prototypes)
 
 /datum/mind/proc/traitor_panel()
 	if(!SSticker.HasRoundStarted())
-		tgui_alert(usr, "Not before round-start!", "Alert")
+		tgui_alert(usr, "Não antes de começar!", "Alert")
 		return
 	if(QDELETED(src))
-		tgui_alert(usr, "This mind doesn't have a mob, or is deleted! For some reason!", "Edit Memory")
+		tgui_alert(usr, "Esta mente não tem uma multidão, ou está deletada! Por alguma razão!", "Edit Memory")
 		return
 
 	var/out = "<B>[name]</B>[(current && (current.real_name != name))?" (as [current.real_name])":""]<br>"

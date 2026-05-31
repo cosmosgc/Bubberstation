@@ -13,6 +13,6 @@
 		sensor_mode = clamp(sensor_mode + pick(-1,1), SENSOR_OFF, SENSOR_COORDS)
 		if(ismob(loc))
 			var/mob/wearing_mob = loc
-			to_chat(wearing_mob, span_warning("The sensors on the [src] change rapidly!"))
+			to_chat(wearing_mob, span_warning("Os sensores no[src]Mudem rapidamente!"))
 
 	update_wearer_status()

@@ -4,7 +4,7 @@
 	icon_state = "vent_map-3"
 
 	name = "air vent"
-	desc = "Has a valve and pump attached to it."
+	desc = "Tem uma válvula e uma bomba."
 	construction_type = /obj/item/pipe/directional/vent
 	use_power = IDLE_POWER_USE
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.15
@@ -83,15 +83,15 @@
 
 /obj/machinery/atmospherics/components/unary/vent_pump/examine(mob/user)
 	. = ..()
-	. += span_notice("You can link it with an air sensor using a multitool.")
+	. += span_notice("Você pode ligá-lo com um sensor de ar usando uma multitool.")
 
 	if(fan_overclocked)
-		. += span_warning("It is currently overclocked causing it to take damage over time.")
+		. += span_warning("Está atualmente sobrecarregado causando danos ao longo do tempo.")
 
 	if(get_integrity() > 0)
 		. += span_notice(examine_condition)
 	else
-		. += span_warning("The fan is broken.")
+		. += span_warning("O ventilador está quebrado.")
 
 /obj/machinery/atmospherics/components/unary/vent_pump/multitool_act(mob/living/user, obj/item/multitool/multi_tool)
 	if(istype(multi_tool.buffer, /obj/machinery/air_sensor))
@@ -100,7 +100,7 @@
 		sensor.multitool_act(user, multi_tool)
 		return ITEM_INTERACT_SUCCESS
 
-	balloon_alert(user, "vent saved in buffer")
+	balloon_alert(user, "Ventilação salva em buffer")
 	multi_tool.set_buffer(src)
 	return ITEM_INTERACT_SUCCESS
 
@@ -109,13 +109,13 @@
 	if(!time_to_repair)
 		return FALSE
 
-	balloon_alert(user, "repairing vent...")
+	balloon_alert(user, "Reparando ventilação...")
 	if(do_after(user, time_to_repair, src))
-		balloon_alert(user, "vent repaired")
+		balloon_alert(user, "Ventilação reparada.")
 		repair_damage(max_integrity)
 
 	else
-		balloon_alert(user, "interrompido!")
+		balloon_alert(user, "Interrompido!")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/atmospherics/components/unary/vent_pump/atom_fix()
@@ -319,13 +319,13 @@
 	..()
 	if(!welder.tool_start_check(user, amount=1))
 		return TRUE
-	to_chat(user, span_notice("You begin welding the vent..."))
+	to_chat(user, span_notice("Você começa a soldar a ventilação..."))
 	if(welder.use_tool(src, user, 20, volume=50))
 		if(!welded)
-			user.visible_message(span_notice("[user] welds the vent shut."), span_notice("You weld the vent shut."), span_hear("You hear welding."))
+			user.visible_message(span_notice("[user]Solda a ventilação fechada."), span_notice("Você soldou a ventilação fechada."), span_hear("Você ouve solda."))
 			welded = TRUE
 		else
-			user.visible_message(span_notice("[user] unwelded the vent."), span_notice("You unweld the vent."), span_hear("You hear welding."))
+			user.visible_message(span_notice("[user]Desgastou a ventilação."), span_notice("Você desgastou a ventilação."), span_hear("Você ouve solda."))
 			welded = FALSE
 		update_appearance(UPDATE_ICON)
 		pipe_vision_img = image(src, loc, dir = dir)
@@ -337,7 +337,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		to_chat(user, span_warning("Você não pode destrancar[src]Desligue isso primeiro!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/unary/vent_pump/examine(mob/user)
@@ -352,7 +352,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/attack_alien(mob/user, list/modifiers)
 	if(!welded || !(do_after(user, 2 SECONDS, target = src)))
 		return
-	user.visible_message(span_warning("[user] furiously claws at [src]!"), span_notice("You manage to clear away the stuff blocking the vent."), span_hear("You hear loud scraping noises."))
+	user.visible_message(span_warning("[user]Garras furiosas em[src]!"), span_notice("Você consegue limpar o material bloqueando a ventilação."), span_hear("Você ouve barulhos altos."))
 	welded = FALSE
 	update_appearance(UPDATE_ICON)
 	pipe_vision_img = image(src, loc, dir = dir)

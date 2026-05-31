@@ -52,10 +52,8 @@
 
 /datum/heretic_knowledge/limited_amount/starting/base_blade
 	name = "The Cutting Edge"
-	desc = "Opens up the Path of Blades to you. \
-		Allows you to transmute a knife with one bar of silver or titanium to create a Sundered Blade. \
-		You can create up to four at a time."
-	gain_text = "Our great ancestors forged swords and practiced sparring on the eve of great battles."
+	desc = "Abre o Caminho das Lâminas para você. Permite que transmute uma faca com uma barra de prata ou titânio para criar uma Lâmina Sundered. Você pode criar até quatro de cada vez."
+	gain_text = "Nossos grandes ancestrais forjaram espadas e praticaram luta na véspera de grandes batalhas."
 	required_atoms = list(
 		/obj/item/knife = 1,
 		list(/obj/item/stack/sheet/mineral/silver, /obj/item/stack/sheet/mineral/titanium) = 1,
@@ -76,7 +74,7 @@
 	// We're officially behind them, apply effects
 	target.AdjustParalyzed(1.5 SECONDS)
 	target.apply_damage(10, BRUTE, wound_bonus = CANT_WOUND)
-	target.balloon_alert(source, "backstab!")
+	target.balloon_alert(source, "Apunhalar as costas!")
 	playsound(target, 'sound/items/weapons/guillotine.ogg', 100, TRUE)
 
 /datum/heretic_knowledge/limited_amount/starting/base_blade/create_mark(mob/living/source, mob/living/target)
@@ -84,7 +82,7 @@
 	if(istype(blade_mark))
 		var/area/to_lock_to = get_area(target)
 		blade_mark.locked_to = to_lock_to
-		to_chat(target, span_hypnophrase("An otherworldly force is compelling you to stay in [get_area_name(to_lock_to)]!"))
+		to_chat(target, span_hypnophrase("Uma força de outro mundo está te forçando a ficar[get_area_name(to_lock_to)]!"))
 	return blade_mark
 
 /datum/heretic_knowledge/limited_amount/starting/base_blade/trigger_mark(mob/living/source, mob/living/target)
@@ -95,10 +93,8 @@
 
 /datum/heretic_knowledge/spell/realignment
 	name = "Realignment"
-	desc = "Grants you Realignment a spell that wil realign your body rapidly for a short period. \
-		During this process, you will rapidly regenerate stamina and quickly recover from stuns, however, you will be unable to attack. \
-		This spell can be cast in rapid succession, but doing so will increase the cooldown."
-	gain_text = "In the flurry of death, he found peace within himself. Despite insurmountable odds, he forged on."
+	desc = "Concede um feitiço que realinhará seu corpo rapidamente por um curto período. Durante este processo, você irá regenerar rapidamente resistência e rapidamente se recuperar de atordoamentos, no entanto, você será incapaz de atacar. Este feitiço pode ser lançado em rápida sucessão, mas fazê-lo aumentará o resfriamento."
+	gain_text = "Na explosão da morte, ele encontrou paz dentro de si mesmo. Apesar das probabilidades intransponíveis, ele forjou."
 	action_to_add = /datum/action/cooldown/spell/realignment
 	cost = 2
 
@@ -107,11 +103,8 @@
 
 /datum/heretic_knowledge/duel_stance
 	name = "Stance of the Torn Champion"
-	desc = "Grants resilience to blood loss from wounds and immunity to having your limbs dismembered. \
-		Additionally, when damaged below 50% of your maximum health, \
-		you gain increased resistance to gaining wounds and resistance to slowdown."
-	gain_text = "In time, it was he who stood alone among the bodies of his former comrades, awash in blood, none of it his own. \
-		He was without rival, equal, or purpose."
+	desc = "Dá resistência à perda de sangue de feridas e imunidade a ter seus membros desmembrados. Além disso, quando danificado abaixo de 50% da sua saúde máxima, você ganha resistência aumentada a ganhar feridas e resistência ao abrandamento."
+	gain_text = "Com o tempo, foi ele que ficou sozinho entre os corpos de seus antigos companheiros, inundado de sangue, nada disso é seu. Ele estava sem rival, igual ou propósito."
 	cost = 2
 	research_tree_icon_path = 'icons/effects/blood.dmi'
 	research_tree_icon_state = "suitblood"
@@ -143,7 +136,7 @@
 
 	var/obj/item/held_item = source.get_active_held_item()
 	if(in_duelist_stance)
-		examine_list += span_warning("[source] looks unnaturally poised[held_item?.force >= 15 ? " and ready to strike out":""].")
+		examine_list += span_warning("[source]Parece anormalmente equilibrado.[held_item?.force >= 15 ? " and ready to strike out":""].")
 
 /datum/heretic_knowledge/duel_stance/proc/on_wound_gain(mob/living/source, datum/wound/gained_wound, obj/item/bodypart/limb)
 	SIGNAL_HANDLER
@@ -157,14 +150,14 @@
 	SIGNAL_HANDLER
 
 	if(in_duelist_stance && source.health > source.maxHealth * 0.5)
-		source.balloon_alert(source, "exited duelist stance")
+		source.balloon_alert(source, "A posição do duelista saiu.")
 		in_duelist_stance = FALSE
 		source.remove_traits(list(TRAIT_HARDLY_WOUNDED), type)
 		source.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown, TRUE)
 		return
 
 	if(!in_duelist_stance && source.health <= source.maxHealth * 0.5)
-		source.balloon_alert(source, "entered duelist stance")
+		source.balloon_alert(source, "A posição do Duelista entrou.")
 		in_duelist_stance = TRUE
 		ADD_TRAIT(source, TRAIT_HARDLY_WOUNDED, type)
 		source.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown, TRUE)
@@ -173,11 +166,8 @@
 #undef BLOOD_FLOW_PER_SEVEIRTY
 
 /datum/heretic_knowledge/armor/blade
-	desc = "Allows you to transmute a table (or a suit), a mask and a sheet of titanium or silver to create a Shattered Panoply. \
-			Provides baton resistance and shock insulation while worn. \
-			Acts as a focus while hooded."
-	gain_text = "The echoing, directionless cacophony of violence reverberates about me. \
-				Even as the Champion's steel panoply was torn from their form, each piece craves purpose still, seeking to intercept unseen or imagined attackers."
+	desc = "Permite que transmute uma mesa (ou um terno), uma máscara e uma folha de titânio ou prata para criar um Panoply Shattered. Fornece resistência ao bastão e isolamento de choque enquanto usado. Atua como foco enquanto encapuza."
+	gain_text = "A cacofonia sem sentido da violência ecoa sobre mim. Mesmo quando a panóplia de aço do campeão foi arrancada de sua forma, cada peça ainda anseia por propósito, buscando interceptar atacantes invisíveis ou imaginados."
 	result_atoms = list(/obj/item/clothing/suit/hooded/cultrobes/eldritch/blade)
 	research_tree_icon_state = "blade_armor"
 	required_atoms = list(
@@ -188,27 +178,16 @@
 
 /datum/heretic_knowledge/spell/wolves_among_sheep
 	name = "Wolves Among Sheep"
-	desc = "Alters the fabric of reality, conjuring a magical arena unpassable to outsiders, \
-		all participants are trapped and immune to any form of crowd control or enviromental hazards; \
-		trapped participants are granted a Blade and are unable to leave or jaunt until they score a critical hit. \
-		Critical hits partially restore the Heretic's health."
-	gain_text = "Shadows crawl across the room, casting every chair, table \
-		and console into the looming shape of another traitorous hand. \
-		I have made an enemy of all, and peace will never be known to me \
-		again. I have shattered bonds and severed all alliances. In this truth, \
-		I know now the fragility of comradery. My enemies will be all, divided."
+	desc = "Alterando o tecido da realidade, conjurando uma arena mágica intransponível a estranhos, todos os participantes estão presos e imunes a qualquer forma de controle da multidão ou riscos ambientais; os participantes presos recebem uma Lâmina e são incapazes de sair ou fugir até atingirem um ataque crítico. Ataques críticos restauram parcialmente a saúde do Herético."
+	gain_text = "Sombras rastejam pela sala, lançando cada cadeira, mesa e console na forma de outra mão traidora. Eu fiz um inimigo de todos, e a paz nunca mais será conhecida para mim. Eu quebrei laços e cortei todas as alianças. Nesta verdade, sei agora a fragilidade da camaradagem. Meus inimigos serão todos, divididos."
 	cost = 2
 	action_to_add = /datum/action/cooldown/spell/wolves_among_sheep
 	is_final_knowledge = TRUE
 
 /datum/heretic_knowledge/blade_upgrade/blade
 	name = "Empowered Blades"
-	desc = "Attacking someone with a Sundered Blade in both hands \
-		will now deliver a blow with both at once, dealing two attacks in rapid succession. \
-		The second blow will be slightly weaker. \
-		You are able to infuse your mansus grasp directly into your blades, and your blades are more effective against structures."
-	gain_text = "I found him cleaved in twain, halves locked in a duel without end; \
-		a flurry of blades, neither hitting their mark, for the Champion was indomitable."
+	desc = "Atacar alguém com uma Lâmina Sunderada em ambas as mãos vai dar um golpe com ambos ao mesmo tempo, lidando com dois ataques em rápida sucessão. O segundo golpe será um pouco mais fraco. Você é capaz de infundir seu punho diretamente em suas lâminas, e suas lâminas são mais eficazes contra estruturas."
+	gain_text = "Eu o encontrei preso em duas partes, metade trancada em um duelo sem fim, uma rajada de lâminas, nem atingindo sua marca, pois o campeão era indomável."
 	research_tree_icon_path = 'icons/ui_icons/antags/heretic/knowledge.dmi'
 	research_tree_icon_state = "blade_upgrade_blade"
 	/// How much force do we apply to the offhand?
@@ -298,29 +277,18 @@
 
 /datum/heretic_knowledge/spell/furious_steel
 	name = "Furious Steel"
-	desc = "Grants you Furious Steel, a targeted spell. Using it will summon three \
-		orbiting blades around you. These blades will protect you from all attacks, \
-		but are consumed on use. Additionally, you can click to fire the blades \
-		at a target, dealing damage and causing bleeding."
-	gain_text = "Without thinking, I took the knife of a fallen soldier and threw with all my might. My aim was true! \
-		The Torn Champion smiled at their first taste of agony, and with a nod, their blades became my own."
+	desc = "Concede-lhe Aço Furioso, um feitiço alvo. Usará três lâminas orbitais ao seu redor. Estas lâminas vão protegê-lo de todos os ataques, mas são consumidos no uso. Além disso, você pode clicar para disparar as lâminas em um alvo, causando danos e sangramento."
+	gain_text = "Sem pensar, peguei a faca de um soldado caído e joguei com toda a minha força. Minha mira era verdadeira! O Campeão da Torn sorriu ao seu primeiro gosto de agonia, e com um aceno, suas lâminas se tornaram minhas."
 	action_to_add = /datum/action/cooldown/spell/pointed/projectile/furious_steel
 	cost = 2
 
 /datum/heretic_knowledge/ultimate/blade_final
 	name = "Maelstrom of Silver"
-	desc = "The ascension ritual of the Path of Blades. \
-		Bring 3 corpses with either no head or a split skull to a transmutation rune to complete the ritual. \
-		When completed, you will be surrounded in a constant, regenerating orbit of blades. \
-		These blades will protect you from all attacks, but are consumed on use. \
-		Your Furious Steel spell will also have a shorter cooldown. \
-		Additionally, you become a master of combat, gaining full wound immunity and the ability to shrug off short stuns. \
-		Your Sundered Blades deal bonus damage and heal you on attack for a portion of the damage dealt."
-	gain_text = "The Torn Champion is freed! I will become the blade reunited, and with my greater ambition, \
-		I AM UNMATCHED! A STORM OF STEEL AND SILVER IS UPON US! WITNESS MY ASCENSION!"
+	desc = "O ritual de ascensão do Caminho das Lâminas. Traga 3 corpos sem cabeça ou crânio partido para uma runa de transmutação para completar o ritual. Quando terminarem, estarão cercados em uma constante órbita regeneradora de lâminas. Estas lâminas vão protegê-lo de todos os ataques, mas são consumidos no uso. Seu feitiço Furious Steel também terá um resfriamento mais curto. Além disso, você se torna um mestre de combate, ganhando imunidade total e a habilidade de encolher os ombros. Suas Lâminas Sunderadas causam danos bônus e curam você no ataque por uma parte dos danos causados."
+	gain_text = "O Campeão da Tortura está livre! Eu me tornarei a espada reunida, e com minha maior ambição, eu estou desfeito! Uma tempestade de aço e prata está sobre nós! Testemunhe minha ascensão!"
 
 	ascension_achievement = /datum/award/achievement/misc/blade_ascension
-	announcement_text = "%SPOOKY% Master of blades, the Torn Champion's disciple, %NAME% has ascended! Their steel is that which will cut reality in a maelstom of silver! %SPOOKY%"
+	announcement_text = "Mestre das lâminas, discípulo do Campeão da Tortura, subiu! O aço deles é o que vai cortar a realidade em um maelstom de prata! SPOOKY"
 	announcement_sound = 'sound/music/antag/heretic/ascend_blade.ogg'
 
 /datum/heretic_knowledge/ultimate/blade_final/is_valid_sacrifice(mob/living/carbon/human/sacrifice)
@@ -338,8 +306,8 @@
 	user.add_stun_absorption(
 		source = name,
 		message = span_warning("%EFFECT_OWNER throws off the stun!"),
-		self_message = span_warning("You throw off the stun!"),
-		examine_message = span_hypnophrase("%EFFECT_OWNER_THEYRE standing stalwartly."),
+		self_message = span_warning("Você joga fora o atordoamento!"),
+		examine_message = span_hypnophrase("EFEITO DE OUTROS ESTAM firmes."),
 		// flashbangs are like 5-10 seoncds,
 		// a banana peel is ~5 seconds, depending on botany
 		// body throws and tackles are less than 5 seconds,

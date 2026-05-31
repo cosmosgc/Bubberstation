@@ -37,21 +37,14 @@
 			if(isAI(hearing_mob))
 				to_chat(
 					hearing_mob,
-					span_binarysay("\
-						Robotic Talk, \
-						<a href='byond://?src=[REF(hearing_mob)];track=[html_encode(namepart)]'>[span_name("[namepart] ([designation])")]</a> \
-						<span class='message'>[messagepart]</span>\
-					"),
+					span_binarysay("Conversa Robótica,<a href='byond://?src=[REF(hearing_mob)];track=[html_encode(namepart)]'>[span_name("[namepart] ([designation])")]</a> 						<span class='message'>[messagepart]</span>					"),
 					type = MESSAGE_TYPE_RADIO,
 					avoid_highlighting = (src == hearing_mob)
 				)
 			else
 				to_chat(
 					hearing_mob,
-					span_binarysay("\
-						Robotic Talk, \
-						[span_name("[namepart]")] <span class='message'>[messagepart]</span>\
-					"),
+					span_binarysay("Conversa Robótica,[span_name("[namepart]")] <span class='message'>[messagepart]</span>					"),
 					type = MESSAGE_TYPE_RADIO,
 					avoid_highlighting = (src == hearing_mob)
 				)
@@ -70,11 +63,7 @@
 
 			to_chat(
 				hearing_mob,
-				span_binarysay("\
-					[follow_link] \
-					Robotic Talk, \
-					[span_name("[namepart]")] <span class='message'>[messagepart]</span>\
-				"),
+				span_binarysay("					[follow_link]Conversa Robótica,[span_name("[namepart]")] <span class='message'>[messagepart]</span>				"),
 				type = MESSAGE_TYPE_RADIO,
 				avoid_highlighting = (src == hearing_mob)
 			)

@@ -40,7 +40,7 @@
 
 	var/is_first_brother = team.members.len == 1
 	if (!is_first_brother)
-		to_chat(carbon_owner, span_boldwarning("The Syndicate have higher expectations from you than others. They have granted you an extra flash to convert one other person."))
+		to_chat(carbon_owner, span_boldwarning("O Sindicato tem expectativas maiores de você do que outras. Eles lhe concederam um flash extra para converter outra pessoa."))
 
 	return ..()
 
@@ -79,26 +79,26 @@
 		flashed.mind_initialize()
 #else
 	if (isnull(flashed.mind) || !GET_CLIENT(flashed))
-		flashed.balloon_alert(source, "[flashed.p_their()] mind is vacant!")
+		flashed.balloon_alert(source, "[flashed.p_their()]A mente está vazia!")
 		return
 #endif
 
 	for(var/datum/objective/brother_objective as anything in source.mind.get_all_objectives())
 		// If the objective has a target, are we flashing them?
 		if(flashed == brother_objective.target?.current)
-			flashed.balloon_alert(source, "that's your target!")
+			flashed.balloon_alert(source, "Esse é o seu alvo!")
 			return
 
 	if (flashed.mind.has_antag_datum(/datum/antagonist/brother))
-		flashed.balloon_alert(source, "[flashed.p_theyre()] loyal to someone else!")
+		flashed.balloon_alert(source, "[flashed.p_theyre()]leal a outra pessoa!")
 		return
 
 	if (HAS_MIND_TRAIT(flashed, TRAIT_UNCONVERTABLE))
-		flashed.balloon_alert(source, "[flashed.p_they()] resist!")
+		flashed.balloon_alert(source, "[flashed.p_they()]Resista!")
 		return
 
 	if (!team.add_brother(flashed, key_name(source))) // Shouldn't happen given the former, more specific checks but just in case
-		flashed.balloon_alert(source, "failed!")
+		flashed.balloon_alert(source, "Falhou!")
 		return
 
 	source.log_message("converted [key_name(flashed)] to blood brother", LOG_ATTACK)
@@ -108,11 +108,7 @@
 		"converted by" = source,
 	))
 	flash.burn_out()
-	flashed.mind.add_memory( \
-		/datum/memory/recruited_by_blood_brother, \
-		protagonist = flashed, \
-		antagonist = owner.current, \
-	)
+	flashed.mind.add_memory( 		/datum/memory/recruited_by_blood_brother, 		protagonist = flashed, 		antagonist = owner.current, 	)
 	flashed.balloon_alert(source, "converted")
 
 /datum/antagonist/brother/antag_panel_data()
@@ -179,7 +175,7 @@
 	return brother_text
 
 /datum/antagonist/brother/greet()
-	to_chat(owner.current, span_alertsyndie("You are a Blood Brother."))
+	to_chat(owner.current, span_alertsyndie("Você é um irmão de sangue."))
 	owner.announce_objectives()
 
 /datum/antagonist/brother/proc/finalize_brother()
@@ -233,7 +229,7 @@
 	if (isnull(member.current))
 		return
 	for (var/datum/mind/brother_mind as anything in members)
-		to_chat(brother_mind, span_warning("[span_bold("[member.current.real_name]")] is no longer your brother!"))
+		to_chat(brother_mind, span_warning("[span_bold("[member.current.real_name]")]Não é mais seu irmão!"))
 	update_name()
 
 /// Adds a new brother to the team
@@ -251,9 +247,9 @@
 		if (brother_mind == new_brother.mind)
 			continue
 
-		to_chat(brother_mind, span_notice("[span_bold("[new_brother.real_name]")] has been converted to aid you as your brother!"))
+		to_chat(brother_mind, span_notice("[span_bold("[new_brother.real_name]")]Foi convertido para ajudá-lo como seu irmão!"))
 		if (brothers_left == 0)
-			to_chat(brother_mind, span_notice("You cannot recruit any more brothers."))
+			to_chat(brother_mind, span_notice("Você não pode recrutar mais irmãos."))
 
 	new_brother.mind.add_antag_datum(/datum/antagonist/brother, src)
 
@@ -313,7 +309,7 @@
 
 /datum/objective/convert_brother
 	name = "convert brother"
-	explanation_text = "Convert a brainwashable person using your flash on them directly. Any handheld flash will work if you lose or break your starting flash."
+	explanation_text = "Converta uma pessoa lavagem cerebral usando seu flash diretamente. Qualquer flash portátil funcionará se perder ou quebrar o flash inicial."
 	admin_grantable = FALSE
 	martyr_compatible = TRUE
 

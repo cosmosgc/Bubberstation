@@ -1,8 +1,6 @@
 /datum/action/cooldown/spell/pointed/mind_gate
 	name = "Mind Gate"
-	desc = "Deals you 20 brain damage and the target suffers a hallucination, \
-			is left confused for 10 seconds, and suffers oxygen loss and brain damage. \
-			It also blinds, mutes and deafens your target, if their sanity is low enough, they will be knocked down as well."
+	desc = "Dá 20 danos cerebrais e o alvo sofre uma alucinação, fica confuso por 10 segundos, e sofre perda de oxigênio e dano cerebral. Também cega, muda e ensurdece seu alvo, se sua sanidade for baixa o suficiente, eles serão derrubados também."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -29,8 +27,8 @@
 /datum/action/cooldown/spell/pointed/mind_gate/cast(mob/living/carbon/human/cast_on)
 	. = ..()
 	if(cast_on.can_block_magic(antimagic_flags))
-		to_chat(cast_on, span_notice("Your mind feels closed."))
-		to_chat(owner, span_warning("Their mind doesn't swing open, but neither does yours."))
+		to_chat(cast_on, span_notice("Sua mente está fechada."))
+		to_chat(owner, span_warning("A mente deles não se abre, mas a sua também não."))
 		return FALSE
 
 	var/mob/living/living_owner = owner
@@ -45,7 +43,7 @@
 	/// The duration of these effects are based on sanity, mainly for flavor but also to make it a weaker alpha strike
 	var/maximum_duration = 15 SECONDS
 	var/mind_gate_duration = ((SANITY_MAXIMUM - cast_on.mob_mood.sanity) / (SANITY_MAXIMUM - SANITY_INSANE)) * maximum_duration  + 1 SECONDS
-	to_chat(cast_on, span_warning("Your eyes cry out in pain, your ears bleed and your lips seal! THE MOON SMILES UPON YOU!"))
+	to_chat(cast_on, span_warning("Seus olhos gritam de dor, seus ouvidos sangram e seus lábios selam! A lua sorri sobre você!"))
 	cast_on.adjust_temp_blindness(mind_gate_duration)
 	cast_on.set_eye_blur_if_lower(mind_gate_duration + 1 SECONDS)
 

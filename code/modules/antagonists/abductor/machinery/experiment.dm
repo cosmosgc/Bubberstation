@@ -1,6 +1,6 @@
 /obj/machinery/abductor/experiment
 	name = "experimentation machine"
-	desc = "A large man-sized tube sporting a complex array of surgical machinery."
+	desc = "Um tubo do tamanho de um homem com uma complexa gama de máquinas cirúrgicas."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "experiment-open"
 	density = FALSE
@@ -44,19 +44,16 @@
 		return
 	if(message_cooldown <= world.time)
 		message_cooldown = world.time + 50
-		to_chat(user, span_warning("[src]'s door won't budge!"))
+		to_chat(user, span_warning("[src]A porta não se mexe!"))
 
 /obj/machinery/abductor/experiment/container_resist_act(mob/living/user)
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message(span_notice("You see [user] kicking against the door of [src]!"), \
-		span_notice("You lean on the back of [src] and start pushing the door open... (this will take about [DisplayTimeText(breakout_time)].)"), \
-		span_hear("You hear a metallic creaking from [src]."))
+	user.visible_message(span_notice("Viu?[user]Chutando contra a porta de[src]!"), 		span_notice("Você se apoia na parte de trás de[src]E começar a empurrar a porta aberta...[DisplayTimeText(breakout_time)].)"), 		span_hear("Você ouve um metal rangendo de[src]."))
 	if(do_after(user,(breakout_time), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || state_open)
 			return
-		user.visible_message(span_warning("[user] successfully broke out of [src]!"), \
-			span_notice("You successfully break out of [src]!"))
+		user.visible_message(span_warning("[user]Com sucesso, fugiu.[src]!"), 			span_notice("Você conseguiu escapar.[src]!"))
 		open_machine()
 
 /obj/machinery/abductor/experiment/ui_status(mob/user, datum/ui_state/state)
@@ -149,11 +146,11 @@
 		sleep(0.5 SECONDS)
 		switch(text2num(type))
 			if(1)
-				to_chat(occupant, span_warning("You feel violated."))
+				to_chat(occupant, span_warning("Você se sente violada."))
 			if(2)
-				to_chat(occupant, span_warning("You feel yourself being sliced apart and put back together."))
+				to_chat(occupant, span_warning("Você se sente cortado e colocado de volta."))
 			if(3)
-				to_chat(occupant, span_warning("You feel intensely watched."))
+				to_chat(occupant, span_warning("Você se sente intensamente vigiado."))
 		sleep(0.5 SECONDS)
 		user_abductor.team.abductees += occupant.mind
 		occupant.mind.add_antag_datum(/datum/antagonist/abductee)

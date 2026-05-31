@@ -1,7 +1,7 @@
 /datum/surgery_operation/basic/core_removal
 	name = "extract core"
 	rnd_name = "Corectomy (Extract Core)" // source: i made it up
-	desc = "Remove the core from a slime."
+	desc = "Remova o núcleo de um lodo."
 	implements = list(
 		TOOL_HEMOSTAT = 1,
 		TOOL_CROWBAR = 1,
@@ -24,9 +24,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("You begin to extract [patient]'s core..."),
-		span_notice("[surgeon] begins to extract [patient]'s core."),
-		span_notice("[surgeon] begins to extract [patient]'s core."),
+		span_notice("Você começa a extrair[patient]O núcleo..."),
+		span_notice("[surgeon]começa a extrair[patient]É o núcleo."),
+		span_notice("[surgeon]começa a extrair[patient]É o núcleo."),
 	)
 
 /datum/surgery_operation/basic/core_removal/on_success(mob/living/basic/slime/patient, mob/living/surgeon, obj/item/tool, list/operation_args)
@@ -35,9 +35,9 @@
 		display_results(
 			surgeon,
 			patient,
-			span_notice("You successfully extract [core_count] core\s from [patient]."),
-			span_notice("[surgeon] successfully extracts [core_count] core\s from [patient]!"),
-			span_notice("[surgeon] successfully extracts [core_count] core\s from [patient]!"),
+			span_notice("Você extrai com sucesso[core_count]O núcleo de[patient]."),
+			span_notice("[surgeon]Com sucesso extrai[core_count]O núcleo de[patient]!"),
+			span_notice("[surgeon]Com sucesso extrai[core_count]O núcleo de[patient]!"),
 		)
 	else
-		to_chat(surgeon, span_warning("There aren't any cores left in [patient]!"))
+		to_chat(surgeon, span_warning("Não há mais núcleos.[patient]!"))

@@ -401,7 +401,7 @@
 	var/msg = "[span_info("<EM>My current mental status:</EM>")]<br>"
 
 	if(!HAS_TRAIT(src, TRAIT_NOHUNGER))
-		msg += span_notice("My hunger: ")
+		msg += span_notice("Meu nome:")
 		var/nutrition = mob_parent.nutrition
 		switch(nutrition)
 			if(NUTRITION_LEVEL_FULL to INFINITY)
@@ -423,7 +423,7 @@
 	/*
 	var/drunkness = mob_parent.get_drunk_amount()
 	if(drunkness >= 1)
-		msg += span_notice("My current drunkenness: ")
+		msg += span_notice("Minha vez embriaguez:")
 		switch(drunkness)
 			if(1 to 10)
 				msg += "[span_info("I'm feeling a little tipsy.")]<br>"
@@ -441,7 +441,7 @@
 
 	var/drunkness = get_drunk_mood(mob_parent)
 	if(drunkness)
-		msg += span_notice("My current drunkenness: [drunkness]")
+		msg += span_notice("Minha vez embriaguez:[drunkness]")
 		if(get_alcohol_processing(mob_parent))
 			msg += "[span_info(" I'm still processing what I drank...")]<br>"
 		else
@@ -451,7 +451,7 @@
 	if (HAS_TRAIT(mob_parent, TRAIT_APATHETIC))
 		msg += span_notice("My mood: [span_grey("I don't feel anything.")]<br>")
 	else
-		msg += span_notice("My current sanity: ") //Long term
+		msg += span_notice("Minha saúde real:") //Long term
 		switch(sanity)
 			if(SANITY_GREAT to INFINITY)
 				msg += "[span_boldnicegreen("My mind feels like a temple!")]<br>"
@@ -466,7 +466,7 @@
 			if(SANITY_INSANE to SANITY_CRAZY)
 				msg += "[span_boldwarning("AHAHAHAHAHAHAHAHAHAH!!")]<br>"
 
-		msg += span_notice("My current mood: ") //Short term
+		msg += span_notice("Meu humor.") //Short term
 		switch(mood_level)
 			if(MOOD_LEVEL_SAD4)
 				msg += "[span_boldwarning("I wish I was dead!")]<br>"
@@ -515,7 +515,7 @@
 		msg += "&bull; [span_grey("I don't have much of a reaction to anything right now.")]<br>"
 
 	if(LAZYLEN(mob_parent.quirks))
-		msg += span_notice("You have these quirks: [mob_parent.get_quirk_string(FALSE, CAT_QUIRK_ALL)].")
+		msg += span_notice("Você tem essas peculiaridades:[mob_parent.get_quirk_string(FALSE, CAT_QUIRK_ALL)].")
 
 	to_chat(user, boxed_message(msg))
 

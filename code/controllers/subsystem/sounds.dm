@@ -84,7 +84,7 @@ SUBSYSTEM_DEF(sounds)
 	init_sound_keys()
 
 	if(!(RUST_G))
-		to_chat(world, span_boldnotice("Sounds subsystem: No rust_g detected."))
+		to_chat(world, span_boldnotice("Nenum sinal de ferrugem detectado."))
 		return ..()
 
 	// Precache ambience sounds

@@ -3,7 +3,7 @@
 
 /obj/structure/millstone
 	name = "millstone"
-	desc = "Two big disks of something heavy and tough. Put a plant between them and spin, and you'll end up with seeds and a really ground up plant."
+	desc = "Dois discos grandes de algo pesado e duro. Coloque uma planta entre eles e gire, e você vai acabar com sementes e uma planta realmente moída."
 	icon = 'modular_skyrat/modules/primitive_cooking_additions/icons/millstone.dmi'
 	icon_state = "millstone"
 	density = TRUE
@@ -20,25 +20,25 @@
 /obj/structure/millstone/examine(mob/user)
 	. = ..()
 
-	. += span_notice("It currently contains <b>[length(contents)]/[maximum_contained_items]</b> items.")
-	. += span_notice("You can process [src]'s contents with <b>Right Click</b>")
-	. += span_notice("You can empty all of the items out of it with <b>Alt Click</b>")
+	. += span_notice("Ele atualmente contém<b>[length(contents)]/[maximum_contained_items]</b>Itens.")
+	. += span_notice("Você pode processar[src]O conteúdo com<b>Clique Direito</b>")
+	. += span_notice("Você pode esvaziar todos os itens com<b>Alt Click</b>")
 
 	if(length(contents))
-		. += span_notice("Inside, you can see:")
+		. += span_notice("Dentro, você pode ver:")
 		var/list/stuff_inside = list()
 		for(var/obj/thing as anything in contents)
 			stuff_inside[thing.type] += 1
 
 		for(var/obj/thing as anything in stuff_inside)
-			. += span_notice("&bull; [stuff_inside[thing]] [initial(thing.name)]\s")
+			. += span_notice("&bull;[stuff_inside[thing]] [initial(thing.name)]\s")
 
-		. += span_notice("And it can fit <b>[maximum_contained_items - length(contents)]</b> more items in it.")
+		. += span_notice("E pode caber<b>[maximum_contained_items - length(contents)]</b>Mais ou menos.")
 	else
-		. += span_notice("It can hold [maximum_contained_items] items, and there is nothing in it presently.")
+		. += span_notice("Pode aguentar[maximum_contained_items]itens, e não há nada nele atualmente.")
 
-	. += span_notice("You can [anchored ? "un" : ""]secure [src] with <b>CTRL-Shift-Click</b>.")
-	. += span_notice("With a <b>prying tool</b> of some sort, you could take [src] apart.")
+	. += span_notice("Você pode.[anchored ? "un" : ""]Seguro.[src]Com<b>CTRL-Shift-Click</b>.")
+	. += span_notice("Comum<b>Ferramenta intrometida</b>de algum tipo, você poderia levar[src]Separados.")
 
 /obj/structure/millstone/Destroy()
 	drop_everything_contained()
@@ -53,11 +53,11 @@
 
 /obj/structure/millstone/click_alt(mob/user)
 	if(!length(contents))
-		balloon_alert(user, "nothing inside!")
+		balloon_alert(user, "Nada dentro!")
 		return CLICK_ACTION_BLOCKING
 
 	drop_everything_contained()
-	balloon_alert(user, "removed all items")
+	balloon_alert(user, "Remova todos os pontos.")
 	return CLICK_ACTION_SUCCESS
 
 /obj/structure/millstone/click_ctrl_shift(mob/user)
@@ -93,11 +93,11 @@
 /obj/structure/millstone/attackby(obj/item/attacking_item, mob/user)
 	if(istype(attacking_item, /obj/item/storage/bag))
 		if(length(contents) >= maximum_contained_items)
-			balloon_alert(user, "already full")
+			balloon_alert(user, "Já está cheio.")
 			return TRUE
 
 		if(!length(attacking_item.contents))
-			balloon_alert(user, "nothing to transfer!")
+			balloon_alert(user, "Nada para transferir!")
 			return TRUE
 
 		for(var/obj/item/food/grown/target_item in attacking_item.contents)
@@ -107,18 +107,18 @@
 			target_item.forceMove(src)
 
 		if (length(contents) >= maximum_contained_items)
-			balloon_alert(user, "filled!")
+			balloon_alert(user, "Cheio!")
 		else
 			balloon_alert(user, "transferred")
 
 		return TRUE
 
 	if(!((istype(attacking_item, /obj/item/food/grown/)) || (istype(attacking_item, /obj/item/grown))))
-		balloon_alert(user, "can only mill plants")
+		balloon_alert(user, "só pode moer plantas")
 		return ..()
 
 	if(length(contents) >= maximum_contained_items)
-		balloon_alert(user, "already full")
+		balloon_alert(user, "Já está cheio.")
 		return
 
 	attacking_item.forceMove(src)
@@ -127,11 +127,11 @@
 /// Takes the content's seeds and spits them out on the turf, as well as grinding whatever the contents may be
 /obj/structure/millstone/proc/mill_it_up(mob/living/carbon/human/user)
 	if(!length(contents))
-		balloon_alert(user, "nothing to mill")
+		balloon_alert(user, "Nada para moer")
 		return
 
 	if(user.get_stamina_loss() > MILLSTONE_STAMINA_MINIMUM)
-		balloon_alert(user, "too tired")
+		balloon_alert(user, "Muito bem.")
 		return
 
 	if(!length(contents) || !in_range(src, user))

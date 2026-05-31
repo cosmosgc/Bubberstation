@@ -1,6 +1,6 @@
 /obj/item/storage/lockbox/timeclock
 	name = "crew equipment lockbox"
-	desc = "Holds a crew's restricted equipment while they are temporarily assigned off-duty. A service contract between Nanotrasen and Lustwish stipulates that company issued batons, masks, restraints, and other equipment are not to be used for recreational purposes. Employees may purchase recreational provisions from an approved vendor."
+	desc = "Mantém o equipamento restrito da tripulação enquanto estão temporariamente fora de serviço. Um contrato de serviço entre Nanotrasen e Lustwish estipula que a empresa emitiu bastões, máscaras, restrições, e outros equipamentos não devem ser usados para fins recreativos. Funcionários podem comprar provisões de um vendedor aprovado."
 	icon = 'modular_zubbers/icons/obj/storage/shame_box.dmi'
 	icon_state = "crewbox+l"
 	icon_locked = "crewbox+l"
@@ -27,12 +27,12 @@
 /obj/item/storage/lockbox/timeclock/examine(mob/user)
 	. = ..()
 	if(!isnull(locked_contents))
-		. += span_notice("The contents label reads: [locked_contents].")
+		. += span_notice("O rótulo de conteúdo diz:[locked_contents].")
 
 /obj/item/storage/lockbox/timeclock/can_unlock(mob/living/user, obj/item/card/id/id_card)
 	. = ..()
 	if(!.)
-		to_chat(user, span_warning("[src] can only be unlocked while on-duty or by the HoP, HoS, or Captain!"))
+		to_chat(user, span_warning("[src]Só pode ser desbloqueado durante o serviço ou pelo HoP, HoS, ou Capitão!"))
 
 /// Timeclock boxes can only be opened while the crew member is on duty, or by a command member with the proper access.
 /obj/item/storage/lockbox/timeclock/check_access(obj/item/crew_id)
@@ -69,6 +69,6 @@
 /obj/item/storage/lockbox/timeclock/proc/release_contents()
 	do_harmless_sparks(number = 6, source = src)
 	emptyStorage()
-	usr.visible_message(span_notice("[usr] activates the lockbox mechanism, releasing its contents before vanishing in a puff of bluespace smoke!"))
+	usr.visible_message(span_notice("[usr]Ativa o mecanismo lockbox, liberando seu conteúdo antes de desaparecer em uma nuvem de fumaça do espaço azul!"))
 	associated_card = null
 	qdel(src)

@@ -6,7 +6,7 @@
 
 /mob/living/basic/cat_butcherer
 	name = "Cat Surgeon"
-	desc = "A man with the quest of chasing endless feline tail."
+	desc = "Um homem com a busca de perseguir cauda felina sem fim."
 	icon = 'icons/mob/simple/simple_human.dmi'
 	icon_state = "cat_butcher"
 	icon_living = "cat_butcher"
@@ -56,8 +56,8 @@
 		return
 
 	visible_message(
-		span_warning("[src] severs [attacked]'s tail off in one swift swipe!"),
-		span_warning("You sever [attacked]'s tail off."),
+		span_warning("[src]Separadores[attacked]É a cauda fora em um golpe rápido!"),
+		span_warning("Você corta[attacked]É a cauda fora."),
 	)
 	tail.Remove(attacked)
 	tail.forceMove(drop_location())

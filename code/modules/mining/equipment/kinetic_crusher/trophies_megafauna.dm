@@ -5,7 +5,7 @@
 //blood-drunk hunter
 /obj/item/crusher_trophy/miner_eye
 	name = "eye of a blood-drunk hunter"
-	desc = "Its pupil is collapsed and turned to mush. Suitable as a trophy for a kinetic crusher."
+	desc = "Sua pupila está em colapso e virou mush. Adequado como troféu para um triturador cinético."
 	icon_state = "hunter_eye"
 	trophy_id = TROPHY_MINER_EYE
 	denied_type = /obj/item/crusher_trophy/miner_eye
@@ -19,7 +19,7 @@
 
 //ash drake
 /obj/item/crusher_trophy/tail_spike
-	desc = "A spike taken from an ash drake's tail. Suitable as a trophy for a kinetic crusher."
+	desc = "Um espigão tirado da cauda de um Ash Drake. Adequado como troféu para um triturador cinético."
 	denied_type = /obj/item/crusher_trophy/tail_spike
 	trophy_id = TROPHY_TAIL_SPIKE
 	bonus_value = 5
@@ -44,7 +44,7 @@
 //bubblegum
 /obj/item/crusher_trophy/demon_claws
 	name = "demon claws"
-	desc = "A set of blood-drenched claws from a massive demon's hand. Suitable as a trophy for a kinetic crusher."
+	desc = "Um conjunto de garras ensopadas de sangue da mão de um demônio. Adequado como troféu para um triturador cinético."
 	icon_state = "demon_claws"
 	gender = PLURAL
 	denied_type = /obj/item/crusher_trophy/demon_claws
@@ -81,7 +81,7 @@
 //colossus
 /obj/item/crusher_trophy/blaster_tubes
 	name = "blaster tubes"
-	desc = "The blaster tubes from a colossus's arm. Suitable as a trophy for a kinetic crusher."
+	desc = "Os tubos do braço de um colosso. Adequado como troféu para um triturador cinético."
 	icon_state = "blaster_tubes"
 	gender = PLURAL
 	denied_type = /obj/item/crusher_trophy/blaster_tubes
@@ -111,7 +111,7 @@
 //hierophant
 /obj/item/crusher_trophy/vortex_talisman
 	name = "vortex talisman"
-	desc = "A glowing trinket that was originally the Hierophant's beacon. Suitable as a trophy for a kinetic crusher."
+	desc = "Uma bugiganga brilhante que era originalmente o farol do Hierophant. Adequado como troféu para um triturador cinético."
 	icon_state = "vortex_talisman"
 	trophy_id = TROPHY_VORTEX
 	denied_type = /obj/item/crusher_trophy/vortex_talisman
@@ -130,7 +130,7 @@
 // Demonic frost miner
 /obj/item/crusher_trophy/ice_block_talisman
 	name = "ice block talisman"
-	desc = "A glowing trinket that a demonic miner had on him, it seems he couldn't utilize it for whatever reason."
+	desc = "Uma bugiganga brilhante que um mineiro demoníaco tinha nele, parece que ele não poderia usá-la por qualquer razão."
 	icon_state = "ice_trap_talisman"
 	trophy_id = TROPHY_ICE_BLOCK
 	denied_type = /obj/item/crusher_trophy/ice_block_talisman
@@ -145,7 +145,7 @@
 // Wendigo
 /obj/item/crusher_trophy/wendigo_horn
 	name = "wendigo horn"
-	desc = "A gnarled horn ripped from the skull of a wendigo. Suitable as a trophy for a kinetic crusher."
+	desc = "Um chifre torcido arrancado do crânio de um Wendigo. Adequado como troféu para um triturador cinético."
 	icon_state = "wendigo_horn"
 	denied_type = /obj/item/crusher_trophy/wendigo_horn
 
@@ -169,7 +169,7 @@
 // Goliath Broodmother
 /obj/item/crusher_trophy/broodmother_tongue
 	name = "broodmother tongue"
-	desc = "The tongue of a broodmother. If attached a certain way, makes for a suitable crusher trophy.  It also feels very spongey, I wonder what would happen if you squeezed it?..."
+	desc = "A língua de uma ninhada. Se anexado de uma certa maneira, faz para um troféu de triturador adequado. Também parece muito esponjoso, o que aconteceria se você apertasse?"
 	icon = 'icons/obj/mining_zones/elite_trophies.dmi'
 	icon_state = "broodmother_tongue"
 	denied_type = /obj/item/crusher_trophy/broodmother_tongue
@@ -191,20 +191,20 @@
 		return
 	var/mob/living/living_user = user
 	if(use_time > world.time)
-		to_chat(living_user, "<b>The tongue looks dried out. You'll need to wait longer to use it again.</b>")
+		to_chat(living_user, "<b>A língua parece seca. Você precisará esperar mais para usá-lo novamente.</b>")
 		return
 	else if(HAS_TRAIT(living_user, TRAIT_LAVA_IMMUNE))
-		to_chat(living_user, "<b>You stare at the tongue. You don't think this is any use to you.</b>")
+		to_chat(living_user, "<b>Você olha para a língua. Você não acha que isso seja útil para você.</b>")
 		return
 	ADD_TRAIT(living_user, TRAIT_LAVA_IMMUNE, type)
-	to_chat(living_user, "<b>You squeeze the tongue, and some transluscent liquid shoots out all over you.</b>")
+	to_chat(living_user, "<b>Você aperta a língua, e algum líquido translúcido atira em você.</b>")
 	addtimer(TRAIT_CALLBACK_REMOVE(user, TRAIT_LAVA_IMMUNE, type), 10 SECONDS)
 	use_time = world.time + 60 SECONDS
 
 // Legionnaire
 /obj/item/crusher_trophy/legionnaire_spine
 	name = "legionnaire spine"
-	desc = "The spine of a legionnaire. With some creativity, you could use it as a crusher trophy. Alternatively, shaking it might do something as well."
+	desc = "A espinha de um legionário. Com alguma criatividade, você poderia usá-lo como um troféu de triturador. Alternativamente, sacudir pode fazer algo também."
 	icon = 'icons/obj/mining_zones/elite_trophies.dmi'
 	icon_state = "legionnaire_spine"
 	denied_type = /obj/item/crusher_trophy/legionnaire_spine
@@ -229,10 +229,10 @@
 		return
 	var/mob/living/LivingUser = user
 	if(next_use_time > world.time)
-		LivingUser.visible_message(span_warning("[LivingUser] shakes the [src], but nothing happens..."))
-		to_chat(LivingUser, "<b>You need to wait longer to use this again.</b>")
+		LivingUser.visible_message(span_warning("[LivingUser]Agita o[src]Mas nada mesmo..."))
+		to_chat(LivingUser, "<b>Você precisa esperar mais para usar isso de novo.</b>")
 		return
-	LivingUser.visible_message(span_boldwarning("[LivingUser] shakes the [src] and summons a legion skull!"))
+	LivingUser.visible_message(span_boldwarning("[LivingUser]Agita o[src]e convoca um crânio da legião!"))
 
 	var/mob/living/basic/mining/legion_brood/minion = new (LivingUser.loc)
 	minion.assign_creator(LivingUser)
@@ -241,7 +241,7 @@
 //The Thing
 /obj/item/crusher_trophy/flesh_glob
 	name = "glob of shifting flesh"
-	desc = "A glob of shifting flesh, sealed shut permanently. Suitable as a trophy for a kinetic crusher."
+	desc = "Um bando de carne deslocada, selada permanentemente. Adequado como troféu para um triturador cinético."
 	icon_state = "glob"
 	denied_type = /obj/item/crusher_trophy/flesh_glob
 	bonus_value = 20

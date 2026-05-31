@@ -206,7 +206,7 @@
 
 /datum/action/vehicle/sealed/climb_out
 	name = "Climb Out"
-	desc = "Climb out of your vehicle!"
+	desc = "Saia do seu veículo!"
 	button_icon_state = "car_eject"
 
 /datum/action/vehicle/sealed/climb_out/Trigger(mob/clicker, trigger_flags)
@@ -218,7 +218,7 @@
 
 /datum/action/vehicle/sealed/remove_key
 	name = "Remove key"
-	desc = "Take your key out of the vehicle's ignition."
+	desc = "Tire a chave da ignição do veículo."
 	button_icon_state = "car_removekey"
 
 /datum/action/vehicle/sealed/remove_key/Trigger(mob/clicker, trigger_flags)
@@ -230,7 +230,7 @@
 //CLOWN CAR ACTION DATUMS
 /datum/action/vehicle/sealed/horn
 	name = "Honk Horn"
-	desc = "Honk your classy horn."
+	desc = "Toque seu chifre elegante."
 	button_icon_state = "car_horn"
 	var/hornsound = 'sound/items/carhorn.ogg'
 
@@ -241,8 +241,8 @@
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_CAR_HONK))
 		return
 	TIMER_COOLDOWN_START(src, COOLDOWN_CAR_HONK, 2 SECONDS)
-	vehicle_entered_target.visible_message(span_danger("[vehicle_entered_target] loudly honks!"))
-	to_chat(owner, span_notice("You press [vehicle_entered_target]'s horn."))
+	vehicle_entered_target.visible_message(span_danger("[vehicle_entered_target]Buzine alto!"))
+	to_chat(owner, span_notice("Você pressiona.[vehicle_entered_target]É o chifre."))
 	if(istype(vehicle_target.inserted_key, /obj/item/bikehorn))
 		vehicle_target.inserted_key.attack_self(owner) //The bikehorn plays a sound instead
 		return
@@ -250,14 +250,14 @@
 
 /datum/action/vehicle/sealed/headlights
 	name = "Toggle Headlights"
-	desc = "Turn on your brights!"
+	desc = "Acendam as luzes!"
 	button_icon_state = "car_headlights"
 
 /datum/action/vehicle/sealed/headlights/Trigger(mob/clicker, trigger_flags)
 	. = ..()
 	if(!.)
 		return
-	to_chat(owner, span_notice("You flip the switch for the vehicle's headlights."))
+	to_chat(owner, span_notice("Você liga o interruptor para os faróis do veículo."))
 	vehicle_entered_target.headlights_toggle = !vehicle_entered_target.headlights_toggle
 	vehicle_entered_target.set_light_on(vehicle_entered_target.headlights_toggle)
 	vehicle_entered_target.update_appearance()
@@ -265,20 +265,20 @@
 
 /datum/action/vehicle/sealed/dump_kidnapped_mobs
 	name = "Dump Kidnapped Mobs"
-	desc = "Dump all objects and people in your car on the floor."
+	desc = "Jogue todos os objetos e pessoas no seu carro no chão."
 	button_icon_state = "car_dump"
 
 /datum/action/vehicle/sealed/dump_kidnapped_mobs/Trigger(mob/clicker, trigger_flags)
 	. = ..()
 	if(!.)
 		return
-	vehicle_entered_target.visible_message(span_danger("[vehicle_entered_target] starts dumping the people inside of it."))
+	vehicle_entered_target.visible_message(span_danger("[vehicle_entered_target]Começa a jogar as pessoas dentro dele."))
 	vehicle_entered_target.dump_specific_mobs(VEHICLE_CONTROL_KIDNAPPED)
 
 
 /datum/action/vehicle/sealed/roll_the_dice
 	name = "Press Colorful Button"
-	desc = "Press one of those colorful buttons on your display panel!"
+	desc = "Aperte um daqueles botões coloridos no seu painel de exibição!"
 	button_icon_state = "car_rtd"
 
 /datum/action/vehicle/sealed/roll_the_dice/Trigger(mob/clicker, trigger_flags)
@@ -292,7 +292,7 @@
 
 /datum/action/vehicle/sealed/cannon
 	name = "Toggle Siege Mode"
-	desc = "Destroy them with their own fodder!"
+	desc = "Destruam-nos com sua própria forragem!"
 	button_icon_state = "car_cannon"
 
 /datum/action/vehicle/sealed/cannon/Trigger(mob/clicker, trigger_flags)
@@ -307,7 +307,7 @@
 
 /datum/action/vehicle/sealed/thank
 	name = "Thank the Clown Car Driver"
-	desc = "They're just doing their job."
+	desc = "Só estão fazendo o trabalho deles."
 	button_icon_state = "car_thanktheclown"
 	COOLDOWN_DECLARE(thank_time_cooldown)
 
@@ -324,7 +324,7 @@
 	var/obj/vehicle/sealed/car/clowncar/clown_car = vehicle_entered_target
 	var/list/mob/drivers = clown_car.return_drivers()
 	if(!length(drivers))
-		to_chat(owner, span_danger("You prepare to thank the driver, only to realize that they don't exist."))
+		to_chat(owner, span_danger("Você se prepara para agradecer ao motorista, só para perceber que eles não existem."))
 		return
 	var/mob/clown = pick(drivers)
 	owner.say("Thank you for the fun ride, [clown.name]!")
@@ -332,7 +332,7 @@
 
 /datum/action/vehicle/ridden/wheelchair/bell
 	name = "Bell Ring"
-	desc = "Ring the bell."
+	desc = "Toque a campainha."
 	button_icon = 'icons/obj/service/bureaucracy.dmi'
 	button_icon_state = "desk_bell"
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_INCAPACITATED
@@ -350,7 +350,7 @@
 
 /datum/action/vehicle/ridden/scooter/skateboard/ollie
 	name = "Ollie"
-	desc = "Get some air! Land on a table to do a gnarly grind."
+	desc = "Tome um pouco de ar! Aterrisse em uma mesa para fazer um moedor."
 	button_icon_state = "skateboard_ollie"
 	check_flags = AB_CHECK_CONSCIOUS
 
@@ -371,7 +371,7 @@
 		vehicle.unbuckle_mob(rider)
 		rider.throw_at(landing_turf, 2, 2)
 		rider.Paralyze(40)
-		vehicle.visible_message(span_danger("[rider] misses the landing and falls on [rider.p_their()] face!"))
+		vehicle.visible_message(span_danger("[rider]Erra a aterrissagem e cai[rider.p_their()]Cara!"))
 		return
 	if((locate(/obj/structure/table) in landing_turf) || (locate(/obj/structure/fluff/tram_rail) in landing_turf))
 		if(locate(/obj/structure/fluff/tram_rail) in vehicle.loc.contents)
@@ -395,7 +395,7 @@
 
 /datum/action/vehicle/ridden/scooter/skateboard/kickflip
 	name = "Kickflip"
-	desc = "Kick your board up and catch it."
+	desc = "Chute sua prancha e pegue-a."
 	button_icon_state = "skateboard_ollie"
 	check_flags = AB_CHECK_CONSCIOUS
 
@@ -413,21 +413,21 @@
 		rider.Paralyze(50)
 		if(prob(15))
 			rider.visible_message(
-				span_danger("[rider] misses the landing and falls on [rider.p_their()] face!)"),
-				span_userdanger("You smack against the board, hard."),
+				span_danger("[rider]Erra a aterrissagem e cai[rider.p_their()]Cara!"),
+				span_userdanger("Você bate no tabuleiro, com força."),
 			)
 			rider.emote("scream")
 			rider.adjust_brute_loss(10)  // thats gonna leave a mark
 			return
 		rider.visible_message(
-			span_danger("[rider] misses the landing and falls on [rider.p_their()] face!"),
-			span_userdanger("You fall flat onto the board!"),
+			span_danger("[rider]Erra a aterrissagem e cai[rider.p_their()]Cara!"),
+			span_userdanger("Você cai na prancha!"),
 		)
 		return
 
 	rider.visible_message(
-		span_notice("[rider] does a sick kickflip and catches [rider.p_their()] board in midair."),
-		span_notice("You do a sick kickflip, catching the board in midair! Stylish."),
+		span_notice("[rider]Faz um kickflip doente e pega[rider.p_their()]Embarque no ar."),
+		span_notice("Você faz um kickflip doente, pegar o tabuleiro no ar! Elegante."),
 	)
 	playsound(board, 'sound/vehicles/skateboard_ollie.ogg', 50, vary = TRUE)
 	rider.spin(spintime = 4, speed = 1)
@@ -458,7 +458,7 @@
 		return FALSE
 	var/obj/vehicle/sealed/car/vim/vim_mecha = vehicle_entered_target
 	if(!COOLDOWN_FINISHED(vim_mecha, sound_cooldown))
-		vim_mecha.balloon_alert(owner, "em recarga!")
+		vim_mecha.balloon_alert(owner, "Em recarga!")
 		return FALSE
 	COOLDOWN_START(vim_mecha, sound_cooldown, VIM_SOUND_COOLDOWN)
 	vehicle_entered_target.visible_message(span_notice("[vehicle_entered_target] [sound_message]"))
@@ -467,10 +467,10 @@
 
 /datum/action/vehicle/sealed/noise/chime
 	name = "Chime!"
-	desc = "Affirmative!"
+	desc = "Afirmativo!"
 	button_icon_state = "vim_chime"
 	sound_path = 'sound/machines/chime.ogg'
-	sound_message = "chimes!"
+	sound_message = "Chimes!"
 
 /datum/action/vehicle/sealed/noise/chime/Trigger(mob/clicker, trigger_flags)
 	if(..())
@@ -478,7 +478,7 @@
 
 /datum/action/vehicle/sealed/noise/buzz
 	name = "Buzz."
-	desc = "Negative!"
+	desc = "Negativo!"
 	button_icon_state = "vim_buzz"
 	sound_path = 'sound/machines/buzz/buzz-sigh.ogg'
 	sound_message = "buzzes."

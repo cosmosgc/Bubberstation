@@ -40,7 +40,7 @@ export const Jukebox = () => {
     <Window width={370} height={313}>
       <Window.Content>
         <Section
-          title="Song Player"
+          title="Tocador de Músicas"
           buttons={
             <>
               <Button
@@ -60,12 +60,12 @@ export const Jukebox = () => {
           }
         >
           <LabeledList>
-            <LabeledList.Item label="Track Selected">
+            <LabeledList.Item label="Faixa Seleccionada">
               <Dropdown
                 width="240px"
                 options={songs_sorted.map((song) => song.name)}
                 disabled={!!active}
-                selected={song_selected?.name || 'Select a Track'}
+                selected={song_selected?.name || 'Selecione uma faixa'}
                 onSelected={(value) =>
                   act('select_track', {
                     track: value,
@@ -73,16 +73,16 @@ export const Jukebox = () => {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Track Length">
-              {song_selected?.length || 'No Track Selected'}
+            <LabeledList.Item label="Compreensão da faixa">
+              {song_selected?.length || 'Nenhuma faixa selecionada'}
             </LabeledList.Item>
             <LabeledList.Item label="Track Beat">
-              {song_selected?.beat || 'No Track Selected'}
+              {song_selected?.beat || 'Nenhuma faixa selecionada'}
               {song_selected?.beat === 1 ? ' beat' : ' beats'}
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Machine Settings">
+        <Section title="Configurações da máquina">
           <LabeledControls justify="center">
             <LabeledControls.Item label="Volume">
               <Box position="relative">

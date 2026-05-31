@@ -88,7 +88,7 @@
 	var/obj/item/hat = remove_hat()
 	if(!hat)
 		return
-	hat.visible_message(span_danger("[hat] goes flying off [hatless]'s head!"))
+	hat.visible_message(span_danger("[hat]Vai voar[hatless]A cabeça!"))
 	hat.throw_at(get_edge_target_turf(get_turf(hat), pick(GLOB.alldirs)), 2, 1, spin = TRUE)
 
 /datum/component/hat_stabilizer/proc/drop_hat(mob/hatless)
@@ -100,9 +100,9 @@
 /datum/component/hat_stabilizer/proc/on_examine(datum/source, mob/user, list/base_examine)
 	SIGNAL_HANDLER
 	if(attached_hat)
-		base_examine += span_notice("There's \a [attached_hat] [loose_hat ? "loosely" : ""] placed on [parent].")
+		base_examine += span_notice("Tem.\a [attached_hat] [loose_hat ? "loosely" : ""]Colocado em[parent].")
 	else
-		base_examine += span_notice("There's nothing placed on [parent]. Yet.")
+		base_examine += span_notice("Não há nada colocado[parent]Ainda.")
 
 /datum/component/hat_stabilizer/proc/get_worn_overlays(atom/movable/source, list/overlays, mutable_appearance/standing, isinhands, icon_file)
 	SIGNAL_HANDLER
@@ -153,12 +153,12 @@
 		return
 
 	if(attached_hat)
-		movable_parent.balloon_alert(user, "hat already attached!")
+		movable_parent.balloon_alert(user, "O chapéu já está preso!")
 		return
 	if(isclothing(hitting_item))
 		var/obj/item/clothing/hat = hitting_item
 		if(hat.clothing_flags & STACKABLE_HELMET_EXEMPT)
-			movable_parent.balloon_alert(user, "invalid hat!")
+			movable_parent.balloon_alert(user, "Chapéu inválido!")
 			return
 
 	if(!user.transferItemToLoc(hitting_item, parent, force = FALSE, silent = TRUE))
@@ -173,7 +173,7 @@
 	head_angle = pick(1, -1)
 
 	if (!isnull(user))
-		movable_parent.balloon_alert(user, "hat attached")
+		movable_parent.balloon_alert(user, "Chapéu preso.")
 
 	if (!isclothing(parent))
 		movable_parent.update_appearance()
@@ -204,7 +204,7 @@
 		return
 	var/atom/movable/movable_parent = parent
 	if (remove_hat(user))
-		movable_parent.balloon_alert(user, "hat removed")
+		movable_parent.balloon_alert(user, "Chapéu removido.")
 	else
 		movable_parent.balloon_alert_to_viewers("the hat falls to the floor!")
 

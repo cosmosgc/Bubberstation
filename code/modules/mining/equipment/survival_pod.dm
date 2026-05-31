@@ -11,7 +11,7 @@
 //Survival Capsule
 /obj/item/survivalcapsule
 	name = "bluespace shelter capsule"
-	desc = "An emergency shelter stored within a pocket of bluespace."
+	desc = "Um abrigo de emergência guardado num bolso de espaço azul."
 	icon_state = "capsule"
 	icon = 'icons/obj/mining.dmi'
 	w_class = WEIGHT_CLASS_TINY
@@ -52,7 +52,7 @@
 	if(used)
 		return FALSE
 
-	loc.visible_message(span_warning("[src] begins to shake. Stand back!"))
+	loc.visible_message(span_warning("[src]Começa a tremer. Para trás!"))
 	used = TRUE
 	addtimer(CALLBACK(src, PROC_REF(expand), user), 5 SECONDS)
 	if(iscarbon(user))
@@ -88,9 +88,9 @@
 /obj/item/survivalcapsule/proc/fail_feedback(status)
 	switch(status)
 		if(SHELTER_DEPLOY_BAD_AREA)
-			loc.visible_message(span_warning("[src] will not function in this area."))
+			loc.visible_message(span_warning("[src]não funcionará nesta área."))
 		if(SHELTER_DEPLOY_BAD_TURFS, SHELTER_DEPLOY_ANCHORED_OBJECTS, SHELTER_DEPLOY_OUTSIDE_MAP, SHELTER_DEPLOY_BANNED_OBJECTS)
-			loc.visible_message(span_warning("[src] doesn't have room to deploy! You need to clear a [template.width]x[template.height] area!"))
+			loc.visible_message(span_warning("[src]Não tem espaço para ir! Você precisa limpar um[template.width]x[template.height]Área!"))
 
 /// Throws any mobs near the deployed location away from the item / shelter
 /// Does some math to make closer mobs get thrown further
@@ -135,17 +135,17 @@
 
 /obj/item/survivalcapsule/luxury
 	name = "luxury bluespace shelter capsule"
-	desc = "An exorbitantly expensive luxury suite stored within a pocket of bluespace."
+	desc = "Uma suíte de luxo exorbitantemente cara guardada em um bolso de espaço azul."
 	template_id = "shelter_beta"
 
 /obj/item/survivalcapsule/luxuryelite
 	name = "luxury elite bar capsule"
-	desc = "A luxury bar in a capsule. Bartender required and not included."
+	desc = "Um bar de luxo em uma cápsula. Barman necessário e não incluído."
 	template_id = "shelter_charlie"
 
 /obj/item/survivalcapsule/bathroom
 	name = "emergency relief capsule"
-	desc = "Provides vital emergency support to employees who are caught short in the field."
+	desc = "Fornece apoio de emergência vital para funcionários que são pegos em falta no campo."
 	template_id = "shelter_toilet"
 
 //Pod objects
@@ -232,8 +232,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/door/window/survival_pod/left, 0)
 /obj/item/gps/computer/wrench_act(mob/living/user, obj/item/I)
 	..()
 
-	user.visible_message(span_warning("[user] disassembles [src]."),
-		span_notice("You start to disassemble [src]..."), span_hear("You hear clanking and banging noises."))
+	user.visible_message(span_warning("[user]Desmonta[src]."),
+		span_notice("Você começa a desmontar[src]..."), span_hear("Você ouve barulhos."))
 	if(I.use_tool(src, user, 20, volume=50))
 		new /obj/item/gps(loc)
 		qdel(src)
@@ -257,7 +257,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/door/window/survival_pod/left, 0)
 //Survival Storage Unit
 /obj/machinery/smartfridge/survival_pod
 	name = "survival pod storage"
-	desc = "A heated storage unit."
+	desc = "Um depósito aquecido."
 	icon_state = "donkvendor"
 	icon = 'icons/obj/mining_zones/donkvendor.dmi'
 	base_build_path = /obj/machinery/smartfridge/survival_pod

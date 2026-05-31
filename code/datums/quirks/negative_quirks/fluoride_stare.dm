@@ -1,11 +1,11 @@
 /datum/quirk/item_quirk/fluoride_stare
 	name = "Fluoride Stare"
-	desc = "You have lost your eyelids in a horrible accident, or so you tell others. You need to manually wet your eyes with a saline solution every once in a while!"
+	desc = "Você perdeu suas pálpebras em um acidente horrível, ou então você diz aos outros. Você precisa molhar os olhos manualmente com uma solução salina de vez em quando!"
 	icon = FA_ICON_EYE_DROPPER
 	value = -6
-	gain_text = span_danger("Your eyes feel itchy and dry...")
-	lose_text = span_notice("You realize that sudden darkness that has just enveloped you was just your eyelids growing back.")
-	medical_record_text = "Patient has lost their eyelids in a grueling accident."
+	gain_text = span_danger("Seus olhos estão coçando e secando...")
+	lose_text = span_notice("Você percebe que a escuridão repentina que acabou de envolver você estava apenas suas pálpebras crescendo de volta.")
+	medical_record_text = "O paciente perdeu as pálpebras em um terrível acidente."
 	hardcore_value = 6
 	quirk_flags = QUIRK_HUMAN_ONLY
 	mail_goodies = list(/obj/item/reagent_containers/cup/bottle/salglu_solution, /obj/item/light/bulb)

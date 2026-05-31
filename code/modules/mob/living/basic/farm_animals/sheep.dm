@@ -1,6 +1,6 @@
 /mob/living/basic/sheep
 	name = "sheep"
-	desc = "Known for their soft wool and use in sacrificial rituals. Big fan of grass."
+	desc = "Conhecido por sua lã macia e uso em rituais de sacrifício. Grande fã de grama."
 	icon = 'icons/mob/simple/sheep.dmi'
 	icon_state = "sheep"
 	icon_dead = "sheep_dead"
@@ -31,17 +31,7 @@
 
 /mob/living/basic/sheep/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/mob_harvest, \
-		harvest_tool = /obj/item/razor, \
-		fed_item = /obj/item/food/grown/grass, \
-		produced_item_typepath = /obj/item/stack/sheet/cotton/wool, \
-		produced_item_desc = "soft wool", \
-		max_ready = 10, \
-		item_generation_wait = 3 MINUTES, \
-		item_reduction_time = 30 SECONDS, \
-		item_harvest_time = 5 SECONDS, \
-		item_harvest_sound = 'sound/items/handling/surgery/scalpel1.ogg', \
-	)
+	AddComponent(/datum/component/mob_harvest, 		harvest_tool = /obj/item/razor, 		fed_item = /obj/item/food/grown/grass, 		produced_item_typepath = /obj/item/stack/sheet/cotton/wool, 		produced_item_desc = "soft wool", 		max_ready = 10, 		item_generation_wait = 3 MINUTES, 		item_reduction_time = 30 SECONDS, 		item_harvest_time = 5 SECONDS, 		item_harvest_sound = 'sound/items/handling/surgery/scalpel1.ogg', 	)
 	AddElement(/datum/element/ai_retaliate)
 	RegisterSignal(src, COMSIG_LIVING_CULT_SACRIFICED, PROC_REF(on_sacrificed))
 
@@ -58,7 +48,7 @@
 
 	if(cult_converted)
 		for(var/mob/living/cultist as anything in invokers)
-			to_chat(cultist, span_cult_italic("[src] has already been sacrificed!"))
+			to_chat(cultist, span_cult_italic("[src]Já foi sacrificado!"))
 		return STOP_SACRIFICE|SILENCE_SACRIFICE_MESSAGE
 
 	for(var/mob/living/cultist as anything in invokers)

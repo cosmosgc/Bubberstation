@@ -5,7 +5,7 @@
  */
 /obj/machinery/destructive_scanner
 	name = "experimental destructive scanner"
-	desc = "A much larger version of the hand-held scanner. A charred label warns about its destructive capabilities."
+	desc = "Uma versão muito maior do scanner portátil. Uma gravadora carbonizada avisa sobre suas capacidades destrutivas."
 	icon = 'icons/obj/machines/destructive_scanner.dmi'
 	icon_state = "tube_open"
 	circuit = /obj/item/circuitboard/machine/destructive_scanner
@@ -20,12 +20,7 @@
 		COMSIG_MACHINERY_DESTRUCTIVE_SCAN = TYPE_PROC_REF(/datum/component/experiment_handler, try_run_destructive_experiment),
 	)
 
-	AddComponent(/datum/component/experiment_handler, \
-		allowed_experiments = list(/datum/experiment/scanning),\
-		config_mode = EXPERIMENT_CONFIG_CLICK, \
-		start_experiment_callback = CALLBACK(src, PROC_REF(activate)), \
-		experiment_signals = destructive_signals, \
-	)
+	AddComponent(/datum/component/experiment_handler, 		allowed_experiments = list(/datum/experiment/scanning),		config_mode = EXPERIMENT_CONFIG_CLICK, 		start_experiment_callback = CALLBACK(src, PROC_REF(activate)), 		experiment_signals = destructive_signals, 	)
 
 ///Activates the machine; checks if it can actually scan, then starts.
 /obj/machinery/destructive_scanner/proc/activate()
@@ -97,7 +92,7 @@
 		return FALSE
 	obj_flags |= EMAGGED
 	playsound(src, SFX_SPARKS, 75, TRUE, SILENCED_SOUND_EXTRARANGE)
-	balloon_alert(user, "safety sensor BIOS disabled")
+	balloon_alert(user, "Sensor de segurança BIOS desativado")
 	return TRUE
 
 /obj/machinery/destructive_scanner/update_icon_state()

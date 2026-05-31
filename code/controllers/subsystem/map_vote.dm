@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(map_vote)
 	last_message_at = world.time
 
 	var/list/messages = args.Copy()
-	to_chat(world, span_purple(boxed_message("Map Vote<br><hr>[jointext(messages, "<br>")]")))
+	to_chat(world, span_purple(boxed_message("Voto no Mapa<br><hr>[jointext(messages, "<br>")]")))
 
 /datum/controller/subsystem/map_vote/proc/finalize_map_vote(datum/vote/map_vote/map_vote)
 	if(already_voted)
@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(map_vote)
 
 	ASSERT(winner, "No winner found in map vote.")
 	set_next_map(config.maplist[winner])
-	var/list/messages = list("Map Selected - [span_bold(next_map_config.map_name)]")
+	var/list/messages = list("Mapa selecionado -[span_bold(next_map_config.map_name)]")
 	messages += "Tallies at the time of selection:"
 	messages += tally_printout
 
@@ -177,7 +177,5 @@ SUBSYSTEM_DEF(map_vote)
 	for(var/map_id in map_vote_cache)
 		var/datum/map_config/map = config.maplist[map_id]
 		data += "[map.map_name] - [map_vote_cache[map_id]]"
-	var/tally_msg = span_tooltip("A map's tallies are reset after it wins a vote. \
-		Otherwise, they are carried over and added onto from the next vote on the next round, \
-		until it eventually wins and is reset.", "Current Tallies")
+	var/tally_msg = span_tooltip("As contas de um mapa são reiniciadas depois que ele ganha uma votação. Caso contrário, eles são carregados e adicionados a partir da próxima votação na próxima rodada, até que eventualmente ganha e é reiniciado.", "Real Tallies")
 	tally_printout = boxed_message("[tally_msg]<br><hr>[jointext(data, "<br>")]")

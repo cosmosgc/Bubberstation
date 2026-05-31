@@ -2,7 +2,7 @@
 
 /obj/item/detective_scanner
 	name = "forensic scanner"
-	desc = "Used to remotely scan objects and biomass for DNA and fingerprints. Can print a report of the findings."
+	desc = "Usado para escanear objetos remotamente e biomassa para DNA e impressões digitais. Pode imprimir um relatório dos achados."
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "forensicnew"
 	w_class = WEIGHT_CLASS_SMALL
@@ -57,7 +57,7 @@
 	if(ismob(loc))
 		var/mob/printer = loc
 		printer.put_in_hands(report_paper)
-		balloon_alert(printer, "logs cleared")
+		balloon_alert(printer, "Diários limpos.")
 
 	// Clear the logs
 	log_data = list()
@@ -83,7 +83,7 @@
 		balloon_alert(user, "escâner ocupado!")
 		return
 	if(!scan(user, atom_to_scan)) // this should only return FALSE if a runtime occurs during the scan proc, so ideally never
-		balloon_alert(user, "scanner error!") // but in case it does, we 'error' instead of just bricking the scanner
+		balloon_alert(user, "Erro do scanner!") // but in case it does, we 'error' instead of just bricking the scanner
 	scanner_busy = FALSE
 
 /**
@@ -104,10 +104,10 @@
 
 
 	user.visible_message(
-		span_notice("\The [user] points \the [src] at \the [scanned_atom] and performs a forensic scan."),
+		span_notice("\The [user]Ponto\the [src]Em\the [scanned_atom]e faz uma varredura forense."),
 		ignored_mobs = user
 	)
-	to_chat(user, span_notice("You scan \the [scanned_atom]. The scanner is now analysing the results..."))
+	to_chat(user, span_notice("Você verifica.\the [scanned_atom]O scanner está analisando os resultados..."))
 
 
 	// GATHER INFORMATION
@@ -185,7 +185,7 @@
 /obj/item/detective_scanner/examine(mob/user)
 	. = ..()
 	if(length(log_data) && !scanner_busy)
-		. += span_notice("Alt-click to clear scanner logs.")
+		. += span_notice("Alt-click para limpar os registros do scanner.")
 
 
 /obj/item/detective_scanner/ui_interact(mob/user, datum/tgui/ui)
@@ -235,27 +235,27 @@
 				balloon_alert(ui.user, "escâner ocupado!")
 				return
 			log_data.Cut(index, index + 1)
-			balloon_alert(ui.user, "log deleted")
+			balloon_alert(ui.user, "log deletado")
 			ui.send_update()
 		if("print")
 			if(!length(log_data))
-				balloon_alert(ui.user, "no logs!")
+				balloon_alert(ui.user, "Sem registros!")
 				return
 			if(scanner_busy)
 				balloon_alert(ui.user, "escâner ocupado!")
 				return
 			scanner_busy = TRUE
 			playsound(src, 'sound/machines/printer.ogg', 50)
-			balloon_alert(ui.user, "printing report...")
+			balloon_alert(ui.user, "Relatório de impressão...")
 			addtimer(CALLBACK(src, PROC_REF(safe_print_report)), 3 SECONDS)
 
 /obj/item/detective_scanner/proc/clear_logs(mob/living/user)
 	if(!length(log_data))
-		balloon_alert(user, "no logs!")
+		balloon_alert(user, "Sem registros!")
 		return CLICK_ACTION_BLOCKING
 	if(scanner_busy)
 		balloon_alert(user, "escâner ocupado!")
 		return CLICK_ACTION_BLOCKING
-	balloon_alert(user, "logs cleared")
+	balloon_alert(user, "Diários limpos.")
 	log_data = list()
 	return CLICK_ACTION_SUCCESS

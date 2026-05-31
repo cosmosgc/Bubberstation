@@ -89,7 +89,7 @@
 		return
 
 	if(drawing_a_rune)
-		to_chat(user, span_warning("You are already drawing a rune."))
+		to_chat(user, span_warning("Você já está desenhando uma runa."))
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(start_scribe_rune), source, user)
@@ -156,7 +156,7 @@
  */
 /datum/component/cult_ritual_item/proc/do_purge_holywater(mob/living/target, mob/living/cultist)
 	// Allows cultists to be rescued from the clutches of ordained religion
-	to_chat(cultist, span_cult("You remove the taint from [target] using [parent]."))
+	to_chat(cultist, span_cult("Você remove a mancha de[target]usando[parent]."))
 	var/holy_to_unholy = target.reagents.get_reagent_amount(/datum/reagent/water/holywater)
 	target.reagents.del_reagent(/datum/reagent/water/holywater)
 	// For carbonss we also want to clear out the stomach of any holywater
@@ -178,8 +178,8 @@
 /datum/component/cult_ritual_item/proc/do_destroy_girder(obj/structure/girder/cult/cult_girder, mob/living/cultist)
 	playsound(cult_girder, 'sound/items/weapons/resonator_blast.ogg', 40, TRUE, ignore_walls = FALSE)
 	cultist.visible_message(
-		span_warning("[cultist] strikes [cult_girder] with [parent]!"),
-		span_notice("You demolish [cult_girder].")
+		span_warning("[cultist]Strikes[cult_girder]com[parent]!"),
+		span_notice("Você demoliu.[cult_girder].")
 		)
 	new /obj/item/stack/sheet/runed_metal(cult_girder.drop_location())
 	qdel(cult_girder)
@@ -193,7 +193,7 @@
 /datum/component/cult_ritual_item/proc/do_unanchor_structure(obj/structure/cult_structure, mob/living/cultist)
 	playsound(cult_structure, 'sound/items/deconstruct.ogg', 30, TRUE, ignore_walls = FALSE)
 	cult_structure.set_anchored(!cult_structure.anchored)
-	to_chat(cultist, span_notice("You [cult_structure.anchored ? "":"un"]secure \the [cult_structure] [cult_structure.anchored ? "to":"from"] the floor."))
+	to_chat(cultist, span_notice("Você.[cult_structure.anchored ? "":"un"]Seguro.\the [cult_structure] [cult_structure.anchored ? "to":"from"]O chão."))
 
 /*
  * Removes the targeted rune. If the rune is important, asks for confirmation and logs it.
@@ -203,7 +203,7 @@
  */
 /datum/component/cult_ritual_item/proc/do_scrape_rune(obj/effect/rune/rune, mob/living/cultist)
 	if(rune.log_when_erased)
-		var/confirm = tgui_alert(cultist, "Erasing this [rune.cultist_name] rune may work against your goals.", "Begin to erase the [rune.cultist_name] rune?", list("Proceed", "Abort"))
+		var/confirm = tgui_alert(cultist, "Apagando isso[rune.cultist_name]Rune pode trabalhar contra seus objetivos.", "Begin to erase the [rune.cultist_name] rune?", list("Proceed", "Abort"))
 		if(confirm != "Proceed")
 			return
 
@@ -222,7 +222,7 @@
 		cultist.log_message("erased a [rune.cultist_name] rune with [parent].", LOG_GAME)
 		message_admins("[ADMIN_LOOKUPFLW(cultist)] erased a [rune.cultist_name] rune with [parent].")
 
-	to_chat(cultist, span_notice("You carefully erase the [LOWER_TEXT(rune.cultist_name)] rune."))
+	to_chat(cultist, span_notice("Você cuidadosamente apagar o[LOWER_TEXT(rune.cultist_name)]Rune."))
 	qdel(rune)
 
 /*
@@ -256,7 +256,7 @@
 		return FALSE
 
 	if(!LAZYLEN(GLOB.rune_types))
-		to_chat(cultist, span_cult("There appears to be no runes to scribe. Contact your god about this!"))
+		to_chat(cultist, span_cult("Parece não haver runas para escrever. Fale com seu Deus sobre isso!"))
 		stack_trace("[type] - [cultist] attempted to scribe a rune, but the global rune list is empty!")
 		return FALSE
 
@@ -284,13 +284,13 @@
 		return FALSE
 
 	if(ispath(rune_to_scribe, /obj/effect/rune/summon) && (!is_station_level(our_turf.z) || istype(get_area(cultist), /area/space)))
-		to_chat(cultist, span_cult_italic("The veil is not weak enough here to summon a cultist, you must be on station!"))
+		to_chat(cultist, span_cult_italic("O véu não é fraco o suficiente aqui para chamar um cultista, você deve estar na estação!"))
 		return
 
 	if(ispath(rune_to_scribe, /obj/effect/rune/apocalypse))
 		if((world.time - SSticker.round_start_time) <= 6000)
 			var/wait = 6000 - (world.time - SSticker.round_start_time)
-			to_chat(cultist, span_cult_italic("The veil is not yet weak enough for this rune - it will be available in [DisplayTimeText(wait)]."))
+			to_chat(cultist, span_cult_italic("O véu ainda não está suficientemente fraco para esta runa - ele estará disponível em[DisplayTimeText(wait)]."))
 			return
 		if(!check_if_in_ritual_site(cultist, user_team, TRUE))
 			return
@@ -304,7 +304,7 @@
 
 	cultist.visible_message(
 		span_warning("[cultist] [can_have_blood ? "cuts open [cultist.p_their()] arm and begins writing in [cultist.p_their()] own blood":"begins sketching out a strange design"]!"),
-		span_cult("You [can_have_blood ? "slice open your arm and ":""]begin drawing a sigil of the Geometer.")
+		span_cult("Você.[can_have_blood ? "slice open your arm and ":""]Comece a desenhar um selo do Geômetro.")
 		)
 
 	if(can_have_blood)
@@ -334,15 +334,15 @@
 		return FALSE
 
 	cultist.visible_message(
-		span_warning("[cultist] creates a strange circle[can_have_blood ? " in [cultist.p_their()] own blood":""]."),
-		span_cult("You finish drawing the arcane markings of the Geometer.")
+		span_warning("[cultist]cria um círculo estranho.[can_have_blood ? " in [cultist.p_their()] own blood":""]."),
+		span_cult("Você termina de desenhar as marcas arcanas do Geômetro.")
 		)
 
 	cleanup_shields()
 	var/obj/effect/rune/made_rune = new rune_to_scribe(our_turf, chosen_keyword)
 	made_rune.add_mob_blood(cultist)
 
-	to_chat(cultist, span_cult("The [LOWER_TEXT(made_rune.cultist_name)] rune [made_rune.cultist_desc]"))
+	to_chat(cultist, span_cult("O[LOWER_TEXT(made_rune.cultist_name)]Runa.[made_rune.cultist_desc]"))
 	cultist.log_message("scribed \a [LOWER_TEXT(made_rune.cultist_name)] rune using [parent] ([parent.type])", LOG_GAME)
 	SSblackbox.record_feedback("tally", "cult_runes_scribed", 1, made_rune.cultist_name)
 
@@ -360,14 +360,14 @@
 	if(!check_if_in_ritual_site(cultist, cult_team))
 		return FALSE
 	if(sac_objective && !sac_objective.check_completion())
-		to_chat(cultist, span_warning("The sacrifice is not complete. The portal would lack the power to open if you tried!"))
+		to_chat(cultist, span_warning("O sacrifício não está completo. O portal não teria energia para abrir se você tentasse!"))
 		return FALSE
 	if(summon_objective.check_completion())
-		to_chat(cultist, span_cult_large("\"I am already here. There is no need to try to summon me now.\""))
+		to_chat(cultist, span_cult_large("\"Já estou aqui. Não precisa tentar me chamar agora.\""))
 		return FALSE
-	var/confirm_final = tgui_alert(cultist, "This is the FINAL step to summon Nar'Sie; it is a long, painful ritual and the crew will be alerted to your presence.", "Are you prepared for the final battle?", list("My life for Nar'Sie!", "No"))
+	var/confirm_final = tgui_alert(cultist, "Este é o passo final para convocar Nar'Sie, é um longo e doloroso ritual e a tripulação será alertada para sua presença.", "Are you prepared for the final battle?", list("My life for Nar'Sie!", "No"))
 	if(confirm_final == "No")
-		to_chat(cultist, span_cult("You decide to prepare further before scribing the rune."))
+		to_chat(cultist, span_cult("Você decide se preparar mais antes de vasculhar a runa."))
 		return
 	if(!check_if_in_ritual_site(cultist, cult_team))
 		return FALSE
@@ -426,14 +426,14 @@
  */
 /datum/component/cult_ritual_item/proc/can_scribe_rune(obj/item/tool, mob/living/cultist)
 	if(!IS_CULTIST(cultist))
-		to_chat(cultist, span_warning("[tool] is covered in unintelligible shapes and markings."))
+		to_chat(cultist, span_warning("[tool]está coberta de formas e marcas ininteligíveis."))
 		return FALSE
 
 	if(QDELETED(tool) || !cultist.is_holding(tool))
 		return FALSE
 
 	if(cultist.incapacitated || cultist.stat == DEAD)
-		to_chat(cultist, span_warning("You can't draw a rune right now."))
+		to_chat(cultist, span_warning("Não pode desenhar uma runa agora."))
 		return FALSE
 
 	if(!check_rune_turf(get_turf(cultist), cultist))
@@ -449,16 +449,16 @@
  */
 /datum/component/cult_ritual_item/proc/check_rune_turf(turf/target, mob/living/cultist)
 	if(isspaceturf(target))
-		to_chat(cultist, span_warning("You cannot scribe runes in space!"))
+		to_chat(cultist, span_warning("Você não pode escrever runas no espaço!"))
 		return FALSE
 
 	if(locate(/obj/effect/rune) in target)
-		to_chat(cultist, span_cult("There is already a rune here."))
+		to_chat(cultist, span_cult("Já tem uma runa aqui."))
 		return FALSE
 
 	var/area/our_area = get_area(target)
 	if((!is_station_level(target.z) && !is_mining_level(target.z)) || (our_area && !(our_area.area_flags & CULT_PERMITTED)))
-		to_chat(cultist, span_warning("The veil is not weak enough here."))
+		to_chat(cultist, span_warning("O véu não é suficientemente fraco aqui."))
 		return FALSE
 
 	return TRUE
@@ -474,15 +474,15 @@
 	var/datum/objective/eldergod/summon_objective = locate() in cult_team.objectives
 	var/area/our_area = get_area(cultist)
 	if(!summon_objective)
-		to_chat(cultist, span_warning("There are no ritual sites on this station to scribe this rune!"))
+		to_chat(cultist, span_warning("Não há lugares rituais nesta estação para escrever esta runa!"))
 		return FALSE
 
 	if(!(our_area in summon_objective.summon_spots))
-		to_chat(cultist, span_warning("This veil is not weak enough here - it can only be scribed in [english_list(summon_objective.summon_spots)]!"))
+		to_chat(cultist, span_warning("Este véu não é suficientemente fraco aqui - só pode ser escrito em[english_list(summon_objective.summon_spots)]!"))
 		return FALSE
 
 	if(fail_if_last_site && length(summon_objective.summon_spots) <= 1)
-		to_chat(cultist, span_warning("This rune cannot be scribed here - the ritual site must be reserved for the final summoning!"))
+		to_chat(cultist, span_warning("Esta runa não pode ser escrita aqui - o local ritual deve ser reservado para a convocação final!"))
 		return FALSE
 
 	return TRUE

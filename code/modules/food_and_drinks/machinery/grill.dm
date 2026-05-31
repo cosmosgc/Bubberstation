@@ -5,7 +5,7 @@
 
 /obj/machinery/grill //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "Barbeque grill"
-	desc = "Just like the old days. Smokes items over a light heat"
+	desc = "Como nos velhos tempos. Fuma itens sobre um calor leve"
 	icon = 'icons/obj/machines/kitchen.dmi'
 	icon_state = "grill_open"
 	density = TRUE
@@ -69,16 +69,16 @@
 /obj/machinery/grill/examine(mob/user)
 	. = ..()
 
-	. += span_notice("Add fuel via wood/coal stacks or any open container having a good fuel source")
-	. += span_notice("Monkey energy > Oil > Welding fuel > Ethanol. Others cause bad effects")
-	. += span_notice("Place any food item on top via hand to start grilling")
+	. += span_notice("Adicione combustível através de pilhas de madeira / carvão ou qualquer recipiente aberto com uma boa fonte de combustível")
+	. += span_notice("Energia de macaco > Óleo > Combustível de solda > Etanol. Outros causam efeitos ruins.")
+	. += span_notice("Coloque qualquer alimento em cima através da mão para começar a grelhar")
 
 	if(!anchored)
-		. += span_notice("It can be [EXAMINE_HINT("pried")] apart.")
+		. += span_notice("Pode ser.[EXAMINE_HINT("pried")]Separados.")
 	if(anchored)
-		. += span_notice("Its [EXAMINE_HINT("anchored")] in place.")
+		. += span_notice("Sua[EXAMINE_HINT("anchored")]Nenhum lugar.")
 	else
-		. += span_warning("It needs to be [EXAMINE_HINT("anchored")] to work.")
+		. += span_warning("Precisa ser[EXAMINE_HINT("anchored")]Trabalho.")
 
 /obj/machinery/grill/update_icon_state()
 	if(!QDELETED(grilled_item))
@@ -99,7 +99,7 @@
 
 /obj/machinery/grill/attack_hand(mob/living/user, list/modifiers)
 	if(!QDELETED(grilled_item))
-		balloon_alert(user, "item removed")
+		balloon_alert(user, "item removido")
 		grilled_item.forceMove(drop_location())
 		update_appearance(UPDATE_ICON_STATE)
 		return TRUE
@@ -132,7 +132,7 @@
 		if(!QDELETED(grilled_item))
 			return NONE
 		if(!anchored)
-			balloon_alert(user, "ancore primeiro!")
+			balloon_alert(user, "Ancore primeiro!")
 			return ITEM_INTERACT_BLOCKING
 
 		//required for amount subtypes
@@ -157,7 +157,7 @@
 		if(!merged)
 			weapon.forceMove(src)
 
-		to_chat(user, span_notice("You add [src] to the fuel stack."))
+		to_chat(user, span_notice("Você acrescenta[src]Para a pilha de combustível."))
 		if(!grill_fuel)
 			burn_stack()
 			begin_processing()
@@ -168,7 +168,7 @@
 		if(!QDELETED(grilled_item))
 			return NONE
 		if(!anchored)
-			balloon_alert(user, "ancore primeiro!")
+			balloon_alert(user, "Ancore primeiro!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/transfered_amount = weapon.reagents.trans_to(src, container.amount_per_transfer_from_this)
@@ -201,27 +201,27 @@
 			update_appearance(UPDATE_ICON_STATE)
 
 			//feedback
-			to_chat(user, span_notice("You transfer [transfered_amount]u to the fuel source."))
+			to_chat(user, span_notice("Você se transferiu.[transfered_amount]Para a fonte de combustível."))
 			return ITEM_INTERACT_SUCCESS
 
-		balloon_alert(user, "no fuel transfered!")
+		balloon_alert(user, "Nenhum combustível transferido!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(IS_EDIBLE(weapon))
 		//sanity checks
 		if(!anchored)
-			balloon_alert(user, "ancore primeiro!")
+			balloon_alert(user, "Ancore primeiro!")
 			return ITEM_INTERACT_BLOCKING
 		if(HAS_TRAIT(weapon, TRAIT_NODROP))
 			return ..()
 		if(!QDELETED(grilled_item))
-			balloon_alert(user, "remove item first!")
+			balloon_alert(user, "Remova o item primeiro!")
 			return ITEM_INTERACT_BLOCKING
 		if(grill_fuel <= 0)
 			balloon_alert(user, "sem combustível!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(weapon, src))
-			balloon_alert(user, "[weapon] is stuck in your hand!")
+			balloon_alert(user, "[weapon]Está preso em sua mão!")
 			return ITEM_INTERACT_BLOCKING
 
 		//add the item on the grill
@@ -230,7 +230,7 @@
 		var/datum/component/sizzle/sizzle = grilled_item.GetComponent(/datum/component/sizzle)
 		if(!isnull(sizzle))
 			grill_time = sizzle.time_elapsed()
-		to_chat(user, span_notice("You put the [grilled_item] on [src]."))
+		to_chat(user, span_notice("Você colocou o[grilled_item]Vamos.[src]."))
 		update_appearance(UPDATE_ICON_STATE)
 		grill_loop.start()
 		return ITEM_INTERACT_SUCCESS
@@ -244,7 +244,7 @@
 
 /obj/machinery/grill/crowbar_act(mob/living/user, obj/item/tool)
 	if(anchored)
-		balloon_alert(user, "desancore primeiro!")
+		balloon_alert(user, "Desancore primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_crowbar(user, tool)

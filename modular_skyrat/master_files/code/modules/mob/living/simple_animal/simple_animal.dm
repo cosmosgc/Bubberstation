@@ -1,11 +1,5 @@
 /datum/config_entry/string/pc_mob_text
-	config_entry_value = "As a player controlled mob you are expected to play the role to the best of your ability. \
-	This means if you're an animal, act like one. You shouldn't display much intelligence if any. \
-	This also means if you're engaging in combat you should refrain from mercing people fully. \
-	Play not to win but to create a challenge. \
-	You're there to replace AI, make others enjoy the situation as well. \
-	If your simple mob is not above simple or mute intelligence, using structures such as welding tanks/canisters/boxes to hinder your opponent is entirely forbidden. \
-	Do not do this."
+	config_entry_value = "As a player controlled mob you are expected to play the role to the best of your ability. 	This means if you're an animal, act like one. You shouldn't display much intelligence if any. 	This also means if you're engaging in combat you should refrain from mercing people fully. 	Play not to win but to create a challenge. 	You're there to replace AI, make others enjoy the situation as well. 	If your simple mob is not above simple or mute intelligence, using structures such as welding tanks/canisters/boxes to hinder your opponent is entirely forbidden. 	Do not do this."
 
 /mob/living
 	/// If set to TRUE, ghosts will be able to click on the simple mob and take control of it.
@@ -22,13 +16,13 @@
 	if(key || stat)
 		return
 	if(is_banned_from(user.ckey, BAN_MOB_CONTROL))
-		to_chat(user, "Error, you are banned from taking control of player controlled mobs!")
+		to_chat(user, "Erro, você está proibido de assumir o controle das máfias controladas por jogadores!")
 		return
-	var/query = tgui_alert(user, "Become [src]?", "Take mob control", list("Yes", "No"))
+	var/query = tgui_alert(user, "Torne-se[src]?", "Take mob control", list("Yes", "No"))
 	if(!query || query == "No" || !src || QDELETED(src))
 		return
 	if(key)
-		to_chat(user, span_warning("Someone else already took this mob!"))
+		to_chat(user, span_warning("Alguém já levou essa multidão!"))
 		return
 	key = user.key
 	var/string_to_send = CONFIG_GET(string/pc_mob_text)

@@ -47,7 +47,7 @@
 //Tajara have the innate ability to see in the dark better than most
 /obj/item/organ/eyes/tajaran
 	name = "tajaran eyes"
-	desc = "they seem very cat like."
+	desc = "Parecem muito gatos."
 	flash_protect = FLASH_PROTECTION_SENSITIVE //One layer protection
 	color_cutoffs = list(12, 7, 7)
 
@@ -55,12 +55,12 @@
 	. = ..()
 	if(istype(eyes_owner))
 		if(HAS_TRAIT(eyes_owner, TRAIT_NIGHT_VISION)) //prevents double stacking of tajara night vision and the night vision quirk.
-			to_chat(eyes_owner, span_danger("You feel as the shadows are gone but suddenly they return!"))
+			to_chat(eyes_owner, span_danger("Você sente que as sombras se foram mas de repente elas voltam!"))
 			REMOVE_TRAIT(eyes_owner, TRAIT_NIGHT_VISION, QUIRK_TRAIT)
 
 /obj/item/organ/ears/cat/tajaran
 	name = "Tajaran ears"
-	desc = "These ears to seem to be from a feline of some type"
+	desc = "Essas orelhas parecem ser de algo tipo de felino."
 
 /datum/species/tajaran/create_pref_unique_perks()
 	var/list/to_add = list()
@@ -70,40 +70,37 @@
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "fire",
 			SPECIES_PERK_NAME = "Fire weakness",
-			SPECIES_PERK_DESC = "Tajara take longer to cool off when set on fire"
+			SPECIES_PERK_DESC = "Tajara leva mais tempo para esfriar quando pega nevoeiro."
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "sun",
 			SPECIES_PERK_NAME = "Bright Lights",
-			SPECIES_PERK_DESC = "Tajara need an extra layer of flash protection to protect \
-				themselves, such as against security officers or when welding.",
+			SPECIES_PERK_DESC = "Tajara precisa de uma camada extra de proteção para se proteger, como contra oficiais de segurança ou quando soldar.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "eye",
 			SPECIES_PERK_NAME = "Nightvision",
-			SPECIES_PERK_DESC = "Their eyes are adapted to low light, and can see in the dark better than others.",
+			SPECIES_PERK_DESC = "Seus olhos são adaptados à luz baixa, e podem ver no escuro melhor do que os outros.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "assistive-listening-systems",
 			SPECIES_PERK_NAME = "Sensitive Hearing",
-			SPECIES_PERK_DESC = "Tajara are more sensitive to loud sounds, such as flashbangs.",
+			SPECIES_PERK_DESC = "Tajara é mais sensível a sons altos, como flashbangs.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "paw",
 			SPECIES_PERK_NAME = "Soft Landing",
-			SPECIES_PERK_DESC = "Tajara are unhurt by high falls, and land on their feet.",
+			SPECIES_PERK_DESC = "Tajara não está ferida por quedas altas, e pousa em seus pés.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 			SPECIES_PERK_ICON = FA_ICON_PERSON_FALLING,
 			SPECIES_PERK_NAME = "Cat Grace",
-			SPECIES_PERK_DESC = "Tajara are catlike and have catlike instincts allowing them to land upright on their feet.  \
-				Instead of being knocked down from falling, you only receive a short slowdown. \
-				However, the fall will deal additional damage since they are not the size and weight of a cat.",
+			SPECIES_PERK_DESC = "Tajara é parecida com um gato e tem instintos de gato que lhes permitem pousar de pé. Ao invés de ser derrubado por cair, você só recebe um curto abrandamento. No entanto, a queda causará danos adicionais, já que não são do tamanho e peso de um gato.",
 		),
 	)
 
@@ -113,6 +110,4 @@
 	return icon('icons/mob/butts.dmi', BUTT_SPRITE_CAT)
 
 /datum/species/tajaran/get_species_description() //Something basic until I make lore later
-	return list("The Tajara are a race of humanoids that possess markedly felinoid traits that include \
-	a semi-prehensile tail, a body covered in fur of varying shades, and padded, digitigrade feet. \
-	Being that they are from a harsh and icy cold planet, Tajara are vulnerable to high temperatures and fire.",)
+	return list("The Tajara are a race of humanoids that possess markedly felinoid traits that include 	a semi-prehensile tail, a body covered in fur of varying shades, and padded, digitigrade feet. 	Being that they are from a harsh and icy cold planet, Tajara are vulnerable to high temperatures and fire.",)

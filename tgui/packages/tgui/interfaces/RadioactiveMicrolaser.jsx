@@ -22,7 +22,7 @@ export const RadioactiveMicrolaser = (props) => {
   } = data;
   return (
     <Window
-      title="Radioactive Microlaser"
+      title="Microlaser radioativo."
       width={320}
       height={335}
       theme="syndicate"
@@ -30,7 +30,7 @@ export const RadioactiveMicrolaser = (props) => {
       <Window.Content>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="Laser Status">
+            <LabeledList.Item label="Estado Laser">
               <Box color={on_cooldown ? 'average' : 'good'}>
                 {on_cooldown ? 'Recharging' : 'Ready'}
               </Box>
@@ -47,7 +47,7 @@ export const RadioactiveMicrolaser = (props) => {
                 onClick={() => act('irradiate')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Stealth Mode">
+            <LabeledList.Item label="Modo furtivo">
               <Button
                 icon={stealth ? 'eye-slash' : 'eye'}
                 content={stealth ? 'On' : 'Off'}
@@ -56,19 +56,19 @@ export const RadioactiveMicrolaser = (props) => {
                 onClick={() => act('stealth')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Scan Mode">
+            <LabeledList.Item label="Modo de digitalização">
               <Button
                 icon={scanmode ? 'mortar-pestle' : 'heartbeat'}
-                content={scanmode ? 'Scan Reagents' : 'Scan Health'}
+                content={scanmode ? 'Scan Reages' : 'Scan Health'}
                 disabled={irradiate && stealth}
                 onClick={() => act('scanmode')}
               />
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Laser Settings">
+        <Section title="Configuração do Laser">
           <LabeledList>
-            <LabeledList.Item label="Radiation Intensity">
+            <LabeledList.Item label="Intensidade de radiação">
               <Button
                 icon="fast-backward"
                 onClick={() => act('radintensity', { adjust: -5 })}
@@ -98,7 +98,7 @@ export const RadioactiveMicrolaser = (props) => {
                 onClick={() => act('radintensity', { adjust: 5 })}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Radiation Wavelength">
+            <LabeledList.Item label="Comprimento de onda de radiação">
               <Button
                 icon="fast-backward"
                 onClick={() => act('radwavelength', { adjust: -5 })}

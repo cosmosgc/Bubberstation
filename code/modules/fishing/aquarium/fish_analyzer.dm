@@ -6,7 +6,7 @@
 	base_icon_state = "fish_analyzer"
 	inhand_icon_state = "fish_analyzer"
 	worn_icon_state = "fish_analyzer"
-	desc = "A fish-shaped scanner used to monitor fish's status and evolutionary traits."
+	desc = "Um scanner em forma de peixe usado para monitorar o status do peixe e características evolutivas."
 	obj_flags = CONDUCTS_ELECTRICITY
 	custom_price = PAYCHECK_CREW * 3
 	item_flags = NOBLUDGEON
@@ -32,12 +32,7 @@
 	var/static/list/fishe_signals = list(
 		COMSIG_FISH_ANALYZER_ANALYZE_STATUS = TYPE_PROC_REF(/datum/component/experiment_handler, try_run_handheld_experiment),
 	)
-	AddComponent(/datum/component/experiment_handler, \
-		config_mode = EXPERIMENT_CONFIG_ALTCLICK, \
-		allowed_experiments = list(/datum/experiment/scanning/fish), \
-		config_flags = EXPERIMENT_CONFIG_SILENT_FAIL|EXPERIMENT_CONFIG_IMMEDIATE_ACTION, \
-		experiment_signals = fishe_signals, \
-	)
+	AddComponent(/datum/component/experiment_handler, 		config_mode = EXPERIMENT_CONFIG_ALTCLICK, 		allowed_experiments = list(/datum/experiment/scanning/fish), 		config_flags = EXPERIMENT_CONFIG_SILENT_FAIL|EXPERIMENT_CONFIG_IMMEDIATE_ACTION, 		experiment_signals = fishe_signals, 	)
 
 	register_item_context()
 	update_appearance()
@@ -49,7 +44,7 @@
 
 /obj/item/fish_analyzer/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Alt-Click</b> to access the Experiment Configuration UI")
+	. += span_notice("<b>Alt-Click</b>para acessar a configuração da experiência UI")
 
 /obj/item/fish_analyzer/update_icon_state()
 	. = ..()
@@ -91,10 +86,10 @@
 
 /obj/item/fish_analyzer/ui_interact(mob/living/user, datum/tgui/ui)
 	if(isnull(scanned_object))
-		balloon_alert(user, "no specimen data!")
+		balloon_alert(user, "Sem dados de espécimes!")
 		return TRUE
 	if(istype(user) && !(scanned_object in (view(7, get_turf(src)) | user.get_equipped_items(INCLUDE_HELD))))
-		balloon_alert(user, "specimen data lost!")
+		balloon_alert(user, "Dados de espécime perdidos!")
 		unregister_scanned()
 		return TRUE
 
@@ -107,7 +102,7 @@
 	if(!istype(user)) //observers shouldn't disrupt things.
 		return ..()
 	if(!scanned_object || !(scanned_object in (view(7, get_turf(src)) | user.get_equipped_items(INCLUDE_HELD))))
-		balloon_alert(user, "specimen data lost!")
+		balloon_alert(user, "Dados de espécime perdidos!")
 		unregister_scanned()
 		return UI_CLOSE
 	return ..()

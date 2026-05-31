@@ -45,7 +45,7 @@
   var isByond =
     (Byond.BLINK !== null || window.cef_to_byond) &&
     location.hostname === '127.0.0.1' &&
-    location.search !== '?external';
+    location.search !== 'Externo';
   //As of BYOND 515 the path doesn't seem to include tmp dir anymore if you're trying to open tgui in external browser and looking why it doesn't work
   //&& location.pathname.indexOf('/tmp') === 0
 
@@ -111,7 +111,7 @@
 
   Byond.callAsync = function (path, params) {
     if (!window.Promise) {
-      throw new Error('Async calls require API level of ES2015 or later.');
+      throw new Error('Chamadas sincronizadas requerem nível de API de ES2015 ou posterior.');
     }
     var index = Byond.__callbacks__.length;
     var promise = new window.Promise(function (resolve) {
@@ -120,7 +120,7 @@
     Byond.call(
       path,
       assign({}, params, {
-        callback: 'Byond.__callbacks__[' + index + ']',
+        callback: 'Byond.' + index + ']',
       })
     );
     return promise;
@@ -174,7 +174,7 @@
     try {
       return JSON.parse(json, byondJsonReviver);
     } catch (err) {
-      throw new Error('JSON parsing error: ' + (err && err.message));
+      throw new Error('Erro de análise JSON:' + (err && err.message));
     }
   };
 
@@ -255,15 +255,15 @@
     var retry = function () {
       if (attempt >= RETRY_ATTEMPTS) {
         var errorMessage =
-          'Error: Failed to load the asset ' +
+          'Erro: falhou ao carregar o ativo.' +
           "'" +
           url +
-          "' after several attempts.";
+          "' após várias tentativas.";
         if (type === 'css') {
           errorMessage +=
             +'\nStylesheet was either not found, ' +
             "or you're trying to load an empty stylesheet " +
-            'that has no CSS rules in it.';
+            'que não tem regras de CSS.';
         }
         throw new Error(errorMessage);
       }
@@ -306,7 +306,7 @@
       // Temporarily set media to something inapplicable
       // to ensure it'll fetch without blocking render
       if (!sync) {
-        node.media = 'only x';
+        node.media = 'Apenas x';
       }
       var removeNodeAndRetry = function () {
         node.parentNode.removeChild(node);
@@ -353,7 +353,7 @@
         suggestedName: filename,
         types: [
           {
-            description: 'SS13 file',
+            description: 'Arquivo SS13',
             accept: accept,
           },
         ],
@@ -386,7 +386,7 @@ window.onerror = function (msg, url, line, col, error) {
   var stack = error && error.stack;
   // Ghetto stacktrace
   if (!stack) {
-    stack = msg + '\n   at ' + url + ':' + line;
+    stack = msg + '\nem' + url + ':' + line;
     if (col) {
       stack += ':' + col;
     }
@@ -398,7 +398,7 @@ window.onerror = function (msg, url, line, col, error) {
     var errorRoot = document.getElementById('FatalError');
     var errorStack = document.getElementById('FatalError__stack');
     if (errorRoot) {
-      errorRoot.className = 'FatalError FatalError--visible';
+      errorRoot.className = 'FatalError FatalError...';
       if (window.onerror.__stack__) {
         window.onerror.__stack__ += '\n\n' + stack;
       } else {
@@ -426,7 +426,7 @@ window.onerror = function (msg, url, line, col, error) {
       message: stack,
     });
   } else if (window.onerror.errorCount <= 1) {
-    stack += '\nWindow is in non-strict mode, future errors are suppressed.';
+    stack += '\nA janela está em modo não restrito, erros futuros são suprimidos.';
     Byond.sendMessage({
       type: 'log',
       message: stack,
@@ -455,7 +455,7 @@ window.onunhandledrejection = function (e) {
 
 // Helper for augmenting stack traces on fatal errors
 window.__augmentStack__ = function (stack, error) {
-  return stack + '\nUser Agent: ' + navigator.userAgent;
+  return stack + '\nAgente Usuário:' + navigator.userAgent;
 };
 
 // Incoming message handling

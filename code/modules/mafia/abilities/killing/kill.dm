@@ -18,17 +18,17 @@
 		return FALSE
 
 	if(!target_role.kill(game, host_role, FALSE))
-		host_role.send_message_to_player(span_danger("Your attempt at killing [target_role.body.real_name] was prevented!"))
+		host_role.send_message_to_player(span_danger("Sua tentativa de matar[target_role.body.real_name]Foi impedido!"))
 	else
-		target_role.send_message_to_player(span_userdanger("You have been [attack_action] \a [host_role.name]!"))
+		target_role.send_message_to_player(span_userdanger("Você foi[attack_action] \a [host_role.name]!"))
 		if(honorable && (target_role.team & MAFIA_TEAM_TOWN))
-			host_role.send_message_to_player(span_userdanger("You have killed an innocent crewmember. You will die tomorrow night."))
+			host_role.send_message_to_player(span_userdanger("Você matou um tripulante inocente. Você vai morrer amanhã à noite."))
 			RegisterSignal(game, COMSIG_MAFIA_SUNDOWN, PROC_REF(internal_affairs))
 	return TRUE
 
 /datum/mafia_ability/attack_player/proc/internal_affairs(datum/mafia_controller/game)
 	SIGNAL_HANDLER
-	host_role.send_message_to_player(span_userdanger("You have been killed by Nanotrasen Internal Affairs!"))
+	host_role.send_message_to_player(span_userdanger("Você foi morto pelos Assuntos Internos de Nanotrasen!"))
 	host_role.reveal_role(game, verbose = TRUE)
 	host_role.kill(game, host_role, FALSE) //you technically kill yourself but that shouldn't matter
 

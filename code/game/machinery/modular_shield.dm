@@ -1,6 +1,6 @@
 /obj/machinery/modular_shield_generator
 	name = "modular shield generator"
-	desc = "A forcefield generator, it seems more stationary than its cousins. It can't handle G-force and will require frequent reboots when built on mobile craft."
+	desc = "Um gerador de campo de força, parece mais estacionário do que seus primos. Ele não pode lidar com a força G e vai precisar de reinicialização frequente quando construído em embarcações móveis."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "gen_recovering_closed"
 	density = TRUE
@@ -154,7 +154,7 @@
 
 /obj/machinery/modular_shield_generator/multitool_act(mob/living/user, obj/item/multitool/multi)
 	multi.set_buffer(src)
-	balloon_alert(user, "saved to buffer")
+	balloon_alert(user, "Salvo em buffer")
 	return ITEM_INTERACT_SUCCESS
 
 ///toggles the forcefield on and off
@@ -393,7 +393,7 @@
 
 /obj/machinery/modular_shield_generator/gate
 	name = "modular shield gate"
-	desc = "A forcefield generator that can deploy a flat wall, it seems more stationary than its cousins. It can't handle G-force and will require frequent reboots when built on mobile craft."
+	desc = "Um gerador de campo de força que pode implantar uma parede plana, parece mais estacionário do que seus primos. Ele não pode lidar com a força G e vai precisar de reinicialização frequente quando construído em embarcações móveis."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "gate_recovering_closed"
 	density = FALSE
@@ -401,7 +401,7 @@
 	internal_penalty = FALSE
 	layer = GIB_LAYER
 	icon_type = "gate"
-	display_name = "Shield Gate"
+	display_name = "Portão de Escudo"
 
 /obj/machinery/modular_shield_generator/gate/ui_interact(mob/user, datum/tgui/ui)
 	return
@@ -450,7 +450,7 @@
 ///The general code used for machines that want to connect to the network
 /obj/machinery/modular_shield/module
 	name = "modular shield debugger" //Filler name and sprite for testing
-	desc = "This is filler for testing you shouldn't see this."
+	desc = "Isto é enchimento para testes que você não deveria ver isso."
 	icon = 'icons/obj/machines/mech_bay.dmi'
 	icon_state = "recharge_port"
 	density = TRUE
@@ -501,9 +501,9 @@
 	tool.play_tool_sound(src, 50)
 	update_icon_state()
 	if(panel_open)
-		balloon_alert(user, "hatch opened")
+		balloon_alert(user, "Escotilha aberta.")
 		return TRUE
-	balloon_alert(user, "hatch closed")
+	balloon_alert(user, "Escotilha fechada")
 	return TRUE
 
 /obj/machinery/modular_shield/module/multitool_act(mob/living/user, obj/item/tool)
@@ -546,7 +546,7 @@
 /obj/machinery/modular_shield/module/proc/try_connect(user)
 
 	if(shield_generator || connected_node)
-		balloon_alert(user, "already connected to something!")
+		balloon_alert(user, "Já conectado a algo!")
 		update_icon_state()
 		return
 
@@ -555,7 +555,7 @@
 	if(shield_generator)
 
 		LAZYOR(shield_generator.connected_modules, (src))
-		balloon_alert(user, "connected to generator")
+		balloon_alert(user, "Conectado ao Gerador")
 		update_icon_state()
 		shield_generator.calculate_boost()
 		return
@@ -568,7 +568,7 @@
 		if(!connected_node.allow_boosters && is_booster)
 			connected_node = null
 			update_icon_state()
-			balloon_alert(user, "cant connect")
+			balloon_alert(user, "Não consigo conectar.")
 			return
 
 		LAZYOR(connected_node.connected_through_us, (src))
@@ -576,19 +576,19 @@
 		shield_generator = connected_node.shield_generator
 		if(shield_generator)
 			LAZYOR(shield_generator.connected_modules, (src))
-			balloon_alert(user, "connected to generator")
+			balloon_alert(user, "Conectado ao Gerador")
 			update_icon_state()
 			shield_generator.calculate_boost()
 			return
 		update_icon_state()
-		balloon_alert(user, "connected to node")
+		balloon_alert(user, "conectado ao nó")
 		return
 	update_icon_state()
-	balloon_alert(user, "no connection!")
+	balloon_alert(user, "Sem conexão!")
 
 /obj/machinery/modular_shield/module/node
 	name = "modular shield node"
-	desc = "A waist high mess of humming pipes and wires that extend the modular shield network."
+	desc = "Uma grande bagunça na cintura de tubos e fios que estendem a rede de escudo modular."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "node_off_closed"
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.5
@@ -669,7 +669,7 @@
 
 /obj/machinery/modular_shield/module/node/cable
 	name = "modular shield cable"
-	desc = "An ankle high mess of cables packed as low as possible at the cost of lacking connection components necessary for anything other than nodes and the generator itself."
+	desc = "Um tornozelo cheio de cabos embalados o mais baixo possível ao custo de falta de componentes de conexão necessários para qualquer coisa além de nós e do próprio gerador."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "cable_node_closed_r_b_l"
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.1
@@ -695,7 +695,7 @@
 
 /obj/machinery/modular_shield/module/charger
 	name = "modular shield charger"
-	desc = "A machine that somehow fabricates hardlight using electrons."
+	desc = "Uma máquina que fabrica luz dura usando elétrons."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "charger_off_closed"
 	is_booster = TRUE
@@ -723,7 +723,7 @@
 
 /obj/machinery/modular_shield/module/relay
 	name = "modular shield relay"
-	desc = "It helps the shield generator project farther out."
+	desc = "Ajuda ao projeto do gerente de estudos mais longos."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "relay_off_closed"
 	is_booster = TRUE
@@ -751,7 +751,7 @@
 
 /obj/machinery/modular_shield/module/well
 	name = "modular shield well"
-	desc = "A device used to hold more hardlight for the modular shield generator."
+	desc = "Um dispositivo usado para manter mais luz para o gerador de escudo modular."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "well_off_closed"
 	is_booster = TRUE
@@ -780,7 +780,7 @@
 //The shield itself
 /obj/structure/emergency_shield/modular
 	name = "modular energy shield"
-	desc = "An energy shield with varying configurations."
+	desc = "Um escudo de energia com diferentes configurações."
 	color = "#00ffff"
 	density = FALSE
 	alpha = 100

@@ -2,7 +2,7 @@
 
 /obj/machinery/flasher
 	name = "mounted flash"
-	desc = "A wall-mounted flashbulb device."
+	desc = "Um dispositivo de flashbulb montado na parede."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "mflash1"
 	base_icon_state = "mflash"
@@ -66,9 +66,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 	add_fingerprint(user)
 	if (attacking_item.tool_behaviour == TOOL_WIRECUTTER)
 		if (bulb)
-			user.visible_message(span_notice("[user] begins to disconnect [src]'s flashbulb."), span_notice("You begin to disconnect [src]'s flashbulb..."))
+			user.visible_message(span_notice("[user]Começa a desconectar.[src]É uma lâmpada."), span_notice("Você começa a desconectar.[src]É uma lâmpada..."))
 			if(attacking_item.use_tool(src, user, 30, volume=50) && bulb)
-				user.visible_message(span_notice("[user] disconnects [src]'s flashbulb!"), span_notice("You disconnect [src]'s flashbulb."))
+				user.visible_message(span_notice("[user]Desligador[src]É uma lâmpada!"), span_notice("Você desliga.[src]É uma lâmpada."))
 				bulb.forceMove(loc)
 				power_change()
 
@@ -76,19 +76,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 		if (!bulb)
 			if(!user.transferItemToLoc(attacking_item, src))
 				return
-			user.visible_message(span_notice("[user] installs [attacking_item] into [src]."), span_notice("You install [attacking_item] into [src]."))
+			user.visible_message(span_notice("[user]Instala[attacking_item]Em[src]."), span_notice("Você instala.[attacking_item]Em[src]."))
 			power_change()
 		else
-			to_chat(user, span_warning("A flashbulb is already installed in [src]!"))
+			to_chat(user, span_warning("Uma lâmpada já está instalada.[src]!"))
 
 	else if (attacking_item.tool_behaviour == TOOL_WRENCH)
 		if(!bulb)
-			to_chat(user, span_notice("You start unsecuring the flasher frame..."))
+			to_chat(user, span_notice("Você começa a insegurar o flasher..."))
 			if(attacking_item.use_tool(src, user, 40, volume=50))
-				to_chat(user, span_notice("You unsecure the flasher frame."))
+				to_chat(user, span_notice("Você desencarregou o flasher."))
 				deconstruct(TRUE)
 		else
-			to_chat(user, span_warning("Remove a flashbulb from [src] first!"))
+			to_chat(user, span_warning("Remova uma lâmpada de[src]Primero!"))
 	else
 		return ..()
 
@@ -156,7 +156,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 
 /obj/machinery/flasher/portable //Portable version of the flasher. Only flashes when anchored
 	name = "portable flasher"
-	desc = "A portable flashing device. Wrench to activate and deactivate. Cannot detect slow movements."
+	desc = "Um dispositivo de iluminação portátil. Chave para ativar e desativar. Não consigo detectar movimentos lentos."
 	icon = 'icons/obj/machines/sec.dmi'
 	icon_state = "pflash1-p"
 	base_icon_state = "pflash"
@@ -194,13 +194,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 		attacking_item.play_tool_sound(src, 100)
 
 		if (!anchored && !isinspace())
-			to_chat(user, span_notice("[src] is now secured."))
+			to_chat(user, span_notice("[src]Agora está seguro."))
 			add_overlay("[base_icon_state]-s")
 			set_anchored(TRUE)
 			power_change()
 			proximity_monitor.set_range(flash_range)
 		else
-			to_chat(user, span_notice("[src] can now be moved."))
+			to_chat(user, span_notice("[src]Agora pode ser movido."))
 			cut_overlays()
 			set_anchored(FALSE)
 			power_change()
@@ -211,7 +211,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 
 /obj/item/wallframe/flasher
 	name = "mounted flash frame"
-	desc = "Used for building wall-mounted flashers."
+	desc = "Usado para construir flashes montados na parede."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "mflash_frame"
 	result_path = /obj/machinery/flasher
@@ -220,7 +220,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 
 /obj/item/wallframe/flasher/examine(mob/user)
 	. = ..()
-	. += span_notice("Its channel ID is '[id]'.")
+	. += span_notice("Seu canal de identificação é '[id]'.")
 
 /obj/item/wallframe/flasher/after_attach(obj/attached_to)
 	..()

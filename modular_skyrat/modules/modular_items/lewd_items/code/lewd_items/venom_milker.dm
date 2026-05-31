@@ -1,7 +1,6 @@
 /obj/item/reagent_containers/venom_milker
 	name = "\improper venom siphon"
-	desc = "A commercial grade venom siphon, made for use on larger - typically human sized - animals. \
-	Has a built-in reagent neutralizer that inhibits the effects of most extracted toxins for safe handling, but it cannot be guaranteed to work."
+	desc = "Um sifão de veneno de grau comercial, feito para uso em animais maiores, tipicamente humanos. Tem um neutralizador de reagente incorporado que inibe os efeitos da maioria das toxinas extraídas para manuseio seguro, mas não pode ser garantido que funcione."
 
 	icon_state = "venom_milker"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
@@ -16,7 +15,7 @@
 
 	var/filter_immune_string = /datum/preference/choiced/aphrodisiacal_bite_venom::filter_immune_string
 	if (length(filter_immune_string))
-		desc += span_notice("\nThe following reagents cannot be filtered by the neutralizer: [filter_immune_string]")
+		desc += span_notice("\nOs seguintes reagentes não podem ser filtrados pelo neutralizador:[filter_immune_string]")
 
 /obj/item/reagent_containers/venom_milker/attack(mob/living/target_mob, mob/living/user, params)
 	. = ..()
@@ -27,9 +26,9 @@
 	playsound(user, 'sound/effects/compressed_air/tank_insert_clunky.ogg', 50)
 	user.balloon_alert_to_viewers("siphoning...")
 
-	var/text = span_purple("[user] starts hooking up [src] to [target_mob]'s fangs...")
-	var/self_text = span_purple("You start hooking up [src] to [target_mob]'s fangs...")
-	var/victim_text = span_purple("[user] starts hooking up [src] to your fangs...")
+	var/text = span_purple("[user]Começa a ficar[src]Para[target_mob]Como presas...")
+	var/self_text = span_purple("Você começa a namorar[src]Para[target_mob]Como presas...")
+	var/victim_text = span_purple("[user]Começa a ficar[src]para suas presas...")
 
 	user.visible_message(text, self_text, ignored_mobs = target_mob)
 	to_chat(target_mob, victim_text)
@@ -55,22 +54,22 @@
 	var/datum/action/cooldown/mob_cooldown/aphrodisiacal_bite/bite = locate() in target.actions
 	if (isnull(bite))
 		if (!silent)
-			user?.balloon_alert(user, "no fangs!")
+			user?.balloon_alert(user, "Nada de presas!")
 		return FALSE
 	if (!bite.IsAvailable())
 		if (!silent)
-			user?.balloon_alert(user, "fangs empty!")
+			user?.balloon_alert(user, "Fãs vazias!")
 		return FALSE
 	if (reagents.holder_full())
 		if (!silent)
-			user?.balloon_alert(user, "siphon full!")
+			user?.balloon_alert(user, "Sifão cheio!")
 		return FALSE
 
 	if (iscarbon(user))
 		var/mob/living/carbon/carbon_target = target
 		if (carbon_target.is_mouth_covered())
 			if (!silent)
-				user.balloon_alert(user, "boca coberta!")
+				user.balloon_alert(user, "Boa coberta!")
 			return FALSE
 
 	return TRUE
@@ -96,9 +95,9 @@
 
 	if (!isnull(user))
 		user.balloon_alert_to_viewers("siphoned")
-		var/text = span_purple("[user] siphons venom from [target]'s fangs with [src]!")
-		var/self_text = span_purple("You siphon venom from [target]'s fangs with [src]!")
-		var/victim_text = span_purple("[user] siphons venom from your fangs with [src]!")
+		var/text = span_purple("[user]\"Siphons veneno de[target]As presas com[src]!")
+		var/self_text = span_purple("Você suga veneno de[target]As presas com[src]!")
+		var/victim_text = span_purple("[user]Tira veneno de suas presas com[src]!")
 
 		user.visible_message(text, self_text, ignored_mobs = target)
 		to_chat(target, victim_text)
@@ -111,5 +110,4 @@
  */
 /datum/reagent/generic_milked_venom
 	name = "Neutralized Venom"
-	description = "A venom siphon is capable of dampening most toxins extracted from a creature. \
-	Those under that umbrella typically exhibit reduced effects, unless they undergo a long restoration process."
+	description = "Um veneno sifão é capaz de amortecer a maioria das toxinas extraídas de uma criatura. Aqueles sob esse guarda-chuva normalmente exibem efeitos reduzidos, a menos que eles sofram um longo processo de restauração."

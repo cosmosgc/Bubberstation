@@ -2,13 +2,12 @@
 
 /obj/item/skillchip/matrix_taunt
 	name = "BULLET_DODGER skillchip"
-	desc = "Overclock, override and overload your kinesthesic senses, proprioception and reflexes for a small window of time to \
-		automatically dodge fired projectiles. Activated by performing a taunt."
+	desc = "Overclock, sobreponha e sobrecarregue seus sentidos cinestésicos, propriocepção e reflexos por uma pequena janela de tempo para escapar automaticamente de projéteis disparados. Ativado por uma provocação."
 	skill_name = "Taunt 2 Dodge"
-	skill_description = "At the cost of stamina, your taunts can also be used to dodge incoming projectiles."
+	skill_description = "À custa da resistência, suas provocações também podem ser usadas para evitar projéteis."
 	skill_icon = FA_ICON_SPINNER
-	activate_message = span_notice("You feel the urge to taunt scenically as if you are the 'Chosen One'.")
-	deactivate_message = span_notice("The urge to taunt goes away.")
+	activate_message = span_notice("Você sente o desejo de provocar cênicamente como se fosse o Escolhido.")
+	deactivate_message = span_notice("O desejo de provocar desaparece.")
 
 /obj/item/skillchip/matrix_taunt/on_activate(mob/living/carbon/user, silent = FALSE)
 	. = ..()
@@ -25,7 +24,7 @@
 	if(key != "taunt" || !intentional)
 		return
 	if((source.maxHealth - (source.get_stamina_loss() + TAUNT_STAMINA_COST)) <= source.crit_threshold)
-		source.balloon_alert(source, "too tired!")
+		source.balloon_alert(source, "Muito cansado!")
 		return COMPONENT_CANT_EMOTE
 
 /obj/item/skillchip/matrix_taunt/proc/on_taunt(mob/living/source)

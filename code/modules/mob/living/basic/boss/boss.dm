@@ -106,8 +106,8 @@
 /// Small little taunt when we epically troll someone
 /mob/living/basic/boss/proc/celebrate_kill(mob/living/poor_sap)
 	visible_message(
-		span_danger("[src] disembowels [poor_sap]!"),
-		span_userdanger("You feast on [poor_sap]'s organs, restoring your health!"),
+		span_danger("[src]Desembochas[poor_sap]!"),
+		span_userdanger("Você se banqueteia[poor_sap]Os órgãos, restaurando sua saúde!"),
 	)
 
 /// Handles adding all relevant achievements when applicable (probably when we are defeated)
@@ -121,10 +121,5 @@
 /mob/living/basic/boss/proc/handle_crusher_loot()
 	if(isnull(crusher_loot))
 		return
-	AddElement(\
-		/datum/element/crusher_loot,\
-		trophy_type = string_list(crusher_loot),\
-		guaranteed_drop = 0.6,\
-		drop_immediately = basic_mob_flags & DEL_ON_DEATH,\
-	)
+	AddElement(		/datum/element/crusher_loot,		trophy_type = string_list(crusher_loot),		guaranteed_drop = 0.6,		drop_immediately = basic_mob_flags & DEL_ON_DEATH,	)
 

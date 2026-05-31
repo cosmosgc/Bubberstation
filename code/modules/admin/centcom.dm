@@ -4,7 +4,7 @@
 		return
 
 	if(!CONFIG_GET(string/centcom_ban_db))
-		to_chat(usr, span_warning("Centcom Galactic Ban DB is disabled!"))
+		to_chat(usr, span_warning("A Banda Galáctica da Centcom DB está desativada!"))
 		return
 
 	// Make the request
@@ -68,7 +68,7 @@
 		return
 
 	if(!CONFIG_GET(string/centcom_ban_db))
-		to_chat(usr, span_warning("Centcom Galactic Ban DB is disabled!"))
+		to_chat(usr, span_warning("A Banda Galáctica da Centcom DB está desativada!"))
 		return
 
 	// Make the request

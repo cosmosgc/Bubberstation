@@ -16,7 +16,7 @@
 
 /datum/action/innate/cult/comm
 	name = "Communion"
-	desc = "Whispered words that all cultists can hear.<br><b>Warning:</b>Nearby non-cultists can still hear you."
+	desc = "Palavras sussurradas que todos os cultistas podem ouvir.<br><b>Aviso:</b>Não-cultistas próximos ainda podem ouvi-lo."
 	button_icon_state = "cult_comms"
 	// Unholy words dont require hands or mobility
 	check_flags = AB_CHECK_INCAPACITATED|AB_CHECK_CONSCIOUS
@@ -38,7 +38,7 @@
 
 	var/list/soft_filter_result = CAN_BYPASS_FILTER(usr) ? null : is_soft_ic_filtered(input)
 	if(soft_filter_result)
-		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"Sua mensagem contém\"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\"Tem certeza que quer dizer?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 			return
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[html_encode(input)]\"")
 		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[input]\"")
@@ -70,7 +70,7 @@
 
 /datum/action/innate/cult/comm/spirit
 	name = "Spiritual Communion"
-	desc = "Conveys a message from the spirit realm that all cultists can hear."
+	desc = "Envia uma mensagem do reino espiritual que todos os cultistas podem ouvir."
 
 /datum/action/innate/cult/comm/spirit/IsAvailable(feedback = FALSE)
 	if(IS_CULTIST(owner.mind.current))
@@ -99,7 +99,7 @@
 
 /datum/action/innate/cult/master/pass_role
 	name = "Pass the Mantle"
-	desc = "Pass the Master role onto another willing cultist. This can only be done once!"
+	desc = "Passe o papel de mestre para outro cultista disposto. Isso só pode ser feito uma vez!"
 	button_icon_state = "cultvote"
 	check_flags = AB_CHECK_INCAPACITATED|AB_CHECK_CONSCIOUS|AB_CHECK_HANDS_BLOCKED
 
@@ -124,30 +124,30 @@
 	if (!new_master || !IsAvailable())
 		return
 
-	var/confirmation = tgui_alert(owner, "Are you sure that you want to make [new_master] the new Master? This can only be done once!", "Pass the Mantle", list("Yes", "No"))
+	var/confirmation = tgui_alert(owner, "Tem certeza que quer fazer[new_master]O novo Mestre? Isso só pode ser feito uma vez!", "Pass the Mantle", list("Yes", "No"))
 	if (confirmation != "Yes" || !IsAvailable())
 		return
 
 	var/datum/mind/master_mind = choices[new_master]
 	var/mob/living/carbon/human/master = master_mind.current
 	if (!master || master.stat == DEAD || !master.client)
-		to_chat(owner, span_cult("[new_master] can no longer take on the role of a Master."))
+		to_chat(owner, span_cult("[new_master]Não pode mais assumir o papel de um Mestre."))
 		return
 
 	var/datum/antagonist/cult/target_datum = master_mind.has_antag_datum(/datum/antagonist/cult)
 	if(!target_datum || owner_datum.cult_team != target_datum?.cult_team)
-		to_chat(owner, span_cult("[new_master] can no longer take on the role of a Master."))
+		to_chat(owner, span_cult("[new_master]Não pode mais assumir o papel de um Mestre."))
 		return
 
 	SEND_SOUND(master, sound('sound/effects/magic.ogg', volume = 33))
 	confirmation = tgui_alert(master, "[owner.real_name] is offering their role as the cult's Master to you! Do you wish to accept it?", "Take the Mantle", list("Yes", "No"))
 
 	if (confirmation != "Yes")
-		to_chat(owner, span_cult("[new_master] has declined your offer."))
+		to_chat(owner, span_cult("[new_master]Recusou sua oferta."))
 		return
 
 	if (!IsAvailable() || !master_mind.has_antag_datum(/datum/antagonist/cult) || !master.client)
-		to_chat(owner, span_cult("[new_master] can no longer take on the role of a Master."))
+		to_chat(owner, span_cult("[new_master]Não pode mais assumir o papel de um Mestre."))
 		return
 
 	target_datum.cult_team.leader_passed_on = TRUE
@@ -156,7 +156,7 @@
 
 /datum/action/innate/cult/master/finalreck
 	name = "Final Reckoning"
-	desc = "A single-use spell that brings the entire cult to the master's location."
+	desc = "Um feitiço de uso único que leva todo o culto à localização do mestre."
 	button_icon_state = "sintouch"
 
 /datum/action/innate/cult/master/finalreck/Activate()
@@ -166,7 +166,7 @@
 	var/place = get_area(owner)
 	var/datum/objective/eldergod/summon_objective = locate() in antag.cult_team.objectives
 	if(place in summon_objective.summon_spots)//cant do final reckoning in the summon area to prevent abuse, you'll need to get everyone to stand on the circle!
-		to_chat(owner, span_cult_large("The veil is too weak here! Move to an area where it is strong enough to support this magic."))
+		to_chat(owner, span_cult_large("O véu é muito fraco aqui! Mude-se para uma área onde seja forte o suficiente para suportar esta magia."))
 		return
 	for(var/i in 1 to 4)
 		chant(i)
@@ -175,7 +175,7 @@
 			if(!T.is_blocked_turf(TRUE))
 				destinations += T
 		if(!LAZYLEN(destinations))
-			to_chat(owner, span_warning("You need more space to summon your cult!"))
+			to_chat(owner, span_warning("Precisa de mais espaço para convocar seu culto!"))
 			return
 		if(do_after(owner, 3 SECONDS, target = owner))
 			for(var/datum/mind/B in antag.cult_team.members)
@@ -226,11 +226,11 @@
 
 /datum/action/innate/cult/master/cultmark
 	name = "Mark Target"
-	desc = "Marks a target for the cult."
+	desc = "Marca um alvo para o culto."
 	button_icon_state = "cult_mark"
 	click_action = TRUE
-	enable_text = span_cult("You prepare to mark a target for your cult. <b>Click a target to mark them!</b>")
-	disable_text = span_cult("You cease the marking ritual.")
+	enable_text = span_cult("Você se prepara para marcar um alvo para o seu culto.<b>Clique em um alvo para marcar!</b>")
+	disable_text = span_cult("Você termina o ritual de marcação.")
 	/// The duration of the mark itself
 	var/cult_mark_duration = 90 SECONDS
 	/// The duration of the cooldown for cult marks
@@ -261,22 +261,22 @@
 		CRASH("[type] was casted by a cultist without a cult team datum.")
 
 	if(cult_team.blood_target)
-		to_chat(clicker, span_cult("The cult has already designated a target!"))
+		to_chat(clicker, span_cult("O culto já designou um alvo!"))
 		return FALSE
 
 	if(cult_team.set_blood_target(clicked_on, clicker, cult_mark_duration))
-		unset_ranged_ability(clicker, span_cult("The marking rite is complete! It will last for [DisplayTimeText(cult_mark_duration)] seconds."))
+		unset_ranged_ability(clicker, span_cult("O ritual de marcação está completo! Vai durar por[DisplayTimeText(cult_mark_duration)]segundos."))
 		COOLDOWN_START(src, cult_mark_cooldown, cult_mark_cooldown_duration)
 		build_all_button_icons()
 		addtimer(CALLBACK(src, PROC_REF(build_all_button_icons)), cult_mark_cooldown_duration + 1)
 		return TRUE
 
-	unset_ranged_ability(clicker, span_cult("The marking rite failed!"))
+	unset_ranged_ability(clicker, span_cult("O rito de marcação falhou!"))
 	return TRUE
 
 /datum/action/innate/cult/ghostmark //Ghost version
 	name = "Blood Mark your Target"
-	desc = "Marks whatever you are orbiting for the entire cult to track."
+	desc = "Marca o que estiver orbitando para que todo o culto rastreie."
 	button_icon_state = "cult_mark"
 	check_flags = NONE
 	/// The duration of the mark on the target
@@ -301,14 +301,14 @@
 	if(cult_team.blood_target)
 		if(!COOLDOWN_FINISHED(src, cult_mark_cooldown))
 			cult_team.unset_blood_target_and_timer()
-			to_chat(owner, span_cult_bold("You have cleared the cult's blood target!"))
+			to_chat(owner, span_cult_bold("Você limpou o alvo de sangue do culto!"))
 			return TRUE
 
-		to_chat(owner, span_cult_bold("The cult has already designated a target!"))
+		to_chat(owner, span_cult_bold("O culto já designou um alvo!"))
 		return FALSE
 
 	if(!COOLDOWN_FINISHED(src, cult_mark_cooldown))
-		to_chat(owner, span_cult_bold("You aren't ready to place another blood mark yet!"))
+		to_chat(owner, span_cult_bold("Você não está pronto para colocar outra marca de sangue ainda!"))
 		return FALSE
 
 	var/atom/mark_target = owner.orbiting?.parent || get_turf(owner)
@@ -316,13 +316,13 @@
 		return FALSE
 
 	if(cult_team.set_blood_target(mark_target, owner, 60 SECONDS))
-		to_chat(owner, span_cult_bold("You have marked [mark_target] for the cult! It will last for [DisplayTimeText(cult_mark_duration)]."))
+		to_chat(owner, span_cult_bold("Você marcou.[mark_target]Para o culto! Vai durar por[DisplayTimeText(cult_mark_duration)]."))
 		COOLDOWN_START(src, cult_mark_cooldown, cult_mark_cooldown_duration)
 		build_all_button_icons(UPDATE_BUTTON_NAME|UPDATE_BUTTON_ICON)
 		addtimer(CALLBACK(src, PROC_REF(reset_button)), cult_mark_cooldown_duration + 1)
 		return TRUE
 
-	to_chat(owner, span_cult("The marking failed!"))
+	to_chat(owner, span_cult("A marcação falhou!"))
 	return FALSE
 
 /datum/action/innate/cult/ghostmark/update_button_name(atom/movable/screen/movable/action_button/current_button, force = FALSE)
@@ -331,7 +331,7 @@
 		desc = initial(desc)
 	else
 		name = "Clear the Blood Mark"
-		desc = "Remove the Blood Mark you previously set."
+		desc = "Remova a Marca de Sangue que você colocou antes."
 
 	return ..()
 
@@ -348,19 +348,19 @@
 		return
 
 	SEND_SOUND(owner, 'sound/effects/magic/enter_blood.ogg')
-	to_chat(owner, span_cult_bold("Your previous mark is gone - you are now ready to create a new blood mark."))
+	to_chat(owner, span_cult_bold("Sua marca anterior se foi. Agora você está pronto para criar uma nova marca de sangue."))
 	build_all_button_icons(UPDATE_BUTTON_NAME|UPDATE_BUTTON_ICON)
 
 //////// ELDRITCH PULSE /////////
 
 /datum/action/innate/cult/master/pulse
 	name = "Eldritch Pulse"
-	desc = "Seize upon a fellow cultist or cult structure and teleport it to a nearby location."
+	desc = "Apanhem um companheiro cultor ou estrutura de culto e teletransportem-no para um local próximo."
 	button_icon = 'icons/mob/actions/actions_spells.dmi'
 	button_icon_state = "arcane_barrage"
 	click_action = TRUE
-	enable_text = span_cult("You prepare to tear through the fabric of reality... <b>Click a target to sieze them!</b>")
-	disable_text = span_cult("You cease your preparations.")
+	enable_text = span_cult("Você se prepara para rasgar o tecido da realidade...<b>Clique em um alvo para criá-los!</b>")
+	disable_text = span_cult("Você termina seus preparativos.")
 	/// Weakref to whoever we're currently about to toss
 	var/datum/weakref/throwee_ref
 	/// Cooldown of the ability
@@ -387,14 +387,14 @@
 /datum/action/innate/cult/master/pulse/do_ability(mob/living/clicker, atom/clicked_on)
 	var/atom/throwee = throwee_ref?.resolve()
 	if(throwee && QDELING(throwee))
-		to_chat(clicker, span_cult("You lost your target!"))
+		to_chat(clicker, span_cult("Você perdeu seu alvo!"))
 		throwee = null
 		throwee_ref = null
 		return FALSE
 
 	if(throwee)
 		if(get_dist(throwee, clicked_on) >= 16)
-			to_chat(clicker, span_cult("You can't teleport [clicked_on.p_them()] that far!"))
+			to_chat(clicker, span_cult("Você não pode se teletransportar[clicked_on.p_them()]tão longe!"))
 			return FALSE
 
 		var/turf/throwee_turf = get_turf(throwee)
@@ -402,27 +402,27 @@
 		playsound(throwee_turf, 'sound/effects/magic/exit_blood.ogg', 50)
 		new /obj/effect/temp_visual/cult/sparks(throwee_turf, clicker.dir)
 		throwee.visible_message(
-			span_warning("A pulse of magic whisks [throwee] away!"),
-			span_cult("A pulse of blood magic whisks you away..."),
+			span_warning("Um pulso de socos mágicos[throwee]Afaste-se!"),
+			span_cult("Um pulso de sangue mágico te leva embora..."),
 		)
 
 		if(!do_teleport(throwee, clicked_on, channel = TELEPORT_CHANNEL_CULT))
-			to_chat(clicker, span_cult("The teleport fails!"))
+			to_chat(clicker, span_cult("O teletransporte falhou!"))
 			throwee.visible_message(
-				span_warning("...Except they don't go very far"),
-				span_cult("...Except you don't appear to have moved very far."),
+				span_warning("Exceto que eles não vão muito longe."),
+				span_cult("Exceto que você não parece ter ido muito longe."),
 			)
 			return FALSE
 
 		throwee_turf.Beam(clicked_on, icon_state = "sendbeam", time = 0.4 SECONDS)
 		new /obj/effect/temp_visual/cult/sparks(get_turf(clicked_on), clicker.dir)
 		throwee.visible_message(
-			span_warning("[throwee] appears suddenly in a pulse of magic!"),
-			span_cult("...And you appear elsewhere."),
+			span_warning("[throwee]Aparece de repente em um pulso de magia!"),
+			span_cult("E você aparece em outro lugar."),
 		)
 
 		COOLDOWN_START(src, pulse_cooldown, pulse_cooldown_duration)
-		to_chat(clicker, span_cult("A pulse of blood magic surges through you as you shift [throwee] through time and space."))
+		to_chat(clicker, span_cult("Um pulso de magia de sangue flui através de você enquanto você muda[throwee]através do tempo e espaço."))
 		clicker.click_intercept = null
 		throwee_ref = null
 		build_all_button_icons()
@@ -435,12 +435,12 @@
 		if(!IS_CULTIST(living_clicked))
 			return FALSE
 		SEND_SOUND(clicker, sound('sound/items/weapons/thudswoosh.ogg'))
-		to_chat(clicker, span_cult_bold("You reach through the veil with your mind's eye and seize [clicked_on]! <b>Click anywhere nearby to teleport [clicked_on.p_them()]!</b>"))
+		to_chat(clicker, span_cult_bold("Você alcança o véu com os olhos da sua mente e agarra[clicked_on]! <b>Clique em qualquer lugar próximo para teletransportar[clicked_on.p_them()]!</b>"))
 		throwee_ref = WEAKREF(clicked_on)
 		return TRUE
 
 	if(istype(clicked_on, /obj/structure/destructible/cult))
-		to_chat(clicker, span_cult_bold("You reach through the veil with your mind's eye and lift [clicked_on]! <b>Click anywhere nearby to teleport it!</b>"))
+		to_chat(clicker, span_cult_bold("Você alcança o véu com o olho de sua mente e levanta[clicked_on]! <b>Clique em qualquer lugar próximo para teletransportar!</b>"))
 		throwee_ref = WEAKREF(clicked_on)
 		return TRUE
 	return FALSE

@@ -300,7 +300,7 @@ const FilterMatrixEntry = (props) => {
   return (
     <Box>
       <Dropdown
-        displayText="Matrix Size"
+        displayText="Tamanho Matrix"
         selected={matrix.length}
         options={matrix_sizes.map((size) => `${size} elements`)}
         onSelected={(option) =>
@@ -363,7 +363,7 @@ const FilterDataEntry = (props) => {
     options: <FilterOptionsEntry {...props} />,
     transform: <FilterTransformEntry {...props} />,
     matrix: <FilterMatrixEntry {...props} />,
-    plug: 'Not Implemented',
+    plug: 'Não implementado.',
   };
 
   const filterEntryMap = {
@@ -397,7 +397,7 @@ const FilterDataEntry = (props) => {
     <LabeledList.Item label={name}>
       <Box inline>
         {filterEntryTypes[filterInputType] ||
-          'Not Found (This is an error)'}{' '}
+          'Não Encontrado (Isso é um erro)'}{' '}
       </Box>
       {!hasValue && (
         <Box inline color="average">
@@ -476,7 +476,7 @@ const FilterEntry = (props) => {
 
 export const Filterrific = (props) => {
   const { act, data } = useBackend();
-  const name = data.target_name || 'Unknown Object';
+  const name = data.target_name || 'Objeto Desconhecido';
   const filters = data.target_filter_data || {};
   const hasFilters = Object.keys(filters).length !== 0;
   const filterDefaults = data.filter_info;
@@ -504,7 +504,7 @@ export const Filterrific = (props) => {
                 />
                 <Button.Confirm
                   content="Apply"
-                  confirmContent="ARE YOU SURE?"
+                  confirmContent="Tem certeza?"
                   onClick={() => act('mass_apply', { path: massApplyPath })}
                 />
               </>
@@ -517,7 +517,7 @@ export const Filterrific = (props) => {
           buttons={
             <Dropdown
               icon="plus"
-              displayText="Add Filter"
+              displayText="Adicionar filtro"
               noChevron
               options={Object.keys(filterDefaults)}
               onSelected={(value) =>

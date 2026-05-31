@@ -9,7 +9,7 @@ and your disease can spread via people walking on vomit.
 
 /datum/symptom/vomit
 	name = "Vomiting"
-	desc = "The virus causes nausea and irritates the stomach, causing occasional vomit."
+	desc = "O vírus provoca náuseas e irrita o estômago, causando vômito ocasional."
 	illness = "Cyclonic Irritation"
 	stealth = -3
 	resistance = 2
@@ -73,7 +73,7 @@ and your disease can spread via people walking on vomit.
 
 /datum/symptom/vomit/nebula
 	name = "Nebula Vomiting"
-	desc = "The condition irritates the stomach, causing occasional vomit with stars that does not stun."
+	desc = "A condição irrita o estômago, causando vômito ocasional com estrelas que não atordoam."
 	illness = "Nebula Nausea"
 	vomit_nebula = TRUE
 	naturally_occuring = FALSE

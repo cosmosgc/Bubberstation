@@ -5,7 +5,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 /mob/living/basic/clockwork_marauder
 	name = "clockwork marauder"
-	desc = "A brass machine of destruction."
+	desc = "Uma máquina de latão de destruição."
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_mobs.dmi'
 	icon_state = "clockwork_marauder"
 	icon_living = "clockwork_marauder"
@@ -62,10 +62,10 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 /mob/living/basic/clockwork_marauder/examine(mob/user)
 	. = ..()
 	if(IS_CLOCK(user))
-		. += span_brass("[src]'s shield is at [shield_health] / [MARAUDER_SHIELD_MAX] charges.")
+		. += span_brass("[src]O escudo está em[shield_health] / [MARAUDER_SHIELD_MAX]Acusações.")
 
 		if(shield_health < MARAUDER_SHIELD_MAX)
-			. += span_brass("It can be repaired with a <b>welding tool</b>.")
+			. += span_brass("Pode ser consertado com um<b>ferramenta de solda</b>.")
 
 /mob/living/basic/clockwork_marauder/attacked_by(obj/item/attacking_item, mob/living/user)
 	if(shield_health)
@@ -84,7 +84,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 	if(shield_health)
 		damage_shield()
-		visible_message(span_warning("[src]'s shield blocks the attack!"))
+		visible_message(span_warning("[src]O escudo bloqueia o ataque!"))
 		return COMPONENT_BULLET_BLOCKED
 	return NONE
 
@@ -94,8 +94,8 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	shield_health--
 	playsound(src, 'modular_skyrat/modules/clock_cult/sound/magic/anima_fragment_attack.ogg', 60, TRUE)
 	if(!shield_health)
-		to_chat(src, span_userdanger("Your shield breaks!"))
-		to_chat(src, span_brass("You require a <b>welding tool</b> to repair your damaged shield!"))
+		to_chat(src, span_userdanger("Seu escudo quebra!"))
+		to_chat(src, span_brass("Você precisa de um...<b>ferramenta de solda</b>Para reparar seu escudo danificado!"))
 
 
 /mob/living/basic/clockwork_marauder/welder_act(mob/living/user, obj/item/tool)
@@ -103,7 +103,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 		return TRUE
 
 	health = min(health + WELDER_REPAIR_AMOUNT, maxHealth)
-	to_chat(user, span_notice("You repair some of [src]'s damage."))
+	to_chat(user, span_notice("Você conserta um pouco de[src]É um dano."))
 	if(shield_health < MARAUDER_SHIELD_MAX)
 		shield_health++
 		playsound(src, 'sound/effects/magic/charge.ogg', 60, TRUE)

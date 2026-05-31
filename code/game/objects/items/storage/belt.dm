@@ -1,6 +1,6 @@
 /obj/item/storage/belt
 	name = "not actually a toolbelt"
-	desc = "Can hold various things. This is the base type of /belt, are you sure you should have this?"
+	desc = "Pode segurar várias coisas. Este é o tipo de cinto base, você tem certeza que deveria ter isso?"
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "utility"
 	inhand_icon_state = "utility"
@@ -17,7 +17,7 @@
 	var/content_overlays = FALSE //If this is true, the belt will gain overlays based on what it's holding
 
 /obj/item/storage/belt/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins belting [user.p_them()]self with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]começa a cintilar[user.p_them()]ego com\the [src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/storage/belt/update_overlays()
@@ -34,7 +34,7 @@
 
 /obj/item/storage/belt/utility
 	name = "toolbelt" //Carn: utility belt is nicer, but it bamboozles the text parsing.
-	desc = "Holds tools."
+	desc = "Segura ferramentas."
 	icon_state = "utility"
 	inhand_icon_state = "utility"
 	worn_icon_state = "utility"
@@ -46,7 +46,7 @@
 
 /obj/item/storage/belt/utility/chief
 	name = "chief engineer's toolbelt"
-	desc = "Holds tools, looks snazzy."
+	desc = "Segura ferro, parece elegante."
 	icon_state = "utility_ce"
 	inhand_icon_state = "utility_ce"
 	worn_icon_state = "utility_ce"
@@ -190,7 +190,7 @@
 
 /obj/item/storage/belt/medical
 	name = "medical belt"
-	desc = "Can hold various medical equipment."
+	desc = "Pode segurar vários equipamentos médicos."
 	icon_state = "medical"
 	inhand_icon_state = "medical"
 	worn_icon_state = "medical"
@@ -255,7 +255,7 @@
 
 /obj/item/storage/belt/security
 	name = "security belt"
-	desc = "Can hold security gear like handcuffs and flashes."
+	desc = "Pode segurar equipamento de segurança como algemas e flashes."
 	icon_state = "security"
 	inhand_icon_state = "security"//Could likely use a better one.
 	worn_icon_state = "security"
@@ -272,7 +272,7 @@
 
 /obj/item/storage/belt/security/webbing
 	name = "security webbing"
-	desc = "Unique and versatile chest rig, can hold security gear."
+	desc = "Uma plataforma única e versátil, pode segurar o equipamento de segurança."
 	icon_state = "securitywebbing"
 	inhand_icon_state = "securitywebbing"
 	worn_icon_state = "securitywebbing"
@@ -282,7 +282,7 @@
 
 /obj/item/storage/belt/mining
 	name = "explorer's webbing"
-	desc = "A versatile chest rig, cherished by miners and hunters alike."
+	desc = "Um peitoral versátil, apreciado por mineiros e caçadores."
 	icon_state = "explorer1"
 	inhand_icon_state = "explorer1"
 	worn_icon_state = "explorer1"
@@ -308,7 +308,7 @@
 
 /obj/item/storage/belt/mining/primitive
 	name = "hunter's belt"
-	desc = "A versatile belt, woven from sinew."
+	desc = "Um cinto versátil, tecido de tendões."
 	icon_state = "ebelt"
 	inhand_icon_state = "ebelt"
 	worn_icon_state = "ebelt"
@@ -316,7 +316,7 @@
 
 /obj/item/storage/belt/soulstone
 	name = "soul stone belt"
-	desc = "Designed for ease of access to the shards during a fight, as to not let a single enemy spirit slip away."
+	desc = "Projetado para facilitar o acesso aos fragmentos durante uma luta, para não deixar um único espírito inimigo escapar."
 	icon_state = "soulstonebelt"
 	inhand_icon_state = "soulstonebelt"
 	worn_icon_state = "soulstonebelt"
@@ -334,7 +334,7 @@
 
 /obj/item/storage/belt/champion
 	name = "championship belt"
-	desc = "Proves to the world that you are the strongest!"
+	desc = "Prova ao mundo que você é o mais forte!"
 	icon_state = "championbelt"
 	inhand_icon_state = "championbelt"
 	worn_icon_state = "championbelt"
@@ -348,7 +348,7 @@
 
 /obj/item/storage/belt/military
 	name = "chest rig"
-	desc = "A set of tactical webbing worn by Syndicate boarding parties."
+	desc = "Um conjunto de tramas táticas usadas por grupos de embarque do Sindicato."
 	icon_state = "militarywebbing"
 	inhand_icon_state = "militarywebbing"
 	worn_icon_state = "militarywebbing"
@@ -362,7 +362,7 @@
 /obj/item/storage/belt/military/snack/Initialize(mapload)
 	. = ..()
 	var/sponsor = pick("Donk Co.", "Waffle Corp.", "Roffle Co.", "Gorlex Marauders", "Tiger Cooperative")
-	desc = "A set of snack-tical webbing worn by athletes of the [sponsor] VR sports division."
+	desc = "Um conjunto de pinças de lanche usadas por atletas do[sponsor]Divisão de esportes VR."
 
 /obj/item/storage/belt/military/snack/full/Initialize(mapload)
 	. = ..()
@@ -397,7 +397,7 @@
 
 /obj/item/storage/belt/military/abductor
 	name = "agent belt"
-	desc = "A belt used by abductor agents."
+	desc = "Um cinto usado por agentes sequestradores."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "belt"
 	inhand_icon_state = "security"
@@ -415,14 +415,14 @@
 
 /obj/item/storage/belt/military/army
 	name = "army belt"
-	desc = "A belt used by military forces."
+	desc = "Um cinto usado pelas forças militares."
 	icon_state = "military"
 	inhand_icon_state = "security"
 	worn_icon_state = "military"
 
 /obj/item/storage/belt/military/assault
 	name = "assault belt"
-	desc = "A tactical assault belt."
+	desc = "Um cinto de assalto tático."
 	icon_state = "assault"
 	inhand_icon_state = "security"
 	worn_icon_state = "assault"
@@ -436,7 +436,7 @@
 
 /obj/item/storage/belt/grenade
 	name = "grenadier belt"
-	desc = "A belt for holding grenades."
+	desc = "Um Cinto para Segurar Granadas."
 	icon_state = "grenadebeltnew"
 	inhand_icon_state = "security"
 	worn_icon_state = "grenadebeltnew"
@@ -460,7 +460,7 @@
 
 /obj/item/storage/belt/wands
 	name = "wand belt"
-	desc = "A belt designed to hold various rods of power. A veritable fanny pack of exotic magic."
+	desc = "Um cinto projetado para segurar várias barras de poder. Uma verdadeira pochete de magia exótica."
 	icon_state = "soulstonebelt"
 	inhand_icon_state = "soulstonebelt"
 	worn_icon_state = "soulstonebelt"
@@ -481,7 +481,7 @@
 
 /obj/item/storage/belt/janitor
 	name = "janibelt"
-	desc = "A belt used to hold most janitorial supplies."
+	desc = "Um cinto usado para manter a maioria dos privilégios de limpeza."
 	icon_state = "janibelt"
 	inhand_icon_state = "janibelt"
 	worn_icon_state = "janibelt"
@@ -498,7 +498,7 @@
 
 /obj/item/storage/belt/bandolier
 	name = "bandolier"
-	desc = "A bandolier for holding rifle shotgun, and bigger revolver caliber ammunition."
+	desc = "Um bandoleiro para segurar espingarda e munição de calibre maior."
 	icon_state = "bandolier"
 	inhand_icon_state = "bandolier"
 	worn_icon_state = "bandolier"
@@ -511,7 +511,7 @@
 
 /obj/item/storage/belt/fannypack
 	name = "fannypack"
-	desc = "A dorky fannypack for keeping small items in. Concealed enough, or ugly enough to avert their eyes, that others won't see what you put in or take out easily."
+	desc = "Uma pochete idiota por guardar pequenos itens. Escondido o suficiente, ou feio o suficiente para desviar os olhos, que outros não verão o que você coloca ou tira facilmente."
 	icon_state = "fannypack_leather"
 	inhand_icon_state = null
 	worn_icon_state = "fannypack_leather"
@@ -571,7 +571,7 @@
 
 /obj/item/storage/belt/fannypack/cummerbund
 	name = "cummerbund"
-	desc = "A pleated sash that pairs well with a suit jacket."
+	desc = "Uma faixa plissada que combina bem com uma jaqueta."
 	icon_state = "cummerbund"
 	inhand_icon_state = null
 	worn_icon_state = "cummerbund"
@@ -590,7 +590,7 @@
 	new /obj/item/reagent_containers/hypospray/medipen/methamphetamine(src)
 
 /obj/item/storage/belt/sheath
-	desc = "holds like, blades and stuff. You should not be seeing this."
+	desc = "Tem lâminas e tal. Você não deveria estar vendo isso."
 	w_class = WEIGHT_CLASS_BULKY
 	interaction_flags_click = parent_type::interaction_flags_click | NEED_DEXTERITY | NEED_HANDS
 	var/stored_blade
@@ -611,14 +611,14 @@
 /obj/item/storage/belt/sheath/examine(mob/user)
 	. = ..()
 	if(length(contents))
-		. += span_notice("Alt-click it to quickly draw the blade.")
+		. += span_notice("Alt-clique para puxar a lâmina rapidamente.")
 
 /obj/item/storage/belt/sheath/click_alt(mob/user)
 	if(!length(contents))
 		balloon_alert(user, "está vazio!")
 		return CLICK_ACTION_BLOCKING
 	var/obj/item/stored_item = contents[1]
-	user.visible_message(span_notice("[user] takes [stored_item] out of [src]."), span_notice("You take [stored_item] out of [src]."))
+	user.visible_message(span_notice("[user]Toma.[stored_item]Fora[src]."), span_notice("Você pega.[stored_item]Fora[src]."))
 	user.put_in_hands(stored_item)
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
@@ -644,13 +644,13 @@
 
 /datum/action/innate/blade_counter
 	name = "Counterattack"
-	desc = "Anticipate an enemy's attack and strike back with your sheathed blade."
+	desc = "Antecipar o ataque de um inimigo e revidar com sua lâmina."
 	button_icon = 'icons/mob/actions/actions_spells.dmi'
 	button_icon_state = "declaration"
 	ranged_mousepointer = 'icons/effects/mouse_pointers/honorbound.dmi'
 
-	enable_text = "You prepare to counterattack a target..."
-	disable_text = "You relax your stance."
+	enable_text = "Você se prepara para contra-atacar um alvo..."
+	disable_text = "Relaxe sua postura."
 
 	click_action = TRUE
 
@@ -662,15 +662,15 @@
 	var/obj/item/storage/belt/sheath/owners_sheath = target
 	if(!COOLDOWN_FINISHED(owners_sheath, full_ability_cooldown))
 		if(feedback)
-			to_chat(owner, span_warning("You failed a counterattack too recently!"))
+			to_chat(owner, span_warning("Você falhou em um contra-ataque muito recentemente!"))
 		return FALSE
 	if(!length(owners_sheath.contents))
 		if(feedback)
-			to_chat(owner, span_warning("Your sheath is empty!"))
+			to_chat(owner, span_warning("Sua bainha está vazia!"))
 		return FALSE
 	if(!COOLDOWN_FINISHED(owners_sheath, resheath_cooldown))
 		if(feedback)
-			to_chat(owner, span_warning("You only just resheathed your blade!"))
+			to_chat(owner, span_warning("Você apenas rebanhou sua lâmina!"))
 		return FALSE
 	return TRUE
 
@@ -678,11 +678,11 @@
 	if(!isliving(cast_on))
 		return FALSE
 	if(owner == cast_on)
-		to_chat(owner, span_warning("You can't counterattack yourself!"))
+		to_chat(owner, span_warning("Não pode se contra-atacar!"))
 		return FALSE
 	var/mob/living/target = cast_on
 	if(!target.mind)
-		to_chat(owner, span_warning("They are too unpredictable to counterattack!"))
+		to_chat(owner, span_warning("São muito imprevisíveis para contra-atacar!"))
 		return FALSE
 	var/obj/item/storage/belt/sheath/oursheath = target
 	if(!length(oursheath.contents))
@@ -696,7 +696,7 @@
 	RegisterSignal(swordsman, COMSIG_LIVING_CHECK_BLOCK, PROC_REF(counter_attack))
 	swordsman.Immobilize(1 SECONDS)
 	eyed_fool = WEAKREF(cast_on)
-	swordsman.visible_message(span_danger("[swordsman] widens [swordsman.p_their()] stance, [swordsman.p_their()] hand hovering over \the [used_sheath]!"), span_notice("You prepare to counterattack [cast_on]!"))
+	swordsman.visible_message(span_danger("[swordsman]Alarga.[swordsman.p_their()]posição,[swordsman.p_their()]A mão pairando sobre\the [used_sheath]!"), span_notice("Prepare-se para contra-atacar.[cast_on]!"))
 	addtimer(CALLBACK(src, PROC_REF(relax), swordsman, used_sheath), 1 SECONDS)
 	COOLDOWN_START(used_sheath, full_ability_cooldown, 60 SECONDS)
 	unset_ranged_ability(swordsman)
@@ -721,7 +721,7 @@
 
 /datum/action/innate/blade_counter/proc/do_strike(mob/living/fool, mob/living/forward_thinker, obj/item/justicetool)
 	var/obj/item/bodypart/offending_hand = fool.get_active_hand()
-	forward_thinker.visible_message(span_danger("[forward_thinker] swiftly draws \the [justicetool] and strikes [fool] during [fool.p_their()] attack!"), span_notice("You swiftly draw \the [justicetool] and counter-attack [fool]!"))
+	forward_thinker.visible_message(span_danger("[forward_thinker]Desenhe rápidamente.\the [justicetool]E golpes[fool]Durante[fool.p_their()]Ataquem!"), span_notice("Você rapidamente desenha\the [justicetool]e contra-ataque[fool]!"))
 	fool.apply_damage(
 		damage = justicetool.force * COUNTERMULTIPLIER,
 		damagetype = justicetool.damtype,
@@ -740,7 +740,7 @@
 
 /datum/action/innate/blade_counter/gunpowered
 	name = "Powered Counterattack"
-	desc = "Anticipate an enemy's attack and attempt to strike back, at great risk to yourself. The firing angle requires it be held on your hip."
+	desc = "Antecipar o ataque de um inimigo e tentar revidar, correndo grande risco para si mesmo. O ângulo de disparo requer que seja mantido em seu quadril."
 
 	/// Whether the currently relevant counterattack succeeded.
 	var/succeeded_attempt = FALSE
@@ -757,8 +757,8 @@
 	var/obj/item/bodypart/offending_hand = fool.get_active_hand()
 	var/obj/item/bodypart/risked_hand = forward_thinker.get_active_hand()
 	if(iscarbon(fool) && offending_hand.dismember(BRUTE, FALSE, WOUND_SLASH))
-		forward_thinker.visible_message(span_danger("[forward_thinker] swiftly draws \the [justicetool] and strikes [fool] during [fool.p_their()] attack, sending [fool.p_their()] arm flying!"),
-										span_notice("You swiftly draw \the [justicetool] and cut off [fool]'s arm!"))
+		forward_thinker.visible_message(span_danger("[forward_thinker]Desenhe rápidamente.\the [justicetool]E golpes[fool]Durante[fool.p_their()]Atacar, enviar[fool.p_their()]Braço voando!"),
+										span_notice("Você rapidamente desenha\the [justicetool]E cortar[fool]O braço!"))
 	else
 		fool.apply_damage(
 			damage = justicetool.force * COUNTERMULTIPLIER,
@@ -771,11 +771,11 @@
 			attack_direction = get_dir(forward_thinker, fool),
 			attacking_item = justicetool,
 		)
-		forward_thinker.visible_message(span_danger("[forward_thinker] swiftly draws \the [justicetool] and strikes [fool] during [fool.p_their()] attack!"),
-										span_notice("You swiftly draw \the [justicetool] and strike them mid-attack!"))
+		forward_thinker.visible_message(span_danger("[forward_thinker]Desenhe rápidamente.\the [justicetool]E golpes[fool]Durante[fool.p_their()]Ataquem!"),
+										span_notice("Você rapidamente desenha\the [justicetool]e os atacar no meio do ato!"))
 	if(!IS_ROBOTIC_LIMB(risked_hand))
-		forward_thinker.visible_message(span_danger("[forward_thinker]'s arm is unable to withstand the force of the attack!"),
-										span_danger("You feel a sharp pain as your arm is mutilated by the force of the attack!"))
+		forward_thinker.visible_message(span_danger("[forward_thinker]O braço é incapaz de resistir à força do ataque!"),
+										span_danger("Você sente uma dor aguda quando seu braço é mutilado pela força do ataque!"))
 		forward_thinker.apply_damage(
 		damage = 50,
 		damagetype = BRUTE,
@@ -800,13 +800,13 @@
 	if(!worthless_hand)
 		worthless_hand = holder.get_inactive_hand()
 		if(!worthless_hand)
-			holder.visible_message(span_danger("[holder]'s sheath misfires, sending their blade flying!"),
-									span_danger("Your sheath misfires, sending your blade flying!"))
+			holder.visible_message(span_danger("[holder]A bainha está falhando, enviando sua lâmina voando!"),
+									span_danger("Sua bainha falhou, mandando sua lâmina voar!"))
 			return
 
 	if(IS_ROBOTIC_LIMB(worthless_hand) || !worthless_hand.dismember(BRUTE, FALSE, WOUND_BLUNT))
-		holder.visible_message(span_danger("[holder]'s arm is mutilated as they misfire [holder.p_their()] sheathed blade!"),
-								span_danger("Your arm is mutilated as you fail to safely fire your blade!"))
+		holder.visible_message(span_danger("[holder]O braço está mutilado enquanto falham.[holder.p_their()]Lâmina bainha!"),
+								span_danger("Seu braço está mutilado enquanto não dispara com segurança sua lâmina!"))
 		holder.apply_damage(
 			damage = 50,
 			damagetype = BRUTE,
@@ -816,14 +816,14 @@
 		)
 		return
 
-	holder.visible_message(span_danger("[holder]'s arm is violently torn off as they misfire [holder.p_their()] sheathed blade!"),
-							span_danger("Your arm is torn off as you fail to safely fire your blade!"))
+	holder.visible_message(span_danger("[holder]O braço é violentamente arrancado enquanto falham.[holder.p_their()]Lâmina bainha!"),
+							span_danger("Seu braço está arrancado enquanto você falha em disparar sua lâmina!"))
 
 #undef COUNTERMULTIPLIER
 
 /obj/item/storage/belt/sheath/sabre
 	name = "sabre sheath"
-	desc = "An ornate sheath designed to hold an officer's blade."
+	desc = "Uma bainha ornamentada projetada para segurar a lâmina de um oficial."
 	icon_state = "sheath"
 	inhand_icon_state = "sheath"
 	worn_icon_state = "sheath"
@@ -832,7 +832,7 @@
 
 /obj/item/storage/belt/sheath/grass_sabre
 	name = "sabre sheath"
-	desc = "A simple grass sheath designed to hold a sabre of... some sort. An actual metal one might be too sharp, though..."
+	desc = "Uma bainha de grama simples projetada para segurar um sabre de... algum tipo. Um metal de verdade pode ser muito afiado, embora..."
 	icon_state = "grass_sheath"
 	inhand_icon_state = "grass_sheath"
 	worn_icon_state = "grass_sheath"
@@ -840,7 +840,7 @@
 
 /obj/item/storage/belt/sheath/gladius
 	name = "gladius scabbard"
-	desc = "A fun-sized sheath for a fun-sized sword."
+	desc = "Uma bainha de tamanho divertido para uma espada de tamanho divertido."
 	icon_state = "gladius_sheath"
 	inhand_icon_state = "gladius_sheath"
 	worn_icon_state = "gladius_sheath"
@@ -849,7 +849,7 @@
 
 /obj/item/storage/belt/sheath/katana
 	name = "katana sheath"
-	desc = "A sheath that houses the nimble katana."
+	desc = "Uma bainha que abriga a rápida katana."
 	icon_state = "katana_sheath"
 	inhand_icon_state = "katana_sheath"
 	worn_icon_state = "katana_sheath"
@@ -870,7 +870,7 @@
 
 /obj/item/storage/belt/sheath/ninja
 	name = "energy katana sheath"
-	desc = "A high tech katana sheath that allows for quick blade movements."
+	desc = "Uma bainha de katana de alta tecnologia que permite movimentos rápidos da lâmina."
 	icon_state = "ninja_sheath"
 	inhand_icon_state = "ninja_sheath"
 	worn_icon_state = "ninja_sheath"
@@ -879,7 +879,7 @@
 
 /obj/item/storage/belt/sheath/hanzo_katana
 	name = "hanzo katana sheath"
-	desc = "A normal black sheath meant to house the legendary hanzo steel."
+	desc = "Uma bainha preta normal destinada a abrigar o lendário aço Hanzo."
 	icon_state = "hanzo_sheath"
 	inhand_icon_state = "hanzo_sheath"
 	worn_icon_state = "hanzo_sheath"
@@ -892,7 +892,7 @@
 
 /obj/item/storage/belt/plant
 	name = "botanical belt"
-	desc = "A sturdy leather belt used to hold most hydroponics supplies."
+	desc = "Um cinto de couro resistente usado para manter a maioria dos suprimentos hidropônicos."
 	icon_state = "plantbelt"
 	inhand_icon_state = "utility"
 	worn_icon_state = "plantbelt"
@@ -901,13 +901,13 @@
 
 /obj/item/storage/belt/sheath/sabre/gunpowered
 	name = "modified sabre sheath"
-	desc = "An imitation of a design made by the infamous Cold Space Wind. Has a trigger mechanism to more forcefully draw the blade."
+	desc = "Uma imitação de um projeto feito pelo infame Vento do Espaço Frio. Tem um mecanismo de gatilho para puxar mais forte a lâmina."
 	icon_state = "gunsheath"
 	actions_types = list(/datum/action/innate/blade_counter/gunpowered)
 	stored_blade = null
 
 /obj/item/storage/belt/sheath/grass_sabre/gunpowered
 	name = "modified sabre sheath"
-	desc = "An imitation of a design grown by the infamous Tiziran Plasma Fire. Has a trigger mechanism to more forcefully draw the blade."
+	desc = "Uma imitação de um desenho criado pelo infame fogo plasma Tiziran. Tem um mecanismo de gatilho para puxar mais forte a lâmina."
 	icon_state = "grass_gunsheath"
 	actions_types = list(/datum/action/innate/blade_counter/gunpowered)

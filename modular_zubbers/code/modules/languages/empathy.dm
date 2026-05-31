@@ -1,6 +1,6 @@
 /datum/language/marish
 	name = "Marish"
-	desc = "Where shadekin have a language rooted in empathy, there are still subtle tones and syllables that are as delicate as the emotions that shadekin normally communicate with."
+	desc = "Onde shadowkin tem uma linguagem enraizada em empatia, ainda existem tons sutis e sílabas que são tão delicadas quanto as emoções com as quais shadowkin normalmente se comunica."
 	key = "M"
 	space_chance = 55
 	icon = 'modular_zubbers/icons/misc/language.dmi'
@@ -20,7 +20,7 @@
 							)
 /obj/item/organ/tongue/shadekin
 	name = "shadekin tongue"
-	desc = "A mysterious tongue."
+	desc = "Uma língua misteriosa."
 	icon_state = "silvertongue"
 	say_mod = "mars"
 	sense_of_taste = TRUE
@@ -29,7 +29,7 @@
 
 /obj/item/organ/ears/shadekin
 	name = "shadekin ears"
-	desc = "Ears, covered in fur."
+	desc = "Orelhas cobertas de pêlo."
 	icon = 'icons/obj/clothing/head/costume.dmi'
 	icon_state = "kitty"
 	damage_multiplier = 2.5 // Shadekins big ears are easy to damage with loud noises.
@@ -38,7 +38,7 @@
 
 /datum/language/marish/empathy
 	name = "Empathy"
-	desc = "Shadekin seem to always know what the others are thinking. This is probably why."
+	desc = "Shadekin parece sempre saber o que os outros estão pensando. Provavelmente é por isso."
 	key = "9"
 	icon_state = "empathy"
 

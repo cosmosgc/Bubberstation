@@ -2,7 +2,7 @@
 	name = "Projectile Attack"
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "sniper_zoom"
-	desc = "Fires a set of projectiles at a selected target."
+	desc = "Dispara um conjunto de projéteis em um alvo selecionado."
 	cooldown_time = 1.5 SECONDS
 	/// The type of the projectile to be fired
 	var/projectile_type
@@ -66,7 +66,7 @@
 	name = "Rapid Fire"
 	button_icon = 'icons/obj/weapons/guns/energy.dmi'
 	button_icon_state = "kineticgun"
-	desc = "Fires projectiles repeatedly at a given target."
+	desc = "Dispara projéteis repetidamente em um determinado alvo."
 	cooldown_time = 1.5 SECONDS
 	projectile_type = /obj/projectile/colossus/snowball
 	default_projectile_spread = 45
@@ -88,7 +88,7 @@
 	name = "Shrapnel Fire"
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "sniper_zoom"
-	desc = "Fires projectiles that will split into shrapnel after a period of time."
+	desc = "Dispara projéteis que se dividirão em estilhaços após um período de tempo."
 	cooldown_time = 6 SECONDS
 	projectile_type = /obj/projectile/colossus/frost_orb
 	has_homing = TRUE
@@ -123,7 +123,7 @@
 	name = "Spiral Shots"
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "sniper_zoom"
-	desc = "Fires projectiles in a spiral pattern."
+	desc = "Dispara projéteis em espiral."
 	cooldown_time = 3 SECONDS
 	projectile_type = /obj/projectile/colossus
 	projectile_sound = 'sound/effects/magic/clockwork/invoke_general.ogg'
@@ -183,7 +183,7 @@
 	name = "All Directions"
 	button_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "at_shield2"
-	desc = "Fires projectiles in all directions."
+	desc = "Dispara projéteis em todas as direções."
 	cooldown_time = 3 SECONDS
 	projectile_type = /obj/projectile/colossus
 	projectile_sound = 'sound/effects/magic/clockwork/invoke_general.ogg'
@@ -205,7 +205,7 @@
 	name = "Shotgun Fire"
 	button_icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	button_icon_state = "shotgun"
-	desc = "Fires projectiles in a shotgun pattern."
+	desc = "Dispara projéteis em um padrão de espingarda."
 	cooldown_time = 2 SECONDS
 	projectile_type = /obj/projectile/colossus
 	projectile_sound = 'sound/effects/magic/clockwork/invoke_general.ogg'
@@ -236,7 +236,7 @@
 
 /datum/action/cooldown/mob_cooldown/projectile_attack/shotgun_blast/pattern
 	name = "Alternating Shotgun Fire"
-	desc = "Fires projectiles in an alternating shotgun pattern."
+	desc = "Dispara projéteis em um padrão de espingarda alternado."
 	projectile_type = /obj/projectile/colossus/ice_blast
 	projectile_sound = null
 	shot_angles = list(list(-40, -20, 0, 20, 40), list(-30, -10, 10, 30))
@@ -260,7 +260,7 @@
 	name = "Directional Shots"
 	button_icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	button_icon_state = "pistol"
-	desc = "Fires projectiles in specific directions."
+	desc = "Dispara projéteis em direções específicas."
 	cooldown_time = 4 SECONDS
 	projectile_type = /obj/projectile/colossus
 	projectile_sound = 'sound/effects/magic/clockwork/invoke_general.ogg'
@@ -283,7 +283,7 @@
 
 /datum/action/cooldown/mob_cooldown/projectile_attack/dir_shots/alternating
 	name = "Alternating Shots"
-	desc = "Fires projectiles in alternating directions."
+	desc = "Dispara projéteis em direções alternadas."
 
 /datum/action/cooldown/mob_cooldown/projectile_attack/dir_shots/alternating/attack_sequence(mob/living/firer, atom/target)
 	fire_in_directions(firer, target, GLOB.diagonals)
@@ -305,7 +305,7 @@
 	name = "Fire Kinetic Accelerator"
 	button_icon = 'icons/obj/weapons/guns/energy.dmi'
 	button_icon_state = "kineticgun"
-	desc = "Fires a kinetic accelerator projectile at the target."
+	desc = "Dispara um acelerador cinético no alvo."
 	cooldown_time = 1.5 SECONDS
 	projectile_type = /obj/projectile/kinetic/miner
 	projectile_sound = 'sound/items/weapons/kinetic_accel.ogg'
@@ -313,13 +313,13 @@
 /datum/action/cooldown/mob_cooldown/projectile_attack/kinetic_accelerator/Activate(atom/target_atom)
 	. = ..()
 	playsound(owner, projectile_sound, 200, TRUE, 2)
-	owner.visible_message(span_danger("[owner] fires the proto-kinetic accelerator!"))
+	owner.visible_message(span_danger("[owner]Dispara o acelerador protocinético!"))
 	owner.face_atom(target_atom)
 	new /obj/effect/temp_visual/dir_setting/firing_effect(owner.loc, owner.dir)
 
 /datum/action/cooldown/mob_cooldown/projectile_attack/colossus_final
 	name = "Titan's Finale"
-	desc = "A single-use ability that shoots a large amount of projectiles around you."
+	desc = "Uma habilidade de uso único que dispara uma grande quantidade de projéteis ao seu redor."
 	cooldown_time = 2.5 SECONDS
 	projectile_type = /obj/projectile/colossus
 
@@ -367,7 +367,7 @@
 	name = "Alternating Shots"
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "sniper_zoom"
-	desc = "Fires projectiles around you in an alternating fashion."
+	desc = "Dispara projéteis ao seu redor de forma alternada."
 	cooldown_time = 10 SECONDS
 	projectile_type = /obj/projectile/colossus/wendigo_shockwave
 	can_move = FALSE
@@ -392,7 +392,7 @@
 	name = "Wave Shots"
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "sniper_zoom"
-	desc = "Fires projectiles around you in a circular wave."
+	desc = "Dispara projéteis ao seu redor em uma onda circular."
 	cooldown_time = 10 SECONDS
 	projectile_type = /obj/projectile/colossus/wendigo_shockwave/wave
 	can_move = FALSE

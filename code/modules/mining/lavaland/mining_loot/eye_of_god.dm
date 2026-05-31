@@ -1,6 +1,6 @@
 /obj/item/clothing/glasses/godeye
 	name = "eye of god"
-	desc = "A strange eye, said to have been torn from an omniscient creature that used to roam the wastes."
+	desc = "Um olho estranho, dito ter sido arrancado de uma criatura onisciente que costumava vagar pelos resíduos."
 	icon_state = "godeye"
 	inhand_icon_state = null
 	vision_flags = SEE_TURFS
@@ -36,13 +36,13 @@
 	scan_ability?.Remove(user)
 
 /obj/item/clothing/glasses/godeye/proc/pain(mob/living/victim)
-	to_chat(victim, span_userdanger("You experience blinding pain, as [src] burrows into your skull."))
+	to_chat(victim, span_userdanger("Você sente dor ofuscante, como[src]Enfia no seu crânio."))
 	victim.emote("scream")
 	victim.flash_act()
 
 /datum/action/cooldown/spell/pointed/scan
 	name = "Scan"
-	desc = "Scan an enemy, to get their location and rebuke them, increasing their time between attacks."
+	desc = "Escaneie um inimigo, para obter sua localização e repreendê-los, aumentando seu tempo entre os ataques."
 	background_icon_state = "bg_clock"
 	overlay_icon_state = "bg_clock_border"
 	button_icon = 'icons/mob/actions/actions_items.dmi'
@@ -56,11 +56,11 @@
 
 /datum/action/cooldown/spell/pointed/scan/is_valid_target(atom/cast_on)
 	if(!isliving(cast_on))
-		owner.balloon_alert(owner, "not a valid target!")
+		owner.balloon_alert(owner, "Não é um alvo válido!")
 		return FALSE
 	var/mob/living/living_cast_on = cast_on
 	if(living_cast_on.stat == DEAD)
-		owner.balloon_alert(owner, "target is dead!")
+		owner.balloon_alert(owner, "O alvo está morto!")
 		return FALSE
 
 	return TRUE
@@ -69,12 +69,11 @@
 	. = ..()
 
 	if(cast_on.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0))
-		to_chat(owner, span_warning("As we apply our dissecting vision, we are abruptly cut short. \
-			They have some kind of enigmatic mental defense. It seems we've been foiled."))
+		to_chat(owner, span_warning("Quando aplicamos nossa visão de dissecação, somos abruptamente interrompidos. Eles têm algum tipo de defesa mental enigmática. Parece que fomos enganados."))
 		return
 
 	if(cast_on == owner)
-		to_chat(owner, span_warning("The last time a god stared too closely into their own reflection, they became transfixed for all of time. Do not let us become like them."))
+		to_chat(owner, span_warning("A última vez que um deus olhou muito de perto em seu próprio reflexo, eles se transfixaram por todo o tempo. Não deixe que nos tornemos como eles."))
 		return
 
 	var/mob/living/living_owner = owner
@@ -83,18 +82,18 @@
 	var/datum/status_effect/agent_pinpointer/scan_pinpointer = living_owner.apply_status_effect(/datum/status_effect/agent_pinpointer/scan)
 	scan_pinpointer.scan_target = living_scanned
 
-	to_chat(living_scanned, span_warning("You briefly see a flash of [living_owner]'s face before being knocked off-balance by an unseen force!"))
+	to_chat(living_scanned, span_warning("Você vê brevemente um flash de[living_owner]Antes de ser derrubado por uma força invisível!"))
 	living_scanned.add_filter("scan", 2, list("type" = "outline", "color" = COLOR_RED, "size" = 1))
 	addtimer(CALLBACK(living_scanned, TYPE_PROC_REF(/datum, remove_filter), "scan"), 30 SECONDS)
 
 	healthscan(living_owner, living_scanned, 1, TRUE)
 
 	owner.playsound_local(get_turf(owner), 'sound/effects/magic/smoke.ogg', 50, TRUE)
-	owner.balloon_alert(owner, "[living_scanned] scanned")
+	owner.balloon_alert(owner, "[living_scanned]Escaneado.")
 	addtimer(CALLBACK(src, PROC_REF(send_cooldown_end_message), cooldown_time))
 
 /datum/action/cooldown/spell/pointed/scan/proc/send_cooldown_end_message()
-	owner?.balloon_alert(owner, "scan recharged")
+	owner?.balloon_alert(owner, "Scan recarregado.")
 
 /datum/status_effect/agent_pinpointer/scan
 	duration = 15 SECONDS
@@ -110,4 +109,4 @@
 
 /atom/movable/screen/alert/status_effect/agent_pinpointer/scan
 	name = "Scan Target"
-	desc = "Contact may or may not be close."
+	desc = "Contato pode ou não estar perto."

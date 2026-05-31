@@ -70,7 +70,7 @@ export function hsv2rgb<T extends HSV>(hsv: T): Omit<T, 'h' | 's' | 'v'> & RGB {
     return { r: c + m, g: m, b: x + m, ...rest };
   }
   throw new Error(
-    'Unreachable code - h is outside the range [0,6], which should not be possible.',
+    'Código inalcançável - h está fora do alcance[0,6]O que não deveria ser possível.',
   );
 }
 

@@ -4,7 +4,7 @@
 
 /obj/item/trash/empty_food_tray
 	name = "empty plastic food tray"
-	desc = "The condensation and what you can only hope are the leftovers of food make this a bit hard to reuse."
+	desc = "A condensação e o que você só pode esperar são os restos de comida fazer isso um pouco difícil de reutilizar."
 	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodtray_empty"
 	custom_materials = list(
@@ -13,7 +13,7 @@
 
 /obj/item/trash/empty_side_pack
 	name = "empty side wrapper"
-	desc = "Unfortunately, this no longer holds any sides to distract you from the other 'food'."
+	desc = "Infelizmente, isso não tem mais nenhum lado para distraí-lo da outra comida."
 	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodpack_generic_trash"
 	custom_materials = list(
@@ -40,7 +40,7 @@
 
 /obj/item/food/vendor_tray_meal
 	name = "\improper NT-Meal: Steak and Macaroni"
-	desc = "A 'salisbury steak' drowning in something similar to a gravy, with a macaroni and cheese substitute mix sitting right beside it."
+	desc = "Um bife \"salisbury\" afogando-se em algo semelhante a um molho, com um macarrão e queijo substituto mistura sentado ao lado dele."
 	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodtray_sad_steak"
 	trash_type = /obj/item/trash/empty_food_tray
@@ -59,7 +59,7 @@
 
 /obj/item/food/vendor_tray_meal/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<i>You browse the back of the box...</i>")
+	. += span_notice("<i>Você olha atrás da caixa...</i>")
 	. += "\t[span_warning("Warning: Packaged in a factory where every allergen known is present.")]"
 	. += "\t[span_warning("Warning: Contents might be hot.")]"
 	. += "\t[span_info("Per 200g serving contains: 8g Sodium; 25g Fat, of which 22g are saturated; 2g Sugar.")]"
@@ -67,14 +67,14 @@
 
 /obj/item/food/vendor_tray_meal/burger
 	name = "\improper NT-Meal: Cheeseburger"
-	desc = "A pretty sad looking burger with a kinda soggy bottom bun and highlighter yellow cheese."
+	desc = "Um hambúrguer bem triste com um pão e queijo amarelo."
 	icon_state = "foodtray_burg"
 	tastes = list("bread" = 2, "meat?" = 2, "cheese?" = 2, "laziness" = 1)
 	foodtypes = MEAT | GRAIN | DAIRY
 
 /obj/item/food/vendor_tray_meal/chicken_sandwich
 	name = "\improper NT-Meal: Spicy Chicken Sandwich"
-	desc = "A pretty sad looking chicken sandwich, the 'meat' patty is covered in so many manufactured spices that it has become an eerie red color."
+	desc = "Um sanduíche de frango bem triste, a \"carne\" Patty está coberta de tantos temperos fabricados que se tornou uma cor vermelha assustadora."
 	icon_state = "foodtray_chickie_sandwich"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/capsaicin = 10)
 	tastes = list("bread" = 2, "chicken?" = 2, "overwhelming spice" = 2, "laziness" = 1)
@@ -86,21 +86,21 @@
 
 /obj/item/food/vendor_tray_meal/ramen
 	name = "\improper Meinkosu: Homestyle Noodles"
-	desc = "A brick of the finest factory made ramen, with a small amount of rehydrated vegetables and herbs floating around."
+	desc = "Um tijolo da melhor fábrica feita de ramen, com uma pequena quantidade de vegetais reidratados e ervas flutuando ao redor."
 	icon_state = "foodtray_noodle"
 	tastes = list("cheap noodles" = 2, "laziness" = 1)
 	foodtypes = GRAIN | VEGETABLES
 
 /obj/item/food/vendor_tray_meal/sushi
 	name = "\improper Meinkosu: Fresh Carp Rolls"
-	desc = "A pair of sushi rolls, the appearance of which would suggest that the label is lying to you."
+	desc = "Um par de rolinhos de sushi, cuja aparência sugere que o rótulo está mentindo para você."
 	icon_state = "foodtray_gas_station_sushi"
 	tastes = list("imitation space carp" = 2, "stale rice" = 2, "laziness" = 1)
 	foodtypes = GRAIN | SEAFOOD
 
 /obj/item/food/vendor_tray_meal/beef_rice
 	name = "\improper Meinkosu: Beef and Fried Rice"
-	desc = "A few slices of seemingly grilled beef, paired with a disproportionately large amount of rice."
+	desc = "Algumas fatias de carne aparentemente grelhada, emparelhada com uma quantidade de arroz desproporcionalmente grande."
 	icon_state = "foodtray_beef_n_rice"
 	tastes = list("cheap beef" = 1, "rice" = 3, "laziness" = 1)
 	foodtypes = GRAIN | MEAT
@@ -111,21 +111,21 @@
 
 /obj/item/food/vendor_tray_meal/pesto_pizza
 	name = "\improper Main Course - Type M: Pesto Pizza"
-	desc = "A rectangular pizza with a suspiciously bright green pesto in place of the standard tomato sauce."
+	desc = "Uma pizza retangular com um pesto verde suspeito e brilhante no lugar do molho de tomate padrão."
 	icon_state = "foodtray_pesto_pizza"
 	tastes = list("tomato?" = 2, "cheese?" = 2, "herbs" = 1, "laziness" = 1)
 	foodtypes = GRAIN | DAIRY | VEGETABLES
 
 /obj/item/food/vendor_tray_meal/baked_rice
 	name = "\improper Main Course - Type M: Baked Rice and Grilled Cheese"
-	desc = "Some sub-par looking fleet style rice, with a very grilled chunk of cheese."
+	desc = "Um pouco de arroz sub-par estilo frota, com um pedaço muito grelhado de queijo."
 	icon_state = "foodtray_rice_n_grilled_cheese"
 	tastes = list("rice" = 2, "peppers" = 2, "charred cheese" = 2, "laziness" = 1)
 	foodtypes = GRAIN | DAIRY | VEGETABLES
 
 /obj/item/food/vendor_tray_meal/fueljack
 	name = "\improper Main Course - Type M: Fueljack's Tray"
-	desc = "A flat chunk of fueljack's lunch, seemingly missing most of the usual variety in ingredients."
+	desc = "Um pedaço de combustível do almoço, aparentemente faltando a maior parte da variedade habitual em ingredientes."
 	icon_state = "foodtray_fuel_jacks_meal"
 	tastes = list("potato" = 2, "cabbage" = 2, "cheese?" = 2, "laziness" = 1)
 	foodtypes = DAIRY | VEGETABLES
@@ -136,21 +136,21 @@
 
 /obj/item/food/vendor_tray_meal/moonfish_nizaya
 	name = "\improper Tizira Imports: Moonfish and Nizaya"
-	desc = "An almost synthetic looking cut of moonfish, paired with an equal helping of nizaya pasta."
+	desc = "Um corte quase sintético de moonfish, emparelhado com uma ajuda igual de macarrão nizaya."
 	icon_state = "foodtray_moonfish_nizaya"
 	tastes = list("fish?" = 2, "cheap noodles" = 2, "laziness" = 1)
 	foodtypes = VEGETABLES | NUTS | SEAFOOD
 
 /obj/item/food/vendor_tray_meal/emperor_roll
 	name = "\improper Tizira Imports: Emperor Roll"
-	desc = "A pretty sad looking emperor roll, if you can even call it that; it seems caviar wasn't in the budget."
+	desc = "Parece que o caviar não estava no orçamento."
 	icon_state = "foodtray_emperor_roll"
 	tastes = list("bread" = 2, "cheese?" = 2, "liver?" = 2, "laziness" = 1)
 	foodtypes = VEGETABLES | NUTS | MEAT | GORE
 
 /obj/item/food/vendor_tray_meal/mushroom_fry
 	name = "\improper Tizira Imports: Mushroom Stirfry"
-	desc = "A mix of what was likely mushrooms too low quality to be used in making actual food, lightly fried and tossed in a plastic container together."
+	desc = "Uma mistura do que era provável cogumelos de baixa qualidade para ser usado em fazer comida de verdade, levemente frito e jogado em um recipiente de plástico juntos."
 	icon_state = "foodtray_shroom_fry"
 	tastes = list("mushroom" = 4, "becoming rich" = 1, "laziness" = 1)
 	foodtypes = VEGETABLES
@@ -159,7 +159,7 @@
 
 /obj/effect/spawner/random/vendor_meal_sides
 	name = "random side spawner"
-	desc = "I hope I get one that actually matches my meal."
+	desc = "Espero ter um que combine com minha refeição."
 	icon_state = "loot"
 
 /*
@@ -179,7 +179,7 @@
 
 /obj/item/food/vendor_tray_meal/side
 	name = "\improper NT-Side: Flatbread and Peanut Butter"
-	desc = "A small stack of tough flatbread, and a small spread of peanut butter for each."
+	desc = "Uma pequena pilha de pão duro, e uma pequena pasta de amendoim para cada um."
 	icon_state = "foodpack_nt"
 	trash_type = /obj/item/trash/empty_side_pack/nt
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
@@ -190,13 +190,13 @@
 
 /obj/item/food/vendor_tray_meal/side/crackers_and_jam
 	name = "\improper NT-Side: Flatbread and Berry Jelly"
-	desc = "A small stack of tough flatbread, and a small spread of nondescript berry jelly for each."
+	desc = "Uma pequena pilha de pão chato duro, e uma pequena amostra de geleia de baga para cada um."
 	tastes = list("tough bread" = 2, "berries" = 2)
 	foodtypes = GRAIN | FRUIT
 
 /obj/item/food/vendor_tray_meal/side/crackers_and_cheese
 	name = "\improper NT-Side: Flatbread and Cheese Spread"
-	desc = "A small stack of tough flatbread, and a small spread of cheese for each."
+	desc = "Uma pequena pilha de pão duro, e um pequeno pedaço de queijo para cada um."
 	tastes = list("tough bread" = 2, "cheese" = 2)
 	foodtypes = GRAIN | DAIRY
 
@@ -217,7 +217,7 @@
 
 /obj/item/food/vendor_tray_meal/side/miso
 	name = "\improper Fukusai: Miso Soup"
-	desc = "This is quite literally just a plastic bag full of miso soup, opening it on any side other than the one indicated may result in spilled soup."
+	desc = "Este é literalmente apenas um saco plástico cheio de sopa miso, abrindo-o em qualquer outro lado além do indicado pode resultar em sopa derramada."
 	icon_state = "foodpack_yangyu"
 	trash_type = /obj/item/trash/empty_side_pack/yangyu
 	tastes = list("miso" = 2)
@@ -225,7 +225,7 @@
 
 /obj/item/food/vendor_tray_meal/side/rice
 	name = "\improper Fukusai: White Rice"
-	desc = "A bag stuffed full of white rice, in case your meal didn't come with enough to sate your needs."
+	desc = "Um saco cheio de arroz branco, no caso de sua refeição não vir com o suficiente para satisfazer suas necessidades."
 	icon_state = "foodpack_yangyu"
 	trash_type = /obj/item/trash/empty_side_pack/yangyu
 	tastes = list("old rice" = 2)
@@ -233,7 +233,7 @@
 
 /obj/item/food/vendor_tray_meal/side/pickled_vegetables
 	name = "\improper Fukusai: Pickled Vegetables"
-	desc = "Contains a small assortment of vegetables pickled in a vinegar-like solution."
+	desc = "Contém uma pequena variedade de vegetais em conserva em uma solução tipo vinagre."
 	icon_state = "foodpack_yangyu"
 	trash_type = /obj/item/trash/empty_side_pack/yangyu
 	tastes = list("vinegar" = 4)
@@ -256,7 +256,7 @@
 
 /obj/item/food/vendor_tray_meal/side/moffin
 	name = "\improper Side Course - Type M: Moffin"
-	desc = "The result of taking a perfectly fine moffin, and flattening it into a more wafer-like form."
+	desc = "O resultado de tomar um moffin perfeito, e achatá-lo em uma forma mais wafer-como."
 	icon_state = "foodpack_moth"
 	trash_type = /obj/item/trash/empty_side_pack/moth
 	tastes = list("fabric?" = 2, "sugar" = 2)
@@ -264,7 +264,7 @@
 
 /obj/item/food/vendor_tray_meal/side/cornbread
 	name = "\improper Side Course - Type M: Cornbread"
-	desc = "A flattened cut of sweetened cornbread, goes well with butter."
+	desc = "Um corte achatado de pão de milho adoçado, vai bem com manteiga."
 	icon_state = "foodpack_moth"
 	trash_type = /obj/item/trash/empty_side_pack/moth
 	tastes = list("cornbread" = 2, "sweetness" = 2)
@@ -272,7 +272,7 @@
 
 /obj/item/food/vendor_tray_meal/side/roasted_seeds
 	name = "\improper Side Course - Type M: Roasted Seeds"
-	desc = "A packet full of various oven roasted seeds."
+	desc = "Um pacote cheio de várias sementes assadas no forno."
 	icon_state = "foodpack_moth"
 	trash_type = /obj/item/trash/empty_side_pack/moth
 	tastes = list("seeds" = 2, "char" = 2)
@@ -295,7 +295,7 @@
 
 /obj/item/food/vendor_tray_meal/side/root_crackers
 	name = "\improper Tizira Imports: Rootbread Crackers and Pate"
-	desc = "A small stack of rootbread crackers, with a small spread of meat pate for each."
+	desc = "Uma pequena pilha de biscoitos, com um pequeno pedaço de patê de carne para cada um."
 	icon_state = "foodpack_tizira"
 	trash_type = /obj/item/trash/empty_side_pack/tizira
 	tastes = list("tough rootbread" = 2, "pate" = 2)
@@ -303,7 +303,7 @@
 
 /obj/item/food/vendor_tray_meal/side/korta_brittle
 	name = "\improper Tizira Imports: Korta Brittle"
-	desc = "A perfectly rectangular portion of unsweetened korta brittle."
+	desc = "Uma porção perfeitamente retangular de korta não adoçada quebradiço."
 	icon_state = "foodpack_tizira"
 	trash_type = /obj/item/trash/empty_side_pack/tizira
 	tastes = list("peppery heat" = 2)
@@ -311,7 +311,7 @@
 
 /obj/item/food/vendor_tray_meal/side/crispy_headcheese
 	name = "\improper Tizira Imports: Crisped Headcheese"
-	desc = "A processed looking block of breaded headcheese."
+	desc = "Um bloco de queijo empanado."
 	icon_state = "foodpack_tizira"
 	trash_type = /obj/item/trash/empty_side_pack/tizira
 	tastes = list("cheese" = 1, "oil" = 1)

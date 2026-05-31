@@ -99,15 +99,15 @@
 	SIGNAL_HANDLER
 
 	if(antimagic_flags == ALL_MAGIC_RESISTANCE)
-		examine_list["magic-proof"] = "It is thoroughly shielded against all known forms of magic."
+		examine_list["magic-proof"] = "Está completamente protegido contra todas as formas conhecidas de magia."
 		return
 
 	if(antimagic_flags & MAGIC_RESISTANCE)
-		examine_list["warded"] = "It possesses a general resistance to regular spells and magic."
+		examine_list["warded"] = "Possui uma resistência geral a feitiços regulares e magia."
 	if(antimagic_flags & MAGIC_RESISTANCE_MIND)
-		examine_list["telepathy-proof"] = "It appears to be insulated against telepathic or mental influence."
+		examine_list["telepathy-proof"] = "Parece estar isolado contra a influência telepática ou mental."
 	if(antimagic_flags & MAGIC_RESISTANCE_HOLY)
-		examine_list["blessed"] = "It is protected by a divine shield against unholy and dark forms of magic."
+		examine_list["blessed"] = "É protegido por um escudo divino contra formas profanas e obscuras de magia."
 
 /datum/component/anti_magic/proc/on_equip(atom/movable/source, mob/equipper, slot)
 	SIGNAL_HANDLER
@@ -128,7 +128,7 @@
 		if(!(antimagic_flags & magic_spell.antimagic_flags))
 			continue
 
-		to_chat(equipper, span_warning("[parent] is interfering with your ability to cast magic!"))
+		to_chat(equipper, span_warning("[parent]Está interferindo com sua habilidade de lançar magia!"))
 		alert_caster_on_equip = FALSE
 		break
 

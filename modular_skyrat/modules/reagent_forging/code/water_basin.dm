@@ -1,6 +1,6 @@
 /obj/structure/reagent_water_basin
 	name = "water basin"
-	desc = "A basin full of water, ready to quench the hot metal."
+	desc = "Uma bacia cheia de água, pronta para apagar o metal quente."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_structures.dmi'
 	icon_state = "water_basin"
 	anchored = TRUE
@@ -20,10 +20,10 @@
 /obj/structure/reagent_water_basin/examine(mob/user)
 	. = ..()
 	if(!fishable)
-		. += span_notice("[src] can be upgraded through a bluespace crystal or a journeyman smithy!")
+		. += span_notice("[src]pode ser atualizado através de um cristal do espaço azul ou um ferreiro viajante!")
 
 	else
-		. += span_notice("[src] looks to be a bottomless basin of water... You can even see fish swimming around down there!")
+		. += span_notice("[src]Parece ser uma bacia de água sem fundo... Você pode até ver peixes nadando lá embaixo!")
 
 /obj/structure/reagent_water_basin/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
@@ -38,7 +38,7 @@
 	if(smithing_skill < SKILL_LEVEL_JOURNEYMAN || fishable)
 		return
 
-	balloon_alert(user, "the water deepens!")
+	balloon_alert(user, "A água se aprofunda!")
 	fishable = AddComponent(/datum/component/fishing_spot, /datum/fish_source/water_basin)
 
 /obj/structure/reagent_water_basin/attackby(obj/item/attacking_item, mob/living/user, params)
@@ -59,7 +59,7 @@
 		if(!bs_crystal.use(1))
 			return
 
-		balloon_alert(user, "the water deepens!")
+		balloon_alert(user, "A água se aprofunda!")
 		fishable = AddComponent(/datum/component/fishing_spot, /datum/fish_source/water_basin)
 		return
 
@@ -82,12 +82,12 @@
 	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/hot_hiss.ogg', 50, TRUE)
 
 	if(search_incomplete?.times_hit < search_incomplete.average_hits)
-		to_chat(user, span_warning("You cool down [search_incomplete], but it wasn't ready yet."))
+		to_chat(user, span_warning("Você se acalma.[search_incomplete]Mas ainda não estava pronto."))
 		COOLDOWN_RESET(search_incomplete, heating_remainder)
 		return ITEM_INTERACT_SUCCESS
 
 	if(search_incomplete?.times_hit >= search_incomplete.average_hits)
-		to_chat(user, span_notice("You cool down [search_incomplete] and it's ready."))
+		to_chat(user, span_notice("Você se acalma.[search_incomplete]E está pronto."))
 		user.mind.adjust_experience(/datum/skill/smithing, 10) //using the water basin on a ready item gives decent experience.
 
 		var/obj/spawned_obj = new search_incomplete.spawn_item(get_turf(src))

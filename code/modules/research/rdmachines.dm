@@ -42,11 +42,11 @@
 	if(!in_range(user, src) && !isobserver(user))
 		return
 
-	. += span_notice("A [EXAMINE_HINT("multitool")] with techweb designs can be uploaded here.")
-	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
+	. += span_notice("A[EXAMINE_HINT("multitool")]com projetos de techweb pode ser carregado aqui.")
+	. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
 	if(panel_open)
-		. += span_notice("Use a [EXAMINE_HINT("multitool")] or [EXAMINE_HINT("wirecutters")] to interact with wires.")
-		. += span_notice("The machine can be [EXAMINE_HINT("pried")] apart.")
+		. += span_notice("Use um.[EXAMINE_HINT("multitool")]UO[EXAMINE_HINT("wirecutters")]para interagir com fios.")
+		. += span_notice("A máquina pode ser[EXAMINE_HINT("pried")]Separados.")
 
 /obj/machinery/rnd/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = NONE
@@ -132,22 +132,22 @@
 //whether the machine can have an item inserted in its current state.
 /obj/machinery/rnd/proc/is_insertion_ready(mob/user)
 	if(panel_open)
-		balloon_alert(user, "painel aberto!")
+		balloon_alert(user, "Painel Aberto!")
 		return FALSE
 	if(disabled)
-		balloon_alert(user, "belts disabled!")
+		balloon_alert(user, "Cintos desativados!")
 		return FALSE
 	if(busy)
-		balloon_alert(user, "still busy!")
+		balloon_alert(user, "Ainda ocupado!")
 		return FALSE
 	if(machine_stat & BROKEN)
-		balloon_alert(user, "machine broken!")
+		balloon_alert(user, "Máquina quebrada!")
 		return FALSE
 	if(machine_stat & NOPOWER)
-		balloon_alert(user, "sem energia!")
+		balloon_alert(user, "Sem energia!")
 		return FALSE
 	if(loaded_item)
-		balloon_alert(user, "item already loaded!")
+		balloon_alert(user, "item já carregado!")
 		return FALSE
 	return TRUE
 

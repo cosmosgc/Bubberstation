@@ -14,7 +14,7 @@ ADMIN_VERB(get_current_logs, R_ADMIN, "Get Current Logs", "View or retrieve logf
 
 	log_admin("[key_name(src)] accessed file: [path]") // SKYRAT EDIT -- ADDITION
 	message_admins("[key_name_admin(src)] accessed file: [path]")
-	switch(tgui_alert(usr,"View (in game), Open (in your system's text editor), or Download?", path, list("View", "Open", "Download")))
+	switch(tgui_alert(usr,"Ver (no jogo), Abrir (no editor de texto do seu sistema), ou Baixar?", path, list("View", "Open", "Download")))
 		if ("View")
 			src << browse(HTML_SKELETON("<pre style='word-wrap: break-word;'>[html_encode(file2text(file(path)))]</pre>"), list2params(list("window" = "viewfile.[path]")))
 		if ("Open")
@@ -23,4 +23,4 @@ ADMIN_VERB(get_current_logs, R_ADMIN, "Get Current Logs", "View or retrieve logf
 			src << ftp(file(path))
 		else
 			return
-	to_chat(src, "Attempting to send [path], this may take a fair few minutes if the file is very large.", confidential = TRUE)
+	to_chat(src, "Tentando enviar[path]Isso pode levar alguns minutos se o arquivo for muito grande.", confidential = TRUE)

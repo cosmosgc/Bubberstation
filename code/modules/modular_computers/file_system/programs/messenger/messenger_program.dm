@@ -10,7 +10,7 @@
 	filedesc = "Direct Messenger"
 	downloader_category = PROGRAM_CATEGORY_DEVICE
 	program_open_overlay = "text"
-	extended_desc = "This program allows old-school communication with other modular devices."
+	extended_desc = "Este programa permite a comunicação antiga com outros dispositivos modulares."
 	size = 0
 	undeletable = TRUE // It comes by default in tablets, can't be downloaded, takes no space and should obviously not be able to be deleted.
 	power_cell_use = NONE
@@ -221,11 +221,11 @@
 
 		if("PDA_sendEveryone")
 			if(!sending_and_receiving)
-				to_chat(usr, span_notice("ERROR: This device has sending disabled."))
+				to_chat(usr, span_notice("ERRO: Este dispositivo está desativando."))
 				return FALSE
 
 			if(!spam_mode)
-				to_chat(usr, span_notice("ERROR: This device does not have mass-messaging perms."))
+				to_chat(usr, span_notice("ERRO: Este dispositivo não tem mensagens em massa."))
 				return FALSE
 
 			if(!can_send_everyone_message())
@@ -259,7 +259,7 @@
 
 		if("PDA_sendMessage")
 			if(!sending_and_receiving)
-				to_chat(usr, span_notice("ERROR: This device has sending disabled."))
+				to_chat(usr, span_notice("ERRO: Este dispositivo está desativando."))
 				return FALSE
 
 			// target ref, can either be a chat in saved_chats
@@ -286,7 +286,7 @@
 					var/datum/pda_chat/target_chat = target
 					target_messenger = target_chat.recipient?.resolve()
 					if(!istype(target_messenger))
-						to_chat(usr, span_notice("ERROR: Recipient no longer exists."))
+						to_chat(usr, span_notice("O destinatário não existe mais."))
 						return FALSE
 				else if(istype(target, /datum/computer_file/program/messenger))
 					target_messenger = target
@@ -396,7 +396,7 @@
 		return
 	var/datum/computer_file/program/messenger/target = chat.recipient?.resolve()
 	if(!istype(target) || !istype(target.computer))
-		to_chat(user, span_notice("ERROR: Recipient no longer exists."))
+		to_chat(user, span_notice("O destinatário não existe mais."))
 		chat.recipient = null
 		chat.can_reply = FALSE
 		return
@@ -511,21 +511,21 @@
 
 			if(!target_chat.can_reply)
 				if(should_alert)
-					to_chat(sender, span_notice("ERROR: Recipient has receiving disabled."))
+					to_chat(sender, span_notice("O destinatário está recebendo deficientes."))
 				continue
 
 			target_messenger = target_chat.recipient?.resolve()
 
 			if(!istype(target_messenger))
 				if(should_alert)
-					to_chat(sender, span_notice("ERROR: Recipient no longer exists."))
+					to_chat(sender, span_notice("O destinatário não existe mais."))
 				target_chat.can_reply = FALSE
 				target_chat.recipient = null
 				continue
 
 			if(!target_messenger.sending_and_receiving)
 				if(should_alert)
-					to_chat(sender, span_notice("ERROR: Recipient has receiving disabled."))
+					to_chat(sender, span_notice("O destinatário está recebendo deficientes."))
 				continue
 
 		else if(istype(target, /datum/computer_file/program/messenger))
@@ -533,7 +533,7 @@
 
 			if(!target_messenger.sending_and_receiving)
 				if(should_alert)
-					to_chat(sender, span_notice("ERROR: Recipient has receiving disabled."))
+					to_chat(sender, span_notice("O destinatário está recebendo deficientes."))
 				continue
 
 			target_chat = find_chat_by_recipient(REF(target))
@@ -595,7 +595,7 @@
 	if(is_within_radio_jammer_range(computer) && !rigged)
 		// different message so people know it's a radio jammer
 		if(sender)
-			to_chat(sender, span_notice("ERROR: Network unavailable, please try again later."))
+			to_chat(sender, span_notice("Rede indisponível, por favor tente mais tarde."))
 		if(alert_able && !alert_silenced)
 			playsound(computer, 'sound/machines/terminal/terminal_error.ogg', 15, TRUE)
 		return FALSE
@@ -634,13 +634,13 @@
 	// If it didn't reach, note that fact
 	if (!signal.data["done"])
 		if(sender)
-			to_chat(sender, span_notice("ERROR: Server is not responding."))
+			to_chat(sender, span_notice("O servidor não está respondendo."))
 		if(alert_able && !alert_silenced)
 			playsound(computer, 'sound/machines/terminal/terminal_error.ogg', 15, TRUE)
 		return FALSE
 
 	// SKYRAT EDIT BEGIN - PDA messages show a visible message; again!
-	sender.visible_message(span_notice("[sender]'s PDA rings out with the soft sound of keypresses."), vision_distance = COMBAT_MESSAGE_RANGE)
+	sender.visible_message(span_notice("[sender]O PDA toca com o som suave das teclas."), vision_distance = COMBAT_MESSAGE_RANGE)
 	// SKYRAT EDIT END
 
 	var/shell_addendum = ""
@@ -654,7 +654,7 @@
 		log_bomber(sender, "sent a rigged PDA message (Name: [fake_name]. Job: [fake_job]) to [english_list(stringified_targets)] [sender.is_antag() ? "" : "(SENT BY NON-ANTAG)"]")
 
 	/** BUBBER EDIT CHANGE BEGIN - SUBTLE MESSAGES - Original:
-	 *  var/ghost_message = span_game_say("[span_name(signal.format_sender())] [rigged ? "(as [span_name(fake_name)]) Rigged " : ""]PDA Message --> [span_name("[signal.format_target()]")]: \"[signal.format_message()]\"")
+	 *  var/ghost_message = span_game_say("[span_name(signal.format_sender())] [rigged ? "(as [span_name(fake_name)]) Rigged " : ""]Mensagem PDA -->[span_name("[signal.format_target()]")]: \"[signal.format_message()]\"")
 	 *  var/list/message_listeners = GLOB.dead_player_list + GLOB.current_observers_list
 	 *  for(var/mob/listener as anything in message_listeners)
 	 *  if(!(get_chat_toggles(listener) & CHAT_GHOSTPDA))
@@ -662,7 +662,7 @@
 	 *  to_chat(listener, "[FOLLOW_LINK(listener, source)] [ghost_message]")
 	*/
 	// Show it to ghosts
-	var/public_message = "[span_name(signal.format_sender())] [rigged ? "(as [span_name(fake_name)]) Rigged " : ""]PDA Message --> [span_name("[signal.format_target()]")]: \"[signal.format_message()]\""
+	var/public_message = "[span_name(signal.format_sender())] [rigged ? "(as [span_name(fake_name)]) Rigged " : ""]Mensagem PDA -->[span_name("[signal.format_target()]")]: \"[signal.format_message()]\""
 	var/ghost_message = span_game_say(public_message)
 	var/list/message_listeners = GLOB.dead_player_list + GLOB.current_observers_list
 	if(!subtle)
@@ -675,9 +675,9 @@
 
 	if(sender)
 		if(subtle)
-			to_chat(sender, span_subtlepda("Subtle PDA message sent to [signal.format_target()]: \"[message]\""))
+			to_chat(sender, span_subtlepda("Subtil mensagem PDA enviada para[signal.format_target()]: \"[message]\""))
 		else
-			to_chat(sender, span_info("PDA message sent to [signal.format_target()]: \"[message]\""))
+			to_chat(sender, span_info("Mensagem PDA enviada para[signal.format_target()]: \"[message]\""))
 	// BUBBER EDIT CHANGE END
 
 	if (alert_able && !alert_silenced)
@@ -760,9 +760,9 @@
 		var/photo_message = signal.data["photo"] ? " (<a href='byond://?src=[REF(src)];choice=[photo_href];skiprefresh=1;target=[REF(chat)]'>Photo Attached</a>)" : ""
 		// BUBBER EDIT CHANGE BEGIN - SUBTLE MESSAGES
 		if(is_subtle)
-			to_chat(messaged_mob, span_subtlepda("[icon2html(computer, messaged_mob)] <b>Subtle PDA message from [sender_title], </b>\"[inbound_message]\"[photo_message] [reply]"))
+			to_chat(messaged_mob, span_subtlepda("[icon2html(computer, messaged_mob)] <b>Sútil mensagem PDA de[sender_title], </b>\"[inbound_message]\"[photo_message] [reply]"))
 		else
-			to_chat(messaged_mob, span_infoplain("[icon2html(computer, messaged_mob)] <b>PDA message from [sender_title], </b>\"[inbound_message]\"[photo_message] [reply]"))
+			to_chat(messaged_mob, span_infoplain("[icon2html(computer, messaged_mob)] <b>Mensagem PDA de[sender_title], </b>\"[inbound_message]\"[photo_message] [reply]"))
 		// BUBBER EDIT CHANGE END - SUBTLE MESSAGES
 
 		SEND_SIGNAL(computer, COMSIG_COMPUTER_RECEIVED_MESSAGE, sender_title, inbound_message, photo_message)

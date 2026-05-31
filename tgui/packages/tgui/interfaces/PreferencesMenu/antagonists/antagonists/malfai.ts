@@ -8,7 +8,7 @@ export const MALF_AI_MECHANICAL_DESCRIPTION = `
 
 const MalfAI: Antagonist = {
   key: 'malfai',
-  name: 'Malfunctioning AI',
+  name: 'IA de mau funcionamento',
   description: [MALF_AI_MECHANICAL_DESCRIPTION],
   category: Category.Roundstart,
 };

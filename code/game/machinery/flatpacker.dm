@@ -3,7 +3,7 @@
 
 /obj/machinery/flatpacker
 	name = "flatpacker"
-	desc = "It produces items using iron, glass, plastic and maybe some more."
+	desc = "Produz itens usando ferro, vidro, plástico e talvez mais."
 	icon = 'icons/obj/machines/lathes.dmi'
 	base_icon_state = "flatpacker"
 	icon_state = "flatpacker"
@@ -33,13 +33,7 @@
 /obj/machinery/flatpacker/Initialize(mapload)
 	register_context()
 
-	materials = new ( \
-		src, \
-		SSmaterials.get_materials_by_flag(MATERIAL_SILO_STORED), \
-		0, \
-		MATCONTAINER_EXAMINE, \
-		container_signals = list(COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/flatpacker, AfterMaterialInsert)) \
-	)
+	materials = new ( 		src, 		SSmaterials.get_materials_by_flag(MATERIAL_SILO_STORED), 		0, 		MATCONTAINER_EXAMINE, 		container_signals = list(COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/flatpacker, AfterMaterialInsert)) 	)
 
 	return ..()
 
@@ -76,16 +70,16 @@
 	if(!in_range(user, src) && !isobserver(user))
 		return
 
-	. += span_notice("The status display reads:")
-	. += span_notice("Capable of packing up to <b>Tier [max_part_tier]</b>.")
-	. += span_notice("Storing up to <b>[materials.max_amount]</b> material units.")
-	. += span_notice("Material consumption at <b>[creation_efficiency * 100]%</b>.")
+	. += span_notice("A exibição de status diz:")
+	. += span_notice("Capaz de fazer as malas.<b>Tier[max_part_tier]</b>.")
+	. += span_notice("Armazenando até<b>[materials.max_amount]</b>Unidades materiais.")
+	. += span_notice("Consumo de material em<b>[creation_efficiency * 100]%</b>.")
 
-	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "close" : "open"].")
+	. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")] [panel_open ? "close" : "open"].")
 	if(panel_open)
-		. += span_notice("It can be [EXAMINE_HINT("pried")] apart.")
+		. += span_notice("Pode ser.[EXAMINE_HINT("pried")]Separados.")
 	if(!QDELETED(inserted_board))
-		. += span_notice("The board can be ejected via [EXAMINE_HINT("Ctrl Click")].")
+		. += span_notice("A placa pode ser ejetada através de[EXAMINE_HINT("Ctrl Click")].")
 		if(length(inserted_board.flatpack_components))
 			var/list/obj/item/to_insert
 			for(var/obj/item/component as anything in inserted_board.flatpack_components)
@@ -95,7 +89,7 @@
 					continue
 				LAZYADDASSOC(to_insert, get_flatpack_component_name(component), "[inserted]/[required]")
 			if(length(to_insert))
-				. += span_warning("The following components must be inserted by hand before packaging:")
+				. += span_warning("Os seguintes componentes devem ser inseridos à mão antes da embalagem:")
 				for(var/component_name in to_insert)
 					. += span_warning("[component_name]: [to_insert[component_name]].")
 
@@ -224,7 +218,7 @@
 
 	if(istype(attacking_item, /obj/item/circuitboard/machine))
 		if(busy)
-			balloon_alert(user, "ocupado!")
+			balloon_alert(user, "Ocupado!")
 			return ITEM_INTERACT_BLOCKING
 		if (!user.transferItemToLoc(attacking_item, src))
 			return ITEM_INTERACT_BLOCKING
@@ -249,11 +243,11 @@
 		return ITEM_INTERACT_SUCCESS
 	else if(!QDELETED(inserted_board) && (attacking_item.type in inserted_board.flatpack_components))
 		if(get_flatpack_component_count(attacking_item.type) == inserted_board.req_components[attacking_item.type])
-			balloon_alert(user, "max count reached!")
+			balloon_alert(user, "Contagem máxima atingida!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.transferItemToLoc(attacking_item, src))
-			to_chat(user, span_warning("[attacking_item] is stuck in hand!"))
+			to_chat(user, span_warning("[attacking_item]Está preso na mão!"))
 			return ITEM_INTERACT_BLOCKING
 
 		LAZYADD(flatpacked_components, attacking_item)

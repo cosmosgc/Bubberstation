@@ -1,12 +1,12 @@
 /datum/quirk/night_vision
 	name = "Night Vision"
-	desc = "You can see slightly more clearly in full darkness than most people."
+	desc = "Você pode ver um pouco mais claramente em plena escuridão do que a maioria das pessoas."
 	icon = FA_ICON_MOON
 	value = 4
 	mob_trait = TRAIT_NIGHT_VISION
-	gain_text = span_notice("The shadows seem a little less dark.")
-	lose_text = span_danger("Everything seems a little darker.")
-	medical_record_text = "Patient's eyes show above-average acclimation to darkness."
+	gain_text = span_notice("As sombras parecem menos escuras.")
+	lose_text = span_danger("Tudo parece um pouco mais escuro.")
+	medical_record_text = "Os olhos do paciente mostram aclimatação acima da média para a escuridão."
 	mail_goodies = list(
 		/obj/item/flashlight/flashdark,
 		/obj/item/food/grown/mushroom/glowshroom/shadowshroom,

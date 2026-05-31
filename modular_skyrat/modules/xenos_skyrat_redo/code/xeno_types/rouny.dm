@@ -5,7 +5,7 @@
 
 /mob/living/carbon/alien/adult/skyrat/runner
 	name = "alien runner"
-	desc = "A short alien with sleek red chitin, clearly abiding by the 'red ones go faster' theorem and almost always running on all fours."
+	desc = "Um alienígena curto com chitin vermelho elegante, claramente permanecendo pelo teorema dos \"vermelhos vão mais rápido\"e quase sempre correndo de quatro."
 	caste = "runner"
 	maxHealth = 150
 	health = 150
@@ -37,7 +37,7 @@
 
 /datum/action/cooldown/alien/skyrat/evade
 	name = "Evade"
-	desc = "Allows you to evade any projectile that would hit you for a few seconds."
+	desc = "Permite que evite qualquer projétil que o atinja por alguns segundos."
 	button_icon_state = "evade"
 	plasma_cost = 50
 	cooldown_time = 60 SECONDS
@@ -49,36 +49,36 @@
 /datum/action/cooldown/alien/skyrat/evade/Activate()
 	. = ..()
 	if(evade_active) //Can't evade while we're already evading.
-		owner.balloon_alert(owner, "already evading")
+		owner.balloon_alert(owner, "Já fugindo")
 		return FALSE
 
-	owner.balloon_alert(owner, "evasive movements began")
+	owner.balloon_alert(owner, "Movimentos evasivos começaram.")
 	playsound(owner, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_hiss.ogg', 100, TRUE, 8, 0.9)
-	to_chat(owner, span_danger("We take evasive action, making us impossible to hit with projectiles for the next [evasion_duration / 10] seconds."))
+	to_chat(owner, span_danger("Tomamos medidas evasivas, tornando-nos impossíveis de atingir com projéteis para o próximo[evasion_duration / 10]Segundos."))
 	addtimer(CALLBACK(src, PROC_REF(evasion_deactivate)), evasion_duration)
 	evade_active = TRUE
 	RegisterSignal(owner, COMSIG_PROJECTILE_ON_HIT, PROC_REF(on_projectile_hit))
 	REMOVE_TRAIT(owner, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 	addtimer(CALLBACK(src, PROC_REF(give_back_ventcrawl)), (cooldown_time * EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE)) //They cannot ventcrawl until the defined percent of the cooldown has passed
-	to_chat(owner, span_warning("We will be unable to crawl through vents for the next [(cooldown_time * EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE) / 10] seconds."))
+	to_chat(owner, span_warning("Não seremos capazes de rastejar através de respiradouros para o próximo[(cooldown_time * EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE) / 10]Segundos."))
 	return TRUE
 
 /// Handles deactivation of the xeno evasion ability, mainly unregistering the signal and giving a balloon alert
 /datum/action/cooldown/alien/skyrat/evade/proc/evasion_deactivate()
 	evade_active = FALSE
-	owner.balloon_alert(owner, "evasion ended")
+	owner.balloon_alert(owner, "A evasão acabou.")
 	UnregisterSignal(owner, COMSIG_PROJECTILE_ON_HIT)
 
 /datum/action/cooldown/alien/skyrat/evade/proc/give_back_ventcrawl()
 	ADD_TRAIT(owner, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
-	to_chat(owner, span_notice("We are rested enough to crawl through vents again."))
+	to_chat(owner, span_notice("Estamos descansados o suficiente para passar pela ventilação novamente."))
 
 /// Handles if either BULLET_ACT_HIT or BULLET_ACT_FORCE_PIERCE happens to something using the xeno evade ability
 /datum/action/cooldown/alien/skyrat/evade/proc/on_projectile_hit()
 	if(!INCAPACITATED_IGNORING(owner, INCAPABLE_GRAB) || !isturf(owner.loc) || !evade_active)
 		return BULLET_ACT_HIT
 
-	owner.visible_message(span_danger("[owner] effortlessly dodges the projectile!"), span_userdanger("You dodge the projectile!"))
+	owner.visible_message(span_danger("[owner]Desvia-se do projétil sem esforço!"), span_userdanger("Você foge do projétil!"))
 	playsound(get_turf(owner), pick('sound/items/weapons/bulletflyby.ogg', 'sound/items/weapons/bulletflyby2.ogg', 'sound/items/weapons/bulletflyby3.ogg'), 75, TRUE)
 	owner.add_filter(RUNNER_BLUR_EFFECT, 2, gauss_blur_filter(5))
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/datum, remove_filter), RUNNER_BLUR_EFFECT), 0.5 SECONDS)

@@ -8,7 +8,7 @@
 	icon_state = "crystallizer-off"
 	base_icon_state = "crystallizer"
 	name = "crystallizer"
-	desc = "Used to crystallize or solidify gases."
+	desc = "Usado para cristalizar ou solidificar gases."
 	layer = ABOVE_MOB_LAYER
 	density = TRUE
 	max_integrity = 300
@@ -86,10 +86,10 @@
 	if(!is_operational)
 		return CLICK_ACTION_BLOCKING
 	if(panel_open)
-		balloon_alert(user, "feche o painel!")
+		balloon_alert(user, "Feche o painel!")
 		return CLICK_ACTION_BLOCKING
 	set_on(!on)
-	balloon_alert(user, "turned [on ? "on" : "off"]")
+	balloon_alert(user, "Virado.[on ? "on" : "off"]")
 	investigate_log("was turned [on ? "on" : "off"] by [key_name(user)]", INVESTIGATE_ATMOS)
 	return CLICK_ACTION_SUCCESS
 
@@ -124,8 +124,7 @@
 ///Calculation for the heat of the various gas mixes and controls the quality of the item
 /obj/machinery/atmospherics/components/binary/crystallizer/proc/heat_calculations()
 	var/progress_amount_to_quality = MIN_PROGRESS_AMOUNT * 4.5 / (round(log(10, total_recipe_moles * 0.1), 0.01))
-	if((internal.temperature >= (selected_recipe.min_temp * MIN_DEVIATION_RATE) && internal.temperature <= selected_recipe.min_temp) || \
-		(internal.temperature >= selected_recipe.max_temp && internal.temperature <= (selected_recipe.max_temp * MAX_DEVIATION_RATE)))
+	if((internal.temperature >= (selected_recipe.min_temp * MIN_DEVIATION_RATE) && internal.temperature <= selected_recipe.min_temp) || 		(internal.temperature >= selected_recipe.max_temp && internal.temperature <= (selected_recipe.max_temp * MAX_DEVIATION_RATE)))
 		quality_loss = min(quality_loss + progress_amount_to_quality, 100)
 
 	var/median_temperature = (selected_recipe.max_temp + selected_recipe.min_temp) / 2

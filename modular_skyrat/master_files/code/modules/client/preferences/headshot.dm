@@ -19,23 +19,23 @@
 
 	var/find_index = findtext(value, "https://")
 	if(find_index != 1)
-		to_chat(usr, span_warning("Your link must be https!"))
+		to_chat(usr, span_warning("Seu link deve ser https!"))
 		return
 
 	if(!findtext(value, "."))
-		to_chat(usr, span_warning("Invalid link!"))
+		to_chat(usr, span_warning("Link inválido!"))
 		return
 	var/list/value_split = splittext(value, ".")
 
 	// extension will always be the last entry
 	var/extension = value_split[length(value_split)]
 	if(!(extension in valid_extensions))
-		to_chat(usr, span_warning("The image must be one of the following extensions: '[english_list(valid_extensions)]'"))
+		to_chat(usr, span_warning("A imagem deve ser uma das seguintes extensões:[english_list(valid_extensions)]'"))
 		return
 
 	find_index = findtext(value, link_regex)
 	if(find_index != 9)
-		to_chat(usr, span_warning("The image must be hosted on one of the following sites: 'Catbox, Imgbox, Gyazo, Lensdump, F-List'"))
+		to_chat(usr, span_warning("A imagem deve ser hospedada em um dos seguintes sites: \"Catbox, Imgbox, Gyazo, Lensdump, F-List\""))
 		return
 
 	apply_headshot(value)
@@ -44,8 +44,8 @@
 /datum/preference/text/headshot/proc/apply_headshot(value)
 	if(stored_link[usr.ckey] != value)
 		to_chat(usr, span_notice("Please use a relatively SFW image of the head and shoulder area to maintain immersion level. Think of it as a headshot for your ID. Lastly, [span_bold("do not use a real life photo or use any image that is less than serious.")]"))
-		to_chat(usr, span_notice("If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser."))
-		to_chat(usr, span_notice("Keep in mind that the photo will be downsized to 250x250 pixels, so the more square the photo, the better it will look."))
+		to_chat(usr, span_notice("Se a foto não aparecer corretamente no jogo, certifique-se de que é um link de imagem direta que abre corretamente em um navegador."))
+		to_chat(usr, span_notice("Tenha em mente que a foto será reduzida para 250x250 pixels, então quanto mais quadrada a foto, melhor ela ficará."))
 		log_game("[usr] has set their Headshot image to '[value]'.")
 	stored_link[usr.ckey] = value
 	return TRUE

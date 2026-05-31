@@ -422,7 +422,7 @@
 							if(!(C.shoes && C.shoes.clothing_flags))
 								step(C, dir)
 								if(prob(60) && C.body_position != LYING_DOWN)
-									to_chat(C, span_userdanger("The current knocks you down!"))
+									to_chat(C, span_userdanger("Um corrente te derruba!"))
 									C.Paralyze(60)
 						else
 							step(AM, dir)
@@ -467,7 +467,7 @@
 				return
 
 			if(falling_carbon.wear_mask && falling_carbon.wear_mask.flags_cover & MASKCOVERSMOUTH)
-				to_chat(falling_carbon, span_userdanger("You fall in the [reagents_to_text()]!"))
+				to_chat(falling_carbon, span_userdanger("Você cai no[reagents_to_text()]!"))
 			else
 				var/datum/reagents/tempr = take_reagents_flat(CHOKE_REAGENTS_INGEST_ON_FALL_AMOUNT)
 				tempr.trans_to(falling_carbon, tempr.total_volume, methods = INGEST)
@@ -475,9 +475,9 @@
 				falling_carbon.adjust_oxy_loss(5)
 				//C.emote("cough")
 				INVOKE_ASYNC(falling_carbon, TYPE_PROC_REF(/mob, emote), "cough")
-				to_chat(falling_carbon, span_userdanger("You fall in and swallow some [reagents_to_text()]!"))
+				to_chat(falling_carbon, span_userdanger("Você cai e engole um pouco[reagents_to_text()]!"))
 		else
-			to_chat(M, span_userdanger("You fall in the [reagents_to_text()]!"))
+			to_chat(M, span_userdanger("Você cai no[reagents_to_text()]!"))
 
 /obj/effect/abstract/liquid_turf/Initialize(mapload)
 	. = ..()
@@ -584,22 +584,22 @@
 			var/reagent_name = initial(reagent_type.name)
 			var/volume = round(reagent_list[reagent_type], 0.01)
 
-			examine_list += span_notice("There is [replacetext(liquid_state_template, "$", "[volume] units of [reagent_name]")] here.")
+			examine_list += span_notice("Há[replacetext(liquid_state_template, "$", "[volume] units of [reagent_name]")]Aqui.")
 		else
 			// Show each individual reagent
-			examine_list += "There is [replacetext(liquid_state_template, "$", "the following")] here:"
+			examine_list += "Há[replacetext(liquid_state_template, "$", "the following")]Aqui."
 
 			for(var/datum/reagent/reagent_type as anything in reagent_list)
 				var/reagent_name = initial(reagent_type.name)
 				var/volume = round(reagent_list[reagent_type], 0.01)
-				examine_list += "&bull; [volume] units of [reagent_name]"
+				examine_list += "&bull;[volume]Unidades de[reagent_name]"
 
-		examine_list += span_notice("The solution has a temperature of [temp]K.")
+		examine_list += span_notice("A solução tem uma temperatura de[temp]K.")
 		examine_list += EXAMINE_SECTION_BREAK
 		return
 
 	// Otherwise, just show the total volume
-	examine_list += span_notice("There is [replacetext(liquid_state_template, "$", "liquid")] here.")
+	examine_list += span_notice("Há[replacetext(liquid_state_template, "$", "liquid")]Aqui.")
 
 /**
  * Creates a string of the reagents that make up this liquid.

@@ -3,9 +3,7 @@
 
 /obj/item/gun/ballistic/derringer
 	name = "\improper Yinbi Derringer"
-	desc = "A very compact twin-barreled pistol, chambered in .310 strilka. \
-		Despite using a rifle cartridge, the short barrels leave a lot to \
-		be desired for ballistic performance and suffer from immense dropoff."
+	desc = "Uma pistola de cano duplo muito compacta, com .310. Apesar de usar um cartucho de rifle, os canos curtos deixam muito a desejar para o desempenho balístico e sofrem de imenso abandono."
 	icon = 'modular_zubbers/icons/obj/guns/sakhno_concern_guns32x.dmi'
 	icon_state = "derringer"
 	w_class = WEIGHT_CLASS_SMALL
@@ -39,12 +37,7 @@
 /obj/item/gun/ballistic/derringer/examine_more(mob/user)
 	. = ..()
 
-	. += "The Yinbi Derringer was originally marketed as a companion sidearm to the Sakhno rifle, \
-		allowing the user to have a easy to carry and conceal self-defence weapon without having to \
-		keep several calibers of ammo on hand. While initial sales were promising, the poor ranged \
-		performance ultimately lead to production halting for this model. Most of the remaining stock \
-		was liquidated, and they are now found at rather affordable prices on the secondary market. \
-		Unlike the rifles they were partnered with, they have held up much better over the years."
+	. += "The Yinbi Derringer was originally marketed as a companion sidearm to the Sakhno rifle, 		allowing the user to have a easy to carry and conceal self-defence weapon without having to 		keep several calibers of ammo on hand. While initial sales were promising, the poor ranged 		performance ultimately lead to production halting for this model. Most of the remaining stock 		was liquidated, and they are now found at rather affordable prices on the secondary market. 		Unlike the rifles they were partnered with, they have held up much better over the years."
 
 	return .
 
@@ -53,7 +46,7 @@
 								/obj/item/ammo_box/c310_cargo_box,
 								/obj/item/ammo_box/speedloader/strilka310)))
 		if(!do_after(user, LOADING_TIME, src, IGNORE_USER_LOC_CHANGE)) // We are allowed to move while reloading.
-			to_chat(user, span_danger("You fail to chamber a round into [src]!"))
+			to_chat(user, span_danger("Você não consegue carregar uma bala[src]!"))
 			return TRUE
 
 	. = ..()

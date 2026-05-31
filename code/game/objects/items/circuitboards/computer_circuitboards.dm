@@ -6,7 +6,7 @@
 /obj/item/circuitboard/computer/examine()
 	. = ..()
 	if(GetComponent(/datum/component/gps))
-		. += span_info("there's a small, blinking light!")
+		. += span_info("Há uma pequena luz piscando!")
 
 //Command
 
@@ -52,12 +52,12 @@
 
 /obj/item/circuitboard/computer/atmos_alert/examine(mob/user)
 	. = ..()
-	. += span_info("The board is configured to [station_only ? "track all station and mining alarms" : "track alarms on the same z-level"].")
-	. += span_notice("The board mode can be changed with a [EXAMINE_HINT("multitool")].")
+	. += span_info("O quadro está configurado para[station_only ? "track all station and mining alarms" : "track alarms on the same z-level"].")
+	. += span_notice("O modo de placa pode ser mudado com um[EXAMINE_HINT("multitool")].")
 
 /obj/item/circuitboard/computer/atmos_alert/multitool_act(mob/living/user)
 	station_only = !station_only
-	balloon_alert(user, "tracking set to [station_only ? "station" : "z-level"]")
+	balloon_alert(user, "Rastreamento definido para[station_only ? "station" : "z-level"]")
 	return TRUE
 
 /obj/item/circuitboard/computer/atmos_control
@@ -287,11 +287,11 @@
 	if(build_path == /obj/machinery/computer/libraryconsole/bookmanagement)
 		name = "Library Visitor Console"
 		build_path = /obj/machinery/computer/libraryconsole
-		to_chat(user, span_notice("Defaulting access protocols."))
+		to_chat(user, span_notice("Protocolos de acesso padrão."))
 	else
 		name = "Book Inventory Management Console"
 		build_path = /obj/machinery/computer/libraryconsole/bookmanagement
-		to_chat(user, span_notice("Access protocols successfully updated."))
+		to_chat(user, span_notice("Protocolos de acesso atualizados com sucesso."))
 	return TRUE
 
 /obj/item/circuitboard/computer/monastery_shuttle
@@ -313,7 +313,7 @@
 	name = "Slot Machine"
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/computer/slot_machine
-	desc = "You can change the theme using a screwdriver."
+	desc = "Você pode mudar o tema usando uma chave de fenda."
 	/// List of pickable slot machines
 	var/static/list/slot_themes = list(
 		"Default" = /obj/machinery/computer/slot_machine,
@@ -335,18 +335,18 @@
 		if(slot_themes[theme_name] == build_path)
 			current_theme = theme_name
 			break
-	. += span_info("[src] is set to the [current_theme] theme. You can use a screwdriver to reconfigure it.")
+	. += span_info("[src]está definido para o[current_theme]Tema. Pode usar uma chave de fenda para reconfigurar.")
 
 /obj/item/circuitboard/computer/slot_machine/screwdriver_act(mob/living/user, obj/item/tool)
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "board mode is broken!")
+		balloon_alert(user, "O modo de bordo está quebrado!")
 		return FALSE
 
 	var/choice = tgui_input_list(user, "Choose a slot machine theme", "Theme Selection", slot_themes)
 	if(isnull(choice))
 		return ITEM_INTERACT_BLOCKING
 	build_path = slot_themes[choice]
-	to_chat(user, span_notice("You set the board to the [choice] theme."))
+	to_chat(user, span_notice("Você colocou o tabuleiro para o[choice]Tema."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/circuitboard/computer/slot_machine/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -355,7 +355,7 @@
 
 	obj_flags |= EMAGGED
 	build_path = /obj/machinery/computer/slot_machine/syndicate
-	balloon_alert(user, "illegal slot machine loaded")
+	balloon_alert(user, "Máquina de fenda ilegal carregada.")
 	return TRUE
 
 /obj/item/circuitboard/computer/swfdoor
@@ -408,12 +408,12 @@
 
 /obj/item/circuitboard/computer/tram_controls/examine(mob/user)
 	. = ..()
-	. += span_info("The board is configured for [split_mode ? "split window" : "normal window"].")
-	. += span_notice("The board mode can be changed with a [EXAMINE_HINT("multitool")].")
+	. += span_info("O quadro está configurado para[split_mode ? "split window" : "normal window"].")
+	. += span_notice("O modo de placa pode ser mudado com um[EXAMINE_HINT("multitool")].")
 
 /obj/item/circuitboard/computer/tram_controls/multitool_act(mob/living/user)
 	split_mode = !split_mode
-	to_chat(user, span_notice("[src] positioning set to [split_mode ? "split window" : "normal window"]."))
+	to_chat(user, span_notice("[src]Posicionamento definido para[split_mode ? "split window" : "normal window"]."))
 	return TRUE
 
 /obj/item/circuitboard/computer/terminal
@@ -484,29 +484,29 @@
 
 /obj/item/circuitboard/computer/rdconsole/examine(mob/user)
 	. = ..()
-	. += span_info("The board is configured to [silence_announcements ? "silence" : "announce"] researched nodes on radio.")
-	. += span_notice("The board mode can be changed with a [EXAMINE_HINT("multitool")].")
-	. += span_notice("The board is [locked ? "trancado" : "destrancado"], and can be [locked ? "unlocked" : "locked"] with an ID that has research access.")
+	. += span_info("O quadro está configurado para[silence_announcements ? "silence" : "announce"]Nós pesquisados no rádio.")
+	. += span_notice("O modo de placa pode ser mudado com um[EXAMINE_HINT("multitool")].")
+	. += span_notice("O quadro é...[locked ? "trancado" : "destrancado"], e pode ser[locked ? "unlocked" : "locked"]com uma identidade que tem acesso à pesquisa.")
 
 /obj/item/circuitboard/computer/rdconsole/multitool_act(mob/living/user)
 	. = ..()
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "board mode is broken!")
+		balloon_alert(user, "O modo de bordo está quebrado!")
 		return
 	silence_announcements = !silence_announcements
-	balloon_alert(user, "announcements [silence_announcements ? "enabled" : "disabled"]")
+	balloon_alert(user, "anúncios[silence_announcements ? "enabled" : "disabled"]")
 
 /obj/item/circuitboard/computer/rdconsole/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if (locked)
 		locked = FALSE
-		to_chat(user, span_notice("You magnetically trigger the locking mechanism, causing it to unlock."))
+		to_chat(user, span_notice("Você ativa magneticamente o mecanismo de bloqueio, fazendo com que ele destrave."))
 
 	if (obj_flags & EMAGGED)
 		return FALSE
 
 	obj_flags |= EMAGGED
 	silence_announcements = FALSE
-	to_chat(user, span_notice("You overload the node announcement chip, forcing every node to be announced on the common channel."))
+	to_chat(user, span_notice("Você sobrecarrega o chip de anúncio do nó, forçando cada nó a ser anunciado no canal comum."))
 	return TRUE
 
 /obj/item/circuitboard/computer/rdconsole/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers)
@@ -517,8 +517,8 @@
 		balloon_alert(user, locked ? "trancado" : "destrancado")
 		user.visible_message(
 			message = span_notice("\The [user] unlock[user.p_s()] \the [src] with \the [attacking_item]."),
-			self_message = span_notice("You unlock \the [src] with \the [attacking_item]."),
-			blind_message = span_hear("You hear a soft beep."),
+			self_message = span_notice("Você abre.\the [src]Com\the [attacking_item]."),
+			blind_message = span_hear("Você ouve um bip suave."),
 		)
 	else
 		balloon_alert(user, "sem acesso!")
@@ -618,9 +618,9 @@
 	. = ..()
 	if(!(obj_flags & EMAGGED))
 		contraband = !contraband
-		to_chat(user, span_notice("Receiver spectrum set to [contraband ? "Broad" : "Standard"]."))
+		to_chat(user, span_notice("Espectro de recepção definido para[contraband ? "Broad" : "Standard"]."))
 	else
-		to_chat(user, span_alert("The spectrum chip is unresponsive."))
+		to_chat(user, span_alert("O chip de espectro não responde."))
 
 /obj/item/circuitboard/computer/cargo/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if (obj_flags & EMAGGED)
@@ -628,7 +628,7 @@
 
 	contraband = TRUE
 	obj_flags |= EMAGGED
-	to_chat(user, span_notice("You adjust [src]'s routing and receiver spectrum, unlocking special supplies and contraband."))
+	to_chat(user, span_notice("Você se ajusta.[src]Roteamento e espectro receptor, desbloqueando suprimentos específicos e contrabando."))
 	return TRUE
 
 /obj/item/circuitboard/computer/cargo/configure_machine(obj/machinery/computer/cargo/machine)
@@ -651,16 +651,16 @@
 
 	contraband = TRUE
 	obj_flags |= EMAGGED
-	to_chat(user, span_notice("You change the routing protocols, allowing the Drop Pod to land anywhere on the station."))
+	to_chat(user, span_notice("Você muda os protocolos de roteamento, permitindo que o Drop Pod aterrisse em qualquer lugar na estação."))
 	return TRUE
 
 /obj/item/circuitboard/computer/cargo/express/multitool_act(mob/living/user)
 	if (!(obj_flags & EMAGGED))
 		contraband = !contraband
-		to_chat(user, span_notice("Receiver spectrum set to [contraband ? "Broad" : "Standard"]."))
+		to_chat(user, span_notice("Espectro de recepção definido para[contraband ? "Broad" : "Standard"]."))
 		return TRUE
 	else
-		to_chat(user, span_notice("You reset the destination-routing protocols and receiver spectrum to factory defaults."))
+		to_chat(user, span_notice("Você redefiniu os protocolos de direcionamento de destino e espectro receptor para padrões de fábrica."))
 		contraband = FALSE
 		obj_flags &= ~EMAGGED
 		return TRUE

@@ -15,7 +15,7 @@
 	required_temp = 250 //freeze it
 	reaction_flags = REACTION_INSTANT
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL
-	mix_message = "The solution freezes into a powder!"
+	mix_message = "A solução congela em um pó!"
 
 /datum/chemical_reaction/powder_heroin/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -24,7 +24,7 @@
 
 /obj/item/reagent_containers/heroin
 	name = "heroin"
-	desc = "Take a line and take some time of man."
+	desc = "Pegue uma linha e leve um tempo de homem."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "heroin"
 	volume = 4
@@ -40,11 +40,11 @@
 	else if(user.is_mouth_covered(ITEM_SLOT_MASK))
 		covered = "mask"
 	if(covered)
-		to_chat(user, span_warning("You have to remove your [covered] first!"))
+		to_chat(user, span_warning("Você tem que remover seu[covered]Primero!"))
 		return
-	user.visible_message(span_notice("'[user] starts snorting the [src]."))
+	user.visible_message(span_notice("'[user]Começa a cheirar o[src]."))
 	if(do_after(user, 30))
-		to_chat(user, span_notice("You finish snorting the [src]."))
+		to_chat(user, span_notice("Você termina de cheirar o[src]."))
 		if(reagents.total_volume)
 			reagents.trans_to(user, reagents.total_volume, transferred_by = user, methods = INGEST)
 		qdel(src)
@@ -69,7 +69,7 @@
 
 /obj/item/reagent_containers/heroinbrick
 	name = "heroin brick"
-	desc = "A brick of heroin. Good for transport!"
+	desc = "Um tijolo de heroína. Bom para o transporte!"
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "heroinbrick"
 	volume = 20
@@ -78,9 +78,9 @@
 
 
 /obj/item/reagent_containers/heroinbrick/attack_self(mob/user)
-	user.visible_message(span_notice("[user] starts breaking up the [src]."))
+	user.visible_message(span_notice("[user]começa a quebrar o[src]."))
 	if(do_after(user,10))
-		to_chat(user, span_notice("You finish breaking up the [src]."))
+		to_chat(user, span_notice("Você termina de quebrar o[src]."))
 		for(var/i = 1 to 5)
 			new /obj/item/reagent_containers/heroin(user.loc)
 		qdel(src)
@@ -98,7 +98,7 @@
 
 /datum/reagent/drug/opium
 	name = "opium"
-	description = "A extract from opium poppies. Puts the user in a slightly euphoric state."
+	description = "Um extrato de papoulas de ópio. Coloca o usuário em um estado ligeiramente eufórico."
 	color = "#ffe669"
 	overdose_threshold = 30
 	ph = 8
@@ -132,7 +132,7 @@
 
 /datum/reagent/drug/opium/heroin
 	name = "heroin"
-	description = "She's like heroin to me, she's like heroin to me! She cannot... miss a vein!"
+	description = "Ela é como heroína para mim, ela é como heroína para mim! Ela não pode errar uma veia!"
 	color = "#ffe669"
 	overdose_threshold = 20
 	ph = 6
@@ -150,7 +150,7 @@
 
 /datum/reagent/drug/opium/blacktar
 	name = "black tar heroin"
-	description = "An impure, freebase form of heroin. Probably not a good idea to take this..."
+	description = "Uma forma impura e livre de heroína. Provavelmente não é uma boa idéia pegar isso..."
 	color = "#242423"
 	overdose_threshold = 10 //more easy to overdose on
 	ph = 8
@@ -189,12 +189,12 @@
 
 /datum/export/heroinbrick
 	cost = CARGO_CRATE_VALUE * 2.5
-	unit_name = "heroin brick"
+	unit_name = "tijolo de heroína"
 	export_types = list(/obj/item/reagent_containers/heroinbrick)
 	include_subtypes = FALSE
 
 /datum/export/blacktar
 	cost = CARGO_CRATE_VALUE * 0.4
-	unit_name = "black tar heroin"
+	unit_name = "Heroína do alcatrão negro"
 	export_types = list(/obj/item/reagent_containers/blacktar)
 	include_subtypes = FALSE

@@ -70,7 +70,7 @@ the same goes for Remove(). if you override Remove(), call parent or else your p
 	if(!can_sting(user, target))
 		return FALSE
 	if(disabled_by_fire && user.fire_stacks && user.on_fire)
-		user.balloon_alert(user, "pegando fogo!")
+		user.balloon_alert(user, "Pegando nevoeiro!")
 		return FALSE
 	var/datum/antagonist/changeling/changeling = IS_CHANGELING(user)
 	if(sting_action(user, target))
@@ -94,19 +94,19 @@ the same goes for Remove(). if you override Remove(), call parent or else your p
 		return FALSE
 	var/datum/antagonist/changeling/changeling = IS_CHANGELING(user)
 	if(changeling.chem_charges < chemical_cost)
-		user.balloon_alert(user, "needs [chemical_cost] chemicals!")
+		user.balloon_alert(user, "Necessidades[chemical_cost]Produtos químicos!")
 		return FALSE
 	if(changeling.absorbed_count < req_dna)
-		user.balloon_alert(user, "needs [req_dna] dna sample\s!")
+		user.balloon_alert(user, "Necessidades[req_dna]Amostra de DNA!")
 		return FALSE
 	if(changeling.true_absorbs < req_absorbs)
-		user.balloon_alert(user, "needs [req_absorbs] absorption\s!")
+		user.balloon_alert(user, "Necessidades[req_absorbs]Absorção!")
 		return FALSE
 	if(req_stat < user.stat)
 		user.balloon_alert(user, "incapacitado!")
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_DEATHCOMA) && !ignores_fakedeath)
-		user.balloon_alert(user, "playing dead!")
+		user.balloon_alert(user, "Fingindo de morto!")
 		return FALSE
 	return TRUE
 
@@ -116,6 +116,6 @@ the same goes for Remove(). if you override Remove(), call parent or else your p
 	if(!ishuman(user))
 		return FALSE
 	if(req_human && ismonkey(user))
-		user.balloon_alert(user, "become human!")
+		user.balloon_alert(user, "Se rasgar humano!")
 		return FALSE
 	return TRUE

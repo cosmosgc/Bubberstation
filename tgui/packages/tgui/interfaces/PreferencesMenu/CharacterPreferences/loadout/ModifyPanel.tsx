@@ -194,7 +194,7 @@ export function LoadoutModifyDimmer(props: DimmerProps) {
           position: 'relative',
           display: 'inline-block',
           padding: '5px',
-          boxShadow: '0px 4px 8px 3px rgba(0, 0, 0, 0.7)',
+          boxShadow: '0px 4px 8px 3px rgba (0, 0, 0, 0,7)',
         }}
       >
         <Stack.Item height="20px" p={0.5} mb={1}>

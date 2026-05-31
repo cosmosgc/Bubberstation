@@ -58,7 +58,7 @@ export function LootPanel(props) {
         <Stack align="center">
           <Input
             onChange={setSearchText}
-            placeholder="Search items..."
+            placeholder="Procurar itens..."
             value={searchText}
           />
           <Button
@@ -66,7 +66,7 @@ export function LootPanel(props) {
             icon={grouping ? 'layer-group' : 'object-ungroup'}
             selected={grouping}
             onClick={() => setGrouping(!grouping)}
-            tooltip="Toggle Grouping"
+            tooltip="Comutar o Agrupamento"
           />
         </Stack>
       }

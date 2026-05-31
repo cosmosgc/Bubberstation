@@ -68,7 +68,7 @@
 
 /obj/item/cursed_dagger
 	name = "cursed ash dagger"
-	desc = "A blunted dagger that seems to cause the shadows near it to tremble."
+	desc = "Uma adaga embotada que faz as sombras tremerem."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "crysknife"
 	inhand_icon_state = "crysknife"
@@ -77,17 +77,17 @@
 
 /obj/item/cursed_dagger/examine(mob/user)
 	. = ..()
-	. += span_notice("To be used on tendrils. It will visually change the tendril to indicate whether it has been cursed or not.")
+	. += span_notice("Para ser usado em tentáculos. Mudará visualmente o tentáculo para indicar se foi amaldiçoado ou não.")
 
 /obj/item/tendril_seed
 	name = "tendril seed"
-	desc = "A horrible fleshy mass that pulse with a dark energy."
+	desc = "Uma massa carnuda horrível que pulsa com uma energia escura."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_tools.dmi'
 	icon_state = "tendril_seed"
 
 /obj/item/tendril_seed/examine(mob/user)
 	. = ..()
-	. += span_notice("In order to be planted, it is required to be on the mining level as well as on basalt.")
+	. += span_notice("Para ser plantado, é necessário estar no nível de mineração, bem como no basalto.")
 
 /obj/item/tendril_seed/attack_self(mob/user, modifiers)
 	. = ..()
@@ -97,18 +97,18 @@
 	if(!isliving(user))
 		return
 	var/mob/living/living_user = user
-	to_chat(living_user, span_warning("You begin to squeeze [src]..."))
+	to_chat(living_user, span_warning("Você começa a apertar[src]..."))
 	if(!do_after(living_user, 4 SECONDS, target = src))
 		return
-	to_chat(living_user, span_warning("[src] begins to crawl between your hand's appendages, crawling up your arm..."))
+	to_chat(living_user, span_warning("[src]Começa a rastejar entre os apêndices da sua mão, rastejando pelo seu braço..."))
 	living_user.adjust_brute_loss(35)
 	if(!do_after(living_user, 4 SECONDS, target = src))
 		return
-	to_chat(living_user, span_warning("[src] wraps around your chest and begins to tighten, causing an odd needling sensation..."))
+	to_chat(living_user, span_warning("[src]envolve-se em torno de seu peito e começa a apertar, causando uma estranha sensação de agulha..."))
 	living_user.adjust_brute_loss(35)
 	if(!do_after(living_user, 4 SECONDS, target = src))
 		return
-	to_chat(living_user, span_warning("[src] leaps from you satisfied and begins to grossly assemble itself!"))
+	to_chat(living_user, span_warning("[src]Salta de você satisfeito e começa a se reunir grosseiramente!"))
 	var/type = pick(/obj/structure/spawner/lavaland, /obj/structure/spawner/lavaland/goliath, /obj/structure/spawner/lavaland/legion)
 	new type(user.loc)
 	playsound(get_turf(src), 'sound/effects/magic/demon_attack1.ogg', 50, TRUE)

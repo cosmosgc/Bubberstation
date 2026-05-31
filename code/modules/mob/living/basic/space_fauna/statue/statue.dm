@@ -2,7 +2,7 @@
 
 /mob/living/basic/statue
 	name = "statue" // matches the name of the statue with the flesh-to-stone spell
-	desc = "An incredibly lifelike marble carving. Its eyes seem to follow you..." // same as an ordinary statue with the added "eye following you" description
+	desc = "Uma escultura de mármore incrivelmente realista. Seus olhos parecem te seguir..." // same as an ordinary statue with the added "Olho seguindo você" description
 	icon = 'icons/obj/art/statue.dmi'
 	icon_state = "human_male"
 	icon_living = "human_male"
@@ -32,7 +32,7 @@
 	status_flags = CANPUSH
 	faction = list(FACTION_STATUE)
 	speak_emote = list("screams")
-	death_message = "falls apart into a fine dust."
+	death_message = "se desfaz em um pó fino."
 	unsuitable_atmos_damage = 0
 	unsuitable_cold_damage = 0
 	unsuitable_heat_damage = 0
@@ -83,7 +83,7 @@
 // Flicker lights
 /datum/action/cooldown/spell/aoe/flicker_lights
 	name = "Flicker Lights"
-	desc = "You will trigger a large amount of lights around you to flicker."
+	desc = "Você vai ativar uma grande quantidade de luzes ao seu redor para piscar."
 	button_icon = 'icons/mob/actions/actions_AI.dmi'
 	button_icon_state = "blackout"
 	cooldown_time = 30 SECONDS
@@ -106,14 +106,14 @@
 //Blind AOE
 /datum/action/cooldown/spell/aoe/blindness
 	name = "Blindness"
-	desc = "Your prey will be momentarily blind for you to advance on them."
+	desc = "Sua presa será momentaneamente cega para você avançar sobre eles."
 	button_icon_state = "blind"
 	cooldown_time = 1 MINUTES
 	spell_requirements = NONE
 	aoe_radius = 14
 
 /datum/action/cooldown/spell/aoe/blindness/cast(atom/cast_on)
-	cast_on.visible_message(span_danger("[cast_on] glares their eyes."))
+	cast_on.visible_message(span_danger("[cast_on]Brilha seus olhos."))
 	return ..()
 
 /datum/action/cooldown/spell/aoe/blindness/get_things_to_cast_on(atom/center)
@@ -144,7 +144,7 @@
 
 /mob/living/basic/statue/frosty
 	name = "Frosty"
-	desc = "Just a snowman. Just a snowman. Oh god, it's just a snowman."
+	desc = "Só um boneco de neve. Só um boneco de neve. Meu Deus, é só um boneco de neve."
 	icon_dead = "snowman"
 	icon_living = "snowman"
 	icon_state = "snowman"

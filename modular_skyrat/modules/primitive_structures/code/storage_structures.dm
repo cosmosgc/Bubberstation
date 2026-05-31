@@ -35,7 +35,7 @@
 
 /obj/structure/closet/crate/wooden/storage_barrel
 	name = "storage barrel"
-	desc = "This barrel can't hold liquids, it can just hold things inside of it however!"
+	desc = "Este barril não pode segurar líquidos, ele pode apenas manter as coisas dentro dele, no entanto!"
 	icon_state = "barrel"
 	base_icon_state = "barrel"
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
@@ -49,7 +49,7 @@
 
 /obj/machinery/smartfridge/wooden
 	name = "Debug Wooden Smartfridge"
-	desc = "You shouldn't be seeing this!"
+	desc = "Você não deveria estar vendo isso!"
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	icon_state = "producebin"
 	base_icon_state = "producebin"
@@ -82,14 +82,14 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/smartfridge/wooden/structure_examine()
-	. = span_info("The whole rack can be [EXAMINE_HINT("pried")] apart.")
+	. = span_info("O rack inteiro pode ser[EXAMINE_HINT("pried")]Separados.")
 
 /obj/machinery/smartfridge/wooden/produce_bin
 	name = "produce bin"
 	icon_state = "producebin"
 	base_icon_state = "producebin"
 	contents_overlay_icon = "produce"
-	desc = "A wooden hamper, used to hold plant products and try to keep them safe from pests."
+	desc = "Um cesto de madeira, usado para segurar produtos vegetais e tentar mantê-los a salvo de pragas."
 	base_build_path = /obj/machinery/smartfridge/wooden/produce_bin
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 10)
 
@@ -104,7 +104,7 @@
 
 /obj/machinery/smartfridge/wooden/seed_shelf
 	name = "seedshelf"
-	desc = "A wooden shelf, used to hold seeds preventing them from germinating early."
+	desc = "Uma prateleira de madeira, usada para segurar sementes impedindo-os de germinar cedo."
 	icon_state = "seedshelf"
 	base_icon_state = "seedshelf"
 	contents_overlay_icon = "seed"
@@ -118,7 +118,7 @@
 
 /obj/machinery/smartfridge/wooden/ration_shelf
 	name = "ration shelf"
-	desc = "A wooden shelf, used to store food... preferably preserved."
+	desc = "Uma prateleira de madeira, usada para armazenar comida... de preferência preservada."
 	icon_state = "seedshelf"
 	base_icon_state = "seedshelf"
 	contents_overlay_icon = "ration"
@@ -136,7 +136,7 @@
 
 /obj/machinery/smartfridge/wooden/produce_display
 	name = "produce display"
-	desc = "A wooden table with awning, used to display produce items."
+	desc = "Uma mesa de madeira com toldo, usada para exibir itens de produção."
 	icon_state = "producedisplay"
 	base_icon_state = "producedisplay"
 	contents_overlay_icon = "nonfood"

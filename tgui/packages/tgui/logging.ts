@@ -40,7 +40,7 @@ const log = (level: number, namespace = 'Generic', ...args: any[]): void => {
         })
         .filter((value) => value)
         .join(' ') +
-      '\nUser Agent: ' +
+      '\nAgente Usuário:' +
       navigator.userAgent;
     Byond.sendMessage({
       type: 'log',

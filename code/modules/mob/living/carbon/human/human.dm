@@ -109,18 +109,18 @@
 		var/obj/item/card/id/id = wear_id?.GetID()
 		var/same_id = id && (href_list["id_ref"] == REF(id) || href_list["id_name"] == id.registered_name)
 		if(!same_id && can_see_still)
-			to_chat(viewer, span_notice("[p_They()] [p_are()] no longer wearing that ID card."))
+			to_chat(viewer, span_notice("[p_They()] [p_are()]Não está mais usando o cartão de identidade."))
 			return
 
 		var/viable_time = can_see_still ? 3 MINUTES : 1 MINUTES // assuming 3min is the length of a hop line visit - give some leeway if they're still in sight
 		if(!same_id || (text2num(href_list["examine_time"]) + viable_time) < world.time)
-			to_chat(viewer, span_notice("You don't have that good of a memory. Examine [p_them()] again."))
+			to_chat(viewer, span_notice("Você não tem essa boa memória. Examine[p_them()]De novo."))
 			return
 		if(!isobserver(viewer) && HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE))
-			to_chat(viewer, span_notice("You can't make out that ID anymore."))
+			to_chat(viewer, span_notice("Não dá mais para identificar."))
 			return
 		if(!isobserver(viewer) && get_dist(viewer, src) > ID_EXAMINE_DISTANCE + 1) // leeway, ignored if the viewer is a ghost
-			to_chat(viewer, span_notice("You can't make out that ID from here."))
+			to_chat(viewer, span_notice("Não pode identificar a partir daqui."))
 			return
 
 		var/id_name = id.registered_name
@@ -142,7 +142,7 @@
 			var/obj/item/card/id/advanced/advancedID = id
 			id_job = advancedID.trim_assignment_override || id_job
 
-		var/id_examine = span_slightly_larger(separator_hr("This is <em>[src]'s ID card</em>."))
+		var/id_examine = span_slightly_larger(separator_hr("Isso é<em>[src]Cartão de identidade</em>."))
 		id_examine += "<div class='img_by_text_container'>"
 		id_examine += "[id_icon]"
 		id_examine += "<div class='img_text'>"
@@ -168,7 +168,7 @@
 		if(!HAS_TRAIT(human_or_ghost_user, TRAIT_SECURITY_HUD) && !HAS_TRAIT(human_or_ghost_user, TRAIT_MEDICAL_HUD))
 			return
 		if((text2num(href_list["examine_time"]) + 1 MINUTES) < world.time)
-			to_chat(human_or_ghost_user, span_notice("It's too late to use this now!"))
+			to_chat(human_or_ghost_user, span_notice("É tarde demais para usar isso agora!"))
 			return
 		var/datum/record/crew/target_record = find_record(perpname)
 		if(href_list["photo_front"] || href_list["photo_side"])
@@ -200,7 +200,7 @@
 				var/span = "notice"
 				var/status = ""
 				if(get_brute_loss())
-					to_chat(human_user, "<b>Physical trauma analysis:</b>")
+					to_chat(human_user, "<b>Análise de trauma físico:</b>")
 					for(var/obj/item/bodypart/BP as anything in get_bodyparts())
 						var/brutedamage = BP.brute_dam
 						if(brutedamage > 0)
@@ -213,9 +213,9 @@
 							status = "sustained major trauma!"
 							span = "userdanger"
 						if(brutedamage)
-							to_chat(human_user, "<span class='[span]'>[BP] appears to have [status]</span>")
+							to_chat(human_user, "<span class='[span]'>[BP]Parece ter[status]</span>")
 				if(get_fire_loss())
-					to_chat(human_user, "<b>Analysis of skin burns:</b>")
+					to_chat(human_user, "<b>Análise de queimaduras de pele:</b>")
 					for(var/obj/item/bodypart/BP as anything in get_bodyparts())
 						var/burndamage = BP.burn_dam
 						if(burndamage > 0)
@@ -228,17 +228,17 @@
 							status = "major burns!"
 							span = "userdanger"
 						if(burndamage)
-							to_chat(human_user, "<span class='[span]'>[BP] appears to have [status]</span>")
+							to_chat(human_user, "<span class='[span]'>[BP]Parece ter[status]</span>")
 				if(get_oxy_loss())
-					to_chat(human_user, span_danger("Patient has signs of suffocation, emergency treatment may be required!"))
+					to_chat(human_user, span_danger("O paciente tem sinais de asfixia, pode ser necessário tratamento de emergência!"))
 				if(get_tox_loss() > 20)
-					to_chat(human_user, span_danger("Gathered data is inconsistent with the analysis, possible cause: poisoning."))
+					to_chat(human_user, span_danger("Dados coletados são inconsistentes com a análise, possível causa: envenenamento."))
 			if(!human_user.wear_id) //You require access from here on out.
-				to_chat(human_user, span_warning("ERROR: Invalid access"))
+				to_chat(human_user, span_warning("Acesso inválido"))
 				return
 			var/list/access = human_user.wear_id.GetAccess()
 			if(!(ACCESS_MEDICAL in access))
-				to_chat(human_user, span_warning("ERROR: Invalid access"))
+				to_chat(human_user, span_warning("Acesso inválido"))
 				return
 
 			if(href_list["physical_status"])
@@ -260,14 +260,14 @@
 			if(href_list["quirk"])
 				var/quirkstring = get_quirk_string(TRUE, CAT_QUIRK_ALL, from_scan = TRUE)
 				if(quirkstring)
-					to_chat(human_user,  "<span class='notice ml-1'>Detected physiological traits:</span>\n<span class='notice ml-2'>[quirkstring]</span>")
+					to_chat(human_user,  "<span class='notice ml-1'>Características fisiológicas detectadas:</span>\n<span class='notice ml-2'>[quirkstring]</span>")
 				else
-					to_chat(usr,  "<span class='notice ml-1'>No physiological traits found.</span>")
+					to_chat(usr,  "<span class='notice ml-1'>Nenhum traço fisiológico encontrado.</span>")
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 			if(href_list["medrecords"])
-				to_chat(usr, "<b>Medical Record:</b> [target_record.past_medical_records]")
+				to_chat(usr, "<b>Registro médico:</b> [target_record.past_medical_records]")
 			if(href_list["genrecords"])
-				to_chat(usr, "<b>General Record:</b> [target_record.past_general_records]")
+				to_chat(usr, "<b>Registro Geral:</b> [target_record.past_general_records]")
 			//SKYRAT EDIT END
 			return //Medical HUD ends here.
 
@@ -290,15 +290,15 @@
 							allowed_access = human_user.get_authentification_name()
 
 				if(!allowed_access)
-					to_chat(human_user, span_warning("ERROR: Invalid access."))
+					to_chat(human_user, span_warning("Acesso inválido."))
 					return
 
 			if(!perpname)
-				to_chat(human_or_ghost_user, span_warning("ERROR: Can not identify target."))
+				to_chat(human_or_ghost_user, span_warning("Não consigo identificar o alvo."))
 				return
 			target_record = find_record(perpname)
 			if(!target_record)
-				to_chat(human_or_ghost_user, span_warning("ERROR: Unable to locate data core entry for target."))
+				to_chat(human_or_ghost_user, span_warning("Incapaz de localizar a entrada do núcleo de dados para o alvo."))
 				return
 			if(ishuman(human_or_ghost_user) && href_list["status"])
 				var/mob/living/carbon/human/human_user = human_or_ghost_user
@@ -332,7 +332,7 @@
 				if(length(target_record.crimes))
 					for(var/datum/crime/crime in target_record.crimes)
 						if(!crime.valid)
-							sec_record_message += span_notice("\n-- REDACTED --")
+							sec_record_message += span_notice("\nREDACTO...")
 							continue
 
 						sec_record_message += "\n<b>Crime:</b> [crime.name]"
@@ -362,14 +362,14 @@
 						return
 					if(!HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
 						return
-					to_chat(human_user, "<b>General Record:</b> [target_record.past_general_records]")
+					to_chat(human_user, "<b>Registro Geral:</b> [target_record.past_general_records]")
 
 				if(href_list["secrecords"])
 					if(!human_user.canUseHUD())
 						return
 					if(!HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
 						return
-					to_chat(human_user, "<b>Security Record:</b> [target_record.past_security_records]")
+					to_chat(human_user, "<b>Registro de segurança:</b> [target_record.past_security_records]")
 				//SKYRAT EDIT END
 
 				if(href_list["add_crime"])
@@ -382,7 +382,7 @@
 					target_record.crimes += new_crime
 					investigate_log("New Crime: <strong>[crime_name]</strong> | Added to [target_record.name] by [key_name(human_user)]", INVESTIGATE_RECORDS)
 					SSblackbox.ReportCitation(REF(new_crime), human_user.ckey, human_user.real_name, target_record.name, crime_name, null)
-					to_chat(human_user, span_notice("Successfully added a crime."))
+					to_chat(human_user, span_notice("Adicionou um crime com sucesso."))
 
 					return
 
@@ -402,16 +402,16 @@
 	if(isobserver(usr))
 		if(target_record)
 			if(href_list["secrecords"])
-				to_chat(usr, "<b>Security Record:</b> [target_record.past_security_records]")
+				to_chat(usr, "<b>Registro de segurança:</b> [target_record.past_security_records]")
 			if(href_list["medrecords"])
-				to_chat(usr, "<b>Medical Record:</b> [target_record.past_medical_records]")
+				to_chat(usr, "<b>Registro médico:</b> [target_record.past_medical_records]")
 			if(href_list["genrecords"])
-				to_chat(usr, "<b>General Record:</b> [target_record.past_general_records]")
+				to_chat(usr, "<b>Registro Geral:</b> [target_record.past_general_records]")
 		if(target_locked_record && href_list["bgrecords"])
-			to_chat(usr, "<b>Background information:</b> [target_locked_record.background_information]")
+			to_chat(usr, "<b>Informação de fundo:</b> [target_locked_record.background_information]")
 	if(isobserver(usr) || usr.mind.can_see_exploitables || usr.mind.has_exploitables_override)
 		if(target_locked_record && href_list["exprecords"])
-			to_chat(usr, "<b>Exploitable information:</b> [target_locked_record.exploitable_information]")
+			to_chat(usr, "<b>Informações úteis:</b> [target_locked_record.exploitable_information]")
 	//SKYRAT EDIT END
 	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.
 
@@ -444,7 +444,7 @@
 /mob/living/carbon/human/try_inject(mob/user, target_zone, injection_flags)
 	. = ..()
 	if(!. && (injection_flags & INJECT_TRY_SHOW_ERROR_MESSAGE) && user)
-		balloon_alert(user, "no exposed skin on [parse_zone(target_zone || check_zone(user.zone_selected))]!")
+		balloon_alert(user, "Sem pele exposta.[parse_zone(target_zone || check_zone(user.zone_selected))]!")
 
 /mob/living/carbon/human/get_butt_sprite()
 	var/obj/item/bodypart/chest/chest = get_bodypart(BODY_ZONE_CHEST)
@@ -546,7 +546,7 @@
 		for(var/obj/item/hand in held_items)
 			if(prob(current_size * 5) && hand.w_class >= ((11-current_size)/2)  && dropItemToGround(hand))
 				step_towards(hand, src)
-				to_chat(src, span_warning("\The [singularity] pulls \the [hand] from your grip!"))
+				to_chat(src, span_warning("\The [singularity]puxa\the [hand]Do seu aperto!"))
 
 #define CPR_PANIC_SPEED (0.8 SECONDS)
 
@@ -564,40 +564,39 @@
 			return FALSE
 
 		if (target.stat == DEAD || HAS_TRAIT(target, TRAIT_FAKEDEATH))
-			balloon_alert(src, "[target.p_they()] [target.p_are()] dead!")
+			balloon_alert(src, "[target.p_they()] [target.p_are()]Morto!")
 			return FALSE
 
 		if (is_mouth_covered())
-			balloon_alert(src, "remove your mask first!")
+			balloon_alert(src, "Tire a máscara primeiro!")
 			return FALSE
 
 		if (target.is_mouth_covered())
-			balloon_alert(src, "remove [target.p_their()] mask first!")
+			balloon_alert(src, "Remova[target.p_their()]Máscara primeiro!")
 			return FALSE
 
 		if(HAS_TRAIT_FROM(src, TRAIT_NOBREATH, DISEASE_TRAIT))
-			to_chat(src, span_warning("you can't breathe!"))
+			to_chat(src, span_warning("Não consegue respirar!"))
 			return FALSE
 
 		var/obj/item/organ/lungs/human_lungs = get_organ_slot(ORGAN_SLOT_LUNGS)
 		if(isnull(human_lungs))
-			balloon_alert(src, "you don't have lungs!")
+			balloon_alert(src, "Você não tem pulmões!")
 			return FALSE
 		if(human_lungs.organ_flags & ORGAN_FAILING)
-			balloon_alert(src, "your lungs are too damaged!")
+			balloon_alert(src, "Seus pulmões estão muito danificados!")
 			return FALSE
 
-		visible_message(span_notice("[src] is trying to perform CPR on [target.name]!"), \
-						span_notice("You try to perform CPR on [target.name]... Hold still!"))
+		visible_message(span_notice("[src]Está tentando fazer RCP em[target.name]!"), 						span_notice("Você tenta fazer RCP em[target.name]Fique parado!"))
 
 		if (!do_after(src, delay = panicking ? CPR_PANIC_SPEED : (3 SECONDS), target = target))
-			balloon_alert(src, "you fail to perform CPR!")
+			balloon_alert(src, "Você falha em fazer RCP!")
 			return FALSE
 
 		if (target.health > target.crit_threshold)
 			return FALSE
 
-		visible_message(span_notice("[src] performs CPR on [target.name]!"), span_notice("You perform CPR on [target.name]."))
+		visible_message(span_notice("[src]Faz RCP em[target.name]!"), span_notice("Você faz RCP em[target.name]."))
 		if(HAS_MIND_TRAIT(src, TRAIT_MORBID))
 			add_mood_event("morbid_saved_life", /datum/mood_event/morbid_saved_life)
 		else
@@ -605,16 +604,16 @@
 		log_combat(src, target, "CPRed")
 
 		if (HAS_TRAIT(target, TRAIT_NOBREATH))
-			to_chat(target, span_unconscious("You feel a breath of fresh air... which is a sensation you don't recognise..."))
+			to_chat(target, span_unconscious("Você sente um sopro de ar fresco... que é uma sensação que você não reconhece..."))
 		else if (!target.get_organ_slot(ORGAN_SLOT_LUNGS))
-			to_chat(target, span_unconscious("You feel a breath of fresh air... but you don't feel any better..."))
+			to_chat(target, span_unconscious("Sente um pouco de ar fresco... mas não se sente melhor..."))
 		else
 			target.adjust_oxy_loss(-min(target.get_oxy_loss(), 7))
-			to_chat(target, span_unconscious("You feel a breath of fresh air enter your lungs... It feels good..."))
+			to_chat(target, span_unconscious("Você sente um sopro de ar fresco em seus pulmões... É uma sensação boa..."))
 
 		if (target.health <= target.crit_threshold)
 			if (!panicking)
-				to_chat(src, span_warning("[target] still isn't up! You try harder!"))
+				to_chat(src, span_warning("[target]Ainda não acordou! Você se esforça mais!"))
 			panicking = TRUE
 		else
 			panicking = FALSE
@@ -719,13 +718,13 @@
 	if(!I.loc || buckled)
 		return FALSE
 	if(I == wear_suit)
-		visible_message(span_danger("[src] manages to [cuff_break ? "break" : "remove"] [I]!"))
-		to_chat(src, span_notice("You successfully [cuff_break ? "break" : "remove"] [I]."))
+		visible_message(span_danger("[src]consegue[cuff_break ? "break" : "remove"] [I]!"))
+		to_chat(src, span_notice("Você com sucesso.[cuff_break ? "break" : "remove"] [I]."))
 		return TRUE
 	// SKYRAT EDIT ADDITION: NOW GLOVES CAN RESTRAIN PLAYERS
 	if(I == gloves)
-		visible_message(span_danger("[src] manages to [cuff_break ? "break" : "remove"] [I]!"))
-		to_chat(src, span_notice("You successfully [cuff_break ? "break" : "remove"] [I]."))
+		visible_message(span_danger("[src]consegue[cuff_break ? "break" : "remove"] [I]!"))
+		to_chat(src, span_notice("Você com sucesso.[cuff_break ? "break" : "remove"] [I]."))
 		return TRUE
 	// SKYRAT EDIT ADDITION END
 
@@ -766,8 +765,8 @@
 
 	if(vomit_flags & MOB_VOMIT_MESSAGE)
 		visible_message(
-			span_warning("[src] dry heaves!"),
-			span_userdanger("You try to throw up, but there's nothing in your stomach!"),
+			span_warning("[src]Pulso seco!"),
+			span_userdanger("Você tenta vomitar, mas não tem nada no estômago!"),
 		)
 	if(vomit_flags & MOB_VOMIT_STUN)
 		Stun(20 SECONDS)
@@ -875,15 +874,15 @@
 			return
 		var/success = purrbation_toggle(src)
 		if(success)
-			to_chat(usr, "Put [src] on purrbation.")
+			to_chat(usr, "Coloque[src]em purrbação.")
 			log_admin("[key_name(usr)] has put [key_name(src)] on purrbation.")
-			var/msg = span_notice("[key_name_admin(usr)] has put [key_name(src)] on purrbation.")
+			var/msg = span_notice("[key_name_admin(usr)]Tem colocado[key_name(src)]em purrbação.")
 			message_admins(msg)
 			admin_ticket_log(src, msg)
 		else
-			to_chat(usr, "Removed [src] from purrbation.")
+			to_chat(usr, "Removido[src]de purrbação.")
 			log_admin("[key_name(usr)] has removed [key_name(src)] from purrbation.")
-			var/msg = span_notice("[key_name_admin(usr)] has removed [key_name(src)] from purrbation.")
+			var/msg = span_notice("[key_name_admin(usr)]Foi removido.[key_name(src)]de purrbação.")
 			message_admins(msg)
 			admin_ticket_log(src, msg)
 
@@ -891,28 +890,28 @@
 		if(!check_rights(R_SPAWN))
 			return
 		if(!ishuman(src))
-			to_chat(usr, "This can only be done to human species.")
+			to_chat(usr, "Isso só pode ser feito com espécies humanas.")
 			return
 		var/result = usr.client.grant_dna_infusion(src)
 		if(result)
-			to_chat(usr, "Successfully applied DNA Infusion [result] to [src].")
+			to_chat(usr, "Infusão de DNA aplicada com sucesso[result]para[src].")
 			log_admin("[key_name(usr)] has applied DNA Infusion [result] to [key_name(src)].")
 		else
-			to_chat(usr, "Failed to apply DNA Infusion to [src].")
+			to_chat(usr, "Não foi possível aplicar a infusão de DNA em[src].")
 			log_admin("[key_name(usr)] failed to apply a DNA Infusion to [key_name(src)].")
 
 	if(href_list[VV_HK_TURN_INTO_MMI])
 		if(!check_rights(R_DEBUG))
 			return
 
-		var/result = input(usr, "This will delete the mob, are you sure?", "Turn into MMI") in list("Yes", "No")
+		var/result = input(usr, "Isso vai apagar a máfia, tem certeza?", "Transforme-se em MMI") in list("Yes", "No")
 		if(result != "Yes")
 			return
 
 		var/obj/item/organ/brain/target_brain = get_organ_slot(ORGAN_SLOT_BRAIN)
 
 		if(isnull(target_brain))
-			to_chat(usr, "This mob has no brain to insert into an MMI.")
+			to_chat(usr, "Esta multidão não tem cérebro para inserir em um MMI.")
 			return
 
 		var/obj/item/mmi/new_mmi = new(get_turf(src))
@@ -920,7 +919,7 @@
 		target_brain.Remove(src)
 		new_mmi.force_brain_into(target_brain)
 
-		to_chat(usr, "Turned [src] into an MMI.")
+		to_chat(usr, "Virado.[src]em um MMI.")
 		log_admin("[key_name(usr)] turned [key_name_and_tag(src)] into an MMI.")
 
 		qdel(src)
@@ -956,7 +955,7 @@
 
 /mob/living/carbon/human/proc/fireman_carry(mob/living/carbon/target)
 	if(!can_be_firemanned(target) || INCAPACITATED_IGNORING(src, INCAPABLE_GRAB))
-		to_chat(src, span_warning("You can't fireman carry [target] while [target.p_they()] [target.p_are()] standing!"))
+		to_chat(src, span_warning("Você não pode carregar o bombeiro.[target]enquanto[target.p_they()] [target.p_are()]Em pé!"))
 		return
 
 	var/carrydelay = 5 SECONDS //if you have latex you are faster at grabbing
@@ -984,18 +983,18 @@
 		skills_space = " quickly"
 	//SKYRAT EDIT ADDITION
 	else if(HAS_TRAIT(target, TRAIT_OVERSIZED) && !HAS_TRAIT(src, TRAIT_OVERSIZED))
-		visible_message(span_warning("[src] tries to carry [target], but they are too heavy!"))
+		visible_message(span_warning("[src]Tenta carregar[target]Mas eles são muito pesados!"))
 		return
 	//SKYRAT EDIT END
-	visible_message(span_notice("[src] starts[skills_space] lifting [target] onto [p_their()] back..."),
-		span_notice("You[skills_space] start to lift [target] onto your back..."))
+	visible_message(span_notice("[src]Começa[skills_space]levantamento[target]em frente[p_their()]Para trás..."),
+		span_notice("Você.[skills_space]Comece a levantar.[target]nas suas costas..."))
 	if(!do_after(src, carrydelay, target))
-		visible_message(span_warning("[src] fails to fireman carry [target]!"))
+		visible_message(span_warning("[src]O bombeiro não carrega.[target]!"))
 		return
 
 	//Second check to make sure they're still valid to be carried
 	if(!can_be_firemanned(target) || INCAPACITATED_IGNORING(src, INCAPABLE_GRAB) || target.buckled)
-		visible_message(span_warning("[src] fails to fireman carry [target]!"))
+		visible_message(span_warning("[src]O bombeiro não carrega.[target]!"))
 		return
 
 	mind?.adjust_experience(/datum/skill/athletics, round(experience_reward/(fitness_level || 1), 1)) //Get a bit fitter every time we fireman carry successfully. Deadlift your friends for gains!
@@ -1004,21 +1003,21 @@
 
 /mob/living/carbon/human/proc/piggyback(mob/living/carbon/target)
 	if(!can_piggyback(target))
-		to_chat(target, span_warning("You can't piggyback ride [src] right now!"))
+		to_chat(target, span_warning("Você não pode andar de carona[src]Agora!"))
 		return
 
-	visible_message(span_notice("[target] starts to climb onto [src]..."))
+	visible_message(span_notice("[target]começa a subir em[src]..."))
 	if(!do_after(target, 1.5 SECONDS, target = src) || !can_piggyback(target))
-		visible_message(span_warning("[target] fails to climb onto [src]!"))
+		visible_message(span_warning("[target]Não consegue subir[src]!"))
 		return
 
 
 	if(INCAPACITATED_IGNORING(target, INCAPABLE_GRAB) || INCAPACITATED_IGNORING(src, INCAPABLE_GRAB))
-		target.visible_message(span_warning("[target] can't hang onto [src]!"))
+		target.visible_message(span_warning("[target]Não posso segurar[src]!"))
 		return
 	//SKYRAT EDIT START
 	if(HAS_TRAIT(target, TRAIT_OVERSIZED) && !HAS_TRAIT(src, TRAIT_OVERSIZED))
-		target.visible_message(span_warning("[target] is too heavy for [src] to carry!"))
+		target.visible_message(span_warning("[target]é muito pesado para[src]Para carregar!"))
 		var/dam_zone = pick(BODY_ZONE_CHEST, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 		var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
 		var/wound_bon = 0
@@ -1026,10 +1025,10 @@
 			affecting = get_bodypart(BODY_ZONE_CHEST)
 		if(prob(oversized_piggywound_chance	))
 			wound_bon = 100
-			to_chat(src, span_danger("You are crushed under the weight of [target]!"))
-			to_chat(target, span_danger("You accidentally crush [src]!"))
+			to_chat(src, span_danger("Você está esmagado sob o peso de[target]!"))
+			to_chat(target, span_danger("Você acidentalmente esmaga[src]!"))
 		else
-			to_chat(src, span_danger("You hurt your [affecting.name] while trying to endure the weight of [target]!"))
+			to_chat(src, span_danger("Você machucou seu[affecting.name]enquanto tentava suportar o peso de[target]!"))
 		apply_damage(oversized_piggydam, BRUTE, affecting, wound_bonus=wound_bon)
 		playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 		AddElement(/datum/element/squish, 20 SECONDS) // Totally not stolen from a vending machine code
@@ -1044,7 +1043,7 @@
 
 /mob/living/carbon/human/is_buckle_possible(mob/living/target, force, check_loc)
 	if(!HAS_TRAIT(target, TRAIT_CAN_MOUNT_HUMANS))
-		target.visible_message(span_warning("[target] really can't seem to mount [src]..."))
+		target.visible_message(span_warning("[target]Realmente não consigo montar[src]..."))
 		return FALSE
 	// if you don't invoke it with forced, IE via piggyback / fireman, always fail
 	if(!force)

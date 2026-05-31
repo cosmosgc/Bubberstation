@@ -223,9 +223,9 @@
 	. = ..()
 	if(stat == DEAD)
 		if(HAS_MIND_TRAIT(user, TRAIT_NAIVE))
-			. += span_deadsay("Upon closer examination, [p_they()] appear[p_s()] to be asleep.")
+			. += span_deadsay("Após um exame mais detalhado,[p_they()]Aparecer[p_s()]estar dormindo.")
 		else
-			. += span_deadsay("Upon closer examination, [p_they()] appear[p_s()] to be dead.")
+			. += span_deadsay("Após um exame mais detalhado,[p_they()]Aparecer[p_s()]Estar morto.")
 
 /mob/living/simple_animal/update_stat()
 	if(HAS_TRAIT(src, TRAIT_GODMODE))
@@ -555,7 +555,7 @@
 	if(isliving(hunted)) // Are we hunting a living mob?
 		var/mob/living/prey = hunted
 		if(inept_hunter) // Make your hunter inept to have them unable to catch their prey.
-			visible_message(span_warning("[src] chases [prey] around, to no avail!"))
+			visible_message(span_warning("[src]Perseguições[prey]Em volta, sem sucesso!"))
 			step(prey, pick(GLOB.cardinals))
 			COOLDOWN_START(src, emote_cooldown, 1 MINUTES)
 			return

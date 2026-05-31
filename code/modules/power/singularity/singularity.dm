@@ -1,7 +1,7 @@
 /// The gravitational singularity
 /obj/singularity
 	name = "gravitational singularity"
-	desc = "A gravitational singularity."
+	desc = "Uma singularidade gravitacional."
 	icon = 'icons/obj/machines/engine/singularity.dmi'
 	icon_state = "singularity_s1"
 	anchored = TRUE
@@ -64,10 +64,7 @@
 	SSpoints_of_interest.make_point_of_interest(src)
 
 	var/datum/component/singularity/new_component = AddComponent(
-		singularity_component_type, \
-		consume_callback = CALLBACK(src, PROC_REF(consume)), \
-		roaming = (move_self && current_size >= STAGE_TWO), \
-	)
+		singularity_component_type, 		consume_callback = CALLBACK(src, PROC_REF(consume)), 		roaming = (move_self && current_size >= STAGE_TWO), 	)
 
 	singularity_component = WEAKREF(new_component)
 
@@ -97,9 +94,9 @@
 	. = COMPONENT_CANCEL_ATTACK_CHAIN
 	var/mob/living/carbon/jedi = user
 	jedi.visible_message(
-		span_danger("[jedi]'s head begins to collapse in on itself!"),
-		span_userdanger("Your head feels like it's collapsing in on itself! This was really not a good idea!"),
-		span_hear("You hear something crack and explode in gore.")
+		span_danger("[jedi]A cabeça começa a cair sobre si mesma!"),
+		span_userdanger("Sua cabeça parece estar desmoronando! Não foi uma boa ideia!"),
+		span_hear("Você ouve algo quebrar e explodir em sangue.")
 		)
 	jedi.Stun(3 SECONDS)
 	new /obj/effect/gibspawner/generic(get_turf(jedi), jedi)
@@ -323,17 +320,17 @@
 
 /obj/singularity/proc/supermatter_upgrade()
 	name = "supermatter-charged [initial(name)]"
-	desc = "[initial(desc)] It glows fiercely with inner fire."
+	desc = "[initial(desc)]Brilha ferozmente com fogo interior."
 	consumed_supermatter = TRUE
 	set_light(10)
 
 /obj/singularity/proc/consume_boh(obj/boh)
 	collapsing = TRUE
 	name = "unstable [initial(name)]"
-	desc = "[initial(desc)] It seems to be collapsing in on itself."
+	desc = "[initial(desc)]Parece estar desmoronando em si mesmo."
 	visible_message(
 		message = span_danger("As [src] consumes [boh], it begins to collapse in on itself!"),
-		blind_message = span_hear("You hear aggressive crackling!"),
+		blind_message = span_hear("Você ouve crepitações agressivas!"),
 		vision_distance = 15,
 	)
 	playsound(loc, 'sound/effects/clockcult_gateway_disrupted.ogg', 200, vary = TRUE, extrarange = 3, falloff_exponent = 1, frequency = -1, pressure_affected = FALSE, ignore_walls = TRUE, falloff_distance = 7)
@@ -434,8 +431,8 @@
 /obj/singularity/proc/combust_mobs()
 	for(var/mob/living/carbon/burned_mob in urange(20, src, 1))
 		burned_mob.visible_message(
-			span_warning("[burned_mob]'s skin bursts into flame!"),
-			span_userdanger("You feel an inner fire as your skin bursts into flames!")
+			span_warning("[burned_mob]A pele explode em chamas!"),
+			span_userdanger("Você sente um fogo interior quando sua pele explode em chamas!")
 		)
 		burned_mob.adjust_fire_stacks(5)
 		burned_mob.ignite_mob()
@@ -454,7 +451,7 @@
 		if(istype(stunned_human.glasses, /obj/item/clothing/glasses/meson))
 			var/obj/item/clothing/glasses/meson/check_meson = stunned_human.glasses
 			if(check_meson.vision_flags & SEE_TURFS)
-				to_chat(stunned_human, span_notice("You look directly into \the [src], good thing you had your protective eyewear on!"))
+				to_chat(stunned_human, span_notice("Você olha diretamente para\the [src]Que bom que você estava com seus óculos protetores!"))
 				continue
 
 		apply_stun(stunned_mob)
@@ -462,8 +459,8 @@
 /obj/singularity/proc/apply_stun(mob/living/carbon/stunned_mob)
 	stunned_mob.apply_effect(60, EFFECT_STUN)
 	stunned_mob.visible_message(
-		span_danger("[stunned_mob] stares blankly at \the [src]!"),
-		span_userdanger("You look directly into \the [src] and feel weak.")
+		span_danger("[stunned_mob]Olha em branco para\the [src]!"),
+		span_userdanger("Você olha diretamente para\the [src]e sentir-se fraco.")
 	)
 
 /obj/singularity/proc/emp_area()

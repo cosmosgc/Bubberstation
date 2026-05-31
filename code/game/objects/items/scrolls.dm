@@ -1,6 +1,6 @@
 /obj/item/teleportation_scroll
 	name = "scroll of teleportation"
-	desc = "A scroll for moving around."
+	desc = "Um pergaminho para se mover."
 	icon = 'icons/obj/scrolls.dmi'
 	icon_state = "scroll"
 	worn_icon_state = "scroll"
@@ -31,7 +31,7 @@
 	uses--
 	if(uses > 0)
 		return
-	to_chat(cast_on, span_warning("[src] runs out of uses and crumbles to dust!"))
+	to_chat(cast_on, span_warning("[src]Acabou-se o uso e desmoronou para o pó!"))
 	qdel(src)
 
 /obj/item/teleportation_scroll/apprentice
@@ -57,7 +57,7 @@
 		return
 	var/datum/action/cooldown/spell/teleport/area_teleport/wizard/scroll/teleport = locate() in actions
 	if(!teleport)
-		to_chat(user, span_warning("[src] seems to be a faulty teleportation scroll, and has no magic associated."))
+		to_chat(user, span_warning("[src]Parece ser um rolo de teletransporte defeituoso, e não tem magia associada."))
 		return
 	if(!teleport.Activate(user))
 		return

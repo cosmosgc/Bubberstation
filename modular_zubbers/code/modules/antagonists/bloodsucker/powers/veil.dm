@@ -1,6 +1,6 @@
 /datum/action/cooldown/bloodsucker/veil
 	name = "Veil of Many Faces"
-	desc = "Disguise yourself in the illusion of another identity."
+	desc = "Disfarce-se na ilusão de outra identidade."
 	button_icon_state = "power_veil"
 	power_flags = NONE
 	check_flags = AB_CHECK_CONSCIOUS
@@ -40,7 +40,7 @@
 //	if(blahblahblah)
 //		Disguise_Outfit()
 	veil_user()
-	owner.balloon_alert(owner, "veil turned on.")
+	owner.balloon_alert(owner, "Véu ligado.")
 	return TRUE
 
 /* // Meant to disguise your character's clothing into fake ones.
@@ -52,7 +52,7 @@
 /datum/action/cooldown/bloodsucker/veil/proc/veil_user()
 	// Change Name/Voice
 	var/mob/living/carbon/human/user = owner
-	to_chat(owner, span_warning("You mystify the air around your person. Your identity is now altered."))
+	to_chat(owner, span_warning("Você confunde o ar em torno de sua pessoa. Sua identidade agora está alterada."))
 
 	// Store Prev Appearance
 	disguise_name = generate_random_name(user.gender, TRUE)
@@ -138,7 +138,7 @@
 	user.update_body_parts(update_limb_data = TRUE) // Body itself, maybe skin color?
 
 	cast_effect() // POOF
-	owner.balloon_alert(owner, "veil turned off.")
+	owner.balloon_alert(owner, "Véu desligado.")
 
 	UnregisterSignal(user, COMSIG_HUMAN_GET_VISIBLE_NAME)
 

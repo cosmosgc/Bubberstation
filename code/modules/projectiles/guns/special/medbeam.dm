@@ -1,6 +1,6 @@
 /obj/item/gun/medbeam
 	name = "Medical Beamgun"
-	desc = "Don't cross the streams!"
+	desc = "Não atravesse os riachos!"
 	icon = 'icons/obj/chronos.dmi'
 	icon_state = "chronogun"
 	inhand_icon_state = "chronogun"
@@ -51,7 +51,7 @@
 	current_beam = null
 	active = FALSE //skip qdelling the beam again if we're doing this proc, because
 	if(isliving(loc))
-		to_chat(loc, span_warning("You lose control of the beam!"))
+		to_chat(loc, span_warning("Você perde o controle da viga!"))
 	LoseTarget()
 
 /obj/item/gun/medbeam/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)

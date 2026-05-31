@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/projectile/moon_parade
 	name = "Lunar parade"
-	desc = "This unleashes the parade, making everyone in its way join it and suffer hallucinations."
+	desc = "Isso desencadeia o desfile, fazendo todos se juntarem a ele e sofrerem alucinações."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -64,7 +64,7 @@
 
 	// Anti-magic destroys the projectile for consistency and counterplay
 	if(victim.can_block_magic(MAGIC_RESISTANCE_MOON))
-		visible_message(span_warning("The parade hits [victim] and a sudden wave of clarity comes over you!"))
+		visible_message(span_warning("O desfile bate[victim]E uma onda repentina de clareza vem sobre você!"))
 		return PROJECTILE_DELETE_WITHOUT_HITTING
 
 	return ..()

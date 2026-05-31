@@ -56,12 +56,12 @@ export const Fax = (props) => {
   return (
     <Window width={340} height={540}>
       <Window.Content scrollable>
-        <Section title="About Fax">
-          <LabeledList.Item label="Network name">
+        <Section title="Sobre o Fax">
+          <LabeledList.Item label="Nome da Rede.">
             {data.fax_name}
           </LabeledList.Item>
-          <LabeledList.Item label="Network ID">{data.fax_id}</LabeledList.Item>
-          <LabeledList.Item label="Visible to Network">
+          <LabeledList.Item label="ID da rede">{data.fax_id}</LabeledList.Item>
+          <LabeledList.Item label="Visível para a rede">
             {data.visible ? 'true' : 'false'}
           </LabeledList.Item>
         </Section>
@@ -83,7 +83,7 @@ export const Fax = (props) => {
         </Section>
         <Section title="Send">
           {faxes.length === 0 && special_networks.length === 0 ? (
-            "The fax couldn't detect any other faxes on the network."
+            "O fax não podia detectar nenhum outro fax na rede."
           ) : (
             <Box mt={0.4}>
               {special_networks.map((special: FaxSpecial) => (

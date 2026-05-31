@@ -15,12 +15,12 @@ export const EcholocationFocus = () => {
     <Window width={250} height={300}>
       <Window.Content>
         <Section
-          title="Echolocation Settings"
+          title="Configurações de Ecolocalização"
           buttons={
             <Button
               icon="info"
               disabled
-              tooltip="Determines what objects you see or ignore with your echolocation."
+              tooltip="Determina o que você vê ou ignora com sua ecolocalização."
             />
           }
         >

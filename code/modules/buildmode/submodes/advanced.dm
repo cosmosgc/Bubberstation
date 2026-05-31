@@ -4,25 +4,20 @@
 
 /datum/buildmode_mode/advanced/show_help(client/builder)
 	to_chat(builder, span_purple(boxed_message(
-		"[span_bold("Set object type")] -> Right Mouse Button on buildmode button\n\
-		[span_bold("Copy object type")] -> Left Mouse Button + Alt on turf/obj\n\
-		[span_bold("Place objects")] -> Left Mouse Button on turf/obj\n\
-		[span_bold("Delete objects")] -> Right Mouse Button\n\
-		\n\
-		Use the button in the upper left corner to change the direction of built objects."))
+		"[span_bold("Set object type")] -> Right Mouse Button on buildmode button\n		[span_bold("Copy object type")] -> Left Mouse Button + Alt on turf/obj\n		[span_bold("Place objects")] -> Left Mouse Button on turf/obj\n		[span_bold("Delete objects")] -> Right Mouse Button\n		\n		Use the button in the upper left corner to change the direction of built objects."))
 	)
 
 /datum/buildmode_mode/advanced/change_settings(client/c)
-	var/target_path = input(c, "Enter typepath:", "Typepath", "/obj/structure/closet")
+	var/target_path = input(c, "Digite o tipo de caminho:", "Typepath", "/obj/structure/closet")
 	objholder = text2path(target_path)
 	if(!ispath(objholder))
 		objholder = pick_closest_path(target_path)
 		if(!objholder)
-			tgui_alert(usr,"No path was selected")
+			tgui_alert(usr,"Nenhum caminho foi selecionado.")
 			return
 		else if(ispath(objholder, /area))
 			objholder = null
-			tgui_alert(usr,"That path is not allowed.")
+			tgui_alert(usr,"Esse caminho não é permitido.")
 			return
 	BM.preview_selected_item(objholder)
 
@@ -35,10 +30,10 @@
 	if(left_click && alt_click)
 		if (istype(object, /turf) || isobj(object) || istype(object, /mob))
 			objholder = object.type
-			to_chat(c, span_notice("[initial(object.name)] ([object.type]) selected."))
+			to_chat(c, span_notice("[initial(object.name)] ([object.type]) selecionado."))
 			BM.preview_selected_item(objholder)
 		else
-			to_chat(c, span_notice("[initial(object.name)] is not a turf, object, or mob! Please select again."))
+			to_chat(c, span_notice("[initial(object.name)]Não é um território, objeto ou multidão! Por favor, selecione novamente."))
 	else if(left_click)
 		if(ispath(objholder,/turf))
 			var/turf/T = get_turf(object)
@@ -54,7 +49,7 @@
 			A.setDir(BM.build_dir)
 			log_admin("Build Mode: [key_name(c)] modified [A]'s [COORD(A)] dir to [BM.build_dir]")
 		else
-			to_chat(c, span_warning("Select object type first."))
+			to_chat(c, span_warning("Selecione o tipo de objeto primeiro."))
 	else if(right_click)
 		if(isobj(object))
 			log_admin("Build Mode: [key_name(c)] deleted [object] at [AREACOORD(object)]")

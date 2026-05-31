@@ -1,8 +1,6 @@
 /datum/action/cooldown/spell/charge
 	name = "Charge"
-	desc = "This spell can be used to recharge a variety of things in your hands, \
-		from magical artifacts to electrical components. A creative wizard can even use it \
-		to grant magical power to a fellow magic user."
+	desc = "Este feitiço pode ser usado para recarregar várias coisas em suas mãos, de artefatos mágicos a componentes elétricos. Um mago criativo pode até usá-lo para dar poder mágico a outro usuário mágico."
 	button_icon_state = "charge"
 
 	sound = 'sound/effects/magic/charge.ogg'
@@ -30,29 +28,29 @@
 			pulled_has_spells = TRUE
 
 		if(pulled_has_spells)
-			to_chat(pulled_living, span_notice("You feel raw magic flowing through you. It feels good!"))
-			to_chat(cast_on, span_notice("[pulled_living] suddenly feels very warm!"))
+			to_chat(pulled_living, span_notice("Você sente magia crua fluindo através de você. Isso é bom!"))
+			to_chat(cast_on, span_notice("[pulled_living]de repente parece muito quente!"))
 			return
 
-		to_chat(pulled_living, span_notice("You feel very strange for a moment, but then it passes."))
+		to_chat(pulled_living, span_notice("Você se sente muito estranho por um momento, mas depois passa."))
 
 	// Then charge their main hand item, then charge their offhand item
 	var/obj/item/to_charge = cast_on.get_active_held_item() || cast_on.get_inactive_held_item()
 	if(!to_charge)
-		to_chat(cast_on, span_notice("You feel magical power surging through your hands, but the feeling rapidly fades."))
+		to_chat(cast_on, span_notice("Você sente o poder mágico subindo através de suas mãos, mas o sentimento rapidamente desaparece."))
 		return
 
 	var/charge_return = SEND_SIGNAL(to_charge, COMSIG_ITEM_MAGICALLY_CHARGED, src, cast_on)
 
 	if(QDELETED(to_charge))
-		to_chat(cast_on, span_warning("[src] seems to react adversely with [to_charge]!"))
+		to_chat(cast_on, span_warning("[src]Parece reagir adversamente com[to_charge]!"))
 		return
 
 	if(charge_return & COMPONENT_ITEM_BURNT_OUT)
-		to_chat(cast_on, span_warning("[to_charge] seems to react negatively to [src], becoming uncomfortably warm!"))
+		to_chat(cast_on, span_warning("[to_charge]Parece reagir negativamente a[src], ficando desconfortavelmente quente!"))
 
 	else if(charge_return & COMPONENT_ITEM_CHARGED)
-		to_chat(cast_on, span_notice("[to_charge] suddenly feels very warm!"))
+		to_chat(cast_on, span_notice("[to_charge]de repente parece muito quente!"))
 
 	else
-		to_chat(cast_on, span_notice("[to_charge] doesn't seem to be react to [src]."))
+		to_chat(cast_on, span_notice("[to_charge]Não parece estar reagindo a[src]."))

@@ -48,8 +48,8 @@
 		return
 
 	customer_pawn.visible_message(
-		span_danger("[customer_pawn] pushes [order_item] into their mouth-shaped hole!"),
-		span_danger("You push [order_item] into your mouth-shaped hole."),
+		span_danger("[customer_pawn]empurra[order_item]em seu buraco em forma de boca!"),
+		span_danger("Você empurra.[order_item]em seu buraco em forma de boca."),
 	)
 	playsound(customer_pawn, 'sound/items/eatfood.ogg', rand(10,50), TRUE)
 	qdel(order_item)

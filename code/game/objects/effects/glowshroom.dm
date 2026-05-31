@@ -3,7 +3,7 @@ GLOBAL_VAR_INIT(glowshrooms, 0)
 
 /obj/structure/glowshroom
 	name = "glowshroom"
-	desc = "Mycena Bregprox, a species of mushroom that glows in the dark."
+	desc = "Mycena Bregprox, uma espécie de cogumelo que brilha no escuro."
 	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
@@ -40,13 +40,13 @@ GLOBAL_VAR_INIT(glowshrooms, 0)
 
 /obj/structure/glowshroom/glowcap
 	name = "glowcap"
-	desc = "Mycena Ruthenia, a species of mushroom that, while it does glow in the dark, is not actually bioluminescent."
+	desc = "Mycena Ruthenia, uma espécie de cogumelo que, enquanto brilha no escuro, não é realmente bioluminescente."
 	icon_state = "glowcap"
 	myseed = /obj/item/seeds/glowshroom/glowcap
 
 /obj/structure/glowshroom/shadowshroom
 	name = "shadowshroom"
-	desc = "Mycena Umbra, a species of mushroom that emits shadow instead of light."
+	desc = "Mycena Umbra, uma espécie de cogumelo que emite sombra em vez de luz."
 	icon_state = "shadowshroom"
 	myseed = /obj/item/seeds/glowshroom/shadowshroom
 
@@ -62,7 +62,7 @@ GLOBAL_VAR_INIT(glowshrooms, 0)
 
 /obj/structure/glowshroom/brownshroom
 	name = "brownshroom"
-	desc = "Not technically a single species, but a cluster of various mushroom flora amalgamated into a single mycological patch."
+	desc = "Não tecnicamente uma única espécie, mas um conjunto de várias floras de cogumelos amalgamadas em um único remendo micológico."
 	icon_state = "brownshroom"
 	myseed = /obj/item/seeds/reishi //Just to have something since these aren't a new growable mushroom.
 
@@ -261,7 +261,7 @@ GLOBAL_VAR_INIT(glowshrooms, 0)
 	take_damage(5, BURN, 0, 0)
 
 /obj/structure/glowshroom/acid_act(acidpwr, acid_volume)
-	visible_message(span_danger("[src] melts away!"))
+	visible_message(span_danger("[src]Derrete!"))
 	var/obj/effect/decal/cleanable/molten_object/I = new (get_turf(src))
 	I.desc = "Looks like this was \an [src] some time ago."
 	qdel(src)

@@ -3,7 +3,7 @@
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "eldritch_tie"
 	post_init_icon_state = null
-	desc = "The necktie is adorned with a garish pattern. It's disturbingly vivid. Somehow you feel as if it would be wrong to ever take it off. It's your friend now. You will betray it if you change it for some boring scarf."
+	desc = "A gravata está adornada com um padrão brilhante. É perturbadormente vívido. De alguma forma você sente como se fosse errado tirá-lo. É seu amigo agora. Vai traí-lo se trocar por um cachecol chato."
 	clip_on = TRUE
 	greyscale_config = null
 	greyscale_config_worn = null
@@ -26,7 +26,7 @@
 /obj/item/clothing/neck/tie/disco/examine(mob/user)
 	. = ..()
 	if(!length(possessed_souls))
-		. += span_notice("It may be given sentience by [EXAMINE_HINT("using it in hand")].")
+		. += span_notice("Pode ser dada senciência por[EXAMINE_HINT("using it in hand")].")
 
 /obj/item/clothing/neck/tie/disco/equipped(mob/living/user, slot)
 	. = ..()
@@ -47,7 +47,7 @@
 		return ..()
 
 	using = TRUE
-	to_chat(user, span_notice("You plumb the depths of your Inland Empire. Whispers seem to emaninate from [src], as though it had somehow come to life; could it be?"))
+	to_chat(user, span_notice("Você mergulha nas profundezas do seu Império Inland. Sussurros parecem emanar de[src]Como se ganhado vida."))
 
 	var/list/candidates = SSpolling.poll_ghost_candidates(
 		question = "Do you want to play as the spirit of [span_danger("[user.real_name]'s")] [span_notice("horrific necktie")]?",
@@ -55,11 +55,11 @@
 		poll_time = 20 SECONDS,
 		alert_pic = user,
 		jump_target = user,
-		role_name_text = "Necktie of [user.real_name]",
+		role_name_text = "A gravidade de[user.real_name]",
 		ignore_category = POLL_IGNORE_HORRIFIC_NECKTIE,
 	)
 	if(!length(candidates))
-		to_chat(user, span_warning("The whispers coming from [src] fade and are silent again... Was it all your imagination? Maybe you can try again later."))
+		to_chat(user, span_warning("Os sussurros vistos de[src]Desaparecer e ficar em silêncio novamente... Foi toda a sua imaginação? Talvez possa tentar de novo mais tarde."))
 		using = FALSE
 		return
 	hears_us = user.mind
@@ -73,10 +73,10 @@
 /obj/item/clothing/neck/tie/disco/attack_ghost(mob/hopeful_ghost)
 	. = ..()
 	if (!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER))
-		to_chat(hopeful_ghost, span_warning("Ghost roles have been temporarily disabled!"))
+		to_chat(hopeful_ghost, span_warning("Os papéis dos fantasmas foram temporariamente desativados!"))
 		return
 	if (!SSticker.HasRoundStarted())
-		to_chat(hopeful_ghost, span_warning("You cannot assume control of this until after the round has started!"))
+		to_chat(hopeful_ghost, span_warning("Você não pode assumir o controle disso até que a rodada comece!"))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 	became_player_controlled(hopeful_ghost)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
@@ -94,7 +94,7 @@
 /obj/item/clothing/neck/tie/disco/proc/on_deleting(datum/source, force)
 	SIGNAL_HANDLER
 	possessed_souls -= source
-	to_chat(hears_us.current, span_notice("You feel like a voice just exited your mind."))
+	to_chat(hears_us.current, span_notice("Parece que uma voz saiu da sua mente."))
 
 ///Creates the ghost itself and adds them to the list of possessed souls in the tie.
 /obj/item/clothing/neck/tie/disco/proc/create_ghost(mob/new_ghost)
@@ -103,7 +103,7 @@
 	RegisterSignal(new_soul, COMSIG_LIVING_SEND_SPEECH, PROC_REF(on_speech_sent))
 	RegisterSignal(new_soul, COMSIG_QDELETING, PROC_REF(on_deleting))
 	possessed_souls += new_soul
-	to_chat(hears_us.current, span_notice("You look down at [src] and feel like there's another thought process entering your mind."))
+	to_chat(hears_us.current, span_notice("Você olha para baixo[src]e sentir que há outro processo de pensamento entrando em sua mente."))
 
 ///Called when a voice in the tie speaks, we use this to remove all listeners except the voices and creator.
 /obj/item/clothing/neck/tie/disco/proc/on_speech_sent(atom/source, list/listeners)
@@ -127,9 +127,7 @@
 
 /mob/living/basic/tie/Login()
 	. = ..()
-	to_chat(src, span_notice("You are the horrific necktie of the person who summoned you, \
-		the only person who is able to hear you. Like a voice in their head, you are their reasoning, \
-		their second-in-command. Take good care of them."))
+	to_chat(src, span_notice("Você é a gravata horrível da pessoa que o chamou, a única pessoa que é capaz de ouvi-lo. Como uma voz na cabeça deles, você é seu raciocínio, seu segundo em comando. Cuide bem deles."))
 
 /mob/living/basic/tie/Logout()
 	. = ..()

@@ -42,17 +42,17 @@
 	switch (action)
 		if ("adj_exp")
 			var/skill = text2path(params["skill"])
-			var/number = input("Please insert the amount of experience you'd like to add/subtract:") as num|null
+			var/number = input("Por favor, insira a quantidade de experiência que gostaria de adicionar/subtrair:") as num|null
 			if (number)
 				targetmind.adjust_experience(skill, number)
 		if ("set_exp")
 			var/skill = text2path(params["skill"])
-			var/number = input("Please insert the number you want to set the player's exp to:") as num|null
+			var/number = input("Por favor, insira o número que você quer para definir exp do jogador para:") as num|null
 			if (number)
 				targetmind.set_experience(skill, number)
 		if ("set_lvl")
 			var/skill = text2path(params["skill"])
 			var/max_skill = length(SKILL_EXP_LIST)
-			var/number = input("Please insert a whole number between 1 (NONE) and [max_skill] (LEGENDARY) corresponding to the level you'd like to set the player to.") as num|null
+			var/number = input("Por favor, insira um número inteiro entre 1 (Nenhum) e[max_skill](LEGENDÁRIO) correspondente ao nível que você gostaria de definir o jogador.") as num|null
 			if (number > 0 && number <= max_skill )
 				targetmind.set_level(skill, number)

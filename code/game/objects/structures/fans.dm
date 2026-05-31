@@ -3,7 +3,7 @@
 	icon = 'icons/obj/mining_zones/survival_pod.dmi'
 	icon_state = "fans"
 	name = "environmental regulation system"
-	desc = "A large machine releasing a constant gust of air."
+	desc = "Uma grande máquina libertando uma constante rajada de ar."
 	anchored = TRUE
 	density = TRUE
 	var/buildstacktype = /obj/item/stack/sheet/iron
@@ -15,15 +15,15 @@
 		new buildstacktype(loc,buildstackamount)
 
 /obj/structure/fans/wrench_act(mob/living/user, obj/item/I)
-	user.visible_message(span_warning("[user] disassembles [src]."),
-		span_notice("You start to disassemble [src]..."), span_hear("You hear clanking and banging noises."))
+	user.visible_message(span_warning("[user]Desmonta[src]."),
+		span_notice("Você começa a desmontar[src]..."), span_hear("Você ouve barulhos."))
 	if(I.use_tool(src, user, 20, volume=50))
 		deconstruct(TRUE)
 	return TRUE
 
 /obj/structure/fans/tiny
 	name = "tiny fan"
-	desc = "A tiny fan, releasing a thin gust of air."
+	desc = "Um pequeno ventilador, libertando uma rajada de ar."
 	layer = ABOVE_NORMAL_TURF_LAYER
 	density = FALSE
 	icon_state = "fan_tiny"
@@ -45,7 +45,7 @@
 
 /obj/structure/fans/tiny/shield
 	name = "shuttle bay shield"
-	desc = "A tenuously thin energy shield only capable of holding in air, but not solid objects or people."
+	desc = "Um escudo de energia tênuemente fino só capaz de segurar no ar, mas não objetos sólidos ou pessoas."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield-old" // We should probably get these their own icon at some point
 	light_color = LIGHT_COLOR_BLUE

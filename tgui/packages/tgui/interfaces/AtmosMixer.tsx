@@ -40,7 +40,7 @@ export const AtmosMixer = (props) => {
                 onClick={() => act('power')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Output Pressure">
+            <LabeledList.Item label="Pressão de saída">
               <NumberInput
                 animated
                 value={set_pressure}
@@ -67,7 +67,7 @@ export const AtmosMixer = (props) => {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Main Node" labelColor="green">
+            <LabeledList.Item label="Nó Principal" labelColor="green">
               <NumberInput
                 animated
                 tickWhileDragging
@@ -85,7 +85,7 @@ export const AtmosMixer = (props) => {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Side Node" labelColor="blue">
+            <LabeledList.Item label="Node Lado" labelColor="blue">
               <NumberInput
                 animated
                 tickWhileDragging

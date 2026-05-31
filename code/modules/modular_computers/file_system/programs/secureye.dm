@@ -6,7 +6,7 @@
 	downloader_category = PROGRAM_CATEGORY_SECURITY
 	ui_header = "borg_mon.gif"
 	program_open_overlay = "generic"
-	extended_desc = "This program allows access to standard security camera networks."
+	extended_desc = "Este programa permite o acesso às redes de câmeras de segurança padrão."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	download_access = list(ACCESS_SECURITY)
 	can_run_on_flags = PROGRAM_CONSOLE | PROGRAM_LAPTOP
@@ -37,7 +37,7 @@
 /datum/computer_file/program/secureye/syndicate
 	filename = "syndeye"
 	filedesc = "SyndEye"
-	extended_desc = "This program allows for illegal access to security camera networks."
+	extended_desc = "Este programa permite acesso ilegal às redes de câmeras de segurança."
 	download_access = null
 	can_run_on_flags = PROGRAM_ALL
 	program_flags = PROGRAM_ON_SYNDINET_STORE | PROGRAM_UNIQUE_COPY

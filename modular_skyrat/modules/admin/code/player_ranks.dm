@@ -15,7 +15,7 @@ ADMIN_VERB(manage_player_ranks, R_ADMIN, "Manage Player Ranks", "Manage who has 
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/choice = tgui_alert(usr, "Which rank would you like to manage?", "Manage Player Ranks", SKYRAT_PLAYER_RANKS)
+	var/choice = tgui_alert(usr, "Qual é o posto que você gostaria de gerenciar?", "Manage Player Ranks", SKYRAT_PLAYER_RANKS)
 	if(!choice || !(choice in SKYRAT_PLAYER_RANKS))
 		return
 
@@ -39,15 +39,15 @@ ADMIN_VERB(manage_player_ranks, R_ADMIN, "Manage Player Ranks", "Manage who has 
 	var/group_title = LOWER_TEXT(group)
 
 	var/list/choices = list("Add", "Remove")
-	switch(tgui_alert(usr, "What would you like to do?", "Manage [group]s", choices))
+	switch(tgui_alert(usr, "O que gostaria de fazer?", "Manage [group]s", choices))
 		if("Add")
-			var/name = input(usr, "Please enter the CKEY (case-insensitive) of the person you would like to make a [group_title]:", "Add a [group_title]") as null|text
+			var/name = input(usr, "Por favor, entre no CKEY (caso-insensível) da pessoa que você gostaria de fazer um[group_title]:", "Adicione a[group_title]") as null|text
 			if(!name)
 				return
 
 			var/player_to_be = ckey(name)
 			if(!player_to_be)
-				to_chat(usr, span_warning("\"[name]\" is not a valid CKEY."))
+				to_chat(usr, span_warning("\"[name]\"Não é um CKEY válido."))
 				return
 
 			var/success = SSplayer_ranks.add_player_to_group(usr.client, player_to_be, group_title)
@@ -60,13 +60,13 @@ ADMIN_VERB(manage_player_ranks, R_ADMIN, "Manage Player Ranks", "Manage who has 
 
 
 		if("Remove")
-			var/name = input(usr, "Please enter the CKEY (case-insensitive) of the person you would like to no longer be a [group_title]:", "Remove a [group_title]") as null|text
+			var/name = input(usr, "Por favor, digite o CKEY (caso-insensível) da pessoa que você gostaria de não ser mais um[group_title]:", "Remova a[group_title]") as null|text
 			if(!name)
 				return
 
 			var/player_that_was = ckey(name)
 			if(!player_that_was)
-				to_chat(usr, span_warning("\"[name]\" is not a valid CKEY."))
+				to_chat(usr, span_warning("\"[name]\"Não é um CKEY válido."))
 				return
 
 			var/success = SSplayer_ranks.remove_player_from_group(usr.client, player_that_was, group_title)
@@ -95,11 +95,11 @@ ADMIN_VERB(migrate_player_ranks, R_ADMIN|R_DEBUG|R_SERVER, "Migrate Player Ranks
 	if(!CONFIG_GET(flag/sql_enabled))
 		return
 
-	var/choice = tgui_alert(usr, "Which rank would you like to migrate?", "Migrate Player Ranks", SKYRAT_PLAYER_RANKS)
+	var/choice = tgui_alert(usr, "Que posto gostaria de migrar?", "Migrate Player Ranks", SKYRAT_PLAYER_RANKS)
 	if(!choice || !(choice in SKYRAT_PLAYER_RANKS))
 		return
 
-	if(tgui_alert(usr, "Are you sure that you would like to migrate [choice]s to the SQL-based system?", "Migrate Player Ranks", list("Yes", "No")) != "Yes")
+	if(tgui_alert(usr, "Tem certeza que gostaria de migrar[choice]Para o sistema baseado em SQL?", "Migrate Player Ranks", list("Yes", "No")) != "Yes")
 		return
 
 	log_admin("[key_name(usr)] is migrating the [choice] player rank from its legacy system to the SQL-based one.")

@@ -1,6 +1,6 @@
 /obj/machinery/botpad
 	name = "Bot pad"
-	desc = "A lighter version of the orbital mech pad modified to launch bots. Requires linking to a remote to function."
+	desc = "Uma versão mais leve da plataforma orbital modificada para lançar bots. Requer ligação a um remoto para funcionar."
 	icon = 'icons/obj/machines/telepad.dmi'
 	icon_state = "botpad"
 	base_icon_state = "botpad"
@@ -32,7 +32,7 @@
 		return NONE
 	var/obj/item/multitool/multitool = tool
 	multitool.set_buffer(src)
-	balloon_alert(user, "salvo no buffer da multitool")
+	balloon_alert(user, "Salvo nenhum buffer da multitool")
 	return ITEM_INTERACT_SUCCESS
 
 // Checks the turf for a bot and launches it if it's the only mob on the pad.
@@ -41,15 +41,15 @@
 	var/atom/possible_bot
 	for(var/mob/living/robot in get_turf(src))
 		if(!isbot(robot))
-			user.balloon_alert(user, "unidentified life form on the pad!")
+			user.balloon_alert(user, "Forma de vida não identificada no bloco!")
 			return
 		if(!isnull(possible_bot))
-			user.balloon_alert(user, "too many bots on the pad!")
+			user.balloon_alert(user, "Tem muitos robôs na almofada!")
 			return
 		possible_bot = robot  // We don't change the launched_bot var here because we are not sure if there is another bot on the pad.
 
 	if(!use_energy(active_power_usage, force = FALSE))
-		balloon_alert(user, "energia insuficiente!")
+		balloon_alert(user, "Insuficiência de energia!")
 		return
 	launched_bot = WEAKREF(possible_bot)
 	podspawn(list(
@@ -62,9 +62,9 @@
 /obj/machinery/botpad/proc/recall(mob/living/user)
 	var/atom/our_bot = launched_bot?.resolve()
 	if(isnull(our_bot))
-		user.balloon_alert(user, "no bots sent from the pad!")
+		user.balloon_alert(user, "Nenhum robô enviado do bloco!")
 		return
-	user.balloon_alert(user, "bot sent back to pad")
+	user.balloon_alert(user, "Bot enviado de volta para o bloco")
 	if(isbasicbot(our_bot))
 		var/mob/living/basic/bot/basic_bot = our_bot
 		basic_bot.summon_bot(src)

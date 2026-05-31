@@ -33,14 +33,14 @@
 		var/list/updated_damaged_limbs = damaged_limbs
 		updated_damaged_limbs.Remove(repaired)
 		if(!length(damaged_limbs))
-			user.balloon_alert(user, "fully repaired")
+			user.balloon_alert(user, "totalmente reparado.")
 			return ITEM_INTERACT_SUCCESS
-		user.balloon_alert(user, "repairing [updated_damaged_limbs[1]]")
+		user.balloon_alert(user, "Consertando[updated_damaged_limbs[1]]")
 		INVOKE_ASYNC(src, PROC_REF(try_auto_heal), interacting_with, user, updated_damaged_limbs, preferred_limb)
 		return
 
-	user.visible_message(span_notice("[user] starts to fix some of the wires in [attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [repaired.name]."),
-		span_notice("You start fixing some of the wires in [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [repaired.name]."))
+	user.visible_message(span_notice("[user]Começa a consertar alguns fios[attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [repaired.name]."),
+		span_notice("Você começa a consertar alguns fios[attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [repaired.name]."))
 	var/use_delay = 1 SECONDS
 	if(user == attacked_humanoid)
 		use_delay = 5 SECONDS
@@ -49,8 +49,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	repaired.heal_damage(brute = 0, burn = 15, required_bodytype = BODYTYPE_ROBOTIC)
-	user.visible_message(span_notice("[user] fixes some of the burnt wires on [attacked_humanoid]'s [repaired.name]."), \
-		span_notice("You fix some of the burnt wires on [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [repaired.name]."))
+	user.visible_message(span_notice("[user]Conserta alguns fios queimados.[attacked_humanoid]'s[repaired.name]."), 		span_notice("Você conserta alguns fios queimados.[attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [repaired.name]."))
 
 	if (use(1) && amount > 0)
 		INVOKE_ASYNC(src, PROC_REF(try_auto_heal), interacting_with, user, damaged_limbs, preferred_limb)

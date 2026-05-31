@@ -11,7 +11,7 @@
 
 /obj/structure/table_frame
 	name = "table frame"
-	desc = "Four metal legs with four framing rods for a table. You could easily pass through this."
+	desc = "Quatro pernas de metal com quatro varas para uma mesa. Você poderia facilmente passar por isso."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "table_frame"
 	density = FALSE
@@ -60,7 +60,7 @@
 		return NONE
 
 	if(our_stack.get_amount() < 1)
-		balloon_alert(user, "need more material!")
+		balloon_alert(user, "Precisa de mais material!")
 		return ITEM_INTERACT_BLOCKING
 
 	// Check if the turf is blocked by dense objects or objects that block construction
@@ -71,7 +71,7 @@
 //			balloon_alert(user, "[object.name] is in the way!")
 //			return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "constructing table...")
+	balloon_alert(user, "Construindo mesa...")
 	if(!do_after(user, 2 SECONDS, target = src))
 		return ITEM_INTERACT_BLOCKING
 
@@ -107,7 +107,7 @@
 
 /obj/structure/table_frame/wood
 	name = "wooden table frame"
-	desc = "Four wooden legs with four framing wooden rods for a wooden table. You could easily pass through this."
+	desc = "Quatro pernas de madeira com quatro varas de madeira para uma mesa de madeira. Você poderia facilmente passar por isso."
 	icon_state = "wood_frame"
 	framestack = /obj/item/stack/sheet/mineral/wood
 	framestackamount = 2

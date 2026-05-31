@@ -8,37 +8,7 @@ SUBSYSTEM_DEF(condos)
 	var/list/active_condos = list()
 	/// Items we delibrately prevent being deleted. Malleable. Try to keep this to only items that cannot be re-obtained without admin interference; with some exceptions.
 	var/list/item_blacklist = list(
-		/obj/item/blackbox, \
-		/obj/item/gun/energy/laser/captain, \
-		/obj/item/gun/energy/e_gun/hos, \
-		/obj/item/hand_tele, \
-		/obj/item/tank/jetpack/captain, \
-		/obj/item/clothing/shoes/magboots/advance, \
-		/obj/item/blueprints, \
-		/obj/item/clothing/accessory/medal/gold/captain, \
-		/obj/item/hypospray/mkii/deluxe/cmo, \
-		/obj/item/fireaxe, \
-		/obj/item/crowbar/mechremoval, \
-		/obj/item/storage/belt/utility/chief, \
-		/obj/item/mod/control/pre_equipped/magnate, \
-		/obj/item/gun/ballistic/shotgun/automatic/combat/compact, \
-		/obj/item/clothing/suit/hooded/ablative, \
-		/obj/item/nuke_core, \
-		/obj/item/nuke_core_container, \
-		/obj/item/disk/computer/hdd_theft, \
-		/obj/item/nuke_core_container/supermatter, \
-		/obj/item/aicard, \
-		/obj/item/gun/energy/temperature/security, \
-		/obj/item/mod/control/pre_equipped/advanced, \
-		/obj/item/mod/control/pre_equipped/research, \
-		/obj/item/mod/control/pre_equipped/rescue, \
-		/obj/item/mod/control/pre_equipped/safeguard, \
-		/obj/item/storage/belt/sheath/sabre, \
-		/obj/item/card, \
-		/obj/item/modular_computer, \
-		/obj/item/nullrod, \
-		/obj/item/stamp/head, \
-	)
+		/obj/item/blackbox, 		/obj/item/gun/energy/laser/captain, 		/obj/item/gun/energy/e_gun/hos, 		/obj/item/hand_tele, 		/obj/item/tank/jetpack/captain, 		/obj/item/clothing/shoes/magboots/advance, 		/obj/item/blueprints, 		/obj/item/clothing/accessory/medal/gold/captain, 		/obj/item/hypospray/mkii/deluxe/cmo, 		/obj/item/fireaxe, 		/obj/item/crowbar/mechremoval, 		/obj/item/storage/belt/utility/chief, 		/obj/item/mod/control/pre_equipped/magnate, 		/obj/item/gun/ballistic/shotgun/automatic/combat/compact, 		/obj/item/clothing/suit/hooded/ablative, 		/obj/item/nuke_core, 		/obj/item/nuke_core_container, 		/obj/item/disk/computer/hdd_theft, 		/obj/item/nuke_core_container/supermatter, 		/obj/item/aicard, 		/obj/item/gun/energy/temperature/security, 		/obj/item/mod/control/pre_equipped/advanced, 		/obj/item/mod/control/pre_equipped/research, 		/obj/item/mod/control/pre_equipped/rescue, 		/obj/item/mod/control/pre_equipped/safeguard, 		/obj/item/storage/belt/sheath/sabre, 		/obj/item/card, 		/obj/item/modular_computer, 		/obj/item/nullrod, 		/obj/item/stamp/head, 	)
 
 /datum/controller/subsystem/condos/Initialize()
 	preload_condo_templates()
@@ -60,14 +30,14 @@ SUBSYSTEM_DEF(condos)
 	if(active_condos["[condo_number]"])
 		var/datum/turf_reservation/condo/target_active_condo = active_condos["[condo_number]"]
 		if(!target_active_condo)
-			to_chat(user, span_warning("Condo [condo_number] error. Unable to find condo reservation!"))
+			to_chat(user, span_warning("Condomínio.[condo_number]Erro. Incapaz de encontrar reserva de condomínio!"))
 			return FALSE
 
 		do_sparks(3, FALSE, get_turf(user))
 
 		var/turf/condo_bottom_left = target_active_condo.bottom_left_turfs[1]
 		if(!condo_bottom_left)
-			to_chat(user, span_warning("Condo [condo_number] error. Unable to find entry turf!"))
+			to_chat(user, span_warning("Condomínio.[condo_number]Erro. Incapaz de encontrar território de entrada!"))
 			return FALSE
 
 		if(user.forceMove(locate(
@@ -77,7 +47,7 @@ SUBSYSTEM_DEF(condos)
 		)))
 			return TRUE
 
-	to_chat(user, span_warning("Condo [condo_number] error. Mystery failure!"))
+	to_chat(user, span_warning("Condomínio.[condo_number]Erro."))
 	return FALSE
 
 /// No condo was found on the number we input - create a new reservation, load our template, assign it in active_condos - and warp our user to the landing zone
@@ -87,7 +57,7 @@ SUBSYSTEM_DEF(condos)
 	var/datum/turf_reservation/condo/condo_reservation = SSmapping.request_turf_block_reservation(our_condo.width, our_condo.height, 1, reservation_type = /datum/turf_reservation/condo)
 	var/turf/bottom_left = condo_reservation.bottom_left_turfs[1]
 	if(!bottom_left)
-		to_chat(user, span_warning("Failed to reserve a room for you! Contact the technical concierge."))
+		to_chat(user, span_warning("Não consegui reservar um quarto para você! Contate o porteiro técnico."))
 		return
 	our_condo.load(bottom_left)
 	condo_reservation.condo_template = our_condo
@@ -111,10 +81,6 @@ SUBSYSTEM_DEF(condos)
 
 	for(var/turf/closed/indestructible/hoteldoor/door in current_reservation.reserved_turfs)
 		door.parentSphere = parent_object
-		door.desc = "The door to this condo. \
-			The placard reads 'Room [condo_number]'. \
-			Strangely, this door doesn't even seem openable. \
-			The doorknob, however, seems to buzz with unusual energy...<br/>\
-			[span_info("Alt-Click to look through the peephole.")]"
+		door.desc = "The door to this condo. 			The placard reads 'Room [condo_number]'. 			Strangely, this door doesn't even seem openable. 			The doorknob, however, seems to buzz with unusual energy...<br/>			[span_info("Alt-Click to look through the peephole.")]"
 	for(var/turf/open/space/bluespace/bluespace_turf in current_reservation.reserved_turfs)
 		bluespace_turf.parentSphere = parent_object

@@ -3,7 +3,7 @@
 
 /obj/item/clothing/suit/clockwork
 	name = "bronze armor"
-	desc = "A strong, bronze suit worn by the soldiers of the Ratvarian armies."
+	desc = "Um forte traje de bronze usado pelos soldados dos exércitos de Ratvarian."
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_garb.dmi'
 	worn_icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_garb_worn.dmi'
 	icon_state = "clockwork_cuirass"
@@ -37,7 +37,7 @@
 
 /obj/item/clothing/suit/clockwork/speed
 	name = "robes of divinity"
-	desc = "A shiny suit, glowing with a vibrant energy. The wearer will be able to move quickly across battlefields, but will be able to withstand less damage before falling."
+	desc = "Um terno brilhante, brilhando com uma energia vibrante. O usuário será capaz de se mover rapidamente através de campos de batalha, mas será capaz de suportar menos danos antes de cair."
 	icon_state = "clockwork_cuirass_speed"
 	slowdown = -0.3
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -55,7 +55,7 @@
 
 /obj/item/clothing/suit/clockwork/cloak
 	name = "shrouding cloak"
-	desc = "A faltering cloak that bends light around it, distorting the user's appearance, making it hard to see them with the naked eye. However, it provides very little protection."
+	desc = "Uma capa vacilante que dobra a luz em torno dela, distorcendo a aparência do usuário, tornando difícil vê-los a olho nu. No entanto, fornece muito pouca proteção."
 	icon_state = "clockwork_cloak"
 	armor_type = /datum/armor/clockwork_cloak
 	actions_types = list(/datum/action/item_action/toggle/clock)
@@ -148,7 +148,7 @@
 // Thermal goggles, no protection from eye stuff
 /obj/item/clothing/glasses/clockwork/wraith_spectacles
 	name = "wraith spectacles"
-	desc = "Mystical glasses that glow with a bright energy. Some say they can see things that shouldn't be seen."
+	desc = "Óculos místicos que brilham com uma energia brilhante. Alguns dizem que podem ver coisas que não deveriam ser vistas."
 	icon_state = "wraith_specs_0"
 	base_icon_state = "wraith_specs"
 	invis_view = SEE_INVISIBLE_OBSERVER
@@ -158,7 +158,7 @@
 	color_cutoffs = list(5, 15, 5)
 	glass_colour_type = /datum/client_colour/glass_colour/yellow
 	actions_types = list(/datum/action/item_action/toggle/clock)
-	clock_desc = "Applies passive eye damage that regenerates after unequipping, grants thermal vision, and lets you see all forms of invisibility."
+	clock_desc = "Aplica danos oculares passivos que se regeneram depois de não equipar, concede visão térmica, e permite que você veja todas as formas de invisibilidade."
 	/// Who is currently wearing the goggles
 	var/mob/living/wearer
 	/// Are the glasses enabled (flipped down)
@@ -223,13 +223,13 @@
 /// The start of application of the actual effects, including eye damage
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/on_toggle_eyes()
 	wearer.update_sight()
-	to_chat(wearer, span_clockgray("You suddenly see so much more."))
+	to_chat(wearer, span_clockgray("Você de repente vê muito mais."))
 
 
 /// The stopping of effect application, will remove the wearer's eye damage a minute after
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/de_toggle_eyes()
 	wearer.update_sight()
-	to_chat(wearer, span_clockgray("You feel your eyes slowly readjusting."))
+	to_chat(wearer, span_clockgray("Você sente seus olhos se reajustando lentamente."))
 
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/equipped(mob/living/user, slot)
@@ -253,14 +253,14 @@
 // Flash protected and generally info-granting with huds
 /obj/item/clothing/glasses/clockwork/judicial_visor
 	name = "judicial visor"
-	desc = "A purple visor gilt with Ratvarian runes, allowing a user to see, unfettered by others. The cogs on the sides look pretty tight..."
+	desc = "Um viseira roxo com runas ratvianas, permitindo que um usuário veja, sem restrições por outros. As engrenagens dos lados parecem bem apertadas..."
 	icon_state = "judicial_visor_0"
 	base_icon_state = "judicial_visor"
 	flash_protect = FLASH_PROTECTION_WELDER
 	strip_delay = 10 SECONDS
 	glass_colour_type = /datum/client_colour/glass_colour/purple
 	actions_types = list(/datum/action/item_action/toggle/clock)
-	clock_desc = "Binds itself to the wearer's face, but grants large sight and informational benefits while active."
+	clock_desc = "Liga-se ao rosto do usuário, mas concede grande visão e benefícios informativos enquanto ativo."
 	/// Is this enabled
 	var/enabled = TRUE
 	/// Wearer of the visor
@@ -363,7 +363,7 @@
 			apply_to_wearer()
 
 		ADD_TRAIT(src, TRAIT_NODROP, CLOTHING_TRAIT)
-		to_chat(wearer, span_userdanger("You feel the cogs on the visor clamp to the sides of your head, drilling in!"))
+		to_chat(wearer, span_userdanger("Você sente as engrenagens na pinça do visor para os lados da sua cabeça, perfurando!"))
 		if(damaging)
 			wearer.emote("scream")
 			wearer.Sleeping(VISOR_MOUNT_SLEEP_TIME)
@@ -383,7 +383,7 @@
 
 /obj/item/clothing/head/helmet/clockwork
 	name = "brass helmet"
-	desc = "A strong, brass helmet worn by the soldiers of the Ratvarian armies. Includes an integrated light-dimmer for flash protection, as well as occult-grade muffling for factory based environments."
+	desc = "Um forte capacete de bronze usado pelos soldados dos exércitos Ratvarian. Inclui um dimmer de luz integrado para proteção flash, bem como muffling grau oculto para ambientes de fábrica."
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_garb.dmi'
 	worn_icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_garb_worn.dmi'
 	icon_state = "clockwork_helmet"
@@ -410,7 +410,7 @@
 
 /obj/item/clothing/shoes/clockwork
 	name = "brass treads"
-	desc = "A strong pair of brass boots worn by the soldiers of the Ratvarian armies."
+	desc = "Um forte par de botas de bronze usadas pelos soldados dos exércitos Ratvarian."
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_garb.dmi'
 	worn_icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_garb_worn.dmi'
 	icon_state = "clockwork_treads"
@@ -422,7 +422,7 @@
 
 /obj/item/clothing/gloves/clockwork
 	name = "brass gauntlets"
-	desc = "A strong pair of brass gloves worn by the soldiers of the Ratvarian armies."
+	desc = "Um forte par de luvas de bronze usadas pelos soldados dos exércitos Ratvarian."
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_garb.dmi'
 	worn_icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_garb_worn.dmi'
 	icon_state = "clockwork_gauntlets"

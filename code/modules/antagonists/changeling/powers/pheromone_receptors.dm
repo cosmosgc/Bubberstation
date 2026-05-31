@@ -5,7 +5,7 @@
 
 /datum/action/changeling/pheromone_receptors
 	name = "Pheromone Receptors"
-	desc = "We attune our senses to track other changelings by scent.  The closer they are, the easier we can find them."
+	desc = "Ajustamos nossos sentidos para rastrear outros metamorfos pelo cheiro. Quanto mais perto estiverem, mais fácil podemos encontrá-los."
 	helptext = "We will know the general direction of nearby changelings, with closer scents being stronger.  Our chemical generation is slowed while this is active."
 	button_icon_state = "pheromone_receptors"
 	category = "utility"
@@ -24,14 +24,14 @@
 	..()
 	var/datum/antagonist/changeling/changeling = IS_CHANGELING(user)
 	if(HAS_TRAIT(user, TRAIT_ANOSMIA)) //Anosmia quirk holders can't smell anything
-		to_chat(user, span_warning("We can't smell!"))
+		to_chat(user, span_warning("Não podemos cheirar!"))
 		return
 	if(!receptors_active)
-		to_chat(user, span_warning("We search for the scent of any nearby changelings."))
+		to_chat(user, span_warning("Procuramos o cheiro de qualquer metamorfo próximo."))
 		changeling.chem_recharge_slowdown += 0.25
 		user.apply_status_effect(/datum/status_effect/agent_pinpointer/changeling)
 	else
-		to_chat(user, span_notice("We stop searching for now."))
+		to_chat(user, span_notice("Paramos de procurar por agora."))
 		changeling.chem_recharge_slowdown -= 0.25
 		user.remove_status_effect(/datum/status_effect/agent_pinpointer/changeling)
 
@@ -67,7 +67,7 @@
 
 /atom/movable/screen/alert/status_effect/agent_pinpointer/changeling
 	name = "Pheromone Scent"
-	desc = "The nose always knows."
+	desc = "O nariz sempre sabe."
 
 #undef CHANGELING_PHEROMONE_MIN_DISTANCE
 #undef CHANGELING_PHEROMONE_MAX_DISTANCE

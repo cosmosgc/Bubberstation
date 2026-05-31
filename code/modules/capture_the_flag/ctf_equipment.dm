@@ -36,7 +36,7 @@
 
 /obj/item/gun/ballistic/automatic/laser/ctf
 	accepted_magazine_type = /obj/item/ammo_box/magazine/recharge/ctf/rifle
-	desc = "This looks like it could really hurt in melee."
+	desc = "Parece que pode doer em mim."
 	force = 50
 	weapon_weight = WEAPON_HEAVY
 	slot_flags = null
@@ -60,7 +60,7 @@
 
 /obj/item/gun/ballistic/shotgun/ctf
 	name = "laser shotgun"
-	desc = "This looks like it could really hurt in melee."
+	desc = "Parece que pode doer em mim."
 	icon_state = "ctfshotgun"
 	inhand_icon_state = "shotgun_combat"
 	worn_icon_state = "gun"
@@ -121,7 +121,7 @@
 // DESERT EAGLE
 
 /obj/item/gun/ballistic/automatic/pistol/deagle/ctf
-	desc = "This looks like it could really hurt in melee."
+	desc = "Parece que pode doer em mim."
 	force = 75
 	accepted_magazine_type = /obj/item/ammo_box/magazine/recharge/ctf/deagle
 
@@ -148,7 +148,7 @@
 	name = "instakill rifle"
 	icon_state = "instagib"
 	inhand_icon_state = "instagib"
-	desc = "A specialized ASMD laser-rifle, capable of flat-out disintegrating most targets in a single hit."
+	desc = "Um rifle de laser ASMD especializado, capaz de desintegrar a maioria dos alvos em um único golpe."
 	w_class = WEIGHT_CLASS_BULKY
 	ammo_type = list(/obj/item/ammo_casing/energy/instakill)
 	force = 60
@@ -186,14 +186,14 @@
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/target_mob = target
-		target_mob.visible_message(span_danger("[target_mob] explodes into a shower of gibs!"))
+		target_mob.visible_message(span_danger("[target_mob]Explode em um banho de gibs!"))
 		target_mob.gib()
 
 // SHIELDED VEST
 
 /obj/item/clothing/suit/armor/vest/ctf
 	name = "white shielded vest"
-	desc = "Standard issue vest for playing capture the flag."
+	desc = "Colete padrão para jogar capture a bandeira."
 	worn_icon = 'icons/mob/clothing/suits/ctf.dmi'
 	// Adding TRAIT_NODROP is done when the CTF spawner equips people
 	armor_type = /datum/armor/none
@@ -216,22 +216,13 @@
 
 /obj/item/clothing/suit/armor/vest/ctf/Initialize(mapload)
 	. = ..()
-	AddComponent( \
-		/datum/component/shielded, \
-		max_charges = max_charges, \
-		recharge_start_delay = recharge_start_delay, \
-		charge_increment_delay = charge_increment_delay, \
-		charge_recovery = charge_recovery, \
-		lose_multiple_charges = lose_multiple_charges, \
-		show_charge_as_alpha = show_charge_as_alpha, \
-		shield_icon = team_shield_icon, \
-	)
+	AddComponent( 		/datum/component/shielded, 		max_charges = max_charges, 		recharge_start_delay = recharge_start_delay, 		charge_increment_delay = charge_increment_delay, 		charge_recovery = charge_recovery, 		lose_multiple_charges = lose_multiple_charges, 		show_charge_as_alpha = show_charge_as_alpha, 		shield_icon = team_shield_icon, 	)
 
 // LIGHT SHIELDED VEST
 
 /obj/item/clothing/suit/armor/vest/ctf/light
 	name = "light white shielded vest"
-	desc = "Lightweight vest for playing capture the flag."
+	desc = "Colete leve para jogar capture a bandeira."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/armor/vest/ctf/light"
 	post_init_icon_state = "light"
@@ -290,7 +281,7 @@
 
 // Instakill
 /obj/item/gun/energy/laser/instakill/ctf/red
-	desc = "A specialized ASMD laser-rifle, capable of flat-out disintegrating most targets in a single hit. This one has a red design."
+	desc = "Um rifle de laser ASMD especializado, capaz de desintegrar a maioria dos alvos em um único golpe. Este tem um desenho vermelho."
 	icon_state = "instagibred"
 	inhand_icon_state = "instagibred"
 	ammo_type = list(/obj/item/ammo_casing/energy/instakill/red)
@@ -347,7 +338,7 @@
 
 // Instakill
 /obj/item/gun/energy/laser/instakill/ctf/blue
-	desc = "A specialized ASMD laser-rifle, capable of flat-out disintegrating most targets in a single hit. This one has a blue design."
+	desc = "Um rifle de laser ASMD especializado, capaz de desintegrar a maioria dos alvos em um único golpe. Este tem um design azul."
 	icon_state = "instagibblue"
 	inhand_icon_state = "instagibblue"
 	ammo_type = list(/obj/item/ammo_casing/energy/instakill/blue)
@@ -410,7 +401,7 @@
 
 // Instakill
 /obj/item/gun/energy/laser/instakill/ctf/green
-	desc = "A specialized ASMD laser-rifle, capable of flat-out disintegrating most targets in a single hit. This one has a green design."
+	desc = "Um rifle de laser ASMD especializado, capaz de desintegrar a maioria dos alvos em um único golpe. Este tem um design verde."
 	icon_state = "instagibgreen"
 	inhand_icon_state = "instagibgreen"
 	ammo_type = list(/obj/item/ammo_casing/energy/instakill/green)
@@ -473,7 +464,7 @@
 
 // Instakill
 /obj/item/gun/energy/laser/instakill/ctf/yellow
-	desc = "A specialized ASMD laser-rifle, capable of flat-out disintegrating most targets in a single hit. This one has a yellow design."
+	desc = "Um rifle de laser ASMD especializado, capaz de desintegrar a maioria dos alvos em um único golpe. Este tem um desenho amarelo."
 	icon_state = "instagibyellow"
 	inhand_icon_state = "instagibyellow"
 	ammo_type = list(/obj/item/ammo_casing/energy/instakill/yellow)

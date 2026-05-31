@@ -1,6 +1,6 @@
 /obj/item/organ/tongue/synth
 	name = "synthetic voicebox"
-	desc = "A fully-functional synthetic tongue, encased in soft silicone. Features include high-resolution vocals and taste receptors."
+	desc = "Uma língua sintética totalmente funcional, envolto em silicone macio. As características incluem vocais de alta resolução e receptores de sabor."
 	icon = 'modular_skyrat/modules/organs/icons/cyber_tongue.dmi'
 	icon_state = "cybertongue"
 	say_mod = "beeps"
@@ -23,7 +23,7 @@
 
 /datum/design/synth_tongue
 	name = "Synthetic Tongue"
-	desc = "A fully-functional synthetic tongue, encased in soft silicone. Features include high-resolution vocals and taste receptors."
+	desc = "Uma língua sintética totalmente funcional, envolto em silicone macio. As características incluem vocais de alta resolução e receptores de sabor."
 	id = "synth_tongue"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS

@@ -10,7 +10,7 @@
 
 /obj/item/clothing/mask/facehugger
 	name = "alien"
-	desc = "It has some sort of a tube at the end of its tail."
+	desc = "Tem algum tipo de tubo no final de sua cauda."
 	icon = 'icons/mob/nonhuman-player/alien.dmi'
 	icon_state = "facehugger"
 	base_icon_state = "facehugger"
@@ -27,7 +27,7 @@
 	// SKYRAT EDIT ADDITION START
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list("Scientist, Research Director")
-	special_desc = "This alien is an extremely dangerous life form capable of creating a xenomorph. You would know well not to approach without full body biological protection."
+	special_desc = "Este alienígena é uma forma de vida extremamente perigosa capaz de criar um xenomorfo. Saberia bem não se aproximar sem proteção biológica."
 	// SKYRAT EDIT ADDITION END
 	slowdown = 2
 	clothing_traits = list(TRAIT_SOFTSPOKEN)
@@ -83,11 +83,11 @@
 		return
 	switch(stat)
 		if(DEAD,UNCONSCIOUS)
-			. += span_bolddanger("[src] is not moving.")
+			. += span_bolddanger("[src]Não está se movendo.")
 		if(CONSCIOUS)
-			. += span_bolddanger("[src] seems to be active!")
+			. += span_bolddanger("[src]Parece estar ativo!")
 	if (sterile)
-		. += span_bolddanger("It looks like the proboscis has been removed.")
+		. += span_bolddanger("Parece que o proboscis foi removido.")
 
 /obj/item/clothing/mask/facehugger/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
 	return (exposed_temperature > 300)
@@ -159,21 +159,18 @@
 	if(target.wear_mask && istype(target.wear_mask, /obj/item/clothing/mask/facehugger))
 		return FALSE
 	// passed initial checks - time to leap!
-	target.visible_message(span_danger("[src] leaps at [target]'s face!"), \
-						span_userdanger("[src] leaps at your face!"))
+	target.visible_message(span_danger("[src]pula sobre[target]O rosto!"), 						span_userdanger("[src]pula na sua cara!"))
 
 	// probiscis-blocker handling
 	if(target.is_mouth_covered(ITEM_SLOT_HEAD))
-		target.visible_message(span_danger("[src] smashes against [target]'s [target.head]!"), \
-							span_userdanger("[src] smashes against your [target.head]!"))
+		target.visible_message(span_danger("[src]Esmaga contra[target]'s[target.head]!"), 							span_userdanger("[src]Esmaga contra o seu[target.head]!"))
 		Die()
 		return FALSE
 
 	if(target.wear_mask)
 		var/obj/item/clothing/worn_mask = target.wear_mask
 		if(target.dropItemToGround(worn_mask))
-			target.visible_message(span_danger("[src] tears [worn_mask] off of [target]'s face!"), \
-								span_userdanger("[src] tears [worn_mask] off of your face!"))
+			target.visible_message(span_danger("[src]Lágrimas[worn_mask]fora de[target]O rosto!"), 								span_userdanger("[src]Lágrimas[worn_mask]Saia da sua frente!"))
 
 	if(!target.equip_to_slot_if_possible(src, ITEM_SLOT_MASK, 0, 1, 1))
 		log_combat(target, src, "failed facehugged by")
@@ -216,8 +213,7 @@
 			return
 
 	if(!sterile)
-		target.visible_message(span_danger("[src] falls limp after violating [target]'s face!"), \
-								span_userdanger("[src] falls limp after violating your face!"))
+		target.visible_message(span_danger("[src]Caem mancando depois de violar[target]O rosto!"), 								span_userdanger("[src]Fica mole depois de violar seu rosto!"))
 
 		Die()
 		icon_state = "[base_icon_state]_impregnated"
@@ -232,8 +228,7 @@
 				target.apply_status_effect(/datum/status_effect/nest_sustenance)
 
 	else
-		target.visible_message(span_danger("[src] violates [target]'s face!"), \
-								span_userdanger("[src] violates your face!"))
+		target.visible_message(span_danger("[src]viola[target]O rosto!"), 								span_userdanger("[src]viola seu rosto!"))
 
 /obj/item/clothing/mask/facehugger/proc/GoActive()
 	if(stat == DEAD || stat == CONSCIOUS)
@@ -262,7 +257,7 @@
 	inhand_icon_state = "facehugger_inactive"
 	stat = DEAD
 
-	visible_message(span_danger("[src] curls up into a ball!"))
+	visible_message(span_danger("[src]se enrola em uma bola!"))
 
 	// chest maybe because getting slammed in the chest would knock it off your face while dead
 	AddComponent(/datum/component/knockoff, knockoff_chance = 40, target_zones = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST), slots_knockoffable = slot_flags)
@@ -271,7 +266,7 @@
 	if(!real || sterile || stat == DEAD || user.get_organ_by_type(/obj/item/organ/body_egg/alien_embryo))
 		return ..()
 	if(user.get_item_by_slot(slot_flags) == src)
-		to_chat(user, span_userdanger("[src] is latched on too tight! Get help or wait for it to let go!"))
+		to_chat(user, span_userdanger("[src]Está muito apertado! Peça ajuda ou espere que ele solte!"))
 		return FALSE
 	return ..()
 
@@ -282,7 +277,7 @@
 	if(!real || sterile || user.get_organ_by_type(/obj/item/organ/body_egg/alien_embryo))
 		return ..()
 	if(wearer.get_item_by_slot(slot_flags) == src && stat != DEAD)
-		to_chat(user, span_userdanger("[src] is latched on too tight! Get help or wait for it to let go!"))
+		to_chat(user, span_userdanger("[src]Está muito apertado! Peça ajuda ou espere que ele solte!"))
 		return
 	return ..()
 
@@ -305,19 +300,19 @@
 	SIGNAL_HANDLER
 	if(stat != CONSCIOUS)
 		return NONE
-	to_chat(user, span_danger("There's something moving inside of \the [letter]!"))
+	to_chat(user, span_danger("Há algo se movendo dentro de\the [letter]!"))
 	Leap(user)
 	return COMPONENT_TRAITOR_MAIL_HANDLED
 
 /obj/item/clothing/mask/facehugger/lamarr
 	name = "Lamarr"
-	desc = "The Research Director's pet, a domesticated and debeaked alien. Friendly, but may still try to couple with your head."
+	desc = "O animal de estimação do diretor de pesquisa, um alienígena domesticado e desviado. Amigável, mas ainda pode tentar se casar com sua cabeça."
 	sterile = TRUE
 	slowdown = 1.5 //lamarr is too fat after being fed in captivity to effectively slow people down or something
 	// SKYRAT EDIT ADDITION START: job-restricted examine text
 	special_desc_requirement = EXAMINE_CHECK_ROLE
 	special_desc_roles = list("ROLE_ALIEN")
-	special_desc = "This young one has been cruelly mutilated. It lacks the capability to fill a host with our sisters."
+	special_desc = "Este jovem foi cruelmente mutilado. Falta a capacidade de encher um anfitrião com nossas irmãs."
 	// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/mask/facehugger/dead
@@ -334,7 +329,7 @@
 
 /obj/item/clothing/mask/facehugger/toy
 	inhand_icon_state = "facehugger_inactive"
-	desc = "A toy often used to play pranks on other miners by putting it in their beds. It takes a bit to recharge after latching onto something."
+	desc = "Um brinquedo costumava brincar com outros mineiros colocando-o em suas camas. É preciso um pouco para recarregar depois de amarrar em algo."
 	real = FALSE
 	sterile = TRUE
 	tint = 3 //Makes it feel more authentic when it latches on

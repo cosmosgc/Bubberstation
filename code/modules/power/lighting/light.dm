@@ -5,7 +5,7 @@
 	name = "light fixture"
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube"
-	desc = "A lighting fixture."
+	desc = "Um dispositivo de iluminação."
 	layer = WALL_OBJ_LAYER
 	max_integrity = 100
 	use_power = ACTIVE_POWER_USE
@@ -387,15 +387,15 @@
 	. = ..()
 	switch(status)
 		if(LIGHT_OK)
-			. += span_notice("It is turned [on? "on" : "off"].")
+			. += span_notice("Está virada.[on? "on" : "off"].")
 		if(LIGHT_EMPTY)
-			. +=  span_notice("The [fitting] has been removed.")
+			. +=  span_notice("O[fitting]Foi removido.")
 		if(LIGHT_BURNED)
-			. +=  span_danger("The [fitting] is burnt out.")
+			. +=  span_danger("O[fitting]Está queimado.")
 		if(LIGHT_BROKEN)
-			. += span_danger("The [fitting] has been smashed.")
+			. += span_danger("O[fitting]Foi esmagado.")
 	if(cell || has_mock_cell)
-		. +=  span_notice("Its backup power charge meter reads [has_mock_cell ? 100 : round((cell.charge / cell.maxcharge) * 100, 0.1)]%.")
+		. +=  span_notice("Seu medidor de energia de reserva lê[has_mock_cell ? 100 : round((cell.charge / cell.maxcharge) * 100, 0.1)]%.")
 
 // attack with item - insert light (if right type), otherwise try to break the light
 
@@ -403,12 +403,12 @@
 	// attempt to insert light
 	if(istype(tool, /obj/item/light))
 		if(status == LIGHT_OK)
-			to_chat(user, span_warning("There is a [fitting] already inserted!"))
+			to_chat(user, span_warning("Há um[fitting]Já inserido!"))
 			return
 		add_fingerprint(user)
 		var/obj/item/light/light_object = tool
 		if(!istype(light_object, light_type))
-			to_chat(user, span_warning("This type of light requires a [fitting]!"))
+			to_chat(user, span_warning("Este tipo de luz requer um[fitting]!"))
 			return
 		if(!user.temporarilyRemoveItemFromInventory(light_object))
 			return
@@ -416,9 +416,9 @@
 		add_fingerprint(user)
 		if(status != LIGHT_EMPTY)
 			drop_light_tube(user)
-			to_chat(user, span_notice("You replace [light_object]."))
+			to_chat(user, span_notice("Você substitui[light_object]."))
 		else
-			to_chat(user, span_notice("You insert [light_object]."))
+			to_chat(user, span_notice("Você insere[light_object]."))
 		if(length(light_object.reagents.reagent_list))
 			create_reagents(LIGHT_REAGENT_CAPACITY, SEALED_CONTAINER | TRANSPARENT)
 			light_object.reagents.trans_to(reagents, LIGHT_REAGENT_CAPACITY)
@@ -437,15 +437,14 @@
 		return ..()
 	if(tool.tool_behaviour == TOOL_SCREWDRIVER) //If it's a screwdriver open it.
 		tool.play_tool_sound(src, 75)
-		user.visible_message(span_notice("[user.name] opens [src]'s casing."), \
-			span_notice("You open [src]'s casing."), span_hear("You hear a noise."))
+		user.visible_message(span_notice("[user.name]Abre.[src]É a cápsula."), 			span_notice("Você abre.[src]É a cápsula."), span_hear("Você ouve um barulho."))
 		deconstruct(disassembled = TRUE)
 		return
 
 	if(tool.item_flags & ABSTRACT)
 		return
 
-	to_chat(user, span_userdanger("You stick \the [tool] into the light socket!"))
+	to_chat(user, span_userdanger("Você pega.\the [tool]Na tomada de luz!"))
 	if(has_power() && (tool.obj_flags & CONDUCTS_ELECTRICITY))
 		do_sparks(3, TRUE, src)
 		if (prob(75))
@@ -539,7 +538,7 @@
 		return FALSE
 	var/obj/item/stock_parts/power_store/real_cell = get_cell()
 	if(real_cell.charge > 2.5 * /obj/item/stock_parts/power_store/cell/emergency_light::maxcharge) //it's meant to handle 120 W, ya doofus
-		visible_message(span_warning("[src] short-circuits from too powerful of a power cell!"))
+		visible_message(span_warning("[src]Circuitos curtos de uma célula de energia muito poderosa!"))
 		burn_out()
 		return FALSE
 	real_cell.use(power_usage_amount)
@@ -585,7 +584,7 @@
 
 /obj/machinery/light/attack_ai(mob/user)
 	no_low_power = !no_low_power
-	to_chat(user, span_notice("Emergency lights for this fixture have been [no_low_power ? "disabled" : "enabled"]."))
+	to_chat(user, span_notice("Luzes de emergência para este equipamento foram[no_low_power ? "disabled" : "enabled"]."))
 	update(trigger = FALSE, play_sound = FALSE) // BUBBER EDIT CHANGE - LIGHTING - Original: update(FALSE)
 	return
 
@@ -600,12 +599,12 @@
 	add_fingerprint(user)
 
 	if(status == LIGHT_EMPTY)
-		to_chat(user, span_warning("There is no [fitting] in this light!"))
+		to_chat(user, span_warning("Não existe[fitting]Nesta luz!"))
 		return
 
 	// make it burn hands unless you're wearing heat insulated gloves or have the RESISTHEAT/RESISTHEATHANDS traits
 	if(!on)
-		to_chat(user, span_notice("You remove the light [fitting]."))
+		to_chat(user, span_notice("Você remove a luz.[fitting]."))
 		// create a light tube/bulb item and put it in the user's hand
 		drop_light_tube(user)
 		return
@@ -618,15 +617,15 @@
 			var/obj/item/organ/stomach/ethereal/stomach = maybe_stomach
 			if(stomach.drain_time > world.time)
 				return
-			to_chat(user, span_notice("You start channeling some power through the [fitting] into your body."))
+			to_chat(user, span_notice("Você começa a canalizar algum poder através do[fitting]Em seu corpo."))
 			stomach.drain_time = world.time + LIGHT_DRAIN_TIME
 			while(do_after(user, LIGHT_DRAIN_TIME, target = src))
 				stomach.drain_time = world.time + LIGHT_DRAIN_TIME
 				if(istype(stomach))
-					to_chat(user, span_notice("You receive some charge from the [fitting]."))
+					to_chat(user, span_notice("Você recebe alguma carga do[fitting]."))
 					stomach.adjust_charge(LIGHT_POWER_GAIN)
 				else
-					to_chat(user, span_warning("You can't receive charge from the [fitting]!"))
+					to_chat(user, span_warning("Você não pode receber carga do[fitting]!"))
 			return
 
 		if(user.gloves)
@@ -637,21 +636,21 @@
 		protected = TRUE
 
 	if(protected || HAS_TRAIT(user, TRAIT_RESISTHEAT) || HAS_TRAIT(user, TRAIT_RESISTHEATHANDS))
-		to_chat(user, span_notice("You remove the light [fitting]."))
+		to_chat(user, span_notice("Você remove a luz.[fitting]."))
 	else if(istype(user) && user.dna.check_mutation(/datum/mutation/telekinesis))
-		to_chat(user, span_notice("You telekinetically remove the light [fitting]."))
+		to_chat(user, span_notice("Você tira telecinicamente a luz.[fitting]."))
 	else
 		var/obj/item/bodypart/affecting = user.get_active_hand()
 		user.apply_damage(5, BURN, affecting, wound_bonus = CANT_WOUND)
 		if(HAS_TRAIT(user, TRAIT_LIGHTBULB_REMOVER))
-			to_chat(user, span_notice("You feel your [affecting.plaintext_zone] burning, but the light begins to budge..."))
+			to_chat(user, span_notice("Você sente o seu[affecting.plaintext_zone]Ardendo, mas a luz começa a se mover..."))
 			if(!do_after(user, 5 SECONDS, target = src))
 				return
 			user.apply_damage(10, BURN, user.get_active_hand(), wound_bonus = CANT_WOUND)
-			to_chat(user, span_notice("You manage to remove the light [fitting], shattering it in process."))
+			to_chat(user, span_notice("Você consegue remover a luz.[fitting], quebrando-o em processo."))
 			break_light_tube()
 		else
-			to_chat(user, span_warning("You try to remove the light [fitting], but you burn your hand on it!"))
+			to_chat(user, span_warning("Você tenta remover a luz[fitting]Mas você queima sua mão nele!"))
 			return
 	// create a light tube/bulb item and put it in the user's hand
 	drop_light_tube(user)
@@ -689,10 +688,10 @@
 
 /obj/machinery/light/attack_tk(mob/user)
 	if(status == LIGHT_EMPTY)
-		to_chat(user, span_warning("There is no [fitting] in this light!"))
+		to_chat(user, span_warning("Não existe[fitting]Nesta luz!"))
 		return
 
-	to_chat(user, span_notice("You telekinetically remove the light [fitting]."))
+	to_chat(user, span_notice("Você tira telecinicamente a luz.[fitting]."))
 	// create a light tube/bulb item and put it in the user's hand
 	var/obj/item/light/light_tube = drop_light_tube()
 	return light_tube.attack_tk(user)
@@ -761,7 +760,7 @@
 
 /obj/machinery/light/floor
 	name = "floor light"
-	desc = "A lightbulb you can walk on without breaking it, amazing."
+	desc = "Uma lâmpada que você pode andar sem quebrá-la, incrível."
 	icon = 'icons/obj/lighting.dmi'
 	base_state = "floor" // base description and icon_state
 	icon_state = "floor"

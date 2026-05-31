@@ -13,7 +13,7 @@
 
 /obj/structure/chair/milking_machine
 	name = "milking machine"
-	desc = "A stationary device for milking... things."
+	desc = "Um dispositivo para ordenar... coisas."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi'
 	icon_state = "milking_pink_off"
 	max_buckled_mobs = 1
@@ -101,7 +101,7 @@
 // Additional examine text
 /obj/structure/chair/milking_machine/examine(mob/user)
 	. = ..()
-	. += span_notice("What are these metal mounts on the armrests for...?")
+	. += span_notice("Para que são essas montagens de metal nos braços?")
 
 /obj/structure/chair/milking_machine/Destroy()
 	if(current_mob)
@@ -149,7 +149,7 @@
 		return TRUE
 	machine_color = choice
 	update_icon()
-	to_chat(user, span_notice("You change the color of the milking machine."))
+	to_chat(user, span_notice("Você muda a cor da máquina de ordenhar."))
 	return TRUE
 
 // Checking if we can use the menu
@@ -251,7 +251,7 @@
 
 /obj/item/restraints/handcuffs/milker
 	name = "chair cuffs"
-	desc = "A thick metal cuff for restraining hands."
+	desc = "Um punho de metal grosso para as mãos de restrição."
 	lefthand_file = null
 	righthand_file = null
 	breakouttime = 45 SECONDS
@@ -281,12 +281,10 @@
 		return ..()
 
 	if(affected_mob.arousal >= 60 && (current_mode != MILKING_PUMP_MODE_OFF) && (current_mode != MILKING_PUMP_MODE_LOW))
-		to_chat(affected_mob, span_purple("You are too horny to try to get out!"))
+		to_chat(affected_mob, span_purple("Você está muito excitado para tentar sair!"))
 		return FALSE
 
-	affected_mob.visible_message(span_notice("[affected_mob] unbuckles [affected_mob.p_them()]self from [src]."),\
-		span_notice("You unbuckle yourself from [src]."),\
-		span_hear("You hear metal clanking."))
+	affected_mob.visible_message(span_notice("[affected_mob]Desembucha.[affected_mob.p_them()]Eu de[src]."),		span_notice("Você se desaperta.[src]."),		span_hear("Você ouve metal tocando."))
 	unbuckle_mob(affected_mob)
 	return TRUE
 
@@ -323,17 +321,17 @@
 	if(beaker && new_beaker)
 		try_put_in_hand(beaker, user)
 		beaker = new_beaker
-		to_chat(user, span_notice("You swap out the current beaker with a new one in a single uninterrupted motion."))
+		to_chat(user, span_notice("Você troca o copo atual com um novo em um único movimento ininterrupto."))
 		return TRUE
 
 	if(beaker)
 		try_put_in_hand(beaker, user)
 		beaker = null
-		to_chat(user, span_notice("You take the beaker out of [src]"))
+		to_chat(user, span_notice("Você tira o copo[src]"))
 
 	if(new_beaker)
 		beaker = new_beaker
-		to_chat(user, span_notice("You put the beaker in [src]"))
+		to_chat(user, span_notice("Você colocou o copo[src]"))
 
 	return TRUE
 
@@ -410,13 +408,13 @@
 	current_mob.adjust_pain(pain_amounts[current_mode] * seconds_per_tick)
 
 /obj/structure/chair/milking_machine/click_ctrl_shift(mob/user)
-	to_chat(user, span_notice("You begin to disassemble [src]..."))
+	to_chat(user, span_notice("Você começa a desmontar[src]..."))
 	if(!do_after(user, 8 SECONDS, src))
-		to_chat(user, span_warning("You fail to disassemble [src]!"))
+		to_chat(user, span_warning("Você não consegue desmontar[src]!"))
 		return
 
 	deconstruct(TRUE)
-	to_chat(user, span_notice("You disassemble [src]."))
+	to_chat(user, span_notice("Você se desmonta.[src]."))
 
 // Machine deconstruction process handler
 /obj/structure/chair/milking_machine/atom_deconstruct(disassembled)
@@ -592,7 +590,7 @@
 		return
 	if(action == "ejectCreature")
 		unbuckle_mob(current_mob)
-		to_chat(usr, span_notice("You eject [current_mob] from [src]"))
+		to_chat(usr, span_notice("Você ejeta.[current_mob]De[src]"))
 		return TRUE
 
 	if(action == "ejectBeaker")
@@ -604,28 +602,28 @@
 		current_mode = MILKING_PUMP_MODE_OFF
 		pump_state = MILKING_PUMP_STATE_OFF
 		update_all_visuals()
-		to_chat(usr, span_notice("You turn off [src]"))
+		to_chat(usr, span_notice("Você desliga.[src]"))
 		return TRUE
 
 	if(action == "setLowMode")
 		current_mode = MILKING_PUMP_MODE_LOW
 		pump_state = MILKING_PUMP_STATE_ON
 		update_all_visuals()
-		to_chat(usr, span_notice("You switch [src] onto low mode"))
+		to_chat(usr, span_notice("Você troca.[src]Em modo baixo"))
 		return TRUE
 
 	if(action == "setMediumMode")
 		current_mode = MILKING_PUMP_MODE_MEDIUM
 		pump_state = MILKING_PUMP_STATE_ON
 		update_all_visuals()
-		to_chat(usr, span_notice("You switch [src] onto medium mode"))
+		to_chat(usr, span_notice("Você troca.[src]em modo médio"))
 		return TRUE
 
 	if(action == "setHardMode")
 		current_mode = MILKING_PUMP_MODE_HARD
 		pump_state = MILKING_PUMP_STATE_ON
 		update_all_visuals()
-		to_chat(usr, span_notice("You switch [src] onto hard mode"))
+		to_chat(usr, span_notice("Você troca.[src]em modo duro"))
 		return TRUE
 
 	if(action == "unplug")
@@ -634,25 +632,25 @@
 		pump_state = MILKING_PUMP_STATE_OFF
 		current_selected_organ = null
 		update_all_visuals()
-		to_chat(usr, span_notice("You detach the liner."))
+		to_chat(usr, span_notice("Você desliga o revestimento."))
 		return TRUE
 
 	if(action == "setBreasts")
 		current_selected_organ = current_breasts
 		update_all_visuals()
-		to_chat(usr, span_notice("You attach the liner to [current_selected_organ]."))
+		to_chat(usr, span_notice("Você anexa o forro para[current_selected_organ]."))
 		return TRUE
 
 	if(action == "setVagina")
 		current_selected_organ = current_vagina
 		update_all_visuals()
-		to_chat(usr, span_notice("You attach the liner to [current_selected_organ]."))
+		to_chat(usr, span_notice("Você anexa o forro para[current_selected_organ]."))
 		return TRUE
 
 	if(action == "setTesticles")
 		current_selected_organ = current_testicles
 		update_all_visuals()
-		to_chat(usr, span_notice("You attach the liner to [current_selected_organ]."))
+		to_chat(usr, span_notice("Você anexa o forro para[current_selected_organ]."))
 		return TRUE
 
 	if(action == "setMilk")
@@ -684,7 +682,7 @@
 
 /obj/structure/chair/milking_machine/examine(mob/user)
 	. = ..()
-	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")
+	. += span_purple("[src]Pode ser desmontado usando Ctrl+Shift. Clique.")
 
 #undef MILKING_PUMP_MODE_OFF
 #undef MILKING_PUMP_MODE_LOW

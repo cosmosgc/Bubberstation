@@ -314,7 +314,7 @@
 		qdel(src)
 
 /datum/nanite_program/proc/send_user_message(message)
-	to_chat(host_mob, "<i>You hear a strange, robotic voice in your head...</i> \"[span_robot("[message]")]\"")
+	to_chat(host_mob, "<i>Você ouve uma voz estranha e robótica na sua cabeça...</i> \"[span_robot("[message]")]\"")
 
 ///A nanite program containing a behaviour protocol. Only one protocol of each class can be active at once.
 /datum/nanite_program/protocol

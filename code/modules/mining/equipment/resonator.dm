@@ -7,7 +7,7 @@
 	inhand_icon_state = "resonator"
 	lefthand_file = 'icons/mob/inhands/equipment/mining_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/mining_righthand.dmi'
-	desc = "A handheld device that creates small fields of energy that resonate until they detonate, crushing rock. It does increased damage in low pressure. It has two modes: Automatic and manual detonation."
+	desc = "Um dispositivo portátil que cria pequenos campos de energia que ressoam até detonarem, esmagando rocha. Aumenta os danos na baixa pressão. Tem dois modos: detonação automática e manual."
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 15
 	throwforce = 10
@@ -26,10 +26,10 @@
 
 /obj/item/resonator/attack_self(mob/user)
 	if(mode == RESONATOR_MODE_AUTO)
-		to_chat(user, span_info("You set the resonator's fields to detonate only after you hit one with it."))
+		to_chat(user, span_info("Você ajustou os campos do ressonador para detonar só depois de acertar um com ele."))
 		mode = RESONATOR_MODE_MANUAL
 	else
-		to_chat(user, span_info("You set the resonator's fields to automatically detonate after 2 seconds."))
+		to_chat(user, span_info("Ajuste os campos do ressonador para detonar automaticamente após 2 segundos."))
 		mode = RESONATOR_MODE_AUTO
 
 /obj/item/resonator/proc/create_resonance(target, mob/user)
@@ -51,7 +51,7 @@
 //resonance field, crushes rock, damages mobs
 /obj/effect/temp_visual/resonance
 	name = "resonance field"
-	desc = "A resonating field that significantly damages anything inside of it when the field eventually ruptures. More damaging in low pressure environments."
+	desc = "Um campo ressonante que danifica significativamente qualquer coisa dentro dele quando o campo eventualmente se rompe. Mais danosos em ambientes de baixa pressão."
 	icon_state = "shield1"
 	layer = ABOVE_ALL_MOB_LAYER
 	plane = ABOVE_GAME_PLANE
@@ -129,7 +129,7 @@
 		if(creator)
 			log_combat(creator, attacked_living, "used a resonator field on", "resonator")
 			SEND_SIGNAL(creator, COMSIG_LIVING_RESONATOR_BURST, creator, attacked_living)
-		to_chat(attacked_living, span_userdanger("[src] ruptured with you in it!"))
+		to_chat(attacked_living, span_userdanger("[src]rompido com você nele!"))
 		attacked_living.apply_damage(resonance_damage, BRUTE)
 		attacked_living.add_movespeed_modifier(/datum/movespeed_modifier/resonance)
 		addtimer(CALLBACK(attacked_living, TYPE_PROC_REF(/mob, remove_movespeed_modifier), /datum/movespeed_modifier/resonance), 10 SECONDS, TIMER_UNIQUE | TIMER_OVERRIDE)
@@ -158,7 +158,7 @@
 
 /obj/item/resonator/upgraded
 	name = "upgraded resonator"
-	desc = "An upgraded version of the resonator that can produce more fields at once, as well as having no damage penalty for bursting a resonance field early. It also allows you to set 'Resonance matrixes', that detonate after someone(or something) walks over it."
+	desc = "Uma versão atualizada do ressonador que pode produzir mais campos de uma vez, além de não ter qualquer penalidade por estourar um campo de ressonância mais cedo. Também permite definir matrizes de ressonância, que detonam depois que alguém (ou algo) passa por cima dela."
 	icon_state = "resonator_u"
 	inhand_icon_state = "resonator_u"
 	fieldlimit = 6
@@ -167,11 +167,11 @@
 
 /obj/item/resonator/upgraded/attack_self(mob/user)
 	if(mode == RESONATOR_MODE_AUTO)
-		to_chat(user, span_info("You set the resonator's fields to detonate only after you hit one with it."))
+		to_chat(user, span_info("Você ajustou os campos do ressonador para detonar só depois de acertar um com ele."))
 		mode = RESONATOR_MODE_MANUAL
 	else if(mode == RESONATOR_MODE_MANUAL)
-		to_chat(user, span_info("You set the resonator's fields to work as matrix traps."))
+		to_chat(user, span_info("Você colocou os campos do ressonador como armadilhas de matriz."))
 		mode = RESONATOR_MODE_MATRIX
 	else
-		to_chat(user, span_info("You set the resonator's fields to automatically detonate after 2 seconds."))
+		to_chat(user, span_info("Ajuste os campos do ressonador para detonar automaticamente após 2 segundos."))
 		mode = RESONATOR_MODE_AUTO

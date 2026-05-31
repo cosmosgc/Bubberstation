@@ -3,7 +3,7 @@
 
 /obj/structure/bed/bdsm_bed
 	name = "bdsm bed"
-	desc = "A latex bed with D-rings on the sides. Looks comfortable."
+	desc = "Uma cama de látex com D-rings nos lados. Parece confortável."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "bdsm_bed"
 	max_integrity = 50
@@ -24,12 +24,12 @@
 	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
 		return FALSE
 
-	to_chat(user, span_notice("You fasten the frame to the floor and begin to inflate the latex pillows..."))
+	to_chat(user, span_notice("Você aperta o quadro no chão e começa a inflar os travesseiros de látex..."))
 	if(!do_after(user, 8 SECONDS, src))
-		to_chat(user, span_warning("You fail to assemble [src]."))
+		to_chat(user, span_warning("Você não consegue se reunir.[src]."))
 		return FALSE
 
-	to_chat(user, span_notice("You assemble [src]."))
+	to_chat(user, span_notice("Você se reúne.[src]."))
 	var/obj/structure/bed/bdsm_bed/assembled_bed = new
 	assembled_bed.forceMove(loc)
 	qdel(src)
@@ -38,7 +38,7 @@
 
 /obj/item/bdsm_bed_kit/examine(mob/user)
 	. = ..()
-	. += span_purple("[src] can be assembled by using Ctrl+Shift+Click while [src] is on the floor.")
+	. += span_purple("[src]Pode ser montado usando Ctrl+Shift. Clique enquanto[src]Está no chão.")
 
 // previously NO_DECONSTRUCTION
 /obj/structure/bed/bdsm_bed/wrench_act_secondary(mob/living/user, obj/item/weapon)
@@ -57,12 +57,12 @@
 
 /obj/structure/bed/bdsm_bed/click_ctrl_shift(mob/user)
 	add_fingerprint(user)
-	to_chat(user, span_notice("You begin unfastening the frame of [src] and deflating the latex pillows..."))
+	to_chat(user, span_notice("Você começa a desapertar o quadro de[src]e esvaziando os travesseiros de látex..."))
 	if(!do_after(user, 8 SECONDS, src))
-		to_chat(user, span_warning("You fail to disassemble [src]."))
+		to_chat(user, span_warning("Você não consegue desmontar[src]."))
 		return
 
-	to_chat(user, span_notice("You disassemble [src]."))
+	to_chat(user, span_notice("Você se desmonta.[src]."))
 	var/obj/item/construction_kit/bdsm/bed/created_kit = new
 	created_kit.forceMove(loc)
 	qdel(src)
@@ -73,7 +73,7 @@
 
 /obj/structure/bed/bdsm_bed/examine(mob/user)
 	. = ..()
-	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")
+	. += span_purple("[src]Pode ser desmontado usando Ctrl+Shift. Clique.")
 
 /*
 *	X-STAND
@@ -81,7 +81,7 @@
 
 /obj/structure/chair/x_stand
 	name = "x stand"
-	desc = "A stand for buckling people in an X shape."
+	desc = "Um suporte para encontrar pessoas em forma de X."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "xstand_open"
 	base_icon_state = "xstand"
@@ -148,20 +148,17 @@
 
 	if(buckled_mob != user)
 		if(!do_after(user, 5 SECONDS, buckled_mob)) // Timer for unbuckling one mob with another mob
-			to_chat(user, span_warning("You fail to unbuckle [buckled_mob] from [src]."))
+			to_chat(user, span_warning("Você não consegue soltar[buckled_mob]De[src]."))
 			return FALSE
 
-		buckled_mob.visible_message(span_notice("[user] unbuckles [buckled_mob] from [src]."),\
-			span_notice("[user] unbuckles you from [src]."),\
-			span_hear("You hear metal clanking."))
+		buckled_mob.visible_message(span_notice("[user]Desembucha.[buckled_mob]De[src]."),			span_notice("[user]Desembaraça você de[src]."),			span_hear("Você ouve metal tocando."))
 
 	else
 		if(!do_after(user, 10 SECONDS, buckled_mob)) // Timer for unbuckling one mob with another mob
-			to_chat(user, span_warning("You fail to unbuckle yourself from [src]."))
+			to_chat(user, span_warning("Você não consegue se soltar.[src]."))
 			return FALSE
 
-		user.visible_message(span_notice("You unbuckle yourself from [src]."),\
-			span_hear("You hear metal clanking."))
+		user.visible_message(span_notice("Você se desaperta.[src]."),			span_hear("Você ouve metal tocando."))
 
 	unbuckle_mob(buckled_mob)
 
@@ -186,41 +183,36 @@
 
 	if(affected_mob == user)
 		if(!do_after(user, 10 SECONDS, affected_mob)) // Timer to buckle the mob itself
-			to_chat(user, span_warning("You fail to buckle yourself to [src]!"))
+			to_chat(user, span_warning("Você não consegue se amarrar[src]!"))
 			return FALSE
 
 		if(!is_user_buckle_possible(affected_mob, user, check_loc))
-			to_chat(user, span_warning("You are unable to buckle yourself to [src]!"))
+			to_chat(user, span_warning("Você é incapaz de se amarrar[src]!"))
 			return FALSE
 
 		if(buckle_mob(affected_mob, check_loc = check_loc))
-			user.visible_message(span_warning("You buckle yourself to [src]!"),\
-				span_hear("You hear metal clanking."))
+			user.visible_message(span_warning("Você se fivela para[src]!"),				span_hear("Você ouve metal tocando."))
 
 		toggle_mode(user)
 		return TRUE
 
-	affected_mob.visible_message(span_warning("[user] starts buckling [affected_mob] to [src]!"),\
-		span_userdanger("[user] starts buckling you to [src]!"),\
-		span_hear("You hear metal clanking."))
+	affected_mob.visible_message(span_warning("[user]Começa a encurvar.[affected_mob]Para[src]!"),		span_userdanger("[user]Começa a encurvar você para[src]!"),		span_hear("Você ouve metal tocando."))
 
 	if(!do_after(user, 5 SECONDS, affected_mob)) // Timer to buckle one mob by another
-		to_chat(user, span_warning("You fail to buckle [affected_mob] to [src]!"))
+		to_chat(user, span_warning("Você não consegue fivela[affected_mob]Para[src]!"))
 		return FALSE
 
 	// Sanity check before we attempt to buckle. Is everything still in a kosher state for buckling after the 3 seconds have elapsed?
 	// Covers situations where, for example, the chair was moved or there's some other issue.
 	if(!is_user_buckle_possible(affected_mob, user, check_loc))
-		to_chat(user, span_warning("You are unable to buckle [affected_mob] to [src]!"))
+		to_chat(user, span_warning("Você é incapaz de fivela[affected_mob]Para[src]!"))
 		return FALSE
 
 	// Place to insert a description of a successful attempt for a user mob
 	if(!buckle_mob(affected_mob, check_loc = check_loc))
 		return FALSE
 
-	affected_mob.visible_message(span_warning("[user] buckled [affected_mob] to [src]!"),\
-		span_userdanger("[user] buckled you to [src]!"),\
-		span_hear("You hear metal clanking."))
+	affected_mob.visible_message(span_warning("[user]Cinco.[affected_mob]Para[src]!"),		span_userdanger("[user]Apertado você para[src]!"),		span_hear("Você ouve metal tocando."))
 
 	toggle_mode(user)
 	return TRUE
@@ -281,18 +273,18 @@
 
 /obj/structure/chair/x_stand/click_ctrl_shift(mob/user)
 	add_fingerprint(user)
-	to_chat(user, span_notice("You begin unfastening the frame of [src]..."))
+	to_chat(user, span_notice("Você começa a desapertar o quadro de[src]..."))
 	if(!do_after(user, 8 SECONDS, src))
 		return
 
-	to_chat(user, span_notice("You disassemble [src]."))
+	to_chat(user, span_notice("Você se desmonta.[src]."))
 	new /obj/item/construction_kit/bdsm/x_stand(loc)
 	unbuckle_all_mobs()
 	qdel(src)
 
 /obj/structure/chair/x_stand/examine(mob/user)
 	. = ..()
-	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")
+	. += span_purple("[src]Pode ser desmontado usando Ctrl+Shift. Clique.")
 
 #undef X_STAND_CLOSED_STATE
 #undef X_STAND_OPEN_STATE

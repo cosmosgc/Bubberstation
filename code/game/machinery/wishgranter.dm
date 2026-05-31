@@ -1,6 +1,6 @@
 /obj/machinery/wish_granter
 	name = "wish granter"
-	desc = "You're not so sure about this, anymore..."
+	desc = "Você não tem tanta certeza sobre isso, mais..."
 	icon = 'icons/obj/machines/beacon.dmi'
 	icon_state = "syndbeacon"
 
@@ -15,29 +15,29 @@
 	if(.)
 		return
 	if(charges <= 0)
-		to_chat(user, span_boldnotice("The Wish Granter lies silent."))
+		to_chat(user, span_boldnotice("O Wish Grant está em silêncio."))
 		return
 
 	else if(!ishuman(user))
-		to_chat(user, span_boldnotice("You feel a dark stirring inside of the Wish Granter, something you want nothing of. Your instincts are better than any man's."))
+		to_chat(user, span_boldnotice("Você sente um movimento escuro dentro do Wish Grant, algo que você não quer. Seus instintos são melhores que os de qualquer homem."))
 		return
 
 	else if(user.is_antag())
-		to_chat(user, span_boldnotice("Even to a heart as dark as yours, you know nothing good will come of this. Something instinctual makes you pull away."))
+		to_chat(user, span_boldnotice("Mesmo para um coração tão escuro quanto o seu, você sabe que nada de bom virá disso. Algo instintivo faz você se afastar."))
 
 	else if (!insisting)
-		to_chat(user, span_boldnotice("Your first touch makes the Wish Granter stir, listening to you. Are you really sure you want to do this?"))
+		to_chat(user, span_boldnotice("Seu primeiro toque faz o Wish Grant mexer, ouvindo você. Tem certeza que quer fazer isso?"))
 		insisting++
 
 	else
-		to_chat(user, span_boldnotice("You speak. [pick("I want the station to disappear","Humanity is corrupt, mankind must be destroyed","I want to be rich", "I want to rule the world","I want immortality.")]. The Wish Granter answers."))
-		to_chat(user, span_boldnotice("Your head pounds for a moment, before your vision clears. You are the avatar of the Wish Granter, and your power is LIMITLESS! And it's all yours. You need to make sure no one can take it from you. No one can know, first."))
+		to_chat(user, span_boldnotice("Você fala.[pick("I want the station to disappear","Humanity is corrupt, mankind must be destroyed","I want to be rich", "I want to rule the world","I want immortality.")]O Wish Grant responde."))
+		to_chat(user, span_boldnotice("Sua cabeça bate por um momento, antes de sua visão se dissipar. Você é o avatar do Wish Grant, e seu poder é LIMITADO! E é todo seu. Precisa ter certeza que ninguém pode tirar de você. Ninguém pode saber, primeiro."))
 
 		charges--
 		insisting = 0
 
 		user.mind.add_antag_datum(/datum/antagonist/wishgranter)
 
-		to_chat(user, span_warning("You have a very bad feeling about this."))
+		to_chat(user, span_warning("Você tem um mau pressentimento sobre isso."))
 
 	return

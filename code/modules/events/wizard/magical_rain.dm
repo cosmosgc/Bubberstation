@@ -4,7 +4,7 @@
 	typepath = /datum/round_event/wizard/magical_rain
 	max_occurrences = 5
 	earliest_start = 0 MINUTES
-	description = "A magical thunderstorm rains down below, drenching anyone caught in it with mysterious rain."
+	description = "Uma tempestade mágica chove abaixo, encharcando qualquer um com chuva misteriosa."
 	min_wizard_trigger_potency = 2
 	max_wizard_trigger_potency = 7
 
@@ -17,7 +17,7 @@
 		// give it to all wizards even if there are multiple
 		if(IS_WIZARD(wizard) && !HAS_TRAIT_FROM(wizard, TRAIT_RAINSTORM_IMMUNE, MAGIC_TRAIT))
 			ADD_TRAIT(wizard, TRAIT_RAINSTORM_IMMUNE, MAGIC_TRAIT)
-			to_chat(wizard, span_reallybig(span_hypnophrase("You feel a magical force giving you resistance to rain!")))
+			to_chat(wizard, span_reallybig(span_hypnophrase("Você sente uma força mágica te dando resistência à chuva!")))
 
 	if(!started)
 		started = TRUE
@@ -27,4 +27,4 @@
 	for(var/mob/living/wizard in GLOB.alive_mob_list)
 		if(IS_WIZARD(wizard) && HAS_TRAIT_FROM(wizard, TRAIT_RAINSTORM_IMMUNE, MAGIC_TRAIT))
 			REMOVE_TRAIT(wizard, TRAIT_RAINSTORM_IMMUNE, MAGIC_TRAIT)
-			to_chat(wizard, span_notice("You feel your magical resistance to rain fade!"))
+			to_chat(wizard, span_notice("Você sente sua resistência mágica à chuva desaparecer!"))

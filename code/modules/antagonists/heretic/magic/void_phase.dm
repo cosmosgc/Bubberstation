@@ -1,8 +1,6 @@
 /datum/action/cooldown/spell/pointed/void_phase
 	name = "Void Phase"
-	desc = "Lets you blink to your pointed destination, causes 3x3 aoe damage bubble \
-		around your pointed destination and your current location. \
-		It has a minimum range of 3 tiles and a maximum range of 9 tiles."
+	desc = "Deixa você piscar para o seu destino apontado, causa 3x3 aoe bolha de danos em torno de seu destino apontado e sua localização atual. Tem um alcance mínimo de 3 peças e um alcance máximo de 9 peças."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -28,7 +26,7 @@
 		return
 
 	if(owner && get_dist(get_turf(owner), get_turf(cast_on)) < min_cast_range)
-		cast_on.balloon_alert(owner, "perto demais!")
+		cast_on.balloon_alert(owner, "Perto demais!")
 		return . | SPELL_CANCEL_CAST
 
 /datum/action/cooldown/spell/pointed/void_phase/cast(atom/cast_on)

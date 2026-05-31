@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/module
 	display_name = "Module"
-	desc = "A component that has other components within it, acting like a function. Use it in your hand to control the amount of input and output ports it has, as well as being able to access the integrated circuit contained inside."
+	desc = "Um componente que tem outros componentes dentro, agindo como uma função. Use-o em sua mão para controlar a quantidade de entradas e saídas que tem, bem como ser capaz de acessar o circuito integrado contido dentro."
 	category = "Abstract"
 
 	var/obj/item/integrated_circuit/module/internal_circuit
@@ -49,7 +49,7 @@
 
 /obj/item/integrated_circuit/module/add_component(obj/item/circuit_component/to_add, mob/living/user)
 	if(to_add.circuit_flags & CIRCUIT_FLAG_REFUSE_MODULE)
-		balloon_alert(user, "doesn't fit into module!")
+		balloon_alert(user, "Não cabe no módulo!")
 		return
 	. = ..()
 	if(attached_module)
@@ -66,7 +66,7 @@
 
 /obj/item/circuit_component/module_input
 	display_name = "Input"
-	desc = "A component that receives data from the module it is attached to"
+	desc = "Um componente que recebe dados do módulo que está ligado a"
 
 	removable = FALSE
 
@@ -79,7 +79,7 @@
 
 /obj/item/circuit_component/module_output
 	display_name = "Output"
-	desc = "A component that outputs data to the module it is attached to."
+	desc = "Um componente que envia dados para o módulo que está ligado."
 
 	removable = FALSE
 

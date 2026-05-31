@@ -1,8 +1,8 @@
 import { type Feature, FeatureSliderInput } from '../../base';
 
 export const sound_emote: Feature<number> = {
-  name: 'Emote sound volume',
+  name: 'Volume de som emotivo',
   category: 'SOUND',
-  description: 'Volume of audible emotes.',
+  description: 'Volume de emoções audíveis.',
   component: FeatureSliderInput,
 };

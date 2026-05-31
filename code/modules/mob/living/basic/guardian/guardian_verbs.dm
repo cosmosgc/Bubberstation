@@ -31,16 +31,16 @@
 
 /// Swap to a different mode... if we have one
 /mob/living/basic/guardian/proc/toggle_modes()
-	to_chat(src, span_bolddanger("You don't have another mode!"))
+	to_chat(src, span_bolddanger("Você não tem outro modo!"))
 
 
 /// Turn an internal light on or off.
 /mob/living/basic/guardian/proc/toggle_light()
 	if (!light_on)
-		to_chat(src, span_notice("You activate your light."))
+		to_chat(src, span_notice("Você ativa sua luz."))
 		set_light_on(TRUE)
 	else
-		to_chat(src, span_notice("You deactivate your light."))
+		to_chat(src, span_notice("Você desativa sua luz."))
 		set_light_on(FALSE)
 
 /// Speak with our boss at a distance
@@ -69,7 +69,7 @@
 /// Speak with your guardian(s) at a distance.
 /datum/action/cooldown/mob_cooldown/guardian_comms
 	name = "Guardian Communication"
-	desc = "Communicate telepathically with your guardian."
+	desc = "Comunique-se telepaticamente com seu tutor."
 	button_icon = 'icons/hud/guardian.dmi'
 	button_icon_state = "communicate"
 	background_icon = 'icons/hud/guardian.dmi'
@@ -106,7 +106,7 @@
 /// Tell your slacking or distracted guardian to come home.
 /datum/action/cooldown/mob_cooldown/recall_guardian
 	name = "Recall Guardian"
-	desc = "Forcibly recall your guardian."
+	desc = "Lembre-se de seu guardião."
 	button_icon = 'icons/hud/guardian.dmi'
 	button_icon_state = "recall"
 	background_icon = 'icons/hud/guardian.dmi'
@@ -128,7 +128,7 @@
 /// Replace an annoying griefer you were paired up to with a different but probably no less annoying player.
 /datum/action/cooldown/mob_cooldown/replace_guardian
 	name = "Reset Guardian Consciousness"
-	desc = "Replaces the mind of your guardian with that of a different ghost."
+	desc = "Substitui a mente de seu guardião pela de um fantasma diferente."
 	button_icon = 'icons/mob/simple/mob.dmi'
 	button_icon_state = "ghost"
 	background_icon = 'icons/hud/guardian.dmi'
@@ -149,26 +149,24 @@
 			guardians -= resetting_guardian //clear out guardians that are already reset
 
 	if (!length(guardians))
-		to_chat(owner, span_holoparasite("You cannot reset [length(guardians) > 1 ? "any of your guardians":"your guardian"] yet."))
+		to_chat(owner, span_holoparasite("Você não pode reiniciar.[length(guardians) > 1 ? "any of your guardians":"your guardian"]Ainda."))
 		StartCooldown()
 		return FALSE
 
 	var/mob/living/basic/guardian/chosen_guardian = tgui_input_list(owner, "Pick the guardian you wish to reset", "Guardian Reset", sort_names(guardians))
 	if (isnull(chosen_guardian))
-		to_chat(owner, span_holoparasite("You decide not to reset [length(guardians) > 1 ? "any of your guardians":"your guardian"]."))
+		to_chat(owner, span_holoparasite("Você decide não reiniciar.[length(guardians) > 1 ? "any of your guardians":"your guardian"]."))
 		StartCooldown()
 		return FALSE
 
-	to_chat(owner, span_holoparasite("You attempt to reset <font color=\"[chosen_guardian.guardian_colour]\">[span_bold(chosen_guardian.real_name)]</font>'s personality..."))
-	var/mob/chosen_one = SSpolling.poll_ghost_candidates("Do you want to play as [span_danger("[owner.real_name]'s")] [span_notice(chosen_guardian.theme.name)]?", check_jobban = ROLE_PAI, poll_time = 10 SECONDS, alert_pic = chosen_guardian, jump_target = owner, role_name_text = chosen_guardian.theme.name, amount_to_pick = 1)
+	to_chat(owner, span_holoparasite("Você tenta reiniciar.<font color=\"[chosen_guardian.guardian_colour]\">[span_bold(chosen_guardian.real_name)]</font>Uma personalidade..."))
+	var/mob/chosen_one = SSpolling.poll_ghost_candidates("Você quer jogar como[span_danger("[owner.real_name]'s")] [span_notice(chosen_guardian.theme.name)]?", check_jobban = ROLE_PAI, poll_time = 10 SECONDS, alert_pic = chosen_guardian, jump_target = owner, role_name_text = chosen_guardian.theme.name, amount_to_pick = 1)
 	if(isnull(chosen_one))
-		to_chat(owner, span_holoparasite("Your attempt to reset the personality of \
-			<font color=\"[chosen_guardian.guardian_colour]\">[span_bold(chosen_guardian.real_name)]</font> appears to have failed... \
-			Looks like you're stuck with it for now."))
+		to_chat(owner, span_holoparasite("Sua tentativa de redefinir a personalidade de<font color=\"[chosen_guardian.guardian_colour]\">[span_bold(chosen_guardian.real_name)]</font>Parece ter falhado... Parece que você está preso com isso por enquanto."))
 		StartCooldown()
 		return FALSE
-	to_chat(chosen_guardian, span_holoparasite("Your user reset you, and your body was taken over by a ghost. Looks like they weren't happy with your performance."))
-	to_chat(owner, span_boldholoparasite("The personality of <font color=\"[chosen_guardian.guardian_colour]\">[chosen_guardian.theme.name]</font> has been successfully reset."))
+	to_chat(chosen_guardian, span_holoparasite("Seu usuário redefiniu você, e seu corpo foi tomado por um fantasma. Parece que eles não estavam felizes com sua performance."))
+	to_chat(owner, span_boldholoparasite("A personalidade de<font color=\"[chosen_guardian.guardian_colour]\">[chosen_guardian.theme.name]</font>foi reiniciado com sucesso."))
 	message_admins("[key_name_admin(chosen_one)] has taken control of ([ADMIN_LOOKUPFLW(chosen_guardian)])")
 	chosen_guardian.ghostize(FALSE)
 	chosen_guardian.PossessByPlayer(chosen_one.key)

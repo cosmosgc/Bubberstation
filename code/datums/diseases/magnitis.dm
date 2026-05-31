@@ -8,8 +8,7 @@
 	viable_mobtypes = list(/mob/living/carbon/human)
 	disease_flags = CAN_CARRY|CAN_RESIST|CURABLE
 	spreading_modifier = 0.75
-	desc = "This disease disrupts the magnetic field of the subjects body, making it act as if a powerful magnet. \
-		Injections of iron will help stabilize the field."
+	desc = "Esta doença perturba o campo magnético do corpo dos sujeitos, fazendo-o agir como se fosse um poderoso ímã. Injeções de ferro ajudarão a estabilizar o campo."
 	severity = DISEASE_SEVERITY_MEDIUM
 	infectable_biotypes = MOB_ORGANIC|MOB_ROBOTIC
 	bypasses_immunity = TRUE
@@ -24,7 +23,7 @@
 	switch(stage)
 		if(2)
 			if(SPT_PROB(1, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Your skin tingles with energy."))
+				to_chat(affected_mob, span_danger("Sua pele está formigando com energia."))
 			if(SPT_PROB(1, seconds_per_tick))
 				for(var/obj/nearby_object in orange(2, affected_mob))
 					if(nearby_object.anchored || !(nearby_object.obj_flags & CONDUCTS_ELECTRICITY))
@@ -38,9 +37,9 @@
 					nearby_silicon.Move(get_step(nearby_silicon, move_dir), move_dir)
 		if(3)
 			if(SPT_PROB(1, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Your hair stands on end."))
+				to_chat(affected_mob, span_danger("Seu cabelo está na ponta."))
 			if(SPT_PROB(2, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You feel a light shock course through your body."))
+				to_chat(affected_mob, span_danger("Você sente um curso de choque leve através de seu corpo."))
 				for(var/obj/nearby_object in orange(4, affected_mob))
 					if(nearby_object.anchored || !(nearby_object.obj_flags & CONDUCTS_ELECTRICITY))
 						continue
@@ -53,9 +52,9 @@
 						nearby_silicon.throw_at(affected_mob, 4, 3)
 		if(4)
 			if(SPT_PROB(1, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You query upon the nature of miracles."))
+				to_chat(affected_mob, span_danger("Você pergunta sobre a natureza dos milagres."))
 			if(SPT_PROB(4, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You feel a powerful shock course through your body."))
+				to_chat(affected_mob, span_danger("Você sente um poderoso curso de choque através do seu corpo."))
 				for(var/obj/nearby_object in orange(6, affected_mob))
 					if(nearby_object.anchored || !(nearby_object.obj_flags & CONDUCTS_ELECTRICITY))
 						continue

@@ -42,7 +42,7 @@ export async function loadSourceMaps(bundleDir: string): Promise<void> {
 
 export function retrace(stack: string): string | undefined {
   if (typeof stack !== 'string') {
-    logger.log('ERROR: Stack is not a string!', stack);
+    logger.log('Stack não é uma corda!', stack);
     return stack;
   }
   const header = stack.split(/\n\s.*at/)[0];

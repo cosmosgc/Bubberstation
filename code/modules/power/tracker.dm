@@ -8,7 +8,7 @@
 
 /obj/machinery/power/tracker
 	name = "solar tracker"
-	desc = "A solar directional tracker."
+	desc = "Um rastreador direto solar."
 	icon = 'icons/obj/machines/solar.dmi'
 	icon_state = "tracker_base"
 	density = TRUE
@@ -127,7 +127,7 @@
 /obj/machinery/power/tracker/crowbar_act(mob/user, obj/item/I)
 	if(I.use_tool(src, user, 0))
 		playsound(src.loc, 'sound/items/deconstruct.ogg', 50, TRUE)
-		user.visible_message(span_notice("[user] takes the glass off [src]."), span_notice("You take the glass off [src]."))
+		user.visible_message(span_notice("[user]Cansado do copo.[src]."), span_notice("Você tira o copo.[src]."))
 		deconstruct(TRUE)
 	return TRUE
 

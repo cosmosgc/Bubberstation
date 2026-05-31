@@ -1,6 +1,6 @@
 /obj/structure/closet/crate/secure/syndicrate
 	name = "surplus syndicrate"
-	desc = "A conspicuous crate with the Syndicate logo on it. You don't know how to open it."
+	desc = "Uma caixa com o logotipo do Sindicato. Você não sabe como abrir."
 	icon_state = "syndicrate"
 	base_icon_state = "syndicrate"
 	max_integrity = 500
@@ -26,7 +26,7 @@
 		return FALSE
 
 	if(!broken && !force && !created_items)
-		balloon_alert(user, "trancado!")
+		balloon_alert(user, "Trancado!")
 		return FALSE
 
 	return TRUE
@@ -38,7 +38,7 @@
 		return ..()
 	if(prob(75))
 		return ..()
-	visible_message(span_danger("The syndicrate's anti-tamper system activates!"))
+	visible_message(span_danger("O sistema anti-tamper do Sindicato é ativado!"))
 	explosion(src, heavy_impact_range = 1, light_impact_range = 2, flash_range = 2)
 	qdel(src)
 
@@ -51,7 +51,7 @@
 		new item_path(src)
 	unlock_contents = list()
 	qdel(item)
-	to_chat(user, span_notice("You twist the key into both locks at once, opening the crate."))
+	to_chat(user, span_notice("Você torce a chave em ambas as fechaduras de uma vez, abrindo a caixa."))
 	playsound(src, 'sound/machines/airlock/boltsup.ogg', 50, vary = FALSE)
 	togglelock(user)
 
@@ -63,7 +63,7 @@
 	locked = !locked
 	user.visible_message(
 		span_notice("[user] [locked ? "locks" : "unlocks"] [src]."),
-		span_notice("You [locked ? "trancado" : "destrancado"] [src]."),
+		span_notice("Você.[locked ? "trancado" : "destrancado"] [src]."),
 	)
 	update_appearance()
 
@@ -72,7 +72,7 @@
 
 /obj/item/syndicrate_key
 	name = "syndicrate key"
-	desc = "A device bearing a serpentine emblem, capable of splitting itself into two keys. Can be used to open one syndicrate."
+	desc = "Um dispositivo com um emblema serpentino, capaz de se dividir em duas chaves. Pode ser usado para abrir um sindicato."
 	icon = 'icons/obj/storage/crates.dmi'
 	icon_state = "syndicrate_key"
 	w_class = WEIGHT_CLASS_TINY

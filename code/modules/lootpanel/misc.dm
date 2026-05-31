@@ -12,12 +12,7 @@
 		var/build = owner.byond_build
 		var/version = owner.byond_version
 		if(build < 515 || (build == 515 && version < 1635))
-			to_chat(owner.mob, boxed_message(span_info("\
-				<span class='bolddanger'>Your version of Byond doesn't support fast image loading.</span>\n\
-				Detected: [version].[build]\n\
-				Required version for this feature: <b>515.1635</b> or later.\n\
-				Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.\n\
-			")))
+			to_chat(owner.mob, boxed_message(span_info("				<span class='bolddanger'>Sua versão do Byond não suporta carregamento rápido de imagens.</span>\nDetectado:[version].[build]\nVersão necessária para este recurso:<b>515.1635</b>Ou mais tarde.\nVisita<a href=\"https://secure.byond.com/download\">O site de BYOND</a>para obter a última versão de BYOND.\n			")))
 
 			notified = TRUE
 #endif

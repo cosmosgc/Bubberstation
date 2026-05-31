@@ -3,7 +3,7 @@ import { CheckboxInput, type FeatureToggle } from '../base';
 // BUBBER EDIT START - Replaced with choiced dropdown in bubber/screen.tsx
 /*
 export const widescreenpref: FeatureToggle = {
-  name: 'Enable widescreen',
+  name: 'Activar widescreen',
   category: 'UI',
   component: CheckboxInput,
 };
@@ -11,8 +11,8 @@ export const widescreenpref: FeatureToggle = {
 // BUBBER EDIT END
 
 export const fullscreen_mode: FeatureToggle = {
-  name: 'Toggle Fullscreen',
+  name: 'Alternar tela cheia',
   category: 'UI',
-  description: 'Toggles Fullscreen for the game, can also be toggled with F11.',
+  description: 'Alterna tela cheia para o jogo, também pode ser alternado com F11.',
   component: CheckboxInput,
 };

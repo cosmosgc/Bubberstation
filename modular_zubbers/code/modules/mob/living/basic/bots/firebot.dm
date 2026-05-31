@@ -1,8 +1,8 @@
 /mob/living/basic/bot/firebot
-	desc = "A little fire extinguishing bot. He looks rather anxious. Giving him a piece of <b>hot ice</b> would be quite an upgrade."
+	desc = "Um pequeno robô extintor. Ele parece ansioso. Dando-lhe um pedaço de<b>Gelo quente</b>Seria uma grande atualização."
 
 /mob/living/basic/bot/firebot/hotice_upgrade
-	desc = "A little fire extinguishing bot. Looks like he's holding a piece of <b>hot ice</b>! His foam will bring air temperature toward 20C."
+	desc = "Um pequeno robô extintor. Parece que ele está segurando um pedaço de<b>Gelo quente</b>! Sua espuma trará temperatura do ar em 20C."
 	light_color = "#8cdeff"
 
 /mob/living/basic/bot/firebot/hotice_upgrade/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
@@ -26,7 +26,7 @@
 		return ..()
 	var/obj/item/stack/sheet/hot_ice/ice = given_item
 	balloon_alert(user, "inserido")
-	to_chat(user, span_warning("You give a piece of hot ice to the firebot. He seems rather happy! His foam will now bring air temperature toward 20C."))
+	to_chat(user, span_warning("Você dá um pedaço de gelo quente para o robô de fogo. Ele parece muito feliz! Sua espuma agora trará a temperatura do ar para 20C."))
 	var/atom/movable/to_move = ice.split_stack(1)
 	to_move.forceMove(src)
 	src.change_mob_type(/mob/living/basic/bot/firebot/hotice_upgrade, delete_old_mob = TRUE)

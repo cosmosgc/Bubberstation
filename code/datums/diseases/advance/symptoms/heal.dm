@@ -1,7 +1,7 @@
 /datum/symptom/heal
 	abstract_type = /datum/symptom/heal
 	name = "Basic Healing (does nothing)" //warning for adminspawn viruses
-	desc = "You should not be seeing this."
+	desc = "Você não deveria estar vendo isso."
 	stealth = 0
 	resistance = 0
 	stage_speed = 0
@@ -53,13 +53,13 @@
 
 /datum/symptom/heal/starlight
 	name = "Starlight Condensation"
-	desc = "The virus reacts to direct starlight, producing regenerative chemicals. Works best against toxin-based damage."
+	desc = "O vírus reage à luz estelar direta, produzindo produtos químicos regenerativos. Funciona melhor contra danos à base de toxina."
 	stealth = -1
 	resistance = -2
 	stage_speed = 0
 	transmittable = 1
 	level = 6
-	passive_message = span_notice("You miss the feeling of starlight on your skin.")
+	passive_message = span_notice("Você sente falta da luz das estrelas em sua pele.")
 	var/nearspace_penalty = 0.3
 	threshold_descs = list(
 		"Stage Speed 6" = "Increases healing speed.",
@@ -159,7 +159,7 @@
 /datum/symptom/heal/starlight/Heal(mob/living/carbon/carbon_host, datum/disease/advance/our_disease, actual_power)
 	var/heal_amt = actual_power
 	if(carbon_host.get_tox_loss() && prob(5))
-		to_chat(carbon_host, span_notice("Your skin tingles as the starlight seems to heal you."))
+		to_chat(carbon_host, span_notice("Sua pele formiga como a luz das estrelas parece curá-lo."))
 	var/needs_update = FALSE
 	needs_update += carbon_host.adjust_tox_loss(-4 * heal_amt, updating_health = FALSE, required_biotype = healable_bodytypes) // Most effective on toxins
 	needs_update += carbon_host.heal_overall_damage(heal_amt, heal_amt, required_bodytype = healable_bodytypes, updating_health = FALSE)
@@ -181,7 +181,7 @@
 */
 /datum/symptom/heal/chem
 	name = "Toxolysis"
-	desc = "The virus rapidly breaks down any foreign chemicals in the bloodstream."
+	desc = "O vírus rapidamente quebra qualquer produto químico estranho na corrente sanguínea."
 	stealth = 0
 	resistance = -2
 	stage_speed = 2
@@ -209,7 +209,7 @@
 		if(food_conversion)
 			living_host.adjust_nutrition(0.3 * food)
 		if(prob(2))
-			to_chat(living_host, span_notice("You feel a mild warmth as your blood purifies itself."))
+			to_chat(living_host, span_notice("Você sente um leve calor enquanto seu sangue se purifica."))
 	return TRUE
 
 
@@ -223,8 +223,7 @@
 */
 /datum/symptom/heal/metabolism
 	name = "Metabolic Boost"
-	desc = "The virus causes the host's metabolism to accelerate rapidly, making them process chemicals twice as fast,\
-		but also causing increased hunger."
+	desc = "O vírus faz com que o metabolismo do hospedeiro acelere rapidamente, fazendo-os processar produtos químicos duas vezes mais rápido, mas também causando maior fome."
 	stealth = -1
 	resistance = -2
 	stage_speed = 2
@@ -254,7 +253,7 @@
 	var/lost_nutrition = 9 - (reduced_hunger * 5)
 	carbon_host.adjust_nutrition(-lost_nutrition * HUNGER_FACTOR) //Hunger depletes at 10x the normal speed
 	if(prob(2))
-		to_chat(carbon_host, span_notice("You feel an odd gurgle in your stomach, as if it was working much faster than normal."))
+		to_chat(carbon_host, span_notice("Você sente uma estranha gargalhada no seu estômago, como se estivesse funcionando muito mais rápido do que o normal."))
 	return TRUE
 
 /*Nocturnal Regeneration
@@ -266,13 +265,13 @@
 */
 /datum/symptom/heal/darkness
 	name = "Nocturnal Regeneration"
-	desc = "The virus is able to mend the host's flesh when in conditions of low light, repairing physical damage. More effective against brute damage."
+	desc = "O vírus é capaz de consertar a carne do hospedeiro quando em condições de pouca luz, reparando danos físicos. Mais eficaz contra danos brutos."
 	stealth = 2
 	resistance = -1
 	stage_speed = -2
 	transmittable = -1
 	level = 6
-	passive_message = span_notice("You feel tingling on your skin as light passes over it.")
+	passive_message = span_notice("Você sente formigamento em sua pele enquanto a luz passa sobre ela.")
 	threshold_descs = list(
 		"Stage Speed 7" = "Doubles healing speed.", //SKYRAT EDIT: Brings Noc regen into line with the rest of the healing symptoms.
 	)
@@ -297,7 +296,7 @@
 	var/heal_amt = 2 * actual_power
 	carbon_host.heal_overall_damage(heal_amt, heal_amt * 0.5, required_bodytype = healable_bodytypes)
 	if(prob(5))
-		to_chat(carbon_host, span_notice("The darkness soothes and mends your wounds."))
+		to_chat(carbon_host, span_notice("A escuridão acalma e cura suas feridas."))
 	return TRUE
 
 /datum/symptom/heal/darkness/passive_message_condition(mob/living/living_host)
@@ -314,13 +313,13 @@
 */
 /datum/symptom/heal/coma
 	name = "Regenerative Coma"
-	desc = "The virus causes the host to fall into a death-like coma when severely damaged, then rapidly fixes the damage."
+	desc = "O vírus faz com que o hospedeiro caia em coma mortal quando severamente danificado, e então rapidamente corrige o dano."
 	stealth = 0
 	resistance = 2
 	stage_speed = -3
 	transmittable = -2
 	level = 8
-	passive_message = span_notice("The pain from your wounds makes you feel oddly sleepy...")
+	passive_message = span_notice("A dor de suas feridas faz você se sentir estranhamente sonolento...")
 	var/deathgasp = FALSE
 	var/stabilize = FALSE
 	var/active_coma = FALSE //to prevent multiple coma procs
@@ -371,7 +370,7 @@
 		if(SOFT_CRIT)
 			return power * 0.5
 	if(living_host.get_brute_loss() + living_host.get_fire_loss() >= living_host.maxHealth * 0.7 && !active_coma && !(HAS_TRAIT(living_host, TRAIT_NOSOFTCRIT)))
-		to_chat(living_host, span_warning("You feel yourself slip into a regenerative coma..."))
+		to_chat(living_host, span_warning("Você se sente entrando em coma regenerativo..."))
 		active_coma = TRUE
 		addtimer(CALLBACK(src, PROC_REF(coma), living_host), 6 SECONDS)
 
@@ -403,13 +402,13 @@
 
 /datum/symptom/heal/water
 	name = "Tissue Hydration"
-	desc = "The virus uses excess water inside and outside the body to repair damaged tissue cells. More effective when using holy water and against burns."
+	desc = "O vírus usa excesso de água dentro e fora do corpo para reparar células de tecido danificadas. Mais eficaz ao usar água benta e contra queimaduras."
 	stealth = 0
 	resistance = -1
 	stage_speed = 0
 	transmittable = 1
 	level = 6
-	passive_message = span_notice("Your skin feels oddly dry...")
+	passive_message = span_notice("Sua pele está estranhamente seca...")
 	required_organ = ORGAN_SLOT_LIVER
 	threshold_descs = list(
 		"Resistance 5" = "Water is consumed at a much slower rate.",
@@ -443,7 +442,7 @@
 /datum/symptom/heal/water/Heal(mob/living/carbon/carbon_host, datum/disease/advance/our_disease, actual_power)
 	var/heal_amt = 2 * actual_power
 	if(carbon_host.heal_overall_damage(heal_amt * 0.5, heal_amt, required_bodytype = healable_bodytypes) && prob(5))
-		to_chat(carbon_host, span_notice("You feel yourself absorbing the water around you to soothe your damaged skin."))
+		to_chat(carbon_host, span_notice("Você se sente absorvendo a água ao seu redor para acalmar sua pele danificada."))
 	return TRUE
 
 /datum/symptom/heal/water/passive_message_condition(mob/living/carbon/carbon_host)
@@ -467,13 +466,13 @@
 
 /datum/symptom/heal/plasma
 	name = "Plasma Fixation"
-	desc = "The virus draws plasma from the atmosphere and from inside the body to heal and stabilize body temperature."
+	desc = "O vírus tira plasma da atmosfera e de dentro do corpo para curar e estabilizar a temperatura do corpo."
 	stealth = 0
 	resistance = 3
 	stage_speed = -2
 	transmittable = -2
 	level = 8
-	passive_message = span_notice("You feel an odd attraction to plasma.")
+	passive_message = span_notice("Você sente uma atração estranha pelo plasma.")
 	required_organ = ORGAN_SLOT_LIVER
 	threshold_descs = list(
 		"Transmission 6" = "Increases temperature adjustment rate.",
@@ -544,21 +543,21 @@
 	var/heal_amt = BASE_HEAL_PLASMA_FIXATION * actual_power
 
 	if(prob(5))
-		to_chat(carbon_host, span_notice("You feel yourself absorbing plasma inside and around you..."))
+		to_chat(carbon_host, span_notice("Você se sente absorvendo plasma dentro e ao seu redor..."))
 
 	var/difference = carbon_host.get_body_temp_normal() - carbon_host.bodytemperature
 	if(prob(5))
 		if(difference > -1) // Yes, it's supposed to be -1 and not 0. Probably so you keep getting passive messages even at normal temperature.
-			to_chat(carbon_host, span_notice("You feel warmer."))
+			to_chat(carbon_host, span_notice("Você se sente mais quente."))
 		if(difference < 0)
-			to_chat(carbon_host, span_notice("You feel less hot."))
+			to_chat(carbon_host, span_notice("Você se sente menos quente."))
 	carbon_host.adjust_bodytemperature(clamp(difference, -20 * temp_rate, 20 * temp_rate))
 	var/needs_update = FALSE
 	needs_update += carbon_host.adjust_tox_loss(-heal_amt, updating_health = FALSE, required_biotype = healable_bodytypes)
 	var/brute_burn_heal = carbon_host.heal_overall_damage(heal_amt, heal_amt, required_bodytype = healable_bodytypes, updating_health = FALSE)
 	needs_update += brute_burn_heal
 	if(brute_burn_heal && prob(5))
-		to_chat(carbon_host, span_notice("The pain from your wounds fades rapidly."))
+		to_chat(carbon_host, span_notice("A dor de suas festas desaparece rapidamente."))
 	if(needs_update)
 		carbon_host.updatehealth()
 	return TRUE
@@ -573,7 +572,7 @@
 
 /datum/symptom/heal/radiation
 	name = "Radioactive Resonance"
-	desc = "The virus uses radiation to fix damage through dna mutations."
+	desc = "O vírus usa radiação para corrigir danos através de mutações de DNA."
 	stealth = -1
 	resistance = -2
 	stage_speed = 2
@@ -581,7 +580,7 @@
 	level = 6
 	symptom_delay_min = 1
 	symptom_delay_max = 1
-	passive_message = span_notice("Your skin glows faintly for a moment.")
+	passive_message = span_notice("Sua pele brilha levemente por um momento.")
 	threshold_descs = list(
 		"Resistance 7" = "Increases healing speed.",
 	)
@@ -605,7 +604,7 @@
 	if(needs_update)
 		carbon_host.updatehealth()
 	if(brute_burn_heal && prob(4))
-		to_chat(carbon_host, span_notice("Your skin glows faintly, and you feel your wounds mending themselves."))
+		to_chat(carbon_host, span_notice("Sua pele brilha fracamente, e sente suas feridas se consertando."))
 	return TRUE
 
 /datum/symptom/heal/radiation/can_generate_randomly()

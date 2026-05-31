@@ -5,7 +5,7 @@
 /turf/open/misc/asteroid //floor piece
 	gender = PLURAL
 	name = "asteroid sand"
-	desc = "It's coarse and rough and gets everywhere."
+	desc = "É grosseiro e áspero e fica em todo lugar."
 	baseturfs = /turf/open/misc/asteroid
 	icon = 'icons/turf/floors.dmi'
 	damaged_dmi = 'icons/turf/floors.dmi'
@@ -100,7 +100,7 @@
 	if(!dug && !broken)
 		return TRUE
 	if(user)
-		balloon_alert(user, "already excavated!")
+		balloon_alert(user, "Já escavado!")
 	return FALSE
 
 ///Refills the previously dug tile
@@ -204,7 +204,7 @@ GLOBAL_LIST_EMPTY(dug_up_basalt)
 /turf/open/misc/asteroid/snow
 	gender = PLURAL
 	name = "snow"
-	desc = "Looks cold."
+	desc = "Parece Frio."
 	icon = 'icons/turf/snow.dmi'
 	damaged_dmi = 'icons/turf/snow.dmi'
 	baseturfs = /turf/open/misc/asteroid/snow
@@ -221,7 +221,7 @@ GLOBAL_LIST_EMPTY(dug_up_basalt)
 
 /turf/open/misc/asteroid/snow/burn_tile()
 	if(!burnt)
-		visible_message(span_danger("[src] melts away!."))
+		visible_message(span_danger("[src]Derrete!"))
 		slowdown = 0
 		burnt = TRUE
 		update_appearance()
@@ -268,21 +268,21 @@ GLOBAL_LIST_EMPTY(dug_up_basalt)
 	if(dug)
 		if(tool.use(DIG_SHEET_AMOUNT))
 			user.visible_message(
-				span_notice("[user] packs [src] back in."),
-				span_notice("You pack [src] back in."),
+				span_notice("[user]Pacotes.[src]De volta."),
+				span_notice("Você faz as malas.[src]De volta."),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
 			refill_dug()
 			return ITEM_INTERACT_SUCCESS
 
-		to_chat(user, "You don't have enough [tool.name] to fill the hole.")
+		to_chat(user, "Você não tem o suficiente.[tool.name]Para preencher o buraco.")
 		return ITEM_INTERACT_BLOCKING
 
 	if(footprint_entrance_dirs || footprint_exit_dirs)
 		if(tool.use(1))
 			user.visible_message(
-				span_notice("[user] fills in the footprints in [src]."),
-				span_notice("You fill in the footprints in [src]."),
+				span_notice("[user]Preenche como pegadas.[src]."),
+				span_notice("Você preenche as pegadas[src]."),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
 			clear_footprints()
@@ -313,7 +313,7 @@ GLOBAL_LIST_EMPTY(dug_up_basalt)
 
 /turf/open/misc/asteroid/snow/ice
 	name = "icy snow"
-	desc = "Looks colder."
+	desc = "Parece mais frio."
 	baseturfs = /turf/open/misc/asteroid/snow/ice
 	initial_gas_mix = BURNING_COLD
 	floor_variance = 0
@@ -384,7 +384,7 @@ GLOBAL_LIST_EMPTY(dug_up_basalt)
 /turf/open/misc/asteroid/plasma //floor piece
 	gender = PLURAL
 	name = "asteroid gravel"
-	desc = "It's coarse and rough and gets everywhere."
+	desc = "É grosseiro e áspero e fica em todo lugar."
 	baseturfs = /turf/open/misc/asteroid
 	icon = 'icons/turf/floors.dmi'
 	damaged_dmi = 'icons/turf/floors.dmi'

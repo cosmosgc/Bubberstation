@@ -18,7 +18,7 @@
 
 /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly
 	name = "orderly uniform"
-	desc = "White scrubs with gray pants underneath. Be warned, wearers of this uniform may only take the Hippocratic Oath as a suggestion."
+	desc = "Roupa branca com calças cinza por baixo. Esteja avisado, os usuários deste uniforme só podem aceitar o juramento de Hipócrates como uma sugestão."
 	icon_state = "orderly_uniform"
 	worn_icon_state = "orderly_uniform"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/medical.dmi'
@@ -27,7 +27,7 @@
 
 /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard
 	name = "engineering guard uniform"
-	desc = "Effectively just padded hi-vis coveralls, they do the trick both inside of, and while keeping people out of, a hardhat zone."
+	desc = "Efetivamente apenas acolchoados hi-vis macacões, eles fazem o truque tanto dentro de, e enquanto mantendo as pessoas fora, uma zona de Hardhat."
 	icon_state = "engineering_guard_uniform"
 	worn_icon_state = "engineering_guard_uniform"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/engineering.dmi'
@@ -36,7 +36,7 @@
 
 /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent
 	name = "customs agent uniform"
-	desc = "A cargo-brown short-sleeve shirt, and cargo shorts in an authoritative charcoal color. Only for the FTU's finest strong-hands."
+	desc = "Uma camisa de manga curta marrom, e shorts de carga em uma cor de carvão. Só para as melhores mãos fortes da FTU."
 	icon_state = "customs_uniform"
 	worn_icon_state = "customs_uniform"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi'
@@ -45,7 +45,7 @@
 
 /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/bouncer
 	name = "bouncer uniform"
-	desc = "Short-sleeves and jeans, for that aura of cool that makes the drunk people listen."
+	desc = "Mangas curtas e jeans, para aquela aura de legal que faz as pessoas bêbadas ouvirem."
 	icon_state = "bouncer"
 	worn_icon_state = "bouncer"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
@@ -73,21 +73,21 @@
 
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly
 	name = "armored orderly coat"
-	desc = "An armored coat, in a deep paramedic blue. It'll keep you padded while dealing with troublesome patients."
+	desc = "Um casaco blindado, de azul paramédico. Vai mantê-lo acolchoado enquanto lida com pacientes problemáticos."
 	icon_state = "medical_coat"
 	worn_icon_state = "medical_coat"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard
 	name = "armored engineering guard coat"
-	desc = "An armored coat whose hazard strips are worn to the point of uselessness. It'll keep you protected while clearing hazard zones at least."
+	desc = "Um casaco blindado cujas tiras de perigo são usadas ao ponto de inutilidade. Vai mantê-lo protegido enquanto limpa zonas de perigo, pelo menos."
 	icon_state = "engineering_coat"
 	worn_icon_state = "engineering_coat"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent
 	name = "armored customs agent coat"
-	desc = "An armored coat, with intricately woven patterns and details. This should help keep you safe from unruly customers."
+	desc = "Um casaco blindado, com padrões e detalhes intrincados. Isso deve te ajudar a evitar clientes indisciplinados."
 	icon_state = "customs_coat"
 	worn_icon_state = "customs_coat"
 
@@ -112,32 +112,32 @@
 
 /obj/item/clothing/head/beret/sec/science
 	name = "science guard beret"
-	desc = "A robust beret with an Erlenmeyer flask emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	desc = "Uma boina robusta com um frasco Erlenmeyer gravado nele. Usa tecido reforçado para oferecer proteção suficiente."
 	icon_state = "/obj/item/clothing/head/beret/sec/science"
 	post_init_icon_state = "beret_badge"
 	greyscale_colors = "#8D008F#F2F2F2"
 
 /obj/item/clothing/head/beret/sec/medical
 	name = "medical officer beret"
-	desc = "A robust beret with a Medical insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	desc = "Uma boina robusta com uma insígnia médica. Usa tecido reforçado para oferecer proteção suficiente."
 	icon_state = "/obj/item/clothing/head/beret/sec/medical"
 	greyscale_colors = "#16313D#F2F2F2" //Paramed blue to (mostly) match their vest (as opposed to medical white)
 
 /obj/item/clothing/head/beret/sec/engineering
 	name = "engineer officer beret"
-	desc = "A robust beret with a hazard symbol emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	desc = "Uma boina robusta com um símbolo de perigo gravado nela. Usa tecido reforçado para oferecer proteção suficiente."
 	icon_state = "/obj/item/clothing/head/beret/sec/engineering"
 	greyscale_colors = "#FFBC30#F2F2F2"
 
 /obj/item/clothing/head/beret/sec/cargo
 	name = "cargo officer beret"
-	desc = "A robust beret with a Crate emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	desc = "Uma boina robusta com uma cratera embutida nela. Usa tecido reforçado para oferecer proteção suficiente."
 	icon_state = "/obj/item/clothing/head/beret/sec/cargo"
 	greyscale_colors = "#c99840#F2F2F2"
 
 /obj/item/clothing/head/beret/sec/service
 	name = "bouncer beret"
-	desc = "A robust beret with a simple badge emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	desc = "Uma boina robusta com um simples distintivo gravado nela. Usa tecido reforçado para oferecer proteção suficiente."
 	icon_state = "/obj/item/clothing/head/beret/sec/service"
 	greyscale_colors = "#5E8F2D#F2F2F2"
 
@@ -174,8 +174,8 @@
 */
 /datum/job/science_guard
 	title = JOB_SCIENCE_GUARD
-	rpg_title = "Secrets Keeper"
-	description = "Figure out why the emails aren't working, keep an eye on the eggheads, protect them from their latest mistakes."
+	rpg_title = "Guarda-Segredos"
+	description = "Descobrir por que os e-mails não estão funcionando, ficar de olho nos intelectuais, protegê-los de seus últimos erros."
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -280,7 +280,7 @@
 /datum/job/orderly
 	title = JOB_ORDERLY
 	rpg_title = "Praetorian"
-	description = "Defend the medical department, hold down idiots who refuse the vaccine, assist medical with prep and/or cleanup."
+	description = "Defender o departamento médico, prender idiotas que recusam a vacina, ajudar médicos com preparação e/ou limpeza."
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -386,8 +386,8 @@
 */
 /datum/job/engineering_guard
 	title = JOB_ENGINEERING_GUARD
-	rpg_title = "Crystal Guardian"
-	description = "Monitor the supermatter, keep an eye on atmospherics, make sure everyone is wearing Proper Protective Equipment."
+	rpg_title = "Guardião de Cristal"
+	description = "Monitore a supermatéria, vigie a atmosfera, certifique-se de que todos estejam usando equipamentos de proteção adequados."
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -492,8 +492,8 @@
 */
 /datum/job/customs_agent
 	title = JOB_CUSTOMS_AGENT
-	rpg_title = "Vault Keeper"
-	description = "Inspect the packages coming to and from the station, protect the cargo department, beat the shit out of people trying to ship Cocaine to the Spinward Stellar Coalition."
+	rpg_title = "Cofre"
+	description = "Inspecione os pacotes vindos e vindos da estação, proteja o departamento de carga, espanque pessoas tentando enviar cocaína para a Coalizão Estelar Spinward."
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -593,7 +593,7 @@
 /datum/job/bouncer
 	title = JOB_BOUNCER
 	rpg_title = "Tavern Watch"
-	description = "Make sure people don't jump the kitchen counter, stop Chapel vandalism, check bargoer's IDs, prevent the dreaded \"food fight\"."
+	description = "Certifique-se de que as pessoas não pulem o balcão da cozinha, parar o vandalismo da Chapel, verificar as identidades do Bargoer, evitar o temido\"Luta de comida\"."
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
@@ -692,7 +692,7 @@
 */
 /obj/item/melee/baton/security/loaded/departmental
 	name = "departmental stun baton"
-	desc = "A stun baton fitted with a departmental area-lock, based off the station's blueprint layout - outside of its department, it only has three uses."
+	desc = "Um bastão de choque equipado com um bloqueio de área do departamento, baseado na planta da estação - fora de seu departamento, ele só tem três usos."
 	icon = 'modular_skyrat/modules/goofsec/icons/departmental_batons.dmi'
 	icon_state = "prison_baton" // We're abstract anyhow
 	base_inhand_state = "stunbaton"
@@ -719,10 +719,9 @@
 			say("[src] is out of non-departmental uses! Return to your department and reactivate the baton to refresh it!")
 		return .
 
-	target.visible_message(span_warning("[user] prods [target] with [src]. Luckily, it was shut off due to being in the wrong area."), \
-						span_warning("[user] prods you with [src]. Luckily, it was shut off due to being in the wrong area."))
+	target.visible_message(span_warning("[user]Golpes.[target]Com[src]Felizmente, foi desligado por estar na área errada."), 						span_warning("[user]Te cutuca com[src]Felizmente, foi desligado por estar na área errada."))
 	turn_off()
-	balloon_alert(user, "wrong department")
+	balloon_alert(user, "Departamento Erado.")
 	return TRUE
 
 /obj/item/melee/baton/security/loaded/departmental/attack_self(mob/user)
@@ -738,9 +737,9 @@
 /obj/item/melee/baton/security/loaded/departmental/emag_act(mob/user)
 	if(!emagged)
 		if(user)
-			user.visible_message(span_warning("Sparks fly from [src]!"),
-							span_warning("You scramble [src]'s departmental lock, allowing it to be used freely!"),
-							span_hear("You hear a faint electrical spark."))
+			user.visible_message(span_warning("As faíscas voam de[src]!"),
+							span_warning("Você se mexe.[src]Fechamento do departamento, permitir que seja usado livre!"),
+							span_hear("Você ouve uma fraca faísca elétrica."))
 		balloon_alert(user, "emagged")
 		playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		obj_flags |= EMAGGED
@@ -750,44 +749,43 @@
 
 /obj/item/melee/baton/security/loaded/departmental/medical
 	name = "medical stun baton"
-	desc = "A stun baton that doesn't operate outside of the Medical department, based off the station's blueprint layout. Can be used outside of Medical up to three times before needing to return!"
+	desc = "Um bastão de choque que não funciona fora do departamento médico, baseado na planta da estação. Pode ser usado fora do hospital até três vezes antes de precisar voltar!"
 	base_icon_state = "medical_baton"
 	valid_areas = list(/area/station/medical, /area/station/maintenance/department/medical, /area/shuttle/escape)
 
 /obj/item/melee/baton/security/loaded/departmental/engineering
 	name = "engineering stun baton"
-	desc = "A stun baton that doesn't operate outside of the Engineering department, based off the station's blueprint layout. Can be used outside of Engineering up to three times before needing to return!"
+	desc = "Um bastão de choque que não funciona fora do departamento de engenharia, baseado na planta da estação. Pode ser usado fora da Engenharia até três vezes antes de precisar voltar!"
 	base_icon_state = "engineering_baton"
 	valid_areas = list(/area/station/engineering, /area/station/maintenance/department/engine, /area/shuttle/escape)
 
 /obj/item/melee/baton/security/loaded/departmental/science
 	name = "science stun baton"
-	desc = "A stun baton that doesn't operate outside of the Science department, based off the station's blueprint layout. Can be used outside of Science up to three times before needing to return!"
+	desc = "Um bastão de choque que não funciona fora do Departamento de Ciência, baseado na planta da estação. Pode ser usado fora da Ciência até três vezes antes de precisar voltar!"
 	base_icon_state = "science_baton"
 	valid_areas = list(/area/station/science, /area/station/maintenance/department/science, /area/shuttle/escape)
 
 /obj/item/melee/baton/security/loaded/departmental/cargo
 	name = "cargo stun baton"
-	desc = "A stun baton that doesn't operate outside of the Cargo department, based off the station's blueprint layout. Can be used outside of Cargo up to three times before needing to return!"
+	desc = "Um bastão de choque que não funciona fora do departamento de carga, baseado no esquema da estação. Pode ser usado fora da carga até três vezes antes de precisar voltar!"
 	base_icon_state = "cargo_baton"
 	valid_areas = list(/area/station/cargo, /area/station/maintenance/department/cargo, /area/shuttle/escape)
 
 /obj/item/melee/baton/security/loaded/departmental/service
 	name = "service stun baton"
-	desc = "A stun baton that doesn't operate outside of the Service department, based off the station's blueprint layout. Can be used outside of Service up to three times before needing to return!"
+	desc = "Um bastão de choque que não funciona fora do Departamento de Serviço, baseado na planta da estação. Pode ser usado fora do Serviço até três vezes antes de precisar voltar!"
 	base_icon_state = "service_baton"
 	valid_areas = list(/area/station/service, /area/station/hallway/secondary/service, /area/station/maintenance/department/chapel, /area/station/maintenance/department/crew_quarters, /area/shuttle/escape)
 
 /obj/item/melee/baton/security/loaded/departmental/prison
 	name = "prison stun baton"
-	desc = "A stun baton that doesn't operate outside of the Prison, based off the station's blueprint layout. Can be used outside of the Prison up to three times before needing to return!"
+	desc = "Um bastão de choque que não funciona fora da prisão, baseado na planta da estação. Pode ser usado fora da prisão até três vezes antes de precisar voltar!"
 	base_icon_state = "prison_baton"
 	valid_areas = list(/area/station/security/prison, /area/station/security/processing, /area/shuttle/escape)
 
 /datum/supply_pack/security/baton_prison
 	name = "Prison Baton Crate"
-	desc = "Contains an extra baton for Corrections Officers. \
-		Just in case you hated the idea of a normal baton in their hands."
+	desc = "Contém um bastão extra para agentes penitenciários. Caso odeie a ideia de um bastão normal nas mãos deles."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
 	access = ACCESS_SECURITY
@@ -795,7 +793,7 @@
 
 /datum/supply_pack/service/baton_service
 	name = "Service Baton Crate"
-	desc = "Contains an extra baton for Service Guards."
+	desc = "Contém um bastão extra para Guardas de Serviço."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
 	access = ACCESS_SECURITY
@@ -803,7 +801,7 @@
 
 /datum/supply_pack/medical/baton_medical
 	name = "Medical Baton Crate"
-	desc = "Contains an extra baton for Orderlies."
+	desc = "Contém um bastão extra para Orderlies."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
 	access = ACCESS_SECURITY
@@ -811,7 +809,7 @@
 
 /datum/supply_pack/engineering/baton_engineering
 	name = "Engineering Baton Crate"
-	desc = "Contains an extra baton for Engineering Guards."
+	desc = "Contém um bastão extra para a Guarda de Engenharia."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
 	access = ACCESS_SECURITY
@@ -819,7 +817,7 @@
 
 /datum/supply_pack/science/baton_science
 	name = "Science Baton Crate"
-	desc = "Contains an extra baton for Science Guards."
+	desc = "Contém um bastão extra para a Guarda Científica."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
 	access = ACCESS_SECURITY
@@ -827,7 +825,7 @@
 
 /datum/supply_pack/misc/baton_cargo
 	name = "Cargo Baton Crate"
-	desc = "Contains an extra baton for Customs Agents."
+	desc = "Contém um bastão extra para agentes da alfândega."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
 	access = ACCESS_SECURITY
@@ -838,7 +836,7 @@
 
 /obj/item/storage/bag/garment/science_guard
 	name = "science guard's garments"
-	desc = "A bag for storing extra clothes and shoes. This one belongs to the science guard."
+	desc = "Um saco para guardar roupas e sapatos extras. Este pertence ao guarda científico."
 
 /obj/item/storage/bag/garment/science_guard/PopulateContents()
 	generate_items_inside(list(
@@ -854,7 +852,7 @@
 
 /obj/item/storage/bag/garment/orderly
 	name = "orderly's garments"
-	desc = "A bag for storing extra clothes and shoes. This one belongs to the orderly."
+	desc = "Um saco para guardar rosas e sapos extras. Esta pertence ao enfermeiro."
 
 /obj/item/storage/bag/garment/orderly/PopulateContents()
 	generate_items_inside(list(
@@ -874,7 +872,7 @@
 
 /obj/item/storage/bag/garment/engineering_guard
 	name = "engineering guard's garments"
-	desc = "A bag for storing extra clothes and shoes. This one belongs to the engineering guard."
+	desc = "Um saco para guardar rosas e sapos extras. Esta pertence ao guarda de engenharia."
 
 /obj/item/storage/bag/garment/engineering_guard/PopulateContents()
 	generate_items_inside(list(
@@ -890,7 +888,7 @@
 
 /obj/item/storage/bag/garment/customs_agent
 	name = "customs agent's garments"
-	desc = "A bag for storing extra clothes and shoes. This one belongs to the customs agent."
+	desc = "Um saco para guardar roupas e sapatos extras. Este pertence ao agente da alfândega."
 
 /obj/item/storage/bag/garment/customs_agent/PopulateContents()
 	generate_items_inside(list(

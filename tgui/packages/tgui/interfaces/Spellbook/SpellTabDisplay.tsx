@@ -25,7 +25,7 @@ function getTimeOrCat(entry: SpellEntry) {
     if (entry.times) {
       return `Cast ${entry.times} times.`;
     } else {
-      return 'Not cast yet.';
+      return 'Ainda não elenco.';
     }
   } else {
     if (entry.cooldown) {
@@ -66,8 +66,8 @@ export function SpellTabDisplay(props: Props) {
                     tooltipPosition="bottom-start"
                     tooltip={
                       entry.requires_wizard_garb
-                        ? 'Requires wizard garb.'
-                        : 'Can be cast without wizard garb.'
+                        ? 'Requer traje de feiticeiro.'
+                        : 'Pode ser lançado sem trajes mágicos.'
                     }
                   />
                 </Stack.Item>

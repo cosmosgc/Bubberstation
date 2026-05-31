@@ -1,5 +1,5 @@
 /obj/item/grenade/gas_crystal
-	desc = "Some kind of crystal, this shouldn't spawn"
+	desc = "Algum tipo de cristal, isso não deve gerar"
 	name = "Gas Crystal"
 	icon = 'icons/obj/weapons/grenade.dmi'
 	icon_state = "bluefrag"
@@ -11,7 +11,7 @@
 	if(user)
 		add_fingerprint(user)
 		if(msg)
-			to_chat(user, span_warning("You crush the [src]! [capitalize(DisplayTimeText(det_time))]!"))
+			to_chat(user, span_warning("Você esmaga o[src]! [capitalize(DisplayTimeText(det_time))]!"))
 	if(shrapnel_type && shrapnel_radius)
 		shrapnel_initialized = TRUE
 		AddComponent(/datum/component/pellet_cloud, projectile_type = shrapnel_type, magnitude = shrapnel_radius)
@@ -25,7 +25,7 @@
 
 /obj/item/grenade/gas_crystal/healium_crystal
 	name = "Healium crystal"
-	desc = "A crystal made from the Healium gas, it's cold to the touch."
+	desc = "Um cristal feito do gás Healium, é frio ao toque."
 	icon_state = "healium_crystal"
 	///Range of the grenade that will cool down and affect mobs
 	var/fix_range = 7
@@ -48,7 +48,7 @@
 
 /obj/item/grenade/gas_crystal/proto_nitrate_crystal
 	name = "Proto Nitrate crystal"
-	desc = "A crystal made from the Proto Nitrate gas, you can see the liquid gases inside."
+	desc = "Um cristal feito do gás Nitrato de Proto, você pode ver os gases líquidos dentro."
 	icon_state = "proto_nitrate_crystal"
 	///Range of the grenade air refilling
 	var/refill_range = 5
@@ -74,7 +74,7 @@
 
 /obj/item/grenade/gas_crystal/nitrous_oxide_crystal
 	name = "N2O crystal"
-	desc = "A crystal made from the N2O gas, you can see the liquid gases inside."
+	desc = "Um cristal feito do gás N2O, você pode ver os gases líquidos dentro."
 	icon_state = "n2o_crystal"
 	///Range of the grenade air refilling
 	var/fill_range = 1
@@ -98,7 +98,7 @@
 
 /obj/item/grenade/gas_crystal/crystal_foam
 	name = "crystal foam"
-	desc = "A crystal with a foggy inside"
+	desc = "Um cristal com uma neblina dentro"
 	icon_state = "crystal_foam"
 	var/breach_range = 7
 

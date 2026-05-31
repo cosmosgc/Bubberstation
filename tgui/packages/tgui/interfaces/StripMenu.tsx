@@ -61,61 +61,61 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
 
   remove_item_cuffs: {
     icon: 'handcuffs',
-    text: 'Remove Handcuffs',
+    text: 'Tire as algemas.',
   },
 
   enable_internals: {
     icon: 'tg-air-tank',
-    text: 'Enable internals',
+    text: 'Habilitar internos',
   },
 
   disable_internals: {
     icon: 'tg-air-tank-slash',
-    text: 'Disable internals',
+    text: 'Desativar internos',
   },
 
   adjust_jumpsuit: {
     icon: 'tshirt',
-    text: 'Adjust jumpsuit',
+    text: 'Ajustar macacão.',
   },
 
   adjust_sensor: {
     icon: 'microchip',
-    text: 'Adjust sensors',
+    text: 'Ajuste os sensores.',
   },
   // BUBBER EDIT BEGIN - entombed quirk suit reactivation
   entombed_emergency_reactivate: {
     icon: 'power-off',
-    text: 'Emergency MODsuit reactivation',
+    text: 'Reativação do MODsuit de Emergência.',
   }, // BUBBER EDIT END
 
   strip_accessory: {
     icon: 'ribbon',
-    text: 'Strip accessory',
+    text: 'Despir acessório',
   },
 
   deploy: {
     icon: 'plus',
-    text: 'Deploy MOD',
+    text: 'Preparar MOD',
   },
 
   undeploy: {
     icon: 'minus',
-    text: 'Undeploy MOD',
+    text: 'Desempregado MOD',
   },
 
   activate_mod: {
     icon: 'power-off',
-    text: 'Activate MOD',
+    text: 'Ativar MOD',
   },
   deactivate_mod: {
     icon: 'power-off',
-    text: 'Deactivate MOD',
+    text: 'Desativar MOD',
   },
 
   adjust_bridle: {
     icon: 'mask',
-    text: 'Adjust bridle',
+    text: 'Ajustar o freio',
   },
 };
 
@@ -199,14 +199,14 @@ const SLOTS: Record<
   },
 
   right_hand: {
-    displayName: 'right hand',
+    displayName: 'Mão direita',
     gridSpot: getGridSpotKey([2, 4]),
     image: 'inventory-hand_r.png',
     additionalComponent: <CornerText align="left">R</CornerText>,
   },
 
   left_hand: {
-    displayName: 'left hand',
+    displayName: 'Mão esquerda',
     gridSpot: getGridSpotKey([2, 5]),
     image: 'inventory-hand_l.png',
     additionalComponent: <CornerText align="right">L</CornerText>,
@@ -219,7 +219,7 @@ const SLOTS: Record<
   },
 
   suit_storage: {
-    displayName: 'suit storage item',
+    displayName: 'Armazenagem de roupas.',
     gridSpot: getGridSpotKey([4, 0]),
     image: 'inventory-suit_storage.png',
   },
@@ -243,13 +243,13 @@ const SLOTS: Record<
   },
 
   left_pocket: {
-    displayName: 'left pocket',
+    displayName: 'Bolso esquerdo',
     gridSpot: getGridSpotKey([4, 4]),
     image: 'inventory-pocket.png',
   },
 
   right_pocket: {
-    displayName: 'right pocket',
+    displayName: 'Bolso direito',
     gridSpot: getGridSpotKey([4, 5]),
     image: 'inventory-pocket.png',
   },
@@ -384,7 +384,7 @@ export const StripMenu = (props) => {
                             ALTERNATE_ACTIONS[alternateKey];
 
                           const alternateActionStyle: CSSProperties = {
-                            background: 'rgba(0, 0, 0, 0.6)',
+                            background: 'Rgba (0, 0, 0, 0, 0,6)',
                             position: 'absolute',
                             overflow: 'hidden',
                             margin: '0',
@@ -476,7 +476,7 @@ export const StripMenu = (props) => {
                           tooltip={tooltip}
                           style={{
                             background: item?.interacting
-                              ? 'hsl(39, 73%, 30%)'
+                              ? '[39, 73%, 30%]'
                               : undefined,
                             position: 'relative',
                             width: '100%',

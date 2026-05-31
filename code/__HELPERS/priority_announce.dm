@@ -58,14 +58,14 @@
 	var/header
 	switch(type)
 		if(ANNOUNCEMENT_TYPE_PRIORITY)
-			header = MAJOR_ANNOUNCEMENT_TITLE("Priority Announcement")
+			header = MAJOR_ANNOUNCEMENT_TITLE("Anúncio Prioritário")
 			if(length(title) > 0)
 				header += SUBHEADER_ANNOUNCEMENT_TITLE(title)
 		if(ANNOUNCEMENT_TYPE_CAPTAIN)
-			header = MAJOR_ANNOUNCEMENT_TITLE("Captain's Announcement")
+			header = MAJOR_ANNOUNCEMENT_TITLE("Anúncio do Capitão")
 			GLOB.news_network.submit_article(text, "Captain's Announcement", NEWSCASTER_STATION_ANNOUNCEMENTS, null)
 		if(ANNOUNCEMENT_TYPE_SYNDICATE)
-			header = MAJOR_ANNOUNCEMENT_TITLE("Syndicate Captain's Announcement")
+			header = MAJOR_ANNOUNCEMENT_TITLE("Syndicar Anúncio do Capitão")
 		else
 			header += generate_unique_announcement_header(title, sender_override)
 
@@ -106,12 +106,12 @@
  */
 /proc/print_command_report(text = "", title = null, announce = TRUE, contains_advanced_html = FALSE)
 	if(!title)
-		title = "Classified [command_name()] Update"
+		title = "Confidencial[command_name()]Atualizar"
 
 	if(announce)
 		priority_announce(
 			text = "A report has been downloaded and printed out at all communications consoles.",
-			title = "Incoming Classified Message",
+			title = "Mensagem secreta chegando.",
 			sound = SSstation.announcer.get_rand_report_sound(),
 			has_important_message = TRUE,
 		)
@@ -169,10 +169,10 @@
 	var/message
 
 	if(current_level_number > previous_level_number)
-		title = "Attention! Security level elevated to [current_level_name]:"
+		title = "Atenção! Nível de segurança elevado a[current_level_name]:"
 		message = selected_level.elevating_to_announcement
 	else
-		title = "Attention! Security level lowered to [current_level_name]:"
+		title = "Atenção! Nível de segurança baixou para[current_level_name]:"
 		message = selected_level.lowering_to_announcement
 
 	var/list/level_announcement_strings = list()

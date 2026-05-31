@@ -108,7 +108,7 @@ SUBSYSTEM_DEF(admin_verbs)
 		CRASH("Attempted to dynamically invoke admin verb '[verb_type]' that doesn't exist.")
 
 	if(!admin.holder.check_for_rights(verb_singleton.permissions))
-		to_chat(admin, span_adminnotice("You lack the permissions to do this."))
+		to_chat(admin, span_adminnotice("Você não tem permissão para fazer isso."))
 		return
 
 	var/old_usr = usr
@@ -126,7 +126,7 @@ SUBSYSTEM_DEF(admin_verbs)
 		return
 
 	if(!isnull(admins_pending_subsytem_init)) // if the list exists we are still initializing
-		to_chat(admin, span_big(span_green("Admin Verbs are still initializing. Please wait and you will be automatically assigned your verbs when it is complete.")))
+		to_chat(admin, span_big(span_green("Verbos de administração ainda estão inicializando. Por favor, espere e você receberá automaticamente seus verbos quando estiver completo.")))
 		admins_pending_subsytem_init |= list(admin.ckey)
 		return
 

@@ -6,7 +6,7 @@
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "ticketmachine"
 	base_icon_state = "ticketmachine"
-	desc = "A marvel of bureaucratic engineering encased in an efficient plastic shell. It can be refilled with a hand labeler refill roll and linked to buttons with a multitool."
+	desc = "Uma maravilha de engenharia burocrática envolto em uma eficiente casca plástica. Pode ser enchido com um rolo de recarga de etiquetas e ligado a botões com uma multitool."
 	density = FALSE
 	maptext_height = 26
 	maptext_width = 32
@@ -47,24 +47,24 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 
 /obj/machinery/ticket_machine/examine(mob/user)
 	. = ..()
-	. += span_notice("The ticket machine shows that ticket #[current_number] is currently being served.")
-	. += span_notice("You can take a ticket out with <b>Left-Click</b> to be number [ticket_number + 1] in queue.")
+	. += span_notice("A máquina de bilhetes mostra o bilhete.[current_number]está sendo servido atualmente.")
+	. += span_notice("Você pode tirar uma passagem com<b>Clique à esquerda.</b>para ser número[ticket_number + 1]Na fila.")
 
 /obj/machinery/ticket_machine/multitool_act(mob/living/user, obj/item/multitool/M)
 	M.set_buffer(src)
-	balloon_alert(user, "salvo no buffer da multitool")
+	balloon_alert(user, "Salvo nenhum buffer da multitool")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/ticket_machine/emag_act(mob/user, obj/item/card/emag/emag_card) //Emag the ticket machine to dispense burning tickets, as well as randomize its number to destroy the HoP's mind.
 	if(obj_flags & EMAGGED)
 		return FALSE
-	balloon_alert(user, "bureaucratic nightmare engaged")
+	balloon_alert(user, "pesadelo burocrático envolvido")
 	ticket_number = rand(0,max_number)
 	current_number = ticket_number
 	obj_flags |= EMAGGED
 	if(tickets.len)
 		for(var/obj/item/ticket_machine_ticket/ticket in tickets)
-			ticket.audible_message(span_notice("\the [ticket] disperses!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
+			ticket.audible_message(span_notice("\the [ticket]Dispersos!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
 			qdel(ticket)
 		tickets.Cut()
 	update_appearance()
@@ -72,7 +72,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 
 /obj/item/wallframe/ticket_machine
 	name = "ticket machine frame"
-	desc = "An unmounted ticket machine. Attach it to a wall to use."
+	desc = "Uma máquina de bilhetes desmontada. Coloque em uma parede para usar."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "ticketmachine_off"
 	result_path = /obj/machinery/ticket_machine
@@ -82,7 +82,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 ///If we have a current ticket, remove it from the top of our tickets list and replace it with the next one if applicable
 /obj/machinery/ticket_machine/proc/increment()
 	if(!(obj_flags & EMAGGED) && current_ticket)
-		current_ticket.audible_message(span_notice("\the [current_ticket] disperses!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
+		current_ticket.audible_message(span_notice("\the [current_ticket]Dispersos!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
 		tickets.Cut(1,2)
 		QDEL_NULL(current_ticket)
 	if(LAZYLEN(tickets))
@@ -91,12 +91,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 		playsound(src, 'sound/announcer/announcement/announce_dig.ogg', 50, FALSE)
 		say("Now serving [current_ticket]!")
 		if(!(obj_flags & EMAGGED))
-			current_ticket.audible_message(span_notice("\the [current_ticket] vibrates!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
+			current_ticket.audible_message(span_notice("\the [current_ticket]Vibra!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
 		update_appearance() //Update our icon here rather than when they take a ticket to show the current ticket number being served
 
 /obj/machinery/button/ticket_machine
 	name = "increment ticket counter"
-	desc = "Use this button after you've served someone to tell the next person to come forward."
+	desc = "Use este botão depois de ter servido alguém para dizer à próxima pessoa para se apresentar."
 	device_type = /obj/item/assembly/control/ticket_machine
 	req_access = list()
 	id = "ticket_machine_default"
@@ -117,11 +117,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 		controller.ticket_machine_ref = WEAKREF(M.buffer)
 		id = null
 		controller.id = null
-		to_chat(user, span_warning("You've linked [src] to [M.buffer]."))
+		to_chat(user, span_warning("Você ligou.[src]Para[M.buffer]."))
 
 /obj/item/assembly/control/ticket_machine
 	name = "ticket machine controller"
-	desc = "A remote controller for the HoP's ticket machine."
+	desc = "Um controle remoto para a máquina de bilhetes do HoP."
 	///Weakref to our ticket machine
 	var/datum/weakref/ticket_machine_ref
 
@@ -153,7 +153,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 	cooldown = TRUE
 	machine.increment()
 	if(isnull(machine.current_ticket))
-		to_chat(activator, span_notice("The button light indicates that there are no more tickets to be processed."))
+		to_chat(activator, span_notice("A luz do botão indica que não há mais ingressos para serem processados."))
 	addtimer(VARSET_CALLBACK(src, cooldown, FALSE), 1 SECONDS)
 
 /obj/machinery/ticket_machine/update_icon()
@@ -182,17 +182,17 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 	..()
 	if(istype(I, /obj/item/hand_labeler_refill))
 		if(!(ticket_number >= max_number))
-			to_chat(user, span_notice("[src] refuses [I]! There [max_number - ticket_number == 1 ? "is" : "are"] still [max_number - ticket_number] ticket\s left!"))
+			to_chat(user, span_notice("[src]Se recusa.[I]Ali.[max_number - ticket_number == 1 ? "is" : "are"]Ainda.[max_number - ticket_number]O bilhete saiu!"))
 			return
-		to_chat(user, span_notice("You start to refill [src]'s ticket holder (doing this will reset its ticket count!)."))
+		to_chat(user, span_notice("Você começa a encher[src]O dono da passagem (fazer isso irá redefinir sua contagem de ingressos!)."))
 		if(do_after(user, 3 SECONDS, target = src))
-			to_chat(user, span_notice("You insert [I] into [src] as it whirs nondescriptly."))
+			to_chat(user, span_notice("Você insere[I]Em[src]como ela soa sem descrição."))
 			qdel(I)
 			ticket_number = 0
 			current_number = 0
 			if(tickets.len)
 				for(var/obj/item/ticket_machine_ticket/ticket in tickets)
-					ticket.audible_message(span_notice("\the [ticket] disperses!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
+					ticket.audible_message(span_notice("\the [ticket]Dispersos!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
 					qdel(ticket)
 				tickets.Cut()
 			max_number = initial(max_number)
@@ -205,18 +205,18 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 /obj/machinery/ticket_machine/attack_hand(mob/living/carbon/user, list/modifiers)
 	. = ..()
 	if(!ready)
-		to_chat(user,span_warning("You press the button, but nothing happens..."))
+		to_chat(user,span_warning("Você aperta o botão, mas nada acontece..."))
 		return
 	if(ticket_number >= max_number)
-		to_chat(user,span_warning("Ticket supply depleted, please refill this unit with a hand labeller refill cartridge!"))
+		to_chat(user,span_warning("Fornecimento esgotado, por favor, encha esta unidade com um cartucho de recarga de etiquetador de mãos!"))
 		return
 	var/user_ref = REF(user)
 	if((user_ref in ticket_holders) && !(obj_flags & EMAGGED))
-		to_chat(user, span_warning("You already have a ticket!"))
+		to_chat(user, span_warning("Você já tem uma passagem!"))
 		return
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 100, FALSE)
 	ticket_number++
-	to_chat(user, span_notice("You take a ticket from [src], looks like you're number [ticket_number] in queue..."))
+	to_chat(user, span_notice("Você pega uma passagem de[src]Parece que você é o número[ticket_number]Na fila..."))
 	var/obj/item/ticket_machine_ticket/theirticket = new (get_turf(src), ticket_number)
 	theirticket.source = src
 	theirticket.owner_ref = user_ref
@@ -234,7 +234,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 
 /obj/item/ticket_machine_ticket
 	name = "\improper ticket"
-	desc = "A ticket which shows your place in the Head of Personnel's line. Made from Nanotrasen patented NanoPaper®. Though solid, its form seems to shimmer slightly. Feels (and burns) just like the real thing."
+	desc = "Uma passagem que mostra seu lugar na linha do Chefe de Pessoal. Feito de Nanotrasen patenteado NanoPaper®. Embora sólida, sua forma parece brilhar ligeiramente. Parece (e queima) como a coisa real."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "ticket"
 	maptext_x = 7
@@ -259,9 +259,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 /obj/item/ticket_machine_ticket/examine(mob/user)
 	. = ..()
 	if(!isnull(number))
-		. += span_notice("The ticket reads shimmering text that tells you that you are number [number] in queue.")
+		. += span_notice("O bilhete diz que você é o número.[number]Na fila.")
 		if(source)
-			. += span_notice("Below that, you can see that you are [number - source.current_number] spot\s away from being served.")
+			. += span_notice("Abaixo disso, você pode ver que você é[number - source.current_number]Está longe de ser servido.")
 
 /obj/item/ticket_machine_ticket/attack_hand(mob/user, list/modifiers)
 	. = ..()

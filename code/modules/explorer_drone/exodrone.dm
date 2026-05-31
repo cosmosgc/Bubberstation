@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 /// Exploration drone
 /obj/item/exodrone
 	name = "exploration drone"
-	desc = "A long range, semi-autonomous exploration drone."
+	desc = "Um drone de exploração semi-autônomo de longo alcance."
 	icon = 'icons/obj/exploration.dmi'
 	icon_state = "drone"
 	w_class = WEIGHT_CLASS_BULKY
@@ -351,7 +351,7 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 /// Exploration drone launcher
 /obj/machinery/exodrone_launcher
 	name = "exploration drone launcher"
-	desc = "A launch pad designed to send exploration drones into the great beyond."
+	desc = "Uma plataforma de lançamento projetada para enviar drones de exploração para o grande além."
 	icon = 'icons/obj/exploration.dmi'
 	icon_state = "launcher"
 	/// Loaded fuel pellet.
@@ -364,12 +364,12 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 /obj/machinery/exodrone_launcher/examine(user)
 	. = ..()
 	if(fuel_canister)
-		. += span_notice("You can remove the [fuel_canister] with a <b>prying tool</b>.")
+		. += span_notice("Você pode remover o[fuel_canister]com um<b>Ferramenta intrometida</b>.")
 
 /obj/machinery/exodrone_launcher/attackby(obj/item/weapon, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(istype(weapon, /obj/item/fuel_pellet))
 		if(fuel_canister)
-			to_chat(user, span_warning("There's already fuel loaded inside [src]!"))
+			to_chat(user, span_warning("Já tem combustível lá dentro.[src]!"))
 			return TRUE
 		if(!user.transferItemToLoc(weapon, src))
 			return
@@ -386,7 +386,7 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 	if(!fuel_canister)
 		return
 
-	to_chat(user, span_notice("You remove [fuel_canister] from [src]."))
+	to_chat(user, span_notice("Você tira.[fuel_canister]De[src]."))
 	fuel_canister.forceMove(drop_location())
 	fuel_canister = null
 	update_icon()
@@ -458,7 +458,7 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 
 /obj/item/fuel_pellet
 	name = "standard fuel pellet"
-	desc = "A compressed fuel pellet for long-distance drone flight."
+	desc = "Uma cápsula de combustível comprimido para vôo de drones de longa distância."
 	icon = 'icons/obj/exploration.dmi'
 	icon_state = "fuel_basic"
 	/// The type of fuel this pellet has within.

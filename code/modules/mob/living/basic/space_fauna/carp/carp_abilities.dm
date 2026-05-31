@@ -5,7 +5,7 @@
  */
 /datum/action/cooldown/mob_cooldown/projectile_attack/magicarp_bolt
 	name = "Magicarp Blast"
-	desc = "Unleash a bolt of magical force at a target you click on."
+	desc = "Solte um raio de força mágica em um alvo que você clica."
 	button_icon = 'icons/obj/weapons/guns/projectiles.dmi'
 	button_icon_state = "arcane_barrage"
 	cooldown_time = 5 SECONDS
@@ -41,7 +41,7 @@
 	name = "Lesser Carp Rift"
 	button_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "rift"
-	desc = "Open a rift through the carp stream, allowing passage to somewhere close by."
+	desc = "Abra uma fenda através da carpa, permitindo passagem para algum lugar próximo."
 	cooldown_time = 15 SECONDS
 	melee_cooldown_time = 0 SECONDS // Handled by rift
 	/// How far away can you place a rift?
@@ -57,7 +57,7 @@
 
 /datum/action/cooldown/mob_cooldown/lesser_carp_rift/proc/make_rift(atom/target_atom)
 	if (owner.Adjacent(target_atom))
-		owner.balloon_alert(owner, "perto demais!")
+		owner.balloon_alert(owner, "Perto demais!")
 		return FALSE
 
 	var/turf/owner_turf = get_turf(owner)
@@ -75,7 +75,7 @@
 		open_exit_turfs += potential_exit
 
 	if (!length(open_exit_turfs))
-		owner.balloon_alert(owner, "no exit!")
+		owner.balloon_alert(owner, "Sem saída!")
 		return FALSE
 	if (!target_turf.is_blocked_turf(exclude_mobs = TRUE))
 		open_exit_turfs += target_turf

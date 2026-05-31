@@ -18,7 +18,7 @@
 
 /mob/living/simple_animal/hostile/asteroid/elite/pandora
 	name = "pandora"
-	desc = "A large magic box with similar power and design to the Hierophant.  Once it opens, it's not easy to close it."
+	desc = "Uma grande caixa mágica com o mesmo poder e design do Hierofante. Uma vez aberta, não é fácil fechá-la."
 	icon_state = "pandora"
 	icon_living = "pandora"
 	icon_aggro = "pandora"
@@ -32,13 +32,13 @@
 	attack_verb_continuous = "smashes into the side of"
 	attack_verb_simple = "smash into the side of"
 	attack_sound = 'sound/items/weapons/sonic_jackhammer.ogg'
-	throw_message = "merely dinks off of the"
+	throw_message = "É só um tostão."
 	speed = 3
 	move_to_delay = 10
 	mouse_opacity = MOUSE_OPACITY_ICON
 	mob_biotypes = MOB_MINING|MOB_MINERAL
 	death_sound = 'sound/effects/magic/repulse.ogg'
-	death_message = "'s lights flicker, before its top part falls down."
+	death_message = "As luzes piscam, antes que sua parte superior caia."
 	loot_drop = /obj/item/clothing/accessory/pandora_hope
 
 	attack_action_types = list(/datum/action/innate/elite_attack/singular_shot,
@@ -52,25 +52,25 @@
 /datum/action/innate/elite_attack/singular_shot
 	name = "Singular Shot"
 	button_icon_state = "singular_shot"
-	chosen_message = span_boldwarning("You are now creating a single linear magic square.")
+	chosen_message = span_boldwarning("Agora você está criando um único quadrado mágico linear.")
 	chosen_attack_num = SINGULAR_SHOT
 
 /datum/action/innate/elite_attack/magic_box
 	name = "Magic Box"
 	button_icon_state = "magic_box"
-	chosen_message = span_boldwarning("You are now attacking with a box of magic squares.")
+	chosen_message = span_boldwarning("Agora você está atacando com uma caixa de quadrados mágicos.")
 	chosen_attack_num = MAGIC_BOX
 
 /datum/action/innate/elite_attack/pandora_teleport
 	name = "Line Teleport"
 	button_icon_state = "pandora_teleport"
-	chosen_message = span_boldwarning("You will now teleport to your target.")
+	chosen_message = span_boldwarning("Agora você vai se teletransportar para o seu alvo.")
 	chosen_attack_num = PANDORA_TELEPORT
 
 /datum/action/innate/elite_attack/aoe_squares
 	name = "AOE Blast"
 	button_icon_state = "aoe_squares"
-	chosen_message = span_boldwarning("Your attacks will spawn an AOE blast at your target location.")
+	chosen_message = span_boldwarning("Seus ataques gerarão uma explosão no local do alvo.")
 	chosen_attack_num = AOE_SQUARES
 
 /mob/living/simple_animal/hostile/asteroid/elite/pandora/OpenFire()
@@ -147,7 +147,7 @@
 	for(var/t in RANGE_TURFS(1, source))
 		new /obj/effect/temp_visual/hierophant/blast/damaging/pandora(t, src)
 	animate(src, alpha = 0, time = 2, easing = SINE_EASING|EASE_OUT) //fade out
-	visible_message(span_hierophant_warning("[src] fades out!"))
+	visible_message(span_hierophant_warning("[src]Desapareça!"))
 	ADD_TRAIT(src, TRAIT_UNDENSE, VANISHING_TRAIT)
 	addtimer(CALLBACK(src, PROC_REF(pandora_teleport_3), T), 0.2 SECONDS)
 
@@ -155,7 +155,7 @@
 	forceMove(T)
 	animate(src, alpha = 255, time = 2, easing = CIRCULAR_EASING|EASE_IN) //fade IN
 	REMOVE_TRAIT(src, TRAIT_UNDENSE, VANISHING_TRAIT)
-	visible_message(span_hierophant_warning("[src] fades in!"))
+	visible_message(span_hierophant_warning("[src]Desvanece-se!"))
 
 /mob/living/simple_animal/hostile/asteroid/elite/pandora/proc/aoe_squares(target)
 	ranged_cooldown = world.time + cooldown_time
@@ -180,7 +180,7 @@
 //Pandora's loot: Hope
 /obj/item/clothing/accessory/pandora_hope
 	name = "Hope"
-	desc = "Found at the bottom of Pandora. After all the evil was released, this was the only thing left inside."
+	desc = "Encontrado no fundo de Pandora. Depois que todo o mal foi liberado, esta foi a única coisa que sobrou dentro."
 	icon = 'icons/obj/mining_zones/elite_trophies.dmi'
 	icon_state = "hope"
 	resistance_flags = FIRE_PROOF

@@ -1,13 +1,9 @@
 /// Used by Ghouls
 /datum/action/cooldown/bloodsucker/recuperate
 	name = "Sanguine Recuperation"
-	desc = "Slowly heals you overtime using your master's blood, in exchange for some of your own blood and effort."
+	desc = "Lentamente cura você usando o sangue do seu mestre, em troca de um pouco do seu próprio sangue e esforço."
 	button_icon_state = "power_recup"
-	power_explanation = "Recuperate:\n\
-		Activating this Power will begin to heal your wounds.\n\
-		You will heal Brute and Toxin damage, at the cost of Stamina damage, and blood from both you and your Master.\n\
-		If you aren't a bloodless race, you will additionally heal Burn damage.\n\
-		The power will cancel out if you are dead or unconcious."
+	power_explanation = "Recuperate:\n		Activating this Power will begin to heal your wounds.\n		You will heal Brute and Toxin damage, at the cost of Stamina damage, and blood from both you and your Master.\n		If you aren't a bloodless race, you will additionally heal Burn damage.\n		The power will cancel out if you are dead or unconcious."
 	power_flags = BP_CONTINUOUS_EFFECT
 	check_flags = AB_CHECK_CONSCIOUS
 	bloodsucker_check_flags = NONE
@@ -21,14 +17,14 @@
 	if(!.)
 		return
 	if(user.stat >= DEAD || user.incapacitated)
-		user.balloon_alert(user, "you are incapacitated...")
+		user.balloon_alert(user, "Você está incapacitado...")
 		return FALSE
 	return TRUE
 
 /datum/action/cooldown/bloodsucker/recuperate/ActivatePower(trigger_flags)
 	. = ..()
-	to_chat(owner, span_notice("Your muscles clench as your master's immortal blood mixes with your own, knitting your wounds."))
-	owner.balloon_alert(owner, "recuperate turned on.")
+	to_chat(owner, span_notice("Seus músculos apertam como o sangue imortal do seu mestre se mistura com os seus, tricotando suas feridas."))
+	owner.balloon_alert(owner, "A recuperação está ligada.")
 	return TRUE
 
 /datum/action/cooldown/bloodsucker/recuperate/process(seconds_per_tick)
@@ -41,7 +37,7 @@
 	var/mob/living/carbon/user = owner
 	var/datum/antagonist/ghoul/ghouldatum = IS_GHOUL(user)
 	if(!ghouldatum || QDELETED(ghouldatum.master))
-		to_chat(owner, span_warning("No master to draw blood from!"))
+		to_chat(owner, span_warning("Nenhum mestre para tirar sangue!"))
 		DeactivatePower()
 		return
 	ghouldatum.master.AdjustBloodVolume(-1)
@@ -63,7 +59,7 @@
 	if(user.stat >= DEAD)
 		return FALSE
 	if(INCAPACITATED_IGNORING(user, INCAPABLE_GRAB|INCAPABLE_RESTRAINTS))
-		owner?.balloon_alert(owner, "too exhausted...")
+		owner?.balloon_alert(owner, "Muito exausto...")
 		return FALSE
 	return TRUE
 
@@ -71,5 +67,5 @@
 	. = ..()
 	if(!.)
 		return
-	owner.balloon_alert(owner, "recuperate turned off.")
+	owner.balloon_alert(owner, "Recuperar desligado.")
 	return ..()

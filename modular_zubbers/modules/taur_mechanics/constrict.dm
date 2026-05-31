@@ -5,7 +5,7 @@
 
 /datum/action/innate/constrict
 	name = "Constrict"
-	desc = "<b>Left click</b> to coil/uncoil your powerful tail around something, <b>right click</b> to begin crushing."
+	desc = "<b>Clique esquerdo</b>para enrolar/desencadernar sua cauda poderosa em torno de algo,<b>\"Clique Direito\"</b>para começar a esmagar."
 	check_flags = AB_CHECK_LYING|AB_CHECK_CONSCIOUS|AB_CHECK_INCAPACITATED|AB_CHECK_PHASED
 
 	button_icon = 'modular_zubbers/icons/actions/constrict.dmi'
@@ -31,7 +31,7 @@
 	if (trigger_flags & TRIGGER_SECONDARY_ACTION)
 		unset_ranged_ability(owner)
 		if (isnull(tail))
-			owner.balloon_alert(owner, "coil tail first!")
+			owner.balloon_alert(owner, "A cauda da bobina primeiro!")
 			return FALSE
 		tail.toggle_crushing()
 		return FALSE
@@ -55,8 +55,8 @@
 		return TRUE
 
 	clicker.balloon_alert_to_viewers("starts coiling tail")
-	clicker.visible_message(span_warning("[clicker] starts coiling [clicker.p_their()] tail around [living_target]..."), span_notice("You start coiling your tail around [living_target]..."), ignored_mobs = list(living_target))
-	to_chat(living_target, span_userdanger("[clicker] starts coiling [clicker.p_their()] tail around you!"))
+	clicker.visible_message(span_warning("[clicker]Começa a enrolar[clicker.p_their()]Cauda ao redor[living_target]..."), span_notice("Você começa a enrolar sua cauda ao redor[living_target]..."), ignored_mobs = list(living_target))
+	to_chat(living_target, span_userdanger("[clicker]Começa a enrolar[clicker.p_their()]Atrás de você!"))
 
 	owner.changeNext_move(base_coil_delay) // prevent interaction during this
 	unset_ranged_ability(owner) // because we sleep
@@ -70,8 +70,8 @@
 
 /// Actually constricts the mob, by setting constricted to this mob and spawning a tail if needed.
 /datum/action/innate/constrict/proc/do_constriction(mob/living/living_target)
-	owner.visible_message(span_boldwarning("[owner] coils [owner.p_their()] tail around [living_target]!"), span_notice("You coil your tail around [living_target]!"), ignored_mobs = list(living_target))
-	to_chat(living_target, span_userdanger("[owner] coils [owner.p_their()] tail around you!"))
+	owner.visible_message(span_boldwarning("[owner]Bobinas.[owner.p_their()]Cauda ao redor[living_target]!"), span_notice("Você enrola sua cauda ao redor[living_target]!"), ignored_mobs = list(living_target))
+	to_chat(living_target, span_userdanger("[owner]Bobinas.[owner.p_their()]Atrás de você!"))
 	create_tail()
 	tail.set_constricted(living_target)
 	return TRUE
@@ -80,17 +80,17 @@
 /datum/action/innate/constrict/proc/can_coil_target(mob/living/target, silent = FALSE)
 	if (!owner.Adjacent(target))
 		if (!silent)
-			owner.balloon_alert(owner, "longe demais!")
+			owner.balloon_alert(owner, "Longe demais!")
 		return FALSE
 
 	if (target.buckled)
 		if (!silent)
-			owner.balloon_alert(owner, "unbuckle [target.p_them()] first!")
+			owner.balloon_alert(owner, "Desapertar[target.p_them()]Primero!")
 		return FALSE
 
 	if (owner.buckled)
 		if (!silent)
-			owner.balloon_alert(owner, "unbuckle yourself first!")
+			owner.balloon_alert(owner, "Desaperte-se primeiro!")
 		return FALSE
 
 	return TRUE
@@ -123,7 +123,7 @@
 
 /obj/structure/serpentine_tail
 	name = "serpentine tail"
-	desc = "A scaley tail, currently coiled."
+	desc = "Uma cauda escamosa, atualmente matriculada."
 
 	icon = 'modular_zubbers/icons/mob/taur/tail.dmi'
 	icon_state = "naga"
@@ -328,8 +328,8 @@
 		var/mob/living/carbon/carbon_target = constricted
 		def_zone = pick(carbon_target.bodyparts)
 	constricted.apply_damage(stored_damage, BRUTE, def_zone = def_zone, blocked = armor, wound_bonus = wound_bonus)
-	owner.visible_message(span_warning("[owner] squeezes [constricted] with [owner.p_their()] tail!"), span_danger("You squeeze [constricted] with your tail!"), ignored_mobs = list(constricted))
-	to_chat(constricted, span_warning("[owner] squeezes you with [owner.p_their()] tail!"))
+	owner.visible_message(span_warning("[owner]Aperta[constricted]Com[owner.p_their()]Cauda!"), span_danger("Você aperta.[constricted]Com sua cauda!"), ignored_mobs = list(constricted))
+	to_chat(constricted, span_warning("[owner]Te aperta com[owner.p_their()]Cauda!"))
 	return TRUE
 
 #undef CONSTRICTED_FORCE_WOUND_BONUS_MIN
@@ -365,7 +365,7 @@
 	if (!def_zone)
 		def_zone = owner.get_bodypart(BODY_ZONE_CHEST)
 
-	to_chat(owner, span_userdanger("You recall your tail as a sharp pain shoots through it!"))
+	to_chat(owner, span_userdanger("Você se lembra de sua cauda como uma dor aguda atira através dela!"))
 	owner.apply_damage(SERPENTINE_TAIL_DESTRUCTION_OWNER_BRUTE_DAMAGE, damage_type, def_zone)
 
 	return ..()
@@ -464,7 +464,7 @@
 /// Toggle proc for crushing. See stop_crushing and start_crushing.
 /obj/structure/serpentine_tail/proc/toggle_crushing()
 	if (!constricted)
-		owner.balloon_alert(owner, "not constricting anything!")
+		owner.balloon_alert(owner, "Não constringindo nada!")
 		return FALSE
 
 	if (currently_crushing)
@@ -483,8 +483,8 @@
 	START_PROCESSING(SSobj, src)
 
 	owner.balloon_alert_to_viewers("starts crushing")
-	owner.visible_message(span_boldwarning("[owner] starts crushing [constricted] with [owner.p_their()] tail!"), span_warning("You start crushing [constricted] with your tail!"), ignored_mobs = list(constricted))
-	to_chat(constricted, span_userdanger("[owner] starts crushing you with [owner.p_their()] tail!"))
+	owner.visible_message(span_boldwarning("[owner]Começa a esmagar[constricted]Com[owner.p_their()]Cauda!"), span_warning("Você começa a esmagar[constricted]Com sua cauda!"), ignored_mobs = list(constricted))
+	to_chat(constricted, span_userdanger("[owner]Começa a te esmagar com[owner.p_their()]Cauda!"))
 	return TRUE
 
 /// Setter proc for currently_crushing that handles processing and warnings.
@@ -493,8 +493,8 @@
 		return FALSE
 
 	owner.balloon_alert_to_viewers("stops crushing")
-	owner.visible_message(span_warning("[owner] stops crushing [constricted] with [owner.p_their()] tail."), span_notice("You stop crushing [constricted] with your tail."), ignored_mobs = list(constricted))
-	to_chat(constricted, span_boldwarning("[owner] stops crushing you with [owner.p_their()] tail."))
+	owner.visible_message(span_warning("[owner]Pare de esmagar.[constricted]Com[owner.p_their()]Cauda."), span_notice("Você pára de esmagar[constricted]Com sua cauda."), ignored_mobs = list(constricted))
+	to_chat(constricted, span_boldwarning("[owner]Pare de te amar com[owner.p_their()]Cauda."))
 
 	currently_crushing = FALSE
 	STOP_PROCESSING(SSobj, src)
@@ -537,7 +537,7 @@
 		return ..()
 
 	if (!COOLDOWN_FINISHED(src, escape_cooldown))
-		to_chat(user, span_warning("You're still recovering from your last escape attempt!")) // prevent escape spam
+		to_chat(user, span_warning("Você ainda está se recuperando de sua última tentativa de fuga!")) // prevent escape spam
 		return FALSE
 
 	var/escape_chance = CONSTRICT_ESCAPE_CHANCE
@@ -545,13 +545,13 @@
 		escape_chance += AKULA_GRAB_RESIST_BONUS
 
 	if (!prob(escape_chance))
-		user.visible_message(span_warning("[user] squirms as they fail to escape from [owner]'s tail!"), span_warning("You squirm as you fail to escape from [owner]'s tail!"), ignored_mobs = owner)
-		to_chat(owner, span_warning("[user] squirms as they fail to escape from the grip of your tail!"))
+		user.visible_message(span_warning("[user]Se contorce quando não conseguem escapar.[owner]Uma cauda!"), span_warning("Você se contorce quando não consegue escapar.[owner]Uma cauda!"), ignored_mobs = owner)
+		to_chat(owner, span_warning("[user]Se contorcer ao falarem em escapar da sua cauda!"))
 		COOLDOWN_START(src, escape_cooldown, SERPENTINE_TAIL_UNBUCKLE_TIME)
 		return FALSE
 
-	user.visible_message(span_warning("[user] breaks free from [owner]'s tail!"), span_warning("You break free from [owner]'s tail!"), ignored_mobs = owner)
-	to_chat(owner, span_boldwarning("[user] breaks free from the grip of your tail!"))
+	user.visible_message(span_warning("[user]Se solta de[owner]Uma cauda!"), span_warning("Você se liberta[owner]Uma cauda!"), ignored_mobs = owner)
+	to_chat(owner, span_boldwarning("[user]Se solta do aperto da sua cauda!"))
 	return ..()
 
 #undef SERPENTINE_TAIL_UNBUCKLE_TIME
@@ -601,7 +601,7 @@
 	SIGNAL_HANDLER
 
 	if (currently_crushing)
-		examine_text += span_boldwarning("[owner] is crushing [constricted.p_them()] with [owner.p_their()] tail!")
+		examine_text += span_boldwarning("[owner]está esmagando[constricted.p_them()]Com[owner.p_their()]Cauda!")
 
 /// Signal proc for constricted qdeleting. Sets constricted to null.
 /obj/structure/serpentine_tail/proc/constricted_qdeleting(datum/signal_source)
@@ -614,7 +614,7 @@
 	SIGNAL_HANDLER
 
 	if (!allowing_grab_on_constricted && thing == constricted)
-		owner.balloon_alert(owner, "can't grab constricted!")
+		owner.balloon_alert(owner, "Não consigo agarrar constrição!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /// Signal proc for owner grabbing someone, separate from pulling. Forbids them from upgrading grabs on constricted.
@@ -622,7 +622,7 @@
 	SIGNAL_HANDLER
 
 	if (!allowing_grab_on_constricted && grabbing == constricted)
-		owner.balloon_alert(owner, "can't grab constricted!")
+		owner.balloon_alert(owner, "Não consigo agarrar constrição!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /// Signal proc that prevents constricted from grabbing owner.
@@ -630,7 +630,7 @@
 	SIGNAL_HANDLER
 
 	if (thing == owner)
-		constricted.balloon_alert(constricted, "can't grab constrictor!")
+		constricted.balloon_alert(constricted, "Não posso pegar constritor!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/status_effect/constricted
@@ -640,7 +640,7 @@
 
 /atom/movable/screen/alert/status_effect/constricted
 	name = "Constricted"
-	desc = "You're being constricted by a giant tail! You can resist, attack the tail, or attack the constrictor to escape!"
+	desc = "Você está sendo restringido por uma cauda gigante! Você pode resistir, atacar a cauda, ou atacar o constritor para escapar!"
 
 	icon = 'modular_zubbers/icons/actions/constrict.dmi'
 	icon_state = "constrict"

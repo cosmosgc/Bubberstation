@@ -8,7 +8,7 @@
  */
 /datum/symptom/disfiguration
 	name = "Disfiguration"
-	desc = "The virus liquefies facial muscles, disfiguring the host."
+	desc = "O vírus liquefa os músculos faciais, desfigurando o hospedeiro."
 	illness = "Broken Face"
 	stealth = 2
 	resistance = 0
@@ -32,9 +32,9 @@
 	switch(disease.stage)
 		if(5)
 			ADD_TRAIT(head, TRAIT_DISFIGURED, DISEASE_TRAIT)
-			victim.visible_message(span_warning("[victim]'s face appears to cave in!"), span_notice("You feel your face crumple and cave in!"))
+			victim.visible_message(span_warning("[victim]O rosto parece ceder!"), span_notice("Você sente seu rosto amassado e cair!"))
 		else
-			victim.visible_message(span_warning("[victim]'s face begins to contort..."), span_notice("Your face feels wet and malleable..."))
+			victim.visible_message(span_warning("[victim]O rosto começa a contorcer..."), span_notice("Seu rosto está molhado e maleável..."))
 
 
 /datum/symptom/disfiguration/End(datum/disease/advance/disease)

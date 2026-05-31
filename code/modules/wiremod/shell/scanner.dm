@@ -23,7 +23,7 @@
 
 /obj/item/circuit_component/wiremod_scanner
 	display_name = "Scanner"
-	desc = "Used to receive scanned entities from the scanner."
+	desc = "Costumava receber entidades digitalizadas do scanner."
 
 	/// Called when afterattack is called on the shell.
 	var/datum/port/output/signal
@@ -52,7 +52,7 @@
  */
 /obj/item/circuit_component/wiremod_scanner/proc/handle_interaction(atom/source, mob/user, atom/target, ...)
 	SIGNAL_HANDLER
-	source.balloon_alert(user, "scanned object")
+	source.balloon_alert(user, "objeto digitalizado")
 	playsound(source, SFX_TERMINAL_TYPE, 25, FALSE)
 	attacker.set_output(user)
 	attacking.set_output(target)

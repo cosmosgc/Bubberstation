@@ -587,7 +587,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 		flick("[base_icon_state]_flick", src)
 		return
 
-	var/tgui_answer = tgui_alert(usr, "You sure you want to sleep for a while?", "Sleeping", list("Yes", "No"))
+	var/tgui_answer = tgui_alert(usr, "Tem certeza que quer dormir um pouco?", "Sleeping", list("Yes", "No"))
 	if(tgui_answer == "Yes" && !HAS_TRAIT(usr, TRAIT_KNOCKEDOUT))
 		var/mob/living/L = usr
 		L.Sleeping(400)

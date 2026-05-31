@@ -16,9 +16,9 @@
 	if(client)
 		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
 		if(erp_status_pref && !CONFIG_GET(flag/disable_erp_preferences))
-			. += span_notice("ERP STATUS: [erp_status_pref]")
+			. += span_notice("ERP STATUS:[erp_status_pref]")
 	if(temporary_flavor_text)
 		if(length_char(temporary_flavor_text) <= 40)
-			. += span_notice("<b>They look different than usual:</b> [temporary_flavor_text]")
+			. += span_notice("<b>Parecem diferentes do normal.</b> [temporary_flavor_text]")
 		else
-			. += span_notice("<b>They look different than usual:</b> [copytext_char(temporary_flavor_text, 1, 37)]... <a href='byond://?src=[REF(src)];temporary_flavor=1'>More...</a>")
+			. += span_notice("<b>Parecem diferentes do normal.</b> [copytext_char(temporary_flavor_text, 1, 37)]... <a href='byond://?src=[REF(src)];temporary_flavor=1'>Mais...</a>")

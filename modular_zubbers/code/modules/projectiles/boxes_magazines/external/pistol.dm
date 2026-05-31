@@ -1,6 +1,6 @@
 /obj/item/ammo_box/magazine/security
 	name = "pistol magazine (9mm Murphy)"
-	desc = "A 9mm handgun magazine, suitable for the Nanotrasen Service Pistol. It comes with a more robust spring than the average magazine and weight to boot."
+	desc = "Uma revista de 9mm, adequada para o Nanotrasen Service Pistol. Vem com uma mola mais robusta do que a revista média e peso para arrancar."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/magazine.dmi'
 	icon_state = "9x19p"
 	base_icon_state = "9x19p"
@@ -15,7 +15,7 @@
 
 /obj/item/ammo_box/magazine/security/rocket
 	name = "pistol magazine (9mm Murphy Rocket Eject)"
-	desc = parent_type::desc + "With a small charge inside that sparks on ejection, this one has less room for ammo and a lethal velocity to it's ejections."
+	desc = parent_type::desc + "Com uma pequena carga dentro que provoca ejeção, esta tem menos espaço para munição e uma velocidade letal para ejeções."
 	ammo_type = /obj/item/ammo_casing/security
 	max_ammo = 10
 	base_icon_state = "9x19pI"
@@ -27,7 +27,7 @@
 		return
 	if(was_ejected)
 		playsound(get_turf(src.loc), 'sound/effects/explosion/explosion1.ogg', 40, 1)
-		visible_message(span_warning("[src] crumbles into scrap from the force of the impact"))
+		visible_message(span_warning("[src]Se desfaz em sucata pela força do impacto."))
 		if(isliving(hit_atom))
 			var/mob/living/hit_mob = hit_atom
 			hit_mob.Knockdown(2 SECONDS)
@@ -36,7 +36,7 @@
 
 /obj/item/ammo_box/magazine/recharge/ntusp
 	name = "small disabling power pack"
-	desc = "A small, rechargeable power pack for the NT22 HCS 'Enforcer'. Synthesizes up to twelve .22HL bullets that tire targets."
+	desc = "Um pequeno pacote de energia recarregável para o NT22 HCS 'Enforcer'. Sintetiza até 12 balas 22HL que se cansam de alvos."
 	icon = 'modular_zubbers/icons/obj/weapons/guns/ammo.dmi'
 	base_icon_state = "powerpack_small"
 	icon_state = "powerpack_small-12"
@@ -45,7 +45,7 @@
 
 /obj/item/ammo_box/magazine/recharge/ntusp/laser
 	name = "small lethal power pack"
-	desc = "A small, rechargeable power pack for the NT22 HCS 'Enforcer' that has been modified. Synthesizes up to eight .22LS bullets that fire lasers."
+	desc = "Um pequeno, recarregável pacote de energia para o NT22 HCS 'Enforcer' que foi modificado. Sintetiza até 8 balas 22LS que disparam lasers."
 	ammo_type = /obj/item/ammo_casing/caseless/c22ls
 	base_icon_state = "powerpack_small-l"
 	icon_state = "powerpack_small-l-8"
@@ -68,7 +68,7 @@
 
 /obj/item/ammo_box/speedloader/security
 	name = "speed loader (9mm Murphy)"
-	desc = "Designed to quickly reload five-chambered 9mm revolvers."
+	desc = "Projetado para recarregar rapidamente revólveres de 9mm."
 	icon = 'modular_zubbers/icons/obj/weapons/guns/ammo.dmi'
 	icon_state = "9mm"
 	base_icon_state = "9mm"

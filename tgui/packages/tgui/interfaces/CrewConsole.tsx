@@ -129,7 +129,7 @@ const HealthStat = (props: HealthStatProps) => {
 
 export const CrewConsole = () => {
   return (
-    <Window title="Crew Monitor" width={600} height={600}>
+    <Window title="Monitor de tripulação" width={600} height={600}>
       <Window.Content scrollable>
         <Section minHeight="540px">
           <CrewTable />
@@ -190,7 +190,7 @@ const CrewTable = () => {
             />
           </Button>
           <Input
-            placeholder="Search for name..."
+            placeholder="Procura o nome..."
             onChange={setSearchQuery}
             value={searchQuery}
           />

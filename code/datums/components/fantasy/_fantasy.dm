@@ -145,9 +145,9 @@
 	var/effect_description
 	if(quality >= 0)
 		span = "<span class='notice'>"
-		effect_description = "<span class='heavy_brass'>shimmering golden glow</span>"
+		effect_description = "<span class='heavy_brass'>Brilhante brilho dourado</span>"
 	else
 		span = "<span class='danger'>"
-		effect_description = span_bold("mottled black glow")
+		effect_description = span_bold("Brilho preto moldado")
 
-	location.visible_message("[span]The [originalName] is covered by a [effect_description] and then transforms into [parent]!</span>")
+	location.visible_message("[span]O[originalName]é coberto por um[effect_description]e então se transforma em[parent]!</span>")

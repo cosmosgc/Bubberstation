@@ -6,7 +6,7 @@
 
 /obj/item/fancy_pillow
 	name = "pillow"
-	desc = "A big, soft pillow."
+	desc = "Um travesseiro grande e macio."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
@@ -139,7 +139,7 @@
 
 /obj/item/fancy_pillow/attack_self(mob/user)
 	if(IN_INVENTORY)
-		to_chat(user, span_notice("You set [src] down on the floor."))
+		to_chat(user, span_notice("Você está pronto.[src]No chão."))
 		var/obj/structure/bed/pillow_tiny/pillow_pile = new(get_turf(src))
 		pillow_pile.current_color = current_color
 		pillow_pile.current_form = current_form
@@ -156,7 +156,7 @@
 
 /obj/structure/bed/pillow_tiny
 	name = "pillow"
-	desc = "A tiny pillow, for tiny heads."
+	desc = "Um pequeno travesseiro, para cabeças pequenas."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillow_pink_round"
 	base_icon_state = "pillow"
@@ -180,7 +180,7 @@
 //picking up the pillow
 
 /obj/structure/bed/pillow_tiny/click_alt(mob/user)
-	to_chat(user, span_notice("You pick up [src]."))
+	to_chat(user, span_notice("Você atende.[src]."))
 	var/obj/item/fancy_pillow/taken_pillow = new()
 	user.put_in_hands(taken_pillow)
 
@@ -214,7 +214,7 @@
 		var/obj/item/fancy_pillow/used_pillow = used_item
 		var/obj/structure/chair/pillow_small/pillow_pile
 		if(used_pillow.current_color == current_color)
-			to_chat(user, span_notice("You add [src] to a pile."))
+			to_chat(user, span_notice("Você acrescenta[src]para uma pilha."))
 			pillow_pile = new(get_turf(src))
 			pillow_pile.current_color = current_color
 			pillow_pile.pillow2_color = used_pillow.current_color
@@ -232,7 +232,7 @@
 			qdel(src)
 			qdel(used_pillow)
 		else
-			to_chat(user, span_notice("You feel that those colours would clash...")) //Too lazy to add multicolor pillow pile sprites.
+			to_chat(user, span_notice("Você acha que essas cores se chocariam...")) //Too lazy to add multicolor pillow pile sprites.
 			return
 	else
 		return ..()
@@ -243,7 +243,7 @@
 
 /obj/structure/chair/pillow_small
 	name = "small pillow pile"
-	desc = "A small pile of pillows. A comfortable seat, especially for taurs or nagas."
+	desc = "Uma pequena pilha de travesseiros. Um assento confortável, especialmente para taurs ou nagas."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillowpile_small_pink"
 	base_icon_state = "pillowpile_small"
@@ -288,7 +288,7 @@
 
 //Removing pillow from a pile
 /obj/structure/chair/pillow_small/click_alt(mob/user)
-	to_chat(user, span_notice("You take [src] from the pile."))
+	to_chat(user, span_notice("Você pega.[src]Da pilha."))
 	var/obj/item/fancy_pillow/taken_pillow = new()
 	var/obj/structure/bed/pillow_tiny/pillow_pile = new(get_turf(src))
 	user.put_in_hands(taken_pillow)
@@ -317,7 +317,7 @@
 		var/obj/item/fancy_pillow/used_pillow = used_item
 		var/obj/structure/bed/pillow_large/pillow_pile
 		if(used_pillow.current_color == current_color)
-			to_chat(user, span_notice("You add [src] to the pile."))
+			to_chat(user, span_notice("Você acrescenta[src]Para a pilha."))
 			pillow_pile = new(get_turf(src))
 			pillow_pile.current_color = current_color
 			pillow_pile.pillow3_color = used_pillow.current_color
@@ -339,7 +339,7 @@
 			qdel(src)
 			qdel(used_pillow)
 		else
-			to_chat(user, span_notice("You feel that those colours would clash...")) //Too lazy to add multicolor pillow pile sprites.
+			to_chat(user, span_notice("Você acha que essas cores se chocariam...")) //Too lazy to add multicolor pillow pile sprites.
 			return
 	else
 		return ..()
@@ -354,7 +354,7 @@
 
 /obj/structure/bed/pillow_large
 	name = "large pillow pile"
-	desc = "A large pile of pillows. Jump on it!"
+	desc = "Uma grande pilha de travesseiros. Pule nele!"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillowpile_large_pink"
 	base_icon_state = "pillowpile_large"
@@ -408,7 +408,7 @@
 
 //Removing pillow from a pile
 /obj/structure/bed/pillow_large/click_alt(mob/user)
-	to_chat(user, span_notice("You take [src] from the pile."))
+	to_chat(user, span_notice("Você pega.[src]Da pilha."))
 	var/obj/item/fancy_pillow/taken_pillow = new()
 	var/obj/structure/chair/pillow_small/pillow_pile = new(get_turf(src))
 	user.put_in_hands(taken_pillow)

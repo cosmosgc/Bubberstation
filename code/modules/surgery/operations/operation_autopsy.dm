@@ -1,7 +1,7 @@
 /datum/surgery_operation/limb/autopsy
 	name = "autopsy"
 	rnd_name = "Androtomy (Dissection and Autopsy)"
-	desc = "Perform a detailed analysis of a deceased patient's body."
+	desc = "Faça uma análise detalhada do corpo de um paciente falecido."
 	implements = list(/obj/item/autopsy_scanner = 1)
 	time = 10 SECONDS
 	success_sound = 'sound/machines/printer.ogg'
@@ -32,9 +32,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("You begin performing an autopsy on [limb.owner]..."),
-		span_notice("[surgeon] uses [tool] to perform an autopsy on [limb.owner]."),
-		span_notice("[surgeon] uses [tool] on [limb.owner]'s chest."),
+		span_notice("Você começa a fazer uma autópsia em[limb.owner]..."),
+		span_notice("[surgeon]usa[tool]para realizar uma autópsia em[limb.owner]."),
+		span_notice("[surgeon]usa[tool]Vamos.[limb.owner]É o peito."),
 	)
 
 /datum/surgery_operation/limb/autopsy/on_success(obj/item/bodypart/limb, mob/living/surgeon, obj/item/autopsy_scanner/tool, list/operation_args)
@@ -51,6 +51,6 @@
 /datum/surgery_operation/limb/autopsy/mechanic
 	name = "system failure analysis"
 	rnd_name = "System Failure Analysis (Dissection and Autopsy)"
-	desc = "Perform a detailed analysis of a robotic patient's deactivated systems."
+	desc = "Faça uma análise detalhada dos sistemas desativados de um paciente robótico."
 	required_bodytype = BODYTYPE_ROBOTIC
 	operation_flags = parent_type::operation_flags | OPERATION_MECHANIC

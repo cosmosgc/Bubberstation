@@ -5,7 +5,7 @@
 
 /mob/living/basic/cybersun_ai_core
 	name = "\improper Cybersun AI Core"
-	desc = "An evil looking computer."
+	desc = "Um computador malvado."
 	icon = 'icons/mob/silicon/ai.dmi'
 	icon_state = "ai-core"
 	icon_living = "ai-core"
@@ -130,7 +130,7 @@
 
 /datum/action/cooldown/spell/pointed/lightning_strike
 	name = "lightning strike"
-	desc = "Electrocutes a target with a big lightning bolt. Has a small delay."
+	desc = "Eletrocuta um alvo com um grande raio. Tem um pequeno atraso."
 	button_icon = 'icons/mob/actions/actions_spells.dmi'
 	button_icon_state = "lightning"
 	cooldown_time = 4 SECONDS
@@ -150,7 +150,7 @@
 
 /obj/effect/temp_visual/lightning_strike
 	name = "lightning strike"
-	desc = "A lightning bolt is about to hit this location. There's a handy hologram to warn people so they don't stand here."
+	desc = "Um raio está prestes a atingir este local. Há um holograma útil para avisar as pessoas para que elas não fiquem aqui."
 	icon = 'icons/mob/telegraphing/telegraph_holographic.dmi'
 	icon_state = "target_circle"
 	duration = 1 SECONDS
@@ -175,12 +175,12 @@
 	for(var/mob/living/victim in loc)
 		if (is_type_in_typecache(victim, damage_blacklist_typecache))
 			continue
-		to_chat(victim, span_warning("You are struck by a large bolt of electricity!"))
+		to_chat(victim, span_warning("Você foi atingido por um grande raio de eletricidade!"))
 		victim.electrocute_act(zap_damage, src, flags = SHOCK_NOGLOVES | SHOCK_NOSTUN)
 
 /obj/effect/temp_visual/lightning_strike_zap
 	name = "lightning bolt"
-	desc = "Lightning bolt! Lightning bolt! Lightning bolt! Lightning bolt! Lightning bolt! Lightning bolt! Lightning bolt! Lightning bolt!"
+	desc = "Raios! Raios! Raios! Raios! Raios! Raios! Raios! Raios!"
 	icon = 'icons/effects/32x96.dmi'
 	icon_state = "thunderbolt"
 	duration = 0.4 SECONDS
@@ -196,7 +196,7 @@
 
 /datum/action/cooldown/spell/pointed/projectile/cybersun_barrage
 	name = "plasma beam barrage"
-	desc = "Charges up a cluster of lasers, then sends it towards a foe after a short delay."
+	desc = "Carrega um conjunto de lasers, então envia para um inimigo após um pequeno atraso."
 	button_icon = 'icons/obj/weapons/transforming_energy.dmi'
 	button_icon_state = "e_sword_on_red"
 	cooldown_time = 5.5 SECONDS

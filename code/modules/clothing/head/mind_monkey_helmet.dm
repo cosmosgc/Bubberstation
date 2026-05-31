@@ -3,7 +3,7 @@
 /* SKYRAT EDIT REMOVAL
 /obj/item/clothing/head/helmet/monkey_sentience
 	name = "monkey mind magnification helmet"
-	desc = "A fragile, circuitry embedded helmet for boosting the intelligence of a monkey to a higher level. You see several warning labels..."
+	desc = "Um frágil capacete de circuito embutido para aumentar a inteligência de um macaco para um nível mais alto. Você vê vários rótulos de aviso..."
 	icon_state = "monkeymind"
 	inhand_icon_state = null
 	strip_delay = 10 SECONDS
@@ -22,13 +22,13 @@
 
 /obj/item/clothing/head/helmet/monkey_sentience/examine(mob/user)
 	. = ..()
-	. += span_boldwarning("---WARNING: REMOVAL OF HELMET ON SUBJECT, OR REPEATED SENTIENCE GENERATION FAILURES MAY LEAD TO:---")
-	. += span_warning("BLOOD RAGE")
-	. += span_warning("BRAIN DEATH")
-	. += span_warning("PRIMAL GENE ACTIVATION")
-	. += span_warning("GENETIC MAKEUP MASS SUSCEPTIBILITY")
-	. += span_notice("Warranty voided if helmet is placed after more than ") + span_boldnotice("two") + span_notice(" mind magnification failures.")
-	. += span_boldnotice("Ask your CMO if mind magnification is right for you!")
+	. += span_boldwarning("Retirar o capacete sobre o objeto, ou repetir a geração de sentimentos, pode levar a...")
+	. += span_warning("RAGE SANGUE")
+	. += span_warning("MORTE Cérebro")
+	. += span_warning("ATIVAÇÃO GENE PRIMAL")
+	. += span_warning("Mass SUSCEPTIBILIDADE")
+	. += span_notice("Garantia anulada se capacete é colocado depois de mais de") + span_boldnotice("two") + span_notice("Falhas na ampliação da mente.")
+	. += span_boldnotice("Pergunte ao seu médico se a ampliação da mente é certa para você!")
 
 /obj/item/clothing/head/helmet/monkey_sentience/update_icon_state()
 	. = ..()
@@ -40,7 +40,7 @@
 		return
 	if(!ismonkey(user) || user.ckey)
 		var/mob/living/something = user
-		to_chat(something, span_boldnotice("You feel a stabbing pain in the back of your head for a moment."))
+		to_chat(something, span_boldnotice("Sente uma dor na nuca por um momento."))
 		something.apply_damage(5,BRUTE,BODY_ZONE_HEAD,FALSE,FALSE,FALSE) //notably: no damage resist (it's in your helmet), no damage spread (it's in your helmet)
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 		return
@@ -48,7 +48,7 @@
 		say("ERROR: Central Command has temporarily outlawed monkey sentience helmets in this sector. NEAREST LAWFUL SECTOR: 2.537 million light years away.")
 		return
 	magnification = user //this polls ghosts
-	visible_message(span_warning("[src] powers up!"))
+	visible_message(span_warning("[src]Energias para Cima!"))
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	RegisterSignal(magnification, COMSIG_SPECIES_LOSS, PROC_REF(make_fall_off))
 	polling = TRUE
@@ -59,27 +59,27 @@
 	if(isnull(chosen_one))
 		UnregisterSignal(magnification, COMSIG_SPECIES_LOSS)
 		magnification = null
-		visible_message(span_notice("[src] falls silent and drops on the floor. Maybe you should try again later?"))
+		visible_message(span_notice("[src]cai em silêncio e cai no chão. Talvez devesse tentar de novo mais tarde?"))
 		if (particle_path)
 			remove_shared_particles(particle_path)
 		switch(rage_chance)
 			if(-7 to 0)
-				user.visible_message(span_notice("[src] falls silent and drops on the floor. Try again later?"))
+				user.visible_message(span_notice("[src]cai em silêncio e cai no chão. Tentar mais tarde?"))
 				playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 				particle_path = null
 			if(7 to 13)
-				user.visible_message(span_notice("[src] sparkles momentarily, then falls silent and drops on the floor. Maybe you should try again later?"))
+				user.visible_message(span_notice("[src]Brilha momentaneamente, então cai em silêncio e cai no chão. Talvez devesse tentar de novo mais tarde?"))
 				playsound(src, SFX_SPARKS, 30, TRUE)
 				do_sparks(2, FALSE, src)
 				particle_path = /particles/smoke/steam/mild
 			if(14 to 21)
-				user.visible_message(span_notice("[src] sparkles and shatters ominously, then falls silent and drops on the floor. Maybe you shouldn't try again later."))
+				user.visible_message(span_notice("[src]Brilhas e quebras ominosamente, então cai em silêncio e cai no chão. Talvez não devesse tentar de novo mais tarde."))
 				do_sparks(4, FALSE, src)
 				playsound(src, SFX_SPARKS, 15, TRUE)
 				playsound(src, SFX_SHATTER, 30, TRUE)
 				particle_path = /particles/smoke/steam/bad
 			if(21 to INFINITY)
-				user.visible_message(span_notice("[src] buzzes and smokes heavily, then falls silent and drops on the floor. This is clearly a bad idea."))
+				user.visible_message(span_notice("[src]Buzine e fume muito, então cai em silêncio e cai no chão. Isso é claramente uma má ideia."))
 				do_sparks(6, FALSE, src)
 				playsound(src, 'sound/machines/buzz/buzz-two.ogg', 30, TRUE)
 				particle_path = /particles/smoke/steam
@@ -96,7 +96,7 @@
 
 	magnification.PossessByPlayer(chosen_one.key)
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
-	to_chat(magnification, span_notice("You're a mind magnified monkey! Protect your helmet with your life- if you lose it, your sentience goes with it!"))
+	to_chat(magnification, span_notice("Você é um macaco engrandecido! Proteja seu capacete com sua vida. Se você perdê-lo, sua consciência vai com ele!"))
 	var/policy = get_policy(ROLE_MONKEY_HELMET)
 	if(policy)
 		to_chat(magnification, policy)
@@ -111,7 +111,7 @@
 		return
 	if(!polling)//put on a viable head, but taken off after polling finished.
 		if(magnification.client)
-			to_chat(magnification, span_userdanger("You feel your flicker of sentience ripped away from you, as everything becomes dim..."))
+			to_chat(magnification, span_userdanger("Você sente seu brilho de sensibilidade arrancado de você, como tudo se torna escuro..."))
 			magnification.ghostize(FALSE)
 		if(prob(10))
 			malfunction(magnification)
@@ -119,7 +119,7 @@
 	UnregisterSignal(magnification, COMSIG_SPECIES_LOSS)
 	playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 	playsound(src, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	visible_message(span_warning("[src] fizzles and breaks apart!"))
+	visible_message(span_warning("[src]Estraga e quebra!"))
 	magnification = null
 	new /obj/effect/decal/cleanable/ash(drop_location()) //just in case they're in a locker or other containers it needs to use crematorium ash, see the path itself for an explanation
 
@@ -144,6 +144,6 @@
 /obj/item/clothing/head/helmet/monkey_sentience/proc/make_fall_off()
 	SIGNAL_HANDLER
 	if(magnification)
-		visible_message(span_warning("[src] falls off of [magnification]'s head as it changes shape!"))
+		visible_message(span_warning("[src]Queda de[magnification]A cabeça muda de forma!"))
 		magnification.dropItemToGround(src)
 */

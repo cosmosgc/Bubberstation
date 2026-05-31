@@ -1,12 +1,11 @@
 /obj/item/skillchip/musical
 	name = "\improper Old Copy of \"Space Station 13: The Musical\""
-	desc = "An old copy of \"Space Station 13: The Musical\", \
-		ran on the station's 100th anniversary...Or maybe it was the 200th?"
+	desc = "Uma velha cópia de\"Estação Espacial 13: O Musical\", correu no 100o aniversário da estação ... Ou talvez fosse o 200o?"
 	skill_name = "Memory of a Musical"
-	skill_description = "Allows you to hit that high note, like those that came a century before us."
+	skill_description = "Permite que você atinja aquela nota alta, como aqueles que vieram um século antes de nós."
 	skill_icon = FA_ICON_MUSIC
-	activate_message = span_notice("You feel like you could \u2669 sing a soooong! \u266B")
-	deactivate_message = span_notice("The musical fades from your mind, leaving you with a sense of nostalgia.")
+	activate_message = span_notice("Você sente como se pudesse cantar um somooong! \u266B")
+	deactivate_message = span_notice("O musical desaparece da sua mente, deixando você com uma sensação de nostalgia.")
 	custom_premium_price = PAYCHECK_CREW * 4
 
 /obj/item/skillchip/musical/Initialize(mapload, is_removable)
@@ -70,7 +69,7 @@
 
 /obj/item/skillchip/musical/examine(mob/user)
 	. = ..()
-	. += span_tinynoticeital("Huh, looks like it'd fit in a skillchip adapter.")
+	. += span_tinynoticeital("Parece que caberia em um adaptador.")
 
 /obj/item/skillchip/musical/examine_more(mob/user)
 	. = ..()
@@ -87,5 +86,5 @@
 	songs += "&bull; \"Send for the Shuttle\""
 	songs += "&bull;  And one song scratched out..."
 
-	. += span_notice("<i>On the back of the chip, you see a list of songs:</i>")
+	. += span_notice("<i>Na parte de trás do chip, você vê uma lista de músicas:</i>")
 	. += span_smallnotice("<i>[jointext(songs, "<br>")]</i>")

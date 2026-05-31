@@ -8,7 +8,7 @@
 */
 /datum/symptom/narcolepsy
 	name = "Narcolepsy"
-	desc = "The virus causes a hormone imbalance, making the host sleepy and narcoleptic."
+	desc = "O vírus causa um desequilíbrio hormonal, deixando o hospedeiro sonolento e narcoléptico."
 	illness = "Aurora Snorealis"
 	stealth = -1
 	resistance = -2
@@ -45,22 +45,22 @@
 	switch(A.stage)
 		if(1)
 			if(prob(50))
-				to_chat(M, span_warning("You feel tired."))
+				to_chat(M, span_warning("Você se sente cansado."))
 		if(2)
 			if(prob(50))
-				to_chat(M, span_warning("You feel very tired."))
+				to_chat(M, span_warning("Você se sente muito cansado."))
 		if(3)
 			if(prob(50))
-				to_chat(M, span_warning("You try to focus on staying awake."))
+				to_chat(M, span_warning("Tente se concentrar em ficar acordado."))
 
 			M.adjust_drowsiness_up_to(10 SECONDS, 140 SECONDS)
 
 		if(4)
 			if(prob(50))
 				if(yawning)
-					to_chat(M, span_warning("You try and fail to suppress a yawn."))
+					to_chat(M, span_warning("Você tenta não suprimir um bocejo."))
 				else
-					to_chat(M, span_warning("You nod off for a moment.")) //you can't really yawn while nodding off, can you?
+					to_chat(M, span_warning("Você cochilou por um momento.")) //you can't really yawn while nodding off, can you?
 
 			M.adjust_drowsiness_up_to(20 SECONDS, 140 SECONDS)
 

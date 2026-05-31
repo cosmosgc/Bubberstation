@@ -1,7 +1,6 @@
 /obj/item/gun/energy/event_horizon
 	name = "\improper Event Horizon anti-existential beam rifle"
-	desc = "The deranged minds of Nanotrasen, in their great hubris and spite, have birthed forth the definitive conclusion to the arms race. Weaponized black holes, and a platform to deliver them.\
-		To look upon this existential maleficence is to know that the pursuit of profit has consigned all life to this pathetic conclusion; the destruction of reality itself."
+	desc = "As mentes dementes de Nanotrasen, em sua grande arrogância e despeito, deram origem à conclusão definitiva da corrida armamentista. Buracos negros armados, e uma plataforma para entregá-los. Olhar para esta maleficência existencial é saber que a busca do lucro rendeu toda a vida a esta patética conclusão, a destruição da própria realidade."
 	icon = 'icons/obj/weapons/guns/energy.dmi'
 	icon_state = "esniper"
 	inhand_icon_state = null
@@ -37,7 +36,7 @@
 /obj/item/gun/energy/event_horizon/process_fire(atom/target, mob/living/user, message, params, zone_override, bonus_spread)
 
 	if(!HAS_TRAIT(user, TRAIT_USER_SCOPED))
-		balloon_alert(user, "must be scoped!")
+		balloon_alert(user, "Deve ser examinado!")
 		return
 
 	. = ..()

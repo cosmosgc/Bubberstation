@@ -1,6 +1,6 @@
 /obj/item/grenade/iedcasing
 	name = "improvised explosive"
-	desc = "An improvised explosive device."
+	desc = "Um dispositivo explosivo improvisado."
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/weapons/grenade.dmi'
 	base_icon_state = "pipebomb"
@@ -53,10 +53,10 @@
 
 /obj/item/grenade/iedcasing/examine(mob/user)
 	. = ..()
-	. += span_notice("Using it in-hand activates the assembly, which means timers start timing and so on.")
-	. += span_notice("Using it off-hand allows you to configure the assembly, if possible.")
+	. += span_notice("Usando-o manualmente ativa a montagem, o que significa que os cronômetros começam a cronometrar e assim por diante.")
+	. += span_notice("Usá-lo de mãos dadas permite configurar a montagem, se possível.")
 	if(contents.len > 1) // above 1, so more than just the activator
-		. += span_warning("It seems to have something stuffed in it.")
+		. += span_warning("Parece que tem algo dentro.")
 	if(isnull(activator))
 		return
 	. += activator.examine(user)
@@ -124,7 +124,7 @@
 
 /obj/item/grenade/iedcasing/attack_self(mob/user)
 	if(isnull(activator) || !COOLDOWN_FINISHED(src, spam_cd))
-		balloon_alert(user, isnull(activator) ? "you shouldnt be seeing this" : "on cooldown!")
+		balloon_alert(user, isnull(activator) ? "Você não deveria estar vendo isso." : "Na refrigeração!")
 		return
 	if(istype(activator, /obj/item/assembly/signaler))
 		return //no signallers, signallers send a signal and i can imagine this having bad sideeffects if some has multiple of the same frequency in their backpack and uses them inhand by accident
@@ -171,7 +171,7 @@
 
 /obj/item/sliced_pipe
 	name = "halved pipe"
-	desc = "Two half-size pipes made from one."
+	desc = "Dois canos de tamanho médio feitos de um."
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/weapons/grenade.dmi'
 	icon_state = "slicedapart"
@@ -212,16 +212,16 @@
 /obj/item/sliced_pipe/examine(mob/user)
 	. = ..()
 	if(!wires_are_in)
-		. += span_notice("You could stuff something in, or fill it with fuel or some other volatile chemical..")
-		. += span_notice("Afterwards, add some cable.")
+		. += span_notice("Você pode encher algo, ou enchê-lo com combustível ou algum outro produto químico volátil.")
+		. += span_notice("Depois, adicione um pouco de cabo.")
 	else
-		. += span_notice("The wires are just dangling from it, you need some sort of <i> activating assembly</i>.")
+		. += span_notice("Os fios estão pendurados nele, você precisa de algum tipo de<i>Ativando uma montagem</i>.")
 
 /obj/item/sliced_pipe/attackby(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
 	if(!wires_are_in)
 		// here we can stuff in additional objects for a cooler effect
 		if(is_type_in_typecache(item, allowed) && contents.len < MAX_STUFFINGS)
-			balloon_alert(user, "stuffed in")
+			balloon_alert(user, "Enchido.")
 			var/atom/movable/to_put = item
 			if(isstack(item))
 				var/obj/item/stack/as_stack = item
@@ -235,14 +235,14 @@
 		if(item.reagents)
 			return ..()
 		if(reagents.total_volume < 5)
-			balloon_alert(user, "add more fuel!")
+			balloon_alert(user, "Adicione mais combustível!")
 			return
 
 		var/obj/item/stack/cable_coil/coil = item
 		if(!istype(coil))
 			return
 		if (coil.get_amount() < 15)
-			balloon_alert(user, "need 15 length!")
+			balloon_alert(user, "Preciso de 15 de cumprimento!")
 			return
 		coil.use(15)
 
@@ -255,7 +255,7 @@
 		power *= cur_power
 		power -= contents.len / 2
 
-		balloon_alert(user, "wires attached")
+		balloon_alert(user, "Fios Ligados.")
 		icon_state = "[icon_state]-cable"
 		reagents.flags = SEALED_CONTAINER
 		wires_are_in = TRUE
@@ -264,7 +264,7 @@
 		if(!istype(assembly) || !(assembly.type in allowed_activators))
 			return
 		if(assembly.secured)
-			balloon_alert(user, "unsecure assembly first!")
+			balloon_alert(user, "Primeiro uma reunião insegura!")
 			return
 		if(!user.transferItemToLoc(assembly, src))
 			return

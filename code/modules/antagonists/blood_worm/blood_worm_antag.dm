@@ -19,11 +19,8 @@
 /datum/antagonist/blood_worm/greet()
 	. = ..()
 
-	to_chat(owner, span_bold("A species of space-faring leech, massive in size and ferocious in hunting. \
-							Your origins are unknown to most, but to some, you are among their greatest creations. \
-							A failed Syndicate bioweapons project, snuffed out by benefactors after a \"lack of results\", and yet... \
-							here you find yourself. On a Nanotrasen space station. What a fitting habitat for you, isn't it?"))
-	to_chat(owner, span_bolddanger("KILL, CONSUME, MULTIPLY, CONQUER."))
+	to_chat(owner, span_bold("Uma espécie de sanguessuga espacial, enorme em tamanho e feroz na caça. Suas origens são desconhecidas para a maioria, mas para alguns, você está entre suas maiores criações. Um projeto fracassado de armas biológicas do Syndicate, exterminado por benfeitores após um\"Falta de resultados.\"E ainda assim... aqui você se encontra. Em uma estação espacial Nanotrasen. Que habitat adequado para você, não é?"))
+	to_chat(owner, span_bolddanger("Matar, consumir, muitas vezes, convencer."))
 
 	owner.announce_objectives()
 

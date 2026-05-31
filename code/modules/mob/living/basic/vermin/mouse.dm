@@ -1,6 +1,6 @@
 /mob/living/basic/mouse
 	name = "mouse"
-	desc = "This cute little guy just loves the taste of insulated electrical cables. Isn't he adorable?"
+	desc = "Esse bonitinho adora o gosto de cabos elétricos isolados. Ele não é adorável?"
 	icon_state = "mouse_gray"
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
@@ -98,15 +98,15 @@
 	var/sameside = user.faction_check_atom(src, exact_match = TRUE)
 	if(isregalrat(user))
 		if(sameside)
-			. += span_notice("This rat serves under you.")
+			. += span_notice("Este rato serve sob você.")
 		else
-			. += span_warning("This peasant serves a different king! Strike [p_them()] down!")
+			. += span_warning("Este camponês serve um rei diferente! Strike.[p_them()]Abaixe-se!")
 
 	else if(user != src && ismouse(user))
 		if(sameside)
-			. += span_notice("You both serve the same king.")
+			. += span_notice("Ambos servem o mesmo rei.")
 		else
-			. += span_warning("This fool serves a different king!")
+			. += span_warning("Este tolo serve um rei diferente!")
 
 /// Kills the rat and changes its icon state to be splatted (bloody).
 /mob/living/basic/mouse/proc/splat()
@@ -121,8 +121,7 @@
 	var/aheal_included = full_heal_flags & HEAL_ADMIN
 	var/cap = CONFIG_GET(number/ratcap)
 	if(!aheal_included && !ckey && length(SSmobs.cheeserats) >= cap)
-		visible_message(span_warning("[src] twitches, but does not continue moving \
-			due to the overwhelming rodent population on the station!"))
+		visible_message(span_warning("[src]Mas não continua se movendo devido à esmagadora população de roedores na estação!"))
 		return
 
 	. = ..()
@@ -191,7 +190,7 @@
 	SIGNAL_HANDLER
 
 	if(ishuman(entered) && stat == CONSCIOUS)
-		to_chat(entered, span_notice("[icon2html(src, entered)] Squeak!"))
+		to_chat(entered, span_notice("[icon2html(src, entered)]Squeak!"))
 
 /// Called when a mouse is hand-fed some cheese, it will stop being afraid of humans
 /mob/living/basic/mouse/tamed(mob/living/tamer, obj/item/food/cheese/cheese)
@@ -206,8 +205,8 @@
 	// Royal cheese will evolve us into a regal rat
 	if(istype(cheese, /obj/item/food/cheese/royal))
 		visible_message(
-			span_warning("[src] devours [cheese]! They morph into something... greater!"),
-			span_notice("You devour [cheese], and start morphing into something... greater!"),
+			span_warning("[src]devora[cheese]Eles se transformam em algo... maior!"),
+			span_notice("Você devora.[cheese], e começar a transformar em algo ... maior!"),
 		)
 		evolve_into_regal_rat()
 		qdel(cheese)
@@ -217,8 +216,8 @@
 	// Normal cheese will either heal us
 	if(prob(90) || health < maxHealth)
 		visible_message(
-			span_notice("[src] nibbles [cheese]."),
-			span_notice("You nibble [cheese][health < maxHealth ? ", restoring your health" : ""].")
+			span_notice("[src]Biscoitos[cheese]."),
+			span_notice("Você morde.[cheese][health < maxHealth ? ", restoring your health" : ""].")
 		)
 		adjust_health(-maxHealth)
 
@@ -226,13 +225,13 @@
 	// ...if the rat cap allows us, that is
 	else if(length(SSmobs.cheeserats) >= cap)
 		visible_message(
-			span_warning("[src] carefully eats [cheese], hiding it from the [cap] mice on the station!"),
-			span_notice("You carefully nibble [cheese], hiding it from the [cap] other mice on board the station.")
+			span_warning("[src]Come com cuidado.[cheese], escondendo-o do[cap]Ratos na estação!"),
+			span_notice("Você morde com cuidado.[cheese], escondendo-o do[cap]outros ratos a bordo da estação.")
 		)
 	else
 		visible_message(
-			span_notice("[src] nibbles through [cheese], attracting another mouse!"),
-			span_notice("You nibble through [cheese], attracting another mouse!")
+			span_notice("[src]Morde através[cheese], atraindo outro rato!"),
+			span_notice("Você morde[cheese], atraindo outro rato!")
 		)
 		create_a_new_rat()
 
@@ -253,9 +252,9 @@
 /mob/living/basic/mouse/proc/try_bite_cable(obj/structure/cable/cable)
 	if(cable.avail() && !HAS_TRAIT(src, TRAIT_SHOCKIMMUNE) && prob(cable_zap_prob))
 		visible_message(
-			span_warning("[src] chews through \the [cable]. It's toast!"),
-			span_userdanger("As you bite deeply into [cable], you suddenly realize this may have been a bad idea."),
-			span_hear("You hear electricity crack."),
+			span_warning("[src]Mastiga através\the [cable]Está torrado!"),
+			span_userdanger("Enquanto você morde profundamente[cable]De repente você percebe que pode ter sido uma má ideia."),
+			span_hear("Você ouve a eletricidade quebrar."),
 		)
 		// Finely toasted
 		ADD_TRAIT(src, TRAIT_BEING_SHOCKED, TRAIT_GENERIC)
@@ -266,8 +265,8 @@
 
 	else
 		visible_message(
-			span_warning("[src] chews through \the [cable]."),
-			span_notice("You chew through \the [cable]."),
+			span_warning("[src]Mastiga através\the [cable]."),
+			span_notice("Você mastiga\the [cable]."),
 		)
 
 	playsound(cable, 'sound/effects/sparks/sparks2.ogg', 100, TRUE)
@@ -290,7 +289,7 @@
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/basic/mouse/brown/tom
 	name = "Tom"
-	desc = "Jerry the cat is not amused."
+	desc = "Jerry, o gato, não está divertido."
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "gently pushes aside"
@@ -315,7 +314,7 @@
 
 /mob/living/basic/mouse/rat
 	name = "rat"
-	desc = "They're a nasty, ugly, evil, disease-ridden rodent with anger issues."
+	desc = "São uns roedores nojentos, feios, malignos, com problemas de raiva."
 
 	gold_core_spawnable = HOSTILE_SPAWN
 	melee_damage_lower = 3
@@ -335,7 +334,7 @@
 /// Mice turn into food when they die
 /obj/item/food/deadmouse
 	name = "dead mouse"
-	desc = "They look like somebody dropped the bass on it. A lizard's favorite meal."
+	desc = "Parece que alguém derrubou o baixo nele. A refeição favorita de um lagarto."
 	icon = 'icons/mob/simple/animal.dmi'
 	icon_state = "mouse_gray_dead"
 	bite_consumption = 3
@@ -366,7 +365,7 @@
 /obj/item/food/deadmouse/examine(mob/user)
 	. = ..()
 	if (reagents?.has_reagent(/datum/reagent/yuck) || reagents?.has_reagent(/datum/reagent/fuel))
-		. += span_warning("[p_Theyre()] dripping with fuel and smells terrible.")
+		. += span_warning("[p_Theyre()]Pintando de combustível e cheirando mal.")
 
 ///Spawn a new mouse from this dead mouse item when hit by a lazarus injector and conditions are met.
 /obj/item/food/deadmouse/proc/use_lazarus(datum/source, obj/item/lazarus_injector/injector, mob/user)
@@ -385,12 +384,12 @@
 	var/mob/living/living_user = user
 	if(istype(living_user) && attacking_item.get_sharpness() && living_user.combat_mode)
 		if(!isturf(loc))
-			balloon_alert(user, "can't butcher here!")
+			balloon_alert(user, "Não posso matar aqui!")
 			return
 
 		balloon_alert(user, "butchering...")
 		if(!do_after(user, 0.75 SECONDS, src))
-			balloon_alert(user, "interrompido!")
+			balloon_alert(user, "Interrompido!")
 			return
 
 		loc.balloon_alert(user, "butchered")
@@ -408,12 +407,12 @@
 	var/datum/reagents/target_reagents = interacting_with.reagents
 	var/trans_amount = reagents.maximum_volume - reagents.total_volume * (4 / 3)
 	if(target_reagents.has_reagent(/datum/reagent/fuel) && target_reagents.trans_to(src, trans_amount))
-		to_chat(user, span_notice("You dip [src] into [interacting_with]."))
+		to_chat(user, span_notice("Você mergulha.[src]em[interacting_with]."))
 		return ITEM_INTERACT_SUCCESS
 
 /obj/item/food/deadmouse/moldy
 	name = "moldy dead mouse"
-	desc = "A dead rodent, consumed by mold and rot. There is a slim chance that a lizard might still eat it."
+	desc = "Um roedor morto, consumido por mofo e apodrecimento. Há poucas chances de um lagarto ainda comê-lo."
 	icon_state = "mouse_gray_dead"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/consumable/mold = 10)
 	foodtypes = GORE | MEAT | RAW | GROSS

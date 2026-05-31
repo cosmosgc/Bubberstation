@@ -134,7 +134,7 @@
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/stack/cable_coil/cabling = tool
 		cabling.use(1)
-		cabling.visible_message(span_notice("[user] repairs the suit sensors on [src] with [cabling]."))
+		cabling.visible_message(span_notice("[user]Conserta os sensores do traje.[src]com[cabling]."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/clothing/accessory))
@@ -142,9 +142,9 @@
 
 	if(istype(tool, /obj/item/suit_sensor))
 		if(has_sensor != NO_SENSORS)
-			balloon_alert(user, "already has sensors!")
+			balloon_alert(user, "Já tem sensores!")
 			return ITEM_INTERACT_BLOCKING
-		balloon_alert(user, "installing sensors...")
+		balloon_alert(user, "Instalando sensores...")
 		if(!do_after(user, 5 SECONDS, target = src))
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/suit_sensor/sensor = tool
@@ -154,7 +154,7 @@
 			set_has_sensor(HAS_SENSORS)
 			set_sensor_mode(sensor.sensor_mode)
 		qdel(tool)
-		balloon_alert(user, "sensors installed")
+		balloon_alert(user, "Sensores instalados.")
 		playsound(source = src, soundin = 'sound/effects/sparks/sparks4.ogg', vol = 50, vary = TRUE, extrarange = SHORT_RANGE_SOUND_EXTRARANGE, ignore_walls = FALSE)
 		return ITEM_INTERACT_SUCCESS
 
@@ -162,9 +162,9 @@
 
 /obj/item/clothing/under/wirecutter_act(mob/living/user, obj/item/tool)
 	if(has_sensor == NO_SENSORS)
-		balloon_alert(user, "doesn't have sensors!")
+		balloon_alert(user, "Não tem sensores!")
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "cutting out sensors...")
+	balloon_alert(user, "Cortando sensores...")
 	if(!do_after(user, 5 SECONDS, target = src))
 		return ITEM_INTERACT_BLOCKING
 	var/obj/item/suit_sensor/sensor = new (drop_location())
@@ -238,7 +238,7 @@
 	if(has_sensor == BROKEN_SENSORS || has_sensor == NO_SENSORS)
 		return
 
-	visible_message(span_warning("[src]'s medical sensors short out!"), blind_message = span_warning("The [src] makes an electronic sizzling sound!"), vision_distance = COMBAT_MESSAGE_RANGE)
+	visible_message(span_warning("[src]Os sensores médicos estão curtos!"), blind_message = span_warning("O[src]Faz um som eletrônico!"), vision_distance = COMBAT_MESSAGE_RANGE)
 	set_has_sensor(BROKEN_SENSORS)
 	sensor_malfunction()
 
@@ -249,7 +249,7 @@
 /obj/item/clothing/under/proc/repair_sensors(mob/user)
 	if(has_sensor != BROKEN_SENSORS)
 		if(user)
-			balloon_alert(user, "sensors [has_sensor == NO_SENSORS ? "missing" : "not broken"]!")
+			balloon_alert(user, "sensores[has_sensor == NO_SENSORS ? "missing" : "not broken"]!")
 		return FALSE
 
 	playsound(source = src, soundin = 'sound/effects/sparks/sparks4.ogg', vol = 100, vary = TRUE, extrarange = SHORT_RANGE_SOUND_EXTRARANGE, ignore_walls = FALSE)
@@ -320,7 +320,7 @@
 
 	set_sensor_mode(pick(SENSOR_OFF, SENSOR_OFF, SENSOR_OFF, SENSOR_LIVING, SENSOR_LIVING, SENSOR_VITALS, SENSOR_VITALS, SENSOR_COORDS))
 	playsound(source = src, soundin = 'sound/effects/sparks/sparks3.ogg', vol = 75, vary = TRUE, extrarange = SHORT_RANGE_SOUND_EXTRARANGE, ignore_walls = FALSE)
-	visible_message(span_warning("The [src]'s medical sensors flash and change rapidly!"), blind_message = span_warning("The [src] makes an electronic sizzling sound!"), vision_distance = COMBAT_MESSAGE_RANGE)
+	visible_message(span_warning("O[src]Os sensores médicos piscam e mudam rapidamente!"), blind_message = span_warning("O[src]Faz um som eletrônico!"), vision_distance = COMBAT_MESSAGE_RANGE)
 
 BUBBERSTATION CHANGE END */
 
@@ -367,7 +367,7 @@ BUBBERSTATION CHANGE END */
 	accessory.successful_attach(src)
 
 	if(user && attach_message)
-		balloon_alert(user, "accessory attached")
+		balloon_alert(user, "acessórios anexados")
 
 	update_appearance()
 	return TRUE
@@ -382,7 +382,7 @@ BUBBERSTATION CHANGE END */
 
 	user.put_in_hands(popped_accessory)
 	if(attach_message)
-		popped_accessory.balloon_alert(user, "accessory removed")
+		popped_accessory.balloon_alert(user, "acessório removido")
 
 /// Removes the passed accesory from our accessories list
 /obj/item/clothing/under/proc/remove_accessory(obj/item/clothing/accessory/removed, update = TRUE)
@@ -432,7 +432,7 @@ BUBBERSTATION CHANGE END */
 	if(can_adjust)
 		. += "Alt-click on [src] to wear it [adjusted == ALT_STYLE ? "normally" : "casually"]."
 	if(has_sensor == BROKEN_SENSORS)
-		. += span_warning("The medical sensors appear to be shorted out. You could repair it with some cabling.")
+		. += span_warning("Os sensores médicos parecem ter curto-circuito. Você poderia consertá-lo com algum cabeamento.")
 	else if(has_sensor > NO_SENSORS)
 		switch(sensor_mode)
 			if(SENSOR_OFF)
@@ -444,7 +444,7 @@ BUBBERSTATION CHANGE END */
 			if(SENSOR_COORDS)
 				. += "Its vital tracker and tracking beacon appear to be enabled."
 	else
-		. += span_tooltip("You can always get new suit sensors to install from a lathe.", "It isn't equipped with medical sensors.")
+		. += span_tooltip("Você sempre pode obter novos sensores de terno para instalar de um torno.", "Não está equipado com sensores médicos.")
 
 	if(LAZYLEN(attached_accessories))
 		var/list/accessories = list_accessories_with_icon(user)
@@ -477,20 +477,20 @@ BUBBERSTATION CHANGE END */
 	if (loc == user_mob)
 		switch(sensor_mode)
 			if(SENSOR_OFF)
-				to_chat(user_mob, span_notice("You disable your suit's remote sensing equipment."))
+				to_chat(user_mob, span_notice("Você desativa o equipamento de sensoriamento remoto do seu terno."))
 			if(SENSOR_LIVING)
-				to_chat(user_mob, span_notice("Your suit will now only report whether you are alive or dead."))
+				to_chat(user_mob, span_notice("Seu terno agora só irá relatar se você está vivo ou morto."))
 			if(SENSOR_VITALS)
-				to_chat(user_mob, span_notice("Your suit will now only report your exact vital lifesigns."))
+				to_chat(user_mob, span_notice("Seu traje agora só irá relatar seus sinais vitais."))
 			if(SENSOR_COORDS)
-				to_chat(user_mob, span_notice("Your suit will now report your exact vital lifesigns as well as your coordinate position."))
+				to_chat(user_mob, span_notice("Seu traje irá relatar seus sinais vitais e sua posição de coordenadas."))
 
 /obj/item/clothing/under/item_ctrl_click(mob/user)
 	if(!can_toggle_sensors(user))
 		return CLICK_ACTION_BLOCKING
 
 	set_sensor_mode(SENSOR_COORDS)
-	balloon_alert(user, "set to tracking")
+	balloon_alert(user, "Pronto para rastrear.")
 	return CLICK_ACTION_SUCCESS
 
 /// Checks if the toggler is allowed to toggle suit sensors currently
@@ -498,25 +498,25 @@ BUBBERSTATION CHANGE END */
 	if(!can_use(toggler) || toggler.stat == DEAD) //make sure they didn't hold the window open.
 		return FALSE
 	if(get_dist(toggler, src) > 1)
-		balloon_alert(toggler, "longe demais!")
+		balloon_alert(toggler, "Longe demais!")
 		return FALSE
 
 	switch(has_sensor)
 		if(LOCKED_SENSORS)
-			balloon_alert(toggler, "sensor controls locked!")
+			balloon_alert(toggler, "Controles de sensores bloqueados!")
 			return FALSE
 		if(BROKEN_SENSORS)
-			balloon_alert(toggler, "sensors shorted!")
+			balloon_alert(toggler, "Sensores curtos!")
 			return FALSE
 		if(NO_SENSORS)
-			balloon_alert(toggler, "no sensors to adjust!")
+			balloon_alert(toggler, "Sem sensores para ajustar!")
 			return FALSE
 
 	return TRUE
 
 /obj/item/clothing/under/click_alt(mob/user)
 	if(!can_adjust)
-		balloon_alert(user, "can't be adjusted!")
+		balloon_alert(user, "Não pode ser ajustado!")
 		return CLICK_ACTION_BLOCKING
 	if(!can_use(user))
 		return NONE
@@ -525,7 +525,7 @@ BUBBERSTATION CHANGE END */
 
 /obj/item/clothing/under/click_alt_secondary(mob/user)
 	if(!LAZYLEN(attached_accessories))
-		balloon_alert(user, "no accessories to remove!")
+		balloon_alert(user, "Sem acessórios para remover!")
 		return
 	pop_accessory(user)
 
@@ -535,7 +535,7 @@ BUBBERSTATION CHANGE END */
 	set src in usr
 
 	if(!can_adjust)
-		balloon_alert(usr, "can't be adjusted!")
+		balloon_alert(usr, "Não pode ser ajustado!")
 		return
 	if(!can_use(usr))
 		return
@@ -543,9 +543,9 @@ BUBBERSTATION CHANGE END */
 
 /obj/item/clothing/under/proc/rolldown()
 	if(toggle_jumpsuit_adjust())
-		to_chat(usr, span_notice("You adjust the suit to wear it more casually."))
+		to_chat(usr, span_notice("Você ajusta o terno para usá-lo mais casualmente."))
 	else
-		to_chat(usr, span_notice("You adjust the suit back to normal."))
+		to_chat(usr, span_notice("Você ajusta o terno de volta ao normal."))
 
 	update_appearance()
 

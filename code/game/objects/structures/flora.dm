@@ -1,6 +1,6 @@
 /obj/structure/flora
 	name = "flora"
-	desc = "Some sort of plant."
+	desc = "Algo tipo de planta."
 	resistance_flags = FLAMMABLE
 	max_integrity = 100
 	anchored = TRUE
@@ -53,25 +53,25 @@
 	if(user.combat_mode)
 		return ..()
 	if(flags_1 & HOLOGRAM_1)
-		balloon_alert(user, "it goes right through!")
+		balloon_alert(user, "Passa direto!")
 		return ..()
 	if(can_uproot && used_item.tool_behaviour == TOOL_SHOVEL)
 		if(uprooted)
-			user.visible_message(span_notice("[user] starts to replant [src]..."),
-				span_notice("You start to replant [src]..."))
+			user.visible_message(span_notice("[user]começa a replantar[src]..."),
+				span_notice("Você começa a replantar[src]..."))
 		else
-			user.visible_message(span_notice("[user] starts to uproot [src]..."),
-				span_notice("You start to uproot [src]..."))
+			user.visible_message(span_notice("[user]Começa a arrancar[src]..."),
+				span_notice("Você começa a arrancar[src]..."))
 		used_item.play_tool_sound(src, 50)
 		if(!do_after(user, harvest_time, src))
 			return
 		if(uprooted)
-			user.visible_message(span_notice("[user] replants [src]."),
-				span_notice("You replant [src]."))
+			user.visible_message(span_notice("[user]Replanta[src]."),
+				span_notice("Você replanta[src]."))
 			replant(user)
 		else
-			user.visible_message(span_notice("[user] uproots [src]."),
-				span_notice("You uproot [src]."))
+			user.visible_message(span_notice("[user]Desenraiza[src]."),
+				span_notice("Você se desenraiza.[src]."))
 			uproot(user)
 		used_item.play_tool_sound(src, 50)
 		return
@@ -79,8 +79,8 @@
 	if(!can_harvest(user, used_item))
 		return ..()
 
-	user.visible_message(span_notice("[user] starts to [harvest_verb] [src]..."),
-		span_notice("You start to [harvest_verb] [src] with [used_item]..."))
+	user.visible_message(span_notice("[user]Começa a...[harvest_verb] [src]..."),
+		span_notice("Você começa a[harvest_verb] [src]Com[used_item]..."))
 	play_attack_sound(used_item.force)
 	if(!do_after(user, harvest_time * used_item.toolspeed, src))
 		return
@@ -98,8 +98,8 @@
 	if(!can_harvest(user))
 		return
 
-	user.visible_message(span_notice("[user] starts to [harvest_verb] [src]..."),
-		span_notice("You start to [harvest_verb] [src]..."))
+	user.visible_message(span_notice("[user]Começa a...[harvest_verb] [src]..."),
+		span_notice("Você começa a[harvest_verb] [src]..."))
 	play_attack_sound()
 	if(!do_after(user, harvest_time, src))
 		return
@@ -289,7 +289,7 @@
 
 /obj/structure/flora/tree
 	name = "tree"
-	desc = "A large tree."
+	desc = "Uma árvore grande."
 	density = TRUE
 	max_integrity = 150
 	pixel_x = -16
@@ -330,24 +330,24 @@
 
 /obj/structure/flora/tree/stump
 	name = "stump"
-	desc = "This represents our promise to the crew, and the station itself, to cut down as many trees as possible." //running naked through the trees
+	desc = "Isso representa nossa promessa para a tripulação, e para a própria estação, de cortar tantas árvores quanto possível." //running naked through the trees
 	icon = 'icons/obj/fluff/flora/pinetrees.dmi'
 	icon_state = "tree_stump"
 	density = FALSE
 	delete_on_harvest = TRUE
 
 /obj/structure/flora/tree/stump/harvest(mob/living/user, product_amount_multiplier)
-	to_chat(user, span_notice("You manage to remove [src]."))
+	to_chat(user, span_notice("Você consegue remover[src]."))
 	qdel(src)
 
 /obj/structure/flora/tree/stump/uproot(mob/living/user)
 	..()
-	to_chat(user, span_notice("You manage to remove [src]."))
+	to_chat(user, span_notice("Você consegue remover[src]."))
 	qdel(src)
 
 /obj/structure/flora/tree/dead
 	icon = 'icons/obj/fluff/flora/deadtrees.dmi'
-	desc = "A dead tree. How it died, you know not."
+	desc = "Uma árvore morta. Como morreu, você sabe que não."
 	icon_state = "tree_1"
 	harvest_amount_low = 2
 	harvest_amount_high = 6
@@ -374,7 +374,7 @@
 	update_appearance()
 
 /obj/structure/flora/tree/jungle
-	desc = "It's seriously hampering your view of the jungle."
+	desc = "Está prejudicando seriamente sua visão da selva."
 	icon = 'icons/obj/fluff/flora/jungletrees.dmi'
 	icon_state = "tree1"
 	pixel_x = -48
@@ -438,7 +438,7 @@
 
 /obj/structure/flora/tree/pine
 	name = "pine tree"
-	desc = "A coniferous pine tree."
+	desc = "Um pinheiro conífera."
 	icon = 'icons/obj/fluff/flora/pinetrees.dmi'
 	icon_state = "pine_1"
 
@@ -458,16 +458,16 @@
 
 /obj/structure/flora/tree/pine/xmas
 	name = "\improper Christmas tree"
-	desc = "A wondrous decorated Christmas tree."
+	desc = "Uma maravilhosa árvore de Natal decorada."
 	icon_state = "pine_c"
 
 /obj/structure/flora/tree/pine/xmas/presentless
 	icon_state = "pinepresents"
-	desc = "A wondrous decorated Christmas tree. It has presents, though none of them seem to have your name on them."
+	desc = "Uma maravilhosa árvore de Natal decorada. Tem presentes, embora nenhum deles pareça ter seu nome neles."
 
 /obj/structure/flora/tree/pine/xmas/presents
 	icon_state = "pinepresents"
-	desc = "A wondrous decorated Christmas tree. It has presents!"
+	desc = "Uma maravilhosa árvore de Natal decorada. Tem presentes!"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF //protected by the christmas spirit
 	var/gift_type = /obj/item/gift/anything
 	var/unlimited = FALSE
@@ -486,9 +486,9 @@
 		return
 
 	if(took_presents[user.ckey] && !unlimited)
-		to_chat(user, span_warning("There are no presents with your name on."))
+		to_chat(user, span_warning("Não há presentes com seu nome."))
 		return
-	to_chat(user, span_warning("After a bit of rummaging, you locate a gift with your name on it!"))
+	to_chat(user, span_warning("Depois de vasculhar, você encontra um presente com seu nome nele!"))
 
 	if(!unlimited)
 		took_presents[user.ckey] = TRUE
@@ -497,18 +497,18 @@
 	user.put_in_hands(G)
 
 /obj/structure/flora/tree/pine/xmas/presents/unlimited
-	desc = "A wonderous decorated Christmas tree. It has a seemly endless supply of presents!"
+	desc = "Uma maravilhosa árvore de Natal decorada. Tem um suprimento de presentes sem fim!"
 	unlimited = TRUE
 
 /obj/structure/festivus
 	name = "festivus pole"
-	desc = "During last year's Feats of Strength the Research Director was able to suplex this passing immobile rod into a planter."
+	desc = "Durante o ano passado, Feats of Strength, o diretor de pesquisa foi capaz de suplexar esta haste imóvel passando em um plantador."
 	icon = 'icons/obj/fluff/flora/pinetrees.dmi'
 	icon_state = "festivus_pole"
 
 /obj/structure/festivus/anchored
 	name = "suplexed rod"
-	desc = "A true feat of strength, almost as good as last year."
+	desc = "Uma verdadeira façanha de força, quase tão boa quanto no ano passado."
 	icon_state = "anchored_rod"
 	anchored = TRUE
 
@@ -524,7 +524,7 @@
 
 /obj/structure/flora/tree/palm
 	name = "palm tree"
-	desc = "A tree straight from the tropics."
+	desc = "Uma árvore direto dos trópicos."
 	icon = 'icons/obj/fluff/beach2.dmi'
 	icon_state = "palm1"
 	pixel_x = 0
@@ -542,7 +542,7 @@
  *********/
 /obj/structure/flora/grass
 	name = "grass"
-	desc = "A patch of overgrown grass."
+	desc = "Um pedaço de grama."
 	icon = 'icons/obj/fluff/flora/snowflora.dmi'
 	gender = PLURAL //"this is grass" not "this is a grass"
 	harvest_with_hands = TRUE
@@ -601,7 +601,7 @@
 
 /obj/structure/flora/grass/jungle
 	name = "jungle grass"
-	desc = "Thick alien flora."
+	desc = "Flora alienígena grossa."
 	icon = 'icons/obj/fluff/flora/jungleflora.dmi'
 	icon_state = "grassa1"
 
@@ -648,7 +648,7 @@
 
 /obj/structure/flora/bush
 	name = "bush"
-	desc = "Some type of shrubbery. Known for causing considerable economic stress on designers."
+	desc = "Algum tipo de arbusto. Conhecido por causar considerável estresse econômico em designers."
 	icon = 'icons/obj/fluff/flora/ausflora.dmi'
 	icon_state = "firstbush_1"
 	flora_flags = FLORA_HERBAL
@@ -920,7 +920,7 @@
 	update_appearance()
 
 /obj/structure/flora/bush/jungle
-	desc = "A wild plant that is found in jungles."
+	desc = "Uma planta selvagem encontrada em selvas."
 	icon = 'icons/obj/fluff/flora/jungleflora.dmi'
 	icon_state = "busha1"
 	flora_flags = FLORA_HERBAL
@@ -985,7 +985,7 @@
 
 /obj/structure/flora/lunar_plant
 	name = "lunar plant"
-	desc= "This seemingly dead plant is actually quite alive, hibernating until sensing living things."
+	desc= "Esta planta aparentemente morta está bem viva, hibernando até sentir coisas vivas."
 	icon_state = "lunar_plant"
 	icon = 'icons/obj/fluff/flora/xenoflora.dmi'
 	density = FALSE
@@ -1013,7 +1013,7 @@
 /obj/structure/flora/rock
 	name = "large rock"
 	icon_state = "basalt1"
-	desc = "A volcanic rock. Pioneers used to ride these babies for miles."
+	desc = "Uma rocha vulcânica. Pioneiros montavam esses bebês por quilômetros."
 	icon = 'icons/obj/fluff/flora/rocks.dmi'
 	density = TRUE
 	resistance_flags = FIRE_PROOF
@@ -1044,7 +1044,7 @@
 
 /obj/structure/flora/rock/pile
 	name = "rock pile"
-	desc = "A pile of rocks."
+	desc = "Uma pilha de pedras."
 	icon_state = "lavarocks1"
 	harvest_amount_low = 5
 	harvest_amount_high = 10

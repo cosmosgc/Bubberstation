@@ -2,60 +2,60 @@
 import { CheckboxInput, type Feature } from '../../base';
 
 export const dom_aura__prefers_males: Feature<boolean> = {
-  name: 'Is Dom To He/Him',
+  name: 'É Dom para ele',
   component: CheckboxInput,
 };
 
 export const dom_aura__prefers_females: Feature<boolean> = {
-  name: 'Is Dom To She/Her',
+  name: 'É Dom para ela',
   component: CheckboxInput,
 };
 
 export const dom_aura__prefers_plurals: Feature<boolean> = {
-  name: 'Is Dom To They/Them',
+  name: 'É Dom para eles/eles',
   component: CheckboxInput,
 };
 
 export const dom_aura__prefers_neuters: Feature<boolean> = {
-  name: 'Is Dom To It/Its',
+  name: 'É Dom para ele / É',
   component: CheckboxInput,
 };
 
 export const dom_aura__prefers_other: Feature<boolean> = {
-  name: 'Is Dom To Any Other Genders',
+  name: 'É Dom para qualquer outro gênero',
   component: CheckboxInput,
 };
 
 export const dom_aura__snap: Feature<boolean> = {
-  name: 'Command Subs With *snap',
+  name: 'Subalternos de comando com *snap',
   component: CheckboxInput,
 };
 
 export const dom_aura__snap2: Feature<boolean> = {
-  name: 'Command Subs With *snap2',
+  name: 'Subalternos de comando com *snap2',
   component: CheckboxInput,
 };
 
 export const dom_aura__snap3: Feature<boolean> = {
-  name: 'Command Subs With *snap3',
+  name: 'Subalternos de comando com *snap3',
   component: CheckboxInput,
 };
 
 export const dom_aura__clicker: Feature<boolean> = {
-  name: 'Command Subs With Clicker',
+  name: 'Subs de Comando com Clicker',
   component: CheckboxInput,
 };
 
 export const dom_aura__sub_inspect_dom: Feature<boolean> = {
-  name: 'Embarass Subs If They Examine You',
+  name: 'Embalass Subs Se eles examinam você',
   component: CheckboxInput,
   description:
-    'If unchecked, compatible subs will not blush and turn when inspecting you. ',
+    'Se não forem verificados, submarinos compatíveis não corarão e virarão quando inspecionarem você.',
 };
 
 export const dom_aura__sub_sense_dom: Feature<boolean> = {
   name: 'Aura',
   component: CheckboxInput,
   description:
-    'If unchecked, compatible subs will not be alerted to your presence automatically, and will not recieve a positive moodlet for being near you. ',
+    'Se não forem checados, submarinos compatíveis não serão alertados para sua presença automaticamente, e não receberão uma permissão positiva para estar perto de você.',
 };

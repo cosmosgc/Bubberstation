@@ -1,7 +1,7 @@
 ///We pump liquids from activated(plungerated) geysers to a plumbing outlet. We need to be wired.
 /obj/machinery/plumbing/liquid_pump
 	name = "liquid pump"
-	desc = "Pump up those sweet liquids from under the surface. Uses thermal energy from geysers to power itself." //better than placing 200 cables, because it wasn't fun
+	desc = "Encha esses líquidos doces debaixo da superfície. Usa energia térmica de géisers para se alimentar." //better than placing 200 cables, because it wasn't fun
 	icon = 'icons/obj/pipes_n_cables/hydrochem/plumbers.dmi'
 	icon_state = "pump"
 	base_icon_state = "pump"
@@ -40,7 +40,7 @@
 			update_appearance()
 		if(!geyser) //we didnt find one, abort
 			geyserless = TRUE
-			visible_message(span_warning("\The [src] makes a sad beep!"))
+			visible_message(span_warning("\The [src]Faz um bip triste!"))
 			playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50)
 			return
 

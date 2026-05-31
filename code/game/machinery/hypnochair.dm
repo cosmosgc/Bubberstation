@@ -1,6 +1,6 @@
 /obj/machinery/hypnochair
 	name = "enhanced interrogation chamber"
-	desc = "A device used to perform \"enhanced interrogation\" through invasive mental conditioning."
+	desc = "Um dispositivo usado para execução\"interrogatório aprimorado\"através do condicionamento mental invasivo."
 	icon = 'icons/obj/machines/implant_chair.dmi'
 	icon_state = "hypnochair"
 	base_icon_state = "hypnochair"
@@ -95,7 +95,7 @@
 		return
 	victim = C
 	if(C.get_eye_protection() <= 0)
-		to_chat(C, span_warning("Strobing coloured lights assault you relentlessly! You're losing your ability to think straight!"))
+		to_chat(C, span_warning("Acender luzes coloridas agredi-lo implacavelmente! Você está perdendo sua habilidade de pensar direito!"))
 		C.become_blind(HYPNOCHAIR_TRAIT)
 		ADD_TRAIT(C, TRAIT_DEAF, HYPNOCHAIR_TRAIT)
 	interrogating = TRUE
@@ -110,13 +110,7 @@
 		interrupt_interrogation()
 		return
 	if(SPT_PROB(5, seconds_per_tick) && !(C.get_eye_protection() > 0))
-		to_chat(C, span_hypnophrase(pick(\
-			"...blue... red... green... blue, red, green, blueredgreen[span_small("blueredgreen")]",\
-			"...pretty colors...",\
-			"...you keep hearing words, but you can't seem to understand them...",\
-			"...so peaceful...",\
-			"...an annoying buzz in your ears..."\
-		)))
+		to_chat(C, span_hypnophrase(pick(			"...blue... red... green... blue, red, green, blueredgreen[span_small("blueredgreen")]",			"Cores bonitas...",			"...você continua ouvindo palavras, mas não consegue entendê-las...",			"...tão tranquilo...",			"...um zumbido irritante em seus ouvidos..."		)))
 
 	use_energy(active_power_usage * seconds_per_tick)
 
@@ -126,7 +120,7 @@
 	update_appearance()
 	var/temp_trigger = trigger_phrase
 	trigger_phrase = "" //Erase evidence, in case the subject is able to look at the panel afterwards
-	audible_message(span_notice("[src] pings!"))
+	audible_message(span_notice("[src]Pings!"))
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 
 	if(QDELETED(victim) || victim != occupant)
@@ -181,20 +175,17 @@
 /obj/machinery/hypnochair/container_resist_act(mob/living/user)
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message(span_notice("You see [user] kicking against the door of [src]!"), \
-		span_notice("You lean on the back of [src] and start pushing the door open... (this will take about [DisplayTimeText(600)].)"), \
-		span_hear("You hear a metallic creaking from [src]."))
+	user.visible_message(span_notice("Viu?[user]Chutando contra a porta de[src]!"), 		span_notice("Você se apoia na parte de trás de[src]E começar a empurrar a porta aberta...[DisplayTimeText(600)].)"), 		span_hear("Você ouve um metal rangendo de[src]."))
 	if(do_after(user,(600), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || state_open)
 			return
-		user.visible_message(span_warning("[user] successfully broke out of [src]!"), \
-			span_notice("You successfully break out of [src]!"))
+		user.visible_message(span_warning("[user]Com sucesso, fugiu.[src]!"), 			span_notice("Você conseguiu escapar.[src]!"))
 		open_machine()
 
 /obj/machinery/hypnochair/relaymove(mob/living/user, direction)
 	if(message_cooldown <= world.time)
 		message_cooldown = world.time + 50
-		to_chat(user, span_warning("[src]'s door won't budge!"))
+		to_chat(user, span_warning("[src]A porta não se mexe!"))
 
 
 /obj/machinery/hypnochair/mouse_drop_receive(atom/target, mob/user, params)

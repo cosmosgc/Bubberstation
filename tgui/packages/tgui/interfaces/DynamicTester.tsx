@@ -67,7 +67,7 @@ export const DynamicTester = () => {
   });
 
   return (
-    <Window width={500} height={400} title="Dynamic Weight Tester">
+    <Window width={500} height={400} title="Teste de peso dinâmico">
       <Window.Content>
         <Section scrollable height="100%" width="100%">
           <Stack vertical fill>
@@ -127,7 +127,7 @@ export const DynamicTester = () => {
                               inline
                               style={{
                                 borderBottom:
-                                  '2px dotted rgba(255, 255, 255, 0.8)',
+                                  '2px pontilhado rgba(255, 0,8)',
                               }}
                             >
                               {report.name}

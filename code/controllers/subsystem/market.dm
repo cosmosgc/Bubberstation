@@ -88,7 +88,7 @@ SUBSYSTEM_DEF(market)
 
 				lowest_cd_pad.add_to_queue(purchase)
 
-				to_chat(buyer, span_notice("[purchase.uplink] flashes a message noting that the order is being processed by [lowest_cd_pad]."))
+				to_chat(buyer, span_notice("[purchase.uplink]mostra uma mensagem observando que a ordem está sendo processada por[lowest_cd_pad]."))
 
 			// Get random area, throw it somewhere there.
 			if(SHIPPING_METHOD_TELEPORT)
@@ -98,7 +98,7 @@ SUBSYSTEM_DEF(market)
 					continue
 				queued_purchases -= purchase
 
-				to_chat(buyer, span_notice("[purchase.uplink] flashes a message noting that the order is being teleported to [get_area(targetturf)] in 60 seconds."))
+				to_chat(buyer, span_notice("[purchase.uplink]mostra uma mensagem observando que a ordem está sendo teletransportada para[get_area(targetturf)]Em 60 segundos."))
 
 				// do_teleport does not want to teleport items from nullspace, so it just forceMoves and does sparks.
 				addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/market, fake_teleport), purchase, targetturf), 60 SECONDS)
@@ -114,7 +114,7 @@ SUBSYSTEM_DEF(market)
 				purchase.post_purchase_effects(item)
 				delivery_pod.throw_at(purchase.uplink, 3, 3, spin = FALSE)
 
-				to_chat(buyer, span_notice("[purchase.uplink] flashes a message noting the order is being launched at the station from [dir2text(startSide)]."))
+				to_chat(buyer, span_notice("[purchase.uplink]Faz uma mensagem anotando que a ordem está sendo lançada na estação de[dir2text(startSide)]."))
 				qdel(purchase)
 
 			if(SHIPPING_METHOD_SUPPLYPOD)
@@ -124,7 +124,7 @@ SUBSYSTEM_DEF(market)
 				))
 				purchase.entry.spawn_item(spawned_pod, purchase)
 
-				to_chat(buyer, span_notice("[purchase.uplink] flashes a message noting the order is being launched at your location. Right here, right now!"))
+				to_chat(buyer, span_notice("[purchase.uplink]Mostra uma mensagem anotando que a ordem está sendo lançada em sua localização. Bem aqui, agora!"))
 				qdel(purchase)
 
 		if(MC_TICK_CHECK)

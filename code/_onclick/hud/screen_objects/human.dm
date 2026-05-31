@@ -42,7 +42,7 @@
 
 /atom/movable/screen/ling/chems/Click(location, control, params)
 	. = ..()
-	to_chat(usr, span_notice("Shows you how many chemicals you have. While hovering over this, it will show the max amount of chemicals you can hold."))
+	to_chat(usr, span_notice("Mostra quantos químicos você tem. Enquanto paira sobre isso, mostrará a quantidade máxima de produtos químicos que você pode segurar."))
 
 /atom/movable/screen/ling/chems/MouseEntered(location,control,params)
 	if(usr != get_mob())

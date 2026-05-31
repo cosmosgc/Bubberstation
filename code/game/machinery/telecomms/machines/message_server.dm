@@ -27,20 +27,19 @@
 		if(Adjacent(user))
 			user.put_in_hands(stored)
 		stored = null
-		to_chat(user, span_notice("You remove the blackbox from [src]. The tapes stop spinning."))
+		to_chat(user, span_notice("Você remove a caixa preta de[src]Como fitas param de girar."))
 		update_appearance()
 		return
 	else
-		to_chat(user, span_warning("It seems that the blackbox is missing..."))
+		to_chat(user, span_warning("Parece que a caixa preta está faltando..."))
 		return
 
 /obj/machinery/blackbox_recorder/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(istype(attacking_item, /obj/item/blackbox))
 		if(HAS_TRAIT(attacking_item, TRAIT_NODROP) || !user.transferItemToLoc(attacking_item, src))
-			to_chat(user, span_warning("[attacking_item] is stuck to your hand!"))
+			to_chat(user, span_warning("[attacking_item]está preso em sua mão!"))
 			return
-		user.visible_message(span_notice("[user] clicks [attacking_item] into [src]!"), \
-		span_notice("You press the device into [src], and it clicks into place. The tapes begin spinning again."))
+		user.visible_message(span_notice("[user]Estalidos.[attacking_item]Em[src]!"), 		span_notice("Você pressiona o dispositivo para[src], e ele clica no lugar. As fitas começam a girar novamente."))
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 		stored = attacking_item
 		update_appearance()
@@ -59,7 +58,7 @@
 
 /obj/item/blackbox
 	name = "\proper the blackbox"
-	desc = "A strange relic, capable of recording data on extradimensional vertices. It lives inside the blackbox recorder for safe keeping."
+	desc = "Uma relíquia estranha, capaz de registrar dados em vértices extradimensionais. Ele vive dentro do gravador da caixa preta para guardar em segurança."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "blackcube"
 	inhand_icon_state = "blackcube"
@@ -77,7 +76,7 @@
  */
 /obj/machinery/telecomms/message_server
 	name = "Messaging Server"
-	desc = "A machine that processes and routes PDA and request console messages."
+	desc = "Uma máquina que processa e encaminha PDA e solicita mensagens de console."
 	icon_state = "message_server"
 	telecomms_type = /obj/machinery/telecomms/message_server
 	density = TRUE
@@ -118,7 +117,7 @@
 /obj/machinery/telecomms/message_server/examine(mob/user)
 	. = ..()
 	if(calibrating)
-		. += span_warning("It's still calibrating.")
+		. += span_warning("Ainda está calibrando.")
 
 /obj/machinery/telecomms/message_server/process()
 	. = ..()

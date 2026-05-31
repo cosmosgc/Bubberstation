@@ -56,7 +56,7 @@
 
 	recall.unmark_item()
 	recall.mark_item(slab)
-	to_chat(owner.current, span_brass("You re-attune yourself to a new Clockwork Slab."))
+	to_chat(owner.current, span_brass("Você se liga novamente a um novo Slab Clockwork."))
 
 
 /datum/outfit/clock/preview

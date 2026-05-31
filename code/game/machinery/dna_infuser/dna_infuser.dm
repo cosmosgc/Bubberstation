@@ -5,7 +5,7 @@
 
 /obj/machinery/dna_infuser
 	name = "\improper DNA infuser"
-	desc = "A defunct genetics machine for merging foreign DNA with a subject's own."
+	desc = "Uma máquina genética defunta para fundir DNA estrangeiro com o próprio sujeito."
 	icon = 'icons/obj/machines/cloning.dmi'
 	icon_state = "infuser"
 	base_icon_state = "infuser"
@@ -39,37 +39,37 @@
 	if(!occupant)
 		. += span_notice("Requires [span_bold("a subject")].")
 	else
-		. += span_notice("\"[span_bold(occupant.name)]\" is inside the infusion chamber.")
+		. += span_notice("\"[span_bold(occupant.name)]\"está dentro da câmara de infusão.")
 	if(!infusing_from)
 		. += span_notice("Missing [span_bold("an infusion source")].")
 	else
-		. += span_notice("[span_bold(infusing_from.name)] is in the infusion slot.")
-	. += span_notice("To operate: Obtain dead creature. Depending on size, drag or drop into the infuser slot.")
-	. += span_notice("Subject enters the chamber, someone activates the machine. Voila! One of your organs has... changed!")
-	. += span_notice("Alt-click to eject the infusion source, if one is inside.")
+		. += span_notice("[span_bold(infusing_from.name)]está no espaço de infusão.")
+	. += span_notice("Otter criatura morta. Dependendo do tamanho, arraste ou caia na Fenda do Infusor.")
+	. += span_notice("O sujeito entra na câmara, alguém ativa a máquina. Voila! Um de seus órgãos mudou!")
+	. += span_notice("Alt-click para ejetar a fonte de infusão, se estiver dentro.")
 	if(max_tier_allowed < DNA_INFUSER_MAX_TIER)
-		. += span_boldnotice("Right now, the DNA Infuser can only infuse Tier [max_tier_allowed] entries.")
+		. += span_boldnotice("Neste momento, o infusor de DNA só pode infundir camada[max_tier_allowed]Entradas.")
 	else
-		. += span_boldnotice("Maximum tier unlocked. All DNA entries are possible.")
-	. += span_notice("Examine further for more information.")
+		. += span_boldnotice("Nível máximo desbloqueado. Todas as entradas de DNA são possíveis.")
+	. += span_notice("Examine mais para mais informações.")
 
 /obj/machinery/dna_infuser/examine_more(mob/user)
 	. = ..()
-	. += span_notice("If you infuse a Tier [DNA_MUTANT_TIER_ONE] entry until it unlocks the bonus, it will upgrade the maximum tier and allow more complicated infusions.")
-	. += span_notice("The maximum level it can reach is Tier [DNA_INFUSER_MAX_TIER].")
+	. += span_notice("Se você infundir uma camada[DNA_MUTANT_TIER_ONE]Entrada até que desbloqueie o bônus, ele vai atualizar o nível máximo e permitir infusões mais complicadas.")
+	. += span_notice("O nível máximo que pode atingir é o nível Tier.[DNA_INFUSER_MAX_TIER].")
 
 /obj/machinery/dna_infuser/interact(mob/user)
 	if(user == occupant)
 		toggle_open(user)
 		return
 	if(infusing)
-		balloon_alert(user, "not while it's on!")
+		balloon_alert(user, "Não enquanto está ligado!")
 		return
 	if(occupant && infusing_from)
 		if(!occupant.can_infuse(user))
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 35, vary = TRUE)
 			return
-		balloon_alert(user, "starting DNA infusion...")
+		balloon_alert(user, "Iniciando infusão de DNA...")
 		start_infuse()
 		return
 	toggle_open(user)
@@ -77,7 +77,7 @@
 /obj/machinery/dna_infuser/proc/start_infuse()
 	var/mob/living/carbon/human/human_occupant = occupant
 	infusing = TRUE
-	visible_message(span_notice("[src] hums to life, beginning the infusion process!"))
+	visible_message(span_notice("[src]Hums à vida, começando o processo de infusão!"))
 
 	infusing_into = infusing_from.get_infusion_entry()
 	var/fail_title = ""
@@ -90,7 +90,7 @@
 		fail_title = "Overcomplexity"
 		fail_explanation = "DNA too complicated to infuse. The machine needs to infuse simpler DNA first."
 	playsound(src, 'sound/machines/blender.ogg', 50, vary = TRUE)
-	to_chat(human_occupant, span_danger("Little needles repeatedly prick you!"))
+	to_chat(human_occupant, span_danger("Agulhas pequenas repetidamente picam você!"))
 	human_occupant.take_overall_damage(10)
 	human_occupant.add_mob_memory(/datum/memory/dna_infusion, protagonist = human_occupant, deuteragonist = infusing_from, mutantlike = infusing_into.infusion_desc)
 	Shake(duration = INFUSING_TIME)
@@ -102,14 +102,14 @@
 	var/mob/living/carbon/human/human_occupant = occupant
 	if(human_occupant.infuse_organ(infusing_into, infusing_from))
 		check_tier_progression(human_occupant)
-		to_chat(occupant, span_danger("You feel yourself becoming more... [infusing_into.infusion_desc]?"))
+		to_chat(occupant, span_danger("Você se sente mais...[infusing_into.infusion_desc]?"))
 	infusing = FALSE
 	infusing_into = null
 	QDEL_NULL(infusing_from)
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, vary = FALSE)
 	if(fail_explanation)
 		playsound(src, 'sound/machines/printer.ogg', 100, TRUE)
-		visible_message(span_notice("[src] prints an error report."))
+		visible_message(span_notice("[src]imprime um relatório de erro."))
 		var/obj/item/paper/printed_paper = new /obj/item/paper(loc)
 		printed_paper.name = "error report - '[fail_title]'"
 		printed_paper.add_raw_text(fail_explanation)
@@ -120,13 +120,10 @@
 /// checks to see if the machine should progress a new tier.
 /obj/machinery/dna_infuser/proc/check_tier_progression(mob/living/carbon/human/target)
 	if(
-		max_tier_allowed != DNA_INFUSER_MAX_TIER \
-		&& infusing_into.tier == max_tier_allowed \
-		&& target.has_status_effect(infusing_into.status_effect_type) \
-	)
+		max_tier_allowed != DNA_INFUSER_MAX_TIER 		&& infusing_into.tier == max_tier_allowed 		&& target.has_status_effect(infusing_into.status_effect_type) 	)
 		max_tier_allowed++
 		playsound(src, 'sound/machines/ding.ogg', 50, TRUE)
-		visible_message(span_notice("[src] dings as it records the results of the full infusion."))
+		visible_message(span_notice("[src]dings como ele registra os resultados da infusão completa."))
 
 /obj/machinery/dna_infuser/update_icon_state()
 	//out of order
@@ -148,14 +145,14 @@
 /obj/machinery/dna_infuser/proc/toggle_open(mob/user)
 	if(panel_open)
 		if(user)
-			balloon_alert(user, "feche o painel primeiro!")
+			balloon_alert(user, "Feche o painel primeiro!")
 		return
 	if(state_open)
 		close_machine()
 		return
 	else if(infusing)
 		if(user)
-			balloon_alert(user, "not while it's on!")
+			balloon_alert(user, "Não enquanto está ligado!")
 		return
 	open_machine(drop = FALSE)
 	//we set drop to false to manually call it with an allowlist
@@ -174,7 +171,7 @@
 	if(!is_valid_infusion(tool, user))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
-		to_chat(user, span_warning("[tool] is stuck to your hand!"))
+		to_chat(user, span_warning("[tool]está preso em sua mão!"))
 		return ITEM_INTERACT_BLOCKING
 	infusing_from = tool
 	return ITEM_INTERACT_SUCCESS
@@ -183,12 +180,12 @@
 	if(user.stat)
 		if(COOLDOWN_FINISHED(src, message_cooldown))
 			COOLDOWN_START(src, message_cooldown, 4 SECONDS)
-			to_chat(user, span_warning("[src]'s door won't budge!"))
+			to_chat(user, span_warning("[src]A porta não se mexe!"))
 		return
 	if(infusing)
 		if(COOLDOWN_FINISHED(src, message_cooldown))
 			COOLDOWN_START(src, message_cooldown, 4 SECONDS)
-			to_chat(user, span_danger("[src]'s door won't budge while all the needles are infusing you!"))
+			to_chat(user, span_danger("[src]A porta não se moverá enquanto todas as agulhas infundem você!"))
 		return
 	open_machine(drop = FALSE)
 	//we set drop to false to manually call it with an allowlist
@@ -205,26 +202,26 @@
 /// Verify that the given infusion source/mob is a dead creature.
 /obj/machinery/dna_infuser/proc/is_valid_infusion(atom/movable/target, mob/user)
 	if(infusing_from)
-		balloon_alert(user, "empty the machine first!")
+		balloon_alert(user, "Esvazie a máquina primeiro!")
 		return FALSE
 	if(isliving(target))
 		var/mob/living/living_target = target
 		if(living_target.stat != DEAD)
-			balloon_alert(user, "only dead creatures!")
+			balloon_alert(user, "Somente criaturas mortas!")
 			return FALSE
 	else if(!HAS_TRAIT(target, TRAIT_VALID_DNA_INFUSION))
-		balloon_alert(user, "only creatures!")
+		balloon_alert(user, "Só criaturas!")
 		return FALSE
 	return TRUE
 
 /obj/machinery/dna_infuser/click_alt(mob/user)
 	if(infusing)
-		balloon_alert(user, "not while it's on!")
+		balloon_alert(user, "Não enquanto está ligado!")
 		return CLICK_ACTION_BLOCKING
 	if(!infusing_from)
-		balloon_alert(user, "no sample to eject!")
+		balloon_alert(user, "Nenhuma amostra para ejetar!")
 		return CLICK_ACTION_BLOCKING
-	balloon_alert(user, "ejected sample")
+	balloon_alert(user, "Amostra ejetada")
 	infusing_from.forceMove(get_turf(src))
 	infusing_from = null
 	return CLICK_ACTION_SUCCESS

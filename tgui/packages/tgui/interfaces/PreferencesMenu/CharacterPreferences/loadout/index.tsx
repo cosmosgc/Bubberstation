@@ -105,7 +105,7 @@ export function LoadoutPage(props) {
               </Stack.Item>
               <Stack.Item width="100%" height="20px">
                 <Input
-                  placeholder="Maximum of 24 characters long"
+                  placeholder="Máximo de 24 caracteres."
                   width="100%"
                   maxLength={24}
                   onChange={onType}
@@ -144,14 +144,14 @@ export function LoadoutPage(props) {
         )}
         <Section
           fitted
-          title="&nbsp;"
+          title="#Nbsp;"
           buttons={
             <>
               {/* BUBBER EDIT ADDITION BEGIN: Search in tooltips */}
               <Button.Checkbox
                 checked={searchingTooltips}
                 onClick={() => setSearchingTooltips(!searchingTooltips)}
-                tooltip="Include matches from item tooltip information e.g. Job Whitelist"
+                tooltip="Incluir correspondências da informação da dica do item por exemplo, Lista de tarefas"
               >
                 Search Tooltips
               </Button.Checkbox>
@@ -159,7 +159,7 @@ export function LoadoutPage(props) {
               <Input
                 width="200px"
                 onChange={setSearchLoadout}
-                placeholder="Search for an item..."
+                placeholder="Procure por um item..."
                 value={searchLoadout}
               />
             </>
@@ -270,8 +270,8 @@ function LoadoutTabs(props: LoadoutTabsProps) {
                     tooltip={
                       data.character_preferences.misc.loadout_index ===
                       'Default'
-                        ? "Can't delete the default loadout entry."
-                        : 'Delete the current loadout entry.'
+                        ? "Não pode apagar a entrada de carga padrão."
+                        : 'Apague a entrada de carga atual.'
                     }
                     onClick={() => act('remove_loadout_preset')}
                   >
@@ -305,7 +305,7 @@ function LoadoutTabs(props: LoadoutTabsProps) {
       <Stack.Item grow>
         {searching || activeCategory?.contents ? (
           <Section
-            title={searching ? 'Search results' : 'Catalog'}
+            title={searching ? 'Resultados da pesquisa' : 'Catalog'}
             fill
             scrollable
             buttons={
@@ -418,7 +418,7 @@ function LoadoutSelectedSection(props: LoadoutSelectedSectionProps) {
 
   return (
     <Section
-      title="Selected Items"
+      title="Itens selecionados"
       scrollable
       fill
       buttons={
@@ -427,7 +427,7 @@ function LoadoutSelectedSection(props: LoadoutSelectedSectionProps) {
           color="red"
           align="center"
           disabled={!loadout_list || Object.keys(loadout_list).length === 0}
-          tooltip="Clears ALL selected items from all categories."
+          tooltip="Limpa todos os itens selecionados de todas as categorias."
           onClick={() => act('clear_all_items')}
         >
           Clear All

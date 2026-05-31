@@ -62,7 +62,7 @@ GLOBAL_ALIST_EMPTY(reftracker_skip_typecache_b)
 
 /datum/proc/find_references(references_to_clear = INFINITY)
 	if(usr?.client)
-		if(tgui_alert(usr,"Running this will lock everything up for about 5 minutes.  Would you like to begin the search?", "Find References", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"Correr isso vai trancar tudo por 5 minutos. Gostaria de começar a busca?", "Find References", list("Yes", "No")) != "Yes")
 			return
 
 	src.references_to_clear = references_to_clear
@@ -172,11 +172,7 @@ GLOBAL_ALIST_EMPTY(reftracker_skip_typecache_b)
 				// We do this after the varname check to avoid area contents (reading it incures a world loop's worth of cost)
 				if(!length(variable))
 					continue
-				DoSearchVar(variable,\
-					"[container_name] [datum_container.ref_search_details()] -> [varname] (list)",\
-					search_time,\
-					recursion_count + 1,\
-					/*is_special_list = */ is_atom && (varname == "contents" || varname == "vis_contents" || varname == "locs"))
+				DoSearchVar(variable,					"[container_name] [datum_container.ref_search_details()] -> [varname] (list)",					search_time,					recursion_count + 1,					/*is_special_list = */ is_atom && (varname == "contents" || varname == "vis_contents" || varname == "locs"))
 			else if(variable == src)
 				#ifdef REFERENCE_TRACKING_DEBUG
 				if(SSgarbage.should_save_refs)

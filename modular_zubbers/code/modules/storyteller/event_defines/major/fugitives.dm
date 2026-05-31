@@ -9,7 +9,7 @@
 	min_players = 20
 	earliest_start = 30 MINUTES //deadchat sink, lets not even consider it early on.
 	category = EVENT_CATEGORY_INVASION
-	description = "Fugitives will hide on the station, followed by hunters."
+	description = "Fugitivos se esconderão na estação, seguidos de caçadores."
 	map_flags = EVENT_SPACE_ONLY
 
 /datum/round_event/ghost_role/fugitives
@@ -113,7 +113,7 @@
 	addtimer(CALLBACK(src, PROC_REF(check_spawn_hunters), backstory, remaining_time - 1 MINUTES), 1 MINUTES)
 
 /datum/round_event/ghost_role/fugitives/proc/spawn_hunters(backstory)
-	var/list/candidates = SSpolling.poll_ghost_candidates("Do you wish to be considered for a group of [span_notice(backstory)]?", check_jobban = ROLE_FUGITIVE_HUNTER, alert_pic = /obj/machinery/sleeper, role_name_text = backstory)
+	var/list/candidates = SSpolling.poll_ghost_candidates("Você deseja ser considerado para um grupo de[span_notice(backstory)]?", check_jobban = ROLE_FUGITIVE_HUNTER, alert_pic = /obj/machinery/sleeper, role_name_text = backstory)
 	shuffle_inplace(candidates)
 
 	var/datum/map_template/shuttle/hunter/ship
@@ -147,13 +147,13 @@
 				notify_ghosts(
 					"[spawner.prompt_name] has awoken: [spawned_mob]!",
 					source = spawned_mob,
-					header = "Come look!",
+					header = "Venha ver!",
 				)
 			else
 				notify_ghosts(
 					"[spawner.prompt_name] spawner has been created!",
 					source = spawner,
-					header = "Spawn Here!",
+					header = "Aqui é Spawn!",
 				)
 
 	var/list/announcement_text_list = list()

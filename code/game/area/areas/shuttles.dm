@@ -275,26 +275,26 @@
 
 	var/mob/living/L = AM
 	if(L.pulling && istype(L.pulling, /obj/item/bodypart/head))
-		to_chat(L, span_notice("Your offering is accepted. You may pass."), confidential = TRUE)
+		to_chat(L, span_notice("Sua oferta é aceita. Você pode passar."), confidential = TRUE)
 		qdel(L.pulling)
 		var/turf/LA = get_turf(pick(warp_points))
 		L.forceMove(LA)
 		L.remove_status_effect(/datum/status_effect/hallucination)
-		to_chat(L, "<span class='reallybig redtext'>The battle is won. Your bloodlust subsides.</span>", confidential = TRUE)
+		to_chat(L, "<span class='reallybig redtext'>A batalha está ganha. Sua sede de sangue diminui.</span>", confidential = TRUE)
 		for(var/obj/item/chainsaw/doomslayer/chainsaw in L)
 			qdel(chainsaw)
 		var/obj/item/skeleton_key/key = new(L)
 		L.put_in_hands(key)
 	else
-		to_chat(L, span_warning("You are not yet worthy of passing. Drag a severed head to the barrier to be allowed entry to the hall of champions."), confidential = TRUE)
+		to_chat(L, span_warning("Você ainda não é digno de passar. Arraste uma cabeça cortada para a barreira para ser permitida a entrada no salão dos campeões."), confidential = TRUE)
 
 /obj/effect/landmark/shuttle_arena_safe
 	name = "hall of champions"
-	desc = "For the winners."
+	desc = "Para os vencedores."
 
 /obj/effect/landmark/shuttle_arena_entrance
 	name = "\proper the arena"
-	desc = "A lava filled battlefield."
+	desc = "Um campo de batalha cheio de lava."
 
 /obj/effect/forcefield/arena_shuttle_entrance
 	name = "portal"
@@ -312,5 +312,5 @@
 	var/obj/effect/landmark/LA = pick(warp_points)
 	var/mob/living/M = AM
 	M.forceMove(get_turf(LA))
-	to_chat(M, "<span class='reallybig redtext'>You're trapped in a deadly arena! To escape, you'll need to drag a severed head to the escape portals.</span>", confidential = TRUE)
+	to_chat(M, "<span class='reallybig redtext'>Você está preso em uma arena mortal! Para escapar, você precisará arrastar uma cabeça cortada para os portais de fuga.</span>", confidential = TRUE)
 	M.apply_status_effect(/datum/status_effect/mayhem)

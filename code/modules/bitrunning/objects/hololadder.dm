@@ -2,7 +2,7 @@
 	name = "hololadder"
 
 	anchored = TRUE
-	desc = "An abstract representation of the means to disconnect from the virtual domain."
+	desc = "Uma representação abstrata dos meios para se desconectar do domínio virtual."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "ladder11"
 	obj_flags = BLOCK_Z_OUT_DOWN
@@ -30,14 +30,14 @@
 	. = ..()
 
 	if(isnull(server_ref.resolve()))
-		. += span_infoplain("It's not connected to anything.")
+		. += span_infoplain("Não está ligado a nada.")
 		return
 
 	if(isobserver(user))
-		. += span_notice("Left click to view the server that this ladder is connected to.")
+		. += span_notice("Clique esquerdo para ver o servidor ao qual esta escada está conectada.")
 		return
 
-	. += span_infoplain("This ladder is connected to a server. You can click on it or walk over it to disconnect.")
+	. += span_infoplain("Esta escada está conectada a um servidor. Você pode clicar nele ou andar sobre ele para desconectar.")
 
 
 /obj/structure/hololadder/attack_hand(mob/user, list/modifiers)
@@ -65,7 +65,7 @@
 		return
 
 	if(!HAS_TRAIT(user, TRAIT_TEMPORARY_BODY))
-		balloon_alert(user, "no connection detected")
+		balloon_alert(user, "Nenhuma conexão detectada.")
 		return
 
 	balloon_alert(user, "disconnecting...")

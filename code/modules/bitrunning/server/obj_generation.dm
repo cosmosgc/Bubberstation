@@ -92,13 +92,7 @@
 
 		SSid_access.apply_trim_to_card(outfit_id, /datum/id_trim/bit_avatar)
 
-	avatar.AddComponent( \
-		/datum/component/simple_bodycam, \
-		camera_name = "bitrunner bodycam", \
-		c_tag = "Avatar [avatar.real_name]", \
-		network = BITRUNNER_CAMERA_NET, \
-		emp_proof = TRUE, \
-	)
+	avatar.AddComponent( 		/datum/component/simple_bodycam, 		camera_name = "bitrunner bodycam", 		c_tag = "Avatar [avatar.real_name]", 		network = BITRUNNER_CAMERA_NET, 		emp_proof = TRUE, 	)
 
 	return avatar
 
@@ -148,15 +142,15 @@
 		disk_ban += "powers"
 
 	if(length(import_ban))
-		to_chat(neo, span_warning("This domain forbids the use of [english_list(import_ban)], your externally loaded [english_list(disk_ban)] will not be granted!"))
+		to_chat(neo, span_warning("Este domínio proíbe o uso de[english_list(import_ban)]Sua carga externa[english_list(disk_ban)]Não será concedido!"))
 
 	var/return_flags = NONE
 	return_flags = SEND_SIGNAL(neo, COMSIG_BITRUNNER_STOCKING_GEAR, avatar, domain_forbids_flags)
 
 	if(return_flags & BITRUNNER_GEAR_LOAD_FAILED)
-		to_chat(neo, span_warning("At least one of your external data sources has encountered a failure in its loading process. Check for overlapping or inactive disks."))
+		to_chat(neo, span_warning("Pelo menos uma de suas fontes de dados externas encontrou uma falha no processo de carregamento. Procure discos sobrepostos ou inativos."))
 	if(return_flags & BITRUNNER_GEAR_LOAD_BLOCKED)
-		to_chat(neo, span_warning("At least one of your external data sources has been blocked from fully loading. Check domain restrictions."))
+		to_chat(neo, span_warning("Pelo menos uma de suas fontes de dados externas foi bloqueada de carregar totalmente. Verifique as restrições de domínio."))
 
 	var/obj/item/organ/brain/neo_brain = neo.get_organ_slot(ORGAN_SLOT_BRAIN)
 	for(var/obj/item/skillchip/skill_chip as anything in neo_brain?.skillchips)

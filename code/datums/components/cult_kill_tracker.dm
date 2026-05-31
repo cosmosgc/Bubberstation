@@ -51,8 +51,7 @@
 		return
 
 	var/num_slain = LAZYLEN(cultists_slain)
-	examine_list += span_cult_italic("It has the blood of [num_slain] fallen cultist[num_slain == 1 ? "" : "s"] on it. \
-		<b>Offering</b> it to Nar'sie will transform it into a [num_slain >= 3 ? "powerful" : "standard"] cult weapon.")
+	examine_list += span_cult_italic("Tem o sangue de[num_slain]cultista caído[num_slain == 1 ? "" : "s"]Pode deixar.<b>Oferta</b>para Nar'sie vai transformá-lo em um[num_slain >= 3 ? "powerful" : "standard"]Arma de culto.")
 
 /datum/component/cult_kill_tracker/proc/on_sacrificed(obj/item/source, obj/effect/rune/convert/rune)
 	SIGNAL_HANDLER

@@ -1,6 +1,6 @@
 /obj/item/book/granter/action/spell/summon_cheese
 	name = "Lusty Xenomorph Maid vol. III - Cheese Bakery"
-	desc = "Wonderful! Time for a celebration... Cheese for everyone!"
+	desc = "Maravilhoso! Hora de uma celebração... Queijo para todos!"
 	icon_state = "bookcheese"
 	action_name = "summon cheese"
 	granted_action = /datum/action/cooldown/spell/conjure/cheese
@@ -21,7 +21,7 @@
 	)
 
 /obj/item/book/granter/action/spell/summon_cheese/recoil(mob/living/user)
-	to_chat(user, span_warning("\The [src] turns into a wedge of cheese!"))
+	to_chat(user, span_warning("\The [src]se transforma em uma fatia de queijo!"))
 	var/obj/item/food/cheese/wedge/book_cheese = new
 	user.temporarilyRemoveItemFromInventory(src, force = TRUE)
 	user.put_in_hands(book_cheese)

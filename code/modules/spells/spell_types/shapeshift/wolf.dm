@@ -1,8 +1,8 @@
 /datum/action/cooldown/spell/shapeshift/wolf
 	name = "Wolf Form"
-	desc = "Take on the shape a wolf."
+	desc = "Tome a forma de um lobo."
 	invocation = span_danger("<b>%CASTER</b> lets out a mighty growl!")
-	invocation_self_message = span_danger("You let out a mighty growl!")
+	invocation_self_message = span_danger("Você soltou um rosnado poderoso!")
 	invocation_type = INVOCATION_EMOTE
 	spell_requirements = NONE
 
@@ -10,7 +10,7 @@
 
 /obj/item/clothing/neck/cloak/wolf_coat
 	name = "wolf pelt cloak"
-	desc = "A cloak made of very lively wolf fur, feels warm to touch."
+	desc = "Uma capa feita de peles de lobo muito vivas, parece quente para tocar."
 	icon_state = "icecloak"
 	icon = 'icons/obj/clothing/cloaks.dmi'
 	worn_icon = 'icons/mob/clothing/neck.dmi'
@@ -25,12 +25,7 @@
 
 /obj/item/clothing/neck/cloak/wolf_coat/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/toggle_attached_clothing,\
-		deployable_type = /obj/item/clothing/head/hooded/wolf_coat_hoodie,\
-		equipped_slot = ITEM_SLOT_HEAD,\
-		action_name = "Toggle Hood",\
-		on_created = CALLBACK(src, PROC_REF(on_hood_created)),\
-	)
+	AddComponent(/datum/component/toggle_attached_clothing,		deployable_type = /obj/item/clothing/head/hooded/wolf_coat_hoodie,		equipped_slot = ITEM_SLOT_HEAD,		action_name = "Toggle Hood",		on_created = CALLBACK(src, PROC_REF(on_hood_created)),	)
 
 /obj/item/clothing/neck/cloak/wolf_coat/Destroy()
 	hood = null
@@ -51,7 +46,7 @@
 ///The hoodie, made by the cloak, which gives the action button (making it required to wear the hoodie to use it)
 /obj/item/clothing/head/hooded/wolf_coat_hoodie
 	name = "wolf pelt hood"
-	desc = "A hood made of wolf fur."
+	desc = "Um capuz feito de pêlo de lobo."
 	icon = 'icons/obj/clothing/head/winterhood.dmi'
 	worn_icon = 'icons/mob/clothing/head/winterhood.dmi'
 	icon_state = "icecloak_hood"

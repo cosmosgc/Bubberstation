@@ -44,12 +44,12 @@
 
 	if(!check_teleport_valid(owner, owner_turf, TELEPORT_CHANNEL_MAGIC))
 		if(feedback)
-			to_chat(owner, span_danger("Some dull, universal force is stopping you from jaunting here."))
+			to_chat(owner, span_danger("Uma força universal está te impedindo de andar por aqui."))
 		return FALSE
 
 	if(owner_turf?.turf_flags & NOJAUNT)
 		if(feedback)
-			to_chat(owner, span_danger("An otherwordly force is preventing you from jaunting here."))
+			to_chat(owner, span_danger("Uma outra força está te impedindo de andar por aqui."))
 		return FALSE
 
 	return isliving(owner)

@@ -3,8 +3,7 @@
 /// Caused by dirty food. Makes you growl at people and bite them spontaneously.
 /datum/disease/carpellosis
 	name = "Carpellosis"
-	desc = "An angry space carp inside has infested the host's stomach, \
-		leading to an uncontrollable urge to gnash at people and wag your tail."
+	desc = "Uma carpa espacial furiosa dentro infestou o estômago do hospedeiro, levando a um impulso incontrolável de roer as pessoas e abanar sua cauda."
 	form = "Parasite"
 	agent = "Carp Ella"
 	cure_text = /datum/reagent/chlorine::name
@@ -33,11 +32,11 @@
 	switch(stage)
 		if(2)
 			if(SPT_PROB(1, seconds_per_tick) && affected_mob.stat == CONSCIOUS && affected_mob.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL))
-				to_chat(affected_mob, span_warning("You want to wag your tail..."))
+				to_chat(affected_mob, span_warning("Quer balançar o rabo..."))
 				affected_mob.emote("wag")
 		if(3)
 			if(SPT_PROB(1, seconds_per_tick) && affected_mob.stat == CONSCIOUS)
-				to_chat(affected_mob, span_warning("You suddenly feel like swimming in space..."))
+				to_chat(affected_mob, span_warning("Você de repente sente vontade de nadar no espaço..."))
 			else if(SPT_PROB(1, seconds_per_tick) && affected_mob.stat == CONSCIOUS)
 				affected_mob.visible_message("gnashes.", visible_message_flags = EMOTE_MESSAGE)
 		if(4)
@@ -62,7 +61,7 @@
 	if(ability_granted)
 		rift_ability.Remove(affected_mob)
 	if(max_stage_reached && prob(ella_spawn_chance))
-		to_chat(affected_mob, span_warning("Something comes out of you!"))
+		to_chat(affected_mob, span_warning("Algo sai de você!"))
 		new /mob/living/basic/carp/ella(affected_mob.loc)
 	return ..()
 
@@ -83,9 +82,9 @@
 /datum/disease/carpellosis/proc/gnash_someone()
 	var/mob/living/carbon/human/target = find_nearby_human()
 	if(isnull(target) || !affected_mob.get_bodypart(BODY_ZONE_HEAD)) // Need mouth to gnash
-		to_chat(affected_mob, span_warning("You want to gnash at someone..."))
+		to_chat(affected_mob, span_warning("Você quer roer alguém..."))
 		return
-	to_chat(affected_mob, span_warning("[target.name] makes you angry for some reason..."))
+	to_chat(affected_mob, span_warning("[target.name]te deixa com raiva por alguma razão..."))
 	if(ability_granted && !affected_mob.Adjacent(target))
 		rift_ability.Trigger(target = target)
 	affected_mob.face_atom(target)
@@ -93,6 +92,6 @@
 		affected_mob.set_combat_mode(TRUE)
 		target.attack_paw(affected_mob)
 	else
-		affected_mob.visible_message("gnashes at [target.name].", visible_message_flags = EMOTE_MESSAGE)
+		affected_mob.visible_message("Rasga em[target.name].", visible_message_flags = EMOTE_MESSAGE)
 
 #undef GNASHING_RANGE

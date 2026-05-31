@@ -18,7 +18,7 @@
 
 /datum/component/shielded/suit/default_run_hit_callback(mob/living/owner, attack_text, current_charges)
 	var/obj/item/item_parent = parent
-	owner.visible_message(span_danger("[owner]'s armor absorbs [attack_text]!"))
+	owner.visible_message(span_danger("[owner]A armadura absorve[attack_text]!"))
 	if(current_charges <= 0)
-		owner.visible_message(span_warning("[owner]'s armor breaks!"))
+		owner.visible_message(span_warning("[owner]A armadura quebra!"))
 		playsound(item_parent, 'sound/items/ceramic_break.ogg', 60, TRUE)

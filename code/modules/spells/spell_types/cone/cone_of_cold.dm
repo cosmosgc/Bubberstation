@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/cone/staggered/cone_of_cold
 	name = "Cone of Cold"
-	desc = "Shoots out a freezing cone in front of you."
+	desc = "Atira em um cone gelado na sua frente."
 
 	school = SCHOOL_EVOCATION
 	cooldown_time = 30 SECONDS
@@ -55,7 +55,7 @@
 	if(on_freeze_brute_damage || on_freeze_burn_damage)
 		target_mob.take_overall_damage(on_freeze_brute_damage, on_freeze_burn_damage)
 
-	to_chat(target_mob, span_userdanger("You feel a bitter cold!"))
+	to_chat(target_mob, span_userdanger("Você sente um frio amargo!"))
 
 /datum/action/cooldown/spell/cone/staggered/cone_of_cold/do_obj_cone_effect(obj/target_obj, atom/caster, level)
 	if(unfreeze_object_duration <= 0 SECONDS) // 0 duration = don't apply a freeze

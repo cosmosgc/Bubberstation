@@ -109,7 +109,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 	return custom_team
 
 /datum/antagonist/custom/admin_add(datum/mind/new_owner,mob/admin)
-	var/custom_name = stripped_input(admin, "Custom antagonist name:", "Custom antag", "Antagonist")
+	var/custom_name = stripped_input(admin, "Nome de antagonista personalizado:", "Antag personalizada", "Antagonist")
 	if(!custom_name)
 		return
 	name = custom_name
@@ -257,8 +257,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 	if(!silent)
 		greet()
 		if(ui_name)
-			to_chat(owner.current, span_boldnotice("For more info, read the panel. \
-				You can always come back to it using the button in the top left."))
+			to_chat(owner.current, span_boldnotice("Para mais informações, leia o painel. Você sempre pode voltar para ele usando o botão no canto superior esquerdo."))
 			info_button.Trigger()
 		var/type_policy = get_policy("[type]") // path to text
 		if(type_policy)
@@ -307,7 +306,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 
 	var/mob/chosen_one = SSpolling.poll_ghosts_for_target(check_jobban = jobban_flag || pref_flag, role = pref_flag, poll_time = 5 SECONDS, checked_target = owner.current, alert_pic = owner.current, role_name_text = name)
 	if(chosen_one)
-		to_chat(owner, "Your mob has been taken over by a ghost! Appeal your job ban if you want to avoid this in the future!")
+		to_chat(owner, "Sua multidão foi tomada por um fantasma! Apelar para sua proibição de trabalho se quiser evitar isso no futuro!")
 		message_admins("[key_name_admin(chosen_one)] has taken control of ([key_name_admin(owner)]) to replace antagonist banned player.")
 		log_game("[key_name(chosen_one)] has taken control of ([key_name(owner)]) to replace antagonist banned player.")
 		owner.current.ghostize(FALSE)
@@ -354,8 +353,8 @@ GLOBAL_LIST_EMPTY(antagonists)
  */
 /datum/antagonist/proc/greet()
 	if(!silent)
-		to_chat(owner.current, span_big("You are \the [src]."))
-		to_chat(owner.current, span_infoplain(span_doyourjobidiot("Remember that being an antagonist does not exclude you from the server rules regarding RP standards."))) //SKYRAT EDIT - RP REMINDER
+		to_chat(owner.current, span_big("Você é.\the [src]."))
+		to_chat(owner.current, span_infoplain(span_doyourjobidiot("Lembre-se que ser um antagonista não exclui você das regras do servidor sobre padrões RP."))) //SKYRAT EDIT - RP REMINDER
 		play_stinger()
 
 /// Plays the antag stinger sound, if we have one
@@ -371,7 +370,7 @@ GLOBAL_LIST_EMPTY(antagonists)
  */
 /datum/antagonist/proc/farewell()
 	if(!silent && owner.current)
-		to_chat(owner.current, span_userdanger("You are no longer \the [src]!"))
+		to_chat(owner.current, span_userdanger("Você não é mais\the [src]!"))
 
 /**
  * Proc that assigns this antagonist's ascribed moodlet to the player.
@@ -431,7 +430,7 @@ GLOBAL_LIST_EMPTY(antagonists)
  * Appears at start of roundend_catagory section.
  */
 /datum/antagonist/proc/roundend_report_header()
-	return span_header("The [roundend_category] were:<br>")
+	return span_header("O[roundend_category]Foram:<br>")
 
 /**
  * Proc that sends string data for the round-end report.
@@ -585,12 +584,12 @@ GLOBAL_LIST_EMPTY(antagonists)
 		return FALSE
 	var/mob/living/owner_mob = owner.current
 	if (!force && !can_assign_self_objectives)
-		owner_mob.balloon_alert(owner_mob, "can't do that!")
+		owner_mob.balloon_alert(owner_mob, "Não posso fazer isso!")
 		return FALSE
 	var/custom_objective_text = tgui_input_text(
 		owner_mob,
 		message = "Specify your new objective.",
-		title = "Custom Objective",
+		title = "Objetivo Personalizado",
 		default = default_custom_objective,
 		max_length = CUSTOM_OBJECTIVE_MAX_LENGTH,
 	)

@@ -4,7 +4,7 @@
 	downloader_category = PROGRAM_CATEGORY_SCIENCE
 	ui_header = "borg_mon.gif"
 	program_open_overlay = "generic"
-	extended_desc = "This program allows for remote monitoring of station cyborgs."
+	extended_desc = "Este programa permite o monitoramento remoto dos cyborgs da estação."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	download_access = list(ACCESS_ROBOTICS)
 	size = 5
@@ -37,9 +37,9 @@
 	var/obj/item/card/id/stored_card = computer.GetID()
 	if(istype(stored_card) && stored_card.registered_name)
 		username = "user [stored_card.registered_name]"
-	to_chat(borgo, span_userdanger("Request received from [username] for the system log file. Upload in progress."))//Damning evidence may be contained, so warn the borg
+	to_chat(borgo, span_userdanger("Pedido recebido de[username]Para o arquivo de registro do sistema. Envio em andar."))//Damning evidence may be contained, so warn the borg
 	borgo.logevent("File request by [username]: /var/logs/syslog")
-	borgo.balloon_alert(user, "downloading logs")
+	borgo.balloon_alert(user, "Baixando logs")
 	return TRUE
 
 /datum/computer_file/program/borg_monitor/process_tick(seconds_per_tick)
@@ -50,7 +50,7 @@
 	var/turf/here = get_turf(computer)
 	var/turf/there = get_turf(DL_source)
 	if(!here.Adjacent(there))//If someone walked away, cancel the download
-		to_chat(DL_source, span_danger("Log upload failed: general connection error."))//Let the borg know the upload stopped
+		to_chat(DL_source, span_danger("O upload do log falhou: erro de conexão geral."))//Let the borg know the upload stopped
 		DL_source = null
 		DL_progress = -1
 		return
@@ -121,7 +121,7 @@
 	if(!ID)
 		return FALSE
 	if(robot.stat == DEAD) //Dead borgs will listen to you no longer
-		to_chat(user, span_warning("Error -- Could not open a connection to unit:[robot]"))
+		to_chat(user, span_warning("Erro... Não foi possível abrir uma conexão com a unidade:[robot]"))
 		return FALSE
 	var/message = tgui_input_text(user, "Message to be sent to remote cyborg", "Send Message", max_length = MAX_MESSAGE_LEN)
 	if(!message)
@@ -134,11 +134,11 @@
 		return FALSE
 	if(robot.stat == DEAD) //Dead borgs will listen to you no longer
 		if(user)
-			to_chat(user, span_warning("Error -- Could not open a connection to unit:[robot]"))
+			to_chat(user, span_warning("Erro... Não foi possível abrir uma conexão com a unidade:[robot]"))
 			return FALSE
 	to_chat(robot, "<br><br>[span_notice("Message from [ID] -- \"[message]\"")]<br>")
 	if(user)
-		to_chat(user, "Message sent to [robot]: [message]")
+		to_chat(user, "Mensagem enviada para[robot]: [message]")
 	robot.logevent("Message from [ID] -- \"[message]\"")
 	SEND_SOUND(robot, 'sound/machines/beep/twobeep_high.ogg')
 	if(robot.connected_ai)
@@ -172,7 +172,7 @@
 	downloader_category = PROGRAM_CATEGORY_SCIENCE
 	ui_header = "borg_mon.gif"
 	program_open_overlay = "generic"
-	extended_desc = "This program allows for remote monitoring of mission-assigned cyborgs."
+	extended_desc = "Este programa permite o monitoramento remoto de ciborgues designados pela missão."
 	program_flags = PROGRAM_ON_SYNDINET_STORE
 	download_access = null
 	circuit_comp_type = /obj/item/circuit_component/mod_program/borg_monitor/syndie
@@ -199,7 +199,7 @@
 /obj/item/circuit_component/mod_program/borg_monitor/populate_ports()
 	. = ..()
 	target_robot = add_input_port("Receiver", PORT_TYPE_ATOM)
-	set_message = add_input_port("Set Message", PORT_TYPE_STRING, trigger = PROC_REF(sanitize_borg_message))
+	set_message = add_input_port("Mensagem definitiva", PORT_TYPE_STRING, trigger = PROC_REF(sanitize_borg_message))
 
 /obj/item/circuit_component/mod_program/borg_monitor/proc/sanitize_borg_message(datum/port/port)
 	set_message.set_value(trim(html_encode(set_message.value), MAX_MESSAGE_LEN))

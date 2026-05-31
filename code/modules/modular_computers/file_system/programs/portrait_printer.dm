@@ -9,7 +9,7 @@
 	filedesc = "Marlowe Treeby's Art Galaxy"
 	downloader_category = PROGRAM_CATEGORY_EQUIPMENT
 	program_open_overlay = "dummy"
-	extended_desc = "This program connects to a Spinward Sector community art site for viewing and printing art, the latter only available on stationary consoles."
+	extended_desc = "Este programa se conecta a um site de arte comunitária do Setor Spinward para visualização e impressão de arte, o último disponível apenas em consoles estacionários."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	size = 9
 	tgui_id = "NtosPortraitPrinter"
@@ -67,7 +67,7 @@
 	if(!(computer.hardware_flag & PROGRAM_CONSOLE))
 		return
 	if(computer.stored_paper < CANVAS_PAPER_COST)
-		to_chat(usr, span_notice("Printing error: Your printer needs at least [CANVAS_PAPER_COST] paper to print a canvas."))
+		to_chat(usr, span_notice("Erro de impressão: sua impressora precisa pelo menos[CANVAS_PAPER_COST]Papel para imprimir uma tela."))
 		return
 
 	//canvas printing!
@@ -75,10 +75,10 @@
 
 	var/obj/item/canvas/new_canvas = chosen_portrait.spawn_canvas(get_turf(computer.physical))
 	if(!new_canvas)
-		to_chat(usr, span_notice("Printing error: An unknown error has occurred."))
+		to_chat(usr, span_notice("Erro de impressão: um erro desconhecido ocorreu."))
 		return
 	computer.stored_paper -= CANVAS_PAPER_COST
-	to_chat(usr, span_notice("You have printed [chosen_portrait.title] onto a new canvas."))
+	to_chat(usr, span_notice("Você imprimiu[chosen_portrait.title]em uma tela nova."))
 	playsound(computer.physical, 'sound/machines/printer.ogg', 100, TRUE)
 
 /datum/computer_file/program/portrait_printer/proc/download_painting(selected_painting)
@@ -86,6 +86,6 @@
 	var/icon/portrait_icon = chosen_portrait.get_icon()
 	var/datum/computer_file/image/image_file = new(portrait_icon, display_name = chosen_portrait.title, source_photo_or_painting = chosen_portrait)
 	if(!computer.store_file(image_file, usr))
-		to_chat(usr, span_notice("Unable to download [chosen_portrait.title].[/datum/computer_file/image::filetype]."))
+		to_chat(usr, span_notice("Não foi possível baixar[chosen_portrait.title].[/datum/computer_file/image::filetype]."))
 		return
-	to_chat(usr, span_notice("Downloaded [chosen_portrait.title].[/datum/computer_file/image::filetype]."))
+	to_chat(usr, span_notice("Transferido.[chosen_portrait.title].[/datum/computer_file/image::filetype]."))

@@ -12,7 +12,7 @@
  */
 /obj/effect/grand_rune
 	name = "grand rune"
-	desc = "A flowing circle of shapes and runes is etched into the floor, the lines twist and move before your eyes."
+	desc = "Um círculo fluindo de formas e runas é gravado no chão, as linhas giram e se movem diante de seus olhos."
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "wizard_rune"
 	pixel_x = -33
@@ -94,11 +94,11 @@
 /obj/effect/grand_rune/examine(mob/user)
 	. = ..()
 	if (times_invoked >= GRAND_RUNE_INVOKES_TO_COMPLETE)
-		. += span_notice("Its power seems to have been expended.")
+		. += span_notice("Seu poder parece ter sido gasto.")
 		return
 	if(!IS_WIZARD(user))
 		return
-	. += span_notice("Invoke this rune [GRAND_RUNE_INVOKES_TO_COMPLETE - times_invoked] more times to complete the ritual.")
+	. += span_notice("Invoque esta runa[GRAND_RUNE_INVOKES_TO_COMPLETE - times_invoked]Mais vezes para completar o ritual.")
 
 /obj/effect/grand_rune/can_interact(mob/living/user)
 	. = ..()
@@ -121,11 +121,11 @@
 /obj/effect/grand_rune/proc/invoke_rune(mob/living/user)
 	is_in_use = TRUE
 	add_channel_effect(user)
-	user.balloon_alert(user, "invoking rune...")
+	user.balloon_alert(user, "invocando runa...")
 
 	if(!do_after(user, invoke_time, src))
 		remove_channel_effect(user)
-		user.balloon_alert(user, "interrompido!")
+		user.balloon_alert(user, "Interrompido!")
 		is_in_use = FALSE
 		return
 
@@ -144,13 +144,7 @@
 	//so hopefully this will properly do that, and on the third invocation it will just eat all remaining cheese
 	cheese_to_haunt = cheese_list.Copy(1, min(round(length(cheese_list) * times_invoked * 0.4), max(length(cheese_list), 3)))
 	for(var/obj/item/food/cheese/wheel/sacrifice as anything in cheese_to_haunt)
-		sacrifice.AddComponent(\
-			/datum/component/haunted_item, \
-			haunt_color = spell_colour, \
-			haunt_duration = 10 SECONDS, \
-			aggro_radius = 0, \
-			spawn_message = span_revenwarning("[sacrifice] begins to float and twirl into the air as it becomes enveloped in otherworldly energies..."), \
-		)
+		sacrifice.AddComponent(			/datum/component/haunted_item, 			haunt_color = spell_colour, 			haunt_duration = 10 SECONDS, 			aggro_radius = 0, 			spawn_message = span_revenwarning("[sacrifice]Começa a flutuar e girar para o ar quando se torna envolvido em energias de outro mundo..."), 		)
 		addtimer(CALLBACK(sacrifice, TYPE_PROC_REF(/obj/item/food/cheese/wheel, consume_cheese)), 10 SECONDS)
 	cheese_sacrificed += length(cheese_to_haunt)
 
@@ -211,12 +205,12 @@
 		possible_events += possible_event
 
 	if (!length(possible_events))
-		visible_message(span_notice("[src] makes a sad whizzing noise."))
+		visible_message(span_notice("[src]faz um barulho triste."))
 		return
 
 	var/datum/round_event_control/final_event = pick (possible_events)
 	final_event.run_event(event_cause = "a Grand Ritual Rune")
-	to_chat(user, span_notice("Your released magic afflicts the crew: [final_event.name]!"))
+	to_chat(user, span_notice("Sua magia liberada aflige a tripulação.[final_event.name]!"))
 
 /// Applies some local side effects to the area
 /obj/effect/grand_rune/proc/trigger_side_effects(mob/living/user)
@@ -311,7 +305,7 @@
 		return
 	var/round_time_passed = world.time - SSticker.round_start_time
 	if (chosen_effect && finale_effect.minimum_time >= round_time_passed)
-		to_chat(user, span_warning("The chosen grand finale will only be available in <b>[DisplayTimeText(finale_effect.minimum_time - round_time_passed)]</b>!"))
+		to_chat(user, span_warning("O grande final escolhido só estará disponível em<b>[DisplayTimeText(finale_effect.minimum_time - round_time_passed)]</b>!"))
 		return
 	return ..()
 
@@ -333,8 +327,7 @@
 	var/datum/radial_menu_choice/choice_none = new()
 	choice_none.name = PICK_NOTHING
 	choice_none.image = image(icon = 'icons/mob/actions/actions_cult.dmi', icon_state = "draw")
-	choice_none.info = "The ultimate use of your gathered power! They will never expect you to continue to do \
-		exactly the same kind of thing you've been doing this whole time!"
+	choice_none.info = "The ultimate use of your gathered power! They will never expect you to continue to do 		exactly the same kind of thing you've been doing this whole time!"
 	options += list("[choice_none.name]" = choice_none)
 
 	var/pick = show_radial_menu(user, user, options, require_near = TRUE, tooltips = TRUE)
@@ -344,8 +337,8 @@
 	if (istype(picked_finale))
 		var/round_time_passed = world.time - SSticker.round_start_time
 		if(picked_finale.minimum_time >= round_time_passed)
-			to_chat(user, span_warning("The chosen grand finale will only be available in <b>[DisplayTimeText(picked_finale.minimum_time - round_time_passed)]</b>!"))
-			to_chat(user, span_warning("Be patient, or select another option."))
+			to_chat(user, span_warning("O grande final escolhido só estará disponível em<b>[DisplayTimeText(picked_finale.minimum_time - round_time_passed)]</b>!"))
+			to_chat(user, span_warning("Seja paciente, ou escolha outra opção."))
 			return
 	chosen_effect = TRUE
 	if (pick == PICK_NOTHING)
@@ -376,7 +369,7 @@
  */
 /obj/effect/grand_rune/finale/cheesy
 	name = "especially grand rune"
-	desc = "A ritual circle of maddening shapes and outlines, its mere presence an insult to reason."
+	desc = "Um círculo ritual de formas e contornos loucos, sua mera presença é um insulto à razão."
 	icon_state = "wizard_rune_cheese"
 	magic_words = list("Greetings! Salutations!", "Welcome! Now go away.", "Leave. Run. Or die.")
 	remains_typepath = /obj/effect/decal/cleanable/grand_remains/cheese
@@ -393,7 +386,7 @@
  */
 /obj/effect/decal/cleanable/grand_remains
 	name = "circle of ash"
-	desc = "Looks like someone's been drawing weird shapes with ash on the ground."
+	desc = "Parece que alguém está desenhando formas estranhas com cinzas no chão."
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "wizard_rune_burned"
 	pixel_x = -28
@@ -406,7 +399,7 @@
 
 /obj/effect/decal/cleanable/grand_remains/cheese
 	name = "cheese soot marks"
-	desc = "The bizarre shapes on the ground turn out to be a cheese crust burned to black tar."
+	desc = "As formas bizarras no chão acabam sendo uma crosta de queijo queimada até o alcatrão preto."
 	icon_state = "wizard_rune_cheese_burned"
 
 #undef PICK_NOTHING

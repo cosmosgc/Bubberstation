@@ -226,13 +226,12 @@ ADMIN_VERB(cmd_controller_view_ui, R_SERVER|R_DEBUG, "Controller Overview", "Vie
 		if("view_variables")
 			if(!check_rights_for(ui.user.client, R_DEBUG))
 				message_admins(
-					"[key_name(ui.user)] tried to view master controller variables while having improper rights, \
-					this is potentially a malicious exploit and worth noting."
+					"[key_name(ui.user)] tried to view master controller variables while having improper rights, 					this is potentially a malicious exploit and worth noting."
 				)
 
 			var/datum/controller/subsystem/subsystem = locate(params["ref"]) in subsystems
 			if(isnull(subsystem))
-				to_chat(ui.user, span_warning("Failed to locate subsystem."))
+				to_chat(ui.user, span_warning("Não conseguimos localizar o subsistema."))
 				return
 
 			ui.user.client.debug_variables(subsystem)
@@ -317,7 +316,7 @@ ADMIN_VERB(cmd_controller_view_ui, R_SERVER|R_DEBUG, "Controller Overview", "Vie
 		current_runlevel = Master.current_runlevel
 		StartProcessing(10)
 	else
-		to_chat(world, span_boldannounce("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
+		to_chat(world, span_boldannounce("O Controlador Mestre está tendo alguns problemas, precisamos reiniciar tudo."))
 		Initialize(20, TRUE, FALSE)
 
 // Please don't stuff random bullshit here,
@@ -422,7 +421,7 @@ ADMIN_VERB(cmd_controller_view_ui, R_SERVER|R_DEBUG, "Controller Overview", "Vie
 
 		// Can't initialize them if they have circular dependencies, there's no real failsafe here.
 		stack_trace("ERROR: CRITICAL: MC: The following subsystems have circular dependencies: [jointext(debug_msg, " -> ")]")
-		to_chat(world, span_bolddanger("CRITICAL: Failed to initialize [jointext(usr_msg, ", ")]"), MESSAGE_TYPE_DEBUG)
+		to_chat(world, span_bolddanger("Não foi possível inicializar[jointext(usr_msg, ", ")]"), MESSAGE_TYPE_DEBUG)
 
 	for (var/datum/controller/subsystem/subsystem as anything in sorted_subsystems)
 		var/subsystem_init_stage = subsystem.init_stage

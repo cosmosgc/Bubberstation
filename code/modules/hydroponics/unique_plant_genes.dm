@@ -5,7 +5,7 @@
 /// Holymelon's anti-magic trait. Charges based on potency.
 /datum/plant_gene/trait/anti_magic
 	name = "Anti-Magic Vacuoles"
-	description = "You can hide behind it from a fireball!"
+	description = "Pode se esconder atrás de uma bola de fogo!"
 	icon = FA_ICON_HAND_SPARKLES
 	/// The amount of anti-magic blocking uses we have.
 	var/shield_uses = 1
@@ -17,28 +17,22 @@
 	var/obj/item/seeds/our_seed = our_plant.get_plant_seed()
 	shield_uses = round(our_seed.potency / 20)
 	//deliver us from evil o melon god
-	our_plant.AddComponent(/datum/component/anti_magic, \
-		antimagic_flags = MAGIC_RESISTANCE|MAGIC_RESISTANCE_HOLY, \
-		inventory_flags = ITEM_SLOT_HANDS, \
-		charges = shield_uses, \
-		block_magic = CALLBACK(src, PROC_REF(drain_antimagic)), \
-		expiration = CALLBACK(src, PROC_REF(expire)), \
-	)
+	our_plant.AddComponent(/datum/component/anti_magic, 		antimagic_flags = MAGIC_RESISTANCE|MAGIC_RESISTANCE_HOLY, 		inventory_flags = ITEM_SLOT_HANDS, 		charges = shield_uses, 		block_magic = CALLBACK(src, PROC_REF(drain_antimagic)), 		expiration = CALLBACK(src, PROC_REF(expire)), 	)
 
 /// When the plant our gene is hosted in is drained of an anti-magic charge.
 /datum/plant_gene/trait/anti_magic/proc/drain_antimagic(mob/user, obj/item/our_plant)
-	to_chat(user, span_warning("[our_plant] hums slightly, and seems to decay a bit."))
+	to_chat(user, span_warning("[our_plant]Humsligeiramente, e parece se deteriorar um pouco."))
 
 /// When the plant our gene is hosted in is drained of all of its anti-magic charges.
 /datum/plant_gene/trait/anti_magic/proc/expire(mob/user, obj/item/our_plant)
-	to_chat(user, span_warning("[our_plant] rapidly turns into ash!"))
+	to_chat(user, span_warning("[our_plant]Rápido, se transforma em cinzas!"))
 	new /obj/effect/decal/cleanable/ash(our_plant.drop_location())
 	qdel(our_plant)
 
 /// Traits that turn a plant into a weapon, giving them force and effects on attack.
 /datum/plant_gene/trait/attack
 	name = "On Attack Trait"
-	description = "It is a very dangerous weapon."
+	description = "É uma arma muito perigosa."
 	icon = FA_ICON_HAND_FIST
 	/// The multiplier we apply to the potency to calculate force. Set to 0 to not affect the force.
 	var/force_multiplier = 0
@@ -100,13 +94,13 @@
 		return
 
 	// When our force degrades to zero or below, we're all done
-	to_chat(user, span_warning("All the [degradation_noun] have fallen off [our_plant] from violent whacking!"))
+	to_chat(user, span_warning("Todos os[degradation_noun]Caíram[our_plant]De golpes violentos!"))
 	qdel(our_plant)
 
 /// Novaflower's attack effects (sets people on fire) + degradation on attack
 /datum/plant_gene/trait/attack/novaflower_attack
 	name = "Heated Petals"
-	description = "Hitting with it may cause things to combust."
+	description = "Bater nele pode causar uma explosão."
 	force_multiplier = 0.2
 	degrades_after_hit = TRUE
 	degradation_noun = "petals"
@@ -117,7 +111,7 @@
 		return
 
 	var/obj/item/seeds/our_seed = our_plant.get_plant_seed()
-	to_chat(target, span_danger("You are lit on fire from the intense heat of [our_plant]!"))
+	to_chat(target, span_danger("Você está aceso com o calor intenso de[our_plant]!"))
 	target.adjust_fire_stacks(round(our_seed.potency / 20))
 	if(target.ignite_mob())
 		message_admins("[ADMIN_LOOKUPFLW(user)] set [ADMIN_LOOKUPFLW(target)] on fire with [our_plant] at [AREACOORD(user)]")
@@ -128,15 +122,15 @@
 /// Sunflower's attack effect (shows cute text)
 /datum/plant_gene/trait/attack/sunflower_attack
 	name = "Bright Petals"
-	description = "Makes others feel the power on hit."
+	description = "Faz os outros sentirem o poder do Golpe."
 
 /datum/plant_gene/trait/attack/sunflower_attack/after_attack_effect(obj/item/our_plant, atom/target, mob/user, list/modifiers)
 	if(ismob(target))
 		var/mob/target_mob = target
-		user.visible_message("<font color='green'>[user] smacks [target_mob] with [user.p_their()] [our_plant.name]! <font color='orange'><b>FLOWER POWER!</b></font></font>", ignored_mobs = list(target_mob, user))
+		user.visible_message("<font color='green'>[user]Strocks.[target_mob]Com[user.p_their()] [our_plant.name]! <font color='orange'><b>Poder das flores!</b></font></font>", ignored_mobs = list(target_mob, user))
 		if(target_mob != user)
-			to_chat(target_mob, "<font color='green'>[user] smacks you with [our_plant]!<font color='orange'><b>FLOWER POWER!</b></font></font>")
-		to_chat(user, "<font color='green'>Your [our_plant.name]'s <font color='orange'><b>FLOWER POWER</b></font> strikes [target_mob]!</font>")
+			to_chat(target_mob, "<font color='green'>[user]Bate em você com[our_plant]!<font color='orange'><b>Poder das flores!</b></font></font>")
+		to_chat(user, "<font color='green'>Sua[our_plant.name]'s<font color='orange'><b>PODER DE FLORES</b></font>Strikes[target_mob]!</font>")
 
 	return ..()
 
@@ -155,7 +149,7 @@
 /datum/plant_gene/trait/backfire
 	name = "Backfire Trait"
 	icon = FA_ICON_MITTEN
-	description = "Be careful when holding it without protection."
+	description = "Cuidado ao segurá-lo sem proteção."
 	/// Whether our actions are cancelled when the backfire triggers.
 	var/cancel_action_on_backfire = FALSE
 	/// A list of extra traits to check to be considered safe.
@@ -190,40 +184,40 @@
 /// Rose's prick on backfire
 /datum/plant_gene/trait/backfire/rose_thorns
 	name = "Rose Thorns"
-	description = "The stem has a lot of thorns."
+	description = "O caule tem muitos espinhos."
 	traits_to_check = list(TRAIT_PIERCEIMMUNE)
 	trait_flags = TRAIT_SHOW_EXAMINE
 
 /datum/plant_gene/trait/backfire/rose_thorns/backfire_effect(obj/item/our_plant, mob/living/carbon/user)
 	var/obj/item/seeds/our_seed = our_plant.get_plant_seed()
 	if(!our_seed.get_gene(/datum/plant_gene/trait/sticky) && prob(66))
-		to_chat(user, span_danger("[our_plant]'s thorns nearly prick your hand. Best be careful."))
+		to_chat(user, span_danger("[our_plant]Os espinhos quase picam sua mão. Melhor ter cuidado."))
 		return
 
-	to_chat(user, span_danger("[our_plant]'s thorns prick your hand. Ouch."))
+	to_chat(user, span_danger("[our_plant]Os espinhos picam sua mão. Ouch."))
 	our_plant.investigate_log("rose-pricked [key_name(user)] at [AREACOORD(user)]", INVESTIGATE_BOTANY)
 	user.apply_damage(2, BRUTE, user.get_active_hand())
 
 /// Novaflower's hand burn on backfire
 /datum/plant_gene/trait/backfire/novaflower_heat
 	name = "Burning Stem"
-	description = "The stem may burn your hand."
+	description = "O caule pode queimar sua mão."
 	cancel_action_on_backfire = TRUE
 	trait_flags = TRAIT_SHOW_EXAMINE
 
 /datum/plant_gene/trait/backfire/novaflower_heat/backfire_effect(obj/item/our_plant, mob/living/carbon/user)
-	to_chat(user, span_danger("[our_plant] singes your bare hand!"))
+	to_chat(user, span_danger("[our_plant]Cante sua mão nua!"))
 	our_plant.investigate_log("self-burned [key_name(user)] for [our_plant.force] at [AREACOORD(user)]", INVESTIGATE_BOTANY)
 	user.apply_damage(our_plant.force, our_plant.damtype, user.get_active_hand(), wound_bonus = CANT_WOUND)
 
 /// Normal Nettle hannd burn on backfire
 /datum/plant_gene/trait/backfire/nettle_burn
 	name = "Stinging Stem"
-	description = "The stem may sting your hand."
+	description = "O caule pode picar sua mão."
 	trait_flags = TRAIT_SHOW_EXAMINE
 
 /datum/plant_gene/trait/backfire/nettle_burn/backfire_effect(obj/item/our_plant, mob/living/carbon/user)
-	to_chat(user, span_danger("[our_plant] burns your bare hand!"))
+	to_chat(user, span_danger("[our_plant]Queima sua mão nua!"))
 	our_plant.investigate_log("self-burned [key_name(user)] for [our_plant.force] at [AREACOORD(user)]", INVESTIGATE_BOTANY)
 	user.apply_damage(our_plant.force, our_plant.damtype, user.get_active_hand(), wound_bonus = CANT_WOUND)
 
@@ -238,12 +232,12 @@
 		return
 
 	user.Paralyze(10 SECONDS)
-	to_chat(user, span_userdanger("You are stunned by the powerful acids of [our_plant]!"))
+	to_chat(user, span_userdanger("Você está atordoado pelos ácidos poderosos de[our_plant]!"))
 
 /// Ghost-Chili heating up on backfire
 /datum/plant_gene/trait/backfire/chili_heat
 	name = "Active Capsicum Glands"
-	description = "It emits a strong heat when handled."
+	description = "Ele emite um calor forte quando manipulado."
 	trait_flags = TRAIT_SHOW_EXAMINE
 	genes_to_check = list(/datum/plant_gene/trait/chem_heating)
 	/// The mob currently holding the chili.
@@ -295,12 +289,12 @@
 
 	our_mob.adjust_bodytemperature(7.5 * TEMPERATURE_DAMAGE_COEFFICIENT * seconds_per_tick)
 	if(SPT_PROB(5, seconds_per_tick))
-		to_chat(our_mob, span_warning("Your hand holding [our_plant] burns!"))
+		to_chat(our_mob, span_warning("Sua mão segurando[our_plant]Queimaduras!"))
 
 /// Bluespace Tomato squashing on the user on backfire
 /datum/plant_gene/trait/backfire/bluespace
 	name = "Bluespace Volatility"
-	description = "You may be spaced out if you hold this unprotected."
+	description = "Você pode ficar desamparado se segurar isso desprotegido."
 	cancel_action_on_backfire = TRUE
 	genes_to_check = list(/datum/plant_gene/trait/squash)
 
@@ -308,7 +302,7 @@
 	if(prob(50))
 		return
 
-	to_chat(user, span_danger("[our_plant] slips out of your hand!"))
+	to_chat(user, span_danger("[our_plant]Sai da sua mão!"))
 
 	var/obj/item/seeds/our_seed = our_plant.get_plant_seed()
 	var/datum/plant_gene/trait/squash/squash_gene = our_seed.get_gene(/datum/plant_gene/trait/squash)
@@ -317,7 +311,7 @@
 /// Traits for plants that can be activated to turn into a mob.
 /datum/plant_gene/trait/mob_transformation
 	name = "Dormant Ferocity"
-	description = "It comes to life when shaken in hand."
+	description = "Ele ganha vida quando está na mão."
 	icon = FA_ICON_HEART_PULSE
 	trait_ids = ATTACK_SELF_ID
 	/// Whether mobs spawned by this trait are dangerous or not.
@@ -361,8 +355,8 @@
 		return
 
 	if(target != user)
-		to_chat(user, span_warning("[our_plant] is twitching and shaking, preventing you from feeding it to [target]."))
-	to_chat(target, span_warning("[our_plant] is twitching and shaking, preventing you from eating it."))
+		to_chat(user, span_warning("[our_plant]está se contorcendo e tremendo, impedindo você de alimentá-lo para[target]."))
+	to_chat(target, span_warning("[our_plant]está se contorcendo e tremendo, impedindo que você coma."))
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /*
@@ -379,10 +373,10 @@
 		return
 
 	if(dangerous && HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_notice("You decide not to awaken [our_plant]. It may be very dangerous!"))
+		to_chat(user, span_notice("Você decide não acordar.[our_plant]Pode ser muito perigoso!"))
 		return
 
-	to_chat(user, span_notice("You begin to awaken [our_plant]..."))
+	to_chat(user, span_notice("Você começa a acordar[our_plant]..."))
 	begin_awaken(our_plant, 3 SECONDS)
 	our_plant.investigate_log("was awakened by [key_name(user)] at [AREACOORD(user)].", INVESTIGATE_BOTANY)
 
@@ -396,7 +390,7 @@
 	SIGNAL_HANDLER
 
 	if(!awakening && !isspaceturf(user.loc) && prob(25))
-		our_plant.visible_message(span_danger("[our_plant] begins to growl and shake!"))
+		our_plant.visible_message(span_danger("[our_plant]Começa a rosnar e tremer!"))
 		begin_awaken(our_plant, 1 SECONDS)
 		our_plant.investigate_log("was awakened (via plant backfire) by [key_name(user)] at [AREACOORD(user)].", INVESTIGATE_BOTANY)
 
@@ -439,7 +433,7 @@
 		spawned_basicmob.set_varspeed(calculated_speed)
 
 	our_plant.forceMove(our_plant.drop_location())
-	spawned_mob.visible_message(span_notice("[our_plant] growls as it suddenly awakens!"))
+	spawned_mob.visible_message(span_notice("[our_plant]Rosna quando se arrependeu de concordar!"))
 	qdel(our_plant)
 
 /// Killer Tomato's transformation gene.
@@ -460,7 +454,7 @@
 /// Traiit for plants eaten in 1 bite.
 /datum/plant_gene/trait/one_bite
 	name = "Large Bites"
-	description = "You can't hold off from eating this in one bite!"
+	description = "Você não pode evitar comer isso em uma mordida!"
 	icon = FA_ICON_DRUMSTICK_BITE
 	trait_flags = TRAIT_SHOW_EXAMINE
 
@@ -476,7 +470,7 @@
 /// Traits for plants with a different base max_volume.
 /datum/plant_gene/trait/modified_volume
 	name = "Deep Vesicles"
-	description = "It has extra reagent volume."
+	description = "Tem volume de reagente extra."
 	icon = FA_ICON_VIALS
 	/// The new number we set the plant's max_volume to.
 	var/new_capcity = 100
@@ -493,20 +487,20 @@
 /// Omegaweed's funny 420 max volume gene
 /datum/plant_gene/trait/modified_volume/omega_weed
 	name = "Dank Vesicles"
-	description = "It can hold up to 420 units of reagents."
+	description = "Pode conter até 420 unidades de reagentes."
 	icon = FA_ICON_CANNABIS
 	new_capcity = 420
 
 /// Cherry Bomb's increased max volume gene
 /datum/plant_gene/trait/modified_volume/cherry_bomb
 	name = "Powder-Filled Bulbs"
-	description = "It can hold up to 125 units of reagents."
+	description = "Pode conter até 125 unidades de reagentes."
 	new_capcity = 125
 
 /// Plants that explode when used (based on their reagent contents)
 /datum/plant_gene/trait/bomb_plant
 	name = "Explosive Contents"
-	description = "Don't shake it, the contents may explode."
+	description = "Não agite, o conteúdo pode explodir."
 	icon = FA_ICON_BOMB
 	trait_ids = ATTACK_SELF_ID
 
@@ -539,8 +533,8 @@
 
 	playsound(our_plant, 'sound/effects/fuse.ogg', our_seed.potency, FALSE)
 	user.visible_message(
-		span_warning("[user] plucks the stem from [our_plant]!"),
-		span_userdanger("You pluck the stem from [our_plant], which begins to hiss loudly!"),
+		span_warning("[user]Arranca o caule de[our_plant]!"),
+		span_userdanger("Você arranca o caule de[our_plant], que começa a assobiar alto!"),
 	)
 	log_bomber(user, "primed a", our_plant, "for detonation")
 	detonate(our_plant)
@@ -588,8 +582,8 @@
 
 /datum/plant_gene/trait/bomb_plant/potency_based/trigger_detonation(obj/item/our_plant, mob/living/user)
 	user.visible_message(
-		span_warning("[user] primes [our_plant]!"),
-		span_userdanger("You prime [our_plant]!"),
+		span_warning("[user]Primes.[our_plant]!"),
+		span_userdanger("Você prime[our_plant]!"),
 	)
 	log_bomber(user, "primed a", our_plant, "for detonation")
 
@@ -614,7 +608,7 @@
 /// Can be generalized in the future to spawn any gas, but I don't think that's necessarily a good idea.
 /datum/plant_gene/trait/gas_production
 	name = "Miasma Gas Production"
-	description = "This plant stinks when grown."
+	description = "Esta planta fede quando crescer."
 	icon = FA_ICON_WIND
 	/// The location of our tray, if we have one.
 	var/datum/weakref/home_tray
@@ -689,7 +683,7 @@
 /// Hard caps the yield at 5 (effectively)
 /datum/plant_gene/trait/complex_harvest
 	name = "Complex Harvest"
-	description = "Halves the maximum yield of the plant, and prevents it from benefiting from pollination's yield bonus."
+	description = "Metade do rendimento máximo da planta, e impede que ela se beneficie do bônus de rendimento da polinização."
 	icon = FA_ICON_SLASH
 	trait_flags = TRAIT_HALVES_YIELD|TRAIT_NO_POLLINATION
 	mutability_flags = NONE
@@ -697,7 +691,7 @@
 /// Poppy's unique trait that allows slicing for sap
 /datum/plant_gene/trait/opium_production
 	name = "Sap Buds"
-	description = "Using a knife or other sharp object on the plant between ages 200 seconds to 400 seconds will yield a sap."
+	description = "Usar uma faca ou outro objeto afiado na planta entre 200 segundos e 400 segundos vai dar uma seiva."
 	icon = FA_ICON_PILLS
 	/// Has parent plant been harvested for sap already?
 	var/extracted = FALSE
@@ -717,13 +711,13 @@
 		return NONE
 
 	if(source.age < 10)
-		to_chat(user, span_warning("The [LOWER_TEXT(source.myseed.plantname)] are too young to extract sap from!"))
+		to_chat(user, span_warning("O[LOWER_TEXT(source.myseed.plantname)]São muito jovens para extrair seiva!"))
 		return ITEM_INTERACT_FAILURE
 	if(source.age > 19)
-		to_chat(user, span_warning("The [LOWER_TEXT(source.myseed.plantname)] are too old to extract sap from!"))
+		to_chat(user, span_warning("O[LOWER_TEXT(source.myseed.plantname)]São muito velhos para extrair seiva!"))
 		return ITEM_INTERACT_FAILURE
 	if(extracted)
-		to_chat(user, span_warning("The [LOWER_TEXT(source.myseed.plantname)] have already been harvested for sap!"))
+		to_chat(user, span_warning("O[LOWER_TEXT(source.myseed.plantname)]Já foram colhidas por seiva!"))
 		return ITEM_INTERACT_FAILURE
 
 	extracted = TRUE
@@ -731,8 +725,8 @@
 	playsound(src, 'sound/effects/bubbles/bubbles.ogg', 30, TRUE)
 	playsound(tool, 'sound/items/weapons/bladeslice.ogg', 30, TRUE)
 	user.visible_message(
-		span_notice("[user] carefully slices open a [source.myseed.species] pod, extracting a sap."),
-		span_notice("You carefully slice the [source.myseed.species]'s pod, collecting the fragrant, alluring sap."),
+		span_notice("[user]Cuidado, Fatias abrar um[source.myseed.species]Pod, extraindo uma seiva."),
+		span_notice("Você corta cuidadosamente o[source.myseed.species]A cápsula, coletando a seiva perfumada e sedutora."),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
 	return ITEM_INTERACT_SUCCESS

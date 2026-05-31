@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/applicator/pill
 	name = "pill"
-	desc = "A tablet or capsule."
+	desc = "Um comprimido ou cápsula."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "pill"
 	inhand_icon_state = "pill"
@@ -22,9 +22,9 @@
 /obj/item/reagent_containers/applicator/pill/proc/reagent_special_examine(datum/source, mob/user, list/examine_list, can_see_insides = FALSE)
 	SIGNAL_HANDLER
 	if (layers_remaining)
-		examine_list += span_notice("Its sugary shell will last approximately [layers_remaining] seconds in a human stomach.")
+		examine_list += span_notice("Sua casca açucarada durará aproximadamente[layers_remaining]segundos no estômago humano.")
 	else
-		examine_list += span_warning("Its shell is completely dissolved!")
+		examine_list += span_warning("Sua concha está completamente dissolvida!")
 
 ///Runs the consumption code, can be overriden for special effects
 /obj/item/reagent_containers/applicator/pill/on_consumption(mob/living/consumer, mob/giver, list/modifiers)
@@ -58,14 +58,14 @@
 		return NONE
 
 	if(target.is_drainable() && !target.reagents.total_volume)
-		to_chat(user, span_warning("[target] is empty! There's nothing to dissolve [src] in."))
+		to_chat(user, span_warning("[target]Está vazio! Não há nada para dissolver[src]Entre."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(target.reagents.holder_full())
-		to_chat(user, span_warning("[target] is full."))
+		to_chat(user, span_warning("[target]Está cheio."))
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_warning("[user] slips something into [target]!"), span_notice("You dissolve [src] in [target]."), null, 2)
+	user.visible_message(span_warning("[user]Coloca algo em[target]!"), span_notice("Você dissolve.[src]em[target]."), null, 2)
 	reagents.trans_to(target, reagents.total_volume, transferred_by = user)
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
@@ -83,7 +83,7 @@
 	else if (istype(tool, /obj/item/reagent_containers/cup))
 		container = tool
 		if (!container.is_drainable())
-			to_chat(user, span_warning("You cannot pour [container]'s contents onto [src]!"))
+			to_chat(user, span_warning("Você não pode derramar[container]'s conteúdo em[src]!"))
 			return ITEM_INTERACT_BLOCKING
 		use_verb = "pour"
 
@@ -93,12 +93,12 @@
 	var/datum/reagent/consumable/sugar/sugar = container.reagents.has_reagent(/datum/reagent/consumable/sugar)
 	if (sugar)
 		if (layers_remaining >= PILL_MAX_LAYERS) // Full minute
-			to_chat(user, span_warning("[src]'s coating is too thick for you to cover it in any more sugar!"))
+			to_chat(user, span_warning("[src]O revestimento é muito grosso para cobrir com mais açúcar!"))
 			return ITEM_INTERACT_BLOCKING
 		var/to_apply = floor(min(container.amount_per_transfer_from_this, sugar.volume, PILL_MAX_LAYERS - layers_remaining))
 		container.reagents.remove_reagent(/datum/reagent/consumable/sugar, to_apply)
 		layers_remaining += to_apply
-		to_chat(user, span_notice("You [use_verb] some of [container]'s contents onto [src], thickening its sugary shell."))
+		to_chat(user, span_notice("Você.[use_verb]Alguns de[container]'s conteúdo em[src], espessando sua casca açucarada."))
 		return ITEM_INTERACT_SUCCESS
 
 	var/datum/reagent/water/water = container.reagents.has_reagent(/datum/reagent/water)
@@ -106,13 +106,13 @@
 		return ..()
 
 	if (!layers_remaining) // No coating
-		to_chat(user, span_warning("[src] doesn't have any more external layers to dissolve!"))
+		to_chat(user, span_warning("[src]Não tem mais camadas externas para dissolver!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/to_apply = floor(min(container.amount_per_transfer_from_this, water.volume, layers_remaining))
 	container.reagents.remove_reagent(/datum/reagent/water, to_apply)
 	layers_remaining -= to_apply
-	to_chat(user, span_notice("You [use_verb] some of [container]'s contents onto [src], dissolving its sugary shell."))
+	to_chat(user, span_notice("Você.[use_verb]Alguns de[container]'s conteúdo em[src], dissolvendo sua casca açucarada."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/reagent_containers/applicator/pill/proc/on_digestion(datum/source, obj/item/organ/stomach/stomach, mob/living/carbon/owner, seconds_per_tick)
@@ -154,138 +154,138 @@
  */
 /obj/item/reagent_containers/applicator/pill/on_accidental_consumption(mob/living/carbon/victim, mob/living/carbon/user, obj/item/source_item, discover_after = FALSE)
 	if(victim.get_food_taste_reaction(source_item) != FOOD_LIKED) // If you don't like the food then you notice the pill you just swallowed
-		to_chat(victim, span_warning("You swallow something small. [source_item ? "Was that in [source_item]?" : ""]"))
+		to_chat(victim, span_warning("Engoliu algo pequeno.[source_item ? "Was that in [source_item]?" : ""]"))
 	on_consumption(victim, user)
 	return FALSE
 
 /obj/item/reagent_containers/applicator/pill/tox
 	name = "toxins pill"
-	desc = "Highly toxic."
+	desc = "Altamente tóxico."
 	icon_state = "pill5"
 	list_reagents = list(/datum/reagent/toxin = 50)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/cyanide
 	name = "cyanide pill"
-	desc = "Don't swallow this."
+	desc = "Não engula isso."
 	icon_state = "pill5"
 	list_reagents = list(/datum/reagent/toxin/cyanide = 50)
 
 /obj/item/reagent_containers/applicator/pill/adminordrazine
 	name = "adminordrazine pill"
-	desc = "It's magic. We don't have to explain it."
+	desc = "É mágica. Não precisamos explicar."
 	icon_state = "pill16"
 	list_reagents = list(/datum/reagent/medicine/adminordrazine = 50)
 
 /obj/item/reagent_containers/applicator/pill/morphine
 	name = "morphine pill"
-	desc = "Commonly used to treat insomnia."
+	desc = "Geralmente usado para tratar insônia."
 	icon_state = "pill8"
 	list_reagents = list(/datum/reagent/medicine/morphine = 30)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/spaceacillin
 	name = "spaceacillin pill"
-	desc = "Increases resistance to viruses, bacteria, and parasites."
+	desc = "Aumenta a resistência a vírus, bactérias e parasitas."
 	icon_state = "pill17"
 	list_reagents = list(/datum/reagent/medicine/spaceacillin = 1.5) //1 minute since 0.05 every tick.
 
 /obj/item/reagent_containers/applicator/pill/stimulant
 	name = "stimulant pill"
-	desc = "Often taken by overworked employees, athletes, and the inebriated. You'll snap to attention immediately!"
+	desc = "Muitas vezes tomado por funcionários sobrecarregados, atletas, e os embriagados. Você vai chamar atenção imediatamente!"
 	icon_state = "pill19"
 	list_reagents = list(/datum/reagent/medicine/ephedrine = 10, /datum/reagent/medicine/antihol = 10, /datum/reagent/consumable/coffee = 30)
 
 /obj/item/reagent_containers/applicator/pill/prescription_stimulant
 	name = "prescription stimulant pill"
-	desc = "Used to treat symptoms of drowsiness and sudden loss of consciousness."
+	desc = "Usado para tratar sintomas de sonolência e perda súbita de consciência."
 	list_reagents = list(/datum/reagent/consumable/sugar = 5, /datum/reagent/medicine/synaptizine = 5, /datum/reagent/medicine/modafinil = 3)
 	icon_state = "pill15"
 
 /obj/item/reagent_containers/applicator/pill/salbutamol
 	name = "salbutamol pill"
-	desc = "Used to treat oxygen deprivation."
+	desc = "Usado para tratar a privação de oxigênio."
 	icon_state = "pill16"
 	list_reagents = list(/datum/reagent/medicine/salbutamol = 30)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/multiver
 	name = "multiver pill"
-	desc = "Neutralizes many common toxins and scales with unique medicine in the system. Diluted with granibitaluri."
+	desc = "Neutraliza muitas toxinas comuns e escalas com medicina única no sistema. Diluída com granibitaluri."
 	icon_state = "pill17"
 	list_reagents = list(/datum/reagent/medicine/c2/multiver = 5, /datum/reagent/medicine/granibitaluri = 5)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/epinephrine
 	name = "epinephrine pill"
-	desc = "Used to stabilize patients."
+	desc = "Usado para estabilizar pacientes."
 	icon_state = "pill5"
 	list_reagents = list(/datum/reagent/medicine/epinephrine = 15)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/mannitol
 	name = "mannitol pill"
-	desc = "Used to treat brain damage."
+	desc = "Usado para tratar danos cerebrais."
 	icon_state = "pill17"
 	list_reagents = list(/datum/reagent/medicine/mannitol = 15)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/sansufentanyl
 	name = "sansufentanyl pill"
-	desc = "Used to treat Hereditary Manifold Sickness. Temporary side effects include - nausea, dizziness, impaired motor coordination."
+	desc = "Costumava tratar a doença hereditária. Efeitos colaterais temporários incluem náuseas, tonturas, dificuldade na coordenação motora."
 	icon_state = "pill19"
 	list_reagents = list(/datum/reagent/medicine/sansufentanyl = 5)
 
 //Lower quantity mannitol pills (50u pills heal 250 brain damage, 5u pills heal 25)
 /obj/item/reagent_containers/applicator/pill/mannitol/braintumor
-	desc = "Used to treat symptoms for brain tumors."
+	desc = "Usado para tratar sintomas de tumores cerebrais."
 	list_reagents = list(/datum/reagent/medicine/mannitol = 5)
 
 /obj/item/reagent_containers/applicator/pill/mutadone
 	name = "mutadone pill"
-	desc = "Used to treat genetic damage."
+	desc = "Usado para tratar danos genéticos."
 	icon_state = "pill20"
 	list_reagents = list(/datum/reagent/medicine/mutadone = 5)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/salicylic
 	name = "salicylic acid pill"
-	desc = "Used to dull pain."
+	desc = "Costumava entediar a dor."
 	icon_state = "pill9"
 	list_reagents = list(/datum/reagent/medicine/sal_acid = 24)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/oxandrolone
 	name = "oxandrolone pill"
-	desc = "Used to stimulate burn healing."
+	desc = "Costumava estimular a cura de queimaduras."
 	icon_state = "pill11"
 	list_reagents = list(/datum/reagent/medicine/oxandrolone = 24)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/insulin
 	name = "insulin pill"
-	desc = "Handles hyperglycaemic coma."
+	desc = "Lida com coma hiperglicêmico."
 	icon_state = "pill18"
 	list_reagents = list(/datum/reagent/medicine/insulin = 50)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/psicodine
 	name = "psicodine pill"
-	desc = "Used to treat mental instability and phobias."
+	desc = "Usado para tratar instabilidade mental e fobias."
 	list_reagents = list(/datum/reagent/medicine/psicodine = 10)
 	icon_state = "pill22"
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/penacid
 	name = "pentetic acid pill"
-	desc = "Used to expunge radiation and toxins."
+	desc = "Usado para eliminar radiação e toxinas."
 	list_reagents = list(/datum/reagent/medicine/pen_acid = 10)
 	icon_state = "pill22"
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/neurine
 	name = "neurine pill"
-	desc = "Used to treat non-severe mental traumas."
+	desc = "Costumava tratar traumas mentais não graves."
 	list_reagents = list(/datum/reagent/medicine/neurine = 10)
 	icon_state = "pill22"
 	rename_with_volume = TRUE
@@ -293,7 +293,7 @@
 ///////////////////////////////////////// this pill is used only in a legion mob drop
 /obj/item/reagent_containers/applicator/pill/shadowtoxin
 	name = "black pill"
-	desc = "I wouldn't eat this if I were you."
+	desc = "Eu não comeria isso se fosse você."
 	icon_state = "pill9"
 	color = "#454545"
 	list_reagents = list(/datum/reagent/mutationtoxin/shadow = 10)
@@ -301,21 +301,21 @@
 ///////////////////////////////////////// Psychologist inventory pills
 /obj/item/reagent_containers/applicator/pill/happinesspsych
 	name = "mood stabilizer pill"
-	desc = "Used to temporarily alleviate anxiety and depression, take only as prescribed."
+	desc = "Usado para aliviar temporariamente ansiedade e depressão, tomar apenas como prescrito."
 	list_reagents = list(/datum/reagent/drug/happiness = 5)
 	icon_state = "pill_happy"
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/paxpsych
 	name = "pacification pill"
-	desc = "Used to temporarily suppress violent, homicidal, or suicidal behavior in patients."
+	desc = "Costumava suprimir temporariamente o comportamento violento, homicida ou suicida em pacientes."
 	list_reagents = list(/datum/reagent/pax = 5)
 	icon_state = "pill12"
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/lsdpsych
 	name = "antipsychotic pill"
-	desc = "Talk to your healthcare provider immediately if hallucinations worsen or new hallucinations emerge."
+	desc = "Fale com seu médico imediatamente se as alucinações piorarem ou novas alucinações surgirem."
 	list_reagents = list(/datum/reagent/toxin/mindbreaker = 5)
 	icon_state = "pill14"
 	rename_with_volume = TRUE
@@ -323,35 +323,35 @@
 //////////////////////////////////////// drugs
 /obj/item/reagent_containers/applicator/pill/zoom
 	name = "yellow pill"
-	desc = "A poorly made canary-yellow pill; it is slightly crumbly."
+	desc = "Uma pílula mal feita de amarelo canário. Está ligeiramente enrugada."
 	list_reagents = list(/datum/reagent/medicine/synaptizine = 10, /datum/reagent/drug/nicotine = 10, /datum/reagent/drug/methamphetamine = 1)
 	icon_state = "pill7"
 
 
 /obj/item/reagent_containers/applicator/pill/happy
 	name = "happy pill"
-	desc = "They have little happy faces on them, and they smell like marker pens."
+	desc = "Eles têm carinhas felizes e cheiram a canetas."
 	list_reagents = list(/datum/reagent/consumable/sugar = 10, /datum/reagent/drug/space_drugs = 10)
 	icon_state = "pill_happy"
 
 
 /obj/item/reagent_containers/applicator/pill/lsd
 	name = "sunshine pill"
-	desc = "Engraved on this split-coloured pill is a half-sun, half-moon."
+	desc = "Gravado nesta pílula de cor dividida é meio sol, meia lua."
 	list_reagents = list(/datum/reagent/drug/mushroomhallucinogen = 15, /datum/reagent/toxin/mindbreaker = 15)
 	icon_state = "pill14"
 
 
 /obj/item/reagent_containers/applicator/pill/aranesp
 	name = "smooth pill"
-	desc = "This blue pill feels slightly moist."
+	desc = "Esta pílula azul parece um pouco úmida."
 	list_reagents = list(/datum/reagent/drug/aranesp = 10)
 	icon_state = "pill3"
 
 ///Black and white pills that spawn in maintenance and have random reagent contents
 /obj/item/reagent_containers/applicator/pill/maintenance
 	name = "maintenance pill"
-	desc = "A strange pill found in the depths of maintenance."
+	desc = "Uma estranha pílula encontrada nas profundezas da manutenção."
 	icon_state = "pill21"
 	/// From which randomisation pool to pull reagents from
 	var/random_reagent_flag = REAGENT_SPAWN_RANDOM_PRODUCERS
@@ -401,35 +401,35 @@
 
 /obj/item/reagent_containers/applicator/pill/potassiodide
 	name = "potassium iodide pill"
-	desc = "Used to reduce low radiation damage very effectively."
+	desc = "Usado para reduzir danos de baixa radiação de forma muito eficaz."
 	icon_state = "pill11"
 	list_reagents = list(/datum/reagent/medicine/potass_iodide = 15)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/probital
 	name = "Probital pill"
-	desc = "Used to treat brute damage of minor and moderate severity.The carving in the pill says 'Eat before ingesting'. Causes fatigue and diluted with granibitaluri."
+	desc = "Usado para tratar danos brutos de gravidade menor e moderada. A escultura na pílula diz \"Coma antes de ingerir\". Causa fadiga e diluição com granibitaluri."
 	icon_state = "pill12"
 	list_reagents = list(/datum/reagent/medicine/c2/probital = 5, /datum/reagent/medicine/granibitaluri = 10)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/iron
 	name = "iron pill"
-	desc = "Used to reduce bloodloss slowly."
+	desc = "Costumava reduzir a perda de sangue lentamente."
 	icon_state = "pill8"
 	list_reagents = list(/datum/reagent/iron = 30)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/gravitum
 	name = "gravitum pill"
-	desc = "Used in weight loss. In a way."
+	desc = "Usado em perda de peso. De certa forma."
 	icon_state = "pill8"
 	list_reagents = list(/datum/reagent/gravitum = 5)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/ondansetron
 	name = "ondansetron pill"
-	desc = "Alleviates nausea. May cause drowsiness."
+	desc = "Alivia náusea. Pode causar sonolência."
 	icon_state = "pill11"
 	list_reagents = list(/datum/reagent/medicine/ondansetron = 10)
 

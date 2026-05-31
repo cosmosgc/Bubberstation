@@ -1,7 +1,7 @@
 /obj/item/organ/ears
 	name = "ears"
 	icon_state = "ears"
-	desc = "There are three parts to the ear. Inner, middle and outer. Only one of these parts should be normally visible."
+	desc = "Há três partes na orelha. Interior, médio e externo. Apenas uma dessas partes deve ser normalmente visível."
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EARS
 	gender = PLURAL
@@ -29,7 +29,7 @@
 /obj/item/organ/ears/on_life(seconds_per_tick)
 	// only inform when things got worse, needs to happen before we heal
 	if((damage > low_threshold && prev_damage < low_threshold) || (damage > high_threshold && prev_damage < high_threshold))
-		to_chat(owner, span_warning("The ringing in your ears grows louder, blocking out any external noises for a moment."))
+		to_chat(owner, span_warning("O zumbido em seus ouvidos fica mais alto, bloqueando qualquer ruído externo por um momento."))
 
 	. = ..()
 	// if we have non-damage related deafness like mutations, quirks or clothing (earmuffs), don't bother processing here.
@@ -193,30 +193,30 @@
 	name = "basic cybernetic cat ears"
 	icon = 'icons/obj/medical/organs/organs.dmi'
 	icon_state = "ears-c-cat"
-	desc = "A basic cybernetic organ designed to mimic the operation of ears."
+	desc = "Um órgão cibernético básico projetado para imitar a operação dos ouvidos."
 	damage_multiplier = 2.4
 	bodypart_overlay = /datum/bodypart_overlay/mutant/cat_ears/cybernetic
 	sprite_accessory_override = /datum/sprite_accessory/ears/cat/cybernetic
 	organ_flags = ORGAN_ROBOTIC
-	failing_desc = "seems to be broken."
+	failing_desc = "Parece estar quebrado."
 
 /obj/item/organ/ears/cat/cybernetic/upgraded
 	name = "cybernetic cat ears"
 	icon_state = "ears-c-cat-u"
-	desc = "A cybernetic cat ear, still less durable than human ears."
+	desc = "Uma orelha de gato cibernética, ainda menos durável que orelhas humanas."
 	damage_multiplier = 1.5
 
 /obj/item/organ/ears/cat/cybernetic/volume
 	name = "volume-adjusting cybernetic cat ears"
 	icon_state = "ears-c-cat-u2"
-	desc = "Advanced cybernetic cat ears capable of dampening loud noises to protect their user."
+	desc = "Orelhas avançadas de gatos cibernéticos capazes de amortecer ruídos altos para proteger seu usuário."
 	damage_multiplier = 1
 	bang_protect = 1
 
 /obj/item/organ/ears/cat/cybernetic/whisper
 	name = "whisper-sensiive cybernetic cat ears"
 	icon_state = "ears-c-cat-green"
-	desc = "Allows the user to more easily hear whispers. The user becomes extremely vulnerable to loud noises, however."
+	desc = "Permite ao usuário ouvir mais facilmente sussurros. O usuário fica extremamente vulnerável a ruídos altos, no entanto."
 	damage_multiplier = 3 // 4 would be excessive
 	organ_traits = list(TRAIT_GOOD_HEARING)
 	bodypart_overlay = /datum/bodypart_overlay/mutant/cat_ears/cybernetic/green
@@ -224,7 +224,7 @@
 /obj/item/organ/ears/cat/cybernetic/xray
 	name = "wall-penetrating cybernetic cat ears"
 	icon_state = "ears-c-cat-blue"
-	desc = "Through the power of modern feline engineering, allows the user to hear speech through walls. The user becomes extremely vulnerable to loud noises, however."
+	desc = "Através do poder da engenharia felina moderna, permite que o usuário ouça a fala através das paredes. O usuário fica extremamente vulnerável a ruídos altos, no entanto."
 	damage_multiplier = 3 // As above, 4 would be excessive
 	organ_traits = list(TRAIT_XRAY_HEARING)
 	bodypart_overlay = /datum/bodypart_overlay/mutant/cat_ears/cybernetic/blue
@@ -261,43 +261,43 @@
 
 /obj/item/organ/ears/ghost
 	name = "ghost ears"
-	desc = "All the more to hear you... though it can't hear through walls."
+	desc = "Ainda mais para ouvi-lo... embora não possa ouvir através das paredes."
 	icon_state = "ears-ghost"
 	movement_type = PHASING
 	organ_flags = parent_type::organ_flags | ORGAN_GHOST
 
 /obj/item/organ/ears/penguin
 	name = "penguin ears"
-	desc = "The source of a penguin's happy feet."
+	desc = "A fonte dos pés felizes de um pinguim."
 
 /obj/item/organ/ears/penguin/on_mob_insert(mob/living/carbon/human/ear_owner)
 	. = ..()
-	to_chat(ear_owner, span_notice("You suddenly feel like you've lost your balance."))
+	to_chat(ear_owner, span_notice("De repente você sente que perdeu o equilíbrio."))
 	ear_owner.AddElementTrait(TRAIT_WADDLING, ORGAN_TRAIT, /datum/element/waddling)
 
 /obj/item/organ/ears/penguin/on_mob_remove(mob/living/carbon/human/ear_owner)
 	. = ..()
-	to_chat(ear_owner, span_notice("Your sense of balance comes back to you."))
+	to_chat(ear_owner, span_notice("Seu senso de equilíbrio volta para você."))
 	REMOVE_TRAIT(ear_owner, TRAIT_WADDLING, ORGAN_TRAIT)
 
 /obj/item/organ/ears/cybernetic
 	name = "basic cybernetic ears"
 	icon_state = "ears-c"
-	desc = "A basic cybernetic organ designed to mimic the operation of ears."
+	desc = "Um órgão cibernético básico projetado para imitar a operação dos ouvidos."
 	damage_multiplier = 1.2
 	organ_flags = ORGAN_ROBOTIC
-	failing_desc = "seems to be broken."
+	failing_desc = "Parece estar quebrado."
 
 /obj/item/organ/ears/cybernetic/upgraded
 	name = "cybernetic ears"
 	icon_state = "ears-c-u"
-	desc =  "A cybernetic ear, surpassing the performance of organic ears."
+	desc =  "Uma orelha cibernética, superando o desempenho de orelhas orgânicas."
 	damage_multiplier = 0.75
 
 /obj/item/organ/ears/cybernetic/whisper
 	name = "whisper-sensitive cybernetic ears"
 	icon_state = "ears-c-u"
-	desc = "Allows the user to more easily hear whispers. The user becomes extra vulnerable to loud noises, however."
+	desc = "Permite ao usuário ouvir mais facilmente sussurros. O usuário fica mais vulnerável a ruídos altos, no entanto."
 	// Same sensitivity as felinid ears
 	damage_multiplier = 2
 	// The original idea was to use signals to do this not traits. Unfortunately, the star effect used for whispers applies before any relevant signals
@@ -307,14 +307,14 @@
 /obj/item/organ/ears/cybernetic/volume
 	name = "volume-adjusting cybernetic ears"
 	icon_state = "ears-c-u"
-	desc = "Advanced cybernetic ears capable of dampening loud noises to protect their user."
+	desc = "Orelhas cibernéticas avançadas capazes de amortecer ruídos altos para proteger seu usuário."
 	bang_protect = EAR_PROTECTION_NORMAL
 	damage_multiplier = 0.5
 
 /obj/item/organ/ears/cybernetic/volume
 	name = "volume-adjusting cybernetic ears"
 	icon_state = "ears-c-u"
-	desc = "Advanced cybernetic ears capable of dampening loud noises to protect their user."
+	desc = "Orelhas cibernéticas avançadas capazes de amortecer ruídos altos para proteger seu usuário."
 	bang_protect = 1
 	damage_multiplier = 0.5
 
@@ -322,7 +322,7 @@
 /obj/item/organ/ears/cybernetic/xray
 	name = "wall-penetrating cybernetic ears"
 	icon_state = "ears-c-u"
-	desc = "Through the power of modern engineering, allows the user to hear speech through walls. The user becomes extra vulnerable to loud noises, however."
+	desc = "Através do poder da engenharia moderna, permite que o usuário ouça a fala através das paredes. O usuário fica mais vulnerável a ruídos altos, no entanto."
 	// Same sensitivity as felinid ears
 	damage_multiplier = 2
 	organ_traits = list(TRAIT_XRAY_HEARING)
@@ -335,6 +335,6 @@
 
 /obj/item/organ/ears/pod
 	name = "pod ears"
-	desc = "Strangest salad you've ever seen."
+	desc = "A salada mais estranha que já viu."
 	foodtype_flags = PODPERSON_ORGAN_FOODTYPES
 	color = COLOR_LIME

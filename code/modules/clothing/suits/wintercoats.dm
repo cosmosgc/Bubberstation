@@ -1,7 +1,7 @@
 // Wintercoat
 /obj/item/clothing/suit/hooded/wintercoat
 	name = "winter coat"
-	desc = "A heavy jacket made from 'synthetic' animal furs."
+	desc = "Uma jaqueta pesada feita de peles de animais 'sintéticos'."
 	icon = 'icons/obj/clothing/suits/wintercoat.dmi'
 	icon_state = "coatwinter"
 	worn_icon = 'icons/mob/clothing/suits/wintercoat.dmi'
@@ -46,7 +46,7 @@
 /obj/item/clothing/suit/hooded/wintercoat/examine(mob/user)
 	. = ..()
 	if(can_altclick_zip)
-		. += span_notice("<b>Alt-click</b> to [zipped ? "un" : ""]zip.")
+		. += span_notice("<b>Alt-click</b>Para[zipped ? "un" : ""]Zip.")
 
 
 /obj/item/clothing/suit/hooded/wintercoat/click_alt(mob/user)
@@ -55,7 +55,7 @@
 	zipped = !zipped
 	playsound(src, 'sound/items/zip/zip_up.ogg', 30, TRUE, -3)
 	worn_icon_state = "[initial(post_init_icon_state) || initial(icon_state)][zipped ? "_t" : ""]"
-	balloon_alert(user, "[zipped ? "" : "un"]zipped")
+	balloon_alert(user, "[zipped ? "" : "un"]zíper")
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc
@@ -64,7 +64,7 @@
 
 /obj/item/clothing/head/hooded/winterhood
 	name = "winter hood"
-	desc = "A cozy winter hood attached to a heavy winter jacket."
+	desc = "Um capuz aconchegante preso a uma jaqueta de inverno pesada."
 	icon = 'icons/obj/clothing/head/winterhood.dmi'
 	icon_state = "hood_winter"
 	worn_icon = 'icons/mob/clothing/head/winterhood.dmi'
@@ -82,7 +82,7 @@
 
 /obj/item/clothing/suit/hooded/wintercoat/eva
 	name = "\proper Endotherm winter coat"
-	desc = "A thickly padded winter coat to keep the wearer well insulated no matter the circumstances. It has a harness for a larger oxygen tank attached to the back."
+	desc = "Um casaco de inverno acolchoado para manter o usuário bem isolado, não importa as circunstâncias. Tem um arnês para um tanque de oxigênio maior preso na parte de trás."
 	icon_state = "coateva"
 	w_class = WEIGHT_CLASS_BULKY
 	slowdown = 0.75
@@ -109,7 +109,7 @@
 
 /obj/item/clothing/head/hooded/winterhood/eva
 	name = "\proper Endotherm winter hood"
-	desc = "A thickly padded hood attached to an even thicker coat."
+	desc = "Um capuz acolchoado preso a um casaco ainda mais grosso."
 	icon_state = "hood_eva"
 	armor_type = /datum/armor/winterhood_eva
 	min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
@@ -128,7 +128,7 @@
 
 /obj/item/clothing/suit/hooded/wintercoat/centcom
 	name = "centcom winter coat"
-	desc = "A luxurious winter coat woven in the bright green and gold colours of Central Command. It has a small pin in the shape of the Nanotrasen logo for a zipper."
+	desc = "Um luxuoso casaco de inverno tecido com cores verdes e douradas do Comando Central. Tem um pequeno pino na forma do logotipo Nanotrasen para um zíper."
 	icon_state = "coatcentcom"
 	inhand_icon_state = null
 	armor_type = /datum/armor/wintercoat_centcom
@@ -165,9 +165,7 @@
 
 /obj/item/clothing/suit/hooded/wintercoat/captain
 	name = "captain's winter coat"
-	desc = "A luxurious winter coat, stuffed with the down of the endangered Uka bird and trimmed with genuine sable. The fabric is an indulgently soft micro-fiber, \
-			and the deep ultramarine colour is only one that could be achieved with minute amounts of crystalline bluespace dust woven into the thread between the plectrums. \
-			Extremely lavish, and extremely durable."
+	desc = "Um luxuoso casaco de inverno, recheado com o pássaro Uka em perigo e aparado com zibelina genuína. O tecido é uma microfibra indulgentemente macia, e a cor ultramarina profunda é apenas uma que poderia ser alcançada com minúsculas quantidades de pó cristalino do espaço azul tecido no fio entre os plectrums. Extremamente luxuoso, e extremamente durável."
 	icon_state = "coatcaptain"
 	inhand_icon_state = "coatcaptain"
 	armor_type = /datum/armor/wintercoat_captain
@@ -200,7 +198,7 @@
 
 /obj/item/clothing/suit/hooded/wintercoat/hop
 	name = "head of personnel's winter coat"
-	desc = "A cozy winter coat, covered in thick fur. The breast features a proud yellow chevron, reminding everyone that you're the second banana."
+	desc = "Um casaco de inverno aconchegante, coberto de pele grossa. O peito apresenta um Chevron amarelo orgulhoso, lembrando a todos que você é a segunda banana."
 	icon_state = "coathop"
 	inhand_icon_state = null
 	armor_type = /datum/armor/wintercoat_hop
@@ -229,20 +227,20 @@
 // Botanist
 /obj/item/clothing/suit/hooded/wintercoat/hydro
 	name = "hydroponics winter coat"
-	desc = "A green and blue winter coat. The zipper tab looks like the flower from a member of Rosa Hesperrhodos, a pretty pink-and-white rose. The colours absolutely clash."
+	desc = "Um casaco de inverno verde e azul. A guia do zíper parece a flor de um membro de Rosa Hesperrhodos, uma rosa rosa e branca. As cores se chocam."
 	icon_state = "coathydro"
 	inhand_icon_state = "coathydro"
 	allowed = /obj/item/clothing/suit/apron::allowed
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/hydro
 
 /obj/item/clothing/head/hooded/winterhood/hydro
-	desc = "A green winter coat hood."
+	desc = "Um casaco verde de inverno."
 	icon_state = "hood_hydro"
 
 // Janitor
 /obj/item/clothing/suit/hooded/wintercoat/janitor
 	name = "janitors winter coat"
-	desc = "A purple-and-beige winter coat that smells of space cleaner."
+	desc = "Um casaco de inverno roxo e bege que cheira a limpeza espacial."
 	icon_state = "coatjanitor"
 	inhand_icon_state = null
 	allowed = list(
@@ -258,13 +256,13 @@
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/janitor
 
 /obj/item/clothing/head/hooded/winterhood/janitor
-	desc = "A purple hood that smells of space cleaner."
+	desc = "Um capuz roxo que cheira a limpador de espaço."
 	icon_state = "hood_janitor"
 
 // Security Officer
 /obj/item/clothing/suit/hooded/wintercoat/security
 	name = "security winter jacket"
-	desc = "A red, armour-padded winter coat. It glitters with a mild ablative coating and a robust air of authority.  The zipper tab is a pair of jingly little handcuffs that get annoying after the first ten seconds."
+	desc = "Um casaco de inverno vermelho e blindado. Brilha com um leve revestimento ablativo e um ar robusto de autoridade. A aba do zíper é um par de algemas que ficam irritantes depois dos primeiros 10 segundos."
 	icon_state = "coatsecurity"
 	inhand_icon_state = "coatsecurity"
 	armor_type = /datum/armor/wintercoat_security
@@ -283,7 +281,7 @@
 	allowed += GLOB.security_wintercoat_allowed
 
 /obj/item/clothing/head/hooded/winterhood/security
-	desc = "A red, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes."
+	desc = "Um capuz de inverno vermelho e blindado. Definitivamente não é à prova de balas, especialmente a parte em que seu rosto vai."
 	icon_state = "hood_security"
 	armor_type = /datum/armor/winterhood_security
 
@@ -298,7 +296,7 @@
 
 /obj/item/clothing/suit/hooded/wintercoat/medical
 	name = "medical winter coat"
-	desc = "An arctic white winter coat with a small blue caduceus instead of a plastic zipper tab. Snazzy."
+	desc = "Um casaco branco de inverno ártico com um pequeno caduceu azul em vez de um zíper de plástico. Snazzy."
 	icon_state = "coatmedical"
 	inhand_icon_state = "coatmedical"
 	allowed = list(
@@ -325,7 +323,7 @@
 	acid = 20
 
 /obj/item/clothing/head/hooded/winterhood/medical
-	desc = "A white winter coat hood."
+	desc = "Um casaco branco de inverno."
 	icon_state = "hood_medical"
 	armor_type = /datum/armor/winterhood_medical
 
@@ -337,7 +335,7 @@
 // Chief Medical Officer
 /obj/item/clothing/suit/hooded/wintercoat/medical/cmo
 	name = "chief medical officer's winter coat"
-	desc = "A winter coat in a vibrant shade of blue with a small silver caduceus instead of a plastic zipper tab. The normal liner is replaced with an exceptionally thick, soft layer of fur."
+	desc = "Um casaco de inverno em um tom de azul vibrante com um pequeno caduceu de prata em vez de uma guia de fecho de plástico. O revestimento normal é substituído por uma camada excepcionalmente grossa e macia de pele."
 	icon_state = "coatcmo"
 	inhand_icon_state = null
 	armor_type = /datum/armor/medical_cmo
@@ -356,14 +354,14 @@
 	)
 
 /obj/item/clothing/head/hooded/winterhood/medical/cmo
-	desc = "A blue winter coat hood."
+	desc = "Um casaco azul de inverno."
 	icon_state = "hood_cmo"
 	armor_type = /datum/armor/medical_cmo
 
 // Chemist
 /obj/item/clothing/suit/hooded/wintercoat/medical/chemistry
 	name = "chemistry winter coat"
-	desc = "A lab-grade winter coat made with acid resistant polymers. For the enterprising chemist who was exiled to a frozen wasteland on the go."
+	desc = "Um casaco de inverno feito com polímeros resistentes a ácido. Para o químico empreendedor que foi exilado para um deserto congelado em movimento."
 	icon_state = "coatchemistry"
 	inhand_icon_state = null
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/medical/chemistry
@@ -373,13 +371,13 @@
 	allowed += /obj/item/storage/bag/chemistry
 
 /obj/item/clothing/head/hooded/winterhood/medical/chemistry
-	desc = "A white winter coat hood."
+	desc = "Um casaco branco de inverno."
 	icon_state = "hood_chemistry"
 
 // Coroner
 /obj/item/clothing/suit/hooded/wintercoat/medical/coroner
 	name = "coroner winter coat"
-	desc = "A winter coat made with acid resistant polymers, used when the cold dead bodies are too much."
+	desc = "Um casaco de inverno feito com polímeros resistentes ao ácido, usado quando os corpos frios são demais."
 	icon_state = "coatcoroner"
 	inhand_icon_state = null
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/medical/coroner
@@ -395,13 +393,13 @@
 	)
 
 /obj/item/clothing/head/hooded/winterhood/medical/coroner
-	desc = "A white winter coat hood."
+	desc = "Um casaco branco de inverno."
 	icon_state = "hood_coroner"
 
 // Virologist
 /obj/item/clothing/suit/hooded/wintercoat/medical/viro
 	name = "virology winter coat"
-	desc = "A white winter coat with green markings. Warm, but won't fight off the common cold or any other disease. Might make people stand far away from you in the hallway. The zipper tab looks like an oversized bacteriophage."
+	desc = "Um casaco branco de inverno com marcas verdes. Quente, mas não vai lutar contra o resfriado comum ou qualquer outra doença. Pode fazer as pessoas ficarem longe de você no corredor. A guia do zíper parece um bacteriófago enorme."
 	icon_state = "coatviro"
 	inhand_icon_state = null
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/medical/viro
@@ -411,13 +409,13 @@
 	allowed += /obj/item/storage/bag/bio
 
 /obj/item/clothing/head/hooded/winterhood/medical/viro
-	desc = "A white winter coat hood with green markings."
+	desc = "Um casaco branco de inverno com marcas verdes."
 	icon_state = "hood_viro"
 
 // Paramedic
 /obj/item/clothing/suit/hooded/wintercoat/medical/paramedic
 	name = "paramedic winter coat"
-	desc = "A winter coat with blue markings. Warm, but probably won't protect from biological agents. For the cozy doctor on the go."
+	desc = "Um casaco de inverno com marcas azuis. Quente, mas provavelmente não protegerá de agentes biológicos. Para o médico confortável em movimento."
 	icon_state = "coatparamed"
 	inhand_icon_state = null
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/medical/paramedic
@@ -428,13 +426,13 @@
 	allowed += /obj/item/crowbar/power/paramedic
 
 /obj/item/clothing/head/hooded/winterhood/medical/paramedic
-	desc = "A white winter coat hood with blue markings."
+	desc = "Um capuz branco de casaco de inverno com marcas azuis."
 	icon_state = "hood_paramed"
 
 // Scientist
 /obj/item/clothing/suit/hooded/wintercoat/science
 	name = "science winter coat"
-	desc = "A white winter coat with an outdated atomic model instead of a plastic zipper tab."
+	desc = "Um casaco branco de inverno com um modelo atômico desatualizado em vez de um zíper de plástico."
 	icon_state = "coatscience"
 	inhand_icon_state = "coatscience"
 	allowed = list(
@@ -460,7 +458,7 @@
 	fire = 20
 
 /obj/item/clothing/head/hooded/winterhood/science
-	desc = "A white winter coat hood. This one will keep your brain warm. About as much as the others, really."
+	desc = "Um casaco branco de inverno. Este vai manter seu cérebro aquecido. Tanto quanto os outros, na verdade."
 	icon_state = "hood_science"
 	armor_type = /datum/armor/winterhood_science
 
@@ -471,7 +469,7 @@
 
 /obj/item/clothing/suit/hooded/wintercoat/science/rd
 	name = "research director's winter coat"
-	desc = "A thick arctic winter coat with an outdated atomic model instead of a plastic zipper tab. Most in the know are heavily aware that Bohr's model of the atom was outdated by the time of the 1930s when the Heisenbergian and Schrodinger models were generally accepted for true. Nevertheless, we still see its use in anachronism, roleplaying, and, in this case, as a zipper tab. At least it should keep you warm on your ivory pillar."
+	desc = "Um grosso casaco de inverno ártico com um modelo atômico ultrapassado em vez de uma guia de fecho de plástico. A maioria sabe que o modelo de Bohr do átomo estava ultrapassado na época da década de 1930, quando os modelos Heisenbergian e Schrodinger eram geralmente aceitos como verdadeiros. No entanto, ainda vemos seu uso em anacronismo, roleplaying, e, neste caso, como uma guia de zíper. Pelo menos deve mantê-lo aquecido em seu pilar de marfim."
 	icon_state = "coatrd"
 	inhand_icon_state = null
 	armor_type = /datum/armor/science_rd
@@ -488,26 +486,26 @@
 	)
 
 /obj/item/clothing/head/hooded/winterhood/science/rd
-	desc = "A white winter coat hood. It smells faintly of hair gel."
+	desc = "Um casaco branco de inverno. Cheira a gel de cabelo."
 	icon_state = "hood_rd"
 	armor_type = /datum/armor/science_rd
 
 // Roboticist
 /obj/item/clothing/suit/hooded/wintercoat/science/robotics
 	name = "robotics winter coat"
-	desc = "A black winter coat with a badass flaming robotic skull for the zipper tab. This one has bright red designs and a few useless buttons."
+	desc = "Um casaco preto de inverno com um crânio robótico flamejante para o zíper. Este tem desenhos vermelhos brilhantes e alguns botões inúteis."
 	icon_state = "coatrobotics"
 	inhand_icon_state = null
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/science/robotics
 
 /obj/item/clothing/head/hooded/winterhood/science/robotics
-	desc = "A black winter coat hood. You can pull it down over your eyes and pretend that you're an outdated, late 1980s interpretation of a futuristic mechanized police force. They'll fix you. They fix everything."
+	desc = "Um casaco preto de inverno. Você pode puxá-lo para baixo sobre seus olhos e fingir que você é uma interpretação ultrapassada, final dos anos 80 de uma força policial futurista mecanizada. Eles vão te consertar. Eles consertam tudo."
 	icon_state = "hood_robotics"
 
 // Geneticist
 /obj/item/clothing/suit/hooded/wintercoat/science/genetics
 	name = "genetics winter coat"
-	desc = "A white winter coat with a DNA helix for the zipper tab."
+	desc = "Um casaco branco de inverno com uma hélice de DNA para a guia do zíper."
 	icon_state = "coatgenetics"
 	inhand_icon_state = null
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/science/genetics
@@ -517,13 +515,13 @@
 	allowed += /obj/item/sequence_scanner
 
 /obj/item/clothing/head/hooded/winterhood/science/genetics
-	desc = "A white winter coat hood. It's warm."
+	desc = "Um casaco branco de inverno. Está quente."
 	icon_state = "hood_genetics"
 
 // Station Engineer
 /obj/item/clothing/suit/hooded/wintercoat/engineering
 	name = "engineering winter coat"
-	desc = "A surprisingly heavy yellow winter coat with reflective orange stripes. It has a small wrench for its zipper tab, and the inside layer is covered with a radiation-resistant silver-nylon blend. Because you're worth it."
+	desc = "Um casaco de inverno amarelo surpreendentemente pesado com listras laranjas reflexivas. Ele tem uma pequena chave inglesa para o zíper, e a camada interna é coberta com uma mistura resistente à radiação de nylon prata. Porque você vale a pena."
 	icon_state = "coatengineer"
 	inhand_icon_state = "coatengineer"
 	allowed = list(
@@ -550,7 +548,7 @@
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha, effect_type = EMISSIVE_SPECULAR)
 
 /obj/item/clothing/head/hooded/winterhood/engineering
-	desc = "A yellow winter coat hood. Definitely not a replacement for a hard hat."
+	desc = "Um casaco amarelo de inverno. Definitivamente não é um substituto para um chapéu duro."
 	icon_state = "hood_engineer"
 	armor_type = /datum/armor/winterhood_engineering
 
@@ -565,7 +563,7 @@
 // Chief Engineer
 /obj/item/clothing/suit/hooded/wintercoat/engineering/ce
 	name = "chief engineer's winter coat"
-	desc = "A white winter coat with reflective green and yellow stripes. Stuffed with asbestos, treated with fire retardant PBDE, lined with a micro thin sheet of lead foil and snugly fitted to your body's measurements. This baby's ready to save you from anything except the thyroid cancer and systemic fibrosis you'll get from wearing it. The zipper tab is a tiny golden wrench."
+	desc = "Um casaco branco de inverno com listras reflexivas verdes e amarelas. Recheado de amianto, tratado com retardador de fogo PBDE, forrado com uma micro folha fina de papel alumínio e encaixado nas medidas do seu corpo. Este bebê está pronto para salvá-lo de qualquer coisa exceto o câncer de tireoide e fibrose sistêmica que você vai ter usando-o. A guia do zíper é uma pequena chave de ouro."
 	icon_state = "coatce"
 	inhand_icon_state = null
 	armor_type = /datum/armor/engineering_ce
@@ -582,26 +580,26 @@
 	)
 
 /obj/item/clothing/head/hooded/winterhood/engineering/ce
-	desc = "A white winter coat hood. Feels surprisingly heavy. The tag says that it's not child safe."
+	desc = "Um casaco branco de inverno. Parece surpreendentemente pesado. A etiqueta diz que não é seguro para crianças."
 	icon_state = "hood_ce"
 	armor_type = /datum/armor/engineering_ce
 
 // Atmospherics Technician
 /obj/item/clothing/suit/hooded/wintercoat/engineering/atmos
 	name = "atmospherics winter coat"
-	desc = "A yellow and blue winter coat. The zipper pull-tab is made to look like a miniature breath mask."
+	desc = "Um casaco de inverno amarelo e azul. O zíper é feito para parecer uma máscara de respiração em miniatura."
 	icon_state = "coatatmos"
 	inhand_icon_state = "coatatmos"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/engineering/atmos
 
 /obj/item/clothing/head/hooded/winterhood/engineering/atmos
-	desc = "A yellow and blue winter coat hood."
+	desc = "Um casaco amarelo e azul."
 	icon_state = "hood_atmos"
 
 // Cargo Technician
 /obj/item/clothing/suit/hooded/wintercoat/cargo
 	name = "cargo winter coat"
-	desc = "A tan-and-grey winter coat. The zipper tab is a small pin resembling a MULE. It fills you with the warmth of a fierce independence."
+	desc = "Um casaco de inverno bronzeado e cinza. A guia do zíper é um pequeno pino parecido com um MULE. Enche você do calor de uma feroz independência."
 	icon_state = "coatcargo"
 	inhand_icon_state = "coatcargo"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/cargo
@@ -612,13 +610,13 @@
 	)
 
 /obj/item/clothing/head/hooded/winterhood/cargo
-	desc = "A grey hood for a winter coat."
+	desc = "Um capuz cinza para um casaco de inverno."
 	icon_state = "hood_cargo"
 
 // Quartermaster
 /obj/item/clothing/suit/hooded/wintercoat/cargo/qm
 	name = "quartermaster's winter coat"
-	desc = "A dark brown winter coat that has a golden crate pin for its zipper pully."
+	desc = "Um casaco de inverno marrom escuro que tem um alfinete dourado para seu zíper."
 	icon_state = "coatqm"
 	inhand_icon_state = null
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/cargo/qm
@@ -630,13 +628,13 @@
 	)
 
 /obj/item/clothing/head/hooded/winterhood/cargo/qm
-	desc = "A dark brown winter hood"
+	desc = "Um Capuz de Inverno Marrom Escuro"
 	icon_state = "hood_qm"
 
 // Shaft Miner
 /obj/item/clothing/suit/hooded/wintercoat/miner
 	name = "mining winter coat"
-	desc = "A dusty button up winter coat. The zipper tab looks like a tiny pickaxe."
+	desc = "Um botão empoeirado no casaco de inverno. O zíper parece uma picareta."
 	icon_state = "coatminer"
 	inhand_icon_state = "coatminer"
 	allowed = list(
@@ -657,7 +655,7 @@
 	melee = 10
 
 /obj/item/clothing/head/hooded/winterhood/miner
-	desc = "A dusty winter coat hood."
+	desc = "Um casaco de inverno empoeirado."
 	icon_state = "hood_miner"
 	armor_type = /datum/armor/winterhood_miner
 
@@ -666,7 +664,7 @@
 
 /obj/item/clothing/suit/hooded/wintercoat/custom
 	name = "tailored winter coat"
-	desc = "A heavy jacket made from 'synthetic' animal furs, with custom colors."
+	desc = "Uma jaqueta pesada feita de peles de animais 'sintéticos', com cores personalizadas."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/hooded/wintercoat/custom"
 	post_init_icon_state = "coatwinter"
@@ -696,14 +694,14 @@
 
 /obj/item/clothing/head/hooded/winterhood/custom
 	name = "tailored winter coat hood"
-	desc = "A heavy jacket hood made from 'synthetic' animal furs, with custom colors."
+	desc = "Um capuz pesado feito de peles de animais 'sintéticos', com cores personalizadas."
 	greyscale_config = /datum/greyscale_config/winter_hoods
 	greyscale_config_worn = /datum/greyscale_config/winter_hoods/worn
 	flags_1 = NO_NEW_GAGS_PREVIEW_1
 
 /obj/item/clothing/suit/hooded/wintercoat/pullover
 	name = "pullover"
-	desc = "A colorable pullover hoodie."
+	desc = "Um capuz colorido."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/hooded/wintercoat/pullover"
 	post_init_icon_state = "pullover"
@@ -724,7 +722,7 @@
 
 /obj/item/clothing/head/hooded/winterhood/pullover
 	name = "pullover hood"
-	desc = "A colorable pullover hoodie."
+	desc = "Um capuz colorido."
 	icon_state = "hood_pullover"
 	worn_icon_state = "hood_pullover"
 	hair_mask = /datum/hair_mask/hoodie
@@ -748,7 +746,7 @@
 
 /obj/item/clothing/suit/hooded/wintercoat/zipup
 	name = "zipup"
-	desc = "A colorable zipup hoodie."
+	desc = "Um capuz colorido."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/hooded/wintercoat/zipup"
 	post_init_icon_state = "zipup"
@@ -771,7 +769,7 @@
 
 /obj/item/clothing/head/hooded/winterhood/zipup
 	name = "zipup hood"
-	desc = "A colorable zipup hoodie."
+	desc = "Um capuz colorido."
 	icon_state = "hood_zipup"
 	worn_icon_state = "hood_zipup"
 	hair_mask = /datum/hair_mask/hoodie

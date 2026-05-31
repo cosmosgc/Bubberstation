@@ -138,34 +138,34 @@
 
 ADMIN_VERB(debug_nature_map_generator, R_DEBUG, "Test Nature Map Generator", "Test the nature map generator", ADMIN_CATEGORY_DEBUG)
 	var/datum/map_generator/nature/N = new()
-	var/startInput = input(user, "Start turf of Map, (X;Y;Z)", "Map Gen Settings", "1;1;1") as text|null
+	var/startInput = input(user, "Começar relva do mapa,", "Configurações da Gen do mapa", "1;1;1") as text|null
 
 	if (isnull(startInput))
 		return
 
-	var/endInput = input(user, "End turf of Map (X;Y;Z)", "Map Gen Settings", "[world.maxx];[world.maxy];[user.mob.z]") as text|null
+	var/endInput = input(user, "Fim da área do mapa (X;Y;Z)", "Configurações da Gen do mapa", "[world.maxx];[world.maxy];[user.mob.z]") as text|null
 	if (isnull(endInput))
 		return
 
 	//maxx maxy and current z so that if you fuck up, you only fuck up one entire z level instead of the entire universe
 	if(!startInput || !endInput)
-		to_chat(user, "Missing Input")
+		to_chat(user, "Entrada Desaparecida")
 		return
 
 	var/list/startCoords = splittext(startInput, ";")
 	var/list/endCoords = splittext(endInput, ";")
 	if(!startCoords || !endCoords)
-		to_chat(user, "Invalid Coords")
-		to_chat(user, "Start Input: [startInput]")
-		to_chat(user, "End Input: [endInput]")
+		to_chat(user, "Coords inválidos")
+		to_chat(user, "Iniciar entrada:[startInput]")
+		to_chat(user, "Entrada final:[endInput]")
 		return
 
 	var/turf/Start = locate(text2num(startCoords[1]),text2num(startCoords[2]),text2num(startCoords[3]))
 	var/turf/End = locate(text2num(endCoords[1]),text2num(endCoords[2]),text2num(endCoords[3]))
 	if(!Start || !End)
-		to_chat(user, "Invalid Turfs")
-		to_chat(user, "Start Coords: [startCoords[1]] - [startCoords[2]] - [startCoords[3]]")
-		to_chat(user, "End Coords: [endCoords[1]] - [endCoords[2]] - [endCoords[3]]")
+		to_chat(user, "Turfs inválidos")
+		to_chat(user, "Coords:[startCoords[1]] - [startCoords[2]] - [startCoords[3]]")
+		to_chat(user, "Fim Coords:[endCoords[1]] - [endCoords[2]] - [endCoords[3]]")
 		return
 
 	var/static/list/clusters = list(
@@ -181,13 +181,13 @@ ADMIN_VERB(debug_nature_map_generator, R_DEBUG, "Test Nature Map Generator", "Te
 		"All atoms" = CLUSTER_CHECK_ALL_ATOMS,
 	)
 
-	var/moduleClusters = input("Cluster Flags (Cancel to leave unchanged from defaults)","Map Gen Settings") as null|anything in clusters
+	var/moduleClusters = input("Bandeiras de cluster (Cancelar para deixar inalterado dos padrões)","Configurações da Gen do mapa") as null|anything in clusters
 	//null for default
 
 	var/theCluster = 0
 	if(moduleClusters != "None")
 		if(!clusters[moduleClusters])
-			to_chat(user, "Invalid Cluster Flags")
+			to_chat(user, "Bandeiras de cluster inválidas")
 			return
 		theCluster = clusters[moduleClusters]
 	else
@@ -198,9 +198,9 @@ ADMIN_VERB(debug_nature_map_generator, R_DEBUG, "Test Nature Map Generator", "Te
 			M.clusterCheckFlags = theCluster
 
 
-	to_chat(user, "Defining Region")
+	to_chat(user, "Definindo Região")
 	N.defineRegion(Start, End)
-	to_chat(user, "Region Defined")
-	to_chat(user, "Generating Region")
+	to_chat(user, "Região Definida")
+	to_chat(user, "Gerando Região")
 	N.generate()
-	to_chat(user, "Generated Region")
+	to_chat(user, "Região Gerada")

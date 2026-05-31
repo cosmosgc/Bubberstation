@@ -2,7 +2,7 @@
 	granted_action = /datum/action/cooldown/spell/pointed/blind
 	action_name = "blind"
 	icon_state = "bookblind"
-	desc = "This book looks blurry, no matter how you look at it."
+	desc = "Este livro parece borrado, não importa como você olha para ele."
 	remarks = list(
 		"Well I can't learn anything if I can't read the damn thing!",
 		"Why would you use a dark font on a dark background...",
@@ -15,14 +15,14 @@
 
 /obj/item/book/granter/action/spell/blind/recoil(mob/living/user)
 	. = ..()
-	to_chat(user, span_warning("You go blind!"))
+	to_chat(user, span_warning("Você fica cego!"))
 	user.adjust_temp_blindness(20 SECONDS)
 
 /obj/item/book/granter/action/spell/blind/wgw
 	name = "Woody's Got Wood"
 	pages_to_mastery = 69 // Andy's favorite number
 	uses = 0 // it's spent
-	desc = "This book looks dangerous. Only suffering awaits those who read."
+	desc = "Este livro parece perigoso. Só o sofrimento aguarda aqueles que lêem."
 	remarks = list( // Death awaits
 		"T-T-This is bad...",
 		"This is REALLY bad...",

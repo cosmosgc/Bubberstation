@@ -199,7 +199,7 @@ export function TechNode(props: Props) {
       {required_experiments.length > 0 && (
         <Collapsible
           className="Techweb__NodeExperimentsRequired"
-          title="Required Experiments"
+          title="Experimentos necessários"
         >
           {required_experiments.map((k, index) => {
             const thisExp = experiments[k];
@@ -213,7 +213,7 @@ export function TechNode(props: Props) {
       {Object.keys(discount_experiments).length > 0 && (
         <Collapsible
           className="TechwebNodeExperimentsRequired"
-          title="Discount-Eligible Experiments"
+          title="Experimentos Eligíveis de Desconto"
         >
           {Object.keys(discount_experiments).map((k, index) => {
             const thisExp = experiments[k];

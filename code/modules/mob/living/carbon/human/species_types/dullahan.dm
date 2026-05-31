@@ -145,15 +145,11 @@
 	return "A dullahan is much like a human, but their head is detached from their body and must be carried around."
 
 /datum/species/dullahan/get_species_description()
-	return "An angry spirit, hanging onto the land of the living for \
-		unfinished business. Or that's what the books say. They're quite nice \
-		when you get to know them."
+	return "An angry spirit, hanging onto the land of the living for 		unfinished business. Or that's what the books say. They're quite nice 		when you get to know them."
 
 /datum/species/dullahan/get_species_lore()
 	return list(
-		"\"No wonder they're all so grumpy! Their hands are always full! I used to think, \
-		\"Wouldn't this be cool?\" but after watching these creatures suffer from their head \
-		getting dunked down disposals for the nth time, I think I'm good.\" - Captain Larry Dodd"
+		"\"No wonder they're all so grumpy! Their hands are always full! I used to think, 		\"Wouldn't this be cool?\" but after watching these creatures suffer from their head 		getting dunked down disposals for the nth time, I think I'm good.\" - Captain Larry Dodd"
 	)
 
 /datum/species/dullahan/create_pref_unique_perks()
@@ -163,9 +159,7 @@
 		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 		SPECIES_PERK_ICON = "horse-head",
 		SPECIES_PERK_NAME = "Headless and Horseless",
-		SPECIES_PERK_DESC = "Dullahans must lug their head around in their arms. While \
-			many creative uses can come out of your head being independent of your \
-			body, Dullahans will find it mostly a pain.",
+		SPECIES_PERK_DESC = "Dullahans devem carregar sua cabeça em seus braços. Enquanto muitos usos criativos podem sair da sua cabeça sendo independentes do seu corpo, os Dullahans vão encontrá-lo principalmente uma dor.",
 	))
 
 	return to_add
@@ -178,10 +172,7 @@
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "skull",
 		SPECIES_PERK_NAME = "Minor Undead",
-		SPECIES_PERK_DESC = "[name] are minor undead. \
-			Minor undead enjoy some of the perks of being dead, like \
-			not needing to breathe or eat, but do not get many of the \
-			environmental immunities involved with being fully undead.",
+		SPECIES_PERK_DESC = "[name]são mortos-vivos menores. Mortos-vivos menores apreciam algumas das vantagens de estar mortos, como não precisar respirar ou comer, mas não obter muitas das imunidades ambientais envolvidas em ser totalmente mortos-vivos.",
 	))
 
 	return to_add
@@ -214,7 +205,7 @@
 
 /obj/item/organ/eyes/dullahan
 	name = "head vision"
-	desc = "An abstraction."
+	desc = "Uma abstração."
 	actions_types = list(/datum/action/item_action/organ_action/dullahan)
 	zone = BODY_ZONE_CHEST
 	organ_flags = parent_type::organ_flags | ORGAN_UNREMOVABLE
@@ -223,7 +214,7 @@
 
 /datum/action/item_action/organ_action/dullahan
 	name = "Toggle Perspective"
-	desc = "Switch between seeing normally from your head, or blindly from your body."
+	desc = "Troque entre ver normalmente da cabeça, ou cegamente do corpo."
 
 /datum/action/item_action/organ_action/dullahan/do_effect(trigger_flags)
 	var/obj/item/organ/eyes/dullahan/dullahan_eyes = target

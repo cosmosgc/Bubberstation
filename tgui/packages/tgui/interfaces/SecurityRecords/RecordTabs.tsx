@@ -24,8 +24,8 @@ export const SecurityRecordTabs = (props) => {
   const { higher_access, records = [], station_z } = data;
 
   const errorMessage = !records.length
-    ? 'No records found.'
-    : 'No match. Refine your search.';
+    ? 'Nenhum registro encontrado.'
+    : 'Sem correspondência. Refinar sua busca.';
 
   const [search, setSearch] = useState('');
 
@@ -63,7 +63,7 @@ export const SecurityRecordTabs = (props) => {
             <Button
               disabled
               icon="plus"
-              tooltip="Add new records by inserting a 1 by 1 meter photo into the terminal. You do not need this screen open."
+              tooltip="Adicione novos registros inserindo uma foto de 1 por 1 metro no terminal. Você não precisa desta tela aberta."
             >
               Create
             </Button>
@@ -74,7 +74,7 @@ export const SecurityRecordTabs = (props) => {
               disabled={!higher_access || !station_z}
               icon="trash"
               onClick={() => act('purge_records')}
-              tooltip="Wipe criminal record data."
+              tooltip="Limpar dados criminais."
             />
           </Stack.Item>
         </Stack>

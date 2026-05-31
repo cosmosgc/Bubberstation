@@ -59,7 +59,7 @@
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, "<b>You are an alien larva. Hide from danger until you can evolve.<br>Use say :a to communicate with the hivemind.</b>")
+	to_chat(src, "<b>Você é uma larva alienígena. Esconda-se do perigo até que possa evoluir.<br>Use \"a\" para se comunicar com a colmeia.</b>")
 
 /mob/living/carbon/alien/larva/adjustPlasma(amount)
 	if(stat != DEAD && amount > 0)

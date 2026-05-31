@@ -15,7 +15,7 @@ export function FoodtypeContent(props: Props) {
     iconColor = '';
 
   // We use iconName in the return to see if this went through.
-  if (type !== 'Can Make' && diet) {
+  if (type !== 'Pode fazer' && diet) {
     if (diet.liked_food.includes(type)) {
       iconName = 'face-laugh-beam';
       iconColor = 'good';
@@ -37,7 +37,7 @@ export function FoodtypeContent(props: Props) {
         {type.toLowerCase()}
       </Stack.Item>
       <Stack.Item>
-        {type === 'Can Make'
+        {type === 'Pode fazer'
           ? craftableCount
           : iconName && <Icon name={iconName} color={iconColor} />}
       </Stack.Item>

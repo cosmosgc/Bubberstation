@@ -11,9 +11,7 @@
 	metabolization_rate = 0.3 * REAGENTS_METABOLISM
 
 /atom/movable/screen/alert/status_effect/drunk
-	desc = "All that alcohol you've been drinking is impairing your speech, \
-		motor skills, and mental cognition. Make sure to act like it. \
-		Check your current drunkenness level using your mood status."
+	desc = "O álcool que tem bebido está prejudicando sua fala, habilidades motoras e cognição mental. Certifique-se de agir como tal. Verifique seu nível de embriaguez atual usando seu estado de humor."
 
 /// Adds a moodlet entry based on if the mob currently has alcohol processing in their system.
 /datum/mood/proc/get_alcohol_processing(mob/user)
@@ -27,21 +25,21 @@
 	var/blood_alcohol_content = target.get_blood_alcohol_content()
 	switch(blood_alcohol_content)
 		if(BAC_STAGE_1_ACTIVE to BAC_STAGE_2_WARN)
-			return span_info("Had a drink, time to relax!")
+			return span_info("Tomamos uma bebida, hora de relaxar!")
 		if(BAC_STAGE_2_WARN to BAC_STAGE_2_ACTIVE)
-			return span_nicegreen("Now I'm starting to feel that drink.")
+			return span_nicegreen("Estou começando a sentir aquela bebida.")
 		if(BAC_STAGE_2_ACTIVE to BAC_STAGE_3_WARN)
-			return span_nicegreen("A bit tipsy, this feels good!")
+			return span_nicegreen("Um pouco bêbado, isso é bom!")
 		if(BAC_STAGE_3_WARN to BAC_STAGE_3_ACTIVE)
-			return span_nicegreen("Those drinks are really starting to hit!")
+			return span_nicegreen("Essas bebidas estão começando a bater!")
 		if(BAC_STAGE_3_ACTIVE to BAC_STAGE_4_WARN)
-			return span_nicegreen("I can't remember how many I've had, but I feel great!")
+			return span_nicegreen("Não me lembro de quantas bebi, mas me sinto ótima!")
 		if(BAC_STAGE_4_WARN to BAC_STAGE_4_ACTIVE)
-			return span_warning("I think I've had too much to drink... I should probably stop... drink some water...")
+			return span_warning("Acho que bebi demais... Eu deveria parar... beber um pouco de água...")
 		if(BAC_STAGE_4_ACTIVE to BAC_STAGE_5_WARN)
-			return span_bolddanger("I'm not feeling so hot...")
+			return span_bolddanger("Não estou me sentindo tão quente...")
 		if(BAC_STAGE_5_WARN to INFINITY)
-			return span_bolddanger("Is there a doctor around? I really don't feel good...")
+			return span_bolddanger("Tem algum médico por aqui? Eu realmente não me sinto bem...")
 
 #undef BAC_STAGE_1_ACTIVE
 #undef BAC_STAGE_2_WARN

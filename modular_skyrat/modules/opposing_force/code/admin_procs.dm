@@ -1,12 +1,12 @@
 ADMIN_VERB(request_more_opfor, R_FUN, "Request OPFOR", "Request players sign up for opfor if they have antag on.", ADMIN_CATEGORY_FUN)
-	var/confirm = tgui_alert(user, "Please confirm you want to ask all antagonist enabled players to submit an OPFOR?", "Confirm Request OPFOR", list("Yes", "No"))
+	var/confirm = tgui_alert(user, "Por favor, confirme que quer pedir a todos os antagonistas habilitados para enviar uma OPFOR?", "Confirm Request OPFOR", list("Yes", "No"))
 	if(confirm != "Yes")
 		return
 
 	var/asked = 0
 	for(var/mob/living/carbon/human/human in GLOB.alive_player_list)
 		if(human.client?.prefs?.read_preference(/datum/preference/toggle/be_antag))
-			to_chat(human, custom_boxed_message("green_box", span_greentext("The admins are looking for OPFOR players, if you're interested, sign up in the OOC tab!")))
+			to_chat(human, custom_boxed_message("green_box", span_greentext("Os administradores estão procurando por jogadores da OPFOR, se estiver interessado, inscrevam-se na conta da OOC!")))
 			asked++
 	message_admins("[ADMIN_LOOKUP(user)] has requested more OPFOR players! (Asked: [asked] players)")
 

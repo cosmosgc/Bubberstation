@@ -17,17 +17,17 @@
 		if(penetrated_text)
 			to_chat(src, span_userdanger("[penetrated_text]"))
 		else
-			to_chat(src, span_userdanger("Your armor was penetrated!"))
+			to_chat(src, span_userdanger("Sua armadura foi penetrada!"))
 	else if(our_armor >= 100)
 		if(absorb_text)
 			to_chat(src, span_notice("[absorb_text]"))
 		else
-			to_chat(src, span_notice("Your armor absorbs the blow!"))
+			to_chat(src, span_notice("Sua armadura absorve o golpe!"))
 	else
 		if(soften_text)
 			to_chat(src, span_warning("[soften_text]"))
 		else
-			to_chat(src, span_warning("Your armor softens the blow!"))
+			to_chat(src, span_warning("Sua arma suaviza o golpe!"))
 	return our_armor
 
 /mob/living/proc/getarmor(def_zone, type)
@@ -129,16 +129,15 @@
 	var/hit_limb_zone = check_hit_limb_zone_name(def_zone)
 	var/organ_hit_text = ""
 	if (hit_limb_zone)
-		organ_hit_text = " in \the [parse_zone_with_bodypart(hit_limb_zone)]"
+		organ_hit_text = "Em\the [parse_zone_with_bodypart(hit_limb_zone)]"
 
 	switch (proj.suppressed)
 		if (SUPPRESSED_QUIET)
-			to_chat(src, span_userdanger("You're shot by \a [proj][organ_hit_text]!"))
+			to_chat(src, span_userdanger("Você levou um tiro.\a [proj][organ_hit_text]!"))
 		if (SUPPRESSED_NONE)
-			visible_message(span_danger("[src] is hit by \a [proj][organ_hit_text]!"), \
-					span_userdanger("You're hit by \a [proj][organ_hit_text]!"), null, COMBAT_MESSAGE_RANGE)
+			visible_message(span_danger("[src]é atingido por\a [proj][organ_hit_text]!"), 					span_userdanger("Você foi atingido por\a [proj][organ_hit_text]!"), null, COMBAT_MESSAGE_RANGE)
 			if(is_blind())
-				to_chat(src, span_userdanger("You feel something hit you[organ_hit_text]!"))
+				to_chat(src, span_userdanger("Você sente algo batendo em você[organ_hit_text]!"))
 
 	if(proj.is_hostile_projectile())
 		apply_projectile_effects(proj, def_zone, blocked)
@@ -247,8 +246,7 @@
 		else
 			playsound(loc, 'sound/items/weapons/genhit.ogg', 50, TRUE, -1) //Item sounds are handled in the item itself
 			if(!isvendor(AM) && !iscarbon(AM)) //Vendors have special interactions, while carbon mobs already generate visible messages!
-				visible_message(span_danger("[src] is hit by [AM]!"), \
-							span_userdanger("You're hit by [AM]!"))
+				visible_message(span_danger("[src]é atingido por[AM]!"), 							span_userdanger("Você foi atingido por[AM]!"))
 		log_combat(AM, src, "hit ")
 		return ..()
 
@@ -272,8 +270,8 @@
 		log_hit_combat(throwingdatum?.get_thrower(), thrown_item)
 		return ..()
 
-	visible_message(span_danger("[src] is hit by [thrown_item]!"),
-		span_userdanger("You're hit by [thrown_item]!"))
+	visible_message(span_danger("[src]é atingido por[thrown_item]!"),
+		span_userdanger("Você foi atingido por[thrown_item]!"))
 	if(!thrown_item.throwforce)
 		log_hit_combat(throwingdatum?.get_thrower(), thrown_item)
 		return
@@ -311,8 +309,7 @@
 		return FALSE
 	INVOKE_ASYNC(item, TYPE_PROC_REF(/obj/item, attempt_pickup), src, TRUE)
 	if(get_active_held_item() == item) //if our attack_hand() picks up the item...
-		visible_message(span_warning("[src] catches [item]!"), \
-						span_userdanger("You catch [item] in mid-air!"))
+		visible_message(span_warning("[src]Pega.[item]!"), 						span_userdanger("Você pega.[item]Não ar!"))
 		return TRUE
 
 ///Checks the requites for catching a throw item.
@@ -353,11 +350,11 @@
 		return
 
 	if(!(status_flags & CANPUSH) || HAS_TRAIT(src, TRAIT_PUSHIMMUNE))
-		to_chat(user, span_warning("[src] can't be grabbed more aggressively!"))
+		to_chat(user, span_warning("[src]Não pode ser pego mais agressivamente!"))
 		return FALSE
 
 	if(user.grab_state >= GRAB_AGGRESSIVE && HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("You don't want to risk hurting [src]!"))
+		to_chat(user, span_warning("Você não quer se arriscar a sofrer.[src]!"))
 		return FALSE
 
 	grippedby(user)
@@ -378,9 +375,8 @@
 	if(user.grab_state) //only the first upgrade is instantaneous
 		var/old_grab_state = user.grab_state
 		var/grab_upgrade_time = instant ? 0 : 30
-		visible_message(span_danger("[user] starts to tighten [user.p_their()] grip on [src]!"), \
-						span_userdanger("[user] starts to tighten [user.p_their()] grip on you!"), span_hear("You hear aggressive shuffling!"), null, user)
-		to_chat(user, span_danger("You start to tighten your grip on [src]!"))
+		visible_message(span_danger("[user]Começa a apertar.[user.p_their()]Segura-se.[src]!"), 						span_userdanger("[user]Começa a apertar.[user.p_their()]Segura-se!"), span_hear("Você ouve baralhar agressivo!"), null, user)
+		to_chat(user, span_danger("Você começa a apertar seu aperto[src]!"))
 		switch(user.grab_state)
 			if(GRAB_AGGRESSIVE)
 				log_combat(user, src, "attempted to neck grab", addition="neck grab")
@@ -395,28 +391,25 @@
 		if(GRAB_AGGRESSIVE)
 			var/add_log = ""
 			if(HAS_TRAIT(user, TRAIT_PACIFISM))
-				visible_message(span_danger("[user] firmly grips [src]!"),
-								span_danger("[user] firmly grips you!"), span_hear("You hear aggressive shuffling!"), null, user)
-				to_chat(user, span_danger("You firmly grip [src]!"))
+				visible_message(span_danger("[user]Apertos firmes[src]!"),
+								span_danger("[user]Segura firmemente você!"), span_hear("Você ouve baralhar agressivo!"), null, user)
+				to_chat(user, span_danger("Você segura firmemente[src]!"))
 				add_log = " (pacifist)"
 			else
-				visible_message(span_danger("[user] grabs [src] aggressively!"), \
-								span_userdanger("[user] grabs you aggressively!"), span_hear("You hear aggressive shuffling!"), null, user)
-				to_chat(user, span_danger("You grab [src] aggressively!"))
+				visible_message(span_danger("[user]Pega.[src]Agressivamente!"), 								span_userdanger("[user]Pega você agressivamente!"), span_hear("Você ouve baralhar agressivo!"), null, user)
+				to_chat(user, span_danger("Você agarra[src]Agressivamente!"))
 			stop_pulling()
 			log_combat(user, src, "grabbed", addition="aggressive grab[add_log]")
 		if(GRAB_NECK)
 			log_combat(user, src, "grabbed", addition="neck grab")
-			visible_message(span_danger("[user] grabs [src] by the neck!"),\
-							span_userdanger("[user] grabs you by the neck!"), span_hear("You hear aggressive shuffling!"), null, user)
-			to_chat(user, span_danger("You grab [src] by the neck!"))
+			visible_message(span_danger("[user]Pega.[src]Pelo pescoço!"),							span_userdanger("[user]Te agarra pelo pescoço!"), span_hear("Você ouve baralhar agressivo!"), null, user)
+			to_chat(user, span_danger("Você agarra[src]Pelo pescoço!"))
 			if(!buckled && !density)
 				Move(user.loc)
 		if(GRAB_KILL)
 			log_combat(user, src, "strangled", addition="kill grab")
-			visible_message(span_danger("[user] is strangling [src]!"), \
-							span_userdanger("[user] is strangling you!"), span_hear("You hear aggressive shuffling!"), null, user)
-			to_chat(user, span_danger("You're strangling [src]!"))
+			visible_message(span_danger("[user]Está estrangulando[src]!"), 							span_userdanger("[user]Está estrangulando você!"), span_hear("Você ouve baralhar agressivo!"), null, user)
+			to_chat(user, span_danger("Você está estrangulando.[src]!"))
 			if(!buckled && !density)
 				Move(user.loc)
 	user.set_pull_offsets(src, user.grab_state)
@@ -431,15 +424,15 @@
 		if(user != src)
 			visible_message(
 				span_notice("[user] [user.friendly_verb_continuous] [src]!"),
-				span_notice("[user] [user.friendly_verb_continuous] you!"),
+				span_notice("[user] [user.friendly_verb_continuous]Você!"),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 				ignored_mobs = user,
 			)
-			to_chat(user, span_notice("You [user.friendly_verb_simple] [src]!"))
+			to_chat(user, span_notice("Você.[user.friendly_verb_simple] [src]!"))
 		return FALSE
 
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("You don't want to hurt anyone!"))
+		to_chat(user, span_warning("Você não quer machucar ninguém!"))
 		return FALSE
 
 	var/damage = rand(user.melee_damage_lower, user.melee_damage_upper)
@@ -452,7 +445,7 @@
 	user.do_attack_animation(src)
 	visible_message(
 		span_danger("[user] [user.attack_verb_continuous] [src]!"),
-		span_userdanger("[user] [user.attack_verb_continuous] you!"),
+		span_userdanger("[user] [user.attack_verb_continuous]Você!"),
 		null,
 		COMBAT_MESSAGE_RANGE,
 		user,
@@ -464,7 +457,7 @@
 
 	var/armor_block = run_armor_check(user.zone_selected, MELEE, armour_penetration = user.armour_penetration)
 
-	to_chat(user, span_danger("You [user.attack_verb_simple] [src]!"))
+	to_chat(user, span_danger("Você.[user.attack_verb_simple] [src]!"))
 	var/damage_done = apply_damage(
 		damage = damage,
 		damagetype = user.melee_damage_type,
@@ -495,13 +488,13 @@
 	if (!user.combat_mode)
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("You don't want to hurt anyone!"))
+		to_chat(user, span_warning("Você não quer machucar ninguém!"))
 		return FALSE
 
 	if(!user.get_bodypart(BODY_ZONE_HEAD))
 		return FALSE
 	if(user.is_mouth_covered(ITEM_SLOT_MASK))
-		to_chat(user, span_warning("You can't bite with your mouth covered!"))
+		to_chat(user, span_warning("Você não pode morder com a boca coberta!"))
 		return FALSE
 
 	if(check_block(user, 1, "[user]'s bite", UNARMED_ATTACK, 0, BRUTE))
@@ -511,21 +504,19 @@
 	if (HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER) || prob(75))
 		log_combat(user, src, "attacked")
 		playsound(loc, 'sound/items/weapons/bite.ogg', 50, TRUE, -1)
-		visible_message(span_danger("[user.name] bites [src]!"), \
-						span_userdanger("[user.name] bites you!"), span_hear("You hear a chomp!"), COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, span_danger("You bite [src]!"))
+		visible_message(span_danger("[user.name]Mordidas.[src]!"), 						span_userdanger("[user.name]Morde você!"), span_hear("Você ouve uma batida!"), COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, span_danger("Você morde.[src]!"))
 		return TRUE
 	else
-		visible_message(span_danger("[user.name]'s bite misses [src]!"), \
-						span_danger("You avoid [user.name]'s bite!"), span_hear("You hear the sound of jaws snapping shut!"), COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, span_warning("Your bite misses [src]!"))
+		visible_message(span_danger("[user.name]Uma mordida erra.[src]!"), 						span_danger("Você evita[user.name]É a mordida!"), span_hear("Você ouve o som das mandíbulas se fechando!"), COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, span_warning("Sua morte erra[src]!"))
 
 	return FALSE
 
 /mob/living/attack_larva(mob/living/carbon/alien/larva/L, list/modifiers)
 	if(L.combat_mode)
 		if(HAS_TRAIT(L, TRAIT_PACIFISM))
-			to_chat(L, span_warning("You don't want to hurt anyone!"))
+			to_chat(L, span_warning("Você não quer machucar ninguém!"))
 			return FALSE
 
 		if(check_block(L, 1, "[L]'s bite", UNARMED_ATTACK, 0, BRUTE))
@@ -534,20 +525,17 @@
 		L.do_attack_animation(src)
 		if(prob(90))
 			log_combat(L, src, "attacked")
-			visible_message(span_danger("[L.name] bites [src]!"), \
-							span_userdanger("[L.name] bites you!"), span_hear("You hear a chomp!"), COMBAT_MESSAGE_RANGE, L)
-			to_chat(L, span_danger("You bite [src]!"))
+			visible_message(span_danger("[L.name]Mordidas.[src]!"), 							span_userdanger("[L.name]Morde você!"), span_hear("Você ouve uma batida!"), COMBAT_MESSAGE_RANGE, L)
+			to_chat(L, span_danger("Você morde.[src]!"))
 			playsound(loc, 'sound/items/weapons/bite.ogg', 50, TRUE, -1)
 			return TRUE
 		else
-			visible_message(span_danger("[L.name]'s bite misses [src]!"), \
-							span_danger("You avoid [L.name]'s bite!"), span_hear("You hear the sound of jaws snapping shut!"), COMBAT_MESSAGE_RANGE, L)
-			to_chat(L, span_warning("Your bite misses [src]!"))
+			visible_message(span_danger("[L.name]Uma mordida erra.[src]!"), 							span_danger("Você evita[L.name]É a mordida!"), span_hear("Você ouve o som das mandíbulas se fechando!"), COMBAT_MESSAGE_RANGE, L)
+			to_chat(L, span_warning("Sua morte erra[src]!"))
 			return FALSE
 
-	visible_message(span_notice("[L.name] rubs its head against [src]."), \
-					span_notice("[L.name] rubs its head against you."), null, null, L)
-	to_chat(L, span_notice("You rub your head against [src]."))
+	visible_message(span_notice("[L.name]esfrega sua cabeça contra[src]."), 					span_notice("[L.name]esfrega sua cabeça em você."), null, null, L)
+	to_chat(L, span_notice("Você esfrega sua cabeça contra[src]."))
 	return FALSE
 
 /mob/living/attack_alien(mob/living/carbon/alien/adult/user, list/modifiers)
@@ -560,22 +548,21 @@
 
 	if(user.combat_mode)
 		if(HAS_TRAIT(user, TRAIT_PACIFISM))
-			to_chat(user, span_warning("You don't want to hurt anyone!"))
+			to_chat(user, span_warning("Você não quer machucar ninguém!"))
 			return FALSE
 		if(check_block(user, user.melee_damage_upper, "[user]'s slash", UNARMED_ATTACK, 0, BRUTE))
 			return FALSE
 		user.do_attack_animation(src)
 		return TRUE
 
-	visible_message(span_notice("[user] caresses [src] with its scythe-like arm."), \
-					span_notice("[user] caresses you with its scythe-like arm."), null, null, user)
-	to_chat(user, span_notice("You caress [src] with your scythe-like arm."))
+	visible_message(span_notice("[user]Carícias[src]com seu braço de foice."), 					span_notice("[user]Acaricia você com seu braço de foice."), null, null, user)
+	to_chat(user, span_notice("Você acaricia.[src]com seu braço de foice."))
 	return FALSE
 
 /mob/living/attack_hulk(mob/living/carbon/human/user)
 	..()
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("You don't want to hurt [src]!"))
+		to_chat(user, span_warning("Você não quer machucar.[src]!"))
 		return FALSE
 	return TRUE
 
@@ -608,10 +595,7 @@
 		adjust_stamina_loss(shock_damage)
 	if(!(flags & SHOCK_SUPPRESS_MESSAGE))
 		visible_message(
-			span_danger("[src] was shocked by \the [source]!"), \
-			span_userdanger("You feel a powerful shock coursing through your body!"), \
-			span_hear("You hear a heavy electrical crack.") \
-		)
+			span_danger("[src]Ficou chocado com\the [source]!"), 			span_userdanger("Você sente um choque poderoso atravessando seu corpo!"), 			span_hear("Você ouve uma forte rachadura elétrica.") 		)
 	return shock_damage
 
 /mob/living/emp_act(severity)
@@ -703,12 +687,12 @@
 		SEND_SOUND(src, sound('sound/items/weapons/flash_ring.ogg',0, 1, 0, 250))
 
 	if(ears.damage >= 15 && prob(ears.damage - 5))
-		to_chat(src, span_userdanger("You can't hear anything!"))
+		to_chat(src, span_userdanger("Você não pode ouvir nada!"))
 		// Makes you deaf, enough that you need a proper source of healing, it won't self heal
 		// you need earmuffs, inacusiate, or replacement
 		ears.set_organ_damage(ears.maxHealth)
 	else if(ears.damage >= 5)
-		to_chat(src, span_warning("Your ears start to ring[ears.damage >= 15 ? " badly!":"!"]"))
+		to_chat(src, span_warning("Seus ouvidos começam a tocar[ears.damage >= 15 ? " badly!":"!"]"))
 
 
 //to damage the clothes worn by a mob
@@ -822,18 +806,18 @@
 			return
 		if((shove_flags & SHOVE_BLOCKED) && !(shove_flags & (SHOVE_KNOCKDOWN_BLOCKED|SHOVE_CAN_KICK_SIDE)))
 			var/knocked_down = target.Knockdown(SHOVE_KNOCKDOWN_SOLID, daze_amount = 3 SECONDS)
-			target.visible_message(span_danger("[name] shoves [target.name][knocked_down ? ", knocking [target.p_them()] down" : ""]!"),
-				span_userdanger("You[knocked_down ? "'re knocked down" : " resist falling down"] from a shove by [name]!"), span_hear("You hear aggressive shuffling [knocked_down ? "followed by a loud thud!" : ""]"), COMBAT_MESSAGE_RANGE, src)
-			to_chat(src, span_danger("You shove [target.name][knocked_down ? ", knocking [target.p_them()] down" : ""]!"))
+			target.visible_message(span_danger("[name]Empurra.[target.name][knocked_down ? ", knocking [target.p_them()] down" : ""]!"),
+				span_userdanger("Você.[knocked_down ? "'re knocked down" : " resist falling down"]De um empurrão por[name]!"), span_hear("Você ouve embaralhamento agressivo[knocked_down ? "followed by a loud thud!" : ""]"), COMBAT_MESSAGE_RANGE, src)
+			to_chat(src, span_danger("Você empurra.[target.name][knocked_down ? ", knocking [target.p_them()] down" : ""]!"))
 			log_combat(src, target, "shoved", "[knocked_down ? "knocking them down[weapon ? " with [weapon]" : ""]" : ""]")
 			return
 
 	if(shove_flags & SHOVE_CAN_KICK_SIDE) //KICK HIM IN THE NUTS
 		if(target.Paralyze(SHOVE_CHAIN_PARALYZE))
 			target.apply_status_effect(/datum/status_effect/no_side_kick)
-			target.visible_message(span_danger("[name] kicks [target.name] onto [target.p_their()] side!"),
-							span_userdanger("You're kicked onto your side by [name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
-			to_chat(src, span_danger("You kick [target.name] onto [target.p_their()] side!"))
+			target.visible_message(span_danger("[name]Chutes.[target.name]em frente[target.p_their()]Lado!"),
+							span_userdanger("Você é chutado para o seu lado por[name]!"), span_hear("Você ouve barulheira agressiva seguida de um barulho!"), COMBAT_MESSAGE_RANGE, src)
+			to_chat(src, span_danger("Você chuta.[target.name]em frente[target.p_their()]Lado!"))
 			addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, SetKnockdown), 0), SHOVE_CHAIN_PARALYZE)
 			log_combat(src, target, "kicks", "onto their side (paralyzing)")
 			return
@@ -846,9 +830,9 @@
 	// If it's in our typecache, they're staggered and it exists, disarm. If they're knocked down, disarm too.
 	if(target_held_item && target.get_timed_status_effect_duration(/datum/status_effect/staggered) && is_type_in_typecache(target_held_item, GLOB.shove_disarming_types) || target_held_item && target.body_position == LYING_DOWN)
 		target.dropItemToGround(target_held_item)
-		append_message = "causing [target.p_them()] to drop [target_held_item]"
-		target.visible_message(span_danger("[target.name] drops \the [target_held_item]!"),
-			span_warning("You drop \the [target_held_item]!"), null, COMBAT_MESSAGE_RANGE)
+		append_message = "Causando[target.p_them()]Para cair[target_held_item]"
+		target.visible_message(span_danger("[target.name]Gotas\the [target_held_item]!"),
+			span_warning("Você caiu.\the [target_held_item]!"), null, COMBAT_MESSAGE_RANGE)
 
 	if(shove_flags & SHOVE_CAN_STAGGER)
 		target.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH, 10 SECONDS)
@@ -872,9 +856,9 @@
 
 ///Send the chat feedback message for shoving
 /mob/living/proc/get_shoving_message(mob/living/shover, obj/item/weapon, shove_flags)
-	visible_message(span_danger("[shover] shoves [name][weapon ? " with [weapon]" : ""]!"),
-		span_userdanger("You're shoved by [shover][weapon ? " with [weapon]" : ""]!"), span_hear("You hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, shover)
-	to_chat(shover, span_danger("You shove [name][weapon ? " with [weapon]" : ""]!"))
+	visible_message(span_danger("[shover]Empurra.[name][weapon ? " with [weapon]" : ""]!"),
+		span_userdanger("Você está empurrado por[shover][weapon ? " with [weapon]" : ""]!"), span_hear("Você ouve baralhar agressivo!"), COMBAT_MESSAGE_RANGE, shover)
+	to_chat(shover, span_danger("Você empurra.[name][weapon ? " with [weapon]" : ""]!"))
 
 /mob/living/proc/check_block(atom/hit_by, damage, attack_text = "the attack", attack_type = MELEE_ATTACK, armour_penetration = 0, damage_type = BRUTE)
 	if(SEND_SIGNAL(src, COMSIG_LIVING_CHECK_BLOCK, hit_by, damage, attack_text, attack_type, armour_penetration, damage_type) & SUCCESSFUL_BLOCK)

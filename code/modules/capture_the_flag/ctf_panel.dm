@@ -64,7 +64,7 @@ GLOBAL_DATUM_INIT(ctf_panel, /datum/ctf_panel, new())
 				return TRUE
 		if ("vote")
 			if (ctf_enabled())
-				to_chat(user, span_warning("CTF is already enabled!"))
+				to_chat(user, span_warning("CTF já está ativado!"))
 				return TRUE
 
 			var/datum/ctf_voting_controller/ctf_controller = get_ctf_voting_controller(CTF_GHOST_CTF_GAME_ID)
@@ -73,7 +73,7 @@ GLOBAL_DATUM_INIT(ctf_panel, /datum/ctf_panel, new())
 			return TRUE
 		if ("unvote")
 			if (ctf_enabled())
-				to_chat(user, span_warning("CTF is already enabled!"))
+				to_chat(user, span_warning("CTF já está ativado!"))
 				return TRUE
 
 			var/datum/ctf_voting_controller/ctf_controller = get_ctf_voting_controller(CTF_GHOST_CTF_GAME_ID)

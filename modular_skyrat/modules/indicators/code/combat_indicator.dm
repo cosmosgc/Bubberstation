@@ -31,7 +31,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 			vehicle_next_combat_popup = world.time + COMBAT_NOTICE_COOLDOWN
 			playsound(src, 'sound/machines/chime.ogg', vol = 10, vary = FALSE, extrarange = -6, falloff_exponent = 4, frequency = null, channel = 0, pressure_affected = FALSE, ignore_walls = FALSE, falloff_distance = 1)
 			flick_emote_popup_on_obj("combat", 20)
-			visible_message(span_boldwarning("[src] prepares for combat!"))
+			visible_message(span_boldwarning("[src]Preparem-se para o combate!"))
 		combat_indicator_vehicle = TRUE
 	else
 		combat_indicator_vehicle = FALSE
@@ -85,18 +85,18 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 			if(get_active_held_item())
 				ciweapon = get_active_held_item()
 				if(istype(ciweapon, /obj/item/gun))
-					visible_message(span_boldwarning("[src] raises \the [ciweapon] with their finger on the trigger, ready for combat!"))
+					visible_message(span_boldwarning("[src]Aumentos.\the [ciweapon]com o dedo no gatilho, pronto para o combate!"))
 				else
-					visible_message(span_boldwarning("[src] readies \the [ciweapon] with a tightened grip and offensive stance, ready for combat!"))
+					visible_message(span_boldwarning("[src]Prontos.\the [ciweapon]com um aperto apertado e posição ofensiva, pronto para combate!"))
 			else
 				if(issilicon(src))
-					visible_message(span_boldwarning("<b>[src] shifts its armour plating into a defensive stance, ready for combat!"))
+					visible_message(span_boldwarning("<b>[src]Muda sua armadura para uma posição defensiva, pronta para combate!"))
 				if(ishuman(src))
-					visible_message(span_boldwarning("[src] raises [p_their()] fists in an offensive stance, ready for combat!"))
+					visible_message(span_boldwarning("[src]Aumentos.[p_their()]punhos em posição ofensiva, prontos para combate!"))
 				if(isalien(src))
-					visible_message(span_boldwarning("[src] hisses in a terrifying stance, claws raised and ready for combat!"))
+					visible_message(span_boldwarning("[src]Assobios em uma postura aterrorizante, garras levantadas e prontas para combate!"))
 				else
-					visible_message(span_boldwarning("[src] gets ready for combat!"))
+					visible_message(span_boldwarning("[src]Preparem-se para o combate!"))
 		combat_indicator = TRUE
 		apply_status_effect(/datum/status_effect/grouped/surrender, src)
 		log_message("<font color='red'>has turned ON the combat indicator!</font>", LOG_ATTACK)
@@ -170,8 +170,8 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 /datum/keybinding/living/combat_indicator
 	hotkey_keys = list("C")
 	name = "combat_indicator"
-	full_name = "Combat Indicator"
-	description = "Indicates that you're escalating to mechanics. YOU NEED TO USE THIS"
+	full_name = "Indicador de combate"
+	description = "Indica que está aumentando para mecânica. Você precisa usar isso."
 	keybind_signal = COMSIG_KB_LIVING_COMBAT_INDICATOR
 
 /datum/keybinding/living/combat_indicator/down(client/user)
@@ -185,7 +185,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 // Surrender shit
 /atom/movable/screen/alert/status_effect/surrender/
-	desc = "You're either in combat or being held up. Click here to surrender and show that you don't wish to fight. You will be incapacitated. (You can also say '*surrender' at any time to do this.)"
+	desc = "Ou você está em combate ou está preso. Clique aqui para se render e mostrar que não deseja lutar. Você ficará incapacitado. (Você também pode dizer '* Renda-se' a qualquer momento para fazer isso.)"
 
 /datum/emote/living/surrender
 	message = "drops to the floor and raises their hands defensively! They surrender%s!"

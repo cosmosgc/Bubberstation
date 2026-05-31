@@ -84,7 +84,7 @@ export const MessageWriteTab = (props) => {
             width="100%"
             options={sorted_assistance}
             selected={recipient}
-            placeholder="Pick a Recipient"
+            placeholder="Escolha um destinatário"
             onSelected={(value) => setRecipient(value)}
           />
         )}
@@ -93,7 +93,7 @@ export const MessageWriteTab = (props) => {
             width="100%"
             options={sorted_supply}
             selected={recipient}
-            placeholder="Pick a Recipient"
+            placeholder="Escolha um destinatário"
             onSelected={(value) => setRecipient(value)}
           />
         )}
@@ -102,7 +102,7 @@ export const MessageWriteTab = (props) => {
             width="100%"
             options={sorted_information}
             selected={recipient}
-            placeholder="Pick a Recipient"
+            placeholder="Escolha um destinatário"
             onSelected={(value) => setRecipient(value)}
           />
         )}
@@ -111,7 +111,7 @@ export const MessageWriteTab = (props) => {
         <Stack.Item grow>
           <Button
             icon="envelope"
-            content="Normal Priority"
+            content="Prioridade Normal"
             key={RequestPriority.NORMAL}
             fluid
             selected={priority === RequestPriority.NORMAL}
@@ -121,7 +121,7 @@ export const MessageWriteTab = (props) => {
         <Stack.Item grow>
           <Button
             icon="exclamation"
-            content="High Priority"
+            content="Alta prioridade."
             key={RequestPriority.HIGH}
             fluid
             selected={priority === RequestPriority.HIGH}
@@ -132,7 +132,7 @@ export const MessageWriteTab = (props) => {
           <Stack.Item grow>
             <Button
               icon="burst"
-              content="EXTREME PRIORITY"
+              content="PRIORIDADE EXTREMA"
               key={RequestPriority.EXTREME}
               fluid
               selected={priority === RequestPriority.EXTREME}
@@ -147,7 +147,7 @@ export const MessageWriteTab = (props) => {
         maxLength={1025}
         value={messageText}
         onChange={setMessageText}
-        placeholder="Type your message..."
+        placeholder="Digite sua mensagem..."
       />
       <Section>
         <Stack fill justify="space-between">
@@ -174,10 +174,10 @@ export const MessageWriteTab = (props) => {
           </Stack.Item>
           <Stack.Item>
             <Button icon="id-card" onClick={() => act('verify_id')}>
-              {authentication_data.message_verified_by || 'Not verified'}
+              {authentication_data.message_verified_by || 'Não verificado.'}
             </Button>
             <Button icon="stamp" onClick={() => act('stamp')}>
-              {authentication_data.message_stamped_by || 'Not stamped'}
+              {authentication_data.message_stamped_by || 'Não carimbado'}
             </Button>
           </Stack.Item>
         </Stack>

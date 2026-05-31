@@ -4,7 +4,7 @@
 	name = "stacking machine console"
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "console"
-	desc = "Controls a stacking machine... in theory."
+	desc = "Controla uma máquina de empilhamento... em teoria."
 	density = FALSE
 	circuit = /obj/item/circuitboard/machine/stacking_unit_console
 	/// Connected stacking machine
@@ -33,7 +33,7 @@
 
 /obj/machinery/mineral/stacking_unit_console/multitool_act(mob/living/user, obj/item/multitool/M)
 	M.set_buffer(src)
-	balloon_alert(user, "salvo no buffer da multitool")
+	balloon_alert(user, "Salvo nenhum buffer da multitool")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/mineral/stacking_unit_console/ui_interact(mob/user, datum/tgui/ui)
@@ -89,7 +89,7 @@
 	name = "stacking machine"
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "stacker"
-	desc = "A machine that automatically stacks acquired materials. Controlled by a nearby console."
+	desc = "Uma máquina que empilha automaticamente materiais adquiridos. Controlado por um console próximo."
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/stacking_machine
 	input_dir = EAST
@@ -113,11 +113,7 @@
 	. = ..()
 	proximity_monitor = new(src, 1)
 	materials = new (
-		src, \
-		mapload, \
-		FALSE, \
-		(mapload && force_connect) \
-	)
+		src, 		mapload, 		FALSE, 		(mapload && force_connect) 	)
 
 /obj/machinery/mineral/stacking_machine/Destroy()
 	if(!isnull(console))
@@ -144,7 +140,7 @@
 
 	console = multi_tool.buffer
 	console.machine = src
-	to_chat(user, span_notice("You link [src] to the console in [multi_tool]'s buffer."))
+	to_chat(user, span_notice("Você liga.[src]Para o console em[multi_tool]É um amortecedor."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/mineral/stacking_machine/proc/rotate(input)

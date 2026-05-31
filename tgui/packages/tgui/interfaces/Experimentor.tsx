@@ -174,7 +174,7 @@ const NodePreview = (props: NodePreviewProps) => {
   const { nodes } = props;
 
   return (
-    <Section fill title="Affected Nodes">
+    <Section fill title="Nós afetados">
       {nodes.length > 0 ? (
         <LabeledList>
           {nodes.map((node, index) => (

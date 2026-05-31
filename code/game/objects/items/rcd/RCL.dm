@@ -2,7 +2,7 @@
 
 /obj/item/rcl
 	name = "rapid pipe cleaner layer"
-	desc = "A device used to rapidly deploy pipe cleaners. It has screws on the side which can be removed to slide off the pipe cleaners. Do not use without insulation!"
+	desc = "Um dispositivo usado para implantar rapidamente limpadores de tubos. Tem parafusos do lado que podem ser removidos para deslizar dos limpadores de tubos. Não use sem isolamento!"
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rcl-0"
 	inhand_icon_state = "rcl-0"
@@ -43,7 +43,7 @@
 		return FALSE
 	. = TRUE
 	if(ghetto && prob(10)) //Is it a ghetto RCL? If so, give it a 10% chance to fall apart
-		to_chat(user, span_warning("You attempt to loosen the securing screws on the side, but it falls apart!"))
+		to_chat(user, span_warning("Você tenta afrouxar os parafusos de segurança do lado, mas ele desmorona!"))
 		while(loaded.amount > 30) //There are only two kinds of situations: "nodiff" (60,90), or "diff" (31-59, 61-89)
 			var/diff = loaded.amount % 30
 			if(diff)
@@ -56,7 +56,7 @@
 		return
 
 	tool.play_tool_sound(src)
-	to_chat(user, span_notice("You loosen the securing screws on the side, allowing you to lower the guiding edge and retrieve the wires."))
+	to_chat(user, span_notice("Você solta os parafusos de segurança do lado, permitindo que você abaixe a borda guia e recupere os fios."))
 	while(loaded.amount > 30) //There are only two kinds of situations: "nodiff" (60,90), or "diff" (31-59, 61-89)
 		var/diff = loaded.amount % 30
 		if(diff)
@@ -78,7 +78,7 @@
 
 		if(!loaded)
 			if(!user.transferItemToLoc(W, src))
-				to_chat(user, span_warning("[src] is stuck to your hand!"))
+				to_chat(user, span_warning("[src]está preso em sua mão!"))
 				return
 			else
 				loaded = W //W.loc is src at this point.
@@ -93,14 +93,14 @@
 		else
 			return
 		update_appearance()
-		to_chat(user, span_notice("You add the pipe cleaners to [src]. It now contains [loaded.amount]."))
+		to_chat(user, span_notice("Você adiciona os limpadores de cachimbo para[src]Ele agora contém[loaded.amount]."))
 	else
 		..()
 
 /obj/item/rcl/examine(mob/user)
 	. = ..()
 	if(loaded)
-		. += span_info("It contains [loaded.amount]/[max_amount] pipe cleaners.")
+		. += span_info("Ele contém[loaded.amount]/[max_amount]Limpadores de tubos.")
 
 /obj/item/rcl/Destroy()
 	QDEL_NULL(loaded)
@@ -133,7 +133,7 @@
 	update_appearance()
 	if(!loaded || !loaded.amount)
 		if(loud)
-			to_chat(user, span_notice("The last of the pipe cleaners unreel from [src]."))
+			to_chat(user, span_notice("O último dos limpadores de cachimbo desenrolou.[src]."))
 		if(loaded)
 			QDEL_NULL(loaded)
 			loaded = null
@@ -185,11 +185,11 @@
 	if(!isturf(user.loc))
 		return
 	if(is_empty(user, 0))
-		balloon_alert(user, "its empty!")
+		balloon_alert(user, "Está vazio!")
 		return
 
 	if(prob(2) && ghetto) //Give ghetto RCLs a 2% chance to jam, requiring it to be reactviated manually.
-		balloon_alert(user, "wires jam!")
+		balloon_alert(user, "Fios comem!")
 		active = FALSE
 		return
 	else
@@ -272,7 +272,7 @@
 	if(!isturf(user.loc))
 		return
 	if(is_empty(user, 0))
-		to_chat(user, span_warning("\The [src] is empty!"))
+		to_chat(user, span_warning("\The [src]Está vazio!"))
 		return
 
 	var/turf/T = get_turf(user)
@@ -308,7 +308,7 @@
 		if (current_color_index > colors.len)
 			current_color_index = 1
 		var/cwname = colors[current_color_index]
-		to_chat(user, "Color changed to [cwname]!")
+		to_chat(user, "A cor mudou para[cwname]!")
 		if(loaded)
 			loaded.set_pipecleaner_color(colors[current_color_index])
 		if(wiring_gui_menu)

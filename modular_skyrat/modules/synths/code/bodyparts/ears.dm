@@ -2,7 +2,7 @@
 	name = "auditory sensors"
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "ears-ipc"
-	desc = "A pair of microphones intended to be installed in an IPC or Synthetics head, that grant the ability to hear."
+	desc = "Um par de microfones destinados a serem instalados em um IPC ou cabeça sintética, que concedem a capacidade de ouvir."
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EARS
 	gender = PLURAL
@@ -22,15 +22,15 @@
 		switch(severity)
 			if(EMP_HEAVY)
 				owner.sound_damage(SYNTH_ORGAN_HEAVY_EMP_DAMAGE, SYNTH_DEAF_STACKS * 2)
-				to_chat(owner, span_warning("Alert: Null feedback from auditory sensors detected, seek maintenance immediately. Error Code: AS-105"))
+				to_chat(owner, span_warning("Retorno nulo dos sensores auditivos detectados, procure manutenção imediatamente. Código de erro: AS-105"))
 
 			if(EMP_LIGHT)
 				owner.sound_damage(SYNTH_ORGAN_LIGHT_EMP_DAMAGE, SYNTH_DEAF_STACKS * 2)
-				to_chat(owner, span_warning("Alert: Anomalous feedback from auditory sensors detected. Error Code: AS-50"))
+				to_chat(owner, span_warning("Reação anômala dos sensores auditivos detectados. Código de erro: AS-50"))
 
 /datum/design/synth_ears
 	name = "Auditory Sensors"
-	desc = "A pair of microphones intended to be installed in an IPC or Synthetics head, that grant the ability to hear."
+	desc = "Um par de microfones destinados a serem instalados em um IPC ou cabeça sintética, que concedem a capacidade de ouvir."
 	id = "synth_ears"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS

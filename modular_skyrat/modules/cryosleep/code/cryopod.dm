@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 
 /obj/machinery/computer/cryopod
 	name = "cryogenic oversight console"
-	desc = "An interface between crew and the cryogenic storage oversight systems."
+	desc = "Uma interface entre a tripulação e os sistemas criogênicos de vigilância de armazenamento."
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cellconsole_1"
 	icon_keyboard = null
@@ -115,7 +115,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 			if(item in frozen_item)
 				item.forceMove(drop_location())
 				frozen_item.Remove(item_get, item)
-				visible_message("[src] dispenses \the [item].")
+				visible_message("[src]Dispensa\the [item].")
 				message_admins("[item] was retrieved from cryostorage at [ADMIN_COORDJMP(src)]")
 			else
 				CRASH("Invalid REF# for ui_act. Not inside internal list!")
@@ -133,12 +133,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 			var/is_command = user?.mind?.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND
 			var/last_of_command = length(SSjob.get_all_heads())
 			if(is_command && last_of_command <= 1)
-				minor_announce(message = "Your station's last member of command has entered cryogenic storage. \
-				Please make sure that the stations essential operational supplies are secured.")
+				minor_announce(message = "Your station's last member of command has entered cryogenic storage. 				Please make sure that the stations essential operational supplies are secured.")
 // Cryopods themselves.
 /obj/machinery/cryopod
 	name = "cryogenic freezer"
-	desc = "Suited for Cyborgs and Humanoids, the pod is a safe place for personnel affected by the Space Sleep Disorder to get some rest."
+	desc = "Sujeita a Cyborgs e Humanoids, a cápsula é um lugar seguro para o pessoal afetado pela desordem do sono espacial descansar."
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cryopod-open"
 	base_icon_state = "cryopod"
@@ -239,7 +238,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 	var/mob/living/mob_occupant = occupant
 	if(mob_occupant && mob_occupant.stat != DEAD)
-		to_chat(occupant, span_notice("<b>You feel cool air surround you. You go numb as your senses turn inward.</b>"))
+		to_chat(occupant, span_notice("<b>Você sente o ar fresco ao seu redor. Você fica dormente quando seus sentidos se tornam para dentro.</b>"))
 		stored_ckey = mob_occupant.ckey
 		stored_name = mob_occupant.name
 
@@ -264,8 +263,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	stored_rank = "N/A"
 
 /obj/machinery/cryopod/container_resist_act(mob/living/user)
-	visible_message(span_notice("[occupant] emerges from [src]!"),
-		span_notice("You climb out of [src]!"))
+	visible_message(span_notice("[occupant]emerge de[src]!"),
+		span_notice("Você sai[src]!"))
 	open_machine()
 
 /obj/machinery/cryopod/relaymove(mob/user)
@@ -423,14 +422,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	if(!quiet)
 		control_computer.announce("CRYO_LEAVE", mob_occupant, announce_rank)
 
-	visible_message(span_notice("[src] hums and hisses as it moves [mob_occupant.real_name] into storage."))
+	visible_message(span_notice("[src]Humms e assobios se movem[mob_occupant.real_name]no depósito."))
 
 	var/list/nuke_disks = mob_occupant.get_all_contents_type(/obj/item/disk/nuclear) // No
 	for(var/obj/item/disk/nuclear/the_disk as anything in nuke_disks)
 		var/turf/launch_target = get_edge_target_turf(src, pick(GLOB.alldirs))
 		mob_occupant.transferItemToLoc(the_disk, drop_location(), force = TRUE, silent = TRUE)
 		the_disk.throw_at(launch_target, 8, 14)
-		visible_message(span_warning("[src] violently ejects [the_disk]!"))
+		visible_message(span_warning("[src]violentamente ejeta[the_disk]!"))
 
 	// get_equipped_items() prevents moving bodyparts, since those are in mob contents now
 	for(var/obj/item/item_content in mob_occupant.get_equipped_items(INCLUDE_POCKETS | INCLUDE_HELD | INCLUDE_ACCESSORIES))
@@ -455,17 +454,17 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 		return
 
 	if(occupant)
-		to_chat(user, span_notice("[src] is already occupied!"))
+		to_chat(user, span_notice("[src]Já está ocupado!"))
 		return
 
 	if(target.stat == DEAD)
-		to_chat(user, span_notice("Dead people can not be put into cryo."))
+		to_chat(user, span_notice("Pessoas mortas não podem ser colocadas em crio."))
 		return
 
 // Allows admins to enable players to override SSD Time check.
 	if(allow_timer_override)
-		if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) != "No")
-			to_chat(user, span_danger("You put [target] into [src]. [target.p_Theyre()] in the cryopod."))
+		if(tgui_alert(user, "Você gostaria de colocar[target]Em[src]?", "Place into Cryopod?", list("Yes", "No")) != "No")
+			to_chat(user, span_danger("Você colocou[target]Em[src]. [target.p_Theyre()]no criópode."))
 			log_admin("[key_name(user)] has put [key_name(target)] into a overridden stasis pod.")
 			message_admins("[key_name(user)] has put [key_name(target)] into a overridden stasis pod. [ADMIN_JMP(src)]")
 
@@ -479,14 +478,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 		if (target.get_organ_by_type(/obj/item/organ/brain) ) //Target the Brain
 			if(!target.mind || target.ssd_indicator ) // Is the character empty / AI Controlled
 				if(target.lastclienttime + ssd_time >= world.time)
-					to_chat(user, span_notice("You can't put [target] into [src] for another [round(((ssd_time - (world.time - target.lastclienttime)) / (1 MINUTES)), 1)] minutes."))
+					to_chat(user, span_notice("Você não pode colocar[target]Em[src]Por outro[round(((ssd_time - (world.time - target.lastclienttime)) / (1 MINUTES)), 1)]minutos."))
 					log_admin("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod, but they were only disconnected for [round(((world.time - target.lastclienttime) / (1 MINUTES)), 1)] minutes.")
 					message_admins("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod. [ADMIN_JMP(src)]")
 					return
-				else if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) == "Yes")
+				else if(tgui_alert(user, "Você gostaria de colocar[target]Em[src]?", "Place into Cryopod?", list("Yes", "No")) == "Yes")
 					// if(target.mind.assigned_role.req_admin_notify)
 					// tgui_alert(user, "They are an important role! [AHELP_FIRST_MESSAGE]")
-					to_chat(user, span_danger("You put [target] into [src]. [target.p_Theyre()] in the cryopod."))
+					to_chat(user, span_danger("Você colocou[target]Em[src]. [target.p_Theyre()]no criópode."))
 					log_admin("[key_name(user)] has put [key_name(target)] into a stasis pod.")
 					message_admins("[key_name(user)] has put [key_name(target)] into a stasis pod. [ADMIN_JMP(src)]")
 
@@ -496,28 +495,28 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 					name = "[name] ([target.name])"
 
 		else if(iscyborg(target))
-			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_Theyre()] online."))
+			to_chat(user, span_danger("Você não pode colocar[target]Em[src]. [target.p_Theyre()]online."))
 		else
-			to_chat(user, span_danger("You can't put [target] into [src]. [target.p_Theyre()] conscious."))
+			to_chat(user, span_danger("Você não pode colocar[target]Em[src]. [target.p_Theyre()]Consciente."))
 		return
 
-	if(target == user && (tgui_alert(target, "Would you like to enter cryosleep?", "Enter Cryopod?", list("Yes", "No")) != "Yes"))
+	if(target == user && (tgui_alert(target, "Você gostaria de entrar em crio-sono?", "Enter Cryopod?", list("Yes", "No")) != "Yes"))
 		return
 
 	if(target == user)
 		if(target.mind.assigned_role.req_admin_notify)
-			tgui_alert(target, "You're an important role! Please make sure to return all job-related gear before leaving.")
+			tgui_alert(target, "Você é um papel importante! Por favor, devolva todos os equipamentos relacionados ao trabalho antes de sair.")
 		/*
 		var/datum/antagonist/antag = target.mind.has_antag_datum(/datum/antagonist)
 		if(antag)
-			tgui_alert(target, "You're \a [antag.name]! [AHELP_FIRST_MESSAGE]")
+			tgui_alert(target, "Você é\a [antag.name]! [AHELP_FIRST_MESSAGE]")
 	*/
 
 	if(LAZYLEN(target.buckled_mobs) > 0)
 		if(target == user)
-			to_chat(user, span_danger("You can't fit into the cryopod while someone is buckled to you."))
+			to_chat(user, span_danger("Não cabe no criópode enquanto alguém está preso a você."))
 		else
-			to_chat(user, span_danger("You can't fit [target] into the cryopod while someone is buckled to them."))
+			to_chat(user, span_danger("Você não cabe.[target]no criópode enquanto alguém está preso a eles."))
 		return
 
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
@@ -525,15 +524,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 		// rerun the checks in case of shenanigans
 
 	if(occupant)
-		to_chat(user, span_notice("[src] is already occupied!"))
+		to_chat(user, span_notice("[src]Já está ocupado!"))
 		return
 
 	if(target == user)
-		visible_message(span_infoplain("[user] starts climbing into the cryo pod."))
+		visible_message(span_infoplain("[user]Começa a subir na cápsula criogênica."))
 	else
-		visible_message(span_infoplain("[user] starts putting [target] into the cryo pod."))
+		visible_message(span_infoplain("[user]Começa a colocar[target]na cápsula criogênica."))
 
-	to_chat(target, span_warning("<b>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</b>"))
+	to_chat(target, span_warning("<b>Se você fantasma, sair ou fechar seu cliente agora, seu personagem em breve será permanentemente removido da rodada.</b>"))
 
 	log_admin("[key_name(target)] entered a stasis pod.")
 	message_admins("[key_name_admin(target)] entered a stasis pod. [ADMIN_JMP(src)]")
@@ -552,9 +551,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 		if(!occupant || !istype(occupant, /mob/living))
 			return
 		if(tucked)
-			to_chat(user, span_warning("[occupant.name] already looks pretty comfortable!"))
+			to_chat(user, span_warning("[occupant.name]Já parece bem confortável!"))
 			return
-		to_chat(user, span_notice("You tuck [occupant.name] into their pod!"))
+		to_chat(user, span_notice("Você está bem?[occupant.name]Em sua cápsula!"))
 		qdel(weapon)
 		user.add_mood_event("tucked", /datum/mood_event/tucked_in, occupant)
 		tucked = TRUE

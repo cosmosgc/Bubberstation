@@ -2,7 +2,7 @@
 
 /obj/structure/closet/crate/secure/loot
 	name = "abandoned crate"
-	desc = "What could be inside?"
+	desc = "O que poderia estar lá dentro?"
 	icon_state = "securecrate"
 	base_icon_state = "securecrate"
 	integrity_failure = 0 //no breaking open the crate
@@ -133,10 +133,10 @@
 		return
 
 	if(!validate_input(input))
-		to_chat(user, span_notice("You leave the crate alone."))
+		to_chat(user, span_notice("Deixe a caixa em paz."))
 		return
 
-	to_chat(user, span_warning("A red light flashes."))
+	to_chat(user, span_warning("Uma luz vermelha pisca."))
 	previous_attempts += list(bulls_and_cows(input))
 	attempts--
 

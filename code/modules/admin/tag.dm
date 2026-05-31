@@ -6,7 +6,7 @@
  */
 /datum/admins/proc/add_tagged_datum(datum/target_datum)
 	if(LAZYFIND(tagged_datums, target_datum))
-		to_chat(owner, span_warning("[target_datum] is already tagged!"))
+		to_chat(owner, span_warning("[target_datum]Já está marcado!"))
 		return
 
 	if(!target_datum.allow_mark_datum())
@@ -14,14 +14,14 @@
 
 	LAZYADD(tagged_datums, target_datum)
 	RegisterSignal(target_datum, COMSIG_QDELETING, PROC_REF(handle_tagged_del), override = TRUE)
-	to_chat(owner, span_notice("[target_datum] has been tagged."))
+	to_chat(owner, span_notice("[target_datum]Foi marcado."))
 
 /// Get ahead of the curve with deleting
 /datum/admins/proc/handle_tagged_del(datum/source)
 	SIGNAL_HANDLER
 
 	if(owner)
-		to_chat(owner, span_boldnotice("Tagged datum [source] ([source.type]) has been deleted."))
+		to_chat(owner, span_boldnotice("Etiquetado datum[source] ([source.type]Foi eletado."))
 	remove_tagged_datum(source, silent = TRUE)
 
 /**
@@ -38,19 +38,15 @@
 	if(LAZYFIND(tagged_datums, target_datum))
 		LAZYREMOVE(tagged_datums, target_datum)
 		if(!silent)
-			to_chat(owner, span_notice("[target_datum] has been untagged."))
+			to_chat(owner, span_notice("[target_datum]Foi desmarcado."))
 	else if(!silent)
-		to_chat(owner, span_warning("[target_datum] was not already tagged."))
+		to_chat(owner, span_warning("[target_datum]Não estava marcado."))
 
 /// Quick define for readability
 #define TAG_DEL(X) "<b>(<A href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];del_tag=[REF(X)]'>UNTAG</a>)</b>"
 #define TAG_MARK(X) "<b>(<A href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];mark_datum=[REF(X)]'>MARK</a>)</b>"
 #define TAG_SIMPLE_HEALTH(X) "<font color='#ff0000'><b>Health: [X.health]</b></font>"
-#define TAG_CARBON_HEALTH(X) "<font color='#ff0000'><b>Health: [X.health]</b></font> (\
-					<font color='#ff3333'>[X.get_brute_loss()]</font> \
-					<font color='#ff9933'>[X.get_fire_loss()]</font> \
-					<font color='#00cc66'>[X.get_tox_loss()]</font> \
-					<font color='#00cccc'>[X.get_oxy_loss()]</font>"
+#define TAG_CARBON_HEALTH(X) "<font color='#ff0000'><b>Health: [X.health]</b></font> (					<font color='#ff3333'>[X.get_brute_loss()]</font> 					<font color='#ff9933'>[X.get_fire_loss()]</font> 					<font color='#00cc66'>[X.get_tox_loss()]</font> 					<font color='#00cccc'>[X.get_oxy_loss()]</font>"
 
 ADMIN_VERB(display_tags, R_ADMIN, "View Tags", "Display all of the tagged datums.", ADMIN_CATEGORY_GAME)
 	var/index = 0

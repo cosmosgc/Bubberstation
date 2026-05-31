@@ -9,7 +9,7 @@ const Wizard: Antagonist = {
   key: 'wizard',
   name: 'Wizard',
   description: [
-    `"GREETINGS. WE'RE THE WIZARDS OF THE WIZARD'S FEDERATION."`,
+    `"Gritos. Somos os magos da federação."`,
     WIZARD_MECHANICAL_DESCRIPTION,
   ],
   category: Category.Roundstart,

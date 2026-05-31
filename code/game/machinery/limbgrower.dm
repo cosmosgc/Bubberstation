@@ -2,7 +2,7 @@
 /// See [limbgrower_designs.dm] for everything we can make.
 /obj/machinery/limbgrower
 	name = "limb grower"
-	desc = "It grows new limbs using Synthflesh."
+	desc = "Cresce novos membros usando Synthflesh."
 	icon = 'icons/obj/machines/limbgrower.dmi'
 	icon_state = "limbgrower_idleoff"
 	base_icon_state = "limbgrower"
@@ -61,7 +61,7 @@
 		return FALSE
 	obj_flags |= EMAGGED
 	update_static_data(user)
-	balloon_alert(user, "illegal limb production enabled")
+	balloon_alert(user, "Produção ilegal de membros permitida")
 	return TRUE
 
 /obj/machinery/limbgrower/ui_interact(mob/user, datum/tgui/ui)
@@ -150,9 +150,9 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(tool, /obj/item/disk/design_disk/limbs))
-		user.visible_message(span_notice("[user] begins to load \the [tool] in \the [src]..."),
-			span_notice("You begin to load designs from \the [tool]..."),
-			span_hear("You hear the clatter of a floppy drive."))
+		user.visible_message(span_notice("[user]começa a carregar\the [tool]em\the [src]..."),
+			span_notice("Você começa a carregar projetos de\the [tool]..."),
+			span_hear("Você ouve o barulho de um drive flexível."))
 		busy = TRUE
 		var/obj/item/disk/design_disk/limbs/limb_design_disk = tool
 		if(do_after(user, 2 SECONDS, target = src))
@@ -223,7 +223,7 @@
 			for(var/reagent_id in consumed_reagents_list)
 				consumed_reagents_list[reagent_id] *= production_coefficient
 				if(!reagents.has_reagent(reagent_id, consumed_reagents_list[reagent_id]))
-					audible_message(span_notice("[src] buzzes."))
+					audible_message(span_notice("[src]Buzzes."))
 					playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
 					return
 
@@ -249,7 +249,7 @@
 /obj/machinery/limbgrower/proc/build_item(list/modified_consumed_reagents_list)
 	for(var/reagent_id in modified_consumed_reagents_list)
 		if(!reagents.has_reagent(reagent_id, modified_consumed_reagents_list[reagent_id]))
-			audible_message(span_notice("The [src] buzzes."))
+			audible_message(span_notice("O[src]Buzzes."))
 			playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
 			break
 
@@ -309,7 +309,7 @@
 /obj/machinery/limbgrower/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Storing up to <b>[reagents.maximum_volume]u</b> of reagents.<br>Reagent consumption rate at <b>[production_coefficient * 100]%</b>.")
+		. += span_notice("A exibição de status diz:<b>[reagents.maximum_volume]U</b>de reagentes.<br>Taxa de consumo de reagente em<b>[production_coefficient * 100]%</b>.")
 
 /**
  * Check if the limb grower is currently busy.
@@ -321,7 +321,7 @@
 /obj/machinery/limbgrower/proc/check_busy(mob/user)
 	. = busy
 	if(.)
-		to_chat(user, span_warning("The limb grower is busy. Please wait for completion of previous operation."))
+		to_chat(user, span_warning("O produtor de membros está ocupado. Por favor, aguarde a conclusão da operação anterior."))
 
 /*
  * Checks our reagent list to see if a design can be built.
@@ -337,7 +337,7 @@
 	return TRUE
 
 /obj/machinery/limbgrower/fullupgrade //Inherently cheaper organ production. This is to NEVER be inherently emagged, no valids.
-	desc = "It grows new limbs using Synthflesh. This alien model seems more efficient."
+	desc = "Cresce novos membros usando Synthflesh. Este modelo alienígena parece mais eficiente."
 	circuit = /obj/item/circuitboard/machine/limbgrower/fullupgrade
 
 /obj/machinery/limbgrower/fullupgrade/Initialize(mapload)

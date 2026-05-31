@@ -1,6 +1,6 @@
 /obj/item/circuit_component/compare/access
-	display_name = "Access Checker"
-	desc = "Performs a basic comparison between two lists of strings, with additional functions that help in using it to check access on IDs."
+	display_name = "Acessar Checker."
+	desc = "Realiza uma comparação básica entre duas listas de cordas, com funções adicionais que ajudam a usá-lo para verificar o acesso em IDs."
 	category = "ID"
 
 	/// A list of the accesses to check
@@ -58,7 +58,7 @@
 
 /obj/item/circuit_component/compare/access/ui_perform_action(mob/user, action)
 	if(LAZYLEN(required_accesses.connected_ports))
-		balloon_alert(user, "disconnect port before manually configuring!")
+		balloon_alert(user, "Desligue um porta antes de configurar manualmente!")
 		return
 	interact(user)
 

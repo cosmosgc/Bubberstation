@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/syringe
 	name = "syringe"
-	desc = "A syringe that can hold up to 15 units."
+	desc = "Uma seringa que pode conter até 15 unidades."
 	icon = 'icons/obj/medical/syringe.dmi'
 	base_icon_state = "syringe"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
@@ -26,13 +26,7 @@
 /obj/item/reagent_containers/syringe/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-	AddComponent(/datum/component/dart_insert, \
-		dart_insert_icon, \
-		dart_insert_casing_icon_state, \
-		dart_insert_icon, \
-		dart_insert_projectile_icon_state, \
-		CALLBACK(src, PROC_REF(get_dart_var_modifiers))\
-	)
+	AddComponent(/datum/component/dart_insert, 		dart_insert_icon, 		dart_insert_casing_icon_state, 		dart_insert_icon, 		dart_insert_projectile_icon_state, 		CALLBACK(src, PROC_REF(get_dart_var_modifiers))	)
 	RegisterSignal(src, COMSIG_ITEM_IN_UNWRAPPED_TRAITOR_MAIL, PROC_REF(on_mail_unwrap))
 
 /obj/item/reagent_containers/syringe/proc/try_syringe(atom/target, mob/user)
@@ -58,23 +52,23 @@
 	log_combat(user, target, "attempted to inject", src, addition="which had [contained]")
 
 	if(!reagents.total_volume)
-		to_chat(user, span_warning("[src] is empty! Right-click to draw."))
+		to_chat(user, span_warning("[src]Está vazio! Botão direito para desenhar."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!isliving(target) && !target.is_injectable(user))
-		to_chat(user, span_warning("You cannot directly fill [target]!"))
+		to_chat(user, span_warning("Você não pode preencher diretamente[target]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(target.reagents.holder_full())
-		to_chat(user, span_notice("[target] is full."))
+		to_chat(user, span_notice("[target]Está cheio."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(isliving(target))
 		var/mob/living/living_target = target
 		if(living_target != user)
 			living_target.visible_message(
-				span_danger("[user] is trying to inject [living_target]!"),
-				span_userdanger("[user] is trying to inject you!"),
+				span_danger("[user]Está tentando injetar.[living_target]!"),
+				span_userdanger("[user]Está tentando injetar em você!"),
 			)
 			if(!do_after(user, CHEM_INTERACT_DELAY(3 SECONDS, user), living_target, extra_checks = CALLBACK(src, PROC_REF(try_syringe), living_target, user)))
 				return ITEM_INTERACT_BLOCKING
@@ -83,8 +77,8 @@
 			if(living_target.reagents.holder_full())
 				return ITEM_INTERACT_BLOCKING
 			living_target.visible_message(
-				span_danger("[user] injects [living_target] with the syringe!"),
-				span_userdanger("[user] injects you with the syringe!"),
+				span_danger("[user]Injeções[living_target]Com a seringa!"),
+				span_userdanger("[user]Injeta você com a seringa!"),
 			)
 
 		if(living_target == user)
@@ -93,7 +87,7 @@
 			log_combat(user, living_target, "injected", src, addition="which had [contained]")
 
 	if(reagents.trans_to(target, amount_per_transfer_from_this, transferred_by = user, methods = INJECT))
-		to_chat(user, span_notice("You inject [amount_per_transfer_from_this] units of the solution. The syringe now contains [reagents.total_volume] units."))
+		to_chat(user, span_notice("Você injeta.[amount_per_transfer_from_this]Unidades da solução. A seringa agora contém[reagents.total_volume]Unidades."))
 		target.update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
@@ -108,7 +102,7 @@
 	SEND_SIGNAL(target, COMSIG_LIVING_TRY_SYRINGE_WITHDRAW, user)
 
 	if(reagents.holder_full())
-		to_chat(user, span_notice("[src] is full."))
+		to_chat(user, span_notice("[src]Está cheio."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(isliving(target))
@@ -116,30 +110,30 @@
 		var/drawn_amount = reagents.maximum_volume - reagents.total_volume
 		if(target != user)
 			target.visible_message(
-				span_danger("[user] is trying to take a blood sample from [target]!"),
-				span_userdanger("[user] is trying to take a blood sample from you!"),
+				span_danger("[user]está tentando tirar uma amostra de sangue de[target]!"),
+				span_userdanger("[user]Está tentando tirar uma amostra de sangue de você!"),
 			)
 			if(!do_after(user, CHEM_INTERACT_DELAY(3 SECONDS, user), target, extra_checks = CALLBACK(src, PROC_REF(try_syringe), living_target, user)))
 				return ITEM_INTERACT_BLOCKING
 			if(reagents.holder_full())
 				return ITEM_INTERACT_BLOCKING
 		if(living_target.transfer_blood_to(src, drawn_amount))
-			user.visible_message(span_notice("[user] takes a blood sample from [living_target]."))
+			user.visible_message(span_notice("[user]Tira uma amostra de sangue de[living_target]."))
 		else
-			to_chat(user, span_warning("You are unable to draw any blood from [living_target]!"))
+			to_chat(user, span_warning("Você é incapaz de tirar sangue de[living_target]!"))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!target.reagents.total_volume)
-		to_chat(user, span_warning("[target] is empty!"))
+		to_chat(user, span_warning("[target]Está vazio!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!target.is_drawable(user))
-		to_chat(user, span_warning("You cannot directly remove reagents from [target]!"))
+		to_chat(user, span_warning("Você não pode remover diretamente reagentes de[target]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user) // transfer from, transfer to - who cares?
 	if(trans)
-		to_chat(user, span_notice("You fill [src] with [trans] units of the solution. It now contains [reagents.total_volume] units."))
+		to_chat(user, span_notice("Você enche.[src]com[trans]Unidades da solução. Agora contém[reagents.total_volume]Unidades."))
 	target.update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
@@ -148,9 +142,9 @@
  */
 /obj/item/reagent_containers/syringe/on_accidental_consumption(mob/living/carbon/victim, mob/living/carbon/user, obj/item/source_item,  discover_after = TRUE)
 	if(source_item)
-		to_chat(victim, span_boldwarning("There's \a [src] in [source_item]!!"))
+		to_chat(victim, span_boldwarning("Tem\a [src]em[source_item]!!"))
 	else
-		to_chat(victim, span_boldwarning("[src] injects you!"))
+		to_chat(victim, span_boldwarning("[src]Injeta você!"))
 
 	victim.apply_damage(5, BRUTE, BODY_ZONE_HEAD)
 	reagents?.trans_to(victim, round(reagents.total_volume*(2/3)), transferred_by = user, methods = INJECT)
@@ -198,7 +192,7 @@
 	SIGNAL_HANDLER
 	if(!reagents.total_volume || !user.reagents || !user.try_inject(user, user.get_active_hand()))
 		return
-	to_chat(user, span_danger("As you open [letter], you prick yourself on a syringe inside!"))
+	to_chat(user, span_danger("Enquanto você abre[letter]Você se fura em uma seringa!"))
 	reagents.trans_to(user, min(reagents.total_volume, 5))
 	forceMove(user.loc)
 	return COMPONENT_TRAITOR_MAIL_HANDLED
@@ -253,47 +247,47 @@
 
 /obj/item/reagent_containers/syringe/epinephrine
 	name = "syringe (epinephrine)"
-	desc = "Contains epinephrine - used to stabilize patients."
+	desc = "Contém epinefrina usada para estabilizar os pacientes."
 	list_reagents = list(/datum/reagent/medicine/epinephrine = 15)
 
 /obj/item/reagent_containers/syringe/multiver
 	name = "syringe (multiver)"
-	desc = "Contains multiver. Diluted with granibitaluri."
+	desc = "Contém multiver. Diluída com granibitaluri."
 	list_reagents = list(/datum/reagent/medicine/c2/multiver = 6, /datum/reagent/medicine/granibitaluri = 9)
 
 /obj/item/reagent_containers/syringe/calomel
 	name = "syringe (calomel)"
-	desc = "Contains calomel - a toxic drug for rapidly removing chemicals from the body."
+	desc = "Contém calomel, uma droga tóxica para remover rapidamente substâncias químicas do corpo."
 	list_reagents = list(/datum/reagent/medicine/calomel = 15)
 
 /obj/item/reagent_containers/syringe/convermol
 	name = "syringe (convermol)"
-	desc = "Contains convermol. Diluted with granibitaluri."
+	desc = "Contém convermol. Diluída com granibitaluri."
 	list_reagents = list(/datum/reagent/medicine/c2/convermol = 6, /datum/reagent/medicine/granibitaluri = 9)
 
 /obj/item/reagent_containers/syringe/antiviral
 	name = "syringe (spaceacillin)"
-	desc = "Contains antiviral agents."
+	desc = "Contém agentes antivirais."
 	list_reagents = list(/datum/reagent/medicine/spaceacillin = 15)
 
 /obj/item/reagent_containers/syringe/bioterror
 	name = "bioterror syringe"
-	desc = "Contains several paralyzing reagents."
+	desc = "Contém vários reagentes paralisantes."
 	list_reagents = list(/datum/reagent/consumable/ethanol/neurotoxin = 5, /datum/reagent/toxin/mutetoxin = 5, /datum/reagent/toxin/sodium_thiopental = 5)
 
 /obj/item/reagent_containers/syringe/calomel
 	name = "syringe (calomel)"
-	desc = "Contains calomel."
+	desc = "Contém calomel."
 	list_reagents = list(/datum/reagent/medicine/calomel = 15)
 
 /obj/item/reagent_containers/syringe/plasma
 	name = "syringe (plasma)"
-	desc = "Contains plasma."
+	desc = "Contém plasma."
 	list_reagents = list(/datum/reagent/toxin/plasma = 15)
 
 /obj/item/reagent_containers/syringe/lethal
 	name = "lethal injection syringe"
-	desc = "A syringe used for lethal injections. It can hold up to 50 units."
+	desc = "Uma seringa usada para injeções letais. Pode aguentar até 50 unidades."
 	amount_per_transfer_from_this = 50
 	has_variable_transfer_amount = FALSE
 	volume = 50
@@ -306,7 +300,7 @@
 
 /obj/item/reagent_containers/syringe/mulligan
 	name = "Mulligan"
-	desc = "A syringe used to completely change the users identity."
+	desc = "Uma seringa usada para mudar completamente a identidade dos usuários."
 	amount_per_transfer_from_this = 1
 	has_variable_transfer_amount = FALSE
 	volume = 1
@@ -314,7 +308,7 @@
 
 /obj/item/reagent_containers/syringe/gluttony
 	name = "Gluttony's Blessing"
-	desc = "A syringe recovered from a dread place. It probably isn't wise to use."
+	desc = "Uma seringa recuperada de um lugar assustador. Provavelmente não é sábio usar."
 	amount_per_transfer_from_this = 1
 	has_variable_transfer_amount = FALSE
 	volume = 1
@@ -322,7 +316,7 @@
 
 /obj/item/reagent_containers/syringe/bluespace
 	name = "bluespace syringe"
-	desc = "An advanced syringe that can hold 60 units of chemicals."
+	desc = "Uma seringa avançada que pode conter 60 unidades de produtos químicos."
 	icon_state = "bluespace_0"
 	inhand_icon_state = "bluespace_0"
 	base_icon_state = "bluespace"
@@ -334,7 +328,7 @@
 
 /obj/item/reagent_containers/syringe/piercing
 	name = "piercing syringe"
-	desc = "A diamond-tipped syringe that pierces armor when launched at high velocity. It can hold up to 10 units."
+	desc = "Uma seringa com ponta de diamante que perfura armadura quando lançada em alta velocidade. Pode aguentar até 10 unidades."
 	icon_state = "piercing_0"
 	inhand_icon_state = "piercing_0"
 	base_icon_state = "piercing"
@@ -354,7 +348,7 @@
 
 /obj/item/reagent_containers/syringe/crude
 	name = "crude syringe"
-	desc = "A crudely made syringe. The flimsy wooden construction makes it hold a minimal amounts of reagents, but its very disposable."
+	desc = "Uma seringa crua. A frágil construção de madeira faz com que tenha uma quantidade mínima de reagentes, mas é muito descartável."
 	icon_state = "crude_0"
 	base_icon_state = "crude"
 	possible_transfer_amounts = list(1,5)
@@ -380,7 +374,7 @@
 // Used by monkeys from the elemental plane of bananas. Reagents come from bungo pit, death berries, destroying angel, jupiter cups, and jumping beans.
 /obj/item/reagent_containers/syringe/crude/tribal
 	name = "tribal syringe"
-	desc = "A crudely made syringe. Smells like bananas."
+	desc = "Uma seringa crua. Cheira a banana."
 
 /obj/item/reagent_containers/syringe/crude/tribal/Initialize(mapload)
 	var/toxin_to_get = pick(/datum/reagent/toxin/bungotoxin, /datum/reagent/toxin/coniine, /datum/reagent/toxin/amanitin, /datum/reagent/consumable/liquidelectricity/enriched, /datum/reagent/ants)
@@ -395,32 +389,32 @@
 
 /obj/item/reagent_containers/syringe/spider_extract
 	name = "spider extract syringe"
-	desc = "Contains crikey juice - makes any gold core create the most deadly companions in the world."
+	desc = "Contém suco de crikey - faz qualquer núcleo de ouro criar os companheiros mais mortais do mundo."
 	list_reagents = list(/datum/reagent/spider_extract = 1)
 
 /obj/item/reagent_containers/syringe/oxandrolone
 	name = "syringe (oxandrolone)"
-	desc = "Contains oxandrolone, used to treat severe burns."
+	desc = "Contém oxandrolona, usada para tratar queimaduras graves."
 	list_reagents = list(/datum/reagent/medicine/oxandrolone = 15)
 
 /obj/item/reagent_containers/syringe/salacid
 	name = "syringe (salicylic acid)"
-	desc = "Contains salicylic acid, used to treat severe brute damage."
+	desc = "Contém ácido salicílico, usado para tratar danos graves."
 	list_reagents = list(/datum/reagent/medicine/sal_acid = 15)
 
 /obj/item/reagent_containers/syringe/penacid
 	name = "syringe (pentetic acid)"
-	desc = "Contains pentetic acid, used to reduce high levels of radiation and heal severe toxins."
+	desc = "Contém ácido pentético, usado para reduzir altos níveis de radiação e curar toxinas graves."
 	list_reagents = list(/datum/reagent/medicine/pen_acid = 15)
 
 /obj/item/reagent_containers/syringe/syriniver
 	name = "syringe (syriniver)"
-	desc = "Contains syriniver, used to treat toxins and purge chemicals.The tag on the syringe states 'Inject one time per minute'"
+	desc = "Contém syriniver, usado para tratar toxinas e purgar produtos químicos. A etiqueta na seringa diz \"Injete uma vez por minuto\"."
 	list_reagents = list(/datum/reagent/medicine/c2/syriniver = 15)
 
 /obj/item/reagent_containers/syringe/contraband
 	name = "unlabeled syringe"
-	desc = "A syringe containing some sort of unknown chemical cocktail."
+	desc = "Uma seringa contendo algum tipo de coquetel químico desconhecido."
 
 /obj/item/reagent_containers/syringe/contraband/Initialize(mapload)
 	. = ..()

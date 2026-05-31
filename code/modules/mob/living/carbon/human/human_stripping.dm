@@ -76,10 +76,10 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 			stack_trace("Unknown action key: [action_key] for [type]")
 
 /datum/strippable_item/mob_item_slot/jumpsuit/proc/do_adjust_jumpsuit(atom/source, mob/user, obj/item/clothing/under/jumpsuit)
-	to_chat(source, span_notice("[user] is trying to adjust your [jumpsuit]."))
+	to_chat(source, span_notice("[user]está tentando ajustar seu[jumpsuit]."))
 	if (!do_after(user, (jumpsuit.strip_delay * 0.5), source))
 		return
-	to_chat(source, span_notice("[user] successfully adjusted your [jumpsuit]."))
+	to_chat(source, span_notice("[user]Ajustou com sucesso seu[jumpsuit]."))
 	jumpsuit.toggle_jumpsuit_adjust()
 
 	if (!ismob(source))
@@ -115,12 +115,12 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 		source.balloon_alert(user, "não alcança!")
 		return
 
-	to_chat(source, span_notice("[user] is trying to adjust your [jumpsuit.name]'s sensor."))
+	to_chat(source, span_notice("[user]está tentando ajustar seu[jumpsuit.name]O sensor."))
 	if(!do_after(user, jumpsuit.strip_delay * 0.5, source) || !jumpsuit.set_sensor_mode(new_mode)) // takes the same amount of time as adjusting it
-		source.balloon_alert(user, "failed!")
+		source.balloon_alert(user, "Falhou!")
 		return
-	source.balloon_alert(user, "changed sensors")
-	to_chat(source, span_notice("[user] successfully adjusted your [jumpsuit.name]'s sensor."))
+	source.balloon_alert(user, "Os sensores foram alterados.")
+	to_chat(source, span_notice("[user]Ajustou com sucesso seu[jumpsuit.name]O sensor."))
 	user.log_message("changed suit sensors of [key_name(source)] to [new_mode_str]", LOG_ATTACK, color="red")
 	source.log_message("suit sensors changed to [new_mode_str] by [key_name(user)]", LOG_VICTIM, color="orange", log_globally=FALSE)
 
@@ -140,12 +140,12 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 		source.balloon_alert(user, "não alcança!")
 		return
 
-	to_chat(source, span_notice("[user] is trying to take [chosen_accessory] off of [jumpsuit]!"))
+	to_chat(source, span_notice("[user]está tentando levar[chosen_accessory]Fora de[jumpsuit]!"))
 	if(!do_after(user, chosen_accessory.strip_delay, source))
-		source.balloon_alert(user, "failed!")
+		source.balloon_alert(user, "Falhou!")
 		return
 
-	to_chat(source, span_notice("[user] has taken [chosen_accessory] off of [jumpsuit]."))
+	to_chat(source, span_notice("[user]Tem Tomado[chosen_accessory]Fora de[jumpsuit]."))
 	jumpsuit.remove_accessory(chosen_accessory)
 	jumpsuit.update_appearance()
 	chosen_accessory.forceMove(jumpsuit.drop_location())
@@ -234,9 +234,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	can_be_silent = TRUE //SKYRAT EDIT ADDITION
 
 /datum/strippable_item/mob_item_slot/pocket/get_obscuring(atom/source)
-	return isnull(get_item(source)) \
-		? STRIPPABLE_OBSCURING_NONE \
-		: STRIPPABLE_OBSCURING_HIDDEN
+	return isnull(get_item(source)) 		? STRIPPABLE_OBSCURING_NONE 		: STRIPPABLE_OBSCURING_HIDDEN
 
 /datum/strippable_item/mob_item_slot/pocket/get_equip_delay(obj/item/equipping)
 	return POCKET_EQUIP_DELAY
@@ -251,7 +249,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	if (isnull(item))
 		return FALSE
 
-	to_chat(user, span_notice("You try to empty [source]'s [pocket_side] pocket."))
+	to_chat(user, span_notice("Você tenta esvaziar[source]'s[pocket_side]Bolso."))
 
 	user.log_message("is pickpocketing [key_name(source)] of [item] ([pocket_side])", LOG_ATTACK, color="red")
 	source.log_message("is being pickpocketed of [item] by [key_name(user)] ([pocket_side])", LOG_VICTIM, color="orange", log_globally=FALSE)
@@ -265,7 +263,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	return result
 
 /datum/strippable_item/mob_item_slot/pocket/proc/warn_owner(atom/owner)
-	to_chat(owner, span_warning("You feel your [pocket_side] pocket being fumbled with!"))
+	to_chat(owner, span_warning("Você sente o seu[pocket_side]Estragando o bolso!"))
 
 /datum/strippable_item/mob_item_slot/pocket/left
 	key = STRIPPABLE_ITEM_LPOCKET
@@ -301,12 +299,12 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 		return
 
 	carbon_source.visible_message(
-		span_danger("[user] tries to [(carbon_source.internal != item) ? "open" : "close"] the valve on [source]'s [item.name]."),
-		span_userdanger("[user] tries to [(carbon_source.internal != item) ? "open" : "close"] the valve on your [item.name]."),
+		span_danger("[user]Tenta.[(carbon_source.internal != item) ? "open" : "close"]A válvula ligada.[source]'s[item.name]."),
+		span_userdanger("[user]Tenta.[(carbon_source.internal != item) ? "open" : "close"]A válvula em seu[item.name]."),
 		ignored_mobs = user,
 	)
 
-	to_chat(user, span_notice("You try to [(carbon_source.internal != item) ? "open" : "close"] the valve on [source]'s [item.name]..."))
+	to_chat(user, span_notice("Você tenta[(carbon_source.internal != item) ? "open" : "close"]A válvula ligada.[source]'s[item.name]..."))
 
 	if(!do_after(user, INTERNALS_TOGGLE_DELAY, carbon_source))
 		return
@@ -319,12 +317,12 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 			return
 
 	carbon_source.visible_message(
-		span_danger("[user] [isnull(carbon_source.internal) ? "closes": "opens"] the valve on [source]'s [item.name]."),
-		span_userdanger("[user] [isnull(carbon_source.internal) ? "closes": "opens"] the valve on your [item.name]."),
+		span_danger("[user] [isnull(carbon_source.internal) ? "closes": "opens"]A válvula ligada.[source]'s[item.name]."),
+		span_userdanger("[user] [isnull(carbon_source.internal) ? "closes": "opens"]A válvula em seu[item.name]."),
 		ignored_mobs = user,
 	)
 
-	to_chat(user, span_notice("You [isnull(carbon_source.internal) ? "close" : "open"] the valve on [source]'s [item.name]."))
+	to_chat(user, span_notice("Você.[isnull(carbon_source.internal) ? "close" : "open"]A válvula ligada.[source]'s[item.name]."))
 
 #undef INTERNALS_TOGGLE_DELAY
 #undef POCKET_EQUIP_DELAY

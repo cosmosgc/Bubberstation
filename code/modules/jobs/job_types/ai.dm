@@ -1,6 +1,6 @@
 /datum/job/ai
 	title = JOB_AI
-	description = "Assist the crew, follow your laws, coordinate your cyborgs."
+	description = "Ajude a tripulação, siga suas leis, coordene seus cyborgs."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SILICON
 	faction = FACTION_STATION
 	total_positions = 1
@@ -52,7 +52,7 @@
 			sync_target.notify_ai(AI_NOTIFICATION_AI_SHELL)
 		else
 			sync_target.notify_ai(TRUE)
-		sync_target.visible_message(span_notice("[sync_target] gently chimes."), span_notice("LawSync protocol engaged."))
+		sync_target.visible_message(span_notice("[sync_target]Com cuidado."), span_notice("Protocolo LawSync Ativado."))
 		log_combat(ai_spawn, sync_target, "forcibly synced cyborg laws via spawning in")
 		sync_target.lawsync()
 		sync_target.lawupdate = TRUE

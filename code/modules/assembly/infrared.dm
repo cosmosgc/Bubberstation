@@ -1,6 +1,6 @@
 /obj/item/assembly/infra
 	name = "infrared emitter"
-	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
+	desc = "Emite um raio visível ou invisível e é acionado quando o feixe é interrompido."
 	icon_state = "infrared"
 	base_icon_state = "infrared"
 	custom_materials = list(
@@ -38,7 +38,7 @@
 
 /obj/item/assembly/infra/examine(mob/user)
 	. = ..()
-	. += span_notice("The infrared trigger is [on ? "on" : "off"].")
+	. += span_notice("O gatilho infravermelho é[on ? "on" : "off"].")
 
 /// Checks if the passed movable can block the beam.
 /obj/item/assembly/infra/proc/atom_blocks_beam(atom/movable/beam_atom)

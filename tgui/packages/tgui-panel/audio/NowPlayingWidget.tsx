@@ -15,12 +15,12 @@ export function NowPlayingWidget(props) {
   const { settings, updateSettings } = useSettings();
   const meta = useAtomValue(metaAtom);
   const {
-    album = 'Unknown Album',
-    artist = 'Unknown Artist',
+    album = 'Álbum Desconhecido',
+    artist = 'Artista Desconhecido',
     duration,
     link,
     title,
-    upload_date = 'Unknown Data',
+    upload_date = 'Dados desconhecidos',
   } = meta || {};
 
   const playing = useAtomValue(playingAtom);
@@ -46,9 +46,9 @@ export function NowPlayingWidget(props) {
           }}
         >
           {
-            <Collapsible title={title || 'Unknown Track'} color="blue">
+            <Collapsible title={title || 'Trilha desconhecida'} color="blue">
               <Section>
-                {link !== 'Song Link Hidden' && (
+                {link !== 'Link da Canção Escondido' && (
                   <Flex.Item grow={1} color="label">
                     URL: <a href={link}>{link}</a>
                   </Flex.Item>
@@ -56,19 +56,19 @@ export function NowPlayingWidget(props) {
                 <Flex.Item grow={1} color="label">
                   Duration: {duration}
                 </Flex.Item>
-                {artist !== 'Song Artist Hidden' &&
-                  artist !== 'Unknown Artist' && (
+                {artist !== 'Artista Canção Escondida' &&
+                  artist !== 'Artista Desconhecido' && (
                     <Flex.Item grow={1} color="label">
                       Artist: {artist}
                     </Flex.Item>
                   )}
-                {album !== 'Song Album Hidden' && album !== 'Unknown Album' && (
+                {album !== 'Álbum da Canção Escondido' && album !== 'Álbum Desconhecido' && (
                   <Flex.Item grow={1} color="label">
                     Album: {album}
                   </Flex.Item>
                 )}
-                {upload_date !== 'Song Upload Date Hidden' &&
-                  upload_date !== 'Unknown Date' && (
+                {upload_date !== 'Data de envio da música escondida' &&
+                  upload_date !== 'Data desconhecida' && (
                     <Flex.Item grow={1} color="label">
                       Uploaded: {date}
                     </Flex.Item>

@@ -2,7 +2,7 @@
 
 /obj/machinery/shuttle_scrambler
 	name = "Data Siphon"
-	desc = "This heap of machinery steals credits and data from unprotected systems and locks down cargo shuttles."
+	desc = "Este monte de máquinas rouba créditos e dados de sistemas desprotegidos e bloqueia os ônibus de carga."
 	icon = 'icons/obj/machines/dominator.dmi'
 	icon_state = "dominator"
 	density = TRUE
@@ -35,15 +35,15 @@
 	SSshuttle.registerTradeBlockade(src)
 	AddComponent(/datum/component/gps, "Nautical Signal")
 	active = TRUE
-	to_chat(user,span_notice("You toggle [src] [active ? "on":"off"]."))
-	to_chat(user,span_warning("The scrambling signal can now be tracked by GPS."))
+	to_chat(user,span_notice("Você comuta[src] [active ? "on":"off"]."))
+	to_chat(user,span_warning("O sinal pode ser rastreado pelo GPS."))
 	START_PROCESSING(SSobj,src)
 
 /obj/machinery/shuttle_scrambler/interact(mob/user)
 	if(active)
 		dump_loot(user)
 		return
-	var/scramble_response = tgui_alert(user, "Turning the scrambler on will make the shuttle trackable by GPS. Are you sure you want to do it?", "Scrambler", list("Yes", "Cancel"))
+	var/scramble_response = tgui_alert(user, "Ligar o codificador fará com que a nave possa ser rastreada pelo GPS. Tem certeza que quer fazer isso?", "Scrambler", list("Yes", "Cancel"))
 	if(scramble_response != "Yes")
 		return
 	if(active || !user.can_perform_action(src))
@@ -65,10 +65,10 @@
 /obj/machinery/shuttle_scrambler/proc/dump_loot(mob/user)
 	if(credits_stored) // Prevents spamming empty holochips
 		new /obj/item/holochip(drop_location(), credits_stored)
-		to_chat(user,span_notice("You retrieve the siphoned [MONEY_NAME]!"))
+		to_chat(user,span_notice("Você recupera o siphoned[MONEY_NAME]!"))
 		credits_stored = 0
 	else
-		to_chat(user,span_notice("There's nothing to withdraw."))
+		to_chat(user,span_notice("Não há nada para retirar."))
 
 /// Alerts the crew about the siphon
 /obj/machinery/shuttle_scrambler/proc/send_notification()
@@ -101,7 +101,7 @@
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate
 	name = "pirate shuttle navigation computer"
-	desc = "Used to designate a precise transit location for the pirate shuttle."
+	desc = "Usado para designar um local preciso para o transporte pirata."
 	shuttleId = "pirate"
 	lock_override = CAMERA_LOCK_STATION
 	shuttlePortId = "pirate_custom"
@@ -122,7 +122,7 @@
 
 /obj/machinery/loot_locator
 	name = "Booty Locator"
-	desc = "This sophisticated machine scans the nearby space for items of value."
+	desc = "Esta sofisticada máquina procura itens de valor nas proximidades."
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "tdoppler"
 	density = TRUE
@@ -156,7 +156,7 @@
 /// Surgery disk for the space IRS (I don't know where to dump them anywhere else)
 /obj/item/disk/surgery/irs
 	name = "Advanced Surgery Disk"
-	desc = "A disk that contains advanced surgery procedures, must be loaded into an Operating Console."
+	desc = "Um disco que contém procedimentos cirúrgicos avançados, deve ser carregado em um Console Operacional."
 	surgeries = list(
 		/datum/surgery_operation/organ/lobotomy,
 		/datum/surgery_operation/organ/lobotomy/mechanic,
@@ -185,7 +185,7 @@
 	. = ..()
 	if (istype(I))
 		I.set_buffer(src)
-		balloon_alert(user, "salvo no buffer da multitool")
+		balloon_alert(user, "Salvo nenhum buffer da multitool")
 		return TRUE
 
 /obj/machinery/piratepad/screwdriver_act(mob/living/user, obj/item/tool)
@@ -255,7 +255,7 @@
 /obj/machinery/computer/piratepad_control/multitool_act(mob/living/user, obj/item/multitool/I)
 	. = ..()
 	if (istype(I) && istype(I.buffer,/obj/machinery/piratepad))
-		to_chat(user, span_notice("You link [src] with [I.buffer] in [I] buffer."))
+		to_chat(user, span_notice("Você liga.[src]com[I.buffer]em[I]Tampão."))
 		pad_ref = WEAKREF(I.buffer)
 		return TRUE
 
@@ -357,7 +357,7 @@
 	if(!value)
 		status_report += "Nothing"
 
-	pad.visible_message(span_notice("[pad] activates!"))
+	pad.visible_message(span_notice("[pad]Ativar!"))
 	pad.finish_sending()
 	sending = FALSE
 
@@ -393,17 +393,17 @@
 	var/obj/machinery/piratepad/pad = pad_ref?.resolve()
 	if(!pad)
 		status_report = "No pad detected. Build or link a pad."
-		pad.audible_message(span_notice("[pad] beeps."))
+		pad.audible_message(span_notice("[pad]Apita."))
 		return
 	if(pad?.panel_open)
 		status_report = "Please screwdrive pad closed to send. "
-		pad.audible_message(span_notice("[pad] beeps."))
+		pad.audible_message(span_notice("[pad]Apita."))
 		return
 	if(sending)
 		return
 	sending = TRUE
 	status_report = "Sending... "
-	pad.visible_message(span_notice("[pad] starts charging up."))
+	pad.visible_message(span_notice("[pad]Começa a carregar."))
 	pad.set_is_sending(TRUE)
 	sending_timer = addtimer(CALLBACK(src, PROC_REF(send), check_global, user), warmup_time, TIMER_STOPPABLE)
 	if(load_holding_facility)
@@ -467,8 +467,7 @@
 	sold_item.adjust_confusion(10 SECONDS)
 	sold_item.adjust_dizzy(10 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(send_back_to_station), sold_item), COME_BACK_FROM_CAPTURE_TIME)
-	to_chat(sold_item, span_hypnophrase("A million voices echo in your head... <i>\"Yaarrr, thanks for the booty, landlubber. \
-		You will be ransomed back to your station, so it's only a matter of time before we ship you back...</i>"))
+	to_chat(sold_item, span_hypnophrase("Um milhão de vozes ecoam em sua cabeça...<i>\"Yaarrr, obrigado pelo espólio, Landlubber. Você será resgatado de volta à sua estação, então é só uma questão de tempo antes de enviá-lo de volta...</i>"))
 
 	return EXPORT_SOLD_DONT_DELETE
 
@@ -482,7 +481,7 @@
 
 /datum/export/pirate/parrot
 	cost = 2000
-	unit_name = "alive parrot"
+	unit_name = "Papagaio vivo"
 	export_types = list(/mob/living/basic/parrot)
 
 /datum/export/pirate/parrot/find_loot()

@@ -2,7 +2,7 @@
 
 /obj/machinery/processor
 	name = "food processor"
-	desc = "An industrial grinder used to process meat and other foods. Keep hands clear of intake area while operating."
+	desc = "Um moedor industrial usado para processar carne e outros alimentos. Mantenha as mãos longe da área de entrada enquanto opera."
 	icon = 'icons/obj/machines/kitchen.dmi'
 	base_icon_state = "processor"
 	icon_state = "processor"
@@ -54,7 +54,7 @@
 /obj/machinery/processor/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Outputting <b>[rating_amount]</b> item(s) at <b>[rating_speed*100]%</b> speed.")
+		. += span_notice("A exibição de status diz:<b>[rating_amount]</b>item(s) em<b>[rating_speed*100]%</b>Velocidade.")
 
 /obj/machinery/processor/Exited(atom/movable/gone, direction)
 	..()
@@ -85,7 +85,7 @@
 
 /obj/machinery/processor/wrench_act(mob/living/user, obj/item/tool)
 	if(processing)
-		to_chat(user, span_warning("[src] is in the process of processing!"))
+		to_chat(user, span_warning("[src]está em processo de processamento!"))
 		return ITEM_INTERACT_BLOCKING
 
 	default_unfasten_wrench(user, tool)
@@ -93,14 +93,14 @@
 
 /obj/machinery/processor/screwdriver_act(mob/living/user, obj/item/tool)
 	if(processing)
-		to_chat(user, span_warning("[src] is in the process of processing!"))
+		to_chat(user, span_warning("[src]está em processo de processamento!"))
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/processor/crowbar_act(mob/living/user, obj/item/tool)
 	if(processing)
-		to_chat(user, span_warning("[src] is in the process of processing!"))
+		to_chat(user, span_warning("[src]está em processo de processamento!"))
 		return ITEM_INTERACT_BLOCKING
 
 	return default_pry_open(user, tool, close_after_pry = TRUE, deconstruct_on_fail = TRUE)
@@ -110,7 +110,7 @@
 		return ITEM_INTERACT_SKIP_TO_ATTACK
 
 	if(processing)
-		to_chat(user, span_warning("[src] is in the process of processing!"))
+		to_chat(user, span_warning("[src]está em processo de processamento!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(tool, /obj/item/storage/bag/tray))
@@ -124,20 +124,20 @@
 				LAZYADD(processor_contents, content_item)
 				loaded++
 		if(loaded)
-			to_chat(user, span_notice("You insert [loaded] items into [src]."))
+			to_chat(user, span_notice("Você insere[loaded]itens em[src]."))
 			return ITEM_INTERACT_SUCCESS
 		return ITEM_INTERACT_BLOCKING
 
 	var/datum/food_processor_process/recipe = PROCESSOR_SELECT_RECIPE(tool)
 	if(recipe && user.transferItemToLoc(tool, src))
 		user.visible_message(
-			span_notice("[user] put [tool] into [src]."),
-			span_notice("You put [tool] into [src]."),
+			span_notice("[user]colocar[tool]em[src]."),
+			span_notice("Você colocou[tool]em[src]."),
 		)
 		LAZYADD(processor_contents, tool)
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_warning("That probably won't blend!"))
+	to_chat(user, span_warning("Isso provavelmente não vai misturar!"))
 	return ITEM_INTERACT_BLOCKING
 
 /obj/machinery/processor/update_icon_state()
@@ -146,24 +146,22 @@
 
 /obj/machinery/processor/interact(mob/user)
 	if(processing)
-		to_chat(user, span_warning("[src] is in the process of processing!"))
+		to_chat(user, span_warning("[src]está em processo de processamento!"))
 		return TRUE
 	if(ismob(user.pulling) && PROCESSOR_SELECT_RECIPE(user.pulling))
 		if(user.grab_state < GRAB_AGGRESSIVE)
-			to_chat(user, span_warning("You need a better grip to do that!"))
+			to_chat(user, span_warning("Você precisa de um aperto melhor para fazer isso!"))
 			return
 		var/mob/living/pushed_mob = user.pulling
-		visible_message(span_warning("[user] stuffs [pushed_mob] into [src]!"))
+		visible_message(span_warning("[user]Coisas.[pushed_mob]em[src]!"))
 		pushed_mob.forceMove(src)
 		LAZYADD(processor_contents, pushed_mob)
 		user.stop_pulling()
 		return
 	if(!LAZYLEN(processor_contents))
-		to_chat(user, span_warning("[src] is empty!"))
+		to_chat(user, span_warning("[src]Está vazio!"))
 		return TRUE
-	user.visible_message(span_notice("[user] turns on [src]."), \
-		span_notice("You turn on [src]."), \
-		span_hear("You hear a food processor."))
+	user.visible_message(span_notice("[user]Liga.[src]."), 		span_notice("Você liga.[src]."), 		span_hear("Você ouve um processador de comida."))
 	processing()
 
 
@@ -191,7 +189,7 @@
 			continue
 		process_food(recipe, content_item)
 	processing = FALSE
-	visible_message(span_notice("\The [src] finishes processing."))
+	visible_message(span_notice("\The [src]Termina o processamento."))
 
 /obj/machinery/processor/verb/eject()
 	set name = "Eject Contents"
@@ -209,17 +207,17 @@
 
 /obj/machinery/processor/container_resist_act(mob/living/user)
 	user.forceMove(drop_location())
-	user.visible_message(span_notice("[user] crawls free of the processor!"))
+	user.visible_message(span_notice("[user]Está livre do processador!"))
 
 /obj/machinery/processor/slime
 	name = "slime processor"
 	base_icon_state = "processor_slime"
 	icon_state = "processor_slime"
-	desc = "An industrial grinder with a sticker saying appropriated for science department. Keep hands clear of intake area while operating."
+	desc = "Um moedor industrial com um adesivo escrito apropriado para o departamento de ciência. Mantenha as mãos longe da área de entrada enquanto opera."
 	circuit = /obj/item/circuitboard/machine/processor/slime
 
 /obj/machinery/processor/slime/fullupgrade //fully ugpraded stock parts
-	desc = "An industrial grinder with a sticker saying appropiated for bioterrorism department. keep hands clear of intake while operating."
+	desc = "Um moedor industrial com um adesivo dizendo que se apropriou para o departamento de bioterrorismo. Mantenha as mãos longe da entrada enquanto opera."
 	circuit = /obj/item/circuitboard/machine/processor/slime/fullupgrade
 
 /obj/machinery/processor/slime/Initialize(mapload)
@@ -259,7 +257,7 @@
 			break
 	if(!LAZYLEN(picked_slimes))
 		return
-	visible_message(span_notice("[jointext(picked_slimes, ", ")] [LAZYLEN(picked_slimes) > 1 ? "are" : "is"] sucked into [src]."))
+	visible_message(span_notice("[jointext(picked_slimes, ", ")] [LAZYLEN(picked_slimes) > 1 ? "are" : "is"]sugado para dentro[src]."))
 	for(var/mob/living/basic/slime/slime_to_add in picked_slimes)
 		LAZYADD(processor_contents, slime_to_add)
 		slime_to_add.forceMove(src)
@@ -283,8 +281,8 @@
 	return ..()
 
 /obj/item/circuit_component/slime_processor
-	display_name = "Slime Processor"
-	desc = "Allows to activate process and get the amount of processor contents."
+	display_name = "Processador de lama"
+	desc = "Permite ativar o processo e obter a quantidade de conteúdo do processador."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	///Activate process

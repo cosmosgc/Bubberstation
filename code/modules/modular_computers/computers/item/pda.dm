@@ -120,20 +120,17 @@
 		return ..()
 	var/obj/item/disk/computer/virus/clown/installed_cartridge = inserted_disk
 	if(!installed_cartridge.charges)
-		to_chat(user, span_notice("Out of virus charges."))
+		to_chat(user, span_notice("Sem acusações de vírus."))
 		return ..()
 
-	to_chat(user, span_notice("You upload the virus to [target]!"))
+	to_chat(user, span_notice("Você carrega o vírus para[target]!"))
 	var/sig_list = list(COMSIG_ATOM_ATTACK_HAND)
 	if(istype(target,/obj/machinery/door/airlock))
 		sig_list = list(COMSIG_AIRLOCK_OPEN, COMSIG_AIRLOCK_CLOSE)
 
 	installed_cartridge.charges--
 	target.AddComponent(
-		/datum/component/sound_player, \
-		uses = rand(15,20), \
-		signal_list = sig_list, \
-	)
+		/datum/component/sound_player, 		uses = rand(15,20), 		signal_list = sig_list, 	)
 	return TRUE
 
 /obj/item/modular_computer/pda/add_context(atom/source, list/context, obj/item/held_item, mob/user)
@@ -160,14 +157,14 @@
 	if(!is_type_in_list(tool, contained_item))
 		return NONE
 	if(tool.w_class >= WEIGHT_CLASS_SMALL) // Anything equal to or larger than small won't work
-		user.balloon_alert(user, "grande demais!")
+		user.balloon_alert(user, "Grandes demais!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING
 	if(inserted_item)
 		swap_pen(user, tool)
 	else
-		balloon_alert(user, "inserted [tool]")
+		balloon_alert(user, "inserido[tool]")
 		inserted_item = tool
 		playsound(src, 'sound/machines/pda_button/pda_button1.ogg', 50, TRUE)
 	return ITEM_INTERACT_SUCCESS
@@ -192,7 +189,7 @@
 		return
 
 	if(inserted_item)
-		balloon_alert(user, "removed [inserted_item]")
+		balloon_alert(user, "Removido[inserted_item]")
 		user.put_in_hands(inserted_item)
 		inserted_item = null
 		update_appearance()
@@ -200,7 +197,7 @@
 
 /obj/item/modular_computer/pda/proc/swap_pen(mob/user, obj/item/tool)
 	if(inserted_item)
-		balloon_alert(user, "swapped pens")
+		balloon_alert(user, "canetas trocadas")
 		user.put_in_hands(inserted_item)
 		inserted_item = tool
 		update_appearance()
@@ -223,7 +220,7 @@
 			alt_type = MSG_AUDIBLE,
 		)
 	else
-		visible_message(span_danger("[src] explodes!"), span_warning("You hear a loud *pop*!"))
+		visible_message(span_danger("[src]Explode!"), span_warning("Você ouve um som alto!"))
 
 	target.client?.give_award(/datum/award/achievement/misc/clickbait, target)
 

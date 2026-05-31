@@ -1,6 +1,6 @@
 /datum/action/changeling/transform
 	name = "Transform"
-	desc = "We take on the appearance and voice of one we have absorbed. Costs 5 chemicals."
+	desc = "Nós assumimos a aparência e a voz de uma que absorvemos. Custa 5 produtos químicos."
 	button_icon_state = "transform"
 	chemical_cost = 5
 	dna_cost = CHANGELING_POWER_INNATE
@@ -15,7 +15,7 @@
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/glasses/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && IS_CHANGELING(user))
-		to_chat(user, span_notice("You reabsorb [src] into your body."))
+		to_chat(user, span_notice("Você reabsorve.[src]Em seu corpo."))
 		qdel(src)
 		return
 	. = ..()
@@ -31,7 +31,7 @@
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/under/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && IS_CHANGELING(user))
-		to_chat(user, span_notice("You reabsorb [src] into your body."))
+		to_chat(user, span_notice("Você reabsorve.[src]Em seu corpo."))
 		qdel(src)
 		return
 	. = ..()
@@ -48,7 +48,7 @@
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/suit/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && IS_CHANGELING(user))
-		to_chat(user, span_notice("You reabsorb [src] into your body."))
+		to_chat(user, span_notice("Você reabsorve.[src]Em seu corpo."))
 		qdel(src)
 		return
 	. = ..()
@@ -65,7 +65,7 @@
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/head/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && IS_CHANGELING(user))
-		to_chat(user, span_notice("You reabsorb [src] into your body."))
+		to_chat(user, span_notice("Você reabsorve.[src]Em seu corpo."))
 		qdel(src)
 		return
 	. = ..()
@@ -81,7 +81,7 @@
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/shoes/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && IS_CHANGELING(user))
-		to_chat(user, span_notice("You reabsorb [src] into your body."))
+		to_chat(user, span_notice("Você reabsorve.[src]Em seu corpo."))
 		qdel(src)
 		return
 	. = ..()
@@ -97,7 +97,7 @@
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/gloves/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && IS_CHANGELING(user))
-		to_chat(user, span_notice("You reabsorb [src] into your body."))
+		to_chat(user, span_notice("Você reabsorve.[src]Em seu corpo."))
 		qdel(src)
 		return
 	. = ..()
@@ -113,7 +113,7 @@
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/mask/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && IS_CHANGELING(user))
-		to_chat(user, span_notice("You reabsorb [src] into your body."))
+		to_chat(user, span_notice("Você reabsorve.[src]Em seu corpo."))
 		qdel(src)
 		return
 	. = ..()
@@ -130,7 +130,7 @@
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && IS_CHANGELING(user))
-		to_chat(user, span_notice("You reabsorb [src] into your body."))
+		to_chat(user, span_notice("Você reabsorve.[src]Em seu corpo."))
 		qdel(src)
 		return
 	. = ..()

@@ -1,6 +1,6 @@
 /datum/mutation/antenna
 	name = "Antenna"
-	desc = "The affected person sprouts an antenna. This is known to allow them to access common radio channels passively."
+	desc = "A pessoa afetada brota uma antena. Isso é conhecido por permitir que eles acessem canais de rádio comuns passivamente."
 	quality = POSITIVE
 	text_gain_indication = span_notice("You feel an antenna sprout from your forehead.")
 	text_lose_indication = span_notice("Your antenna shrinks back down.")
@@ -10,7 +10,7 @@
 
 /obj/item/implant/radio/antenna
 	name = "internal antenna organ"
-	desc = "The internal organ part of the antenna. Science has not yet given it a good name."
+	desc = "A parte interna do órgão da antena. A ciência ainda não lhe deu um bom nome."
 	icon = 'icons/obj/devices/voice.dmi'//maybe make a unique sprite later. not important
 	icon_state = "walkietalkie"
 
@@ -43,7 +43,7 @@
 
 /datum/mutation/mindreader
 	name = "Mind Reader"
-	desc = "The affected person can look into the recent memories of others."
+	desc = "A pessoa afetada pode olhar para as memórias recentes dos outros."
 	quality = POSITIVE
 	text_gain_indication = span_notice("You hear distant voices at the corners of your mind.")
 	text_lose_indication = span_notice("The distant voices fade.")
@@ -54,7 +54,7 @@
 
 /datum/action/cooldown/spell/pointed/mindread
 	name = "Mindread"
-	desc = "Read the target's mind."
+	desc = "Leia a mente do Alvo."
 	button_icon_state = "mindread"
 	school = SCHOOL_PSYCHIC
 	cooldown_time = 5 SECONDS
@@ -80,13 +80,13 @@
 		return FALSE
 	var/mob/living/living_cast_on = cast_on
 	if(!living_cast_on.mind)
-		to_chat(owner, span_warning("[cast_on] has no mind to read!"))
+		to_chat(owner, span_warning("[cast_on]Não tem mente para ler!"))
 		return FALSE
 	if(living_cast_on.stat == DEAD)
-		to_chat(owner, span_warning("[cast_on] is dead!"))
+		to_chat(owner, span_warning("[cast_on]Está morto!"))
 		return FALSE
 	if(living_cast_on.mob_biotypes & MOB_ROBOTIC)
-		to_chat(owner, span_warning("[cast_on] is robotic, you can't read [cast_on.p_their()] mind!"))
+		to_chat(owner, span_warning("[cast_on]É robótico, você não pode ler[cast_on.p_their()]Mente!"))
 		return FALSE
 
 	return TRUE
@@ -94,31 +94,28 @@
 /datum/action/cooldown/spell/pointed/mindread/cast(mob/living/cast_on)
 	. = ..()
 	if(cast_on.can_block_magic(antimagic_flags, charge_cost = 0))
-		to_chat(owner, span_warning("As you reach into [cast_on]'s mind, \
-			you are stopped by a mental blockage. It seems you've been foiled."))
+		to_chat(owner, span_warning("Enquanto você alcança[cast_on]Você é parado por um bloqueio mental. Parece que você foi frustrado."))
 		return
 
 	if(cast_on == owner)
-		to_chat(owner, span_warning("You plunge into your mind... Yep, it's your mind."))
+		to_chat(owner, span_warning("Você mergulha em sua mente... Sim, é sua mente."))
 		return
 
 	if(cast_on.has_status_effect(/datum/status_effect/heretic_passive/moon))
-		to_chat(owner, span_hypnophrase(span_bolddanger("YOU SEEK THE TRUTH? I WILL SHOW YOU EVERYTHING.")))
+		to_chat(owner, span_hypnophrase(span_bolddanger("Você procura a verdade? Vou te mostrar tudo.")))
 		if(isliving(owner))
 			var/mob/living/reader = owner
 			reader.apply_status_effect(/datum/status_effect/moon_converted)
 		return
 
 	if(HAS_TRAIT(cast_on, TRAIT_EVIL))
-		to_chat(owner, span_warning("As you reach into [cast_on]'s mind, \
-			you feel the overwhelming emptiness within. A truly evil being. \
-			[HAS_TRAIT(owner, TRAIT_EVIL) ? "It's nice to find someone who is like-minded." : "What is wrong with this person?"]"))
+		to_chat(owner, span_warning("Enquanto você alcança[cast_on]A mente, você sente o vazio esmagadora dentro. Um ser verdadeiramente mau.[HAS_TRAIT(owner, TRAIT_EVIL) ? "It's nice to find someone who is like-minded." : "What is wrong with this person?"]"))
 
 	var/list/log_info = list()
 	var/list/discovered_info = list("<i>You plunge into [cast_on]'s mind and discover...</i>")
 	if(prob(20))
 		// chance to alert the read-ee
-		to_chat(cast_on, span_danger("You feel something foreign enter your mind."))
+		to_chat(cast_on, span_danger("Você sente algo estranho entrar em sua mente."))
 		log_info += "Target alerted!"
 
 	var/list/recent_speech = cast_on.copy_recent_speech(copy_amount = 3, line_chance = 50)
@@ -162,15 +159,15 @@
 	if(QDELETED(examiner))
 		return
 	if(antimagic)
-		to_chat(examiner, boxed_message(span_warning("You attempt to analyze [examined]'s current thoughts, but fail to penetrate [examined.p_their()] mind - It seems you've been foiled.")))
+		to_chat(examiner, boxed_message(span_warning("Você tenta analisar[examined]Os pensamentos atuais, mas não conseguem penetrar[examined.p_their()]mente... Parece que você foi frustrado.")))
 		return
 
 	var/list/log_info = list()
 	if(prob(10))
-		to_chat(examined, span_danger("You feel something foreign enter your mind."))
+		to_chat(examined, span_danger("Você sente algo estranho entrar em sua mente."))
 		log_info += "Target alerted!"
 
-	to_chat(examiner, boxed_message(span_notice("<i>You analyze [examined]'s current thoughts...</i><br>&emsp;\"[read_text]\"...")))
+	to_chat(examiner, boxed_message(span_notice("<i>Você analisa.[examined]Os pensamentos atuais...</i><br>&emsp;\"[read_text]\"...")))
 	log_info += "Current thought: \"[read_text]\""
 
 	log_combat(examiner, examined, "mind read (triggered on examine)", null, "info: [english_list(log_info, and_text = ", ")]")

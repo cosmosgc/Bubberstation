@@ -7,7 +7,7 @@
 	worn_icon_state = "healthanalyzer"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
-	desc = "This Me-Lo Tech branded medical device can detect abnormalities in blood flow or composition. There is a button on the side which scans the patient's blood for common medicines."
+	desc = "Este dispositivo médico marca Me-Lo Tech pode detectar anormalidades no fluxo sanguíneo ou composição. Há um botão do lado que escaneia o sangue do paciente por medicamentos comuns."
 	obj_flags = CONDUCTS_ELECTRICITY
 	item_flags = NOBLUDGEON
 	slot_flags = ITEM_SLOT_BELT
@@ -24,8 +24,8 @@
 	var/obj/item/bodypart/poked_bit = poked_guy.get_bodypart(check_zone(user.zone_selected))
 	if(!poked_bit)
 		return
-	user.visible_message(span_notice("[user] pricks [poked_guy] with [src]."), span_notice("You begin scanning [poked_guy] with [src]."), ignored_mobs = poked_guy)
-	to_chat(poked_guy, span_notice("[user] slides the needle of [src] into your [poked_bit] and begins pressing buttons."))
+	user.visible_message(span_notice("[user]Idiotas.[poked_guy]Com[src]."), span_notice("Você começa a escanear[poked_guy]Com[src]."), ignored_mobs = poked_guy)
+	to_chat(poked_guy, span_notice("[user]Desliza a agulha de[src]em seu[poked_bit]e começa a apertar botões."))
 	var/success = do_after(user, 2 SECONDS, poked_guy)
 	if(success)
 		scan_blood(scanner = user, scanned_person = poked_guy)
@@ -41,8 +41,8 @@
 		return NONE
 	var/mob/living/carbon/poked_guy = interacting_with
 	var/obj/item/bodypart/poked_bit = poked_guy.get_bodypart(check_zone(user.zone_selected))
-	user.visible_message(span_notice("[user] pricks [poked_guy] with [src]."), span_notice("You begin scanning [poked_guy] with [src]."), ignored_mobs = poked_guy)
-	to_chat(poked_guy, span_notice("[user] slides the needle of [src] into your [poked_bit] and begins pressing buttons."))
+	user.visible_message(span_notice("[user]Idiotas.[poked_guy]Com[src]."), span_notice("Você começa a escanear[poked_guy]Com[src]."), ignored_mobs = poked_guy)
+	to_chat(poked_guy, span_notice("[user]Desliza a agulha de[src]em seu[poked_bit]e começa a apertar botões."))
 	var/success = do_after(user, 2 SECONDS, poked_guy)
 	if(success)
 		chemscan(user, poked_guy, reagent_types_to_check = /datum/reagent/medicine)
@@ -58,7 +58,7 @@
 	var/render_list = list()
 	var/oxy_loss = scanned_person.get_oxy_loss()
 	var/tox_loss = scanned_person.get_tox_loss()
-	render_list += span_info("You read the [src]'s screen:\n")
+	render_list += span_info("Você leu o[src]Tela:\n")
 	render_list += "<span class='notice ml-1'>Blood Type: [scanned_person?.dna?.blood_type]</span>\n"
 	if(oxy_loss > 50)//if they have knockout levels of suffocation damage
 		render_list += "<span class='danger ml-1'>Warning: Hypoxic blood oxygen levels.</span>\n"
@@ -80,16 +80,16 @@
 
 /obj/item/blood_scanner/proc/regret(mob/living/stabber, mob/living/stabbed, obj/item/bodypart/to_stab)
 	to_stab?.force_wound_upwards(/datum/wound/pierce/bleed/moderate/needle_fail, wound_source = "idiot moved with a needle in them")
-	stabber.visible_message(span_warning("[src]'s needle is ripped out, tearing a hole in [stabbed]'s [to_stab]!"), span_warning("Damnit! The needle is torn out, making a tiny hole in [stabbed.p_their()] [to_stab]."), ignored_mobs = stabbed)
-	to_chat(stabbed, span_userdanger("<b>OWWW!</b> The needle of [src] is ripped out, tearing a small hole in your [to_stab]!"))
+	stabber.visible_message(span_warning("[src]A agulha é arrancada, fazendo um buraco[stabbed]'s[to_stab]!"), span_warning("Droga! A agulha foi arrancada, fazenda um pequeno buraco[stabbed.p_their()] [to_stab]."), ignored_mobs = stabbed)
+	to_chat(stabbed, span_userdanger("<b>OWWW!</b>A agulha de[src]é arrancado, fazendo um pequeno buraco em seu[to_stab]!"))
 
 /obj/item/blood_scanner/proc/usable_check(mob/living/person_scanning, atom/scanee)
 	if(!isliving(scanee))
 		return FALSE
 	if(!istype(scanee, /mob/living/carbon))
-		to_chat(person_scanning, span_warning("[src] is incompatible."))
+		to_chat(person_scanning, span_warning("[src]É incompatível."))
 		return FALSE
 	if(!person_scanning.can_read(src) || person_scanning.is_blind())
-		to_chat(person_scanning, span_warning("You are unable to read [src]'s screen!"))
+		to_chat(person_scanning, span_warning("Você é incapaz de ler.[src]É a tela!"))
 		return FALSE
 	return TRUE

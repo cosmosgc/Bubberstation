@@ -27,23 +27,23 @@ export const AirlockController = (props) => {
   return (
     <Window width={500} height={190}>
       <Window.Content>
-        <Section title="Airlock Status" buttons={<AirLockButtons />}>
+        <Section title="Status da câmara de ar" buttons={<AirLockButtons />}>
           <LabeledList>
-            <LabeledList.Item label="Current Status">
+            <LabeledList.Item label="Estado atual">
               {currentStatus.primary}
             </LabeledList.Item>
-            <LabeledList.Item label="Chamber Pressure">
+            <LabeledList.Item label="Pressão na câmara">
               <PressureIndicator currentStatus={currentStatus} />
             </LabeledList.Item>
-            <LabeledList.Item label="Control Pump">
+            <LabeledList.Item label="Bomba de controle">
               {nameToUpperCase(pumpStatus)}
             </LabeledList.Item>
-            <LabeledList.Item label="Interior Door">
+            <LabeledList.Item label="Porta interior">
               <Box color={interiorStatus === 'open' && 'good'}>
                 {nameToUpperCase(interiorStatus)}
               </Box>
             </LabeledList.Item>
-            <LabeledList.Item label="Exterior Door">
+            <LabeledList.Item label="Porta Exterior">
               <Box color={exteriorStatus === 'open' && 'good'}>
                 {nameToUpperCase(exteriorStatus)}
               </Box>
@@ -126,13 +126,13 @@ const getAirlockStatus = (airlockState): AirlockStatus => {
   switch (airlockState) {
     case 'inopen':
       return {
-        primary: 'Interior Airlock Open',
+        primary: 'Porta de ar interior aberta.',
         icon: '',
         color: 'good',
       };
     case 'pressurize':
       return {
-        primary: 'Cycling to Interior Airlock',
+        primary: 'Ciclismo para a câmara de ar interior',
         icon: 'fan',
         color: 'average',
       };
@@ -144,13 +144,13 @@ const getAirlockStatus = (airlockState): AirlockStatus => {
       };
     case 'depressurize':
       return {
-        primary: 'Cycling to Exterior Airlock',
+        primary: 'Ciclismo para a câmara externa',
         icon: 'fan',
         color: 'average',
       };
     case 'outopen':
       return {
-        primary: 'Exterior Airlock Open',
+        primary: 'Porta de ar exterior aberta.',
         icon: 'exclamation-triangle',
         color: 'bad',
       };

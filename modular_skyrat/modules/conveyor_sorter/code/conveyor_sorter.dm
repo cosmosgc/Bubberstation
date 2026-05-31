@@ -1,6 +1,6 @@
 /obj/item/conveyor_sorter
 	name = "conveyor sorter lister"
-	desc = "A tool that is used to not only create the conveyor sorters, but give lists to the conveyor sorters."
+	desc = "Uma ferramenta que é usada não só para criar os classificadores transportadores, mas dar listas para os classificadores transportadores."
 	icon = 'modular_skyrat/modules/conveyor_sorter/icons/conveyor_sorter.dmi'
 	icon_state = "lister"
 	///the list of conveyor sorters spawned by
@@ -21,14 +21,14 @@
 
 /obj/item/conveyor_sorter/examine(mob/user)
 	. = ..()
-	. += span_notice("Use it to place down a conveyor sorter, up to a limit of <b>[max_sorters]</b>.")
-	. += span_notice("This sorter can sort up to <b>[max_items]</b> Items.")
-	. += span_notice("Use Alt-Click to reset the sorting list.")
-	. += span_notice("Attack things to attempt to add to the sorting list.")
+	. += span_notice("Use para colocar um separador, até um limite de<b>[max_sorters]</b>.")
+	. += span_notice("Este classificador pode organizar até<b>[max_items]</b>Itens.")
+	. += span_notice("Use Alt-Click para redefinir a lista de classificação.")
+	. += span_notice("Ataque coisas para tentar adicionar à lista de classificação.")
 
 /obj/item/conveyor_sorter/attack_self(mob/user, modifiers)
 	if(length(spawned_sorters) >= max_sorters)
-		to_chat(user, span_warning("You may only have [max_sorters] spawned conveyor sorters!"))
+		to_chat(user, span_warning("Você só pode ter[max_sorters]Separadores de transporte desovados!"))
 		return
 	var/obj/effect/decal/conveyor_sorter/new_cs = new conveyor_type(get_turf(src))
 	new_cs.parent_item = src
@@ -41,24 +41,24 @@
 	if(istype(interacting_with, /obj/effect/decal/conveyor_sorter))
 		return NONE
 	if(is_type_in_list(interacting_with, current_sort))
-		to_chat(user, span_warning("[interacting_with] is already in [src]'s sorting list!"))
+		to_chat(user, span_warning("[interacting_with]Já está em[src]É a lista de classificação!"))
 		return ITEM_INTERACT_BLOCKING
 	if(length(current_sort) >= max_items)
-		to_chat(user, span_warning("[src] already has [max_items] things within the sorting list!"))
+		to_chat(user, span_warning("[src]Já tem.[max_items]Coisas dentro da lista de classificação!"))
 		return ITEM_INTERACT_BLOCKING
 	current_sort += interacting_with.type
-	to_chat(user, span_notice("[interacting_with] has been added to [src]'s sorting list."))
+	to_chat(user, span_notice("[interacting_with]Foi adicionado a[src]É a lista de classificação."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/conveyor_sorter/click_alt(mob/user)
-	visible_message("[src] pings, resetting its sorting list!")
+	visible_message("[src]Pings, redefinindo sua lista de classificação!")
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	current_sort = list()
 	return CLICK_ACTION_SUCCESS
 
 /obj/effect/decal/conveyor_sorter
 	name = "conveyor sorter"
-	desc = "A mark that will sort items out based on what they are."
+	desc = "Uma marca que resolverá os itens com base no que são."
 	icon = 'modular_skyrat/modules/conveyor_sorter/icons/conveyor_sorter.dmi'
 	icon_state = "sorter"
 	layer = OBJ_LAYER
@@ -91,10 +91,10 @@
 
 /obj/effect/decal/conveyor_sorter/examine(mob/user)
 	. = ..()
-	. += span_notice("Attack with conveyor sorter lister to set the sorting list.")
-	. += span_notice("Slap with empty hands to change the sorting direction.")
-	. += span_notice("Alt-Click to reset the sorting list.")
-	. += span_notice("Ctrl-Click to remove.")
+	. += span_notice("Ataque com lista de classificadores para definir a lista de classificação.")
+	. += span_notice("Bata com as mãos vazias para mudar de direção.")
+	. += span_notice("Alt-Click para reiniciar a lista de classificação.")
+	. += span_notice("Ctrl-Click para remover.")
 
 /obj/effect/decal/conveyor_sorter/attack_hand(mob/living/user, list/modifiers)
 	var/user_choice = tgui_input_list(user, "Choose which direction to sort to!", "Direction choice", directions) // this would be cooler as a radial
@@ -107,27 +107,27 @@
 
 	setDir(dir)
 
-	visible_message("[src] pings, updating its sorting direction!")
+	visible_message("[src]Pings, atualizando sua direção de seleção!")
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 
 /obj/effect/decal/conveyor_sorter/attackby(obj/item/used_item, mob/user, params)
 	if(istype(used_item, /obj/item/conveyor_sorter))
 		var/obj/item/conveyor_sorter/cs_item = used_item
 		sorting_list = cs_item.current_sort
-		visible_message("[src] pings, updating its sorting list!")
+		visible_message("[src]Pings, atualizando sua lista de classificação!")
 		playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 		return
 	else
 		return ..()
 
 /obj/effect/decal/conveyor_sorter/click_alt(mob/user)
-	visible_message("[src] pings, resetting its sorting list!")
+	visible_message("[src]Pings, redefinindo sua lista de classificação!")
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	sorting_list = list()
 	return CLICK_ACTION_SUCCESS
 
 /obj/effect/decal/conveyor_sorter/click_ctrl(mob/user)
-	visible_message("[src] begins to ping violently!")
+	visible_message("[src]Começa a tocar violentamente!")
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	qdel(src)
 
@@ -139,7 +139,7 @@
 
 /datum/design/conveyor_sorter
 	name = "Conveyor Sorter"
-	desc = "A wonderful item that can set markers and forcefully move stuff to a direction."
+	desc = "Um item maravilhoso que pode definir marcadores e mover as coisas para uma direção."
 	id = "conveysorter"
 	build_type = PROTOLATHE | AWAY_LATHE
 	build_path = /obj/item/conveyor_sorter
@@ -154,8 +154,8 @@
 
 /datum/techweb_node/conveyor_sorter
 	id = TECHWEB_NODE_CONVEYOR_SORTER
-	display_name = "Conveyor Sorter"
-	description = "Finally, the ability to automatically sort stuff."
+	display_name = "Transporter Sorter"
+	description = "Finalmente, a habilidade de resolver automaticamente como coisas."
 	prereq_ids = list(TECHWEB_NODE_BLUESPACE_THEORY)
 	design_ids = list(
 		"conveysorter",
@@ -164,7 +164,7 @@
 
 /obj/item/conveyor_sorter/improved
 	name = "improved conveyor sorter lister"
-	desc = "A tool that is used to not only create the conveyor sorters, but give lists to the conveyor sorters."
+	desc = "Uma ferramenta que é usada não só para criar os classificadores transportadores, mas dar listas para os classificadores transportadores."
 	icon_state = "lister_improved"
 	max_sorters = 8
 	max_items = 10
@@ -172,7 +172,7 @@
 
 /obj/effect/decal/conveyor_sorter/improved
 	name = "improved conveyor sorter"
-	desc = "A mark that will sort items out based on what they are. This one can sort in ordinal directions as well!"
+	desc = "Uma marca que resolverá os itens com base no que são. Este pode ordenar em direções ordinais também!"
 	icon = 'modular_skyrat/modules/conveyor_sorter/icons/conveyor_sorter.dmi'
 	icon_state = "sorter_improved"
 	light_range = 3
@@ -181,7 +181,7 @@
 
 /datum/design/conveyor_sorter/improved
 	name = "Improved Conveyor Sorter"
-	desc = "A wonderful item that can set markers and forcefully move stuff to a direction. With more capacity to sort more!"
+	desc = "Um item maravilhoso que pode definir marcadores e mover as coisas para uma direção. Com mais capacidade para classificar mais!"
 	id = "conveyor_sorter_improved"
 	build_path = /obj/item/conveyor_sorter/improved
 	materials = list(
@@ -194,8 +194,8 @@
 
 /datum/techweb_node/conveyor_sorter/improved
 	id = TECHWEB_NODE_CONVEYOR_SORTER_IMPROVED
-	display_name = "Improved Conveyor Sorter"
-	description = "An improved version of the conveyor sorter, this one allows for more control over sorting."
+	display_name = "Transporter Melhorado"
+	description = "Uma versão melhorada do separador de transporte, este permite mais controle sobre a classificação."
 	prereq_ids = list(TECHWEB_NODE_APPLIED_BLUESPACE)
 	design_ids = list(
 		"conveyor_sorter_improved",

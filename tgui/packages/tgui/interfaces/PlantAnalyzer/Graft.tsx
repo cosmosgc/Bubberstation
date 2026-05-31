@@ -102,9 +102,9 @@ export function PlantAnalyzerGraft(props) {
             <LabeledList.Item label="Weeds">
               {graft_data.weed_chance && graft_data.weed_rate
                 ? graft_data.weed_chance +
-                  '% chance to grow by ' +
+                  'Uma chance de crescer' +
                   graft_data.weed_rate
-                : 'No weed growth'}
+                : 'Sem crescimento de ervas daninhas.'}
             </LabeledList.Item>
           </LabeledList>
         </Stack.Item>

@@ -31,7 +31,7 @@
 	if(!ert_team)
 		return
 
-	to_chat(owner, span_boldwarning("<font size=3 color=yellow>You are the [name]</font>"))
+	to_chat(owner, span_boldwarning("<font size=3 color=yellow>Você é o[name]</font>"))
 
 	var/missiondesc = "Your squad is responding to an emergency situation of [station_name()], with the Pan-Slavic Commonwealth Defense Collegium's approval."
 	if(leader) //If Squad Leader
@@ -48,7 +48,7 @@
 	missiondesc += "<BR> <B>5.</B> Protect, ensure, and uphold the rights of Pan-Slavic Commonwealth's, Kingdom of Agurkrral's and Free Teshari League's citizens on board [station_name()]. TerraGov citizens' wellbeing is up to your discretion."
 	missiondesc += "<BR> <B>6.</B> Attempt to subvert the station's crew in order to shift the station's territory under control of Pan-Slavic Commonwealth."
 
-	missiondesc += span_warning("<BR><B>Your Mission</B>: [ert_team.mission.explanation_text]")
+	missiondesc += span_warning("<BR><B>Sua missão</B>: [ert_team.mission.explanation_text]")
 	to_chat(owner,missiondesc)
 
 /datum/antagonist/ert/nri/commander

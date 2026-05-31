@@ -6,13 +6,13 @@ import { Window } from '../layouts';
 export const DelamProcedure = () => {
   return (
     <Window
-      title="Safety Moth - Delamination Emergency Procedure"
+      title="Traça de segurança, procedimento de emergência."
       width={666}
       height={865}
       theme="dark"
     >
       <Window.Content>
-        <Section title="NT-approved delam emergency procedure">
+        <Section title="NT aprovado procedimento de emergência Delam">
           <NoticeBox danger m={2}>
             <b>
               So you&apos;ve found yourself in a bit of a pickle with a

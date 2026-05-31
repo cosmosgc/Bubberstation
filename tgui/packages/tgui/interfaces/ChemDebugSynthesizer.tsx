@@ -71,7 +71,7 @@ export const ChemDebugSynthesizer = (props) => {
             ) : (
               <Button
                 icon="plus"
-                content="Create Beaker"
+                content="Crie o Beaker."
                 onClick={() => act('makecup')}
               />
             )

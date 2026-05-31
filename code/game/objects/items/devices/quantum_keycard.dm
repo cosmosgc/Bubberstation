@@ -1,6 +1,6 @@
 /obj/item/quantum_keycard
 	name = "quantum keycard"
-	desc = "A keycard able to link to a quantum pad's particle signature, allowing other quantum pads to travel there instead of their linked pad."
+	desc = "Um cartão-chave capaz de se ligar à assinatura de partículas de uma almofada quântica, permitindo que outras almofadas quânticas viajem para lá em vez de sua almofada ligada."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/quantum_keycard"
 	post_init_icon_state = "quantum_keycard_gags"
@@ -37,17 +37,17 @@
 
 		var/area_name = get_area_name(qpad)
 		if(area_name)
-			. += span_notice("The pad is located in \the [area_name]")
+			. += span_notice("O bloco está localizado em\the [area_name]")
 
-		. += span_notice("Alt-click to unlink the keycard.")
+		. += span_notice("Alt-click para desligá-lo.")
 	else
-		. += span_notice("Insert [src] into an active quantum pad to link it.")
+		. += span_notice("Inserir[src]em uma plataforma quântica ativa para ligá-la.")
 
 /obj/item/quantum_keycard/click_alt(mob/living/user)
-	to_chat(user, span_notice("You start pressing [src]'s unlink button..."))
+	to_chat(user, span_notice("Você começa a pressionar[src]É o botão de desligar a ligação..."))
 	if(!do_after(user, 4 SECONDS, target = src))
 		return CLICK_ACTION_BLOCKING
-	to_chat(user, span_notice("The keycard beeps twice and disconnects the quantum link."))
+	to_chat(user, span_notice("O cartão bipa duas vezes e desconecta o link quântico."))
 	set_pad()
 	return CLICK_ACTION_SUCCESS
 

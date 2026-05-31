@@ -1,6 +1,6 @@
 /obj/machinery/bouldertech
 	name = "bouldertech brand refining machine"
-	desc = "You shouldn't be seeing this! And bouldertech isn't even a real company!"
+	desc = "Você não deveria estar vendo isso! E a Bouldertech nem é uma empresa de verdade!"
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "ore_redemption"
 	base_icon_state = "ore_redemption"
@@ -32,10 +32,7 @@
 	. = ..()
 
 	silo_materials = new (
-		src, \
-		mapload, \
-		mat_container_flags = MATCONTAINER_NO_INSERT \
-	)
+		src, 		mapload, 		mat_container_flags = MATCONTAINER_NO_INSERT 	)
 
 	register_context()
 
@@ -75,24 +72,24 @@
 
 /obj/machinery/bouldertech/examine(mob/user)
 	. = ..()
-	. += span_notice("The machine reads that it has [span_bold("[points_held] mining points")] stored. Swipe an ID to claim them.")
-	. += span_notice("Click to remove a stored boulder.")
+	. += span_notice("A máquina diz que tem[span_bold("[points_held] mining points")]Armazenado. Passe uma identificação para reivindicá-los.")
+	. += span_notice("Clique para remover uma pedra armazenada.")
 
 	var/boulder_count = 0
 	for(var/obj/item/boulder/potential_boulder in contents)
 		boulder_count += 1
-	. += span_notice("Storage capacity = <b>[boulder_count]/[boulders_held_max] boulders</b>.")
-	. += span_notice("Can process up to <b>[boulders_processing_count] boulders</b> at a time.")
+	. += span_notice("Capacidade de armazenamento =<b>[boulder_count]/[boulders_held_max]Pedras</b>.")
+	. += span_notice("Pode processar até<b>[boulders_processing_count]Pedras</b>de uma vez.")
 
 	if(anchored)
-		. += span_notice("It's [EXAMINE_HINT("anchored")] in place.")
+		. += span_notice("É...[EXAMINE_HINT("anchored")]No lugar.")
 	else
-		. += span_warning("It needs to be [EXAMINE_HINT("anchored")] to start operations.")
+		. += span_warning("Precisa ser[EXAMINE_HINT("anchored")]para iniciar operações.")
 
-	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
+	. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
 
 	if(panel_open)
-		. += span_notice("The whole machine can be [EXAMINE_HINT("pried")] apart.")
+		. += span_notice("A máquina inteira pode ser[EXAMINE_HINT("pried")]Separados.")
 
 /obj/machinery/bouldertech/update_icon_state()
 	. = ..()
@@ -211,7 +208,7 @@
 	PROTECTED_PROC(TRUE)
 
 	Shake(duration = 1 SECONDS)
-	rockman.visible_message(span_warning("[rockman] is processed by [src]!"), span_userdanger("You get processed into bits by [src]!"))
+	rockman.visible_message(span_warning("[rockman]é processado por[src]!"), span_userdanger("Você é processado em pedaços por[src]!"))
 	rockman.investigate_log("was gibbed by [src] for being a golem", INVESTIGATE_DEATHS)
 	rockman.gib(DROP_ALL_REMAINS)
 
@@ -275,7 +272,7 @@
 			amount = points_held
 		id_card.registered_account.mining_points += amount
 		points_held = round(points_held - amount)
-		to_chat(user, span_notice("You claim [amount] mining points from \the [src] to [id_card]."))
+		to_chat(user, span_notice("Você diz[amount]Pontos de mineração de\the [src]para[id_card]."))
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
@@ -301,10 +298,10 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN || panel_open)
 		return
 	if(!anchored)
-		balloon_alert(user, "ancore primeiro!")
+		balloon_alert(user, "Ancore primeiro!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(panel_open)
-		balloon_alert(user, "feche o painel!")
+		balloon_alert(user, "Feche o painel!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	var/obj/item/boulder/boulder = locate(/obj/item/boulder) in src

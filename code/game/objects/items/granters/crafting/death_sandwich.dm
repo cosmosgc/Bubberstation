@@ -1,6 +1,6 @@
 /obj/item/book/granter/crafting_recipe/death_sandwich
 	name = "\improper SANDWICH OF DEATH SECRET RECIPE"
-	desc = "An ancient composition notebook with the instructions for an ancient and ultimate sandwich scrawled upon its loose-leaf pages. The title has been scrawled onto it with permanent marker."
+	desc = "Um antigo caderno de composição com as instruções para um antigo e último sanduíche rabiscado em suas páginas de folhas soltas. O título foi escrito com marcador permanente."
 	crafting_recipe_types = list(
 		/datum/crafting_recipe/food/death_sandwich
 	)
@@ -13,5 +13,5 @@
 	)
 
 /obj/item/book/granter/crafting_recipe/death_sandwich/recoil(mob/living/user)
-	to_chat(user, span_warning("The book comically explodes in your hands, leaving no trace."))
+	to_chat(user, span_warning("O livro explode em suas mãos, sem deixar rastros."))
 	qdel(src)

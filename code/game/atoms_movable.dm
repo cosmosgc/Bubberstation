@@ -353,8 +353,8 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(!(impact_flags & ZIMPACT_NO_MESSAGE))
 		visible_message(
-			span_danger("[src] crashes into [impacted_turf]!"),
-			span_userdanger("You crash into [impacted_turf]!"),
+			span_danger("[src]Bate em[impacted_turf]!"),
+			span_userdanger("Você bate em[impacted_turf]!"),
 		)
 	if(!(impact_flags & ZIMPACT_NO_SPIN))
 		INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
@@ -452,7 +452,7 @@
 		destination = get_step_multiz(start, direction)
 		if(!destination)
 			if(z_move_flags & ZMOVE_FEEDBACK)
-				to_chat(rider || src, span_warning("There's nowhere to go in that direction!"))
+				to_chat(rider || src, span_warning("Não há para onde ir nessa direção!"))
 			return FALSE
 	if(SEND_SIGNAL(src, COMSIG_CAN_Z_MOVE, start, destination) & COMPONENT_CANT_Z_MOVE)
 		return FALSE
@@ -461,13 +461,13 @@
 	if(z_move_flags & ZMOVE_CAN_FLY_CHECKS && !(movement_type & (FLYING|FLOATING)) && has_gravity(start))
 		if(z_move_flags & ZMOVE_FEEDBACK)
 			if(rider)
-				to_chat(rider, span_warning("[src] [p_are()] incapable of flight."))
+				to_chat(rider, span_warning("[src] [p_are()]incapaz de voar."))
 			else
-				to_chat(src, span_warning("You are not Superman."))
+				to_chat(src, span_warning("Você não é o Superman."))
 		return FALSE
 	if((!(z_move_flags & ZMOVE_IGNORE_OBSTACLES) && !(start.zPassOut(direction) && destination.zPassIn(direction))) || (!(z_move_flags & ZMOVE_ALLOW_ANCHORED) && anchored))
 		if(z_move_flags & ZMOVE_FEEDBACK)
-			to_chat(rider || src, span_warning("You can't move there!"))
+			to_chat(rider || src, span_warning("Não pode se mexer aí!"))
 		return FALSE
 	return destination //used by some child types checks and zMove()
 
@@ -553,8 +553,7 @@
 		var/mob/pulled_mob = pulled_atom
 		log_combat(src, pulled_mob, "grabbed", addition="passive grab")
 		if(!supress_message)
-			pulled_mob.visible_message(span_warning("[src] grabs [pulled_mob] passively."), \
-				span_danger("[src] grabs you passively."))
+			pulled_mob.visible_message(span_warning("[src]Pega.[pulled_mob]passivamente."), 				span_danger("[src]Pega você passivamente."))
 	return TRUE
 
 /atom/movable/proc/stop_pulling()
@@ -881,9 +880,7 @@
 		on_changed_z_level(old_turf, new_turf, same_z_layer)
 
 	if(HAS_SPATIAL_GRID_CONTENTS(src))
-		if(old_turf && new_turf && (old_turf.z != new_turf.z \
-			|| GET_SPATIAL_INDEX(old_turf.x) != GET_SPATIAL_INDEX(new_turf.x) \
-			|| GET_SPATIAL_INDEX(old_turf.y) != GET_SPATIAL_INDEX(new_turf.y)))
+		if(old_turf && new_turf && (old_turf.z != new_turf.z 			|| GET_SPATIAL_INDEX(old_turf.x) != GET_SPATIAL_INDEX(new_turf.x) 			|| GET_SPATIAL_INDEX(old_turf.y) != GET_SPATIAL_INDEX(new_turf.y)))
 
 			SSspatial_grid.exit_cell(src, old_turf)
 			SSspatial_grid.enter_cell(src, new_turf)
@@ -1448,12 +1445,12 @@
 /atom/movable/proc/force_push(atom/movable/pushed_atom, force = move_force, direction, silent = FALSE)
 	. = pushed_atom.force_pushed(src, force, direction)
 	if(!silent && .)
-		visible_message(span_warning("[src] forcefully pushes against [pushed_atom]!"), span_warning("You forcefully push against [pushed_atom]!"))
+		visible_message(span_warning("[src]forçosamente empurra contra[pushed_atom]!"), span_warning("Você forçosamente empurra contra[pushed_atom]!"))
 
 /atom/movable/proc/move_crush(atom/movable/crushed_atom, force = move_force, direction, silent = FALSE)
 	. = crushed_atom.move_crushed(src, force, direction)
 	if(!silent && .)
-		visible_message(span_danger("[src] crushes past [crushed_atom]!"), span_danger("You crush [crushed_atom]!"))
+		visible_message(span_danger("[src]Quebre o passado[crushed_atom]!"), span_danger("Você esmaga[crushed_atom]!"))
 
 /atom/movable/proc/move_crushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
 	return FALSE
@@ -1552,8 +1549,7 @@
 /atom/movable/proc/get_language_holder()
 	RETURN_TYPE(/datum/language_holder)
 	if(QDELING(src))
-		CRASH("get_language_holder() called on a QDELing atom, \
-			this will try to re-instantiate the language holder that's about to be deleted, which is bad.")
+		CRASH("get_language_holder() called on a QDELing atom, 			this will try to re-instantiate the language holder that's about to be deleted, which is bad.")
 
 	if(!language_holder)
 		language_holder = new initial_language_holder(src)
@@ -1765,7 +1761,7 @@
 			return
 		if(edit_faction(usr))
 			var/list/factions_printout = faction_to_text()
-			to_chat(usr, span_notice("Factions updated for [src]:[factions_printout]"))
+			to_chat(usr, span_notice("Facções atualizadas para[src]:[factions_printout]"))
 
 	if(href_list[VV_HK_GET_FACTIONS])
 		if(!check_rights(R_ADMIN))
@@ -1773,7 +1769,7 @@
 		if(QDELETED(src))
 			return
 		var/list/factions_printout = faction_to_text()
-		to_chat(usr, span_notice(span_notice("Factions for [src]:[factions_printout]")))
+		to_chat(usr, span_notice(span_notice("Fações para[src]:[factions_printout]")))
 
 	if(href_list[VV_HK_EDIT_PARTICLES])
 		var/client/C = usr.client
@@ -1782,16 +1778,16 @@
 	if(href_list[VV_HK_DEADCHAT_PLAYS])
 		if(!check_rights(R_FUN))
 			return
-		if(tgui_alert(usr, "Allow deadchat to control [src] via chat commands?", "Deadchat Plays [src]", list("Allow", "Cancel")) != "Allow")
+		if(tgui_alert(usr, "Permita que o bate-papo controle.[src]através de comandos de bate-papo?", "Deadchat Plays [src]", list("Allow", "Cancel")) != "Allow")
 			return
 		// Alert is async, so quick sanity check to make sure we should still be doing this.
 		if(QDELETED(src))
 			return
 		// This should never happen, but if it does it should not be silent.
 		if(deadchat_plays() == COMPONENT_INCOMPATIBLE)
-			to_chat(usr, span_warning("Deadchat control not compatible with [src]."))
+			to_chat(usr, span_warning("Controle de bate-papo não compatível com[src]."))
 			CRASH("deadchat_control component incompatible with object of type: [type]")
-		to_chat(usr, span_notice("Deadchat now control [src]."))
+		to_chat(usr, span_notice("Deadchat agora controla.[src]."))
 		log_admin("[key_name(usr)] has added deadchat control to [src]")
 		message_admins(span_notice("[key_name(usr)] has added deadchat control to [src]"))
 
@@ -2003,7 +1999,7 @@
  * Opens the modify faction ui.
  */
 /atom/movable/proc/edit_faction(mob/user)
-	var/prompt = tgui_alert(usr, "Would you like to Add or Remove faction?", "Add/Remove?", list("Add", "Remove"))
+	var/prompt = tgui_alert(usr, "Gostaria de adicionar ou remover facção?", "Add/Remove?", list("Add", "Remove"))
 	if (isnull(prompt))
 		return FALSE
 
@@ -2017,7 +2013,7 @@
 	else if (prompt == "Remove")
 		var/list/current_factions = LAZYLISTDUPLICATE(faction)
 		if(!LAZYLEN(current_factions))
-			to_chat(user, span_warning("[src] has no factions left to remove!"))
+			to_chat(user, span_warning("[src]Não tem facções para remover!"))
 			return FALSE
 
 		current_factions = sort_list(current_factions, GLOBAL_PROC_REF(cmp_text_asc)) // sort alphabetically

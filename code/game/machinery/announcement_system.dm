@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 /obj/machinery/announcement_system
 	density = TRUE
 	name = "\improper Automated Announcement System"
-	desc = "An automated announcement system that handles minor announcements over the radio."
+	desc = "Um sistema de anúncio automático que lida com pequenos anúncios pelo rádio."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "AAS_On"
 	base_icon_state = "AAS"
@@ -70,7 +70,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 /obj/machinery/announcement_system/multitool_act(mob/living/user, obj/item/tool)
 	if(!panel_open || !(machine_stat & EMPED))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("You reset [src]'s firmware."))
+	to_chat(user, span_notice("Você reset[src]É firmware."))
 	set_machine_stat(machine_stat & ~EMPED)
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -94,7 +94,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		return FALSE
 	obj_flags |= EMAGGED
 	act_up()
-	balloon_alert(user, "announcement strings corrupted")
+	balloon_alert(user, "Cordas de anúncio corrompidas")
 	return TRUE
 
 /obj/machinery/announcement_system/ui_interact(mob/user, datum/tgui/ui)
@@ -131,7 +131,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!usr.can_perform_action(src, ALLOW_SILICON_REACH))
 		return
 	if(machine_stat & EMPED)
-		visible_message(span_warning("[src] buzzes."), span_hear("You hear a faint buzz."))
+		visible_message(span_warning("[src]Buzzes."), span_hear("Você ouve um zumbido fraco."))
 		playsound(src.loc, 'sound/machines/buzz/buzz-two.ogg', 50, TRUE)
 		return
 
@@ -161,9 +161,9 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		return
 
 	if (machine_stat & EMPED)
-		to_chat(user, span_warning("[src]'s firmware appears to be malfunctioning!"))
+		to_chat(user, span_warning("[src]O firmware parece estar com defeito!"))
 		if (!isAI(user))	// Deus Ex Machina goes without multitool in his default complectation.
-			to_chat(user, span_warning("However, you can reset it with [EXAMINE_HINT("multitool")], while its [EXAMINE_HINT("panel is open")]!"))
+			to_chat(user, span_warning("No entanto, você pode redefini-lo com[EXAMINE_HINT("multitool")], enquanto a sua[EXAMINE_HINT("panel is open")]!"))
 		return FALSE
 
 /// If AAS can't broadcast message, it shouldn't be picked by randomizer.

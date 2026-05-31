@@ -2,7 +2,7 @@
 	icon = 'icons/obj/signs.dmi'
 	icon_state = "blankplaque"
 	name = "blank plaque"
-	desc = "A blank plaque, use a fancy pen to engrave it. It can be detached from the wall with a wrench."
+	desc = "Uma placa em branco, use uma caneta chique para gravá-la. Pode ser separado da parede com uma chave inglesa."
 	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
@@ -45,14 +45,12 @@
 
 /obj/structure/plaque/wrench_act(mob/living/user, obj/item/wrench/I)
 	. = ..()
-	user.visible_message(span_notice("[user] starts removing [src]..."), \
-		span_notice("You start unfastening [src]."))
+	user.visible_message(span_notice("[user]Começa a remover[src]..."), 		span_notice("Você começa a desapertar[src]."))
 	I.play_tool_sound(src)
 	if(!I.use_tool(src, user, 4 SECONDS))
 		return TRUE
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
-	user.visible_message(span_notice("[user] unfastens [src]."), \
-		span_notice("You unfasten [src]."))
+	user.visible_message(span_notice("[user]Se solta.[src]."), 		span_notice("Você desaperta.[src]."))
 	var/obj/item/plaque/unwrenched_plaque = new (get_turf(user))
 	if(engraved) //If it's still just a basic unengraved plaque, we can (and should) skip some of the below variable transfers.
 		unwrenched_plaque.name = name //Copy over the plaque structure variables to the plaque item we're creating when we unwrench it.
@@ -69,23 +67,21 @@
 	if(user.combat_mode)
 		return FALSE
 	if(atom_integrity == max_integrity)
-		to_chat(user, span_warning("This plaque is already in perfect condition."))
+		to_chat(user, span_warning("Esta placa já está em perfeitas condições."))
 		return TRUE
 	if(!I.tool_start_check(user, amount=1))
 		return TRUE
-	user.visible_message(span_notice("[user] starts repairing [src]..."), \
-		span_notice("You start repairing [src]."))
+	user.visible_message(span_notice("[user]Começa a reparar.[src]..."), 		span_notice("Você começa a reparar[src]."))
 	if(!I.use_tool(src, user, 4 SECONDS, volume = 50))
 		return TRUE
-	user.visible_message(span_notice("[user] finishes repairing [src]."), \
-			span_notice("You finish repairing [src]."))
+	user.visible_message(span_notice("[user]Termina de reparação.[src]."), 			span_notice("Você termina de consertar.[src]."))
 	atom_integrity = max_integrity
 	return TRUE
 
 /obj/structure/plaque/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(I, /obj/item/pen/fountain))
 		if(engraved)
-			to_chat(user, span_warning("This plaque has already been engraved."))
+			to_chat(user, span_warning("Esta placa já foi gravada."))
 			return
 		var/namechoice = tgui_input_text(user, "Title this plaque. (e.g. 'Best HoP Award', 'Great Ashwalker War Memorial')", "Plaque Customization", max_length = MAX_NAME_LEN)
 		if(!namechoice)
@@ -94,23 +90,21 @@
 		if(!descriptionchoice)
 			return
 		if(!Adjacent(user)) //Make sure user is adjacent still
-			to_chat(user, span_warning("You need to stand next to the plaque to engrave it!"))
+			to_chat(user, span_warning("Você precisa ficar ao lado da placa para gravá-la!"))
 			return
-		user.visible_message(span_notice("[user] begins engraving [src]."), \
-			span_notice("You begin engraving [src]."))
+		user.visible_message(span_notice("[user]Começa a gravar[src]."), 			span_notice("Você começa a gravar[src]."))
 		if(!do_after(user, 4 SECONDS, target = src)) //This spits out a visible message that somebody is engraving a plaque, then has a delay.
 			return
 		name = "\improper [namechoice]" //We want improper here so examine doesn't get weird if somebody capitalizes the plaque title.
-		desc = "The plaque reads: '[descriptionchoice]'"
+		desc = "Uma placa diz: '[descriptionchoice]'"
 		engraved = TRUE //The plaque now has a name, description, and can't be altered again.
-		user.visible_message(span_notice("[user] engraves [src]."), \
-			span_notice("You engrave [src]."))
+		user.visible_message(span_notice("[user]Grava.[src]."), 			span_notice("Você grava[src]."))
 		return
 	if(istype(I, /obj/item/pen))
 		if(engraved)
-			to_chat(user, span_warning("This plaque has already been engraved, and your pen isn't fancy enough to engrave it anyway! Find a fountain pen."))
+			to_chat(user, span_warning("Esta placa já foi gravada, e sua caneta não é chique o suficiente para gravá-la! Encontre uma caneta."))
 			return
-		to_chat(user, span_warning("Your pen isn't fancy enough to engrave this! Find a fountain pen.")) //Go steal the Curator's.
+		to_chat(user, span_warning("Sua caneta não é chique o suficiente para gravar isso! Encontre uma caneta.")) //Go steal the Curator's.
 		return
 	return ..()
 
@@ -121,7 +115,7 @@
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	name = "blank plaque"
-	desc = "A blank plaque, use a fancy pen to engrave it. It can be placed on a wall."
+	desc = "Uma placa em branco, use uma caneta chique para gravá-la. Pode ser colocado em uma parede."
 	w_class = WEIGHT_CLASS_NORMAL
 	custom_materials = list(/datum/material/gold =SHEET_MATERIAL_AMOUNT)
 	max_integrity = 200
@@ -141,16 +135,14 @@
 	if(user.combat_mode)
 		return FALSE
 	if(atom_integrity == max_integrity)
-		to_chat(user, span_warning("This plaque is already in perfect condition."))
+		to_chat(user, span_warning("Esta placa já está em perfeitas condições."))
 		return TRUE
 	if(!I.tool_start_check(user, amount=1))
 		return TRUE
-	user.visible_message(span_notice("[user] starts repairing [src]..."), \
-		span_notice("You start repairing [src]."))
+	user.visible_message(span_notice("[user]Começa a reparar.[src]..."), 		span_notice("Você começa a reparar[src]."))
 	if(!I.use_tool(src, user, 4 SECONDS, volume = 50))
 		return TRUE
-	user.visible_message(span_notice("[user] finishes repairing [src]."), \
-		span_notice("You finish repairing [src]."))
+	user.visible_message(span_notice("[user]Termina de reparação.[src]."), 		span_notice("Você termina de consertar.[src]."))
 	atom_integrity = max_integrity
 	return TRUE
 
@@ -158,7 +150,7 @@
 /obj/item/plaque/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers) //Same as part of the above, except for the item in hand instead of the structure.
 	if(istype(I, /obj/item/pen/fountain))
 		if(engraved)
-			to_chat(user, span_warning("This plaque has already been engraved."))
+			to_chat(user, span_warning("Esta placa já foi gravada."))
 			return
 		var/namechoice = tgui_input_text(user, "Title this plaque. (e.g. 'Best HoP Award', 'Great Ashwalker War Memorial')", "Plaque Customization", max_length = MAX_NAME_LEN)
 		if(!namechoice)
@@ -167,23 +159,21 @@
 		if(!descriptionchoice)
 			return
 		if(!Adjacent(user)) //Make sure user is adjacent still
-			to_chat(user, span_warning("You need to stand next to the plaque to engrave it!"))
+			to_chat(user, span_warning("Você precisa ficar ao lado da placa para gravá-la!"))
 			return
-		user.visible_message(span_notice("[user] begins engraving [src]."), \
-			span_notice("You begin engraving [src]."))
+		user.visible_message(span_notice("[user]Começa a gravar[src]."), 			span_notice("Você começa a gravar[src]."))
 		if(!do_after(user, 4 SECONDS, target = src)) //This spits out a visible message that somebody is engraving a plaque, then has a delay.
 			return
 		name = "\improper [namechoice]" //We want improper here so examine doesn't get weird if somebody capitalizes the plaque title.
-		desc = "The plaque reads: '[descriptionchoice]'"
+		desc = "Uma placa diz: '[descriptionchoice]'"
 		engraved = TRUE //The plaque now has a name, description, and can't be altered again.
-		user.visible_message(span_notice("[user] engraves [src]."), \
-			span_notice("You engrave [src]."))
+		user.visible_message(span_notice("[user]Grava.[src]."), 			span_notice("Você grava[src]."))
 		return
 	if(istype(I, /obj/item/pen))
 		if(engraved)
-			to_chat(user, span_warning("This plaque has already been engraved, and your pen isn't fancy enough to engrave it anyway! Find a fountain pen."))
+			to_chat(user, span_warning("Esta placa já foi gravada, e sua caneta não é chique o suficiente para gravá-la! Encontre uma caneta."))
 			return
-		to_chat(user, span_warning("Your pen isn't fancy enough to engrave this! Find a fountain pen.")) //Go steal the Curator's.
+		to_chat(user, span_warning("Sua caneta não é chique o suficiente para gravar isso! Encontre uma caneta.")) //Go steal the Curator's.
 		return
 	return ..()
 
@@ -203,8 +193,7 @@
 		placed_plaque.pixel_x = 32
 	else if(dir & WEST)
 		placed_plaque.pixel_x = -32
-	user.visible_message(span_notice("[user] fastens [src] to [target_turf]."), \
-		span_notice("You attach [src] to [target_turf]."))
+	user.visible_message(span_notice("[user]Fixa.[src]Para[target_turf]."), 		span_notice("Você anexa[src]Para[target_turf]."))
 	playsound(target_turf, 'sound/items/deconstruct.ogg', 50, TRUE)
 	if(engraved)
 		placed_plaque.name = name

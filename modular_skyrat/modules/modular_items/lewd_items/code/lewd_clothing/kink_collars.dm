@@ -28,7 +28,7 @@
 
 /obj/item/clothing/neck/kink_collar
 	name = "collar"
-	desc = "A nice, tight collar. It fits snug to your skin"
+	desc = "Um colarinho apertado. Se encaixa em sua pele"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "collar_cyan"
@@ -120,7 +120,7 @@
 
 /obj/item/clothing/neck/kink_collar/locked
 	name = "locked collar"
-	desc = "A tight collar. It appears to have some kind of lock."
+	desc = "Um colarinho apertado. Parece ter algum tipo de fechadura."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "lock_collar_cyan"
@@ -195,7 +195,7 @@
 		if(!to_lock)
 			REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_NODROP)
 		return
-	to_chat(user, span_warning("It looks like the lock is broken - now it's just an ordinary old collar."))
+	to_chat(user, span_warning("Parece que a fechadura está quebrada, agora é só uma coleira velha comum."))
 	locked = FALSE
 	REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_NODROP)
 
@@ -205,27 +205,27 @@
 	if(attack_item.key_id == REF(src))
 		IsLocked((locked ? FALSE : TRUE), user)
 		return
-	to_chat(user, span_warning("This isn't the correct key!"))
+	to_chat(user, span_warning("Esta não é a chave correta!"))
 
 /obj/item/clothing/neck/kink_collar/locked/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(!(locked && src == user.wear_neck))
 		return
 	ADD_TRAIT(src, TRAIT_NODROP, TRAIT_NODROP)
-	to_chat(user, span_warning("You hear a suspicious click around your neck - it seems the collar is now locked!"))
+	to_chat(user, span_warning("Você ouve um clique suspeito em torno de seu pescoço - parece que a coleira está agora trancada!"))
 
 //this code prevents wearer from taking collar off if it's locked. Have fun!
 
 /obj/item/clothing/neck/kink_collar/locked/attack_hand(mob/user)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK) && locked)
-		to_chat(user, span_warning("The collar is locked! You'll need to unlock it before you can take it off!"))
+		to_chat(user, span_warning("A coleira está trancada! Você vai precisar destravá-lo antes que você possa tirá-lo!"))
 		return
 	add_fingerprint(usr)
 	return ..()
 
 /obj/item/clothing/neck/kink_collar/locked/mouse_drop_dragged(atom/over_object, mob/user, src_location, over_location, params)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK) && locked && istype(over_object, /atom/movable/screen/inventory/hand))
-		to_chat(user, span_warning("The collar is locked! You'll need to unlock it before you can take it off!"))
+		to_chat(user, span_warning("A coleira está trancada! Você vai precisar destravá-lo antes que você possa tirá-lo!"))
 		return
 	var/atom/movable/screen/inventory/hand/inv_hand = over_object
 	if(user.putItemFromInventoryInHandIfPossible(src, inv_hand.held_index))
@@ -238,7 +238,7 @@
 
 /obj/item/key/kink_collar
 	name = "kink collar key"
-	desc = "A key for a tiny lock on a collar or bag."
+	desc = "Uma chave para uma pequena fechadura em um colarinho ou saco."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	icon_state = "collar_key_metal"
 	base_icon_state = "collar_key"
@@ -315,7 +315,7 @@
 	if(REF(collar) == src.key_id)
 		collar.IsLocked((collar.locked ? FALSE : TRUE), user)
 	else
-		to_chat(user, span_warning("This isn't the correct key!"))
+		to_chat(user, span_warning("Esta não é a chave correta!"))
 
 /obj/item/circular_saw/attack(mob/living/carbon/target, mob/living/user, params)
 	if(!istype(target))
@@ -324,29 +324,29 @@
 		return ..()
 	var/obj/item/clothing/neck/kink_collar/locked/collar = target.wear_neck
 	if(collar.broken)
-		to_chat(user, span_warning("The lock is already broken!"))
+		to_chat(user, span_warning("A fechadura já está quebrada!"))
 		return
-	to_chat(user, span_warning("You try to cut the lock right off!"))
+	to_chat(user, span_warning("Você tenta cortar a fechadura!"))
 	if(target != user)
 		if(!do_after(user, 2 SECONDS, target))
 			return
 		collar.broken = TRUE
 		collar.IsLocked(FALSE, user)
 		if(prob(33)) //chance to get damage
-			to_chat(user, span_warning("You successfully cut away the lock, but gave [target.name] several cuts in the process!"))
+			to_chat(user, span_warning("Você cortou com sucesso a fechadura, mas deu[target.name]Vários cortes no processo!"))
 			target.apply_damage(rand(1, 4), BRUTE, BODY_ZONE_HEAD, wound_bonus = 10)
 		else
-			to_chat(user, span_warning("You successfully cut away the lock!"))
+			to_chat(user, span_warning("Você cortou com sucesso a fechadura!"))
 	else
 		if(!do_after(user, 3 SECONDS, target))
 			return
 		if(prob(33))
-			to_chat(user, span_warning("You successfully cut away the lock, but gave yourself several cuts in the process!"))
+			to_chat(user, span_warning("Você cortou a fechadura com sucesso, mas fez vários cortes no processo!"))
 			collar.broken = TRUE
 			collar.IsLocked(FALSE, user)
 			target.apply_damage(rand(2, 4), BRUTE, BODY_ZONE_HEAD, wound_bonus = 10)
 		else
-			to_chat(user, span_warning("You fail to cut away the lock, cutting yourself in the process!"))
+			to_chat(user, span_warning("Você não consegue cortar a fechadura, cortando-se no processo!"))
 			target.apply_damage(rand(3, 5), BRUTE, BODY_ZONE_HEAD, wound_bonus = 30)
 
 /*
@@ -358,7 +358,7 @@
 //Controller stuff
 /obj/item/mind_controller
 	name = "mind controller"
-	desc = "A small remote for sending basic emotion patterns to a collar."
+	desc = "Um pequeno controle remoto para enviar padrões básicos de emoção para uma coleira."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
@@ -385,7 +385,7 @@
 //Collar stuff
 /obj/item/clothing/neck/mind_collar
 	name = "mind collar"
-	desc = "A tight collar. It has some strange high-tech emitters on the side."
+	desc = "Um colarinho apertado. Tem emissores de alta tecnologia estranhos."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "mindcollar"

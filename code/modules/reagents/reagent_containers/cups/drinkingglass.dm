@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/cup/glass/drinkingglass
 	name = "drinking glass"
-	desc = "Your standard drinking glass."
+	desc = "Seu copo de bebida padrão."
 	icon_state = "glass_empty"
 	base_icon_state = "glass_empty"
 	amount_per_transfer_from_this = 10
@@ -24,12 +24,7 @@
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/Initialize(mapload, vol)
 	. = ..()
-	AddComponent( \
-		/datum/component/takes_reagent_appearance, \
-		CALLBACK(src, PROC_REF(on_cup_change)), \
-		CALLBACK(src, PROC_REF(on_cup_reset)), \
-		base_container_type = base_container_type, \
-	)
+	AddComponent( 		/datum/component/takes_reagent_appearance, 		CALLBACK(src, PROC_REF(on_cup_change)), 		CALLBACK(src, PROC_REF(on_cup_reset)), 		base_container_type = base_container_type, 	)
 	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(on_cleaned))
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/on_reagent_change(datum/reagents/holder, ...)
@@ -51,7 +46,7 @@
 /obj/item/reagent_containers/cup/glass/drinkingglass/examine(mob/user)
 	. = ..()
 	if(HAS_TRAIT(src, TRAIT_WAS_RENAMED))
-		. += span_notice("This glass has been given a custom name. It can be removed by washing it.")
+		. += span_notice("Este copo recebeu um nome personalizado. Pode ser removido lavando.")
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/proc/on_cleaned(obj/source_component, obj/source)
 	SIGNAL_HANDLER
@@ -74,7 +69,7 @@
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass
 	name = "shot glass"
-	desc = "A shot glass - the universal symbol for bad decisions."
+	desc = "Um copo - o símbolo universal para más decisões."
 	icon = 'icons/obj/drinks/shot_glasses.dmi'
 	icon_state = "shotglass"
 	base_icon_state = "shotglass"
@@ -97,9 +92,9 @@
 		return
 	. = ..()
 	if(length(reagents.reagent_list))
-		desc = "The challenge is not taking as many as you can, but guessing what it is before you pass out."
+		desc = "O desafio não é levar o máximo que puder, mas adivinhar o que é antes de desmaiar."
 	else
-		desc = "A shot glass - the universal symbol for bad decisions."
+		desc = "Um copo - o símbolo universal para más decisões."
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/filled
 	base_container_type = /obj/item/reagent_containers/cup/glass/drinkingglass
@@ -126,7 +121,7 @@
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/filled/half_full
 	name = "half full glass of water"
-	desc  = "It's a glass of water. It seems half full. Or is it half empty? You're pretty sure it's full of shit."
+	desc  = "É um copo de água. Parece meio cheio. Ou está meio vazio? Você tem certeza que é mentira."
 	list_reagents = list(/datum/reagent/water = 25)
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/filled/half_full/Initialize(mapload, vol)

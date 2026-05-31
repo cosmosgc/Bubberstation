@@ -221,7 +221,7 @@
 		return
 
 	if(!SSticker?.IsRoundInProgress())
-		to_chat(hud.mymob, span_boldwarning("The round is either not ready, or has already finished..."))
+		to_chat(hud.mymob, span_boldwarning("A rodada ou não está pronta, ou já terminou..."))
 		return
 
 	//Determines Relevent Population Cap
@@ -245,7 +245,7 @@
 			to_chat(new_player, span_notice("Há [queue_position-1] jogadores na sua frente na fila para entrar no jogo."))
 		else
 			SSticker.queued_players += new_player
-			to_chat(new_player, span_notice("You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len]."))
+			to_chat(new_player, span_notice("Você foi adicionado à fila para entrar no jogo. Sua posição na fila é[SSticker.queued_players.len]."))
 		return
 
 	new_player.auto_deadmin_on_ready_or_latejoin()
@@ -253,7 +253,7 @@
 	if(!LAZYACCESS(params2list(params), CTRL_CLICK))
 		GLOB.latejoin_menu.ui_interact(new_player)
 	else
-		to_chat(new_player, span_warning("Opening emergency fallback late join menu! If THIS doesn't show, ahelp immediately!"))
+		to_chat(new_player, span_warning("Abrindo o menu de emergência! Se isso não aparecer, ajude imediatamente!"))
 		GLOB.latejoin_menu.fallback_ui(new_player)
 
 
@@ -588,7 +588,7 @@ BUBBER REMOVAL END
 	SEND_SOUND(hud.mymob, sound('sound/effects/cartoon_sfx/cartoon_splat.ogg', volume = 50))
 	SSticker.start_immediately = TRUE
 	if(SSticker.current_state == GAME_STATE_STARTUP)
-		to_chat(usr, span_admin("The server is still setting up, but the round will be started as soon as possible."))
+		to_chat(usr, span_admin("O servidor ainda está funcionando, mas a rodada será iniciada o mais rápido possível."))
 
 #define OVERLAY_X_DIFF 12
 #define OVERLAY_Y_DIFF 5
@@ -691,25 +691,18 @@ BUBBER REMOVAL END
 		return
 
 	if(SSticker.IsPostgame())
-		maptext = MAPTEXT("<span style='text-align: center; vertical-align: middle'>Game ended, <br /> \
-			restart soon</span>")
+		maptext = MAPTEXT("<span style='text-align: center; vertical-align: middle'>Game ended, <br /> 			restart soon</span>")
 		return
 
 	var/new_maptext
 	if(round_started)
-		new_maptext = "<span style='text-align: center; vertical-align: middle'>[SSmapping.current_map.map_name]<br /> \
-			[LAZYLEN(GLOB.clients)] player\s online<br /> \
-			[ROUND_TIME()] in<br />"
+		new_maptext = "<span style='text-align: center; vertical-align: middle'>[SSmapping.current_map.map_name]<br /> 			[LAZYLEN(GLOB.clients)] player\s online<br /> 			[ROUND_TIME()] in<br />"
 		new_maptext += "</span>"
 	else
 		if(hud.mymob.client?.holder)
-			new_maptext = "<span style='text-align: center; vertical-align: middle'>Starting in [time_remaining_str()]<br /> \
-				[LAZYLEN(GLOB.clients)] player\s<br /> \
-				[SSticker.totalPlayersReady] players ready<br /> \
-				[SSticker.total_admins_ready] / [length(GLOB.admins)] admins ready</span>"
+			new_maptext = "<span style='text-align: center; vertical-align: middle'>Starting in [time_remaining_str()]<br /> 				[LAZYLEN(GLOB.clients)] player\s<br /> 				[SSticker.totalPlayersReady] players ready<br /> 				[SSticker.total_admins_ready] / [length(GLOB.admins)] admins ready</span>"
 		else
-			new_maptext = "<span style='text-align: center; vertical-align: middle; font-size: 18px'>[time_remaining_str()]</span><br /> \
-				<span style='text-align: center; vertical-align: middle'>[LAZYLEN(GLOB.clients)] player\s</span>"
+			new_maptext = "<span style='text-align: center; vertical-align: middle; font-size: 18px'>[time_remaining_str()]</span><br /> 				<span style='text-align: center; vertical-align: middle'>[LAZYLEN(GLOB.clients)] player\s</span>"
 
 	maptext = MAPTEXT(new_maptext)
 

@@ -17,7 +17,7 @@
 
 /obj/item/construction/rld
 	name = "Rapid Lighting Device"
-	desc = "A device used to rapidly provide lighting sources to an area. Reload with iron, plasteel, glass or compressed matter cartridges."
+	desc = "Um dispositivo usado para fornecer rapidamente fontes de iluminação para uma área. Recarregue com cartuchos de ferro, plasteel, vidro ou matéria compacta."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rld"
 	worn_icon_state = "RPD"
@@ -64,10 +64,10 @@
 	switch(choice)
 		if("Light Fixture")
 			mode = LIGHT_MODE
-			to_chat(user, span_notice("You change RLD's mode to 'Permanent Light Construction'."))
+			to_chat(user, span_notice("Você muda o modo de RLD para Construção de Luz Permanente."))
 		if("Glow Stick")
 			mode = GLOW_MODE
-			to_chat(user, span_notice("You change RLD's mode to 'Light Launcher'."))
+			to_chat(user, span_notice("Você muda o modo de RLD para \"Lançador de Luz\"."))
 		if("Color Pick")
 			var/new_choice = tgui_color_picker(user, "", "Choose Color", color_choice)
 			if(new_choice == null)
@@ -84,7 +84,7 @@
 			color_choice = new_choice
 		if("Deconstruct")
 			mode = REMOVE_MODE
-			to_chat(user, span_notice("You change RLD's mode to 'Deconstruct'."))
+			to_chat(user, span_notice("Você muda o modo de RLD para \"Desconstruir\"."))
 		else
 			toggle_silo(user)
 
@@ -218,7 +218,7 @@
 
 /obj/item/construction/rld/mini
 	name = "mini-rapid-light-device"
-	desc = "A device used to rapidly provide lighting sources to an area. Reload with iron, plasteel, glass or compressed matter cartridges."
+	desc = "Um dispositivo usado para fornecer rapidamente fontes de iluminação para uma área. Recarregue com cartuchos de ferro, plasteel, vidro ou matéria compacta."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rld"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
@@ -228,7 +228,7 @@
 
 /obj/item/construction/rld/cyborg
 	name = "Cyborg rapid-light-device"
-	desc = "A device used to rapidly provide lighting sources to an area. Runs off a cyborg's internal power supply"
+	desc = "Um dispositivo usado para fornecer rapidamente fontes de iluminação para uma área. A energia interna de um cyborg"
 	// Energy Use
 	var/energyfactor = 0.050 * STANDARD_CELL_CHARGE
 
@@ -247,11 +247,11 @@
 	var/mob/living/silicon/robot/borgy = user
 	if(!borgy.cell)
 		if(user)
-			balloon_alert(user, "no cell found!")
+			balloon_alert(user, "Nenhuma cela encontrada!")
 		return 0
 	. = borgy.cell.use(amount * energyfactor)
 	if(!. && user)
-		balloon_alert(user, "insufficient charge!")
+		balloon_alert(user, "Insuficiência de carga!")
 	return .
 
 

@@ -2,12 +2,12 @@
 
 /datum/quirk/hungry
 	name = "Hungry"
-	desc = "For some reason, you get hungrier faster than others!"
+	desc = "Por alguma razão, você fica mais faminto mais rápido do que os outros!"
 	value = -2
 	icon = FA_ICON_BOWL_FOOD
-	gain_text = span_notice("You feel like your stomach is bottomless.")
-	lose_text = span_notice("You no longer feel like your stomach is bottomless.")
-	medical_record_text = "Patient exhibits a significantly faster metabolism."
+	gain_text = span_notice("Parece que seu estômago está sem fundo.")
+	lose_text = span_notice("Você não sente mais como se seu estômago fosse sem fundo.")
+	medical_record_text = "O paciente exibe um metabolismo significativamente mais rápido."
 	quirk_flags = QUIRK_HUMAN_ONLY
 	mail_goodies = list(/obj/item/food/chips)
 

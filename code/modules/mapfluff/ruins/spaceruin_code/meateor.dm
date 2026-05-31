@@ -23,7 +23,7 @@
 /// A fun drink enjoyed by the tiger cooperative, might corrode your brain if you drink the whole bottle
 /obj/item/reagent_containers/cup/glass/bottle/ritual_wine
 	name = "ritual wine"
-	desc = "A bottle filled with liquids of a dubious nature, often enjoyed by members of the Tiger Cooperative."
+	desc = "Uma garrafa cheia de líquidos de natureza duvidosa, muitas vezes apreciada por membros da Cooperativa Tigre."
 	icon_state = "winebottle"
 	list_reagents = list(
 		/datum/reagent/drug/mushroomhallucinogen = 25,
@@ -60,7 +60,7 @@
 /// A sort of loot box for organs, cut it open and find a prize
 /obj/structure/meateor_fluff/flesh_pod
 	name = "flesh pod"
-	desc = "A quivering pod of living meat. Something is pulsing inside."
+	desc = "Uma vagem trêmula de carne viva. Algo está pulsando por dentro."
 	icon_state = "flesh_pod"
 	max_integrity = 120
 	density = TRUE
@@ -117,7 +117,7 @@
 
 /obj/structure/meateor_fluff/flesh_pod_open
 	name = "flesh pod"
-	desc = "A pod of living meat, this one has been hollowed out."
+	desc = "Uma vagem de carne viva, esta foi esvaziada."
 	icon_state = "flesh_pod_open"
 	max_integrity = 60
 
@@ -128,7 +128,7 @@
 /// Decorative fluff egg object
 /obj/structure/meateor_fluff/abandoned_headcrab_egg
 	name = "meaty eggs"
-	desc = "A mass of fleshy, egg-shaped nodes."
+	desc = "Uma massa de nódulos carnudos em forma de ovo."
 	icon_state = "eggs"
 	max_integrity = 15
 

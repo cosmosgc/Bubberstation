@@ -1,6 +1,6 @@
 /obj/item/clothing/accessory/pocketwatch
 	name = "pocket watch"
-	desc = "A fancy gold pocket watch, inspired by the popular Uair brand of Carota. Open me, you fool. Open the light and summon me and receive my majesty."
+	desc = "Um relógio de bolso de ouro, inspirado na popular marca Uair de Carota. Abra-me, seu tolo. Abra a luz e me convoque e receba minha majestade."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
@@ -15,7 +15,7 @@
 /obj/item/clothing/accessory/pocketwatch/ui_action_click(mob/living/user, action)
 	if(!isliving(user) || !can_use(user))
 		return
-	var/message = input(user, "Speak with a hypnotic whisper", "Whisper")
+	var/message = input(user, "Fale com um sussurro hipnótico", "Whisper")
 	if(QDELETED(src) || QDELETED(user) || !message || !user.can_speak())
 		return
 	user.whisper(message, spans = spans)
@@ -23,12 +23,12 @@
 
 /obj/item/clothing/accessory/pocketwatch/examine(mob/user)
 	. = ..()
-	. += span_info("The current CST (local) time is: [station_time_timestamp()].")
-	. += span_info("The current TCT (galactic) time is: [time2text(world.realtime, "hh:mm:ss")].")
+	. += span_info("A hora atual do CST (local) é:[station_time_timestamp()].")
+	. += span_info("O tempo atual do TCT (galáctico) é:[time2text(world.realtime, "hh:mm:ss")].")
 
 /obj/item/storage/backpack/kanken //Donor item for LT3
 	name = "kånken backpack"
-	desc = "Classic Swedish design in hard-wearing vinylon fabric with a zip that opens the entire main compartment. Featuring a small front pocket, simple shoulder straps and handles at the top, it's made for a lifetime of use."
+	desc = "Design sueco clássico em tecido de vinil duro com um zip que abre todo o compartimento principal. Com um pequeno bolso dianteiro, simples alças e alças no topo, é feito para uma vida inteira de uso."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/storage.dmi'
 	lefthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/deforest_medical_items/icons/inhands/cases_righthand.dmi'
@@ -39,7 +39,7 @@
 
 /obj/item/clothing/accessory/fake/medal
 	name = "plastic medal"
-	desc = "Yeah nice try buddy. They won't record this one. Especially since it reads 'youre winnar!!'. Alt-Click to reskin!"
+	desc = "Boa tentativa, amigo. Eles não vão gravar este. Especialmente porque diz \"Você é Winnar!\"Alt-Click para reskin!"
 
 /obj/item/clothing/accessory/fake/medal/Initialize(mapload)
 	. = ..()
@@ -163,7 +163,7 @@
 // Dogtags
 /obj/item/clothing/accessory/dogtags
 	name = "Dogtags"
-	desc = "Two small metal tags, connected with a thin piece of chain that hold important health information. And everything needed for a tombstone..."
+	desc = "Duas pequenas etiquetas de metal, conectadas com uma fina corrente que contém informações importantes sobre saúde. E tudo necessário para uma lápide..."
 	icon = 'modular_zubbers/icons/obj/clothing/accessories.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/accessories.dmi'
 	icon_state = "dogtags"
@@ -193,7 +193,7 @@ Potential future ideas:
 */
 /obj/item/clothing/accessory/medal/bubber
 	name = "medal of robustness"
-	desc = "A medal dedicated to those who display robustness in many fields."
+	desc = "Uma medalha dedicada a quem demonstra robustez em muitos campos."
 	icon = 'icons/map_icons/clothing/accessory.dmi'
 	icon_state = "/obj/item/clothing/accessory/medal/bubber"
 	post_init_icon_state = "medal_robust"
@@ -207,39 +207,37 @@ Potential future ideas:
 // DS-2/Syndicate Medals
 /obj/item/clothing/accessory/medal/bubber/syndicate
 	name = "syndicate medal of robustness"
-	desc = "A medal dedicated to true syndicate agents for robustness in many fields."
+	desc = "Uma medalha dedicada a agentes verdadeiros especiais por robustez em muitos campos."
 	icon_state = "/obj/item/clothing/accessory/medal/bubber/syndicate"
 	post_init_icon_state = "medal_robust"
 
 /obj/item/clothing/accessory/medal/bubber/syndicate/espionage
 	name = "syndicate medal of espionage"
-	desc = "A medal dedicated to those who have proven themselves capable at covert operations."
+	desc = "Uma medalha dedicada a quem provou ser capaz de operações secretas."
 	icon_state = "/obj/item/clothing/accessory/medal/bubber/syndicate/espionage"
 	post_init_icon_state = "medal_espi"
 
 /obj/item/clothing/accessory/medal/bubber/syndicate/interrogation
 	name = "syndicate medal of interrogation"
-	desc = "A medal dedicated to those who have proven themselves capable at interrogating even the most resilient members of an enemy corporation."
+	desc = "Uma medalha dedicada àqueles que se provaram capazes de interrogar até mesmo os membros mais resilientes de uma corporação inimiga."
 	icon_state = "/obj/item/clothing/accessory/medal/bubber/syndicate/interrogation"
 	post_init_icon_state = "medal_inter"
 
 /obj/item/clothing/accessory/medal/bubber/syndicate/intelligence
 	name = "syndicate medal of intelligence"
-	desc = "A medal dedicated to agents of particular talent at both gathering information on competetors (in ways both subtle and overt) and protecting \
-	their own employers' confidentiality."
+	desc = "Uma medalha dedicada a agentes de talento particular, tanto na coleta de informações sobre concorrentes (de formas sutis e evidentes) quanto na proteção da confidencialidade de seus próprios empregadores."
 	icon_state = "/obj/item/clothing/accessory/medal/bubber/syndicate/intelligence"
 	post_init_icon_state = "medal_intel"
 
 /obj/item/clothing/accessory/medal/bubber/syndicate/diligence
 	name = "syndicate medal of diligence"
-	desc = "A medal dedicated to a rarer agent, one who doesn't rush in; this is for agents who, through patient observation and strategizing, seize the \
-	perfect moment to act. Like our emblematic snake, they wait to strike until the enemy shows their throat, and deliver the perfect killing blow."
+	desc = "Uma medalha dedicada a um agente mais raro, que não se apressa, isto é para agentes que, através da observação paciente e estratégia, aproveitam o momento perfeito para agir. Como nossa cobra emblemática, eles esperam para atacar até que o inimigo mostre sua garganta, e entregar o golpe de morte perfeito."
 	icon_state = "/obj/item/clothing/accessory/medal/bubber/syndicate/diligence"
 	post_init_icon_state = "medal_dili"
 
 /obj/item/clothing/accessory/medal/bubber/syndicate/communications
 	name = "syndicate medal of communication"
-	desc = "A medal dedicated to those whom have proven themselves as capable counter-communications specialists."
+	desc = "Uma medalha dedicada àqueles que provaram ser especialistas em contra-comunicação."
 	icon_state = "/obj/item/clothing/accessory/medal/bubber/syndicate/communications"
 	post_init_icon_state = "medal_comms"
 
@@ -250,7 +248,7 @@ Potential future ideas:
 
 /obj/item/clothing/accessory/bubber/acc_medal
 	name = "circle medal"
-	desc = "You shouldn't have this, make a bug report!"
+	desc = "Você não deveria ter isso, faça um relatório de insetos!"
 	icon = 'icons/map_icons/clothing/accessory.dmi'
 	icon_state = "/obj/item/clothing/accessory/bubber/acc_medal"
 	post_init_icon_state = "medal_alt"
@@ -287,7 +285,7 @@ Potential future ideas:
 */
 /obj/item/clothing/accessory/bubber/acc_medal/shield
 	name = "shield medal"
-	desc = "A regular everyday medal."
+	desc = "Uma medalha diária."
 	icon_state = "/obj/item/clothing/accessory/bubber/acc_medal/shield"
 	post_init_icon_state = "medal"
 	greyscale_config = /datum/greyscale_config/medals/shield
@@ -306,7 +304,7 @@ Potential future ideas:
 */
 /obj/item/clothing/accessory/bubber/acc_medal/bar
 	name = "bar medal"
-	desc = "A regular everyday medal."
+	desc = "Uma medalha diária."
 	icon_state = "/obj/item/clothing/accessory/bubber/acc_medal/bar"
 	post_init_icon_state = "medal"
 	greyscale_config = /datum/greyscale_config/medals/bar
@@ -325,7 +323,7 @@ Potential future ideas:
 */
 /obj/item/clothing/accessory/bubber/acc_medal/heart
 	name = "heart medal"
-	desc = "A regular everyday medal."
+	desc = "Uma medalha diária."
 	icon = 'icons/map_icons/clothing/accessory.dmi'
 	icon_state = "/obj/item/clothing/accessory/bubber/acc_medal/heart"
 	post_init_icon_state = "medal"
@@ -349,7 +347,7 @@ Potential future ideas:
 */
 /obj/item/clothing/accessory/bubber/acc_medal/crown
 	name = "crown medal"
-	desc = "A regular everyday medal."
+	desc = "Uma medalha diária."
 	icon = 'icons/map_icons/clothing/accessory.dmi'
 	icon_state = "/obj/item/clothing/accessory/bubber/acc_medal/crown"
 	post_init_icon_state = "medal"
@@ -373,7 +371,7 @@ Potential future ideas:
 */
 /obj/item/clothing/accessory/bubber/acc_medal/glowcrystal
 	name = "glowcrystal necklace"
-	desc = "A glowing rock strung from a necklace, a token of gratitude similar to a medal."
+	desc = "Uma pedra brilhante pendurada de um colar, um símbolo de gratidão semelhante a uma medalha."
 	icon = 'icons/map_icons/clothing/accessory.dmi'
 	icon_state = "/obj/item/clothing/accessory/bubber/acc_medal/glowcrystal"
 	post_init_icon_state = "necklace_crystal"
@@ -433,7 +431,7 @@ Potential future ideas:
 */
 /obj/item/clothing/accessory/bubber/acc_medal/rankpin
 	name = "rank pin"
-	desc = "A pin used to display accomplishments, advancements, or otherwise earned recognition."
+	desc = "Um alfinete usado para mostrar realizações, avanços, ou de outra forma ganhou reconhecimento."
 	icon = 'icons/map_icons/clothing/accessory.dmi'
 	icon_state = "/obj/item/clothing/accessory/bubber/acc_medal/rankpin"
 	post_init_icon_state = "star"
@@ -454,7 +452,7 @@ Potential future ideas:
 */
 /obj/item/clothing/accessory/bubber/acc_medal/neckpin
 	name = "\improper NT company neckpin"
-	desc = "A pin specially dedicated to show loyalty to your company!"
+	desc = "Um broche especialmente dedicado a mostrar lealdade à sua empresa!"
 	icon = 'icons/map_icons/clothing/accessory.dmi'
 	icon_state = "/obj/item/clothing/accessory/bubber/acc_medal/neckpin"
 	post_init_icon_state = "ntpin"
@@ -469,25 +467,25 @@ Potential future ideas:
 
 /obj/item/clothing/accessory/bubber/acc_medal/neckpin/galfed
 	name = "\improper GalFed neckpin"
-	desc = "A pin specially dedicated to show loyalty to your federation!"
+	desc = "Um broche especialmente dedicado a mostrar lealdade à sua federação!"
 	icon_state = "/obj/item/clothing/accessory/bubber/acc_medal/neckpin/galfed"
 	post_init_icon_state = "sfpin"
 
 /obj/item/clothing/accessory/bubber/acc_medal/neckpin/galfed911
 	name = "\improper GalFed 911 neckpin"
-	desc = "A pin specially dedicated to show loyalty to your federation!"
+	desc = "Um broche especialmente dedicado a mostrar lealdade à sua federação!"
 	icon_state = "/obj/item/clothing/accessory/bubber/acc_medal/neckpin/galfed911"
 	post_init_icon_state = "911pin"
 
 /obj/item/clothing/accessory/bubber/acc_medal/neckpin/galfed811
 	name = "\improper GalFed 811 neckpin"
-	desc = "A pin specially dedicated to show loyalty to your federation!"
+	desc = "Um broche especialmente dedicado a mostrar lealdade à sua federação!"
 	icon_state = "/obj/item/clothing/accessory/bubber/acc_medal/neckpin/galfed811"
 	post_init_icon_state = "811pin"
 
 /obj/item/clothing/accessory/bubber/acc_medal/neckpin/syndicate
 	name = "\improper Syndicate neckpin"
-	desc = "A pin specially dedicated to show loyalty to the Syndicate!"
+	desc = "Um broche especialmente dedicado a mostrar lealdade ao Sindicato!"
 	icon_state = "/obj/item/clothing/accessory/bubber/acc_medal/neckpin/syndicate"
 	post_init_icon_state = "syndipin"
 	greyscale_colors = "#262626#9c0000"
@@ -508,7 +506,7 @@ Potential future ideas:
 */
 /obj/item/clothing/accessory/bubber/military_ribbon
 	name = "military ribbon"
-	desc = "An average military ribbon"
+	desc = "Uma fita militar média."
 	icon = 'icons/map_icons/clothing/accessory.dmi'
 	icon_state = "/obj/item/clothing/accessory/bubber/military_ribbon"
 	post_init_icon_state = "ribbon1"
@@ -532,7 +530,7 @@ Potential future ideas:
 */
 /obj/item/clothing/accessory/bubber/ribbon
 	name = "ribbon"
-	desc = "A normal everyday ribbon."
+	desc = "Uma coisa normal."
 	icon = 'icons/map_icons/clothing/accessory.dmi'
 	icon_state = "/obj/item/clothing/accessory/bubber/ribbon"
 	post_init_icon_state = "ribbon1"
@@ -570,7 +568,7 @@ Potential future ideas:
 /// GalFed Accessories
 /obj/item/clothing/accessory/bubber/galfedribbon
 	name = "\improper GalFed rank ribbon"
-	desc = "An average military ribbon."
+	desc = "Uma fita militar média."
 	icon = 'icons/map_icons/clothing/accessory.dmi'
 	icon_state = "/obj/item/clothing/accessory/bubber/galfedribbon"
 	post_init_icon_state = "star_arr_ribbon_1"
@@ -629,5 +627,5 @@ Potential future ideas:
 
 /obj/item/clothing/accessory/nova/acc_medal/neckpin/galfed/official
 	name = "\improper GalFed Official neckpin"
-	desc = "A special golden neckpin to show true loyalty to the Federation."
+	desc = "Um gancho especial para mostrar lealdade à Federação."
 	greyscale_colors = "#ffff66#0099ff"

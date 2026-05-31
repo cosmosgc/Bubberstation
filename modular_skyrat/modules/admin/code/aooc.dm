@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(ckey_to_aooc_name)
 	set category = "OOC"
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("A fala está desativada."))
 		return
 
 	if(!mob)
@@ -18,16 +18,16 @@ GLOBAL_LIST_EMPTY(ckey_to_aooc_name)
 
 	if(!holder)
 		if(!mob.mind || !length(mob.mind.antag_datums))
-			to_chat(src, span_danger("You're not an antagonist!"))
+			to_chat(src, span_danger("Você não é um antagonista!"))
 			return
 		if(!GLOB.aooc_allowed)
-			to_chat(src, span_danger("AOOC is globally muted."))
+			to_chat(src, span_danger("A COOA está globalmente muda."))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, span_danger("You cannot use OOC (muted)."))
+			to_chat(src, span_danger("Você não pode usar COO."))
 			return
 	if(is_banned_from(ckey, "OOC"))
-		to_chat(src, span_danger("You have been banned from OOC."))
+		to_chat(src, span_danger("Você foi banido da OOC."))
 		return
 	if(QDELETED(src))
 		return
@@ -41,7 +41,7 @@ GLOBAL_LIST_EMPTY(ckey_to_aooc_name)
 	msg = emoji_parse(msg)
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
-		to_chat(src, span_danger("You have OOC muted."))
+		to_chat(src, span_danger("Você está em silêncio."))
 		return
 
 	mob.log_talk(raw_msg, LOG_OOC, tag = "AOOC")
@@ -75,7 +75,7 @@ GLOBAL_LIST_EMPTY(ckey_to_aooc_name)
 		var/mode = listeners[iterated_listener]
 		var/color = (!anon && CONFIG_GET(flag/allow_admin_ooccolor) && iterated_client?.prefs?.read_preference(/datum/preference/color/ooc_color)) ? iterated_client?.prefs?.read_preference(/datum/preference/color/ooc_color) : GLOB.AOOC_COLOR
 		var/name = (mode == AOOC_LISTEN_ADMIN && anon) ? "([key])[keyname]" : keyname
-		to_chat(iterated_client, span_oocplain("<font color='[color]'><b><span class='prefix'>AOOC:</span> <EM>[name]:</EM> <span class='message linkify'>[msg]</span></b></font>"))
+		to_chat(iterated_client, span_oocplain("<font color='[color]'><b><span class='prefix'>- Sim.</span> <EM>[name]:</EM> <span class='message linkify'>[msg]</span></b></font>"))
 
 #undef AOOC_LISTEN_PLAYER
 #undef AOOC_LISTEN_ADMIN
@@ -100,7 +100,7 @@ GLOBAL_LIST_EMPTY(ckey_to_aooc_name)
 			listeners[iterated_mob.client] = TRUE
 	for(var/iterated_listener in listeners)
 		var/client/iterated_client = iterated_listener
-		to_chat(iterated_client, span_oocplain("<B>The AOOC channel has been globally [GLOB.aooc_allowed ? "enabled" : "disabled"].</B>"))
+		to_chat(iterated_client, span_oocplain("<B>O canal AOOC tem sido globalmente[GLOB.aooc_allowed ? "enabled" : "disabled"].</B>"))
 
 ADMIN_VERB(toggleaooc, R_ADMIN, "Toggle Antag OOC", "Toggles Antag OOC.", ADMIN_CATEGORY_SERVER)
 	toggle_aooc()

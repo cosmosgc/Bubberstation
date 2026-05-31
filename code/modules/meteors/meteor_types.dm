@@ -2,7 +2,7 @@
 
 /obj/effect/meteor
 	name = "\proper the concept of meteor"
-	desc = "You should probably run instead of gawking at this."
+	desc = "Você deveria correr em vez de olhar para isso."
 	icon = 'icons/obj/meteor.dmi'
 	icon_state = "small"
 	density = TRUE
@@ -43,11 +43,7 @@
 	SpinAnimation()
 	chase_target(target)
 	AddComponent(
-		/datum/component/meteor_combat, \
-		CALLBACK(src, PROC_REF(redirect)), \
-		CALLBACK(src, PROC_REF(make_debris)), \
-		achievement_on = !istype(src, /obj/effect/meteor/sand), \
-	)
+		/datum/component/meteor_combat, 		CALLBACK(src, PROC_REF(redirect)), 		CALLBACK(src, PROC_REF(make_debris)), 		achievement_on = !istype(src, /obj/effect/meteor/sand), 	)
 
 /obj/effect/meteor/Destroy()
 	GLOB.meteor_list -= src
@@ -100,7 +96,7 @@
 /obj/effect/meteor/proc/ram_turf(turf/T)
 	//first yell at mobs about them dying horribly
 	for(var/mob/living/thing in T)
-		thing.visible_message(span_warning("[src] slams into [thing]."), span_userdanger("[src] slams into you!."))
+		thing.visible_message(span_warning("[src]Bate em[thing]."), span_userdanger("[src]Bate em você!"))
 
 	//then, ram the turf
 	switch(hitpwr)
@@ -124,7 +120,7 @@
 	. = ..()
 
 	if((user.mind?.get_skill_level(/datum/skill/athletics) >= SKILL_LEVEL_LEGENDARY))
-		. += span_notice("On second thought, it doesn't look too tough.")
+		. += span_notice("Pensando bem, não parece muito difícil.")
 	check_examine_award(user)
 
 ///Called by component/meteor_combat to send us moving to the edge of the map away from whoever punched us
@@ -248,7 +244,7 @@
 //Flaming meteor
 /obj/effect/meteor/flaming
 	name = "flaming meteor"
-	desc = "A veritable shooting star, both beautiful and frightening. You should probably keep your distance from this."
+	desc = "Uma verdadeira estrela cadente, bela e assustadora. Você deveria manter distância disso."
 	icon_state = "flaming"
 	hits = 5
 	heavy = TRUE
@@ -264,7 +260,7 @@
 //Radiation meteor
 /obj/effect/meteor/irradiated
 	name = "glowing meteor"
-	desc = "An irradiated chunk of space rock. You could probably stop and appreciate its incandescent green glow, if it weren't moving so fast."
+	desc = "Um pedaço irradiado de rocha espacial. Você provavelmente poderia parar e apreciar seu brilho verde incandescente, se não estivesse se movendo tão rápido."
 	icon_state = "glowing"
 	heavy = TRUE
 	hits = 9
@@ -282,7 +278,7 @@
 //Cluster meteor
 /obj/effect/meteor/cluster
 	name = "cluster meteor"
-	desc = "A cluster of densely packed rocks, with a volatile core. You should probably get out of the way."
+	desc = "Um aglomerado de rochas densamente cheias, com um núcleo volátil. Você deveria sair do caminho."
 	icon_state = "sharp"
 	hits = 9
 	heavy = TRUE
@@ -307,14 +303,14 @@
 
 /obj/effect/meteor/cluster_fragment
 	name = "cluster meteor fragment"
-	desc = "A fast-moving fragment of exploded cluster-rock."
+	desc = "Um fragmento de rocha de fragmentação explodida."
 	icon_state = "dust"
 
 //frozen carp "meteor"
 /obj/effect/meteor/carp
 	name = "frozen carp"
 	icon_state = "carp"
-	desc = "Am I glad he's frozen in there, and that we're out here."
+	desc = "Estou feliz que ele está congelado lá, e que estamos aqui."
 	hits = 4
 	meteorsound = 'sound/mobs/humanoids/ethereal/ethereal_revive_fail.ogg'
 	meteordrop = list(/mob/living/basic/carp)
@@ -330,7 +326,7 @@
 //bluespace meteor
 /obj/effect/meteor/bluespace
 	name = "bluespace meteor"
-	desc = "A large geode containing bluespace dust at its core, hurtling through space. That's the stuff the crew are here to research. How convenient for them."
+	desc = "Um grande geode contendo poeira do espaço azul em seu núcleo, atravessando o espaço. Essa é a coisa que a equipe está aqui para pesquisar. Que conveniente para eles."
 	icon_state = "bluespace"
 	dropamt = 3
 	hits = 12
@@ -345,7 +341,7 @@
 
 /obj/effect/meteor/banana
 	name = "bananium meteor"
-	desc = "Maybe it's a chunk blasted off of the legendary Clown Planet... How annoying."
+	desc = "Talvez seja um pedaço explodido do lendário Planeta Palhaço... Que chato."
 	icon_state = "bananium"
 	dropamt = 4
 	hits = 175 //Honks everything, including space tiles. Depending on the angle/how much stuff it hits, there's a fair chance that it will spare the station from the actual explosion
@@ -365,12 +361,12 @@
 /obj/effect/meteor/banana/ram_turf(turf/bumped)
 	for(var/mob/living/slipped in get_turf(bumped))
 		slipped.slip(100, slipped.loc,- GALOSHES_DONT_HELP|SLIDE)
-		slipped.visible_message(span_warning("[src] honks [slipped] to the floor!"), span_userdanger("[src] harmlessly passes through you, knocking you over."))
+		slipped.visible_message(span_warning("[src]Buzina.[slipped]Para o chão!"), span_userdanger("[src]Inofensivamente passa por você, derrubando você."))
 	get_hit()
 
 /obj/effect/meteor/emp
 	name = "electromagnetically charged meteor"
-	desc = "It radiates with captive energy, ready to be let loose upon the world."
+	desc = "Ele irradia com energia cativa, pronto para ser solto sobre o mundo."
 	icon_state = "bluespace"
 	hits = 6
 	threat = 10
@@ -390,7 +386,7 @@
 /obj/effect/meteor/meaty
 	name = "meaty ore"
 	icon_state = "meateor"
-	desc = "Just... don't think too hard about where this thing came from."
+	desc = "Não pense muito sobre de onde essa coisa veio."
 	hits = 2
 	heavy = TRUE
 	meteorsound = 'sound/effects/blob/blobattack.ogg'
@@ -443,7 +439,7 @@
 /obj/effect/meteor/tunguska
 	name = "tunguska meteor"
 	icon_state = "flaming"
-	desc = "Your life briefly passes before your eyes the moment you lay them on this monstrosity."
+	desc = "Sua vida passa brevemente diante de seus olhos no momento em que você os coloca nesta monstruosidade."
 	hits = 30
 	hitpwr = EXPLODE_DEVASTATE
 	heavy = TRUE
@@ -468,7 +464,7 @@
 
 /obj/effect/meteor/pumpkin
 	name = "PUMPKING"
-	desc = "THE PUMPKING'S COMING!"
+	desc = "O pumpking está vindo!"
 	icon = 'icons/obj/meteor.dmi'
 	icon_state = "spooky"
 	hits = 10

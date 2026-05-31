@@ -125,7 +125,7 @@ export function OrbitSearchBar(props) {
             icon="sliders-h"
             onClick={() => setBladeOpen(!bladeOpen)}
             selected={bladeOpen}
-            tooltip="Toggle settings blade"
+            tooltip="Alternar a lâmina de ajuste"
             tooltipPosition="left-end"
           />
         </Stack.Item>

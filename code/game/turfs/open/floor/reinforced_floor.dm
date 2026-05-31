@@ -1,7 +1,7 @@
 
 /turf/open/floor/engine
 	name = "reinforced floor"
-	desc = "Extremely sturdy."
+	desc = "Extremamente resistente."
 	icon_state = "engine"
 	holodeck_compatible = TRUE
 	thermal_conductivity = 0.01
@@ -19,7 +19,7 @@
 
 /turf/open/floor/engine/examine(mob/user)
 	. += ..()
-	. += span_notice("The reinforcement rods are <b>wrenched</b> firmly in place.")
+	. += span_notice("As barras de reforço são<b>Estrangulada.</b>Firmemente nenhum lugar.")
 
 /turf/open/floor/engine/airless
 	initial_gas_mix = AIRLESS_ATMOS
@@ -43,7 +43,7 @@
 
 /turf/open/floor/engine/wrench_act(mob/living/user, obj/item/I)
 	..()
-	to_chat(user, span_notice("You begin removing rods..."))
+	to_chat(user, span_notice("Você começa a remover hastes..."))
 	if(I.use_tool(src, user, 30, volume=80))
 		if(!istype(src, /turf/open/floor/engine))
 			return TRUE
@@ -189,7 +189,7 @@
 
 /turf/open/floor/engine/cult
 	name = "engraved floor"
-	desc = "The air smells strange over this sinister flooring."
+	desc = "O ar cheirastranho sobre este pavimento sinistro."
 	icon_state = "cult"
 	floor_tile = null
 	var/obj/effect/cult_turf/realappearance
@@ -229,7 +229,7 @@
 
 /turf/open/floor/engine/insulation
 	name = "hyper-insulated floor"
-	desc = "Sturdy and completely heat-proof."
+	desc = "Forte e completamente à prova de calor."
 	icon_state = "insulation"
 	thermal_conductivity = 0
 	floor_tile = /obj/item/stack/sheet/mineral/plastitanium

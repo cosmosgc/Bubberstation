@@ -14,7 +14,7 @@ import { GasmixParser } from './common/GasmixParser';
 
 export const AnomalyRefinery = (props) => {
   return (
-    <Window title="Anomaly Refinery" width={550} height={350}>
+    <Window title="Refinaria Anomalia" width={550} height={350}>
       <Window.Content>
         <AnomalyRefineryContent />
       </Window.Content>
@@ -41,7 +41,7 @@ const AnomalyRefineryContent = (props) => {
               disabled={!core || active}
               onClick={() => act('eject_core')}
             >
-              {'Eject Core'}
+              {'Ejetar o Núcleo'}
             </Button>
           </Stack.Item>
           <Stack.Item grow>
@@ -51,7 +51,7 @@ const AnomalyRefineryContent = (props) => {
               icon={currentTab === 1 ? 'server' : 'compress-arrows-alt'}
               onClick={() => changeTab(currentTab === 1 ? 2 : 1)}
             >
-              {currentTab === 1 ? 'Run Simulations' : 'Implosion Control'}
+              {currentTab === 1 ? 'Executar Simulações' : 'Controle de Implosão'}
             </Button>
           </Stack.Item>
           <Stack.Item grow>
@@ -62,7 +62,7 @@ const AnomalyRefineryContent = (props) => {
               disabled={!valvePresent || active}
               onClick={() => act('eject_bomb')}
             >
-              {'Eject Bomb'}
+              {'Ejetar bomba'}
             </Button>
           </Stack.Item>
         </Stack>
@@ -80,7 +80,7 @@ const CoreCompressorContent = (props) => {
       <Stack.Item grow>
         <Section
           fill
-          title="Inserted Core"
+          title="Núcleo Inserído"
           buttons={
             <Button
               icon="compress-arrows-alt"
@@ -92,15 +92,15 @@ const CoreCompressorContent = (props) => {
             </Button>
           }
         >
-          {!core && <Modal textAlign="center">{'No Core Inserted!'}</Modal>}
+          {!core && <Modal textAlign="center">{'Sem núcleo inserido!'}</Modal>}
           <LabeledList>
             <LabeledList.Item label={'Name'}>
               {core ? core : '-'}
             </LabeledList.Item>
-            <LabeledList.Item label={'Required Radius'}>
+            <LabeledList.Item label={'Raio necessário.'}>
               {requiredRadius
                 ? `${requiredRadius} tiles`
-                : 'Implosion not possible.'}
+                : 'Implosão não é possível.'}
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -108,32 +108,32 @@ const CoreCompressorContent = (props) => {
       <Stack.Item grow>
         <Section
           fill
-          title="Inserted Bomb"
+          title="Bomba Inserida"
           buttons={
             <Button
               disabled={!valveReady}
               icon="exchange-alt"
               onClick={() => act('swap')}
             >
-              {'Swap Merging Order'}
+              {'Trocar Ordem de Fusão'}
             </Button>
           }
         >
           {!valvePresent && (
-            <Modal textAlign="center">{'No Bomb Inserted!'}</Modal>
+            <Modal textAlign="center">{'Nenhuma bomba inserida!'}</Modal>
           )}
           <Stack align="center">
             <Stack.Item grow textAlign="center">
               <Box height={2} width="100%" bold>
-                {'Giver Tank (' +
-                  (gasList[1].name ? gasList[1].name : 'Not Available') +
+                {'Tanque Giver (' +
+                  (gasList[1].name ? gasList[1].name : 'Não Disponível') +
                   ')'}
               </Box>
               <Box height={2} width="100%">
                 {(gasList[1].total_moles
                   ? String(gasList[0].total_moles.toFixed(2))
                   : '-') +
-                  ' moles at ' +
+                  'Toupeiras em' +
                   (gasList[1].total_moles
                     ? String(gasList[1].temperature.toFixed(2))
                     : '-') +
@@ -152,15 +152,15 @@ const CoreCompressorContent = (props) => {
             </Stack.Item>
             <Stack.Item grow textAlign="center">
               <Box height={2} width="100%" bold>
-                {'Target Tank (' +
-                  (gasList[0].name ? gasList[0].name : 'Not Available') +
+                {'Tanque Alvo (' +
+                  (gasList[0].name ? gasList[0].name : 'Não Disponível') +
                   ')'}
               </Box>
               <Box height={2} width="100%">
                 {(gasList[0].total_moles
                   ? String(gasList[0].total_moles.toFixed(2))
                   : '-') +
-                  ' moles at ' +
+                  'Toupeiras em' +
                   (gasList[0].total_moles
                     ? String(gasList[0].temperature.toFixed(2))
                     : '-') +
@@ -194,8 +194,8 @@ const BombProcessorContent = (props) => {
             <Button
               tooltip={
                 reactionIncrement === 0
-                  ? 'Valve status: Closed'
-                  : 'Valve status: Open. Current reaction count:' +
+                  ? 'Estado da válvula: fechado.'
+                  : 'Posição da válvula aberta. Contagem de reação atual:' +
                     reactionIncrement
               }
               icon="vial"
@@ -203,12 +203,12 @@ const BombProcessorContent = (props) => {
               onClick={() => act('react')}
               textAlign="center"
               disabled={!gasList[0].total_moles || !gasList[1].total_moles}
-              content={reactionIncrement === 0 ? 'Open Valve' : 'React'}
+              content={reactionIncrement === 0 ? 'Abra a válvula.' : 'React'}
             />
           }
         >
           {!gasList[2].total_moles && (
-            <Modal textAlign="center">{'No Gas Present'}</Modal>
+            <Modal textAlign="center">{'Sem gás presente'}</Modal>
           )}
           <GasmixParser gasmix={gasList[2]} />
         </Section>
@@ -223,11 +223,11 @@ const BombProcessorContent = (props) => {
                 title={
                   individualGasmix.name
                     ? individualGasmix.name
-                    : 'Not Available'
+                    : 'Não Disponível'
                 }
               >
                 {!individualGasmix.total_moles && (
-                  <Modal textAlign="center">{'No Gas Present'}</Modal>
+                  <Modal textAlign="center">{'Sem gás presente'}</Modal>
                 )}
                 <GasmixParser gasmix={individualGasmix} />
               </Section>

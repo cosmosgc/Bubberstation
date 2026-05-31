@@ -5,7 +5,7 @@
 	name = "stabilizing serum"
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle19"
-	desc = "Inject certain types of monster organs with this stabilizer to prevent their rapid decay."
+	desc = "Injete certos tipos de órgãos monstros com este estabilizador para evitar sua rápida decomposição."
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/mining_stabilizer/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -17,10 +17,10 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if (!target_core.preserve())
-		balloon_alert(user, "organ decayed!")
+		balloon_alert(user, "órgão decaído!")
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "organ stabilized")
+	balloon_alert(user, "órgão estabilizado")
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
@@ -31,8 +31,7 @@
  */
 /obj/item/organ/monster_core
 	name = "monster core"
-	desc = "All that remains of a monster. This abstract item should not spawn. \
-		It will rapidly decay into uselessness. but don't worry because it's already useless."
+	desc = "Tudo o que resta de um monstro. Este item abstrato não deve gerar. Vai se deteriorar rapidamente em inutilidade. Mas não se preocupe porque já é inútil."
 	icon = 'icons/obj/medical/organs/mining_organs.dmi'
 	icon_state = "hivelord_core"
 	actions_types = list(/datum/action/cooldown/monster_core_action)
@@ -70,15 +69,15 @@
 	var/estimated_time_left = round(timeleft(decay_timer), 1 MINUTES)
 	switch(estimated_time_left)
 		if(4 MINUTES)
-			. += span_notice("It's fresh and still pulsating with the last vestiges of life.")
+			. += span_notice("É fresco e ainda pulsando com os últimos vestígios da vida.")
 		if(3 MINUTES)
-			. += span_notice("It still looks pretty fresh.")
+			. += span_notice("Ainda parece bem fresco.")
 		if(2 MINUTES)
-			. += span_notice("It's not as fresh as could be.")
+			. += span_notice("Não é tão fresco quanto poderia ser.")
 		if(1 MINUTES)
-			. += span_notice("Signs of decay are starting to set in. It might not be good for much longer.")
+			. += span_notice("Sinais de decadência estão começando a aparecer. Pode não ser bom por muito tempo.")
 		if(0 SECONDS to 1 MINUTES)
-			. += span_warning("Signs of decay have set in, but it still looks alive. It's probably about to become unusable really quickly.")
+			. += span_warning("Sinais de decadência se estabeleceram, mas ainda parece vivo. Provavelmente vai ficar inutilizável muito rápido.")
 
 /obj/item/organ/monster_core/Destroy(force)
 	deltimer(decay_timer)
@@ -88,18 +87,18 @@
 	. = ..()
 
 	if (inert)
-		to_chat(target_carbon, span_notice("[src] breaks down as you try to insert it."))
+		to_chat(target_carbon, span_notice("[src]Derruba quando tenta inserí-lo."))
 		qdel(src)
 		return FALSE
 	if (!decay_timer)
 		return TRUE
 	preserve(TRUE)
-	target_carbon.visible_message(span_notice("[src] stabilizes as it's inserted."))
+	target_carbon.visible_message(span_notice("[src]estabiliza quando está inserido."))
 	return TRUE
 
 /obj/item/organ/monster_core/on_mob_remove(mob/living/carbon/target_carbon, special, movement_flags)
 	if (!inert && !special)
-		target_carbon?.visible_message(span_notice("[src] rapidly decays as it's removed."))
+		target_carbon?.visible_message(span_notice("[src]Decai rapidamente quando é removido."))
 		go_inert()
 	return ..()
 
@@ -173,13 +172,13 @@
 		balloon_alert(user, "alvo inválido!")
 		return
 	if (inert)
-		balloon_alert(user, "organ decayed!")
+		balloon_alert(user, "órgão decaído!")
 		return
 	var/mob/living/live_target = target
 	if (live_target.stat == DEAD)
-		balloon_alert(user, "they're dead!")
+		balloon_alert(user, "Eles estão mortos!")
 		return
-	balloon_alert(user, "applied organ")
+	balloon_alert(user, "órgão aplicado")
 	apply_to(target, user)
 
 /**

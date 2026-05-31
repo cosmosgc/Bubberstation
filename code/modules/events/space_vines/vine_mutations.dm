@@ -66,7 +66,7 @@
 
 /datum/spacevine_mutation/light
 	name = "Light"
-	description = "Emits light."
+	description = "Luz dos Emits."
 	hue = "#B2EA70"
 	quality = POSITIVE
 	severity = SEVERITY_TRIVIAL
@@ -77,7 +77,7 @@
 
 /datum/spacevine_mutation/toxicity
 	name = "Toxic"
-	description = "Releases toxins when touched or eaten."
+	description = "Libera toxinas quando tocadas ou comidas."
 	hue = "#9B3675"
 	severity = SEVERITY_AVERAGE
 	quality = NEGATIVE
@@ -92,7 +92,7 @@
 	var/datum/spacevine_mutation/thorns/thorns = locate() in holder.mutations
 
 	if(thorns)
-		to_chat(crosser, span_alert("You are pricked by thorns and feel a strange sensation."))
+		to_chat(crosser, span_alert("Você é picado por espinhos e sente uma sensação estranha."))
 		crosser.apply_damage(20, TOX)
 		return
 
@@ -105,7 +105,7 @@
 		if((body_parts_covered & required_coverage) == required_coverage)
 			return
 
-	to_chat(crosser, span_alert("You accidentally touch the vine and feel a strange sensation."))
+	to_chat(crosser, span_alert("Você acidentalmente toca a videira e sente uma sensação estranha."))
 	crosser.apply_damage(20, TOX)
 
 /datum/spacevine_mutation/toxicity/on_eat(obj/structure/spacevine/holder, mob/living/eater)
@@ -114,7 +114,7 @@
 
 /datum/spacevine_mutation/explosive  // JC IT'S A BOMB
 	name = "Explosive"
-	description = "Causes an explosion when destroyed."
+	description = "Causa uma explosão quando destruída."
 	hue = "#D83A56"
 	quality = NEGATIVE
 	severity = SEVERITY_MAJOR
@@ -132,7 +132,7 @@
 
 /datum/spacevine_mutation/fire_proof
 	name = "Fire proof"
-	description = "Provides immunity to heat and burn damage."
+	description = "Proporciona imunidade ao calor e dano à queima."
 	hue = "#FF616D"
 	quality = MINOR_NEGATIVE
 	severity = SEVERITY_ABOVE_AVERAGE
@@ -148,7 +148,7 @@
 
 /datum/spacevine_mutation/cold_proof
 	name = "Cold proof"
-	description = "Provides immunity to cold damage."
+	description = "Proporciona imunidade a danos frios."
 	hue = "#0BD5D9"
 	quality = MINOR_NEGATIVE
 	severity = SEVERITY_AVERAGE
@@ -159,7 +159,7 @@
 
 /datum/spacevine_mutation/temp_stabilisation
 	name = "Temperature stabilisation"
-	description = "Stabilizes the temperature of the surrounding area."
+	description = "Estabiliza a temperatura da área circundante."
 	hue = "#B09856"
 	quality = POSITIVE
 	severity = SEVERITY_MINOR
@@ -183,7 +183,7 @@
 
 /datum/spacevine_mutation/vine_eating
 	name = "Vine eating"
-	description = "Destroys other Kudzu vines on spread."
+	description = "Destrui outras videiras Kudzu em expansão."
 	hue = "#F4A442"
 	quality = MINOR_NEGATIVE
 	severity = SEVERITY_MINOR
@@ -195,7 +195,7 @@
 
 /datum/spacevine_mutation/aggressive_spread  //very OP, but im out of other ideas currently
 	name = "Aggressive spreading"
-	description = "Heavily wounds mobs when spreading or tangling them."
+	description = "Feriu pesadamente a multidão ao se espalharem ou se envolverem."
 	hue = "#316b2f"
 	severity = SEVERITY_MAJOR
 	quality = NEGATIVE
@@ -218,8 +218,7 @@
 	if(!iscarbon(living_mob))
 		living_mob.apply_damage(75, BRUTE, blocked = living_mob.run_armor_check(attack_flag = MELEE, silent = TRUE))
 		playsound(living_mob, 'sound/items/weapons/whip.ogg', 50, TRUE, -1)
-		living_mob.visible_message(span_danger("[living_mob] is brutally threshed by [vine]!"), \
-		span_userdanger("You are brutally threshed by [vine]!"))
+		living_mob.visible_message(span_danger("[living_mob]é brutalmente debulhado por[vine]!"), 		span_userdanger("Você está brutalmente devastado[vine]!"))
 		log_combat(vine, living_mob, "aggressively spread into") //You aren't being attacked by the vines. You just happen to stand in their way.
 		return
 
@@ -235,8 +234,7 @@
 			victim.apply_damage(50, BRUTE, def_zone = limb, wound_bonus = rand(-20,10), sharpness = SHARP_POINTY) //This one gets a bit lower damage because it ignores armor.
 			victim.Stun(1 SECONDS) //Stopped in place for a moment.
 			playsound(living_mob, 'sound/items/weapons/pierce.ogg', 50, TRUE, -1)
-			living_mob.visible_message(span_danger("[living_mob] is nailed by a sharp thorn!"), \
-			span_userdanger("You are nailed by a sharp thorn!"))
+			living_mob.visible_message(span_danger("[living_mob]é pregado por um espinho afiado!"), 			span_userdanger("Você está pregado por um espinho afiado!"))
 			log_combat(vine, living_mob, "aggressively pierced") //"Aggressively" for easy ctrl+F'ing in the attack logs.
 			return
 
@@ -244,8 +242,7 @@
 			victim.apply_damage(60, BRUTE, def_zone = limb, blocked = armor, wound_bonus = rand(-20,10), sharpness = SHARP_EDGED)
 			victim.Knockdown(2 SECONDS)
 			playsound(victim, 'sound/items/weapons/whip.ogg', 50, TRUE, -1)
-			living_mob.visible_message(span_danger("[living_mob] is lacerated by an outburst of vines!"), \
-			span_userdanger("You are lacerated by an outburst of vines!"))
+			living_mob.visible_message(span_danger("[living_mob]é dilacerado por uma explosão de videiras!"), 			span_userdanger("Você é dilacerado por uma explosão de videiras!"))
 			log_combat(vine, living_mob, "aggressively lacerated")
 			return
 
@@ -254,13 +251,12 @@
 	var/atom/throw_target = get_edge_target_turf(living_mob, get_dir(vine, get_step_away(living_mob, vine)))
 	victim.throw_at(throw_target, 3, 6)
 	playsound(victim, 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
-	living_mob.visible_message(span_danger("[living_mob] is smashed by a large vine!"), \
-	span_userdanger("You are smashed by a large vine!"))
+	living_mob.visible_message(span_danger("[living_mob]é esmagado por uma grande videira!"), 	span_userdanger("Você está esmagado por uma grande videira!"))
 	log_combat(vine, living_mob, "aggressively smashed")
 
 /datum/spacevine_mutation/transparency
 	name = "transparent"
-	description = "Allows light to pass through."
+	description = "Permite que a luz passe."
 	hue = ""
 	quality = POSITIVE
 	severity = SEVERITY_TRIVIAL
@@ -292,7 +288,7 @@
 
 /datum/spacevine_mutation/gas_eater/oxy_eater
 	name = "Oxygen consuming"
-	description = "Consumes Oxygen from the surrounding area."
+	description = "Consome oxigênio da área circundante."
 	hue = "#28B5B5"
 	severity = SEVERITY_AVERAGE
 	quality = NEGATIVE
@@ -300,7 +296,7 @@
 
 /datum/spacevine_mutation/gas_eater/nitro_eater
 	name = "Nitrogen consuming"
-	description = "Consumes Nitrogen from the surrounding area."
+	description = "Consome nitrogênio da área circundante."
 	hue = "#FF7B54"
 	severity = SEVERITY_AVERAGE
 	quality = NEGATIVE
@@ -308,7 +304,7 @@
 
 /datum/spacevine_mutation/gas_eater/carbondioxide_eater
 	name = "CO2 consuming"
-	description = "Consumes Carbon Dioxide from the surrounding area."
+	description = "Consome dióxido de carbono da área circundante."
 	hue = "#798777"
 	severity = SEVERITY_MINOR
 	quality = POSITIVE
@@ -316,7 +312,7 @@
 
 /datum/spacevine_mutation/gas_eater/plasma_eater
 	name = "Plasma consuming"
-	description = "Consumes Plasma from the surrounding area."
+	description = "Consome plasma da área circundante."
 	hue = "#9074b6"
 	severity = SEVERITY_AVERAGE
 	quality = POSITIVE
@@ -324,7 +320,7 @@
 
 /datum/spacevine_mutation/thorns
 	name = "Thorny"
-	description = "Causes damage when hitting or passing through the vines."
+	description = "Causa danos ao bater ou passar pelas videiras."
 	hue = "#9ECCA4"
 	severity = SEVERITY_AVERAGE
 	quality = NEGATIVE
@@ -335,7 +331,7 @@
 	if(prob(THORN_MUTATION_CUT_PROB))
 		var/mob/living/victim = crosser
 		if(victim.apply_damage(15, BRUTE, blocked = victim.run_armor_check(attack_flag = MELEE, silent = TRUE), spread_damage = TRUE))
-			to_chat(victim, span_danger("You cut yourself on the thorny vines."))
+			to_chat(victim, span_danger("Você se cortou nas videiras espinhosas."))
 
 /datum/spacevine_mutation/thorns/on_hit(obj/structure/spacevine/holder, mob/living/hitter, obj/item/item, expected_damage)
 	if(isvineimmune(hitter) || HAS_TRAIT(hitter, TRAIT_PIERCEIMMUNE) || HAS_TRAIT(hitter, TRAIT_PLANT_SAFE))
@@ -350,13 +346,13 @@
 	if(prob(THORN_MUTATION_CUT_PROB))
 		var/mob/living/victim = hitter
 		if(victim.apply_damage(15, BRUTE, blocked = victim.run_armor_check(attack_flag = MELEE, silent = TRUE), spread_damage = TRUE))
-			to_chat(victim, span_danger("You cut yourself on the thorny vines."))
+			to_chat(victim, span_danger("Você se cortou nas videiras espinhosas."))
 
 	return expected_damage
 
 /datum/spacevine_mutation/hardened
 	name = "Hardened"
-	description = "Provides resistance to cutting attacks, makes vines hardier, and prevents light from passing through."
+	description = "Oferece resistência aos ataques de corte, torna as videiras mais duras, e impede que a luz passe."
 	hue = "#997700"
 	quality = NEGATIVE
 	severity = SEVERITY_ABOVE_AVERAGE
@@ -373,7 +369,7 @@
 
 /datum/spacevine_mutation/timid
 	name = "Timid"
-	description = "Hides the vines under structures and prevents them from tangling mobs."
+	description = "Esconde as vinhas sob estruturas e as impede de se misturarem."
 	hue = "#a4a9ac"
 	quality = POSITIVE
 	severity = SEVERITY_MINOR
@@ -388,7 +384,7 @@
 
 /datum/spacevine_mutation/flowering
 	name = "Flowering"
-	description = "Causes the vine to grow flower buds which spawns man eating plants when fully grown."
+	description = "Faz com que a videira cresça brotos de flores que desovam o homem comendo plantas quando plenamente crescido."
 	hue = "#66DE93"
 	quality = NEGATIVE
 	severity = SEVERITY_MAJOR

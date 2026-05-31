@@ -1,7 +1,7 @@
 /// Become the official Captain of the station
 /datum/grand_finale/usurp
 	name = "Usurpation"
-	desc = "The ultimate use of your gathered power! Rewrite time such that you have been Captain of this station the whole time."
+	desc = "O uso final de seu poder acumulado! Reescreva o tempo que você tem sido o capitão desta estação o tempo todo."
 	icon = 'icons/obj/card.dmi'
 	icon_state = "card_gold"
 
@@ -17,13 +17,7 @@
 		crewmate.Unconscious(3 SECONDS) // Everyone falls unconscious but not everyone gets told about a new captain
 		if (crewmate == invoker || IS_HUMAN_INVADER(crewmate))
 			continue
-		to_chat(crewmate, span_notice("The world spins and dissolves. Your past flashes before your eyes, backwards.\n\
-			Life strolls back into the ocean and shrinks into nothingness, planets explode into storms of solar dust, \
-			the stars rush back to greet each other at the beginning of things and then... you snap back to the present. \n\
-			Everything is just as it was and always has been. \n\n\
-			A stray thought sticks in the forefront of your mind. \n\
-			[span_hypnophrase("I'm so glad that [invoker.real_name] is our legally appointed Captain!")] \n\
-			Is... that right?"))
+		to_chat(crewmate, span_notice("O mundo gira e se dissolve. Seu passado brilha diante de seus olhos, para trás.\nA vida volta para o oceano e encolhe em nada, planetas explodem em tempestades de poeira solar, as estrelas voltam a se cumprimentar no início das coisas e então... você volta para o presente.\nTudo é como era e sempre foi.\n\nUm pensamento perdoado fica na frente de sua mente.\n			[span_hypnophrase("I'm so glad that [invoker.real_name] is our legally appointed Captain!")] \nEstá certo?"))
 		if (is_captain_job(crewmate.mind.assigned_role))
 			former_captains += crewmate
 			demote_to_assistant(crewmate)

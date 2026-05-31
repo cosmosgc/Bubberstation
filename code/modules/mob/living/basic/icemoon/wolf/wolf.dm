@@ -1,6 +1,6 @@
 /mob/living/basic/mining/wolf
 	name = "white wolf"
-	desc = "Pack hunters of the Icemoon wastes. While a mere nuisance individually, they become fearsome foes in larger groups."
+	desc = "Caçadores de pacotes dos resíduos de Icemoon. Enquanto um simples incômodo individualmente, eles se tornam inimigos temíveis em grupos maiores."
 	icon = 'icons/mob/simple/icemoon/icemoon_monsters.dmi'
 	icon_state = "whitewolf"
 	icon_living = "whitewolf"
@@ -27,7 +27,7 @@
 
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
-	death_message = "snarls its last and perishes."
+	death_message = "Rosna seu último e morre."
 
 	attack_sound = 'sound/items/weapons/bite.ogg'
 	move_force = MOVE_FORCE_WEAK
@@ -85,4 +85,4 @@
 	if(isnull(.))
 		return
 	SET_FACTION_AND_ALLIES_FROM(src, new_friend)
-	visible_message(span_notice("[src] lowers [src.p_their()] snout at [new_friend]'s offering and begins to wag [src.p_their()] tail."))
+	visible_message(span_notice("[src]Abaixa.[src.p_their()]focinho em[new_friend]Está oferecendo e começa a abanar[src.p_their()]cauda."))

@@ -11,7 +11,7 @@
  */
 /obj/item/gun/blastcannon
 	name = "blast cannon"
-	desc = "A surprisingly portable device used to concentrate a bomb's blast energy to a narrow wave. Small enough to stow in a bag."
+	desc = "Um dispositivo surpreendentemente portátil usado para concentrar a energia de uma bomba em uma onda estreita. Pequeno o suficiente para guardar em um saco."
 	icon = 'icons/obj/weapons/guns/wide_guns.dmi'
 	icon_state = "blastcannon_empty"
 	lefthand_file = 'icons/mob/inhands/weapons/64x_guns_left.dmi'
@@ -73,13 +73,13 @@
 /obj/item/gun/blastcannon/examine(mob/user)
 	. = ..()
 	if(bomb)
-		. += span_notice("A bomb is loaded inside.")
+		. += span_notice("Uma bomba está carregada lá dentro.")
 
 /obj/item/gun/blastcannon/attack_self(mob/user)
 	if(bomb)
 		bomb.forceMove(user.loc)
 		user.put_in_hands(bomb)
-		user.visible_message(span_warning("[user] detaches [bomb] from [src]."))
+		user.visible_message(span_warning("[user]Detaches[bomb]De[src]."))
 		bomb = null
 	update_appearance()
 	return ..()
@@ -94,16 +94,16 @@
 		return ..()
 
 	if(bomb)
-		to_chat(user, span_warning("[bomb] is already attached to [src]!"))
+		to_chat(user, span_warning("[bomb]Já está ligado a[src]!"))
 		return
 	if(!bomb_to_attach.ready())
-		to_chat(user, span_warning("What good would an incomplete bomb do?"))
+		to_chat(user, span_warning("De que adiantaria uma bomba incompleta?"))
 		return FALSE
 	if(!user.transferItemToLoc(bomb_to_attach, src))
-		to_chat(user, span_warning("[bomb_to_attach] seems to be stuck to your hand!"))
+		to_chat(user, span_warning("[bomb_to_attach]Parece estar preso à sua mão!"))
 		return FALSE
 
-	user.visible_message(span_warning("[user] attaches [bomb_to_attach] to [src]!"))
+	user.visible_message(span_warning("[user]APENAS[bomb_to_attach]para[src]!"))
 	bomb = bomb_to_attach
 	update_appearance()
 	return TRUE
@@ -116,8 +116,8 @@
 	cached_modifiers = params
 	if(bomb?.valve_open)
 		user.visible_message(
-			span_danger("[user] points [src] at [target]!"),
-			span_danger("You point [src] at [target]!")
+			span_danger("[user]Pontos[src]em[target]!"),
+			span_danger("Você aponta.[src]em[target]!")
 		)
 		return FALSE
 
@@ -128,8 +128,8 @@
 
 	playsound(src, dry_fire_sound, 30, TRUE) // *click
 	user.visible_message(
-		span_danger("[user] opens [bomb] on [user.p_their()] [src] and points [p_them()] at [target]!"),
-		span_danger("You open [bomb] on your [src] and point [p_them()] at [target]!")
+		span_danger("[user]Abre.[bomb]Vamos.[user.p_their()] [src]e pontos[p_them()]em[target]!"),
+		span_danger("Você abre.[bomb]Na sua[src]e ponto[p_them()]em[target]!")
 	)
 	var/turf/current_turf = get_turf(src)
 	var/turf/target_turf = get_turf(target)
@@ -154,7 +154,7 @@
 	var/light = (arguments[EXARG_KEY_LIGHT_RANGE]**BLASTCANNON_RANGE_EXP) * BLASTCANNON_RANGE_SCALE
 	var/range = max(heavy, medium, light, 0)
 	if(!range)
-		visible_message(span_warning("[src] lets out a little \"phut\"."))
+		visible_message(span_warning("[src]Vamos sair um pouco.\"PHUT\"."))
 		return
 
 	if(!ismob(loc))
@@ -212,8 +212,8 @@
  */
 /obj/item/gun/blastcannon/proc/fire_intentionally(atom/target, mob/firer, heavy, medium, light, modifiers)
 	firer.visible_message(
-		span_danger("[firer] fires a blast wave at [target]!"),
-		span_danger("You fire a blast wave at [target]!")
+		span_danger("[firer]Dispara uma onda de explosão em[target]!"),
+		span_danger("Você dispara uma onda de explosão[target]!")
 	)
 	var/turf/start_turf = get_turf(src)
 	var/turf/target_turf = get_turf(target)
@@ -245,8 +245,8 @@
 	var/mob/firer = cached_firer?.resolve()
 	var/turf/start_turf = get_turf(src)
 	holder.visible_message(
-		span_danger("[src] suddenly goes off[holding ? " in [holder]'s hands" : null]!"),
-		span_danger("[src] suddenly goes off[holding ? " in your hands" : null]!")
+		span_danger("[src]De repente, sai[holding ? " in [holder]'s hands" : null]!"),
+		span_danger("[src]De repente, sai[holding ? " in your hands" : null]!")
 	)
 	message_admins("Blast wave primed by [ADMIN_LOOKUPFLW(firer)] fired from [ADMIN_VERBOSEJMP(start_turf)] roughly towards [ADMIN_VERBOSEJMP(target)] while being held by [ADMIN_LOOKUPFLW(holder)] with power [heavy]/[medium]/[light].")
 	log_game("Blast wave primed by [key_name(firer)] fired from [AREACOORD(start_turf)] roughly towards [AREACOORD(target)] while being held by [key_name(holder)] with power [heavy]/[medium]/[light].")
@@ -261,7 +261,7 @@
  * - light: The light impact range of the blastwave.
  */
 /obj/item/gun/blastcannon/proc/fire_dropped(heavy, medium, light)
-	src.visible_message(span_danger("[src] suddenly goes off!"))
+	src.visible_message(span_danger("[src]De repente explode!"))
 	var/turf/target = get_edge_target_turf(src, dir)
 	var/mob/firer = cached_firer.resolve()
 	var/turf/start_turf = get_turf(src)

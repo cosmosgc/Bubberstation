@@ -39,7 +39,7 @@ export function AirAlarmControlThresholds(props) {
                   name: tlv.name,
                   type: thresholdTypeMap.hazard_min,
                   typeVar: 'hazard_min',
-                  typeName: 'Minimum Hazard',
+                  typeName: 'Risco Mínimo',
                   unit: tlv.unit,
                   finish: () => setActiveModal(undefined),
                 })
@@ -59,7 +59,7 @@ export function AirAlarmControlThresholds(props) {
                   name: tlv.name,
                   type: thresholdTypeMap.warning_min,
                   typeVar: 'warning_min',
-                  typeName: 'Minimum Warning',
+                  typeName: 'Aviso mínimo',
                   unit: tlv.unit,
                   finish: () => setActiveModal(undefined),
                 })
@@ -79,7 +79,7 @@ export function AirAlarmControlThresholds(props) {
                   name: tlv.name,
                   type: thresholdTypeMap.warning_max,
                   typeVar: 'warning_max',
-                  typeName: 'Maximum Warning',
+                  typeName: 'Aviso máximo',
                   unit: tlv.unit,
                   finish: () => setActiveModal(undefined),
                 })
@@ -99,7 +99,7 @@ export function AirAlarmControlThresholds(props) {
                   name: tlv.name,
                   type: thresholdTypeMap.hazard_max,
                   typeVar: 'hazard_max',
-                  typeName: 'Maximum Hazard',
+                  typeName: 'Perigo máximo.',
                   unit: tlv.unit,
                   finish: () => setActiveModal(undefined),
                 })

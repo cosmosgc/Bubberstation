@@ -26,7 +26,7 @@ export const AmmoWorkbench = (props) => {
       width={600}
       height={600}
       theme="hackerman"
-      title="Ammunitions Workbench"
+      title="Banco de trabalho de munições"
     >
       <Window.Content scrollable>
         <Tabs>
@@ -72,7 +72,7 @@ export const AmmunitionsTab = (props) => {
           {error}
         </NoticeBox>
       )}
-      <Section title="Machine Settings">
+      <Section title="Configurações da máquina">
         <Box inline mr={4}>
           Current Efficiency:{' '}
           <RoundGauge
@@ -92,7 +92,7 @@ export const AmmunitionsTab = (props) => {
         </Button.Checkbox>
       </Section>
       <Section
-        title="Loaded Magazine"
+        title="Revista Carregada"
         buttons={
           <>
             {!!mag_loaded && (
@@ -120,7 +120,7 @@ export const AmmunitionsTab = (props) => {
           </Box>
         )}
       </Section>
-      <Section title="Available Ammunition Types">
+      <Section title="Tipos de munição disponíveis">
         {!!mag_loaded && (
           <Flex.Item grow={1} basis={0}>
             {available_rounds.map((available_round) => (
@@ -208,7 +208,7 @@ export const DatadiskTab = (props) => {
           <>
             <Button
               icon="save"
-              content="Load Disk"
+              content="Carregar Disco"
               disabled={!datadisk_loaded}
               onClick={() => act('ReadDisk')}
             />
@@ -228,7 +228,7 @@ export const DatadiskTab = (props) => {
           </Box>
         )}
       </Section>
-      <Section title="Loaded Datadisks">
+      <Section title="Datadisks carregados">
         <Table>
           {loaded_datadisks.map((loaded_datadisk) => (
             <Box key={loaded_datadisk.loaded_disk_name}>

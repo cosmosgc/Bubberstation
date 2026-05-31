@@ -9,7 +9,7 @@
 //This code huge and blocky, but we're working on update for... my god, 4 months. If you can upgrade it - do it, but don't remove or break something, test carefully. This item is insertable.
 /obj/item/clothing/sextoy/vibrator
 	name = "vibrator"
-	desc = "Woah. What an... Interesting item. I wonder what this red button does..."
+	desc = "Woah. Que... Item interessante. Imagino o que esse botão vermelho faz..."
 	icon_state = "vibrator_pink_off"
 	base_icon_state = "vibrator"
 	inhand_icon_state = "vibrator_pink"
@@ -48,7 +48,7 @@
 /obj/item/clothing/sextoy/vibrator/examine(mob/user)
 	. = ..()
 	if(!color_changed)
-		. += span_notice("Alt-click to change it's design.")
+		. += span_notice("Alt-clique para mudar seu design.")
 
 /obj/item/clothing/sextoy/vibrator/click_alt(mob/user)
 	if(color_changed)
@@ -124,10 +124,10 @@
 
 	var/message = ""
 	if(!toy_on)
-		to_chat(user, span_notice("[src] must be on to use it!"))
+		to_chat(user, span_notice("[src]Deve estar em uso!"))
 		return
 	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
-		to_chat(user, span_danger("Looks like [target] don't want you to do that."))
+		to_chat(user, span_danger("Parece que sim.[target]Não quero que faça isso."))
 		return
 
 	var/vibration_adj = ""
@@ -142,13 +142,11 @@
 			var/obj/item/organ/genital/penis = target.get_organ_slot(ORGAN_SLOT_PENIS)
 			var/obj/item/organ/genital/vagina = target.get_organ_slot(ORGAN_SLOT_VAGINA)
 			var/penis_message = (user == target) ? pick("massages their penis with the [src]",
-					"[vibration_adj] teases their penis with [src]") \
-				: pick("[vibration_adj] massages [target]'s penis with [src]",
+					"[vibration_adj] teases their penis with [src]") 				: pick("[vibration_adj] massages [target]'s penis with [src]",
 					"uses [src] to [vibration_adj] massage [target]'s penis",
 					"leans the massager against [target]'s penis")
 			var/vagina_message = (user == target) ? pick("massages their vagina with the [src]",
-						"[vibration_adj] teases their pussy with [src]") \
-					: pick("[vibration_adj] massages [target]'s vagina with [src]",
+						"[vibration_adj] teases their pussy with [src]") 					: pick("[vibration_adj] massages [target]'s vagina with [src]",
 						"uses [src] to [vibration_adj] massage [target]'s crotch",
 						"leans the massager against [target]'s pussy")
 			if(vagina?.is_exposed() && penis?.is_exposed())
@@ -158,7 +156,7 @@
 			else if(penis?.is_exposed())
 				message = penis_message
 			else
-				to_chat(user, span_danger("Looks like [target]'s groin is covered!"))
+				to_chat(user, span_danger("Parece que sim.[target]A virilha está coberta!"))
 				return
 
 			target.adjust_arousal(DEFAULT_AROUSAL_INCREASE)
@@ -171,13 +169,12 @@
 			if(breasts?.is_exposed())
 				var/breasts_or_nipples = breasts ? ORGAN_SLOT_BREASTS : ORGAN_SLOT_NIPPLES
 				message = (user == target) ? pick("massages their [breasts_or_nipples] with the [src]",
-						"[vibration_adj] teases their tits with [src]") \
-					: pick("[vibration_adj] teases [target]'s [breasts_or_nipples] with [src]",
+						"[vibration_adj] teases their tits with [src]") 					: pick("[vibration_adj] teases [target]'s [breasts_or_nipples] with [src]",
 						"uses [src] to [vibration_adj] massage [target]'s [breasts ? "tits" : ORGAN_SLOT_NIPPLES]",
 						"uses [src] to tease [target]'s [breasts ? "boobs" : ORGAN_SLOT_NIPPLES]",
 						"rubs [target]'s [breasts ? "tits" : ORGAN_SLOT_NIPPLES] with [src]")
 			else
-				to_chat(user, span_danger("Looks like [target]'s chest is covered!"))
+				to_chat(user, span_danger("Parece que sim.[target]O peito está coberto!"))
 				return
 
 			target.adjust_arousal(DEFAULT_AROUSAL_INCREASE)
@@ -193,13 +190,13 @@
 	toggle_mode()
 	switch(vibration_mode)
 		if(VIB_LOW)
-			to_chat(user, span_notice("Vibration mode now is low. Bzzz..."))
+			to_chat(user, span_notice("O modo de vibração agora está baixo. Bzzz..."))
 		if(VIB_MEDIUM)
-			to_chat(user, span_notice("Vibration mode now is medium. Bzzzz!"))
+			to_chat(user, span_notice("Modo de vibração agora é médio. Bzzzz!"))
 		if(VIB_HIGH)
-			to_chat(user, span_notice("Vibration mode now is high. Careful with that thing."))
+			to_chat(user, span_notice("O modo de vibração agora está alto. Cuidado com essa coisa."))
 		if(VIB_OFF)
-			to_chat(user, span_notice("Vibrator turned off. Fun's over?"))
+			to_chat(user, span_notice("O vibrador desligou. Acabou a diversão?"))
 	update_icon()
 	update_icon_state()
 

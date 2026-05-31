@@ -3,23 +3,20 @@
 
 /obj/effect/mob_spawn/ghost_role/human/prisoner_transport
 	name = "prisoner containment sleeper"
-	desc = "A sleeper designed to put its occupant into a deep coma, unbreakable until the sleeper turns off. This one's glass is cracked and you can see a pale, sleeping face staring out."
-	prompt_name = "an escaped prisoner"
+	desc = "Um adormecido projetado para colocar seu ocupante em coma profundo, inquebrável até que o adormecido desligue. Este vidro está rachado e você pode ver um rosto pálido, dormindo olhando para fora."
+	prompt_name = "Um prisioneiro fugitivo."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/lavalandprisoner
-	you_are_text = "You're a prisoner, sentenced to hard work in one of Nanotrasen's labor camps, but it seems as \
-	though fate has other plans for you."
-	flavour_text = "Good. It seems as though your ship crashed. You remember that you were convicted of "
+	you_are_text = "Você é um prisioneiro, condenado ao trabalho duro em um dos campos de trabalho de Nanotrasen, mas parece que o destino tem outros planos para você."
+	flavour_text = "Bom. Parece que sua nave caiu. Você se lembra que foi condenado por"
 	spawner_job_path = /datum/job/escaped_prisoner
 	allow_custom_character = GHOSTROLE_TAKE_PREFS_APPEARANCE
 
 /obj/effect/mob_spawn/ghost_role/human/prisoner_transport/Initialize(mapload)
 	. = ..()
-	var/list/crimes = list("murder", "larceny", "embezzlement", "unionization", "dereliction of duty", "kidnapping", "gross incompetence", "grand theft", "collaboration with the Syndicate", \
-	"worship of a forbidden deity", "interspecies relations", "mutiny")
-	flavour_text += "[pick(crimes)]. but regardless of that, it seems like your crime doesn't matter now. You don't know where you are, but you know that it's out to kill you, and you're not going \
-	to lose this opportunity. Find a way to get out of this mess and back to where you rightfully belong - your [pick("house", "apartment", "spaceship", "station")]."
+	var/list/crimes = list("murder", "larceny", "embezzlement", "unionization", "dereliction of duty", "kidnapping", "gross incompetence", "grand theft", "collaboration with the Syndicate", 	"worship of a forbidden deity", "interspecies relations", "mutiny")
+	flavour_text += "[pick(crimes)]. but regardless of that, it seems like your crime doesn't matter now. You don't know where you are, but you know that it's out to kill you, and you're not going 	to lose this opportunity. Find a way to get out of this mess and back to where you rightfully belong - your [pick("house", "apartment", "spaceship", "station")]."
 
 /obj/effect/mob_spawn/ghost_role/human/prisoner_transport/Destroy()
 	new /obj/structure/fluff/empty_sleeper/syndicate(get_turf(src))
@@ -42,14 +39,14 @@
 //Space Hotel Staff
 /obj/effect/mob_spawn/ghost_role/human/hotel_staff //not free antag u little shits
 	name = "staff sleeper"
-	desc = "A sleeper designed for long-term stasis between guest visits."
-	prompt_name = "a hotel staff member"
+	desc = "Um adormecido projetado para estase de longo prazo entre visitas de hóspedes."
+	prompt_name = "Um funcionário do hotel."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/hotelstaff
-	you_are_text = "You are a staff member of a top-of-the-line space hotel!"
-	flavour_text = "Cater to visiting guests with your fellow staff, advertise the hotel, and make sure the manager doesn't fire you. Remember, the customer is always right!"
-	important_text = "Do NOT leave the hotel, as that is grounds for contract termination."
+	you_are_text = "Você é um membro da equipe de um hotel espacial top de linha!"
+	flavour_text = "Visitar convidados com sua equipe, anunciar o hotel, e garantir que o gerente não te demita. Lembre-se, o cliente está sempre certo!"
+	important_text = "Não saia do hotel, pois isso é motivo para rescisão do contrato."
 	spawner_job_path = /datum/job/hotel_staff
 	allow_custom_character = ALL
 
@@ -67,12 +64,11 @@
 
 /obj/effect/mob_spawn/ghost_role/human/hotel_staff/security
 	name = "hotel security sleeper"
-	prompt_name = "a hotel security member"
+	prompt_name = "Um membro da segurança do hotel."
 	outfit = /datum/outfit/hotelstaff/security
-	you_are_text = "You are a peacekeeper."
-	flavour_text = "You have been assigned to this hotel to protect the interests of the company while keeping the peace between \
-		guests and the staff."
-	important_text = "Do NOT leave the hotel, as that is grounds for contract termination."
+	you_are_text = "Você é um pacificador."
+	flavour_text = "Você foi designado para este hotel para proteger os interesses da empresa, mantendo a paz entre os convidados e os funcionários."
+	important_text = "Não saia do hotel, pois isso é motivo para rescisão do contrato."
 
 /datum/outfit/hotelstaff/security
 	name = "Hotel Security"
@@ -91,9 +87,9 @@
 	name = "Syndicate Operative"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	prompt_name = "a syndicate operative"
-	you_are_text = "You are a syndicate operative."
-	flavour_text = "You have awoken, without instruction. Death to Nanotrasen! If there are some clues around as to what you're supposed to be doing, you best follow those."
+	prompt_name = "Um agente do sindicato."
+	you_are_text = "Você é um agente do sindicato."
+	flavour_text = "Você acordou, sem instrução. Morte a Nanotrasen! Se há pistas sobre o que você deveria estar fazendo, é melhor seguir essas."
 	outfit = /datum/outfit/syndicate_empty
 	spawner_job_path = /datum/job/space_syndicate
 	allow_custom_character = ALL
@@ -117,18 +113,18 @@
 /obj/effect/mob_spawn/ghost_role/human/space_bar_patron
 	name = "bar cryogenics"
 	uses = INFINITY
-	prompt_name = "a space bar patron"
-	you_are_text = "You're a patron!"
-	flavour_text = "Hang out at the bar and chat with your buddies. Feel free to hop back in the cryogenics when you're done chatting."
+	prompt_name = "Um patrono da barra espacial"
+	you_are_text = "Você é um patrono!"
+	flavour_text = "Sair no bar e conversar com seus amigos. Sinta-se livre para voltar aos criogênicos quando terminar de conversar."
 	outfit = /datum/outfit/cryobartender
 	spawner_job_path = /datum/job/space_bar_patron
 	allow_custom_character = ALL
 
 /obj/effect/mob_spawn/ghost_role/human/space_bar_patron/attack_hand(mob/user, list/modifiers)
-	var/despawn = tgui_alert(usr, "Return to cryosleep? (Warning, Your mob will be deleted!)", null, list("Yes", "No"))
+	var/despawn = tgui_alert(usr, "Voltar a dormir? (Aviso, sua multidão será deletada!)", null, list("Yes", "No"))
 	if(despawn == "No" || !loc || !Adjacent(user))
 		return
-	user.visible_message(span_notice("[user.name] climbs back into cryosleep..."))
+	user.visible_message(span_notice("[user.name]sobe de volta ao sono criogênico..."))
 	qdel(user)
 
 /datum/outfit/cryobartender
@@ -143,14 +139,13 @@
 //Timeless prisons: Spawns in Wish Granter prisons in lavaland. Ghosts become age-old users of the Wish Granter and are advised to seek repentance for their past.
 /obj/effect/mob_spawn/ghost_role/human/exile
 	name = "timeless prison"
-	desc = "Although this stasis pod looks medicinal, it seems as though it's meant to preserve something for a very long time."
-	prompt_name = "a penitent exile"
+	desc = "Embora esta cápsula de estase pareça medicinal, parece que é para preservar algo por muito tempo."
+	prompt_name = "Um exílio penitente"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/shadow
-	you_are_text = "You are cursed."
-	flavour_text = "Years ago, you sacrificed the lives of your trusted friends and the humanity of yourself to reach the Wish Granter. Though you \
-	did so, it has come at a cost: your very body rejects the light, dooming you to wander endlessly in this horrible wasteland."
+	you_are_text = "Você está amaldiçoado."
+	flavour_text = "Anos atrás, você sacrificou a vida de seus amigos de confiança e a humanidade de si mesmo para alcançar o Wish Grant. Embora você tenha feito isso, ele veio a um custo: seu próprio corpo rejeita a luz, condenando-o a vagar infinitamente neste horrível deserto."
 	spawner_job_path = /datum/job/exile
 
 /obj/effect/mob_spawn/ghost_role/human/exile/Destroy()
@@ -178,9 +173,9 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	faction = list(FACTION_NANOTRASEN_PRIVATE)
-	prompt_name = "a private security officer"
-	you_are_text = "You are a Nanotrasen Private Security Officer!"
-	flavour_text = "If higher command has an assignment for you, it's best you follow that. Otherwise, death to The Syndicate."
+	prompt_name = "Um oficial de segurança particular."
+	you_are_text = "Você é um Oficial de Segurança Privada Nanotrasen!"
+	flavour_text = "Se o comando superior tem uma missão para você, é melhor que siga isso. Caso contrário, morte para o Sindicato."
 	outfit = /datum/outfit/nanotrasensoldier
 	allow_custom_character = ALL
 
@@ -188,9 +183,9 @@
 	name = "sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	prompt_name = "a nanotrasen commander"
-	you_are_text = "You are a Nanotrasen Commander!"
-	flavour_text = "Upper-crusty of Nanotrasen. You should be given the respect you're owed."
+	prompt_name = "um comandante nanotrasen."
+	you_are_text = "Você é um comandante Nanotrasen!"
+	flavour_text = "Nanotrasen. Você deve ter o respeito que lhe é devido."
 	outfit = /datum/outfit/nanotrasencommander
 	allow_custom_character = GHOSTROLE_TAKE_PREFS_APPEARANCE
 
@@ -200,9 +195,9 @@
 	name = "sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	prompt_name = "a space doctor"
-	you_are_text = "You are a space doctor!"
-	flavour_text = "It's your job- no, your duty as a doctor, to care and heal those in need."
+	prompt_name = "Um médico do espaço."
+	you_are_text = "Você é um médico do espaço!"
+	flavour_text = "É o seu trabalho. Não, seu dever como médico, cuidar e curar os necessitados."
 	outfit = /datum/outfit/job/doctor
 	spawner_job_path = /datum/job/space_doctor
 	allow_custom_character = ALL
@@ -218,9 +213,9 @@
 /obj/effect/mob_spawn/ghost_role/mouse
 	name = "sleeper"
 	mob_type = /mob/living/basic/mouse
-	prompt_name = "a mouse"
-	you_are_text = "You're a mouse!"
-	flavour_text = "Uh... yep! Squeak squeak, motherfucker."
+	prompt_name = "Um rato."
+	you_are_text = "Você é um rato!"
+	flavour_text = "Uh... sim! Grite, filho da puta."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 
@@ -228,9 +223,9 @@
 	name = "sleeper"
 	mob_name = "Bessie"
 	mob_type = /mob/living/basic/cow
-	prompt_name = "a cow"
-	you_are_text = "You're a cow!"
-	flavour_text = "Go graze some grass, stinky."
+	prompt_name = "Uma vaca."
+	you_are_text = "Você é uma vaca!"
+	flavour_text = "Vá pastar um pouco de grama, fedorento."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 
@@ -242,15 +237,13 @@
 
 /obj/effect/mob_spawn/ghost_role/human/snow_operative
 	name = "sleeper"
-	prompt_name = "a snow operative"
+	prompt_name = "Um agente da neve."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	faction = list(ROLE_SYNDICATE)
 	outfit = /datum/outfit/snowsyndie
-	you_are_text = "You are a syndicate operative recently awoken from cryostasis in an underground outpost."
-	flavour_text = "Monitor Nanotrasen communications and record information. All intruders should be disposed of \
-	swiftly to assure no gathered information is stolen or lost. Try not to wander too far from the outpost as the \
-	caves can be a deadly place even for a trained operative such as yourself."
+	you_are_text = "Você é um agente do sindicato recentemente acordado de criostase em um posto subterrâneo."
+	flavour_text = "Monitore as comunicações de Nanotrasen e registre informações. Todos os intrusos devem ser eliminados rapidamente para garantir que nenhuma informação recolhida seja roubada ou perdida. Tente não se afastar muito do posto avançado, pois as cavernas podem ser um lugar mortal, mesmo para um agente treinado como você."
 	allow_custom_character = ALL
 
 /datum/outfit/snowsyndie
@@ -271,10 +264,10 @@
 	show_flavor = FALSE
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	prompt_name = "cybersun crew"
-	you_are_text = "You are a syndicate operative on old ship, stuck in hostile space."
-	flavour_text = "Your ship docks after a long time somewhere in hostile space, reporting a malfunction. You are stuck here, with Nanotrasen station nearby. Fix the ship, find a way to power it and follow your captain's orders."
-	important_text = "Obey orders given by your captain. DO NOT let the ship fall into enemy hands."
+	prompt_name = "Tripulação ciberssun"
+	you_are_text = "Você é um agente do sindicato na nave antiga, preso no espaço hostil."
+	flavour_text = "Sua nave atraca depois de muito tempo em algum lugar no espaço hostil, relatando um defeito. Você está preso aqui, com a estação Nanotrasen nas proximidades. Conserte a nave, encontre uma maneira de energizá-la e siga as ordens do seu capitão."
+	important_text = "Obedeça ordens dadas pelo seu capitão. Não deixe a nave cair em mãos inimigas."
 	outfit = /datum/outfit/syndicatespace/syndicrew
 	spawner_job_path = /datum/job/syndicate_cybersun
 	allow_custom_character = ALL
@@ -289,10 +282,10 @@
 
 /obj/effect/mob_spawn/ghost_role/human/syndicatespace/captain
 	name = "Syndicate Ship Captain"
-	prompt_name = "a cybersun captain"
-	you_are_text = "You are the captain of an old ship, stuck in hostile space."
-	flavour_text = "Your ship docks after a long time somewhere in hostile space, reporting a malfunction. You are stuck here, with Nanotrasen station nearby. Command your crew and turn your ship into the most protected fortress."
-	important_text = "Protect the ship and secret documents in your backpack with your own life."
+	prompt_name = "Um capitão de cybersun"
+	you_are_text = "Você é o capitão de uma velha nave, presa no espaço hostil."
+	flavour_text = "Sua nave atraca depois de muito tempo em algum lugar no espaço hostil, relatando um defeito. Você está preso aqui, com a estação Nanotrasen nas proximidades. Comande sua tripulação e transforme sua nave na fortaleza mais protegida."
+	important_text = "Proteja a nave e documentos secretos em sua mochila com sua própria vida."
 	outfit = /datum/outfit/syndicatespace/syndicaptain
 	spawner_job_path = /datum/job/syndicate_cybersun_captain
 	allow_custom_character = ALL

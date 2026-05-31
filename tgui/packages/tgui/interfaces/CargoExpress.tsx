@@ -76,7 +76,7 @@ function CargoExpressContent(props) {
     <Stack fill vertical g={0}>
       <Stack.Item>
         <Section
-          title="Cargo Express"
+          title="Expresso de Carga"
           buttons={
             <Box inline bold verticalAlign={'middle'}>
               <AnimatedNumber value={Math.round(points)} />
@@ -85,7 +85,7 @@ function CargoExpressContent(props) {
           }
         >
           <LabeledList>
-            <LabeledList.Item label="Landing Location">
+            <LabeledList.Item label="Localização de pouso">
               <Button selected={!using_beacon} onClick={() => act('LZCargo')}>
                 Cargo Bay
               </Button>

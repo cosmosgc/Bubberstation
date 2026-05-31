@@ -14,7 +14,7 @@
 
 /obj/machinery/ltsrbt
 	name = "Long-To-Short-Range Bluespace Transceiver"
-	desc = "The LTSRBT is a compact teleportation machine for sending and receiving items both inside and outside the station.\nUsing teleportation frequencies stolen from NT, it is near undetectable.\nEssential for any illegal market operations on NT stations."
+	desc = "O LTSRBT é uma máquina compacta de teletransporte para enviar e receber itens dentro e fora da estação.\nUsando frequências de teletransporte roubadas do NT, é quase indetectável.\nEssencial para qualquer operação de mercado ilegal em estações NT."
 	icon = 'icons/obj/machines/ltsrbt.dmi'
 	icon_state = "ltsrbt_idle"
 	base_icon_state = "ltsrbt"
@@ -92,10 +92,10 @@
 /obj/machinery/ltsrbt/examine(mob/user)
 	. = ..()
 	if(!(machine_stat & NOPOWER))
-		. += span_info("A small display reads:")
-		. += span_tinynoticeital("Current market restock price: [EXAMINE_HINT("[restock_cost] [MONEY_SYMBOL]")].")
-		. += span_tinynoticeital("Market placement fee: [EXAMINE_HINT("[PLACE_ON_MARKET_COST] [MONEY_SYMBOL]")].")
-		. += span_tinynoticeital("Withholding tax on local items: [EXAMINE_HINT("[MARKET_WITHHOLDING_TAX * 100]%")].")
+		. += span_info("Uma pequena exibição diz:")
+		. += span_tinynoticeital("Preço atual de reabastecimento do mercado:[EXAMINE_HINT("[restock_cost] [MONEY_SYMBOL]")].")
+		. += span_tinynoticeital("Taxa de colocação do mercado:[EXAMINE_HINT("[PLACE_ON_MARKET_COST] [MONEY_SYMBOL]")].")
+		. += span_tinynoticeital("Retendo impostos em itens locais:[EXAMINE_HINT("[MARKET_WITHHOLDING_TAX * 100]%")].")
 
 /obj/machinery/ltsrbt/update_icon_state()
 	. = ..()
@@ -153,16 +153,16 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	if(state_open)
-		balloon_alert(user, "close it first!")
+		balloon_alert(user, "Feche primeiro!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(!occupant)
-		balloon_alert(user, "nothing loaded!")
+		balloon_alert(user, "Nada carregado!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(machine_stat & NOPOWER)
-		balloon_alert(user, "machine unpowered!")
+		balloon_alert(user, "Máquina sem energia!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(!COOLDOWN_FINISHED(src, recharge_cooldown))
-		balloon_alert(user, "em recarga!")
+		balloon_alert(user, "Em recarga!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	ui_interact(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -179,13 +179,13 @@
 			playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 40, FALSE)
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
-			balloon_alert(user, "stuck to your hands!")
+			balloon_alert(user, "Preso em suas mãos!")
 			return ITEM_INTERACT_BLOCKING
-		balloon_alert(user, "item loaded")
+		balloon_alert(user, "item carregado")
 		close_machine(tool)
 		return ITEM_INTERACT_SUCCESS
 	else if(!creds_value)
-		balloon_alert(user, "open the machine!")
+		balloon_alert(user, "Abra a máquina!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(machine_stat & NOPOWER)

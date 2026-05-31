@@ -2,7 +2,7 @@
 //------------------------------------SUPPLY POD-------------------------------------//
 /obj/structure/closet/supplypod
 	name = "supply pod" //Names and descriptions are normally created with the set_style() proc during initialization, but we have these default values here as a failsafe
-	desc = "A Nanotrasen supply drop pod."
+	desc = "Uma cápsula de suprimentos Nanotrasen."
 	icon = 'icons/obj/supplypods.dmi'
 	icon_state = "pod" //This is a common base sprite shared by a number of pods
 	pixel_x = SUPPLYPOD_X_OFFSET //2x2 sprite
@@ -85,7 +85,7 @@
 	pod_flags = FIRST_SOUNDS
 
 /obj/structure/closet/supplypod/podspawn/deathmatch
-	desc = "A blood-red styled drop pod."
+	desc = "Uma cápsula de sangue vermelho."
 	specialised = TRUE
 
 /obj/structure/closet/supplypod/podspawn/deathmatch/pre_open()
@@ -95,7 +95,7 @@
 
 /obj/structure/closet/supplypod/extractionpod
 	name = "Syndicate Extraction Pod"
-	desc = "A specialised, blood-red styled pod for extracting high-value targets out of active mission areas. <b>Targets must be manually stuffed inside the pod for proper delivery.</b>"
+	desc = "Uma cápsula de sangue vermelho especializada para extrair alvos de alto valor de áreas de missão ativa.<b>Alvos devem ser colocados manualmente dentro da cápsula para entrega adequada.</b>"
 	specialised = TRUE
 	style = /datum/pod_style/syndicate
 	bluespace = TRUE
@@ -132,7 +132,7 @@
 
 /obj/structure/closet/supplypod/back_to_station
 	name = "blood-red supply pod"
-	desc = "An intimidating supply pod, covered in the blood-red markings"
+	desc = "Uma cápsula intimidante coberta de marcas vermelhas de sangue."
 	bluespace = TRUE
 	explosionSize = list(0,0,0,0)
 	style = /datum/pod_style/syndicate
@@ -140,7 +140,7 @@
 
 /obj/structure/closet/supplypod/deadmatch_missile
 	name = "cruise missile"
-	desc = "A big ass missile, likely launched from some far-off deep space missile silo."
+	desc = "Um míssil enorme, provavelmente lançado de um silo de mísseis profundos."
 	style = /datum/pod_style/missile/syndicate
 	explosionSize = list(0,1,2,2)
 	effectShrapnel = TRUE
@@ -277,14 +277,13 @@
 	turf/destination = find_safe_turf(extended_safety_checks = TRUE, dense_atoms = FALSE)
 )
 	if(isnull(destination)) //Uuuuh, something went wrong. This is gonna hurt.
-		to_chat(victim, span_hypnophrase("A million voices echo in your head... \"Seems where you got sent won't \
-			be able to handle our pod... as if we wanted the occupant to survive. Brace yourself, corporate dog.\""))
+		to_chat(victim, span_hypnophrase("Um milhão de vozes ecoam em sua cabeça...\"Parece que para onde você foi enviado não será capaz de lidar com nossa cápsula... como se quiséssemos que o ocupante sobrevivesse. Prepare-se, cão corporativo.\""))
 		flags_1 &= ~PREVENT_CONTENTS_EXPLOSION_1
 		explosionSize = list(0,1,1,1)
 		destination = get_random_station_turf()
 
 	do_sparks(8, FALSE, victim)
-	victim.visible_message(span_notice("[victim] vanishes..."))
+	victim.visible_message(span_notice("[victim]Desapareça..."))
 
 	victim.forceMove(src)
 
@@ -297,7 +296,7 @@
 	bluespace = TRUE //Make it so that the pod doesn't stay in centcom forever
 	pod_flags &= ~FIRST_SOUNDS //Make it so we play sounds now
 	if (!effectQuiet && !ispath(style, /datum/pod_style/seethrough))
-		audible_message(span_notice("The pod hisses, closing and launching itself away from the station."), span_notice("The ground vibrates, and you hear the sound of engines firing."))
+		audible_message(span_notice("A cápsula assobia, fechando-se e lançando-se para longe da estação."), span_notice("O chão vibra, e você ouve o som dos motores disparando."))
 	stay_after_drop = FALSE
 	holder.pixel_z = initial(holder.pixel_z)
 	holder.alpha = initial(holder.alpha)
@@ -631,7 +630,7 @@
 
 /obj/effect/supplypod_rubble
 	name = "debris"
-	desc = "A small crater of rubble. Closer inspection reveals the debris to be made primarily of space-grade metal fragments. You're pretty sure that this will disperse before too long."
+	desc = "Uma pequena cratera de entulho. Inspeção mais próxima revela os detritos a serem feitos principalmente de fragmentos de metal de grau espacial. Tem certeza que isso se dispersará em breve."
 	icon = 'icons/obj/supplypods.dmi'
 	layer = PROJECTILE_HIT_THRESHHOLD_LAYER // We want this to go right below the layer of supplypods and supplypod_rubble's forground.
 	icon_state = "rubble_bg"
@@ -685,7 +684,7 @@
 
 /obj/effect/pod_landingzone //This is the object that forceMoves the supplypod to its location
 	name = "Landing Zone Indicator"
-	desc = "A holographic projection designating the landing zone of something. It's probably best to stand back."
+	desc = "Uma projeção holográfica designando a zona de pouso de algo. É melhor se afastar."
 	icon = 'icons/obj/supplypods_32x32.dmi'
 	icon_state = "LZ"
 	layer = PROJECTILE_HIT_THRESHHOLD_LAYER
@@ -798,7 +797,7 @@
 //------------------------------------UPGRADES-------------------------------------//
 /obj/item/disk/cargo/bluespace_pod //Disk that can be inserted into the Express Console to allow for Advanced Bluespace Pods
 	name = "Bluespace Drop Pod Upgrade"
-	desc = "This disk provides a firmware update to the Express Supply Console, granting the use of Nanotrasen's Bluespace Drop Pods to the supply department."
+	desc = "Este disco fornece uma atualização de firmware para o Console de Fornecimento Expresso, concedendo o uso de Bluespace Drop Pods de Nanotrasen para o departamento de suprimentos."
 	icon_state = "datadisk12"
 	sticker_icon_state = "o_cargopod"
 

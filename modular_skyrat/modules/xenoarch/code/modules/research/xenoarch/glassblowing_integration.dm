@@ -1,13 +1,13 @@
 /obj/item/glassblowing/magnifying_glass
 	name = "magnifying glass"
-	desc = "A tool that, with the assistance of a magnifying lens, allows you to view what is small."
+	desc = "Uma ferramenta que, com a ajuda de uma lente de ampliação, permite ver o que é pequeno."
 	icon_state = "magnifying_glass"
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT)
 
 /obj/item/glassblowing/magnifying_glass/examine(mob/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_XENOARCH_QUALIFIED))
-		. += span_notice("You can use [src] on useless relics to realize their full potential!")
+		. += span_notice("Você pode usar[src]em relíquias inúteis para realizar todo o seu potencial!")
 
 /datum/crafting_recipe/magnifying_glass
 	name = "Magnifying Glass"

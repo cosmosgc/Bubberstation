@@ -27,7 +27,7 @@ export const GulagTeleporterConsole = (props) => {
     <Window width={350} height={295}>
       <Window.Content>
         <Section
-          title="Teleporter Console"
+          title="Teletransportador Console"
           buttons={
             <>
               <Button
@@ -48,7 +48,7 @@ export const GulagTeleporterConsole = (props) => {
         >
           <LabeledList>
             <LabeledList.Item
-              label="Teleporter Unit"
+              label="Unidade de Teletransporte."
               color={teleporter ? 'good' : 'bad'}
               buttons={
                 !teleporter && (
@@ -59,10 +59,10 @@ export const GulagTeleporterConsole = (props) => {
                 )
               }
             >
-              {teleporter ? teleporter_location : 'Not Connected'}
+              {teleporter ? teleporter_location : 'Não Conectado'}
             </LabeledList.Item>
             <LabeledList.Item
-              label="Receiver Beacon"
+              label="Beacon Receptor"
               color={beacon ? 'good' : 'bad'}
               buttons={
                 !beacon && (
@@ -73,20 +73,20 @@ export const GulagTeleporterConsole = (props) => {
                 )
               }
             >
-              {beacon ? beacon_location : 'Not Connected'}
+              {beacon ? beacon_location : 'Não Conectado'}
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Prisoner Details">
+        <Section title="Detalhes do prisioneiro">
           <LabeledList>
-            <LabeledList.Item label="Prisoner ID">
+            <LabeledList.Item label="ID do prisioneiro">
               <Button
                 fluid
-                content={id ? id_name : 'No ID'}
+                content={id ? id_name : 'Sem identificação.'}
                 onClick={() => act('handle_id')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Point Goal">
+            <LabeledList.Item label="Ponto Gol">
               <NumberInput
                 value={goal}
                 step={1}
@@ -97,16 +97,16 @@ export const GulagTeleporterConsole = (props) => {
               />
             </LabeledList.Item>
             <LabeledList.Item label="Occupant">
-              {prisoner.name || 'No Occupant'}
+              {prisoner.name || 'Nenhum Ocupante'}
             </LabeledList.Item>
-            <LabeledList.Item label="Criminal Status">
-              {prisoner.crimstat || 'No Status'}
+            <LabeledList.Item label="Status Criminal">
+              {prisoner.crimstat || 'Sem status'}
             </LabeledList.Item>
           </LabeledList>
         </Section>
         <Button
           fluid
-          content="Process Prisoner"
+          content="Processo Prisioneiro"
           disabled={!can_teleport}
           textAlign="center"
           color="bad"

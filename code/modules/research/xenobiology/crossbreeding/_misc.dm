@@ -7,7 +7,7 @@ Slimecrossing Items
 //Rewind camera - I'm already Burning Sepia
 /obj/item/camera/rewind
 	name = "sepia-tinted camera"
-	desc = "They say a picture is like a moment stopped in time."
+	desc = "Dizem que uma foto é como um momento parado no tempo."
 	pictures_left = 1
 	pictures_max = 1
 	can_customise = FALSE
@@ -48,18 +48,18 @@ Slimecrossing Items
 /obj/item/camera/rewind/on_flash(atom/target, mob/user)
 	. = ..()
 	if(user == target)
-		to_chat(user, span_notice("You take a selfie!"))
+		to_chat(user, span_notice("Tire uma selfie!"))
 	else
-		to_chat(user, span_notice("You take a photo with [target]!"))
-		to_chat(target, span_notice("[user] takes a photo with you!"))
-	to_chat(target, span_boldnotice("You'll remember this moment forever!"))
+		to_chat(user, span_notice("Você tira uma foto com[target]!"))
+		to_chat(target, span_notice("[user]Tira uma foto com você!"))
+	to_chat(target, span_boldnotice("Você vai se lembrar deste momento para sempre!"))
 
 	target.AddComponent(/datum/component/dejavu, 2)
 
 //Timefreeze camera - Old Burning Sepia result. Kept in case admins want to spawn it
 /obj/item/camera/timefreeze
 	name = "sepia-tinted camera"
-	desc = "They say a picture is like a moment stopped in time."
+	desc = "Dizem que uma foto é como um momento parado no tempo."
 	pictures_left = 1
 	pictures_max = 1
 
@@ -70,7 +70,7 @@ Slimecrossing Items
 //Hypercharged slime cell - Charged Yellow
 /obj/item/stock_parts/power_store/cell/high/slime_hypercharged
 	name = "hypercharged slime core"
-	desc = "A charged yellow slime extract, infused with plasma. It almost hurts to touch."
+	desc = "Extrato de lodo amarelo carregado, infundido com plasma. Quase dói tocar."
 	icon = 'icons/mob/simple/slimes.dmi'
 	icon_state = "yellow-core"
 	rating = 7
@@ -83,24 +83,24 @@ Slimecrossing Items
 //Barrier cube - Chilling Grey
 /obj/item/barriercube
 	name = "barrier cube"
-	desc = "A compressed cube of slime. When squeezed, it grows to massive size!"
+	desc = "Um cubo comprimido de lodo. Quanto espremido, cresce em tamanho enorme!"
 	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "barriercube"
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/barriercube/attack_self(mob/user)
 	if(locate(/obj/structure/barricade/slime) in get_turf(loc))
-		to_chat(user, span_warning("You can't fit more than one barrier in the same space!"))
+		to_chat(user, span_warning("Não cabe mais do que uma barreira no mesmo espaço!"))
 		return
-	to_chat(user, span_notice("You squeeze [src]."))
+	to_chat(user, span_notice("Você aperta.[src]."))
 	var/obj/B = new /obj/structure/barricade/slime(get_turf(loc))
-	B.visible_message(span_warning("[src] suddenly grows into a large, gelatinous barrier!"))
+	B.visible_message(span_warning("[src]de arrependimento cresce em uma grande barreira gelatinosa!"))
 	qdel(src)
 
 //Slime barricade - Chilling Grey
 /obj/structure/barricade/slime
 	name = "gelatinous barrier"
-	desc = "A huge chunk of grey slime. Bullets might get stuck in it."
+	desc = "Um enorme pedaço de lodo cinza. Balas podem ficar presas nela."
 	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "slimebarrier"
 	proj_pass_rate = 40
@@ -109,7 +109,7 @@ Slimecrossing Items
 //Melting Gel Wall - Chilling Metal
 /obj/effect/forcefield/slimewall
 	name = "solidified gel"
-	desc = "A mass of solidified slime gel - completely impenetrable, but it's melting away!"
+	desc = "Uma massa de gel de lodo solidificado - completamente impenetrável, mas está derretendo!"
 	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "slimebarrier_thick"
 	can_atmos_pass = ATMOS_PASS_NO
@@ -119,13 +119,13 @@ Slimecrossing Items
 //Rainbow barrier - Chilling Rainbow
 /obj/effect/forcefield/slimewall/rainbow
 	name = "rainbow barrier"
-	desc = "Despite others' urgings, you probably shouldn't taste this."
+	desc = "Apesar dos outros, não deveria provar isso."
 	icon_state = "rainbowbarrier"
 
 //Ice stasis block - Chilling Dark Blue
 /obj/structure/ice_stasis
 	name = "ice block"
-	desc = "A massive block of ice. You can see something vaguely humanoid inside."
+	desc = "Um enorme bloco de gelo. Você pode ver algo vagamente humanóide dentro."
 	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "frozen"
 	density = TRUE
@@ -153,7 +153,7 @@ Slimecrossing Items
 //Gold capture device - Chilling Gold
 /obj/item/capturedevice
 	name = "gold capture device"
-	desc = "Bluespace technology packed into a roughly egg-shaped device, used to store nonhuman creatures. Can't catch them all, though - it only fits one."
+	desc = "Tecnologia do espaço azul embalada em um dispositivo em forma de ovo, usado para armazenar criaturas não humanas. Não consigo pegá-los todos. Só cabe em um."
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "capturedevice"
@@ -166,36 +166,36 @@ Slimecrossing Items
 
 /obj/item/capturedevice/attack(mob/living/pokemon, mob/user)
 	if(length(contents))
-		to_chat(user, span_warning("The device already has something inside."))
+		to_chat(user, span_warning("O dispositivo já tem algo dentro."))
 		return
 	if(!isanimal_or_basicmob(pokemon))
-		to_chat(user, span_warning("The capture device only works on simple creatures."))
+		to_chat(user, span_warning("O dispositivo de captura só funciona em criaturas simples."))
 		return
 	if(pokemon.mind)
-		to_chat(user, span_notice("You offer the device to [pokemon]."))
-		if(tgui_alert(pokemon, "Would you like to enter [user]'s capture device?", "Gold Capture Device", list("Yes", "No")) == "Yes")
+		to_chat(user, span_notice("Você oferece o dispositivo para[pokemon]."))
+		if(tgui_alert(pokemon, "Gostaria de entrar?[user]O dispositivo de captura?", "Gold Capture Device", list("Yes", "No")) == "Yes")
 			if(user.can_perform_action(src) && user.can_perform_action(pokemon))
-				to_chat(user, span_notice("You store [pokemon] in the capture device."))
-				to_chat(pokemon, span_notice("The world warps around you, and you're suddenly in an endless void, with a window to the outside floating in front of you."))
+				to_chat(user, span_notice("Você armazena.[pokemon]Sem dispositivo de captura."))
+				to_chat(pokemon, span_notice("O mundo deforma ao seu redor, e de repente você está em um vazio infinito, com uma janela para o lado de fora flutuando na sua frente."))
 				store(pokemon, user)
 			else
-				to_chat(user, span_warning("You were too far away from [pokemon]."))
-				to_chat(pokemon, span_warning("You were too far away from [user]."))
+				to_chat(user, span_warning("Você estava muito longe de[pokemon]."))
+				to_chat(pokemon, span_warning("Você estava muito longe de[user]."))
 		else
-			to_chat(user, span_warning("[pokemon] refused to enter the device."))
+			to_chat(user, span_warning("[pokemon]Recusou a entrada sem dispositivo."))
 			return
 	else if(!pokemon.has_faction(FACTION_NEUTRAL))
-		to_chat(user, span_warning("This creature is too aggressive to capture."))
+		to_chat(user, span_warning("Esta criatura é muito agressiva para ser capturada."))
 		return
-	to_chat(user, span_notice("You store [pokemon] in the capture device."))
+	to_chat(user, span_notice("Você armazena.[pokemon]Sem dispositivo de captura."))
 	store(pokemon)
 
 /obj/item/capturedevice/attack_self(mob/user)
 	if(contents.len)
-		to_chat(user, span_notice("You open the capture device!"))
+		to_chat(user, span_notice("Abra o dispositivo de captura!"))
 		release()
 	else
-		to_chat(user, span_warning("The device is empty..."))
+		to_chat(user, span_warning("O dispositivo está vazio..."))
 
 /obj/item/capturedevice/proc/store(mob/living/pokemon)
 	pokemon.forceMove(src)

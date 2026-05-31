@@ -7,7 +7,7 @@
 */
 /datum/symptom/weight_loss
 	name = "Weight Loss"
-	desc = "The virus mutates the host's metabolism, making it almost unable to gain nutrition from food."
+	desc = "O vírus muta o metabolismo do hospedeiro, tornando-o quase incapaz de obter nutrição de alimentos."
 	illness = "Placid Reflux"
 	stealth = 0
 	resistance = 2

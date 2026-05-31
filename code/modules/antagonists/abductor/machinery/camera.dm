@@ -55,7 +55,7 @@
 	if(!target || !iscarbon(owner))
 		return
 	if(world.time < use_delay)
-		to_chat(owner, span_warning("You must wait [DisplayTimeText(use_delay - world.time)] to use the [target] again!"))
+		to_chat(owner, span_warning("Você deve esperar.[DisplayTimeText(use_delay - world.time)]para usar o[target]De novo!"))
 		return
 	var/mob/living/carbon/human/C = owner
 	var/mob/eye/camera/remote/remote_eye = C.remote_control
@@ -63,11 +63,11 @@
 
 	var/area/target_area = get_area(remote_eye)
 	if((target_area.area_flags & NOTELEPORT) && !istype(target_area, /area/centcom/abductor_ship))
-		to_chat(owner, span_warning("This area is too heavily shielded to safely transport to."))
+		to_chat(owner, span_warning("Esta área está fortemente protegida para ser transportada com segurança."))
 		return
 
 	if(target_area.motion_monitored)
-		to_chat(owner, span_warning("This area is too heavily shielded to safely transport to."))
+		to_chat(owner, span_warning("Esta área está fortemente protegida para ser transportada com segurança."))
 		return
 
 	use_delay = (world.time + abductor_pad_cooldown)
@@ -99,7 +99,7 @@
 	if(!target || !iscarbon(owner))
 		return
 	if(world.time < use_delay)
-		to_chat(owner, span_warning("You can only teleport to one place at a time!"))
+		to_chat(owner, span_warning("Você só pode se teletransportar para um lugar de cada vez!"))
 		return
 	var/mob/living/carbon/human/C = owner
 	var/mob/eye/camera/remote/remote_eye = C.remote_control
@@ -107,11 +107,11 @@
 
 	var/area/target_area = get_area(remote_eye)
 	if((target_area.area_flags & NOTELEPORT) && !istype(target_area, /area/centcom/abductor_ship))
-		to_chat(owner, span_warning("This area is too heavily shielded to safely transport to."))
+		to_chat(owner, span_warning("Esta área está fortemente protegida para ser transportada com segurança."))
 		return
 
 	if(target_area.motion_monitored)
-		to_chat(owner, span_warning("This area is too heavily shielded to safely transport to."))
+		to_chat(owner, span_warning("Esta área está fortemente protegida para ser transportada com segurança."))
 		return
 
 	use_delay = (world.time + teleport_self_cooldown)

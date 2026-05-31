@@ -2,7 +2,7 @@
 
 /obj/item/wendigo_blood
 	name = "bottle of wendigo blood"
-	desc = "A bottle of viscous red liquid... You're not actually going to drink this, are you?"
+	desc = "Uma garrafa de líquido vermelho viscoso... Você não vai beber isso, vai?"
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "vial"
 
@@ -12,7 +12,7 @@
 	var/mob/living/carbon/human/human_user = user
 	if(!human_user.mind)
 		return
-	to_chat(human_user, span_danger("Power courses through you! You can now shift your form at will."))
+	to_chat(human_user, span_danger("O poder passa por você! Agora pode mudar sua forma à vontade."))
 	var/datum/action/cooldown/spell/shapeshift/polar_bear/transformation_spell = new(user.mind || user)
 	transformation_spell.Grant(user)
 	playsound(human_user.loc, 'sound/items/drink.ogg', rand(10,50), TRUE)
@@ -22,7 +22,7 @@
 
 /obj/item/wendigo_skull
 	name = "wendigo skull"
-	desc = "A bloody skull torn from a murderous beast, the soulless eye sockets seem to constantly track your movement."
+	desc = "Um crânio ensanguentado arrancado de uma besta assassina, as órbitas oculares sem alma parecem seguir constantemente seu movimento."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "wendigo_skull"
 	w_class = WEIGHT_CLASS_TINY

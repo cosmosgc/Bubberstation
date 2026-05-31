@@ -107,7 +107,7 @@
 
 /datum/component/uplink/proc/load_tc(mob/user, obj/item/stack/telecrystal/telecrystals, silent = FALSE)
 	if(!silent)
-		to_chat(user, span_notice("You slot [telecrystals] into [parent] and charge its internal uplink."))
+		to_chat(user, span_notice("Você está em posição.[telecrystals]em[parent]e carregar seu uplink interno."))
 	var/amt = telecrystals.amount
 	uplink_handler.add_telecrystals(amt)
 	telecrystals.use(amt)
@@ -131,11 +131,10 @@
 
 	if(user != owner)
 		return
-	examine_list += span_warning("[parent] contains your hidden uplink\
-		[unlock_code ? ", the code to unlock it is [span_boldwarning(unlock_code)]" : null].")
+	examine_list += span_warning("[parent]contém seu link oculto[unlock_code ? ", the code to unlock it is [span_boldwarning(unlock_code)]" : null].")
 
 	if(failsafe_code)
-		examine_list += span_warning("The failsafe code is [span_boldwarning(failsafe_code)].")
+		examine_list += span_warning("O código de segurança é[span_boldwarning(failsafe_code)].")
 
 /datum/component/uplink/proc/interact(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -321,7 +320,7 @@
 	locked = FALSE
 	if(ismob(user))
 		interact(null, user)
-		to_chat(user, span_hear("The computer softly beeps."))
+		to_chat(user, span_hear("O computador apita suavemente."))
 	return COMPONENT_STOP_RINGTONE_CHANGE
 
 /datum/component/uplink/proc/check_detonate()
@@ -356,7 +355,7 @@
 		return
 	locked = FALSE
 	interact(null, user)
-	to_chat(user, "As you whisper the code into your headset, a soft chime fills your ears.")
+	to_chat(user, "Enquanto sussurra o código em seus fones de ouvido, um tom suave preenche seus ouvidos.")
 	return COMPONENT_CANNOT_USE_RADIO
 
 // Pen signal responses
@@ -374,7 +373,7 @@
 		previous_attempts.Cut()
 		master.degrees = 0
 		interact(null, user)
-		to_chat(user, span_warning("Your pen makes a clicking noise, before quickly rotating back to 0 degrees!"))
+		to_chat(user, span_warning("Sua caneta faz um barulho de clique, antes de girar rapidamente para 0 graus!"))
 
 	else if(compare_list(previous_attempts, failsafe_code))
 		failsafe(user)

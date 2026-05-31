@@ -3,7 +3,7 @@
 // Cans
 /obj/item/food/canned
 	name = "canned air"
-	desc = "If you ever wondered where air came from..."
+	desc = "Se já se perguntou de onde veio o ar..."
 	food_reagents = list(
 		/datum/reagent/oxygen = 6,
 		/datum/reagent/nitrogen = 24,
@@ -20,7 +20,7 @@
 	return // It's in a can
 
 /obj/item/food/canned/proc/open_can(mob/user)
-	to_chat(user, span_notice("You pull back the tab of \the [src]."))
+	to_chat(user, span_notice("Você puxa para trás a aba de\the [src]."))
 	playsound(user.loc, 'sound/items/foodcanopen.ogg', 50)
 	reagents.flags |= OPENCONTAINER
 	preserved_food = FALSE
@@ -33,13 +33,13 @@
 
 /obj/item/food/canned/attack(mob/living/target, mob/user, def_zone)
 	if (!is_drainable())
-		to_chat(user, span_warning("[src]'s lid hasn't been opened!"))
+		to_chat(user, span_warning("[src]A tampa não foi aberta!"))
 		return FALSE
 	return ..()
 
 /obj/item/food/canned/beans
 	name = "tin of beans"
-	desc = "Musical fruit in a slightly less musical container."
+	desc = "Fruta musical em um recipiente um pouco menos musical."
 	icon_state = "beans"
 	trash_type = /obj/item/trash/can/food/beans
 	food_reagents = list(
@@ -53,7 +53,7 @@
 
 /obj/item/food/canned/peaches
 	name = "canned peaches"
-	desc = "Just a nice can of ripe peaches swimming in their own juices."
+	desc = "Apenas uma bela lata de pêssegos maduros nadando em seus próprios sucos."
 	icon_state = "peachcan"
 	trash_type = /obj/item/trash/can/food/peaches
 	food_reagents = list(
@@ -66,7 +66,7 @@
 
 /obj/item/food/canned/peaches/maint
 	name = "maintenance peaches"
-	desc = "I have a mouth and I must eat."
+	desc = "Tenho uma boca e preciso comer."
 	icon_state = "peachcanmaint"
 	trash_type = /obj/item/trash/can/food/peaches/maint
 	tastes = list("peaches" = 1, "tin" = 7)
@@ -74,7 +74,7 @@
 
 /obj/item/food/canned/tomatoes
 	name = "canned San Marzano tomatoes"
-	desc = "A can of premium San Marzano tomatoes, from the hills of Southern Italy."
+	desc = "Uma lata de tomates San Marzano premium, das colinas do sul da Itália."
 	icon_state = "tomatoescan"
 	trash_type = /obj/item/trash/can/food/tomatoes
 	food_reagents = list(
@@ -86,7 +86,7 @@
 
 /obj/item/food/canned/pine_nuts
 	name = "canned pine nuts"
-	desc = "A small can of pine nuts. Can be eaten on their own, if you're into that."
+	desc = "Uma pequena lata de pinhões. Podem ser comidos sozinhos, se quiserem."
 	icon_state = "pinenutscan"
 	trash_type = /obj/item/trash/can/food/pine_nuts
 	food_reagents = list(/datum/reagent/consumable/nutriment/vitamin = 3)
@@ -96,7 +96,7 @@
 
 /obj/item/food/canned/envirochow
 	name = "dog eat dog envirochow"
-	desc = "The first pet food product that is made fully sustainable by employing ancient British animal husbandry techniques."
+	desc = "O primeiro produto alimentar de estimação que é tornado totalmente sustentável empregando técnicas de criação de animais britânicas antigas."
 	icon_state = "envirochow"
 	trash_type = /obj/item/trash/can/food/envirochow
 	food_reagents = list(
@@ -141,16 +141,16 @@
 /obj/item/food/canned/envirochow/proc/apply_buff(mob/living/simple_animal/hungry_pet, mob/living/dog_mom)
 	hungry_pet.apply_status_effect(/datum/status_effect/limited_buff/health_buff) //the status effect keeps track of the stacks
 	hungry_pet.visible_message(
-		span_notice("[hungry_pet] chows down on [src]."),
-		span_nicegreen("You chow down on [src]."),
-		span_notice("You hear sloppy eating noises."))
+		span_notice("[hungry_pet]Chows para baixo[src]."),
+		span_nicegreen("Você come em baixo[src]."),
+		span_notice("Você ouve barulhos desleixados comendo."))
 	SEND_SIGNAL(src, COMSIG_FOOD_CONSUMED, hungry_pet, dog_mom ? dog_mom : hungry_pet) //If there is no dog mom, we assume the pet fed itself.
 	playsound(loc, 'sound/items/eatfood.ogg', rand(30, 50), TRUE)
 	qdel(src)
 
 /obj/item/food/canned/squid_ink
 	name = "canned squid ink"
-	desc = "An odd ingredient in typical cooking, squid ink lends a taste of the sea to any dish- while also dyeing it jet black in the process."
+	desc = "Um ingrediente estranho na culinária típica, tinta de lula dá um gosto do mar para qualquer prato, enquanto também tingindo-o jato preto no processo."
 	icon_state = "squidinkcan"
 	trash_type = /obj/item/trash/can/food/squid_ink
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/salt = 5)
@@ -159,24 +159,18 @@
 
 /obj/item/food/canned/squid_ink/open_can(mob/user)
 	. = ..()
-	AddComponent(/datum/component/splat, \
-		memory_type = /datum/memory/witnessed_inking, \
-		smudge_type = /obj/effect/decal/cleanable/food/squid_ink, \
-		moodlet_type = /datum/mood_event/inked, \
-		splat_color = COLOR_NEARLY_ALL_BLACK, \
-		hit_callback = CALLBACK(src, PROC_REF(blind_em)), \
-	)
+	AddComponent(/datum/component/splat, 		memory_type = /datum/memory/witnessed_inking, 		smudge_type = /obj/effect/decal/cleanable/food/squid_ink, 		moodlet_type = /datum/mood_event/inked, 		splat_color = COLOR_NEARLY_ALL_BLACK, 		hit_callback = CALLBACK(src, PROC_REF(blind_em)), 	)
 
 /obj/item/food/canned/squid_ink/proc/blind_em(mob/living/victim, can_splat_on)
 	if(can_splat_on)
 		victim.adjust_temp_blindness_up_to(2.5 SECONDS, 3 SECONDS)
 		victim.adjust_confusion_up_to(2.5 SECONDS, 3 SECONDS)
-	victim.visible_message(span_warning("[victim] is inked by [src]!"), span_userdanger("You've been inked by [src]!"))
+	victim.visible_message(span_warning("[victim]é pintado por[src]!"), span_userdanger("Você foi pintado por[src]!"))
 	playsound(victim, SFX_DESECRATION, 50, TRUE)
 
 /obj/item/food/canned/chap
 	name = "can of CHAP"
-	desc = "CHAP: Chopped Ham And Pork. The classic American canned meat product that won a world war, then sent millions of servicemen home with heart congestion."
+	desc = "Presunto e porco picados. O clássico produto de carne enlatada americano que ganhou uma guerra mundial, então enviou milhões de militares para casa com congestionamento cardíaco."
 	icon_state = "chapcan"
 	trash_type = /obj/item/trash/can/food/chap
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/salt = 5)
@@ -188,7 +182,7 @@
 
 /obj/item/food/chapslice
 	name = "slice of chap"
-	desc = "A thin slice of chap. Useful for frying, or making sandwiches."
+	desc = "Uma fatia fina de cara. Útil para fritar, ou fazer sanduíches."
 	icon = 'icons/obj/food/martian.dmi'
 	icon_state = "chapslice"
 	food_reagents = list(
@@ -203,7 +197,7 @@
 
 /obj/item/food/grilled_chapslice
 	name = "grilled slice of chap"
-	desc = "A greasy hot slice of chap. Forms a good part of a balanced meal."
+	desc = "Um pedaço quente gorduroso de cara. Forma uma boa parte de uma refeição equilibrada."
 	icon = 'icons/obj/food/martian.dmi'
 	icon_state = "chapslice_grilled"
 	food_reagents = list(
@@ -216,7 +210,7 @@
 // DONK DINNER: THE INNOVATIVE WAY TO GET YOUR DAILY RECOMMENDED ALLOWANCE OF SALT... AND THEN SOME!
 /obj/item/food/ready_donk
 	name = "\improper Ready-Donk: Bachelor Chow"
-	desc = "A quick Donk-dinner: now with flavour!"
+	desc = "Um jantar rápido: agora com sabor!"
 	icon_state = "ready_donk_bachelor"
 	trash_type = /obj/item/trash/ready_donk
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
@@ -239,7 +233,7 @@
 
 /obj/item/food/ready_donk/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<i>You browse the back of the box...</i>")
+	. += span_notice("<i>Você olha atrás da caixa...</i>")
 	. += "\t[span_info("Ready-Donk: a product of Donk Co.")]"
 	. += "\t[span_info("Heating instructions: open box and pierce film, heat in microwave on high for 2 minutes. Allow to stand for 60 seconds prior to eating. Product will be hot.")]"
 	. += "\t[span_info("Per 200g serving contains: 8g Sodium; 25g Fat, of which 22g are saturated; 2g Sugar.")]"
@@ -247,7 +241,7 @@
 
 /obj/item/food/ready_donk/warm
 	name = "warm Ready-Donk: Bachelor Chow"
-	desc = "A quick Donk-dinner, now with flavour! And it's even hot!"
+	desc = "Um jantar rápido, agora com sabor! E está até quente!"
 	icon_state = "ready_donk_bachelor_warm"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 5,
@@ -260,7 +254,7 @@
 
 /obj/item/food/ready_donk/mac_n_cheese
 	name = "\improper Ready-Donk: Donk-a-Roni"
-	desc = "Neon-orange mac n' cheese in seconds!"
+	desc = "Queijo de macarrão com laranja em segundos!"
 	icon_state = "ready_donk_mac"
 	tastes = list("cheesy pasta" = 2, "laziness" = 1)
 	foodtypes = GRAIN | DAIRY | JUNKFOOD
@@ -269,14 +263,14 @@
 
 /obj/item/food/ready_donk/warm/mac_n_cheese
 	name = "warm Ready-Donk: Donk-a-Roni"
-	desc = "Neon-orange mac n' cheese, ready to eat!"
+	desc = "\"Neon-laranja macarrão com queijo, pronto para comer!\""
 	icon_state = "ready_donk_mac_warm"
 	tastes = list("cheesy pasta" = 2, "laziness" = 1)
 	foodtypes = GRAIN | DAIRY | JUNKFOOD
 
 /obj/item/food/ready_donk/donkhiladas
 	name = "\improper Ready-Donk: Donkhiladas"
-	desc = "Donk Co's signature Donkhiladas with Donk sauce, for an 'authentic' taste of Mexico."
+	desc = "Donkhiladas assinatura de Donk Co com molho Donk, para um sabor 'autêntico' do México."
 	icon_state = "ready_donk_mex"
 	tastes = list("enchiladas" = 2, "laziness" = 1)
 	foodtypes = GRAIN | DAIRY | MEAT | VEGETABLES | JUNKFOOD
@@ -285,14 +279,14 @@
 
 /obj/item/food/ready_donk/warm/donkhiladas
 	name = "warm Ready-Donk: Donkhiladas"
-	desc = "Donk Co's signature Donkhiladas with Donk sauce, served as hot as the Mexican sun."
+	desc = "Donkhiladas assinatura de Donk Co com molho Donk, servido tão quente quanto o sol mexicano."
 	icon_state = "ready_donk_mex_warm"
 	tastes = list("enchiladas" = 2, "laziness" = 1)
 	foodtypes = GRAIN | DAIRY | MEAT | VEGETABLES | JUNKFOOD
 
 /obj/item/food/ready_donk/nachos_grandes //which translates to... big nachos
 	name = "\improper Ready-Donk: Donk Sol Series Boritos Nachos Grandes"
-	desc = "Get ready for game day with Donk's classic Nachos Grandes, sponsors of the Donk Sol Series! Boritos chips loaded with cheese, spicy meat and beans, alongside separate guac, pico and donk sauce. Batter up!"
+	desc = "Prepare-se para o dia do jogo com o clássico Nachos Grandes do Donk, patrocinadores da série Donk Sol! Batatas fritas com queijo, carne picante e feijão, ao lado de guac, pica e molho de donk separados. Bata!"
 	icon_state = "ready_donk_nachos"
 	tastes = list("nachos" = 2, "laziness" = 1)
 	foodtypes = GRAIN | DAIRY | MEAT | VEGETABLES | JUNKFOOD
@@ -301,14 +295,14 @@
 
 /obj/item/food/ready_donk/warm/nachos_grandes
 	name = "warm Ready-Donk: Donk Sol Series Boritos Nachos Grandes"
-	desc = "Get ready for game day with Donk's classic Nachos Grandes, sponsors of the Donk Sol Series! Boritos chips loaded with cheese, spicy meat and beans, alongside separate guac, pico and donk sauce. Served hotter than Sakamoto's fastball!"
+	desc = "Prepare-se para o dia do jogo com o clássico Nachos Grandes do Donk, patrocinadores da série Donk Sol! Batatas fritas com queijo, carne picante e feijão, ao lado de guac, pica e molho de donk separados. Serviu mais quente que a bola rápida de Sakamoto!"
 	icon_state = "ready_donk_nachos_warm"
 	tastes = list("nachos" = 2, "laziness" = 1)
 	foodtypes = GRAIN | DAIRY | MEAT | VEGETABLES | JUNKFOOD
 
 /obj/item/food/ready_donk/donkrange_chicken
 	name = "\improper Ready-Donk: Donk-range Chicken"
-	desc = "A Chinese classic, it's Donk's original spicy orange chicken with stir-fried peppers and onions, all over steamed rice."
+	desc = "Um clássico chinês, é o original frango laranja picante do Donk com pimenta frita e cebola, todo sobre arroz cozido no vapor."
 	icon_state = "ready_donk_orange"
 	tastes = list("orange chicken" = 2, "laziness" = 1)
 	foodtypes = GRAIN | MEAT | VEGETABLES | JUNKFOOD
@@ -317,14 +311,14 @@
 
 /obj/item/food/ready_donk/warm/donkrange_chicken
 	name = "warm Ready-Donk: Donk-range Chicken"
-	desc = "A Chinese classic, it's Donk's original spicy orange chicken with stir-fried peppers and onions, all over steamed rice and served hotter than a dragon's breath."
+	desc = "Um clássico chinês, é o original frango laranja picante do Donk com pimentas fritas e cebolas, todo sobre arroz cozido e servido mais quente do que o hálito de um dragão."
 	icon_state = "ready_donk_orange_warm"
 	tastes = list("orange chicken" = 2, "laziness" = 1)
 	foodtypes = GRAIN | MEAT | VEGETABLES | JUNKFOOD
 
 /obj/item/food/ready_donk/salisbury_steak
 	name = "\improper Ready-Donk Donkriginals: Salisbury Steak"
-	desc = "The original and best: it's a slab of moulded beef, drenched in brown gravy, with a side of mashed potatoes. Better find a TV to eat this in front of."
+	desc = "O original e melhor: é um pedaço de carne moldada, encharcada em molho marrom, com um lado de purê de batatas. Melhor achar uma TV para comer isso na frente."
 	icon_state = "ready_donk_salisbury"
 	tastes = list("salisbury steak" = 2, "laziness" = 1)
 	foodtypes = MEAT | VEGETABLES | JUNKFOOD
@@ -333,14 +327,14 @@
 
 /obj/item/food/ready_donk/warm/salisbury_steak
 	name = "warm Ready-Donk Donkriginals: Salisbury Steak"
-	desc = "The original and best: it's a slab of moulded beef, drenched in brown gravy, with a side of mashed potatoes. It's almost as hot as a season finale."
+	desc = "O original e melhor: é um pedaço de carne moldada, encharcada em molho marrom, com um lado de purê de batatas. Está quase tão quente quanto um final de temporada."
 	icon_state = "ready_donk_salisbury_warm"
 	tastes = list("salisbury steak" = 2, "laziness" = 1)
 	foodtypes = MEAT | VEGETABLES | JUNKFOOD
 
 /obj/item/food/ready_donk/country_chicken
 	name = "\improper Ready-Donk Donkriginals: Country-Fried Chicken"
-	desc = "A TV dinner classic: \"crispy\" fried chicken in country gravy, mashed potatoes, and green beans."
+	desc = "Um clássico de jantar na TV:\"crocante\"Frango frito em molho, purê de batatas e feijão verde."
 	icon_state = "ready_donk_chicken"
 	tastes = list("country-fried chicken" = 2, "laziness" = 1)
 	foodtypes = MEAT | DAIRY | VEGETABLES | JUNKFOOD
@@ -349,7 +343,7 @@
 
 /obj/item/food/ready_donk/warm/country_chicken
 	name = "warm Ready-Donk Donkriginals: Country-Fried Chicken"
-	desc = "A TV dinner classic: \"crispy\" fried chicken in country gravy, mashed potatoes, and green beans. Get it while it's hot!"
+	desc = "Um clássico de jantar na TV:\"crocante\"Frango frito em molho, purê de batatas e feijão verde. Pegue enquanto está quente!"
 	icon_state = "ready_donk_chicken_warm"
 	tastes = list("country-fried chicken" = 2, "laziness" = 1)
 	foodtypes = MEAT | DAIRY | VEGETABLES | JUNKFOOD
@@ -357,7 +351,7 @@
 // Rations
 /obj/item/food/rationpack
 	name = "ration pack"
-	desc = "A square bar that sadly <i>looks</i> like chocolate, packaged in a nondescript grey wrapper. Has saved soldiers' lives before - usually by stopping bullets."
+	desc = "Uma barra quadrada que infelizmente<i>Olha.</i>Como chocolate, embalado em uma embalagem cinza não descrita. Já salvou a vida de soldados antes, geralmente parando balas."
 	icon_state = "rationpack"
 	bite_consumption = 3
 	junkiness = 15

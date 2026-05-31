@@ -1,7 +1,7 @@
 // The spooky "void" / "abyssal" / "madness" mask for heretics.
 /obj/item/clothing/mask/madness_mask
 	name = "abyssal mask"
-	desc = "A mask created from suffering. When you look into its eyes, it looks back."
+	desc = "Uma máscara criada do sofrimento. Quando olha nos olhos dele, olha para trás."
 	icon_state = "mad_mask"
 	inhand_icon_state = null
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
@@ -19,10 +19,10 @@
 /obj/item/clothing/mask/madness_mask/examine(mob/user)
 	. = ..()
 	if(IS_HERETIC_OR_MONSTER(user))
-		. += span_notice("Actively drains the sanity and stamina of nearby non-heretics when worn.")
-		. += span_notice("If forced onto the face of a non-heretic, they will be unable to remove it willingly.")
+		. += span_notice("Ativamente drena a sanidade e resistência dos não-heréticos próximos quando usados.")
+		. += span_notice("Se forem forçados à face de um não herético, não serão capazes de removê-lo voluntariamente.")
 	else
-		. += span_danger("The eyes fill you with dread... You best avoid it.")
+		. += span_danger("Os olhos te enchem de medo... É melhor evitar.")
 
 /obj/item/clothing/mask/madness_mask/equipped(mob/user, slot)
 	. = ..()
@@ -38,7 +38,7 @@
 		return
 
 	ADD_TRAIT(src, TRAIT_NODROP, CLOTHING_TRAIT)
-	to_chat(user, span_userdanger("[src] clamps tightly to your face as you feel your soul draining away!"))
+	to_chat(user, span_userdanger("[src]Aperta firmemente seu rosto enquanto sente sua alma drenando!"))
 
 /obj/item/clothing/mask/madness_mask/dropped(mob/M)
 	local_user = null

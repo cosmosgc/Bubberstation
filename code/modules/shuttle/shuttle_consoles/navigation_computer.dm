@@ -1,6 +1,6 @@
 /obj/machinery/computer/camera_advanced/shuttle_docker
 	name = "navigation computer"
-	desc = "Used to designate a precise transit location for a spacecraft."
+	desc = "Usado para designar um local de trânsito preciso para uma nave espacial."
 	jump_action = null
 	should_supress_view_changes = FALSE
 	add_usb_port = FALSE
@@ -96,10 +96,10 @@
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/attack_hand(mob/user, list/modifiers)
 	if(jammed)
-		to_chat(user, span_warning("The Syndicate is jamming the console!"))
+		to_chat(user, span_warning("O Sindicato está bloqueando o console!"))
 		return
 	if(!shuttle_port && !SSshuttle.getShuttle(shuttleId))
-		to_chat(user,span_warning("Warning: Shuttle connection severed!"))
+		to_chat(user,span_warning("Atenção, conexão de transporte cortada!"))
 		return
 	return ..()
 
@@ -207,23 +207,23 @@
 	var/mob/eye/camera/remote/shuttle_docker/the_eye = eyeobj
 	var/landing_clear = checkLandingSpot()
 	if(designate_time && (landing_clear != SHUTTLE_DOCKER_BLOCKED))
-		to_chat(current_user, span_warning("Targeting transit location, please wait [DisplayTimeText(designate_time)]..."))
+		to_chat(current_user, span_warning("Alvo local de trânsito, por favor aguarde[DisplayTimeText(designate_time)]..."))
 		designating_target_loc = the_eye.loc
 		var/wait_completed = do_after(current_user, designate_time, designating_target_loc, timed_action_flags = IGNORE_HELD_ITEM, extra_checks = CALLBACK(src, TYPE_PROC_REF(/obj/machinery/computer/camera_advanced/shuttle_docker, canDesignateTarget)))
 		designating_target_loc = null
 		if(!current_user)
 			return
 		if(!wait_completed)
-			to_chat(current_user, span_warning("Operation aborted."))
+			to_chat(current_user, span_warning("Operação abortada."))
 			return
 		landing_clear = checkLandingSpot()
 
 	if(landing_clear != SHUTTLE_DOCKER_LANDING_CLEAR)
 		switch(landing_clear)
 			if(SHUTTLE_DOCKER_BLOCKED)
-				to_chat(current_user, span_warning("Invalid transit location."))
+				to_chat(current_user, span_warning("Localização de trânsito inválida."))
 			if(SHUTTLE_DOCKER_BLOCKED_BY_HIDDEN_PORT)
-				to_chat(current_user, span_warning("Unknown object detected in landing zone. Please designate another location."))
+				to_chat(current_user, span_warning("Objeto desconhecido detectado na zona de pouso. Por favor, defina outro local."))
 		return
 
 	///Make one use port that deleted after fly off, to don't lose info that need on to properly fly off.
@@ -263,7 +263,7 @@
 
 	if(current_user.client)
 		current_user.client.images += the_eye.placed_images
-		to_chat(current_user, span_notice("Transit location designated."))
+		to_chat(current_user, span_notice("Localização de trânsito designada."))
 	return TRUE
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/proc/canDesignateTarget()
@@ -479,6 +479,6 @@
 		return
 	playsound(console, 'sound/machines/terminal/terminal_prompt_confirm.ogg', 25, FALSE)
 	remote_eye.setLoc(T)
-	to_chat(owner, span_notice("Jumped to [selected]."))
+	to_chat(owner, span_notice("Saltou para[selected]."))
 	owner.overlay_fullscreen("flash", /atom/movable/screen/fullscreen/flash/static)
 	owner.clear_fullscreen("flash", 3)

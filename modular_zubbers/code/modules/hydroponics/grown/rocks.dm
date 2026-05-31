@@ -1,8 +1,6 @@
 /obj/item/seeds/rockfruit
 	name = "pack of rockfruit seedlings"
-	desc = "Small seedlings of the golem rockfruit plant. There's a warning label on its packaging: \n\
-	\"Remember: Legally speaking, rocking is more legal than stoning. \n \
-	We are not liable for any injury, death, or complete body evaporation caused by using or growing these plants\""
+	desc = "Pequenas mudas da planta de frutas-rocha do Golem. Há um rótulo de aviso em sua embalagem:\n	\"Legalmente falando, rock é mais legal do que apedrejamento.\nNão somos responsáveis por nenhuma lesão, morte ou evaporação completa do corpo causada pelo uso ou cultivo destas plantas.\""
 	icon = 'modular_zubbers/icons/obj/seeds.dmi'
 	icon_state = "seed-rockfruit"
 	species = "rock"
@@ -37,7 +35,7 @@
 	seed = /obj/item/seeds/rockfruit
 
 	name = "Rockfruit"
-	desc = "Piece of rockfruit, commonly enjoyed by golem folk. The inside seems to be fruity, with the outside being a rocky shell."
+	desc = "Pedaço de fruta de rocha, geralmente apreciado pelo povo golem. O interior parece ser frutado, com o exterior sendo uma casca rochosa."
 	force = 5 // Comparatively shit considering a nettle is 15
 	throwforce = 10 // Less shit but hey, it is a rock
 
@@ -47,10 +45,10 @@
 	var/product = /obj/item/food/grown/rockfruit
 
 /obj/item/grown/rockfruit/attack_self(mob/user, modifiers)
-	user.show_message(span_notice("You begin peeling the rocky exterior..."))
+	user.show_message(span_notice("Você começa a descascar o exterior rochoso..."))
 	if(!(do_after(user, 2 SECONDS)))
 		return
-	user.show_message(span_notice("You peel off the rocky shell of the rockfruit, revealing the fruity goodness inside!"))
+	user.show_message(span_notice("Você descasca a casca rochosa da fruta de rocha, revelando a bondade frutífera por dentro!"))
 	balloon_alert(user, "peeled")
 
 	// The fruit inside
@@ -67,8 +65,7 @@
 	seed = /obj/item/seeds/rockfruit
 
 	name = "Rockfruit core"
-	desc = "The fruity insides of a rockfruit! Not too sugary, but still tasty. Golem folk use this to complement their rock foods. \
-	Curiously enough, they don't like to eat this on its own"
+	desc = "O interior frutado de uma fruta de rocha! Não muito açucarado, mas ainda saboroso. O povo de Golem usa isso para complementar sua comida rock. Curiosamente, eles não gostam de comer isso por conta própria."
 
 	foodtypes = FRUIT
 
@@ -79,8 +76,7 @@
 
 /obj/item/food/golem_food/rocks
 	name = "Peeled rockfruit shell"
-	desc = "The peeled shell of a rockfruit, or as you may call it, \"Literal pile of rocks\". \
-	Probably not edible, but a golem will try to prove you otherwise"
+	desc = "A casca descascada de uma fruta de rocha, ou como você pode chamá-la,\"Montes de pedras literais\"Provavelmente não comestível, mas um golem tentará provar o contrário."
 
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "rockfruit-trash"
@@ -91,14 +87,14 @@
 	tastes = list("rocks and stones" = 1)
 
 /datum/reagent/consumable/nutriment/mineral
-	taste_description = "rocks and stones"
+	taste_description = "pedras e pedras"
 
 
 //Rockfruits evolutions? OREFRUITS!//
 //Sand - Base tier breaks into 4 trees ('energy', Precious, Metal, Miscmats)
 /obj/item/seeds/sandfruit
 	name = "sandfruit seed pack"
-	desc = "These seeds grow to produce sandfruits."
+	desc = "Estas sementes crescem para produzir frutos de areia."
 	icon = 'modular_zubbers/icons/obj/seeds.dmi'
 	icon_state = "seed-sandfruit"
 	species = "ore"
@@ -118,7 +114,7 @@
 /obj/item/food/grown/material_sand
 	seed = /obj/item/seeds/sandfruit
 	name = "sandfruit"
-	desc = "A mutated variant of rockfruits; rough, course and now available everywhere. Just peel it for a core."
+	desc = "Uma variante mutante de frutos de rocha, áspero, curso e agora disponível em toda parte. Só descascar para um núcleo."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "orefruit"
 	trash_type = /obj/item/stack/sheet/mineral/sandfruitcore
@@ -127,9 +123,9 @@
 
 /obj/item/stack/sheet/mineral/sandfruitcore
 	name = "sandfruit core"
-	desc = "A very fragile sandfruit core, literally composed of dozens of particles of sand... don't store in pockets."
+	desc = "Um núcleo de frutos de areia muito frágil, literalmente composto de dezenas de partículas de areia... não armazena em bolsos."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
-	singular_name = "sandfruit core"
+	singular_name = "Fruto de areia"
 	icon_state = "sandfruit"
 	merge_type = /obj/item/stack/sheet/mineral/sandfruitcore
 	max_amount = 10
@@ -139,7 +135,7 @@
 
 /obj/item/seeds/uraniberry
 	name = "uraniberry seed pack"
-	desc = "These seeds grow to produce 'berries' that god thinks probably shouldn't exist."
+	desc = "Essas sementes crescem para produzir 'bagas' que Deus acha que provavelmente não deveria existir."
 	icon = 'modular_zubbers/icons/obj/seeds.dmi'
 	icon_state = "seed-uraniberry"
 	species = "ore"
@@ -156,7 +152,7 @@
 /obj/item/food/grown/material_uraniberry
 	seed = /obj/item/seeds/uraniberry
 	name = "uraniberry"
-	desc = "A mutated variant of rockfruits; you might not want to hold it for long... also not actually a berry! Just peel it for a core."
+	desc = "Uma variante mutante de frutos de rocha, talvez não queira segurá-la por muito tempo... também não é uma fruta! Só descascar para um núcleo."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "orefruit"
 	trash_type = /obj/item/stack/sheet/mineral/uraniberrycore
@@ -165,8 +161,8 @@
 
 /obj/item/stack/sheet/mineral/uraniberrycore
 	name = "uraniberry core"
-	singular_name = "uraniberry core"
-	desc = "A very dense uraniberry core, don't store in pockets, unless you want extra limbs."
+	singular_name = "Núcleo de uraniberry"
+	desc = "Um núcleo de uraniberry muito denso, não guarde em bolsos, a menos que queira membros extras."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "uraniberry"
 	merge_type = /obj/item/stack/sheet/mineral/uraniberrycore
@@ -177,7 +173,7 @@
 
 /obj/item/seeds/plasmaplum
 	name = "plasmaplum seed pack"
-	desc = "These seeds grow to produce extremely volatile 'plums'."
+	desc = "Estas sementes crescem para produzir plums extremamente voláteis."
 	icon = 'modular_zubbers/icons/obj/seeds.dmi'
 	icon_state = "seed-plasmaplum"
 	species = "ore"
@@ -194,7 +190,7 @@
 /obj/item/food/grown/material_plasmaplum
 	seed = /obj/item/seeds/plasmaplum
 	name = "plasmaplum"
-	desc = "A mutated variant of rockfruits; Incredibly volatile... also not actually a plum! Just peel it for a core."
+	desc = "Uma variante mutante de frutos de rocha, incrivelmente volátil, também não é uma ameixa! Só descascar para um núcleo."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "orefruit"
 	trash_type = /obj/item/stack/sheet/mineral/plasmaplumcore
@@ -203,8 +199,8 @@
 
 /obj/item/stack/sheet/mineral/plasmaplumcore
 	name = "plasmaplum core"
-	singular_name = "plasmaplum core"
-	desc = "A very dense plasmaplum core, store in a cold, fire and spark free place."
+	singular_name = "núcleo de plasmaplum"
+	desc = "Um núcleo de plasmaplum muito denso, armazena em um lugar frio, fogo e faísca livre."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "plasmaplum"
 	merge_type = /obj/item/stack/sheet/mineral/plasmaplumcore
@@ -215,7 +211,7 @@
 
 /obj/item/seeds/bluegemdrupe
 	name = "bluegem drupe seed pack"
-	desc = "These seeds grow to produce extremely volatile 'drupes'."
+	desc = "Estas sementes crescem para produzir 'drupes' extremamente voláteis."
 	icon = 'modular_zubbers/icons/obj/seeds.dmi'
 	icon_state = "seed-bluegemdrupe"
 	species = "ore"
@@ -232,7 +228,7 @@
 /obj/item/food/grown/material_bluegemdrupe
 	seed = /obj/item/seeds/bluegemdrupe
 	name = "bluegem drupe"
-	desc = "A mutated variant of rockfruits; Incredibly fragile... also not actually a drupe! Just peel it for a core."
+	desc = "Uma variante mutante de frutos de rocha, incrivelmente frágil... também não é uma drupe! Só descascar para um núcleo."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "orefruit"
 	trash_type = /obj/item/stack/sheet/mineral/bluegemdrupecore
@@ -241,8 +237,8 @@
 
 /obj/item/stack/sheet/mineral/bluegemdrupecore
 	name = "bluegem drupe core"
-	singular_name = "bluegem drupe core"
-	desc = "A very dense bluegem drupe core, dropping may incur teleportation in rare cases."
+	singular_name = "Bluegem drupe core"
+	desc = "Um núcleo drupe muito denso, caindo pode ocorrer teletransporte em casos raros."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "bluegemdrupe"
 	merge_type = /obj/item/stack/sheet/mineral/bluegemdrupecore
@@ -253,7 +249,7 @@
 
 /obj/item/seeds/agbergine
 	name = "ag-bergine seed pack"
-	desc = "These seeds grow to produce fruits, with cores of solid silver."
+	desc = "Estas sementes crescem para produzir frutos, com núcleos de prata sólida."
 	icon = 'modular_zubbers/icons/obj/seeds.dmi'
 	icon_state = "seed-agbergine"
 	species = "ore"
@@ -270,7 +266,7 @@
 /obj/item/food/grown/material_agbergine
 	seed = /obj/item/seeds/agbergine
 	name = "ag-bergine"
-	desc = "Ag-bergine, get it AG? It's hilarious and valuable! Just peel it for a core."
+	desc = "Ag-bergine, entendeu? É hilário e valioso! Só descascar para um núcleo."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "orefruit"
 	trash_type = /obj/item/stack/sheet/mineral/agberginecore
@@ -279,8 +275,8 @@
 
 /obj/item/stack/sheet/mineral/agberginecore
 	name = "ag-bergine core"
-	singular_name = "ag-bergine core"
-	desc = "A dense agbergine core of solid, sterling silver."
+	singular_name = "Ag-bergine núcleo"
+	desc = "Um denso núcleo de beringela de prata sólida."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "agbergine"
 	merge_type = /obj/item/stack/sheet/mineral/agberginecore
@@ -291,7 +287,7 @@
 
 /obj/item/seeds/aubergine
 	name = "au-bergine seed pack"
-	desc = "These seeds grow to golden cored fruits."
+	desc = "Estas sementes crescem em frutos dourados."
 	icon = 'modular_zubbers/icons/obj/seeds.dmi'
 	icon_state = "seed-aubergine"
 	species = "ore"
@@ -308,7 +304,7 @@
 /obj/item/food/grown/material_aubergine
 	seed = /obj/item/seeds/aubergine
 	name = "aubergine"
-	desc = "An aubergine; AU? Get it?!... My talents are wasted here! Just peel it for a core."
+	desc = "Uma beringela; UA? Entendeu? Meus talentos são desperdiçados aqui! Só descascar para um núcleo."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "orefruit"
 	trash_type = /obj/item/stack/sheet/mineral/auberginecore
@@ -317,8 +313,8 @@
 
 /obj/item/stack/sheet/mineral/auberginecore
 	name = "au-bergine core"
-	singular_name = "au-bergine core"
-	desc = "A very dense au-bergine core, solid 24 karat goodness."
+	singular_name = "Núcleo de beringela"
+	desc = "Um núcleo au-beringe muito denso, sólido 24 quilates de bondade."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "aubergine"
 	merge_type = /obj/item/stack/sheet/mineral/auberginecore
@@ -329,7 +325,7 @@
 
 /obj/item/seeds/dimantis
 	name = "dimantis seed pack"
-	desc = "These seeds grow to produce extremely valuable dimatis fruits."
+	desc = "Estas sementes crescem para produzir frutos extremamente valiosos."
 	icon = 'modular_zubbers/icons/obj/seeds.dmi'
 	icon_state = "seed-dimantis"
 	species = "ore"
@@ -346,7 +342,7 @@
 /obj/item/food/grown/material_dimantis
 	seed = /obj/item/seeds/dimantis
 	name = "dimantis drupe"
-	desc = "A fleshy fruid with a diamond core, Just peel it for a core."
+	desc = "Um fruto carnudo com um núcleo de diamante, apenas descascar para um núcleo."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "orefruit"
 	trash_type = /obj/item/stack/sheet/mineral/dimantiscore
@@ -355,8 +351,8 @@
 
 /obj/item/stack/sheet/mineral/dimantiscore
 	name = "dimantis core"
-	singular_name = "dimantis core"
-	desc = "A very dense dimantis core, the way to a woman's heart, it could probably get through her ribcage..."
+	singular_name = "Dimantis core"
+	desc = "Um núcleo de dimantis muito denso, o caminho para o coração de uma mulher, provavelmente poderia passar através de sua caixa torácica ..."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "dimantis"
 	merge_type = /obj/item/stack/sheet/mineral/dimantiscore
@@ -367,7 +363,7 @@
 
 /obj/item/seeds/ferrotuber
 	name = "ferrotuber seed pack"
-	desc = "These seeds grow to produce tubers, with cores of iron."
+	desc = "Estas sementes crescem para produzir tubérculos, com núcleos de ferro."
 	icon = 'modular_zubbers/icons/obj/seeds.dmi'
 	icon_state = "seed-ferrotuber"
 	species = "ore"
@@ -384,7 +380,7 @@
 /obj/item/food/grown/material_ferrotuber
 	seed = /obj/item/seeds/ferrotuber
 	name = "ferrotuber"
-	desc = "Ferrotubers, fleshy shells with iron fillings! Just peel it for a core."
+	desc = "Ferrotuberes, conchas carnudas com recheios de ferro! Só descascar para um núcleo."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "orefruit"
 	trash_type = /obj/item/stack/sheet/mineral/ferrotubercore
@@ -393,8 +389,8 @@
 
 /obj/item/stack/sheet/mineral/ferrotubercore
 	name = "ferrotuber core"
-	singular_name = "ferrotuber core"
-	desc = "A dense ferrotuber core of solid iron, slightly magnetic."
+	singular_name = "núcleo de ferrotuber"
+	desc = "Um denso núcleo de ferrotúber de ferro sólido, ligeiramente magnético."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "ferrotuber"
 	merge_type = /obj/item/stack/sheet/mineral/ferrotubercore
@@ -405,7 +401,7 @@
 
 /obj/item/seeds/titanituber
 	name = "titanituber seed pack"
-	desc = "These seeds grow to titanium tubers."
+	desc = "Estas sementes crescem em tubérculos de titânio."
 	icon = 'modular_zubbers/icons/obj/seeds.dmi'
 	icon_state = "seed-titanituber"
 	species = "ore"
@@ -421,7 +417,7 @@
 /obj/item/food/grown/material_titanituber
 	seed = /obj/item/seeds/titanituber
 	name = "titanituber"
-	desc = "soft fruits with incredibly sturdy cores, watch your teeth! Just peel it for a core."
+	desc = "Frutos macios com núcleos incrivelmente resistentes, cuidado com os dentes! Só descascar para um núcleo."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "orefruit"
 	trash_type = /obj/item/stack/sheet/mineral/titanitubercore
@@ -429,8 +425,8 @@
 
 /obj/item/stack/sheet/mineral/titanitubercore
 	name = "titanituber core"
-	singular_name = "titanituber core"
-	desc = "A very dense titanituber core, let's hope you didn't bite it!"
+	singular_name = "Titanituber core"
+	desc = "Um núcleo de titanituber muito denso, vamos esperar que você não morda!"
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "titanituber"
 	merge_type = /obj/item/stack/sheet/mineral/titanitubercore
@@ -441,7 +437,7 @@
 
 /obj/item/seeds/adamapple
 	name = "adam's apple seed pack"
-	desc = "These seeds grow to produce fruits, with cores of adamantine."
+	desc = "Estas sementes crescem para produzir frutos, com núcleos de adamantina."
 	icon = 'modular_zubbers/icons/obj/seeds.dmi'
 	icon_state = "seed-adamapple"
 	species = "ore"
@@ -457,7 +453,7 @@
 /obj/item/food/grown/material_adamapple
 	seed = /obj/item/seeds/adamapple
 	name = "Adam's apple"
-	desc = "Adam's apples, The garden Eden's bounty! Just peel it for a core."
+	desc = "As maçãs de Adão, a recompensa do Jardim Éden! Só descascar para um núcleo."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "orefruit"
 	trash_type = /obj/item/stack/sheet/mineral/adamapplecore
@@ -465,8 +461,8 @@
 
 /obj/item/stack/sheet/mineral/adamapplecore
 	name = "adam's apple core"
-	singular_name = "adam's apple core"
-	desc = "A dense adam's apple core of solid adamantine."
+	singular_name = "O núcleo de maçã de Adam."
+	desc = "Um denso núcleo de maçã de Adão de adamantina sólida."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "adamapple"
 	merge_type = /obj/item/stack/sheet/mineral/adamapplecore
@@ -477,7 +473,7 @@
 
 /obj/item/seeds/runescooper
 	name = "runescooper seed pack"
-	desc = "These seeds grow to rare, wildy fruits."
+	desc = "Estas sementes crescem em frutos raros e selvagens."
 	icon = 'modular_zubbers/icons/obj/seeds.dmi'
 	icon_state = "seed-runescooper"
 	species = "ore"
@@ -493,7 +489,7 @@
 /obj/item/food/grown/material_runescooper
 	seed = /obj/item/seeds/runescooper
 	name = "runescooper"
-	desc = "A fruit, usually grown in wild places where men would kill each other for gain."
+	desc = "Uma fruta, geralmente cultivada em lugares selvagens onde os homens se matariam para ganhar."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "orefruit"
 	trash_type = /obj/item/stack/sheet/mineral/runescoopercore
@@ -501,8 +497,8 @@
 
 /obj/item/stack/sheet/mineral/runescoopercore
 	name = "runescooper core"
-	singular_name = "runescooper core"
-	desc = "A very dense runite core, a few more of these and you might be able to make a scimitar to defeat your foes..."
+	singular_name = "Núcleo Runescooper"
+	desc = "Um núcleo runite muito denso, mais alguns destes e você pode ser capaz de fazer uma cimitarra para derrotar seus inimigos..."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "runescooper"
 	merge_type = /obj/item/stack/sheet/mineral/runescoopercore
@@ -513,7 +509,7 @@
 
 /obj/item/seeds/bananiumberry
 	name = "bananium berry seed pack"
-	desc = "These seeds grow to produce unholy abominations."
+	desc = "Estas sementes crescem para produzir abominações profanas."
 	icon = 'modular_zubbers/icons/obj/seeds.dmi'
 	icon_state = "seed-bananiumberry"
 	species = "ore"
@@ -530,7 +526,7 @@
 /obj/item/food/grown/material_bananiumberry
 	seed = /obj/item/seeds/bananiumberry
 	name = "bananiumberry"
-	desc = "holy honkmother... This fruit got a core of bananium, Just peel it!"
+	desc = "Puta que pariu... Esta fruta tem um núcleo de banânio, apenas descascar!"
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "orefruit"
 	trash_type = /obj/item/stack/sheet/mineral/bananiumberrycore
@@ -539,8 +535,8 @@
 
 /obj/item/stack/sheet/mineral/bananiumberrycore
 	name = "bananiumberry core"
-	singular_name = "bananiumberry core"
-	desc = "A very dense bananium core, the way to a clown's heart, it could probably get through their ribcage..."
+	singular_name = "Bananiumberry core"
+	desc = "Um núcleo de banânio muito denso, o caminho para o coração de um palhaço, provavelmente poderia passar através de suas costelas..."
 	icon = 'modular_zubbers/icons/obj/harvest.dmi'
 	icon_state = "bananiumberry"
 	merge_type = /obj/item/stack/sheet/mineral/bananiumberrycore

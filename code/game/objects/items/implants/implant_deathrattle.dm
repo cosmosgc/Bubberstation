@@ -106,24 +106,19 @@
 
 		// Deliberately the same message framing as ghost deathrattle
 		var/mob/living/recipient = implant.imp_in
-		to_chat(recipient, "<i>You hear a strange, robotic voice in your head...</i> \"[span_robot("<b>[name]</b> has died at <b>[area_name]</b>.")]\"")
+		to_chat(recipient, "<i>Você ouve uma voz estranha e robótica na sua cabeça...</i> \"[span_robot("<b>[name]</b> has died at <b>[area_name]</b>.")]\"")
 		recipient.playsound_local(get_turf(recipient), sound, vol = 75, vary = FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
 /obj/item/implant/deathrattle
 	name = "deathrattle implant"
-	desc = "Hope no one else dies, prepare for when they do."
+	desc = "Espero que ninguém morra, prepare-se para quando morrerem."
 
 	actions_types = null
 	allow_multiple = TRUE
 
-	implant_info = "Requires configuration before implanting. Automatically activates upon implantation. \
-		Notifies the host of deaths that occur in other deathrattle implant hosts linked to the same deathrattle group."
+	implant_info = "Requires configuration before implanting. Automatically activates upon implantation. 		Notifies the host of deaths that occur in other deathrattle implant hosts linked to the same deathrattle group."
 
-	implant_lore = "The Robust Corp Fatality Notification System, colloquially the \"deathrattle\" implant, \
-		is a subcutaneous hybrid vitals tracker and encrypted transmitter, \
-		designed to communicate with other FNS units implanted within other hosts. Upon detecting a lack of vital signs, \
-		the FNS will relay the fatality and its rough estimated location to the other hosts. How it can communicate \
-		over such long distances is a trade secret that both Nanotrasen and the Syndicate are quite curious about."
+	implant_lore = "The Robust Corp Fatality Notification System, colloquially the \"deathrattle\" implant, 		is a subcutaneous hybrid vitals tracker and encrypted transmitter, 		designed to communicate with other FNS units implanted within other hosts. Upon detecting a lack of vital signs, 		the FNS will relay the fatality and its rough estimated location to the other hosts. How it can communicate 		over such long distances is a trade secret that both Nanotrasen and the Syndicate are quite curious about."
 
 	/// What deathrattle group type do we create? Group types dictate area whitelisting/blacklisting.
 	var/deathrattle_group_type = /datum/deathrattle_group/standard
@@ -133,7 +128,7 @@
 
 /obj/item/implant/deathrattle/can_be_implanted_in(mob/living/target)
 	if(!current_group)
-		balloon_alert(target, "deathrattle needs configuration!")
+		balloon_alert(target, "Deathrattle precisa de configuração!")
 		return FALSE
 	// Can be implanted in anything that's a mob. Syndicate cyborgs, talking fish, humans...
 	return TRUE
@@ -143,18 +138,16 @@
 
 	deathrattle_group_type = /datum/deathrattle_group/lavaland
 
-	implant_info = "ONLY TRIGGERS ON NON-STATION DEATHS. \
-		Requires configuration before implanting. Automatically activates upon implantation. \
-		Notifies the host of deaths that occur in other deathrattle implant hosts linked to the same deathrattle group."
+	implant_info = "ONLY TRIGGERS ON NON-STATION DEATHS. 		Requires configuration before implanting. Automatically activates upon implantation. 		Notifies the host of deaths that occur in other deathrattle implant hosts linked to the same deathrattle group."
 
 /obj/item/implantcase/deathrattle
 	name = "implant case - 'Deathrattle'"
-	desc = "A glass case containing a deathrattle implant."
+	desc = "Uma caixa de vidro contendo um implante mortal."
 	imp_type = /obj/item/implant/deathrattle
 
 /obj/item/implantcase/deathrattle/lavaland
 	name = "implant case - 'Expeditionary Deathrattle'"
-	desc = "A glass case containing an expeditionary deathrattle implant. Only alerts to deaths that occur on Lavaland."
+	desc = "Uma caixa de vidro contendo um implante expedicionário. Só alertas para mortes que ocorrem em Lavaland."
 	imp_type = /obj/item/implant/deathrattle/lavaland
 
 #undef DEATHRATTLE_AREA_NOLIST

@@ -11,10 +11,10 @@
 
 /datum/brain_trauma/very_special/bimbo
 	name = "Permanent hormonal disruption"
-	desc = "The patient has completely lost the ability to form speech and seems extremely aroused."
-	scan_desc = "permanent hormonal disruption"
-	gain_text = span_purple("Your thoughts get cloudy, but it turns you on like hell.")
-	lose_text = span_warning("A pleasant coolness spreads throughout your body, You are thinking clearly again.")
+	desc = "O paciente perdeu completamente a capacidade de formar a fala e parece extremamente excitado."
+	scan_desc = "Perturbação hormonal permanente"
+	gain_text = span_purple("Seus pensamentos ficam nublados, mas isso te excita como o inferno.")
+	lose_text = span_warning("Um frescor agradável se espalha por todo o seu corpo, você está pensando claramente novamente.")
 	//people need to be able to gain it through the chemical OD
 	can_gain = TRUE
 	//people should not be able to randomly get this trauma
@@ -56,19 +56,19 @@
 	human_owner.manual_emote(pick(lust_emotes))
 	if(stress >= 60)
 		human_owner.set_jitter_if_lower(40 SECONDS)
-		lust_message = "You feel a static sensation all across your skin..."
+		lust_message = "Você sente uma sensação estática em toda sua pele..."
 	if(stress >= 120)
 		human_owner.set_eye_blur_if_lower(20 SECONDS)
-		lust_message = "You vision begins to blur, the heat beginning to rise..."
+		lust_message = "Sua visão começa a borrar, o calor começa a subir..."
 	if(stress >= 180)
 		owner.adjust_hallucinations(60 SECONDS)
-		lust_message = "You begin to fantasize of what you could do to someone..."
+		lust_message = "Você começa a fantasiar do que poderia fazer com alguém..."
 	if(stress >= 240)
 		human_owner.adjust_stamina_loss(30)
-		lust_message = "You body feels so very hot, almost unwilling to cooperate..."
+		lust_message = "Seu corpo se sente tão quente, quase sem vontade de cooperar..."
 	if(stress >= 300)
 		human_owner.adjust_oxy_loss(40)
-		lust_message = "You feel your neck tightening, straining..."
+		lust_message = "Sente seu pescoço apertando, forçando..."
 	to_chat(human_owner, span_purple(lust_message))
 	return TRUE
 
@@ -113,20 +113,20 @@
 	if(!in_company())
 		//since you aren't within company, you won't be satisfied
 		satisfaction = clamp(satisfaction - 1, 0, 1000)
-		to_chat(human_owner, span_purple("You feel so alone without someone..."))
+		to_chat(human_owner, span_purple("Você se sente tão sozinha sem alguém..."))
 		return
 
 	switch(satisfaction)
 		if(0 to 100)
-			to_chat(human_owner, span_purple("You can't STAND it, you need a partner NOW!"))
+			to_chat(human_owner, span_purple("Você não pode suportar, você precisa de um parceiro agora!"))
 		if(101 to 150)
-			to_chat(human_owner, span_purple("You'd hit that. Yeah. That's at least a six."))
+			to_chat(human_owner, span_purple("Você acertaria isso. Sim. Isso é pelo menos um seis."))
 		if(151 to 200)
-			to_chat(human_owner, span_purple("Your clothes are feeling tight."))
+			to_chat(human_owner, span_purple("Suas roupas estão apertadas."))
 		if(201 to 250)
-			to_chat(human_owner, span_purple("Desire fogs your decisions."))
+			to_chat(human_owner, span_purple("Desejo embaça suas decisões."))
 		if(251 to 1000)
-			to_chat(human_owner, span_purple("Jeez, it's hot in here.."))
+			to_chat(human_owner, span_purple("Nossa, está quente aqui."))
 
 /**
  * If we have another human in view, return true
@@ -173,7 +173,7 @@
 
 //Mood boost
 /datum/mood_event/bimbo
-	description = span_purple("So-o... Help..less... Lo-ve it!\n")
+	description = span_purple("So-o... socorro... menos... amor!\n")
 
 /*
 *	MASOCHISM
@@ -185,12 +185,12 @@
 
 /datum/quirk/masochism
 	name = "Masochism"
-	desc = "Pain brings you indescribable pleasure."
+	desc = "A dor lhe traz um prazer indescritível."
 	value = 0 //ERP Traits don't have price. They are priceless. Ba-dum-tss
 	mob_trait = TRAIT_MASOCHISM
-	gain_text = span_danger("You have a sudden desire for pain...")
-	lose_text = span_notice("Ouch! Pain is... Painful again! Ou-ou-ouch!")
-	medical_record_text = "Subject has masochism."
+	gain_text = span_danger("Você tem um desejo súbito de dor...")
+	lose_text = span_notice("Ouch! A dor é... Doloroso de novo! Ou-ou-ouch!")
+	medical_record_text = "O sujeito tem masoquismo."
 	icon = FA_ICON_HEART_BROKEN
 	erp_quirk = TRUE
 
@@ -212,10 +212,10 @@
 
 /datum/brain_trauma/very_special/neverboner
 	name = "Loss of libido"
-	desc = "The patient has completely lost sexual interest."
-	scan_desc = "lack of libido"
-	gain_text = span_notice("You don't feel horny anymore.")
-	lose_text = span_notice("A pleasant warmth spreads over your body.")
+	desc = "O paciente perdeu completamente o interesse sexual."
+	scan_desc = "falta de libido."
+	gain_text = span_notice("Você não sente mais tesão.")
+	lose_text = span_notice("Um calor agradável se espalha sobre seu corpo.")
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 
@@ -235,12 +235,12 @@
 
 /datum/quirk/sadism
 	name = "Sadism"
-	desc = "You feel pleasure when you see someone in agony."
+	desc = "Você sente prazer quando vê alguém em agonia."
 	value = 0 //ERP Traits don't have price. They are priceless. Ba-dum-tss
 	mob_trait = TRAIT_SADISM
-	gain_text = span_danger("You feel a sudden desire to inflict pain.")
-	lose_text = span_notice("Others' pain doesn't satisfy you anymore.")
-	medical_record_text = "Subject has sadism."
+	gain_text = span_danger("Você sente um desejo repentino de infligir dor.")
+	lose_text = span_notice("A dor dos outros não te satisfaz mais.")
+	medical_record_text = "O sujeito tem sadismo."
 	icon = FA_ICON_HAMMER
 	erp_quirk = TRUE
 
@@ -256,10 +256,10 @@
 
 /datum/brain_trauma/very_special/sadism
 	name = "Sadism"
-	desc = "The subject's cerebral pleasure centers are more active when someone is suffering."
-	scan_desc = "sadistic tendencies"
-	gain_text = span_purple("You feel a desire to hurt somebody.")
-	lose_text = span_notice("You feel compassion again.")
+	desc = "Os centros de prazer cerebral do sujeito são mais ativos quando alguém está sofrendo."
+	scan_desc = "tendências sádicas"
+	gain_text = span_purple("Você sente o desejo de machucar alguém.")
+	lose_text = span_notice("Você sente compaixão de novo.")
 	can_gain = TRUE
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
@@ -290,12 +290,12 @@
 //Rope bunny code
 /datum/quirk/ropebunny
 	name = "Rope bunny"
-	desc = "You love being tied up."
+	desc = "Você adora ser amarrada."
 	value = 0 //ERP Traits don't have price. They are priceless. Ba-dum-tss
 	mob_trait = TRAIT_ROPEBUNNY
-	medical_record_text = "Subject has a fondness for restraints."
-	gain_text = span_danger("You really want to be restrained for some reason.")
-	lose_text = span_notice("Being restrained doesn't arouse you anymore.")
+	medical_record_text = "O sujeito gosta de restrições."
+	gain_text = span_danger("Você realmente quer ser contido por alguma razão.")
+	lose_text = span_notice("Ser contido não te desperta mais.")
 	icon = FA_ICON_HANDCUFFS
 	erp_quirk = TRUE
 
@@ -312,12 +312,12 @@
 //Rigger code
 /datum/quirk/rigger
 	name = "Rigger"
-	desc = "You find the weaving of rope knots on the body wonderful."
+	desc = "Você acha maravilhosa a tecelagem de nós de corda no corpo."
 	value = 0 //ERP Traits don't have price. They are priceless. Ba-dum-tss
 	mob_trait = TRAIT_RIGGER
-	medical_record_text = "Subject has a increased dexterity when tying knots."
-	gain_text = span_danger("Suddenly you understand rope weaving much better than before.")
-	lose_text = span_notice("Rope knots looks complicated again.")
+	medical_record_text = "O sujeito tem um aumento de destreza ao dar nós."
+	gain_text = span_danger("De repente você entende corda tecendo muito melhor do que antes.")
+	lose_text = span_notice("Os nós de corda parecem complicados de novo.")
 	icon = FA_ICON_CHAIN_BROKEN
 	erp_quirk = TRUE
 
@@ -331,7 +331,7 @@
 	var/mob/living/carbon/human/affected_mob = quirk_holder
 	REMOVE_TRAIT(affected_mob, TRAIT_RIGGER, TRAIT_LEWDQUIRK)
 /datum/mood_event/sadistic
-	description = span_purple("Others' suffering makes me happier\n")
+	description = span_purple("O sofrimento dos outros me faz mais feliz.\n")
 
 /*
 *	EMPATH BONUS
@@ -341,10 +341,10 @@
 /mob/living/carbon/human/proc/get_arousal_info()
 	switch(arousal)
 		if(AROUSAL_MINIMUM_DETECTABLE to AROUSAL_LOW)
-			return span_purple("[p_they()] [p_are()] slightly blushed.")
+			return span_purple("[p_they()] [p_are()]ligeiramente corada.")
 		if(AROUSAL_LOW to AROUSAL_MEDIUM)
-			return span_purple("[p_they()] [p_are()] quite aroused and seems to be stirring up lewd thoughts in [p_their()] head.")
+			return span_purple("[p_they()] [p_are()]bastante excitado e parece estar mexendo pensamentos obscenos em[p_their()]Cabeça.")
 		if(AROUSAL_HIGH to AROUSAL_AUTO_CLIMAX_THRESHOLD)
-			return span_purple("[p_they()] [p_are()] aroused as hell.")
+			return span_purple("[p_they()] [p_are()]excitada como o inferno.")
 		if(AROUSAL_AUTO_CLIMAX_THRESHOLD to INFINITY)
-			return span_purple("[p_they()] [p_are()] extremely excited, exhausting from intolerable desire.")
+			return span_purple("[p_they()] [p_are()]Extremamente animado, cansativo de desejo intolerável.")

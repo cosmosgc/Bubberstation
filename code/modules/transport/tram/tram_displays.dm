@@ -1,6 +1,6 @@
 /obj/machinery/transport/destination_sign
 	name = "destination sign"
-	desc = "A display to show you what direction the tram is travelling."
+	desc = "Uma exibição para mostrar em que direção o bonde está viajando."
 	icon = 'icons/obj/tram/tram_display.dmi'
 	icon_state = "desto_blank"
 	base_icon_state = "desto"
@@ -36,7 +36,7 @@
 
 /obj/item/wallframe/indicator_display
 	name = "indicator display frame"
-	desc = "Used to build tram indicator displays, just secure to the wall."
+	desc = "Usado para construir monitores de bonde, seguro na parede."
 	icon_state = "indi_blank"
 	icon = 'icons/obj/tram/tram_indicator.dmi'
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7)
@@ -78,7 +78,7 @@
 	. = ..()
 
 	if(panel_open)
-		. += span_notice("It is secured to the tram wall with [EXAMINE_HINT("bolts.")]")
+		. += span_notice("Está seguro na parede do bonde com[EXAMINE_HINT("bolts.")]")
 
 /obj/machinery/transport/destination_sign/on_deconstruction(disassembled)
 	var/atom/drop = drop_location()
@@ -92,11 +92,11 @@
 
 /obj/machinery/transport/destination_sign/indicator/wrench_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
-	balloon_alert(user, "[anchored ? "un" : ""]securing...")
+	balloon_alert(user, "[anchored ? "un" : ""]Segurando...")
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 6 SECONDS))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, vary = TRUE)
-		balloon_alert(user, "[anchored ? "un" : ""]secured")
+		balloon_alert(user, "[anchored ? "un" : ""]Seguro.")
 		deconstruct()
 		return TRUE
 

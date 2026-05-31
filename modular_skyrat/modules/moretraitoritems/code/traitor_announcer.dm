@@ -2,9 +2,9 @@
 
 /obj/item/device/traitor_announcer
 	name = "odd device"
-	desc = "Hmm... what is this for?"
+	desc = "Hmm... para que é isso?"
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
-	special_desc = "A remote that can be used to transmit a fake announcement of your own design."
+	special_desc = "Um controle remoto que pode ser usado para transmitir um anúncio falso de seu próprio projeto."
 	icon = 'icons/obj/devices/scanner.dmi'
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
@@ -18,28 +18,28 @@
 	. = ..()
 	//can we use this?
 	if(!isliving(user) || (uses == 0))
-		balloon_alert(user, "no uses left!")
+		balloon_alert(user, "Não vale a pena!")
 		return
 	//build our announcement
 	var/origin = reject_bad_text(tgui_input_text(user, "Who is announcing, or where is the announcement coming from?", "Announcement Origin", get_area_name(user), max_length = 28))
 	if(!origin)
-		balloon_alert(user, "bad origin!")
+		balloon_alert(user, "Má origem!")
 		return
 	var/audio_key = tgui_input_list(user, "Which announcement audio key should play? ('Intercept' is default)", "Announcement Audio", GLOB.announcer_keys, ANNOUNCER_INTERCEPT)
 	if(!audio_key)
-		balloon_alert(user, "bad audio!")
+		balloon_alert(user, "Áudio ruim!")
 		return
 	var/color = tgui_input_list(user, "Which color should the announcement be?", "Announcement Hue", ANNOUNCEMENT_COLORS, "default")
 	if(!color)
-		balloon_alert(user, "bad color!")
+		balloon_alert(user, "Cor ruim!")
 		return
 	var/title = reject_bad_text(tgui_input_text(user, "Choose the title of the announcement.", "Announcement Title", max_length = 42))
 	if(!title)
-		balloon_alert(user, "bad title!")
+		balloon_alert(user, "Mau título!")
 		return
 	var/input = reject_bad_text(tgui_input_text(user, "Choose the bodytext of the announcement.", "Announcement Text", max_length = 512, multiline = TRUE))
 	if(!input)
-		balloon_alert(user, "bad text!")
+		balloon_alert(user, "Mensagem ruim!")
 		return
 	//treat voice
 	var/list/message_data = user.treat_message(input)
@@ -56,7 +56,7 @@
 	)
 	if(uses != INFINITE_CHARGES)
 		uses--
-	deadchat_broadcast(" made a fake priority announcement from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
+	deadchat_broadcast("Fez um anúncio falso de prioridade de[span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
 	user.log_talk("\[Message title\]: [title], \[Message\]: [input], \[Audio key\]: [audio_key]", LOG_TELECOMMS, tag = "priority announcement")
 	message_admins("[ADMIN_LOOKUPFLW(user)] has used [src] to make a fake announcement of [input].")
 

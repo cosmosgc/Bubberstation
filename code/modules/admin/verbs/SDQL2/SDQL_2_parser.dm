@@ -46,24 +46,9 @@
 //
 //////////
 
-#define SDQL2_VALID_OPTION_TYPES list(\
-	"autogc",\
-	"priority",\
-	"proccall",\
-	"select",\
-	"sequential",\
-)
+#define SDQL2_VALID_OPTION_TYPES list(	"autogc",	"priority",	"proccall",	"select",	"sequential",)
 
-#define SDQL2_VALID_OPTION_VALUES list(\
-	"async",\
-	"blocking",\
-	"force_nulls",\
-	"high",\
-	"keep_alive" ,\
-	"normal",\
-	"skip_nulls",\
-	"true",\
-)
+#define SDQL2_VALID_OPTION_VALUES list(	"async",	"blocking",	"force_nulls",	"high",	"keep_alive" ,	"normal",	"skip_nulls",	"true",)
 
 /datum/sdql_parser
 	var/query_type
@@ -82,7 +67,7 @@
 
 /datum/sdql_parser/proc/parse_error(error_message)
 	error = 1
-	to_chat(usr, span_warning("SDQL2 Parsing Error: [error_message]"), confidential = TRUE)
+	to_chat(usr, span_warning("Erro de análise SDQL2:[error_message]"), confidential = TRUE)
 	return query.len + 1
 
 /datum/sdql_parser/proc/parse()

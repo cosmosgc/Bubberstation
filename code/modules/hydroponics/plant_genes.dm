@@ -210,7 +210,7 @@
 /datum/plant_gene/trait/squash
 	name = "Liquid Contents"
 	icon = FA_ICON_DROPLET
-	description = "It may burst open from the internal pressure on impact."
+	description = "Pode estourar pela pressão interna no impacto."
 	trait_ids = THROW_IMPACT_ID | REAGENT_TRANSFER_ID | ATTACK_SELF_ID
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 
@@ -249,7 +249,7 @@
 		misc_smudge.name = "[our_plant.name] smudge"
 		misc_smudge.color = "#82b900"
 
-	our_plant.visible_message(span_warning("[our_plant] is squashed."),span_hear("You hear a smack."))
+	our_plant.visible_message(span_warning("[our_plant]é esmagado."),span_hear("Você ouve um tapa."))
 	SEND_SIGNAL(our_plant, COMSIG_PLANT_ON_SQUASH, target)
 
 	our_plant.reagents?.expose(our_turf)
@@ -268,7 +268,7 @@
  */
 /datum/plant_gene/trait/slip
 	name = "Slippery Skin"
-	description = "Watch your step around this."
+	description = "Cuidado com o passo."
 	icon = FA_ICON_PERSON_FALLING
 	rate = 1.6
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
@@ -302,7 +302,7 @@
  */
 /datum/plant_gene/trait/cell_charge
 	name = "Electrical Activity"
-	description = "It can electrocute on interaction or recharge batteries when eaten."
+	description = "Pode eletrocutar na interação ou recarregar baterias quando comido."
 	icon = FA_ICON_BOLT
 	rate = 0.2
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
@@ -350,7 +350,7 @@
 /datum/plant_gene/trait/cell_charge/proc/recharge_cells(obj/item/our_plant, mob/living/eater, mob/feeder)
 	SIGNAL_HANDLER
 
-	to_chat(eater, span_notice("You feel energized as you bite into [our_plant]."))
+	to_chat(eater, span_notice("Você se sente energizado enquanto morde[our_plant]."))
 	var/batteries_recharged = FALSE
 	var/obj/item/seeds/our_seed = our_plant.get_plant_seed()
 	for(var/obj/item/stock_parts/power_store/found_cell in assoc_to_values(eater.get_all_cells()))
@@ -363,7 +363,7 @@
 			found_cell.update_appearance()
 			batteries_recharged = TRUE
 	if(batteries_recharged)
-		to_chat(eater, span_notice("Your batteries are recharged!"))
+		to_chat(eater, span_notice("Suas baterias estão recarregadas!"))
 
 /*
  * Makes the plant glow. Makes the plant in tray glow, too.
@@ -373,7 +373,7 @@
 	name = "Bioluminescence"
 	icon = FA_ICON_LIGHTBULB
 	rate = 0.03
-	description = "It emits a soft glow."
+	description = "Emite um brilho suave."
 	trait_flags = TRAIT_SHOW_EXAMINE
 	trait_ids = GLOW_ID
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
@@ -403,7 +403,7 @@
 	name = "Shadow Emission"
 	rate = 0.04
 	glow_color = COLOR_BIOLUMINESCENCE_SHADOW
-	description = "It absorbs light around it."
+	description = "Absorva luz ao redor."
 
 /datum/plant_gene/trait/glow/shadow/glow_power(obj/item/seeds/seed)
 	return -max(seed.potency*(rate*0.2), 0.2)
@@ -451,7 +451,7 @@
  */
 /datum/plant_gene/trait/teleport
 	name = "Bluespace Activity"
-	description = "It causes people to teleport on interaction."
+	description = "Faz as pessoas se teletransportarem na interação."
 	icon = FA_ICON_RIGHT_LEFT
 	rate = 0.1
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
@@ -500,7 +500,7 @@
 	var/obj/item/seeds/our_seed = our_plant.get_plant_seed()
 	var/teleport_radius = max(round(our_seed.potency / 10), 1)
 	var/turf/T = get_turf(target)
-	to_chat(target, span_warning("You slip through spacetime!"))
+	to_chat(target, span_warning("Você escapa pelo espaço-tempo!"))
 	do_teleport(target, T, teleport_radius, channel = TELEPORT_CHANNEL_BLUESPACE)
 	if(prob(50))
 		do_teleport(our_plant, T, teleport_radius, channel = TELEPORT_CHANNEL_BLUESPACE)
@@ -516,7 +516,7 @@
  */
 /datum/plant_gene/trait/maxchem
 	name = "Densified Chemicals"
-	description = "The reagent volume is doubled, halving the plant yield instead."
+	description = "O volume do reagente é dobrado, reduzindo para metade o rendimento da planta."
 	icon = FA_ICON_FLASK_VIAL
 	rate = 2
 	trait_flags = TRAIT_HALVES_YIELD
@@ -538,7 +538,7 @@
 /// Allows a plant to be harvested multiple times.
 /datum/plant_gene/trait/repeated_harvest
 	name = "Perennial Growth"
-	description = "It may be harvested multiple times from the same plant."
+	description = "Pode ser colhida várias vezes da mesma planta."
 	icon = FA_ICON_CUBES_STACKED
 	/// Don't allow replica pods to be multi harvested, please.
 	seed_blacklist = list(
@@ -554,7 +554,7 @@
  */
 /datum/plant_gene/trait/battery
 	name = "Capacitive Cell Production"
-	description = "It can work like a power cell when wired properly."
+	description = "Pode funcionar como uma célula de energia quando grampeada corretamente."
 	icon = FA_ICON_CAR_BATTERY
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 	/// The number of cables needed to make a battery.
@@ -606,10 +606,10 @@
 	var/obj/item/seeds/our_seed = our_plant.get_plant_seed()
 	var/obj/item/stack/cable_coil/cabling = hit_item
 	if(!cabling.use(cables_needed_per_battery))
-		to_chat(user, span_warning("You need five lengths of cable to make a [our_plant] battery!"))
+		to_chat(user, span_warning("Você precisa de cinco comprimentos de cabo para fazer um[our_plant]Bateria!"))
 		return
 
-	to_chat(user, span_notice("You add some cable to [our_plant] and slide it inside the battery encasing."))
+	to_chat(user, span_notice("Você adiciona algum cabo para[our_plant]Deslize o interior da bateria."))
 	var/obj/item/stock_parts/power_store/cell/potato/pocell = new /obj/item/stock_parts/power_store/cell/potato(user.loc)
 	pocell.icon = our_plant.icon // Just in case the plant icons get spread out in different files eventually, this trait won't cause error sprites (also yay downstreams)
 	pocell.icon_state = our_plant.icon_state
@@ -631,7 +631,7 @@
  */
 /datum/plant_gene/trait/stinging
 	name = "Hypodermic Prickles"
-	description = "It stings, passing some reagents in the process."
+	description = "Ele pica, passando reagentes alguns no processo."
 	icon = FA_ICON_SYRINGE
 	trait_ids = REAGENT_TRANSFER_ID
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
@@ -662,14 +662,14 @@
 	if(living_target.reagents && living_target.can_inject())
 		var/injecting_amount = max(1, our_seed.potency * 0.2) // Minimum of 1, max of 20
 		our_plant.reagents.trans_to(living_target, injecting_amount, methods = INJECT)
-		to_chat(target, span_danger("You are pricked by [our_plant]!"))
+		to_chat(target, span_danger("Você é picado por[our_plant]!"))
 		log_combat(our_plant, living_target, "pricked and attempted to inject reagents from [our_plant] to [living_target]. Last touched by: [our_plant.fingerprintslast].")
 		our_plant.investigate_log("pricked and injected [key_name(living_target)] and injected [injecting_amount] reagents at [AREACOORD(living_target)]. Last touched by: [our_plant.fingerprintslast].", INVESTIGATE_BOTANY)
 
 /// Explodes into reagent-filled smoke when squashed.
 /datum/plant_gene/trait/smoke
 	name = "Gaseous Decomposition"
-	description = "It can be smashed to turn its Liquid Contents into smoke."
+	description = "Pode ser esmagado para transformar seu conteúdo líquido em fumaça."
 	icon = FA_ICON_CLOUD
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 
@@ -699,7 +699,7 @@
 /// Makes the plant and its seeds fireproof. From lavaland plants.
 /datum/plant_gene/trait/fire_resistance
 	name = "Fire Resistance"
-	description = "Makes the seeds, plant and produce fireproof."
+	description = "Faz as sementes, planta e produz à prova de fogo."
 	icon = FA_ICON_FIRE
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 
@@ -722,7 +722,7 @@
 /// Invasive spreading lets the plant jump to other trays, and the spreading plant won't replace plants of the same type.
 /datum/plant_gene/trait/invasive
 	name = "Invasive Spreading"
-	description = "It attempts to spread around if not contained."
+	description = "Tenta se espalhar se não for contido."
 	icon = FA_ICON_VIRUS
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 
@@ -762,7 +762,7 @@
 	if(target_tray.myseed) // Check if there's another seed in the next tray.
 		if(target_tray.myseed.type == origin_tray.myseed.type && target_tray.plant_status != HYDROTRAY_PLANT_DEAD)
 			return FALSE // It should not destroy its own kind.
-		target_tray.visible_message(span_warning("The [target_tray.myseed.plantname] is overtaken by [origin_tray.myseed.plantname]!"))
+		target_tray.visible_message(span_warning("O[target_tray.myseed.plantname]é ultrapassado por[origin_tray.myseed.plantname]!"))
 		QDEL_NULL(target_tray.myseed)
 	target_tray.set_seed(origin_tray.myseed.Copy())
 	target_tray.age = 0
@@ -770,7 +770,7 @@
 	target_tray.lastcycle = world.time
 	target_tray.set_weedlevel(0, update_icon = FALSE) // Reset
 	target_tray.set_pestlevel(0) // Reset
-	target_tray.visible_message(span_warning("The [origin_tray.myseed.plantname] spreads!"))
+	target_tray.visible_message(span_warning("O[origin_tray.myseed.plantname]Se espalha!"))
 	if(target_tray.myseed)
 		target_tray.name = "[initial(target_tray.name)] ([target_tray.myseed.plantname])"
 	else
@@ -788,7 +788,7 @@
  */
 /datum/plant_gene/trait/brewing
 	name = "Auto-Distilling Composition"
-	description = "Its nutriments undergo fermentation."
+	description = "Seus nutrientes são fermentados."
 	icon = FA_ICON_WINE_GLASS
 	trait_ids = CONTENTS_CHANGE_ID
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
@@ -800,7 +800,7 @@
  */
 /datum/plant_gene/trait/juicing
 	name = "Auto-Juicing Composition"
-	description = "Its nutriments turn into juice."
+	description = "Seus nutrientes se transformam em suco."
 	icon = FA_ICON_GLASS_WATER
 	trait_ids = CONTENTS_CHANGE_ID
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
@@ -812,7 +812,7 @@
  */
 /datum/plant_gene/trait/plant_laughter
 	name = "Hallucinatory Feedback"
-	description = "Makes sounds when people slip on it."
+	description = "Faz filhos quando as pessoas escorregam nele."
 	icon = FA_ICON_FACE_LAUGH_SQUINT
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 	/// Sounds that play when this trait triggers
@@ -838,7 +838,7 @@
 /datum/plant_gene/trait/plant_laughter/proc/laughter(obj/item/our_plant, atom/target)
 	SIGNAL_HANDLER
 
-	our_plant.audible_message(span_notice("[our_plant] lets out burst of laughter."))
+	our_plant.audible_message(span_notice("[our_plant]Vamos começar a rir."))
 	playsound(our_plant, pick(sounds), 100, FALSE, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /**
@@ -848,7 +848,7 @@
  */
 /datum/plant_gene/trait/eyes
 	name = "Oculary Mimicry"
-	description = "It watches after you."
+	description = "Ele cuida de você."
 	icon = FA_ICON_EYE
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 	trait_flags = TRAIT_SHOW_EXAMINE
@@ -866,7 +866,7 @@
 /// Makes the plant embed on thrown impact.
 /datum/plant_gene/trait/sticky
 	name = "Prickly Adhesion"
-	description = "It sticks to people when thrown, also passing reagents if stingy."
+	description = "Ele gruda nas pessoas quando jogado, também passa reagentes se mesquinho."
 	icon = FA_ICON_BANDAGE
 	trait_ids = THROW_IMPACT_ID
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
@@ -908,7 +908,7 @@
  */
 /datum/plant_gene/trait/chem_heating
 	name = "Exothermic Activity"
-	description = "It consumes nutriments to heat up other reagents, halving the yield."
+	description = "Elegantes nutrientes para aquecer outros reagentes, metade do rendimento."
 	icon = FA_ICON_TEMPERATURE_ARROW_UP
 	trait_ids = TEMP_CHANGE_ID
 	trait_flags = TRAIT_HALVES_YIELD
@@ -920,7 +920,7 @@
  */
 /datum/plant_gene/trait/chem_cooling
 	name = "Endothermic Activity"
-	description = "It consumes nutriments to cool down other reagents, halving the yield."
+	description = "Ele é um nutriente para esfriar outros reagentes, metade do rendimento."
 	icon = FA_ICON_TEMPERATURE_ARROW_DOWN
 	trait_ids = TEMP_CHANGE_ID
 	trait_flags = TRAIT_HALVES_YIELD
@@ -929,19 +929,19 @@
 /// Prevents species mutation, while still allowing wild mutation harvest and Floral Somatoray species mutation.  Trait acts as a tag for hydroponics.dm to recognise.
 /datum/plant_gene/trait/never_mutate
 	name = "Prosophobic Inclination"
-	description = "The plant does not mutate normally, but may give a mutated produce."
+	description = "A planta não muda normalmente, mas pode dar um produto mutado."
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 
 /// Prevents stat mutation caused by instability.  Trait acts as a tag for hydroponics.dm to recognise.
 /datum/plant_gene/trait/stable_stats
 	name = "Symbiotic Resilience"
-	description = "High instability does not affect the plant stats."
+	description = "Alta instabilidade não afeta as estatísticas da planta."
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 
 /// Traits for flowers, makes plants not decompose.
 /datum/plant_gene/trait/preserved
 	name = "Natural Insecticide"
-	description = "It does not attract ants or decompose."
+	description = "Não atrai formigas nem se decompõe."
 	icon = FA_ICON_BUG_SLASH
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 
@@ -957,13 +957,13 @@
 /// Ignores tox damage
 /datum/plant_gene/trait/tox_resistance
 	name = "Toxin Resistance"
-	description = "It is immune to the negative effects of a toxic environment."
+	description = "É imune aos efeitos negativos de um ambiente tóxico."
 	icon = FA_ICON_SKULL_CROSSBONES
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 
 /datum/plant_gene/trait/carnivory
 	name = "Obligate Carnivory"
-	description = "Pests have positive effect on the plant health."
+	description = "Pestes têm efeito positivo na saúde vegetal."
 	icon = FA_ICON_SPIDER
 
 /// Plant type traits. Incompatible with one another.
@@ -975,19 +975,19 @@
 /// Weeds don't get annoyed by weeds in their tray.
 /datum/plant_gene/trait/plant_type/weed_hardy
 	name = "Weed Adaptation"
-	description = "It is a weed that needs no nutrients and doesn't suffer from other weeds."
+	description = "É uma erva daninha que não precisa de nutrientes e não sofre de outras ervas."
 	icon = FA_ICON_SEEDLING
 
 /// Mushrooms need less light and have a minimum yield.
 /datum/plant_gene/trait/plant_type/fungal_metabolism
 	name = "Fungal Vitality"
-	description = "It is a mushroom that needs no water, less light and can't be overtaken by weeds."
+	description = "É um cogumelo que não precisa de água, menos luz e não pode ser ultrapassado por ervas daninhas."
 	icon = FA_ICON_DROPLET_SLASH
 
 /// A plant that thrives in toxic environments.
 /datum/plant_gene/trait/plant_type/toxin_adaptation
 	name = "Toxin Adaptation"
-	description = "It is a toxic plant that thrives in poisonous environments."
+	description = "É uma planta tóxica que prospera em ambientes venenosos."
 	icon = FA_ICON_SKULL_CROSSBONES
 
 /// Currently unused and does nothing. Appears in strange seeds.
@@ -997,17 +997,17 @@
 
 /datum/plant_gene/trait/carnivory
 	name = "Obligate Carnivory"
-	description = "Pests have positive effect on the plant health."
+	description = "Pestes têm efeito positivo na saúde vegetal."
 	icon = FA_ICON_SPIDER
 
 /datum/plant_gene/trait/semiaquatic
 	name = "Semiaquatic"
-	description = "A type of plant that thrives in flooded conditions due to less competion from weeds, but can also grow on land."
+	description = "Um tipo de planta que prospera em condições inundadas devido à menor concorrência de ervas daninhas, mas também pode crescer em terra."
 	icon = FA_ICON_BOWL_RICE
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 
 /datum/plant_gene/trait/soil_lover
 	name = "Soil Lover"
-	description = "A plant that needs the firm embrace of soil to develop properly, produces small irregular produce when grown hydroponically."
+	description = "Uma planta que precisa do firme abraço do solo para se desenvolver corretamente, produz pequenos produtos irregulares quando cultivados hidroponicamente."
 	icon =  FA_ICON_MOUND
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE

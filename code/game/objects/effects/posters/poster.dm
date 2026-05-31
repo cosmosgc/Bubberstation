@@ -13,7 +13,7 @@
  */
 /obj/item/poster
 	name = "poorly coded poster"
-	desc = "You probably shouldn't be holding this."
+	desc = "Você provavelmente não deveria estar segurando isso."
 	icon = 'icons/obj/poster.dmi'
 	force = 0
 	resistance_flags = FLAMMABLE
@@ -54,20 +54,20 @@
 
 /obj/item/poster/examine(mob/user)
 	. = ..()
-	. += span_notice("You can booby-trap the poster by using a glass shard on it before you put it up.")
+	. += span_notice("Pode prender o pôster usando um caco de vidro antes de colocar.")
 
 /obj/item/poster/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
 	if(!istype(I, /obj/item/shard))
 		return ..()
 
 	if (locate(/obj/item/shard) in (poster_structure?.contents || contents))
-		balloon_alert(user, "already trapped!")
+		balloon_alert(user, "Já está preso!")
 		return
 
 	if(!user.transferItemToLoc(I, src))
 		return
 
-	to_chat(user, span_notice("You conceal \the [I] inside the rolled up poster."))
+	to_chat(user, span_notice("Você esconde\the [I]dentro do cartaz enrolado."))
 
 /obj/item/poster/interact_with_atom(turf/closed/wall_structure, mob/living/user, list/modifiers)
 	if(!isclosedturf(wall_structure))
@@ -76,7 +76,7 @@
 	var/turf/user_turf = get_turf(user)
 	var/dir = get_dir(user_turf, wall_structure)
 	if(!(dir in GLOB.cardinals))
-		balloon_alert(user, "stand in line with wall!")
+		balloon_alert(user, "Fiquem em fila com a parede!")
 		return ITEM_INTERACT_BLOCKING
 
 	// Deny placing posters on currently-diagonal walls, although the wall may change in the future.
@@ -84,7 +84,7 @@
 		for(var/overlay in wall_structure.overlays)
 			var/image/new_image = overlay
 			if(copytext(new_image.icon_state, 1, 3) == "d-") //3 == length("d-") + 1
-				to_chat(user, span_warning("Cannot place on diagonal wall!"))
+				to_chat(user, span_warning("Não pode colocar na parede diagonal!"))
 				return ITEM_INTERACT_FAILURE
 
 	var/stuff_on_wall = 0
@@ -97,7 +97,7 @@
 			balloon_alert(user, "sem espaço!")
 			return ITEM_INTERACT_FAILURE
 
-	balloon_alert(user, "hanging poster...")
+	balloon_alert(user, "Pendurando cartaz...")
 	var/obj/structure/sign/poster/placed_poster = poster_structure || new poster_type(src)
 	placed_poster.forceMove(user_turf)
 	placed_poster.setDir(dir)
@@ -138,7 +138,7 @@
 /obj/structure/sign/poster
 	name = "poster"
 	var/original_name
-	desc = "A large piece of space-resistant printed paper."
+	desc = "Um grande pedaço de papel impresso resistente ao espaço."
 	icon = 'icons/obj/poster.dmi'
 	anchored = TRUE
 	buildable_sign = FALSE //Cannot be unwrenched from a wall.
@@ -165,7 +165,7 @@
 	if(!ruined)
 		original_name = name // can't use initial because of random posters
 		name = "poster - [name]"
-		desc = "A large piece of space-resistant printed paper. [desc]"
+		desc = "Um grande pedaço de papel impresso resistente ao espaço.[desc]"
 
 	AddElement(/datum/element/beauty, 300)
 
@@ -227,10 +227,10 @@
 /obj/structure/sign/poster/wirecutter_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src, 100)
 	if(ruined)
-		to_chat(user, span_notice("You remove the remnants of the poster."))
+		to_chat(user, span_notice("Você remove os restos do cartaz."))
 		qdel(src)
 	else
-		to_chat(user, span_notice("You carefully remove the poster from the wall."))
+		to_chat(user, span_notice("Você cuidadosamente remove o cartaz da parede."))
 		roll_and_drop(Adjacent(user) ? get_turf(user) : loc, user)
 	return ITEM_INTERACT_SUCCESS
 
@@ -243,7 +243,7 @@
 /// Check to see if this poster is tearable and gives the user feedback if it is not.
 /obj/structure/sign/poster/proc/check_tearability(mob/user)
 	if(ruined)
-		balloon_alert(user, "already ruined!")
+		balloon_alert(user, "Já está arruinado!")
 		return FALSE
 	return TRUE
 
@@ -253,9 +253,9 @@
 	if (!payload)
 		return
 
-	to_chat(user, span_warning("There's something sharp behind this! What the hell?"))
+	to_chat(user, span_warning("Tem algo afiado atrás disso! Que diabos?"))
 	if(!can_embed_trap(user) || !payload.force_embed(user, user.get_active_hand()))
-		visible_message(span_notice("A [payload.name] falls from behind the poster.") )
+		visible_message(span_notice("A[payload.name]cai por trás do cartaz.") )
 		payload.forceMove(user.drop_location())
 
 /obj/structure/sign/poster/proc/can_embed_trap(mob/living/carbon/human/user)
@@ -282,10 +282,10 @@
 	return isclosedturf(hopefully_still_a_closed_turf)
 
 /obj/structure/sign/poster/proc/on_placed_poster(mob/user)
-	to_chat(user, span_notice("You place the poster!"))
+	to_chat(user, span_notice("Coloque o pôster!"))
 
 /obj/structure/sign/poster/proc/tear_poster(mob/user)
-	visible_message(span_notice("[user] rips [src] in a single, decisive motion!") )
+	visible_message(span_notice("[user]Rips[src]em um único movimento decisivo!") )
 	playsound(src.loc, 'sound/items/poster/poster_ripped.ogg', 100, TRUE)
 	spring_trap(user)
 
@@ -301,7 +301,7 @@
 	ruined = TRUE
 	icon_state = "poster_ripped"
 	name = "ripped poster"
-	desc = "You can't make out anything from the poster's original print. It's ruined."
+	desc = "Você não pode ver nada da impressão original do pôster. Está arruinado."
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/ripped, 32)
 
@@ -319,10 +319,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/random, 32)
 
 /obj/structure/sign/poster/greenscreen
 	name = "greenscreen"
-	desc = "Used to create a convincing illusion of a different background."
+	desc = "Costumava criar uma ilusão convincente de um fundo diferente."
 	icon_state = "greenscreen"
 	poster_item_name = "greenscreen"
-	poster_item_desc = "Used to create a convincing illusion of a different background."
+	poster_item_desc = "Costumava criar uma ilusão convincente de um fundo diferente."
 	never_random = TRUE
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/greenscreen, 32)

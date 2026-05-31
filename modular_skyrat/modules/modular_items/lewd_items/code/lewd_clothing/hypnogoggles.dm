@@ -1,6 +1,6 @@
 /obj/item/clothing/glasses/hypno
 	name = "hypnotic goggles"
-	desc = "Woaa-a-ah... This is lewd."
+	desc = "Woaa-a-ah... Isso é lascivo."
 	icon_state = "hypnogoggles_pink"
 	base_icon_state = "hypnogoggles"
 	inhand_icon_state = "hypnogoggles_pink"
@@ -94,8 +94,8 @@
 
 /datum/brain_trauma/very_special/induced_hypnosis
 	name = "Hypnosis"
-	desc = "Patient's subconscious is completely enthralled by a word or sentence. It appears to be induced by something they're wearing."
-	scan_desc = "epileptic induced looping thought pattern"
+	desc = "O subconsciente do paciente está completamente fascinado por uma palavra ou sentença. Parece ser induzido por algo que estão usando."
+	scan_desc = "Epilético induzido looping pensamento padrão"
 	gain_text = ""
 	lose_text = ""
 	resilience = TRAUMA_RESILIENCE_BASIC
@@ -118,19 +118,19 @@
 /datum/brain_trauma/very_special/induced_hypnosis/on_gain()
 	log_game("[key_name(owner)] was hypnogoggled'.")
 	to_chat(owner, "<span class = 'reallybig hypnophrase'>[hypnotic_phrase]</span>")
-	to_chat(owner, span_notice(pick("You feel your thoughts focusing on this phrase... you can't seem to get it out of your head.",
+	to_chat(owner, span_notice(pick("Você sente seus pensamentos focados nessa frase... você não consegue tirar isso da sua cabeça.",
 									"Your head hurts, but this is all you can think of. It must be vitally important.",
 									"You feel a part of your mind repeating this over and over. You need to follow these words.",
 									"Something about this sounds... right, for some reason. You feel like you should follow these words.",
 									"These words keep echoing in your mind. You find yourself completely fascinated by them.")))
-	to_chat(owner, span_boldwarning("You've been hypnotized by this sentence. You must follow these words. If it isn't a clear order, you can freely interpret how to do so, as long as you act like the words are your highest priority."))
+	to_chat(owner, span_boldwarning("Você foi hipnotizado por esta frase. Você deve seguir essas palavras. Se não é uma ordem clara, você pode interpretar livremente como fazê-lo, desde que aja como se as palavras fossem sua prioridade máxima."))
 	var/atom/movable/screen/alert/hypnosis/hypno_alert = owner.throw_alert("hypnosis", /atom/movable/screen/alert/hypnosis)
 	hypno_alert.desc = "\"[hypnotic_phrase]\"... your mind seems to be fixated on this concept."
 	return ..()
 
 /datum/brain_trauma/very_special/induced_hypnosis/on_lose()
 	log_game("[key_name(owner)] is no longer hypnogoggled.")
-	to_chat(owner, span_userdanger("You suddenly snap out of your hypnosis. The phrase '[hypnotic_phrase]' no longer feels important to you."))
+	to_chat(owner, span_userdanger("Você de repente sai da hipnose. A frase '[hypnotic_phrase]Não me sinto mais importante para você."))
 	owner.clear_alert("hypnosis")
 	..()
 

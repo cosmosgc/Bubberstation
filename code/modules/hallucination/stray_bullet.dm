@@ -105,11 +105,11 @@
 /// Called when a mob is hit by the fake projectile
 /obj/projectile/hallucination/proc/on_mob_hit(mob/living/hit_mob)
 	if(hit_mob == parent.hallucinator)
-		to_chat(parent.hallucinator, span_userdanger("[hit_mob] is hit by \a [src] in the chest!"))
+		to_chat(parent.hallucinator, span_userdanger("[hit_mob]é atingido por\a [src]Não sei!"))
 		apply_effect_to_hallucinator(parent.hallucinator)
 
 	else if(hit_mob in view(parent.hallucinator))
-		to_chat(parent.hallucinator, span_danger("[hit_mob] is hit by \a [src] in the chest!"))
+		to_chat(parent.hallucinator, span_danger("[hit_mob]é atingido por\a [src]Não sei!"))
 
 	if(damage_type == BRUTE)
 		var/splatter_dir = dir
@@ -266,15 +266,7 @@
 
 /obj/projectile/hallucination/change/apply_effect_to_hallucinator(mob/living/afflicted)
 	// Future idea: Make it so any other mob hit appear to be polymorphed to the hallucinator
-	afflicted.cause_hallucination( \
-		get_random_valid_hallucination_subtype(/datum/hallucination/delusion/preset), \
-		"fake [name]", \
-		duration = 30 SECONDS, \
-		affects_us = TRUE, \
-		affects_others = FALSE, \
-		skip_nearby = FALSE, \
-		play_wabbajack = TRUE, \
-	)
+	afflicted.cause_hallucination( 		get_random_valid_hallucination_subtype(/datum/hallucination/delusion/preset), 		"fake [name]", 		duration = 30 SECONDS, 		affects_us = TRUE, 		affects_others = FALSE, 		skip_nearby = FALSE, 		play_wabbajack = TRUE, 	)
 
 /obj/projectile/hallucination/death
 	name = "bolt of death"

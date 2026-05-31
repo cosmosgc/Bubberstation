@@ -88,7 +88,7 @@
 
 /datum/martial_art/boxing/grab_act(mob/living/attacker, mob/living/defender)
 	if(honorable_boxer && !ignore_grab_restriction)
-		attacker.balloon_alert(attacker, "no grabbing while boxing!")
+		attacker.balloon_alert(attacker, "Não agarre enquanto luta!")
 		return MARTIAL_ATTACK_FAIL
 	return MARTIAL_ATTACK_INVALID //UNLESS YOU'RE EVIL
 
@@ -103,7 +103,7 @@
 
 	if(honorable_boxer) //Being a good sport, you never hit someone on the ground or already knocked down. It shows you're the better person.
 		if(defender.body_position == LYING_DOWN && defender.get_stamina_loss() >= 100 || defender.IsUnconscious()) //If they're in stamcrit or unconscious, don't bloody punch them
-			attacker.balloon_alert(attacker, "unsportsmanlike behaviour!")
+			attacker.balloon_alert(attacker, "comportamento antiesportivo!")
 			return FALSE
 
 	var/obj/item/bodypart/arm/active_arm = attacker.get_active_hand()
@@ -145,9 +145,8 @@
 	// Similar to a normal punch, should we have a value of 0 for our lower force, we simply miss outright.
 	if(!lower_force)
 		playsound(defender.loc, active_arm.unarmed_miss_sound, 25, TRUE, -1)
-		defender.visible_message(span_warning("[attacker]'s punch misses [defender]!"), \
-			span_danger("You avoid [attacker]'s punch!"), span_hear("You hear a swoosh!"), COMBAT_MESSAGE_RANGE, attacker)
-		to_chat(attacker, span_warning("Your punch misses [defender]!"))
+		defender.visible_message(span_warning("[attacker]O soco erra.[defender]!"), 			span_danger("Você evita[attacker]É ponche!"), span_hear("Você ouve um shoosh!"), COMBAT_MESSAGE_RANGE, attacker)
+		to_chat(attacker, span_warning("Seu soco erra[defender]!"))
 		log_combat(attacker, defender, "attempted to hit", "punch (boxing) ")
 		return FALSE
 
@@ -231,13 +230,13 @@
 
 	defender.visible_message(
 		span_danger("[attacker] [current_atk_verb] [defender]!"),
-		span_userdanger("You're [current_atk_verbed] by [attacker]!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_userdanger("Você é[current_atk_verbed]Por que[attacker]!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
 	)
 
-	to_chat(attacker, span_danger("You [current_atk_verbed] [defender]!"))
+	to_chat(attacker, span_danger("Você.[current_atk_verbed] [defender]!"))
 
 	// Determines the total amount of experience earned per punch
 	var/experience_earned = round(damage/4, 1)
@@ -278,26 +277,26 @@
 /datum/martial_art/boxing/proc/crit_effect(mob/living/attacker, mob/living/defender, armor_block = 0, damage_type = STAMINA, damage = 0)
 	if(defender.get_timed_status_effect_duration(/datum/status_effect/staggered))
 		defender.visible_message(
-			span_danger("[attacker] knocks [defender] out with a haymaker!"),
-			span_userdanger("You're knocked unconscious by [attacker]!"),
-			span_hear("You hear a sickening sound of flesh hitting flesh!"),
+			span_danger("[attacker]Bate.[defender]Saia com um fingidor de feno!"),
+			span_userdanger("Você está inconsciente.[attacker]!"),
+			span_hear("Você ouve um som doentio de carne batendo em carne!"),
 			COMBAT_MESSAGE_RANGE,
 			attacker,
 		)
-		to_chat(attacker, span_danger("You knock [defender] out with a haymaker!"))
+		to_chat(attacker, span_danger("Você bate.[defender]Saia com um fingidor de feno!"))
 		defender.apply_effect(20 SECONDS, EFFECT_KNOCKDOWN, armor_block)
 		defender.SetSleeping(10 SECONDS)
 		log_combat(attacker, defender, "knocked out (boxing) ")
 	else
 		defender.visible_message(
-			span_danger("[attacker] staggers [defender] with a haymaker!"),
-			span_userdanger("You're nearly knocked off your feet by [attacker]!"),
-			span_hear("You hear a sickening sound of flesh hitting flesh!"),
+			span_danger("[attacker]Vagabundos.[defender]Com um fazedor de feno!"),
+			span_userdanger("Você quase foi derrubado por seus pés[attacker]!"),
+			span_hear("Você ouve um som doentio de carne batendo em carne!"),
 			COMBAT_MESSAGE_RANGE,
 			attacker,
 		)
 		defender.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH, 10 SECONDS)
-		to_chat(attacker, span_danger("You stagger [defender] with a haymaker!"))
+		to_chat(attacker, span_danger("Você cambaleia.[defender]Com um fazedor de feno!"))
 		log_combat(attacker, defender, "staggered (boxing) ")
 
 	if(attacker.pulling == defender && attacker.grab_state >= GRAB_AGGRESSIVE) // dubious a normal boxer will be in a state where this happens, buuuut.
@@ -366,8 +365,8 @@
 		perform_extra_effect(boxer, attacker)
 
 	boxer.visible_message(
-		span_danger("[boxer] [block_text]s [attack_text]!"),
-		span_userdanger("You [block_text] [attack_text]!"),
+		span_danger("[boxer] [block_text]S[attack_text]!"),
+		span_userdanger("Você.[block_text] [attack_text]!"),
 	)
 	if(block_text == "evade")
 		playsound(boxer.loc, active_arm.unarmed_miss_sound, 25, TRUE, -1)
@@ -383,18 +382,18 @@
 	set name = "Focus on your Form"
 	set desc = "You focus on how to make the most of your boxing form."
 	set category = "Boxing"
-	to_chat(usr, "<b><i>You focus on your form, visualizing how best to throw a punch.</i></b>")
+	to_chat(usr, "<b><i>Você se concentra em sua forma, visualizando como é melhor dar um soco.</i></b>")
 
-	to_chat(usr, "<b><i>What moves you perform depend on what mouse buttons you click, and whether the last button clicked matches which hand you have selected when you throw the last punch.</i></b>")
+	to_chat(usr, "<b><i>Quais movimentos você faz depende dos botões do mouse que você clica, e se o último botão clica em combina com qual mão você selecionou quando você dá o último soco.</i></b>")
 
 	to_chat(usr, "[span_notice("Straight Punch")]: Left Left/Right Right with the matching hand. Regular damage.")
 	to_chat(usr, "[span_notice("Jab")]: Left Left/Right Right with the opposite hand. Regular damage. If you're blind, you'll make a blind jab instead.")
 	to_chat(usr, "[span_notice("Left/Right Hook")]: Left Right/Right Left with the matching hand. Does extra damage, but slows your next hit.")
-	to_chat(usr, "[span_notice("Uppercut")]: Left Right/Right Left with the opposite hand. Has a higher probability to knock out the target, but slows your next hit.</b>")
+	to_chat(usr, "[span_notice("Uppercut")]Esquerda direita/direita esquerda com a mão oposta. Tem maior probabilidade de derrubar o alvo, mas retarda seu próximo golpe.</b>")
 
-	to_chat(usr, "<b><i>While in Throw Mode, you can block incoming punches and return a bit of damage back to an attacker. Blocking attacks this way causes you to lose some stamina damage.</i></b>")
+	to_chat(usr, "<b><i>Enquanto estiver no modo Throw, você pode bloquear os socos e devolver um pouco de dano a um atacante. Bloquear ataques dessa forma faz você perder algum dano à resistência.</i></b>")
 
-	to_chat(usr, "<b><i>Your boxing abilities are only able to be used on other boxers.</i></b>")
+	to_chat(usr, "<b><i>Suas habilidades de boxe só podem ser usadas em outros boxeadores.</i></b>")
 
 // Boxing Variants!
 
@@ -413,17 +412,17 @@
 	set name = "Focus on Brawling"
 	set desc = "You ponder how best to rearrange the faces of your enemies."
 	set category = "Evil Boxing"
-	to_chat(usr, "<b><i>You contemplate on the violence ahead, visualizing how best to throw a punch.</i></b>")
+	to_chat(usr, "<b><i>Você contempla a violência à frente, visualizando como é melhor dar um soco.</i></b>")
 
-	to_chat(usr, "<b><i>What moves you perform depend on what mouse buttons you click, and whether the last button clicked matches which hand you have selected when you throw the last punch.</i></b>")
+	to_chat(usr, "<b><i>Quais movimentos você faz depende dos botões do mouse que você clica, e se o último botão clica em combina com qual mão você selecionou quando você dá o último soco.</i></b>")
 
 	to_chat(usr, "[span_notice("Straight Punch")]: Left Left/Right Right with the matching hand. Regular damage.")
 	to_chat(usr, "[span_notice("Jab")]: Left Left/Right Right with the opposite hand. Regular damage. If you're blind, you'll make a blind jab instead.")
 	to_chat(usr, "[span_notice("Left/Right Hook")]: Left Right/Right Left with the matching hand. Does extra damage, but slows your next hit.")
-	to_chat(usr, "[span_notice("Uppercut")]: Left Right/Right Left with the opposite hand. Has a higher probability to knock out the target, but slows your next hit.")
+	to_chat(usr, "[span_notice("Uppercut")]Esquerda direita/direita esquerda com a mão oposta. Tem maior probabilidade de derrubar o alvo, mas retarda seu próximo golpe.")
 	to_chat(usr, "[span_notice("Sucker Punch")]: Any combination done to a vulnerable target becomes a sucker punch. This could knock them out in one!.</b>")
 
-	to_chat(usr, "<b><i>While in Throw Mode, you can block incoming punches and return a bit of damage back to an attacker. Blocking attacks this way causes you to lose some stamina damage.</i></b>")
+	to_chat(usr, "<b><i>Enquanto estiver no modo Throw, você pode bloquear os socos e devolver um pouco de dano a um atacante. Bloquear ataques dessa forma faz você perder algum dano à resistência.</i></b>")
 
 /// Hunter Boxing: for the uncaring, completely deranged one-spacer ecological disaster.
 /// The honor check accepts boxing ready targets, OR various biotypes as valid targets. Uses a special crit effect rather than the standard one (against monsters).
@@ -446,19 +445,19 @@
 	set name = "Focus on the Hunt"
 	set desc = "You focus on how to most effectively punch the hell out of another endangered species."
 	set category = "Hunter Boxing"
-	to_chat(usr, "<b><i>You focus on your Fists. You focus on Adventure. You focus on the Hunt.</i></b>")
+	to_chat(usr, "<b><i>Concentre-se nos seus Punhos. Você se concentra em Aventura. Você se concentra na Caçada.</i></b>")
 
-	to_chat(usr, "<b><i>What moves you perform depend on what mouse buttons you click, and whether the last button clicked matches which hand you have selected when you throw the last punch.</i></b>")
+	to_chat(usr, "<b><i>Quais movimentos você faz depende dos botões do mouse que você clica, e se o último botão clica em combina com qual mão você selecionou quando você dá o último soco.</i></b>")
 
 	to_chat(usr, "[span_notice("Straight Punch")]: Left Left/Right Right with the matching hand. Regular damage.")
 	to_chat(usr, "[span_notice("Jab")]: Left Left/Right Right with the opposite hand. Regular damage. If you're blind, you'll make a blind jab instead.")
 	to_chat(usr, "[span_notice("Left/Right Hook")]: Left Right/Right Left with the matching hand. Does extra damage, but slows your next hit.")
-	to_chat(usr, "[span_notice("Uppercut")]: Left Right/Right Left with the opposite hand. Has a higher probability to critically hit the target, but slows your next hit.</b>")
+	to_chat(usr, "[span_notice("Uppercut")]Esquerda direita/direita esquerda com a mão oposta. Tem uma probabilidade maior de atingir o alvo, mas retarda seu próximo golpe.</b>")
 
-	to_chat(usr, "<b><i>While in Throw Mode, you can block incoming punches and return a bit of damage back to an attacker. Blocking attacks this way causes you to lose some stamina damage.</i></b>")
-	to_chat(usr, "<b><i>Stringing together effective combos restores some of your health and deals even more damage.</i></b>")
+	to_chat(usr, "<b><i>Enquanto estiver no modo Throw, você pode bloquear os socos e devolver um pouco de dano a um atacante. Bloquear ataques dessa forma faz você perder algum dano à resistência.</i></b>")
+	to_chat(usr, "<b><i>Juntar combinações eficazes restaura um pouco de sua saúde e causa mais danos.</i></b>")
 
-	to_chat(usr, "<b><i>Your hunter boxing abilities are only able to be used on the various flora, fauna and unnatural creatures that reside in this universe. Against normal humanoids, you are just a boxer.</i></b>")
+	to_chat(usr, "<b><i>Suas habilidades de caçador de boxe só podem ser usadas nas várias floras, fauna e criaturas não naturais que residem neste universo. Contra humanóides normais, você é apenas um boxeador.</i></b>")
 
 /datum/martial_art/boxing/hunter/honor_check(mob/living/possible_boxer)
 	if(HAS_TRAIT(possible_boxer, TRAIT_BOXING_READY))
@@ -482,13 +481,13 @@
 	var/second_word_pick = pick(second_word_strike)
 
 	defender.visible_message(
-		span_danger("[attacker] knocks the absolute bajeezus out of [defender] utilizing the terrifying [first_word_pick][second_word_pick]!!!"),
-		span_userdanger("You have the absolute bajeezus knocked out of you by [attacker]!!!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_danger("[attacker]Tira o bajeezus absolvuto de[defender]usando o aterrorizante[first_word_pick][second_word_pick]!!!"),
+		span_userdanger("Você tem o bajeezus absoluto para fora de você por[attacker]!!!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
 	)
-	to_chat(attacker, span_danger("You knock the absolute bajeezus out of [defender] out with the terrifying [first_word_pick][second_word_pick]!!!"))
+	to_chat(attacker, span_danger("Você derruba o bajeezus absoluto de[defender]com o aterrorizante[first_word_pick][second_word_pick]!!!"))
 	if(ishuman(attacker))
 		var/mob/living/carbon/human/human_attacker = attacker
 		human_attacker.force_say()

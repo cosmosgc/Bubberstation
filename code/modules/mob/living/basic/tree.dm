@@ -1,6 +1,6 @@
 /mob/living/basic/tree
 	name = "pine tree"
-	desc = "A pissed off tree-like alien. It seems annoyed with the festivities..."
+	desc = "Um alienígena irritado como uma árvore. Parece irritado com as festividades..."
 	icon = 'icons/obj/fluff/flora/pinetrees.dmi'
 	icon_state = "pine_1"
 	icon_living = "pine_1"
@@ -39,7 +39,7 @@
 	minimum_survivable_temperature = 0
 	maximum_survivable_temperature = 1200
 
-	death_message = "is hacked into pieces!"
+	death_message = "é cortado em pedaços!"
 
 	ai_controller = /datum/ai_controller/basic_controller/tree
 
@@ -95,8 +95,8 @@
 	if(prob(paralyze_prob + boost))
 		victim.Paralyze(paralyze_value + boost)
 		victim.visible_message(
-			span_danger("[src] knocks down [victim]!"),
-			span_userdanger("[src] knocks you down!"),
+			span_danger("[src]Derruba.[victim]!"),
+			span_userdanger("[src]Derruba você!"),
 		)
 
 /datum/ai_controller/basic_controller/tree

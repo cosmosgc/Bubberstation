@@ -76,18 +76,7 @@ SUBSYSTEM_DEF(job)
 	var/list/job_config_datum_singletons = list()
 
 	/// This is just the message we prepen and put into all of the config files to ensure documentation. We use this in more than one place, so let's put it in the SS to make life a bit easier.
-	var/config_documentation = "## This is the configuration file for the job system.\n## This will only be enabled when the config flag LOAD_JOBS_FROM_TXT is enabled.\n\
-	## We use a system of keys here that directly correlate to the job, just to ensure they don't desync if we choose to change the name of a job.\n## You are able to change (as of now) five (six if the job is a command head) different variables in this file.\n\
-	## Total Positions are how many job slots you get in a shift, Spawn Positions are how many you get that load in at spawn. If you set this to -1, it is unrestricted.\n## Playtime Requirements is in minutes, and the job will unlock when a player reaches that amount of time.\n\
-	## However, that can be superseded by Required Account Age, which is a time in days that you need to have had an account on the server for.\n\
-	## Also there is a required character age in years. It prevents player from joining as this job, if their character's age as is lower than required. Setting it to 0 means it is turned off for this job.\n\
-	## Lastly there's Human Authority Whitelist Setting. You can set it to either \"HUMANS_ONLY\" or \"NON_HUMANS_ALLOWED\". Check the \"Human Authority\" setting on the game_options file to know which you should choose. Note that this entry only appears on jobs that are marked as heads of staff.\n\n\
-	## As time goes on, more config options may be added to this file.\n\
-	## You can use the admin verb 'Generate Job Configuration' in-game to auto-regenerate this config as a downloadable file without having to manually edit this file if we add more jobs or more things you can edit here.\n\
-	## It will always respect prior-existing values in the config, but will appropriately add more fields when they generate.\n## It's strongly advised you create your own version of this file rather than use the one provisioned on the codebase.\n\n\
-	## The game will not read any line that is commented out with a '#', as to allow you to defer to codebase defaults.\n## If you want to override the codebase values, add the value and then uncomment that line by removing the # from the job key's name.\n\
-	## Ensure that the key is flush, do not introduce any whitespaces when you uncomment a key. For example:\n## \"# Total Positions\" should always be changed to \"Total Positions\", no additional spacing.\n\
-	## Best of luck editing!\n"
+	var/config_documentation = "## This is the configuration file for the job system.\n## This will only be enabled when the config flag LOAD_JOBS_FROM_TXT is enabled.\n	## We use a system of keys here that directly correlate to the job, just to ensure they don't desync if we choose to change the name of a job.\n## You are able to change (as of now) five (six if the job is a command head) different variables in this file.\n	## Total Positions are how many job slots you get in a shift, Spawn Positions are how many you get that load in at spawn. If you set this to -1, it is unrestricted.\n## Playtime Requirements is in minutes, and the job will unlock when a player reaches that amount of time.\n	## However, that can be superseded by Required Account Age, which is a time in days that you need to have had an account on the server for.\n	## Also there is a required character age in years. It prevents player from joining as this job, if their character's age as is lower than required. Setting it to 0 means it is turned off for this job.\n	## Lastly there's Human Authority Whitelist Setting. You can set it to either \"HUMANS_ONLY\" or \"NON_HUMANS_ALLOWED\". Check the \"Human Authority\" setting on the game_options file to know which you should choose. Note that this entry only appears on jobs that are marked as heads of staff.\n\n	## As time goes on, more config options may be added to this file.\n	## You can use the admin verb 'Generate Job Configuration' in-game to auto-regenerate this config as a downloadable file without having to manually edit this file if we add more jobs or more things you can edit here.\n	## It will always respect prior-existing values in the config, but will appropriately add more fields when they generate.\n## It's strongly advised you create your own version of this file rather than use the one provisioned on the codebase.\n\n	## The game will not read any line that is commented out with a '#', as to allow you to defer to codebase defaults.\n## If you want to override the codebase values, add the value and then uncomment that line by removing the # from the job key's name.\n	## Ensure that the key is flush, do not introduce any whitespaces when you uncomment a key. For example:\n## \"# Total Positions\" should always be changed to \"Total Positions\", no additional spacing.\n	## Best of luck editing!\n"
 
 /datum/controller/subsystem/job/Initialize()
 	setup_job_lists()
@@ -153,7 +142,7 @@ SUBSYSTEM_DEF(job)
 		joinable_departments = list()
 		joinable_departments_by_type = list()
 		experience_jobs_map = list()
-		to_chat(world, span_boldannounce("Error setting up jobs, no job datums found"))
+		to_chat(world, span_boldannounce("Erro na criação de empregos, nenhum dado de trabalho encontrado."))
 		return FALSE
 
 	var/list/new_all_occupations = list()
@@ -725,7 +714,7 @@ SUBSYSTEM_DEF(job)
 	job_debug("RJCT: Player rejected, Player: [player]")
 	unassigned -= player
 	if(!run_divide_occupation_pure)
-		to_chat(player, span_infoplain("<b>You have failed to qualify for any job you desired.</b>"))
+		to_chat(player, span_infoplain("<b>Você falhou em se qualificar para qualquer trabalho que desejasse.</b>"))
 		player.ready = PLAYER_NOT_READY
 		player.client << output(player.ready, "lobby_browser:imgsrc") //SKYRAT EDIT ADDITION
 
@@ -843,20 +832,20 @@ SUBSYSTEM_DEF(job)
 
 /obj/item/paper/paperslip/corporate/fluff/spare_id_safe_code
 	name = "Nanotrasen-Approved Spare ID Safe Code"
-	desc = "Proof that you have been approved for Captaincy, with all its glory and all its horror."
+	desc = "Prova de que você foi aprovado para a Capitania, com toda sua glória e horror."
 
 /obj/item/paper/paperslip/corporate/fluff/spare_id_safe_code/Initialize(mapload)
 	var/safe_code = SSid_access.spare_id_safe_code
-	default_raw_text = "Captain's Spare ID safe code combination: [safe_code ? safe_code : "\[REDACTED\]"]<br><br>The spare ID can be found in its dedicated safe on the bridge.<br><br>If your job would not ordinarily have Head of Staff access, your ID card has been specially modified to possess it."
+	default_raw_text = "A combinação de código de segurança do Capitão Spare ID.[safe_code ? safe_code : "\[REDACTED\]"]<br><br>A identidade extra pode ser encontrada em seu cofre dedicado na ponte.<br><br>Se seu trabalho não tivesse acesso ao Chefe de Gabinete, seu cartão de identidade foi modificado para possuí-lo."
 	return ..()
 
 /obj/item/paper/paperslip/corporate/fluff/emergency_spare_id_safe_code
 	name = "Emergency Spare ID Safe Code Requisition"
-	desc = "Proof that nobody has been approved for Captaincy. A skeleton key for a skeleton shift."
+	desc = "Prova de que ninguém foi aprovado para a Capitania. Uma chave de esqueleto para uma mudança de esqueleto."
 
 /obj/item/paper/paperslip/corporate/fluff/emergency_spare_id_safe_code/Initialize(mapload)
 	var/safe_code = SSid_access.spare_id_safe_code
-	default_raw_text = "Captain's Spare ID safe code combination: [safe_code ? safe_code : "\[REDACTED\]"]<br><br>The spare ID can be found in its dedicated safe on the bridge."
+	default_raw_text = "A combinação de código de segurança do Capitão Spare ID.[safe_code ? safe_code : "\[REDACTED\]"]<br><br>A identidade extra pode ser encontrada em seu cofre dedicado na ponte."
 	return ..()
 
 /datum/controller/subsystem/job/proc/promote_to_captain(mob/living/carbon/human/new_captain, acting_captain = FALSE)
@@ -875,9 +864,9 @@ SUBSYSTEM_DEF(job)
 	var/where = new_captain.equip_in_one_of_slots(paper, slots, FALSE, indirect_action = TRUE) || "at your feet"
 
 	if(acting_captain)
-		to_chat(new_captain, span_notice("Due to your position in the chain of command, you have been promoted to Acting Captain. You can find in important note about this [where]."))
+		to_chat(new_captain, span_notice("Devido à sua posição na cadeia de comando, você foi promovido a Capitão Interino. Você pode encontrar em nota importante sobre isso.[where]."))
 	else
-		to_chat(new_captain, span_notice("You can find the code to obtain your spare ID from the secure safe on the Bridge [where]."))
+		to_chat(new_captain, span_notice("Você pode encontrar o código para obter sua identidade extra do cofre seguro na Ponte[where]."))
 		new_captain.add_mob_memory(/datum/memory/key/captains_spare_code, safe_code = SSid_access.spare_id_safe_code)
 
 	// Force-give their ID card bridge access.

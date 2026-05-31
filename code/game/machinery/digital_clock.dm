@@ -1,6 +1,6 @@
 /obj/machinery/digital_clock
 	name = "digital clock"
-	desc = "An ultra-futuristic, sleek, advanced, next-gen normal digital clock that tells the time. Powered by bluespace. Despite supposedly being better in every way to classic clocks, it just doesn't feel the same. They just don't make them the way they used to..."
+	desc = "Um ultra-futurista, elegante, avançado, relógio digital normal da próxima geração que diz as horas. Alimentado pelo espaço azul. Apesar de supostamente ser melhor em todos os sentidos para relógios clássicos, não parece o mesmo. Eles não fazem como costumavam..."
 	icon_state = "digital_clock_base"
 	icon = 'icons/obj/digital_clock.dmi'
 	verb_say = "beeps"
@@ -13,7 +13,7 @@
 
 /obj/item/wallframe/digital_clock
 	name = "digital clock frame"
-	desc = "Used to build digital clocks, just secure to the wall."
+	desc = "Costumava construir relógios digitais, apenas seguros na parede."
 	icon_state = "digital_clock_base"
 	icon = 'icons/obj/digital_clock.dmi'
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 4)
@@ -22,11 +22,11 @@
 
 /obj/machinery/digital_clock/wrench_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
-	balloon_alert(user, "[anchored ? "un" : ""]securing...")
+	balloon_alert(user, "[anchored ? "un" : ""]Segurando...")
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 6 SECONDS))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, vary = TRUE)
-		balloon_alert(user, "[anchored ? "un" : ""]secured")
+		balloon_alert(user, "[anchored ? "un" : ""]Seguro.")
 		deconstruct()
 		return TRUE
 
@@ -36,7 +36,7 @@
 	if(atom_integrity >= max_integrity)
 		balloon_alert(user, "não precisa de reparos!")
 		return TRUE
-	balloon_alert(user, "repairing display...")
+	balloon_alert(user, "Reparando exibição...")
 	if(!tool.use_tool(src, user, 4 SECONDS, amount = 0, volume=50))
 		return TRUE
 	balloon_alert(user, "consertado")

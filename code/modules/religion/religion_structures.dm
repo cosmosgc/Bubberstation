@@ -1,6 +1,6 @@
 /obj/structure/altar
 	name = "\improper Altar"
-	desc = "A religious structure. You could lie on it if you wanted to."
+	desc = "Uma estrutura religiosa. Pode me fazer uma pergunta."
 	icon = 'icons/obj/service/hand_of_god_structures.dmi'
 	icon_state = "convertaltar"
 	density = TRUE
@@ -30,9 +30,9 @@
 		return ..()
 	var/mob/living/pushed_mob = user.pulling
 	if(pushed_mob.buckled)
-		to_chat(user, span_warning("[pushed_mob] is buckled to [pushed_mob.buckled]!"))
+		to_chat(user, span_warning("[pushed_mob]está dobrado para[pushed_mob.buckled]!"))
 		return ..()
-	to_chat(user, span_notice("You try to coax [pushed_mob] onto [src]..."))
+	to_chat(user, span_notice("Você tenta persuadir[pushed_mob]em frente[src]..."))
 	if(!do_after(user,(5 SECONDS),target = pushed_mob))
 		return ..()
 	pushed_mob.forceMove(loc)
@@ -41,7 +41,7 @@
 /// This one actually has relevance to chaplains
 /obj/structure/altar/of_gods
 	name = "\improper Altar of the Gods"
-	desc = "An altar which allows the head of the church to choose a sect of religious teachings as well as provide sacrifices to earn favor."
+	desc = "Um altar que permite ao chefe da igreja escolher uma seita de ensinamentos religiosos, bem como oferecer sacrifícios para ganhar favor."
 	///Avoids having to check global everytime by referencing it locally.
 	var/datum/religion_sect/sect_to_altar
 
@@ -58,17 +58,17 @@
 /obj/structure/altar/of_gods/examine_more(mob/user)
 	if(!isobserver(user))
 		return ..()
-	. = list(span_notice("<i>You examine [src] closer, and note the following...</i>"))
+	. = list(span_notice("<i>Você examina.[src]Mais preto, e nota o segundo...</i>"))
 	if(GLOB.religion)
-		. += list(span_notice("Deity: [GLOB.deity]."))
-		. += list(span_notice("Religion: [GLOB.religion]."))
-		. += list(span_notice("Bible: [GLOB.bible_name]."))
+		. += list(span_notice("Deidade:[GLOB.deity]."))
+		. += list(span_notice("Religião:[GLOB.religion]."))
+		. += list(span_notice("Bíblia:[GLOB.bible_name]."))
 	if(GLOB.religious_sect)
-		. += list(span_notice("Sect: [GLOB.religious_sect]."))
-		. += list(span_notice("Favor: [GLOB.religious_sect.favor]."))
+		. += list(span_notice("Sect:[GLOB.religious_sect]."))
+		. += list(span_notice("Favor:[GLOB.religious_sect.favor]."))
 	var/chaplains = get_chaplains()
 	if(isAdminObserver(user) && chaplains)
-		. += list(span_notice("Chaplains: [chaplains]."))
+		. += list(span_notice("Capelães:[chaplains]."))
 
 /obj/structure/altar/of_gods/proc/reflect_sect_in_icons()
 	if(isnull(GLOB.religious_sect))
@@ -95,7 +95,7 @@
 
 /obj/item/ritual_totem
 	name = "ritual totem"
-	desc = "A wooden totem with strange carvings on it."
+	desc = "Um totem de madeira com esculturas estranhas."
 	icon = 'icons/obj/service/hand_of_god_structures.dmi'
 	icon_state = "ritual_totem"
 	inhand_icon_state = "sheet-wood"
@@ -107,16 +107,12 @@
 
 /obj/item/ritual_totem/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/anti_magic, \
-		antimagic_flags = MAGIC_RESISTANCE|MAGIC_RESISTANCE_HOLY, \
-		charges = 1, \
-		expiration = CALLBACK(src, PROC_REF(expire)), \
-	)
+	AddComponent(/datum/component/anti_magic, 		antimagic_flags = MAGIC_RESISTANCE|MAGIC_RESISTANCE_HOLY, 		charges = 1, 		expiration = CALLBACK(src, PROC_REF(expire)), 	)
 	AddComponent(/datum/component/religious_tool, RELIGION_TOOL_INVOKE, FALSE)
 
 /// When the ritual totem is depleted of antimagic
 /obj/item/ritual_totem/proc/expire(mob/user)
-	to_chat(user, span_warning("[src] consumes the magic within itself and quickly decays into rot!"))
+	to_chat(user, span_warning("[src]consome a magia dentro de si e rapidamente decai em podridão!"))
 	new /obj/effect/decal/cleanable/ash(drop_location())
 	qdel(src)
 
@@ -128,18 +124,18 @@
 	. = ..()
 	var/is_holy = user.mind?.holy_role
 	if(is_holy)
-		. += span_notice("[src] can only be moved by important followers of [GLOB.deity].")
+		. += span_notice("[src]Só podem ser movidos por importantes seguidores de[GLOB.deity].")
 
 /obj/item/ritual_totem/pickup(mob/taker)
 	var/initial_loc = loc
 	var/holiness = taker.mind?.holy_role
 	var/no_take = FALSE
 	if(holiness == NONE)
-		to_chat(taker, span_warning("Try as you may, you're seemingly unable to pick [src] up!"))
+		to_chat(taker, span_warning("Por mais que tente, parece que não consegue escolher.[src]Levante-se!"))
 		no_take = TRUE
 	else if(holiness == HOLY_ROLE_DEACON) //deacons cannot pick them up either
 		no_take = TRUE
-		to_chat(taker, span_warning("You cannot pick [src] up. It seems you aren't important enough to [GLOB.deity] to do that."))
+		to_chat(taker, span_warning("Você não pode escolher[src]Levante. Parece que você não é importante o suficiente para[GLOB.deity]Para fazer isso."))
 	..()
 	if(no_take)
 		taker.dropItemToGround(src)

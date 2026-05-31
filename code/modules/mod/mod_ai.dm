@@ -7,43 +7,43 @@
 		return
 	// SKYRAT EDIT END
 	if(!open) //mod must be open
-		balloon_alert(user, "panel closed!")
+		balloon_alert(user, "Painel fechado!")
 		return
 	switch(interaction)
 		if(AI_TRANS_TO_CARD)
 			if(!ai_assistant)
-				balloon_alert(user, "no ai in unit!")
+				balloon_alert(user, "Não ai na unidade!")
 				return
-			balloon_alert(user, "transferring to card...")
+			balloon_alert(user, "Transferência para o cartão...")
 			if(!do_after(user, 5 SECONDS, target = src))
-				balloon_alert(user, "interrompido!")
+				balloon_alert(user, "Interrompido!")
 				return
 			if(!ai_assistant)
-				balloon_alert(user, "no ai in unit!")
+				balloon_alert(user, "Não ai na unidade!")
 				return
-			balloon_alert(user, "ai transferred to card")
+			balloon_alert(user, "AI transferido para o cartão")
 			ai_exit_mod(card)
 
 		if(AI_TRANS_FROM_CARD) //Using an AI card to upload to the suit.
 			intAI = card.AI
 			if(!intAI)
-				balloon_alert(user, "no ai in card!")
+				balloon_alert(user, "Não ai no cartão!")
 				return
 			if(ai_assistant)
-				balloon_alert(user, "already has ai!")
+				balloon_alert(user, "Já tem ai!")
 				return
 			if(intAI.deployed_shell) //Recall AI if shelled so it can be checked for a client
 				intAI.disconnect_shell()
 			if(intAI.stat || !intAI.client)
-				balloon_alert(user, "ai unresponsive!")
+				balloon_alert(user, "Não responde!")
 				return
-			balloon_alert(user, "transferring to unit...")
+			balloon_alert(user, "Transferência para a unidade...")
 			if(!do_after(user, 5 SECONDS, target = src))
-				balloon_alert(user, "interrompido!")
+				balloon_alert(user, "Interrompido!")
 				return
 			if(ai_assistant)
 				return
-			balloon_alert(user, "ai transferred to unit")
+			balloon_alert(user, "Al transferido para unidade")
 			ai_enter_mod(intAI)
 			card.AI = null
 
@@ -73,19 +73,19 @@
 /// Place a pAI in control of your suit functions
 /obj/item/mod/control/proc/insert_pai(mob/user, obj/item/pai_card/card)
 	if (!isnull(ai_assistant))
-		balloon_alert(user, "slot occupied!")
+		balloon_alert(user, "Ocupado!")
 		return FALSE
 	if (isnull(card.pai?.mind))
-		balloon_alert(user, "pAI unresponsive!")
+		balloon_alert(user, "PaI não responde!")
 		return FALSE
-	balloon_alert(user, "transferring to unit...")
+	balloon_alert(user, "Transferência para a unidade...")
 	if (!do_after(user, 5 SECONDS, target = src))
-		balloon_alert(user, "interrompido!")
+		balloon_alert(user, "Interrompido!")
 		return FALSE
 	if (!user.transferItemToLoc(card, src))
-		balloon_alert(user, "transfer failed!")
+		balloon_alert(user, "A transferência falhou!")
 		return FALSE
-	balloon_alert(user, "pAI transferred to unit")
+	balloon_alert(user, "PAI transferido para unidade")
 	var/mob/living/silicon/pai/pai_assistant = card.pai
 	pai_assistant.can_transmit = TRUE
 	pai_assistant.can_receive = TRUE
@@ -103,18 +103,18 @@
 /// Removes pAI control from a modsuit
 /obj/item/mod/control/proc/remove_pai(mob/user, forced = FALSE)
 	if (isnull(ai_assistant))
-		balloon_alert(user, "no pAI!")
+		balloon_alert(user, "Não, pai!")
 		return FALSE
 	if (!forced)
 		if (!open)
-			balloon_alert(user, "panel closed!")
+			balloon_alert(user, "Painel fechado!")
 			return FALSE
-		balloon_alert(user, "uninstalling card...")
+		balloon_alert(user, "Desinstalando cartão...")
 		if (!do_after(user, 5 SECONDS, target = src))
-			balloon_alert(user, "interrompido!")
+			balloon_alert(user, "Interrompido!")
 			return FALSE
 
-	balloon_alert(user, "pAI removed")
+	balloon_alert(user, "PAI removido.")
 	var/mob/living/silicon/pai/pai_helper = ai_assistant
 	pai_helper.can_holo = TRUE
 	pai_helper.card.forceMove(get_turf(src))
@@ -123,7 +123,7 @@
 /// Called when a new ai assistant is inserted
 /obj/item/mod/control/proc/on_gained_assistant(mob/living/silicon/new_helper)
 	ai_assistant = new_helper
-	balloon_alert(new_helper, "transferred to a mod unit")
+	balloon_alert(new_helper, "transferido para uma unidade mod")
 	for(var/datum/action/action as anything in actions)
 		action.Grant(new_helper)
 
@@ -132,7 +132,7 @@
 	for(var/datum/action/action as anything in actions)
 		action.Remove(ai_assistant)
 	ai_assistant.remote_control = null
-	balloon_alert(ai_assistant, "transferred to a card")
+	balloon_alert(ai_assistant, "transferido para um cartão.")
 	ai_assistant = null
 
 #define MOVE_DELAY 2
@@ -179,7 +179,7 @@
 
 /obj/item/mod/ai_minicard
 	name = "AI mini-card"
-	desc = "A small card designed to eject dead AIs. You could use an intellicard to recover it."
+	desc = "Uma pequena carta projetada para ejetar IA morta. Você poderia usar um cartão inteligente para recuperá-lo."
 	icon = 'icons/obj/aicards.dmi'
 	icon_state = "minicard"
 	var/datum/weakref/stored_ai
@@ -202,7 +202,7 @@
 
 /obj/item/mod/ai_minicard/examine(mob/user)
 	. = ..()
-	. += span_notice("You see [stored_ai.resolve() || "no AI"] stored inside.")
+	. += span_notice("Viu?[stored_ai.resolve() || "no AI"]Armazenado dentro.")
 
 /obj/item/mod/ai_minicard/transfer_ai(interaction, mob/user, mob/living/silicon/ai/intAI, obj/item/aicard/card)
 	. = ..()
@@ -212,17 +212,17 @@
 		return
 	var/mob/living/silicon/ai/ai = stored_ai.resolve()
 	if(!ai)
-		balloon_alert(user, "no ai!")
+		balloon_alert(user, "Não ai!")
 		return
-	balloon_alert(user, "transferring to card...")
+	balloon_alert(user, "Transferência para o cartão...")
 	if(!do_after(user, 5 SECONDS, target = src) || !ai)
-		balloon_alert(user, "interrompido!")
+		balloon_alert(user, "Interrompido!")
 		return
 	icon_state = "minicard"
 	ai.forceMove(card)
 	card.AI = ai
 	ai.notify_revival("You have been recovered from the wreckage!", source = card)
-	balloon_alert(user, "ai transferred to card")
+	balloon_alert(user, "AI transferido para o cartão")
 	stored_ai = null
 
 #undef AI_FALL_TIME

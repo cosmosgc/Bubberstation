@@ -1,5 +1,5 @@
 /obj/item/skub
-	desc = "It's skub."
+	desc = "É skub."
 	name = "skub"
 	icon = 'icons/obj/maintenance_loot.dmi'
 	icon_state = "skub"
@@ -12,7 +12,7 @@
 	AddComponent(/datum/component/container_item/tank_holder, "holder_skub", FALSE)
 
 /obj/item/skub/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] has declared themself as anti-skub! The skub tears them apart!"))
+	user.visible_message(span_suicide("[user]se declarou como anti-skub! O gambá os destrói!"))
 	user.gib(DROP_ALL_REMAINS)
 	playsound(src, 'sound/items/eatfood.ogg', 50, TRUE, -1)
 	return MANUAL_SUICIDE

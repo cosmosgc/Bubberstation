@@ -22,11 +22,9 @@
 // Twitch drug, makes the takers of it faster and able to dodge bullets while in their system, to potentially bad side effects
 /datum/reagent/drug/twitch
 	name = "TWitch"
-	description = "A drug originally developed by and for plutonians to assist them during raids. \
-		Does not see wide use due to the whole reality-disassociation and heart disease thing afterwards. \
-		Can be intentionally overdosed to increase the drug's effects"
+	description = "Uma droga originalmente desenvolvida por e para plutonianos para ajudá-los durante ataques. Não vê grande uso devido à dissociação da realidade e doenças cardíacas depois. Pode ser overdose intencional para aumentar os efeitos da droga."
 	color = "#c22a44"
-	taste_description = "television static"
+	taste_description = "televisão estática"
 	metabolization_rate = 0.65 * REAGENTS_METABOLISM
 	ph = 3
 	overdose_threshold = 15
@@ -84,14 +82,14 @@
 
 	if(constant_dose_time < CONSTANT_DOSE_SAFE_LIMIT) // Anything less than this and you'll come out fiiiine, aside from a big hit of stamina damage
 		our_guy.visible_message(
-			span_danger("[our_guy] suddenly slows from their inhuman speeds, coming back with a wicked nosebleed!"),
-			span_danger("You suddenly slow back to normal, a stream of blood gushing from your nose!")
+			span_danger("[our_guy]De repente, diminui de suas velocidades desumanas, voltando com um mau nariz sangrando!"),
+			span_danger("Você de repente volta ao normal, um fluxo de sangue jorrando do seu nariz!")
 		)
 		our_guy.adjust_stamina_loss(constant_dose_time)
 	else // Much longer than that however, and you're not gonna have a good day
 		our_guy.visible_message(
-			span_danger("[our_guy] suddenly snaps back from their inhumans speeds, coughing up a spray of blood!"),
-			span_danger("As you snap back to normal speed you cough up a worrying amount of blood. You feel like you've just been run over by a power loader.")
+			span_danger("[our_guy]De arrependimento volta de suas velocidades desumanas, tossindo um spray de sangue!"),
+			span_danger("Quando você volta à velocidade normal, você tosse uma quantidade preocupante de sangue. Parece que foi atropelado por um carregador de energia.")
 		)
 		our_guy.spray_blood(our_guy.dir, 2) // The before mentioned coughing up blood
 		our_guy.emote("cough")
@@ -120,8 +118,8 @@
 	if(HAS_TRAIT(source, TRAIT_INCAPACITATED))
 		return NONE
 	source.visible_message(
-		span_danger("[source] effortlessly dodges [hitting_projectile]!"),
-		span_userdanger("You effortlessly evade [hitting_projectile]!"),
+		span_danger("[source]Desvia-se sem esforço.[hitting_projectile]!"),
+		span_userdanger("Você escapa sem esforço.[hitting_projectile]!"),
 	)
 	playsound(source, pick('sound/items/weapons/bulletflyby.ogg', 'sound/items/weapons/bulletflyby2.ogg', 'sound/items/weapons/bulletflyby3.ogg'), 75, TRUE)
 	source.add_filter(TWITCH_BLUR_EFFECT, 2, gauss_blur_filter(5))
@@ -166,7 +164,7 @@
 	our_guy.adjust_tox_loss(1 * REM * seconds_per_tick, updating_health = FALSE, forced = TRUE, required_biotype = affected_biotype)
 
 	if(SPT_PROB(5, seconds_per_tick))
-		to_chat(our_guy, span_danger("You cough up a splatter of blood!"))
+		to_chat(our_guy, span_danger("Você tossiu um respingo de sangue!"))
 		our_guy.spray_blood(our_guy.dir, 1)
 		our_guy.emote("cough")
 

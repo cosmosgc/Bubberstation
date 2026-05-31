@@ -124,13 +124,13 @@
 	//The stomach is damage has nutriment but low on theshhold, lo prob of vomit
 	if(SPT_PROB(0.0125 * damage * nutri_vol * nutri_vol, seconds_per_tick))
 		body.vomit(VOMIT_CATEGORY_DEFAULT, lost_nutrition = damage)
-		to_chat(body, span_warning("Your stomach reels in pain as you're incapable of holding down all that food!"))
+		to_chat(body, span_warning("Seu estômago está com dor porque você é incapaz de segurar toda essa comida!"))
 		return
 
 	// the change of vomit is now high
 	if(damage > high_threshold && SPT_PROB(0.05 * damage * nutri_vol * nutri_vol, seconds_per_tick))
 		body.vomit(VOMIT_CATEGORY_DEFAULT, lost_nutrition = damage)
-		to_chat(body, span_warning("Your stomach reels in pain as you're incapable of holding down all that food!"))
+		to_chat(body, span_warning("Seu estômago está com dor porque você é incapaz de segurar toda essa comida!"))
 
 /obj/item/organ/stomach/proc/handle_hunger(mob/living/carbon/human/human, seconds_per_tick)
 	if(HAS_TRAIT(human, TRAIT_NOHUNGER))
@@ -139,12 +139,12 @@
 	//The fucking TRAIT_FAT mutation is the dumbest shit ever. It makes the code so difficult to work with
 	if(HAS_TRAIT_FROM(human, TRAIT_FAT, OBESITY))//I share your pain, past coder.
 		if(human.overeatduration < (200 SECONDS))
-			to_chat(human, span_notice("You feel fit again!"))
+			to_chat(human, span_notice("Você se sente em forma de novo!"))
 			human.remove_traits(list(TRAIT_FAT, TRAIT_OFF_BALANCE_TACKLER), OBESITY)
 
 	else
 		if(human.overeatduration >= (200 SECONDS))
-			to_chat(human, span_danger("You suddenly feel blubbery!"))
+			to_chat(human, span_danger("Você de repente se sente blubbery!"))
 			human.add_traits(list(TRAIT_FAT, TRAIT_OFF_BALANCE_TACKLER), OBESITY)
 
 	// nutrition decrease and satiety
@@ -182,15 +182,15 @@
 		human.metabolism_efficiency = 1
 	else if(nutrition > NUTRITION_LEVEL_FED && human.satiety > 80)
 		if(human.metabolism_efficiency != 1.25)
-			to_chat(human, span_notice("You feel vigorous."))
+			to_chat(human, span_notice("Você se sente vigoroso."))
 			human.metabolism_efficiency = 1.25
 	else if(nutrition < NUTRITION_LEVEL_STARVING + 50)
 		if(human.metabolism_efficiency != 0.8)
-			to_chat(human, span_notice("You feel sluggish."))
+			to_chat(human, span_notice("Você se sente lento."))
 		human.metabolism_efficiency = 0.8
 	else
 		if(human.metabolism_efficiency == 1.25)
-			to_chat(human, span_notice("You no longer feel vigorous."))
+			to_chat(human, span_notice("Você não se sente mais vigoroso."))
 		human.metabolism_efficiency = 1
 
 	//Hunger slowdown for if mood isn't enabled
@@ -284,8 +284,8 @@
 			if (emptied > 0)
 				owner.apply_damage(emptied * 5, BRUTE, BODY_ZONE_CHEST, wound_bonus = CANT_WOUND, wound_clothing = FALSE)
 				playsound(get_turf(src), 'sound/effects/splat.ogg', 50)
-				owner.visible_message(span_danger("Contents of [owner]'s intestines spill out from a huge cut in [owner.p_their()] [chest]!"),
-					span_userdanger("Contents of your intestines spill out from a huge cut in your [chest]!"))
+				owner.visible_message(span_danger("Conteúdo de[owner]Os intestinos saem de um enorme corte[owner.p_their()] [chest]!"),
+					span_userdanger("Conteúdo de seus intestinos derramam de um enorme corte em seu[chest]!"))
 			return
 
 	// Digest the stuff in our stomach, just a bit
@@ -325,7 +325,7 @@
 		if (HAS_TRAIT(owner, TRAIT_ANALGESIA))
 			continue
 
-		owner.visible_message(span_warning("[owner] doubles over in pain!"), span_userdanger("You feel a sharp, searing sensation in your stomach!"))
+		owner.visible_message(span_warning("[owner]Dobra com dor!"), span_userdanger("Você sente uma sensação aguda e ardente no seu estômago!"))
 		owner.Paralyze(1 SECONDS)
 		owner.adjust_eye_blur(5 SECONDS)
 
@@ -352,7 +352,7 @@
 					disgusted.adjust_stutter(2 SECONDS)
 				disgusted.adjust_confusion(2 SECONDS)
 			if(SPT_PROB(5, seconds_per_tick) && !disgusted.stat)
-				to_chat(disgusted, span_warning("You feel kind of iffy..."))
+				to_chat(disgusted, span_warning("Você se sente meio..."))
 			disgusted.adjust_jitter(-6 SECONDS)
 		if(disgust >= DISGUST_LEVEL_VERYGROSS)
 			if(SPT_PROB(pukeprob, seconds_per_tick)) //iT hAndLeS mOrE ThaN PukInG
@@ -411,8 +411,8 @@
 	if(damage < low_threshold)
 		return ""
 	if(damage < high_threshold)
-		return span_warning("Your stomach hurts.")
-	return span_boldwarning("Your stomach cramps in pain!")
+		return span_warning("Seu estômago dói.")
+	return span_boldwarning("Seu estômago está com cólicas!")
 
 /// If damage is high enough, we may end up vomiting out whatever we had stored
 /obj/item/organ/stomach/proc/on_punched(datum/source, mob/living/carbon/human/attacker, damage, attack_type, obj/item/bodypart/affecting, final_armor_block, kicking, limb_sharpness)
@@ -421,7 +421,7 @@
 		return
 	if (owner.vomit(MOB_VOMIT_MESSAGE | MOB_VOMIT_FORCE))
 		// Since we vomited with a force flag, we should've vomited out at least one item
-		owner.visible_message(span_danger("[owner] doubles over from [attacker]'s punch, vomiting out the contents of [owner.p_their()] stomach!"))
+		owner.visible_message(span_danger("[owner]Dobre de[attacker]É soco, vomitando o conteúdo de[owner.p_their()]estômago!"))
 
 /// 60% chance to spew out each item when vomiting
 /obj/item/organ/stomach/proc/on_vomit(mob/living/carbon/vomiter, distance, force)
@@ -432,13 +432,13 @@
 /obj/item/organ/stomach/tool_act(mob/living/user, obj/item/tool, list/modifiers)
 	if (tool.tool_behaviour == TOOL_SCALPEL)
 		if (cut_open_damage > 0)
-			balloon_alert(user, "already cut open!")
+			balloon_alert(user, "Já está aberto!")
 			return ITEM_INTERACT_FAILURE
 
-		balloon_alert(user, "cutting open...")
+		balloon_alert(user, "Cortando...")
 		playsound(user, 'sound/items/handling/surgery/scalpel1.ogg', 75)
 		if (!do_after(user, 3 SECONDS, src))
-			balloon_alert(user, "interrompido!")
+			balloon_alert(user, "Interrompido!")
 			apply_organ_damage(tool.force)
 			return ITEM_INTERACT_FAILURE
 
@@ -446,7 +446,7 @@
 		var/emptied = empty_contents()
 		if (emptied > 0)
 			playsound(get_turf(src), 'sound/effects/splat.ogg', 50)
-		user.visible_message(span_warning("[user] cuts [src] open[emptied ? "!" : ", but it's empty."]"), span_notice("You cut [src] open[emptied ? "." : ", but there's nothing inside."]"))
+		user.visible_message(span_warning("[user]Cortes.[src]Abra.[emptied ? "!" : ", but it's empty."]"), span_notice("Você cortou.[src]Abra.[emptied ? "." : ", but there's nothing inside."]"))
 		cut_open_damage += apply_organ_damage(maxHealth * 0.5)
 		return ITEM_INTERACT_SUCCESS
 
@@ -454,18 +454,18 @@
 		return ..()
 
 	if (cut_open_damage <= 0)
-		balloon_alert(user, "fully intact!")
+		balloon_alert(user, "Completamente intacto!")
 		return ITEM_INTERACT_FAILURE
 
 	playsound(user, 'sound/items/handling/surgery/cautery1.ogg', 75)
-	balloon_alert(user, "mending the incision...")
+	balloon_alert(user, "Consertando a incisão...")
 	if (!do_after(user, 3 SECONDS, src))
-		balloon_alert(user, "interrompido!")
+		balloon_alert(user, "Interrompido!")
 		apply_organ_damage(tool.force)
 		return ITEM_INTERACT_FAILURE
 
 	playsound(user, 'sound/items/handling/surgery/cautery2.ogg', 75)
-	balloon_alert(user, "incision mended")
+	balloon_alert(user, "incisão corrigida.")
 	apply_organ_damage(-cut_open_damage)
 	cut_open_damage = 0 // Just in case
 	return ITEM_INTERACT_SUCCESS
@@ -479,26 +479,26 @@
 /obj/item/organ/stomach/examine(mob/user)
 	. = ..()
 	if (cut_open_damage)
-		. += span_danger("It has a sizeable cut in it, exposing its insides!")
+		. += span_danger("Tem um corte considerável, expondo suas entranhas!")
 
 /obj/item/organ/stomach/bone
 	name = "mass of bones"
-	desc = "You have no idea what this strange ball of bones does."
+	desc = "Você não tem ideia do que essa estranha bola de ossos faz."
 	icon_state = "stomach-bone"
 	metabolism_efficiency = 0.025 //very bad
 	organ_traits = list(TRAIT_NOHUNGER)
 
 /obj/item/organ/stomach/bone/plasmaman
 	name = "digestive crystal"
-	desc = "A strange crystal that is responsible for metabolizing the unseen energy force that feeds plasmamen."
+	desc = "Um estranho cristal que é responsável por metabolizar a força de energia invisível que alimenta plasmamen."
 	icon_state = "stomach-p"
 	metabolism_efficiency = 0.06
 	organ_traits = null
 
 /obj/item/organ/stomach/cybernetic
 	name = "basic cybernetic stomach"
-	desc = "A basic device designed to mimic the functions of a human stomach"
-	failing_desc = "seems to be broken."
+	desc = "Um dispositivo básico projetado para imitar as funções de um estômago humano."
+	failing_desc = "Parece estar quebrado."
 	icon_state = "stomach-c"
 	organ_flags = ORGAN_ROBOTIC
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 0.5
@@ -517,7 +517,7 @@
 
 /obj/item/organ/stomach/cybernetic/tier2
 	name = "cybernetic stomach"
-	desc = "An electronic device designed to mimic the functions of a human stomach. Handles disgusting food a bit better."
+	desc = "Um dispositivo eletrônico projetado para imitar as funções de um estômago humano. Lida com comida nojenta um pouco melhor."
 	icon_state = "stomach-c-u"
 	maxHealth = 1.5 * STANDARD_ORGAN_THRESHOLD
 	disgust_metabolism = 2
@@ -533,7 +533,7 @@
 
 /obj/item/organ/stomach/cybernetic/tier3
 	name = "upgraded cybernetic stomach"
-	desc = "An upgraded version of the cybernetic stomach, designed to improve further upon organic stomachs. Handles disgusting food very well."
+	desc = "Uma versão atualizada do estômago cibernético, projetado para melhorar ainda mais o estômago orgânico. Lida muito bem com comida nojenta."
 	icon_state = "stomach-c-u2"
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
 	disgust_metabolism = 3
@@ -549,9 +549,7 @@
 
 /obj/item/organ/stomach/cybernetic/surplus
 	name = "surplus prosthetic stomach"
-	desc = "A mechanical plastic oval that utilizes sulfuric acid instead of stomach acid. \
-		Very fragile, with painfully slow metabolism.\
-		Offers no protection against EMPs."
+	desc = "Um plástico mecânico oval que utiliza ácido sulfúrico ao invés de ácido estomacal. Muito frágil, com um metabolismo dolorosamente lento. Não oferece proteção contra PEMs."
 	icon_state = "stomach-c-s"
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 0.35
 	emp_vulnerability = 100
@@ -564,20 +562,20 @@
 
 /obj/item/organ/stomach/pod
 	name = "pod chloroplast"
-	desc = "A green plant-like organ that functions similarly to a human stomach."
+	desc = "Um órgão vegetal verde que funciona da mesma forma que um estômago humano."
 	foodtype_flags = PODPERSON_ORGAN_FOODTYPES
 	color = COLOR_LIME
 
 /obj/item/organ/stomach/ghost
 	name = "ghost stomach"
-	desc = "Ghosts eat plenty, you know? And it's not just your life, I swear!"
+	desc = "Fantasmas comem muito, sabe? E não é só a sua vida, eu juro!"
 	icon_state = "stomach-ghost"
 	movement_type = PHASING
 	organ_flags = parent_type::organ_flags | ORGAN_GHOST
 
 /obj/item/organ/stomach/evolved
 	name = "evolved stomach"
-	desc = "It can draw nutrients from your food even harder!"
+	desc = "Pode extrair nutrientes de sua comida ainda mais difícil!"
 	icon_state = "stomach-evolved"
 
 	maxHealth = 1.2 * STANDARD_ORGAN_THRESHOLD

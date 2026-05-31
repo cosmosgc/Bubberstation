@@ -17,7 +17,7 @@
 	target.clear_mood_event("subspace")
 
 /datum/mood_event/subspace
-	description = span_purple("Everything is so woozy... Pain feels so... Awesome.\n")
+	description = span_purple("Tudo é tão tonto... A dor parece tão... Incrível.\n")
 
 
 //Hips are red after spanking
@@ -31,9 +31,9 @@
 	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || src == user || !has_status_effect(/datum/status_effect/spanked) || !is_bottomless())
 		return
 
-	. += span_purple("[user.p_Their()] butt has a red tint to it.") + "\n"
+	. += span_purple("[user.p_Their()]A bunda tem um tom vermelho.") + "\n"
 
 //Mood boost for masochist
 /datum/mood_event/perv_spanked
-	description = span_purple("Ah, yes! More! Punish me!\n")
+	description = span_purple("Ah, sim! Mais! Castigue-me!\n")
 	timeout = 5 MINUTES

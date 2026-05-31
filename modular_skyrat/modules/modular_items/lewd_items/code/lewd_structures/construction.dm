@@ -1,7 +1,7 @@
 ///The item used as the basis for construction kits for organic interface
 /obj/item/construction_kit
 	name = "construction kit"
-	desc = "Used for constructing various things"
+	desc = "Usado para construir várias coisas."
 	w_class = WEIGHT_CLASS_BULKY
 	obj_flags = CAN_BE_HIT
 	throwforce = 0
@@ -18,15 +18,15 @@
 
 /obj/item/construction_kit/examine(mob/user)
 	. = ..()
-	. += span_purple("[src] can be assembled by using <b>Ctrl+Shift+Click</b> while [src] is on the floor.")
+	. += span_purple("[src]pode ser montado usando<b>Ctrl+Shift+ Clique</b>enquanto[src]Está no chão.")
 
 /obj/item/construction_kit/click_ctrl_shift(mob/user)
 	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
 		return
 
-	to_chat(user, span_notice("You begin to assemble [src]..."))
+	to_chat(user, span_notice("Você começa a se reunir[src]..."))
 	if(!do_after(user, construction_time, src))
-		to_chat(user, span_warning("You fail to assemble [src]!"))
+		to_chat(user, span_warning("Você não consegue se reunir.[src]!"))
 		return
 
 	var/obj/structure/chair/final_structure = new resulting_structure (get_turf(user))
@@ -44,7 +44,7 @@
 		stand.set_greyscale(greyscale_colors)
 
 	qdel(src)
-	to_chat(user, span_notice("You assemble [src]."))
+	to_chat(user, span_notice("Você se reúne.[src]."))
 
 // MILKER
 
@@ -98,7 +98,7 @@
 
 /obj/item/construction_kit/bdsm/shibari/examine(mob/user)
 	.=..()
-	. += span_purple("[src]'s color can be customized with <b>Ctrl+Click</b>.")
+	. += span_purple("[src]A cor pode ser personalizada com<b>Ctrl+ Clique</b>.")
 
 //to change model
 /obj/item/construction_kit/bdsm/shibari/item_ctrl_click(mob/user)
@@ -109,11 +109,8 @@
 	var/list/allowed_configs = list()
 	allowed_configs += "[greyscale_config]"
 	var/datum/greyscale_modify_menu/menu = new(
-		src, usr, allowed_configs, null, \
-		starting_icon_state = icon_state, \
-		starting_config = greyscale_config, \
-		starting_colors = greyscale_colors
+		src, usr, allowed_configs, null, 		starting_icon_state = icon_state, 		starting_config = greyscale_config, 		starting_colors = greyscale_colors
 	)
 	menu.ui_interact(usr)
-	to_chat(user, span_notice("You switch the frame's plastic fittings color."))
+	to_chat(user, span_notice("Você muda a cor dos acessórios de plástico do quadro."))
 	return TRUE

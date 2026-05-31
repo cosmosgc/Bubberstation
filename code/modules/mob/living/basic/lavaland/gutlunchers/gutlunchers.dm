@@ -5,7 +5,7 @@
 
 /mob/living/basic/mining/gutlunch
 	name = "gutlunch"
-	desc = "A scavenger that eats raw ores, often found alongside ash walkers. Produces a thick, nutritious milk."
+	desc = "Um tesouro que come minérios crus, muitas vezes encontrados ao lado de caminhantes de cinzas. Produz um leite grosso e nutritivo."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	icon_state = "gutlunch"
 	icon_living = "gutlunch"
@@ -24,7 +24,7 @@
 	friendly_verb_continuous = "pinches"
 	friendly_verb_simple = "pinch"
 	gold_core_spawnable = FRIENDLY_SPAWN
-	death_message = "is pulped into bugmash."
+	death_message = "é mergulhado em massa."
 	greyscale_config = /datum/greyscale_config/gutlunch
 	///possible colors we can have
 	var/list/possible_colors = list(COLOR_WHITE)
@@ -52,7 +52,7 @@
 		return TRUE
 	var/obj/ore_food = locate(/obj/item/stack/ore) in target
 	if(isnull(ore_food))
-		balloon_alert(src, "no food!")
+		balloon_alert(src, "Sem comida!")
 	else
 		UnarmedAttack(ore_food, TRUE, modifiers)
 	return FALSE
@@ -77,13 +77,7 @@
 		/mob/living/basic/mining/gutlunch/grub = 1,
 	)
 
-	AddComponent(\
-		/datum/component/breed,\
-		can_breed_with = partner_paths,\
-		baby_paths = baby_paths,\
-		post_birth = CALLBACK(src, PROC_REF(after_birth)),\
-		breed_timer = 3 MINUTES,\
-	)
+	AddComponent(		/datum/component/breed,		can_breed_with = partner_paths,		baby_paths = baby_paths,		post_birth = CALLBACK(src, PROC_REF(after_birth)),		breed_timer = 3 MINUTES,	)
 
 /mob/living/basic/mining/gutlunch/milk
 	name = "gubbuck"
@@ -96,12 +90,7 @@
 /mob/living/basic/mining/gutlunch/milk/Initialize(mapload)
 	. = ..()
 	var/datum/callback/milking_callback = CALLBACK(src, TYPE_PROC_REF(/atom/movable, update_overlays))
-	AddComponent(\
-		/datum/component/udder,\
-		udder_type = /obj/item/udder/gutlunch,\
-		on_milk_callback = milking_callback,\
-		on_generate_callback = milking_callback,\
-	)
+	AddComponent(		/datum/component/udder,		udder_type = /obj/item/udder/gutlunch,		on_milk_callback = milking_callback,		on_generate_callback = milking_callback,	)
 	full_udder = mutable_appearance(icon, "gl_full")
 	full_udder.color = LAZYACCESS(atom_colours, FIXED_COLOUR_PRIORITY) || COLOR_GRAY
 
@@ -151,16 +140,7 @@
 
 /mob/living/basic/mining/gutlunch/grub/Initialize(mapload)
 	. = ..()
-	AddComponent(\
-		/datum/component/growth_and_differentiation,\
-		growth_time = 3 MINUTES,\
-		growth_probability = 100,\
-		lower_growth_value = 0.5,\
-		upper_growth_value = 1,\
-		signals_to_kill_on = list(COMSIG_MOB_CLIENT_LOGIN),\
-		optional_checks = CALLBACK(src, PROC_REF(ready_to_grow)),\
-		optional_grow_behavior = CALLBACK(src, PROC_REF(determine_growth_path)),\
-	)
+	AddComponent(		/datum/component/growth_and_differentiation,		growth_time = 3 MINUTES,		growth_probability = 100,		lower_growth_value = 0.5,		upper_growth_value = 1,		signals_to_kill_on = list(COMSIG_MOB_CLIENT_LOGIN),		optional_checks = CALLBACK(src, PROC_REF(ready_to_grow)),		optional_grow_behavior = CALLBACK(src, PROC_REF(determine_growth_path)),	)
 
 /mob/living/basic/mining/gutlunch/grub/proc/ready_to_grow()
 	return (stat == CONSCIOUS)

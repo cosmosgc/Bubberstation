@@ -1,7 +1,7 @@
 /obj/item/book/granter/action/origami
 	granted_action = /datum/action/innate/origami
 	name = "The Art of Origami"
-	desc = "A meticulously in-depth manual explaining the art of paper folding."
+	desc = "Um manual detalhado explicando a arte de dobrar papel."
 	icon_state = "origamibook"
 	action_name = "origami"
 	remarks = list(
@@ -16,19 +16,19 @@
 
 /datum/action/innate/origami
 	name = "Origami Folding"
-	desc = "Toggles your ability to fold and catch robust paper airplanes."
+	desc = "Alterna sua habilidade de dobrar e pegar robustos aviões de papel."
 	button_icon_state = "origami_off"
 	check_flags = NONE
 
 /datum/action/innate/origami/Activate()
 	ADD_TRAIT(owner, TRAIT_PAPER_MASTER, ACTION_TRAIT)
-	to_chat(owner, span_notice("You will now fold origami planes."))
+	to_chat(owner, span_notice("Agora você vai dobrar origami aviões."))
 	active = TRUE
 	build_all_button_icons(UPDATE_BUTTON_ICON)
 
 /datum/action/innate/origami/Deactivate()
 	REMOVE_TRAIT(owner, TRAIT_PAPER_MASTER, ACTION_TRAIT)
-	to_chat(owner, span_notice("You will no longer fold origami planes."))
+	to_chat(owner, span_notice("Você não vai mais dobrar origami aviões."))
 	active = FALSE
 	build_all_button_icons(UPDATE_BUTTON_ICON)
 

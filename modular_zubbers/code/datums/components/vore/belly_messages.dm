@@ -44,10 +44,10 @@
 	for(var/i in 1 to LAZYLEN(raw_list))
 		if(length(raw_list[i]) > MAX_VORE_MESSAGE_LENGTH)
 			// Ignore over-length messages
-			to_chat(usr, span_warning("Warning: Message [i] (\"[STRIP_HTML_SIMPLE(raw_list[i], 20)]...\") deleted due to being too long (must be < [MAX_VORE_MESSAGE_LENGTH])"))
+			to_chat(usr, span_warning("Mensagem[i] (\"[STRIP_HTML_SIMPLE(raw_list[i], 20)]...\"(deve ser <[MAX_VORE_MESSAGE_LENGTH])"))
 		else if(length(raw_list[i]) < MIN_VORE_MESSAGE_LENGTH)
 			// Ignore under-length messages
-			to_chat(usr, span_warning("Warning: Message [i] (\"[STRIP_HTML_SIMPLE(raw_list[i], 20)]...\") deleted due to being too short (must be > [MIN_VORE_MESSAGE_LENGTH])"))
+			to_chat(usr, span_warning("Mensagem[i] (\"[STRIP_HTML_SIMPLE(raw_list[i], 20)]...\"Apagado por ser muito curto.[MIN_VORE_MESSAGE_LENGTH])"))
 		else
 			LAZYADD(sanitized_list, STRIP_HTML_SIMPLE(raw_list[i], MAX_VORE_MESSAGE_LENGTH))
 

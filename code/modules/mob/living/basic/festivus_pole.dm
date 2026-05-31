@@ -3,7 +3,7 @@
 
 /mob/living/basic/festivus
 	name = "festivus pole"
-	desc = "Serenity now... SERENITY NOW!"
+	desc = "Serenidade agora... SENIDADE AGORA!"
 	icon = 'icons/obj/fluff/flora/pinetrees.dmi'
 	icon_state = "festivus_pole"
 	icon_living = "festivus_pole"
@@ -38,7 +38,7 @@
 	faction = list(FACTION_HOSTILE)
 	speak_emote = list("polls")
 
-	death_message = "is hacked into pieces!"
+	death_message = "é cortado em pedaços!"
 
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, STAMINA = 0, OXY = 1)
 	ai_controller = /datum/ai_controller/basic_controller/festivus_pole
@@ -69,7 +69,7 @@
 	. = ..()
 	if(user.combat_mode)
 		return
-	visible_message(span_warning("[src] crackles with static electricity!"))
+	visible_message(span_warning("[src]crepita com eletricidade estática!"))
 	for(var/atom/affected in range(2, get_turf(src)))
 		if(istype(affected, /obj/item/stock_parts/power_store/cell))
 			var/obj/item/stock_parts/power_store/cell/cell = affected

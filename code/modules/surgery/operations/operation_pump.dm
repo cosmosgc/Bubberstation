@@ -1,7 +1,7 @@
 /datum/surgery_operation/organ/stomach_pump
 	name = "pump stomach"
 	rnd_name = "Gastric Lavage (Stomach Pump)"
-	desc = "Manually pump a patient's stomach to induce vomiting and expel harmful chemicals."
+	desc = "Bombeie manualmente o estômago de um paciente para induzir vômitos e expelir produtos químicos nocivos."
 	operation_flags = OPERATION_NOTABLE
 	implements = list(
 		IMPLEMENT_HAND = 1,
@@ -24,9 +24,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You begin to pump [organ.owner]'s stomach..."),
-		span_notice("[surgeon] begins to pump [organ.owner]'s stomach."),
-		span_notice("[surgeon] begins to press on [organ.owner]'s abdomen."),
+		span_notice("Você começa a bombear[organ.owner]O estômago..."),
+		span_notice("[surgeon]Começa a bombear[organ.owner]Estômago."),
+		span_notice("[surgeon]Começa a pressionar[organ.owner]Abdômen."),
 	)
 	display_pain(organ.owner, "You feel a horrible sloshing feeling in your gut! You're going to be sick!")
 
@@ -34,9 +34,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("[surgeon] forces [organ.owner] to vomit, cleansing their stomach of some chemicals!"),
-		span_notice("[surgeon] forces [organ.owner] to vomit, cleansing their stomach of some chemicals!"),
-		span_notice("[surgeon] forces [organ.owner] to vomit!"),
+		span_notice("[surgeon]forças[organ.owner]vomitar, limpar o estômago de alguns químicos!"),
+		span_notice("[surgeon]forças[organ.owner]vomitar, limpar o estômago de alguns químicos!"),
+		span_notice("[surgeon]forças[organ.owner]Vomitar!"),
 	)
 	organ.owner.vomit((MOB_VOMIT_MESSAGE | MOB_VOMIT_STUN), lost_nutrition = 20, purge_ratio = 0.67)
 
@@ -44,9 +44,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("You screw up, bruising [organ.owner]'s chest!"),
-		span_warning("[surgeon] screws up, bruising [organ.owner]'s chest!"),
-		span_warning("[surgeon] screws up!"),
+		span_warning("Você estraga tudo, contusões.[organ.owner]O peito!"),
+		span_warning("[surgeon]Estraga tudo, contusões[organ.owner]O peito!"),
+		span_warning("[surgeon]Estraga tudo!"),
 	)
 	organ.apply_organ_damage(5)
 	organ.bodypart_owner.receive_damage(5)

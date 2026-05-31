@@ -39,13 +39,7 @@
 // Override if the mech needs an entirely custom process (See HONK mech)
 // Otherwise override specific steps as needed (Ripley, Clarke, Phazon)
 /datum/component/construction/mecha/proc/get_steps()
-	var/list/all_steps = \
-		get_frame_steps() + \
-		get_circuit_steps() + \
-		get_circuit_weapon_steps() + \
-		get_stockpart_steps() + \
-		get_inner_plating_steps() + \
-		get_outer_plating_steps()
+	var/list/all_steps = 		get_frame_steps() + 		get_circuit_steps() + 		get_circuit_weapon_steps() + 		get_stockpart_steps() + 		get_inner_plating_steps() + 		get_outer_plating_steps()
 
 	// If you don't set a construction icon state, one will automatically be assigned
 	// based on the index of the step in the step list
@@ -679,7 +673,7 @@
 		return FALSE
 
 	if(istype(I, /obj/item/assembly/signaler/anomaly) && !istype(I, required_core))
-		to_chat(user, span_warning("The anomaly core socket only accepts \a [initial(required_core.name)]!"))
+		to_chat(user, span_warning("O núcleo da anomalia só aceita\a [initial(required_core.name)]!"))
 		return FALSE
 
 	return TRUE

@@ -208,8 +208,7 @@
 	return FALSE //nonliving mobs don't have hands
 
 /mob/living/put_in_hand_check(obj/item/I)
-	if(istype(I) && ((mobility_flags & MOBILITY_PICKUP) || (I.item_flags & ABSTRACT)) \
-		&& !(SEND_SIGNAL(src, COMSIG_LIVING_TRY_PUT_IN_HAND, I) & COMPONENT_LIVING_CANT_PUT_IN_HAND))
+	if(istype(I) && ((mobility_flags & MOBILITY_PICKUP) || (I.item_flags & ABSTRACT)) 		&& !(SEND_SIGNAL(src, COMSIG_LIVING_TRY_PUT_IN_HAND, I) & COMPONENT_LIVING_CANT_PUT_IN_HAND))
 		return TRUE
 	return FALSE
 
@@ -241,13 +240,13 @@
 		if (merge_stacks)
 			if (istype(active_stack) && active_stack.can_merge(item_stack, inhand = TRUE))
 				if (item_stack.merge(active_stack))
-					to_chat(usr, span_notice("Your [active_stack.name] stack now contains [active_stack.get_amount()] [active_stack.singular_name]\s."))
+					to_chat(usr, span_notice("Sua[active_stack.name]pilha agora contém[active_stack.get_amount()] [active_stack.singular_name]\s."))
 					return TRUE
 			else
 				var/obj/item/stack/inactive_stack = get_inactive_held_item()
 				if (istype(inactive_stack) && inactive_stack.can_merge(item_stack, inhand = TRUE))
 					if (item_stack.merge(inactive_stack))
-						to_chat(usr, span_notice("Your [inactive_stack.name] stack now contains [inactive_stack.get_amount()] [inactive_stack.singular_name]\s."))
+						to_chat(usr, span_notice("Sua[inactive_stack.name]pilha agora contém[inactive_stack.get_amount()] [inactive_stack.singular_name]\s."))
 						return TRUE
 
 	if(put_in_active_hand(I, forced, ignore_animation, visuals_only))
@@ -519,7 +518,7 @@
 		if(qdel_on_fail)
 			qdel(W)
 		else if(!disable_warning)
-			to_chat(src, span_warning("You are unable to equip that!"))
+			to_chat(src, span_warning("Você é incapaz de equipar isso!"))
 		return FALSE
 	equip_to_slot(W, slot, initial, redraw_mob, indirect_action = indirect_action) //This proc should not ever fail.
 	SEND_SIGNAL(src, COMSIG_MOB_POST_EQUIP, W, slot) //BUBBER EDIT ADDITION
@@ -577,16 +576,7 @@
 	var/slot_priority = W.slot_equipment_priority
 
 	if(!slot_priority)
-		slot_priority = list( \
-			ITEM_SLOT_BACK, ITEM_SLOT_ID,\
-			ITEM_SLOT_ICLOTHING, ITEM_SLOT_OCLOTHING,\
-			ITEM_SLOT_MASK, ITEM_SLOT_HEAD, ITEM_SLOT_NECK,\
-			ITEM_SLOT_FEET, ITEM_SLOT_GLOVES,\
-			ITEM_SLOT_EARS, ITEM_SLOT_EYES,\
-			ITEM_SLOT_BELT, ITEM_SLOT_SUITSTORE,\
-			ITEM_SLOT_LPOCKET, ITEM_SLOT_RPOCKET,\
-			ITEM_SLOT_DEX_STORAGE\
-		)
+		slot_priority = list( 			ITEM_SLOT_BACK, ITEM_SLOT_ID,			ITEM_SLOT_ICLOTHING, ITEM_SLOT_OCLOTHING,			ITEM_SLOT_MASK, ITEM_SLOT_HEAD, ITEM_SLOT_NECK,			ITEM_SLOT_FEET, ITEM_SLOT_GLOVES,			ITEM_SLOT_EARS, ITEM_SLOT_EYES,			ITEM_SLOT_BELT, ITEM_SLOT_SUITSTORE,			ITEM_SLOT_LPOCKET, ITEM_SLOT_RPOCKET,			ITEM_SLOT_DEX_STORAGE		)
 
 	// SKYRAT EDIT ADDITION START - CUSTOMIZATION
 	if (blacklist)
@@ -635,7 +625,7 @@
 		if(gear?.atom_storage?.attempt_insert(src, user, messages = FALSE))
 			return TRUE
 
-	to_chat(user, span_warning("You are unable to equip that!"))
+	to_chat(user, span_warning("Você é incapaz de equipar isso!"))
 	return FALSE
 
 /// Attempts to put an item into storage located in a given slot
@@ -660,7 +650,7 @@
 /mob/proc/execute_quick_equip()
 	var/obj/item/I = get_active_held_item()
 	if(!I)
-		to_chat(src, span_warning("You are not holding anything to equip!"))
+		to_chat(src, span_warning("Você não está segurando nada para equipar!"))
 		return
 	if(!QDELETED(I))
 		I.equip_to_best_slot(src)

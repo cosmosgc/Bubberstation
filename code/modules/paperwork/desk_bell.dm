@@ -2,7 +2,7 @@
 
 /obj/structure/desk_bell
 	name = "desk bell"
-	desc = "The cornerstone of any customer service job. You feel an unending urge to ring it."
+	desc = "A pedra angular de qualquer serviço ao cliente. Você sente uma vontade interminável de tocar."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "desk_bell"
 	layer = OBJ_LAYER
@@ -49,7 +49,7 @@
 	if(!COOLDOWN_FINISHED(src, ring_cooldown) && ring_cooldown_length)
 		return TRUE
 	if(!ring_bell(user))
-		to_chat(user, span_notice("[src] is silent. Some idiot broke it."))
+		to_chat(user, span_notice("[src]é silencioso. Um idiota quebrou."))
 	if(ring_cooldown_length)
 		COOLDOWN_START(src, ring_cooldown, ring_cooldown_length)
 	return TRUE
@@ -82,7 +82,7 @@
 
 // Deconstruct
 /obj/structure/desk_bell/wrench_act_secondary(mob/living/user, obj/item/tool)
-	balloon_alert(user, "taking apart...")
+	balloon_alert(user, "Desmontando...")
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 5 SECONDS))
 		balloon_alert(user, "disassembled")
@@ -98,9 +98,9 @@
 /obj/structure/desk_bell/proc/check_clapper(mob/living/user)
 	if(((times_rang >= 10000) || prob(times_rang/100)) && ring_cooldown_length)
 		if (user)
-			to_chat(user, span_notice("You hear [src]'s clapper fall off of its hinge. Nice job, you broke it."))
+			to_chat(user, span_notice("Você ouve.[src]O batedor cai da dobradiça. Bom trabalho, você quebrou."))
 		else
-			audible_message(span_notice("You hear [src]'s clapper fall off of its hinge. Nice job, you broke it."))
+			audible_message(span_notice("Você ouve.[src]O batedor cai da dobradiça. Bom trabalho, você quebrou."))
 		broken_ringer = TRUE
 
 /// Ring the bell
@@ -123,7 +123,7 @@
 // A warning to all who enter; the ringing sound STACKS. It won't be deafening because it only goes every decisecond,
 // but I did feel like my ears were going to start bleeding when I tested it with my autoclicker.
 /obj/structure/desk_bell/speed_demon
-	desc = "The cornerstone of any customer service job. This one's been modified for hyper-performance."
+	desc = "A pedra angular de qualquer serviço ao cliente. Este foi modificado para hiper desempenho."
 	ring_cooldown_length = 0
 
 /// Handheld bell
@@ -196,9 +196,9 @@
 	var/obj/vehicle/ridden/wheelchair/chair = interacting_with
 
 	if (chair.bell_attached)
-		user.balloon_alert(user, "already has a bell!")
+		user.balloon_alert(user, "Já tem um sino!")
 		return ITEM_INTERACT_FAILURE
-	user.balloon_alert(user, "attaching bell...")
+	user.balloon_alert(user, "Anexando sino...")
 	if (!do_after(user, 0.5 SECONDS, chair))
 		return ITEM_INTERACT_FAILURE
 

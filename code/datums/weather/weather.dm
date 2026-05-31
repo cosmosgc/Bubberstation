@@ -18,7 +18,7 @@
 	/// description of weather
 	var/desc = "Heavy gusts of wind blanket the area, periodically knocking down anyone caught in the open."
 	/// The message displayed in chat to foreshadow the weather's beginning
-	var/telegraph_message = span_warning("The wind begins to pick up.")
+	var/telegraph_message = span_warning("O vento começa a aumentar.")
 	/// How long from the beginning of the telegraph until the weather begins
 	var/telegraph_duration = 30 SECONDS
 	/// The sound file played to everyone on an affected z-level
@@ -29,7 +29,7 @@
 	var/telegraph_overlay
 
 	/// Displayed in chat once the weather begins in earnest
-	var/weather_message = span_userdanger("The wind begins to blow ferociously!")
+	var/weather_message = span_userdanger("O vento começa a soprar ferozmente!")
 	/// How long the weather lasts once it begins
 	var/weather_duration = 2 MINUTES
 	/// See above - this is the lowest possible duration
@@ -44,7 +44,7 @@
 	var/weather_color = null
 
 	/// Displayed once the weather is over
-	var/end_message = span_danger("The wind relents its assault.")
+	var/end_message = span_danger("O vento cede seu ataque.")
 	/// How long the "wind-down" graphic will appear before vanishing entirely
 	var/end_duration = 30 SECONDS
 	/// Sound that plays while weather is ending
@@ -256,11 +256,7 @@
 		COMSIG_WEATHER_WINDDOWN(type),
 	)
 
-	var/datum/component/our_comp = affected.AddComponent( \
-		/datum/component/area_sound_manager, \
-		area_loop_pairs = playlist, \
-		acceptable_zs = filtered_zs, \
-	)
+	var/datum/component/our_comp = affected.AddComponent( 		/datum/component/area_sound_manager, 		area_loop_pairs = playlist, 		acceptable_zs = filtered_zs, 	)
 	our_comp.RegisterSignals(SSdcs, sound_change_signals, TYPE_PROC_REF(/datum/component/area_sound_manager, handle_change))
 	our_comp.RegisterSignal(SSdcs, COMSIG_WEATHER_END(type), TYPE_PROC_REF(/datum/component/area_sound_manager, handle_removal))
 
@@ -515,7 +511,7 @@
 		thunder.color = thunder_color
 
 	for(var/mob/living/hit_mob in weather_turf)
-		to_chat(hit_mob, span_userdanger("You've been struck by lightning!"))
+		to_chat(hit_mob, span_userdanger("Você foi atingido por um raio!"))
 		hit_mob.electrocute_act(50, "thunder", flags = SHOCK_TESLA|SHOCK_NOGLOVES)
 
 	for(var/obj/item/stack/ore/hit_ore in weather_turf)
@@ -526,7 +522,7 @@
 		hit_ore.fire_act(30000)
 
 	playsound(weather_turf, 'sound/effects/magic/lightningbolt.ogg', 100, extrarange = 10, falloff_distance = 10)
-	weather_turf.visible_message(span_danger("A thunderbolt strikes [weather_turf]!"))
+	weather_turf.visible_message(span_danger("Um raio atinge[weather_turf]!"))
 	new /obj/effect/hotspot(weather_turf)
 
 /**

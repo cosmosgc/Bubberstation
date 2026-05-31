@@ -9,7 +9,7 @@
 	agent = "Cryptococcus gattii fungus"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	cure_chance = 25
-	desc = "Fungal infection that attacks patient's muscles and brain in an attempt to hijack them. Causes fever, headaches, muscle spasms, and fatigue."
+	desc = "Infecção fúngica que ataca os músculos e o cérebro do paciente na tentativa de sequestrá-los. Causa febre, dores de cabeça, espasmos musculares e fadiga."
 	severity = DISEASE_SEVERITY_BIOHAZARD
 
 /datum/disease/cryptococcus/stage_act(seconds_per_tick, times_fired)
@@ -20,29 +20,29 @@
 	switch(stage)
 		if(1)
 			if(SPT_PROB(2, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Your brain feels fuzzy. That's not right."))
+				to_chat(affected_mob, span_danger("Seu cérebro está confuso. Isso não está certo."))
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Your head hurts. Were the ceiling tiles always moving like that?"))
+				to_chat(affected_mob, span_danger("Sua cabeça dói. As telhas do teto estavam sempre se movendo assim?"))
 		if(2)
 			if(SPT_PROB(5, seconds_per_tick))
 				affected_mob.emote("twitch")
-				to_chat(affected_mob, span_danger("You twitch involuntarily. That's not right."))
+				to_chat(affected_mob, span_danger("Você se contorce involuntariamente. Isso não está certo."))
 			if(SPT_PROB(2, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You sniff, smelling green slime. Does green have a smell?"))
+				to_chat(affected_mob, span_danger("Você cheira, cheira lodo verde. Verde tem cheiro?"))
 			if(SPT_PROB(2, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Your head hurts. Were the ceiling tiles always moving like that?"))
+				to_chat(affected_mob, span_danger("Sua cabeça dói. As telhas do teto estavam sempre se movendo assim?"))
 		if(3)
 			if(SPT_PROB(2, seconds_per_tick))
-				to_chat(affected_mob, span_userdanger("You see four of everything!"))
+				to_chat(affected_mob, span_userdanger("Você vê quatro de tudo!"))
 				affected_mob.set_dizzy_if_lower(10 SECONDS)
 			if(SPT_PROB(2, seconds_per_tick))
-				to_chat(affected_mob, span_userdanger("You suddenly feel exhausted. Your movements are starting to feel stiff. Something seriously isn't right..."))
+				to_chat(affected_mob, span_userdanger("Você de repente se sente exausto. Seus movimentos estão começando a se sentir rígidos. Algo sério não está certo..."))
 				affected_mob.adjust_stamina_loss(30, FALSE)
 			if(SPT_PROB(2, seconds_per_tick))
-				to_chat(affected_mob, span_userdanger("You feel hot. Very hot. Your muscles feel okay for a moment, but the pain returns."))
+				to_chat(affected_mob, span_userdanger("Você se sente quente. Muito quente. Seus músculos se sentem bem por um momento, mas a dor retorna."))
 				affected_mob.adjust_bodytemperature(20)
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(affected_mob, span_userdanger("You feel air escape from your lungs painfully. You didn't intend to exhale, they seem to be seizing up on their own."))
+				to_chat(affected_mob, span_userdanger("Sente que o ar escapa dos pulmões dolorosamente. Você não pretendia exalar, eles parecem estar se apoderando sozinhos."))
 				affected_mob.adjust_oxy_loss(25, FALSE)
 				affected_mob.emote("gasp")
 		if(4)
@@ -53,10 +53,10 @@
 				affected_mob.adjust_brute_loss(5) //It's damaging the muscles
 			if(SPT_PROB(2, seconds_per_tick))
 				affected_mob.adjust_stamina_loss(100, FALSE)
-				affected_mob.visible_message(span_warning("[affected_mob] faints!"), span_userdanger("You surrender yourself and feel at peace..."))
+				affected_mob.visible_message(span_warning("[affected_mob]Desmaios!"), span_userdanger("Você se entrega e se sente em paz..."))
 				affected_mob.AdjustSleeping(100)
 			if(SPT_PROB(5, seconds_per_tick))
-				to_chat(affected_mob, span_userdanger("You feel your mind relax and your thoughts drift!"))
+				to_chat(affected_mob, span_userdanger("Sente sua mente relaxada e seus pensamentos à deriva!"))
 				affected_mob.adjust_confusion(10 SECONDS)
 				affected_mob.adjust_organ_loss(ORGAN_SLOT_BRAIN, 10)
 			if(SPT_PROB(10, seconds_per_tick))
@@ -67,7 +67,7 @@
 
 /datum/reagent/cryptococcus_spores
 	name = "Cryptococcus gattii microbes"
-	description = "Active fungal spores."
+	description = "Esporos de fungos ativos."
 	color = "#92D17D"
 	chemical_flags = NONE
 	taste_description = "slime"

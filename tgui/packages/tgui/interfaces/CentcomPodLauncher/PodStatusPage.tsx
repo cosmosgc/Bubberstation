@@ -108,7 +108,7 @@ function Extras(props) {
           inline
           m={0}
           onClick={() => act('gamePanel')}
-          tooltip="Game Panel"
+          tooltip="Painel de Jogo"
           tooltipPosition="top-start"
         />
         <Button
@@ -117,7 +117,7 @@ function Extras(props) {
           inline
           m={0}
           onClick={() => act('buildMode')}
-          tooltip="Build Mode"
+          tooltip="Modo de Construção"
           tooltipPosition="top-start"
         />
         <Button
@@ -129,7 +129,7 @@ function Extras(props) {
             setCompact(!compact);
             compact && act('refreshView');
           }}
-          tooltip={compact ? 'Expand mode' : 'Compact mode'}
+          tooltip={compact ? 'Expandir o modo' : 'Modo compacto'}
           tooltipPosition="top-start"
         />
       </Box>

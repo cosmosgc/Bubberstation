@@ -119,7 +119,7 @@ const CameraSelector = (props) => {
           autoFocus
           fluid
           mt={1}
-          placeholder="Search for a camera"
+          placeholder="Procure por uma câmera."
           onChange={setSearchText}
           value={searchText}
         />
@@ -182,7 +182,7 @@ const CameraControls = (props: { searchText: string }) => {
               {!!can_spy && (
                 <Button
                   icon="magnifying-glass"
-                  tooltip="Track Person"
+                  tooltip="Pessoa da trilha"
                   onClick={() => act('start_tracking')}
                 />
               )}

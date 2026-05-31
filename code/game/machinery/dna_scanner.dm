@@ -1,6 +1,6 @@
 /obj/machinery/dna_scannernew
 	name = "\improper DNA scanner"
-	desc = "It scans DNA structures."
+	desc = "Ele escaneia estruturas de DNA."
 	icon = 'icons/obj/machines/cloning.dmi'
 	icon_state = "scanner"
 	base_icon_state = "scanner"
@@ -33,7 +33,7 @@
 /obj/machinery/dna_scannernew/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Radiation pulse accuracy increased by factor <b>[precision_coeff**2]</b>.<br>Radiation pulse damage decreased by factor <b>[damage_coeff**2]</b>.")
+		. += span_notice("A exibição de status diz: precisão do pulso de radiação aumentada por fator<b>[precision_coeff**2]</b>.<br>Dano do pulso de radiação diminuiu por fator.<b>[damage_coeff**2]</b>.")
 
 /obj/machinery/dna_scannernew/update_icon_state()
 	//no power or maintenance
@@ -56,7 +56,7 @@
 
 /obj/machinery/dna_scannernew/proc/toggle_open(mob/user)
 	if(panel_open)
-		to_chat(user, span_notice("Close the maintenance panel first."))
+		to_chat(user, span_notice("Feche o painel de manutenção primeiro."))
 		return
 
 	if(state_open)
@@ -64,7 +64,7 @@
 		return
 
 	else if(locked)
-		to_chat(user, span_notice("The bolts are locked down, securing the door shut."))
+		to_chat(user, span_notice("Os parafusos estão trancados, mantendo a porta fechada."))
 		return
 
 	open_machine()
@@ -75,15 +75,12 @@
 		return
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message(span_notice("You see [user] kicking against the door of [src]!"), \
-		span_notice("You lean on the back of [src] and start pushing the door open... (this will take about [DisplayTimeText(breakout_time)].)"), \
-		span_hear("You hear a metallic creaking from [src]."))
+	user.visible_message(span_notice("Viu?[user]Chutando contra a porta de[src]!"), 		span_notice("Você se apoia na parte de trás de[src]E começar a empurrar a porta aberta...[DisplayTimeText(breakout_time)].)"), 		span_hear("Você ouve um metal rangendo de[src]."))
 	if(do_after(user,(breakout_time), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || state_open || !locked)
 			return
 		locked = FALSE
-		user.visible_message(span_warning("[user] successfully broke out of [src]!"), \
-			span_notice("You successfully break out of [src]!"))
+		user.visible_message(span_warning("[user]Com sucesso, fugiu.[src]!"), 			span_notice("Você conseguiu escapar.[src]!"))
 		open_machine()
 
 /obj/machinery/dna_scannernew/proc/locate_computer(type_)
@@ -122,7 +119,7 @@
 	if(user.stat || locked)
 		if(message_cooldown <= world.time)
 			message_cooldown = world.time + 50
-			to_chat(user, span_warning("[src]'s door won't budge!"))
+			to_chat(user, span_warning("[src]A porta não se mexe!"))
 		return
 	open_machine()
 
@@ -172,7 +169,7 @@
 
 /obj/item/disk/data/debug
 	name = "\improper CentCom DNA disk"
-	desc = "A debug item for genetics"
+	desc = "Um item de depuração para genética."
 	custom_materials = null
 
 /obj/item/disk/data/debug/Initialize(mapload)

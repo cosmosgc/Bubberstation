@@ -46,8 +46,8 @@
 /datum/component/palette/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_notice("<b>Right-Click</b> this item while it's in your active hand to open/close its color picker menu.")
-	examine_list += span_notice("In the color picker, <b>Left-Click</b> a color button to pick it or <b>Right-Click</b> to remove it.")
+	examine_list += span_notice("<b>Clique em direito.</b>Este item enquanto está em sua mão ativa para abrir/fechar seu menu de seleção de cores.")
+	examine_list += span_notice("Sem coletor de núcleos,<b>Clique à esquerda.</b>um botão de cor para pegá-lo ou<b>Clique em direito.</b>para removê-lo.")
 
 /datum/component/palette/proc/on_attack_self_secondary(datum/source, mob/user)
 	SIGNAL_HANDLER

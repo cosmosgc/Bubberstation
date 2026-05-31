@@ -39,7 +39,7 @@ export const Soulcatcher = (props) => {
               <>
                 <Button
                   icon="palette"
-                  tooltip="Change the color of the room"
+                  tooltip="Mude a cor do quarto"
                   onClick={() =>
                     act('change_room_color', { room_ref: room.reference })
                   }
@@ -48,7 +48,7 @@ export const Soulcatcher = (props) => {
                 </Button>
                 <Button
                   icon="pen"
-                  tooltip="Change the name of the room"
+                  tooltip="Mude o nome da sala."
                   onClick={() =>
                     act('rename_room', { room_ref: room.reference })
                   }
@@ -57,7 +57,7 @@ export const Soulcatcher = (props) => {
                 </Button>
                 <Button
                   icon="trash"
-                  tooltip="Delete the room"
+                  tooltip="Apague o quarto."
                   color="red"
                   onClick={() =>
                     act('delete_room', { room_ref: room.reference })
@@ -72,7 +72,7 @@ export const Soulcatcher = (props) => {
             <Box>
               <Button
                 icon="scroll"
-                tooltip="Performs an emote, without sending a name."
+                tooltip="Realiza um emote, sem enviar um nome."
                 onClick={() =>
                   act('send_message', {
                     room_ref: room.reference,
@@ -86,7 +86,7 @@ export const Soulcatcher = (props) => {
 
               <Button
                 icon="comment"
-                tooltip="Speak inside of the room."
+                tooltip="Fale dentro da sala."
                 onClick={() =>
                   act('send_message', {
                     room_ref: room.reference,
@@ -99,7 +99,7 @@ export const Soulcatcher = (props) => {
 
               <Button
                 icon="face-smile"
-                tooltip="Do an emote inside of the room."
+                tooltip="Faça um emote dentro da sala."
                 onClick={() =>
                   act('send_message', {
                     room_ref: room.reference,
@@ -112,7 +112,7 @@ export const Soulcatcher = (props) => {
 
               <Button
                 icon="user-gear"
-                tooltip="Edits the name that is sent when emoting and saying."
+                tooltip="Edita o nome que é enviado quando emociona e diz."
                 onClick={() =>
                   act('modify_name', {
                     room_ref: room.reference,
@@ -123,7 +123,7 @@ export const Soulcatcher = (props) => {
               </Button>
               <Button
                 icon="book"
-                tooltip="Changes the description of the room"
+                tooltip="Muda a descrição da sala."
                 onClick={() =>
                   act('redescribe_room', { room_ref: room.reference })
                 }
@@ -132,18 +132,18 @@ export const Soulcatcher = (props) => {
               </Button>
               <Button
                 icon="image"
-                tooltip="Changes the current overlay of the room"
+                tooltip="Muda a sobreposição atual da sala"
                 onClick={() =>
                   act('change_overlay', { room_ref: room.reference })
                 }
               >
-                {room.overlay_name ? room.overlay_name : 'Change Overlay'}
+                {room.overlay_name ? room.overlay_name : 'Mude de Overlay'}
               </Button>
               {room.overlay_name && (
                 <>
                   <Button
                     icon="eye"
-                    tooltip="Previews the overlay of the current room"
+                    tooltip="Visualiza a sobreposição da sala atual."
                     onClick={() =>
                       act('preview_overlay', { room_ref: room.reference })
                     }
@@ -153,7 +153,7 @@ export const Soulcatcher = (props) => {
                   {room.overlay_recolorable && (
                     <Button
                       icon="eye-dropper"
-                      tooltip="changes the color of the current room overlay"
+                      tooltip="Muda a cor da sobreposição da sala atual."
                       onClick={() =>
                         act('change_overlay_color', {
                           room_ref: room.reference,
@@ -173,11 +173,11 @@ export const Soulcatcher = (props) => {
                   act('toggle_joinable_room', { room_ref: room.reference })
                 }
               >
-                {room.joinable ? 'Room joinable' : 'Room unjoinable'}
+                {room.joinable ? 'Quarto junta-se' : 'Quarto inigualável'}
               </Button>
               <Button
                 icon={room.currently_targeted ? 'check' : 'xmark'}
-                tooltip="Choose where messages using the soulcatcher verbs are sent."
+                tooltip="Escolha onde as mensagens que usam os verbos são enviadas."
                 color={room.currently_targeted ? 'green' : 'red'}
                 onClick={() =>
                   act('change_targeted_room', { room_ref: room.reference })
@@ -205,7 +205,7 @@ export const Soulcatcher = (props) => {
                                 <Button
                                   color="green"
                                   icon="pen"
-                                  tooltip="Change the mob's name."
+                                  tooltip="Mude o nome da máfia."
                                   onClick={() =>
                                     act('change_name', {
                                       target_mob: mob.reference,
@@ -216,7 +216,7 @@ export const Soulcatcher = (props) => {
                                 <Button
                                   color="red"
                                   icon="arrow-rotate-left"
-                                  tooltip="Reset the mob's name."
+                                  tooltip="Reinicie o nome da máfia."
                                   onClick={() =>
                                     act('reset_name', {
                                       target_mob: mob.reference,
@@ -228,7 +228,7 @@ export const Soulcatcher = (props) => {
                             )}
                             <Button
                               icon="paper-plane"
-                              tooltip="Transfer a mob to another room"
+                              tooltip="Transfira uma multidão para outro quarto."
                               onClick={() =>
                                 act('transfer_mob', {
                                   room_ref: room.reference,
@@ -256,11 +256,11 @@ export const Soulcatcher = (props) => {
                         </BlockQuote>
                         <br />
                         <LabeledList>
-                          <LabeledList.Item label="Outside Hearing">
+                          <LabeledList.Item label="Lá fora Audição">
                             <Button
                               color={mob.outside_hearing ? 'green' : 'red'}
                               fluid
-                              tooltip="Is the mob able to hear the outside world?"
+                              tooltip="A multidão é capaz de ouvir o mundo exterior?"
                               onClick={() =>
                                 act('toggle_soul_sense', {
                                   target_mob: mob.reference,
@@ -272,11 +272,11 @@ export const Soulcatcher = (props) => {
                               {mob.outside_hearing ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
-                          <LabeledList.Item label="Outside Sight">
+                          <LabeledList.Item label="Visão Fora">
                             <Button
                               color={mob.outside_sight ? 'green' : 'red'}
                               fluid
-                              tooltip="Is the mob able to see the outside world?"
+                              tooltip="A máfia é capaz de ver o mundo exterior?"
                               onClick={() =>
                                 act('toggle_soul_sense', {
                                   target_mob: mob.reference,
@@ -292,7 +292,7 @@ export const Soulcatcher = (props) => {
                             <Button
                               color={mob.internal_hearing ? 'green' : 'red'}
                               fluid
-                              tooltip="Is the mob able to hear inside the room?"
+                              tooltip="A multidão pode ouvir dentro da sala?"
                               onClick={() =>
                                 act('toggle_soul_sense', {
                                   target_mob: mob.reference,
@@ -308,7 +308,7 @@ export const Soulcatcher = (props) => {
                             <Button
                               color={mob.internal_sight ? 'green' : 'red'}
                               fluid
-                              tooltip="Is the mob able to see inside the room?"
+                              tooltip="A máfia consegue ver dentro do quarto?"
                               onClick={() =>
                                 act('toggle_soul_sense', {
                                   target_mob: mob.reference,
@@ -324,7 +324,7 @@ export const Soulcatcher = (props) => {
                             <Button
                               color={mob.able_to_speak ? 'green' : 'red'}
                               fluid
-                              tooltip="Is the mob able to speak?"
+                              tooltip="A máfia é capaz de falar?"
                               onClick={() =>
                                 act('toggle_soul_sense', {
                                   target_mob: mob.reference,
@@ -340,7 +340,7 @@ export const Soulcatcher = (props) => {
                             <Button
                               color={mob.able_to_emote ? 'green' : 'red'}
                               fluid
-                              tooltip="Is the mob able to emote?"
+                              tooltip="A máfia é capaz de emocionar?"
                               onClick={() =>
                                 act('toggle_soul_sense', {
                                   target_mob: mob.reference,
@@ -354,7 +354,7 @@ export const Soulcatcher = (props) => {
                           </LabeledList.Item>
                           {communicate_as_parent && (
                             <>
-                              <LabeledList.Item label="External Speech">
+                              <LabeledList.Item label="Discurso Externo">
                                 <Button
                                   color={
                                     mob.able_to_speak_as_container
@@ -362,7 +362,7 @@ export const Soulcatcher = (props) => {
                                       : 'red'
                                   }
                                   fluid
-                                  tooltip="Is the mob able to speak the container?"
+                                  tooltip="A multidão é capaz de falar o contêiner?"
                                   onClick={() =>
                                     act('toggle_soul_sense', {
                                       target_mob: mob.reference,
@@ -377,7 +377,7 @@ export const Soulcatcher = (props) => {
                                     : 'Disabled'}
                                 </Button>
                               </LabeledList.Item>
-                              <LabeledList.Item label="External Emote">
+                              <LabeledList.Item label="Emote Externo">
                                 <Button
                                   color={
                                     mob.able_to_emote_as_container
@@ -385,7 +385,7 @@ export const Soulcatcher = (props) => {
                                       : 'red'
                                   }
                                   fluid
-                                  tooltip="Is the mob able to emote as the container?"
+                                  tooltip="A máfia é capaz de emocionar como o contêiner?"
                                   onClick={() =>
                                     act('toggle_soul_sense', {
                                       target_mob: mob.reference,
@@ -406,7 +406,7 @@ export const Soulcatcher = (props) => {
                             <Button
                               color={mob.able_to_rename ? 'green' : 'red'}
                               fluid
-                              tooltip="Is the mob able to rename themselves?"
+                              tooltip="A máfia é capaz de se renomear?"
                               onClick={() =>
                                 act('toggle_soul_sense', {
                                   target_mob: mob.reference,

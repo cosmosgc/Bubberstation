@@ -1,6 +1,6 @@
 /obj/machinery/chem_dispenser
 	name = "chem dispenser"
-	desc = "Creates and dispenses chemicals."
+	desc = "Cria e dispensa produtos químicos."
 	density = TRUE
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "dispenser"
@@ -154,12 +154,10 @@
 /obj/machinery/chem_dispenser/examine(mob/user)
 	. = ..()
 	if(panel_open)
-		. += span_notice("[src]'s maintenance hatch is open!")
+		. += span_notice("[src]A escotilha de manutenção está aberta!")
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads:\n\
-		Recharge rate: <b>[display_power(recharge_amount, convert = FALSE)]</b>.\n\
-		Energy cost: <b>[siunit(power_cost, "J/u", 3)]</b>.")
-	. += span_notice("Use <b>RMB</b> to eject a stored beaker.")
+		. += span_notice("A exibição de status diz:\nTaxa de recarga:<b>[display_power(recharge_amount, convert = FALSE)]</b>.\nCusto energético:<b>[siunit(power_cost, "J/u", 3)]</b>.")
+	. += span_notice("Use<b>RMB</b>Ejetar um copo armado.")
 
 /obj/machinery/chem_dispenser/on_set_is_operational(old_value)
 	if(old_value) //Turned off
@@ -201,7 +199,7 @@
 	if(obj_flags & EMAGGED)
 		balloon_alert(user, "já emagado!")
 		return FALSE
-	balloon_alert(user, "safeties shorted out")
+	balloon_alert(user, "Seguranças curtas.")
 	dispensable_reagents |= emagged_reagents//add the emagged reagents to the dispensable ones
 	obj_flags |= EMAGGED
 	return TRUE
@@ -390,7 +388,7 @@
 			return TRUE
 
 		if("clear_recipes")
-			if(is_operational && tgui_alert(ui.user, "Clear all recipes?", "Clear?", list("Yes", "No")) == "Yes")
+			if(is_operational && tgui_alert(ui.user, "Todas como receitas?", "Clear?", list("Yes", "No")) == "Yes")
 				saved_recipes = list()
 				return TRUE
 
@@ -405,14 +403,14 @@
 			var/name = tgui_input_text(ui.user, "What do you want to name this recipe?", "Recipe Name", max_length = MAX_NAME_LEN, encode = FALSE)
 			if(!ui.user.can_perform_action(src, ALLOW_SILICON_REACH))
 				return
-			if(saved_recipes[name] && tgui_alert(ui.user, "\"[name]\" already exists, do you want to overwrite it?",, list("Yes", "No")) == "No")
+			if(saved_recipes[name] && tgui_alert(ui.user, "\"[name]\"Já existe, quer sobrescrevê-lo?",, list("Yes", "No")) == "No")
 				return
 			if(name && recording_recipe)
 				for(var/reagent in recording_recipe)
 					var/reagent_id = GLOB.name2reagent[reagent]
 					if(!dispensable_reagents.Find(reagent_id))
-						visible_message(span_warning("[src] buzzes."), span_hear("You hear a faint buzz."))
-						to_chat(ui.user, span_warning("[src] cannot find <b>[reagent]</b>!"))
+						visible_message(span_warning("[src]Buzzes."), span_hear("Você ouve um zumbido fraco."))
+						to_chat(ui.user, span_warning("[src]Não consigo encontrar<b>[reagent]</b>!"))
 						playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, TRUE)
 						return
 				saved_recipes[name] = recording_recipe
@@ -426,7 +424,7 @@
 		// BUBBER EDIT ADDITION BEGIN - CHEMISTRY QOL
 		if("custom_amount")
 			if(!beaker)
-				to_chat(usr, span_warning("Insert a container first!"))
+				to_chat(usr, span_warning("Insira um destinatário primeiro!"))
 				return
 			if(customTransferAmount)
 				transferAmounts -= customTransferAmount
@@ -495,7 +493,7 @@
 	cell.use(total * power_cost)
 	cell.emp_act(severity)
 	work_animation()
-	visible_message(span_danger("[src] malfunctions, spraying chemicals everywhere!"))
+	visible_message(span_danger("[src]Falhas, pulverização química em todo lugar!"))
 
 /obj/machinery/chem_dispenser/RefreshParts()
 	. = ..()
@@ -637,7 +635,7 @@
 
 /obj/machinery/chem_dispenser/drinks
 	name = "soda dispenser"
-	desc = "Contains a large reservoir of soft drinks."
+	desc = "Contém um grande reservatório de refrigerantes."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "soda_dispenser"
 	base_icon_state = "soda_dispenser"
@@ -736,7 +734,7 @@
 	return b_o
 
 /obj/machinery/chem_dispenser/drinks/fullupgrade //fully ugpraded stock parts, emagged
-	desc = "Contains a large reservoir of soft drinks. This model has had its safeties shorted out."
+	desc = "Contém um grande reservatório de refrigerantes. Este modelo teve suas seguranças curtas."
 	obj_flags = CAN_BE_HIT | EMAGGED
 	circuit = /obj/item/circuitboard/machine/chem_dispenser/drinks/fullupgrade
 
@@ -746,7 +744,7 @@
 
 /obj/machinery/chem_dispenser/drinks/beer
 	name = "booze dispenser"
-	desc = "Contains a large reservoir of the good stuff."
+	desc = "Contém um grande reservatório das coisas boas."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "booze_dispenser"
 	base_icon_state = "booze_dispenser"
@@ -799,7 +797,7 @@
 	. = ..()
 
 /obj/machinery/chem_dispenser/drinks/beer/fullupgrade //fully ugpraded stock parts, emagged
-	desc = "Contains a large reservoir of the good stuff. This model has had its safeties shorted out."
+	desc = "Contém um grande reservatório das coisas boas. Este modelo teve suas seguranças curtas."
 	obj_flags = CAN_BE_HIT | EMAGGED
 	circuit = /obj/item/circuitboard/machine/chem_dispenser/drinks/beer/fullupgrade
 
@@ -809,7 +807,7 @@
 
 /obj/machinery/chem_dispenser/mutagen
 	name = "mutagen dispenser"
-	desc = "Creates and dispenses mutagen."
+	desc = "Cria e dispensa mutagênico."
 	/// The default list of reagents dispensable by mutagen chem dispenser
 	var/static/list/mutagen_dispensable_reagents = list(/datum/reagent/toxin/mutagen)
 	upgrade_reagents = null
@@ -823,7 +821,7 @@
 
 /obj/machinery/chem_dispenser/mutagensaltpeter
 	name = "botanical chemical dispenser"
-	desc = "Creates and dispenses chemicals useful for botany."
+	desc = "Cria e dispensa produtos químicos úteis para botânica."
 	circuit = /obj/item/circuitboard/machine/chem_dispenser/mutagensaltpeter
 	shown_reaction_tags = BOTANIST_REACTION_TAGS
 	hidden_reaction_tags = REACTION_TAG_ACTIVE
@@ -850,7 +848,7 @@
 	. = ..()
 
 /obj/machinery/chem_dispenser/fullupgrade //fully ugpraded stock parts, emagged
-	desc = "Creates and dispenses chemicals. This model has had its safeties shorted out."
+	desc = "Cria e dispensa produtos químicos. Este modelo teve suas seguranças curtas."
 	obj_flags = CAN_BE_HIT | EMAGGED
 	circuit = /obj/item/circuitboard/machine/chem_dispenser/fullupgrade
 
@@ -860,7 +858,7 @@
 
 /obj/machinery/chem_dispenser/abductor
 	name = "reagent synthesizer"
-	desc = "Synthesizes a variety of reagents using proto-matter."
+	desc = "Sintetiza uma variedade de reagentes usando proto-matéria."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "chem_dispenser"
 	base_icon_state = "chem_dispenser"

@@ -237,7 +237,7 @@
 /datum/computer_file/program/radar/lifeline
 	filename = "lifeline"
 	filedesc = "Lifeline"
-	extended_desc = "This program allows for tracking of crew members via their suit sensors."
+	extended_desc = "Este programa permite rastrear membros da tripulação através de seus sensores de terno."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	download_access = list(ACCESS_MEDICAL)
 	program_icon = "heartbeat"
@@ -282,7 +282,7 @@
 /datum/computer_file/program/radar/custodial_locator
 	filename = "custodiallocator"
 	filedesc = "Custodial Locator"
-	extended_desc = "This program allows for tracking of custodial equipment."
+	extended_desc = "Este programa permite rastrear equipamentos de custódia."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	download_access = list(ACCESS_JANITOR)
 	program_icon = "broom"
@@ -327,7 +327,7 @@
 	filename = "fission360"
 	filedesc = "Fission360"
 	program_open_overlay = "radarsyndicate"
-	extended_desc = "This program allows for tracking of nuclear authorization disks and warheads."
+	extended_desc = "Este programa permite rastrear discos de autorização nuclear e ogivas."
 	program_flags = PROGRAM_ON_SYNDINET_STORE
 	tgui_id = "NtosRadarSyndicate"
 	program_icon = "bomb"
@@ -386,7 +386,7 @@
 
 	for(var/obj/machinery/nuclearbomb/bomb as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/nuclearbomb))
 		if(bomb.timing)
-			examine_list += span_danger("Extreme danger. Arming signal detected. Time remaining: [bomb.get_time_left()].")
+			examine_list += span_danger("Perigo extremo. Sinal de armamento detectado. Tempo restante:[bomb.get_time_left()].")
 	return examine_list
 
 /*
@@ -401,11 +401,11 @@
 
 	playsound(computer, 'sound/items/nuke_toy_lowpower.ogg', 50, FALSE)
 	if(isliving(computer.loc))
-		to_chat(computer.loc, span_userdanger("Your [computer.name] vibrates and lets out an ominous alarm. Uh oh."))
+		to_chat(computer.loc, span_userdanger("Sua[computer.name]vibra e solta um alarme sinistro. Uh oh."))
 	else
 		computer.audible_message(
-			span_danger("[computer] vibrates and lets out an ominous alarm. Uh oh."),
-			span_notice("[computer] begins to vibrate rapidly. Wonder what that means..."),
+			span_danger("[computer]vibra e solta um alarme sinistro. Uh oh."),
+			span_notice("[computer]Começa a vibrar rapidamente. O que isso significa?"),
 		)
 
 

@@ -1,8 +1,7 @@
 // Ye old forbidden book, the Codex Cicatrix.
 /obj/item/codex_cicatrix
 	name = "Codex Cicatrix"
-	desc = "This heavy tome is full of cryptic scribbles and impossible diagrams. \
-	According to legend, it can be deciphered to reveal the secrets of the veil between worlds."
+	desc = "Este tom pesado está cheio de rabiscos enigmáticos e diagramas impossíveis. Segundo a lenda, pode ser decifrado revelar os segredos do véu entre mundos."
 	icon = 'icons/obj/antags/eldritch.dmi'
 	base_icon_state = "book"
 	icon_state = "book"
@@ -17,11 +16,7 @@
 
 /obj/item/codex_cicatrix/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/effect_remover, \
-		success_feedback = "You remove %THEEFFECT.", \
-		tip_text = "Clear rune", \
-		on_clear_callback = CALLBACK(src, PROC_REF(after_clear_rune)), \
-		effects_we_clear = list(/obj/effect/heretic_rune))
+	AddComponent(/datum/component/effect_remover, 		success_feedback = "You remove %THEEFFECT.", 		tip_text = "Clear rune", 		on_clear_callback = CALLBACK(src, PROC_REF(after_clear_rune)), 		effects_we_clear = list(/obj/effect/heretic_rune))
 
 /// Callback for effect_remover component after a rune is deleted
 /obj/item/codex_cicatrix/proc/after_clear_rune(obj/effect/target, mob/living/user)
@@ -32,9 +27,9 @@
 	if(!IS_HERETIC(user))
 		return
 
-	. += span_notice("Can be used to tap influences for additional knowledge points.")
-	. += span_notice("Can also be used to draw or remove transmutation runes with ease.")
-	. += span_notice("Additionally, it can work as a focus for your spells when held.")
+	. += span_notice("Pode ser usado para tocar influências para pontos de conhecimento adicionais.")
+	. += span_notice("Também pode ser usado para desenhar ou remover runas de transmutação com facilidade.")
+	. += span_notice("Além disso, pode funcionar como foco para seus feitiços.")
 
 /obj/item/codex_cicatrix/attack_self(mob/user, modifiers)
 	. = ..()
@@ -76,7 +71,7 @@
 // Upgraded version of the codex cicatrix that allows us to cast curses
 /obj/item/codex_cicatrix/morbus // I'm morbing all over
 	name = "Codex Morbus"
-	desc = "A hideous, ragged book covered in separately-blinking eyes, all of them staring at you. You have no idea how to hold this thing, and to be honest you're not sure if you want to."
+	desc = "Um livro horroroso, esfarrapado, coberto de olhos piscando separadamente, todos olhando para você. Você não tem ideia de como segurar isso, e para ser honesto, não tem certeza se quer."
 	base_icon_state = "book_morbus"
 	icon_state = "book_morbus"
 	drain_speed = 2.5 SECONDS
@@ -87,13 +82,13 @@
 /obj/item/codex_cicatrix/morbus/examine(mob/user)
 	. = ..()
 	if(IS_HERETIC(user))
-		. += span_info("Can be used to cast a curse with blood in your offhand by right clicking a rune.")
+		. += span_info("Pode ser usado para lançar uma maldição com sangue em sua mão, clicando com o botão direito de uma runa.")
 		return
-	. += span_danger("The eyes stop blinking. They stare at you. Their gaze burns...")
+	. += span_danger("Os olhos param de piscar. Eles olham para você. Seu olhar queima...")
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/human_user = user
-	to_chat(human_user, span_userdanger("Your mind burns as you stare at the pages!"))
+	to_chat(human_user, span_userdanger("Sua mente queima enquanto olha para as páginas!"))
 	human_user.adjust_organ_loss(ORGAN_SLOT_BRAIN, 10, 190)
 	human_user.add_mood_event("gates_of_mansus", /datum/mood_event/gates_of_mansus)
 
@@ -116,7 +111,7 @@
 
 	var/atom/held_offhand = user.get_inactive_held_item()
 	if(!held_offhand)
-		user.balloon_alert(user, "no catalyst!")
+		user.balloon_alert(user, "Sem catalisador!")
 		return
 	var/blood_samples = list()
 	for(var/blood in GET_ATOM_BLOOD_DNA(held_offhand))
@@ -126,7 +121,7 @@
 			continue
 		blood_samples += usable_reagent.data["blood_DNA"]
 	if(isnull(blood_samples))
-		user.balloon_alert(user, "sem sangue!")
+		user.balloon_alert(user, "Sem sangue!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/curse_type = curse_list[selected_curse]

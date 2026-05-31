@@ -1,20 +1,20 @@
 /obj/item/reagent_containers/cup/soda_cans/skyrat/lubricola
 	name = "LubriCola"
-	desc = "The perfect lubricant for your weary gears."
+	desc = "O lubrificante perfeito para suas engrenagens cansadas."
 	icon_state = "lubricola"
 	list_reagents = list(/datum/reagent/fuel/oil = 30)
 	custom_price = PAYCHECK_LOWER * 1.2
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/welding_fizz
 	name = "Welding Fizz"
-	desc = "More energy than in an IED! Now carbonated. WARNING: Contains toxic and flammable fuels."
+	desc = "Mais energia do que em um explosivo! Agora carbonatado. ATENÇÃO: contém combustíveis tóxicos e inflamáveis."
 	icon_state = "welding_fizz"
 	list_reagents = list(/datum/reagent/fuel = 25, /datum/reagent/carbondioxide = 5)
 	custom_price = PAYCHECK_LOWER * 1.2
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/synthanolcan
 	name = "Silly Cone's Synthanol"
-	desc = "A recompiling can of synthanol."
+	desc = "Uma lata de recompilação de sintanol."
 	icon_state = "synthanolcan"
 	list_reagents = list(/datum/reagent/consumable/ethanol/synthanol = 30)
 	custom_price = PAYCHECK_CREW
@@ -41,9 +41,9 @@
 /obj/item/reagent_containers/cup/soda_cans/skyrat/attack(mob/M, mob/living/user)
 	if(istype(M, /mob/living/carbon) && !reagents.total_volume && user.combat_mode && user.zone_selected == BODY_ZONE_HEAD)
 		if(M == user)
-			user.visible_message(span_warning("[user] crushes the can of [src] on [user.p_their()] forehead!"), span_notice("You crush the can of [src] on your forehead."))
+			user.visible_message(span_warning("[user]Esmaga a lata de[src]Vamos.[user.p_their()]testa!"), span_notice("Você esmaga a lata de[src]Na sua testa."))
 		else
-			user.visible_message(span_warning("[user] crushes the can of [src] on [M]'s forehead!"), span_notice("You crush the can of [src] on [M]'s forehead."))
+			user.visible_message(span_warning("[user]Esmaga a lata de[src]Vamos.[M]A testa!"), span_notice("Você esmaga a lata de[src]Vamos.[M]Na testa."))
 		playsound(M,'sound/items/weapons/pierce.ogg', rand(10,50), TRUE)
 		var/obj/item/trash/can/skyrat/crushed_can = new /obj/item/trash/can/skyrat(M.loc)
 		crushed_can.icon_state = icon_state
@@ -83,7 +83,7 @@
 		return
 
 	burst_soda(hit_atom, hide_message = TRUE)
-	visible_message(span_danger("[src]'s impact with [hit_atom] causes it to rupture, spilling everywhere!"))
+	visible_message(span_danger("[src]O impacto com[hit_atom]causa a ruptura, derramando em todo lugar!"))
 	var/obj/item/trash/can/skyrat/crushed_can = new /obj/item/trash/can/skyrat(src.loc)
 	crushed_can.icon_state = icon_state
 	moveToNullspace()

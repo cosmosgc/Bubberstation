@@ -1,6 +1,6 @@
 /obj/structure/closet/crate
 	name = "crate"
-	desc = "A rectangular steel crate."
+	desc = "Uma caixa de aço retangular."
 	icon = 'icons/obj/storage/crates.dmi'
 	icon_state = "crate"
 	base_icon_state = "crate"
@@ -154,7 +154,7 @@
 		manifest = null
 		return
 	if(user)
-		to_chat(user, span_notice("You tear the manifest off of [src]."))
+		to_chat(user, span_notice("Você arranca o manifesto de[src]."))
 	playsound(src, 'sound/items/poster/poster_ripped.ogg', 75, TRUE)
 
 	our_manifest.forceMove(drop_location(src))
@@ -169,7 +169,7 @@
 
 /obj/structure/closet/crate/coffin
 	name = "coffin"
-	desc = "It's a burial receptacle for the dearly departed."
+	desc = "É um receptáculo para os falecidos."
 	icon_state = "coffin"
 	base_icon_state = "coffin"
 	resistance_flags = FLAMMABLE
@@ -187,7 +187,7 @@
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 5)
 
 /obj/structure/closet/crate/trashcart //please make this a generic cart path later after things calm down a little
-	desc = "A heavy, metal trashcart with wheels."
+	desc = "Um carrinho de lixo pesado com rodas."
 	name = "trash cart"
 	icon_state = "trashcart"
 	base_icon_state = "trashcart"
@@ -197,7 +197,7 @@
 
 /obj/structure/closet/crate/trashcart/laundry
 	name = "laundry cart"
-	desc = "A large cart for hauling around large amounts of laundry."
+	desc = "Um carrinho grande para carregar grandes quantidades de roupa suja."
 	icon_state = "laundry"
 	base_icon_state = "laundry"
 	elevation = 14
@@ -224,20 +224,20 @@
 			new /obj/item/storage/bag/trash/filled(src)
 
 /obj/structure/closet/crate/internals
-	desc = "An internals crate."
+	desc = "Uma caixa interna."
 	name = "internals crate"
 	icon_state = "o2crate"
 	base_icon_state = "o2crate"
 
 /obj/structure/closet/crate/medical
-	desc = "A medical crate."
+	desc = "Uma caixa médica."
 	name = "medical crate"
 	icon_state = "medicalcrate"
 	base_icon_state = "medicalcrate"
 
 /obj/structure/closet/crate/deforest
 	name = "deforest medical crate"
-	desc = "A DeForest brand crate of medical supplies."
+	desc = "Uma caixa de suprimentos médicos da DeForest."
 	icon_state = "deforest"
 	base_icon_state = "deforest"
 
@@ -246,7 +246,7 @@
 	base_icon_state = "medical"
 
 /obj/structure/closet/crate/freezer
-	desc = "A freezer."
+	desc = "Um freezer."
 	name = "freezer"
 	icon_state = "freezer"
 	base_icon_state = "freezer"
@@ -273,7 +273,7 @@
 
 /obj/structure/closet/crate/freezer/blood
 	name = "blood freezer"
-	desc = "A freezer containing packs of blood."
+	desc = "Um freezer contendo pacotes de sangue."
 
 /obj/structure/closet/crate/freezer/blood/PopulateContents()
 	. = ..()
@@ -292,7 +292,7 @@
 
 /obj/structure/closet/crate/freezer/surplus_limbs
 	name = "surplus prosthetic limbs"
-	desc = "A crate containing an assortment of cheap prosthetic limbs."
+	desc = "Uma caixa contendo uma variedade de membros protéticos baratos."
 
 /obj/structure/closet/crate/freezer/surplus_limbs/PopulateContents()
 	. = ..()
@@ -307,7 +307,7 @@
 
 /obj/structure/closet/crate/freezer/organ
 	name = "organ freezer"
-	desc = "A freezer containing a set of organic organs."
+	desc = "Um freezer contendo um conjunto de órgãos orgânicos."
 
 /obj/structure/closet/crate/freezer/organ/PopulateContents()
 	. = ..()
@@ -327,25 +327,25 @@
 
 /obj/structure/closet/crate/freezer/donk
 	name = "\improper Donk Co. fridge"
-	desc = "A Donk Co. brand fridge, keeps your donkpockets and foam ammunition fresh!"
+	desc = "Uma geladeira da marca Donk Co., mantém seus donkpockets e munição espuma fresca!"
 	icon_state = "donkcocrate"
 	base_icon_state = "donkcocrate"
 
 /obj/structure/closet/crate/self
 	name = "\improper S.E.L.F. crate"
-	desc = "A robust-looking crate with a seemingly decorative holographic display. The front of the crate proudly declares its allegiance to the notorious terrorist group 'S.E.L.F'."
+	desc = "Uma caixa robusta com uma exibição holográfica aparentemente decorativa. A frente da caixa declara orgulhosamente sua lealdade ao notório grupo terrorista \"S.E.L.F\"."
 	icon_state = "selfcrate"
 	base_icon_state = "selfcrate"
 
 /obj/structure/closet/crate/radiation
-	desc = "A crate with a radiation sign on it."
+	desc = "Uma caixa com um sinal de radiação."
 	name = "radiation crate"
 	icon_state = "radiation"
 	base_icon_state = "radiation"
 
 /obj/structure/closet/crate/hydroponics
 	name = "hydroponics crate"
-	desc = "All you need to destroy those pesky weeds and pests."
+	desc = "Tudo que você precisa para destruir essas ervas daninhas e pragas."
 	icon_state = "hydrocrate"
 	base_icon_state = "hydrocrate"
 
@@ -361,7 +361,7 @@
 
 /obj/structure/closet/crate/robust
 	name = "robust industries crate"
-	desc = "Robust Industries LLC. crate. Feels oddly nostalgic."
+	desc = "Indústrias Robust LLC, caixa. Parece estranhamente nostálgico."
 	icon_state = "robust"
 	base_icon_state = "robust"
 
@@ -378,7 +378,7 @@
 
 /obj/structure/closet/crate/nakamura
 	name = "nakamura engineering crate"
-	desc = "Crate from Nakamura Engineering, most likely containing engineering supplies or MODcores."
+	desc = "Crate da Engenharia Nakamura, provavelmente contendo suprimentos de engenharia ou MODcores."
 	icon_state = "nakamura"
 	base_icon_state = "nakamura"
 
@@ -393,7 +393,7 @@
 	base_icon_state = "atmos"
 
 /obj/structure/closet/crate/rcd
-	desc = "A crate for the storage of an RCD."
+	desc = "Uma caixa para o armazenamento de um CDR."
 	name = "\improper RCD crate"
 	icon_state = "engi_crate"
 	base_icon_state = "engi_crate"
@@ -406,7 +406,7 @@
 
 /obj/structure/closet/crate/science
 	name = "science crate"
-	desc = "A science crate."
+	desc = "Uma caixa de ciência."
 	icon_state = "scicrate"
 	base_icon_state = "scicrate"
 
@@ -442,7 +442,7 @@
 
 /obj/structure/closet/crate/goldcrate
 	name = "gold crate"
-	desc = "A rectangular steel crate. It seems to be painted to look like gold."
+	desc = "Uma caixa de aço retangular. Parece ser pintado para parecer ouro."
 	icon_state = "gold"
 	base_icon_state = "gold"
 
@@ -458,7 +458,7 @@
 
 /obj/structure/closet/crate/silvercrate
 	name = "silver crate"
-	desc = "A rectangular steel crate. It seems to be painted to look like silver."
+	desc = "Uma caixa de aço retangular. Parece ser pintado para parecer prata."
 	icon_state = "silver"
 	base_icon_state = "silver"
 
@@ -481,7 +481,7 @@
 
 /obj/structure/closet/crate/glitter
 	name = "pink crate"
-	desc = "A glittery pink crate."
+	desc = "Uma caixa rosa brilhante."
 	icon_state = "pink"
 	base_icon_state = "pink"
 	var/glitter_prob = 25
@@ -498,21 +498,21 @@
 
 /obj/structure/closet/crate/glitter/lavender
 	name = "lavender crate"
-	desc = "A glittery purple... no, lavender crate."
+	desc = "Um roxo brilhante... Não, caixa de lavanda."
 	icon_state = "lavender"
 	base_icon_state = "lavender"
 	glitter_color = "#db80ff"
 
 /obj/structure/closet/crate/market
 	name = "shield bubble"
-	desc = "A rippling blue energy bubble, capable of sustaining itself until it hits a solid wall."
+	desc = "Uma bolha de energia azul ondulante, capaz de se sustentar até atingir uma parede sólida."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield2"
 	base_icon_state = "shield2"
 
 /obj/structure/closet/crate/market/after_open(mob/living/user, force)
 	. = ..()
-	visible_message(span_notice("[src] pops as [user] touches it!"))
+	visible_message(span_notice("[src]Estourou como[user]Toca!"))
 	pop_crate()
 
 /obj/structure/closet/crate/market/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)

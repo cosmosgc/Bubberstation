@@ -313,18 +313,11 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 			drifting = FALSE
 			user_loc = user.loc
 
-		if(QDELETED(user) \
-			|| (!(timed_action_flags & IGNORE_USER_LOC_CHANGE) && !drifting && user.loc != user_loc) \
-			|| (!(timed_action_flags & IGNORE_HELD_ITEM) && user.get_active_held_item() != holding) \
-			|| (!(timed_action_flags & IGNORE_INCAPACITATED) && HAS_TRAIT(user, TRAIT_INCAPACITATED)) \
-			|| ((timed_action_flags & DO_AFTER_CHECK_NEXT_MOVE) && world.time < user.next_move) \
-			|| (extra_checks && !extra_checks.Invoke()))
+		if(QDELETED(user) 			|| (!(timed_action_flags & IGNORE_USER_LOC_CHANGE) && !drifting && user.loc != user_loc) 			|| (!(timed_action_flags & IGNORE_HELD_ITEM) && user.get_active_held_item() != holding) 			|| (!(timed_action_flags & IGNORE_INCAPACITATED) && HAS_TRAIT(user, TRAIT_INCAPACITATED)) 			|| ((timed_action_flags & DO_AFTER_CHECK_NEXT_MOVE) && world.time < user.next_move) 			|| (extra_checks && !extra_checks.Invoke()))
 			. = FALSE
 			break
 
-		if(target && (user != target) && \
-			(QDELETED(target) \
-			|| (!(timed_action_flags & IGNORE_TARGET_LOC_CHANGE) && target.loc != target_loc)))
+		if(target && (user != target) && 			(QDELETED(target) 			|| (!(timed_action_flags & IGNORE_TARGET_LOC_CHANGE) && target.loc != target_loc)))
 			. = FALSE
 			break
 
@@ -419,7 +412,7 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 	message = span_deadsay("[source][span_linkify(message)]")
 
 	if(admin_only)
-		message += span_deadsay(" (This is viewable to admins only).")
+		message += span_deadsay("(Isso é visível apenas para administradores).")
 
 	for(var/mob/M in GLOB.player_list)
 		var/chat_toggles = TOGGLES_DEFAULT_CHAT
@@ -602,7 +595,7 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 	var/list/borgs = active_free_borgs()
 	if(borgs.len)
 		if(user)
-			. = input(user,"Unshackled cyborg signals detected:", "Cyborg Selection", borgs[1]) in sort_list(borgs)
+			. = input(user,"Sinais de Ciborgue desencadeados:", "Ciborgue Seleção", borgs[1]) in sort_list(borgs)
 		else
 			. = pick(borgs)
 	return .
@@ -611,7 +604,7 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 	var/list/ais = active_ais(FALSE, z, skip_syndicate, only_syndicate)
 	if(ais.len)
 		if(user)
-			. = input(user,"AI signals detected:", "AI Selection", ais[1]) in sort_list(ais)
+			. = input(user,"Sinais de IA detectados:", "AI Selection", ais[1]) in sort_list(ais)
 		else
 			. = pick(ais)
 	return .
@@ -891,10 +884,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	return ..()
 
 
-#define FOR_DVIEW(type, range, center, invis_flags) \
-	GLOB.dview_mob.loc = center;           \
-	GLOB.dview_mob.set_invis_see(invis_flags); \
-	for(type in view(range, GLOB.dview_mob))
+#define FOR_DVIEW(type, range, center, invis_flags) 	GLOB.dview_mob.loc = center;           	GLOB.dview_mob.set_invis_see(invis_flags); 	for(type in view(range, GLOB.dview_mob))
 
 #define FOR_DVIEW_END GLOB.dview_mob.loc = null
 

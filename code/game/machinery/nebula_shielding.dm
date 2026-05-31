@@ -73,7 +73,7 @@
 /obj/machinery/nebula_shielding/emergency/examine(mob/user)
 	. = ..()
 
-	. += span_notice("[p_They()] will block the nebula for [round(detonate_in / (1 MINUTES))] minute\s with a shield strength of [shielding_strength].")
+	. += span_notice("[p_They()]Vai fazer a nebulosa para[round(detonate_in / (1 MINUTES))]minutos com uma força de escudo de[shielding_strength].")
 
 /obj/machinery/nebula_shielding/emergency/get_nebula_shielding()
 	return shielding_strength //no strings attached, we will always produce shielding
@@ -84,7 +84,7 @@
 ///We shield against the radioactive nebula and passively generate tritium
 /obj/machinery/nebula_shielding/radiation
 	name = "radioactive nebula shielder"
-	desc = "Generates a field around the station, protecting it from a radioactive nebula."
+	desc = "Gera um campo ao redor da estação, protegendo-o de uma nebulosa radioativa."
 
 	icon_state = "radioactive_shielding"
 	base_icon_state = "radioactive_shielding"
@@ -99,7 +99,7 @@
 /obj/machinery/nebula_shielding/radiation/examine(mob/user)
 	. = ..()
 
-	. += span_notice("Passively generates tritium. Provides [shielding_strength] levels of nebula shielding when active.")
+	. += span_notice("Passivamente gera trítio. Fornece[shielding_strength]níveis de nebulosa protegendo quando ativo.")
 
 /obj/machinery/nebula_shielding/radiation/generate_reward()
 	var/turf/open/turf = get_turf(src)
@@ -115,7 +115,7 @@
 ///Emergency shielding so people aren't permanently in a radstorm if shit goes very wrong in engineering
 /obj/machinery/nebula_shielding/emergency/radiation
 	name = "emergency nebula radiation shielder"
-	desc = "Generates a field around the station to protect it from a radioactive nebula."
+	desc = "Gera um campo ao redor da estação para protegê-lo de uma nebulosa radioativa."
 
 	icon = 'icons/obj/machines/engine/other.dmi'
 	icon_state = "portgen1_1"

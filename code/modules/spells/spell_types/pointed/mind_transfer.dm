@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/mind_transfer
 	name = "Mind Swap"
-	desc = "This spell allows the user to switch bodies with a target next to him."
+	desc = "Este feitiço permite ao usuário trocar corpos com um alvo ao lado dele."
 	button_icon_state = "mindswap"
 	ranged_mousepointer = 'icons/effects/mouse_pointers/mindswap_target.dmi'
 
@@ -44,7 +44,7 @@
 		return FALSE
 	if(HAS_TRAIT(owner, TRAIT_SUICIDED))
 		if(feedback)
-			to_chat(owner, span_warning("You're killing yourself! You can't concentrate enough to do this!"))
+			to_chat(owner, span_warning("Você está se matando! Você não pode se concentrar o suficiente para fazer isso!"))
 		return FALSE
 	return TRUE
 
@@ -54,37 +54,36 @@
 		return FALSE
 
 	if(!isliving(cast_on))
-		to_chat(owner, span_warning("You can only swap minds with living beings!"))
+		to_chat(owner, span_warning("Você só pode trocar mentes com seres vivos!"))
 		return FALSE
 
 	if(HAS_TRAIT(cast_on, TRAIT_MIND_TEMPORARILY_GONE))
-		to_chat(owner, span_warning("This creature's mind is somewhere else entirely!"))
+		to_chat(owner, span_warning("A mente desta criatura está em outro lugar completamente!"))
 		return FALSE
 
 	if(HAS_TRAIT(cast_on, TRAIT_NO_MINDSWAP))
-		to_chat(owner, span_warning("This type of magic can't operate on [cast_on.p_their()] mind!"))
+		to_chat(owner, span_warning("Este tipo de magia não pode operar[cast_on.p_their()]Mente!"))
 		return FALSE
 
 	if(is_type_in_typecache(cast_on, blacklisted_mobs))
-		to_chat(owner, span_warning("This creature is too [pick("powerful", "strange", "arcane", "obscene")] to control!"))
+		to_chat(owner, span_warning("Essa criatura também é.[pick("powerful", "strange", "arcane", "obscene")]Para controlar!"))
 		return FALSE
 
 	if(isguardian(cast_on))
 		var/mob/living/basic/guardian/stand = cast_on
 		if(stand.summoner && stand.summoner == owner)
-			to_chat(owner, span_warning("Swapping minds with your own guardian would just put you back into your own head!"))
+			to_chat(owner, span_warning("Trocar de ideias com seu próprio guardião te colocaria de volta na sua própria cabeça!"))
 			return FALSE
 
 	var/mob/living/living_target = cast_on
 	if(living_target.stat == DEAD)
-		to_chat(owner, span_warning("You don't particularly want to be dead!"))
+		to_chat(owner, span_warning("Você não quer estar morto!"))
 		return FALSE
 	if(!living_target.mind && target_requires_mind)
-		to_chat(owner, span_warning("[living_target.p_They()] [living_target.p_do()]n't appear to have a mind to swap into!"))
+		to_chat(owner, span_warning("[living_target.p_They()] [living_target.p_do()]Não parece ter uma mente para trocar!"))
 		return FALSE
 	if(!living_target.key && target_requires_key)
-		to_chat(owner, span_warning("[living_target.p_They()] appear[living_target.p_s()] to be catatonic! \
-			Not even magic can affect [living_target.p_their()] vacant mind."))
+		to_chat(owner, span_warning("[living_target.p_They()]Aparecer[living_target.p_s()]ser catatônico! Nem mesmo magia pode afetar[living_target.p_their()]Mente vaga."))
 		return FALSE
 
 	return TRUE
@@ -106,14 +105,8 @@
 		to_swap.mind_initialize()
 
 	var/datum/mind/mind_to_swap = to_swap.mind
-	if(to_swap.can_block_magic(antimagic_flags) \
-		|| mind_to_swap.has_antag_datum(/datum/antagonist/wizard) \
-		|| mind_to_swap.has_antag_datum(/datum/antagonist/cult) \
-		|| mind_to_swap.has_antag_datum(/datum/antagonist/changeling) \
-		|| mind_to_swap.has_antag_datum(/datum/antagonist/rev) \
-		|| IS_FAKE_KEY(mind_to_swap.key) \
-	)
-		to_chat(caster, span_warning("[to_swap.p_Their()] mind is resisting your spell!"))
+	if(to_swap.can_block_magic(antimagic_flags) 		|| mind_to_swap.has_antag_datum(/datum/antagonist/wizard) 		|| mind_to_swap.has_antag_datum(/datum/antagonist/cult) 		|| mind_to_swap.has_antag_datum(/datum/antagonist/changeling) 		|| mind_to_swap.has_antag_datum(/datum/antagonist/rev) 		|| IS_FAKE_KEY(mind_to_swap.key) 	)
+		to_chat(caster, span_warning("[to_swap.p_Their()]A mente está resistindo ao seu feitiço!"))
 		return FALSE
 
 	// MIND TRANSFER BEGIN

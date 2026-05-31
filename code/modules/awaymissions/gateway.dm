@@ -113,7 +113,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 
 /datum/gateway_destination/gateway/home/proc/check_exile_implant(mob/living/L)
 	for(var/obj/item/implant/exile/E in L.implants)//Checking that there is an exile implant
-		to_chat(L, span_userdanger("The station gate has detected your exile implant and is blocking your entry."))
+		to_chat(L, span_userdanger("O portão da estação detectou seu implante de exílio e está bloqueando sua entrada."))
 		return TRUE
 	return FALSE
 
@@ -144,7 +144,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 
 /obj/machinery/gateway
 	name = "gateway"
-	desc = "A mysterious gateway built by unknown hands, it allows for faster than light travel to far-flung locations."
+	desc = "Um misterioso portal construído por mãos desconhecidas, permite uma viagem mais rápida que a luz para locais distantes."
 	icon = 'icons/obj/machines/gateway.dmi'
 	icon_state = "portal_frame"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
@@ -183,7 +183,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 /obj/machinery/gateway/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
 	if(istype(I, /obj/item/key/gateway) && requires_key)
-		to_chat(user, "<span class='notice'>You insert [src] into the keyway, unlocking the gateway!</span>")
+		to_chat(user, "<span class='notice'>Você insere[src]Para a chave, abrindo o portal!</span>")
 		key_used = TRUE
 		qdel(I)
 		return
@@ -297,10 +297,10 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 		return
 	var/turf/tar_turf = target?.get_target_turf()
 	if(isnull(tar_turf))
-		to_chat(user, span_warning("There's no active destination for the gateway... or it's broken. Maybe try again later?"))
+		to_chat(user, span_warning("Não há destino ativo para o portal... ou está quebrado. Talvez tentar de novo mais tarde?"))
 		return
 	if(is_secret_level(tar_turf.z) && !user.client?.holder)
-		to_chat(user, span_warning("The gateway destination is secret."))
+		to_chat(user, span_warning("O destino do portal é secreto."))
 		return
 	Transfer(user)
 
@@ -321,7 +321,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 
 /obj/machinery/gateway/multitool_act(mob/living/user, obj/item/I)
 	if(calibrated)
-		to_chat(user, span_alert("The gate is already calibrated, there is no work for you to do here."))
+		to_chat(user, span_alert("O portão já está calibrado, não há trabalho para você fazer aqui."))
 	else
 		playsound(src, 'sound/machines/gateway/gateway_calibrated.ogg', 80, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		to_chat(user, "[span_boldnotice("Recalibration successful!")]: \black This gate's systems have been fine tuned. Travel to this gate will now be on target.")
@@ -337,7 +337,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	. = ..()
 	if(!target)
 		if(!GLOB.the_gateway)
-			to_chat(user,span_warning("Home gateway is not responding!"))
+			to_chat(user,span_warning("O portal não está respondendo!"))
 		if(GLOB.the_gateway.target)
 			GLOB.the_gateway.deactivate() //this will turn the home gateway off so that it's free for us to connect to
 		activate(GLOB.the_gateway.destination)
@@ -347,7 +347,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 /* Gateway control computer */
 /obj/machinery/computer/gateway_control
 	name = "Gateway Control"
-	desc = "Human friendly interface to the mysterious gate next to it."
+	desc = "Interface amigável humana com o misterioso portão ao lado dele."
 	var/obj/machinery/gateway/G
 
 /obj/machinery/computer/gateway_control/Initialize(mapload, obj/item/circuitboard/C)
@@ -389,7 +389,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 			if(ishuman(usr))
 				var/mob/living/carbon/human/interacting_human = usr
 				if(!allowed(interacting_human))
-					to_chat(interacting_human, "<span class='notice'>Error, you do not have the required access to link up the gateway.</span>")
+					to_chat(interacting_human, "<span class='notice'>Erro, você não tem o acesso necessário para ligar o portal.</span>")
 					return FALSE
 			//SKYRAT EDIT END
 			var/datum/gateway_destination/D = locate(params["destination"]) in GLOB.gateway_destinations
@@ -415,7 +415,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	G.activate(D)
 
 /obj/item/paper/fluff/gateway
-	default_raw_text = "Congratulations,<br><br>Your station has been selected to carry out the Gateway Project.<br><br>The equipment will be shipped to you at the start of the next quarter.<br> You are to prepare a secure location to house the equipment as outlined in the attached documents.<br><br>--Nanotrasen Bluespace Research"
+	default_raw_text = "Parabéns.<br><br>Sua estação foi selecionada para realizar o Projeto Gateway.<br><br>O equipamento será enviado para você no início do próximo trimestre.<br>Você deve preparar um local seguro para abrigar o equipamento como descrito nos documentos anexados.<br><br>-Nanotrasen Bluespace Research"
 	name = "Confidential Correspondence, Pg 1"
 
 /atom/movable/screen/map_view/gateway_port

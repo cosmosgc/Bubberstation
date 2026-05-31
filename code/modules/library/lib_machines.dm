@@ -24,7 +24,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	icon_screen = "library"
 	icon_keyboard = null
 	circuit = /obj/item/circuitboard/computer/libraryconsole
-	desc = "Checked out books MUST be returned on time."
+	desc = "Os livros devem ser devolvidos ao ritmo."
 	anchored_tabletop_offset = 8
 	///The current book id we're searching for
 	var/book_id = null
@@ -276,7 +276,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 // It's December 25th, 2014, and this is STILL here, and it's STILL relevant. Kill me
 /obj/machinery/computer/libraryconsole/bookmanagement
 	name = "book inventory management console"
-	desc = "Librarian's command station."
+	desc = "Estação de comando do Bibliotecário."
 	verb_say = "beeps"
 	verb_ask = "beeps"
 	verb_exclaim = "beeps"
@@ -552,17 +552,17 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 		return ..()
 	var/obj/item/barcodescanner/scanner = weapon
 	if(scanner.computer_ref?.resolve() == src)
-		balloon_alert(user, "already connected!")
+		balloon_alert(user, "Já conectado!")
 		return
 	scanner.computer_ref = WEAKREF(src)
-	balloon_alert(user, "scanner connected")
-	audible_message(span_hear("[src] lets out a low, short blip."))
+	balloon_alert(user, "Escâner conectado")
+	audible_message(span_hear("[src]Vamos sair com um blip baixo e curto."))
 
 /obj/machinery/computer/libraryconsole/bookmanagement/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(!density || obj_flags & EMAGGED)
 		return FALSE
 	obj_flags |= EMAGGED
-	balloon_alert(user, "forbidden knowledge unlocked")
+	balloon_alert(user, "conhecimento proibido desbloqueado")
 	return TRUE
 
 /obj/machinery/computer/libraryconsole/bookmanagement/proc/set_screen_state(new_state)
@@ -579,15 +579,15 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 /obj/machinery/computer/libraryconsole/bookmanagement/proc/print_forbidden_lore(mob/user)
 	can_spawn_lore = FALSE
 	new /obj/item/melee/cultblade/dagger(get_turf(src))
-	to_chat(user, span_warning("Your sanity barely endures the seconds spent in the vault's browsing window. The only thing to remind you of this when you stop browsing is a sinister dagger sitting on the desk. You don't even remember where it came from..."))
-	user.visible_message(span_warning("[user] stares at the blank screen for a few moments, [user.p_their()] expression frozen in fear. When [user.p_they()] finally awaken[user.p_s()] from it, [user.p_they()] look[user.p_s()] a lot older."), vision_distance = 2)
+	to_chat(user, span_warning("Sua sanidade mal suporta os segundos passados na janela do cofre. A única coisa que te lembra disso quando para de procurar é uma adaga sinistra sentada na mesa. Você nem se lembra de onde veio..."))
+	user.visible_message(span_warning("[user]Olha para a tela em branco por alguns momentos,[user.p_their()]expressão congelada no medo. Quando[user.p_they()]Finalmente acordar[user.p_s()]um partido dele,[user.p_they()]Veja.[user.p_s()]Muito mais velho."), vision_distance = 2)
 	if(ishuman(user))
 		var/mob/living/carbon/human/fool = user
 		fool.age = clamp(fool.age + 10, AGE_MIN, AGE_MAX) //Fuck you
 
 /obj/machinery/computer/libraryconsole/bookmanagement/proc/shun_the_corp(mob/user)
 	can_spawn_lore = FALSE
-	to_chat(user, span_warning("You click off the page in a rush, and the machine hums back to normal, the tab gone..."))
+	to_chat(user, span_warning("Você clica fora da página com pressa, e a máquina volta ao normal, a conta se foi..."))
 
 /obj/machinery/computer/libraryconsole/bookmanagement/proc/upload_from_scanner(upload_category)
 	var/obj/machinery/libraryscanner/scan = get_scanner()
@@ -679,7 +679,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 			fill.set_author(author, trusted = TRUE)
 			fill.set_content(content, trusted = TRUE)
 			printed_book.gen_random_icon_state()
-			visible_message(span_notice("[src]'s printer hums as it produces a completely bound book. How did it do that?"))
+			visible_message(span_notice("[src]A impressora canta enquanto produz um livro completamente encadernado. Como fez isso?"))
 			log_paper("[key_name(usr)] has printed \"[title]\" (id: [id]) by [author] from a book management console.")
 		break
 	qdel(query_library_print)
@@ -692,7 +692,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	icon = 'icons/obj/service/library.dmi'
 	icon_state = "bigscanner"
 	base_icon_state = "bigscanner"
-	desc = "It's an industrial strength book scanner. Perfect!"
+	desc = "É um scanner de livros de força industrial. Perfeito!"
 	circuit = /obj/item/circuitboard/machine/libraryscanner
 	density = TRUE
 	var/obj/item/book/held_book
@@ -776,7 +776,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	icon = 'icons/obj/service/library.dmi'
 	icon_state = "binder"
 	base_icon_state = "binder"
-	desc = "Only intended for binding paper products."
+	desc = "Apenas para produtos de papel."
 	circuit = /obj/item/circuitboard/machine/bookbinder
 	density = TRUE
 
@@ -814,7 +814,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 		return
 
 	if(busy)
-		to_chat(user, span_warning("The book binder is busy. Please wait for completion of previous operation."))
+		to_chat(user, span_warning("O arquivo está ocupado. Por favor, aguarde a conclusão da operação anterior."))
 		return
 
 	if(!scanned_name)
@@ -825,8 +825,8 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	if(!user.transferItemToLoc(draw_from, src))
 		return
 
-	user.visible_message(span_notice("[user] loads some paper into [src]."), span_notice("You load some paper into [src]."))
-	audible_message(span_hear("[src] begins to hum as it warms up its printing drums."))
+	user.visible_message(span_notice("[user]carrega algum papel em[src]."), span_notice("Você carrega algum papel em[src]."))
+	audible_message(span_hear("[src]começa a cantarolar enquanto aquece seus tambores de impressão."))
 	busy = TRUE
 	playsound(src, 'sound/machines/printer.ogg', 50)
 	flick("binder1", src)
@@ -841,7 +841,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 		draw_from.forceMove(drop_location())
 		return
 
-	visible_message(span_notice("[src] whirs as it prints and binds a new book."))
+	visible_message(span_notice("[src]Equanto imprime e liga um novo livro."))
 	var/obj/item/book/bound_book = new(loc)
 	bound_book.book_data.set_content_using_paper(draw_from)
 	bound_book.book_data.set_author(scanned_name, trusted = FALSE)

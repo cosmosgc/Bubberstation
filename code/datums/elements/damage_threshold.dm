@@ -40,9 +40,9 @@
 		var/obj/item/item_hitting = hitby
 		var/tap_vol = istype(item_hitting) ? item_hitting.get_clamped_volume() : 50
 		source.visible_message(
-			span_warning("[source] looks unharmed!"),
-			span_warning("[attack_text] deals no damage to you!"),
-			span_hear("You hear a thud."),
+			span_warning("[source]Parece ileso!"),
+			span_warning("[attack_text]Não causa danos em você!"),
+			span_hear("Você ouve um barulho."),
 			COMBAT_MESSAGE_RANGE,
 		)
 		playsound(source, 'sound/items/weapons/tap.ogg', tap_vol, TRUE, -1)

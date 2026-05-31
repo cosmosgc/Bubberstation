@@ -231,7 +231,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		return
 
 	if(SSlag_switch.measures[DISABLE_CREATOR] && action != "change_slot")
-		to_chat(usr, "The creator has been disabled. Please do not ahelp.")
+		to_chat(usr, "O criador foi desativado. Por favor, não ajude.")
 		return
 
 	log_creator("[key_name(usr)] ACTED [action] | PREFERENCE: [params["preference"]] | VALUE: [params["value"]]")
@@ -263,7 +263,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				duplicate_current_slot(slot_choices.Find(target_slot))
 				tainted_character_profiles = TRUE
 			else
-				tgui_alert(ui.user, "Cancelled Duplication", "Duplicate Character")
+				tgui_alert(ui.user, "Duplicação cancelada", "Duplicate Character")
 			return TRUE //BUBBER ADDITION END - Character duplication
 		if ("rotate")
 			/* SKYRAT EDIT - Bi-directional prefs menu rotation - ORIGINAL:
@@ -747,7 +747,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			log_game("BYOND membership lookup for [parent.ckey] failed due to a connection error but succeeded after retry.")
 
 	if(isnull(byond_member))
-		to_chat(parent, span_warning("There's been a connection failure while trying to check the status of your BYOND membership. Reconnecting may fix the issue, or BYOND could be experiencing downtime."))
+		to_chat(parent, span_warning("Houve uma falha na conexão enquanto tentava verificar o status da sua associação BYOND. Reconectar pode consertar o problema, ou BOND pode estar passando por um tempo de inatividade."))
 
 	unlock_content = !!byond_member
 	if(unlock_content)

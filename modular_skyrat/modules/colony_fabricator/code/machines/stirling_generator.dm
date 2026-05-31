@@ -2,10 +2,7 @@
 
 /obj/machinery/power/stirling_generator
 	name = "stirling generator"
-	desc = "An industrial scale stirling generator. Stirling generators operate by intaking \
-		hot gasses through their inlet pipes, and being cooled by the ambient air around them. \
-		The cycling compression and expansion caused by this creates power, and this one is made \
-		to make power on the scale of small stations and outposts."
+	desc = "Um gerador de agitação industrial. Geradores de agitação operam por gás quente através de seus canos de entrada, e sendo resfriados pelo ar ambiente ao redor deles. A compressão de ciclismo e expansão causada por isso cria energia, e esta é feita para fazer energia na escala de pequenas estações e postos avançados."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/stirling_generator/big_generator.dmi'
 	icon_state = "stirling"
 	density = TRUE
@@ -42,10 +39,10 @@
 
 /obj/machinery/power/stirling_generator/examine(mob/user)
 	. = ..()
-	. += span_notice("You can use a <b>wrench</b> with <b>Left-Click</b> to rotate the generator.")
-	. += span_notice("It will not work in a <b>vacuum</b> as it must be cooled by the gas around it.")
-	. += span_notice("It is currently generating <b>[current_power_generation / 1000] kW</b> of power.")
-	. += span_notice("It has a maximum power output of <b>[max_power_output / 1000] kW</b> at a temperature difference of <b>[max_efficient_heat_difference] K</b>.")
+	. += span_notice("Você pode usar um<b>Chave Inglesa.</b>Com<b>Clique à esquerda.</b>Para girar ogerador.")
+	. += span_notice("Não vai funcionar em um<b>aspirador</b>como deve ser esfriado pelo gás ao redor.")
+	. += span_notice("Ele está gerando atualmente<b>[current_power_generation / 1000]kW</b>De Poder.")
+	. += span_notice("Tem uma potência máxima de<b>[max_power_output / 1000]kW</b>em uma diferença de temperatura de<b>[max_efficient_heat_difference]K.</b>.")
 
 
 /obj/machinery/power/stirling_generator/Destroy()
@@ -112,7 +109,7 @@
 
 	wrench.play_tool_sound(src, 50)
 	setDir(turn(dir,-90))
-	to_chat(user, span_notice("You rotate [src]."))
+	to_chat(user, span_notice("Você gira.[src]."))
 	SEND_SIGNAL(src, COMSIG_MACHINERY_DEFAULT_ROTATE_WRENCH, user, wrench)
 	return TRUE
 

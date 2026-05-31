@@ -10,13 +10,11 @@
 	return list("[BIO_METAL]")
 
 /datum/wound/burn/robotic/overheat
-	treat_text = "Introduction of a cold environment or lowering of body temperature."
+	treat_text = "Introdução de um ambiente frio ou redução da temperatura corporal."
 	treat_text_short = "Cool the patient down with low temperature chemicals or put them under a shower."
-	simple_desc = "Metals are overheated, increasing damage taken significantly and raising body temperature!"
-	simple_treat_text = "Ideally <b>cryogenics</b>, but any source of <b>low body temperature</b> can work. <b>Spraying</b> with <b>spray bottles/extinguishers/showers</b> \
-	will quickly cool the limb, but <b>cause damage</b>. <b>Hercuri</b> is <b>especially effective</b> in quick cooling. \
-	<b>Clothing</b> reduces the water/hercuri that makes it to the metal, and <b>gauze</b> binds it and <b>reduces</b> the <b>damage</b> taken."
-	homemade_treat_text = "You can also splash <b>any liquid</b> on it for a rather <b>inefficient</b> and <b>damaging</b> coolant!"
+	simple_desc = "Os metais estão superaquecidos, aumentando os danos causados significativamente e aumentando a temperatura do corpo!"
+	simple_treat_text = "Idealmente.<b>criogenia</b>, mas qualquer fonte de<b>baixa temperatura corporal</b>Pode funcionar.<b>Pulverização</b>com<b>Garrafas pulverizadas, extintores, chuveiros</b>vai esfriar rapidamente o membro, mas<b>causar danos.</b>. <b>Hercuri.</b>É<b>especialmente eficaz.</b>em resfriamento rápido.<b>Roupas</b>reduz a água/hercuri que a torna para o metal, e<b>gaze</b>Amarra-o e<b>reduz</b>O<b>Dano</b>Entendi."
+	homemade_treat_text = "Você também pode espirrar<b>Qualquer líquido</b>sobre ele por um pouco<b>Ineficiente</b>e<b>prejudicial</b>Refrigerante!"
 
 	default_scar_file = METAL_SCAR_FILE
 
@@ -160,7 +158,7 @@
 	return LERP(starting_temperature_min, starting_temperature_max, rand()) // LERP since we deal with decimals
 
 /datum/wound/burn/robotic/get_limb_examine_description()
-	return span_warning("The metal on this limb is glowing radiantly.")
+	return span_warning("O metal neste membro está brilhando radiantemente.")
 
 /datum/wound/burn/robotic/overheat/handle_process(seconds_per_tick)
 	if (isnull(victim))
@@ -281,7 +279,7 @@
 		if (victim)
 			var/gauze_or_not = (!isnull(gauze) ? ", but [gauze] helps to keep it together" : "")
 			var/clothing_text = (!victim.is_location_accessible(limb.body_zone) ? ", [victim.p_their()] clothing absorbing some of the liquid" : "")
-			victim.visible_message(span_warning("[victim]'s [limb.plaintext_zone] strains from the thermal shock[clothing_text][gauze_or_not]!"))
+			victim.visible_message(span_warning("[victim]'s[limb.plaintext_zone]Deformações do choque térmico[clothing_text][gauze_or_not]!"))
 			playsound(victim, 'sound/items/tools/welder.ogg', 25)
 
 		var/damage = (((abs(temp_delta) * heat_shock_delta_to_damage_ratio) * gauze_mult) * heat_shock_damage_mult) * heat_adjustment_used
@@ -295,15 +293,15 @@
 /datum/wound/burn/robotic/overheat/proc/check_temperature()
 	if (chassis_temperature <= cooling_threshold)
 		if (demotes_to)
-			victim.visible_message(span_green("[victim]'s [limb.plaintext_zone] turns a more pleasant thermal color as it cools down a little..."), span_green("Your [limb.plaintext_zone] seems to cool down a little!"))
+			victim.visible_message(span_green("[victim]'s[limb.plaintext_zone]torna uma cor térmica mais agradável enquanto esfria um pouco..."), span_green("Sua[limb.plaintext_zone]Parece esfriar um pouco!"))
 			replace_wound(new demotes_to(cooling_threshold - cooling_demote_buffer))
 			return TRUE
 		else
-			victim.visible_message(span_green("[victim]'s [limb.plaintext_zone] simmers gently as it returns to its usual colors!"), span_green("Your [limb.plaintext_zone] simmers gently as it returns to its usual colors!"))
+			victim.visible_message(span_green("[victim]'s[limb.plaintext_zone]ferve suavemente quando retorna às suas cores habituais!"), span_green("Sua[limb.plaintext_zone]ferve suavemente quando retorna às suas cores habituais!"))
 			remove_wound()
 			return TRUE
 	else if (promotes_to && chassis_temperature >= heating_threshold)
-		victim.visible_message(span_danger("[victim]'s [limb.plaintext_zone] brightens as it overheats further!"), span_userdanger("Your [limb.plaintext_zone] sizzles and brightens as it overheats further!"))
+		victim.visible_message(span_danger("[victim]'s[limb.plaintext_zone]Brilha enquanto superaquece mais!"), span_userdanger("Sua[limb.plaintext_zone]Sizzles e clareia como ele superaquece ainda mais!"))
 		replace_wound(new promotes_to(heating_threshold + heating_promote_buffer))
 		return TRUE
 
@@ -318,9 +316,7 @@
 	var/heat_celcius = round(heating_threshold - T0C, 0.1)
 	var/heat_fahrenheit = round(heating_threshold * 1.8-459.67, 0.1)
 
-	return "Its current temperature is [span_blue("[current_temp_celcius ] &deg;C ([current_temp_fahrenheit] &deg;F)")], \
-	and needs to cool to [span_nicegreen("[cool_celcius] &deg;C ([cool_fahrenheit] &deg;F)")], but \
-	will worsen if heated to [span_purple("[heat_celcius] &deg;C ([heat_fahrenheit] &deg;F)")]."
+	return "Sua temperatura atual é[span_blue("[current_temp_celcius ] &deg;C ([current_temp_fahrenheit] &deg;F)")]E precisa esfriar para[span_nicegreen("[cool_celcius] &deg;C ([cool_fahrenheit] &deg;F)")], mas vai piorar se aquecido para[span_purple("[heat_celcius] &deg;C ([heat_fahrenheit] &deg;F)")]."
 
 /datum/wound/burn/robotic/overheat/get_scanner_description(mob/user)
 	. = ..()
@@ -338,11 +334,10 @@
 
 /datum/wound/burn/robotic/overheat/moderate
 	name = "Transient Overheating"
-	desc = "External metals have exceeded lower-bound thermal limits and have lost some structural integrity, increasing damage taken as well as the chance to \
-		sustain additional wounds."
-	occur_text = "lets out a slight groan as it turns a dull shade of thermal red"
-	examine_desc = "is glowing a dull thermal red and giving off heat"
-	treat_text = "Reduction of body temperature to expedite the passive heat dissipation - or, if thermal shock is to be risked, application of a fire extinguisher/shower."
+	desc = "Os metais externos ultrapassaram os limites térmicos e perderam integridade estrutural, aumentando os danos, bem como a chance de manter feridas adicionais."
+	occur_text = "deixa sair um leve gemido enquanto se torna uma sombra sem brilho de vermelho térmico"
+	examine_desc = "está brilhando um vermelho térmico sem brilho e deixando calor"
+	treat_text = "Redução da temperatura corporal para acelerar a dissipação de calor passivo - ou, se o choque térmico for arriscado, aplicação de um extintor/chuveiro."
 	treat_text_short = "Apply gauze or grasp limb before spraying the wound with coolant, lower body temperature, or wait."
 	severity = WOUND_SEVERITY_MODERATE
 
@@ -389,11 +384,10 @@
 
 /datum/wound/burn/robotic/overheat/severe
 	name = "Thermal Overload"
-	desc = "Exterior plating has surpassed critical thermal levels, causing significant failure in structural integrity and overheating of internal systems."
-	occur_text = "sizzles, the externals turning a dull shade of orange"
-	examine_desc = "appears discolored and polychromatic, parts of it glowing a dull orange"
-	treat_text = "Isolation from physical hazards, and accommodation of passive heat dissipation - active cooling may be used, but temperature differentials significantly \
-		raise the risk of thermal shock."
+	desc = "O revestimento exterior ultrapassou níveis críticos térmicos, causando falha significativa na integridade estrutural e superaquecimento dos sistemas internos."
+	occur_text = "Sizzles, os externos virando uma sombra de laranja maçante"
+	examine_desc = "parece descolorido e policromático, partes dele brilhando uma laranja sem brilho"
+	treat_text = "Isolamento de riscos físicos, e acomodação de dissipação de calor passiva - resfriamento ativo pode ser usado, mas diferenciais de temperatura aumentam significativamente o risco de choque térmico."
 	treat_text_short = "Apply gauze and grasp limb before spraying the wound with coolant, or lower body temperature and wait."
 	severity = WOUND_SEVERITY_SEVERE
 
@@ -434,11 +428,10 @@
 
 /datum/wound/burn/robotic/overheat/critical
 	name = "Runaway Exothermy"
-	desc = "Carapace is beyond melting point, causing catastrophic structural integrity failure as well as massively heating up the subject."
-	occur_text = "turns a bright shade of radiant white as it sizzles and melts"
-	examine_desc = "is a blinding shade of white, almost melting from the heat"
-	treat_text = "Immediate confinement to cryogenics, as rapid overheating and physical vulnerability may occur. Active cooling is not advised, \
-		since the thermal shock may be lethal with such a temperature differential."
+	desc = "Carapaça está além do ponto de fusão, causando falha catastrófica da integridade estrutural, bem como aquecimento maciço do sujeito."
+	occur_text = "Torna-se uma sombra brilhante de branco radiante como ele sizzles e derrete"
+	examine_desc = "é uma sombra ofuscante de branco, quase derretendo do calor"
+	treat_text = "Confinamento imediato à criogenia, como superaquecimento rápido e vulnerabilidade física pode ocorrer. Refrigeração ativa não é aconselhada, já que o choque térmico pode ser letal com tal diferencial de temperatura."
 	treat_text_short = "Apply cryogenics or lower body temperature without direct exposure to cold liquid."
 	severity = WOUND_SEVERITY_CRITICAL
 

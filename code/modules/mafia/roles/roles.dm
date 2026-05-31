@@ -127,10 +127,7 @@
  */
 /datum/mafia_role/proc/put_player_in_body(client/player)
 	if(player.mob.mind)
-		body.AddComponent( \
-			/datum/component/temporary_body, \
-			old_mind = player.mob.mind, \
-		)
+		body.AddComponent( 			/datum/component/temporary_body, 			old_mind = player.mob.mind, 		)
 	body.PossessByPlayer(player.key)
 	ADD_TRAIT(body, TRAIT_CORPSELOCKED, MAFIA_TRAIT)
 
@@ -158,16 +155,16 @@
 /datum/mafia_role/proc/greet()
 	mafia_alert = new(body, src)
 	SEND_SOUND(body, 'sound/ambience/misc/ambifailure.ogg')
-	to_chat(body, span_danger("You are the [name]."))
+	to_chat(body, span_danger("Você é o[name]."))
 	to_chat(body, span_danger("[desc]"))
 	switch(team)
 		if(MAFIA_TEAM_MAFIA)
-			to_chat(body,span_danger("You and your co-conspirators win if you outnumber crewmembers."))
+			to_chat(body,span_danger("Você e seus co-conspiradores vencem se vencerem em número."))
 		if(MAFIA_TEAM_TOWN)
-			to_chat(body,span_danger("You are a crewmember. Find out and lynch the changelings!"))
+			to_chat(body,span_danger("Você é um membro da tripulação. Descubra e linche os metamorfos!"))
 		if(MAFIA_TEAM_SOLO)
-			to_chat(body,span_danger("You are not aligned to town or mafia. Accomplish your own objectives!"))
-	to_chat(body, "<span class='warningplain'><b>Be sure to read <a href=\"https://tgstation13.org/wiki/Mafia\">the wiki page</a> to learn more, if you have no idea what's going on.</b></span>")
+			to_chat(body,span_danger("Você não está alinhado com a cidade ou a máfia. Faça seus próprios objetivos!"))
+	to_chat(body, "<span class='warningplain'><b>Certo-se de ler.<a href=\"https://tgstation13.org/wiki/Mafia\">A página wiki</a>Para aprender mais, se você não tem idéia do que está acontecendo.</b></span>")
 
 /datum/mafia_role/proc/reveal_role(datum/mafia_controller/game, verbose = FALSE)
 	if((role_flags & ROLE_REVEALED))
@@ -200,7 +197,7 @@
 			team_desc = "Nobody"
 			team_span = "comradio"
 			the = FALSE
-	result += span_notice("The [span_bold("[name]")] is aligned with [the ? "the " : ""]<span class='[team_span]'>[team_desc]</span>")
+	result += span_notice("O[span_bold("[name]")]está alinhado com[the ? "the " : ""]<span class='[team_span]'>[team_desc]</span>")
 	result += "<span class='bold notice'>\"[initial(desc)]\"</span>"
-	result += span_notice("[name] wins when they [win_condition]")
+	result += span_notice("[name]Ganha quando eles[win_condition]")
 	to_chat(clueless, result.Join("</br>"))

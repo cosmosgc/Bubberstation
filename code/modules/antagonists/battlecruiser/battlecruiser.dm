@@ -29,7 +29,7 @@
 
 /datum/antagonist/battlecruiser/greet()
 	play_stinger()
-	to_chat(owner, span_big("You are a [name]!"))
+	to_chat(owner, span_big("Você é...[name]!"))
 	owner.announce_objectives()
 
 /datum/antagonist/battlecruiser/ally
@@ -60,5 +60,5 @@
 		var/obj/machinery/nuclearbomb/nuke = battlecruiser_team.nuke
 		antag_memory += "<B>[nuke] Code</B>: [nuke.r_code]<br>"
 		owner.add_memory(/datum/memory/key/nuke_code, nuclear_code = nuke.r_code)
-		to_chat(owner, "The nuclear authorization code is: <B>[nuke.r_code]</B>")
+		to_chat(owner, "O código de autorização nuclear é:<B>[nuke.r_code]</B>")
 	return ..()

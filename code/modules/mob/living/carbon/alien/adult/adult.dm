@@ -53,8 +53,7 @@ GLOBAL_LIST_INIT(strippable_alien_humanoid_items, create_strippable_list(list(
 
 /mob/living/carbon/alien/adult/resist_grab(moving_resist)
 	if(pulledby.grab_state)
-		visible_message(span_danger("[src] breaks free of [pulledby]'s grip!"), \
-						span_danger("You break free of [pulledby]'s grip!"))
+		visible_message(span_danger("[src]Quebras livres de[pulledby]É perfeito!"), 						span_danger("Você se liberta.[pulledby]É perfeito!"))
 	pulledby.stop_pulling()
 	. = 0
 
@@ -126,9 +125,8 @@ GLOBAL_LIST_INIT(strippable_alien_humanoid_items, create_strippable_list(list(
 		return FALSE
 	var/mob/living/lucky_winner = candidate
 
-	lucky_winner.audible_message(span_danger("You hear a great snapping, like the disjointing of muscle and bone."))
-	lucky_winner.visible_message(span_danger("[src] is attempting to devour [lucky_winner]!"), \
-			span_userdanger("[src] is attempting to devour you!"))
+	lucky_winner.audible_message(span_danger("Você ouve um grande estalo, como a desarticulação de músculos e ossos."))
+	lucky_winner.visible_message(span_danger("[src]está tentando devorar[lucky_winner]!"), 			span_userdanger("[src]Está tentando devorá-lo!"))
 
 	playsound(lucky_winner, 'sound/mobs/non-humanoids/alien/alien_eat.ogg', 100)
 	if(!do_after(src, devour_time, lucky_winner, extra_checks = CALLBACK(src, PROC_REF(can_consume), lucky_winner)))
@@ -138,13 +136,11 @@ GLOBAL_LIST_INIT(strippable_alien_humanoid_items, create_strippable_list(list(
 
 	var/obj/item/organ/stomach/alien/melting_pot = get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(!istype(melting_pot))
-		visible_message(span_clown("[src] can't seem to consume [lucky_winner]!"), \
-			span_alien("You feel a pain in your... chest? You can't get [lucky_winner] down."))
+		visible_message(span_clown("[src]não parece consumir.[lucky_winner]!"), 			span_alien("Sente uma dor no seu peito? Você não pode[lucky_winner]Abaixe-se."))
 		return TRUE
 
-	lucky_winner.audible_message(span_danger("You hear a deep groan, and a harsh snap like a mantrap."))
-	lucky_winner.visible_message(span_danger("[src] devours [lucky_winner]!"), \
-			span_userdanger("[src] devours you!"))
+	lucky_winner.audible_message(span_danger("Você ouve um gemido profundo, e um golpe duro como uma armadilha."))
+	lucky_winner.visible_message(span_danger("[src]Devora[lucky_winner]!"), 			span_userdanger("[src]Devora você!"))
 	log_combat(src, lucky_winner, "devoured")
 	melting_pot.consume_thing(lucky_winner)
 	return TRUE

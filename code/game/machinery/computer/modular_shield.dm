@@ -1,6 +1,6 @@
 /obj/machinery/computer/modular_shield
 	name = "modular shield control console"
-	desc = "Used to remotely monitor and toggle modular shield generators."
+	desc = "Usado para monitorar e alternar geradores de escudo modulares."
 	circuit = /obj/item/circuitboard/computer/modular_shield_console
 
 	///the list of generators that are linked to us
@@ -8,7 +8,7 @@
 
 //lets monkeys randomly mash buttons to toggle the generators
 /obj/machinery/computer/modular_shield/attack_paw(mob/user, list/modifiers)
-	balloon_alert(user, "mashing buttons")
+	balloon_alert(user, "Botões de mashing")
 	if(!do_after(user, 4 SECONDS, target = src))
 		return
 	for(var/obj/machinery/modular_shield_generator/generator as anything in generators)
@@ -23,7 +23,7 @@
 	generators |= tool.buffer
 	RegisterSignal(tool.buffer, COMSIG_QDELETING, PROC_REF(generator_deleted))
 	tool.set_buffer(null)
-	to_chat(user, span_notice("You upload the data from the [tool] buffer."))
+	to_chat(user, span_notice("Você carrega os dados do[tool]Tampão."))
 	return ITEM_INTERACT_SUCCESS
 
 ///checks if all connected generators exist

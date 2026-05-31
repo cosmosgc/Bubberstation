@@ -18,7 +18,7 @@
 
 	// Not enough charge
 	if(user?.cell.charge < charge_cost)
-		balloon_alert(user, "low charge!")
+		balloon_alert(user, "Baixa carga!")
 		return
 
 	user.cell.use(charge_cost)
@@ -43,7 +43,7 @@
 		return
 
 	chute.place_item_in_disposal(extracted_item)
-	visible_message(span_notice("[src.loc] unloads [extracted_item] from [src]."))
+	visible_message(span_notice("[src.loc]Descarrega.[extracted_item]De[src]."))
 	log_silicon("[user] unloaded [extracted_item] onto [chute] ([AREACOORD(chute)]).")
 	in_use = FALSE
 	return
@@ -67,7 +67,7 @@
 
 	// Not enough charge
 	if(user?.cell.charge < charge_cost)
-		balloon_alert(user, "low charge!")
+		balloon_alert(user, "Baixa carga!")
 		return
 
 	user.cell.use(charge_cost)
@@ -92,7 +92,7 @@
 		return
 
 	chute.place_item_in_disposal(extracted_item)
-	visible_message(span_notice("[src.loc] unloads [extracted_item] from [src]."))
+	visible_message(span_notice("[src.loc]Descarrega.[extracted_item]De[src]."))
 	log_silicon("[user] unloaded [extracted_item] onto [chute] ([AREACOORD(chute)]).")
 	in_use = FALSE
 	return
@@ -110,7 +110,7 @@
 
 /obj/item/experimental_dash
 	name = "Exerimental Dash"
-	desc = "An experimental module that allows for dashing."
+	desc = "Um módulo experimental que permite arrojar."
 	desc_controls = "Left-click to dash."
 	icon = 'icons/mob/actions/actions_items.dmi'
 	icon_state = "jetboot"
@@ -134,7 +134,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return ITEM_INTERACT_SUCCESS
 	if(cyborg.cell.charge <= charge_cost)//Prevents usage when charge is low
-		user.balloon_alert(user, "low charge!")
+		user.balloon_alert(user, "Baixa carga!")
 		return ITEM_INTERACT_SUCCESS
 	if(!interacting_with.density && jaunt?.teleport(user, interacting_with))
 		cyborg?.cell?.use(charge_cost)
@@ -180,7 +180,7 @@
 
 /obj/item/borg/cyborg_omnitool/research
 	name = "research omni-toolset"
-	desc = "A set of engineering tools with a addition of tools to allow synthetic repairs."
+	desc = "Um conjunto de ferramentas de engenharia com uma adição de ferramentas para permitir reparos sintéticos."
 
 	omni_toolkit = list(
 		/obj/item/surgical_drapes/cyborg,

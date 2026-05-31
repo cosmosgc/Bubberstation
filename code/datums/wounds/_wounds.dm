@@ -222,14 +222,14 @@
 		return
 
 	if(!silent && !demoted)
-		var/msg = span_danger("[victim]'s [limb.plaintext_zone] [occur_text]!")
+		var/msg = span_danger("[victim]'s[limb.plaintext_zone] [occur_text]!")
 		var/vis_dist = COMBAT_MESSAGE_RANGE
 
 		if(severity > WOUND_SEVERITY_SEVERE)
 			msg = "<b>[msg]</b>"
 			vis_dist = DEFAULT_MESSAGE_RANGE
 
-		victim.visible_message(msg, span_userdanger("Your [limb.plaintext_zone] [occur_text]!"), vision_distance = vis_dist)
+		victim.visible_message(msg, span_userdanger("Sua[limb.plaintext_zone] [occur_text]!"), vision_distance = vis_dist)
 		if(sound_effect)
 			playsound(limb.owner, sound_effect, sound_volume + (20 * severity), TRUE, falloff_exponent = SOUND_FALLOFF_EXPONENT + 2,  ignore_walls = FALSE, falloff_distance = 0)
 
@@ -518,7 +518,7 @@
 	// now that we've determined we have a valid attempt at treating,
 	// we can stomp on their dreams if we're already interacting with the patient or if their part is obscured
 	if(DOING_INTERACTION_WITH_TARGET(user, victim))
-		to_chat(user, span_warning("You're already interacting with [victim]!"))
+		to_chat(user, span_warning("Você já está interagindo com[victim]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	// next we check if the bodypart in actually accessible (not under thick clothing). We skip the species trait check since skellies
@@ -639,7 +639,7 @@
 /datum/wound/proc/get_examine_description(mob/user)
 	. = get_wound_description(user)
 	if(HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
-		. += span_notice("<br>There is a holo-image next to the wound that seems to contain indications for treatment.")
+		. += span_notice("<br>Há uma holo-imagem ao lado da ferida que parece conter indicações de tratamento.")
 
 	return .
 
@@ -649,7 +649,7 @@
 	var/obj/item/stack/medical/wrap/current_gauze = LAZYACCESS(limb.applied_items, LIMB_ITEM_GAUZE)
 	if ((wound_flags & ACCEPTS_GAUZE) && current_gauze)
 		var/sling_condition = get_gauze_condition()
-		desc = "[victim.p_Their()] [limb.plaintext_zone] is [sling_condition]fastened in a sling of [current_gauze.name]"
+		desc = "[victim.p_Their()] [limb.plaintext_zone]É[sling_condition]Preso em uma funda de[current_gauze.name]"
 	else
 		desc = "[victim.p_Their()] [limb.plaintext_zone] [examine_desc]"
 
@@ -673,13 +673,13 @@
 /datum/wound/proc/get_self_check_description(self_aware)
 	switch(severity)
 		if(WOUND_SEVERITY_TRIVIAL)
-			return span_danger("It's suffering [a_or_from] [LOWER_TEXT(undiagnosed_name || name)].")
+			return span_danger("Está sofrendo.[a_or_from] [LOWER_TEXT(undiagnosed_name || name)].")
 		if(WOUND_SEVERITY_MODERATE)
-			return span_warning("It's suffering [a_or_from] [LOWER_TEXT(undiagnosed_name || name)].")
+			return span_warning("Está sofrendo.[a_or_from] [LOWER_TEXT(undiagnosed_name || name)].")
 		if(WOUND_SEVERITY_SEVERE)
-			return span_boldwarning("It's suffering [a_or_from] [LOWER_TEXT(undiagnosed_name || name)]!")
+			return span_boldwarning("Está sofrendo.[a_or_from] [LOWER_TEXT(undiagnosed_name || name)]!")
 		if(WOUND_SEVERITY_CRITICAL)
-			return span_boldwarning("It's suffering [a_or_from] [LOWER_TEXT(undiagnosed_name || name)]!!")
+			return span_boldwarning("Está sofrendo.[a_or_from] [LOWER_TEXT(undiagnosed_name || name)]!!")
 
 /// A hook proc used to modify desc before it is spanned via [get_desc_intensity]. Useful for inserting spans yourself.
 /datum/wound/proc/modify_desc_before_span(desc, mob/user)
@@ -712,10 +712,7 @@
  * Prints the details about the wound for the wound scanner on simple mode
  */
 /datum/wound/proc/get_scanner_description(mob/user)
-	return "Type: [name]<br>\
-		Severity: [severity_text()]<br>\
-		Description: [desc]<br>\
-		Recommended Treatment: [treat_text]"
+	return "Type: [name]<br>		Severity: [severity_text()]<br>		Description: [desc]<br>		Recommended Treatment: [treat_text]"
 
 /**
  * Prints the details about the wound for the wound scanner on complex mode
@@ -725,11 +722,7 @@
 	for(var/i in 1 to severity)
 		severity_text_formatted += "!"
 
-	return "[name] detected!<br>\
-		Risk: [severity_text_formatted]<br>\
-		Description: [simple_desc || desc]<br>\
-		<i>Treatment Guide: [simple_treat_text]</i><br>\
-		<i>Homemade Remedies: [homemade_treat_text]</i>"
+	return "[name] detected!<br>		Risk: [severity_text_formatted]<br>		Description: [simple_desc || desc]<br>		<i>Treatment Guide: [simple_treat_text]</i><br>		<i>Homemade Remedies: [homemade_treat_text]</i>"
 
 /**
  * Returns what text describes this wound

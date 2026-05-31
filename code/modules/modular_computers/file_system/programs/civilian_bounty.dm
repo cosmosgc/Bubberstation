@@ -8,7 +8,7 @@
 	filedesc = "Civilian Bounties"
 	downloader_category = PROGRAM_CATEGORY_SUPPLY
 	program_open_overlay = "request"
-	extended_desc = "Nanotrasen Civilian Bounty Requisition Network interface for displaying wanted items."
+	extended_desc = "Nanotrasen Civilian Bounty Requisição Interface de rede para exibir itens procurados."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	can_run_on_flags = PROGRAM_LAPTOP | PROGRAM_PDA
 	size = 5
@@ -58,7 +58,7 @@
 		return
 	if((id_account.civilian_bounty || id_account.bounties) && !COOLDOWN_FINISHED(id_account, bounty_timer))
 		var/time_left = DisplayTimeText(COOLDOWN_TIMELEFT(id_account, bounty_timer), round_seconds_to = 1)
-		computer.balloon_alert(user, "try again in [time_left]!")
+		computer.balloon_alert(user, "Tente novamente.[time_left]!")
 		return FALSE
 	if(!computer.stored_id.trim)
 		computer.say("Requesting ID card has no job assignment registered!")

@@ -106,7 +106,7 @@ export const ReactionDisplay = (props: ReactionDisplayProps) => {
               Reaction
             </Table.Cell>
             <Table.Cell bold color="label">
-              {!highQualityDisplay ? 'Status' : 'Reaction quality'}
+              {!highQualityDisplay ? 'Status' : 'Qualidade da reação'}
             </Table.Cell>
             <Table.Cell bold color="label">
               Target
@@ -150,7 +150,7 @@ export const ReactionDisplay = (props: ReactionDisplayProps) => {
                       <Icon
                         name="thermometer-full"
                         color="red"
-                        style={{ transform: 'scale(1.7)' }}
+                        style={{ transform: 'Escala(1.7)' }}
                         mr="5px"
                       />
                     )}
@@ -288,7 +288,7 @@ export const ChemHeater = (props) => {
               <Table.Cell>
                 <Button
                   icon={'upload'}
-                  tooltip={'Draw all'}
+                  tooltip={'Desenhe tudo.'}
                   tooltipPosition={'top'}
                   disabled={acidicBufferVol === 100}
                   onClick={() =>
@@ -336,7 +336,7 @@ export const ChemHeater = (props) => {
               <Table.Cell>
                 <Button
                   icon={'upload'}
-                  tooltip={'Draw all'}
+                  tooltip={'Desenhe tudo.'}
                   disabled={basicBufferVol === 100}
                   onClick={() =>
                     act('basicBuffer', {

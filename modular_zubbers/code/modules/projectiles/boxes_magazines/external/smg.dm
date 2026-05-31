@@ -10,7 +10,7 @@
 
 /obj/item/ammo_box/magazine/recharge/ntmp5
 	name = "large disabling power pack"
-	desc = "A rechargeable power pack for the NT22-HCS-MP 'Lancer'. Synthesizes up to twenty .22HL bullets that tire targets."
+	desc = "Um pacote de energia recarregável para o 'Lancer' NT22-HCS-MP. Sintetiza até vinte balas 22HL que se cansam de alvos."
 	parent_type = /obj/item/ammo_box/magazine/recharge/ntusp
 	ammo_type = /obj/item/ammo_casing/caseless/c22hl/ntmp5
 	base_icon_state = "powerpack"
@@ -47,7 +47,7 @@
 
 /obj/item/ammo_box/magazine/recharge/ntmp5/laser
 	name = "large lethal power pack"
-	desc = "A rechargeable power pack for the NT22-HCS-MP 'Lancer' that has been modified. Synthesizes up to sixteen .22LS bullets that fire lasers."
+	desc = "Um pacote de energia recarregável para o 'Lancer' NT22-HCS-MP que foi modificado. Sintetiza até 16 balas 22LS que disparam lasers."
 	ammo_type = /obj/item/ammo_casing/caseless/c22ls/ntmp5
 	base_icon_state = "powerpack-l"
 	icon_state = "powerpack-l"
@@ -61,7 +61,7 @@
 
 /obj/item/ammo_box/magazine/recharge/ntmp5/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ntusp_conversion_kit))
-		to_chat(user, span_danger("[A] makes a whirring sound as it modifies \the [src]'s lens to fabricate more lethal rounds."))
+		to_chat(user, span_danger("[A]faz um zumbido enquanto modifica\the [src]As lentes para fabricar balas mais letais."))
 		new /obj/item/ammo_box/magazine/recharge/ntmp5/laser/empty(get_turf(src))
 		qdel(src)
 	else
@@ -69,7 +69,7 @@
 
 /obj/item/ammo_box/magazine/recharge/ntmp5/laser/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ntusp_conversion_kit))
-		to_chat(user, span_notice("[A] makes a whirring sound as it modifies \the [src]'s lens to fabricate less lethal rounds."))
+		to_chat(user, span_notice("[A]faz um zumbido enquanto modifica\the [src]A lente para fabricar balas menos letais."))
 		new /obj/item/ammo_box/magazine/recharge/ntmp5/empty(get_turf(src))
 		qdel(src)
 	else

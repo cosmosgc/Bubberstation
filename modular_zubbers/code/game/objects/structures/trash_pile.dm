@@ -1,6 +1,6 @@
 /obj/structure/trash_pile
 	name = "trash pile"
-	desc = "A heap of dense garbage. Perhaps there is something interesting inside?"
+	desc = "Um monte de lixo denso. Talvez haja algo interessante dentro?"
 	icon = 'modular_skyrat/master_files/icons/obj/trash_piles.dmi'
 	icon_state = "randompile"
 	density = TRUE
@@ -87,7 +87,7 @@
 	if(!ishuman(user) || user.combat_mode || !user.ckey)
 		return ..()
 
-	user.visible_message("[user] searches through \the [src]...", span_notice("You search through \the [src]..."))
+	user.visible_message("[user]buscas através\the [src]...", span_notice("Você procura através\the [src]..."))
 
 	playsound(get_turf(src), pick('sound/effects/rustle/rustle1.ogg','sound/effects/rustle/rustle2.ogg','sound/effects/rustle/rustle3.ogg','sound/effects/rustle/rustle4.ogg','sound/effects/rustle/rustle5.ogg'), 50)
 
@@ -103,11 +103,11 @@
 				searched_by_ckeys[user.ckey] = 0
 		if(istype(hidden_atom, /mob/living))
 			var/mob/living/hidden_mob = hidden_atom
-			balloon_alert(user, "someone is inside!")
+			balloon_alert(user, "Alguém está lá dentro!")
 			eject_mob(hidden_mob)
 		else if (istype(hidden_atom, /obj/item))
 			var/obj/item/hidden_item = hidden_atom
-			balloon_alert(user, "found something!")
+			balloon_alert(user, "Encontrei Algo!")
 			hidden_item.forceMove(get_turf(src))
 		return
 
@@ -124,9 +124,9 @@
 	var/obj/item/spawned_item = prob(25) ? pick_weight_recursive(GLOB.common_loot) : pick_weight_recursive(GLOB.trash_pile_loot)
 	spawned_item = new spawned_item(get_turf(src))
 	if(spawned_item)
-		balloon_alert(user, "found [spawned_item.name]!")
+		balloon_alert(user, "Encontro[spawned_item.name]!")
 	else
-		balloon_alert(user, "found nothing...")
+		balloon_alert(user, "Não encontrei nada...")
 
 	searched_by_ckeys[user.ckey] = 1
 
@@ -143,7 +143,7 @@
 		balloon_alert(user, "está cheio!")
 		return
 
-	balloon_alert(user, "hiding item...")
+	balloon_alert(user, "Esconder itens...")
 	if(!do_after(user, hide_item_time, user))
 		return
 
@@ -151,7 +151,7 @@
 		return
 
 	if(user.transferItemToLoc(attacking_item, src))
-		balloon_alert(user, "item hidden!")
+		balloon_alert(user, "item escondido!")
 
 /obj/structure/trash_pile/mouse_drop_receive(atom/movable/dropped_atom, mob/user, params)
 
@@ -163,8 +163,8 @@
 		return
 
 	user.visible_message(
-		span_warning("[user] starts diving into [src]."),
-		span_notice("You start diving into [src]...")
+		span_warning("[user]Começa a mergulhar[src]."),
+		span_notice("Você começa a mergulhar em[src]...")
 	)
 
 	var/adjusted_dive_time = hide_person_time
@@ -178,7 +178,7 @@
 		return
 
 	for(var/mob/hidden_mob in contents)
-		balloon_alert(user, "someone is inside!")
+		balloon_alert(user, "Alguém está lá dentro!")
 		eject_mob(hidden_mob)
 		return
 

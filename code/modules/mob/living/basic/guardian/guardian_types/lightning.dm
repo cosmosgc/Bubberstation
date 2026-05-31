@@ -11,7 +11,7 @@
 	range = 7
 	playstyle_string = span_holoparasite("As a <b>lightning</b> type, you will apply lightning chains to targets on attack and have a lightning chain to your summoner. Lightning chains will shock anyone near them.")
 	creator_name = "Lightning"
-	creator_desc = "Attacks apply lightning chains to targets. Has a lightning chain to the user. Lightning chains shock everything near them, doing constant damage."
+	creator_desc = "Ataques aplicam correntes de raios aos alvos. Tem uma corrente de raios para o usuário. As correntes de raios chocam tudo perto deles, causando danos constantes."
 	creator_icon = "lightning"
 	/// Link between us and our summoner
 	var/datum/component/summoner_chain
@@ -55,15 +55,7 @@
 
 /// Create a damaging lightning chain between ourselves and a target
 /mob/living/basic/guardian/lightning/proc/chain_to(atom/target, max_range = 7)
-	var/datum/component/chain = AddComponent(\
-		/datum/component/damage_chain, \
-		linked_to = target, \
-		max_distance = max_range, \
-		beam_state = "lightning[rand(1,12)]", \
-		beam_type = /obj/effect/ebeam/chain, \
-		validate_target = CALLBACK(src, PROC_REF(validate_target)), \
-		chain_damage_feedback = CALLBACK(src, PROC_REF(on_chain_zap)), \
-	)
+	var/datum/component/chain = AddComponent(		/datum/component/damage_chain, 		linked_to = target, 		max_distance = max_range, 		beam_state = "lightning[rand(1,12)]", 		beam_type = /obj/effect/ebeam/chain, 		validate_target = CALLBACK(src, PROC_REF(validate_target)), 		chain_damage_feedback = CALLBACK(src, PROC_REF(on_chain_zap)), 	)
 	return chain
 
 /// Handle losing our reference when we delete a chain
@@ -83,9 +75,9 @@
 /mob/living/basic/guardian/lightning/proc/on_chain_zap(mob/living/target)
 	target.electrocute_act(shock_damage = 0, source = "lightning chain")
 	target.visible_message(
-		span_danger("[target] was shocked by the lightning chain!"),
-		span_userdanger("You are shocked by the lightning chain!"),
-		span_hear("You hear a heavy electrical crack."),
+		span_danger("[target]ficou chocado com a corrente de raios!"),
+		span_userdanger("Você está chocado com a corrente de raios!"),
+		span_hear("Você ouve uma forte rachadura elétrica."),
 	)
 
 /// Beam definition for our lightning chain

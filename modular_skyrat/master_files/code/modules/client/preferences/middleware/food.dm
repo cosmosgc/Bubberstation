@@ -20,7 +20,7 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 
 	var/fail_reason = GLOB.food_prefs_menu.is_food_invalid(preferences)
 	if(fail_reason)
-		to_chat(preferences.parent, span_announce("Your food preferences can't be set because of [fail_reason] choices! Please check your preferences!")) // Sorry, but I don't want folk sleeping on this.
+		to_chat(preferences.parent, span_announce("Suas preferências alimentares não podem ser definidas por causa de[fail_reason]Escolhas! Por favor, verifique suas preferências!")) // Sorry, but I don't want folk sleeping on this.
 		return
 
 	var/obj/item/organ/tongue/target_tongue = target.get_organ_slot(ORGAN_SLOT_TONGUE)

@@ -46,7 +46,7 @@ export function Panel(props) {
                   color="grey"
                   selected={audioVisible}
                   icon="music"
-                  tooltip="Music player"
+                  tooltip="Tocador de música"
                   tooltipPosition="bottom-start"
                   onClick={() => setAudioVisible((v) => !v)}
                 />
@@ -55,7 +55,7 @@ export function Panel(props) {
                 <Button
                   icon={settingsVisible ? 'times' : 'cog'}
                   selected={settingsVisible}
-                  tooltip={settingsVisible ? 'Close settings' : 'Open settings'}
+                  tooltip={settingsVisible ? 'Feche as configurações.' : 'Abrir configurações'}
                   tooltipPosition="bottom-start"
                   onClick={() => setSettingsVisible((v) => !v)}
                 />

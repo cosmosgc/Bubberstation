@@ -1,10 +1,10 @@
 /datum/quirk/bloodloss_dusting
 	name = "Dusting Sickness"
-	desc = "If you run out of blood to the point where a normal person would die, you turn to dust."
+	desc = "Se ficar sem sangue ao ponto de uma pessoa normal morrer, você vira pó."
 	value = -8
-	gain_text = span_danger("You start to worry even more about running out of blood.")
-	lose_text = span_notice("You feel like running out of blood isn't /quite/ as scary.")
-	medical_record_text = "Patient's body has an extreme reaction to bloodloss to the point of crumbling to dust. Keeping blood levels steady recommended."
+	gain_text = span_danger("Você começa a se preocupar ainda mais em ficar sem sangue.")
+	lose_text = span_notice("Você acha que ficar sem sangue não é assustador.")
+	medical_record_text = "O corpo do paciente tem uma reação extrema à perda de sangue ao ponto de desmoronar em pó. Mantendo os níveis sanguíneos estáveis recomendados."
 	icon = FA_ICON_DROPLET_SLASH
 
 /datum/quirk/bloodloss_dusting/add(client/client_source)
@@ -15,7 +15,7 @@
 	if(!istype(source))
 		return
 	if(source.blood_volume < BLOOD_VOLUME_SURVIVE)
-		to_chat(quirk_holder, span_danger("You ran out of blood!"))
+		to_chat(quirk_holder, span_danger("Você ficou sem sangue!"))
 		quirk_holder.investigate_log("has been dusted by a lack of blood. Caused by [src.name] quirk", INVESTIGATE_DEATHS)
 		quirk_holder.dust()
 

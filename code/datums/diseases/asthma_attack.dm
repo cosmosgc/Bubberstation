@@ -1,9 +1,8 @@
 /datum/disease/asthma_attack
 	form = "Bronchitis"
 	name = "Asthma attack"
-	desc = "Subject is undergoing a autoimmune response which threatens to close the esophagus and halt all respiration, leading to death. \
-	Minor asthma attacks may disappear on their own, but all are dangerous."
-	cure_text = /datum/reagent/medicine/albuterol::name + " or surgical intervention"
+	desc = "O sujeito está passando por uma resposta autoimune que ameaça fechar o esôfago e parar toda a respiração, levando à morte. Pequenos ataques de asma podem desaparecer sozinhos, mas todos são perigosos."
+	cure_text = /datum/reagent/medicine/albuterol::name + "ou intervenção cirúrgica"
 	cures = list(/datum/reagent/medicine/albuterol)
 	agent = "Inflammatory"
 	viable_mobtypes = list(/mob/living/carbon/human)
@@ -122,7 +121,7 @@
 		return FALSE
 
 	if (SPT_PROB(5, seconds_per_tick))
-		to_chat(affected_mob, span_warning(pick("Mucous runs down the back of your throat.", "You swallow excess mucus.")))
+		to_chat(affected_mob, span_warning(pick("Mucous corre pela sua garganta.", "Você engole muco em excesso.")))
 
 /datum/disease/asthma_attack/moderate
 	severity = DISEASE_SEVERITY_HARMFUL
@@ -146,11 +145,11 @@
 		return FALSE
 
 	if (SPT_PROB(15, seconds_per_tick))
-		to_chat(affected_mob, span_warning(pick("Mucous runs down the back of your throat.", "You swallow excess mucus.")))
+		to_chat(affected_mob, span_warning(pick("Mucous corre pela sua garganta.", "Você engole muco em excesso.")))
 
 	if (stage < 4 || !SPT_PROB(10, seconds_per_tick))
 		return
-	to_chat(affected_mob, span_warning("You briefly choke on the mucus piling in your throat!"))
+	to_chat(affected_mob, span_warning("Você se engasga com o muco na garganta!"))
 	affected_mob.losebreath++
 
 
@@ -183,13 +182,13 @@
 		visibility_flags &= ~HIDDEN_SCANNER // revealed
 
 	if (SPT_PROB(15, seconds_per_tick))
-		to_chat(affected_mob, span_warning(pick("Mucous runs down the back of your throat.", "You swallow excess mucus.")))
+		to_chat(affected_mob, span_warning(pick("Mucous corre pela sua garganta.", "Você engole muco em excesso.")))
 	else if (SPT_PROB(20, seconds_per_tick))
 		affected_mob.emote("cough")
 
 	if (stage < 4 || !SPT_PROB(15, seconds_per_tick))
 		return
-	to_chat(affected_mob, span_warning("You briefly choke on the mucus piling in your throat!"))
+	to_chat(affected_mob, span_warning("Você se engasga com o muco na garganta!"))
 	affected_mob.losebreath++
 
 /datum/disease/asthma_attack/critical
@@ -223,11 +222,11 @@
 
 	if (stage < 5)
 		if (SPT_PROB(75, seconds_per_tick))
-			to_chat(affected_mob, span_warning(pick("Mucous runs down the back of your throat.", "You swallow excess mucus.")))
+			to_chat(affected_mob, span_warning(pick("Mucous corre pela sua garganta.", "Você engole muco em excesso.")))
 
 	var/wheeze_chance
 	if (!warned_user && stage >= 5)
-		to_chat(affected_mob, span_userdanger("You feel like your lungs are filling with fluid! It's getting incredibly hard to breathe!"))
+		to_chat(affected_mob, span_userdanger("Parece que seus pulmões estão se enchendo de líquido! Está ficando incrivelmente difícil de respirar!"))
 		warned_user = TRUE
 
 	switch (stage)
@@ -246,7 +245,7 @@
 		if (6)
 			if (!max_stage_reached)
 				max_stage_reached = TRUE
-				to_chat(affected_mob, span_userdanger("You feel your windpipe squeeze shut!"))
+				to_chat(affected_mob, span_userdanger("Sente sua traqueia fechada!"))
 			wheeze_chance = 0
 			if (SPT_PROB(10, seconds_per_tick))
 				affected_mob.emote("gag")
@@ -258,5 +257,5 @@
 
 	if (stage < 4 || !SPT_PROB(15, seconds_per_tick))
 		return
-	to_chat(affected_mob, span_warning("You briefly choke on the mucus piling in your throat!"))
+	to_chat(affected_mob, span_warning("Você se engasga com o muco na garganta!"))
 	affected_mob.losebreath++

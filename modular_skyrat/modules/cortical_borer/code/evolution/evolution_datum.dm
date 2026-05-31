@@ -26,8 +26,8 @@
 
 /datum/borer_evolution/base
 	name = "The Beginning"
-	desc = "The start of a great age."
-	gain_text = "The worms, which we came to call \"Cortical Borers\", are fascinating creatures."
+	desc = "O início de uma grande idade."
+	gain_text = "Os vermes, que viemos chamar\"Cortical Borers\"São criaturas fascinantes."
 	evo_cost = 0
 	evo_type = BORER_EVOLUTION_START
 	tier = 0

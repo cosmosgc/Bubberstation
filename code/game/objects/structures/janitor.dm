@@ -2,7 +2,7 @@
 
 /obj/structure/mop_bucket
 	name = "mop bucket"
-	desc = "Fill it with water, but don't forget a mop!"
+	desc = "Encha com água, mas não se esqueça de um esfregão!"
 	icon = 'icons/obj/service/janitor.dmi'
 	icon_state = "mopbucket"
 	density = TRUE
@@ -38,13 +38,13 @@
 /obj/structure/mop_bucket/attackby_secondary(obj/item/weapon, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(weapon, /obj/item/mop))
 		if(weapon.reagents.total_volume >= weapon.reagents.maximum_volume)
-			balloon_alert(user, "already soaked!")
+			balloon_alert(user, "Já encharcado!")
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 		if(!CART_HAS_MINIMUM_REAGENT_VOLUME)
-			balloon_alert(user, "vazio!")
+			balloon_alert(user, "Vazio!")
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 		reagents.trans_to(weapon, weapon.reagents.maximum_volume, transferred_by = user)
-		balloon_alert(user, "doused mop")
+		balloon_alert(user, "esfregão encharcado")
 		playsound(src, 'sound/effects/slosh.ogg', 25, vary = TRUE)
 
 	if(istype(weapon, /obj/item/reagent_containers) || istype(weapon, /obj/item/mop))
@@ -60,7 +60,7 @@
 
 /obj/structure/mop_bucket/janitorialcart
 	name = "janitorial cart"
-	desc = "This is the alpha and omega of sanitation."
+	desc = "Este é o alfa e ômega do saneamento."
 	icon_state = "cart"
 	water_icon = "cart_water"
 	var/obj/item/storage/bag/trash/mybag
@@ -122,7 +122,7 @@
 /obj/structure/mop_bucket/janitorialcart/examine(mob/user)
 	. = ..()
 	if(contents.len)
-		. += span_bold(span_info("\nIt is carrying:"))
+		. += span_bold(span_info("\nEstá carregando:"))
 		for(var/thing in sort_names(contents))
 			if(thing in held_signs)
 				continue //we'll do this after.
@@ -133,14 +133,14 @@
 				. += "\t[icon2html(sign_obj, user)] [convert_integer_to_words(length(held_signs))] [sign_obj.name]\s"
 			else
 				. += "\t[icon2html(sign_obj, user)] \a [sign_obj]"
-		. += span_notice("\n<b>Left-click</b> to [contents.len > 1 ? "search [src]" : "remove [contents[1]]"].")
+		. += span_notice("\n<b>Botão esquerdo</b>para[contents.len > 1 ? "search [src]" : "remove [contents[1]]"].")
 		if(mybag)
-			. += span_notice("<b>Right-click</b> with a <b>[weight_class_to_text(mybag.atom_storage.max_specific_storage)] item</b> to put it in [mybag].")
+			. += span_notice("<b>Botão direito</b>com um<b>[weight_class_to_text(mybag.atom_storage.max_specific_storage)]item</b>para colocá-lo em[mybag].")
 		if(mymop)
-			. += span_notice("<b>Right-click</b> to quickly remove [mymop].")
+			. += span_notice("<b>Botão direito</b>Para remover rapidamente.[mymop].")
 	if(CART_HAS_MINIMUM_REAGENT_VOLUME)
-		. += span_notice("<b>Right-click</b> with a <b>mop</b> to wet it.")
-		. += span_info("<b>Crowbar</b> it to dump its mop bucket onto [get_turf(src)].")
+		. += span_notice("<b>Botão direito</b>com um<b>esfregão</b>para molhar.")
+		. += span_info("<b>Crowbar.</b>para jogar seu balde de esfregão em[get_turf(src)].")
 
 /obj/structure/mop_bucket/janitorialcart/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = ..()
@@ -185,64 +185,64 @@
 /obj/structure/mop_bucket/janitorialcart/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(attacking_item, /obj/item/mop))
 		if(mymop)
-			balloon_alert(user, "already has \a [mymop]!")
+			balloon_alert(user, "Já tem.\a [mymop]!")
 		else if(user.transferItemToLoc(attacking_item, src))
-			balloon_alert(user, "placed [attacking_item]")
+			balloon_alert(user, "colocado.[attacking_item]")
 		return
 
 	if(istype(attacking_item, /obj/item/pushbroom))
 		if(mybroom)
-			balloon_alert(user, "already has \a [mybroom]!")
+			balloon_alert(user, "Já tem.\a [mybroom]!")
 		else if(user.transferItemToLoc(attacking_item, src))
-			balloon_alert(user, "placed [attacking_item]")
+			balloon_alert(user, "colocado.[attacking_item]")
 		return
 
 	if(istype(attacking_item, /obj/item/storage/bag/trash))
 		if(mybag)
-			balloon_alert(user, "already has \a [mybag]!")
+			balloon_alert(user, "Já tem.\a [mybag]!")
 			return
 
 		var/obj/item/storage/bag/trash/insert = attacking_item
 		if(!insert.insertable)
-			balloon_alert(user, "cannot be inserted!")
+			balloon_alert(user, "Não pode ser inserido!")
 			return
 
 		if(user.transferItemToLoc(attacking_item, src))
-			balloon_alert(user, "attached [attacking_item]")
+			balloon_alert(user, "Anexado[attacking_item]")
 		return
 
 	if(istype(attacking_item, /obj/item/reagent_containers/spray/cleaner))
 		if(myspray)
-			balloon_alert(user, "already has \a [myspray]!")
+			balloon_alert(user, "Já tem.\a [myspray]!")
 		else if(user.transferItemToLoc(attacking_item, src))
-			balloon_alert(user, "placed [attacking_item]")
+			balloon_alert(user, "colocado.[attacking_item]")
 		return
 
 	if(istype(attacking_item, /obj/item/lightreplacer))
 		if(myreplacer)
-			balloon_alert(user, "already has \a [myreplacer]!")
+			balloon_alert(user, "Já tem.\a [myreplacer]!")
 		else if(user.transferItemToLoc(attacking_item, src))
-			balloon_alert(user, "placed [attacking_item]")
+			balloon_alert(user, "colocado.[attacking_item]")
 		return
 
 	else if(istype(attacking_item, /obj/item/clothing/suit/caution))
 		if(held_signs.len >= max_signs)
-			balloon_alert(user, "sign rack is full!")
+			balloon_alert(user, "Está cheio!")
 		else if(user.transferItemToLoc(attacking_item, src))
-			balloon_alert(user, "placed [attacking_item]")
+			balloon_alert(user, "colocado.[attacking_item]")
 		return
 
 	return ..()
 
 /obj/structure/mop_bucket/janitorialcart/crowbar_act(mob/living/user, obj/item/tool)
 	if(!CART_HAS_MINIMUM_REAGENT_VOLUME)
-		balloon_alert(user, "mop bucket is empty!")
+		balloon_alert(user, "O balde está vazio!")
 		return ITEM_INTERACT_SUCCESS
 	user.balloon_alert_to_viewers("starts dumping [src]...", "started dumping [src]...")
-	user.visible_message(span_notice("[user] begins to dumping the contents of [src]'s mop bucket."), span_notice("You begin to dump the contents of [src]'s mop bucket..."))
+	user.visible_message(span_notice("[user]começa a despejar o conteúdo de[src]É um balde de esfregão."), span_notice("Você começa a despejar o conteúdo de[src]O balde de esfregão..."))
 	if(tool.use_tool(src, user, 5 SECONDS, volume = 50))
-		balloon_alert(user, "dumped [src]")
-		to_chat(user, span_notice("You dumped the contents of [src]'s mop bucket onto the floor."))
+		balloon_alert(user, "Descartado.[src]")
+		to_chat(user, span_notice("Você jogou fora o conteúdo de[src]É um balde de esfregão no chão."))
 		reagents.expose(loc)
 		reagents.clear_reagents()
 		update_appearance(UPDATE_OVERLAYS)
@@ -296,36 +296,36 @@
 		if("Trash bag")
 			if(!mybag)
 				return
-			balloon_alert(user, "detached [mybag]")
+			balloon_alert(user, "Desconectado.[mybag]")
 			user.put_in_hands(mybag)
 		if("Mop")
 			if(!mymop)
 				return
-			balloon_alert(user, "removed [mymop]")
+			balloon_alert(user, "Removido[mymop]")
 			user.put_in_hands(mymop)
 		if("Broom")
 			if(!mybroom)
 				return
-			balloon_alert(user, "removed [mybroom]")
+			balloon_alert(user, "Removido[mybroom]")
 			user.put_in_hands(mybroom)
 		if("Spray bottle")
 			if(!myspray)
 				return
-			balloon_alert(user, "removed [myspray]")
+			balloon_alert(user, "Removido[myspray]")
 			user.put_in_hands(myspray)
 		if("Light replacer")
 			if(!myreplacer)
 				return
-			balloon_alert(user, "removed [myreplacer]")
+			balloon_alert(user, "Removido[myreplacer]")
 			user.put_in_hands(myreplacer)
 		if("Sign")
 			if(!held_signs.len)
 				return
 			var/obj/item/clothing/suit/caution/removed_sign = held_signs[1]
 			if(length(held_signs) > 1)
-				balloon_alert(user, "removed \a [removed_sign]")
+				balloon_alert(user, "Removido\a [removed_sign]")
 			else
-				balloon_alert(user, "removed [removed_sign]")
+				balloon_alert(user, "Removido[removed_sign]")
 			user.put_in_hands(removed_sign)
 		else
 			return
@@ -333,7 +333,7 @@
 /obj/structure/mop_bucket/janitorialcart/attack_hand_secondary(mob/user, list/modifiers)
 	if(!mymop)
 		return SECONDARY_ATTACK_CONTINUE_CHAIN
-	balloon_alert(user, "removed [mymop]")
+	balloon_alert(user, "Removido[mymop]")
 	user.put_in_hands(mymop)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 

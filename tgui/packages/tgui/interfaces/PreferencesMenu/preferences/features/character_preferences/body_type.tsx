@@ -7,7 +7,7 @@ import {
 } from '../dropdowns';
 
 export const body_type: FeatureChoiced = {
-  name: 'Body type',
+  name: 'Tipo de corpo',
   component: FeatureBodyTypeDropdownInput,
 };
 

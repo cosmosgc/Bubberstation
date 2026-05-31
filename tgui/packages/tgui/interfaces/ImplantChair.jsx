@@ -8,10 +8,10 @@ export const ImplantChair = (props) => {
   return (
     <Window width={375} height={280}>
       <Window.Content>
-        <Section title="Occupant Information" textAlign="center">
+        <Section title="Informação Ocupante" textAlign="center">
           <LabeledList>
             <LabeledList.Item label="Name">
-              {data.occupant.name || 'No Occupant'}
+              {data.occupant.name || 'Nenhum Ocupante'}
             </LabeledList.Item>
             {!!data.occupied && (
               <LabeledList.Item
@@ -43,7 +43,7 @@ export const ImplantChair = (props) => {
                 onClick={() => act('door')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Implant Occupant">
+            <LabeledList.Item label="Implante Ocupante">
               <Button
                 icon="code-branch"
                 content={
@@ -53,7 +53,7 @@ export const ImplantChair = (props) => {
               />
               {data.ready === 0 && <Icon name="cog" color="orange" spin />}
             </LabeledList.Item>
-            <LabeledList.Item label="Implants Remaining">
+            <LabeledList.Item label="Implantes restantes">
               {data.ready_implants}
               {data.replenishing === 1 && <Icon name="sync" color="red" spin />}
             </LabeledList.Item>

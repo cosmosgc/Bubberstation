@@ -1,5 +1,5 @@
 /obj/item/clothing/shoes/clown_shoes
-	desc = "The prankster's standard-issue clowning shoes. Damn, they're huge! Ctrl-click to toggle waddle dampeners."
+	desc = "Os sapatos de palhaço padrão do brincalhão. Droga, eles são enormes! Ctrl-click para alternar amortecedores."
 	name = "clown shoes"
 	icon_state = "clown"
 	inhand_icon_state = "clown_shoes"
@@ -39,30 +39,30 @@
 	if(!isliving(user))
 		return CLICK_ACTION_BLOCKING
 	if(user.get_active_held_item() != src)
-		to_chat(user, span_warning("You must hold the [src] in your hand to do this!"))
+		to_chat(user, span_warning("Você deve segurar o[src]em suas mãos para fazer isso!"))
 		return CLICK_ACTION_BLOCKING
 	if (!enabled_waddle)
-		to_chat(user, span_notice("You switch off the waddle dampeners!"))
+		to_chat(user, span_notice("Você desliga os amortecedores!"))
 		enabled_waddle = TRUE
 	else
-		to_chat(user, span_notice("You switch on the waddle dampeners!"))
+		to_chat(user, span_notice("Você liga os amortecedores!"))
 		enabled_waddle = FALSE
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/shoes/clown_shoes/jester
 	name = "jester shoes"
-	desc = "A court jester's shoes, updated with modern squeaking technology."
+	desc = "Sapatos de Bobo da Corte, atualizados com tecnologia moderna."
 	icon_state = "jester_shoes"
 
 /obj/item/clothing/shoes/clown_shoes/meown_shoes
 	name = "meown shoes"
-	desc = "The adorable sound they make when you walk will mean making friends is more likely."
+	desc = "O som adorável que fazem quando você anda significa que fazer amigos é mais provável."
 	icon_state = "meown_shoes"
 	squeak_sound = list('sound/effects/footstep/meowstep1.ogg'=1) //mew mew mew mew
 
 /obj/item/clothing/shoes/clown_shoes/moffers
 	name = "moffers"
-	desc = "No moths were harmed in the making of these slippers."
+	desc = "Nenhuma mariposa foi ferida na confecção desses chinelos."
 	icon_state = "moffers"
 	squeak_sound = list('sound/effects/footstep/moffstep01.ogg'=1) //like sweet music to my ears
 
@@ -71,7 +71,7 @@
 //Clown shoes with combat stats and noslip. Of course they still squeak.
 /obj/item/clothing/shoes/clown_shoes/combat
 	name = "combat clown shoes"
-	desc = "Advanced Clown Shoes that protect the wearer and render them nearly immune to slipping on their own peels. They also squeak at 100% capacity."
+	desc = "Palhaço Avançado Sapatos que protegem o usuário e os tornam quase imunes a escorregar em suas próprias cascas. Eles também rangem em 100% de capacidade."
 	clothing_traits = list(TRAIT_NO_SLIP_WATER)
 	slowdown = SHOES_SLOWDOWN
 	body_parts_covered = FEET|LEGS
@@ -101,7 +101,7 @@
 //The super annoying version
 /obj/item/clothing/shoes/clown_shoes/banana_shoes/combat
 	name = "mk-honk combat shoes"
-	desc = "The culmination of years of clown combat research, these shoes leave a trail of chaos in their wake. They will slowly recharge themselves over time, or can be manually charged with bananium."
+	desc = "O culminar de anos de pesquisa de combate de palhaços, esses sapatos deixam um rastro de caos em seu rastro. Eles vão lentamente se recarregar com o tempo, ou podem ser carregados manualmente com banânio."
 	slowdown = SHOES_SLOWDOWN
 	armor_type = /datum/armor/banana_shoes_combat
 	strip_delay = 7 SECONDS

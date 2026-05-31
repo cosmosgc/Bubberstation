@@ -21,7 +21,7 @@
 
 /obj/machinery/vending/imported
 	name = "NT Sustenance Supplier"
-	desc = "A vending machine serving up only the finest of human college student food."
+	desc = "Uma máquina de venda automática servindo apenas a melhor comida de estudante humano."
 	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_vendors.dmi'
 	icon_state = "nt_food"
 	panel_type = "panel15"
@@ -65,11 +65,11 @@
 	allow_custom = TRUE
 
 /obj/item/vending_refill/snack/imported
-	machine_name = "NT Sustenance Supplier"
+	machine_name = "NT Fornecedor de alimentos"
 
 /obj/machinery/vending/imported/yangyu
 	name = "Fudobenda"
-	desc = "A vendor selling traditional Sol eastern foods of dubious quality."
+	desc = "Um vicedor vendendo comida tradicional Sol Eastern de qualidade dupla."
 	icon_state = "yangyu_food"
 	light_mask = "yangyu_food-light-mask"
 	light_color = LIGHT_COLOR_FLARE
@@ -117,7 +117,7 @@
 
 /obj/machinery/vending/imported/yangyu/examine_more(mob/user)
 	. = ..()
-	. += span_notice("Someone appears to have written <i>\"Don't trust the sushi!\"</i> in marker on the side of the vendor.")
+	. += span_notice("Alguém parece ter escrito<i>\"Não confie no sushi!\"</i>Nada de marcador do lado do vededor.")
 	return .
 
 /obj/item/vending_refill/snack/imported/yangyu
@@ -125,7 +125,7 @@
 
 /obj/machinery/vending/imported/mothic
 	name = "Nomad Fleet Ration Chit Exchange"
-	desc = "One of the Nomad Fleet's own ration vendors; in spite of the name engraved into it, it's been fitted to accept credits."
+	desc = "Um dos fornecedores de racionamento da frota Nomad, apesar do nome gravado, foi ajustado para aceitar créditos."
 	icon_state = "moth_food"
 	light_mask = "moth_food-light-mask"
 	light_color = LIGHT_COLOR_HALOGEN
@@ -173,11 +173,11 @@
 		)
 
 /obj/item/vending_refill/snack/imported/mothic
-	machine_name = "Nomad Fleet Ration Chit Exchange"
+	machine_name = "Nomad Fleet Ration Chit câmbio"
 
 /obj/machinery/vending/imported/tiziran
 	name = "Tiziran Imported Delicacies"
-	desc = "A vendor serving a fine collection of what is very likely knock-offs of popular Tiziran brands."
+	desc = "Um vendedor servindo uma bela coleção do que é muito provável falsificações de marcas populares Tiziran."
 	icon_state = "tizira_food"
 	light_mask = "tizira_food-light-mask"
 	light_color = LIGHT_COLOR_FIRE
@@ -223,4 +223,4 @@
 		)
 
 /obj/item/vending_refill/snack/imported/tiziran
-	machine_name = "Tiziran Imported Delicacies"
+	machine_name = "Tiziran importava doces."

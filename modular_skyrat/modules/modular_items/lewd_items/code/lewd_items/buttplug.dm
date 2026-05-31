@@ -1,6 +1,6 @@
 /obj/item/clothing/sextoy/buttplug
 	name = "buttplug"
-	desc = "I'm meant to put that WHERE?!"
+	desc = "Eu devoria colocar é assim?"
 	icon_state = "buttplug_pink_small"
 	base_icon_state = "buttplug"
 	worn_icon_state = "buttplug_pink"
@@ -43,9 +43,9 @@
 /obj/item/clothing/sextoy/buttplug/examine(mob/user)
 	. = ..()
 	if(!color_changed)
-		. += span_notice("Alt-click to change it's colors.")
+		. += span_notice("Alt-click para mudar suas cores.")
 	else if(!form_changed)
-		. += span_notice("Alt-click to change it's size.")
+		. += span_notice("Alt-click para mudar seu tamanho.")
 
 /obj/item/clothing/sextoy/buttplug/click_alt(mob/user)
 	if(!color_changed)

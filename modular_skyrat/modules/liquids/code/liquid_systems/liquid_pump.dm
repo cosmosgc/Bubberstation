@@ -1,7 +1,7 @@
 //Right now it's a structure that works off of magic, as it'd require an internal power source for what its supposed to do
 /obj/structure/liquid_pump
 	name = "portable liquid pump"
-	desc = "An industrial grade pump, capable of either siphoning or spewing liquids. Needs to be anchored first to work. Has a limited capacity internal storage."
+	desc = "Uma bomba industrial, capaz de sifonar ou vomitar líquidos. Precisa ser ancorado primeiro para trabalhar. Tem uma capacidade limitada de armazenamento interno."
 	icon = 'modular_skyrat/modules/liquids/icons/obj/structures/liquid_pump.dmi'
 	icon_state = "liquid_pump"
 	density = TRUE
@@ -29,23 +29,23 @@
 
 /obj/structure/liquid_pump/attack_hand(mob/user)
 	if(!anchored)
-		to_chat(user, span_warning("[src] needs to be anchored first!"))
+		to_chat(user, span_warning("[src]Precisa ser ancorado primeiro!"))
 		return
-	to_chat(user, span_notice("You turn [src] [turned_on ? "off" : "on"]."))
+	to_chat(user, span_notice("Você vira.[src] [turned_on ? "off" : "on"]."))
 	toggle_working()
 
 /obj/structure/liquid_pump/click_alt(mob/living/user)
-	to_chat(user, span_notice("You flick [src]'s spewing mode [spewing_mode ? "off" : "on"]."))
+	to_chat(user, span_notice("Você filma[src]O modo de vomitar[spewing_mode ? "off" : "on"]."))
 	spewing_mode = !spewing_mode
 	update_icon()
 	return CLICK_ACTION_SUCCESS
 
 /obj/structure/liquid_pump/examine(mob/user)
 	. = ..()
-	. += span_notice("It's anchor bolts are [anchored ? "down and secured" : "up"].")
-	. += span_notice("It's currently [turned_on ? "ON" : "OFF"].")
-	. += span_notice("It's mode currently is set to [spewing_mode ? "SPEWING" : "SIPHONING"]. (Alt-click to switch)")
-	. += span_notice("The pressure gauge shows [reagents.total_volume]/[reagents.maximum_volume].")
+	. += span_notice("São parafusos de âncora.[anchored ? "down and secured" : "up"].")
+	. += span_notice("É atualmente[turned_on ? "ON" : "OFF"].")
+	. += span_notice("Seu modo atualmente está definido como[spewing_mode ? "SPEWING" : "SIPHONING"](Alt-clique para mudar)")
+	. += span_notice("O medidor de pressão mostra[reagents.total_volume]/[reagents.maximum_volume].")
 
 /obj/structure/liquid_pump/process()
 	if(!isturf(loc))

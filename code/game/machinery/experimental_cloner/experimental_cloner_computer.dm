@@ -1,7 +1,7 @@
 /// Computer which starts the experimental cloning process
 /obj/machinery/computer/experimental_cloner
 	name = "experimental cloner control console"
-	desc = "It scans DNA structures."
+	desc = "Ele escaneia estruturas de DNA."
 	circuit = /obj/item/circuitboard/computer/experimental_cloner
 	icon_screen = "crew"
 	icon_keyboard = "med_key"
@@ -44,14 +44,14 @@
 	if (istype(multi_tool.buffer, /obj/machinery/experimental_cloner_scanner))
 		unlink_scanner()
 		link_scanner(multi_tool.buffer)
-		balloon_alert(user, "scanner linked")
-		to_chat(user, span_notice("You link \the [multi_tool.buffer] with \the [src]."))
+		balloon_alert(user, "Scanner conectado")
+		to_chat(user, span_notice("Você liga.\the [multi_tool.buffer]Com\the [src]."))
 		return ITEM_INTERACT_SUCCESS
 	if (istype(multi_tool.buffer, /obj/machinery/experimental_cloner))
 		unlink_pod()
 		link_pod(multi_tool.buffer)
 		balloon_alert(user, "pod linked")
-		to_chat(user, span_notice("You link \the [multi_tool.buffer] with \the [src]."))
+		to_chat(user, span_notice("Você liga.\the [multi_tool.buffer]Com\the [src]."))
 		return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/computer/experimental_cloner/ui_interact(mob/user, datum/tgui/ui)
@@ -127,20 +127,20 @@
 			return TRUE
 		if ("start_scan")
 			if (isnull(input))
-				balloon_alert(ui.user, "no linked scanner!")
+				balloon_alert(ui.user, "Sem scanner conectado!")
 				playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, TRUE)
 				return TRUE
 			if (isnull(input.occupant))
-				balloon_alert(ui.user, "scanner empty!")
+				balloon_alert(ui.user, "Scanner Vazio!")
 				playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, TRUE)
 				return TRUE
 			if (!iscarbon(input.occupant))
-				balloon_alert(ui.user, "invalid subject!")
+				balloon_alert(ui.user, "Sujeito inválido!")
 				playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, TRUE)
 				return TRUE
 			var/mob/living/carbon/carbon_occupant = input.occupant
 			if (!carbon_occupant.has_dna())
-				balloon_alert(ui.user, "invalid subject!")
+				balloon_alert(ui.user, "Sujeito inválido!")
 				playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, TRUE)
 				return TRUE
 			if (input.scanning)
@@ -153,15 +153,15 @@
 			return TRUE
 		if ("start_clone")
 			if (isnull(output))
-				balloon_alert(ui.user, "no linked pod!")
+				balloon_alert(ui.user, "Nenhuma cápsula ligada!")
 				playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, TRUE)
 				return TRUE
 			if (output.running)
-				balloon_alert(ui.user, "pod busy!")
+				balloon_alert(ui.user, "Pod ocupado!")
 				playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, TRUE)
 				return TRUE
 			if (isnull(stored_record))
-				balloon_alert(ui.user, "no stored DNA!")
+				balloon_alert(ui.user, "Sem DNA Armazenado!")
 				playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, TRUE)
 				return TRUE
 

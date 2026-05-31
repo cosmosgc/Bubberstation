@@ -33,17 +33,17 @@ GLOBAL_DATUM(triple_ai_controller, /datum/triple_ai_controller)
 	set name = "Toggle AI Triumvirate"
 
 	if(SSticker.current_state > GAME_STATE_PREGAME)
-		to_chat(usr, "This option is currently only usable during pregame. This may change at a later date.", confidential = TRUE)
+		to_chat(usr, "Esta opção só é utilizável durante o pré-jogo. Isso pode mudar mais tarde.", confidential = TRUE)
 		return
 
 	var/datum/job/job = SSjob.get_job_type(/datum/job/ai)
 	if(!job)
-		to_chat(usr, "Unable to locate the AI job", confidential = TRUE)
+		to_chat(usr, "Incapaz de localizar o trabalho de IA", confidential = TRUE)
 		CRASH("triple_ai() called, no /datum/job/ai to be found.")
 
 	if(!GLOB.triple_ai_controller)
 		GLOB.triple_ai_controller = new()
 	else
 		QDEL_NULL(GLOB.triple_ai_controller)
-	to_chat(usr, "There will[GLOB.triple_ai_controller ? "" : "not"] be an AI Triumvirate at round start.")
+	to_chat(usr, "Haverá.[GLOB.triple_ai_controller ? "" : "not"]Seja um Triunvirato de IA no começo.")
 	message_admins(span_adminnotice("[key_name_admin(usr)] has toggled [GLOB.triple_ai_controller ? "on" : "off"] triple AIs at round start."))

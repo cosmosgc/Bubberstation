@@ -1,5 +1,5 @@
 ADMIN_VERB(show_tip, R_ADMIN, "Show Tip", "Sends a tip to all players.", ADMIN_CATEGORY_MAIN)
-	var/input = input(user, "Please specify your tip that you want to send to the players.", "Tip", "") as message|null
+	var/input = input(user, "Por favor, especifique sua dica que quer enviar aos jogadores.", "Tip", "") as message|null
 	if(!input)
 		return
 
@@ -17,7 +17,7 @@ ADMIN_VERB(show_tip, R_ADMIN, "Show Tip", "Sends a tip to all players.", ADMIN_C
 	BLACKBOX_LOG_ADMIN_VERB("Show Tip")
 
 ADMIN_VERB(announce, R_ADMIN, "Announce", "Announce your desires to the world.", ADMIN_CATEGORY_MAIN)
-	var/message = input(user, "Global message to send:", "Admin Announce")  as message|null
+	var/message = input(user, "Mensagem global para enviar:", "Admin. Anuncie.")  as message|null
 	if(!message)
 		return
 
@@ -29,7 +29,7 @@ ADMIN_VERB(announce, R_ADMIN, "Announce", "Announce your desires to the world.",
 
 ADMIN_VERB(unprison, R_ADMIN, "UnPrison", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/prisoner in GLOB.mob_list)
 	if(!is_centcom_level(prisoner.z))
-		tgui_alert(user, "[prisoner.name] is not prisoned.")
+		tgui_alert(user, "[prisoner.name]Não está preso.")
 		return
 
 	SSjob.send_to_late_join(prisoner)
@@ -39,7 +39,7 @@ ADMIN_VERB(unprison, R_ADMIN, "UnPrison", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEG
 
 ADMIN_VERB(cmd_admin_check_player_exp, R_ADMIN, "Player Playtime", "View player playtime.", ADMIN_CATEGORY_MAIN)
 	if(!CONFIG_GET(flag/use_exp_tracking))
-		to_chat(user, span_warning("Tracking is disabled in the server configuration file."), confidential = TRUE)
+		to_chat(user, span_warning("O rastreamento está desativado no arquivo de configuração do servidor."), confidential = TRUE)
 		return
 
 	var/list/msg = list()
@@ -69,10 +69,10 @@ ADMIN_VERB(cmd_admin_check_player_exp, R_ADMIN, "Player Playtime", "View player 
 	if(!check_rights(R_ADMIN))
 		return
 	if(!client_to_check)
-		to_chat(usr, span_danger("ERROR: Client not found."), confidential = TRUE)
+		to_chat(usr, span_danger("Cliente não encontrado."), confidential = TRUE)
 		return
 	if(!CONFIG_GET(flag/use_exp_tracking))
-		to_chat(usr, span_warning("Tracking is disabled in the server configuration file."), confidential = TRUE)
+		to_chat(usr, span_warning("O rastreamento está desativado no arquivo de configuração do servidor."), confidential = TRUE)
 		return
 
 	new /datum/job_report_menu(client_to_check, usr)
@@ -81,11 +81,11 @@ ADMIN_VERB(cmd_admin_check_player_exp, R_ADMIN, "Player Playtime", "View player 
 	if(!check_rights(R_ADMIN))
 		return
 	if(!C)
-		to_chat(usr, span_danger("ERROR: Client not found."), confidential = TRUE)
+		to_chat(usr, span_danger("Cliente não encontrado."), confidential = TRUE)
 		return
 
 	if(!C.set_db_player_flags())
-		to_chat(usr, span_danger("ERROR: Unable read player flags from database. Please check logs."), confidential = TRUE)
+		to_chat(usr, span_danger("Incapaz de ler as bandeiras dos jogadores do banco de dados. Por favor, verifique os registros."), confidential = TRUE)
 	var/dbflags = C.prefs.db_flags
 	var/newstate = FALSE
 	if(dbflags & DB_FLAG_EXEMPT)
@@ -94,7 +94,7 @@ ADMIN_VERB(cmd_admin_check_player_exp, R_ADMIN, "Player Playtime", "View player 
 		newstate = TRUE
 
 	if(C.update_flag_db(DB_FLAG_EXEMPT, newstate))
-		to_chat(usr, span_danger("ERROR: Unable to update player flags. Please check logs."), confidential = TRUE)
+		to_chat(usr, span_danger("Incapaz de atualizar as bandeiras do atleta. Por favor, verifique os registros."), confidential = TRUE)
 	else
 		message_admins("[key_name_admin(usr)] has [newstate ? "activated" : "deactivated"] job exp exempt status on [key_name_admin(C)]")
 		log_admin("[key_name(usr)] has [newstate ? "activated" : "deactivated"] job exp exempt status on [key_name(C)]")
@@ -106,7 +106,7 @@ ADMIN_VERB(cmd_admin_check_player_exp, R_ADMIN, "Player Playtime", "View player 
 	if(!check_rights(R_VAREDIT))
 		return
 
-	var/add_or_remove = input("Remove/Add?", "Trait Remove/Add") as null|anything in list("Add","Remove")
+	var/add_or_remove = input("Remover/Adicionar?", "Remover/Adicionar Traço") as null|anything in list("Add","Remove")
 	if(!add_or_remove)
 		return
 	var/list/available_traits = list()
@@ -123,7 +123,7 @@ ADMIN_VERB(cmd_admin_check_player_exp, R_ADMIN, "Player Playtime", "View player 
 				var/name = GLOB.admin_trait_name_map[trait] || trait
 				available_traits[name] = trait
 
-	var/chosen_trait = input("Select trait to modify", "Trait") as null|anything in sort_list(available_traits)
+	var/chosen_trait = input("Selecione traço para modificar", "Trait") as null|anything in sort_list(available_traits)
 	if(!chosen_trait)
 		return
 	chosen_trait = available_traits[chosen_trait]
@@ -135,7 +135,7 @@ ADMIN_VERB(cmd_admin_check_player_exp, R_ADMIN, "Player Playtime", "View player 
 				D.AddElement(/datum/element/movetype_handler)
 			ADD_TRAIT(D,chosen_trait,source)
 		if("Remove")
-			var/specific = input("All or specific source ?", "Trait Remove/Add") as null|anything in list("All","Specific")
+			var/specific = input("Tudo ou fonte específica?", "Remover/Adicionar Traço") as null|anything in list("All","Specific")
 			if(!specific)
 				return
 			switch(specific)
@@ -150,7 +150,7 @@ ADMIN_VERB(cmd_admin_check_player_exp, R_ADMIN, "Player Playtime", "View player 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 ADMIN_VERB(drop_everything, R_ADMIN, "Drop Everything", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/living/dropee in GLOB.mob_list)
-	var/confirm = tgui_alert(user, "Make [dropee] drop everything?", "Message", list("Yes", "No"))
+	var/confirm = tgui_alert(user, "Faça[dropee]Lagar tudo?", "Message", list("Yes", "No"))
 	if(confirm != "Yes")
 		return
 
@@ -229,7 +229,7 @@ ADMIN_VERB(drop_everything, R_ADMIN, "Drop Everything", ADMIN_VERB_NO_DESCRIPTIO
 		log_admin("SPAM AUTOMUTE: [muteunmute] [key_name(whom)] from [mute_string]")
 		message_admins("SPAM AUTOMUTE: [muteunmute] [key_name_admin(whom)] from [mute_string].")
 		if(C)
-			to_chat(C, "You have been [muteunmute] from [mute_string] by the SPAM AUTOMUTE system. Contact an admin.", confidential = TRUE)
+			to_chat(C, "Você foi[muteunmute]De[mute_string]Pelo sistema Spam Automute. Conte um administrador.", confidential = TRUE)
 		SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Auto Mute [feedback_string]", "1")) // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
 		return
 
@@ -243,7 +243,7 @@ ADMIN_VERB(drop_everything, R_ADMIN, "Drop Everything", ADMIN_VERB_NO_DESCRIPTIO
 	log_admin("[key_name(usr)] has [muteunmute] [key_name(whom)] from [mute_string]")
 	message_admins("[key_name_admin(usr)] has [muteunmute] [key_name_admin(whom)] from [mute_string].")
 	if(C)
-		to_chat(C, "You have been [muteunmute] from [mute_string] by [key_name(usr, include_name = FALSE)].", confidential = TRUE)
+		to_chat(C, "Você foi[muteunmute]De[mute_string]Por que[key_name(usr, include_name = FALSE)].", confidential = TRUE)
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Mute [feedback_string]", "[P.muted & mute_type]")) // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
 
 /proc/immerse_player(mob/living/carbon/target, toggle=TRUE, remove=FALSE)

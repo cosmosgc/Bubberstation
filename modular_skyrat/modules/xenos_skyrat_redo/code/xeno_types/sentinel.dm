@@ -2,7 +2,7 @@
 
 /mob/living/carbon/alien/adult/skyrat/sentinel
 	name = "alien sentinel"
-	desc = "An alien that'd be unremarkable if not for the bright coloring and visible acid glands that cover it."
+	desc = "Um alienígena que não seria notável se não fosse pela coloração brilhante e glândulas ácidas visíveis que o cobrem."
 	caste = "sentinel"
 	maxHealth = 200
 	health = 200
@@ -29,7 +29,7 @@
 
 /datum/action/cooldown/alien/acid/skyrat
 	name = "Spit Neurotoxin"
-	desc = "Spits neurotoxin at someone, exhausting them."
+	desc = "Cospe neurotoxina em alguém, esgotando-os."
 	button_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "neurospit_0"
 	plasma_cost = 40
@@ -54,7 +54,7 @@
 	if(!.)
 		return
 
-	to_chat(on_who, span_notice("You prepare your [projectile_name] gland. <B>Left-click to fire at a target!</B>"))
+	to_chat(on_who, span_notice("Você prepara o seu[projectile_name]glândula.<B>Clique em esquerdo para atar em um Alvo!</B>"))
 
 	button_icon_state = "[button_base_icon]_1"
 	build_all_button_icons()
@@ -66,7 +66,7 @@
 		return
 
 	if(refund_cooldown)
-		to_chat(on_who, span_notice("You empty your [projectile_name] gland."))
+		to_chat(on_who, span_notice("Você esvazia seu[projectile_name]glândula."))
 
 	button_icon_state = "[button_base_icon]_0"
 	build_all_button_icons()
@@ -85,8 +85,8 @@
 
 	var/modifiers = params2list(params)
 	clicker.visible_message(
-		span_danger("[clicker] spits [projectile_name]!"),
-		span_alertalien("You spit [projectile_name]."),
+		span_danger("[clicker]Cuspidos.[projectile_name]!"),
+		span_alertalien("Você cospe.[projectile_name]."),
 	)
 
 	if(acid_projectile)
@@ -125,7 +125,7 @@
 
 /datum/action/cooldown/alien/acid/skyrat/lethal
 	name = "Spit Acid"
-	desc = "Spits neurotoxin at someone, burning them."
+	desc = "Cospe neurotoxina em alguém, queimando-os."
 	acid_projectile = /obj/projectile/neurotoxin/skyrat/acid
 	button_icon_state = "acidspit_0"
 	projectile_name = "acid"

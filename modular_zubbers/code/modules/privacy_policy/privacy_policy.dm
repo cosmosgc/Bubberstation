@@ -11,7 +11,7 @@
 /datum/privacy_policy_ui/ui_close(mob/user)
 	// we spawned async and this has already been checked if we reached this point, we don't need further checks
 	if(owner)
-		to_chat(owner, span_danger("You must accept the Privacy Policy to continue playing."))
+		to_chat(owner, span_danger("Você deve aceitar a Política de Privacidade para continuar jogando."))
 		new type(owner.mob)
 	qdel(src)
 

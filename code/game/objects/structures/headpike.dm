@@ -1,6 +1,6 @@
 /obj/structure/headpike
 	name = "spooky head on a spear"
-	desc = "When you really want to send a message."
+	desc = "Quando você realmente quer enviar uma mensagem."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "headpike"
 	density = FALSE
@@ -82,5 +82,5 @@
 	. = ..()
 	if(.)
 		return
-	to_chat(user, span_notice("You take down [src]."))
+	to_chat(user, span_notice("Você derruba[src]."))
 	deconstruct(TRUE)

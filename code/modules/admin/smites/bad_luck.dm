@@ -23,6 +23,6 @@
 	target.AddComponent(/datum/component/omen/smite, incidents_left = incidents)
 	if(silent)
 		return
-	to_chat(target, span_warning("You get a bad feeling..."))
+	to_chat(target, span_warning("Você tem um mau pressentimento..."))
 	if(incidents == INFINITY)
-		to_chat(target, span_warning("A <b>very</b> bad feeling... As if malevolent forces are watching you..."))
+		to_chat(target, span_warning("A<b>Muito.</b>Sentimento ruim... Como se forças malévolas estivessem te observando..."))

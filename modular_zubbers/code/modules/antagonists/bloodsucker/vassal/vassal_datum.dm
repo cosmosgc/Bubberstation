@@ -7,7 +7,7 @@
 	show_in_roundend = FALSE
 	hud_icon = 'modular_zubbers/icons/mob/huds/bloodsucker.dmi'
 	ui_name = "AntagInfoGhoul"
-	antag_panel_description = "You are a Ghoul, a mortal servant of a Bloodsucker."
+	antag_panel_description = "Você é um Ghoul, um servo mortal de um sanguessuga."
 
 	/// The Master Bloodsucker's antag datum.
 	var/datum/antagonist/bloodsucker/master
@@ -141,13 +141,12 @@
 	if(silent)
 		return
 
-	to_chat(owner, span_userdanger("You are now the mortal servant of [master.owner.current], a Bloodsucker!"))
-	to_chat(owner, span_boldannounce("The power of [master.owner.current.p_their()] immortal blood compels you to obey [master.owner.current.p_them()] in all things, even offering your own life to prolong theirs.\n\
-		You are not required to obey any other Bloodsucker, for only [master.owner.current] is your master. The laws of Nanotrasen do not apply to you now; only your vampiric master's word must be obeyed."))
+	to_chat(owner, span_userdanger("Você agora é o servo mortal de[master.owner.current]Um sanguessuga!"))
+	to_chat(owner, span_boldannounce("O poder de[master.owner.current.p_their()]Sangue imortal te obriga a obedecer.[master.owner.current.p_them()]em todas as coisas, mesmo oferecendo sua própria vida para prolongar a deles.\nVocê não é obrigado a obedecer qualquer outro sanguessuga, para apenas[master.owner.current]é seu mestre. As leis de Nanotrasen não se aplicam a você agora, somente a palavra do seu mestre vampírico deve ser obedecida."))
 	owner.current.playsound_local(null, 'sound/effects/magic/mutate.ogg', 100, FALSE, pressure_affected = FALSE)
 	antag_memory += "You, becoming the mortal servant of <b>[master.owner.current]</b>, a bloodsucking vampire!<br>"
 	/// Message told to your Master.
-	to_chat(master.owner, span_userdanger("[owner.current] has become addicted to your immortal blood. [capitalize(owner.current.p_they(TRUE))] [owner.current.p_are()] now your mortal servant!"))
+	to_chat(master.owner, span_userdanger("[owner.current]Rogou-se viciado em seu sangue imortal.[capitalize(owner.current.p_they(TRUE))] [owner.current.p_are()]Agora seu servo mortal!"))
 	master.owner.current.playsound_local(null, 'sound/effects/magic/mutate.ogg', 100, FALSE, pressure_affected = FALSE)
 
 /datum/antagonist/ghoul/farewell()
@@ -155,13 +154,11 @@
 		return
 
 	owner.current.visible_message(
-		span_deconversion_message("[owner.current]'s eyes dart feverishly from side to side, and then stop. [owner.current.p_They(TRUE)] seem[owner.current.p_s()] to calm, \
-			like [owner.current.p_they()] [owner.current.p_have()] regained some lost part of [owner.current.p_them()]self."), \
-		span_deconversion_message("With a snap, you are no longer enslaved to [master.owner]! You breathe in heavily, having regained your free will."))
+		span_deconversion_message("[owner.current]Os olhos deslizam febrilmente de um lado para o outro, e depois param.[owner.current.p_They(TRUE)]Parece.[owner.current.p_s()]para se acalmar, como[owner.current.p_they()] [owner.current.p_have()]Recuperou Alguma parte perdida de[owner.current.p_them()]Eu."), 		span_deconversion_message("Com um estalo, você não está mais escravizado para[master.owner]Você respira muito, tendo recuperado seu livre arbítrio."))
 	owner.current.playsound_local(null, 'sound/effects/magic/mutate.ogg', 100, FALSE, pressure_affected = FALSE)
 	/// Message told to your (former) Master.
 	if(master && master.owner)
-		to_chat(master.owner, span_cult_bold("You feel the bond with your ghoul [owner.current] has somehow been broken!"))
+		to_chat(master.owner, span_cult_bold("Você sente a ligação com seu ghoul[owner.current]de alguma forma foi quebrado!"))
 
 /datum/antagonist/ghoul/admin_add(datum/mind/new_owner, mob/admin)
 	var/list/datum/mind/possible_vampires = list()
@@ -184,4 +181,4 @@
 	var/datum/antagonist/bloodsucker/vampire = IS_BLOODSUCKER(choice.current)
 	master = vampire
 	new_owner.add_antag_datum(src)
-	to_chat(choice, span_notice("Through divine intervention, you've gained a new ghoul!"))
+	to_chat(choice, span_notice("Através da intervenção divina, você ganhou um novo fantasma!"))

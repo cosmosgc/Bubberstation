@@ -58,7 +58,7 @@ export const MatrixMathTester = (props) => {
   const [angle, setAngle] = useState(0);
 
   return (
-    <Window title="Nobody Wants to Learn Matrix Math" width={290} height={270}>
+    <Window title="Ninguém quer aprender Matemática Matrix." width={290} height={270}>
       <Window.Content>
         <Section fill>
           <Table>
@@ -75,7 +75,7 @@ export const MatrixMathTester = (props) => {
                 <MatrixMathTesterInput value={matrix_d} varName="d" />
               </Table.Cell>
               <Table.Cell>
-                <Input disabled placeholder="0 (fixed value)" fluid />
+                <Input disabled placeholder="0 (valor fixo)" fluid />
               </Table.Cell>
             </Table.Row>
             <Table.Row>
@@ -86,7 +86,7 @@ export const MatrixMathTester = (props) => {
                 <MatrixMathTesterInput value={matrix_e} varName="e" />
               </Table.Cell>
               <Table.Cell>
-                <Input disabled placeholder="0 (fixed value)" fluid />
+                <Input disabled placeholder="0 (valor fixo)" fluid />
               </Table.Cell>
             </Table.Row>
             <Table.Row>
@@ -97,7 +97,7 @@ export const MatrixMathTester = (props) => {
                 <MatrixMathTesterInput value={matrix_f} varName="f" />
               </Table.Cell>
               <Table.Cell>
-                <Input disabled placeholder="1 (fixed value)" fluid />
+                <Input disabled placeholder="1 (valor fixo)" fluid />
               </Table.Cell>
             </Table.Row>
           </Table>
@@ -234,7 +234,7 @@ export const MatrixMathTester = (props) => {
                   icon="dog"
                   color="bad"
                   selected={pixelated}
-                  tooltip="Pixel Enhanced Transforming"
+                  tooltip="Transformação de Pixels"
                   tooltipPosition="bottom"
                   fluid
                   onClick={() => act('toggle_pixel')}

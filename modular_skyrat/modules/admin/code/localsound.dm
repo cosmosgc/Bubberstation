@@ -10,7 +10,7 @@
 		return
 	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
 	if(!ytdl)
-		to_chat(user, span_boldwarning("Youtube-dl was not configured, action unavailable"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
+		to_chat(user, span_boldwarning("Youtube-dl não foi configurado, ação indisponível"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
 		return
 	var/localweb_sound_url = ""
 	var/stop_localweb_sounds = FALSE
@@ -23,14 +23,14 @@
 		var/stdout = output[SHELLEO_STDOUT]
 		var/stderr = output[SHELLEO_STDERR]
 		if(errorlevel)
-			to_chat(user, span_boldwarning("Youtube-dl URL retrieval FAILED:"), confidential = TRUE)
+			to_chat(user, span_boldwarning("Recuperação de URL do Youtube-dl falhou:"), confidential = TRUE)
 			to_chat(user, span_warning("[stderr]"), confidential = TRUE)
 			return
 		var/list/data
 		try
 			data = json_decode(stdout)
 		catch(var/exception/e)
-			to_chat(user, span_boldwarning("Youtube-dl JSON parsing FAILED:"), confidential = TRUE)
+			to_chat(user, span_boldwarning("Youtube-dl JSON analisando falhou:"), confidential = TRUE)
 			to_chat(user, span_warning("[e]: [stdout]"), confidential = TRUE)
 			return
 		if (data["url"])
@@ -46,9 +46,9 @@
 		music_extra_data["album"] = data["album"]
 		duration = data["duration"] * 1 SECONDS
 		if (duration > 10 MINUTES)
-			if((tgui_alert(user, "This song is over 10 minutes long. Are you sure you want to play it?", "Length Warning!", list("No", "Yes", "Cancel")) != "Yes"))
+			if((tgui_alert(user, "Essa música tem mais de 10 minutos. Tem certeza que quer jogar?", "Length Warning!", list("No", "Yes", "Cancel")) != "Yes"))
 				return
-		var/res = tgui_alert(user, "Show the title of and link to this song to the players?\n[title]", "Show Info?", list("Yes", "No", "Cancel"))
+		var/res = tgui_alert(user, "Mostrar o título e link para esta música para os jogadores?\n[title]", "Show Info?", list("Yes", "No", "Cancel"))
 		switch(res)
 			if("Yes")
 				music_extra_data["title"] = data["title"]
@@ -60,16 +60,16 @@
 				music_extra_data["album"] = "Song Album Hidden"
 			if("Cancel", null)
 				return
-		var/anon = tgui_alert(user, "Display who played the song?", "Credit Yourself?", list("Yes", "No", "Cancel"))
+		var/anon = tgui_alert(user, "Mostrar quem tocou a música?", "Credit Yourself?", list("Yes", "No", "Cancel"))
 		switch(anon)
 			if("Yes")
 				if(res == "Yes")
-					to_chat(world, span_boldannounce("[user.key] locally played: [webpage_url]"), confidential = TRUE)
+					to_chat(world, span_boldannounce("[user.key]Jogado localmente:[webpage_url]"), confidential = TRUE)
 				else
-					to_chat(world, span_boldannounce("[user.key] locally played a sound"), confidential = TRUE)
+					to_chat(world, span_boldannounce("[user.key]localmente toca um som"), confidential = TRUE)
 			if("No")
 				if(res == "Yes")
-					to_chat(world, span_boldannounce("An admin locally played: [webpage_url]"), confidential = TRUE)
+					to_chat(world, span_boldannounce("Um administrador local jogou:[webpage_url]"), confidential = TRUE)
 			if("Cancel", null)
 				return
 		if(credit)
@@ -85,8 +85,8 @@
 		localweb_sound_url = null
 		stop_localweb_sounds = TRUE
 	if(localweb_sound_url && !findtext(localweb_sound_url, GLOB.is_http_protocol))
-		tgui_alert(user, "The media provider returned a content URL that isn't using the HTTP or HTTPS protocol. This is a security risk and the sound will not be played.", "Security Risk", list("OK"))
-		to_chat(user, span_boldwarning("BLOCKED: Content URL not using HTTP(S) Protocol!"), confidential = TRUE)
+		tgui_alert(user, "O provedor de mídia devolveu uma URL de conteúdo que não está usando o protocolo HTTP ou HTTPS. Este é um risco de segurança e o som não será tocado.", "Security Risk", list("OK"))
+		to_chat(user, span_boldwarning("URL de conteúdo não usando protocolo HTTP!"), confidential = TRUE)
 
 		return
 	if(localweb_sound_url || stop_localweb_sounds)
@@ -110,12 +110,11 @@
 ADMIN_VERB(play_localweb_sound, R_SOUND, "Play Local Internet Sound", "Play a given internet sound players within specified range.", ADMIN_CATEGORY_FUN)
 	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
 	if(!ytdl)
-		to_chat(src, span_boldwarning("Youtube-dl was not configured, action unavailable"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
+		to_chat(src, span_boldwarning("Youtube-dl não foi configurado, ação indisponível"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
 		return
 
 	if(S_TIMER_COOLDOWN_TIMELEFT(SStimer, COOLDOWN_LOCAL_INTERNET_SOUND))
-		if(tgui_alert(usr, "Someone else is already playing an Internet sound! It has [DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(SStimer, COOLDOWN_LOCAL_INTERNET_SOUND), 1)] remaining. \
-		Would you like to override?", "Musicalis Interruptus", list("No","Yes")) != "Yes")
+		if(tgui_alert(usr, "Alguém já está tocando um som da internet! Tem.[DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(SStimer, COOLDOWN_LOCAL_INTERNET_SOUND), 1)]Restando. Você gostaria de cancelar?", "Musicalis Interruptus", list("No","Yes")) != "Yes")
 			return
 
 	var/web_sound_input = tgui_input_text(usr, "Enter content URL (supported sites only, leave blank to stop playing)", "Play Local Internet Sound", null)
@@ -123,8 +122,8 @@ ADMIN_VERB(play_localweb_sound, R_SOUND, "Play Local Internet Sound", "Play a gi
 	if(length(web_sound_input))
 		web_sound_input = trim(web_sound_input)
 		if(findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol))
-			to_chat(src, span_boldwarning("Non-http(s) URIs are not allowed."), confidential = TRUE)
-			to_chat(src, span_warning("For youtube-dl shortcuts like ytsearch: please use the appropriate full URL from the website."), confidential = TRUE)
+			to_chat(src, span_boldwarning("URIs não são permitidas."), confidential = TRUE)
+			to_chat(src, span_warning("Para atalhos\"Youtube-dl\"Como uma pesquisa: use uma URL completa apropriada do site."), confidential = TRUE)
 			return
 		var/number_input = tgui_input_number(usr, "What range would you like to play it in? (leave empty for everyone)", "Play Local Internet Sound", null)
 		localweb_sound(usr, web_sound_input, range = number_input)

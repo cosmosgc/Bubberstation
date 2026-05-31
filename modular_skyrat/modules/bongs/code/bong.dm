@@ -1,6 +1,6 @@
 /obj/item/bong
 	name = "bong"
-	desc = "Technically known as a water pipe."
+	desc = "Tecnicamente conhecido como cano de água."
 	icon = 'modular_skyrat/modules/bongs/icons/bong.dmi'
 	lefthand_file = 'modular_skyrat/modules/bongs/icons/lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/bongs/icons/righthand.dmi'
@@ -39,12 +39,12 @@
 	if(istype(used_item, /obj/item/food/grown))
 		var/obj/item/food/grown/grown_item = used_item
 		if(packed_item)
-			balloon_alert(user, "already packed!")
+			balloon_alert(user, "Já fiz as malas!")
 			return
 		if(!HAS_TRAIT(grown_item, TRAIT_DRIED))
-			balloon_alert(user, "needs to be dried!")
+			balloon_alert(user, "Precisa ser seco!")
 			return
-		to_chat(user, span_notice("You stuff [grown_item] into [src]."))
+		to_chat(user, span_notice("Sua coisa.[grown_item]Em[src]."))
 		bong_hits = max_hits
 		packed_item = TRUE
 		if(grown_item.reagents)
@@ -54,9 +54,9 @@
 
 	else if(istype(used_item, /obj/item/reagent_containers/hash)) //for hash/dabs
 		if(packed_item)
-			balloon_alert(user, "already packed!")
+			balloon_alert(user, "Já fiz as malas!")
 			return
-		to_chat(user, span_notice("You stuff [used_item] into [src]."))
+		to_chat(user, span_notice("Sua coisa.[used_item]Em[src]."))
 		bong_hits = max_hits
 		packed_item = TRUE
 		if(used_item.reagents)
@@ -68,7 +68,7 @@
 		if(!lighting_text)
 			return ..()
 		if(bong_hits <= 0)
-			balloon_alert(user, "nothing to smoke!")
+			balloon_alert(user, "Nada para fumar!")
 			return ..()
 		light(lighting_text)
 		name = "lit [initial(name)]"
@@ -76,12 +76,12 @@
 /obj/item/bong/attack_self(mob/user)
 	var/turf/location = get_turf(user)
 	if(lit)
-		user.visible_message(span_notice("[user] puts out [src]."), span_notice("You put out [src]."))
+		user.visible_message(span_notice("[user]Apaga.[src]."), span_notice("Você apagou.[src]."))
 		lit = FALSE
 		icon_state = icon_off
 		inhand_icon_state = icon_off
 	else if(!lit && bong_hits > 0)
-		to_chat(user, span_notice("You empty [src] onto [location]."))
+		to_chat(user, span_notice("Você está vazio.[src]em frente[location]."))
 		new /obj/effect/decal/cleanable/ash(location)
 		packed_item = FALSE
 		bong_hits = 0
@@ -91,11 +91,11 @@
 /obj/item/bong/attack(mob/hit_mob, mob/user, def_zone)
 	if(!packed_item || !lit)
 		return
-	hit_mob.visible_message(span_notice("[user] starts [hit_mob == user ? "taking a hit from [src]." : "forcing [hit_mob] to take a hit from [src]!"]"), hit_mob == user ? span_notice("You start taking a hit from [src].") : span_userdanger("[user] starts forcing you to take a hit from [src]!"))
+	hit_mob.visible_message(span_notice("[user]Começa[hit_mob == user ? "taking a hit from [src]." : "forcing [hit_mob] to take a hit from [src]!"]"), hit_mob == user ? span_notice("Você começa a tomar um golpe de[src].") : span_userdanger("[user]Começa a forçá-lo a tomar um golpe de[src]!"))
 	playsound(src, 'sound/effects/chemistry/heatdam.ogg', 50, TRUE)
 	if(!do_after(user, 40))
 		return
-	to_chat(hit_mob, span_notice("You finish taking a hit from the [src]."))
+	to_chat(hit_mob, span_notice("Você acaba de levar um golpe do[src]."))
 	if(reagents.total_volume)
 		reagents.trans_to(hit_mob, reagent_transfer_per_use, transferred_by = user, methods = VAPOR)
 		bong_hits--
@@ -109,7 +109,7 @@
 		else
 			hit_mob.emote("cough")
 	if(bong_hits <= 0)
-		balloon_alert(hit_mob, "out of uses!")
+		balloon_alert(hit_mob, "Sem uso!")
 		lit = FALSE
 		packed_item = FALSE
 		icon_state = icon_off
@@ -174,7 +174,7 @@
 
 /obj/item/bong/lungbuster
 	name = "lungbuster"
-	desc = "30 inches of doom."
+	desc = "30 polegadas de destruição."
 	icon_state = "lungbusteroff"
 	inhand_icon_state = "lungbusteroff"
 	icon_on = "lungbusteron"

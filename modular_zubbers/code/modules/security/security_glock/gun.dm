@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/pistol/sec_glock
 	name = "\improper 'Murphy' Service Pistol"
-	desc = "This 9mm monster was developed during the very first body-modding craze by Nanotrasen, built with every what-if in mind, this timeless brick is near-incapable of failure. It comes with a revolutionary quick-reload system."
+	desc = "Este monstro de 9mm foi desenvolvido durante a primeira mania de movimento corporal por Nanotrasen, construído com cada coisa em mente, este tijolo atemporal é quase incapaz de falhar. Vem com um sistema revolucionário de recarga rápida."
 	icon = 'modular_zubbers/icons/obj/guns/sec_pistol.dmi'
 	icon_state = "black"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -26,30 +26,30 @@
 	if(!istype(actiontype, /datum/action/item_action/toggle_mageject))
 		return ..()
 	magejecting = !magejecting
-	balloon_alert(user, "[magejecting ? "now" : "no longer"] launching empty magazines")
+	balloon_alert(user, "[magejecting ? "now" : "no longer"]lançando revistas vazias")
 	playsound(user, 'sound/items/weapons/empty.ogg', 100, TRUE)
 	update_appearance()
 	update_item_action_buttons()
 
 /obj/item/gun/ballistic/automatic/pistol/sec_glock/examine(mob/user)
 	. = ..()
-	. += span_notice("Only compatible with Nanotrasen-sourced 9mm magazines.")
-	. += span_notice("Using it in hand when out of ammo to start a spin reload. This can only be done if you have a spare magazine in or on your belt.")
-	. += span_notice("Spin reloads can be done on the move and need you only to hold your gun for their 2 second duration.")
-	. += span_notice("If toggled on, spin reloads throw empty magazines in the direction you're facing, dealing damage dependant on their type.")
+	. += span_notice("Só compatível com revistas de 9mm de Nanotrasen.")
+	. += span_notice("Usando-o na mão quando sem munição para começar um giro recarregar. Isso só pode ser feito se você tiver uma revista extra no seu cinto.")
+	. += span_notice("Recarregamentos de giro podem ser feitos em movimento e só precisa segurar sua arma por 2 segundos de duração.")
+	. += span_notice("Se acionado, gira recargas jogar revistas vazias na direção que você está enfrentando, lidando com danos dependentes de seu tipo.")
 
 /obj/item/gun/ballistic/automatic/pistol/sec_glock/attack_self(mob/living/user)
 	var/obj/item/belt_item = user.get_item_by_slot(ITEM_SLOT_BELT)
 	var/obj/item/ammo_box/magazine/swapped_mag = istype(belt_item, accepted_magazine_type) ? belt_item : locate(accepted_magazine_type) in belt_item
 	if(!magazine && !chambered) //Empty gun, load in anyhow but without delay. No mag
 		if(swapped_mag)
-			balloon_alert(user, "you spin your gun, loading in a mag!")
+			balloon_alert(user, "Você gira sua arma, carregando em um carregador!")
 			SpinAnimation(2, 1)
 			if(do_after(user, 1 SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE), target = src))
 				insert_magazine(user, swapped_mag) // Just put the new mag in hands off
 				return
 		else
-			balloon_alert(user, "no spare magazines in your belt!") // We still say what's wrong
+			balloon_alert(user, "Sem revistas de reposição no seu cinto!") // We still say what's wrong
 			default_behaviour(user, TRUE)
 			return
 	if(!magazine && chambered)
@@ -58,14 +58,14 @@
 	if(magazine)
 		if(!magazine.ammo_count() && !chambered)
 			if(swapped_mag)
-				balloon_alert(user, "you spin your gun, loading in a mag!")
+				balloon_alert(user, "Você gira sua arma, carregando em um carregador!")
 				SpinAnimation(2, 1)
 				if(do_after(user, 1 SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE), target = src))
 					throw_eject_magazine(user, magejecting, swapped_mag)
 					return
 			else
 				default_behaviour(user, TRUE)
-				balloon_alert(user, "no spare magazines in your belt!")
+				balloon_alert(user, "Sem revistas de reposição no seu cinto!")
 				return
 	default_behaviour(user)
 
@@ -94,7 +94,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/sec_glock/insert_magazine(mob/user, obj/item/ammo_box/magazine/AM, display_message = TRUE)
 	if(!istype(AM, accepted_magazine_type))
-		balloon_alert(user, "[AM.name] doesn't fit!")
+		balloon_alert(user, "[AM.name]Não cabe!")
 		return FALSE
 	if(user.transferItemToLoc(AM, src))
 		magazine = AM
@@ -104,7 +104,7 @@
 		update_appearance()
 		return TRUE
 	else
-		to_chat(user, span_warning("You cannot seem to get [src] out of your hands!"))
+		to_chat(user, span_warning("Você parece não conseguir[src]Fora de suas mãos!"))
 		return FALSE
 
 
@@ -157,6 +157,6 @@
 		if (tac_reloads)
 			eject_magazine(user, display_message = FALSE)
 			insert_magazine(user, tool, display_message = FALSE)
-			balloon_alert(user, "[src.magazine_wording] loaded")
+			balloon_alert(user, "[src.magazine_wording]Carregado.")
 			return ITEM_INTERACT_SUCCESS
 	..()

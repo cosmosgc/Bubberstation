@@ -1,9 +1,6 @@
 /datum/action/cooldown/spell/lichdom
 	name = "Bind Soul"
-	desc = "A spell that binds your soul to an item in your hands. \
-		Binding your soul to an item will turn you into an immortal Lich. \
-		So long as the item remains intact, you will revive from death, \
-		no matter the circumstances."
+	desc = "Um feitiço que liga sua alma a um item em suas mãos. Amarrar sua alma a um item o transformará em um Lich imortal. Enquanto o item permanecer intacto, você reviverá da morte, não importa as circunstâncias."
 	button_icon = 'icons/mob/actions/actions_spells.dmi'
 	button_icon_state = "skeleton"
 
@@ -23,7 +20,7 @@
 	// We call this here so we can get feedback if they try to cast it when they shouldn't.
 	if(!is_valid_target(owner))
 		if(feedback)
-			to_chat(owner, span_warning("You don't have a soul to bind!"))
+			to_chat(owner, span_warning("Você não tem uma alma para amarrar!"))
 		return FALSE
 
 	return TRUE
@@ -36,39 +33,36 @@
 	if(!marked_item || marked_item.item_flags & ABSTRACT)
 		return
 	if(HAS_TRAIT(marked_item, TRAIT_NODROP))
-		to_chat(cast_on, span_warning("[marked_item] is stuck to your hand - it wouldn't be a wise idea to place your soul into it."))
+		to_chat(cast_on, span_warning("[marked_item]Não seria uma boa ideia colocar sua alma nela."))
 		return
 	// I ensouled the nuke disk once.
 	// But it's a really mean tactic, so we probably should disallow it.
 	if(SEND_SIGNAL(marked_item, COMSIG_ITEM_IMBUE_SOUL, src, cast_on) & COMPONENT_BLOCK_IMBUE)
-		to_chat(cast_on, span_warning("[marked_item] is not suitable for emplacement of your fragile soul."))
+		to_chat(cast_on, span_warning("[marked_item]Não é adequado para a colocação de sua alma frágil."))
 		return
 
 	//BUBBERSTATION CHANGE START: NERFS LICHDOM
 	if(marked_item.w_class < WEIGHT_CLASS_BULKY) //Can't cast on small items.
-		to_chat(cast_on, span_warning("[marked_item] is too small to contain your huge <s>ego</s> soul."))
+		to_chat(cast_on, span_warning("[marked_item]É muito pequeno para conter seu enorme<s>Ego.</s>Alma."))
 		return
 
 	if(marked_item.resistance_flags & (INDESTRUCTIBLE|LAVA_PROOF|FIRE_PROOF)) //Can't cast on items that are indestructable and/or fire proof.
-		to_chat(cast_on, span_warning("[marked_item] is too resistant to your magic. Perhaps try on something that isn't fireproof?"))
+		to_chat(cast_on, span_warning("[marked_item]é muito resistente à sua magia. Talvez experimentar algo que não seja à prova de fogo?"))
 		return
 	//BUBBERSTATION CHANGE END: NERFS LICHDOM
 
 	. = ..()
 	playsound(cast_on, 'sound/effects/pope_entry.ogg', 100)
 
-	to_chat(cast_on, span_green("You begin to focus your very being into [marked_item]..."))
+	to_chat(cast_on, span_green("Você começa a se concentrar em[marked_item]..."))
 	if(!do_after(cast_on, 5 SECONDS, target = marked_item, timed_action_flags = IGNORE_HELD_ITEM))
-		to_chat(cast_on, span_warning("Your soul snaps back to your body as you stop ensouling [marked_item]!"))
+		to_chat(cast_on, span_warning("Sua alma volta para o seu corpo enquanto você pára de inspirar[marked_item]!"))
 		return
 
 	marked_item.AddComponent(/datum/component/phylactery, cast_on.mind)
 
 	cast_on.set_species(/datum/species/skeleton)
-	to_chat(cast_on, span_userdanger("With a hideous feeling of emptiness you watch in horrified fascination \
-		as skin sloughs off bone! Blood boils, nerves disintegrate, eyes boil in their sockets! \
-		As your organs crumble to dust in your fleshless chest you come to terms with your choice. \
-		You're a lich!"))
+	to_chat(cast_on, span_userdanger("Com uma sensação horrível de vazio, você assiste em fascínio horrorizado como pele arranca osso! Sangue ferve, nervos se desintegram, olhos fervem em suas órbitas! À medida que seus órgãos se desfazem em pó em seu peito sem carne, você aceita sua escolha. Você é um lich!"))
 
 	if(iscarbon(cast_on))
 		var/mob/living/carbon/carbon_cast_on = cast_on

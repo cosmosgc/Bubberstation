@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 
 /obj/machinery/gravity_generator
 	name = "gravitational generator"
-	desc = "A device which produces a graviton field when set up."
+	desc = "Um dispositivo que produz um campo de graviton quando preparado."
 	icon = 'icons/obj/machines/gravity_generator.dmi'
 	density = TRUE
 	move_resist = INFINITY
@@ -226,13 +226,13 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 		return
 	switch(broken_state)
 		if(GRAV_NEEDS_SCREWDRIVER)
-			. += span_notice("The entire frame is barely holding together, the <b>screws</b> need to be refastened.")
+			. += span_notice("O quadro inteiro mal se mantém unido.<b>Parafusos.</b>Preciso ser recompensado.")
 		if(GRAV_NEEDS_WELDING)
-			. += span_notice("There's lots of broken seals on the framework, it could use some <b>welding</b>.")
+			. += span_notice("Há muitos selos quebrados na estrutura, poderia usar alguns<b>soldar</b>.")
 		if(GRAV_NEEDS_PLASTEEL)
-			. += span_notice("Some of this damaged plating needs full replacement. <b>10 plasteel</> should be enough.")
+			. += span_notice("Alguns destes revestimentos danificados precisam de substituição total.<b>10 plasteel</>Deve ser o suficiente.")
 		if(GRAV_NEEDS_WRENCH)
-			. += span_notice("The new plating just needs to be <b>bolted</b> into place now.")
+			. += span_notice("O novo chapeamento só precisa ser<b>Aparafusado.</b>no lugar agora.")
 
 // Fixing the gravity generator.
 /obj/machinery/gravity_generator/main/attackby(obj/item/weapon, mob/user, list/modifiers, list/attack_modifiers)
@@ -240,7 +240,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 		switch(broken_state)
 			if(GRAV_NEEDS_SCREWDRIVER)
 				if(weapon.tool_behaviour == TOOL_SCREWDRIVER)
-					to_chat(user, span_notice("You secure the screws of the framework."))
+					to_chat(user, span_notice("Você protege os parafusos da estrutura."))
 					weapon.play_tool_sound(src)
 					broken_state++
 					update_appearance()
@@ -248,7 +248,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 			if(GRAV_NEEDS_WELDING)
 				if(weapon.tool_behaviour == TOOL_WELDER)
 					if(weapon.use_tool(src, user, 0, volume=50))
-						to_chat(user, span_notice("You mend the damaged framework."))
+						to_chat(user, span_notice("Você conserta a estrutura danificada."))
 						broken_state++
 						update_appearance()
 					return
@@ -257,16 +257,16 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 					var/obj/item/stack/sheet/plasteel/PS = weapon
 					if(PS.get_amount() >= 10)
 						PS.use(10)
-						to_chat(user, span_notice("You add the plating to the framework."))
+						to_chat(user, span_notice("Você adiciona o revestimento à estrutura."))
 						playsound(src.loc, 'sound/machines/click.ogg', 75, TRUE)
 						broken_state++
 						update_appearance()
 					else
-						to_chat(user, span_warning("You need 10 sheets of plasteel!"))
+						to_chat(user, span_warning("Você precisa de 10 folhas de plasteel!"))
 					return
 			if(GRAV_NEEDS_WRENCH)
 				if(weapon.tool_behaviour == TOOL_WRENCH)
-					to_chat(user, span_notice("You secure the plating to the framework."))
+					to_chat(user, span_notice("Você protege a estrutura."))
 					weapon.play_tool_sound(src)
 					set_fix()
 					return

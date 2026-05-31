@@ -26,7 +26,7 @@ const STATUS_COLOR_KEYS = {
   ERROR: 'bad',
   Disabled: 'bad',
   Firing: 'average',
-  'All Clear': 'good',
+  'Tudo limpo.': 'good',
 } as const;
 
 enum TAB {
@@ -52,7 +52,7 @@ export const AuxBaseConsole = (props) => {
             selected={tab === TAB.Shuttle}
             onClick={() => setTab(TAB.Shuttle)}
           >
-            {type === 'shuttle' ? 'Shuttle Launch' : 'Base Launch'}
+            {type === 'shuttle' ? 'Lançamento da nave' : 'Lançamento da Base'}
           </Tabs.Tab>
           <Tabs.Tab
             icon="list"
@@ -80,7 +80,7 @@ export const AuxBaseConsoleContent = (props) => {
     <Section
       fill
       scrollable
-      title="Turret Control"
+      title="Controle de torretas"
       buttons={
         !!turrets.length && (
           <Button icon="power-off" onClick={() => act('turrets_power')}>

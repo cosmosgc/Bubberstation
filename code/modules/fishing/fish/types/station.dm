@@ -1,7 +1,7 @@
 /obj/item/fish/ratfish
 	name = "ratfish"
 	fish_id = "ratfish"
-	desc = "A rat exposed to the murky waters of maintenance too long. Any higher power, if it revealed itself, would state that the ratfish's continued existence is extremely unwelcome."
+	desc = "Um rato exposto às águas turvas da manutenção por muito tempo. Qualquer poder superior, se se revelasse, afirmaria que a existência contínua do peixe-rato é extremamente indesejável."
 	icon_state = "ratfish"
 	sprite_width = 7
 	sprite_height = 5
@@ -43,7 +43,7 @@
 /obj/item/fish/sludgefish
 	name = "sludgefish"
 	fish_id = "sludgefish"
-	desc = "A misshapen, fragile, loosely fish-like living goop, the only thing that'd ever thrive in the acidic and claustrophobic cavities of the station's organic waste disposal system."
+	desc = "Uma gosma viva, frágil e frouxa, a única coisa que prosperaria nas cavidades ácidas e claustrofóbicas do sistema de eliminação de resíduos orgânicos da estação."
 	icon_state = "sludgefish"
 	sprite_width = 7
 	sprite_height = 6
@@ -65,7 +65,7 @@
 /obj/item/fish/sludgefish/purple
 	name = "purple sludgefish"
 	fish_id = "purple_sludgefish"
-	desc = "A misshapen, fragile, loosely fish-like living goop. This one has developed sexual reproduction mechanisms, and a purple tint to boot."
+	desc = "Uma gosma viva, frágil e frouxa. Este desenvolveu mecanismos de reprodução sexual e um tom roxo."
 	icon_state = "sludgefish_purple"
 	random_case_rarity = FISH_RARITY_NOPE
 	fish_traits = list(/datum/fish_trait/parthenogenesis)
@@ -73,7 +73,7 @@
 /obj/item/fish/slimefish
 	name = "aquatic slime"
 	fish_id = "slimefish"
-	desc = "Kids, this is what happens when a slime overcomes its hydrophobic nature. It goes glug glug."
+	desc = "Crianças, isso é o que acontece quando um lodo supera sua natureza hidrofóbica. É glug glug."
 	icon_state = "slimefish"
 	icon_state_dead = "slimefish_dead"
 	sprite_width = 7
@@ -108,7 +108,7 @@
 /obj/item/fish/fryish
 	name = "fryish"
 	fish_id = "fryish"
-	desc = "A youngling of the Fritterish family of <u>delicious</u> extremophile, piscine lifeforms. Just don't tell 'Mankind for Ethical Animal Treatment' you ate it."
+	desc = "Um jovem da família Friterish de<u>Delicioso</u>extremófilo, formas de vida piscina. Só não diga que você comeu \"Principal para tratamento ético de animais\"."
 	icon_state = "fryish"
 	sprite_width = 3
 	sprite_height = 3
@@ -152,7 +152,7 @@
 	ADD_TRAIT(src, TRAIT_FISH_SURVIVE_COOKING, INNATE_TRAIT)
 
 /obj/item/fish/fryish/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] swallows [src] whole! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]Andorinhas[src]Inteiro! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
 	user.say("Mmmm! Delicious!", forced = "fryfish suicide")
 	qdel(src)
 	return OXYLOSS
@@ -188,7 +188,7 @@
 /obj/item/fish/fryish/fritterish
 	name = "fritterish"
 	fish_id = "fritterish"
-	desc = "A <u>deliciously</u> extremophile alien fish. This one looks like a taiyaki."
+	desc = "A<u>Delicioso.</u>peixe alienígena extremófilo. Este parece um taiyaki."
 	icon_state = "fritterish"
 	average_size = 50
 	average_weight = 1000
@@ -242,9 +242,9 @@
 /obj/item/fish/fryish/fritterish/update_desc()
 	switch(variant)
 		if(FISH_BERNARD)
-			desc = "A <u>deliciously</u> extremophile alien fish shaped like a dinosaur. Children love it."
+			desc = "A<u>Delicioso.</u>peixe alienígena extremófilo em forma de dinossauro. As crianças adoram."
 		if(FISH_MATTHEW)
-			desc = "A <u>deliciously</u> extremophile alien fish shaped like a pterodactyl. Children love it."
+			desc = "A<u>Delicioso.</u>peixe alienígena extremófilo em forma de pterodátilo. As crianças adoram."
 	return ..()
 
 #undef FISH_FRITTERISH
@@ -254,7 +254,7 @@
 /obj/item/fish/fryish/nessie
 	name = "nessie-fish"
 	fish_id = "nessie"
-	desc = "A <u>deliciously</u> extremophile alien fish. This one is so big, you could write legends about it."
+	desc = "A<u>Delicioso.</u>peixe alienígena extremófilo. Este é tão grande que você poderia escrever lendas sobre isso."
 	icon = 'icons/obj/aquarium/wide.dmi'
 	icon_state = "nessiefish"
 	base_pixel_w = -16

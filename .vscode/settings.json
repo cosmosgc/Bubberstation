@@ -25,5 +25,11 @@
 	"search.exclude": {
 		"**/node_modules": true
 	},
-	"Lua.diagnostics.enable": false
+	"Lua.diagnostics.enable": false,
+	"chat.tools.terminal.autoApprove": {
+		"/^cd \"d:\\\\servers emulators\\\\ss13\\\\Bubberstation\" ; pwsh -File \\.\\\\fix_errors_incremental\\.ps1 -MaxRetries 3 2>&1 \\| Select-Object -First 200$/": {
+			"approve": true,
+			"matchCommandLine": true
+		}
+	}
 }

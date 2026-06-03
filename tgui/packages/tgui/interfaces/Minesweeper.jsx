@@ -33,7 +33,7 @@ export const MinesweeperContent = (props, context) => {
   } = data;
   return (
     <Section
-      title={`Minesweeper ${emagged ? 'EDIÇÃO EXTREMA' : ''}`}
+      title={`Minesweeper ${emagged ? ' EXTREME EDITION' : ''}`}
       color={emagged ? 'bad' : 'primary'}
       textAlign="center"
     >
@@ -41,10 +41,10 @@ export const MinesweeperContent = (props, context) => {
       {current_difficulty}
       <br />
       <b>
-        {emagged ? 'Explodir sem jogo, explodir na vida real!' : 'Tickets: '}
+        {emagged ? 'Explode in the game, explode in real life!' : 'Tickets: '}
       </b>
       {emagged ? '' : tickets}
-      <b>{emagged ? '' : 'Restam minas:'}</b>
+      <b>{emagged ? '' : ' Mines left: '}</b>
       {emagged ? '' : current_mines - flags}
       <b>{emagged ? '' : ' Time: '}</b>
       {emagged ? '' : time_string}
@@ -103,12 +103,12 @@ export const MinesweeperContent = (props, context) => {
       </Box>
       <br />
       <Button
-        content="Alternar a bandeira"
+        content="Toggle Flagging"
         color={flag_mode ? 'green' : 'blue'}
         onClick={() => act('PRG_toggle_flag')}
       />
       <Button
-        content="Novo Jogo"
+        content="New Game"
         color="blue"
         onClick={() => act('PRG_new_game')}
       />

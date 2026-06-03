@@ -17,7 +17,7 @@ export const MassDriverControl = (props) => {
       <Window.Content>
         {!!connected && (
           <Section
-            title="Lançamento automático"
+            title="Auto Launch"
             buttons={
               <Button
                 icon={'clock-o'}
@@ -56,7 +56,7 @@ export const MassDriverControl = (props) => {
           buttons={
             <Button
               icon={'toggle-on'}
-              content="Alternar Porta Exterior"
+              content="Toggle Outer Door"
               disabled={timing || !poddoor}
               onClick={() => act('door')}
             />
@@ -66,11 +66,11 @@ export const MassDriverControl = (props) => {
             <>
               <LabeledList>
                 <LabeledList.Item
-                  label="Nível de Potência"
+                  label="Power Level"
                   buttons={
                     <Button
                       icon={'bomb'}
-                      content="Fogo de Teste"
+                      content="Test Fire"
                       disabled={timing}
                       onClick={() => act('driver_test')}
                     />

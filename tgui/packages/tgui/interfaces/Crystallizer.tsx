@@ -78,7 +78,7 @@ const Controls = (props) => {
             />
           ))}
         </LabeledList.Item>
-        <LabeledList.Item label="Entrada de Gás">
+        <LabeledList.Item label="Gas Input">
           <NumberInput
             animated
             tickWhileDragging
@@ -105,7 +105,7 @@ const Requirements = (props) => {
   const { requirements, internal_temperature, progress_bar } = data;
 
   return (
-    <Section title="Requisitos e progresso">
+    <Section title="Requirements and progress">
       <LabeledList>
         <LabeledList.Item label="Progress">
           <ProgressBar

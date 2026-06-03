@@ -60,7 +60,7 @@ export const AnomalousWeatherTower = () => {
       <Window.Content>
         <Stack vertical>
           <Stack.Item>
-            <Section fontFamily="Consolas, monoespaço.">
+            <Section fontFamily="Consolas, monospace">
               <Stack vertical align="center">
                 <Stack.Item fontSize="18px">Core charge</Stack.Item>
                 <Stack.Item
@@ -79,7 +79,7 @@ export const AnomalousWeatherTower = () => {
             </Section>
           </Stack.Item>
           <Stack.Item>
-            <Section title="Tempo Ativo" fontFamily="Consolas, monoespaço.">
+            <Section title="Active Weather" fontFamily="Consolas, monospace">
               {active_weather_on_z.length > 0 ? (
                 active_weather_on_z.map((weather) => (
                   <Stack.Item key={weather.id}>
@@ -96,7 +96,7 @@ export const AnomalousWeatherTower = () => {
                           tooltip={
                             can_clear_weather
                               ? undefined
-                              : 'Inibidores do tempo estão recarregando.'
+                              : 'Weather inhibitors are recharging.'
                           }
                         />
                       </Stack.Item>
@@ -112,9 +112,9 @@ export const AnomalousWeatherTower = () => {
           </Stack.Item>
           <Stack.Item grow>
             <Section
-              title="Invoque o Tempo"
+              title="Summon Weather"
               fill
-              fontFamily="Consolas, monoespaço."
+              fontFamily="Consolas, monospace"
             >
               <Stack vertical fill>
                 <Stack.Item>
@@ -148,10 +148,10 @@ export const AnomalousWeatherTower = () => {
                     }
                     tooltip={
                       core_charges < weather_charge_cost
-                        ? 'Não há acusações suficientes para invocar o tempo.'
+                        ? 'Not enough charges to summon weather.'
                         : can_summon_weather
                           ? undefined
-                          : 'As bobinas meteorológicas estão recarregando.'
+                          : 'Weather coils are recharging.'
                     }
                   />
                 </Stack.Item>

@@ -75,7 +75,7 @@ const HistoryButton = (props: HistoryButtonProps) => {
       handleOpen={historyOpen}
       disabled
       content={
-        <Box backgroundColor="Rgba (0, 0, 0, 33%)">
+        <Box backgroundColor="rgba(0, 0, 0, 33%)">
           <Stack vertical maxHeight="15rem" overflowY="scroll">
             {stack.map((transaction, i) => (
               <Stack.Item key={i} m={0}>
@@ -107,7 +107,7 @@ const HistoryButton = (props: HistoryButtonProps) => {
         style={{
           borderTopRightRadius: 0,
           borderBottomRightRadius: 0,
-          borderRight: '1px Rgba sólido(255, 255, 0,33)',
+          borderRight: '1px solid rgba(255, 255, 255, 0.33)',
         }}
       />
       <Button

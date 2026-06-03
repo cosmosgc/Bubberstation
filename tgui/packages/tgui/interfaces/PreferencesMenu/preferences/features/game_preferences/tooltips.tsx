@@ -6,7 +6,7 @@ import {
 } from '../base';
 
 export const enable_tips: FeatureToggle = {
-  name: 'Activar dicas',
+  name: 'Enable tooltips',
   category: 'TOOLTIPS',
   description: `
     Do you want to see tooltips when hovering over items?
@@ -15,7 +15,7 @@ export const enable_tips: FeatureToggle = {
 };
 
 export const tip_delay: Feature<number> = {
-  name: 'Atraso na dica (em milissegundos)',
+  name: 'Tooltip delay (in milliseconds)',
   category: 'TOOLTIPS',
   description: `
     How long should it take to see a tooltip when hovering over items?

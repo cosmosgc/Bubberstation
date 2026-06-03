@@ -2,7 +2,7 @@ import type { Feature } from '../base';
 import { FeatureDropdownInput } from '../dropdowns';
 
 export const preferred_map: Feature<string> = {
-  name: 'Mapa preferido',
+  name: 'Preferred map',
   category: 'GAMEPLAY',
   description: `
     During map rotation, prefer this map be chosen.

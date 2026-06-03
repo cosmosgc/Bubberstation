@@ -268,13 +268,13 @@ export class ChatScreen extends Component<ChatScreenProps, ChatScreenState> {
     } else {
       const attachmentButton = sendingVirus ? (
         <Button
-          tooltip="A assinatura do arquivo não foi verificada. Por favor, contate um estagiário de apoio da NT."
+          tooltip="ERROR: File signature is unverified. Please contact an NT support intern."
           icon="triangle-exclamation"
           color="red"
         />
       ) : (
         <Button
-          tooltip="Adicionar anexo"
+          tooltip="Add attachment"
           icon="image"
           onClick={this.handleSelectPicture}
         />
@@ -286,7 +286,7 @@ export class ChatScreen extends Component<ChatScreenProps, ChatScreenState> {
           {/* BUBBER EDIT ADDITION BEGIN - SUBTLE MESSAGES */}
           <Stack.Item>
             <Button
-              tooltip="Alterne o modo sutil, as mensagens enviadas serão escondidas dos olhos curiosos."
+              tooltip="Toggle subtle mode; messages sent will be hidden from prying eyes."
               icon={subtleMode ? 'fa-ear-deaf' : 'fa-ear-listen'}
               backgroundColor={subtleMode ? `hsl(327, 60%, 35%)` : ''}
               onClick={this.handleToggleSubtle}
@@ -314,7 +314,7 @@ export class ChatScreen extends Component<ChatScreenProps, ChatScreenState> {
                 <Button
                   pt={1}
                   onClick={() => act('PDA_clearPhoto')}
-                  tooltip="Remover anexo"
+                  tooltip="Remove attachment"
                 >
                   <Image src={selectedPhoto} />
                 </Button>
@@ -354,12 +354,12 @@ export class ChatScreen extends Component<ChatScreenProps, ChatScreenState> {
             <>
               <Button
                 icon="box-archive"
-                content="Fechar a conversa."
+                content="Close chat"
                 onClick={() => act('PDA_closeMessages', { ref: chatRef })}
               />
               <Button.Confirm
                 icon="trash-can"
-                content="Apagar o bate-papo"
+                content="Delete chat"
                 onClick={() => act('PDA_clearMessages', { ref: chatRef })}
               />
             </>
@@ -393,7 +393,7 @@ export class ChatScreen extends Component<ChatScreenProps, ChatScreenState> {
         {previewingImage && (
           <Modal className="NtosChatLog__ImagePreview">
             <Section
-              title="Visualização da foto"
+              title="Photo Preview"
               buttons={
                 <Button
                   icon="arrow-left"
@@ -467,7 +467,7 @@ const ChatMessage = (props: ChatMessageProps) => {
       )}
       {!!photoPath && (
         <Button
-          tooltip="Ver imagem"
+          tooltip="View image"
           className="NtosChatMessage__image"
           color="transparent"
           onClick={onPreviewImage}

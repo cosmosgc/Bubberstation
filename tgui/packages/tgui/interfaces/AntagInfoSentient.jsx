@@ -19,17 +19,17 @@ export const AntagInfoSentient = (props) => {
                 All at once it makes sense: you know what you are and who you
                 are! Self awareness is yours!
                 {!!enslaved_to &&
-                  'Você é grato por estar consciente e devendo' +
+                  ' You are grateful to be self aware and owe ' +
                     enslaved_to +
-                    'Uma grande dívida. Sirva' +
+                    ' a great debt. Serve ' +
                     enslaved_to +
-                    ', e ajudar' +
+                    ', and assist ' +
                     p_them +
-                    'completando' +
+                    ' in completing ' +
                     p_their +
-                    'Gols a qualquer custo.'}
+                    ' goals at any cost.'}
                 {!!holographic &&
-                  'Você também fica depressivamente consciente de que não é uma criatura real, mas sim uma holoforma. Sua existência está limitada aos parâmetros do holodeque.'}
+                  ' You also become depressingly aware that you are not a real creature, but instead a holoform. Your existence is limited to the parameters of the holodeck.'}
               </BlockQuote>
             </Stack.Item>
           </Stack>

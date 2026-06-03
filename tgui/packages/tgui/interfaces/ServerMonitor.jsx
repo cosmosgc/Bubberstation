@@ -31,7 +31,7 @@ const PacketInfo = (props) => {
         </Flex.Item>
       </Flex>
       <LabeledList>
-        <LabeledList.Item label="Tipo de Dados">{packet.type}</LabeledList.Item>
+        <LabeledList.Item label="Data Type">{packet.type}</LabeledList.Item>
         <LabeledList.Item label="Source">
           {packet.source + (packet.job ? ` (${packet.job})` : '')}
         </LabeledList.Item>
@@ -51,10 +51,10 @@ const ServerScreen = (props) => {
     <Stack fill vertical>
       <Stack.Item>
         <Section
-          title="Informação do servidor"
+          title="Server Information"
           buttons={
             <Button
-              content="Menu Diretor"
+              content="Main Menu"
               icon="home"
               onClick={() => act('return_home')}
             />
@@ -63,7 +63,7 @@ const ServerScreen = (props) => {
           <LabeledList>
             <LabeledList.Item label="Network">{network}</LabeledList.Item>
             <LabeledList.Item label="Server">{server.name}</LabeledList.Item>
-            <LabeledList.Item label="Tráfego Total Gravado">
+            <LabeledList.Item label="Total Recorded Traffic">
               {server.traffic >= 1024
                 ? `${server.traffic / 1024} TB`
                 : `${server.traffic} GB`}
@@ -72,7 +72,7 @@ const ServerScreen = (props) => {
         </Section>
       </Stack.Item>
       <Stack.Item grow>
-        <Section fill scrollable title="Pacotes Armazenados">
+        <Section fill scrollable title="Stored Packets">
           <Stack vertical>
             {server.packets?.map((p) => (
               <PacketInfo key={p.ref} packet={p} />
@@ -96,7 +96,7 @@ const MainScreen = (props) => {
           <Input
             value={networkId}
             onChange={setNetworkId}
-            placeholder="ID da rede"
+            placeholder="Network ID"
             onEnter={() => act('scan_network', { network_id: networkId })}
           />
           <Button
@@ -109,10 +109,10 @@ const MainScreen = (props) => {
         <Section
           fill
           scrollable
-          title="Servidores de Telecomunicações Detectados"
+          title="Detected Telecommunication Servers"
           buttons={
             <Button
-              content="Limpo Buffer."
+              content="Clear Buffer"
               icon="trash"
               color="red"
               disabled={servers.length === 0}

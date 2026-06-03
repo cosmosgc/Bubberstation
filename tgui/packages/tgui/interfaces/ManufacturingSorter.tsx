@@ -43,7 +43,7 @@ export function ManufacturingSorter(props) {
   const { filters, unmet_dir } = data;
 
   return (
-    <Window width={450} height={350} title="Separador de fabricação">
+    <Window width={450} height={350} title="Manufacturing Sorter">
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item height="90%">

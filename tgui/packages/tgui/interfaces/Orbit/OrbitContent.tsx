@@ -37,7 +37,7 @@ export function OrbitContent(props) {
     {
       color: 'purple',
       content: data.deadchat_controlled,
-      title: 'Deadchat controlado.',
+      title: 'Deadchat Controlled',
     },
     {
       color: 'blue',
@@ -66,7 +66,7 @@ export function OrbitContent(props) {
     <Section fill scrollable>
       <Stack vertical>
         {critical.map((crit) => (
-          <Tooltip content="Clique para orbitar" key={crit.ref}>
+          <Tooltip content="Click to orbit" key={crit.ref}>
             <NoticeBox
               verticalAlign
               color="purple"

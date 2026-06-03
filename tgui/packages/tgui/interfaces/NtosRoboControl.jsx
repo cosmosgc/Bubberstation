@@ -23,10 +23,10 @@ export const NtosRoboControl = (props) => {
   return (
     <NtosWindow width={550} height={550}>
       <NtosWindow.Content scrollable>
-        <Section title="Consola de controle de robôs">
+        <Section title="Robot Control Console">
           <LabeledList>
-            <LabeledList.Item label="Cartão de Identidade">{id_owner}</LabeledList.Item>
-            <LabeledList.Item label="Bots ao alcance">
+            <LabeledList.Item label="ID Card">{id_owner}</LabeledList.Item>
+            <LabeledList.Item label="Bots In Range">
               {data.botcount}
             </LabeledList.Item>
           </LabeledList>
@@ -55,7 +55,7 @@ export const NtosRoboControl = (props) => {
           <Stack.Item>
             <Section>
               <LabeledList>
-                <LabeledList.Item label="Bots ao alcance">
+                <LabeledList.Item label="Bots in range">
                   {data.botcount}
                 </LabeledList.Item>
               </LabeledList>
@@ -70,18 +70,18 @@ export const NtosRoboControl = (props) => {
             <Section>
               <Button
                 icon="address-card"
-                tooltip="Conceda/Remova o acesso dos drones para interagir com máquinas e fios que de outra forma seriam considerados perigosos."
+                tooltip="Grant/Remove Drone access to interact with machines and wires that would otherwise be deemed dangerous."
                 color={droneaccess ? 'good' : 'bad'}
                 onClick={() => act('changedroneaccess')}
               >
-                {droneaccess ? 'Grant Drone Access' : 'Revogar o acesso de drones'}
+                {droneaccess ? 'Grant Drone Access' : 'Revoke Drone Access'}
               </Button>
               <Box my={1}>Drone Pings</Box>
               {dronepingtypes.map((ping_type) => (
                 <Button
                   key={ping_type}
                   icon="bullhorn"
-                  tooltip="Emita um sinal de drone."
+                  tooltip="Issue a drone ping."
                   onClick={() => act('ping_drones', { ping_type })}
                 >
                   {ping_type}
@@ -106,7 +106,7 @@ export const RobotInfo = (props) => {
   const mule = !!robot.mule_check && getMuleByRef(mules, robot.bot_ref);
   // Color based on type of a robot
   const color =
-    robot.mule_check === 1 ? 'Rgba (110, 75, 14, 1)' : '(74, 59, 140, 1)';
+    robot.mule_check === 1 ? 'rgba(110, 75, 14, 1)' : 'rgba(74, 59, 140, 1)';
   return (
     <Section
       title={robot.name}
@@ -118,7 +118,7 @@ export const RobotInfo = (props) => {
           <>
             <Button
               icon="play"
-              tooltip="Vá para o destino."
+              tooltip="Go to Destination."
               onClick={() =>
                 act('go', {
                   robot: mule.mule_ref,
@@ -127,7 +127,7 @@ export const RobotInfo = (props) => {
             />
             <Button
               icon="pause"
-              tooltip="Pare de se mexer."
+              tooltip="Stop Moving."
               onClick={() =>
                 act('stop', {
                   robot: mule.mule_ref,
@@ -136,7 +136,7 @@ export const RobotInfo = (props) => {
             />
             <Button
               icon="home"
-              tooltip="Viagem para casa."
+              tooltip="Travel Home."
               tooltipPosition="bottom-start"
               onClick={() =>
                 act('home', {
@@ -157,7 +157,7 @@ export const RobotInfo = (props) => {
             {mule && (
               <>
                 <LabeledList.Item label="Bot ID">{mule.id}</LabeledList.Item>
-                <LabeledList.Item label="Carga carregada">
+                <LabeledList.Item label="Loaded Cargo">
                   {mule.load || 'N/A'}
                 </LabeledList.Item>
                 <LabeledList.Item label="Home">{mule.home}</LabeledList.Item>
@@ -185,7 +185,7 @@ export const RobotInfo = (props) => {
             <>
               <Button
                 fluid
-                content="Definir destino"
+                content="Set Destination"
                 onClick={() =>
                   act('destination', {
                     robot: mule.mule_ref,
@@ -194,7 +194,7 @@ export const RobotInfo = (props) => {
               />
               <Button
                 fluid
-                content="Definir identificação"
+                content="Set ID"
                 onClick={() =>
                   act('setid', {
                     robot: mule.mule_ref,
@@ -212,7 +212,7 @@ export const RobotInfo = (props) => {
               />
               <Button
                 fluid
-                content="Descarregar carga"
+                content="Unload Cargo"
                 onClick={() =>
                   act('unload', {
                     robot: mule.mule_ref,
@@ -221,7 +221,7 @@ export const RobotInfo = (props) => {
               />
               <Button.Checkbox
                 fluid
-                content="Retorno Automático"
+                content="Auto Return"
                 checked={mule.autoReturn}
                 onClick={() =>
                   act('autoret', {
@@ -231,7 +231,7 @@ export const RobotInfo = (props) => {
               />
               <Button.Checkbox
                 fluid
-                content="Recolha automática"
+                content="Auto Pickup"
                 checked={mule.autoPickup}
                 onClick={() =>
                   act('autopick', {
@@ -241,7 +241,7 @@ export const RobotInfo = (props) => {
               />
               <Button.Checkbox
                 fluid
-                content="Relatório de entrega"
+                content="Delivery Report"
                 checked={mule.reportDelivery}
                 onClick={() =>
                   act('report', {
@@ -255,7 +255,7 @@ export const RobotInfo = (props) => {
             <>
               <Button
                 fluid
-                content="Pare com isso."
+                content="Stop Patrol"
                 onClick={() =>
                   act('patroloff', {
                     robot: robot.bot_ref,
@@ -264,7 +264,7 @@ export const RobotInfo = (props) => {
               />
               <Button
                 fluid
-                content="Comece uma patrulha."
+                content="Start Patrol"
                 onClick={() =>
                   act('patrolon', {
                     robot: robot.bot_ref,
@@ -282,7 +282,7 @@ export const RobotInfo = (props) => {
               />
               <Button
                 fluid
-                content="Ejetar PAI"
+                content="Eject PAi"
                 onClick={() =>
                   act('ejectpai', {
                     robot: robot.bot_ref,
@@ -300,7 +300,7 @@ export const RobotInfo = (props) => {
 export const DroneInfo = (props) => {
   const { drone } = props;
   const { act, data } = useBackend();
-  const color = '(74, 59, 140, 1)';
+  const color = 'rgba(74, 59, 140, 1)';
 
   return (
     <Section
@@ -314,7 +314,7 @@ export const DroneInfo = (props) => {
           <LabeledList>
             <LabeledList.Item label="Status">
               <Box color={drone.status ? 'bad' : 'good'}>
-                {drone.status ? 'Não Respondendo' : 'Nominal'}
+                {drone.status ? 'Not Responding' : 'Nominal'}
               </Box>
             </LabeledList.Item>
           </LabeledList>

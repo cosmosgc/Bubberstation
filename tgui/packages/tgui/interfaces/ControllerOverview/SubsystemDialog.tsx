@@ -41,13 +41,13 @@ export function SubsystemDialog(props: Props) {
       <Divider />
       <Box p={1}>
         <LabeledList>
-          <LabeledList.Item label="Ordem Init">{init_order}</LabeledList.Item>
-          <LabeledList.Item label="Último Fogo">{last_fire}</LabeledList.Item>
-          <LabeledList.Item label="Próximo Fogo">{next_fire}</LabeledList.Item>
+          <LabeledList.Item label="Init Order">{init_order}</LabeledList.Item>
+          <LabeledList.Item label="Last Fire">{last_fire}</LabeledList.Item>
+          <LabeledList.Item label="Next Fire">{next_fire}</LabeledList.Item>
           <LabeledList.Item label="Cost">
             {cost_ms.toFixed(2)}ms
           </LabeledList.Item>
-          <LabeledList.Item label="Uso do Tique">
+          <LabeledList.Item label="Tick Usage">
             {tick_usage.toFixed(2)}%
           </LabeledList.Item>
           <LabeledList.Item label="Avg Usage Per Tick">

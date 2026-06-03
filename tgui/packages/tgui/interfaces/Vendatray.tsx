@@ -34,7 +34,7 @@ export const Vendatray = (props) => {
             <Button
               fluid
               icon="cash-register"
-              content="Registre a bandeja."
+              content="Register Tray"
               disabled={registered}
               onClick={() => act('Register')}
             />
@@ -70,7 +70,7 @@ const ProductInfo = (props) => {
       <Button.Confirm
         fluid
         icon="money-bill-wave"
-        content="Compra Item"
+        content="Purchase Item"
         disabled={!product_name}
         onClick={() => act('Buy')}
       />

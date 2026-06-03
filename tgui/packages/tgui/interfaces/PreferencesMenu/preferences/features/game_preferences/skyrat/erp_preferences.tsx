@@ -7,23 +7,23 @@ import {
 import { FeatureDropdownInput } from '../../dropdowns';
 
 export const master_erp_pref: FeatureToggle = {
-  name: 'Mostrar/Ocultar Preferências de Representação Erótica',
+  name: 'Show/Hide Erotic Roleplay Preferences',
   category: 'ERP',
-  description: 'Isso mostra preferências ERP.',
+  description: 'This shows/hides ERP preferences.',
   component: CheckboxInput,
 };
 
 export const erp_pref: FeatureToggle = {
-  name: 'Interação erótica de representação',
+  name: 'Erotic Roleplay Interaction',
   category: 'ERP',
-  description: 'Isso informa os jogadores de se você deseja se envolver em ERP.',
+  description: 'This informs players of if you wish to engage in ERP.',
   component: CheckboxInput,
 };
 
 export const erp_sounds_pref: FeatureToggle = {
-  name: 'Filhos ERP',
+  name: 'ERP sounds',
   category: 'ERP',
-  description: 'Se quiser ouvir sons da mecânica ERP.',
+  description: 'Toggles if you want to hear sounds from ERP mechanics.',
   component: CheckboxInput,
 };
 
@@ -31,7 +31,7 @@ export const bimbofication_pref: FeatureToggle = {
   name: 'Bimbofication',
   category: 'ERP',
   description:
-    'Se você for capaz de reagir aos efeitos da bimboficação.',
+    'Toggles if you are able to react to the effects of bimbofication.',
   component: CheckboxInput,
 };
 
@@ -39,28 +39,28 @@ export const aphro_pref: FeatureToggle = {
   name: 'Aphrodisiacs',
   category: 'ERP',
   description:
-    'Comuta se deseja receber os efeitos dos afrodisíacos.',
+    'Toggles whether you wish to receive the effects of aphrodisiacs',
   component: CheckboxInput,
 };
 
 export const sextoy_pref: FeatureToggle = {
-  name: 'Brinquedo sexual',
+  name: 'Sex toy interaction',
   category: 'ERP',
-  description: 'Quando habilitado, você será capaz de interagir com brinquedos sexuais.',
+  description: 'When enabled, you will be able to interact with sex toys.',
   component: CheckboxInput,
 };
 
 export const sextoy_sounds_pref: FeatureToggle = {
-  name: 'Filhos de Brinquedo sexual',
+  name: 'Sex toy sounds',
   category: 'ERP',
-  description: 'Se você ouvir sons de brinquedos sexuais.',
+  description: 'Toggles if you will hear sounds from sex toys.',
   component: CheckboxInput,
 };
 
 export const vore_enable_pref: FeatureToggle = {
-  name: 'Activar Vore Mecânico',
+  name: 'Enable Mechanical Vore',
   category: 'ERP',
-  description: 'Se você puder usar mecânica vore.',
+  description: 'Toggles if you are able to use vore mechanics.',
   component: CheckboxInput,
 };
 
@@ -69,55 +69,55 @@ export const hypnosis_pref: FeatureToggle = {
   name: 'Hypnosis',
   category: 'ERP',
   description:
-    'Determina se você deseja permitir hipnose/hipnose química de forma obscena.',
+    'Determines if you wish to allow hypnosis/hypnosis chemicals in a lewd manner.',
   component: CheckboxInput,
 };
 // BUBBER EDIT END
 
 export const breast_enlargement_pref: FeatureToggle = {
-  name: 'Aumento do peito',
+  name: 'Breast enlargement',
   category: 'ERP',
   description:
-    'Determina se você deseja receber os efeitos dos produtos químicos da ampliação do peito.',
+    'Determines if you wish to receive the effects of breast enlargement chemicals.',
   component: CheckboxInput,
 };
 
 export const breast_shrinkage_pref: FeatureToggle = {
-  name: 'Retração dos seios',
+  name: 'Breast shrinkage',
   category: 'ERP',
   description:
-    'Determina se deseja receber os efeitos de produtos químicos de encolhimento de seios.',
+    'Determines if you wish to receive the effects of breast shrinkage chemicals.',
   component: CheckboxInput,
 };
 
 export const breast_removal_pref: FeatureToggle = {
-  name: 'Retração completa dos seios',
+  name: 'Complete breast shrinkage',
   category: 'ERP',
   description:
-    'Determina se você deseja receber todos os efeitos de produtos químicos de encolhimento de seios.',
+    'Determines if you wish to receive the full effects of breast shrinkage chemicals.',
   component: CheckboxInput,
 };
 
 export const penis_enlargement_pref: FeatureToggle = {
-  name: 'Aumento do pênis',
+  name: 'Penis enlargement',
   category: 'ERP',
   description:
-    'Determina se você deseja receber os efeitos de produtos químicos da ampliação do pênis.',
+    'Determines if you wish to receive the effects of penis enlargement chemicals.',
   component: CheckboxInput,
 };
 
 export const penis_shrinkage_pref: FeatureToggle = {
-  name: 'Retração do pênis',
+  name: 'Penis shrinkage',
   category: 'ERP',
   description:
-    'Determina se você deseja receber os efeitos de produtos químicos de encolhimento do pênis.',
+    'Determines if you wish to receive the effects of penis shrinkage chemicals.',
   component: CheckboxInput,
 };
 
 export const gender_change_pref: FeatureToggle = {
-  name: 'Mudança de gênero forçada',
+  name: 'Forced gender change',
   category: 'ERP',
-  description: 'Determina se você deseja permitir que o sexo forçado mude.',
+  description: 'Determines if you wish to allow forced gender changing.',
   component: CheckboxInput,
 };
 
@@ -125,7 +125,7 @@ export const autocum_pref: FeatureToggle = {
   name: 'Autocum',
   category: 'ERP',
   description:
-    'Comuta se você automaticamente goza usando o sistema de excitação, ou se precisar fazer manualmente.',
+    'Toggles whether you automatically cum using the arousal system, or if you need to do it manually.',
   component: CheckboxInput,
 };
 
@@ -133,31 +133,31 @@ export const autoemote_pref: FeatureToggle = {
   name: 'Auto Emote',
   category: 'ERP',
   description:
-    'Comuta se você emote automaticamente usando o sistema de excitação, ou se você precisa fazê-lo manualmente.',
+    'Toggles whether you automatically emote using the arousal system, or if you need to do it manually.',
   component: CheckboxInput,
 };
 
 export const erp_sexuality_pref: FeatureChoiced = {
-  name: 'Preferência de sexualidade',
+  name: 'Sexuality Preference',
   category: 'ERP',
   description:
-    'Determina o conteúdo sexual que vê, uso limitado. Nenhum mostrará todo o conteúdo.',
+    'Determines what sexual content you see, limited use. None will show all content.',
   component: FeatureDropdownInput,
 };
 
 export const genitalia_removal_pref: FeatureToggle = {
-  name: 'Remoção ERP Genitalia',
+  name: 'ERP Genitalia Removal',
   category: 'ERP',
   description:
-    'Se marcada, permite que as drogas removam a genitália existente em seu personagem.',
+    'If checked, allows drugs to remove existing genitalia on your character.',
   component: CheckboxInput,
 };
 
 export const new_genitalia_growth_pref: FeatureToggle = {
-  name: 'ERP Nova Genitália Crescimento',
+  name: 'ERP New Genitalia Growth',
   category: 'ERP',
   description:
-    'Se marcada, permite que as drogas cresçam novos genitais em seu caráter.',
+    'If checked, allows drugs to grow new genitalia on your character.',
   component: CheckboxInput,
 };
 
@@ -165,14 +165,14 @@ export const vore_overlays: FeatureToggle = {
   name: 'Vore Overlays',
   category: 'ERP',
   description:
-    'Quando estiver habilitado, você será exibido em tela cheia sobrepostos enquanto estiver dentro de um caça-almas?',
+    'When enabled, will you be shown fullscreen vore overlays while inside of a soulcatcher?',
   component: CheckboxInput,
 };
 
 export const vore_overlay_options: FeatureToggle = {
-  name: 'Opções de Sobreposição Vore',
+  name: 'Vore Overlay Options',
   category: 'ERP',
   description:
-    'Você quer ver overlays fullscreen vore como uma opção para o soulcatcher overlays?',
+    'Do you want to see fullscreen vore overlays as an option for soulcatcher overlays?',
   component: CheckboxInput,
 };

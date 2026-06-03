@@ -47,17 +47,17 @@ type HypertorusData = {
 
 const moderator_gases_help = {
   plasma:
-    'Produz gases básicos. Tem um modesto bônus de calor para ajudar a iniciar o processo de fusão. Quando adicionado em grandes quantidades, sua alta capacidade de calor pode ajudar a diminuir as mudanças de temperatura para velocidades controláveis.',
-  bz: 'Produz gases intermediários em nível 3 ou superior. Aumenta maciçamente a radiação, e induz alucinações em espectadores.',
+    'Produces basic gases. Has a modest heat bonus to help kick start the early fusion process. When added in large quantities, its high heat capacity can help to slow down temperature changes to manageable speeds.',
+  bz: 'Produces intermediate gases at Fusion Level 3 or higher. Massively increases radiation, and induces hallucinations in bystanders.',
   proto_nitrate:
-    'Produz gases avançados. Aumenta maciçamente a radiação, e acelera a taxa de mudança de temperatura. Certifique-se de ter bastante refrigeração.',
-  o2: 'Quando adicionado em altas quantidades, rapidamente purga o conteúdo de ferro. Não purga o conteúdo de ferro rápido o suficiente para acompanhar os danos em altos níveis de fusão.',
+    'Produces advanced gases. Massively increases radiation, and accelerates the rate of temperature change. Make sure you have enough cooling.',
+  o2: 'When added in high quantities, rapidly purges iron content. Does not purge iron content fast enough to keep up with damage at high Fusion Levels.',
   healium:
-    'Cura diretamente um núcleo HFR altamente danificado em altos níveis de fusão, mas é rapidamente consumido no processo.',
+    'Directly heals a heavily damaged HFR core at high Fusion Levels, but is rapidly consumed in the process.',
   antinoblium:
-    'Fornece enormes quantidades de energia e radiação. Pode causar tempestades elétricas perigosas até mesmo de um núcleo HFR saudável quando presente em mais do que vestígios. Use proteção elétrica apropriada ao manusear.',
+    'Provides huge amounts of energy and radiation. Can cause dangerous electrical storms even from a healthy HFR core when present in more than trace amounts. Wear appropriate electrical protection when handling.',
   freon:
-    'Sapata a maioria das formas de expressão de energia. Diminui a taxa de mudança de temperatura.',
+    'Saps most forms of energy expression. Slows the rate of temperature change.',
 } as const;
 
 const moderator_gases_sticky_order = ['plasma', 'bz', 'proto_nitrate'] as const;
@@ -170,7 +170,7 @@ export const HypertorusGases = (props) => {
 
   return (
     <>
-      <Section title="Gases internos de fusão">
+      <Section title="Internal Fusion Gases">
         {selected_fuel ? (
           <GasList
             input_rate="fuel_injection_rate"
@@ -181,19 +181,19 @@ export const HypertorusGases = (props) => {
             minimumScale={500}
             prepend={() => <HelpDummy />}
             rateHelp={
-              'A taxa em que o novo combustível é adicionado da porta de entrada de combustível.' +
-              'Esta taxa afeta a taxa de produção,' +
-              'Mesmo quando a entrada não está ativa.'
+              'The rate at which new fuel is added from the fuel input port.' +
+              ' This rate affects the rate of production,' +
+              ' even when input is not active.'
             }
             stickyGases={selected_fuel.requirements}
           />
         ) : (
           <Box align="center" color="red">
-            {'Nenhuma recebe selecionada.'}
+            {'No recipe selected'}
           </Box>
         )}
       </Section>
-      <Section title="Gases moderadores">
+      <Section title="Moderator Gases">
         <GasList
           input_rate="moderator_injection_rate"
           input_switch="start_moderator"
@@ -202,7 +202,7 @@ export const HypertorusGases = (props) => {
           raw_gases={moderator_gases}
           minimumScale={500}
           rateHelp={
-            'A taxa em que o novo gás moderador é adicionado do porto moderador.'
+            'The rate at which new moderator gas is added from the moderator port.'
           }
           stickyGases={moderator_gases_sticky_order}
           prepend={(gas) =>

@@ -154,7 +154,7 @@ export const BotAnnouncement = (props) => {
                                 )?.color
                           }
                         >
-                          {val.button.channel || 'Nenhum canal de rádio.'}
+                          {val.button.channel || 'No radio channel'}
                         </Box>
                       </Stack.Item>
                     </Stack>
@@ -179,16 +179,16 @@ export const BotAnnouncement = (props) => {
                 {tab === TAB.Announcements ? (
                   <Stack.Item grow>
                     <Dropdown
-                      options={['Nenhum canal de rádio.', ...channels]}
+                      options={['No radio channel', ...channels]}
                       displayText={
                         selectedChannel === null
-                          ? 'Nenhum canal de rádio.'
+                          ? 'No radio channel'
                           : selectedChannel
                       }
                       width="100%"
                       selected={selectedChannel}
                       onSelected={(value) => {
-                        if (value === 'Nenhum canal de rádio.') {
+                        if (value === 'No radio channel') {
                           setSelectedChannel(null);
                         } else {
                           setSelectedChannel(value);
@@ -224,8 +224,8 @@ export const BotAnnouncement = (props) => {
                     minWidth="96px"
                   >
                     {tab === TAB.Announcements
-                      ? 'Faça Atalho'
-                      : 'Excluir atalho'}
+                      ? 'Make Shortcut'
+                      : 'Delete Shortcut'}
                   </Button>
                 </Stack.Item>
                 <Stack.Item>

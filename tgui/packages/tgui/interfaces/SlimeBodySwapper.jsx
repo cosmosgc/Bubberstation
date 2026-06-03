@@ -10,7 +10,7 @@ const statusMap = {
 };
 
 const occupiedMap = {
-  owner: 'Você está aqui.',
+  owner: 'You Are Here',
   stranger: 'Occupied',
   available: 'Swap',
 };

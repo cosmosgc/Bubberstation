@@ -96,7 +96,7 @@ export const NtosNetChat = (props) => {
                 <Stack.Item grow>
                   <Button.Input
                     fluid
-                    buttonText="Novo Canal..."
+                    buttonText="New Channel..."
                     onCommit={(value) =>
                       act('PRG_newchannel', {
                         new_channel_name: value,
@@ -174,7 +174,7 @@ export const NtosNetChat = (props) => {
                   backgroundColor={this_client?.muted && 'red'}
                   height="22px"
                   placeholder={
-                    (this_client?.muted && 'Você está mudo!') ||
+                    (this_client?.muted && 'You are muted!') ||
                     `Message ${title}`
                   }
                   fluid
@@ -216,7 +216,7 @@ export const NtosNetChat = (props) => {
                                     icon="bullhorn"
                                     tooltip={
                                       (!this_client?.muted && 'Ping') ||
-                                      'Você está mudo!'
+                                      'You are muted!'
                                     }
                                     tooltipPosition="left"
                                     onClick={() =>
@@ -238,8 +238,8 @@ export const NtosNetChat = (props) => {
                                         (!client.muted && 'green') || 'red'
                                       }
                                       tooltip={
-                                        (!client.muted && 'Mude este usuário.') ||
-                                        'Desamarre esse Usuário.'
+                                        (!client.muted && 'Mute this User') ||
+                                        'Unmute this User'
                                       }
                                       tooltipPosition="left"
                                       onClick={() =>
@@ -264,7 +264,7 @@ export const NtosNetChat = (props) => {
                         <>
                           <Button.Input
                             fluid
-                            buttonText="Diário de salvação como..."
+                            buttonText="Save log as..."
                             onCommit={(value) =>
                               act('PRG_savelog', {
                                 log_name: value,
@@ -273,7 +273,7 @@ export const NtosNetChat = (props) => {
                           />
                           <Button.Confirm
                             fluid
-                            content="Deixe o Canal."
+                            content="Leave Channel"
                             onClick={() => act('PRG_leavechannel')}
                           />
                         </>
@@ -283,13 +283,13 @@ export const NtosNetChat = (props) => {
                           <Button.Confirm
                             fluid
                             disabled={strong}
-                            content="Canal Apagar"
+                            content="Delete Channel"
                             onClick={() => act('PRG_deletechannel')}
                           />
                           <Button.Input
                             fluid
                             disabled={strong}
-                            buttonText="Canal Renomear..."
+                            buttonText="Rename Channel..."
                             onCommit={(value) =>
                               act('PRG_renamechannel', {
                                 new_name: value,
@@ -298,7 +298,7 @@ export const NtosNetChat = (props) => {
                           />
                           <Button.Input
                             fluid
-                            buttonText="Definir senha..."
+                            buttonText="Set Password..."
                             onCommit={(value) =>
                               act('PRG_setpassword', {
                                 new_password: value,

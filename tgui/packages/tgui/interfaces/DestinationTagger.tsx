@@ -52,7 +52,7 @@ export const DestinationTagger = (props) => {
               scrollable
               title={
                 !currentTag
-                  ? 'Por favor, selecione uma localização'
+                  ? 'Please Select A Location'
                   : `Current Destination: ${locations[currentTag - 1]}`
               }
             >

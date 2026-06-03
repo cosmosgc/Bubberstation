@@ -128,7 +128,7 @@ export function RecipeContentCompact(props: Props) {
                       lineHeight={2.5}
                       width="32px"
                       align="center"
-                      tooltip="Repita esta nave até ficar sem ingredientes."
+                      tooltip="Repeat this craft until you run out of ingredients."
                       tooltipPosition="top"
                       disabled={!craftable || busy}
                       icon="repeat"
@@ -177,7 +177,7 @@ export function RecipeContent(props: FullProps) {
           <Box textAlign="center" minWidth="64px" minHeight="64px" mr={1}>
             <Box
               style={{
-                transform: 'Escala(1.5)',
+                transform: 'scale(1.5)',
               }}
               m="16px"
               className={findIcon(item.id, data)}
@@ -299,7 +299,7 @@ export function RecipeContent(props: FullProps) {
                             minWidth="30px"
                             lineHeight={2.5}
                             align="center"
-                            tooltip="Repita esta nave até ficar sem ingredientes."
+                            tooltip="Repeat this craft until you run out of ingredients."
                             tooltipPosition="top"
                             disabled={!craftable || busy}
                             icon="repeat"

@@ -13,30 +13,30 @@ export const Rules = (props) => {
   const { data } = useBackend<Info>();
   const { antag_name } = data;
   switch (antag_name) {
-    case 'Agente Raptor':
-    case 'Cientista Raptor':
-    case 'Raptor Solo':
+    case 'Abductor Agent':
+    case 'Abductor Scientist':
+    case 'Abductor Solo':
       return (
         // Bubberstation Edit
         <Stack vertical>
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
           </Stack.Item>
         </Stack>
       );
-    case 'Contrator à deriva':
+    case 'Drifting Contractor':
       return (
         // Bubberstation Edit
         <Stack vertical>
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
@@ -50,21 +50,21 @@ export const Rules = (props) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
           </Stack.Item>
         </Stack>
       );
-    case 'Vénus Armadilha Humana':
+    case 'Venus Human Trap':
       return (
         // Bubberstation Edit
         <Stack vertical>
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
@@ -78,7 +78,7 @@ export const Rules = (props) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
@@ -92,35 +92,35 @@ export const Rules = (props) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
           </Stack.Item>
         </Stack>
       );
-    case 'Dragão Espacial':
+    case 'Space Dragon':
       return (
         // Bubberstation Edit
         <Stack vertical>
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
           </Stack.Item>
         </Stack>
       );
-    case 'Pirata do Espaço':
+    case 'Space Pirate':
       return (
         // Bubberstation Edit
         <Stack vertical>
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
@@ -134,7 +134,7 @@ export const Rules = (props) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
@@ -148,7 +148,7 @@ export const Rules = (props) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
@@ -162,7 +162,7 @@ export const Rules = (props) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
@@ -176,7 +176,7 @@ export const Rules = (props) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
@@ -190,21 +190,21 @@ export const Rules = (props) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
           </Stack.Item>
         </Stack>
       );
-    case 'Malf Al':
+    case 'Malf AI':
       return (
         // Bubberstation Edit
         <Stack vertical>
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
@@ -218,7 +218,7 @@ export const Rules = (props) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
@@ -232,7 +232,7 @@ export const Rules = (props) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
@@ -246,7 +246,7 @@ export const Rules = (props) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
@@ -260,7 +260,7 @@ export const Rules = (props) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }
@@ -274,7 +274,7 @@ export const Rules = (props) => {
           <Stack.Item bold>Special Rules:</Stack.Item>
           <Stack.Item>
             {
-              <a href="https://wiki.bubberstation.org/index.php?title=Regras">
+              <a href="https://wiki.bubberstation.org/index.php?title=Rules">
                 Special Rules and Metaprotections!
               </a>
             }

@@ -7,19 +7,19 @@ import {
 import { FeatureDropdownInput } from '../../dropdowns';
 
 export const pet_owner: FeatureChoiced = {
-  name: 'Tipo de animal de estimação',
+  name: 'Pet Type',
   component: FeatureDropdownInput,
 };
 
 export const pet_name: Feature<string> = {
-  name: 'Nome do animal de estimação',
+  name: 'Pet Name',
   description:
-    "Se estiver em branco, usará o nome padrão da máfia. Por exemplo, 'axolotl' ou 'chinchilla'.",
+    "If blank, will use the mob's default name. For example, 'axolotl' or 'chinchilla'.",
   component: FeatureShortTextInput,
 };
 
 export const pet_desc: Feature<string> = {
-  name: 'Descrição do animal de estimação',
-  description: "Se em branco, usará a descrição padrão da máfia.",
+  name: 'Pet Description',
+  description: "If blank, will use the mob's default description.",
   component: FeatureShortTextInput,
 };

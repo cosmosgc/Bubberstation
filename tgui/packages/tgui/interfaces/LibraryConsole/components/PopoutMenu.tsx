@@ -30,7 +30,7 @@ export function PopoutMenu(props) {
           <PopoutEntry
             id={6}
             icon="question"
-            text={screen_state === 6 ? 'Gur Fbeprere' : 'Lore Proibido'}
+            text={screen_state === 6 ? 'Gur Fbeprere' : 'Forbidden Lore'}
             color="black"
             font="copperplate"
           />

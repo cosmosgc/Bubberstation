@@ -20,7 +20,7 @@ export const CommandReportConsole = (props) => {
     error,
   } = data;
   return (
-    <Window title="Criar Relatório da Frota" width={325} height={525}>
+    <Window title="Create Fleet Report" width={325} height={525}>
       <Window.Content>
         {!!error && (
           <NoticeBox textAlign="center" color="red">
@@ -29,7 +29,7 @@ export const CommandReportConsole = (props) => {
         )}
         <Stack vertical>
           <Stack.Item>
-            <Section title="Definir o título do relatório:" textAlign="center">
+            <Section title="Set report title:" textAlign="center">
               <Input
                 width="100%"
                 mt={1}
@@ -41,7 +41,7 @@ export const CommandReportConsole = (props) => {
                 }
               />
             </Section>
-            <Section title="Definir texto do relatório:" textAlign="center">
+            <Section title="Set report text:" textAlign="center">
               <TextArea
                 height="200px"
                 mb={1}
@@ -68,7 +68,7 @@ export const CommandReportConsole = (props) => {
                     icon="check"
                     color="good"
                     textAlign="center"
-                    content="Apresentar relatório"
+                    content="Submit Report"
                     onClick={() => act('submit_report')}
                   />
                 </Stack.Item>

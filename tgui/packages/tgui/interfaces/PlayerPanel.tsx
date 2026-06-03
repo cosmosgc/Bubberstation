@@ -197,18 +197,18 @@ export const PlayerPanel = () => {
               {(!!client_ckey || !!last_ckey) && (
                 <Stack mt={1}>
                   <Stack.Item width="80px" color="label">
-                    {client_ckey ? 'Client:' : 'Último cliente:'}
+                    {client_ckey ? 'Client:' : 'Last client:'}
                   </Stack.Item>
                   <Stack.Item grow={1}>
                     <Tooltip
                       position="bottom"
-                      content={ranks || 'Sem fileiras adicionais.'}
+                      content={ranks || 'No additional ranks'}
                     >
                       <Box
                         inline
                         style={{
                           borderBottom: ranks
-                            ? '2px pontilhado rgba(255, 0,8)'
+                            ? '2px dotted rgba(255, 255, 255, 0.8)'
                             : 'none',
                         }}
                       >
@@ -220,7 +220,7 @@ export const PlayerPanel = () => {
                       <Button
                         ml={1}
                         icon="magnifying-glass"
-                        tooltip="Obter painel atual do jogador"
+                        tooltip="Get player's current panel"
                         onClick={() => act('open_latest_panel')}
                       />
                     )}
@@ -412,7 +412,7 @@ const GeneralActions = () => {
             disabled={!mob_type.includes('/mob/dead/observer')}
             tooltip={
               mob_type !== '/mob/dead/observer'
-                ? 'Só pode ser usado em fantasmas.'
+                ? 'Can only be used on ghosts'
                 : ''
             }
             onClick={() => act('lobby')}
@@ -458,7 +458,7 @@ const GeneralActions = () => {
             width="100%"
             height="100%" // weird ass bug here, so height set to 100%
             icon="ghost"
-            tooltip="Oferece controle aos fantasias"
+            tooltip="Offers control to ghosts"
             disabled={!mob_type.includes('/mob/living')}
             onClick={() => act('offer_control')}
           >
@@ -546,7 +546,7 @@ const PhysicalActions = () => {
         </Flex>
       </Section>
 
-      <Section title="Bandeiras de Estado">
+      <Section title="Status Flags">
         <Stack wrap>
           {Object.keys(glob_status_flags).map((flag) => {
             let isActive;
@@ -674,14 +674,14 @@ const PhysicalActions = () => {
         }
       >
         <Tooltip
-          content="Valores negativos = mais rápido, valores positivos = mais lento"
+          content="Negative values = faster, positive values = slower"
           position="bottom"
         >
           <Box
             mb={1}
             color="label"
             style={{
-              borderBottom: '2px pontilhado rgba(255, 0,8)',
+              borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',
               display: 'inline-block',
               cursor: 'help',
             }}
@@ -742,7 +742,7 @@ const PhysicalActions = () => {
                         key={index}
                         color="orange"
                         icon="times"
-                        tooltip="Clique para remover a facção."
+                        tooltip="Click to remove faction"
                         onClick={() => act('remove_faction', { faction })}
                       >
                         {faction}
@@ -763,7 +763,7 @@ const PhysicalActions = () => {
               <Stack.Item grow={1}>
                 <Dropdown
                   width="100%"
-                  placeholder="Selecione facção para adicionar"
+                  placeholder="Select faction to add"
                   options={glob_factions}
                   selected={null}
                   onSelected={(value) => act('add_faction', { faction: value })}
@@ -797,7 +797,7 @@ const TransformActions = () => {
             <Flex wrap="wrap" justify="space-between">
               {transformables_category.types.map((transformables_type) => {
                 return (
-                  <Flex.Item key={0} width="(33,3% - 0,125rem)" mb=".25rem">
+                  <Flex.Item key={0} width="calc(33.3% - .125rem)" mb=".25rem">
                     <Button.Confirm
                       width="100%"
                       height="100%"
@@ -1010,29 +1010,29 @@ const PunishmentActions = () => {
             <LabeledList.Item label="NOW" color="label">
               {current_time}
             </LabeledList.Item>
-            <LabeledList.Item label="Conta feita">
+            <LabeledList.Item label="Account made">
               {data_account_join_date}
             </LabeledList.Item>
-            <LabeledList.Item label="Primeiro servidor conectado.">
+            <LabeledList.Item label="First joined server">
               {data_player_join_date}
             </LabeledList.Item>
-            <LabeledList.Item label="Versão Byond">
+            <LabeledList.Item label="Byond version">
               {data_byond_version}
             </LabeledList.Item>
-            <LabeledList.Item label="Nomes antigos.">
+            <LabeledList.Item label="Old names">
               {data_old_names}
             </LabeledList.Item>
             <LabeledList.Item label="Discord">
               {discord_id &&
-              discord_id !== 'Não encontrado.' &&
-              discord_id !== 'Erro no banco de dados' &&
-              discord_id !== 'Nenum ckey encontrado' ? (
+              discord_id !== 'Not found' &&
+              discord_id !== 'Database error' &&
+              discord_id !== 'No ckey found' ? (
                 <Box color="good">{`<@${discord_id}>`}</Box>
-              ) : discord_id === 'Não encontrado.' ? (
+              ) : discord_id === 'Not found' ? (
                 <Box color="bad">No Discord ID found</Box>
-              ) : discord_id === 'Erro no banco de dados' ? (
+              ) : discord_id === 'Database error' ? (
                 <Box color="bad">Database error</Box>
-              ) : discord_id === 'Nenum ckey encontrado' ? (
+              ) : discord_id === 'No ckey found' ? (
                 <Box color="bad">No ckey found</Box>
               ) : (
                 <Button
@@ -1060,12 +1060,12 @@ const FunActions = () => {
     White: '#a4bad6',
     Dark: '#42474D',
     Red: '#c51e1e',
-    'Vermelho Brilhante': '#FF0000',
+    'Red Bright': '#FF0000',
     Velvet: '#660015',
     Green: '#059223',
     Blue: '#6685f5',
     Purple: '#800080',
-    'Roxo Escuro': '#5000A0',
+    'Purple Dark': '#5000A0',
     Narsie: '#973e3b',
     Ratvar: '#BE8700',
   };
@@ -1169,7 +1169,7 @@ const FunActions = () => {
               <LabeledList>
                 <LabeledList.Item label="Colour">
                   <Dropdown
-                    width="calc (100% - 1rem)"
+                    width="calc(100% - 1rem)"
                     options={Object.keys(colours)}
                     selected={narrateColour}
                     onSelected={(value) => setNarrateColour(value)}
@@ -1177,7 +1177,7 @@ const FunActions = () => {
                 </LabeledList.Item>
                 <LabeledList.Item label="Font">
                   <Dropdown
-                    width="calc (100% - 1rem)"
+                    width="calc(100% - 1rem)"
                     selected={narrateFont}
                     options={[
                       'Verdana',
@@ -1293,7 +1293,7 @@ const OtherActions = () => {
 
   return (
     <Section fill>
-      <Section title="Características Diversas">
+      <Section title="Miscellaneous Features">
         <Button
           width="100%"
           p=".5rem"

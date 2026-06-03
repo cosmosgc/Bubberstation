@@ -9,13 +9,13 @@ export const Inside = (props) => {
   const { inside } = data;
 
   if (!inside) {
-    return <Section title="Para dentro!">You are not inside anyone!</Section>;
+    return <Section title="Inside!">You are not inside anyone!</Section>;
   }
 
   const preyMode = types.digestModeToPreyMode[inside.digest_mode];
 
   return (
-    <Section title="Para dentro!">
+    <Section title="Inside!">
       <Box>
         <Box color="yellow" inline>
           You are currently inside
@@ -38,11 +38,11 @@ export const Inside = (props) => {
         {inside.desc}
       </Box>
       {inside.contents.length ? (
-        <Collapsible title="Conteúdo da barriga">
+        <Collapsible title="Belly Contents">
           <BellyContents contents={inside.contents} />
         </Collapsible>
       ) : (
-        'Não há mais nada ao seu redor.'
+        'There is nothing else around you.'
       )}
     </Section>
   );

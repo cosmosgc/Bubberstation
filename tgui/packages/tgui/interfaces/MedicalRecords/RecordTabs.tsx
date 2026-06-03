@@ -22,8 +22,8 @@ export const MedicalRecordTabs = (props) => {
   const { act, data } = useBackend<MedicalRecordData>();
   const { records = [], station_z } = data;
   const errorMessage = !records.length
-    ? 'Nenhum registro encontrado.'
-    : 'Sem correspondência. Refinar sua busca.';
+    ? 'No records found.'
+    : 'No match. Refine your search.';
 
   const [search, setSearch] = useState('');
 
@@ -61,7 +61,7 @@ export const MedicalRecordTabs = (props) => {
             <Button
               disabled
               icon="plus"
-              tooltip="Adicione novos registros inserindo uma foto de 1 por 1 metro no terminal. Você não precisa desta tela aberta."
+              tooltip="Add new records by inserting a 1 by 1 meter photo into the terminal. You do not need this screen open."
             >
               Create
             </Button>
@@ -72,7 +72,7 @@ export const MedicalRecordTabs = (props) => {
               icon="trash"
               disabled={!station_z}
               onClick={() => act('purge_records')}
-              tooltip="Limpe todos os dados do registro."
+              tooltip="Wipe all record data."
             />
           </Stack.Item>
         </Stack>

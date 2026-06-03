@@ -11,19 +11,19 @@ import { useBackend } from '../../backend';
 import type { MainData } from './data';
 
 export const InternalDamageToDamagedDesc = {
-  MECHA_INT_FIRE: 'Fogo interno detectado.',
-  MECHA_INT_TEMP_CONTROL: 'Termorregulador desligado.',
-  MECHA_CABIN_AIR_BREACH: 'Violação da cabine detectada.',
-  MECHA_INT_CONTROL_LOST: 'Motores danificados.',
-  MECHA_INT_SHORT_CIRCUIT: 'Circuitos curtos',
+  MECHA_INT_FIRE: 'Internal fire detected',
+  MECHA_INT_TEMP_CONTROL: 'Thermoregulator offline',
+  MECHA_CABIN_AIR_BREACH: 'Cabin breach detected',
+  MECHA_INT_CONTROL_LOST: 'Motors damaged',
+  MECHA_INT_SHORT_CIRCUIT: 'Circuits shorted',
 };
 
 export const InternalDamageToNormalDesc = {
-  MECHA_INT_FIRE: 'Nenhum incêndio interno detectado.',
-  MECHA_INT_TEMP_CONTROL: 'Termorregulador ativo.',
-  MECHA_CABIN_AIR_BREACH: 'Selamento da cabana intacta.',
-  MECHA_INT_CONTROL_LOST: 'Motores ativos.',
-  MECHA_INT_SHORT_CIRCUIT: 'Circuitos operacionais.',
+  MECHA_INT_FIRE: 'No internal fires detected',
+  MECHA_INT_TEMP_CONTROL: 'Thermoregulator active',
+  MECHA_CABIN_AIR_BREACH: 'Cabin sealing intact',
+  MECHA_INT_CONTROL_LOST: 'Motors active',
+  MECHA_INT_SHORT_CIRCUIT: 'Circuits operational',
 };
 
 export const AlertPane = (props) => {
@@ -75,8 +75,8 @@ export const AlertPane = (props) => {
                 color={overclock_safety ? 'good' : 'bad'}
                 tooltip={
                   overclock_safety
-                    ? 'A segurança do CO previne o superaquecimento.'
-                    : 'Segurança OC desativada.'
+                    ? 'OC safety prevents overheat.'
+                    : 'OC safety disabled.'
                 }
               />
             )}

@@ -100,8 +100,8 @@ export const BluespaceLocator = (props) => {
             <Icon
               name="satellite-dish"
               size={4}
-              color="(100, 150, 255, 0,5)"
-              style={{ filter: 'Borrão(1px)' }}
+              color="rgba(100, 150, 255, 0.5)"
+              style={{ filter: 'blur(1px)' }}
             />
             <div>Bluespace signatures not detected</div>
             <div
@@ -129,7 +129,7 @@ export const BluespaceLocator = (props) => {
               display: 'flex',
               flexDirection: 'column',
               paddingRight: '2px',
-              backgroundColor: 'Rgba (10, 15, 25, 0,9)',
+              backgroundColor: 'rgba(10, 15, 25, 0.9)',
             }}
           >
             <div
@@ -145,14 +145,14 @@ export const BluespaceLocator = (props) => {
                     position: 'absolute',
                     left: '1rem',
                     top: '50%',
-                    transform: 'Tradução:',
+                    transform: 'translateY(-50%)',
                     zIndex: 1,
                     opacity: 0.6,
                   }}
                 />
               )}
               <Input
-                placeholder="Alvos de busca..."
+                placeholder="Search targets..."
                 value={searchQuery}
                 onChange={(value) => setSearchQuery(value)}
                 width="100%"
@@ -176,12 +176,12 @@ export const BluespaceLocator = (props) => {
                     cursor: 'pointer',
                     backgroundColor:
                       selectedImplantName === implant.name
-                        ? '(100, 150, 255, 0.2)'
-                        : '(30, 35, 50, 0,5)',
+                        ? 'rgba(100, 150, 255, 0.2)'
+                        : 'rgba(30, 35, 50, 0.5)',
                     border:
                       selectedImplantName === implant.name
-                        ? '1px Rgba sólido (100, 150, 255, 0,5)'
-                        : '1px Rgba sólido (60, 65, 80, 0,5)',
+                        ? '1px solid rgba(100, 150, 255, 0.5)'
+                        : '1px solid rgba(60, 65, 80, 0.5)',
                     borderRadius: '6px',
                     marginBottom: '0.5rem',
                     minHeight: '2.5rem',
@@ -190,9 +190,9 @@ export const BluespaceLocator = (props) => {
                     gap: '0.5rem',
                     boxShadow:
                       selectedImplantName === implant.name
-                        ? '0 0 8px rgba (100, 150, 255, 0,3)'
-                        : '0 2px 4px rgba (0, 0, 0, 0, 0,2)',
-                    transition: 'Todos 0,15 de facilidade.',
+                        ? '0 0 8px rgba(100, 150, 255, 0.3)'
+                        : '0 2px 4px rgba(0, 0, 0, 0.2)',
+                    transition: 'all 0.15s ease',
                     position: 'relative',
                     overflow: 'hidden',
                   }}
@@ -207,7 +207,7 @@ export const BluespaceLocator = (props) => {
                         selectedImplantName === implant.name
                           ? '#88ccff'
                           : '#aaa',
-                      transition: 'Facilidade.',
+                      transition: 'color 0.15s ease',
                     }}
                   />
 
@@ -217,7 +217,7 @@ export const BluespaceLocator = (props) => {
                       fontSize: '1rem',
                       color:
                         selectedImplantName === implant.name ? '#fff' : '#ccc',
-                      transition: 'Facilidade.',
+                      transition: 'color 0.15s ease',
                     }}
                   >
                     {implant.name}
@@ -240,8 +240,8 @@ export const BluespaceLocator = (props) => {
                           backgroundColor:
                             implant.distance <= (trackingrange / 3) * dot
                               ? getArrowColor(implant.distance)
-                              : '(100, 100, 100, 0.3)',
-                          transition: 'Fundo-cor 0,2s facilidade',
+                              : 'rgba(100, 100, 100, 0.3)',
+                          transition: 'background-color 0.2s ease',
                         }}
                       />
                     ))}
@@ -259,8 +259,8 @@ export const BluespaceLocator = (props) => {
               alignItems: 'center',
               justifyContent: 'center',
               padding: '2rem',
-              borderLeft: '1px sólido #555',
-              backgroundColor: 'Rgba (20, 25, 35, 0,7)',
+              borderLeft: '1px solid #555',
+              backgroundColor: 'rgba(20, 25, 35, 0.7)',
             }}
           >
             {filteredImplants.length === 0 ? (
@@ -275,7 +275,7 @@ export const BluespaceLocator = (props) => {
                   gap: '1rem',
                 }}
               >
-                <Icon name="search" size={3} color="(200, 200, 200, 0,5)" />
+                <Icon name="search" size={3} color="rgba(200, 200, 200, 0.5)" />
                 <div>No targets matching search criteria</div>
               </div>
             ) : selectedImplant ? (
@@ -291,7 +291,7 @@ export const BluespaceLocator = (props) => {
                   color={getArrowColor(selectedImplant.distance)}
                   style={{
                     marginBottom: '2rem',
-                    transition: 'Transformar 0.3s facilidade, cor 0.2s facilidade',
+                    transition: 'transform 0.3s ease, color 0.2s ease',
                   }}
                 />
                 <div style={{ textAlign: 'center' }}>

@@ -97,7 +97,7 @@ export class ComponentMenu extends Component {
     shownComponents.length = currentLimit;
     return (
       <Section
-        title="Menu Componente"
+        title="Component Menu"
         {...rest}
         fill
         buttons={
@@ -167,7 +167,7 @@ export class ComponentMenu extends Component {
                     textAlign="center"
                     py={1}
                     mb={1}
-                    content="Mostre mais"
+                    content="Show More"
                     onClick={() =>
                       this.setState({
                         currentLimit: currentLimit + 5,

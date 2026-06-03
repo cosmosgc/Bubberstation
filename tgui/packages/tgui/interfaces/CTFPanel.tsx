@@ -24,7 +24,7 @@ export const CTFPanel = (props) => {
   const { act, data } = useBackend<CTFPanelData>();
 
   return (
-    <Window title="Painel CTF" width={700} height={600}>
+    <Window title="CTF Panel" width={700} height={600}>
       <Window.Content scrollable>
         {'teams' in data ? (
           <Flex align="center" wrap="wrap" textAlign="center" m={-0.5}>
@@ -98,7 +98,7 @@ export const CTFPanel = (props) => {
                   }
                 }}
               >
-                {data.voted ? 'Unvote para CTF' : 'Vote na CTF.'}
+                {data.voted ? 'Unvote for CTF' : 'Vote for CTF'}
               </Button>
             </Stack.Item>
           </Stack>

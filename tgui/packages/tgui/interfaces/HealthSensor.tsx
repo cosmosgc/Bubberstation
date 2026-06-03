@@ -23,7 +23,7 @@ export const HealthSensor = (props) => {
     <Window width={360} height={115}>
       <Window.Content>
         <Section
-          title="Sensor de Saúde"
+          title="Health Sensor"
           buttons={
             <>
               <Button
@@ -35,7 +35,7 @@ export const HealthSensor = (props) => {
               <Button
                 icon={target ? 'skull' : 'heartbeat'}
                 color="red"
-                content={target ? 'Verificando a morte' : 'Procurando por Crit.'}
+                content={target ? 'Checking for Death' : 'Checking for Crit'}
                 onClick={() => act('target')}
               />
             </>

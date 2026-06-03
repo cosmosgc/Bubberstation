@@ -22,7 +22,7 @@ export function DirectiveDisplay(props) {
   return (
     <Stack fill vertical>
       <Stack.Item grow={2}>
-        <Section fill scrollable title="Núcleo Lógico">
+        <Section fill scrollable title="Logic Core">
           <Box color="label">
             {DIRECTIVE_COMPREHENSION}
             <br />

@@ -103,7 +103,7 @@ const Abductsoft = (props) => {
     <>
       <Section>
         <LabeledList>
-          <LabeledList.Item label="Amostras Coletadas">
+          <LabeledList.Item label="Collected Samples">
             {points}
           </LabeledList.Item>
         </LabeledList>
@@ -128,7 +128,7 @@ const EmergencyTeleporter = (props) => {
 
   return (
     <Section
-      title="Teletransporte de Emergência."
+      title="Emergency Teleport"
       buttons={
         <Button
           icon="exclamation-circle"
@@ -145,7 +145,7 @@ const EmergencyTeleporter = (props) => {
             disabled={!gizmo}
             onClick={() => act('teleporter_retrieve')}
           >
-            {gizmo ? 'Retrieve' : 'Nenhum Mark.'}
+            {gizmo ? 'Retrieve' : 'No Mark'}
           </Button>
         </LabeledList.Item>
       </LabeledList>

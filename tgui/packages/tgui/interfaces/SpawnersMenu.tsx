@@ -24,7 +24,7 @@ export const SpawnersMenu = (props) => {
   const { spawners = [] } = data;
 
   return (
-    <Window title="Menu Spawners" width={700} height={525}>
+    <Window title="Spawners Menu" width={700} height={525}>
       <Window.Content scrollable>
         <Stack vertical>
           {spawners.map((spawner) => (

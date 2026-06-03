@@ -4,21 +4,21 @@ export const GeneticMakeupInfo = (props) => {
   const { makeup } = props;
 
   return (
-    <Section title="Informação sobre enzimas">
+    <Section title="Enzyme Information">
       <LabeledList>
         <LabeledList.Item label="Name">
           {makeup.name || 'None'}
         </LabeledList.Item>
-        <LabeledList.Item label="Tipo sanguíneo">
+        <LabeledList.Item label="Blood Type">
           {makeup.blood_type || 'None'}
         </LabeledList.Item>
-        <LabeledList.Item label="Enzima Única">
+        <LabeledList.Item label="Unique Enzyme">
           {makeup.UE || 'None'}
         </LabeledList.Item>
-        <LabeledList.Item label="Identificador Único">
+        <LabeledList.Item label="Unique Identifier">
           {makeup.UI || 'None'}
         </LabeledList.Item>
-        <LabeledList.Item label="Características únicas">
+        <LabeledList.Item label="Unique Features">
           {makeup.UF || 'None'}
         </LabeledList.Item>
       </LabeledList>

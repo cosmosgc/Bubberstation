@@ -26,7 +26,7 @@ export const CargoHoldTerminal = (props) => {
       <Window.Content scrollable>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="Valor atual da carga">
+            <LabeledList.Item label="Current Cargo Value">
               <Box inline bold>
                 <AnimatedNumber value={Math.round(points)} /> credits
               </Box>
@@ -39,13 +39,13 @@ export const CargoHoldTerminal = (props) => {
             <>
               <Button
                 icon={'sync'}
-                content={'Recalcular o Valor'}
+                content={'Recalculate Value'}
                 disabled={!pad}
                 onClick={() => act('recalc')}
               />
               <Button
                 icon={sending ? 'times' : 'arrow-up'}
-                content={sending ? 'Pare de enviar' : 'Enviar mercadorias'}
+                content={sending ? 'Stop Sending' : 'Send Goods'}
                 selected={sending}
                 disabled={!pad}
                 onClick={() => act(sending ? 'stop' : 'send')}
@@ -55,9 +55,9 @@ export const CargoHoldTerminal = (props) => {
         >
           <LabeledList>
             <LabeledList.Item label="Status" color={pad ? 'good' : 'bad'}>
-              {pad ? 'Online' : 'Não Encontrado'}
+              {pad ? 'Online' : 'Not Found'}
             </LabeledList.Item>
-            <LabeledList.Item label="Relatório de Carga">
+            <LabeledList.Item label="Cargo Report">
               {status_report}
             </LabeledList.Item>
           </LabeledList>

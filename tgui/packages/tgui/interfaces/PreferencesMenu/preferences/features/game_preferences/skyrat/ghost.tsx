@@ -2,9 +2,9 @@
 import { CheckboxInput, type FeatureToggle } from '../../base';
 
 export const soulcatcher_join_action: FeatureToggle = {
-  name: 'Junte-se à ação do caçador de almas.',
+  name: 'Join soulcatcher action',
   category: 'GHOST',
   description:
-    'Comuta se deseja ter a ação de juntar-se a um caça-almas como um fantasma mostrado a você. Você ainda tem acesso ao verbo.',
+    'Toggles whether you wish to have the action to join a soulcatcher as a ghost shown to you. You still have access to the verb regardless.',
   component: CheckboxInput,
 };

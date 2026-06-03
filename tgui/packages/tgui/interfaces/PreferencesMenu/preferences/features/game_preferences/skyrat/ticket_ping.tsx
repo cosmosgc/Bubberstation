@@ -2,9 +2,9 @@
 import { CheckboxInput, type FeatureToggle } from '../../base';
 
 export const ticket_ping_pref: FeatureToggle = {
-  name: 'Passagem ping',
+  name: 'Ticket ping',
   category: 'ADMIN',
   description:
-    'Quando habilitado, você receberá pings regulares de bilhetes não manipulados.',
+    'When enabled, you will receive regular pings from unhandled tickets.',
   component: CheckboxInput,
 };

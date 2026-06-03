@@ -50,7 +50,7 @@ export const ChemSeparator = (props) => {
             label={
               <Box
                 style={{
-                  transform: 'Tradução:',
+                  transform: 'translate(20%, -50%)',
                   width: '57px',
                 }}
               >
@@ -71,7 +71,7 @@ export const ChemSeparator = (props) => {
                   <Box
                     lineHeight={1.9}
                     style={{
-                      textShadow: '1px 1px 0 preto',
+                      textShadow: '1px 1px 0 black',
                     }}
                   >
                     {`${Math.ceil(flask.total_volume)} of ${
@@ -100,7 +100,7 @@ export const ChemSeparator = (props) => {
               label={
                 <Box
                   style={{
-                    transform: 'Tradução:',
+                    transform: 'translate(20%, -50%)',
                     width: '57px',
                   }}
                 >
@@ -121,7 +121,7 @@ export const ChemSeparator = (props) => {
                     <Box
                       lineHeight={1.9}
                       style={{
-                        textShadow: '1px 1px 0 preto',
+                        textShadow: '1px 1px 0 black',
                       }}
                     >
                       {`${Math.ceil(beaker.total_volume)} of ${
@@ -150,7 +150,7 @@ export const ChemSeparator = (props) => {
             label={
               <Box
                 style={{
-                  transform: 'Tradução:',
+                  transform: 'translate(20%, -50%)',
                   width: '57px',
                 }}
               >
@@ -178,7 +178,7 @@ export const ChemSeparator = (props) => {
               label={
                 <Box
                   style={{
-                    transform: 'Tradução:',
+                    transform: 'translate(20%, -20%)',
                     width: '57px',
                   }}
                 >
@@ -198,7 +198,7 @@ export const ChemSeparator = (props) => {
                 <Box
                   lineHeight={1.9}
                   style={{
-                    textShadow: '1px 1px 0 preto',
+                    textShadow: '1px 1px 0 black',
                   }}
                 >
                   {`${Math.ceil(fuel.total_volume)} of ${
@@ -215,7 +215,7 @@ export const ChemSeparator = (props) => {
                 label={
                   <Box
                     style={{
-                      transform: 'Tradução:',
+                      transform: 'translate(20%, -20%)',
                       width: '57px',
                     }}
                   >

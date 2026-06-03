@@ -14,7 +14,7 @@ export const GhostPoolProtection = (props) => {
   } = data;
   return (
     <Window
-      title="Proteção da piscina fantasma"
+      title="Ghost Pool Protection"
       width={400}
       height={270}
       theme="admin"
@@ -28,13 +28,13 @@ export const GhostPoolProtection = (props) => {
                 <Button
                   color="good"
                   icon="plus-circle"
-                  content="Activar tudo."
+                  content="Enable Everything"
                   onClick={() => act('all_roles')}
                 />
                 <Button
                   color="bad"
                   icon="minus-circle"
-                  content="Desabilitar tudo"
+                  content="Disable Everything"
                   onClick={() => act('no_roles')}
                 />
               </>
@@ -51,7 +51,7 @@ export const GhostPoolProtection = (props) => {
                 textAlign="center"
                 color={events_or_midrounds ? 'good' : 'bad'}
                 icon="meteor"
-                content="Eventos e Regimentos Midround"
+                content="Events and Midround Rulesets"
                 onClick={() => act('toggle_events_or_midrounds')}
               />
             </Flex.Item>
@@ -61,7 +61,7 @@ export const GhostPoolProtection = (props) => {
                 textAlign="center"
                 color={spawners ? 'good' : 'bad'}
                 icon="pastafarianism"
-                content="Papel fantasma Spawners"
+                content="Ghost Role Spawners"
                 onClick={() => act('toggle_spawners')}
               />
             </Flex.Item>
@@ -71,7 +71,7 @@ export const GhostPoolProtection = (props) => {
                 textAlign="center"
                 color={station_sentience ? 'good' : 'bad'}
                 icon="user-astronaut"
-                content="Estação Criada Sentiência"
+                content="Station Created Sentience"
                 onClick={() => act('toggle_station_sentience')}
               />
             </Flex.Item>
@@ -101,7 +101,7 @@ export const GhostPoolProtection = (props) => {
                 textAlign="center"
                 color="orange"
                 icon="check"
-                content="Aplicar mudanças"
+                content="Apply Changes"
                 onClick={() => act('apply_settings')}
               />
             </Flex.Item>

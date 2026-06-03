@@ -3,7 +3,7 @@ import { TRAITOR_MECHANICAL_DESCRIPTION } from './traitor';
 
 const SyndicateSleeperAgent: Antagonist = {
   key: 'syndicatesleeperagent',
-  name: 'Sindicate Sleeper Agent',
+  name: 'Syndicate Sleeper Agent',
   description: [
     `
       A form of traitor that can activate at any point in the middle

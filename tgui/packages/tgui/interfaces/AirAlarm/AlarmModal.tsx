@@ -10,7 +10,7 @@ export function AlarmEditingModal(props: EditingModalProps) {
   return (
     <Modal>
       <Section
-        title="Editor de Valor Limiar"
+        title="Threshold Value Editor"
         buttons={<Button onClick={() => finish()} icon="times" color="red" />}
       >
         <Box mb={1.5}>

@@ -27,8 +27,8 @@ export const PaintingMachine = (props) => {
             <>
               <Button.Confirm
                 disabled={!hasPDA}
-                content="Pinte PDA"
-                confirmContent="Confirmado?"
+                content="Paint PDA"
+                confirmContent="Confirm?"
                 onClick={() =>
                   act('trim_pda', {
                     selection: selectedPDA,
@@ -38,7 +38,7 @@ export const PaintingMachine = (props) => {
               <Button.Confirm
                 disabled={!hasPDA}
                 content="Reset Imprint"
-                confirmContent="Confirmado?"
+                confirmContent="Confirm?"
                 onClick={() => {
                   act('reset_pda');
                 }}
@@ -59,19 +59,19 @@ export const PaintingMachine = (props) => {
           </Stack>
         </Section>
         <Section
-          title="ID Aparar Impressora"
+          title="ID Trim Imprinter"
           buttons={
             <>
               <Button.Confirm
                 disabled={!hasID}
-                content="Reiniciar conta de identificação"
-                confirmContent="Confirmado?"
+                content="Reset ID Account"
+                confirmContent="Confirm?"
                 onClick={() => act('reset_card')}
               />
               <Button.Confirm
                 disabled={!hasID}
-                content="Identifique-se."
-                confirmContent="Confirmado?"
+                content="Imprint ID Trim"
+                confirmContent="Confirm?"
                 onClick={(sel) =>
                   act('trim_card', {
                     selection: selectedTrim,
@@ -81,8 +81,8 @@ export const PaintingMachine = (props) => {
               <Button
                 icon="question-circle"
                 tooltip={
-                  'Isso é destrutivo.' +
-                  'e limpará todos os acessos no cartão.'
+                  'WARNING: This is destructive' +
+                  ' and will wipe ALL access on the card.'
                 }
                 tooltipPosition="left"
               />

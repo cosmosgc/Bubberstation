@@ -44,7 +44,7 @@ export const SoulcatcherUser = (props) => {
             <Button
               color={targeted ? 'green' : 'red'}
               icon={targeted ? 'check' : 'xmark'}
-              tooltip="Alternar se o portador disser e os verbos emotivos do portador enviarem para este caça-almas."
+              tooltip="Toggle if the carrier say and carrier emote verbs will send to this soulcatcher."
               onClick={() => act('toggle_target', {})}
             />
             {!user_data.scan_needed && user_data.able_to_rename && (
@@ -52,13 +52,13 @@ export const SoulcatcherUser = (props) => {
                 <Button
                   color="green"
                   icon="pen"
-                  tooltip="Mude seu nome."
+                  tooltip="Change your name."
                   onClick={() => act('change_name', {})}
                 />
                 <Button
                   color="red"
                   icon="arrow-rotate-left"
-                  tooltip="Reinicie seu nome."
+                  tooltip="Reset your name."
                   onClick={() => act('reset_name', {})}
                 />
               </>
@@ -69,58 +69,58 @@ export const SoulcatcherUser = (props) => {
                 icon={
                   user_data.communicating_externally ? 'bullhorn' : 'microphone'
                 }
-                tooltip="Alterna enviar mensagens como parte do caça-almas."
+                tooltip="Toggle sending messages as part of the soulcatcher."
                 onClick={() => act('toggle_external_communication', {})}
               />
             )}
           </Box>
           <Divider />
-          <Collapsible title="Texto Sabor">
+          <Collapsible title="Flavor Text">
             <BlockQuote preserveWhitespace>{user_data.description}</BlockQuote>
           </Collapsible>
-          <Collapsible title="Nota como COC">
+          <Collapsible title="OOC Notes">
             <BlockQuote preserveWhitespace>{user_data.ooc_notes}</BlockQuote>
           </Collapsible>
           <Collapsible title="Soul Info">
             <LabeledList textAlign>
-              <LabeledList.Item label="Capacidade de ver lá fora">
+              <LabeledList.Item label="Ability to see outside">
                 {user_data.outside_sight ? 'Enabled' : 'Disabled'}
               </LabeledList.Item>
-              <LabeledList.Item label="Capacidade de ouvir lá fora">
+              <LabeledList.Item label="Ability to hear outside">
                 {user_data.outside_hearing ? 'Enabled' : 'Disabled'}
               </LabeledList.Item>
-              <LabeledList.Item label="Capacidade de ver dentro">
+              <LabeledList.Item label="Ability to see inside">
                 {user_data.internal_sight ? 'Enabled' : 'Disabled'}
               </LabeledList.Item>
-              <LabeledList.Item label="Capacidade de ouvir por dentro">
+              <LabeledList.Item label="Ability to hear inside">
                 {user_data.internal_hearing ? 'Enabled' : 'Disabled'}
               </LabeledList.Item>
-              <LabeledList.Item label="Capacidade de Falar">
+              <LabeledList.Item label="Ability to speak">
                 {user_data.able_to_speak ? 'Enabled' : 'Disabled'}
               </LabeledList.Item>
-              <LabeledList.Item label="Capacidade de emocionar">
+              <LabeledList.Item label="Ability to emote">
                 {user_data.able_to_emote ? 'Enabled' : 'Disabled'}
               </LabeledList.Item>
               {communicate_as_parent && (
                 <>
-                  <LabeledList.Item label="Capacidade de falar como contêiner">
+                  <LabeledList.Item label="Ability to speak as container">
                     {user_data.able_to_speak_as_container
                       ? 'Enabled'
                       : 'Disabled'}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Capacidade de emocionar como destinatário">
+                  <LabeledList.Item label="Ability to emote as container">
                     {user_data.able_to_emote_as_container
                       ? 'Enabled'
                       : 'Disabled'}
                   </LabeledList.Item>
                 </>
               )}
-              <LabeledList.Item label="Capacidade de lamar de nome">
+              <LabeledList.Item label="Ability to change name">
                 {user_data.able_to_rename && !user_data.scan_needed
                   ? 'Enabled'
                   : 'Disabled'}
               </LabeledList.Item>
-              <LabeledList.Item label="Scan de corpo necessário">
+              <LabeledList.Item label="Body Scan Needed">
                 {user_data.scan_needed ? 'True' : 'False'}
               </LabeledList.Item>
             </LabeledList>

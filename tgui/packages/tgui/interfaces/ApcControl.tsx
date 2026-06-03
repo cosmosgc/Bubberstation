@@ -54,7 +54,7 @@ export function ApcControl(props) {
   const { authenticated } = data;
 
   return (
-    <Window title="Controlador APC" width={550} height={500}>
+    <Window title="APC Controller" width={550} height={500}>
       <Window.Content>
         {authenticated ? <ApcLoggedIn /> : <ApcLoggedOut />}
       </Window.Content>
@@ -65,7 +65,7 @@ export function ApcControl(props) {
 function ApcLoggedOut(props) {
   const { act, data } = useBackend<Data>();
   const { emagged } = data;
-  const text = emagged ? 'Open' : 'Entrar';
+  const text = emagged ? 'Open' : 'Log In';
 
   return (
     <Section fill>
@@ -219,7 +219,7 @@ function ControlPanel(props: ControlProps) {
               color={logging ? 'bad' : 'good'}
               onClick={() => act('toggle-logs')}
             >
-              {logging ? 'Pare de registrar.' : 'Restaurar o registro'}
+              {logging ? 'Stop Logging' : 'Restore Logging'}
             </Button>
             <Button onClick={() => act('restore-console')}>
               Reset Console
@@ -297,10 +297,10 @@ function ApcControlScene(props) {
               {apc.name}
             </Button>
           </Table.Cell>
-          <Table.Cell className="texto-direita texto-nowrap">
+          <Table.Cell className="text-right text-nowrap">
             <AreaCharge charging={apc.charging} charge={apc.charge} />
           </Table.Cell>
-          <Table.Cell className="texto-direita texto-nowrap">{apc.load}</Table.Cell>
+          <Table.Cell className="text-right text-nowrap">{apc.load}</Table.Cell>
           <Table.Cell className="text-center text-nowrap">
             <AreaStatusColorButton
               target="equipment"

@@ -33,9 +33,9 @@ export const PrimaryObjectiveMenu = (props: PrimaryObjectiveMenuProps) => {
       {!!can_renegotiate && (
         <Box mt={3} mb={5} bold fontSize={1.2} align="center" color="white">
           <Button
-            content={'Contrato de renegociação'}
+            content={'Renegotiate Contract'}
             tooltip={
-              'Substitua seus objetivos primários por um personalizado. Esta ação só pode ser realizada uma vez.'
+              'Replace your existing primary objectives with a custom one. This action can only be performed once.'
             }
             onClick={() => act('renegotiate_objectives')}
           />

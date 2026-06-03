@@ -23,7 +23,7 @@ function sortHexValues(array: [string, HexValue][]) {
 }
 
 export const skin_tone: Feature<string, string, SkinToneServerData> = {
-  name: 'Tom de pele',
+  name: 'Skin tone',
   component: (props: FeatureValueProps<string, string, SkinToneServerData>) => {
     const { handleSetValue, serverData } = props;
 

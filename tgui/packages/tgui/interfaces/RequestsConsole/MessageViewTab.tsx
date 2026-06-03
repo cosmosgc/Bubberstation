@@ -66,18 +66,18 @@ const MessageDisplay = (props: { message: RequestMessage }) => {
           )}
         </BlockQuote>
         <LabeledList>
-          <LabeledList.Item label="Mensagem verificada por">
-            {message.message_verified_by || 'Não Verificado'}
+          <LabeledList.Item label="Message Verified By">
+            {message.message_verified_by || 'Not Verified'}
           </LabeledList.Item>
-          <LabeledList.Item label="Mensagem carimbada por">
-            {message.message_stamped_by || 'Não Focado'}
+          <LabeledList.Item label="Message Stamped By">
+            {message.message_stamped_by || 'Not Stamped'}
           </LabeledList.Item>
         </LabeledList>
         {message.request_type !== RequestType.ORE_UPDATE && (
           <Section>
             <Button
               icon="reply"
-              content="Resposta rápida"
+              content="Quick Reply"
               onClick={() => {
                 act('quick_reply', {
                   reply_recipient: message.sender_department,

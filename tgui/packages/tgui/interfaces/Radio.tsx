@@ -127,7 +127,7 @@ export const Radio = (props) => {
                 />
               )}
             </LabeledList.Item>
-            <LabeledList.Item label="Volume de Ruído de Rádio">
+            <LabeledList.Item label="Radio Noise Volume">
               <Slider
                 onChange={(e, value) => {
                   act('set_radio_volume', {

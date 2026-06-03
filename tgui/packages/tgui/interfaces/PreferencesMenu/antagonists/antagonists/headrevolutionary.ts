@@ -7,8 +7,8 @@ export const REVOLUTIONARY_MECHANICAL_DESCRIPTION = `
 
 const HeadRevolutionary: Antagonist = {
   key: 'headrevolutionary',
-  name: 'Chefe Revolucionário',
-  description: ['Viva a revolução!', REVOLUTIONARY_MECHANICAL_DESCRIPTION],
+  name: 'Head Revolutionary',
+  description: ['VIVA LA REVOLUTION!', REVOLUTIONARY_MECHANICAL_DESCRIPTION],
   category: Category.Roundstart,
 };
 

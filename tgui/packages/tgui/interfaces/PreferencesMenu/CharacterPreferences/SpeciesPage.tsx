@@ -47,19 +47,19 @@ const FOOD_NAMES: Record<keyof typeof FOOD_ICONS, string> = {
   [Food.Bugs]: 'Bugs',
   [Food.Cloth]: 'Clothing',
   [Food.Dairy]: 'Dairy',
-  [Food.Fried]: 'Comida frita.',
+  [Food.Fried]: 'Fried food',
   [Food.Fruit]: 'Fruit',
   [Food.Gore]: 'Gore',
   [Food.Grain]: 'Grain',
-  [Food.Gross]: 'Comida nojenta.',
-  [Food.Junkfood]: 'Comida de lixo.',
+  [Food.Gross]: 'Gross food',
+  [Food.Junkfood]: 'Junk food',
   [Food.Meat]: 'Meat',
   [Food.Nuts]: 'Nuts',
   [Food.Raw]: 'Raw',
   [Food.Seafood]: 'Seafood',
   [Food.Stone]: 'Rocks',
   [Food.Sugar]: 'Sugar',
-  [Food.Toxic]: 'Comida tóxica.',
+  [Food.Toxic]: 'Toxic food',
   [Food.Vegetables]: 'Vegetables',
 };
 
@@ -146,7 +146,7 @@ function Diet(props: DietProps) {
         <FoodList
           food={liked_food}
           icon="heart"
-          name="Gostava de comida."
+          name="Liked food"
           className="color-pink"
         />
       </Stack.Item>
@@ -155,7 +155,7 @@ function Diet(props: DietProps) {
         <FoodList
           food={disliked_food.filter(notIn(IGNORE_UNLESS_LIKED))}
           icon="thumbs-down"
-          name="Comida desagradada"
+          name="Disliked food"
           className="color-red"
         />
       </Stack.Item>
@@ -164,7 +164,7 @@ function Diet(props: DietProps) {
         <FoodList
           food={toxic_food.filter(notIn(IGNORE_UNLESS_LIKED))}
           icon="biohazard"
-          name="Comida tóxica."
+          name="Toxic food"
           className="color-olive"
         />
       </Stack.Item>
@@ -304,7 +304,7 @@ function SpeciesPageInner(props: SpeciesPageInnerProps) {
       <Stack.Item grow>
         <Stack fill>
           <Stack.Item>
-            <Box height="(100vh - 170px)" overflowY="auto" pr={3}>
+            <Box height="calc(100vh - 170px)" overflowY="auto" pr={3}>
               {species.map(([speciesKey, species]) => {
                 // BUBBER EDIT START - Species selction
                 const speciesPage = (

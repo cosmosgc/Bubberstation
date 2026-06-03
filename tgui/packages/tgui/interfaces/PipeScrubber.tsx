@@ -71,14 +71,14 @@ export const PipeScrubber = (props) => {
                 onClick={() => act('reaction_suppression')}
               >
                 {reactionSuppressionEnabled
-                  ? 'Supressão de Reação Ativada'
-                  : 'Reação Supressão Desativada'}
+                  ? 'Reaction Suppression Enabled'
+                  : 'Reaction Suppression Disabled'}
               </Button>
             )
           }
         >
           <LabeledControls p={1}>
-            <LabeledControls.Item label="Porto Buffer">
+            <LabeledControls.Item label="Buffer Port">
               <Box position="relative">
                 <Tooltip
                   position="top"
@@ -141,7 +141,7 @@ export const PipeScrubber = (props) => {
           title="Direction"
           buttons={
             <Button onClick={() => act('direction')}>
-              {direction ? 'Buffer → Tank' : 'Tanque → Tampão'}
+              {direction ? 'Buffer → Tank' : 'Tank → Buffer'}
             </Button>
           }
         >

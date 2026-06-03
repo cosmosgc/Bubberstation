@@ -38,7 +38,7 @@ type Data = {
 
 export const RaptorDex = (props) => {
   return (
-    <Window title="Dados fazem Raptor" width={770} height={370} theme="hackerman">
+    <Window title="Raptor Data" width={770} height={370} theme="hackerman">
       <Window.Content>
         <RaptorDexContent />
       </Window.Content>
@@ -90,7 +90,7 @@ export const RaptorDexContent = (props) => {
             style={{
               verticalAlign: 'middle',
               borderRadius: '1em',
-              border: '1px verde sólido',
+              border: '1px solid green',
             }}
           />
         </Section>
@@ -118,7 +118,7 @@ export const RaptorDexContent = (props) => {
             )}
           </LabeledList>
         </Section>
-        <Section title="Herdeiros Modificadores">
+        <Section title="Inherit Modifiers">
           <LabeledList>
             <LabeledList.Item label="Health">
               <ProgressBar
@@ -164,7 +164,7 @@ export const RaptorDexContent = (props) => {
                 }}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Velocidade de Crescimento">
+            <LabeledList.Item label="Growth Speed">
               <ProgressBar
                 value={inherited_growth}
                 maxValue={inherited_growth_max}
@@ -179,7 +179,7 @@ export const RaptorDexContent = (props) => {
         </Section>
       </Stack.Item>
       <Stack.Item width="33%">
-        <Section textAlign="center" title="Ligação de amizade">
+        <Section textAlign="center" title="Friendship bond">
           <Image
             mt={-9.5}
             src={`data:image/jpeg;base64,${raptor_happiness}`}
@@ -187,7 +187,7 @@ export const RaptorDexContent = (props) => {
             width="72px"
           />
         </Section>
-        <Section textAlign="center" title="Traços Herdeiros">
+        <Section textAlign="center" title="Inherited Traits">
           <Stack vertical>
             {inherited_traits.map((trait, index) => (
               <Stack.Item key={index}>{trait}</Stack.Item>

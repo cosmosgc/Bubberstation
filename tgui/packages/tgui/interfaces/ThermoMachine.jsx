@@ -45,7 +45,7 @@ export const ThermoMachine = (props) => {
           }
         >
           <LabeledList>
-            <LabeledList.Item label="Temperatura do alvo">
+            <LabeledList.Item label="Target Temperature">
               <NumberInput
                 animated
                 tickWhileDragging
@@ -67,7 +67,7 @@ export const ThermoMachine = (props) => {
               <Button
                 icon="fast-backward"
                 disabled={data.target === data.min}
-                title="Temperatura mínima."
+                title="Minimum temperature"
                 onClick={() =>
                   act('target', {
                     target: data.min,
@@ -77,7 +77,7 @@ export const ThermoMachine = (props) => {
               <Button
                 icon="sync"
                 disabled={data.target === data.initial}
-                title="Temperatura do quarto"
+                title="Room Temperature"
                 onClick={() =>
                   act('target', {
                     target: data.initial,
@@ -87,7 +87,7 @@ export const ThermoMachine = (props) => {
               <Button
                 icon="fast-forward"
                 disabled={data.target === data.max}
-                title="Temperatura máxima"
+                title="Maximum Temperature"
                 onClick={() =>
                   act('target', {
                     target: data.max,

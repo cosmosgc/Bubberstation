@@ -7,11 +7,11 @@ export const junkie: FeatureChoiced = {
 };
 
 export const smoker: FeatureChoiced = {
-  name: 'Marca favorita',
+  name: 'Favorite Brand',
   component: FeatureDropdownInput,
 };
 
 export const alcoholic: FeatureChoiced = {
-  name: 'Bebida Favorita',
+  name: 'Favorite Drink',
   component: FeatureDropdownInput,
 };

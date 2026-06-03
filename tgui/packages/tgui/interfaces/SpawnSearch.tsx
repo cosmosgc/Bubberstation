@@ -166,7 +166,7 @@ export function SpawnSearch() {
       })
       .catch((error) => {
         logger.log(
-          'Não consegui pegar o desovar.',
+          'Failed to fetch spawn_menu_atom_data.json',
           JSON.stringify(error),
         );
       });
@@ -239,7 +239,7 @@ export function SpawnSearch() {
     setTimeout(() => document!.getElementById(selected.toString())?.focus(), 1);
   }
 
-  const modeText = regexSearch ? 'Modo RegEx' : 'Modo padrão';
+  const modeText = regexSearch ? 'RegEx Mode' : 'Standard Mode';
 
   return (
     <Window
@@ -251,7 +251,7 @@ export function SpawnSearch() {
           <Button
             icon="font"
             selected={includeAbstracts}
-            tooltip="Incluindo tipos abstratos."
+            tooltip="Include Abstract Types"
             onClick={() =>
               act('setIncludeAbstracts', {
                 includeAbstracts: !includeAbstracts,
@@ -261,13 +261,13 @@ export function SpawnSearch() {
           <Button
             icon="file-signature"
             selected={searchNames}
-            tooltip="Busca de Nomes"
+            tooltip="Name Search"
             onClick={() => act('setNameSearch', { searchNames: !searchNames })}
           />
           <Button
             icon="wand-magic-sparkles"
             selected={fancyTypes}
-            tooltip="Exibição do tipo chique"
+            tooltip="Fancy Type Display"
             onClick={() => act('setFancyTypes', { fancyTypes: !fancyTypes })}
           />
         </>
@@ -388,10 +388,10 @@ function ListItem(props: AtomSpanProps) {
         {displayPath}
       </span>
       <span
-        className="Etiqueta etiqueta-info"
+        className="label label-info"
         style={{
           marginLeft: '0.5em',
-          color: '(200, 200, 200, 0,5)',
+          color: 'rgba(200, 200, 200, 0.5)',
           fontSize: '10px',
         }}
       >
@@ -402,7 +402,7 @@ function ListItem(props: AtomSpanProps) {
           style={{
             float: 'right',
             marginRight: '0.5em',
-            color: 'Rgba(255, 162, 70, 0,5)',
+            color: 'rgba(255, 162, 70, 0.5)',
           }}
         >
           Abstract

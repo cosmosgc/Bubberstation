@@ -30,7 +30,7 @@ export const Electrolyzer = (props) => {
             <>
               <Button
                 icon="eject"
-                content="Ejetar Célula"
+                content="Eject Cell"
                 disabled={!hasPowercell || !open}
                 onClick={() => act('eject')}
               />

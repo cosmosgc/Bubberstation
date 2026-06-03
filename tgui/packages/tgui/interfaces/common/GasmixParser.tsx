@@ -55,7 +55,7 @@ export const GasmixParser = (props: GasmixParserProps) => {
           key={gas[1]}
         >
           {gas[2].toFixed(2) +
-            'mol (' +
+            ' mol (' +
             ((gas[2] / total_moles) * 100).toFixed(2) +
             ' %)'}
         </LabeledList.Item>
@@ -115,7 +115,7 @@ export const GasmixParser = (props: GasmixParserProps) => {
           </LabeledList.Item>
         ))
       ) : (
-        <LabeledList.Item label="Reações de Gás">
+        <LabeledList.Item label="Gas Reactions">
           {reactions.length
             ? reactions.map((reaction, index) =>
                 reactionOnClick ? (
@@ -129,7 +129,7 @@ export const GasmixParser = (props: GasmixParserProps) => {
                   <div key={reaction[1]}>{reaction[1]}</div>
                 ),
               )
-            : 'Nenhuma reação detectada.'}
+            : 'No reactions detected'}
         </LabeledList.Item>
       )}
     </LabeledList>

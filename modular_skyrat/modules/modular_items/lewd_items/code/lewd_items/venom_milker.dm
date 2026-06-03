@@ -1,46 +1,32 @@
 /obj/item/reagent_containers/venom_milker
 	name = "\improper venom siphon"
 	desc = "Um sifão de veneno de grau comercial, feito para uso em animais maiores, tipicamente humanos. Tem um neutralizador de reagente incorporado que inibe os efeitos da maioria das toxinas extraídas para manuseio seguro, mas não pode ser garantido que funcione."
-
 	icon_state = "venom_milker"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
-
 	volume = 20
-
 	initial_reagent_flags = OPENCONTAINER
 	w_class = WEIGHT_CLASS_SMALL
-
 /obj/item/reagent_containers/venom_milker/Initialize(mapload)
 	. = ..()
-
 	var/filter_immune_string = /datum/preference/choiced/aphrodisiacal_bite_venom::filter_immune_string
 	if (length(filter_immune_string))
 		desc += span_notice("\nOs seguintes reagentes não podem ser filtrados pelo neutralizador:[filter_immune_string]")
-
 /obj/item/reagent_containers/venom_milker/attack(mob/living/target_mob, mob/living/user, params)
 	. = ..()
-
 	if (!can_milk(target_mob, user))
 		return FALSE
-
 	playsound(user, 'sound/effects/compressed_air/tank_insert_clunky.ogg', 50)
 	user.balloon_alert_to_viewers("siphoning...")
-
 	var/text = span_purple("[user]Começa a ficar[src]Para[target_mob]Como presas...")
 	var/self_text = span_purple("Você começa a namorar[src]Para[target_mob]Como presas...")
 	var/victim_text = span_purple("[user]Começa a ficar[src]para suas presas...")
-
 	user.visible_message(text, self_text, ignored_mobs = target_mob)
 	to_chat(target_mob, victim_text)
-
 	if (!do_after(user, 3 SECONDS, target_mob, IGNORE_HELD_ITEM, extra_checks = CALLBACK(src, PROC_REF(can_milk), target_mob, user)))
 		return FALSE
 	playsound(user, 'sound/effects/compressed_air/tank_remove_thunk.ogg', 50)
-
 	siphon(target_mob, user)
-
 	return TRUE
-
 /**
  *
  * Checks if we can milk the target. Returns TRUE/FALSE.
@@ -64,16 +50,13 @@
 		if (!silent)
 			user?.balloon_alert(user, "Sifão cheio!")
 		return FALSE
-
 	if (iscarbon(user))
 		var/mob/living/carbon/carbon_target = target
 		if (carbon_target.is_mouth_covered())
 			if (!silent)
 				user.balloon_alert(user, "Boa coberta!")
 			return FALSE
-
 	return TRUE
-
 /**
  *
  * The actual siphon proc. Triggers the bite's effect, and puts its reagents in the milker.
@@ -89,21 +72,16 @@
 	var/datum/action/cooldown/mob_cooldown/aphrodisiacal_bite/bite = locate() in target.actions
 	if (isnull(bite))
 		return FALSE
-
 	bite.StartCooldown()
 	bite.add_reagents(reagents, TRUE)
-
 	if (!isnull(user))
 		user.balloon_alert_to_viewers("siphoned")
 		var/text = span_purple("[user]\"Siphons veneno de[target]As presas com[src]!")
 		var/self_text = span_purple("Você suga veneno de[target]As presas com[src]!")
 		var/victim_text = span_purple("[user]Tira veneno de suas presas com[src]!")
-
 		user.visible_message(text, self_text, ignored_mobs = target)
 		to_chat(target, victim_text)
-
 	return TRUE
-
 /**
  * If a reagent milked from someone with the venom quirk is NOT in /datum/preference/choiced/aphrodisiacal_bite_venom::milkable_venoms, it will be transformed into this
  * generic chem that has no effects.

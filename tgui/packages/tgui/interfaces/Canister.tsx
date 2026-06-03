@@ -183,11 +183,11 @@ export const Canister = (props) => {
             </Section>
             <Section>
               <LabeledList>
-                <LabeledList.Item label="Carga de Células">
-                  {cellCharge > 0 ? `${cellCharge}%` : 'Célula desaparecida'}
+                <LabeledList.Item label="Cell Charge">
+                  {cellCharge > 0 ? `${cellCharge}%` : 'Missing Cell'}
                 </LabeledList.Item>
                 {!!hasHypernobCrystal && (
-                  <LabeledList.Item label="Reação Supressão">
+                  <LabeledList.Item label="Reaction Suppression">
                     <Button
                       icon={reactionSuppressionEnabled ? 'snowflake' : 'times'}
                       content={
@@ -204,7 +204,7 @@ export const Canister = (props) => {
           <Flex.Item grow={1}>
             <Section
               height="100%"
-              title="Tanque Segurando"
+              title="Holding Tank"
               buttons={
                 !!holdingTank && (
                   <Button

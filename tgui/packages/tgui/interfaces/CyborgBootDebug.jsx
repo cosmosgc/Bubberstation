@@ -39,7 +39,7 @@ export const CyborgBootDebug = (props) => {
   return (
     <Window width={master?.length > 26 ? 537 : 440} height={289}>
       <Window.Content>
-        <Section title="Configurações básicas">
+        <Section title="Basic Settings">
           <LabeledList>
             <LabeledList.Item
               label="Designation"
@@ -53,7 +53,7 @@ export const CyborgBootDebug = (props) => {
             >
               <Input
                 fluid
-                value={designation || 'Cyborg padrão'}
+                value={designation || 'Default Cyborg'}
                 onBlur={(value) =>
                   act('rename', {
                     new_name: value,
@@ -62,7 +62,7 @@ export const CyborgBootDebug = (props) => {
               />
             </LabeledList.Item>
             <LabeledList.Item
-              label="Funções Servo Motor"
+              label="Servo Motor Functions"
               buttons={
                 <Button
                   icon="info"
@@ -79,7 +79,7 @@ export const CyborgBootDebug = (props) => {
               />
             </LabeledList.Item>
             <LabeledList.Item
-              label="Painel de Capa"
+              label="Cover Panel"
               buttons={
                 <Button
                   icon="info"
@@ -115,7 +115,7 @@ export const CyborgBootDebug = (props) => {
               />
             </LabeledList.Item>
             <LabeledList.Item
-              label="Mestre AI"
+              label="Master AI"
               buttons={
                 <Button
                   icon="info"
@@ -133,7 +133,7 @@ export const CyborgBootDebug = (props) => {
               />
             </LabeledList.Item>
             <LabeledList.Item
-              label="Porto LawSync"
+              label="LawSync Port"
               buttons={
                 <Button
                   icon="info"

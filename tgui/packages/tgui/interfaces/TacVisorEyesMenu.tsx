@@ -27,25 +27,25 @@ export const TacVisorEyesMenu = (props) => {
     threatOptions,
   } = data;
   return (
-    <Window title="Tático IFF Visor" width={320} height={264}>
+    <Window title="Tactical IFF Visor" width={320} height={264}>
       <Window.Content>
         <Section title="Settings">
           <LabeledList>
-            <LabeledList.Item label="Facção Amigável">
+            <LabeledList.Item label="Friendly Faction">
               <Dropdown
                 options={validFriendlyFactions}
                 selected={friendlyFaction}
                 onSelected={(value) => act('set_friendly', { faction: value })}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Facção Hostil">
+            <LabeledList.Item label="Hostile Faction">
               <Dropdown
                 options={validHostileFactions}
                 selected={hostileFaction}
                 onSelected={(value) => act('set_hostile', { faction: value })}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Imagem do Visor">
+            <LabeledList.Item label="Visor Image">
               <Dropdown
                 options={visorOptions}
                 selected={visorDisplay}
@@ -54,7 +54,7 @@ export const TacVisorEyesMenu = (props) => {
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Parâmetros de Ameaça">
+        <Section title="Threat Parameters">
           {Object.keys(threatOptions).map((option) => (
             <Button.Checkbox
               key={option}

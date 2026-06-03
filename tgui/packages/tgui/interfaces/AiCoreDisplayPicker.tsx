@@ -53,13 +53,13 @@ const AiCoreDisplayPickerContent = () => {
   return (
     <Stack fill vertical>
       <Stack.Item>
-        <Section title="Display atual do núcleo da IA">
+        <Section title="Current AI Core Display">
           <Flex align="center" justify="center" direction="column">
             {current_icon && (
               <Flex.Item mb={2}>
                 <Box
                   style={{
-                    border: '2px sólido #4a9eff',
+                    border: '2px solid #4a9eff',
                     borderRadius: '4px',
                     backgroundColor: '#1a1a1a',
                     padding: '8px',
@@ -85,7 +85,7 @@ const AiCoreDisplayPickerContent = () => {
 
       <Stack.Item>
         <Input
-          placeholder="Procurar opções de exibição..."
+          placeholder="Search display options..."
           value={searchTerm}
           onChange={(value) => setSearchTerm(value)}
           fluid

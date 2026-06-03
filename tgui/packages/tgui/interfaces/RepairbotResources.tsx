@@ -29,11 +29,11 @@ export const RepairbotResources = (props) => {
   const { act, data } = useBackend<Data>();
   const { stacks, repairbot_icon, repairbot_icon_state } = data;
   return (
-    <Window title="Gestão de Recursos" width={405} height={260} theme="ntos">
+    <Window title="Resource Management" width={405} height={260} theme="ntos">
       <Window.Content>
         <Section
           fill
-          title="Gestão de Recursos"
+          title="Resource Management"
           textAlign="center"
           scrollable
           buttons={
@@ -53,10 +53,10 @@ export const RepairbotResources = (props) => {
                 mt={1}
                 key={stack.stack_reference}
                 style={{
-                  background: '(36, 50, 67, 0.5)',
+                  background: 'rgba(36, 50, 67, 0.5)',
                   padding: '5px 5px',
                   borderRadius: '2em',
-                  border: '2px sólido #574e82',
+                  border: '2px solid #574e82',
                 }}
               >
                 <Flex>

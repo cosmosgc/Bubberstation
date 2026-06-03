@@ -65,13 +65,13 @@ const recipe_effect_structure: Recipe[] = [
   },
   {
     param: 'energy_loss_multiplier',
-    label: 'Perda de energia.',
+    label: 'Energy loss',
     icon: 'sun-o',
     scale: 3,
   },
   {
     param: 'fuel_consumption_multiplier',
-    label: 'Uso de combustível',
+    label: 'Fuel use',
     icon: ['window-minimize', 'arrow-down'],
     scale: 1.5,
   },
@@ -83,7 +83,7 @@ const recipe_effect_structure: Recipe[] = [
   },
   {
     param: 'temperature_multiplier',
-    label: 'Temperatura máxima.',
+    label: 'Max temperature',
     icon: 'thermometer-full',
     override_base: 0.85,
     scale: 1.15,

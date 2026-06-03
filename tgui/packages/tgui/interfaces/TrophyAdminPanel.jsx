@@ -8,7 +8,7 @@ export const TrophyAdminPanel = (props) => {
   const { act, data } = useBackend();
   const { trophies } = data;
   return (
-    <Window title="Painel de Administração de Troféus" width={800} height={600}>
+    <Window title="Trophies Admin Panel" width={800} height={600}>
       <Window.Content scrollable>
         <Table>
           <Table.Row header>
@@ -27,7 +27,7 @@ export const TrophyAdminPanel = (props) => {
                     wordBreak: 'break-all',
                     wordWrap: 'break-word',
                     color: !trophy.is_valid
-                      ? 'Rgba(255, 0, 0, 0,5)'
+                      ? 'rgba(255, 0, 0, 0.5)'
                       : 'inherit',
                   }}
                 >
@@ -36,7 +36,7 @@ export const TrophyAdminPanel = (props) => {
                 <Table.Cell>
                   <Button
                     icon="edit"
-                    tooltip={'Editar caminho'}
+                    tooltip={'Edit path'}
                     tooltipPosition="bottom"
                     onClick={() => act('edit_path', { ref: trophy.ref })}
                   />
@@ -52,7 +52,7 @@ export const TrophyAdminPanel = (props) => {
                 <Table.Cell>
                   <Button
                     icon="edit"
-                    tooltip={'Editar mensagem'}
+                    tooltip={'Edit message'}
                     tooltipPosition="bottom"
                     onClick={() => act('edit_message', { ref: trophy.ref })}
                   />
@@ -68,7 +68,7 @@ export const TrophyAdminPanel = (props) => {
                 <Table.Cell>
                   <Button
                     icon="trash"
-                    tooltip={'Delete troféu'}
+                    tooltip={'Delete trophy'}
                     tooltipPosition="bottom"
                     onClick={() => act('delete', { ref: trophy.ref })}
                   />

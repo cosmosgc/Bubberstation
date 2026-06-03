@@ -16,7 +16,7 @@ export const AnnouncementTab = (props) => {
         maxLength={1025}
         value={messageText}
         onChange={setMessageText}
-        placeholder="Digite seu anúncio..."
+        placeholder="Type your announcement..."
       />
       <Section>
         <AuthenticationNoticeBox />
@@ -28,7 +28,7 @@ export const AnnouncementTab = (props) => {
             ) || !messageText
           }
           icon="bullhorn"
-          content="Enviar anúncio"
+          content="Send announcement"
           onClick={() => {
             if (
               !(
@@ -45,7 +45,7 @@ export const AnnouncementTab = (props) => {
         />
         <Button
           icon="trash-can"
-          content="Descartar anúncio"
+          content="Discard announcement"
           onClick={() => {
             act('clear_authentication');
             setMessageText('');

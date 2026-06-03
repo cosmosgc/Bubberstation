@@ -12,7 +12,7 @@ import { Window } from '../layouts';
 
 export const RemoteRobotControl = (props) => {
   return (
-    <Window title="Controle remoto de robôs" width={500} height={500}>
+    <Window title="Remote Robot Control" width={500} height={500}>
       <Window.Content scrollable>
         <RemoteRobotControlContent />
       </Window.Content>

@@ -81,7 +81,7 @@ const NewscasterChannelCreation = (props) => {
   const { creating_channel, awaiting_approval, name, desc } = data;
 
   if (awaiting_approval) {
-    return <LoadingScreen label="Aguardando aprovação do Comando Central..." />;
+    return <LoadingScreen label="Awaiting Central Command approval..." />;
   }
 
   if (!creating_channel) {
@@ -164,7 +164,7 @@ const NewscasterChannelCreation = (props) => {
               setcross_sector(!cross_sector);
               setLockedmode(true);
             }}
-            tooltip="Mensagens cruzadas exigirão aprovação do Comando Central para cada artigo. Canais intersetoriais são bloqueados automaticamente."
+            tooltip="Cross-sector newscaster messaging will require Central Command approval for each article. Cross-sector channels are automatically locked."
             tooltipPosition="bottom-start"
           >
             Make cross-sector?
@@ -265,8 +265,8 @@ const NewscasterWantedScreen = (props) => {
             <Stack.Item>
               <Box bold color="red">
                 {activeWanted.active
-                  ? 'Questão Ativa Procurada:'
-                  : 'Procurado Negado'}
+                  ? 'Active Wanted Issue:'
+                  : 'Dismissed Wanted Issue:'}
                 <Button
                   color="red"
                   position="relative"
@@ -297,7 +297,7 @@ const NewscasterWantedScreen = (props) => {
       {security_mode ? (
         <>
           <LabeledList>
-            <LabeledList.Item label="Nome Criminal">
+            <LabeledList.Item label="Criminal Name">
               <Button
                 disabled={!security_mode}
                 icon="pen"
@@ -306,7 +306,7 @@ const NewscasterWantedScreen = (props) => {
                 {criminal_name ? criminal_name : ' N/A'}
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Atividade Criminal">
+            <LabeledList.Item label="Criminal Activity">
               <Button
                 nowrap={false}
                 disabled={!security_mode}
@@ -324,7 +324,7 @@ const NewscasterWantedScreen = (props) => {
               disabled={!security_mode}
               onClick={() => act('togglePhoto')}
             >
-              {photo_data ? 'Remova a foto' : 'Anexar foto'}
+              {photo_data ? 'Remove photo' : 'Attach photo'}
             </Button>
             <Button
               disabled={!security_mode}
@@ -347,8 +347,8 @@ const NewscasterWantedScreen = (props) => {
         <Box>
           {wanted.map((activeWanted) =>
             activeWanted.active
-              ? 'Por favor, contate seu oficial de segurança local.'
-              : 'Não quero problemas. Tenha um dia seguro.',
+              ? 'Please contact your local security officer if spotted.'
+              : 'No wanted issue posted. Have a secure day.',
           )}
         </Box>
       )}
@@ -452,7 +452,7 @@ const NewscasterChannelBox = (props) => {
             {!!admin_mode && (
               <Button
                 icon="ban"
-                tooltip="Censurar todo o canal e seu conteúdo como perigoso para a estação."
+                tooltip="Censor the whole channel and its contents as dangerous to the station."
                 disabled={!admin_mode || !viewing_channel}
                 onClick={() =>
                   act('channelDNotice', {
@@ -468,7 +468,7 @@ const NewscasterChannelBox = (props) => {
           <Box>
             <Button
               icon="newspaper"
-              tooltip={paper <= 0 ? 'Insira papel primeiro!' : ''}
+              tooltip={paper <= 0 ? 'Insert paper first!' : ''}
               disabled={paper <= 0}
               onClick={() => act('printNewspaper')}
             >
@@ -596,7 +596,7 @@ const NewscasterChannelMessages = (props) => {
                 {!!admin_mode && (
                   <Button
                     icon="user-slash"
-                    tooltip="Censor Autor"
+                    tooltip="Censor Author"
                     disabled={!admin_mode}
                     onClick={() =>
                       act('authorCensor', {
@@ -607,7 +607,7 @@ const NewscasterChannelMessages = (props) => {
                 )}
                 <Button
                   icon="comment"
-                  tooltip="Deixe um comentário."
+                  tooltip="Leave a Comment."
                   disabled={
                     message.censored_author ||
                     message.censored_message ||

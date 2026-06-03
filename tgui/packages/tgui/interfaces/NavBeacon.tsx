@@ -40,7 +40,7 @@ export type NavBeaconStaticControl = {
 export const NavBeacon = (props) => {
   const { act, data } = useBackend();
   return (
-    <Window title="Beacon Nagivacional" width={400} height={350}>
+    <Window title="Nagivational Beacon" width={400} height={350}>
       <Window.Content>
         <NavBeaconContent />
       </Window.Content>
@@ -70,13 +70,13 @@ export const NavBeaconControlSection = (props: DisabledProps) => {
         <LabeledList.Item label="Location">
           <Button
             fluid
-            content={controls.location ?? 'Nenhum.'}
+            content={controls.location ?? 'None set'}
             icon="pencil-alt"
             disabled={props.disabled}
             onClick={() => act('set_location')}
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Activar como Beacon Patrulha">
+        <LabeledList.Item label="Enable as Patrol Beacon">
           <Button.Checkbox
             fluid
             checked={controls.patrol_enabled}
@@ -85,16 +85,16 @@ export const NavBeaconControlSection = (props: DisabledProps) => {
             onClick={() => act('toggle_patrol')}
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Próxima patrulha.">
+        <LabeledList.Item label="Next patrol">
           <Button
             fluid
-            content={controls.patrol_next ?? 'Sem próximo local de patrulha.'}
+            content={controls.patrol_next ?? 'No next patrol location'}
             icon="pencil-alt"
             disabled={props.disabled}
             onClick={() => act('set_patrol_next')}
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Activar como Beacon de Entrega">
+        <LabeledList.Item label="Enable as Delivery Beacon">
           <Button.Checkbox
             fluid
             checked={controls.delivery_enabled}
@@ -103,7 +103,7 @@ export const NavBeaconControlSection = (props: DisabledProps) => {
             onClick={() => act('toggle_delivery')}
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Direção de entrega">
+        <LabeledList.Item label="Delivery Direction">
           <Dropdown
             disabled={!!props.disabled}
             options={static_controls.direction_options}
@@ -126,7 +126,7 @@ export const NavBeaconMaintenanceSection = (props: DisabledProps) => {
   return (
     <Section title="Maintenance">
       <LabeledList>
-        <LabeledList.Item label="Reiniciar códigos">
+        <LabeledList.Item label="Reset codes">
           {!!static_controls.has_codes && (
             <Button
               fluid
@@ -138,7 +138,7 @@ export const NavBeaconMaintenanceSection = (props: DisabledProps) => {
           )}
           {!static_controls.has_codes && <Box>No backup codes found</Box>}
         </LabeledList.Item>
-        <LabeledList.Item label="Cobertura da escotilha de manutenção.">
+        <LabeledList.Item label="Maintenance hatch cover">
           <Button.Checkbox
             fluid
             checked={controls.cover_locked}

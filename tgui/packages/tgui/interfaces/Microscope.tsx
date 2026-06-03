@@ -40,7 +40,7 @@ export const Microscope = (props) => {
     <Window width={620} height={620}>
       <Window.Content scrollable>
         <Section
-          title={has_dish ? 'Petri Dish Sample' : 'Não Petri Dish'}
+          title={has_dish ? 'Petri Dish Sample' : 'No Petri Dish'}
           buttons={
             !!has_dish && (
               <Button
@@ -88,7 +88,7 @@ const CellList = (props) => {
               <Button
                 color="transparent"
                 icon="circle-question"
-                tooltip="Coloque a amostra em um Vat Crescente e despeje os reagentes necessários."
+                tooltip="Put the sample into a Growing Vat and pour the required reagents."
               />
             }
           >
@@ -104,7 +104,7 @@ const CellList = (props) => {
             )}
             <Stack fill>
               <Stack.Item grow>
-                <GroupTitle title="Reagentes necessários." />
+                <GroupTitle title="Required Reagents" />
                 {Object.keys(cell_line.requireds).map((reagent) => (
                   <Button fluid key={reagent}>
                     {reagent}

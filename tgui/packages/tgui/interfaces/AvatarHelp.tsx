@@ -12,39 +12,39 @@ const DEFAULT_HELP = `No information available! Ask for assistance if needed.`;
 const boxHelp = [
   {
     color: 'purple',
-    text: 'Estude a área e faça o que precisa ser feito para recuperar a caixa. Preste atenção nas informações de domínio e pistas de contexto.',
+    text: 'Study the area and do what needs to be done to recover the crate. Pay close attention to domain information and context clues.',
     icon: 'search-location',
     title: 'Search',
   },
   {
     color: 'green',
-    text: 'Traga a caixa para o local de envio designado no esconderijo. A área pode parecer fora do lugar. Examine o esconderijo para encontrá-lo.',
+    text: 'Bring the crate to the designated sending location in the safehouse. The area may seem out of place. Examine the safehouse to find it.',
     icon: 'boxes',
     title: 'Recover',
   },
   {
     color: 'blue',
-    text: 'A escada representa a maneira mais segura de desconectar antes do esconderijo ser recuperado. Se sua conexão se romper, a netpod oferece potencial de ressuscitação limitado.',
+    text: 'The ladder represents the safest way to disconnect before the cache is recovered. Should your connection sever, the netpod offers limited resuscitation potential.',
     icon: 'plug',
     title: 'Disconnect',
   },
   {
     color: 'yellow',
-    text: 'Enquanto estão conectados, estão a salvo de perigos ambientais e intrusões, mas não completamente. Preste atenção aos alertas.',
+    text: 'While connected, you are somewhat safe from environmental hazards and intrusions, but not completely. Pay close attention to alerts.',
     icon: 'id-badge',
     title: 'Security',
   },
   {
     color: 'gold',
-    text: 'Gerar avatares custa uma tremenda largura de banda. Não os desperdice.',
+    text: 'Generating avatars costs tremendous bandwidth. Do not waste them.',
     icon: 'coins',
-    title: 'Tentativas Limitadas',
+    title: 'Limited Attempts',
   },
   {
     color: 'red',
-    text: 'Lembre-se que você está fisicamente ligado a esta presença. Você é um corpo estranho em um ambiente hostil. Vai tentar ejetar você com força.',
+    text: 'Remember that you are physically linked to this presence. You are a foreign body in a hostile environment. It will attempt to forcefully eject you.',
     icon: 'skull-crossbones',
-    title: 'Perigo percebido',
+    title: 'Realized Danger',
   },
 ] as const;
 
@@ -53,7 +53,7 @@ export const AvatarHelp = (props) => {
   const { help_text = DEFAULT_HELP } = data;
 
   return (
-    <Window title="Informação de Domínio" width={600} height={600}>
+    <Window title="Domain Information" width={600} height={600}>
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item grow>
@@ -61,7 +61,7 @@ export const AvatarHelp = (props) => {
               color="good"
               fill
               scrollable
-              title="Bem-vindo ao Domínio Virtual."
+              title="Welcome to the Virtual Domain."
             >
               {help_text}
             </Section>

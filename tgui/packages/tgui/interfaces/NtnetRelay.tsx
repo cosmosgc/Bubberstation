@@ -32,7 +32,7 @@ export const NtnetRelay = (props) => {
     <Window title="NtNet Quantum Relay" width={400} height={300}>
       <Window.Content>
         <Section
-          title="Buffer de rede"
+          title="Network Buffer"
           buttons={
             <Button
               icon="power-off"
@@ -65,7 +65,7 @@ export const NtnetRelay = (props) => {
               </Box>
               <Button
                 icon="signal"
-                content="PURGE BULFER"
+                content="PURGE BUFFER"
                 mt={1}
                 color="bad"
                 onClick={() => act('restart')}

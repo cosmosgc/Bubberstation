@@ -153,7 +153,7 @@ const Status = (props: StatusProps) => {
             </ProgressBar>
           )}
         </LabeledList.Item>
-        <LabeledList.Item label="Papel guardado">
+        <LabeledList.Item label="Paper Stored">
           <ProgressBar
             minValue={0}
             value={paper_count}
@@ -177,10 +177,10 @@ const Status = (props: StatusProps) => {
           </ProgressBar>
         </LabeledList.Item>
         <LabeledList.Item label="Blank" textAlign="center">
-          <b>{selectedBlank ? selectedBlank : 'Não Seleccionado'}</b>
+          <b>{selectedBlank ? selectedBlank : 'Not Selected'}</b>
         </LabeledList.Item>
 
-        <LabeledList.Item label="Tipo de Papel">
+        <LabeledList.Item label="Paper Type">
           <Stack align="center">
             {paper_types.map((paper) => (
               <Stack.Item grow key={paper.type}>
@@ -350,7 +350,7 @@ const Categories = (props: CategoriesProps) => {
       buttons={
         <Button
           icon="times"
-          tooltip="Fechar a categoria em branco selecionada"
+          tooltip="Close selected blank category"
           disabled={!selectedCategory}
           onClick={() => {
             setSelectedCategory('');
@@ -364,9 +364,9 @@ const Categories = (props: CategoriesProps) => {
             fluid
             icon="chevron-right"
             color="transparent"
-            selected={selectedCategory === 'Todos em branco'}
+            selected={selectedCategory === 'All Blanks'}
             onClick={() => {
-              setSelectedCategory('Todos em branco');
+              setSelectedCategory('All Blanks');
             }}
           >
             All Blanks
@@ -408,7 +408,7 @@ const Blanks = (props: BlanksProps) => {
   const sortedBlanks = blanks.sort((a, b) => (a.name > b.name ? 1 : -1));
   const visibleBlanks = searchText
     ? sortedBlanks.filter(search)
-    : selectedCategory === 'Todos em branco'
+    : selectedCategory === 'All Blanks'
       ? sortedBlanks
       : sortedBlanks.filter((blank) => blank.category === selectedCategory);
 
@@ -421,7 +421,7 @@ const Blanks = (props: BlanksProps) => {
         <Input
           width={8.75}
           value={searchText}
-          placeholder="Peça em branco..."
+          placeholder="Search blank..."
           onChange={setSearchText}
         />
       }

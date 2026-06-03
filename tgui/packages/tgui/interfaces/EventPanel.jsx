@@ -24,12 +24,12 @@ export const EventPanel = (props) => {
     next_low_chaos_time,
   } = data;
   return (
-    <Window title={'Painel de Eventos'} width={500} height={900} theme={'admin'}>
+    <Window title={'Event Panel'} width={500} height={900} theme={'admin'}>
       <Window.Content>
         <Stack vertical fill>
           {!!admin_mode && (
             <Stack.Item>
-              <Section title={'Controle de eventos'}>
+              <Section title={'Event Control'}>
                 <NoticeBox color="blue">
                   {`Next vote in ${toFixed(next_vote_time, 0)} seconds.`}
                 </NoticeBox>
@@ -38,58 +38,58 @@ export const EventPanel = (props) => {
                 </NoticeBox>
                 <Button
                   icon="plus"
-                  content="Comece o voto de administrador."
-                  tooltip="Comece a votar no próximo evento."
+                  content="Start Admin Vote"
+                  tooltip="Start a vote for the next event."
                   disabled={vote_in_progress}
                   onClick={() => act('start_vote_admin')}
                 />
                 <Button
                   icon="plus"
-                  content="Iniciar Chaos de Administração Voto"
-                  tooltip="Iniciar um voto de caos para o próximo evento."
+                  content="Start Admin Chaos Vote"
+                  tooltip="Start a chaos vote for the next event."
                   disabled={vote_in_progress}
                   onClick={() => act('start_vote_admin_chaos')}
                 />
                 <Button
                   icon="user-plus"
-                  content="Comece o Voto do Jogador."
-                  tooltip="Isso vai começar uma votação que será publicamente visível."
+                  content="Start Player Vote"
+                  tooltip="This will start a vote that will be publically visible."
                   color="average"
                   disabled={vote_in_progress}
                   onClick={() => act('start_player_vote')}
                 />
                 <Button
                   icon="user-plus"
-                  content="Começar o Chaos Público Voto"
-                  tooltip="Isso vai começar uma votação que será publicamente visível."
+                  content="Start Public Chaos Vote"
+                  tooltip="This will start a vote that will be publically visible."
                   color="average"
                   disabled={vote_in_progress}
                   onClick={() => act('start_player_vote_chaos')}
                 />
                 <Button
                   icon="stopwatch"
-                  content="Fim do Voto"
-                  tooltip="Termine a votação atual e execute o evento vencedor."
+                  content="End Vote"
+                  tooltip="End the current vote and execute the winning event."
                   disabled={!vote_in_progress}
                   onClick={() => act('end_vote')}
                 />
                 <Button
                   icon="ban"
-                  content="Cancelar votação"
-                  tooltip="Cancele a votação atual e reinicie o sistema de votação."
+                  content="Cancel Vote"
+                  tooltip="Cancel the current vote and reset the voting system."
                   disabled={!vote_in_progress}
                   onClick={() => act('cancel_vote')}
                 />
                 <Button
                   icon="clock"
-                  content="Próximo voto."
-                  tooltip="Recedule a próxima votação."
+                  content="Rescedule Next Vote"
+                  tooltip="Rescedule the next timed vote."
                   onClick={() => act('reschedule')}
                 />
                 <Button
                   icon="clock"
-                  content="Próximo Evento do Baixo Caos"
-                  tooltip="Recedule o próximo evento do Low Chaos."
+                  content="Rescedule Next Low Chaos Event"
+                  tooltip="Rescedule the next timed LOW CHAOS event."
                   onClick={() => act('reschedule_low_chaos')}
                 />
               </Section>
@@ -103,7 +103,7 @@ export const EventPanel = (props) => {
               title={
                 vote_in_progress
                   ? `Available Events (${toFixed(end_time)} seconds) `
-                  : 'Eventos disponíveis'
+                  : 'Available Events'
               }
             >
               {vote_in_progress ? (
@@ -141,7 +141,7 @@ export const EventPanel = (props) => {
                 grow
                 fill
                 height="150px"
-                title="Eventos anteriores"
+                title="Previous Events"
               >
                 {previous_events.length > 0 ? (
                   <LabeledList>

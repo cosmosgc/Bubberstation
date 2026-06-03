@@ -69,8 +69,8 @@ export const Newspaper = (props) => {
         {!!scribble_message && (
           <Box
             style={{
-              borderTop: 'Rgba pontilhado 3px(255, 0,8)',
-              borderBottom: 'Rgba pontilhado 3px(255, 0,8)',
+              borderTop: '3px dotted rgba(255, 255, 255, 0.8)',
+              borderBottom: '3px dotted rgba(255, 255, 255, 0.8)',
             }}
           >
             {scribble_message}
@@ -133,7 +133,7 @@ const NewspaperChannel = (props) => {
                   <Divider />
                 </>
               ))
-            : 'Nenhuma história de alimentação vem deste canal...'}
+            : 'No feed stories stem from this channel...'}
         </Box>
       ))}
     </Section>
@@ -156,7 +156,7 @@ const NewspaperEnding = (props) => {
           {!!wanted_photo && <Image src={wanted_photo} />}
         </>
       ) : (
-        'Além de alguns anúncios classificados desinteressantes, não há nada nesta página...'
+        'Apart from some uninteresting classified ads, theres nothing in this page...'
       )}
     </Section>
   );

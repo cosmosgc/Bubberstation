@@ -55,7 +55,7 @@ export function StylePage(props) {
             className={classes(['supplypods64x64', `pod_asset${page.id}`])}
             style={{
               pointerEvents: 'none',
-              transform: '(45deg) traduzir (-25%,-10%)',
+              transform: 'rotate(45deg) translate(-25%,-10%)',
             }}
           />
         </Button>

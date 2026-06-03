@@ -14,14 +14,14 @@ export function Lookup() {
     <Stack fill>
       <Stack.Item grow basis={0}>
         <Section
-          title="Pesquisa de receitas"
+          title="Recipe lookup"
           minWidth="353px"
           buttons={
             <>
               <Button
                 icon="atom"
                 color={beakerSync ? 'green' : 'red'}
-                tooltip="Quando ativada, a reação exibida exibirá automaticamente reações contínuas no copo associado."
+                tooltip="When enabled the displayed reaction will automatically display ongoing reactions in the associated beaker."
                 onClick={() => act('beaker_sync')}
               >
                 Beaker Sync
@@ -29,7 +29,7 @@ export function Lookup() {
               <Button
                 icon="search"
                 color="purple"
-                tooltip="Procure uma receita pelo nome do produto."
+                tooltip="Search for a recipe by product name"
                 onClick={() => act('search_recipe')}
               >
                 Search
@@ -55,13 +55,13 @@ export function Lookup() {
       </Stack.Item>
       <Stack.Item grow basis={0}>
         <Section
-          title="Pesquisa de reagentes."
+          title="Reagent lookup"
           minWidth="300px"
           buttons={
             <>
               <Button
                 icon="search"
-                tooltip="Procure um reagente pelo nome."
+                tooltip="Search for a reagent by name"
                 tooltipPosition="left"
                 onClick={() => act('search_reagents')}
               >

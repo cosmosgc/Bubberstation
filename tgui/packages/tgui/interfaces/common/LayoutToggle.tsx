@@ -39,7 +39,7 @@ export function LayoutToggle(props: Props) {
     <Stack.Item>
       <Button
         icon={state === LAYOUT.Grid ? 'list' : 'border-all'}
-        tooltip={state === LAYOUT.Grid ? 'Veja como Lista' : 'Vista como Grade'}
+        tooltip={state === LAYOUT.Grid ? 'View as List' : 'View as Grid'}
         tooltipPosition={'bottom-end'}
         onClick={handleClick}
       />

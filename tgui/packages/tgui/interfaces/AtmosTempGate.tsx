@@ -33,7 +33,7 @@ export const AtmosTempGate = (props) => {
                 onClick={() => act('power')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Ajustes de calor">
+            <LabeledList.Item label="Heat settings">
               <NumberInput
                 animated
                 value={temperature}

@@ -38,55 +38,55 @@ export const SyndContractorContent = (props) => {
   const { data, act } = useBackend();
 
   const terminalMessages = [
-    'Gravando dados biométricos...',
-    'Analisando informações do sindicato...',
-    'ESTATUTO CONFIRMADO',
-    'Contatando o banco de dados do pecado...',
-    'Esperando resposta...',
-    'Esperando resposta...',
-    'Esperando resposta...',
-    'Esperando resposta...',
-    'Esperando resposta...',
-    'Esperando resposta...',
-    'Resposta recebida, ack 4851234...',
+    'Recording biometric data...',
+    'Analyzing embedded syndicate info...',
+    'STATUS CONFIRMED',
+    'Contacting syndicate database...',
+    'Awaiting response...',
+    'Awaiting response...',
+    'Awaiting response...',
+    'Awaiting response...',
+    'Awaiting response...',
+    'Awaiting response...',
+    'Response received, ack 4851234...',
     `CONFIRM ACC ${Math.round(Math.random() * 20000)}`,
-    'Montando conta privadas...',
-    'CONTA DE CONTRATOR CRIADA',
-    'Procurando por contratos disponíveis...',
-    'Procurando por contratos disponíveis...',
-    'Procurando por contratos disponíveis...',
-    'Procurando por contratos disponíveis...',
-    'CONTRATOS CONTRADOS',
-    'Bem-vindo, Agente.',
+    'Setting up private accounts...',
+    'CONTRACTOR ACCOUNT CREATED',
+    'Searching for available contracts...',
+    'Searching for available contracts...',
+    'Searching for available contracts...',
+    'Searching for available contracts...',
+    'CONTRACTS FOUND',
+    'WELCOME, AGENT',
   ];
 
   const infoEntries = [
     'SyndTract v2.0',
     '',
-    "Identificamos alvos potentes de alto valor que são",
-    'Atualmente designado para sua área de missão. Eles são acreditados',
-    'para manter informações valiosas que poderiam ser de imediato',
-    'importância para nossa organização.',
+    "We've identified potentional high-value targets that are",
+    'currently assigned to your mission area. They are believed',
+    'to hold valuable information which could be of immediate',
+    'importance to our organisation.',
     '',
-    'Listados abaixo estão todos os contratos disponíveis para você. Você.',
-    'Devem viajar o mundo específico para o designado',
-    'Deixe-nos, e entre em contato através deste link. Nós enviaremos',
-    'uma unidade de extração especializada para colocar o corpo.',
+    'Listed below are all of the contracts available to you. You',
+    'are to bring the specified target to the designated',
+    'drop-off, and contact us via this uplink. We will send',
+    'a specialised extraction unit to put the body into.',
     '',
-    'Queremos alvos vivos, mas às vezes pagamos pouco.',
-    "Se não forem, você não receberá o programa.",
-    'Bônus. Você pode redimir seu pagamento através desta ligação.',
-    'a forma de telecristais crus, que podem ser colocados em seu',
-    'Sindicato regular uplink para comprar o que você pode precisar.',
-    'Nós fornecemos estes cristais no momento em que você enviar o',
-    'alvo até nós, que pode ser coletado a qualquer momento através',
-    'Este sistema.',
+    'We want targets alive - but we will sometimes pay slight',
+    "amounts if they're not, you just won't receive the shown",
+    'bonus. You can redeem your payment through this uplink in',
+    'the form of raw telecrystals, which can be put into your',
+    'regular Syndicate uplink to purchase whatever you may need.',
+    'We provide you with these crystals the moment you send the',
+    'target up to us, which can be collected at anytime through',
+    'this system.',
     '',
-    'Alvos extraídos serão resgatados para a estação uma vez.',
-    'Seu uso para nós é cumprido, com nós fornecendo-lhe um pequeno',
-    'Corte percentual. Você pode querer estar atento a eles.',
-    'Identificando você quando voltarem. Nós fornecemos-lhe',
-    'um contrato padrão de carga, que vai ajudar a cobrir o seu',
+    'Targets extracted will be ransomed back to the station once',
+    'their use to us is fulfilled, with us providing you a small',
+    'percentage cut. You may want to be mindful of them',
+    'identifying you when they come back. We provide you with',
+    'a standard contractor loadout, which will help cover your',
     'identity.',
   ];
 
@@ -111,7 +111,7 @@ export const SyndContractorContent = (props) => {
       <Section minHeight="525px">
         <Box width="100%" textAlign="center">
           <Button
-            content="REGISTO DO UTILIZADOR"
+            content="REGISTER USER"
             color="transparent"
             onClick={() => act('PRG_login')}
           />
@@ -123,7 +123,7 @@ export const SyndContractorContent = (props) => {
 
   if (data.logged_in && data.first_load) {
     return (
-      <Box backgroundColor="Rgba (0, 0, 0, 0,8)" minHeight="525px">
+      <Box backgroundColor="rgba(0, 0, 0, 0.8)" minHeight="525px">
         <FakeTerminal
           allMessages={terminalMessages}
           finishedTimeout={3000}
@@ -136,7 +136,7 @@ export const SyndContractorContent = (props) => {
   if (data.info_screen) {
     return (
       <>
-        <Box backgroundColor="Rgba (0, 0, 0, 0,8)" minHeight="500px">
+        <Box backgroundColor="rgba(0, 0, 0, 0.8)" minHeight="500px">
           <FakeTerminal allMessages={infoEntries} linesPerSecond={10} />
         </Box>
         <Button
@@ -167,7 +167,7 @@ export const StatusPane = (props) => {
         <>
           Contractor Status
           <Button
-            content="Veja a informação novamente"
+            content="View Information Again"
             color="transparent"
             mb={0}
             ml={1}
@@ -185,7 +185,7 @@ export const StatusPane = (props) => {
         <Stack.Item grow>
           <LabeledList>
             <LabeledList.Item
-              label="TC disponível"
+              label="TC Available"
               buttons={
                 <Button
                   content="Claim"
@@ -196,17 +196,17 @@ export const StatusPane = (props) => {
             >
               {String(data.redeemable_tc)}
             </LabeledList.Item>
-            <LabeledList.Item label="TC Ganhou">
+            <LabeledList.Item label="TC Earned">
               {String(data.earned_tc)}
             </LabeledList.Item>
           </LabeledList>
         </Stack.Item>
         <Stack.Item grow>
           <LabeledList>
-            <LabeledList.Item label="Contratos concluídos">
+            <LabeledList.Item label="Contracts Completed">
               {String(data.contracts_completed)}
             </LabeledList.Item>
-            <LabeledList.Item label="Estado atual">ACTIVE</LabeledList.Item>
+            <LabeledList.Item label="Current Status">ACTIVE</LabeledList.Item>
           </LabeledList>
         </Stack.Item>
       </Stack>
@@ -239,10 +239,10 @@ const ContractsTab = (props) => {
   return (
     <>
       <Section
-        title="Contratos Disponíveis"
+        title="Available Contracts"
         buttons={
           <Button
-            content="Chamada Extração"
+            content="Call Extraction"
             disabled={!data.ongoing_contract || data.extraction_enroute}
             onClick={() => act('PRG_call_extraction')}
           />
@@ -265,7 +265,7 @@ const ContractsTab = (props) => {
               title={
                 contract.target
                   ? `${contract.target} (${contract.target_rank})`
-                  : 'Alvo inválido'
+                  : 'Invalid Target'
               }
               level={active ? 1 : 2}
               buttons={
@@ -298,7 +298,7 @@ const ContractsTab = (props) => {
         })}
       </Section>
       <Section
-        title="Localização de entrega"
+        title="Dropoff Locator"
         textAlign="center"
         opacity={data.ongoing_contract ? 100 : 0}
       >

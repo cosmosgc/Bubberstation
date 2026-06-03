@@ -51,7 +51,7 @@ export function DeleteCharacterPopup(props: Props) {
             </Stack.Item>
 
             <Stack.Item>
-              <Button onClick={close}>{"Não, não delete."}</Button>
+              <Button onClick={close}>{"No, don't delete"}</Button>
             </Stack.Item>
           </Stack>
         </Stack.Item>

@@ -34,8 +34,8 @@ export const NtosMain = (props) => {
   return (
     <NtosWindow
       title={
-        (PC_device_theme === 'syndicate' && 'Menu Diretor Syndix') ||
-        'Menu Diretor da NTOS'
+        (PC_device_theme === 'syndicate' && 'Syndix Main Menu') ||
+        'NtOS Main Menu'
       }
       width={400}
       height={500}
@@ -65,7 +65,7 @@ export const NtosMain = (props) => {
                 <Button
                   className={
                     alert_style === alert_relevancies.ALERT_RELEVANCY_PERTINENT
-                      ? 'Alertindicador alertaBlink'
+                      ? 'alertIndicator alertBlink'
                       : 'alertIndicator'
                   }
                   textColor={
@@ -78,7 +78,7 @@ export const NtosMain = (props) => {
                       ? '#0000000'
                       : alert_color
                   }
-                  tooltip="O nível de alerta atual. Indicador torna-se mais intenso quando há uma ameaça, mais ainda se seu departamento é responsável por lidar com isso."
+                  tooltip="The current alert level. Indicator becomes more intense when there is a threat, moreso if your department is responsible for handling it."
                 >
                   {alert_name}
                 </Button>
@@ -118,14 +118,14 @@ export const NtosMain = (props) => {
               )}
               <Button
                 icon="eject"
-                content="ID Ejetar"
+                content="Eject ID"
                 disabled={!proposed_login.IDInserted}
                 onClick={() => act('PC_Eject_Disk', { name: 'ID' })}
               />
               {!!show_imprint && (
                 <Button
                   icon="dna"
-                  content="ID da impressão"
+                  content="Imprint ID"
                   disabled={
                     !proposed_login.IDName ||
                     (proposed_login.IDName === login.IDName &&
@@ -165,7 +165,7 @@ export const NtosMain = (props) => {
                     fluid
                     icon="eject"
                     color="transparent"
-                    content="Ejetar o PAI"
+                    content="Eject pAI"
                     onClick={() =>
                       act('PC_Pai_Interact', {
                         option: 'eject',
@@ -180,7 +180,7 @@ export const NtosMain = (props) => {
                     fluid
                     icon="cat"
                     color="transparent"
-                    content="Configure o PAI"
+                    content="Configure pAI"
                     onClick={() =>
                       act('PC_Pai_Interact', {
                         option: 'interact',
@@ -229,7 +229,7 @@ const ProgramsTable = (props) => {
                 <Button
                   color="transparent"
                   icon="times"
-                  tooltip="Feche o programa."
+                  tooltip="Close program"
                   tooltipPosition="left"
                   onClick={() =>
                     act('PC_killprogram', {

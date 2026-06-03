@@ -51,7 +51,7 @@ const HistorianPanel = (props) => {
       {!historian_mode && (
         <Button
           icon="key"
-          content="Inserir Chave para o modo histórico"
+          content="Insert key for historian mode"
           onClick={() => act('insert_key')}
         />
       )}
@@ -59,12 +59,12 @@ const HistorianPanel = (props) => {
         <div>
           <Button
             icon="times"
-            content="Bloquear o modo histórico"
+            content="Lock historian mode"
             onClick={() => act('lock')}
           />
           <Button
             icon="pencil"
-            content="Editar descrição"
+            content="Edit description"
             disabled={!has_showpiece || holographic_showpiece}
             onClick={() => act('change_message')}
           />
@@ -119,7 +119,7 @@ const ShowpieceDescription = (props) => {
         <Box fill className="Trophycase-description">
           {showpiece_description
             ? decodeHtmlEntities(showpiece_description)
-            : "Esta exposição está em construção. Consiga a chave do curador para finalizar sua contribuição!"}
+            : "This exhibit is under construction. Get the curator's key to finalize your contribution!"}
         </Box>
       )}
     </Section>
@@ -157,7 +157,7 @@ const ShowpieceName = (props) => {
       <b>
         {showpiece_name
           ? decodeHtmlEntities(showpiece_name)
-          : 'Em construção.'}
+          : 'Under construction.'}
       </b>
     </Section>
   );

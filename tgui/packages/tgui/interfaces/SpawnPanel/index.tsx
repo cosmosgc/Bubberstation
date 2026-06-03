@@ -32,7 +32,7 @@ export function SpawnPanel() {
       .then(setData)
       .catch((error) => {
         logger.log(
-          'Não consegui pegar o desodorizante.',
+          'Failed to fetch spawnpanel_atom_data.json',
           JSON.stringify(error),
         );
       });
@@ -46,7 +46,7 @@ export function SpawnPanel() {
   };
 
   return (
-    <Window height={550} title="Painel Spawn" width={500} theme="admin">
+    <Window height={550} title="Spawn Panel" width={500} theme="admin">
       <Window.Content>
         {advancedSettings && (
           <Modal
@@ -57,7 +57,7 @@ export function SpawnPanel() {
             }}
           >
             <Section
-              title="Configurações avançadas"
+              title="Advanced settings"
               buttons={
                 <Button
                   color="transparent"

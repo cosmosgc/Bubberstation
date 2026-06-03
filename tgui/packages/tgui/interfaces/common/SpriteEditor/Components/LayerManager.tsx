@@ -48,11 +48,11 @@ export const LayerManager = (props: LayerManagerProps) => {
         buttons={
           <Button
             icon="plus"
-            tooltip="Adicionar Camada"
+            tooltip="Add Layer"
             onClick={() =>
               act('spriteEditorCommand', {
                 command: 'transaction',
-                transaction: { type: 'addLayer', name: 'Adicionar Camada' },
+                transaction: { type: 'addLayer', name: 'Add Layer' },
               })
             }
           />
@@ -138,7 +138,7 @@ export const LayerManager = (props: LayerManagerProps) => {
                       }}
                       border={
                         selectedDir === dir && selectedLayer === i
-                          ? { border: '2px sólido # 00ff00' }
+                          ? { border: '2px solid #00ff00' }
                           : undefined
                       }
                     />
@@ -149,7 +149,7 @@ export const LayerManager = (props: LayerManagerProps) => {
                     <Stack.Item>
                       <Button
                         icon="arrow-up"
-                        tooltip="Subir"
+                        tooltip="Move Up"
                         disabled={i === layerCount - 1}
                         onClick={() =>
                           act('spriteEditorCommand', {
@@ -166,7 +166,7 @@ export const LayerManager = (props: LayerManagerProps) => {
                     <Stack.Item>
                       <Button
                         icon="arrow-down"
-                        tooltip="Desça."
+                        tooltip="Move Down"
                         disabled={i === 0}
                         onClick={() =>
                           act('spriteEditorCommand', {

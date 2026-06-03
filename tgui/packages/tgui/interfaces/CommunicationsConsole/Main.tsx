@@ -45,7 +45,7 @@ export function PageMain(props) {
   return (
     <Box>
       {!syndicate && (
-        <Section title="Transporte de emergência.">
+        <Section title="Emergency Shuttle">
           {shuttleCalled ? (
             <Button.Confirm
               icon="space-shuttle"
@@ -54,8 +54,8 @@ export function PageMain(props) {
               tooltip={
                 (canRecallShuttles &&
                   !shuttleRecallable &&
-                  "É tarde demais para a nave de emergência ser devolvida.") ||
-                'Você não tem permissão para chamar a nave de emergência.'
+                  "It's too late for the emergency shuttle to be recalled.") ||
+                'You do not have permission to recall the emergency shuttle.'
               }
               tooltipPosition="top"
               onClick={() => act('recallShuttle')}
@@ -90,7 +90,7 @@ export function PageMain(props) {
       )}
 
       {!!canSetAlertLevel && (
-        <Section title="Nível de Alerta">
+        <Section title="Alert Level">
           <Flex justify="space-between">
             <Flex.Item>
               <Box>
@@ -256,7 +256,7 @@ export function PageMain(props) {
           label={`Message to transmit to ${
             emagged ? '[ABNORMAL ROUTING COORDINATES]' : 'CentCom'
           } via quantum entanglement`}
-          notice="Por favor, esteja ciente de que este processo é muito caro, e abuso vai levar a... término. A transmissão não garante uma resposta."
+          notice="Please be aware that this process is very expensive, and abuse will lead to...termination. Transmission does not guarantee a response."
           icon="bullhorn"
           buttonText="Send"
           onBack={() => setMessagingAssociates(false)}
@@ -271,10 +271,10 @@ export function PageMain(props) {
 
       {!!canRequestNuke && requestingNukeCodes && (
         <MessageModal
-          label="Razão para solicitar códigos de autodestruição nuclear."
-          notice="O mau uso do sistema nuclear não será tolerado em nenhuma circunstância. A transmissão não garante uma resposta."
+          label="Reason for requesting nuclear self-destruct codes"
+          notice="Misuse of the nuclear request system will not be tolerated under any circumstances. Transmission does not guarantee a response."
           icon="bomb"
-          buttonText="Pedido de Códigos"
+          buttonText="Request Codes"
           onBack={() => setRequestingNukeCodes(false)}
           onSubmit={(reason) => {
             setRequestingNukeCodes(false);
@@ -287,9 +287,9 @@ export function PageMain(props) {
 
       {!!callingShuttle && (
         <MessageModal
-          label="Natureza da emergência"
+          label="Nature of emergency"
           icon="space-shuttle"
-          buttonText="Chame o transporte."
+          buttonText="Call Shuttle"
           minLength={callShuttleReasonMinLength}
           onBack={() => setCallingShuttle(false)}
           onSubmit={(reason) => {
@@ -337,7 +337,7 @@ export function PageMain(props) {
       )}
 
       {!!canSendToSectors && sectors.length > 0 && (
-        <Section title="Setores Aliados">
+        <Section title="Allied Sectors">
           <Flex direction="column">
             {sectors.map((sectorName) => (
               <Flex.Item key={sectorName}>
@@ -366,8 +366,8 @@ export function PageMain(props) {
 
       {!!canSendToSectors && sectors.length > 0 && messagingSector && (
         <MessageModal
-          label="Mensagem para enviar para a estação aliada"
-          notice="Por favor, esteja ciente de que este processo é muito caro, e abuso vai levar a... término."
+          label="Message to send to allied station"
+          notice="Please be aware that this process is very expensive, and abuse will lead to...termination."
           icon="bullhorn"
           buttonText="Send"
           onBack={() => setMessagingSector('')}

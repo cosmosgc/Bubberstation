@@ -197,7 +197,7 @@ export function JobSelection(props) {
           buttons={
             <Button
               onClick={() => act('select_job', { job: 'Random' })}
-              tooltip="O alvo é um trabalho aleatório. Pode re-rolar ou cancelar seu trabalho aleatório se não gostar."
+              tooltip="Roll target random job. You can re-roll or cancel your random job if you don't like it."
             >
               Random Job!
             </Button>

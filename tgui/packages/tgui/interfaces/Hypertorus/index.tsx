@@ -65,7 +65,7 @@ const HypertorusMainControls = (props) => {
     <Section>
       <Stack>
         <Stack.Item color="label" mb={1}>
-          {'Iniciar potência:'}
+          {'Start power: '}
           <Button
             disabled={power_level > 0}
             icon={start_power ? 'power-off' : 'times'}
@@ -75,7 +75,7 @@ const HypertorusMainControls = (props) => {
           />
         </Stack.Item>
         <Stack.Item color="label">
-          {'Comece a esfriar.'}
+          {'Start cooling: '}
           <Button
             disabled={
               start_fuel === 1 ||
@@ -90,7 +90,7 @@ const HypertorusMainControls = (props) => {
           />
         </Stack.Item>
       </Stack>
-      <Collapsible title="Seleção de receitas">
+      <Collapsible title="Recipe selection">
         <HypertorusRecipes
           baseMaxTemperature={base_max_temperature}
           enableRecipeSelection={power_level === 0}
@@ -146,7 +146,7 @@ export const Hypertorus = (props) => {
 
   return (
     <Window
-      title="Painel de controle do reator de fusão Hypertorus"
+      title="Hypertorus Fusion Reactor control panel"
       width={width}
       height={height}
     >

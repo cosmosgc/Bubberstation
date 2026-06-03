@@ -59,7 +59,7 @@ export const AiRestorerContent = (props) => {
       )}
       {!!AI_present && (
         <Section
-          title={ejectable ? 'Estado do Sistema' : name}
+          title={ejectable ? 'System Status' : name}
           buttons={
             <Box inline bold color={isDead ? 'bad' : 'good'}>
               {isDead ? 'Nonfunctional' : 'Functional'}
@@ -88,7 +88,7 @@ export const AiRestorerContent = (props) => {
           <Button
             fluid
             icon="plus"
-            content="Comecem a reconstrução."
+            content="Begin Reconstruction"
             disabled={restoring}
             mt={1}
             onClick={() => act('PRG_beginReconstruction')}
@@ -97,7 +97,7 @@ export const AiRestorerContent = (props) => {
           <Button
             fluid
             icon="bug"
-            content="Procure o Dr. Moffson Antivirus."
+            content="Run Dr. Moffson Antivirus"
             disabled={restoring}
             mt={1}
             onClick={() => act('PRG_Moffson')}

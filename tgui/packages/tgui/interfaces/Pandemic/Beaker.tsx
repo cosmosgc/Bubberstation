@@ -43,7 +43,7 @@ export const BeakerDisplay = (props) => {
         <>
           <Button
             icon="times"
-            content="Vazio e Ejetar"
+            content="Empty and Eject"
             color="bad"
             disabled={cant_empty}
             onClick={() => act('empty_eject_beaker')}
@@ -128,7 +128,7 @@ const Antibodies = (props) => {
                   key={resistance.name}
                   icon="eye-dropper"
                   disabled={!is_ready}
-                  tooltip="Cria uma garrafa de vacina."
+                  tooltip="Creates a vaccine bottle."
                   onClick={() =>
                     act('create_vaccine_bottle', {
                       index: resistance.id,

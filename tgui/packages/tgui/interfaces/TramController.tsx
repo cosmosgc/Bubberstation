@@ -66,34 +66,34 @@ export const TramController = (props) => {
   const [tripDestination, setTripDestination] = useState('');
 
   return (
-    <Window title="Controlador de Tram" width={778} height={327} theme="dark">
+    <Window title="Tram Controller" width={778} height={327} theme="dark">
       <Window.Content>
         <Stack>
           <Stack.Item grow={4}>
-            <Section title="Estado do Sistema">
+            <Section title="System Status">
               <LabeledList>
-                <LabeledList.Item label="ID do sistema">
+                <LabeledList.Item label="System ID">
                   {transportId}
                 </LabeledList.Item>
                 <LabeledList.Item
-                  label="Controlador Fila"
+                  label="Controller Queue"
                   color={controllerActive ? 'blue' : 'good'}
                 >
                   {controllerActive ? 'Processing' : 'Ready'}
                 </LabeledList.Item>
                 <LabeledList.Item
-                  label="Status Mecânico"
+                  label="Mechanical Status"
                   color={controllerOperational ? 'good' : 'bad'}
                 >
                   {controllerOperational ? 'Normal' : 'Fault'}
                 </LabeledList.Item>
                 <LabeledList.Item
-                  label="Estado do Processador"
+                  label="Processor Status"
                   color={recoveryMode ? 'average' : 'good'}
                 >
                   {recoveryMode ? 'Overload' : 'Normal'}
                 </LabeledList.Item>
-                <LabeledList.Item label="Carregar processador">
+                <LabeledList.Item label="Processor Load">
                   <ProgressBar
                     value={currentLoad}
                     minValue={0}
@@ -105,7 +105,7 @@ export const TramController = (props) => {
                     }}
                   />
                 </LabeledList.Item>
-                <LabeledList.Item label="Velocidade atual">
+                <LabeledList.Item label="Current Speed">
                   <ProgressBar
                     value={currentSpeed}
                     minValue={0}
@@ -122,19 +122,19 @@ export const TramController = (props) => {
                 </LabeledList.Item>
               </LabeledList>
             </Section>
-            <Section title="Dados de localização">
+            <Section title="Location Data">
               <LabeledList>
                 <LabeledList.Item label="Direction">
                   {travelDirection === 4 ? 'Outbound' : 'Inbound'}
                 </LabeledList.Item>
                 <LabeledList.Item
-                  label="Plataforma ociosa"
+                  label="Idle Platform"
                   color={controllerActive ? '' : 'blue'}
                 >
                   {idlePlatform}
                 </LabeledList.Item>
                 <LabeledList.Item
-                  label="Plataforma de Destino"
+                  label="Destination Platform"
                   color={controllerActive ? 'blue' : ''}
                 >
                   {destinationPlatform}
@@ -193,7 +193,7 @@ export const TramController = (props) => {
                 width="98.5%"
                 options={destinations.map((id) => id.name)}
                 selected={tripDestination}
-                placeholder="Escolha um destino"
+                placeholder="Pick a Destination"
                 onSelected={(value) => setTripDestination(value)}
               />
               <Button

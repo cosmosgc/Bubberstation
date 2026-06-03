@@ -61,7 +61,7 @@ export const IVDrip = (props) => {
         <Section fill>
           <LabeledList>
             <LabeledList.Item
-              label="Taxa de fluxo"
+              label="Flow Rate"
               buttons={
                 <Box>
                   <Button
@@ -122,9 +122,9 @@ export const IVDrip = (props) => {
             >
               {mode
                 ? hasInternalStorage
-                  ? 'Reages da rede'
-                  : 'Reagentes do contêiner'
-                : 'Sangue em receise'}
+                  ? 'Reagents from network'
+                  : 'Reagents from container'
+                : 'Blood into container'}
             </LabeledList.Item>
             {hasContainer || hasInternalStorage ? (
               <LabeledList.Item
@@ -152,7 +152,7 @@ export const IVDrip = (props) => {
                 >
                   <span
                     style={{
-                      textShadow: '1px 1px 0 preto',
+                      textShadow: '1px 1px 0 black',
                     }}
                   >
                     {`${containerCurrentVolume} of ${containerMaxVolume} units`}
@@ -161,7 +161,7 @@ export const IVDrip = (props) => {
               </LabeledList.Item>
             ) : (
               <LabeledList.Item label="Container">
-                <Tooltip content="Clique no gotejamento com um recipiente na mão para fixar.">
+                <Tooltip content="Click the drip with a container in hand to attach.">
                   <NoticeBox my={0.7}>No container attached.</NoticeBox>
                 </Tooltip>
               </LabeledList.Item>
@@ -188,7 +188,7 @@ export const IVDrip = (props) => {
               </LabeledList.Item>
             ) : (
               <LabeledList.Item label="Object">
-                <Tooltip content="Arraste o cursor do gotejamento e solte em um objetivo para se conectar.">
+                <Tooltip content="Drag the cursor from the drip and drop it on an object to connect.">
                   <NoticeBox my={0.7}>No object attached.</NoticeBox>
                 </Tooltip>
               </LabeledList.Item>

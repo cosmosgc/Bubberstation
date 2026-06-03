@@ -14,7 +14,7 @@ const dangerMap = {
   },
   2: {
     color: 'bad',
-    localStatusText: 'Perigo (Requeridos internos)',
+    localStatusText: 'Danger (Internals Required)',
   },
 } as const;
 
@@ -25,11 +25,11 @@ const faultMap = {
   },
   1: {
     color: 'purple',
-    areaFaultText: 'Trigger Manual',
+    areaFaultText: 'Manual Trigger',
   },
   2: {
     color: 'average',
-    areaFaultText: 'Detecção automática',
+    areaFaultText: 'Automatic Detection',
   },
 } as const;
 
@@ -41,7 +41,7 @@ export function AirAlarmStatus(props) {
   const areaFault = faultMap[data.faultStatus] || faultMap[0];
 
   return (
-    <Section title="Estado Aéreo">
+    <Section title="Air Status">
       <LabeledList>
         {envData.length <= 0 ? (
           <LabeledList.Item label="Warning" color="bad">
@@ -61,22 +61,22 @@ export function AirAlarmStatus(props) {
                 </LabeledList.Item>
               );
             })}
-            <LabeledList.Item label="Status Local" color={localStatus.color}>
+            <LabeledList.Item label="Local Status" color={localStatus.color}>
               {localStatus.localStatusText}
             </LabeledList.Item>
             <LabeledList.Item
-              label="Status da área"
+              label="Area Status"
               color={data.atmosAlarm || data.fireAlarm ? 'bad' : 'good'}
             >
-              {(data.atmosAlarm && 'Alarme de atmosfera') ||
-                (data.fireAlarm && 'Alarme de Fogo') ||
+              {(data.atmosAlarm && 'Atmosphere Alarm') ||
+                (data.fireAlarm && 'Fire Alarm') ||
                 'Nominal'}
             </LabeledList.Item>
-            <LabeledList.Item label="Status da falha" color={areaFault.color}>
+            <LabeledList.Item label="Fault Status" color={areaFault.color}>
               {areaFault.areaFaultText}
             </LabeledList.Item>
             <LabeledList.Item
-              label="Localização da falha"
+              label="Fault Location"
               color={data.faultLocation ? 'blue' : 'good'}
             >
               {data.faultLocation || 'None'}

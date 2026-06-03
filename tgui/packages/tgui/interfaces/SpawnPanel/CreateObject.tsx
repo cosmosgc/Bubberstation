@@ -305,9 +305,9 @@ export function CreateObject(props: CreateObjectProps) {
                   <Stack.Item
                     grow
                     italic
-                    style={{ color: '(200, 200, 200, 0,7)' }}
+                    style={{ color: 'rgba(200, 200, 200, 0.7)' }}
                   >
-                    {allObjects[selectedObj].description || 'Sem descrição.'}
+                    {allObjects[selectedObj].description || 'no description'}
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
@@ -348,7 +348,7 @@ export function CreateObject(props: CreateObjectProps) {
                   }}
                   tooltip={`Cycle the search method (by name, by type)`}
                 >
-                  {searchBy ? 'Por tipo.' : 'Pelo nome'}
+                  {searchBy ? 'By type' : 'By name'}
                 </Button>
               </Stack.Item>
               <Stack.Item>
@@ -398,7 +398,7 @@ export function CreateObject(props: CreateObjectProps) {
             </Stack>
             <Stack.Item grow>
               <Input
-                placeholder="Procure aqui..."
+                placeholder="Search here..."
                 value={query}
                 onChange={(value) => updateSearchText(value)}
                 fluid
@@ -439,7 +439,7 @@ export function CreateObject(props: CreateObjectProps) {
                   style={{
                     backgroundColor:
                       selectedObj === obj
-                        ? 'Rgba (160, 200, 255, 0,1)'
+                        ? 'rgba(160, 200, 255, 0.1)'
                         : undefined,
                     color: selectedObj === obj ? '#fff' : undefined,
                   }}
@@ -456,10 +456,10 @@ export function CreateObject(props: CreateObjectProps) {
                     <>
                       {allObjects[obj]?.name}
                       <span
-                        className="etiqueta label-info"
+                        className="label label-info"
                         style={{
                           marginLeft: '0.5em',
-                          color: '(200, 200, 200, 0,5)',
+                          color: 'rgba(200, 200, 200, 0.5)',
                           fontSize: '10px',
                         }}
                       >

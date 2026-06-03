@@ -6,7 +6,7 @@ import {
 import { FeatureDropdownInput } from '../dropdowns';
 
 export const pda_theme: FeatureChoiced = {
-  name: 'PDA Tema',
+  name: 'PDA Theme',
   category: 'GAMEPLAY',
   component: FeatureDropdownInput,
 };

@@ -7,7 +7,7 @@ import { useRandomToggleState } from '../../useRandomToggleState';
 import { CheckboxInput, type Feature, type FeatureToggle } from './base';
 
 export const random_body: Feature<RandomSetting> = {
-  name: 'Corpo aleatório.',
+  name: 'Random body',
   component: (props) => {
     const [randomToggle, setRandomToggle] = useRandomToggleState();
     const { act } = useBackend();
@@ -52,12 +52,12 @@ export const random_body: Feature<RandomSetting> = {
 };
 
 export const random_hardcore: FeatureToggle = {
-  name: 'Hardcore aleatório',
+  name: 'Hardcore random',
   component: CheckboxInput,
 };
 
 export const random_name: Feature<RandomSetting> = {
-  name: 'Nome aleatório.',
+  name: 'Random name',
   component: (props) => {
     return (
       <RandomizationButton
@@ -69,7 +69,7 @@ export const random_name: Feature<RandomSetting> = {
 };
 
 export const random_species: Feature<RandomSetting> = {
-  name: 'Espécies aleatórias',
+  name: 'Random species',
   component: (props) => {
     const { act, data } = useBackend<PreferencesMenuData>();
 

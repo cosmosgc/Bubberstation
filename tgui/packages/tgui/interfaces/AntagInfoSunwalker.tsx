@@ -36,19 +36,19 @@ export const AntagInfoSunwalker = (props) => {
           <Stack.Item width="60%">
             <Section fill title="Powers">
               <LabeledList>
-                <LabeledList.Item label="Mergulho no Espaço">
+                <LabeledList.Item label="Space Dive">
                   You can move under the station from space, use this to hunt
                   and get to isolated sections of space.
                 </LabeledList.Item>
-                <LabeledList.Item label="Queimando Slash">
+                <LabeledList.Item label="Burning Slash">
                   Your attacks deal great burn damage and ignite those hit.
                 </LabeledList.Item>
-                <LabeledList.Item label="Fisiologia ardente">
+                <LabeledList.Item label="Burning Physiology">
                   Your very skin heats the air around you, while the vacuum of
                   space mends any wounds your body might have sustained. You can
                   move through glass freely, but are slowed in gravity.
                 </LabeledList.Item>
-                <LabeledList.Item label="Carga Estelar">
+                <LabeledList.Item label="Stellar Charge">
                   With an exploding burning speed, charge forwards, dealing
                   damage and burning the surroundings.
                 </LabeledList.Item>

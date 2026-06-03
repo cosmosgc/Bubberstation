@@ -5,29 +5,29 @@ import type { Antagonist, Observable } from './types';
 
 // BUBBER EDIT ADDITION BEGIN - Custom observe menu icons
 const customJobs = [
-  'Especialista em Telecomms',
+  'Telecomms Specialist',
   'Barber',
   'Blueshield',
   'Bouncer',
-  'Oficial de Correções.',
-  'Agente da Alfândega',
-  'Guarda de Engenharia.',
-  'Consultor Nanotrasen',
+  'Corrections Officer',
+  'Customs Agent',
+  'Engineering Guard',
+  'Nanotrasen Consultant',
   'Orderly',
-  'Guarda da Ciência',
-  'Médico de Segurança',
-  'Persistência Refém',
-  'Persistência do Estado Maior',
-  'Técnico de Saneamento de Persistência',
-  'Pesquisador de Persistência',
-  'Diretor de Engenharia de Persistência',
-  'Oficial Médico Persistência',
-  'Persistência Técnico de Carga',
-  'Mestre de Persistência em Armas',
-  'Oficial de Persistência',
-  'Sindicate Corporate Liaison',
-  'Persistência Almirante',
-  'Alferes Tarkon',
+  'Science Guard',
+  'Security Medic',
+  'Persistence Hostage',
+  'Persistence General Staff',
+  'Persistence Sanitation Technician',
+  'Persistence Researcher',
+  'Persistence Engineering Officer',
+  'Persistence Medical Officer',
+  'Persistence Cargo Technician',
+  'Persistence Master At Arms',
+  'Persistence Brig Officer',
+  'Syndicate Corporate Liaison',
+  'Persistence Admiral',
+  'Tarkon Ensign',
 ];
 // BUBBER EDIT ADDITION END - Custom observe menu icons
 
@@ -43,18 +43,18 @@ type IconSettings = {
 
 const normalIcon: IconSettings = {
   dmi: 'icons/mob/huds/hud.dmi',
-  transform: 'Escala(2,3) traduzX(9px) traduzY(1px)',
+  transform: 'scale(2.3) translateX(9px) translateY(1px)',
 };
 
 const antagIcon: IconSettings = {
   dmi: 'icons/mob/huds/antag_hud.dmi',
-  transform: 'Tradução:',
+  transform: 'scale(1.8) translateX(-16px) translateY(7px)',
 };
 
 // BUBBER EDIT ADDITION BEGIN - Custom observe menu icons
 const customIcon: IconSettings = {
   dmi: 'modular_zubbers/icons/mob/huds/hud.dmi',
-  transform: 'Escala(2,3) traduzX(9px) traduzY(1px)',
+  transform: 'scale(2.3) translateX(9px) translateY(1px)',
 };
 // BUBBER EDIT ADDITION END - Custom observe menu icons
 

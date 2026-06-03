@@ -41,7 +41,7 @@ const displayTypeMap = {
   request_syndicate: 'SYNDICATE',
   request_nuke: 'NUKE CODE',
   request_fax: 'FAX',
-  request_internet_sound: 'SOUND INTERNET',
+  request_internet_sound: 'INTERNET SOUND',
 };
 
 export const RequestManager = (props) => {
@@ -74,7 +74,7 @@ export const RequestManager = (props) => {
   }
 
   return (
-    <Window title="Gerente de Pedidos." width={575} height={600} theme="admin">
+    <Window title="Request Manager" width={575} height={600} theme="admin">
       <Window.Content scrollable>
         <Section
           title="Requests"
@@ -85,7 +85,7 @@ export const RequestManager = (props) => {
                   checked={data.fax_autoprinting}
                   onClick={() => act('toggleprint')}
                   tooltip={
-                    'Permite a impressão automática de pedidos de fax para o fax administrativo. Por padrão, este fax está localizado na sala de reuniões da central de comando.'
+                    'Enables automatic printing of fax requests to the admin fax machine. By default, this fax is located in the briefing room at the central command station'
                   }
                 >
                   Auto-print Faxes

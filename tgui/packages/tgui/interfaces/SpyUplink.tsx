@@ -51,11 +51,11 @@ const BountyDisplay = (props: { bounty: Bounty }) => {
 
   return (
     <Section>
-      {!!bounty.claimed && <BountyDimmer color="bad" text="Alegado!" />}
+      {!!bounty.claimed && <BountyDimmer color="bad" text="Claimed!" />}
       {!bounty.can_claim && !bounty.claimed && (
         <BountyDimmer
           color="average"
-          text="Seus benfeitores o vêem incapaz de completar isso."
+          text="Your benefactors see you unfit to complete this."
         />
       )}
       <Stack vertical ml={1}>
@@ -105,7 +105,7 @@ export const SpyUplink = () => {
       >
         <Section
           fill
-          title="Bondades Espiã"
+          title="Spy Bounties"
           scrollable
           buttons={
             <Box mt={0.4}>

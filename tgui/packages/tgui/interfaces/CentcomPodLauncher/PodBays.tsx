@@ -30,7 +30,7 @@ export function PodBays(props) {
               Launched pods will
               be filled with items
               in these areas according
-              to the "Carregar de Bay"
+              to the "Load from Bay"
               options at the top left.`}
             tooltipPosition="top-end"
           />

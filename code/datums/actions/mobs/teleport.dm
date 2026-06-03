@@ -2,7 +2,7 @@
 	name = "Teleport"
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "sniper_zoom"
-	desc = "Allows you to teleport a certain distance away from a position in a random direction."
+	desc = "Permite que você teleporte uma distância específica de uma posição em uma direção aleatória."
 	cooldown_time = 10 SECONDS
 	/// The distance from the target
 	var/radius = 6

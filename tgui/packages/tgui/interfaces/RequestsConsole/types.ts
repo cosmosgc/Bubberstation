@@ -35,9 +35,9 @@ export type RequestMessage = {
 
 export enum RequestType {
   NONE = '',
-  ASSISTANCE = 'Pedido de Assistência',
-  SUPPLIES = 'Pedido de suprimentos',
-  INFORMATION = 'Informação da transmissão',
+  ASSISTANCE = 'Assistance Request',
+  SUPPLIES = 'Supplies Request',
+  INFORMATION = 'Relay Information',
   ORE_UPDATE = 'Ore Update',
   REPLY = 'Reply',
 }

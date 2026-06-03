@@ -37,10 +37,10 @@ export const PortableBasicInfo = (props) => {
             {' kPa'}
           </LabeledList.Item>
           <LabeledList.Item label="Port" color={connected ? 'good' : 'average'}>
-            {connected ? 'Connected' : 'Não Conectado'}
+            {connected ? 'Connected' : 'Not Connected'}
           </LabeledList.Item>
           {!!hasHypernobCrystal && (
-            <LabeledList.Item label="Reação Supressão">
+            <LabeledList.Item label="Reaction Suppression">
               <Button
                 icon={data.reactionSuppressionEnabled ? 'snowflake' : 'times'}
                 content={
@@ -54,7 +54,7 @@ export const PortableBasicInfo = (props) => {
         </LabeledList>
       </Section>
       <Section
-        title="Segurando Tank"
+        title="Holding Tank"
         minHeight="82px"
         buttons={
           <Button

@@ -50,7 +50,7 @@ export const Tank = (props) => {
                 size={2}
               />
             </LabeledControls.Item>
-            <LabeledControls.Item label="Regulador de pressão">
+            <LabeledControls.Item label="Pressure Regulator">
               <Button
                 icon="fast-backward"
                 disabled={data.ReleasePressure === data.minReleasePressure}

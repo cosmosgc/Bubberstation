@@ -164,42 +164,42 @@ const getBannerPages = () => [
 ];
 
 const BANNER_TEXTS = [
-  'Gire! Gire!',
-  'Apertado!',
-  'SLOTS QUENTE',
+  'SPIN! SPIN!',
+  'WARMED UP!',
+  'HOT SLOTS',
   'SPIN & WIN!',
-  'Acredite!',
+  'BELIEVE IT!',
   'ZERO 2 HERO!',
-  'Só mais um.',
-  'Espinha do destino',
-  'Hora do bônus!',
-  'Nasceu para Spin!',
-  'Belo Espinho!',
-  'Sem espinho, sem vitória.',
-  'BET & Esqueça',
-  'HONK 4 SORTE',
-  'DÍVIDA 4 VIDA',
+  'JUST ONE MORE',
+  'SPIN OF FATE',
+  'BONUS TIME!',
+  'BORN TO SPIN!',
+  'NICE SPIN!',
+  'NO SPIN NO WIN',
+  'BET & FORGET',
+  'HONK 4 LUCK',
+  'DEBT 4 LIFE',
   'SPINGULARITY',
-  'CIDADE ESPANHA',
+  'SPIN CITY',
   'BURN & EARN',
-  'Logotipo Jackpot!',
-  'Ganhar o dia!',
-  'CHAMADAS FORTUNAS',
-  'Ouro instantâneo!',
-  'Sonho maior!',
-  'Apenas vencedores!',
-  'SPIN É VIDA',
-  'Grande logo!',
-  'Sortudo Spin!',
-  'Dinheiro fora? Não!',
+  'JACKPOT SOON!',
+  'WIN THE DAY!',
+  'FORTUNE CALLS',
+  'INSTANT GOLD!',
+  'DREAM BIGGER!',
+  'WINNERS ONLY!',
+  'SPIN IS LIFE',
+  'BIG ONE SOON!',
+  'LUCKY SPIN!',
+  'CASH OUT? NO!',
 ];
 
 const WINNING_TEXTS = [
   null,
-  'Espinhos livres!',
-  'Prêmio!',
-  'Grande prêmio!',
-  'Jackpot!',
+  'FREE SPINS!',
+  'PRIZE!',
+  'BIG PRIZE!',
+  'JACKPOT!!!',
 ];
 
 const Banner = () => {
@@ -216,7 +216,7 @@ const Banner = () => {
   const winningText = WINNING_TEXTS[data.winning];
   if (winningText) {
     return (
-      <Section className={'SlotMachine-Banner SlotMachine-Banner-ganhando'}>
+      <Section className={'SlotMachine__Banner SlotMachine__Banner--winning'}>
         <BannerTitle text={winningText} />
       </Section>
     );
@@ -243,7 +243,7 @@ const BannerTitle = (props: BannerTitleProps) => {
     if (data.balance <= 0) {
       text = 'INSERT COIN';
     } else if (data.balance <= 5) {
-      text = 'UMA ÚLTIMA ESPANHA';
+      text = 'ONE LAST SPIN';
     } else {
       text = defaultText.current;
     }

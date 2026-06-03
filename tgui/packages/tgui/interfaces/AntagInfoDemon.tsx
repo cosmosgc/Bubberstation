@@ -43,7 +43,7 @@ export const AntagInfoDemon = (props) => {
                     </Stack.Item>
                     <Stack.Item>
                       <ObjectivePrintout
-                        titleMessage="É da sua natureza realizar esses objetivos:"
+                        titleMessage="It is in your nature to accomplish these goals:"
                         objectiveTextSize="20px"
                         objectives={objectives}
                       />
@@ -53,7 +53,7 @@ export const AntagInfoDemon = (props) => {
               </Stack.Item>
               {!!explain_attack && (
                 <Stack.Item>
-                  <Section fill title="Poderes demoníacos">
+                  <Section fill title="Demonic Powers">
                     <Stack vertical>
                       <Stack.Item>
                         <span style={jauntstyle}>Blood Jaunt:</span> You can

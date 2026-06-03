@@ -66,7 +66,7 @@ const DnaConsoleAdvancedInjectors = (props) => {
   const advInjectors = data.storage.injector ?? [];
 
   return (
-    <Section fill title="Injetores Avançados">
+    <Section fill title="Advanced Injectors">
       {advInjectors.map((injector) => (
         <Collapsible
           key={injector.name}
@@ -107,7 +107,7 @@ const DnaConsoleAdvancedInjectors = (props) => {
       <Box mt={2}>
         <Button.Input
           minWidth="200px"
-          buttonText="Criar um novo jator."
+          buttonText="Create new injector"
           disabled={advInjectors.length >= maxAdvInjectors}
           onCommit={(value) =>
             act('new_adv_inj', {
@@ -196,7 +196,7 @@ const StorageButtons = (props) => {
         }
       />
       <Button
-        content="Injetor."
+        content="Adv. Injector"
         selected={storageMode === STORAGE_MODE_ADVINJ}
         onClick={() =>
           act('set_view', {
@@ -241,7 +241,7 @@ const StorageChromosomes = (props) => {
         <Stack.Divider />
       </Stack.Item>
       <Stack.Item grow>
-        <Section title="Informações sobre cromossomas">
+        <Section title="Chromosome Info">
           {(!chromo && <Box color="label">Nothing to show.</Box>) || (
             <>
               <LabeledList>
@@ -256,7 +256,7 @@ const StorageChromosomes = (props) => {
               <Button
                 mt={2}
                 icon="eject"
-                content={'Ejetar Cromossomo'}
+                content={'Eject Chromosome'}
                 onClick={() =>
                   act('eject_chromo', {
                     chromo: chromo.Name,
@@ -313,7 +313,7 @@ const StorageMutations = (props) => {
         <Stack.Divider />
       </Stack.Item>
       <Stack.Item grow>
-        <Section title="Informações sobre Mutação">
+        <Section title="Mutation Info">
           <MutationInfo mutation={mutation} />
         </Section>
       </Stack.Item>

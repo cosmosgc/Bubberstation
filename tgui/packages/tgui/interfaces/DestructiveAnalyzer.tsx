@@ -35,7 +35,7 @@ export const DestructiveAnalyzer = (props) => {
   } = data;
   if (!server_connected) {
     return (
-      <Window width={400} height={260} title="Analisador Destrutivo">
+      <Window width={400} height={260} title="Destructive Analyzer">
         <Window.Content>
           <NoticeBox textAlign="center" danger>
             Not connected to a server. Please sync one using a multitool.
@@ -46,7 +46,7 @@ export const DestructiveAnalyzer = (props) => {
   }
   if (!loaded_item) {
     return (
-      <Window width={400} height={260} title="Analisador Destrutivo">
+      <Window width={400} height={260} title="Destructive Analyzer">
         <Window.Content>
           <NoticeBox textAlign="center" danger>
             No item loaded! <br />
@@ -57,14 +57,14 @@ export const DestructiveAnalyzer = (props) => {
     );
   }
   return (
-    <Window width={400} height={260} title="Analisador Destrutivo">
+    <Window width={400} height={260} title="Destructive Analyzer">
       <Window.Content scrollable>
         <Section
           title={loaded_item}
           buttons={
             <Button
               icon="eject"
-              tooltip="Ejeta o item dentro da máquina."
+              tooltip="Ejects the item currently inside the machine."
               onClick={() => act('eject_item')}
             />
           }
@@ -76,7 +76,7 @@ export const DestructiveAnalyzer = (props) => {
             verticalAlign="middle"
           />
         </Section>
-        <Section title="Métodos de desconstrução">
+        <Section title="Deconstruction Methods">
           {!indestructible && (
             <NoticeBox textAlign="center" danger>
               This item can&apos;t be deconstructed!
@@ -95,8 +95,8 @@ export const DestructiveAnalyzer = (props) => {
                 icon="hammer"
                 tooltip={
                   already_deconstructed
-                    ? 'Este item já foi desconstruído, e não dará nenhuma informação adicional.'
-                    : 'Destrui o objeto atualmente residente na máquina.'
+                    ? 'This item item has already been deconstructed, and will not give any additional information.'
+                    : 'Destroys the object currently residing in the machine.'
                 }
                 onClick={() =>
                   act('deconstruct', { deconstruct_id: research_point_id })
@@ -112,8 +112,8 @@ export const DestructiveAnalyzer = (props) => {
               key={node.node_id}
               tooltip={
                 node.node_hidden
-                  ? 'Desconstrua isto para pesquisar o nó selecionado.'
-                  : 'Este nó já foi pesquisado.'
+                  ? 'Deconstruct this to research the selected node.'
+                  : 'This node has already been researched.'
               }
               onClick={() =>
                 act('deconstruct', { deconstruct_id: node.node_id })

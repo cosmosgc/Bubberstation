@@ -44,7 +44,7 @@ const TurbineDisplay = (props) => {
       }
     >
       <LabeledList>
-        <LabeledList.Item label="Regulador de entrada">
+        <LabeledList.Item label="Intake Regulator">
           <NumberInput
             animated
             tickWhileDragging
@@ -60,7 +60,7 @@ const TurbineDisplay = (props) => {
             }
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Integridade da Turbina">
+        <LabeledList.Item label="Turbine Integrity">
           <ProgressBar
             value={data.integrity}
             minValue={0}
@@ -72,19 +72,19 @@ const TurbineDisplay = (props) => {
             }}
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Velocidade da turbina">
+        <LabeledList.Item label="Turbine Speed">
           {data.rpm} RPM
         </LabeledList.Item>
-        <LabeledList.Item label="Velocidade máxima da turbina">
+        <LabeledList.Item label="Max Turbine Speed">
           {data.max_rpm} RPM
         </LabeledList.Item>
-        <LabeledList.Item label="Temperatura de entrada">
+        <LabeledList.Item label="Input Temperature">
           {data.temp} K
         </LabeledList.Item>
-        <LabeledList.Item label="Temperatura Máxima">
+        <LabeledList.Item label="Max Temperature">
           {data.max_temperature} K
         </LabeledList.Item>
-        <LabeledList.Item label="Poder Gerado">
+        <LabeledList.Item label="Generated Power">
           {formatPower(data.power)}
         </LabeledList.Item>
       </LabeledList>
@@ -99,7 +99,7 @@ const OutOfService = (props) => {
         <Stack.Item textAlign="center">
           <Box style={{ margin: 'auto' }} textAlign="center" width="300px">
             {
-              'Partes não conectadas, fechem todos os painéis de manutenção e usem uma multitool no rotor antes de tentar novamente.'
+              'Parts not connected, close all mantainence panels/use a multitool on the rotor before trying again'
             }
           </Box>
         </Stack.Item>

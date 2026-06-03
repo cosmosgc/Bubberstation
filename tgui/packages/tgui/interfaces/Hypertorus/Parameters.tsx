@@ -55,11 +55,11 @@ export const HypertorusParameters = (props) => {
   }
 
   return (
-    <Section title="Status do reator">
+    <Section title="Reactor Status">
       <Flex className="hypertorus-parameters" justify="space-between" wrap>
         <Flex.Item grow="360" minWidth="120px">
           <LabeledControls justify="space-around" wrap>
-            <LabeledControls.Item label="Integridade do reator">
+            <LabeledControls.Item label="Reactor Integrity">
               <RoundGauge
                 size={1.75}
                 value={integrity}
@@ -74,7 +74,7 @@ export const HypertorusParameters = (props) => {
                 }}
               />
             </LabeledControls.Item>
-            <LabeledControls.Item label="Conteúdo de Ferro">
+            <LabeledControls.Item label="Iron Content">
               <RoundGauge
                 size={1.75}
                 value={iron_content}
@@ -89,7 +89,7 @@ export const HypertorusParameters = (props) => {
                 }}
               />
             </LabeledControls.Item>
-            <LabeledControls.Item label="Poder da Área">
+            <LabeledControls.Item label="Area Power">
               <RoundGauge
                 size={1.75}
                 value={apc_energy}
@@ -109,7 +109,7 @@ export const HypertorusParameters = (props) => {
         </Flex.Item>
         <Flex.Item grow="140" minWidth="140px" align="center">
           <LabeledControls justify="space-around">
-            <LabeledControls.Item label="Nível de fusão">
+            <LabeledControls.Item label="Fusion Level">
               <RoundGauge
                 size={3}
                 minValue={0}
@@ -145,7 +145,7 @@ export const HypertorusParameters = (props) => {
                 }}
               />
             </LabeledControls.Item>
-            <LabeledControls.Item label="Atividade de reação">
+            <LabeledControls.Item label="Reaction activity">
               <RoundGauge
                 size={1.75}
                 value={activity * 100}

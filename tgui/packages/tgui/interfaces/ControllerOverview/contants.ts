@@ -16,22 +16,22 @@ export const SORTING_TYPES: readonly SortType[] = [
     inDeciseconds: true,
   },
   {
-    label: 'Ordem Init',
+    label: 'Init Order',
     propName: 'init_order',
     inDeciseconds: false,
   },
   {
-    label: 'Último Fogo',
+    label: 'Last Fire',
     propName: 'last_fire',
     inDeciseconds: false,
   },
   {
-    label: 'Próximo Fogo',
+    label: 'Next Fire',
     propName: 'next_fire',
     inDeciseconds: false,
   },
   {
-    label: 'Uso do Tique',
+    label: 'Tick Usage',
     propName: 'tick_usage',
     inDeciseconds: true,
   },
@@ -41,7 +41,7 @@ export const SORTING_TYPES: readonly SortType[] = [
     inDeciseconds: true,
   },
   {
-    label: 'Subsistema Overtime',
+    label: 'Subsystem Overtime',
     propName: 'overtime',
     inDeciseconds: true,
   },

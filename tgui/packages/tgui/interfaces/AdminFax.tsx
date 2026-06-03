@@ -21,8 +21,8 @@ type Data = {
 };
 
 const paperNameOptions = [
-  'Relatório Oficial de Nanotrasen',
-  'Relatório de Sindicato',
+  'Nanotrasen Official Report',
+  'Syndicate Report',
 ] as const;
 
 const fromWhoOptions = ['Nanotrasen', 'Syndicate'] as const;
@@ -46,10 +46,10 @@ export function AdminFax(props) {
   }
 
   return (
-    <Window title="Painel de Fax da Administração" width={400} height={675} theme="admin">
+    <Window title="Admin Fax Panel" width={400} height={675} theme="admin">
       <Window.Content scrollable>
         <Section
-          title="Menu de Fax"
+          title="Fax Menu"
           buttons={
             <Button
               icon="arrow-up"
@@ -65,7 +65,7 @@ export function AdminFax(props) {
           }
         >
           <Dropdown
-            placeholder="Escolha o fax..."
+            placeholder="Choose fax machine..."
             fluid
             selected={fax}
             options={faxes}
@@ -91,7 +91,7 @@ export function AdminFax(props) {
           <Stack fill vertical>
             <Stack.Item>
               <Input
-                placeholder="Nome de papel..."
+                placeholder="Paper name..."
                 value={paperName}
                 fluid
                 onChange={setPaperName}
@@ -101,13 +101,13 @@ export function AdminFax(props) {
               <SourceButtons
                 stateSetter={setPaperName}
                 options={paperNameOptions}
-                tooltip="O que está escrito no papel de fax?"
+                tooltip="What is written on the top of the fax paper?"
               />
             </Stack.Item>
             <Stack.Divider />
             <Stack.Item>
               <Input
-                placeholder="De quem..."
+                placeholder="From who..."
                 value={fromWho}
                 fluid
                 onChange={setFromWho}
@@ -117,13 +117,13 @@ export function AdminFax(props) {
               <SourceButtons
                 stateSetter={setFromWho}
                 options={fromWhoOptions}
-                tooltip="O que está escrito no registro de fax?"
+                tooltip="What was written in fax log?"
               />
             </Stack.Item>
             <Stack.Divider />
             <Stack.Item>
               <TextArea
-                placeholder="Sua mensagem aqui..."
+                placeholder="Your message here..."
                 height="200px"
                 fluid
                 value={rawText}
@@ -135,7 +135,7 @@ export function AdminFax(props) {
               <Dropdown
                 fluid
                 options={stamps}
-                selected="Escolha selo."
+                selected="Choose stamp(optional)"
                 onSelected={(value) => {
                   if (value === 'None') {
                     setStamp('');

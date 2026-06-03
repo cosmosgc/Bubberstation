@@ -15,7 +15,7 @@ export function NoConnectionModal() {
                 left: '25%',
                 height: '10px',
                 position: 'relative',
-                transform: 'Gire (45deg)',
+                transform: 'rotate(45deg)',
                 width: '150px',
               }}
             />

@@ -96,21 +96,21 @@ const TransferSection = (props) => {
   return (
     <Stack>
       <Stack.Item>
-        <Section title="Transferência de dinheiro">
+        <Section title="Transfer Money">
           <Box>
             <Tooltip
-              content="Digite o sinal de pagamento da conta para a qual quer transferir créditos."
+              content="Enter the pay token of the account you want to transfer credits to."
               position="top"
             >
               <Input
-                placeholder="Pague Token"
+                placeholder="Pay Token"
                 width="190px"
                 onChange={setToken}
               />
             </Tooltip>
           </Box>
           <Tooltip
-            content="Introduza quantidade de créditos para transferência."
+            content="Enter amount of credits to transfer."
             position="top"
           >
             <RestrictedInput
@@ -136,10 +136,10 @@ const TransferSection = (props) => {
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Obter Token" width="270px" height="98px">
+        <Section title="Get Token" width="270px" height="98px">
           <Box>
             <Input
-              placeholder="Nome completo da conta."
+              placeholder="Full name of account."
               width="190px"
               onChange={setNameToToken}
             />
@@ -167,7 +167,7 @@ const TransactionHistory = (props) => {
   const { transaction_list = [] } = data;
 
   return (
-    <Section fill title="História da Transação">
+    <Section fill title="Transaction History">
       <Section fill scrollable title={<TableHeaders />}>
         <Table>
           {transaction_list.map((log, index) => (

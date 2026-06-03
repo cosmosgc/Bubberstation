@@ -189,7 +189,7 @@ function KeybindingName(props: KeybindingNameProps) {
       <Box
         as="span"
         style={{
-          borderBottom: '2px pontilhado rgba(255, 255, 0,8)',
+          borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',
         }}
       >
         {keybinding.name}
@@ -431,7 +431,7 @@ export class KeybindingsPage extends Component<any, KeybindingsPageState> {
     }
 
     if (lastKeyboardEvent === undefined) {
-      return 'Preparar novo / ESC para limpar';
+      return 'Set New / ESC to Clear';
     }
 
     return formatKeyboardEvent(lastKeyboardEvent);

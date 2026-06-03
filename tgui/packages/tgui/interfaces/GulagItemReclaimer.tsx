@@ -18,14 +18,14 @@ export const GulagItemReclaimer = (props) => {
       <Window.Content scrollable>
         {mobs.length === 0 && <NoticeBox>No stored items</NoticeBox>}
         {mobs.length > 0 && (
-          <Section title="Itens Armazenados">
+          <Section title="Stored Items">
             <Table>
               {mobs.map((mob) => (
                 <Table.Row key={mob.mob}>
                   <Table.Cell>{mob.name}</Table.Cell>
                   <Table.Cell textAlign="right">
                     <Button
-                      content="Recupere Itens"
+                      content="Retrieve Items"
                       disabled={!can_reclaim}
                       onClick={() =>
                         act('release_items', {

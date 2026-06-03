@@ -33,7 +33,7 @@ export const PowerDetails = (props: PowerDetailsProps) => {
           icon="info"
           tooltipPosition="left"
           tooltip={
-            'Selecione um Power usando o menu suspenso para uma explicação detalhada.'
+            'Select a Power using the dropdown menu for an in-depth explanation.'
           }
         />
       }

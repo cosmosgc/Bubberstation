@@ -56,7 +56,7 @@ export const Smes = () => {
   return (
     <Window width={340} height={350}>
       <Window.Content>
-        <Section title="Energia Armazenada">
+        <Section title="Stored Energy">
           <ProgressBar
             value={capacityPercent * 0.01}
             ranges={{
@@ -79,14 +79,14 @@ export const Smes = () => {
           }
         >
           <LabeledList>
-            <LabeledList.Item label="Modo de carga">
+            <LabeledList.Item label="Charge Mode">
               <Box color={inputState}>
-                {(capacityPercent >= 100 && 'Totalmente carregado.') ||
+                {(capacityPercent >= 100 && 'Fully Charged') ||
                   (inputting && 'Charging') ||
-                  'Não está carregando.'}
+                  'Not Charging'}
               </Box>
             </LabeledList.Item>
-            <LabeledList.Item label="Entrada do Alvo">
+            <LabeledList.Item label="Target Input">
               <Stack fill>
                 <Stack.Item>
                   <Button
@@ -164,16 +164,16 @@ export const Smes = () => {
           }
         >
           <LabeledList>
-            <LabeledList.Item label="Modo de Saída">
+            <LabeledList.Item label="Output Mode">
               <Box color={outputState}>
                 {outputting
                   ? 'Sending'
                   : charge > 0
-                    ? 'Não Enviando'
-                    : 'Sem acusação.'}
+                    ? 'Not Sending'
+                    : 'No Charge'}
               </Box>
             </LabeledList.Item>
-            <LabeledList.Item label="Saída do alvo">
+            <LabeledList.Item label="Target Output">
               <Stack fill>
                 <Stack.Item>
                   <Button

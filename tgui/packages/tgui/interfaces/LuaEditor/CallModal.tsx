@@ -25,7 +25,7 @@ export const CallModal = (props: CallModalProps) => {
         fill
         scrollable
         scrollableHorizontal
-        title="Chamar função / tarefa"
+        title="Call Function/Task"
         buttons={
           <Button
             color="red"

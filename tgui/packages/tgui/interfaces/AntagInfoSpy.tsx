@@ -63,7 +63,7 @@ export const AntagInfoSpy = () => {
             <Stack.Divider />
             <Stack.Item>
               <ObjectivePrintout
-                titleMessage={'Sua missão, se você escolher aceitá-la.'}
+                titleMessage={'Your mission, should you choose to accept it'}
                 objectives={objectives}
               />
             </Stack.Item>
@@ -72,7 +72,7 @@ export const AntagInfoSpy = () => {
               {
                 <ReplaceObjectivesButton
                   can_change_objective={can_change_objective}
-                  button_title={'Faça seu próprio plano.'}
+                  button_title={'Make Your Own Plan'}
                   button_colour={'green'}
                 />
               }

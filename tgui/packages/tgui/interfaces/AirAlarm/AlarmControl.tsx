@@ -10,23 +10,23 @@ import type { AlarmScreen } from './types';
 
 export const AIR_ALARM_ROUTES = {
   home: {
-    title: 'Controles Aéreos',
+    title: 'Air Controls',
     component: AirAlarmControlHome,
   },
   vents: {
-    title: 'Controles de ventilação',
+    title: 'Vent Controls',
     component: AirAlarmControlVents,
   },
   scrubbers: {
-    title: 'Controles Scrubber',
+    title: 'Scrubber Controls',
     component: AirAlarmControlScrubbers,
   },
   modes: {
-    title: 'Modo de operação',
+    title: 'Operating Mode',
     component: AirAlarmControlModes,
   },
   thresholds: {
-    title: 'Limiares de alarme',
+    title: 'Alarm Thresholds',
     component: AirAlarmControlThresholds,
   },
 } as const;
@@ -36,7 +36,7 @@ export function AirAlarmControl(props) {
 
   const route = AIR_ALARM_ROUTES[screen] || AIR_ALARM_ROUTES.home;
   const Component = route.component;
-  const isHome = route.title === 'Controles Aéreos';
+  const isHome = route.title === 'Air Controls';
 
   return (
     <Section

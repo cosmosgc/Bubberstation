@@ -32,7 +32,7 @@ export const LTSRBT = (props) => {
             <Input
               width="80%"
               value={name}
-              placeholder="Insira um nome"
+              placeholder="Insert a name"
               onBlur={(value) =>
                 act('change_name', {
                   value: value,
@@ -72,7 +72,7 @@ export const LTSRBT = (props) => {
               height="100%"
               fluid
               value={desc}
-              placeholder="Insira uma descrição (ou não)"
+              placeholder="Insert a description (or don't)"
               onBlur={(value) =>
                 act('change_desc', {
                   value: value,
@@ -85,7 +85,7 @@ export const LTSRBT = (props) => {
             <Button.Confirm
               fluid
               icon="truck-arrow-right"
-              content="Lugar no Mercado"
+              content="Place on Market"
               onClick={() => act('place_on_market')}
             />
           </Stack.Item>

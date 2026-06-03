@@ -27,27 +27,27 @@ function getButtonColors(
 ): ButtonData {
   if (invalid) {
     return {
-      backgroundColor: '(64, 34, 34, 0,5)',
+      backgroundColor: 'rgba(64, 34, 34, 0.5)',
       borderColor: 'darkred',
       tooltip: `You cannot select this personality with ${invalid}.`,
     };
   }
   if (disabled) {
     return {
-      backgroundColor: '(64, 64, 64, 0.5)',
+      backgroundColor: 'rgba(64, 64, 64, 0.5)',
       borderColor: '#666666',
-      tooltip: 'Você está no número máximo de personalidades.',
+      tooltip: 'You are at the maximum number of personalities.',
     };
   }
   if (selected) {
     return {
-      backgroundColor: '(34, 64, 34, 0.5)',
+      backgroundColor: 'rgba(34, 64, 34, 0.5)',
       borderColor: 'green',
       tooltip: null,
     };
   }
   return {
-    backgroundColor: '(34, 34, 34, 0,5)',
+    backgroundColor: 'rgba(34, 34, 34, 0.5)',
     borderColor: '#444444',
     tooltip: null,
   };
@@ -109,8 +109,8 @@ function PersonalityButton(props: ButtonProps) {
           style={{
             whiteSpace: 'normal',
             wordBreak: 'break-word',
-            borderTop: 'Sólido de 0.2em #444444',
-            borderLeft: 'Sólido de 0.2em #444444',
+            borderTop: '0.2em solid #444444',
+            borderLeft: '0.2em solid #444444',
             paddingLeft: '0.5em',
           }}
         >
@@ -186,7 +186,7 @@ function isIncompatible(
       if (personalityIncompatibilities[group].includes(selectedTypePath)) {
         return (
           getPersonalityName(allPersonalities, selectedTypePath) ||
-          'Uma personalidade desconhecida.'
+          'an unknown personality'
         );
       }
     }
@@ -238,7 +238,7 @@ function getAllSelectedPersonalitiesString(
     }
   }
   if (personalityNames.length === 0) {
-    return 'Você não tem personalidade.';
+    return 'You have no personality.';
   }
   personalityNames.sort((a, b) => (a < b ? -1 : 1));
   let finalString = '';

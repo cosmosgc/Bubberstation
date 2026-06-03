@@ -87,7 +87,7 @@ export const VotePanel = (props) => {
       <Window.Content>
         <Stack fill vertical>
           <Section
-            title="Criar Voto"
+            title="Create Vote"
             buttons={
               !!user.isLowerAdmin && (
                 <Stack>
@@ -102,7 +102,7 @@ export const VotePanel = (props) => {
                   <Stack.Item>
                     <Button
                       icon="skull"
-                      content="Alternar voto morto"
+                      content="Toggle dead vote"
                       disabled={!user.isUpperAdmin}
                       onClick={() => act('toggleDeadVote')}
                     />
@@ -148,7 +148,7 @@ const VoteOptions = (props) => {
 
   return (
     <Stack.Item>
-      <Collapsible title="Comece um voto.">
+      <Collapsible title="Start a Vote">
         <Section>
           {LastVoteTime + VoteCD > 0 && <VoteOptionDimmer />}
           <Stack vertical justify="space-between">
@@ -167,7 +167,7 @@ const VoteOptions = (props) => {
                         }
                         tooltip={
                           option.config === VoteConfig.None
-                            ? 'Esta votação não pode ser desativada.'
+                            ? 'This vote cannot be disabled.'
                             : null
                         }
                         content={
@@ -241,7 +241,7 @@ const ChoicesPanel = (props) => {
 
   return (
     <Stack.Item grow>
-      <Section fill scrollable title="Voto Ativo">
+      <Section fill scrollable title="Active Vote">
         {currentVote && currentVote.countMethod === VoteSystem.VOTE_SINGLE ? (
           <NoticeBox success>Select one option</NoticeBox>
         ) : null}
@@ -257,7 +257,7 @@ const ChoicesPanel = (props) => {
                   buttons={
                     <Button
                       tooltip={
-                        user.isGhost && 'Votação fantasma foi desativada por um administrador.'
+                        user.isGhost && 'Ghost voting was disabled by an admin.'
                       }
                       disabled={
                         user.singleSelection === choice.name || user.isGhost
@@ -304,7 +304,7 @@ const ChoicesPanel = (props) => {
                   buttons={
                     <Button
                       tooltip={
-                        user.isGhost && 'Votação fantasma foi desativada por um administrador.'
+                        user.isGhost && 'Ghost voting was disabled by an admin.'
                       }
                       disabled={user.isGhost}
                       onClick={() => {
@@ -435,7 +435,7 @@ const ChoicesPanel = (props) => {
                         <Button
                           tooltip={
                             user.isGhost &&
-                            'Votação fantasma foi desativada por um administrador.'
+                            'Ghost voting was disabled by an admin.'
                           }
                           selected={currentRank > 0}
                           disabled={user.isGhost}

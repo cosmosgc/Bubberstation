@@ -33,7 +33,7 @@ export function DeathmatchPanel(props) {
   const { hosting } = data;
 
   return (
-    <Window title="Lobbies Deathmatch" width={360} height={400}>
+    <Window title="Deathmatch Lobbies" width={360} height={400}>
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item>

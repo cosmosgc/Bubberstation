@@ -24,7 +24,7 @@ export const NanopaintNewDialog = (props: NanopaintNewDialogProps) => {
   const [templatesOpen, setTemplatesOpen] = useState(false);
   return (
     <Dimmer>
-      <Section title="Novo Projeto">
+      <Section title="New Project">
         <Stack vertical>
           <Stack.Item>
             <LabeledList>

@@ -114,7 +114,7 @@ const Help = (properties) => {
   return (
     <Section
       className="Safe__help"
-      title="Instruções de abertura seguras."
+      title="Safe opening instructions (because you all keep forgetting)"
     >
       <Box>
         1. Turn the dial left to the first number.

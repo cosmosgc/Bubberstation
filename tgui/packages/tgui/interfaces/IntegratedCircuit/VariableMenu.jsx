@@ -57,7 +57,7 @@ export class VariableMenu extends Component {
 
     return (
       <Section
-        title="Opções Variáveis"
+        title="Variable Options"
         {...rest}
         fill
         buttons={

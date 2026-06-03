@@ -1,7 +1,7 @@
 import { CheckboxInput, type Feature, type FeatureToggle, FeatureSliderInput } from '../base';
 
 export const darkened_flash: FeatureToggle = {
-  name: 'Activar flashes escuros',
+  name: 'Enable darkened flashes',
   category: 'ACCESSIBILITY',
   description: `
     When toggled, being flashed will show a dark screen rather than a
@@ -11,7 +11,7 @@ export const darkened_flash: FeatureToggle = {
 };
 
 export const screen_shake_darken: FeatureToggle = {
-  name: 'Escurecer a tela treme',
+  name: 'Darken screen shake',
   category: 'ACCESSIBILITY',
   description: `
       When toggled, experiencing screen shake will darken your screen.
@@ -20,7 +20,7 @@ export const screen_shake_darken: FeatureToggle = {
 };
 
 export const remove_double_click: FeatureToggle = {
-  name: 'Remover duplo clique',
+  name: 'Remove double click',
   category: 'ACCESSIBILITY',
   description: `
       When toggled, actions that require a double click will instead offer
@@ -30,7 +30,7 @@ export const remove_double_click: FeatureToggle = {
 };
 
 export const min_recoil_multiplier: Feature<number> = {
-  name: 'Força Cosmética de Retração',
+  name: 'Cosmetic Recoil Strength',
   category: 'ACCESSIBILITY',
   description: `
       Modifies the strength of cosmetic recoil's effect on your camera.
@@ -40,7 +40,7 @@ export const min_recoil_multiplier: Feature<number> = {
 };
 
 export const stair_indicator: FeatureToggle = {
-  name: 'Activar indicador de escadas',
+  name: 'Enable stair indicator',
   category: 'ACCESSIBILITY',
   description: `
       When toggled, staircases will have a visual indicator showing which

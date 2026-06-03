@@ -60,17 +60,17 @@ export const MatMarket = (props) => {
       <Window.Content scrollable>
         {!!catastrophe && <MarketCrashModal />}
         <Section
-          title="Materiais para venda"
+          title="Materials for sale"
           buttons={
             !!canOrderCargo && (
               <Button
                 icon="dollar"
-                tooltip="Faça a ordem do orçamento de carga."
+                tooltip="Place order from cargo budget."
                 color={orderingPrive ? '' : 'green'}
                 content={
                   orderingPrive
-                    ? 'Ordem via Orçamento de Carga?'
-                    : 'Ordenação via Orçamento de Carga'
+                    ? 'Order via Cargo Budget?'
+                    : 'Ordering via Cargo Budget'
                 }
                 onClick={() => act('toggle_budget')}
               />

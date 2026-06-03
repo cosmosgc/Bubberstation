@@ -24,7 +24,7 @@ export function LibraryConsole(props) {
     <LibraryContext.Provider value={{ checkoutBookState, uploadToDBState }}>
       <Window
         theme={display_lore ? 'spookyconsole' : ''}
-        title="Terminal de Biblioteca"
+        title="Library Terminal"
         width={880}
         height={520}
       >

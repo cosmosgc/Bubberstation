@@ -80,7 +80,7 @@ export const ImplantPad = (props) => {
           </Stack.Item>
         </Stack>
         <Divider />
-        <Collapsible open={true} title="Informação do implante">
+        <Collapsible open={true} title="Implant Information">
           {!has_case && (
             <Section>
               No implant case detected. Please insert one to see its contents.
@@ -94,7 +94,7 @@ export const ImplantPad = (props) => {
           )}
           {!!has_case && !!has_implant && <Section>{case_information}</Section>}
         </Collapsible>
-        <Collapsible title="Implantar informação estendida">
+        <Collapsible title="Implant Extended Information">
           {!has_case && (
             <Section>
               No implant case detected. Please insert one to see its contents.

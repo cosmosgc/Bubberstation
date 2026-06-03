@@ -5,7 +5,7 @@ import {
 } from '../base';
 
 export const admin_ignore_cult_ghost: FeatureToggle = {
-  name: 'Evitar ser convocado como um fantasma de culto',
+  name: 'Prevent being summoned as a cult ghost',
   category: 'ADMIN',
   description: `
     When enabled and observing, prevents Spirit Realm from forcing you
@@ -15,93 +15,93 @@ export const admin_ignore_cult_ghost: FeatureToggle = {
 };
 
 export const announce_login: FeatureToggle = {
-  name: 'Anunciar login',
+  name: 'Announce login',
   category: 'ADMIN',
-  description: 'Os administradores serão notificados quando você fizer login.',
+  description: 'Admins will be notified when you login.',
   component: CheckboxInput,
 };
 
 export const combohud_lighting: FeatureToggle = {
-  name: 'Activar total Bright Combo HUD',
+  name: 'Enable fullbright Combo HUD',
   category: 'ADMIN',
   component: CheckboxInput,
 };
 
 export const deadmin_always: FeatureToggle = {
-  name: 'Auto Deadmin - Sempre',
+  name: 'Auto deadmin - Always',
   category: 'ADMIN',
-  description: 'Quando habilitado, você automaticamente deadmin.',
+  description: 'When enabled, you will automatically deadmin.',
   component: CheckboxInput,
 };
 
 export const deadmin_antagonist: FeatureToggle = {
-  name: 'Auto Deadmin - Antagonista',
+  name: 'Auto deadmin - Antagonist',
   category: 'ADMIN',
-  description: 'Quando habilitado, você automaticamente será um antagonista.',
+  description: 'When enabled, you will automatically deadmin as an antagonist.',
   component: CheckboxInput,
 };
 
 export const deadmin_position_head: FeatureToggle = {
-  name: 'Auto Deadmin - Chefe de Gabinete',
+  name: 'Auto deadmin - Head of Staff',
   category: 'ADMIN',
   description:
-    'Quando habilitado, você automaticamente será o chefe da equipe.',
+    'When enabled, you will automatically deadmin as a head of staff.',
   component: CheckboxInput,
 };
 
 export const deadmin_position_security: FeatureToggle = {
-  name: 'Auto Deadmin - Segurança',
+  name: 'Auto deadmin - Security',
   category: 'ADMIN',
   description:
-    'Quando habilitado, você automaticamente será um membro da segurança.',
+    'When enabled, you will automatically deadmin as a member of security.',
   component: CheckboxInput,
 };
 
 export const deadmin_position_silicon: FeatureToggle = {
-  name: 'Auto Deadmin - Silício',
+  name: 'Auto deadmin - Silicon',
   category: 'ADMIN',
-  description: 'Quando ativado, você automaticamente será morto como um silício.',
+  description: 'When enabled, you will automatically deadmin as a silicon.',
   component: CheckboxInput,
 };
 
 export const disable_arrivalrattle: FeatureToggle = {
-  name: 'Avise os recém-chegados.',
+  name: 'Notify for new arrivals',
   category: 'GHOST',
-  description: 'Quando habilitado, você será notificado como um fantasma para nova tripulação.',
+  description: 'When enabled, you will be notified as a ghost for new crew.',
   component: CheckboxInputInverse,
 };
 
 export const disable_deathrattle: FeatureToggle = {
-  name: 'Avise as mortes.',
+  name: 'Notify for deaths',
   category: 'GHOST',
   description:
-    'Quando habilitado, você será notificado como um fantasma sempre que alguém morrer.',
+    'When enabled, you will be notified as a ghost whenever someone dies.',
   component: CheckboxInputInverse,
 };
 
 export const member_public: FeatureToggle = {
-  name: 'Publicar a associação BYOND',
+  name: 'Publicize BYOND membership',
   category: 'CHAT',
   description:
-    'Quando habilitado, um logotipo da BYOND será mostrado ao lado do seu nome na OOC.',
+    'When enabled, a BYOND logo will be shown next to your name in OOC.',
   component: CheckboxInput,
 };
 
 export const sound_adminhelp: FeatureToggle = {
-  name: 'Activar sons de ajuda administrativa',
+  name: 'Enable adminhelp sounds',
   category: 'ADMIN',
   component: CheckboxInput,
 };
 
 export const sound_prayers: FeatureToggle = {
-  name: 'Activar som de oração',
+  name: 'Enable prayer sound',
   category: 'ADMIN',
   component: CheckboxInput,
 };
 
 export const split_admin_tabs: FeatureToggle = {
-  name: 'Dividir as abas de administração',
+  name: 'Split admin tabs',
   category: 'ADMIN',
-  description: "Quando habilitado, dividirá o painel 'Admin' em várias abas.",
+  description: "When enabled, will split the 'Admin' panel into several tabs.",
   component: CheckboxInput,
 };

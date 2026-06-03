@@ -38,7 +38,7 @@ export const PortableTurret = (props) => {
                   <Button
                     icon={manual_control ? 'wifi' : 'terminal'}
                     content={
-                      manual_control ? 'Controlado remotamente' : 'Controle manual'
+                      manual_control ? 'Remotely Controlled' : 'Manual Control'
                     }
                     disabled={manual_control}
                     color="bad"
@@ -59,11 +59,11 @@ export const PortableTurret = (props) => {
         </Section>
         {!lasertag_turret && (
           <Section
-            title="Configurações do alvo"
+            title="Target Settings"
             buttons={
               <Button.Checkbox
                 checked={!neutralize_heads}
-                content="Ignorar o Comando"
+                content="Ignore Command"
                 disabled={locked}
                 onClick={() => act('shootheads')}
               />
@@ -72,21 +72,21 @@ export const PortableTurret = (props) => {
             <Button.Checkbox
               fluid
               checked={neutralize_all}
-              content="Não Segurança e Não Comando"
+              content="Non-Security and Non-Command"
               disabled={locked}
               onClick={() => act('shootall')}
             />
             <Button.Checkbox
               fluid
               checked={check_weapons}
-              content="Armas não autorizadas"
+              content="Unauthorized Weapons"
               disabled={locked}
               onClick={() => act('authweapon')}
             />
             <Button.Checkbox
               fluid
               checked={neutralize_unidentified}
-              content="Sinais de vida não identificados"
+              content="Unidentified Life Signs"
               disabled={locked}
               onClick={() => act('checkxenos')}
             />
@@ -100,7 +100,7 @@ export const PortableTurret = (props) => {
             <Button.Checkbox
               fluid
               checked={neutralize_criminals}
-              content="Criminosos procurados"
+              content="Wanted Criminals"
               disabled={locked}
               onClick={() => act('shootcriminals')}
             />

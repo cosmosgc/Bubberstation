@@ -21,7 +21,7 @@ export const RestockTracker = (props) => {
     (vend) => vend.percentage,
   ]);
   return (
-    <Section fill title="Vendedor Status de Meias">
+    <Section fill title="Vendor Stocking Status">
       <Stack vertical>
         <Stack fill horizontal>
           <Stack.Item bold width="35%">

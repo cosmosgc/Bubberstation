@@ -24,7 +24,7 @@ export function AiVoiceChanger(props) {
   const { loud, name, on, say_verb, voices, selected } = data;
 
   return (
-    <Window title="Ajustes de mudança de voz" width={400} height={200}>
+    <Window title="Voice changer settings" width={400} height={200}>
       <Section fill>
         <LabeledList>
           <LabeledList.Item label="Power">
@@ -63,10 +63,10 @@ export function AiVoiceChanger(props) {
               selected={!!loud}
               onClick={() => act('loud')}
             >
-              {loud ? 'Loudmode on' : 'Desligado.'}
+              {loud ? 'Loudmode on' : 'Loudmode Off'}
             </Button>
           </LabeledList.Item>
-          <LabeledList.Item label="Nome falso.">
+          <LabeledList.Item label="Fake name">
             <Input
               value={name}
               onBlur={(value) =>

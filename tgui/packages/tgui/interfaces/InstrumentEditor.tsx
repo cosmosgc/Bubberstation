@@ -62,10 +62,10 @@ export const InstrumentEditor = (props) => {
     <Window width={750} height={500}>
       <Window.Content scrollable>
         <InstrumentSettings />
-        <Collapsible open title="Editor de Música" icon="pencil">
+        <Collapsible open title="Music Editor" icon="pencil">
           <EditingSettings />
         </Collapsible>
-        <Collapsible title="Seção de Ajuda" icon="question">
+        <Collapsible title="Help Section" icon="question">
           <HelpSection />
         </Collapsible>
       </Window.Content>
@@ -112,7 +112,7 @@ const InstrumentSettings = (props) => {
       {lines.length > 0 && (
         <Box fontSize="16px" mb={1}>
           <Button onClick={() => act('play_music')}>
-            {playing ? 'Stop Music' : 'Comece um tocar.'}
+            {playing ? 'Stop Music' : 'Start Playing'}
           </Button>
         </Box>
       )}
@@ -120,7 +120,7 @@ const InstrumentSettings = (props) => {
         <Box
           inline
           style={{
-            borderBottom: '2px pontilhado rgba(255, 0,8)',
+            borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',
           }}
           mr={1}
         >
@@ -267,8 +267,8 @@ const InstrumentSettings = (props) => {
           <Box>
             <Button onClick={() => act('toggle_sustain_hold_indefinitely')}>
               {sustain_indefinitely
-                ? 'Mantendo a última nota indefinidamente'
-                : 'Não sustentando a última nota guardada indefinidamente'}
+                ? 'Sustaining last held note indefinitely'
+                : 'Not sustaining last held note indefinitely'}
             </Button>
           </Box>
         </Stack.Item>

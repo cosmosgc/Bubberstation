@@ -26,12 +26,12 @@ export const Intellicard = (props) => {
     <Window width={500} height={500}>
       <Window.Content scrollable>
         <Section
-          title={name || 'Cartão Vazio'}
+          title={name || 'Empty Card'}
           buttons={
             !!name && (
               <Button
                 icon="trash"
-                content={wiping ? 'Pare de limpar.' : 'Wipe'}
+                content={wiping ? 'Stop Wiping' : 'Wipe'}
                 disabled={isDead}
                 onClick={() => act('wipe')}
               />
@@ -43,7 +43,7 @@ export const Intellicard = (props) => {
               <LabeledList.Item label="Status" color={offline ? 'bad' : 'good'}>
                 {offline ? 'Offline' : 'Operation'}
               </LabeledList.Item>
-              <LabeledList.Item label="Integridade de Software">
+              <LabeledList.Item label="Software Integrity">
                 <ProgressBar
                   value={health}
                   minValue={0}
@@ -58,13 +58,13 @@ export const Intellicard = (props) => {
               <LabeledList.Item label="Settings">
                 <Button
                   icon="signal"
-                  content="Atividade sem fio"
+                  content="Wireless Activity"
                   selected={wireless}
                   onClick={() => act('wireless')}
                 />
                 <Button
                   icon="microphone"
-                  content="Rádio subespacial"
+                  content="Subspace Radio"
                   selected={radio}
                   onClick={() => act('radio')}
                 />

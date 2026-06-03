@@ -9,116 +9,116 @@ import {
 import { FeatureDropdownInput } from '../../dropdowns';
 
 export const emote_length: FeatureChoiced = {
-  name: 'Comprimento emotivo preferido',
+  name: 'Preferred Emote Length',
   category: 'ADVERT',
   description:
-    'Que tamanho de emoção prefere durante uma cena de RP, se tiver. Mostra no seu anúncio de personagens.',
+    'What length of emote your prefer during an RP scene, if you have one. Shows on your Character Advert.',
   component: FeatureDropdownInput,
 };
 
 export const approach_pref: FeatureChoiced = {
-  name: 'Método de aproximação preferido',
+  name: 'Preferred Approach Method',
   category: 'ADVERT',
   description:
-    'Como você gostaria de ser abordado para cenas RP, se em tudo. Mostra no seu anúncio de personagens.',
+    'How you would like to be approached for RP scenes, if at all. Shows on your Character Advert.',
   component: FeatureDropdownInput,
 };
 
 export const furry_pref: FeatureChoiced = {
-  name: 'Atração: furries?',
+  name: 'Attraction: Furries?',
   category: 'ADVERT',
   description:
-    'Como, e se, você gostaria de se envolver em RP com personagens peludos, como Anthromorphs, Birdfolk ou Insectoids.',
+    'How, and if, you would like to engage in RP with furry characters, such as Anthromorphs, Birdfolk or Insectoids.',
   component: FeatureDropdownInput,
 };
 
 export const scalie_pref: FeatureChoiced = {
-  name: 'Atração: escalas?',
+  name: 'Attraction: Scalies?',
   category: 'ADVERT',
   description:
-    'Como, e se, você gostaria de se envolver em RP com personagens de escala, como lagartos, peixes ou dragões.',
+    'How, and if, you would like to engage in RP with scalie characters, such as Lizards, Fish, or Dragons.',
   component: FeatureDropdownInput,
 };
 
 export const other_pref: FeatureChoiced = {
-  name: 'Atração: outros?',
+  name: 'Attraction: Others?',
   category: 'ADVERT',
   description:
-    'Como, e se, você gostaria de se envolver em RP com personagens estranhos, como Silicones, Taurs, Megafauna e Xenos.',
+    'How, and if, you would like to engage in RP with outlandish characters, such as Silicons, Taurs, Megafauna and Xenos.',
   component: FeatureDropdownInput,
 };
 
 export const demihuman_pref: FeatureChoiced = {
-  name: 'Atração: demihumanos?',
+  name: 'Attraction: Demihumans?',
   category: 'ADVERT',
   description:
-    'Como, e se, você gostaria de se envolver em RP com personagens demihumanos, como gatos ou cães humanos, monstros ou demônios.',
+    'How, and if, you would like to engage in RP with demihuman characters, such as cat or dog humans, monsterfolk or demons.',
   component: FeatureDropdownInput,
 };
 
 export const human_pref: FeatureChoiced = {
-  name: 'Atração: humanos?',
+  name: 'Attraction: Humans?',
   category: 'ADVERT',
   description:
-    'Como, e se, você gostaria de se envolver em RP com personagens humanos. Você sabe o que é um humano.',
+    'How, and if, you would like to engage in RP wih human characters. You know what a human is.',
   component: FeatureDropdownInput,
 };
 
 export const character_ad: Feature<string> = {
-  name: 'Anúncio de Caracteres',
+  name: 'Character Advert',
   description:
-    'Um anúncio de roleplay para seu personagem. Fale sobre o que está procurando em termos de interpretação, e como se aproximar. Dê detalhes o máximo possível.',
+    'A roleplay advert for your character. Talk about what you are looking for in terms of roleplay, and how to approach. Give specifics as much as possible.',
   component: FeatureTextInput,
 };
 
 export const attraction: FeatureChoiced = {
-  name: 'Atração de Caracteres',
+  name: 'Character Attraction',
   description:
-    'O que classifica pelo que seu caráter é atraído. Isso é exibido no diretório.',
+    'What classifies what your character is attracted to. This is displayed in the Directory.',
   component: FeatureDropdownInput,
 };
 
 export const display_gender: FeatureChoiced = {
-  name: 'Gênero de Caracteres',
+  name: 'Character Gender',
   description:
-    'O que classifica como o gênero para o seu caráter. Isso é exibido no diretório.',
+    'What classifies as the gender for your character. This is displayed in the Directory.',
   component: FeatureDropdownInput,
 };
 
 export const flavor_text_nsfw: Feature<string> = {
-  name: 'Texto Sabor (NSFW)',
+  name: 'Flavor Text (NSFW)',
   description:
-    'A parte NSFW do seu texto de sabor. Costumava guardar detalhes sexuais visuais.',
+    'The NSFW part of your flavor text. Used to store visual sexual details.',
   component: FeatureTextInput,
 };
 
 export const low_arousal_text: Feature<string> = {
-  name: 'Sabor de excitação - Baixo',
-  description: 'Como seu personagem pode ser percebido como um pouco excitado',
+  name: 'Arousal Flavor - Low',
+  description: 'How your character can be perceived to be slightly aroused',
   component: FeatureShortTextInput,
 };
 
 export const medium_arousal_text: Feature<string> = {
-  name: 'Sabor de excitação - Médio',
-  description: 'Como seu personagem pode ser percebido como um pouco excitado',
+  name: 'Arousal Flavor - Medium',
+  description: 'How your character can be perceived to be somewhat aroused',
   component: FeatureShortTextInput,
 };
 
 export const high_arousal_text: Feature<string> = {
-  name: 'Sabor de excitação - Forte',
-  description: 'Como seu caráter pode ser percebido como altamente excitado',
+  name: 'Arousal Flavor - Strong',
+  description: 'How your character can be perceived to be highly aroused',
   component: FeatureShortTextInput,
 };
 
 export const silicon_flavor_text_nsfw: Feature<string> = {
-  name: 'Texto de sabor de silicone NSFW',
+  name: 'Silicon NSFW Flavor Text',
   description:
-    'Uma parte do seu texto de sabor que é armazenado em exame, usado para Silicones. Costumava guardar detalhes sexuais visuais.',
+    'A portion of your flavor text that is stored in examine, used for Silicons. Used to store visual sexual details.',
   component: FeatureTextInput,
 };
 
 export const headshot_silicon: Feature<string> = {
-  name: 'Tiro na cabeça de silicone',
+  name: 'Silicon Headshot',
   description:
     'Requires a link ending with .png, .jpeg, or .jpg, starting with \
   https://, and hosted on Catbox, Imgbox, Gyazo, Lensdump, or F-List. \
@@ -129,7 +129,7 @@ export const headshot_silicon: Feature<string> = {
 };
 
 export const headshot_nsfw: Feature<string> = {
-  name: 'Tiro na cabeça (NSFW)',
+  name: 'Headshot (NSFW)',
   description:
     'Headshot, but for NSFW references. \
     Requires a link ending with .png, .jpeg, or .jpg, starting with \
@@ -141,7 +141,7 @@ export const headshot_nsfw: Feature<string> = {
 };
 
 export const headshot_silicon_nsfw: Feature<string> = {
-  name: 'Cabeça de silicone (NSFW)',
+  name: 'Silicon Headshot (NSFW)',
   description:
     'Headshot, but for NSFW references on Silicons. \
     Requires a link ending with .png, .jpeg, or .jpg, starting with \
@@ -153,27 +153,27 @@ export const headshot_silicon_nsfw: Feature<string> = {
 };
 
 export const ooc_notes_silicon: Feature<string> = {
-  name: 'Notas OOC (Silicon)',
-  description: 'O mesmo que o COO, mas para seu caráter de silicone!',
+  name: 'OOC Notes (Silicon)',
+  description: 'Same as OOC notes, but for your silicon character!',
   component: FeatureTextInput,
 };
 
 export const custom_species_silicon: Feature<string> = {
-  name: 'Nome do modelo de silicone',
+  name: 'Silicon Model Name',
   description:
-    'O nome do módulo para sua empresa de silicone, como "Armadyne Pleasure Model".',
+    'The name of the module for your Silicon company, such as "Armadyne Pleasure Model."',
   component: FeatureShortTextInput,
 };
 
 export const custom_species_lore_silicon: Feature<string> = {
   name: 'Silicon Model Lore',
   description:
-    'Lore para o seu silício, normalmente sua empresa, fazer, modelo, e detalhes sobre sua criação.',
+    'Lore for your silicon, typically its company, make, model, and details regarding its creation.',
   component: FeatureTextInput,
 };
 
 export const art_ref: Feature<string> = {
-  name: 'Referência Artística',
+  name: 'Art Reference',
   description:
     'Art Reference that others can see for your character \
     Requires a link ending with .png, .jpeg, or .jpg, starting with \
@@ -182,7 +182,7 @@ export const art_ref: Feature<string> = {
 };
 
 export const art_ref_nsfw: FeatureToggle = {
-  name: 'Referência Artística (NSFW)',
-  description: 'Sua foto de referência é NSFW?',
+  name: 'Art Reference (NSFW)',
+  description: 'Is your reference picture NSFW?',
   component: CheckboxInput,
 };

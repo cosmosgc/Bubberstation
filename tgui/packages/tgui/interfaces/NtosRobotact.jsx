@@ -112,7 +112,7 @@ export const NtosRobotactContent = (props) => {
               <Section title="Status">
                 Charge:
                 <Button
-                  content="Alerta de energia."
+                  content="Power Alert"
                   disabled={charge}
                   onClick={() => act('alertPower')}
                 />
@@ -141,7 +141,7 @@ export const NtosRobotactContent = (props) => {
                   }}
                 />
               </Section>
-              <Section title="Poder da lâmpada">
+              <Section title="Lamp Power">
                 <Slider
                   value={lampIntensity}
                   step={1}
@@ -189,7 +189,7 @@ export const NtosRobotactContent = (props) => {
               {tab_sub === 1 && (
                 <Section>
                   <LabeledList>
-                    <LabeledList.Item label="Cobertura de Manutenção">
+                    <LabeledList.Item label="Maintenance Cover">
                       <Button.Confirm
                         content="Unlock"
                         disabled={cover === 'UNLOCKED'}
@@ -216,11 +216,11 @@ export const NtosRobotactContent = (props) => {
                         onClick={() => act('printImage')}
                       />
                     </LabeledList.Item>
-                    <LabeledList.Item label="Impressora Toner">
+                    <LabeledList.Item label="Printer Toner">
                       <ProgressBar value={printerToner / printerTonerMax} />
                     </LabeledList.Item>
                     {!!thrustersInstalled && (
-                      <LabeledList.Item label="Alternar os Thrusters">
+                      <LabeledList.Item label="Toggle Thrusters">
                         <Button
                           content={thrustersStatus}
                           onClick={() => act('toggleThrusters')}
@@ -228,7 +228,7 @@ export const NtosRobotactContent = (props) => {
                       </LabeledList.Item>
                     )}
                     {!!selfDestructAble && (
-                      <LabeledList.Item label="Autodestruição">
+                      <LabeledList.Item label="Self Destruct">
                         <Button.Confirm
                           content="ACTIVATE"
                           color="red"
@@ -252,7 +252,7 @@ export const NtosRobotactContent = (props) => {
                 <Section>
                   <LabeledList>
                     <LabeledList.Item
-                      label="Ligação de IA"
+                      label="AI Connection"
                       color={
                         wireAI === 'FAULT'
                           ? 'red'
@@ -282,13 +282,13 @@ export const NtosRobotactContent = (props) => {
                       {wireCamera}
                     </LabeledList.Item>
                     <LabeledList.Item
-                      label="Controlador de Módulos"
+                      label="Module Controller"
                       color={wireModule === 'FAULT' ? 'red' : 'green'}
                     >
                       {wireModule}
                     </LabeledList.Item>
                     <LabeledList.Item
-                      label="Motor Controlador"
+                      label="Motor Controller"
                       color={
                         locomotion === 'FAULT'
                           ? 'red'
@@ -300,7 +300,7 @@ export const NtosRobotactContent = (props) => {
                       {locomotion}
                     </LabeledList.Item>
                     <LabeledList.Item
-                      label="Cobertura de Manutenção"
+                      label="Maintenance Cover"
                       color={cover === 'UNLOCKED' ? 'red' : 'green'}
                     >
                       {cover}
@@ -318,7 +318,7 @@ export const NtosRobotactContent = (props) => {
               buttons={
                 <>
                   <Button
-                    content="Leis Estaduais"
+                    content="State Laws"
                     onClick={() => act('lawstate')}
                   />
                   <Button icon="volume-off" onClick={() => act('lawchannel')} />
@@ -348,14 +348,14 @@ export const NtosRobotactContent = (props) => {
       {tab_main === 3 && (
         <Flex.Item height={40}>
           <Section
-            title={MasterAI_connected ? masterAI : 'NÃO CONFIGO'}
+            title={MasterAI_connected ? masterAI : 'NOT CONFIGURED'}
             textAlign="center"
           >
             <LabeledList>
               <LabeledList.Item label="Status">
                 <Box color={masterAI_online ? 'good' : 'bad'}>
                   {!MasterAI_connected
-                    ? 'Sem conexão.'
+                    ? 'No Conection'
                     : masterAI_online
                       ? 'Online'
                       : 'Unresponsive'}
@@ -386,9 +386,9 @@ export const NtosRobotactContent = (props) => {
                               }
                             >
                               {cyborg.status
-                                ? 'Não Respondendo'
+                                ? 'Not Responding'
                                 : cyborg.locked_down
-                                  ? 'Trancado'
+                                  ? 'Locked Down'
                                   : cyborg.shell_discon
                                     ? 'Nominal/Disconnected'
                                     : 'Nominal'}
@@ -405,11 +405,11 @@ export const NtosRobotactContent = (props) => {
                               }
                             >
                               {cyborg.integ === 0
-                                ? 'Culpa difícil'
+                                ? 'Hard Fault'
                                 : cyborg.integ <= 25
-                                  ? 'Funcionalidade interrompida'
+                                  ? 'Functionality Disrupted'
                                   : cyborg.integ <= 75
-                                    ? 'Insuficiência funcional'
+                                    ? 'Functionality Impaired'
                                     : 'Operational'}
                             </Box>
                           </LabeledList.Item>
@@ -425,7 +425,7 @@ export const NtosRobotactContent = (props) => {
                             >
                               {typeof cyborg.charge === 'number'
                                 ? `${cyborg.charge}%`
-                                : 'Sem celular.'}
+                                : 'No Cell'}
                             </Box>
                           </LabeledList.Item>
                           <LabeledList.Item label="Model">

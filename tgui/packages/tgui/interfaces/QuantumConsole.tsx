@@ -94,7 +94,7 @@ export function QuantumConsole(props) {
   const { data } = useBackend<Data>();
 
   return (
-    <Window title="Consola Quântica" width={500} height={500}>
+    <Window title="Quantum Console" width={500} height={500}>
       <Window.Content>
         {!!data.connected && !data.ready && <LoadingScreen />}
         <AccessView />
@@ -134,7 +134,7 @@ function AccessView(props) {
       ? '???'
       : sorted.find(({ id }) => id === generated_domain)?.name;
   } else {
-    selected = 'Nada de carro.';
+    selected = 'Nothing loaded';
   }
 
   return (
@@ -170,7 +170,7 @@ function AccessView(props) {
                   Randomize
                 </Button>
               </Tooltip>
-              <Tooltip content="Pontos precisos para comprar domínios.">
+              <Tooltip content="Accrued points for purchasing domains.">
                 <Icon color="pink" name="star" mr={1} />
                 {points}
               </Tooltip>
@@ -178,7 +178,7 @@ function AccessView(props) {
           }
           fill
           scrollable
-          title="Domínios Virtuais"
+          title="Virtual Domains"
         >
           <Tabs fluid>
             <Tabs.Tab
@@ -233,7 +233,7 @@ function AccessView(props) {
               <NoticeBox info={!!generated_domain}>{selected}</NoticeBox>
             </Stack.Item>
             <Stack.Item>
-              <Tooltip content="Começa o desligamento. Avisará qualquer um conectado.">
+              <Tooltip content="Begins shutdown. Will notify anyone connected.">
                 <Button.Confirm
                   disabled={!ready || !generated_domain}
                   onClick={() => act('stop_domain')}
@@ -289,7 +289,7 @@ function DomainEntry(props: DomainEntryProps) {
   return (
     <Collapsible
       buttons={
-        <Tooltip content={!!generated_domain && 'Pare o domínio atual primeiro.'}>
+        <Tooltip content={!!generated_domain && 'Stop current domain first.'}>
           <Button
             disabled={!!generated_domain || !ready || occupied || points < cost}
             icon={buttonIcon}
@@ -312,20 +312,20 @@ function DomainEntry(props: DomainEntryProps) {
       <Stack height={5}>
         <Stack.Item color="label" grow={4}>
           {desc}
-          {!!is_modular && '(Modular)'}
-          {!!has_secondary_objectives && '(Objetivo secundário disponível)'}
-          {!!announce_ghosts && '(Interação fantasma)'}
+          {!!is_modular && ' (Modular)'}
+          {!!has_secondary_objectives && ' (Secondary Objective Available)'}
+          {!!announce_ghosts && ' (Ghost Interaction)'}
         </Stack.Item>
         <Stack.Divider />
         <Stack.Item grow>
           <Table>
             <Table.Row>
-              <Tooltip content="Custo dos pontos para implantar o domínio.">
+              <Tooltip content="Points cost for deploying domain.">
                 <DisplayDetails amount={cost} color="pink" icon="star" />
               </Tooltip>
             </Table.Row>
             <Table.Row>
-              <Tooltip content="Recompensa pelo domínio concorrente.">
+              <Tooltip content="Reward for competing domain.">
                 <DisplayDetails amount={reward} color="gold" icon="coins" />
               </Tooltip>
             </Table.Row>
@@ -346,12 +346,12 @@ const AvatarDisplay = (props) => {
 
   return (
     <Section
-      title="Clientes conectados."
+      title="Connected Clients"
       buttons={
         <Stack align="center">
           {!!generated_domain && (
             <Stack.Item>
-              <Tooltip content="Largura de banda disponível para novas conexões.">
+              <Tooltip content="Available bandwidth for new connections.">
                 <DisplayDetails
                   color="green"
                   icon="broadcast-tower"
@@ -361,7 +361,7 @@ const AvatarDisplay = (props) => {
             </Stack.Item>
           )}
           <Stack.Item>
-            <Tooltip content="Atualizar dados do Avatar.">
+            <Tooltip content="Refresh avatar data.">
               <Button icon="sync" onClick={() => act('refresh')}>
                 Refresh
               </Button>

@@ -19,7 +19,7 @@ export const MechBayPowerConsole = (props) => {
     <Window width={400} height={200}>
       <Window.Content>
         <Section
-          title="Status do Mech"
+          title="Mech status"
           textAlign="center"
           buttons={
             <Button

@@ -4,6 +4,6 @@ import {
 } from '../dropdowns';
 
 export const preferred_ai_core_display: FeatureWithIcons<string> = {
-  name: 'Exposição do núcleo de IA',
+  name: 'AI core display',
   component: FeatureIconnedDropdownInput,
 };

@@ -40,7 +40,7 @@
 	return TRUE
 
 /datum/action/cooldown/mob_cooldown/lay_eggs/Activate(atom/target)
-	owner.balloon_alert_to_viewers("laying eggs...")
+	owner.balloon_alert_to_viewers("Botando ovos...")
 	StartCooldown(360 SECONDS, 360 SECONDS)
 	if(!do_after(owner, egg_lay_time, target = get_turf(owner), interaction_key = DOAFTER_SOURCE_SPIDER))
 		owner.balloon_alert(owner, "Interrompido!")

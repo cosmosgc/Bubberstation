@@ -1,8 +1,8 @@
 import { CheckboxInput, type FeatureToggle } from '../../base';
 
 export const show_in_directory: FeatureToggle = {
-  name: 'Mostrar no diretório',
+  name: 'Show in Directory',
   category: 'ADVERT',
-  description: 'Quando habilitado, o caractere será mostrado no diretório',
+  description: 'When enabled, character will be shown in Directory',
   component: CheckboxInput,
 };

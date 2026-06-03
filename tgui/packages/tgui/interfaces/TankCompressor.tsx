@@ -52,7 +52,7 @@ const formatPressure = (value) => {
 
 export const TankCompressor = (props) => {
   return (
-    <Window title="Compressor de Tanque" width={440} height={440}>
+    <Window title="Tank Compressor" width={440} height={440}>
       <Window.Content>
         <TankCompressorContent />
       </Window.Content>
@@ -74,7 +74,7 @@ const TankCompressorContent = (props) => {
           style={{
             textTransform: 'capitalize',
           }}
-          title={disk ? `${disk} (${storage})` : 'Nenhum disco inserido'}
+          title={disk ? `${disk} (${storage})` : 'No Disk Inserted'}
           buttons={
             <Button
               icon="eject"
@@ -117,18 +117,18 @@ const TankCompressorControls = (props) => {
           ? 'average'
           : 'good';
   const notice_text = usingLastData
-    ? 'Tanque destruído. Mostrando os últimos dados gravados.'
+    ? 'Tank destroyed. Displaying last recorded data.'
     : !tankPresent
-      ? 'Nenum tanque detetado.'
+      ? 'No Tank Detected'
       : leaking
-        ? 'Fuga de Tanque'
+        ? 'Tank Leaking'
         : !pressure
-          ? 'Nenhuma pressão detectada.'
+          ? 'No Pressure Detected'
           : pressure < leakPressure
-            ? 'Pressão nominal do tanque'
+            ? 'Tank Pressure Nominal'
             : pressure < fragmentPressure
-              ? 'Fuga de perigo.'
-              : 'Perigo Explosivo';
+              ? 'Leak Hazard'
+              : 'Explosive Hazard';
 
   return (
     <Stack.Item>
@@ -140,7 +140,7 @@ const TankCompressorControls = (props) => {
             disabled={!tankPresent || tankPressure > ejectPressure}
             onClick={() => act('eject_tank')}
           >
-            {'Ejetar Tanque'}
+            {'Eject Tank'}
           </Button>
         }
       >
@@ -161,7 +161,7 @@ const TankCompressorControls = (props) => {
               format={formatPressure}
             />
           </LabeledControls.Item>
-          <LabeledControls.Item label="Taxa de fluxo">
+          <LabeledControls.Item label="Flow rate">
             <Box position="relative">
               <Knob
                 size={2}
@@ -287,9 +287,9 @@ const TankCompressorRecords = (props) => {
               <LabeledList.Item label="Actions">
                 <Button
                   icon="floppy-disk"
-                  content="Salvar para Disco"
+                  content="Save to Disk"
                   disabled={!disk}
-                  tooltip="Guardar o registro selecionado para um disco de dados inserido."
+                  tooltip="Save the record selected to an inserted data disk."
                   tooltipPosition="bottom"
                   onClick={() => {
                     act('save_record', {

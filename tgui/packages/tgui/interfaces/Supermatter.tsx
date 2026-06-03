@@ -176,7 +176,7 @@ export const SupermatterContent = (props: SupermatterProps) => {
               }
             />
             <SupermatterEntry
-              title="Energia Interna"
+              title="Internal Energy"
               alwaysShowChevron
               content={
                 <ProgressBar
@@ -212,7 +212,7 @@ export const SupermatterContent = (props: SupermatterProps) => {
               }
             />
             <SupermatterEntry
-              title="Transmissão de Energia Zap"
+              title="Zap Power Transmission"
               alwaysShowChevron
               content={
                 <ProgressBar
@@ -245,7 +245,7 @@ export const SupermatterContent = (props: SupermatterProps) => {
               }
             />
             <SupermatterEntry
-              title="Moles Absorvidas"
+              title="Absorbed Moles"
               content={
                 <ProgressBar
                   value={gas_total_moles}
@@ -280,7 +280,7 @@ export const SupermatterContent = (props: SupermatterProps) => {
               }
             />
             <SupermatterEntry
-              title="Limite de temperatura"
+              title="Temperature Limit"
               alwaysShowChevron
               content={`${temp_limit} K`}
               detail={
@@ -298,7 +298,7 @@ export const SupermatterContent = (props: SupermatterProps) => {
               }
             />
             <SupermatterEntry
-              title="Multiplicador de Resíduos"
+              title="Waste Multiplier"
               alwaysShowChevron
               content={
                 <ProgressBar
@@ -329,7 +329,7 @@ export const SupermatterContent = (props: SupermatterProps) => {
               }
             />
             <SupermatterEntry
-              title="Razão de Absorção"
+              title="Absorption Ratio"
               content={`${absorbed_ratio * 100}%`}
             />
           </Stack>
@@ -345,7 +345,7 @@ export const SupermatterContent = (props: SupermatterProps) => {
               icon={allGasActive ? 'times' : 'book-open'}
               onClick={() => setAllGasActive(!allGasActive)}
             >
-              {allGasActive ? 'Esconda Gases' : 'Mostrar todos os gases'}
+              {allGasActive ? 'Hide Gases' : 'Show All Gases'}
             </Button>
           }
         >
@@ -399,11 +399,11 @@ export const SupermatterContent = (props: SupermatterProps) => {
                           </LabeledList>
                         </>
                       ) : (
-                        'Não tem efeitos de composição.'
+                        'Has no composition effects'
                       )}
                     </>
                   ) : (
-                    'Não tem efeitos.'
+                    'Has no effects'
                   )
                 }
               />

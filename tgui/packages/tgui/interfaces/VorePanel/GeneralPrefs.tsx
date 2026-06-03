@@ -8,7 +8,7 @@ export const Preferences = (props) => {
   const { preferences } = data;
 
   return (
-    <Section title="Preferências de Vore">
+    <Section title="Vore Preferences">
       <Flex wrap>
         {Object.entries(preferences).map(([key, value]) => {
           const data = PREF_TYPE_MAP[key];
@@ -49,10 +49,10 @@ export const PrefTrinary = (props: {
       selected={value === 2}
       tooltip={
         value === 2
-          ? 'Você vai aceitar automaticamente esse tipo'
+          ? 'You will automatically accept vore of this type'
           : value === 1
-            ? 'Você sempre será questionado se está bem com esse tipo de coisa.'
-            : 'Você vai rejeitar automaticamente o Vore deste tipo.'
+            ? 'You will always be prompted whether you are okay with vore of this type'
+            : 'You will automatically reject vore of this type'
       }
     >
       {name} - {value === 2 ? 'Always' : value === 1 ? 'Prompt' : 'Never'}
@@ -86,14 +86,14 @@ export const PrefBinary = (props: {
 export const PREF_TYPE_MAP = {
   prey_toggle: { component: PrefTrinary, name: 'Prey Toggle' },
   pred_toggle: { component: PrefTrinary, name: 'Pred Toggle' },
-  eating_noises: { component: PrefBinary, name: 'Comer barulho' },
-  digestion_noises: { component: PrefBinary, name: 'Ruídos de digestão' },
-  belch_noises: { component: PrefBinary, name: 'Barulhos de arroto' },
-  digestion_allowed: { component: PrefBinary, name: 'Tome Digestion Danos' },
-  qdel_allowed: { component: PrefBinary, name: 'Apagado após a digestão' },
-  absorb_allowed: { component: PrefBinary, name: 'Absorção permitida.' },
+  eating_noises: { component: PrefBinary, name: 'Eating Noises' },
+  digestion_noises: { component: PrefBinary, name: 'Digestion Noises' },
+  belch_noises: { component: PrefBinary, name: 'Belch Noises' },
+  digestion_allowed: { component: PrefBinary, name: 'Take Digestion Damage' },
+  qdel_allowed: { component: PrefBinary, name: 'Deleted After Digestion' },
+  absorb_allowed: { component: PrefBinary, name: 'Absorption Allowed' },
   fullscreen_overlays_allowed: {
     component: PrefBinary,
-    name: 'Overlays em tela cheia',
+    name: 'Fullscreen Overlays',
   },
 };

@@ -29,7 +29,7 @@ export const Holopad = (props) => {
             <Button
               lineHeight="40px"
               icon="times"
-              content="Desliga."
+              content="Hang Up"
               color="bad"
               onClick={() => act('hang_up')}
             />
@@ -64,7 +64,7 @@ const HolopadContent = (props) => {
           <Button
             icon="bell"
             content={
-              on_cooldown ? "A presença da IA é solicitada." : "Solicitar presença da IA"
+              on_cooldown ? "AI's Presence Requested" : "Request AI's Presence"
             }
             disabled={!on_network || on_cooldown}
             onClick={() => act('AIrequest')}
@@ -75,7 +75,7 @@ const HolopadContent = (props) => {
           <LabeledList.Item label="Communicator">
             <Button
               icon="phone-alt"
-              content={allowed ? 'Conectar com Holopad' : 'Chame Holopad.'}
+              content={allowed ? 'Connect To Holopad' : 'Call Holopad'}
               disabled={!on_network}
               onClick={() => act('holocall', { headcall: allowed })}
             />
@@ -83,7 +83,7 @@ const HolopadContent = (props) => {
           {holo_calls.map((call) => {
             return (
               <LabeledList.Item
-                label={call.connected ? 'Chamada atual.' : 'Chamada chegando'}
+                label={call.connected ? 'Current Call' : 'Incoming Call'}
                 key={call.ref}
               >
                 <Button
@@ -108,7 +108,7 @@ const HolopadContent = (props) => {
             <LabeledList.Item key="reject">
               <Button
                 icon="phone-slash"
-                content="Rejeite chamadas recebidas."
+                content="Reject incoming call(s)"
                 color="bad"
                 onClick={() => act('rejectall')}
               />
@@ -129,7 +129,7 @@ const HolopadContent = (props) => {
       >
         {(!disk && <NoticeBox>No holodisk</NoticeBox>) || (
           <LabeledList>
-            <LabeledList.Item label="Jogador de discoteca">
+            <LabeledList.Item label="Disk Player">
               <Button
                 icon={replay_mode ? 'pause' : 'play'}
                 content={replay_mode ? 'Stop' : 'Replay'}
@@ -146,7 +146,7 @@ const HolopadContent = (props) => {
               />
               <Button
                 icon="exchange-alt"
-                content="Mudar a Posição"
+                content="Change Offset"
                 disabled={!replay_mode}
                 onClick={() => act('offset')}
               />
@@ -154,14 +154,14 @@ const HolopadContent = (props) => {
             <LabeledList.Item label="Recorder">
               <Button
                 icon={record_mode ? 'pause' : 'video'}
-                content={record_mode ? 'Fim da gravação' : 'Record'}
+                content={record_mode ? 'End Recording' : 'Record'}
                 selected={record_mode}
                 disabled={(disk_record && !record_mode) || replay_mode}
                 onClick={() => act('record_mode')}
               />
               <Button
                 icon="trash"
-                content="Limpar gravação"
+                content="Clear Recording"
                 color="bad"
                 disabled={!disk_record || replay_mode || record_mode}
                 onClick={() => act('record_clear')}

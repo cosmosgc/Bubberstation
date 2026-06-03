@@ -30,7 +30,7 @@ export function Checkout(props) {
         <Stack vertical height="100%">
           <Stack.Item grow>
             <ScrollableSection
-              header="Chequei os livros."
+              header="Checked Out Books"
               contents={<CheckoutEntries />}
             />
           </Stack.Item>
@@ -92,7 +92,7 @@ function CheckoutModal(props) {
             over
             width="100%"
             selected={checkout_title}
-            placeholder="Inserir nome do livro..."
+            placeholder="Insert Book name..."
             displayText={checkout_title}
             options={inventory.map((book) => book.title)}
             onSelected={(e) => {
@@ -104,14 +104,14 @@ function CheckoutModal(props) {
         </Stack.Item>
         <Stack.Item>
           <LabeledList>
-            <LabeledList.Item label="Empréstimo Para">
+            <LabeledList.Item label="Loan To">
               <Input
                 width="160px"
                 value={checkoutee}
                 onChange={setCheckoutee}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Período de empréstimo">
+            <LabeledList.Item label="Loan Period">
               <NumberInput
                 value={checkoutPeriod}
                 unit=" Minutes"

@@ -42,12 +42,12 @@ const ObjectivePrintout = (props) => {
       <Stack.Item bold>Your goals:</Stack.Item>
       <Stack.Item>
         {
-          'Ainda mais os objetivos de qualquer outra organização que você é uma parte de usar o poder concedido a você.'
+          '- Further the goals of any other organization you are a part of using the power granted to you.'
         }
       </Stack.Item>
       <Stack.Item>
         {
-          'Mais a graça, conhecimento e glória de nosso grande senhor do Motor, Ratvar.'
+          '- Further the grace, knowledge, and glory of our great lord of the Engine, Ratvar.'
         }
       </Stack.Item>
     </Stack>

@@ -6,71 +6,71 @@ import type { TabType } from './types';
 
 export const TAB2NAME: TabType[] = [
   {
-    title: 'Nome escrito',
+    title: 'Enscribed Name',
     blurb:
-      "Este livro só responde ao seu dono, e claro, deve ter um. A permanência do pacto entre um livro de feitiços e seu dono garante que um artefato tão poderoso não pode cair em mãos inimigas, ou ser usado de maneiras que quebram as regras da Federação, como a troca de feitiços.",
+      "This book answers only to its owner, and of course, must have one. The permanence of the pact between a spellbook and its owner ensures such a powerful artifact cannot fall into enemy hands, or be used in ways that break the Federation's rules such as bartering spells.",
     component: EnscribedName,
   },
   {
-    title: 'Sumário',
+    title: 'Table of Contents',
     component: TableOfContents,
   },
   {
     title: 'Offensive',
-    blurb: 'Feitiços e itens voltados para debilitar e destruir.',
+    blurb: 'Spells and items geared towards debilitating and destroying.',
     scrollable: true,
   },
   {
     title: 'Defensive',
     blurb:
-      "Feitiços e itens direcionados para melhorar sua sobrevivência ou reduzir a habilidade de inimigos para atacar.",
+      "Spells and items geared towards improving your survivability or reducing foes' ability to attack.",
     scrollable: true,
   },
   {
     title: 'Mobility',
     blurb:
-      'Feitiços e itens voltados para melhorar sua habilidade de se mover. É uma boa ideia tomar pelo menos uma.',
+      'Spells and items geared towards improving your ability to move. It is a good idea to take at least one.',
     scrollable: true,
   },
   {
     title: 'Assistance',
     blurb:
-      'Feitiços e itens voltados para trazer forças externas para ajudá-lo ou melhorar seus outros itens e habilidades.',
+      'Spells and items geared towards bringing in outside forces to aid you or improving upon your other items and abilities.',
     scrollable: true,
   },
   {
     title: 'Challenges',
     blurb:
-      'A Federação Mágica está procurando por mostras de poder. Armar a estação contra você aumentará o perigo, mas lhe concederá mais acusações pelo seu livro de feitiços.',
+      'The Wizard Federation is looking for shows of power. Arming the station against you will increase the danger, but will grant you more charges for your spellbook.',
     locked: true,
     scrollable: true,
   },
   {
     title: 'Rituals',
     blurb:
-      'Esses feitiços poderosos mudam o próprio tecido da realidade. Nem sempre a seu favor.',
+      'These powerful spells change the very fabric of reality. Not always in your favour.',
     scrollable: true,
   },
   {
     title: 'Loadouts',
     blurb:
-      'A Federação Mágica aceita que, às vezes, escolher é difícil. Pode escolher entre alguns feiticeiros aprovados.',
+      'The Wizard Federation accepts that sometimes, choosing is hard. You can choose from some approved wizard loadouts here.',
     component: Loadouts,
   },
   {
     title: 'Randomize',
     blurb:
-      "Se você não gostou da carga oferecida, você pode abraçar o caos. Não recomendado para bruxos mais novos.",
+      "If you didn't like the loadouts offered, you can embrace chaos. Not recommended for newer wizards.",
     component: Randomize,
   },
   {
     title: 'Perks',
     blurb:
-      'As vantagens são úteis (e não tão úteis) melhorias na alma e no corpo coletados de todos os cantos do universo.',
+      'Perks are useful (and not so useful) improvements to the soul and body collected from all corners of the universe.',
     scrollable: true,
   },
   {
-    title: 'Sumário',
+    title: 'Table of Contents',
     component: TableOfContents,
   },
 ];

@@ -20,10 +20,10 @@ export const ChemAcclimator = (props) => {
     <Window width={320} height={130}>
       <Window.Content>
         <LabeledList>
-          <LabeledList.Item label="Temperatura atual">
+          <LabeledList.Item label="Current Temperature">
             {chem_temp} K
           </LabeledList.Item>
-          <LabeledList.Item label="Temperatura do alvo">
+          <LabeledList.Item label="Target Temperature">
             <NumberInput
               value={target_temperature}
               unit="K"
@@ -55,7 +55,7 @@ export const ChemAcclimator = (props) => {
               }
             />
           </LabeledList.Item>
-          <LabeledList.Item label="Estado atual">
+          <LabeledList.Item label="Current State">
             {States[acclimate_state]}
           </LabeledList.Item>
         </LabeledList>

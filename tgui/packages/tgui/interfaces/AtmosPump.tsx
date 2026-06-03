@@ -35,7 +35,7 @@ export const AtmosPump = (props) => {
               />
             </LabeledList.Item>
             {max_rate ? (
-              <LabeledList.Item label="Taxa de Transferência">
+              <LabeledList.Item label="Transfer Rate">
                 <NumberInput
                   animated
                   value={rate}
@@ -63,7 +63,7 @@ export const AtmosPump = (props) => {
                 />
               </LabeledList.Item>
             ) : (
-              <LabeledList.Item label="Pressão de saída">
+              <LabeledList.Item label="Output Pressure">
                 <NumberInput
                   animated
                   value={pressure}

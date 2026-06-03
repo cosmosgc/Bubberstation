@@ -1,8 +1,8 @@
 import { CheckboxInput, type FeatureToggle } from '../../base';
 
 export const random_heirloom_toggle: FeatureToggle = {
-  name: 'Activar heranças aleatórias',
+  name: 'Enable Random Heirlooms',
   description:
-    'Se habilitado, você vai receber relíquias aleatórias em vez de ser para marcar a sua própria.',
+    'If enabled, you will recieve random heirlooms instead of being to mark your own.',
   component: CheckboxInput,
 };

@@ -42,19 +42,19 @@ export function DnaVault(props) {
   return (
     <Window width={350} height={400}>
       <Window.Content>
-        <Section title="Banco de dados de DNA">
+        <Section title="DNA Vault Database">
           <LabeledList>
-            <LabeledList.Item label="DNA humano">
+            <LabeledList.Item label="Human DNA">
               <ProgressBar value={dna / dna_max}>
                 {`${dna} / ${dna_max} Samples`}
               </ProgressBar>
             </LabeledList.Item>
-            <LabeledList.Item label="DNA da planta">
+            <LabeledList.Item label="Plant DNA">
               <ProgressBar value={plants / plants_max}>
                 {`${plants} / ${plants_max} Samples`}
               </ProgressBar>
             </LabeledList.Item>
-            <LabeledList.Item label="DNA animal">
+            <LabeledList.Item label="Animal DNA">
               <ProgressBar value={animals / animals_max}>
                 {`${animals} / ${animals_max} Samples`}
               </ProgressBar>
@@ -62,7 +62,7 @@ export function DnaVault(props) {
           </LabeledList>
         </Section>
         {!!(completed && !used) && (
-          <Section title="Terapia Genética Pessoal">
+          <Section title="Personal Gene Therapy">
             <Box bold textAlign="center" mb={1}>
               Applicable Gene Therapy Treatments
             </Box>

@@ -81,7 +81,7 @@ export const Interview = (props) => {
     >
       <Window.Content scrollable>
         {(!read_only && (
-          <Section title="Bem-vindo!">
+          <Section title="Welcome!">
             <p>{linkifyText(welcome_message)}</p>
           </Section>
         )) || <RenderedStatus status={status} queue_pos={queue_pos} />}
@@ -117,7 +117,7 @@ export const Interview = (props) => {
                       color={has_permabans ? 'bad' : 'average'}
                       tooltip={
                         has_permabans
-                          ? 'Este usuário tem permabans em sua história!'
+                          ? 'This user has permabans in their history!'
                           : ''
                       }
                       onClick={() => act('check_centcom')}
@@ -212,7 +212,7 @@ const QuestionArea = (props: Question) => {
     >
       <p>{linkifyText(question)}</p>
       {read_only || is_admin ? (
-        <BlockQuote>{response || 'Nenhuma resposta.'}</BlockQuote>
+        <BlockQuote>{response || 'No response.'}</BlockQuote>
       ) : (
         <TextArea
           fluid
@@ -220,7 +220,7 @@ const QuestionArea = (props: Question) => {
           maxLength={500}
           onChange={setUserInput}
           onEnter={saveResponse}
-          placeholder="Escreva sua resposta aqui, no máximo 500 caracteres. Pressione enter para enviar."
+          placeholder="Write your response here, max of 500 characters. Press enter to submit."
           value={response || undefined}
         />
       )}

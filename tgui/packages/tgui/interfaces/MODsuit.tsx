@@ -129,7 +129,7 @@ export const MODsuit = (props) => {
       width={600}
       height={600}
       theme={ui_theme}
-      title="Painel de Interface MOD"
+      title="MOD Interface Panel"
     >
       <Window.Content scrollable={!interface_break}>
         <MODsuitContent />
@@ -391,7 +391,7 @@ const SuitStatusSection = (props) => {
 
   return (
     <Section
-      title="Status do terno"
+      title="Suit Status"
       fill
       buttons={
         <Button
@@ -408,13 +408,13 @@ const SuitStatusSection = (props) => {
             value={charge_current / charge_max}
             color={chargebar_color}
             style={{
-              textShadow: '1px 1px 0 preto',
+              textShadow: '1px 1px 0 black',
             }}
           >
             {chargebar_string}
           </ProgressBar>
         </LabeledList.Item>
-        <LabeledList.Item label="Bloqueio ID">
+        <LabeledList.Item label="ID Lock">
           <Button
             icon={locked ? 'lock' : 'lock-open'}
             color={locked ? 'good' : 'default'}
@@ -427,13 +427,13 @@ const SuitStatusSection = (props) => {
             icon={'wifi'}
             color={link_call ? 'good' : 'default'}
             disabled={!link_freq}
-            tooltip={link_freq ? '' : 'Defina uma frequência com uma multitool!'}
+            tooltip={link_freq ? '' : 'Set a frequency with a multitool!'}
             content={
               link_freq
                 ? link_call
                   ? `Calling (${link_call})`
                   : `Call (${link_id})`
-                : 'Frequência desligada'
+                : 'Frequency Unset'
             }
             onClick={() => act('call')}
           />
@@ -449,11 +449,11 @@ const SuitStatusSection = (props) => {
           </LabeledList.Item>
         )}
         {!!ai_name && (
-          <LabeledList.Item label="Controle de PAI">
+          <LabeledList.Item label="pAI Control">
             {has_pai && (
               <Button
                 icon="eject"
-                content="Ejetar o PAI"
+                content="Eject pAI"
                 disabled={is_ai}
                 onClick={() => act('eject_pai')}
               />
@@ -482,13 +482,13 @@ const HardwareSection = (props) => {
   return (
     <Section title="Hardware" style={{ textTransform: 'capitalize' }}>
       <LabeledList>
-        <LabeledList.Item label="Unidade de Controle.">{control}</LabeledList.Item>
+        <LabeledList.Item label="Control Unit">{control}</LabeledList.Item>
         <LabeledList.Item label="Core">
-          {core_name || 'Nenhum núcleo detectado.'}
+          {core_name || 'No Core Detected'}
         </LabeledList.Item>
         <ModParts />
-        <LabeledList.Item label="Ajudante de IA">
-          {ai_name || 'Nenhuma IA Detetada'}
+        <LabeledList.Item label="AI Assistant">
+          {ai_name || 'No AI Detected'}
         </LabeledList.Item>
       </LabeledList>
     </Section>
@@ -542,7 +542,7 @@ const UserStatusSection = (props) => {
     viruses,
   } = data.module_custom_status;
   return (
-    <Section title="Estado do Usuário" fill>
+    <Section title="User Status" fill>
       {!active && <LockedModule />}
       <LabeledList>
         {health !== undefined && (
@@ -560,7 +560,7 @@ const UserStatusSection = (props) => {
           </LabeledList.Item>
         )}
         {loss_brute !== undefined && (
-          <LabeledList.Item label="Dano Bruto">
+          <LabeledList.Item label="Brute Damage">
             <ProgressBar
               value={active ? loss_brute / health_max : 0}
               ranges={{
@@ -574,7 +574,7 @@ const UserStatusSection = (props) => {
           </LabeledList.Item>
         )}
         {loss_fire !== undefined && (
-          <LabeledList.Item label="Dano por Queimaduras">
+          <LabeledList.Item label="Burn Damage">
             <ProgressBar
               value={active ? loss_fire / health_max : 0}
               ranges={{
@@ -588,7 +588,7 @@ const UserStatusSection = (props) => {
           </LabeledList.Item>
         )}
         {loss_oxy !== undefined && (
-          <LabeledList.Item label="Danos por Oxy">
+          <LabeledList.Item label="Oxy Damage">
             <ProgressBar
               value={active ? loss_oxy / health_max : 0}
               ranges={{
@@ -602,7 +602,7 @@ const UserStatusSection = (props) => {
           </LabeledList.Item>
         )}
         {loss_tox !== undefined && (
-          <LabeledList.Item label="Dano toxicológico">
+          <LabeledList.Item label="Tox Damage">
             <ProgressBar
               value={active ? loss_tox / health_max : 0}
               ranges={{
@@ -631,12 +631,12 @@ const UserStatusSection = (props) => {
           </LabeledList.Item>
         )}
         {body_temperature !== undefined && (
-          <LabeledList.Item label="Cabo Temperatura">
+          <LabeledList.Item label="Body Temp">
             {`${active ? Math.round(body_temperature) : 0} K`}
           </LabeledList.Item>
         )}
         {nutrition !== undefined && (
-          <LabeledList.Item label="Nível de saciedade">
+          <LabeledList.Item label="Satiety Level">
             {`${active ? Math.round(nutrition) : 0}`}
           </LabeledList.Item>
         )}
@@ -715,7 +715,7 @@ const ModuleSection = (props) => {
               <Button
                 color="transparent"
                 icon="plug"
-                tooltip="Custo da energia ociosa"
+                tooltip="Idle Power Cost (Watts)"
                 tooltipPosition="top"
               />
             </Table.Cell>
@@ -723,7 +723,7 @@ const ModuleSection = (props) => {
               <Button
                 color="transparent"
                 icon="lightbulb"
-                tooltip="Custo de energia ativa"
+                tooltip="Active Power Cost (Watts)"
                 tooltipPosition="top"
               />
             </Table.Cell>
@@ -731,7 +731,7 @@ const ModuleSection = (props) => {
               <Button
                 color="transparent"
                 icon="bolt"
-                tooltip="Use o custo de energia (Joules)"
+                tooltip="Use Energy Cost (Joules)"
                 tooltipPosition="top"
               />
             </Table.Cell>

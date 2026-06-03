@@ -17,14 +17,14 @@ export const NtosSpectreMeter = (props) => {
               content={auto_mode ? 'Auto' : 'Manual'}
               onClick={() => act('toggle_mode')}
               selected={auto_mode}
-              tooltip="Alternar varredura automática. Pode ser barulhento."
+              tooltip="Toggle automatic scanning. Can be noisy"
             />
             <Button
               inline
               icon="magnifying-glass"
               content="Scan"
               disabled={auto_mode || on_cooldown}
-              tooltip="Tem resfriamento de cerca de 2 segundos."
+              tooltip="Has cooldown of about 2 seconds"
               onClick={() => act('manual_scan')}
             />
           </Box>

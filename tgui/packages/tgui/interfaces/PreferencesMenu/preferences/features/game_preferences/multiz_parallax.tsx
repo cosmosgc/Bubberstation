@@ -1,8 +1,8 @@
 import { CheckboxInput, type FeatureToggle } from '../base';
 
 export const multiz_parallax: FeatureToggle = {
-  name: 'Activar paralaxe multi-z.',
+  name: 'Enable multi-z parallax',
   category: 'GAMEPLAY',
-  description: 'Activar paralaxe multi-z, para um efeito 3D.',
+  description: 'Enable multi-z parallax, for a 3D effect.',
   component: CheckboxInput,
 };

@@ -27,7 +27,7 @@ export function TabBay(props) {
         icon="undo-alt"
         onClick={() => act('teleportBack')}
       >
-        {oldArea ? oldArea.substring(0, 17) : 'Volte.'}
+        {oldArea ? oldArea.substring(0, 17) : 'Go Back'}
       </Button>
     </>
   );
@@ -47,7 +47,7 @@ export function TabDrop(props) {
         icon="undo-alt"
         onClick={() => act('teleportBack')}
       >
-        {oldArea ? oldArea.substring(0, 17) : 'Volte.'}
+        {oldArea ? oldArea.substring(0, 17) : 'Go Back'}
       </Button>
     </>
   );

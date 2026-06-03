@@ -132,7 +132,7 @@ export const ServerControl = (props) => {
           </Section>
         )}
 
-        <Collapsible title="História da Pesquisa">
+        <Collapsible title="Research History">
           {!logs.length ? (
             <NoticeBox mt={2} info>
               No history found.

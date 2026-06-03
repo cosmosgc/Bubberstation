@@ -45,7 +45,7 @@ export const OreContainer = (props) => {
                 mt={0.5}
                 bottom="5%"
                 height="20px"
-                placeholder="Procure Ore..."
+                placeholder="Search Ore..."
                 value={searchItem}
                 onChange={setSearchItem}
                 fluid

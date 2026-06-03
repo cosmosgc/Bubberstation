@@ -101,7 +101,7 @@ const TOCEntryComponent = <Type,>(props: TOCEntryComponentProps<Type>) => {
         <Box
           height="50%"
           style={{
-            borderBottom: '2px pontilhado rgba(255, 255)',
+            borderBottom: '2px dotted rgba(255, 255, 255)',
             borderColor: 'black',
           }}
         />
@@ -314,7 +314,7 @@ type BookUIProps<Type> = {
  * @prop estimateHeight A function that estimates the height of a given entry. Used for pagination.
  * @prop renderEntry A function that renders a given entry. Used for displaying entries on pages.
  * @prop renderTOCEntry A function that renders a given entry for the table of contents. Used for displaying entries in the TOC.
- * @prop blankPage An optional React node to display on blank pages. If not provided, blank pages will display "Esta página deixou em branco intencionalmente."
+ * @prop blankPage An optional React node to display on blank pages. If not provided, blank pages will display "This page intentionally left blank."
  *
  */
 export const BookUI = <Type,>(props: BookUIProps<Type>) => {

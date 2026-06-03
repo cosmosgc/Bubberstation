@@ -33,7 +33,7 @@ type Info = {
 
 export const BorerEvolution = (props) => {
   return (
-    <Window width={675} height={600} theme="wizard" title="Árvore da Evolução">
+    <Window width={675} height={600} theme="wizard" title="Evolution Tree">
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow>
@@ -51,9 +51,9 @@ const PastEvolutions = (props) => {
 
   return (
     <Stack.Item grow>
-      <Section title="Evoluçãos Passadas" fill scrollable>
+      <Section title="Past Evolutions" fill scrollable>
         <Stack vertical>
-          {(!learnedEvolution.length && 'Nenhum!') ||
+          {(!learnedEvolution.length && 'None!') ||
             learnedEvolution.map((learned) => (
               <Stack.Item key={learned.name}>
                 <Button
@@ -78,8 +78,8 @@ const EvolutionList = (props) => {
 
   return (
     <Stack.Item grow>
-      <Section title="Possíveis evoluções" fill scrollable>
-        {(!learnableEvolution.length && 'Nenhum!') ||
+      <Section title="Possible Evolutions" fill scrollable>
+        {(!learnableEvolution.length && 'None!') ||
           learnableEvolution.map((toLearn) => (
             <Stack.Item key={toLearn.name} mb={1}>
               <Button

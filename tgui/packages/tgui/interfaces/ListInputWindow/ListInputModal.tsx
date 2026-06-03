@@ -124,8 +124,8 @@ export const ListInputModal = (props: ListInputModalProps) => {
           selected
           tooltip={
             searchBarVisible
-              ? 'Modo de busca. Digite para procurar ou usar as setas para selecionar manualmente.'
-              : 'Modo de atalho. Digite uma letra para pular para o primeiro jogo. Entre para selecionar.'
+              ? 'Search Mode. Type to search or use arrow keys to select manually.'
+              : 'Hotkey Mode. Type a letter to jump to the first match. Enter to select.'
           }
           tooltipPosition="left"
           onClick={() => onSearchBarToggle()}

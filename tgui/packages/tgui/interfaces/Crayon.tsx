@@ -52,17 +52,17 @@ export const Crayon = (props) => {
               <ColorItem />
               <LabeledList.Item>
                 <Button
-                  content="Cor personalizada"
+                  content="Custom color"
                   onClick={() => act('custom_color')}
                 />
               </LabeledList.Item>
               <LabeledList.Item>
                 <Button
-                  content={washable_coloring_mode ? 'Tinta lavável' : 'Tinta permanente.'}
+                  content={washable_coloring_mode ? 'Washable paint' : 'Permanent paint'}
                   onClick={() => act('change_color_mode')}
                 />
                 <Button
-                  content={remove_coloring ? 'Remova o modo de pintura' : 'Modo de pintura'}
+                  content={remove_coloring ? 'Remove paint mode' : 'Paint mode'}
                   selected={remove_coloring}
                   onClick={() => act('toggle_remove_coloring')}
                 />
@@ -96,11 +96,11 @@ export const Crayon = (props) => {
         {!!is_literate_user && (
           <Section title="Text">
             <LabeledList>
-              <LabeledList.Item label="Buffer atual">
+              <LabeledList.Item label="Current Buffer">
                 {text_buffer}
               </LabeledList.Item>
             </LabeledList>
-            <Button content="Novo Texto" onClick={() => act('enter_text')} />
+            <Button content="New Text" onClick={() => act('enter_text')} />
           </Section>
         )}
       </Window.Content>

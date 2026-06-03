@@ -16,7 +16,7 @@ type Attempts = {
 
 const check_attempts = (attempts_to_check: number) => {
   return attempts_to_check === 1
-    ? 'na próxima tentativa de acesso falhado.'
+    ? 'on next failed access attempt.'
     : `after ${attempts_to_check} failed access attempts.`;
 };
 
@@ -32,7 +32,7 @@ export const AbandonedCrate = (props) => {
     <Window width={335} height={180 + previous_attempts.length * 19}>
       <Window.Content scrollable>
         <Section
-          title="Deca-Código Bloqueio"
+          title="Deca-Code Lock"
           buttons={
             <Button
               tooltip={BULLS_COWS_INFO}
@@ -74,7 +74,7 @@ export const AbandonedCrate = (props) => {
             {previous_attempts.map((previous_attempts) => (
               <Table.Row
                 key={previous_attempts.attempt}
-                style={{ borderTop: '2px sólido #222' }}
+                style={{ borderTop: '2px solid #222' }}
               >
                 <Table.Cell collapsing textAlign="center" pr="5px">
                   <Box color="white" inline fontSize="125%">

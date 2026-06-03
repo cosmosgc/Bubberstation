@@ -56,13 +56,13 @@ export function CommunicationsConsole(props) {
             >
               {authenticated
                 ? `Log Out${authorizeName ? ` (${authorizeName})` : ''}`
-                : 'Entrar'}
+                : 'Log In'}
             </Button>
           </Section>
         )}
 
         {canRequestSafeCode ? (
-          <Section title="Código de Segurança de Emergência">
+          <Section title="Emergency Safe Code">
             <Button
               icon="key"
               color="good"
@@ -73,7 +73,7 @@ export function CommunicationsConsole(props) {
           </Section>
         ) : (
           !!safeCodeDeliveryWait && (
-            <Section title="Entrega de código de segurança de emergência" color="label">
+            <Section title="Emergency Safe Code Delivery" color="label">
               {`Drop pod to ${safeCodeDeliveryArea} in \
             ${Math.round(safeCodeDeliveryWait / 10)}s`}
             </Section>

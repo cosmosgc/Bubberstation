@@ -58,12 +58,12 @@ function IntroductionSection(props) {
         <Stack.Item grow>
           <ObjectivePrintout
             objectives={objectives}
-            titleMessage="Seus objetivos principais."
+            titleMessage="Your prime objectives"
             objectivePrefix="&#8805-"
             objectiveFollowup={
               <ReplaceObjectivesButton
                 can_change_objective={can_change_objective}
-                button_title="Sobrescrever Dados Objetivos"
+                button_title="Overwrite Objectives Data"
                 button_colour="green"
               />
             }
@@ -95,7 +95,7 @@ function FlavorSection(props) {
             ideas for how to spend the round.`}
           */
           tooltip="
-            Please refer to the 'Política Antagonista' section of the wiki
+            Please refer to the 'Antagonist Policy' section of the wiki
             if you have any questions."
           tooltipPosition="bottom-start"
         />
@@ -197,7 +197,7 @@ export function AntagInfoMalf(props) {
       height={530}
       theme={antagInfoTab === Screen.Intro ? 'hackerman' : 'malfunction'}
     >
-      <Window.Content style={{ fontFamily: 'Consolas, monoespaço.' }}>
+      <Window.Content style={{ fontFamily: 'Consolas, monospace' }}>
         <Stack vertical fill>
           <Stack.Item>
             <Tabs fluid>

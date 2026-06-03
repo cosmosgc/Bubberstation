@@ -16,25 +16,25 @@ import { Window } from '../layouts';
 const TAB2NAME = [
   {
     title: 'Debugging',
-    blurb: 'Onde merda inútil vai morrer',
+    blurb: 'Where useless shit goes to die',
     gauge: 5,
     component: () => DebuggingTab,
   },
   {
     title: 'Helpful',
-    blurb: 'Onde os idiotas colocam a madeira',
+    blurb: 'Where fuckwits put logging',
     gauge: 25,
     component: () => HelpfulTab,
   },
   {
     title: 'Fun',
-    blurb: 'Como eu corri um "" evento""',
+    blurb: 'How I ran an """event"""',
     gauge: 75,
     component: () => FunTab,
   },
   {
-    title: 'Só diversão para você',
-    blurb: 'Como passei meu último dia administrando',
+    title: 'Only Fun For You',
+    blurb: 'How I spent my last day adminning',
     gauge: 95,
     component: () => FunForYouTab,
   },
@@ -54,7 +54,7 @@ const DebuggingTab = (props) => {
           lineHeight={lineHeightDebug}
           icon="question"
           fluid
-          content="Mude todas as portas de manutenção para acesso engie/brig apenas"
+          content="Change all maintenance doors to engie/brig access only"
           onClick={() => act('maint_access_engiebrig')}
         />
       </Stack.Item>
@@ -64,7 +64,7 @@ const DebuggingTab = (props) => {
           lineHeight={lineHeightDebug}
           icon="question"
           fluid
-          content="Mude todas as portas de manutenção para o acesso à cela."
+          content="Change all maintenance doors to brig access only"
           onClick={() => act('maint_access_brig')}
         />
       </Stack.Item>
@@ -74,7 +74,7 @@ const DebuggingTab = (props) => {
           lineHeight={lineHeightDebug}
           icon="question"
           fluid
-          content="Retirem o boné dos oficiais de segurança."
+          content="Remove cap on security officers"
           onClick={() => act('infinite_sec')}
         />
       </Stack.Item>
@@ -102,7 +102,7 @@ const HelpfulTab = (props) => {
               icon="plus"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Curar todas as doenças"
+              content="Cure all diseases"
               onClick={() => act('clear_virus')}
             />
           </Stack.Item>
@@ -111,7 +111,7 @@ const HelpfulTab = (props) => {
               icon="biohazard"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Surto do gatilho"
+              content="Trigger Outbreak"
               onClick={() => act('virus')}
             />
           </Stack.Item>
@@ -124,7 +124,7 @@ const HelpfulTab = (props) => {
               icon="plane-slash"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Corrija a gravidade da estação."
+              content="Fix station gravity"
               onClick={() => act('fix_gravity')}
             />
           </Stack.Item>
@@ -133,7 +133,7 @@ const HelpfulTab = (props) => {
               icon="grin-beam-sweat"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Quebre todas as luzes"
+              content="Break all lights"
               onClick={() => act('blackout')}
             />
           </Stack.Item>
@@ -142,7 +142,7 @@ const HelpfulTab = (props) => {
               icon="magic"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Conserte todas as luzes."
+              content="Fix all lights"
               onClick={() => act('whiteout')}
             />
           </Stack.Item>
@@ -164,7 +164,7 @@ const HelpfulTab = (props) => {
               icon="signal"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Sinalizadores de lista"
+              content="List Signalers"
               onClick={() => act('list_signalers')}
             />
           </Stack.Item>
@@ -173,7 +173,7 @@ const HelpfulTab = (props) => {
               icon="robot"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Lista de leis"
+              content="List laws"
               onClick={() => act('list_lawchanges')}
             />
           </Stack.Item>
@@ -186,7 +186,7 @@ const HelpfulTab = (props) => {
               icon="address-book"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Mostre o Manifesto"
+              content="Show Manifest"
               onClick={() => act('manifest')}
             />
           </Stack.Item>
@@ -195,7 +195,7 @@ const HelpfulTab = (props) => {
               icon="dna"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Mostre DNA"
+              content="Show DNA"
               onClick={() => act('dna')}
             />
           </Stack.Item>
@@ -204,7 +204,7 @@ const HelpfulTab = (props) => {
               icon="fingerprint"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Mostre as impressões digitais."
+              content="Show Fingerprints"
               onClick={() => act('fingerprints')}
             />
           </Stack.Item>
@@ -217,7 +217,7 @@ const HelpfulTab = (props) => {
               icon="flag"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Alternar CTF"
+              content="Toggle CTF"
               onClick={() => act('ctfbutton')}
             />
           </Stack.Item>
@@ -248,7 +248,7 @@ const HelpfulTab = (props) => {
               icon="pencil-alt"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Renomear estação"
+              content="Rename Station"
               onClick={() => act('set_name')}
             />
           </Stack.Item>
@@ -257,7 +257,7 @@ const HelpfulTab = (props) => {
               icon="eraser"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Nome padrão da estação"
+              content="Default Station Name"
               onClick={() => act('reset_name')}
             />
           </Stack.Item>
@@ -287,7 +287,7 @@ const FunTab = (props) => {
               icon="robot"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Faça N.E.R.D."
+              content="Make N.E.R.D."
               onClick={() => act('makeNerd')}
             />
           </Stack.Item>
@@ -296,7 +296,7 @@ const FunTab = (props) => {
               icon="flag"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="CTF Modo Instagib"
+              content="CTF Instagib Mode"
               onClick={() => act('ctf_instagib')}
             />
           </Stack.Item>
@@ -305,7 +305,7 @@ const FunTab = (props) => {
               icon="plus"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Mass Cure todos."
+              content="Mass Heal everyone"
               onClick={() => act('mass_heal')}
             />
           </Stack.Item>
@@ -318,7 +318,7 @@ const FunTab = (props) => {
               icon="bolt"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Todas as áreas powered"
+              content="All areas powered"
               onClick={() => act('power')}
             />
           </Stack.Item>
@@ -327,7 +327,7 @@ const FunTab = (props) => {
               icon="moon"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Todas as áreas não powered"
+              content="All areas unpowered"
               onClick={() => act('unpower')}
             />
           </Stack.Item>
@@ -336,7 +336,7 @@ const FunTab = (props) => {
               icon="plug"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Recarregar SMES"
+              content="recharge SMESs"
               onClick={() => act('quickpower')}
             />
           </Stack.Item>
@@ -349,7 +349,7 @@ const FunTab = (props) => {
               icon="user-ninja"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Nomes Anônimos"
+              content="Anonymous Names"
               onClick={() => act('anon_name')}
             />
           </Stack.Item>
@@ -358,7 +358,7 @@ const FunTab = (props) => {
               icon="robot"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Triplo modo IA"
+              content="Triple AI mode"
               onClick={() => act('tripleAI')}
             />
           </Stack.Item>
@@ -367,7 +367,7 @@ const FunTab = (props) => {
               icon="bullhorn"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Só pode ser..."
+              content="THERE CAN ONLY BE-"
               onClick={() => act('onlyone')}
             />
           </Stack.Item>
@@ -380,7 +380,7 @@ const FunTab = (props) => {
               icon="grin-beam-sweat"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Invocar armas"
+              content="Summon Guns"
               onClick={() => act('guns')}
             />
           </Stack.Item>
@@ -389,7 +389,7 @@ const FunTab = (props) => {
               icon="magic"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Invoque a Magia"
+              content="Summon Magic"
               onClick={() => act('magic')}
             />
           </Stack.Item>
@@ -398,7 +398,7 @@ const FunTab = (props) => {
               icon="meteor"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Convocar Eventos"
+              content="Summon Events"
               onClick={() => act('events')}
             />
           </Stack.Item>
@@ -411,7 +411,7 @@ const FunTab = (props) => {
               icon="hammer"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Estação igualitária"
+              content="Egalitarian Station"
               onClick={() => act('eagles')}
             />
           </Stack.Item>
@@ -420,7 +420,7 @@ const FunTab = (props) => {
               icon="house"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Envie o ônibus de volta."
+              content="Send Shuttle Back"
               onClick={() => act('send_shuttle_back')}
             />
           </Stack.Item>
@@ -429,7 +429,7 @@ const FunTab = (props) => {
               icon="oil-well"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Toque em Ore Vents."
+              content="Tap Ore Vents"
               onClick={() => act('ore_vents')}
             />
           </Stack.Item>
@@ -442,7 +442,7 @@ const FunTab = (props) => {
               icon="bullseye"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Tempestade de Portal Personalizada"
+              content="Custom Portal Storm"
               onClick={() => act('customportal')}
             />
           </Stack.Item>
@@ -451,7 +451,7 @@ const FunTab = (props) => {
               icon="bomb"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Troque o boné da bomba."
+              content="Change Bomb Cap"
               onClick={() => act('changebombcap')}
             />
           </Stack.Item>
@@ -460,7 +460,7 @@ const FunTab = (props) => {
               icon="dollar-sign"
               lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              content="Dpt Ordem Refrigeração"
+              content="Dpt Order Cooldown"
               onClick={() => act('department_cooldown_override')}
             />
           </Stack.Item>
@@ -482,7 +482,7 @@ const FunForYouTab = (props) => {
                 color="red"
                 icon="user-secret"
                 fluid
-                content="Todo mundo é a antag"
+                content="Everyone is the antag"
                 onClick={() => act('antag_all')}
               />
             </NoticeBox>
@@ -493,7 +493,7 @@ const FunForYouTab = (props) => {
                 color="red"
                 icon="brain"
                 fluid
-                content="Todo mundo tem danos cerebrais."
+                content="Everyone gets brain damage"
                 onClick={() => act('massbraindamage')}
               />
             </NoticeBox>
@@ -508,7 +508,7 @@ const FunForYouTab = (props) => {
                 color="red"
                 icon="hand-lizard"
                 fluid
-                content="Mudar a espécie de todos"
+                content="Change everyone's species"
                 onClick={() => act('allspecies')}
               />
             </NoticeBox>
@@ -519,7 +519,7 @@ const FunForYouTab = (props) => {
                 color="red"
                 icon="paw"
                 fluid
-                content="Mude todos para macacos."
+                content="Change everyone to monkeys"
                 onClick={() => act('monkey')}
               />
             </NoticeBox>
@@ -532,7 +532,7 @@ const FunForYouTab = (props) => {
             color="black"
             icon="fire"
             fluid
-            content="O chão é lava! ( PERIGO: extremamente coxo)"
+            content="The floor is lava! (DANGEROUS: extremely lame)"
             onClick={() => act('floorlava')}
           />
         </NoticeBox>
@@ -543,7 +543,7 @@ const FunForYouTab = (props) => {
             color="black"
             icon="fire"
             fluid
-            content="Desenhos chineses! Sem voltar, também foda-se."
+            content="Chinese Cartoons! (DANGEROUS: no going back, also fuck you)"
             onClick={() => act('anime')}
           />
         </NoticeBox>
@@ -556,7 +556,7 @@ const FunForYouTab = (props) => {
                 color="red"
                 icon="cat"
                 fluid
-                content="Purrbação em massa"
+                content="Mass Purrbation"
                 onClick={() => act('masspurrbation')}
               />
             </NoticeBox>
@@ -567,7 +567,7 @@ const FunForYouTab = (props) => {
                 color="blue"
                 icon="user"
                 fluid
-                content="Curar Purrbation"
+                content="Cure Purrbation"
                 onClick={() => act('massremovepurrbation')}
               />
             </NoticeBox>
@@ -597,7 +597,7 @@ const FunForYouTab = (props) => {
                 color="red"
                 icon="flushed"
                 fluid
-                content="Imergir totalmente todos"
+                content="Fully Immerse Everyone"
                 onClick={() => act('massimmerse')}
               />
             </NoticeBox>
@@ -608,7 +608,7 @@ const FunForYouTab = (props) => {
                 color="blue"
                 icon="sync-alt"
                 fluid
-                content="Destrua a imersão"
+                content="Shatter the Immersion"
                 onClick={() => act('unmassimmerse')}
               />
             </NoticeBox>
@@ -623,7 +623,7 @@ const FunForYouTab = (props) => {
                 color="red"
                 icon="comment-slash"
                 fluid
-                content="Torre de Babel"
+                content="Tower of Babel"
                 onClick={() => act('towerOfBabel')}
               />
             </NoticeBox>
@@ -634,7 +634,7 @@ const FunForYouTab = (props) => {
                 color="blue"
                 icon="comment"
                 fluid
-                content="Torre de Babel"
+                content="Undo Tower of Babel"
                 onClick={() => act('cureTowerOfBabel')}
               />
             </NoticeBox>
@@ -652,7 +652,7 @@ export const Secrets = (props) => {
   const TabComponent = TAB2NAME[tabIndex - 1].component();
 
   return (
-    <Window title="Painel de Segredos" width={500} height={520} theme="admin">
+    <Window title="Secrets Panel" width={500} height={520} theme="admin">
       <Window.Content>
         <Flex direction="column" height="100%">
           <Flex.Item mb={1}>
@@ -663,13 +663,13 @@ export const Secrets = (props) => {
                   <Button
                     color="blue"
                     icon="address-card"
-                    content="Diário de administração"
+                    content="Admin Log"
                     onClick={() => act('admin_log')}
                   />
                   <Button
                     color="blue"
                     icon="eye"
-                    content="Mostre os administradores."
+                    content="Show Admins"
                     onClick={() => act('show_admins')}
                   />
                 </>
@@ -721,7 +721,7 @@ export const Secrets = (props) => {
                   <LabeledControls>
                     <LabeledControls.Item
                       minWidth="66px"
-                      label="Possibilidades de queixa de administrador"
+                      label="Chances of admin complaint"
                     >
                       <RoundGauge
                         size={2}
@@ -744,7 +744,7 @@ export const Secrets = (props) => {
                     disabled={is_funmin === 0}
                     selected={tabIndex === 4}
                     icon="smile-wink"
-                    content="Só diversão para você"
+                    content="Only Fun For You"
                     onClick={() => setTabIndex(4)}
                   />
                 </Flex.Item>

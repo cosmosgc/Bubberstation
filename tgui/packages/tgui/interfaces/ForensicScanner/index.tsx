@@ -14,7 +14,7 @@ export function ForensicScanner() {
           <NoticeBox>Log empty.</NoticeBox>
         ) : (
           <Section
-            title="Scan histórico"
+            title="Scan history"
             fill
             scrollable
             buttons={

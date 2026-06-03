@@ -67,7 +67,7 @@ export const FishAnalyzer = (props) => {
 
   return (
     <Window
-      title="Analisador de peixes"
+      title="Fish Analyzer"
       width={fish_scanned ? 530 : 700}
       height={fish_scanned ? 270 : 460}
     >
@@ -85,7 +85,7 @@ export const FishAnalyzer = (props) => {
                   position="relative"
                   mt={0.5}
                   height="20px"
-                  placeholder="Procure em Fish..."
+                  placeholder="Search Fish..."
                   value={searchText}
                   onChange={setSearchText}
                   fluid
@@ -106,9 +106,9 @@ export const FishAnalyzer = (props) => {
                     key={index}
                     style={{
                       padding: '5px 5px',
-                      background: 'Gradiente linear (à direita, #2e0b64, #47218e)',
+                      background: 'linear-gradient(to right,#2e0b64, #47218e)',
                       borderRadius: '1em',
-                      border: '3px sólido #6f1d94',
+                      border: '3px solid #6f1d94',
                     }}
                   >
                     <FishItem fish={fish} />
@@ -167,7 +167,7 @@ const FishItem = (props) => {
               </Stack.Item>
               <Stack.Item mt={2}>
                 {fish.fish_traits.length === 0 ? (
-                  <Button color="transparent" tooltip="Peixe não tem traços!">
+                  <Button color="transparent" tooltip="Fish has no traits!">
                     None
                   </Button>
                 ) : (

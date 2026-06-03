@@ -12,7 +12,7 @@ export const Holodeck = (props) => {
     <Window width={400} height={500}>
       <Window.Content scrollable>
         <Section
-          title="Programas Predefinidos"
+          title="Default Programs"
           buttons={
             <Button
               icon={emagged ? 'unlock' : 'lock'}
@@ -40,7 +40,7 @@ export const Holodeck = (props) => {
           ))}
         </Section>
         {!!emagged && (
-          <Section title="Programas Perigosos">
+          <Section title="Dangerous Programs">
             {emag_programs.map((emag_program) => (
               <Button
                 fluid

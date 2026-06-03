@@ -1,23 +1,18 @@
 /datum/mood_event/horridroom
-	description = "This room looks terrible!"
+	description = "Este quarto parece terrível!"
 	mood_change = -5
-
 /datum/mood_event/badroom
-	description = "This room looks really bad."
+	description = "Este quarto está realmente ruim."
 	mood_change = -3
-
 /datum/mood_event/ehroom
-	description = "This room looks kinda bad."
+	description = "Este quarto parece meio ruim."
 	mood_change = -1
-
 /datum/mood_event/decentroom
-	description = "This room looks alright."
+	description = "Este quarto está ok."
 	mood_change = 1
-
 /datum/mood_event/goodroom
-	description = "This room looks really pretty!"
+	description = "Este quarto está realmente bonito!"
 	mood_change = 3
-
 /datum/mood_event/greatroom
-	description = "This room is beautiful!"
+	description = "Este quarto é lindo!"
 	mood_change = 5

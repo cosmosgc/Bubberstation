@@ -16,7 +16,7 @@ export const AtmosControlPanel = (props) => {
     [(group) => group.id],
   );
   return (
-    <Window title="Painel de controle SSAir" width={900} height={500}>
+    <Window title="SSAir Control Panel" width={900} height={500}>
       <Section m={1}>
         <Flex justify="space-between" align="baseline">
           <Flex.Item>
@@ -24,7 +24,7 @@ export const AtmosControlPanel = (props) => {
               onClick={() => act('toggle-freeze')}
               color={data.frozen === 1 ? 'good' : 'bad'}
             >
-              {data.frozen === 1 ? 'Subsistema parado.' : 'Descongelar o subsistema'}
+              {data.frozen === 1 ? 'Freeze Subsystem' : 'Unfreeze Subsystem'}
             </Button>
           </Flex.Item>
           <Flex.Item>Fire Cnt: {data.fire_count}</Flex.Item>

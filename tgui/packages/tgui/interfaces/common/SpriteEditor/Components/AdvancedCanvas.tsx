@@ -183,7 +183,7 @@ export const AdvancedCanvas = (props: AdvancedCanvasProps) => {
                 : []),
             `url(${transparency_checkerboard})`,
           ].join(','),
-          outline: '2px preto sólido',
+          outline: '2px solid black',
           ...borderProps,
         }}
       />

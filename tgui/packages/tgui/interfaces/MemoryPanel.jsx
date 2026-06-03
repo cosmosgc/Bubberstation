@@ -60,7 +60,7 @@ const MemoryQuality = (props) => {
         icon="star"
         style={{
           background:
-            'linear-gradiente (à direita, #964B30, #D68B60, #B66B30, #D68B60, #964B30);',
+            'linear-gradient(to right, #964B30, #D68B60, #B66B30, #D68B60, #964B30);',
         }}
         tooltipPosition="right"
         tooltip={`
@@ -76,7 +76,7 @@ const MemoryQuality = (props) => {
         icon="star"
         style={{
           background:
-            'linear-gradiente(à direita, #636363, #a3a3a3, #6e6e6e, #a3a3a3, #636363);',
+            'linear-gradient(to right, #636363, #a3a3a3, #6e6e6e, #a3a3a3, #636363);',
         }}
         tooltipPosition="right"
         tooltip={`
@@ -92,7 +92,7 @@ const MemoryQuality = (props) => {
         icon="star"
         style={{
           background:
-            'linear-gradiente (à direita, #AA771C, #BCB68A, #B38728, #BCB68A, #AA771C);',
+            'linear-gradient(to right, #AA771C, #BCB68A, #B38728, #BCB68A, #AA771C);',
         }}
         tooltipPosition="right"
         tooltip={`
@@ -108,7 +108,7 @@ const MemoryQuality = (props) => {
         icon="crown"
         style={{
           background:
-            'Gradiente linear (à direita, #56A5B3, #75D4E2, #56A5B3, #75D4E2, #56A5B3)',
+            'linear-gradient(to right, #56A5B3, #75D4E2, #56A5B3, #75D4E2, #56A5B3)',
         }}
         tooltipPosition="right"
         tooltip={`
@@ -135,7 +135,7 @@ export const MemoryPanel = (props) => {
   const { act, data } = useBackend();
   const memories = data.memories || [];
   return (
-    <Window title="Painel de Memória" width={400} height={500}>
+    <Window title="Memory Panel" width={400} height={500}>
       <Window.Content>
         <Section
           maxHeight="32px"

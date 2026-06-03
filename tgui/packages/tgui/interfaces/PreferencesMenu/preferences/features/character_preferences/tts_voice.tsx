@@ -50,6 +50,6 @@ export const tts_voice: FeatureChoiced = {
 };
 
 export const tts_voice_pitch: FeatureNumeric = {
-  name: 'Ajuste de voz.',
+  name: 'Voice Pitch Adjustment',
   component: FeatureSliderInput,
 };

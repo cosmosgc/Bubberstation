@@ -72,7 +72,7 @@ const MainScreen = (props: any) => {
                 fluid
                 value={networkId}
                 onChange={setNetworkId}
-                placeholder="Digite ID de rede..."
+                placeholder="Enter Network ID..."
                 onEnter={() => act('probe', { id: networkId })}
               />
             </Stack.Item>
@@ -86,7 +86,7 @@ const MainScreen = (props: any) => {
       </Stack.Item>
       <Stack.Item grow>
         <MachineList
-          title="Entidades de Rede Detectadas"
+          title="Detected Network Entities"
           buttons={
             <Button
               icon="trash"
@@ -112,7 +112,7 @@ const MachineScreen = (props: any) => {
     <Stack fill vertical>
       <Stack.Item>
         <Section
-          title="Informação da Entidade"
+          title="Entity Information"
           buttons={
             <Button icon="home" onClick={() => act('home')}>
               Main Menu
@@ -121,8 +121,8 @@ const MachineScreen = (props: any) => {
         >
           <LabeledList>
             <LabeledList.Item label="Network">{network}</LabeledList.Item>
-            <LabeledList.Item label="ID da rede">{id}</LabeledList.Item>
-            <LabeledList.Item label="Entidade de Rede">
+            <LabeledList.Item label="Network ID">{id}</LabeledList.Item>
+            <LabeledList.Item label="Network Entity">
               {toTitleCase(name)}
             </LabeledList.Item>
           </LabeledList>
@@ -130,7 +130,7 @@ const MachineScreen = (props: any) => {
       </Stack.Item>
       <Stack.Item grow>
         <MachineList
-          title="Entidades ligadas"
+          title="Linked Entities"
           machines={linkedMachines}
           onSelect={(machine) => act('view', { id: machine.id })}
         />
@@ -171,7 +171,7 @@ const MachineList = (props: MachineListProps) => {
             icon="magnifying-glass"
             selected={searching}
             disabled={machines.length === 0}
-            tooltip="Pesquisa por identificação"
+            tooltip="Search by ID"
             onClick={() => setSearching(!searching)}
           />
           {buttons}
@@ -211,7 +211,7 @@ const MachineList = (props: MachineListProps) => {
                 autoFocus
                 value={search}
                 verticalAlign="middle"
-                placeholder="Digite a identificação da máquina..."
+                placeholder="Enter machine ID..."
                 onChange={setSearch}
               />
             </Stack.Item>

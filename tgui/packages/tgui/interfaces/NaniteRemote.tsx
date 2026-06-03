@@ -62,7 +62,7 @@ export const NaniteRemoteContent = () => {
   return (
     <>
       <Section
-        title="Controle de Nanitas"
+        title="Nanite Control"
         buttons={
           <Button icon="lock" onClick={() => act('lock')}>
             Lock Interface
@@ -85,7 +85,7 @@ export const NaniteRemoteContent = () => {
               Save
             </Button>
           </LabeledList.Item>
-          <LabeledList.Item label={comms ? 'Código de comunicação.' : 'Código do sinal.'}>
+          <LabeledList.Item label={comms ? 'Comm Code' : 'Signal Code'}>
             <NumberInput
               value={code}
               minValue={0}
@@ -114,7 +114,7 @@ export const NaniteRemoteContent = () => {
             </LabeledList.Item>
           )}
           {mode === 'Relay' && (
-            <LabeledList.Item label="Código de transmissão">
+            <LabeledList.Item label="Relay Code">
               <NumberInput
                 value={relay_code}
                 minValue={0}
@@ -130,7 +130,7 @@ export const NaniteRemoteContent = () => {
               />
             </LabeledList.Item>
           )}
-          <LabeledList.Item label="Modo de Sinal">
+          <LabeledList.Item label="Signal Mode">
             {modes.map((key) => (
               <Button
                 key={key}
@@ -147,7 +147,7 @@ export const NaniteRemoteContent = () => {
           </LabeledList.Item>
         </LabeledList>
       </Section>
-      <Section title="Configurações salvas">
+      <Section title="Saved Settings">
         {saved_settings.length > 0 ? (
           <Table>
             <Table.Row header>

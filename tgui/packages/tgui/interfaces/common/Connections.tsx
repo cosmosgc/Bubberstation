@@ -7,7 +7,7 @@ const SVG_CURVE_INTENSITY = 64;
 export enum ConnectionStyle {
   CURVE = 'curve',
   SUBWAY = 'subway',
-  SUBWAY_SHARP = 'metrô em ponto',
+  SUBWAY_SHARP = 'subway sharp',
 }
 
 export type Coordinates = {

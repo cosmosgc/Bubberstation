@@ -3,7 +3,7 @@ import { BLOB_MECHANICAL_DESCRIPTION } from './blob';
 
 const BlobInfection: Antagonist = {
   key: 'blobinfection',
-  name: 'Infecção por Blob',
+  name: 'Blob Infection',
   description: [
     `
       At any point in the middle of the shift, be strucken with an infection

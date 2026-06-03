@@ -29,7 +29,7 @@ export function AvailableDisplay(props) {
       buttons={<MemoryDisplay />}
       fill
       scrollable
-      title="Software disponível"
+      title="Available Software"
     >
       <Table>
         {entries?.map(([name, cost]) => {

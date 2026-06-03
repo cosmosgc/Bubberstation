@@ -13,7 +13,7 @@ export function PointLocked(props) {
               left: '33%',
               height: '10px',
               position: 'relative',
-              transform: 'Gire (45deg)',
+              transform: 'rotate(45deg)',
               width: '150px',
             }}
           />

@@ -38,7 +38,7 @@ export const BluespaceArtillery = (props) => {
               }
             >
               <Box color={target ? 'average' : 'bad'} fontSize="25px">
-                {target || 'Nenhum alvo definido'}
+                {target || 'No Target Set'}
               </Box>
             </Section>
             <Section>
@@ -74,7 +74,7 @@ export const BluespaceArtillery = (props) => {
               <LabeledList.Item label="Maintenance">
                 <Button
                   icon="wrench"
-                  content="Implantação Completa"
+                  content="Complete Deployment"
                   onClick={() => act('build')}
                 />
               </LabeledList.Item>

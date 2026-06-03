@@ -33,7 +33,7 @@ export const ColorBlindTester = (props) => {
   const { details } = data;
 
   return (
-    <Window title="Teste de Cegueira de Cor" width={600} height={515}>
+    <Window title="Color Blindness Testing" width={600} height={515}>
       <Window.Content>
         <NoticeBox>
           {UI_WARNINGS.map((warning, index) => (

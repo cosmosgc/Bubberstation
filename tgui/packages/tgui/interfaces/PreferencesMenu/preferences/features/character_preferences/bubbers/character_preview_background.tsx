@@ -2,8 +2,8 @@ import type { FeatureChoiced } from '../../base';
 import { FeatureDropdownInput } from '../../dropdowns';
 
 export const bgstate: FeatureChoiced = {
-  name: 'Antevisão de Caracteres',
+  name: 'Character Preview Background',
   description:
-    'Qual seria o fundo para a pré-visualização do personagem?',
+    'What would you like the background for the character preview in the character creator to be?',
   component: FeatureDropdownInput,
 };

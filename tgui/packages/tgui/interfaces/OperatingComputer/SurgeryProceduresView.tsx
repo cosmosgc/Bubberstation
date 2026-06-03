@@ -100,7 +100,7 @@ export const SurgeryProceduresView = (props: SurgeryProceduresViewProps) => {
 
   return (
     <Section
-      title="#Nbsp;"
+      title="&nbsp;"
       scrollable
       fill
       buttons={
@@ -113,7 +113,7 @@ export const SurgeryProceduresView = (props: SurgeryProceduresViewProps) => {
           />
           <Button
             icon="filter"
-            tooltip="Filtrar cirurgias robóticas."
+            tooltip="Filter out robotic surgeries."
             onClick={() => setFilterRobotic(!filterRobotic)}
             selected={filterRobotic}
           >
@@ -122,7 +122,7 @@ export const SurgeryProceduresView = (props: SurgeryProceduresViewProps) => {
           <Button
             width="75px"
             icon="sort"
-            tooltip="Ciclo entre métodos de triagem."
+            tooltip="Cycle between sorting methods."
             onClick={() =>
               setSortType(
                 sortType === 'default'

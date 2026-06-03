@@ -23,11 +23,11 @@ export function OverviewSection(props) {
   return (
     <Section
       fill
-      title="Visão geral do Mestre"
+      title="Master Overview"
       buttons={
         <>
           <Button
-            tooltip="Atualização Rápida"
+            tooltip="Fast Update"
             icon={fast_update ? 'check-square-o' : 'square-o'}
             color={fast_update && 'average'}
             onClick={() => {
@@ -51,20 +51,20 @@ export function OverviewSection(props) {
       <Stack fill>
         <Stack.Item grow>
           <LabeledList>
-            <LabeledList.Item label="Hora Mundial">
+            <LabeledList.Item label="World Time">
               {world_time.toFixed(1)}
             </LabeledList.Item>
-            <LabeledList.Item label="Mapeamento de CPU">
+            <LabeledList.Item label="Map CPU">
               {map_cpu.toFixed(2)}%
             </LabeledList.Item>
           </LabeledList>
         </Stack.Item>
         <Stack.Item grow>
           <LabeledList>
-            <LabeledList.Item label="Uso geral da Avg">
+            <LabeledList.Item label="Overall Avg Usage">
               {avgUsage.toFixed(2)}%
             </LabeledList.Item>
-            <LabeledList.Item label="No geral, superada.">
+            <LabeledList.Item label="Overall Overrun">
               {overallOverrun.toFixed(2)}%
             </LabeledList.Item>
           </LabeledList>

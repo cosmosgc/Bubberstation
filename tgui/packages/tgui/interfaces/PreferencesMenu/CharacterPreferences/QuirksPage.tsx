@@ -134,7 +134,7 @@ function QuirkDisplay(props: QuirkDisplayProps) {
           align="stretch"
           ml={0}
           style={{
-            borderRight: '1px preto sólido',
+            borderRight: '1px solid black',
           }}
         />
 
@@ -150,7 +150,7 @@ function QuirkDisplay(props: QuirkDisplayProps) {
             <Stack.Item
               className={`${className}--${getColorValueClass(quirk)}`}
               style={{
-                borderBottom: '1px preto sólido',
+                borderBottom: '1px solid black',
                 padding: '2px',
               }}
             >
@@ -238,7 +238,7 @@ function QuirkPopper(props: QuirkPopperProps) {
               e.stopPropagation();
             }}
             style={{
-              boxShadow: '0px 4px 8px 3px rgba (0, 0, 0, 0,7)',
+              boxShadow: '0px 4px 8px 3px rgba(0, 0, 0, 0.7)',
             }}
           >
             {/* SKYRAT EDIT START - maxWidth to 400px from 300px */}
@@ -370,9 +370,9 @@ function QuirkPage() {
 
     if (quirk.value > 0) {
       if (maxPositiveQuirks !== -1 && positiveQuirks >= maxPositiveQuirks) {
-        return "Você não pode ter mais peculiaridades positivas!";
+        return "You can't have any more positive quirks!";
       } else if (pointsEnabled && balance + quirk.value > 0) {
-        return 'Você precisa de uma peculiaridade negativa para equilibrar isso!';
+        return 'You need a negative quirk to balance this out!';
       }
     }
 
@@ -395,7 +395,7 @@ function QuirkPage() {
       }
     }
     if (data.species_disallowed_quirks.includes(quirk.name)) {
-      return 'Essa peculiaridade é incompatível com sua espécie selecionada.';
+      return 'This quirk is incompatible with your selected species.';
     }
     return;
   }
@@ -404,7 +404,7 @@ function QuirkPage() {
     const quirk = quirkInfo[quirkName];
 
     if (pointsEnabled && balance - quirk.value > 0) {
-      return 'Você precisa remover uma peculiaridade positiva primeiro!';
+      return 'You need to remove a positive quirk first!';
     }
 
     return;
@@ -439,7 +439,7 @@ function QuirkPage() {
           </Stack.Item>
           <Stack.Item>
             <Input
-              placeholder="Personagens de busca..."
+              placeholder="Search quirks..."
               width="200px"
               value={searchQuery}
               onChange={setSearchQuery}

@@ -18,7 +18,7 @@ const GenomeImage = (props) => {
   const { url, selected, onClick } = props;
   let outline;
   if (selected) {
-    outline = '2px sólido #22aa00';
+    outline = '2px solid #22aa00';
   }
   return (
     <Image
@@ -202,7 +202,7 @@ export const DnaConsoleSequencer = (props) => {
           </Section>
         </Stack.Item>
         <Stack.Item grow={1} basis={0}>
-          <Section title="Informações de Sequência" minHeight="100%">
+          <Section title="Sequence Info" minHeight="100%">
             <MutationInfo mutation={mutation} />
           </Section>
         </Stack.Item>
@@ -223,7 +223,7 @@ export const DnaConsoleSequencer = (props) => {
           </Section>
         )) || (
           <Section
-            title="Genoma SequencerTM"
+            title="Genome Sequencer™"
             buttons={
               (!isJokerReady && (
                 <Box lineHeight="20px" color="label">
@@ -236,7 +236,7 @@ export const DnaConsoleSequencer = (props) => {
                     Click on a gene to reveal it.
                   </Box>
                   <Button
-                    content="Cancele o Coringa."
+                    content="Cancel Joker"
                     onClick={() =>
                       act('set_view', {
                         jokerActive: '',
@@ -248,7 +248,7 @@ export const DnaConsoleSequencer = (props) => {
                 <Button
                   icon="crown"
                   color="purple"
-                  content="Use o Joker."
+                  content="Use Joker"
                   onClick={() =>
                     act('set_view', {
                       jokerActive: '1',

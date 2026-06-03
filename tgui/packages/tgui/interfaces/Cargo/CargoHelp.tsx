@@ -21,7 +21,7 @@ export function CargoHelp(props) {
     <Stack fill vertical>
       <Stack.Item grow>
         <Section fill scrollable>
-          <Section color="label" title="Ordens do Departamento">
+          <Section color="label" title="Department Orders">
             {ORDER_TEXT}
             <br />
             <br />
@@ -53,7 +53,7 @@ export function CargoHelp(props) {
             <br />
             <b>9.</b> Click <i>Proceed</i>.
           </Section>
-          <Section title="Sistema de Entrega de Eliminações">
+          <Section title="Disposals Delivery System">
             <Box color="label">{DISPOSAL_TEXT}</Box>
             <br />
             <Box bold color="green">

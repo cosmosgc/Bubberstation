@@ -29,7 +29,7 @@ export const ProgressSwitch = (param) => {
     case 0:
       return 'Connecting';
     case 25:
-      return 'Iniciando transferência';
+      return 'Starting Transfer';
     case 50:
       return 'Downloading';
     case 75:
@@ -87,7 +87,7 @@ export const NtosCyborgRemoteMonitorContent = (props) => {
                   buttons={
                     <Button
                       icon="terminal"
-                      content="Enviar mensagem"
+                      content="Send Message"
                       color="blue"
                       disabled={!card}
                       onClick={() =>
@@ -110,9 +110,9 @@ export const NtosCyborgRemoteMonitorContent = (props) => {
                         }
                       >
                         {cyborg.status
-                          ? 'Não Respondendo'
+                          ? 'Not Responding'
                           : cyborg.locked_down
-                            ? 'Trancado'
+                            ? 'Locked Down'
                             : cyborg.shell_discon
                               ? 'Nominal/Disconnected'
                               : 'Nominal'}
@@ -129,11 +129,11 @@ export const NtosCyborgRemoteMonitorContent = (props) => {
                         }
                       >
                         {cyborg.integ === 0
-                          ? 'Culpa difícil'
+                          ? 'Hard Fault'
                           : cyborg.integ <= 25
-                            ? 'Funcionalidade interrompida'
+                            ? 'Functionality Disrupted'
                             : cyborg.integ <= 75
-                              ? 'Insuficiência funcional'
+                              ? 'Functionality Impaired'
                               : 'Operational'}
                       </Box>
                     </LabeledList.Item>
@@ -149,7 +149,7 @@ export const NtosCyborgRemoteMonitorContent = (props) => {
                       >
                         {typeof cyborg.charge === 'number'
                           ? `${cyborg.charge}%`
-                          : 'Não Encontrado'}
+                          : 'Not Found'}
                       </Box>
                     </LabeledList.Item>
                     <LabeledList.Item label="Model">

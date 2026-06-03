@@ -100,7 +100,7 @@ export const EmotePanelContent = (props) => {
         <SearchBar
           query={searchText}
           onSearch={setSearchText}
-          placeholder="Procurem emoções..."
+          placeholder="Search all emotes..."
         />
       </Section>
       <Section
@@ -113,7 +113,7 @@ export const EmotePanelContent = (props) => {
           <Flex>
             <Flex.Item>
               <Button onClick={() => toggleShowNames(!showNames)}>
-                {showNames ? 'Mostrar nomes' : 'Mostrá-lo como chaves.'}
+                {showNames ? 'Show Names' : 'Show Keys'}
               </Button>
               <Button
                 selected={showIcons}

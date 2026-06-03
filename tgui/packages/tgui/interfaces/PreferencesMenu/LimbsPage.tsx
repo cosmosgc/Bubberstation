@@ -20,14 +20,14 @@ export const RotateCharacterButtons = (props) => {
         onClick={() => act('rotate', { backwards: false })}
         fontSize="22px"
         icon="redo"
-        tooltip="Rodar no sentido horário"
+        tooltip="Rotate Clockwise"
         tooltipPosition="bottom"
       />
       <Button
         onClick={() => act('rotate', { backwards: true })}
         fontSize="22px"
         icon="undo"
-        tooltip="Rodar em sentido contrário"
+        tooltip="Rotate Counter-Clockwise"
         tooltipPosition="bottom"
       />
     </Box>
@@ -72,7 +72,7 @@ export const Markings = (props) => {
             <Stack.Item>
               <Button
                 color={marking.emissive ? 'good' : 'bad'}
-                tooltip="O 'E' é para 'Emissive', significa que brilha ou não. Verde para brilhar, vermelho para não brilhar."
+                tooltip="The 'E' is for 'Emissive', meaning does it glow or not. Green for glow, red for no glow."
                 onClick={() =>
                   act('change_emissive', {
                     limb_slot: props.limb.slot,
@@ -229,7 +229,7 @@ export const LimbsPage = (props) => {
               width="100%"
               options={Object.values(markings)}
               selected={Object.values(markings)[1]}
-              placeholder="Escolha uma predefinição:"
+              placeholder="Pick a preset:"
               onSelected={(value) => act('set_preset', { preset: value })}
             />
           </div>
@@ -241,7 +241,7 @@ export const LimbsPage = (props) => {
         </Section>
       </Stack.Item>
       <Stack.Item minWidth="33%">
-        <Section title="Visualização de Caracteres" fill align="center" height="197%">
+        <Section title="Character Preview" fill align="center" height="197%">
           <CharacterPreview
             id={data.character_preview_view}
             height="25%"
@@ -253,7 +253,7 @@ export const LimbsPage = (props) => {
               marginTop: '3em',
             }}
           >
-            <Section title="Equilíbrio de pontos peculiares" />
+            <Section title="Quirk Points Balance" />
           </Box>
 
           <Box

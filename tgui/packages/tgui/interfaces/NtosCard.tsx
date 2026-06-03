@@ -99,8 +99,8 @@ export const NtosCardContent = (props) => {
               <Button
                 icon="question-circle"
                 tooltip={
-                  'Tentaremos aplicar todo o acesso para o modelo no cartão de identidade.\n' +
-                  'Não usa curingas a menos que o modelo as especifique.'
+                  'Will attempt to apply all access for the template to the ID card.\n' +
+                  'Does not use wildcards unless the template specifies them.'
                 }
                 tooltipPosition="left"
               />
@@ -109,7 +109,7 @@ export const NtosCardContent = (props) => {
             {modified_card.has_trim ? (
               <TemplateDropdown templates={templates} />
             ) : (
-              'Modelos requerem um corte já aplicado no cartão. Por favor, use um pintor de identidade para aplicar um corte.'
+              'Templates require a trim already applied to the card. Please use an ID Painter to apply a trim.'
             )}
           </Section>
         </Stack.Item>
@@ -129,8 +129,8 @@ export const NtosCardContent = (props) => {
                 showBasic={!!show_basic}
                 extraButtons={
                   <Button.Confirm
-                    content="Terminar o Emprego"
-                    confirmContent="Empregado dos bombardeiros?"
+                    content="Terminate Employment"
+                    confirmContent="Fire Employee?"
                     color="bad"
                     onClick={() => act('PRG_terminate')}
                   />
@@ -161,7 +161,7 @@ const LoginPage = () => {
           <NoticeBox info={!!authed_user}>
             {authed_user
               ? `Login: ${authed_user}`
-              : 'Por favor, entre para continuar.'}
+              : 'Please log in to continue.'}
           </NoticeBox>
         </Stack.Item>
         <Stack.Item width="100%">
@@ -178,7 +178,7 @@ const LoginPage = () => {
               >
                 {auth_card
                   ? `${auth_card.id_owner} (${auth_card.id_rank})`
-                  : 'Inserir ID'}
+                  : 'Insert ID'}
               </Button>
             </Flex.Item>
             <Flex.Item>
@@ -189,7 +189,7 @@ const LoginPage = () => {
                   act(authed_user ? 'PRG_logout' : 'PRG_authenticate');
                 }}
               >
-                {authed_user ? 'Sair' : 'Entrar'}
+                {authed_user ? 'Log Out' : 'Log In'}
               </Button>
             </Flex.Item>
           </Flex>
@@ -220,7 +220,7 @@ const IdCardPage = (props) => {
               >
                 {modified_card
                   ? `${modified_card.id_owner} (${modified_card.id_rank})`
-                  : 'Inserir ID'}
+                  : 'Insert ID'}
               </Button>
             </Flex.Item>
             <Flex.Item>
@@ -299,7 +299,7 @@ const TemplateDropdown = (props) => {
       <Stack.Item grow>
         <Dropdown
           width="100%"
-          placeholder="Selecione um modelo..."
+          placeholder="Select a template..."
           options={templateKeys.map((path) => {
             return templates[path];
           })}

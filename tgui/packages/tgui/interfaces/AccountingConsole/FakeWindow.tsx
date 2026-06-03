@@ -33,7 +33,7 @@ export const FakeWindow = (
   return (
     <Stack vertical fill className="Accounting__Window">
       <Stack.Item>
-        <Stack height="30px" backgroundColor="Hsl(240, 100%, 25,1%)">
+        <Stack height="30px" backgroundColor="hsl(240, 100%, 25.1%)">
           <Stack.Item grow p={1}>
             <Box color="white">{name}</Box>
           </Stack.Item>

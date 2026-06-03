@@ -21,7 +21,7 @@ export function CargoCartButtons(props) {
   return (
     <>
       <Box inline mx={1}>
-        {amount === 0 && 'O carrinho está vazio.'}
+        {amount === 0 && 'Cart is empty'}
         {amount === 1 && '1 item'}
         {amount >= 2 && `${amount} items`}{' '}
         {total > 0 && `(${formatMoney(total)}${displayed_currency_name})`}

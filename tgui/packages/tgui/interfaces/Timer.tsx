@@ -19,7 +19,7 @@ export const Timer = (props) => {
     <Window width={275} height={115}>
       <Window.Content>
         <Section
-          title="Unidade de Tempo"
+          title="Timing Unit"
           buttons={
             <>
               <Button

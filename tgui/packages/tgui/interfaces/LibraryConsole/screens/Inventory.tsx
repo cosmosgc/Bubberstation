@@ -19,7 +19,7 @@ export function Inventory(props) {
     <Stack vertical justify="space-between" height="100%">
       <Stack.Item grow>
         <ScrollableSection
-          header="Inventário da Biblioteca"
+          header="Library Inventory"
           contents={<InventoryDetails />}
         />
       </Stack.Item>

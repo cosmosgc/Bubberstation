@@ -105,7 +105,7 @@ function CharacterControls(props: CharacterControlsProps) {
           onClick={props.handleFood}
           fontSize="22px"
           icon="drumstick-bite"
-          tooltip="Editar preferências alimentares"
+          tooltip="Edit Food Preferences"
           tooltipPosition="top"
         />
       </Stack.Item>
@@ -117,7 +117,7 @@ function CharacterControls(props: CharacterControlsProps) {
           fontSize="22px"
           icon="trash"
           color="red"
-          tooltip="Apagar o Caracter"
+          tooltip="Delete Character"
           tooltipPosition="top"
           disabled={!props.canDeleteCharacter}
         />
@@ -204,7 +204,7 @@ function ChoicedSelection(props: ChoicedSelectionProps) {
                         ])}
                         style={{
                           transform:
-                            'Tradução:',
+                            'translateX(-50%) translateY(-50%) scale(0.8)',
                         }}
                       />
                     </Button>
@@ -334,8 +334,8 @@ function MainFeature(props: MainFeatureProps) {
           ])}
           style={{
             transform: randomization
-              ? 'Tradução:'
-              : 'Tradução:',
+              ? 'translateX(-70%) translateY(-70%) scale(1.1)'
+              : 'translateX(-50%) translateY(-50%) scale(1.3)',
           }}
         />
 
@@ -393,7 +393,7 @@ export function PreferenceList(props: PreferenceListProps) {
       basis="50%"
       grow
       style={{
-        background: 'RGBA (0, 0, 0, 0, 0,5)',
+        background: 'rgba(0, 0, 0, 0.5)',
         padding: '4px',
       }}
       overflowX="hidden"

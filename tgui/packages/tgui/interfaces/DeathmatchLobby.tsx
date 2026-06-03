@@ -78,7 +78,7 @@ export function DeathmatchLobby(props) {
   const isObserver = observers.find((observer) => observer.key === self);
 
   return (
-    <Window title="Lobby Deathmatch" width={560} height={480}>
+    <Window title="Deathmatch Lobby" width={560} height={480}>
       {showMenu && <ModSelector />}
       <Window.Content>
         <Stack fill vertical>
@@ -100,7 +100,7 @@ export function DeathmatchLobby(props) {
                     <Button
                       icon="exclamation"
                       color="caution"
-                      onClick={() => act('admin', { func: 'Força começar.' })}
+                      onClick={() => act('admin', { func: 'Force start' })}
                     >
                       Force Start
                     </Button>
@@ -154,7 +154,7 @@ function PlayerColumn(props) {
           <Table.Cell>Loadout</Table.Cell>
           <Table.Cell collapsing align="center">
             <Tooltip
-              content={!allReady ? 'Os jogadores estão se preparando.' : 'Apertem!'}
+              content={!allReady ? 'Players are preparing' : 'Press start!'}
             >
               <Icon
                 name={!allReady ? 'check' : 'check-circle'}
@@ -190,7 +190,7 @@ function PlayerColumn(props) {
                   <Dropdown
                     width={9}
                     selected={player.key}
-                    options={['Kick', 'Transferidor', 'Observar Alternar']}
+                    options={['Kick', 'Transfer host', 'Toggle observe']}
                     onSelected={(value) =>
                       act('host', {
                         id: player.key,
@@ -261,7 +261,7 @@ function PlayerColumn(props) {
                   <Dropdown
                     width={9}
                     selected={observer.key}
-                    options={['Kick', 'Transferidor', 'Observar Alternar']}
+                    options={['Kick', 'Transfer host', 'Toggle observe']}
                     onSelected={(value) =>
                       act('host', {
                         id: observer.key,
@@ -384,13 +384,13 @@ function MapInfo(props) {
         <LabeledList.Item label="Max Play Time">
           {`${map.time / 600}min`}
         </LabeledList.Item>
-        <LabeledList.Item label="Jogadores Min">
+        <LabeledList.Item label="Min Players">
           {map.min_players}
         </LabeledList.Item>
-        <LabeledList.Item label="Max Jogadores">
+        <LabeledList.Item label="Max Players">
           {map.max_players}
         </LabeledList.Item>
-        <LabeledList.Item label="Jogadores atuais">
+        <LabeledList.Item label="Current Players">
           {players.length}
         </LabeledList.Item>
       </LabeledList>

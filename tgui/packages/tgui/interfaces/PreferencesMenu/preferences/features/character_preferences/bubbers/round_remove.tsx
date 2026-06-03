@@ -1,8 +1,8 @@
 import { CheckboxInput, type FeatureToggle } from '../../base';
 
 export const be_round_removed: FeatureToggle = {
-  name: 'Seja Redonda Removida',
+  name: 'Be Round Removed',
   description:
-    'Mostra para outros jogadores que você está bem com a remoção.',
+    'Displays to other players that you are okay with being round removed.',
   component: CheckboxInput,
 };

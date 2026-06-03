@@ -57,15 +57,15 @@ export const AutomatedAnnouncement = (props) => {
   };
 
   const errorMessage = !config_entries.length
-    ? 'Nenhuma opção configurável detectada! Por favor, informe a Nanotrasen.'
-    : 'Sem correspondência. Refinar sua busca.';
+    ? 'No configurable options detected! Please report this to Nanotrasen.'
+    : 'No match. Refine your search.';
 
   const sorted = sortBy(
     filter(config_entries, (entry) => isEntryMatch(entry, search)),
     [(entry) => entry.name],
   );
   return (
-    <Window title="Sistema de Anúncio Automático" width={500} height={280}>
+    <Window title="Automated Announcement System" width={500} height={280}>
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item>
@@ -107,7 +107,7 @@ export const AutomatedAnnouncement = (props) => {
                           disabled={!entry.modifiable}
                           tooltip={
                             !entry.modifiable
-                              ? 'Edição desativada pela CentCom!'
+                              ? 'Editing disabled by CentCom!'
                               : undefined
                           }
                           onClick={() =>

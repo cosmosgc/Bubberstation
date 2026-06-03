@@ -270,7 +270,7 @@ function CatalogTabs(props: CatalogTabsProps & Props) {
             color={self_paid ? 'caution' : 'transparent'}
             icon={self_paid ? 'check-square-o' : 'square-o'}
             onClick={() => act('toggleprivate')}
-            tooltip="Use seus próprios fundos para comprar itens."
+            tooltip="Use your own funds to purchase items."
             tooltipPosition="top"
           >
             Buy Privately
@@ -362,7 +362,7 @@ function CatalogList(props: CatalogListProps) {
                 <Stack.Item>
                   <Stack reverse>
                     {!!pack.small_item &&
-                      tooltipIcon('Pequeno Item', 'compress-alt', 'purple')}
+                      tooltipIcon('Small Item', 'compress-alt', 'purple')}
                     {!!pack.access &&
                       tooltipIcon('Restricted', 'lock', 'average')}
                     {!!pack.contraband &&
@@ -374,7 +374,7 @@ function CatalogList(props: CatalogListProps) {
                 <Stack vertical color="gold" lineHeight={0.75} fontSize={0.85}>
                   <Stack.Item
                     opacity={privateBuy && 0.75}
-                    style={{ textDecoration: privateBuy && 'Linha vermelha através' }}
+                    style={{ textDecoration: privateBuy && 'red line-through' }}
                   >
                     {formatMoney(pack.cost)}
                     {displayed_currency_name}
@@ -423,7 +423,7 @@ function CatalogPackInfo(props: CatalogContentsProps) {
               />
             }
           >
-            <BlockQuote>{pack?.desc || 'Nenhuma descrição disponível.'}</BlockQuote>
+            <BlockQuote>{pack?.desc || 'No description available.'}</BlockQuote>
           </Section>
         </Stack.Item>
         <Stack.Item m={0} grow>
@@ -437,7 +437,7 @@ function CatalogPackInfo(props: CatalogContentsProps) {
                   dmIconState={item.icon_state}
                   buttonsAlt={
                     !!item.amount && (
-                      <Stack.Item backgroundColor="Rgba(255, 255, 0,1">
+                      <Stack.Item backgroundColor="rgba(255, 255, 255, 0.1">
                         x{item.amount}
                       </Stack.Item>
                     )

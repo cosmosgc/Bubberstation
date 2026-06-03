@@ -12,19 +12,19 @@ export const LaborClaimConsole = (props) => {
         <Section>
           <LabeledList>
             <LabeledList.Item label="Status">{status_info}</LabeledList.Item>
-            <LabeledList.Item label="Controles de ônibus">
+            <LabeledList.Item label="Shuttle controls">
               <Button
-                content="Mova a nave auxiliar."
+                content="Move shuttle"
                 disabled={!can_go_home}
                 onClick={() => act('move_shuttle')}
               />
             </LabeledList.Item>
             <LabeledList.Item label="Points">{id_points}</LabeledList.Item>
             <LabeledList.Item
-              label="Pontos não reclamados"
+              label="Unclaimed points"
               buttons={
                 <Button
-                  content="Alegar pontos"
+                  content="Claim points"
                   disabled={!unclaimed_points}
                   onClick={() => act('claim_points')}
                 />

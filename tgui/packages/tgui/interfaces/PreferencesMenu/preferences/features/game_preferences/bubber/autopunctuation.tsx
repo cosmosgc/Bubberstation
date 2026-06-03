@@ -3,6 +3,6 @@ import { CheckboxInput, type FeatureToggle } from '../../base';
 export const autopunctuation: FeatureToggle = {
   name: 'Autopunctuation',
   category: 'CHAT',
-  description: 'Quando habilitado, mensagens sem pontuação serão adicionadas.',
+  description: 'When enabled, messages lacking punctuation will have it added.',
   component: CheckboxInput,
 };

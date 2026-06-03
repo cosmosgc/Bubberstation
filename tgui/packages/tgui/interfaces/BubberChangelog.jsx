@@ -135,7 +135,7 @@ const ChangelogList = (props) => {
     .sort()
     .reverse()
     .map((date) => (
-      <Section key={date} title={dateformat(date, 'D mmmm yyyy', true)} pb={1}>
+      <Section key={date} title={dateformat(date, 'd mmmm yyyy', true)} pb={1}>
         <Box ml={3}>
           {bubberContents[date] && (
             <Section mb={-2}>
@@ -267,8 +267,8 @@ export const BubberChangelog = (props) => {
   const [selectedDateIndex, setSelectedDateIndex] = useState(0);
 
   useEffect(() => {
-    setContents('Carregando dados do Changelog...');
-    setBubberContents('Carregando dados do Changelog...');
+    setContents('Loading changelog data...');
+    setBubberContents('Loading changelog data...');
     getData(selectedDate);
   }, [selectedDate]);
 
@@ -324,16 +324,16 @@ export const BubberChangelog = (props) => {
         contributed to the game.
       </p>
       <p>
-        {'Membros atuais da organização podem ser encontrados.'}
+        {'Current organization members can be found '}
         <a href="https://github.com/orgs/Bubberstation/people">here</a>
-        {', recentes colaboradores GitHub podem ser encontrados'}
+        {', recent GitHub contributors can be found '}
         <a href="https://github.com/Bubberstation/Bubberstation/pulse/monthly">
           here
         </a>
         .
       </p>
       <p>
-        {'Você também pode se juntar à nossa discórdia.'}
+        {'You can also join our discord '}
         <a href="https://discord.com/invite/AvjrTqnqEx">here</a>!
       </p>
       <DateDropdown
@@ -358,7 +358,7 @@ export const BubberChangelog = (props) => {
       <h2>Licenses</h2>
       <Section title="Bubberstation 13">
         <p>
-          {'Todo o código está licenciado sob'}
+          {'All code is licensed under '}
           <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU AGPL v3</a>.
           {' See '}
           <a href="https://github.com/bubberstation/bubberstation/blob/master/LICENSE">
@@ -367,11 +367,11 @@ export const BubberChangelog = (props) => {
           for more details.
         </p>
         <p>
-          {'Todos os recursos, incluindo ícones e som estão sob um'}
+          {'All assets including icons and sound are under a '}
           <a href="https://creativecommons.org/licenses/by-sa/3.0/">
             Creative Commons 3.0 BY-SA license
           </a>
-          {'salvo indicação em contrário.'}
+          {' unless otherwise indicated.'}
         </p>
       </Section>
       <Section title="TGS">
@@ -379,7 +379,7 @@ export const BubberChangelog = (props) => {
           The TGS DMAPI API is licensed as a subproject under the MIT license.
         </p>
         <p>
-          {'Veja o rodapé de'}
+          {' See the footer of '}
           <a
             href={
               'https://github.com/tgstation/tgstation/blob/master' +
@@ -397,12 +397,12 @@ export const BubberChangelog = (props) => {
           >
             code/modules/tgs/LICENSE
           </a>
-          {'pela licença do MIT.'}
+          {' for the MIT license.'}
         </p>
       </Section>
-      <Section title="/ tg/estação 13">
+      <Section title="/tg/station 13">
         <p>
-          {'Todos os códigos depois.'}
+          {'All code after '}
           <a
             href={
               'https://github.com/tgstation/tgstation/commit/' +
@@ -412,13 +412,13 @@ export const BubberChangelog = (props) => {
             commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at
             4:38 PM PST
           </a>
-          {'é licenciado sob'}
+          {' is licensed under '}
           <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU AGPL v3</a>.
         </p>
         <p>
-          {'Todo o código antes desse commit é licenciado sob'}
+          {'All code before that commit is licensed under '}
           <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU GPL v3</a>
-          {', incluindo ferramentas, a menos que a leitura deles especifique o contrário. Veja.'}
+          {', including tools unless their readme specifies otherwise. See '}
           <a href="https://github.com/tgstation/tgstation/blob/master/LICENSE">
             LICENSE
           </a>
@@ -426,14 +426,14 @@ export const BubberChangelog = (props) => {
           <a href="https://github.com/tgstation/tgstation/blob/master/GPLv3.txt">
             GPLv3.txt
           </a>
-          {'para mais detalhes.'}
+          {' for more details.'}
         </p>
         <p>
-          {'Todos os recursos, incluindo ícones e som estão sob um'}
+          {'All assets including icons and sound are under a '}
           <a href="https://creativecommons.org/licenses/by-sa/3.0/">
             Creative Commons 3.0 BY-SA license
           </a>
-          {'salvo indicação em contrário.'}
+          {' unless otherwise indicated.'}
         </p>
       </Section>
       <Section title="Goonstation SS13">
@@ -450,18 +450,18 @@ export const BubberChangelog = (props) => {
         <p>
           Bubberstation and /tg/station 13 are thankful to the GoonStation 13
           Development Team for its work on the game up to the
-          {'R4407 liberação. O changelog para mudanças até R4407 pode ser visto'}
+          {' r4407 release. The changelog for changes up to r4407 can be seen '}
           <a href="https://wiki.ss13.co/Pre-2016_Changelog#April_2010">here</a>.
         </p>
         <p>
-          {'Exceto onde de outra forma notado, Goon Station 13 está licenciado sob um'}
+          {'Except where otherwise noted, Goon Station 13 is licensed under a '}
           <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">
             Creative Commons Attribution-Noncommercial-Share Alike 3.0 License
           </a>
           .
         </p>
         <p>
-          {'Os direitos estão atualmente estendidos para'}
+          {'Rights are currently extended to '}
           <a href="http://forums.somethingawful.com/">SomethingAwful Goons</a>
           {' only.'}
         </p>

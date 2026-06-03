@@ -84,7 +84,7 @@ function formatTime(seconds: number): string {
 
 function getPlayerString(players: Player[]): string {
   if (players.length === 0) {
-    return 'Ninguém.';
+    return 'No one';
   } else if (players.length === 1) {
     return players[0].key;
   } else if (players.length === 2) {
@@ -136,7 +136,7 @@ const StatusPanel = () => {
   if (!current_tier) {
     return (
       <LabeledList>
-        <LabeledList.Item label="Nível atual">
+        <LabeledList.Item label="Current Tier">
           <Button onClick={() => act('set_tier')}>(Click to set)</Button>
         </LabeledList.Item>
       </LabeledList>
@@ -145,7 +145,7 @@ const StatusPanel = () => {
 
   return (
     <LabeledList>
-      <LabeledList.Item label="Nível atual">
+      <LabeledList.Item label="Current Tier">
         <Box>
           <b>{current_tier.number}</b> ({current_tier.name})
         </Box>
@@ -167,7 +167,7 @@ const StatusPanel = () => {
                 <Flex.Item ml={1}>
                   <Button
                     icon="plus"
-                    tooltip="Adicione um conjunto máximo deste tipo"
+                    tooltip="Add one max ruleset of this type"
                     tooltipPosition="right"
                     onClick={() =>
                       act('add_ruleset_category_count', {
@@ -182,7 +182,7 @@ const StatusPanel = () => {
                   <Button
                     icon="times"
                     disabled={count === 0}
-                    tooltip="Defina regras máximas deste tipo para 0"
+                    tooltip="Set max ruleset of this type to 0"
                     tooltipPosition="right"
                     onClick={() =>
                       act('set_ruleset_category_count', {
@@ -197,7 +197,7 @@ const StatusPanel = () => {
           </LabeledList.Item>
         ))}
       {time_until_lights > 0 ? (
-        <LabeledList.Item label="Luz Meia Rodada">
+        <LabeledList.Item label="Light Midround Start">
           <Flex>
             <Flex.Item>
               <Box>{formatTime(time_until_lights)}</Box>
@@ -211,7 +211,7 @@ const StatusPanel = () => {
         </LabeledList.Item>
       ) : (
         <>
-          <LabeledList.Item label="Resfriamento de luz no meio do círculo">
+          <LabeledList.Item label="Light Midround Cooldown">
             <Flex>
               <Flex.Item>
                 <Box>
@@ -231,23 +231,23 @@ const StatusPanel = () => {
               </Flex.Item>
             </Flex>
           </LabeledList.Item>
-          <LabeledList.Item label="Chance Meia Luz">
+          <LabeledList.Item label="Light Midround Chance">
             <Flex>
               <Flex.Item>
                 <Box
                   inline
                   style={{
-                    borderBottom: '2px pontilhado rgba(255, 0,8)',
+                    borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',
                   }}
                 >
-                  <Tooltip content="Possibilidade de um conjunto de regras ser selecionado no próximo tique dinâmico.">
+                  <Tooltip content="Chance of a light midround ruleset being selected on next dynamic tick">
                     {light_midround_chance}%
                   </Tooltip>
                 </Box>
               </Flex.Item>
               <Flex.Item>
                 <Button ml={1} onClick={() => act('max_light_chance')}>
-                  {light_chance_maxxed ? 'Reset' : 'Preparado para 100%.'}
+                  {light_chance_maxxed ? 'Reset' : 'Set to 100%'}
                 </Button>
               </Flex.Item>
             </Flex>
@@ -269,7 +269,7 @@ const StatusPanel = () => {
         </LabeledList.Item>
       ) : (
         <>
-          <LabeledList.Item label="Resfriamento do meio-round pesado">
+          <LabeledList.Item label="Heavy Midround Cooldown">
             <Flex>
               <Flex.Item>
                 <Box>
@@ -295,17 +295,17 @@ const StatusPanel = () => {
                 <Box
                   inline
                   style={{
-                    borderBottom: '2px pontilhado rgba(255, 0,8)',
+                    borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',
                   }}
                 >
-                  <Tooltip content="Possibilidade de um conjunto de regras ser selecionado no próximo tique dinâmico">
+                  <Tooltip content="Chance of a heavy midround ruleset being selected on next dynamic tick">
                     {heavy_midround_chance}%
                   </Tooltip>
                 </Box>
               </Flex.Item>
               <Flex.Item>
                 <Button ml={1} onClick={() => act('max_heavy_chance')}>
-                  {heavy_chance_maxxed ? 'Reset' : 'Preparado para 100%.'}
+                  {heavy_chance_maxxed ? 'Reset' : 'Set to 100%'}
                 </Button>
               </Flex.Item>
             </Flex>
@@ -333,7 +333,7 @@ const StatusPanel = () => {
                 <Box>
                   {time_until_next_latejoin
                     ? formatTime(time_until_next_latejoin)
-                    : 'Próximo encontro tardio'}
+                    : 'Next latejoin'}
                 </Box>
               </Flex.Item>
               <Flex.Item>
@@ -353,7 +353,7 @@ const StatusPanel = () => {
                 <Box
                   inline
                   style={{
-                    borderBottom: '2px pontilhado rgba(255, 0,8)',
+                    borderBottom: '2px dotted rgba(255, 255, 255, 0.8)',
                   }}
                 >
                   <Tooltip
@@ -367,7 +367,7 @@ const StatusPanel = () => {
               </Flex.Item>
               <Flex.Item>
                 <Button ml={1} onClick={() => act('max_latejoin_chance')}>
-                  {latejoin_chance_maxxed ? 'Reset' : 'Preparado para 100%.'}
+                  {latejoin_chance_maxxed ? 'Reset' : 'Set to 100%'}
                 </Button>
               </Flex.Item>
             </Flex>
@@ -458,7 +458,7 @@ const RulesetsPanel = () => {
   return (
     <Stack vertical fill>
       <Stack.Item>
-        <Section title="Regras em fila">
+        <Section title="Queued Rulesets">
           <Stack vertical>
             {queued_rulesets.length === 0 ? (
               <Stack.Item grow>
@@ -470,7 +470,7 @@ const RulesetsPanel = () => {
                   <Button
                     mr={0.5}
                     icon="times"
-                    tooltip="Removedor da fila"
+                    tooltip="Remove from queue"
                     onClick={() =>
                       act('remove_queued_ruleset', {
                         ruleset_index: ruleset.index,
@@ -486,7 +486,7 @@ const RulesetsPanel = () => {
       </Stack.Item>
       <Stack.Divider />
       <Stack.Item>
-        <Section title="Regras Ativas">
+        <Section title="Active Rulesets">
           <Stack vertical>
             {active_rulesets.length === 0 ? (
               <Stack.Item grow>
@@ -532,12 +532,12 @@ const RulesetsPanel = () => {
       <Stack.Item height="330px">
         <Section
           fill
-          title="Regras Disponíveis"
+          title="Available Rulesets"
           scrollable
           buttons={
             <>
               <Input
-                placeholder="Procura por recompensas..."
+                placeholder="Search for ruleset..."
                 onChange={setSearchText}
                 expensive
                 value={searchText}
@@ -579,8 +579,8 @@ const RulesetsPanel = () => {
                                   tooltip={
                                     ruleset_category === 'roundstart' &&
                                     roundstarted
-                                      ? 'A rodada já começou!'
-                                      : 'Adicionar à fila'
+                                      ? 'Round already started!'
+                                      : 'Add to queue'
                                   }
                                   tooltipPosition="right"
                                   disabled={
@@ -598,7 +598,7 @@ const RulesetsPanel = () => {
                               <Flex.Item>
                                 <Button
                                   icon="play"
-                                  tooltip="Execute este conjunto de pagamentos"
+                                  tooltip="Execute this ruleset"
                                   tooltipPosition="right"
                                   onClick={() =>
                                     act('execute_ruleset', {
@@ -635,7 +635,7 @@ const RulesetsPanel = () => {
                             <Flex.Item
                               style={{
                                 borderBottom:
-                                  '2px pontilhado rgba(255, 0,8)',
+                                  '2px dotted rgba(255, 255, 255, 0.8)',
                               }}
                               ml={1}
                             >
@@ -692,13 +692,13 @@ export const DynamicAdmin = () => {
 
   return (
     <Window
-      title="Painel de Administração Dinâmico"
+      title="Dynamic Admin Panel"
       width={currentTab === TABS.Rulesets ? 800 : 500}
       height={currentTab === TABS.Rulesets ? 600 : 400}
     >
       <Window.Content>
         <Section
-          title="#Nbsp;"
+          title="&nbsp;"
           height="100%"
           width="100%"
           buttons={
@@ -712,7 +712,7 @@ export const DynamicAdmin = () => {
                 Antag Events
               </Button.Checkbox>
               <Button
-                tooltip="Abre o painel dinâmico do subsistema VV."
+                tooltip="Opens the Dynamic subsystem VV panel."
                 onClick={() => act('dynamic_vv')}
               >
                 VV

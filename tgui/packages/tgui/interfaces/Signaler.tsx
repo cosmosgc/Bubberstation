@@ -27,8 +27,8 @@ export const SignalerContent = (props) => {
   const { act, data } = useBackend<Data>();
   const { code, frequency, cooldown, minFrequency, maxFrequency } = data;
 
-  const color = '[13, 13, 213, 0,7]';
-  const backColor = 'Rgba (0, 0, 69, 0,5)';
+  const color = 'rgba(13, 13, 213, 0.7)';
+  const backColor = 'rgba(0, 0, 69, 0.5)';
   return (
     <Section>
       <Stack>
@@ -106,7 +106,7 @@ export const SignalerContent = (props) => {
             fluid
             tooltip={cooldown && `Cooldown: ${cooldown * 0.1} seconds`}
             icon="arrow-up"
-            content="Enviar sinal"
+            content="Send Signal"
             textAlign="center"
             onClick={() => act('signal')}
           />

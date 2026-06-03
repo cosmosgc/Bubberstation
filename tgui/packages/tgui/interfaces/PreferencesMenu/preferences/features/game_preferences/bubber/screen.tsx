@@ -2,8 +2,8 @@ import type { FeatureChoiced } from '../../base';
 import { FeatureDropdownInput } from '../../dropdowns';
 
 export const viewport_size: FeatureChoiced = {
-  name: 'Proporção de Aspectos (Viewport)',
+  name: 'Aspect Ratio (Viewport)',
   category: 'UI',
-  description: 'Selecione seu tamanho preferido do viewport.',
+  description: 'Select your preferred viewport size.',
   component: FeatureDropdownInput,
 };

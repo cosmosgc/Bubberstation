@@ -118,7 +118,7 @@ const IntroductionSection = (props) => {
   return (
     <Stack justify="space-evenly" height="100%" width="100%">
       <Stack.Item grow>
-        <Section title="Você é o herege!" fill fontSize="14px">
+        <Section title="You are the Heretic!" fill fontSize="14px">
           <Stack vertical>
             <FlavorSection />
             <Stack.Divider />
@@ -138,17 +138,17 @@ const IntroductionSection = (props) => {
                   fill
                   titleMessage={
                     can_change_objective
-                      ? 'Seus objetivos OPFOR são seus principais, mas para ascender, você tem essas tarefas para cumprir.' /* SKYRAT EDIT CHANGE - opfor objectives */
-                      : 'Seus objetivos da OPFOR são seus principais. Use seu conhecimento obscuro para cumprir seu objetivo pessoal.' /* SKYRAT EDIT CHANGE - opfor objectives  */
+                      ? 'Your OPFOR objectives are your primary ones, but in order to ascend, you have these tasks to fulfill' /* SKYRAT EDIT CHANGE - opfor objectives */
+                      : 'Your OPFOR objectives are your primary ones. Use your dark knowledge to fulfill your personal goal' /* SKYRAT EDIT CHANGE - opfor objectives  */
                   }
                   objectives={objectives}
                   objectiveFollowup={
                     <ReplaceObjectivesButton
                       can_change_objective={can_change_objective}
-                      button_title={'Rejeite a Ascensão'}
+                      button_title={'Reject Ascension'}
                       button_colour={'red'}
                       button_tooltip={
-                        'Vire as costas ao Mansus para realizar uma tarefa de sua escolha. Selecionar esta opção vai impedi-lo de subir!'
+                        'Turn your back on the Mansus to accomplish a task of your choosing. Selecting this option will prevent you from ascending!'
                       }
                     />
                   }
@@ -303,13 +303,13 @@ const KnowledgeTree = () => {
   const nodesToShow = knowledge_tiers.filter((tier) => tier.nodes.length > 0);
 
   return (
-    <Section title="Árvore de Pesquisa" fill scrollable>
+    <Section title="Research Tree" fill scrollable>
       <Box textAlign="center" fontSize="32px">
         <span style={hereticYellow}>DAWN</span>
       </Box>
       <Stack vertical>
         {nodesToShow.length === 0
-          ? 'Nenhum!'
+          ? 'None!'
           : nodesToShow.map((tier, i) => (
               <Stack.Item key={i}>
                 <Stack
@@ -434,7 +434,7 @@ const KnowledgeShop = () => {
   }
 
   return (
-    <Section title="Loja do Conhecimento" fill scrollable>
+    <Section title="Knowledge Shop" fill scrollable>
       <Stack vertical fill>
         <Knowledges />
       </Stack>
@@ -668,7 +668,7 @@ export const AntagInfoHeretic = () => {
   const tabs = [
     { label: 'Information', icon: 'info', content: <IntroductionSection /> },
     {
-      label: 'Informação do Caminho',
+      label: 'Path Info',
       icon: 'info',
       content: <PathInfo currentPath={currentPath} />,
     },

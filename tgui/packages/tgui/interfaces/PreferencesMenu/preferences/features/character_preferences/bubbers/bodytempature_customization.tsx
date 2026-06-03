@@ -2,6 +2,6 @@
 import { type Feature, FeatureNumberInput } from '../../base';
 
 export const bodytemp: Feature<number> = {
-  name: 'Modificador de temperatura corporal',
+  name: 'Body Temperature Modifier',
   component: FeatureNumberInput,
 };

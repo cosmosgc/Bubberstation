@@ -41,7 +41,7 @@ const ObjectivePrintout = (props: any) => {
     <Stack vertical>
       <Stack.Item bold>Your current objectives:</Stack.Item>
       <Stack.Item>
-        {(!objectives && 'Nenhum!') ||
+        {(!objectives && 'None!') ||
           objectives.map((objective) => (
             <Stack.Item key={objective.count}>
               #{objective.count}: {objective.explanation}
@@ -99,7 +99,7 @@ const BloodsuckerIntro = () => {
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section fill title="Forças e fraquezas">
+        <Section fill title="Strengths and Weaknesses">
           <Stack vertical height="7rem">
             <Stack.Item>
               <span>
@@ -205,7 +205,7 @@ const BloodsuckerClan = (props: any) => {
                     height="20rem"
                     opacity={0.25}
                     src={resolveAsset(`bloodsucker.${ClanInfo.clan_icon}.png`)}
-                    className="img absoluto"
+                    className="img absolute"
                     style={{ position: 'absolute' }}
                   />
                   <Stack.Item fontSize="20px" textAlign="center">
@@ -213,7 +213,7 @@ const BloodsuckerClan = (props: any) => {
                   </Stack.Item>
                   <Stack.Item
                     fontSize="16px"
-                    style={{ flexBasis: '60%!' }}
+                    style={{ flexBasis: '60% !important' }}
                   >
                     {ClanInfo.clan_description}
                   </Stack.Item>

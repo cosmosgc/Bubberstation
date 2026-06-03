@@ -2,7 +2,7 @@ import { type Antagonist, Category } from '../base';
 
 const BloodBrother: Antagonist = {
   key: 'bloodbrother',
-  name: 'Irmão de Sangue',
+  name: 'Blood Brother',
   description: [
     `
       Team up with other crew members as blood brothers to combine the strengths

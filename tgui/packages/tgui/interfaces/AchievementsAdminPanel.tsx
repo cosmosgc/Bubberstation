@@ -11,9 +11,9 @@ export const AchievementsAdminPanel = (props) => {
   const { act, data } = useBackend<Data>();
   const { orphaned_keys, archived_keys } = data;
   return (
-    <Window title="Painel de Administração de Realizações" width={540} height={680}>
+    <Window title="Achievements Admin Panel" width={540} height={680}>
       <Window.Content scrollable>
-        <Section title="Orfãs conquistas">
+        <Section title="Orphaned achievements">
           <NoticeBox>
             These achievements are present in the database but are missing
             definitions in code. Most likely these were removed and can be
@@ -46,7 +46,7 @@ export const AchievementsAdminPanel = (props) => {
             ))}
           </LabeledList>
         </Section>
-        <Section title="Realizações arquivadas">
+        <Section title="Archived achievements">
           <NoticeBox>Archived achievements in the database.</NoticeBox>
           <LabeledList>
             {archived_keys.map((key) => (

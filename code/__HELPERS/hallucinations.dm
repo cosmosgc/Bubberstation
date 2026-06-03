@@ -163,7 +163,7 @@ GLOBAL_LIST_INIT_TYPED(random_hallucination_weighted_list, /list, generate_hallu
 		for(var/datum/hallucination/hallucination_type as anything in GLOB.random_hallucination_weighted_list[tier])
 			total_weight += GLOB.random_hallucination_weighted_list[tier][hallucination_type]
 
-	to_chat(usr, span_boldnotice("O peso total da lista ponderada de alucinações é[total_weight]."))
+	to_chat(usr, span_boldnotice("O peso total da lista ponderada de alucinações é [total_weight]."))
 	return total_weight
 
 ADMIN_VERB(debug_hallucination_weighted_list_per_type, R_DEBUG, "Show Hallucination Weights", "View the weight of each hallucination subtype in the random weighted list.", ADMIN_CATEGORY_DEBUG)
@@ -256,10 +256,10 @@ ADMIN_VERB(debug_hallucination_weighted_list_per_type, R_DEBUG, "Show Hallucinat
 	var/list/delusion_args = list()
 	var/static/list/options = list("Yes", "No")
 	var/duration = tgui_input_number(user, "How long should it last in seconds?", "Delusion: Duration", max_value = INFINITY, min_value = 1, default = 30)
-	var/affects_us = (tgui_alert(user, "Eles deveriam se ver como a ilusão?", "Delusion: Affects us", options) == "Yes")
-	var/affects_others = (tgui_alert(user, "Eles deveriam ver todos os outros delirando?", "Delusion: Affects others", options) == "Yes")
-	var/skip_nearby = (tgui_alert(user, "A ilusão só deve afetar as pessoas fora de sua visão?", "Delusion: Skip in view", options) == "Yes")
-	var/play_wabbajack = (tgui_alert(user, "Tocar o som de wabbajack quando acontece?", "Delusion: Wabbajack sound", options) == "Yes")
+	var/affects_us = (tgui_alert(user, "Eles deveriam se ver como a ilusão?", "Ilusão: Afeta nós", options) == "Yes")
+	var/affects_others = (tgui_alert(user, "Eles deveriam ver todos os outros delirando?", "Ilusão: Afeta os outros", options) == "Yes")
+	var/skip_nearby = (tgui_alert(user, "A ilusão só deve afetar as pessoas fora de sua visão?", "Ilusão: Pular em vista", options) == "Yes")
+	var/play_wabbajack = (tgui_alert(user, "Tocar o som de wabbajack quando acontece?", "Ilusão: Som do wabbajack", options) == "Yes")
 
 	delusion_args = list(
 		chosen,
@@ -291,4 +291,4 @@ ADMIN_VERB(debug_hallucination_weighted_list_per_type, R_DEBUG, "Show Hallucinat
 	return delusion_args
 
 /// Lines the bubblegum hallucinatoin uses when it pops up
-#define BUBBLEGUM_HALLUCINATION_LINES list( 		span_colossus("Eu sou imortal."), 		span_colossus("Eu tomarei seu mundo."), 		span_colossus("Eu vejo você."), 		span_colossus("Você não pode escapar de mim para sempre."), 		span_colossus("Nada pode me segurar."), 	)
+#define BUBBLEGUM_HALLUCINATION_LINES list( 		span_colossus("Eu sou imortal."), 		span_colossus("Eu tomarei seu mundo."), 		span_colossus("Eu vejo você."), 		span_colossus("Você não pode escapar de mim para sempre."), 		span_colossus("NADA PODE ME SEGURAR."), 	)

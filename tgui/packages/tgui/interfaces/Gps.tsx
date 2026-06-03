@@ -70,7 +70,7 @@ export const Gps = () => {
       ]),
   ])(data.signals || []);
   return (
-    <Window title="Sistema global de posicionamento" width={470} height={700}>
+    <Window title="Global Positioning System" width={470} height={700}>
       <Window.Content scrollable>
         <Section
           title="Control"
@@ -90,7 +90,7 @@ export const Gps = () => {
                 {tag}
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Modo de digitalização">
+            <LabeledList.Item label="Scan Mode">
               <Button
                 icon={updating ? 'unlock' : 'lock'}
                 color={!updating && 'bad'}
@@ -112,16 +112,16 @@ export const Gps = () => {
         </Section>
         {!!power && (
           <>
-            <Section title="Localização atual">
+            <Section title="Current Location">
               <Box fontSize="18px">
                 {currentArea} ({currentCoords})
               </Box>
             </Section>
             <Section
-              title="Sinais Detectados"
+              title="Detected Signals"
               buttons={
                 <Input
-                  placeholder="Procure pelo nome..."
+                  placeholder="Search by name..."
                   width="200px"
                   value={searchName}
                   onChange={(value) => setSearchName(value)}

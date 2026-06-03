@@ -52,7 +52,7 @@ export function PersonalCrafting(props: any) {
 
   const [activeCategory, setCategory] = useState(
     Object.keys(craftability).length
-      ? 'Pode fazer'
+      ? 'Can Make'
       : mode === MODE.cooking
         ? DEFAULT_CAT_COOKING
         : DEFAULT_CAT_CRAFTING,
@@ -90,7 +90,7 @@ export function PersonalCrafting(props: any) {
   const [activeMealCategory, setMealCategory] = useState<string[]>();
 
   const [activeType, setFoodType] = useState(
-    Object.keys(craftability).length ? 'Pode fazer' : data.foodtypes[0],
+    Object.keys(craftability).length ? 'Can Make' : data.foodtypes[0],
   );
   const material_occurences = sortBy(data.material_occurences, [
     (material) => -material.occurences,
@@ -121,7 +121,7 @@ export function PersonalCrafting(props: any) {
     if (tabMode === TABS.material) {
       return Object.keys(recipe.reqs).includes(activeMaterial);
     } else if (tabMode === TABS.category) {
-      if (activeCategory === 'Pode fazer') {
+      if (activeCategory === 'Can Make') {
         return Boolean(craftability[recipe.ref]);
       }
       if (activeCategory === 'Foods') {
@@ -146,7 +146,7 @@ export function PersonalCrafting(props: any) {
       }
       return recipe.category === activeCategory;
     } else if (tabMode === TABS.foodtype && mode === MODE.cooking) {
-      if (activeType === 'Pode fazer') {
+      if (activeType === 'Can Make') {
         return Boolean(craftability[recipe.ref]);
       }
       if (recipe.foodtypes) {
@@ -167,7 +167,7 @@ export function PersonalCrafting(props: any) {
   );
   recipes = sortBy(recipes, [
     (recipe) => [
-      activeCategory === 'Pode fazer'
+      activeCategory === 'Can Make'
         ? 99 - Object.keys(recipe.reqs).length
         : Number(craftability[recipe.ref]),
       recipe.name.toLowerCase(),
@@ -177,7 +177,7 @@ export function PersonalCrafting(props: any) {
     recipes = filter(recipes, searchName);
   }
 
-  const canMake = ['Pode fazer'];
+  const canMake = ['Can Make'];
   const categories = canMake
     .concat(data.categories.sort())
     .filter((i) => (i === 'Weaponry' ? true : i));
@@ -206,7 +206,7 @@ export function PersonalCrafting(props: any) {
                     autoFocus
                     expensive
                     placeholder={
-                      'Procure em' +
+                      'Search in ' +
                       data.recipes.length +
                       (mode === MODE.cooking ? ' recipes...' : ' designs...')
                     }
@@ -230,7 +230,7 @@ export function PersonalCrafting(props: any) {
                         setPages(1);
                         setCategory(
                           Object.keys(craftability).length
-                            ? 'Pode fazer'
+                            ? 'Can Make'
                             : data.categories[0],
                         );
                       }}
@@ -248,7 +248,7 @@ export function PersonalCrafting(props: any) {
                           setPages(1);
                           setFoodType(
                             Object.keys(craftability).length
-                              ? 'Pode fazer'
+                              ? 'Can Make'
                               : data.foodtypes[0],
                           );
                         }}
@@ -360,7 +360,7 @@ export function PersonalCrafting(props: any) {
                                   <Stack.Item width="14px" textAlign="center">
                                     <Icon
                                       color={
-                                        category === 'Cult de Sangue'
+                                        category === 'Blood Cult'
                                           ? 'red'
                                           : 'default'
                                       }
@@ -370,14 +370,14 @@ export function PersonalCrafting(props: any) {
                                   <Stack.Item
                                     grow
                                     color={
-                                      category === 'Cult de Sangue'
+                                      category === 'Blood Cult'
                                         ? 'red'
                                         : 'default'
                                     }
                                   >
                                     {category}
                                   </Stack.Item>
-                                  {category === 'Pode fazer' && (
+                                  {category === 'Can Make' && (
                                     <Stack.Item>
                                       {Object.keys(craftability).length}
                                     </Stack.Item>
@@ -516,7 +516,7 @@ export function PersonalCrafting(props: any) {
                           icon="hammer"
                           style={{
                             border:
-                              '2px sólido.' +
+                              '2px solid ' +
                               (mode === MODE.crafting ? '#20b142' : '#333'),
                           }}
                           onClick={() => {
@@ -539,7 +539,7 @@ export function PersonalCrafting(props: any) {
                           icon="utensils"
                           style={{
                             border:
-                              '2px sólido.' +
+                              '2px solid ' +
                               (mode === MODE.cooking ? '#20b142' : '#333'),
                           }}
                           onClick={() => {

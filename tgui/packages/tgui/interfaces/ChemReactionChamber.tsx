@@ -155,7 +155,7 @@ export const ChemReactionChamber = (props) => {
               <Stack vertical fill>
                 <Stack.Item>
                   <LabeledList>
-                    <LabeledList.Item label="Limite de pH ácido.">
+                    <LabeledList.Item label="Acidic pH limit">
                       <NumberInput
                         tickWhileDragging
                         value={reagentAcidic}
@@ -171,7 +171,7 @@ export const ChemReactionChamber = (props) => {
                         }
                       />
                     </LabeledList.Item>
-                    <LabeledList.Item label="Limite de pH alcalino">
+                    <LabeledList.Item label="Alkaline pH limit">
                       <NumberInput
                         tickWhileDragging
                         value={reagentAlkaline}

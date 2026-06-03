@@ -21,7 +21,7 @@ export const TramPlaque = (props) => {
 
   return (
     <Window
-      title="Placa de Informação de Eléctrico"
+      title="Tram Information Plaque"
       width={600}
       height={360}
       theme="dark"
@@ -31,12 +31,12 @@ export const TramPlaque = (props) => {
         <Section
           title={
             currentTram.map((serialNumber) => serialNumber.serialNumber) +
-            '- Construído.' +
+            ' - Constructed ' +
             currentTram.map((serialNumber) => serialNumber.mfgDate)
           }
         >
           <LabeledList>
-            <LabeledList.Item label="Distância Viajada">
+            <LabeledList.Item label="Distance Travelled">
               {currentTram.map(
                 (serialNumber) => serialNumber.distanceTravelled / 1000,
               )}{' '}
@@ -47,7 +47,7 @@ export const TramPlaque = (props) => {
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Tram História">
+        <Section title="Tram History">
           <Stack fill g={0}>
             <Stack.Item m={1} grow>
               <b>Serial</b>

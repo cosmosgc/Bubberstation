@@ -24,7 +24,7 @@ const PlaytimeSection = (props) => {
   );
 
   if (!sortedPlaytimes.length) {
-    return 'Sem horas de jogo gravadas para esta seção.';
+    return 'No recorded playtime hours for this section.';
   }
 
   const mostPlayed = sortedPlaytimes[0][1];

@@ -6,14 +6,14 @@ import {
 import { FeatureDropdownInput } from '../../dropdowns';
 
 export const input_blood_color: Feature<string> = {
-  name: 'Cor personalizada',
+  name: 'Custom color',
   description:
-    'Isso combina com a cor do PX mais brilhante.',
+    'NOTE: This matches the colour to the BRIGHTEST px. So, make this slightly (about 10?) more luminescent (HSL) than you want the blood to be.',
   component: FeatureColorInput,
 };
 
 export const select_blood_color: FeatureChoiced = {
-  name: 'Cor predefinida',
-  description: 'Use a opção Personalizada para cores personalizadas.',
+  name: 'Preset color',
+  description: 'NOTE: Use the Custom option for custom color.',
   component: FeatureDropdownInput,
 };

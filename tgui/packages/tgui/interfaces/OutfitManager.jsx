@@ -7,29 +7,29 @@ export const OutfitManager = (props) => {
   const { act, data } = useBackend();
   const { outfits } = data;
   return (
-    <Window title="Gerente de roupas." width={300} height={300} theme="admin">
+    <Window title="Outfit Manager" width={300} height={300} theme="admin">
       <Window.Content>
         <Section
           fill
           scrollable
-          title="Gerente de roupas personalizadas"
+          title="Custom Outfit Manager"
           buttons={
             <>
               <Button
                 icon="file-upload"
-                tooltip="Carregue uma roupa de um arquivo."
+                tooltip="Load an outfit from a file"
                 tooltipPosition="left"
                 onClick={() => act('load')}
               />
               <Button
                 icon="copy"
-                tooltip="Copie uma roupa já existente."
+                tooltip="Copy an already existing outfit"
                 tooltipPosition="left"
                 onClick={() => act('copy')}
               />
               <Button
                 icon="plus"
-                tooltip="Crie uma nova roupa."
+                tooltip="Create a new outfit"
                 tooltipPosition="left"
                 onClick={() => act('new')}
               />
@@ -63,7 +63,7 @@ export const OutfitManager = (props) => {
                   <Stack.Item ml={0.5}>
                     <Button
                       icon="save"
-                      tooltip="Guarde esta roupa para um arquivo."
+                      tooltip="Save this outfit to a file"
                       tooltipPosition="left"
                       onClick={() => act('save', { outfit: outfit.ref })}
                     />
@@ -72,7 +72,7 @@ export const OutfitManager = (props) => {
                     <Button
                       color="bad"
                       icon="trash-alt"
-                      tooltip="Apague essa roupa."
+                      tooltip="Delete this outfit"
                       tooltipPosition="left"
                       onClick={() => act('delete', { outfit: outfit.ref })}
                     />

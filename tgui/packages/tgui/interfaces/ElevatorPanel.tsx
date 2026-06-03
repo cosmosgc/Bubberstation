@@ -58,7 +58,7 @@ export const ElevatorPanel = (props) => {
    *
    * 600 is chosen for the max, as it fits 10 floors pretty comfortably.
    * If you seriously need more than 10 floors for an elevator in this game,
-   * you should reconsider your map'O layout. Ele.'s not worth it.
+   * you should reconsider your map's layout. It's not worth it.
    */
   const calculatedHeight = clamp(all_floor_data.length * 90, 400, 600);
 
@@ -117,7 +117,7 @@ export const ElevatorPanel = (props) => {
                   color={'bad'}
                   tooltip={
                     is_emergency
-                      ? 'Em caso de emergência, abra todas as portas de elevador.'
+                      ? 'In case of emergency, opens all lift doors.'
                       : `The station is only at ${emergency_level} alert.`
                   }
                   onClick={() => act('emergency_door')}

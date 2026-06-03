@@ -32,7 +32,7 @@ export const AtmosTempPump = (props) => {
                 onClick={() => act('power')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Taxa de transferência de calor">
+            <LabeledList.Item label="Heat transfer rate">
               <NumberInput
                 animated
                 value={rate}

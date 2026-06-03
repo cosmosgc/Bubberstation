@@ -105,7 +105,7 @@ export const NaniteDelays = () => {
   return (
     <Section title="Delays" ml={1}>
       <LabeledList>
-        <LabeledList.Item label="Reinicie o temporizador">
+        <LabeledList.Item label="Restart Timer">
           <NumberInput
             value={timer_restart}
             unit="s"
@@ -120,7 +120,7 @@ export const NaniteDelays = () => {
             }
           />
         </LabeledList.Item>
-        <LabeledList.Item label="Temporizador de desligamento">
+        <LabeledList.Item label="Shutdown Timer">
           <NumberInput
             value={timer_shutdown}
             unit="s"
@@ -137,7 +137,7 @@ export const NaniteDelays = () => {
         </LabeledList.Item>
         {!!data.can_trigger && (
           <>
-            <LabeledList.Item label="Repete o temporizador.">
+            <LabeledList.Item label="Trigger Repeat Timer">
               <NumberInput
                 value={timer_trigger}
                 unit="s"
@@ -152,7 +152,7 @@ export const NaniteDelays = () => {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Atraso do gatilho">
+            <LabeledList.Item label="Trigger Delay">
               <NumberInput
                 value={timer_trigger_delay}
                 unit="s"
@@ -321,7 +321,7 @@ export const NaniteProgrammerContent = () => {
   if (!has_program) {
     return (
       <Section
-        title="Disco em branco"
+        title="Blank Disk"
         buttons={
           <Button
             disabled={!has_disk}
@@ -349,13 +349,13 @@ export const NaniteProgrammerContent = () => {
           <Stack.Item>
             <table>
               <LabeledList>
-                <LabeledList.Item label="Taxa de Uso">{use_rate}</LabeledList.Item>
+                <LabeledList.Item label="Use Rate">{use_rate}</LabeledList.Item>
                 {!!can_trigger && (
                   <>
-                    <LabeledList.Item label="Custo do gatilho">
+                    <LabeledList.Item label="Trigger Cost">
                       {trigger_cost}
                     </LabeledList.Item>
-                    <LabeledList.Item label="Arrefecer o gatilho">
+                    <LabeledList.Item label="Trigger Cooldown">
                       {trigger_cooldown}
                     </LabeledList.Item>
                   </>

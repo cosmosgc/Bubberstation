@@ -25,7 +25,7 @@ export const Limbgrower = (props) => {
     categories.find((category) => category.name === tab)?.designs || [];
 
   return (
-    <Window title="Grower" width={500} height={550}>
+    <Window title="Limb Grower" width={500} height={550}>
       {!!busy && (
         <Dimmer fontSize="32px">
           <Icon name="cog" spin={1} />
@@ -46,7 +46,7 @@ export const Limbgrower = (props) => {
                   <Button.Confirm
                     textAlign="center"
                     width="120px"
-                    content="Remova o Reagente"
+                    content="Remove Reagent"
                     color="bad"
                     onClick={() =>
                       act('empty_reagent', {

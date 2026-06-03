@@ -25,7 +25,7 @@ export const ApprenticeContract = (props) => {
           <Stack.Item grow>
             <ApprenticeSelection
               iconName="fire"
-              fluffName="Aprendiz de Destruição"
+              fluffName="Apprentice of Destruction"
               schoolTitle="destruction"
               assetName="destruction.png"
               blurb={`
@@ -35,7 +35,7 @@ export const ApprenticeContract = (props) => {
             />
             <ApprenticeSelection
               iconName="route"
-              fluffName="Estudante de Translocação"
+              fluffName="Student of Translocation"
               schoolTitle="bluespace"
               assetName="bluespace.png"
               blurb={`
@@ -46,7 +46,7 @@ export const ApprenticeContract = (props) => {
             />
             <ApprenticeSelection
               iconName="medkit"
-              fluffName="Neófito da Restauração"
+              fluffName="Neophyte of Restoration"
               schoolTitle="healing"
               assetName="healing.png"
               blurb={`
@@ -57,7 +57,7 @@ export const ApprenticeContract = (props) => {
             />
             <ApprenticeSelection
               iconName="user-secret"
-              fluffName="Pupila Sem Robe"
+              fluffName="Robeless Pupil"
               schoolTitle="robeless"
               assetName="robeless.png"
               blurb={`

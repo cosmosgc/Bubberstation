@@ -27,7 +27,7 @@ export const SmokeMachine = (props) => {
     <Window width={350} height={350}>
       <Window.Content>
         <Section
-          title="Tanque de dispersão"
+          title="Dispersal Tank"
           buttons={
             <Button
               icon={active ? 'power-off' : 'times'}

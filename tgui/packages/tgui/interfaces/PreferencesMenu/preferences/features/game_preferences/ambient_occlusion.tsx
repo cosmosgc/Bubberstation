@@ -1,8 +1,8 @@
 import { CheckboxInput, type FeatureToggle } from '../base';
 
 export const ambientocclusion: FeatureToggle = {
-  name: 'Ativar oclusão ambiente.',
+  name: 'Enable ambient occlusion',
   category: 'GAMEPLAY',
-  description: 'Ativar oclusão ambiente, sombras de luz ao redor dos personagens.',
+  description: 'Enable ambient occlusion, light shadows around characters.',
   component: CheckboxInput,
 };

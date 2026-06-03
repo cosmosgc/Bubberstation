@@ -1,8 +1,8 @@
 import { CheckboxInput, type FeatureToggle } from '../base';
 
 export const persistent_scars: FeatureToggle = {
-  name: 'Cicatrizes persistentes',
+  name: 'Persistent Scars',
   description:
-    'Se marcada, as cicatrizes persistirão se você sobreviver até o fim.',
+    'If checked, scars will persist across rounds if you survive to the end.',
   component: CheckboxInput,
 };

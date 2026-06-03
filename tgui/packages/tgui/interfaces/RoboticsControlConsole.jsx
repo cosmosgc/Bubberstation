@@ -109,9 +109,9 @@ const Cyborgs = (props) => {
               }
             >
               {cyborg.status
-                ? 'Não Respondendo'
+                ? 'Not Responding'
                 : cyborg.locked_down
-                  ? 'Trancado'
+                  ? 'Locked Down'
                   : 'Nominal'}
             </Box>
           </LabeledList.Item>
@@ -127,11 +127,11 @@ const Cyborgs = (props) => {
             >
               {typeof cyborg.charge === 'number'
                 ? `${cyborg.charge}%`
-                : 'Não Encontrado'}
+                : 'Not Found'}
             </Box>
           </LabeledList.Item>
           <LabeledList.Item label="Model">{cyborg.module}</LabeledList.Item>
-          <LabeledList.Item label="Mestre AI">
+          <LabeledList.Item label="Master AI">
             <Box color={cyborg.synchronization ? 'default' : 'average'}>
               {cyborg.synchronization || 'None'}
             </Box>
@@ -173,7 +173,7 @@ const Drones = (props) => {
         <LabeledList>
           <LabeledList.Item label="Status">
             <Box color={drone.status ? 'bad' : 'good'}>
-              {drone.status ? 'Não Respondendo' : 'Nominal'}
+              {drone.status ? 'Not Responding' : 'Nominal'}
             </Box>
           </LabeledList.Item>
         </LabeledList>

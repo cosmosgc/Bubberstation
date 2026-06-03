@@ -67,7 +67,7 @@ export const NanopaintMenuBar = (props: NanopaintMenuBarProps) => {
           disabled={!workspaceOpen}
         />
         <MenuBar.Dropdown.MenuItem
-          {...getMenuItemProps('saveAs', 'Salvar como', () => act('saveAsDialog'))}
+          {...getMenuItemProps('saveAs', 'Save As', () => act('saveAsDialog'))}
           disabled={!workspaceOpen}
         />
       </MenuBar.Dropdown>
@@ -103,11 +103,11 @@ export const NanopaintMenuBar = (props: NanopaintMenuBarProps) => {
       >
         <MenuBar.Dropdown.MenuItem
           disabled={!workspaceOpen || zoom === maxZoom}
-          {...getMenuItemProps('zoomIn', 'Ampliar', () => setZoom(zoom + 1))}
+          {...getMenuItemProps('zoomIn', 'Zoom In', () => setZoom(zoom + 1))}
         />
         <MenuBar.Dropdown.MenuItem
           disabled={!workspaceOpen || zoom === minZoom}
-          {...getMenuItemProps('zoomOut', 'Reduzir', () => setZoom(zoom - 1))}
+          {...getMenuItemProps('zoomOut', 'Zoom Out', () => setZoom(zoom - 1))}
         />
       </MenuBar.Dropdown>
     </MenuBar>

@@ -28,7 +28,7 @@ type Data = {
 export function CommandReport() {
   return (
     <Window
-      title="Criar relatório de comando"
+      title="Create Command Report"
       width={325}
       height={685}
       theme="admin"
@@ -67,7 +67,7 @@ function CentComName(props) {
   }
 
   return (
-    <Section title="Defina o nome do Comando Central." textAlign="center">
+    <Section title="Set Central Command name" textAlign="center">
       <Dropdown
         width="100%"
         selected={name}
@@ -87,12 +87,12 @@ function SubHeader(props) {
   const { subheader } = data;
 
   return (
-    <Section title="Preparar relatório de subcabeçamento" textAlign="center">
+    <Section title="Set report subheader" textAlign="center">
       <Input
         fluid
         mt={1}
         value={subheader}
-        placeholder="Mantenha em branco para não incluir um subheader"
+        placeholder="Keep blank to not include a subheader"
         onBlur={(value) =>
           act('set_subheader', {
             new_subheader: value,
@@ -109,7 +109,7 @@ function AnnouncementColor(props) {
   const { announcement_colors = [], announcement_color } = data;
 
   return (
-    <Section title="Definir a cor do anúncio" textAlign="center">
+    <Section title="Set announcement color" textAlign="center">
       <Dropdown
         width="100%"
         selected={announcement_color}
@@ -130,7 +130,7 @@ function AnnouncementSound(props) {
   const { announcer_sounds = [], played_sound } = data;
 
   return (
-    <Section title="Definir som de anúncio" textAlign="center">
+    <Section title="Set announcement sound" textAlign="center">
       <Dropdown
         width="100%"
         selected={played_sound}
@@ -152,7 +152,7 @@ function ReportText(props) {
   const [commandReport, setCommandReport] = useState(command_report_content);
 
   return (
-    <Section fill title="Definir o texto do relatório" textAlign="center">
+    <Section fill title="Set report text" textAlign="center">
       <Stack fill vertical>
         <Stack.Item grow>
           <TextArea
@@ -160,7 +160,7 @@ function ReportText(props) {
             fluid
             onBlur={setCommandReport}
             value={commandReport}
-            placeholder="Digite o texto do relatório aqui..."
+            placeholder="Enter report text here..."
           />
         </Stack.Item>
         <Stack.Item>
@@ -180,7 +180,7 @@ function ReportText(props) {
             onClick={() => act('toggle_printing')}
             tooltip={
               !announce_contents &&
-              "Imprimindo o relatório é necessário, já que não anunciamos seu conteúdo."
+              "Printing the report is required since we aren't announcing its contents."
             }
             tooltipPosition="top"
           >

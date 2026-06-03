@@ -1,7 +1,7 @@
 // The base ERP chem. It handles pref and human type checks for you, so ALL chems relating to ERP should be subtypes of this.
 /datum/reagent/drug/aphrodisiac
 	name = "liquid ERP"
-	description = "ERP em sua forma liqueificada. Reclame de um codificador."
+	description = "ERP em sua forma liqueificada. Reclame com o programador."
 	chemical_flags = REAGENT_NO_RANDOM_RECIPE
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC | REAGENT_PROTEAN
 
@@ -526,11 +526,11 @@
 
 	if(new_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
 		if(!suppress_chat) // So we don't spam chat
-			exposed_mob.visible_message(span_notice("[exposed_mob]O busto de arrependimento se expande!"))
+			exposed_mob.visible_message(span_notice("[exposed_mob]O busto rapidamente se expande!"))
 			to_chat(exposed_mob, span_purple("Seu peito está quente, formigando com sensibilidade enquanto se expande para fora."))
 	else
 		if(!suppress_chat)
-			exposed_mob.visible_message(span_notice("A área ao redor[exposed_mob]O peito de arrependimento salta um pouco."))
+			exposed_mob.visible_message(span_notice("A área ao redor [exposed_mob] O peito rapidamente salta um pouco."))
 			to_chat(exposed_mob, span_purple("Seu peito está quente, formigando com sensibilidade, enquanto se contrapõe às suas roupas."))
 
 	return new_breasts

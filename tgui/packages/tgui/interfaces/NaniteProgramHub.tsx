@@ -47,7 +47,7 @@ export const NaniteProgramHub = (props, context) => {
       <Window.Content scrollable>
         <TechwebWarning display={!techweb} />
         <Section
-          title="Disco do Programa"
+          title="Program Disk"
           buttons={
             <>
               <Button
@@ -70,7 +70,7 @@ export const NaniteProgramHub = (props, context) => {
           {has_disk ? (
             has_program ? (
               <LabeledList>
-                <LabeledList.Item label="Nome do programa">
+                <LabeledList.Item label="Program Name">
                   {disk.name}
                 </LabeledList.Item>
                 <LabeledList.Item label="Description">

@@ -33,14 +33,14 @@ export const ShuttleConsole = (props) => {
               <Icon name="minus-circle" />
             </Flex.Item>
             <Flex.Item mt={2} ml={2} color="bad">
-              {type === 'shuttle' ? 'BLOQUEADO' : 'BASE BLOQUEADA'}
+              {type === 'shuttle' ? 'SHUTTLE LOCKED' : 'BASE LOCKED'}
             </Flex.Item>
           </Flex>
           <Box fontSize="18px" mt={4}>
             <Button
               lineHeight="40px"
               icon="arrow-circle-right"
-              content="Solicito autorização."
+              content="Request Authorization"
               color="bad"
               onClick={() => act('request')}
             />
@@ -63,12 +63,12 @@ const getLocationIdByName = (locations, name) => {
 };
 
 const STATUS_COLOR_KEYS = {
-  'Em trânsito': 'good',
+  'In Transit': 'good',
   Idle: 'average',
   Igniting: 'average',
   Recharging: 'average',
   Missing: 'bad',
-  'Acesso não autorizado': 'bad',
+  'Unauthorized Access': 'bad',
   Locked: 'bad',
 };
 
@@ -94,16 +94,16 @@ export const ShuttleConsoleContent = (props) => {
           STATUS:
         </Box>
         <Box inline color={STATUS_COLOR_KEYS[status] || 'bad'} ml={1}>
-          {status || 'Não Disponível'}
+          {status || 'Not Available'}
         </Box>
       </Box>
       <Section
-        title={type === 'shuttle' ? 'Controles de transporte' : 'Controles de Lançamento Base'}
+        title={type === 'shuttle' ? 'Shuttle Controls' : 'Base Launch Controls'}
         level={2}
       >
         <LabeledList>
           <LabeledList.Item label="Location">
-            {docked_location || 'Não Disponível'}
+            {docked_location || 'Not Available'}
           </LabeledList.Item>
           <LabeledList.Item
             label="Destination"
@@ -115,7 +115,7 @@ export const ShuttleConsoleContent = (props) => {
                   color="bad"
                   icon="exclamation-triangle"
                   disabled={authorization_required || !blind_drop}
-                  content={'Cego Gota'}
+                  content={'Blind Drop'}
                   onClick={() => act('random')}
                 />
               )
@@ -139,7 +139,7 @@ export const ShuttleConsoleContent = (props) => {
                   disabled={locked || authorization_required}
                   selected={
                     getLocationNameById(locations, destination) ||
-                    'Selecione um destino'
+                    'Select a Destination'
                   }
                   onSelected={(value) =>
                     act('set_destination', {

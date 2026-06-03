@@ -20,7 +20,7 @@ export const NtosRecords = (props) => {
         </Section>
         <Section>
           <Input
-            placeholder="Filtrar resultados..."
+            placeholder="Filter results..."
             value={searchTerm}
             fluid
             textAlign="center"

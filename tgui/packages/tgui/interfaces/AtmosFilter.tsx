@@ -39,10 +39,10 @@ export const AtmosFilter = (props) => {
             />
           }
           fill
-          title="Filtro de Gás"
+          title="Gas Filter"
         >
           <LabeledList>
-            <LabeledList.Item label="Taxa de Transferência">
+            <LabeledList.Item label="Transfer Rate">
               <NumberInput
                 animated
                 tickWhileDragging
@@ -70,7 +70,7 @@ export const AtmosFilter = (props) => {
                 }
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Tipos de filtro">
+            <LabeledList.Item label="Filter Types">
               {filter_types.map(({ enabled, gas_id }, index) => (
                 <Button
                   key={index}

@@ -77,7 +77,7 @@ const PlumbingTypeSection = (props) => {
             mb="10px"
             className={classes(['plumbing-tgui32x32', recipe.icon])}
             style={{
-              transform: 'Escala(1,3) traduz (9,5%, 11,2%)',
+              transform: 'scale(1.3) translate(9.5%, 11.2%)',
             }}
           />
           <span>{capitalizeAll(recipe.name)}</span>
@@ -116,7 +116,7 @@ const LayerIconSection = (props) => {
       m={1}
       className={classes(['plumbing-tgui32x32', layer_icon])}
       style={{
-        transform: 'escala(2)',
+        transform: 'scale(2)',
       }}
     />
   );

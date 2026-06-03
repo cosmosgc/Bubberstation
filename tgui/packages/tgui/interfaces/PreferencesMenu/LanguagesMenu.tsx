@@ -43,7 +43,7 @@ export const KnownLanguage = (props) => {
 export const UnknownLanguage = ({ language, isAtLimit, remaining }) => {
   const { act } = useBackend<PreferencesMenuData>();
   const tooltipContent = isAtLimit
-    ? "Você ligou para o número máximo de idiomas."
+    ? "You've reached the maximum number of languages."
     : `You have ${remaining} language${remaining === 1 ? '' : 's'} remaining.`;
 
   return (
@@ -83,8 +83,8 @@ export const LanguagesPage = (props) => {
 
   const sortAvailableLanguages = [...data.unselected_languages].sort((a, b) => {
     // GalCom first
-    if (a.name === 'Comum Galáctico') return -1;
-    if (b.name === 'Comum Galáctico') return 1;
+    if (a.name === 'Galactic Common') return -1;
+    if (b.name === 'Galactic Common') return 1;
     // Then sort by description length descending
     return b.description.length - a.description.length;
   });
@@ -103,7 +103,7 @@ export const LanguagesPage = (props) => {
       <Box
         style={{
           padding: '0 1rem',
-          flex: '0 0 Auto',
+          flex: '0 0 auto',
         }}
       >
         <Stack>

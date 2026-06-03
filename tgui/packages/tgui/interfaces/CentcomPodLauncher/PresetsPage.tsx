@@ -97,7 +97,7 @@ export function PresetsPage(props) {
       {editing && (
         <Stack vertical>
           <Stack.Item>
-            <Input autoFocus onChange={setName} placeholder="Nome predefinido" />
+            <Input autoFocus onChange={setName} placeholder="Preset Name" />
             <Button
               icon="check"
               inline
@@ -197,7 +197,7 @@ function PresetButtons(props: PresetButtonsProps) {
           color="transparent"
           icon="plus"
           onClick={() => setEditing(!editing)}
-          tooltip="Nova Predefinição"
+          tooltip="New Preset"
         />
       )}
       <Button
@@ -205,7 +205,7 @@ function PresetButtons(props: PresetButtonsProps) {
         icon="download"
         inline
         onClick={() => saveDataToPreset(presetId, data)}
-        tooltip="Salva a predefinição"
+        tooltip="Saves preset"
         tooltipPosition="bottom"
       />
       <Button
@@ -215,14 +215,14 @@ function PresetButtons(props: PresetButtonsProps) {
         onClick={() => {
           loadPreset(presetId);
         }}
-        tooltip="Carregar predefinido"
+        tooltip="Loads preset"
       />
       <Button
         color="transparent"
         icon="trash"
         inline
         onClick={() => deletePreset(presetId)}
-        tooltip="Apaga a predefinição selecionada"
+        tooltip="Deletes the selected preset"
         tooltipPosition="bottom-start"
       />
     </>

@@ -36,7 +36,7 @@ export function OrbitBlade(props) {
             />
           }
           color="label"
-          title="Configurações da órbita"
+          title="Orbit Settings"
         >
           Keep in mind: Orbit does not update automatically. You will need to
           click the &quot;Refresh&quot; button to see the latest data.
@@ -76,7 +76,7 @@ function ViewModeSelector(props) {
   const { viewMode, setViewMode } = useContext(OrbitContext);
 
   return (
-    <Section title="Modo de Visualização">
+    <Section title="View Mode">
       <Stack fill vertical>
         <Stack.Item color="label">
           Change the color and sorting scheme of observable items.
@@ -124,7 +124,7 @@ function OrbitInfo(props) {
         <Stack.Item>
           {toTitleCase(getDisplayName(full_name, name))}
           {showAFK && (
-            <Tooltip content="Longe do teclado" position="bottom-start">
+            <Tooltip content="Away from keyboard" position="bottom-start">
               <Icon ml={1} color="grey" name="bed" />
             </Tooltip>
           )}

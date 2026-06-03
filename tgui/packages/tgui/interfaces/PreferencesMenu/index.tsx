@@ -46,7 +46,7 @@ function PrefsWindowInner(props) {
         setServerData(data);
       })
       .catch((error) => {
-        logger.log('Não consegui obter preferências.', error);
+        logger.log('Failed to fetch preferences.json', error);
       });
   }, []);
 
@@ -55,11 +55,11 @@ function PrefsWindowInner(props) {
   switch (window) {
     case PrefsWindow.Character:
       content = <CharacterPreferenceWindow />;
-      title = 'Preferências de caracteres';
+      title = 'Character Preferences';
       break;
     case PrefsWindow.Game:
       content = <GamePreferenceWindow />;
-      title = 'Preferências do jogo';
+      title = 'Game Preferences';
       break;
     case PrefsWindow.Keybindings:
       content = (

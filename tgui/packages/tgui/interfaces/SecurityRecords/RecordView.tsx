@@ -91,7 +91,7 @@ const RecordInfo = (props) => {
                   height="1.7rem"
                   icon="print"
                   onClick={() => setOpen(true)}
-                  tooltip="Imprima uma ficha ou cartaz."
+                  tooltip="Print a rapsheet or poster."
                 >
                   Print
                 </Button>
@@ -100,7 +100,7 @@ const RecordInfo = (props) => {
                 <Button.Confirm
                   icon="trash"
                   onClick={() => act('delete_record', { crew_ref: crew_ref })}
-                  tooltip="Apagar dados de registro."
+                  tooltip="Delete record data."
                 >
                   Delete
                 </Button.Confirm>
@@ -158,7 +158,7 @@ const RecordInfo = (props) => {
             </LabeledList.Item>
             {/* <LabeledList.Item label="Age"> // ORIGINAL */}
             {/* SKYRAT EDIT CHANGE BEGIN - Chronological age */}
-            <LabeledList.Item label="Idade Física">
+            <LabeledList.Item label="Physical Age">
               {/* SKYRAT EDIT CHANGE END */}
               <RestrictedInput
                 minValue={min_age}
@@ -176,7 +176,7 @@ const RecordInfo = (props) => {
               />
             </LabeledList.Item>
             {/* SKYRAT EDIT ADDITION BEGIN - Chronological age */}
-            <LabeledList.Item label="Era Cronológica">
+            <LabeledList.Item label="Chronological Age">
               <RestrictedInput
                 minValue={min_age}
                 maxValue={max_chrono_age}
@@ -224,12 +224,12 @@ const RecordInfo = (props) => {
               />
             </LabeledList.Item>
             {/* SKYRAT EDIT START - RP Records (Not pretty but it's there) */}
-            <LabeledList.Item label="Registros Gerais">
+            <LabeledList.Item label="General Records">
               <Box maxWidth="100%" preserveWhitespace>
                 {past_general_records || 'N/A'}
               </Box>
             </LabeledList.Item>
-            <LabeledList.Item label="Registros de segurança passados">
+            <LabeledList.Item label="Past Security Records">
               <Box maxWidth="100%" preserveWhitespace>
                 {past_security_records || 'N/A'}
               </Box>

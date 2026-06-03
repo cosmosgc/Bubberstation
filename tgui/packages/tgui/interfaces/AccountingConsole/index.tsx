@@ -78,7 +78,7 @@ export const AccountingConsole = () => {
               {screenmode === SCREENS.users && (
                 <Stack.Item grow ml={3}>
                   <FakeWindow
-                    name="Resumo da conta da tripulação"
+                    name="Crew Account Summary"
                     setScreenmode={setScreenmode}
                   >
                     <UsersScreen />
@@ -87,7 +87,7 @@ export const AccountingConsole = () => {
               )}
               {screenmode === SCREENS.audit && (
                 <Stack.Item grow ml={3}>
-                  <FakeWindow name="Diário de Auditoria" setScreenmode={setScreenmode}>
+                  <FakeWindow name="Audit Log" setScreenmode={setScreenmode}>
                     <AuditScreen />
                   </FakeWindow>
                 </Stack.Item>
@@ -125,7 +125,7 @@ export const AccountingConsole = () => {
               </Stack.Item>
               <Stack.Item mr={1}>
                 <FakeToolbarButton
-                  name="Gestão de Contas"
+                  name="Account Management"
                   currentScreenMode={screenmode}
                   setScreenmode={setScreenmode}
                   ownerScreenMode={SCREENS.users}
@@ -133,7 +133,7 @@ export const AccountingConsole = () => {
               </Stack.Item>
               <Stack.Item mr={1}>
                 <FakeToolbarButton
-                  name="Diário de Auditoria"
+                  name="Audit Log"
                   currentScreenMode={screenmode}
                   setScreenmode={setScreenmode}
                   ownerScreenMode={SCREENS.audit}

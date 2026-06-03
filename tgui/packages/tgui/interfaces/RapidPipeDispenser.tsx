@@ -16,18 +16,18 @@ import { capitalizeAll } from 'tgui-core/string';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
-const ROOT_CATEGORIES = ['Atmospherics', 'Disposals', 'Tubos de trânsito'] as const;
+const ROOT_CATEGORIES = ['Atmospherics', 'Disposals', 'Transit Tubes'] as const;
 
 export const ICON_BY_CATEGORY_NAME = {
   Atmospherics: 'wrench',
   Binary: 'arrows-left-right',
   Devices: 'microchip',
-  'Canos de eliminação': 'grip-lines',
+  'Disposal Pipes': 'grip-lines',
   Disposals: 'trash-alt',
-  'Troca de calor': 'thermometer-half',
+  'Heat Exchange': 'thermometer-half',
   Pipes: 'grip-lines',
-  'Equipamento da estação': 'microchip',
-  'Tubos de trânsito': 'bus',
+  'Station Equipment': 'microchip',
+  'Transit Tubes': 'bus',
 } as const;
 
 const TOOLS = [
@@ -105,7 +105,7 @@ export function ColorItem(props) {
           width="20px"
           style={{
             border:
-              '3px sólido.' +
+              '3px solid ' +
               (colorName === selected_color ? '#20b142' : '#222'),
           }}
           color={paint_colors[colorName]}
@@ -211,7 +211,7 @@ function LayerSelect(props) {
       <Button.Checkbox
         key="multilayer"
         checked={multi_layer}
-        tooltip="Construir em múltiplas camadas de tubos simultaneamente"
+        tooltip="Build on multiple pipe layers simultaneously"
         onClick={() => {
           act('toggle_multi_layer');
         }}
@@ -234,14 +234,14 @@ function RecipeRow(props: RecipeRowProps) {
   return (
     <StyleableSection
       textStyle={{
-        color: '(--color-label)',
+        color: 'var(--color-label)',
         fontSize: '1em',
         fontWeight: 'normal',
         textAlign: 'right',
       }}
       title={recipe.pipe_name}
       titleStyle={{
-        borderBottom: '1px var (--cor-borda)',
+        borderBottom: '1px solid var(--color-border)',
         padding: 0,
       }}
     >

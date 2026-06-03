@@ -19,7 +19,7 @@ const MATERIAL_RARITY: Record<string, number> = {
   gold: 6,
   uranium: 7,
   diamond: 8,
-  'Cristal do espaço azul': 9,
+  'bluespace crystal': 9,
   bananium: 10,
 };
 

@@ -54,7 +54,7 @@ export const BeakerDisplay = (props: BeakerProps) => {
               {beaker.maxVolume} units
             </>
           )) ||
-          'Sem béquer.'}
+          'No beaker'}
       </LabeledList.Item>
       <LabeledList.Item label="Contents">
         <Box color="label">
@@ -114,7 +114,7 @@ export const BeakerSectionDisplay = (props: BeakerProps) => {
                 opacity: hasBeakerInHand ? 1 : 0.5,
               }}
               tooltip={
-                !hasBeakerInHand && 'Você precisa segurar um contêiner em sua mão.'
+                !hasBeakerInHand && 'You need to hold a container in your hand'
               }
               tooltipPosition="bottom-start"
             >
@@ -125,7 +125,7 @@ export const BeakerSectionDisplay = (props: BeakerProps) => {
       }
     >
       <Box color="label">
-        {(!beaker && 'Nenhum copo carregado.') ||
+        {(!beaker && 'No beaker loaded') ||
           (beakerContents.length === 0 && 'Nothing')}
       </Box>
       {beakerContents.map((chemical) => (

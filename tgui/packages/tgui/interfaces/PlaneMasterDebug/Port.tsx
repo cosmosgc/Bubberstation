@@ -95,7 +95,7 @@ export function Port(props: PortProps) {
             cy="50"
             r="50"
             fillOpacity="0"
-            transform="(90, 50, 50)"
+            transform="rotate(90, 50, 50)"
           />
           <circle
             cx="50"

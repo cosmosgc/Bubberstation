@@ -37,27 +37,27 @@ export const KeycardAuth = (props) => {
                       onClick={() => {
                         return act('red_alert');
                       }}
-                      content="Alerta Vermelho."
+                      content="Red Alert"
                     />
                     <Button
                       icon="wrench"
                       fluid
                       onClick={() => act('emergency_maint')}
-                      content="Acesso de Manutenção de Emergência"
+                      content="Emergency Maintenance Access"
                     />
                     {/* SKYRAT EDIT ADDITION START - Engineering Override */}
                     <Button
                       icon="wrench"
                       fluid
                       onClick={() => act('eng_override')}
-                      content="Engenharia Substituir Acesso"
+                      content="Engineering Override Access"
                     />
                     {/* SKYRAT EDIT ADDITION END */}
                     <Button
                       icon="meteor"
                       fluid
                       onClick={() => act('bsa_unlock')}
-                      content="Bluespace Artillery Desbloquear"
+                      content="Bluespace Artillery Unlock"
                     />
                     {/* SKYRAT EDIT ADDITION START - Permit Pins */}
                     {!!data.permit_pins && (
@@ -65,7 +65,7 @@ export const KeycardAuth = (props) => {
                         icon="key"
                         fluid
                         onClick={() => act('pin_unrestrict')}
-                        content="Permissão-Locked firing Pin irrestrição"
+                        content="Permit-Locked Firing Pin Unrestriction"
                       />
                     )}
                     {/* SKYRAT EDIT ADDITION END */}
@@ -73,7 +73,7 @@ export const KeycardAuth = (props) => {
                       icon="key"
                       fluid
                       onClick={() => act('give_janitor_access')}
-                      content="Acesso ao zelador Grant"
+                      content="Grant Janitor Access"
                     />
                   </>
                 )}

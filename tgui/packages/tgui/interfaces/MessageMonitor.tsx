@@ -61,7 +61,7 @@ const RequestLogsScreen = (props) => {
           title="Requests"
           buttons={
             <Button
-              content="Menu Diretor"
+              content="Main Menu"
               icon="home"
               onClick={() => act('return_home')}
             />
@@ -106,10 +106,10 @@ const MessageLogsScreen = (props) => {
         <Section
           fill
           scrollable
-          title="Mensagens Armazenadas"
+          title="Stored Messages"
           buttons={
             <Button
-              content="Menu Diretor"
+              content="Main Menu"
               icon="home"
               onClick={() => act('return_home')}
             />
@@ -210,7 +210,7 @@ const MainScreenAuth = (props: AuthScreenProps) => {
         <Table.Row>
           <Table.Cell>
             <Button
-              content={'Ver Registros de Mensagens'}
+              content={'View Message Logs'}
               onClick={() => act('view_message_logs')}
             />
           </Table.Cell>
@@ -219,7 +219,7 @@ const MainScreenAuth = (props: AuthScreenProps) => {
         <Table.Row>
           <Table.Cell>
             <Button
-              content={'Ver Solicitação de Registros de Console'}
+              content={'View Request Console Logs'}
               onClick={() => act('view_request_logs')}
             />
           </Table.Cell>
@@ -230,7 +230,7 @@ const MainScreenAuth = (props: AuthScreenProps) => {
         <Table.Row>
           <Table.Cell>
             <Button.Confirm
-              content={'Limpar registros de mensagens'}
+              content={'Clear Message Logs'}
               onClick={() => act('clear_message_logs')}
             />
           </Table.Cell>
@@ -247,14 +247,14 @@ const MainScreenAuth = (props: AuthScreenProps) => {
         </Table.Row>
         <Table.Row>
           <Table.Cell>
-            <Button content={'Definir Chave Personalizada'} onClick={() => act('set_key')} />
+            <Button content={'Set Custom Key'} onClick={() => act('set_key')} />
           </Table.Cell>
           <Table.Cell>Changes decryption key</Table.Cell>
         </Table.Row>
         <Table.Row>
           <Table.Cell>
             <Button
-              content={'Enviar mensagem de administração'}
+              content={'Send Admin Message'}
               onClick={() => act('send_fake_message')}
             />
           </Table.Cell>
@@ -303,7 +303,7 @@ const MainScreenNotAuth = (props: AuthScreenProps) => {
         </Section>
       </Stack.Item>
       <Stack.Item grow>
-        <Section fill scrollable title="Escolher Opção">
+        <Section fill scrollable title="Choose Option">
           <Table>
             <Table.Row header>
               <Table.Cell>Option</Table.Cell>
@@ -398,7 +398,7 @@ export const MessageMonitor = (props) => {
               </Stack.Item>
               <Stack.Item>
                 <Button
-                  content="Conectar ao servo"
+                  content="Connect to server"
                   onClick={() => act('connect_server')}
                 />
               </Stack.Item>

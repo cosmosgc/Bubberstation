@@ -11,7 +11,7 @@ export const TransferValve = (props) => {
       <Window.Content>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="Status da válvula">
+            <LabeledList.Item label="Valve Status">
               <Button
                 icon={valve ? 'unlock' : 'lock'}
                 content={valve ? 'Open' : 'Closed'}
@@ -22,7 +22,7 @@ export const TransferValve = (props) => {
           </LabeledList>
         </Section>
         <Section
-          title="Anexo da válvula"
+          title="Valve Attachment"
           buttons={
             <Button
               content="Configure"
@@ -47,7 +47,7 @@ export const TransferValve = (props) => {
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Anexo Um">
+        <Section title="Attachment One">
           <LabeledList>
             <LabeledList.Item label="Attachment">
               {tank_one ? (
@@ -63,7 +63,7 @@ export const TransferValve = (props) => {
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Anexo Dois">
+        <Section title="Attachment Two">
           <LabeledList>
             <LabeledList.Item label="Attachment">
               {tank_two ? (

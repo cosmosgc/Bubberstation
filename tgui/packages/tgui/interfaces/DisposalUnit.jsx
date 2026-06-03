@@ -17,7 +17,7 @@ export const DisposalUnit = (props) => {
     stateText = 'Ready';
   } else if (data.panel_open) {
     stateColor = 'bad';
-    stateText = 'Deficiente de Energia';
+    stateText = 'Power Disabled';
   } else if (data.pressure_charging) {
     stateColor = 'average';
     stateText = 'Pressurizing';
@@ -48,7 +48,7 @@ export const DisposalUnit = (props) => {
               <Button
                 icon="sign-out-alt"
                 disabled={data.isai}
-                content="Ejetar o Conteúdo"
+                content="Eject Contents"
                 onClick={() => act('eject')}
               />
             </LabeledList.Item>

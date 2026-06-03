@@ -82,7 +82,7 @@ export function NuclearBomb(props) {
                 ml={1}
                 mr={0.5}
                 mt={0.5}
-                className="Bomba Nuclear Button Bomba Nuclear Button"
+                className="NuclearBomb__Button NuclearBomb__Button--keypad"
                 onClick={() => act('eject_disk')}
               />
             </Stack.Item>
@@ -100,7 +100,7 @@ export function NuclearBomb(props) {
                   fontSize="28px"
                   lineHeight={1.1}
                   mb={1}
-                  className="Bomba Nuclear Button Bomba Nuclear..."
+                  className="NuclearBomb__Button NuclearBomb__Button--C"
                   onClick={() => act('arm')}
                 >
                   ARM
@@ -111,7 +111,7 @@ export function NuclearBomb(props) {
                   textAlign="center"
                   fontSize="28px"
                   lineHeight={1.1}
-                  className="Bomba Nuclear Button Bomba Nuclear Button"
+                  className="NuclearBomb__Button NuclearBomb__Button--E"
                   onClick={() => act('anchor')}
                 >
                   ANCHOR

@@ -73,7 +73,7 @@ const SpecificInfo = (props) => {
   const { antag_name } = data;
 
   switch (antag_name) {
-    case 'Polícia cibernética':
+    case 'Cyber Police':
       return (
         <>
           <Stack.Item mb={1}>

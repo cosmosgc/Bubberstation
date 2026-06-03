@@ -5,13 +5,13 @@ import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 const commandJobs = [
-  'Chefe de Pessoal',
-  'Chefe de Segurança',
-  'Engenheiro Chefe.',
-  'Diretor de Pesquisa',
-  'Oficial Médico Chefe.',
+  'Head of Personnel',
+  'Head of Security',
+  'Chief Engineer',
+  'Research Director',
+  'Chief Medical Officer',
   'Quartermaster',
-  'Consultor Nanotrasen', // SKYRAT EDIT
+  'Nanotrasen Consultant', // SKYRAT EDIT
 ];
 
 // SKYRAT EDIT CHANGE BEGIN - ALTERNATIVE_JOB_TITLES
@@ -22,7 +22,7 @@ export const CrewManifest = (props) => {
   } = useBackend();
 
   return (
-    <Window title="Manifesto da tripulação" width={350} height={500}>
+    <Window title="Crew Manifest" width={350} height={500}>
       <Window.Content scrollable>
         {Object.entries(manifest).map(([dept, crew]) => (
           <Section
@@ -56,7 +56,7 @@ export const CrewManifest = (props) => {
                     width="40px"
                   >
                     {positions[dept].exceptions.includes(crewMember.rank) && (
-                      <Tooltip content="Sem limite de posição." position="bottom">
+                      <Tooltip content="No position limit" position="bottom">
                         <Icon className="CrewManifest__Icon" name="infinity" />
                       </Tooltip>
                     )}
@@ -72,7 +72,7 @@ export const CrewManifest = (props) => {
                       </Tooltip>
                     )}
                     {commandJobs.includes(crewMember.trim) && (
-                      <Tooltip content="Membro do comando." position="bottom">
+                      <Tooltip content="Member of command" position="bottom">
                         <Icon
                           className={classes([
                             'CrewManifest__Icon',

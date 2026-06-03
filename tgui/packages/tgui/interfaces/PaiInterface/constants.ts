@@ -30,30 +30,30 @@ export enum PHOTO_MODE {
 }
 
 export const SOFTWARE_DESC = {
-  'Sensor atmosférico': `A tool that allows you to analyze local atmospheric
+  'Atmospheric Sensor': `A tool that allows you to analyze local atmospheric
     contents.`,
-  'Manifesto da tripulação': `Allows you to view the crew manifest.`,
-  'Monitor de tripulação': `A tool that allows you to monitor vitals from the crew's
+  'Crew Manifest': `Allows you to view the crew manifest.`,
+  'Crew Monitor': `A tool that allows you to monitor vitals from the crew's
     suit sensors.`,
-  'Mensageiro Digital': `A tool that allows you to send messages to other crew
+  'Digital Messenger': `A tool that allows you to send messages to other crew
     members.`,
-  'Porta Jack': `A tool that allows you to open doors.`,
-  'Fenda de criptografia': `Allows you to speak on other radio frequencies. You must
+  'Door Jack': `A tool that allows you to open doors.`,
+  'Encryption Slot': `Allows you to speak on other radio frequencies. You must
     get an encryption key inserted.`,
-  'Varredura do Host': `A health analyzer that can be used in hand or to report bound
+  'Host Scan': `A health analyzer that can be used in hand or to report bound
     master vitals.`,
-  'GPS interno': `A tool that allows you to broadcast your location.`,
-  'HUD Médico': `Allows you to view medical status using an overlay HUD.`,
-  'Sintetizador de Música': `Synthesizes instruments, plays sounds and imported
+  'Internal GPS': `A tool that allows you to broadcast your location.`,
+  'Medical HUD': `Allows you to view medical status using an overlay HUD.`,
+  'Music Synthesizer': `Synthesizes instruments, plays sounds and imported
     songs.`,
   Newscaster: `A tool that allows you to broadcast news to other crew
     members.`,
-  'Módulo de Fotografia': `A portable camera module. Engage, then click to shoot.
+  'Photography Module': `A portable camera module. Engage, then click to shoot.
     Includes a printer and lenses.`,
-  'Sinalizador remoto': `A remote signalling device to transmit and receive
+  'Remote Signaler': `A remote signalling device to transmit and receive
     codes.`,
-  'HUD de segurança': `Allows you to view security records using an overlay HUD.`,
-  'Tradutor Universal': `Translation module for non-common languages.`,
+  'Security HUD': `Allows you to view security records using an overlay HUD.`,
+  'Universal Translator': `Translation module for non-common languages.`,
 } as const;
 
 export enum PAI_TAB {

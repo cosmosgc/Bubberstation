@@ -32,21 +32,21 @@ export const NtosCouponMaster = (props) => {
             </NoticeBox>
             <Input
               fontSize={1.2}
-              placeholder="Insira seu código de cupom aqui."
+              placeholder="Insert your coupon code here"
               onEnter={(value) =>
                 act('redeem', {
                   code: value,
                 })
               }
             />
-            <Section title="Cupons resgatados">
+            <Section title="Redeemed Coupons">
               {redeemed_coupons.map((coupon, index) => (
                 <Box key={index} className="candystripe">
                   {coupon.goody} ({coupon.discount}% OFF)
                 </Box>
               ))}
             </Section>
-            <Section title="Cupons impressos">
+            <Section title="Printed Coupons">
               {printed_coupons.map((coupon, index) => (
                 <Box key={index} className="candystripe">
                   {coupon.goody} ({coupon.discount}% OFF)

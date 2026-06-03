@@ -1,20 +1,20 @@
 import { CheckboxInput, type FeatureToggle } from '../base';
 
 export const chat_bankcard: FeatureToggle = {
-  name: 'Ativar atualizações de renda',
+  name: 'Enable income updates',
   category: 'CHAT',
-  description: 'Receba notificações para sua conta bancária.',
+  description: 'Receive notifications for your bank account.',
   component: CheckboxInput,
 };
 
 export const chat_dead: FeatureToggle = {
-  name: 'Activar o bate-papo',
+  name: 'Enable deadchat',
   category: 'ADMIN',
   component: CheckboxInput,
 };
 
 export const chat_ghostears: FeatureToggle = {
-  name: 'Ouça todas as mensagens.',
+  name: 'Hear all messages',
   category: 'GHOST',
   description: `
     When enabled, you will be able to hear all speech as a ghost.
@@ -24,35 +24,35 @@ export const chat_ghostears: FeatureToggle = {
 };
 
 export const chat_ghostlaws: FeatureToggle = {
-  name: 'Ativar mudanças de lei',
+  name: 'Enable law change updates',
   category: 'GHOST',
-  description: 'Quando habilitado, ser notificado de qualquer nova lei muda como um fantasma.',
+  description: 'When enabled, be notified of any new law changes as a ghost.',
   component: CheckboxInput,
 };
 
 export const chat_ghostpda: FeatureToggle = {
-  name: 'Activar notificações PDA',
+  name: 'Enable PDA notifications',
   category: 'GHOST',
-  description: 'Quando habilitado, ser notificado de qualquer mensagem PDA como um fantasma.',
+  description: 'When enabled, be notified of any PDA messages as a ghost.',
   component: CheckboxInput,
 };
 
 export const chat_ghostradio: FeatureToggle = {
-  name: 'Activar rádio',
+  name: 'Enable radio',
   category: 'GHOST',
-  description: 'Quando habilitado, ser notificado de qualquer mensagem de rádio como um fantasma.',
+  description: 'When enabled, be notified of any radio messages as a ghost.',
   component: CheckboxInput,
 };
 
 export const chat_ghostsight: FeatureToggle = {
-  name: 'Veja todos os emotes.',
+  name: 'See all emotes',
   category: 'GHOST',
-  description: 'Quando habilitado, veja todos os emotes como um fantasma.',
+  description: 'When enabled, see all emotes as a ghost.',
   component: CheckboxInput,
 };
 
 export const chat_ghostwhisper: FeatureToggle = {
-  name: 'Veja todos os sussurros',
+  name: 'See all whispers',
   category: 'GHOST',
   description: `
     When enabled, you will be able to hear all whispers as a ghost.
@@ -62,27 +62,27 @@ export const chat_ghostwhisper: FeatureToggle = {
 };
 
 export const chat_login_logout: FeatureToggle = {
-  name: 'Veja mensagens de login/logout',
+  name: 'See login/logout messages',
   category: 'GHOST',
-  description: 'Quando habilitado, ser notificado quando um jogador entra ou sai.',
+  description: 'When enabled, be notified when a player logs in or out.',
   component: CheckboxInput,
 };
 
 export const chat_ooc: FeatureToggle = {
-  name: 'Activar COO',
+  name: 'Enable OOC',
   category: 'CHAT',
   component: CheckboxInput,
 };
 
 export const chat_prayer: FeatureToggle = {
-  name: 'Ouça as orações.',
+  name: 'Listen to prayers',
   category: 'ADMIN',
   component: CheckboxInput,
 };
 
 export const chat_pullr: FeatureToggle = {
-  name: 'Activar as notificações de pedidos',
+  name: 'Enable pull request notifications',
   category: 'CHAT',
-  description: 'Ser notificado quando um pedido for feito, fechado ou fundido.',
+  description: 'Be notified when a pull request is made, closed, or merged.',
   component: CheckboxInput,
 };

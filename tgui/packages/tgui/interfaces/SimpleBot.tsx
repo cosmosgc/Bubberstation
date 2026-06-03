@@ -108,11 +108,11 @@ function TabDisplay(props) {
           selected={!emagged}
           tooltip={
             !emagged
-              ? 'Desbloqueia os protocolos de segurança.'
-              : 'Reinicia o sistema operacional.'
+              ? 'Unlocks the safety protocols.'
+              : 'Resets the bot operating system.'
           }
         >
-          {emagged ? 'Malfunctional' : 'Trava de segurança.'}
+          {emagged ? 'Malfunctional' : 'Safety Lock'}
         </Button>
       )}
       {!!allow_possession && <PaiButton />}
@@ -120,7 +120,7 @@ function TabDisplay(props) {
         color="transparent"
         icon="fa-poll-h"
         onClick={() => act('rename')}
-        tooltip="Atualize o registro do bot."
+        tooltip="Update the bot's name registration."
       >
         Rename
       </Button>
@@ -195,7 +195,7 @@ function SettingsDisplay(props) {
           />
         </Tooltip>
       </LabeledControls.Item>
-      <LabeledControls.Item label="Modo Avião">
+      <LabeledControls.Item label="Airplane Mode">
         <Tooltip
           content={`${
             !airplane_mode ? 'Disables' : 'Enables'
@@ -209,7 +209,7 @@ function SettingsDisplay(props) {
           />
         </Tooltip>
       </LabeledControls.Item>
-      <LabeledControls.Item label="Estação de Patrulha">
+      <LabeledControls.Item label="Patrol Station">
         <Tooltip
           content={`${
             patrol_station ? 'Disables' : 'Enables'
@@ -223,12 +223,12 @@ function SettingsDisplay(props) {
           />
         </Tooltip>
       </LabeledControls.Item>
-      <LabeledControls.Item label="Trava de manutenção">
+      <LabeledControls.Item label="Maintenance Lock">
         <Tooltip
           content={
             maintenance_lock
-              ? 'Abre a porta de manutenção para reparos.'
-              : 'Fecha a escotilha de manutenção.'
+              ? 'Opens the maintenance hatch for repairs.'
+              : 'Closes the maintenance hatch.'
           }
         >
           <Icon
@@ -244,8 +244,8 @@ function SettingsDisplay(props) {
           <Tooltip
             content={
               possession_enabled
-                ? 'Restabelece a personalidade como padrão de fábrica.'
-                : 'Permite baixar uma personalidade única.'
+                ? 'Resets personality to factory default.'
+                : 'Enables download of a unique personality.'
             }
           >
             <Icon
@@ -303,7 +303,7 @@ function MedbotThreshold(props: ControlProps) {
   const { control } = props;
 
   return (
-    <Tooltip content="Justa a sensibilidade para o tratamento de danos.">
+    <Tooltip content="Adjusts the sensitivity for damage treatment.">
       <Slider
         minValue={5}
         maxValue={75}
@@ -331,7 +331,7 @@ function FloorbotTiles(props: ControlProps) {
       disabled={!control[1]}
       icon={control[1] ? 'eject' : ''}
       onClick={() => act('eject_tiles')}
-      tooltip="Número de azulejos contidos no robô."
+      tooltip="Number of floor tiles contained in the bot."
     >
       {control[1] ? `${control[1]}` : 'Empty'}
     </Button>
@@ -344,7 +344,7 @@ function FloorbotLine(props: ControlProps) {
   const { control } = props;
 
   return (
-    <Tooltip content="Ativa o modo de desenvolvimento em linha reta.">
+    <Tooltip content="Enables straight line tiling mode.">
       <Icon
         color={control[1] ? 'good' : 'gray'}
         name={control[1] ? 'compass' : 'toggle-off'}

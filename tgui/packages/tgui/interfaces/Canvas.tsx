@@ -49,7 +49,7 @@ const ZoomButtons = ({ zoom, setZoom, pixelsPerUnit }: ZoomProps) => (
     <Stack.Item>
       <Button
         icon="search-minus"
-        tooltip="(Shift + Rolar para baixo)"
+        tooltip="Zoom Out (Shift + Scroll Down)"
         disabled={zoom <= 1}
         onClick={() => setZoom(Math.max(1, zoom - 1 / pixelsPerUnit))}
       />
@@ -57,7 +57,7 @@ const ZoomButtons = ({ zoom, setZoom, pixelsPerUnit }: ZoomProps) => (
     <Stack.Item>
       <Button
         icon="search-plus"
-        tooltip="Ampliar (Shift + Rolar para Cima)"
+        tooltip="Zoom In (Shift + Scroll Up)"
         disabled={zoom >= 3}
         onClick={() => setZoom(Math.min(3, zoom + 1 / pixelsPerUnit))}
       />
@@ -197,7 +197,7 @@ const EditableCanvas = (props: EditableCanvasProps) => {
                     disabled={!editable}
                     position="relative"
                     top="50%"
-                    style={{ transform: 'Tradução:' }}
+                    style={{ transform: 'translate(0, -50%)' }}
                   />
                 </ZoomListener>
               </Stack.Item>

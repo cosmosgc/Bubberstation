@@ -231,7 +231,7 @@ const DroneSelectionSection = (props: {
   const { all_drones } = props;
 
   return (
-    <Section fill scrollable title="Listagem de drones de exploração">
+    <Section fill scrollable title="Exploration Drone Listing">
       <Stack vertical>
         {all_drones.map((drone) => (
           <Fragment key={drone.ref}>
@@ -247,7 +247,7 @@ const DroneSelectionSection = (props: {
                 <Stack.Item grow />
                 <Stack.Divider mr={1} />
                 <Stack.Item ml={0}>
-                  {(drone.controlled && 'Controlado por outro console.') || (
+                  {(drone.controlled && 'Controlled by another console.') || (
                     <Button
                       icon="plug"
                       onClick={() =>
@@ -278,7 +278,7 @@ const ToolSelectionModal = (props) => {
   return (
     <Modal style={{ padding: '8px' }}>
       <Section
-        title="Seleção da Ferramenta"
+        title="Tool Selection"
         buttons={
           <Button
             icon="xmark"
@@ -309,7 +309,7 @@ const ToolSelectionModal = (props) => {
                     />
                   </Stack.Item>
                   <Stack.Item>
-                    <span style={{ color: 'Rgba(255, 0,5)' }}>
+                    <span style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
                       {capitalize(tool_name)}
                     </span>
                   </Stack.Item>
@@ -408,7 +408,7 @@ const EquipmentBox = (props: { cargo: CargoData; drone: DroneData }) => {
       width="100%"
       height={3}
       style={{
-        backgroundColor: 'Rgba (0, 0, 0, 0,3)',
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
         borderRadius: '5px',
         alignItems: 'center',
         padding: '5px',
@@ -421,7 +421,7 @@ const EquipmentBox = (props: { cargo: CargoData; drone: DroneData }) => {
       width="100%"
       height={3}
       style={{
-        backgroundColor: 'Rgba (0, 0, 0, 0,3)',
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
         borderRadius: '5px',
         padding: '5px',
       }}
@@ -430,7 +430,7 @@ const EquipmentBox = (props: { cargo: CargoData; drone: DroneData }) => {
         width="100%"
         height="100%"
         style={{
-          border: '1px rgba(255, 0,3) tracejado',
+          border: '1px rgba(255, 255, 255, 0.3) dashed',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -439,7 +439,7 @@ const EquipmentBox = (props: { cargo: CargoData; drone: DroneData }) => {
       >
         <span
           style={{
-            color: 'Rgba(255, 0,2)',
+            color: 'rgba(255, 255, 255, 0.2)',
           }}
         >
           Empty slot
@@ -458,11 +458,11 @@ const EquipmentGrid = (props: { drone: ActiveDrone & DroneData }) => {
   return (
     <Stack vertical fill>
       <Stack.Item>
-        <Section title="Controla Mestres." minWidth="200px">
+        <Section title="Master Controls" minWidth="200px">
           <Stack vertical textAlign="center">
             <Stack.Item>
               <LabeledList>
-                <LabeledList.Item label="Identifique o drone.">
+                <LabeledList.Item label="Drone ID">
                   {props.drone.drone_name}
                 </LabeledList.Item>
                 <LabeledList.Item label="Activity">
@@ -608,7 +608,7 @@ const TravelTargetSelectionScreen = (props: {
       <TravelDimmer drone={drone} />
     )) || (
       <Section
-        title="Destinos de viagem"
+        title="Travel Destinations"
         fill
         scrollable
         buttons={
@@ -932,7 +932,7 @@ const ExodroneConsoleContent = (props) => {
                 <DroneScreen drone={data} />
               </Stack.Item>
               <Stack.Item grow>
-                <Section title="Diário de drones" fill scrollable>
+                <Section title="Drone Log" fill scrollable>
                   <LabeledList>
                     {drone_log.map((log_line, ix) => (
                       <LabeledList.Item key={`log-${ix}`} label={`#${ix + 1}`}>

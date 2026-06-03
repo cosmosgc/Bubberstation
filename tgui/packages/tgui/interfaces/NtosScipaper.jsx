@@ -47,7 +47,7 @@ const PaperPublishing = (props) => {
   } = data;
   return (
     <>
-      <Section title="Formulário de submissão">
+      <Section title="Submission Form">
         {fileList.length === 0 && (
           <NoticeBox>
             Use data disk to download files from compressor or doppler array.
@@ -55,10 +55,10 @@ const PaperPublishing = (props) => {
         )}
         <LabeledList>
           <LabeledList.Item
-            label="Arquivo (obrigatório)"
+            label="File (required)"
             buttons={
               <Button
-                tooltip="O arquivo selecionado contendo dados experimentais para nosso trabalho. Deve estar no sistema de arquivos local ou um disco de dados para ser acessível."
+                tooltip="The selected file containing experimental data for our paper. Must be present in the local file system or a data disk to be accesible."
                 icon="info-circle"
               />
             }
@@ -77,10 +77,10 @@ const PaperPublishing = (props) => {
             </Box>
           </LabeledList.Item>
           <LabeledList.Item
-            label="Experiência (obrigatória)"
+            label="Experiment (required)"
             buttons={
               <Button
-                tooltip="O tópico que queremos publicar nosso trabalho. Diferentes tópicos desbloqueiam diferentes tecnologias e possíveis parceiros."
+                tooltip="The topic we want to publish our paper on. Different topics unlock different technologies and possible partners."
                 icon="info-circle"
               />
             }
@@ -99,10 +99,10 @@ const PaperPublishing = (props) => {
             </Box>
           </LabeledList.Item>
           <LabeledList.Item
-            label="Tier (obrigatório)"
+            label="Tier (required)"
             buttons={
               <Button
-                tooltip="O nível que queremos publicar. Níveis mais altos podem conferir melhores recompensas, mas significa que nossos dados serão julgados com mais severidade."
+                tooltip="The tier we want to publish on. Higher tiers can confer better rewards but means our data will be judged more harshly."
                 icon="info-circle"
               />
             }
@@ -121,10 +121,10 @@ const PaperPublishing = (props) => {
             </Box>
           </LabeledList.Item>
           <LabeledList.Item
-            label="Parceiro (obrigatório)"
+            label="Partner (required)"
             buttons={
               <Button
-                tooltip="Qual organização para fazer parceria. Podemos obter impulsos de pesquisa em técnicos relacionados aos interesses do parceiro."
+                tooltip="Which organization to partner with. We can obtain research boosts in techs related to the partner's interests."
                 icon="info-circle"
               />
             }
@@ -143,7 +143,7 @@ const PaperPublishing = (props) => {
             </Box>
           </LabeledList.Item>
           <LabeledList.Item
-            label="Diretor Autor"
+            label="Principal Author"
             buttons={
               <Button
                 tooltip="Multiple"
@@ -188,11 +188,11 @@ const PaperPublishing = (props) => {
           </LabeledList.Item>
         </LabeledList>
       </Section>
-      <Section title="Resultados esperados" key="rewards">
+      <Section title="Expected Results" key="rewards">
         <Stack fill>
           <Stack.Item grow>
             <Button
-              tooltip="Quanto nossa relação melhorará com o parceiro em particular. A cooperação será usada para desbloquear impulsos."
+              tooltip="How much will our relation improve with the particular partner. Cooperation will be used to unlock boosts."
               icon="info-circle"
             />
             {' Cooperation: '}
@@ -200,7 +200,7 @@ const PaperPublishing = (props) => {
           </Stack.Item>
           <Stack.Item grow>
             <Button
-              tooltip="Quanta bolsa teremos com a publicação deste artigo."
+              tooltip="How much grant will we be endowed with upon the publication of this paper."
               icon="info-circle"
             />
             {' Funding: '}
@@ -239,7 +239,7 @@ const PaperBrowser = (props) => {
               {`${paper.experimentName} - ${paper.tier}`}
             </LabeledList.Item>
             <LabeledList.Item label="Author">
-              {paper.author + (paper.etAlia ? 'et al.' : '')}
+              {paper.author + (paper.etAlia ? ' et al.' : '')}
             </LabeledList.Item>
             <LabeledList.Item label="Partner">{paper.partner}</LabeledList.Item>
             <LabeledList.Item label="Yield">
@@ -275,7 +275,7 @@ const ExperimentBrowser = (props) => {
             label={
               'Optimal ' +
               experiment.prefix +
-              'Quantidade - Nível' +
+              ' Amount - Tier ' +
               String(Number(tier) + 1)
             }
           >
@@ -307,25 +307,25 @@ const PartnersBrowser = (props) => {
           <LabeledList.Item label="Relations">
             {relations[partner.path]}
           </LabeledList.Item>
-          <LabeledList.Item label="Bônus de Cooperação">
+          <LabeledList.Item label="Cooperation Bonus">
             {`${partner.multipliers[coopIndex]}x`}
           </LabeledList.Item>
-          <LabeledList.Item label="Bônus de Financiamento">
+          <LabeledList.Item label="Funding Bonus">
             {`${partner.multipliers[fundingIndex]}x`}
           </LabeledList.Item>
-          <LabeledList.Item label="Experiências aceitas">
+          <LabeledList.Item label="Accepted Experiments">
             {partner.acceptedExperiments.map((experiment_name) => (
               <Box key={experiment_name}>{experiment_name}</Box>
             ))}
           </LabeledList.Item>
-          <LabeledList.Item label="Compartilhamento de Tecnologia">
+          <LabeledList.Item label="Technology Sharing">
             <Table>
               {partner.boostedNodes.map((node) => (
                 <Table.Row key={node.id}>
                   <Table.Cell>
                     {visibleNodes.includes(node.id)
                       ? node.name
-                      : 'Tecnologia desconhecida'}
+                      : 'Unknown Technology'}
                   </Table.Cell>
                   <Table.Cell>
                     <Button
@@ -361,7 +361,7 @@ export const NtosScipaperContent = (props) => {
   return (
     <>
       {!has_techweb && (
-        <Section title="Sem techweb detectado!" key="rewards">
+        <Section title="No techweb detected!" key="rewards">
           Please sync this application to a valid techweb to upload progress!
         </Section>
       )}
@@ -374,7 +374,7 @@ export const NtosScipaperContent = (props) => {
             })
           }
         >
-          {'Publicar documentos'}
+          {'Publish Papers'}
         </Tabs.Tab>
         <Tabs.Tab
           selected={currentTab === 2}
@@ -404,7 +404,7 @@ export const NtosScipaperContent = (props) => {
             })
           }
         >
-          {'Parceiros Científicos'}
+          {'Scientific Partners'}
         </Tabs.Tab>
       </Tabs>
       {currentTab === 1 && <PaperPublishing />}

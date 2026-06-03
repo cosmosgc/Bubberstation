@@ -126,7 +126,7 @@ export const BlackMarketUplink = (props) => {
                     </Stack>
                   </Stack.Item>
                   <Stack.Item color="label">
-                    {item.amount ? `${item.amount} in stock` : 'Fora de estoque'}
+                    {item.amount ? `${item.amount} in stock` : 'Out of stock'}
                   </Stack.Item>
                   <Stack.Item>{`${formatMoney(item.cost)} cr`}</Stack.Item>
                   <Stack.Item>

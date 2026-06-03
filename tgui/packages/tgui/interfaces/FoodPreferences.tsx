@@ -50,7 +50,7 @@ export const FoodPreferences = (props) => {
                 <Tooltip
                   position="bottom"
                   content={
-                    'Você tem que escolher uma comida tóxica e três comidas desagradadas. Você pode ter um máximo de três comidas.'
+                    'You HAVE to pick at lease ONE TOXIC food and THREE Disliked foods. You Can have a maximum of THREE LIKED foods.'
                   }
                 >
                   <Box inline>
@@ -74,7 +74,7 @@ export const FoodPreferences = (props) => {
                   style={{ position: 'absolute', right: '20em' }}
                   color={'red'}
                   onClick={() => act('reset')}
-                  tooltip="Reinicie os valores padrão!"
+                  tooltip="Reset to the default values!"
                 >
                   Reset
                 </Button>
@@ -121,7 +121,7 @@ export const FoodPreferences = (props) => {
                         <>
                           {foodName}
                           {data.obscure_food_types[foodName] && (
-                            <Tooltip content="Esta comida não conta para o seu máximo gostos, e é grátis!">
+                            <Tooltip content="This food doesn't count towards your maximum likes, and is free!">
                               <Box
                                 as="span"
                                 fontSize={0.75}
@@ -144,7 +144,7 @@ export const FoodPreferences = (props) => {
                         }
                         content={<>Toxic</>}
                         color="olive"
-                        tooltip="Seu personagem quase vomitará imediatamente ao comer qualquer coisa tóxica."
+                        tooltip="Your character will almost immediately throw up on eating anything toxic."
                       />
                       <FoodButton
                         foodName={foodName}
@@ -156,7 +156,7 @@ export const FoodPreferences = (props) => {
                         }
                         content={<>Disliked</>}
                         color="red"
-                        tooltip="Seu personagem vai ficar enojado, antes de eventualmente vomitar depois de uma ingestão decente de comida antipática."
+                        tooltip="Your character will become grossed out, before eventually throwing up after a decent intake of disliked food."
                       />
                       <FoodButton
                         foodName={foodName}
@@ -168,7 +168,7 @@ export const FoodPreferences = (props) => {
                         }
                         content={<>Neutral</>}
                         color="yellow"
-                        tooltip="Seu personagem tem muito pouco a dizer sobre algo neutro."
+                        tooltip="Your character has very little to say about something that's neutral."
                       />
                       <FoodButton
                         foodName={foodName}
@@ -180,7 +180,7 @@ export const FoodPreferences = (props) => {
                         }
                         content={<>Liked</>}
                         color="green"
-                        tooltip="Seu personagem vai gostar de tudo que gostar."
+                        tooltip="Your character will enjoy anything that's liked."
                       />
                     </Section>
                   </Box>

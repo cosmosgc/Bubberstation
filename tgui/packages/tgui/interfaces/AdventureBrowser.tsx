@@ -80,7 +80,7 @@ export const AdventureBrowser = (props) => {
   const { data } = useBackend<AdventureBrowserData>();
 
   return (
-    <Window width={600} height={400} title="Visão geral da aventura">
+    <Window width={600} height={400} title="Adventure Overview">
       <Window.Content>
         {!!data.feedback_message && (
           <NoticeBox>{data.feedback_message}</NoticeBox>

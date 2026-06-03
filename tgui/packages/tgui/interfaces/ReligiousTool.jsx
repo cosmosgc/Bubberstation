@@ -85,7 +85,7 @@ const SectTab = (props) => {
           <BlockQuote>{desc}</BlockQuote>
         </Stack.Item>
         <Stack.Item>
-          <Section mx={3} mt={-1} title="Queria Sacrifícios">
+          <Section mx={3} mt={-1} title="Wanted Sacrifices">
             {(!wanted && `${deity} doesn't want any sacrifices.`) ||
               `${deity} wishes for ${wanted}.`}
           </Section>
@@ -99,7 +99,7 @@ const SectSelectTab = (props) => {
   const { act, data } = useBackend();
   const { sects } = data;
   return (
-    <Section fill title="Seita Selecionar" scrollable>
+    <Section fill title="Sect Select" scrollable>
       <Stack vertical>
         {sects.map((sect) => (
           <>

@@ -1,33 +1,28 @@
 /datum/reagent/consumable/femcum
 	name = "femcum"
-	description = "Uhh... Someone had fun."
-	taste_description = "astringent and sweetish"
+	description = "Eh... Alguém se divertiu."
+	taste_description = "adstringente e adocicado"
 	color = "#ffffffb0"
-
 /datum/glass_style/drinking_glass/femcum
 	required_drink_type = /datum/reagent/consumable/femcum
 	name = "glass of girlcum"
-	desc = "A strange white liquid... Ew!"
-
+	desc = "Um líquido branco estranho... Ugh!"
 /datum/glass_style/shot_glass/femcum
 	required_drink_type = /datum/reagent/consumable/femcum
 	icon_state ="shotglasscream"
 	name = "glass of girlcum"
-	desc = "A strange white liquid... Ew!"
-
+	desc = "Um líquido branco estranho... Ugh!"
 /datum/reagent/consumable/cum
 	name = "cum"
-	description = "A fluid secreted by the sexual organs of many species."
-	taste_description = "musky and salty"
+	description = "Um fluido secretado pelos órgãos sexuais de muitas espécies."
+	taste_description = "musgoso e salgado"
 	color = "#ffffffff"
-
 /datum/glass_style/drinking_glass/cum
 	required_drink_type = /datum/reagent/consumable/cum
 	name = "glass of cum"
-	desc = "O-oh, my...~"
-
+	desc = "Oh, meu...~"
 /datum/glass_style/shot_glass/cum
 	required_drink_type = /datum/reagent/consumable/cum
 	icon_state ="shotglasscream"
 	name = "glass of cum"
-	desc = "O-oh, my...~"
+	desc = "Oh, meu...~"

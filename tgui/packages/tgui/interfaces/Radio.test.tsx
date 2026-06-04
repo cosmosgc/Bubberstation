@@ -26,7 +26,7 @@ describe('Radio tests', () => {
     act(() => render(<Radio />));
 
     // Radio doesn't have a default title
-    expect(screen.getByText('Test UI')).toBeDefined();
+    expect(screen.getByText('Teste de UI.')).toBeDefined();
   });
 
   it('displays frequency correctly', () => {

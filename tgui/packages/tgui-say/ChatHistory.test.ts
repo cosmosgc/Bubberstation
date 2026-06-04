@@ -29,7 +29,7 @@ describe('ChatHistory', () => {
       chatHistory.add(`Message ${i}`);
     }
 
-    expect(chatHistory.getOlderMessage()).toEqual('Mensagem 6');
+    expect(chatHistory.getOlderMessage()).toEqual('Message 6');
     for (let i = 5; i >= 2; i--) {
       expect(chatHistory.getOlderMessage()).toEqual(`Message ${i}`);
     }

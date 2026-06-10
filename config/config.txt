@@ -29,7 +29,7 @@ $include map_vote.txt
  SERVERTAGLINE Baixa latencia para brasileiros
 
 ## Discord Link: This is the link to Skyrat's discord server
-# DISCORD_LINK https://discord.gg/hGpZ4Z3
+ DISCORD_LINK https://discord.gg/pjZmB7CZWj
 
 ## Server SQL name: This is the name used to identify the server to the SQL DB, distinct from SERVERNAME as it must be at most 32 characters.
 # SERVERSQLNAME tgstation
@@ -221,12 +221,12 @@ ALLOW_WEBCLIENT
 ## Link to round specific parsed logs; IE statbus. It is appended with the RoundID automatically by ticker/Reboot()
 ## This will take priority over the game logs address during reboot.
 ## Example: https://atlantaned.space/statbus/round.php?round=
-# ROUNDSTATSURL
+ ROUNDSTATSURL http://177.190.68.79:3000/Statbus/public/round/
 
 ## Game Logs address
 ## Incase you don't have a fancy parsing system, but still want players to be able to find where you keep your server's logs.
 ## Example: https://tgstation13.org/parsed-logs/basil/data/logs/
-# GAMELOGURL
+ GAMELOGURL
 
 ## Ban appeals URL - usually for a forum or wherever people should go to contact your admins.
 # BANAPPEALS http://justanotherday.example.com
@@ -601,7 +601,7 @@ SECONDS_COOLDOWN_FOR_PREFERENCES_EXPORT 10
 ## Uncomment to allow the station name to be in the hub entry.
 ## You should only enable this if you can guarantee a station name doesn't break BYOND's TOS.
 ## BYOND staff have gotten upset at us in the past for inappropriate station names.
-#STATION_NAME_IN_HUB_ENTRY
+STATION_NAME_IN_HUB_ENTRY
 
 ## The number of PR announcements allowed for the same pull request per round
 ## This makes sure that somebody can only spam a few reopens and closes before being ignored

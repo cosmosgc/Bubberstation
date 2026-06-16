@@ -42,9 +42,8 @@ echo Server will auto-restart if it crashes.
 echo Close this window to stop (DreamDaemon will close with it).
 echo.
 
-:: Launch via PowerShell so DD is in the same job object
+:: Launch via .NET Process (keeps DD in same job object, captures stdout without stealing it from DD window)
 :: Closing this window kills both processes together
-:: -log captures DD output to a file so we can show it on restart
-powershell -NoProfile -ExecutionPolicy Bypass -Command "& { $dd='%DD_EXE%'; $dmb='%~dp0tgstation.dmb'; $log='%~dp0data\server_output.log'; while ($true) { if (Test-Path $log) { Remove-Item $log -Force }; Write-Host ('[{0}] Starting server...' -f (Get-Date)); $proc = Start-Process -FilePath $dd -ArgumentList @($dmb, '1337', '-trusted', '-close', '-verbose', '-log', $log) -PassThru -NoNewWindow; $proc.WaitForExit(); Write-Host ('[{0}] Server stopped.' -f (Get-Date)); if (Test-Path $log) { Write-Host '=== Last run output ==='; Get-Content $log | Write-Host; Write-Host '=== End of log ===' }; Write-Host 'Restarting in 5 seconds...'; Start-Sleep -Seconds 5 } }"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "& { $dd='%DD_EXE%'; $dmb='%~dp0tgstation.dmb'; $log='%~dp0data\server_output.log'; while ($true) { if (Test-Path $log) { Remove-Item $log -Force }; Write-Host ('[{0}] Starting server...' -f (Get-Date)); $psi = New-Object System.Diagnostics.ProcessStartInfo; $psi.FileName = $dd; $psi.Arguments = '"""' + $dmb + '""" 1337 -trusted -close -verbose'; $psi.UseShellExecute = $false; $psi.RedirectStandardOutput = $true; $psi.RedirectStandardError = $true; $proc = [System.Diagnostics.Process]::Start($psi); $out = $proc.StandardOutput.ReadToEnd(); $err = $proc.StandardError.ReadToEnd(); $proc.WaitForExit(); ($out + $err) | Out-File -FilePath $log -Encoding UTF8; Write-Host ('[{0}] Server stopped.' -f (Get-Date)); if (Test-Path $log) { Write-Host '=== Last run output ==='; Get-Content $log | Write-Host; Write-Host '=== End of log ===' }; Write-Host 'Restarting in 5 seconds...'; Start-Sleep -Seconds 5 } }"
 
 pause

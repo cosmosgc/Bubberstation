@@ -51,7 +51,7 @@
 
 	var/datum/component/spy_uplink/uplink = uplink_weakref?.resolve()
 	if(isnull(uplink))
-		tgui_alert(usr, "Nenhum espião uplink!", "Mission Failed")
+		tgui_alert(usr, "No spy uplink!", "Mission Failed")
 		return
 
 	uplink.ui_interact(usr)
@@ -62,18 +62,18 @@
 
 	var/datum/component/spy_uplink/uplink = uplink_weakref?.resolve()
 	if(isnull(uplink))
-		tgui_alert(usr, "Nenhum espião uplink!", "Mission Failed")
+		tgui_alert(usr, "No spy uplink!", "Mission Failed")
 		return
 
 	uplink.handler.force_refresh()
-	tgui_alert(usr, "As recompensas são renovadas.", "Mission Success")
+	tgui_alert(usr, "Bounties refreshed.", "Mission Success")
 
 /datum/antagonist/spy/proc/admin_create_spy_uplink()
 	if(!check_rights(R_ADMIN|R_DEBUG))
 		return
 
 	if(!auto_create_spy_uplink(owner.current, give_backup = FALSE))
-		tgui_alert(usr, "\"Falhou em dar\"[owner.current]Um link espião - provavelmente não tem um item válido para hospedá-lo.", "Mission Failed")
+		tgui_alert(usr, "Failed to give [owner.current] a spy uplink - likely don't have a valid item to host it.", "Mission Failed")
 
 /datum/antagonist/spy/proc/bounty_handler_vv()
 	if(!check_rights(R_ADMIN|R_DEBUG))
@@ -81,7 +81,7 @@
 
 	var/datum/component/spy_uplink/uplink = uplink_weakref?.resolve()
 	if(isnull(uplink))
-		tgui_alert(usr, "Nenhum espião uplink!", "Mission Failed")
+		tgui_alert(usr, "No spy uplink!", "Mission Failed")
 		return
 
 	usr.client?.debug_variables(uplink.handler)
@@ -99,7 +99,7 @@
 		if(give_backup)
 			var/datum/action/backup_uplink/backup = new(src)
 			backup.Grant(spy)
-			to_chat(spy, span_boldnotice("Você foi incapaz de ser fornecido com um uplink, então você tem a capacidade de criar um você mesmo."))
+			to_chat(spy, span_boldnotice("You were unable to be supplied with an uplink, so you have been given the ability to create one yourself."))
 		return FALSE
 
 	return TRUE
@@ -196,6 +196,7 @@
 	var/mob/living/carbon/human/dummy/consistent/dummy = new()
 	dummy.set_haircolor(COLOR_SILVER, update = FALSE)
 	dummy.set_hairstyle("CIA", update = FALSE)
+	dummy.update_hair()
 	var/datum/universal_icon/dummy_icon = render_preview_outfit(preview_outfit, dummy)
 	qdel(dummy)
 	return finish_preview_icon(dummy_icon)
@@ -213,7 +214,7 @@
 
 /datum/action/backup_uplink
 	name = "Create Uplink"
-	desc = "Moda um PDA, caneta ou fone de ouvido de rádio em uma conexão espiã elegante."
+	desc = "Fashion a PDA, Pen or Radio Headset into a swanky Spy Uplink."
 	var/list/valid_types = list(
 		/obj/item/modular_computer/pda,
 		/obj/item/pen,
@@ -234,15 +235,15 @@
 	var/mob/living/spy = usr
 	var/obj/item/held_thing = spy.get_active_held_item()
 	if(isnull(held_thing))
-		spy.balloon_alert(spy, "Você precisa segurar alguma coisa!")
+		spy.balloon_alert(spy, "you need to hold something!")
 		return
 
 	if(!is_type_in_list(held_thing, valid_types))
-		held_thing.balloon_alert(spy, "Item inválido!")
+		held_thing.balloon_alert(spy, "invalid item!")
 		return
 
 	var/datum/antagonist/spy/spy_datum = target
 	spy_datum.create_spy_uplink(spy, held_thing)
-	held_thing.balloon_alert(spy, "uplink criado")
+	held_thing.balloon_alert(spy, "uplink created")
 
 	qdel(src)

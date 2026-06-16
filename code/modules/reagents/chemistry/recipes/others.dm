@@ -344,11 +344,37 @@
 
 /datum/chemical_reaction/foam
 	required_reagents = list(/datum/reagent/fluorosurfactant = 1, /datum/reagent/water = 1)
+	// Does the foam slip you?
+	var/slippery = TRUE
+	// How long the foam lasts for
+	var/lifetime = 8 SECONDS
 	mob_react = FALSE
 	reaction_flags = REACTION_INSTANT
 
+/datum/chemical_reaction/foam/hollow
+	required_reagents = list(/datum/reagent/fluorosurfactant = 1, /datum/reagent/water/hollowwater = 1)
+	lifetime = 24 SECONDS
+
+/datum/chemical_reaction/foam/salt
+	required_reagents = list(/datum/reagent/fluorosurfactant = 1, /datum/reagent/water/salt = 1)
+	lifetime = 1 SECONDS
+	slippery = FALSE
+
+/datum/chemical_reaction/foam/ice
+	required_reagents = list(/datum/reagent/fluorosurfactant = 1, /datum/reagent/consumable/ice = 1)
+	slippery = FALSE
+
+/datum/chemical_reaction/foam/soda
+	required_reagents = list(/datum/reagent/fluorosurfactant = 1, /datum/reagent/consumable/sodawater = 1)
+	lifetime = 1 SECONDS
+
+/datum/chemical_reaction/foam/holy
+	required_reagents = list(/datum/reagent/fluorosurfactant = 1, /datum/reagent/water/holywater = 1)
+	lifetime = 24 SECONDS
+	slippery = FALSE
+
 /datum/chemical_reaction/foam/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
-	holder.create_foam(/datum/effect_system/fluid_spread/foam, 2 * created_volume, notification = span_danger("A solução vomita espuma!"), log = TRUE)
+	holder.create_foam(/datum/effect_system/fluid_spread/foam, 2 * created_volume, notification = span_danger("The solution spews out foam!"), log = TRUE, lifetime = src.lifetime, slippery = src.slippery)
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_UNIQUE
 
 /datum/chemical_reaction/metalfoam
@@ -358,7 +384,7 @@
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_UNIQUE
 
 /datum/chemical_reaction/metalfoam/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
-	holder.create_foam(/datum/effect_system/fluid_spread/foam/metal, 5 * created_volume, /obj/structure/foamedmetal, span_danger("A solução vomita uma espuma metálica!"), log = TRUE)
+	holder.create_foam(/datum/effect_system/fluid_spread/foam/metal, 5 * created_volume, /obj/structure/foamedmetal, span_danger("The solution spews out a metallic foam!"), log = TRUE)
 
 /datum/chemical_reaction/smart_foam
 	required_reagents = list(/datum/reagent/aluminium = 3, /datum/reagent/smart_foaming_agent = 1, /datum/reagent/toxin/acid/fluacid = 1)
@@ -367,7 +393,7 @@
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_UNIQUE
 
 /datum/chemical_reaction/smart_foam/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
-	holder.create_foam(/datum/effect_system/fluid_spread/foam/metal/smart, 5 * created_volume, /obj/structure/foamedmetal, span_danger("A solução vomita espuma metálica!"), log = TRUE)
+	holder.create_foam(/datum/effect_system/fluid_spread/foam/metal/smart, 5 * created_volume, /obj/structure/foamedmetal, span_danger("The solution spews out metallic foam!"), log = TRUE)
 
 /datum/chemical_reaction/ironfoam
 	required_reagents = list(/datum/reagent/iron = 3, /datum/reagent/foaming_agent = 1, /datum/reagent/toxin/acid/fluacid = 1)
@@ -376,7 +402,7 @@
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_UNIQUE
 
 /datum/chemical_reaction/ironfoam/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
-	holder.create_foam(/datum/effect_system/fluid_spread/foam/metal/iron, 5 * created_volume, /obj/structure/foamedmetal/iron, span_danger("A solução vomita uma espuma metálica!"), log = TRUE)
+	holder.create_foam(/datum/effect_system/fluid_spread/foam/metal/iron, 5 * created_volume, /obj/structure/foamedmetal/iron, span_danger("The solution spews out a metallic foam!"), log = TRUE)
 
 /datum/chemical_reaction/foaming_agent
 	results = list(/datum/reagent/foaming_agent = 1)
@@ -386,7 +412,7 @@
 /datum/chemical_reaction/smart_foaming_agent
 	results = list(/datum/reagent/smart_foaming_agent = 3)
 	required_reagents = list(/datum/reagent/foaming_agent = 3, /datum/reagent/acetone = 1, /datum/reagent/iron = 1)
-	mix_message = "A solução se mistura em uma espuma de metal espumoso e se conforma com as paredes de seu recipiente."
+	mix_message = "The solution mixes into a frothy metal foam and conforms to the walls of its container."
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_UNIQUE
 
 
@@ -620,7 +646,7 @@
 /datum/chemical_reaction/monkey
 	required_reagents = list(/datum/reagent/monkey_powder = 50, /datum/reagent/water = 1)
 	reaction_flags = REACTION_INSTANT
-	mix_message = span_danger("Expande-se para uma massa marrom antes de se transformar em um macaco!")
+	mix_message = span_danger("Expands into a brown mass before shaping itself into a monkey!")
 
 /datum/chemical_reaction/monkey/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	var/mob/living/carbon/maybe_monkey = holder.my_atom
@@ -628,16 +654,16 @@
 	if(iscarbon(maybe_monkey))
 		if(ismonkey(maybe_monkey))
 			maybe_monkey.gib(DROP_ALL_REMAINS)
-			to_chat(maybe_monkey, span_danger("Seu corpo está rasgado em pedaços enquanto um macaco sai de você!"))
+			to_chat(maybe_monkey, span_danger("You body is torn to shreds as a monkey bursts out of you!"))
 		else
 			maybe_monkey.vomit(VOMIT_CATEGORY_BLOOD)
-			to_chat(maybe_monkey, span_danger("Você vomita sangue, fazendo você se sentir grosseiramente macaquinho."))
+			to_chat(maybe_monkey, span_danger("You vomit out blood, making you feel grossly monkeyish."))
 	new /mob/living/carbon/human/species/monkey(location, TRUE)
 
 /datum/chemical_reaction/angry_monkey
 	required_reagents = list(/datum/reagent/monkey_powder = 50, /datum/reagent/inverse/bath_salts = 10)
 	reaction_flags = REACTION_INSTANT
-	mix_message = span_danger("Expande para uma massa marrom antes de se transformar em um macaco irritado!")
+	mix_message = span_danger("Expands into a brown mass before shaping itself into a pissed off monkey!")
 
 /datum/chemical_reaction/angry_monkey/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	var/mob/living/carbon/maybe_monkey = holder.my_atom
@@ -645,10 +671,10 @@
 	if(iscarbon(maybe_monkey))
 		if(ismonkey(maybe_monkey))
 			maybe_monkey.gib(DROP_ALL_REMAINS)
-			to_chat(maybe_monkey, span_danger("Seu corpo está rasgado em pedaços enquanto um macaco irritado sai de você!"))
+			to_chat(maybe_monkey, span_danger("You body is torn to shreds as a pissed off monkey bursts out of you!"))
 		else
 			maybe_monkey.vomit(VOMIT_CATEGORY_BLOOD)
-			to_chat(maybe_monkey, span_danger("Você vomita sangue, fazendo você se sentir grosseiramente macaquinho."))
+			to_chat(maybe_monkey, span_danger("You vomit out blood, making you feel grossly monkeyish."))
 	new /mob/living/carbon/human/species/monkey/angry(location, TRUE)
 
 //water electrolysis
@@ -787,12 +813,12 @@
 	results = list(/datum/reagent/toxin/slimejelly = 5)
 	required_reagents = list(/datum/reagent/fuel/oil = 3, /datum/reagent/uranium/radium = 2, /datum/reagent/consumable/tinlux =1)
 	required_container = /obj/item/food/grown/mushroom/glowshroom
-	mix_message = "O cogumelo está dentro da bolha e estoura e fica muito mole."
+	mix_message = "The mushroom's insides bubble and pop and it becomes very limp."
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_PLANT | REACTION_TAG_DAMAGING | REACTION_TAG_TOXIN | REACTION_TAG_SLIME
 
 /datum/chemical_reaction/slime_extractification
 	required_reagents = list(/datum/reagent/toxin/slimejelly = 30, /datum/reagent/consumable/frostoil = 5, /datum/reagent/toxin/plasma = 5)
-	mix_message = "A mistura condensa-se em uma bola."
+	mix_message = "The mixture condenses into a ball."
 	reaction_flags = REACTION_INSTANT
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_SLIME
 
@@ -891,7 +917,7 @@
 	mob_react = FALSE
 	reaction_flags = REACTION_INSTANT
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL
-	mix_message = "A solução esclarece, deixando um gel cinza."
+	mix_message = "The solution clarifies, leaving an ashy gel."
 
 /datum/chemical_reaction/bone_gel/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	new /obj/item/stack/medical/bone_gel/one(get_turf(holder.my_atom), round(created_volume))
@@ -911,7 +937,7 @@
 	H_ion_release = 0
 	rate_up_lim = 50
 	purity_min = 0
-	mix_message = "A solução congela em gelo!"
+	mix_message = "The solution freezes up into ice!"
 	reaction_flags = REACTION_COMPETITIVE
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL | REACTION_TAG_DRINK | REACTION_TAG_COMPONENT | REACTION_TAG_ACTIVE
 
@@ -927,7 +953,7 @@
 	H_ion_release = 0
 	rate_up_lim = 50
 	purity_min = 0
-	mix_message = "O gelo derrete novamente na água!"
+	mix_message = "The ice melts back into water!"
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL | REACTION_TAG_DRINK
 
 ////////////////////////////////////
@@ -944,13 +970,13 @@
 	H_ion_release = 0
 	rate_up_lim = 50
 	purity_min = 0
-	mix_message = "As cores da mistura giram juntas."
+	mix_message = "The mixture's colors swirl together."
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL
 
 /datum/chemical_reaction/eigenstate
 	results = list(/datum/reagent/eigenstate = 1)
 	required_reagents = list(/datum/reagent/bluespace = 1, /datum/reagent/stable_plasma = 1, /datum/reagent/consumable/caramel = 1)
-	mix_message = "A reação bate de repente!"
+	mix_message = "the reaction zaps suddenly!"
 	mix_sound = 'sound/effects/chemistry/bluespace.ogg'
 	//FermiChem vars:
 	required_temp = 350
@@ -1023,7 +1049,7 @@
 			clear_products(holder, step_volume_added)
 			return
 	clear_products(holder, step_volume_added)
-	holder.my_atom.audible_message(span_notice("[icon2html(holder.my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))] A reação dá um fezz, teletransportando itens por toda parte!"))
+	holder.my_atom.audible_message(span_notice("[icon2html(holder.my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))] The reaction gives out a fizz, teleporting items everywhere!"))
 
 /datum/chemical_reaction/ants // Breeding ants together, high sugar cost makes this take a while to farm.
 	results = list(/datum/reagent/ants = 3)
@@ -1078,7 +1104,7 @@
 /datum/chemical_reaction/glitter_pigmentation
 	results = list(/datum/reagent/glitter = 1)
 	required_reagents = list(/datum/reagent/glitter = 1, /datum/reagent/acetone = 1)
-	mix_message = "O brilho muda rapidamente de cor!"
+	mix_message = "the glitter rapidly changes colour!"
 	reaction_flags = REACTION_INSTANT
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_UNIQUE
 
@@ -1104,3 +1130,22 @@
 
 	glitter.data["colors"] = list("[accumulated_color]" = 100)
 	glitter.color = accumulated_color
+
+/datum/chemical_reaction/pair_carnivorous_blood
+	results = list(/datum/reagent/toxin/carnivorousblood = 1)
+	required_reagents = list(/datum/reagent/toxin/carnivorousblood = 1, /datum/reagent/blood = 1)
+	mix_message = "the mixture jumps and sloshes around."
+	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_UNIQUE | REACTION_TAG_OTHER
+
+/datum/chemical_reaction/pair_carnivorous_blood/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
+	var/datum/reagent/toxin/carnivorousblood/hungryblood = holder.has_reagent(/datum/reagent/toxin/carnivorousblood)
+	var/list/new_blood_dna = list()
+	for(var/datum/reagent/blood/bloodinstance in holder.reagent_list)
+		new_blood_dna += bloodinstance.data["blood_DNA"]
+	hungryblood.feed_dna_list(new_blood_dna)
+
+/datum/chemical_reaction/feed_carnivorous_blood
+	results = list(/datum/reagent/toxin/carnivorousblood = 1)
+	required_reagents = list(/datum/reagent/consumable/nutriment/protein = 1)
+	required_catalysts = list(/datum/reagent/toxin/carnivorousblood = 1)
+	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_UNIQUE

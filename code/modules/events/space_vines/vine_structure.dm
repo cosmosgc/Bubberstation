@@ -1,7 +1,7 @@
 // SPACE VINES (Note that this code is very similar to Biomass code)
 /obj/structure/spacevine
 	name = "space vine"
-	desc = "Uma espécie extremamente expansionista de videira."
+	desc = "An extremely expansionistic species of vine."
 	icon = 'icons/mob/spacevines.dmi'
 	icon_state = "Light1"
 	anchored = TRUE
@@ -38,6 +38,7 @@
 	AddElement(/datum/element/connect_loc, loc_connections)
 	AddElement(/datum/element/atmos_sensitive, mapload)
 	AddComponent(/datum/component/storm_hating)
+	block_sunlight()
 
 /obj/structure/spacevine/examine(mob/user)
 	. = ..()
@@ -151,7 +152,7 @@
 	for(var/datum/spacevine_mutation/mutation in mutations)
 		mutation.on_buckle(src, victim)
 	if((victim.stat != DEAD) && (victim.buckled != src) && can_tangle) //not dead and not captured and can tangle
-		to_chat(victim, span_userdanger("Como videiras[pick("wind", "tangle", "tighten")]Ao seu retorno!"))
+		to_chat(victim, span_userdanger("The vines [pick("wind", "tangle", "tighten")] around you!"))
 		buckle_mob(victim, force = TRUE)
 
 /// Finds a target tile to spread to. If checks pass it will spread to it and also proc on_spread on target.
@@ -215,3 +216,9 @@
 	. = ..()
 	if(isvineimmune(mover))
 		return TRUE
+
+/obj/structure/spacevine/proc/block_sunlight()
+	AddElement(/datum/element/give_turf_traits, string_list(list(TRAIT_TURF_SUN_BLOCKED)))
+
+/obj/structure/spacevine/proc/unblock_sunlight()
+	RemoveElement(/datum/element/give_turf_traits, string_list(list(TRAIT_TURF_SUN_BLOCKED)))

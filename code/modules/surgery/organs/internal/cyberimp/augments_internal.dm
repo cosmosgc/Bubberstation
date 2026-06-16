@@ -1,10 +1,11 @@
 
 /obj/item/organ/cyberimp
 	name = "cybernetic implant"
-	desc = "Um implante de última geração que melhora a funcionalidade da linha de base."
+	desc = "A state-of-the-art implant that improves a baseline's functionality."
 	abstract_type = /obj/item/organ/cyberimp
 	organ_flags = ORGAN_ROBOTIC
-	failing_desc = "Parece estar quebrado."
+	failing_desc = "seems to be broken."
+	visual = FALSE
 	/// icon of the bodypart overlay we're going to be applying to our owner
 	var/aug_icon = 'icons/mob/human/species/misc/bodypart_overlay_augmentations.dmi'
 	/// icon_state of the bodypart overlay we're going to be applying to our owner
@@ -17,11 +18,12 @@
 /obj/item/organ/cyberimp/Initialize(mapload)
 	. = ..()
 	if (aug_overlay)
+		visual = TRUE
 		bodypart_aug = new(src)
 
 /obj/item/organ/cyberimp/Destroy()
-	QDEL_NULL(bodypart_aug)
-	return ..()
+	. = ..()
+	QDEL_NULL(bodypart_aug) // Do this after Remove() has done its thing, otherwise on_bodypart_remove() will not properly remove the overlay
 
 /obj/item/organ/cyberimp/proc/get_overlay_state()
 	return aug_overlay
@@ -56,7 +58,7 @@
 	implant = null
 	return ..()
 
-/datum/bodypart_overlay/augment/generate_icon_cache()
+/datum/bodypart_overlay/augment/generate_icon_cache(obj/item/bodypart/limb)
 	. = ..()
 	. += implant.get_overlay_state()
 
@@ -81,7 +83,7 @@
 
 /obj/item/organ/cyberimp/brain
 	name = "cybernetic brain implant"
-	desc = "Injetores de sub-rotinas extras para o cérebro."
+	desc = "Injectors of extra sub-routines for the brain."
 	zone = BODY_ZONE_HEAD
 	w_class = WEIGHT_CLASS_TINY
 	/// Duration of stun when hit with worst-case emp
@@ -97,11 +99,11 @@
 		owner.Immobilize(emp_immobilize_duration / severity)
 	if(emp_stun_duration > 0)
 		owner.Stun(emp_stun_duration / severity)
-		to_chat(owner, span_warning("Seu corpo se apodera!"))
+		to_chat(owner, span_warning("Your body seizes up!"))
 
 /obj/item/organ/cyberimp/brain/anti_drop
 	name = "anti-drop implant"
-	desc = "Este implante cerebral cibernético permitirá que você force seus músculos da mão a se contrair, evitando a queda de itens. Aperte o ouvido para alternância."
+	desc = "This cybernetic brain implant will allow you to force your hand muscles to contract, preventing item dropping. Twitch ear to toggle."
 	icon_state = "brain_implant_antidrop"
 	var/active = FALSE
 	var/list/stored_items = list()
@@ -113,19 +115,19 @@
 	if(active)
 		var/list/hold_list = owner.get_empty_held_indexes()
 		if(LAZYLEN(hold_list) == owner.held_items.len)
-			to_chat(owner, span_notice("Você não está segurando nenhum item, suas mãos relaxam..."))
+			to_chat(owner, span_notice("You are not holding any items, your hands relax..."))
 			active = FALSE
 			return
 		for(var/obj/item/held_item as anything in owner.held_items)
 			if(!held_item)
 				continue
 			stored_items += held_item
-			to_chat(owner, span_notice("Sua [owner.get_held_index_name(owner.get_held_index_of_item(held_item))] A aderência aperta."))
+			to_chat(owner, span_notice("Your [owner.get_held_index_name(owner.get_held_index_of_item(held_item))]'s grip tightens."))
 			ADD_TRAIT(held_item, TRAIT_NODROP, IMPLANT_TRAIT)
 			RegisterSignal(held_item, COMSIG_ITEM_DROPPED, PROC_REF(on_held_item_dropped))
 	else
 		release_items()
-		to_chat(owner, span_notice("Suas mãos relaxam..."))
+		to_chat(owner, span_notice("Your hands relax..."))
 
 
 /obj/item/organ/cyberimp/brain/anti_drop/emp_act(severity)
@@ -139,7 +141,7 @@
 	for(var/obj/item/stored_item as anything in stored_items)
 		throw_target = pick(oview(range))
 		stored_item.throw_at(throw_target, range, 2)
-		to_chat(owner, span_warning("Sua [owner.get_held_index_name(owner.get_held_index_of_item(stored_item))] espasmos e lances\the [stored_item]!"))
+		to_chat(owner, span_warning("Your [owner.get_held_index_name(owner.get_held_index_of_item(stored_item))] spasms and throws \the [stored_item]!"))
 	stored_items = list()
 
 
@@ -163,7 +165,7 @@
 
 /obj/item/organ/cyberimp/brain/anti_stun
 	name = "CNS rebooter implant"
-	desc = "Este implante automaticamente lhe dará controle sobre seu sistema nervoso central, reduzindo o tempo de parada quando atordoado."
+	desc = "This implant will automatically give you back control over your central nervous system, reducing downtime when stunned."
 	icon_state = "brain_implant_rebooter"
 	slot = ORGAN_SLOT_BRAIN_CNS
 
@@ -221,7 +223,7 @@
 
 /obj/item/organ/cyberimp/brain/anti_stun/proc/implant_ready()
 	if(owner)
-		to_chat(owner, span_purple("Seu implante está pronto."))
+		to_chat(owner, span_purple("Your rebooter implant is ready."))
 
 /obj/item/organ/cyberimp/brain/anti_stun/proc/give_stun_buffs(mob/living/give_to = owner)
 	give_to.add_traits(list(TRAIT_STUNIMMUNE, TRAIT_BATON_RESISTANCE), REF(src))
@@ -244,24 +246,24 @@
 
 /obj/item/organ/cyberimp/brain/connector
 	name = "CNS skillchip connector implant"
-	desc = "Este cibernético adiciona um porto na parte de trás da sua cabeça, onde você pode remover ou adicionar chips de habilidade à vontade."
+	desc = "This cybernetic adds a port to the back of your head, where you can remove or add skillchips at will."
 	icon_state = "brain_implant_connector"
 	slot = ORGAN_SLOT_BRAIN_CNS
 	actions_types = list(/datum/action/item_action/organ_action/use)
 
 /obj/item/organ/cyberimp/brain/connector/ui_action_click()
 
-	to_chat(owner, span_warning("Você começa a mexer com [src]..."))
+	to_chat(owner, span_warning("You start fiddling around with [src]..."))
 	playsound(owner, 'sound/items/taperecorder/tape_flip.ogg', 20, vary = TRUE) // asmr
 
 	if(!do_after(owner, 1.5 SECONDS, owner)) // othwerwise it doesnt appear
-		to_chat(owner, span_warning("Você foi interrompido!"))
+		to_chat(owner, span_warning("You were interrupted!"))
 		return
 
 	if(organ_flags & ORGAN_FAILING)
 		var/holy_shit_my_brain = remove_brain(owner.get_organ_by_type(ORGAN_SLOT_BRAIN))
 		if(holy_shit_my_brain)
-			to_chat(owner, span_warning("Você pega.[holy_shit_my_brain] Fora [src] Você olha para ele por um momento em confusão."))
+			to_chat(owner, span_warning("You take [holy_shit_my_brain] out of [src]. You stare at it for a moment in confusion."))
 		return
 
 	var/obj/item/skillchip/skillchip = owner.get_active_held_item()
@@ -269,7 +271,7 @@
 		if(istype(skillchip, /obj/item/skillchip))
 			insert_skillchip(skillchip)
 		else
-			to_chat(owner, span_warning("Você tenta inserir [owner.get_active_held_item()] em [src] Mas não cabe!")) // make it kill you if you shove a crayon inside or something
+			to_chat(owner, span_warning("You try to insert [owner.get_active_held_item()] into [src], but it won't fit!")) // make it kill you if you shove a crayon inside or something
 	else // no inhand item, assume removal
 		var/obj/item/organ/brain/chippy_brain = owner.get_organ_by_type(/obj/item/organ/brain)
 		if(!chippy_brain)
@@ -299,10 +301,10 @@
 		skillchip.forceMove(owner.drop_location())
 		owner.put_in_hands(skillchip, del_on_fail = FALSE)
 		playsound(owner, 'sound/machines/click.ogg', 10, vary = TRUE)
-		to_chat(owner, span_warning("Você pega.[skillchip] Fora [src]."))
+		to_chat(owner, span_warning("You take [skillchip] out of [src]."))
 		return
 
-	to_chat(owner, span_warning("Seu cérebro está vazio!")) // heh
+	to_chat(owner, span_warning("Your brain is empty!")) // heh
 
 /obj/item/organ/cyberimp/brain/connector/emp_act(severity)
 	. = ..()
@@ -314,7 +316,8 @@
 		loops = 2
 	for(var/i in 1 to loops)
 		// you either lose a chip or a bit of your brain
-		owner.visible_message(span_warning("Algo cai no chão por trás [owner] A cabeça."),			span_boldwarning("Você sente algo cair atrás da sua cabeça."))
+		owner.visible_message(span_warning("Something falls to the ground from behind [owner]'s head."),\
+			span_boldwarning("You feel something fall off from behind your head."))
 		var/obj/item/organ/brain/chippy_brain = owner.get_organ_by_type(ORGAN_SLOT_BRAIN)
 		var/obj/item/skillchip/skillchip = chippy_brain?.skillchips[1]
 		if(skillchip)
@@ -333,7 +336,7 @@
 	chippy_brain.maxHealth -= 15 * severity // a bit of your brain fell off. again.
 	if(chippy_brain.damage >= chippy_brain.maxHealth)
 		chippy_brain.forceMove(owner.drop_location())
-		owner.visible_message(span_userdanger("[owner] O cérebro cai da parte de trás de [owner.p_their()] Cabeça!"), span_boldwarning("Você sente que está perdendo algo."))
+		owner.visible_message(span_userdanger("[owner]'s brain falls off the back of [owner.p_their()] head!!!"), span_boldwarning("You feel like you're missing something."))
 		return chippy_brain
 
 	var/gib_type = /obj/effect/decal/cleanable/blood/gibs/up
@@ -347,7 +350,7 @@
 
 /obj/item/organ/cyberimp/brain/surgical_processor
 	name = "surgical processor implant"
-	desc = "Um implante cerebral cibernético que permite realizar operações avançadas em qualquer lugar, a qualquer hora."
+	desc = "A cybernetic brain implant that allows you to perform advanced operations anywhere, anytime."
 	icon_state = "brain_implant_antidrop"
 	slot = ORGAN_SLOT_BRAIN_HIPPOCAMPUS
 	emp_stun_duration = 0 SECONDS
@@ -358,21 +361,21 @@
 /obj/item/organ/cyberimp/brain/surgical_processor/examine(mob/user)
 	. = ..()
 	if(length(loaded_surgeries))
-		. += span_info("Carregar cirurgias de um computador ou um disco contendo dados de cirurgia. Cirurgias carregadas:")
+		. += span_info("Load surgeries from an operating compuer or a disk containing surgery data. Loaded surgeries:")
 		for(var/datum/surgery_operation/downloaded_surgery as anything in GLOB.operations.get_instances_from(loaded_surgeries))
 			if(!(downloaded_surgery.operation_flags & OPERATION_LOCKED))
 				continue
 			// for simplicitly, filters out mechanical subtypes of normal surgeries
 			if((downloaded_surgery.operation_flags & OPERATION_MECHANIC) && (downloaded_surgery.parent_type in loaded_surgeries))
 				continue
-			. += span_info("&bull;[capitalize(downloaded_surgery.rnd_name || downloaded_surgery.name)]")
+			. += span_info("&bull; [capitalize(downloaded_surgery.rnd_name || downloaded_surgery.name)]")
 
 	else
-		. += span_info("Carregar cirurgias de um computador ou um disco contendo dados de cirurgia.")
-		. += span_info("Nenhuma cirurgia carregada. As cirurgias devem estar carregadas.<i>Antes</i>Instalação.")
+		. += span_info("Load surgeries from an operating compuer or a disk containing surgery data.")
+		. += span_info("No surgeries loaded. Surgeries must be loaded <i>before</i> installation.")
 
 /obj/item/organ/cyberimp/brain/surgical_processor/proc/load_surgeries(mob/living/user, obj/design_holder)
-	balloon_alert(user, "copiando desenhos...")
+	balloon_alert(user, "copying designs...")
 	playsound(src, 'sound/machines/terminal/terminal_processing.ogg', 25, TRUE)
 	if(do_after(user, 1 SECONDS, target = design_holder))
 		if(istype(design_holder, /obj/item/disk/surgery))
@@ -431,16 +434,16 @@
 
 	// causes the surgeon to go crazy and start stabbing people
 	owner.apply_status_effect(/datum/status_effect/forced_combat, duration, (rand(8, 16) / severity))
-	to_chat(owner, span_boldwarning("Seu processador cirúrgico funciona mal, dando-lhe um impulso esmagador de incisar, serrar e costurar!"))
+	to_chat(owner, span_boldwarning("Your surgical processor malfunctions, giving you an overwhelming urge to incise, saw, and stitch!"))
 
 /datum/mood_event/surgery_emp_active
-	description = "O paciente não sobreviverá a menos que a operação seja completa!"
+	description = "THE PATIENT WILL NOT SURVIVE UNLESS THE OPERATION IS COMPLETE!"
 	mood_change = -90
 	timeout = 1 MINUTES
 	special_screen_obj = "mood_despair"
 
 /datum/mood_event/surgery_emp_expired
-	description = "Perdi o controle, felizmente acabou."
+	description = "I lost control - Thankfully it's over now."
 	timeout = 5 MINUTES
 
 /obj/item/organ/cyberimp/brain/surgical_processor/pre_loaded
@@ -474,7 +477,7 @@
 
 /obj/item/organ/cyberimp/mouth/breathing_tube
 	name = "breathing tube implant"
-	desc = "Este implante simples adiciona um conector interno às suas costas, permitindo que você use internos sem máscara e protegendo você de ser sufocado."
+	desc = "This simple implant adds an internals connector to your back, allowing you to use internals without a mask and protecting you from being choked."
 	icon_state = "implant_mask"
 	slot = ORGAN_SLOT_BREATHING_TUBE
 	w_class = WEIGHT_CLASS_TINY
@@ -485,5 +488,5 @@
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
 	if(prob(60/severity))
-		to_chat(owner, span_warning("Seu tubo de respiração se fecha de repente!"))
+		to_chat(owner, span_warning("Your breathing tube suddenly closes!"))
 		owner.losebreath += 2

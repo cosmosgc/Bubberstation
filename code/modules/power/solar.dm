@@ -1,5 +1,4 @@
 #define SOLAR_GEN_RATE 2500
-#define OCCLUSION_DISTANCE 20
 #define PANEL_Z_OFFSET 13
 #define PANEL_EDGE_Z_OFFSET (PANEL_Z_OFFSET - 2)
 
@@ -17,6 +16,7 @@
 
 
 	var/id
+	/// Tracks if the sun is obscured from the panel by the station (or something else)
 	var/obscured = FALSE
 	///`[0-1]` measure of obscuration -- multipllier against power generation
 	var/sunfrac = 0
@@ -204,29 +204,9 @@
 	if(azimuth_current != azimuth_target)
 		visually_turn(azimuth_target)
 		azimuth_current = azimuth_target
-		occlusion_setup()
+		var/turf/sun_turf = get_turf(src)
+		obscured = isnull(sun_turf) ? TRUE : sun_turf.is_sunlight_blocked()
 		needs_to_update_solar_exposure = TRUE
-
-///trace towards sun to see if we're in shadow
-/obj/machinery/power/solar/proc/occlusion_setup()
-	obscured = TRUE
-
-	var/distance = OCCLUSION_DISTANCE
-	var/target_x = round(sin(SSsun.azimuth), 0.01)
-	var/target_y = round(cos(SSsun.azimuth), 0.01)
-	var/x_hit = x
-	var/y_hit = y
-	var/turf/hit
-
-	for(var/run in 1 to distance)
-		x_hit += target_x
-		y_hit += target_y
-		hit = locate(round(x_hit, 1), round(y_hit, 1), z)
-		if(IS_OPAQUE_TURF(hit))
-			return
-		if(hit.x == 1 || hit.x == world.maxx || hit.y == 1 || hit.y == world.maxy) //edge of the map
-			break
-	obscured = FALSE
 
 ///calculates the fraction of the sunlight that the panel receives
 /obj/machinery/power/solar/proc/update_solar_exposure()
@@ -245,12 +225,9 @@
 	sunfrac = .
 
 /obj/machinery/power/solar/process()
-	if(machine_stat & BROKEN)
-		return
-	// space vines block out sunlight
-	var/obj/structure/spacevine/vine = locate(/obj/structure/spacevine) in loc
-	if(istype(vine) && !(/datum/spacevine_mutation/transparency in vine.mutations))
-		unset_control()
+	// If the turf is sun blocked directly we have no hope of being able to see the sun so don't bother processing
+	// On the other hand if the station is blocking the sun we might we might be able to see it later, so check for that (in update_turn)
+	if((machine_stat & BROKEN) || isnull(loc) || HAS_TRAIT(loc, TRAIT_TURF_SUN_BLOCKED))
 		return
 
 	if(control && (!powernet || control.powernet != powernet))
@@ -663,6 +640,5 @@
 	default_raw_text = "<h1>Bem-vindo.</h1><p>Na Greencorps amamos o meio ambiente e o espaço. Com este pacote você é capaz de ajudar a mãe natureza e produzir energia sem qualquer uso de combustível fóssil ou plasma! A energia da singularidade é perigosa enquanto a energia solar é segura, por isso é melhor. Agora é assim que você cria sua própria matriz solar.</p><p>Você pode fazer um painel solar apertando o conjunto solar em um nó de cabo. Adicionar um painel de vidro, qualquer vidro não reforçado, terminará a construção do seu painel solar. É assim tão fácil!</p><p>Agora, depois de configurar mais 19 destes painéis solares você vai querer criar um rastreador solar para manter o controle do presente da nossa mãe natureza, o sol. Estes são os mesmos passos de antes exceto que você insere o circuito do equipamento de rastreamento na montagem antes de executar o passo final de adicionar o vidro. Agora você tem um rastreador! Agora o último passo é adicionar um computador para calcular os movimentos do sol e enviar comandos para os painéis solares para mudar de direção com o sol. Configurar o computador solar é o mesmo que configurar qualquer computador, então você não deve ter problemas em fazer isso. Você precisa colocar um nó sob o computador, e o fio precisa ser conectado ao rastreador.</p><p>Parabéns, você deveria ter uma matriz solar funcionando. Se está tendo problemas, aqui estão algumas dicas. Certifique-se de que todos os equipamentos solares estão em um nó de cabo, até mesmo o computador. Você sempre pode desconstruir suas criações se cometer um erro.</p><p>Isso é tudo, tenha cuidado, seja verde!</p>"
 
 #undef SOLAR_GEN_RATE
-#undef OCCLUSION_DISTANCE
 #undef PANEL_Z_OFFSET
 #undef PANEL_EDGE_Z_OFFSET

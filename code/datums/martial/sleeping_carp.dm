@@ -6,7 +6,7 @@
 /datum/martial_art/the_sleeping_carp
 	name = "The Sleeping Carp"
 	id = MARTIALART_SLEEPINGCARP
-	help_verb = /mob/living/proc/sleeping_carp_help
+	help_verb = "Recall Teachings"
 	display_combos = TRUE
 	grab_state_modifier = 1
 	/// List of traits applied to users of this martial art.
@@ -82,13 +82,13 @@
 
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_PUNCH)
 	defender.visible_message(
-		span_danger("[attacker] violentamente torce [defender]'s [affecting]!"),
-		span_userdanger("[attacker] violentamente torce seu [affecting]!"),
-		span_hear("Você ouve um barulho doentio de osso estalando!"),
+		span_danger("[attacker] violently twists [defender]'s [affecting]!"),
+		span_userdanger("[attacker] violently twists your [affecting]!"),
+		span_hear("You hear a sickening sound of bone snapping!"),
 		null,
 		attacker,
 	)
-	to_chat(attacker, span_danger("Você violentamente torce [defender]'s [affecting]!"))
+	to_chat(attacker, span_danger("You violently twist [defender]'s [affecting]!"))
 	playsound(defender, 'sound/items/weapons/punch1.ogg', 25, TRUE, -1)
 	log_combat(attacker, defender, "wrist wrenched (Sleeping Carp)")
 	defender.apply_damage(20, BRUTE, affecting, wound_bonus = 30)
@@ -99,9 +99,9 @@
 /datum/martial_art/the_sleeping_carp/proc/launch_kick(mob/living/attacker, mob/living/defender)
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_KICK)
 	defender.visible_message(
-		span_warning("[attacker] Chutes.[defender] Quadrado no peito, mandando-os voar!"),
-		span_userdanger("Você é chutado quadrado no peito por [attacker] Mandando você voar!"),
-		span_hear("Você ouve um som doentio de carne batendo em carne!"),
+		span_warning("[attacker] kicks [defender] square in the chest, sending them flying!"),
+		span_userdanger("You are kicked square in the chest by [attacker], sending you flying!"),
+		span_hear("You hear a sickening sound of flesh hitting flesh!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
 	)
@@ -118,10 +118,12 @@
 	playsound(attacker, 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
 	if(defender.body_position == STANDING_UP)
 		defender.Knockdown(4 SECONDS)
-		defender.visible_message(span_warning("[attacker] Chutes.[defender] na cabeça, mandando-os primeiro para o chão!"), 					span_userdanger("Você é chutado na cabeça por [attacker] Mandando você cair no chão!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), COMBAT_MESSAGE_RANGE, attacker)
+		defender.visible_message(span_warning("[attacker] kicks [defender] in the head, sending them face first into the floor!"), \
+					span_userdanger("You are kicked in the head by [attacker], sending you crashing to the floor!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, attacker)
 	else
 		defender.drop_all_held_items()
-		defender.visible_message(span_warning("[attacker] Chutes.[defender] Na cabeça!"), 					span_userdanger("Você é chutado na cabeça por [attacker]!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), COMBAT_MESSAGE_RANGE, attacker)
+		defender.visible_message(span_warning("[attacker] kicks [defender] in the head!"), \
+					span_userdanger("You are kicked in the head by [attacker]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, attacker)
 	defender.apply_damage(40, STAMINA)
 	defender.adjust_dizzy_up_to(10 SECONDS, 10 SECONDS)
 	defender.adjust_temp_blindness_up_to(2 SECONDS, 10 SECONDS)
@@ -133,9 +135,9 @@
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_KICK)
 	playsound(attacker, 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
 	defender.visible_message(
-		span_warning("[attacker] violentamente Bate [attacker.p_their()] JOELHO EM [defender]!"),
-		span_userdanger("Você bate o joelho direito em [defender]!"),
-		span_hear("Você ouve um som doentio de carne batendo em carne!"),
+		span_warning("[attacker] violently slams [attacker.p_their()] knee into [defender]!"),
+		span_userdanger("You slam your knee straight into [defender]!"),
+		span_hear("You hear a sickening sound of flesh hitting flesh!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
 	)
@@ -163,8 +165,8 @@
 	playsound(defender, 'sound/items/weapons/punch1.ogg', 25, TRUE, -1)
 	if(defender.stat != DEAD && !defender.IsUnconscious() && defender.get_stamina_loss() >= 80) //We put our target to sleep.
 		defender.visible_message(
-			span_danger("[attacker] Cuidado com o nervo.[defender] O pescoço, derrubando-os!"),
-			span_userdanger("[attacker] belisca algo no pescoço, e você cai inconsciente!"),
+			span_danger("[attacker] carefully pinch a nerve in [defender]'s neck, knocking them out cold!"),
+			span_userdanger("[attacker] pinches something in your neck, and you fall unconscious!"),
 		)
 		grab_log_description = "grabbed and nerve pinched"
 		defender.Unconscious(10 SECONDS)
@@ -173,17 +175,21 @@
 	return MARTIAL_ATTACK_INVALID // normal grab
 
 /datum/martial_art/the_sleeping_carp/harm_act(mob/living/attacker, mob/living/defender)
-	if(attacker.grab_state == GRAB_KILL 		&& attacker.zone_selected == BODY_ZONE_HEAD 		&& attacker.pulling == defender 		&& defender.stat != DEAD 	)
+	if(attacker.grab_state == GRAB_KILL \
+		&& attacker.zone_selected == BODY_ZONE_HEAD \
+		&& attacker.pulling == defender \
+		&& defender.stat != DEAD \
+	)
 		var/obj/item/bodypart/head = defender.get_bodypart(BODY_ZONE_HEAD)
 		if(!isnull(head))
 			playsound(defender, 'sound/effects/wounds/crack1.ogg', 100)
 			defender.visible_message(
-				span_danger("[attacker] quebra o pescoço de [defender]!"),
-				span_userdanger("Seu pescoço está quebrado.[attacker]!"),
-				span_hear("Você ouve um estalo nojento!"),
+				span_danger("[attacker] snaps the neck of [defender]!"),
+				span_userdanger("Your neck is snapped by [attacker]!"),
+				span_hear("You hear a sickening snap!"),
 				ignored_mobs = attacker
 			)
-			to_chat(attacker, span_danger("Em um movimento rápido, você quebra o pescoço de [defender]!"))
+			to_chat(attacker, span_danger("In a swift motion, you snap the neck of [defender]!"))
 			log_combat(attacker, defender, "snapped neck")
 			defender.apply_damage(100, BRUTE, BODY_ZONE_HEAD, wound_bonus=CANT_WOUND)
 			if(!HAS_TRAIT(defender, TRAIT_NODEATH))
@@ -252,8 +258,8 @@
 
 
 	carp_user.visible_message(
-		span_danger("[carp_user] Esforçosamente swats [hitting_projectile] Fora![carp_user.p_They()] Pode fazer bloquear balas com [carp_user.p_their()] Mãos nuas!"),
-		span_userdanger("Você se desvia.[hitting_projectile]!"),
+		span_danger("[carp_user] effortlessly swats [hitting_projectile] aside! [carp_user.p_They()] can block bullets with [carp_user.p_their()] bare hands!"),
+		span_userdanger("You deflect [hitting_projectile]!"),
 	)
 	playsound(carp_user, SFX_BULLET_MISS, 75, TRUE)
 	hitting_projectile.firer = carp_user
@@ -270,8 +276,8 @@
 		return
 	var/obj/item/melee/touch_attack/touch_weapon = attack_weapon
 	carp_user.visible_message(
-		span_danger("[carp_user] Com cuidado se esquiva.[attacker]'s [touch_weapon]!"),
-		span_userdanger("Você toma muito cuidado para permanecer intocado por [attacker]'s [touch_weapon]!"),
+		span_danger("[carp_user] carefully dodges [attacker]'s [touch_weapon]!"),
+		span_userdanger("You take great care to remain untouched by [attacker]'s [touch_weapon]!"),
 	)
 	return COMPONENT_NO_AFTERATTACK
 
@@ -291,8 +297,8 @@
 		return NONE
 
 	carp_user.visible_message(
-		span_danger("[carp_user] De forma limpa evita [attack_text] Com velocidade incrível!"),
-		span_userdanger("Você se esquiva.[attack_text]"),
+		span_danger("[carp_user] cleanly avoids [attack_text] with incredible speed!"),
+		span_userdanger("You dodge [attack_text]"),
 	)
 	playsound(carp_user.loc, 'sound/items/weapons/punchmiss.ogg', 25, TRUE, -1)
 	return SUCCESSFUL_BLOCK
@@ -368,16 +374,27 @@
 	return style_factor_points
 
 /// Verb added to humans who learn the art of the sleeping carp.
-/mob/living/proc/sleeping_carp_help()
-	set name = "Recall Teachings"
-	set desc = "Remember the martial techniques of the Sleeping Carp clan."
-	set category = "Sleeping Carp"
+/datum/martial_art/the_sleeping_carp/get_style_help()
+	. = list()
 
-	to_chat(usr, span_info("<b><i>You retreat inward and recall the teachings of the Sleeping Carp...</i></b>\n	[span_notice("Gnashing Teeth")]: Punch Grab. Violently twists your opponent's arm, dislocating or even shattering bone and forcing them to drop their held items.\n	[span_notice("Crashing Wave Kick")]: Punch Shove. Launch your opponent away from you with incredible force!\n	[span_notice("Keelhaul")]: Shove Shove. Nonlethally kick an opponent to the floor, knocking them down, discombobulating them and dealing substantial stamina damage. If they're already prone, disarm them as well.\n	[span_notice("Kraken Wrack")]: Grab Punch. Deliver a knee jab into the opponent, dealing high stamina damage, as well as briefly stunning them, winding them and making it difficult for them to speak.\n	[span_notice("Grabs and Shoves")]: While in combat mode, your typical grab and shove do decent stamina damage, and your grabs harder to break. If you grab someone who has substantial amounts of stamina damage, you knock them out!\n	<span class='notice'>While in combat mode (and not stunned, not a hulk, and not in a mech), you can reflect all projectiles that come your way, sending them back at the people who fired them! \n	However, your ability to avoid projectiles is negatively affected when your are burdened by armor, or whenever you are carrying normal-sized or heavier objects in your hands. \n	But if you commmit fully to the martial arts lifestyle by wearing martial arts or carp-related regalia, you will feel empowered enough to potentially avoid attacks even from melee weapons or other unarmed combatants. \n	Some melee weapons, such as bo starves, spears, short blades, knives, toolboxes, baseball bats and non-blocking small objects are safe to carry without affecting your ability to defend yourself. Exploit this for a tactical advantage. \n	Also, you are more resilient against suffering wounds in combat, and your limbs cannot be dismembered. This grants you extra staying power during extended combat, especially against slashing and other bleeding weapons. \n	You are not invincible, however- while you may not suffer debilitating wounds often, you must still watch your health and should have appropriate medical supplies for use during downtime. \n	In addition, your training has imbued you with a loathing of guns, and you can no longer use them.</span>"))
+	. += span_info("<b><i>You retreat inward and recall the teachings of the Sleeping Carp...</i></b>\n\
+		[span_notice("Gnashing Teeth")]: Punch Grab. Violently twists your opponent's arm, dislocating or even shattering bone and forcing them to drop their held items.\n\
+		[span_notice("Crashing Wave Kick")]: Punch Shove. Launch your opponent away from you with incredible force!\n\
+		[span_notice("Keelhaul")]: Shove Shove. Nonlethally kick an opponent to the floor, knocking them down, discombobulating them and dealing substantial stamina damage. If they're already prone, disarm them as well.\n\
+		[span_notice("Kraken Wrack")]: Grab Punch. Deliver a knee jab into the opponent, dealing high stamina damage, as well as briefly stunning them, winding them and making it difficult for them to speak.\n\
+		[span_notice("Grabs and Shoves")]: While in combat mode, your typical grab and shove do decent stamina damage, and your grabs harder to break. If you grab someone who has substantial amounts of stamina damage, you knock them out!\n\
+		<span class='notice'>While in combat mode (and not stunned, not a hulk, and not in a mech), you can reflect all projectiles that come your way, sending them back at the people who fired them! \n\
+		However, your ability to avoid projectiles is negatively affected when your are burdened by armor, or whenever you are carrying normal-sized or heavier objects in your hands. \n\
+		But if you commmit fully to the martial arts lifestyle by wearing martial arts or carp-related regalia, you will feel empowered enough to potentially avoid attacks even from melee weapons or other unarmed combatants. \n\
+		Some melee weapons, such as bo starves, spears, short blades, knives, toolboxes, baseball bats and non-blocking small objects are safe to carry without affecting your ability to defend yourself. Exploit this for a tactical advantage. \n\
+		Also, you are more resilient against suffering wounds in combat, and your limbs cannot be dismembered. This grants you extra staying power during extended combat, especially against slashing and other bleeding weapons. \n\
+		You are not invincible, however- while you may not suffer debilitating wounds often, you must still watch your health and should have appropriate medical supplies for use during downtime. \n\
+		In addition, your training has imbued you with a loathing of guns, and you can no longer use them.</span>")
+	return .
 
 /obj/item/staff/bostaff
 	name = "bo staff"
-	desc = "Um cajado longo e alto feito de madeira polida. Tradicionalmente usado em antigas artes marciais da Terra. Pode ser usado para matar e incapacitar."
+	desc = "A long, tall staff made of polished wood. Traditionally used in ancient old-Earth martial arts. Can be wielded to both kill and incapacitate."
 	force = 10
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
@@ -395,7 +412,10 @@
 
 /obj/item/staff/bostaff/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/two_handed, 		force_unwielded = 10, 		force_wielded = 24, 	)
+	AddComponent(/datum/component/two_handed, \
+		force_unwielded = 10, \
+		force_wielded = 24, \
+	)
 
 /obj/item/staff/bostaff/update_icon_state()
 	icon_state = inhand_icon_state = "[base_icon_state][HAS_TRAIT(src, TRAIT_WIELDED)]"
@@ -404,7 +424,7 @@
 /obj/item/staff/bostaff/attack(mob/target, mob/living/user, list/modifiers, list/attack_modifiers)
 	add_fingerprint(user)
 	if((HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
-		to_chat(user, span_warning("Você bate na cabeça com [src]."))
+		to_chat(user, span_warning("You club yourself over the head with [src]."))
 		user.Paralyze(6 SECONDS)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -418,7 +438,7 @@
 		return ..()
 	var/mob/living/carbon/C = target
 	if(C.stat)
-		to_chat(user, span_warning("Seria desonroso atacar um inimigo enquanto não podem retaliar."))
+		to_chat(user, span_warning("It would be dishonorable to attack a foe while they cannot retaliate."))
 		return
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(!HAS_TRAIT(src, TRAIT_WIELDED))
@@ -427,18 +447,21 @@
 			return ..()
 		var/mob/living/carbon/human/H = target
 		var/list/fluffmessages = list("club", "smack", "broadside", "beat", "slam")
-		H.visible_message(span_warning("[user] [pick(fluffmessages)] S [H] Com [src]!"), 						span_userdanger("[user] [pick(fluffmessages)] Você está com [src]!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), null, user)
-		to_chat(user, span_danger("Você.[pick(fluffmessages)] [H] Com [src]!"))
+		H.visible_message(span_warning("[user] [pick(fluffmessages)]s [H] with [src]!"), \
+						span_userdanger("[user] [pick(fluffmessages)]s you with [src]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), null, user)
+		to_chat(user, span_danger("You [pick(fluffmessages)] [H] with [src]!"))
 		playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, TRUE, -1)
 		H.adjust_stamina_loss(rand(13,20))
 		if(prob(10))
-			H.visible_message(span_warning("[H] Colapsos!"), 							span_userdanger("Suas pernas se desfazem!"))
+			H.visible_message(span_warning("[H] collapses!"), \
+							span_userdanger("Your legs give out!"))
 			H.Paralyze(8 SECONDS)
 		if(H.staminaloss && !H.IsSleeping())
 			var/total_health = (H.health - H.staminaloss)
 			if(total_health <= HEALTH_THRESHOLD_CRIT && !H.stat)
-				H.visible_message(span_warning("[user] Dá um golpe pesado para [H]'s cabeça, batendo [H.p_them()] Está frio!"), 								span_userdanger("Você está inconsciente.[user]!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), null, user)
-				to_chat(user, span_danger("Você entrega um golpe pesado para [H]'s cabeça, batendo [H.p_them()] Está frio!"))
+				H.visible_message(span_warning("[user] delivers a heavy hit to [H]'s head, knocking [H.p_them()] out cold!"), \
+								span_userdanger("You're knocked unconscious by [user]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), null, user)
+				to_chat(user, span_danger("You deliver a heavy hit to [H]'s head, knocking [H.p_them()] out cold!"))
 				H.SetSleeping(60 SECONDS)
 				H.adjust_organ_loss(ORGAN_SLOT_BRAIN, 15, 150)
 	else
@@ -451,7 +474,7 @@
 
 /obj/item/clothing/gloves/the_sleeping_carp
 	name = "carp gloves"
-	desc = "Essas luvas são capazes de fazer as pessoas usarem a carpa adormecida."
+	desc = "These gloves are capable of making people use The Sleeping Carp."
 	icon_state = "black"
 	greyscale_colors = COLOR_BLACK
 	cold_protection = HANDS

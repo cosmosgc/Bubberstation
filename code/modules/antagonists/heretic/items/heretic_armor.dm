@@ -5,7 +5,7 @@
 // Eldritch armor. Looks cool, hood lets you cast heretic spells.
 /obj/item/clothing/suit/hooded/cultrobes/eldritch
 	name = "ominous armor"
-	desc = "Um conjunto de roupão empoeirado. Olhos estranhos alinham o interior."
+	desc = "A ragged, dusty set of robes. Strange eyes line the inside."
 	icon_state = "armor"
 	inhand_icon_state = null
 	flags_inv = HIDESHOES | HIDEJUMPSUIT | HIDEBELT
@@ -65,14 +65,14 @@
 		return
 
 	// Our hood gains the heretic_focus element.
-	. += span_notice("Permite lançar feitiços hereges enquanto o capô está no ar.")
+	. += span_notice("Allows you to cast heretic spells while the hood is up.")
 
 /obj/item/clothing/head/hooded/cult_hoodie/eldritch
 	name = "ominous hood"
 	icon = 'icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	icon_state = "helmet"
-	desc = "Um capô rasgado e coberto de pó. Olhos estranhos alinham o interior."
+	desc = "A torn, dust-caked hood. Strange eyes line the inside."
 	flags_inv = HIDEMASK | HIDEEARS | HIDEEYES | HIDEFACE | HIDEHAIR | HIDEFACIALHAIR | HIDESNOUT
 	flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	flash_protect = FLASH_PROTECTION_WELDER_HYPER_SENSITIVE
@@ -101,7 +101,8 @@
 // Prevents fire from decaying while worn, also passively generates fire via the toggle
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/ash
 	name = "\improper Scorched Mantle"
-	desc = "Deixado para queimar em pedaços, o que resta não é nada além de um eco enegrecido do manto da Sentinela. No entanto, as dobras fritas de fuligem transformam lâmina e chama da forma interior. Um breve adiamento antes de seu olhar se voltar para dentro."
+	desc = "Left to burn to tatters, what remains is naught but a blackened echo of the mantle of the Watch. \
+		Yet the soot-choked folds turn blade and flame from the form within. A brief reprieve before its gaze turns inwards."
 	icon_state = "ash_armor"
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/eldritch/ash
 	armor_type = /datum/armor/eldritch_armor/ash
@@ -190,7 +191,8 @@
 
 /obj/item/clothing/head/hooded/cult_hoodie/eldritch/ash
 	name = "\improper Scorched Mantle"
-	desc = "Deixado para queimar em pedaços, o que resta não é nada além de um eco enegrecido do manto da Sentinela. No entanto, as dobras fritas de fuligem transformam lâmina e chama da forma interior. Um breve adiamento antes de seu olhar se voltar para dentro."
+	desc = "Left to burn to tatters, what remains is naught but a blackened echo of the mantle of the Watch. \
+		Yet the soot-choked folds turn blade and flame from the form within. A brief reprieve before its gaze turns inwards."
 	icon_state = "ash_armor"
 	armor_type = /datum/armor/eldritch_armor/ash
 
@@ -209,7 +211,8 @@
 // Is shock-proof and gives you baton resistance
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/blade
 	name = "\improper Shattered Panoply"
-	desc = "As bordas afiadas desta armadura antiga afirmam uma revelação conhecida por aspirantes de batalha; um verdadeiro guerreiro não pode ser distinguido da lâmina que eles empunham."
+	desc = "The sharpened edges of this ancient suit of armor assert a revelation known to aspirants of battle; \
+			a true warrior can not be distinguished from the blade they wield."
 	icon_state = "blade_armor"
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/eldritch/blade
 	armor_type = /datum/armor/eldritch_armor/blade
@@ -316,7 +319,8 @@
 
 /obj/item/clothing/head/hooded/cult_hoodie/eldritch/blade
 	name = "\improper Shattered Panoply"
-	desc = "As bordas afiadas desta armadura antiga afirmam uma revelação conhecida por aspirantes de batalha; um verdadeiro guerreiro não pode ser distinguido da lâmina que eles empunham."
+	desc = "The sharpened edges of this ancient suit of armor assert a revelation known to aspirants of battle; \
+			a true warrior can not be distinguished from the blade they wield."
 	icon_state = "blade_armor"
 	armor_type = /datum/armor/eldritch_armor/blade
 	siemens_coefficient = 0
@@ -336,7 +340,8 @@
 // Allows you to toggle gravity for yourself at will
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/cosmic
 	name = "\improper Starwoven Cloak"
-	desc = "Gleaming gemas conjura adiante wisps de poder, voltando-se para iluminar o usuário em um brilho escuro. Olhando para o roupão, você não pode deixar de se sentir notado."
+	desc = "Gleaming gems conjure forth wisps of power, turning about to illuminate the wearer in a dim radiance. \
+			Gazing upon the robe, you cannot help but feel noticed."
 	icon_state = "cosmic_armor"
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/eldritch/cosmic
 	armor_type = /datum/armor/eldritch_armor/cosmic
@@ -387,7 +392,8 @@
 
 /obj/item/clothing/head/hooded/cult_hoodie/eldritch/cosmic
 	name = "\improper Starwoven Hood"
-	desc = "Gleaming gemas conjura adiante wisps de poder, voltando-se para iluminar o usuário em um brilho escuro. Olhando para o roupão, você não pode deixar de se sentir notado."
+	desc = "Gleaming gems conjure forth wisps of power, turning about to illuminate the wearer in a dim radiance. \
+			Gazing upon the robe, you cannot help but feel noticed."
 	icon_state = "cosmic_armor"
 	armor_type = /datum/armor/eldritch_armor/cosmic
 	clothing_flags = THICKMATERIAL | PLASMAMAN_PREVENT_IGNITION | STOPSPRESSUREDAMAGE
@@ -413,7 +419,8 @@
 // Emits a healing aura that affects any heretic summons (excluding the heretic himself)
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/flesh
 	name = "Writhing Embrace"
-	desc = "Uma carcaça podre, ou talvez várias, torcida em pólipos carnudos, intestinos atados e ossos rachados. Como se 'usa' isso confunde o entendimento razoável. Ele se move quando acredita em si mesmo sem ser observado."
+	desc = "A rotten carcass, or perhaps several, twisted into fleshy polyps, knotted intestines and cracked bone. \
+			How one 'wears' this baffles reasonable understanding. It moves when it believes itself unobserved."
 	icon_state = "flesh_armor"
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/eldritch/flesh
 	armor_type = /datum/armor/eldritch_armor/flesh
@@ -421,7 +428,20 @@
 	var/datum/component/healing_aura
 
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/flesh/on_robes_gained(mob/living/user)
-	healing_aura = user.AddComponent( 		/datum/component/aura_healing, 		range = 15, 		brute_heal = 3, 		burn_heal = 3, 		blood_heal = 3, 		suffocation_heal = 3, 		stamina_heal = 15, 		simple_heal = 3, 		requires_visibility = FALSE, 		limit_to_trait = TRAIT_HERETIC_SUMMON, 		healing_color = COLOR_RED, 		self_heal = FALSE, 	)
+	healing_aura = user.AddComponent( \
+		/datum/component/aura_healing, \
+		range = 15, \
+		brute_heal = 3, \
+		burn_heal = 3, \
+		blood_heal = 3, \
+		suffocation_heal = 3, \
+		stamina_heal = 15, \
+		simple_heal = 3, \
+		requires_visibility = FALSE, \
+		limit_to_trait = TRAIT_HERETIC_SUMMON, \
+		healing_color = COLOR_RED, \
+		self_heal = FALSE, \
+	)
 
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/flesh/on_robes_lost(mob/user, obj/item/clothing/suit/hooded/cultrobes/eldritch/robes)
 	QDEL_NULL(healing_aura)
@@ -498,7 +518,9 @@
 // Converts all damage into brain damage, nullifying the attack in the process
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/moon
 	name = "\improper Resplendant Regalia"
-	desc = "A natureza confusa desse traje opulento vira e distorce a visão. O espectador deve chegar a uma revelação arrepiante, o que eles veem é tão verdadeiro quanto qualquer outro rosto."
+	desc = "The confounding nature of this opulent garb turns and twists the sight. \
+			The viewer must come to a chilling revelation; \
+			what they see is as true as any other face."
 	icon_state = "moon_armor"
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/eldritch/moon
 	armor_type = /datum/armor/eldritch_armor/moon
@@ -660,18 +682,18 @@
 		return ..()
 	var/mob/living/carbon/human/wearer = user
 	if(wearer.get_organ_loss(ORGAN_SLOT_BRAIN) > 0)
-		wearer.balloon_alert(user, "Não pode tirar, o cérebro está danificado!")
+		wearer.balloon_alert(user, "can't strip, brain damaged!")
 		return FALSE
 	return ..()
 
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/moon/proc/item_attack_response(mob/living/victim, obj/item/weapon, mob/living/attacker)
 	SIGNAL_HANDLER
 	var/visible_message = pick(visible_message_list)
-	visible_message = replacetext(visible_message, "QUARTO", victim.get_visible_name())
-	visible_message = replacetext(visible_message, "ATAQUE", attacker.get_visible_name())
+	visible_message = replacetext(visible_message, "%USER", victim.get_visible_name())
+	visible_message = replacetext(visible_message, "%ATTACKER", attacker.get_visible_name())
 
 	var/self_message = pick(self_message_list)
-	self_message = replacetext(self_message_list, "ATAQUE", attacker.get_visible_name())
+	self_message = replacetext(self_message_list, "%ATTACKER", attacker.get_visible_name())
 
 	var/blind_message = pick(blind_message_list)
 	victim.visible_message(span_danger(visible_message), span_userdanger(self_message), span_danger(blind_message))
@@ -696,7 +718,7 @@
 	var/obj/item/bodypart/head/to_explode = human_wearer.get_bodypart(BODY_ZONE_HEAD)
 	if(!to_explode)
 		return
-	human_wearer.visible_message(span_warning("[human_wearer] É a cabeça doendo!"), ignored_mobs = list(human_wearer))
+	human_wearer.visible_message(span_warning("[human_wearer]'s head splatters with a sickening crunch!"), ignored_mobs = list(human_wearer))
 	new /obj/effect/gibspawner/generic(get_turf(human_wearer), human_wearer)
 	to_explode.dismember(dam_type = BRUTE, silent = TRUE)
 	to_explode.drop_organs()
@@ -745,7 +767,7 @@
 	braindead = TRUE
 	wearer.set_organ_loss(ORGAN_SLOT_BRAIN, INFINITY)
 	playsound(wearer, 'sound/effects/pope_entry.ogg', 50)
-	to_chat(wearer, span_bold(span_hypnophrase("Um destino terrível aconteceu com você.")))
+	to_chat(wearer, span_bold(span_hypnophrase("A terrible fate has befallen you.")))
 	addtimer(CALLBACK(src, PROC_REF(kill_wearer), wearer), 5 SECONDS)
 
 /obj/item/clothing/head/hooded/cult_hoodie/eldritch/moon
@@ -812,7 +834,9 @@
 // Gains more armor while standing on top of rust. Has an animated overlay
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/rust
 	name = "\improper Salvaged Remains"
-	desc = "Tocar as dobras deste manto simples parece enchê-lo de desconforto. Até olhar te enche de vertigem. Algum pulso ameaçando te puxar para dentro."
+	desc = "Touching the folds of this plain robe seem to fill you with unease. \
+			Even looking fills you with a sense of vertigo. \
+			Some pulse threatening to pull you within."
 	icon_state = "rust_armor"
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/eldritch/rust
 	armor_type = /datum/armor/eldritch_armor/rust
@@ -976,7 +1000,9 @@
 
 /obj/item/clothing/head/hooded/cult_hoodie/eldritch/rust
 	name = "\improper Salvaged Remains"
-	desc = "Tocar as dobras deste manto simples parece enchê-lo de desconforto. Até olhar te enche de vertigem. Algum pulso ameaçando te puxar para dentro."
+	desc = "Touching the folds of this plain robe seem to fill you with unease. \
+			Even looking fills you with a sense of vertigo. \
+			Some pulse threatening to pull you within."
 	icon_state = "rust_armor"
 	armor_type = /datum/armor/eldritch_armor/rust
 
@@ -1027,7 +1053,8 @@
 // Gives you a short stealth when you are hit
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/void
 	name = "\improper Hollow Weave"
-	desc = "No início, a tela vazia deste manto parece brilhar com uma luz fraca e fria. No entanto, ao rastrear a forma das dobras com mais cuidado, é melhor descrevê-la como a ausência de tal coisa."
+	desc = "At first, the empty canvas of this robe seems to shimmer with a faint, cold light. \
+			Yet upon tracking the shape of the folds more carefully, it is better to describe it as the absence of such a thing."
 	icon_state = "void_armor"
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/eldritch/void
@@ -1068,7 +1095,8 @@
 
 /obj/item/clothing/head/hooded/cult_hoodie/eldritch/void
 	name = "\improper Hollow Weave"
-	desc = "No início, a tela vazia deste manto parece brilhar com uma luz fraca e fria. No entanto, ao rastrear a forma das dobras com mais cuidado, é melhor descrevê-la como a ausência de tal coisa."
+	desc = "At first, the empty canvas of this robe seems to shimmer with a faint, cold light. \
+			Yet upon tracking the shape of the folds more carefully, it is better to describe it as the absence of such a thing."
 	icon_state = "void_armor"
 	armor_type = /datum/armor/eldritch_armor/void
 
@@ -1086,12 +1114,13 @@
 // Void cloak. Turns invisible with the hood up, lets you hide stuff.
 /obj/item/clothing/head/hooded/cult_hoodie/void
 	name = "void hood"
+	desc = "Black like tar, reflecting no light. Runic symbols line the outside. \
+		With each flash you lose comprehension of what you are seeing."
 	icon = 'icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
-	desc = "Preto como alcatrão, sem luz. Os símbolos rúnicos estão do lado de fora. A cada flash você perde a compreensão do que está vendo."
 	icon_state = "void_cloak"
 	flags_inv = NONE
-	flags_cover = NONE
+	flags_cover = ALLOW_SURGERY_THROUGH
 	armor_type = /datum/armor/cult_hoodie_void
 
 /datum/armor/cult_hoodie_void
@@ -1108,7 +1137,8 @@
 
 /obj/item/clothing/suit/hooded/cultrobes/void
 	name = "void cloak"
-	desc = "Preto como alcatrão, sem luz. Os símbolos rúnicos estão do lado de fora. A cada flash você perde a compreensão do que está vendo."
+	desc = "Black like tar, reflecting no light. Runic symbols line the outside. \
+		With each flash you lose comprehension of what you are seeing."
 	icon_state = "void_cloak"
 	inhand_icon_state = null
 	allowed = list(/obj/item/melee/sickly_blade)
@@ -1166,8 +1196,8 @@
 		return
 
 	// Let examiners know this works as a focus only if the hood is down
-	. += span_notice("Permite lançar feitiços hereges enquanto o capô está caído.")
-	. += span_notice("O espaço é digno enquanto o capô estiver caído.")
+	. += span_notice("Allows you to cast heretic spells while the hood is down.")
+	. += span_notice("Is space worthy as long as the hood is down.")
 
 /obj/item/clothing/suit/hooded/cultrobes/void/on_hood_down(obj/item/clothing/head/hooded/hood)
 	make_visible()
@@ -1180,7 +1210,7 @@
 	if(IS_HERETIC_OR_MONSTER(wearer))
 		return TRUE
 
-	loc.balloon_alert(loc, "Não consigo levantar o capô!")
+	loc.balloon_alert(loc, "can't get the hood up!")
 	return FALSE
 
 /obj/item/clothing/suit/hooded/cultrobes/void/on_hood_created(obj/item/clothing/head/hooded/hood)
@@ -1191,19 +1221,21 @@
 /obj/item/clothing/suit/hooded/cultrobes/void/proc/make_invisible()
 	add_traits(list(TRAIT_NO_STRIP, TRAIT_EXAMINE_SKIP), REF(src))
 	RemoveElement(/datum/element/heretic_focus)
+	flags_cover |= ALLOW_SURGERY_THROUGH
 
 	if(isliving(loc))
 		loc.remove_traits(list(TRAIT_RESISTLOWPRESSURE, TRAIT_RESISTCOLD), REF(src))
 		REMOVE_TRAIT(loc, TRAIT_RESISTLOWPRESSURE, REF(src))
-		loc.balloon_alert(loc, "camuflagem escondida")
-		loc.visible_message(span_notice("A luz se desloca [loc], tornando o manto em torno deles invisíveis!"))
+		loc.balloon_alert(loc, "cloak hidden")
+		loc.visible_message(span_notice("Light shifts around [loc], making the cloak around them invisible!"))
 
 /// Makes our cloak "visible" again.
 /obj/item/clothing/suit/hooded/cultrobes/void/proc/make_visible()
 	remove_traits(list(TRAIT_NO_STRIP, TRAIT_EXAMINE_SKIP), REF(src))
 	AddElement(/datum/element/heretic_focus)
+	flags_cover &= ~ALLOW_SURGERY_THROUGH
 
 	if(isliving(loc))
 		loc.add_traits(list(TRAIT_RESISTLOWPRESSURE, TRAIT_RESISTCOLD), REF(src))
-		loc.balloon_alert(loc, "Capa revelada.")
-		loc.visible_message(span_notice("Um caleidoscópio de cores desmorona ao redor [loc], uma capa aparecendo de repente em torno de sua pessoa!"))
+		loc.balloon_alert(loc, "cloak revealed")
+		loc.visible_message(span_notice("A kaleidoscope of colours collapses around [loc], a cloak appearing suddenly around their person!"))

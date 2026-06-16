@@ -190,14 +190,15 @@
  * @param {number} breakouttime - The time it takes to break the cuffs. Use SECONDS/MINUTES defines
  * @param {number} cuff_break - Speed multiplier, 0 is default, see _DEFINES\combat.dm
  */
-/mob/living/carbon/proc/cuff_resist(obj/item/cuffs, breakouttime = 1 MINUTES, cuff_break = 0)
+/mob/living/carbon/proc/cuff_resist(obj/item/cuffs, breakouttime = null, cuff_break = 0)
 	if((cuff_break != INSTANT_CUFFBREAK) && (SEND_SIGNAL(src, COMSIG_MOB_REMOVING_CUFFS, cuffs) & COMSIG_MOB_BLOCK_CUFF_REMOVAL))
 		return //The blocking object should sent a fluff-appropriate to_chat about cuff removal being blocked
 	if(cuffs.item_flags & BEING_REMOVED)
 		to_chat(src, span_warning("Você já está tentando remover [cuffs]!"))
 		return
 	cuffs.item_flags |= BEING_REMOVED
-	breakouttime = cuffs.breakouttime
+	if (isnull(breakouttime))
+		breakouttime = cuffs.breakouttime
 	if(!cuff_break)
 		visible_message(span_warning("[src] Tenta remover [cuffs]!"))
 		to_chat(src, span_notice("Você tenta remover [cuffs]... (Isso vai levar ao redor [DisplayTimeText(breakouttime)] E você precisa ficar parado."))
@@ -713,7 +714,6 @@
 		clear_mood_event("handcuffed")
 	update_mob_action_buttons() //some of our action buttons might be unusable when we're handcuffed.
 	update_worn_handcuffs()
-	update_hud_handcuffed()
 
 /mob/living/carbon/revive(full_heal_flags = NONE, excess_healing = 0, force_grab_ghost = FALSE)
 	if(excess_healing)
@@ -951,6 +951,7 @@
 			var/obj/item/bodypart/stump = new old_bodypart.stump_typepath()
 			stump.bodyshape = old_bodypart.bodyshape
 			stump.bodytype = old_bodypart.bodytype
+			stump.add_biostate(old_bodypart.biological_state & ~BIO_JOINTED)
 			if(!stump.try_attach_limb(src, special = TRUE))
 				// the only way this can happen is if the stump is rejected via signal
 				// not much we can do about that besides hope they know what they're doing

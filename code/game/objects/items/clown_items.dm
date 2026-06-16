@@ -13,7 +13,7 @@
 
 /obj/item/soap
 	name = "soap"
-	desc = "Uma barra barata de sabão. Não cheira mal."
+	desc = "A cheap bar of soap. Doesn't smell."
 	gender = PLURAL
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "soap"
@@ -58,7 +58,7 @@
 	. += span_notice("[msg]")
 
 /obj/item/soap/homemade
-	desc = "Uma barra caseira de sabão. Cheira a... bem..."
+	desc = "A homemade bar of soap. Smells of... well...."
 	icon_state = "soapgibs"
 	inhand_icon_state = "soapgibs"
 	worn_icon_state = "soapgibs"
@@ -68,7 +68,7 @@
 	return list(/datum/reagent/consumable/liquidgibs = 9, /datum/reagent/lye = 9)
 
 /obj/item/soap/nanotrasen
-	desc = "Uma barra pesada de sabão da marca Nanotrasen. Cheira a plasma."
+	desc = "A heavy duty bar of Nanotrasen brand soap. Smells of plasma."
 	icon_state = "soapnt"
 	inhand_icon_state = "soapnt"
 	worn_icon_state = "soapnt"
@@ -79,7 +79,7 @@
 	return list(/datum/reagent/toxin/plasma = 10, /datum/reagent/lye = 10)
 
 /obj/item/soap/deluxe
-	desc = "Uma barra de sabão da Deluxe Waffle Corporation. Cheira a luxo de alta classe."
+	desc = "A deluxe Waffle Corporation brand bar of soap. Smells of high-class luxury."
 	icon_state = "soapdeluxe"
 	inhand_icon_state = "soapdeluxe"
 	worn_icon_state = "soapdeluxe"
@@ -89,7 +89,7 @@
 	return list(/datum/reagent/consumable/aloejuice = 10, /datum/reagent/lye = 10)
 
 /obj/item/soap/syndie
-	desc = "Uma barra de sabão não confiável feita de agentes químicos fortes que dissolvem o sangue mais rápido."
+	desc = "An untrustworthy bar of soap made of strong chemical agents that dissolve blood faster."
 	icon_state = "soapsyndie"
 	inhand_icon_state = "soapsyndie"
 	worn_icon_state = "soapsyndie"
@@ -107,12 +107,16 @@
 
 /obj/item/soap/omega
 	name = "\improper Omega soap"
-	desc = "O sabão mais avançado conhecido pela humanidade. O começo do fim dos germes."
+	desc = "The most advanced soap known to mankind. The beginning of the end for germs."
 	icon_state = "soapomega"
 	inhand_icon_state = "soapomega"
 	worn_icon_state = "soapomega"
 	cleanspeed = 0.3 SECONDS //Only the truest of mind soul and body get one of these
 	uses = 800 //In the Greek numeric system, Omega has a value of 800
+
+/obj/item/soap/omega/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/slippery, 120) //Same slipperiness as Super Lube
 
 /obj/item/soap/omega/grind_results()
 	return list(
@@ -125,22 +129,23 @@
 		/datum/reagent/consumable/ethanol/hooch = 9,
 		/datum/reagent/bluespace = 9,
 		/datum/reagent/drug/pumpup = 9,
-		/datum/reagent/consumable/space_cola = 9
+		/datum/reagent/consumable/space_cola = 9,
+		/datum/reagent/iron = 9
 	)
 
 /obj/item/soap/omega/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] está usando [src] Para se limparem da linha do tempo! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] is using [src] to scrub themselves from the timeline! It looks like [user.p_theyre()] trying to commit suicide!"))
 	new /obj/structure/chrono_field(user.loc, user)
 	return MANUAL_SUICIDE
 
 /obj/item/paper/fluff/stations/soap
 	name = "ancient janitorial poem"
-	desc = "Um papel velho que já passou por muitas mãos."
-	default_raw_text = "<B>A lenda do sabão Omega</B><BR><BR>Essência de<B>Batata</B>Suco, não moer.<BR><BR>A<B>Lagarto.</B>Tail, virou<B>Vinho</B>.<BR><BR> <B>Pó de macaco</B>, para ajudar a carga de trabalho.<BR><BR>Alguns<B>Krokodil</B>Porque a metanfetamina explodiria.<BR><BR> <B>Ácido nítrico</B>e<B>Baldio.</B>, para dissolução orgânica.<BR><BR>Um copo cheio de<B>Hooch.</B>, para a absolvição pecaminosa<BR><BR>Alguns<B>Pó do espaço azul</B>, para remoção de manchas.<BR><BR>Uma seringa cheia de<B>Bombardear</B>, é a falha da segurança.<BR><BR>Adicione uma lata de<B>Cola do Espaço</B>Porque fomos pagos.<BR><BR> <B>Calor</B>O mais quente que puder, deixe o sabão ser sua lâmina.<BR><BR> <B>Dez unidades de cada reagente criam um sabão que pode derrubar todas as outras.</B>"
+	desc = "An old paper that has passed many hands."
+	default_raw_text = "<h1><b>The Legend of the Omega Soap</b></h1><br><br>Essence of <b>potato</b>, juice, not grind.<br>A <b>lizard's</b> tail, turned into wine.<br><b>Powder of monkey</b>, to help the workload.<br>Some <b>Krokodil</b>, because meth would explode.<br><b>Nitric acid</b> and <b>Baldium</b>, for organic dissolving.<br>A cup full of <b>hooch</b>, for sins' absolving.<br>A dash of <b>bluespace dust</b>, for removal of stains.<br>A syringe of <b>Pump-Up</b>, Security's worst of pains.<br>A can of <b>Space Cola</b>, to watch the dirt fade.<br><b>Heat</b> as hot as possible, let the soap be your blade.<br>With <b>ten</b> units of each, the soap that topples all will be made."
 
 /obj/item/soap/suicide_act(mob/living/user)
 	user.say(";FFFFFFFFFFFFFFFFUUUUUUUDGE!!", forced="soap suicide")
-	user.visible_message(span_suicide("[user] Elevações [src] para [user.p_their()] boca e roe furiosamente, produzindo uma espuma grossa![user.p_They()] Nunca vou conseguir essa arma agora!"))
+	user.visible_message(span_suicide("[user] lifts [src] to [user.p_their()] mouth and gnaws on it furiously, producing a thick froth! [user.p_They()]'ll never get that BB gun now!"))
 	do_foam(1, src, get_turf(user))
 	return TOXLOSS
 
@@ -170,14 +175,14 @@
 		noUses(user)
 
 /obj/item/soap/proc/noUses(mob/user)
-	to_chat(user, span_warning("[src] Se desfaz em pedacinhos!"))
+	to_chat(user, span_warning("[src] crumbles into tiny bits!"))
 	qdel(src)
 
 /obj/item/soap/nanotrasen/cyborg
 	name = "built-in soap"
 
 /obj/item/soap/nanotrasen/cyborg/noUses(mob/user)
-	to_chat(user, span_warning("[src] Acabou a química! Vá para um recarregá-lo."))
+	to_chat(user, span_warning("[src] has ran out of chemicals! Head to a recharger to refill it."))
 
 /obj/item/soap/nanotrasen/cyborg/should_clean(datum/cleaning_source, atom/atom_to_clean, mob/living/cleaner)
 	if(uses <= 0)
@@ -190,7 +195,7 @@
 
 /obj/item/bikehorn
 	name = "bike horn"
-	desc = "Uma buzina de bicicleta. Dizem que são feitos de palhaços reciclados."
+	desc = "A horn off of a bicycle. Rumour has it that they're made from recycled clowns."
 	icon = 'icons/obj/art/horn.dmi'
 	icon_state = "bike_horn"
 	inhand_icon_state = "bike_horn"
@@ -222,14 +227,14 @@
 	return ..()
 
 /obj/item/bikehorn/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] solenemente pontos [src] em [user.p_their()] templo! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] solemnly points [src] at [user.p_their()] temple! It looks like [user.p_theyre()] trying to commit suicide!"))
 	playsound(src, 'sound/items/bikehorn.ogg', 50, TRUE)
 	return BRUTELOSS
 
 //air horn
 /obj/item/bikehorn/airhorn
 	name = "air horn"
-	desc = "Filho, onde achou isso?"
+	desc = "Damn son, where'd you find this?"
 	icon_state = "air_horn"
 	worn_icon_state = "horn_air"
 	sound_file = 'sound/items/airhorn/airhorn2.ogg'
@@ -246,7 +251,7 @@
 //golden bikehorn
 /obj/item/bikehorn/golden
 	name = "golden bike horn"
-	desc = "Ouro? Claramente, é feito com banânio! Honk!"
+	desc = "Golden? Clearly, it's made with bananium! Honk!"
 	icon_state = "gold_horn"
 	inhand_icon_state = "gold_horn"
 	worn_icon_state = "horn_gold"
@@ -272,12 +277,12 @@
 
 /obj/item/bikehorn/rubberducky/plasticducky
 	name = "plastic ducky"
-	desc = "É uma imitação barata de plástico de um brinquedo adorável."
+	desc = "It's a cheap plastic knockoff of a loveable bathtime toy."
 	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/item/bikehorn/rubberducky
 	name = "rubber ducky"
-	desc = "Pato de borracha que você é tão bom, você faz muito banho. Pato de borracha Eu sou terrivelmente fooound de yooooouuu~" //thanks doohl
+	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~" //thanks doohl
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "rubberducky"
 	inhand_icon_state = "rubberducky"
@@ -289,7 +294,7 @@
 //canned laughter
 /obj/item/reagent_containers/cup/soda_cans/canned_laughter
 	name = "Canned Laughter"
-	desc = "Só de olhar para isso, dá vontade de rir."
+	desc = "Just looking at this makes you want to giggle."
 	icon_state = "laughter"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/laughter = 50)
@@ -297,7 +302,7 @@
 //balloon mallet
 /obj/item/balloon_mallet
 	name = "balloon mallet"
-	desc = "É um martelo, uma arma conhecida por ser pesada, mas feita de balões notoriamente leves. O ar dentro remove qualquer força dos balanços. Seria muito embaraçoso ser atingido por isso."
+	desc = "It's a mallet, a weapon known for being heavy, but made from notoriously light balloons. Air inside removes any force from the swings. It'd be quite embarrassing to get hit by this."
 	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "balloon_mallet"
 	inhand_icon_state = "balloon_mallet"

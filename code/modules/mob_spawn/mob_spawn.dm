@@ -180,7 +180,7 @@
 	if(LAZYFIND(ckeys_trying_to_spawn, user.ckey))
 		return
 	if(uses <= 0 && !infinite_use)
-		to_chat(user, span_warning("Este desova está fora de carga!"))
+		to_chat(user, span_warning("This spawner is out of charges!"))
 		return FALSE
 	if(!can_ghost_take(user))
 		return FALSE
@@ -193,7 +193,7 @@
 	var/apply_prefs = FALSE
 	// SKYRAT EDIT ADDITION START
 	if(restricted_species && !(user.client?.prefs?.read_preference(/datum/preference/choiced/species) in restricted_species))
-		var/incorrect_species = tgui_alert(user, "A preferência atual da espécie é incompatível, continuar com aparência aleatória?", "Incompatible Species", list("Yes", "No"))
+		var/incorrect_species = tgui_alert(user, "Current species preference incompatible, proceed with random appearance?", "Incompatible Species", list("Yes", "No"))
 		if(incorrect_species != "Yes")
 			LAZYREMOVE(ckeys_trying_to_spawn, user_ckey)
 			return
@@ -208,7 +208,9 @@
 	var/species_pref = user.client.prefs.read_preference(/datum/preference/choiced/species) || /datum/species/human
 	// BUBBER EDIT - Commented observer check
 	if(!prompt_fail && /*user.started_as_observer &&*/ allow_custom_character && (GLOB.species_prototypes[species_pref].inherent_respiration_type & RESPIRATION_OXYGEN))
-		var/static_prompt = "Because you haven't taken a role so far, you may spawn in as 			[((allow_custom_character & GHOSTROLE_TAKE_PREFS_SPECIES) || species_pref == /datum/species/human) ? "" : "a human version of"] 			your customized character with a random name. Would you like to?"
+		var/static_prompt = "Because you haven't taken a role so far, you may spawn in as \
+			[((allow_custom_character & GHOSTROLE_TAKE_PREFS_SPECIES) || species_pref == /datum/species/human) ? "" : "a human version of"] \
+			your customized character with a random name. Would you like to?"
 		apply_prefs = tgui_alert(user, static_prompt, "Custom Character", list("Yes", "No"), 10 SECONDS) == "Yes"
 
 	if(!prompt_fail && !pre_ghost_take(user))
@@ -227,14 +229,14 @@
 /// Checks if a ghost can take this ghost role.
 /obj/effect/mob_spawn/ghost_role/proc/can_ghost_take(mob/dead/observer/user)
 	if(is_banned_from(user.ckey, role_ban))
-		to_chat(user, span_warning("Você está banido deste papel!"))
-		return FALL_STOP_INTERCEPTING
+		to_chat(user, span_warning("You are banned from this role!"))
+		return FALSE
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER) && !(flags_1 & ADMIN_SPAWNED_1))
-		to_chat(user, span_warning("Um administrador desativou temporariamente papéis de fantasmas não-admin!"))
+		to_chat(user, span_warning("An admin has temporarily disabled non-admin ghost roles!"))
 		return FALSE
 	// SKYRAT EDIT ADDITION START
 	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER)) // Ghost role bans
-		to_chat(user, span_warning("Erro, você está proibido de fazer papéis fantasmas!"))
+		to_chat(user, span_warning("Error, you are banned from playing ghost roles!"))
 		return FALSE
 	// SKYRAT EDIT ADDITION END
 	if(QDELETED(src) || QDELETED(user))
@@ -406,7 +408,7 @@
 
 /obj/effect/mob_spawn/cockroach
 	name = "Cockroach Spawner"
-	desc = "Um parasita para baratas, os vermes mais comuns na estação. Pequena chance de criar uma barata de sangue."
+	desc = "A spawner for cockroaches, the most common vermin in the station. Small chance to spawn a bloodroach."
 	mob_type = /mob/living/basic/cockroach
 	var/bloodroach_chance = 1 // 1% chance to spawn a bloodroach
 

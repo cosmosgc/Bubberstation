@@ -1,6 +1,6 @@
 /obj/item/gun/energy/ionrifle // SKYRAT EDIT - ICON OVERRIDDEN IN AESTHETICS MODULE
 	name = "ion rifle"
-	desc = "Uma arma anti-arma portátil projetada para desativar ameaças mecânicas ao alcance."
+	desc = "A man-portable anti-armor weapon designed to disable mechanical threats at range."
 	icon_state = "ionrifle"
 	inhand_icon_state = null //so the human update icon uses the icon_state instead.
 	worn_icon_state = null
@@ -17,11 +17,15 @@
 	AddElement(/datum/element/empprotection, EMP_PROTECT_ALL)
 
 /obj/item/gun/energy/ionrifle/add_seclight_point()
-	AddComponent(/datum/component/seclite_attachable, 		light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', 		light_overlay = "flight", 		overlay_x = 17, 		overlay_y = 9)
+	AddComponent(/datum/component/seclite_attachable, \
+		light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', \
+		light_overlay = "flight", \
+		overlay_x = 17, \
+		overlay_y = 9)
 
 /obj/item/gun/energy/ionrifle/carbine
 	name = "ion carbine"
-	desc = "O Protótipo MKII Ion Projector é uma versão leve da carabina do rifle de íons maior, construída para ser ergonômica e eficiente."
+	desc = "The MK.II Prototype Ion Projector is a lightweight carbine version of the larger ion rifle, built to be ergonomic and efficient."
 	icon_state = "ioncarbine"
 	worn_icon_state = "gun"
 	w_class = WEIGHT_CLASS_BULKY
@@ -34,7 +38,7 @@
 
 /obj/item/gun/energy/floragun
 	name = "floral somatoray"
-	desc = "Uma ferramenta que descarrega radiação controlada que induz mutação em células vegetais."
+	desc = "A tool that discharges controlled radiation which induces mutation in plant cells."
 	icon_state = "flora"
 	inhand_icon_state = "gun"
 	ammo_type = list(/obj/item/ammo_casing/energy/flora/yield, /obj/item/ammo_casing/energy/flora/mut, /obj/item/ammo_casing/energy/flora/revolution)
@@ -45,7 +49,7 @@
 
 /obj/item/gun/energy/meteorgun
 	name = "meteor gun"
-	desc = "Pelo amor de Deus, certifique-se de que está apontando para o caminho certo!"
+	desc = "For the love of god, make sure you're aiming this the right way!"
 	icon_state = "meteor_gun"
 	inhand_icon_state = "c20r"
 	w_class = WEIGHT_CLASS_BULKY
@@ -57,7 +61,7 @@
 
 /obj/item/gun/energy/meteorgun/pen
 	name = "meteor pen"
-	desc = "A caneta é mais poderosa que a espada."
+	desc = "The pen is mightier than the sword."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "pen"
 	inhand_icon_state = "pen"
@@ -69,7 +73,7 @@
 
 /obj/item/gun/energy/mindflayer
 	name = "\improper Mind Flayer"
-	desc = "Uma arma protótipo recuperada das ruínas da Estação de Pesquisa Epsilon."
+	desc = "A prototype weapon recovered from the ruins of Research-Station Epsilon."
 	icon_state = "xray"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = null
@@ -81,7 +85,7 @@
 
 /obj/item/gun/energy/plasmacutter
 	name = "plasma cutter"
-	desc = "Uma ferramenta de mineração capaz de expulsar explosões de plasma concentradas. Você poderia usá-lo para cortar membros de xenos! Ou, você sabe, minhas coisas."
+	desc = "A mining tool capable of expelling concentrated plasma bursts. You could use it to cut limbs off xenos! Or, you know, mine stuff."
 	icon_state = "plasmacutter"
 	inhand_icon_state = "plasmacutter"
 	ammo_type = list(/obj/item/ammo_casing/energy/plasma)
@@ -100,52 +104,68 @@
 /obj/item/gun/energy/plasmacutter/Initialize(mapload)
 	AddElement(/datum/element/update_icon_blocker)
 	. = ..()
-	AddComponent(/datum/component/butchering, 		speed = 2.5 SECONDS, 		effectiveness = 105, 		bonus_modifier = 0, 		butcher_sound = 'sound/items/weapons/plasma_cutter.ogg', 	)
+	AddComponent(/datum/component/butchering, \
+		speed = 2.5 SECONDS, \
+		effectiveness = 105, \
+		bonus_modifier = 0, \
+		butcher_sound = 'sound/items/weapons/plasma_cutter.ogg', \
+	)
 	AddElement(/datum/element/tool_flash, 1)
 
 /obj/item/gun/energy/plasmacutter/examine(mob/user)
 	. = ..()
 	if(cell)
-		. += span_notice("[src] É [round(cell.percent())] Está carregado.")
+		. += span_notice("[src] is [round(cell.percent())]% charged.")
 
-/obj/item/gun/energy/plasmacutter/attackby(obj/item/I, mob/user)
-	var/charge_multiplier = 0 //2 = Refined stack, 1 = Ore
-	if(istype(I, /obj/item/stack/sheet/mineral/plasma))
+/obj/item/gun/energy/plasmacutter/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	var/charge_multiplier = 0
+	if(istype(tool, /obj/item/stack/sheet/mineral/plasma))
 		charge_multiplier = 2
-	if(istype(I, /obj/item/stack/ore/plasma))
+	else if(istype(tool, /obj/item/stack/ore/plasma))
 		charge_multiplier = 1
-	if(charge_multiplier)
-		if(cell.charge == cell.maxcharge)
-			balloon_alert(user, "Já está carregada!")
-			return
-		I.use(1)
-		cell.give(0.5 * STANDARD_CELL_CHARGE * charge_multiplier)
-		balloon_alert(user, "célula recarregada.")
-	else
-		..()
+
+	if(!charge_multiplier)
+		return NONE
+
+	if(cell.charge == cell.maxcharge)
+		balloon_alert(user, "already fully charged!")
+		return ITEM_INTERACT_BLOCKING
+
+	var/obj/item/stack/sheet = tool
+	if (!sheet.use(1))
+		return ITEM_INTERACT_BLOCKING
+
+	cell.give(0.2 * STANDARD_CELL_CHARGE * charge_multiplier)
+	balloon_alert(user, "cell recharged")
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/gun/energy/plasmacutter/emp_act(severity)
 	. = ..()
-	if(isliving(loc))
-		var/mob/living/user = loc
-		user.visible_message(span_danger("Descargas de plasma concentradas de [src] em frente [user] Queimá-los!"), span_userdanger("[src] Mau funcionamento, cuspindo plasma concentrado em você! Queima!"))
-		user.adjust_fire_stacks(4)
-		user.ignite_mob()
+	if(. & EMP_PROTECT_CONTENTS)
+		return
+
+	if(!isliving(loc))
+		return
+
+	var/mob/living/user = loc
+	user.visible_message(span_danger("Concentrated plasma discharges from [src] onto [user], burning them!"), span_userdanger("[src] malfunctions, spewing concentrated plasma onto you! It burns!"))
+	user.adjust_fire_stacks(4)
+	user.ignite_mob()
 
 // Can we weld? Plasma cutter does not use charge continuously.
 // Amount cannot be defaulted to 1: most of the code specifies 0 in the call.
 /obj/item/gun/energy/plasmacutter/tool_use_check(mob/living/user, amount, heat_required)
 	if(QDELETED(cell))
-		balloon_alert(user, "Nenhuma célula inserida!")
+		balloon_alert(user, "no cell inserted!")
 		return FALSE
 	// Amount cannot be used if drain is made continuous, e.g. amount = 5, charge_weld = 25
 	// Then it'll drain 125 at first and 25 periodically, but fail if charge dips below 125 even though it still can finish action
 	// Alternately it'll need to drain amount*charge_weld every period, which is either obscene or makes it free for other uses
 	if(amount ? cell.charge < PLASMA_CUTTER_CHARGE_WELD * amount : cell.charge < PLASMA_CUTTER_CHARGE_WELD)
-		balloon_alert(user, "Insuficiência de carga!")
+		balloon_alert(user, "not enough charge!")
 		return FALSE
 	if(heat < heat_required)
-		to_chat(user, span_warning("[src] Não é quente o suficiente para completar esta tarefa!"))
+		to_chat(user, span_warning("[src] is not hot enough to complete this task!"))
 		return FALSE
 
 	return TRUE
@@ -154,16 +174,15 @@
 	return (!QDELETED(cell) && cell.use(used ? used * PLASMA_CUTTER_CHARGE_WELD : PLASMA_CUTTER_CHARGE_WELD))
 
 /obj/item/gun/energy/plasmacutter/use_tool(atom/target, mob/living/user, delay, amount=1, volume=0, datum/callback/extra_checks)
+	if(!amount)
+		return ..(amount = 1)
 
-	if(amount)
-		var/mutable_appearance/sparks = mutable_appearance('icons/effects/welding_effect.dmi', "welding_sparks", GASFIRE_LAYER, src, ABOVE_LIGHTING_PLANE)
-		target.add_overlay(sparks)
-		LAZYADD(update_overlays_on_z, sparks)
-		. = ..()
-		LAZYREMOVE(update_overlays_on_z, sparks)
-		target.cut_overlay(sparks)
-	else
-		. = ..(amount=1)
+	var/mutable_appearance/sparks = mutable_appearance('icons/effects/welding_effect.dmi', "welding_sparks", GASFIRE_LAYER, src, ABOVE_LIGHTING_PLANE)
+	target.add_overlay(sparks)
+	LAZYADD(update_overlays_on_z, sparks)
+	. = ..()
+	LAZYREMOVE(update_overlays_on_z, sparks)
+	target.cut_overlay(sparks)
 
 /obj/item/gun/energy/plasmacutter/try_fire_gun(atom/target, mob/living/user, params)
 	return fire_gun(target, user, user.Adjacent(target) && !isturf(target), params)
@@ -182,7 +201,7 @@
 
 /obj/item/gun/energy/wormhole_projector
 	name = "bluespace wormhole projector"
-	desc = "Um projetor que emite feixes de espaço azul quânticos de alta densidade. Requer um núcleo de anomalia do espaço azul para funcionar. Encaixa em um saco."
+	desc = "A projector that emits high density quantum-coupled bluespace beams. Requires a bluespace anomaly core to function. Fits in a bag."
 	ammo_type = list(/obj/item/ammo_casing/energy/wormhole, /obj/item/ammo_casing/energy/wormhole/orange)
 	can_select = FALSE // left-click for blue, right-click for orange.
 	w_class = WEIGHT_CLASS_NORMAL
@@ -197,11 +216,11 @@
 
 /obj/item/gun/energy/wormhole_projector/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Botão esquerdo</b>para disparar buracos de minhoca azuis e<b><font color=orange>botão direito</font></b>para disparar buracos de minhoca laranjas.")
+	. += span_notice("<b>Left-click</b> to fire blue wormholes and <b><font color=orange>right-click</font></b> to fire orange wormholes.")
 
 /obj/item/gun/energy/wormhole_projector/attackby(obj/item/C, mob/user)
 	if(istype(C, /obj/item/assembly/signaler/anomaly/bluespace))
-		to_chat(user, span_notice("Você insere [C] no projetor do buraco de minhoca e a arma suavemente sussurra para a vida."))
+		to_chat(user, span_notice("You insert [C] into the wormhole projector and the weapon gently hums to life."))
 		firing_core = TRUE
 		playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
 		qdel(C)
@@ -214,7 +233,7 @@
 
 /obj/item/gun/energy/wormhole_projector/shoot_with_empty_chamber(mob/living/user)
 	. = ..()
-	to_chat(user, span_danger("O visor diz, \"nenhum núcleo instalado\"."))
+	to_chat(user, span_danger("The display says, 'NO CORE INSTALLED'."))
 
 /obj/item/gun/energy/wormhole_projector/update_icon_state()
 	. = ..()
@@ -293,7 +312,7 @@
 
 /obj/item/gun/energy/printer
 	name = "cyborg lmg"
-	desc = "Uma LMG que dispara flechettes impressas em 3D. Eles são lentamente reabastecidos usando a fonte de energia interna do cyborg."
+	desc = "An LMG that fires 3D-printed flechettes. They are slowly resupplied using the cyborg's internal power source."
 	icon_state = "l6_cyborg"
 	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	cell_type = /obj/item/stock_parts/power_store/cell/secborg
@@ -310,7 +329,7 @@
 /obj/item/gun/energy/temperature
 	name = "temperature gun"
 	icon_state = "freezegun"
-	desc = "Uma arma que muda de temperatura. Vem com um estoque dobrável."
+	desc = "A gun that changes temperatures. Comes with a collapsible stock."
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = list(/obj/item/ammo_casing/energy/temp, /obj/item/ammo_casing/energy/temp/hot)
 	cell_type = /obj/item/stock_parts/power_store/cell/high
@@ -319,18 +338,18 @@
 
 /obj/item/gun/energy/temperature/security
 	name = "security temperature gun"
-	desc = "Uma arma que só pode ser usada com todo o seu potencial pelos verdadeiramente robustos."
+	desc = "A weapon that can only be used to its full potential by the truly robust."
 	pin = /obj/item/firing_pin
 
 /obj/item/gun/energy/temperature/freeze
 	name = "cryogenic temperature gun"
-	desc = "Uma arma que reduz as temperaturas. Só para aqueles com gelo nas veias."
+	desc = "A gun that reduces temperatures. Only for those with ice in their veins."
 	pin = /obj/item/firing_pin
 	ammo_type = list(/obj/item/ammo_casing/energy/temp)
 
 /obj/item/gun/energy/gravity_gun
 	name = "one-point gravitational manipulator"
-	desc = "Um dispositivo experimental multimodo que dispara parafusos de energia de ponto zero, causando distorções locais na gravidade. Requer um núcleo de anomalia gravitacional para funcionar."
+	desc = "An experimental, multi-mode device that fires bolts of Zero-Point Energy, causing local distortions in gravity. Requires a gravitational anomaly core to function."
 	w_class = WEIGHT_CLASS_BULKY
 	ammo_type = list(/obj/item/ammo_casing/energy/gravity/repulse, /obj/item/ammo_casing/energy/gravity/attract, /obj/item/ammo_casing/energy/gravity/chaos)
 	inhand_icon_state = "gravity_gun"
@@ -342,7 +361,7 @@
 
 /obj/item/gun/energy/gravity_gun/attackby(obj/item/C, mob/user)
 	if(istype(C, /obj/item/assembly/signaler/anomaly/grav))
-		to_chat(user, span_notice("Você insere [C] no manipulador gravitacional e a arma suavemente sussurra para a vida."))
+		to_chat(user, span_notice("You insert [C] into the gravitational manipulator and the weapon gently hums to life."))
 		firing_core = TRUE
 		playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
 		qdel(C)
@@ -372,7 +391,7 @@ it is often confused with the mech weapon of the same name, since it is a bit mo
 	lefthand_file = 'icons/mob/inhands/weapons/64x_guns_left.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/64x_guns_right.dmi'
 	inhand_icon_state = null //null so we build the correct inhand.
-	desc = "Um protótipo de projetor de fluxo de alta tensão criado usando os últimos avanços na ciência da anomalia.\n\nA natureza anômala do núcleo de fluxo permite que o arco tesla seja guiado do eletrodo para o alvo sem ser desviado para condutores perdidos fora do campo alvo."
+	desc = "A high voltage flux projector prototype created using the latest advancements in the anomaly science.\n\nThe anomalous nature of the flux core allows the tesla arc to be guided from the electrode to the target without being diverted to stray conductors outside the target field."
 	SET_BASE_VISUAL_PIXEL(-8, 0)
 	ammo_type = list(/obj/item/ammo_casing/energy/tesla_cannon)
 	inhand_x_dimension = 64
@@ -394,7 +413,7 @@ it is often confused with the mech weapon of the same name, since it is a bit mo
 		return ..()
 	//If we have charge, but the stock is folded, do sparks.
 	if(can_shoot())
-		balloon_alert(user, "A eletricidade está crescendo para estoque!")
+		balloon_alert(user, "electricity arcing to stock!")
 
 		if(prob(75)) //fake sparks to cut on spark spam
 			playsound(user, 'sound/effects/sparks/sparks1.ogg', 50, TRUE)
@@ -424,7 +443,7 @@ it is often confused with the mech weapon of the same name, since it is a bit mo
 
 /obj/item/gun/energy/marksman_revolver
 	name = "marksman revolver"
-	desc = "Usa pulsos elétricos para disparar pedaços microscópicos de metal em velocidades incrivelmente altas. Fogo alternativo lança uma moeda que pode ser alvo de poder de fogo extra."
+	desc = "Uses electric pulses to fire microscopic pieces of metal at incredibly high speeds. Alternate fire flips a coin that can be targeted for extra firepower."
 	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	icon_state = "revolver"
 	ammo_type = list(/obj/item/ammo_casing/energy/marksman)
@@ -469,7 +488,7 @@ it is often confused with the mech weapon of the same name, since it is a bit mo
 		return ITEM_INTERACT_BLOCKING
 
 	if(max_coins && coin_count <= 0)
-		to_chat(user, span_warning("Você não tem moedas agora!"))
+		to_chat(user, span_warning("You don't have any coins right now!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(max_coins)
@@ -478,7 +497,7 @@ it is often confused with the mech weapon of the same name, since it is a bit mo
 
 	var/turf/target_turf = get_offset_target_turf(target, rand(-1, 1), rand(-1, 1)) // choose a random tile adjacent to the clicked one
 	playsound(user.loc, 'sound/effects/coin2.ogg', 50, TRUE)
-	user.visible_message(span_warning("[user] lança uma moeda em direção [target]!"), span_danger("Você joga uma moeda em direção [target]!"))
+	user.visible_message(span_warning("[user] flips a coin towards [target]!"), span_danger("You flip a coin towards [target]!"))
 	var/obj/projectile/bullet/coin/new_coin = new(get_turf(user), target_turf, user)
 	new_coin.aim_projectile(target_turf, user)
 	new_coin.fire()
@@ -486,7 +505,7 @@ it is often confused with the mech weapon of the same name, since it is a bit mo
 
 /obj/item/gun/energy/photon
 	name = "photon cannon"
-	desc = "Um design competitivo para o canhão Tesla, que em vez de carregar elétrons latentes, libera energia em fótons. A proteção ocular é recomendada."
+	desc = "A competitive design to the tesla cannon, that instead of charging latent electrons, releases energy into photons. Eye protection is recommended."
 	icon_state = "photon"
 	inhand_icon_state = "tesla"
 	fire_sound = 'sound/items/weapons/lasercannonfire.ogg'

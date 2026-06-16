@@ -1,6 +1,6 @@
 /obj/item/camera/spooky
 	name = "camera obscura"
-	desc = "Uma câmera polaróide, alguns dizem que pode ver fantasmas!"
+	desc = "A polaroid camera, some say it can see ghosts!"
 	see_ghosts = CAMERA_SEE_GHOSTS_BASIC
 
 /obj/item/camera/spooky/steal_souls(list/victims)
@@ -15,23 +15,20 @@
 			peek_a_boo.apply_status_effect(/datum/status_effect/incapacitating/paralyzed/revenant, 2 SECONDS)
 
 		target.visible_message(
-			span_warning("[target] violentamente hesita!"),
-			span_revendanger("Você sente sua essência drenando de ter sua foto tirada!"),
+			span_warning("[target] violently flinches!"),
+			span_revendanger("You feel your essence draining away from having your picture taken!"),
 		)
 		target.apply_damage(rand(10, 15))
 
 /obj/item/camera/spooky/badmin
-	desc = "Uma câmera polaróide, alguns dizem que pode ver fantasmas! Parece ter uma lupa extra no final."
+	desc = "A polaroid camera, some say it can see ghosts! It seems to have an extra magnifier on the end."
 	see_ghosts = CAMERA_SEE_GHOSTS_ORBIT
 
 /obj/item/camera/detective
 	name = "detective's camera"
-	desc = "Uma câmera polaróide silenciosa com capacidade extra para investigações criminais."
+	desc = "A silent polaroid camera with extra capacity for crime investigations."
+	print_monochrome = TRUE
 	flash_enabled = FALSE
 	silent = TRUE
 	pictures_max = 30
 	pictures_left = 30
-
-/obj/item/camera/detective/after_picture(mob/user, datum/picture/picture)
-	. = ..()
-	user.playsound_local(get_turf(src), SFX_POLAROID, 35, TRUE)

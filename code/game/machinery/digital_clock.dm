@@ -1,6 +1,6 @@
 /obj/machinery/digital_clock
 	name = "digital clock"
-	desc = "Um ultra-futurista, elegante, avançado, relógio digital normal da próxima geração que diz as horas. Alimentado pelo espaço azul. Apesar de supostamente ser melhor em todos os sentidos para relógios clássicos, não parece o mesmo. Eles não fazem como costumavam..."
+	desc = "An ultra-futuristic, sleek, advanced, next-gen normal digital clock that tells the time. Powered by bluespace. Despite supposedly being better in every way to classic clocks, it just doesn't feel the same. They just don't make them the way they used to..."
 	icon_state = "digital_clock_base"
 	icon = 'icons/obj/digital_clock.dmi'
 	verb_say = "beeps"
@@ -13,7 +13,7 @@
 
 /obj/item/wallframe/digital_clock
 	name = "digital clock frame"
-	desc = "Costumava construir relógios digitais, apenas seguros na parede."
+	desc = "Used to build digital clocks, just secure to the wall."
 	icon_state = "digital_clock_base"
 	icon = 'icons/obj/digital_clock.dmi'
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 4)
@@ -22,11 +22,11 @@
 
 /obj/machinery/digital_clock/wrench_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
-	balloon_alert(user, "[anchored ? "un" : ""]Segurando...")
+	balloon_alert(user, "[anchored ? "un" : ""]securing...")
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 6 SECONDS))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, vary = TRUE)
-		balloon_alert(user, "[anchored ? "un" : ""]Seguro.")
+		balloon_alert(user, "[anchored ? "un" : ""]secured")
 		deconstruct()
 		return TRUE
 
@@ -34,12 +34,12 @@
 	if(user.combat_mode)
 		return
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "não precisa de reparos!")
+		balloon_alert(user, "it doesn't need repairs!")
 		return TRUE
-	balloon_alert(user, "Reparando exibição...")
+	balloon_alert(user, "repairing display...")
 	if(!tool.use_tool(src, user, 4 SECONDS, amount = 0, volume=50))
 		return TRUE
-	balloon_alert(user, "consertado")
+	balloon_alert(user, "repaired")
 	atom_integrity = max_integrity
 	set_machine_stat(machine_stat & ~BROKEN)
 	update_appearance()
@@ -110,7 +110,7 @@
 	if(obj_flags & EMAGGED)
 		station_minutes = rand(0, 99)
 	else
-		station_minutes = text2num(station_time_timestamp(format = "mm"))
+		station_minutes = text2num(round_timestamp(format = "mm"))
 
 	// tenth / the '3' in '31' / 31 -> 3.1 -> 3
 	var/station_minute_tenth = station_minutes >= 10 ? round(station_minutes * 0.1) : 0
@@ -122,7 +122,7 @@
 	if(obj_flags & EMAGGED)
 		station_hours = rand(0, 99)
 	else
-		station_hours = text2num(station_time_timestamp(format = "hh"))
+		station_hours = text2num(round_timestamp(format = "hh"))
 
 	// one / the '1' in '12' / 12 -> 1.2 -> 1
 	var/station_hours_tenth = station_minutes >= 10 ? round(station_hours * 0.1) : 0

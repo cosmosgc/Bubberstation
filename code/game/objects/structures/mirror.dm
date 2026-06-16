@@ -15,6 +15,9 @@
 #define PRIDE_MIRROR_OPTIONS list(CHANGE_HAIR, CHANGE_BEARD, CHANGE_RACE, CHANGE_SEX, CHANGE_EYES)
 #define MAGIC_MIRROR_OPTIONS list(CHANGE_HAIR, CHANGE_BEARD, CHANGE_RACE, CHANGE_SEX, CHANGE_EYES, CHANGE_NAME)
 
+// Chance for the mirror to be haunted at creation
+#define ROUNDSTART_CURSED_CHANCE 0.2
+
 /obj/structure/mirror
 	name = "mirror"
 	desc = "Espelho espelho na parede, quem é o mais robusto de todos?"
@@ -29,7 +32,8 @@
 	///Can this mirror be removed from walls with tools?
 	var/deconstructable = TRUE
 	var/list/mirror_options = INERT_MIRROR_OPTIONS
-
+	// Can a revenant be imprisoned in this mirror?
+	var/cursable = TRUE
 	///Flags this race must have to be selectable with this type of mirror.
 	var/race_flags = MIRROR_MAGIC
 	///List of all Races that can be chosen, decided by its Initialize.
@@ -51,6 +55,8 @@
 	AddComponent(/datum/component/reflection, 		reflection_filter = reflection_filter, 		reflection_matrix = reflection_matrix, 		can_reflect = CALLBACK(src, PROC_REF(can_reflect)), 		update_signals = list(COMSIG_ATOM_BREAK), 		check_reflect_signals = list(SIGNAL_ADDTRAIT(TRAIT_NO_MIRROR_REFLECTION), SIGNAL_REMOVETRAIT(TRAIT_NO_MIRROR_REFLECTION)), 	)
 	if(mapload)
 		find_and_mount_on_atom()
+		if(prob(ROUNDSTART_CURSED_CHANCE) && cursable)
+			AddComponent(/datum/component/revenant_prison, create_on_release = TRUE)
 	update_choices()
 	register_context()
 
@@ -66,10 +72,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 
 /obj/structure/mirror/broken
 	icon_state = "mirror_broke"
+	cursable = FALSE
+	broken = TRUE
+	desc = "Oh no, seven years of bad luck!"
 
 /obj/structure/mirror/broken/Initialize(mapload)
 	. = ..()
-	atom_break(null, mapload)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 
@@ -256,8 +264,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 		return
 	user.set_eye_color(sanitize_hexcolor(new_eye_color))
 	user.dna.update_ui_block(/datum/dna_block/identity/eye_colors)
+<<<<<<< HEAD
 	user.update_body()
 	to_chat(user, span_notice("Você olha para seus novos olhos com seus novos olhos. Perfeito!"))
+=======
+	user.update_eyes()
+	to_chat(user, span_notice("You gaze at your new eyes with your new eyes. Perfect!"))
+>>>>>>> upstream/master
 
 /obj/structure/mirror/examine(mob/user)
 	. = ..()
@@ -296,13 +309,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 		to_chat(unlucky_dude, span_warning("Um frio escorre pela sua espinha como [src] Estilhaços..."))
 		unlucky_dude.AddComponent(/datum/component/omen, incidents_left = 7)
 
-/obj/structure/mirror/atom_break(damage_flag, mapload)
+/obj/structure/mirror/atom_break(damage_flag)
 	. = ..()
 	if(broken)
 		return
 	icon_state = "mirror_broke"
-	if(!mapload)
-		playsound(src, SFX_SHATTER, 70, TRUE)
+	playsound(src, SFX_SHATTER, 70, TRUE)
 	if(desc == initial(desc))
 		desc = "Oh não, sete anos de azar!"
 	broken = TRUE
@@ -355,6 +367,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	icon_state = "magic_mirror"
 	mirror_options = MAGIC_MIRROR_OPTIONS
 	deconstructable = FALSE
+	cursable = FALSE
 
 /obj/structure/mirror/magic/Initialize(mapload)
 	. = ..()
@@ -457,3 +470,5 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 #undef INERT_MIRROR_OPTIONS
 #undef PRIDE_MIRROR_OPTIONS
 #undef MAGIC_MIRROR_OPTIONS
+
+#undef ROUNDSTART_CURSED_CHANCE

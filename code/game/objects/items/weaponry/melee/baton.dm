@@ -1,6 +1,6 @@
 /obj/item/melee/baton
 	name = "police baton"
-	desc = "Um cassetete de madeira para bater na escória criminosa."
+	desc = "A wooden truncheon for beating criminal scum."
 	desc_controls = "Left click to stun, right click to harm."
 	icon = 'icons/obj/weapons/baton.dmi'
 	icon_state = "classic_baton"
@@ -93,11 +93,11 @@
 		readout += "Either it is [span_warning("completely unable to perform a stunning strike")], or it [span_warning("attacks via some unusual method")]."
 		return readout.Join("\n")
 
-	readout += "É preciso.[span_warning("[HITS_TO_CRIT(stamina_damage)] strike\s")]Para atardoar um inimigo."
+	readout += "It takes [span_warning("[HITS_TO_CRIT(stamina_damage)] strike\s")] to stun an enemy."
 
-	readout += "\nOs atos de cada ataque podem ser atenuados utilizando[span_warning("[armour_type_against_stun]")]Armadura."
+	readout += "\nThe effects of each strike can be mitigated by utilizing [span_warning("[armour_type_against_stun]")] armor."
 
-	readout += "\nTem uma capacidade impressionante de perfurar armaduras.[span_warning("[stun_armour_penetration]%")]."
+	readout += "\nIt has a stun armor-piercing capability of [span_warning("[stun_armour_penetration]%")]."
 	return readout.Join("\n")
 
 /obj/item/melee/baton/proc/add_deep_lore()
@@ -125,7 +125,7 @@
 		var/mob/living/carbon/human/human_user = user
 		if(human_user.check_chunky_fingers() && user.is_holding(src) && !HAS_MIND_TRAIT(user, TRAIT_CHUNKYFINGERS_IGNORE_BATON))
 			if(!harmbatonning)
-				balloon_alert(human_user, "Dedos são muito grandes!")
+				balloon_alert(human_user, "fingers are too big!")
 			return FALSE
 	if(!COOLDOWN_FINISHED(src, cooldown_check))
 		if(wait_desc && !harmbatonning)
@@ -133,7 +133,7 @@
 		return FALSE
 	if(HAS_TRAIT_FROM(target, TRAIT_IWASBATONED, REF(user)) ) //no doublebaton abuse anon!
 		if(!harmbatonning)
-			target.balloon_alert(user, "Não posso atordoar ainda!")
+			target.balloon_alert(user, "can't stun yet!")
 		return FALSE
 	return TRUE
 
@@ -164,8 +164,8 @@
 	// clumsy people redirect this attack - yes, this bypasses IWASBATONED and such
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
 		user.visible_message(
-			span_danger("[user] Acidentalmente bate [user.p_them()] ego sobre a cabeça com [src] Que idiota!"),
-			span_userdanger("Você acidentalmente bateu na cabeça com [src]!"),
+			span_danger("[user] accidentally hits [user.p_them()]self over the head with [src]! What a doofus!"),
+			span_userdanger("You accidentally hit yourself over the head with [src]!"),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -271,19 +271,19 @@
 /obj/item/melee/baton/proc/get_stun_description(mob/living/target, mob/living/user)
 	PROTECTED_PROC(TRUE)
 	. = list()
-	.["visible"] = span_danger("[user] Bate.[target] Abaixo com [src]!")
-	.["local"] = span_userdanger("[user] Derruba você com [src]!")
+	.["visible"] = span_danger("[user] knocks [target] down with [src]!")
+	.["local"] = span_userdanger("[user] knocks you down with [src]!")
 
 /// Default message for stunning a cyborg.
 /obj/item/melee/baton/proc/get_cyborg_stun_description(mob/living/target, mob/living/user)
 	PROTECTED_PROC(TRUE)
 	. = list()
 	if(affect_cyborg)
-		.["visible"] = span_danger("[user] pulsações [target] Os sensores com o bastão!")
-		.["local"] = span_danger("Você pulsa.[target] Os sensores com o bastão!")
+		.["visible"] = span_danger("[user] pulses [target]'s sensors with the baton!")
+		.["local"] = span_danger("You pulse [target]'s sensors with the baton!")
 	else
-		.["visible"] = span_danger("[user] Tenta derrubar [target] Com [src] E previsivelmente falha!") //look at this duuuuuude
-		.["local"] = span_userdanger("[user] Tenta te derrubar com...[src]?") //look at the top of his head!
+		.["visible"] = span_danger("[user] tries to knock down [target] with [src], and predictably fails!") //look at this duuuuuude
+		.["local"] = span_userdanger("[user] tries to... knock you down with [src]?") //look at the top of his head!
 
 /// Contains any special effects that we apply to living, non-cyborg mobs we stun. Does not include applying a knockdown, dealing stamina damage, etc.
 /obj/item/melee/baton/proc/additional_effects_non_cyborg(mob/living/target, mob/living/user)
@@ -308,14 +308,14 @@
 
 /obj/item/conversion_kit
 	name = "conversion kit"
-	desc = "Uma caixa estranha contendo ferramentas de trabalho de madeira e um papel de instrução para transformar bastões de choque em outra coisa."
+	desc = "A strange box containing wood working tools and an instruction paper to turn stun batons into something else."
 	icon = 'icons/obj/storage/box.dmi'
 	icon_state = "uk"
 	custom_price = PAYCHECK_COMMAND * 4.5
 
 /obj/item/melee/baton/telescopic
 	name = "telescopic baton"
-	desc = "Uma arma de defesa pessoal compacta e robusta. Pode ser escondido quando dobrado."
+	desc = "A compact yet robust personal defense weapon. Can be concealed when folded."
 	icon = 'icons/obj/weapons/baton.dmi'
 	icon_state = "telebaton"
 	icon_angle = -45
@@ -349,7 +349,15 @@
 
 /obj/item/melee/baton/telescopic/Initialize(mapload)
 	. = ..()
-	AddComponent( 		/datum/component/transforming, 		force_on = active_force, 		hitsound_on = hitsound, 		w_class_on = WEIGHT_CLASS_NORMAL, 		clumsy_check = FALSE, 		attack_verb_continuous_on = list("smacks", "strikes", "cracks", "beats"), 		attack_verb_simple_on = list("smack", "strike", "crack", "beat"), 	)
+	AddComponent( \
+		/datum/component/transforming, \
+		force_on = active_force, \
+		hitsound_on = hitsound, \
+		w_class_on = WEIGHT_CLASS_NORMAL, \
+		clumsy_check = FALSE, \
+		attack_verb_continuous_on = list("smacks", "strikes", "cracks", "beats"), \
+		attack_verb_simple_on = list("smack", "strike", "crack", "beat"), \
+	)
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
 /obj/item/melee/baton/telescopic/additional_effects_non_cyborg(mob/living/target, mob/living/user)
@@ -359,7 +367,7 @@
 	var/mob/living/carbon/human/human_user = user
 	var/obj/item/organ/brain/our_brain = human_user.get_organ_by_type(/obj/item/organ/brain)
 
-	user.visible_message(span_suicide("[user] Coisas.[src] Para cima.[user.p_their()] Nariz e aperta o botão \"Extensor\"Parece que...[user.p_theyre()] Tentando limpar [user.p_their()] Mente."))
+	user.visible_message(span_suicide("[user] stuffs [src] up [user.p_their()] nose and presses the 'extend' button! It looks like [user.p_theyre()] trying to clear [user.p_their()] mind."))
 	if(active)
 		playsound(src, on_sound, 50, TRUE)
 		add_fingerprint(user)
@@ -398,24 +406,24 @@
 
 /obj/item/melee/baton/telescopic/bronze
 	name = "bronze-capped telescopic baton"
-	desc = "Uma arma de defesa pessoal compacta e robusta. Pode ser escondido quando dobrado. Este é classificado como BRONZE, e assim tem poder penetrativo medíocre."
+	desc = "A compact yet robust personal defense weapon. Can be concealed when folded. This one is ranked BRONZE, and thus has mediocre penetrative power."
 	icon_state = "telebaton_bronze"
 
 /obj/item/melee/baton/telescopic/silver
 	name = "silver-capped telescopic baton"
-	desc = "Uma arma de defesa pessoal compacta e robusta. Pode ser escondido quando dobrado. Este é um SILVER classificado, e assim tem poder penetrativo decente."
+	desc = "A compact yet robust personal defense weapon. Can be concealed when folded. This one is ranked SILVER, and thus has decent penetrative power."
 	icon_state = "telebaton_silver"
 	stun_armour_penetration = 30 // strong enough to pen sec armor
 
 /obj/item/melee/baton/telescopic/gold
 	name = "gold-capped telescopic baton"
-	desc = "Uma arma de defesa pessoal compacta e robusta. Pode ser escondido quando dobrado. Este é classificado como GOLD, e assim tem excepcional poder penetrativo."
+	desc = "A compact yet robust personal defense weapon. Can be concealed when folded. This one is ranked GOLD, and thus has exceptional penetrative power."
 	icon_state = "telebaton_gold"
 	stun_armour_penetration = 50 // strong enough to pen syndicate modsuits
 
 /obj/item/melee/baton/telescopic/contractor_baton
 	name = "contractor baton"
-	desc = "Um bastão de choque telescópico de alta tecnologia, desenvolvido pelas Indústrias Cybersun. Dá um choque preciso ao sistema nervoso central do alvo para incapacitá-los."
+	desc = "A high tech telescopic stun baton, as developed by Cybersun Industries. Delivers a precise shock to a target's central nervous system to incapacitate them."
 	icon = 'icons/obj/weapons/baton.dmi'
 	icon_state = "contractor_baton"
 	worn_icon_state = "contractor_baton"
@@ -432,7 +440,7 @@
 	stun_armour_penetration = 30 // strong enough to pen sec armor
 	clumsy_knockdown_time = 24 SECONDS
 	affect_cyborg = TRUE
-	wait_desc = "Ainda carregando!"
+	wait_desc = "still charging!"
 	on_stun_sound = 'sound/items/weapons/contractor_baton/contractorbatonhit.ogg'
 	unfolded_drop_sound = 'sound/items/baton/contractor_baton_unfolded_pickup.ogg'
 	unfolded_pickup_sound = 'sound/items/baton/contractor_baton_unfolded_pickup.ogg'
@@ -448,7 +456,7 @@
 
 /obj/item/melee/baton/security
 	name = "stun baton"
-	desc = "O dispositivo de apreensão seguro, desenvolvido por Nanotrasen. Dá um choque preciso ao sistema nervoso central do alvo para incapacitá-los."
+	desc = "The Secure Apprehension Device, as developed by Nanotrasen. Delivers a precise shock to a target's central nervous system to incapacitate them."
 	desc_controls = "Left click to stun, right click to harm."
 	icon = 'icons/obj/weapons/baton.dmi'
 	icon_state = "stunbaton"
@@ -472,7 +480,7 @@
 	on_stun_volume = 50
 	active = FALSE
 	stun_on_harmbaton = TRUE
-	wait_desc = "Ainda carregando!"
+	wait_desc = "still charging!"
 	activated_word = "activated"
 	context_living_rmb_active = "Harmful Stun"
 	light_range = 1.5
@@ -519,11 +527,11 @@
 
 /obj/item/melee/baton/security/suicide_act(mob/living/user)
 	if(cell?.charge && active)
-		user.visible_message(span_suicide("[user] é colocar o vivo [name] Em [user.p_their()] Boca! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] is putting the live [name] in [user.p_their()] mouth! It looks like [user.p_theyre()] trying to commit suicide!"))
 		finalize_baton_attack(user, user)
 		return FIRELOSS
 	else
-		user.visible_message(span_suicide("[user] Está empurrando\the [src] Pela garganta dele! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] is shoving \the [src] down their throat! It looks like [user.p_theyre()] trying to commit suicide!"))
 		return OXYLOSS
 
 /obj/item/melee/baton/security/Destroy()
@@ -579,9 +587,9 @@
 /obj/item/melee/baton/security/examine(mob/user)
 	. = ..()
 	if(cell)
-		. += span_notice("\The [src] É [round(cell.percent())] Está carregado.")
+		. += span_notice("\The [src] is [round(cell.percent())]% charged.")
 	else
-		. += span_warning("\The [src] não tem uma fonte de energia instalada.")
+		. += span_warning("\The [src] does not have a power source installed.")
 
 /obj/item/melee/baton/security/screwdriver_act(mob/living/user, obj/item/tool)
 	if(tryremovecell(user))
@@ -592,15 +600,15 @@
 	if(istype(item, /obj/item/stock_parts/power_store/cell))
 		var/obj/item/stock_parts/power_store/cell/active_cell = item
 		if(cell)
-			to_chat(user, span_warning("[src] Já tem uma cela!"))
+			to_chat(user, span_warning("[src] already has a cell!"))
 		else
 			if(active_cell.maxcharge < cell_hit_cost)
-				to_chat(user, span_notice("[src] requer uma célula de maior capacidade."))
+				to_chat(user, span_notice("[src] requires a higher capacity cell."))
 				return
 			if(!user.transferItemToLoc(item, src))
 				return
 			cell = item
-			to_chat(user, span_notice("Você instala uma célula em [src]."))
+			to_chat(user, span_notice("You install a cell in [src]."))
 			update_appearance()
 	else
 		return ..()
@@ -608,22 +616,22 @@
 /obj/item/melee/baton/security/proc/tryremovecell(mob/user)
 	if(cell && can_remove_cell)
 		cell.forceMove(drop_location())
-		to_chat(user, span_notice("Você remove a célula de [src]."))
+		to_chat(user, span_notice("You remove the cell from [src]."))
 		return TRUE
 	return FALSE
 
 /obj/item/melee/baton/security/attack_self(mob/user)
 	if(cell?.charge >= cell_hit_cost && !active)
 		turn_on(user)
-		balloon_alert(user, "Ligado.")
+		balloon_alert(user, "turned on")
 	else
 		turn_off()
 		if(!cell)
-			balloon_alert(user, "Sem fonte de energia!")
+			balloon_alert(user, "no power source!")
 		else if(cell?.charge < cell_hit_cost)
-			balloon_alert(user, "Sem carga!")
+			balloon_alert(user, "out of charge!")
 		else
-			balloon_alert(user, "desligado")
+			balloon_alert(user, "turned off")
 	add_fingerprint(user)
 
 /// Toggles the stun baton's light
@@ -660,8 +668,8 @@
 /obj/item/melee/baton/security/try_stun(mob/living/target, mob/living/user, harmbatonning)
 	if(!active && !harmbatonning && !user.combat_mode)
 		target.visible_message(
-			span_warning("[user] Golpes.[target] Com [src] Felizmente estava desligada."),
-			span_warning("[user] Te cutuca com [src] Felizmente estava desligada."),
+			span_warning("[user] prods [target] with [src]. Luckily it was off."),
+			span_warning("[user] prods you with [src]. Luckily it was off."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 		return FALSE
@@ -694,7 +702,7 @@
 /obj/item/melee/baton/security/proc/apply_stun_effect_end(mob/living/target)
 	var/trait_check = HAS_TRAIT(target, TRAIT_BATON_RESISTANCE) //var since we check it in out to_chat as well as determine stun duration
 	if(!target.IsKnockdown())
-		to_chat(target, span_warning("Seus músculos se apoderam, fazendo você entrar em colapso.[trait_check ? ", but your body quickly recovers..." : "!"]"))
+		to_chat(target, span_warning("Your muscles seize, making you collapse[trait_check ? ", but your body quickly recovers..." : "!"]"))
 
 	if(!trait_check)
 		target.Knockdown(knockdown_time)
@@ -702,14 +710,14 @@
 /obj/item/melee/baton/security/get_stun_description(mob/living/target, mob/living/user)
 	. = list()
 
-	.["visible"] = span_danger("[user] ATORDOAMENTOS [target] Com [src]!")
-	.["local"] = span_userdanger("[user] Te atordoa com [src]!")
+	.["visible"] = span_danger("[user] stuns [target] with [src]!")
+	.["local"] = span_userdanger("[user] stuns you with [src]!")
 
 /obj/item/melee/baton/security/get_cyborg_stun_description(mob/living/target, mob/living/user)
 	. = ..()
 	if(!affect_cyborg)
-		.["visible"] = span_danger("[user] Tenta atordoar [target] Com [src] E previsivelmente falha!")
-		.["local"] = span_userdanger("[user] Tenta... te atordoar com [src]?")
+		.["visible"] = span_danger("[user] tries to stun [target] with [src], and predictably fails!")
+		.["local"] = span_userdanger("[user] tries to... stun you with [src]?")
 
 /obj/item/melee/baton/security/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
@@ -763,7 +771,7 @@
 ///Stun Sword
 /obj/item/melee/baton/security/stunsword
 	name = "\improper NT-20 'Excalibur' Stunsword"
-	desc = "É uma espada. Ele atordoa. O que mais você poderia querer?"
+	desc = "It's a sword. It stuns. What more could you want?"
 	icon_state = "stunsword"
 	inhand_icon_state = "stunsword"
 	base_icon_state = "stunsword"
@@ -798,7 +806,7 @@
 //Makeshift stun baton. Replacement for stun gloves.
 /obj/item/melee/baton/security/cattleprod
 	name = "stunprod"
-	desc = "Um bastão de choque improvisado."
+	desc = "An improvised stun baton."
 	desc_controls = "Left click to stun, right click to harm."
 	icon = 'icons/obj/weapons/spear.dmi'
 	icon_state = "stunprod"
@@ -834,11 +842,11 @@
 		return ..()
 
 	if(!can_upgrade)
-		user.visible_message(span_warning("Este prod já está melhorado!"))
+		user.visible_message(span_warning("This prod is already improved!"))
 		return ..()
 
 	if(cell)
-		user.visible_message(span_warning("Você não pode colocar o cristal no atordoador enquanto ele tem uma célula de energia instalada!"))
+		user.visible_message(span_warning("You can't put the crystal onto the stunprod while it has a power cell installed!"))
 		return ..()
 
 	var/our_prod
@@ -852,10 +860,10 @@
 		our_crystal.use(1)
 		our_prod = /obj/item/melee/baton/security/cattleprod/telecrystalprod
 	else
-		to_chat(user, span_notice("Você não acha\the [item] fará qualquer coisa para melhorar.\the [src]."))
+		to_chat(user, span_notice("You don't think \the [item] will do anything to improve \the [src]."))
 		return ..()
 
-	to_chat(user, span_notice("Seu lugar.\the [item] Firme em\the [sparkler]."))
+	to_chat(user, span_notice("You place \the [item] firmly into \the [sparkler]."))
 	remove_item_from_storage(user)
 	qdel(src)
 	var/obj/item/melee/baton/security/cattleprod/brand_new_prod = new our_prod(user.loc)
@@ -873,7 +881,7 @@
 
 /obj/item/melee/baton/security/boomerang
 	name = "\improper OZtek Boomerang"
-	desc = "Um dispositivo inventado em 2486 para a grande guerra Space Emu pela confederação de Australicus, esses bumerangues de alta tecnologia também funcionam excepcionalmente bem em membros de tripulação impressionantes. Só tenha cuidado para pegá-lo quando lançado!"
+	desc = "A device invented in 2486 for the great Space Emu War by the confederacy of Australicus, these high-tech boomerangs also work exceptionally well at stunning crewmembers. Just be careful to catch it when thrown!"
 	throw_speed = 1
 	icon = 'icons/obj/weapons/thrown.dmi'
 	icon_state = "boomerang"
@@ -900,7 +908,7 @@
 
 /obj/item/melee/baton/security/cattleprod/teleprod
 	name = "teleprod"
-	desc = "Um prod com um cristal azul no final. O cristal não parece muito divertido para tocar."
+	desc = "A prod with a bluespace crystal on the end. The crystal doesn't look too fun to touch."
 	w_class = WEIGHT_CLASS_NORMAL
 	icon_state = "teleprod"
 	base_icon_state = "teleprod"
@@ -917,7 +925,7 @@
 
 /obj/item/melee/baton/security/cattleprod/telecrystalprod
 	name = "snatcherprod"
-	desc = "Um prod com um telecristal no final. Ele acende com um desejo de roubo e subversão."
+	desc = "A prod with a telecrystal on the end. It sparks with a desire for theft and subversion."
 	w_class = WEIGHT_CLASS_NORMAL
 	icon_state = "telecrystalprod"
 	base_icon_state = "telecrystalprod"
@@ -935,17 +943,17 @@
 	if(!user || !stuff_in_hand || !target.temporarilyRemoveItemFromInventory(stuff_in_hand))
 		return
 	if(user.put_in_inactive_hand(stuff_in_hand))
-		stuff_in_hand.loc.visible_message(span_warning("[stuff_in_hand] De arrependimento apareceu em [user] A mão!"))
+		stuff_in_hand.loc.visible_message(span_warning("[stuff_in_hand] suddenly appears in [user]'s hand!"))
 	else
 		stuff_in_hand.forceMove(user.drop_location())
-		stuff_in_hand.loc.visible_message(span_warning("[stuff_in_hand] De arrependimento apareceu!"))
+		stuff_in_hand.loc.visible_message(span_warning("[stuff_in_hand] suddenly appears!"))
 
 	if(clumsy && user.dropItemToGround(src, force = TRUE, silent = TRUE))
 		do_teleport(src, get_turf(user), 50, channel = TELEPORT_CHANNEL_BLUESPACE) //Wait, where did it go?
 
 /obj/item/melee/baton/nunchaku
 	name = "Syndie Fitness Nunchuks"
-	desc = "O equipamento de fitness mais comum em todo o sindicato, hastes de titânio pesam estritamente 13 libras"
+	desc = "The most common fitness equipment in the entire syndicate, titanium rods weigh strictly 13 pounds"
 	desc_controls = "Left click to stun, right click to harm. Throw mode counterattack any melee/throwable attacks."
 	icon_state = "nunchaku"
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
@@ -998,9 +1006,38 @@
 // Deep Lore //
 
 /obj/item/melee/baton/security/add_deep_lore()
-	AddElement(/datum/element/examine_lore, 		lore_hint = span_notice("Você pode.[EXAMINE_HINT("look closer")]Para apresentar um poco mais sobre [src]."), 		lore = "O Dispositivo de Apreensão Segura (às vezes referido como o DAU nos manuais de treinamento de oficiais) é a união profana de um maça e um pé de gado. Este dispositivo não letal foi projetado para acabar com rufiões, canalhas, ne'er-do-wells e criminosos onde quer que eles possam levantar suas cabeças feias.<br>		<br>Um símbolo das forças de segurança de Nanotrasen, o bastão de choque é a principal ferramenta que os oficiais empregam contra a escória ilegal e a vilania do Spinward e no exterior. Treinada para \"Baton primeiro, interroga depois\", a segurança de Nanotrasen ganhou uma reputação mista. Capaz de desligar rapidamente o sistema nervoso central de um criminoso com apenas algumas aplicações diretas da cabeça condutora do dispositivo, poucos possíveis encrenqueiros querem encontrar-se no lado errado de um oficial brandindo este bastão.<br>		<br>A polícia de Terragov evitou a adoção de bastões de choque devido a vários dilemas éticos colocados por seu uso, em grande parte devido às ramificações físicas e mentais de longo prazo de ser atingido por um gado humano. Grupos de defesa de direitos dos cidadãos protestam contra a proliferação de morcegos atordoados como uma ferramenta de policiamento, argumentando que eles são 'desumanos' e 'autoritários'. Nanotrasen, por outro lado, não teve tais escrúpulos ao implantar bastões de choque como medida de conformidade em todas as estações e instalações existentes contra membros indisciplinados do pessoal." 	)
+	AddElement(/datum/element/examine_lore, \
+		lore_hint = span_notice("You can [EXAMINE_HINT("look closer")] to learn a little more about [src]."), \
+		lore = "The Secure Apprehension Device (sometimes referred to as the SAD in the officer training manuals) is \
+		an unholy union of mace and cattleprod. Designed to stop criminals in their tracks, Nanotrasen security members \
+		are rarely without their trusty stun baton. Assuming they haven't lost it somewhere.<br>\
+		<br>\
+		Trained to 'baton first, interrogate later', Nanotrasen security has long since earned itself a mixed reputation. \
+		The device is able to rapidly shut down the central nervous system of a criminal with only a few direct applications \
+		of the conductive striking head.<br>\
+		<br>\
+		TerraGov law enforcement has avoided the adoption of stun batons due to various ethical dilemmas posed by \
+		their utilization. Studies of their usage have shown numerous longterm physical and mental ramifications caused by \
+		being struck by a human cattleprod. Citizens' rights advocacy groups protest against the proliferation of stun \
+		batons as a policing tool, arguing that they are 'inhumane' and 'authoritarian'. Nanotrasen, on the other hand, \
+		has had no such qualms when deploying stun batons as a compliance measure across all of their existing stations \
+		and facilities against their own unruly members of staff." \
+	)
 
 // Contractor Baton
 
 /obj/item/melee/baton/telescopic/contractor_baton/add_deep_lore()
-	AddElement(/datum/element/examine_lore, 		lore_hint = span_notice("Você pode.[EXAMINE_HINT("look closer")]Para apresentar um poco mais sobre [src]."), 		lore = "O Dispositivo de Aquisição de Contratos (às vezes referido como CAD em correspondência criptografada) é um dos exemplos mais frequentes de armamento das Indústrias Cybersun. Extremamente parecido com o próprio dispositivo de apreensão segura de Nanotrasen (também simplesmente conhecido como bastão de choque), o bastão contratante é capaz de induzir a ruptura do SNC em um alvo para torná-los indefesos. Também é capaz de devastador trauma contundente se usado como um espancamento. O bastão do empreiteiro também é capaz de implantação telescópica, permitindo discrição enquanto faz uma aproximação para um alvo.<br>		<br>O bastão do empreiteiro está associado com empreiteiros, agentes de campo da Cybersun. Enquanto o agente padrão muitas vezes seria encarregado de sabotagem, terrorismo, assassinato ou roubo, empreiteiros têm a tarefa crítica de sequestrar pessoal de alto valor. Qualquer um com potencial para possuir dados confidenciais ou sensíveis sobre sistemas de segurança e dispositivos Nanotrasen pode ser um alvo para Cybersun.<br>		<br>Extrair essa informação é mais fácil em indivíduos vivos. Como tal, o bastão foi projetado com incapacidade não letal em mente. No entanto, as Indústrias Cybersun há muito tempo encontraram soluções para extrair dados do falecido, caso o empreiteiro se encontre com apenas um cadáver para enviar de volta. A morte não pode poupá-lo das maquinações das Indústrias Cybersun se considerarem você um bem valioso para seus objetivos.<br>		<br>Nanotrasen utiliza uma série de contramedidas para insurgências de empreiteiros, tais como empregar memória seletiva limpando ou falsa injeção de memória, a criação de pessoal de comando 'dummy' através da aceleração artificial de membros de outra forma incompetentes mas úteis da tripulação (cuja incompetência muitas vezes resultará em um grau aceitável de interrupção operacional), que fornece bodes expiatórios convenientes no caso de uma quebra de segurança, bem como rotatividade frequente de pessoal e reatribuição." 	)
+	AddElement(/datum/element/examine_lore, \
+		lore_hint = span_notice("You can [EXAMINE_HINT("look closer")] to learn a little more about [src]."), \
+		lore = "The Contract Acquisition Device (sometimes referred to as the CAD in encrypted correspondence) is \
+		the most frequently encountered example of Cybersun Industries weaponry. Similar in purpose to Nanotrasen's \
+		own Secure Apprehension Device, the baton is capable of inducing rapid CNS disruption in a target to render them \
+		helpless. It also makes for an effective bludgeon, another quality it shares with the stun baton. To maximize \
+		ease of concealment, the baton is also able to be telescopically collapsed, to then be rapidly deployed at the \
+		pull of a trigger.<br>\
+		<br>\
+		The contractor baton is famously associated with contractors, elite Cybersun field agents sent to kidnap and extract \
+		high value enemy personnel for interrogation. Anyone with the potential to possess classified or sensitive data about \
+		Nanotrasen could find themselves a target for Cybersun. The company relentlessly employs contractors to probe Nanotrasen \
+		for vulnerabilities, starting with their employees." \
+	)

@@ -25,7 +25,7 @@
 
 /obj/machinery/ore_silo
 	name = "ore silo"
-	desc = "Um sistema de armazenamento e transmissão tudo em um espaço azul para as necessidades de distribuição mineral da estação."
+	desc = "An all-in-one bluespace storage and transmission system for the station's mineral distribution needs."
 	icon = 'icons/obj/machines/ore_silo.dmi'
 	icon_state = "silo"
 	density = TRUE
@@ -71,7 +71,17 @@
 /obj/machinery/ore_silo/Initialize(mapload)
 	. = ..()
 
-	materials = new ( 		src, 		SSmaterials.get_materials_by_flag(MATERIAL_SILO_STORED), 		INFINITY, 		MATCONTAINER_EXAMINE, 		container_signals = list( 			COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/ore_silo, on_item_consumed), 			COMSIG_MATCONTAINER_STACK_RETRIEVED = TYPE_PROC_REF(/obj/machinery/ore_silo, log_sheets_ejected), 		), 		allowed_items = /obj/item/stack 	)
+	materials = new ( \
+		src, \
+		SSmaterials.get_materials_by_flag(MATERIAL_SILO_STORED), \
+		INFINITY, \
+		MATCONTAINER_EXAMINE, \
+		container_signals = list( \
+			COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/ore_silo, on_item_consumed), \
+			COMSIG_MATCONTAINER_STACK_RETRIEVED = TYPE_PROC_REF(/obj/machinery/ore_silo, log_sheets_ejected), \
+		), \
+		allowed_items = /obj/item/stack \
+	)
 
 	if (!GLOB.ore_silo_default && mapload && is_station_level(z))
 		GLOB.ore_silo_default = src
@@ -114,10 +124,10 @@
 
 /obj/machinery/ore_silo/examine(mob/user)
 	. = ..()
-	. += span_notice("Pode ser ligado a tecnologia, impressoras de circuito e protelatas com uma multitool.")
-	. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
+	. += span_notice("It can be linked to techfabs, circuit printers and protolathes with a multitool.")
+	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
 	if(panel_open)
-		. += span_notice("A máquina inteira pode ser[EXAMINE_HINT("pried")]Separados.")
+		. += span_notice("The whole machine can be [EXAMINE_HINT("pried")] apart.")
 
 /obj/machinery/ore_silo/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = NONE
@@ -156,7 +166,7 @@
 
 /obj/machinery/ore_silo/multitool_act(mob/living/user, obj/item/multitool/I)
 	I.set_buffer(src)
-	balloon_alert(user, "Salvo nenhum buffer da multitool")
+	balloon_alert(user, "saved to multitool buffer")
 	return ITEM_INTERACT_SUCCESS
 
 
@@ -341,7 +351,7 @@
 		CRASH("Bad arguments passed to [callee]")
 	var/emagged = obj_flags & EMAGGED
 	if((isAI(user) || iscyborg(user) || isdrone(user)) && !emagged)
-		to_chat(user, span_danger("Um pergaminho de texto vermelho oclui sua visão:"))
+		to_chat(user, span_danger("A scroll of red text occludes your vision: ACCESS ENFORCEMENT _disabled_ for SILICON INTERFACE."))
 		user.flash_act(intensity = 1, affect_silicon = TRUE)
 		handle_access_action_feedback(
 			BAN_ATTEMPT_FAILURE_SOULLESS_MACHINE,
@@ -357,7 +367,7 @@
 	// like ban people who haven't joined the round yet
 	var/haxxor_card_ban_immunity = !isnull(target_user_data[CHAMELEON_OVERRIDE])
 
-	to_chat(user, span_warning("Você aperta o botão para[target_is_banned ? "un" : ""]Proibir[target_user_data["name"]]Uma conta..."))
+	to_chat(user, span_warning("You press the button to [target_is_banned ? "un" : ""]ban [target_user_data["name"]]'s account..."))
 	// No feedback if emagged
 	if(emagged)
 		if(!haxxor_card_ban_immunity && isnum(target_bank_id))
@@ -554,7 +564,7 @@
 	var/alist/user_data
 
 /datum/ore_silo_log/New(obj/machinery/M, _action, _amount, _noun, list/mats=list(), alist/user_data)
-	timestamp = station_time_timestamp()
+	timestamp = round_timestamp()
 	machine_name = M.name
 	area_name = get_area_name(M, TRUE)
 	action = _action

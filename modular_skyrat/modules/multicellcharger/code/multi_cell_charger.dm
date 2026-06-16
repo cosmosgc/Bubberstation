@@ -53,6 +53,13 @@
 		. += span_notice("A exibição de status diz:<b>[display_power(charge_rate, convert = FALSE)]</b>por célula.")
 	. += span_notice("Alt clique para remover todas as células de uma vez!")
 
+/obj/machinery/cell_charger_multi/screwdriver_act(mob/living/user, obj/item/tool)
+	. = ..()
+	if(length(charging_batteries))
+		to_chat(user, span_warning("[src] must have no cells inside!"))
+		return ITEM_INTERACT_BLOCKING
+	return default_deconstruction_screwdriver(user, tool)
+
 /obj/machinery/cell_charger_multi/attackby(obj/item/tool, mob/user, params)
 	if(istype(tool, /obj/item/stock_parts/power_store/cell) && !panel_open)
 		if(machine_stat & BROKEN)
@@ -82,8 +89,6 @@
 			user.visible_message(span_notice("[user]insere uma célula em[src]."), span_notice("Você insere uma célula em[src]."))
 			update_appearance()
 	else
-		if(!charging_batteries.len && default_deconstruction_screwdriver(user, icon_state, icon_state, tool))
-			return
 		if(default_deconstruction_crowbar(tool))
 			return
 		if(!charging_batteries.len && default_unfasten_wrench(user, tool))

@@ -5,7 +5,7 @@
 	max_occurrences = 2
 	min_players = 40 // To avoid shafting lowpop
 	category = EVENT_CATEGORY_HEALTH
-	description = "O coração de um membro da tripulação não funciona."
+	description = "A random crewmember's heart gives out."
 	min_wizard_trigger_potency = 6
 	max_wizard_trigger_potency = 7
 	admin_setup = list(/datum/event_admin_setup/minimum_candidate_requirement/heart_attack, /datum/event_admin_setup/input_number/heart_attack)
@@ -68,8 +68,12 @@
  */
 /datum/round_event/heart_attack/proc/attack_heart()
 	var/mob/living/carbon/human/winner = pick_weight(victims)
-	if(winner.has_status_effect(/datum/status_effect/exercised)) //Stuff that should "block" a heart attack rather than just deny eligibility for one goes here.
-		winner.visible_message(span_warning("[winner] Grunhidos e agarra seu peito por um momento, pegando [winner.p_their()] Respirar."), span_medal("Seu peito dói por um breve momento, que rapidamente desaparece. Você sente como se tivesse evitado um sério desastre de saúde."), span_hear("Você ouve alguém respirando aguçado por um momento, seguido por um suspiro de alívio."), 4)
+	// Our fitness level can potentially block a heart attack outright.
+	var/fitness_protection_probability = winner.mind?.get_skill_modifier(/datum/skill/athletics, SKILL_RANDS_MODIFIER)
+
+	if(prob(fitness_protection_probability * 2)) //Stuff that should "block" a heart attack rather than just deny eligibility for one goes here.
+		winner.visible_message(span_warning("[winner] grunts and clutches their chest for a moment, catching [winner.p_their()] breath."), span_medal("Your chest lurches in pain for a brief moment, which quickly fades. \
+								You feel like you've just avoided a serious health disaster."), span_hear("You hear someone's breathing sharpen for a moment, followed by a sigh of relief."), 4)
 		winner.playsound_local(get_turf(winner), 'sound/effects/health/slowbeat.ogg', 40, 0, channel = CHANNEL_HEARTBEAT, use_reverb = FALSE)
 		winner.Stun(3 SECONDS)
 		if(winner.client)
@@ -84,7 +88,7 @@
 	return FALSE
 
 /datum/event_admin_setup/minimum_candidate_requirement/heart_attack
-	output_text = "Não há candidatos elegíveis para um ataque cardíaco!"
+	output_text = "There are no candidates eligible to receive a heart attack!"
 
 /datum/event_admin_setup/minimum_candidate_requirement/heart_attack/count_candidates()
 	var/datum/round_event_control/heart_attack/heart_control = event_control
@@ -92,7 +96,7 @@
 	return length(heart_control.heart_attack_candidates)
 
 /datum/event_admin_setup/input_number/heart_attack
-	input_text = "Por favor, selecione quantos dias deseja arruinar."
+	input_text = "Please select how many people's days you wish to ruin."
 	default_value = 0
 	max_value = 90 //Will be overridden
 	min_value = 0

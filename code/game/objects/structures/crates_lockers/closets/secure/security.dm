@@ -210,6 +210,9 @@
 	req_one_access = list(ACCESS_BRIG)
 	var/id = null
 
+/obj/structure/closet/secure_closet/brig/holodeck
+	req_one_access = COMMON_ACCESS
+
 /obj/structure/closet/secure_closet/brig/genpop
 	name = "genpop storage locker"
 	desc = "Usado para armazenar os pertences dos turistas do Genpop visitando os locais."

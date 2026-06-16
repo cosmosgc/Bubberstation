@@ -24,13 +24,13 @@
 	if(car_traits & CAN_KIDNAP)
 		initialize_controller_action_type(/datum/action/vehicle/sealed/dump_kidnapped_mobs, VEHICLE_CONTROL_DRIVE)
 
-/obj/vehicle/sealed/car/mouse_drop_receive(atom/dropping, mob/M, params)
-	if(HAS_TRAIT(M, TRAIT_HANDS_BLOCKED) && !is_driver(M))
+/obj/vehicle/sealed/car/mouse_drop_receive(atom/dropping, mob/user, params)
+	if(!isliving(user) || (HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) && !is_driver(user)))
 		return
-	if((car_traits & CAN_KIDNAP) && isliving(dropping) && M != dropping)
+	if((car_traits & CAN_KIDNAP) && isliving(dropping) && user != dropping)
 		var/mob/living/kidnapped = dropping
-		kidnapped.visible_message(span_warning("[M] Começa a forçar [kidnapped] Em [src]!"))
-		mob_try_forced_enter(M, kidnapped)
+		kidnapped.visible_message(span_warning("[user] starts forcing [kidnapped] into [src]!"))
+		mob_try_forced_enter(user, kidnapped)
 	return ..()
 
 /obj/vehicle/sealed/car/mob_try_exit(mob/future_pedestrian, mob/user, silent = FALSE)
@@ -38,10 +38,10 @@
 		mob_exit(future_pedestrian, silent)
 		return TRUE
 	if (escape_time > 0)
-		to_chat(user, span_notice("Você empurra contra a parte de trás de\the [src] É o porta-malas para tentar sair."))
+		to_chat(user, span_notice("You push against the back of \the [src]'s trunk to try and get out."))
 		if(!do_after(user, escape_time, target = src))
 			return FALSE
-	to_chat(user,span_danger("[user] Sai daqui.[src]."))
+	to_chat(user,span_danger("[user] gets out of [src]."))
 	mob_exit(future_pedestrian, silent)
 	return TRUE
 
@@ -49,14 +49,14 @@
 	. = ..()
 	if(!(car_traits & CAN_KIDNAP))
 		return
-	to_chat(user, span_notice("Você começa a abrir [src] O porta-malas."))
+	to_chat(user, span_notice("You start opening [src]'s trunk."))
 	if(!do_after(user, 30))
 		return
 	if(return_amount_of_controllers_with_flag(VEHICLE_CONTROL_KIDNAPPED))
-		to_chat(user, span_notice("Como pesoas ficaram presas [src] O porta-malas caiu."))
+		to_chat(user, span_notice("The people stuck in [src]'s trunk all come tumbling out."))
 		dump_specific_mobs(VEHICLE_CONTROL_KIDNAPPED)
 		return
-	to_chat(user, span_notice("Parece.[src] O porta-malas estava vazio."))
+	to_chat(user, span_notice("It seems [src]'s trunk was empty."))
 
 ///attempts to force a mob into the car
 /obj/vehicle/sealed/car/proc/mob_try_forced_enter(mob/forcer, mob/kidnapped, silent = FALSE)
@@ -76,7 +76,7 @@
 ///Proc called when someone is forcefully stuffedd into a car
 /obj/vehicle/sealed/car/proc/mob_forced_enter(mob/kidnapped, silent = FALSE)
 	if(!silent)
-		kidnapped.visible_message(span_warning("[kidnapped] é forçado a\the [src]!"))
+		kidnapped.visible_message(span_warning("[kidnapped] is forced into \the [src]!"))
 		if(forced_enter_sound)
 			playsound(src, forced_enter_sound, 70, TRUE, MEDIUM_RANGE_SOUND_EXTRARANGE)
 	kidnapped.forceMove(src)

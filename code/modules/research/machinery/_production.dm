@@ -1,6 +1,6 @@
 /obj/machinery/rnd/production
 	name = "technology fabricator"
-	desc = "Faz itens pesquisados e protótipos com materiais e energia."
+	desc = "Makes researched and prototype items with materials and energy."
 	/// Energy cost per full stack of materials spent. Material insertion is 40% of this.
 	active_power_usage = 0.05 * STANDARD_CELL_RATE
 	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_MOUSEDROP_IGNORE_CHECKS
@@ -25,12 +25,20 @@
 	var/datum/looping_sound/lathe_print/print_sound
 	///made so we dont call addtimer() 40,000 times in on_techweb_update(). only allows addtimer() to be called on the first update
 	var/techweb_updating = FALSE
+	// BUBBER EDIT ADDITION BEGIN - Lizard gas imprinter
+	/// Whether to force the materials container not to connect to the station ore silo
+	var/force_disconnect = FALSE
+	// BUBBER EDIT ADDITION END
 
 /obj/machinery/rnd/production/Initialize(mapload)
 	print_sound = new(src,  FALSE)
 	materials = new (
-		src, 		mapload, 		mat_container_signals = list( 			COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/rnd/production, local_material_insert)
-		) 	)
+		src, \
+		force_disconnect ? FALSE : mapload, // BUBBER EDIT CHANGE - Lizard gas imprinter - ORIGINAL: mapload,
+		mat_container_signals = list( \
+			COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/rnd/production, local_material_insert)
+		) \
+	)
 
 	. = ..()
 
@@ -39,7 +47,12 @@
 	RegisterSignal(src, COMSIG_SILO_ITEM_CONSUMED, TYPE_PROC_REF(/obj/machinery/rnd/production, silo_material_insert))
 
 	AddComponent(
-		/datum/component/payment, 		0, 		SSeconomy.get_dep_account(payment_department), 		PAYMENT_CLINICAL, 		TRUE, 	)
+		/datum/component/payment, \
+		0, \
+		SSeconomy.get_dep_account(payment_department), \
+		PAYMENT_CLINICAL, \
+		TRUE, \
+	)
 
 	update_icon(UPDATE_OVERLAYS)
 
@@ -64,13 +77,13 @@
 	if(!in_range(user, src) && !isobserver(user))
 		return
 
-	. += span_notice("Custo de uso de material em<b>[efficiency_coeff * 100]%</b>.")
-	. += span_notice("Construir o tempo em<b>[efficiency_coeff * 100]%</b>.")
+	. += span_notice("Material usage cost at <b>[efficiency_coeff * 100]%</b>.")
+	. += span_notice("Build time at <b>[efficiency_coeff * 100]%</b>.")
 	if(drop_direction)
-		. += span_notice("Atualmente configurado para soltar objetos impressos<b>[dir2text(drop_direction)]</b>.")
-		. += span_notice("[EXAMINE_HINT("Alt-click")]para reiniciar.")
+		. += span_notice("Currently configured to drop printed objects <b>[dir2text(drop_direction)]</b>.")
+		. += span_notice("[EXAMINE_HINT("Alt-click")] to reset.")
 	else
-		. += span_notice("[EXAMINE_HINT("Drag")]Em direção a uma direção (enquanto ao lado) para mudar de direção.")
+		. += span_notice("[EXAMINE_HINT("Drag")] towards a direction (while next to it) to change drop direction.")
 
 /obj/machinery/rnd/production/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -459,21 +472,21 @@
 	if(!can_interact(user) || (!HAS_SILICON_ACCESS(user) && !isAdminGhostAI(user)) && !Adjacent(user))
 		return
 	if(busy)
-		balloon_alert(user, "Impressão ocupada!")
+		balloon_alert(user, "busy printing!")
 		return
 	var/direction = get_dir(src, over_location)
 	if(!direction)
 		return
 	drop_direction = direction
-	balloon_alert(user, "Deixando cair.[dir2text(drop_direction)]")
+	balloon_alert(user, "dropping [dir2text(drop_direction)]")
 
 /obj/machinery/rnd/production/click_alt(mob/user)
 	if(drop_direction == 0)
 		return CLICK_ACTION_BLOCKING
 	if(busy)
-		balloon_alert(user, "Impressão ocupada!")
+		balloon_alert(user, "busy printing!")
 		return CLICK_ACTION_BLOCKING
-	balloon_alert(user, "Reset da direção de queda")
+	balloon_alert(user, "drop direction reset")
 	drop_direction = 0
 	return CLICK_ACTION_SUCCESS
 

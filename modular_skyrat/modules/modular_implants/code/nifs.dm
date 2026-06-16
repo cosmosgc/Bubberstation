@@ -14,7 +14,7 @@
 // This is the original NIF that other NIFs are based on.
 /obj/item/organ/cyberimp/brain/nif
 	name = "Nanite Implant Framework"
-	desc = "Um implante cerebral que infusa o usuário com nanites."
+	desc = "A brain implant that infuses the user with nanites."
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/nifs.dmi'
 	icon_state = "base_nif"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -130,7 +130,7 @@
 	. = ..()
 
 	if(linked_mob && stored_ckey != insertee.ckey && theft_protection)
-		insertee.audible_message(span_warning("[src]deixa sair um zumbido negativo antes de se retirar com força de[insertee]É o cérebro."))
+		insertee.audible_message(span_warning("[src] lets out a negative buzz before forcefully removing itself from [insertee]'s brain."))
 		playsound(insertee, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 		Remove(insertee)
 		forceMove(get_turf(insertee))
@@ -259,18 +259,19 @@
 ///Toggles Blood Drain. Bypasss -  Ignores the need to perform the blood_check proc.
 /obj/item/organ/cyberimp/brain/nif/proc/toggle_blood_drain(bypass = FALSE)
 	if(!bypass && !blood_check())
-		return
+		return FALSE
 
 	blood_drain = !blood_drain
 
 	if(!blood_drain)
 		power_usage += (blood_drain_rate * blood_conversion_rate)
 
-		balloon_alert(linked_mob, "Sangue drenando desativado.")
-		return
+		balloon_alert(linked_mob, "blood draining disabled")
+		return TRUE
 
 	power_usage -= (blood_drain_rate * blood_conversion_rate)
-	balloon_alert(linked_mob, "Dreno de sangue ativado.")
+	balloon_alert(linked_mob, "blood draining enabled")
+	return TRUE
 
 ///Checks if the NIF is able to draw blood as a power source?
 /obj/item/organ/cyberimp/brain/nif/proc/blood_check()
@@ -297,10 +298,10 @@
 			var/random_ailment = rand(1, side_effect_risk)
 			switch(random_ailment)
 				if(1)
-					to_chat(linked_mob, span_warning("Você se sente mal do estômago!"))
+					to_chat(linked_mob, span_warning("You feel sick to your stomach!"))
 					linked_mob.adjust_disgust(25)
 				if(2)
-					to_chat(linked_mob, span_warning("Você sente uma onda de fadiga rolar sobre você!"))
+					to_chat(linked_mob, span_warning("You feel a wave of fatigue roll over you!"))
 					linked_mob.adjust_stamina_loss(50)
 
 		if(NIF_CALIBRATION_STAGE_FINISHED to INFINITY)
@@ -381,11 +382,11 @@
 		nif_icon = tag
 
 	if(alert)
-		to_chat(linked_mob, span_warning("[nif_icon] <b>Alerta NIF</b>: [message_to_send]"))
+		to_chat(linked_mob, span_warning("[nif_icon] <b>NIF Alert</b>: [message_to_send]"))
 		linked_mob.playsound_local(linked_mob, bad_sound, 60, FALSE)
 		return
 
-	to_chat(linked_mob, span_cyan("[nif_icon] <b>Mensagem NIF</b>: [message_to_send]"))
+	to_chat(linked_mob, span_cyan("[nif_icon] <b>NIF Message</b>: [message_to_send]"))
 	linked_mob.playsound_local(linked_mob, good_sound, 60, FALSE)
 
 
@@ -501,7 +502,7 @@
 
 /obj/item/storage/box/nif_ghost_box
 	name = "\improper NIF Starter Kit"
-	desc = "Contém um NIF livre de calibração junto com uma variedade de NIFSofts."
+	desc = "Contains a calibration-free NIF along with a variety of NIFSofts."
 	illustration = "disk_kit"
 
 /obj/item/storage/box/nif_ghost_box/PopulateContents()

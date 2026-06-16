@@ -31,7 +31,16 @@
 
 /obj/item/organ/wings/functional/Initialize(mapload)
 	. = ..()
-	AddComponent( 		/datum/component/jetpack, 		TRUE, 		drift_force, 		COMSIG_WINGS_OPENED, 		COMSIG_WINGS_CLOSED, 		null, 		CALLBACK(src, PROC_REF(can_fly)), 		CALLBACK(src, PROC_REF(can_fly)), 	)
+	AddComponent( \
+		/datum/component/jetpack, \
+		TRUE, \
+		drift_force, \
+		COMSIG_WINGS_OPENED, \
+		COMSIG_WINGS_CLOSED, \
+		null, \
+		CALLBACK(src, PROC_REF(can_fly)), \
+		CALLBACK(src, PROC_REF(can_fly)), \
+	)
 
 /obj/item/organ/wings/functional/Destroy()
 	QDEL_NULL(fly)
@@ -73,7 +82,7 @@
 		return FALSE
 	//Jumpsuits have tail holes, so it makes sense they have wing holes too
 	if(!cant_hide && (human.obscured_slots & HIDEJUMPSUIT))
-		to_chat(human, span_warning("Suas roupas bloqueiam suas asas de estender!"))
+		to_chat(human, span_warning("Your clothing blocks your wings from extending!"))
 		return FALSE
 	var/turf/location = get_turf(human)
 	if(!location)
@@ -81,7 +90,7 @@
 
 	var/datum/gas_mixture/environment = location.return_air()
 	if(environment?.return_pressure() < HAZARD_LOW_PRESSURE + 10)
-		to_chat(human, span_warning("A atmosfera é muito fina para você voar!"))
+		to_chat(human, span_warning("The atmosphere is too thin for you to fly!"))
 		return FALSE
 	return TRUE
 
@@ -91,7 +100,7 @@
 	if(human.buckled)
 		buckled_obj = human.buckled
 
-	to_chat(human, span_notice("Suas asas batem e lançam você!"))
+	to_chat(human, span_notice("Your wings spazz out and launch you!"))
 
 	playsound(human.loc, 'sound/misc/slip.ogg', 50, TRUE, -3)
 
@@ -117,7 +126,7 @@
 		human.AddElement(/datum/element/forced_gravity, 0)
 		passtable_on(human, SPECIES_FLIGHT_TRAIT)
 		open_wings()
-		to_chat(human, span_notice("Você bate suas asas e começa a pairar suavemente sobre o chão..."))
+		to_chat(human, span_notice("You beat your wings and begin to hover gently above the ground..."))
 		human.set_resting(FALSE, TRUE)
 		human.refresh_gravity()
 		return
@@ -127,7 +136,7 @@
 	human.remove_movespeed_modifier(/datum/movespeed_modifier/jetpack/wings)
 	human.RemoveElement(/datum/element/forced_gravity, 0)
 	passtable_off(human, SPECIES_FLIGHT_TRAIT)
-	to_chat(human, span_notice("Você se assenta suavemente de volta ao chão..."))
+	to_chat(human, span_notice("You settle gently back onto the ground..."))
 	close_wings()
 	human.refresh_gravity()
 
@@ -179,14 +188,14 @@
 	feature_key = initial(feature_key)
 	set_appearance_from_name(sprite_datum.name)
 
-/datum/bodypart_overlay/mutant/wings/functional/generate_icon_cache()
+/datum/bodypart_overlay/mutant/wings/functional/generate_icon_cache(obj/item/bodypart/limb)
 	. = ..()
 	. += wings_open ? "open" : "closed"
 
 ///angel wings, which relate to humans. comes with holiness.
 /obj/item/organ/wings/functional/angel
 	name = "angel wings"
-	desc = "Atitude mais sagrada não incluída."
+	desc = "Holier-than-thou attitude not included."
 	sprite_accessory_override = /datum/sprite_accessory/wings_open/angel
 
 	organ_traits = list(TRAIT_HOLY)
@@ -194,20 +203,20 @@
 ///dragon wings, which relate to lizards.
 /obj/item/organ/wings/functional/dragon
 	name = "dragon wings"
-	desc = "Ei, ei... não asas de lagarto. Asas de dragão. Asas de dragão poderosas."
+	desc = "Hey, HEY- NOT lizard wings. Dragon wings. Mighty dragon wings."
 	sprite_accessory_override = /datum/sprite_accessory/wings/dragon
 
 ///robotic wings, which relate to androids.
 /obj/item/organ/wings/functional/robotic
 	name = "robotic wings"
-	desc = "Usando motores microscópicos, ou\"microwings,\"como eles são conhecidos no comércio, estes pequenos dispositivos são capazes de levantar alguns gramas de cada vez. Reúna o suficiente deles, e você pode levantar coisas impressionantemente grandes."
+	desc = "Using microscopic hover-engines, or \"microwings,\" as they're known in the trade, these tiny devices are able to lift a few grams at a time. Gather enough of them, and you can lift impressively large things."
 	organ_flags = ORGAN_ROBOTIC
 	sprite_accessory_override = /datum/sprite_accessory/wings/robotic
 
 ///skeletal wings, which relate to skeletal races.
 /obj/item/organ/wings/functional/skeleton
 	name = "skeletal wings"
-	desc = "Alimentado por puros escritos de notas de adolescentes. Brincadeira. Mas sério, como isso o mantém voando?"
+	desc = "Powered by pure edgy-teenager-notebook-scribblings. Just kidding. But seriously, how do these keep you flying?!"
 	sprite_accessory_override = /datum/sprite_accessory/wings/skeleton
 
 /obj/item/organ/wings/functional/moth/make_flap_sound(mob/living/carbon/wing_owner)
@@ -216,25 +225,25 @@
 ///mothra wings, which relate to moths.
 /obj/item/organ/wings/functional/moth/mothra
 	name = "mothra wings"
-	desc = "Voe como a Poderosa Mariposa da Lenga."
+	desc = "Fly like the mighty mothra of legend once did."
 	sprite_accessory_override = /datum/sprite_accessory/wings/mothra
 
 ///megamoth wings, which relate to moths as an alternate choice. they're both pretty cool.
 /obj/item/organ/wings/functional/moth/megamoth
 	name = "megamoth wings"
-	desc = "Não seja assassino."
+	desc = "Don't get murderous."
 	sprite_accessory_override = /datum/sprite_accessory/wings/megamoth
 
 ///fly wings, which relate to flies.
 /obj/item/organ/wings/functional/fly
 	name = "fly wings"
-	desc = "Voa como uma mosca."
+	desc = "Fly as a fly."
 	sprite_accessory_override = /datum/sprite_accessory/wings/fly
 
 ///slime wings, which relate to slimes.
 /obj/item/organ/wings/functional/slime
 	name = "slime wings"
-	desc = "Como algo tão mole voa?"
+	desc = "How does something so squishy even fly?"
 	sprite_accessory_override = /datum/sprite_accessory/wings/slime
 
 #undef FUNCTIONAL_WING_FORCE

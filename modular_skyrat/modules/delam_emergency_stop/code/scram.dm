@@ -93,7 +93,7 @@
 /obj/machinery/atmospherics/components/unary/delam_scram/proc/panic_time(source, trigger_reason)
 	SIGNAL_HANDLER
 
-	if(!prereq_check(source, trigger_reason))
+	if(!prereq_check())
 		return
 
 	send_warning(source, trigger_reason)
@@ -155,7 +155,8 @@
 		use_reverb = TRUE,
 		falloff_distance = 10,
 	)
-	power_fail(duration_min = 27, duration_max = 33)
+	ASYNC
+		power_fail(40, 50)
 
 /// Stop the delamination. Let the fireworks begin
 /obj/machinery/atmospherics/components/unary/delam_scram/proc/put_on_a_show()

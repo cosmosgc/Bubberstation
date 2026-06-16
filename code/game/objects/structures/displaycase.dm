@@ -2,7 +2,7 @@
 	name = "display case"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "glassbox"
-	desc = "Uma vitrine para bens valiosos."
+	desc = "A display case for prized possessions."
 	density = TRUE
 	anchored = TRUE
 	resistance_flags = ACID_PROOF
@@ -64,9 +64,9 @@
 /obj/structure/displaycase/examine(mob/user)
 	. = ..()
 	if(alert)
-		. += span_notice("Ligado a um sistema anti-roubo.")
+		. += span_notice("Hooked up with an anti-theft system.")
 	if(showpiece)
-		. += span_notice("Tem.\a [showpiece] Dentro.")
+		. += span_notice("There's \a [showpiece] inside.")
 
 ///Removes the showpiece from the displaycase
 /obj/structure/displaycase/proc/dump()
@@ -128,34 +128,34 @@
 /obj/structure/displaycase/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(attacking_item.GetID() && !broken)
 		if(allowed(user))
-			to_chat(user, span_notice("Você.[open ? "close":"open"] [src]."))
+			to_chat(user, span_notice("You [open ? "close":"open"] [src]."))
 			toggle_lock(user)
 		else
-			to_chat(user, span_alert("Acesso negado."))
+			to_chat(user, span_alert("Access denied."))
 	else if(attacking_item.tool_behaviour == TOOL_WELDER && !user.combat_mode && !broken)
 		if(atom_integrity < max_integrity)
 			if(!attacking_item.tool_start_check(user, amount=1))
 				return
 
-			to_chat(user, span_notice("Você começa a reparar [src]..."))
+			to_chat(user, span_notice("You begin repairing [src]..."))
 			if(attacking_item.use_tool(src, user, 40, volume=50))
 				atom_integrity = max_integrity
 				update_appearance()
-				to_chat(user, span_notice("Você conserta.[src]."))
+				to_chat(user, span_notice("You repair [src]."))
 		else
-			to_chat(user, span_warning("[src] Já está em boas condições!"))
+			to_chat(user, span_warning("[src] is already in good condition!"))
 		return
 	else if(!alert && attacking_item.tool_behaviour == TOOL_CROWBAR) //Only applies to the lab cage and player made display cases
 		if(broken)
 			if(showpiece)
-				to_chat(user, span_warning("Remova o objetivo exibido primeiro!"))
+				to_chat(user, span_warning("Remove the displayed object first!"))
 			else
-				to_chat(user, span_notice("Você remove o caso destruído."))
+				to_chat(user, span_notice("You remove the destroyed case."))
 				qdel(src)
 		else
-			to_chat(user, span_notice("Você começa a[open ? "close":"open"] [src]..."))
+			to_chat(user, span_notice("You start to [open ? "close":"open"] [src]..."))
 			if(attacking_item.use_tool(src, user, 20))
-				to_chat(user, span_notice("Você.[open ? "close":"open"] [src]."))
+				to_chat(user, span_notice("You [open ? "close":"open"] [src]."))
 				toggle_lock(user)
 	else if(open && !showpiece)
 		insert_showpiece(attacking_item, user)
@@ -163,9 +163,9 @@
 	else if(glass_fix && broken && istype(attacking_item, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/glass_sheet = attacking_item
 		if(glass_sheet.get_amount() < 2)
-			to_chat(user, span_warning("Você precisa de duas folhas de vidro para consertar o caso!"))
+			to_chat(user, span_warning("You need two glass sheets to fix the case!"))
 			return
-		to_chat(user, span_notice("Você começa a consertar [src]..."))
+		to_chat(user, span_notice("You start fixing [src]..."))
 		if(do_after(user, 2 SECONDS, target = src))
 			glass_sheet.use(2)
 			broken = FALSE
@@ -177,11 +177,11 @@
 ///Handles placing an item into the display case. Returns TRUE if the item failed to be placed inside the container, useful for descendants
 /obj/structure/displaycase/proc/insert_showpiece(obj/item/new_showpiece, mob/user)
 	if(showpiece_type && !istype(new_showpiece, showpiece_type))
-		to_chat(user, span_notice("Isso não pertence a esse tipo de exibição."))
+		to_chat(user, span_notice("This doesn't belong in this kind of display."))
 		return TRUE
 	if(user.transferItemToLoc(new_showpiece, src))
 		showpiece = new_showpiece
-		to_chat(user, span_notice("Você colocou [new_showpiece] em exibição."))
+		to_chat(user, span_notice("You put [new_showpiece] on display."))
 		update_appearance()
 
 ///Opens and closes the display case
@@ -199,7 +199,7 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	if (showpiece && (broken || open))
-		to_chat(user, span_notice("Você desativa o campo de flutuação embutido no caso."))
+		to_chat(user, span_notice("You deactivate the hover field built into the case."))
 		log_combat(user, src, "deactivates the hover field of")
 		dump()
 		add_fingerprint(user)
@@ -214,14 +214,14 @@
 			if(!user.is_blind())
 				user.examinate(src)
 			return
-		user.visible_message(span_danger("[user] Chuta um vitrine."), null, null, COMBAT_MESSAGE_RANGE)
+		user.visible_message(span_danger("[user] kicks the display case."), null, null, COMBAT_MESSAGE_RANGE)
 		log_combat(user, src, "kicks")
 		user.do_attack_animation(src, ATTACK_EFFECT_KICK)
 		take_damage(2)
 
 /obj/structure/displaycase_chassis
 	name = "display case chassis"
-	desc = "A base de madeira de uma vítrina."
+	desc = "The wooden base of a display case."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "glassbox_chassis"
 	resistance_flags = FLAMMABLE
@@ -257,12 +257,12 @@
 /obj/structure/displaycase_chassis/examine(mob/user)
 	. = ..()
 	if(!electronics)
-		. += span_notice("Você pode anexar[EXAMINE_HINT("airlock electronics")]para dar-lhe restrições de acesso.")
-	. += span_notice("[src] Pode ser finalizado usando[EXAMINE_HINT("10 glass sheets")], ou se transformou em um Vend-A-Tray usando um[EXAMINE_HINT("card reader")].")
+		. += span_notice("You can attach [EXAMINE_HINT("airlock electronics")] to give it access restrictions.")
+	. += span_notice("[src] can be finalized using [EXAMINE_HINT("10 glass sheets")], or turned into a Vend-A-Tray using a [EXAMINE_HINT("card reader")].")
 
 /obj/structure/displaycase_chassis/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
-	balloon_alert(user, "desmontando...")
+	balloon_alert(user, "disassembling...")
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 3 SECONDS))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
@@ -275,15 +275,15 @@
 
 /obj/structure/displaycase_chassis/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(attacking_item, /obj/item/electronics/airlock))
-		balloon_alert(user, "Instalando eletrônicos...")
+		balloon_alert(user, "installing electronics...")
 		if(do_after(user, 3 SECONDS, target = src) && user.transferItemToLoc(attacking_item, src))
 			electronics = attacking_item
-			balloon_alert(user, "Eletrônica instalada")
+			balloon_alert(user, "electronics installed")
 		return
 
 	if(istype(attacking_item, /obj/item/stock_parts/card_reader))
 		var/obj/item/stock_parts/card_reader/card_reader = attacking_item
-		balloon_alert(user, "Adicionando [card_reader]...")
+		balloon_alert(user, "adding [card_reader]...")
 		if(do_after(user, 2 SECONDS, target = src))
 			qdel(card_reader)
 			make_final_result(display_type = /obj/structure/displaycase/forsale)
@@ -292,9 +292,9 @@
 	if(istype(attacking_item, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/glass_sheets = attacking_item
 		if(glass_sheets.get_amount() < 10)
-			balloon_alert(user, "Preciso de 10 lençóis!")
+			balloon_alert(user, "need 10 sheets!")
 			return
-		balloon_alert(user, "Adicionando vidro...")
+		balloon_alert(user, "adding glass...")
 		if(do_after(user, 2 SECONDS, target = src))
 			glass_sheets.use(10)
 			make_final_result(display_type = /obj/structure/displaycase/noalert)
@@ -320,7 +320,7 @@
 
 /obj/structure/displaycase/labcage
 	name = "lab cage"
-	desc = "Um destinatário de vidro para armazenar criaturas interessantes."
+	desc = "A glass lab container for storing interesting creatures."
 	start_showpiece_type = /obj/item/clothing/mask/facehugger/lamarr
 	req_access = list(ACCESS_RD)
 
@@ -329,7 +329,7 @@
 
 /obj/structure/displaycase/trophy
 	name = "trophy display case"
-	desc = "Guarde seus troféus de realização aqui, e eles ficarão para sempre."
+	desc = "Store your trophies of accomplishment in here, and they will stay forever."
 	integrity_failure = 0
 	req_access = list(ACCESS_LIBRARY)
 	autoexamine_while_closed = FALSE
@@ -369,7 +369,7 @@
 /obj/structure/displaycase/trophy/dump()
 	if (showpiece)
 		if(holographic_showpiece)
-			visible_message(span_danger("[showpiece] Estraga e desaparece!"))
+			visible_message(span_danger("[showpiece] fizzles and vanishes!"))
 			do_sparks(number = 1, cardinal_only = FALSE, source = src)
 			QDEL_NULL(showpiece)
 			holographic_showpiece = FALSE
@@ -387,8 +387,8 @@
 ///Toggles the mode that shows the historian panel on the UI, enabling saving the looks and the trophy message of the current trophy
 /obj/structure/displaycase/trophy/proc/toggle_historian_mode(mob/user)
 	historian_mode = !historian_mode
-	balloon_alert(user, "[historian_mode ? "enabled" : "disabled"]Modo histórico.")
-	playsound(src, 'sound/machines/beep/twobeep.ogg', vary = 50)
+	balloon_alert(user, "[historian_mode ? "enabled" : "disabled"] historian mode.")
+	playsound(src, 'sound/machines/beep/twobeep.ogg', 10, vary = 50)
 	SStgui.update_uis(src)
 
 /obj/structure/displaycase/trophy/toggle_lock(mob/user)
@@ -453,7 +453,7 @@
 
 /obj/item/key/displaycase
 	name = "curator key"
-	desc = "A chave para as caixas de exibição do curador e armários arcade."
+	desc = "The key to the curator's display cases and arcade cabinets."
 
 /obj/item/showpiece_dummy
 	name = "holographic replica"
@@ -471,7 +471,7 @@
 	icon = 'icons/obj/machines/display.dmi'
 	icon_state = "laserbox"
 	custom_glass_overlay = TRUE
-	desc = "Uma vitrine com um identificador. Use sua identidade para comprar o conteúdo."
+	desc = "A display case with an ID-card swiper. Use your ID to purchase the contents."
 	density = FALSE
 	max_integrity = 100
 	req_access = null
@@ -538,32 +538,32 @@
 	switch(action)
 		if("Buy")
 			if(!showpiece)
-				to_chat(usr, span_notice("Não há nada à venda."))
+				to_chat(usr, span_notice("There's nothing for sale."))
 				return TRUE
 			if(broken)
-				to_chat(usr, span_notice("[src] Parece estar quebrado."))
+				to_chat(usr, span_notice("[src] appears to be broken."))
 				return TRUE
 			if(!payments_acc)
-				to_chat(usr, span_notice("[src] Ainda não foi registrado."))
+				to_chat(usr, span_notice("[src] hasn't been registered yet."))
 				return TRUE
 			if(!usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 				return TRUE
 			if(!potential_acc)
-				to_chat(usr, span_notice("Nenhuma identificação detectada."))
+				to_chat(usr, span_notice("No ID card detected."))
 				return
 			var/datum/bank_account/account = potential_acc.registered_account
 			if(!account)
-				to_chat(usr, span_notice("[potential_acc] Não tem nenhuma conta registrada!"))
+				to_chat(usr, span_notice("[potential_acc] has no account registered!"))
 				return
 			if(!account.has_money(sale_price))
-				to_chat(usr, span_notice("Você não possui os fundos para comprar isso."))
+				to_chat(usr, span_notice("You do not possess the funds to purchase this."))
 				return TRUE
 			else
 				account.adjust_money(-sale_price, "Display Case: [capitalize(showpiece.name)]")
 				if(payments_acc)
 					payments_acc.adjust_money(sale_price, "Display Case: [capitalize(showpiece.name)]")
 				usr.put_in_hands(showpiece)
-				to_chat(usr, span_notice("Você compra.[showpiece] Para [sale_price] [MONEY_NAME]."))
+				to_chat(usr, span_notice("You purchase [showpiece] for [sale_price] [MONEY_NAME]."))
 				playsound(src, 'sound/effects/cashregister.ogg', 40, TRUE)
 				flick("[initial(icon_state)]_vend", src)
 				showpiece = null
@@ -572,7 +572,7 @@
 				return TRUE
 		if("Open")
 			if(!payments_acc)
-				to_chat(usr, span_notice("[src] Ainda não foi registrado."))
+				to_chat(usr, span_notice("[src] hasn't been registered yet."))
 				return TRUE
 			if(!potential_acc || !potential_acc.registered_account)
 				return
@@ -599,13 +599,13 @@
 			if(!new_price_input || QDELETED(usr) || QDELETED(src))
 				return
 			if(payments_acc != potential_acc.registered_account)
-				to_chat(usr, span_warning("[src] Rejeita seu novo preço."))
+				to_chat(usr, span_warning("[src] rejects your new price."))
 				return
 			if(!usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-				to_chat(usr, span_warning("Você precisa se aproximar!"))
+				to_chat(usr, span_warning("You need to get closer!"))
 				return
 			sale_price = new_price_input
-			to_chat(usr, span_notice("O custo está agora definido para [sale_price]."))
+			to_chat(usr, span_notice("The cost is now set to [sale_price]."))
 			SStgui.update_uis(src)
 			return TRUE
 	. = TRUE
@@ -615,7 +615,7 @@
 		//Card Registration
 		var/obj/item/card/id/potential_acc = attacking_item
 		if(!potential_acc.registered_account)
-			to_chat(user, span_warning("Este cartão de identidade não tem conta registrada!"))
+			to_chat(user, span_warning("This ID card has no account registered!"))
 			return
 		if(payments_acc == potential_acc.registered_account)
 			toggle_lock()
@@ -628,7 +628,7 @@
 /obj/structure/displaycase/forsale/multitool_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(atom_integrity <= (integrity_failure * max_integrity))
-		to_chat(user, span_notice("Você começa a recalibrar [src] O campo de flutuação..."))
+		to_chat(user, span_notice("You start recalibrating [src]'s hover field..."))
 		if(do_after(user, 2 SECONDS, target = src))
 			broken = FALSE
 			atom_integrity = max_integrity
@@ -639,36 +639,36 @@
 	. = ..()
 	if(open && !user.combat_mode)
 		if(anchored)
-			to_chat(user, span_notice("Você começa a se proteger.[src]..."))
+			to_chat(user, span_notice("You start unsecuring [src]..."))
 		else
-			to_chat(user, span_notice("Você começa a proteger [src]..."))
+			to_chat(user, span_notice("You start securing [src]..."))
 		if(I.use_tool(src, user, 16, volume=50))
 			if(QDELETED(I))
 				return
 			if(anchored)
-				to_chat(user, span_notice("Você não está seguro.[src]."))
+				to_chat(user, span_notice("You unsecure [src]."))
 			else
-				to_chat(user, span_notice("Você está seguro.[src]."))
+				to_chat(user, span_notice("You secure [src]."))
 			set_anchored(!anchored)
 			return TRUE
 	else if(!open && !user.combat_mode)
-		to_chat(user, span_notice("[src] deve estar aberto para movê-lo."))
+		to_chat(user, span_notice("[src] must be open to move it."))
 		return
 
 /obj/structure/displaycase/forsale/emag_act(mob/user, obj/item/card/emag/emag_card)
 	. = ..()
 	payments_acc = null
 	req_access = list()
-	balloon_alert(user, "Reset do proprietário da conta")
-	to_chat(user, span_warning("[src] O leitor de cartas fala e fumar."))
+	balloon_alert(user, "account owner reset")
+	to_chat(user, span_warning("[src]'s card reader fizzles and smokes."))
 	return TRUE
 
 /obj/structure/displaycase/forsale/examine(mob/user)
 	. = ..()
 	if(showpiece && !open)
-		. += span_notice("[showpiece] Está à venda para [sale_price] [MONEY_NAME].")
+		. += span_notice("[showpiece] is for sale for [sale_price] [MONEY_NAME].")
 	if(broken)
-		. += span_notice("[src] O gerador de campo parece estar sobrecarregado. Use uma ferramenta para consertar.")
+		. += span_notice("[src] is sparking and the hover field generator seems to be overloaded. Use a multitool to fix it.")
 
 /obj/structure/displaycase/forsale/atom_break(damage_flag)
 	. = ..()
@@ -679,5 +679,5 @@
 		trigger_alarm() //In case it's given an alarm anyway.
 
 /obj/structure/displaycase/forsale/kitchen
-	desc = "Uma vitrine com um identificador. Use sua identidade para comprar o conteúdo. Significado para o barman e chef."
+	desc = "A display case with an ID-card swiper. Use your ID to purchase the contents. Meant for the bartender and chef."
 	req_one_access = list(ACCESS_KITCHEN, ACCESS_BAR)

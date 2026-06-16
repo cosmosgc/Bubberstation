@@ -2,7 +2,7 @@
 /mob/living/basic/morph
 	name = "morph"
 	real_name = "morph"
-	desc = "Uma pilha revoltante e pulsante de carne."
+	desc = "A revolting, pulsating pile of flesh."
 	speak_emote = list("gurgles")
 	icon = 'icons/mob/simple/animal.dmi'
 	icon_state = "morph"
@@ -70,7 +70,7 @@
 		. = form_reference.examine(user)
 
 	if(get_dist(user, src) <= 3) // always add this because if the form_reference somehow nulls out we still want to have something look "weird" about an item when someone is close
-		. += span_warning("Não parece bem...")
+		. += span_warning("It doesn't look quite right...")
 
 /mob/living/basic/morph/med_hud_set_health()
 	if(isliving(form_typepath))
@@ -89,8 +89,8 @@
 /mob/living/basic/morph/death(gibbed)
 	if(HAS_TRAIT(src, TRAIT_DISGUISED))
 		visible_message(
-			span_warning("[src] Se transformar em uma pilha de carne verde!"),
-			span_userdanger("Sua pele rompe! Sua carne se parte! Nenhum disfarce pode afastar..."),
+			span_warning("[src] twists and dissolves into a pile of green flesh!"),
+			span_userdanger("Your skin ruptures! Your flesh breaks apart! No disguise can ward off de--"),
 		)
 
 	return ..()
@@ -112,8 +112,8 @@
 	med_hud_set_status() //we're an object honest
 
 	visible_message(
-		span_warning("[src] De repente, torce e muda de forma, tornando-se uma cópia de [target]!"),
-		span_notice("Você torce seu corpo e assume a forma de [target]."),
+		span_warning("[src] suddenly twists and changes shape, becoming a copy of [target]!"),
+		span_notice("You twist your body and assume the form of [target]."),
 	)
 
 	form_weakref = WEAKREF(target)
@@ -123,8 +123,8 @@
 /mob/living/basic/morph/proc/on_undisguise()
 	SIGNAL_HANDLER
 	visible_message(
-		span_warning("[src] De arrependimento cai em si mesmo, dissolvendo-se em uma pilha de carne verde!"),
-		span_notice("Você muda para seu corpo normal."),
+		span_warning("[src] suddenly collapses in on itself, dissolving into a pile of green flesh!"),
+		span_notice("You reform to your normal body."),
 	)
 
 	//Baseline stats
@@ -149,29 +149,29 @@
 /// Handles the logic for attacking anything.
 /mob/living/basic/morph/early_melee_attack(atom/target, list/modifiers, ignore_cooldown)
 	. = ..()
-	if(!.)
-		return FALSE
+	if(.)
+		return
 
 	if(HAS_TRAIT(src, TRAIT_DISGUISED) && (melee_damage_disguised <= 0))
-		balloon_alert(src, "Não pode atacar disfarçado!")
-		return FALSE
+		balloon_alert(src, "can't attack while disguised!")
+		return BASIC_MOB_END_ATTACK_CHAIN_COOLDOWN
 
 	if(isliving(target)) //Eat Corpses to regen health
 		var/mob/living/living_target = target
 		if(living_target.stat != DEAD)
-			return TRUE
+			return BASIC_MOB_CONTINUE_ATTACK_CHAIN
 
 		eat(eatable = living_target, delay = 3 SECONDS, update_health = -50)
-		return FALSE
+		return BASIC_MOB_END_ATTACK_CHAIN_COOLDOWN
 
 	if(!isitem(target)) //Eat items just to be annoying
-		return TRUE
+		return BASIC_MOB_CONTINUE_ATTACK_CHAIN
 
 	var/obj/item/item_target = target
 	if(item_target.anchored)
-		return TRUE
+		return BASIC_MOB_CONTINUE_ATTACK_CHAIN
 	eat(eatable = item_target, delay = 2 SECONDS)
-	return FALSE
+	return BASIC_MOB_END_ATTACK_CHAIN_COOLDOWN
 
 /// Eat stuff. Delicious. Return TRUE if we ate something, FALSE otherwise.
 /// Required: `eatable` is the thing (item or mob) that we are going to eat.
@@ -182,7 +182,7 @@
 		return FALSE
 
 	if(HAS_TRAIT(src, TRAIT_DISGUISED) && !eat_while_disguised)
-		balloon_alert(src, "Não posso comer disfarçado!")
+		balloon_alert(src, "can't eat while disguised!")
 		return FALSE
 
 	balloon_alert(src, "eating...")
@@ -190,7 +190,7 @@
 		return FALSE
 
 	log_combat(src, eatable, "ate", addition = "as morph")
-	visible_message(span_warning("[src] Andorinhas [eatable] Inteiro!"))
+	visible_message(span_warning("[src] swallows [eatable] whole!"))
 	eatable.forceMove(src)
 	if(update_health != 0)
 		adjust_health(update_health)

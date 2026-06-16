@@ -1,6 +1,6 @@
 /datum/mutation/shock
 	name = "Shock Touch"
-	desc = "Os afetados podem canalizar o excesso de eletricidade através de suas mãos sem se chocarem, permitindo-lhes chocar os outros. Principalmente inofensivo! Principalmente..."
+	desc = "The affected can channel excess electricity through their hands without shocking themselves, allowing them to shock others. Mostly harmless! Mostly... "
 	quality = POSITIVE
 	locked = TRUE
 	difficulty = 16
@@ -26,7 +26,7 @@
 
 /datum/action/cooldown/spell/touch/shock
 	name = "Shock Touch"
-	desc = "Canal eletricidade para sua mão para chocar as pessoas. Principalmente inofensivo! Principalmente..."
+	desc = "Channel electricity to your hand to shock people with. Mostly harmless! Mostly... "
 	button_icon_state = "zap"
 	sound = 'sound/items/weapons/zapbang.ogg'
 	cooldown_time = 7 SECONDS
@@ -38,8 +38,8 @@
 	var/stagger = FALSE
 
 	hand_path = /obj/item/melee/touch_attack/shock
-	draw_message = span_notice("Você canaliza eletricidade em sua mão.")
-	drop_message = span_notice("Você deixou a eletricidade da sua mão dissipar.")
+	draw_message = span_notice("You channel electricity into your hand.")
+	drop_message = span_notice("You let the electricity from your hand dissipate.")
 
 /datum/action/cooldown/spell/touch/shock/cast_on_hand_hit(obj/item/melee/touch_attack/hand, atom/victim, mob/living/carbon/caster)
 	if(iscarbon(victim))
@@ -54,8 +54,8 @@
 			carbon_victim.dropItemToGround(carbon_victim.get_inactive_held_item())
 			carbon_victim.adjust_confusion(15 SECONDS)
 			carbon_victim.visible_message(
-				span_danger("[caster] eletrocutos [victim]!"),
-				span_userdanger("[caster] Eletrocuta você!"),
+				span_danger("[caster] electrocutes [victim]!"),
+				span_userdanger("[caster] electrocutes you!"),
 			)
 			if(stagger)
 				carbon_victim.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH * 2, 10 SECONDS)
@@ -65,31 +65,31 @@
 		var/mob/living/living_victim = victim
 		if(living_victim.electrocute_act(15, caster, 1, SHOCK_NOSTUN)) //We do damage here because non-carbon mobs typically ignore stamina damage.
 			living_victim.visible_message(
-				span_danger("[caster] eletrocutos [victim]!"),
-				span_userdanger("[caster] Eletrocuta você!"),
+				span_danger("[caster] electrocutes [victim]!"),
+				span_userdanger("[caster] electrocutes you!"),
 			)
 			if(stagger)
 				living_victim.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH * 2, 10 SECONDS)
 			return TRUE
 
-	to_chat(caster, span_warning("A eletricidade não parece afetar [victim]..."))
+	to_chat(caster, span_warning("The electricity doesn't seem to affect [victim]..."))
 	return TRUE
 
 /obj/item/melee/touch_attack/shock
 	name = "\improper shock touch"
-	desc = "É como quando você esfrega os pés em um tapete de sexo para poder atacar seus amigos, mas muito menos seguro."
+	desc = "This is kind of like when you rub your feet on a shag rug so you can zap your friends, only a lot less safe."
 	icon = 'icons/obj/weapons/hand.dmi'
 	icon_state = "zapper"
 	inhand_icon_state = "zapper"
 
 /datum/mutation/lay_on_hands
 	name = "Mending Touch"
-	desc = "Os afetados podem colocar as mãos em outras pessoas para transferir uma pequena quantidade de seus ferimentos para si mesmos."
+	desc = "The affected can lay their hands on other people to transfer a small amount of their injuries to themselves."
 	quality = POSITIVE
 	locked = FALSE
 	difficulty = 16
-	text_gain_indication = span_notice("Your hand feels blessed!")
-	text_lose_indication = span_notice("Your hand feels secular once more.")
+	text_gain_indication = span_notice("Your hands feel blessed!")
+	text_lose_indication = span_notice("Your hands no longer feel blessed.")
 	power_path = /datum/action/cooldown/spell/touch/lay_on_hands
 	instability = POSITIVE_INSTABILITY_MAJOR
 	energy_coeff = 1
@@ -110,7 +110,8 @@
 
 /datum/action/cooldown/spell/touch/lay_on_hands
 	name = "Mending Touch"
-	desc = "Agora você pode colocar suas mãos em outras pessoas para transferir uma pequena quantidade de seus ferimentos físicos para si mesmo. Por alguma razão, esse poder não joga bem com os mortos-vivos, ou pessoas com ideias estranhas sobre moralidade."
+	desc = "You can now lay your hands on other people to transfer a small amount of their physical injuries to yourself. \
+		For some reason, this power does not play nicely with the undead, or people with strange ideas about morality."
 	button_icon = 'icons/mob/actions/actions_genetic.dmi'
 	button_icon_state = "mending_touch"
 	sound = 'sound/effects/magic/staff_healing.ogg'
@@ -121,9 +122,9 @@
 	antimagic_flags = NONE
 
 	hand_path = /obj/item/melee/touch_attack/lay_on_hands
-	draw_message = span_notice("Prepare sua mão para transferir lesões para si mesmo.")
-	drop_message = span_notice("Abaixe a mão.")
-	/// Multiplies the amount healed.
+	draw_message = span_notice("You ready your hand to transfer injuries to yourself.")
+	drop_message = span_notice("You lower your hand.")
+	/// Multiplies the amount healed (or damage dealt, in the case of a smite).
 	var/heal_multiplier = 1
 	/// Multiplies the incoming pain from healing. (Halved with synchronizer chromosome)
 	var/pain_multiplier = 1
@@ -139,8 +140,8 @@
 	if(!.)
 		return .
 	var/obj/item/bodypart/transfer_limb = cast_on.get_active_hand()
-	if(IS_ROBOTIC_LIMB(transfer_limb))
-		to_chat(cast_on, span_notice("Você não consegue canalizar seus poderes pela sua mão inorgânica."))
+	if(!IS_ORGANIC_LIMB(transfer_limb))
+		to_chat(cast_on, span_notice("You fail to channel your mending powers through your inorganic hand."))
 		return FALSE
 
 	return TRUE
@@ -160,7 +161,7 @@
 	var/hurt_this_guy = determine_if_this_hurts_instead(mendicant, hurtguy)
 
 	if (hurt_this_guy && (HAS_TRAIT(mendicant, TRAIT_PACIFISM) || !mendicant.combat_mode)) //Returns if we're a pacifist and we'd hurt them, or we're not in combat mode and we'll hurt them
-		mendicant.balloon_alert(mendicant, "[hurtguy] Seria ferido!")
+		mendicant.balloon_alert(mendicant, "[hurtguy] would be hurt!")
 		return FALSE
 
 	if(hurt_this_guy)
@@ -172,7 +173,7 @@
 	if(HAS_TRAIT_FROM(mendicant, TRAIT_HIPPOCRATIC_OATH, HIPPOCRATIC_OATH_TRAIT))
 		heal_multiplier *= 2
 		pain_multiplier *= 0.5
-		peaceful_message = span_boldnotice("Você pode sentir a magia da Vara de Aesculapius ajudando seus esforços!")
+		peaceful_message = span_boldnotice("You can feel the magic of the Rod of Aesculapius aiding your efforts!")
 		beam_icon = "sendbeam"
 		var/obj/item/rod_of_asclepius/rod = locate() in mendicant.contents
 		if(rod)
@@ -182,7 +183,7 @@
 	// If a normal pacifist, transfer more.
 	else if(HAS_TRAIT(mendicant, TRAIT_PACIFISM))
 		heal_multiplier *= 1.75
-		peaceful_message = span_boldnotice("Sua natureza pacífica ajuda você a guiar toda a dor para si mesmo.")
+		peaceful_message = span_boldnotice("Your peaceful nature helps you guide all the pain to yourself.")
 
 	if(iscarbon(hurtguy))
 		success = do_complicated_heal(mendicant, hurtguy, heal_multiplier, pain_multiplier)
@@ -209,8 +210,8 @@
 	hurtguy.update_damage_overlays()
 	mendicant.update_damage_overlays()
 
-	hurtguy.visible_message(span_notice("[mendicant] Ponha as mãos sobre [hurtguy]!"))
-	to_chat(hurtguy, span_boldnotice("[mendicant] Põe as mãos em você, curando você!"))
+	hurtguy.visible_message(span_notice("[mendicant] lays hands on [hurtguy]!"))
+	to_chat(hurtguy, span_boldnotice("[mendicant] lays hands on you, healing you!"))
 	new /obj/effect/temp_visual/heal(get_turf(hurtguy), COLOR_VERY_PALE_LIME_GREEN)
 	return success
 
@@ -230,7 +231,7 @@
 			mendicant_organic_limbs += possible_limb
 	// None? Gtfo
 	if(!length(mendicant_organic_limbs))
-		mendicant.balloon_alert(mendicant, "Sem membros orgânicos!")
+		mendicant.balloon_alert(mendicant, "no organic limbs!")
 		return .
 
 	// Try to use our active hand, otherwise pick at random
@@ -248,49 +249,51 @@
 		. = TRUE
 
 	if(!.)
-		hurtguy.balloon_alert(mendicant, "ileso!")
+		hurtguy.balloon_alert(mendicant, "unhurt!")
 
 /datum/action/cooldown/spell/touch/lay_on_hands/proc/do_complicated_heal(mob/living/carbon/mendicant, mob/living/carbon/hurtguy, heal_multiplier, pain_multiplier)
 
 	// Did the transfer work?
 	. = FALSE
-	// Get the hurtguy's limbs and the mendicant's limbs to attempt a 1-1 transfer.
-	var/list/hurt_limbs = hurtguy.get_damaged_bodyparts(1, 1, BODYTYPE_ORGANIC) + hurtguy.get_wounded_bodyparts(BODYTYPE_ORGANIC)
-	var/list/mendicant_organic_limbs = list()
-	for(var/obj/item/bodypart/possible_limb in mendicant.get_bodyparts())
-		if(IS_ORGANIC_LIMB(possible_limb))
-			mendicant_organic_limbs += possible_limb
-
-	// If we have no organic available limbs just give up.
-	if(!length(mendicant_organic_limbs))
-		mendicant.balloon_alert(mendicant, "Sem membros orgânicos!")
-		return .
-	if(!length(hurt_limbs))
-		hurtguy.balloon_alert(mendicant, "Nenhum membro orgânico danificado!")
-		return .
 
 	// Counter to make sure we don't take too much from separate limbs
-	var/total_damage_healed = 0
-	// Transfer damage from one limb to the mendicant's counterpart.
-	for(var/obj/item/bodypart/affected_limb as anything in hurt_limbs)
+	var/healing_budget = 35 * heal_multiplier
+	// Transfer damage from each limb to the mendicant's counterpart.
+	for(var/obj/item/bodypart/affected_limb as anything in hurtguy.get_bodyparts())
+		if(!(affected_limb.bodytype & BODYTYPE_ORGANIC))
+			continue
 		var/obj/item/bodypart/mendicant_transfer_limb = mendicant.get_bodypart(affected_limb.body_zone)
-		// If the compared limb isn't organic, skip it and pick a random one.
-		if(!(mendicant_transfer_limb in mendicant_organic_limbs))
-			mendicant_transfer_limb = pick(mendicant_organic_limbs)
-
-		// Transfer at most 35 damage, by default.
-		var/brute_damage = min(affected_limb.brute_dam, 35 * heal_multiplier)
-		// no double dipping
-		var/burn_damage = min(affected_limb.burn_dam, (35 * heal_multiplier) - brute_damage)
-		if((brute_damage || burn_damage) && total_damage_healed < (35 * heal_multiplier))
-			total_damage_healed += brute_damage + burn_damage
+		var/list/mendicant_organic_limbs = list()
+		for(var/obj/item/bodypart/possible_limb in mendicant.get_bodyparts(include_stumps = TRUE)) // Keeping this here in case stumps can store damage in the future
+			if(IS_ORGANIC_LIMB(possible_limb) && !IS_STUMP(possible_limb)) // No stumps are currently organic, this is futureproofing.
+				mendicant_organic_limbs += possible_limb
+		// Spread the healing between brute and burn
+		var/affected_limb_damage = affected_limb.brute_dam + affected_limb.burn_dam
+		var/brute_damage = 0
+		var/burn_damage = 0
+		if(healing_budget >= affected_limb_damage)
+			healing_budget -= affected_limb_damage
+			brute_damage = affected_limb.brute_dam
+			burn_damage = affected_limb.burn_dam
+		else
+			if(affected_limb.brute_dam > affected_limb.burn_dam)
+				burn_damage = min(affected_limb.burn_dam, healing_budget/2)
+				brute_damage = healing_budget - burn_damage
+			else
+				brute_damage = min(affected_limb.burn_dam, healing_budget/2)
+				burn_damage = healing_budget - brute_damage
+			healing_budget = 0
+		if((brute_damage || burn_damage))
 			. = TRUE
 			var/brute_taken = brute_damage * pain_multiplier
 			var/burn_taken = burn_damage * pain_multiplier
 			// Heal!
 			affected_limb.heal_damage(brute_damage, burn_damage, required_bodytype = BODYTYPE_ORGANIC)
 			// Hurt!
-			mendicant_transfer_limb.receive_damage(brute_taken, burn_taken, forced = TRUE, wound_bonus = CANT_WOUND)
+			if((mendicant_transfer_limb in mendicant_organic_limbs))
+				mendicant_transfer_limb.receive_damage(brute_taken, burn_taken, forced = TRUE, wound_bonus = CANT_WOUND)
+			else // spread damage if we're trying to heal a bodypart we have no organic parallel of
+				mendicant.take_overall_damage(brute_damage, burn_damage, required_bodytype = BODYTYPE_ORGANIC)
 
 		// Force light wounds onto you.
 		for(var/datum/wound/iter_wound as anything in affected_limb.wounds)
@@ -299,52 +302,60 @@
 					if(prob(50 * heal_multiplier))
 						continue
 				if(WOUND_SEVERITY_CRITICAL)
-					if(heal_multiplier < 1.5) // need buffs to transfer crit wounds
+					if(heal_multiplier < 1.5 && prob(30 * heal_multiplier)) // need buffs to transfer crit wounds
 						continue
 			. = TRUE
 			iter_wound.remove_wound()
 			iter_wound.apply_wound(mendicant_transfer_limb)
+
+		if(!healing_budget)
+			break
 
 	if(!CAN_HAVE_BLOOD(mendicant) || !CAN_HAVE_BLOOD(hurtguy))
 		return .
 
 	// 10% base
 	var/max_blood_transfer = (BLOOD_VOLUME_NORMAL * 0.10) * heal_multiplier
+	var/hurtguy_blood = hurtguy.get_blood_volume()
 	// Too little blood
-	if(hurtguy.get_blood_volume() < BLOOD_VOLUME_NORMAL)
+	if(hurtguy_blood < BLOOD_VOLUME_NORMAL)
+		var/amount_to_transfer = min(max_blood_transfer, BLOOD_VOLUME_NORMAL - hurtguy_blood)
 		// We ignore incompatibility here.
-		var/blood_transferred = mendicant.transfer_blood_to(hurtguy, max_blood_transfer, ignore_low_blood = TRUE, ignore_incompatibility = TRUE)
+		var/blood_transferred = mendicant.transfer_blood_to(hurtguy, amount_to_transfer, ignore_low_blood = TRUE, ignore_incompatibility = TRUE)
 
 		if(!blood_transferred)
 			return
 
-		to_chat(mendicant, span_notice("Suas veias (e cérebro) parecem um pouco mais leves."))
+		to_chat(mendicant, span_notice("Your veins (and brain) feel a bit lighter."))
 		. = TRUE
 		// Because we do our own spin on it!
 		if(hurtguy.get_blood_compatibility(mendicant) == FALSE)
 			hurtguy.adjust_tox_loss((blood_transferred * 0.1) * pain_multiplier) // 1 dmg per 10 blood
-			to_chat(hurtguy, span_notice("Suas veias parecem mais grossas, mas coçam um pouco."))
+			to_chat(hurtguy, span_notice("Your veins feel thicker, but they itch a bit."))
 		else
-			to_chat(hurtguy, span_notice("Suas veias estão mais espessas!"))
+			to_chat(hurtguy, span_notice("Your veins feel thicker!"))
 		return
 
-	if(hurtguy.get_blood_volume() < BLOOD_VOLUME_EXCESS)
+	if(hurtguy_blood < BLOOD_VOLUME_MAXIMUM)
 		return
 
+	var/amount_to_receive = min(max_blood_transfer, hurtguy_blood - BLOOD_VOLUME_MAXIMUM)
 	// We ignore incompatibility here.
-	var/blood_received = hurtguy.transfer_blood_to(mendicant, hurtguy.get_blood_volume() - BLOOD_VOLUME_EXCESS, ignore_incompatibility = TRUE)
+	var/blood_received = hurtguy.transfer_blood_to(mendicant, amount_to_receive, ignore_incompatibility = TRUE)
 
 	if(!blood_received)
 		return
 
-	to_chat(hurtguy, span_notice("Suas veias não estão mais tão inchadas."))
+	to_chat(hurtguy, span_notice("Your veins don't feel quite so swollen anymore."))
 	. = TRUE
 	// Because we do our own spin on it!
 	if(mendicant.get_blood_compatibility(hurtguy) == FALSE)
 		mendicant.adjust_tox_loss((blood_received * 0.1) * pain_multiplier) // 1 dmg per 10 blood
-		to_chat(mendicant, span_notice("Suas veias incham e coçam!"))
+		to_chat(mendicant, span_notice("Your veins swell and itch!"))
 	else
-		to_chat(mendicant, span_notice("Suas veias incham!"))
+		to_chat(mendicant, span_notice("Your veins swell!"))
+	if(!.)
+		mendicant.balloon_alert(hurtguy, "no damaged organic limbs!")
 
 
 /datum/action/cooldown/spell/touch/lay_on_hands/proc/determine_if_this_hurts_instead(mob/living/carbon/mendicant, mob/living/hurtguy)
@@ -396,27 +407,27 @@
 		our_smite_multiplier *= divine_champion ? 5 : 1 //good luck surviving this if they're a chap
 
 	if(evil_smite)
-		motherfucker_to_hurt.visible_message(span_warning("[smiter] Snaps [smiter.p_their()] Dedos na frente de [motherfucker_to_hurt] O rosto, e [motherfucker_to_hurt] O corpo se torce violentamente de uma força invisível!"))
+		motherfucker_to_hurt.visible_message(span_warning("[smiter] snaps [smiter.p_their()] fingers in front of [motherfucker_to_hurt]'s face, and [motherfucker_to_hurt]'s body twists violently from an unseen force!"))
 		motherfucker_to_hurt.apply_damage(10 * our_smite_multiplier, BRUTE, spread_damage = TRUE, wound_bonus = 5 * our_smite_multiplier)
 		motherfucker_to_hurt.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH * our_smite_multiplier, 25 SECONDS)
 		smiter.emote("snap")
 		smite_text_to_target = "crushes you psychically with a snap of [smiter.p_their()] fingers"
 	else
-		motherfucker_to_hurt.visible_message(span_warning("[smiter] Ponha as mãos sobre [motherfucker_to_hurt], mas ela corta [motherfucker_to_hurt.p_them()] com uma energia brilhante!"))
+		motherfucker_to_hurt.visible_message(span_warning("[smiter] lays hands on [motherfucker_to_hurt], but it shears [motherfucker_to_hurt.p_them()] with a brilliant energy!"))
 		motherfucker_to_hurt.apply_damage(10 * our_smite_multiplier, BURN, spread_damage = TRUE, wound_bonus = 5 * our_smite_multiplier)
 		motherfucker_to_hurt.adjust_fire_stacks(3 * our_smite_multiplier)
 		motherfucker_to_hurt.ignite_mob()
 
 	motherfucker_to_hurt.update_damage_overlays()
 
-	to_chat(motherfucker_to_hurt, span_bolddanger("[smiter] [smite_text_to_target] Te machucando!"))
+	to_chat(motherfucker_to_hurt, span_bolddanger("[smiter] [smite_text_to_target], hurting you!"))
 	motherfucker_to_hurt.emote("scream")
 	new /obj/effect/temp_visual/explosion(get_turf(motherfucker_to_hurt), evil_smite ? LIGHT_COLOR_BLOOD_MAGIC : LIGHT_COLOR_HOLY_MAGIC)
 	. = TRUE
 
 /obj/item/melee/touch_attack/lay_on_hands
 	name = "mending touch"
-	desc = "Ao contrário de seus jogos favoritos de mesa, você não pode jogar isso em si mesmo, então você não pode usar isso como um Scapagoat." // mayus is reference. if you get it you're cool
+	desc = "Unlike in your favorite tabletop games, you sadly can't cast this on yourself, so you can't use that as a Scapegoat." // mayus is reference. if you get it you're cool
 	icon = 'icons/obj/weapons/hand.dmi'
 	icon_state = "greyscale"
 	color = COLOR_VERY_PALE_LIME_GREEN

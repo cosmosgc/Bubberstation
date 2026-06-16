@@ -11,6 +11,7 @@
 		if(curturf)
 			. += "<a href='byond://?_src_=holder;[HrefToken()];adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]' style='display:none;'>Jump To</a>"
 	VV_DROPDOWN_OPTION(VV_HK_MODIFY_TRANSFORM, "Modify Transform")
+	VV_DROPDOWN_OPTION(VV_HK_DEBUG_APPEARANCE, "Debug Appearance")
 	VV_DROPDOWN_OPTION(VV_HK_SPIN_ANIMATION, "SpinAnimation")
 	VV_DROPDOWN_OPTION(VV_HK_STOP_ALL_ANIMATIONS, "Stop All Animations")
 	VV_DROPDOWN_OPTION(VV_HK_SHOW_HIDDENPRINTS, "Show Hiddenprint log")
@@ -42,7 +43,7 @@
 			return
 
 		var/chosen_id
-		switch(tgui_alert(usr, "Escolha um método.", "Add Reagents", list("Search", "Choose from a list", "I'm feeling lucky")))
+		switch(tgui_alert(usr, "Choose a method.", "Add Reagents", list("Search", "Choose from a list", "I'm feeling lucky")))
 			if("Search")
 				var/valid_id
 				while(!valid_id)
@@ -56,7 +57,7 @@
 					else
 						valid_id = TRUE
 					if(!valid_id)
-						to_chat(usr, span_warning("Um reagente com essa identidade não existe!"))
+						to_chat(usr, span_warning("A reagent with that ID doesn't exist!"))
 			if("Choose from a list")
 				chosen_id = tgui_input_list(usr, "Choose a reagent to add.", "Choose a reagent.", sort_list(subtypesof(/datum/reagent), GLOBAL_PROC_REF(cmp_typepaths_asc)))
 			if("I'm feeling lucky")
@@ -114,48 +115,48 @@
 			ai_controller = new result(src)
 
 	if(href_list[VV_HK_MODIFY_TRANSFORM])
-		var/result = input(usr, "Escolha a transformação para aplicar","Mod Transformar") as null|anything in list("Scale","Translate","Rotate","Shear")
+		var/result = input(usr, "Choose the transformation to apply","Transform Mod") as null|anything in list("Scale","Translate","Rotate","Shear")
 		var/matrix/M = transform
 		if(!result)
 			return
 		switch(result)
 			if("Scale")
-				var/x = input(usr, "Escolha x mod","Mod Transformar") as null|num
-				var/y = input(usr, "Escolha o mod.","Mod Transformar") as null|num
+				var/x = input(usr, "Choose x mod","Transform Mod") as null|num
+				var/y = input(usr, "Choose y mod","Transform Mod") as null|num
 				if(isnull(x) || isnull(y))
 					return
 				transform = M.Scale(x,y)
 			if("Translate")
-				var/x = input(usr, "Escolha x mod (negativo = esquerda, positivo = direita)","Mod Transformar") as null|num
-				var/y = input(usr, "Escolha y mod (negativo = para baixo, positivo = para cima)","Mod Transformar") as null|num
+				var/x = input(usr, "Choose x mod (negative = left, positive = right)","Transform Mod") as null|num
+				var/y = input(usr, "Choose y mod (negative = down, positive = up)","Transform Mod") as null|num
 				if(isnull(x) || isnull(y))
 					return
 				transform = M.Translate(x,y)
 			if("Shear")
-				var/x = input(usr, "Escolha x mod","Mod Transformar") as null|num
-				var/y = input(usr, "Escolha o mod.","Mod Transformar") as null|num
+				var/x = input(usr, "Choose x mod","Transform Mod") as null|num
+				var/y = input(usr, "Choose y mod","Transform Mod") as null|num
 				if(isnull(x) || isnull(y))
 					return
 				transform = M.Shear(x,y)
 			if("Rotate")
-				var/angle = input(usr, "Escolha o ângulo para girar.","Mod Transformar") as null|num
+				var/angle = input(usr, "Choose angle to rotate","Transform Mod") as null|num
 				if(isnull(angle))
 					return
 				transform = M.Turn(angle)
 		SEND_SIGNAL(src, COMSIG_ATOM_VV_MODIFY_TRANSFORM)
 
 	if(href_list[VV_HK_SPIN_ANIMATION])
-		var/num_spins = input(usr, "Você quer infinitas voltas?", "Animação Spin") in list("Yes", "No")
+		var/num_spins = input(usr, "Do you want infinite spins?", "Spin Animation") in list("Yes", "No")
 		if(num_spins == "No")
 			num_spins = input(usr, "How many spins?", "Spin Animation") as null|num
 		else
 			num_spins = -1
 		if(!num_spins)
 			return
-		var/spins_per_sec = input(usr, "Quantas voltas por segundo?", "Animação Spin") as null|num
+		var/spins_per_sec = input(usr, "How many spins per second?", "Spin Animation") as null|num
 		if(!spins_per_sec)
 			return
-		var/direction = input(usr, "Em que direção?", "Animação Spin") in list("Clockwise", "Counter-clockwise")
+		var/direction = input(usr, "Which direction?", "Spin Animation") in list("Clockwise", "Counter-clockwise")
 		switch(direction)
 			if("Clockwise")
 				direction = 1
@@ -168,15 +169,15 @@
 	if(href_list[VV_HK_STOP_ALL_ANIMATIONS])
 		// Critical: Needs to be accessible in case of animation spam breaking shit
 		// Do not TGUIfy
-		var/result = input(usr, "Temcereza?", "Pare de animar") in list("Yes", "No")
+		var/result = input(usr, "Are you sure?", "Stop Animating") in list("Yes", "No")
 		if(result == "Yes")
 			animate(src, transform = null, flags = ANIMATION_END_NOW) // Literally just fucking stop animating entirely because admin said so
 		return
 
 	if(href_list[VV_HK_AUTO_RENAME])
-		var/newname = input(usr, "Para que quer renomear isso?", "Renomear automático.") as null|text
+		var/newname = input(usr, "What do you want to rename this to?", "Automatic Rename") as null|text
 		// Check the new name against the chat filter. If it triggers the IC chat filter, give an option to confirm.
-		if(newname && !(is_ic_filtered(newname) || is_soft_ic_filtered(newname) && tgui_alert(usr, "Seu nome selecionado contém palavras restritas por filtros de chat. Confirmar este novo nome?", "IC Chat Filter Conflict", list("Confirm", "Cancel")) != "Confirm"))
+		if(newname && !(is_ic_filtered(newname) || is_soft_ic_filtered(newname) && tgui_alert(usr, "Your selected name contains words restricted by IC chat filters. Confirm this new name?", "IC Chat Filter Conflict", list("Confirm", "Cancel")) != "Confirm"))
 			vv_auto_rename(newname)
 
 	if(href_list[VV_HK_EDIT_FILTERS])

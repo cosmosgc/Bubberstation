@@ -198,7 +198,7 @@
 	thermic_constant = 25
 	mix_message = "A solução se quebra rapidamente, girando uma mistura de cores."
 
-/datum/chemical_reaction/medicine/albuterol_to_convermol/overheated(datum/reagents/holder, datum/equilibrium/equilibrium, impure = FALSE)
+/datum/chemical_reaction/medicine/albuterol_to_convermol/overheated(datum/reagents/holder, datum/equilibrium/equilibrium, step_volume_added, impure = FALSE)
 	var/bonus = impure ? 2 : 1
 	explode_smoke(holder, equilibrium, 7.5 * bonus, TRUE, TRUE)
 

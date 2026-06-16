@@ -242,24 +242,24 @@
 	if(href_list["remove_antag"])
 		var/datum/antagonist/A = locate(href_list["remove_antag"]) in antag_datums
 		if(!istype(A))
-			to_chat(usr,span_warning("Ref antagonista inválido a ser removido."))
+			to_chat(usr,span_warning("Invalid antagonist ref to be removed."))
 			return
 		A.admin_remove(usr)
 
 	if(href_list["open_antag_vv"])
 		var/datum/antagonist/to_vv = locate(href_list["open_antag_vv"]) in antag_datums
 		if(!istype(to_vv))
-			to_chat(usr, span_warning("Antagonista inválido para ser visto."))
+			to_chat(usr, span_warning("Invalid antagonist ref to be vv'd."))
 			return
 		usr.client?.debug_variables(to_vv)
 
 	if (href_list["role_edit"])
-		var/new_role = input("Selecione um novo papel", "Papel designado.", assigned_role.title) as null|anything in sort_list(SSjob.name_occupations)
+		var/new_role = input("Select new role", "Assigned role", assigned_role.title) as null|anything in sort_list(SSjob.name_occupations)
 		if(isnull(new_role))
 			return
 		var/datum/job/new_job = SSjob.get_job(new_role)
 		if (!new_job)
-			to_chat(usr, span_warning("Trabalho não encontrado."))
+			to_chat(usr, span_warning("Job not found."))
 			return
 		set_assigned_role(new_job)
 
@@ -278,7 +278,7 @@
 					objective_pos = A.objectives.Find(old_objective)
 					break
 			if(!old_objective)
-				to_chat(usr,"Objetivo inválido.")
+				to_chat(usr,"Invalid objective.")
 				return
 		else
 			if(href_list["target_antag"])
@@ -292,7 +292,7 @@
 					if(1)
 						target_antag = antag_datums[1]
 					else
-						var/datum/antagonist/target = input("Qual antagonista tem o objetivo:", "Antagonist", "(novo fantasia antag)") as null|anything in sort_list(antag_datums) + "(novo fantasia antag)"
+						var/datum/antagonist/target = input("Which antagonist gets the objective:", "Antagonist", "(new custom antag)") as null|anything in sort_list(antag_datums) + "(new custom antag)"
 						if (QDELETED(target))
 							return
 						else if(target == "(new custom antag)")
@@ -307,7 +307,7 @@
 			if(old_objective.name in GLOB.admin_objective_list)
 				def_value = old_objective.name
 
-		var/selected_type = input("Selecione o tipo objetivo:", "Tipo objetivo.", def_value) as null|anything in GLOB.admin_objective_list
+		var/selected_type = input("Select objective type:", "Objective type", def_value) as null|anything in GLOB.admin_objective_list
 		selected_type = GLOB.admin_objective_list[selected_type]
 		if (!selected_type)
 			return
@@ -343,7 +343,7 @@
 				A.objectives -= objective
 				break
 		if(!objective)
-			to_chat(usr,"Objetivo inválido.")
+			to_chat(usr,"Invalid objective.")
 			return
 		//qdel(objective) Needs cleaning objective destroys
 		message_admins("[key_name_admin(usr)] removed an objective for [current]: [objective.explanation_text]")
@@ -357,7 +357,7 @@
 				objective = objective
 				break
 		if(!objective)
-			to_chat(usr,"Objetivo inválido.")
+			to_chat(usr,"Invalid objective.")
 			return
 		objective.completed = !objective.completed
 		log_admin("[key_name(usr)] toggled the win state for [current]'s objective: [objective.explanation_text]")
@@ -375,14 +375,14 @@
 				if(1)
 					target_antag = antag_datums[1]
 				else
-					var/datum/antagonist/target = input("Qual antagonista tem o objetivo:", "Antagonist", "(novo fantasia antag)") as null|anything in sort_list(antag_datums) + "(novo fantasia antag)"
+					var/datum/antagonist/target = input("Which antagonist gets the objective:", "Antagonist", "(new custom antag)") as null|anything in sort_list(antag_datums) + "(new custom antag)"
 					if (QDELETED(target))
 						return
 					else if(target == "(new custom antag)")
 						target_antag = add_antag_datum(/datum/antagonist/custom)
 					else
 						target_antag = target
-		var/replace_existing = input("Substituir os objetivos existentes?","Substituir objetivos?") in list("Yes", "No")
+		var/replace_existing = input("Replace existing objectives?","Replace objectives?") in list("Yes", "No")
 		if (isnull(replace_existing))
 			return
 		replace_existing = replace_existing == "Yes"
@@ -430,7 +430,7 @@
 						var/crystals = tgui_input_number(
 							user = usr,
 							message = "Amount of telecrystals for [key]",
-							title = "Esclareça a ligação",
+							title = "Syndicate uplink",
 							default = U.uplink_handler.telecrystals,
 						)
 						if(isnum(crystals))
@@ -443,7 +443,7 @@
 				var/datum/component/uplink/uplink = find_syndicate_uplink()
 				if(!uplink)
 					return
-				var/progression = input("Definir novos pontos de progressão para[key]","Esclareça a ligação", uplink.uplink_handler.progression_points) as null | num
+				var/progression = input("Set new progression points for [key]","Syndicate uplink", uplink.uplink_handler.progression_points) as null | num
 				if(isnull(progression))
 					return
 				uplink.uplink_handler.progression_points = progression
@@ -452,7 +452,7 @@
 			if("uplink")
 				var/datum/antagonist/traitor/traitor_datum = has_antag_datum(/datum/antagonist/traitor)
 				if(!give_uplink(antag_datum = traitor_datum || null))
-					to_chat(usr, span_danger("O equipamento de um pecado falso!"))
+					to_chat(usr, span_danger("Equipping a syndicate failed!"))
 					log_admin("[key_name(usr)] tried and failed to give [current] an uplink.")
 				else
 					log_admin("[key_name(usr)] gave [current] an uplink.")
@@ -471,10 +471,10 @@
 	else if (href_list["reroll_antag"])
 		var/datum/antagonist/antag = locate(href_list["reroll_antag"]) in antag_datums
 		if(!istype(antag))
-			to_chat(usr, span_warning("Ref antagonista inválido a ser removido."))
+			to_chat(usr, span_warning("Invalid antagonist ref to be removed."))
 			return
 
-		SSgamemode.reroll_antagonist(antag_name = name)
+		SSgamemode.reroll_antagonist(antag_name = name, existing_antag = antag)
 		antag.admin_remove(usr)
 	// BUBBER EDIT ADDITION END - ANTAG RE-ROLLING
 
@@ -490,6 +490,7 @@
 			if(G.can_reenter_corpse || even_if_they_cant_reenter)
 				return G
 			break
+	return null
 
 /datum/mind/proc/grab_ghost(force)
 	var/mob/dead/observer/G = get_ghost(even_if_they_cant_reenter = force)

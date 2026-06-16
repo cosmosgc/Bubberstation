@@ -301,7 +301,9 @@
 	return TRUE
 
 /datum/spy_bounty/objective_item/is_stealable(atom/movable/stealing)
-	return istype(stealing, desired_item.targetitem) 		&& !HAS_TRAIT(stealing, TRAIT_ITEM_OBJECTIVE_BLOCKED) 		&& desired_item.check_special_completion(stealing)
+	return istype(stealing, desired_item.targetitem) \
+		&& !HAS_TRAIT(stealing, TRAIT_ITEM_OBJECTIVE_BLOCKED) \
+		&& desired_item.check_special_completion(stealing)
 
 /datum/spy_bounty/objective_item/random_easy
 	difficulty = SPY_DIFFICULTY_EASY
@@ -584,14 +586,15 @@
 	var/mob/living/carbon/human/stolen_from = stealing
 	var/obj/item/real_stolen_item = find_desired_thing(stealing)
 	stolen_from.Unconscious(10 SECONDS)
-	to_chat(stolen_from, span_warning("Você sente algo faltando onde seu [real_stolen_item.name] Uma vez foi."))
+	to_chat(stolen_from, span_warning("You feel something missing where your [real_stolen_item.name] once was."))
 	return ..(real_stolen_item, spy)
 
 /datum/spy_bounty/targets_person/some_item/target_found(mob/crewmember)
 	var/obj/item/desired_thing = find_desired_thing(crewmember)
 	target_original_desired_ref = WEAKREF(desired_thing)
 	name = "[crewmember.real_name]'s [desired_thing.name]"
-	help = "Steal [desired_thing] from [crewmember.real_name]. 		You can accomplish this via brute force, or by scanning them with your uplink while they are incapacitated."
+	help = "Steal [desired_thing] from [crewmember.real_name]. \
+		You can accomplish this via brute force, or by scanning them with your uplink while they are incapacitated."
 	return TRUE
 
 /// Finds the desired item type in the target crewmember.
@@ -678,7 +681,7 @@
 
 /datum/spy_bounty/some_bot/finish_cleanup(mob/living/simple_animal/bot/stealing)
 	if(stealing.client)
-		to_chat(stealing, span_deadsay("Você foi roubado! Você é enviado para o mercado negro e desmontado para peças de reposição..."))
+		to_chat(stealing, span_deadsay("You've been stolen! You are shipped off to the black market and taken apart for spare parts..."))
 		stealing.investigate_log("stole by a spy (and deleted)", INVESTIGATE_DEATHS)
 		stealing.ghostize()
 	return ..()
@@ -713,22 +716,23 @@
 
 /datum/spy_bounty/some_bot/beepsky
 	difficulty = SPY_DIFFICULTY_MEDIUM // gotta get him to stand still
-	bot_type = /mob/living/simple_animal/bot/secbot/beepsky/officer
-	help = "Abduct Officer Beepsky - commonly found patrolling the station. 		Watch out, they may not take kindly to being scanned."
+	bot_type = /mob/living/basic/bot/secbot/beepsky/officer
+	help = "Abduct Officer Beepsky - commonly found patrolling the station. \
+		Watch out, they may not take kindly to being scanned."
 
 /datum/spy_bounty/some_bot/ofitser
 	difficulty = SPY_DIFFICULTY_EASY
-	bot_type = /mob/living/simple_animal/bot/secbot/beepsky/ofitser
+	bot_type = /mob/living/basic/bot/secbot/beepsky/ofitser
 	help = "Abduct Prison Ofitser - commonly found guarding the Gulag."
 
 /datum/spy_bounty/some_bot/armsky
 	difficulty = SPY_DIFFICULTY_HARD
-	bot_type = /mob/living/simple_animal/bot/secbot/beepsky/armsky
+	bot_type = /mob/living/basic/bot/secbot/beepsky/armsky
 	help = "Abduct Sergeant-At-Armsky - commonly found guarding the station's Armory."
 
 /datum/spy_bounty/some_bot/pingsky
 	difficulty = SPY_DIFFICULTY_HARD
-	bot_type = /mob/living/simple_animal/bot/secbot/pingsky
+	bot_type = /mob/living/basic/bot/secbot/pingsky
 	help = "Abduct Officer Pingsky - commonly found protecting the station's AI."
 
 /datum/spy_bounty/some_bot/scrubs

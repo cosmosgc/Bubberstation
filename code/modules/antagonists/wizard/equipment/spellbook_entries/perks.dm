@@ -1,7 +1,7 @@
 #define SPELLBOOK_CATEGORY_PERKS "Perks"
 
 /datum/spellbook_entry/perks
-	desc = "Nó principal de vantagens"
+	desc = "Main node of perks"
 	category = SPELLBOOK_CATEGORY_PERKS
 	refundable = FALSE // no refund
 	requires_wizard_garb = FALSE
@@ -15,7 +15,7 @@
 	RegisterSignal(user, COMSIG_MOB_HUD_CREATED, PROC_REF(on_hud_created))
 	if (user.hud_used)
 		on_hud_created()
-	to_chat(user, span_notice("Você tem uma nova vantagem:[src.name]."))
+	to_chat(user, span_notice("You got a new perk: [src.name]."))
 	log_purchase(user.key)
 	return TRUE
 
@@ -32,7 +32,7 @@
 
 /datum/spellbook_entry/perks/fourhands
 	name = "Four Hands"
-	desc = "Te dá ainda mais mãos para fazer magia."
+	desc = "Gives you even more hands to perform magic"
 	hud_icon = "fourhands"
 
 /datum/spellbook_entry/perks/fourhands/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book, log_buy)
@@ -41,7 +41,8 @@
 
 /datum/spellbook_entry/perks/wormborn
 	name = "Worm Born"
-	desc = "Sua alma está infestada de vermes mana. Quando morrer, renascerá como um grande verme. Quando o verme morre, não tem tanta sorte. Infecção parasítica impede que você ligue sua alma a objetos."
+	desc = "Your soul is infested with mana worms. When you die, you will be reborn as a large worm. \
+		When the worm dies, it has no such luck. Parasitic infection prevents you from binding your soul to objects."
 	hud_icon = "wormborn"
 	no_coexistence_typecache = list(/datum/action/cooldown/spell/lichdom)
 
@@ -51,7 +52,7 @@
 
 /datum/spellbook_entry/perks/dejavu
 	name = "Déjà vu"
-	desc = "A cada 60 segundos você volta para o lugar onde estava 60 segundos atrás com a mesma quantidade de saúde que tinha 60 segundos atrás."
+	desc = "Every 60 seconds returns you to the place where you were 60 seconds ago with the same amount of health as you had 60 seconds ago."
 	hud_icon = "dejavu"
 
 /datum/spellbook_entry/perks/dejavu/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book, log_buy)
@@ -68,7 +69,7 @@
 
 /datum/spellbook_entry/perks/spell_lottery
 	name = "Spells Lottery"
-	desc = "Feitiços A loteria lhe dá a chance de conseguir algo do livro totalmente grátis, mas você não pode mais reembolsar nenhuma compra."
+	desc = "Spells Lottery gives you the chance to get something from the book absolutely free, but you can no longer refund any purchases."
 	hud_icon = "spellottery"
 
 /datum/spellbook_entry/perks/spell_lottery/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book, log_buy)
@@ -77,7 +78,7 @@
 
 /datum/spellbook_entry/perks/gamble
 	name = "Gamble"
-	desc = "Você ganha duas regalias aleatórias."
+	desc = "You get 2 random perks."
 	hud_icon = "gamble"
 
 /datum/spellbook_entry/perks/gamble/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book, log_buy)
@@ -95,7 +96,7 @@
 		if(perks_allocated >= 2)
 			break
 	if(taking_perks.len < 1)
-		to_chat(user, span_warning("Gamble não pode dar duas regalias, então os pontos são devolvidos."))
+		to_chat(user, span_warning("Gamble cannot give 2 perks, so points are returned"))
 		return FALSE
 	taking_perks = shuffle(taking_perks)
 	for(var/datum/spellbook_entry/perks/perks_ready in taking_perks)
@@ -103,7 +104,10 @@
 
 /datum/spellbook_entry/perks/heart_eater
 	name = "Heart Eater"
-	desc = "Dá-lhe a capacidade de obter a força da vida de uma pessoa comendo seu coração. Comer o coração de alguém pode aumentar sua resistência a danos ou ganhar mutação aleatória. O coração também dá uma forte cura."
+	desc = "Gives you the ability to obtain a sentient being's life force by eating their heart. \
+		Additionally, you can tear a vulnerable being's heart out with your bare hands. \
+		By eating someone's heart you can increase your damage resistance or gain random mutation. \
+		Hearts also provide strong healing."
 	hud_icon = "hearteater"
 
 /datum/spellbook_entry/perks/heart_eater/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book, log_buy)
@@ -112,7 +116,8 @@
 
 /datum/spellbook_entry/perks/slime_friends
 	name = "Slime Friends"
-	desc = "Slimes são seus amigos. A cada 15 segundos você perde alguns nutrientes e convoca um lodo maligno aleatório para lutar do seu lado."
+	desc = "Slimes are your friends. \
+		Every 15 seconds you lose some nutriments and summon a random evil slime to fight on your side."
 	hud_icon = "slimefriends"
 
 /datum/spellbook_entry/perks/slime_friends/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book, log_buy)
@@ -121,7 +126,8 @@
 
 /datum/spellbook_entry/perks/transparence
 	name = "Transparence"
-	desc = "Você se torna um pouco mais perto do mundo dos mortos. Projéteis passam por você, mas você perde 25% de sua saúde e você é caçado por uma terrível maldição que quer devolvê-lo à vida após a morte."
+	desc = "You become a little closer to the world of the dead. \
+		Projectiles pass through you, but you lose 25% of your health and you are hunted by a terrible curse which wants to return you to the afterlife."
 	hud_icon = "transparence"
 
 /datum/spellbook_entry/perks/transparence/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book, log_buy)
@@ -141,7 +147,8 @@
 
 /datum/spellbook_entry/perks/magnetism
 	name = "Magnetism"
-	desc = "Você tem uma pequena anomalia gravitacional que orbita ao seu redor. As coisas próximas serão atraídas por você."
+	desc = "You get a small gravity anomaly that orbit around you. \
+		Nearby things will be attracted to you."
 	hud_icon = "magnetism"
 
 /datum/spellbook_entry/perks/magnetism/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book, log_buy)

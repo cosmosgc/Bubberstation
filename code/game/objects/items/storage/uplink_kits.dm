@@ -491,6 +491,11 @@
 	new /obj/item/reagent_containers/cup/bottle/amanitin(src)
 	new /obj/item/reagent_containers/syringe(src)
 
+/obj/item/storage/box/syndie_kit/carnivorous_blood/PopulateContents()
+	new /obj/item/reagent_containers/cup/bottle/carnivorous_blood(src)
+	new /obj/item/reagent_containers/syringe(src)
+	new /obj/item/food/meat/slab/human(src)
+
 /obj/item/storage/box/syndie_kit/nuke
 	name = "nuke core extraction kit"
 	desc = "Uma caixa contendo o equipamento e instruções para extrair os núcleos de plutônio da maioria dos explosivos nucleares de Nanotrasen."
@@ -795,6 +800,7 @@
 
 	var/datum/antagonist/nukeop/nuke_datum = new()
 	nuke_datum.send_to_spawnpoint = FALSE
+	nuke_datum.give_bonus_tc = FALSE
 	nuke_datum.nukeop_outfit = null
 	human_target.mind?.add_antag_datum(nuke_datum)
 	human_target.add_faction(ROLE_SYNDICATE)

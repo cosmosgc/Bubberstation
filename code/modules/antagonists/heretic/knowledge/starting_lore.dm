@@ -18,7 +18,9 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
  */
 /datum/heretic_knowledge/spell/basic
 	name = "Break of Dawn"
-	desc = "Começa sua jornada para o Mansus. Concede-lhe o Mansus Grasp, um poderoso e upgradável feitiço incapacitante que pode ser lançado independentemente de ter um foco."
+	desc = "Starts your journey into the Mansus. \
+		Grants you the Mansus Grasp, a powerful and upgradable \
+		disabling spell that can be cast regardless of having a focus."
 	action_to_add = /datum/action/cooldown/spell/touch/mansus_grasp
 	cost = 0
 	is_starting_knowledge = TRUE
@@ -42,7 +44,7 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 
 	INVOKE_ASYNC(cast_on, TYPE_PROC_REF(/atom/movable, say), message = "R'CH T'H F'SH!", forced = "fishing rod infusion invocation")
 	playsound(cast_on, /datum/action/cooldown/spell/touch/mansus_grasp::sound, 15)
-	cast_on.visible_message(span_notice("[cast_on] Snaps [cast_on.p_their()] Dedos ao lado de [held_rod], cobrindo-o em uma explosão de chamas roxas!"))
+	cast_on.visible_message(span_notice("[cast_on] snaps [cast_on.p_their()] fingers next to [held_rod], covering it in a burst of purple flames!"))
 
 	ADD_TRAIT(held_rod, TRAIT_ROD_MANSUS_INFUSED, REF(held_rod))
 	held_rod.difficulty_modifier -= 20
@@ -64,7 +66,10 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
  */
 /datum/heretic_knowledge/living_heart
 	name = "The Living Heart"
-	desc = "Concede-lhe um Coração Vivo, permitindo que rastreie alvos de sacrifício. Se você perder seu coração, você pode transmutar uma papoula e uma poça de sangue para despertar seu coração em um Coração Vivo. Se seu coração é cibernético, você será incapaz de acordá-lo."
+	desc = "Grants you a Living Heart, allowing you to track sacrifice targets. \
+		Should you lose your heart, you can transmute a poppy and a pool of blood \
+		to awaken your heart into a Living Heart. If your heart is Cybernetic, \
+		you will be unable to reawaken it."
 	required_atoms = list(
 		/obj/effect/decal/cleanable/blood = 1,
 		/obj/item/food/grown/poppy = 1,
@@ -101,15 +106,18 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 			// We found a replacement place to put our heart
 			where_to_put_our_heart = look_for_backup
 			our_heretic.living_heart_organ_slot = backup_slot
-			to_chat(user, span_boldnotice("Como sua espécie não tem coração, seu coração vivo está localizado em seu [look_for_backup.name]."))
+			to_chat(user, span_boldnotice("As your species does not have a heart, your Living Heart is located in your [look_for_backup.name]."))
 			break
 
 	if(where_to_put_our_heart)
 		where_to_put_our_heart.AddComponent(/datum/component/living_heart)
-		desc = "Concede-lhe um coração vivo, amarrado ao seu [where_to_put_our_heart.name], permitindo que você rastreie alvos de sacrifício. Se você perder seu [where_to_put_our_heart.name], você pode transmutar uma papoula e uma poça de sangue para acordar seu [where_to_put_our_heart.name] em um Coração Vivo. Cybernetic [where_to_put_our_heart.name] Bloqueará o ritual!"
+		desc = "Grants you a Living Heart, tied to your [where_to_put_our_heart.name], allowing you to track sacrifice targets. \
+			Should you lose your [where_to_put_our_heart.name], you can transmute a poppy and a pool of blood \
+			to awaken your [where_to_put_our_heart.name] into a Living Heart. \
+			Cybernetic [where_to_put_our_heart.name]\s will block the ritual!"
 
 	else
-		to_chat(user, span_boldnotice("Você não tem coração, nem órgãos do peito. Você não ganhou um Coração Vivo por causa disso."))
+		to_chat(user, span_boldnotice("You don't have a heart, or any chest organs for that matter. You didn't get a Living Heart because of it."))
 
 /datum/heretic_knowledge/living_heart/on_lose(mob/user, datum/antagonist/heretic/our_heretic)
 	var/obj/item/organ/our_living_heart = user.get_organ_slot(our_heretic.living_heart_organ_slot)
@@ -127,14 +135,14 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 	var/obj/item/organ/our_living_heart = user.get_organ_slot(our_heretic.living_heart_organ_slot)
 	// No heart, nothing to give living heart to
 	if(QDELETED(our_living_heart))
-		loc.balloon_alert(user, "O ritual falhou, não.[our_heretic.living_heart_organ_slot]!")
+		loc.balloon_alert(user, "ritual failed, no [our_heretic.living_heart_organ_slot]!")
 		return FALSE
 
 	// For sanity's sake, check if they've got a living heart -
 	// even though it's not invokable if you already have one,
 	// they may have gained one unexpectantly in between now and then
 	if(HAS_TRAIT(our_living_heart, TRAIT_LIVING_HEART))
-		loc.balloon_alert(user, "O ritual falhou, já tem um coração vivo!")
+		loc.balloon_alert(user, "ritual failed, already have a living heart!")
 		return FALSE
 
 	// By this point they are making a new heart
@@ -142,7 +150,7 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 	if(is_valid_heart(our_living_heart))
 		return TRUE
 
-	loc.balloon_alert(user, "O ritual falhou,[our_heretic.living_heart_organ_slot] Não pode ser acordado!") // "coração não pode ser despertado!"
+	loc.balloon_alert(user, "ritual failed, [our_heretic.living_heart_organ_slot] can't be awakened!") // "heart can't be awakened!"
 	return FALSE
 
 /datum/heretic_knowledge/living_heart/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
@@ -152,7 +160,7 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 	selected_atoms -= our_new_heart
 	// Make it the living heart
 	our_new_heart.AddComponent(/datum/component/living_heart)
-	to_chat(user, span_warning("Você sente o seu [our_new_heart.name] Comece o pulso mais rápido e rápido quando ele acordar!"))
+	to_chat(user, span_warning("You feel your [our_new_heart.name] begin pulse faster and faster as it awakens!"))
 	playsound(user, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 	return TRUE
 
@@ -171,7 +179,8 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
  */
 /datum/heretic_knowledge/amber_focus
 	name = "Amber Focus"
-	desc = "Permite que transmute uma folha de vidro e um par de olhos para criar um Amber Focus. Um foco deve ser usado para lançar feitiços mais avançados."
+	desc = "Allows you to transmute a sheet of glass and a pair of eyes to create an Amber Focus. \
+		A focus must be worn in order to cast more advanced spells."
 	required_atoms = list(
 		/obj/item/organ/eyes = 1,
 		/obj/item/stack/sheet/glass = 1,
@@ -185,90 +194,16 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 
 /datum/heretic_knowledge/spell/cloak_of_shadows
 	name = "Cloak of Shadow"
-	desc = "Concede-lhe o feitiço Cloak of Shadow. Este feitiço esconderá completamente sua identidade em uma fumaça roxa por três minutos, ajudando você a manter segredo. Requer um foco para lançar."
+	desc = "Grants you the spell Cloak of Shadow. This spell will completely conceal your identity in a purple smoke \
+		for three minutes, assisting you in keeping secrecy. Requires a focus to cast."
 	action_to_add = /datum/action/cooldown/spell/shadow_cloak
 	cost = 0
 	is_starting_knowledge = TRUE
 
-/**
- * Codex Cicatrixi is available at the start:
- * This allows heretics to choose if they want to rush all the influences and take them stealthily, or
- * Construct a codex and take what's left with more points.
- * Another downside to having the book is strip searches, which means that it's not just a free nab, at least until you get exposed - and when you do, you'll probably need the faster drawing speed.
- * Overall, it's a tradeoff between speed and stealth or power.
- */
-/datum/heretic_knowledge/codex_cicatrix
-	name = "Codex Cicatrix"
-	desc = "Permite transmutar um livro, qualquer caneta, e sua picareta de qualquer carcaça (animal ou humana), couro, ou se esconder para criar um Códice Cicatrix. O Codex Cicatrix pode ser usado quando drena influências para obter mais conhecimento, mas corre maior risco de ser notado. Ele também pode ser usado para desenhar e remover runas de transmutação mais fácil, e como um foco de feitiço em uma pitada."
-	gain_text = "O oculto deixa fragmentos de conhecimento e poder em qualquer lugar e em todo lugar. O Códice Cicatrix é um exemplo. Dentro dos rostos de couro e páginas antigas, um caminho para o Mansus é revelado."
-	required_atoms = list(
-		list(/obj/item/toy/eldritch_book, /obj/item/book) = 1,
-		/obj/item/pen = 1,
-		list(/mob/living, /obj/item/stack/sheet/leather, /obj/item/stack/sheet/animalhide, /obj/item/food/deadmouse) = 1,
-	)
-	result_atoms = list(/obj/item/codex_cicatrix)
-	cost = 1
-	is_starting_knowledge = TRUE
-	priority = MAX_KNOWLEDGE_PRIORITY - 4 // Least priority out of the starting knowledges, as it's an optional boon.
-	var/static/list/non_mob_bindings = typecacheof(list(/obj/item/stack/sheet/leather, /obj/item/stack/sheet/animalhide, /obj/item/food/deadmouse))
-	research_tree_icon_path = 'icons/obj/antags/eldritch.dmi'
-	research_tree_icon_state = "book"
-
-/datum/heretic_knowledge/codex_cicatrix/recipe_snowflake_check(mob/living/user, list/atoms, list/selected_atoms, turf/loc)
-	. = ..()
-	if(!.)
-		return FALSE
-
-	for(var/thingy in atoms)
-		if(is_type_in_typecache(thingy, non_mob_bindings))
-			selected_atoms += thingy
-			return TRUE
-		else if(isliving(thingy))
-			var/mob/living/body = thingy
-			if(body.stat != DEAD)
-				continue
-			selected_atoms += body
-			return TRUE
-	return FALSE
-
-/datum/heretic_knowledge/codex_cicatrix/cleanup_atoms(list/selected_atoms)
-	var/mob/living/body = locate() in selected_atoms
-	if(!body)
-		return ..()
-	// A golem or an android doesn't have skin!
-	var/exterior_text = "skin"
-	// If carbon, it's the limb. If not, it's the body.
-	var/atom/movable/ripped_thing = body
-
-	// We will check if it's a carbon's body.
-	// If it is, we will damage a random bodypart, and check that bodypart for its body type, to select between 'skin' or 'exterior'.
-	if(iscarbon(body))
-		var/mob/living/carbon/carbody = body
-		var/obj/item/bodypart/bodypart = pick(carbody.get_bodyparts())
-		ripped_thing = bodypart
-
-		carbody.apply_damage(25, BRUTE, bodypart, sharpness = SHARP_EDGED)
-		if(!(bodypart.bodytype & BODYTYPE_ORGANIC))
-			exterior_text = "exterior"
-	else
-		body.apply_damage(25, BRUTE, sharpness = SHARP_EDGED)
-		// If it is not a carbon mob, we will just check biotypes and damage it directly.
-		if(body.mob_biotypes & (MOB_MINERAL|MOB_ROBOTIC))
-			exterior_text = "exterior"
-
-	// Procure book for flavor text. This is why we call parent at the end.
-	var/obj/item/book/le_book = locate() in selected_atoms
-	if(!le_book)
-		stack_trace("Somehow, no book in codex cicatrix selected atoms! [english_list(selected_atoms)]")
-	playsound(body, 'sound/items/poster/poster_ripped.ogg', 100, TRUE)
-	body.do_jitter_animation()
-	body.visible_message(span_danger("Um som terrível é ouvido como [ripped_thing]'s [exterior_text] é arrancado para fora, enrolando ao redor[le_book || "the book"], transformando-se em um tom azul eldritch!"))
-	return ..()
-
 /datum/heretic_knowledge/feast_of_owls
 	name = "Feast of Owls"
-	desc = "Permite que você passe por um ritual que lhe dá 5 pontos de conhecimento, mas te bloqueia da ascensão. Isso só pode ser feito uma vez e não pode ser revertido."
-	gain_text = "Sob o suave brilho da irracionalidade há uma besta que persegue a noite. Vou trazê-lo e deixá-lo entrar em minha presença. Ele se banqueteará com minhas amibições e deixará o conhecimento em seu rastro."
+	desc = "Allows you to undergo a ritual that gives you 5 knowledge points but locks you out of ascension. This can only be done once and cannot be reverted."
+	gain_text = "Under the soft glow of unreason there is a beast that stalks the night. I shall bring it forth and let it enter my presence. It will feast upon my amibitions and leave knowledge in its wake."
 	is_starting_knowledge = TRUE
 	required_atoms = list()
 	research_tree_icon_path = 'icons/mob/actions/actions_animal.dmi'
@@ -280,7 +215,7 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 	return !invoker.feast_of_owls
 
 /datum/heretic_knowledge/feast_of_owls/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
-	var/alert = tgui_alert(user,"Você realmente quer abandonar sua ascensão? Esta ação não pode ser revertida.", "Feast of Owls", list("Yes I'm sure", "No"), 30 SECONDS)
+	var/alert = tgui_alert(user,"Do you really want to forsake your ascension? This action cannot be reverted.", "Feast of Owls", list("Yes I'm sure", "No"), 30 SECONDS)
 	if(alert != "Yes I'm sure" || QDELETED(user) || QDELETED(src) || get_dist(user, loc) > 2)
 		return FALSE
 	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
@@ -299,50 +234,13 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 		playsound(loc, 'sound/items/eatfood.ogg', 100, TRUE)
 		heretic_datum.adjust_knowledge_points(1)
 
-		to_chat(user, span_danger("Você sente algo invisível rasgando sua essência!"))
+		to_chat(user, span_danger("You feel something invisible tearing away at your very essence!"))
 		user.do_jitter_animation()
 		sleep(1 SECONDS)
 		if(QDELETED(user) || QDELETED(heretic_datum))
 			return FALSE
 
-	to_chat(user, span_danger(span_big("Sua ambição está devastada, mas algo poderoso permanece em seu rastro...")))
+	to_chat(user, span_danger(span_big("Your ambition is ravaged, but something powerful remains in its wake...")))
 	var/drain_message = pick_list(HERETIC_INFLUENCE_FILE, "drain_message")
 	to_chat(user, span_hypnophrase(span_big("[drain_message]")))
 	return .
-
-/**
- * Warren King's Welcome
- * Ritual available at the start. So that heretics can easily gain access to maintenance airlocks without having to rely on a HoP or having to off some poor assistant.
- * Gives access to solars since those doors are especially useful to get in or out of space.
- */
-/datum/heretic_knowledge/bookworm
-	name = "Warren King's Welcome"
-	desc = "Permite que transmute 5 cabos e um pedaço de papel para infundir qualquer identificação com maintenace e acesso externo à câmara de ar."
-	gain_text = "Torcido em ossos dedos manchados de víveres, meu triste convite tira minha mente enjoada e turva em direção à porta pesada. Lentamente, a luz dança entre uma escuridão rastejante, cobrindo o passeio fétido com infinitas maquinações. Mas o Rei em breve levará seu quilo de carne. Mesmo aqui, o fiscal pega a parte deles. Pois há milhares de bocas para alimentar."
-	required_atoms = list(
-		/obj/item/stack/cable_coil = 5,
-		/obj/item/paper = 1,
-	)
-	cost = 1
-	is_starting_knowledge = TRUE
-	priority = MAX_KNOWLEDGE_PRIORITY - 3
-	research_tree_icon_path = 'icons/obj/card.dmi'
-	research_tree_icon_state = "eldritch"
-
-/datum/heretic_knowledge/bookworm/recipe_snowflake_check(mob/living/user, list/atoms, list/selected_atoms, turf/loc)
-	. = ..()
-	for(var/obj/item/card/id/used_id in atoms)
-		if((ACCESS_MAINT_TUNNELS in used_id.access) && (ACCESS_EXTERNAL_AIRLOCKS in used_id.access)) // If we can't give any access we aren't elligible
-			continue
-		selected_atoms += used_id
-		return TRUE
-
-	user.balloon_alert(user, "O ritual falhou, sem identificação sem acesso!")
-	return FALSE
-
-/datum/heretic_knowledge/bookworm/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
-	. = ..()
-	var/obj/item/card/id/improved_id = locate() in selected_atoms
-	improved_id.add_access(list(ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS), mode = FORCE_ADD_ALL)
-	selected_atoms -= improved_id
-	return TRUE

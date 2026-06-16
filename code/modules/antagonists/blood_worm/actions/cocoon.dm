@@ -38,11 +38,11 @@
 		return FALSE
 	if (HAS_TRAIT(owner, TRAIT_SHAPESHIFTED))
 		if (feedback)
-			owner.balloon_alert(owner, "Não enquanto muda de forma!")
+			owner.balloon_alert(owner, "not while shapeshifted!")
 		return FALSE
 	if (!isturf(owner.loc))
 		if (feedback)
-			owner.balloon_alert(owner, "Para o chão!")
+			owner.balloon_alert(owner, "get on the ground!")
 		return FALSE
 	if (!check_consumed_blood(feedback))
 		return FALSE
@@ -52,18 +52,18 @@
 
 /datum/action/cooldown/mob_cooldown/blood_worm/cocoon/Activate(atom/target)
 	owner.visible_message(
-		message = span_danger("\The [owner] start [owner.p_s()] growing a cocoon!"),
-		self_message = span_notice("Você começa a cultivar um casulo."),
-		blind_message = span_hear("Você começa a ouvir tricô carnudo!")
+		message = span_danger("\The [owner] start[owner.p_s()] growing a cocoon!"),
+		self_message = span_notice("You start growing a cocoon."),
+		blind_message = span_hear("You start hearing fleshy knitting!")
 	)
 
 	if (!do_after(owner, 5 SECONDS, extra_checks = CALLBACK(src, PROC_REF(check_consumed_blood))))
 		return FALSE
 
 	owner.visible_message(
-		message = span_danger("\The [owner] enter [owner.p_s()] a cocoon!"),
-		self_message = span_green("Você entra no seu casulo recém crescido!"),
-		blind_message = span_hear("Pare de ouvir tricô carnudo!")
+		message = span_danger("\The [owner] enter[owner.p_s()] a cocoon!"),
+		self_message = span_green("You enter your freshly grown cocoon!"),
+		blind_message = span_hear("You stop hearing fleshy knitting!")
 	)
 
 	cocoon = new cocoon_type(get_turf(owner))
@@ -99,8 +99,8 @@
 
 		unfortunate_observer.visible_message(
 			message = span_danger("\The [unfortunate_observer] is splashed with a wave of corrosive blood!"),
-			self_message = span_userdanger("Você está cheio de uma onda de sangue corrosivo! Sim!"),
-			blind_message = span_hear("Você está ouvindo?")
+			self_message = span_userdanger("You're splashed with a wave of corrosive blood! YEOWCH!"),
+			blind_message = span_hear("You hear sizzling!")
 		)
 
 		unfortunate_observer.Knockdown(3 SECONDS)
@@ -147,13 +147,13 @@
 /// Cancels the incubation process, destroying the cocoon early.
 /datum/action/cooldown/mob_cooldown/blood_worm/cocoon/proc/cancel()
 	cocoon.visible_message(
-		message = span_danger("\The [cocoon] fall [cocoon.p_s()] apart, expelling \the [owner] within."),
-		blind_message = span_danger("Você ouve uma batida!"),
+		message = span_danger("\The [cocoon] fall[cocoon.p_s()] apart, expelling \the [owner] within."),
+		blind_message = span_danger("You hear a splat!"),
 		ignored_mobs = owner
 	)
 
 	if (!QDELETED(owner) && owner.stat != DEAD)
-		to_chat(owner, span_userdanger("Seu casulo desmorona!"))
+		to_chat(owner, span_userdanger("Your cocoon falls apart!"))
 
 	playsound(cocoon, 'sound/effects/splat.ogg', vol = 60, vary = TRUE, ignore_walls = FALSE)
 
@@ -202,7 +202,7 @@
 
 	if (total_consumed_blood < total_blood_required)
 		if (feedback)
-			worm.balloon_alert(worm, "Apenas em [FLOOR(total_consumed_blood / total_blood_required * 100, 1)]% do crescimento necessário!")
+			worm.balloon_alert(worm, "only at [FLOOR(total_consumed_blood / total_blood_required * 100, 1)]% of required growth!")
 		return FALSE
 	return TRUE
 
@@ -216,7 +216,7 @@
 
 /datum/action/cooldown/mob_cooldown/blood_worm/cocoon/hatchling
 	name = "Mature"
-	desc = "Entra em incubação em um casulo, emergindo como um verme de sangue juvenil."
+	desc = "Enter incubation in a cocoon, emerging as a juvenile blood worm."
 
 	button_icon_state = "mature_hatchling"
 
@@ -226,7 +226,7 @@
 	total_blood_required = 500
 
 /datum/action/cooldown/mob_cooldown/blood_worm/cocoon/hatchling/Activate(atom/target)
-	if (tgui_alert(owner, "Tem certeza? Depois.[cocoon_time / 10]segundos, você vai se tornar um juvenil, ganhando aumento de estatísticas e a capacidade de cuspir sangue corrosivo, mas perdendo a capacidade de ventrawl.", "Mature", list("Yes", "No"), 30 SECONDS) != "Yes")
+	if (tgui_alert(owner, "Are you sure? After [cocoon_time / 10] seconds, you will become a juvenile, gaining stat increases and the ability to spit corrosive blood, but losing the ability to ventcrawl.", "Mature", list("Yes", "No"), 30 SECONDS) != "Yes")
 		return
 	if (!IsAvailable(feedback = TRUE))
 		return
@@ -240,7 +240,7 @@
 
 /obj/structure/blood_worm_cocoon/hatchling
 	name = "small blood cocoon"
-	desc = "O casulo de incubação de um verme de sangue. Sua superfície está se movendo lentamente."
+	desc = "The incubation cocoon of a hatchling blood worm. Its surface is slowly shifting."
 
 	icon_state = "cocoon-small"
 
@@ -248,11 +248,11 @@
 	damage_deflection = 10
 
 /obj/structure/blood_worm_cocoon/hatchling/examine(mob/user)
-	return ..() + span_warning("Pode ser quebrado para evitar que o verme sangre.")
+	return ..() + span_warning("It can be broken to prevent the blood worm from maturing.")
 
 /datum/action/cooldown/mob_cooldown/blood_worm/cocoon/juvenile
 	name = "Mature"
-	desc = "Entra em incubação em um casulo, emergindo como um verme de sangue adulto."
+	desc = "Enter incubation in a cocoon, emerging as an adult blood worm."
 
 	button_icon_state = "mature_juvenile"
 
@@ -262,7 +262,7 @@
 	total_blood_required = 1500
 
 /datum/action/cooldown/mob_cooldown/blood_worm/cocoon/juvenile/Activate(atom/target)
-	if (tgui_alert(owner, "Tem certeza? Depois.[cocoon_time / 10]segundos, você vai se tornar um adulto, ganhando aumentos de estatísticas e a capacidade de cuspir explosões de sangue corrosivo com o botão direito do mouse com o Spit Blood enquanto fora de um hospedeiro.", "Mature", list("Yes", "No"), 30 SECONDS) != "Yes")
+	if (tgui_alert(owner, "Are you sure? After [cocoon_time / 10] seconds, you will become an adult, gaining stat increases and the ability to spit bursts of corrosive blood by right-clicking with Spit Blood while outside of a host.", "Mature", list("Yes", "No"), 30 SECONDS) != "Yes")
 		return
 	if (!IsAvailable(feedback = TRUE))
 		return
@@ -276,7 +276,7 @@
 
 /obj/structure/blood_worm_cocoon/juvenile
 	name = "medium blood cocoon"
-	desc = "O casulo de incubação de um verme de sangue juvenil. Sua superfície está se movendo lentamente."
+	desc = "The incubation cocoon of a juvenile blood worm. Its surface is slowly shifting."
 
 	icon_state = "cocoon-medium"
 
@@ -284,11 +284,11 @@
 	damage_deflection = 15
 
 /obj/structure/blood_worm_cocoon/juvenile/examine(mob/user)
-	return ..() + span_warning("Pode ser quebrado para evitar que o verme de sangue amadurecisse, mas parece bastante difícil.")
+	return ..() + span_warning("It can be broken to prevent the blood worm from maturing, but it looks rather tough.")
 
 /datum/action/cooldown/mob_cooldown/blood_worm/cocoon/adult
 	name = "Reproduce"
-	desc = "Introduza incubação em um casulo, criando 4 filhotes novos incluindo você mesmo."
+	desc = "Enter incubation in a cocoon, creating 4 new hatchlings including yourself."
 
 	button_icon_state = "reproduce"
 
@@ -314,7 +314,7 @@
 	return ..()
 
 /datum/action/cooldown/mob_cooldown/blood_worm/cocoon/adult/Activate(atom/target)
-	if (tgui_alert(owner, "Tem certeza? Depois.[cocoon_time / 10]segundos, você vai criar[num_hatchlings + 1]Novos filhotes, incluindo você mesmo.", "Reproduce", list("Yes", "No"), 30 SECONDS) != "Yes")
+	if (tgui_alert(owner, "Are you sure? After [cocoon_time / 10] seconds, you will create [num_hatchlings + 1] new hatchlings, including yourself.", "Reproduce", list("Yes", "No"), 30 SECONDS) != "Yes")
 		return
 	if (!IsAvailable(feedback = TRUE))
 		return
@@ -322,7 +322,7 @@
 	return ..()
 
 /datum/action/cooldown/mob_cooldown/blood_worm/cocoon/adult/handle_timer()
-	cocoon.balloon_alert(owner, "Pesquisando fantasmas")
+	cocoon.balloon_alert(owner, "polling ghosts")
 
 	candidates = SSpolling.poll_ghost_candidates(
 		question = "Would you like to become a newly hatched blood worm? (x[num_hatchlings])",
@@ -332,7 +332,7 @@
 		ignore_category = POLL_IGNORE_BLOOD_WORM,
 		alert_pic = cocoon_type, // The hatchling icon is too small, and a well-cropped juvenile icon is already used for the main spawn event.
 		jump_target = cocoon,
-		role_name_text = "verme de sangue",
+		role_name_text = "blood worm",
 		amount_to_pick = num_hatchlings
 	)
 
@@ -347,9 +347,9 @@
 		return
 	if (num_candidates <= 0)
 		cancel()
-		owner.balloon_alert(owner, "Sem candidatos!") // We can't host this balloon alert on a deleted cocoon.
+		owner.balloon_alert(owner, "no candidates!") // We can't host this balloon alert on a deleted cocoon.
 		return
-	if (num_candidates < num_hatchlings && tgui_alert(owner, "Há apenas[num_candidates]/[num_hatchlings]Candidatos a filhotes, querem continuar?", "Ghost Shortage", list("Yes", "No"), 10 SECONDS) != "Yes")
+	if (num_candidates < num_hatchlings && tgui_alert(owner, "There are only [num_candidates]/[num_hatchlings] candidates for hatchlings, want to proceed anyway?", "Ghost Shortage", list("Yes", "No"), 10 SECONDS) != "Yes")
 		cancel()
 		return
 
@@ -394,11 +394,11 @@
 			continue
 
 		// Sucks, but that's just how it is sometimes.
-		to_chat(candidate, span_warning("O casulo de verme de sangue que você fez foi cancelado. Desculpe."))
+		to_chat(candidate, span_warning("The blood worm cocoon you rolled a hatchling spot for was canceled. Sorry."))
 
 /obj/structure/blood_worm_cocoon/adult
 	name = "large blood cocoon"
-	desc = "O casulo de incubação de um verme adulto. Você pode ver muitas sombras fracas dentro."
+	desc = "The incubation cocoon of an adult blood worm. You can see many faint shadows within."
 
 	icon_state = "cocoon-large"
 
@@ -406,4 +406,10 @@
 	damage_deflection = 20
 
 /obj/structure/blood_worm_cocoon/adult/examine(mob/user)
-	return ..() + span_warning("Pode ser quebrado para evitar que o verme se reproduza, mas parece extremamente difícil.")
+	return ..() + span_warning("It can be broken to prevent the blood worm from reproducing, but it looks extremely tough.")
+
+/datum/action/cooldown/mob_cooldown/blood_worm/cocoon/hatchling/polymorph
+	new_worm_type = /mob/living/basic/blood_worm/juvenile/polymorph
+
+/datum/action/cooldown/mob_cooldown/blood_worm/cocoon/juvenile/polymorph
+	new_worm_type = /mob/living/basic/blood_worm/adult/polymorph

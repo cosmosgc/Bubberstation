@@ -291,4 +291,10 @@ ADMIN_VERB(debug_hallucination_weighted_list_per_type, R_DEBUG, "Show Hallucinat
 	return delusion_args
 
 /// Lines the bubblegum hallucinatoin uses when it pops up
-#define BUBBLEGUM_HALLUCINATION_LINES list( 		span_colossus("Eu sou imortal."), 		span_colossus("Eu tomarei seu mundo."), 		span_colossus("Eu vejo você."), 		span_colossus("Você não pode escapar de mim para sempre."), 		span_colossus("NADA PODE ME SEGURAR."), 	)
+#define BUBBLEGUM_HALLUCINATION_LINES list( \
+		"I AM IMMORTAL.", \
+		"I SHALL TAKE YOUR WORLD.", \
+		"I SEE YOU.", \
+		"YOU CANNOT ESCAPE ME FOREVER.", \
+		"NOTHING CAN HOLD ME.", \
+	)

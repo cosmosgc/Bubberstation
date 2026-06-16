@@ -696,7 +696,9 @@ BUBBER REMOVAL END
 
 	var/new_maptext
 	if(round_started)
-		new_maptext = "<span style='text-align: center; vertical-align: middle'>[SSmapping.current_map.map_name]<br /> 			[LAZYLEN(GLOB.clients)] player\s online<br /> 			[ROUND_TIME()] in<br />"
+		new_maptext = "<span style='text-align: center; vertical-align: middle'>[SSmapping.current_map.map_name]<br /> \
+			[LAZYLEN(GLOB.clients)] player\s online<br /> \
+			[round_timestamp()] in<br />"
 		new_maptext += "</span>"
 	else
 		if(hud.mymob.client?.holder)

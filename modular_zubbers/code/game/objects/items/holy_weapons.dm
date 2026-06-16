@@ -1,6 +1,6 @@
 /obj/item/nullrod/papal_staff
 	name = "papal staff"
-	desc = "Uma equipa usada por bispos e papas tradicionais."
+	desc = "A staff used by traditional bishops and popes."
 	icon = 'modular_zubbers/icons/obj/items_and_weapons.dmi'
 	icon_state = "papal_staff"
 	inhand_icon_state = "papal_staff"
@@ -14,14 +14,14 @@
 
 /obj/item/clothing/head/mitre
 	name = "papal mitre"
-	desc = "Um vestido tradicional, usado por bispos e papas no cristianismo tradicional"
+	desc = "A traditional headdress, worn by bishops and popes in traditional Christianity"
 	icon = 'modular_zubbers/icons/mob/clothing/hats.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/32x48_head.dmi'
 	icon_state = "mitre"
 
 /obj/item/clothing/suit/chaplainsuit/armor/papal
 	name = "papal robe"
-	desc = "Uma capa curta sobre uma batina, usada por bispos e papas no cristianismo tradicional."
+	desc = "A short cape over a cassock, worn by bishops and popes in traditional Christianity"
 	icon = 'modular_zubbers/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/suits.dmi'
 	icon_state = "papalrobe"
@@ -50,7 +50,7 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	name = "divine lightblade"
-	desc = "Uma lâmina gigante de luz brilhante e santa, disse para cortar os ímpios com facilidade."
+	desc = "A giant blade of bright and holy light, said to cut down the wicked with ease."
 	obj_flags = UNIQUE_RENAME
 	slot_flags = ITEM_SLOT_BELT
 	item_flags = NO_BLOOD_ON_ITEM | SLOWS_WHILE_IN_HAND | IMMUTABLE_SLOW
@@ -66,15 +66,29 @@
 	two_hand_force = 20
 	slowdown = 0
 	var/chaplain_spawnable = TRUE
-	var/menu_description = "A huge energy blade, it possesses the unique ability to block projectiles, but the unwieldy nature of it means that you'll be forced to move carefully while it's on. Fits in pockets, and can be worn on the belt when off."
+	var/menu_description = "A huge energy blade, it possesses the unique ability to block projectiles, but the unwieldy nature of it \
+means that you'll be forced to move carefully while it's on. Fits in pockets, and can be worn on the belt when off."
 	var/list/cultists_slain
 
 /obj/item/dualsaber/chaplain/Initialize(mapload) //HEAVENLY FATHER I CRAVE COMPONENTS
 	. = ..()
-	AddComponent(/datum/component/two_handed, 		force_unwielded = force, 		force_wielded = two_hand_force, 		wieldsound = 'modular_zubbers/sound/weapons/nebon.ogg', 		unwieldsound = 'modular_zubbers/sound/weapons/neboff.ogg', 		wield_callback = CALLBACK(src, PROC_REF(on_wield)), 		unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), 	)
+	AddComponent(/datum/component/two_handed, \
+		force_unwielded = force, \
+		force_wielded = two_hand_force, \
+		wieldsound = 'modular_zubbers/sound/weapons/nebon.ogg', \
+		unwieldsound = 'modular_zubbers/sound/weapons/neboff.ogg', \
+		wield_callback = CALLBACK(src, PROC_REF(on_wield)), \
+		unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), \
+	)
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE,)
-	AddComponent(/datum/component/effect_remover, 		success_feedback = "You disrupt the magic of %THEEFFECT with %THEWEAPON.", 		success_forcesay = "BEGONE FOUL MAGIKS!!", 		tip_text = "Clear rune", 		on_clear_callback = CALLBACK(src, PROC_REF(on_cult_rune_removed)), 		effects_we_clear = list(/obj/effect/rune, /obj/effect/heretic_rune, /obj/effect/cosmic_rune), 	)
-	AddElement(/datum/element/bane, target_type = /mob/living/basic/revenant, damage_multiplier = 0, added_damage = 25, requires_combat_mode = FALSE)
+	AddComponent(/datum/component/effect_remover, \
+		success_feedback = "You disrupt the magic of %THEEFFECT with %THEWEAPON.", \
+		success_forcesay = "BEGONE FOUL MAGIKS!!", \
+		tip_text = "Clear rune", \
+		on_clear_callback = CALLBACK(src, PROC_REF(on_cult_rune_removed)), \
+		effects_we_clear = list(/obj/effect/rune, /obj/effect/heretic_rune, /obj/effect/cosmic_rune), \
+	)
+	AddComponent(/datum/component/bane, affected_biotypes = MOB_SPIRIT, added_damage = 30)
 
 /obj/item/dualsaber/chaplain/proc/on_cult_rune_removed(obj/effect/target, mob/living/user)
 	if(!istype(target, /obj/effect/rune))
@@ -124,9 +138,9 @@
 	if(!user.can_perform_action(src, SILENT_ADJACENCY) || hacked)
 		return
 	if(user.incapacitated || !istype(user))
-		to_chat(user, "<span class='warning'>Não pode fazer isso agora!</span>")
+		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
 		return
-	if(alert("Tem certeza que quer recolorir sua lâmina?", "Confirmar Repaint", "Yes", "No") == "Yes")
+	if(alert("Are you sure you want to recolor your blade?", "Confirm Repaint", "Yes", "No") == "Yes")
 		var/energy_color_input = tgui_color_picker(usr,"","Choose Energy Color",light_color) // BUBBERSTATION EDIT: TGUI COLOR PICKER
 		if(!energy_color_input || !user.can_perform_action(src, SILENT_ADJACENCY) || hacked)
 			return
@@ -162,4 +176,5 @@
 		return
 
 	var/num_slain = LAZYLEN(cultists_slain)
-	. += span_cult_italic("Tem o sangue de[num_slain]cultista caído[num_slain == 1 ? "" : "s"]Pode deixar.<b>Oferta</b>para Nar'sie vai transformá-lo em um[num_slain >= 3 ? "powerful" : "standard"]Arma de culto.")
+	. += span_cult_italic("It has the blood of [num_slain] fallen cultist[num_slain == 1 ? "" : "s"] on it. \
+		<b>Offering</b> it to Nar'sie will transform it into a [num_slain >= 3 ? "powerful" : "standard"] cult weapon.")

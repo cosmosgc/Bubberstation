@@ -68,10 +68,11 @@
 		return ..() //this runs the plunger code
 
 	if(discovered)
-		to_chat(user, span_warning("Este gêiser já foi descoberto!"))
+		to_chat(user, span_warning("This geyser has already been discovered!"))
 		return
 
-	to_chat(user, span_notice("Você descobriu o gêiser e marcou no sistema GPS!"))
+	to_chat(user, span_notice("You discovered the geyser and mark it on the GPS system!"))
+	playsound(src, 'sound/machines/beep/twobeep_high.ogg', 30)
 	SEND_SIGNAL(user, COMSIG_LIVING_DISCOVERED_GEYSER, src)
 	if(discovery_message)
 		to_chat(user, discovery_message)
@@ -87,14 +88,14 @@
 
 		var/obj/item/card/id/card = living.get_idcard()
 		if(card)
-			to_chat(user, span_notice("[point_value] Os pontos de mineração foram pagos!"))
+			to_chat(user, span_notice("[point_value] mining points have been paid out!"))
 			card.registered_account.mining_points += point_value
 
 /obj/structure/geyser/wittel
 	reagent_id = /datum/reagent/wittel
 	point_value = 250
 	true_name = "wittel geyser"
-	discovery_message = "É um raro gêiser de inteligência! Isso pode ser muito poderoso nas mãos certas..."
+	discovery_message = "It's a rare wittel geyser! This could be very powerful in the right hands... "
 
 /obj/structure/geyser/plasma_oxide
 	reagent_id = /datum/reagent/plasma_oxide
@@ -112,7 +113,7 @@
 	reagent_id = /datum/reagent/reaction_agent/inversing_buffer
 	point_value = 250
 	true_name = "chiral inversing geyser"
-	discovery_message = "É um raro quiral invertendo gêiser! Isso pode ser muito poderoso nas mãos certas..."
+	discovery_message = "It's a rare chiral inversing geyser! This could be very powerful in the right hands... "
 
 /obj/structure/geyser/random
 	point_value = 500
@@ -122,14 +123,14 @@
 
 	true_name = "[initial(reagent_id.name)] geyser"
 
-	discovery_message = "É um...[true_name] Como isso funciona?" //it doesnt
+	discovery_message = "It's a [true_name]! How does any of this even work?" //it doesnt
 
 	return ..()
 
 ///A wearable tool that lets you empty plumbing machinery and some other stuff
 /obj/item/plunger
 	name = "plunger"
-	desc = "É um desentupidor para mergulhar."
+	desc = "It's a plunger for plunging."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "plunger"
 	worn_icon_state = "plunger"
@@ -165,7 +166,7 @@
 		var/mob/living/carbon/H = hit_atom
 		if(!H.wear_mask)
 			H.equip_to_slot_if_possible(src, ITEM_SLOT_MASK)
-			H.visible_message(span_warning("O êmbolo bate em [H] Ó rosto!"), span_warning("O êmbolo aspira no seu rosto!"))
+			H.visible_message(span_warning("The plunger slams into [H]'s face!"), span_warning("The plunger suctions to your face!"))
 
 /obj/item/plunger/attack_self(mob/user)
 	. = ..()
@@ -174,10 +175,10 @@
 
 	if(!layer_mode)
 		icon_state = initial(icon_state)
-		to_chat(user, span_notice("Você ajustou o desentupidor para 'Modo Pulgar'."))
+		to_chat(user, span_notice("You set the plunger to 'Plunger Mode'."))
 	else
 		icon_state = layer_mode_sprite
-		to_chat(user, span_notice("Você colocou o desentupidor em 'Modo Layer'."))
+		to_chat(user, span_notice("You set the plunger to 'Layer Mode'."))
 
 	playsound(src, 'sound/machines/click.ogg', 10, TRUE)
 
@@ -191,7 +192,7 @@
 ///A faster reinforced plunger
 /obj/item/plunger/reinforced
 	name = "reinforced plunger"
-	desc = "É um M. 7 Plunger© Reforçado para salto pesado."
+	desc = "It's an M. 7 Reinforced Plunger© for heavy duty plunging."
 	icon_state = "reinforced_plunger"
 	worn_icon_state = "reinforced_plunger"
 	reinforced = TRUE

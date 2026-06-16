@@ -16,7 +16,7 @@
 
 /obj/item/antag_spawner/contract
 	name = "contract"
-	desc = "A magic contract previously signed by an apprentice. In exchange for instruction in the magical arts, they are bound to answer your call for aid."
+	desc = "Um contrato mágico assinado por um aprendiz. Em troca de instruções nas artes mágicas, eles vão atender seu pedido de ajuda."
 	icon = 'icons/obj/scrolls.dmi'
 	icon_state ="scroll2"
 	var/polling = FALSE
@@ -26,7 +26,7 @@
 	if(!.)
 		return FALSE
 	if(polling)
-		balloon_alert(user, "already calling an apprentice!")
+		balloon_alert(user, "Já chamando um aprendiz!")
 		return FALSE
 
 /obj/item/antag_spawner/contract/ui_interact(mob/user, datum/tgui/ui)
@@ -61,12 +61,12 @@
 			SStgui.close_uis(src)
 
 /obj/item/antag_spawner/contract/proc/poll_for_student(mob/living/carbon/human/teacher, apprentice_school)
-	balloon_alert(teacher, "contacting apprentice...")
+	balloon_alert(teacher, "Contatando aprendiz...")
 	polling = TRUE
 	var/mob/chosen_one = SSpolling.poll_ghosts_for_target("Do you want to play as [span_danger("[teacher]'s")] [span_notice("[apprentice_school] apprentice")]?", check_jobban = ROLE_WIZARD, role = ROLE_WIZARD, poll_time = 15 SECONDS, checked_target = src, alert_pic = /obj/item/clothing/head/wizard/red, jump_target = src, role_name_text = "wizard apprentice", chat_text_border_icon = /obj/item/clothing/head/wizard/red)
 	polling = FALSE
 	if(isnull(chosen_one))
-		to_chat(teacher, span_warning("Unable to reach your apprentice! You can either attack the spellbook with the contract to refund your points, or wait and try again later."))
+		to_chat(teacher, span_warning("Incapaz de alcançar seu aprendiz! Você pode atacar o livro de feitiços com o contrato para reembolsar seus pontos, ou esperar e tentar novamente mais tarde."))
 		return
 	if(QDELETED(src) || used)
 		return
@@ -102,7 +102,7 @@
  */
 /obj/item/antag_spawner/nuke_ops
 	name = "syndicate operative beacon"
-	desc = "A single-use beacon designed to quickly launch reinforcement operatives into the field."
+	desc = "Um farol de uso único projetado para lançar rapidamente agentes de reforço para o campo."
 	icon = 'icons/obj/devices/voice.dmi'
 	icon_state = "nukietalkie"
 	/// The name of the special role given to the recruit
@@ -120,10 +120,10 @@
 
 /obj/item/antag_spawner/nuke_ops/proc/check_usability(mob/user)
 	if(used)
-		to_chat(user, span_warning("[src] is out of power!"))
+		to_chat(user, span_warning("[src] Está sem energia!"))
 		return FALSE
 	if(!user.mind.has_antag_datum(/datum/antagonist/nukeop,TRUE))
-		to_chat(user, span_danger("AUTHENTICATION FAILURE. ACCESS DENIED."))
+		to_chat(user, span_danger("Falha na autenticação. Acesso negado."))
 		return FALSE
 	return TRUE
 
@@ -138,8 +138,8 @@
 	if(!(check_usability(user)))
 		return
 
-	to_chat(user, span_notice("You activate [src] and wait for confirmation."))
-	var/mob/chosen_one = SSpolling.poll_ghost_candidates("Do you want to play as a reinforcement [special_role_name]?", check_jobban = ROLE_OPERATIVE_MIDROUND, role = ROLE_OPERATIVE_MIDROUND, poll_time = 15 SECONDS, ignore_category = POLL_IGNORE_SYNDICATE, alert_pic = src, role_name_text = special_role_name, amount_to_pick = 1)
+	to_chat(user, span_notice("Você ativa.[src] e esperar confirmação."))
+	var/mob/chosen_one = SSpolling.poll_ghost_candidates("Do you want to play as a reinforcement [special_role_name]?", check_jobban = ROLE_OPERATIVE, role = ROLE_OPERATIVE, poll_time = 15 SECONDS, ignore_category = POLL_IGNORE_SYNDICATE, alert_pic = src, role_name_text = special_role_name, amount_to_pick = 1)
 	if(chosen_one)
 		if(QDELETED(src) || !check_usability(user))
 			return
@@ -148,7 +148,7 @@
 		do_sparks(4, TRUE, src)
 		qdel(src)
 	else
-		to_chat(user, span_warning("Unable to connect to Syndicate command. Please wait and try again later or use the beacon on your uplink to get your points refunded."))
+		to_chat(user, span_warning("Incapaz de se conectar ao comando Syndicate. Por favor, espere e tente novamente mais tarde ou use o farol em seu uplink para obter seus pontos reembolsados."))
 
 /obj/item/antag_spawner/nuke_ops/spawn_antag(client/our_client, turf/T, kind, datum/mind/user)
 	var/mob/living/carbon/human/nukie = new()
@@ -176,8 +176,7 @@
 
 /obj/item/antag_spawner/nuke_ops/overwatch
 	name = "overwatch support beacon"
-	desc = "Assigns an Overwatch Intelligence Agent to your operation. Stationed at their own remote outpost, they can view station cameras, alarms, and even move the Infiltrator shuttle! \
-		Also, all members of your operation will receive body cameras that they can view your progress from."
+	desc = "Atribui um agente de inteligência para sua operação. Estacionados em seu próprio posto remoto, eles podem ver câmeras da estação, alarmes, e até mover a nave de infiltração! Além disso, todos os membros da sua operação receberão câmeras do corpo das quais podem ver seu progresso."
 	special_role_name = ROLE_OPERATIVE_OVERWATCH
 	outfit = /datum/outfit/syndicate/support
 	use_subtypes = FALSE
@@ -185,13 +184,13 @@
 
 /obj/item/antag_spawner/nuke_ops/overwatch/Initialize(mapload)
 	. = ..()
-	if(length(GLOB.nukeop_base_overwatch_start)) //Otherwise, it will default to the datum's spawn point anyways
-		spawn_location = pick(GLOB.nukeop_base_overwatch_start)
+	if(length(GLOB.nukeop_overwatch_start)) //Otherwise, it will default to the datum's spawn point anyways
+		spawn_location = pick(GLOB.nukeop_overwatch_start)
 
 //////CLOWN OP
 /obj/item/antag_spawner/nuke_ops/clown
 	name = "clown operative beacon"
-	desc = "A single-use beacon designed to quickly launch reinforcement clown operatives into the field."
+	desc = "Um farol de uso único projetado para lançar rapidamente agentes palhaços de reforço no campo."
 	special_role_name = ROLE_CLOWN_OPERATIVE
 	outfit = /datum/outfit/syndicate/clownop/no_crystals
 	antag_datum = /datum/antagonist/nukeop/reinforcement/clownop
@@ -201,7 +200,7 @@
 //////SYNDICATE BORG
 /obj/item/antag_spawner/nuke_ops/borg_tele
 	name = "syndicate cyborg beacon"
-	desc = "A single-use beacon designed to quickly launch reinforcement cyborgs into the field."
+	desc = "Um farol de uso único projetado para lançar rapidamente cyborgs de reforço no campo."
 	antag_datum = /datum/antagonist/nukeop/reinforcement/cyborg
 	special_role_name = "Syndicate Cyborg"
 
@@ -258,17 +257,17 @@
 
 /obj/item/antag_spawner/slaughter_demon //Warning edgiest item in the game
 	name = "vial of blood"
-	desc = "A magically infused bottle of blood, distilled from countless murder victims. Used in unholy rituals to attract horrifying creatures."
+	desc = "Uma garrafa de sangue infundida magicamente, destilada de inúmeras vítimas de assassinato. Usado em rituais profanos para atrair criaturas horríveis."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "vial"
 
-	var/shatter_msg = span_notice("You shatter the bottle, no turning back now!")
-	var/veil_msg = span_warning("You sense a dark presence lurking just beyond the veil...")
+	var/shatter_msg = span_notice("Você quebra a garrafa, sem voltar agora!")
+	var/veil_msg = span_warning("Você sente uma presença escura espreitando bem além do véu...")
 	var/mob/living/demon_type = /mob/living/basic/demon/slaughter
 
 /obj/item/antag_spawner/slaughter_demon/attack_self(mob/user)
 	if(!is_station_level(user.z))
-		to_chat(user, span_warning("You should probably wait until you reach the station."))
+		to_chat(user, span_warning("Deveria esperar até chegar na estação."))
 		return
 	if(used)
 		return
@@ -284,7 +283,7 @@
 		playsound(user.loc, 'sound/effects/glass/glassbr1.ogg', 100, TRUE)
 		qdel(src)
 	else
-		to_chat(user, span_warning("The bottle's contents usually pop and boil constantly, but right now they're eerily still and calm. Perhaps you should try again later."))
+		to_chat(user, span_warning("O conteúdo da garrafa geralmente explode e ferve constantemente, mas agora eles estão assustadoramente calmos. Talvez devesse tentar de novo mais tarde."))
 
 /obj/item/antag_spawner/slaughter_demon/spawn_antag(client/C, turf/T, kind = "", datum/mind/user)
 	var/mob/living/basic/demon/spawned = new demon_type(T)
@@ -294,7 +293,7 @@
 
 /obj/item/antag_spawner/slaughter_demon/laughter
 	name = "vial of tickles"
-	desc = "A magically infused bottle of clown love, distilled from countless hugging attacks. Used in funny rituals to attract adorable creatures."
+	desc = "Uma garrafa mágica de amor de palhaço, destilada de inúmeros ataques de abraço. Usado em rituais engraçados para atrair criaturas adoráveis."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "vial"
 	color = "#FF69B4" // HOT PINK
@@ -308,7 +307,7 @@
 
 /obj/item/antag_spawner/loadout
 	name = "generic beacon"
-	desc = "A single-use beacon designed to quickly launch bad code into the field."
+	desc = "Um farol de uso único projetado para lançar rapidamente o código errado no campo."
 	icon = 'icons/obj/devices/voice.dmi'
 	icon_state = "walkietalkie"
 	/// The mob type to spawn.
@@ -323,6 +322,8 @@
 	var/pod_style = /datum/pod_style/syndicate
 	/// Do we use a random subtype of the outfit?
 	var/use_subtypes = TRUE
+	/// The antag role we check if the ghosts have enabled to get the poll.
+	var/poll_role_check = ROLE_TRAITOR
 	/// The mind's special role.
 	var/role_to_play = ROLE_SYNDICATE_MONKEY
 	/// What category to ignore the poll
@@ -332,7 +333,7 @@
 
 /obj/item/antag_spawner/loadout/proc/check_usability(mob/user)
 	if(used)
-		to_chat(user, span_warning("[src] is out of power!"))
+		to_chat(user, span_warning("[src] Está sem energia!"))
 		return FALSE
 	return TRUE
 
@@ -347,9 +348,10 @@
 	if(!(check_usability(user)))
 		return
 
-	to_chat(user, span_notice("You activate [src] and wait for confirmation."))
+	to_chat(user, span_notice("Você ativa.[src] e esperar confirmação."))
 	var/mob/chosen_one = SSpolling.poll_ghost_candidates(
-		check_jobban = role_to_play,
+		check_jobban = poll_role_check,
+		role = poll_role_check,
 		poll_time = 10 SECONDS,
 		ignore_category = poll_ignore_category,
 		alert_pic = src,
@@ -400,13 +402,13 @@
 
 /obj/item/antag_spawner/loadout/contractor
 	name = "contractor support beacon"
-	desc = "A beacon sold to the most prestigeous syndicate members, a single-use radio for calling immediate backup."
+	desc = "Um farol vendido aos membros mais prestigiosos do sindicato, um rádio de uso único para chamar reforços imediatos."
 	icon = 'icons/obj/devices/voice.dmi'
 	icon_state = "nukietalkie"
 	outfit = /datum/outfit/contractor_partner
 	use_subtypes = FALSE
 	antag_datum = /datum/antagonist/traitor/contractor_support
-	poll_ignore_category = POLL_IGNORE_CONTRACTOR_SUPPORT
+	poll_ignore_category = ROLE_TRAITOR
 	role_to_play = ROLE_CONTRACTOR_SUPPORT
 
 /obj/item/antag_spawner/loadout/contractor/do_special_things(mob/living/carbon/human/contractor_support, mob/user)
@@ -415,7 +417,7 @@
 
 /obj/item/antag_spawner/loadout/monkey_man
 	name = "monkey agent beacon"
-	desc = "Call up some backup from ARC for monkey mayhem."
+	desc = "Chame reforços do ARC para o caos de macaco."
 	icon = 'icons/obj/devices/voice.dmi'
 	icon_state = "walkietalkie"
 	spawn_type = /mob/living/carbon/human/species/monkey
@@ -423,9 +425,10 @@
 	outfit = /datum/outfit/syndicate_monkey
 	antag_datum = /datum/antagonist/syndicate_monkey
 	use_subtypes = FALSE
+	poll_role_check = ROLE_TRAITOR
 	role_to_play = ROLE_SYNDICATE_MONKEY
-	poll_ignore_category = POLL_IGNORE_SYNDICATE_MONKEY
-	fail_text = "Unable to connect to the Animal Rights Consortium's Banana Ops. Please wait and try again later or use the beacon on your uplink to get your points refunded."
+	poll_ignore_category = POLL_IGNORE_SYNDICATE
+	fail_text = "Incapaz de se conectar às Operações de Banana do Consórcio dos Direitos dos Animais. Por favor, espere e tente novamente mais tarde ou use o farol em seu uplink para obter seus pontos reembolsados."
 
 /obj/item/antag_spawner/loadout/monkey_man/do_special_things(mob/living/carbon/human/monkey_man, mob/user)
 
@@ -447,7 +450,7 @@
 	if(is_simian(second_lifer))
 		return
 	// timer is long to let them panic and consider their folly, and because allergies take a while
-	second_lifer.visible_message(span_bolddanger("[second_lifer] starts swelling unhealthily in size. It looks like they had an allergic reaction to becoming a [folly_species]!"), span_userdanger("As your monkey features morph, you feel your allergies coming in. Oh no."))
+	second_lifer.visible_message(span_bolddanger("[second_lifer] Começa a inchar mal no tamanho. Parece que eles tiveram uma reação alérgica a se tornar um [folly_species]!"), span_userdanger("Como seu macaco se transforma, sente suas alergias chegando. Oh, não."))
 	// no brain or items. organs are funny though
 	second_lifer.inflate_gib(drop_bitflags = DROP_ORGANS|DROP_BODYPARTS, gib_time = 25 SECONDS, anim_time = 40 SECONDS)
 

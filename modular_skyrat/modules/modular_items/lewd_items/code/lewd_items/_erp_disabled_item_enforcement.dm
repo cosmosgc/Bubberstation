@@ -77,9 +77,8 @@
 	. = ..()
 	if(CONFIG_GET(flag/disable_lewd_items))
 		return INITIALIZE_HINT_QDEL
-	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/ball_mittens_skin, FALSE)
 
-/obj/item/clothing/gloves/ball_mittens/loadout_paw/Initialize(mapload)
+/obj/item/clothing/gloves/ball_mittens_reinforced/Initialize(mapload)
 	. = ..()
 	if(CONFIG_GET(flag/disable_lewd_items))
 		return INITIALIZE_HINT_QDEL
@@ -235,6 +234,11 @@
 		return INITIALIZE_HINT_QDEL
 
 /obj/item/clicker/Initialize(mapload)
+	. = ..()
+	if(CONFIG_GET(flag/disable_lewd_items))
+		return INITIALIZE_HINT_QDEL
+
+/obj/item/toy/plush/aeri/Initialize(mapload)
 	. = ..()
 	if(CONFIG_GET(flag/disable_lewd_items))
 		return INITIALIZE_HINT_QDEL

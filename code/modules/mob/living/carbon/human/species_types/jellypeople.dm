@@ -78,7 +78,7 @@
 	if(slime.get_blood_volume() <= 0)
 		slime.adjust_blood_volume(JELLY_REGEN_RATE_EMPTY * slime.physiology.blood_regen_mod * seconds_per_tick)
 		slime.adjust_brute_loss(2.5 * seconds_per_tick)
-		to_chat(slime, span_danger("You feel empty!"))
+		to_chat(slime, span_danger("Você se sente vazio!"))
 
 	// Same logic applies here.
 	if(slime.get_blood_volume() < BLOOD_VOLUME_NORMAL)
@@ -90,7 +90,7 @@
 	// If you're on saline, you don't feel the effects of bloodloss.
 	if(slime.get_blood_volume(apply_modifiers = TRUE) < BLOOD_VOLUME_OKAY)
 		if(SPT_PROB(2.5, seconds_per_tick))
-			to_chat(slime, span_danger("You feel drained!"))
+			to_chat(slime, span_danger("Você se sente drenado!"))
 
 	// Saline can prevent you from cannibalizing yourself.
 	if(slime.get_blood_volume(apply_modifiers = TRUE) < BLOOD_VOLUME_BAD)
@@ -109,7 +109,7 @@
 		limbs_to_consume -= list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM)
 	consumed_limb = H.get_bodypart(pick(limbs_to_consume))
 	consumed_limb.drop_limb()
-	to_chat(H, span_userdanger("Your [consumed_limb] is drawn back into your body, unable to maintain its shape!"))
+	to_chat(H, span_userdanger("Sua [consumed_limb] é atraído de volta para seu corpo, incapaz de manter sua forma!"))
 	qdel(consumed_limb)
 	H.adjust_blood_volume(20 * H.physiology.blood_regen_mod)
 
@@ -137,8 +137,7 @@
 		SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 		SPECIES_PERK_ICON = "tint",
 		SPECIES_PERK_NAME = "Jelly Blood",
-		SPECIES_PERK_DESC = "[plural_form] don't have blood, but instead have toxic [initial(blood_type.reagent_type.name)]! \
-			Jelly is extremely important, as losing it will cause you to lose limbs. Having low jelly will make medical treatment very difficult.",
+		SPECIES_PERK_DESC = "[plural_form] não tem sangue, mas em vez disso tem tóxico [initial(blood_type.reagent_type.name)] Geleia é extremamente importante, pois perdê-la fará você perder membros. Ter geléia baixa dificultará o tratamento médico.",
 	))
 
 	return to_add
@@ -168,13 +167,13 @@
 	var/mob/living/carbon/human/H = owner
 	var/list/limbs_to_heal = H.get_missing_limbs()
 	if(!length(limbs_to_heal))
-		to_chat(H, span_notice("You feel intact enough as it is."))
+		to_chat(H, span_notice("Você já se sente intacta o suficiente."))
 		return
-	to_chat(H, span_notice("You focus intently on your missing [length(limbs_to_heal) >= 2 ? "limbs" : "limb"]..."))
+	to_chat(H, span_notice("Você se concentra atentamente no seu desaparecimento.[length(limbs_to_heal) >= 2 ? "limbs" : "limb"]..."))
 	if(H.get_blood_volume() >= blood_per_limb * length(limbs_to_heal) + BLOOD_VOLUME_OKAY)
 		H.regenerate_limbs()
 		H.adjust_blood_volume(-blood_per_limb * length(limbs_to_heal))
-		to_chat(H, span_notice("...and after a moment you finish reforming!"))
+		to_chat(H, span_notice("...e depois de um momento você terminar de reformar!"))
 		return
 	else if(H.get_blood_volume() >= blood_per_limb)//We can partially heal some limbs
 		while(H.get_blood_volume() >= BLOOD_VOLUME_OKAY + blood_per_limb)
@@ -182,9 +181,9 @@
 			H.regenerate_limb(healed_limb)
 			limbs_to_heal -= healed_limb
 			H.adjust_blood_volume(-blood_per_limb)
-		to_chat(H, span_warning("...but there is not enough of you to fix everything! You must attain more mass to heal completely!"))
+		to_chat(H, span_warning("...mas não há o suficiente para consertar tudo! Você deve alcançar mais massa para curar completamente!"))
 		return
-	to_chat(H, span_warning("...but there is not enough of you to go around! You must attain more mass to heal!"))
+	to_chat(H, span_warning("...mas não há o suficiente de você para dar a volta! Você deve alcançar mais massa para curar!"))
 
 ////////////////////////////////////////////////////////SLIMEPEOPLE///////////////////////////////////////////////////////////////////
 
@@ -210,9 +209,7 @@
 	)
 
 /datum/species/jelly/slime/get_physical_attributes()
-	return "Slimepeople have jelly for blood and their vacuoles can extremely quickly convert plasma to it if they're breathing it in.\
-		They can then use the excess blood to split off an excess body, which their consciousness can transfer to at will or on death.\
-		Most things that are toxic heal them, but most things that prevent toxicity damage them!"
+	return "Slimepeople have jelly for blood and their vacuoles can extremely quickly convert plasma to it if they're breathing it in.		They can then use the excess blood to split off an excess body, which their consciousness can transfer to at will or on death.		Most things that are toxic heal them, but most things that prevent toxicity damage them!"
 
 /datum/species/jelly/slime/on_species_loss(mob/living/carbon/C)
 	if(slime_split)
@@ -223,10 +220,7 @@
 	// so if someone mindswapped into them, they'd still be shared.
 	bodies = null
 	C.set_blood_volume(C.get_blood_volume(), maximum = BLOOD_VOLUME_NORMAL)
-	UnregisterSignal(C, list(
-		COMSIG_LIVING_DEATH,
-		COMSIG_LIVING_LIFE,
-	))
+	UnregisterSignal(C, COMSIG_LIVING_DEATH)
 	..()
 
 /datum/species/jelly/slime/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load, regenerate_icons)
@@ -243,7 +237,6 @@
 			bodies |= C
 
 	RegisterSignal(C, COMSIG_LIVING_DEATH, PROC_REF(on_death_move_body))
-	RegisterSignal(C, COMSIG_LIVING_LIFE, PROC_REF(on_life))
 
 /datum/species/jelly/slime/proc/on_death_move_body(mob/living/carbon/human/source, gibbed)
 	SIGNAL_HANDLER
@@ -267,16 +260,16 @@
 /datum/species/jelly/slime/copy_properties_from(datum/species/jelly/slime/old_species)
 	bodies = old_species.bodies
 
-/datum/species/jelly/slime/proc/on_life(mob/living/carbon/human/source, seconds_per_tick)
-	SIGNAL_HANDLER
-	if(source.get_blood_volume() >= BLOOD_VOLUME_SLIME_SPLIT)
+/datum/species/jelly/slime/spec_life(mob/living/carbon/human/H, seconds_per_tick)
+	. = ..()
+	if(H.get_blood_volume() >= BLOOD_VOLUME_SLIME_SPLIT)
 		if(SPT_PROB(2.5, seconds_per_tick))
-			to_chat(source, span_notice("You feel very bloated!"))
+			to_chat(H, span_notice("Você se sente muito inchado!"))
 
-	else if(source.nutrition >= NUTRITION_LEVEL_WELL_FED)
-		source.adjust_blood_volume(1.5 * seconds_per_tick)
-		if(source.get_blood_volume() <= BLOOD_VOLUME_LOSE_NUTRITION)
-			source.adjust_nutrition(-1.25 * seconds_per_tick)
+	else if(H.nutrition >= NUTRITION_LEVEL_WELL_FED)
+		H.adjust_blood_volume(1.5 * seconds_per_tick)
+		if(H.get_blood_volume() <= BLOOD_VOLUME_LOSE_NUTRITION)
+			H.adjust_nutrition(-1.25 * seconds_per_tick)
 
 /datum/action/innate/split_body
 	name = "Split Body"
@@ -301,8 +294,8 @@
 		return
 	CHECK_DNA_AND_SPECIES(H)
 	H.visible_message(
-		span_notice("[owner] gains a look of concentration while standing perfectly still."),
-		span_notice("You focus intently on moving your body while standing perfectly still..."),
+		span_notice("[owner] ganha um olhar de concentração enquanto está perfeitamente imóvel."),
+		span_notice("Você se concentra em mover seu corpo enquanto está perfeitamente parado..."),
 	)
 
 	ADD_TRAIT(src, TRAIT_NO_TRANSFORM, REF(src))
@@ -311,9 +304,9 @@
 		if(H.get_blood_volume() >= BLOOD_VOLUME_SLIME_SPLIT)
 			make_dupe()
 		else
-			to_chat(H, span_warning("...but there is not enough of you to go around! You must attain more mass to split!"))
+			to_chat(H, span_warning("...mas não há o suficiente de você para dar a volta! Você deve alcançar mais massa para dividir!"))
 	else
-		to_chat(H, span_warning("...but fail to stand perfectly still!"))
+		to_chat(H, span_warning("...mas não consegue ficar perfeitamente parado!"))
 
 	REMOVE_TRAIT(src, TRAIT_NO_TRANSFORM, REF(src))
 
@@ -352,8 +345,8 @@
 	H.transfer_quirk_datums(spare)
 	H.mind.transfer_to(spare)
 	spare.visible_message(
-		span_warning("[H] distorts as a new body \"steps out\" of [H.p_them()]."),
-		span_notice("...and after a moment of disorentation, you're besides yourself!"),
+		span_warning("[H] Distorcer como um novo corpo.\"Saia.\"De [H.p_them()]."),
+		span_notice("...e depois de um momento de desordenação, você está além de si mesmo!"),
 	)
 
 
@@ -367,7 +360,7 @@
 
 /datum/action/innate/swap_body/Activate()
 	if(!isslimeperson(owner))
-		to_chat(owner, span_warning("You are not a slimeperson."))
+		to_chat(owner, span_warning("Você não é uma pessoa nojenta."))
 		Remove(owner)
 	else
 		ui_interact(owner)
@@ -490,13 +483,13 @@
 	if(!can_swap(dupe)) //sanity check
 		return
 	if(M.current.stat == CONSCIOUS)
-		M.current.visible_message(span_notice("[M.current] stops moving and starts staring vacantly into space."),
-			span_notice("You stop moving this body..."))
+		M.current.visible_message(span_notice("[M.current] Para de se mover e começa a olhar vagamente para o espaço."),
+			span_notice("Pare de mover esse corpo..."))
 	else
-		to_chat(M.current, span_notice("You abandon this body..."))
+		to_chat(M.current, span_notice("Você abandona este corpo..."))
 	M.current.transfer_quirk_datums(dupe)
 	M.transfer_to(dupe)
-	dupe.visible_message(span_notice("[dupe] blinks and looks around."), span_notice("...and move this one instead."))
+	dupe.visible_message(span_notice("[dupe] Pisca e olha ao redor."), span_notice("...e mova este em vez disso."))
 
 
 ///////////////////////////////////LUMINESCENTS//////////////////////////////////////////
@@ -529,8 +522,7 @@
 	COOLDOWN_DECLARE(extract_cooldown)
 
 /datum/species/jelly/luminescent/get_physical_attributes()
-	return "Luminescent are able to integrate slime extracts into themselves for wondrous effects. \
-		Most things that are toxic heal them, but most things that prevent toxicity damage them!"
+	return "Luminescent are able to integrate slime extracts into themselves for wondrous effects. 		Most things that are toxic heal them, but most things that prevent toxicity damage them!"
 
 //Species datums don't normally implement destroy, but JELLIES SUCK ASS OUT OF A STEEL STRAW and have to i guess
 /datum/species/jelly/luminescent/Destroy(force)
@@ -574,7 +566,7 @@
 
 /datum/action/innate/integrate_extract
 	name = "Integrate Extract"
-	desc = "Eat a slime extract to use its properties."
+	desc = "Coma um extrato de lodo para usar suas propriedades."
 	check_flags = AB_CHECK_CONSCIOUS
 	button_icon_state = "slimeconsume"
 	button_icon = 'icons/mob/actions/actions_slime.dmi'
@@ -597,10 +589,10 @@
 	var/datum/species/jelly/luminescent/species = target
 	if(!istype(species) || !species.current_extract)
 		name = "Integrate Extract"
-		desc = "Eat a slime extract to use its properties."
+		desc = "Coma um extrato de lodo para usar suas propriedades."
 	else
 		name = "Eject Extract"
-		desc = "Eject your current slime extract."
+		desc = "Ejete seu extrato de lodo atual."
 
 	return ..()
 
@@ -625,25 +617,25 @@
 			to_remove.forceMove(human_owner.drop_location())
 
 		species.current_extract = null
-		human_owner.balloon_alert(human_owner, "[to_remove.name] ejected")
+		human_owner.balloon_alert(human_owner, "[to_remove.name] Ejetado")
 
 	else
 		var/obj/item/slime_extract/to_integrate = human_owner.get_active_held_item()
 		if(!istype(to_integrate) || to_integrate.extract_uses <= 0)
-			human_owner.balloon_alert(human_owner, "need an unused slime extract!")
+			human_owner.balloon_alert(human_owner, "Preciso de um extrato de lodo não usado!")
 			return
 		if(!human_owner.temporarilyRemoveItemFromInventory(to_integrate))
 			return
 		to_integrate.forceMove(human_owner)
 		species.current_extract = to_integrate
-		human_owner.balloon_alert(human_owner, "[to_integrate.name] consumed")
+		human_owner.balloon_alert(human_owner, "[to_integrate.name] consumado")
 
 	for(var/datum/action/to_update as anything in species.luminescent_actions)
 		to_update.build_all_button_icons()
 
 /datum/action/innate/use_extract
 	name = "Extract Minor Activation"
-	desc = "Pulse the slime extract with energized jelly to activate it."
+	desc = "Pulse o extrato de lodo com geleia energizada para ativá-lo."
 	check_flags = AB_CHECK_CONSCIOUS
 	button_icon_state = "slimeuse1"
 	button_icon = 'icons/mob/actions/actions_slime.dmi'
@@ -685,7 +677,7 @@
 
 /datum/action/innate/use_extract/major
 	name = "Extract Major Activation"
-	desc = "Pulse the slime extract with plasma jelly to activate it."
+	desc = "Pulse o extrato de lodo com geléia de plasma para ativá-lo."
 	button_icon_state = "slimeuse2"
 	activation_type = SLIME_ACTIVATE_MAJOR
 
@@ -702,21 +694,14 @@
 	var/datum/action/innate/project_thought/project_action
 
 /datum/species/jelly/stargazer/get_physical_attributes()
-	return "Stargazers can link others' minds with their own, creating a private communication channel. \
-		Most things that are toxic heal them, but most things that prevent toxicity damage them!"
+	return "Stargazers can link others' minds with their own, creating a private communication channel. 		Most things that are toxic heal them, but most things that prevent toxicity damage them!"
 
 /datum/species/jelly/stargazer/on_species_gain(mob/living/carbon/grant_to, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 	project_action = new(src)
 	project_action.Grant(grant_to)
 
-	grant_to.AddComponent( \
-		/datum/component/mind_linker/active_linking, \
-		network_name = "Slime Link", \
-		signals_which_destroy_us = list(COMSIG_SPECIES_LOSS), \
-		show_balloon_alert = TRUE, \
-		linker_action_path = /datum/action/innate/link_minds, \
-	)
+	grant_to.AddComponent( 		/datum/component/mind_linker/active_linking, 		network_name = "Slime Link", 		signals_which_destroy_us = list(COMSIG_SPECIES_LOSS), 		show_balloon_alert = TRUE, 		linker_action_path = /datum/action/innate/link_minds, 	)
 
 //Species datums don't normally implement destroy, but JELLIES SUCK ASS OUT OF A STEEL STRAW
 /datum/species/jelly/stargazer/Destroy()
@@ -729,7 +714,7 @@
 
 /datum/action/innate/project_thought
 	name = "Send Thought"
-	desc = "Send a private psychic message to someone you can see."
+	desc = "Envie uma mensagem psíquica particular para alguém que possa ver."
 	button_icon_state = "send_mind"
 	button_icon = 'icons/mob/actions/actions_slime.dmi'
 	background_icon_state = "bg_alien"
@@ -745,7 +730,7 @@
 	for(var/mob/living/recipient in oview(telepath))
 		recipient_options.Add(recipient)
 	if(!length(recipient_options))
-		to_chat(telepath, span_warning("You don't see anyone to send your thought to."))
+		to_chat(telepath, span_warning("Você não vê ninguém para quem enviar seu pensamento."))
 		return
 	var/mob/living/recipient = tgui_input_list(telepath, "Choose a telepathic message recipient", "Telepathy", sort_names(recipient_options))
 	if(isnull(recipient) || telepath.stat == DEAD || !is_species(telepath, /datum/species/jelly/stargazer))
@@ -754,19 +739,19 @@
 	if(isnull(msg) || telepath.stat == DEAD || !is_species(telepath, /datum/species/jelly/stargazer))
 		return
 	if(!(recipient in oview(telepath)))
-		to_chat(telepath, span_warning("You can't see [recipient] anymore!"))
+		to_chat(telepath, span_warning("Você não pode ver.[recipient] Mais!"))
 		return
 	if(recipient.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0))
-		to_chat(telepath, span_warning("As you reach into [recipient]'s mind, you are stopped by a mental blockage. It seems you've been foiled."))
+		to_chat(telepath, span_warning("Enquanto você alcança [recipient] Você é parado por um bloqueio mental. Parece que você foi frustrado."))
 		return
 	//BUBBER EDIT ADDITION START -  Telepathy Block Quirk
 	if(HAS_TRAIT(recipient, TRAIT_PSIONIC_DAMPENER))
-		to_chat(telepath, span_warning("As you reach into [recipient]'s mind, you are stopped by a mental blockage."))
+		to_chat(telepath, span_warning("Enquanto você alcança [recipient] Você é parado por um bloqueio mental."))
 		return
 	//BUBBER EDIT ADDITION END
 	log_directed_talk(telepath, recipient, msg, LOG_SAY, "slime telepathy")
 	to_chat(recipient, "[span_notice("You hear an alien voice in your head... ")]<font color=#008CA2>[msg]</font>")
-	to_chat(telepath, span_notice("You telepathically said: \"[msg]\" to [recipient]"))
+	to_chat(telepath, span_notice("Você disse telepaticamente:\"[msg]\"Para [recipient]"))
 	for(var/dead in GLOB.dead_mob_list)
 		if(!isobserver(dead))
 			continue
@@ -776,7 +761,7 @@
 
 /datum/action/innate/link_minds
 	name = "Link Minds"
-	desc = "Link someone's mind to your Slime Link, allowing them to communicate telepathically with other linked minds."
+	desc = "Ligar a mente de alguém ao seu Elo Slime, permitindo que eles se comuniquem telepaticamente com outras mentes ligadas."
 	button_icon_state = "mindlink"
 	button_icon = 'icons/mob/actions/actions_slime.dmi'
 	background_icon_state = "bg_alien"
@@ -805,21 +790,21 @@
 
 /datum/action/innate/link_minds/Activate()
 	if(!isliving(owner.pulling) || owner.grab_state < GRAB_AGGRESSIVE)
-		to_chat(owner, span_warning("You need to aggressively grab someone to link minds!"))
+		to_chat(owner, span_warning("Precisa pegar alguém agressivamente para ligar mentes!"))
 		return
 
 	var/mob/living/living_target = owner.pulling
 	if(living_target.stat == DEAD)
-		to_chat(owner, span_warning("They're dead!"))
+		to_chat(owner, span_warning("Eles estão mortos!"))
 		return
 
-	to_chat(owner, span_notice("You begin linking [living_target]'s mind to yours..."))
-	to_chat(living_target, span_warning("You feel a foreign presence within your mind..."))
+	to_chat(owner, span_notice("Você começa a ligar [living_target] A mente da sua..."))
+	to_chat(living_target, span_warning("Você sente uma presença estranha em sua mente..."))
 	currently_linking = TRUE
 
 	if(!do_after(owner, 6 SECONDS, target = living_target, extra_checks = CALLBACK(src, PROC_REF(while_link_callback), living_target)))
-		to_chat(owner, span_warning("You can't seem to link [living_target]'s mind."))
-		to_chat(living_target, span_warning("The foreign presence leaves your mind."))
+		to_chat(owner, span_warning("Você não consegue se conectar.[living_target] Um mente."))
+		to_chat(living_target, span_warning("A presença estrangeira deixa sua mente."))
 		currently_linking = FALSE
 		return
 
@@ -829,8 +814,8 @@
 
 	var/datum/component/mind_linker/linker = target
 	if(!linker.link_mob(living_target))
-		to_chat(owner, span_warning("You can't seem to link [living_target]'s mind."))
-		to_chat(living_target, span_warning("The foreign presence leaves your mind."))
+		to_chat(owner, span_warning("Você não consegue se conectar.[living_target] Um mente."))
+		to_chat(living_target, span_warning("A presença estrangeira deixa sua mente."))
 
 
 /// Callback ran during the do_after of Activate() to see if we can keep linking with someone.

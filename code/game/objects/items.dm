@@ -420,8 +420,6 @@
 		lefthand_file = SSgreyscale.GetColoredIconByType(greyscale_config_inhand_left, greyscale_colors)
 	if(greyscale_config_inhand_right)
 		righthand_file = SSgreyscale.GetColoredIconByType(greyscale_config_inhand_right, greyscale_colors)
-	// BUBBER EDIT ADDITION - Fire COMSIG_ATOM_UPDATED_ICON after all GAGS icons update so update_icon_updates_onmob can refresh worn overlays
-	SEND_SIGNAL(src, COMSIG_ATOM_UPDATED_ICON)
 
 /obj/item/verb/move_to_top()
 	set name = "Move To Top"
@@ -446,9 +444,8 @@
 	.[weight_class_to_text(w_class)] = weight_class_to_tooltip(w_class)
 
 	if(item_flags & CRUEL_IMPLEMENT)
-		.[span_red("morbid")] = "It seems quite practical for particularly morbid procedures and experiments."
-	if(item_flags & BLUESPACE_INTERFERENCE)
-		.["bluespace-active"] = "It is highly active in bluespace and will cause malfunctions in teleporters."
+		.[span_red("morbid")] = "Parece bastante prático para procedimentos e experimentos mórbidos."
+
 	if (siemens_coefficient == 0)
 		.["insulated"] = "It is made from a robust electrical insulator and will block any electricity passing through it!"
 	else if (siemens_coefficient <= 0.5)
@@ -555,9 +552,9 @@
 		var/announce = FALSE
 		//Apply fantasy with affix. failing this should never happen, but if it does it should not be silent.
 		if(AddComponent(/datum/component/fantasy, fantasy_quality, list(affix), canFail, announce) == COMPONENT_INCOMPATIBLE)
-			to_chat(usr, span_warning("Fantasy component not compatible with [src]."))
+			to_chat(usr, span_warning("Componente fantasia não compatível com [src]."))
 			CRASH("fantasy component incompatible with object of type: [type]")
-		to_chat(usr, span_notice("[before_name] now has [picked_affix_name]!"))
+		to_chat(usr, span_notice("[before_name] Agora tem [picked_affix_name]!"))
 		log_admin("[key_name(usr)] has added [picked_affix_name] fantasy affix to [before_name]")
 		message_admins(span_notice("[key_name(usr)] has added [picked_affix_name] fantasy affix to [before_name]"))
 
@@ -576,24 +573,12 @@
 	if(!(user.mobility_flags & MOBILITY_PICKUP))
 		return
 
-	// BUBBER EDIT ADDITION - allow components on the user to inject a pickup delay or fail chance (e.g. ball mittens fumble)
-	var/list/pickup_mods = list("delay" = 0, "fail_chance" = 0)
-	if(SEND_SIGNAL(user, COMSIG_LIVING_ITEM_ATTEMPT_PICKUP, src, pickup_mods) & COMPONENT_BLOCK_ITEM_PICKUP)
-		return
-	if(pickup_mods["delay"])
-		if(!do_after(user, pickup_mods["delay"], src, timed_action_flags = IGNORE_HELD_ITEM))
-			return
-	if(pickup_mods["fail_chance"] && prob(pickup_mods["fail_chance"]))
-		SEND_SIGNAL(user, COMSIG_LIVING_ITEM_PICKUP_FAILED, src)
-		return
-	// BUBBER EDIT ADDITION END
-
 	if(!skip_grav)
 		//Heavy gravity makes picking up things very slow.
 		var/grav = user.has_gravity()
 		if(grav > STANDARD_GRAVITY)
 			var/grav_power = min(3,grav - STANDARD_GRAVITY)
-			to_chat(user,span_notice("You start picking up [src]..."))
+			to_chat(user,span_notice("Você começa a pegar [src]..."))
 			if(!do_after(user, 30 * grav_power, src))
 				return
 
@@ -642,7 +627,7 @@
 	if(!ayy.can_hold_items(src))
 		if(src in ayy.contents) // To stop Aliens having items stuck in their pockets
 			ayy.dropItemToGround(src)
-		to_chat(user, span_warning("Your claws aren't capable of such fine manipulation!"))
+		to_chat(user, span_warning("Suas garras não são capazes de manipulação tão fina!"))
 		return
 	attack_paw(ayy, modifiers)
 
@@ -660,7 +645,7 @@
 		return TRUE
 
 	if(prob(final_block_chance))
-		owner.visible_message(span_danger("[owner] blocks [attack_text] with [src]!"))
+		owner.visible_message(span_danger("[owner] Blocos [attack_text] com [src]!"))
 		var/owner_turf = get_turf(owner)
 		new block_effect(owner_turf, COLOR_YELLOW)
 		playsound(src, block_sound, BLOCK_SOUND_VOLUME, vary = TRUE)
@@ -1008,7 +993,7 @@
 /// If an object can successfully be used as a fire starter it will return a message
 /obj/item/proc/ignition_effect(atom/A, mob/user)
 	if(get_temperature() >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
-		. = span_notice("[user] lights [A] with [src].")
+		. = span_notice("[user] Luzes [A] com [src].")
 	else
 		. = ""
 
@@ -1400,7 +1385,7 @@
 		return
 	user.dropItemToGround(src, silent = TRUE)
 	if(throwforce && (HAS_TRAIT(user, TRAIT_PACIFISM)) || HAS_TRAIT(user, TRAIT_NO_THROWING))
-		to_chat(user, span_notice("You set [src] down gently on the ground."))
+		to_chat(user, span_notice("Você está pronto.[src] Deite-se suavemente no chão."))
 		return
 	return src
 
@@ -1427,8 +1412,7 @@
 /obj/item/proc/on_accidental_consumption(mob/living/carbon/victim, mob/living/carbon/user, obj/item/source_item, discover_after = TRUE)
 	if(get_sharpness() && force >= 5) //if we've got something sharp with a decent force (ie, not plastic)
 		INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream")
-		victim.visible_message(span_warning("[victim] looks like [victim.p_theyve()] just bit something they shouldn't have!"), \
-							span_boldwarning("OH GOD! Was that a crunch? That didn't feel good at all!!"))
+		victim.visible_message(span_warning("[victim] Parece que...[victim.p_theyve()] Só mordeu algo que não deveriam!"), 							span_boldwarning("Oh Deus! Foi uma crise? Isso não foi nada bom!"))
 
 		victim.apply_damage(max(15, force), BRUTE, BODY_ZONE_HEAD, wound_bonus = 10, sharpness = TRUE)
 		victim.losebreath += 2
@@ -1472,8 +1456,7 @@
 			discover_after = FALSE
 
 		victim.adjust_disgust(33)
-		victim.visible_message(span_warning("[victim] looks like [victim.p_theyve()] just bitten into something hard."), \
-						span_warning("Eugh! Did I just bite into something?"))
+		victim.visible_message(span_warning("[victim] Parece que...[victim.p_theyve()] Só mordi em algo difícil."), 						span_warning("Eugh! Mordi em alguma coisa?"))
 		return discover_after
 
 	if(w_class > WEIGHT_CLASS_TINY) //small items like soap or toys that don't have mat datums
@@ -1483,7 +1466,7 @@
 	var/obj/item/organ/stomach/stomach = victim.get_organ_by_type(/obj/item/organ/stomach)
 	if (stomach?.consume_thing(src))
 		victim.losebreath += 2
-		to_chat(victim, span_warning("You swallow hard. [source_item? "Something small was in \the [source_item]..." : ""]"))
+		to_chat(victim, span_warning("Você engole forte.[source_item? "Something small was in \the [source_item]..." : ""]"))
 		return FALSE
 
 	// victim's chest (for cavity implanting the item)
@@ -1491,12 +1474,12 @@
 	if(victim_cavity.cavity_item)
 		victim.vomit(vomit_flags = (MOB_VOMIT_MESSAGE | MOB_VOMIT_HARM), lost_nutrition = 5, distance = 0)
 		forceMove(drop_location())
-		to_chat(victim, span_warning("You vomit up a [name]! [source_item? "Was that in \the [source_item]?" : ""]"))
+		to_chat(victim, span_warning("Você vomita um [name]! [source_item? "Was that in \the [source_item]?" : ""]"))
 		return FALSE
 
 	victim.transferItemToLoc(src, victim, TRUE)
 	victim.losebreath += 2
-	to_chat(victim, span_warning("You swallow hard. [source_item? "Something small was in \the [source_item]..." : ""]"))
+	to_chat(victim, span_warning("Você engole forte.[source_item? "Something small was in \the [source_item]..." : ""]"))
 	return FALSE
 
 #undef MAX_MATS_PER_BITE
@@ -1873,15 +1856,15 @@
 	if(show_visible_message)
 		if(HAS_TRAIT(equipping, TRAIT_DANGEROUS_OBJECT))
 			target.visible_message(
-				span_danger("[user] tries to put [equipping] on [target]."),
-				span_userdanger("[user] tries to put [equipping] on you."),
+				span_danger("[user] Tenta colocar [equipping] Vamos.[target]."),
+				span_userdanger("[user] Tenta colocar [equipping] Você."),
 				ignored_mobs = user,
 			)
 
 		else
 			target.visible_message(
-				span_notice("[user] tries to put [equipping] on [target]."),
-				span_notice("[user] tries to put [equipping] on you."),
+				span_notice("[user] Tenta colocar [equipping] Vamos.[target]."),
+				span_notice("[user] Tenta colocar [equipping] Você."),
 				ignored_mobs = user,
 			)
 
@@ -1893,10 +1876,10 @@
 					LAZYADD(victim_human.afk_thefts, new_entry)
 
 			else if(victim_human.is_blind())
-				to_chat(target, span_userdanger("You feel someone trying to put something on you."))
+				to_chat(target, span_userdanger("Você sente alguém tentando colocar algo em você."))
 	user.do_item_attack_animation(target, used_item = equipping, animation_type = ATTACK_ANIMATION_BLUNT)
 
-	to_chat(user, span_notice("You try to put [equipping] on [target]..."))
+	to_chat(user, span_notice("Você tenta colocar [equipping] Vamos.[target]..."))
 
 	user.log_message("is putting [equipping] on [key_name(target)]", LOG_ATTACK, color="red")
 	target.log_message("is having [equipping] put on them by [key_name(user)]", LOG_VICTIM, color="orange", log_globally=FALSE)
@@ -2121,8 +2104,47 @@
 		obj_flags |= CONDUCTS_ELECTRICITY
 
 /obj/item/change_material_strength(datum/material/material, mat_amount, multiplier, remove = FALSE)
-	var/force_mod = get_material_force_modifier(material)
-	var/throwforce_mod = get_material_throwforce_modifier(material)
+	var/density = material.get_property(MATERIAL_DENSITY)
+	var/hardness = material.get_property(MATERIAL_HARDNESS)
+	var/flexibility = material.get_property(MATERIAL_FLEXIBILITY)
+
+	// Item force calculation depends on its initial (assumed to be main) sharpness
+	// Transforming component doesn't work with materials at all and will need a refactor to change that, so we don't care about it here.
+
+	var/force_mod = 1
+	var/throwforce_mod = 1
+
+	switch (sharpness)
+		if (NONE)
+			// Blunt items are really hurt by all the flexing
+			force_mod = (1 + (density - 4) * 0.1) / (1 + flexibility * 0.1)
+			throwforce_mod = 1 + (density - 4) * 0.1 - flexibility * 0.1
+
+		if (SHARP_EDGED)
+			// Sharp items don't care about density and need high hardness to get a real bonus, but can tolerate (and benefit from) some flex
+			force_mod = 1 + (hardness - 4) * 0.1
+			throwforce_mod = 1 + (hardness - 4) * 0.1
+
+			// Peaks out at 20% at flexibility of 1, drops off up to -80% at 10
+			if (flexibility < 2)
+				force_mod *= 1 + (1 - abs(1 - flexibility)) * 0.2
+				throwforce_mod += (1 - abs(1 - flexibility)) * 0.2
+			else
+				force_mod *= 1 - (flexibility - 2) * 0.1
+				throwforce_mod -= (flexibility - 2) * 0.1
+
+		if (SHARP_POINTY)
+			// Pointy items care about both density and hardness
+			force_mod = 1 + MATERIAL_PROPERTY_DIVERGENCE(density, 4, 6) * 0.05 + (hardness - 4) * 0.1
+			throwforce_mod = 1 + MATERIAL_PROPERTY_DIVERGENCE(density, 4, 6) * 0.05 * 0.05 + (hardness - 4) * 0.1
+			// But are not affected by flexibility until higher values, although they don't benefit from it either
+			if (flexibility > 4)
+				force_mod *= (1 - (flexibility - 4) * 0.2)
+				throwforce_mod -= (flexibility - 4) * 0.2
+
+	// Just for sanity in case something breaks
+	force_mod = round(clamp(force_mod, MATERIAL_MIN_FORCE_MULTIPLIER, MATERIAL_MAX_FORCE_MULTIPLIER), 0.01)
+	throwforce_mod = round(clamp(throwforce_mod, MATERIAL_MIN_FORCE_MULTIPLIER, MATERIAL_MAX_FORCE_MULTIPLIER), 0.01)
 
 	if (!remove)
 		force *= GET_MATERIAL_MODIFIER(force_mod, multiplier)
@@ -2131,69 +2153,43 @@
 		force /= GET_MATERIAL_MODIFIER(force_mod, multiplier)
 		throwforce /= GET_MATERIAL_MODIFIER(throwforce_mod, multiplier)
 
-/// Returns a force multiplier from a material for a given sharpness
-/obj/item/proc/get_material_force_modifier(datum/material/material, item_sharpness = get_sharpness())
-	var/density = material.get_property(MATERIAL_DENSITY)
-	var/hardness = material.get_property(MATERIAL_HARDNESS)
-	var/flexibility = material.get_property(MATERIAL_FLEXIBILITY)
-	var/force_mod = 1
-	switch (item_sharpness)
-		if (NONE)
-			// Blunt items are really hurt by all the flexing
-			force_mod = (1 + (density - 4) * 0.1) / (1 + flexibility * 0.1)
+/obj/item/apply_main_material_effects(datum/material/main_material, amount, multipier)
+	. = ..()
+	if(material_flags & MATERIAL_GREYSCALE)
+		var/main_mat_type = main_material.type
+		var/worn_path = get_material_greyscale_config(main_mat_type, greyscale_config_worn)
+		var/lefthand_path = get_material_greyscale_config(main_mat_type, greyscale_config_inhand_left)
+		var/righthand_path = get_material_greyscale_config(main_mat_type, greyscale_config_inhand_right)
+		set_greyscale(
+			new_worn_config = worn_path,
+			new_inhand_left = lefthand_path,
+			new_inhand_right = righthand_path
+		)
+	if(!main_material.item_sound_override)
+		return
+	hitsound = main_material.item_sound_override
+	usesound = main_material.item_sound_override
+	mob_throw_hit_sound = main_material.item_sound_override
+	equip_sound = main_material.item_sound_override
+	pickup_sound = main_material.item_sound_override
+	drop_sound = main_material.item_sound_override
 
-		if (SHARP_EDGED)
-			// Sharp items don't care about density and need high hardness to get a real bonus, but can tolerate (and benefit from) some flex
-			force_mod = 1 + (hardness - 4) * 0.1
-
-			// Peaks out at 20% at flexibility of 1, drops off up to -80% at 10
-			if (flexibility < 2)
-				force_mod *= 1 + (1 - abs(1 - flexibility)) * 0.2
-			else
-				force_mod *= 1 - (flexibility - 2) * 0.1
-
-		if (SHARP_POINTY)
-			// Pointy items care about both density and hardness
-			force_mod = 1 + MATERIAL_PROPERTY_DIVERGENCE(density, 4, 6) * 0.05 + (hardness - 4) * 0.1
-			// But are not affected by flexibility until higher values, although they don't benefit from it either
-			if (flexibility > 4)
-				force_mod *= (1 - (flexibility - 4) * 0.2)
-
-	// Just for sanity in case something breaks
-	force_mod = round(clamp(force_mod, MATERIAL_MIN_FORCE_MULTIPLIER, MATERIAL_MAX_FORCE_MULTIPLIER), 0.01)
-	return force_mod
-
-/// Returns a force multiplier from a material for a given sharpness
-/obj/item/proc/get_material_throwforce_modifier(datum/material/material, item_sharpness = get_sharpness())
-	var/density = material.get_property(MATERIAL_DENSITY)
-	var/hardness = material.get_property(MATERIAL_HARDNESS)
-	var/flexibility = material.get_property(MATERIAL_FLEXIBILITY)
-	var/throwforce_mod = 1
-	switch (item_sharpness)
-		if (NONE)
-			// Blunt items are really hurt by all the flexing
-			throwforce_mod = 1 + (density - 4) * 0.1 - flexibility * 0.1
-
-		if (SHARP_EDGED)
-			// Sharp items don't care about density and need high hardness to get a real bonus, but can tolerate (and benefit from) some flex
-			throwforce_mod = 1 + (hardness - 4) * 0.1
-
-			// Peaks out at 20% at flexibility of 1, drops off up to -80% at 10
-			if (flexibility < 2)
-				throwforce_mod += (1 - abs(1 - flexibility)) * 0.2
-			else
-				throwforce_mod -= (flexibility - 2) * 0.1
-
-		if (SHARP_POINTY)
-			// Pointy items care about both density and hardness
-			throwforce_mod = 1 + MATERIAL_PROPERTY_DIVERGENCE(density, 4, 6) * 0.05 * 0.05 + (hardness - 4) * 0.1
-			// But are not affected by flexibility until higher values, although they don't benefit from it either
-			if (flexibility > 4)
-				throwforce_mod -= (flexibility - 4) * 0.2
-
-	// Just for sanity in case something breaks
-	throwforce_mod = round(clamp(throwforce_mod, MATERIAL_MIN_FORCE_MULTIPLIER, MATERIAL_MAX_FORCE_MULTIPLIER), 0.01)
-	return throwforce_mod
+/obj/item/remove_main_material_effects(datum/material/main_material, amount, multipier)
+	. = ..()
+	if(material_flags & MATERIAL_GREYSCALE)
+		set_greyscale(
+			new_worn_config = initial(greyscale_config_worn),
+			new_inhand_left = initial(greyscale_config_inhand_left),
+			new_inhand_right = initial(greyscale_config_inhand_right)
+		)
+	if(!main_material.item_sound_override)
+		return
+	hitsound = initial(hitsound)
+	usesound = initial(usesound)
+	mob_throw_hit_sound = initial(mob_throw_hit_sound)
+	equip_sound = initial(equip_sound)
+	pickup_sound = initial(pickup_sound)
+	drop_sound = initial(drop_sound)
 
 /**
  * Returns the atom(either itself or an internal module) that will interact/attack the target on behalf of us

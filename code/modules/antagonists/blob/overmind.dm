@@ -16,7 +16,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 /mob/eye/blob
 	name = "Blob Overmind"
 	real_name = "Blob Overmind"
-	desc = "The overmind. It controls the blob."
+	desc = "A mente. Controla a bolha."
 	icon = 'icons/mob/eyemob.dmi'
 	icon_state = "marker"
 	mouse_opacity = MOUSE_OPACITY_ICON
@@ -60,9 +60,6 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 
 	/// The list of strains the blob can reroll for.
 	var/list/strain_choices
-
-	/// Adminbus potential - if this is set to FALSE, the blob won't end the round upon reaching critical mass.
-	var/end_round_on_victory = TRUE
 
 /mob/eye/blob/Initialize(mapload, starting_points = OVERMIND_STARTING_POINTS)
 	ADD_TRAIT(src, TRAIT_BLOB_ALLY, INNATE_TRAIT)
@@ -121,10 +118,10 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	blobstrain.on_gain()
 
 	if (had_strain)
-		to_chat(src, span_notice("Your strain is now: <b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font>!"))
-		to_chat(src, span_notice("The <b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font> strain [blobstrain.description]"))
+		to_chat(src, span_notice("Sua tensão é agora:<b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font>!"))
+		to_chat(src, span_notice("O<b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font>strain [blobstrain.description]"))
 		if(blobstrain.effectdesc)
-			to_chat(src, span_notice("The <b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font> strain [blobstrain.effectdesc]"))
+			to_chat(src, span_notice("O<b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font>strain [blobstrain.effectdesc]"))
 	SEND_SIGNAL(src, COMSIG_BLOB_SELECTED_STRAIN, blobstrain)
 
 /mob/eye/blob/can_z_move(direction, turf/start, turf/destination, z_move_flags = NONE, mob/living/rider)
@@ -136,7 +133,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	var/turf/target_turf = .
 	if(!is_valid_turf(target_turf)) // Allows unplaced blobs to travel through station z-levels
 		if(z_move_flags & ZMOVE_FEEDBACK)
-			to_chat(src, span_warning("Your destination is invalid. Move somewhere else and try again."))
+			to_chat(src, span_warning("Seu destino é inválido. Vá para outro lugar e tente de novo."))
 		return null
 
 /mob/eye/blob/proc/is_valid_turf(turf/tile)
@@ -149,8 +146,8 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	if(!blob_core)
 		if(!placed)
 			if(manualplace_min_time && world.time >= manualplace_min_time)
-				to_chat(src, span_boldnotice("You may now place your blob core."))
-				to_chat(src, span_bolddanger("You will automatically place your blob core in [DisplayTimeText(autoplace_max_time - world.time)]."))
+				to_chat(src, span_boldnotice("Agora você pode colocar seu núcleo de bolhas."))
+				to_chat(src, span_bolddanger("Você automaticamente colocará seu núcleo de bolhas em [DisplayTimeText(autoplace_max_time - world.time)]."))
 				manualplace_min_time = 0
 			if(autoplace_max_time && world.time >= autoplace_max_time)
 				place_blob_core(BLOB_RANDOM_PLACEMENT)
@@ -163,10 +160,18 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 
 			qdel(src)
 	else if(!victory_in_progress && (blobs_legit.len >= blobwincount))
-		begin_victory()
+		victory_in_progress = TRUE
+		priority_announce("Biohazard has reached critical mass. Station loss is imminent.", "Biohazard Alert")
+		SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 
+		// Set status displays to biohazard alert - critical level
+		send_status_display_biohazard_alert()
+
+		max_blob_points = INFINITY
+		blob_points = INFINITY
+		addtimer(CALLBACK(src, PROC_REF(victory)), 45 SECONDS)
 	else if(!free_strain_rerolls && (last_reroll_time + BLOB_POWER_REROLL_FREE_TIME<world.time))
-		to_chat(src, span_boldnotice("You have gained another free strain re-roll."))
+		to_chat(src, span_boldnotice("Você ganhou outra cepa livre re-roll."))
 		free_strain_rerolls = 1
 
 	if(!victory_in_progress && max_count < blobs_legit.len)
@@ -194,22 +199,6 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 /mob/eye/blob/proc/clear_biohazard_display()
 	clear_status_display_biohazard()
 
-/// Announce the blob's victory! Tell everyone that they're about to explode and/or turn into biomass soup and give the overmind a victory lap.
-/mob/eye/blob/proc/begin_victory()
-	victory_in_progress = TRUE
-	priority_announce("Biohazard has reached critical mass. Station loss is imminent.", "Biohazard Alert")
-	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
-
-	// Set status displays to biohazard alert - critical level
-	send_status_display_biohazard_alert()
-	if(end_round_on_victory) // Assuming they actually *are* about to turn the station into soup...
-		max_blob_points = INFINITY
-		blob_points = INFINITY
-	else
-		to_chat(src, span_blob("You've reached critical mass, but something feels terribly wrong, stopping you from expanding further. All you can do now is fight as long as you can..."))
-	addtimer(CALLBACK(src, PROC_REF(victory)), 45 SECONDS)
-
-/// Actually *do* the blob's victory: give them their greentext and, depending on the end_round_on_victory variable, decide if everyone dies or if it's just a jumpscare.
 /mob/eye/blob/proc/victory()
 	// Set victory flags immediately
 	var/datum/antagonist/blob/B = mind.has_antag_datum(/datum/antagonist/blob)
@@ -218,20 +207,13 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		if(main_objective)
 			main_objective.completed = TRUE
 
-	if(end_round_on_victory)
-		to_chat(world, span_blobannounce("[real_name] consumed the station in an unstoppable tide!"))
-		SSticker.news_report = BLOB_WIN
-		SSticker.force_ending = FORCE_END_ROUND
+	to_chat(world, span_blobannounce("[real_name] consumiu a estação em uma maré imparável!"))
+	SSticker.news_report = BLOB_WIN
+	SSticker.force_ending = FORCE_END_ROUND
 
-		// Handle the heavy victory operations (where everyone dies) asynchronously
-		INVOKE_ASYNC(src, PROC_REF(victory_sequence))
-	else
-		// Is the station going boom? No. But is the station still going to get yelled at? Yes.
-		priority_announce("Experimental, classified, and very expensive emergency countermeasures have been activated to prevent total station loss, \
-			but the initial failure to contain the viral biohazard will be noted on the station's performance report. Expect further penalties.", \
-			"Emergency Biohazard Countermeasure Alert")
+	// Handle the heavy victory operations asynchronously
+	INVOKE_ASYNC(src, PROC_REF(victory_sequence))
 
-/// Kill everyone who's still on the station area and not already part of the blob's faction, and cover every station area with blob icons. Everyone's soup now.
 /mob/eye/blob/proc/victory_sequence()
 	sound_to_playing_players('sound/announcer/alarm/nuke_alarm.ogg', 70)
 	sleep(10 SECONDS)
@@ -293,10 +275,10 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, span_blobannounce("You are the overmind!"))
+	to_chat(src, span_blobannounce("Você é o cérebro!"))
 	if(!placed && autoplace_max_time <= world.time)
-		to_chat(src, span_bolddanger("You will automatically place your blob core in [DisplayTimeText(autoplace_max_time - world.time)]."))
-		to_chat(src, span_bolddanger("You [manualplace_min_time ? "will be able to":"can"] manually place your blob core by pressing the Place Blob Core button in the bottom right corner of the screen."))
+		to_chat(src, span_bolddanger("Você automaticamente colocará seu núcleo de bolhas em [DisplayTimeText(autoplace_max_time - world.time)]."))
+		to_chat(src, span_bolddanger("Você.[manualplace_min_time ? "will be able to":"can"]Coloque manualmente seu núcleo de bolhas pressionando o botão Place Blob Core no canto inferior direito da tela."))
 	update_health_hud()
 	add_points(0)
 
@@ -338,7 +320,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 
 	if (src.client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, span_boldwarning("You cannot send IC messages (muted)."))
+			to_chat(src, span_boldwarning("Você não pode enviar mensagens de IC."))
 			return
 		if (!(ignore_spam || forced) && src.client.handle_spam_prevention(message, MUTE_IC))
 			return

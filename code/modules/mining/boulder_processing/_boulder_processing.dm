@@ -1,6 +1,6 @@
 /obj/machinery/bouldertech
 	name = "bouldertech brand refining machine"
-	desc = "You shouldn't be seeing this! And bouldertech isn't even a real company!"
+	desc = "Você não deveria estar vendo isso! E a Bouldertech nem é uma empresa de verdade!"
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "ore_redemption"
 	base_icon_state = "ore_redemption"
@@ -22,8 +22,6 @@
 	var/points_held = 0
 	///The action verb to display to players
 	var/action = "processing"
-	/// What reagent should be produced when a boost chemical is replaced by the booster_reagent?
-	var/datum/reagent/waste_chemical = /datum/reagent/water
 
 	/// Cooldown associated with the sound played for collecting mining points.
 	COOLDOWN_DECLARE(sound_cooldown)
@@ -34,10 +32,7 @@
 	. = ..()
 
 	silo_materials = new (
-		src, \
-		mapload, \
-		mat_container_flags = MATCONTAINER_NO_INSERT \
-	)
+		src, 		mapload, 		mat_container_flags = MATCONTAINER_NO_INSERT 	)
 
 	register_context()
 
@@ -77,38 +72,24 @@
 
 /obj/machinery/bouldertech/examine(mob/user)
 	. = ..()
-
-	. += span_suppradio("The machine reads that it has [EXAMINE_HINT("[points_held] mining points")] stored. Swipe an ID to claim them.")
+	. += span_notice("A máquina diz que tem[span_bold("[points_held] mining points")]Armazenado. Passe uma identificação para reivindicá-los.")
+	. += span_notice("Clique para remover uma pedra armazenada.")
 
 	var/boulder_count = 0
 	for(var/obj/item/boulder/potential_boulder in contents)
 		boulder_count += 1
-
-	if(boulder_count >= 1)
-		. += span_notice("[EXAMINE_HINT("Right Click")] to manually remove a stored boulder.<br />")
-
-	. += span_info("Storage capacity = <b>[boulder_count]/[boulders_held_max] boulders</b>.")
-	. += span_info("This machine can process up to [EXAMINE_HINT("[boulders_processing_count] boulders")] at a time.")
+	. += span_notice("Capacidade de armazenamento =<b>[boulder_count]/[boulders_held_max] Pedras</b>.")
+	. += span_notice("Pode processar até<b>[boulders_processing_count] Pedras</b>de uma vez.")
 
 	if(anchored)
-		. += span_notice("It's [EXAMINE_HINT("anchored")] in place.")
+		. += span_notice("É...[EXAMINE_HINT("anchored")]No lugar.")
 	else
-		. += span_warning("It needs to be [EXAMINE_HINT("anchored")] to start operations.")
+		. += span_warning("Precisa ser[EXAMINE_HINT("anchored")]para iniciar operações.")
 
-	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
+	. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
 
 	if(panel_open)
-		. += span_notice("The whole machine can be [EXAMINE_HINT("pried")] apart.")
-
-/obj/machinery/bouldertech/examine_more(mob/user)
-	. = ..()
-
-	var/list/datum/reagents/booster_list = get_booster_reagents()
-	if(length(booster_list))
-		. += span_notice("This machine's output is boosted by <b>chemical intake:</b><br>")
-		for(var/datum/reagent/increment as anything in booster_list)
-			. += span_info("&bull; [increment::name]: Provides [booster_list[increment] * 10]% Boost")
-		. += span_notice("<br>Upon being boosted successfully, \the [src] will produce [EXAMINE_HINT("[waste_chemical.name]")].")
+		. += span_notice("A máquina inteira pode ser[EXAMINE_HINT("pried")]Separados.")
 
 /obj/machinery/bouldertech/update_icon_state()
 	. = ..()
@@ -118,7 +99,7 @@
 	icon_state ="[base_icon_state][suffix]"
 
 /obj/machinery/bouldertech/CanAllowThrough(atom/movable/mover, border_dir)
-	if(!anchored || !(dir == border_dir || dir == REVERSE_DIR(border_dir)))
+	if(!anchored)
 		return FALSE
 	if(istype(mover, /obj/item/stack/sheet))
 		return TRUE
@@ -214,7 +195,7 @@
 		return
 
 	if(!use_energy(active_power_usage * 1.5, force = FALSE))
-		say("Not enough energy!")
+		say("energia insuficiente!")
 		return
 
 	maim_golem(rockman)
@@ -227,7 +208,7 @@
 	PROTECTED_PROC(TRUE)
 
 	Shake(duration = 1 SECONDS)
-	rockman.visible_message(span_warning("[rockman] is processed by [src]!"), span_userdanger("You get processed into bits by [src]!"))
+	rockman.visible_message(span_warning("[rockman] é processado por [src]!"), span_userdanger("Você é processado em pedaços por [src]!"))
 	rockman.investigate_log("was gibbed by [src] for being a golem", INVESTIGATE_DEATHS)
 	rockman.gib(DROP_ALL_REMAINS)
 
@@ -250,12 +231,6 @@
 	PROTECTED_PROC(TRUE)
 
 	refining_efficiency = initial(refining_efficiency) //Reset refining efficiency to 100%.
-
-///Returns a map of reagent -> boost amount to increase this machines efficiency
-/obj/machinery/bouldertech/proc/get_booster_reagents()
-	RETURN_TYPE(/list/datum/reagents)
-
-	return list()
 
 /**
  * Checks if this machine can process this material
@@ -297,7 +272,7 @@
 			amount = points_held
 		id_card.registered_account.mining_points += amount
 		points_held = round(points_held - amount)
-		to_chat(user, span_notice("You claim [amount] mining points from \the [src] to [id_card]."))
+		to_chat(user, span_notice("Você diz [amount] Pontos de mineração de\the [src] para [id_card]."))
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
@@ -323,10 +298,10 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN || panel_open)
 		return
 	if(!anchored)
-		balloon_alert(user, "anchor it first!")
+		balloon_alert(user, "Ancore primeiro!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(panel_open)
-		balloon_alert(user, "close panel!")
+		balloon_alert(user, "Feche o painel!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	var/obj/item/boulder/boulder = locate(/obj/item/boulder) in src
@@ -355,13 +330,12 @@
 	if(chosen_boulder.loc != src)
 		return
 	if(!use_energy(active_power_usage, force = FALSE))
-		say("Not enough energy!")
+		say("energia insuficiente!")
 		return
 
 	//if boulders are kept inside because there is no space to eject them, then they could be reprocessed, lets avoid that
 	if(!chosen_boulder.processed_by)
-		if(length(reagents.reagent_list))
-			check_for_boosts() //Handles the mineral boosting, as well as creating waste. Must have reagents in the machine.
+		check_for_boosts()
 
 		//here we loop through the boulder's ores
 		var/list/rejected_mats = list()
@@ -370,7 +344,7 @@
 			if(!can_process_material(possible_mat))
 				rejected_mats[possible_mat] = quantity
 				continue
-			points_held += round(quantity * possible_mat.points_per_boulder_unit) // put point total here into machine
+			points_held = round(points_held + (quantity * possible_mat.points_per_unit * MINING_POINT_MACHINE_MULTIPLIER)) // put point total here into machine
 			if(isnull(silo_materials.silo) || !silo_materials.mat_container.insert_amount_mat(quantity, possible_mat))
 				new possible_mat.sheet_type(drop_location(), floor(quantity / SHEET_MATERIAL_AMOUNT))
 
@@ -381,9 +355,9 @@
 		if(!length(chosen_boulder.custom_materials))
 			playsound(loc, usage_sound, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 			if(istype(chosen_boulder, /obj/item/boulder/artifact))
-				points_held = round((points_held + MINER_POINT_MULTIPLIER)) /// Artifacts give bonus points!
+				points_held = round((points_held + MINER_POINT_MULTIPLIER) * MINING_POINT_MACHINE_MULTIPLIER) /// Artifacts give bonus points!
 			chosen_boulder.break_apart()
-			return //We've processed all the materials in the boulder, so we can just destroy it in break_apart.
+			return//We've processed all the materials in the boulder, so we can just destroy it in break_apart.
 
 		chosen_boulder.processed_by = src
 
@@ -410,7 +384,7 @@
 		breakdown_boulder(potential_boulder)
 		boulders_found = FALSE
 
-	//when the boulder is removed it plays sound and displays a balloon alert. Don't overlap when that happens
+	//when the boulder is removed it plays sound and  displays a balloon alert. don't overlap when that happens
 	if(boulders_found)
 		playsound(loc, usage_sound, 29, FALSE, SHORT_RANGE_SOUND_EXTRARANGE)
 		balloon_alert_to_viewers(action)

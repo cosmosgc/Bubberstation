@@ -578,7 +578,7 @@
 	desc = "Reutilizado de uma rede de apostas confiscada. Perder é um crime. Vencer também é crime."
 	symbol_paths = list(
 		/obj/item/food/donut/berry,
-		/mob/living/basic/bot/secbot/beepsky,
+		/mob/living/simple_animal/bot/secbot/beepsky,
 		/obj/item/melee/baton/security/loaded,
 		/obj/item/gun/energy/disabler,
 		/obj/vehicle/sealed/mecha/ripley/paddy,

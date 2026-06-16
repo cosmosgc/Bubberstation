@@ -150,6 +150,7 @@ type CrewSensor = {
   brutedam: number;
   area: string | undefined;
   health: number;
+  can_track: BooleanLike;
   ref: string;
 };
 
@@ -249,6 +250,7 @@ const CrewTableEntry = (props: CrewTableEntryProps) => {
     burndam,
     brutedam,
     area,
+    can_track,
   } = sensor_data;
 
   return (
@@ -313,6 +315,7 @@ const CrewTableEntry = (props: CrewTableEntryProps) => {
       {!!link_allowed && (
         <Table.Cell collapsing>
           <Button
+            disabled={!can_track}
             onClick={() =>
               act('select_person', {
                 name: name,

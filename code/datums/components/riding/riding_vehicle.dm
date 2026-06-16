@@ -157,7 +157,6 @@
 
 /datum/component/riding/vehicle/lavaboat/dragonboat
 	vehicle_move_delay = 1
-	keytype = null
 
 /datum/component/riding/vehicle/lavaboat/dragonboat/get_rider_offsets_and_layers(pass_index, mob/offsetter)
 	return list(
@@ -166,6 +165,11 @@
 		TEXT_EAST =  list(1, 2),
 		TEXT_WEST =  list(1, 2),
 	)
+
+/datum/component/riding/vehicle/lavaboat/dragonboat
+	vehicle_move_delay = 1
+	keytype = null
+
 
 /datum/component/riding/vehicle/janicart
 	keytype = /obj/item/key/janitor

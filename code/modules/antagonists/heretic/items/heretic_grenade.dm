@@ -5,7 +5,7 @@
 
 /obj/item/grenade/chem_grenade/rust_sower
 	name = "\improper Rust sower"
-	desc = "A nifty little thing that explodes into rust. Causes borgs and mechs to get utterly obliterated"
+	desc = "Uma coisinha bonita que explode em ferrugem. Faz com que borgs e mechs fiquem completamente destruídos."
 	possible_fuse_time = list("5")
 	stage = GRENADE_READY
 	base_icon_state = "rustgrenade"
@@ -22,9 +22,6 @@
 
 /obj/item/grenade/chem_grenade/rust_sower/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/tool_blocker, TOOL_SCREWDRIVER, TOOL_ACT_PRIMARY)
-	AddElement(/datum/element/tool_blocker, TOOL_WRENCH, TOOL_ACT_PRIMARY)
-	AddElement(/datum/element/tool_blocker, TOOL_MULTITOOL, TOOL_ACT_PRIMARY)
 	RegisterSignal(src, COMSIG_ITEM_ON_GRIND, PROC_REF(on_try_grind))
 	var/obj/item/reagent_containers/cup/beaker/large/beaker_one = new(src)
 	var/obj/item/reagent_containers/cup/beaker/large/beaker_two = new(src)
@@ -42,6 +39,15 @@
 	playsound(src, 'sound/items/weapons/rust_sower_explode.ogg', 70, FALSE)
 	qdel(src)
 
+/obj/item/grenade/chem_grenade/rust_sower/screwdriver_act(mob/living/user, obj/item/tool)
+	return NONE
+
+/obj/item/grenade/chem_grenade/rust_sower/wrench_act(mob/living/user, obj/item/tool)
+	return NONE
+
+/obj/item/grenade/chem_grenade/rust_sower/multitool_act(mob/living/user, obj/item/tool)
+	return NONE
+
 /// Returns -1 so that you cant extract the chems
 /obj/item/grenade/chem_grenade/rust_sower/proc/on_try_grind()
 	SIGNAL_HANDLER
@@ -49,9 +55,9 @@
 
 /datum/reagent/heretic_rust
 	name = "Eldritch Rust"
-	description = "A slurry of viscous, chunky brown liquid."
+	description = "Uma pasta de líquido viscoso e marrom."
 	color = COLOR_CARGO_BROWN // Rust color
-	taste_description = "rotten copper"
+	taste_description = "Podo Policial."
 	penetrates_skin = NONE
 	ph = 7.4
 	default_container = /obj/item/reagent_containers/cup/bottle/capsaicin

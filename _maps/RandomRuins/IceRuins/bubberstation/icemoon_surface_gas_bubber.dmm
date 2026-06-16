@@ -689,7 +689,9 @@
 	},
 /area/ruin/powered/lizard_gas)
 "tk" = (
-/obj/machinery/rnd/production/circuit_imprinter/offstation/lizard_gas,
+/obj/machinery/rnd/production/circuit_imprinter/offstation{
+	name = "Gas Station Imprinter"
+	},
 /turf/open/floor/wood/parquet,
 /area/ruin/powered/lizard_gas)
 "ts" = (

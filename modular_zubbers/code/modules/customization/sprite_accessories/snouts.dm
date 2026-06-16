@@ -79,8 +79,3 @@
 	name = "Beak (Tiny)"
 	icon_state = "beaktiny"
 	icon = 'modular_zubbers/icons/customization/snouts.dmi'
-
-/datum/sprite_accessory/snouts/mammal/seikret
-	name = "seikret"
-	icon_state = "seikret"
-	icon = 'modular_zubbers/icons/customization/snouts.dmi'

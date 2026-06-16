@@ -101,7 +101,7 @@
 		/obj/item/crusher_trophy/watcher_wing,
 	)
 	ritual_success_items = list(
-	/obj/item/ash_seed/tendril,
+		/obj/item/tendril_seed,
 	)
 
 /datum/ash_ritual/incite_megafauna
@@ -109,13 +109,13 @@
 	desc = "Causa um som horrível e irreconhecível que atrairá a grande fauna de todo o planeta."
 	required_components = list(
 		"north" = /mob/living/carbon/human,
-		"south" = /obj/item/ash_seed/tendril,
+		"south" = /obj/item/tendril_seed,
 		"east" = /mob/living/carbon/human,
 		"west" = /mob/living/carbon/human,
 	)
 	consumed_components = list(
 		/mob/living/carbon/human,
-		/obj/item/ash_seed/tendril,
+		/obj/item/tendril_seed,
 	)
 
 /datum/ash_ritual/incite_megafauna/ritual_success(obj/effect/ash_rune/success_rune)

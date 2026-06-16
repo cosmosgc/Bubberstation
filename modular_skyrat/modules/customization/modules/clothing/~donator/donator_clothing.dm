@@ -432,13 +432,11 @@
 	icon_state = "wetsuit"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
-	worn_icon_teshari = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_teshari.dmi'
 	armor_type = /datum/armor/clothing_under/wetsuit
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	can_adjust = FALSE
 	female_sprite_flags = NO_FEMALE_UNIFORM
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 // Donation reward for TheOOZ
 /obj/item/clothing/mask/animal/wolf
@@ -894,10 +892,7 @@
 	desc = "Um Enviro-Suit feito azuleano. Ajustado à forma azuleana, ele tem tecido de contenção excedente projetado para dar a massa solidificada de plasma que já foi uma cauda alguma sala de respiração."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
-	worn_icon_teshari = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_teshari.dmi'
 	icon_state = "ana_envirosuit"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 // Donation reward for CandleJax
 /obj/item/clothing/under/plasmaman/jax2

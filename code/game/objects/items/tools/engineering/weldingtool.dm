@@ -166,7 +166,7 @@
 		return NONE
 
 	if (!affecting.brute_dam)
-		balloon_alert(user, "limb not damaged")
+		balloon_alert(user, "membro não danificado")
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [affecting.name]."),
@@ -248,7 +248,7 @@
 // /Switches the welder on
 /obj/item/weldingtool/proc/switched_on(mob/user)
 	if(!status)
-		balloon_alert(user, "unsecured!")
+		balloon_alert(user, "solto!")
 		return
 	set_welding(!welding)
 	if(welding)
@@ -260,14 +260,14 @@
 			update_appearance()
 			START_PROCESSING(SSobj, src)
 		else
-			balloon_alert(user, "no fuel!")
-			switched_off()
+			balloon_alert(user, "sem combustível!")
+			switched_off(user)
 	else
 		playsound(loc, deactivation_sound, 50, TRUE)
-		switched_off()
+		switched_off(user)
 
 /// Switches the welder off
-/obj/item/weldingtool/proc/switched_off()
+/obj/item/weldingtool/proc/switched_off(mob/user)
 	set_welding(FALSE)
 
 	force = 3

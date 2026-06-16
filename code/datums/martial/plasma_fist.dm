@@ -5,7 +5,7 @@
 /datum/martial_art/plasma_fist
 	name = "Plasma Fist"
 	id = MARTIALART_PLASMAFIST
-	help_verb = "Recall Teachings"
+	help_verb = /mob/living/proc/plasma_fist_help
 	var/nobomb = FALSE
 	var/plasma_power = 1 //starts at a 1, 2, 4 explosion.
 	var/plasma_increment = 1 //how much explosion power gets added per kill (1 = 1, 2, 4. 2 = 2, 4, 8 and so on)
@@ -48,13 +48,13 @@
 
 /datum/martial_art/plasma_fist/proc/Throwback(mob/living/attacker, mob/living/defender)
 	defender.visible_message(
-		span_danger("[attacker] hits [defender] with Plasma Punch!"),
-		span_userdanger("You're hit with a Plasma Punch by [attacker]!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_danger("[attacker] hits [defender] Como Plasma Punch!"),
+		span_userdanger("Você foi atingido com um soco de plasma [attacker]!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		null,
 		attacker,
 	)
-	to_chat(attacker, span_danger("You hit [defender] with Plasma Punch!"))
+	to_chat(attacker, span_danger("Você bateu.[defender] Como Plasma Punch!"))
 	playsound(defender, 'sound/items/weapons/punch1.ogg', 50, TRUE, -1)
 	var/atom/throw_target = get_edge_target_turf(defender, get_dir(defender, get_step_away(defender, attacker)))
 	defender.throw_at(throw_target, 200, 4,attacker)
@@ -69,13 +69,13 @@
 	playsound(defender, 'sound/items/weapons/punch1.ogg', 50, TRUE, -1)
 	attacker.say("PLASMA FIST!", forced="plasma fist")
 	defender.visible_message(
-		span_danger("[attacker] hits [defender] with THE PLASMA FIST TECHNIQUE!"),
-		span_userdanger("You're suddenly hit with THE PLASMA FIST TECHNIQUE by [attacker]!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_danger("[attacker] hits [defender] Com a técnica de punho de plástico!"),
+		span_userdanger("De repente, você é atingido com o PLASMA FIST TECHNIQUE por [attacker]!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		null,
 		attacker,
 	)
-	to_chat(attacker, span_danger("You hit [defender] with THE PLASMA FIST TECHNIQUE!"))
+	to_chat(attacker, span_danger("Você bateu.[defender] Com a técnica de punho de plástico!"))
 	log_combat(attacker, defender, "gibbed (Plasma Fist)")
 	var/turf/Dturf = get_turf(defender)
 	defender.investigate_log("has been gibbed by plasma fist.", INVESTIGATE_DEATHS)
@@ -120,7 +120,7 @@
 	log_combat(user, user, "triggered final plasma explosion with size [plasma_power], [plasma_power*2], [plasma_power*4] (Plasma Fist)")
 	message_admins("[key_name_admin(user)] triggered final plasma explosion with size [plasma_power], [plasma_power*2], [plasma_power*4].")
 
-	to_chat(user, span_userdanger("The explosion knocks your soul out of your body!"))
+	to_chat(user, span_userdanger("A explosão tira sua alma do seu corpo!"))
 	user.ghostize(FALSE) //prevents... horrible memes just believe me
 
 	user.apply_damage(rand(50, 70), BRUTE, wound_bonus = CANT_WOUND)
@@ -152,7 +152,7 @@
 	if(check_streak(attacker, defender))
 		return MARTIAL_ATTACK_SUCCESS
 	if(attacker == defender)//there is no disarming yourself, so we need to let plasma fist user know
-		to_chat(attacker, span_notice("You have added a disarm to your streak."))
+		to_chat(attacker, span_notice("Você adicionou um desarme à sua raia."))
 		return MARTIAL_ATTACK_FAIL
 	return MARTIAL_ATTACK_INVALID
 
@@ -163,22 +163,23 @@
 	add_to_streak("G", defender)
 	return check_streak(attacker, defender) ? MARTIAL_ATTACK_SUCCESS : MARTIAL_ATTACK_INVALID
 
-/datum/martial_art/plasma_fist/get_style_help()
-	. = list()
+/mob/living/proc/plasma_fist_help()
+	set name = "Recall Teachings"
+	set desc = "Remember the martial techniques of the Plasma Fist."
+	set category = "Plasma Fist"
 
-	var/datum/martial_art/plasma_fist/martial = GET_ACTIVE_MARTIAL_ART(holder)
-	. += "<b><i>You clench your fists and have a flashback of knowledge...</i></b>"
-	. += "[span_notice("Tornado Sweep")]: Punch Punch Shove. Repulses opponent and everyone back."
-	. += "[span_notice("Throwback")]: Shove Punch Shove. Throws the opponent and an item at them."
-	. += "[span_notice("The Plasma Fist")]: Punch Shove Shove Shove Punch. Instantly gibs an opponent.[martial.nobomb ? "" : " Each kill with this grows your [span_notice("Apotheosis")] explosion size."]"
+	var/datum/martial_art/plasma_fist/martial = GET_ACTIVE_MARTIAL_ART(src)
+	to_chat(usr, "<b><i>Você aperta os punhos e tem um flashback de conhecimento...</i></b>")
+	to_chat(usr, "[span_notice("Tornado Sweep")]: Punch Punch Shove. Repulses opponent and everyone back.")
+	to_chat(usr, "[span_notice("Throwback")]: Shove Punch Shove. Throws the opponent and an item at them.")
+	to_chat(usr, "[span_notice("The Plasma Fist")]: Punch Shove Shove Shove Punch. Instantly gibs an opponent.[martial.nobomb ? "" : " Each kill with this grows your [span_notice("Apotheosis")] explosion size."]")
 	if(!martial.nobomb)
-		. += "[span_notice("Apotheosis")]: Use [span_notice("The Plasma Fist")] on yourself. Sends you away in a glorious explosion."
-	return .
+		to_chat(usr, "[span_notice("Apotheosis")]: Use [span_notice("The Plasma Fist")] on yourself. Sends you away in a glorious explosion.")
 
 
 /obj/effect/temp_visual/plasma_soul
 	name = "plasma energy"
-	desc = "Leftover energy brought out from The Plasma Fist."
+	desc = "Restos de energia trazidos do Punho de Plasma."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "plasmasoul"
 	duration = 3 SECONDS
@@ -194,13 +195,13 @@
 
 /obj/effect/temp_visual/plasma_soul/Destroy()
 	if(!beam_target)
-		visible_message(span_notice("[src] fades away..."))
+		visible_message(span_notice("[src] Desapareça..."))
 	. = ..()
 
 /obj/effect/ebeam/plasma_fist
 	name = "plasma"
 	mouse_opacity = MOUSE_OPACITY_ICON
-	desc = "Flowing energy."
+	desc = "Energia fluindo."
 
 /datum/martial_art/plasma_fist/nobomb
 	name = "Novice Plasma Fist"

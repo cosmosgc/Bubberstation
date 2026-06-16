@@ -196,9 +196,9 @@
 		admin_client.mouse_pointer_icon = admin_client.mouse_override_icon
 		admin_client.click_intercept = src
 
-		winset(admin_client, SKIN_MAPWINDOW_MAP, "right-click=true")
+		winset(admin_client, "mapwindow.map", "right-click=true")
 	else
-		winset(admin_client, SKIN_MAPWINDOW_MAP, "right-click=false")
+		winset(admin_client, "mapwindow.map", "right-click=false")
 
 	var/mob/holder_mob = admin_client.mob
 	holder_mob?.update_mouse_pointer()
@@ -251,12 +251,12 @@
 			if(PRECISE_MODE_MARK)
 				var/client/admin_client = user.client
 				admin_client.mark_datum(target)
-				to_chat(user, span_notice("Marked object: [icon2html(target, user)] [span_bold("[target]")]"))
+				to_chat(user, span_notice("Objeto marcado:[icon2html(target, user)] [span_bold("[target]")]"))
 				toggle_precise_mode(PRECISE_MODE_OFF)
 				SStgui.update_uis(src)
 
 			if(PRECISE_MODE_COPY)
-				to_chat(user, span_notice("Picked object: [icon2html(target, user)] [span_bold("[target]")]"))
+				to_chat(user, span_notice("Objeto Escolhido:[icon2html(target, user)] [span_bold("[target]")]"))
 				selected_atom = target
 				toggle_precise_mode(PRECISE_MODE_OFF)
 				SStgui.update_uis(src)

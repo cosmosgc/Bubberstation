@@ -7,7 +7,7 @@ Skyrat removal START, moved to modular file
 
 /obj/machinery/power/thermoelectric_generator
 	name = "thermoelectric generator"
-	desc = "It's a high efficiency thermoelectric generator."
+	desc = "É um gerador termoelétrico de alta eficiência."
 	icon_state = "teg"
 	base_icon_state = "teg"
 	density = TRUE
@@ -63,7 +63,7 @@ Skyrat removal START, moved to modular file
 
 /obj/machinery/power/thermoelectric_generator/wrench_act(mob/living/user, obj/item/tool)
 	if(!panel_open)
-		balloon_alert(user, "open the panel!")
+		balloon_alert(user, "Abra o painel!")
 		return
 	set_anchored(!anchored)
 	tool.play_tool_sound(src)
@@ -79,20 +79,21 @@ Skyrat removal START, moved to modular file
 	if(!anchored)
 		return
 	find_circulators()
-	balloon_alert(user, "circulators updated")
+	balloon_alert(user, "Circuladores atualizados")
 	return TRUE
 
 /obj/machinery/power/thermoelectric_generator/screwdriver_act(mob/user, obj/item/tool)
 	if(!anchored)
-		balloon_alert(user, "anchor it down!")
+		balloon_alert(user, "Ancore-o!")
 		return
 	toggle_panel_open()
 	tool.play_tool_sound(src)
-	balloon_alert(user, "panel [panel_open ? "open" : "closed"]")
+	balloon_alert(user, "Painel.[panel_open ? "open" : "closed"]")
 	return TRUE
 
 /obj/machinery/power/thermoelectric_generator/crowbar_act(mob/living/user, obj/item/tool)
-	return default_deconstruction_crowbar(user, tool)
+	default_deconstruction_crowbar(tool)
+	return TRUE
 
 /obj/machinery/power/thermoelectric_generator/process()
 	//Setting this number higher just makes the change in power output slower, it doesnt actualy reduce power output cause **math**

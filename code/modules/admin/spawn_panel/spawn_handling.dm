@@ -38,23 +38,23 @@
 		target = (where_target_type == WHERE_TARGETED_MOB_HAND ? spawn_params["target"] : user)
 
 		if(!target)
-			to_chat(user, span_warning("No target specified."))
+			to_chat(user, span_warning("Nenum alvo especificado."))
 			return
 
 		if(!ismob(target))
-			to_chat(user, span_warning("The targeted atom is not a mob."))
+			to_chat(user, span_warning("O átomo alvo não é uma multidão."))
 			return
 
 		if(!iscarbon(target) && !iscyborg(target))
-			to_chat(user, span_warning("Can only spawn in hand when the target is a carbon mob or a cyborg."))
+			to_chat(user, span_warning("Só pode desovar quando o alvo é uma multidão de carbono ou um cyborg."))
 			where_target_type = WHERE_FLOOR_BELOW_MOB
 
 	else if(where_target_type == WHERE_MARKED_OBJECT || where_target_type == WHERE_IN_MARKED_OBJECT)
 		if(!user.client.holder.marked_datum)
-			to_chat(user, span_warning("You don't have any object marked."))
+			to_chat(user, span_warning("Não tem nenhum objeto marcado."))
 			return
 		else if(!istype(user.client.holder.marked_datum, /atom))
-			to_chat(user, span_warning("The object you have marked cannot be used as a target. Target must be of type /atom."))
+			to_chat(user, span_warning("O objeto que marcou não pode ser usado como alvo. O alvo deve ser do tipo \"átomo\"."))
 			return
 		else
 			target = (where_target_type == WHERE_MARKED_OBJECT ? get_turf(user.client.holder.marked_datum) : user.client.holder.marked_datum)
@@ -81,7 +81,7 @@
 						relative_turf = locate(1, 1, 1)
 
 				if (!relative_turf)
-					to_chat(user, span_warning("Could not determine a valid relative location."))
+					to_chat(user, span_warning("Não foi possível determinar uma localização relativa válida."))
 					return
 
 				target = locate(relative_turf.x + X, relative_turf.y + Y, relative_turf.z + Z)
@@ -96,8 +96,8 @@
 		pod = new()
 
 	for(var/i in 1 to amount)
-		if(ispath(atom_to_spawn, /turf))
-			var/turf/original_turf = get_turf(target) //Get_turf is required here, because if target is not a turf we are cooked chat.
+		if(istype(atom_to_spawn, /turf))
+			var/turf/original_turf = target
 			var/turf/created_turf = original_turf.ChangeTurf(atom_to_spawn.type)
 			if(created_turf && atom_name)
 				created_turf.name = atom_name

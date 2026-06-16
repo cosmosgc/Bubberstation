@@ -180,17 +180,17 @@
 				meat.set_custom_materials(list(SSmaterials.get_material(/datum/material/meat/mob_meat, C) = round(SHEET_MATERIAL_AMOUNT * (4/3))))
 			nutrients = 0
 
-/obj/machinery/fat_sucker/screwdriver_act(mob/living/user, obj/item/tool)
+/obj/machinery/fat_sucker/screwdriver_act(mob/living/user, obj/item/I)
 	if(occupant)
 		to_chat(user, span_warning("[src] Está ocupado no momento!"))
 		return ITEM_INTERACT_BLOCKING
 	if(state_open)
 		to_chat(user, span_warning("[src] deve ser fechado para[panel_open ? "close" : "open"]Sua escotilha de manutenção!"))
 		return ITEM_INTERACT_BLOCKING
-	return default_deconstruction_screwdriver(user, tool)
+	return default_deconstruction_screwdriver(user, I)
 
-/obj/machinery/fat_sucker/crowbar_act(mob/living/user, obj/item/tool)
-	return default_deconstruction_crowbar(user, tool)
+/obj/machinery/fat_sucker/crowbar_act(mob/living/user, obj/item/I)
+	return default_deconstruction_crowbar(user, I)
 
 /obj/machinery/fat_sucker/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)

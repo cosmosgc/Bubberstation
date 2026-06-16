@@ -47,25 +47,14 @@
 	if(cuffs.used || DOING_INTERACTION_WITH_TARGET(user, source))
 		return
 
-	for(var/datum/status_effect/cuffed_item/effect in user.status_effects)
-		if(effect.cuffed == source)
-			to_chat(user, span_warning("[source] is already cuffed to your wrist!"))
-			return
-		if(effect.cuffed_to == user.get_inactive_hand())
-			to_chat(user, span_warning("You already have something cuffed to your opposite wrist!"))
-			return
-
-	if(!user.get_inactive_hand())
-		to_chat(user, span_warning("You don't have another hand to cuff [source] to!"))
+	if(HAS_TRAIT_FROM(source, TRAIT_NODROP, CUFFED_ITEM_TRAIT))
+		to_chat(user, span_warning("[source] Já está algemado ao seu pulso!"))
 		return
 
 	if(cuffs.handcuffs_clumsiness_check(user))
 		return
 
-	if(SEND_SIGNAL(source, COMSIG_ITEM_PRE_CUFFED_TO_MOB, user, cuffs) & BLOCK_ITEM_CUFF)
-		return
-
-	source.balloon_alert(user, "cuffing item...")
+	source.balloon_alert(user, "Algemando item...")
 	playsound(source, cuffs.cuffsound, 30, TRUE, -2)
 	if(!do_after(user, cuffs.get_handcuff_time(user), source))
 		return

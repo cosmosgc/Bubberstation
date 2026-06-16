@@ -15,7 +15,6 @@
 
 	now_failing = span_warning("An explosion of pain erupts in your lower right abdomen!")
 	now_fixed = span_info("The pain in your abdomen has subsided.")
-	visual = FALSE
 
 	var/inflamation_stage = 0
 
@@ -56,7 +55,7 @@
 	notify_ghosts(
 		"[owner.real_name] has developed spontaneous appendicitis!",
 		source = owner,
-		header = "Whoa, Sick!",
+		header = "Whoa, Doente!",
 	)
 
 /obj/item/organ/appendix/proc/inflamation(seconds_per_tick)
@@ -70,7 +69,7 @@
 				organ_owner.emote("cough")
 		if(2)
 			if(SPT_PROB(1.5, seconds_per_tick))
-				to_chat(organ_owner, span_warning("You feel a stabbing pain in your abdomen!"))
+				to_chat(organ_owner, span_warning("Você sente uma dor no abdômen!"))
 				organ_owner.adjust_organ_loss(ORGAN_SLOT_APPENDIX, 5)
 				organ_owner.Stun(rand(40, 60))
 				organ_owner.adjust_tox_loss(1, forced = TRUE)
@@ -83,11 +82,11 @@
 	var/effective_stage = floor(inflamation_stage + (damage / maxHealth))
 	switch(effective_stage)
 		if(1)
-			return span_warning("Your [self_aware ? "appendix" : "lower abdomen"] feels a little off.")
+			return span_warning("Sua[self_aware ? "appendix" : "lower abdomen"]Parece um pouco estranho.")
 		if(2)
-			return span_warning("Your [self_aware ? "appendix" : "lower right abdomen"] feels sore.")
+			return span_warning("Sua[self_aware ? "appendix" : "lower right abdomen"]Sinto dor.")
 		if(3 to INFINITY)
-			return span_boldwarning("Your [self_aware ? "appendix" : "lower right abdomen"] feels like it's on fire!")
+			return span_boldwarning("Sua[self_aware ? "appendix" : "lower right abdomen"]Parece que está pegando fogo!")
 
 /obj/item/organ/appendix/get_availability(datum/species/owner_species, mob/living/owner_mob)
 	return owner_species.mutantappendix
@@ -125,7 +124,7 @@
 
 /obj/item/organ/appendix/pod
 	name = "pod thingy"
-	desc = "Strangest salad you've ever seen."
+	desc = "A salada mais estranha que já viu."
 	foodtype_flags = PODPERSON_ORGAN_FOODTYPES
 	color = COLOR_LIME
 

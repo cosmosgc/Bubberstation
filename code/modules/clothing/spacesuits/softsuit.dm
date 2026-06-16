@@ -1,48 +1,47 @@
 	//NASA Voidsuit
 /obj/item/clothing/head/helmet/space/nasavoid
-	name = "\improper NASA void helmet"
-	desc = "An old, NASA CentCom branch designed, dark red space suit helmet."
+	name = "NASA Void Helmet"
+	desc = "Um antigo ramo da NASA CentCom projetado, um capacete de terno espacial vermelho escuro."
 	icon_state = "void"
 	inhand_icon_state = "void_helmet"
 
 /obj/item/clothing/suit/space/nasavoid
-	name = "\improper NASA voidsuit"
+	name = "NASA Voidsuit"
 	icon_state = "void"
 	inhand_icon_state = "void_suit"
-	desc = "An old, NASA CentCom branch designed, dark red space suit."
+	desc = "Um antigo ramo da NASA CentCom projetado, traje espacial vermelho escuro."
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/multitool)
 
 /obj/item/clothing/head/helmet/space/nasavoid/old
-	name = "\improper engineering void helmet"
-	desc = "A CentCom engineering dark red space suit helmet. While old and dusty, it still gets the job done."
+	name = "Engineering Void Helmet"
+	desc = "Um capacete espacial vermelho escuro da CentCom. Enquanto velho e empoeirado, ainda faz o trabalho."
 	icon_state = "void"
 	visor_dirt = "void_dirt"
 
 /obj/item/clothing/suit/space/nasavoid/old
-	name = "\improper engineering voidsuit"
+	name = "Engineering Voidsuit"
 	icon_state = "void"
 	inhand_icon_state = "void_suit"
-	desc = "A CentCom engineering dark red space suit. Age has degraded the suit making it difficult to move around in."
+	desc = "Um traje espacial vermelho escuro da CentCom. A idade degrada o terno, dificultando a mudança."
 	slowdown = 4
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/multitool)
 
 	//EVA suit
 /obj/item/clothing/suit/space/eva
-	name = "\improper EVA suit"
+	name = "EVA suit"
 	icon_state = "space"
 	inhand_icon_state = "s_suit"
-	desc = "A lightweight space suit with the basic ability to protect the wearer from the vacuum of space during emergencies."
+	desc = "Um traje espacial leve com a habilidade básica de proteger o usuário do vácuo do espaço durante emergências."
 	armor_type = /datum/armor/space_eva
 
 /obj/item/clothing/head/helmet/space/eva
-	name = "\improper EVA helmet"
+	name = "EVA helmet"
 	icon_state = "space"
 	inhand_icon_state = "space_helmet"
-	desc = "A lightweight space helmet with the basic ability to protect the wearer from the vacuum of space during emergencies."
+	desc = "Um capacete espacial leve com a habilidade básica de proteger o usuário do vácuo do espaço durante emergências."
 	flash_protect = FLASH_PROTECTION_NONE
 	armor_type = /datum/armor/space_eva
 	visor_dirt = "space_dirt"
-	has_visor = TRUE
 
 /datum/armor/space_eva
 	bio = 100
@@ -60,9 +59,9 @@
 	if(!istype(attacked_with, /obj/item/bodypart/leg/left/robot) && !istype(attacked_with, /obj/item/bodypart/leg/right/robot))
 		return
 	if(ismob(loc))
-		user.balloon_alert(user, "drop the helmet first!")
+		user.balloon_alert(user, "Largue o capacete primeiro!")
 		return
-	user.balloon_alert(user, "leg attached")
+	user.balloon_alert(user, "Perna presa")
 	new /obj/item/bot_assembly/vim(loc)
 	qdel(attacked_with)
 	qdel(src)
@@ -70,7 +69,7 @@
 	//Emergency suit
 /obj/item/clothing/head/helmet/space/fragile
 	name = "emergency space helmet"
-	desc = "A bulky, airtight helmet meant to protect the user during emergency situations. It doesn't look very durable."
+	desc = "Um capacete volumoso e hermético para proteger o usuário em situações de emergência. Não parece muito durável."
 	icon_state = "syndicate-helm-orange"
 	inhand_icon_state = "syndicate-helm-orange" //resprite?
 	armor_type = /datum/armor/space_fragile
@@ -78,7 +77,7 @@
 
 /obj/item/clothing/suit/space/fragile
 	name = "emergency space suit"
-	desc = "A bulky, airtight suit meant to protect the user during emergency situations. It doesn't look very durable."
+	desc = "Um terno volumoso e hermético para proteger o usuário em situações de emergência. Não parece muito durável."
 	var/torn = FALSE
 	icon_state = "syndicate-orange"
 	inhand_icon_state = "syndicate-orange"
@@ -91,10 +90,10 @@
 
 /obj/item/clothing/suit/space/fragile/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	if(!torn && prob(50))
-		to_chat(owner, span_warning("[src] tears from the damage, breaking the airtight seal!"))
+		to_chat(owner, span_warning("[src] lágrimas dos danos, quebrando o selo hermético!"))
 		clothing_flags &= ~STOPSPRESSUREDAMAGE
 		name = "torn [src]."
-		desc = "A bulky suit meant to protect the user during emergency situations, at least until someone tore a hole in the suit."
+		desc = "Um terno volumoso para proteger o usuário em situações de emergência, pelo menos até alguém abrir um buraco no terno."
 		torn = TRUE
 		playsound(loc, 'sound/items/weapons/slashmiss.ogg', 50, TRUE)
 		playsound(loc, 'sound/effects/refill.ogg', 50, TRUE)

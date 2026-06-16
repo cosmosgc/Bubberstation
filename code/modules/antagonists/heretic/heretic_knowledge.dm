@@ -55,7 +55,7 @@
 /datum/heretic_knowledge/proc/pre_research(mob/user, datum/antagonist/heretic/our_heretic)
 	// consider moving this check to a type instead
 	if(is_final_knowledge && !our_heretic.unlimited_blades)
-		var/choice = tgui_alert(user, "THIS WILL DISABLE BLADE BREAKING, Are you ready to research this? The blade cap will also be removed.", "Get Final Spell?", list("Yes", "No"))
+		var/choice = tgui_alert(user, "Está pronto para pesquisar isso? A tampa da lâmina também será removida.", "Get Final Spell?", list("Yes", "No"))
 		if(choice != "Yes")
 			return FALSE
 	return TRUE
@@ -242,7 +242,7 @@
 			LAZYREMOVE(created_items, ref)
 
 	if(LAZYLEN(created_items) >= limit)
-		loc.balloon_alert(user, "ritual failed, at limit!")
+		loc.balloon_alert(user, "O ritual falhou, sem limite!")
 		return FALSE
 
 	return TRUE
@@ -279,7 +279,7 @@
 		our_heretic.heretic_path = new column_path()
 	if(!our_heretic.heretic_path)
 		// If we don't have a path, we can't continue.
-		to_chat(user, span_warning("Oh shit, something broke, no path found!"))
+		to_chat(user, span_warning("Merda, alguma coisa quebrou, nenhum caminho encontrado!"))
 		stack_trace("failed to find valid path [our_heretic.heretic_shops[HERETIC_KNOWLEDGE_TREE][type][HKT_ROUTE]] from researching [src]")
 		return
 	SSblackbox.record_feedback("tally", "heretic_path_taken", 1, our_heretic.heretic_path.route)
@@ -292,9 +292,7 @@
 		our_heretic.heretic_shops[HERETIC_KNOWLEDGE_DRAFT],
 	)
 	SEND_SIGNAL(src, COMSIG_HERETIC_SHOP_SETUP)
-	if(our_heretic.give_objectives)
-		our_heretic.forge_primary_objectives()
-		our_heretic.owner.announce_objectives()
+
 
 /datum/heretic_knowledge/limited_amount/starting/on_gain(mob/user, datum/antagonist/heretic/our_heretic)
 	RegisterSignals(user, list(COMSIG_HERETIC_MANSUS_GRASP_ATTACK, COMSIG_LIONHUNTER_ON_HIT), PROC_REF(on_mansus_grasp))
@@ -444,7 +442,7 @@
 	message_admins("A [summoned.name] is being summoned by [ADMIN_LOOKUPFLW(user)] in [ADMIN_COORDJMP(summoned)].")
 	var/mob/chosen_one = SSpolling.poll_ghosts_for_target(check_jobban = ROLE_HERETIC, poll_time = 10 SECONDS, checked_target = summoned, ignore_category = poll_ignore_define, alert_pic = summoned, role_name_text = summoned.name)
 	if(isnull(chosen_one))
-		loc.balloon_alert(user, "ritual failed, no ghosts!")
+		loc.balloon_alert(user, "O ritual falhou, sem fantasias!")
 		animate(summoned, 0.5 SECONDS, alpha = 0)
 		QDEL_IN(summoned, 0.6 SECONDS)
 		return FALSE
@@ -476,8 +474,8 @@
  */
 /datum/heretic_knowledge/knowledge_ritual
 	name = "Ritual of Knowledge"
-	desc = "A randomly generated transmutation ritual that rewards knowledge points and can only be completed once."
-	gain_text = "Everything can be a key to unlocking the secrets behind the Gates. I must be wary and wise."
+	desc = "Um ritual de transmutação gerado aleatoriamente que recompensa pontos de conhecimento e só pode ser concluído uma vez."
+	gain_text = "Tudo pode ser uma chave para desvendar os segredos por trás dos Portões. Devo ser cauteloso e sábio."
 	abstract_type = /datum/heretic_knowledge/knowledge_ritual
 	cost = 1
 	priority = MAX_KNOWLEDGE_PRIORITY - 10 // A pretty important midgame ritual.
@@ -531,15 +529,15 @@
 
 	var/list/requirements_string = list()
 
-	to_chat(user, span_hierophant("The [name] requires the following:"))
+	to_chat(user, span_hierophant("O [name] Requer o seguinte:"))
 	for(var/obj/item/path as anything in required_atoms)
 		var/amount_needed = required_atoms[path]
 		to_chat(user, span_hypnophrase("[amount_needed] [initial(path.name)]\s..."))
 		requirements_string += "[amount_needed == 1 ? "":"[amount_needed] "][initial(path.name)]\s"
 
-	to_chat(user, span_hierophant("Completing it will reward you [KNOWLEDGE_RITUAL_POINTS] knowledge points. You can check the knowledge in your Researched Knowledge to be reminded."))
+	to_chat(user, span_hierophant("Completá-lo vai recompensá-lo [KNOWLEDGE_RITUAL_POINTS] Pontos de conhecimento. Você pode verificar o conhecimento em seu conhecimento pesquisado para ser lembrado."))
 
-	desc = "Allows you to transmute [english_list(requirements_string)] for [KNOWLEDGE_RITUAL_POINTS] bonus knowledge points. This can only be completed once."
+	desc = "Permite que você transmute [english_list(requirements_string)] Para [KNOWLEDGE_RITUAL_POINTS] Pontos de conhecimento bônus. Isso só pode ser concluído uma vez."
 
 /datum/heretic_knowledge/knowledge_ritual/can_be_invoked(datum/antagonist/heretic/invoker)
 	return !was_completed
@@ -552,10 +550,10 @@
 	our_heretic.adjust_knowledge_points(KNOWLEDGE_RITUAL_POINTS)
 	was_completed = TRUE
 
-	to_chat(user, span_boldnotice("[name] completed!"))
+	to_chat(user, span_boldnotice("[name] Completo!"))
 	to_chat(user, span_hypnophrase(span_big("[pick_list(HERETIC_INFLUENCE_FILE, "drain_message")]")))
 	desc += " (Completed!)"
-	log_heretic_knowledge("[key_name(user)] completed a [name] at [round_timestamp()].")
+	log_heretic_knowledge("[key_name(user)] completed a [name] at [gameTimestamp()].")
 	user.add_mob_memory(/datum/memory/heretic_knowledge_ritual)
 	SEND_SIGNAL(our_heretic, COMSIG_HERETIC_PASSIVE_UPGRADE_FINAL)
 	return TRUE
@@ -586,9 +584,7 @@
 		var/list/cost = our_heretic.researched_knowledge[knowledge][HKT_COST]
 		total_points += cost
 
-	log_heretic_knowledge("[key_name(user)] gained knowledge of their final ritual at [round_timestamp()]. \
-		They have [length(our_heretic.researched_knowledge)] knowledge nodes researched, totalling [total_points] points \
-		and have sacrificed [our_heretic.total_sacrifices] people ([our_heretic.high_value_sacrifices] of which were high value)")
+	log_heretic_knowledge("[key_name(user)] gained knowledge of their final ritual at [gameTimestamp()]. 		They have [length(our_heretic.researched_knowledge)] knowledge nodes researched, totalling [total_points] points 		and have sacrificed [our_heretic.total_sacrifices] people ([our_heretic.high_value_sacrifices] of which were high value)")
 
 /datum/heretic_knowledge/ultimate/can_be_invoked(datum/antagonist/heretic/invoker)
 	if(invoker.ascended)
@@ -636,11 +632,11 @@
 		human_user.physiology.burn_mod *= 0.5
 
 	SSblackbox.record_feedback("tally", "heretic_ascended", 1, heretic_datum.heretic_path.route)
-	log_heretic_knowledge("[key_name(user)] completed their final ritual at [round_timestamp()].")
+	log_heretic_knowledge("[key_name(user)] completed their final ritual at [gameTimestamp()].")
 	notify_ghosts(
 		"[user.real_name] has completed an ascension ritual!",
 		source = user,
-		header = "A Heretic is Ascending!",
+		header = "Um herege está subindo!",
 	)
 	priority_announce(
 		text = replacetext(replacetext(announcement_text, "%NAME%", user.real_name), "%SPOOKY%", GLOBAL_PROC_REF(generate_heretic_text)),

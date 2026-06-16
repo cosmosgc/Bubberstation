@@ -242,7 +242,6 @@
 		span_boldwarning("[strongman] Suplexes [src] Para o chão!"),
 		span_warning("Como você suplex [src] No chão, seu corpo ondula com poder!")
 		)
-	sound_to_playing_players('sound/items/handling/lead_pipe/lead_pipe_drop.ogg')
 	new /obj/structure/festivus/anchored(drop_location())
 	new /obj/effect/anomaly/flux(drop_location())
 

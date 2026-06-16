@@ -27,18 +27,18 @@
 		CRASH("activate_module called with item_module not in model.modules")
 
 	if(activated(item_module))
-		to_chat(src, span_warning("That module is already activated."))
+		to_chat(src, span_warning("Esse módulo já está ativado."))
 		return FALSE
 
 	if(disabled_modules & BORG_MODULE_ALL_DISABLED)
-		to_chat(src, span_warning("All modules are disabled!"))
+		to_chat(src, span_warning("Todos os módulos estão desativados!"))
 		return FALSE
 
 	/// What's the first free slot for the borg?
 	var/first_free_slot = !held_items[1] ? 1 : (!held_items[2] ? 2 : (!held_items[3] ? 3 : null))
 
 	if(!first_free_slot || is_invalid_module_number(first_free_slot))
-		to_chat(src, span_warning("Deactivate a module first!"))
+		to_chat(src, span_warning("Desativar um módulo primeiro!"))
 		return FALSE
 
 	return put_in_hand(item_module, first_free_slot)
@@ -60,7 +60,7 @@
 		return ..()
 
 	if(newloc != model)
-		to_chat(src, span_notice("You can't drop your [item_dropping.name] module."))
+		to_chat(src, span_notice("Você não pode largar o seu [item_dropping.name] Módulo."))
 		return FALSE
 
 	var/module_num = get_selected_module()
@@ -72,6 +72,23 @@
 	item_dropping.cyborg_unequip(src)
 	deselect_module(module_num)
 	playsound_local(src, SFX_RUSTLE, 40, TRUE)
+
+/mob/living/silicon/robot/update_held_items()
+	. = ..()
+	if(isnull(client) || isnull(hud_used) || hud_used.hud_version == HUD_STYLE_NOHUD)
+		return
+
+	var/turf/our_turf = get_turf(src)
+	for (var/held_index in 1 to length(held_items))
+		var/obj/item/held = held_items[held_index]
+		if (!held)
+			continue
+		SET_PLANE(held, ABOVE_HUD_PLANE, our_turf)
+		var/atom/movable/screen/robot/module_slot/slot = hud_used.screen_objects[HUD_KEY_CYBORG_MODULE(held_index)]
+		if (!slot) //??
+			continue
+		held.screen_loc = slot.screen_loc
+		client.screen |= held
 
 /mob/living/silicon/robot/put_in_hand_check(obj/item/item_equipping)
 	return (item_equipping in model.modules)
@@ -98,13 +115,13 @@
 			disabled_modules |= BORG_MODULE_ALL_DISABLED
 
 			playsound(src, 'sound/machines/warning-buzzer.ogg', 75, TRUE, TRUE)
-			audible_message(span_warning("[src] sounds an alarm! \"CRITICAL ERROR: ALL modules OFFLINE.\""))
+			audible_message(span_warning("[src] Parece um alarme!\"Todos os módulos desligados.\""))
 
 			if(builtInCamera)
 				builtInCamera.camera_enabled = FALSE
-				to_chat(src, span_userdanger("CRITICAL ERROR: Built in security camera OFFLINE."))
+				to_chat(src, span_userdanger("Construído em câmera de segurança offline."))
 
-			to_chat(src, span_userdanger("CRITICAL ERROR: ALL modules OFFLINE."))
+			to_chat(src, span_userdanger("Todos os módulos desligados."))
 
 		if(BORG_CHOOSE_MODULE_TWO)
 			if(disabled_modules & BORG_MODULE_TWO_DISABLED)
@@ -113,8 +130,8 @@
 			disabled_modules |= BORG_MODULE_TWO_DISABLED
 
 			playsound(src, 'sound/machines/warning-buzzer.ogg', 60, TRUE, TRUE)
-			audible_message(span_warning("[src] sounds an alarm! \"SYSTEM ERROR: Module [module_num] OFFLINE.\""))
-			to_chat(src, span_userdanger("SYSTEM ERROR: Module [module_num] OFFLINE."))
+			audible_message(span_warning("[src] Parece um alarme!\"Módulo [module_num] Desligado.\""))
+			to_chat(src, span_userdanger("Módulo [module_num] Desligado."))
 
 		if(BORG_CHOOSE_MODULE_THREE)
 			if(disabled_modules & BORG_MODULE_THREE_DISABLED)
@@ -123,10 +140,10 @@
 			disabled_modules |= BORG_MODULE_THREE_DISABLED
 
 			playsound(src, 'sound/machines/warning-buzzer.ogg', 50, TRUE, TRUE)
-			audible_message(span_warning("[src] sounds an alarm! \"SYSTEM ERROR: Module [module_num] OFFLINE.\""))
-			to_chat(src, span_userdanger("SYSTEM ERROR: Module [module_num] OFFLINE."))
+			audible_message(span_warning("[src] Parece um alarme!\"Módulo [module_num] Desligado.\""))
+			to_chat(src, span_userdanger("Módulo [module_num] Desligado."))
 
-	var/atom/movable/screen/robot/module_slot/module = hud_used?.screen_objects[HUD_KEY_HAND_SLOT(module_num)]
+	var/atom/movable/screen/robot/module_slot/module = hud_used?.screen_objects[HUD_KEY_CYBORG_MODULE(module_num)]
 	if(module)
 		module.icon_state = "[module.base_icon_state] +b"
 	return TRUE
@@ -156,7 +173,7 @@
 			disabled_modules &= ~BORG_MODULE_ALL_DISABLED
 			if(builtInCamera)
 				builtInCamera.camera_enabled = TRUE
-				to_chat(src, span_notice("You hear your built in security camera focus adjust as it comes back online!"))
+				to_chat(src, span_notice("Você ouve seu foco na câmera de segurança se ajustar quando ele volta on-line!"))
 
 		if(BORG_CHOOSE_MODULE_TWO)
 			if(!(disabled_modules & BORG_MODULE_TWO_DISABLED))
@@ -170,8 +187,8 @@
 
 			disabled_modules &= ~BORG_MODULE_THREE_DISABLED
 
-	to_chat(src, span_notice("ERROR CLEARED: Module [module_num] back online."))
-	var/atom/movable/screen/robot/module_slot/module = hud_used?.screen_objects[HUD_KEY_HAND_SLOT(module_num)]
+	to_chat(src, span_notice("Módulo [module_num] Voltando à ativa."))
+	var/atom/movable/screen/robot/module_slot/module = hud_used?.screen_objects[HUD_KEY_CYBORG_MODULE(module_num)]
 	if(module)
 		module.icon_state = module.base_icon_state
 	return TRUE
@@ -253,11 +270,10 @@
 	if(is_invalid_module_number(module_num) || !held_items[module_num]) //If the slot number is invalid, or there's nothing there, we have nothing to equip
 		return FALSE
 
-	var/atom/movable/screen/robot/module_slot/module = hud_used?.screen_objects[HUD_KEY_HAND_SLOT(module_num)]
+	var/atom/movable/screen/robot/module_slot/module = hud_used?.screen_objects[HUD_KEY_CYBORG_MODULE(module_num)]
 	if(module && module_active != held_items[module_num])
 		module.icon_state = "[module.base_icon_state] +a"
 	module_active = held_items[module_num]
-	SEND_SIGNAL(module_active, COMSIG_SILICON_MODULE_ACTIVATION, TRUE)
 	return TRUE
 
 /**
@@ -266,11 +282,9 @@
  * * module_num - the slot number being de-selected
  */
 /mob/living/silicon/robot/proc/deselect_module(module_num)
-	var/atom/movable/screen/robot/module_slot/module = hud_used?.screen_objects[HUD_KEY_HAND_SLOT(module_num)]
+	var/atom/movable/screen/robot/module_slot/module = hud_used?.screen_objects[HUD_KEY_CYBORG_MODULE(module_num)]
 	if(module)
 		module.icon_state = module.base_icon_state
-	if(module_active)
-		SEND_SIGNAL(module_active, COMSIG_SILICON_MODULE_ACTIVATION, FALSE)
 	module_active = null
 	return TRUE
 

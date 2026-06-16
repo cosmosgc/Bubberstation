@@ -1,18 +1,18 @@
 /datum/action/cooldown/mob_cooldown/spit_ore
 	name = "Spit Ore"
-	desc = "Vomit out all of your consumed ores."
+	desc = "Vomite todos os seus minérios consumidos."
 	click_to_activate = FALSE
 	cooldown_time = 5 SECONDS
 
 /datum/action/cooldown/mob_cooldown/spit_ore/IsAvailable(feedback)
 	if(is_jaunting(owner))
 		if(feedback)
-			owner.balloon_alert(owner, "currently underground!")
+			owner.balloon_alert(owner, "No momento subterrâneo!")
 		return FALSE
 
 	if(!length(owner.contents))
 		if(feedback)
-			owner.balloon_alert(owner, "no ores to spit!")
+			owner.balloon_alert(owner, "Sem minérios para cuspir!")
 		return FALSE
 	return TRUE
 
@@ -24,7 +24,7 @@
 
 /datum/action/cooldown/mob_cooldown/burrow
 	name = "Burrow"
-	desc = "Burrow under soft ground, evading predators and increasing your speed."
+	desc = "Burrow sob solo macio, evitando predadores e aumentando sua velocidade."
 	cooldown_time = 7 SECONDS
 	click_to_activate = FALSE
 
@@ -36,7 +36,7 @@
 
 	if(!isasteroidturf(location) && !ismineralturf(location))
 		if(feedback)
-			owner.balloon_alert(owner, "available only on mining floor or wall!")
+			owner.balloon_alert(owner, "disponível apenas no chão ou parede de mineração!")
 		return FALSE
 
 	return TRUE
@@ -44,17 +44,17 @@
 /datum/action/cooldown/mob_cooldown/burrow/Activate()
 	var/obj/effect/dummy/phased_mob/grub_burrow/holder = null
 	var/turf/current_loc = get_turf(owner)
-	var/mob/living/grub = owner
 
-	if(!do_after(owner, 2.5 SECONDS, target = current_loc, extra_checks = CALLBACK(src, PROC_REF(health_check), grub.health)))
+	if(!do_after(owner, 3 SECONDS, target = current_loc))
+		owner.balloon_alert(owner, "Preciso ficar parado!")
 		return
 
 	if(get_turf(owner) != current_loc)
-		to_chat(owner, span_warning("Action cancelled, as you moved while reappearing."))
+		to_chat(owner, span_warning("Ação cancelada, como você se moveu enquanto reapareceva."))
 		return
 
 	if(!is_jaunting(owner))
-		owner.visible_message(span_danger("[owner] buries into the ground, vanishing from sight!"))
+		owner.visible_message(span_danger("[owner] Enterra no chão, desaparecendo da vista!"))
 		playsound(get_turf(owner), 'sound/effects/break_stone.ogg', 50, TRUE, -1)
 		holder = new /obj/effect/dummy/phased_mob/grub_burrow(current_loc, owner)
 		return TRUE
@@ -62,7 +62,7 @@
 	holder = owner.loc
 	holder.eject_jaunter()
 	holder = null
-	owner.visible_message(span_danger("[owner] emerges from the ground!"))
+	owner.visible_message(span_danger("[owner] Sai do chão!"))
 
 	if(ismineralturf(current_loc))
 		var/turf/closed/mineral/mineral_turf = current_loc
@@ -71,10 +71,6 @@
 	playsound(current_loc, 'sound/effects/break_stone.ogg', 50, TRUE, -1)
 	StartCooldown()
 	return TRUE
-
-/datum/action/cooldown/mob_cooldown/burrow/proc/health_check(health)
-	var/mob/living/grub = owner
-	return grub.health >= health
 
 /obj/effect/dummy/phased_mob/grub_burrow
 
@@ -85,5 +81,5 @@
 		return
 
 	if(!ismineralturf(.) && !isasteroidturf(.))
-		to_chat(user, span_warning("You cannot dig through this floor!"))
+		to_chat(user, span_warning("Você não pode cavar através deste chão!"))
 		return null

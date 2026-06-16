@@ -161,8 +161,8 @@
 /datum/keybinding/mob/target/head_cycle
 	hotkey_keys = list("Numpad8")
 	name = "target_head_cycle"
-	full_name = "Target: Cycle head"
-	description = "Pressing this key targets the head, and continued presses will cycle to the eyes and mouth. This will impact where you hit people, and can be used for surgery."
+	full_name = "Alvo: cabeça de ciclo"
+	description = "Pressionando este alvo chave a cabeça, e contínuas prensas irá ciclo para os olhos e boca. Isso vai impactar onde você bate nas pessoas, e pode ser usado para cirurgia."
 	keybind_signal = COMSIG_KB_MOB_TARGETCYCLEHEAD_DOWN
 
 /datum/keybinding/mob/target/head
@@ -189,8 +189,8 @@
 /datum/keybinding/mob/target/r_arm
 	hotkey_keys = list("Numpad4")
 	name = "target_r_arm"
-	full_name = "Target: Right arm"
-	description = "Pressing this key targets the right arm. This will impact where you hit people, and can be used for surgery."
+	full_name = "Alvo: braço direito"
+	description = "Pressionar esta chave visa o braço direito. Isso vai impactar onde você bate nas pessoas, e pode ser usado para cirurgia."
 	keybind_signal = COMSIG_KB_MOB_TARGETRIGHTARM_DOWN
 
 /datum/keybinding/mob/target/body_chest
@@ -203,8 +203,8 @@
 /datum/keybinding/mob/target/left_arm
 	hotkey_keys = list("Numpad6")
 	name = "target_left_arm"
-	full_name = "Target: Left arm"
-	description = "Pressing this key targets the body. This will impact where you hit people, and can be used for surgery."
+	full_name = "Alvo: braço esquerdo."
+	description = "Pressionar esta chave visa o corpo. Isso vai impactar onde você bate nas pessoas, e pode ser usado para cirurgia."
 	keybind_signal = COMSIG_KB_MOB_TARGETLEFTARM_DOWN
 
 /datum/keybinding/mob/target/right_leg
@@ -224,8 +224,8 @@
 /datum/keybinding/mob/target/left_leg
 	hotkey_keys = list("Numpad3")
 	name = "target_left_leg"
-	full_name = "Target: Left leg"
-	description = "Pressing this key targets the left leg. This will impact where you hit people, and can be used for surgery."
+	full_name = "Alvo: Perna esquerda"
+	description = "Pressionando este alvo chave a perna esquerda. Isso vai impactar onde você bate nas pessoas, e pode ser usado para cirurgia."
 	keybind_signal = COMSIG_KB_MOB_TARGETLEFTLEG_DOWN
 
 /datum/keybinding/mob/prevent_movement

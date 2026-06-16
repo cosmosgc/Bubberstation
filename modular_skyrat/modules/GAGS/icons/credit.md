@@ -1,1 +1,0 @@
-catglove.cmi and catglove_worn.dmi by Online! (Discord) 🩵

@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(raptor_population)
 
 /mob/living/basic/raptor
 	name = "raptor"
-	desc = "A trusty, powerful steed. Taming it might prove difficult..."
+	desc = "Um corcel confiável e poderoso. Domar pode ser difícil..."
 	icon = 'icons/mob/simple/lavaland/raptor_big.dmi'
 	icon_state = "raptor_red"
 	base_icon_state = "raptor"
@@ -71,7 +71,7 @@ GLOBAL_LIST_EMPTY(raptor_population)
 		/obj/item/food/meat/slab/xeno = -15,
 		/obj/item/food/meat/steak = 50,
 		/obj/item/food/grown/ash_flora = 10,
-		/obj/item/fish = 25,
+		/obj/item/fish = 15,
 		/obj/item/organ = 25,
 	)
 	/// Inheritance datum we store our genetic data in
@@ -92,22 +92,14 @@ GLOBAL_LIST_EMPTY(raptor_population)
 	else
 		change_growth_stage(growth_stage, RAPTOR_ADULT)
 
-	add_traits(list(TRAIT_ASHSTORM_IMMUNE, TRAIT_SNOWSTORM_IMMUNE, TRAIT_MINING_AOE_IMMUNE, TRAIT_NO_SLIP_ICE, TRAIT_NO_SLIP_SLIDE), INNATE_TRAIT)
-	AddElement(\
-		/datum/element/crusher_loot,\
-		trophy_type = /obj/item/crusher_trophy/raptor_feather,\
-		drop_mod = 100,\
-		drop_immediately = FALSE,\
-	)
+	add_traits(list(TRAIT_ASHSTORM_IMMUNE, TRAIT_SNOWSTORM_IMMUNE, TRAIT_MINING_AOE_IMMUNE), INNATE_TRAIT)
+	AddElement(		/datum/element/crusher_loot,		trophy_type = /obj/item/crusher_trophy/raptor_feather,		drop_mod = 100,		drop_immediately = FALSE,	)
 
 	if (!mapload)
 		GLOB.raptor_population += REF(src)
 
 	AddComponent(/datum/component/obeys_commands, pet_commands, list(-base_pixel_w, 0))
-	AddElement(\
-		/datum/element/change_force_on_death,\
-		move_resist = MOVE_RESIST_DEFAULT,\
-	)
+	AddElement(		/datum/element/change_force_on_death,		move_resist = MOVE_RESIST_DEFAULT,	)
 	RegisterSignal(src, COMSIG_MOB_ATE, PROC_REF(on_eat))
 	RegisterSignal(src, COMSIG_MOB_PRE_EAT, PROC_REF(on_pre_eat))
 
@@ -146,15 +138,15 @@ GLOBAL_LIST_EMPTY(raptor_population)
 
 	switch (health / maxHealth)
 		if (0 to 0.2)
-			. += span_italics(span_bolddanger("[p_They()] [p_are()] gruesomly wounded, barely staying up on [p_their()] feet!"))
+			. += span_italics(span_bolddanger("[p_They()] [p_are()] Horrivelmente ferido, mal ficando acordado.[p_their()] Pés!"))
 		if (0.2 to 0.4)
-			. += span_danger("[p_They()] [p_have()] heavy injuries and open wounds all around [p_their()] body!")
+			. += span_danger("[p_They()] [p_have()] Lesões pesadas e feridas abertas ao redor.[p_their()] Corpo!")
 		if (0.4 to 0.6)
-			. += span_warning("[p_They()] [p_are()] noticeably hurt, limping from [p_their()] cuts and bruises.")
+			. += span_warning("[p_They()] [p_are()] Visivelmente ferido, mancando de [p_their()] Cortes e hematomas.")
 		if (0.6 to 0.8)
-			. += span_warning("[p_They()] [p_are()] visibly injured, a few bruises and cuts showing between [p_their()] feathers.")
+			. += span_warning("[p_They()] [p_are()] Visivelmente ferido, alguns hematomas e cortes mostrando entre [p_their()] penas.")
 		if (0.8 to 0.999)
-			. += span_notice("[p_They()] [p_have()] a few minor bruises and scratches.")
+			. += span_notice("[p_They()] [p_have()] Alguns pequenos hematomas e arranhões.")
 
 /mob/living/basic/raptor/Life(seconds_per_tick)
 	. = ..()
@@ -169,16 +161,16 @@ GLOBAL_LIST_EMPTY(raptor_population)
 
 /mob/living/basic/raptor/early_melee_attack(atom/target, list/modifiers, ignore_cooldown)
 	. = ..()
-	if(.)
-		return
+	if(!.)
+		return FALSE
 	if(!istype(target, /obj/structure/ore_container/food_trough/raptor_trough))
-		return BASIC_MOB_CONTINUE_ATTACK_CHAIN
+		return TRUE
 	var/obj/ore_food = locate(/obj/item/stack/ore) in target
 	if(isnull(ore_food))
-		balloon_alert(src, "no food!")
+		balloon_alert(src, "Sem comida!")
 	else
 		UnarmedAttack(ore_food, TRUE, modifiers)
-	return BASIC_MOB_END_ATTACK_CHAIN_COOLDOWN
+	return FALSE
 
 /mob/living/basic/raptor/melee_attack(mob/living/target, list/modifiers, ignore_cooldown)
 	if (!combat_mode && istype(target, /mob/living/basic/raptor))
@@ -190,26 +182,12 @@ GLOBAL_LIST_EMPTY(raptor_population)
 /mob/living/basic/raptor/proc/add_breeding_component()
 	var/static/list/partner_types = typecacheof(list(/mob/living/basic/raptor))
 	var/static/list/baby_types = list(/obj/item/food/egg/raptor_egg = 1)
-	AddComponent(\
-		/datum/component/breed, \
-		can_breed_with = partner_types, \
-		baby_paths = baby_types, \
-		breed_timer = 3 MINUTES, \
-		post_birth = CALLBACK(src, PROC_REF(egg_inherit)), \
-	)
+	AddComponent(		/datum/component/breed, 		can_breed_with = partner_types, 		baby_paths = baby_types, 		breed_timer = 3 MINUTES, 		post_birth = CALLBACK(src, PROC_REF(egg_inherit)), 	)
 
 /mob/living/basic/raptor/proc/add_happiness_component()
 	var/static/list/percentage_callbacks = list(0, 15, 25, 35, 50, 75, 90, 100)
 	// Higher happiness cap so it decays slower, about 15 minutes from full to zero
-	AddComponent(\
-		/datum/component/happiness, \
-		maximum_happiness = 900, \
-		on_petted_change = 50, \
-		on_groom_change = 200, \
-		on_eat_change = 150, \
-		callback_percentages = percentage_callbacks,\
-		happiness_callback = CALLBACK(src, PROC_REF(happiness_change)),\
-	)
+	AddComponent(		/datum/component/happiness, 		maximum_happiness = 900, 		on_petted_change = 50, 		on_groom_change = 200, 		on_eat_change = 150, 		callback_percentages = percentage_callbacks,		happiness_callback = CALLBACK(src, PROC_REF(happiness_change)),	)
 
 /mob/living/basic/raptor/proc/happiness_change(percent_value)
 	var/attack_boost = round((percent_value - happiness_percentage) * RAPTOR_HAPPINESS_DAMAGE_BOOST, 1)
@@ -341,14 +319,14 @@ GLOBAL_LIST_EMPTY(raptor_population)
 	switch (new_stage)
 		if (RAPTOR_BABY)
 			name = "baby raptor"
-			desc = "Will this grow into something useful?"
+			desc = "Isso vai se tornar algo útil?"
 			icon = 'icons/mob/simple/lavaland/raptor_baby.dmi'
 			base_icon_state = "baby"
 			base_pixel_w = 0
 			mob_size = MOB_SIZE_TINY
 		if (RAPTOR_YOUNG)
 			name = "raptor youngling"
-			desc = "A young raptor that can grow into a robust, trusty steed. Rather naive at such an age, it shouldn't be too hard to tame."
+			desc = "Um jovem raptor que pode se tornar um corcel robusto e confiável. Ingênuo em tal idade, não deve ser muito difícil de domar."
 			icon = 'icons/mob/simple/lavaland/raptor_big.dmi'
 			base_icon_state = "young"
 			base_pixel_w = initial(base_pixel_w)

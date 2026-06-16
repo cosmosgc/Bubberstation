@@ -1304,11 +1304,7 @@ TREK
 
 /datum/greyscale_config/boots/christmasboots/worn/digi
 	name = "christmas_boots (Worn, Digi)"
-	icon_file = 'modular_zubbers/icons/mob/clothing/feet/feet_digi.dmi'
-
-/datum/greyscale_config/boots/christmasboots/worn/teshari
-	name = "christmas_boots (Worn, Teshari)"
-	icon_file = 'modular_zubbers/icons/mob/clothing/feet/feet_teshari.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
 
 // Laceups
 
@@ -1402,18 +1398,6 @@ TREK
 /datum/greyscale_config/catgloves/worn
 	name = "Catgloves Worn"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/catglove_worn.dmi'
-
-
-/datum/greyscale_config/magpaws
-	name = "Magpaws"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/magpaws.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/gloves/magpaws.json'
-
-/datum/greyscale_config/magpaws/worn
-	name = "Magpaws Worn"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/magpaws.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/gloves/magpaws_worn.json'
-
 
 // MISC SHOES
 

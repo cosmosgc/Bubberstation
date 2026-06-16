@@ -124,7 +124,6 @@
 
 				//hands
 				/obj/item/clothing/gloves/ball_mittens = 8,
-				/obj/item/clothing/gloves/ball_mittens/loadout_paw = 5,
 			),
 		),
 			list(

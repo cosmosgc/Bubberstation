@@ -8,7 +8,7 @@
  */
 /mob/living/basic/seedling
 	name = "seedling"
-	desc = "This oversized, predatory flower conceals what can only be described as an organic energy cannon."
+	desc = "Esta flor predatória oculta o que só pode ser descrito como um canhão de energia orgânica."
 	icon = 'icons/mob/simple/jungle/seedling.dmi'
 	icon_state = "seedling"
 	icon_living = "seedling"
@@ -85,31 +85,31 @@
 
 /mob/living/basic/seedling/early_melee_attack(atom/target, list/modifiers, ignore_cooldown)
 	. = ..()
-	if(.)
-		return
+	if(!.)
+		return FALSE
 
 	if(istype(target, /obj/machinery/hydroponics))
 		treat_hydro_tray(target)
-		return BASIC_MOB_END_ATTACK_CHAIN_COOLDOWN
+		return FALSE
 
 	if(isnull(held_can))
-		return BASIC_MOB_CONTINUE_ATTACK_CHAIN
+		return TRUE
 
 	if(istype(target, /obj/structure/sink) || istype(target, /obj/structure/reagent_dispensers))
 		held_can.melee_attack_chain(src, target)
-		return BASIC_MOB_END_ATTACK_CHAIN_COOLDOWN
+		return FALSE
 
 
 ///seedlings can water trays, remove weeds, or remove dead plants
 /mob/living/basic/seedling/proc/treat_hydro_tray(obj/machinery/hydroponics/hydro)
 
 	if(hydro.plant_status == HYDROTRAY_PLANT_DEAD)
-		balloon_alert(src, "dead plant removed")
+		balloon_alert(src, "Planta morta removida.")
 		hydro.set_seed(null)
 		return
 
 	if(hydro.weedlevel > 0)
-		balloon_alert(src, "weeds uprooted")
+		balloon_alert(src, "ervas daninhas arrancadas")
 		hydro.set_weedlevel(0)
 		return
 
@@ -224,7 +224,7 @@
 	name = "Solar Energy"
 	button_icon = 'icons/obj/weapons/guns/projectiles.dmi'
 	button_icon_state = "seedling"
-	desc = "Fire small beams of solar energy."
+	desc = "Dispare pequenos feitos de energia solar."
 	cooldown_time = 10 SECONDS
 	projectile_type = /obj/projectile/seedling
 	default_projectile_spread = 10
@@ -251,7 +251,7 @@
 	var/mob/living/basic/seedling/seed_owner = owner
 	if(seed_owner.combatant_state != SEEDLING_STATE_NEUTRAL)
 		if(feedback)
-			seed_owner.balloon_alert(seed_owner, "charging!")
+			seed_owner.balloon_alert(seed_owner, "Carregando!")
 		return FALSE
 	return TRUE
 
@@ -276,7 +276,7 @@
 	name = "Solar Beam"
 	button_icon = 'icons/effects/beam.dmi'
 	button_icon_state = "solar_beam"
-	desc = "Concentrate the power of the sun onto your target!"
+	desc = "Concentre o poder do sol em seu mundo!"
 	cooldown_time = 30 SECONDS
 	shared_cooldown = NONE
 	///how long will it take for us to charge up the beam
@@ -299,7 +299,7 @@
 	var/mob/living/basic/seedling/seed_owner = owner
 	if(seed_owner.combatant_state != SEEDLING_STATE_NEUTRAL)
 		if(feedback)
-			seed_owner.balloon_alert(seed_owner, "charging!")
+			seed_owner.balloon_alert(seed_owner, "Carregando!")
 		return FALSE
 	return TRUE
 
